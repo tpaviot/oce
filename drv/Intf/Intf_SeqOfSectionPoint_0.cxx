@@ -5,18 +5,10 @@
 
 #include <Intf_SeqOfSectionPoint.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Intf_SectionPoint_HeaderFile
 #include <Intf_SectionPoint.hxx>
-#endif
-#ifndef _Intf_SequenceNodeOfSeqOfSectionPoint_HeaderFile
 #include <Intf_SequenceNodeOfSeqOfSectionPoint.hxx>
-#endif
  
 
 #define SeqItem Intf_SectionPoint

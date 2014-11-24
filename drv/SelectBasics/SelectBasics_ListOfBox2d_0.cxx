@@ -5,18 +5,10 @@
 
 #include <SelectBasics_ListOfBox2d.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _SelectBasics_ListIteratorOfListOfBox2d_HeaderFile
 #include <SelectBasics_ListIteratorOfListOfBox2d.hxx>
-#endif
-#ifndef _Bnd_Box2d_HeaderFile
 #include <Bnd_Box2d.hxx>
-#endif
-#ifndef _SelectBasics_ListNodeOfListOfBox2d_HeaderFile
 #include <SelectBasics_ListNodeOfListOfBox2d.hxx>
-#endif
  
 
 #define Item Bnd_Box2d

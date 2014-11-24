@@ -6,78 +6,64 @@
 #ifndef _GeomConvert_ApproxSurface_HeaderFile
 #define _GeomConvert_ApproxSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Geom_BSplineSurface_HeaderFile
 #include <Handle_Geom_BSplineSurface.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class Geom_Surface;
 class Geom_BSplineSurface;
 class Standard_OutOfRange;
 
 
-//! A framework to convert a surface to a BSpline <br>
-//! surface. This is done by approximation to a BSpline <br>
-//! surface within a given tolerance. <br>
-class GeomConvert_ApproxSurface  {
+//! A framework to convert a surface to a BSpline
+//! surface. This is done by approximation to a BSpline
+//! surface within a given tolerance.
+class GeomConvert_ApproxSurface 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Constructs a surface approximation framework defined by <br>
-//! -   the conic Surf <br>
-//! -   the tolerance value Tol3d <br>
-//! -   the degree of continuity UContinuity, VContinuity <br>
-//!  in the directions of the U and V parameters <br>
-//! -   the highest degree MaxDegU, MaxDegV which <br>
-//!   the polynomial defining the BSpline curve may <br>
-//!   have in the directions of the U and V parameters <br>
-//! -   the maximum number of segments MaxSegments <br>
-//!   allowed in the resulting BSpline curve <br>
-//! -   the index of precision PrecisCode. <br>
-  Standard_EXPORT   GeomConvert_ApproxSurface(const Handle(Geom_Surface)& Surf,const Standard_Real Tol3d,const GeomAbs_Shape UContinuity,const GeomAbs_Shape VContinuity,const Standard_Integer MaxDegU,const Standard_Integer MaxDegV,const Standard_Integer MaxSegments,const Standard_Integer PrecisCode);
-  //! Returns the BSpline surface resulting from the approximation algorithm. <br>
-  Standard_EXPORT     Handle_Geom_BSplineSurface Surface() const;
-  //! Returns Standard_True if the approximation has be done <br>
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-  //! Returns true if the approximation did come out with a result that <br>
-//!  is not NECESSARILY within the required tolerance or a result <br>
-//!  that is not recognized with the wished continuities. <br>
-  Standard_EXPORT     Standard_Boolean HasResult() const;
-  //! Returns the greatest distance between a point on the <br>
-//! source conic surface and the BSpline surface <br>
-//! resulting from the approximation (>0 when an approximation <br>
-//!   has been done, 0 if no  approximation ) <br>
-  Standard_EXPORT     Standard_Real MaxError() const;
-  //! Prints on the stream o informations on the current state of the object. <br>
-  Standard_EXPORT     void Dump(Standard_OStream& o) const;
-
+  
+  //! Constructs a surface approximation framework defined by
+  //! -   the conic Surf
+  //! -   the tolerance value Tol3d
+  //! -   the degree of continuity UContinuity, VContinuity
+  //! in the directions of the U and V parameters
+  //! -   the highest degree MaxDegU, MaxDegV which
+  //! the polynomial defining the BSpline curve may
+  //! have in the directions of the U and V parameters
+  //! -   the maximum number of segments MaxSegments
+  //! allowed in the resulting BSpline curve
+  //! -   the index of precision PrecisCode.
+  Standard_EXPORT GeomConvert_ApproxSurface(const Handle(Geom_Surface)& Surf, const Standard_Real Tol3d, const GeomAbs_Shape UContinuity, const GeomAbs_Shape VContinuity, const Standard_Integer MaxDegU, const Standard_Integer MaxDegV, const Standard_Integer MaxSegments, const Standard_Integer PrecisCode);
+  
+  //! Returns the BSpline surface resulting from the approximation algorithm.
+  Standard_EXPORT   Handle(Geom_BSplineSurface) Surface()  const;
+  
+  //! Returns Standard_True if the approximation has be done
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
+  
+  //! Returns true if the approximation did come out with a result that
+  //! is not NECESSARILY within the required tolerance or a result
+  //! that is not recognized with the wished continuities.
+  Standard_EXPORT   Standard_Boolean HasResult()  const;
+  
+  //! Returns the greatest distance between a point on the
+  //! source conic surface and the BSpline surface
+  //! resulting from the approximation (>0 when an approximation
+  //! has been done, 0 if no  approximation )
+  Standard_EXPORT   Standard_Real MaxError()  const;
+  
+  //! Prints on the stream o informations on the current state of the object.
+  Standard_EXPORT   void Dump (Standard_OStream& o)  const;
 
 
 
@@ -92,11 +78,11 @@ private:
 
 
 
-Handle_Geom_Surface mySurf;
-Standard_Boolean myIsDone;
-Standard_Boolean myHasResult;
-Handle_Geom_BSplineSurface myBSplSurf;
-Standard_Real myMaxError;
+  Handle(Geom_Surface) mySurf;
+  Standard_Boolean myIsDone;
+  Standard_Boolean myHasResult;
+  Handle(Geom_BSplineSurface) myBSplSurf;
+  Standard_Real myMaxError;
 
 
 };
@@ -105,7 +91,6 @@ Standard_Real myMaxError;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomConvert_ApproxSurface_HeaderFile

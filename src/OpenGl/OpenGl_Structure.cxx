@@ -118,19 +118,6 @@ public:
 /*----------------------------------------------------------------------*/
 
 // =======================================================================
-// function : call_util_transpose_mat
-// purpose  :
-// =======================================================================
-static void call_util_transpose_mat (float tmat[16], float mat[4][4])
-{
-  int i, j;
-
-  for (i=0; i<4; i++)
-    for (j=0; j<4; j++)
-      tmat[j*4+i] = mat[i][j];
-}
-
-// =======================================================================
 // function : OpenGl_Structure
 // purpose  :
 // =======================================================================
@@ -147,7 +134,8 @@ OpenGl_Structure::OpenGl_Structure (const Handle(Graphic3d_StructureManager)& th
   myZLayer(0),
   myIsRaytracable (Standard_False),
   myModificationState (0),
-  myIsCulled (Standard_True)
+  myIsCulled (Standard_True),
+  myIsMirrored (Standard_False)
 {
   UpdateNamedStatus();
 }
@@ -194,6 +182,16 @@ void OpenGl_Structure::UpdateTransformation()
   {
     myTransformation = new OpenGl_Matrix();
   }
+
+  Standard_ShortReal (*aMat)[4] = Graphic3d_CStructure::Transformation;
+
+  Standard_ShortReal aDet =
+    aMat[0][0] * (aMat[1][1] * aMat[2][2] - aMat[2][1] * aMat[1][2]) -
+    aMat[0][1] * (aMat[1][0] * aMat[2][2] - aMat[2][0] * aMat[1][2]) +
+    aMat[0][2] * (aMat[1][0] * aMat[2][1] - aMat[2][0] * aMat[1][1]);
+
+  // Determinant of transform matrix less then 0 means that mirror transform applied.
+  myIsMirrored = aDet < 0.0f;
 
   matcpy (myTransformation->mat, &Graphic3d_CStructure::Transformation[0][0]);
 
@@ -296,11 +294,11 @@ void OpenGl_Structure::clearHighlightBox (const Handle(OpenGl_Context)& theGlCtx
 void OpenGl_Structure::HighlightWithColor (const Graphic3d_Vec3&  theColor,
                                            const Standard_Boolean theToCreate)
 {
-  const Handle(OpenGl_Context)& aCtx = GlDriver()->GetSharedContext();
+  const Handle(OpenGl_Context)& aContext = GlDriver()->GetSharedContext();
   if (theToCreate)
-    setHighlightColor   (aCtx, theColor);
+    setHighlightColor   (aContext, theColor);
   else
-    clearHighlightColor (aCtx);
+    clearHighlightColor (aContext);
 }
 
 // =======================================================================
@@ -310,16 +308,16 @@ void OpenGl_Structure::HighlightWithColor (const Graphic3d_Vec3&  theColor,
 void OpenGl_Structure::HighlightWithBndBox (const Handle(Graphic3d_Structure)& theStruct,
                                             const Standard_Boolean             theToCreate)
 {
-  const Handle(OpenGl_Context)& aCtx = GlDriver()->GetSharedContext();
+  const Handle(OpenGl_Context)& aContext = GlDriver()->GetSharedContext();
   if (!theToCreate)
   {
-    clearHighlightBox (aCtx);
+    clearHighlightBox (aContext);
     return;
   }
 
   if (!myHighlightBox.IsNull())
   {
-    myHighlightBox->Release (aCtx);
+    myHighlightBox->Release (aContext);
   }
   else
   {
@@ -612,13 +610,13 @@ void OpenGl_Structure::Clear (const Handle(OpenGl_Context)& theGlCtx)
 // function : RenderGeometry
 // purpose  :
 // =======================================================================
-void OpenGl_Structure::RenderGeometry (const Handle(OpenGl_Workspace) &AWorkspace) const
+void OpenGl_Structure::RenderGeometry (const Handle(OpenGl_Workspace) &theWorkspace) const
 {
   // Render groups
   const Graphic3d_SequenceOfGroup& aGroups = DrawGroups();
   for (OpenGl_Structure::GroupIterator aGroupIter (aGroups); aGroupIter.More(); aGroupIter.Next())
   {
-    aGroupIter.Value()->Render (AWorkspace);
+    aGroupIter.Value()->Render (theWorkspace);
   }
 }
 
@@ -626,109 +624,103 @@ void OpenGl_Structure::RenderGeometry (const Handle(OpenGl_Workspace) &AWorkspac
 // function : Render
 // purpose  :
 // =======================================================================
-void OpenGl_Structure::Render (const Handle(OpenGl_Workspace) &AWorkspace) const
+void OpenGl_Structure::Render (const Handle(OpenGl_Workspace) &theWorkspace) const
 {
   // Process the structure only if visible
-  if ( myNamedStatus & OPENGL_NS_HIDE )
+  if (myNamedStatus & OPENGL_NS_HIDE)
+  {
     return;
+  }
 
-  const Handle(OpenGl_Context)& aCtx = AWorkspace->GetGlContext();
+  const Handle(OpenGl_Context)& aCtx = theWorkspace->GetGlContext();
 
   // Render named status
-  const Standard_Integer named_status = AWorkspace->NamedStatus;
-  AWorkspace->NamedStatus |= myNamedStatus;
+  const Standard_Integer aNamedStatus = theWorkspace->NamedStatus;
+  theWorkspace->NamedStatus |= myNamedStatus;
 
-  // Is rendering in ADD or IMMEDIATE mode?
-  const Standard_Boolean isImmediate = (AWorkspace->NamedStatus & OPENGL_NS_IMMEDIATE) != 0;
+  // Do we need to restore GL_NORMALIZE?
+  const Standard_Boolean anOldGlNormalize = aCtx->IsGlNormalizeEnabled();
 
   // Apply local transformation
-  GLint matrix_mode = 0;
-  const OpenGl_Matrix *local_trsf = NULL;
   if (myTransformation)
   {
-  #if !defined(GL_ES_VERSION_2_0)
-    if (isImmediate)
+    OpenGl_Matrix aModelWorld;
+    OpenGl_Transposemat3 (&aModelWorld, myTransformation);
+    aCtx->ModelWorldState.Push();
+    aCtx->ModelWorldState.SetCurrent (OpenGl_Mat4::Map ((Standard_ShortReal* )aModelWorld.mat));
+
+    Standard_ShortReal aScaleX = OpenGl_Vec3 (myTransformation->mat[0][0],
+                                              myTransformation->mat[0][1],
+                                              myTransformation->mat[0][2]).SquareModulus();
+    // Scale transform detected.
+    if (Abs (aScaleX - 1.f) > Precision::Confusion())
     {
-      Tmatrix3 aModelWorld;
-      call_util_transpose_mat (*aModelWorld, myTransformation->mat);
-
-      glGetIntegerv (GL_MATRIX_MODE, &matrix_mode);
-
-      if (!aCtx->ShaderManager()->IsEmpty())
-      {
-        Tmatrix3 aWorldView;
-        glGetFloatv (GL_MODELVIEW_MATRIX, *aWorldView);
-
-        Tmatrix3 aProjection;
-        glGetFloatv (GL_PROJECTION_MATRIX, *aProjection);
-
-        aCtx->ShaderManager()->UpdateModelWorldStateTo (&aModelWorld);
-        aCtx->ShaderManager()->UpdateWorldViewStateTo (&aWorldView);
-        aCtx->ShaderManager()->UpdateProjectionStateTo (&aProjection);
-      }
-
-      glMatrixMode (GL_MODELVIEW);
-      glPushMatrix ();
-      glScalef (1.F, 1.F, 1.F);
-      glMultMatrixf (*aModelWorld);
+      aCtx->SetGlNormalizeEnabled (Standard_True);
     }
-    else
-    {
-      glMatrixMode (GL_MODELVIEW);
-      glPushMatrix();
-
-      local_trsf = AWorkspace->SetStructureMatrix (myTransformation);
-    }
-  #endif
   }
 
   // Apply transform persistence
-  const TEL_TRANSFORM_PERSISTENCE *trans_pers = NULL;
+  const TEL_TRANSFORM_PERSISTENCE *aTransPersistence = NULL;
   if ( myTransPers && myTransPers->mode != 0 )
   {
-    trans_pers = AWorkspace->ActiveView()->BeginTransformPersistence (aCtx, myTransPers);
+    aTransPersistence = theWorkspace->ActiveView()->BeginTransformPersistence (aCtx, myTransPers);
   }
 
+  // Take into account transform persistence
+  aCtx->ApplyModelViewMatrix();
+
   // Apply aspects
-  const OpenGl_AspectLine *aspect_line = AWorkspace->AspectLine(Standard_False);
-  const OpenGl_AspectFace *aspect_face = AWorkspace->AspectFace(Standard_False);
-  const OpenGl_AspectMarker *aspect_marker = AWorkspace->AspectMarker(Standard_False);
-  const OpenGl_AspectText *aspect_text = AWorkspace->AspectText(Standard_False);
+  const OpenGl_AspectLine *anAspectLine = theWorkspace->AspectLine (Standard_False);
+  const OpenGl_AspectFace *anAspectFace = theWorkspace->AspectFace (Standard_False);
+  const OpenGl_AspectMarker *anAspectMarker = theWorkspace->AspectMarker (Standard_False);
+  const OpenGl_AspectText *anAspectText = theWorkspace->AspectText (Standard_False);
   if (myAspectLine)
-    AWorkspace->SetAspectLine(myAspectLine);
+  {
+    theWorkspace->SetAspectLine (myAspectLine);
+  }
   if (myAspectFace)
-    AWorkspace->SetAspectFace(myAspectFace);
+  {
+    theWorkspace->SetAspectFace (myAspectFace);
+  }
   if (myAspectMarker)
-    AWorkspace->SetAspectMarker(myAspectMarker);
+  {
+    theWorkspace->SetAspectMarker (myAspectMarker);
+  }
   if (myAspectText)
-    AWorkspace->SetAspectText(myAspectText);
+  {
+    theWorkspace->SetAspectText (myAspectText);
+  }
+
+  // Apply correction for mirror transform
+  if (myIsMirrored)
+  {
+    aCtx->core11fwd->glFrontFace (GL_CW);
+  }
 
   // Apply highlight color
-  const TEL_COLOUR *highlight_color = AWorkspace->HighlightColor;
+  const TEL_COLOUR *aHighlightColor = theWorkspace->HighlightColor;
   if (myHighlightColor)
-    AWorkspace->HighlightColor = myHighlightColor;
+    theWorkspace->HighlightColor = myHighlightColor;
 
   // Render connected structures
-  OpenGl_ListOfStructure::Iterator its(myConnected);
-  while (its.More())
+  OpenGl_ListOfStructure::Iterator anIter (myConnected);
+  while (anIter.More())
   {
-    its.Value()->RenderGeometry (AWorkspace);
-    its.Next();
+    anIter.Value()->RenderGeometry (theWorkspace);
+    anIter.Next();
   }
 
   // Set up plane equations for non-structure transformed global model-view matrix
-  const Handle(OpenGl_Context)& aContext = AWorkspace->GetGlContext();
-
   // List of planes to be applied to context state
   Handle(Graphic3d_SequenceOfHClipPlane) aUserPlanes;
 
   // Collect clipping planes of structure scope
   if (!myClipPlanes.IsEmpty())
   {
-    Graphic3d_SequenceOfHClipPlane::Iterator aClippingIt (myClipPlanes);
-    for (; aClippingIt.More(); aClippingIt.Next())
+    Graphic3d_SequenceOfHClipPlane::Iterator aClippingIter (myClipPlanes);
+    for (; aClippingIter.More(); aClippingIter.Next())
     {
-      const Handle(Graphic3d_ClipPlane)& aClipPlane = aClippingIt.Value();
+      const Handle(Graphic3d_ClipPlane)& aClipPlane = aClippingIter.Value();
       if (!aClipPlane->IsOn())
       {
         continue;
@@ -746,12 +738,12 @@ void OpenGl_Structure::Render (const Handle(OpenGl_Workspace) &AWorkspace) const
   if (!aUserPlanes.IsNull() && !aUserPlanes->IsEmpty())
   {
     // add planes at loaded view matrix state
-    aContext->ChangeClipping().AddWorld (*aUserPlanes, AWorkspace);
+    aCtx->ChangeClipping().AddWorld (*aUserPlanes, theWorkspace);
 
     // Set OCCT state uniform variables
-    if (!aContext->ShaderManager()->IsEmpty())
+    if (!aCtx->ShaderManager()->IsEmpty())
     {
-      aContext->ShaderManager()->UpdateClippingState();
+      aCtx->ShaderManager()->UpdateClippingState();
     }
   }
 
@@ -759,76 +751,63 @@ void OpenGl_Structure::Render (const Handle(OpenGl_Workspace) &AWorkspace) const
   const Graphic3d_SequenceOfGroup& aGroups = DrawGroups();
   for (OpenGl_Structure::GroupIterator aGroupIter (aGroups); aGroupIter.More(); aGroupIter.Next())
   {
-    aGroupIter.Value()->Render (AWorkspace);
+    aGroupIter.Value()->Render (theWorkspace);
+  }
+
+  // Reset correction for mirror transform
+  if (myIsMirrored)
+  {
+    aCtx->core11fwd->glFrontFace (GL_CCW);
   }
 
   // Render capping for structure groups
-  if (!aContext->Clipping().Planes().IsEmpty())
+  if (!aCtx->Clipping().Planes().IsEmpty())
   {
-    OpenGl_CappingAlgo::RenderCapping (AWorkspace, aGroups);
+    OpenGl_CappingAlgo::RenderCapping (theWorkspace, aGroups);
   }
 
   // Revert structure clippings
   if (!aUserPlanes.IsNull() && !aUserPlanes->IsEmpty())
   {
-    aContext->ChangeClipping().Remove (*aUserPlanes);
+    aCtx->ChangeClipping().Remove (*aUserPlanes);
 
     // Set OCCT state uniform variables
-    if (!aContext->ShaderManager()->IsEmpty())
+    if (!aCtx->ShaderManager()->IsEmpty())
     {
-      aContext->ShaderManager()->RevertClippingState();
+      aCtx->ShaderManager()->RevertClippingState();
     }
   }
 
+  // Apply local transformation
+  if (myTransformation)
+  {
+    aCtx->ModelWorldState.Pop();
+    aCtx->SetGlNormalizeEnabled (anOldGlNormalize);
+  }
+
   // Restore highlight color
-  AWorkspace->HighlightColor = highlight_color;
+  theWorkspace->HighlightColor = aHighlightColor;
 
   // Restore aspects
-  AWorkspace->SetAspectLine(aspect_line);
-  AWorkspace->SetAspectFace(aspect_face);
-  AWorkspace->SetAspectMarker(aspect_marker);
-  AWorkspace->SetAspectText(aspect_text);
+  theWorkspace->SetAspectLine (anAspectLine);
+  theWorkspace->SetAspectFace (anAspectFace);
+  theWorkspace->SetAspectMarker (anAspectMarker);
+  theWorkspace->SetAspectText (anAspectText);
 
   // Restore transform persistence
   if ( myTransPers && myTransPers->mode != 0 )
   {
-    AWorkspace->ActiveView()->BeginTransformPersistence (aContext, trans_pers);
-  }
-
-  // Restore local transformation
-  if (myTransformation)
-  {
-  #if !defined(GL_ES_VERSION_2_0)
-    if (isImmediate)
-    {
-      glPopMatrix ();
-      glMatrixMode (matrix_mode);
-
-      Tmatrix3 aModelWorldState = { { 1.f, 0.f, 0.f, 0.f },
-                                    { 0.f, 1.f, 0.f, 0.f },
-                                    { 0.f, 0.f, 1.f, 0.f },
-                                    { 0.f, 0.f, 0.f, 1.f } };
-
-      aContext->ShaderManager()->RevertModelWorldStateTo (&aModelWorldState);
-    }
-    else
-    {
-      AWorkspace->SetStructureMatrix (local_trsf, true);
-
-      glMatrixMode (GL_MODELVIEW);
-      glPopMatrix();
-    }
-  #endif
+    theWorkspace->ActiveView()->BeginTransformPersistence (aCtx, aTransPersistence);
   }
 
   // Apply highlight box
   if (!myHighlightBox.IsNull())
   {
-    myHighlightBox->Render (AWorkspace);
+    myHighlightBox->Render (theWorkspace);
   }
 
   // Restore named status
-  AWorkspace->NamedStatus = named_status;
+  theWorkspace->NamedStatus = aNamedStatus;
 }
 
 // =======================================================================

@@ -6,48 +6,41 @@
 #ifndef _FairCurve_BattenLaw_HeaderFile
 #define _FairCurve_BattenLaw_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _math_Function_HeaderFile
 #include <math_Function.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 
 
-//! This class compute the Heigth of an batten <br>
-class FairCurve_BattenLaw  : public math_Function {
+//! This class compute the Heigth of an batten
+class FairCurve_BattenLaw  : public math_Function
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Constructor of linear batten with <br>
-//!          Heigth : the Heigth at the middle point <br>
-//!          Slope  : the geometric slope of the batten <br>
-//!          Sliding : Active Length of the batten without extension <br>
-  Standard_EXPORT   FairCurve_BattenLaw(const Standard_Real Heigth,const Standard_Real Slope,const Standard_Real Sliding);
-  //! Change the value of sliding <br>
-        void SetSliding(const Standard_Real Sliding) ;
-  //! Change the value of Heigth at the middle point. <br>
-        void SetHeigth(const Standard_Real Heigth) ;
-  //! Change the value of the geometric slope. <br>
-        void SetSlope(const Standard_Real Slope) ;
-  //! computes the value of  the heigth for the parameter T <br>
-//!          on  the neutral fibber <br>
-      virtual  Standard_Boolean Value(const Standard_Real T,Standard_Real& THeigth) ;
-
+  
+  //! Constructor of linear batten with
+  //! Heigth : the Heigth at the middle point
+  //! Slope  : the geometric slope of the batten
+  //! Sliding : Active Length of the batten without extension
+  Standard_EXPORT FairCurve_BattenLaw(const Standard_Real Heigth, const Standard_Real Slope, const Standard_Real Sliding);
+  
+  //! Change the value of sliding
+      void SetSliding (const Standard_Real Sliding) ;
+  
+  //! Change the value of Heigth at the middle point.
+      void SetHeigth (const Standard_Real Heigth) ;
+  
+  //! Change the value of the geometric slope.
+      void SetSlope (const Standard_Real Slope) ;
+  
+  //! computes the value of  the heigth for the parameter T
+  //! on  the neutral fibber
+    virtual   Standard_Boolean Value (const Standard_Real T, Standard_Real& THeigth) ;
 
 
 
@@ -62,9 +55,9 @@ private:
 
 
 
-Standard_Real MiddleHeigth;
-Standard_Real GeometricSlope;
-Standard_Real LengthSliding;
+  Standard_Real MiddleHeigth;
+  Standard_Real GeometricSlope;
+  Standard_Real LengthSliding;
 
 
 };
@@ -74,7 +67,6 @@ Standard_Real LengthSliding;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _FairCurve_BattenLaw_HeaderFile

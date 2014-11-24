@@ -6,41 +6,31 @@
 #ifndef _IntTools_CurveRangeSampleMapHasher_HeaderFile
 #define _IntTools_CurveRangeSampleMapHasher_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class IntTools_CurveRangeSample;
 
 
-//! class for range index management of curve <br>
-class IntTools_CurveRangeSampleMapHasher  {
+//! class for range index management of curve
+class IntTools_CurveRangeSampleMapHasher 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a HasCode value  for  the  Key <K>  in the <br>
-//!          range 0..Upper. <br>
-//! <br>
-      static  Standard_Integer HashCode(const IntTools_CurveRangeSample& K,const Standard_Integer Upper) ;
-  //! Returns True  when the two  keys are the same. Two <br>
-//!          same  keys  must   have  the  same  hashcode,  the <br>
-//!          contrary is not necessary. <br>
-//! <br>
-      static  Standard_Boolean IsEqual(const IntTools_CurveRangeSample& S1,const IntTools_CurveRangeSample& S2) ;
-
+  
+  //! Returns a HasCode value  for  the  Key <K>  in the
+  //! range 0..Upper.
+    static   Standard_Integer HashCode (const IntTools_CurveRangeSample& K, const Standard_Integer Upper) ;
+  
+  //! Returns True  when the two  keys are the same. Two
+  //! same  keys  must   have  the  same  hashcode,  the
+  //! contrary is not necessary.
+    static   Standard_Boolean IsEqual (const IntTools_CurveRangeSample& S1, const IntTools_CurveRangeSample& S2) ;
 
 
 
@@ -64,7 +54,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_CurveRangeSampleMapHasher_HeaderFile

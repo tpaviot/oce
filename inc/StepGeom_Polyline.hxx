@@ -6,55 +6,41 @@
 #ifndef _StepGeom_Polyline_HeaderFile
 #define _StepGeom_Polyline_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_Polyline_HeaderFile
 #include <Handle_StepGeom_Polyline.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_HArray1OfCartesianPoint_HeaderFile
 #include <Handle_StepGeom_HArray1OfCartesianPoint.hxx>
-#endif
-#ifndef _StepGeom_BoundedCurve_HeaderFile
 #include <StepGeom_BoundedCurve.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepGeom_CartesianPoint_HeaderFile
 #include <Handle_StepGeom_CartesianPoint.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StepGeom_HArray1OfCartesianPoint;
 class TCollection_HAsciiString;
 class StepGeom_CartesianPoint;
 
 
 
-class StepGeom_Polyline : public StepGeom_BoundedCurve {
+class StepGeom_Polyline : public StepGeom_BoundedCurve
+{
 
 public:
 
-  //! Returns a Polyline <br>
-  Standard_EXPORT   StepGeom_Polyline();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a Polyline
+  Standard_EXPORT StepGeom_Polyline();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_HArray1OfCartesianPoint)& aPoints) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetPoints(const Handle(StepGeom_HArray1OfCartesianPoint)& aPoints) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_HArray1OfCartesianPoint)& aPoints) ;
   
-  Standard_EXPORT     Handle_StepGeom_HArray1OfCartesianPoint Points() const;
+  Standard_EXPORT   void SetPoints (const Handle(StepGeom_HArray1OfCartesianPoint)& aPoints) ;
   
-  Standard_EXPORT     Handle_StepGeom_CartesianPoint PointsValue(const Standard_Integer num) const;
+  Standard_EXPORT   Handle(StepGeom_HArray1OfCartesianPoint) Points()  const;
   
-  Standard_EXPORT     Standard_Integer NbPoints() const;
+  Standard_EXPORT   Handle(StepGeom_CartesianPoint) PointsValue (const Standard_Integer num)  const;
+  
+  Standard_EXPORT   Standard_Integer NbPoints()  const;
 
 
 
@@ -69,7 +55,7 @@ protected:
 private: 
 
 
-Handle_StepGeom_HArray1OfCartesianPoint points;
+  Handle(StepGeom_HArray1OfCartesianPoint) points;
 
 
 };
@@ -78,7 +64,6 @@ Handle_StepGeom_HArray1OfCartesianPoint points;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_Polyline_HeaderFile

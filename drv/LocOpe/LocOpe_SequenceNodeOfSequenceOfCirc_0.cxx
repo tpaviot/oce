@@ -5,16 +5,10 @@
 
 #include <LocOpe_SequenceNodeOfSequenceOfCirc.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _gp_Circ_HeaderFile
 #include <gp_Circ.hxx>
-#endif
-#ifndef _LocOpe_SequenceOfCirc_HeaderFile
 #include <LocOpe_SequenceOfCirc.hxx>
-#endif
 
  
 

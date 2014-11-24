@@ -6,55 +6,23 @@
 #ifndef _AIS_OffsetDimension_HeaderFile
 #define _AIS_OffsetDimension_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_AIS_OffsetDimension_HeaderFile
 #include <Handle_AIS_OffsetDimension.hxx>
-#endif
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _gp_Trsf_HeaderFile
 #include <gp_Trsf.hxx>
-#endif
-#ifndef _AIS_Relation_HeaderFile
 #include <AIS_Relation.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _PrsMgr_PresentationManager3d_HeaderFile
 #include <PrsMgr_PresentationManager3d.hxx>
-#endif
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Prs3d_Projector_HeaderFile
 #include <Handle_Prs3d_Projector.hxx>
-#endif
-#ifndef _Handle_Geom_Transformation_HeaderFile
 #include <Handle_Geom_Transformation.hxx>
-#endif
-#ifndef _Handle_SelectMgr_Selection_HeaderFile
 #include <Handle_SelectMgr_Selection.hxx>
-#endif
-#ifndef _AIS_KindOfDimension_HeaderFile
 #include <AIS_KindOfDimension.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopoDS_Shape;
 class TCollection_ExtendedString;
 class Prs3d_Presentation;
@@ -64,35 +32,41 @@ class SelectMgr_Selection;
 class gp_Trsf;
 
 
-//! A framework to display dimensions of offsets. <br>
-//! The relation between the offset and the basis shape <br>
-//! is indicated. This relation is displayed with arrows and <br>
-//! text. The text gives the dsitance between the offset <br>
-//! and the basis shape. <br>
-class AIS_OffsetDimension : public AIS_Relation {
+//! A framework to display dimensions of offsets.
+//! The relation between the offset and the basis shape
+//! is indicated. This relation is displayed with arrows and
+//! text. The text gives the dsitance between the offset
+//! and the basis shape.
+class AIS_OffsetDimension : public AIS_Relation
+{
 
 public:
 
-  //! Constructs the offset display object defined by the <br>
-//! first shape aFShape, the second shape aSShape, the <br>
-//! dimension aVal, and the text aText. <br>
-  Standard_EXPORT   AIS_OffsetDimension(const TopoDS_Shape& FistShape,const TopoDS_Shape& SecondShape,const Standard_Real aVal,const TCollection_ExtendedString& aText);
-  //! computes the presentation according to a point of view <br>
-//!          given by <aProjector>. <br>
-//!          To be Used when the associated degenerated Presentations <br>
-//!          have been transformed by <aTrsf> which is not a Pure <br>
-//!          Translation. The HLR Prs can't be deducted automatically <br>
-//!          WARNING :<aTrsf> must be applied <br>
-//!           to the object to display before computation  !!! <br>
-  Standard_EXPORT   virtual  void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Geom_Transformation)& aTrsf,const Handle(Prs3d_Presentation)& aPresentation) ;
   
-//! Indicates that the dimension we are concerned with is an offset. <br>
-      virtual  AIS_KindOfDimension KindOfDimension() const;
-  //! Returns true if the offset datum is movable. <br>
-      virtual  Standard_Boolean IsMovable() const;
-  //! Sets a transformation aTrsf for presentation and <br>
-//! selection to a relative position. <br>
-        void SetRelativePos(const gp_Trsf& aTrsf) ;
+  //! Constructs the offset display object defined by the
+  //! first shape aFShape, the second shape aSShape, the
+  //! dimension aVal, and the text aText.
+  Standard_EXPORT AIS_OffsetDimension(const TopoDS_Shape& FistShape, const TopoDS_Shape& SecondShape, const Standard_Real aVal, const TCollection_ExtendedString& aText);
+  
+  //! computes the presentation according to a point of view
+  //! given by <aProjector>.
+  //! To be Used when the associated degenerated Presentations
+  //! have been transformed by <aTrsf> which is not a Pure
+  //! Translation. The HLR Prs can't be deducted automatically
+  //! WARNING :<aTrsf> must be applied
+  //! to the object to display before computation  !!!
+  Standard_EXPORT virtual   void Compute (const Handle(Prs3d_Projector)& aProjector, const Handle(Geom_Transformation)& aTrsf, const Handle(Prs3d_Presentation)& aPresentation) ;
+  
+
+  //! Indicates that the dimension we are concerned with is an offset.
+    virtual   AIS_KindOfDimension KindOfDimension()  const;
+  
+  //! Returns true if the offset datum is movable.
+    virtual   Standard_Boolean IsMovable()  const;
+  
+  //! Sets a transformation aTrsf for presentation and
+  //! selection to a relative position.
+      void SetRelativePos (const gp_Trsf& aTrsf) ;
 
 
 
@@ -107,23 +81,23 @@ protected:
 private: 
 
   
-  Standard_EXPORT   virtual  void Compute(const Handle(PrsMgr_PresentationManager3d)& aPresentationManager,const Handle(Prs3d_Presentation)& aPresentation,const Standard_Integer aMode = 0) ;
+  Standard_EXPORT virtual   void Compute (const Handle(PrsMgr_PresentationManager3d)& aPresentationManager, const Handle(Prs3d_Presentation)& aPresentation, const Standard_Integer aMode = 0) ;
   
-  Standard_EXPORT     void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Prs3d_Presentation)& aPresentation) ;
+  Standard_EXPORT   void Compute (const Handle(Prs3d_Projector)& aProjector, const Handle(Prs3d_Presentation)& aPresentation) ;
   
-  Standard_EXPORT   virtual  void ComputeSelection(const Handle(SelectMgr_Selection)& aSelection,const Standard_Integer aMode) ;
+  Standard_EXPORT virtual   void ComputeSelection (const Handle(SelectMgr_Selection)& aSelection, const Standard_Integer aMode) ;
   
-  Standard_EXPORT     void ComputeTwoFacesOffset(const Handle(Prs3d_Presentation)& aPresentation,const gp_Trsf& aTrsf) ;
+  Standard_EXPORT   void ComputeTwoFacesOffset (const Handle(Prs3d_Presentation)& aPresentation, const gp_Trsf& aTrsf) ;
   
-  Standard_EXPORT     void ComputeTwoAxesOffset(const Handle(Prs3d_Presentation)& aPresentation,const gp_Trsf& aTrsf) ;
+  Standard_EXPORT   void ComputeTwoAxesOffset (const Handle(Prs3d_Presentation)& aPresentation, const gp_Trsf& aTrsf) ;
   
-  Standard_EXPORT     void ComputeAxeFaceOffset(const Handle(Prs3d_Presentation)& aPresentation,const gp_Trsf& aTrsf) ;
+  Standard_EXPORT   void ComputeAxeFaceOffset (const Handle(Prs3d_Presentation)& aPresentation, const gp_Trsf& aTrsf) ;
 
-gp_Pnt myFAttach;
-gp_Pnt mySAttach;
-gp_Dir myDirAttach;
-gp_Dir myDirAttach2;
-gp_Trsf myRelativePos;
+  gp_Pnt myFAttach;
+  gp_Pnt mySAttach;
+  gp_Dir myDirAttach;
+  gp_Dir myDirAttach2;
+  gp_Trsf myRelativePos;
 
 
 };
@@ -133,7 +107,6 @@ gp_Trsf myRelativePos;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_OffsetDimension_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_StepBasic_ExternalIdentificationAssignment_HeaderFile
 #define _Handle_StepBasic_ExternalIdentificationAssignment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepBasic_IdentificationAssignment_HeaderFile
 #include <Handle_StepBasic_IdentificationAssignment.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepBasic_IdentificationAssignment);
 class StepBasic_ExternalIdentificationAssignment;
 
-DEFINE_STANDARD_HANDLE(StepBasic_ExternalIdentificationAssignment,StepBasic_IdentificationAssignment)
+DEFINE_STANDARD_HANDLE(StepBasic_ExternalIdentificationAssignment, StepBasic_IdentificationAssignment)
 
-#endif
+#endif // _Handle_StepBasic_ExternalIdentificationAssignment_HeaderFile

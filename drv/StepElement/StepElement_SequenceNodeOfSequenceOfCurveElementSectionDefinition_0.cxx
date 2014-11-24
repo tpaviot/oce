@@ -5,16 +5,10 @@
 
 #include <StepElement_SequenceNodeOfSequenceOfCurveElementSectionDefinition.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _StepElement_CurveElementSectionDefinition_HeaderFile
 #include <StepElement_CurveElementSectionDefinition.hxx>
-#endif
-#ifndef _StepElement_SequenceOfCurveElementSectionDefinition_HeaderFile
 #include <StepElement_SequenceOfCurveElementSectionDefinition.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(StepElement_SequenceNodeOfSequenceOfCurveElementSectionDefini
 IMPLEMENT_STANDARD_RTTI(StepElement_SequenceNodeOfSequenceOfCurveElementSectionDefinition)
 
 
-#define SeqItem Handle_StepElement_CurveElementSectionDefinition
+#define SeqItem Handle(StepElement_CurveElementSectionDefinition)
 #define SeqItem_hxx <StepElement_CurveElementSectionDefinition.hxx>
 #define TCollection_SequenceNode StepElement_SequenceNodeOfSequenceOfCurveElementSectionDefinition
 #define TCollection_SequenceNode_hxx <StepElement_SequenceNodeOfSequenceOfCurveElementSectionDefinition.hxx>

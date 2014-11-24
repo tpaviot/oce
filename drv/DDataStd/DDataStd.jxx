@@ -1,6 +1,2 @@
-#ifndef _TDataXtd_Constraint_HeaderFile
 #include <TDataXtd_Constraint.hxx>
-#endif
-#ifndef _DDataStd_HeaderFile
 #include <DDataStd.hxx>
-#endif

@@ -1,6 +1,2 @@
-#ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
-#endif
-#ifndef _AppParCurves_HeaderFile
 #include <AppParCurves.hxx>
-#endif

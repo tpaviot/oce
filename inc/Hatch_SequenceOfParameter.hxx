@@ -6,25 +6,13 @@
 #ifndef _Hatch_SequenceOfParameter_HeaderFile
 #define _Hatch_SequenceOfParameter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_Hatch_SequenceNodeOfSequenceOfParameter_HeaderFile
 #include <Handle_Hatch_SequenceNodeOfSequenceOfParameter.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Hatch_Parameter;
@@ -32,68 +20,68 @@ class Hatch_SequenceNodeOfSequenceOfParameter;
 
 
 
-class Hatch_SequenceOfParameter  : public TCollection_BaseSequence {
+class Hatch_SequenceOfParameter  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Hatch_SequenceOfParameter();
+    Hatch_SequenceOfParameter();
   
-  Standard_EXPORT   Hatch_SequenceOfParameter(const Hatch_SequenceOfParameter& Other);
+  Standard_EXPORT Hatch_SequenceOfParameter(const Hatch_SequenceOfParameter& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~Hatch_SequenceOfParameter()
 {
   Clear();
 }
   
-  Standard_EXPORT    const Hatch_SequenceOfParameter& Assign(const Hatch_SequenceOfParameter& Other) ;
-   const Hatch_SequenceOfParameter& operator =(const Hatch_SequenceOfParameter& Other) 
+  Standard_EXPORT  const  Hatch_SequenceOfParameter& Assign (const Hatch_SequenceOfParameter& Other) ;
+ const  Hatch_SequenceOfParameter& operator = (const Hatch_SequenceOfParameter& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Hatch_Parameter& T) ;
+  Standard_EXPORT   void Append (const Hatch_Parameter& T) ;
   
-        void Append(Hatch_SequenceOfParameter& S) ;
+      void Append (Hatch_SequenceOfParameter& S) ;
   
-  Standard_EXPORT     void Prepend(const Hatch_Parameter& T) ;
+  Standard_EXPORT   void Prepend (const Hatch_Parameter& T) ;
   
-        void Prepend(Hatch_SequenceOfParameter& S) ;
+      void Prepend (Hatch_SequenceOfParameter& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Hatch_Parameter& T) ;
+      void InsertBefore (const Standard_Integer Index, const Hatch_Parameter& T) ;
   
-        void InsertBefore(const Standard_Integer Index,Hatch_SequenceOfParameter& S) ;
+      void InsertBefore (const Standard_Integer Index, Hatch_SequenceOfParameter& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Hatch_Parameter& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Hatch_Parameter& T) ;
   
-        void InsertAfter(const Standard_Integer Index,Hatch_SequenceOfParameter& S) ;
+      void InsertAfter (const Standard_Integer Index, Hatch_SequenceOfParameter& S) ;
   
-  Standard_EXPORT    const Hatch_Parameter& First() const;
+  Standard_EXPORT  const  Hatch_Parameter& First()  const;
   
-  Standard_EXPORT    const Hatch_Parameter& Last() const;
+  Standard_EXPORT  const  Hatch_Parameter& Last()  const;
   
-        void Split(const Standard_Integer Index,Hatch_SequenceOfParameter& Sub) ;
+      void Split (const Standard_Integer Index, Hatch_SequenceOfParameter& Sub) ;
   
-  Standard_EXPORT    const Hatch_Parameter& Value(const Standard_Integer Index) const;
-   const Hatch_Parameter& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Hatch_Parameter& Value (const Standard_Integer Index)  const;
+ const  Hatch_Parameter& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Hatch_Parameter& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Hatch_Parameter& I) ;
   
-  Standard_EXPORT     Hatch_Parameter& ChangeValue(const Standard_Integer Index) ;
-    Hatch_Parameter& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Hatch_Parameter& ChangeValue (const Standard_Integer Index) ;
+  Hatch_Parameter& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Hatch_SequenceOfParameter_HeaderFile

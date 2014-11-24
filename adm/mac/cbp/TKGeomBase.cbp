@@ -117,6 +117,8 @@
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 		</Linker>
 		<Unit filename="../../../drv/ProjLib/ProjLib_HCompProjectedCurve_0.cxx" />
 		<Unit filename="../../../drv/ProjLib/ProjLib_HProjectedCurve_0.cxx" />

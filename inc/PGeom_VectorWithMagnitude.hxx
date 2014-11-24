@@ -6,33 +6,26 @@
 #ifndef _PGeom_VectorWithMagnitude_HeaderFile
 #define _PGeom_VectorWithMagnitude_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom_VectorWithMagnitude_HeaderFile
 #include <Handle_PGeom_VectorWithMagnitude.hxx>
-#endif
 
-#ifndef _PGeom_Vector_HeaderFile
 #include <PGeom_Vector.hxx>
-#endif
 class gp_Vec;
 
 
-class PGeom_VectorWithMagnitude : public PGeom_Vector {
+class PGeom_VectorWithMagnitude : public PGeom_Vector
+{
 
 public:
 
-  //! Creates a VectorWithMagnitude with default values. <br>
-  Standard_EXPORT   PGeom_VectorWithMagnitude();
-  //! Creates a VectorWithMagnitude with <aVec>. <br>
-  Standard_EXPORT   PGeom_VectorWithMagnitude(const gp_Vec& aVec);
+  
+  //! Creates a VectorWithMagnitude with default values.
+  Standard_EXPORT PGeom_VectorWithMagnitude();
+  
+  //! Creates a VectorWithMagnitude with <aVec>.
+  Standard_EXPORT PGeom_VectorWithMagnitude(const gp_Vec& aVec);
 
 PGeom_VectorWithMagnitude(const Storage_stCONSTclCOM& a) : PGeom_Vector(a)
 {
@@ -59,7 +52,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom_VectorWithMagnitude_HeaderFile

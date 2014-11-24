@@ -6,22 +6,15 @@
 #ifndef _Handle_StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion_HeaderFile
 #define _Handle_StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepFEA_FeaMaterialPropertyRepresentationItem_HeaderFile
 #include <Handle_StepFEA_FeaMaterialPropertyRepresentationItem.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepFEA_FeaMaterialPropertyRepresentationItem);
 class StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion;
 
-DEFINE_STANDARD_HANDLE(StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion,StepFEA_FeaMaterialPropertyRepresentationItem)
+DEFINE_STANDARD_HANDLE(StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion, StepFEA_FeaMaterialPropertyRepresentationItem)
 
-#endif
+#endif // _Handle_StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion_HeaderFile

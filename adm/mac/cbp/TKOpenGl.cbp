@@ -81,6 +81,8 @@
 			<Add library="objc" />
 			<Add library="freeimage" />
 			<Add library="freetype" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 			<Add library="freetype" />
 			<Add library="objc" />
 			<Add library="freetype" />
@@ -102,6 +104,8 @@
 			<Option compile="1" />
 			<Option link="1" />
 		</Unit>
+		<Unit filename="../../../src/OpenGl/OpenGl_Cylinder.cxx" />
+		<Unit filename="../../../src/OpenGl/OpenGl_Disk.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_Element.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_Flipper.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_Font.cxx" />
@@ -123,13 +127,16 @@
 		<Unit filename="../../../src/OpenGl/OpenGl_PrimitiveArray.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_PrinterContext.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_PriorityList.cxx" />
+		<Unit filename="../../../src/OpenGl/OpenGl_Quadric.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_RenderFilter.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_Resource.cxx" />
+		<Unit filename="../../../src/OpenGl/OpenGl_Sampler.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_SceneGeometry.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_ShaderManager.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_ShaderObject.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_ShaderProgram.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_ShaderStates.cxx" />
+		<Unit filename="../../../src/OpenGl/OpenGl_Sphere.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_StencilTest.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_Structure.cxx" />
 		<Unit filename="../../../src/OpenGl/OpenGl_StructureShadow.cxx" />

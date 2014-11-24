@@ -6,46 +6,36 @@
 #ifndef _TopOpeBRepBuild_BlockIterator_HeaderFile
 #define _TopOpeBRepBuild_BlockIterator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 
 
-//! Iterator on the elements of a block. <br>
-class TopOpeBRepBuild_BlockIterator  {
+//! Iterator on the elements of a block.
+class TopOpeBRepBuild_BlockIterator 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepBuild_BlockIterator();
+  Standard_EXPORT TopOpeBRepBuild_BlockIterator();
   
-  Standard_EXPORT   TopOpeBRepBuild_BlockIterator(const Standard_Integer Lower,const Standard_Integer Upper);
+  Standard_EXPORT TopOpeBRepBuild_BlockIterator(const Standard_Integer Lower, const Standard_Integer Upper);
   
-        void Initialize() ;
+      void Initialize() ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-        void Next() ;
+      void Next() ;
   
-        Standard_Integer Value() const;
+      Standard_Integer Value()  const;
   
-        Standard_Integer Extent() const;
-
+      Standard_Integer Extent()  const;
 
 
 
@@ -60,9 +50,9 @@ private:
 
 
 
-Standard_Integer myLower;
-Standard_Integer myUpper;
-Standard_Integer myValue;
+  Standard_Integer myLower;
+  Standard_Integer myUpper;
+  Standard_Integer myValue;
 
 
 };
@@ -72,7 +62,6 @@ Standard_Integer myValue;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepBuild_BlockIterator_HeaderFile

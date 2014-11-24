@@ -5,18 +5,10 @@
 
 #include <TDataStd_ListIteratorOfListOfByte.hxx>
 
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TDataStd_ListOfByte_HeaderFile
 #include <TDataStd_ListOfByte.hxx>
-#endif
-#ifndef _TDataStd_ListNodeOfListOfByte_HeaderFile
 #include <TDataStd_ListNodeOfListOfByte.hxx>
-#endif
  
 
 #define Item Standard_Byte

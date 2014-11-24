@@ -1,6 +1,2 @@
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _Bnd_Sphere_HeaderFile
 #include <Bnd_Sphere.hxx>
-#endif

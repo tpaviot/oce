@@ -5,16 +5,10 @@
 
 #include <IFSelect_SequenceNodeOfSequenceOfInterfaceModel.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Interface_InterfaceModel_HeaderFile
 #include <Interface_InterfaceModel.hxx>
-#endif
-#ifndef _IFSelect_SequenceOfInterfaceModel_HeaderFile
 #include <IFSelect_SequenceOfInterfaceModel.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(IFSelect_SequenceNodeOfSequenceOfInterfaceModel,Standard_Tran
 IMPLEMENT_STANDARD_RTTI(IFSelect_SequenceNodeOfSequenceOfInterfaceModel)
 
 
-#define SeqItem Handle_Interface_InterfaceModel
+#define SeqItem Handle(Interface_InterfaceModel)
 #define SeqItem_hxx <Interface_InterfaceModel.hxx>
 #define TCollection_SequenceNode IFSelect_SequenceNodeOfSequenceOfInterfaceModel
 #define TCollection_SequenceNode_hxx <IFSelect_SequenceNodeOfSequenceOfInterfaceModel.hxx>

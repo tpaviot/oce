@@ -5,28 +5,14 @@
 
 #include <StepGeom_HArray1OfBoundaryCurve.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _StepGeom_BoundaryCurve_HeaderFile
 #include <StepGeom_BoundaryCurve.hxx>
-#endif
-#ifndef _StepGeom_Array1OfBoundaryCurve_HeaderFile
 #include <StepGeom_Array1OfBoundaryCurve.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(StepGeom_HArray1OfBoundaryCurve,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(StepGeom_HArray1OfBoundaryCurve)
 
 
-#define ItemHArray1 Handle_StepGeom_BoundaryCurve
+#define ItemHArray1 Handle(StepGeom_BoundaryCurve)
 #define ItemHArray1_hxx <StepGeom_BoundaryCurve.hxx>
 #define TheArray1 StepGeom_Array1OfBoundaryCurve
 #define TheArray1_hxx <StepGeom_Array1OfBoundaryCurve.hxx>

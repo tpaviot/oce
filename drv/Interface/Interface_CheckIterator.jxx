@@ -1,30 +1,10 @@
-#ifndef _Interface_HSequenceOfCheck_HeaderFile
 #include <Interface_HSequenceOfCheck.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfInteger_HeaderFile
 #include <TColStd_HSequenceOfInteger.hxx>
-#endif
-#ifndef _Interface_InterfaceModel_HeaderFile
 #include <Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Interface_IntVal_HeaderFile
 #include <Interface_IntVal.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Interface_Check_HeaderFile
 #include <Interface_Check.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfTransient_HeaderFile
 #include <TColStd_HSequenceOfTransient.hxx>
-#endif
-#ifndef _Message_Messenger_HeaderFile
 #include <Message_Messenger.hxx>
-#endif
-#ifndef _Interface_CheckIterator_HeaderFile
 #include <Interface_CheckIterator.hxx>
-#endif

@@ -6,55 +6,23 @@
 #ifndef _STEPControl_ActorWrite_HeaderFile
 #define _STEPControl_ActorWrite_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_STEPControl_ActorWrite_HeaderFile
 #include <Handle_STEPControl_ActorWrite.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _STEPConstruct_ContextTool_HeaderFile
 #include <STEPConstruct_ContextTool.hxx>
-#endif
-#ifndef _Transfer_ActorOfFinderProcess_HeaderFile
 #include <Transfer_ActorOfFinderProcess.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Transfer_Finder_HeaderFile
 #include <Handle_Transfer_Finder.hxx>
-#endif
-#ifndef _Handle_Transfer_Binder_HeaderFile
 #include <Handle_Transfer_Binder.hxx>
-#endif
-#ifndef _Handle_Transfer_FinderProcess_HeaderFile
 #include <Handle_Transfer_FinderProcess.hxx>
-#endif
-#ifndef _Handle_StepShape_ShapeDefinitionRepresentation_HeaderFile
 #include <Handle_StepShape_ShapeDefinitionRepresentation.hxx>
-#endif
-#ifndef _Handle_StepGeom_Axis2Placement3d_HeaderFile
 #include <Handle_StepGeom_Axis2Placement3d.hxx>
-#endif
-#ifndef _Handle_TopTools_HSequenceOfShape_HeaderFile
 #include <Handle_TopTools_HSequenceOfShape.hxx>
-#endif
-#ifndef _STEPControl_StepModelType_HeaderFile
 #include <STEPControl_StepModelType.hxx>
-#endif
-#ifndef _Handle_StepShape_NonManifoldSurfaceShapeRepresentation_HeaderFile
 #include <Handle_StepShape_NonManifoldSurfaceShapeRepresentation.hxx>
-#endif
 class Transfer_Finder;
 class Transfer_Binder;
 class Transfer_FinderProcess;
@@ -65,40 +33,42 @@ class TopoDS_Shape;
 class StepShape_NonManifoldSurfaceShapeRepresentation;
 
 
-//! This class performs the transfer of a Shape from TopoDS <br>
-//!           to AP203 or AP214 (CD2 or DIS) <br>
-class STEPControl_ActorWrite : public Transfer_ActorOfFinderProcess {
+//! This class performs the transfer of a Shape from TopoDS
+//! to AP203 or AP214 (CD2 or DIS)
+class STEPControl_ActorWrite : public Transfer_ActorOfFinderProcess
+{
 
 public:
 
   
-  Standard_EXPORT   STEPControl_ActorWrite();
+  Standard_EXPORT STEPControl_ActorWrite();
   
-  Standard_EXPORT   virtual  Standard_Boolean Recognize(const Handle(Transfer_Finder)& start) ;
+  Standard_EXPORT virtual   Standard_Boolean Recognize (const Handle(Transfer_Finder)& start) ;
   
-  Standard_EXPORT   virtual  Handle_Transfer_Binder Transfer(const Handle(Transfer_Finder)& start,const Handle(Transfer_FinderProcess)& FP) ;
+  Standard_EXPORT virtual   Handle(Transfer_Binder) Transfer (const Handle(Transfer_Finder)& start, const Handle(Transfer_FinderProcess)& FP) ;
   
-  Standard_EXPORT     Handle_Transfer_Binder TransferSubShape(const Handle(Transfer_Finder)& start,const Handle(StepShape_ShapeDefinitionRepresentation)& SDR,Handle(StepGeom_Axis2Placement3d)& AX1,const Handle(Transfer_FinderProcess)& FP,const Handle(TopTools_HSequenceOfShape)& shapeGroup = NULL,const Standard_Boolean isManifold = Standard_True) ;
+  Standard_EXPORT   Handle(Transfer_Binder) TransferSubShape (const Handle(Transfer_Finder)& start, const Handle(StepShape_ShapeDefinitionRepresentation)& SDR, Handle(StepGeom_Axis2Placement3d)& AX1, const Handle(Transfer_FinderProcess)& FP, const Handle(TopTools_HSequenceOfShape)& shapeGroup = NULL, const Standard_Boolean isManifold = Standard_True) ;
   
-  Standard_EXPORT     Handle_Transfer_Binder TransferShape(const Handle(Transfer_Finder)& start,const Handle(StepShape_ShapeDefinitionRepresentation)& SDR,const Handle(Transfer_FinderProcess)& FP,const Handle(TopTools_HSequenceOfShape)& shapeGroup = NULL,const Standard_Boolean isManifold = Standard_True) ;
+  Standard_EXPORT   Handle(Transfer_Binder) TransferShape (const Handle(Transfer_Finder)& start, const Handle(StepShape_ShapeDefinitionRepresentation)& SDR, const Handle(Transfer_FinderProcess)& FP, const Handle(TopTools_HSequenceOfShape)& shapeGroup = NULL, const Standard_Boolean isManifold = Standard_True) ;
   
-  Standard_EXPORT     Handle_Transfer_Binder TransferCompound(const Handle(Transfer_Finder)& start,const Handle(StepShape_ShapeDefinitionRepresentation)& SDR,const Handle(Transfer_FinderProcess)& FP) ;
+  Standard_EXPORT   Handle(Transfer_Binder) TransferCompound (const Handle(Transfer_Finder)& start, const Handle(StepShape_ShapeDefinitionRepresentation)& SDR, const Handle(Transfer_FinderProcess)& FP) ;
   
-  Standard_EXPORT     void SetMode(const STEPControl_StepModelType M) ;
+  Standard_EXPORT   void SetMode (const STEPControl_StepModelType M) ;
   
-  Standard_EXPORT     STEPControl_StepModelType Mode() const;
+  Standard_EXPORT   STEPControl_StepModelType Mode()  const;
   
-  Standard_EXPORT     void SetGroupMode(const Standard_Integer mode) ;
+  Standard_EXPORT   void SetGroupMode (const Standard_Integer mode) ;
   
-  Standard_EXPORT     Standard_Integer GroupMode() const;
+  Standard_EXPORT   Standard_Integer GroupMode()  const;
   
-  Standard_EXPORT     void SetTolerance(const Standard_Real Tol) ;
-  //! Customizable method to check whether shape S should <br>
-//!          be written as assembly or not <br>
-//!          Default implementation uses flag GroupMode and analyses <br>
-//!          the shape itself <br>
-//!          NOTE: this method can modify shape <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsAssembly(TopoDS_Shape& S) const;
+  Standard_EXPORT   void SetTolerance (const Standard_Real Tol) ;
+  
+  //! Customizable method to check whether shape S should
+  //! be written as assembly or not
+  //! Default implementation uses flag GroupMode and analyses
+  //! the shape itself
+  //! NOTE: this method can modify shape
+  Standard_EXPORT virtual   Standard_Boolean IsAssembly (TopoDS_Shape& S)  const;
 
 
 
@@ -112,16 +82,17 @@ protected:
 
 private: 
 
-  //! Non-manifold shapes are stored in NMSSR group <br>
-//!          (NON_MANIFOLD_SURFACE_SHAPE_REPRESENTATION). <br>
-//!          Use this method to get the corresponding NMSSR (or <br>
-//!          to create a new one if doesn't exist yet) <br>
-//!          (ssv; 13.11.2010) <br>
-  Standard_EXPORT     Handle_StepShape_NonManifoldSurfaceShapeRepresentation getNMSSRForGroup(const Handle(TopTools_HSequenceOfShape)& shapeGroup,const Handle(Transfer_FinderProcess)& FP,Standard_Boolean& isNMSSRCreated) const;
+  
+  //! Non-manifold shapes are stored in NMSSR group
+  //! (NON_MANIFOLD_SURFACE_SHAPE_REPRESENTATION).
+  //! Use this method to get the corresponding NMSSR (or
+  //! to create a new one if doesn't exist yet)
+  //! (ssv; 13.11.2010)
+  Standard_EXPORT   Handle(StepShape_NonManifoldSurfaceShapeRepresentation) getNMSSRForGroup (const Handle(TopTools_HSequenceOfShape)& shapeGroup, const Handle(Transfer_FinderProcess)& FP, Standard_Boolean& isNMSSRCreated)  const;
 
-Standard_Integer mygroup;
-Standard_Real mytoler;
-STEPConstruct_ContextTool myContext;
+  Standard_Integer mygroup;
+  Standard_Real mytoler;
+  STEPConstruct_ContextTool myContext;
 
 
 };
@@ -130,7 +101,6 @@ STEPConstruct_ContextTool myContext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPControl_ActorWrite_HeaderFile

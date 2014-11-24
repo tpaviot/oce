@@ -6,22 +6,15 @@
 #ifndef _Handle_Standard_NullObject_HeaderFile
 #define _Handle_Standard_NullObject_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Standard_DomainError_HeaderFile
 #include <Handle_Standard_DomainError.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Standard_DomainError);
 class Standard_NullObject;
 
-DEFINE_STANDARD_HANDLE(Standard_NullObject,Standard_DomainError)
+DEFINE_STANDARD_HANDLE(Standard_NullObject, Standard_DomainError)
 
-#endif
+#endif // _Handle_Standard_NullObject_HeaderFile

@@ -141,6 +141,8 @@
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 		</Linker>
 		<Unit filename="../../../drv/Hatch/Hatch_SequenceNodeOfSequenceOfLine_0.cxx" />
 		<Unit filename="../../../drv/Hatch/Hatch_SequenceNodeOfSequenceOfParameter_0.cxx" />

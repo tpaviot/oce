@@ -6,28 +6,14 @@
 #ifndef _TestTopOpeDraw_ListOfPnt2d_HeaderFile
 #define _TestTopOpeDraw_ListOfPnt2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_TestTopOpeDraw_ListNodeOfListOfPnt2d_HeaderFile
 #include <Handle_TestTopOpeDraw_ListNodeOfListOfPnt2d.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class TestTopOpeDraw_ListIteratorOfListOfPnt2d;
 class gp_Pnt2d;
@@ -35,63 +21,63 @@ class TestTopOpeDraw_ListNodeOfListOfPnt2d;
 
 
 
-class TestTopOpeDraw_ListOfPnt2d  {
+class TestTopOpeDraw_ListOfPnt2d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TestTopOpeDraw_ListOfPnt2d();
+  Standard_EXPORT TestTopOpeDraw_ListOfPnt2d();
   
-  Standard_EXPORT   TestTopOpeDraw_ListOfPnt2d(const TestTopOpeDraw_ListOfPnt2d& Other);
+  Standard_EXPORT TestTopOpeDraw_ListOfPnt2d(const TestTopOpeDraw_ListOfPnt2d& Other);
   
-  Standard_EXPORT     void Assign(const TestTopOpeDraw_ListOfPnt2d& Other) ;
-    void operator=(const TestTopOpeDraw_ListOfPnt2d& Other) 
+  Standard_EXPORT   void Assign (const TestTopOpeDraw_ListOfPnt2d& Other) ;
+  void operator= (const TestTopOpeDraw_ListOfPnt2d& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TestTopOpeDraw_ListOfPnt2d()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const gp_Pnt2d& I) ;
+  Standard_EXPORT   void Prepend (const gp_Pnt2d& I) ;
   
-  Standard_EXPORT     void Prepend(const gp_Pnt2d& I,TestTopOpeDraw_ListIteratorOfListOfPnt2d& theIt) ;
+  Standard_EXPORT   void Prepend (const gp_Pnt2d& I, TestTopOpeDraw_ListIteratorOfListOfPnt2d& theIt) ;
   
-  Standard_EXPORT     void Prepend(TestTopOpeDraw_ListOfPnt2d& Other) ;
+  Standard_EXPORT   void Prepend (TestTopOpeDraw_ListOfPnt2d& Other) ;
   
-  Standard_EXPORT     void Append(const gp_Pnt2d& I) ;
+  Standard_EXPORT   void Append (const gp_Pnt2d& I) ;
   
-  Standard_EXPORT     void Append(const gp_Pnt2d& I,TestTopOpeDraw_ListIteratorOfListOfPnt2d& theIt) ;
+  Standard_EXPORT   void Append (const gp_Pnt2d& I, TestTopOpeDraw_ListIteratorOfListOfPnt2d& theIt) ;
   
-  Standard_EXPORT     void Append(TestTopOpeDraw_ListOfPnt2d& Other) ;
+  Standard_EXPORT   void Append (TestTopOpeDraw_ListOfPnt2d& Other) ;
   
-  Standard_EXPORT     gp_Pnt2d& First() const;
+  Standard_EXPORT   gp_Pnt2d& First()  const;
   
-  Standard_EXPORT     gp_Pnt2d& Last() const;
+  Standard_EXPORT   gp_Pnt2d& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(TestTopOpeDraw_ListIteratorOfListOfPnt2d& It) ;
+  Standard_EXPORT   void Remove (TestTopOpeDraw_ListIteratorOfListOfPnt2d& It) ;
   
-  Standard_EXPORT     void InsertBefore(const gp_Pnt2d& I,TestTopOpeDraw_ListIteratorOfListOfPnt2d& It) ;
+  Standard_EXPORT   void InsertBefore (const gp_Pnt2d& I, TestTopOpeDraw_ListIteratorOfListOfPnt2d& It) ;
   
-  Standard_EXPORT     void InsertBefore(TestTopOpeDraw_ListOfPnt2d& Other,TestTopOpeDraw_ListIteratorOfListOfPnt2d& It) ;
+  Standard_EXPORT   void InsertBefore (TestTopOpeDraw_ListOfPnt2d& Other, TestTopOpeDraw_ListIteratorOfListOfPnt2d& It) ;
   
-  Standard_EXPORT     void InsertAfter(const gp_Pnt2d& I,TestTopOpeDraw_ListIteratorOfListOfPnt2d& It) ;
+  Standard_EXPORT   void InsertAfter (const gp_Pnt2d& I, TestTopOpeDraw_ListIteratorOfListOfPnt2d& It) ;
   
-  Standard_EXPORT     void InsertAfter(TestTopOpeDraw_ListOfPnt2d& Other,TestTopOpeDraw_ListIteratorOfListOfPnt2d& It) ;
+  Standard_EXPORT   void InsertAfter (TestTopOpeDraw_ListOfPnt2d& Other, TestTopOpeDraw_ListIteratorOfListOfPnt2d& It) ;
 
 
 friend class TestTopOpeDraw_ListIteratorOfListOfPnt2d;
-
 
 
 protected:
@@ -104,8 +90,8 @@ private:
 
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
@@ -135,7 +121,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TestTopOpeDraw_ListOfPnt2d_HeaderFile

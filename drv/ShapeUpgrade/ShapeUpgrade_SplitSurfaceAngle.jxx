@@ -1,3 +1,1 @@
-#ifndef _ShapeUpgrade_SplitSurfaceAngle_HeaderFile
 #include <ShapeUpgrade_SplitSurfaceAngle.hxx>
-#endif

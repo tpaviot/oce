@@ -6,25 +6,13 @@
 #ifndef _TColgp_HArray2OfXY_HeaderFile
 #define _TColgp_HArray2OfXY_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray2OfXY_HeaderFile
 #include <Handle_TColgp_HArray2OfXY.hxx>
-#endif
 
-#ifndef _TColgp_Array2OfXY_HeaderFile
 #include <TColgp_Array2OfXY.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_OutOfRange;
 class Standard_OutOfMemory;
@@ -34,38 +22,39 @@ class TColgp_Array2OfXY;
 
 
 
-class TColgp_HArray2OfXY : public MMgt_TShared {
+class TColgp_HArray2OfXY : public MMgt_TShared
+{
 
 public:
 
   
-      TColgp_HArray2OfXY(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+    TColgp_HArray2OfXY(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2);
   
-      TColgp_HArray2OfXY(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const gp_XY& V);
+    TColgp_HArray2OfXY(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2, const gp_XY& V);
   
-        void Init(const gp_XY& V) ;
+      void Init (const gp_XY& V) ;
   
-        Standard_Integer ColLength() const;
+      Standard_Integer ColLength()  const;
   
-        Standard_Integer RowLength() const;
+      Standard_Integer RowLength()  const;
   
-        Standard_Integer LowerCol() const;
+      Standard_Integer LowerCol()  const;
   
-        Standard_Integer LowerRow() const;
+      Standard_Integer LowerRow()  const;
   
-        Standard_Integer UpperCol() const;
+      Standard_Integer UpperCol()  const;
   
-        Standard_Integer UpperRow() const;
+      Standard_Integer UpperRow()  const;
   
-        void SetValue(const Standard_Integer Row,const Standard_Integer Col,const gp_XY& Value) ;
+      void SetValue (const Standard_Integer Row, const Standard_Integer Col, const gp_XY& Value) ;
   
-       const gp_XY& Value(const Standard_Integer Row,const Standard_Integer Col) const;
+     const  gp_XY& Value (const Standard_Integer Row, const Standard_Integer Col)  const;
   
-        gp_XY& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
+      gp_XY& ChangeValue (const Standard_Integer Row, const Standard_Integer Col) ;
   
-       const TColgp_Array2OfXY& Array2() const;
+     const  TColgp_Array2OfXY& Array2()  const;
   
-        TColgp_Array2OfXY& ChangeArray2() ;
+      TColgp_Array2OfXY& ChangeArray2() ;
 
 
 
@@ -80,7 +69,7 @@ protected:
 private: 
 
 
-TColgp_Array2OfXY myArray;
+  TColgp_Array2OfXY myArray;
 
 
 };
@@ -106,7 +95,6 @@ TColgp_Array2OfXY myArray;
 #undef TCollection_HArray2_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColgp_HArray2OfXY_HeaderFile

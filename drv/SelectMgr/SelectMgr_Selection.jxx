@@ -1,9 +1,3 @@
-#ifndef _Standard_NullObject_HeaderFile
 #include <Standard_NullObject.hxx>
-#endif
-#ifndef _SelectBasics_SensitiveEntity_HeaderFile
 #include <SelectBasics_SensitiveEntity.hxx>
-#endif
-#ifndef _SelectMgr_Selection_HeaderFile
 #include <SelectMgr_Selection.hxx>
-#endif

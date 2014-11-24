@@ -6,47 +6,36 @@
 #ifndef _StepFEA_SymmetricTensor22d_HeaderFile
 #define _StepFEA_SymmetricTensor22d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
 class Standard_Transient;
 class TColStd_HArray1OfReal;
 
 
-//! Representation of STEP SELECT type SymmetricTensor22d <br>
-class StepFEA_SymmetricTensor22d  : public StepData_SelectType {
+//! Representation of STEP SELECT type SymmetricTensor22d
+class StepFEA_SymmetricTensor22d  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepFEA_SymmetricTensor22d();
-  //! Recognizes a kind of SymmetricTensor22d select type <br>
-//!          1 -> HArray1OfReal from TColStd <br>
-//!          0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! Returns Value as AnisotropicSymmetricTensor22d (or Null if another type) <br>
-  Standard_EXPORT     Handle_TColStd_HArray1OfReal AnisotropicSymmetricTensor22d() const;
-
+  
+  //! Empty constructor
+  Standard_EXPORT StepFEA_SymmetricTensor22d();
+  
+  //! Recognizes a kind of SymmetricTensor22d select type
+  //! 1 -> HArray1OfReal from TColStd
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! Returns Value as AnisotropicSymmetricTensor22d (or Null if another type)
+  Standard_EXPORT   Handle(TColStd_HArray1OfReal) AnisotropicSymmetricTensor22d()  const;
 
 
 
@@ -69,7 +58,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_SymmetricTensor22d_HeaderFile

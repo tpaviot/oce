@@ -5,8 +5,7 @@ VPATH = @srcdir@ : \
 @top_srcdir@/drv/BinDrivers : @top_srcdir@/src/BinDrivers: \
 @top_srcdir@/drv/BinMDataXtd : @top_srcdir@/src/BinMDataXtd: \
 @top_srcdir@/drv/BinMPrsStd : @top_srcdir@/src/BinMPrsStd: \
-@top_srcdir@/drv/BinMNaming : @top_srcdir@/src/BinMNaming: \
-@top_srcdir@/drv/BinTools : @top_srcdir@/src/BinTools
+@top_srcdir@/drv/BinMNaming : @top_srcdir@/src/BinMNaming
 
 
 AM_CXXFLAGS = 
@@ -20,8 +19,7 @@ INCLUDES = $(CSF_OPT_INCLUDES) $(STLPort_INCLUDES)  \
 -I@top_srcdir@/drv/BinDrivers -I@top_srcdir@/src/BinDrivers \
 -I@top_srcdir@/drv/BinMDataXtd -I@top_srcdir@/src/BinMDataXtd \
 -I@top_srcdir@/drv/BinMPrsStd -I@top_srcdir@/src/BinMPrsStd \
--I@top_srcdir@/drv/BinMNaming -I@top_srcdir@/src/BinMNaming \
--I@top_srcdir@/drv/BinTools -I@top_srcdir@/src/BinTools
+-I@top_srcdir@/drv/BinMNaming -I@top_srcdir@/src/BinMNaming
 
 
 lib_LTLIBRARIES=libTKBin.la
@@ -58,11 +56,5 @@ libTKBin_la_SOURCES = \
 @top_srcdir@/src/BinMNaming/BinMNaming_NamingDriver.cxx \
 @top_srcdir@/src/BinMPrsStd/BinMPrsStd.cxx \
 @top_srcdir@/src/BinMPrsStd/BinMPrsStd_AISPresentationDriver.cxx \
-@top_srcdir@/src/BinMPrsStd/BinMPrsStd_PositionDriver.cxx \
-@top_srcdir@/src/BinTools/BinTools.cxx \
-@top_srcdir@/src/BinTools/BinTools_Curve2dSet.cxx \
-@top_srcdir@/src/BinTools/BinTools_CurveSet.cxx \
-@top_srcdir@/src/BinTools/BinTools_LocationSet.cxx \
-@top_srcdir@/src/BinTools/BinTools_ShapeSet.cxx \
-@top_srcdir@/src/BinTools/BinTools_SurfaceSet.cxx
+@top_srcdir@/src/BinMPrsStd/BinMPrsStd_PositionDriver.cxx
 

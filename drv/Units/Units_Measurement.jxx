@@ -1,6 +1,2 @@
-#ifndef _Units_Token_HeaderFile
 #include <Units_Token.hxx>
-#endif
-#ifndef _Units_Measurement_HeaderFile
 #include <Units_Measurement.hxx>
-#endif

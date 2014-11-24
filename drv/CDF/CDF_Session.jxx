@@ -1,18 +1,6 @@
-#ifndef _CDF_Directory_HeaderFile
 #include <CDF_Directory.hxx>
-#endif
-#ifndef _CDF_Application_HeaderFile
 #include <CDF_Application.hxx>
-#endif
-#ifndef _CDF_MetaDataDriver_HeaderFile
 #include <CDF_MetaDataDriver.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_MultiplyDefined_HeaderFile
 #include <Standard_MultiplyDefined.hxx>
-#endif
-#ifndef _CDF_Session_HeaderFile
 #include <CDF_Session.hxx>
-#endif

@@ -5,27 +5,15 @@
 
 #include <ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Message_ListOfMsg_HeaderFile
 #include <Message_ListOfMsg.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _ShapeExtend_DataMapOfTransientListOfMsg_HeaderFile
 #include <ShapeExtend_DataMapOfTransientListOfMsg.hxx>
-#endif
-#ifndef _ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg_HeaderFile
 #include <ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg.hxx>
-#endif
  
 
-#define TheKey Handle_Standard_Transient
+#define TheKey Handle(Standard_Transient)
 #define TheKey_hxx <Standard_Transient.hxx>
 #define TheItem Message_ListOfMsg
 #define TheItem_hxx <Message_ListOfMsg.hxx>

@@ -6,9 +6,12 @@
 #ifndef _GeomAbs_SurfaceForm_HeaderFile
 #define _GeomAbs_SurfaceForm_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-//!  This enumeration is used to note specific surface form. <br>
-enum GeomAbs_SurfaceForm {
+
+//! This enumeration is used to note specific surface form.
+enum GeomAbs_SurfaceForm
+{
 GeomAbs_PlanarForm,
 GeomAbs_ConicalForm,
 GeomAbs_CylindricalForm,
@@ -20,8 +23,4 @@ GeomAbs_QuadricForm,
 GeomAbs_OtherSurfaceForm
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _GeomAbs_SurfaceForm_HeaderFile

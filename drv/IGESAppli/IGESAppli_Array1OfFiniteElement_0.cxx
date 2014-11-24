@@ -5,24 +5,14 @@
 
 #include <IGESAppli_Array1OfFiniteElement.hxx>
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _IGESAppli_FiniteElement_HeaderFile
 #include <IGESAppli_FiniteElement.hxx>
-#endif
  
 
-#define Array1Item Handle_IGESAppli_FiniteElement
+#define Array1Item Handle(IGESAppli_FiniteElement)
 #define Array1Item_hxx <IGESAppli_FiniteElement.hxx>
 #define TCollection_Array1 IGESAppli_Array1OfFiniteElement
 #define TCollection_Array1_hxx <IGESAppli_Array1OfFiniteElement.hxx>

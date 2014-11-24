@@ -1,15 +1,5 @@
-#ifndef _Transfer_Binder_HeaderFile
 #include <Transfer_Binder.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Transfer_ProcessForTransient_HeaderFile
 #include <Transfer_ProcessForTransient.hxx>
-#endif
-#ifndef _Transfer_TransientProcess_HeaderFile
 #include <Transfer_TransientProcess.hxx>
-#endif
-#ifndef _Transfer_ActorOfTransientProcess_HeaderFile
 #include <Transfer_ActorOfTransientProcess.hxx>
-#endif

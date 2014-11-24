@@ -6,38 +6,27 @@
 #ifndef _NLPlate_SequenceNodeOfSequenceOfHGPPConstraint_HeaderFile
 #define _NLPlate_SequenceNodeOfSequenceOfHGPPConstraint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_NLPlate_SequenceNodeOfSequenceOfHGPPConstraint_HeaderFile
 #include <Handle_NLPlate_SequenceNodeOfSequenceOfHGPPConstraint.hxx>
-#endif
 
-#ifndef _Handle_NLPlate_HGPPConstraint_HeaderFile
 #include <Handle_NLPlate_HGPPConstraint.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class NLPlate_HGPPConstraint;
 class NLPlate_SequenceOfHGPPConstraint;
 
 
 
-class NLPlate_SequenceNodeOfSequenceOfHGPPConstraint : public TCollection_SeqNode {
+class NLPlate_SequenceNodeOfSequenceOfHGPPConstraint : public TCollection_SeqNode
+{
 
 public:
 
   
-      NLPlate_SequenceNodeOfSequenceOfHGPPConstraint(const Handle(NLPlate_HGPPConstraint)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    NLPlate_SequenceNodeOfSequenceOfHGPPConstraint(const Handle(NLPlate_HGPPConstraint)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_NLPlate_HGPPConstraint& Value() const;
+      Handle(NLPlate_HGPPConstraint)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_NLPlate_HGPPConstraint myValue;
+  Handle(NLPlate_HGPPConstraint) myValue;
 
 
 };
 
-#define SeqItem Handle_NLPlate_HGPPConstraint
+#define SeqItem Handle(NLPlate_HGPPConstraint)
 #define SeqItem_hxx <NLPlate_HGPPConstraint.hxx>
 #define TCollection_SequenceNode NLPlate_SequenceNodeOfSequenceOfHGPPConstraint
 #define TCollection_SequenceNode_hxx <NLPlate_SequenceNodeOfSequenceOfHGPPConstraint.hxx>
@@ -78,7 +67,6 @@ Handle_NLPlate_HGPPConstraint myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _NLPlate_SequenceNodeOfSequenceOfHGPPConstraint_HeaderFile

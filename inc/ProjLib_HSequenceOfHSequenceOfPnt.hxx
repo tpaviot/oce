@@ -6,31 +6,15 @@
 #ifndef _ProjLib_HSequenceOfHSequenceOfPnt_HeaderFile
 #define _ProjLib_HSequenceOfHSequenceOfPnt_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ProjLib_HSequenceOfHSequenceOfPnt_HeaderFile
 #include <Handle_ProjLib_HSequenceOfHSequenceOfPnt.hxx>
-#endif
 
-#ifndef _ProjLib_SequenceOfHSequenceOfPnt_HeaderFile
 #include <ProjLib_SequenceOfHSequenceOfPnt.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_TColgp_HSequenceOfPnt_HeaderFile
 #include <Handle_TColgp_HSequenceOfPnt.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class TColgp_HSequenceOfPnt;
@@ -38,56 +22,57 @@ class ProjLib_SequenceOfHSequenceOfPnt;
 
 
 
-class ProjLib_HSequenceOfHSequenceOfPnt : public MMgt_TShared {
+class ProjLib_HSequenceOfHSequenceOfPnt : public MMgt_TShared
+{
 
 public:
 
   
-      ProjLib_HSequenceOfHSequenceOfPnt();
+    ProjLib_HSequenceOfHSequenceOfPnt();
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void Append(const Handle(TColgp_HSequenceOfPnt)& anItem) ;
+  Standard_EXPORT   void Append (const Handle(TColgp_HSequenceOfPnt)& anItem) ;
   
-  Standard_EXPORT     void Append(const Handle(ProjLib_HSequenceOfHSequenceOfPnt)& aSequence) ;
+  Standard_EXPORT   void Append (const Handle(ProjLib_HSequenceOfHSequenceOfPnt)& aSequence) ;
   
-  Standard_EXPORT     void Prepend(const Handle(TColgp_HSequenceOfPnt)& anItem) ;
+  Standard_EXPORT   void Prepend (const Handle(TColgp_HSequenceOfPnt)& anItem) ;
   
-  Standard_EXPORT     void Prepend(const Handle(ProjLib_HSequenceOfHSequenceOfPnt)& aSequence) ;
+  Standard_EXPORT   void Prepend (const Handle(ProjLib_HSequenceOfHSequenceOfPnt)& aSequence) ;
   
-  Standard_EXPORT     void Reverse() ;
+  Standard_EXPORT   void Reverse() ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(TColgp_HSequenceOfPnt)& anItem) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(TColgp_HSequenceOfPnt)& anItem) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(ProjLib_HSequenceOfHSequenceOfPnt)& aSequence) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(ProjLib_HSequenceOfHSequenceOfPnt)& aSequence) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(TColgp_HSequenceOfPnt)& anItem) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(TColgp_HSequenceOfPnt)& anItem) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(ProjLib_HSequenceOfHSequenceOfPnt)& aSequence) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(ProjLib_HSequenceOfHSequenceOfPnt)& aSequence) ;
   
-  Standard_EXPORT     void Exchange(const Standard_Integer anIndex,const Standard_Integer anOtherIndex) ;
+  Standard_EXPORT   void Exchange (const Standard_Integer anIndex, const Standard_Integer anOtherIndex) ;
   
-  Standard_EXPORT     Handle_ProjLib_HSequenceOfHSequenceOfPnt Split(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(ProjLib_HSequenceOfHSequenceOfPnt) Split (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer anIndex,const Handle(TColgp_HSequenceOfPnt)& anItem) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer anIndex, const Handle(TColgp_HSequenceOfPnt)& anItem) ;
   
-  Standard_EXPORT    const Handle_TColgp_HSequenceOfPnt& Value(const Standard_Integer anIndex) const;
+  Standard_EXPORT  const  Handle(TColgp_HSequenceOfPnt)& Value (const Standard_Integer anIndex)  const;
   
-  Standard_EXPORT     Handle_TColgp_HSequenceOfPnt& ChangeValue(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(TColgp_HSequenceOfPnt)& ChangeValue (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer anIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer fromIndex,const Standard_Integer toIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer fromIndex, const Standard_Integer toIndex) ;
   
-       const ProjLib_SequenceOfHSequenceOfPnt& Sequence() const;
+     const  ProjLib_SequenceOfHSequenceOfPnt& Sequence()  const;
   
-        ProjLib_SequenceOfHSequenceOfPnt& ChangeSequence() ;
+      ProjLib_SequenceOfHSequenceOfPnt& ChangeSequence() ;
   
-  Standard_EXPORT     Handle_ProjLib_HSequenceOfHSequenceOfPnt ShallowCopy() const;
+  Standard_EXPORT   Handle(ProjLib_HSequenceOfHSequenceOfPnt) ShallowCopy()  const;
 
 
 
@@ -102,12 +87,12 @@ protected:
 private: 
 
 
-ProjLib_SequenceOfHSequenceOfPnt mySequence;
+  ProjLib_SequenceOfHSequenceOfPnt mySequence;
 
 
 };
 
-#define Item Handle_TColgp_HSequenceOfPnt
+#define Item Handle(TColgp_HSequenceOfPnt)
 #define Item_hxx <TColgp_HSequenceOfPnt.hxx>
 #define TheSequence ProjLib_SequenceOfHSequenceOfPnt
 #define TheSequence_hxx <ProjLib_SequenceOfHSequenceOfPnt.hxx>
@@ -128,11 +113,10 @@ ProjLib_SequenceOfHSequenceOfPnt mySequence;
 #undef TCollection_HSequence_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline Handle_ProjLib_HSequenceOfHSequenceOfPnt ShallowCopy(const Handle_ProjLib_HSequenceOfHSequenceOfPnt& me) {
+inline Handle(ProjLib_HSequenceOfHSequenceOfPnt) ShallowCopy(const Handle(ProjLib_HSequenceOfHSequenceOfPnt)& me) {
  return me->ShallowCopy();
 }
 
 
 
-#endif
+#endif // _ProjLib_HSequenceOfHSequenceOfPnt_HeaderFile

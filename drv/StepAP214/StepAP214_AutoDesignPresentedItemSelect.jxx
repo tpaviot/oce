@@ -1,24 +1,8 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepBasic_ProductDefinitionRelationship_HeaderFile
 #include <StepBasic_ProductDefinitionRelationship.hxx>
-#endif
-#ifndef _StepBasic_ProductDefinition_HeaderFile
 #include <StepBasic_ProductDefinition.hxx>
-#endif
-#ifndef _StepRepr_ProductDefinitionShape_HeaderFile
 #include <StepRepr_ProductDefinitionShape.hxx>
-#endif
-#ifndef _StepRepr_RepresentationRelationship_HeaderFile
 #include <StepRepr_RepresentationRelationship.hxx>
-#endif
-#ifndef _StepRepr_ShapeAspect_HeaderFile
 #include <StepRepr_ShapeAspect.hxx>
-#endif
-#ifndef _StepBasic_DocumentRelationship_HeaderFile
 #include <StepBasic_DocumentRelationship.hxx>
-#endif
-#ifndef _StepAP214_AutoDesignPresentedItemSelect_HeaderFile
 #include <StepAP214_AutoDesignPresentedItemSelect.hxx>
-#endif

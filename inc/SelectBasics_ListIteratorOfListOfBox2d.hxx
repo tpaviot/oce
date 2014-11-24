@@ -6,25 +6,13 @@
 #ifndef _SelectBasics_ListIteratorOfListOfBox2d_HeaderFile
 #define _SelectBasics_ListIteratorOfListOfBox2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_SelectBasics_ListNodeOfListOfBox2d_HeaderFile
 #include <Handle_SelectBasics_ListNodeOfListOfBox2d.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class SelectBasics_ListOfBox2d;
@@ -33,27 +21,27 @@ class SelectBasics_ListNodeOfListOfBox2d;
 
 
 
-class SelectBasics_ListIteratorOfListOfBox2d  {
+class SelectBasics_ListIteratorOfListOfBox2d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   SelectBasics_ListIteratorOfListOfBox2d();
+  Standard_EXPORT SelectBasics_ListIteratorOfListOfBox2d();
   
-  Standard_EXPORT   SelectBasics_ListIteratorOfListOfBox2d(const SelectBasics_ListOfBox2d& L);
+  Standard_EXPORT SelectBasics_ListIteratorOfListOfBox2d(const SelectBasics_ListOfBox2d& L);
   
-  Standard_EXPORT     void Initialize(const SelectBasics_ListOfBox2d& L) ;
+  Standard_EXPORT   void Initialize (const SelectBasics_ListOfBox2d& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     Bnd_Box2d& Value() const;
+  Standard_EXPORT   Bnd_Box2d& Value()  const;
 
 
 friend class SelectBasics_ListOfBox2d;
-
 
 
 protected:
@@ -66,8 +54,8 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
@@ -97,7 +85,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SelectBasics_ListIteratorOfListOfBox2d_HeaderFile

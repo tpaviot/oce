@@ -6,28 +6,14 @@
 #ifndef _TopOpeBRepDS_DataMapNodeOfMapOfSurface_HeaderFile
 #define _TopOpeBRepDS_DataMapNodeOfMapOfSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_DataMapNodeOfMapOfSurface_HeaderFile
 #include <Handle_TopOpeBRepDS_DataMapNodeOfMapOfSurface.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopOpeBRepDS_SurfaceData_HeaderFile
 #include <TopOpeBRepDS_SurfaceData.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopOpeBRepDS_SurfaceData;
 class TColStd_MapIntegerHasher;
 class TopOpeBRepDS_MapOfSurface;
@@ -35,16 +21,17 @@ class TopOpeBRepDS_DataMapIteratorOfMapOfSurface;
 
 
 
-class TopOpeBRepDS_DataMapNodeOfMapOfSurface : public TCollection_MapNode {
+class TopOpeBRepDS_DataMapNodeOfMapOfSurface : public TCollection_MapNode
+{
 
 public:
 
   
-      TopOpeBRepDS_DataMapNodeOfMapOfSurface(const Standard_Integer& K,const TopOpeBRepDS_SurfaceData& I,const TCollection_MapNodePtr& n);
+    TopOpeBRepDS_DataMapNodeOfMapOfSurface(const Standard_Integer& K, const TopOpeBRepDS_SurfaceData& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Key() const;
+      Standard_Integer& Key()  const;
   
-        TopOpeBRepDS_SurfaceData& Value() const;
+      TopOpeBRepDS_SurfaceData& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-Standard_Integer myKey;
-TopOpeBRepDS_SurfaceData myValue;
+  Standard_Integer myKey;
+  TopOpeBRepDS_SurfaceData myValue;
 
 
 };
@@ -98,7 +85,6 @@ TopOpeBRepDS_SurfaceData myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_DataMapNodeOfMapOfSurface_HeaderFile

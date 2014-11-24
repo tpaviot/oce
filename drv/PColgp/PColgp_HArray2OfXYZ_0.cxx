@@ -5,28 +5,14 @@
 
 #include <PColgp_HArray2OfXYZ.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _PColgp_FieldOfHArray2OfXYZ_HeaderFile
 #include <PColgp_FieldOfHArray2OfXYZ.hxx>
-#endif
-#ifndef _PColgp_VArrayNodeOfFieldOfHArray2OfXYZ_HeaderFile
 #include <PColgp_VArrayNodeOfFieldOfHArray2OfXYZ.hxx>
-#endif
-#ifndef _PColgp_VArrayTNodeOfFieldOfHArray2OfXYZ_HeaderFile
 #include <PColgp_VArrayTNodeOfFieldOfHArray2OfXYZ.hxx>
-#endif
 
  
 

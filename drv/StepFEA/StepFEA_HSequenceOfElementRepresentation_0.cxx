@@ -5,22 +5,12 @@
 
 #include <StepFEA_HSequenceOfElementRepresentation.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StepFEA_ElementRepresentation_HeaderFile
 #include <StepFEA_ElementRepresentation.hxx>
-#endif
-#ifndef _StepFEA_SequenceOfElementRepresentation_HeaderFile
 #include <StepFEA_SequenceOfElementRepresentation.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(StepFEA_HSequenceOfElementRepresentation,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(StepFEA_HSequenceOfElementRepresentation)
 
 
-#define Item Handle_StepFEA_ElementRepresentation
+#define Item Handle(StepFEA_ElementRepresentation)
 #define Item_hxx <StepFEA_ElementRepresentation.hxx>
 #define TheSequence StepFEA_SequenceOfElementRepresentation
 #define TheSequence_hxx <StepFEA_SequenceOfElementRepresentation.hxx>

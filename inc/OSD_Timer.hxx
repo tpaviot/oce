@@ -6,68 +6,62 @@
 #ifndef _OSD_Timer_HeaderFile
 #define _OSD_Timer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _OSD_Chronometer_HeaderFile
 #include <OSD_Chronometer.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 
 
-//! Working on heterogeneous platforms <br>
-//! we need to use the system call gettimeofday. <br>
-//! This function is portable and it measures ELAPSED <br>
-//! time and CPU time in seconds and microseconds. <br>
-//! Example: OSD_Timer aTimer; <br>
-//!          aTimer.Start();   // Start  the timers (t1). <br>
-//!           .....            // Do something. <br>
-//!          aTimer.Stop();    // Stop the timers (t2). <br>
-//!          aTimer.Show();    // Give the elapsed time between t1 and t2. <br>
-//!                            // Give also the process CPU time between <br>
-//!                            // t1 and t2. <br>
-class OSD_Timer  : public OSD_Chronometer {
+//! Working on heterogeneous platforms
+//! we need to use the system call gettimeofday.
+//! This function is portable and it measures ELAPSED
+//! time and CPU time in seconds and microseconds.
+//! Example: OSD_Timer aTimer;
+//! aTimer.Start();   // Start  the timers (t1).
+//! .....            // Do something.
+//! aTimer.Stop();    // Stop the timers (t2).
+//! aTimer.Show();    // Give the elapsed time between t1 and t2.
+//! // Give also the process CPU time between
+//! // t1 and t2.
+class OSD_Timer  : public OSD_Chronometer
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Builds a Chronometer initialized and stopped. <br>
-  Standard_EXPORT   OSD_Timer();
-  //! Stops and reinitializes the timer. <br>
-  Standard_EXPORT   virtual  void Reset() ;
-  //! Shows both the elapsed time and CPU time on the standard output <br>
-//!          stream <cout>.The chronometer can be running (Lap Time) or <br>
-//!          stopped. <br>
-  Standard_EXPORT   virtual  void Show() ;
-  //! Shows both the elapsed time and CPU  time on the <br>
-//!          output stream <OS>. <br>
-  Standard_EXPORT   virtual  void Show(Standard_OStream& os) ;
-  //! returns both the elapsed time(seconds,minutes,hours) <br>
-//!          and CPU  time. <br>
-  Standard_EXPORT     void Show(Standard_Real& seconds,Standard_Integer& minutes,Standard_Integer& hours,Standard_Real& CPUtime) ;
-  //! Stops the Timer. <br>
-  Standard_EXPORT   virtual  void Stop() ;
-  //! Starts (after Create or Reset) or restarts (after Stop) <br>
-//!          the Timer. <br>
-  Standard_EXPORT   virtual  void Start() ;
-  //! Returns elapsed time in seconds. <br>
-  Standard_EXPORT     Standard_Real ElapsedTime() ;
-
+  
+  //! Builds a Chronometer initialized and stopped.
+  Standard_EXPORT OSD_Timer();
+  
+  //! Stops and reinitializes the timer.
+  Standard_EXPORT virtual   void Reset() ;
+  
+  //! Shows both the elapsed time and CPU time on the standard output
+  //! stream <cout>.The chronometer can be running (Lap Time) or
+  //! stopped.
+  Standard_EXPORT virtual   void Show() ;
+  
+  //! Shows both the elapsed time and CPU  time on the
+  //! output stream <OS>.
+  Standard_EXPORT virtual   void Show (Standard_OStream& os) ;
+  
+  //! returns both the elapsed time(seconds,minutes,hours)
+  //! and CPU  time.
+  Standard_EXPORT   void Show (Standard_Real& seconds, Standard_Integer& minutes, Standard_Integer& hours, Standard_Real& CPUtime) ;
+  
+  //! Stops the Timer.
+  Standard_EXPORT virtual   void Stop() ;
+  
+  //! Starts (after Create or Reset) or restarts (after Stop)
+  //! the Timer.
+  Standard_EXPORT virtual   void Start() ;
+  
+  //! Returns elapsed time in seconds.
+  Standard_EXPORT   Standard_Real ElapsedTime() ;
 
 
 
@@ -82,8 +76,8 @@ private:
 
 
 
-Standard_Real TimeStart;
-Standard_Real TimeCumul;
+  Standard_Real TimeStart;
+  Standard_Real TimeCumul;
 
 
 };
@@ -92,7 +86,6 @@ Standard_Real TimeCumul;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _OSD_Timer_HeaderFile

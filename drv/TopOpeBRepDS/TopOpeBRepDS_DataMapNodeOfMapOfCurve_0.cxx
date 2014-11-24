@@ -5,22 +5,12 @@
 
 #include <TopOpeBRepDS_DataMapNodeOfMapOfCurve.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopOpeBRepDS_CurveData_HeaderFile
 #include <TopOpeBRepDS_CurveData.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _TopOpeBRepDS_MapOfCurve_HeaderFile
 #include <TopOpeBRepDS_MapOfCurve.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapIteratorOfMapOfCurve_HeaderFile
 #include <TopOpeBRepDS_DataMapIteratorOfMapOfCurve.hxx>
-#endif
 
  
 

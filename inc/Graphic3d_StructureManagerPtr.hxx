@@ -7,7 +7,6 @@
 #define _Graphic3d_StructureManagerPtr_HeaderFile
 
 class Graphic3d_StructureManager;
-
 typedef Graphic3d_StructureManager* Graphic3d_StructureManagerPtr;
 
-#endif
+#endif // _Graphic3d_StructureManagerPtr_HeaderFile

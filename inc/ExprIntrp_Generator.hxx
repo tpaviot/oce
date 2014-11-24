@@ -6,31 +6,15 @@
 #ifndef _ExprIntrp_Generator_HeaderFile
 #define _ExprIntrp_Generator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ExprIntrp_Generator_HeaderFile
 #include <Handle_ExprIntrp_Generator.hxx>
-#endif
 
-#ifndef _ExprIntrp_SequenceOfNamedFunction_HeaderFile
 #include <ExprIntrp_SequenceOfNamedFunction.hxx>
-#endif
-#ifndef _ExprIntrp_SequenceOfNamedExpression_HeaderFile
 #include <ExprIntrp_SequenceOfNamedExpression.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_Expr_NamedFunction_HeaderFile
 #include <Handle_Expr_NamedFunction.hxx>
-#endif
-#ifndef _Handle_Expr_NamedExpression_HeaderFile
 #include <Handle_Expr_NamedExpression.hxx>
-#endif
 class Expr_NamedFunction;
 class Expr_NamedExpression;
 class ExprIntrp_SequenceOfNamedExpression;
@@ -38,28 +22,31 @@ class ExprIntrp_SequenceOfNamedFunction;
 class TCollection_AsciiString;
 
 
-//! Implements general services for interpretation of <br>
-//!          expressions. <br>
-class ExprIntrp_Generator : public MMgt_TShared {
+//! Implements general services for interpretation of
+//! expressions.
+class ExprIntrp_Generator : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT     void Use(const Handle(Expr_NamedFunction)& func) ;
+  Standard_EXPORT   void Use (const Handle(Expr_NamedFunction)& func) ;
   
-  Standard_EXPORT     void Use(const Handle(Expr_NamedExpression)& named) ;
+  Standard_EXPORT   void Use (const Handle(Expr_NamedExpression)& named) ;
   
-  Standard_EXPORT    const ExprIntrp_SequenceOfNamedExpression& GetNamed() const;
+  Standard_EXPORT  const  ExprIntrp_SequenceOfNamedExpression& GetNamed()  const;
   
-  Standard_EXPORT    const ExprIntrp_SequenceOfNamedFunction& GetFunctions() const;
-  //! Returns NamedExpression with name <name> already <br>
-//!          interpreted if it exists. Returns a null handle if <br>
-//!          not. <br>
-  Standard_EXPORT     Handle_Expr_NamedExpression GetNamed(const TCollection_AsciiString& name) const;
-  //! Returns NamedFunction with name <name> already <br>
-//!          interpreted if it exists. Returns a null handle if <br>
-//!          not. <br>
-  Standard_EXPORT     Handle_Expr_NamedFunction GetFunction(const TCollection_AsciiString& name) const;
+  Standard_EXPORT  const  ExprIntrp_SequenceOfNamedFunction& GetFunctions()  const;
+  
+  //! Returns NamedExpression with name <name> already
+  //! interpreted if it exists. Returns a null handle if
+  //! not.
+  Standard_EXPORT   Handle(Expr_NamedExpression) GetNamed (const TCollection_AsciiString& name)  const;
+  
+  //! Returns NamedFunction with name <name> already
+  //! interpreted if it exists. Returns a null handle if
+  //! not.
+  Standard_EXPORT   Handle(Expr_NamedFunction) GetFunction (const TCollection_AsciiString& name)  const;
 
 
 
@@ -69,15 +56,15 @@ public:
 protected:
 
   
-  Standard_EXPORT   ExprIntrp_Generator();
+  Standard_EXPORT ExprIntrp_Generator();
 
 
 
 private: 
 
 
-ExprIntrp_SequenceOfNamedFunction myFunctions;
-ExprIntrp_SequenceOfNamedExpression myNamed;
+  ExprIntrp_SequenceOfNamedFunction myFunctions;
+  ExprIntrp_SequenceOfNamedExpression myNamed;
 
 
 };
@@ -86,7 +73,6 @@ ExprIntrp_SequenceOfNamedExpression myNamed;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ExprIntrp_Generator_HeaderFile

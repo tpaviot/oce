@@ -6,32 +6,26 @@
 #ifndef _MeshTest_HeaderFile
 #define _MeshTest_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Draw_Interpretor_HeaderFile
 #include <Draw_Interpretor.hxx>
-#endif
 
 
-//! Provides methods for testing the mesh algorithms. <br>
-class MeshTest  {
+//! Provides methods for testing the mesh algorithms.
+class MeshTest 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Defines meshing commands <br>
-  Standard_EXPORT   static  void Commands(Draw_Interpretor& DI) ;
-  //! Defines plugin commands <br>
-  Standard_EXPORT   static  void PluginCommands(Draw_Interpretor& DI) ;
-
+  
+  //! Defines meshing commands
+  Standard_EXPORT static   void Commands (Draw_Interpretor& DI) ;
+  
+  //! Defines plugin commands
+  Standard_EXPORT static   void PluginCommands (Draw_Interpretor& DI) ;
 
 
 
@@ -54,7 +48,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MeshTest_HeaderFile

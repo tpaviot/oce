@@ -6,46 +6,20 @@
 #ifndef _Transfer_ActorOfProcessForFinder_HeaderFile
 #define _Transfer_ActorOfProcessForFinder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Transfer_ActorOfProcessForFinder_HeaderFile
 #include <Handle_Transfer_ActorOfProcessForFinder.hxx>
-#endif
 
-#ifndef _Handle_Transfer_ActorOfProcessForFinder_HeaderFile
 #include <Handle_Transfer_ActorOfProcessForFinder.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_Transfer_Finder_HeaderFile
 #include <Handle_Transfer_Finder.hxx>
-#endif
-#ifndef _Handle_Transfer_HSequenceOfFinder_HeaderFile
 #include <Handle_Transfer_HSequenceOfFinder.hxx>
-#endif
-#ifndef _Handle_Transfer_ProcessForFinder_HeaderFile
 #include <Handle_Transfer_ProcessForFinder.hxx>
-#endif
-#ifndef _Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder_HeaderFile
 #include <Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder.hxx>
-#endif
-#ifndef _Handle_Transfer_Binder_HeaderFile
 #include <Handle_Transfer_Binder.hxx>
-#endif
-#ifndef _Handle_Transfer_SimpleBinderOfTransient_HeaderFile
 #include <Handle_Transfer_SimpleBinderOfTransient.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
 class Standard_DomainError;
 class Transfer_Finder;
 class Transfer_FindHasher;
@@ -60,28 +34,29 @@ class Standard_Transient;
 
 
 
-class Transfer_ActorOfProcessForFinder : public MMgt_TShared {
+class Transfer_ActorOfProcessForFinder : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   Transfer_ActorOfProcessForFinder();
+  Standard_EXPORT Transfer_ActorOfProcessForFinder();
   
-  Standard_EXPORT   virtual  Standard_Boolean Recognize(const Handle(Transfer_Finder)& start) ;
+  Standard_EXPORT virtual   Standard_Boolean Recognize (const Handle(Transfer_Finder)& start) ;
   
-  Standard_EXPORT   virtual  Handle_Transfer_Binder Transferring(const Handle(Transfer_Finder)& start,const Handle(Transfer_ProcessForFinder)& TP) ;
+  Standard_EXPORT virtual   Handle(Transfer_Binder) Transferring (const Handle(Transfer_Finder)& start, const Handle(Transfer_ProcessForFinder)& TP) ;
   
-  Standard_EXPORT     Handle_Transfer_SimpleBinderOfTransient TransientResult(const Handle(Standard_Transient)& res) const;
+  Standard_EXPORT   Handle(Transfer_SimpleBinderOfTransient) TransientResult (const Handle(Standard_Transient)& res)  const;
   
-  Standard_EXPORT     Handle_Transfer_Binder NullResult() const;
+  Standard_EXPORT   Handle(Transfer_Binder) NullResult()  const;
   
-  Standard_EXPORT     void SetLast(const Standard_Boolean mode = Standard_True) ;
+  Standard_EXPORT   void SetLast (const Standard_Boolean mode = Standard_True) ;
   
-  Standard_EXPORT     Standard_Boolean IsLast() const;
+  Standard_EXPORT   Standard_Boolean IsLast()  const;
   
-  Standard_EXPORT     void SetNext(const Handle(Transfer_ActorOfProcessForFinder)& next) ;
+  Standard_EXPORT   void SetNext (const Handle(Transfer_ActorOfProcessForFinder)& next) ;
   
-  Standard_EXPORT     Handle_Transfer_ActorOfProcessForFinder Next() const;
+  Standard_EXPORT   Handle(Transfer_ActorOfProcessForFinder) Next()  const;
 
 
 
@@ -96,8 +71,8 @@ protected:
 private: 
 
 
-Handle_Transfer_ActorOfProcessForFinder thenext;
-Standard_Boolean thelast;
+  Handle(Transfer_ActorOfProcessForFinder) thenext;
+  Standard_Boolean thelast;
 
 
 };
@@ -106,7 +81,6 @@ Standard_Boolean thelast;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Transfer_ActorOfProcessForFinder_HeaderFile

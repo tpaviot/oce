@@ -6,16 +6,15 @@
 #ifndef _StdSelect_TypeOfResult_HeaderFile
 #define _StdSelect_TypeOfResult_HeaderFile
 
-//! Provides values for type of result. <br>
-//! These are used to specify whether the result is to <br>
-//! be simple or whether it may be multiple. <br>
-enum StdSelect_TypeOfResult {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Provides values for type of result.
+//! These are used to specify whether the result is to
+//! be simple or whether it may be multiple.
+enum StdSelect_TypeOfResult
+{
 StdSelect_TOR_SIMPLE,
 StdSelect_TOR_MULTIPLE
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StdSelect_TypeOfResult_HeaderFile

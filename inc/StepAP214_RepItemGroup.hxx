@@ -6,45 +6,36 @@
 #ifndef _StepAP214_RepItemGroup_HeaderFile
 #define _StepAP214_RepItemGroup_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepAP214_RepItemGroup_HeaderFile
 #include <Handle_StepAP214_RepItemGroup.hxx>
-#endif
 
-#ifndef _Handle_StepRepr_RepresentationItem_HeaderFile
 #include <Handle_StepRepr_RepresentationItem.hxx>
-#endif
-#ifndef _StepBasic_Group_HeaderFile
 #include <StepBasic_Group.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class StepRepr_RepresentationItem;
 class TCollection_HAsciiString;
 
 
-//! Representation of STEP entity RepItemGroup <br>
-class StepAP214_RepItemGroup : public StepBasic_Group {
+//! Representation of STEP entity RepItemGroup
+class StepAP214_RepItemGroup : public StepBasic_Group
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepAP214_RepItemGroup();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aGroup_Name,const Standard_Boolean hasGroup_Description,const Handle(TCollection_HAsciiString)& aGroup_Description,const Handle(TCollection_HAsciiString)& aRepresentationItem_Name) ;
-  //! Returns data for supertype RepresentationItem <br>
-  Standard_EXPORT     Handle_StepRepr_RepresentationItem RepresentationItem() const;
-  //! Set data for supertype RepresentationItem <br>
-  Standard_EXPORT     void SetRepresentationItem(const Handle(StepRepr_RepresentationItem)& RepresentationItem) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepAP214_RepItemGroup();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aGroup_Name, const Standard_Boolean hasGroup_Description, const Handle(TCollection_HAsciiString)& aGroup_Description, const Handle(TCollection_HAsciiString)& aRepresentationItem_Name) ;
+  
+  //! Returns data for supertype RepresentationItem
+  Standard_EXPORT   Handle(StepRepr_RepresentationItem) RepresentationItem()  const;
+  
+  //! Set data for supertype RepresentationItem
+  Standard_EXPORT   void SetRepresentationItem (const Handle(StepRepr_RepresentationItem)& RepresentationItem) ;
 
 
 
@@ -59,7 +50,7 @@ protected:
 private: 
 
 
-Handle_StepRepr_RepresentationItem theRepresentationItem;
+  Handle(StepRepr_RepresentationItem) theRepresentationItem;
 
 
 };
@@ -68,7 +59,6 @@ Handle_StepRepr_RepresentationItem theRepresentationItem;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP214_RepItemGroup_HeaderFile

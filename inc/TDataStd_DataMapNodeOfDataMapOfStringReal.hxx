@@ -6,44 +6,31 @@
 #ifndef _TDataStd_DataMapNodeOfDataMapOfStringReal_HeaderFile
 #define _TDataStd_DataMapNodeOfDataMapOfStringReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDataStd_DataMapNodeOfDataMapOfStringReal_HeaderFile
 #include <Handle_TDataStd_DataMapNodeOfDataMapOfStringReal.hxx>
-#endif
 
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TCollection_ExtendedString;
 class TDataStd_DataMapOfStringReal;
 class TDataStd_DataMapIteratorOfDataMapOfStringReal;
 
 
 
-class TDataStd_DataMapNodeOfDataMapOfStringReal : public TCollection_MapNode {
+class TDataStd_DataMapNodeOfDataMapOfStringReal : public TCollection_MapNode
+{
 
 public:
 
   
-      TDataStd_DataMapNodeOfDataMapOfStringReal(const TCollection_ExtendedString& K,const Standard_Real& I,const TCollection_MapNodePtr& n);
+    TDataStd_DataMapNodeOfDataMapOfStringReal(const TCollection_ExtendedString& K, const Standard_Real& I, const TCollection_MapNodePtr& n);
   
-        TCollection_ExtendedString& Key() const;
+      TCollection_ExtendedString& Key()  const;
   
-        Standard_Real& Value() const;
+      Standard_Real& Value()  const;
 
 
 
@@ -58,8 +45,8 @@ protected:
 private: 
 
 
-TCollection_ExtendedString myKey;
-Standard_Real myValue;
+  TCollection_ExtendedString myKey;
+  Standard_Real myValue;
 
 
 };
@@ -97,7 +84,6 @@ Standard_Real myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_DataMapNodeOfDataMapOfStringReal_HeaderFile

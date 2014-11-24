@@ -1,21 +1,7 @@
-#ifndef _BRepBuilderAPI_MakeShape_HeaderFile
 #include <BRepBuilderAPI_MakeShape.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TNaming_Builder_HeaderFile
 #include <TNaming_Builder.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeShape_HeaderFile
 #include <TopTools_DataMapOfShapeShape.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TopTools_MapOfShape_HeaderFile
 #include <TopTools_MapOfShape.hxx>
-#endif
-#ifndef _QANewBRepNaming_Loader_HeaderFile
 #include <QANewBRepNaming_Loader.hxx>
-#endif

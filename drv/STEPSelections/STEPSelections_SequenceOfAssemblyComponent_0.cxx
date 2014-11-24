@@ -5,21 +5,13 @@
 
 #include <STEPSelections_SequenceOfAssemblyComponent.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _STEPSelections_AssemblyComponent_HeaderFile
 #include <STEPSelections_AssemblyComponent.hxx>
-#endif
-#ifndef _STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent_HeaderFile
 #include <STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent.hxx>
-#endif
  
 
-#define SeqItem Handle_STEPSelections_AssemblyComponent
+#define SeqItem Handle(STEPSelections_AssemblyComponent)
 #define SeqItem_hxx <STEPSelections_AssemblyComponent.hxx>
 #define TCollection_SequenceNode STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent
 #define TCollection_SequenceNode_hxx <STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent.hxx>

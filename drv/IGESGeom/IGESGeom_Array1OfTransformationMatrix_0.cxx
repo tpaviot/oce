@@ -5,24 +5,14 @@
 
 #include <IGESGeom_Array1OfTransformationMatrix.hxx>
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _IGESGeom_TransformationMatrix_HeaderFile
 #include <IGESGeom_TransformationMatrix.hxx>
-#endif
  
 
-#define Array1Item Handle_IGESGeom_TransformationMatrix
+#define Array1Item Handle(IGESGeom_TransformationMatrix)
 #define Array1Item_hxx <IGESGeom_TransformationMatrix.hxx>
 #define TCollection_Array1 IGESGeom_Array1OfTransformationMatrix
 #define TCollection_Array1_hxx <IGESGeom_Array1OfTransformationMatrix.hxx>

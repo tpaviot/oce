@@ -1,21 +1,7 @@
-#ifndef _HLRAlgo_HArray1OfTData_HeaderFile
 #include <HLRAlgo_HArray1OfTData.hxx>
-#endif
-#ifndef _HLRAlgo_HArray1OfPISeg_HeaderFile
 #include <HLRAlgo_HArray1OfPISeg.hxx>
-#endif
-#ifndef _HLRAlgo_HArray1OfPINod_HeaderFile
 #include <HLRAlgo_HArray1OfPINod.hxx>
-#endif
-#ifndef _HLRAlgo_Array1OfTData_HeaderFile
 #include <HLRAlgo_Array1OfTData.hxx>
-#endif
-#ifndef _HLRAlgo_Array1OfPISeg_HeaderFile
 #include <HLRAlgo_Array1OfPISeg.hxx>
-#endif
-#ifndef _HLRAlgo_Array1OfPINod_HeaderFile
 #include <HLRAlgo_Array1OfPINod.hxx>
-#endif
-#ifndef _HLRAlgo_PolyInternalData_HeaderFile
 #include <HLRAlgo_PolyInternalData.hxx>
-#endif

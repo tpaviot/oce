@@ -6,13 +6,11 @@
 #ifndef _BinMDF_StringIdMap_HeaderFile
 #define _BinMDF_StringIdMap_HeaderFile
 
-#ifndef _TColStd_DataMapOfAsciiStringInteger_HeaderFile
 #include <TColStd_DataMapOfAsciiStringInteger.hxx>
-#endif
 
 typedef TColStd_DataMapOfAsciiStringInteger BinMDF_StringIdMap;
 
 
 #define BinMDF_StringIdMap_Type_() TColStd_DataMapOfAsciiStringInteger_Type_()
 
-#endif
+#endif // _BinMDF_StringIdMap_HeaderFile

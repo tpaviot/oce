@@ -1,15 +1,5 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepVisual_StyledItem_HeaderFile
 #include <StepVisual_StyledItem.hxx>
-#endif
-#ifndef _StepVisual_PresentationLayerAssignment_HeaderFile
 #include <StepVisual_PresentationLayerAssignment.hxx>
-#endif
-#ifndef _StepVisual_PresentationRepresentation_HeaderFile
 #include <StepVisual_PresentationRepresentation.hxx>
-#endif
-#ifndef _StepVisual_InvisibleItem_HeaderFile
 #include <StepVisual_InvisibleItem.hxx>
-#endif

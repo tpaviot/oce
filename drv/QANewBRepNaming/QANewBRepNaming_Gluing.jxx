@@ -1,21 +1,7 @@
-#ifndef _Standard_NullObject_HeaderFile
 #include <Standard_NullObject.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _QANewModTopOpe_Glue_HeaderFile
 #include <QANewModTopOpe_Glue.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TDF_LabelMap_HeaderFile
 #include <TDF_LabelMap.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeInteger_HeaderFile
 #include <TopTools_DataMapOfShapeInteger.hxx>
-#endif
-#ifndef _QANewBRepNaming_Gluing_HeaderFile
 #include <QANewBRepNaming_Gluing.hxx>
-#endif

@@ -5,16 +5,10 @@
 
 #include <Expr_SequenceNodeOfSequenceOfGeneralExpression.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Expr_GeneralExpression_HeaderFile
 #include <Expr_GeneralExpression.hxx>
-#endif
-#ifndef _Expr_SequenceOfGeneralExpression_HeaderFile
 #include <Expr_SequenceOfGeneralExpression.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(Expr_SequenceNodeOfSequenceOfGeneralExpression,Standard_Trans
 IMPLEMENT_STANDARD_RTTI(Expr_SequenceNodeOfSequenceOfGeneralExpression)
 
 
-#define SeqItem Handle_Expr_GeneralExpression
+#define SeqItem Handle(Expr_GeneralExpression)
 #define SeqItem_hxx <Expr_GeneralExpression.hxx>
 #define TCollection_SequenceNode Expr_SequenceNodeOfSequenceOfGeneralExpression
 #define TCollection_SequenceNode_hxx <Expr_SequenceNodeOfSequenceOfGeneralExpression.hxx>

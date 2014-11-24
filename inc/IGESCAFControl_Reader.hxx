@@ -6,101 +6,95 @@
 #ifndef _IGESCAFControl_Reader_HeaderFile
 #define _IGESCAFControl_Reader_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _IGESControl_Reader_HeaderFile
 #include <IGESControl_Reader.hxx>
-#endif
-#ifndef _Handle_XSControl_WorkSession_HeaderFile
 #include <Handle_XSControl_WorkSession.hxx>
-#endif
-#ifndef _Handle_TDocStd_Document_HeaderFile
 #include <Handle_TDocStd_Document.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
 class XSControl_WorkSession;
 class TDocStd_Document;
 class TCollection_AsciiString;
 
 
-//! Provides a tool to read IGES file and put it into <br>
-//!          DECAF document. Besides transfer of shapes (including <br>
-//!          assemblies) provided by IGESControl, supports also <br>
-//!          colors and part names <br>
-//!          IGESCAFControl_Reader reader; Methods for translation of an IGES file: <br>
-//!          reader.ReadFile("filename"); <br>
-//!          reader.Transfer(Document); or <br>
-//!          reader.Perform("filename",doc); <br>
-//!          Methods for managing reading attributes. <br>
-//!          Colors <br>
-//!          reader.SetColorMode(colormode); <br>
-//!          Standard_Boolean colormode = reader.GetColorMode(); <br>
-//!          Layers <br>
-//!          reader.SetLayerMode(layermode); <br>
-//!          Standard_Boolean layermode = reader.GetLayerMode(); <br>
-//!          Names <br>
-//!          reader.SetNameMode(namemode); <br>
-//!          Standard_Boolean namemode = reader.GetNameMode(); <br>
-class IGESCAFControl_Reader  : public IGESControl_Reader {
+//! Provides a tool to read IGES file and put it into
+//! DECAF document. Besides transfer of shapes (including
+//! assemblies) provided by IGESControl, supports also
+//! colors and part names
+//! IGESCAFControl_Reader reader; Methods for translation of an IGES file:
+//! reader.ReadFile("filename");
+//! reader.Transfer(Document); or
+//! reader.Perform("filename",doc);
+//! Methods for managing reading attributes.
+//! Colors
+//! reader.SetColorMode(colormode);
+//! Standard_Boolean colormode = reader.GetColorMode();
+//! Layers
+//! reader.SetLayerMode(layermode);
+//! Standard_Boolean layermode = reader.GetLayerMode();
+//! Names
+//! reader.SetNameMode(namemode);
+//! Standard_Boolean namemode = reader.GetNameMode();
+class IGESCAFControl_Reader  : public IGESControl_Reader
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates a reader with an empty <br>
-//!          IGES model and sets ColorMode, LayerMode and NameMode to Standard_True. <br>
-  Standard_EXPORT   IGESCAFControl_Reader();
-  //! Creates a reader tool and attaches it to an already existing Session <br>
-//! 	    Clears the session if it was not yet set for IGES <br>
-  Standard_EXPORT   IGESCAFControl_Reader(const Handle(XSControl_WorkSession)& WS,const Standard_Boolean scratch = Standard_True);
-  //! Translates currently loaded IGES file into the document <br>
-//!          Returns True if succeeded, and False in case of fail <br>
-  Standard_EXPORT     Standard_Boolean Transfer(Handle(TDocStd_Document)& doc) ;
   
-  Standard_EXPORT     Standard_Boolean Perform(const TCollection_AsciiString& filename,Handle(TDocStd_Document)& doc) ;
-  //! Translate IGES file given by filename into the document <br>
-//!          Return True if succeeded, and False in case of fail <br>
-  Standard_EXPORT     Standard_Boolean Perform(const Standard_CString filename,Handle(TDocStd_Document)& doc) ;
-  //! Set ColorMode for indicate read Colors or not. <br>
-  Standard_EXPORT     void SetColorMode(const Standard_Boolean colormode) ;
+  //! Creates a reader with an empty
+  //! IGES model and sets ColorMode, LayerMode and NameMode to Standard_True.
+  Standard_EXPORT IGESCAFControl_Reader();
   
-  Standard_EXPORT     Standard_Boolean GetColorMode() const;
-  //! Set NameMode for indicate read Name or not. <br>
-  Standard_EXPORT     void SetNameMode(const Standard_Boolean namemode) ;
+  //! Creates a reader tool and attaches it to an already existing Session
+  //! Clears the session if it was not yet set for IGES
+  Standard_EXPORT IGESCAFControl_Reader(const Handle(XSControl_WorkSession)& WS, const Standard_Boolean scratch = Standard_True);
   
-  Standard_EXPORT     Standard_Boolean GetNameMode() const;
-  //! Set LayerMode for indicate read Layers or not. <br>
-  Standard_EXPORT     void SetLayerMode(const Standard_Boolean layermode) ;
+  //! Translates currently loaded IGES file into the document
+  //! Returns True if succeeded, and False in case of fail
+  Standard_EXPORT   Standard_Boolean Transfer (Handle(TDocStd_Document)& doc) ;
   
-  Standard_EXPORT     Standard_Boolean GetLayerMode() const;
-
+  Standard_EXPORT   Standard_Boolean Perform (const TCollection_AsciiString& filename, Handle(TDocStd_Document)& doc) ;
+  
+  //! Translate IGES file given by filename into the document
+  //! Return True if succeeded, and False in case of fail
+  Standard_EXPORT   Standard_Boolean Perform (const Standard_CString filename, Handle(TDocStd_Document)& doc) ;
+  
+  //! Set ColorMode for indicate read Colors or not.
+  Standard_EXPORT   void SetColorMode (const Standard_Boolean colormode) ;
+  
+  Standard_EXPORT   Standard_Boolean GetColorMode()  const;
+  
+  //! Set NameMode for indicate read Name or not.
+  Standard_EXPORT   void SetNameMode (const Standard_Boolean namemode) ;
+  
+  Standard_EXPORT   Standard_Boolean GetNameMode()  const;
+  
+  //! Set LayerMode for indicate read Layers or not.
+  Standard_EXPORT   void SetLayerMode (const Standard_Boolean layermode) ;
+  
+  Standard_EXPORT   Standard_Boolean GetLayerMode()  const;
 
 
 
 
 protected:
 
-  //! Reads colors of IGES entities and sets <br>
-//!          corresponding color assignments in the DECAF document <br>
-  Standard_EXPORT     Standard_Boolean ReadColors(Handle(TDocStd_Document)& doc) const;
-  //! Reads Names of IGES entities and sets <br>
-//!          corresponding name to label with shape in the DECAF document <br>
-  Standard_EXPORT     Standard_Boolean ReadNames(Handle(TDocStd_Document)& doc) const;
-  //! Reads layers of parts defined in the IGES model and <br>
-//!          set reference between shape and layers in the DECAF document <br>
-  Standard_EXPORT     Standard_Boolean ReadLayers(Handle(TDocStd_Document)& doc) const;
+  
+  //! Reads colors of IGES entities and sets
+  //! corresponding color assignments in the DECAF document
+  Standard_EXPORT   Standard_Boolean ReadColors (Handle(TDocStd_Document)& doc)  const;
+  
+  //! Reads Names of IGES entities and sets
+  //! corresponding name to label with shape in the DECAF document
+  Standard_EXPORT   Standard_Boolean ReadNames (Handle(TDocStd_Document)& doc)  const;
+  
+  //! Reads layers of parts defined in the IGES model and
+  //! set reference between shape and layers in the DECAF document
+  Standard_EXPORT   Standard_Boolean ReadLayers (Handle(TDocStd_Document)& doc)  const;
 
 
 
@@ -109,9 +103,9 @@ private:
 
 
 
-Standard_Boolean myColorMode;
-Standard_Boolean myNameMode;
-Standard_Boolean myLayerMode;
+  Standard_Boolean myColorMode;
+  Standard_Boolean myNameMode;
+  Standard_Boolean myLayerMode;
 
 
 };
@@ -120,7 +114,6 @@ Standard_Boolean myLayerMode;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESCAFControl_Reader_HeaderFile

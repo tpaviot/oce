@@ -6,61 +6,49 @@
 #ifndef _Geom2dToIGES_Geom2dCurve_HeaderFile
 #define _Geom2dToIGES_Geom2dCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Geom2dToIGES_Geom2dEntity_HeaderFile
 #include <Geom2dToIGES_Geom2dEntity.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Geom2dToIGES_Geom2dEntity;
 class IGESData_IGESEntity;
 class Geom2d_Curve;
 
 
-//! This class implements the transfer of the Curve Entity from Geom2d <br>
-//!          To IGES. These can be : <br>
-//!          Curve <br>
-//!            . BoundedCurve <br>
-//!               * BSplineCurve <br>
-//!               * BezierCurve <br>
-//!               * TrimmedCurve <br>
-//!            . Conic <br>
-//!               * Circle <br>
-//!               * Ellipse <br>
-//!               * Hyperbloa <br>
-//!               * Line <br>
-//!               * Parabola <br>
-//!            . OffsetCurve <br>
-class Geom2dToIGES_Geom2dCurve  : public Geom2dToIGES_Geom2dEntity {
+//! This class implements the transfer of the Curve Entity from Geom2d
+//! To IGES. These can be :
+//! Curve
+//! . BoundedCurve
+//! * BSplineCurve
+//! * BezierCurve
+//! * TrimmedCurve
+//! . Conic
+//! * Circle
+//! * Ellipse
+//! * Hyperbloa
+//! * Line
+//! * Parabola
+//! . OffsetCurve
+class Geom2dToIGES_Geom2dCurve  : public Geom2dToIGES_Geom2dEntity
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Geom2dToIGES_Geom2dCurve();
-  //! Creates a tool Geom2dCurve ready to run and sets its <br>
-//!         fields as G2dE's. <br>
-  Standard_EXPORT   Geom2dToIGES_Geom2dCurve(const Geom2dToIGES_Geom2dEntity& G2dE);
-  //!  Transfert  an Entity from Geom2d to IGES. If this <br>
-//!            Entity could not be converted, this member returns a NullEntity. <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity Transfer2dCurve(const Handle(Geom2d_Curve)& start,const Standard_Real Udeb,const Standard_Real Ufin) ;
-
+  Standard_EXPORT Geom2dToIGES_Geom2dCurve();
+  
+  //! Creates a tool Geom2dCurve ready to run and sets its
+  //! fields as G2dE's.
+  Standard_EXPORT Geom2dToIGES_Geom2dCurve(const Geom2dToIGES_Geom2dEntity& G2dE);
+  
+  //! Transfert  an Entity from Geom2d to IGES. If this
+  //! Entity could not be converted, this member returns a NullEntity.
+  Standard_EXPORT   Handle(IGESData_IGESEntity) Transfer2dCurve (const Handle(Geom2d_Curve)& start, const Standard_Real Udeb, const Standard_Real Ufin) ;
 
 
 
@@ -83,7 +71,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dToIGES_Geom2dCurve_HeaderFile

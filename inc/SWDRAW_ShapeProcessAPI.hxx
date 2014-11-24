@@ -6,30 +6,23 @@
 #ifndef _SWDRAW_ShapeProcessAPI_HeaderFile
 #define _SWDRAW_ShapeProcessAPI_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Draw_Interpretor_HeaderFile
 #include <Draw_Interpretor.hxx>
-#endif
 
 
-//! Contains commands to activate package ShapeProcessAPI <br>
-class SWDRAW_ShapeProcessAPI  {
+//! Contains commands to activate package ShapeProcessAPI
+class SWDRAW_ShapeProcessAPI 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Loads commands defined in ShapeProcessAPI <br>
-  Standard_EXPORT   static  void InitCommands(Draw_Interpretor& theCommands) ;
-
+  
+  //! Loads commands defined in ShapeProcessAPI
+  Standard_EXPORT static   void InitCommands (Draw_Interpretor& theCommands) ;
 
 
 
@@ -52,7 +45,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SWDRAW_ShapeProcessAPI_HeaderFile

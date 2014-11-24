@@ -6,79 +6,75 @@
 #ifndef _IGESGraph_UniformRectGrid_HeaderFile
 #define _IGESGraph_UniformRectGrid_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESGraph_UniformRectGrid_HeaderFile
 #include <Handle_IGESGraph_UniformRectGrid.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _gp_XY_HeaderFile
 #include <gp_XY.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class gp_XY;
 class gp_Pnt2d;
 class gp_Vec2d;
 
 
-//! defines IGESUniformRectGrid, Type <406> Form <22> <br>
-//!          in package IGESGraph <br>
-//! <br>
-//!          Stores sufficient information for the creation of <br>
-//!          a uniform rectangular grid within a drawing <br>
-class IGESGraph_UniformRectGrid : public IGESData_IGESEntity {
+//! defines IGESUniformRectGrid, Type <406> Form <22>
+//! in package IGESGraph
+//!
+//! Stores sufficient information for the creation of
+//! a uniform rectangular grid within a drawing
+class IGESGraph_UniformRectGrid : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESGraph_UniformRectGrid();
-  //! This method is used to set the fields of the class <br>
-//!           UniformRectGrid <br>
-//!     - nbProps      : Number of property values (NP = 9) <br>
-//!     - finite       : Finite/Infinite grid flag <br>
-//!     - line         : Line/Point grid flag <br>
-//!     - weighted     : Weighted/Unweighted grid flag <br>
-//!     - aGridPoint   : Point on the grid <br>
-//!     - aGridSpacing : Grid spacing <br>
-//!     - pointsX      : No. of points/lines in X Direction <br>
-//!     - pointsY      : No. of points/lines in Y Direction <br>
-  Standard_EXPORT     void Init(const Standard_Integer nbProps,const Standard_Integer finite,const Standard_Integer line,const Standard_Integer weighted,const gp_XY& aGridPoint,const gp_XY& aGridSpacing,const Standard_Integer pointsX,const Standard_Integer pointsY) ;
-  //! returns the number of property values in <me>. <br>
-  Standard_EXPORT     Standard_Integer NbPropertyValues() const;
-  //! returns False if <me> is an infinite grid, <br>
-//!         True  if <me> is a finite grid. <br>
-  Standard_EXPORT     Standard_Boolean IsFinite() const;
-  //! returns False if <me> is a Point grid, <br>
-//!         True  if <me> is a Line grid. <br>
-  Standard_EXPORT     Standard_Boolean IsLine() const;
-  //! returns False if <me> is a Weighted grid, <br>
-//!         True  if <me> is not a Weighted grid. <br>
-  Standard_EXPORT     Standard_Boolean IsWeighted() const;
-  //! returns coordinates of lower left corner, <br>
-//!                     if <me> is a finite grid, <br>
-//!         coordinates of an arbitrary point, <br>
-//!                     if <me> is an infinite grid. <br>
-  Standard_EXPORT     gp_Pnt2d GridPoint() const;
-  //! returns the grid-spacing in drawing coordinates. <br>
-  Standard_EXPORT     gp_Vec2d GridSpacing() const;
-  //! returns the no. of points/lines in X direction <br>
-//!  (only applicable if IsFinite() = 1, i.e: a finite grid). <br>
-  Standard_EXPORT     Standard_Integer NbPointsX() const;
-  //! returns the no. of points/lines in Y direction <br>
-//!  (only applicable if IsFinite() = 1, i.e: a finite grid). <br>
-  Standard_EXPORT     Standard_Integer NbPointsY() const;
+  Standard_EXPORT IGESGraph_UniformRectGrid();
+  
+  //! This method is used to set the fields of the class
+  //! UniformRectGrid
+  //! - nbProps      : Number of property values (NP = 9)
+  //! - finite       : Finite/Infinite grid flag
+  //! - line         : Line/Point grid flag
+  //! - weighted     : Weighted/Unweighted grid flag
+  //! - aGridPoint   : Point on the grid
+  //! - aGridSpacing : Grid spacing
+  //! - pointsX      : No. of points/lines in X Direction
+  //! - pointsY      : No. of points/lines in Y Direction
+  Standard_EXPORT   void Init (const Standard_Integer nbProps, const Standard_Integer finite, const Standard_Integer line, const Standard_Integer weighted, const gp_XY& aGridPoint, const gp_XY& aGridSpacing, const Standard_Integer pointsX, const Standard_Integer pointsY) ;
+  
+  //! returns the number of property values in <me>.
+  Standard_EXPORT   Standard_Integer NbPropertyValues()  const;
+  
+  //! returns False if <me> is an infinite grid,
+  //! True  if <me> is a finite grid.
+  Standard_EXPORT   Standard_Boolean IsFinite()  const;
+  
+  //! returns False if <me> is a Point grid,
+  //! True  if <me> is a Line grid.
+  Standard_EXPORT   Standard_Boolean IsLine()  const;
+  
+  //! returns False if <me> is a Weighted grid,
+  //! True  if <me> is not a Weighted grid.
+  Standard_EXPORT   Standard_Boolean IsWeighted()  const;
+  
+  //! returns coordinates of lower left corner,
+  //! if <me> is a finite grid,
+  //! coordinates of an arbitrary point,
+  //! if <me> is an infinite grid.
+  Standard_EXPORT   gp_Pnt2d GridPoint()  const;
+  
+  //! returns the grid-spacing in drawing coordinates.
+  Standard_EXPORT   gp_Vec2d GridSpacing()  const;
+  
+  //! returns the no. of points/lines in X direction
+  //! (only applicable if IsFinite() = 1, i.e: a finite grid).
+  Standard_EXPORT   Standard_Integer NbPointsX()  const;
+  
+  //! returns the no. of points/lines in Y direction
+  //! (only applicable if IsFinite() = 1, i.e: a finite grid).
+  Standard_EXPORT   Standard_Integer NbPointsY()  const;
 
 
 
@@ -93,14 +89,14 @@ protected:
 private: 
 
 
-Standard_Integer theNbPropertyValues;
-Standard_Integer isItFinite;
-Standard_Integer isItLine;
-Standard_Integer isItWeighted;
-gp_XY theGridPoint;
-gp_XY theGridSpacing;
-Standard_Integer theNbPointsX;
-Standard_Integer theNbPointsY;
+  Standard_Integer theNbPropertyValues;
+  Standard_Integer isItFinite;
+  Standard_Integer isItLine;
+  Standard_Integer isItWeighted;
+  gp_XY theGridPoint;
+  gp_XY theGridSpacing;
+  Standard_Integer theNbPointsX;
+  Standard_Integer theNbPointsY;
 
 
 };
@@ -109,7 +105,6 @@ Standard_Integer theNbPointsY;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGraph_UniformRectGrid_HeaderFile

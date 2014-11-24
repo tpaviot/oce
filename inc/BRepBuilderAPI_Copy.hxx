@@ -6,51 +6,44 @@
 #ifndef _BRepBuilderAPI_Copy_HeaderFile
 #define _BRepBuilderAPI_Copy_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepBuilderAPI_ModifyShape_HeaderFile
 #include <BRepBuilderAPI_ModifyShape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopoDS_Shape;
 
 
-//! Duplication of a shape. <br>
-//! A Copy object provides a framework for: <br>
-//! -   defining the construction of a duplicate shape, <br>
-//! -   implementing the construction algorithm, and <br>
-//! -   consulting the result. <br>
-class BRepBuilderAPI_Copy  : public BRepBuilderAPI_ModifyShape {
+//! Duplication of a shape.
+//! A Copy object provides a framework for:
+//! -   defining the construction of a duplicate shape,
+//! -   implementing the construction algorithm, and
+//! -   consulting the result.
+class BRepBuilderAPI_Copy  : public BRepBuilderAPI_ModifyShape
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Constructs an empty copy framework. Use the function <br>
-//! Perform to copy shapes. <br>
-  Standard_EXPORT   BRepBuilderAPI_Copy();
-  //! Constructs a copy framework and copies the shape S. <br>
-//! Use the function Shape to access the result. <br>
-//! If copyGeom is False, only topological objects will be copied, while <br>
-//! geometry will be shared with original shape. <br>
-//! Note: the constructed framework can be reused to copy <br>
-//! other shapes: just specify them with the function Perform. <br>
-  Standard_EXPORT   BRepBuilderAPI_Copy(const TopoDS_Shape& S,const Standard_Boolean copyGeom = Standard_True);
-  //! Copies the shape S. <br>
-//! Use the function Shape to access the result. <br>
-//! If copyGeom is False, only topological objects will be copied, while <br>
-//! geometry will be shared with original shape. <br>
-  Standard_EXPORT     void Perform(const TopoDS_Shape& S,const Standard_Boolean copyGeom = Standard_True) ;
-
+  
+  //! Constructs an empty copy framework. Use the function
+  //! Perform to copy shapes.
+  Standard_EXPORT BRepBuilderAPI_Copy();
+  
+  //! Constructs a copy framework and copies the shape S.
+  //! Use the function Shape to access the result.
+  //! If copyGeom is False, only topological objects will be copied, while
+  //! geometry will be shared with original shape.
+  //! Note: the constructed framework can be reused to copy
+  //! other shapes: just specify them with the function Perform.
+  Standard_EXPORT BRepBuilderAPI_Copy(const TopoDS_Shape& S, const Standard_Boolean copyGeom = Standard_True);
+  
+  //! Copies the shape S.
+  //! Use the function Shape to access the result.
+  //! If copyGeom is False, only topological objects will be copied, while
+  //! geometry will be shared with original shape.
+  Standard_EXPORT   void Perform (const TopoDS_Shape& S, const Standard_Boolean copyGeom = Standard_True) ;
 
 
 
@@ -73,7 +66,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepBuilderAPI_Copy_HeaderFile

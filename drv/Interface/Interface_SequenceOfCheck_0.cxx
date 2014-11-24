@@ -5,21 +5,13 @@
 
 #include <Interface_SequenceOfCheck.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Interface_Check_HeaderFile
 #include <Interface_Check.hxx>
-#endif
-#ifndef _Interface_SequenceNodeOfSequenceOfCheck_HeaderFile
 #include <Interface_SequenceNodeOfSequenceOfCheck.hxx>
-#endif
  
 
-#define SeqItem Handle_Interface_Check
+#define SeqItem Handle(Interface_Check)
 #define SeqItem_hxx <Interface_Check.hxx>
 #define TCollection_SequenceNode Interface_SequenceNodeOfSequenceOfCheck
 #define TCollection_SequenceNode_hxx <Interface_SequenceNodeOfSequenceOfCheck.hxx>

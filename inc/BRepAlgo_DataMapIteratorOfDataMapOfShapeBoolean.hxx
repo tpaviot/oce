@@ -6,25 +6,13 @@
 #ifndef _BRepAlgo_DataMapIteratorOfDataMapOfShapeBoolean_HeaderFile
 #define _BRepAlgo_DataMapIteratorOfDataMapOfShapeBoolean_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean_HeaderFile
 #include <Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class TopoDS_Shape;
 class TopTools_ShapeMapHasher;
@@ -33,22 +21,22 @@ class BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean;
 
 
 
-class BRepAlgo_DataMapIteratorOfDataMapOfShapeBoolean  : public TCollection_BasicMapIterator {
+class BRepAlgo_DataMapIteratorOfDataMapOfShapeBoolean  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepAlgo_DataMapIteratorOfDataMapOfShapeBoolean();
+  Standard_EXPORT BRepAlgo_DataMapIteratorOfDataMapOfShapeBoolean();
   
-  Standard_EXPORT   BRepAlgo_DataMapIteratorOfDataMapOfShapeBoolean(const BRepAlgo_DataMapOfShapeBoolean& aMap);
+  Standard_EXPORT BRepAlgo_DataMapIteratorOfDataMapOfShapeBoolean(const BRepAlgo_DataMapOfShapeBoolean& aMap);
   
-  Standard_EXPORT     void Initialize(const BRepAlgo_DataMapOfShapeBoolean& aMap) ;
+  Standard_EXPORT   void Initialize (const BRepAlgo_DataMapOfShapeBoolean& aMap) ;
   
-  Standard_EXPORT    const TopoDS_Shape& Key() const;
+  Standard_EXPORT  const  TopoDS_Shape& Key()  const;
   
-  Standard_EXPORT    const Standard_Boolean& Value() const;
-
+  Standard_EXPORT  const  Standard_Boolean& Value()  const;
 
 
 
@@ -71,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepAlgo_DataMapIteratorOfDataMapOfShapeBoolean_HeaderFile

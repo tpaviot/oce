@@ -6,60 +6,51 @@
 #ifndef _StepRepr_MakeFromUsageOption_HeaderFile
 #define _StepRepr_MakeFromUsageOption_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepRepr_MakeFromUsageOption_HeaderFile
 #include <Handle_StepRepr_MakeFromUsageOption.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepBasic_MeasureWithUnit_HeaderFile
 #include <Handle_StepBasic_MeasureWithUnit.hxx>
-#endif
-#ifndef _StepRepr_ProductDefinitionUsage_HeaderFile
 #include <StepRepr_ProductDefinitionUsage.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinition_HeaderFile
 #include <Handle_StepBasic_ProductDefinition.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepBasic_MeasureWithUnit;
 class StepBasic_ProductDefinition;
 
 
-//! Representation of STEP entity MakeFromUsageOption <br>
-class StepRepr_MakeFromUsageOption : public StepRepr_ProductDefinitionUsage {
+//! Representation of STEP entity MakeFromUsageOption
+class StepRepr_MakeFromUsageOption : public StepRepr_ProductDefinitionUsage
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepRepr_MakeFromUsageOption();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aProductDefinitionRelationship_Id,const Handle(TCollection_HAsciiString)& aProductDefinitionRelationship_Name,const Standard_Boolean hasProductDefinitionRelationship_Description,const Handle(TCollection_HAsciiString)& aProductDefinitionRelationship_Description,const Handle(StepBasic_ProductDefinition)& aProductDefinitionRelationship_RelatingProductDefinition,const Handle(StepBasic_ProductDefinition)& aProductDefinitionRelationship_RelatedProductDefinition,const Standard_Integer aRanking,const Handle(TCollection_HAsciiString)& aRankingRationale,const Handle(StepBasic_MeasureWithUnit)& aQuantity) ;
-  //! Returns field Ranking <br>
-  Standard_EXPORT     Standard_Integer Ranking() const;
-  //! Set field Ranking <br>
-  Standard_EXPORT     void SetRanking(const Standard_Integer Ranking) ;
-  //! Returns field RankingRationale <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString RankingRationale() const;
-  //! Set field RankingRationale <br>
-  Standard_EXPORT     void SetRankingRationale(const Handle(TCollection_HAsciiString)& RankingRationale) ;
-  //! Returns field Quantity <br>
-  Standard_EXPORT     Handle_StepBasic_MeasureWithUnit Quantity() const;
-  //! Set field Quantity <br>
-  Standard_EXPORT     void SetQuantity(const Handle(StepBasic_MeasureWithUnit)& Quantity) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepRepr_MakeFromUsageOption();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aProductDefinitionRelationship_Id, const Handle(TCollection_HAsciiString)& aProductDefinitionRelationship_Name, const Standard_Boolean hasProductDefinitionRelationship_Description, const Handle(TCollection_HAsciiString)& aProductDefinitionRelationship_Description, const Handle(StepBasic_ProductDefinition)& aProductDefinitionRelationship_RelatingProductDefinition, const Handle(StepBasic_ProductDefinition)& aProductDefinitionRelationship_RelatedProductDefinition, const Standard_Integer aRanking, const Handle(TCollection_HAsciiString)& aRankingRationale, const Handle(StepBasic_MeasureWithUnit)& aQuantity) ;
+  
+  //! Returns field Ranking
+  Standard_EXPORT   Standard_Integer Ranking()  const;
+  
+  //! Set field Ranking
+  Standard_EXPORT   void SetRanking (const Standard_Integer Ranking) ;
+  
+  //! Returns field RankingRationale
+  Standard_EXPORT   Handle(TCollection_HAsciiString) RankingRationale()  const;
+  
+  //! Set field RankingRationale
+  Standard_EXPORT   void SetRankingRationale (const Handle(TCollection_HAsciiString)& RankingRationale) ;
+  
+  //! Returns field Quantity
+  Standard_EXPORT   Handle(StepBasic_MeasureWithUnit) Quantity()  const;
+  
+  //! Set field Quantity
+  Standard_EXPORT   void SetQuantity (const Handle(StepBasic_MeasureWithUnit)& Quantity) ;
 
 
 
@@ -74,9 +65,9 @@ protected:
 private: 
 
 
-Standard_Integer theRanking;
-Handle_TCollection_HAsciiString theRankingRationale;
-Handle_StepBasic_MeasureWithUnit theQuantity;
+  Standard_Integer theRanking;
+  Handle(TCollection_HAsciiString) theRankingRationale;
+  Handle(StepBasic_MeasureWithUnit) theQuantity;
 
 
 };
@@ -85,7 +76,6 @@ Handle_StepBasic_MeasureWithUnit theQuantity;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_MakeFromUsageOption_HeaderFile

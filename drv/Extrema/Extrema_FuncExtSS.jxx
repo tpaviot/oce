@@ -1,15 +1,5 @@
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Adaptor3d_Surface_HeaderFile
 #include <Adaptor3d_Surface.hxx>
-#endif
-#ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
-#endif
-#ifndef _Extrema_POnSurf_HeaderFile
 #include <Extrema_POnSurf.hxx>
-#endif
-#ifndef _Extrema_FuncExtSS_HeaderFile
 #include <Extrema_FuncExtSS.hxx>
-#endif

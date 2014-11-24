@@ -6,28 +6,22 @@
 #ifndef _StepVisual_AnnotationOccurrence_HeaderFile
 #define _StepVisual_AnnotationOccurrence_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_AnnotationOccurrence_HeaderFile
 #include <Handle_StepVisual_AnnotationOccurrence.hxx>
-#endif
 
-#ifndef _StepVisual_StyledItem_HeaderFile
 #include <StepVisual_StyledItem.hxx>
-#endif
 
 
 
-class StepVisual_AnnotationOccurrence : public StepVisual_StyledItem {
+class StepVisual_AnnotationOccurrence : public StepVisual_StyledItem
+{
 
 public:
 
-  //! Returns a AnnotationOccurrence <br>
-  Standard_EXPORT   StepVisual_AnnotationOccurrence();
+  
+  //! Returns a AnnotationOccurrence
+  Standard_EXPORT StepVisual_AnnotationOccurrence();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_AnnotationOccurrence_HeaderFile

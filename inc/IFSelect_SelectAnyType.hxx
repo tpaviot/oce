@@ -6,52 +6,37 @@
 #ifndef _IFSelect_SelectAnyType_HeaderFile
 #define _IFSelect_SelectAnyType_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_SelectAnyType_HeaderFile
 #include <Handle_IFSelect_SelectAnyType.hxx>
-#endif
 
-#ifndef _IFSelect_SelectExtract_HeaderFile
 #include <IFSelect_SelectExtract.hxx>
-#endif
-#ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
 class Standard_Type;
 class Standard_Transient;
 class Interface_InterfaceModel;
 
 
-//! A SelectAnyType sorts the Entities of which the Type is Kind <br>
-//!           of a given Type : this Type for Match is specific of each <br>
-//!           class of SelectAnyType <br>
-class IFSelect_SelectAnyType : public IFSelect_SelectExtract {
+//! A SelectAnyType sorts the Entities of which the Type is Kind
+//! of a given Type : this Type for Match is specific of each
+//! class of SelectAnyType
+class IFSelect_SelectAnyType : public IFSelect_SelectExtract
+{
 
 public:
 
-  //! Returns the Type which has to be matched for select <br>
-  Standard_EXPORT   virtual  Handle_Standard_Type TypeForMatch() const = 0;
-  //! Returns True for an Entity (model->Value(num)) which is kind <br>
-//!           of the choosen type, given by the method TypeForMatch. <br>
-//!           Criterium is IsKind. <br>
-  Standard_EXPORT     Standard_Boolean Sort(const Standard_Integer rank,const Handle(Standard_Transient)& ent,const Handle(Interface_InterfaceModel)& model) const;
+  
+  //! Returns the Type which has to be matched for select
+  Standard_EXPORT virtual   Handle(Standard_Type) TypeForMatch()  const = 0;
+  
+  //! Returns True for an Entity (model->Value(num)) which is kind
+  //! of the choosen type, given by the method TypeForMatch.
+  //! Criterium is IsKind.
+  Standard_EXPORT   Standard_Boolean Sort (const Standard_Integer rank, const Handle(Standard_Transient)& ent, const Handle(Interface_InterfaceModel)& model)  const;
 
 
 
@@ -74,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_SelectAnyType_HeaderFile

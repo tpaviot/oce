@@ -6,15 +6,14 @@
 #ifndef _TopoDSToStep_MakeEdgeError_HeaderFile
 #define _TopoDSToStep_MakeEdgeError_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum TopoDSToStep_MakeEdgeError {
+
+enum TopoDSToStep_MakeEdgeError
+{
 TopoDSToStep_EdgeDone,
 TopoDSToStep_NonManifoldEdge,
 TopoDSToStep_EdgeOther
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _TopoDSToStep_MakeEdgeError_HeaderFile

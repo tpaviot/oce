@@ -6,47 +6,39 @@
 #ifndef _gce_MakeScale_HeaderFile
 #define _gce_MakeScale_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Trsf_HeaderFile
 #include <gp_Trsf.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class gp_Pnt;
 class gp_Trsf;
 
 
-//! Implements an elementary construction algorithm for <br>
-//! a scaling transformation in 3D space. The result is a gp_Trsf transformation. <br>
-//! A MakeScale object provides a framework for: <br>
-//! -   defining the construction of the transformation, <br>
-//! -   implementing the construction algorithm, and <br>
-//! -   consulting the result. <br>
-class gce_MakeScale  {
+//! Implements an elementary construction algorithm for
+//! a scaling transformation in 3D space. The result is a gp_Trsf transformation.
+//! A MakeScale object provides a framework for:
+//! -   defining the construction of the transformation,
+//! -   implementing the construction algorithm, and
+//! -   consulting the result.
+class gce_MakeScale 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Constructs a scaling transformation with <br>
-//! -   Point as the center of the transformation, and <br>
-//! -   Scale as the scale factor. <br>
-  Standard_EXPORT   gce_MakeScale(const gp_Pnt& Point,const Standard_Real Scale);
-  //! Returns the constructed transformation. <br>
-  Standard_EXPORT    const gp_Trsf& Value() const;
   
-  Standard_EXPORT    const gp_Trsf& Operator() const;
+  //! Constructs a scaling transformation with
+  //! -   Point as the center of the transformation, and
+  //! -   Scale as the scale factor.
+  Standard_EXPORT gce_MakeScale(const gp_Pnt& Point, const Standard_Real Scale);
+  
+  //! Returns the constructed transformation.
+  Standard_EXPORT  const  gp_Trsf& Value()  const;
+  
+  Standard_EXPORT  const  gp_Trsf& Operator()  const;
 Standard_EXPORT operator gp_Trsf() const;
-
 
 
 
@@ -61,7 +53,7 @@ private:
 
 
 
-gp_Trsf TheScale;
+  gp_Trsf TheScale;
 
 
 };
@@ -70,7 +62,6 @@ gp_Trsf TheScale;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _gce_MakeScale_HeaderFile

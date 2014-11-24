@@ -5,16 +5,10 @@
 
 #include <NLPlate_SequenceNodeOfSequenceOfHGPPConstraint.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _NLPlate_HGPPConstraint_HeaderFile
 #include <NLPlate_HGPPConstraint.hxx>
-#endif
-#ifndef _NLPlate_SequenceOfHGPPConstraint_HeaderFile
 #include <NLPlate_SequenceOfHGPPConstraint.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(NLPlate_SequenceNodeOfSequenceOfHGPPConstraint,Standard_Trans
 IMPLEMENT_STANDARD_RTTI(NLPlate_SequenceNodeOfSequenceOfHGPPConstraint)
 
 
-#define SeqItem Handle_NLPlate_HGPPConstraint
+#define SeqItem Handle(NLPlate_HGPPConstraint)
 #define SeqItem_hxx <NLPlate_HGPPConstraint.hxx>
 #define TCollection_SequenceNode NLPlate_SequenceNodeOfSequenceOfHGPPConstraint
 #define TCollection_SequenceNode_hxx <NLPlate_SequenceNodeOfSequenceOfHGPPConstraint.hxx>

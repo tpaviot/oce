@@ -5,24 +5,12 @@
 
 #include <GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox.hxx>
 
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _GeomInt_TheMultiLineOfWLApprox_HeaderFile
 #include <GeomInt_TheMultiLineOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_TheMultiLineToolOfWLApprox_HeaderFile
 #include <GeomInt_TheMultiLineToolOfWLApprox.hxx>
-#endif
-#ifndef _AppParCurves_MultiCurve_HeaderFile
 #include <AppParCurves_MultiCurve.hxx>
-#endif
-#ifndef _AppParCurves_HArray1OfConstraintCouple_HeaderFile
 #include <AppParCurves_HArray1OfConstraintCouple.hxx>
-#endif
-#ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
-#endif
  
 
 #define MultiLine GeomInt_TheMultiLineOfWLApprox

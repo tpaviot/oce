@@ -6,28 +6,14 @@
 #ifndef _IntAna_ListOfCurve_HeaderFile
 #define _IntAna_ListOfCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_IntAna_ListNodeOfListOfCurve_HeaderFile
 #include <Handle_IntAna_ListNodeOfListOfCurve.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class IntAna_ListIteratorOfListOfCurve;
 class IntAna_Curve;
@@ -35,63 +21,63 @@ class IntAna_ListNodeOfListOfCurve;
 
 
 
-class IntAna_ListOfCurve  {
+class IntAna_ListOfCurve 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntAna_ListOfCurve();
+  Standard_EXPORT IntAna_ListOfCurve();
   
-  Standard_EXPORT   IntAna_ListOfCurve(const IntAna_ListOfCurve& Other);
+  Standard_EXPORT IntAna_ListOfCurve(const IntAna_ListOfCurve& Other);
   
-  Standard_EXPORT     void Assign(const IntAna_ListOfCurve& Other) ;
-    void operator=(const IntAna_ListOfCurve& Other) 
+  Standard_EXPORT   void Assign (const IntAna_ListOfCurve& Other) ;
+  void operator= (const IntAna_ListOfCurve& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~IntAna_ListOfCurve()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const IntAna_Curve& I) ;
+  Standard_EXPORT   void Prepend (const IntAna_Curve& I) ;
   
-  Standard_EXPORT     void Prepend(const IntAna_Curve& I,IntAna_ListIteratorOfListOfCurve& theIt) ;
+  Standard_EXPORT   void Prepend (const IntAna_Curve& I, IntAna_ListIteratorOfListOfCurve& theIt) ;
   
-  Standard_EXPORT     void Prepend(IntAna_ListOfCurve& Other) ;
+  Standard_EXPORT   void Prepend (IntAna_ListOfCurve& Other) ;
   
-  Standard_EXPORT     void Append(const IntAna_Curve& I) ;
+  Standard_EXPORT   void Append (const IntAna_Curve& I) ;
   
-  Standard_EXPORT     void Append(const IntAna_Curve& I,IntAna_ListIteratorOfListOfCurve& theIt) ;
+  Standard_EXPORT   void Append (const IntAna_Curve& I, IntAna_ListIteratorOfListOfCurve& theIt) ;
   
-  Standard_EXPORT     void Append(IntAna_ListOfCurve& Other) ;
+  Standard_EXPORT   void Append (IntAna_ListOfCurve& Other) ;
   
-  Standard_EXPORT     IntAna_Curve& First() const;
+  Standard_EXPORT   IntAna_Curve& First()  const;
   
-  Standard_EXPORT     IntAna_Curve& Last() const;
+  Standard_EXPORT   IntAna_Curve& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(IntAna_ListIteratorOfListOfCurve& It) ;
+  Standard_EXPORT   void Remove (IntAna_ListIteratorOfListOfCurve& It) ;
   
-  Standard_EXPORT     void InsertBefore(const IntAna_Curve& I,IntAna_ListIteratorOfListOfCurve& It) ;
+  Standard_EXPORT   void InsertBefore (const IntAna_Curve& I, IntAna_ListIteratorOfListOfCurve& It) ;
   
-  Standard_EXPORT     void InsertBefore(IntAna_ListOfCurve& Other,IntAna_ListIteratorOfListOfCurve& It) ;
+  Standard_EXPORT   void InsertBefore (IntAna_ListOfCurve& Other, IntAna_ListIteratorOfListOfCurve& It) ;
   
-  Standard_EXPORT     void InsertAfter(const IntAna_Curve& I,IntAna_ListIteratorOfListOfCurve& It) ;
+  Standard_EXPORT   void InsertAfter (const IntAna_Curve& I, IntAna_ListIteratorOfListOfCurve& It) ;
   
-  Standard_EXPORT     void InsertAfter(IntAna_ListOfCurve& Other,IntAna_ListIteratorOfListOfCurve& It) ;
+  Standard_EXPORT   void InsertAfter (IntAna_ListOfCurve& Other, IntAna_ListIteratorOfListOfCurve& It) ;
 
 
 friend class IntAna_ListIteratorOfListOfCurve;
-
 
 
 protected:
@@ -104,8 +90,8 @@ private:
 
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
@@ -135,7 +121,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntAna_ListOfCurve_HeaderFile

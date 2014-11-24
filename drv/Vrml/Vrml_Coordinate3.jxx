@@ -1,6 +1,2 @@
-#ifndef _TColgp_HArray1OfVec_HeaderFile
 #include <TColgp_HArray1OfVec.hxx>
-#endif
-#ifndef _Vrml_Coordinate3_HeaderFile
 #include <Vrml_Coordinate3.hxx>
-#endif

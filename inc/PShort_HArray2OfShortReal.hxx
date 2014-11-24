@@ -6,37 +6,17 @@
 #ifndef _PShort_HArray2OfShortReal_HeaderFile
 #define _PShort_HArray2OfShortReal_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PShort_HArray2OfShortReal_HeaderFile
 #include <Handle_PShort_HArray2OfShortReal.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
-#endif
-#ifndef _PShort_FieldOfHArray2OfShortReal_HeaderFile
 #include <PShort_FieldOfHArray2OfShortReal.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _Handle_PShort_VArrayNodeOfFieldOfHArray2OfShortReal_HeaderFile
 #include <Handle_PShort_VArrayNodeOfFieldOfHArray2OfShortReal.hxx>
-#endif
 class Standard_RangeError;
 class Standard_OutOfRange;
 class PShort_FieldOfHArray2OfShortReal;
@@ -44,32 +24,33 @@ class PShort_VArrayNodeOfFieldOfHArray2OfShortReal;
 class PShort_VArrayTNodeOfFieldOfHArray2OfShortReal;
 
 
-class PShort_HArray2OfShortReal : public Standard_Persistent {
+class PShort_HArray2OfShortReal : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PShort_HArray2OfShortReal(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+  Standard_EXPORT PShort_HArray2OfShortReal(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2);
   
-  Standard_EXPORT   PShort_HArray2OfShortReal(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Standard_ShortReal& V);
+  Standard_EXPORT PShort_HArray2OfShortReal(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2, const Standard_ShortReal& V);
   
-  Standard_EXPORT     Standard_Integer ColLength() const;
+  Standard_EXPORT   Standard_Integer ColLength()  const;
   
-        Standard_Integer LowerCol() const;
+      Standard_Integer LowerCol()  const;
   
-        Standard_Integer LowerRow() const;
+      Standard_Integer LowerRow()  const;
   
-  Standard_EXPORT     Standard_Integer RowLength() const;
+  Standard_EXPORT   Standard_Integer RowLength()  const;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Standard_ShortReal& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Row, const Standard_Integer Col, const Standard_ShortReal& Value) ;
   
-        Standard_Integer UpperCol() const;
+      Standard_Integer UpperCol()  const;
   
-        Standard_Integer UpperRow() const;
+      Standard_Integer UpperRow()  const;
   
-  Standard_EXPORT     Standard_ShortReal Value(const Standard_Integer Row,const Standard_Integer Col) const;
+  Standard_EXPORT   Standard_ShortReal Value (const Standard_Integer Row, const Standard_Integer Col)  const;
 
-  PShort_HArray2OfShortReal( )
+PShort_HArray2OfShortReal( )
 {
   
 }
@@ -99,15 +80,15 @@ protected:
 private: 
 
   
-  Standard_EXPORT     PShort_FieldOfHArray2OfShortReal Field() const;
+  Standard_EXPORT   PShort_FieldOfHArray2OfShortReal Field()  const;
   
-  Standard_EXPORT     Standard_Address Datas() const;
+  Standard_EXPORT   Standard_Address Datas()  const;
 
-Standard_Integer myLowerRow;
-Standard_Integer myLowerCol;
-Standard_Integer myUpperRow;
-Standard_Integer myUpperCol;
-PShort_FieldOfHArray2OfShortReal Data;
+  Standard_Integer myLowerRow;
+  Standard_Integer myLowerCol;
+  Standard_Integer myUpperRow;
+  Standard_Integer myUpperCol;
+  PShort_FieldOfHArray2OfShortReal Data;
 
 
 };
@@ -157,7 +138,6 @@ PShort_FieldOfHArray2OfShortReal Data;
 #undef PCollection_HArray2_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PShort_HArray2OfShortReal_HeaderFile

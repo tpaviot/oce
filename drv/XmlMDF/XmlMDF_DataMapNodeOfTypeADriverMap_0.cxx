@@ -5,25 +5,13 @@
 
 #include <XmlMDF_DataMapNodeOfTypeADriverMap.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
-#ifndef _XmlMDF_ADriver_HeaderFile
 #include <XmlMDF_ADriver.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _XmlMDF_TypeADriverMap_HeaderFile
 #include <XmlMDF_TypeADriverMap.hxx>
-#endif
-#ifndef _XmlMDF_DataMapIteratorOfTypeADriverMap_HeaderFile
 #include <XmlMDF_DataMapIteratorOfTypeADriverMap.hxx>
-#endif
 
  
 
@@ -42,9 +30,9 @@ IMPLEMENT_DOWNCAST(XmlMDF_DataMapNodeOfTypeADriverMap,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(XmlMDF_DataMapNodeOfTypeADriverMap)
 
 
-#define TheKey Handle_Standard_Type
+#define TheKey Handle(Standard_Type)
 #define TheKey_hxx <Standard_Type.hxx>
-#define TheItem Handle_XmlMDF_ADriver
+#define TheItem Handle(XmlMDF_ADriver)
 #define TheItem_hxx <XmlMDF_ADriver.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>

@@ -1,9 +1,3 @@
-#ifndef _OSD_OSDError_HeaderFile
 #include <OSD_OSDError.hxx>
-#endif
-#ifndef _OSD_Path_HeaderFile
 #include <OSD_Path.hxx>
-#endif
-#ifndef _OSD_Disk_HeaderFile
 #include <OSD_Disk.hxx>
-#endif

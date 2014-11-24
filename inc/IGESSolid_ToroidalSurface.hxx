@@ -6,72 +6,65 @@
 #ifndef _IGESSolid_ToroidalSurface_HeaderFile
 #define _IGESSolid_ToroidalSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSolid_ToroidalSurface_HeaderFile
 #include <Handle_IGESSolid_ToroidalSurface.hxx>
-#endif
 
-#ifndef _Handle_IGESGeom_Point_HeaderFile
 #include <Handle_IGESGeom_Point.hxx>
-#endif
-#ifndef _Handle_IGESGeom_Direction_HeaderFile
 #include <Handle_IGESGeom_Direction.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class IGESGeom_Point;
 class IGESGeom_Direction;
 class gp_Pnt;
 
 
-//! defines ToroidalSurface, Type <198> Form Number <0,1> <br>
-//!          in package IGESSolid <br>
-//!          This entity is defined by the center point, the axis <br>
-//!          direction and the major and minor radii. In case of <br>
-//!          parametrised surface a reference direction is provided. <br>
-class IGESSolid_ToroidalSurface : public IGESData_IGESEntity {
+//! defines ToroidalSurface, Type <198> Form Number <0,1>
+//! in package IGESSolid
+//! This entity is defined by the center point, the axis
+//! direction and the major and minor radii. In case of
+//! parametrised surface a reference direction is provided.
+class IGESSolid_ToroidalSurface : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESSolid_ToroidalSurface();
-  //! This method is used to set the fields of the class <br>
-//!           ToroidalSurface <br>
-//!       - aCenter   : the center point coordinates <br>
-//!       - anAxis    : the direction of the axis <br>
-//!       - majRadius : the major radius <br>
-//!       - minRadius : the minor radius <br>
-//!       - Refdir    : the reference direction (parametrised) <br>
-//!                     default Null for unparametrised surface <br>
-  Standard_EXPORT     void Init(const Handle(IGESGeom_Point)& aCenter,const Handle(IGESGeom_Direction)& anAxis,const Standard_Real majRadius,const Standard_Real minRadius,const Handle(IGESGeom_Direction)& Refdir) ;
-  //! returns the center point coordinates of the surface <br>
-  Standard_EXPORT     Handle_IGESGeom_Point Center() const;
-  //! returns the center point coordinates of the surface <br>
-//! after applying TransformationMatrix <br>
-  Standard_EXPORT     gp_Pnt TransformedCenter() const;
-  //! returns the direction of the axis <br>
-  Standard_EXPORT     Handle_IGESGeom_Direction Axis() const;
-  //! returns the major radius of the surface <br>
-  Standard_EXPORT     Standard_Real MajorRadius() const;
-  //! returns the minor radius of the surface <br>
-  Standard_EXPORT     Standard_Real MinorRadius() const;
-  //! returns the reference direction (parametrised surface) <br>
-//! Null is returned if the surface is not parametrised <br>
-  Standard_EXPORT     Handle_IGESGeom_Direction ReferenceDir() const;
-  //! Returns True if the surface is parametrised, else False <br>
-  Standard_EXPORT     Standard_Boolean IsParametrised() const;
+  Standard_EXPORT IGESSolid_ToroidalSurface();
+  
+  //! This method is used to set the fields of the class
+  //! ToroidalSurface
+  //! - aCenter   : the center point coordinates
+  //! - anAxis    : the direction of the axis
+  //! - majRadius : the major radius
+  //! - minRadius : the minor radius
+  //! - Refdir    : the reference direction (parametrised)
+  //! default Null for unparametrised surface
+  Standard_EXPORT   void Init (const Handle(IGESGeom_Point)& aCenter, const Handle(IGESGeom_Direction)& anAxis, const Standard_Real majRadius, const Standard_Real minRadius, const Handle(IGESGeom_Direction)& Refdir) ;
+  
+  //! returns the center point coordinates of the surface
+  Standard_EXPORT   Handle(IGESGeom_Point) Center()  const;
+  
+  //! returns the center point coordinates of the surface
+  //! after applying TransformationMatrix
+  Standard_EXPORT   gp_Pnt TransformedCenter()  const;
+  
+  //! returns the direction of the axis
+  Standard_EXPORT   Handle(IGESGeom_Direction) Axis()  const;
+  
+  //! returns the major radius of the surface
+  Standard_EXPORT   Standard_Real MajorRadius()  const;
+  
+  //! returns the minor radius of the surface
+  Standard_EXPORT   Standard_Real MinorRadius()  const;
+  
+  //! returns the reference direction (parametrised surface)
+  //! Null is returned if the surface is not parametrised
+  Standard_EXPORT   Handle(IGESGeom_Direction) ReferenceDir()  const;
+  
+  //! Returns True if the surface is parametrised, else False
+  Standard_EXPORT   Standard_Boolean IsParametrised()  const;
 
 
 
@@ -86,11 +79,11 @@ protected:
 private: 
 
 
-Handle_IGESGeom_Point theCenter;
-Handle_IGESGeom_Direction theAxis;
-Standard_Real theMajorRadius;
-Standard_Real theMinorRadius;
-Handle_IGESGeom_Direction theRefDir;
+  Handle(IGESGeom_Point) theCenter;
+  Handle(IGESGeom_Direction) theAxis;
+  Standard_Real theMajorRadius;
+  Standard_Real theMinorRadius;
+  Handle(IGESGeom_Direction) theRefDir;
 
 
 };
@@ -99,7 +92,6 @@ Handle_IGESGeom_Direction theRefDir;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSolid_ToroidalSurface_HeaderFile

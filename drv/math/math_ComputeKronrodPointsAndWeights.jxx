@@ -1,6 +1,2 @@
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _math_ComputeKronrodPointsAndWeights_HeaderFile
 #include <math_ComputeKronrodPointsAndWeights.hxx>
-#endif

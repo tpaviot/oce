@@ -1,3 +1,1 @@
-#ifndef _StepRepr_ProductDefinitionUsage_HeaderFile
 #include <StepRepr_ProductDefinitionUsage.hxx>
-#endif

@@ -6,28 +6,14 @@
 #ifndef _MeshVS_DataMapNodeOfDataMapOfIntegerOwner_HeaderFile
 #define _MeshVS_DataMapNodeOfDataMapOfIntegerOwner_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MeshVS_DataMapNodeOfDataMapOfIntegerOwner_HeaderFile
 #include <Handle_MeshVS_DataMapNodeOfDataMapOfIntegerOwner.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_SelectMgr_EntityOwner_HeaderFile
 #include <Handle_SelectMgr_EntityOwner.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class SelectMgr_EntityOwner;
 class TColStd_MapIntegerHasher;
 class MeshVS_DataMapOfIntegerOwner;
@@ -35,16 +21,17 @@ class MeshVS_DataMapIteratorOfDataMapOfIntegerOwner;
 
 
 
-class MeshVS_DataMapNodeOfDataMapOfIntegerOwner : public TCollection_MapNode {
+class MeshVS_DataMapNodeOfDataMapOfIntegerOwner : public TCollection_MapNode
+{
 
 public:
 
   
-      MeshVS_DataMapNodeOfDataMapOfIntegerOwner(const Standard_Integer& K,const Handle(SelectMgr_EntityOwner)& I,const TCollection_MapNodePtr& n);
+    MeshVS_DataMapNodeOfDataMapOfIntegerOwner(const Standard_Integer& K, const Handle(SelectMgr_EntityOwner)& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Key() const;
+      Standard_Integer& Key()  const;
   
-        Handle_SelectMgr_EntityOwner& Value() const;
+      Handle(SelectMgr_EntityOwner)& Value()  const;
 
 
 
@@ -59,15 +46,15 @@ protected:
 private: 
 
 
-Standard_Integer myKey;
-Handle_SelectMgr_EntityOwner myValue;
+  Standard_Integer myKey;
+  Handle(SelectMgr_EntityOwner) myValue;
 
 
 };
 
 #define TheKey Standard_Integer
 #define TheKey_hxx <Standard_Integer.hxx>
-#define TheItem Handle_SelectMgr_EntityOwner
+#define TheItem Handle(SelectMgr_EntityOwner)
 #define TheItem_hxx <SelectMgr_EntityOwner.hxx>
 #define Hasher TColStd_MapIntegerHasher
 #define Hasher_hxx <TColStd_MapIntegerHasher.hxx>
@@ -98,7 +85,6 @@ Handle_SelectMgr_EntityOwner myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MeshVS_DataMapNodeOfDataMapOfIntegerOwner_HeaderFile

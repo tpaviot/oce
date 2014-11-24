@@ -6,47 +6,36 @@
 #ifndef _Geom2dLProp_FuncCurNul_HeaderFile
 #define _Geom2dLProp_FuncCurNul_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _math_FunctionWithDerivative_HeaderFile
 #include <math_FunctionWithDerivative.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Geom2d_Curve;
 
 
-//! Function used to find the inflections in 2d. <br>
-class Geom2dLProp_FuncCurNul  : public math_FunctionWithDerivative {
+//! Function used to find the inflections in 2d.
+class Geom2dLProp_FuncCurNul  : public math_FunctionWithDerivative
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Geom2dLProp_FuncCurNul(const Handle(Geom2d_Curve)& C);
-  //! Returns the value for the variable <X>. <br>
-  Standard_EXPORT     Standard_Boolean Value(const Standard_Real X,Standard_Real& F) ;
-  //! Returns the derivative for the variable <X> <br>
-  Standard_EXPORT     Standard_Boolean Derivative(const Standard_Real X,Standard_Real& D) ;
-  //! Returns the value of the function and the derivative <br>
-//!          for the variable <X>. <br>
-  Standard_EXPORT     Standard_Boolean Values(const Standard_Real X,Standard_Real& F,Standard_Real& D) ;
-
+  Standard_EXPORT Geom2dLProp_FuncCurNul(const Handle(Geom2d_Curve)& C);
+  
+  //! Returns the value for the variable <X>.
+  Standard_EXPORT   Standard_Boolean Value (const Standard_Real X, Standard_Real& F) ;
+  
+  //! Returns the derivative for the variable <X>
+  Standard_EXPORT   Standard_Boolean Derivative (const Standard_Real X, Standard_Real& D) ;
+  
+  //! Returns the value of the function and the derivative
+  //! for the variable <X>.
+  Standard_EXPORT   Standard_Boolean Values (const Standard_Real X, Standard_Real& F, Standard_Real& D) ;
 
 
 
@@ -61,7 +50,7 @@ private:
 
 
 
-Handle_Geom2d_Curve theCurve;
+  Handle(Geom2d_Curve) theCurve;
 
 
 };
@@ -70,7 +59,6 @@ Handle_Geom2d_Curve theCurve;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dLProp_FuncCurNul_HeaderFile

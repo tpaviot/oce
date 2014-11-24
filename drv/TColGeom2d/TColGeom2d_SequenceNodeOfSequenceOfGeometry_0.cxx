@@ -5,16 +5,10 @@
 
 #include <TColGeom2d_SequenceNodeOfSequenceOfGeometry.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Geom2d_Geometry_HeaderFile
 #include <Geom2d_Geometry.hxx>
-#endif
-#ifndef _TColGeom2d_SequenceOfGeometry_HeaderFile
 #include <TColGeom2d_SequenceOfGeometry.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(TColGeom2d_SequenceNodeOfSequenceOfGeometry,Standard_Transien
 IMPLEMENT_STANDARD_RTTI(TColGeom2d_SequenceNodeOfSequenceOfGeometry)
 
 
-#define SeqItem Handle_Geom2d_Geometry
+#define SeqItem Handle(Geom2d_Geometry)
 #define SeqItem_hxx <Geom2d_Geometry.hxx>
 #define TCollection_SequenceNode TColGeom2d_SequenceNodeOfSequenceOfGeometry
 #define TCollection_SequenceNode_hxx <TColGeom2d_SequenceNodeOfSequenceOfGeometry.hxx>

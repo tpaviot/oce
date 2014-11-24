@@ -6,39 +6,28 @@
 #ifndef _Plate_PlaneConstraint_HeaderFile
 #define _Plate_PlaneConstraint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Plate_LinearScalarConstraint_HeaderFile
 #include <Plate_LinearScalarConstraint.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class gp_XY;
 class gp_Pln;
 class Plate_LinearScalarConstraint;
 
 
-//! constraint a point to belong to a Plane <br>
-//! <br>
-class Plate_PlaneConstraint  {
+//! constraint a point to belong to a Plane
+class Plate_PlaneConstraint 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Plate_PlaneConstraint(const gp_XY& point2d,const gp_Pln& pln,const Standard_Integer iu = 0,const Standard_Integer iv = 0);
+  Standard_EXPORT Plate_PlaneConstraint(const gp_XY& point2d, const gp_Pln& pln, const Standard_Integer iu = 0, const Standard_Integer iv = 0);
   
-       const Plate_LinearScalarConstraint& LSC() const;
-
+     const  Plate_LinearScalarConstraint& LSC()  const;
 
 
 
@@ -53,7 +42,7 @@ private:
 
 
 
-Plate_LinearScalarConstraint myLSC;
+  Plate_LinearScalarConstraint myLSC;
 
 
 };
@@ -63,7 +52,6 @@ Plate_LinearScalarConstraint myLSC;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Plate_PlaneConstraint_HeaderFile

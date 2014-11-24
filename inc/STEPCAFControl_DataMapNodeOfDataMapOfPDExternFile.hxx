@@ -6,28 +6,14 @@
 #ifndef _STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile_HeaderFile
 #define _STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile_HeaderFile
 #include <Handle_STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_ProductDefinition_HeaderFile
 #include <Handle_StepBasic_ProductDefinition.hxx>
-#endif
-#ifndef _Handle_STEPCAFControl_ExternFile_HeaderFile
 #include <Handle_STEPCAFControl_ExternFile.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class StepBasic_ProductDefinition;
 class STEPCAFControl_ExternFile;
 class TColStd_MapTransientHasher;
@@ -36,16 +22,17 @@ class STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile;
 
 
 
-class STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile : public TCollection_MapNode {
+class STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile : public TCollection_MapNode
+{
 
 public:
 
   
-      STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile(const Handle(StepBasic_ProductDefinition)& K,const Handle(STEPCAFControl_ExternFile)& I,const TCollection_MapNodePtr& n);
+    STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile(const Handle(StepBasic_ProductDefinition)& K, const Handle(STEPCAFControl_ExternFile)& I, const TCollection_MapNodePtr& n);
   
-        Handle_StepBasic_ProductDefinition& Key() const;
+      Handle(StepBasic_ProductDefinition)& Key()  const;
   
-        Handle_STEPCAFControl_ExternFile& Value() const;
+      Handle(STEPCAFControl_ExternFile)& Value()  const;
 
 
 
@@ -60,15 +47,15 @@ protected:
 private: 
 
 
-Handle_StepBasic_ProductDefinition myKey;
-Handle_STEPCAFControl_ExternFile myValue;
+  Handle(StepBasic_ProductDefinition) myKey;
+  Handle(STEPCAFControl_ExternFile) myValue;
 
 
 };
 
-#define TheKey Handle_StepBasic_ProductDefinition
+#define TheKey Handle(StepBasic_ProductDefinition)
 #define TheKey_hxx <StepBasic_ProductDefinition.hxx>
-#define TheItem Handle_STEPCAFControl_ExternFile
+#define TheItem Handle(STEPCAFControl_ExternFile)
 #define TheItem_hxx <STEPCAFControl_ExternFile.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>
@@ -99,7 +86,6 @@ Handle_STEPCAFControl_ExternFile myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile_HeaderFile

@@ -6,40 +6,18 @@
 #ifndef _Extrema_LocateExtPC2d_HeaderFile
 #define _Extrema_LocateExtPC2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Extrema_POnCurv2d_HeaderFile
 #include <Extrema_POnCurv2d.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Extrema_LocEPCOfLocateExtPC2d_HeaderFile
 #include <Extrema_LocEPCOfLocateExtPC2d.hxx>
-#endif
-#ifndef _Extrema_ELPCOfLocateExtPC2d_HeaderFile
 #include <Extrema_ELPCOfLocateExtPC2d.hxx>
-#endif
-#ifndef _GeomAbs_CurveType_HeaderFile
 #include <GeomAbs_CurveType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_DomainError;
 class StdFail_NotDone;
 class Adaptor2d_Curve2d;
@@ -56,30 +34,30 @@ class Extrema_PCLocFOfLocEPCOfLocateExtPC2d;
 
 
 
-class Extrema_LocateExtPC2d  {
+class Extrema_LocateExtPC2d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Extrema_LocateExtPC2d();
+  Standard_EXPORT Extrema_LocateExtPC2d();
   
-  Standard_EXPORT   Extrema_LocateExtPC2d(const gp_Pnt2d& P,const Adaptor2d_Curve2d& C,const Standard_Real U0,const Standard_Real TolF);
+  Standard_EXPORT Extrema_LocateExtPC2d(const gp_Pnt2d& P, const Adaptor2d_Curve2d& C, const Standard_Real U0, const Standard_Real TolF);
   
-  Standard_EXPORT   Extrema_LocateExtPC2d(const gp_Pnt2d& P,const Adaptor2d_Curve2d& C,const Standard_Real U0,const Standard_Real Umin,const Standard_Real Usup,const Standard_Real TolF);
+  Standard_EXPORT Extrema_LocateExtPC2d(const gp_Pnt2d& P, const Adaptor2d_Curve2d& C, const Standard_Real U0, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolF);
   
-  Standard_EXPORT     void Initialize(const Adaptor2d_Curve2d& C,const Standard_Real Umin,const Standard_Real Usup,const Standard_Real TolF) ;
+  Standard_EXPORT   void Initialize (const Adaptor2d_Curve2d& C, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolF) ;
   
-  Standard_EXPORT     void Perform(const gp_Pnt2d& P,const Standard_Real U0) ;
+  Standard_EXPORT   void Perform (const gp_Pnt2d& P, const Standard_Real U0) ;
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
   
-  Standard_EXPORT     Standard_Real SquareDistance() const;
+  Standard_EXPORT   Standard_Real SquareDistance()  const;
   
-  Standard_EXPORT     Standard_Boolean IsMin() const;
+  Standard_EXPORT   Standard_Boolean IsMin()  const;
   
-  Standard_EXPORT    const Extrema_POnCurv2d& Point() const;
-
+  Standard_EXPORT  const  Extrema_POnCurv2d& Point()  const;
 
 
 
@@ -94,18 +72,18 @@ private:
 
 
 
-Extrema_POnCurv2d mypp;
-Standard_Address myC;
-Standard_Real mydist2;
-Standard_Boolean myismin;
-Standard_Boolean myDone;
-Standard_Real myumin;
-Standard_Real myusup;
-Standard_Real mytol;
-Extrema_LocEPCOfLocateExtPC2d myLocExtPC;
-Extrema_ELPCOfLocateExtPC2d myExtremPC;
-GeomAbs_CurveType type;
-Standard_Integer numberext;
+  Extrema_POnCurv2d mypp;
+  Standard_Address myC;
+  Standard_Real mydist2;
+  Standard_Boolean myismin;
+  Standard_Boolean myDone;
+  Standard_Real myumin;
+  Standard_Real myusup;
+  Standard_Real mytol;
+  Extrema_LocEPCOfLocateExtPC2d myLocExtPC;
+  Extrema_ELPCOfLocateExtPC2d myExtremPC;
+  GeomAbs_CurveType type;
+  Standard_Integer numberext;
 
 
 };
@@ -114,7 +92,6 @@ Standard_Integer numberext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Extrema_LocateExtPC2d_HeaderFile

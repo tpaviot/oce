@@ -1,6 +1,2 @@
-#ifndef _math_ValueAndWeight_HeaderFile
 #include <math_ValueAndWeight.hxx>
-#endif
-#ifndef _math_CompareOfValueAndWeight_HeaderFile
 #include <math_CompareOfValueAndWeight.hxx>
-#endif

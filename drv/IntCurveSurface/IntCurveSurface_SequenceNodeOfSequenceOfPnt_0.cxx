@@ -5,16 +5,10 @@
 
 #include <IntCurveSurface_SequenceNodeOfSequenceOfPnt.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IntCurveSurface_IntersectionPoint_HeaderFile
 #include <IntCurveSurface_IntersectionPoint.hxx>
-#endif
-#ifndef _IntCurveSurface_SequenceOfPnt_HeaderFile
 #include <IntCurveSurface_SequenceOfPnt.hxx>
-#endif
 
  
 

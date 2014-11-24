@@ -6,40 +6,18 @@
 #ifndef _V3d_HeaderFile
 #define _V3d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _V3d_TypeOfOrientation_HeaderFile
 #include <V3d_TypeOfOrientation.hxx>
-#endif
-#ifndef _Handle_Graphic3d_Group_HeaderFile
 #include <Handle_Graphic3d_Group.hxx>
-#endif
-#ifndef _V3d_Coordinate_HeaderFile
 #include <V3d_Coordinate.hxx>
-#endif
-#ifndef _V3d_Parameter_HeaderFile
 #include <V3d_Parameter.hxx>
-#endif
-#ifndef _Quantity_PlaneAngle_HeaderFile
 #include <Quantity_PlaneAngle.hxx>
-#endif
-#ifndef _Handle_V3d_View_HeaderFile
 #include <Handle_V3d_View.hxx>
-#endif
-#ifndef _Handle_V3d_Viewer_HeaderFile
 #include <Handle_V3d_Viewer.hxx>
-#endif
-#ifndef _Quantity_Length_HeaderFile
 #include <Quantity_Length.hxx>
-#endif
 class Graphic3d_Vector;
 class Graphic3d_Group;
 class V3d_View;
@@ -59,38 +37,44 @@ class V3d_ColorScale;
 class V3d_ColorScaleLayerItem;
 
 
-//! This package contains the set of commands and services <br>
-//!          of the 3D Viewer. It provides a set of high level commands <br>
-//!          to control the views and viewing modes. This package is <br>
-//!          complementary to the Visual3D graphic package. <br>
-class V3d  {
+//! This package contains the set of commands and services
+//! of the 3D Viewer. It provides a set of high level commands
+//! to control the views and viewing modes. This package is
+//! complementary to the Visual3D graphic package.
+class V3d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Determines the orientation vector corresponding <br>
-//!          to the predefined orientation type. <br>
-  Standard_EXPORT   static  Graphic3d_Vector GetProjAxis(const V3d_TypeOfOrientation Orientation) ;
-  //! Compute the graphic structure of arrow. <br>
-//!          X0,Y0,Z0 : coordinate of the arrow. <br>
-//!          DX,DY,DZ : Direction of the arrow. <br>
-//!          Alpha    : Angle of arrow. <br>
-//!          Lng      : Length of arrow. <br>
-  Standard_EXPORT   static  void ArrowOfRadius(const Handle(Graphic3d_Group)& garrow,const V3d_Coordinate X0,const V3d_Coordinate Y0,const V3d_Coordinate Z0,const V3d_Parameter DX,const V3d_Parameter DY,const V3d_Parameter DZ,const Quantity_PlaneAngle Alpha,const V3d_Parameter Lng) ;
-  //! Compute the graphic structure of circle. <br>
-//!          X0,Y0,Z0 : Center of circle. <br>
-//!          VX,VY,VZ : Axis of circle. <br>
-//!          Radius   : Radius of circle. <br>
-  Standard_EXPORT   static  void CircleInPlane(const Handle(Graphic3d_Group)& gcircle,const V3d_Coordinate X0,const V3d_Coordinate Y0,const V3d_Coordinate Z0,const V3d_Parameter VX,const V3d_Parameter VY,const V3d_Parameter VZ,const V3d_Parameter Radius) ;
   
-  Standard_EXPORT   static  void SwitchViewsinWindow(const Handle(V3d_View)& aPreviousView,const Handle(V3d_View)& aNextView) ;
-  //! test. <br>
-  Standard_EXPORT   static  void DrawSphere(const Handle(V3d_Viewer)& aViewer,const Quantity_Length aRadius = 1000) ;
-  //! test. <br>
-  Standard_EXPORT   static  void PickGrid(const Handle(V3d_Viewer)& aViewer,const Quantity_Length aRadius = 1000) ;
-  //! test. <br>
-  Standard_EXPORT   static  void SetPlane(const Handle(V3d_Viewer)& aViewer,const Quantity_Length x1,const Quantity_Length y1,const Quantity_Length z1,const Quantity_Length x2,const Quantity_Length y2,const Quantity_Length z2) ;
-
+  //! Determines the orientation vector corresponding
+  //! to the predefined orientation type.
+  Standard_EXPORT static   Graphic3d_Vector GetProjAxis (const V3d_TypeOfOrientation Orientation) ;
+  
+  //! Compute the graphic structure of arrow.
+  //! X0,Y0,Z0 : coordinate of the arrow.
+  //! DX,DY,DZ : Direction of the arrow.
+  //! Alpha    : Angle of arrow.
+  //! Lng      : Length of arrow.
+  Standard_EXPORT static   void ArrowOfRadius (const Handle(Graphic3d_Group)& garrow, const V3d_Coordinate X0, const V3d_Coordinate Y0, const V3d_Coordinate Z0, const V3d_Parameter DX, const V3d_Parameter DY, const V3d_Parameter DZ, const Quantity_PlaneAngle Alpha, const V3d_Parameter Lng) ;
+  
+  //! Compute the graphic structure of circle.
+  //! X0,Y0,Z0 : Center of circle.
+  //! VX,VY,VZ : Axis of circle.
+  //! Radius   : Radius of circle.
+  Standard_EXPORT static   void CircleInPlane (const Handle(Graphic3d_Group)& gcircle, const V3d_Coordinate X0, const V3d_Coordinate Y0, const V3d_Coordinate Z0, const V3d_Parameter VX, const V3d_Parameter VY, const V3d_Parameter VZ, const V3d_Parameter Radius) ;
+  
+  Standard_EXPORT static   void SwitchViewsinWindow (const Handle(V3d_View)& aPreviousView, const Handle(V3d_View)& aNextView) ;
+  
+  //! test.
+  Standard_EXPORT static   void DrawSphere (const Handle(V3d_Viewer)& aViewer, const Quantity_Length aRadius = 1000) ;
+  
+  //! test.
+  Standard_EXPORT static   void PickGrid (const Handle(V3d_Viewer)& aViewer, const Quantity_Length aRadius = 1000) ;
+  
+  //! test.
+  Standard_EXPORT static   void SetPlane (const Handle(V3d_Viewer)& aViewer, const Quantity_Length x1, const Quantity_Length y1, const Quantity_Length z1, const Quantity_Length x2, const Quantity_Length y2, const Quantity_Length z2) ;
 
 
 
@@ -126,7 +110,6 @@ friend class V3d_ColorScaleLayerItem;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _V3d_HeaderFile

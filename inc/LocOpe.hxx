@@ -6,19 +6,11 @@
 #ifndef _LocOpe_HeaderFile
 #define _LocOpe_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopoDS_Wire;
 class TopoDS_Face;
 class TopoDS_Edge;
@@ -57,24 +49,27 @@ class LocOpe_SequenceNodeOfSequenceOfLin;
 class LocOpe_SequenceNodeOfSequenceOfCirc;
 
 
-//! Provides  tools to implement local     topological <br>
-//!          operations on a shape. <br>
-class LocOpe  {
+//! Provides  tools to implement local     topological
+//! operations on a shape.
+class LocOpe 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns Standard_True  when the wire <W> is closed <br>
-//!          on the face <OnF>. <br>
-  Standard_EXPORT   static  Standard_Boolean Closed(const TopoDS_Wire& W,const TopoDS_Face& OnF) ;
-  //! Returns Standard_True  when the edge <E> is closed <br>
-//!          on the face <OnF>. <br>
-  Standard_EXPORT   static  Standard_Boolean Closed(const TopoDS_Edge& E,const TopoDS_Face& OnF) ;
-  //! Returns Standard_True  when the faces are tangent <br>
-  Standard_EXPORT   static  Standard_Boolean TgtFaces(const TopoDS_Edge& E,const TopoDS_Face& F1,const TopoDS_Face& F2) ;
   
-  Standard_EXPORT   static  void SampleEdges(const TopoDS_Shape& S,TColgp_SequenceOfPnt& Pt) ;
-
+  //! Returns Standard_True  when the wire <W> is closed
+  //! on the face <OnF>.
+  Standard_EXPORT static   Standard_Boolean Closed (const TopoDS_Wire& W, const TopoDS_Face& OnF) ;
+  
+  //! Returns Standard_True  when the edge <E> is closed
+  //! on the face <OnF>.
+  Standard_EXPORT static   Standard_Boolean Closed (const TopoDS_Edge& E, const TopoDS_Face& OnF) ;
+  
+  //! Returns Standard_True  when the faces are tangent
+  Standard_EXPORT static   Standard_Boolean TgtFaces (const TopoDS_Edge& E, const TopoDS_Face& F1, const TopoDS_Face& F2) ;
+  
+  Standard_EXPORT static   void SampleEdges (const TopoDS_Shape& S, TColgp_SequenceOfPnt& Pt) ;
 
 
 
@@ -128,7 +123,6 @@ friend class LocOpe_SequenceNodeOfSequenceOfCirc;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _LocOpe_HeaderFile

@@ -6,47 +6,45 @@
 #ifndef _GeomliteTest_HeaderFile
 #define _GeomliteTest_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Draw_Interpretor_HeaderFile
 #include <Draw_Interpretor.hxx>
-#endif
 
 
-//! this  package  provides  elementary commands for  curves  and <br>
-//!          surface. <br>
-class GeomliteTest  {
+//! this  package  provides  elementary commands for  curves  and
+//! surface.
+class GeomliteTest 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! defines all geometric commands. <br>
-  Standard_EXPORT   static  void AllCommands(Draw_Interpretor& I) ;
-  //! defines curve commands. <br>
-  Standard_EXPORT   static  void CurveCommands(Draw_Interpretor& I) ;
-  //! defines surface commands. <br>
-  Standard_EXPORT   static  void SurfaceCommands(Draw_Interpretor& I) ;
-  //! defines commands to test the Geom2dAPI <br>
-//!          - Intersection <br>
-//!          - Extrema <br>
-//!          - Projection <br>
-//!          - Approximation, interpolation <br>
-  Standard_EXPORT   static  void API2dCommands(Draw_Interpretor& I) ;
-  //! defines constrained curves commands. <br>
-  Standard_EXPORT   static  void ApproxCommands(Draw_Interpretor& I) ;
-  //! defines curves and surfaces modification commands. <br>
-//!          - Curve extension to point <br>
-//!          - Surface extension by length <br>
-  Standard_EXPORT   static  void ModificationCommands(Draw_Interpretor& I) ;
-
+  
+  //! defines all geometric commands.
+  Standard_EXPORT static   void AllCommands (Draw_Interpretor& I) ;
+  
+  //! defines curve commands.
+  Standard_EXPORT static   void CurveCommands (Draw_Interpretor& I) ;
+  
+  //! defines surface commands.
+  Standard_EXPORT static   void SurfaceCommands (Draw_Interpretor& I) ;
+  
+  //! defines commands to test the Geom2dAPI
+  //! - Intersection
+  //! - Extrema
+  //! - Projection
+  //! - Approximation, interpolation
+  Standard_EXPORT static   void API2dCommands (Draw_Interpretor& I) ;
+  
+  //! defines constrained curves commands.
+  Standard_EXPORT static   void ApproxCommands (Draw_Interpretor& I) ;
+  
+  //! defines curves and surfaces modification commands.
+  //! - Curve extension to point
+  //! - Surface extension by length
+  Standard_EXPORT static   void ModificationCommands (Draw_Interpretor& I) ;
 
 
 
@@ -69,7 +67,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomliteTest_HeaderFile

@@ -6,28 +6,22 @@
 #ifndef _StepShape_GeometricallyBoundedWireframeShapeRepresentation_HeaderFile
 #define _StepShape_GeometricallyBoundedWireframeShapeRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_GeometricallyBoundedWireframeShapeRepresentation_HeaderFile
 #include <Handle_StepShape_GeometricallyBoundedWireframeShapeRepresentation.hxx>
-#endif
 
-#ifndef _StepShape_ShapeRepresentation_HeaderFile
 #include <StepShape_ShapeRepresentation.hxx>
-#endif
 
 
 
-class StepShape_GeometricallyBoundedWireframeShapeRepresentation : public StepShape_ShapeRepresentation {
+class StepShape_GeometricallyBoundedWireframeShapeRepresentation : public StepShape_ShapeRepresentation
+{
 
 public:
 
-  //! Returns a GeometricallyBoundedWireframeShapeRepresentation <br>
-  Standard_EXPORT   StepShape_GeometricallyBoundedWireframeShapeRepresentation();
+  
+  //! Returns a GeometricallyBoundedWireframeShapeRepresentation
+  Standard_EXPORT StepShape_GeometricallyBoundedWireframeShapeRepresentation();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_GeometricallyBoundedWireframeShapeRepresentation_HeaderFile

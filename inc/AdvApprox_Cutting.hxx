@@ -6,36 +6,26 @@
 #ifndef _AdvApprox_Cutting_HeaderFile
 #define _AdvApprox_Cutting_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 
 
-//! to choose the way of cutting in approximation <br>
-class AdvApprox_Cutting  {
+//! to choose the way of cutting in approximation
+class AdvApprox_Cutting 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   virtual  void Delete() ;
+  Standard_EXPORT virtual   void Delete() ;
 Standard_EXPORT virtual ~AdvApprox_Cutting(){Delete();}
   
-  Standard_EXPORT   virtual  Standard_Boolean Value(const Standard_Real a,const Standard_Real b,Standard_Real& cuttingvalue) const = 0;
-
+  Standard_EXPORT virtual   Standard_Boolean Value (const Standard_Real a, const Standard_Real b, Standard_Real& cuttingvalue)  const = 0;
 
 
 
@@ -58,7 +48,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AdvApprox_Cutting_HeaderFile

@@ -1,12 +1,4 @@
-#ifndef _Standard_ConstructionError_HeaderFile
 #include <Standard_ConstructionError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _gp_Mat_HeaderFile
 #include <gp_Mat.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif

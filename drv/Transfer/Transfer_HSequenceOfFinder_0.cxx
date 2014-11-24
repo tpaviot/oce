@@ -5,22 +5,12 @@
 
 #include <Transfer_HSequenceOfFinder.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Transfer_Finder_HeaderFile
 #include <Transfer_Finder.hxx>
-#endif
-#ifndef _Transfer_SequenceOfFinder_HeaderFile
 #include <Transfer_SequenceOfFinder.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(Transfer_HSequenceOfFinder,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Transfer_HSequenceOfFinder)
 
 
-#define Item Handle_Transfer_Finder
+#define Item Handle(Transfer_Finder)
 #define Item_hxx <Transfer_Finder.hxx>
 #define TheSequence Transfer_SequenceOfFinder
 #define TheSequence_hxx <Transfer_SequenceOfFinder.hxx>

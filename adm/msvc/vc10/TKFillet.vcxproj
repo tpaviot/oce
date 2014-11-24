@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{251B54F2-0718-0A33-083C-FFB10FC17C68}</ProjectGuid>
+    <ProjectGuid>{75FBA5ED-0BD4-1411-1183-F60A0A0D3440}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -171,7 +171,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ChFiDS_DLL;__ChFi2d_DLL;__ChFi3d_DLL;__ChFiKPart_DLL;__Blend_DLL;__BRepBlend_DLL;__BlendFunc_DLL;__BRepFilletAPI_DLL;__FilletSurf_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ChFiDS_DLL;__ChFi2d_DLL;__ChFi3d_DLL;__ChFiKPart_DLL;__Blend_DLL;__BRepBlend_DLL;__BlendFunc_DLL;__BRepFilletAPI_DLL;__FilletSurf_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -186,7 +186,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ChFiDS_DLL;__ChFi2d_DLL;__ChFi3d_DLL;__ChFiKPart_DLL;__Blend_DLL;__BRepBlend_DLL;__BlendFunc_DLL;__BRepFilletAPI_DLL;__FilletSurf_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ChFiDS_DLL;__ChFi2d_DLL;__ChFi3d_DLL;__ChFiKPart_DLL;__Blend_DLL;__BRepBlend_DLL;__BlendFunc_DLL;__BRepFilletAPI_DLL;__FilletSurf_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKBRep.lib;TKernel.lib;TKMath.lib;TKGeomBase.lib;TKGeomAlgo.lib;TKG2d.lib;TKTopAlgo.lib;TKG3d.lib;TKBool.lib;TKShHealing.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -214,7 +214,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ChFiDS_DLL;__ChFi2d_DLL;__ChFi3d_DLL;__ChFiKPart_DLL;__Blend_DLL;__BRepBlend_DLL;__BlendFunc_DLL;__BRepFilletAPI_DLL;__FilletSurf_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ChFiDS_DLL;__ChFi2d_DLL;__ChFi3d_DLL;__ChFiKPart_DLL;__Blend_DLL;__BRepBlend_DLL;__BlendFunc_DLL;__BRepFilletAPI_DLL;__FilletSurf_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win64\vc10\objd\TKFillet/</AssemblerListingLocation>
@@ -230,7 +230,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ChFiDS_DLL;__ChFi2d_DLL;__ChFi3d_DLL;__ChFiKPart_DLL;__Blend_DLL;__BRepBlend_DLL;__BlendFunc_DLL;__BRepFilletAPI_DLL;__FilletSurf_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ChFiDS_DLL;__ChFi2d_DLL;__ChFi3d_DLL;__ChFiKPart_DLL;__Blend_DLL;__BRepBlend_DLL;__BlendFunc_DLL;__BRepFilletAPI_DLL;__FilletSurf_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKBRep.lib;TKernel.lib;TKMath.lib;TKGeomBase.lib;TKGeomAlgo.lib;TKG2d.lib;TKTopAlgo.lib;TKG3d.lib;TKBool.lib;TKShHealing.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>

@@ -6,31 +6,15 @@
 #ifndef _TDF_Transaction_HeaderFile
 #define _TDF_Transaction_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_TDF_Data_HeaderFile
 #include <Handle_TDF_Data.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Handle_TDF_Delta_HeaderFile
 #include <Handle_TDF_Delta.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TDF_Data;
 class Standard_DomainError;
 class Standard_NullObject;
@@ -38,63 +22,68 @@ class TDF_Delta;
 class TCollection_AsciiString;
 
 
-//! This class offers services to open, commit or <br>
-//!          abort a transaction in a more secure way than <br>
-//!          using Data from TDF. If you forget to close a <br>
-//!          transaction, it will be automaticaly aborted at <br>
-//!          the destruction of this object, at the closure of <br>
-//!          its scope. <br>
-//! <br>
-//!          In case of catching errors, the effect will be the <br>
-//!          same: aborting transactions until the good current <br>
-//!          one. <br>
-class TDF_Transaction  {
+//! This class offers services to open, commit or
+//! abort a transaction in a more secure way than
+//! using Data from TDF. If you forget to close a
+//! transaction, it will be automaticaly aborted at
+//! the destruction of this object, at the closure of
+//! its scope.
+//!
+//! In case of catching errors, the effect will be the
+//! same: aborting transactions until the good current
+//! one.
+class TDF_Transaction 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an empty transaction context, unable to be <br>
-//!          opened. <br>
-  Standard_EXPORT   TDF_Transaction(const TCollection_AsciiString& aName = "");
-  //! Creates a transaction context on <aDF>, ready to <br>
-//!          be opened. <br>
-  Standard_EXPORT   TDF_Transaction(const Handle(TDF_Data)& aDF,const TCollection_AsciiString& aName = "");
-  //! Aborts all the transactions on <myDF> and sets <br>
-//!          <aDF> to build a transaction context on <aDF>, <br>
-//!          ready to be opened. <br>
-  Standard_EXPORT     void Initialize(const Handle(TDF_Data)& aDF) ;
-  //! If not yet done, opens a new transaction on <br>
-//!          <myDF>. Returns the index of the just opened <br>
-//!          transaction. <br>
-//! <br>
-//!          It raises DomainError if the transaction is <br>
-//!          already open, and NullObject if there is no <br>
-//!          current Data framework. <br>
-  Standard_EXPORT     Standard_Integer Open() ;
-  //! Commits the transactions until AND including the <br>
-//!          current opened one. <br>
-  Standard_EXPORT     Handle_TDF_Delta Commit(const Standard_Boolean withDelta = Standard_False) ;
-  //! Aborts the transactions until AND including the <br>
-//!          current opened one. <br>
-//! <br>
-  Standard_EXPORT     void Abort() ;
+  
+  //! Creates an empty transaction context, unable to be
+  //! opened.
+  Standard_EXPORT TDF_Transaction(const TCollection_AsciiString& aName = "");
+  
+  //! Creates a transaction context on <aDF>, ready to
+  //! be opened.
+  Standard_EXPORT TDF_Transaction(const Handle(TDF_Data)& aDF, const TCollection_AsciiString& aName = "");
+  
+  //! Aborts all the transactions on <myDF> and sets
+  //! <aDF> to build a transaction context on <aDF>,
+  //! ready to be opened.
+  Standard_EXPORT   void Initialize (const Handle(TDF_Data)& aDF) ;
+  
+  //! If not yet done, opens a new transaction on
+  //! <myDF>. Returns the index of the just opened
+  //! transaction.
+  //!
+  //! It raises DomainError if the transaction is
+  //! already open, and NullObject if there is no
+  //! current Data framework.
+  Standard_EXPORT   Standard_Integer Open() ;
+  
+  //! Commits the transactions until AND including the
+  //! current opened one.
+  Standard_EXPORT   Handle(TDF_Delta) Commit (const Standard_Boolean withDelta = Standard_False) ;
+  
+  //! Aborts the transactions until AND including the
+  //! current opened one.
+  Standard_EXPORT   void Abort() ;
 ~TDF_Transaction()
 {
   Abort();
 }
-  //! Returns the Data from TDF. <br>
-//! <br>
-        Handle_TDF_Data Data() const;
-  //! Returns the number of the transaction opened by <me>. <br>
-//! <br>
-        Standard_Integer Transaction() const;
-  //! Returns the transaction name. <br>
-//! <br>
-  Standard_EXPORT    const TCollection_AsciiString& Name() const;
-  //! Returns true if the transaction is open. <br>
-//! <br>
-        Standard_Boolean IsOpen() const;
-
+  
+  //! Returns the Data from TDF.
+      Handle(TDF_Data) Data()  const;
+  
+  //! Returns the number of the transaction opened by <me>.
+      Standard_Integer Transaction()  const;
+  
+  //! Returns the transaction name.
+  Standard_EXPORT  const  TCollection_AsciiString& Name()  const;
+  
+  //! Returns true if the transaction is open.
+      Standard_Boolean IsOpen()  const;
 
 
 
@@ -107,13 +96,14 @@ protected:
 
 private:
 
-  //! Private to avoid copy. <br>
-  Standard_EXPORT   TDF_Transaction(const TDF_Transaction& aTrans);
+  
+  //! Private to avoid copy.
+  Standard_EXPORT TDF_Transaction(const TDF_Transaction& aTrans);
 
 
-Handle_TDF_Data myDF;
-Standard_Integer myUntilTransaction;
-TCollection_AsciiString myName;
+  Handle(TDF_Data) myDF;
+  Standard_Integer myUntilTransaction;
+  TCollection_AsciiString myName;
 
 
 };
@@ -123,7 +113,6 @@ TCollection_AsciiString myName;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_Transaction_HeaderFile

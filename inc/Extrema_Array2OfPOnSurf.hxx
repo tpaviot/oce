@@ -6,25 +6,13 @@
 #ifndef _Extrema_Array2OfPOnSurf_HeaderFile
 #define _Extrema_Array2OfPOnSurf_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_RangeError;
 class Standard_OutOfRange;
 class Standard_OutOfMemory;
@@ -33,56 +21,56 @@ class Extrema_POnSurf;
 
 
 
-class Extrema_Array2OfPOnSurf  {
+class Extrema_Array2OfPOnSurf 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Extrema_Array2OfPOnSurf(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+  Standard_EXPORT Extrema_Array2OfPOnSurf(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2);
   
-  Standard_EXPORT   Extrema_Array2OfPOnSurf(const Extrema_POnSurf& Item,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+  Standard_EXPORT Extrema_Array2OfPOnSurf(const Extrema_POnSurf& Item, const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2);
   
-  Standard_EXPORT     void Init(const Extrema_POnSurf& V) ;
+  Standard_EXPORT   void Init (const Extrema_POnSurf& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+  Standard_EXPORT   void Destroy() ;
 ~Extrema_Array2OfPOnSurf()
 {
   Destroy();
 }
   
-  Standard_EXPORT    const Extrema_Array2OfPOnSurf& Assign(const Extrema_Array2OfPOnSurf& Other) ;
-   const Extrema_Array2OfPOnSurf& operator =(const Extrema_Array2OfPOnSurf& Other) 
+  Standard_EXPORT  const  Extrema_Array2OfPOnSurf& Assign (const Extrema_Array2OfPOnSurf& Other) ;
+ const  Extrema_Array2OfPOnSurf& operator = (const Extrema_Array2OfPOnSurf& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer ColLength() const;
+      Standard_Integer ColLength()  const;
   
-        Standard_Integer RowLength() const;
+      Standard_Integer RowLength()  const;
   
-        Standard_Integer LowerCol() const;
+      Standard_Integer LowerCol()  const;
   
-        Standard_Integer LowerRow() const;
+      Standard_Integer LowerRow()  const;
   
-        Standard_Integer UpperCol() const;
+      Standard_Integer UpperCol()  const;
   
-        Standard_Integer UpperRow() const;
+      Standard_Integer UpperRow()  const;
   
-        void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Extrema_POnSurf& Value) ;
+      void SetValue (const Standard_Integer Row, const Standard_Integer Col, const Extrema_POnSurf& Value) ;
   
-       const Extrema_POnSurf& Value(const Standard_Integer Row,const Standard_Integer Col) const;
-     const Extrema_POnSurf& operator()(const Standard_Integer Row,const Standard_Integer Col) const
+     const  Extrema_POnSurf& Value (const Standard_Integer Row, const Standard_Integer Col)  const;
+   const  Extrema_POnSurf& operator() (const Standard_Integer Row, const Standard_Integer Col)  const
 {
   return Value(Row,Col);
 }
   
-        Extrema_POnSurf& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
-      Extrema_POnSurf& operator()(const Standard_Integer Row,const Standard_Integer Col) 
+      Extrema_POnSurf& ChangeValue (const Standard_Integer Row, const Standard_Integer Col) ;
+    Extrema_POnSurf& operator() (const Standard_Integer Row, const Standard_Integer Col) 
 {
   return ChangeValue(Row,Col);
 }
-
 
 
 
@@ -96,17 +84,17 @@ protected:
 private:
 
   
-  Standard_EXPORT   Extrema_Array2OfPOnSurf(const Extrema_Array2OfPOnSurf& AnArray);
+  Standard_EXPORT Extrema_Array2OfPOnSurf(const Extrema_Array2OfPOnSurf& AnArray);
   
-  Standard_EXPORT     void Allocate() ;
+  Standard_EXPORT   void Allocate() ;
 
 
-Standard_Integer myLowerRow;
-Standard_Integer myLowerColumn;
-Standard_Integer myUpperRow;
-Standard_Integer myUpperColumn;
-Standard_Boolean myDeletable;
-Standard_Address myData;
+  Standard_Integer myLowerRow;
+  Standard_Integer myLowerColumn;
+  Standard_Integer myUpperRow;
+  Standard_Integer myUpperColumn;
+  Standard_Boolean myDeletable;
+  Standard_Address myData;
 
 
 };
@@ -124,7 +112,6 @@ Standard_Address myData;
 #undef TCollection_Array2_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Extrema_Array2OfPOnSurf_HeaderFile

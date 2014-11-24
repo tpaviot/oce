@@ -6,28 +6,14 @@
 #ifndef _MoniTool_DataMapNodeOfDataMapOfTimer_HeaderFile
 #define _MoniTool_DataMapNodeOfDataMapOfTimer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MoniTool_DataMapNodeOfDataMapOfTimer_HeaderFile
 #include <Handle_MoniTool_DataMapNodeOfDataMapOfTimer.hxx>
-#endif
 
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_MoniTool_Timer_HeaderFile
 #include <Handle_MoniTool_Timer.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class MoniTool_Timer;
 class MoniTool_MTHasher;
 class MoniTool_DataMapOfTimer;
@@ -35,16 +21,17 @@ class MoniTool_DataMapIteratorOfDataMapOfTimer;
 
 
 
-class MoniTool_DataMapNodeOfDataMapOfTimer : public TCollection_MapNode {
+class MoniTool_DataMapNodeOfDataMapOfTimer : public TCollection_MapNode
+{
 
 public:
 
   
-      MoniTool_DataMapNodeOfDataMapOfTimer(const Standard_CString& K,const Handle(MoniTool_Timer)& I,const TCollection_MapNodePtr& n);
+    MoniTool_DataMapNodeOfDataMapOfTimer(const Standard_CString& K, const Handle(MoniTool_Timer)& I, const TCollection_MapNodePtr& n);
   
-        Standard_CString& Key() const;
+      Standard_CString& Key()  const;
   
-        Handle_MoniTool_Timer& Value() const;
+      Handle(MoniTool_Timer)& Value()  const;
 
 
 
@@ -59,15 +46,15 @@ protected:
 private: 
 
 
-Standard_CString myKey;
-Handle_MoniTool_Timer myValue;
+  Standard_CString myKey;
+  Handle(MoniTool_Timer) myValue;
 
 
 };
 
 #define TheKey Standard_CString
 #define TheKey_hxx <Standard_CString.hxx>
-#define TheItem Handle_MoniTool_Timer
+#define TheItem Handle(MoniTool_Timer)
 #define TheItem_hxx <MoniTool_Timer.hxx>
 #define Hasher MoniTool_MTHasher
 #define Hasher_hxx <MoniTool_MTHasher.hxx>
@@ -98,7 +85,6 @@ Handle_MoniTool_Timer myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MoniTool_DataMapNodeOfDataMapOfTimer_HeaderFile

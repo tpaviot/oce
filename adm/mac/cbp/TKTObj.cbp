@@ -75,6 +75,8 @@
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 		</Linker>
 		<Unit filename="../../../src/TObj/TObj_Application.cxx" />
 		<Unit filename="../../../src/TObj/TObj_Assistant.cxx" />

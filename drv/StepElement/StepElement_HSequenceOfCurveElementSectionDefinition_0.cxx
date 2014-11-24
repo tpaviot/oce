@@ -5,22 +5,12 @@
 
 #include <StepElement_HSequenceOfCurveElementSectionDefinition.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StepElement_CurveElementSectionDefinition_HeaderFile
 #include <StepElement_CurveElementSectionDefinition.hxx>
-#endif
-#ifndef _StepElement_SequenceOfCurveElementSectionDefinition_HeaderFile
 #include <StepElement_SequenceOfCurveElementSectionDefinition.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(StepElement_HSequenceOfCurveElementSectionDefinition,Standard
 IMPLEMENT_STANDARD_RTTI(StepElement_HSequenceOfCurveElementSectionDefinition)
 
 
-#define Item Handle_StepElement_CurveElementSectionDefinition
+#define Item Handle(StepElement_CurveElementSectionDefinition)
 #define Item_hxx <StepElement_CurveElementSectionDefinition.hxx>
 #define TheSequence StepElement_SequenceOfCurveElementSectionDefinition
 #define TheSequence_hxx <StepElement_SequenceOfCurveElementSectionDefinition.hxx>

@@ -6,14 +6,13 @@
 #ifndef _StepToTopoDS_TranslateEdgeLoopError_HeaderFile
 #define _StepToTopoDS_TranslateEdgeLoopError_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepToTopoDS_TranslateEdgeLoopError {
+
+enum StepToTopoDS_TranslateEdgeLoopError
+{
 StepToTopoDS_TranslateEdgeLoopDone,
 StepToTopoDS_TranslateEdgeLoopOther
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepToTopoDS_TranslateEdgeLoopError_HeaderFile

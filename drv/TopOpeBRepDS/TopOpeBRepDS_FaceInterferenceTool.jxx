@@ -1,15 +1,5 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Interference_HeaderFile
 #include <TopOpeBRepDS_Interference.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Curve_HeaderFile
 #include <TopOpeBRepDS_Curve.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _TopOpeBRepDS_FaceInterferenceTool_HeaderFile
 #include <TopOpeBRepDS_FaceInterferenceTool.hxx>
-#endif

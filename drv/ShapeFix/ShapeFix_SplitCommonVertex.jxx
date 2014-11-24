@@ -1,6 +1,2 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _ShapeFix_SplitCommonVertex_HeaderFile
 #include <ShapeFix_SplitCommonVertex.hxx>
-#endif

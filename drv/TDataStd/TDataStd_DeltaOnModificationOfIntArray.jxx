@@ -1,9 +1,3 @@
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _TDataStd_IntegerArray_HeaderFile
 #include <TDataStd_IntegerArray.hxx>
-#endif
-#ifndef _TDataStd_DeltaOnModificationOfIntArray_HeaderFile
 #include <TDataStd_DeltaOnModificationOfIntArray.hxx>
-#endif

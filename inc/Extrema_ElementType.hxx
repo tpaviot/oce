@@ -6,16 +6,15 @@
 #ifndef _Extrema_ElementType_HeaderFile
 #define _Extrema_ElementType_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Extrema_ElementType {
+
+enum Extrema_ElementType
+{
 Extrema_Node,
 Extrema_UIsoEdge,
 Extrema_VIsoEdge,
 Extrema_Face
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Extrema_ElementType_HeaderFile

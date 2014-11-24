@@ -1,6 +1,2 @@
-#ifndef _Poly_Triangulation_HeaderFile
 #include <Poly_Triangulation.hxx>
-#endif
-#ifndef _Poly_Connect_HeaderFile
 #include <Poly_Connect.hxx>
-#endif

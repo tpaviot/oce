@@ -1,27 +1,9 @@
-#ifndef _GeomFill_LocationLaw_HeaderFile
 #include <GeomFill_LocationLaw.hxx>
-#endif
-#ifndef _Geom_Curve_HeaderFile
 #include <Geom_Curve.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Geom_Geometry_HeaderFile
 #include <Geom_Geometry.hxx>
-#endif
-#ifndef _Adaptor3d_HCurve_HeaderFile
 #include <Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _gp_Trsf_HeaderFile
 #include <gp_Trsf.hxx>
-#endif
-#ifndef _gp_Mat_HeaderFile
 #include <gp_Mat.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _GeomFill_SectionPlacement_HeaderFile
 #include <GeomFill_SectionPlacement.hxx>
-#endif

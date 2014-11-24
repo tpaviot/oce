@@ -1,15 +1,5 @@
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepVisual_Colour_HeaderFile
 #include <StepVisual_Colour.hxx>
-#endif
-#ifndef _StepVisual_CurveStyleFontSelect_HeaderFile
 #include <StepVisual_CurveStyleFontSelect.hxx>
-#endif
-#ifndef _StepBasic_SizeSelect_HeaderFile
 #include <StepBasic_SizeSelect.hxx>
-#endif
-#ifndef _StepVisual_CurveStyle_HeaderFile
 #include <StepVisual_CurveStyle.hxx>
-#endif

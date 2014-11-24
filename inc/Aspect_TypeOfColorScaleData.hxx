@@ -6,14 +6,13 @@
 #ifndef _Aspect_TypeOfColorScaleData_HeaderFile
 #define _Aspect_TypeOfColorScaleData_HeaderFile
 
-//! Defines the using type of colors and labels <br>
-enum Aspect_TypeOfColorScaleData {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Defines the using type of colors and labels
+enum Aspect_TypeOfColorScaleData
+{
 Aspect_TOCSD_AUTO,
 Aspect_TOCSD_USER
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_TypeOfColorScaleData_HeaderFile

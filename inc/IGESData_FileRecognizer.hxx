@@ -6,44 +6,31 @@
 #ifndef _IGESData_FileRecognizer_HeaderFile
 #define _IGESData_FileRecognizer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESData_FileRecognizer_HeaderFile
 #include <Handle_IGESData_FileRecognizer.hxx>
-#endif
 
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_IGESData_FileRecognizer_HeaderFile
 #include <Handle_IGESData_FileRecognizer.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
 class IGESData_IGESEntity;
 class Standard_NoSuchObject;
 class IGESData_IGESType;
 
 
 
-class IGESData_FileRecognizer : public Standard_Transient {
+class IGESData_FileRecognizer : public Standard_Transient
+{
 
 public:
 
   
-  Standard_EXPORT     Standard_Boolean Evaluate(const IGESData_IGESType& akey,Handle(IGESData_IGESEntity)& res) ;
+  Standard_EXPORT   Standard_Boolean Evaluate (const IGESData_IGESType& akey, Handle(IGESData_IGESEntity)& res) ;
   
-  Standard_EXPORT     Handle_IGESData_IGESEntity Result() const;
+  Standard_EXPORT   Handle(IGESData_IGESEntity) Result()  const;
   
-  Standard_EXPORT     void Add(const Handle(IGESData_FileRecognizer)& reco) ;
+  Standard_EXPORT   void Add (const Handle(IGESData_FileRecognizer)& reco) ;
 
 
 
@@ -53,22 +40,22 @@ public:
 protected:
 
   
-  Standard_EXPORT   IGESData_FileRecognizer();
+  Standard_EXPORT IGESData_FileRecognizer();
   
-  Standard_EXPORT     void SetOK(const Handle(IGESData_IGESEntity)& aresult) ;
+  Standard_EXPORT   void SetOK (const Handle(IGESData_IGESEntity)& aresult) ;
   
-  Standard_EXPORT     void SetKO() ;
+  Standard_EXPORT   void SetKO() ;
   
-  Standard_EXPORT   virtual  void Eval(const IGESData_IGESType& akey)  = 0;
+  Standard_EXPORT virtual   void Eval (const IGESData_IGESType& akey)  = 0;
 
 
 
 private: 
 
 
-Handle_IGESData_IGESEntity theres;
-Standard_Boolean hasnext;
-Handle_IGESData_FileRecognizer thenext;
+  Handle(IGESData_IGESEntity) theres;
+  Standard_Boolean hasnext;
+  Handle(IGESData_FileRecognizer) thenext;
 
 
 };
@@ -77,7 +64,6 @@ Handle_IGESData_FileRecognizer thenext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESData_FileRecognizer_HeaderFile

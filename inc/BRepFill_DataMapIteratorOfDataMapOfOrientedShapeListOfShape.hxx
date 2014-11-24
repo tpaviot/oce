@@ -6,22 +6,12 @@
 #ifndef _BRepFill_DataMapIteratorOfDataMapOfOrientedShapeListOfShape_HeaderFile
 #define _BRepFill_DataMapIteratorOfDataMapOfOrientedShapeListOfShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape_HeaderFile
 #include <Handle_BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape.hxx>
-#endif
 class Standard_NoSuchObject;
 class TopoDS_Shape;
 class TopTools_ListOfShape;
@@ -31,22 +21,22 @@ class BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape;
 
 
 
-class BRepFill_DataMapIteratorOfDataMapOfOrientedShapeListOfShape  : public TCollection_BasicMapIterator {
+class BRepFill_DataMapIteratorOfDataMapOfOrientedShapeListOfShape  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepFill_DataMapIteratorOfDataMapOfOrientedShapeListOfShape();
+  Standard_EXPORT BRepFill_DataMapIteratorOfDataMapOfOrientedShapeListOfShape();
   
-  Standard_EXPORT   BRepFill_DataMapIteratorOfDataMapOfOrientedShapeListOfShape(const BRepFill_DataMapOfOrientedShapeListOfShape& aMap);
+  Standard_EXPORT BRepFill_DataMapIteratorOfDataMapOfOrientedShapeListOfShape(const BRepFill_DataMapOfOrientedShapeListOfShape& aMap);
   
-  Standard_EXPORT     void Initialize(const BRepFill_DataMapOfOrientedShapeListOfShape& aMap) ;
+  Standard_EXPORT   void Initialize (const BRepFill_DataMapOfOrientedShapeListOfShape& aMap) ;
   
-  Standard_EXPORT    const TopoDS_Shape& Key() const;
+  Standard_EXPORT  const  TopoDS_Shape& Key()  const;
   
-  Standard_EXPORT    const TopTools_ListOfShape& Value() const;
-
+  Standard_EXPORT  const  TopTools_ListOfShape& Value()  const;
 
 
 
@@ -69,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepFill_DataMapIteratorOfDataMapOfOrientedShapeListOfShape_HeaderFile

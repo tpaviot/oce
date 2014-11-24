@@ -6,22 +6,15 @@
 #ifndef _Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis_HeaderFile
 #define _Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_ShapeUpgrade_SplitSurface_HeaderFile
 #include <Handle_ShapeUpgrade_SplitSurface.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(ShapeUpgrade_SplitSurface);
 class ShapeUpgrade_ConvertSurfaceToBezierBasis;
 
-DEFINE_STANDARD_HANDLE(ShapeUpgrade_ConvertSurfaceToBezierBasis,ShapeUpgrade_SplitSurface)
+DEFINE_STANDARD_HANDLE(ShapeUpgrade_ConvertSurfaceToBezierBasis, ShapeUpgrade_SplitSurface)
 
-#endif
+#endif // _Handle_ShapeUpgrade_ConvertSurfaceToBezierBasis_HeaderFile

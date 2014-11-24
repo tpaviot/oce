@@ -6,28 +6,14 @@
 #ifndef _TColQuantity_HArray2OfLength_HeaderFile
 #define _TColQuantity_HArray2OfLength_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColQuantity_HArray2OfLength_HeaderFile
 #include <Handle_TColQuantity_HArray2OfLength.hxx>
-#endif
 
-#ifndef _TColQuantity_Array2OfLength_HeaderFile
 #include <TColQuantity_Array2OfLength.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Quantity_Length_HeaderFile
 #include <Quantity_Length.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_OutOfRange;
 class Standard_OutOfMemory;
@@ -36,38 +22,39 @@ class TColQuantity_Array2OfLength;
 
 
 
-class TColQuantity_HArray2OfLength : public MMgt_TShared {
+class TColQuantity_HArray2OfLength : public MMgt_TShared
+{
 
 public:
 
   
-      TColQuantity_HArray2OfLength(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+    TColQuantity_HArray2OfLength(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2);
   
-      TColQuantity_HArray2OfLength(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Quantity_Length& V);
+    TColQuantity_HArray2OfLength(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2, const Quantity_Length& V);
   
-        void Init(const Quantity_Length& V) ;
+      void Init (const Quantity_Length& V) ;
   
-        Standard_Integer ColLength() const;
+      Standard_Integer ColLength()  const;
   
-        Standard_Integer RowLength() const;
+      Standard_Integer RowLength()  const;
   
-        Standard_Integer LowerCol() const;
+      Standard_Integer LowerCol()  const;
   
-        Standard_Integer LowerRow() const;
+      Standard_Integer LowerRow()  const;
   
-        Standard_Integer UpperCol() const;
+      Standard_Integer UpperCol()  const;
   
-        Standard_Integer UpperRow() const;
+      Standard_Integer UpperRow()  const;
   
-        void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Quantity_Length& Value) ;
+      void SetValue (const Standard_Integer Row, const Standard_Integer Col, const Quantity_Length& Value) ;
   
-       const Quantity_Length& Value(const Standard_Integer Row,const Standard_Integer Col) const;
+     const  Quantity_Length& Value (const Standard_Integer Row, const Standard_Integer Col)  const;
   
-        Quantity_Length& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
+      Quantity_Length& ChangeValue (const Standard_Integer Row, const Standard_Integer Col) ;
   
-       const TColQuantity_Array2OfLength& Array2() const;
+     const  TColQuantity_Array2OfLength& Array2()  const;
   
-        TColQuantity_Array2OfLength& ChangeArray2() ;
+      TColQuantity_Array2OfLength& ChangeArray2() ;
 
 
 
@@ -82,7 +69,7 @@ protected:
 private: 
 
 
-TColQuantity_Array2OfLength myArray;
+  TColQuantity_Array2OfLength myArray;
 
 
 };
@@ -108,7 +95,6 @@ TColQuantity_Array2OfLength myArray;
 #undef TCollection_HArray2_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColQuantity_HArray2OfLength_HeaderFile

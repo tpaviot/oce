@@ -1,3 +1,1 @@
-#ifndef _math_IntegerRandom_HeaderFile
 #include <math_IntegerRandom.hxx>
-#endif

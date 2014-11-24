@@ -6,8 +6,11 @@
 #ifndef _LocalAnalysis_StatusErrorType_HeaderFile
 #define _LocalAnalysis_StatusErrorType_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum LocalAnalysis_StatusErrorType {
+
+enum LocalAnalysis_StatusErrorType
+{
 LocalAnalysis_NullFirstDerivative,
 LocalAnalysis_NullSecondDerivative,
 LocalAnalysis_TangentNotDefined,
@@ -15,8 +18,4 @@ LocalAnalysis_NormalNotDefined,
 LocalAnalysis_CurvatureNotDefined
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _LocalAnalysis_StatusErrorType_HeaderFile

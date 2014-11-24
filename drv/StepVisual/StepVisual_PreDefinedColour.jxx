@@ -1,6 +1,2 @@
-#ifndef _StepVisual_PreDefinedItem_HeaderFile
 #include <StepVisual_PreDefinedItem.hxx>
-#endif
-#ifndef _StepVisual_PreDefinedColour_HeaderFile
 #include <StepVisual_PreDefinedColour.hxx>
-#endif

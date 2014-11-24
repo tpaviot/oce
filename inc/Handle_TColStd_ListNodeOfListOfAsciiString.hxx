@@ -6,22 +6,15 @@
 #ifndef _Handle_TColStd_ListNodeOfListOfAsciiString_HeaderFile
 #define _Handle_TColStd_ListNodeOfListOfAsciiString_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TCollection_MapNode_HeaderFile
 #include <Handle_TCollection_MapNode.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TCollection_MapNode);
 class TColStd_ListNodeOfListOfAsciiString;
 
-DEFINE_STANDARD_HANDLE(TColStd_ListNodeOfListOfAsciiString,TCollection_MapNode)
+DEFINE_STANDARD_HANDLE(TColStd_ListNodeOfListOfAsciiString, TCollection_MapNode)
 
-#endif
+#endif // _Handle_TColStd_ListNodeOfListOfAsciiString_HeaderFile

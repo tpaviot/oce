@@ -6,28 +6,14 @@
 #ifndef _ViewerTest_DoubleMapNodeOfDoubleMapOfInteractiveAndName_HeaderFile
 #define _ViewerTest_DoubleMapNodeOfDoubleMapOfInteractiveAndName_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ViewerTest_DoubleMapNodeOfDoubleMapOfInteractiveAndName_HeaderFile
 #include <Handle_ViewerTest_DoubleMapNodeOfDoubleMapOfInteractiveAndName.hxx>
-#endif
 
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
 class Standard_Transient;
 class TCollection_AsciiString;
 class TColStd_MapTransientHasher;
@@ -36,18 +22,19 @@ class ViewerTest_DoubleMapIteratorOfDoubleMapOfInteractiveAndName;
 
 
 
-class ViewerTest_DoubleMapNodeOfDoubleMapOfInteractiveAndName : public TCollection_MapNode {
+class ViewerTest_DoubleMapNodeOfDoubleMapOfInteractiveAndName : public TCollection_MapNode
+{
 
 public:
 
   
-      ViewerTest_DoubleMapNodeOfDoubleMapOfInteractiveAndName(const Handle(Standard_Transient)& K1,const TCollection_AsciiString& K2,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+    ViewerTest_DoubleMapNodeOfDoubleMapOfInteractiveAndName(const Handle(Standard_Transient)& K1, const TCollection_AsciiString& K2, const TCollection_MapNodePtr& n1, const TCollection_MapNodePtr& n2);
   
-        Handle_Standard_Transient& Key1() const;
+      Handle(Standard_Transient)& Key1()  const;
   
-        TCollection_AsciiString& Key2() const;
+      TCollection_AsciiString& Key2()  const;
   
-        TCollection_MapNodePtr& Next2() const;
+      TCollection_MapNodePtr& Next2()  const;
 
 
 
@@ -62,14 +49,14 @@ protected:
 private: 
 
 
-Handle_Standard_Transient myKey1;
-TCollection_AsciiString myKey2;
-TCollection_MapNodePtr myNext2;
+  Handle(Standard_Transient) myKey1;
+  TCollection_AsciiString myKey2;
+  TCollection_MapNodePtr myNext2;
 
 
 };
 
-#define TheKey1 Handle_Standard_Transient
+#define TheKey1 Handle(Standard_Transient)
 #define TheKey1_hxx <Standard_Transient.hxx>
 #define TheKey2 TCollection_AsciiString
 #define TheKey2_hxx <TCollection_AsciiString.hxx>
@@ -106,7 +93,6 @@ TCollection_MapNodePtr myNext2;
 #undef TCollection_DoubleMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ViewerTest_DoubleMapNodeOfDoubleMapOfInteractiveAndName_HeaderFile

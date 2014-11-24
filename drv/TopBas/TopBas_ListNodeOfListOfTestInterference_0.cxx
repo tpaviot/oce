@@ -5,19 +5,11 @@
 
 #include <TopBas_ListNodeOfListOfTestInterference.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopBas_TestInterference_HeaderFile
 #include <TopBas_TestInterference.hxx>
-#endif
-#ifndef _TopBas_ListOfTestInterference_HeaderFile
 #include <TopBas_ListOfTestInterference.hxx>
-#endif
-#ifndef _TopBas_ListIteratorOfListOfTestInterference_HeaderFile
 #include <TopBas_ListIteratorOfListOfTestInterference.hxx>
-#endif
 
  
 

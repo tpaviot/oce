@@ -6,43 +6,19 @@
 #ifndef _IntPatch_ImpImpIntersection_HeaderFile
 #define _IntPatch_ImpImpIntersection_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _IntPatch_SequenceOfPoint_HeaderFile
 #include <IntPatch_SequenceOfPoint.hxx>
-#endif
-#ifndef _IntPatch_SequenceOfLine_HeaderFile
 #include <IntPatch_SequenceOfLine.hxx>
-#endif
-#ifndef _IntPatch_TheSOnBounds_HeaderFile
 #include <IntPatch_TheSOnBounds.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_TopolTool_HeaderFile
 #include <Handle_Adaptor3d_TopolTool.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_IntPatch_Line_HeaderFile
 #include <Handle_IntPatch_Line.hxx>
-#endif
 class StdFail_NotDone;
 class Standard_OutOfRange;
 class Standard_DomainError;
@@ -53,44 +29,52 @@ class IntPatch_Point;
 class IntPatch_Line;
 
 
-//! Implementation of the intersection between two <br>
-//!          quadric patches : Plane, Cone, Cylinder or Sphere. <br>
-class IntPatch_ImpImpIntersection  {
+//! Implementation of the intersection between two
+//! quadric patches : Plane, Cone, Cylinder or Sphere.
+class IntPatch_ImpImpIntersection 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntPatch_ImpImpIntersection();
+  Standard_EXPORT IntPatch_ImpImpIntersection();
   
-  Standard_EXPORT   IntPatch_ImpImpIntersection(const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_TopolTool)& D1,const Handle(Adaptor3d_HSurface)& S2,const Handle(Adaptor3d_TopolTool)& D2,const Standard_Real TolArc,const Standard_Real TolTang);
+  Standard_EXPORT IntPatch_ImpImpIntersection(const Handle(Adaptor3d_HSurface)& S1, const Handle(Adaptor3d_TopolTool)& D1, const Handle(Adaptor3d_HSurface)& S2, const Handle(Adaptor3d_TopolTool)& D2, const Standard_Real TolArc, const Standard_Real TolTang);
   
-  Standard_EXPORT     void Perform(const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_TopolTool)& D1,const Handle(Adaptor3d_HSurface)& S2,const Handle(Adaptor3d_TopolTool)& D2,const Standard_Real TolArc,const Standard_Real TolTang,const Standard_Boolean isTheTrimmed = Standard_False) ;
-  //! Returns True if the calculus was succesfull. <br>
-        Standard_Boolean IsDone() const;
-  //! Returns true if the is no intersection. <br>
-        Standard_Boolean IsEmpty() const;
-  //! Returns True if the two patches are considered as <br>
-//!          entierly tangent, i-e every restriction arc of one <br>
-//!          patch is inside the geometric base of the otehr patch. <br>
-        Standard_Boolean TangentFaces() const;
-  //! Returns True when the TangentFaces returns True and the <br>
-//!          normal vectors evaluated at a point on the first and the <br>
-//!          second surface are opposite. <br>
-//!          The exception DomainError is raised if TangentFaces <br>
-//!          returns False. <br>
-        Standard_Boolean OppositeFaces() const;
-  //! Returns the number of "single" points. <br>
-        Standard_Integer NbPnts() const;
-  //! Returns the point of range Index. <br>
-//!          An exception is raised if Index<=0 or Index>NbPnt. <br>
-       const IntPatch_Point& Point(const Standard_Integer Index) const;
-  //! Returns the number of intersection lines. <br>
-        Standard_Integer NbLines() const;
-  //! Returns the line of range Index. <br>
-//!          An exception is raised if Index<=0 or Index>NbLine. <br>
-       const Handle_IntPatch_Line& Line(const Standard_Integer Index) const;
-
+  Standard_EXPORT   void Perform (const Handle(Adaptor3d_HSurface)& S1, const Handle(Adaptor3d_TopolTool)& D1, const Handle(Adaptor3d_HSurface)& S2, const Handle(Adaptor3d_TopolTool)& D2, const Standard_Real TolArc, const Standard_Real TolTang, const Standard_Boolean isTheTrimmed = Standard_False) ;
+  
+  //! Returns True if the calculus was succesfull.
+      Standard_Boolean IsDone()  const;
+  
+  //! Returns true if the is no intersection.
+      Standard_Boolean IsEmpty()  const;
+  
+  //! Returns True if the two patches are considered as
+  //! entierly tangent, i-e every restriction arc of one
+  //! patch is inside the geometric base of the otehr patch.
+      Standard_Boolean TangentFaces()  const;
+  
+  //! Returns True when the TangentFaces returns True and the
+  //! normal vectors evaluated at a point on the first and the
+  //! second surface are opposite.
+  //! The exception DomainError is raised if TangentFaces
+  //! returns False.
+      Standard_Boolean OppositeFaces()  const;
+  
+  //! Returns the number of "single" points.
+      Standard_Integer NbPnts()  const;
+  
+  //! Returns the point of range Index.
+  //! An exception is raised if Index<=0 or Index>NbPnt.
+     const  IntPatch_Point& Point (const Standard_Integer Index)  const;
+  
+  //! Returns the number of intersection lines.
+      Standard_Integer NbLines()  const;
+  
+  //! Returns the line of range Index.
+  //! An exception is raised if Index<=0 or Index>NbLine.
+     const  Handle(IntPatch_Line)& Line (const Standard_Integer Index)  const;
 
 
 
@@ -105,13 +89,13 @@ private:
 
 
 
-Standard_Boolean done;
-Standard_Boolean empt;
-Standard_Boolean tgte;
-Standard_Boolean oppo;
-IntPatch_SequenceOfPoint spnt;
-IntPatch_SequenceOfLine slin;
-IntPatch_TheSOnBounds solrst;
+  Standard_Boolean done;
+  Standard_Boolean empt;
+  Standard_Boolean tgte;
+  Standard_Boolean oppo;
+  IntPatch_SequenceOfPoint spnt;
+  IntPatch_SequenceOfLine slin;
+  IntPatch_TheSOnBounds solrst;
 
 
 };
@@ -121,7 +105,6 @@ IntPatch_TheSOnBounds solrst;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntPatch_ImpImpIntersection_HeaderFile

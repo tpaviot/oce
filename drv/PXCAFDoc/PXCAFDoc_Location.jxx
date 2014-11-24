@@ -1,6 +1,2 @@
-#ifndef _PTopLoc_Location_HeaderFile
 #include <PTopLoc_Location.hxx>
-#endif
-#ifndef _PXCAFDoc_Location_HeaderFile
 #include <PXCAFDoc_Location.hxx>
-#endif

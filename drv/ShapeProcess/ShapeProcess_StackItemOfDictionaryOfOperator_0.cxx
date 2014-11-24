@@ -5,22 +5,12 @@
 
 #include <ShapeProcess_StackItemOfDictionaryOfOperator.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _ShapeProcess_DictionaryOfOperator_HeaderFile
 #include <ShapeProcess_DictionaryOfOperator.hxx>
-#endif
-#ifndef _ShapeProcess_StackItemOfDictionaryOfOperator_HeaderFile
 #include <ShapeProcess_StackItemOfDictionaryOfOperator.hxx>
-#endif
-#ifndef _ShapeProcess_Operator_HeaderFile
 #include <ShapeProcess_Operator.hxx>
-#endif
-#ifndef _ShapeProcess_IteratorOfDictionaryOfOperator_HeaderFile
 #include <ShapeProcess_IteratorOfDictionaryOfOperator.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(ShapeProcess_StackItemOfDictionaryOfOperator,Standard_Transie
 IMPLEMENT_STANDARD_RTTI(ShapeProcess_StackItemOfDictionaryOfOperator)
 
 
-#define TheItem Handle_ShapeProcess_Operator
+#define TheItem Handle(ShapeProcess_Operator)
 #define TheItem_hxx <ShapeProcess_Operator.hxx>
 #define Dico_Iterator ShapeProcess_IteratorOfDictionaryOfOperator
 #define Dico_Iterator_hxx <ShapeProcess_IteratorOfDictionaryOfOperator.hxx>

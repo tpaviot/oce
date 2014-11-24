@@ -5,16 +5,10 @@
 
 #include <PColStd_VArrayNodeOfFieldOfHArray2OfInteger.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _PColStd_FieldOfHArray2OfInteger_HeaderFile
 #include <PColStd_FieldOfHArray2OfInteger.hxx>
-#endif
-#ifndef _PColStd_VArrayTNodeOfFieldOfHArray2OfInteger_HeaderFile
 #include <PColStd_VArrayTNodeOfFieldOfHArray2OfInteger.hxx>
-#endif
 
  
 

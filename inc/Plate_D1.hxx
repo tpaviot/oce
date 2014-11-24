@@ -6,45 +6,36 @@
 #ifndef _Plate_D1_HeaderFile
 #define _Plate_D1_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
 class Plate_GtoCConstraint;
 class Plate_FreeGtoCConstraint;
 class gp_XYZ;
 
 
-//! define an order 1 derivatives of a 3d valued <br>
-//!          function of a 2d variable <br>
-//! <br>
-class Plate_D1  {
+//! define an order 1 derivatives of a 3d valued
+//! function of a 2d variable
+class Plate_D1 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Plate_D1(const gp_XYZ& du,const gp_XYZ& dv);
+  Standard_EXPORT Plate_D1(const gp_XYZ& du, const gp_XYZ& dv);
   
-  Standard_EXPORT   Plate_D1(const Plate_D1& ref);
+  Standard_EXPORT Plate_D1(const Plate_D1& ref);
   
-       const gp_XYZ& DU() const;
+     const  gp_XYZ& DU()  const;
   
-       const gp_XYZ& DV() const;
+     const  gp_XYZ& DV()  const;
 
 
 friend class Plate_GtoCConstraint;
 friend class Plate_FreeGtoCConstraint;
-
 
 
 protected:
@@ -57,8 +48,8 @@ private:
 
 
 
-gp_XYZ Du;
-gp_XYZ Dv;
+  gp_XYZ Du;
+  gp_XYZ Dv;
 
 
 };
@@ -68,7 +59,6 @@ gp_XYZ Dv;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Plate_D1_HeaderFile

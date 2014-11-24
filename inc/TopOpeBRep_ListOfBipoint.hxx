@@ -6,28 +6,14 @@
 #ifndef _TopOpeBRep_ListOfBipoint_HeaderFile
 #define _TopOpeBRep_ListOfBipoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_TopOpeBRep_ListNodeOfListOfBipoint_HeaderFile
 #include <Handle_TopOpeBRep_ListNodeOfListOfBipoint.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class TopOpeBRep_ListIteratorOfListOfBipoint;
 class TopOpeBRep_Bipoint;
@@ -35,63 +21,63 @@ class TopOpeBRep_ListNodeOfListOfBipoint;
 
 
 
-class TopOpeBRep_ListOfBipoint  {
+class TopOpeBRep_ListOfBipoint 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRep_ListOfBipoint();
+  Standard_EXPORT TopOpeBRep_ListOfBipoint();
   
-  Standard_EXPORT   TopOpeBRep_ListOfBipoint(const TopOpeBRep_ListOfBipoint& Other);
+  Standard_EXPORT TopOpeBRep_ListOfBipoint(const TopOpeBRep_ListOfBipoint& Other);
   
-  Standard_EXPORT     void Assign(const TopOpeBRep_ListOfBipoint& Other) ;
-    void operator=(const TopOpeBRep_ListOfBipoint& Other) 
+  Standard_EXPORT   void Assign (const TopOpeBRep_ListOfBipoint& Other) ;
+  void operator= (const TopOpeBRep_ListOfBipoint& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TopOpeBRep_ListOfBipoint()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const TopOpeBRep_Bipoint& I) ;
+  Standard_EXPORT   void Prepend (const TopOpeBRep_Bipoint& I) ;
   
-  Standard_EXPORT     void Prepend(const TopOpeBRep_Bipoint& I,TopOpeBRep_ListIteratorOfListOfBipoint& theIt) ;
+  Standard_EXPORT   void Prepend (const TopOpeBRep_Bipoint& I, TopOpeBRep_ListIteratorOfListOfBipoint& theIt) ;
   
-  Standard_EXPORT     void Prepend(TopOpeBRep_ListOfBipoint& Other) ;
+  Standard_EXPORT   void Prepend (TopOpeBRep_ListOfBipoint& Other) ;
   
-  Standard_EXPORT     void Append(const TopOpeBRep_Bipoint& I) ;
+  Standard_EXPORT   void Append (const TopOpeBRep_Bipoint& I) ;
   
-  Standard_EXPORT     void Append(const TopOpeBRep_Bipoint& I,TopOpeBRep_ListIteratorOfListOfBipoint& theIt) ;
+  Standard_EXPORT   void Append (const TopOpeBRep_Bipoint& I, TopOpeBRep_ListIteratorOfListOfBipoint& theIt) ;
   
-  Standard_EXPORT     void Append(TopOpeBRep_ListOfBipoint& Other) ;
+  Standard_EXPORT   void Append (TopOpeBRep_ListOfBipoint& Other) ;
   
-  Standard_EXPORT     TopOpeBRep_Bipoint& First() const;
+  Standard_EXPORT   TopOpeBRep_Bipoint& First()  const;
   
-  Standard_EXPORT     TopOpeBRep_Bipoint& Last() const;
+  Standard_EXPORT   TopOpeBRep_Bipoint& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(TopOpeBRep_ListIteratorOfListOfBipoint& It) ;
+  Standard_EXPORT   void Remove (TopOpeBRep_ListIteratorOfListOfBipoint& It) ;
   
-  Standard_EXPORT     void InsertBefore(const TopOpeBRep_Bipoint& I,TopOpeBRep_ListIteratorOfListOfBipoint& It) ;
+  Standard_EXPORT   void InsertBefore (const TopOpeBRep_Bipoint& I, TopOpeBRep_ListIteratorOfListOfBipoint& It) ;
   
-  Standard_EXPORT     void InsertBefore(TopOpeBRep_ListOfBipoint& Other,TopOpeBRep_ListIteratorOfListOfBipoint& It) ;
+  Standard_EXPORT   void InsertBefore (TopOpeBRep_ListOfBipoint& Other, TopOpeBRep_ListIteratorOfListOfBipoint& It) ;
   
-  Standard_EXPORT     void InsertAfter(const TopOpeBRep_Bipoint& I,TopOpeBRep_ListIteratorOfListOfBipoint& It) ;
+  Standard_EXPORT   void InsertAfter (const TopOpeBRep_Bipoint& I, TopOpeBRep_ListIteratorOfListOfBipoint& It) ;
   
-  Standard_EXPORT     void InsertAfter(TopOpeBRep_ListOfBipoint& Other,TopOpeBRep_ListIteratorOfListOfBipoint& It) ;
+  Standard_EXPORT   void InsertAfter (TopOpeBRep_ListOfBipoint& Other, TopOpeBRep_ListIteratorOfListOfBipoint& It) ;
 
 
 friend class TopOpeBRep_ListIteratorOfListOfBipoint;
-
 
 
 protected:
@@ -104,8 +90,8 @@ private:
 
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
@@ -135,7 +121,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRep_ListOfBipoint_HeaderFile

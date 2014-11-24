@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKTObj"
-	ProjectGUID="{D42AB8D4-0062-0751-1923-58A7A4661637}"
+	ProjectGUID="{F5F31E42-0E49-050F-173D-1EEB88F94352}"
 	>
 	<Platforms>
 		<Platform
@@ -63,6 +63,7 @@
 				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
+				EnableEnhancedInstructionSet="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -163,6 +164,7 @@
 				DebugInformationFormat="3"
 				CompileAs="0"
 				DisableSpecificWarnings="4996"
+				EnableEnhancedInstructionSet="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -187,6 +189,7 @@
 				ProgramDatabaseFile="..\..\..\win32\vc8\bind\TKTObj.pdb"
 				SubSystem="2"
 				ImportLibrary="..\..\..\win32\vc8\libd\TKTObj.lib"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -248,7 +251,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\TObj;..\..\..\src\TObj;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TObj_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TObj_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +271,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TObj_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TObj_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -276,7 +279,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKCDF.lib TKernel.lib TKMath.lib TKLCAF.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKCDF.lib TKernel.lib TKMath.lib TKLCAF.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bin\TKTObj.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -284,7 +287,7 @@
 				ProgramDatabaseFile=".\..\..\..\win64\vc8\bin\TKTObj.pdb"
 				SubSystem="2"
 				ImportLibrary="..\..\..\win64\vc8\lib\TKTObj.lib"
-				TargetMachine="X64"
+				TargetMachine="17"
 			/>
 			<Tool
  				Name="VCALinkTool"
@@ -347,7 +350,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\TObj;..\..\..\src\TObj;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TObj_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TObj_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -369,7 +372,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TObj_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TObj_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -377,7 +380,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKCDF.lib TKernel.lib TKMath.lib TKLCAF.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKCDF.lib TKernel.lib TKMath.lib TKLCAF.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bind\TKTObj.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -386,7 +389,7 @@
 				ProgramDatabaseFile="..\..\..\win64\vc8\bind\TKTObj.pdb"
 				SubSystem="2"
 				ImportLibrary="..\..\..\win64\vc8\libd\TKTObj.lib"
-				TargetMachine="X64"
+				TargetMachine="17"
 			/>
 			<Tool
 				Name="VCALinkTool"

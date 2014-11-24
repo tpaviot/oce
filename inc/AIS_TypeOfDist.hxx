@@ -6,15 +6,14 @@
 #ifndef _AIS_TypeOfDist_HeaderFile
 #define _AIS_TypeOfDist_HeaderFile
 
-//! To declare the type of distance. <br>
-enum AIS_TypeOfDist {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! To declare the type of distance.
+enum AIS_TypeOfDist
+{
 AIS_TOD_Unknown,
 AIS_TOD_Horizontal,
 AIS_TOD_Vertical
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _AIS_TypeOfDist_HeaderFile

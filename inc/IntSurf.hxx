@@ -6,15 +6,9 @@
 #ifndef _IntSurf_HeaderFile
 #define _IntSurf_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
 class gp_Vec;
 class gp_Dir;
@@ -40,24 +34,25 @@ class IntSurf_ListNodeOfListOfPntOn2S;
 class IntSurf_ListIteratorOfListOfPntOn2S;
 
 
-//! This package provides resources for <br>
-//!          all the packages concerning the intersection <br>
-//!          between surfaces. <br>
-class IntSurf  {
+//! This package provides resources for
+//! all the packages concerning the intersection
+//! between surfaces.
+class IntSurf 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Computes the transition of the intersection point <br>
-//!          between the two lines. <br>
-//!          TgFirst is the tangent vector of the first line. <br>
-//!          TgSecond is the tangent vector of the second line. <br>
-//!          Normal is the direction used to orientate the cross <br>
-//!          product TgFirst^TgSecond. <br>
-//!          TFirst is the transition of the point on the first line. <br>
-//!          TSecond is the transition of the point on the second line. <br>
-  Standard_EXPORT   static  void MakeTransition(const gp_Vec& TgFirst,const gp_Vec& TgSecond,const gp_Dir& Normal,IntSurf_Transition& TFirst,IntSurf_Transition& TSecond) ;
-
+  
+  //! Computes the transition of the intersection point
+  //! between the two lines.
+  //! TgFirst is the tangent vector of the first line.
+  //! TgSecond is the tangent vector of the second line.
+  //! Normal is the direction used to orientate the cross
+  //! product TgFirst^TgSecond.
+  //! TFirst is the transition of the point on the first line.
+  //! TSecond is the transition of the point on the second line.
+  Standard_EXPORT static   void MakeTransition (const gp_Vec& TgFirst, const gp_Vec& TgSecond, const gp_Dir& Normal, IntSurf_Transition& TFirst, IntSurf_Transition& TSecond) ;
 
 
 
@@ -99,7 +94,6 @@ friend class IntSurf_ListIteratorOfListOfPntOn2S;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntSurf_HeaderFile

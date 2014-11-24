@@ -6,70 +6,28 @@
 #ifndef _AIS_Drawer_HeaderFile
 #define _AIS_Drawer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_AIS_Drawer_HeaderFile
 #include <Handle_AIS_Drawer.hxx>
-#endif
 
-#ifndef _Handle_Prs3d_Drawer_HeaderFile
 #include <Handle_Prs3d_Drawer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Prs3d_Drawer_HeaderFile
 #include <Prs3d_Drawer.hxx>
-#endif
-#ifndef _Aspect_TypeOfDeflection_HeaderFile
 #include <Aspect_TypeOfDeflection.hxx>
-#endif
-#ifndef _Quantity_Length_HeaderFile
 #include <Quantity_Length.hxx>
-#endif
-#ifndef _Prs3d_TypeOfHLR_HeaderFile
 #include <Prs3d_TypeOfHLR.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Prs3d_IsoAspect_HeaderFile
 #include <Handle_Prs3d_IsoAspect.hxx>
-#endif
-#ifndef _Handle_Prs3d_LineAspect_HeaderFile
 #include <Handle_Prs3d_LineAspect.hxx>
-#endif
-#ifndef _Handle_Prs3d_TextAspect_HeaderFile
 #include <Handle_Prs3d_TextAspect.hxx>
-#endif
-#ifndef _Handle_Prs3d_ArrowAspect_HeaderFile
 #include <Handle_Prs3d_ArrowAspect.hxx>
-#endif
-#ifndef _Handle_Prs3d_PointAspect_HeaderFile
 #include <Handle_Prs3d_PointAspect.hxx>
-#endif
-#ifndef _Prs3d_VertexDrawMode_HeaderFile
 #include <Prs3d_VertexDrawMode.hxx>
-#endif
-#ifndef _Handle_Prs3d_ShadingAspect_HeaderFile
 #include <Handle_Prs3d_ShadingAspect.hxx>
-#endif
-#ifndef _Handle_Prs3d_PlaneAspect_HeaderFile
 #include <Handle_Prs3d_PlaneAspect.hxx>
-#endif
-#ifndef _Handle_Prs3d_DatumAspect_HeaderFile
 #include <Handle_Prs3d_DatumAspect.hxx>
-#endif
-#ifndef _Handle_Prs3d_DimensionAspect_HeaderFile
 #include <Handle_Prs3d_DimensionAspect.hxx>
-#endif
 class Prs3d_Drawer;
 class Prs3d_IsoAspect;
 class Prs3d_LineAspect;
@@ -84,393 +42,471 @@ class TCollection_AsciiString;
 
 
 
-//! A framework to manage display attributes of interactive objects. <br>
-//! An interactive object can have a certain number of <br>
-//! display attributes specific to it. These include <br>
-//! visualization mode, color, material <br>
-//! and so on. To deal with this information, the <br>
-//! interactive context has a Drawer attribute manager <br>
-//! which is valid by default for the objects it <br>
-//! controls.   When an interactive object is visualized, the <br>
-//! required graphic display attributes are first taken from <br>
-//! its own Drawer if it has the ones required, or from the <br>
-//! context drawer for those it does not have them. <br>
-//! The set of display attributes of an interactive object is <br>
-//! stocked in an AIS_Drawer, which is, in fact, a <br>
-//! Prs3d_Drawer with the possibility of a link to another <br>
-//! display attribute manager. This drawer then manages <br>
-//! the stocked graphic display attributes by specifying <br>
-//! how the presentation algorithms compute the <br>
-//! presentation of a specific kind of object. These <br>
-//! factors involved include color, width and type of line, <br>
-//! and maximal chordal deviation. The Drawer includes <br>
-//! instances of the aspect classes providing the default <br>
-//! values for them. <br>
-//! Prs3d_Drawer completes   AIS_Drawer by adding <br>
-//! functions for setting deviation angle and deviation <br>
-//! coefficient in presentations using hidden line removal. <br>
-class AIS_Drawer : public Prs3d_Drawer {
+//! A framework to manage display attributes of interactive objects.
+//! An interactive object can have a certain number of
+//! display attributes specific to it. These include
+//! visualization mode, color, material
+//! and so on. To deal with this information, the
+//! interactive context has a Drawer attribute manager
+//! which is valid by default for the objects it
+//! controls.   When an interactive object is visualized, the
+//! required graphic display attributes are first taken from
+//! its own Drawer if it has the ones required, or from the
+//! context drawer for those it does not have them.
+//! The set of display attributes of an interactive object is
+//! stocked in an AIS_Drawer, which is, in fact, a
+//! Prs3d_Drawer with the possibility of a link to another
+//! display attribute manager. This drawer then manages
+//! the stocked graphic display attributes by specifying
+//! how the presentation algorithms compute the
+//! presentation of a specific kind of object. These
+//! factors involved include color, width and type of line,
+//! and maximal chordal deviation. The Drawer includes
+//! instances of the aspect classes providing the default
+//! values for them.
+//! Prs3d_Drawer completes   AIS_Drawer by adding
+//! functions for setting deviation angle and deviation
+//! coefficient in presentations using hidden line removal.
+class AIS_Drawer : public Prs3d_Drawer
+{
 
 public:
 
   
-//! Constructs an empty attribute management framework. <br>
-  Standard_EXPORT   AIS_Drawer();
+
+  //! Constructs an empty attribute management framework.
+  Standard_EXPORT AIS_Drawer();
   
-//! Returns the type of chordal deflection: relative to the <br>
-//! size of the object or absolute. <br>
-  Standard_EXPORT     Aspect_TypeOfDeflection TypeOfDeflection() const;
-  //! Returns the maximal chordal deviation. The default <br>
-//! value is 0.1. Drawings of curves or patches are <br>
-//! made with respect to an absolute maximal chordal deviation. <br>
-  Standard_EXPORT     Quantity_Length MaximalChordialDeviation() const;
-  //! Sets the hasOwnDeviationCoefficient flag to Standard_False <br>
-        void SetDeviationCoefficient() ;
-  //! Sets the deviation coefficient aCoefficient for <br>
-//! removal of hidden lines created by different <br>
-//! viewpoints in different presentations. The Default value is 0.02. <br>
-        void SetHLRDeviationCoefficient() ;
-  //! Sets the hasOwnDeviationAngle flag to Standard_False <br>
-        void SetDeviationAngle() ;
-  //! Sets the angle of maximum chordal deviation for <br>
-//! removal of hidden lines created by different viewpoints <br>
-//! in different presentations. The default value is 20*PI/180. <br>
-        void SetHLRAngle() ;
-  //! Sets the hasOwnDeviationCoefficient flag to Standard_True, <br>
-//!          sets myOwnDeviationCoefficient and  myPreviousDeviationCoefficient <br>
-  Standard_EXPORT     void SetDeviationCoefficient(const Standard_Real aCoefficient) ;
-  //! Sets the hasOwnHLRDeviationCoefficient flag to Standard_True, <br>
-//!          sets myOwnHLRDeviationCoefficient and  myPreviousHLRDeviationCoefficient <br>
-  Standard_EXPORT     void SetHLRDeviationCoefficient(const Standard_Real aCoefficient) ;
-  //! Sets the hasOwnDeviationAngle flag to Standard_True, <br>
-//!          sets myOwnDeviationAngle and  myPreviousDeviationAngle <br>
-  Standard_EXPORT   virtual  void SetDeviationAngle(const Standard_Real anAngle) ;
-  //! Sets the hasOwnHLRDeviationAngle flag to Standard_True, <br>
-//!          sets myOwnHLRDeviationAngle and  myPreviousHLRDeviationAngle <br>
-  Standard_EXPORT     void SetHLRAngle(const Standard_Real anAngle) ;
-  //! Sets the type of HLR algorithm <br>
-//!          used by drawer's interactive objects <br>
-      virtual  void SetTypeOfHLR(const Prs3d_TypeOfHLR theTypeOfHLR) ;
-  //! Returns the type of HLR algorithm currently in use. <br>
-      virtual  Prs3d_TypeOfHLR TypeOfHLR() const;
-  //! Drawings of curves or patches are made with respect <br>
-//! to a maximal chordal deviation. A Deviation coefficient <br>
-//! is used in the shading display mode. The shape is <br>
-//! seen decomposed into triangles. These are used to <br>
-//! calculate reflection of light from the surface of the <br>
-//! object. The triangles are formed from chords of the <br>
-//! curves in the shape. The deviation coefficient gives <br>
-//! the highest value of the angle with which a chord can <br>
-//! deviate from a tangent to a   curve. If this limit is <br>
-//! reached, a new triangle is begun. <br>
-//! This deviation is absolute and is set through the <br>
-//! method: SetMaximalChordialDeviation. The default value is 0.001. <br>
-//! In drawing shapes, however, you are allowed to ask <br>
-//! for a relative deviation. This deviation will be: <br>
-//! SizeOfObject * DeviationCoefficient. <br>
-  Standard_EXPORT     Standard_Real DeviationCoefficient() const;
-  //! Returns the real number value of the HLR deviation <br>
-//! coefficient in this framework, if the flag <br>
-//! hasOwnHLRDeviationCoefficient is true. <br>
-//! If hasOwnHLRDeviationCoefficient is false, the <br>
-//! shape's HLR deviation coefficient is used. <br>
-//! A Deviation coefficient is used in the shading display <br>
-//! mode. The shape is seen decomposed into triangles. <br>
-//! These are used to calculate reflection of light from the <br>
-//! surface of the object. <br>
-//! The triangles are formed from chords of the curves in <br>
-//! the shape. The deviation coefficient give the highest <br>
-//! value of the angle with which a chord can deviate <br>
-//! from a tangent to a curve. If this limit is reached, a <br>
-//! new triangle is begun. <br>
-//! To find the hidden lines, hidden line display mode <br>
-//! entails recalculation of the view at each different <br>
-//! projector perspective. <br>
-//! Since hidden lines entail calculations of more than <br>
-//! usual complexity to decompose them into these <br>
-//! triangles, a deviation coefficient allowing greater <br>
-//! tolerance is used. This increases efficiency in calculation. <br>
-//! The Default value is 0.02. <br>
-  Standard_EXPORT     Standard_Real HLRDeviationCoefficient() const;
-  //! Returns myOwnDeviationAngle if hasOwnDeviationAngle is True <br>
-//!          else gets myDeviationAngle field from Prs3d_Drawer <br>
-  Standard_EXPORT   virtual  Standard_Real DeviationAngle() const;
-  //! Returns the real number value of the deviation angle <br>
-//! in hidden line removal views. The default value is 20*PI/180. <br>
-  Standard_EXPORT     Standard_Real HLRAngle() const;
-  //! Saves the previous value used for the chordal <br>
-//! deviation coefficient. The default value is 0.1. <br>
-        Standard_Real PreviousDeviationCoefficient() const;
-  //! returns myPreviousHLRDeviationCoefficient <br>
-        Standard_Real PreviousHLRDeviationCoefficient() const;
-  //! returns myPreviousDeviationAngle <br>
-        Standard_Real PreviousDeviationAngle() const;
-  //! returns myPreviousHLRDeviationAngle <br>
-        Standard_Real PreviousHLRDeviationAngle() const;
-  //! Returns true if the there is a local setting for deviation <br>
-//! coefficient in this framework for a specific interactive object. <br>
-        Standard_Boolean IsOwnDeviationCoefficient() const;
-  //! Returns true if the there is a setting for HLR deviation <br>
-//! coefficient in this framework for a specific interactive object. <br>
-        Standard_Boolean IsOwnHLRDeviationCoefficient() const;
-  //! Returns true if the there is a local setting for deviation <br>
-//! angle in this framework for a specific interactive object. <br>
-        Standard_Boolean IsOwnDeviationAngle() const;
-  //! Returns true if the there is a setting for HLR deviation <br>
-//! angle in this framework for a specific interactive object. <br>
-        Standard_Boolean IsOwnHLRDeviationAngle() const;
-  //! Draws algorithms using discretisation, a default <br>
-//! number of points has been set to 17. You can use the <br>
-//! method Prs3d_Drawer_SetDiscretisation to change this value. <br>
-  Standard_EXPORT     Standard_Integer Discretisation() const;
+
+  //! Returns the type of chordal deflection: relative to the
+  //! size of the object or absolute.
+  Standard_EXPORT   Aspect_TypeOfDeflection TypeOfDeflection()  const;
   
-//! Sets the maximum value allowed for the first and last <br>
-//! parameters of an infinite curve. By default, this value is 500000. <br>
-  Standard_EXPORT     Standard_Real MaximalParameterValue() const;
-  //! returns True if the drawing of isos on planes is enabled. <br>
-  Standard_EXPORT     Standard_Boolean IsoOnPlane() const;
-  //! Defines the attributes which are used when drawing an <br>
-//!          U isoparametric curve of a face. Defines the number <br>
-//!          of U isoparametric curves to be drawn for a single face. <br>
-//!          The LineAspect for U isoparametric lines can be edited <br>
-//!          (methods SetColor, SetTypeOfLine, SetWidth, SetNumber) <br>
-//!          The default values are: <br>
-//!          COLOR       : Quantity_NOC_GRAY75 <br>
-//!          TYPE OF LINE: Aspect_TOL_SOLID <br>
-//!          WIDTH       : 0.5 <br>
-//! These attributes are used by the following algorithms: <br>
-//!          Prs3d_WFDeflectionSurface <br>
-//!          Prs3d_WFDeflectionRestrictedFace <br>
-  Standard_EXPORT     Handle_Prs3d_IsoAspect UIsoAspect() ;
-  //! Returns true if the Drawer has a UIso aspect setting active. <br>
-        Standard_Boolean HasUIsoAspect() const;
-  //! Defines the attributes which are used when drawing an <br>
-//!          V isoparametric curve of a face. Defines the number <br>
-//!          of V isoparametric curves to be drawn for a single face. <br>
-//!          The LineAspect for V isoparametric lines can be edited <br>
-//!          (methods SetColor, SetTypeOfLine, SetWidth, SetNumber) <br>
-//!          The default values are: <br>
-//!          COLOR       : Quantity_NOC_GRAY82 <br>
-//!          TYPE OF LINE: Aspect_TOL_SOLID <br>
-//!          WIDTH       : 0.5 <br>
-//!          These attributes are used by the following algorithms: <br>
-//!          Prs3d_WFDeflectionSurface <br>
-//!          Prs3d_WFDeflectionRestrictedFace <br>
-  Standard_EXPORT     Handle_Prs3d_IsoAspect VIsoAspect() ;
-  //! Returns true if the Drawer has a VIso aspect setting active. <br>
-        Standard_Boolean HasVIsoAspect() const;
-  //! Returns a link with <br>
-//! Prs3d_Drawer_FreeBoundaryAspect. Stores the <br>
-//! values for presentation of free boundaries, in other <br>
-//! words, boundaries which are not shared . The <br>
-//! LineAspect for the free boundaries can be edited. The <br>
-//! default values are: Color: Quantity_NOC_GREEN <br>
-//! Type of line: Aspect_TOL_SOLID Width: 1. <br>
-//! These attributes are used by Prs3d_WFShape. <br>
-  Standard_EXPORT     Handle_Prs3d_LineAspect FreeBoundaryAspect() ;
-  //! Returns true if the Drawer has a free boundary aspect setting active. <br>
-        Standard_Boolean HasFreeBoundaryAspect() const;
-  //! returns True if the drawing of the free boundaries is enabled. <br>
-  Standard_EXPORT     Standard_Boolean FreeBoundaryDraw() const;
-  //! Returns a link with Prs3d_Drawer_WireAspect. <br>
-//! This method provides wire aspect settings. <br>
-//! The LineAspect for wires can be edited. The default values are: <br>
-//!          Color: Quantity_NOC_RED <br>
-//!          Type of line: Aspect_TOL_SOLID <br>
-//!          Width: 1. <br>
-//!          These attributes are used by the following algorithms: <br>
-//!          Prs3d_WFShape <br>
-  Standard_EXPORT     Handle_Prs3d_LineAspect WireAspect() ;
-  //! Returns true if the Interactive Object has a line <br>
-//! visualization aspect. <br>
-        Standard_Boolean HasLineAspect() const;
-  //! Returns true if the Drawer has a wire aspect setting active. <br>
-        Standard_Boolean HasWireAspect() const;
-  //! Returns a link   with Prs3d_Drawer_WireDraw. This <br>
-//! method returns true if drawing of wires is enabled. <br>
-//! The default setting is true. <br>
-  Standard_EXPORT     Standard_Boolean WireDraw() const;
-  //! Returns a link with <br>
-//! Prs3d_Drawer_UnFreeBoundaryAspect, which <br>
-//! provides settings for shared boundary line aspects. <br>
-//! The LineAspect for shared boundaries can be edited. <br>
-//! The default values are: <br>
-//!          Color: Quantity_NOC_YELLOW <br>
-//!          Type of line: Aspect_TOL_SOLID <br>
-//!          Width: 1. <br>
-//!          These attributes are used by the following algorithms: <br>
-//!          Prs3d_WFShape <br>
-  Standard_EXPORT     Handle_Prs3d_LineAspect UnFreeBoundaryAspect() ;
-  //! Returns true if the Drawer has an unfree boundary aspect setting active. <br>
-        Standard_Boolean HasUnFreeBoundaryAspect() const;
-  //! Returns True if the drawing of the shared boundaries <br>
-//! is enabled. True is the default setting. <br>
-  Standard_EXPORT     Standard_Boolean UnFreeBoundaryDraw() const;
-  //!  Returns a link with Prs3d_Drawer_LineAspect, <br>
-//! which provides settings for line aspects. These <br>
-//! settings can be edited. The default values are: <br>
-//!          Color: Quantity_NOC_YELLOW <br>
-//!          Type of line: Aspect_TOL_SOLID <br>
-//!          Width: 1. <br>
-//! These attributes are used by the following algorithms: <br>
-//!          Prs3d_Curve <br>
-//!          Prs3d_Line <br>
-//!          Prs3d_HLRShape <br>
-  Standard_EXPORT     Handle_Prs3d_LineAspect LineAspect() ;
+  //! Returns the maximal chordal deviation. The default
+  //! value is 0.1. Drawings of curves or patches are
+  //! made with respect to an absolute maximal chordal deviation.
+  Standard_EXPORT   Quantity_Length MaximalChordialDeviation()  const;
   
-        Standard_Boolean HasTextAspect() const;
+  //! Sets the hasOwnDeviationCoefficient flag to Standard_False
+      void SetDeviationCoefficient() ;
   
-  Standard_EXPORT     Handle_Prs3d_TextAspect TextAspect() ;
-  //! Returns True if the drawing of an arrow at the end of <br>
-//! each line is enabled. The default setting is False. <br>
-  Standard_EXPORT     Standard_Boolean LineArrowDraw() const;
+  //! Sets the deviation coefficient aCoefficient for
+  //! removal of hidden lines created by different
+  //! viewpoints in different presentations. The Default value is 0.02.
+      void SetHLRDeviationCoefficient() ;
   
-  Standard_EXPORT     Handle_Prs3d_ArrowAspect ArrowAspect() ;
-  //!  Returns the point aspect setting. The default values <br>
-//! are:        Color: Quantity_NOC_YELLOW <br>
-//!          Type of marker: Aspect_TOM_PLUS <br>
-//!          Scale: 1. <br>
-//!          These attributes are used by the following algorithms: <br>
-//!          Prs3d_Point <br>
-  Standard_EXPORT     Handle_Prs3d_PointAspect PointAspect() ;
-  //! Returns true if the Drawer has a point aspect setting active. <br>
-        Standard_Boolean HasPointAspect() const;
-  //! Sets the mode of visualization of vertices by AIS_Shape and helper algorithms. <br>
-//! By default, only isolated vertices not belonging to any face are drawn, <br>
-//! that corresponds to <b>Prs3d_VDM_Isolated</b> mode. <br>
-//! Switching to <b>Prs3d_VDM_Isolated</b> mode makes all shape's vertices visible. <br>
-//! To inherit this parameter from the global drawer instance ("the link") when it is present, <br>
-//! <b>Prs3d_VDM_Inherited</b> value should be used. <br>
-  Standard_EXPORT     void SetVertexDrawMode(const Prs3d_VertexDrawMode theMode) ;
-  //! Returns the current mode of visualization of vertices of a TopoDS_Shape instance. <br>
-  Standard_EXPORT     Prs3d_VertexDrawMode VertexDrawMode() const;
-  //! Returns true if the vertex draw mode is not equal to <b>Prs3d_VDM_Inherited</b>. <br>
-//! This means that individual vertex draw mode value (i.e. not inherited from the global <br>
-//! drawer) is used for a specific interactive object. <br>
-        Standard_Boolean IsOwnVertexDrawMode() const;
+  //! Sets the hasOwnDeviationAngle flag to Standard_False
+      void SetDeviationAngle() ;
   
-//! Returns a link with Prs3d_Drawer_ShadingAspect, <br>
-//! which provides settings for shading aspects. <br>
-//! These settings can be edited. The default values are: <br>
-//!    Color: Quantity_NOC_YELLOW <br>
-//!          Material: Graphic3d_NOM_BRASS <br>
-//! hading aspect is obtained through decomposition of <br>
-//! 3D faces into triangles, each side of each triangle <br>
-//! being a chord of the corresponding curved edge in <br>
-//! the face. Reflection of light in each projector <br>
-//! perspective is then calculated for each of the <br>
-//! resultant triangular planes. <br>
-  Standard_EXPORT     Handle_Prs3d_ShadingAspect ShadingAspect() ;
-  //! Returns True if the   Drawer has shading aspect active. <br>
-        Standard_Boolean HasShadingAspect() const;
-  //! Provides the attributes for hidden line removal. <br>
-  Standard_EXPORT     Standard_Boolean ShadingAspectGlobal() const;
-  //! Returns Standard_True if the hidden lines are to be drawn. <br>
-//!          By default the hidden lines are not drawn. <br>
-  Standard_EXPORT     Standard_Boolean DrawHiddenLine() const;
-  //! Returns a link with <br>
-//! Prs3d_Drawer_HiddenLineAspect, which provides <br>
-//! settings for hidden line aspects. <br>
-//! These settings can be edited. The default values are: <br>
-//!          Color: Quantity_NOC_YELLOW <br>
-//!          Type of line: Aspect_TOL_DASH <br>
-//!          Width: 1. <br>
-  Standard_EXPORT     Handle_Prs3d_LineAspect HiddenLineAspect() ;
-  //! Returns a link with <br>
-//! Prs3d_Drawer_SeenLineAspect, which provides <br>
-//! settings for seen line aspects. <br>
-//! These settings can be edited. The default values are: <br>
-//!          Color: Quantity_NOC_YELLOW <br>
-//!          Type of line: Aspect_TOL_SOLID <br>
-//!          Width: 1. <br>
-  Standard_EXPORT     Handle_Prs3d_LineAspect SeenLineAspect() ;
+  //! Sets the angle of maximum chordal deviation for
+  //! removal of hidden lines created by different viewpoints
+  //! in different presentations. The default value is 20*PI/180.
+      void SetHLRAngle() ;
   
-        Standard_Boolean HasPlaneAspect() const;
+  //! Sets the hasOwnDeviationCoefficient flag to Standard_True,
+  //! sets myOwnDeviationCoefficient and  myPreviousDeviationCoefficient
+  Standard_EXPORT   void SetDeviationCoefficient (const Standard_Real aCoefficient) ;
   
-//! Returns a link with Prs3d_Drawer_PlaneAspect. <br>
-//! This method provides settings for the appearance of planes. <br>
-  Standard_EXPORT     Handle_Prs3d_PlaneAspect PlaneAspect() ;
-  //! Returns a link with Prs3d_Drawer_VectorAspect, <br>
-//! which provides settings for the appearance of vectors. <br>
-//! These settings can be edited. The default values are: <br>
-//!          Color: Quantity_NOC_SKYBLUE <br>
-//!          Type of line: Aspect_TOL_SOLID Width: 1. <br>
-  Standard_EXPORT     Handle_Prs3d_LineAspect VectorAspect() ;
-  //! Enables or disables drawing of face boundaries for shading presentations. <br>
-//! The method sets drawing flag owned by the drawer that will be used during <br>
-//! visualization instead of the one set in link. <br>
-//! theIsEnabled is a boolean flag indicating whether the face boundaries should be <br>
-//! drawn or not. <br>
-  Standard_EXPORT     void SetFaceBoundaryDraw(const Standard_Boolean theIsEnabled) ;
-  //! Checks whether the drawing of face boundaries is enabled or not. <br>
-  Standard_EXPORT     Standard_Boolean IsFaceBoundaryDraw() const;
-  //! Sets line aspect for face boundaries. <br>
-//! The method sets line aspect owned by the drawer that will be used during <br>
-//! visualization instead of the one set in link. <br>
-//! theAspect is the line aspect that determines the look of the face boundaries. <br>
-  Standard_EXPORT     void SetFaceBoundaryAspect(const Handle(Prs3d_LineAspect)& theAspect) ;
-  //! Returns line aspect of face boundaries. <br>
-  Standard_EXPORT     Handle_Prs3d_LineAspect FaceBoundaryAspect() ;
-  //! Returns true if the drawer has its own attribute for <br>
-//! "draw face boundaries" flag that overrides the one in the link. <br>
-        Standard_Boolean IsOwnFaceBoundaryDraw() const;
-  //! Returns true if the drawer has its own attribute for <br>
-//! face boundaries aspect that overrides the one in the link. <br>
-        Standard_Boolean IsOwnFaceBoundaryAspect() const;
+  //! Sets the hasOwnHLRDeviationCoefficient flag to Standard_True,
+  //! sets myOwnHLRDeviationCoefficient and  myPreviousHLRDeviationCoefficient
+  Standard_EXPORT   void SetHLRDeviationCoefficient (const Standard_Real aCoefficient) ;
   
-        Standard_Boolean HasDatumAspect() const;
-  //! Returns a link with Prs3d_Drawer_DatumAspect, <br>
-//! which provides settings for the appearance of datums. <br>
-//! These settings can be edited. The default values for <br>
-//! the three axes are: <br>
-//!          Color: Quantity_NOC_PEACHPUFF <br>
-//!          Type of line: Aspect_TOL_SOLID Width: 1. <br>
-  Standard_EXPORT     Handle_Prs3d_DatumAspect DatumAspect() ;
-  //! Returns a link with Prs3d_Drawer_DimensionAspect, <br>
-//! which provides settings for the appearance of dimensions. <br>
-  Standard_EXPORT     Handle_Prs3d_DimensionAspect DimensionAspect() ;
+  //! Sets the hasOwnDeviationAngle flag to Standard_True,
+  //! sets myOwnDeviationAngle and  myPreviousDeviationAngle
+  Standard_EXPORT virtual   void SetDeviationAngle (const Standard_Real anAngle) ;
   
-        Standard_Boolean HasDimensionAspect() const;
-  //! Sets dimension length model units for computing of dimension presentation. <br>
-  Standard_EXPORT     void SetDimLengthModelUnits(const TCollection_AsciiString& theUnits) ;
-  //! Sets dimension angle model units for computing of dimension presentation. <br>
-  Standard_EXPORT     void SetDimAngleModelUnits(const TCollection_AsciiString& theUnits) ;
-  //! Returns angle model units for the dimension presentation. <br>
-  Standard_EXPORT    const TCollection_AsciiString& DimAngleModelUnits() const;
-  //! Returns length model units for the dimension presentation. <br>
-  Standard_EXPORT    const TCollection_AsciiString& DimLengthModelUnits() const;
-  //! Sets length units in which value for dimension presentation is displayed. <br>
-  Standard_EXPORT     void SetDimLengthDisplayUnits(const TCollection_AsciiString& theUnits) ;
-  //! Sets angle units in which value for dimension presentation is displayed. <br>
-  Standard_EXPORT     void SetDimAngleDisplayUnits(const TCollection_AsciiString& theUnits) ;
-  //! Returns length units in which dimension presentation is displayed. <br>
-  Standard_EXPORT    const TCollection_AsciiString& DimLengthDisplayUnits() const;
-  //! Returns angle units in which dimension presentation is displayed. <br>
-  Standard_EXPORT    const TCollection_AsciiString& DimAngleDisplayUnits() const;
-  //! Returns a link with Prs3d_Drawer_SectionAspect, <br>
-//! which provides settings for wires which highlight sections. <br>
-//! The LineAspect for the wire can be edited. <br>
-//! The default values are: <br>
-//! Color: Quantity_NOC_ORANGE <br>
-//! Type of line: Aspect_TOL_SOLID <br>
-//! Width: 1. <br>
-//! These attributes are used by the following algorithms: <br>
-//! Prs3d_WFShape <br>
-  Standard_EXPORT     Handle_Prs3d_LineAspect SectionAspect() ;
+  //! Sets the hasOwnHLRDeviationAngle flag to Standard_True,
+  //! sets myOwnHLRDeviationAngle and  myPreviousHLRDeviationAngle
+  Standard_EXPORT   void SetHLRAngle (const Standard_Real anAngle) ;
   
-  Standard_EXPORT    const Handle_Prs3d_Drawer& Link() ;
+  //! Sets the type of HLR algorithm
+  //! used by drawer's interactive objects
+    virtual   void SetTypeOfHLR (const Prs3d_TypeOfHLR theTypeOfHLR) ;
   
-        Standard_Boolean HasLink() const;
+  //! Returns the type of HLR algorithm currently in use.
+    virtual   Prs3d_TypeOfHLR TypeOfHLR()  const;
   
-        void Link(const Handle(Prs3d_Drawer)& aDrawer) ;
-  //! Removes attributes stored in a Local Context. <br>
-  Standard_EXPORT   virtual  void ClearLocalAttributes() ;
-  //! Returns true if the last called attribute was local; false if it was global. <br>
-        Standard_Boolean WasLastLocal() const;
+  //! Drawings of curves or patches are made with respect
+  //! to a maximal chordal deviation. A Deviation coefficient
+  //! is used in the shading display mode. The shape is
+  //! seen decomposed into triangles. These are used to
+  //! calculate reflection of light from the surface of the
+  //! object. The triangles are formed from chords of the
+  //! curves in the shape. The deviation coefficient gives
+  //! the highest value of the angle with which a chord can
+  //! deviate from a tangent to a   curve. If this limit is
+  //! reached, a new triangle is begun.
+  //! This deviation is absolute and is set through the
+  //! method: SetMaximalChordialDeviation. The default value is 0.001.
+  //! In drawing shapes, however, you are allowed to ask
+  //! for a relative deviation. This deviation will be:
+  //! SizeOfObject * DeviationCoefficient.
+  Standard_EXPORT   Standard_Real DeviationCoefficient()  const;
   
-//! Returns true if a Local Context has stored attributes <br>
-//! for Interactive Objects. <br>
-        Standard_Boolean HasLocalAttributes() const;
+  //! Returns the real number value of the HLR deviation
+  //! coefficient in this framework, if the flag
+  //! hasOwnHLRDeviationCoefficient is true.
+  //! If hasOwnHLRDeviationCoefficient is false, the
+  //! shape's HLR deviation coefficient is used.
+  //! A Deviation coefficient is used in the shading display
+  //! mode. The shape is seen decomposed into triangles.
+  //! These are used to calculate reflection of light from the
+  //! surface of the object.
+  //! The triangles are formed from chords of the curves in
+  //! the shape. The deviation coefficient give the highest
+  //! value of the angle with which a chord can deviate
+  //! from a tangent to a curve. If this limit is reached, a
+  //! new triangle is begun.
+  //! To find the hidden lines, hidden line display mode
+  //! entails recalculation of the view at each different
+  //! projector perspective.
+  //! Since hidden lines entail calculations of more than
+  //! usual complexity to decompose them into these
+  //! triangles, a deviation coefficient allowing greater
+  //! tolerance is used. This increases efficiency in calculation.
+  //! The Default value is 0.02.
+  Standard_EXPORT   Standard_Real HLRDeviationCoefficient()  const;
+  
+  //! Returns myOwnDeviationAngle if hasOwnDeviationAngle is True
+  //! else gets myDeviationAngle field from Prs3d_Drawer
+  Standard_EXPORT virtual   Standard_Real DeviationAngle()  const;
+  
+  //! Returns the real number value of the deviation angle
+  //! in hidden line removal views. The default value is 20*PI/180.
+  Standard_EXPORT   Standard_Real HLRAngle()  const;
+  
+  //! Saves the previous value used for the chordal
+  //! deviation coefficient. The default value is 0.1.
+      Standard_Real PreviousDeviationCoefficient()  const;
+  
+  //! returns myPreviousHLRDeviationCoefficient
+      Standard_Real PreviousHLRDeviationCoefficient()  const;
+  
+  //! returns myPreviousDeviationAngle
+      Standard_Real PreviousDeviationAngle()  const;
+  
+  //! returns myPreviousHLRDeviationAngle
+      Standard_Real PreviousHLRDeviationAngle()  const;
+  
+  //! Returns true if the there is a local setting for deviation
+  //! coefficient in this framework for a specific interactive object.
+      Standard_Boolean IsOwnDeviationCoefficient()  const;
+  
+  //! Returns true if the there is a setting for HLR deviation
+  //! coefficient in this framework for a specific interactive object.
+      Standard_Boolean IsOwnHLRDeviationCoefficient()  const;
+  
+  //! Returns true if the there is a local setting for deviation
+  //! angle in this framework for a specific interactive object.
+      Standard_Boolean IsOwnDeviationAngle()  const;
+  
+  //! Returns true if the there is a setting for HLR deviation
+  //! angle in this framework for a specific interactive object.
+      Standard_Boolean IsOwnHLRDeviationAngle()  const;
+  
+  //! Draws algorithms using discretisation, a default
+  //! number of points has been set to 17. You can use the
+  //! method Prs3d_Drawer_SetDiscretisation to change this value.
+  Standard_EXPORT   Standard_Integer Discretisation()  const;
+  
+
+  //! Sets the maximum value allowed for the first and last
+  //! parameters of an infinite curve. By default, this value is 500000.
+  Standard_EXPORT   Standard_Real MaximalParameterValue()  const;
+  
+  //! returns True if the drawing of isos on planes is enabled.
+  Standard_EXPORT   Standard_Boolean IsoOnPlane()  const;
+  
+  //! Defines the attributes which are used when drawing an
+  //! U isoparametric curve of a face. Defines the number
+  //! of U isoparametric curves to be drawn for a single face.
+  //! The LineAspect for U isoparametric lines can be edited
+  //! (methods SetColor, SetTypeOfLine, SetWidth, SetNumber)
+  //! The default values are:
+  //! COLOR       : Quantity_NOC_GRAY75
+  //! TYPE OF LINE: Aspect_TOL_SOLID
+  //! WIDTH       : 0.5
+  //! These attributes are used by the following algorithms:
+  //! Prs3d_WFDeflectionSurface
+  //! Prs3d_WFDeflectionRestrictedFace
+  Standard_EXPORT   Handle(Prs3d_IsoAspect) UIsoAspect() ;
+  
+  //! Returns true if the Drawer has a UIso aspect setting active.
+      Standard_Boolean HasUIsoAspect()  const;
+  
+  //! Defines the attributes which are used when drawing an
+  //! V isoparametric curve of a face. Defines the number
+  //! of V isoparametric curves to be drawn for a single face.
+  //! The LineAspect for V isoparametric lines can be edited
+  //! (methods SetColor, SetTypeOfLine, SetWidth, SetNumber)
+  //! The default values are:
+  //! COLOR       : Quantity_NOC_GRAY82
+  //! TYPE OF LINE: Aspect_TOL_SOLID
+  //! WIDTH       : 0.5
+  //! These attributes are used by the following algorithms:
+  //! Prs3d_WFDeflectionSurface
+  //! Prs3d_WFDeflectionRestrictedFace
+  Standard_EXPORT   Handle(Prs3d_IsoAspect) VIsoAspect() ;
+  
+  //! Returns true if the Drawer has a VIso aspect setting active.
+      Standard_Boolean HasVIsoAspect()  const;
+  
+  //! Returns a link with
+  //! Prs3d_Drawer_FreeBoundaryAspect. Stores the
+  //! values for presentation of free boundaries, in other
+  //! words, boundaries which are not shared . The
+  //! LineAspect for the free boundaries can be edited. The
+  //! default values are: Color: Quantity_NOC_GREEN
+  //! Type of line: Aspect_TOL_SOLID Width: 1.
+  //! These attributes are used by Prs3d_WFShape.
+  Standard_EXPORT   Handle(Prs3d_LineAspect) FreeBoundaryAspect() ;
+  
+  //! Returns true if the Drawer has a free boundary aspect setting active.
+      Standard_Boolean HasFreeBoundaryAspect()  const;
+  
+  //! returns True if the drawing of the free boundaries is enabled.
+  Standard_EXPORT   Standard_Boolean FreeBoundaryDraw()  const;
+  
+  //! Returns a link with Prs3d_Drawer_WireAspect.
+  //! This method provides wire aspect settings.
+  //! The LineAspect for wires can be edited. The default values are:
+  //! Color: Quantity_NOC_RED
+  //! Type of line: Aspect_TOL_SOLID
+  //! Width: 1.
+  //! These attributes are used by the following algorithms:
+  //! Prs3d_WFShape
+  Standard_EXPORT   Handle(Prs3d_LineAspect) WireAspect() ;
+  
+  //! Returns true if the Interactive Object has a line
+  //! visualization aspect.
+      Standard_Boolean HasLineAspect()  const;
+  
+  //! Returns true if the Drawer has a wire aspect setting active.
+      Standard_Boolean HasWireAspect()  const;
+  
+  //! Returns a link   with Prs3d_Drawer_WireDraw. This
+  //! method returns true if drawing of wires is enabled.
+  //! The default setting is true.
+  Standard_EXPORT   Standard_Boolean WireDraw()  const;
+  
+  //! Returns a link with
+  //! Prs3d_Drawer_UnFreeBoundaryAspect, which
+  //! provides settings for shared boundary line aspects.
+  //! The LineAspect for shared boundaries can be edited.
+  //! The default values are:
+  //! Color: Quantity_NOC_YELLOW
+  //! Type of line: Aspect_TOL_SOLID
+  //! Width: 1.
+  //! These attributes are used by the following algorithms:
+  //! Prs3d_WFShape
+  Standard_EXPORT   Handle(Prs3d_LineAspect) UnFreeBoundaryAspect() ;
+  
+  //! Returns true if the Drawer has an unfree boundary aspect setting active.
+      Standard_Boolean HasUnFreeBoundaryAspect()  const;
+  
+  //! Returns True if the drawing of the shared boundaries
+  //! is enabled. True is the default setting.
+  Standard_EXPORT   Standard_Boolean UnFreeBoundaryDraw()  const;
+  
+  //! Returns a link with Prs3d_Drawer_LineAspect,
+  //! which provides settings for line aspects. These
+  //! settings can be edited. The default values are:
+  //! Color: Quantity_NOC_YELLOW
+  //! Type of line: Aspect_TOL_SOLID
+  //! Width: 1.
+  //! These attributes are used by the following algorithms:
+  //! Prs3d_Curve
+  //! Prs3d_Line
+  //! Prs3d_HLRShape
+  Standard_EXPORT   Handle(Prs3d_LineAspect) LineAspect() ;
+  
+      Standard_Boolean HasTextAspect()  const;
+  
+  Standard_EXPORT   Handle(Prs3d_TextAspect) TextAspect() ;
+  
+  //! Returns True if the drawing of an arrow at the end of
+  //! each line is enabled. The default setting is False.
+  Standard_EXPORT   Standard_Boolean LineArrowDraw()  const;
+  
+  Standard_EXPORT   Handle(Prs3d_ArrowAspect) ArrowAspect() ;
+  
+  //! Returns the point aspect setting. The default values
+  //! are:        Color: Quantity_NOC_YELLOW
+  //! Type of marker: Aspect_TOM_PLUS
+  //! Scale: 1.
+  //! These attributes are used by the following algorithms:
+  //! Prs3d_Point
+  Standard_EXPORT   Handle(Prs3d_PointAspect) PointAspect() ;
+  
+  //! Returns true if the Drawer has a point aspect setting active.
+      Standard_Boolean HasPointAspect()  const;
+  
+  //! Sets the mode of visualization of vertices by AIS_Shape and helper algorithms.
+  //! By default, only isolated vertices not belonging to any face are drawn,
+  //! that corresponds to <b>Prs3d_VDM_Isolated</b> mode.
+  //! Switching to <b>Prs3d_VDM_Isolated</b> mode makes all shape's vertices visible.
+  //! To inherit this parameter from the global drawer instance ("the link") when it is present,
+  //! <b>Prs3d_VDM_Inherited</b> value should be used.
+  Standard_EXPORT   void SetVertexDrawMode (const Prs3d_VertexDrawMode theMode) ;
+  
+  //! Returns the current mode of visualization of vertices of a TopoDS_Shape instance.
+  Standard_EXPORT   Prs3d_VertexDrawMode VertexDrawMode()  const;
+  
+  //! Returns true if the vertex draw mode is not equal to <b>Prs3d_VDM_Inherited</b>.
+  //! This means that individual vertex draw mode value (i.e. not inherited from the global
+  //! drawer) is used for a specific interactive object.
+      Standard_Boolean IsOwnVertexDrawMode()  const;
+  
+
+  //! Returns a link with Prs3d_Drawer_ShadingAspect,
+  //! which provides settings for shading aspects.
+  //! These settings can be edited. The default values are:
+  //! Color: Quantity_NOC_YELLOW
+  //! Material: Graphic3d_NOM_BRASS
+  //! hading aspect is obtained through decomposition of
+  //! 3D faces into triangles, each side of each triangle
+  //! being a chord of the corresponding curved edge in
+  //! the face. Reflection of light in each projector
+  //! perspective is then calculated for each of the
+  //! resultant triangular planes.
+  Standard_EXPORT   Handle(Prs3d_ShadingAspect) ShadingAspect() ;
+  
+  //! Returns True if the   Drawer has shading aspect active.
+      Standard_Boolean HasShadingAspect()  const;
+  
+  //! Provides the attributes for hidden line removal.
+  Standard_EXPORT   Standard_Boolean ShadingAspectGlobal()  const;
+  
+  //! Returns Standard_True if the hidden lines are to be drawn.
+  //! By default the hidden lines are not drawn.
+  Standard_EXPORT   Standard_Boolean DrawHiddenLine()  const;
+  
+  //! Returns a link with
+  //! Prs3d_Drawer_HiddenLineAspect, which provides
+  //! settings for hidden line aspects.
+  //! These settings can be edited. The default values are:
+  //! Color: Quantity_NOC_YELLOW
+  //! Type of line: Aspect_TOL_DASH
+  //! Width: 1.
+  Standard_EXPORT   Handle(Prs3d_LineAspect) HiddenLineAspect() ;
+  
+  //! Returns a link with
+  //! Prs3d_Drawer_SeenLineAspect, which provides
+  //! settings for seen line aspects.
+  //! These settings can be edited. The default values are:
+  //! Color: Quantity_NOC_YELLOW
+  //! Type of line: Aspect_TOL_SOLID
+  //! Width: 1.
+  Standard_EXPORT   Handle(Prs3d_LineAspect) SeenLineAspect() ;
+  
+      Standard_Boolean HasPlaneAspect()  const;
+  
+
+  //! Returns a link with Prs3d_Drawer_PlaneAspect.
+  //! This method provides settings for the appearance of planes.
+  Standard_EXPORT   Handle(Prs3d_PlaneAspect) PlaneAspect() ;
+  
+  //! Returns a link with Prs3d_Drawer_VectorAspect,
+  //! which provides settings for the appearance of vectors.
+  //! These settings can be edited. The default values are:
+  //! Color: Quantity_NOC_SKYBLUE
+  //! Type of line: Aspect_TOL_SOLID Width: 1.
+  Standard_EXPORT   Handle(Prs3d_LineAspect) VectorAspect() ;
+  
+  //! Enables or disables drawing of face boundaries for shading presentations.
+  //! The method sets drawing flag owned by the drawer that will be used during
+  //! visualization instead of the one set in link.
+  //! theIsEnabled is a boolean flag indicating whether the face boundaries should be
+  //! drawn or not.
+  Standard_EXPORT   void SetFaceBoundaryDraw (const Standard_Boolean theIsEnabled) ;
+  
+  //! Checks whether the drawing of face boundaries is enabled or not.
+  Standard_EXPORT   Standard_Boolean IsFaceBoundaryDraw()  const;
+  
+  //! Sets line aspect for face boundaries.
+  //! The method sets line aspect owned by the drawer that will be used during
+  //! visualization instead of the one set in link.
+  //! theAspect is the line aspect that determines the look of the face boundaries.
+  Standard_EXPORT   void SetFaceBoundaryAspect (const Handle(Prs3d_LineAspect)& theAspect) ;
+  
+  //! Returns line aspect of face boundaries.
+  Standard_EXPORT   Handle(Prs3d_LineAspect) FaceBoundaryAspect() ;
+  
+  //! Returns true if the drawer has its own attribute for
+  //! "draw face boundaries" flag that overrides the one in the link.
+      Standard_Boolean IsOwnFaceBoundaryDraw()  const;
+  
+  //! Returns true if the drawer has its own attribute for
+  //! face boundaries aspect that overrides the one in the link.
+      Standard_Boolean IsOwnFaceBoundaryAspect()  const;
+  
+      Standard_Boolean HasDatumAspect()  const;
+  
+  //! Returns a link with Prs3d_Drawer_DatumAspect,
+  //! which provides settings for the appearance of datums.
+  //! These settings can be edited. The default values for
+  //! the three axes are:
+  //! Color: Quantity_NOC_PEACHPUFF
+  //! Type of line: Aspect_TOL_SOLID Width: 1.
+  Standard_EXPORT   Handle(Prs3d_DatumAspect) DatumAspect() ;
+  
+  //! Returns a link with Prs3d_Drawer_DimensionAspect,
+  //! which provides settings for the appearance of dimensions.
+  Standard_EXPORT   Handle(Prs3d_DimensionAspect) DimensionAspect() ;
+  
+      Standard_Boolean HasDimensionAspect()  const;
+  
+  //! Sets dimension length model units for computing of dimension presentation.
+  Standard_EXPORT   void SetDimLengthModelUnits (const TCollection_AsciiString& theUnits) ;
+  
+  //! Sets dimension angle model units for computing of dimension presentation.
+  Standard_EXPORT   void SetDimAngleModelUnits (const TCollection_AsciiString& theUnits) ;
+  
+  //! Returns angle model units for the dimension presentation.
+  Standard_EXPORT  const  TCollection_AsciiString& DimAngleModelUnits()  const;
+  
+  //! Returns length model units for the dimension presentation.
+  Standard_EXPORT  const  TCollection_AsciiString& DimLengthModelUnits()  const;
+  
+  //! Sets length units in which value for dimension presentation is displayed.
+  Standard_EXPORT   void SetDimLengthDisplayUnits (const TCollection_AsciiString& theUnits) ;
+  
+  //! Sets angle units in which value for dimension presentation is displayed.
+  Standard_EXPORT   void SetDimAngleDisplayUnits (const TCollection_AsciiString& theUnits) ;
+  
+  //! Returns length units in which dimension presentation is displayed.
+  Standard_EXPORT  const  TCollection_AsciiString& DimLengthDisplayUnits()  const;
+  
+  //! Returns angle units in which dimension presentation is displayed.
+  Standard_EXPORT  const  TCollection_AsciiString& DimAngleDisplayUnits()  const;
+  
+  //! Returns a link with Prs3d_Drawer_SectionAspect,
+  //! which provides settings for wires which highlight sections.
+  //! The LineAspect for the wire can be edited.
+  //! The default values are:
+  //! Color: Quantity_NOC_ORANGE
+  //! Type of line: Aspect_TOL_SOLID
+  //! Width: 1.
+  //! These attributes are used by the following algorithms:
+  //! Prs3d_WFShape
+  Standard_EXPORT   Handle(Prs3d_LineAspect) SectionAspect() ;
+  
+  Standard_EXPORT  const  Handle(Prs3d_Drawer)& Link() ;
+  
+      Standard_Boolean HasLink()  const;
+  
+      void Link (const Handle(Prs3d_Drawer)& aDrawer) ;
+  
+  //! Removes attributes stored in a Local Context.
+  Standard_EXPORT virtual   void ClearLocalAttributes() ;
+  
+  //! Returns true if the last called attribute was local; false if it was global.
+      Standard_Boolean WasLastLocal()  const;
+  
+
+  //! Returns true if a Local Context has stored attributes
+  //! for Interactive Objects.
+      Standard_Boolean HasLocalAttributes()  const;
 
 
 
@@ -485,25 +521,25 @@ protected:
 private: 
 
 
-Handle_Prs3d_Drawer myLink;
-Standard_Boolean hasLocalAttributes;
-Standard_Boolean myhasOwnDeviationCoefficient;
-Standard_Real myOwnDeviationCoefficient;
-Standard_Real myPreviousDeviationCoefficient;
-Standard_Boolean myhasOwnHLRDeviationCoefficient;
-Standard_Real myOwnHLRDeviationCoefficient;
-Standard_Real myPreviousHLRDeviationCoefficient;
-Standard_Boolean myhasOwnDeviationAngle;
-Standard_Real myOwnDeviationAngle;
-Standard_Real myPreviousDeviationAngle;
-Standard_Boolean myhasOwnHLRDeviationAngle;
-Standard_Real myOwnHLRDeviationAngle;
-Standard_Real myPreviousHLRDeviationAngle;
-Standard_Boolean myHasOwnFaceBoundaryDraw;
-Standard_Boolean myHasOwnDimLengthModelUnits;
-Standard_Boolean myHasOwnDimLengthDisplayUnits;
-Standard_Boolean myHasOwnDimAngleModelUnits;
-Standard_Boolean myHasOwnDimAngleDisplayUnits;
+  Handle(Prs3d_Drawer) myLink;
+  Standard_Boolean hasLocalAttributes;
+  Standard_Boolean myhasOwnDeviationCoefficient;
+  Standard_Real myOwnDeviationCoefficient;
+  Standard_Real myPreviousDeviationCoefficient;
+  Standard_Boolean myhasOwnHLRDeviationCoefficient;
+  Standard_Real myOwnHLRDeviationCoefficient;
+  Standard_Real myPreviousHLRDeviationCoefficient;
+  Standard_Boolean myhasOwnDeviationAngle;
+  Standard_Real myOwnDeviationAngle;
+  Standard_Real myPreviousDeviationAngle;
+  Standard_Boolean myhasOwnHLRDeviationAngle;
+  Standard_Real myOwnHLRDeviationAngle;
+  Standard_Real myPreviousHLRDeviationAngle;
+  Standard_Boolean myHasOwnFaceBoundaryDraw;
+  Standard_Boolean myHasOwnDimLengthModelUnits;
+  Standard_Boolean myHasOwnDimLengthDisplayUnits;
+  Standard_Boolean myHasOwnDimAngleModelUnits;
+  Standard_Boolean myHasOwnDimAngleDisplayUnits;
 
 
 };
@@ -513,7 +549,6 @@ Standard_Boolean myHasOwnDimAngleDisplayUnits;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_Drawer_HeaderFile

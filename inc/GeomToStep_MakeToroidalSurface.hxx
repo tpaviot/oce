@@ -6,44 +6,32 @@
 #ifndef _GeomToStep_MakeToroidalSurface_HeaderFile
 #define _GeomToStep_MakeToroidalSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_ToroidalSurface_HeaderFile
 #include <Handle_StepGeom_ToroidalSurface.hxx>
-#endif
-#ifndef _GeomToStep_Root_HeaderFile
 #include <GeomToStep_Root.hxx>
-#endif
-#ifndef _Handle_Geom_ToroidalSurface_HeaderFile
 #include <Handle_Geom_ToroidalSurface.hxx>
-#endif
 class StepGeom_ToroidalSurface;
 class StdFail_NotDone;
 class Geom_ToroidalSurface;
 
 
-//! This class implements the mapping between class <br>
-//!          ToroidalSurface from Geom and the class <br>
-//!          ToroidalSurface from StepGeom which describes a <br>
-//!          toroidal_surface from Prostep <br>
-class GeomToStep_MakeToroidalSurface  : public GeomToStep_Root {
+//! This class implements the mapping between class
+//! ToroidalSurface from Geom and the class
+//! ToroidalSurface from StepGeom which describes a
+//! toroidal_surface from Prostep
+class GeomToStep_MakeToroidalSurface  : public GeomToStep_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomToStep_MakeToroidalSurface(const Handle(Geom_ToroidalSurface)& TorSurf);
+  Standard_EXPORT GeomToStep_MakeToroidalSurface(const Handle(Geom_ToroidalSurface)& TorSurf);
   
-  Standard_EXPORT    const Handle_StepGeom_ToroidalSurface& Value() const;
-
+  Standard_EXPORT  const  Handle(StepGeom_ToroidalSurface)& Value()  const;
 
 
 
@@ -58,7 +46,7 @@ private:
 
 
 
-Handle_StepGeom_ToroidalSurface theToroidalSurface;
+  Handle(StepGeom_ToroidalSurface) theToroidalSurface;
 
 
 };
@@ -67,7 +55,6 @@ Handle_StepGeom_ToroidalSurface theToroidalSurface;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomToStep_MakeToroidalSurface_HeaderFile

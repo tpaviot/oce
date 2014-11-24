@@ -6,28 +6,22 @@
 #ifndef _StepGeom_IntersectionCurve_HeaderFile
 #define _StepGeom_IntersectionCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_IntersectionCurve_HeaderFile
 #include <Handle_StepGeom_IntersectionCurve.hxx>
-#endif
 
-#ifndef _StepGeom_SurfaceCurve_HeaderFile
 #include <StepGeom_SurfaceCurve.hxx>
-#endif
 
 
 
-class StepGeom_IntersectionCurve : public StepGeom_SurfaceCurve {
+class StepGeom_IntersectionCurve : public StepGeom_SurfaceCurve
+{
 
 public:
 
-  //! Returns a IntersectionCurve <br>
-  Standard_EXPORT   StepGeom_IntersectionCurve();
+  
+  //! Returns a IntersectionCurve
+  Standard_EXPORT StepGeom_IntersectionCurve();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_IntersectionCurve_HeaderFile

@@ -6,25 +6,13 @@
 #ifndef _Contap_TheSequenceOfPoint_HeaderFile
 #define _Contap_TheSequenceOfPoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_Contap_SequenceNodeOfTheSequenceOfPoint_HeaderFile
 #include <Handle_Contap_SequenceNodeOfTheSequenceOfPoint.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Contap_Point;
@@ -32,68 +20,68 @@ class Contap_SequenceNodeOfTheSequenceOfPoint;
 
 
 
-class Contap_TheSequenceOfPoint  : public TCollection_BaseSequence {
+class Contap_TheSequenceOfPoint  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Contap_TheSequenceOfPoint();
+    Contap_TheSequenceOfPoint();
   
-  Standard_EXPORT   Contap_TheSequenceOfPoint(const Contap_TheSequenceOfPoint& Other);
+  Standard_EXPORT Contap_TheSequenceOfPoint(const Contap_TheSequenceOfPoint& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~Contap_TheSequenceOfPoint()
 {
   Clear();
 }
   
-  Standard_EXPORT    const Contap_TheSequenceOfPoint& Assign(const Contap_TheSequenceOfPoint& Other) ;
-   const Contap_TheSequenceOfPoint& operator =(const Contap_TheSequenceOfPoint& Other) 
+  Standard_EXPORT  const  Contap_TheSequenceOfPoint& Assign (const Contap_TheSequenceOfPoint& Other) ;
+ const  Contap_TheSequenceOfPoint& operator = (const Contap_TheSequenceOfPoint& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Contap_Point& T) ;
+  Standard_EXPORT   void Append (const Contap_Point& T) ;
   
-        void Append(Contap_TheSequenceOfPoint& S) ;
+      void Append (Contap_TheSequenceOfPoint& S) ;
   
-  Standard_EXPORT     void Prepend(const Contap_Point& T) ;
+  Standard_EXPORT   void Prepend (const Contap_Point& T) ;
   
-        void Prepend(Contap_TheSequenceOfPoint& S) ;
+      void Prepend (Contap_TheSequenceOfPoint& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Contap_Point& T) ;
+      void InsertBefore (const Standard_Integer Index, const Contap_Point& T) ;
   
-        void InsertBefore(const Standard_Integer Index,Contap_TheSequenceOfPoint& S) ;
+      void InsertBefore (const Standard_Integer Index, Contap_TheSequenceOfPoint& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Contap_Point& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Contap_Point& T) ;
   
-        void InsertAfter(const Standard_Integer Index,Contap_TheSequenceOfPoint& S) ;
+      void InsertAfter (const Standard_Integer Index, Contap_TheSequenceOfPoint& S) ;
   
-  Standard_EXPORT    const Contap_Point& First() const;
+  Standard_EXPORT  const  Contap_Point& First()  const;
   
-  Standard_EXPORT    const Contap_Point& Last() const;
+  Standard_EXPORT  const  Contap_Point& Last()  const;
   
-        void Split(const Standard_Integer Index,Contap_TheSequenceOfPoint& Sub) ;
+      void Split (const Standard_Integer Index, Contap_TheSequenceOfPoint& Sub) ;
   
-  Standard_EXPORT    const Contap_Point& Value(const Standard_Integer Index) const;
-   const Contap_Point& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Contap_Point& Value (const Standard_Integer Index)  const;
+ const  Contap_Point& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Contap_Point& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Contap_Point& I) ;
   
-  Standard_EXPORT     Contap_Point& ChangeValue(const Standard_Integer Index) ;
-    Contap_Point& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Contap_Point& ChangeValue (const Standard_Integer Index) ;
+  Contap_Point& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Contap_TheSequenceOfPoint_HeaderFile

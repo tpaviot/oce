@@ -6,49 +6,21 @@
 #ifndef _Contap_Line_HeaderFile
 #define _Contap_Line_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _IntSurf_TypeTrans_HeaderFile
 #include <IntSurf_TypeTrans.hxx>
-#endif
-#ifndef _Handle_IntSurf_LineOn2S_HeaderFile
 #include <Handle_IntSurf_LineOn2S.hxx>
-#endif
-#ifndef _Handle_Contap_TheHSequenceOfPoint_HeaderFile
 #include <Handle_Contap_TheHSequenceOfPoint.hxx>
-#endif
-#ifndef _Handle_Adaptor2d_HCurve2d_HeaderFile
 #include <Handle_Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _Contap_IType_HeaderFile
 #include <Contap_IType.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
-#endif
-#ifndef _gp_Circ_HeaderFile
 #include <gp_Circ.hxx>
-#endif
 class IntSurf_LineOn2S;
 class Contap_TheHSequenceOfPoint;
 class Adaptor2d_HCurve2d;
@@ -61,56 +33,58 @@ class Contap_Point;
 
 
 
-class Contap_Line  {
+class Contap_Line 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Contap_Line();
+  Standard_EXPORT Contap_Line();
   
-  Standard_EXPORT     void SetLineOn2S(const Handle(IntSurf_LineOn2S)& L) ;
+  Standard_EXPORT   void SetLineOn2S (const Handle(IntSurf_LineOn2S)& L) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-       const Handle_IntSurf_LineOn2S& LineOn2S() const;
+     const  Handle(IntSurf_LineOn2S)& LineOn2S()  const;
   
-  Standard_EXPORT     void ResetSeqOfVertex() ;
+  Standard_EXPORT   void ResetSeqOfVertex() ;
   
-        void Add(const IntSurf_PntOn2S& P) ;
+      void Add (const IntSurf_PntOn2S& P) ;
   
-  Standard_EXPORT     void SetValue(const gp_Lin& L) ;
+  Standard_EXPORT   void SetValue (const gp_Lin& L) ;
   
-  Standard_EXPORT     void SetValue(const gp_Circ& C) ;
+  Standard_EXPORT   void SetValue (const gp_Circ& C) ;
   
-  Standard_EXPORT     void SetValue(const Handle(Adaptor2d_HCurve2d)& A) ;
+  Standard_EXPORT   void SetValue (const Handle(Adaptor2d_HCurve2d)& A) ;
   
-  Standard_EXPORT     void Add(const Contap_Point& P) ;
+  Standard_EXPORT   void Add (const Contap_Point& P) ;
   
-        Standard_Integer NbVertex() const;
+      Standard_Integer NbVertex()  const;
   
-        Contap_Point& Vertex(const Standard_Integer Index) const;
-  //! Returns Contap_Lin for a line, Contap_Circle for <br>
-//!          a circle, and Contap_Walking for a Walking line, <br>
-//!          Contap_Restriction for a part of  boundarie. <br>
-        Contap_IType TypeContour() const;
+      Contap_Point& Vertex (const Standard_Integer Index)  const;
   
-        Standard_Integer NbPnts() const;
+  //! Returns Contap_Lin for a line, Contap_Circle for
+  //! a circle, and Contap_Walking for a Walking line,
+  //! Contap_Restriction for a part of  boundarie.
+      Contap_IType TypeContour()  const;
   
-       const IntSurf_PntOn2S& Point(const Standard_Integer Index) const;
+      Standard_Integer NbPnts()  const;
   
-        gp_Lin Line() const;
+     const  IntSurf_PntOn2S& Point (const Standard_Integer Index)  const;
   
-        gp_Circ Circle() const;
+      gp_Lin Line()  const;
   
-  Standard_EXPORT    const Handle_Adaptor2d_HCurve2d& Arc() const;
-  //! Set The Tansition of the line. <br>
-//! <br>
-  Standard_EXPORT     void SetTransitionOnS(const IntSurf_TypeTrans T) ;
-  //! returns IN if at the "left" of the line, the normale of the <br>
-//!          surface is oriented to the observator. <br>
-  Standard_EXPORT     IntSurf_TypeTrans TransitionOnS() const;
-
+      gp_Circ Circle()  const;
+  
+  Standard_EXPORT  const  Handle(Adaptor2d_HCurve2d)& Arc()  const;
+  
+  //! Set The Tansition of the line.
+  Standard_EXPORT   void SetTransitionOnS (const IntSurf_TypeTrans T) ;
+  
+  //! returns IN if at the "left" of the line, the normale of the
+  //! surface is oriented to the observator.
+  Standard_EXPORT   IntSurf_TypeTrans TransitionOnS()  const;
 
 
 
@@ -125,15 +99,15 @@ private:
 
 
 
-IntSurf_TypeTrans Trans;
-Handle_IntSurf_LineOn2S curv;
-Handle_Contap_TheHSequenceOfPoint svtx;
-Handle_Adaptor2d_HCurve2d thearc;
-Contap_IType typL;
-gp_Pnt pt;
-gp_Dir dir1;
-gp_Dir dir2;
-Standard_Real rad;
+  IntSurf_TypeTrans Trans;
+  Handle(IntSurf_LineOn2S) curv;
+  Handle(Contap_TheHSequenceOfPoint) svtx;
+  Handle(Adaptor2d_HCurve2d) thearc;
+  Contap_IType typL;
+  gp_Pnt pt;
+  gp_Dir dir1;
+  gp_Dir dir2;
+  Standard_Real rad;
 
 
 };
@@ -143,7 +117,6 @@ Standard_Real rad;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Contap_Line_HeaderFile

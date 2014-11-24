@@ -1,9 +1,3 @@
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepBasic_CertificationType_HeaderFile
 #include <StepBasic_CertificationType.hxx>
-#endif
-#ifndef _StepBasic_Certification_HeaderFile
 #include <StepBasic_Certification.hxx>
-#endif

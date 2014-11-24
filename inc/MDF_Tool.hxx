@@ -6,37 +6,17 @@
 #ifndef _MDF_Tool_HeaderFile
 #define _MDF_Tool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_TDF_Data_HeaderFile
 #include <Handle_TDF_Data.hxx>
-#endif
-#ifndef _Handle_PDF_Data_HeaderFile
 #include <Handle_PDF_Data.hxx>
-#endif
-#ifndef _Handle_MDF_SRelocationTable_HeaderFile
 #include <Handle_MDF_SRelocationTable.hxx>
-#endif
-#ifndef _Handle_PColStd_HArray1OfInteger_HeaderFile
 #include <Handle_PColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Handle_PDF_HAttributeArray1_HeaderFile
 #include <Handle_PDF_HAttributeArray1.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_MDF_RRelocationTable_HeaderFile
 #include <Handle_MDF_RRelocationTable.hxx>
-#endif
 class TDF_Data;
 class PDF_Data;
 class MDF_TypeASDriverMap;
@@ -48,25 +28,31 @@ class MDF_TypeARDriverMap;
 class MDF_RRelocationTable;
 
 
-//! A tool to translate... <br>
-class MDF_Tool  {
+//! A tool to translate...
+class MDF_Tool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Writes the labels with empty attributes. <br>
-  Standard_EXPORT   static  void WriteLabels(const Handle(TDF_Data)& aSource,const Handle(PDF_Data)& aTarget,const MDF_TypeASDriverMap& aDriverMap,const Handle(MDF_SRelocationTable)& aReloc) ;
-  //! Used for recursivity. <br>
-  Standard_EXPORT   static  void WriteLabels(const TDF_Label& aSourceLab,const Handle(PColStd_HArray1OfInteger)& theLabels,const Handle(PDF_HAttributeArray1)& theAttributes,const MDF_TypeASDriverMap& aDriverMap,const Handle(MDF_SRelocationTable)& aReloc,Standard_Integer& labAlloc,Standard_Integer& attAlloc) ;
-  //! Writes attributes content. <br>
-  Standard_EXPORT   static  void WriteAttributes(const MDF_TypeASDriverMap& aDriverMap,const Handle(MDF_SRelocationTable)& aReloc) ;
-  //!  Reads the labels abd adds empty attributes to them. <br>
-  Standard_EXPORT   static  void ReadLabels(const Handle(PDF_Data)& aSource,const Handle(TDF_Data)& aTarget,const MDF_TypeARDriverMap& aDriverMap,const Handle(MDF_RRelocationTable)& aReloc) ;
-  //! Used for recursivity. <br>
-  Standard_EXPORT   static  void ReadLabels(TDF_Label& anIns,const Handle(PColStd_HArray1OfInteger)& theLabels,const Handle(PDF_HAttributeArray1)& theAttributes,const MDF_TypeARDriverMap& aDriverMap,const Handle(MDF_RRelocationTable)& aReloc,Standard_Integer& labRead,Standard_Integer& attRead) ;
-  //! Reads attributes content and paste them. <br>
-  Standard_EXPORT   static  void ReadAttributes(const MDF_TypeARDriverMap& aDriverMap,const Handle(MDF_RRelocationTable)& aReloc) ;
-
+  
+  //! Writes the labels with empty attributes.
+  Standard_EXPORT static   void WriteLabels (const Handle(TDF_Data)& aSource, const Handle(PDF_Data)& aTarget, const MDF_TypeASDriverMap& aDriverMap, const Handle(MDF_SRelocationTable)& aReloc) ;
+  
+  //! Used for recursivity.
+  Standard_EXPORT static   void WriteLabels (const TDF_Label& aSourceLab, const Handle(PColStd_HArray1OfInteger)& theLabels, const Handle(PDF_HAttributeArray1)& theAttributes, const MDF_TypeASDriverMap& aDriverMap, const Handle(MDF_SRelocationTable)& aReloc, Standard_Integer& labAlloc, Standard_Integer& attAlloc) ;
+  
+  //! Writes attributes content.
+  Standard_EXPORT static   void WriteAttributes (const MDF_TypeASDriverMap& aDriverMap, const Handle(MDF_SRelocationTable)& aReloc) ;
+  
+  //! Reads the labels abd adds empty attributes to them.
+  Standard_EXPORT static   void ReadLabels (const Handle(PDF_Data)& aSource, const Handle(TDF_Data)& aTarget, const MDF_TypeARDriverMap& aDriverMap, const Handle(MDF_RRelocationTable)& aReloc) ;
+  
+  //! Used for recursivity.
+  Standard_EXPORT static   void ReadLabels (TDF_Label& anIns, const Handle(PColStd_HArray1OfInteger)& theLabels, const Handle(PDF_HAttributeArray1)& theAttributes, const MDF_TypeARDriverMap& aDriverMap, const Handle(MDF_RRelocationTable)& aReloc, Standard_Integer& labRead, Standard_Integer& attRead) ;
+  
+  //! Reads attributes content and paste them.
+  Standard_EXPORT static   void ReadAttributes (const MDF_TypeARDriverMap& aDriverMap, const Handle(MDF_RRelocationTable)& aReloc) ;
 
 
 
@@ -89,7 +75,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MDF_Tool_HeaderFile

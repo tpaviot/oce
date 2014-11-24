@@ -5,16 +5,10 @@
 
 #include <XCAFDoc_SequenceNodeOfGraphNodeSequence.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _XCAFDoc_GraphNode_HeaderFile
 #include <XCAFDoc_GraphNode.hxx>
-#endif
-#ifndef _XCAFDoc_GraphNodeSequence_HeaderFile
 #include <XCAFDoc_GraphNodeSequence.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(XCAFDoc_SequenceNodeOfGraphNodeSequence,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(XCAFDoc_SequenceNodeOfGraphNodeSequence)
 
 
-#define SeqItem Handle_XCAFDoc_GraphNode
+#define SeqItem Handle(XCAFDoc_GraphNode)
 #define SeqItem_hxx <XCAFDoc_GraphNode.hxx>
 #define TCollection_SequenceNode XCAFDoc_SequenceNodeOfGraphNodeSequence
 #define TCollection_SequenceNode_hxx <XCAFDoc_SequenceNodeOfGraphNodeSequence.hxx>

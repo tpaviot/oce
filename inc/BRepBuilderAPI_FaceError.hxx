@@ -6,20 +6,23 @@
 #ifndef _BRepBuilderAPI_FaceError_HeaderFile
 #define _BRepBuilderAPI_FaceError_HeaderFile
 
-//!  Indicates the outcome of the <br>
-//! construction of a face, i.e. whether it has been successful or <br>
-//! not, as explained below: <br>
-//! -      BRepBuilderAPI_FaceDone No error occurred. The face is <br>
-//!    correctly built. <br>
-//! -      BRepBuilderAPI_NoFace No initialization of the <br>
-//!    algorithm; only an empty constructor was used. <br>
-//! -      BRepBuilderAPI_NotPlanar <br>
-//!    No surface was given and the wire was not planar. <br>
-//! -      BRepBuilderAPI_CurveProjectionFailed <br>
-//!    Not used so far. <br>
-//! -      BRepBuilderAPI_ParametersOutOfRange <br>
-//!    The parameters given to limit the surface are out of its    bounds. <br>
-enum BRepBuilderAPI_FaceError {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Indicates the outcome of the
+//! construction of a face, i.e. whether it has been successful or
+//! not, as explained below:
+//! -      BRepBuilderAPI_FaceDone No error occurred. The face is
+//! correctly built.
+//! -      BRepBuilderAPI_NoFace No initialization of the
+//! algorithm; only an empty constructor was used.
+//! -      BRepBuilderAPI_NotPlanar
+//! No surface was given and the wire was not planar.
+//! -      BRepBuilderAPI_CurveProjectionFailed
+//! Not used so far.
+//! -      BRepBuilderAPI_ParametersOutOfRange
+//! The parameters given to limit the surface are out of its    bounds.
+enum BRepBuilderAPI_FaceError
+{
 BRepBuilderAPI_FaceDone,
 BRepBuilderAPI_NoFace,
 BRepBuilderAPI_NotPlanar,
@@ -27,8 +30,4 @@ BRepBuilderAPI_CurveProjectionFailed,
 BRepBuilderAPI_ParametersOutOfRange
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BRepBuilderAPI_FaceError_HeaderFile

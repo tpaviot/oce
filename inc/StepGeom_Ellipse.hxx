@@ -6,48 +6,38 @@
 #ifndef _StepGeom_Ellipse_HeaderFile
 #define _StepGeom_Ellipse_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_Ellipse_HeaderFile
 #include <Handle_StepGeom_Ellipse.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _StepGeom_Conic_HeaderFile
 #include <StepGeom_Conic.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepGeom_Axis2Placement;
 
 
 
-class StepGeom_Ellipse : public StepGeom_Conic {
+class StepGeom_Ellipse : public StepGeom_Conic
+{
 
 public:
 
-  //! Returns a Ellipse <br>
-  Standard_EXPORT   StepGeom_Ellipse();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const StepGeom_Axis2Placement& aPosition) ;
+  //! Returns a Ellipse
+  Standard_EXPORT StepGeom_Ellipse();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const StepGeom_Axis2Placement& aPosition,const Standard_Real aSemiAxis1,const Standard_Real aSemiAxis2) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const StepGeom_Axis2Placement& aPosition) ;
   
-  Standard_EXPORT     void SetSemiAxis1(const Standard_Real aSemiAxis1) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const StepGeom_Axis2Placement& aPosition, const Standard_Real aSemiAxis1, const Standard_Real aSemiAxis2) ;
   
-  Standard_EXPORT     Standard_Real SemiAxis1() const;
+  Standard_EXPORT   void SetSemiAxis1 (const Standard_Real aSemiAxis1) ;
   
-  Standard_EXPORT     void SetSemiAxis2(const Standard_Real aSemiAxis2) ;
+  Standard_EXPORT   Standard_Real SemiAxis1()  const;
   
-  Standard_EXPORT     Standard_Real SemiAxis2() const;
+  Standard_EXPORT   void SetSemiAxis2 (const Standard_Real aSemiAxis2) ;
+  
+  Standard_EXPORT   Standard_Real SemiAxis2()  const;
 
 
 
@@ -62,8 +52,8 @@ protected:
 private: 
 
 
-Standard_Real semiAxis1;
-Standard_Real semiAxis2;
+  Standard_Real semiAxis1;
+  Standard_Real semiAxis2;
 
 
 };
@@ -72,7 +62,6 @@ Standard_Real semiAxis2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_Ellipse_HeaderFile

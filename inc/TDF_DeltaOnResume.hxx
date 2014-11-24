@@ -6,38 +6,31 @@
 #ifndef _TDF_DeltaOnResume_HeaderFile
 #define _TDF_DeltaOnResume_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDF_DeltaOnResume_HeaderFile
 #include <Handle_TDF_DeltaOnResume.hxx>
-#endif
 
-#ifndef _TDF_AttributeDelta_HeaderFile
 #include <TDF_AttributeDelta.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
 class TDF_Attribute;
 
 
-//! This class provides default services for an <br>
-//!          AttributeDelta on an Resume action. <br>
-//! <br>
-//!          Applying this AttributeDelta means FORGETTING its <br>
-//!          attribute. <br>
-class TDF_DeltaOnResume : public TDF_AttributeDelta {
+//! This class provides default services for an
+//! AttributeDelta on an Resume action.
+//!
+//! Applying this AttributeDelta means FORGETTING its
+//! attribute.
+class TDF_DeltaOnResume : public TDF_AttributeDelta
+{
 
 public:
 
-  //! Creates a TDF_DeltaOnResume. <br>
-  Standard_EXPORT   TDF_DeltaOnResume(const Handle(TDF_Attribute)& anAtt);
-  //! Applies the delta to the attribute. <br>
-  Standard_EXPORT     void Apply() ;
+  
+  //! Creates a TDF_DeltaOnResume.
+  Standard_EXPORT TDF_DeltaOnResume(const Handle(TDF_Attribute)& anAtt);
+  
+  //! Applies the delta to the attribute.
+  Standard_EXPORT   void Apply() ;
 
 
 
@@ -60,7 +53,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_DeltaOnResume_HeaderFile

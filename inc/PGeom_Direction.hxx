@@ -6,33 +6,26 @@
 #ifndef _PGeom_Direction_HeaderFile
 #define _PGeom_Direction_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom_Direction_HeaderFile
 #include <Handle_PGeom_Direction.hxx>
-#endif
 
-#ifndef _PGeom_Vector_HeaderFile
 #include <PGeom_Vector.hxx>
-#endif
 class gp_Vec;
 
 
-class PGeom_Direction : public PGeom_Vector {
+class PGeom_Direction : public PGeom_Vector
+{
 
 public:
 
-  //! Creates a unit vector with default values. <br>
-  Standard_EXPORT   PGeom_Direction();
-  //! Create a unit vector with <aVec>. <br>
-  Standard_EXPORT   PGeom_Direction(const gp_Vec& aVec);
+  
+  //! Creates a unit vector with default values.
+  Standard_EXPORT PGeom_Direction();
+  
+  //! Create a unit vector with <aVec>.
+  Standard_EXPORT PGeom_Direction(const gp_Vec& aVec);
 
 PGeom_Direction(const Storage_stCONSTclCOM& a) : PGeom_Vector(a)
 {
@@ -59,7 +52,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom_Direction_HeaderFile

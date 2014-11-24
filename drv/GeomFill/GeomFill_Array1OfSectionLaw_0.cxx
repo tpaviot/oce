@@ -5,24 +5,14 @@
 
 #include <GeomFill_Array1OfSectionLaw.hxx>
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _GeomFill_SectionLaw_HeaderFile
 #include <GeomFill_SectionLaw.hxx>
-#endif
  
 
-#define Array1Item Handle_GeomFill_SectionLaw
+#define Array1Item Handle(GeomFill_SectionLaw)
 #define Array1Item_hxx <GeomFill_SectionLaw.hxx>
 #define TCollection_Array1 GeomFill_Array1OfSectionLaw
 #define TCollection_Array1_hxx <GeomFill_Array1OfSectionLaw.hxx>

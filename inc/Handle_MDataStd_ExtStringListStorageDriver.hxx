@@ -6,22 +6,15 @@
 #ifndef _Handle_MDataStd_ExtStringListStorageDriver_HeaderFile
 #define _Handle_MDataStd_ExtStringListStorageDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_MDF_ASDriver_HeaderFile
 #include <Handle_MDF_ASDriver.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(MDF_ASDriver);
 class MDataStd_ExtStringListStorageDriver;
 
-DEFINE_STANDARD_HANDLE(MDataStd_ExtStringListStorageDriver,MDF_ASDriver)
+DEFINE_STANDARD_HANDLE(MDataStd_ExtStringListStorageDriver, MDF_ASDriver)
 
-#endif
+#endif // _Handle_MDataStd_ExtStringListStorageDriver_HeaderFile

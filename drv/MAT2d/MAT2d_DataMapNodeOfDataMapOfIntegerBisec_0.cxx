@@ -5,22 +5,12 @@
 
 #include <MAT2d_DataMapNodeOfDataMapOfIntegerBisec.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Bisector_Bisec_HeaderFile
 #include <Bisector_Bisec.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _MAT2d_DataMapOfIntegerBisec_HeaderFile
 #include <MAT2d_DataMapOfIntegerBisec.hxx>
-#endif
-#ifndef _MAT2d_DataMapIteratorOfDataMapOfIntegerBisec_HeaderFile
 #include <MAT2d_DataMapIteratorOfDataMapOfIntegerBisec.hxx>
-#endif
 
  
 

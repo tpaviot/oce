@@ -5,13 +5,9 @@
 
 #include <IGESBasic_HArray1OfHArray1OfInteger.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
 
  
 

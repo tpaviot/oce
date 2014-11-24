@@ -6,44 +6,35 @@
 #ifndef _Prs3d_Root_HeaderFile
 #define _Prs3d_Root_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Graphic3d_Group_HeaderFile
 #include <Handle_Graphic3d_Group.hxx>
-#endif
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
 class Graphic3d_Group;
 class Prs3d_Presentation;
 
 
-//! A root class for the standard presentation algorithms <br>
-//! of the StdPrs package. <br>
-//! <br>
-class Prs3d_Root  {
+//! A root class for the standard presentation algorithms
+//! of the StdPrs package.
+class Prs3d_Root 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns the current group of primititves inside graphic <br>
-//! objects in the display. <br>
-//! A group also contains the attributes whose ranges are <br>
-//! limited to the primitives in it. <br>
-  Standard_EXPORT   static  Handle_Graphic3d_Group CurrentGroup(const Handle(Prs3d_Presentation)& Prs3d) ;
-  //! Returns the new group of primitives inside graphic <br>
-//! objects in the display. <br>
-//! A group also contains the attributes whose ranges are limited to the primitives in it. <br>
-  Standard_EXPORT   static  Handle_Graphic3d_Group NewGroup(const Handle(Prs3d_Presentation)& Prs3d) ;
-
+  
+  //! Returns the current group of primititves inside graphic
+  //! objects in the display.
+  //! A group also contains the attributes whose ranges are
+  //! limited to the primitives in it.
+  Standard_EXPORT static   Handle(Graphic3d_Group) CurrentGroup (const Handle(Prs3d_Presentation)& Prs3d) ;
+  
+  //! Returns the new group of primitives inside graphic
+  //! objects in the display.
+  //! A group also contains the attributes whose ranges are limited to the primitives in it.
+  Standard_EXPORT static   Handle(Graphic3d_Group) NewGroup (const Handle(Prs3d_Presentation)& Prs3d) ;
 
 
 
@@ -66,7 +57,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Prs3d_Root_HeaderFile

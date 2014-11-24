@@ -6,63 +6,41 @@
 #ifndef _TopOpeBRepDS_Edge3dInterferenceTool_HeaderFile
 #define _TopOpeBRepDS_Edge3dInterferenceTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopTrans_SurfaceTransition_HeaderFile
 #include <TopTrans_SurfaceTransition.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_Interference_HeaderFile
 #include <Handle_TopOpeBRepDS_Interference.hxx>
-#endif
 class TopoDS_Shape;
 class TopOpeBRepDS_Interference;
 
 
-//! a tool computing edge / face complex transition, <br>
-//!          Interferences of edge reference are given by <br>
-//!          I = (T on face, G = point or vertex, S = edge) <br>
-class TopOpeBRepDS_Edge3dInterferenceTool  {
+//! a tool computing edge / face complex transition,
+//! Interferences of edge reference are given by
+//! I = (T on face, G = point or vertex, S = edge)
+class TopOpeBRepDS_Edge3dInterferenceTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepDS_Edge3dInterferenceTool();
+  Standard_EXPORT TopOpeBRepDS_Edge3dInterferenceTool();
   
-  Standard_EXPORT     void InitPointVertex(const Standard_Integer IsVertex,const TopoDS_Shape& VonOO) ;
+  Standard_EXPORT   void InitPointVertex (const Standard_Integer IsVertex, const TopoDS_Shape& VonOO) ;
   
-  Standard_EXPORT     void Init(const TopoDS_Shape& Eref,const TopoDS_Shape& E,const TopoDS_Shape& F,const Handle(TopOpeBRepDS_Interference)& I) ;
+  Standard_EXPORT   void Init (const TopoDS_Shape& Eref, const TopoDS_Shape& E, const TopoDS_Shape& F, const Handle(TopOpeBRepDS_Interference)& I) ;
   
-  Standard_EXPORT     void Add(const TopoDS_Shape& Eref,const TopoDS_Shape& E,const TopoDS_Shape& F,const Handle(TopOpeBRepDS_Interference)& I) ;
+  Standard_EXPORT   void Add (const TopoDS_Shape& Eref, const TopoDS_Shape& E, const TopoDS_Shape& F, const Handle(TopOpeBRepDS_Interference)& I) ;
   
-  Standard_EXPORT     void Transition(const Handle(TopOpeBRepDS_Interference)& I) const;
-
+  Standard_EXPORT   void Transition (const Handle(TopOpeBRepDS_Interference)& I)  const;
 
 
 
@@ -77,14 +55,14 @@ private:
 
 
 
-Standard_Integer myFaceOriented;
-TopTrans_SurfaceTransition myTool;
-Standard_Real myTole;
-Standard_Boolean myrefdef;
-Standard_Integer myIsVertex;
-TopoDS_Shape myVonOO;
-gp_Pnt myP3d;
-gp_Dir myTgtref;
+  Standard_Integer myFaceOriented;
+  TopTrans_SurfaceTransition myTool;
+  Standard_Real myTole;
+  Standard_Boolean myrefdef;
+  Standard_Integer myIsVertex;
+  TopoDS_Shape myVonOO;
+  gp_Pnt myP3d;
+  gp_Dir myTgtref;
 
 
 };
@@ -93,7 +71,6 @@ gp_Dir myTgtref;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_Edge3dInterferenceTool_HeaderFile

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKGeomAlgo"
-	ProjectGUID="{0351AE0E-022B-0228-0A47-62A10A3AB5FB}"
+	ProjectGUID="{31D8B768-1981-162D-0316-9902676CE5A2}"
 	>
 	<Platforms>
 		<Platform
@@ -63,6 +63,7 @@
 				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
+				EnableEnhancedInstructionSet="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -163,6 +164,7 @@
 				DebugInformationFormat="3"
 				CompileAs="0"
 				DisableSpecificWarnings="4996"
+				EnableEnhancedInstructionSet="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -187,6 +189,7 @@
 				ProgramDatabaseFile="..\..\..\win32\vc8\bind\TKGeomAlgo.pdb"
 				SubSystem="2"
 				ImportLibrary="..\..\..\win32\vc8\libd\TKGeomAlgo.lib"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -248,7 +251,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Hatch;..\..\..\src\Hatch;..\..\..\drv\GeomInt;..\..\..\src\GeomInt;..\..\..\drv\IntStart;..\..\..\src\IntStart;..\..\..\drv\IntWalk;..\..\..\src\IntWalk;..\..\..\drv\IntImp;..\..\..\src\IntImp;..\..\..\drv\IntCurveSurface;..\..\..\src\IntCurveSurface;..\..\..\drv\IntSurf;..\..\..\src\IntSurf;..\..\..\drv\IntPatch;..\..\..\src\IntPatch;..\..\..\drv\Geom2dInt;..\..\..\src\Geom2dInt;..\..\..\drv\IntImpParGen;..\..\..\src\IntImpParGen;..\..\..\drv\IntRes2d;..\..\..\src\IntRes2d;..\..\..\drv\IntCurve;..\..\..\src\IntCurve;..\..\..\drv\TopTrans;..\..\..\src\TopTrans;..\..\..\drv\Intf;..\..\..\src\Intf;..\..\..\drv\ApproxInt;..\..\..\src\ApproxInt;..\..\..\drv\GccAna;..\..\..\src\GccAna;..\..\..\drv\GccEnt;..\..\..\src\GccEnt;..\..\..\drv\GccInt;..\..\..\src\GccInt;..\..\..\drv\HatchGen;..\..\..\src\HatchGen;..\..\..\drv\Geom2dHatch;..\..\..\src\Geom2dHatch;..\..\..\drv\Law;..\..\..\src\Law;..\..\..\drv\AppBlend;..\..\..\src\AppBlend;..\..\..\drv\Plate;..\..\..\src\Plate;..\..\..\drv\GeomPlate;..\..\..\src\GeomPlate;..\..\..\drv\LocalAnalysis;..\..\..\src\LocalAnalysis;..\..\..\drv\GeomAPI;..\..\..\src\GeomAPI;..\..\..\drv\GeomFill;..\..\..\src\GeomFill;..\..\..\drv\Geom2dAPI;..\..\..\src\Geom2dAPI;..\..\..\drv\Geom2dGcc;..\..\..\src\Geom2dGcc;..\..\..\drv\FairCurve;..\..\..\src\FairCurve;..\..\..\drv\NLPlate;..\..\..\src\NLPlate;..\..\..\drv\IntPolyh;..\..\..\src\IntPolyh;..\..\..\drv\TopClass;..\..\..\src\TopClass;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +271,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -276,7 +279,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKernel.lib TKMath.lib TKG3d.lib TKG2d.lib TKGeomBase.lib TKBRep.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKernel.lib TKMath.lib TKG3d.lib TKG2d.lib TKGeomBase.lib TKBRep.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bin\TKGeomAlgo.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -284,7 +287,7 @@
 				ProgramDatabaseFile=".\..\..\..\win64\vc8\bin\TKGeomAlgo.pdb"
 				SubSystem="2"
 				ImportLibrary="..\..\..\win64\vc8\lib\TKGeomAlgo.lib"
-				TargetMachine="X64"
+				TargetMachine="17"
 			/>
 			<Tool
  				Name="VCALinkTool"
@@ -347,7 +350,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Hatch;..\..\..\src\Hatch;..\..\..\drv\GeomInt;..\..\..\src\GeomInt;..\..\..\drv\IntStart;..\..\..\src\IntStart;..\..\..\drv\IntWalk;..\..\..\src\IntWalk;..\..\..\drv\IntImp;..\..\..\src\IntImp;..\..\..\drv\IntCurveSurface;..\..\..\src\IntCurveSurface;..\..\..\drv\IntSurf;..\..\..\src\IntSurf;..\..\..\drv\IntPatch;..\..\..\src\IntPatch;..\..\..\drv\Geom2dInt;..\..\..\src\Geom2dInt;..\..\..\drv\IntImpParGen;..\..\..\src\IntImpParGen;..\..\..\drv\IntRes2d;..\..\..\src\IntRes2d;..\..\..\drv\IntCurve;..\..\..\src\IntCurve;..\..\..\drv\TopTrans;..\..\..\src\TopTrans;..\..\..\drv\Intf;..\..\..\src\Intf;..\..\..\drv\ApproxInt;..\..\..\src\ApproxInt;..\..\..\drv\GccAna;..\..\..\src\GccAna;..\..\..\drv\GccEnt;..\..\..\src\GccEnt;..\..\..\drv\GccInt;..\..\..\src\GccInt;..\..\..\drv\HatchGen;..\..\..\src\HatchGen;..\..\..\drv\Geom2dHatch;..\..\..\src\Geom2dHatch;..\..\..\drv\Law;..\..\..\src\Law;..\..\..\drv\AppBlend;..\..\..\src\AppBlend;..\..\..\drv\Plate;..\..\..\src\Plate;..\..\..\drv\GeomPlate;..\..\..\src\GeomPlate;..\..\..\drv\LocalAnalysis;..\..\..\src\LocalAnalysis;..\..\..\drv\GeomAPI;..\..\..\src\GeomAPI;..\..\..\drv\GeomFill;..\..\..\src\GeomFill;..\..\..\drv\Geom2dAPI;..\..\..\src\Geom2dAPI;..\..\..\drv\Geom2dGcc;..\..\..\src\Geom2dGcc;..\..\..\drv\FairCurve;..\..\..\src\FairCurve;..\..\..\drv\NLPlate;..\..\..\src\NLPlate;..\..\..\drv\IntPolyh;..\..\..\src\IntPolyh;..\..\..\drv\TopClass;..\..\..\src\TopClass;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -369,7 +372,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -377,7 +380,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKernel.lib TKMath.lib TKG3d.lib TKG2d.lib TKGeomBase.lib TKBRep.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKernel.lib TKMath.lib TKG3d.lib TKG2d.lib TKGeomBase.lib TKBRep.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bind\TKGeomAlgo.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -386,7 +389,7 @@
 				ProgramDatabaseFile="..\..\..\win64\vc8\bind\TKGeomAlgo.pdb"
 				SubSystem="2"
 				ImportLibrary="..\..\..\win64\vc8\libd\TKGeomAlgo.lib"
-				TargetMachine="X64"
+				TargetMachine="17"
 			/>
 			<Tool
 				Name="VCALinkTool"

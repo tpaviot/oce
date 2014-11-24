@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKBO"
-	ProjectGUID="{ABFA68EC-07FC-1421-097D-FF593F3C38A2}"
+	ProjectGUID="{1B194ED1-1464-045C-14FC-E861D96FF63B}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -248,7 +248,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\IntTools;..\..\..\src\IntTools;..\..\..\drv\BRepAlgoAPI;..\..\..\src\BRepAlgoAPI;..\..\..\drv\BOPCol;..\..\..\src\BOPCol;..\..\..\drv\BOPDS;..\..\..\src\BOPDS;..\..\..\drv\BOPAlgo;..\..\..\src\BOPAlgo;..\..\..\drv\BOPTools;..\..\..\src\BOPTools;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -343,7 +343,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\IntTools;..\..\..\src\IntTools;..\..\..\drv\BRepAlgoAPI;..\..\..\src\BRepAlgoAPI;..\..\..\drv\BOPCol;..\..\..\src\BOPCol;..\..\..\drv\BOPDS;..\..\..\src\BOPDS;..\..\..\drv\BOPAlgo;..\..\..\src\BOPAlgo;..\..\..\drv\BOPTools;..\..\..\src\BOPTools;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -365,7 +365,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__IntTools_DLL;__BRepAlgoAPI_DLL;__BOPCol_DLL;__BOPDS_DLL;__BOPAlgo_DLL;__BOPTools_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -714,9 +714,6 @@
 					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_BOP.cxx">
 				</File>
 				<File
-					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_BOP_1.cxx">
-				</File>
-				<File
 					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_Builder.cxx">
 				</File>
 				<File
@@ -784,6 +781,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_9.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_Section.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\BOPAlgo\BOPAlgo_SectionAttribute.cxx">

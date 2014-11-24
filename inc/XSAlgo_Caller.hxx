@@ -6,15 +6,14 @@
 #ifndef _XSAlgo_Caller_HeaderFile
 #define _XSAlgo_Caller_HeaderFile
 
-//! Identifies the caller of the algorithm <br>
-enum XSAlgo_Caller {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Identifies the caller of the algorithm
+enum XSAlgo_Caller
+{
 XSAlgo_DEFAULT,
 XSAlgo_IGES,
 XSAlgo_STEP
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _XSAlgo_Caller_HeaderFile

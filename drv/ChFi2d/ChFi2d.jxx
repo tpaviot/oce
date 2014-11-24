@@ -1,12 +1,4 @@
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _TopoDS_Vertex_HeaderFile
 #include <TopoDS_Vertex.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _ChFi2d_HeaderFile
 #include <ChFi2d.hxx>
-#endif

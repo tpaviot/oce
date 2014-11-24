@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{15C823F0-00DE-0B4B-060B-564107C7691B}</ProjectGuid>
+    <ProjectGuid>{AD1F9D5F-12C1-1862-0DEA-3C0E1CC27136}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -173,7 +173,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PDF_DLL;__PDataStd_DLL;__PFunction_DLL;__PDocStd_DLL;__MDF_DLL;__MDataStd_DLL;__MFunction_DLL;__MDocStd_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PDF_DLL;__PDataStd_DLL;__PFunction_DLL;__PDocStd_DLL;__MDF_DLL;__MDataStd_DLL;__MFunction_DLL;__MDocStd_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -188,7 +188,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PDF_DLL;__PDataStd_DLL;__PFunction_DLL;__PDocStd_DLL;__MDF_DLL;__MDataStd_DLL;__MFunction_DLL;__MDocStd_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PDF_DLL;__PDataStd_DLL;__PFunction_DLL;__PDocStd_DLL;__MDF_DLL;__MDataStd_DLL;__MFunction_DLL;__MDocStd_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKCDF.lib;PTKernel.lib;TKernel.lib;TKLCAF.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -216,7 +216,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PDF_DLL;__PDataStd_DLL;__PFunction_DLL;__PDocStd_DLL;__MDF_DLL;__MDataStd_DLL;__MFunction_DLL;__MDocStd_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PDF_DLL;__PDataStd_DLL;__PFunction_DLL;__PDocStd_DLL;__MDF_DLL;__MDataStd_DLL;__MFunction_DLL;__MDocStd_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win64\vc12\objd\TKPLCAF/</AssemblerListingLocation>
@@ -232,7 +232,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PDF_DLL;__PDataStd_DLL;__PFunction_DLL;__PDocStd_DLL;__MDF_DLL;__MDataStd_DLL;__MFunction_DLL;__MDocStd_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PDF_DLL;__PDataStd_DLL;__PFunction_DLL;__PDocStd_DLL;__MDF_DLL;__MDataStd_DLL;__MFunction_DLL;__MDocStd_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKCDF.lib;PTKernel.lib;TKernel.lib;TKLCAF.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>

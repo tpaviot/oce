@@ -6,38 +6,27 @@
 #ifndef _Contap_SequenceNodeOfTheSequenceOfLine_HeaderFile
 #define _Contap_SequenceNodeOfTheSequenceOfLine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Contap_SequenceNodeOfTheSequenceOfLine_HeaderFile
 #include <Handle_Contap_SequenceNodeOfTheSequenceOfLine.hxx>
-#endif
 
-#ifndef _Contap_Line_HeaderFile
 #include <Contap_Line.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Contap_Line;
 class Contap_TheSequenceOfLine;
 
 
 
-class Contap_SequenceNodeOfTheSequenceOfLine : public TCollection_SeqNode {
+class Contap_SequenceNodeOfTheSequenceOfLine : public TCollection_SeqNode
+{
 
 public:
 
   
-      Contap_SequenceNodeOfTheSequenceOfLine(const Contap_Line& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    Contap_SequenceNodeOfTheSequenceOfLine(const Contap_Line& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Contap_Line& Value() const;
+      Contap_Line& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-Contap_Line myValue;
+  Contap_Line myValue;
 
 
 };
@@ -78,7 +67,6 @@ Contap_Line myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Contap_SequenceNodeOfTheSequenceOfLine_HeaderFile

@@ -6,38 +6,33 @@
 #ifndef _StepElement_SurfaceSectionFieldConstant_HeaderFile
 #define _StepElement_SurfaceSectionFieldConstant_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepElement_SurfaceSectionFieldConstant_HeaderFile
 #include <Handle_StepElement_SurfaceSectionFieldConstant.hxx>
-#endif
 
-#ifndef _Handle_StepElement_SurfaceSection_HeaderFile
 #include <Handle_StepElement_SurfaceSection.hxx>
-#endif
-#ifndef _StepElement_SurfaceSectionField_HeaderFile
 #include <StepElement_SurfaceSectionField.hxx>
-#endif
 class StepElement_SurfaceSection;
 
 
-//! Representation of STEP entity SurfaceSectionFieldConstant <br>
-class StepElement_SurfaceSectionFieldConstant : public StepElement_SurfaceSectionField {
+//! Representation of STEP entity SurfaceSectionFieldConstant
+class StepElement_SurfaceSectionFieldConstant : public StepElement_SurfaceSectionField
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepElement_SurfaceSectionFieldConstant();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(StepElement_SurfaceSection)& aDefinition) ;
-  //! Returns field Definition <br>
-  Standard_EXPORT     Handle_StepElement_SurfaceSection Definition() const;
-  //! Set field Definition <br>
-  Standard_EXPORT     void SetDefinition(const Handle(StepElement_SurfaceSection)& Definition) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepElement_SurfaceSectionFieldConstant();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(StepElement_SurfaceSection)& aDefinition) ;
+  
+  //! Returns field Definition
+  Standard_EXPORT   Handle(StepElement_SurfaceSection) Definition()  const;
+  
+  //! Set field Definition
+  Standard_EXPORT   void SetDefinition (const Handle(StepElement_SurfaceSection)& Definition) ;
 
 
 
@@ -52,7 +47,7 @@ protected:
 private: 
 
 
-Handle_StepElement_SurfaceSection theDefinition;
+  Handle(StepElement_SurfaceSection) theDefinition;
 
 
 };
@@ -61,7 +56,6 @@ Handle_StepElement_SurfaceSection theDefinition;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_SurfaceSectionFieldConstant_HeaderFile

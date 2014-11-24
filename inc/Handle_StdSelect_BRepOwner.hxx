@@ -6,22 +6,15 @@
 #ifndef _Handle_StdSelect_BRepOwner_HeaderFile
 #define _Handle_StdSelect_BRepOwner_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_SelectMgr_EntityOwner_HeaderFile
 #include <Handle_SelectMgr_EntityOwner.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(SelectMgr_EntityOwner);
 class StdSelect_BRepOwner;
 
-DEFINE_STANDARD_HANDLE(StdSelect_BRepOwner,SelectMgr_EntityOwner)
+DEFINE_STANDARD_HANDLE(StdSelect_BRepOwner, SelectMgr_EntityOwner)
 
-#endif
+#endif // _Handle_StdSelect_BRepOwner_HeaderFile

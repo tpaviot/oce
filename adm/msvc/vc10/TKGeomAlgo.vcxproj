@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{26D344AF-0504-0780-0C78-0DD0D709E748}</ProjectGuid>
+    <ProjectGuid>{05CD33AE-098C-059C-065A-1799B96D6732}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -171,7 +171,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -186,7 +186,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKernel.lib;TKMath.lib;TKG3d.lib;TKG2d.lib;TKGeomBase.lib;TKBRep.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -214,7 +214,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win64\vc10\objd\TKGeomAlgo/</AssemblerListingLocation>
@@ -230,7 +230,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Hatch_DLL;__GeomInt_DLL;__IntStart_DLL;__IntWalk_DLL;__IntImp_DLL;__IntCurveSurface_DLL;__IntSurf_DLL;__IntPatch_DLL;__Geom2dInt_DLL;__IntImpParGen_DLL;__IntRes2d_DLL;__IntCurve_DLL;__TopTrans_DLL;__Intf_DLL;__ApproxInt_DLL;__GccAna_DLL;__GccEnt_DLL;__GccInt_DLL;__HatchGen_DLL;__Geom2dHatch_DLL;__Law_DLL;__AppBlend_DLL;__Plate_DLL;__GeomPlate_DLL;__LocalAnalysis_DLL;__GeomAPI_DLL;__GeomFill_DLL;__Geom2dAPI_DLL;__Geom2dGcc_DLL;__FairCurve_DLL;__NLPlate_DLL;__IntPolyh_DLL;__TopClass_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKernel.lib;TKMath.lib;TKG3d.lib;TKG2d.lib;TKGeomBase.lib;TKBRep.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>

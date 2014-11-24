@@ -1,39 +1,13 @@
-#ifndef _TColgp_HArray1OfPnt2d_HeaderFile
 #include <TColgp_HArray1OfPnt2d.hxx>
-#endif
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Standard_ConstructionError_HeaderFile
 #include <Standard_ConstructionError.hxx>
-#endif
-#ifndef _Standard_DimensionError_HeaderFile
 #include <Standard_DimensionError.hxx>
-#endif
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TColgp_Array1OfPnt2d_HeaderFile
 #include <TColgp_Array1OfPnt2d.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _gp_Vec2d_HeaderFile
 #include <gp_Vec2d.hxx>
-#endif
-#ifndef _gp_Trsf2d_HeaderFile
 #include <gp_Trsf2d.hxx>
-#endif
-#ifndef _Geom2d_Geometry_HeaderFile
 #include <Geom2d_Geometry.hxx>
-#endif
-#ifndef _Geom2d_BezierCurve_HeaderFile
 #include <Geom2d_BezierCurve.hxx>
-#endif

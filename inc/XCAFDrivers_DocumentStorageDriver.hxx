@@ -6,38 +6,27 @@
 #ifndef _XCAFDrivers_DocumentStorageDriver_HeaderFile
 #define _XCAFDrivers_DocumentStorageDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_XCAFDrivers_DocumentStorageDriver_HeaderFile
 #include <Handle_XCAFDrivers_DocumentStorageDriver.hxx>
-#endif
 
-#ifndef _MDocStd_DocumentStorageDriver_HeaderFile
 #include <MDocStd_DocumentStorageDriver.hxx>
-#endif
-#ifndef _Handle_MDF_ASDriverTable_HeaderFile
 #include <Handle_MDF_ASDriverTable.hxx>
-#endif
-#ifndef _Handle_CDM_MessageDriver_HeaderFile
 #include <Handle_CDM_MessageDriver.hxx>
-#endif
 class MDF_ASDriverTable;
 class CDM_MessageDriver;
 
 
-//! storage driver of a  XS document <br>
-class XCAFDrivers_DocumentStorageDriver : public MDocStd_DocumentStorageDriver {
+//! storage driver of a  XS document
+class XCAFDrivers_DocumentStorageDriver : public MDocStd_DocumentStorageDriver
+{
 
 public:
 
   
-  Standard_EXPORT   XCAFDrivers_DocumentStorageDriver();
+  Standard_EXPORT XCAFDrivers_DocumentStorageDriver();
   
-  Standard_EXPORT   virtual  Handle_MDF_ASDriverTable AttributeDrivers(const Handle(CDM_MessageDriver)& theMessageDriver) ;
+  Standard_EXPORT virtual   Handle(MDF_ASDriverTable) AttributeDrivers (const Handle(CDM_MessageDriver)& theMessageDriver) ;
 
 
 
@@ -60,7 +49,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XCAFDrivers_DocumentStorageDriver_HeaderFile

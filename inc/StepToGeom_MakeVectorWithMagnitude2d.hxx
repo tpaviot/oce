@@ -6,40 +6,28 @@
 #ifndef _StepToGeom_MakeVectorWithMagnitude2d_HeaderFile
 #define _StepToGeom_MakeVectorWithMagnitude2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepGeom_Vector_HeaderFile
 #include <Handle_StepGeom_Vector.hxx>
-#endif
-#ifndef _Handle_Geom2d_VectorWithMagnitude_HeaderFile
 #include <Handle_Geom2d_VectorWithMagnitude.hxx>
-#endif
 class StepGeom_Vector;
 class Geom2d_VectorWithMagnitude;
 
 
-//! This class implements the mapping between classes <br>
-//!          Vector from StepGeom which describes a VectorWithMagnitude <br>
-//!          from Prostep and VectorWithMagnitude from Geom2d. <br>
-class StepToGeom_MakeVectorWithMagnitude2d  {
+//! This class implements the mapping between classes
+//! Vector from StepGeom which describes a VectorWithMagnitude
+//! from Prostep and VectorWithMagnitude from Geom2d.
+class StepToGeom_MakeVectorWithMagnitude2d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Standard_Boolean Convert(const Handle(StepGeom_Vector)& SV,Handle(Geom2d_VectorWithMagnitude)& CV) ;
-
+  Standard_EXPORT static   Standard_Boolean Convert (const Handle(StepGeom_Vector)& SV, Handle(Geom2d_VectorWithMagnitude)& CV) ;
 
 
 
@@ -62,7 +50,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToGeom_MakeVectorWithMagnitude2d_HeaderFile

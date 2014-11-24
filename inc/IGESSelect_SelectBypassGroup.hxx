@@ -6,28 +6,14 @@
 #ifndef _IGESSelect_SelectBypassGroup_HeaderFile
 #define _IGESSelect_SelectBypassGroup_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSelect_SelectBypassGroup_HeaderFile
 #include <Handle_IGESSelect_SelectBypassGroup.hxx>
-#endif
 
-#ifndef _IFSelect_SelectExplore_HeaderFile
 #include <IFSelect_SelectExplore.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
 class Interface_InterfaceError;
 class Standard_Transient;
 class Interface_Graph;
@@ -35,26 +21,30 @@ class Interface_EntityIterator;
 class TCollection_AsciiString;
 
 
-//! Selects a list built as follows : <br>
-//!           Groups are entities type 402, forms 1,7,14,15 (Group, <br>
-//!           Ordered or not, "WithoutBackPointer" or not) <br>
-//! <br>
-//!           Entities which are not GROUP are taken as such <br>
-//!           For Groups, their list of Elements is explore <br>
-//!           Hence, level 0 (D) recursively explores a Group if some of <br>
-//!           its Elements are Groups. level 1 explores just at first level <br>
-class IGESSelect_SelectBypassGroup : public IFSelect_SelectExplore {
+//! Selects a list built as follows :
+//! Groups are entities type 402, forms 1,7,14,15 (Group,
+//! Ordered or not, "WithoutBackPointer" or not)
+//!
+//! Entities which are not GROUP are taken as such
+//! For Groups, their list of Elements is explore
+//! Hence, level 0 (D) recursively explores a Group if some of
+//! its Elements are Groups. level 1 explores just at first level
+class IGESSelect_SelectBypassGroup : public IFSelect_SelectExplore
+{
 
 public:
 
-  //! Creates a SelectBypassGroup, by default all level <br>
-//!           (level = 1 explores at first level) <br>
-  Standard_EXPORT   IGESSelect_SelectBypassGroup(const Standard_Integer level = 0);
-  //! Explores an entity : for a Group, gives its elements <br>
-//!           Else, takes the entity itself <br>
-  Standard_EXPORT     Standard_Boolean Explore(const Standard_Integer level,const Handle(Standard_Transient)& ent,const Interface_Graph& G,Interface_EntityIterator& explored) const;
-  //! Returns a text defining the criterium : "Content of Group" <br>
-  Standard_EXPORT     TCollection_AsciiString ExploreLabel() const;
+  
+  //! Creates a SelectBypassGroup, by default all level
+  //! (level = 1 explores at first level)
+  Standard_EXPORT IGESSelect_SelectBypassGroup(const Standard_Integer level = 0);
+  
+  //! Explores an entity : for a Group, gives its elements
+  //! Else, takes the entity itself
+  Standard_EXPORT   Standard_Boolean Explore (const Standard_Integer level, const Handle(Standard_Transient)& ent, const Interface_Graph& G, Interface_EntityIterator& explored)  const;
+  
+  //! Returns a text defining the criterium : "Content of Group"
+  Standard_EXPORT   TCollection_AsciiString ExploreLabel()  const;
 
 
 
@@ -77,7 +67,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSelect_SelectBypassGroup_HeaderFile

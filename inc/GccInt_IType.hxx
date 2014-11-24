@@ -6,8 +6,11 @@
 #ifndef _GccInt_IType_HeaderFile
 #define _GccInt_IType_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum GccInt_IType {
+
+enum GccInt_IType
+{
 GccInt_Lin,
 GccInt_Cir,
 GccInt_Ell,
@@ -16,8 +19,4 @@ GccInt_Hpr,
 GccInt_Pnt
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _GccInt_IType_HeaderFile

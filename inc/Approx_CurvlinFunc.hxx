@@ -6,43 +6,19 @@
 #ifndef _Approx_CurvlinFunc_HeaderFile
 #define _Approx_CurvlinFunc_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Approx_CurvlinFunc_HeaderFile
 #include <Handle_Approx_CurvlinFunc.hxx>
-#endif
 
-#ifndef _Handle_Adaptor3d_HCurve_HeaderFile
 #include <Handle_Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _Handle_Adaptor2d_HCurve2d_HeaderFile
 #include <Handle_Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Adaptor3d_HCurve;
 class Adaptor2d_HCurve2d;
 class Adaptor3d_HSurface;
@@ -54,57 +30,65 @@ class Adaptor3d_Curve;
 class TColStd_Array1OfReal;
 
 
-//! defines an abstract curve with <br>
-//!          curvilinear parametrization <br>
-//! <br>
-//! <br>
-//! <br>
-//! <br>
-class Approx_CurvlinFunc : public MMgt_TShared {
+//! defines an abstract curve with
+//! curvilinear parametrization
+class Approx_CurvlinFunc : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   Approx_CurvlinFunc(const Handle(Adaptor3d_HCurve)& C,const Standard_Real Tol);
+  Standard_EXPORT Approx_CurvlinFunc(const Handle(Adaptor3d_HCurve)& C, const Standard_Real Tol);
   
-  Standard_EXPORT   Approx_CurvlinFunc(const Handle(Adaptor2d_HCurve2d)& C2D,const Handle(Adaptor3d_HSurface)& S,const Standard_Real Tol);
+  Standard_EXPORT Approx_CurvlinFunc(const Handle(Adaptor2d_HCurve2d)& C2D, const Handle(Adaptor3d_HSurface)& S, const Standard_Real Tol);
   
-  Standard_EXPORT   Approx_CurvlinFunc(const Handle(Adaptor2d_HCurve2d)& C2D1,const Handle(Adaptor2d_HCurve2d)& C2D2,const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_HSurface)& S2,const Standard_Real Tol);
-  //!---Purpose Update the tolerance to used <br>
-  Standard_EXPORT     void SetTol(const Standard_Real Tol) ;
+  Standard_EXPORT Approx_CurvlinFunc(const Handle(Adaptor2d_HCurve2d)& C2D1, const Handle(Adaptor2d_HCurve2d)& C2D2, const Handle(Adaptor3d_HSurface)& S1, const Handle(Adaptor3d_HSurface)& S2, const Standard_Real Tol);
   
-  Standard_EXPORT     Standard_Real FirstParameter() const;
+  //! ---Purpose Update the tolerance to used
+  Standard_EXPORT   void SetTol (const Standard_Real Tol) ;
   
-  Standard_EXPORT     Standard_Real LastParameter() const;
-  //! Returns  the number  of  intervals for  continuity <br>
-//!          <S>. May be one if Continuity(me) >= <S> <br>
-  Standard_EXPORT     Standard_Integer NbIntervals(const GeomAbs_Shape S) const;
-  //! Stores in <T> the  parameters bounding the intervals <br>
-//!          of continuity <S>. <br>
-//! <br>
-//!          The array must provide  enough room to  accomodate <br>
-//!          for the parameters. i.e. T.Length() > NbIntervals() <br>
-  Standard_EXPORT     void Intervals(TColStd_Array1OfReal& T,const GeomAbs_Shape S) const;
-  //! if First < 0 or Last > 1 <br>
-  Standard_EXPORT     void Trim(const Standard_Real First,const Standard_Real Last,const Standard_Real Tol) ;
-  //! Computes length of the curve. <br>
-  Standard_EXPORT     void Length() ;
-  //! Computes length of the curve segment. <br>
-  Standard_EXPORT     Standard_Real Length(Adaptor3d_Curve& C,const Standard_Real FirstU,const Standard_Real LasrU) const;
+  Standard_EXPORT   Standard_Real FirstParameter()  const;
   
-  Standard_EXPORT     Standard_Real GetLength() const;
-  //! returns  original parameter correponding S.  if <br>
-//!  Case == 1 computation is performed on myC2D1 and mySurf1, <br>
-//!  otherwise it is done on myC2D2 and mySurf2. <br>
-  Standard_EXPORT     Standard_Real GetUParameter(Adaptor3d_Curve& C,const Standard_Real S,const Standard_Integer NumberOfCurve) const;
-  //! returns original parameter correponding S. <br>
-  Standard_EXPORT     Standard_Real GetSParameter(const Standard_Real U) const;
-  //! if myCase != 1 <br>
-  Standard_EXPORT     Standard_Boolean EvalCase1(const Standard_Real S,const Standard_Integer Order,TColStd_Array1OfReal& Result) const;
-  //! if myCase != 2 <br>
-  Standard_EXPORT     Standard_Boolean EvalCase2(const Standard_Real S,const Standard_Integer Order,TColStd_Array1OfReal& Result) const;
-  //! if myCase != 3 <br>
-  Standard_EXPORT     Standard_Boolean EvalCase3(const Standard_Real S,const Standard_Integer Order,TColStd_Array1OfReal& Result) ;
+  Standard_EXPORT   Standard_Real LastParameter()  const;
+  
+  //! Returns  the number  of  intervals for  continuity
+  //! <S>. May be one if Continuity(me) >= <S>
+  Standard_EXPORT   Standard_Integer NbIntervals (const GeomAbs_Shape S)  const;
+  
+  //! Stores in <T> the  parameters bounding the intervals
+  //! of continuity <S>.
+  //!
+  //! The array must provide  enough room to  accomodate
+  //! for the parameters. i.e. T.Length() > NbIntervals()
+  Standard_EXPORT   void Intervals (TColStd_Array1OfReal& T, const GeomAbs_Shape S)  const;
+  
+  //! if First < 0 or Last > 1
+  Standard_EXPORT   void Trim (const Standard_Real First, const Standard_Real Last, const Standard_Real Tol) ;
+  
+  //! Computes length of the curve.
+  Standard_EXPORT   void Length() ;
+  
+  //! Computes length of the curve segment.
+  Standard_EXPORT   Standard_Real Length (Adaptor3d_Curve& C, const Standard_Real FirstU, const Standard_Real LasrU)  const;
+  
+  Standard_EXPORT   Standard_Real GetLength()  const;
+  
+  //! returns  original parameter correponding S.  if
+  //! Case == 1 computation is performed on myC2D1 and mySurf1,
+  //! otherwise it is done on myC2D2 and mySurf2.
+  Standard_EXPORT   Standard_Real GetUParameter (Adaptor3d_Curve& C, const Standard_Real S, const Standard_Integer NumberOfCurve)  const;
+  
+  //! returns original parameter correponding S.
+  Standard_EXPORT   Standard_Real GetSParameter (const Standard_Real U)  const;
+  
+  //! if myCase != 1
+  Standard_EXPORT   Standard_Boolean EvalCase1 (const Standard_Real S, const Standard_Integer Order, TColStd_Array1OfReal& Result)  const;
+  
+  //! if myCase != 2
+  Standard_EXPORT   Standard_Boolean EvalCase2 (const Standard_Real S, const Standard_Integer Order, TColStd_Array1OfReal& Result)  const;
+  
+  //! if myCase != 3
+  Standard_EXPORT   Standard_Boolean EvalCase3 (const Standard_Real S, const Standard_Integer Order, TColStd_Array1OfReal& Result) ;
 
 
 
@@ -119,36 +103,37 @@ protected:
 private: 
 
   
-  Standard_EXPORT     void Init() ;
+  Standard_EXPORT   void Init() ;
   
-  Standard_EXPORT     void Init(Adaptor3d_Curve& C,Handle(TColStd_HArray1OfReal)& Si,Handle(TColStd_HArray1OfReal)& Ui) const;
-  //! returns curvilinear parameter correponding U. <br>
-  Standard_EXPORT     Standard_Real GetSParameter(Adaptor3d_Curve& C,const Standard_Real U,const Standard_Real Length) const;
+  Standard_EXPORT   void Init (Adaptor3d_Curve& C, Handle(TColStd_HArray1OfReal)& Si, Handle(TColStd_HArray1OfReal)& Ui)  const;
   
-  Standard_EXPORT     Standard_Boolean EvalCurOnSur(const Standard_Real S,const Standard_Integer Order,TColStd_Array1OfReal& Result,const Standard_Integer NumberOfCurve) const;
+  //! returns curvilinear parameter correponding U.
+  Standard_EXPORT   Standard_Real GetSParameter (Adaptor3d_Curve& C, const Standard_Real U, const Standard_Real Length)  const;
+  
+  Standard_EXPORT   Standard_Boolean EvalCurOnSur (const Standard_Real S, const Standard_Integer Order, TColStd_Array1OfReal& Result, const Standard_Integer NumberOfCurve)  const;
 
-Handle_Adaptor3d_HCurve myC3D;
-Handle_Adaptor2d_HCurve2d myC2D1;
-Handle_Adaptor2d_HCurve2d myC2D2;
-Handle_Adaptor3d_HSurface mySurf1;
-Handle_Adaptor3d_HSurface mySurf2;
-Standard_Integer myCase;
-Standard_Real myFirstS;
-Standard_Real myLastS;
-Standard_Real myFirstU1;
-Standard_Real myLastU1;
-Standard_Real myFirstU2;
-Standard_Real myLastU2;
-Standard_Real myLength;
-Standard_Real myLength1;
-Standard_Real myLength2;
-Standard_Real myTolLen;
-Standard_Real myPrevS;
-Standard_Real myPrevU;
-Handle_TColStd_HArray1OfReal myUi_1;
-Handle_TColStd_HArray1OfReal mySi_1;
-Handle_TColStd_HArray1OfReal myUi_2;
-Handle_TColStd_HArray1OfReal mySi_2;
+  Handle(Adaptor3d_HCurve) myC3D;
+  Handle(Adaptor2d_HCurve2d) myC2D1;
+  Handle(Adaptor2d_HCurve2d) myC2D2;
+  Handle(Adaptor3d_HSurface) mySurf1;
+  Handle(Adaptor3d_HSurface) mySurf2;
+  Standard_Integer myCase;
+  Standard_Real myFirstS;
+  Standard_Real myLastS;
+  Standard_Real myFirstU1;
+  Standard_Real myLastU1;
+  Standard_Real myFirstU2;
+  Standard_Real myLastU2;
+  Standard_Real myLength;
+  Standard_Real myLength1;
+  Standard_Real myLength2;
+  Standard_Real myTolLen;
+  Standard_Real myPrevS;
+  Standard_Real myPrevU;
+  Handle(TColStd_HArray1OfReal) myUi_1;
+  Handle(TColStd_HArray1OfReal) mySi_1;
+  Handle(TColStd_HArray1OfReal) myUi_2;
+  Handle(TColStd_HArray1OfReal) mySi_2;
 
 
 };
@@ -157,7 +142,6 @@ Handle_TColStd_HArray1OfReal mySi_2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Approx_CurvlinFunc_HeaderFile

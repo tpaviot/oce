@@ -5,24 +5,12 @@
 
 #include <BRepFill_DataMapIteratorOfDataMapOfShapeDataMapOfShapeListOfShape.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _BRepFill_DataMapOfShapeDataMapOfShapeListOfShape_HeaderFile
 #include <BRepFill_DataMapOfShapeDataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape_HeaderFile
 #include <BRepFill_DataMapNodeOfDataMapOfShapeDataMapOfShapeListOfShape.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape

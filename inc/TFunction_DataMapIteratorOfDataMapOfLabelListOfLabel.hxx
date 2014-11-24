@@ -6,22 +6,12 @@
 #ifndef _TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel_HeaderFile
 #define _TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_TFunction_DataMapNodeOfDataMapOfLabelListOfLabel_HeaderFile
 #include <Handle_TFunction_DataMapNodeOfDataMapOfLabelListOfLabel.hxx>
-#endif
 class Standard_NoSuchObject;
 class TDF_Label;
 class TDF_LabelList;
@@ -31,22 +21,22 @@ class TFunction_DataMapNodeOfDataMapOfLabelListOfLabel;
 
 
 
-class TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel  : public TCollection_BasicMapIterator {
+class TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel();
+  Standard_EXPORT TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel();
   
-  Standard_EXPORT   TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel(const TFunction_DataMapOfLabelListOfLabel& aMap);
+  Standard_EXPORT TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel(const TFunction_DataMapOfLabelListOfLabel& aMap);
   
-  Standard_EXPORT     void Initialize(const TFunction_DataMapOfLabelListOfLabel& aMap) ;
+  Standard_EXPORT   void Initialize (const TFunction_DataMapOfLabelListOfLabel& aMap) ;
   
-  Standard_EXPORT    const TDF_Label& Key() const;
+  Standard_EXPORT  const  TDF_Label& Key()  const;
   
-  Standard_EXPORT    const TDF_LabelList& Value() const;
-
+  Standard_EXPORT  const  TDF_LabelList& Value()  const;
 
 
 
@@ -69,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel_HeaderFile

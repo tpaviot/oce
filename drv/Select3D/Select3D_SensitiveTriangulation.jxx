@@ -1,42 +1,14 @@
-#ifndef _Poly_Triangulation_HeaderFile
 #include <Poly_Triangulation.hxx>
-#endif
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _SelectBasics_EntityOwner_HeaderFile
 #include <SelectBasics_EntityOwner.hxx>
-#endif
-#ifndef _TopLoc_Location_HeaderFile
 #include <TopLoc_Location.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Select3D_Projector_HeaderFile
 #include <Select3D_Projector.hxx>
-#endif
-#ifndef _SelectBasics_ListOfBox2d_HeaderFile
 #include <SelectBasics_ListOfBox2d.hxx>
-#endif
-#ifndef _Select3D_SensitiveEntity_HeaderFile
 #include <Select3D_SensitiveEntity.hxx>
-#endif
-#ifndef _TColgp_Array1OfPnt2d_HeaderFile
 #include <TColgp_Array1OfPnt2d.hxx>
-#endif
-#ifndef _Bnd_Box2d_HeaderFile
 #include <Bnd_Box2d.hxx>
-#endif
-#ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _gp_XY_HeaderFile
 #include <gp_XY.hxx>
-#endif
-#ifndef _Select3D_SensitiveTriangulation_HeaderFile
 #include <Select3D_SensitiveTriangulation.hxx>
-#endif

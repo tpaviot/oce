@@ -6,22 +6,15 @@
 #ifndef _Handle_StepGeom_OffsetSurface_HeaderFile
 #define _Handle_StepGeom_OffsetSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepGeom_Surface_HeaderFile
 #include <Handle_StepGeom_Surface.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepGeom_Surface);
 class StepGeom_OffsetSurface;
 
-DEFINE_STANDARD_HANDLE(StepGeom_OffsetSurface,StepGeom_Surface)
+DEFINE_STANDARD_HANDLE(StepGeom_OffsetSurface, StepGeom_Surface)
 
-#endif
+#endif // _Handle_StepGeom_OffsetSurface_HeaderFile

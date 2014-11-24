@@ -6,59 +6,50 @@
 #ifndef _Quantity_Convert_HeaderFile
 #define _Quantity_Convert_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Quantity_PhysicalQuantity_HeaderFile
 #include <Quantity_PhysicalQuantity.hxx>
-#endif
-#ifndef _Quantity_Coefficient_HeaderFile
 #include <Quantity_Coefficient.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TCollection_AsciiString;
 
 
-//! Services to manage units conversion between Front-ends and Engines. <br>
-//! This conversion is managed by a table of correspondance between the quantities <br>
-//! and their "conversion coefficient". <br>
-//! This table is implemented like an external array (TCollection_Array1) regarding <br>
-//! to the quantities enumeration. <br>
-class Quantity_Convert  {
+//! Services to manage units conversion between Front-ends and Engines.
+//! This conversion is managed by a table of correspondance between the quantities
+//! and their "conversion coefficient".
+//! This table is implemented like an external array (TCollection_Array1) regarding
+//! to the quantities enumeration.
+class Quantity_Convert 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an object; <br>
-  Standard_EXPORT   Quantity_Convert();
-  //! Updates the conversion table (correspondances between <br>
-//! Quantities and conversion coefficients). <br>
-      static  void SetQuantity(const Quantity_PhysicalQuantity aQuantity,const Quantity_Coefficient aCoef) ;
-  //! Converts, from the conversion table, the value <aVal> <br>
-//! from the user system to the SI system. <br>
-      static  Standard_Real ConvertUserToSI(const Quantity_PhysicalQuantity aQuantity,const Standard_Real aVal) ;
-  //! Converts, from the conversion table, the value <aVal> <br>
-//! from the SI system to the user system. <br>
-      static  Standard_Real ConvertSIToUser(const Quantity_PhysicalQuantity aQuantity,const Standard_Real aVal) ;
   
-//! if (aType is a physical quantity) <br>
-//!    returns True and the name of the associated PhysicalQuantity . <br>
-//! else <br>
-//!    returns False. <br>
-  Standard_EXPORT   static  Standard_Boolean IsPhysicalQuantity(const TCollection_AsciiString& aTypeName,TCollection_AsciiString& anEnum) ;
+  //! Creates an object;
+  Standard_EXPORT Quantity_Convert();
+  
+  //! Updates the conversion table (correspondances between
+  //! Quantities and conversion coefficients).
+    static   void SetQuantity (const Quantity_PhysicalQuantity aQuantity, const Quantity_Coefficient aCoef) ;
+  
+  //! Converts, from the conversion table, the value <aVal>
+  //! from the user system to the SI system.
+    static   Standard_Real ConvertUserToSI (const Quantity_PhysicalQuantity aQuantity, const Standard_Real aVal) ;
+  
+  //! Converts, from the conversion table, the value <aVal>
+  //! from the SI system to the user system.
+    static   Standard_Real ConvertSIToUser (const Quantity_PhysicalQuantity aQuantity, const Standard_Real aVal) ;
+  
 
+  //! if (aType is a physical quantity)
+  //! returns True and the name of the associated PhysicalQuantity .
+  //! else
+  //! returns False.
+  Standard_EXPORT static   Standard_Boolean IsPhysicalQuantity (const TCollection_AsciiString& aTypeName, TCollection_AsciiString& anEnum) ;
 
 
 
@@ -82,7 +73,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Quantity_Convert_HeaderFile

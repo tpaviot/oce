@@ -6,39 +6,28 @@
 #ifndef _HLRTopoBRep_ListNodeOfListOfVData_HeaderFile
 #define _HLRTopoBRep_ListNodeOfListOfVData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_HLRTopoBRep_ListNodeOfListOfVData_HeaderFile
 #include <Handle_HLRTopoBRep_ListNodeOfListOfVData.hxx>
-#endif
 
-#ifndef _HLRTopoBRep_VData_HeaderFile
 #include <HLRTopoBRep_VData.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class HLRTopoBRep_VData;
 class HLRTopoBRep_ListOfVData;
 class HLRTopoBRep_ListIteratorOfListOfVData;
 
 
 
-class HLRTopoBRep_ListNodeOfListOfVData : public TCollection_MapNode {
+class HLRTopoBRep_ListNodeOfListOfVData : public TCollection_MapNode
+{
 
 public:
 
   
-      HLRTopoBRep_ListNodeOfListOfVData(const HLRTopoBRep_VData& I,const TCollection_MapNodePtr& n);
+    HLRTopoBRep_ListNodeOfListOfVData(const HLRTopoBRep_VData& I, const TCollection_MapNodePtr& n);
   
-        HLRTopoBRep_VData& Value() const;
+      HLRTopoBRep_VData& Value()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-HLRTopoBRep_VData myValue;
+  HLRTopoBRep_VData myValue;
 
 
 };
@@ -83,7 +72,6 @@ HLRTopoBRep_VData myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRTopoBRep_ListNodeOfListOfVData_HeaderFile

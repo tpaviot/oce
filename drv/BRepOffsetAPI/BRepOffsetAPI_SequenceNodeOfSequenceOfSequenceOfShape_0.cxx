@@ -5,16 +5,10 @@
 
 #include <BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopTools_SequenceOfShape_HeaderFile
 #include <TopTools_SequenceOfShape.hxx>
-#endif
-#ifndef _BRepOffsetAPI_SequenceOfSequenceOfShape_HeaderFile
 #include <BRepOffsetAPI_SequenceOfSequenceOfShape.hxx>
-#endif
 
  
 

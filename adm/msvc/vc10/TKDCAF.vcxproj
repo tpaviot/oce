@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{EBFF00DB-10F1-1802-001B-C1564506D624}</ProjectGuid>
+    <ProjectGuid>{CE80A936-003E-0863-1930-2133D2D14E38}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -171,7 +171,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__DDF_DLL;__DDocStd_DLL;__DNaming_DLL;__DDataStd_DLL;__DPrsStd_DLL;__DrawDim_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__DDF_DLL;__DDocStd_DLL;__DNaming_DLL;__DDataStd_DLL;__DPrsStd_DLL;__DrawDim_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -186,7 +186,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__DDF_DLL;__DDocStd_DLL;__DNaming_DLL;__DDataStd_DLL;__DPrsStd_DLL;__DrawDim_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__DDF_DLL;__DDocStd_DLL;__DNaming_DLL;__DDataStd_DLL;__DPrsStd_DLL;__DrawDim_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKGeomBase.lib;TKBRep.lib;TKGeomAlgo.lib;TKernel.lib;TKMath.lib;TKG2d.lib;TKG3d.lib;TKDraw.lib;TKCDF.lib;TKV3d.lib;TKNIS.lib;TKService.lib;TKLCAF.lib;TKFillet.lib;TKTopAlgo.lib;TKPrim.lib;TKBool.lib;TKBO.lib;TKCAF.lib;TKViewerTest.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -214,7 +214,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__DDF_DLL;__DDocStd_DLL;__DNaming_DLL;__DDataStd_DLL;__DPrsStd_DLL;__DrawDim_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__DDF_DLL;__DDocStd_DLL;__DNaming_DLL;__DDataStd_DLL;__DPrsStd_DLL;__DrawDim_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win64\vc10\objd\TKDCAF/</AssemblerListingLocation>
@@ -230,7 +230,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__DDF_DLL;__DDocStd_DLL;__DNaming_DLL;__DDataStd_DLL;__DPrsStd_DLL;__DrawDim_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__DDF_DLL;__DDocStd_DLL;__DNaming_DLL;__DDataStd_DLL;__DPrsStd_DLL;__DrawDim_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKGeomBase.lib;TKBRep.lib;TKGeomAlgo.lib;TKernel.lib;TKMath.lib;TKG2d.lib;TKG3d.lib;TKDraw.lib;TKCDF.lib;TKV3d.lib;TKNIS.lib;TKService.lib;TKLCAF.lib;TKFillet.lib;TKTopAlgo.lib;TKPrim.lib;TKBool.lib;TKBO.lib;TKCAF.lib;TKViewerTest.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>

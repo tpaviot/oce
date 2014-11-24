@@ -6,76 +6,64 @@
 #ifndef _TopOpeBRepTool_PurgeInternalEdges_HeaderFile
 #define _TopOpeBRepTool_PurgeInternalEdges_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _TopTools_IndexedDataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_ConstructionError;
 class Standard_NullObject;
 class TopoDS_Shape;
 class TopTools_DataMapOfShapeListOfShape;
 
 
-//! remove from  a shape, the  internal edges that are <br>
-//!          not  connected to any face in  the shape.   We can <br>
-//!             get  the    list   of      the    edges  as   a <br>
-//!          DataMapOfShapeListOfShape with a Face of the Shape <br>
-//!          as  the key and  a  list of internal  edges as the <br>
-//!           value.  The list   of internal edges  means edges <br>
-//!          that are  not connected to any  face in the shape. <br>
-//! <br>
-//!          Example of use          : <br>
-//!               TopTools_DataMapOfShapeListOfShape     mymap; <br>
-//!               TopOpeBRepTool_PurgeInternalEdges <br>
-//!               mypurgealgo(mysolid); mypurgealgo.GetFaces(mymap); <br>
-//! <br>
-class TopOpeBRepTool_PurgeInternalEdges  {
+//! remove from  a shape, the  internal edges that are
+//! not  connected to any face in  the shape.   We can
+//! get  the    list   of      the    edges  as   a
+//! DataMapOfShapeListOfShape with a Face of the Shape
+//! as  the key and  a  list of internal  edges as the
+//! value.  The list   of internal edges  means edges
+//! that are  not connected to any  face in the shape.
+//!
+//! Example of use          :
+//! TopTools_DataMapOfShapeListOfShape     mymap;
+//! TopOpeBRepTool_PurgeInternalEdges
+//! mypurgealgo(mysolid); mypurgealgo.GetFaces(mymap);
+class TopOpeBRepTool_PurgeInternalEdges 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Initialize   members and  begin  exploration   of  shape <br>
-//!          depending of the value of PerformNow <br>
-  Standard_EXPORT   TopOpeBRepTool_PurgeInternalEdges(const TopoDS_Shape& theShape,const Standard_Boolean PerformNow = Standard_True);
-  //! returns  the list  internal edges associated  with <br>
-//!          the faces of the  myShape. If PerformNow was False <br>
-//!          when created, then call the private Perform method <br>
-//!          that do the main job. <br>
-  Standard_EXPORT     void Faces(TopTools_DataMapOfShapeListOfShape& theMapFacLstEdg) ;
-  //! returns myShape modified with the list of internal <br>
-//!          edges removed from it. <br>
-  Standard_EXPORT     TopoDS_Shape& Shape() ;
-  //! returns the number of edges candidate to be removed <br>
-  Standard_EXPORT    const Standard_Integer NbEdges() const;
-  //! returns False  if the list  of internal  edges has <br>
-//!          not been extracted <br>
-        Standard_Boolean IsDone() const;
-  //!  Using   the list  of internal edge    from each face, <br>
-//!           rebuild myShape by removing thoses edges. <br>
-//! <br>
-  Standard_EXPORT     void Perform() ;
-
+  
+  //! Initialize   members and  begin  exploration   of  shape
+  //! depending of the value of PerformNow
+  Standard_EXPORT TopOpeBRepTool_PurgeInternalEdges(const TopoDS_Shape& theShape, const Standard_Boolean PerformNow = Standard_True);
+  
+  //! returns  the list  internal edges associated  with
+  //! the faces of the  myShape. If PerformNow was False
+  //! when created, then call the private Perform method
+  //! that do the main job.
+  Standard_EXPORT   void Faces (TopTools_DataMapOfShapeListOfShape& theMapFacLstEdg) ;
+  
+  //! returns myShape modified with the list of internal
+  //! edges removed from it.
+  Standard_EXPORT   TopoDS_Shape& Shape() ;
+  
+  //! returns the number of edges candidate to be removed
+  Standard_EXPORT  const  Standard_Integer NbEdges()  const;
+  
+  //! returns False  if the list  of internal  edges has
+  //! not been extracted
+      Standard_Boolean IsDone()  const;
+  
+  //! Using   the list  of internal edge    from each face,
+  //! rebuild myShape by removing thoses edges.
+  Standard_EXPORT   void Perform() ;
 
 
 
@@ -84,21 +72,21 @@ protected:
 
 
 
-TopTools_IndexedDataMapOfShapeListOfShape myMapEdgLstFac;
+  TopTools_IndexedDataMapOfShapeListOfShape myMapEdgLstFac;
 
 
 private:
 
-  //! Do the main job. Explore all the  edges of myShape and <br>
-//!          build a map with  faces as a key  and list of internal <br>
-//!          edges(without connected faces) as value. <br>
-//! <br>
-  Standard_EXPORT     void BuildList() ;
+  
+  //! Do the main job. Explore all the  edges of myShape and
+  //! build a map with  faces as a key  and list of internal
+  //! edges(without connected faces) as value.
+  Standard_EXPORT   void BuildList() ;
 
 
-TopoDS_Shape myShape;
-Standard_Boolean myIsDone;
-TopTools_DataMapOfShapeListOfShape myMapFacLstEdg;
+  TopoDS_Shape myShape;
+  Standard_Boolean myIsDone;
+  TopTools_DataMapOfShapeListOfShape myMapFacLstEdg;
 
 
 };
@@ -108,7 +96,6 @@ TopTools_DataMapOfShapeListOfShape myMapFacLstEdg;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepTool_PurgeInternalEdges_HeaderFile

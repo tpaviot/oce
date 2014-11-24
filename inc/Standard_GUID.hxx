@@ -6,132 +6,112 @@
 #ifndef _Standard_GUID_HeaderFile
 #define _Standard_GUID_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_ExtCharacter_HeaderFile
 #include <Standard_ExtCharacter.hxx>
-#endif
-#ifndef _Standard_Byte_HeaderFile
 #include <Standard_Byte.hxx>
-#endif
-#ifndef _Standard_Storable_HeaderFile
 #include <Standard_Storable.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Standard_ExtString_HeaderFile
 #include <Standard_ExtString.hxx>
-#endif
-#ifndef _Standard_UUID_HeaderFile
 #include <Standard_UUID.hxx>
-#endif
-#ifndef _Standard_PCharacter_HeaderFile
 #include <Standard_PCharacter.hxx>
-#endif
-#ifndef _Standard_PExtCharacter_HeaderFile
 #include <Standard_PExtCharacter.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
 #include <Standard_PrimitiveTypes.hxx>
-#endif
 
 
 Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(Standard_GUID);
 
 
-class Standard_GUID  {
+class Standard_GUID 
+{
 
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Standard_GUID();
-  //! build a GUID from an ascii string with the <br>
-//!          following format: <br>
-//!          Length : 36 char <br>
-//!          "00000000-0000-0000-0000-000000000000" <br>
-  Standard_EXPORT   Standard_GUID(const Standard_CString aGuid);
-  //! build a GUID from an unicode string with the <br>
-//!          following format: <br>
-//! <br>
-//!          "00000000-0000-0000-0000-000000000000" <br>
-  Standard_EXPORT   Standard_GUID(const Standard_ExtString aGuid);
+  Standard_EXPORT Standard_GUID();
   
-  Standard_EXPORT   Standard_GUID(const Standard_Integer a32b,const Standard_ExtCharacter a16b1,const Standard_ExtCharacter a16b2,const Standard_ExtCharacter a16b3,const Standard_Byte a8b1,const Standard_Byte a8b2,const Standard_Byte a8b3,const Standard_Byte a8b4,const Standard_Byte a8b5,const Standard_Byte a8b6);
+  //! build a GUID from an ascii string with the
+  //! following format:
+  //! Length : 36 char
+  //! "00000000-0000-0000-0000-000000000000"
+  Standard_EXPORT Standard_GUID(const Standard_CString aGuid);
   
-  Standard_EXPORT   Standard_GUID(const Standard_UUID& aGuid);
+  //! build a GUID from an unicode string with the
+  //! following format:
+  //!
+  //! "00000000-0000-0000-0000-000000000000"
+  Standard_EXPORT Standard_GUID(const Standard_ExtString aGuid);
   
-  Standard_EXPORT   Standard_GUID(const Standard_GUID& aGuid);
+  Standard_EXPORT Standard_GUID(const Standard_Integer a32b, const Standard_ExtCharacter a16b1, const Standard_ExtCharacter a16b2, const Standard_ExtCharacter a16b3, const Standard_Byte a8b1, const Standard_Byte a8b2, const Standard_Byte a8b3, const Standard_Byte a8b4, const Standard_Byte a8b5, const Standard_Byte a8b6);
   
-  Standard_EXPORT     Standard_UUID ToUUID() const;
-  //! translate the GUID into ascii string <br>
-//!          the aStrGuid is allocated by user. <br>
-//!          the guid have the following format: <br>
-//! <br>
-//!          "00000000-0000-0000-0000-000000000000" <br>
-  Standard_EXPORT     void ToCString(const Standard_PCharacter aStrGuid) const;
-  //! translate the GUID into unicode string <br>
-//!          the aStrGuid is allocated by user. <br>
-//!          the guid have the following format: <br>
-//! <br>
-//!          "00000000-0000-0000-0000-000000000000" <br>
-  Standard_EXPORT     void ToExtString(const Standard_PExtCharacter aStrGuid) const;
+  Standard_EXPORT Standard_GUID(const Standard_UUID& aGuid);
   
-  Standard_EXPORT     Standard_Boolean IsSame(const Standard_GUID& uid) const;
-    Standard_Boolean operator ==(const Standard_GUID& uid) const
+  Standard_EXPORT Standard_GUID(const Standard_GUID& aGuid);
+  
+  Standard_EXPORT   Standard_UUID ToUUID()  const;
+  
+  //! translate the GUID into ascii string
+  //! the aStrGuid is allocated by user.
+  //! the guid have the following format:
+  //!
+  //! "00000000-0000-0000-0000-000000000000"
+  Standard_EXPORT   void ToCString (const Standard_PCharacter aStrGuid)  const;
+  
+  //! translate the GUID into unicode string
+  //! the aStrGuid is allocated by user.
+  //! the guid have the following format:
+  //!
+  //! "00000000-0000-0000-0000-000000000000"
+  Standard_EXPORT   void ToExtString (const Standard_PExtCharacter aStrGuid)  const;
+  
+  Standard_EXPORT   Standard_Boolean IsSame (const Standard_GUID& uid)  const;
+  Standard_Boolean operator == (const Standard_GUID& uid)  const
 {
   return IsSame(uid);
 }
   
-  Standard_EXPORT     Standard_Boolean IsNotSame(const Standard_GUID& uid) const;
-    Standard_Boolean operator !=(const Standard_GUID& uid) const
+  Standard_EXPORT   Standard_Boolean IsNotSame (const Standard_GUID& uid)  const;
+  Standard_Boolean operator != (const Standard_GUID& uid)  const
 {
   return IsNotSame(uid);
 }
   
-  Standard_EXPORT     void Assign(const Standard_GUID& uid) ;
-    void operator =(const Standard_GUID& uid) 
+  Standard_EXPORT   void Assign (const Standard_GUID& uid) ;
+  void operator = (const Standard_GUID& uid) 
 {
   Assign(uid);
 }
   
-  Standard_EXPORT     void Assign(const Standard_UUID& uid) ;
-    void operator =(const Standard_UUID& uid) 
+  Standard_EXPORT   void Assign (const Standard_UUID& uid) ;
+  void operator = (const Standard_UUID& uid) 
 {
   Assign(uid);
 }
-  //! Display the GUID with the following format: <br>
-//! <br>
-//!          "00000000-0000-0000-0000-000000000000" <br>
-  Standard_EXPORT     void ShallowDump(Standard_OStream& aStream) const;
-  //! Check the format of a GUID string. <br>
-//!          It checks the size, the position of the '-' and the correct size of fields. <br>
-  Standard_EXPORT   static  Standard_Boolean CheckGUIDFormat(const Standard_CString aGuid) ;
-  //! Hash function for GUID. <br>
-  Standard_EXPORT     Standard_Integer Hash(const Standard_Integer Upper) const;
-  //! H method used by collections. <br>
-  Standard_EXPORT   static  Standard_Integer HashCode(const Standard_GUID& aguid,const Standard_Integer Upper) ;
-  //! Returns True  when the two GUID are the same. <br>
-  Standard_EXPORT   static  Standard_Boolean IsEqual(const Standard_GUID& string1,const Standard_GUID& string2) ;
+  
+  //! Display the GUID with the following format:
+  //!
+  //! "00000000-0000-0000-0000-000000000000"
+  Standard_EXPORT   void ShallowDump (Standard_OStream& aStream)  const;
+  
+  //! Check the format of a GUID string.
+  //! It checks the size, the position of the '-' and the correct size of fields.
+  Standard_EXPORT static   Standard_Boolean CheckGUIDFormat (const Standard_CString aGuid) ;
+  
+  //! Hash function for GUID.
+  Standard_EXPORT   Standard_Integer Hash (const Standard_Integer Upper)  const;
+  
+  //! H method used by collections.
+  Standard_EXPORT static   Standard_Integer HashCode (const Standard_GUID& aguid, const Standard_Integer Upper) ;
+  
+  //! Returns True  when the two GUID are the same.
+  Standard_EXPORT static   Standard_Boolean IsEqual (const Standard_GUID& string1, const Standard_GUID& string2) ;
     Standard_Integer _CSFDB_GetStandard_GUIDmy32b() const { return my32b; }
     void _CSFDB_SetStandard_GUIDmy32b(const Standard_Integer p) { my32b = p; }
     Standard_ExtCharacter _CSFDB_GetStandard_GUIDmy16b1() const { return my16b1; }
@@ -163,16 +143,16 @@ protected:
 private: 
 
 
-Standard_Integer my32b;
-Standard_ExtCharacter my16b1;
-Standard_ExtCharacter my16b2;
-Standard_ExtCharacter my16b3;
-Standard_Byte my8b1;
-Standard_Byte my8b2;
-Standard_Byte my8b3;
-Standard_Byte my8b4;
-Standard_Byte my8b5;
-Standard_Byte my8b6;
+  Standard_Integer my32b;
+  Standard_ExtCharacter my16b1;
+  Standard_ExtCharacter my16b2;
+  Standard_ExtCharacter my16b3;
+  Standard_Byte my8b1;
+  Standard_Byte my8b2;
+  Standard_Byte my8b3;
+  Standard_Byte my8b4;
+  Standard_Byte my8b5;
+  Standard_Byte my8b6;
 
 
 };
@@ -181,7 +161,6 @@ Standard_Byte my8b6;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Standard_GUID_HeaderFile

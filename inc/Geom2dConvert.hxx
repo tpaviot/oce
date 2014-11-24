@@ -6,40 +6,18 @@
 #ifndef _Geom2dConvert_HeaderFile
 #define _Geom2dConvert_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom2d_BSplineCurve_HeaderFile
 #include <Handle_Geom2d_BSplineCurve.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _Convert_ParameterisationType_HeaderFile
 #include <Convert_ParameterisationType.hxx>
-#endif
-#ifndef _Handle_TColGeom2d_HArray1OfBSplineCurve_HeaderFile
 #include <Handle_TColGeom2d_HArray1OfBSplineCurve.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfInteger_HeaderFile
 #include <Handle_TColStd_HArray1OfInteger.hxx>
-#endif
 class Geom2d_BSplineCurve;
 class Geom2d_Curve;
 class TColGeom2d_Array1OfBSplineCurve;
@@ -53,179 +31,190 @@ class Geom2dConvert_ApproxCurve;
 
 
 
-//!  This package provides an implementation of algorithmes to do <br>
-//!  the conversion between equivalent geometric entities from <br>
-//!  package Geom2d. <br>
-//!  It gives the possibility : <br>
-//!   . to obtain the B-spline representation of bounded curves. <br>
-//!   . to split a B-spline curve into several B-spline curves <br>
-//!     with some constraints of continuity, <br>
-//!   . to convert a B-spline curve into several Bezier curves <br>
-//!     or surfaces. <br>
-//!  All the geometric entities used in this package are bounded. <br>
-//!   References : <br>
-//!  . Generating the Bezier Points of B-spline curves and surfaces <br>
-//!    (Wolfgang Bohm) CAGD volume 13 number 6 november 1981 <br>
-//!  . On NURBS: A Survey  (Leslie Piegl) IEEE Computer Graphics and <br>
-//!    Application January 1991 <br>
-//!  . Curve and surface construction using rational B-splines <br>
-//!    (Leslie Piegl and Wayne Tiller) CAD Volume 19 number 9 november <br>
-//!    1987 <br>
-//!  . A survey of curve and surface methods in CAGD (Wolfgang BOHM) <br>
-//!    CAGD 1 1984 <br>
-class Geom2dConvert  {
+//! This package provides an implementation of algorithmes to do
+//! the conversion between equivalent geometric entities from
+//! package Geom2d.
+//! It gives the possibility :
+//! . to obtain the B-spline representation of bounded curves.
+//! . to split a B-spline curve into several B-spline curves
+//! with some constraints of continuity,
+//! . to convert a B-spline curve into several Bezier curves
+//! or surfaces.
+//! All the geometric entities used in this package are bounded.
+//! References :
+//! . Generating the Bezier Points of B-spline curves and surfaces
+//! (Wolfgang Bohm) CAGD volume 13 number 6 november 1981
+//! . On NURBS: A Survey  (Leslie Piegl) IEEE Computer Graphics and
+//! Application January 1991
+//! . Curve and surface construction using rational B-splines
+//! (Leslie Piegl and Wayne Tiller) CAD Volume 19 number 9 november
+//! 1987
+//! . A survey of curve and surface methods in CAGD (Wolfgang BOHM)
+//! CAGD 1 1984
+class Geom2dConvert 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! -- Convert a curve to BSpline  by Approximation <br>
-//! <br>
-//!  This method computes the arc of B-spline curve between the two <br>
-//!  knots FromK1 and ToK2.  If C is periodic the arc has the same <br>
-//!  orientation as C if SameOrientation = Standard_True. <br>
-//!  If C is not periodic  SameOrientation is not used for the <br>
-//!  computation and C is oriented from the knot fromK1 to the <br>
-//!  knot toK2. <br>
-//!  We just keep the local definition of C between the knots <br>
-//!  FromK1 and ToK2.  The returned B-spline curve has its first <br>
-//!  and last knots with a multiplicity equal to degree + 1, where <br>
-//!  degree is the polynomial degree of C. <br>
-//!  The indexes of the knots FromK1 and ToK2 doesn't include the <br>
-//!  repetition of multiple knots in their definition. <br>
-//!  Raised if FromK1 or ToK2 are out of the bounds <br>
-//!  [FirstUKnotIndex, LastUKnotIndex] <br>//!  Raised if FromK1 = ToK2 <br>
-  Standard_EXPORT   static  Handle_Geom2d_BSplineCurve SplitBSplineCurve(const Handle(Geom2d_BSplineCurve)& C,const Standard_Integer FromK1,const Standard_Integer ToK2,const Standard_Boolean SameOrientation = Standard_True) ;
   
-//!  This function computes the segment of B-spline curve between the <br>
-//!  parametric values FromU1, ToU2. <br>
-//!  If C is periodic the arc has the same orientation as C if <br>
-//!  SameOrientation = True. <br>
-//!  If C is not periodic SameOrientation is not used for the <br>
-//!  computation and C is oriented fromU1 toU2. <br>
-//!  If U1 and U2 and two parametric values we consider that <br>
-//!  U1 = U2 if Abs (U1 - U2) <= ParametricTolerance and <br>
-//!  ParametricTolerance must  be greater or equal to Resolution <br>
-//!  from package gp. <br>
-//!  Raised if FromU1 or ToU2 are out of the parametric bounds of the <br>
-//!  curve (The tolerance criterion is ParametricTolerance). <br>
-//!  Raised if Abs (FromU1 - ToU2) <= ParametricTolerance <br>
-//!  Raised if ParametricTolerance < Resolution from gp. <br>
-  Standard_EXPORT   static  Handle_Geom2d_BSplineCurve SplitBSplineCurve(const Handle(Geom2d_BSplineCurve)& C,const Standard_Real FromU1,const Standard_Real ToU2,const Standard_Real ParametricTolerance,const Standard_Boolean SameOrientation = Standard_True) ;
-  //! This function converts a non infinite curve from <br>
-//!   Geom into a  B-spline curve.  C must  be  an ellipse or a <br>
-//!   circle or a trimmed conic  or a trimmed  line or a Bezier <br>
-//!  curve or a trimmed  Bezier curve or a  BSpline curve or  a <br>
-//!  trimmed BSpline   curve  or an  Offset  curve or a  trimmed <br>
-//!  Offset curve. <br>
-//!  The returned B-spline is not periodic except if C is a <br>
-//!  Circle or an Ellipse. <br>
-//!  ParameterisationType applies only if the curve is a Circle <br>
-//!  or an ellipse : <br>
-//!      TgtThetaOver2, <br>
-//!    TgtThetaOver2_1, <br>
-//!    TgtThetaOver2_2, <br>
-//!    TgtThetaOver2_3, <br>
-//!    TgtThetaOver2_4, <br>
-//! Purpose: this is the classical rational parameterisation <br>
-//!                    2 <br>
-//!               1 - t <br>
-//!  cos(theta) = ------ <br>
-//!                    2 <br>
-//!               1 + t <br>
-//! <br>
-//!                 2t <br>
-//!  sin(theta) = ------ <br>
-//!                     2 <br>
-//!                1 + t <br>
-//! <br>
-//!  t = tan (theta/2) <br>
-//! <br>
-//!  with TgtThetaOver2  the routine will compute the number of spans <br>
-//!  using the rule num_spans = [ (ULast - UFirst) / 1.2 ] + 1 <br>
-//!  with TgtThetaOver2_N, N  spans will be forced: an error will <br>
-//!  be raized if (ULast - UFirst) >= PI and N = 1, <br>
-//!  ULast - UFirst >= 2 PI and N = 2 <br>
-//! <br>
-//! QuasiAngular, <br>
-//!  here t is a rational function that approximates <br>
-//!  theta ----> tan(theta/2). <br>
-//!  Neverthless the composing with above function yields exact <br>
-//!  functions whose square sum up to 1 <br>
-//! RationalC1 ; <br>
-//!  t is replaced by a polynomial function of u so as to grant <br>
-//!  C1 contiuity across knots. <br>
-//!  Exceptions <br>
-//! Standard_DomainError if the curve C is infinite. <br>
-//! Standard_ConstructionError: <br>
-//! -   if C is a complete circle or ellipse, and if <br>
-//!   Parameterisation is not equal to <br>
-//!   Convert_TgtThetaOver2 or to Convert_RationalC1, or <br>
-//! -   if C is a trimmed circle or ellipse and if <br>
-//!   Parameterisation is equal to <br>
-//!   Convert_TgtThetaOver2_1 and if U2 - U1 > <br>
-//!   0.9999 * Pi where U1 and U2 are <br>
-//!   respectively the first and the last parameters of the <br>
-//!   trimmed curve (this method of parameterization <br>
-//!   cannot be used to convert a half-circle or a <br>
-//!   half-ellipse, for example), or <br>
-//! -   if C is a trimmed circle or ellipse and <br>
-//!   Parameterisation is equal to <br>
-//!   Convert_TgtThetaOver2_2 and U2 - U1 > <br>
-//!   1.9999 * Pi where U1 and U2 are <br>
-//!   respectively the first and the last parameters of the <br>
-//!   trimmed curve (this method of parameterization <br>
-//!   cannot be used to convert a quasi-complete circle or ellipse). <br>
-  Standard_EXPORT   static  Handle_Geom2d_BSplineCurve CurveToBSplineCurve(const Handle(Geom2d_Curve)& C,const Convert_ParameterisationType Parameterisation = Convert_TgtThetaOver2) ;
-  //! This Method concatenates G1 the ArrayOfCurves as far <br>
-//!  as it is possible. <br>
-//!  ArrayOfCurves[0..N-1] <br>
-//!  ArrayOfToler contains the  biggest tolerance of the two <br>
-//!               points shared by two consecutives curves. <br>
-//!               Its dimension: [0..N-2] <br>
-//!  ClosedTolerance     indicates if the ArrayOfCurves is closed. <br>
-//!               In this case ClosedTolerance contains the biggest tolerance <br>
-//!               of the two points which are at the closure. <br>
-//!               Otherwise its value is 0.0 <br>
-  Standard_EXPORT   static  void ConcatG1(TColGeom2d_Array1OfBSplineCurve& ArrayOfCurves,const TColStd_Array1OfReal& ArrayOfToler,Handle(TColGeom2d_HArray1OfBSplineCurve)& ArrayOfConcatenated,const Standard_Boolean ClosedFlag,const Standard_Real ClosedTolerance) ;
-  //! This Method concatenates C1 the ArrayOfCurves as far <br>
-//!  as it is possible. <br>
-//!  ArrayOfCurves[0..N-1] <br>
-//!  ArrayOfToler contains the  biggest tolerance of the two <br>
-//!               points shared by two consecutives curves. <br>
-//!               Its dimension: [0..N-2] <br>
-//!  ClosedTolerance     indicates if the ArrayOfCurves is closed. <br>
-//!               In this case ClosedTolerance contains the biggest tolerance <br>
-//!               of the two points which are at the closure. <br>
-//!               Otherwise its value is 0.0 <br>
-//! <br>
-  Standard_EXPORT   static  void ConcatC1(TColGeom2d_Array1OfBSplineCurve& ArrayOfCurves,const TColStd_Array1OfReal& ArrayOfToler,Handle(TColStd_HArray1OfInteger)& ArrayOfIndices,Handle(TColGeom2d_HArray1OfBSplineCurve)& ArrayOfConcatenated,const Standard_Boolean ClosedFlag,const Standard_Real ClosedTolerance) ;
-  //! This Method concatenates C1 the ArrayOfCurves as far <br>
-//!  as it is possible. <br>
-//!  ArrayOfCurves[0..N-1] <br>
-//!  ArrayOfToler contains the  biggest tolerance of the two <br>
-//!               points shared by two consecutives curves. <br>
-//!               Its dimension: [0..N-2] <br>
-//!  ClosedTolerance     indicates if the ArrayOfCurves is closed. <br>
-//!               In this case ClosedTolerance contains the biggest tolerance <br>
-//!               of the two points which are at the closure. <br>
-//!               Otherwise its value is 0.0 <br>
-  Standard_EXPORT   static  void ConcatC1(TColGeom2d_Array1OfBSplineCurve& ArrayOfCurves,const TColStd_Array1OfReal& ArrayOfToler,Handle(TColStd_HArray1OfInteger)& ArrayOfIndices,Handle(TColGeom2d_HArray1OfBSplineCurve)& ArrayOfConcatenated,const Standard_Boolean ClosedFlag,const Standard_Real ClosedTolerance,const Standard_Real AngularTolerance) ;
-  //!  This Method reduces as   far as it  is possible the <br>
-//!  multiplicities of  the  knots of  the BSpline BS.(keeping  the geometry). <br>
-//!  It returns a new BSpline which could still be C0. <br>
-//!  tolerance is a geometrical tolerance <br>
-  Standard_EXPORT   static  void C0BSplineToC1BSplineCurve(Handle(Geom2d_BSplineCurve)& BS,const Standard_Real Tolerance) ;
-  //!This Method   reduces as far  as  it is possible  the <br>
-//!  multiplicities  of  the knots  of the BSpline  BS.(keeping the geometry). <br>
-//!  It returns an array of BSpline C1. <br>
-//!  Tolerance is a geometrical tolerance <br>
-  Standard_EXPORT   static  void C0BSplineToArrayOfC1BSplineCurve(const Handle(Geom2d_BSplineCurve)& BS,Handle(TColGeom2d_HArray1OfBSplineCurve)& tabBS,const Standard_Real Tolerance) ;
-  //!This Method   reduces as far  as  it is possible  the <br>
-//!  multiplicities  of  the knots  of the BSpline  BS.(keeping the geometry). <br>
-//!  It returns an array of BSpline C1. <br>
-//!  tolerance is a geometrical tolerance <br>
-  Standard_EXPORT   static  void C0BSplineToArrayOfC1BSplineCurve(const Handle(Geom2d_BSplineCurve)& BS,Handle(TColGeom2d_HArray1OfBSplineCurve)& tabBS,const Standard_Real AngularTolerance,const Standard_Real Tolerance) ;
+  //! -- Convert a curve to BSpline  by Approximation
+  //!
+  //! This method computes the arc of B-spline curve between the two
+  //! knots FromK1 and ToK2.  If C is periodic the arc has the same
+  //! orientation as C if SameOrientation = Standard_True.
+  //! If C is not periodic  SameOrientation is not used for the
+  //! computation and C is oriented from the knot fromK1 to the
+  //! knot toK2.
+  //! We just keep the local definition of C between the knots
+  //! FromK1 and ToK2.  The returned B-spline curve has its first
+  //! and last knots with a multiplicity equal to degree + 1, where
+  //! degree is the polynomial degree of C.
+  //! The indexes of the knots FromK1 and ToK2 doesn't include the
+  //! repetition of multiple knots in their definition.
+  //!
+  //! Raised if FromK1 or ToK2 are out of the bounds
+  //! [FirstUKnotIndex, LastUKnotIndex]
+  //! Raised if FromK1 = ToK2
+  Standard_EXPORT static   Handle(Geom2d_BSplineCurve) SplitBSplineCurve (const Handle(Geom2d_BSplineCurve)& C, const Standard_Integer FromK1, const Standard_Integer ToK2, const Standard_Boolean SameOrientation = Standard_True) ;
+  
 
+  //! This function computes the segment of B-spline curve between the
+  //! parametric values FromU1, ToU2.
+  //! If C is periodic the arc has the same orientation as C if
+  //! SameOrientation = True.
+  //! If C is not periodic SameOrientation is not used for the
+  //! computation and C is oriented fromU1 toU2.
+  //! If U1 and U2 and two parametric values we consider that
+  //! U1 = U2 if Abs (U1 - U2) <= ParametricTolerance and
+  //! ParametricTolerance must  be greater or equal to Resolution
+  //! from package gp.
+  //!
+  //! Raised if FromU1 or ToU2 are out of the parametric bounds of the
+  //! curve (The tolerance criterion is ParametricTolerance).
+  //! Raised if Abs (FromU1 - ToU2) <= ParametricTolerance
+  //! Raised if ParametricTolerance < Resolution from gp.
+  Standard_EXPORT static   Handle(Geom2d_BSplineCurve) SplitBSplineCurve (const Handle(Geom2d_BSplineCurve)& C, const Standard_Real FromU1, const Standard_Real ToU2, const Standard_Real ParametricTolerance, const Standard_Boolean SameOrientation = Standard_True) ;
+  
+  //! This function converts a non infinite curve from
+  //! Geom into a  B-spline curve.  C must  be  an ellipse or a
+  //! circle or a trimmed conic  or a trimmed  line or a Bezier
+  //! curve or a trimmed  Bezier curve or a  BSpline curve or  a
+  //! trimmed BSpline   curve  or an  Offset  curve or a  trimmed
+  //! Offset curve.
+  //! The returned B-spline is not periodic except if C is a
+  //! Circle or an Ellipse.
+  //! ParameterisationType applies only if the curve is a Circle
+  //! or an ellipse :
+  //! TgtThetaOver2,
+  //! TgtThetaOver2_1,
+  //! TgtThetaOver2_2,
+  //! TgtThetaOver2_3,
+  //! TgtThetaOver2_4,
+  //! Purpose: this is the classical rational parameterisation
+  //! 2
+  //! 1 - t
+  //! cos(theta) = ------
+  //! 2
+  //! 1 + t
+  //!
+  //! 2t
+  //! sin(theta) = ------
+  //! 2
+  //! 1 + t
+  //!
+  //! t = tan (theta/2)
+  //!
+  //! with TgtThetaOver2  the routine will compute the number of spans
+  //! using the rule num_spans = [ (ULast - UFirst) / 1.2 ] + 1
+  //! with TgtThetaOver2_N, N  spans will be forced: an error will
+  //! be raized if (ULast - UFirst) >= PI and N = 1,
+  //! ULast - UFirst >= 2 PI and N = 2
+  //!
+  //! QuasiAngular,
+  //! here t is a rational function that approximates
+  //! theta ----> tan(theta/2).
+  //! Neverthless the composing with above function yields exact
+  //! functions whose square sum up to 1
+  //! RationalC1 ;
+  //! t is replaced by a polynomial function of u so as to grant
+  //! C1 contiuity across knots.
+  //! Exceptions
+  //! Standard_DomainError if the curve C is infinite.
+  //! Standard_ConstructionError:
+  //! -   if C is a complete circle or ellipse, and if
+  //! Parameterisation is not equal to
+  //! Convert_TgtThetaOver2 or to Convert_RationalC1, or
+  //! -   if C is a trimmed circle or ellipse and if
+  //! Parameterisation is equal to
+  //! Convert_TgtThetaOver2_1 and if U2 - U1 >
+  //! 0.9999 * Pi where U1 and U2 are
+  //! respectively the first and the last parameters of the
+  //! trimmed curve (this method of parameterization
+  //! cannot be used to convert a half-circle or a
+  //! half-ellipse, for example), or
+  //! -   if C is a trimmed circle or ellipse and
+  //! Parameterisation is equal to
+  //! Convert_TgtThetaOver2_2 and U2 - U1 >
+  //! 1.9999 * Pi where U1 and U2 are
+  //! respectively the first and the last parameters of the
+  //! trimmed curve (this method of parameterization
+  //! cannot be used to convert a quasi-complete circle or ellipse).
+  Standard_EXPORT static   Handle(Geom2d_BSplineCurve) CurveToBSplineCurve (const Handle(Geom2d_Curve)& C, const Convert_ParameterisationType Parameterisation = Convert_TgtThetaOver2) ;
+  
+  //! This Method concatenates G1 the ArrayOfCurves as far
+  //! as it is possible.
+  //! ArrayOfCurves[0..N-1]
+  //! ArrayOfToler contains the  biggest tolerance of the two
+  //! points shared by two consecutives curves.
+  //! Its dimension: [0..N-2]
+  //! ClosedTolerance     indicates if the ArrayOfCurves is closed.
+  //! In this case ClosedTolerance contains the biggest tolerance
+  //! of the two points which are at the closure.
+  //! Otherwise its value is 0.0
+  Standard_EXPORT static   void ConcatG1 (TColGeom2d_Array1OfBSplineCurve& ArrayOfCurves, const TColStd_Array1OfReal& ArrayOfToler, Handle(TColGeom2d_HArray1OfBSplineCurve)& ArrayOfConcatenated, const Standard_Boolean ClosedFlag, const Standard_Real ClosedTolerance) ;
+  
+  //! This Method concatenates C1 the ArrayOfCurves as far
+  //! as it is possible.
+  //! ArrayOfCurves[0..N-1]
+  //! ArrayOfToler contains the  biggest tolerance of the two
+  //! points shared by two consecutives curves.
+  //! Its dimension: [0..N-2]
+  //! ClosedTolerance     indicates if the ArrayOfCurves is closed.
+  //! In this case ClosedTolerance contains the biggest tolerance
+  //! of the two points which are at the closure.
+  //! Otherwise its value is 0.0
+  Standard_EXPORT static   void ConcatC1 (TColGeom2d_Array1OfBSplineCurve& ArrayOfCurves, const TColStd_Array1OfReal& ArrayOfToler, Handle(TColStd_HArray1OfInteger)& ArrayOfIndices, Handle(TColGeom2d_HArray1OfBSplineCurve)& ArrayOfConcatenated, const Standard_Boolean ClosedFlag, const Standard_Real ClosedTolerance) ;
+  
+  //! This Method concatenates C1 the ArrayOfCurves as far
+  //! as it is possible.
+  //! ArrayOfCurves[0..N-1]
+  //! ArrayOfToler contains the  biggest tolerance of the two
+  //! points shared by two consecutives curves.
+  //! Its dimension: [0..N-2]
+  //! ClosedTolerance     indicates if the ArrayOfCurves is closed.
+  //! In this case ClosedTolerance contains the biggest tolerance
+  //! of the two points which are at the closure.
+  //! Otherwise its value is 0.0
+  Standard_EXPORT static   void ConcatC1 (TColGeom2d_Array1OfBSplineCurve& ArrayOfCurves, const TColStd_Array1OfReal& ArrayOfToler, Handle(TColStd_HArray1OfInteger)& ArrayOfIndices, Handle(TColGeom2d_HArray1OfBSplineCurve)& ArrayOfConcatenated, const Standard_Boolean ClosedFlag, const Standard_Real ClosedTolerance, const Standard_Real AngularTolerance) ;
+  
+  //! This Method reduces as   far as it  is possible the
+  //! multiplicities of  the  knots of  the BSpline BS.(keeping  the geometry).
+  //! It returns a new BSpline which could still be C0.
+  //! tolerance is a geometrical tolerance
+  Standard_EXPORT static   void C0BSplineToC1BSplineCurve (Handle(Geom2d_BSplineCurve)& BS, const Standard_Real Tolerance) ;
+  
+  //! This Method   reduces as far  as  it is possible  the
+  //! multiplicities  of  the knots  of the BSpline  BS.(keeping the geometry).
+  //! It returns an array of BSpline C1.
+  //! Tolerance is a geometrical tolerance
+  Standard_EXPORT static   void C0BSplineToArrayOfC1BSplineCurve (const Handle(Geom2d_BSplineCurve)& BS, Handle(TColGeom2d_HArray1OfBSplineCurve)& tabBS, const Standard_Real Tolerance) ;
+  
+  //! This Method   reduces as far  as  it is possible  the
+  //! multiplicities  of  the knots  of the BSpline  BS.(keeping the geometry).
+  //! It returns an array of BSpline C1.
+  //! tolerance is a geometrical tolerance
+  Standard_EXPORT static   void C0BSplineToArrayOfC1BSplineCurve (const Handle(Geom2d_BSplineCurve)& BS, Handle(TColGeom2d_HArray1OfBSplineCurve)& tabBS, const Standard_Real AngularTolerance, const Standard_Real Tolerance) ;
 
 
 
@@ -252,7 +241,6 @@ friend class Geom2dConvert_ApproxCurve;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dConvert_HeaderFile

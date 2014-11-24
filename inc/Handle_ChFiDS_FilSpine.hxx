@@ -6,22 +6,15 @@
 #ifndef _Handle_ChFiDS_FilSpine_HeaderFile
 #define _Handle_ChFiDS_FilSpine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_ChFiDS_Spine_HeaderFile
 #include <Handle_ChFiDS_Spine.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(ChFiDS_Spine);
 class ChFiDS_FilSpine;
 
-DEFINE_STANDARD_HANDLE(ChFiDS_FilSpine,ChFiDS_Spine)
+DEFINE_STANDARD_HANDLE(ChFiDS_FilSpine, ChFiDS_Spine)
 
-#endif
+#endif // _Handle_ChFiDS_FilSpine_HeaderFile

@@ -6,63 +6,53 @@
 #ifndef _GccAna_Circ2dBisec_HeaderFile
 #define _GccAna_Circ2dBisec_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _gp_Circ2d_HeaderFile
 #include <gp_Circ2d.hxx>
-#endif
-#ifndef _Handle_GccInt_Bisec_HeaderFile
 #include <Handle_GccInt_Bisec.hxx>
-#endif
 class Standard_OutOfRange;
 class StdFail_NotDone;
 class gp_Circ2d;
 class GccInt_Bisec;
 
 
-//! This class describes functions for building bisecting curves between two 2D circles. <br>
-//! A bisecting curve between two circles is a curve such <br>
-//! that each of its points is at the same distance from the <br>
-//! two circles. It can be an ellipse, hyperbola, circle or line, <br>
-//! depending on the relative position of the two circles. <br>
-//! The algorithm computes all the elementary curves which <br>
-//! are solutions. There is no solution if the two circles are coincident. <br>
-//! A Circ2dBisec object provides a framework for: <br>
-//! -   defining the construction of the bisecting curves, <br>
-//! -   implementing the construction algorithm, and consulting the result. <br>
-class GccAna_Circ2dBisec  {
+//! This class describes functions for building bisecting curves between two 2D circles.
+//! A bisecting curve between two circles is a curve such
+//! that each of its points is at the same distance from the
+//! two circles. It can be an ellipse, hyperbola, circle or line,
+//! depending on the relative position of the two circles.
+//! The algorithm computes all the elementary curves which
+//! are solutions. There is no solution if the two circles are coincident.
+//! A Circ2dBisec object provides a framework for:
+//! -   defining the construction of the bisecting curves,
+//! -   implementing the construction algorithm, and consulting the result.
+class GccAna_Circ2dBisec 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Constructs bisecting curves between the two circles Circ1 and Circ2. <br>
-  Standard_EXPORT   GccAna_Circ2dBisec(const gp_Circ2d& Circ1,const gp_Circ2d& Circ2);
-  //! This method returns True if the construction algorithm succeeded. <br>
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-  //! This method returns the number of solutions. <br>
-//!    Raises NotDone if the construction algorithm  didn't succeed. <br>
-  Standard_EXPORT     Standard_Integer NbSolutions() const;
-  //! Returns the solution number Index <br>
-//! Raises OutOfRange exception if Index is greater than <br>
-//!          the number of solutions. <br>
-//!          It raises NotDone if the construction algorithm <br>
-//!          didn't succeed. <br>
-  Standard_EXPORT     Handle_GccInt_Bisec ThisSolution(const Standard_Integer Index) const;
-
+  
+  //! Constructs bisecting curves between the two circles Circ1 and Circ2.
+  Standard_EXPORT GccAna_Circ2dBisec(const gp_Circ2d& Circ1, const gp_Circ2d& Circ2);
+  
+  //! This method returns True if the construction algorithm succeeded.
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
+  
+  //! This method returns the number of solutions.
+  //! Raises NotDone if the construction algorithm  didn't succeed.
+  Standard_EXPORT   Standard_Integer NbSolutions()  const;
+  
+  //! Returns the solution number Index
+  //! Raises OutOfRange exception if Index is greater than
+  //! the number of solutions.
+  //! It raises NotDone if the construction algorithm
+  //! didn't succeed.
+  Standard_EXPORT   Handle(GccInt_Bisec) ThisSolution (const Standard_Integer Index)  const;
 
 
 
@@ -77,12 +67,12 @@ private:
 
 
 
-Standard_Boolean WellDone;
-Standard_Integer NbrSol;
-Standard_Integer intersection;
-Standard_Boolean sameradius;
-gp_Circ2d circle1;
-gp_Circ2d circle2;
+  Standard_Boolean WellDone;
+  Standard_Integer NbrSol;
+  Standard_Integer intersection;
+  Standard_Boolean sameradius;
+  gp_Circ2d circle1;
+  gp_Circ2d circle2;
 
 
 };
@@ -91,7 +81,6 @@ gp_Circ2d circle2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GccAna_Circ2dBisec_HeaderFile

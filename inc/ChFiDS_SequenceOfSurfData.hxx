@@ -6,28 +6,14 @@
 #ifndef _ChFiDS_SequenceOfSurfData_HeaderFile
 #define _ChFiDS_SequenceOfSurfData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_ChFiDS_SurfData_HeaderFile
 #include <Handle_ChFiDS_SurfData.hxx>
-#endif
-#ifndef _Handle_ChFiDS_SequenceNodeOfSequenceOfSurfData_HeaderFile
 #include <Handle_ChFiDS_SequenceNodeOfSequenceOfSurfData.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class ChFiDS_SurfData;
@@ -35,68 +21,68 @@ class ChFiDS_SequenceNodeOfSequenceOfSurfData;
 
 
 
-class ChFiDS_SequenceOfSurfData  : public TCollection_BaseSequence {
+class ChFiDS_SequenceOfSurfData  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      ChFiDS_SequenceOfSurfData();
+    ChFiDS_SequenceOfSurfData();
   
-  Standard_EXPORT   ChFiDS_SequenceOfSurfData(const ChFiDS_SequenceOfSurfData& Other);
+  Standard_EXPORT ChFiDS_SequenceOfSurfData(const ChFiDS_SequenceOfSurfData& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~ChFiDS_SequenceOfSurfData()
 {
   Clear();
 }
   
-  Standard_EXPORT    const ChFiDS_SequenceOfSurfData& Assign(const ChFiDS_SequenceOfSurfData& Other) ;
-   const ChFiDS_SequenceOfSurfData& operator =(const ChFiDS_SequenceOfSurfData& Other) 
+  Standard_EXPORT  const  ChFiDS_SequenceOfSurfData& Assign (const ChFiDS_SequenceOfSurfData& Other) ;
+ const  ChFiDS_SequenceOfSurfData& operator = (const ChFiDS_SequenceOfSurfData& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(ChFiDS_SurfData)& T) ;
+  Standard_EXPORT   void Append (const Handle(ChFiDS_SurfData)& T) ;
   
-        void Append(ChFiDS_SequenceOfSurfData& S) ;
+      void Append (ChFiDS_SequenceOfSurfData& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(ChFiDS_SurfData)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(ChFiDS_SurfData)& T) ;
   
-        void Prepend(ChFiDS_SequenceOfSurfData& S) ;
+      void Prepend (ChFiDS_SequenceOfSurfData& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(ChFiDS_SurfData)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(ChFiDS_SurfData)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,ChFiDS_SequenceOfSurfData& S) ;
+      void InsertBefore (const Standard_Integer Index, ChFiDS_SequenceOfSurfData& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(ChFiDS_SurfData)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(ChFiDS_SurfData)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,ChFiDS_SequenceOfSurfData& S) ;
+      void InsertAfter (const Standard_Integer Index, ChFiDS_SequenceOfSurfData& S) ;
   
-  Standard_EXPORT    const Handle_ChFiDS_SurfData& First() const;
+  Standard_EXPORT  const  Handle(ChFiDS_SurfData)& First()  const;
   
-  Standard_EXPORT    const Handle_ChFiDS_SurfData& Last() const;
+  Standard_EXPORT  const  Handle(ChFiDS_SurfData)& Last()  const;
   
-        void Split(const Standard_Integer Index,ChFiDS_SequenceOfSurfData& Sub) ;
+      void Split (const Standard_Integer Index, ChFiDS_SequenceOfSurfData& Sub) ;
   
-  Standard_EXPORT    const Handle_ChFiDS_SurfData& Value(const Standard_Integer Index) const;
-   const Handle_ChFiDS_SurfData& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(ChFiDS_SurfData)& Value (const Standard_Integer Index)  const;
+ const  Handle(ChFiDS_SurfData)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(ChFiDS_SurfData)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(ChFiDS_SurfData)& I) ;
   
-  Standard_EXPORT     Handle_ChFiDS_SurfData& ChangeValue(const Standard_Integer Index) ;
-    Handle_ChFiDS_SurfData& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(ChFiDS_SurfData)& ChangeValue (const Standard_Integer Index) ;
+  Handle(ChFiDS_SurfData)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -115,7 +101,7 @@ private:
 
 };
 
-#define SeqItem Handle_ChFiDS_SurfData
+#define SeqItem Handle(ChFiDS_SurfData)
 #define SeqItem_hxx <ChFiDS_SurfData.hxx>
 #define TCollection_SequenceNode ChFiDS_SequenceNodeOfSequenceOfSurfData
 #define TCollection_SequenceNode_hxx <ChFiDS_SequenceNodeOfSequenceOfSurfData.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ChFiDS_SequenceOfSurfData_HeaderFile

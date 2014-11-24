@@ -6,44 +6,31 @@
 #ifndef _Plugin_DataMapNodeOfMapOfFunctions_HeaderFile
 #define _Plugin_DataMapNodeOfMapOfFunctions_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Plugin_DataMapNodeOfMapOfFunctions_HeaderFile
 #include <Handle_Plugin_DataMapNodeOfMapOfFunctions.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _OSD_Function_HeaderFile
 #include <OSD_Function.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TCollection_AsciiString;
 class Plugin_MapOfFunctions;
 class Plugin_DataMapIteratorOfMapOfFunctions;
 
 
 
-class Plugin_DataMapNodeOfMapOfFunctions : public TCollection_MapNode {
+class Plugin_DataMapNodeOfMapOfFunctions : public TCollection_MapNode
+{
 
 public:
 
   
-      Plugin_DataMapNodeOfMapOfFunctions(const TCollection_AsciiString& K,const OSD_Function& I,const TCollection_MapNodePtr& n);
+    Plugin_DataMapNodeOfMapOfFunctions(const TCollection_AsciiString& K, const OSD_Function& I, const TCollection_MapNodePtr& n);
   
-        TCollection_AsciiString& Key() const;
+      TCollection_AsciiString& Key()  const;
   
-        OSD_Function& Value() const;
+      OSD_Function& Value()  const;
 
 
 
@@ -58,8 +45,8 @@ protected:
 private: 
 
 
-TCollection_AsciiString myKey;
-OSD_Function myValue;
+  TCollection_AsciiString myKey;
+  OSD_Function myValue;
 
 
 };
@@ -97,7 +84,6 @@ OSD_Function myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Plugin_DataMapNodeOfMapOfFunctions_HeaderFile

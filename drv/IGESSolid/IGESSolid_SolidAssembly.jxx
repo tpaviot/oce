@@ -1,21 +1,7 @@
-#ifndef _IGESData_HArray1OfIGESEntity_HeaderFile
 #include <IGESData_HArray1OfIGESEntity.hxx>
-#endif
-#ifndef _IGESGeom_HArray1OfTransformationMatrix_HeaderFile
 #include <IGESGeom_HArray1OfTransformationMatrix.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _IGESGeom_TransformationMatrix_HeaderFile
 #include <IGESGeom_TransformationMatrix.hxx>
-#endif
-#ifndef _IGESSolid_SolidAssembly_HeaderFile
 #include <IGESSolid_SolidAssembly.hxx>
-#endif

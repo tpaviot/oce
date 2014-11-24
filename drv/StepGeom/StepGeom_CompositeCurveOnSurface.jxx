@@ -1,3 +1,1 @@
-#ifndef _StepGeom_CompositeCurveOnSurface_HeaderFile
 #include <StepGeom_CompositeCurveOnSurface.hxx>
-#endif

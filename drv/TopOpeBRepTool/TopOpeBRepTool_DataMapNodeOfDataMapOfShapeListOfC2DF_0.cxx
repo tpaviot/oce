@@ -5,25 +5,13 @@
 
 #include <TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopOpeBRepTool_ListOfC2DF_HeaderFile
 #include <TopOpeBRepTool_ListOfC2DF.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _TopOpeBRepTool_DataMapOfShapeListOfC2DF_HeaderFile
 #include <TopOpeBRepTool_DataMapOfShapeListOfC2DF.hxx>
-#endif
-#ifndef _TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeListOfC2DF_HeaderFile
 #include <TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeListOfC2DF.hxx>
-#endif
 
  
 

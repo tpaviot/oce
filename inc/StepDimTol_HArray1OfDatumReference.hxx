@@ -6,28 +6,14 @@
 #ifndef _StepDimTol_HArray1OfDatumReference_HeaderFile
 #define _StepDimTol_HArray1OfDatumReference_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepDimTol_HArray1OfDatumReference_HeaderFile
 #include <Handle_StepDimTol_HArray1OfDatumReference.hxx>
-#endif
 
-#ifndef _StepDimTol_Array1OfDatumReference_HeaderFile
 #include <StepDimTol_Array1OfDatumReference.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_StepDimTol_DatumReference_HeaderFile
 #include <Handle_StepDimTol_DatumReference.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class StepDimTol_Array1OfDatumReference;
 
 
 
-class StepDimTol_HArray1OfDatumReference : public MMgt_TShared {
+class StepDimTol_HArray1OfDatumReference : public MMgt_TShared
+{
 
 public:
 
   
-      StepDimTol_HArray1OfDatumReference(const Standard_Integer Low,const Standard_Integer Up);
+    StepDimTol_HArray1OfDatumReference(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepDimTol_HArray1OfDatumReference(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepDimTol_DatumReference)& V);
+    StepDimTol_HArray1OfDatumReference(const Standard_Integer Low, const Standard_Integer Up, const Handle(StepDimTol_DatumReference)& V);
   
-        void Init(const Handle(StepDimTol_DatumReference)& V) ;
+      void Init (const Handle(StepDimTol_DatumReference)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(StepDimTol_DatumReference)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(StepDimTol_DatumReference)& Value) ;
   
-       const Handle_StepDimTol_DatumReference& Value(const Standard_Integer Index) const;
+     const  Handle(StepDimTol_DatumReference)& Value (const Standard_Integer Index)  const;
   
-        Handle_StepDimTol_DatumReference& ChangeValue(const Standard_Integer Index) ;
+      Handle(StepDimTol_DatumReference)& ChangeValue (const Standard_Integer Index) ;
   
-       const StepDimTol_Array1OfDatumReference& Array1() const;
+     const  StepDimTol_Array1OfDatumReference& Array1()  const;
   
-        StepDimTol_Array1OfDatumReference& ChangeArray1() ;
+      StepDimTol_Array1OfDatumReference& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-StepDimTol_Array1OfDatumReference myArray;
+  StepDimTol_Array1OfDatumReference myArray;
 
 
 };
 
-#define ItemHArray1 Handle_StepDimTol_DatumReference
+#define ItemHArray1 Handle(StepDimTol_DatumReference)
 #define ItemHArray1_hxx <StepDimTol_DatumReference.hxx>
 #define TheArray1 StepDimTol_Array1OfDatumReference
 #define TheArray1_hxx <StepDimTol_Array1OfDatumReference.hxx>
@@ -103,7 +90,6 @@ StepDimTol_Array1OfDatumReference myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepDimTol_HArray1OfDatumReference_HeaderFile

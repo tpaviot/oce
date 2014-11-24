@@ -6,19 +6,18 @@
 #ifndef _V3d_StereoDumpOptions_HeaderFile
 #define _V3d_StereoDumpOptions_HeaderFile
 
-//! Options to be used with image dumping. <br>
-//! <br>
-//!            SDO_MONO dump monographic projection for stereo camera <br>
-//!            SDO_LEFT_EYE dump left eye projection for stereo camera <br>
-//!            SDO_RIGHT_EYE dump right eye projection for stereo camera <br>
-enum V3d_StereoDumpOptions {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Options to be used with image dumping.
+//!
+//! SDO_MONO dump monographic projection for stereo camera
+//! SDO_LEFT_EYE dump left eye projection for stereo camera
+//! SDO_RIGHT_EYE dump right eye projection for stereo camera
+enum V3d_StereoDumpOptions
+{
 V3d_SDO_MONO,
 V3d_SDO_LEFT_EYE,
 V3d_SDO_RIGHT_EYE
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _V3d_StereoDumpOptions_HeaderFile

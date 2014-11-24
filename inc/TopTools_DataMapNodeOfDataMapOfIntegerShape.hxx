@@ -6,28 +6,14 @@
 #ifndef _TopTools_DataMapNodeOfDataMapOfIntegerShape_HeaderFile
 #define _TopTools_DataMapNodeOfDataMapOfIntegerShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape_HeaderFile
 #include <Handle_TopTools_DataMapNodeOfDataMapOfIntegerShape.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopoDS_Shape;
 class TColStd_MapIntegerHasher;
 class TopTools_DataMapOfIntegerShape;
@@ -35,16 +21,17 @@ class TopTools_DataMapIteratorOfDataMapOfIntegerShape;
 
 
 
-class TopTools_DataMapNodeOfDataMapOfIntegerShape : public TCollection_MapNode {
+class TopTools_DataMapNodeOfDataMapOfIntegerShape : public TCollection_MapNode
+{
 
 public:
 
   
-      TopTools_DataMapNodeOfDataMapOfIntegerShape(const Standard_Integer& K,const TopoDS_Shape& I,const TCollection_MapNodePtr& n);
+    TopTools_DataMapNodeOfDataMapOfIntegerShape(const Standard_Integer& K, const TopoDS_Shape& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Key() const;
+      Standard_Integer& Key()  const;
   
-        TopoDS_Shape& Value() const;
+      TopoDS_Shape& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-Standard_Integer myKey;
-TopoDS_Shape myValue;
+  Standard_Integer myKey;
+  TopoDS_Shape myValue;
 
 
 };
@@ -98,7 +85,6 @@ TopoDS_Shape myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopTools_DataMapNodeOfDataMapOfIntegerShape_HeaderFile

@@ -6,39 +6,28 @@
 #ifndef _MeshVS_StdMapNodeOfMapOfTwoNodes_HeaderFile
 #define _MeshVS_StdMapNodeOfMapOfTwoNodes_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MeshVS_StdMapNodeOfMapOfTwoNodes_HeaderFile
 #include <Handle_MeshVS_StdMapNodeOfMapOfTwoNodes.hxx>
-#endif
 
-#ifndef _MeshVS_TwoNodes_HeaderFile
 #include <MeshVS_TwoNodes.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class MeshVS_TwoNodesHasher;
 class MeshVS_MapOfTwoNodes;
 class MeshVS_MapIteratorOfMapOfTwoNodes;
 
 
 
-class MeshVS_StdMapNodeOfMapOfTwoNodes : public TCollection_MapNode {
+class MeshVS_StdMapNodeOfMapOfTwoNodes : public TCollection_MapNode
+{
 
 public:
 
   
-      MeshVS_StdMapNodeOfMapOfTwoNodes(const MeshVS_TwoNodes& K,const TCollection_MapNodePtr& n);
+    MeshVS_StdMapNodeOfMapOfTwoNodes(const MeshVS_TwoNodes& K, const TCollection_MapNodePtr& n);
   
-        MeshVS_TwoNodes& Key() const;
+      MeshVS_TwoNodes& Key()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-MeshVS_TwoNodes myKey;
+  MeshVS_TwoNodes myKey;
 
 
 };
@@ -87,7 +76,6 @@ MeshVS_TwoNodes myKey;
 #undef TCollection_Map_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MeshVS_StdMapNodeOfMapOfTwoNodes_HeaderFile

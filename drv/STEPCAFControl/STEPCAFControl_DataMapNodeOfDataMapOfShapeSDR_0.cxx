@@ -5,25 +5,13 @@
 
 #include <STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _StepShape_ShapeDefinitionRepresentation_HeaderFile
 #include <StepShape_ShapeDefinitionRepresentation.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _STEPCAFControl_DataMapOfShapeSDR_HeaderFile
 #include <STEPCAFControl_DataMapOfShapeSDR.hxx>
-#endif
-#ifndef _STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR_HeaderFile
 #include <STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR.hxx>
-#endif
 
  
 
@@ -44,7 +32,7 @@ IMPLEMENT_STANDARD_RTTI(STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR)
 
 #define TheKey TopoDS_Shape
 #define TheKey_hxx <TopoDS_Shape.hxx>
-#define TheItem Handle_StepShape_ShapeDefinitionRepresentation
+#define TheItem Handle(StepShape_ShapeDefinitionRepresentation)
 #define TheItem_hxx <StepShape_ShapeDefinitionRepresentation.hxx>
 #define Hasher TopTools_ShapeMapHasher
 #define Hasher_hxx <TopTools_ShapeMapHasher.hxx>

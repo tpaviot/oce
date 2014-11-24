@@ -5,25 +5,13 @@
 
 #include <MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
-#ifndef _MDF_DriverListOfARDriverTable_HeaderFile
 #include <MDF_DriverListOfARDriverTable.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _MDF_TypeDriverListMapOfARDriverTable_HeaderFile
 #include <MDF_TypeDriverListMapOfARDriverTable.hxx>
-#endif
-#ifndef _MDF_DataMapIteratorOfTypeDriverListMapOfARDriverTable_HeaderFile
 #include <MDF_DataMapIteratorOfTypeDriverListMapOfARDriverTable.hxx>
-#endif
 
  
 
@@ -42,7 +30,7 @@ IMPLEMENT_DOWNCAST(MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable,Standard_Tr
 IMPLEMENT_STANDARD_RTTI(MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable)
 
 
-#define TheKey Handle_Standard_Type
+#define TheKey Handle(Standard_Type)
 #define TheKey_hxx <Standard_Type.hxx>
 #define TheItem MDF_DriverListOfARDriverTable
 #define TheItem_hxx <MDF_DriverListOfARDriverTable.hxx>

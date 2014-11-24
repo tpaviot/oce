@@ -5,18 +5,10 @@
 
 #include <Approx_FitAndDivide.hxx>
 
-#ifndef _AppCont_Function_HeaderFile
 #include <AppCont_Function.hxx>
-#endif
-#ifndef _AppCont_FunctionTool_HeaderFile
 #include <AppCont_FunctionTool.hxx>
-#endif
-#ifndef _Approx_MyLeastSquareOfFitAndDivide_HeaderFile
 #include <Approx_MyLeastSquareOfFitAndDivide.hxx>
-#endif
-#ifndef _AppParCurves_MultiCurve_HeaderFile
 #include <AppParCurves_MultiCurve.hxx>
-#endif
  
 
 #define MultiLine AppCont_Function

@@ -6,37 +6,17 @@
 #ifndef _Geom2dGcc_FunctionTanCuCu_HeaderFile
 #define _Geom2dGcc_FunctionTanCuCu_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Geom2dAdaptor_Curve_HeaderFile
 #include <Geom2dAdaptor_Curve.hxx>
-#endif
-#ifndef _gp_Circ2d_HeaderFile
 #include <gp_Circ2d.hxx>
-#endif
-#ifndef _Geom2dGcc_Type3_HeaderFile
 #include <Geom2dGcc_Type3.hxx>
-#endif
-#ifndef _math_FunctionSetWithDerivatives_HeaderFile
 #include <math_FunctionSetWithDerivatives.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
 #include <math_Vector.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_ConstructionError;
 class Geom2dAdaptor_Curve;
 class gp_Circ2d;
@@ -45,37 +25,42 @@ class gp_Vec2d;
 class math_Matrix;
 
 
-//! This abstract class describes a Function of 1 Variable <br>
-//!          used to find a line tangent to two curves. <br>
-class Geom2dGcc_FunctionTanCuCu  : public math_FunctionSetWithDerivatives {
+//! This abstract class describes a Function of 1 Variable
+//! used to find a line tangent to two curves.
+class Geom2dGcc_FunctionTanCuCu  : public math_FunctionSetWithDerivatives
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Geom2dGcc_FunctionTanCuCu(const Geom2dAdaptor_Curve& Curv1,const Geom2dAdaptor_Curve& Curv2);
+  Standard_EXPORT Geom2dGcc_FunctionTanCuCu(const Geom2dAdaptor_Curve& Curv1, const Geom2dAdaptor_Curve& Curv2);
   
-  Standard_EXPORT   Geom2dGcc_FunctionTanCuCu(const gp_Circ2d& Circ1,const Geom2dAdaptor_Curve& Curv2);
+  Standard_EXPORT Geom2dGcc_FunctionTanCuCu(const gp_Circ2d& Circ1, const Geom2dAdaptor_Curve& Curv2);
   
-  Standard_EXPORT     void InitDerivative(const math_Vector& X,gp_Pnt2d& Point1,gp_Pnt2d& Point2,gp_Vec2d& Tan1,gp_Vec2d& Tan2,gp_Vec2d& D21,gp_Vec2d& D22) ;
-  //! returns the number of variables of the function. <br>
-  Standard_EXPORT     Standard_Integer NbVariables() const;
-  //! returns the number of equations of the function. <br>
-  Standard_EXPORT     Standard_Integer NbEquations() const;
-  //! Computes the value of the function F for the variable X. <br>
-//!          It returns True if the computation is successfully done, <br>
-//!          False otherwise. <br>
-  Standard_EXPORT     Standard_Boolean Value(const math_Vector& X,math_Vector& F) ;
-  //! Computes the derivative of the function F for the variable X. <br>
-//!          It returns True if the computation is successfully done, <br>
-//!          False otherwise. <br>
-  Standard_EXPORT     Standard_Boolean Derivatives(const math_Vector& X,math_Matrix& Deriv) ;
-  //! Computes the value and the derivative of the function F <br>
-//!          for the variable X. <br>
-//!          It returns True if the computation is successfully done, <br>
-//!          False otherwise. <br>
-  Standard_EXPORT     Standard_Boolean Values(const math_Vector& X,math_Vector& F,math_Matrix& Deriv) ;
-
+  Standard_EXPORT   void InitDerivative (const math_Vector& X, gp_Pnt2d& Point1, gp_Pnt2d& Point2, gp_Vec2d& Tan1, gp_Vec2d& Tan2, gp_Vec2d& D21, gp_Vec2d& D22) ;
+  
+  //! returns the number of variables of the function.
+  Standard_EXPORT   Standard_Integer NbVariables()  const;
+  
+  //! returns the number of equations of the function.
+  Standard_EXPORT   Standard_Integer NbEquations()  const;
+  
+  //! Computes the value of the function F for the variable X.
+  //! It returns True if the computation is successfully done,
+  //! False otherwise.
+  Standard_EXPORT   Standard_Boolean Value (const math_Vector& X, math_Vector& F) ;
+  
+  //! Computes the derivative of the function F for the variable X.
+  //! It returns True if the computation is successfully done,
+  //! False otherwise.
+  Standard_EXPORT   Standard_Boolean Derivatives (const math_Vector& X, math_Matrix& Deriv) ;
+  
+  //! Computes the value and the derivative of the function F
+  //! for the variable X.
+  //! It returns True if the computation is successfully done,
+  //! False otherwise.
+  Standard_EXPORT   Standard_Boolean Values (const math_Vector& X, math_Vector& F, math_Matrix& Deriv) ;
 
 
 
@@ -90,10 +75,10 @@ private:
 
 
 
-Geom2dAdaptor_Curve TheCurve1;
-Geom2dAdaptor_Curve TheCurve2;
-gp_Circ2d TheCirc1;
-Geom2dGcc_Type3 TheType;
+  Geom2dAdaptor_Curve TheCurve1;
+  Geom2dAdaptor_Curve TheCurve2;
+  gp_Circ2d TheCirc1;
+  Geom2dGcc_Type3 TheType;
 
 
 };
@@ -102,7 +87,6 @@ Geom2dGcc_Type3 TheType;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dGcc_FunctionTanCuCu_HeaderFile

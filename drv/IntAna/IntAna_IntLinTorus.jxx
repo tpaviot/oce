@@ -1,18 +1,6 @@
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
-#endif
-#ifndef _gp_Torus_HeaderFile
 #include <gp_Torus.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _IntAna_IntLinTorus_HeaderFile
 #include <IntAna_IntLinTorus.hxx>
-#endif

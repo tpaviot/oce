@@ -6,44 +6,36 @@
 #ifndef _HLRTopoBRep_FaceData_HeaderFile
 #define _HLRTopoBRep_FaceData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
 class TopTools_ListOfShape;
 
 
-//! Contains the  3 ListOfShape of  a Face  ( Internal <br>
-//!          OutLines, OutLines on restriction and IsoLines ). <br>
-class HLRTopoBRep_FaceData  {
+//! Contains the  3 ListOfShape of  a Face  ( Internal
+//! OutLines, OutLines on restriction and IsoLines ).
+class HLRTopoBRep_FaceData 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   HLRTopoBRep_FaceData();
+  Standard_EXPORT HLRTopoBRep_FaceData();
   
-       const TopTools_ListOfShape& FaceIntL() const;
+     const  TopTools_ListOfShape& FaceIntL()  const;
   
-       const TopTools_ListOfShape& FaceOutL() const;
+     const  TopTools_ListOfShape& FaceOutL()  const;
   
-       const TopTools_ListOfShape& FaceIsoL() const;
+     const  TopTools_ListOfShape& FaceIsoL()  const;
   
-        TopTools_ListOfShape& AddIntL() ;
+      TopTools_ListOfShape& AddIntL() ;
   
-        TopTools_ListOfShape& AddOutL() ;
+      TopTools_ListOfShape& AddOutL() ;
   
-        TopTools_ListOfShape& AddIsoL() ;
-
+      TopTools_ListOfShape& AddIsoL() ;
 
 
 
@@ -58,9 +50,9 @@ private:
 
 
 
-TopTools_ListOfShape myIntL;
-TopTools_ListOfShape myOutL;
-TopTools_ListOfShape myIsoL;
+  TopTools_ListOfShape myIntL;
+  TopTools_ListOfShape myOutL;
+  TopTools_ListOfShape myIsoL;
 
 
 };
@@ -70,7 +62,6 @@ TopTools_ListOfShape myIsoL;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRTopoBRep_FaceData_HeaderFile

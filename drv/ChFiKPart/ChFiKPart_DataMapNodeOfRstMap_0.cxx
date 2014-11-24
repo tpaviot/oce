@@ -5,22 +5,12 @@
 
 #include <ChFiKPart_DataMapNodeOfRstMap.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Adaptor2d_HCurve2d_HeaderFile
 #include <Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _ChFiKPart_RstMap_HeaderFile
 #include <ChFiKPart_RstMap.hxx>
-#endif
-#ifndef _ChFiKPart_DataMapIteratorOfRstMap_HeaderFile
 #include <ChFiKPart_DataMapIteratorOfRstMap.hxx>
-#endif
 
  
 
@@ -41,7 +31,7 @@ IMPLEMENT_STANDARD_RTTI(ChFiKPart_DataMapNodeOfRstMap)
 
 #define TheKey Standard_Integer
 #define TheKey_hxx <Standard_Integer.hxx>
-#define TheItem Handle_Adaptor2d_HCurve2d
+#define TheItem Handle(Adaptor2d_HCurve2d)
 #define TheItem_hxx <Adaptor2d_HCurve2d.hxx>
 #define Hasher TColStd_MapIntegerHasher
 #define Hasher_hxx <TColStd_MapIntegerHasher.hxx>

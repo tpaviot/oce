@@ -1,12 +1,4 @@
-#ifndef _CDM_Document_HeaderFile
 #include <CDM_Document.hxx>
-#endif
-#ifndef _CDM_Application_HeaderFile
 #include <CDM_Application.hxx>
-#endif
-#ifndef _CDM_MetaData_HeaderFile
 #include <CDM_MetaData.hxx>
-#endif
-#ifndef _CDM_Reference_HeaderFile
 #include <CDM_Reference.hxx>
-#endif

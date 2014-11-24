@@ -6,8 +6,11 @@
 #ifndef _BRepLib_ShapeModification_HeaderFile
 #define _BRepLib_ShapeModification_HeaderFile
 
-//! Modification type after a topologic operation. <br>
-enum BRepLib_ShapeModification {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Modification type after a topologic operation.
+enum BRepLib_ShapeModification
+{
 BRepLib_Preserved,
 BRepLib_Deleted,
 BRepLib_Trimmed,
@@ -15,8 +18,4 @@ BRepLib_Merged,
 BRepLib_BoundaryModified
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BRepLib_ShapeModification_HeaderFile

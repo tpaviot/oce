@@ -6,8 +6,11 @@
 #ifndef _Aspect_FormatOfSheetPaper_HeaderFile
 #define _Aspect_FormatOfSheetPaper_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Aspect_FormatOfSheetPaper {
+
+enum Aspect_FormatOfSheetPaper
+{
 Aspect_FOSP_A0,
 Aspect_FOSP_A1,
 Aspect_FOSP_A2,
@@ -31,8 +34,4 @@ Aspect_FOSP_A,
 Aspect_FOSP_UNKNOWN
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_FormatOfSheetPaper_HeaderFile

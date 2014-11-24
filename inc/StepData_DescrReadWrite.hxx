@@ -6,37 +6,17 @@
 #ifndef _StepData_DescrReadWrite_HeaderFile
 #define _StepData_DescrReadWrite_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepData_DescrReadWrite_HeaderFile
 #include <Handle_StepData_DescrReadWrite.hxx>
-#endif
 
-#ifndef _Handle_StepData_Protocol_HeaderFile
 #include <Handle_StepData_Protocol.hxx>
-#endif
-#ifndef _StepData_ReadWriteModule_HeaderFile
 #include <StepData_ReadWriteModule.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepData_StepReaderData_HeaderFile
 #include <Handle_StepData_StepReaderData.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
 class StepData_Protocol;
 class TCollection_AsciiString;
 class TColStd_SequenceOfAsciiString;
@@ -47,26 +27,27 @@ class StepData_StepWriter;
 
 
 
-class StepData_DescrReadWrite : public StepData_ReadWriteModule {
+class StepData_DescrReadWrite : public StepData_ReadWriteModule
+{
 
 public:
 
   
-  Standard_EXPORT   StepData_DescrReadWrite(const Handle(StepData_Protocol)& proto);
+  Standard_EXPORT StepData_DescrReadWrite(const Handle(StepData_Protocol)& proto);
   
-  Standard_EXPORT     Standard_Integer CaseStep(const TCollection_AsciiString& atype) const;
+  Standard_EXPORT   Standard_Integer CaseStep (const TCollection_AsciiString& atype)  const;
   
-  Standard_EXPORT   virtual  Standard_Integer CaseStep(const TColStd_SequenceOfAsciiString& types) const;
+  Standard_EXPORT virtual   Standard_Integer CaseStep (const TColStd_SequenceOfAsciiString& types)  const;
   
-  Standard_EXPORT   virtual  Standard_Boolean IsComplex(const Standard_Integer CN) const;
+  Standard_EXPORT virtual   Standard_Boolean IsComplex (const Standard_Integer CN)  const;
   
-  Standard_EXPORT    const TCollection_AsciiString& StepType(const Standard_Integer CN) const;
+  Standard_EXPORT  const  TCollection_AsciiString& StepType (const Standard_Integer CN)  const;
   
-  Standard_EXPORT   virtual  Standard_Boolean ComplexType(const Standard_Integer CN,TColStd_SequenceOfAsciiString& types) const;
+  Standard_EXPORT virtual   Standard_Boolean ComplexType (const Standard_Integer CN, TColStd_SequenceOfAsciiString& types)  const;
   
-  Standard_EXPORT     void ReadStep(const Standard_Integer CN,const Handle(StepData_StepReaderData)& data,const Standard_Integer num,Handle(Interface_Check)& ach,const Handle(Standard_Transient)& ent) const;
+  Standard_EXPORT   void ReadStep (const Standard_Integer CN, const Handle(StepData_StepReaderData)& data, const Standard_Integer num, Handle(Interface_Check)& ach, const Handle(Standard_Transient)& ent)  const;
   
-  Standard_EXPORT     void WriteStep(const Standard_Integer CN,StepData_StepWriter& SW,const Handle(Standard_Transient)& ent) const;
+  Standard_EXPORT   void WriteStep (const Standard_Integer CN, StepData_StepWriter& SW, const Handle(Standard_Transient)& ent)  const;
 
 
 
@@ -81,7 +62,7 @@ protected:
 private: 
 
 
-Handle_StepData_Protocol theproto;
+  Handle(StepData_Protocol) theproto;
 
 
 };
@@ -90,7 +71,6 @@ Handle_StepData_Protocol theproto;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepData_DescrReadWrite_HeaderFile

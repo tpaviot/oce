@@ -6,40 +6,18 @@
 #ifndef _IGESData_UndefinedEntity_HeaderFile
 #define _IGESData_UndefinedEntity_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESData_UndefinedEntity_HeaderFile
 #include <Handle_IGESData_UndefinedEntity.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Interface_UndefinedContent_HeaderFile
 #include <Handle_Interface_UndefinedContent.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _IGESData_DefType_HeaderFile
 #include <IGESData_DefType.hxx>
-#endif
-#ifndef _IGESData_DefList_HeaderFile
 #include <IGESData_DefList.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESReaderData_HeaderFile
 #include <Handle_IGESData_IGESReaderData.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
 class Interface_UndefinedContent;
 class IGESData_IGESReaderData;
 class IGESData_DirPart;
@@ -48,56 +26,72 @@ class IGESData_ParamReader;
 class IGESData_IGESWriter;
 
 
-//! undefined (unknown or error) entity specific of IGES <br>
-//!           DirPart can be correct or not : if it is not, a flag indicates <br>
-//!           it, and each corrupted field has an associated error flag <br>
-class IGESData_UndefinedEntity : public IGESData_IGESEntity {
+//! undefined (unknown or error) entity specific of IGES
+//! DirPart can be correct or not : if it is not, a flag indicates
+//! it, and each corrupted field has an associated error flag
+class IGESData_UndefinedEntity : public IGESData_IGESEntity
+{
 
 public:
 
-  //! creates an unknown entity <br>
-  Standard_EXPORT   IGESData_UndefinedEntity();
-  //! Returns own data as an UndefinedContent <br>
-  Standard_EXPORT     Handle_Interface_UndefinedContent UndefinedContent() const;
-  //! Returns own data as an UndefinedContent, in order to touch it <br>
-  Standard_EXPORT     Handle_Interface_UndefinedContent ChangeableContent() ;
-  //! Redefines a completely new UndefinedContent <br>
-//!           Used by a Copy which begins by ShallowCopy, for instance <br>
-  Standard_EXPORT     void SetNewContent(const Handle(Interface_UndefinedContent)& cont) ;
-  //! says if DirPart is OK or not (if not, it is erroneous) <br>
-//!           Note that if it is not, Def* methods can return Error status <br>
-  Standard_EXPORT     Standard_Boolean IsOKDirPart() const;
-  //! returns Directory Error Status (used for Copy) <br>
-  Standard_EXPORT     Standard_Integer DirStatus() const;
-  //! Erases the Directory Error Status <br>
-//!  Warning : Be sure that data are consistent to call this method ... <br>
-  Standard_EXPORT     void SetOKDirPart() ;
-  //! returns Error status if necessary, else calls original method <br>
-  Standard_EXPORT   virtual  IGESData_DefType DefLineFont() const;
-  //! returns Error status if necessary, else calls original method <br>
-  Standard_EXPORT   virtual  IGESData_DefList DefLevel() const;
-  //! returns Error status if necessary, else calls original method <br>
-  Standard_EXPORT   virtual  IGESData_DefList DefView() const;
-  //! returns Error status if necessary, else calls original method <br>
-  Standard_EXPORT   virtual  IGESData_DefType DefColor() const;
-  //! returns Error status if necessary, else calls original method <br>
-//!           (that is, if SubScript field is not blank or positive integer) <br>
-  Standard_EXPORT   virtual  Standard_Boolean HasSubScriptNumber() const;
-  //! Computes the Directory Error Status, to be called before <br>
-//!           standard ReadDir from IGESReaderTool <br>
-//!           Returns True if OK (hence, Directory can be loaded), <br>
-//!           Else returns False and the DirPart <DP> is modified <br>
-//!           (hence, Directory Error Status is non null; and standard Read <br>
-//!            will work with an acceptable DirectoryPart) <br>
-  Standard_EXPORT   virtual  Standard_Boolean ReadDir(const Handle(IGESData_IGESReaderData)& IR,IGESData_DirPart& DP,Handle(Interface_Check)& ach) ;
-  //! reads own parameters from file; PR gives access to them, IR <br>
-//!           detains parameter types and values <br>
-//!           Here, reads all parameters, integers are considered as entity <br>
-//!           reference unless they cannot be; no list interpretation <br>
-//!           No property or associativity list is managed <br>
-  Standard_EXPORT   virtual  void ReadOwnParams(const Handle(IGESData_IGESReaderData)& IR,IGESData_ParamReader& PR) ;
-  //! writes parameters to IGESWriter, taken from UndefinedContent <br>
-  Standard_EXPORT   virtual  void WriteOwnParams(IGESData_IGESWriter& IW) const;
+  
+  //! creates an unknown entity
+  Standard_EXPORT IGESData_UndefinedEntity();
+  
+  //! Returns own data as an UndefinedContent
+  Standard_EXPORT   Handle(Interface_UndefinedContent) UndefinedContent()  const;
+  
+  //! Returns own data as an UndefinedContent, in order to touch it
+  Standard_EXPORT   Handle(Interface_UndefinedContent) ChangeableContent() ;
+  
+  //! Redefines a completely new UndefinedContent
+  //! Used by a Copy which begins by ShallowCopy, for instance
+  Standard_EXPORT   void SetNewContent (const Handle(Interface_UndefinedContent)& cont) ;
+  
+  //! says if DirPart is OK or not (if not, it is erroneous)
+  //! Note that if it is not, Def* methods can return Error status
+  Standard_EXPORT   Standard_Boolean IsOKDirPart()  const;
+  
+  //! returns Directory Error Status (used for Copy)
+  Standard_EXPORT   Standard_Integer DirStatus()  const;
+  
+  //! Erases the Directory Error Status
+  //! Warning : Be sure that data are consistent to call this method ...
+  Standard_EXPORT   void SetOKDirPart() ;
+  
+  //! returns Error status if necessary, else calls original method
+  Standard_EXPORT virtual   IGESData_DefType DefLineFont()  const;
+  
+  //! returns Error status if necessary, else calls original method
+  Standard_EXPORT virtual   IGESData_DefList DefLevel()  const;
+  
+  //! returns Error status if necessary, else calls original method
+  Standard_EXPORT virtual   IGESData_DefList DefView()  const;
+  
+  //! returns Error status if necessary, else calls original method
+  Standard_EXPORT virtual   IGESData_DefType DefColor()  const;
+  
+  //! returns Error status if necessary, else calls original method
+  //! (that is, if SubScript field is not blank or positive integer)
+  Standard_EXPORT virtual   Standard_Boolean HasSubScriptNumber()  const;
+  
+  //! Computes the Directory Error Status, to be called before
+  //! standard ReadDir from IGESReaderTool
+  //! Returns True if OK (hence, Directory can be loaded),
+  //! Else returns False and the DirPart <DP> is modified
+  //! (hence, Directory Error Status is non null; and standard Read
+  //! will work with an acceptable DirectoryPart)
+  Standard_EXPORT virtual   Standard_Boolean ReadDir (const Handle(IGESData_IGESReaderData)& IR, IGESData_DirPart& DP, Handle(Interface_Check)& ach) ;
+  
+  //! reads own parameters from file; PR gives access to them, IR
+  //! detains parameter types and values
+  //! Here, reads all parameters, integers are considered as entity
+  //! reference unless they cannot be; no list interpretation
+  //! No property or associativity list is managed
+  Standard_EXPORT virtual   void ReadOwnParams (const Handle(IGESData_IGESReaderData)& IR, IGESData_ParamReader& PR) ;
+  
+  //! writes parameters to IGESWriter, taken from UndefinedContent
+  Standard_EXPORT virtual   void WriteOwnParams (IGESData_IGESWriter& IW)  const;
 
 
 
@@ -112,8 +106,8 @@ protected:
 private: 
 
 
-Standard_Integer thedstat;
-Handle_Interface_UndefinedContent thecont;
+  Standard_Integer thedstat;
+  Handle(Interface_UndefinedContent) thecont;
 
 
 };
@@ -122,7 +116,6 @@ Handle_Interface_UndefinedContent thecont;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESData_UndefinedEntity_HeaderFile

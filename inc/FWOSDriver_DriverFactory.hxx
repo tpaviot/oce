@@ -6,34 +6,25 @@
 #ifndef _FWOSDriver_DriverFactory_HeaderFile
 #define _FWOSDriver_DriverFactory_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_FWOSDriver_DriverFactory_HeaderFile
 #include <Handle_FWOSDriver_DriverFactory.hxx>
-#endif
 
-#ifndef _CDF_MetaDataDriverFactory_HeaderFile
 #include <CDF_MetaDataDriverFactory.hxx>
-#endif
-#ifndef _Handle_CDF_MetaDataDriver_HeaderFile
 #include <Handle_CDF_MetaDataDriver.hxx>
-#endif
 class CDF_MetaDataDriver;
 
 
 
-class FWOSDriver_DriverFactory : public CDF_MetaDataDriverFactory {
+class FWOSDriver_DriverFactory : public CDF_MetaDataDriverFactory
+{
 
 public:
 
   
-  Standard_EXPORT   FWOSDriver_DriverFactory();
+  Standard_EXPORT FWOSDriver_DriverFactory();
   
-  Standard_EXPORT     Handle_CDF_MetaDataDriver Build() const;
+  Standard_EXPORT   Handle(CDF_MetaDataDriver) Build()  const;
 
 
 
@@ -56,7 +47,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _FWOSDriver_DriverFactory_HeaderFile

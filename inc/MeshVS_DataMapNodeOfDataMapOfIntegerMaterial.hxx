@@ -6,28 +6,14 @@
 #ifndef _MeshVS_DataMapNodeOfDataMapOfIntegerMaterial_HeaderFile
 #define _MeshVS_DataMapNodeOfDataMapOfIntegerMaterial_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMaterial_HeaderFile
 #include <Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMaterial.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Graphic3d_MaterialAspect_HeaderFile
 #include <Graphic3d_MaterialAspect.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Graphic3d_MaterialAspect;
 class TColStd_MapIntegerHasher;
 class MeshVS_DataMapOfIntegerMaterial;
@@ -35,16 +21,17 @@ class MeshVS_DataMapIteratorOfDataMapOfIntegerMaterial;
 
 
 
-class MeshVS_DataMapNodeOfDataMapOfIntegerMaterial : public TCollection_MapNode {
+class MeshVS_DataMapNodeOfDataMapOfIntegerMaterial : public TCollection_MapNode
+{
 
 public:
 
   
-      MeshVS_DataMapNodeOfDataMapOfIntegerMaterial(const Standard_Integer& K,const Graphic3d_MaterialAspect& I,const TCollection_MapNodePtr& n);
+    MeshVS_DataMapNodeOfDataMapOfIntegerMaterial(const Standard_Integer& K, const Graphic3d_MaterialAspect& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Key() const;
+      Standard_Integer& Key()  const;
   
-        Graphic3d_MaterialAspect& Value() const;
+      Graphic3d_MaterialAspect& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-Standard_Integer myKey;
-Graphic3d_MaterialAspect myValue;
+  Standard_Integer myKey;
+  Graphic3d_MaterialAspect myValue;
 
 
 };
@@ -98,7 +85,6 @@ Graphic3d_MaterialAspect myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MeshVS_DataMapNodeOfDataMapOfIntegerMaterial_HeaderFile

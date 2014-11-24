@@ -6,38 +6,27 @@
 #ifndef _SelectMgr_SequenceNodeOfSequenceOfOwner_HeaderFile
 #define _SelectMgr_SequenceNodeOfSequenceOfOwner_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_SelectMgr_SequenceNodeOfSequenceOfOwner_HeaderFile
 #include <Handle_SelectMgr_SequenceNodeOfSequenceOfOwner.hxx>
-#endif
 
-#ifndef _Handle_SelectMgr_EntityOwner_HeaderFile
 #include <Handle_SelectMgr_EntityOwner.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class SelectMgr_EntityOwner;
 class SelectMgr_SequenceOfOwner;
 
 
 
-class SelectMgr_SequenceNodeOfSequenceOfOwner : public TCollection_SeqNode {
+class SelectMgr_SequenceNodeOfSequenceOfOwner : public TCollection_SeqNode
+{
 
 public:
 
   
-      SelectMgr_SequenceNodeOfSequenceOfOwner(const Handle(SelectMgr_EntityOwner)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    SelectMgr_SequenceNodeOfSequenceOfOwner(const Handle(SelectMgr_EntityOwner)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_SelectMgr_EntityOwner& Value() const;
+      Handle(SelectMgr_EntityOwner)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_SelectMgr_EntityOwner myValue;
+  Handle(SelectMgr_EntityOwner) myValue;
 
 
 };
 
-#define SeqItem Handle_SelectMgr_EntityOwner
+#define SeqItem Handle(SelectMgr_EntityOwner)
 #define SeqItem_hxx <SelectMgr_EntityOwner.hxx>
 #define TCollection_SequenceNode SelectMgr_SequenceNodeOfSequenceOfOwner
 #define TCollection_SequenceNode_hxx <SelectMgr_SequenceNodeOfSequenceOfOwner.hxx>
@@ -78,7 +67,6 @@ Handle_SelectMgr_EntityOwner myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SelectMgr_SequenceNodeOfSequenceOfOwner_HeaderFile

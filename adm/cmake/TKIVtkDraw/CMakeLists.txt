@@ -68,6 +68,8 @@ if (WIN32)
   list( APPEND TKIVtkDraw_USED_LIBS vtkIOImage-6.1.lib )
   list( APPEND TKIVtkDraw_USED_LIBS vtkImagingCore-6.1.lib )
   list( APPEND TKIVtkDraw_USED_LIBS vtkInteractionStyle-6.1.lib )
+  list( APPEND TKIVtkDraw_USED_LIBS tcl${3RDPARTY_TCL_LIBRARY_VERSION}.lib )
+  list( APPEND TKIVtkDraw_USED_LIBS tk${3RDPARTY_TCL_LIBRARY_VERSION}.lib )
 elseif(APPLE)
   list( APPEND TKIVtkDraw_USED_LIBS vtkCommonCore-6.1 )
   list( APPEND TKIVtkDraw_USED_LIBS vtkCommonDataModel-6.1 )
@@ -85,7 +87,7 @@ elseif(APPLE)
   list( APPEND TKIVtkDraw_USED_LIBS ${FRAMEWORKS_TCL} )
   find_library(FRAMEWORKS_TK NAMES Tk)
   list( APPEND TKIVtkDraw_USED_LIBS ${FRAMEWORKS_TK} )
-else()
+elseif(ANDROID)
   list( APPEND TKIVtkDraw_USED_LIBS vtkCommonCore-6.1 )
   list( APPEND TKIVtkDraw_USED_LIBS vtkCommonDataModel-6.1 )
   list( APPEND TKIVtkDraw_USED_LIBS vtkCommonExecutionModel-6.1 )
@@ -101,6 +103,22 @@ else()
   list( APPEND TKIVtkDraw_USED_LIBS tcl8.6 )
   list( APPEND TKIVtkDraw_USED_LIBS X11 )
   list( APPEND TKIVtkDraw_USED_LIBS tk8.6 )
+else()
+  list( APPEND TKIVtkDraw_USED_LIBS vtkCommonCore-6.1 )
+  list( APPEND TKIVtkDraw_USED_LIBS vtkCommonDataModel-6.1 )
+  list( APPEND TKIVtkDraw_USED_LIBS vtkCommonExecutionModel-6.1 )
+  list( APPEND TKIVtkDraw_USED_LIBS vtkCommonMath-6.1 )
+  list( APPEND TKIVtkDraw_USED_LIBS vtkCommonTransforms-6.1 )
+  list( APPEND TKIVtkDraw_USED_LIBS vtkRenderingCore-6.1 )
+  list( APPEND TKIVtkDraw_USED_LIBS vtkRenderingOpenGL-6.1 )
+  list( APPEND TKIVtkDraw_USED_LIBS vtkFiltersGeneral-6.1 )
+  list( APPEND TKIVtkDraw_USED_LIBS vtkIOCore-6.1 )
+  list( APPEND TKIVtkDraw_USED_LIBS vtkIOImage-6.1 )
+  list( APPEND TKIVtkDraw_USED_LIBS vtkImagingCore-6.1 )
+  list( APPEND TKIVtkDraw_USED_LIBS vtkInteractionStyle-6.1 )
+  list( APPEND TKIVtkDraw_USED_LIBS tcl${3RDPARTY_TCL_LIBRARY_VERSION} )
+  list( APPEND TKIVtkDraw_USED_LIBS X11 )
+  list( APPEND TKIVtkDraw_USED_LIBS tk${3RDPARTY_TK_LIBRARY_VERSION} )
 endif()
 
   IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "" AND EXISTS "${BUILD_PATCH_DIR}//src/IVtkDraw/IVtkDraw.cxx")
@@ -149,13 +167,13 @@ if ("${USED_TOOLKITS}" STREQUAL "" OR DEFINED TurnONtheTKIVtkDraw)
  set_property(TARGET TKIVtkDraw PROPERTY FOLDER Draw)
 
  install( TARGETS TKIVtkDraw
-                                 RUNTIME DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_SUFFIX}"
-                                 ARCHIVE DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_SUFFIX}"
-                                 LIBRARY DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_SUFFIX}")
+                                 RUNTIME DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_POSTFIX}"
+                                 ARCHIVE DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_POSTFIX}"
+                                 LIBRARY DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_POSTFIX}")
 
  if (MSVC)
-  install( FILES  ${CMAKE_BINARY_DIR}/out/bin/Debug/TKIVtkDraw.pdb CONFIGURATIONS Debug
-                                  DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_SUFFIX}")
+  install( FILES  ${CMAKE_BINARY_DIR}/out/bind/Debug/TKIVtkDraw.pdb CONFIGURATIONS Debug
+                                  DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_POSTFIX}")
  endif()
 
 

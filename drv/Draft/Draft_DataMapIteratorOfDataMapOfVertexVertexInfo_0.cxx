@@ -5,24 +5,12 @@
 
 #include <Draft_DataMapIteratorOfDataMapOfVertexVertexInfo.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Vertex_HeaderFile
 #include <TopoDS_Vertex.hxx>
-#endif
-#ifndef _Draft_VertexInfo_HeaderFile
 #include <Draft_VertexInfo.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _Draft_DataMapOfVertexVertexInfo_HeaderFile
 #include <Draft_DataMapOfVertexVertexInfo.hxx>
-#endif
-#ifndef _Draft_DataMapNodeOfDataMapOfVertexVertexInfo_HeaderFile
 #include <Draft_DataMapNodeOfDataMapOfVertexVertexInfo.hxx>
-#endif
  
 
 #define TheKey TopoDS_Vertex

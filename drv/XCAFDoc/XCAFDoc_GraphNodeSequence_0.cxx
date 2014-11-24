@@ -5,21 +5,13 @@
 
 #include <XCAFDoc_GraphNodeSequence.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _XCAFDoc_GraphNode_HeaderFile
 #include <XCAFDoc_GraphNode.hxx>
-#endif
-#ifndef _XCAFDoc_SequenceNodeOfGraphNodeSequence_HeaderFile
 #include <XCAFDoc_SequenceNodeOfGraphNodeSequence.hxx>
-#endif
  
 
-#define SeqItem Handle_XCAFDoc_GraphNode
+#define SeqItem Handle(XCAFDoc_GraphNode)
 #define SeqItem_hxx <XCAFDoc_GraphNode.hxx>
 #define TCollection_SequenceNode XCAFDoc_SequenceNodeOfGraphNodeSequence
 #define TCollection_SequenceNode_hxx <XCAFDoc_SequenceNodeOfGraphNodeSequence.hxx>

@@ -6,28 +6,14 @@
 #ifndef _TDataXtd_Axis_HeaderFile
 #define _TDataXtd_Axis_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDataXtd_Axis_HeaderFile
 #include <Handle_TDataXtd_Axis.hxx>
-#endif
 
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class Standard_GUID;
 class TDF_Label;
 class gp_Lin;
@@ -35,40 +21,46 @@ class TDF_Attribute;
 class TDF_RelocationTable;
 
 
-//! The basis to define an axis attribute. <br>
-//! <br>
-//!  Warning: Use TDataXtd_Geometry  attribute  to retrieve  the <br>
-//!          gp_Lin of the Axis attribute <br>
-class TDataXtd_Axis : public TDF_Attribute {
+//! The basis to define an axis attribute.
+//!
+//! Warning: Use TDataXtd_Geometry  attribute  to retrieve  the
+//! gp_Lin of the Axis attribute
+class TDataXtd_Axis : public TDF_Attribute
+{
 
 public:
 
-  //! class methods <br>
-//!         ============= <br>//! 	Returns the GUID for an axis. <br>
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
-  //! Finds or creates an axis attribute defined by the  label. <br>
-//! In the case of a creation of an axis, a compatible <br>
-//! named shape should already be associated with label. <br>
-//! Exceptions <br>
-//! Standard_NullObject if no compatible named <br>
-//! shape is associated with the label. <br>
-  Standard_EXPORT   static  Handle_TDataXtd_Axis Set(const TDF_Label& label) ;
-  //! Find,  or create,  an Axis  attribute  and set <P>  as <br>
-//!          generated in the associated NamedShape. <br>//! Axis methods <br>
-//!          ============ <br>
-  Standard_EXPORT   static  Handle_TDataXtd_Axis Set(const TDF_Label& label,const gp_Lin& L) ;
   
-  Standard_EXPORT   TDataXtd_Axis();
+  //! class methods
+  //! =============
+  //! Returns the GUID for an axis.
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-  Standard_EXPORT    const Standard_GUID& ID() const;
+  //! Finds or creates an axis attribute defined by the  label.
+  //! In the case of a creation of an axis, a compatible
+  //! named shape should already be associated with label.
+  //! Exceptions
+  //! Standard_NullObject if no compatible named
+  //! shape is associated with the label.
+  Standard_EXPORT static   Handle(TDataXtd_Axis) Set (const TDF_Label& label) ;
   
-  Standard_EXPORT     void Restore(const Handle(TDF_Attribute)& with) ;
+  //! Find,  or create,  an Axis  attribute  and set <P>  as
+  //! generated in the associated NamedShape.
+  //! Axis methods
+  //! ============
+  Standard_EXPORT static   Handle(TDataXtd_Axis) Set (const TDF_Label& label, const gp_Lin& L) ;
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  Standard_EXPORT TDataXtd_Axis();
   
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& into,const Handle(TDF_RelocationTable)& RT) const;
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
   
-  Standard_EXPORT   virtual  Standard_OStream& Dump(Standard_OStream& anOS) const;
+  Standard_EXPORT   void Restore (const Handle(TDF_Attribute)& with) ;
+  
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
+  
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& into, const Handle(TDF_RelocationTable)& RT)  const;
+  
+  Standard_EXPORT virtual   Standard_OStream& Dump (Standard_OStream& anOS)  const;
 
 
 
@@ -91,7 +83,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataXtd_Axis_HeaderFile

@@ -1,9 +1,3 @@
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _Draw_Color_HeaderFile
 #include <Draw_Color.hxx>
-#endif
-#ifndef _DBRep_Face_HeaderFile
 #include <DBRep_Face.hxx>
-#endif

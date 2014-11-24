@@ -6,70 +6,62 @@
 #ifndef _IGESSolid_ConicalSurface_HeaderFile
 #define _IGESSolid_ConicalSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSolid_ConicalSurface_HeaderFile
 #include <Handle_IGESSolid_ConicalSurface.hxx>
-#endif
 
-#ifndef _Handle_IGESGeom_Point_HeaderFile
 #include <Handle_IGESGeom_Point.hxx>
-#endif
-#ifndef _Handle_IGESGeom_Direction_HeaderFile
 #include <Handle_IGESGeom_Direction.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class IGESGeom_Point;
 class IGESGeom_Direction;
 
 
-//! defines ConicalSurface, Type <194> Form Number <0,1> <br>
-//!          in package IGESSolid <br>
-//!          The right circular conical surface is defined by a <br>
-//!          point on the axis on the cone, the direction of the axis <br>
-//!          of the cone, the radius of the cone at the axis point and <br>
-//!          the cone semi-angle. <br>
-class IGESSolid_ConicalSurface : public IGESData_IGESEntity {
+//! defines ConicalSurface, Type <194> Form Number <0,1>
+//! in package IGESSolid
+//! The right circular conical surface is defined by a
+//! point on the axis on the cone, the direction of the axis
+//! of the cone, the radius of the cone at the axis point and
+//! the cone semi-angle.
+class IGESSolid_ConicalSurface : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESSolid_ConicalSurface();
-  //! This method is used to set the fields of the class <br>
-//!           ConicalSurface <br>
-//!       - aLocation : Location of the point on axis <br>
-//!       - anAxis    : Direction of the axis <br>
-//!       - aRadius   : Radius at axis point <br>
-//!       - anAngle   : Value of semi-angle in degrees (0<angle<90) <br>
-//!       - aRefdir   : Reference direction (parametrised surface) <br>
-//!                     Null if unparametrised surface. <br>
-  Standard_EXPORT     void Init(const Handle(IGESGeom_Point)& aLocation,const Handle(IGESGeom_Direction)& anAxis,const Standard_Real aRadius,const Standard_Real anAngle,const Handle(IGESGeom_Direction)& aRefdir) ;
-  //! returns the location of the point on the axis <br>
-  Standard_EXPORT     Handle_IGESGeom_Point LocationPoint() const;
-  //! returns the direction of the axis <br>
-  Standard_EXPORT     Handle_IGESGeom_Direction Axis() const;
-  //! returns the radius at the axis point <br>
-  Standard_EXPORT     Standard_Real Radius() const;
-  //! returns the semi-angle value <br>
-  Standard_EXPORT     Standard_Real SemiAngle() const;
-  //! returns the reference direction of the conical surface in case <br>
-//! of parametrised surface. For unparametrised surface it returns <br>
-//! NULL. <br>
-  Standard_EXPORT     Handle_IGESGeom_Direction ReferenceDir() const;
-  //! returns True if Form no is 1 else false <br>
-  Standard_EXPORT     Standard_Boolean IsParametrised() const;
+  Standard_EXPORT IGESSolid_ConicalSurface();
+  
+  //! This method is used to set the fields of the class
+  //! ConicalSurface
+  //! - aLocation : Location of the point on axis
+  //! - anAxis    : Direction of the axis
+  //! - aRadius   : Radius at axis point
+  //! - anAngle   : Value of semi-angle in degrees (0<angle<90)
+  //! - aRefdir   : Reference direction (parametrised surface)
+  //! Null if unparametrised surface.
+  Standard_EXPORT   void Init (const Handle(IGESGeom_Point)& aLocation, const Handle(IGESGeom_Direction)& anAxis, const Standard_Real aRadius, const Standard_Real anAngle, const Handle(IGESGeom_Direction)& aRefdir) ;
+  
+  //! returns the location of the point on the axis
+  Standard_EXPORT   Handle(IGESGeom_Point) LocationPoint()  const;
+  
+  //! returns the direction of the axis
+  Standard_EXPORT   Handle(IGESGeom_Direction) Axis()  const;
+  
+  //! returns the radius at the axis point
+  Standard_EXPORT   Standard_Real Radius()  const;
+  
+  //! returns the semi-angle value
+  Standard_EXPORT   Standard_Real SemiAngle()  const;
+  
+  //! returns the reference direction of the conical surface in case
+  //! of parametrised surface. For unparametrised surface it returns
+  //! NULL.
+  Standard_EXPORT   Handle(IGESGeom_Direction) ReferenceDir()  const;
+  
+  //! returns True if Form no is 1 else false
+  Standard_EXPORT   Standard_Boolean IsParametrised()  const;
 
 
 
@@ -84,11 +76,11 @@ protected:
 private: 
 
 
-Handle_IGESGeom_Point theLocationPoint;
-Handle_IGESGeom_Direction theAxis;
-Standard_Real theRadius;
-Standard_Real theAngle;
-Handle_IGESGeom_Direction theRefDir;
+  Handle(IGESGeom_Point) theLocationPoint;
+  Handle(IGESGeom_Direction) theAxis;
+  Standard_Real theRadius;
+  Standard_Real theAngle;
+  Handle(IGESGeom_Direction) theRefDir;
 
 
 };
@@ -97,7 +89,6 @@ Handle_IGESGeom_Direction theRefDir;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSolid_ConicalSurface_HeaderFile

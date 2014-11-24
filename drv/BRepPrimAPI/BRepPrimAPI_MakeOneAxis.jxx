@@ -1,15 +1,5 @@
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _TopoDS_Shell_HeaderFile
 #include <TopoDS_Shell.hxx>
-#endif
-#ifndef _TopoDS_Solid_HeaderFile
 #include <TopoDS_Solid.hxx>
-#endif
-#ifndef _BRepPrimAPI_MakeOneAxis_HeaderFile
 #include <BRepPrimAPI_MakeOneAxis.hxx>
-#endif

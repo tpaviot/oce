@@ -6,34 +6,16 @@
 #ifndef _IntPatch_Point_HeaderFile
 #define _IntPatch_Point_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _IntSurf_PntOn2S_HeaderFile
 #include <IntSurf_PntOn2S.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HVertex_HeaderFile
 #include <Handle_Adaptor3d_HVertex.hxx>
-#endif
-#ifndef _Handle_Adaptor2d_HCurve2d_HeaderFile
 #include <Handle_Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _IntSurf_Transition_HeaderFile
 #include <IntSurf_Transition.hxx>
-#endif
 class Adaptor3d_HVertex;
 class Adaptor2d_HCurve2d;
 class Standard_DomainError;
@@ -42,143 +24,172 @@ class IntSurf_Transition;
 class IntSurf_PntOn2S;
 
 
-//! Definition of an intersection point between two surfaces. <br>
-//!          Such a point is contains geometrical informations (see <br>
-//!          the Value method) and logical informations. <br>
-class IntPatch_Point  {
+//! Definition of an intersection point between two surfaces.
+//! Such a point is contains geometrical informations (see
+//! the Value method) and logical informations.
+class IntPatch_Point 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor. <br>
-  Standard_EXPORT   IntPatch_Point();
-  //! Sets the values of a point which is on no domain, <br>
-//!          when both surfaces are implicit ones. <br>
-//!          If Tangent is True, the point is a point of tangency <br>
-//!          between the surfaces. <br>
-  Standard_EXPORT     void SetValue(const gp_Pnt& Pt,const Standard_Real Tol,const Standard_Boolean Tangent) ;
   
-        void SetValue(const gp_Pnt& Pt) ;
+  //! Empty constructor.
+  Standard_EXPORT IntPatch_Point();
   
-        void SetTolerance(const Standard_Real Tol) ;
-  //! Sets the values of the parameters of the point <br>
-//!          on each surface. <br>
-        void SetParameters(const Standard_Real U1,const Standard_Real V1,const Standard_Real U2,const Standard_Real V2) ;
-  //! Set the value of the parameter on the intersection line. <br>
-        void SetParameter(const Standard_Real Para) ;
-  //! Sets the values of a point which is a vertex on <br>
-//!          the initial facet of restriction of one <br>
-//!          of the surface. <br>
-//!          If OnFirst is True, the point is on the domain of the <br>
-//!          first patch, otherwise the point is on the domain of the <br>
-//!          second surface. <br>
-  Standard_EXPORT     void SetVertex(const Standard_Boolean OnFirst,const Handle(Adaptor3d_HVertex)& V) ;
-  //! Sets the values of a point which is on one of the domain, <br>
-//!          when both surfaces are implicit ones. <br>
-//!          If OnFirst is True, the point is on the domain of the <br>
-//!          first patch, otherwise the point is on the domain of the <br>
-//!          second surface. <br>
-  Standard_EXPORT     void SetArc(const Standard_Boolean OnFirst,const Handle(Adaptor2d_HCurve2d)& A,const Standard_Real Param,const IntSurf_Transition& TLine,const IntSurf_Transition& TArc) ;
-  //! Sets (or unsets) the point as a point on several <br>
-//!          intersection line. <br>
-        void SetMultiple(const Standard_Boolean IsMult) ;
-  //! Returns the intersection point (geometric information). <br>
-       const gp_Pnt& Value() const;
-  //! This method returns the parameter of the point <br>
-//!          on the intersection line. <br>
-//!          If the points does not belong to an intersection line, <br>
-//!          the value returned does not have any sens. <br>
-        Standard_Real ParameterOnLine() const;
-  //! This method returns the fuzziness on the point. <br>
-        Standard_Real Tolerance() const;
-  //! Returns True if the Point is a tangency point between <br>
-//!          the surfaces. <br>
-//!          If the Point is on one of the domain (IsOnDomS1 returns <br>
-//!          True or IsOnDomS2 returns True), an exception is raised. <br>
-        Standard_Boolean IsTangencyPoint() const;
-  //! Returns the parameters on the first surface of the point. <br>
-        void ParametersOnS1(Standard_Real& U1,Standard_Real& V1) const;
-  //! Returns the parameters on the second surface of the point. <br>
-        void ParametersOnS2(Standard_Real& U2,Standard_Real& V2) const;
-  //! Returns True if the point belongs to several intersection <br>
-//!          lines. <br>
-        Standard_Boolean IsMultiple() const;
-  //! Returns TRUE if the point is on a boundary of the domain <br>
-//!          of the first patch. <br>
-        Standard_Boolean IsOnDomS1() const;
-  //! Returns TRUE if the point is a vertex on the initial <br>
-//!          restriction facet of the first surface. <br>
-        Standard_Boolean IsVertexOnS1() const;
-  //! Returns the information about the point when it is <br>
-//!          on the domain of the first patch, i-e when the function <br>
-//!          IsVertexOnS1 returns True. <br>
-//!          Otherwise, an exception is raised. <br>
-       const Handle_Adaptor3d_HVertex& VertexOnS1() const;
-  //! Returns the arc of restriction containing the <br>
-//!          vertex. <br>
-//!          The exception DomainError is raised if <br>
-//!          IsOnDomS1 returns False. <br>
-       const Handle_Adaptor2d_HCurve2d& ArcOnS1() const;
-  //! Returns the transition of the point on the <br>
-//!          intersection line with the arc on S1. <br>
-//!          The exception DomainError is raised if IsOnDomS1 <br>
-//!          returns False. <br>
-       const IntSurf_Transition& TransitionLineArc1() const;
-  //! Returns the transition between the intersection line <br>
-//!          returned by the method Line and the arc on S1 returned <br>
-//!          by ArcOnS1(). <br>
-//!          The exception DomainError is raised if <br>
-//!          IsOnDomS1 returns False. <br>
-       const IntSurf_Transition& TransitionOnS1() const;
-  //! Returns the parameter of the point on the <br>
-//!          arc returned by the method ArcOnS2. <br>
-//!          The exception DomainError is raised if <br>
-//!          IsOnDomS1 returns False. <br>
-        Standard_Real ParameterOnArc1() const;
-  //! Returns TRUE if the point is on a boundary of the domain <br>
-//!          of the second patch. <br>
-        Standard_Boolean IsOnDomS2() const;
-  //! Returns TRUE if the point is a vertex on the initial <br>
-//!          restriction facet of the first surface. <br>
-        Standard_Boolean IsVertexOnS2() const;
-  //! Returns the information about the point when it is <br>
-//!          on the domain of the second patch, i-e when the function <br>
-//!          IsVertexOnS2 returns True. <br>
-//!          Otherwise, an exception is raised. <br>
-       const Handle_Adaptor3d_HVertex& VertexOnS2() const;
-  //! Returns the arc of restriction containing the <br>
-//!          vertex. <br>
-//!          The exception DomainError is raised if <br>
-//!          IsOnDomS2 returns False. <br>
-       const Handle_Adaptor2d_HCurve2d& ArcOnS2() const;
-  //! Returns the transition of the point on the <br>
-//!          intersection line with the arc on S2. <br>
-//!          The exception DomainError is raised if IsOnDomS2 <br>
-//!          returns False. <br>
-       const IntSurf_Transition& TransitionLineArc2() const;
-  //! Returns the transition between the intersection line <br>
-//!          returned by the method Line and the arc on S2 returned <br>
-//!          by ArcOnS2. <br>
-//!          The exception DomainError is raised if <br>
-//!          IsOnDomS2 returns False. <br>
-       const IntSurf_Transition& TransitionOnS2() const;
-  //! Returns the parameter of the point on the <br>
-//!          arc returned by the method ArcOnS2. <br>
-//!          The exception DomainError is raised if <br>
-//!          IsOnDomS2 returns False. <br>
-        Standard_Real ParameterOnArc2() const;
-  //! Returns the PntOn2S <br>
-//!          (geometric Point and the parameters) <br>
-//! <br>
-       const IntSurf_PntOn2S& PntOn2S() const;
-  //! Returns the parameters on the first and on the <br>
-//!          second surface of the point. <br>
-        void Parameters(Standard_Real& U1,Standard_Real& V1,Standard_Real& U2,Standard_Real& V2) const;
+  //! Sets the values of a point which is on no domain,
+  //! when both surfaces are implicit ones.
+  //! If Tangent is True, the point is a point of tangency
+  //! between the surfaces.
+  Standard_EXPORT   void SetValue (const gp_Pnt& Pt, const Standard_Real Tol, const Standard_Boolean Tangent) ;
   
-  Standard_EXPORT     void ReverseTransition() ;
+      void SetValue (const gp_Pnt& Pt) ;
   
-  Standard_EXPORT     void Dump() const;
-
+      void SetTolerance (const Standard_Real Tol) ;
+  
+  //! Sets the values of the parameters of the point
+  //! on each surface.
+      void SetParameters (const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2) ;
+  
+  //! Set the value of the parameter on the intersection line.
+      void SetParameter (const Standard_Real Para) ;
+  
+  //! Sets the values of a point which is a vertex on
+  //! the initial facet of restriction of one
+  //! of the surface.
+  //! If OnFirst is True, the point is on the domain of the
+  //! first patch, otherwise the point is on the domain of the
+  //! second surface.
+  Standard_EXPORT   void SetVertex (const Standard_Boolean OnFirst, const Handle(Adaptor3d_HVertex)& V) ;
+  
+  //! Sets the values of a point which is on one of the domain,
+  //! when both surfaces are implicit ones.
+  //! If OnFirst is True, the point is on the domain of the
+  //! first patch, otherwise the point is on the domain of the
+  //! second surface.
+  Standard_EXPORT   void SetArc (const Standard_Boolean OnFirst, const Handle(Adaptor2d_HCurve2d)& A, const Standard_Real Param, const IntSurf_Transition& TLine, const IntSurf_Transition& TArc) ;
+  
+  //! Sets (or unsets) the point as a point on several
+  //! intersection line.
+      void SetMultiple (const Standard_Boolean IsMult) ;
+  
+  //! Returns the intersection point (geometric information).
+     const  gp_Pnt& Value()  const;
+  
+  //! This method returns the parameter of the point
+  //! on the intersection line.
+  //! If the points does not belong to an intersection line,
+  //! the value returned does not have any sens.
+      Standard_Real ParameterOnLine()  const;
+  
+  //! This method returns the fuzziness on the point.
+      Standard_Real Tolerance()  const;
+  
+  //! Returns True if the Point is a tangency point between
+  //! the surfaces.
+  //! If the Point is on one of the domain (IsOnDomS1 returns
+  //! True or IsOnDomS2 returns True), an exception is raised.
+      Standard_Boolean IsTangencyPoint()  const;
+  
+  //! Returns the parameters on the first surface of the point.
+      void ParametersOnS1 (Standard_Real& U1, Standard_Real& V1)  const;
+  
+  //! Returns the parameters on the second surface of the point.
+      void ParametersOnS2 (Standard_Real& U2, Standard_Real& V2)  const;
+  
+  //! Returns True if the point belongs to several intersection
+  //! lines.
+      Standard_Boolean IsMultiple()  const;
+  
+  //! Returns TRUE if the point is on a boundary of the domain
+  //! of the first patch.
+      Standard_Boolean IsOnDomS1()  const;
+  
+  //! Returns TRUE if the point is a vertex on the initial
+  //! restriction facet of the first surface.
+      Standard_Boolean IsVertexOnS1()  const;
+  
+  //! Returns the information about the point when it is
+  //! on the domain of the first patch, i-e when the function
+  //! IsVertexOnS1 returns True.
+  //! Otherwise, an exception is raised.
+     const  Handle(Adaptor3d_HVertex)& VertexOnS1()  const;
+  
+  //! Returns the arc of restriction containing the
+  //! vertex.
+  //! The exception DomainError is raised if
+  //! IsOnDomS1 returns False.
+     const  Handle(Adaptor2d_HCurve2d)& ArcOnS1()  const;
+  
+  //! Returns the transition of the point on the
+  //! intersection line with the arc on S1.
+  //! The exception DomainError is raised if IsOnDomS1
+  //! returns False.
+     const  IntSurf_Transition& TransitionLineArc1()  const;
+  
+  //! Returns the transition between the intersection line
+  //! returned by the method Line and the arc on S1 returned
+  //! by ArcOnS1().
+  //! The exception DomainError is raised if
+  //! IsOnDomS1 returns False.
+     const  IntSurf_Transition& TransitionOnS1()  const;
+  
+  //! Returns the parameter of the point on the
+  //! arc returned by the method ArcOnS2.
+  //! The exception DomainError is raised if
+  //! IsOnDomS1 returns False.
+      Standard_Real ParameterOnArc1()  const;
+  
+  //! Returns TRUE if the point is on a boundary of the domain
+  //! of the second patch.
+      Standard_Boolean IsOnDomS2()  const;
+  
+  //! Returns TRUE if the point is a vertex on the initial
+  //! restriction facet of the first surface.
+      Standard_Boolean IsVertexOnS2()  const;
+  
+  //! Returns the information about the point when it is
+  //! on the domain of the second patch, i-e when the function
+  //! IsVertexOnS2 returns True.
+  //! Otherwise, an exception is raised.
+     const  Handle(Adaptor3d_HVertex)& VertexOnS2()  const;
+  
+  //! Returns the arc of restriction containing the
+  //! vertex.
+  //! The exception DomainError is raised if
+  //! IsOnDomS2 returns False.
+     const  Handle(Adaptor2d_HCurve2d)& ArcOnS2()  const;
+  
+  //! Returns the transition of the point on the
+  //! intersection line with the arc on S2.
+  //! The exception DomainError is raised if IsOnDomS2
+  //! returns False.
+     const  IntSurf_Transition& TransitionLineArc2()  const;
+  
+  //! Returns the transition between the intersection line
+  //! returned by the method Line and the arc on S2 returned
+  //! by ArcOnS2.
+  //! The exception DomainError is raised if
+  //! IsOnDomS2 returns False.
+     const  IntSurf_Transition& TransitionOnS2()  const;
+  
+  //! Returns the parameter of the point on the
+  //! arc returned by the method ArcOnS2.
+  //! The exception DomainError is raised if
+  //! IsOnDomS2 returns False.
+      Standard_Real ParameterOnArc2()  const;
+  
+  //! Returns the PntOn2S
+  //! (geometric Point and the parameters)
+     const  IntSurf_PntOn2S& PntOn2S()  const;
+  
+  //! Returns the parameters on the first and on the
+  //! second surface of the point.
+      void Parameters (Standard_Real& U1, Standard_Real& V1, Standard_Real& U2, Standard_Real& V2)  const;
+  
+  Standard_EXPORT   void ReverseTransition() ;
+  
+  Standard_EXPORT   void Dump()  const;
 
 
 
@@ -193,25 +204,25 @@ private:
 
 
 
-IntSurf_PntOn2S pt;
-Standard_Real para;
-Standard_Real tol;
-Standard_Boolean tgt;
-Standard_Boolean mult;
-Standard_Boolean onS1;
-Standard_Boolean vtxonS1;
-Handle_Adaptor3d_HVertex vS1;
-Handle_Adaptor2d_HCurve2d arcS1;
-IntSurf_Transition traline1;
-IntSurf_Transition tra1;
-Standard_Real prm1;
-Standard_Boolean onS2;
-Standard_Boolean vtxonS2;
-Handle_Adaptor3d_HVertex vS2;
-Handle_Adaptor2d_HCurve2d arcS2;
-IntSurf_Transition traline2;
-IntSurf_Transition tra2;
-Standard_Real prm2;
+  IntSurf_PntOn2S pt;
+  Standard_Real para;
+  Standard_Real tol;
+  Standard_Boolean tgt;
+  Standard_Boolean mult;
+  Standard_Boolean onS1;
+  Standard_Boolean vtxonS1;
+  Handle(Adaptor3d_HVertex) vS1;
+  Handle(Adaptor2d_HCurve2d) arcS1;
+  IntSurf_Transition traline1;
+  IntSurf_Transition tra1;
+  Standard_Real prm1;
+  Standard_Boolean onS2;
+  Standard_Boolean vtxonS2;
+  Handle(Adaptor3d_HVertex) vS2;
+  Handle(Adaptor2d_HCurve2d) arcS2;
+  IntSurf_Transition traline2;
+  IntSurf_Transition tra2;
+  Standard_Real prm2;
 
 
 };
@@ -221,7 +232,6 @@ Standard_Real prm2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntPatch_Point_HeaderFile

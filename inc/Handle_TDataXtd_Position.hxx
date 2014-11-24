@@ -6,22 +6,15 @@
 #ifndef _Handle_TDataXtd_Position_HeaderFile
 #define _Handle_TDataXtd_Position_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TDF_Attribute);
 class TDataXtd_Position;
 
-DEFINE_STANDARD_HANDLE(TDataXtd_Position,TDF_Attribute)
+DEFINE_STANDARD_HANDLE(TDataXtd_Position, TDF_Attribute)
 
-#endif
+#endif // _Handle_TDataXtd_Position_HeaderFile

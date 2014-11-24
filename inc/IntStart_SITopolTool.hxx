@@ -6,37 +6,26 @@
 #ifndef _IntStart_SITopolTool_HeaderFile
 #define _IntStart_SITopolTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IntStart_SITopolTool_HeaderFile
 #include <Handle_IntStart_SITopolTool.hxx>
-#endif
 
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _TopAbs_State_HeaderFile
 #include <TopAbs_State.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class gp_Pnt2d;
 
 
-//! template class for a topological tool. <br>
-//!          This tool is linked with the surface on which <br>
-//!          the classification has to be made. <br>
-class IntStart_SITopolTool : public MMgt_TShared {
+//! template class for a topological tool.
+//! This tool is linked with the surface on which
+//! the classification has to be made.
+class IntStart_SITopolTool : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   virtual  TopAbs_State Classify(const gp_Pnt2d& P,const Standard_Real Tol)  = 0;
+  Standard_EXPORT virtual   TopAbs_State Classify (const gp_Pnt2d& P, const Standard_Real Tol)  = 0;
 
 
 
@@ -59,7 +48,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntStart_SITopolTool_HeaderFile

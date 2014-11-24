@@ -5,18 +5,10 @@
 
 #include <NLPlate_StackOfPlate.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _NLPlate_ListIteratorOfStackOfPlate_HeaderFile
 #include <NLPlate_ListIteratorOfStackOfPlate.hxx>
-#endif
-#ifndef _Plate_Plate_HeaderFile
 #include <Plate_Plate.hxx>
-#endif
-#ifndef _NLPlate_ListNodeOfStackOfPlate_HeaderFile
 #include <NLPlate_ListNodeOfStackOfPlate.hxx>
-#endif
  
 
 #define Item Plate_Plate

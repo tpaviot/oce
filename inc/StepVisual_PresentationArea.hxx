@@ -6,28 +6,22 @@
 #ifndef _StepVisual_PresentationArea_HeaderFile
 #define _StepVisual_PresentationArea_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_PresentationArea_HeaderFile
 #include <Handle_StepVisual_PresentationArea.hxx>
-#endif
 
-#ifndef _StepVisual_PresentationRepresentation_HeaderFile
 #include <StepVisual_PresentationRepresentation.hxx>
-#endif
 
 
 
-class StepVisual_PresentationArea : public StepVisual_PresentationRepresentation {
+class StepVisual_PresentationArea : public StepVisual_PresentationRepresentation
+{
 
 public:
 
-  //! Returns a PresentationArea <br>
-  Standard_EXPORT   StepVisual_PresentationArea();
+  
+  //! Returns a PresentationArea
+  Standard_EXPORT StepVisual_PresentationArea();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_PresentationArea_HeaderFile

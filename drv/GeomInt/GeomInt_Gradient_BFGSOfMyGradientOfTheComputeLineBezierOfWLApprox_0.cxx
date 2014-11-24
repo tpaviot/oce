@@ -5,27 +5,13 @@
 
 #include <GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx>
 
-#ifndef _GeomInt_TheMultiLineOfWLApprox_HeaderFile
 #include <GeomInt_TheMultiLineOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_TheMultiLineToolOfWLApprox_HeaderFile
 #include <GeomInt_TheMultiLineToolOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox_HeaderFile
 #include <GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox_HeaderFile
 #include <GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox_HeaderFile
 #include <GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox_HeaderFile
 #include <GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx>
-#endif
-#ifndef _math_MultipleVarFunctionWithGradient_HeaderFile
 #include <math_MultipleVarFunctionWithGradient.hxx>
-#endif
  
 
 #define MultiLine GeomInt_TheMultiLineOfWLApprox

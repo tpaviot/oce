@@ -6,34 +6,27 @@
 #ifndef _IGESBasic_OrderedGroupWithoutBackP_HeaderFile
 #define _IGESBasic_OrderedGroupWithoutBackP_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESBasic_OrderedGroupWithoutBackP_HeaderFile
 #include <Handle_IGESBasic_OrderedGroupWithoutBackP.hxx>
-#endif
 
-#ifndef _IGESBasic_Group_HeaderFile
 #include <IGESBasic_Group.hxx>
-#endif
 class Standard_OutOfRange;
 
 
-//! defines OrderedGroupWithoutBackP, Type <402> Form <15> <br>
-//!          in package IGESBasic <br>
-//!          Allows a collection of a set of entities to be <br>
-//!          maintained as a single entity, but the group is <br>
-//!          ordered and there are no back pointers. <br>
-//!          It inherits from Group <br>
-class IGESBasic_OrderedGroupWithoutBackP : public IGESBasic_Group {
+//! defines OrderedGroupWithoutBackP, Type <402> Form <15>
+//! in package IGESBasic
+//! Allows a collection of a set of entities to be
+//! maintained as a single entity, but the group is
+//! ordered and there are no back pointers.
+//! It inherits from Group
+class IGESBasic_OrderedGroupWithoutBackP : public IGESBasic_Group
+{
 
 public:
 
   
-  Standard_EXPORT   IGESBasic_OrderedGroupWithoutBackP();
+  Standard_EXPORT IGESBasic_OrderedGroupWithoutBackP();
 
 
 
@@ -56,7 +49,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESBasic_OrderedGroupWithoutBackP_HeaderFile

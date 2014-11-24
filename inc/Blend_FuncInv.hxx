@@ -6,90 +6,81 @@
 #ifndef _Blend_FuncInv_HeaderFile
 #define _Blend_FuncInv_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _math_FunctionSetWithDerivatives_HeaderFile
 #include <math_FunctionSetWithDerivatives.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
 #include <math_Vector.hxx>
-#endif
-#ifndef _Handle_Adaptor2d_HCurve2d_HeaderFile
 #include <Handle_Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class math_Matrix;
 class Adaptor2d_HCurve2d;
 
 
-//! Deferred class for a function used to compute a blending <br>
-//!          surface between two surfaces, using a guide line. <br>
-//!          This function is used to find a solution on a restriction <br>
-//!          of one of the surface. <br>
-//!          The vector <X> used in Value, Values and Derivatives methods <br>
-//!          has to be the vector of the parametric coordinates t,w,U,V <br>
-//!          where t is the parameter on the curve on surface, <br>
-//!                w is the parameter on the guide line, <br>
-//!                U,V are the parametric coordinates of a point on the <br>
-//!                partner surface. <br>
-class Blend_FuncInv  : public math_FunctionSetWithDerivatives {
+//! Deferred class for a function used to compute a blending
+//! surface between two surfaces, using a guide line.
+//! This function is used to find a solution on a restriction
+//! of one of the surface.
+//! The vector <X> used in Value, Values and Derivatives methods
+//! has to be the vector of the parametric coordinates t,w,U,V
+//! where t is the parameter on the curve on surface,
+//! w is the parameter on the guide line,
+//! U,V are the parametric coordinates of a point on the
+//! partner surface.
+class Blend_FuncInv  : public math_FunctionSetWithDerivatives
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns 4. <br>
-  Standard_EXPORT     Standard_Integer NbVariables() const;
-  //! returns the number of equations of the function. <br>
-  Standard_EXPORT   virtual  Standard_Integer NbEquations() const = 0;
-  //! computes the values <F> of the Functions for the <br>
-//!          variable <X>. <br>
-//!          Returns True if the computation was done successfully, <br>
-//!          False otherwise. <br>
-  Standard_EXPORT   virtual  Standard_Boolean Value(const math_Vector& X,math_Vector& F)  = 0;
-  //! returns the values <D> of the derivatives for the <br>
-//!          variable <X>. <br>
-//!          Returns True if the computation was done successfully, <br>
-//!          False otherwise. <br>
-  Standard_EXPORT   virtual  Standard_Boolean Derivatives(const math_Vector& X,math_Matrix& D)  = 0;
-  //! returns the values <F> of the functions and the derivatives <br>
-//!          <D> for the variable <X>. <br>
-//!          Returns True if the computation was done successfully, <br>
-//!          False otherwise. <br>
-  Standard_EXPORT   virtual  Standard_Boolean Values(const math_Vector& X,math_Vector& F,math_Matrix& D)  = 0;
-  //! Sets the CurveOnSurface on which a solution has <br>
-//!          to be found. If <OnFirst> is set to Standard_True, <br>
-//!          the curve will be on the first surface, otherwise the <br>
-//!          curve is on the second one. <br>
-  Standard_EXPORT   virtual  void Set(const Standard_Boolean OnFirst,const Handle(Adaptor2d_HCurve2d)& COnSurf)  = 0;
-  //! Returns in the vector Tolerance the parametric tolerance <br>
-//!          for each of the 4 variables; <br>
-//!          Tol is the tolerance used in 3d space. <br>
-  Standard_EXPORT   virtual  void GetTolerance(math_Vector& Tolerance,const Standard_Real Tol) const = 0;
-  //! Returns in the vector InfBound the lowest values allowed <br>
-//!          for each of the 4 variables. <br>
-//!          Returns in the vector SupBound the greatest values allowed <br>
-//!          for each of the 4 variables. <br>
-  Standard_EXPORT   virtual  void GetBounds(math_Vector& InfBound,math_Vector& SupBound) const = 0;
-  //! Returns Standard_True if Sol is a zero of the function. <br>
-//!          Tol is the tolerance used in 3d space. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsSolution(const math_Vector& Sol,const Standard_Real Tol)  = 0;
-
+  
+  //! Returns 4.
+  Standard_EXPORT   Standard_Integer NbVariables()  const;
+  
+  //! returns the number of equations of the function.
+  Standard_EXPORT virtual   Standard_Integer NbEquations()  const = 0;
+  
+  //! computes the values <F> of the Functions for the
+  //! variable <X>.
+  //! Returns True if the computation was done successfully,
+  //! False otherwise.
+  Standard_EXPORT virtual   Standard_Boolean Value (const math_Vector& X, math_Vector& F)  = 0;
+  
+  //! returns the values <D> of the derivatives for the
+  //! variable <X>.
+  //! Returns True if the computation was done successfully,
+  //! False otherwise.
+  Standard_EXPORT virtual   Standard_Boolean Derivatives (const math_Vector& X, math_Matrix& D)  = 0;
+  
+  //! returns the values <F> of the functions and the derivatives
+  //! <D> for the variable <X>.
+  //! Returns True if the computation was done successfully,
+  //! False otherwise.
+  Standard_EXPORT virtual   Standard_Boolean Values (const math_Vector& X, math_Vector& F, math_Matrix& D)  = 0;
+  
+  //! Sets the CurveOnSurface on which a solution has
+  //! to be found. If <OnFirst> is set to Standard_True,
+  //! the curve will be on the first surface, otherwise the
+  //! curve is on the second one.
+  Standard_EXPORT virtual   void Set (const Standard_Boolean OnFirst, const Handle(Adaptor2d_HCurve2d)& COnSurf)  = 0;
+  
+  //! Returns in the vector Tolerance the parametric tolerance
+  //! for each of the 4 variables;
+  //! Tol is the tolerance used in 3d space.
+  Standard_EXPORT virtual   void GetTolerance (math_Vector& Tolerance, const Standard_Real Tol)  const = 0;
+  
+  //! Returns in the vector InfBound the lowest values allowed
+  //! for each of the 4 variables.
+  //! Returns in the vector SupBound the greatest values allowed
+  //! for each of the 4 variables.
+  Standard_EXPORT virtual   void GetBounds (math_Vector& InfBound, math_Vector& SupBound)  const = 0;
+  
+  //! Returns Standard_True if Sol is a zero of the function.
+  //! Tol is the tolerance used in 3d space.
+  Standard_EXPORT virtual   Standard_Boolean IsSolution (const math_Vector& Sol, const Standard_Real Tol)  = 0;
 
 
 
@@ -112,7 +103,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Blend_FuncInv_HeaderFile

@@ -5,24 +5,14 @@
 
 #include <StepBasic_Array1OfNamedUnit.hxx>
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _StepBasic_NamedUnit_HeaderFile
 #include <StepBasic_NamedUnit.hxx>
-#endif
  
 
-#define Array1Item Handle_StepBasic_NamedUnit
+#define Array1Item Handle(StepBasic_NamedUnit)
 #define Array1Item_hxx <StepBasic_NamedUnit.hxx>
 #define TCollection_Array1 StepBasic_Array1OfNamedUnit
 #define TCollection_Array1_hxx <StepBasic_Array1OfNamedUnit.hxx>

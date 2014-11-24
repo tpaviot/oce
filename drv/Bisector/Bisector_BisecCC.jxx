@@ -1,30 +1,10 @@
-#ifndef _Geom2d_Curve_HeaderFile
 #include <Geom2d_Curve.hxx>
-#endif
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _Geom2d_Geometry_HeaderFile
 #include <Geom2d_Geometry.hxx>
-#endif
-#ifndef _gp_Trsf2d_HeaderFile
 #include <gp_Trsf2d.hxx>
-#endif
-#ifndef _gp_Vec2d_HeaderFile
 #include <gp_Vec2d.hxx>
-#endif
-#ifndef _Bisector_PolyBis_HeaderFile
 #include <Bisector_PolyBis.hxx>
-#endif
-#ifndef _TColStd_SequenceOfReal_HeaderFile
 #include <TColStd_SequenceOfReal.hxx>
-#endif
-#ifndef _Bisector_BisecCC_HeaderFile
 #include <Bisector_BisecCC.hxx>
-#endif

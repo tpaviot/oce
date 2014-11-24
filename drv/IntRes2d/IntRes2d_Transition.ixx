@@ -5,9 +5,7 @@
 
 #include <IntRes2d_Transition.jxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
 
 IMPLEMENT_STANDARD_TYPE(IntRes2d_Transition)

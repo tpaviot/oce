@@ -6,49 +6,43 @@
 #ifndef _IGESSelect_ComputeStatus_HeaderFile
 #define _IGESSelect_ComputeStatus_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSelect_ComputeStatus_HeaderFile
 #include <Handle_IGESSelect_ComputeStatus.hxx>
-#endif
 
-#ifndef _IGESSelect_ModelModifier_HeaderFile
 #include <IGESSelect_ModelModifier.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESModel_HeaderFile
 #include <Handle_IGESData_IGESModel.hxx>
-#endif
 class IFSelect_ContextModif;
 class IGESData_IGESModel;
 class Interface_CopyTool;
 class TCollection_AsciiString;
 
 
-//! Computes Status of IGES Entities for a whole IGESModel. <br>
-//!           This concerns SubordinateStatus and UseFlag, which must have <br>
-//!           some definite values according the way they are referenced. <br>
-//!           (see definitions of Logical use, Physical use, etc...) <br>
-//! <br>
-//!           Works by calling a BasicEditor from IGESData. Works on the <br>
-//!           whole produced (target) model, because computation is global. <br>
-class IGESSelect_ComputeStatus : public IGESSelect_ModelModifier {
+//! Computes Status of IGES Entities for a whole IGESModel.
+//! This concerns SubordinateStatus and UseFlag, which must have
+//! some definite values according the way they are referenced.
+//! (see definitions of Logical use, Physical use, etc...)
+//!
+//! Works by calling a BasicEditor from IGESData. Works on the
+//! whole produced (target) model, because computation is global.
+class IGESSelect_ComputeStatus : public IGESSelect_ModelModifier
+{
 
 public:
 
-  //! Creates an ComputeStatus, which uses the system Date <br>
-  Standard_EXPORT   IGESSelect_ComputeStatus();
-  //! Specific action : it first evaluates the required values for <br>
-//!           Subordinate Status and Use Flag (in Directory Part of each <br>
-//!           IGES Entity). Then it corrects them, for the whole target. <br>
-//!           Works with a Protocol. Implementation uses BasicEditor <br>
-  Standard_EXPORT     void Performing(IFSelect_ContextModif& ctx,const Handle(IGESData_IGESModel)& target,Interface_CopyTool& TC) const;
-  //! Returns a text which is <br>
-//!           "Compute Subordinate Status and Use Flag" <br>
-  Standard_EXPORT     TCollection_AsciiString Label() const;
+  
+  //! Creates an ComputeStatus, which uses the system Date
+  Standard_EXPORT IGESSelect_ComputeStatus();
+  
+  //! Specific action : it first evaluates the required values for
+  //! Subordinate Status and Use Flag (in Directory Part of each
+  //! IGES Entity). Then it corrects them, for the whole target.
+  //! Works with a Protocol. Implementation uses BasicEditor
+  Standard_EXPORT   void Performing (IFSelect_ContextModif& ctx, const Handle(IGESData_IGESModel)& target, Interface_CopyTool& TC)  const;
+  
+  //! Returns a text which is
+  //! "Compute Subordinate Status and Use Flag"
+  Standard_EXPORT   TCollection_AsciiString Label()  const;
 
 
 
@@ -71,7 +65,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSelect_ComputeStatus_HeaderFile

@@ -6,40 +6,18 @@
 #ifndef _HLRBRep_TheCSFunctionOfInterCSurf_HeaderFile
 #define _HLRBRep_TheCSFunctionOfInterCSurf_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _math_FunctionSetWithDerivatives_HeaderFile
 #include <math_FunctionSetWithDerivatives.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
 #include <math_Vector.hxx>
-#endif
 class HLRBRep_SurfaceTool;
 class gp_Lin;
 class HLRBRep_LineTool;
@@ -48,32 +26,32 @@ class gp_Pnt;
 
 
 
-class HLRBRep_TheCSFunctionOfInterCSurf  : public math_FunctionSetWithDerivatives {
+class HLRBRep_TheCSFunctionOfInterCSurf  : public math_FunctionSetWithDerivatives
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   HLRBRep_TheCSFunctionOfInterCSurf(const Standard_Address& S,const gp_Lin& C);
+  Standard_EXPORT HLRBRep_TheCSFunctionOfInterCSurf(const Standard_Address& S, const gp_Lin& C);
   
-  Standard_EXPORT     Standard_Integer NbVariables() const;
+  Standard_EXPORT   Standard_Integer NbVariables()  const;
   
-  Standard_EXPORT     Standard_Integer NbEquations() const;
+  Standard_EXPORT   Standard_Integer NbEquations()  const;
   
-  Standard_EXPORT     Standard_Boolean Value(const math_Vector& X,math_Vector& F) ;
+  Standard_EXPORT   Standard_Boolean Value (const math_Vector& X, math_Vector& F) ;
   
-  Standard_EXPORT     Standard_Boolean Derivatives(const math_Vector& X,math_Matrix& D) ;
+  Standard_EXPORT   Standard_Boolean Derivatives (const math_Vector& X, math_Matrix& D) ;
   
-  Standard_EXPORT     Standard_Boolean Values(const math_Vector& X,math_Vector& F,math_Matrix& D) ;
+  Standard_EXPORT   Standard_Boolean Values (const math_Vector& X, math_Vector& F, math_Matrix& D) ;
   
-  Standard_EXPORT    const gp_Pnt& Point() const;
+  Standard_EXPORT  const  gp_Pnt& Point()  const;
   
-  Standard_EXPORT     Standard_Real Root() const;
+  Standard_EXPORT   Standard_Real Root()  const;
   
-  Standard_EXPORT    const Standard_Address& AuxillarSurface() const;
+  Standard_EXPORT  const  Standard_Address& AuxillarSurface()  const;
   
-  Standard_EXPORT    const gp_Lin& AuxillarCurve() const;
-
+  Standard_EXPORT  const  gp_Lin& AuxillarCurve()  const;
 
 
 
@@ -88,10 +66,10 @@ private:
 
 
 
-Standard_Address surface;
-gp_Lin curve;
-gp_Pnt p;
-Standard_Real f;
+  Standard_Address surface;
+  gp_Lin curve;
+  gp_Pnt p;
+  Standard_Real f;
 
 
 };
@@ -100,7 +78,6 @@ Standard_Real f;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_TheCSFunctionOfInterCSurf_HeaderFile

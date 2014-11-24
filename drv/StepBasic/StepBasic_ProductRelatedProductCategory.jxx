@@ -1,12 +1,4 @@
-#ifndef _StepBasic_HArray1OfProduct_HeaderFile
 #include <StepBasic_HArray1OfProduct.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepBasic_Product_HeaderFile
 #include <StepBasic_Product.hxx>
-#endif
-#ifndef _StepBasic_ProductRelatedProductCategory_HeaderFile
 #include <StepBasic_ProductRelatedProductCategory.hxx>
-#endif

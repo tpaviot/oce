@@ -6,34 +6,16 @@
 #ifndef _DBRep_HeaderFile
 #define _DBRep_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Draw_Interpretor_HeaderFile
 #include <Draw_Interpretor.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TopoDS_Shape;
 class DBRep_Edge;
 class DBRep_ListOfEdge;
@@ -51,42 +33,56 @@ class DBRep_ListNodeOfListOfHideData;
 class DBRep_ListIteratorOfListOfHideData;
 
 
-//! Used to display BRep objects  using the DrawTrSurf <br>
-//!          package. <br>
-//!  The DrawableShape is a Display object build from a <br>
-//!          Shape. <br>
-//!  Provides methods to manage a directory of named shapes. <br>
-//!          Provides a set of Draw commands for Shapes. <br>
-class DBRep  {
+//! Used to display BRep objects  using the DrawTrSurf
+//! package.
+//! The DrawableShape is a Display object build from a
+//! Shape.
+//! Provides methods to manage a directory of named shapes.
+//! Provides a set of Draw commands for Shapes.
+class DBRep 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creation of isoparametric curves. <br>//! Implements ProgressIndicator for DRAW <br>//! Sets  <S> in the  variable  <Name>.  Overwrite the <br>
-//!          variable if already set. <br>
-  Standard_EXPORT   static  void Set(const Standard_CString Name,const TopoDS_Shape& S) ;
-  //! Returns the shape in the variable  <Name>. Returns <br>
-//!          a null shape if the variable is not set or  not of <br>
-//!          the given <Typ>.  If <Complain> is  True a message <br>
-//!          is printed on cout if the variable is not set. <br>
-  Standard_EXPORT   static  TopoDS_Shape Get(Standard_CString& Name,const TopAbs_ShapeEnum Typ = TopAbs_SHAPE,const Standard_Boolean Complain = Standard_False) ;
-  //! Defines the basic commands. <br>
-  Standard_EXPORT   static  void BasicCommands(Draw_Interpretor& theCommands) ;
-  //! True if HLR, False if wireframe. <br>
-  Standard_EXPORT   static  Standard_Boolean HLRMode() ;
-  //! True if display Rg1Lines. <br>
-  Standard_EXPORT   static  Standard_Boolean Rg1Mode() ;
-  //! True if display RgNLines. <br>
-  Standard_EXPORT   static  Standard_Boolean RgNMode() ;
-  //! True if display HiddenLines. <br>
-  Standard_EXPORT   static  Standard_Boolean HidMode() ;
-  //! discretisation angle for edges. <br>
-  Standard_EXPORT   static  Standard_Real HLRAngle() ;
-  //! number of iso in U and V <br>
-  Standard_EXPORT   static  Standard_Integer NbIsos() ;
-  //! discretisation number of points for curves <br>//! set progress indicator <br>//! get progress indicator <br>
-  Standard_EXPORT   static  Standard_Integer Discretisation() ;
-
+  
+  //! Creation of isoparametric curves.
+  //! Implements ProgressIndicator for DRAW
+  //! Sets  <S> in the  variable  <Name>.  Overwrite the
+  //! variable if already set.
+  Standard_EXPORT static   void Set (const Standard_CString Name, const TopoDS_Shape& S) ;
+  
+  //! Returns the shape in the variable  <Name>. Returns
+  //! a null shape if the variable is not set or  not of
+  //! the given <Typ>.  If <Complain> is  True a message
+  //! is printed on cout if the variable is not set.
+  Standard_EXPORT static   TopoDS_Shape Get (Standard_CString& Name, const TopAbs_ShapeEnum Typ = TopAbs_SHAPE, const Standard_Boolean Complain = Standard_False) ;
+  
+  //! Defines the basic commands.
+  Standard_EXPORT static   void BasicCommands (Draw_Interpretor& theCommands) ;
+  
+  //! True if HLR, False if wireframe.
+  Standard_EXPORT static   Standard_Boolean HLRMode() ;
+  
+  //! True if display Rg1Lines.
+  Standard_EXPORT static   Standard_Boolean Rg1Mode() ;
+  
+  //! True if display RgNLines.
+  Standard_EXPORT static   Standard_Boolean RgNMode() ;
+  
+  //! True if display HiddenLines.
+  Standard_EXPORT static   Standard_Boolean HidMode() ;
+  
+  //! discretisation angle for edges.
+  Standard_EXPORT static   Standard_Real HLRAngle() ;
+  
+  //! number of iso in U and V
+  Standard_EXPORT static   Standard_Integer NbIsos() ;
+  
+  //! discretisation number of points for curves
+  //! set progress indicator
+  //! get progress indicator
+  Standard_EXPORT static   Standard_Integer Discretisation() ;
 
 
 
@@ -123,7 +119,6 @@ friend class DBRep_ListIteratorOfListOfHideData;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DBRep_HeaderFile

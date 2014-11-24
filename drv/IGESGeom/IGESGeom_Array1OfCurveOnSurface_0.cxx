@@ -5,24 +5,14 @@
 
 #include <IGESGeom_Array1OfCurveOnSurface.hxx>
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _IGESGeom_CurveOnSurface_HeaderFile
 #include <IGESGeom_CurveOnSurface.hxx>
-#endif
  
 
-#define Array1Item Handle_IGESGeom_CurveOnSurface
+#define Array1Item Handle(IGESGeom_CurveOnSurface)
 #define Array1Item_hxx <IGESGeom_CurveOnSurface.hxx>
 #define TCollection_Array1 IGESGeom_Array1OfCurveOnSurface
 #define TCollection_Array1_hxx <IGESGeom_Array1OfCurveOnSurface.hxx>

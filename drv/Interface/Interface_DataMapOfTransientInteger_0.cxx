@@ -5,27 +5,15 @@
 
 #include <Interface_DataMapOfTransientInteger.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _Interface_DataMapNodeOfDataMapOfTransientInteger_HeaderFile
 #include <Interface_DataMapNodeOfDataMapOfTransientInteger.hxx>
-#endif
-#ifndef _Interface_DataMapIteratorOfDataMapOfTransientInteger_HeaderFile
 #include <Interface_DataMapIteratorOfDataMapOfTransientInteger.hxx>
-#endif
  
 
-#define TheKey Handle_Standard_Transient
+#define TheKey Handle(Standard_Transient)
 #define TheKey_hxx <Standard_Transient.hxx>
 #define TheItem Standard_Integer
 #define TheItem_hxx <Standard_Integer.hxx>

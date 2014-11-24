@@ -6,39 +6,28 @@
 #ifndef _BRep_ListNodeOfListOfPointRepresentation_HeaderFile
 #define _BRep_ListNodeOfListOfPointRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRep_ListNodeOfListOfPointRepresentation_HeaderFile
 #include <Handle_BRep_ListNodeOfListOfPointRepresentation.hxx>
-#endif
 
-#ifndef _Handle_BRep_PointRepresentation_HeaderFile
 #include <Handle_BRep_PointRepresentation.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class BRep_PointRepresentation;
 class BRep_ListOfPointRepresentation;
 class BRep_ListIteratorOfListOfPointRepresentation;
 
 
 
-class BRep_ListNodeOfListOfPointRepresentation : public TCollection_MapNode {
+class BRep_ListNodeOfListOfPointRepresentation : public TCollection_MapNode
+{
 
 public:
 
   
-      BRep_ListNodeOfListOfPointRepresentation(const Handle(BRep_PointRepresentation)& I,const TCollection_MapNodePtr& n);
+    BRep_ListNodeOfListOfPointRepresentation(const Handle(BRep_PointRepresentation)& I, const TCollection_MapNodePtr& n);
   
-        Handle_BRep_PointRepresentation& Value() const;
+      Handle(BRep_PointRepresentation)& Value()  const;
 
 
 
@@ -53,12 +42,12 @@ protected:
 private: 
 
 
-Handle_BRep_PointRepresentation myValue;
+  Handle(BRep_PointRepresentation) myValue;
 
 
 };
 
-#define Item Handle_BRep_PointRepresentation
+#define Item Handle(BRep_PointRepresentation)
 #define Item_hxx <BRep_PointRepresentation.hxx>
 #define TCollection_ListNode BRep_ListNodeOfListOfPointRepresentation
 #define TCollection_ListNode_hxx <BRep_ListNodeOfListOfPointRepresentation.hxx>
@@ -83,7 +72,6 @@ Handle_BRep_PointRepresentation myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRep_ListNodeOfListOfPointRepresentation_HeaderFile

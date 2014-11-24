@@ -1,0 +1,25 @@
+                 Building Open CASCADE Technology on Windows
+                 -------------------------------------------
+
+This file describes steps to build OCCT libraries from pre-processed source
+(after WOK extraction or from complete source package) on Windows. 
+
+Before building OCCT, you need to install required third-party libraries; see
+OCCT_Build3rdParty_Windows.pdf for details.
+
+1. Edit file custom.bat to define environment: 
+
+   VCVER - version of Visual Studio (vc8, vc9, vc10 or vc11), 
+           and relevant VCVARS path
+   ARCH - architecture (32 or 64)
+   HAVE_* - flags to enable or disable use of optional third-party products
+   CSF_OPT_* - paths to search for includes and binaries of all used 
+               third-party products
+
+2. Launch msvc.bat to start Visual Studio
+
+3. Build with Visual Studio
+
+Use draw.bat to start DRAW
+
+

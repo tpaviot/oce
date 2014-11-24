@@ -6,45 +6,37 @@
 #ifndef _Transfer_VoidBinder_HeaderFile
 #define _Transfer_VoidBinder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Transfer_VoidBinder_HeaderFile
 #include <Handle_Transfer_VoidBinder.hxx>
-#endif
 
-#ifndef _Transfer_Binder_HeaderFile
 #include <Transfer_Binder.hxx>
-#endif
-#ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
 class Standard_Type;
 
 
-//! a VoidBinder is used to bind a starting item with a status, <br>
-//!           error or warning messages, but no result <br>
-//!           It is interpreted by TransferProcess, which admits a <br>
-//!           VoidBinder to be over-written, and copies its check to the <br>
-//!           new Binder <br>
-class Transfer_VoidBinder : public Transfer_Binder {
+//! a VoidBinder is used to bind a starting item with a status,
+//! error or warning messages, but no result
+//! It is interpreted by TransferProcess, which admits a
+//! VoidBinder to be over-written, and copies its check to the
+//! new Binder
+class Transfer_VoidBinder : public Transfer_Binder
+{
 
 public:
 
-  //! a VoidBinder is not Multiple (Remark : it is not Simple too) <br>
-//!           But it can bring next results ... <br>
-  Standard_EXPORT   Transfer_VoidBinder();
-  //! while a VoidBinder admits no Result, its ResultType returns <br>
-//!           the type of <me> <br>
-  Standard_EXPORT     Handle_Standard_Type ResultType() const;
-  //! Returns "(void)" <br>
-  Standard_EXPORT     Standard_CString ResultTypeName() const;
+  
+  //! a VoidBinder is not Multiple (Remark : it is not Simple too)
+  //! But it can bring next results ...
+  Standard_EXPORT Transfer_VoidBinder();
+  
+  //! while a VoidBinder admits no Result, its ResultType returns
+  //! the type of <me>
+  Standard_EXPORT   Handle(Standard_Type) ResultType()  const;
+  
+  //! Returns "(void)"
+  Standard_EXPORT   Standard_CString ResultTypeName()  const;
 
 
 
@@ -67,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Transfer_VoidBinder_HeaderFile

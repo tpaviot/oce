@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKG2d"
-	ProjectGUID="{0D3D8A34-0BA6-0A94-0C97-12D40E1FFDD7}"
+	ProjectGUID="{995D1BBA-0C64-088F-0015-00CC81725857}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -248,7 +248,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Geom2d;..\..\..\src\Geom2d;..\..\..\drv\LProp;..\..\..\src\LProp;..\..\..\drv\TColGeom2d;..\..\..\src\TColGeom2d;..\..\..\drv\Adaptor2d;..\..\..\src\Adaptor2d;..\..\..\drv\Geom2dLProp;..\..\..\src\Geom2dLProp;..\..\..\drv\Geom2dAdaptor;..\..\..\src\Geom2dAdaptor;..\..\..\drv\GProp;..\..\..\src\GProp;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Geom2d_DLL;__LProp_DLL;__TColGeom2d_DLL;__Adaptor2d_DLL;__Geom2dLProp_DLL;__Geom2dAdaptor_DLL;__GProp_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Geom2d_DLL;__LProp_DLL;__TColGeom2d_DLL;__Adaptor2d_DLL;__Geom2dLProp_DLL;__Geom2dAdaptor_DLL;__GProp_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Geom2d_DLL;__LProp_DLL;__TColGeom2d_DLL;__Adaptor2d_DLL;__Geom2dLProp_DLL;__Geom2dAdaptor_DLL;__GProp_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Geom2d_DLL;__LProp_DLL;__TColGeom2d_DLL;__Adaptor2d_DLL;__Geom2dLProp_DLL;__Geom2dAdaptor_DLL;__GProp_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -343,7 +343,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Geom2d;..\..\..\src\Geom2d;..\..\..\drv\LProp;..\..\..\src\LProp;..\..\..\drv\TColGeom2d;..\..\..\src\TColGeom2d;..\..\..\drv\Adaptor2d;..\..\..\src\Adaptor2d;..\..\..\drv\Geom2dLProp;..\..\..\src\Geom2dLProp;..\..\..\drv\Geom2dAdaptor;..\..\..\src\Geom2dAdaptor;..\..\..\drv\GProp;..\..\..\src\GProp;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Geom2d_DLL;__LProp_DLL;__TColGeom2d_DLL;__Adaptor2d_DLL;__Geom2dLProp_DLL;__Geom2dAdaptor_DLL;__GProp_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Geom2d_DLL;__LProp_DLL;__TColGeom2d_DLL;__Adaptor2d_DLL;__Geom2dLProp_DLL;__Geom2dAdaptor_DLL;__GProp_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -365,7 +365,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Geom2d_DLL;__LProp_DLL;__TColGeom2d_DLL;__Adaptor2d_DLL;__Geom2dLProp_DLL;__Geom2dAdaptor_DLL;__GProp_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Geom2d_DLL;__LProp_DLL;__TColGeom2d_DLL;__Adaptor2d_DLL;__Geom2dLProp_DLL;__Geom2dAdaptor_DLL;__GProp_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"

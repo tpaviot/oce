@@ -5,30 +5,16 @@
 
 #include <IGESData_SpecificLib.hxx>
 
-#ifndef _IGESData_NodeOfSpecificLib_HeaderFile
 #include <IGESData_NodeOfSpecificLib.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _IGESData_SpecificModule_HeaderFile
 #include <IGESData_SpecificModule.hxx>
-#endif
-#ifndef _IGESData_Protocol_HeaderFile
 #include <IGESData_Protocol.hxx>
-#endif
-#ifndef _IGESData_GlobalNodeOfSpecificLib_HeaderFile
 #include <IGESData_GlobalNodeOfSpecificLib.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
  
 
-#define TheObject Handle_IGESData_IGESEntity
+#define TheObject Handle(IGESData_IGESEntity)
 #define TheObject_hxx <IGESData_IGESEntity.hxx>
 #define Handle_TheModule Handle_IGESData_SpecificModule
 #define TheModule IGESData_SpecificModule

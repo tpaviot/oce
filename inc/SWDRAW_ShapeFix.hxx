@@ -6,36 +6,29 @@
 #ifndef _SWDRAW_ShapeFix_HeaderFile
 #define _SWDRAW_ShapeFix_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Draw_Interpretor_HeaderFile
 #include <Draw_Interpretor.hxx>
-#endif
 
 
-//! Contains commands to activate package ShapeFix <br>
-//!          List of DRAW commands and corresponding functionalities: <br>
-//!          edgesameparam - ShapeFix::SameParameter <br>
-//!          settolerance  - ShapeFix_ShapeTolerance <br>
-//!          stwire        - ShapeFix_Wire <br>
-//!          reface        - ShapeFix_Face <br>
-//!          repcurve      - ShapeFix_PCurves <br>
-class SWDRAW_ShapeFix  {
+//! Contains commands to activate package ShapeFix
+//! List of DRAW commands and corresponding functionalities:
+//! edgesameparam - ShapeFix::SameParameter
+//! settolerance  - ShapeFix_ShapeTolerance
+//! stwire        - ShapeFix_Wire
+//! reface        - ShapeFix_Face
+//! repcurve      - ShapeFix_PCurves
+class SWDRAW_ShapeFix 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Loads commands defined in ShapeFix <br>
-  Standard_EXPORT   static  void InitCommands(Draw_Interpretor& theCommands) ;
-
+  
+  //! Loads commands defined in ShapeFix
+  Standard_EXPORT static   void InitCommands (Draw_Interpretor& theCommands) ;
 
 
 
@@ -58,7 +51,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SWDRAW_ShapeFix_HeaderFile

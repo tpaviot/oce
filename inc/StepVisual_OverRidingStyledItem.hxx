@@ -6,31 +6,15 @@
 #ifndef _StepVisual_OverRidingStyledItem_HeaderFile
 #define _StepVisual_OverRidingStyledItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_OverRidingStyledItem_HeaderFile
 #include <Handle_StepVisual_OverRidingStyledItem.hxx>
-#endif
 
-#ifndef _Handle_StepVisual_StyledItem_HeaderFile
 #include <Handle_StepVisual_StyledItem.hxx>
-#endif
-#ifndef _StepVisual_StyledItem_HeaderFile
 #include <StepVisual_StyledItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepVisual_HArray1OfPresentationStyleAssignment_HeaderFile
 #include <Handle_StepVisual_HArray1OfPresentationStyleAssignment.hxx>
-#endif
-#ifndef _Handle_StepRepr_RepresentationItem_HeaderFile
 #include <Handle_StepRepr_RepresentationItem.hxx>
-#endif
 class StepVisual_StyledItem;
 class TCollection_HAsciiString;
 class StepVisual_HArray1OfPresentationStyleAssignment;
@@ -38,20 +22,22 @@ class StepRepr_RepresentationItem;
 
 
 
-class StepVisual_OverRidingStyledItem : public StepVisual_StyledItem {
+class StepVisual_OverRidingStyledItem : public StepVisual_StyledItem
+{
 
 public:
 
-  //! Returns a OverRidingStyledItem <br>
-  Standard_EXPORT   StepVisual_OverRidingStyledItem();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepVisual_HArray1OfPresentationStyleAssignment)& aStyles,const Handle(StepRepr_RepresentationItem)& aItem) ;
+  //! Returns a OverRidingStyledItem
+  Standard_EXPORT StepVisual_OverRidingStyledItem();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepVisual_HArray1OfPresentationStyleAssignment)& aStyles,const Handle(StepRepr_RepresentationItem)& aItem,const Handle(StepVisual_StyledItem)& aOverRiddenStyle) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepVisual_HArray1OfPresentationStyleAssignment)& aStyles, const Handle(StepRepr_RepresentationItem)& aItem) ;
   
-  Standard_EXPORT     void SetOverRiddenStyle(const Handle(StepVisual_StyledItem)& aOverRiddenStyle) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepVisual_HArray1OfPresentationStyleAssignment)& aStyles, const Handle(StepRepr_RepresentationItem)& aItem, const Handle(StepVisual_StyledItem)& aOverRiddenStyle) ;
   
-  Standard_EXPORT     Handle_StepVisual_StyledItem OverRiddenStyle() const;
+  Standard_EXPORT   void SetOverRiddenStyle (const Handle(StepVisual_StyledItem)& aOverRiddenStyle) ;
+  
+  Standard_EXPORT   Handle(StepVisual_StyledItem) OverRiddenStyle()  const;
 
 
 
@@ -66,7 +52,7 @@ protected:
 private: 
 
 
-Handle_StepVisual_StyledItem overRiddenStyle;
+  Handle(StepVisual_StyledItem) overRiddenStyle;
 
 
 };
@@ -75,7 +61,6 @@ Handle_StepVisual_StyledItem overRiddenStyle;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_OverRidingStyledItem_HeaderFile

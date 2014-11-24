@@ -6,45 +6,32 @@
 #ifndef _TopLoc_SListNodeOfItemLocation_HeaderFile
 #define _TopLoc_SListNodeOfItemLocation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopLoc_SListNodeOfItemLocation_HeaderFile
 #include <Handle_TopLoc_SListNodeOfItemLocation.hxx>
-#endif
 
-#ifndef _TopLoc_SListOfItemLocation_HeaderFile
 #include <TopLoc_SListOfItemLocation.hxx>
-#endif
-#ifndef _TopLoc_ItemLocation_HeaderFile
 #include <TopLoc_ItemLocation.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TopLoc_ItemLocation;
 class TopLoc_SListOfItemLocation;
 
 
 
-class TopLoc_SListNodeOfItemLocation : public MMgt_TShared {
+class TopLoc_SListNodeOfItemLocation : public MMgt_TShared
+{
 
 public:
 
   
-      TopLoc_SListNodeOfItemLocation(const TopLoc_ItemLocation& I,const TopLoc_SListOfItemLocation& aTail);
+    TopLoc_SListNodeOfItemLocation(const TopLoc_ItemLocation& I, const TopLoc_SListOfItemLocation& aTail);
   
-        Standard_Integer& Count() const;
+      Standard_Integer& Count()  const;
   
-        TopLoc_SListOfItemLocation& Tail() const;
+      TopLoc_SListOfItemLocation& Tail()  const;
   
-        TopLoc_ItemLocation& Value() const;
+      TopLoc_ItemLocation& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-TopLoc_SListOfItemLocation myTail;
-TopLoc_ItemLocation myValue;
+  TopLoc_SListOfItemLocation myTail;
+  TopLoc_ItemLocation myValue;
 
 
 };
@@ -70,7 +57,6 @@ TopLoc_ItemLocation myValue;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopLoc_SListNodeOfItemLocation_HeaderFile

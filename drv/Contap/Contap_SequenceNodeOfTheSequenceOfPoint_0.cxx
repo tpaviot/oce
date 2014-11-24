@@ -5,16 +5,10 @@
 
 #include <Contap_SequenceNodeOfTheSequenceOfPoint.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Contap_Point_HeaderFile
 #include <Contap_Point.hxx>
-#endif
-#ifndef _Contap_TheSequenceOfPoint_HeaderFile
 #include <Contap_TheSequenceOfPoint.hxx>
-#endif
 
  
 

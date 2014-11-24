@@ -6,93 +6,81 @@
 #ifndef _Units_Unit_HeaderFile
 #define _Units_Unit_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Units_Unit_HeaderFile
 #include <Handle_Units_Unit.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_TColStd_HSequenceOfHAsciiString_HeaderFile
 #include <Handle_TColStd_HSequenceOfHAsciiString.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Units_Quantity_HeaderFile
 #include <Handle_Units_Quantity.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Handle_Units_Token_HeaderFile
 #include <Handle_Units_Token.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TCollection_HAsciiString;
 class TColStd_HSequenceOfHAsciiString;
 class Units_Quantity;
 class Units_Token;
 
 
-//! This class defines an elementary word contained in <br>
-//!          a physical quantity. <br>
-class Units_Unit : public MMgt_TShared {
+//! This class defines an elementary word contained in
+//! a physical quantity.
+class Units_Unit : public MMgt_TShared
+{
 
 public:
 
-  //! Creates  and returns a  unit.  <aname> is  the name of <br>
-//!          the  unit, <asymbol> is the  usual abbreviation of the <br>
-//!          unit,  and  <avalue> is the  value in relation to  the <br>
-//!          International System of Units. <br>
-  Standard_EXPORT   Units_Unit(const Standard_CString aname,const Standard_CString asymbol,const Standard_Real avalue,const Handle(Units_Quantity)& aquantity);
-  //! Creates  and returns a  unit.  <aname> is  the name of <br>
-//!          the  unit, <asymbol> is the  usual abbreviation of the <br>
-//!          unit. <br>
-  Standard_EXPORT   Units_Unit(const Standard_CString aname,const Standard_CString asymbol);
-  //! Creates  and returns a  unit.  <aname> is  the name of <br>
-//!          the  unit. <br>
-  Standard_EXPORT   Units_Unit(const Standard_CString aname);
-  //! Returns the name of the unit <thename> <br>
-        TCollection_AsciiString Name() const;
-  //! Adds a new symbol <asymbol> attached to <me>. <br>
-  Standard_EXPORT     void Symbol(const Standard_CString asymbol) ;
-  //! Returns the  value in relation  with the International <br>
-//!          System of Units. <br>
-        Standard_Real Value() const;
-  //! Returns <thequantity> contained in <me>. <br>
-        Handle_Units_Quantity Quantity() const;
-  //! Returns the sequence of symbols <thesymbolssequence> <br>
-        Handle_TColStd_HSequenceOfHAsciiString SymbolsSequence() const;
-  //! Sets the value <avalue> to <me>. <br>
-        void Value(const Standard_Real avalue) ;
-  //! Sets the physical Quantity <aquantity> to <me>. <br>
-        void Quantity(const Handle(Units_Quantity)& aquantity) ;
-  //! Starting with <me>, returns a new Token object. <br>
-  Standard_EXPORT   virtual  Handle_Units_Token Token() const;
-  //! Compares all the symbols  linked  within <me> with the <br>
-//!          name of <atoken>,  and returns  True  if there is  one <br>
-//!          symbol equal to the name, False otherwise. <br>
-  Standard_EXPORT     Standard_Boolean IsEqual(const Standard_CString astring) const;
-  //! Useful for debugging <br>
-  Standard_EXPORT   virtual  void Dump(const Standard_Integer ashift,const Standard_Integer alevel) const;
+  
+  //! Creates  and returns a  unit.  <aname> is  the name of
+  //! the  unit, <asymbol> is the  usual abbreviation of the
+  //! unit,  and  <avalue> is the  value in relation to  the
+  //! International System of Units.
+  Standard_EXPORT Units_Unit(const Standard_CString aname, const Standard_CString asymbol, const Standard_Real avalue, const Handle(Units_Quantity)& aquantity);
+  
+  //! Creates  and returns a  unit.  <aname> is  the name of
+  //! the  unit, <asymbol> is the  usual abbreviation of the
+  //! unit.
+  Standard_EXPORT Units_Unit(const Standard_CString aname, const Standard_CString asymbol);
+  
+  //! Creates  and returns a  unit.  <aname> is  the name of
+  //! the  unit.
+  Standard_EXPORT Units_Unit(const Standard_CString aname);
+  
+  //! Returns the name of the unit <thename>
+      TCollection_AsciiString Name()  const;
+  
+  //! Adds a new symbol <asymbol> attached to <me>.
+  Standard_EXPORT   void Symbol (const Standard_CString asymbol) ;
+  
+  //! Returns the  value in relation  with the International
+  //! System of Units.
+      Standard_Real Value()  const;
+  
+  //! Returns <thequantity> contained in <me>.
+      Handle(Units_Quantity) Quantity()  const;
+  
+  //! Returns the sequence of symbols <thesymbolssequence>
+      Handle(TColStd_HSequenceOfHAsciiString) SymbolsSequence()  const;
+  
+  //! Sets the value <avalue> to <me>.
+      void Value (const Standard_Real avalue) ;
+  
+  //! Sets the physical Quantity <aquantity> to <me>.
+      void Quantity (const Handle(Units_Quantity)& aquantity) ;
+  
+  //! Starting with <me>, returns a new Token object.
+  Standard_EXPORT virtual   Handle(Units_Token) Token()  const;
+  
+  //! Compares all the symbols  linked  within <me> with the
+  //! name of <atoken>,  and returns  True  if there is  one
+  //! symbol equal to the name, False otherwise.
+  Standard_EXPORT   Standard_Boolean IsEqual (const Standard_CString astring)  const;
+  
+  //! Useful for debugging
+  Standard_EXPORT virtual   void Dump (const Standard_Integer ashift, const Standard_Integer alevel)  const;
 
 
 
@@ -102,15 +90,15 @@ public:
 protected:
 
 
-Handle_TColStd_HSequenceOfHAsciiString thesymbolssequence;
-Standard_Real thevalue;
+  Handle(TColStd_HSequenceOfHAsciiString) thesymbolssequence;
+  Standard_Real thevalue;
 
 
 private: 
 
 
-Handle_TCollection_HAsciiString thename;
-Handle_Units_Quantity thequantity;
+  Handle(TCollection_HAsciiString) thename;
+  Handle(Units_Quantity) thequantity;
 
 
 };
@@ -120,7 +108,6 @@ Handle_Units_Quantity thequantity;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Units_Unit_HeaderFile

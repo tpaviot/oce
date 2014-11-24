@@ -6,50 +6,43 @@
 #ifndef _BRep_GCurve_HeaderFile
 #define _BRep_GCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRep_GCurve_HeaderFile
 #include <Handle_BRep_GCurve.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _BRep_CurveRepresentation_HeaderFile
 #include <BRep_CurveRepresentation.hxx>
-#endif
 class TopLoc_Location;
 class gp_Pnt;
 
 
-//! Root   class    for    the    geometric     curves <br>
-//!          representation. Contains a range. <br>
-//!          Contains a first and a last parameter. <br>
-class BRep_GCurve : public BRep_CurveRepresentation {
+//! Root   class    for    the    geometric     curves
+//! representation. Contains a range.
+//! Contains a first and a last parameter.
+class BRep_GCurve : public BRep_CurveRepresentation
+{
 
 public:
 
   
-        void SetRange(const Standard_Real First,const Standard_Real Last) ;
+      void SetRange (const Standard_Real First, const Standard_Real Last) ;
   
-        void Range(Standard_Real& First,Standard_Real& Last) const;
+      void Range (Standard_Real& First, Standard_Real& Last)  const;
   
-        Standard_Real First() const;
+      Standard_Real First()  const;
   
-        Standard_Real Last() const;
+      Standard_Real Last()  const;
   
-        void First(const Standard_Real F) ;
+      void First (const Standard_Real F) ;
   
-        void Last(const Standard_Real L) ;
-  //! Computes the point at parameter U. <br>
-  Standard_EXPORT   virtual  void D0(const Standard_Real U,gp_Pnt& P) const = 0;
-  //! Recomputes any derived data after a modification. <br>
-//!          This is called when the range is modified. <br>
-  Standard_EXPORT   virtual  void Update() ;
+      void Last (const Standard_Real L) ;
+  
+  //! Computes the point at parameter U.
+  Standard_EXPORT virtual   void D0 (const Standard_Real U, gp_Pnt& P)  const = 0;
+  
+  //! Recomputes any derived data after a modification.
+  //! This is called when the range is modified.
+  Standard_EXPORT virtual   void Update() ;
 
 
 
@@ -59,15 +52,15 @@ public:
 protected:
 
   
-  Standard_EXPORT   BRep_GCurve(const TopLoc_Location& L,const Standard_Real First,const Standard_Real Last);
+  Standard_EXPORT BRep_GCurve(const TopLoc_Location& L, const Standard_Real First, const Standard_Real Last);
 
 
 
 private: 
 
 
-Standard_Real myFirst;
-Standard_Real myLast;
+  Standard_Real myFirst;
+  Standard_Real myLast;
 
 
 };
@@ -77,7 +70,6 @@ Standard_Real myLast;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRep_GCurve_HeaderFile

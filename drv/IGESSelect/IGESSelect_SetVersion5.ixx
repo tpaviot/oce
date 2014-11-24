@@ -5,9 +5,7 @@
 
 #include <IGESSelect_SetVersion5.jxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
 
  

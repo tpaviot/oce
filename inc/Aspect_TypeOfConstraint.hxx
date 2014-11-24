@@ -6,17 +6,15 @@
 #ifndef _Aspect_TypeOfConstraint_HeaderFile
 #define _Aspect_TypeOfConstraint_HeaderFile
 
-//! Definition of the attachment for the layers <br>
-//! <br>
-enum Aspect_TypeOfConstraint {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Definition of the attachment for the layers
+enum Aspect_TypeOfConstraint
+{
 Aspect_TOC_BOTTOM_LEFT,
 Aspect_TOC_BOTTOM_RIGHT,
 Aspect_TOC_TOP_LEFT,
 Aspect_TOC_TOP_RIGHT
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_TypeOfConstraint_HeaderFile

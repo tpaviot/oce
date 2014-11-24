@@ -6,28 +6,14 @@
 #ifndef _MAT2d_DataMapNodeOfDataMapOfIntegerConnexion_HeaderFile
 #define _MAT2d_DataMapNodeOfDataMapOfIntegerConnexion_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MAT2d_DataMapNodeOfDataMapOfIntegerConnexion_HeaderFile
 #include <Handle_MAT2d_DataMapNodeOfDataMapOfIntegerConnexion.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_MAT2d_Connexion_HeaderFile
 #include <Handle_MAT2d_Connexion.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class MAT2d_Connexion;
 class TColStd_MapIntegerHasher;
 class MAT2d_DataMapOfIntegerConnexion;
@@ -35,16 +21,17 @@ class MAT2d_DataMapIteratorOfDataMapOfIntegerConnexion;
 
 
 
-class MAT2d_DataMapNodeOfDataMapOfIntegerConnexion : public TCollection_MapNode {
+class MAT2d_DataMapNodeOfDataMapOfIntegerConnexion : public TCollection_MapNode
+{
 
 public:
 
   
-      MAT2d_DataMapNodeOfDataMapOfIntegerConnexion(const Standard_Integer& K,const Handle(MAT2d_Connexion)& I,const TCollection_MapNodePtr& n);
+    MAT2d_DataMapNodeOfDataMapOfIntegerConnexion(const Standard_Integer& K, const Handle(MAT2d_Connexion)& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Key() const;
+      Standard_Integer& Key()  const;
   
-        Handle_MAT2d_Connexion& Value() const;
+      Handle(MAT2d_Connexion)& Value()  const;
 
 
 
@@ -59,15 +46,15 @@ protected:
 private: 
 
 
-Standard_Integer myKey;
-Handle_MAT2d_Connexion myValue;
+  Standard_Integer myKey;
+  Handle(MAT2d_Connexion) myValue;
 
 
 };
 
 #define TheKey Standard_Integer
 #define TheKey_hxx <Standard_Integer.hxx>
-#define TheItem Handle_MAT2d_Connexion
+#define TheItem Handle(MAT2d_Connexion)
 #define TheItem_hxx <MAT2d_Connexion.hxx>
 #define Hasher TColStd_MapIntegerHasher
 #define Hasher_hxx <TColStd_MapIntegerHasher.hxx>
@@ -98,7 +85,6 @@ Handle_MAT2d_Connexion myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MAT2d_DataMapNodeOfDataMapOfIntegerConnexion_HeaderFile

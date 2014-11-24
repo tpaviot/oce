@@ -6,50 +6,38 @@
 #ifndef _StepAP214_AutoDesignGroupAssignment_HeaderFile
 #define _StepAP214_AutoDesignGroupAssignment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepAP214_AutoDesignGroupAssignment_HeaderFile
 #include <Handle_StepAP214_AutoDesignGroupAssignment.hxx>
-#endif
 
-#ifndef _Handle_StepAP214_HArray1OfAutoDesignGroupedItem_HeaderFile
 #include <Handle_StepAP214_HArray1OfAutoDesignGroupedItem.hxx>
-#endif
-#ifndef _StepBasic_GroupAssignment_HeaderFile
 #include <StepBasic_GroupAssignment.hxx>
-#endif
-#ifndef _Handle_StepBasic_Group_HeaderFile
 #include <Handle_StepBasic_Group.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StepAP214_HArray1OfAutoDesignGroupedItem;
 class StepBasic_Group;
 class StepAP214_AutoDesignGroupedItem;
 
 
 
-class StepAP214_AutoDesignGroupAssignment : public StepBasic_GroupAssignment {
+class StepAP214_AutoDesignGroupAssignment : public StepBasic_GroupAssignment
+{
 
 public:
 
-  //! Returns a AutoDesignGroupAssignment <br>
-  Standard_EXPORT   StepAP214_AutoDesignGroupAssignment();
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepBasic_Group)& aAssignedGroup,const Handle(StepAP214_HArray1OfAutoDesignGroupedItem)& aItems) ;
+  //! Returns a AutoDesignGroupAssignment
+  Standard_EXPORT StepAP214_AutoDesignGroupAssignment();
   
-  Standard_EXPORT     void SetItems(const Handle(StepAP214_HArray1OfAutoDesignGroupedItem)& aItems) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepBasic_Group)& aAssignedGroup, const Handle(StepAP214_HArray1OfAutoDesignGroupedItem)& aItems) ;
   
-  Standard_EXPORT     Handle_StepAP214_HArray1OfAutoDesignGroupedItem Items() const;
+  Standard_EXPORT   void SetItems (const Handle(StepAP214_HArray1OfAutoDesignGroupedItem)& aItems) ;
   
-  Standard_EXPORT     StepAP214_AutoDesignGroupedItem ItemsValue(const Standard_Integer num) const;
+  Standard_EXPORT   Handle(StepAP214_HArray1OfAutoDesignGroupedItem) Items()  const;
   
-  Standard_EXPORT     Standard_Integer NbItems() const;
+  Standard_EXPORT   StepAP214_AutoDesignGroupedItem ItemsValue (const Standard_Integer num)  const;
+  
+  Standard_EXPORT   Standard_Integer NbItems()  const;
 
 
 
@@ -64,7 +52,7 @@ protected:
 private: 
 
 
-Handle_StepAP214_HArray1OfAutoDesignGroupedItem items;
+  Handle(StepAP214_HArray1OfAutoDesignGroupedItem) items;
 
 
 };
@@ -73,7 +61,6 @@ Handle_StepAP214_HArray1OfAutoDesignGroupedItem items;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP214_AutoDesignGroupAssignment_HeaderFile

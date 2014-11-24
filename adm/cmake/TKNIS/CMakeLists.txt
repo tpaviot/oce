@@ -62,6 +62,9 @@ elseif(APPLE)
   else()
     list( APPEND TKNIS_USED_LIBS ${FRAMEWORKS_OPENGL} )
   endif()
+elseif(ANDROID)
+  list( APPEND TKNIS_USED_LIBS EGL )
+  list( APPEND TKNIS_USED_LIBS GLESv2 )
 else()
   list( APPEND TKNIS_USED_LIBS GLU )
   list( APPEND TKNIS_USED_LIBS GL )
@@ -203,13 +206,13 @@ if ("${USED_TOOLKITS}" STREQUAL "" OR DEFINED TurnONtheTKNIS)
  set_property(TARGET TKNIS PROPERTY FOLDER Visualization)
 
  install( TARGETS TKNIS
-                                 RUNTIME DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_SUFFIX}"
-                                 ARCHIVE DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_SUFFIX}"
-                                 LIBRARY DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_SUFFIX}")
+                                 RUNTIME DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_POSTFIX}"
+                                 ARCHIVE DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_POSTFIX}"
+                                 LIBRARY DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_POSTFIX}")
 
  if (MSVC)
-  install( FILES  ${CMAKE_BINARY_DIR}/out/bin/Debug/TKNIS.pdb CONFIGURATIONS Debug
-                                  DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_SUFFIX}")
+  install( FILES  ${CMAKE_BINARY_DIR}/out/bind/Debug/TKNIS.pdb CONFIGURATIONS Debug
+                                  DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_POSTFIX}")
  endif()
 
 

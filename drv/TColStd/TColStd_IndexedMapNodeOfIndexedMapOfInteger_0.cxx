@@ -5,16 +5,10 @@
 
 #include <TColStd_IndexedMapNodeOfIndexedMapOfInteger.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _TColStd_IndexedMapOfInteger_HeaderFile
 #include <TColStd_IndexedMapOfInteger.hxx>
-#endif
 
  
 

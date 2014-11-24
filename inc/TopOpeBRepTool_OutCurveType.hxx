@@ -6,15 +6,14 @@
 #ifndef _TopOpeBRepTool_OutCurveType_HeaderFile
 #define _TopOpeBRepTool_OutCurveType_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum TopOpeBRepTool_OutCurveType {
+
+enum TopOpeBRepTool_OutCurveType
+{
 TopOpeBRepTool_BSPLINE1,
 TopOpeBRepTool_APPROX,
 TopOpeBRepTool_INTERPOL
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _TopOpeBRepTool_OutCurveType_HeaderFile

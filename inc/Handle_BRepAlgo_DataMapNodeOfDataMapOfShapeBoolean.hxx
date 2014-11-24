@@ -6,22 +6,15 @@
 #ifndef _Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean_HeaderFile
 #define _Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TCollection_MapNode_HeaderFile
 #include <Handle_TCollection_MapNode.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TCollection_MapNode);
 class BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean;
 
-DEFINE_STANDARD_HANDLE(BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean,TCollection_MapNode)
+DEFINE_STANDARD_HANDLE(BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean, TCollection_MapNode)
 
-#endif
+#endif // _Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean_HeaderFile

@@ -5,21 +5,13 @@
 
 #include <StepFEA_SequenceOfElementGeometricRelationship.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StepFEA_ElementGeometricRelationship_HeaderFile
 #include <StepFEA_ElementGeometricRelationship.hxx>
-#endif
-#ifndef _StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship_HeaderFile
 #include <StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship.hxx>
-#endif
  
 
-#define SeqItem Handle_StepFEA_ElementGeometricRelationship
+#define SeqItem Handle(StepFEA_ElementGeometricRelationship)
 #define SeqItem_hxx <StepFEA_ElementGeometricRelationship.hxx>
 #define TCollection_SequenceNode StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship
 #define TCollection_SequenceNode_hxx <StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship.hxx>

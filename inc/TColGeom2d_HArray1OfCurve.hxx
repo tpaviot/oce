@@ -6,28 +6,14 @@
 #ifndef _TColGeom2d_HArray1OfCurve_HeaderFile
 #define _TColGeom2d_HArray1OfCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColGeom2d_HArray1OfCurve_HeaderFile
 #include <Handle_TColGeom2d_HArray1OfCurve.hxx>
-#endif
 
-#ifndef _TColGeom2d_Array1OfCurve_HeaderFile
 #include <TColGeom2d_Array1OfCurve.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class TColGeom2d_Array1OfCurve;
 
 
 
-class TColGeom2d_HArray1OfCurve : public MMgt_TShared {
+class TColGeom2d_HArray1OfCurve : public MMgt_TShared
+{
 
 public:
 
   
-      TColGeom2d_HArray1OfCurve(const Standard_Integer Low,const Standard_Integer Up);
+    TColGeom2d_HArray1OfCurve(const Standard_Integer Low, const Standard_Integer Up);
   
-      TColGeom2d_HArray1OfCurve(const Standard_Integer Low,const Standard_Integer Up,const Handle(Geom2d_Curve)& V);
+    TColGeom2d_HArray1OfCurve(const Standard_Integer Low, const Standard_Integer Up, const Handle(Geom2d_Curve)& V);
   
-        void Init(const Handle(Geom2d_Curve)& V) ;
+      void Init (const Handle(Geom2d_Curve)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(Geom2d_Curve)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(Geom2d_Curve)& Value) ;
   
-       const Handle_Geom2d_Curve& Value(const Standard_Integer Index) const;
+     const  Handle(Geom2d_Curve)& Value (const Standard_Integer Index)  const;
   
-        Handle_Geom2d_Curve& ChangeValue(const Standard_Integer Index) ;
+      Handle(Geom2d_Curve)& ChangeValue (const Standard_Integer Index) ;
   
-       const TColGeom2d_Array1OfCurve& Array1() const;
+     const  TColGeom2d_Array1OfCurve& Array1()  const;
   
-        TColGeom2d_Array1OfCurve& ChangeArray1() ;
+      TColGeom2d_Array1OfCurve& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-TColGeom2d_Array1OfCurve myArray;
+  TColGeom2d_Array1OfCurve myArray;
 
 
 };
 
-#define ItemHArray1 Handle_Geom2d_Curve
+#define ItemHArray1 Handle(Geom2d_Curve)
 #define ItemHArray1_hxx <Geom2d_Curve.hxx>
 #define TheArray1 TColGeom2d_Array1OfCurve
 #define TheArray1_hxx <TColGeom2d_Array1OfCurve.hxx>
@@ -103,7 +90,6 @@ TColGeom2d_Array1OfCurve myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColGeom2d_HArray1OfCurve_HeaderFile

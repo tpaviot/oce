@@ -6,16 +6,15 @@
 #ifndef _Graphic3d_TypeOfPolygon_HeaderFile
 #define _Graphic3d_TypeOfPolygon_HeaderFile
 
-//! The type of polygon in a group in a structure. <br>
-enum Graphic3d_TypeOfPolygon {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! The type of polygon in a group in a structure.
+enum Graphic3d_TypeOfPolygon
+{
 Graphic3d_TOP_UNKNOWN,
 Graphic3d_TOP_COMPLEX,
 Graphic3d_TOP_CONCAVE,
 Graphic3d_TOP_CONVEX
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Graphic3d_TypeOfPolygon_HeaderFile

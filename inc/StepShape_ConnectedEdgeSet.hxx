@@ -6,42 +6,35 @@
 #ifndef _StepShape_ConnectedEdgeSet_HeaderFile
 #define _StepShape_ConnectedEdgeSet_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_ConnectedEdgeSet_HeaderFile
 #include <Handle_StepShape_ConnectedEdgeSet.hxx>
-#endif
 
-#ifndef _Handle_StepShape_HArray1OfEdge_HeaderFile
 #include <Handle_StepShape_HArray1OfEdge.hxx>
-#endif
-#ifndef _StepShape_TopologicalRepresentationItem_HeaderFile
 #include <StepShape_TopologicalRepresentationItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepShape_HArray1OfEdge;
 class TCollection_HAsciiString;
 
 
-//! Representation of STEP entity ConnectedEdgeSet <br>
-class StepShape_ConnectedEdgeSet : public StepShape_TopologicalRepresentationItem {
+//! Representation of STEP entity ConnectedEdgeSet
+class StepShape_ConnectedEdgeSet : public StepShape_TopologicalRepresentationItem
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepShape_ConnectedEdgeSet();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aRepresentationItem_Name,const Handle(StepShape_HArray1OfEdge)& aCesEdges) ;
-  //! Returns field CesEdges <br>
-  Standard_EXPORT     Handle_StepShape_HArray1OfEdge CesEdges() const;
-  //! Set field CesEdges <br>
-  Standard_EXPORT     void SetCesEdges(const Handle(StepShape_HArray1OfEdge)& CesEdges) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepShape_ConnectedEdgeSet();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aRepresentationItem_Name, const Handle(StepShape_HArray1OfEdge)& aCesEdges) ;
+  
+  //! Returns field CesEdges
+  Standard_EXPORT   Handle(StepShape_HArray1OfEdge) CesEdges()  const;
+  
+  //! Set field CesEdges
+  Standard_EXPORT   void SetCesEdges (const Handle(StepShape_HArray1OfEdge)& CesEdges) ;
 
 
 
@@ -56,7 +49,7 @@ protected:
 private: 
 
 
-Handle_StepShape_HArray1OfEdge theCesEdges;
+  Handle(StepShape_HArray1OfEdge) theCesEdges;
 
 
 };
@@ -65,7 +58,6 @@ Handle_StepShape_HArray1OfEdge theCesEdges;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_ConnectedEdgeSet_HeaderFile

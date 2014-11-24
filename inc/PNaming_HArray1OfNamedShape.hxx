@@ -6,37 +6,17 @@
 #ifndef _PNaming_HArray1OfNamedShape_HeaderFile
 #define _PNaming_HArray1OfNamedShape_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PNaming_HArray1OfNamedShape_HeaderFile
 #include <Handle_PNaming_HArray1OfNamedShape.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_PNaming_NamedShape_HeaderFile
 #include <Handle_PNaming_NamedShape.hxx>
-#endif
-#ifndef _PNaming_FieldOfHArray1OfNamedShape_HeaderFile
 #include <PNaming_FieldOfHArray1OfNamedShape.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _Handle_PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape_HeaderFile
 #include <Handle_PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape.hxx>
-#endif
 class PNaming_NamedShape;
 class Standard_OutOfRange;
 class Standard_RangeError;
@@ -45,26 +25,27 @@ class PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape;
 class PNaming_VArrayTNodeOfFieldOfHArray1OfNamedShape;
 
 
-class PNaming_HArray1OfNamedShape : public Standard_Persistent {
+class PNaming_HArray1OfNamedShape : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PNaming_HArray1OfNamedShape(const Standard_Integer Low,const Standard_Integer Up);
+  Standard_EXPORT PNaming_HArray1OfNamedShape(const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT   PNaming_HArray1OfNamedShape(const Standard_Integer Low,const Standard_Integer Up,const Handle(PNaming_NamedShape)& V);
+  Standard_EXPORT PNaming_HArray1OfNamedShape(const Standard_Integer Low, const Standard_Integer Up, const Handle(PNaming_NamedShape)& V);
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(PNaming_NamedShape)& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(PNaming_NamedShape)& Value) ;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-  Standard_EXPORT     Handle_PNaming_NamedShape Value(const Standard_Integer Index) const;
+  Standard_EXPORT   Handle(PNaming_NamedShape) Value (const Standard_Integer Index)  const;
 
-  PNaming_HArray1OfNamedShape( )
+PNaming_HArray1OfNamedShape( )
 {
   
 }
@@ -90,18 +71,18 @@ protected:
 private: 
 
   
-  Standard_EXPORT     PNaming_FieldOfHArray1OfNamedShape Field() const;
+  Standard_EXPORT   PNaming_FieldOfHArray1OfNamedShape Field()  const;
   
-  Standard_EXPORT     Standard_Address Datas() const;
+  Standard_EXPORT   Standard_Address Datas()  const;
 
-Standard_Integer LowerBound;
-Standard_Integer UpperBound;
-PNaming_FieldOfHArray1OfNamedShape Data;
+  Standard_Integer LowerBound;
+  Standard_Integer UpperBound;
+  PNaming_FieldOfHArray1OfNamedShape Data;
 
 
 };
 
-#define Item Handle_PNaming_NamedShape
+#define Item Handle(PNaming_NamedShape)
 #define Item_hxx <PNaming_NamedShape.hxx>
 #define PCollection_FieldOfHArray1 PNaming_FieldOfHArray1OfNamedShape
 #define PCollection_FieldOfHArray1_hxx <PNaming_FieldOfHArray1OfNamedShape.hxx>
@@ -146,7 +127,6 @@ PNaming_FieldOfHArray1OfNamedShape Data;
 #undef PCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PNaming_HArray1OfNamedShape_HeaderFile

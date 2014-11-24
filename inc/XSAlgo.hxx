@@ -6,38 +6,34 @@
 #ifndef _XSAlgo_HeaderFile
 #define _XSAlgo_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_XSAlgo_AlgoContainer_HeaderFile
 #include <Handle_XSAlgo_AlgoContainer.hxx>
-#endif
 class XSAlgo_AlgoContainer;
 class XSAlgo_ToolContainer;
 class XSAlgo_AlgoContainer;
 
 
 
-class XSAlgo  {
+class XSAlgo 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Provides initerface to the algorithms from Shape Healing <br>
-//!          and others for XSTEP processors. <br>//! Creates and initializes default AlgoContainer. <br>
-  Standard_EXPORT   static  void Init() ;
-  //! Sets default AlgoContainer <br>
-  Standard_EXPORT   static  void SetAlgoContainer(const Handle(XSAlgo_AlgoContainer)& aContainer) ;
-  //! Returns default AlgoContainer <br>
-  Standard_EXPORT   static  Handle_XSAlgo_AlgoContainer AlgoContainer() ;
-
+  
+  //! Provides initerface to the algorithms from Shape Healing
+  //! and others for XSTEP processors.
+  //! Creates and initializes default AlgoContainer.
+  Standard_EXPORT static   void Init() ;
+  
+  //! Sets default AlgoContainer
+  Standard_EXPORT static   void SetAlgoContainer (const Handle(XSAlgo_AlgoContainer)& aContainer) ;
+  
+  //! Returns default AlgoContainer
+  Standard_EXPORT static   Handle(XSAlgo_AlgoContainer) AlgoContainer() ;
 
 
 
@@ -62,7 +58,6 @@ friend class XSAlgo_AlgoContainer;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XSAlgo_HeaderFile

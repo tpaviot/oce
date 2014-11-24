@@ -1,18 +1,6 @@
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_DimensionError_HeaderFile
 #include <Standard_DimensionError.hxx>
-#endif
-#ifndef _Standard_ConstructionError_HeaderFile
 #include <Standard_ConstructionError.hxx>
-#endif
-#ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
-#endif
-#ifndef _math_Householder_HeaderFile
 #include <math_Householder.hxx>
-#endif

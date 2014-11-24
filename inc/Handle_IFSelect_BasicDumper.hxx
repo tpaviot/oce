@@ -6,22 +6,15 @@
 #ifndef _Handle_IFSelect_BasicDumper_HeaderFile
 #define _Handle_IFSelect_BasicDumper_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IFSelect_SessionDumper_HeaderFile
 #include <Handle_IFSelect_SessionDumper.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IFSelect_SessionDumper);
 class IFSelect_BasicDumper;
 
-DEFINE_STANDARD_HANDLE(IFSelect_BasicDumper,IFSelect_SessionDumper)
+DEFINE_STANDARD_HANDLE(IFSelect_BasicDumper, IFSelect_SessionDumper)
 
-#endif
+#endif // _Handle_IFSelect_BasicDumper_HeaderFile

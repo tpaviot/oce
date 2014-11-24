@@ -5,24 +5,14 @@
 
 #include <FEmTool_AssemblyTable.hxx>
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
  
 
-#define Array2Item Handle_TColStd_HArray1OfInteger
+#define Array2Item Handle(TColStd_HArray1OfInteger)
 #define Array2Item_hxx <TColStd_HArray1OfInteger.hxx>
 #define TCollection_Array2 FEmTool_AssemblyTable
 #define TCollection_Array2_hxx <FEmTool_AssemblyTable.hxx>

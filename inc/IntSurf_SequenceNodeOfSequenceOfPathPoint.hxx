@@ -6,38 +6,27 @@
 #ifndef _IntSurf_SequenceNodeOfSequenceOfPathPoint_HeaderFile
 #define _IntSurf_SequenceNodeOfSequenceOfPathPoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IntSurf_SequenceNodeOfSequenceOfPathPoint_HeaderFile
 #include <Handle_IntSurf_SequenceNodeOfSequenceOfPathPoint.hxx>
-#endif
 
-#ifndef _IntSurf_PathPoint_HeaderFile
 #include <IntSurf_PathPoint.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class IntSurf_PathPoint;
 class IntSurf_SequenceOfPathPoint;
 
 
 
-class IntSurf_SequenceNodeOfSequenceOfPathPoint : public TCollection_SeqNode {
+class IntSurf_SequenceNodeOfSequenceOfPathPoint : public TCollection_SeqNode
+{
 
 public:
 
   
-      IntSurf_SequenceNodeOfSequenceOfPathPoint(const IntSurf_PathPoint& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    IntSurf_SequenceNodeOfSequenceOfPathPoint(const IntSurf_PathPoint& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        IntSurf_PathPoint& Value() const;
+      IntSurf_PathPoint& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-IntSurf_PathPoint myValue;
+  IntSurf_PathPoint myValue;
 
 
 };
@@ -78,7 +67,6 @@ IntSurf_PathPoint myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntSurf_SequenceNodeOfSequenceOfPathPoint_HeaderFile

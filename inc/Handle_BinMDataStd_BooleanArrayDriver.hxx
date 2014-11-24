@@ -6,22 +6,15 @@
 #ifndef _Handle_BinMDataStd_BooleanArrayDriver_HeaderFile
 #define _Handle_BinMDataStd_BooleanArrayDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_BinMDF_ADriver_HeaderFile
 #include <Handle_BinMDF_ADriver.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(BinMDF_ADriver);
 class BinMDataStd_BooleanArrayDriver;
 
-DEFINE_STANDARD_HANDLE(BinMDataStd_BooleanArrayDriver,BinMDF_ADriver)
+DEFINE_STANDARD_HANDLE(BinMDataStd_BooleanArrayDriver, BinMDF_ADriver)
 
-#endif
+#endif // _Handle_BinMDataStd_BooleanArrayDriver_HeaderFile

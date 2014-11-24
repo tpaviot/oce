@@ -7,7 +7,6 @@
 #define _BinTools_LocationSetPtr_HeaderFile
 
 class BinTools_LocationSet;
-
 typedef BinTools_LocationSet* BinTools_LocationSetPtr;
 
-#endif
+#endif // _BinTools_LocationSetPtr_HeaderFile

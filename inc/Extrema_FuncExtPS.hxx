@@ -6,43 +6,19 @@
 #ifndef _Extrema_FuncExtPS_HeaderFile
 #define _Extrema_FuncExtPS_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Adaptor3d_SurfacePtr_HeaderFile
 #include <Adaptor3d_SurfacePtr.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TColStd_SequenceOfReal_HeaderFile
 #include <TColStd_SequenceOfReal.hxx>
-#endif
-#ifndef _Extrema_SequenceOfPOnSurf_HeaderFile
 #include <Extrema_SequenceOfPOnSurf.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _math_FunctionSetWithDerivatives_HeaderFile
 #include <math_FunctionSetWithDerivatives.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
 #include <math_Vector.hxx>
-#endif
 class Standard_OutOfRange;
 class gp_Pnt;
 class Adaptor3d_Surface;
@@ -51,59 +27,67 @@ class Extrema_POnSurf;
 
 
 
-//! <br>
-//! Functional for search of extremum of the distance between point P and <br>
-//! surface S, starting from approximate solution (u0, v0). <br>
-//! <br>
-//! The class inherits math_FunctionSetWithDerivatives and thus is intended <br>
-//! for use in math_FunctionSetRoot algorithm . <br>
-//! <br>
-//! Denoting derivatives of the surface S(u,v) by u and v, respectively, as <br>
-//! Su and Sv, the two functions to be nullified are: <br>
-//! <br>
-//! F1(u,v) = (S - P) * Su <br>
-//! F2(u,v) = (S - P) * Sv <br>
-//! <br>
-//! The derivatives of the functional are: <br>
-//! <br>
-//! Duf1(u,v) = Su^2    + (S-P) * Suu; <br>
-//! Dvf1(u,v) = Su * Sv + (S-P) * Suv <br>
-//! Duf2(u,v) = Sv * Su + (S-P) * Suv = Dvf1 <br>
-//! Dvf2(u,v) = Sv^2    + (S-P) * Svv <br>
-//! <br>
-//! Here * denotes scalar product, and ^2 is square power. <br>
-class Extrema_FuncExtPS  : public math_FunctionSetWithDerivatives {
+//! Functional for search of extremum of the distance between point P and
+//! surface S, starting from approximate solution (u0, v0).
+//!
+//! The class inherits math_FunctionSetWithDerivatives and thus is intended
+//! for use in math_FunctionSetRoot algorithm .
+//!
+//! Denoting derivatives of the surface S(u,v) by u and v, respectively, as
+//! Su and Sv, the two functions to be nullified are:
+//!
+//! F1(u,v) = (S - P) * Su
+//! F2(u,v) = (S - P) * Sv
+//!
+//! The derivatives of the functional are:
+//!
+//! Duf1(u,v) = Su^2    + (S-P) * Suu;
+//! Dvf1(u,v) = Su * Sv + (S-P) * Suv
+//! Duf2(u,v) = Sv * Su + (S-P) * Suv = Dvf1
+//! Dvf2(u,v) = Sv^2    + (S-P) * Svv
+//!
+//! Here * denotes scalar product, and ^2 is square power.
+class Extrema_FuncExtPS  : public math_FunctionSetWithDerivatives
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Extrema_FuncExtPS();
+  Standard_EXPORT Extrema_FuncExtPS();
   
-  Standard_EXPORT   Extrema_FuncExtPS(const gp_Pnt& P,const Adaptor3d_Surface& S);
-  //! sets the field mysurf of the function. <br>
-  Standard_EXPORT     void Initialize(const Adaptor3d_Surface& S) ;
-  //! sets the field mysurf of the function. <br>
-  Standard_EXPORT     void SetPoint(const gp_Pnt& P) ;
+  Standard_EXPORT Extrema_FuncExtPS(const gp_Pnt& P, const Adaptor3d_Surface& S);
   
-  Standard_EXPORT     Standard_Integer NbVariables() const;
+  //! sets the field mysurf of the function.
+  Standard_EXPORT   void Initialize (const Adaptor3d_Surface& S) ;
   
-  Standard_EXPORT     Standard_Integer NbEquations() const;
-  //! Calculate Fi(U,V). <br>
-  Standard_EXPORT     Standard_Boolean Value(const math_Vector& UV,math_Vector& F) ;
-  //! Calculate Fi'(U,V). <br>
-  Standard_EXPORT     Standard_Boolean Derivatives(const math_Vector& UV,math_Matrix& DF) ;
-  //! Calculate Fi(U,V) and Fi'(U,V). <br>
-  Standard_EXPORT     Standard_Boolean Values(const math_Vector& UV,math_Vector& F,math_Matrix& DF) ;
-  //! Save the found extremum. <br>
-  Standard_EXPORT   virtual  Standard_Integer GetStateNumber() ;
-  //! Return the number of found extrema. <br>
-  Standard_EXPORT     Standard_Integer NbExt() const;
-  //! Return the value of the Nth distance. <br>
-  Standard_EXPORT     Standard_Real SquareDistance(const Standard_Integer N) const;
-  //! Returns the Nth extremum. <br>
-  Standard_EXPORT    const Extrema_POnSurf& Point(const Standard_Integer N) const;
-
+  //! sets the field mysurf of the function.
+  Standard_EXPORT   void SetPoint (const gp_Pnt& P) ;
+  
+  Standard_EXPORT   Standard_Integer NbVariables()  const;
+  
+  Standard_EXPORT   Standard_Integer NbEquations()  const;
+  
+  //! Calculate Fi(U,V).
+  Standard_EXPORT   Standard_Boolean Value (const math_Vector& UV, math_Vector& F) ;
+  
+  //! Calculate Fi'(U,V).
+  Standard_EXPORT   Standard_Boolean Derivatives (const math_Vector& UV, math_Matrix& DF) ;
+  
+  //! Calculate Fi(U,V) and Fi'(U,V).
+  Standard_EXPORT   Standard_Boolean Values (const math_Vector& UV, math_Vector& F, math_Matrix& DF) ;
+  
+  //! Save the found extremum.
+  Standard_EXPORT virtual   Standard_Integer GetStateNumber() ;
+  
+  //! Return the number of found extrema.
+  Standard_EXPORT   Standard_Integer NbExt()  const;
+  
+  //! Return the value of the Nth distance.
+  Standard_EXPORT   Standard_Real SquareDistance (const Standard_Integer N)  const;
+  
+  //! Returns the Nth extremum.
+  Standard_EXPORT  const  Extrema_POnSurf& Point (const Standard_Integer N)  const;
 
 
 
@@ -118,15 +102,15 @@ private:
 
 
 
-gp_Pnt myP;
-Adaptor3d_SurfacePtr myS;
-Standard_Real myU;
-Standard_Real myV;
-gp_Pnt myPs;
-TColStd_SequenceOfReal mySqDist;
-Extrema_SequenceOfPOnSurf myPoint;
-Standard_Boolean myPinit;
-Standard_Boolean mySinit;
+  gp_Pnt myP;
+  Adaptor3d_SurfacePtr myS;
+  Standard_Real myU;
+  Standard_Real myV;
+  gp_Pnt myPs;
+  TColStd_SequenceOfReal mySqDist;
+  Extrema_SequenceOfPOnSurf myPoint;
+  Standard_Boolean myPinit;
+  Standard_Boolean mySinit;
 
 
 };
@@ -135,7 +119,6 @@ Standard_Boolean mySinit;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Extrema_FuncExtPS_HeaderFile

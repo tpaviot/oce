@@ -6,22 +6,12 @@
 #ifndef _BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool_HeaderFile
 #define _BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_BRepTopAdaptor_DataMapNodeOfMapOfShapeTool_HeaderFile
 #include <Handle_BRepTopAdaptor_DataMapNodeOfMapOfShapeTool.hxx>
-#endif
 class Standard_NoSuchObject;
 class TopoDS_Shape;
 class BRepTopAdaptor_Tool;
@@ -31,22 +21,22 @@ class BRepTopAdaptor_DataMapNodeOfMapOfShapeTool;
 
 
 
-class BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool  : public TCollection_BasicMapIterator {
+class BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool();
+  Standard_EXPORT BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool();
   
-  Standard_EXPORT   BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool(const BRepTopAdaptor_MapOfShapeTool& aMap);
+  Standard_EXPORT BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool(const BRepTopAdaptor_MapOfShapeTool& aMap);
   
-  Standard_EXPORT     void Initialize(const BRepTopAdaptor_MapOfShapeTool& aMap) ;
+  Standard_EXPORT   void Initialize (const BRepTopAdaptor_MapOfShapeTool& aMap) ;
   
-  Standard_EXPORT    const TopoDS_Shape& Key() const;
+  Standard_EXPORT  const  TopoDS_Shape& Key()  const;
   
-  Standard_EXPORT    const BRepTopAdaptor_Tool& Value() const;
-
+  Standard_EXPORT  const  BRepTopAdaptor_Tool& Value()  const;
 
 
 
@@ -69,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool_HeaderFile

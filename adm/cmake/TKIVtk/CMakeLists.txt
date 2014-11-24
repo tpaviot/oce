@@ -123,6 +123,19 @@ elseif(APPLE)
   list( APPEND TKIVtk_USED_LIBS vtkIOImage-6.1 )
   list( APPEND TKIVtk_USED_LIBS vtkImagingCore-6.1 )
   list( APPEND TKIVtk_USED_LIBS vtkInteractionStyle-6.1 )
+elseif(ANDROID)
+  list( APPEND TKIVtk_USED_LIBS vtkCommonCore-6.1 )
+  list( APPEND TKIVtk_USED_LIBS vtkCommonDataModel-6.1 )
+  list( APPEND TKIVtk_USED_LIBS vtkCommonExecutionModel-6.1 )
+  list( APPEND TKIVtk_USED_LIBS vtkCommonMath-6.1 )
+  list( APPEND TKIVtk_USED_LIBS vtkCommonTransforms-6.1 )
+  list( APPEND TKIVtk_USED_LIBS vtkRenderingCore-6.1 )
+  list( APPEND TKIVtk_USED_LIBS vtkRenderingOpenGL-6.1 )
+  list( APPEND TKIVtk_USED_LIBS vtkFiltersGeneral-6.1 )
+  list( APPEND TKIVtk_USED_LIBS vtkIOCore-6.1 )
+  list( APPEND TKIVtk_USED_LIBS vtkIOImage-6.1 )
+  list( APPEND TKIVtk_USED_LIBS vtkImagingCore-6.1 )
+  list( APPEND TKIVtk_USED_LIBS vtkInteractionStyle-6.1 )
 else()
   list( APPEND TKIVtk_USED_LIBS vtkCommonCore-6.1 )
   list( APPEND TKIVtk_USED_LIBS vtkCommonDataModel-6.1 )
@@ -344,13 +357,13 @@ if ("${USED_TOOLKITS}" STREQUAL "" OR DEFINED TurnONtheTKIVtk)
  set_property(TARGET TKIVtk PROPERTY FOLDER Visualization)
 
  install( TARGETS TKIVtk
-                                 RUNTIME DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_SUFFIX}"
-                                 ARCHIVE DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_SUFFIX}"
-                                 LIBRARY DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_SUFFIX}")
+                                 RUNTIME DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_POSTFIX}"
+                                 ARCHIVE DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_POSTFIX}"
+                                 LIBRARY DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_POSTFIX}")
 
  if (MSVC)
-  install( FILES  ${CMAKE_BINARY_DIR}/out/bin/Debug/TKIVtk.pdb CONFIGURATIONS Debug
-                                  DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_SUFFIX}")
+  install( FILES  ${CMAKE_BINARY_DIR}/out/bind/Debug/TKIVtk.pdb CONFIGURATIONS Debug
+                                  DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_POSTFIX}")
  endif()
 
 

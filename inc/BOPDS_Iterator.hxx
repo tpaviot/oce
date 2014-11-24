@@ -6,107 +6,97 @@
 #ifndef _BOPDS_Iterator_HeaderFile
 #define _BOPDS_Iterator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BOPCol_BaseAllocator_HeaderFile
 #include <BOPCol_BaseAllocator.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _BOPDS_PDS_HeaderFile
 #include <BOPDS_PDS.hxx>
-#endif
-#ifndef _BOPDS_VectorOfListOfPassKeyBoolean_HeaderFile
 #include <BOPDS_VectorOfListOfPassKeyBoolean.hxx>
-#endif
-#ifndef _BOPDS_ListIteratorOfListOfPassKeyBoolean_HeaderFile
 #include <BOPDS_ListIteratorOfListOfPassKeyBoolean.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
 class BOPDS_DS;
 
 
 
-//! The class BOPDS_Iterator is <br>
-//!  1.to compute intersections between BRep sub-shapes <br>
-//!    of arguments of an operation (see the class BOPDS_DS) <br>
-//!    in terms of theirs bounding boxes <br>
-//!  2.provides interface to iterare the pairs of <br>
-//!    intersected sub-shapes of given type <br>
-class BOPDS_Iterator  {
+//! The class BOPDS_Iterator is
+//! 1.to compute intersections between BRep sub-shapes
+//! of arguments of an operation (see the class BOPDS_DS)
+//! in terms of theirs bounding boxes
+//! 2.provides interface to iterare the pairs of
+//! intersected sub-shapes of given type
+class BOPDS_Iterator 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//! Empty contructor <br>
-//! <br>
-  Standard_EXPORT   BOPDS_Iterator();
+
+  //! Empty contructor
+  Standard_EXPORT BOPDS_Iterator();
 Standard_EXPORT virtual ~BOPDS_Iterator();
   
-//!  Contructor <br>
-//!  theAllocator - the allocator to manage the memory <br>
-//! <br>
-  Standard_EXPORT   BOPDS_Iterator(const BOPCol_BaseAllocator& theAllocator);
-  
-//! Modifier <br>
-//! Sets the data structure <pDS> to process <br>
-  Standard_EXPORT     void SetDS(const BOPDS_PDS& pDS) ;
-  
-//! Selector <br>
-//! Returns the data structure <br>
-  Standard_EXPORT    const BOPDS_DS& DS() const;
-  
-//! Initializes the  iterator <br>
-//! theType1 - the first type of shape <br>
-//! theType2 - the second type of shape <br>
-  Standard_EXPORT     void Initialize(const TopAbs_ShapeEnum theType1,const TopAbs_ShapeEnum theType2) ;
-  
-//! Returns  true if still there are pairs <br>
-//!  of intersected shapes <br>
-  Standard_EXPORT     Standard_Boolean More() const;
-  
-//! Moves iterations ahead <br>
-  Standard_EXPORT     void Next() ;
-  
-//! Returns indices (DS) of intersected shapes <br>
-//! theIndex1 - the index of the first shape <br>
-//! theIndex2 - the index of the second shape <br>
-//! theWithSubShape - flag. True if the sub-shapes of <br>
-//!  shapes are intersected <br>
-  Standard_EXPORT     void Value(Standard_Integer& theIndex1,Standard_Integer& theIndex2,Standard_Boolean& theWithSubShape) const;
-  
-//! Perform the intersection algorithm and prepare <br>
-//! the results to be used <br>
-  Standard_EXPORT   virtual  void Prepare() ;
-  
-//! Returns the number of intersections founded <br>
-  Standard_EXPORT     Standard_Integer ExpectedLength() const;
-  
-//! Returns the block length <br>
-  Standard_EXPORT     Standard_Integer BlockLength() const;
-  //! Set the flag of parallel processing <br>
-//! if <theFlag> is true  the parallel processing is switched on <br>
-//! if <theFlag> is false the parallel processing is switched off <br>
-//! <br>
-  Standard_EXPORT     void SetRunParallel(const Standard_Boolean theFlag) ;
-  //! Returns the flag of parallel processing <br>
-  Standard_EXPORT     Standard_Boolean RunParallel() const;
 
+  //! Contructor
+  //! theAllocator - the allocator to manage the memory
+  Standard_EXPORT BOPDS_Iterator(const BOPCol_BaseAllocator& theAllocator);
+  
+
+  //! Modifier
+  //! Sets the data structure <pDS> to process
+  Standard_EXPORT   void SetDS (const BOPDS_PDS& pDS) ;
+  
+
+  //! Selector
+  //! Returns the data structure
+  Standard_EXPORT  const  BOPDS_DS& DS()  const;
+  
+
+  //! Initializes the  iterator
+  //! theType1 - the first type of shape
+  //! theType2 - the second type of shape
+  Standard_EXPORT   void Initialize (const TopAbs_ShapeEnum theType1, const TopAbs_ShapeEnum theType2) ;
+  
+
+  //! Returns  true if still there are pairs
+  //! of intersected shapes
+  Standard_EXPORT   Standard_Boolean More()  const;
+  
+
+  //! Moves iterations ahead
+  Standard_EXPORT   void Next() ;
+  
+
+  //! Returns indices (DS) of intersected shapes
+  //! theIndex1 - the index of the first shape
+  //! theIndex2 - the index of the second shape
+  //! theWithSubShape - flag. True if the sub-shapes of
+  //! shapes are intersected
+  Standard_EXPORT   void Value (Standard_Integer& theIndex1, Standard_Integer& theIndex2, Standard_Boolean& theWithSubShape)  const;
+  
+
+  //! Perform the intersection algorithm and prepare
+  //! the results to be used
+  Standard_EXPORT virtual   void Prepare() ;
+  
+
+  //! Returns the number of intersections founded
+  Standard_EXPORT   Standard_Integer ExpectedLength()  const;
+  
+
+  //! Returns the block length
+  Standard_EXPORT   Standard_Integer BlockLength()  const;
+  
+  //! Set the flag of parallel processing
+  //! if <theFlag> is true  the parallel processing is switched on
+  //! if <theFlag> is false the parallel processing is switched off
+  Standard_EXPORT   void SetRunParallel (const Standard_Boolean theFlag) ;
+  
+  //! Returns the flag of parallel processing
+  Standard_EXPORT   Standard_Boolean RunParallel()  const;
 
 
 
@@ -114,15 +104,15 @@ Standard_EXPORT virtual ~BOPDS_Iterator();
 protected:
 
   
-  Standard_EXPORT   virtual  void Intersect() ;
+  Standard_EXPORT virtual   void Intersect() ;
 
 
-BOPCol_BaseAllocator myAllocator;
-Standard_Integer myLength;
-BOPDS_PDS myDS;
-BOPDS_VectorOfListOfPassKeyBoolean myLists;
-BOPDS_ListIteratorOfListOfPassKeyBoolean myIterator;
-Standard_Boolean myRunParallel;
+  BOPCol_BaseAllocator myAllocator;
+  Standard_Integer myLength;
+  BOPDS_PDS myDS;
+  BOPDS_VectorOfListOfPassKeyBoolean myLists;
+  BOPDS_ListIteratorOfListOfPassKeyBoolean myIterator;
+  Standard_Boolean myRunParallel;
 
 
 private:
@@ -137,7 +127,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BOPDS_Iterator_HeaderFile

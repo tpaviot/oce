@@ -5,21 +5,13 @@
 
 #include <StlMesh_SequenceOfMeshDomain.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StlMesh_MeshDomain_HeaderFile
 #include <StlMesh_MeshDomain.hxx>
-#endif
-#ifndef _StlMesh_SequenceNodeOfSequenceOfMeshDomain_HeaderFile
 #include <StlMesh_SequenceNodeOfSequenceOfMeshDomain.hxx>
-#endif
  
 
-#define SeqItem Handle_StlMesh_MeshDomain
+#define SeqItem Handle(StlMesh_MeshDomain)
 #define SeqItem_hxx <StlMesh_MeshDomain.hxx>
 #define TCollection_SequenceNode StlMesh_SequenceNodeOfSequenceOfMeshDomain
 #define TCollection_SequenceNode_hxx <StlMesh_SequenceNodeOfSequenceOfMeshDomain.hxx>

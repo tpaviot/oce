@@ -6,28 +6,14 @@
 #ifndef _TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference_HeaderFile
 #define _TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference_HeaderFile
 #include <Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference.hxx>
-#endif
 
-#ifndef _Handle_TopOpeBRepDS_Interference_HeaderFile
 #include <Handle_TopOpeBRepDS_Interference.hxx>
-#endif
-#ifndef _TopOpeBRepDS_ListOfInterference_HeaderFile
 #include <TopOpeBRepDS_ListOfInterference.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopOpeBRepDS_Interference;
 class TopOpeBRepDS_ListOfInterference;
 class TColStd_MapTransientHasher;
@@ -36,16 +22,17 @@ class TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceListOfInterference;
 
 
 
-class TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference : public TCollection_MapNode {
+class TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference : public TCollection_MapNode
+{
 
 public:
 
   
-      TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference(const Handle(TopOpeBRepDS_Interference)& K,const TopOpeBRepDS_ListOfInterference& I,const TCollection_MapNodePtr& n);
+    TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference(const Handle(TopOpeBRepDS_Interference)& K, const TopOpeBRepDS_ListOfInterference& I, const TCollection_MapNodePtr& n);
   
-        Handle_TopOpeBRepDS_Interference& Key() const;
+      Handle(TopOpeBRepDS_Interference)& Key()  const;
   
-        TopOpeBRepDS_ListOfInterference& Value() const;
+      TopOpeBRepDS_ListOfInterference& Value()  const;
 
 
 
@@ -60,13 +47,13 @@ protected:
 private: 
 
 
-Handle_TopOpeBRepDS_Interference myKey;
-TopOpeBRepDS_ListOfInterference myValue;
+  Handle(TopOpeBRepDS_Interference) myKey;
+  TopOpeBRepDS_ListOfInterference myValue;
 
 
 };
 
-#define TheKey Handle_TopOpeBRepDS_Interference
+#define TheKey Handle(TopOpeBRepDS_Interference)
 #define TheKey_hxx <TopOpeBRepDS_Interference.hxx>
 #define TheItem TopOpeBRepDS_ListOfInterference
 #define TheItem_hxx <TopOpeBRepDS_ListOfInterference.hxx>
@@ -99,7 +86,6 @@ TopOpeBRepDS_ListOfInterference myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceListOfInterference_HeaderFile

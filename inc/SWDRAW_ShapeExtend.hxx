@@ -6,32 +6,25 @@
 #ifndef _SWDRAW_ShapeExtend_HeaderFile
 #define _SWDRAW_ShapeExtend_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Draw_Interpretor_HeaderFile
 #include <Draw_Interpretor.hxx>
-#endif
 
 
-//! Contains commands to activate package ShapeExtend <br>
-//!          List of DRAW commands and corresponding functionalities: <br>
-//!          sortcompound - ShapeExtend_Explorer::SortedCompound <br>
-class SWDRAW_ShapeExtend  {
+//! Contains commands to activate package ShapeExtend
+//! List of DRAW commands and corresponding functionalities:
+//! sortcompound - ShapeExtend_Explorer::SortedCompound
+class SWDRAW_ShapeExtend 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Loads commands defined in ShapeExtend <br>
-  Standard_EXPORT   static  void InitCommands(Draw_Interpretor& theCommands) ;
-
+  
+  //! Loads commands defined in ShapeExtend
+  Standard_EXPORT static   void InitCommands (Draw_Interpretor& theCommands) ;
 
 
 
@@ -54,7 +47,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SWDRAW_ShapeExtend_HeaderFile

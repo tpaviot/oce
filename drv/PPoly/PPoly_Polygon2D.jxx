@@ -1,6 +1,2 @@
-#ifndef _PColgp_HArray1OfPnt2d_HeaderFile
 #include <PColgp_HArray1OfPnt2d.hxx>
-#endif
-#ifndef _PPoly_Polygon2D_HeaderFile
 #include <PPoly_Polygon2D.hxx>
-#endif

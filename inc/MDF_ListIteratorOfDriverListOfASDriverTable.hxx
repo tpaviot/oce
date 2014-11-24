@@ -6,28 +6,14 @@
 #ifndef _MDF_ListIteratorOfDriverListOfASDriverTable_HeaderFile
 #define _MDF_ListIteratorOfDriverListOfASDriverTable_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_MDF_ASDriver_HeaderFile
 #include <Handle_MDF_ASDriver.hxx>
-#endif
-#ifndef _Handle_MDF_ListNodeOfDriverListOfASDriverTable_HeaderFile
 #include <Handle_MDF_ListNodeOfDriverListOfASDriverTable.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class MDF_DriverListOfASDriverTable;
@@ -36,27 +22,27 @@ class MDF_ListNodeOfDriverListOfASDriverTable;
 
 
 
-class MDF_ListIteratorOfDriverListOfASDriverTable  {
+class MDF_ListIteratorOfDriverListOfASDriverTable 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   MDF_ListIteratorOfDriverListOfASDriverTable();
+  Standard_EXPORT MDF_ListIteratorOfDriverListOfASDriverTable();
   
-  Standard_EXPORT   MDF_ListIteratorOfDriverListOfASDriverTable(const MDF_DriverListOfASDriverTable& L);
+  Standard_EXPORT MDF_ListIteratorOfDriverListOfASDriverTable(const MDF_DriverListOfASDriverTable& L);
   
-  Standard_EXPORT     void Initialize(const MDF_DriverListOfASDriverTable& L) ;
+  Standard_EXPORT   void Initialize (const MDF_DriverListOfASDriverTable& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     Handle_MDF_ASDriver& Value() const;
+  Standard_EXPORT   Handle(MDF_ASDriver)& Value()  const;
 
 
 friend class MDF_DriverListOfASDriverTable;
-
 
 
 protected:
@@ -69,13 +55,13 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
 
-#define Item Handle_MDF_ASDriver
+#define Item Handle(MDF_ASDriver)
 #define Item_hxx <MDF_ASDriver.hxx>
 #define TCollection_ListNode MDF_ListNodeOfDriverListOfASDriverTable
 #define TCollection_ListNode_hxx <MDF_ListNodeOfDriverListOfASDriverTable.hxx>
@@ -100,7 +86,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MDF_ListIteratorOfDriverListOfASDriverTable_HeaderFile

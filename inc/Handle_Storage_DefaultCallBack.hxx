@@ -6,22 +6,15 @@
 #ifndef _Handle_Storage_DefaultCallBack_HeaderFile
 #define _Handle_Storage_DefaultCallBack_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Storage_CallBack_HeaderFile
 #include <Handle_Storage_CallBack.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Storage_CallBack);
 class Storage_DefaultCallBack;
 
-DEFINE_STANDARD_HANDLE(Storage_DefaultCallBack,Storage_CallBack)
+DEFINE_STANDARD_HANDLE(Storage_DefaultCallBack, Storage_CallBack)
 
-#endif
+#endif // _Handle_Storage_DefaultCallBack_HeaderFile

@@ -6,16 +6,15 @@
 #ifndef _AIS_TypeOfAxis_HeaderFile
 #define _AIS_TypeOfAxis_HeaderFile
 
-//! Declares the type of axis. <br>
-enum AIS_TypeOfAxis {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Declares the type of axis.
+enum AIS_TypeOfAxis
+{
 AIS_TOAX_Unknown,
 AIS_TOAX_XAxis,
 AIS_TOAX_YAxis,
 AIS_TOAX_ZAxis
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _AIS_TypeOfAxis_HeaderFile

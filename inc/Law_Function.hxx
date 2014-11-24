@@ -6,65 +6,59 @@
 #ifndef _Law_Function_HeaderFile
 #define _Law_Function_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Law_Function_HeaderFile
 #include <Handle_Law_Function.hxx>
-#endif
 
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Standard_OutOfRange;
 class TColStd_Array1OfReal;
 
 
-//! Root class for evolution laws. <br>
-class Law_Function : public MMgt_TShared {
+//! Root class for evolution laws.
+class Law_Function : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   virtual  GeomAbs_Shape Continuity() const = 0;
-  //! Returns  the number  of  intervals for  continuity <br>
-//!          <S>. May be one if Continuity(me) >= <S> <br>
-  Standard_EXPORT   virtual  Standard_Integer NbIntervals(const GeomAbs_Shape S) const = 0;
-  //! Stores in <T> the  parameters bounding the intervals <br>
-//!          of continuity <S>. <br>
-//! <br>
-//!          The array must provide  enough room to  accomodate <br>
-//!          for the parameters. i.e. T.Length() > NbIntervals() <br>
-  Standard_EXPORT   virtual  void Intervals(TColStd_Array1OfReal& T,const GeomAbs_Shape S) const = 0;
-  //! Returns the value of the function at the point of parameter X. <br>
-  Standard_EXPORT   virtual  Standard_Real Value(const Standard_Real X)  = 0;
-  //! Returns the value F and the first derivative D of the <br>
-//! function at the point of parameter X. <br>
-  Standard_EXPORT   virtual  void D1(const Standard_Real X,Standard_Real& F,Standard_Real& D)  = 0;
-  //! Returns the value, first and seconde derivatives <br>
-//!          at parameter X. <br>
-  Standard_EXPORT   virtual  void D2(const Standard_Real X,Standard_Real& F,Standard_Real& D,Standard_Real& D2)  = 0;
-  //!   Returns a  law equivalent of  <me>  between <br>
-//!        parameters <First>  and <Last>. <Tol>  is used  to <br>
-//!        test for 3d points confusion. <br>
-//!        It is usfule to determines the derivatives <br>
-//!        in these values <First> and <Last> if <br>
-//!        the Law is not Cn. <br>
-  Standard_EXPORT   virtual  Handle_Law_Function Trim(const Standard_Real PFirst,const Standard_Real PLast,const Standard_Real Tol) const = 0;
-  //! Returns the parametric bounds of the function. <br>
-  Standard_EXPORT   virtual  void Bounds(Standard_Real& PFirst,Standard_Real& PLast)  = 0;
+  Standard_EXPORT virtual   GeomAbs_Shape Continuity()  const = 0;
+  
+  //! Returns  the number  of  intervals for  continuity
+  //! <S>. May be one if Continuity(me) >= <S>
+  Standard_EXPORT virtual   Standard_Integer NbIntervals (const GeomAbs_Shape S)  const = 0;
+  
+  //! Stores in <T> the  parameters bounding the intervals
+  //! of continuity <S>.
+  //!
+  //! The array must provide  enough room to  accomodate
+  //! for the parameters. i.e. T.Length() > NbIntervals()
+  Standard_EXPORT virtual   void Intervals (TColStd_Array1OfReal& T, const GeomAbs_Shape S)  const = 0;
+  
+  //! Returns the value of the function at the point of parameter X.
+  Standard_EXPORT virtual   Standard_Real Value (const Standard_Real X)  = 0;
+  
+  //! Returns the value F and the first derivative D of the
+  //! function at the point of parameter X.
+  Standard_EXPORT virtual   void D1 (const Standard_Real X, Standard_Real& F, Standard_Real& D)  = 0;
+  
+  //! Returns the value, first and seconde derivatives
+  //! at parameter X.
+  Standard_EXPORT virtual   void D2 (const Standard_Real X, Standard_Real& F, Standard_Real& D, Standard_Real& D2)  = 0;
+  
+  //! Returns a  law equivalent of  <me>  between
+  //! parameters <First>  and <Last>. <Tol>  is used  to
+  //! test for 3d points confusion.
+  //! It is usfule to determines the derivatives
+  //! in these values <First> and <Last> if
+  //! the Law is not Cn.
+  Standard_EXPORT virtual   Handle(Law_Function) Trim (const Standard_Real PFirst, const Standard_Real PLast, const Standard_Real Tol)  const = 0;
+  
+  //! Returns the parametric bounds of the function.
+  Standard_EXPORT virtual   void Bounds (Standard_Real& PFirst, Standard_Real& PLast)  = 0;
 
 
 
@@ -87,7 +81,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Law_Function_HeaderFile

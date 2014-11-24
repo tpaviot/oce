@@ -6,37 +6,26 @@
 #ifndef _TColStd_SequenceNodeOfSequenceOfBoolean_HeaderFile
 #define _TColStd_SequenceNodeOfSequenceOfBoolean_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColStd_SequenceNodeOfSequenceOfBoolean_HeaderFile
 #include <Handle_TColStd_SequenceNodeOfSequenceOfBoolean.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class TColStd_SequenceOfBoolean;
 
 
 
-class TColStd_SequenceNodeOfSequenceOfBoolean : public TCollection_SeqNode {
+class TColStd_SequenceNodeOfSequenceOfBoolean : public TCollection_SeqNode
+{
 
 public:
 
   
-      TColStd_SequenceNodeOfSequenceOfBoolean(const Standard_Boolean& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    TColStd_SequenceNodeOfSequenceOfBoolean(const Standard_Boolean& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Standard_Boolean& Value() const;
+      Standard_Boolean& Value()  const;
 
 
 
@@ -51,7 +40,7 @@ protected:
 private: 
 
 
-Standard_Boolean myValue;
+  Standard_Boolean myValue;
 
 
 };
@@ -77,7 +66,6 @@ Standard_Boolean myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_SequenceNodeOfSequenceOfBoolean_HeaderFile

@@ -5,22 +5,12 @@
 
 #include <MoniTool_HSequenceOfElement.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _MoniTool_Element_HeaderFile
 #include <MoniTool_Element.hxx>
-#endif
-#ifndef _MoniTool_SequenceOfElement_HeaderFile
 #include <MoniTool_SequenceOfElement.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(MoniTool_HSequenceOfElement,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(MoniTool_HSequenceOfElement)
 
 
-#define Item Handle_MoniTool_Element
+#define Item Handle(MoniTool_Element)
 #define Item_hxx <MoniTool_Element.hxx>
 #define TheSequence MoniTool_SequenceOfElement
 #define TheSequence_hxx <MoniTool_SequenceOfElement.hxx>

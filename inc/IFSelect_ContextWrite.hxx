@@ -6,52 +6,22 @@
 #ifndef _IFSelect_ContextWrite_HeaderFile
 #define _IFSelect_ContextWrite_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Handle_Interface_Protocol_HeaderFile
 #include <Handle_Interface_Protocol.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Handle_IFSelect_AppliedModifiers_HeaderFile
 #include <Handle_IFSelect_AppliedModifiers.hxx>
-#endif
-#ifndef _Handle_Interface_HGraph_HeaderFile
 #include <Handle_Interface_HGraph.hxx>
-#endif
-#ifndef _Interface_CheckIterator_HeaderFile
 #include <Interface_CheckIterator.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_IFSelect_GeneralModifier_HeaderFile
 #include <Handle_IFSelect_GeneralModifier.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
 class Interface_InterfaceModel;
 class Interface_Protocol;
 class IFSelect_AppliedModifiers;
@@ -64,93 +34,116 @@ class Interface_Check;
 class Interface_CheckIterator;
 
 
-//! This class gathers various informations used by File Modifiers <br>
-//!           apart from the writer object, which is specific of the norm <br>
-//!           and of the physical format <br>
-//! <br>
-//!           These informations are controlled by an object AppliedModifiers <br>
-//!           (if it is not defined, no modification is allowed on writing) <br>
-//! <br>
-//!           Furthermore, in return, ContextModif can record Checks, either <br>
-//!           one for all, or one for each Entity. It supports trace too. <br>
-class IFSelect_ContextWrite  {
+//! This class gathers various informations used by File Modifiers
+//! apart from the writer object, which is specific of the norm
+//! and of the physical format
+//!
+//! These informations are controlled by an object AppliedModifiers
+//! (if it is not defined, no modification is allowed on writing)
+//!
+//! Furthermore, in return, ContextModif can record Checks, either
+//! one for all, or one for each Entity. It supports trace too.
+class IFSelect_ContextWrite 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Prepares a ContextWrite with these informations : <br>
-//!           - the model which is to be written <br>
-//!           - the protocol to be used <br>
-//!           - the filename <br>
-//!           - an object AppliedModifiers to work. It gives a list of <br>
-//!             FileModifiers to be ran, and for each one it can give <br>
-//!             a restricted list of entities (in the model), else all <br>
-//!             the model is considered <br>
-  Standard_EXPORT   IFSelect_ContextWrite(const Handle(Interface_InterfaceModel)& model,const Handle(Interface_Protocol)& proto,const Handle(IFSelect_AppliedModifiers)& applieds,const Standard_CString filename);
-  //! Same as above but with an already computed Graph <br>
-  Standard_EXPORT   IFSelect_ContextWrite(const Handle(Interface_HGraph)& hgraph,const Handle(Interface_Protocol)& proto,const Handle(IFSelect_AppliedModifiers)& applieds,const Standard_CString filename);
-  //! Returns the Model <br>
-  Standard_EXPORT     Handle_Interface_InterfaceModel Model() const;
-  //! Returns the Protocol; <br>
-  Standard_EXPORT     Handle_Interface_Protocol Protocol() const;
-  //! Returns the File Name <br>
-  Standard_EXPORT     Standard_CString FileName() const;
-  //! Returns the object AppliedModifiers <br>
-  Standard_EXPORT     Handle_IFSelect_AppliedModifiers AppliedModifiers() const;
-  //! Returns the Graph, either given when created, else created <br>
-//!           the first time it is queried <br>
-  Standard_EXPORT    const Interface_Graph& Graph() ;
-  //! Returns the count of recorded File Modifiers <br>
-  Standard_EXPORT     Standard_Integer NbModifiers() const;
-  //! Sets active the File Modifier n0 <numod> <br>
-//!           Then, it prepares the list of entities to consider, if any <br>
-//!           Returns False if <numod> out of range <br>
-  Standard_EXPORT     Standard_Boolean SetModifier(const Standard_Integer numod) ;
-  //! Returns the currently active File Modifier. Cast to be done <br>
-//!           Null if not properly set : must be test IsNull after casting <br>
-  Standard_EXPORT     Handle_IFSelect_GeneralModifier FileModifier() const;
-  //! Returns True if no modifier is currently set <br>
-  Standard_EXPORT     Standard_Boolean IsForNone() const;
-  //! Returns True if the current modifier is to be applied to <br>
-//!           the whole model. Else, a restricted list of selected entities <br>
-//!           is defined, it can be exploited by the File Modifier <br>
-  Standard_EXPORT     Standard_Boolean IsForAll() const;
-  //! Returns the total count of selected entities <br>
-  Standard_EXPORT     Standard_Integer NbEntities() const;
-  //! Starts an iteration on selected items. It takes into account <br>
-//!           IsForAll/IsForNone, by really iterating on all selected items. <br>
-  Standard_EXPORT     void Start() ;
-  //! Returns True until the iteration has finished <br>
-  Standard_EXPORT     Standard_Boolean More() const;
-  //! Advances the iteration <br>
-  Standard_EXPORT     void Next() ;
-  //! Returns the current selected entity in the model <br>
-  Standard_EXPORT     Handle_Standard_Transient Value() const;
-  //! Adds a Check to the CheckList. If it is empty, nothing is done <br>
-//!           If it concerns an Entity from the Model (by SetEntity) <br>
-//!           to which another Check is attached, it is merged to it. <br>
-//!           Else, it is added or merged as to GlobalCheck. <br>
-  Standard_EXPORT     void AddCheck(const Handle(Interface_Check)& check) ;
-  //! Adds a Warning Message for an Entity from the Model <br>
-//!           If <start> is not an Entity from the model (e.g. the <br>
-//!           model itself) this message is added to Global Check. <br>
-  Standard_EXPORT     void AddWarning(const Handle(Standard_Transient)& start,const Standard_CString mess,const Standard_CString orig = "") ;
-  //! Adds a Fail Message for an Entity from the Model <br>
-//!           If <start> is not an Entity from the model (e.g. the <br>
-//!           model itself) this message is added to Global Check. <br>
-  Standard_EXPORT     void AddFail(const Handle(Standard_Transient)& start,const Standard_CString mess,const Standard_CString orig = "") ;
-  //! Returns a Check given an Entity number (in the Model) <br>
-//!           by default a Global Check. Creates it the first time. <br>
-//!           It can then be acknowledged on the spot, in condition that the <br>
-//!           caller works by reference ("Interface_Check& check = ...") <br>
-  Standard_EXPORT     Handle_Interface_Check CCheck(const Standard_Integer num = 0) ;
-  //! Returns a Check attached to an Entity from the Model <br>
-//!           It can then be acknowledged on the spot, in condition that the <br>
-//!           caller works by reference ("Interface_Check& check = ...") <br>
-  Standard_EXPORT     Handle_Interface_Check CCheck(const Handle(Standard_Transient)& start) ;
-  //! Returns the complete CheckList <br>
-  Standard_EXPORT     Interface_CheckIterator CheckList() const;
-
+  
+  //! Prepares a ContextWrite with these informations :
+  //! - the model which is to be written
+  //! - the protocol to be used
+  //! - the filename
+  //! - an object AppliedModifiers to work. It gives a list of
+  //! FileModifiers to be ran, and for each one it can give
+  //! a restricted list of entities (in the model), else all
+  //! the model is considered
+  Standard_EXPORT IFSelect_ContextWrite(const Handle(Interface_InterfaceModel)& model, const Handle(Interface_Protocol)& proto, const Handle(IFSelect_AppliedModifiers)& applieds, const Standard_CString filename);
+  
+  //! Same as above but with an already computed Graph
+  Standard_EXPORT IFSelect_ContextWrite(const Handle(Interface_HGraph)& hgraph, const Handle(Interface_Protocol)& proto, const Handle(IFSelect_AppliedModifiers)& applieds, const Standard_CString filename);
+  
+  //! Returns the Model
+  Standard_EXPORT   Handle(Interface_InterfaceModel) Model()  const;
+  
+  //! Returns the Protocol;
+  Standard_EXPORT   Handle(Interface_Protocol) Protocol()  const;
+  
+  //! Returns the File Name
+  Standard_EXPORT   Standard_CString FileName()  const;
+  
+  //! Returns the object AppliedModifiers
+  Standard_EXPORT   Handle(IFSelect_AppliedModifiers) AppliedModifiers()  const;
+  
+  //! Returns the Graph, either given when created, else created
+  //! the first time it is queried
+  Standard_EXPORT  const  Interface_Graph& Graph() ;
+  
+  //! Returns the count of recorded File Modifiers
+  Standard_EXPORT   Standard_Integer NbModifiers()  const;
+  
+  //! Sets active the File Modifier n0 <numod>
+  //! Then, it prepares the list of entities to consider, if any
+  //! Returns False if <numod> out of range
+  Standard_EXPORT   Standard_Boolean SetModifier (const Standard_Integer numod) ;
+  
+  //! Returns the currently active File Modifier. Cast to be done
+  //! Null if not properly set : must be test IsNull after casting
+  Standard_EXPORT   Handle(IFSelect_GeneralModifier) FileModifier()  const;
+  
+  //! Returns True if no modifier is currently set
+  Standard_EXPORT   Standard_Boolean IsForNone()  const;
+  
+  //! Returns True if the current modifier is to be applied to
+  //! the whole model. Else, a restricted list of selected entities
+  //! is defined, it can be exploited by the File Modifier
+  Standard_EXPORT   Standard_Boolean IsForAll()  const;
+  
+  //! Returns the total count of selected entities
+  Standard_EXPORT   Standard_Integer NbEntities()  const;
+  
+  //! Starts an iteration on selected items. It takes into account
+  //! IsForAll/IsForNone, by really iterating on all selected items.
+  Standard_EXPORT   void Start() ;
+  
+  //! Returns True until the iteration has finished
+  Standard_EXPORT   Standard_Boolean More()  const;
+  
+  //! Advances the iteration
+  Standard_EXPORT   void Next() ;
+  
+  //! Returns the current selected entity in the model
+  Standard_EXPORT   Handle(Standard_Transient) Value()  const;
+  
+  //! Adds a Check to the CheckList. If it is empty, nothing is done
+  //! If it concerns an Entity from the Model (by SetEntity)
+  //! to which another Check is attached, it is merged to it.
+  //! Else, it is added or merged as to GlobalCheck.
+  Standard_EXPORT   void AddCheck (const Handle(Interface_Check)& check) ;
+  
+  //! Adds a Warning Message for an Entity from the Model
+  //! If <start> is not an Entity from the model (e.g. the
+  //! model itself) this message is added to Global Check.
+  Standard_EXPORT   void AddWarning (const Handle(Standard_Transient)& start, const Standard_CString mess, const Standard_CString orig = "") ;
+  
+  //! Adds a Fail Message for an Entity from the Model
+  //! If <start> is not an Entity from the model (e.g. the
+  //! model itself) this message is added to Global Check.
+  Standard_EXPORT   void AddFail (const Handle(Standard_Transient)& start, const Standard_CString mess, const Standard_CString orig = "") ;
+  
+  //! Returns a Check given an Entity number (in the Model)
+  //! by default a Global Check. Creates it the first time.
+  //! It can then be acknowledged on the spot, in condition that the
+  //! caller works by reference ("Interface_Check& check = ...")
+  Standard_EXPORT   Handle(Interface_Check) CCheck (const Standard_Integer num = 0) ;
+  
+  //! Returns a Check attached to an Entity from the Model
+  //! It can then be acknowledged on the spot, in condition that the
+  //! caller works by reference ("Interface_Check& check = ...")
+  Standard_EXPORT   Handle(Interface_Check) CCheck (const Handle(Standard_Transient)& start) ;
+  
+  //! Returns the complete CheckList
+  Standard_EXPORT   Interface_CheckIterator CheckList()  const;
 
 
 
@@ -165,16 +158,16 @@ private:
 
 
 
-Handle_Interface_InterfaceModel themodel;
-Handle_Interface_Protocol theproto;
-TCollection_AsciiString thefile;
-Handle_IFSelect_AppliedModifiers theapply;
-Handle_Interface_HGraph thehgraf;
-Interface_CheckIterator thecheck;
-Standard_Integer thenumod;
-Standard_Integer thenbent;
-Standard_Integer thecurr;
-Handle_IFSelect_GeneralModifier themodif;
+  Handle(Interface_InterfaceModel) themodel;
+  Handle(Interface_Protocol) theproto;
+  TCollection_AsciiString thefile;
+  Handle(IFSelect_AppliedModifiers) theapply;
+  Handle(Interface_HGraph) thehgraf;
+  Interface_CheckIterator thecheck;
+  Standard_Integer thenumod;
+  Standard_Integer thenbent;
+  Standard_Integer thecurr;
+  Handle(IFSelect_GeneralModifier) themodif;
 
 
 };
@@ -183,7 +176,6 @@ Handle_IFSelect_GeneralModifier themodif;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_ContextWrite_HeaderFile

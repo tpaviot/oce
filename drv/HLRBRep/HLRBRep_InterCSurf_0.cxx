@@ -5,69 +5,27 @@
 
 #include <HLRBRep_InterCSurf.hxx>
 
-#ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
-#endif
-#ifndef _HLRBRep_LineTool_HeaderFile
 #include <HLRBRep_LineTool.hxx>
-#endif
-#ifndef _HLRBRep_SurfaceTool_HeaderFile
 #include <HLRBRep_SurfaceTool.hxx>
-#endif
-#ifndef _HLRBRep_ThePolygonOfInterCSurf_HeaderFile
 #include <HLRBRep_ThePolygonOfInterCSurf.hxx>
-#endif
-#ifndef _HLRBRep_ThePolygonToolOfInterCSurf_HeaderFile
 #include <HLRBRep_ThePolygonToolOfInterCSurf.hxx>
-#endif
-#ifndef _HLRBRep_ThePolyhedronOfInterCSurf_HeaderFile
 #include <HLRBRep_ThePolyhedronOfInterCSurf.hxx>
-#endif
-#ifndef _HLRBRep_ThePolyhedronToolOfInterCSurf_HeaderFile
 #include <HLRBRep_ThePolyhedronToolOfInterCSurf.hxx>
-#endif
-#ifndef _HLRBRep_TheInterferenceOfInterCSurf_HeaderFile
 #include <HLRBRep_TheInterferenceOfInterCSurf.hxx>
-#endif
-#ifndef _HLRBRep_TheCSFunctionOfInterCSurf_HeaderFile
 #include <HLRBRep_TheCSFunctionOfInterCSurf.hxx>
-#endif
-#ifndef _HLRBRep_TheExactInterCSurf_HeaderFile
 #include <HLRBRep_TheExactInterCSurf.hxx>
-#endif
-#ifndef _HLRBRep_TheQuadCurvExactInterCSurf_HeaderFile
 #include <HLRBRep_TheQuadCurvExactInterCSurf.hxx>
-#endif
-#ifndef _HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_HeaderFile
 #include <HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf.hxx>
-#endif
-#ifndef _Bnd_BoundSortBox_HeaderFile
 #include <Bnd_BoundSortBox.hxx>
-#endif
-#ifndef _gp_Circ_HeaderFile
 #include <gp_Circ.hxx>
-#endif
-#ifndef _gp_Elips_HeaderFile
 #include <gp_Elips.hxx>
-#endif
-#ifndef _gp_Parab_HeaderFile
 #include <gp_Parab.hxx>
-#endif
-#ifndef _gp_Hypr_HeaderFile
 #include <gp_Hypr.hxx>
-#endif
-#ifndef _IntAna_IntConicQuad_HeaderFile
 #include <IntAna_IntConicQuad.hxx>
-#endif
-#ifndef _TColgp_Array2OfPnt_HeaderFile
 #include <TColgp_Array2OfPnt.hxx>
-#endif
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
  
 
 #define TheCurve gp_Lin

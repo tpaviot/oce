@@ -5,21 +5,13 @@
 
 #include <StepElement_SequenceOfCurveElementPurposeMember.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StepElement_CurveElementPurposeMember_HeaderFile
 #include <StepElement_CurveElementPurposeMember.hxx>
-#endif
-#ifndef _StepElement_SequenceNodeOfSequenceOfCurveElementPurposeMember_HeaderFile
 #include <StepElement_SequenceNodeOfSequenceOfCurveElementPurposeMember.hxx>
-#endif
  
 
-#define SeqItem Handle_StepElement_CurveElementPurposeMember
+#define SeqItem Handle(StepElement_CurveElementPurposeMember)
 #define SeqItem_hxx <StepElement_CurveElementPurposeMember.hxx>
 #define TCollection_SequenceNode StepElement_SequenceNodeOfSequenceOfCurveElementPurposeMember
 #define TCollection_SequenceNode_hxx <StepElement_SequenceNodeOfSequenceOfCurveElementPurposeMember.hxx>

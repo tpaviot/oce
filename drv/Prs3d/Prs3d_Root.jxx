@@ -1,9 +1,3 @@
-#ifndef _Graphic3d_Group_HeaderFile
 #include <Graphic3d_Group.hxx>
-#endif
-#ifndef _Prs3d_Presentation_HeaderFile
 #include <Prs3d_Presentation.hxx>
-#endif
-#ifndef _Prs3d_Root_HeaderFile
 #include <Prs3d_Root.hxx>
-#endif

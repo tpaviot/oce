@@ -6,61 +6,53 @@
 #ifndef _IGESDefs_MacroDef_HeaderFile
 #define _IGESDefs_MacroDef_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESDefs_MacroDef_HeaderFile
 #include <Handle_IGESDefs_MacroDef.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Interface_HArray1OfHAsciiString_HeaderFile
 #include <Handle_Interface_HArray1OfHAsciiString.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
 class TCollection_HAsciiString;
 class Interface_HArray1OfHAsciiString;
 class Standard_OutOfRange;
 
 
-//! defines IGES Macro Definition Entity, Type <306> Form <0> <br>
-//!          in package IGESDefs <br>
-//!          This Class specifies the action of a specific MACRO. <br>
-//!          After specification MACRO can be used as necessary <br>
-//!          by means of MACRO class instance entity. <br>
-class IGESDefs_MacroDef : public IGESData_IGESEntity {
+//! defines IGES Macro Definition Entity, Type <306> Form <0>
+//! in package IGESDefs
+//! This Class specifies the action of a specific MACRO.
+//! After specification MACRO can be used as necessary
+//! by means of MACRO class instance entity.
+class IGESDefs_MacroDef : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESDefs_MacroDef();
-  //! This method is used to set the fields of the class <br>
-//!           MacroDef <br>
-//!       - macro          : MACRO <br>
-//!       - entityTypeID   : Entity Type ID <br>
-//!       - langStatements : Language Statements <br>
-//!       - endMacro       : END MACRO <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& macro,const Standard_Integer entityTypeID,const Handle(Interface_HArray1OfHAsciiString)& langStatements,const Handle(TCollection_HAsciiString)& endMacro) ;
-  //! returns the number of language statements <br>
-  Standard_EXPORT     Standard_Integer NbStatements() const;
-  //! returns the MACRO(Literal) <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString MACRO() const;
-  //! returns the Entity Type ID <br>
-  Standard_EXPORT     Standard_Integer EntityTypeID() const;
+  Standard_EXPORT IGESDefs_MacroDef();
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString LanguageStatement(const Standard_Integer StatNum) const;
-  //! returns the ENDM(Literal) <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString ENDMACRO() const;
+  //! This method is used to set the fields of the class
+  //! MacroDef
+  //! - macro          : MACRO
+  //! - entityTypeID   : Entity Type ID
+  //! - langStatements : Language Statements
+  //! - endMacro       : END MACRO
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& macro, const Standard_Integer entityTypeID, const Handle(Interface_HArray1OfHAsciiString)& langStatements, const Handle(TCollection_HAsciiString)& endMacro) ;
+  
+  //! returns the number of language statements
+  Standard_EXPORT   Standard_Integer NbStatements()  const;
+  
+  //! returns the MACRO(Literal)
+  Standard_EXPORT   Handle(TCollection_HAsciiString) MACRO()  const;
+  
+  //! returns the Entity Type ID
+  Standard_EXPORT   Standard_Integer EntityTypeID()  const;
+  
+  Standard_EXPORT   Handle(TCollection_HAsciiString) LanguageStatement (const Standard_Integer StatNum)  const;
+  
+  //! returns the ENDM(Literal)
+  Standard_EXPORT   Handle(TCollection_HAsciiString) ENDMACRO()  const;
 
 
 
@@ -75,10 +67,10 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString theMACRO;
-Standard_Integer theEntityTypeID;
-Handle_Interface_HArray1OfHAsciiString theLangStatements;
-Handle_TCollection_HAsciiString theENDMACRO;
+  Handle(TCollection_HAsciiString) theMACRO;
+  Standard_Integer theEntityTypeID;
+  Handle(Interface_HArray1OfHAsciiString) theLangStatements;
+  Handle(TCollection_HAsciiString) theENDMACRO;
 
 
 };
@@ -87,7 +79,6 @@ Handle_TCollection_HAsciiString theENDMACRO;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESDefs_MacroDef_HeaderFile

@@ -5,22 +5,12 @@
 
 #include <Visual3d_HSequenceOfLight.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Visual3d_Light_HeaderFile
 #include <Visual3d_Light.hxx>
-#endif
-#ifndef _Visual3d_SequenceOfLight_HeaderFile
 #include <Visual3d_SequenceOfLight.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(Visual3d_HSequenceOfLight,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Visual3d_HSequenceOfLight)
 
 
-#define Item Handle_Visual3d_Light
+#define Item Handle(Visual3d_Light)
 #define Item_hxx <Visual3d_Light.hxx>
 #define TheSequence Visual3d_SequenceOfLight
 #define TheSequence_hxx <Visual3d_SequenceOfLight.hxx>

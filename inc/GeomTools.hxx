@@ -6,37 +6,17 @@
 #ifndef _GeomTools_HeaderFile
 #define _GeomTools_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
-#ifndef _Standard_IStream_HeaderFile
 #include <Standard_IStream.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _Handle_GeomTools_UndefinedTypeHandler_HeaderFile
 #include <Handle_GeomTools_UndefinedTypeHandler.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Geom_Surface;
 class Geom_Curve;
 class Geom2d_Curve;
@@ -47,43 +27,54 @@ class GeomTools_CurveSet;
 class GeomTools_Curve2dSet;
 
 
-//! The GeomTools package provides  utilities for Geometry. <br>
-//! <br>
-//!          *  SurfaceSet,  CurveSet, Curve2dSet  : Tools used <br>
-//!          for dumping, writing and reading. <br>
-//! <br>
-//!          * Methods to dump, write, read curves and surfaces. <br>
-class GeomTools  {
+//! The GeomTools package provides  utilities for Geometry.
+//!
+//! *  SurfaceSet,  CurveSet, Curve2dSet  : Tools used
+//! for dumping, writing and reading.
+//!
+//! * Methods to dump, write, read curves and surfaces.
+class GeomTools 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! A set of Curves from Geom2d. <br>//! Dumps the surface on the stream. <br>
-  Standard_EXPORT   static  void Dump(const Handle(Geom_Surface)& S,Standard_OStream& OS) ;
-  //! Writes the surface on the stream. <br>
-  Standard_EXPORT   static  void Write(const Handle(Geom_Surface)& S,Standard_OStream& OS) ;
-  //! Reads the surface from the stream. <br>
-  Standard_EXPORT   static  void Read(Handle(Geom_Surface)& S,Standard_IStream& IS) ;
-  //! Dumps the Curve on the stream. <br>
-  Standard_EXPORT   static  void Dump(const Handle(Geom_Curve)& C,Standard_OStream& OS) ;
-  //! Writes the Curve on the stream. <br>
-  Standard_EXPORT   static  void Write(const Handle(Geom_Curve)& C,Standard_OStream& OS) ;
-  //! Reads the Curve from the stream. <br>
-  Standard_EXPORT   static  void Read(Handle(Geom_Curve)& C,Standard_IStream& IS) ;
-  //! Dumps the Curve on the stream. <br>
-  Standard_EXPORT   static  void Dump(const Handle(Geom2d_Curve)& C,Standard_OStream& OS) ;
-  //! Writes the Curve on the stream. <br>
-  Standard_EXPORT   static  void Write(const Handle(Geom2d_Curve)& C,Standard_OStream& OS) ;
-  //! Reads the Curve from the stream. <br>
-  Standard_EXPORT   static  void Read(Handle(Geom2d_Curve)& C,Standard_IStream& IS) ;
   
-  Standard_EXPORT   static  void SetUndefinedTypeHandler(const Handle(GeomTools_UndefinedTypeHandler)& aHandler) ;
+  //! A set of Curves from Geom2d.
+  //! Dumps the surface on the stream.
+  Standard_EXPORT static   void Dump (const Handle(Geom_Surface)& S, Standard_OStream& OS) ;
   
-  Standard_EXPORT   static  Handle_GeomTools_UndefinedTypeHandler GetUndefinedTypeHandler() ;
-  //! Reads the Standard_Real value from the stream. Zero is read <br>
-//!         in case of error <br>
-  Standard_EXPORT   static  void GetReal(Standard_IStream& IS,Standard_Real& theValue) ;
-
+  //! Writes the surface on the stream.
+  Standard_EXPORT static   void Write (const Handle(Geom_Surface)& S, Standard_OStream& OS) ;
+  
+  //! Reads the surface from the stream.
+  Standard_EXPORT static   void Read (Handle(Geom_Surface)& S, Standard_IStream& IS) ;
+  
+  //! Dumps the Curve on the stream.
+  Standard_EXPORT static   void Dump (const Handle(Geom_Curve)& C, Standard_OStream& OS) ;
+  
+  //! Writes the Curve on the stream.
+  Standard_EXPORT static   void Write (const Handle(Geom_Curve)& C, Standard_OStream& OS) ;
+  
+  //! Reads the Curve from the stream.
+  Standard_EXPORT static   void Read (Handle(Geom_Curve)& C, Standard_IStream& IS) ;
+  
+  //! Dumps the Curve on the stream.
+  Standard_EXPORT static   void Dump (const Handle(Geom2d_Curve)& C, Standard_OStream& OS) ;
+  
+  //! Writes the Curve on the stream.
+  Standard_EXPORT static   void Write (const Handle(Geom2d_Curve)& C, Standard_OStream& OS) ;
+  
+  //! Reads the Curve from the stream.
+  Standard_EXPORT static   void Read (Handle(Geom2d_Curve)& C, Standard_IStream& IS) ;
+  
+  Standard_EXPORT static   void SetUndefinedTypeHandler (const Handle(GeomTools_UndefinedTypeHandler)& aHandler) ;
+  
+  Standard_EXPORT static   Handle(GeomTools_UndefinedTypeHandler) GetUndefinedTypeHandler() ;
+  
+  //! Reads the Standard_Real value from the stream. Zero is read
+  //! in case of error
+  Standard_EXPORT static   void GetReal (Standard_IStream& IS, Standard_Real& theValue) ;
 
 
 
@@ -110,7 +101,6 @@ friend class GeomTools_Curve2dSet;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomTools_HeaderFile

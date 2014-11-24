@@ -1,3 +1,1 @@
-#ifndef _MoniTool_RealVal_HeaderFile
 #include <MoniTool_RealVal.hxx>
-#endif

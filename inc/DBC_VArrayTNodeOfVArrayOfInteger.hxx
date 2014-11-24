@@ -6,44 +6,32 @@
 #ifndef _DBC_VArrayTNodeOfVArrayOfInteger_HeaderFile
 #define _DBC_VArrayTNodeOfVArrayOfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_DBC_VArrayNodeOfVArrayOfInteger_HeaderFile
 #include <Handle_DBC_VArrayNodeOfVArrayOfInteger.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class DBC_VArrayOfInteger;
 class DBC_VArrayNodeOfVArrayOfInteger;
 
 
 
-class DBC_VArrayTNodeOfVArrayOfInteger  {
+class DBC_VArrayTNodeOfVArrayOfInteger 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      DBC_VArrayTNodeOfVArrayOfInteger();
+    DBC_VArrayTNodeOfVArrayOfInteger();
   
-      DBC_VArrayTNodeOfVArrayOfInteger(const Standard_Integer& aValue);
+    DBC_VArrayTNodeOfVArrayOfInteger(const Standard_Integer& aValue);
   
-        void SetValue(const Standard_Integer& aValue) ;
+      void SetValue (const Standard_Integer& aValue) ;
   
-        Standard_Address Value() const;
-
+      Standard_Address Value()  const;
 
 
 
@@ -58,7 +46,7 @@ private:
 
 
 
-Standard_Integer myValue;
+  Standard_Integer myValue;
 
 
 };
@@ -88,7 +76,6 @@ Standard_Integer myValue;
 #undef DBC_VArray_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DBC_VArrayTNodeOfVArrayOfInteger_HeaderFile

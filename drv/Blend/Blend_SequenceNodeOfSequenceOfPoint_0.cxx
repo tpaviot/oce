@@ -5,16 +5,10 @@
 
 #include <Blend_SequenceNodeOfSequenceOfPoint.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Blend_Point_HeaderFile
 #include <Blend_Point.hxx>
-#endif
-#ifndef _Blend_SequenceOfPoint_HeaderFile
 #include <Blend_SequenceOfPoint.hxx>
-#endif
 
  
 

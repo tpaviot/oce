@@ -5,16 +5,10 @@
 
 #include <GeomPlate_SequenceNodeOfSequenceOfAij.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _GeomPlate_Aij_HeaderFile
 #include <GeomPlate_Aij.hxx>
-#endif
-#ifndef _GeomPlate_SequenceOfAij_HeaderFile
 #include <GeomPlate_SequenceOfAij.hxx>
-#endif
 
  
 

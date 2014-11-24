@@ -5,18 +5,10 @@
 
 #include <AppParCurves_SequenceOfMultiBSpCurve.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _AppParCurves_MultiBSpCurve_HeaderFile
 #include <AppParCurves_MultiBSpCurve.hxx>
-#endif
-#ifndef _AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve_HeaderFile
 #include <AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve.hxx>
-#endif
  
 
 #define SeqItem AppParCurves_MultiBSpCurve

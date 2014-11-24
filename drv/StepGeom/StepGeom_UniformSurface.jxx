@@ -1,3 +1,1 @@
-#ifndef _StepGeom_UniformSurface_HeaderFile
 #include <StepGeom_UniformSurface.hxx>
-#endif

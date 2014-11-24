@@ -6,34 +6,16 @@
 #ifndef _Geom2dHatch_Classifier_HeaderFile
 #define _Geom2dHatch_Classifier_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Geom2dHatch_FClass2dOfClassifier_HeaderFile
 #include <Geom2dHatch_FClass2dOfClassifier.hxx>
-#endif
-#ifndef _Geom2dAdaptor_Curve_HeaderFile
 #include <Geom2dAdaptor_Curve.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _IntRes2d_Position_HeaderFile
 #include <IntRes2d_Position.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopAbs_State_HeaderFile
 #include <TopAbs_State.hxx>
-#endif
 class Standard_DomainError;
 class Geom2dHatch_Elements;
 class Geom2dAdaptor_Curve;
@@ -43,30 +25,30 @@ class gp_Pnt2d;
 
 
 
-class Geom2dHatch_Classifier  {
+class Geom2dHatch_Classifier 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Geom2dHatch_Classifier();
+  Standard_EXPORT Geom2dHatch_Classifier();
   
-  Standard_EXPORT   Geom2dHatch_Classifier(Geom2dHatch_Elements& F,const gp_Pnt2d& P,const Standard_Real Tol);
+  Standard_EXPORT Geom2dHatch_Classifier(Geom2dHatch_Elements& F, const gp_Pnt2d& P, const Standard_Real Tol);
   
-  Standard_EXPORT     void Perform(Geom2dHatch_Elements& F,const gp_Pnt2d& P,const Standard_Real Tol) ;
+  Standard_EXPORT   void Perform (Geom2dHatch_Elements& F, const gp_Pnt2d& P, const Standard_Real Tol) ;
   
-  Standard_EXPORT     TopAbs_State State() const;
+  Standard_EXPORT   TopAbs_State State()  const;
   
-        Standard_Boolean Rejected() const;
+      Standard_Boolean Rejected()  const;
   
-        Standard_Boolean NoWires() const;
+      Standard_Boolean NoWires()  const;
   
-  Standard_EXPORT    const Geom2dAdaptor_Curve& Edge() const;
+  Standard_EXPORT  const  Geom2dAdaptor_Curve& Edge()  const;
   
-  Standard_EXPORT     Standard_Real EdgeParameter() const;
+  Standard_EXPORT   Standard_Real EdgeParameter()  const;
   
-        IntRes2d_Position Position() const;
-
+      IntRes2d_Position Position()  const;
 
 
 
@@ -75,12 +57,12 @@ protected:
 
 
 
-Geom2dHatch_FClass2dOfClassifier myClassifier;
-Geom2dAdaptor_Curve myEdge;
-Standard_Real myEdgeParameter;
-IntRes2d_Position myPosition;
-Standard_Boolean rejected;
-Standard_Boolean nowires;
+  Geom2dHatch_FClass2dOfClassifier myClassifier;
+  Geom2dAdaptor_Curve myEdge;
+  Standard_Real myEdgeParameter;
+  IntRes2d_Position myPosition;
+  Standard_Boolean rejected;
+  Standard_Boolean nowires;
 
 
 private:
@@ -116,7 +98,6 @@ private:
 #undef TopClass_FaceClassifier_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dHatch_Classifier_HeaderFile

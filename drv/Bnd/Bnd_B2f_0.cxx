@@ -5,18 +5,10 @@
 
 #include <Bnd_B2f.hxx>
 
-#ifndef _gp_XY_HeaderFile
 #include <gp_XY.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _gp_Trsf2d_HeaderFile
 #include <gp_Trsf2d.hxx>
-#endif
-#ifndef _gp_Ax2d_HeaderFile
 #include <gp_Ax2d.hxx>
-#endif
  
 
 #define RealType Standard_ShortReal

@@ -6,45 +6,37 @@
 #ifndef _GCE2d_MakeRotation_HeaderFile
 #define _GCE2d_MakeRotation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom2d_Transformation_HeaderFile
 #include <Handle_Geom2d_Transformation.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Geom2d_Transformation;
 class gp_Pnt2d;
 
 
-//! This class implements an elementary construction algorithm for <br>
-//! a rotation in 2D space. The result is a Geom2d_Transformation transformation. <br>
-//! A MakeRotation object provides a framework for: <br>
-//! -   defining the construction of the transformation, <br>
-//! -   implementing the construction algorithm, and <br>
-//! -   consulting the result. <br>
-class GCE2d_MakeRotation  {
+//! This class implements an elementary construction algorithm for
+//! a rotation in 2D space. The result is a Geom2d_Transformation transformation.
+//! A MakeRotation object provides a framework for:
+//! -   defining the construction of the transformation,
+//! -   implementing the construction algorithm, and
+//! -   consulting the result.
+class GCE2d_MakeRotation 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Constructs a rotation through angle Angle about the center Point. <br>
-  Standard_EXPORT   GCE2d_MakeRotation(const gp_Pnt2d& Point,const Standard_Real Angle);
-  //!  Returns the constructed transformation. <br>
-  Standard_EXPORT    const Handle_Geom2d_Transformation& Value() const;
   
-  Standard_EXPORT    const Handle_Geom2d_Transformation& Operator() const;
+  //! Constructs a rotation through angle Angle about the center Point.
+  Standard_EXPORT GCE2d_MakeRotation(const gp_Pnt2d& Point, const Standard_Real Angle);
+  
+  //! Returns the constructed transformation.
+  Standard_EXPORT  const  Handle(Geom2d_Transformation)& Value()  const;
+  
+  Standard_EXPORT  const  Handle(Geom2d_Transformation)& Operator()  const;
 Standard_EXPORT operator Handle_Geom2d_Transformation() const;
-
 
 
 
@@ -59,7 +51,7 @@ private:
 
 
 
-Handle_Geom2d_Transformation TheRotation;
+  Handle(Geom2d_Transformation) TheRotation;
 
 
 };
@@ -68,7 +60,6 @@ Handle_Geom2d_Transformation TheRotation;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GCE2d_MakeRotation_HeaderFile

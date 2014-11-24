@@ -6,15 +6,18 @@
 #ifndef _BRepBuilderAPI_ShapeModification_HeaderFile
 #define _BRepBuilderAPI_ShapeModification_HeaderFile
 
-//! Lists the possible types of modification to a shape <br>
-//! following a topological operation: Preserved, Deleted, <br>
-//! Trimmed, Merged or BoundaryModified. <br>
-//! This enumeration enables you to assign a "state" to the <br>
-//! different shapes that are on the list of operands for <br>
-//! each API function. The MakeShape class then uses this <br>
-//! to determine what has happened to the shapes which <br>
-//! constitute the list of operands. <br>
-enum BRepBuilderAPI_ShapeModification {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Lists the possible types of modification to a shape
+//! following a topological operation: Preserved, Deleted,
+//! Trimmed, Merged or BoundaryModified.
+//! This enumeration enables you to assign a "state" to the
+//! different shapes that are on the list of operands for
+//! each API function. The MakeShape class then uses this
+//! to determine what has happened to the shapes which
+//! constitute the list of operands.
+enum BRepBuilderAPI_ShapeModification
+{
 BRepBuilderAPI_Preserved,
 BRepBuilderAPI_Deleted,
 BRepBuilderAPI_Trimmed,
@@ -22,8 +25,4 @@ BRepBuilderAPI_Merged,
 BRepBuilderAPI_BoundaryModified
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BRepBuilderAPI_ShapeModification_HeaderFile

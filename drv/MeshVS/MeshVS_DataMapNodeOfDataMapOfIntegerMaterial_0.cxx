@@ -5,22 +5,12 @@
 
 #include <MeshVS_DataMapNodeOfDataMapOfIntegerMaterial.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Graphic3d_MaterialAspect_HeaderFile
 #include <Graphic3d_MaterialAspect.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _MeshVS_DataMapOfIntegerMaterial_HeaderFile
 #include <MeshVS_DataMapOfIntegerMaterial.hxx>
-#endif
-#ifndef _MeshVS_DataMapIteratorOfDataMapOfIntegerMaterial_HeaderFile
 #include <MeshVS_DataMapIteratorOfDataMapOfIntegerMaterial.hxx>
-#endif
 
  
 

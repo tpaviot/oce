@@ -6,37 +6,17 @@
 #ifndef _IGESGeom_BSplineSurface_HeaderFile
 #define _IGESGeom_BSplineSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESGeom_BSplineSurface_HeaderFile
 #include <Handle_IGESGeom_BSplineSurface.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray2OfReal_HeaderFile
 #include <Handle_TColStd_HArray2OfReal.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray2OfXYZ_HeaderFile
 #include <Handle_TColgp_HArray2OfXYZ.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
 class TColStd_HArray1OfReal;
 class TColStd_HArray2OfReal;
 class TColgp_HArray2OfXYZ;
@@ -45,99 +25,124 @@ class Standard_OutOfRange;
 class gp_Pnt;
 
 
-//! defines IGESBSplineSurface, Type <128> Form <0-9> <br>
-//!          in package IGESGeom <br>
-//!          A parametric equation obtained by dividing two summations <br>
-//!          involving weights (which are real numbers), the control <br>
-//!          points, and B-Spline basis functions <br>
-class IGESGeom_BSplineSurface : public IGESData_IGESEntity {
+//! defines IGESBSplineSurface, Type <128> Form <0-9>
+//! in package IGESGeom
+//! A parametric equation obtained by dividing two summations
+//! involving weights (which are real numbers), the control
+//! points, and B-Spline basis functions
+class IGESGeom_BSplineSurface : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESGeom_BSplineSurface();
-  //! This method is used to set the fields of the class <br>
-//!           BSplineSurface <br>
-//!       - anIndexU             : Upper index of first sum <br>
-//!       - anIndexV             : Upper index of second sum <br>
-//!       - aDegU, aDegV         : Degrees of first and second sets <br>
-//!                                of basis functions <br>
-//!       - aCloseU, aCloseV     : 1 = Closed in U, V directions <br>
-//!                                0 = open in U, V directions <br>
-//!       - aPolynom             : 0 = Rational, 1 = polynomial <br>
-//!       - aPeriodU, aPeriodV   : 0 = Non periodic in U or V direction <br>
-//!                                1 = Periodic in U or V direction <br>
-//!       - allKnotsU, allKnotsV : Knots in U and V directions <br>
-//!       - allWeights           : Array of weights <br>
-//!       - allPoles             : XYZ coordinates of all control points <br>
-//!       - aUmin                : Starting value of U direction <br>
-//!       - aUmax                : Ending value of U direction <br>
-//!       - aVmin                : Starting value of V direction <br>
-//!       - aVmax                : Ending value of V direction <br>
-//! raises exception if allWeights & allPoles are not of same size. <br>
-  Standard_EXPORT     void Init(const Standard_Integer anIndexU,const Standard_Integer anIndexV,const Standard_Integer aDegU,const Standard_Integer aDegV,const Standard_Boolean aCloseU,const Standard_Boolean aCloseV,const Standard_Boolean aPolynom,const Standard_Boolean aPeriodU,const Standard_Boolean aPeriodV,const Handle(TColStd_HArray1OfReal)& allKnotsU,const Handle(TColStd_HArray1OfReal)& allKnotsV,const Handle(TColStd_HArray2OfReal)& allWeights,const Handle(TColgp_HArray2OfXYZ)& allPoles,const Standard_Real aUmin,const Standard_Real aUmax,const Standard_Real aVmin,const Standard_Real aVmax) ;
-  //! Changes FormNumber (indicates the Shape of the Surface) <br>
-//!           Error if not in range [0-9] <br>
-  Standard_EXPORT     void SetFormNumber(const Standard_Integer form) ;
-  //! returns the upper index of the first sum (U) <br>
-  Standard_EXPORT     Standard_Integer UpperIndexU() const;
-  //! returns the upper index of the second sum (V) <br>
-  Standard_EXPORT     Standard_Integer UpperIndexV() const;
-  //! returns degree of first set of basis functions <br>
-  Standard_EXPORT     Standard_Integer DegreeU() const;
-  //! returns degree of second set of basis functions <br>
-  Standard_EXPORT     Standard_Integer DegreeV() const;
-  //! True if closed in U direction else False <br>
-  Standard_EXPORT     Standard_Boolean IsClosedU() const;
-  //! True if closed in V direction else False <br>
-  Standard_EXPORT     Standard_Boolean IsClosedV() const;
-  //! True if polynomial, False if rational <br>
-//!           <flag> False (D) : computed from Weights <br>
-//!           <flag> True : recorded <br>
-  Standard_EXPORT     Standard_Boolean IsPolynomial(const Standard_Boolean flag = Standard_False) const;
-  //! True if periodic in U direction else False <br>
-  Standard_EXPORT     Standard_Boolean IsPeriodicU() const;
-  //! True if periodic in V direction else False <br>
-  Standard_EXPORT     Standard_Boolean IsPeriodicV() const;
-  //! returns number of knots in U direction <br>
-//! KnotsU are numbered from -DegreeU <br>
-  Standard_EXPORT     Standard_Integer NbKnotsU() const;
-  //! returns number of knots in V direction <br>
-//! KnotsV are numbered from -DegreeV <br>
-  Standard_EXPORT     Standard_Integer NbKnotsV() const;
-  //! returns the value of knot referred to by anIndex in U direction <br>
-//! raises exception if <br>
-//!      anIndex < -DegreeU() or anIndex > (NbKnotsU() - DegreeU()) <br>
-  Standard_EXPORT     Standard_Real KnotU(const Standard_Integer anIndex) const;
-  //! returns the value of knot referred to by anIndex in V direction <br>
-//! raises exception if <br>
-//!      anIndex < -DegreeV() or anIndex > (NbKnotsV() - DegreeV()) <br>
-  Standard_EXPORT     Standard_Real KnotV(const Standard_Integer anIndex) const;
-  //! returns number of poles in U direction <br>
-  Standard_EXPORT     Standard_Integer NbPolesU() const;
-  //! returns number of poles in V direction <br>
-  Standard_EXPORT     Standard_Integer NbPolesV() const;
-  //! returns the weight referred to by anIndex1, anIndex2 <br>
-//! raises exception if anIndex1 <= 0 or anIndex1 > NbPolesU() <br>
-//!               or if anIndex2 <= 0 or anIndex2 > NbPolesV() <br>
-  Standard_EXPORT     Standard_Real Weight(const Standard_Integer anIndex1,const Standard_Integer anIndex2) const;
-  //! returns the control point referenced by anIndex1, anIndex2 <br>
-//! raises exception if anIndex1 <= 0 or anIndex1 > NbPolesU() <br>
-//!               or if anIndex2 <= 0 or anIndex2 > NbPolesV() <br>
-  Standard_EXPORT     gp_Pnt Pole(const Standard_Integer anIndex1,const Standard_Integer anIndex2) const;
-  //! returns the control point referenced by anIndex1, anIndex2 <br>
-//! after applying the Transf.Matrix <br>
-//! raises exception if anIndex1 <= 0 or anIndex1 > NbPolesU() <br>
-//!               or if anIndex2 <= 0 or anIndex2 > NbPolesV() <br>
-  Standard_EXPORT     gp_Pnt TransformedPole(const Standard_Integer anIndex1,const Standard_Integer anIndex2) const;
-  //! returns starting value in the U direction <br>
-  Standard_EXPORT     Standard_Real UMin() const;
-  //! returns ending value in the U direction <br>
-  Standard_EXPORT     Standard_Real UMax() const;
-  //! returns starting value in the V direction <br>
-  Standard_EXPORT     Standard_Real VMin() const;
-  //! returns ending value in the V direction <br>
-  Standard_EXPORT     Standard_Real VMax() const;
+  Standard_EXPORT IGESGeom_BSplineSurface();
+  
+  //! This method is used to set the fields of the class
+  //! BSplineSurface
+  //! - anIndexU             : Upper index of first sum
+  //! - anIndexV             : Upper index of second sum
+  //! - aDegU, aDegV         : Degrees of first and second sets
+  //! of basis functions
+  //! - aCloseU, aCloseV     : 1 = Closed in U, V directions
+  //! 0 = open in U, V directions
+  //! - aPolynom             : 0 = Rational, 1 = polynomial
+  //! - aPeriodU, aPeriodV   : 0 = Non periodic in U or V direction
+  //! 1 = Periodic in U or V direction
+  //! - allKnotsU, allKnotsV : Knots in U and V directions
+  //! - allWeights           : Array of weights
+  //! - allPoles             : XYZ coordinates of all control points
+  //! - aUmin                : Starting value of U direction
+  //! - aUmax                : Ending value of U direction
+  //! - aVmin                : Starting value of V direction
+  //! - aVmax                : Ending value of V direction
+  //! raises exception if allWeights & allPoles are not of same size.
+  Standard_EXPORT   void Init (const Standard_Integer anIndexU, const Standard_Integer anIndexV, const Standard_Integer aDegU, const Standard_Integer aDegV, const Standard_Boolean aCloseU, const Standard_Boolean aCloseV, const Standard_Boolean aPolynom, const Standard_Boolean aPeriodU, const Standard_Boolean aPeriodV, const Handle(TColStd_HArray1OfReal)& allKnotsU, const Handle(TColStd_HArray1OfReal)& allKnotsV, const Handle(TColStd_HArray2OfReal)& allWeights, const Handle(TColgp_HArray2OfXYZ)& allPoles, const Standard_Real aUmin, const Standard_Real aUmax, const Standard_Real aVmin, const Standard_Real aVmax) ;
+  
+  //! Changes FormNumber (indicates the Shape of the Surface)
+  //! Error if not in range [0-9]
+  Standard_EXPORT   void SetFormNumber (const Standard_Integer form) ;
+  
+  //! returns the upper index of the first sum (U)
+  Standard_EXPORT   Standard_Integer UpperIndexU()  const;
+  
+  //! returns the upper index of the second sum (V)
+  Standard_EXPORT   Standard_Integer UpperIndexV()  const;
+  
+  //! returns degree of first set of basis functions
+  Standard_EXPORT   Standard_Integer DegreeU()  const;
+  
+  //! returns degree of second set of basis functions
+  Standard_EXPORT   Standard_Integer DegreeV()  const;
+  
+  //! True if closed in U direction else False
+  Standard_EXPORT   Standard_Boolean IsClosedU()  const;
+  
+  //! True if closed in V direction else False
+  Standard_EXPORT   Standard_Boolean IsClosedV()  const;
+  
+  //! True if polynomial, False if rational
+  //! <flag> False (D) : computed from Weights
+  //! <flag> True : recorded
+  Standard_EXPORT   Standard_Boolean IsPolynomial (const Standard_Boolean flag = Standard_False)  const;
+  
+  //! True if periodic in U direction else False
+  Standard_EXPORT   Standard_Boolean IsPeriodicU()  const;
+  
+  //! True if periodic in V direction else False
+  Standard_EXPORT   Standard_Boolean IsPeriodicV()  const;
+  
+  //! returns number of knots in U direction
+  //! KnotsU are numbered from -DegreeU
+  Standard_EXPORT   Standard_Integer NbKnotsU()  const;
+  
+  //! returns number of knots in V direction
+  //! KnotsV are numbered from -DegreeV
+  Standard_EXPORT   Standard_Integer NbKnotsV()  const;
+  
+  //! returns the value of knot referred to by anIndex in U direction
+  //! raises exception if
+  //! anIndex < -DegreeU() or anIndex > (NbKnotsU() - DegreeU())
+  Standard_EXPORT   Standard_Real KnotU (const Standard_Integer anIndex)  const;
+  
+  //! returns the value of knot referred to by anIndex in V direction
+  //! raises exception if
+  //! anIndex < -DegreeV() or anIndex > (NbKnotsV() - DegreeV())
+  Standard_EXPORT   Standard_Real KnotV (const Standard_Integer anIndex)  const;
+  
+  //! returns number of poles in U direction
+  Standard_EXPORT   Standard_Integer NbPolesU()  const;
+  
+  //! returns number of poles in V direction
+  Standard_EXPORT   Standard_Integer NbPolesV()  const;
+  
+  //! returns the weight referred to by anIndex1, anIndex2
+  //! raises exception if anIndex1 <= 0 or anIndex1 > NbPolesU()
+  //! or if anIndex2 <= 0 or anIndex2 > NbPolesV()
+  Standard_EXPORT   Standard_Real Weight (const Standard_Integer anIndex1, const Standard_Integer anIndex2)  const;
+  
+  //! returns the control point referenced by anIndex1, anIndex2
+  //! raises exception if anIndex1 <= 0 or anIndex1 > NbPolesU()
+  //! or if anIndex2 <= 0 or anIndex2 > NbPolesV()
+  Standard_EXPORT   gp_Pnt Pole (const Standard_Integer anIndex1, const Standard_Integer anIndex2)  const;
+  
+  //! returns the control point referenced by anIndex1, anIndex2
+  //! after applying the Transf.Matrix
+  //! raises exception if anIndex1 <= 0 or anIndex1 > NbPolesU()
+  //! or if anIndex2 <= 0 or anIndex2 > NbPolesV()
+  Standard_EXPORT   gp_Pnt TransformedPole (const Standard_Integer anIndex1, const Standard_Integer anIndex2)  const;
+  
+  //! returns starting value in the U direction
+  Standard_EXPORT   Standard_Real UMin()  const;
+  
+  //! returns ending value in the U direction
+  Standard_EXPORT   Standard_Real UMax()  const;
+  
+  //! returns starting value in the V direction
+  Standard_EXPORT   Standard_Real VMin()  const;
+  
+  //! returns ending value in the V direction
+  Standard_EXPORT   Standard_Real VMax()  const;
 
 
 
@@ -152,23 +157,23 @@ protected:
 private: 
 
 
-Standard_Integer theIndexU;
-Standard_Integer theIndexV;
-Standard_Integer theDegreeU;
-Standard_Integer theDegreeV;
-Standard_Boolean isClosedU;
-Standard_Boolean isClosedV;
-Standard_Boolean isPolynomial;
-Standard_Boolean isPeriodicU;
-Standard_Boolean isPeriodicV;
-Handle_TColStd_HArray1OfReal theKnotsU;
-Handle_TColStd_HArray1OfReal theKnotsV;
-Handle_TColStd_HArray2OfReal theWeights;
-Handle_TColgp_HArray2OfXYZ thePoles;
-Standard_Real theUmin;
-Standard_Real theUmax;
-Standard_Real theVmin;
-Standard_Real theVmax;
+  Standard_Integer theIndexU;
+  Standard_Integer theIndexV;
+  Standard_Integer theDegreeU;
+  Standard_Integer theDegreeV;
+  Standard_Boolean isClosedU;
+  Standard_Boolean isClosedV;
+  Standard_Boolean isPolynomial;
+  Standard_Boolean isPeriodicU;
+  Standard_Boolean isPeriodicV;
+  Handle(TColStd_HArray1OfReal) theKnotsU;
+  Handle(TColStd_HArray1OfReal) theKnotsV;
+  Handle(TColStd_HArray2OfReal) theWeights;
+  Handle(TColgp_HArray2OfXYZ) thePoles;
+  Standard_Real theUmin;
+  Standard_Real theUmax;
+  Standard_Real theVmin;
+  Standard_Real theVmax;
 
 
 };
@@ -177,7 +182,6 @@ Standard_Real theVmax;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGeom_BSplineSurface_HeaderFile

@@ -6,28 +6,14 @@
 #ifndef _BRep_ListIteratorOfListOfCurveRepresentation_HeaderFile
 #define _BRep_ListIteratorOfListOfCurveRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_BRep_CurveRepresentation_HeaderFile
 #include <Handle_BRep_CurveRepresentation.hxx>
-#endif
-#ifndef _Handle_BRep_ListNodeOfListOfCurveRepresentation_HeaderFile
 #include <Handle_BRep_ListNodeOfListOfCurveRepresentation.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class BRep_ListOfCurveRepresentation;
@@ -36,27 +22,27 @@ class BRep_ListNodeOfListOfCurveRepresentation;
 
 
 
-class BRep_ListIteratorOfListOfCurveRepresentation  {
+class BRep_ListIteratorOfListOfCurveRepresentation 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRep_ListIteratorOfListOfCurveRepresentation();
+  Standard_EXPORT BRep_ListIteratorOfListOfCurveRepresentation();
   
-  Standard_EXPORT   BRep_ListIteratorOfListOfCurveRepresentation(const BRep_ListOfCurveRepresentation& L);
+  Standard_EXPORT BRep_ListIteratorOfListOfCurveRepresentation(const BRep_ListOfCurveRepresentation& L);
   
-  Standard_EXPORT     void Initialize(const BRep_ListOfCurveRepresentation& L) ;
+  Standard_EXPORT   void Initialize (const BRep_ListOfCurveRepresentation& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     Handle_BRep_CurveRepresentation& Value() const;
+  Standard_EXPORT   Handle(BRep_CurveRepresentation)& Value()  const;
 
 
 friend class BRep_ListOfCurveRepresentation;
-
 
 
 protected:
@@ -69,13 +55,13 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
 
-#define Item Handle_BRep_CurveRepresentation
+#define Item Handle(BRep_CurveRepresentation)
 #define Item_hxx <BRep_CurveRepresentation.hxx>
 #define TCollection_ListNode BRep_ListNodeOfListOfCurveRepresentation
 #define TCollection_ListNode_hxx <BRep_ListNodeOfListOfCurveRepresentation.hxx>
@@ -100,7 +86,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRep_ListIteratorOfListOfCurveRepresentation_HeaderFile

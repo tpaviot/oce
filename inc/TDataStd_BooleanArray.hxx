@@ -6,37 +6,17 @@
 #ifndef _TDataStd_BooleanArray_HeaderFile
 #define _TDataStd_BooleanArray_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDataStd_BooleanArray_HeaderFile
 #include <Handle_TDataStd_BooleanArray.hxx>
-#endif
 
-#ifndef _Handle_TColStd_HArray1OfByte_HeaderFile
 #include <Handle_TColStd_HArray1OfByte.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class TColStd_HArray1OfByte;
 class Standard_GUID;
 class TDF_Label;
@@ -44,49 +24,59 @@ class TDF_Attribute;
 class TDF_RelocationTable;
 
 
-//! An array of boolean values. <br>
-class TDataStd_BooleanArray : public TDF_Attribute {
+//! An array of boolean values.
+class TDataStd_BooleanArray : public TDF_Attribute
+{
 
 public:
 
-  //! Static methods <br>
-//!          ============== <br>//! Returns an ID for array. <br>
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
-  //! Finds or creates an attribute with the array. <br>
-  Standard_EXPORT   static  Handle_TDataStd_BooleanArray Set(const TDF_Label& label,const Standard_Integer lower,const Standard_Integer upper) ;
-  //! Initialize the inner array with bounds from <lower> to <upper> <br>
-  Standard_EXPORT     void Init(const Standard_Integer lower,const Standard_Integer upper) ;
-  //! Sets the <Index>th element of the array to <Value> <br>
-//! OutOfRange exception is raised if <Index> doesn't respect Lower and Upper bounds of the internal  array. <br>
-  Standard_EXPORT     void SetValue(const Standard_Integer index,const Standard_Boolean value) ;
-  //! Return the value of the <Index>th element of the array. <br>
-  Standard_EXPORT     Standard_Boolean Value(const Standard_Integer Index) const;
-    Standard_Boolean operator ()(const Standard_Integer Index) const
+  
+  //! Static methods
+  //! ==============
+  //! Returns an ID for array.
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
+  
+  //! Finds or creates an attribute with the array.
+  Standard_EXPORT static   Handle(TDataStd_BooleanArray) Set (const TDF_Label& label, const Standard_Integer lower, const Standard_Integer upper) ;
+  
+  //! Initialize the inner array with bounds from <lower> to <upper>
+  Standard_EXPORT   void Init (const Standard_Integer lower, const Standard_Integer upper) ;
+  
+  //! Sets the <Index>th element of the array to <Value>
+  //! OutOfRange exception is raised if <Index> doesn't respect Lower and Upper bounds of the internal  array.
+  Standard_EXPORT   void SetValue (const Standard_Integer index, const Standard_Boolean value) ;
+  
+  //! Return the value of the <Index>th element of the array.
+  Standard_EXPORT   Standard_Boolean Value (const Standard_Integer Index)  const;
+  Standard_Boolean operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
-  //! Returns the lower boundary of the array. <br>
-  Standard_EXPORT     Standard_Integer Lower() const;
-  //! Returns the upper boundary of the array. <br>
-  Standard_EXPORT     Standard_Integer Upper() const;
-  //! Returns the number of elements in the array. <br>
-  Standard_EXPORT     Standard_Integer Length() const;
   
-  Standard_EXPORT    const Handle_TColStd_HArray1OfByte& InternalArray() const;
+  //! Returns the lower boundary of the array.
+  Standard_EXPORT   Standard_Integer Lower()  const;
   
-  Standard_EXPORT     void SetInternalArray(const Handle(TColStd_HArray1OfByte)& values) ;
+  //! Returns the upper boundary of the array.
+  Standard_EXPORT   Standard_Integer Upper()  const;
   
-  Standard_EXPORT   TDataStd_BooleanArray();
+  //! Returns the number of elements in the array.
+  Standard_EXPORT   Standard_Integer Length()  const;
   
-  Standard_EXPORT    const Standard_GUID& ID() const;
+  Standard_EXPORT  const  Handle(TColStd_HArray1OfByte)& InternalArray()  const;
   
-  Standard_EXPORT     void Restore(const Handle(TDF_Attribute)& with) ;
+  Standard_EXPORT   void SetInternalArray (const Handle(TColStd_HArray1OfByte)& values) ;
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  Standard_EXPORT TDataStd_BooleanArray();
   
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& into,const Handle(TDF_RelocationTable)& RT) const;
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
   
-  Standard_EXPORT   virtual  Standard_OStream& Dump(Standard_OStream& OS) const;
+  Standard_EXPORT   void Restore (const Handle(TDF_Attribute)& with) ;
+  
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
+  
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& into, const Handle(TDF_RelocationTable)& RT)  const;
+  
+  Standard_EXPORT virtual   Standard_OStream& Dump (Standard_OStream& OS)  const;
 
 
 
@@ -101,9 +91,9 @@ protected:
 private: 
 
 
-Handle_TColStd_HArray1OfByte myValues;
-Standard_Integer myLower;
-Standard_Integer myUpper;
+  Handle(TColStd_HArray1OfByte) myValues;
+  Standard_Integer myLower;
+  Standard_Integer myUpper;
 
 
 };
@@ -112,7 +102,6 @@ Standard_Integer myUpper;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_BooleanArray_HeaderFile

@@ -6,47 +6,39 @@
 #ifndef _Vrml_Instancing_HeaderFile
 #define _Vrml_Instancing_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class TCollection_AsciiString;
 
 
-//! defines  "instancing" - using  the  same  instance  of  a  node <br>
-//!          multiple  times. <br>
-//!  It  is  accomplished  by  using  the  "DEF"  and  "USE"  keywords. <br>
-//!  The  DEF  keyword  both  defines  a  named  node,  and  creates  a  single <br>
-//!  instance  of  it. <br>
-//!  The  USE  keyword  indicates  that  the  most  recently  defined  instance <br>
-//!  should  be  used  again. <br>
-//!  If  several  nades  were  given  the  same  name,  then  the  last  DEF <br>
-//!  encountered  during  parsing  "wins". <br>
-//!  DEF/USE  is  limited  to  a  single  file. <br>
-class Vrml_Instancing  {
+//! defines  "instancing" - using  the  same  instance  of  a  node
+//! multiple  times.
+//! It  is  accomplished  by  using  the  "DEF"  and  "USE"  keywords.
+//! The  DEF  keyword  both  defines  a  named  node,  and  creates  a  single
+//! instance  of  it.
+//! The  USE  keyword  indicates  that  the  most  recently  defined  instance
+//! should  be  used  again.
+//! If  several  nades  were  given  the  same  name,  then  the  last  DEF
+//! encountered  during  parsing  "wins".
+//! DEF/USE  is  limited  to  a  single  file.
+class Vrml_Instancing 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Adds "DEF  <myName>" in  anOStream  (VRML  file). <br>
-  Standard_EXPORT   Vrml_Instancing(const TCollection_AsciiString& aString);
-  //! Adds "USE  <myName>" in  anOStream (VRML  file). <br>
-  Standard_EXPORT     Standard_OStream& DEF(Standard_OStream& anOStream) const;
   
-  Standard_EXPORT     Standard_OStream& USE(Standard_OStream& anOStream) const;
-
+  //! Adds "DEF  <myName>" in  anOStream  (VRML  file).
+  Standard_EXPORT Vrml_Instancing(const TCollection_AsciiString& aString);
+  
+  //! Adds "USE  <myName>" in  anOStream (VRML  file).
+  Standard_EXPORT   Standard_OStream& DEF (Standard_OStream& anOStream)  const;
+  
+  Standard_EXPORT   Standard_OStream& USE (Standard_OStream& anOStream)  const;
 
 
 
@@ -61,7 +53,7 @@ private:
 
 
 
-TCollection_AsciiString myName;
+  TCollection_AsciiString myName;
 
 
 };
@@ -70,7 +62,6 @@ TCollection_AsciiString myName;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Vrml_Instancing_HeaderFile

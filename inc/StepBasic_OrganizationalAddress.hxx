@@ -6,62 +6,46 @@
 #ifndef _StepBasic_OrganizationalAddress_HeaderFile
 #define _StepBasic_OrganizationalAddress_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_OrganizationalAddress_HeaderFile
 #include <Handle_StepBasic_OrganizationalAddress.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_HArray1OfOrganization_HeaderFile
 #include <Handle_StepBasic_HArray1OfOrganization.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepBasic_Address_HeaderFile
 #include <StepBasic_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepBasic_Organization_HeaderFile
 #include <Handle_StepBasic_Organization.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StepBasic_HArray1OfOrganization;
 class TCollection_HAsciiString;
 class StepBasic_Organization;
 
 
 
-class StepBasic_OrganizationalAddress : public StepBasic_Address {
+class StepBasic_OrganizationalAddress : public StepBasic_Address
+{
 
 public:
 
-  //! Returns a OrganizationalAddress <br>
-  Standard_EXPORT   StepBasic_OrganizationalAddress();
   
-  Standard_EXPORT   virtual  void Init(const Standard_Boolean hasAinternalLocation,const Handle(TCollection_HAsciiString)& aInternalLocation,const Standard_Boolean hasAstreetNumber,const Handle(TCollection_HAsciiString)& aStreetNumber,const Standard_Boolean hasAstreet,const Handle(TCollection_HAsciiString)& aStreet,const Standard_Boolean hasApostalBox,const Handle(TCollection_HAsciiString)& aPostalBox,const Standard_Boolean hasAtown,const Handle(TCollection_HAsciiString)& aTown,const Standard_Boolean hasAregion,const Handle(TCollection_HAsciiString)& aRegion,const Standard_Boolean hasApostalCode,const Handle(TCollection_HAsciiString)& aPostalCode,const Standard_Boolean hasAcountry,const Handle(TCollection_HAsciiString)& aCountry,const Standard_Boolean hasAfacsimileNumber,const Handle(TCollection_HAsciiString)& aFacsimileNumber,const Standard_Boolean hasAtelephoneNumber,const Handle(TCollection_HAsciiString)& aTelephoneNumber,const Standard_Boolean hasAelectronicMailAddress,const Handle(TCollection_HAsciiString)& aElectronicMailAddress,const Standard_Boolean hasAtelexNumber,const Handle(TCollection_HAsciiString)& aTelexNumber) ;
+  //! Returns a OrganizationalAddress
+  Standard_EXPORT StepBasic_OrganizationalAddress();
   
-  Standard_EXPORT   virtual  void Init(const Standard_Boolean hasAinternalLocation,const Handle(TCollection_HAsciiString)& aInternalLocation,const Standard_Boolean hasAstreetNumber,const Handle(TCollection_HAsciiString)& aStreetNumber,const Standard_Boolean hasAstreet,const Handle(TCollection_HAsciiString)& aStreet,const Standard_Boolean hasApostalBox,const Handle(TCollection_HAsciiString)& aPostalBox,const Standard_Boolean hasAtown,const Handle(TCollection_HAsciiString)& aTown,const Standard_Boolean hasAregion,const Handle(TCollection_HAsciiString)& aRegion,const Standard_Boolean hasApostalCode,const Handle(TCollection_HAsciiString)& aPostalCode,const Standard_Boolean hasAcountry,const Handle(TCollection_HAsciiString)& aCountry,const Standard_Boolean hasAfacsimileNumber,const Handle(TCollection_HAsciiString)& aFacsimileNumber,const Standard_Boolean hasAtelephoneNumber,const Handle(TCollection_HAsciiString)& aTelephoneNumber,const Standard_Boolean hasAelectronicMailAddress,const Handle(TCollection_HAsciiString)& aElectronicMailAddress,const Standard_Boolean hasAtelexNumber,const Handle(TCollection_HAsciiString)& aTelexNumber,const Handle(StepBasic_HArray1OfOrganization)& aOrganizations,const Handle(TCollection_HAsciiString)& aDescription) ;
+  Standard_EXPORT virtual   void Init (const Standard_Boolean hasAinternalLocation, const Handle(TCollection_HAsciiString)& aInternalLocation, const Standard_Boolean hasAstreetNumber, const Handle(TCollection_HAsciiString)& aStreetNumber, const Standard_Boolean hasAstreet, const Handle(TCollection_HAsciiString)& aStreet, const Standard_Boolean hasApostalBox, const Handle(TCollection_HAsciiString)& aPostalBox, const Standard_Boolean hasAtown, const Handle(TCollection_HAsciiString)& aTown, const Standard_Boolean hasAregion, const Handle(TCollection_HAsciiString)& aRegion, const Standard_Boolean hasApostalCode, const Handle(TCollection_HAsciiString)& aPostalCode, const Standard_Boolean hasAcountry, const Handle(TCollection_HAsciiString)& aCountry, const Standard_Boolean hasAfacsimileNumber, const Handle(TCollection_HAsciiString)& aFacsimileNumber, const Standard_Boolean hasAtelephoneNumber, const Handle(TCollection_HAsciiString)& aTelephoneNumber, const Standard_Boolean hasAelectronicMailAddress, const Handle(TCollection_HAsciiString)& aElectronicMailAddress, const Standard_Boolean hasAtelexNumber, const Handle(TCollection_HAsciiString)& aTelexNumber) ;
   
-  Standard_EXPORT     void SetOrganizations(const Handle(StepBasic_HArray1OfOrganization)& aOrganizations) ;
+  Standard_EXPORT virtual   void Init (const Standard_Boolean hasAinternalLocation, const Handle(TCollection_HAsciiString)& aInternalLocation, const Standard_Boolean hasAstreetNumber, const Handle(TCollection_HAsciiString)& aStreetNumber, const Standard_Boolean hasAstreet, const Handle(TCollection_HAsciiString)& aStreet, const Standard_Boolean hasApostalBox, const Handle(TCollection_HAsciiString)& aPostalBox, const Standard_Boolean hasAtown, const Handle(TCollection_HAsciiString)& aTown, const Standard_Boolean hasAregion, const Handle(TCollection_HAsciiString)& aRegion, const Standard_Boolean hasApostalCode, const Handle(TCollection_HAsciiString)& aPostalCode, const Standard_Boolean hasAcountry, const Handle(TCollection_HAsciiString)& aCountry, const Standard_Boolean hasAfacsimileNumber, const Handle(TCollection_HAsciiString)& aFacsimileNumber, const Standard_Boolean hasAtelephoneNumber, const Handle(TCollection_HAsciiString)& aTelephoneNumber, const Standard_Boolean hasAelectronicMailAddress, const Handle(TCollection_HAsciiString)& aElectronicMailAddress, const Standard_Boolean hasAtelexNumber, const Handle(TCollection_HAsciiString)& aTelexNumber, const Handle(StepBasic_HArray1OfOrganization)& aOrganizations, const Handle(TCollection_HAsciiString)& aDescription) ;
   
-  Standard_EXPORT     Handle_StepBasic_HArray1OfOrganization Organizations() const;
+  Standard_EXPORT   void SetOrganizations (const Handle(StepBasic_HArray1OfOrganization)& aOrganizations) ;
   
-  Standard_EXPORT     Handle_StepBasic_Organization OrganizationsValue(const Standard_Integer num) const;
+  Standard_EXPORT   Handle(StepBasic_HArray1OfOrganization) Organizations()  const;
   
-  Standard_EXPORT     Standard_Integer NbOrganizations() const;
+  Standard_EXPORT   Handle(StepBasic_Organization) OrganizationsValue (const Standard_Integer num)  const;
   
-  Standard_EXPORT     void SetDescription(const Handle(TCollection_HAsciiString)& aDescription) ;
+  Standard_EXPORT   Standard_Integer NbOrganizations()  const;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString Description() const;
+  Standard_EXPORT   void SetDescription (const Handle(TCollection_HAsciiString)& aDescription) ;
+  
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Description()  const;
 
 
 
@@ -76,8 +60,8 @@ protected:
 private: 
 
 
-Handle_StepBasic_HArray1OfOrganization organizations;
-Handle_TCollection_HAsciiString description;
+  Handle(StepBasic_HArray1OfOrganization) organizations;
+  Handle(TCollection_HAsciiString) description;
 
 
 };
@@ -86,7 +70,6 @@ Handle_TCollection_HAsciiString description;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_OrganizationalAddress_HeaderFile

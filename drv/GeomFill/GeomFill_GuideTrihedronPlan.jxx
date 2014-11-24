@@ -1,27 +1,9 @@
-#ifndef _Adaptor3d_HCurve_HeaderFile
 #include <Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _TColgp_HArray2OfPnt2d_HeaderFile
 #include <TColgp_HArray2OfPnt2d.hxx>
-#endif
-#ifndef _GeomFill_Frenet_HeaderFile
 #include <GeomFill_Frenet.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_ConstructionError_HeaderFile
 #include <Standard_ConstructionError.hxx>
-#endif
-#ifndef _GeomFill_TrihedronLaw_HeaderFile
 #include <GeomFill_TrihedronLaw.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _GeomFill_GuideTrihedronPlan_HeaderFile
 #include <GeomFill_GuideTrihedronPlan.hxx>
-#endif

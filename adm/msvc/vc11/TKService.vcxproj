@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{95A9740A-086D-01F5-13EF-A5B50F11EFB5}</ProjectGuid>
+    <ProjectGuid>{D89408DD-07A7-0663-0F17-C9D63A0F9D1E}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -173,7 +173,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Image_DLL;__WNT_DLL;__Cocoa_DLL;__TColQuantity_DLL;__Font_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Image_DLL;__WNT_DLL;__Cocoa_DLL;__TColQuantity_DLL;__Font_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -188,7 +188,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Image_DLL;__WNT_DLL;__Cocoa_DLL;__TColQuantity_DLL;__Font_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Image_DLL;__WNT_DLL;__Cocoa_DLL;__TColQuantity_DLL;__Font_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKernel.lib;TKMath.lib;TKBRep.lib;TKShHealing.lib;TKGeomBase.lib;TKGeomAlgo.lib;TKG2d.lib;TKG3d.lib;TKTopAlgo.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -216,7 +216,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Image_DLL;__WNT_DLL;__Cocoa_DLL;__TColQuantity_DLL;__Font_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Image_DLL;__WNT_DLL;__Cocoa_DLL;__TColQuantity_DLL;__Font_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win64\vc11\objd\TKService/</AssemblerListingLocation>
@@ -232,7 +232,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Image_DLL;__WNT_DLL;__Cocoa_DLL;__TColQuantity_DLL;__Font_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Image_DLL;__WNT_DLL;__Cocoa_DLL;__TColQuantity_DLL;__Font_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKernel.lib;TKMath.lib;TKBRep.lib;TKShHealing.lib;TKGeomBase.lib;TKGeomAlgo.lib;TKG2d.lib;TKG3d.lib;TKTopAlgo.lib;opengl32.lib;glu32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>

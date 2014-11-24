@@ -5,16 +5,10 @@
 
 #include <Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Contap_TheSegmentOfTheSearch_HeaderFile
 #include <Contap_TheSegmentOfTheSearch.hxx>
-#endif
-#ifndef _Contap_SequenceOfSegmentOfTheSearch_HeaderFile
 #include <Contap_SequenceOfSegmentOfTheSearch.hxx>
-#endif
 
  
 

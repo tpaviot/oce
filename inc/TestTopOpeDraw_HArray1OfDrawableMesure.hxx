@@ -6,28 +6,14 @@
 #ifndef _TestTopOpeDraw_HArray1OfDrawableMesure_HeaderFile
 #define _TestTopOpeDraw_HArray1OfDrawableMesure_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TestTopOpeDraw_HArray1OfDrawableMesure_HeaderFile
 #include <Handle_TestTopOpeDraw_HArray1OfDrawableMesure.hxx>
-#endif
 
-#ifndef _TestTopOpeDraw_Array1OfDrawableMesure_HeaderFile
 #include <TestTopOpeDraw_Array1OfDrawableMesure.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_TestTopOpeDraw_DrawableMesure_HeaderFile
 #include <Handle_TestTopOpeDraw_DrawableMesure.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class TestTopOpeDraw_Array1OfDrawableMesure;
 
 
 
-class TestTopOpeDraw_HArray1OfDrawableMesure : public MMgt_TShared {
+class TestTopOpeDraw_HArray1OfDrawableMesure : public MMgt_TShared
+{
 
 public:
 
   
-      TestTopOpeDraw_HArray1OfDrawableMesure(const Standard_Integer Low,const Standard_Integer Up);
+    TestTopOpeDraw_HArray1OfDrawableMesure(const Standard_Integer Low, const Standard_Integer Up);
   
-      TestTopOpeDraw_HArray1OfDrawableMesure(const Standard_Integer Low,const Standard_Integer Up,const Handle(TestTopOpeDraw_DrawableMesure)& V);
+    TestTopOpeDraw_HArray1OfDrawableMesure(const Standard_Integer Low, const Standard_Integer Up, const Handle(TestTopOpeDraw_DrawableMesure)& V);
   
-        void Init(const Handle(TestTopOpeDraw_DrawableMesure)& V) ;
+      void Init (const Handle(TestTopOpeDraw_DrawableMesure)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(TestTopOpeDraw_DrawableMesure)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(TestTopOpeDraw_DrawableMesure)& Value) ;
   
-       const Handle_TestTopOpeDraw_DrawableMesure& Value(const Standard_Integer Index) const;
+     const  Handle(TestTopOpeDraw_DrawableMesure)& Value (const Standard_Integer Index)  const;
   
-        Handle_TestTopOpeDraw_DrawableMesure& ChangeValue(const Standard_Integer Index) ;
+      Handle(TestTopOpeDraw_DrawableMesure)& ChangeValue (const Standard_Integer Index) ;
   
-       const TestTopOpeDraw_Array1OfDrawableMesure& Array1() const;
+     const  TestTopOpeDraw_Array1OfDrawableMesure& Array1()  const;
   
-        TestTopOpeDraw_Array1OfDrawableMesure& ChangeArray1() ;
+      TestTopOpeDraw_Array1OfDrawableMesure& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-TestTopOpeDraw_Array1OfDrawableMesure myArray;
+  TestTopOpeDraw_Array1OfDrawableMesure myArray;
 
 
 };
 
-#define ItemHArray1 Handle_TestTopOpeDraw_DrawableMesure
+#define ItemHArray1 Handle(TestTopOpeDraw_DrawableMesure)
 #define ItemHArray1_hxx <TestTopOpeDraw_DrawableMesure.hxx>
 #define TheArray1 TestTopOpeDraw_Array1OfDrawableMesure
 #define TheArray1_hxx <TestTopOpeDraw_Array1OfDrawableMesure.hxx>
@@ -103,7 +90,6 @@ TestTopOpeDraw_Array1OfDrawableMesure myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TestTopOpeDraw_HArray1OfDrawableMesure_HeaderFile

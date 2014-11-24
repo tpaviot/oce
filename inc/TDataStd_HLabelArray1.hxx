@@ -6,25 +6,13 @@
 #ifndef _TDataStd_HLabelArray1_HeaderFile
 #define _TDataStd_HLabelArray1_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDataStd_HLabelArray1_HeaderFile
 #include <Handle_TDataStd_HLabelArray1.hxx>
-#endif
 
-#ifndef _TDataStd_LabelArray1_HeaderFile
 #include <TDataStd_LabelArray1.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class TDataStd_LabelArray1;
 
 
 
-class TDataStd_HLabelArray1 : public MMgt_TShared {
+class TDataStd_HLabelArray1 : public MMgt_TShared
+{
 
 public:
 
   
-      TDataStd_HLabelArray1(const Standard_Integer Low,const Standard_Integer Up);
+    TDataStd_HLabelArray1(const Standard_Integer Low, const Standard_Integer Up);
   
-      TDataStd_HLabelArray1(const Standard_Integer Low,const Standard_Integer Up,const TDF_Label& V);
+    TDataStd_HLabelArray1(const Standard_Integer Low, const Standard_Integer Up, const TDF_Label& V);
   
-        void Init(const TDF_Label& V) ;
+      void Init (const TDF_Label& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const TDF_Label& Value) ;
+      void SetValue (const Standard_Integer Index, const TDF_Label& Value) ;
   
-       const TDF_Label& Value(const Standard_Integer Index) const;
+     const  TDF_Label& Value (const Standard_Integer Index)  const;
   
-        TDF_Label& ChangeValue(const Standard_Integer Index) ;
+      TDF_Label& ChangeValue (const Standard_Integer Index) ;
   
-       const TDataStd_LabelArray1& Array1() const;
+     const  TDataStd_LabelArray1& Array1()  const;
   
-        TDataStd_LabelArray1& ChangeArray1() ;
+      TDataStd_LabelArray1& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-TDataStd_LabelArray1 myArray;
+  TDataStd_LabelArray1 myArray;
 
 
 };
@@ -100,7 +89,6 @@ TDataStd_LabelArray1 myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_HLabelArray1_HeaderFile

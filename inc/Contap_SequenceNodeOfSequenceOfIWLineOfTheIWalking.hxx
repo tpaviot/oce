@@ -6,38 +6,27 @@
 #ifndef _Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking_HeaderFile
 #define _Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking_HeaderFile
 #include <Handle_Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking.hxx>
-#endif
 
-#ifndef _Handle_Contap_TheIWLineOfTheIWalking_HeaderFile
 #include <Handle_Contap_TheIWLineOfTheIWalking.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Contap_TheIWLineOfTheIWalking;
 class Contap_SequenceOfIWLineOfTheIWalking;
 
 
 
-class Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking : public TCollection_SeqNode {
+class Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking : public TCollection_SeqNode
+{
 
 public:
 
   
-      Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking(const Handle(Contap_TheIWLineOfTheIWalking)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking(const Handle(Contap_TheIWLineOfTheIWalking)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_Contap_TheIWLineOfTheIWalking& Value() const;
+      Handle(Contap_TheIWLineOfTheIWalking)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_Contap_TheIWLineOfTheIWalking myValue;
+  Handle(Contap_TheIWLineOfTheIWalking) myValue;
 
 
 };
 
-#define SeqItem Handle_Contap_TheIWLineOfTheIWalking
+#define SeqItem Handle(Contap_TheIWLineOfTheIWalking)
 #define SeqItem_hxx <Contap_TheIWLineOfTheIWalking.hxx>
 #define TCollection_SequenceNode Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking
 #define TCollection_SequenceNode_hxx <Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking.hxx>
@@ -78,7 +67,6 @@ Handle_Contap_TheIWLineOfTheIWalking myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking_HeaderFile

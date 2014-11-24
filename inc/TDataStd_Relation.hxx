@@ -6,34 +6,16 @@
 #ifndef _TDataStd_Relation_HeaderFile
 #define _TDataStd_Relation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDataStd_Relation_HeaderFile
 #include <Handle_TDataStd_Relation.hxx>
-#endif
 
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _TDF_AttributeList_HeaderFile
 #include <TDF_AttributeList.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class Standard_GUID;
 class TDF_Label;
 class TCollection_ExtendedString;
@@ -42,44 +24,49 @@ class TDF_Attribute;
 class TDF_RelocationTable;
 
 
-//! Relation attribute. <br>
-//!          ================== <br>
-//! <br>
-//!            *  Data Structure of  the  Expression is stored in a <br>
-//!           string and references to variables used by the string <br>
-//! <br>
-//!  Warning:  To be consistent,  each  Variable  referenced by  the <br>
-//!          relation must have its equivalent in the string <br>
-class TDataStd_Relation : public TDF_Attribute {
+//! Relation attribute.
+//! ==================
+//!
+//! *  Data Structure of  the  Expression is stored in a
+//! string and references to variables used by the string
+//!
+//! Warning:  To be consistent,  each  Variable  referenced by  the
+//! relation must have its equivalent in the string
+class TDataStd_Relation : public TDF_Attribute
+{
 
 public:
 
-  //! class methods <br>
-//!          ============= <br>
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
-  //! Find, or create, an Relation attribute. <br>//! Real methods <br>
-//!          ============ <br>
-  Standard_EXPORT   static  Handle_TDataStd_Relation Set(const TDF_Label& label) ;
   
-  Standard_EXPORT   TDataStd_Relation();
-  //! build and return the relation name <br>
-  Standard_EXPORT     TCollection_ExtendedString Name() const;
+  //! class methods
+  //! =============
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-  Standard_EXPORT     void SetRelation(const TCollection_ExtendedString& E) ;
+  //! Find, or create, an Relation attribute.
+  //! Real methods
+  //! ============
+  Standard_EXPORT static   Handle(TDataStd_Relation) Set (const TDF_Label& label) ;
   
-  Standard_EXPORT    const TCollection_ExtendedString& GetRelation() const;
+  Standard_EXPORT TDataStd_Relation();
   
-  Standard_EXPORT     TDF_AttributeList& GetVariables() ;
+  //! build and return the relation name
+  Standard_EXPORT   TCollection_ExtendedString Name()  const;
   
-  Standard_EXPORT    const Standard_GUID& ID() const;
+  Standard_EXPORT   void SetRelation (const TCollection_ExtendedString& E) ;
   
-  Standard_EXPORT     void Restore(const Handle(TDF_Attribute)& With) ;
+  Standard_EXPORT  const  TCollection_ExtendedString& GetRelation()  const;
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  Standard_EXPORT   TDF_AttributeList& GetVariables() ;
   
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& Into,const Handle(TDF_RelocationTable)& RT) const;
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
   
-  Standard_EXPORT   virtual  Standard_OStream& Dump(Standard_OStream& anOS) const;
+  Standard_EXPORT   void Restore (const Handle(TDF_Attribute)& With) ;
+  
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
+  
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& Into, const Handle(TDF_RelocationTable)& RT)  const;
+  
+  Standard_EXPORT virtual   Standard_OStream& Dump (Standard_OStream& anOS)  const;
 
 
 
@@ -94,8 +81,8 @@ protected:
 private: 
 
 
-TCollection_ExtendedString myRelation;
-TDF_AttributeList myVariables;
+  TCollection_ExtendedString myRelation;
+  TDF_AttributeList myVariables;
 
 
 };
@@ -104,7 +91,6 @@ TDF_AttributeList myVariables;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_Relation_HeaderFile

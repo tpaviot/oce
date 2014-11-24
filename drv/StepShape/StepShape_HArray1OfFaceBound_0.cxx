@@ -5,28 +5,14 @@
 
 #include <StepShape_HArray1OfFaceBound.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _StepShape_FaceBound_HeaderFile
 #include <StepShape_FaceBound.hxx>
-#endif
-#ifndef _StepShape_Array1OfFaceBound_HeaderFile
 #include <StepShape_Array1OfFaceBound.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(StepShape_HArray1OfFaceBound,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(StepShape_HArray1OfFaceBound)
 
 
-#define ItemHArray1 Handle_StepShape_FaceBound
+#define ItemHArray1 Handle(StepShape_FaceBound)
 #define ItemHArray1_hxx <StepShape_FaceBound.hxx>
 #define TheArray1 StepShape_Array1OfFaceBound
 #define TheArray1_hxx <StepShape_Array1OfFaceBound.hxx>

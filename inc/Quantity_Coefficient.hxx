@@ -6,13 +6,11 @@
 #ifndef _Quantity_Coefficient_HeaderFile
 #define _Quantity_Coefficient_HeaderFile
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 
 typedef Standard_Real Quantity_Coefficient;
 
 
 #define Quantity_Coefficient_Type_() Standard_Real_Type_()
 
-#endif
+#endif // _Quantity_Coefficient_HeaderFile

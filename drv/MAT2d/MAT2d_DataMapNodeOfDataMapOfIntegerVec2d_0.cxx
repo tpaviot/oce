@@ -5,22 +5,12 @@
 
 #include <MAT2d_DataMapNodeOfDataMapOfIntegerVec2d.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _gp_Vec2d_HeaderFile
 #include <gp_Vec2d.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _MAT2d_DataMapOfIntegerVec2d_HeaderFile
 #include <MAT2d_DataMapOfIntegerVec2d.hxx>
-#endif
-#ifndef _MAT2d_DataMapIteratorOfDataMapOfIntegerVec2d_HeaderFile
 #include <MAT2d_DataMapIteratorOfDataMapOfIntegerVec2d.hxx>
-#endif
 
  
 

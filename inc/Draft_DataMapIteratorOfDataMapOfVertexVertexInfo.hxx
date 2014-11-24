@@ -6,22 +6,12 @@
 #ifndef _Draft_DataMapIteratorOfDataMapOfVertexVertexInfo_HeaderFile
 #define _Draft_DataMapIteratorOfDataMapOfVertexVertexInfo_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_Draft_DataMapNodeOfDataMapOfVertexVertexInfo_HeaderFile
 #include <Handle_Draft_DataMapNodeOfDataMapOfVertexVertexInfo.hxx>
-#endif
 class Standard_NoSuchObject;
 class TopoDS_Vertex;
 class Draft_VertexInfo;
@@ -31,22 +21,22 @@ class Draft_DataMapNodeOfDataMapOfVertexVertexInfo;
 
 
 
-class Draft_DataMapIteratorOfDataMapOfVertexVertexInfo  : public TCollection_BasicMapIterator {
+class Draft_DataMapIteratorOfDataMapOfVertexVertexInfo  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Draft_DataMapIteratorOfDataMapOfVertexVertexInfo();
+  Standard_EXPORT Draft_DataMapIteratorOfDataMapOfVertexVertexInfo();
   
-  Standard_EXPORT   Draft_DataMapIteratorOfDataMapOfVertexVertexInfo(const Draft_DataMapOfVertexVertexInfo& aMap);
+  Standard_EXPORT Draft_DataMapIteratorOfDataMapOfVertexVertexInfo(const Draft_DataMapOfVertexVertexInfo& aMap);
   
-  Standard_EXPORT     void Initialize(const Draft_DataMapOfVertexVertexInfo& aMap) ;
+  Standard_EXPORT   void Initialize (const Draft_DataMapOfVertexVertexInfo& aMap) ;
   
-  Standard_EXPORT    const TopoDS_Vertex& Key() const;
+  Standard_EXPORT  const  TopoDS_Vertex& Key()  const;
   
-  Standard_EXPORT    const Draft_VertexInfo& Value() const;
-
+  Standard_EXPORT  const  Draft_VertexInfo& Value()  const;
 
 
 
@@ -69,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Draft_DataMapIteratorOfDataMapOfVertexVertexInfo_HeaderFile

@@ -6,8 +6,11 @@
 #ifndef _StepToTopoDS_GeometricToolError_HeaderFile
 #define _StepToTopoDS_GeometricToolError_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepToTopoDS_GeometricToolError {
+
+enum StepToTopoDS_GeometricToolError
+{
 StepToTopoDS_GeometricToolDone,
 StepToTopoDS_GeometricToolIsDegenerated,
 StepToTopoDS_GeometricToolHasNoPCurve,
@@ -16,8 +19,4 @@ StepToTopoDS_GeometricToolNoProjectiOnCurve,
 StepToTopoDS_GeometricToolOther
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepToTopoDS_GeometricToolError_HeaderFile

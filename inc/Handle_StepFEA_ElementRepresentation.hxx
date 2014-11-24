@@ -6,22 +6,15 @@
 #ifndef _Handle_StepFEA_ElementRepresentation_HeaderFile
 #define _Handle_StepFEA_ElementRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepRepr_Representation_HeaderFile
 #include <Handle_StepRepr_Representation.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepRepr_Representation);
 class StepFEA_ElementRepresentation;
 
-DEFINE_STANDARD_HANDLE(StepFEA_ElementRepresentation,StepRepr_Representation)
+DEFINE_STANDARD_HANDLE(StepFEA_ElementRepresentation, StepRepr_Representation)
 
-#endif
+#endif // _Handle_StepFEA_ElementRepresentation_HeaderFile

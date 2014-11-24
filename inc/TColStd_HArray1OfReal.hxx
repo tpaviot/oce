@@ -6,28 +6,14 @@
 #ifndef _TColStd_HArray1OfReal_HeaderFile
 #define _TColStd_HArray1OfReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
 
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -36,32 +22,33 @@ class TColStd_Array1OfReal;
 
 
 
-class TColStd_HArray1OfReal : public MMgt_TShared {
+class TColStd_HArray1OfReal : public MMgt_TShared
+{
 
 public:
 
   
-      TColStd_HArray1OfReal(const Standard_Integer Low,const Standard_Integer Up);
+    TColStd_HArray1OfReal(const Standard_Integer Low, const Standard_Integer Up);
   
-      TColStd_HArray1OfReal(const Standard_Integer Low,const Standard_Integer Up,const Standard_Real& V);
+    TColStd_HArray1OfReal(const Standard_Integer Low, const Standard_Integer Up, const Standard_Real& V);
   
-        void Init(const Standard_Real& V) ;
+      void Init (const Standard_Real& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Standard_Real& Value) ;
+      void SetValue (const Standard_Integer Index, const Standard_Real& Value) ;
   
-       const Standard_Real& Value(const Standard_Integer Index) const;
+     const  Standard_Real& Value (const Standard_Integer Index)  const;
   
-        Standard_Real& ChangeValue(const Standard_Integer Index) ;
+      Standard_Real& ChangeValue (const Standard_Integer Index) ;
   
-       const TColStd_Array1OfReal& Array1() const;
+     const  TColStd_Array1OfReal& Array1()  const;
   
-        TColStd_Array1OfReal& ChangeArray1() ;
+      TColStd_Array1OfReal& ChangeArray1() ;
 
 
 
@@ -76,7 +63,7 @@ protected:
 private: 
 
 
-TColStd_Array1OfReal myArray;
+  TColStd_Array1OfReal myArray;
 
 
 };
@@ -102,7 +89,6 @@ TColStd_Array1OfReal myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_HArray1OfReal_HeaderFile

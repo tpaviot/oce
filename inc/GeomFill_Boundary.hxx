@@ -6,67 +6,56 @@
 #ifndef _GeomFill_Boundary_HeaderFile
 #define _GeomFill_Boundary_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_GeomFill_Boundary_HeaderFile
 #include <Handle_GeomFill_Boundary.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class gp_Pnt;
 class gp_Vec;
 
 
-//! Root class to define a boundary  which will form part of a <br>
-//! contour around a gap requiring filling. <br>
-//! Any  new type  of  constrained boundary must inherit this class. <br>
-//! The GeomFill package provides two classes to define constrained boundaries: <br>
-//! -   GeomFill_SimpleBound to define an unattached boundary <br>
-//! -   GeomFill_BoundWithSurf to define a boundary attached to a surface. <br>
-//!   These objects are used to define the boundaries for a <br>
-//! GeomFill_ConstrainedFilling framework. <br>
-class GeomFill_Boundary : public MMgt_TShared {
+//! Root class to define a boundary  which will form part of a
+//! contour around a gap requiring filling.
+//! Any  new type  of  constrained boundary must inherit this class.
+//! The GeomFill package provides two classes to define constrained boundaries:
+//! -   GeomFill_SimpleBound to define an unattached boundary
+//! -   GeomFill_BoundWithSurf to define a boundary attached to a surface.
+//! These objects are used to define the boundaries for a
+//! GeomFill_ConstrainedFilling framework.
+class GeomFill_Boundary : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   virtual  gp_Pnt Value(const Standard_Real U) const = 0;
+  Standard_EXPORT virtual   gp_Pnt Value (const Standard_Real U)  const = 0;
   
-  Standard_EXPORT   virtual  void D1(const Standard_Real U,gp_Pnt& P,gp_Vec& V) const = 0;
+  Standard_EXPORT virtual   void D1 (const Standard_Real U, gp_Pnt& P, gp_Vec& V)  const = 0;
   
-  Standard_EXPORT   virtual  Standard_Boolean HasNormals() const;
+  Standard_EXPORT virtual   Standard_Boolean HasNormals()  const;
   
-  Standard_EXPORT   virtual  gp_Vec Norm(const Standard_Real U) const;
+  Standard_EXPORT virtual   gp_Vec Norm (const Standard_Real U)  const;
   
-  Standard_EXPORT   virtual  void D1Norm(const Standard_Real U,gp_Vec& N,gp_Vec& DN) const;
+  Standard_EXPORT virtual   void D1Norm (const Standard_Real U, gp_Vec& N, gp_Vec& DN)  const;
   
-  Standard_EXPORT   virtual  void Reparametrize(const Standard_Real First,const Standard_Real Last,const Standard_Boolean HasDF,const Standard_Boolean HasDL,const Standard_Real DF,const Standard_Real DL,const Standard_Boolean Rev)  = 0;
+  Standard_EXPORT virtual   void Reparametrize (const Standard_Real First, const Standard_Real Last, const Standard_Boolean HasDF, const Standard_Boolean HasDL, const Standard_Real DF, const Standard_Real DL, const Standard_Boolean Rev)  = 0;
   
-  Standard_EXPORT     void Points(gp_Pnt& PFirst,gp_Pnt& PLast) const;
+  Standard_EXPORT   void Points (gp_Pnt& PFirst, gp_Pnt& PLast)  const;
   
-  Standard_EXPORT   virtual  void Bounds(Standard_Real& First,Standard_Real& Last) const = 0;
+  Standard_EXPORT virtual   void Bounds (Standard_Real& First, Standard_Real& Last)  const = 0;
   
-  Standard_EXPORT   virtual  Standard_Boolean IsDegenerated() const = 0;
+  Standard_EXPORT virtual   Standard_Boolean IsDegenerated()  const = 0;
   
-  Standard_EXPORT     Standard_Real Tol3d() const;
+  Standard_EXPORT   Standard_Real Tol3d()  const;
   
-  Standard_EXPORT     void Tol3d(const Standard_Real Tol) ;
+  Standard_EXPORT   void Tol3d (const Standard_Real Tol) ;
   
-  Standard_EXPORT     Standard_Real Tolang() const;
+  Standard_EXPORT   Standard_Real Tolang()  const;
   
-  Standard_EXPORT     void Tolang(const Standard_Real Tol) ;
+  Standard_EXPORT   void Tolang (const Standard_Real Tol) ;
 
 
 
@@ -76,15 +65,15 @@ public:
 protected:
 
   
-  Standard_EXPORT   GeomFill_Boundary(const Standard_Real Tol3d,const Standard_Real Tolang);
+  Standard_EXPORT GeomFill_Boundary(const Standard_Real Tol3d, const Standard_Real Tolang);
 
 
 
 private: 
 
 
-Standard_Real myT3d;
-Standard_Real myTang;
+  Standard_Real myT3d;
+  Standard_Real myTang;
 
 
 };
@@ -93,7 +82,6 @@ Standard_Real myTang;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomFill_Boundary_HeaderFile

@@ -6,21 +6,20 @@
 #ifndef _V3d_TypeOfShadingModel_HeaderFile
 #define _V3d_TypeOfShadingModel_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-//! Defines the type of shading for the graphic object: <br>
-//! -   V3d_COLOR: simple surface color (Visual3d_TOM_NONE), <br>
-//! -   V3d_FLAT: flat shading (Visual3d_TOM_FACET), <br>
-//! -   V3d_GOURAUD: Gouraud shading (Visual3d_TOM_VERTEX), <br>
-//! -   V3d_PHONG: Phong shading (Visual3d_TOM_FRAGMENT). <br>
-enum V3d_TypeOfShadingModel {
+
+//! Defines the type of shading for the graphic object:
+//! -   V3d_COLOR: simple surface color (Visual3d_TOM_NONE),
+//! -   V3d_FLAT: flat shading (Visual3d_TOM_FACET),
+//! -   V3d_GOURAUD: Gouraud shading (Visual3d_TOM_VERTEX),
+//! -   V3d_PHONG: Phong shading (Visual3d_TOM_FRAGMENT).
+enum V3d_TypeOfShadingModel
+{
 V3d_COLOR,
 V3d_FLAT,
 V3d_GOURAUD,
 V3d_PHONG
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _V3d_TypeOfShadingModel_HeaderFile

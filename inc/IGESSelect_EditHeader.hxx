@@ -6,37 +6,17 @@
 #ifndef _IGESSelect_EditHeader_HeaderFile
 #define _IGESSelect_EditHeader_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSelect_EditHeader_HeaderFile
 #include <Handle_IGESSelect_EditHeader.hxx>
-#endif
 
-#ifndef _IFSelect_Editor_HeaderFile
 #include <IFSelect_Editor.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_IFSelect_EditForm_HeaderFile
 #include <Handle_IFSelect_EditForm.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
 class TCollection_AsciiString;
 class IFSelect_EditForm;
 class TCollection_HAsciiString;
@@ -44,26 +24,27 @@ class Standard_Transient;
 class Interface_InterfaceModel;
 
 
-//! This class is aimed to display and edit the Header of an <br>
-//!           IGES Model : Start Section and Global Section <br>
-class IGESSelect_EditHeader : public IFSelect_Editor {
+//! This class is aimed to display and edit the Header of an
+//! IGES Model : Start Section and Global Section
+class IGESSelect_EditHeader : public IFSelect_Editor
+{
 
 public:
 
   
-  Standard_EXPORT   IGESSelect_EditHeader();
+  Standard_EXPORT IGESSelect_EditHeader();
   
-  Standard_EXPORT     TCollection_AsciiString Label() const;
+  Standard_EXPORT   TCollection_AsciiString Label()  const;
   
-  Standard_EXPORT     Standard_Boolean Recognize(const Handle(IFSelect_EditForm)& form) const;
+  Standard_EXPORT   Standard_Boolean Recognize (const Handle(IFSelect_EditForm)& form)  const;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString StringValue(const Handle(IFSelect_EditForm)& form,const Standard_Integer num) const;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) StringValue (const Handle(IFSelect_EditForm)& form, const Standard_Integer num)  const;
   
-  Standard_EXPORT     Standard_Boolean Load(const Handle(IFSelect_EditForm)& form,const Handle(Standard_Transient)& ent,const Handle(Interface_InterfaceModel)& model) const;
+  Standard_EXPORT   Standard_Boolean Load (const Handle(IFSelect_EditForm)& form, const Handle(Standard_Transient)& ent, const Handle(Interface_InterfaceModel)& model)  const;
   
-  Standard_EXPORT   virtual  Standard_Boolean Update(const Handle(IFSelect_EditForm)& form,const Standard_Integer num,const Handle(TCollection_HAsciiString)& newval,const Standard_Boolean enforce) const;
+  Standard_EXPORT virtual   Standard_Boolean Update (const Handle(IFSelect_EditForm)& form, const Standard_Integer num, const Handle(TCollection_HAsciiString)& newval, const Standard_Boolean enforce)  const;
   
-  Standard_EXPORT     Standard_Boolean Apply(const Handle(IFSelect_EditForm)& form,const Handle(Standard_Transient)& ent,const Handle(Interface_InterfaceModel)& model) const;
+  Standard_EXPORT   Standard_Boolean Apply (const Handle(IFSelect_EditForm)& form, const Handle(Standard_Transient)& ent, const Handle(Interface_InterfaceModel)& model)  const;
 
 
 
@@ -86,7 +67,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSelect_EditHeader_HeaderFile

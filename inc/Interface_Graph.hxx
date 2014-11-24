@@ -6,55 +6,23 @@
 #ifndef _Interface_Graph_HeaderFile
 #define _Interface_Graph_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfInteger_HeaderFile
 #include <Handle_TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Interface_BitMap_HeaderFile
 #include <Interface_BitMap.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfListOfInteger_HeaderFile
 #include <Handle_TColStd_HArray1OfListOfInteger.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Interface_Protocol_HeaderFile
 #include <Handle_Interface_Protocol.hxx>
-#endif
-#ifndef _Handle_Interface_GTool_HeaderFile
 #include <Handle_Interface_GTool.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_TColStd_HSequenceOfTransient_HeaderFile
 #include <Handle_TColStd_HSequenceOfTransient.hxx>
-#endif
-#ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class Interface_InterfaceModel;
 class TColStd_HArray1OfInteger;
 class TColStd_HArray1OfListOfInteger;
@@ -70,185 +38,225 @@ class Standard_Type;
 class TCollection_HAsciiString;
 
 
-//! Gives basic data structure for operating and storing <br>
-//!           graph results (usage is normally internal) <br>
-//!           Entities are Mapped according their Number in the Model <br>
-//! <br>
-//!           Each Entity from the Model can be known as "Present" or <br>
-//!           not; if it is, it is Mapped with a Status : an Integer <br>
-//!           which can be used according to needs of each algorithm <br>
-//!           In addition, the Graph brings a BitMap which can be used <br>
-//!           by any caller <br>
-//! <br>
-//!           Also, it is bound with two lists : a list of Shared <br>
-//!           Entities (in fact, their Numbers in the Model) which is <br>
-//!           filled by a ShareTool, and a list of Sharing Entities, <br>
-//!           computed by deduction from the Shared Lists <br>
-//! <br>
-//!           Moreover, it is possible to redefine the list of Entities <br>
-//!           Shared by an Entity (instead of standard answer by general <br>
-//!           service Shareds) : this new list can be empty; it can <br>
-//!           be changed or reset (i.e. to come back to standard answer) <br>
-class Interface_Graph  {
+//! Gives basic data structure for operating and storing
+//! graph results (usage is normally internal)
+//! Entities are Mapped according their Number in the Model
+//!
+//! Each Entity from the Model can be known as "Present" or
+//! not; if it is, it is Mapped with a Status : an Integer
+//! which can be used according to needs of each algorithm
+//! In addition, the Graph brings a BitMap which can be used
+//! by any caller
+//!
+//! Also, it is bound with two lists : a list of Shared
+//! Entities (in fact, their Numbers in the Model) which is
+//! filled by a ShareTool, and a list of Sharing Entities,
+//! computed by deduction from the Shared Lists
+//!
+//! Moreover, it is possible to redefine the list of Entities
+//! Shared by an Entity (instead of standard answer by general
+//! service Shareds) : this new list can be empty; it can
+//! be changed or reset (i.e. to come back to standard answer)
+class Interface_Graph 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an empty graph, ready to receive Entities from amodel <br>
-//!           Note that this way of Creation allows <me> to verify that <br>
-//!           Entities to work with are contained in <amodel> <br>
-//!           Basic Shared and Sharing lists are obtained from a General <br>
-//!           Services Library, given directly as an argument <br>
-  Standard_EXPORT   Interface_Graph(const Handle(Interface_InterfaceModel)& amodel,const Interface_GeneralLib& lib,const Standard_Boolean theModeStats = Standard_True);
-  //! Same as above, but the Library is defined through a Protocol <br>
-  Standard_EXPORT   Interface_Graph(const Handle(Interface_InterfaceModel)& amodel,const Handle(Interface_Protocol)& protocol,const Standard_Boolean theModeStats = Standard_True);
-  //! Same as above, but the Library is defined through a Protocol <br>
-  Standard_EXPORT   Interface_Graph(const Handle(Interface_InterfaceModel)& amodel,const Handle(Interface_GTool)& gtool,const Standard_Boolean theModeStats = Standard_True);
-  //! Same a above but works with the Protocol recorded in the Model <br>
-  Standard_EXPORT   Interface_Graph(const Handle(Interface_InterfaceModel)& amodel,const Standard_Boolean theModeStats = Standard_True);
-  //! Creates a Graph from another one, getting all its data <br>
-//!           Remark that status are copied from <agraph>, but the other <br>
-//!           lists (sharing/shared) are copied only if <copied> = True <br>
-  Standard_EXPORT   Interface_Graph(const Interface_Graph& agraph,const Standard_Boolean copied = Standard_False);
-  //! Erases data, making graph ready to rebegin from void <br>
-//!           (also resets Shared lists redefinitions) <br>
-  Standard_EXPORT     void Reset() ;
-  //! Erases Status (Values and Flags of Presence), making graph <br>
-//!           ready to rebegin from void. Does not concerns Shared lists <br>
-  Standard_EXPORT     void ResetStatus() ;
-  //! Returns size (max nb of entities, i.e. Model's nb of entities) <br>
-  Standard_EXPORT     Standard_Integer Size() const;
-  //! Returns size of array of statuses <br>
-  Standard_EXPORT     Standard_Integer NbStatuses() const;
-  //! Returns the Number of the entity in the Map, computed at <br>
-//!           creation time (Entities loaded from the Model) <br>
-//!           Returns 0 if <ent> not contained by Model used to create <me> <br>
-//!           (that is, <ent> is unknown from <me>) <br>
-  Standard_EXPORT     Standard_Integer EntityNumber(const Handle(Standard_Transient)& ent) const;
-  //! Returns True if an Entity is noted as present in the graph <br>
-//!           (See methods Get... which determine this status) <br>
-//!           Returns False if <num> is out of range too <br>
-  Standard_EXPORT     Standard_Boolean IsPresent(const Standard_Integer num) const;
-  //! Same as above but directly on an Entity <ent> : if it is not <br>
-//!           contained in the Model, returns False. Else calls <br>
-//!            IsPresent(num)  with <num> given by EntityNumber <br>
-  Standard_EXPORT     Standard_Boolean IsPresent(const Handle(Standard_Transient)& ent) const;
-  //! Returns mapped Entity given its no (if it is present) <br>
-  Standard_EXPORT    const Handle_Standard_Transient& Entity(const Standard_Integer num) const;
-  //! Returns Status associated to a numero (only to read it) <br>
-  Standard_EXPORT     Standard_Integer Status(const Standard_Integer num) const;
-  //! Modifies Status associated to a numero <br>
-  Standard_EXPORT     void SetStatus(const Standard_Integer num,const Standard_Integer stat) ;
-  //! Clears Entity and sets Status to 0, for a numero <br>
-  Standard_EXPORT     void RemoveItem(const Standard_Integer num) ;
-  //! Changes all status which value is oldstat to new value newstat <br>
-  Standard_EXPORT     void ChangeStatus(const Standard_Integer oldstat,const Standard_Integer newstat) ;
-  //! Removes all items of which status has a given value stat <br>
-  Standard_EXPORT     void RemoveStatus(const Standard_Integer stat) ;
-  //! Returns the Bit Map in order to read or edit flag values <br>
-  Standard_EXPORT    const Interface_BitMap& BitMap() const;
-  //! Returns the Bit Map in order to edit it (add new flags) <br>
-  Standard_EXPORT     Interface_BitMap& CBitMap() ;
-  //! Returns the Model with which this Graph was created <br>
-  Standard_EXPORT    const Handle_Interface_InterfaceModel& Model() const;
-  //! Loads Graph with all Entities contained in the Model <br>
-  Standard_EXPORT     void GetFromModel() ;
-  //! Gets an Entity, plus its shared ones (at every level) if <br>
-//!           "shared" is True. New items are set to status "newstat" <br>
-//!           Items already present in graph remain unchanged <br>
-//!           Of course, redefinitions of Shared lists are taken into <br>
-//!           account if there are some <br>
-  Standard_EXPORT     void GetFromEntity(const Handle(Standard_Transient)& ent,const Standard_Boolean shared,const Standard_Integer newstat = 0) ;
-  //! Gets an Entity, plus its shared ones (at every level) if <br>
-//!           "shared" is True. New items are set to status "newstat". <br>
-//!           Items already present in graph are processed as follows : <br>
-//!           - if they already have status "newstat", they remain unchanged <br>
-//!           - if they have another status, this one is modified : <br>
-//!             if cumul is True,  to former status + overlapstat (cumul) <br>
-//!             if cumul is False, to overlapstat (enforce) <br>
-  Standard_EXPORT     void GetFromEntity(const Handle(Standard_Transient)& ent,const Standard_Boolean shared,const Standard_Integer newstat,const Standard_Integer overlapstat,const Standard_Boolean cumul) ;
-  //! Gets Entities given by an EntityIterator. Entities which were <br>
-//!           not yet present in the graph are mapped with status "newstat" <br>
-//!           Entities already present remain unchanged <br>
-  Standard_EXPORT     void GetFromIter(const Interface_EntityIterator& iter,const Standard_Integer newstat) ;
-  //! Gets Entities given by an EntityIterator and distinguishes <br>
-//!           those already present in the Graph : <br>
-//!           - new entities added to the Graph with status "newstst" <br>
-//!           - entities already present with status = "newstat" remain <br>
-//!             unchanged <br>
-//!           - entities already present with status different form <br>
-//!             "newstat" have their status modified : <br>
-//!             if cumul is True,  to former status + overlapstat (cumul) <br>
-//!             if cumul is False, to overlapstat (enforce) <br>
-//!             (Note : works as GetEntity, shared = False, for each entity) <br>
-  Standard_EXPORT     void GetFromIter(const Interface_EntityIterator& iter,const Standard_Integer newstat,const Standard_Integer overlapstat,const Standard_Boolean cumul) ;
-  //! Gets all present items from another graph <br>
-  Standard_EXPORT     void GetFromGraph(const Interface_Graph& agraph) ;
-  //! Gets items from another graph which have a specific Status <br>
-  Standard_EXPORT     void GetFromGraph(const Interface_Graph& agraph,const Standard_Integer stat) ;
-  //! Returns True if <ent> or the list of entities shared by <ent> <br>
-//!           (not redefined) contains items unknown from this Graph <br>
-//!           Remark : apart from the status HasShareError, these items <br>
-//!           are ignored <br>
-  Standard_EXPORT     Standard_Boolean HasShareErrors(const Handle(Standard_Transient)& ent) const;
-  //! Returns the sequence of Entities Shared by an Entity <br>
-  Standard_EXPORT     Handle_TColStd_HSequenceOfTransient GetShareds(const Handle(Standard_Transient)& ent) const;
-  //! Returns the list of Entities Shared by an Entity, as recorded <br>
-//!           by the Graph. That is, by default Basic Shared List, else it <br>
-//!           can be redefined by methods SetShare, SetNoShare ... see below <br>
-  Standard_EXPORT     Interface_EntityIterator Shareds(const Handle(Standard_Transient)& ent) const;
-  //! Returns the list of Entities which Share an Entity, computed <br>
-//!           from the Basic or Redefined Shared Lists <br>
-  Standard_EXPORT     Interface_EntityIterator Sharings(const Handle(Standard_Transient)& ent) const;
-  //! Returns the sequence of Entities Sharings by an Entity <br>
-  Standard_EXPORT     Handle_TColStd_HSequenceOfTransient GetSharings(const Handle(Standard_Transient)& ent) const;
-  //! Returns the list of sharings entities, AT ANY LEVEL, which are <br>
-//!           kind of a given type. A sharing entity kind of this type <br>
-//!           ends the exploration of its branch <br>
-  Standard_EXPORT     Interface_EntityIterator TypedSharings(const Handle(Standard_Transient)& ent,const Handle(Standard_Type)& type) const;
-  //! Returns the Entities which are not Shared (their Sharing List <br>
-//!           is empty) in the Model <br>
-  Standard_EXPORT     Interface_EntityIterator RootEntities() const;
-  //! Determines the name attached to an entity, by using the <br>
-//!           general service Name in GeneralModule <br>
-//!           Returns a null handle if no name could be computed or if <br>
-//!           the entity is not in the model <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Name(const Handle(Standard_Transient)& ent) const;
-  //! Returns the Table of Sharing lists. Used to Create <br>
-//!           another Graph from <me> <br>
-  Standard_EXPORT    const Handle_TColStd_HArray1OfListOfInteger& SharingTable() const;
-  //! Returns mode resposible for computation of statuses; <br>
-  Standard_EXPORT     Standard_Boolean ModeStat() const;
-
+  
+  //! Creates an empty graph, ready to receive Entities from amodel
+  //! Note that this way of Creation allows <me> to verify that
+  //! Entities to work with are contained in <amodel>
+  //! Basic Shared and Sharing lists are obtained from a General
+  //! Services Library, given directly as an argument
+  Standard_EXPORT Interface_Graph(const Handle(Interface_InterfaceModel)& amodel, const Interface_GeneralLib& lib, const Standard_Boolean theModeStats = Standard_True);
+  
+  //! Same as above, but the Library is defined through a Protocol
+  Standard_EXPORT Interface_Graph(const Handle(Interface_InterfaceModel)& amodel, const Handle(Interface_Protocol)& protocol, const Standard_Boolean theModeStats = Standard_True);
+  
+  //! Same as above, but the Library is defined through a Protocol
+  Standard_EXPORT Interface_Graph(const Handle(Interface_InterfaceModel)& amodel, const Handle(Interface_GTool)& gtool, const Standard_Boolean theModeStats = Standard_True);
+  
+  //! Same a above but works with the Protocol recorded in the Model
+  Standard_EXPORT Interface_Graph(const Handle(Interface_InterfaceModel)& amodel, const Standard_Boolean theModeStats = Standard_True);
+  
+  //! Creates a Graph from another one, getting all its data
+  //! Remark that status are copied from <agraph>, but the other
+  //! lists (sharing/shared) are copied only if <copied> = True
+  Standard_EXPORT Interface_Graph(const Interface_Graph& agraph, const Standard_Boolean copied = Standard_False);
+  
+  //! Erases data, making graph ready to rebegin from void
+  //! (also resets Shared lists redefinitions)
+  Standard_EXPORT   void Reset() ;
+  
+  //! Erases Status (Values and Flags of Presence), making graph
+  //! ready to rebegin from void. Does not concerns Shared lists
+  Standard_EXPORT   void ResetStatus() ;
+  
+  //! Returns size (max nb of entities, i.e. Model's nb of entities)
+  Standard_EXPORT   Standard_Integer Size()  const;
+  
+  //! Returns size of array of statuses
+  Standard_EXPORT   Standard_Integer NbStatuses()  const;
+  
+  //! Returns the Number of the entity in the Map, computed at
+  //! creation time (Entities loaded from the Model)
+  //! Returns 0 if <ent> not contained by Model used to create <me>
+  //! (that is, <ent> is unknown from <me>)
+  Standard_EXPORT   Standard_Integer EntityNumber (const Handle(Standard_Transient)& ent)  const;
+  
+  //! Returns True if an Entity is noted as present in the graph
+  //! (See methods Get... which determine this status)
+  //! Returns False if <num> is out of range too
+  Standard_EXPORT   Standard_Boolean IsPresent (const Standard_Integer num)  const;
+  
+  //! Same as above but directly on an Entity <ent> : if it is not
+  //! contained in the Model, returns False. Else calls
+  //! IsPresent(num)  with <num> given by EntityNumber
+  Standard_EXPORT   Standard_Boolean IsPresent (const Handle(Standard_Transient)& ent)  const;
+  
+  //! Returns mapped Entity given its no (if it is present)
+  Standard_EXPORT  const  Handle(Standard_Transient)& Entity (const Standard_Integer num)  const;
+  
+  //! Returns Status associated to a numero (only to read it)
+  Standard_EXPORT   Standard_Integer Status (const Standard_Integer num)  const;
+  
+  //! Modifies Status associated to a numero
+  Standard_EXPORT   void SetStatus (const Standard_Integer num, const Standard_Integer stat) ;
+  
+  //! Clears Entity and sets Status to 0, for a numero
+  Standard_EXPORT   void RemoveItem (const Standard_Integer num) ;
+  
+  //! Changes all status which value is oldstat to new value newstat
+  Standard_EXPORT   void ChangeStatus (const Standard_Integer oldstat, const Standard_Integer newstat) ;
+  
+  //! Removes all items of which status has a given value stat
+  Standard_EXPORT   void RemoveStatus (const Standard_Integer stat) ;
+  
+  //! Returns the Bit Map in order to read or edit flag values
+  Standard_EXPORT  const  Interface_BitMap& BitMap()  const;
+  
+  //! Returns the Bit Map in order to edit it (add new flags)
+  Standard_EXPORT   Interface_BitMap& CBitMap() ;
+  
+  //! Returns the Model with which this Graph was created
+  Standard_EXPORT  const  Handle(Interface_InterfaceModel)& Model()  const;
+  
+  //! Loads Graph with all Entities contained in the Model
+  Standard_EXPORT   void GetFromModel() ;
+  
+  //! Gets an Entity, plus its shared ones (at every level) if
+  //! "shared" is True. New items are set to status "newstat"
+  //! Items already present in graph remain unchanged
+  //! Of course, redefinitions of Shared lists are taken into
+  //! account if there are some
+  Standard_EXPORT   void GetFromEntity (const Handle(Standard_Transient)& ent, const Standard_Boolean shared, const Standard_Integer newstat = 0) ;
+  
+  //! Gets an Entity, plus its shared ones (at every level) if
+  //! "shared" is True. New items are set to status "newstat".
+  //! Items already present in graph are processed as follows :
+  //! - if they already have status "newstat", they remain unchanged
+  //! - if they have another status, this one is modified :
+  //! if cumul is True,  to former status + overlapstat (cumul)
+  //! if cumul is False, to overlapstat (enforce)
+  Standard_EXPORT   void GetFromEntity (const Handle(Standard_Transient)& ent, const Standard_Boolean shared, const Standard_Integer newstat, const Standard_Integer overlapstat, const Standard_Boolean cumul) ;
+  
+  //! Gets Entities given by an EntityIterator. Entities which were
+  //! not yet present in the graph are mapped with status "newstat"
+  //! Entities already present remain unchanged
+  Standard_EXPORT   void GetFromIter (const Interface_EntityIterator& iter, const Standard_Integer newstat) ;
+  
+  //! Gets Entities given by an EntityIterator and distinguishes
+  //! those already present in the Graph :
+  //! - new entities added to the Graph with status "newstst"
+  //! - entities already present with status = "newstat" remain
+  //! unchanged
+  //! - entities already present with status different form
+  //! "newstat" have their status modified :
+  //! if cumul is True,  to former status + overlapstat (cumul)
+  //! if cumul is False, to overlapstat (enforce)
+  //! (Note : works as GetEntity, shared = False, for each entity)
+  Standard_EXPORT   void GetFromIter (const Interface_EntityIterator& iter, const Standard_Integer newstat, const Standard_Integer overlapstat, const Standard_Boolean cumul) ;
+  
+  //! Gets all present items from another graph
+  Standard_EXPORT   void GetFromGraph (const Interface_Graph& agraph) ;
+  
+  //! Gets items from another graph which have a specific Status
+  Standard_EXPORT   void GetFromGraph (const Interface_Graph& agraph, const Standard_Integer stat) ;
+  
+  //! Returns True if <ent> or the list of entities shared by <ent>
+  //! (not redefined) contains items unknown from this Graph
+  //! Remark : apart from the status HasShareError, these items
+  //! are ignored
+  Standard_EXPORT   Standard_Boolean HasShareErrors (const Handle(Standard_Transient)& ent)  const;
+  
+  //! Returns the sequence of Entities Shared by an Entity
+  Standard_EXPORT   Handle(TColStd_HSequenceOfTransient) GetShareds (const Handle(Standard_Transient)& ent)  const;
+  
+  //! Returns the list of Entities Shared by an Entity, as recorded
+  //! by the Graph. That is, by default Basic Shared List, else it
+  //! can be redefined by methods SetShare, SetNoShare ... see below
+  Standard_EXPORT   Interface_EntityIterator Shareds (const Handle(Standard_Transient)& ent)  const;
+  
+  //! Returns the list of Entities which Share an Entity, computed
+  //! from the Basic or Redefined Shared Lists
+  Standard_EXPORT   Interface_EntityIterator Sharings (const Handle(Standard_Transient)& ent)  const;
+  
+  //! Returns the sequence of Entities Sharings by an Entity
+  Standard_EXPORT   Handle(TColStd_HSequenceOfTransient) GetSharings (const Handle(Standard_Transient)& ent)  const;
+  
+  //! Returns the list of sharings entities, AT ANY LEVEL, which are
+  //! kind of a given type. A sharing entity kind of this type
+  //! ends the exploration of its branch
+  Standard_EXPORT   Interface_EntityIterator TypedSharings (const Handle(Standard_Transient)& ent, const Handle(Standard_Type)& type)  const;
+  
+  //! Returns the Entities which are not Shared (their Sharing List
+  //! is empty) in the Model
+  Standard_EXPORT   Interface_EntityIterator RootEntities()  const;
+  
+  //! Determines the name attached to an entity, by using the
+  //! general service Name in GeneralModule
+  //! Returns a null handle if no name could be computed or if
+  //! the entity is not in the model
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Name (const Handle(Standard_Transient)& ent)  const;
+  
+  //! Returns the Table of Sharing lists. Used to Create
+  //! another Graph from <me>
+  Standard_EXPORT  const  Handle(TColStd_HArray1OfListOfInteger)& SharingTable()  const;
+  
+  //! Returns mode resposible for computation of statuses;
+  Standard_EXPORT   Standard_Boolean ModeStat()  const;
 
 
 
 
 protected:
 
-  //! Initialize statuses and flags <br>
-  Standard_EXPORT     void InitStats() ;
+  
+  //! Initialize statuses and flags
+  Standard_EXPORT   void InitStats() ;
 
 
-Handle_Interface_InterfaceModel themodel;
-TCollection_AsciiString thepresents;
-Handle_TColStd_HArray1OfInteger thestats;
-Handle_TColStd_HArray1OfListOfInteger thesharings;
+  Handle(Interface_InterfaceModel) themodel;
+  TCollection_AsciiString thepresents;
+  Handle(TColStd_HArray1OfInteger) thestats;
+  Handle(TColStd_HArray1OfListOfInteger) thesharings;
 
 
 private:
 
-  //! Performs the Evaluation of the Graph, from an initial Library, <br>
-//!           either defined through a Protocol, or given dierctly <br>
-//!           Called by the non-empty Constructors <br>
-//! <br>
-//!           Normally, gtool suffices. But if a Graph is created from a <br>
-//!           GeneralLib directly, it cannot be used <br>
-//!           If <gtool> is defined, it has priority <br>
-  Standard_EXPORT     void Evaluate() ;
+  
+  //! Performs the Evaluation of the Graph, from an initial Library,
+  //! either defined through a Protocol, or given dierctly
+  //! Called by the non-empty Constructors
+  //!
+  //! Normally, gtool suffices. But if a Graph is created from a
+  //! GeneralLib directly, it cannot be used
+  //! If <gtool> is defined, it has priority
+  Standard_EXPORT   void Evaluate() ;
 
 
-Interface_BitMap theflags;
+  Interface_BitMap theflags;
 
 
 };
@@ -257,7 +265,6 @@ Interface_BitMap theflags;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Interface_Graph_HeaderFile

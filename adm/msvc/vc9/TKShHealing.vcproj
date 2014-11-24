@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKShHealing"
-	ProjectGUID="{07C0704E-10BC-0AB0-09BA-BB10081980AB}"
+	ProjectGUID="{87821906-0703-016E-043C-F1E84FCAB4AA}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -248,7 +248,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\ShapeBuild;..\..\..\src\ShapeBuild;..\..\..\drv\ShapeExtend;..\..\..\src\ShapeExtend;..\..\..\drv\ShapeConstruct;..\..\..\src\ShapeConstruct;..\..\..\drv\ShapeCustom;..\..\..\src\ShapeCustom;..\..\..\drv\ShapeAnalysis;..\..\..\src\ShapeAnalysis;..\..\..\drv\ShapeFix;..\..\..\src\ShapeFix;..\..\..\drv\ShapeUpgrade;..\..\..\src\ShapeUpgrade;..\..\..\drv\ShapeAlgo;..\..\..\src\ShapeAlgo;..\..\..\drv\ShapeProcess;..\..\..\src\ShapeProcess;..\..\..\drv\ShapeProcessAPI;..\..\..\src\ShapeProcessAPI;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ShapeBuild_DLL;__ShapeExtend_DLL;__ShapeConstruct_DLL;__ShapeCustom_DLL;__ShapeAnalysis_DLL;__ShapeFix_DLL;__ShapeUpgrade_DLL;__ShapeAlgo_DLL;__ShapeProcess_DLL;__ShapeProcessAPI_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ShapeBuild_DLL;__ShapeExtend_DLL;__ShapeConstruct_DLL;__ShapeCustom_DLL;__ShapeAnalysis_DLL;__ShapeFix_DLL;__ShapeUpgrade_DLL;__ShapeAlgo_DLL;__ShapeProcess_DLL;__ShapeProcessAPI_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ShapeBuild_DLL;__ShapeExtend_DLL;__ShapeConstruct_DLL;__ShapeCustom_DLL;__ShapeAnalysis_DLL;__ShapeFix_DLL;__ShapeUpgrade_DLL;__ShapeAlgo_DLL;__ShapeProcess_DLL;__ShapeProcessAPI_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ShapeBuild_DLL;__ShapeExtend_DLL;__ShapeConstruct_DLL;__ShapeCustom_DLL;__ShapeAnalysis_DLL;__ShapeFix_DLL;__ShapeUpgrade_DLL;__ShapeAlgo_DLL;__ShapeProcess_DLL;__ShapeProcessAPI_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -343,7 +343,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\ShapeBuild;..\..\..\src\ShapeBuild;..\..\..\drv\ShapeExtend;..\..\..\src\ShapeExtend;..\..\..\drv\ShapeConstruct;..\..\..\src\ShapeConstruct;..\..\..\drv\ShapeCustom;..\..\..\src\ShapeCustom;..\..\..\drv\ShapeAnalysis;..\..\..\src\ShapeAnalysis;..\..\..\drv\ShapeFix;..\..\..\src\ShapeFix;..\..\..\drv\ShapeUpgrade;..\..\..\src\ShapeUpgrade;..\..\..\drv\ShapeAlgo;..\..\..\src\ShapeAlgo;..\..\..\drv\ShapeProcess;..\..\..\src\ShapeProcess;..\..\..\drv\ShapeProcessAPI;..\..\..\src\ShapeProcessAPI;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ShapeBuild_DLL;__ShapeExtend_DLL;__ShapeConstruct_DLL;__ShapeCustom_DLL;__ShapeAnalysis_DLL;__ShapeFix_DLL;__ShapeUpgrade_DLL;__ShapeAlgo_DLL;__ShapeProcess_DLL;__ShapeProcessAPI_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ShapeBuild_DLL;__ShapeExtend_DLL;__ShapeConstruct_DLL;__ShapeCustom_DLL;__ShapeAnalysis_DLL;__ShapeFix_DLL;__ShapeUpgrade_DLL;__ShapeAlgo_DLL;__ShapeProcess_DLL;__ShapeProcessAPI_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -365,7 +365,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ShapeBuild_DLL;__ShapeExtend_DLL;__ShapeConstruct_DLL;__ShapeCustom_DLL;__ShapeAnalysis_DLL;__ShapeFix_DLL;__ShapeUpgrade_DLL;__ShapeAlgo_DLL;__ShapeProcess_DLL;__ShapeProcessAPI_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ShapeBuild_DLL;__ShapeExtend_DLL;__ShapeConstruct_DLL;__ShapeCustom_DLL;__ShapeAnalysis_DLL;__ShapeFix_DLL;__ShapeUpgrade_DLL;__ShapeAlgo_DLL;__ShapeProcess_DLL;__ShapeProcessAPI_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"

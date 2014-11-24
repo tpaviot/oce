@@ -5,19 +5,11 @@
 
 #include <HLRAlgo_ListNodeOfListOfBPoint.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _HLRAlgo_BiPoint_HeaderFile
 #include <HLRAlgo_BiPoint.hxx>
-#endif
-#ifndef _HLRAlgo_ListOfBPoint_HeaderFile
 #include <HLRAlgo_ListOfBPoint.hxx>
-#endif
-#ifndef _HLRAlgo_ListIteratorOfListOfBPoint_HeaderFile
 #include <HLRAlgo_ListIteratorOfListOfBPoint.hxx>
-#endif
 
  
 

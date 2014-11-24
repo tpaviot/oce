@@ -5,16 +5,10 @@
 
 #include <TDF_SequenceNodeOfLabelSequence.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TDF_LabelSequence_HeaderFile
 #include <TDF_LabelSequence.hxx>
-#endif
 
  
 

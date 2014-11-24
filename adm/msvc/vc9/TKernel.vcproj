@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKernel"
-	ProjectGUID="{B4079CD5-173B-0966-012F-A23E0695FDC7}"
+	ProjectGUID="{B93A688A-017F-0CC8-08C5-338B8A0E2D56}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -248,7 +248,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\FSD;..\..\..\src\FSD;..\..\..\drv\MMgt;..\..\..\src\MMgt;..\..\..\drv\OSD;..\..\..\src\OSD;..\..\..\drv\Plugin;..\..\..\src\Plugin;..\..\..\drv\Quantity;..\..\..\src\Quantity;..\..\..\drv\Resource;..\..\..\src\Resource;..\..\..\drv\SortTools;..\..\..\src\SortTools;..\..\..\drv\Standard;..\..\..\src\Standard;..\..\..\drv\StdFail;..\..\..\src\StdFail;..\..\..\drv\Storage;..\..\..\src\Storage;..\..\..\drv\TColStd;..\..\..\src\TColStd;..\..\..\drv\TCollection;..\..\..\src\TCollection;..\..\..\drv\TShort;..\..\..\src\TShort;..\..\..\drv\Units;..\..\..\src\Units;..\..\..\drv\UnitsAPI;..\..\..\src\UnitsAPI;..\..\..\drv\Dico;..\..\..\src\Dico;..\..\..\drv\NCollection;..\..\..\src\NCollection;..\..\..\drv\Message;..\..\..\src\Message;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -343,7 +343,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\FSD;..\..\..\src\FSD;..\..\..\drv\MMgt;..\..\..\src\MMgt;..\..\..\drv\OSD;..\..\..\src\OSD;..\..\..\drv\Plugin;..\..\..\src\Plugin;..\..\..\drv\Quantity;..\..\..\src\Quantity;..\..\..\drv\Resource;..\..\..\src\Resource;..\..\..\drv\SortTools;..\..\..\src\SortTools;..\..\..\drv\Standard;..\..\..\src\Standard;..\..\..\drv\StdFail;..\..\..\src\StdFail;..\..\..\drv\Storage;..\..\..\src\Storage;..\..\..\drv\TColStd;..\..\..\src\TColStd;..\..\..\drv\TCollection;..\..\..\src\TCollection;..\..\..\drv\TShort;..\..\..\src\TShort;..\..\..\drv\Units;..\..\..\src\Units;..\..\..\drv\UnitsAPI;..\..\..\src\UnitsAPI;..\..\..\drv\Dico;..\..\..\src\Dico;..\..\..\drv\NCollection;..\..\..\src\NCollection;..\..\..\drv\Message;..\..\..\src\Message;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -365,7 +365,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -566,6 +566,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\OSD\OSD_MemInfo.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\OSD\OSD_OpenFile.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OSD\OSD_Path.cxx">

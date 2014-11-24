@@ -6,57 +6,43 @@
 #ifndef _StepVisual_CurveStyleFont_HeaderFile
 #define _StepVisual_CurveStyleFont_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_CurveStyleFont_HeaderFile
 #include <Handle_StepVisual_CurveStyleFont.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepVisual_HArray1OfCurveStyleFontPattern_HeaderFile
 #include <Handle_StepVisual_HArray1OfCurveStyleFontPattern.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_StepVisual_CurveStyleFontPattern_HeaderFile
 #include <Handle_StepVisual_CurveStyleFontPattern.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepVisual_HArray1OfCurveStyleFontPattern;
 class StepVisual_CurveStyleFontPattern;
 
 
 
-class StepVisual_CurveStyleFont : public MMgt_TShared {
+class StepVisual_CurveStyleFont : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a CurveStyleFont <br>
-  Standard_EXPORT   StepVisual_CurveStyleFont();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepVisual_HArray1OfCurveStyleFontPattern)& aPatternList) ;
+  //! Returns a CurveStyleFont
+  Standard_EXPORT StepVisual_CurveStyleFont();
   
-  Standard_EXPORT     void SetName(const Handle(TCollection_HAsciiString)& aName) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepVisual_HArray1OfCurveStyleFontPattern)& aPatternList) ;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString Name() const;
+  Standard_EXPORT   void SetName (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetPatternList(const Handle(StepVisual_HArray1OfCurveStyleFontPattern)& aPatternList) ;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Name()  const;
   
-  Standard_EXPORT     Handle_StepVisual_HArray1OfCurveStyleFontPattern PatternList() const;
+  Standard_EXPORT   void SetPatternList (const Handle(StepVisual_HArray1OfCurveStyleFontPattern)& aPatternList) ;
   
-  Standard_EXPORT     Handle_StepVisual_CurveStyleFontPattern PatternListValue(const Standard_Integer num) const;
+  Standard_EXPORT   Handle(StepVisual_HArray1OfCurveStyleFontPattern) PatternList()  const;
   
-  Standard_EXPORT     Standard_Integer NbPatternList() const;
+  Standard_EXPORT   Handle(StepVisual_CurveStyleFontPattern) PatternListValue (const Standard_Integer num)  const;
+  
+  Standard_EXPORT   Standard_Integer NbPatternList()  const;
 
 
 
@@ -71,8 +57,8 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString name;
-Handle_StepVisual_HArray1OfCurveStyleFontPattern patternList;
+  Handle(TCollection_HAsciiString) name;
+  Handle(StepVisual_HArray1OfCurveStyleFontPattern) patternList;
 
 
 };
@@ -81,7 +67,6 @@ Handle_StepVisual_HArray1OfCurveStyleFontPattern patternList;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_CurveStyleFont_HeaderFile

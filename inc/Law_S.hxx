@@ -6,46 +6,40 @@
 #ifndef _Law_S_HeaderFile
 #define _Law_S_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Law_S_HeaderFile
 #include <Handle_Law_S.hxx>
-#endif
 
-#ifndef _Law_BSpFunc_HeaderFile
 #include <Law_BSpFunc.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 
 
-//! Describes an "S" evolution law. <br>
-class Law_S : public Law_BSpFunc {
+//! Describes an "S" evolution law.
+class Law_S : public Law_BSpFunc
+{
 
 public:
 
-  //! Constructs an empty "S" evolution law. <br>
-  Standard_EXPORT   Law_S();
   
-//! Defines this S evolution law by assigning both: <br>
-//! -   the bounds Pdeb and Pfin of the parameter, and <br>
-//! -   the values Valdeb and Valfin of the function at these <br>
-//!   two parametric bounds. <br>
-//! The function is assumed to have the first derivatives <br>
-//! equal to 0 at the two parameter points Pdeb and Pfin. <br>
-  Standard_EXPORT     void Set(const Standard_Real Pdeb,const Standard_Real Valdeb,const Standard_Real Pfin,const Standard_Real Valfin) ;
-  //! Defines this S evolution law by assigning <br>
-//! -   the bounds Pdeb and Pfin of the parameter, <br>
-//! -   the values Valdeb and Valfin of the function at these <br>
-//!   two parametric bounds, and <br>
-//! -   the values Ddeb and Dfin of the first derivative of the <br>
-//!   function at these two parametric bounds. <br>
-  Standard_EXPORT     void Set(const Standard_Real Pdeb,const Standard_Real Valdeb,const Standard_Real Ddeb,const Standard_Real Pfin,const Standard_Real Valfin,const Standard_Real Dfin) ;
+  //! Constructs an empty "S" evolution law.
+  Standard_EXPORT Law_S();
+  
+
+  //! Defines this S evolution law by assigning both:
+  //! -   the bounds Pdeb and Pfin of the parameter, and
+  //! -   the values Valdeb and Valfin of the function at these
+  //! two parametric bounds.
+  //! The function is assumed to have the first derivatives
+  //! equal to 0 at the two parameter points Pdeb and Pfin.
+  Standard_EXPORT   void Set (const Standard_Real Pdeb, const Standard_Real Valdeb, const Standard_Real Pfin, const Standard_Real Valfin) ;
+  
+  //! Defines this S evolution law by assigning
+  //! -   the bounds Pdeb and Pfin of the parameter,
+  //! -   the values Valdeb and Valfin of the function at these
+  //! two parametric bounds, and
+  //! -   the values Ddeb and Dfin of the first derivative of the
+  //! function at these two parametric bounds.
+  Standard_EXPORT   void Set (const Standard_Real Pdeb, const Standard_Real Valdeb, const Standard_Real Ddeb, const Standard_Real Pfin, const Standard_Real Valfin, const Standard_Real Dfin) ;
 
 
 
@@ -68,7 +62,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Law_S_HeaderFile

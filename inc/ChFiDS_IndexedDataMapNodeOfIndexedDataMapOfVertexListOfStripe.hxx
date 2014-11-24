@@ -6,31 +6,15 @@
 #ifndef _ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe_HeaderFile
 #define _ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe_HeaderFile
 #include <Handle_ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe.hxx>
-#endif
 
-#ifndef _TopoDS_Vertex_HeaderFile
 #include <TopoDS_Vertex.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _ChFiDS_ListOfStripe_HeaderFile
 #include <ChFiDS_ListOfStripe.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
 class TopoDS_Vertex;
 class ChFiDS_ListOfStripe;
 class TopTools_ShapeMapHasher;
@@ -38,20 +22,21 @@ class ChFiDS_IndexedDataMapOfVertexListOfStripe;
 
 
 
-class ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe : public TCollection_MapNode {
+class ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe : public TCollection_MapNode
+{
 
 public:
 
   
-      ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe(const TopoDS_Vertex& K1,const Standard_Integer K2,const ChFiDS_ListOfStripe& I,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+    ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe(const TopoDS_Vertex& K1, const Standard_Integer K2, const ChFiDS_ListOfStripe& I, const TCollection_MapNodePtr& n1, const TCollection_MapNodePtr& n2);
   
-        TopoDS_Vertex& Key1() const;
+      TopoDS_Vertex& Key1()  const;
   
-        Standard_Integer& Key2() const;
+      Standard_Integer& Key2()  const;
   
-        TCollection_MapNodePtr& Next2() const;
+      TCollection_MapNodePtr& Next2()  const;
   
-        ChFiDS_ListOfStripe& Value() const;
+      ChFiDS_ListOfStripe& Value()  const;
 
 
 
@@ -66,10 +51,10 @@ protected:
 private: 
 
 
-TopoDS_Vertex myKey1;
-Standard_Integer myKey2;
-ChFiDS_ListOfStripe myValue;
-TCollection_MapNodePtr myNext2;
+  TopoDS_Vertex myKey1;
+  Standard_Integer myKey2;
+  ChFiDS_ListOfStripe myValue;
+  TCollection_MapNodePtr myNext2;
 
 
 };
@@ -103,7 +88,6 @@ TCollection_MapNodePtr myNext2;
 #undef TCollection_IndexedDataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ChFiDS_IndexedDataMapNodeOfIndexedDataMapOfVertexListOfStripe_HeaderFile

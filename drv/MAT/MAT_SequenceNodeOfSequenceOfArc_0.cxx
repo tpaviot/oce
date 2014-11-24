@@ -5,16 +5,10 @@
 
 #include <MAT_SequenceNodeOfSequenceOfArc.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _MAT_Arc_HeaderFile
 #include <MAT_Arc.hxx>
-#endif
-#ifndef _MAT_SequenceOfArc_HeaderFile
 #include <MAT_SequenceOfArc.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(MAT_SequenceNodeOfSequenceOfArc,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(MAT_SequenceNodeOfSequenceOfArc)
 
 
-#define SeqItem Handle_MAT_Arc
+#define SeqItem Handle(MAT_Arc)
 #define SeqItem_hxx <MAT_Arc.hxx>
 #define TCollection_SequenceNode MAT_SequenceNodeOfSequenceOfArc
 #define TCollection_SequenceNode_hxx <MAT_SequenceNodeOfSequenceOfArc.hxx>

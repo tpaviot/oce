@@ -1,27 +1,9 @@
-#ifndef _TColgp_HArray1OfPnt2d_HeaderFile
 #include <TColgp_HArray1OfPnt2d.hxx>
-#endif
-#ifndef _TShort_HArray1OfShortReal_HeaderFile
 #include <TShort_HArray1OfShortReal.hxx>
-#endif
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NullObject_HeaderFile
 #include <Standard_NullObject.hxx>
-#endif
-#ifndef _TColgp_Array1OfPnt_HeaderFile
 #include <TColgp_Array1OfPnt.hxx>
-#endif
-#ifndef _Poly_Array1OfTriangle_HeaderFile
 #include <Poly_Array1OfTriangle.hxx>
-#endif
-#ifndef _TColgp_Array1OfPnt2d_HeaderFile
 #include <TColgp_Array1OfPnt2d.hxx>
-#endif
-#ifndef _TShort_Array1OfShortReal_HeaderFile
 #include <TShort_Array1OfShortReal.hxx>
-#endif
-#ifndef _Poly_Triangulation_HeaderFile
 #include <Poly_Triangulation.hxx>
-#endif

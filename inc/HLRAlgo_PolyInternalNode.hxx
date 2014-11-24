@@ -6,41 +6,28 @@
 #ifndef _HLRAlgo_PolyInternalNode_HeaderFile
 #define _HLRAlgo_PolyInternalNode_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_HLRAlgo_PolyInternalNode_HeaderFile
 #include <Handle_HLRAlgo_PolyInternalNode.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 
 
-//! to Update OutLines. <br>
-class HLRAlgo_PolyInternalNode : public MMgt_TShared {
+//! to Update OutLines.
+class HLRAlgo_PolyInternalNode : public MMgt_TShared
+{
 
 public:
 
   
-      HLRAlgo_PolyInternalNode();
+    HLRAlgo_PolyInternalNode();
   
-        Standard_Address Indices() const;
+      Standard_Address Indices()  const;
   
-        Standard_Address RValues() const;
+      Standard_Address RValues()  const;
 
 
 
@@ -55,8 +42,8 @@ protected:
 private: 
 
 
-Standard_Integer myIndices[4];
-Standard_Real myRValues[11];
+  Standard_Integer myIndices[4];
+  Standard_Real myRValues[11];
 
 
 };
@@ -66,7 +53,6 @@ Standard_Real myRValues[11];
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRAlgo_PolyInternalNode_HeaderFile

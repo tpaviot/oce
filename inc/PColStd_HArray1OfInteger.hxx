@@ -6,34 +6,16 @@
 #ifndef _PColStd_HArray1OfInteger_HeaderFile
 #define _PColStd_HArray1OfInteger_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PColStd_HArray1OfInteger_HeaderFile
 #include <Handle_PColStd_HArray1OfInteger.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _PColStd_FieldOfHArray1OfInteger_HeaderFile
 #include <PColStd_FieldOfHArray1OfInteger.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _Handle_PColStd_VArrayNodeOfFieldOfHArray1OfInteger_HeaderFile
 #include <Handle_PColStd_VArrayNodeOfFieldOfHArray1OfInteger.hxx>
-#endif
 class Standard_OutOfRange;
 class Standard_RangeError;
 class PColStd_FieldOfHArray1OfInteger;
@@ -41,26 +23,27 @@ class PColStd_VArrayNodeOfFieldOfHArray1OfInteger;
 class PColStd_VArrayTNodeOfFieldOfHArray1OfInteger;
 
 
-class PColStd_HArray1OfInteger : public Standard_Persistent {
+class PColStd_HArray1OfInteger : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PColStd_HArray1OfInteger(const Standard_Integer Low,const Standard_Integer Up);
+  Standard_EXPORT PColStd_HArray1OfInteger(const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT   PColStd_HArray1OfInteger(const Standard_Integer Low,const Standard_Integer Up,const Standard_Integer& V);
+  Standard_EXPORT PColStd_HArray1OfInteger(const Standard_Integer Low, const Standard_Integer Up, const Standard_Integer& V);
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Standard_Integer& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Standard_Integer& Value) ;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-  Standard_EXPORT     Standard_Integer Value(const Standard_Integer Index) const;
+  Standard_EXPORT   Standard_Integer Value (const Standard_Integer Index)  const;
 
-  PColStd_HArray1OfInteger( )
+PColStd_HArray1OfInteger( )
 {
   
 }
@@ -86,13 +69,13 @@ protected:
 private: 
 
   
-  Standard_EXPORT     PColStd_FieldOfHArray1OfInteger Field() const;
+  Standard_EXPORT   PColStd_FieldOfHArray1OfInteger Field()  const;
   
-  Standard_EXPORT     Standard_Address Datas() const;
+  Standard_EXPORT   Standard_Address Datas()  const;
 
-Standard_Integer LowerBound;
-Standard_Integer UpperBound;
-PColStd_FieldOfHArray1OfInteger Data;
+  Standard_Integer LowerBound;
+  Standard_Integer UpperBound;
+  PColStd_FieldOfHArray1OfInteger Data;
 
 
 };
@@ -142,7 +125,6 @@ PColStd_FieldOfHArray1OfInteger Data;
 #undef PCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PColStd_HArray1OfInteger_HeaderFile

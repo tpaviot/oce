@@ -1,33 +1,11 @@
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TDocStd_Document_HeaderFile
 #include <TDocStd_Document.hxx>
-#endif
-#ifndef _XCAFDoc_ShapeTool_HeaderFile
 #include <XCAFDoc_ShapeTool.hxx>
-#endif
-#ifndef _XCAFDoc_ColorTool_HeaderFile
 #include <XCAFDoc_ColorTool.hxx>
-#endif
-#ifndef _XCAFDoc_LayerTool_HeaderFile
 #include <XCAFDoc_LayerTool.hxx>
-#endif
-#ifndef _XCAFDoc_DimTolTool_HeaderFile
 #include <XCAFDoc_DimTolTool.hxx>
-#endif
-#ifndef _XCAFDoc_MaterialTool_HeaderFile
 #include <XCAFDoc_MaterialTool.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _TDF_RelocationTable_HeaderFile
 #include <TDF_RelocationTable.hxx>
-#endif
-#ifndef _XCAFDoc_DocumentTool_HeaderFile
 #include <XCAFDoc_DocumentTool.hxx>
-#endif

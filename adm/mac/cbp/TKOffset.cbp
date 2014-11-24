@@ -87,7 +87,11 @@
 			<Add library="TKBO" />
 			<Add library="TKPrim" />
 			<Add library="TKBool" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 			<Add library="dl" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
 		</Linker>

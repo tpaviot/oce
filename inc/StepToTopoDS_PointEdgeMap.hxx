@@ -6,31 +6,15 @@
 #ifndef _StepToTopoDS_PointEdgeMap_HeaderFile
 #define _StepToTopoDS_PointEdgeMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_StepToTopoDS_DataMapNodeOfPointEdgeMap_HeaderFile
 #include <Handle_StepToTopoDS_DataMapNodeOfPointEdgeMap.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class StepToTopoDS_PointPair;
@@ -41,50 +25,50 @@ class StepToTopoDS_DataMapIteratorOfPointEdgeMap;
 
 
 
-class StepToTopoDS_PointEdgeMap  : public TCollection_BasicMap {
+class StepToTopoDS_PointEdgeMap  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepToTopoDS_PointEdgeMap(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT StepToTopoDS_PointEdgeMap(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     StepToTopoDS_PointEdgeMap& Assign(const StepToTopoDS_PointEdgeMap& Other) ;
-    StepToTopoDS_PointEdgeMap& operator =(const StepToTopoDS_PointEdgeMap& Other) 
+  Standard_EXPORT   StepToTopoDS_PointEdgeMap& Assign (const StepToTopoDS_PointEdgeMap& Other) ;
+  StepToTopoDS_PointEdgeMap& operator = (const StepToTopoDS_PointEdgeMap& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~StepToTopoDS_PointEdgeMap()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Bind(const StepToTopoDS_PointPair& K,const TopoDS_Edge& I) ;
+  Standard_EXPORT   Standard_Boolean Bind (const StepToTopoDS_PointPair& K, const TopoDS_Edge& I) ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const StepToTopoDS_PointPair& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound (const StepToTopoDS_PointPair& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind(const StepToTopoDS_PointPair& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind (const StepToTopoDS_PointPair& K) ;
   
-  Standard_EXPORT    const TopoDS_Edge& Find(const StepToTopoDS_PointPair& K) const;
-   const TopoDS_Edge& operator()(const StepToTopoDS_PointPair& K) const
+  Standard_EXPORT  const  TopoDS_Edge& Find (const StepToTopoDS_PointPair& K)  const;
+ const  TopoDS_Edge& operator() (const StepToTopoDS_PointPair& K)  const
 {
   return Find(K);
 }
   
-  Standard_EXPORT     TopoDS_Edge& ChangeFind(const StepToTopoDS_PointPair& K) ;
-    TopoDS_Edge& operator()(const StepToTopoDS_PointPair& K) 
+  Standard_EXPORT   TopoDS_Edge& ChangeFind (const StepToTopoDS_PointPair& K) ;
+  TopoDS_Edge& operator() (const StepToTopoDS_PointPair& K) 
 {
   return ChangeFind(K);
 }
   
-  Standard_EXPORT     Standard_Address Find1(const StepToTopoDS_PointPair& K) const;
+  Standard_EXPORT   Standard_Address Find1 (const StepToTopoDS_PointPair& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFind1(const StepToTopoDS_PointPair& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFind1 (const StepToTopoDS_PointPair& K) ;
 
 
 
@@ -98,7 +82,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   StepToTopoDS_PointEdgeMap(const StepToTopoDS_PointEdgeMap& Other);
+  Standard_EXPORT StepToTopoDS_PointEdgeMap(const StepToTopoDS_PointEdgeMap& Other);
 
 
 
@@ -109,7 +93,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToTopoDS_PointEdgeMap_HeaderFile

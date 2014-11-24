@@ -6,57 +6,49 @@
 #ifndef _ShapeProcess_OperLibrary_HeaderFile
 #define _ShapeProcess_OperLibrary_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_ShapeProcess_ShapeContext_HeaderFile
 #include <Handle_ShapeProcess_ShapeContext.hxx>
-#endif
-#ifndef _Handle_BRepTools_Modification_HeaderFile
 #include <Handle_BRepTools_Modification.hxx>
-#endif
 class TopoDS_Shape;
 class ShapeProcess_ShapeContext;
 class BRepTools_Modification;
 class TopTools_DataMapOfShapeShape;
 
 
-//! Provides a set of following operators <br>
-//! <br>
-//!          DirectFaces <br>
-//!          FixShape <br>
-//!          SameParameter <br>
-//!          SetTolerance <br>
-//!          SplitAngle <br>
-//!          BSplineRestriction <br>
-//!          ElementaryToRevolution <br>
-//!          SurfaceToBSpline <br>
-//!          ToBezier <br>
-//!          SplitContinuity <br>
-//!          SplitClosedFaces <br>
-//!          FixWireGaps <br>
-//!          FixFaceSize <br>
-//!          DropSmallEdges <br>
-//!          FixShape <br>
-//!          SplitClosedEdges <br>
-class ShapeProcess_OperLibrary  {
+//! Provides a set of following operators
+//!
+//! DirectFaces
+//! FixShape
+//! SameParameter
+//! SetTolerance
+//! SplitAngle
+//! BSplineRestriction
+//! ElementaryToRevolution
+//! SurfaceToBSpline
+//! ToBezier
+//! SplitContinuity
+//! SplitClosedFaces
+//! FixWireGaps
+//! FixFaceSize
+//! DropSmallEdges
+//! FixShape
+//! SplitClosedEdges
+class ShapeProcess_OperLibrary 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Registers all the operators <br>
-  Standard_EXPORT   static  void Init() ;
-  //! Applies BRepTools_Modification to a shape, <br>
-//!          taking into account sharing of components of compounds. <br>
-  Standard_EXPORT   static  TopoDS_Shape ApplyModifier(const TopoDS_Shape& S,const Handle(ShapeProcess_ShapeContext)& context,const Handle(BRepTools_Modification)& M,TopTools_DataMapOfShapeShape& map) ;
-
+  
+  //! Registers all the operators
+  Standard_EXPORT static   void Init() ;
+  
+  //! Applies BRepTools_Modification to a shape,
+  //! taking into account sharing of components of compounds.
+  Standard_EXPORT static   TopoDS_Shape ApplyModifier (const TopoDS_Shape& S, const Handle(ShapeProcess_ShapeContext)& context, const Handle(BRepTools_Modification)& M, TopTools_DataMapOfShapeShape& map) ;
 
 
 
@@ -79,7 +71,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeProcess_OperLibrary_HeaderFile

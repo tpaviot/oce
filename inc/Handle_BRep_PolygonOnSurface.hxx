@@ -6,22 +6,15 @@
 #ifndef _Handle_BRep_PolygonOnSurface_HeaderFile
 #define _Handle_BRep_PolygonOnSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_BRep_CurveRepresentation_HeaderFile
 #include <Handle_BRep_CurveRepresentation.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(BRep_CurveRepresentation);
 class BRep_PolygonOnSurface;
 
-DEFINE_STANDARD_HANDLE(BRep_PolygonOnSurface,BRep_CurveRepresentation)
+DEFINE_STANDARD_HANDLE(BRep_PolygonOnSurface, BRep_CurveRepresentation)
 
-#endif
+#endif // _Handle_BRep_PolygonOnSurface_HeaderFile

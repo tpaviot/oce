@@ -1,21 +1,7 @@
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _TDF_RelocationTable_HeaderFile
 #include <TDF_RelocationTable.hxx>
-#endif
-#ifndef _TopTools_IndexedMapOfShape_HeaderFile
 #include <TopTools_IndexedMapOfShape.hxx>
-#endif
-#ifndef _XCAFDoc_ShapeMapTool_HeaderFile
 #include <XCAFDoc_ShapeMapTool.hxx>
-#endif

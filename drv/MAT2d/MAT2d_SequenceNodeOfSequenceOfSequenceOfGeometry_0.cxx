@@ -5,16 +5,10 @@
 
 #include <MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColGeom2d_SequenceOfGeometry_HeaderFile
 #include <TColGeom2d_SequenceOfGeometry.hxx>
-#endif
-#ifndef _MAT2d_SequenceOfSequenceOfGeometry_HeaderFile
 #include <MAT2d_SequenceOfSequenceOfGeometry.hxx>
-#endif
 
  
 

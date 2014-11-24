@@ -6,28 +6,14 @@
 #ifndef _AIS_SequenceOfDimension_HeaderFile
 #define _AIS_SequenceOfDimension_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_AIS_Relation_HeaderFile
 #include <Handle_AIS_Relation.hxx>
-#endif
-#ifndef _Handle_AIS_SequenceNodeOfSequenceOfDimension_HeaderFile
 #include <Handle_AIS_SequenceNodeOfSequenceOfDimension.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class AIS_Relation;
@@ -35,68 +21,68 @@ class AIS_SequenceNodeOfSequenceOfDimension;
 
 
 
-class AIS_SequenceOfDimension  : public TCollection_BaseSequence {
+class AIS_SequenceOfDimension  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      AIS_SequenceOfDimension();
+    AIS_SequenceOfDimension();
   
-  Standard_EXPORT   AIS_SequenceOfDimension(const AIS_SequenceOfDimension& Other);
+  Standard_EXPORT AIS_SequenceOfDimension(const AIS_SequenceOfDimension& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~AIS_SequenceOfDimension()
 {
   Clear();
 }
   
-  Standard_EXPORT    const AIS_SequenceOfDimension& Assign(const AIS_SequenceOfDimension& Other) ;
-   const AIS_SequenceOfDimension& operator =(const AIS_SequenceOfDimension& Other) 
+  Standard_EXPORT  const  AIS_SequenceOfDimension& Assign (const AIS_SequenceOfDimension& Other) ;
+ const  AIS_SequenceOfDimension& operator = (const AIS_SequenceOfDimension& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(AIS_Relation)& T) ;
+  Standard_EXPORT   void Append (const Handle(AIS_Relation)& T) ;
   
-        void Append(AIS_SequenceOfDimension& S) ;
+      void Append (AIS_SequenceOfDimension& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(AIS_Relation)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(AIS_Relation)& T) ;
   
-        void Prepend(AIS_SequenceOfDimension& S) ;
+      void Prepend (AIS_SequenceOfDimension& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(AIS_Relation)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(AIS_Relation)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,AIS_SequenceOfDimension& S) ;
+      void InsertBefore (const Standard_Integer Index, AIS_SequenceOfDimension& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(AIS_Relation)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(AIS_Relation)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,AIS_SequenceOfDimension& S) ;
+      void InsertAfter (const Standard_Integer Index, AIS_SequenceOfDimension& S) ;
   
-  Standard_EXPORT    const Handle_AIS_Relation& First() const;
+  Standard_EXPORT  const  Handle(AIS_Relation)& First()  const;
   
-  Standard_EXPORT    const Handle_AIS_Relation& Last() const;
+  Standard_EXPORT  const  Handle(AIS_Relation)& Last()  const;
   
-        void Split(const Standard_Integer Index,AIS_SequenceOfDimension& Sub) ;
+      void Split (const Standard_Integer Index, AIS_SequenceOfDimension& Sub) ;
   
-  Standard_EXPORT    const Handle_AIS_Relation& Value(const Standard_Integer Index) const;
-   const Handle_AIS_Relation& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(AIS_Relation)& Value (const Standard_Integer Index)  const;
+ const  Handle(AIS_Relation)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(AIS_Relation)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(AIS_Relation)& I) ;
   
-  Standard_EXPORT     Handle_AIS_Relation& ChangeValue(const Standard_Integer Index) ;
-    Handle_AIS_Relation& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(AIS_Relation)& ChangeValue (const Standard_Integer Index) ;
+  Handle(AIS_Relation)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -115,7 +101,7 @@ private:
 
 };
 
-#define SeqItem Handle_AIS_Relation
+#define SeqItem Handle(AIS_Relation)
 #define SeqItem_hxx <AIS_Relation.hxx>
 #define TCollection_SequenceNode AIS_SequenceNodeOfSequenceOfDimension
 #define TCollection_SequenceNode_hxx <AIS_SequenceNodeOfSequenceOfDimension.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_SequenceOfDimension_HeaderFile

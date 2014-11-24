@@ -6,34 +6,16 @@
 #ifndef _math_Householder_HeaderFile
 #define _math_Householder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
 #include <math_Vector.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class StdFail_NotDone;
 class Standard_OutOfRange;
 class Standard_DimensionError;
@@ -41,70 +23,78 @@ class Standard_ConstructionError;
 class math_Matrix;
 
 
-//! This class implements the least square solution of a set of <br>
-//!          linear equations of m unknowns (n >= m) using the Householder <br>
-//!          method. It solves A.X = B. <br>
-//!          This algorithm has more numerical stability than <br>
-//!          GaussLeastSquare but is longer. <br>
-//!          It must be used if the matrix is singular or nearly singular. <br>
-//!          It is about 16% longer than GaussLeastSquare if there is only <br>
-//!          one member B to solve. <br>
-//!          It is about 30% longer if there are twenty B members to solve. <br>
-class math_Householder  {
+//! This class implements the least square solution of a set of
+//! linear equations of m unknowns (n >= m) using the Householder
+//! method. It solves A.X = B.
+//! This algorithm has more numerical stability than
+//! GaussLeastSquare but is longer.
+//! It must be used if the matrix is singular or nearly singular.
+//! It is about 16% longer than GaussLeastSquare if there is only
+//! one member B to solve.
+//! It is about 30% longer if there are twenty B members to solve.
+class math_Householder 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Given an input matrix A with n>= m, given an input matrix B <br>
-//!          this constructor performs the least square resolution of <br>
-//!          the set of linear equations A.X = B for each column of B. <br>
-//!          If a column norm is less than EPS, the resolution can't <br>
-//!          be done. <br>
-//!          Exception DimensionError is raised if the row number of B <br>
-//!          is different from the A row number. <br>
-  Standard_EXPORT   math_Householder(const math_Matrix& A,const math_Matrix& B,const Standard_Real EPS = 1.0e-20);
-  //! Given an input matrix A with n>= m, given an input matrix B <br>
-//!          this constructor performs the least square resolution of <br>
-//!          the set of linear equations A.X = B for each column of B. <br>
-//!          If a column norm is less than EPS, the resolution can't <br>
-//!          be done. <br>
-//!          Exception DimensionError is raised if the row number of B <br>
-//!          is different from the A row number. <br>
-  Standard_EXPORT   math_Householder(const math_Matrix& A,const math_Matrix& B,const Standard_Integer lowerArow,const Standard_Integer upperArow,const Standard_Integer lowerAcol,const Standard_Integer upperAcol,const Standard_Real EPS = 1.0e-20);
-  //! Given an input matrix A with n>= m, given an input vector B <br>
-//!          this constructor performs the least square resolution of <br>
-//!          the set of linear equations A.X = B. <br>
-//!          If a column norm is less than EPS, the resolution can't <br>
-//!          be done. <br>
-//!          Exception DimensionError is raised if the length of B <br>
-//!          is different from the A row number. <br>
-  Standard_EXPORT   math_Householder(const math_Matrix& A,const math_Vector& B,const Standard_Real EPS = 1.0e-20);
-  //! Returns true if the computations are successful, otherwise returns false. <br>
-        Standard_Boolean IsDone() const;
-  //! Given the integer Index, this routine returns the <br>
-//!          corresponding least square solution sol. <br>
-//!          Exception NotDone is raised if the resolution has not be <br>
-//!          done. <br>
-//!          Exception OutOfRange is raised if Index <=0 or <br>
-//!          Index is more than the number of columns of B. <br>
-        void Value(math_Vector& sol,const Standard_Integer Index = 1) const;
-  //! Returns the matrix sol of all the solutions of the system <br>
-//!          A.X = B. <br>
-//!          Exception NotDone is raised is the resolution has not be <br>
-//!          done. <br>
-       const math_Matrix& AllValues() const;
-  //! Prints informations on the current state of the object. <br>
-  Standard_EXPORT     void Dump(Standard_OStream& o) const;
-
+  
+  //! Given an input matrix A with n>= m, given an input matrix B
+  //! this constructor performs the least square resolution of
+  //! the set of linear equations A.X = B for each column of B.
+  //! If a column norm is less than EPS, the resolution can't
+  //! be done.
+  //! Exception DimensionError is raised if the row number of B
+  //! is different from the A row number.
+  Standard_EXPORT math_Householder(const math_Matrix& A, const math_Matrix& B, const Standard_Real EPS = 1.0e-20);
+  
+  //! Given an input matrix A with n>= m, given an input matrix B
+  //! this constructor performs the least square resolution of
+  //! the set of linear equations A.X = B for each column of B.
+  //! If a column norm is less than EPS, the resolution can't
+  //! be done.
+  //! Exception DimensionError is raised if the row number of B
+  //! is different from the A row number.
+  Standard_EXPORT math_Householder(const math_Matrix& A, const math_Matrix& B, const Standard_Integer lowerArow, const Standard_Integer upperArow, const Standard_Integer lowerAcol, const Standard_Integer upperAcol, const Standard_Real EPS = 1.0e-20);
+  
+  //! Given an input matrix A with n>= m, given an input vector B
+  //! this constructor performs the least square resolution of
+  //! the set of linear equations A.X = B.
+  //! If a column norm is less than EPS, the resolution can't
+  //! be done.
+  //! Exception DimensionError is raised if the length of B
+  //! is different from the A row number.
+  Standard_EXPORT math_Householder(const math_Matrix& A, const math_Vector& B, const Standard_Real EPS = 1.0e-20);
+  
+  //! Returns true if the computations are successful, otherwise returns false.
+      Standard_Boolean IsDone()  const;
+  
+  //! Given the integer Index, this routine returns the
+  //! corresponding least square solution sol.
+  //! Exception NotDone is raised if the resolution has not be
+  //! done.
+  //! Exception OutOfRange is raised if Index <=0 or
+  //! Index is more than the number of columns of B.
+      void Value (math_Vector& sol, const Standard_Integer Index = 1)  const;
+  
+  //! Returns the matrix sol of all the solutions of the system
+  //! A.X = B.
+  //! Exception NotDone is raised is the resolution has not be
+  //! done.
+     const  math_Matrix& AllValues()  const;
+  
+  //! Prints informations on the current state of the object.
+  Standard_EXPORT   void Dump (Standard_OStream& o)  const;
 
 
 
 
 protected:
 
-  //! This method is used internally for each constructor <br>
-//!          above and can't be used directly. <br>
-  Standard_EXPORT     void Perform(const math_Matrix& A,const math_Matrix& B,const Standard_Real EPS) ;
+  
+  //! This method is used internally for each constructor
+  //! above and can't be used directly.
+  Standard_EXPORT   void Perform (const math_Matrix& A, const math_Matrix& B, const Standard_Real EPS) ;
 
 
 
@@ -113,13 +103,13 @@ private:
 
 
 
-math_Matrix Sol;
-math_Matrix Q;
-Standard_Boolean Done;
-Standard_Integer mylowerArow;
-Standard_Integer myupperArow;
-Standard_Integer mylowerAcol;
-Standard_Integer myupperAcol;
+  math_Matrix Sol;
+  math_Matrix Q;
+  Standard_Boolean Done;
+  Standard_Integer mylowerArow;
+  Standard_Integer myupperArow;
+  Standard_Integer mylowerAcol;
+  Standard_Integer myupperAcol;
 
 
 };
@@ -129,7 +119,6 @@ Standard_Integer myupperAcol;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _math_Householder_HeaderFile

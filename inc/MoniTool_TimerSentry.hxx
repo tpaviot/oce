@@ -6,48 +6,42 @@
 #ifndef _MoniTool_TimerSentry_HeaderFile
 #define _MoniTool_TimerSentry_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_MoniTool_Timer_HeaderFile
 #include <Handle_MoniTool_Timer.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
 class MoniTool_Timer;
 
 
-//! A tool to facilitate using MoniTool_Timer functionality <br>
-//!          by automatically ensuring consistency of start/stop actions <br>
-//! <br>
-//!          When instance of TimerSentry is created, a timer <br>
-//!          with corresponding name is started <br>
-//!          When instance is deleted, timer stops <br>
-class MoniTool_TimerSentry  {
+//! A tool to facilitate using MoniTool_Timer functionality
+//! by automatically ensuring consistency of start/stop actions
+//!
+//! When instance of TimerSentry is created, a timer
+//! with corresponding name is started
+//! When instance is deleted, timer stops
+class MoniTool_TimerSentry 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Constructor creates an instance and runs the corresponding timer <br>
-      MoniTool_TimerSentry(const Standard_CString cname);
-  //! Constructor creates an instance and runs the corresponding timer <br>
-      MoniTool_TimerSentry(const Handle(MoniTool_Timer)& timer);
-  //! Destructor stops the associated timer <br>
-        void Destroy() ;
+  
+  //! Constructor creates an instance and runs the corresponding timer
+    MoniTool_TimerSentry(const Standard_CString cname);
+  
+  //! Constructor creates an instance and runs the corresponding timer
+    MoniTool_TimerSentry(const Handle(MoniTool_Timer)& timer);
+  
+  //! Destructor stops the associated timer
+      void Destroy() ;
 Standard_EXPORT ~MoniTool_TimerSentry () { Destroy(); }
   
-        Handle_MoniTool_Timer Timer() const;
-  //! Manually stops the timer <br>
-        void Stop() ;
-
+      Handle(MoniTool_Timer) Timer()  const;
+  
+  //! Manually stops the timer
+      void Stop() ;
 
 
 
@@ -62,7 +56,7 @@ private:
 
 
 
-Handle_MoniTool_Timer myTimer;
+  Handle(MoniTool_Timer) myTimer;
 
 
 };
@@ -72,7 +66,6 @@ Handle_MoniTool_Timer myTimer;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MoniTool_TimerSentry_HeaderFile

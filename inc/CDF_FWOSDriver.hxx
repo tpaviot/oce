@@ -6,52 +6,41 @@
 #ifndef _CDF_FWOSDriver_HeaderFile
 #define _CDF_FWOSDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_CDF_FWOSDriver_HeaderFile
 #include <Handle_CDF_FWOSDriver.hxx>
-#endif
 
-#ifndef _CDF_MetaDataDriver_HeaderFile
 #include <CDF_MetaDataDriver.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_CDM_MetaData_HeaderFile
 #include <Handle_CDM_MetaData.hxx>
-#endif
-#ifndef _Handle_CDM_Document_HeaderFile
 #include <Handle_CDM_Document.hxx>
-#endif
 class TCollection_ExtendedString;
 class CDM_MetaData;
 class CDM_Document;
 
 
 
-class CDF_FWOSDriver : public CDF_MetaDataDriver {
+class CDF_FWOSDriver : public CDF_MetaDataDriver
+{
 
 public:
 
-  //! initializes the MetaDatadriver with its specific name. <br>
-  Standard_EXPORT   CDF_FWOSDriver();
-  //! indicate whether a file exists corresponding to the folder and the name <br>
-  Standard_EXPORT     Standard_Boolean Find(const TCollection_ExtendedString& aFolder,const TCollection_ExtendedString& aName,const TCollection_ExtendedString& aVersion) ;
   
-  Standard_EXPORT     Standard_Boolean HasReadPermission(const TCollection_ExtendedString& aFolder,const TCollection_ExtendedString& aName,const TCollection_ExtendedString& aVersion) ;
+  //! initializes the MetaDatadriver with its specific name.
+  Standard_EXPORT CDF_FWOSDriver();
   
-  Standard_EXPORT     Standard_Boolean FindFolder(const TCollection_ExtendedString& aFolder) ;
+  //! indicate whether a file exists corresponding to the folder and the name
+  Standard_EXPORT   Standard_Boolean Find (const TCollection_ExtendedString& aFolder, const TCollection_ExtendedString& aName, const TCollection_ExtendedString& aVersion) ;
   
-  Standard_EXPORT     TCollection_ExtendedString DefaultFolder() ;
+  Standard_EXPORT   Standard_Boolean HasReadPermission (const TCollection_ExtendedString& aFolder, const TCollection_ExtendedString& aName, const TCollection_ExtendedString& aVersion) ;
   
-  Standard_EXPORT     TCollection_ExtendedString BuildFileName(const Handle(CDM_Document)& aDocument) ;
+  Standard_EXPORT   Standard_Boolean FindFolder (const TCollection_ExtendedString& aFolder) ;
   
-  Standard_EXPORT   virtual  TCollection_ExtendedString SetName(const Handle(CDM_Document)& aDocument,const TCollection_ExtendedString& aName) ;
+  Standard_EXPORT   TCollection_ExtendedString DefaultFolder() ;
+  
+  Standard_EXPORT   TCollection_ExtendedString BuildFileName (const Handle(CDM_Document)& aDocument) ;
+  
+  Standard_EXPORT virtual   TCollection_ExtendedString SetName (const Handle(CDM_Document)& aDocument, const TCollection_ExtendedString& aName) ;
 
 
 
@@ -66,13 +55,13 @@ protected:
 private: 
 
   
-  Standard_EXPORT     Handle_CDM_MetaData MetaData(const TCollection_ExtendedString& aFolder,const TCollection_ExtendedString& aName,const TCollection_ExtendedString& aVersion) ;
+  Standard_EXPORT   Handle(CDM_MetaData) MetaData (const TCollection_ExtendedString& aFolder, const TCollection_ExtendedString& aName, const TCollection_ExtendedString& aVersion) ;
   
-  Standard_EXPORT     Handle_CDM_MetaData CreateMetaData(const Handle(CDM_Document)& aDocument,const TCollection_ExtendedString& aFileName) ;
+  Standard_EXPORT   Handle(CDM_MetaData) CreateMetaData (const Handle(CDM_Document)& aDocument, const TCollection_ExtendedString& aFileName) ;
   
-  Standard_EXPORT   static  TCollection_ExtendedString Concatenate(const TCollection_ExtendedString& aFolder,const TCollection_ExtendedString& aName) ;
+  Standard_EXPORT static   TCollection_ExtendedString Concatenate (const TCollection_ExtendedString& aFolder, const TCollection_ExtendedString& aName) ;
   
-  Standard_EXPORT     Handle_CDM_MetaData BuildMetaData(const TCollection_ExtendedString& aFileName) ;
+  Standard_EXPORT   Handle(CDM_MetaData) BuildMetaData (const TCollection_ExtendedString& aFileName) ;
 
 
 
@@ -82,7 +71,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _CDF_FWOSDriver_HeaderFile

@@ -1,3 +1,1 @@
-#ifndef _Prs3d_BasicAspect_HeaderFile
 #include <Prs3d_BasicAspect.hxx>
-#endif

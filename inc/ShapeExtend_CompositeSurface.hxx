@@ -6,49 +6,21 @@
 #ifndef _ShapeExtend_CompositeSurface_HeaderFile
 #define _ShapeExtend_CompositeSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeExtend_CompositeSurface_HeaderFile
 #include <Handle_ShapeExtend_CompositeSurface.hxx>
-#endif
 
-#ifndef _Handle_TColGeom_HArray2OfSurface_HeaderFile
 #include <Handle_TColGeom_HArray2OfSurface.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Geom_Surface_HeaderFile
 #include <Geom_Surface.hxx>
-#endif
-#ifndef _ShapeExtend_Parametrisation_HeaderFile
 #include <ShapeExtend_Parametrisation.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Geom_Geometry_HeaderFile
 #include <Handle_Geom_Geometry.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
 class TColGeom_HArray2OfSurface;
 class TColStd_HArray1OfReal;
 class TColStd_Array1OfReal;
@@ -62,198 +34,252 @@ class gp_Pnt;
 class gp_Vec;
 
 
-//! Composite surface is represented by a grid of surfaces <br>
-//!          (patches) connected geometrically. Patches may have different <br>
-//!          parametrisation ranges, but they should be parametrised in <br>
-//!          the same manner so that parameter of each patch (u,v) can be converted <br>
-//!          to global parameter on the whole surface (U,V) with help of linear <br>
-//!          transformation: <br>
-//! <br>
-//!          for any i,j-th patch <br>
-//!          U = Ui + ( u - uijmin ) * ( Ui+1 - Ui ) / ( uijmax - uijmin ) <br>
-//!          V = Vj + ( v - vijmin ) * ( Vj+1 - Vj ) / ( vijmax - vijmin ) <br>
-//! <br>
-//!          where <br>
-//! <br>
-//!          [uijmin, uijmax] * [ vijmin, vijmax] - parametric range of i,j-th patch, <br>
-//! <br>
-//!          Ui (i=1,..,Nu+1), Vi (j=1,..,Nv+1) - values defining global <br>
-//!          parametrisation by U and V (correspond to points between patches and <br>
-//!          bounds, (Ui,Uj) corresponds to (uijmin,vijmin) on i,j-th patch) and to <br>
-//!          (u(i-1)(j-1)max,v(i-1)(j-1)max) on (i-1),(j-1)-th patch. <br>
-//! <br>
-//!          Geometrical connectivity is expressed via global parameters: <br>
-//!          S[i,j](Ui+1,V) = S[i+1,j](Ui+1,V) for any i, j, V <br>
-//!          S[i,j](U,Vj+1) = S[i,j+1](U,Vj+1) for any i, j, U <br>
-//!          It is checked with Precision::Confusion() by default. <br>
-//! <br>
-//!  NOTE 1: This class is inherited from Geom_Surface in order to <br>
-//!          make it more easy to store and deal with it. However, it should <br>
-//!          not be passed to standard methods dealing with geometry since <br>
-//!          this type is not known to them. <br>
-//!  NOTE 2: Not all the inherited methods are implemented, and some are <br>
-//!          implemented not in the full form. <br>
-class ShapeExtend_CompositeSurface : public Geom_Surface {
+//! Composite surface is represented by a grid of surfaces
+//! (patches) connected geometrically. Patches may have different
+//! parametrisation ranges, but they should be parametrised in
+//! the same manner so that parameter of each patch (u,v) can be converted
+//! to global parameter on the whole surface (U,V) with help of linear
+//! transformation:
+//!
+//! for any i,j-th patch
+//! U = Ui + ( u - uijmin ) * ( Ui+1 - Ui ) / ( uijmax - uijmin )
+//! V = Vj + ( v - vijmin ) * ( Vj+1 - Vj ) / ( vijmax - vijmin )
+//!
+//! where
+//!
+//! [uijmin, uijmax] * [ vijmin, vijmax] - parametric range of i,j-th patch,
+//!
+//! Ui (i=1,..,Nu+1), Vi (j=1,..,Nv+1) - values defining global
+//! parametrisation by U and V (correspond to points between patches and
+//! bounds, (Ui,Uj) corresponds to (uijmin,vijmin) on i,j-th patch) and to
+//! (u(i-1)(j-1)max,v(i-1)(j-1)max) on (i-1),(j-1)-th patch.
+//!
+//! Geometrical connectivity is expressed via global parameters:
+//! S[i,j](Ui+1,V) = S[i+1,j](Ui+1,V) for any i, j, V
+//! S[i,j](U,Vj+1) = S[i,j+1](U,Vj+1) for any i, j, U
+//! It is checked with Precision::Confusion() by default.
+//!
+//! NOTE 1: This class is inherited from Geom_Surface in order to
+//! make it more easy to store and deal with it. However, it should
+//! not be passed to standard methods dealing with geometry since
+//! this type is not known to them.
+//! NOTE 2: Not all the inherited methods are implemented, and some are
+//! implemented not in the full form.
+class ShapeExtend_CompositeSurface : public Geom_Surface
+{
 
 public:
 
-  //! Empty constructor. <br>
-  Standard_EXPORT   ShapeExtend_CompositeSurface();
-  //! Initializes by a grid of surfaces (calls Init()). <br>
-  Standard_EXPORT   ShapeExtend_CompositeSurface(const Handle(TColGeom_HArray2OfSurface)& GridSurf,const ShapeExtend_Parametrisation param = ShapeExtend_Natural);
-  //! Initializes by a grid of surfaces (calls Init()). <br>
-  Standard_EXPORT   ShapeExtend_CompositeSurface(const Handle(TColGeom_HArray2OfSurface)& GridSurf,const TColStd_Array1OfReal& UJoints,const TColStd_Array1OfReal& VJoints);
-  //! Initializes by a grid of surfaces. <br>
-//!          All the Surfaces of the grid must have geometrical <br>
-//!          connectivity as stated above. <br>
-//!          If geometrical connectivity is not satisfied, method <br>
-//!          returns False. <br>
-//!          However, class is initialized even in that case. <br>
-//! <br>
-//!          Last parameter defines how global parametrisation <br>
-//!          (joint values) will be computed: <br>
-//!          ShapeExtend_Natural: U1 = u11min, Ui+1 = Ui + (ui1max-ui1min), etc. <br>
-//!          ShapeExtend_Uniform: Ui = i-1, Vj = j-1 <br>
-//!          ShapeExtend_Unitary: Ui = (i-1)/Nu, Vi = (j-1)/Nv <br>
-  Standard_EXPORT     Standard_Boolean Init(const Handle(TColGeom_HArray2OfSurface)& GridSurf,const ShapeExtend_Parametrisation param = ShapeExtend_Natural) ;
-  //! Initializes by a grid of surfaces with given global <br>
-//!          parametrisation defined by UJoints and VJoints arrays, <br>
-//!          each having langth equal to number of patches in corresponding <br>
-//!          direction + 1. Global joint values should be sorted in <br>
-//!          increasing order. <br>
-//!          All the Surfaces of the grid must have geometrical <br>
-//!          connectivity as stated above. <br>
-//!          If geometrical connectivity is not satisfied, method <br>
-//!          returns False. <br>
-//!          However, class is initialized even in that case. <br>
-  Standard_EXPORT     Standard_Boolean Init(const Handle(TColGeom_HArray2OfSurface)& GridSurf,const TColStd_Array1OfReal& UJoints,const TColStd_Array1OfReal& VJoints) ;
-  //! Returns number of patches in U direction. <br>
-  Standard_EXPORT     Standard_Integer NbUPatches() const;
-  //! Returns number of patches in V direction. <br>
-  Standard_EXPORT     Standard_Integer NbVPatches() const;
-  //! Returns one surface patch <br>
-  Standard_EXPORT    const Handle_Geom_Surface& Patch(const Standard_Integer i,const Standard_Integer j) const;
-  //! Returns grid of surfaces <br>
-  Standard_EXPORT    const Handle_TColGeom_HArray2OfSurface& Patches() const;
-  //! Returns the array of U values corresponding to joint <br>
-//!          points between patches as well as to start and end points, <br>
-//!          which define global parametrisation of the surface <br>
-  Standard_EXPORT     Handle_TColStd_HArray1OfReal UJointValues() const;
-  //! Returns the array of V values corresponding to joint <br>
-//!          points between patches as well as to start and end points, <br>
-//!          which define global parametrisation of the surface <br>
-  Standard_EXPORT     Handle_TColStd_HArray1OfReal VJointValues() const;
-  //! Returns i-th joint value in U direction <br>
-//!          (1-st is global Umin, (NbUPatches()+1)-th is global Umax <br>
-//!          on the composite surface) <br>
-  Standard_EXPORT     Standard_Real UJointValue(const Standard_Integer i) const;
-  //! Returns j-th joint value in V direction <br>
-//!          (1-st is global Vmin, (NbVPatches()+1)-th is global Vmax <br>
-//!          on the composite surface) <br>
-  Standard_EXPORT     Standard_Real VJointValue(const Standard_Integer j) const;
-  //! Sets the array of U values corresponding to joint <br>
-//!          points, which define global parametrisation of the surface. <br>
-//!          Number of values in array should be equal to NbUPatches()+1. <br>
-//!          All the values should be sorted in increasing order. <br>
-//!          If this is not satisfied, does nothing and returns False. <br>
-  Standard_EXPORT     Standard_Boolean SetUJointValues(const TColStd_Array1OfReal& UJoints) ;
-  //! Sets the array of V values corresponding to joint <br>
-//!          points, which define global parametrisation of the surface <br>
-//!          Number of values in array should be equal to NbVPatches()+1. <br>
-//!          All the values should be sorted in increasing order. <br>
-//!          If this is not satisfied, does nothing and returns False. <br>
-  Standard_EXPORT     Standard_Boolean SetVJointValues(const TColStd_Array1OfReal& VJoints) ;
-  //! Changes starting value for global U parametrisation (all <br>
-//!          other joint values are shifted accordingly) <br>
-  Standard_EXPORT     void SetUFirstValue(const Standard_Real UFirst) ;
-  //! Changes starting value for global V parametrisation (all <br>
-//!          other joint values are shifted accordingly) <br>
-  Standard_EXPORT     void SetVFirstValue(const Standard_Real VFirst) ;
-  //! Returns number of col that contains given (global) parameter <br>
-  Standard_EXPORT     Standard_Integer LocateUParameter(const Standard_Real U) const;
-  //! Returns number of row that contains given (global) parameter <br>
-  Standard_EXPORT     Standard_Integer LocateVParameter(const Standard_Real V) const;
-  //! Returns number of row and col of surface that contains <br>
-//!          given point <br>
-  Standard_EXPORT     void LocateUVPoint(const gp_Pnt2d& pnt,Standard_Integer& i,Standard_Integer& j) const;
-  //! Returns one surface patch that contains given (global) parameters <br>
-  Standard_EXPORT    const Handle_Geom_Surface& Patch(const Standard_Real U,const Standard_Real V) const;
-  //! Returns one surface patch that contains given point <br>
-  Standard_EXPORT    const Handle_Geom_Surface& Patch(const gp_Pnt2d& pnt) const;
-  //! Converts local parameter u on patch i,j to global parameter U <br>
-  Standard_EXPORT     Standard_Real ULocalToGlobal(const Standard_Integer i,const Standard_Integer j,const Standard_Real u) const;
-  //! Converts local parameter v on patch i,j to global parameter V <br>
-  Standard_EXPORT     Standard_Real VLocalToGlobal(const Standard_Integer i,const Standard_Integer j,const Standard_Real v) const;
-  //! Converts local parameters uv on patch i,j to global parameters UV <br>
-  Standard_EXPORT     gp_Pnt2d LocalToGlobal(const Standard_Integer i,const Standard_Integer j,const gp_Pnt2d& uv) const;
-  //! Converts global parameter U to local parameter u on patch i,j <br>
-  Standard_EXPORT     Standard_Real UGlobalToLocal(const Standard_Integer i,const Standard_Integer j,const Standard_Real U) const;
-  //! Converts global parameter V to local parameter v on patch i,j <br>
-  Standard_EXPORT     Standard_Real VGlobalToLocal(const Standard_Integer i,const Standard_Integer j,const Standard_Real V) const;
-  //! Converts global parameters UV to local parameters uv on patch i,j <br>
-  Standard_EXPORT     gp_Pnt2d GlobalToLocal(const Standard_Integer i,const Standard_Integer j,const gp_Pnt2d& UV) const;
-  //! Computes transformation operator and uFactor descrinbing affine <br>
-//!          transformation required to convert global parameters on composite <br>
-//!          surface to local parameters on patch (i,j): <br>
-//!          uv = ( uFactor, 1. ) X Trsf * UV; <br>
-//!          NOTE: Thus Trsf contains shift and scale by V, scale by U is stored in uFact. <br>
-//!          Returns True if transformation is not an identity <br>
-  Standard_EXPORT     Standard_Boolean GlobalToLocalTransformation(const Standard_Integer i,const Standard_Integer j,Standard_Real& uFact,gp_Trsf2d& Trsf) const;
-  //! Applies transformation to all the patches <br>
-  Standard_EXPORT   virtual  void Transform(const gp_Trsf& T) ;
-  //! Returns a copy of the surface <br>
-  Standard_EXPORT   virtual  Handle_Geom_Geometry Copy() const;
-  //! NOT IMPLEMENTED (does nothing) <br>
-  Standard_EXPORT   virtual  void UReverse() ;
-  //! Returns U <br>
-  Standard_EXPORT   virtual  Standard_Real UReversedParameter(const Standard_Real U) const;
-  //! NOT IMPLEMENTED (does nothing) <br>
-  Standard_EXPORT   virtual  void VReverse() ;
-  //! Returns V <br>
-  Standard_EXPORT   virtual  Standard_Real VReversedParameter(const Standard_Real V) const;
-  //! Returns the parametric bounds of grid <br>
-  Standard_EXPORT   virtual  void Bounds(Standard_Real& U1,Standard_Real& U2,Standard_Real& V1,Standard_Real& V2) const;
-  //! Returns True if grid is closed in U direction <br>
-//!          (i.e. connected with Precision::Confusion) <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsUClosed() const;
-  //! Returns True if grid is closed in V direction <br>
-//!          (i.e. connected with Precision::Confusion) <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsVClosed() const;
-  //! Returns False <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsUPeriodic() const;
-  //! Returns False <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsVPeriodic() const;
-  //! NOT IMPLEMENTED (returns Null curve) <br>
-  Standard_EXPORT   virtual  Handle_Geom_Curve UIso(const Standard_Real U) const;
-  //! NOT IMPLEMENTED (returns Null curve) <br>
-  Standard_EXPORT   virtual  Handle_Geom_Curve VIso(const Standard_Real V) const;
-  //! returns C0 <br>
-  Standard_EXPORT   virtual  GeomAbs_Shape Continuity() const;
-  //! returns True if N <=0 <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsCNu(const Standard_Integer N) const;
-  //! returns True if N <=0 <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsCNv(const Standard_Integer N) const;
-  //! Computes the point of parameter U,V on the grid. <br>
-  Standard_EXPORT   virtual  void D0(const Standard_Real U,const Standard_Real V,gp_Pnt& P) const;
-  //! Computes the point P and the first derivatives in the <br>
-//!          directions U and V at this point. <br>
-  Standard_EXPORT   virtual  void D1(const Standard_Real U,const Standard_Real V,gp_Pnt& P,gp_Vec& D1U,gp_Vec& D1V) const;
-  //! Computes the point P, the first and the second derivatives in <br>
-//!          the directions U and V at this point. <br>
-  Standard_EXPORT   virtual  void D2(const Standard_Real U,const Standard_Real V,gp_Pnt& P,gp_Vec& D1U,gp_Vec& D1V,gp_Vec& D2U,gp_Vec& D2V,gp_Vec& D2UV) const;
-  //! Computes the point P, the first,the second and the third <br>
-//!          derivatives in the directions U and V at this point. <br>
-  Standard_EXPORT   virtual  void D3(const Standard_Real U,const Standard_Real V,gp_Pnt& P,gp_Vec& D1U,gp_Vec& D1V,gp_Vec& D2U,gp_Vec& D2V,gp_Vec& D2UV,gp_Vec& D3U,gp_Vec& D3V,gp_Vec& D3UUV,gp_Vec& D3UVV) const;
-  //! Computes the derivative of order Nu in the direction U and Nv <br>
-//!          in the direction V at the point P(U, V). <br>
-  Standard_EXPORT   virtual  gp_Vec DN(const Standard_Real U,const Standard_Real V,const Standard_Integer Nu,const Standard_Integer Nv) const;
-  //! Computes the point of parameter pnt on the grid. <br>
-  Standard_EXPORT     gp_Pnt Value(const gp_Pnt2d& pnt) const;
-  //! Computes Joint values according to parameter <br>
-  Standard_EXPORT     void ComputeJointValues(const ShapeExtend_Parametrisation param = ShapeExtend_Natural) ;
-  //! Checks geometrical connectivity of the patches, including <br>
-//!          closedness (sets fields muUClosed and myVClosed) <br>
-  Standard_EXPORT     Standard_Boolean CheckConnectivity(const Standard_Real prec) ;
+  
+  //! Empty constructor.
+  Standard_EXPORT ShapeExtend_CompositeSurface();
+  
+  //! Initializes by a grid of surfaces (calls Init()).
+  Standard_EXPORT ShapeExtend_CompositeSurface(const Handle(TColGeom_HArray2OfSurface)& GridSurf, const ShapeExtend_Parametrisation param = ShapeExtend_Natural);
+  
+  //! Initializes by a grid of surfaces (calls Init()).
+  Standard_EXPORT ShapeExtend_CompositeSurface(const Handle(TColGeom_HArray2OfSurface)& GridSurf, const TColStd_Array1OfReal& UJoints, const TColStd_Array1OfReal& VJoints);
+  
+  //! Initializes by a grid of surfaces.
+  //! All the Surfaces of the grid must have geometrical
+  //! connectivity as stated above.
+  //! If geometrical connectivity is not satisfied, method
+  //! returns False.
+  //! However, class is initialized even in that case.
+  //!
+  //! Last parameter defines how global parametrisation
+  //! (joint values) will be computed:
+  //! ShapeExtend_Natural: U1 = u11min, Ui+1 = Ui + (ui1max-ui1min), etc.
+  //! ShapeExtend_Uniform: Ui = i-1, Vj = j-1
+  //! ShapeExtend_Unitary: Ui = (i-1)/Nu, Vi = (j-1)/Nv
+  Standard_EXPORT   Standard_Boolean Init (const Handle(TColGeom_HArray2OfSurface)& GridSurf, const ShapeExtend_Parametrisation param = ShapeExtend_Natural) ;
+  
+  //! Initializes by a grid of surfaces with given global
+  //! parametrisation defined by UJoints and VJoints arrays,
+  //! each having langth equal to number of patches in corresponding
+  //! direction + 1. Global joint values should be sorted in
+  //! increasing order.
+  //! All the Surfaces of the grid must have geometrical
+  //! connectivity as stated above.
+  //! If geometrical connectivity is not satisfied, method
+  //! returns False.
+  //! However, class is initialized even in that case.
+  Standard_EXPORT   Standard_Boolean Init (const Handle(TColGeom_HArray2OfSurface)& GridSurf, const TColStd_Array1OfReal& UJoints, const TColStd_Array1OfReal& VJoints) ;
+  
+  //! Returns number of patches in U direction.
+  Standard_EXPORT   Standard_Integer NbUPatches()  const;
+  
+  //! Returns number of patches in V direction.
+  Standard_EXPORT   Standard_Integer NbVPatches()  const;
+  
+  //! Returns one surface patch
+  Standard_EXPORT  const  Handle(Geom_Surface)& Patch (const Standard_Integer i, const Standard_Integer j)  const;
+  
+  //! Returns grid of surfaces
+  Standard_EXPORT  const  Handle(TColGeom_HArray2OfSurface)& Patches()  const;
+  
+  //! Returns the array of U values corresponding to joint
+  //! points between patches as well as to start and end points,
+  //! which define global parametrisation of the surface
+  Standard_EXPORT   Handle(TColStd_HArray1OfReal) UJointValues()  const;
+  
+  //! Returns the array of V values corresponding to joint
+  //! points between patches as well as to start and end points,
+  //! which define global parametrisation of the surface
+  Standard_EXPORT   Handle(TColStd_HArray1OfReal) VJointValues()  const;
+  
+  //! Returns i-th joint value in U direction
+  //! (1-st is global Umin, (NbUPatches()+1)-th is global Umax
+  //! on the composite surface)
+  Standard_EXPORT   Standard_Real UJointValue (const Standard_Integer i)  const;
+  
+  //! Returns j-th joint value in V direction
+  //! (1-st is global Vmin, (NbVPatches()+1)-th is global Vmax
+  //! on the composite surface)
+  Standard_EXPORT   Standard_Real VJointValue (const Standard_Integer j)  const;
+  
+  //! Sets the array of U values corresponding to joint
+  //! points, which define global parametrisation of the surface.
+  //! Number of values in array should be equal to NbUPatches()+1.
+  //! All the values should be sorted in increasing order.
+  //! If this is not satisfied, does nothing and returns False.
+  Standard_EXPORT   Standard_Boolean SetUJointValues (const TColStd_Array1OfReal& UJoints) ;
+  
+  //! Sets the array of V values corresponding to joint
+  //! points, which define global parametrisation of the surface
+  //! Number of values in array should be equal to NbVPatches()+1.
+  //! All the values should be sorted in increasing order.
+  //! If this is not satisfied, does nothing and returns False.
+  Standard_EXPORT   Standard_Boolean SetVJointValues (const TColStd_Array1OfReal& VJoints) ;
+  
+  //! Changes starting value for global U parametrisation (all
+  //! other joint values are shifted accordingly)
+  Standard_EXPORT   void SetUFirstValue (const Standard_Real UFirst) ;
+  
+  //! Changes starting value for global V parametrisation (all
+  //! other joint values are shifted accordingly)
+  Standard_EXPORT   void SetVFirstValue (const Standard_Real VFirst) ;
+  
+  //! Returns number of col that contains given (global) parameter
+  Standard_EXPORT   Standard_Integer LocateUParameter (const Standard_Real U)  const;
+  
+  //! Returns number of row that contains given (global) parameter
+  Standard_EXPORT   Standard_Integer LocateVParameter (const Standard_Real V)  const;
+  
+  //! Returns number of row and col of surface that contains
+  //! given point
+  Standard_EXPORT   void LocateUVPoint (const gp_Pnt2d& pnt, Standard_Integer& i, Standard_Integer& j)  const;
+  
+  //! Returns one surface patch that contains given (global) parameters
+  Standard_EXPORT  const  Handle(Geom_Surface)& Patch (const Standard_Real U, const Standard_Real V)  const;
+  
+  //! Returns one surface patch that contains given point
+  Standard_EXPORT  const  Handle(Geom_Surface)& Patch (const gp_Pnt2d& pnt)  const;
+  
+  //! Converts local parameter u on patch i,j to global parameter U
+  Standard_EXPORT   Standard_Real ULocalToGlobal (const Standard_Integer i, const Standard_Integer j, const Standard_Real u)  const;
+  
+  //! Converts local parameter v on patch i,j to global parameter V
+  Standard_EXPORT   Standard_Real VLocalToGlobal (const Standard_Integer i, const Standard_Integer j, const Standard_Real v)  const;
+  
+  //! Converts local parameters uv on patch i,j to global parameters UV
+  Standard_EXPORT   gp_Pnt2d LocalToGlobal (const Standard_Integer i, const Standard_Integer j, const gp_Pnt2d& uv)  const;
+  
+  //! Converts global parameter U to local parameter u on patch i,j
+  Standard_EXPORT   Standard_Real UGlobalToLocal (const Standard_Integer i, const Standard_Integer j, const Standard_Real U)  const;
+  
+  //! Converts global parameter V to local parameter v on patch i,j
+  Standard_EXPORT   Standard_Real VGlobalToLocal (const Standard_Integer i, const Standard_Integer j, const Standard_Real V)  const;
+  
+  //! Converts global parameters UV to local parameters uv on patch i,j
+  Standard_EXPORT   gp_Pnt2d GlobalToLocal (const Standard_Integer i, const Standard_Integer j, const gp_Pnt2d& UV)  const;
+  
+  //! Computes transformation operator and uFactor descrinbing affine
+  //! transformation required to convert global parameters on composite
+  //! surface to local parameters on patch (i,j):
+  //! uv = ( uFactor, 1. ) X Trsf * UV;
+  //! NOTE: Thus Trsf contains shift and scale by V, scale by U is stored in uFact.
+  //! Returns True if transformation is not an identity
+  Standard_EXPORT   Standard_Boolean GlobalToLocalTransformation (const Standard_Integer i, const Standard_Integer j, Standard_Real& uFact, gp_Trsf2d& Trsf)  const;
+  
+  //! Applies transformation to all the patches
+  Standard_EXPORT virtual   void Transform (const gp_Trsf& T) ;
+  
+  //! Returns a copy of the surface
+  Standard_EXPORT virtual   Handle(Geom_Geometry) Copy()  const;
+  
+  //! NOT IMPLEMENTED (does nothing)
+  Standard_EXPORT virtual   void UReverse() ;
+  
+  //! Returns U
+  Standard_EXPORT virtual   Standard_Real UReversedParameter (const Standard_Real U)  const;
+  
+  //! NOT IMPLEMENTED (does nothing)
+  Standard_EXPORT virtual   void VReverse() ;
+  
+  //! Returns V
+  Standard_EXPORT virtual   Standard_Real VReversedParameter (const Standard_Real V)  const;
+  
+  //! Returns the parametric bounds of grid
+  Standard_EXPORT virtual   void Bounds (Standard_Real& U1, Standard_Real& U2, Standard_Real& V1, Standard_Real& V2)  const;
+  
+  //! Returns True if grid is closed in U direction
+  //! (i.e. connected with Precision::Confusion)
+  Standard_EXPORT virtual   Standard_Boolean IsUClosed()  const;
+  
+  //! Returns True if grid is closed in V direction
+  //! (i.e. connected with Precision::Confusion)
+  Standard_EXPORT virtual   Standard_Boolean IsVClosed()  const;
+  
+  //! Returns False
+  Standard_EXPORT virtual   Standard_Boolean IsUPeriodic()  const;
+  
+  //! Returns False
+  Standard_EXPORT virtual   Standard_Boolean IsVPeriodic()  const;
+  
+  //! NOT IMPLEMENTED (returns Null curve)
+  Standard_EXPORT virtual   Handle(Geom_Curve) UIso (const Standard_Real U)  const;
+  
+  //! NOT IMPLEMENTED (returns Null curve)
+  Standard_EXPORT virtual   Handle(Geom_Curve) VIso (const Standard_Real V)  const;
+  
+  //! returns C0
+  Standard_EXPORT virtual   GeomAbs_Shape Continuity()  const;
+  
+  //! returns True if N <=0
+  Standard_EXPORT virtual   Standard_Boolean IsCNu (const Standard_Integer N)  const;
+  
+  //! returns True if N <=0
+  Standard_EXPORT virtual   Standard_Boolean IsCNv (const Standard_Integer N)  const;
+  
+  //! Computes the point of parameter U,V on the grid.
+  Standard_EXPORT virtual   void D0 (const Standard_Real U, const Standard_Real V, gp_Pnt& P)  const;
+  
+  //! Computes the point P and the first derivatives in the
+  //! directions U and V at this point.
+  Standard_EXPORT virtual   void D1 (const Standard_Real U, const Standard_Real V, gp_Pnt& P, gp_Vec& D1U, gp_Vec& D1V)  const;
+  
+  //! Computes the point P, the first and the second derivatives in
+  //! the directions U and V at this point.
+  Standard_EXPORT virtual   void D2 (const Standard_Real U, const Standard_Real V, gp_Pnt& P, gp_Vec& D1U, gp_Vec& D1V, gp_Vec& D2U, gp_Vec& D2V, gp_Vec& D2UV)  const;
+  
+  //! Computes the point P, the first,the second and the third
+  //! derivatives in the directions U and V at this point.
+  Standard_EXPORT virtual   void D3 (const Standard_Real U, const Standard_Real V, gp_Pnt& P, gp_Vec& D1U, gp_Vec& D1V, gp_Vec& D2U, gp_Vec& D2V, gp_Vec& D2UV, gp_Vec& D3U, gp_Vec& D3V, gp_Vec& D3UUV, gp_Vec& D3UVV)  const;
+  
+  //! Computes the derivative of order Nu in the direction U and Nv
+  //! in the direction V at the point P(U, V).
+  Standard_EXPORT virtual   gp_Vec DN (const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv)  const;
+  
+  //! Computes the point of parameter pnt on the grid.
+  Standard_EXPORT   gp_Pnt Value (const gp_Pnt2d& pnt)  const;
+  
+  //! Computes Joint values according to parameter
+  Standard_EXPORT   void ComputeJointValues (const ShapeExtend_Parametrisation param = ShapeExtend_Natural) ;
+  
+  //! Checks geometrical connectivity of the patches, including
+  //! closedness (sets fields muUClosed and myVClosed)
+  Standard_EXPORT   Standard_Boolean CheckConnectivity (const Standard_Real prec) ;
 
 
 
@@ -268,11 +294,11 @@ protected:
 private: 
 
 
-Handle_TColGeom_HArray2OfSurface myPatches;
-Handle_TColStd_HArray1OfReal myUJointValues;
-Handle_TColStd_HArray1OfReal myVJointValues;
-Standard_Boolean myUClosed;
-Standard_Boolean myVClosed;
+  Handle(TColGeom_HArray2OfSurface) myPatches;
+  Handle(TColStd_HArray1OfReal) myUJointValues;
+  Handle(TColStd_HArray1OfReal) myVJointValues;
+  Standard_Boolean myUClosed;
+  Standard_Boolean myVClosed;
 
 
 };
@@ -281,7 +307,6 @@ Standard_Boolean myVClosed;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeExtend_CompositeSurface_HeaderFile

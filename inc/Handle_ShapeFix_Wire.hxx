@@ -6,22 +6,15 @@
 #ifndef _Handle_ShapeFix_Wire_HeaderFile
 #define _Handle_ShapeFix_Wire_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_ShapeFix_Root_HeaderFile
 #include <Handle_ShapeFix_Root.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(ShapeFix_Root);
 class ShapeFix_Wire;
 
-DEFINE_STANDARD_HANDLE(ShapeFix_Wire,ShapeFix_Root)
+DEFINE_STANDARD_HANDLE(ShapeFix_Wire, ShapeFix_Root)
 
-#endif
+#endif // _Handle_ShapeFix_Wire_HeaderFile

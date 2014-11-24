@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKOffset"
-	ProjectGUID="{EEB06A18-0F03-0364-17BF-E605295CD591}"
+	ProjectGUID="{91387151-11A2-1245-08DF-EE826BB46BE6}"
 	>
 	<Platforms>
 		<Platform
@@ -63,6 +63,7 @@
 				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
+				EnableEnhancedInstructionSet="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -163,6 +164,7 @@
 				DebugInformationFormat="3"
 				CompileAs="0"
 				DisableSpecificWarnings="4996"
+				EnableEnhancedInstructionSet="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -187,6 +189,7 @@
 				ProgramDatabaseFile="..\..\..\win32\vc8\bind\TKOffset.pdb"
 				SubSystem="2"
 				ImportLibrary="..\..\..\win32\vc8\libd\TKOffset.lib"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -248,7 +251,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BRepOffsetAPI;..\..\..\src\BRepOffsetAPI;..\..\..\drv\Draft;..\..\..\src\Draft;..\..\..\drv\BRepOffset;..\..\..\src\BRepOffset;..\..\..\drv\BiTgte;..\..\..\src\BiTgte;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BRepOffsetAPI_DLL;__Draft_DLL;__BRepOffset_DLL;__BiTgte_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BRepOffsetAPI_DLL;__Draft_DLL;__BRepOffset_DLL;__BiTgte_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +271,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BRepOffsetAPI_DLL;__Draft_DLL;__BRepOffset_DLL;__BiTgte_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BRepOffsetAPI_DLL;__Draft_DLL;__BRepOffset_DLL;__BiTgte_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -276,7 +279,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKFillet.lib TKBRep.lib TKTopAlgo.lib TKMath.lib TKernel.lib TKGeomBase.lib TKG2d.lib TKG3d.lib TKGeomAlgo.lib TKShHealing.lib TKBO.lib TKPrim.lib TKBool.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKFillet.lib TKBRep.lib TKTopAlgo.lib TKMath.lib TKernel.lib TKGeomBase.lib TKG2d.lib TKG3d.lib TKGeomAlgo.lib TKShHealing.lib TKBO.lib TKPrim.lib TKBool.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bin\TKOffset.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -284,7 +287,7 @@
 				ProgramDatabaseFile=".\..\..\..\win64\vc8\bin\TKOffset.pdb"
 				SubSystem="2"
 				ImportLibrary="..\..\..\win64\vc8\lib\TKOffset.lib"
-				TargetMachine="X64"
+				TargetMachine="17"
 			/>
 			<Tool
  				Name="VCALinkTool"
@@ -347,7 +350,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BRepOffsetAPI;..\..\..\src\BRepOffsetAPI;..\..\..\drv\Draft;..\..\..\src\Draft;..\..\..\drv\BRepOffset;..\..\..\src\BRepOffset;..\..\..\drv\BiTgte;..\..\..\src\BiTgte;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BRepOffsetAPI_DLL;__Draft_DLL;__BRepOffset_DLL;__BiTgte_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BRepOffsetAPI_DLL;__Draft_DLL;__BRepOffset_DLL;__BiTgte_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -369,7 +372,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BRepOffsetAPI_DLL;__Draft_DLL;__BRepOffset_DLL;__BiTgte_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BRepOffsetAPI_DLL;__Draft_DLL;__BRepOffset_DLL;__BiTgte_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -377,7 +380,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKFillet.lib TKBRep.lib TKTopAlgo.lib TKMath.lib TKernel.lib TKGeomBase.lib TKG2d.lib TKG3d.lib TKGeomAlgo.lib TKShHealing.lib TKBO.lib TKPrim.lib TKBool.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKFillet.lib TKBRep.lib TKTopAlgo.lib TKMath.lib TKernel.lib TKGeomBase.lib TKG2d.lib TKG3d.lib TKGeomAlgo.lib TKShHealing.lib TKBO.lib TKPrim.lib TKBool.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bind\TKOffset.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -386,7 +389,7 @@
 				ProgramDatabaseFile="..\..\..\win64\vc8\bind\TKOffset.pdb"
 				SubSystem="2"
 				ImportLibrary="..\..\..\win64\vc8\libd\TKOffset.lib"
-				TargetMachine="X64"
+				TargetMachine="17"
 			/>
 			<Tool
 				Name="VCALinkTool"

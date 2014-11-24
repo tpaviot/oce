@@ -6,48 +6,39 @@
 #ifndef _QANewModTopOpe_Intersection_HeaderFile
 #define _QANewModTopOpe_Intersection_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopTools_DataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _BRepAlgoAPI_BooleanOperation_HeaderFile
 #include <BRepAlgoAPI_BooleanOperation.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopoDS_Shape;
 class TopTools_ListOfShape;
 
 
-//! provides  intersection  of  two  shapes; <br>
-class QANewModTopOpe_Intersection  : public BRepAlgoAPI_BooleanOperation {
+//! provides  intersection  of  two  shapes;
+class QANewModTopOpe_Intersection  : public BRepAlgoAPI_BooleanOperation
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   QANewModTopOpe_Intersection(const TopoDS_Shape& theObject1,const TopoDS_Shape& theObject2);
-  //! Returns the list  of shapes generated from the shape <S>. <br>
-  Standard_EXPORT   virtual const TopTools_ListOfShape& Generated(const TopoDS_Shape& theS) ;
-  //! Returns true if there is at least one generated shape. <br>
-//!         For use in BRepNaming. <br>
-  Standard_EXPORT   virtual  Standard_Boolean HasGenerated() const;
+  Standard_EXPORT QANewModTopOpe_Intersection(const TopoDS_Shape& theObject1, const TopoDS_Shape& theObject2);
   
-  Standard_EXPORT   virtual  Standard_Boolean IsDeleted(const TopoDS_Shape& aS) ;
-  //! Returns true if there is at least one deleted shape. <br>
-//!         For use in BRepNaming. <br>
-  Standard_EXPORT   virtual  Standard_Boolean HasDeleted() const;
-
+  //! Returns the list  of shapes generated from the shape <S>.
+  Standard_EXPORT virtual  const  TopTools_ListOfShape& Generated (const TopoDS_Shape& theS) ;
+  
+  //! Returns true if there is at least one generated shape.
+  //! For use in BRepNaming.
+  Standard_EXPORT virtual   Standard_Boolean HasGenerated()  const;
+  
+  Standard_EXPORT virtual   Standard_Boolean IsDeleted (const TopoDS_Shape& aS) ;
+  
+  //! Returns true if there is at least one deleted shape.
+  //! For use in BRepNaming.
+  Standard_EXPORT virtual   Standard_Boolean HasDeleted()  const;
 
 
 
@@ -62,7 +53,7 @@ private:
 
 
 
-TopTools_DataMapOfShapeListOfShape myMapGener;
+  TopTools_DataMapOfShapeListOfShape myMapGener;
 
 
 };
@@ -71,7 +62,6 @@ TopTools_DataMapOfShapeListOfShape myMapGener;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QANewModTopOpe_Intersection_HeaderFile

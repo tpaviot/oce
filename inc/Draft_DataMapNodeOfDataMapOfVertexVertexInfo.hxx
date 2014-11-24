@@ -6,28 +6,14 @@
 #ifndef _Draft_DataMapNodeOfDataMapOfVertexVertexInfo_HeaderFile
 #define _Draft_DataMapNodeOfDataMapOfVertexVertexInfo_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Draft_DataMapNodeOfDataMapOfVertexVertexInfo_HeaderFile
 #include <Handle_Draft_DataMapNodeOfDataMapOfVertexVertexInfo.hxx>
-#endif
 
-#ifndef _TopoDS_Vertex_HeaderFile
 #include <TopoDS_Vertex.hxx>
-#endif
-#ifndef _Draft_VertexInfo_HeaderFile
 #include <Draft_VertexInfo.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopoDS_Vertex;
 class Draft_VertexInfo;
 class TopTools_ShapeMapHasher;
@@ -36,16 +22,17 @@ class Draft_DataMapIteratorOfDataMapOfVertexVertexInfo;
 
 
 
-class Draft_DataMapNodeOfDataMapOfVertexVertexInfo : public TCollection_MapNode {
+class Draft_DataMapNodeOfDataMapOfVertexVertexInfo : public TCollection_MapNode
+{
 
 public:
 
   
-      Draft_DataMapNodeOfDataMapOfVertexVertexInfo(const TopoDS_Vertex& K,const Draft_VertexInfo& I,const TCollection_MapNodePtr& n);
+    Draft_DataMapNodeOfDataMapOfVertexVertexInfo(const TopoDS_Vertex& K, const Draft_VertexInfo& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Vertex& Key() const;
+      TopoDS_Vertex& Key()  const;
   
-        Draft_VertexInfo& Value() const;
+      Draft_VertexInfo& Value()  const;
 
 
 
@@ -60,8 +47,8 @@ protected:
 private: 
 
 
-TopoDS_Vertex myKey;
-Draft_VertexInfo myValue;
+  TopoDS_Vertex myKey;
+  Draft_VertexInfo myValue;
 
 
 };
@@ -99,7 +86,6 @@ Draft_VertexInfo myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Draft_DataMapNodeOfDataMapOfVertexVertexInfo_HeaderFile

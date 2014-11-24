@@ -6,28 +6,14 @@
 #ifndef _Convert_SequenceOfArray1OfPoles_HeaderFile
 #define _Convert_SequenceOfArray1OfPoles_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray1OfPnt_HeaderFile
 #include <Handle_TColgp_HArray1OfPnt.hxx>
-#endif
-#ifndef _Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles_HeaderFile
 #include <Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class TColgp_HArray1OfPnt;
@@ -35,68 +21,68 @@ class Convert_SequenceNodeOfSequenceOfArray1OfPoles;
 
 
 
-class Convert_SequenceOfArray1OfPoles  : public TCollection_BaseSequence {
+class Convert_SequenceOfArray1OfPoles  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Convert_SequenceOfArray1OfPoles();
+    Convert_SequenceOfArray1OfPoles();
   
-  Standard_EXPORT   Convert_SequenceOfArray1OfPoles(const Convert_SequenceOfArray1OfPoles& Other);
+  Standard_EXPORT Convert_SequenceOfArray1OfPoles(const Convert_SequenceOfArray1OfPoles& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~Convert_SequenceOfArray1OfPoles()
 {
   Clear();
 }
   
-  Standard_EXPORT    const Convert_SequenceOfArray1OfPoles& Assign(const Convert_SequenceOfArray1OfPoles& Other) ;
-   const Convert_SequenceOfArray1OfPoles& operator =(const Convert_SequenceOfArray1OfPoles& Other) 
+  Standard_EXPORT  const  Convert_SequenceOfArray1OfPoles& Assign (const Convert_SequenceOfArray1OfPoles& Other) ;
+ const  Convert_SequenceOfArray1OfPoles& operator = (const Convert_SequenceOfArray1OfPoles& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(TColgp_HArray1OfPnt)& T) ;
+  Standard_EXPORT   void Append (const Handle(TColgp_HArray1OfPnt)& T) ;
   
-        void Append(Convert_SequenceOfArray1OfPoles& S) ;
+      void Append (Convert_SequenceOfArray1OfPoles& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(TColgp_HArray1OfPnt)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(TColgp_HArray1OfPnt)& T) ;
   
-        void Prepend(Convert_SequenceOfArray1OfPoles& S) ;
+      void Prepend (Convert_SequenceOfArray1OfPoles& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(TColgp_HArray1OfPnt)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(TColgp_HArray1OfPnt)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,Convert_SequenceOfArray1OfPoles& S) ;
+      void InsertBefore (const Standard_Integer Index, Convert_SequenceOfArray1OfPoles& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(TColgp_HArray1OfPnt)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(TColgp_HArray1OfPnt)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,Convert_SequenceOfArray1OfPoles& S) ;
+      void InsertAfter (const Standard_Integer Index, Convert_SequenceOfArray1OfPoles& S) ;
   
-  Standard_EXPORT    const Handle_TColgp_HArray1OfPnt& First() const;
+  Standard_EXPORT  const  Handle(TColgp_HArray1OfPnt)& First()  const;
   
-  Standard_EXPORT    const Handle_TColgp_HArray1OfPnt& Last() const;
+  Standard_EXPORT  const  Handle(TColgp_HArray1OfPnt)& Last()  const;
   
-        void Split(const Standard_Integer Index,Convert_SequenceOfArray1OfPoles& Sub) ;
+      void Split (const Standard_Integer Index, Convert_SequenceOfArray1OfPoles& Sub) ;
   
-  Standard_EXPORT    const Handle_TColgp_HArray1OfPnt& Value(const Standard_Integer Index) const;
-   const Handle_TColgp_HArray1OfPnt& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(TColgp_HArray1OfPnt)& Value (const Standard_Integer Index)  const;
+ const  Handle(TColgp_HArray1OfPnt)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(TColgp_HArray1OfPnt)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(TColgp_HArray1OfPnt)& I) ;
   
-  Standard_EXPORT     Handle_TColgp_HArray1OfPnt& ChangeValue(const Standard_Integer Index) ;
-    Handle_TColgp_HArray1OfPnt& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(TColgp_HArray1OfPnt)& ChangeValue (const Standard_Integer Index) ;
+  Handle(TColgp_HArray1OfPnt)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -115,7 +101,7 @@ private:
 
 };
 
-#define SeqItem Handle_TColgp_HArray1OfPnt
+#define SeqItem Handle(TColgp_HArray1OfPnt)
 #define SeqItem_hxx <TColgp_HArray1OfPnt.hxx>
 #define TCollection_SequenceNode Convert_SequenceNodeOfSequenceOfArray1OfPoles
 #define TCollection_SequenceNode_hxx <Convert_SequenceNodeOfSequenceOfArray1OfPoles.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Convert_SequenceOfArray1OfPoles_HeaderFile

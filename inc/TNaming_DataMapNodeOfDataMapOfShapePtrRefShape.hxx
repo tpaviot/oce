@@ -6,28 +6,14 @@
 #ifndef _TNaming_DataMapNodeOfDataMapOfShapePtrRefShape_HeaderFile
 #define _TNaming_DataMapNodeOfDataMapOfShapePtrRefShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TNaming_DataMapNodeOfDataMapOfShapePtrRefShape_HeaderFile
 #include <Handle_TNaming_DataMapNodeOfDataMapOfShapePtrRefShape.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TNaming_PtrRefShape_HeaderFile
 #include <TNaming_PtrRefShape.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopoDS_Shape;
 class TopTools_ShapeMapHasher;
 class TNaming_DataMapOfShapePtrRefShape;
@@ -35,16 +21,17 @@ class TNaming_DataMapIteratorOfDataMapOfShapePtrRefShape;
 
 
 
-class TNaming_DataMapNodeOfDataMapOfShapePtrRefShape : public TCollection_MapNode {
+class TNaming_DataMapNodeOfDataMapOfShapePtrRefShape : public TCollection_MapNode
+{
 
 public:
 
   
-      TNaming_DataMapNodeOfDataMapOfShapePtrRefShape(const TopoDS_Shape& K,const TNaming_PtrRefShape& I,const TCollection_MapNodePtr& n);
+    TNaming_DataMapNodeOfDataMapOfShapePtrRefShape(const TopoDS_Shape& K, const TNaming_PtrRefShape& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        TNaming_PtrRefShape& Value() const;
+      TNaming_PtrRefShape& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-TNaming_PtrRefShape myValue;
+  TopoDS_Shape myKey;
+  TNaming_PtrRefShape myValue;
 
 
 };
@@ -98,7 +85,6 @@ TNaming_PtrRefShape myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TNaming_DataMapNodeOfDataMapOfShapePtrRefShape_HeaderFile

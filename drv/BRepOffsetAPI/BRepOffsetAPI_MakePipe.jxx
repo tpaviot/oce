@@ -1,12 +1,4 @@
-#ifndef _TopoDS_Wire_HeaderFile
 #include <TopoDS_Wire.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _BRepFill_Pipe_HeaderFile
 #include <BRepFill_Pipe.hxx>
-#endif
-#ifndef _BRepOffsetAPI_MakePipe_HeaderFile
 #include <BRepOffsetAPI_MakePipe.hxx>
-#endif

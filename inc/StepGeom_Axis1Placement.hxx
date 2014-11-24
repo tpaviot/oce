@@ -6,55 +6,41 @@
 #ifndef _StepGeom_Axis1Placement_HeaderFile
 #define _StepGeom_Axis1Placement_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_Axis1Placement_HeaderFile
 #include <Handle_StepGeom_Axis1Placement.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Direction_HeaderFile
 #include <Handle_StepGeom_Direction.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _StepGeom_Placement_HeaderFile
 #include <StepGeom_Placement.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepGeom_CartesianPoint_HeaderFile
 #include <Handle_StepGeom_CartesianPoint.hxx>
-#endif
 class StepGeom_Direction;
 class TCollection_HAsciiString;
 class StepGeom_CartesianPoint;
 
 
 
-class StepGeom_Axis1Placement : public StepGeom_Placement {
+class StepGeom_Axis1Placement : public StepGeom_Placement
+{
 
 public:
 
-  //! Returns a Axis1Placement <br>
-  Standard_EXPORT   StepGeom_Axis1Placement();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_CartesianPoint)& aLocation) ;
+  //! Returns a Axis1Placement
+  Standard_EXPORT StepGeom_Axis1Placement();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_CartesianPoint)& aLocation,const Standard_Boolean hasAaxis,const Handle(StepGeom_Direction)& aAxis) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_CartesianPoint)& aLocation) ;
   
-  Standard_EXPORT     void SetAxis(const Handle(StepGeom_Direction)& aAxis) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_CartesianPoint)& aLocation, const Standard_Boolean hasAaxis, const Handle(StepGeom_Direction)& aAxis) ;
   
-  Standard_EXPORT     void UnSetAxis() ;
+  Standard_EXPORT   void SetAxis (const Handle(StepGeom_Direction)& aAxis) ;
   
-  Standard_EXPORT     Handle_StepGeom_Direction Axis() const;
+  Standard_EXPORT   void UnSetAxis() ;
   
-  Standard_EXPORT     Standard_Boolean HasAxis() const;
+  Standard_EXPORT   Handle(StepGeom_Direction) Axis()  const;
+  
+  Standard_EXPORT   Standard_Boolean HasAxis()  const;
 
 
 
@@ -69,8 +55,8 @@ protected:
 private: 
 
 
-Handle_StepGeom_Direction axis;
-Standard_Boolean hasAxis;
+  Handle(StepGeom_Direction) axis;
+  Standard_Boolean hasAxis;
 
 
 };
@@ -79,7 +65,6 @@ Standard_Boolean hasAxis;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_Axis1Placement_HeaderFile

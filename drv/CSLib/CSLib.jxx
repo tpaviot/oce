@@ -1,12 +1,4 @@
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _TColgp_Array2OfVec_HeaderFile
 #include <TColgp_Array2OfVec.hxx>
-#endif
-#ifndef _CSLib_HeaderFile
 #include <CSLib.hxx>
-#endif

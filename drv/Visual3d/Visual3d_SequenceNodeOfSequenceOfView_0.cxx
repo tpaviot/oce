@@ -5,16 +5,10 @@
 
 #include <Visual3d_SequenceNodeOfSequenceOfView.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Visual3d_View_HeaderFile
 #include <Visual3d_View.hxx>
-#endif
-#ifndef _Visual3d_SequenceOfView_HeaderFile
 #include <Visual3d_SequenceOfView.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(Visual3d_SequenceNodeOfSequenceOfView,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Visual3d_SequenceNodeOfSequenceOfView)
 
 
-#define SeqItem Handle_Visual3d_View
+#define SeqItem Handle(Visual3d_View)
 #define SeqItem_hxx <Visual3d_View.hxx>
 #define TCollection_SequenceNode Visual3d_SequenceNodeOfSequenceOfView
 #define TCollection_SequenceNode_hxx <Visual3d_SequenceNodeOfSequenceOfView.hxx>

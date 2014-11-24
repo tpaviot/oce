@@ -6,38 +6,27 @@
 #ifndef _TColgp_SequenceNodeOfSequenceOfPnt_HeaderFile
 #define _TColgp_SequenceNodeOfSequenceOfPnt_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColgp_SequenceNodeOfSequenceOfPnt_HeaderFile
 #include <Handle_TColgp_SequenceNodeOfSequenceOfPnt.hxx>
-#endif
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class gp_Pnt;
 class TColgp_SequenceOfPnt;
 
 
 
-class TColgp_SequenceNodeOfSequenceOfPnt : public TCollection_SeqNode {
+class TColgp_SequenceNodeOfSequenceOfPnt : public TCollection_SeqNode
+{
 
 public:
 
   
-      TColgp_SequenceNodeOfSequenceOfPnt(const gp_Pnt& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    TColgp_SequenceNodeOfSequenceOfPnt(const gp_Pnt& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        gp_Pnt& Value() const;
+      gp_Pnt& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-gp_Pnt myValue;
+  gp_Pnt myValue;
 
 
 };
@@ -78,7 +67,6 @@ gp_Pnt myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColgp_SequenceNodeOfSequenceOfPnt_HeaderFile

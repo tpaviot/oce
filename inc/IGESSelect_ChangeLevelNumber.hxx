@@ -6,28 +6,14 @@
 #ifndef _IGESSelect_ChangeLevelNumber_HeaderFile
 #define _IGESSelect_ChangeLevelNumber_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSelect_ChangeLevelNumber_HeaderFile
 #include <Handle_IGESSelect_ChangeLevelNumber.hxx>
-#endif
 
-#ifndef _Handle_IFSelect_IntParam_HeaderFile
 #include <Handle_IFSelect_IntParam.hxx>
-#endif
-#ifndef _IGESSelect_ModelModifier_HeaderFile
 #include <IGESSelect_ModelModifier.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESModel_HeaderFile
 #include <Handle_IGESData_IGESModel.hxx>
-#endif
 class IFSelect_IntParam;
 class IFSelect_ContextModif;
 class IGESData_IGESModel;
@@ -35,47 +21,56 @@ class Interface_CopyTool;
 class TCollection_AsciiString;
 
 
-//! Changes Level Number (as null or single) to a new single value <br>
-//!           Entities attached to a LevelListEntity are ignored <br>
-//!           Entities considered can be, either all Entities but those <br>
-//!           attached to a LevelListEntity, or Entities attached to a <br>
-//!           specific Level Number (0 for not defined). <br>
-//! <br>
-//!           Remark : this concerns the Directory Part only. The Level List <br>
-//!           Entities themselves (their content) are not affected. <br>
-class IGESSelect_ChangeLevelNumber : public IGESSelect_ModelModifier {
+//! Changes Level Number (as null or single) to a new single value
+//! Entities attached to a LevelListEntity are ignored
+//! Entities considered can be, either all Entities but those
+//! attached to a LevelListEntity, or Entities attached to a
+//! specific Level Number (0 for not defined).
+//!
+//! Remark : this concerns the Directory Part only. The Level List
+//! Entities themselves (their content) are not affected.
+class IGESSelect_ChangeLevelNumber : public IGESSelect_ModelModifier
+{
 
 public:
 
-  //! Creates a ChangeLevelNumber, not yet defined <br>
-//!           (see SetOldNumber and SetNewNumber) <br>
-  Standard_EXPORT   IGESSelect_ChangeLevelNumber();
-  //! Returns True if OldNumber is defined : then, only entities <br>
-//!           attached to the value of OldNumber will be considered. Else, <br>
-//!           all entities but those attached to a Level List will be. <br>
-  Standard_EXPORT     Standard_Boolean HasOldNumber() const;
-  //! Returns the parameter for OldNumber. If not defined (Null <br>
-//!           Handle), it will be interpreted as "all level numbers" <br>
-  Standard_EXPORT     Handle_IFSelect_IntParam OldNumber() const;
-  //! Sets a parameter for OldNumber <br>
-  Standard_EXPORT     void SetOldNumber(const Handle(IFSelect_IntParam)& param) ;
-  //! Returns the parameter for NewNumber. If not defined (Null <br>
-//!           Handle), it will be interpreted as "new value 0" <br>
-  Standard_EXPORT     Handle_IFSelect_IntParam NewNumber() const;
-  //! Sets a parameter for NewNumber <br>
-  Standard_EXPORT     void SetNewNumber(const Handle(IFSelect_IntParam)& param) ;
-  //! Specific action : considers selected target entities : <br>
-//!           If OldNumber is not defined, all entities but those attached <br>
-//!             to a Level List <br>
-//!           If OldNumber is defined (value not negative), entities with a <br>
-//!             defined Level Number (can be zero) <br>
-//!           Attaches all these entities to value given by NewNumber, or <br>
-//!             zero if not defined <br>
-  Standard_EXPORT     void Performing(IFSelect_ContextModif& ctx,const Handle(IGESData_IGESModel)& target,Interface_CopyTool& TC) const;
-  //! Returns a text which is <br>
-//!           "Changes Level Number <old> to <new>" , or <br>
-//!           "Changes all Levels Numbers positive and zero to <new>" <br>
-  Standard_EXPORT     TCollection_AsciiString Label() const;
+  
+  //! Creates a ChangeLevelNumber, not yet defined
+  //! (see SetOldNumber and SetNewNumber)
+  Standard_EXPORT IGESSelect_ChangeLevelNumber();
+  
+  //! Returns True if OldNumber is defined : then, only entities
+  //! attached to the value of OldNumber will be considered. Else,
+  //! all entities but those attached to a Level List will be.
+  Standard_EXPORT   Standard_Boolean HasOldNumber()  const;
+  
+  //! Returns the parameter for OldNumber. If not defined (Null
+  //! Handle), it will be interpreted as "all level numbers"
+  Standard_EXPORT   Handle(IFSelect_IntParam) OldNumber()  const;
+  
+  //! Sets a parameter for OldNumber
+  Standard_EXPORT   void SetOldNumber (const Handle(IFSelect_IntParam)& param) ;
+  
+  //! Returns the parameter for NewNumber. If not defined (Null
+  //! Handle), it will be interpreted as "new value 0"
+  Standard_EXPORT   Handle(IFSelect_IntParam) NewNumber()  const;
+  
+  //! Sets a parameter for NewNumber
+  Standard_EXPORT   void SetNewNumber (const Handle(IFSelect_IntParam)& param) ;
+  
+  //! Specific action : considers selected target entities :
+  //! If OldNumber is not defined, all entities but those attached
+  //! to a Level List
+  //! If OldNumber is defined (value not negative), entities with a
+  //! defined Level Number (can be zero)
+  //! Attaches all these entities to value given by NewNumber, or
+  //! zero if not defined
+  Standard_EXPORT   void Performing (IFSelect_ContextModif& ctx, const Handle(IGESData_IGESModel)& target, Interface_CopyTool& TC)  const;
+  
+  //! Returns a text which is
+  //! "Changes Level Number <old> to <new>" , or
+  //! "Changes all Levels Numbers positive and zero to <new>"
+  Standard_EXPORT   TCollection_AsciiString Label()  const;
 
 
 
@@ -90,8 +85,8 @@ protected:
 private: 
 
 
-Handle_IFSelect_IntParam theold;
-Handle_IFSelect_IntParam thenew;
+  Handle(IFSelect_IntParam) theold;
+  Handle(IFSelect_IntParam) thenew;
 
 
 };
@@ -100,7 +95,6 @@ Handle_IFSelect_IntParam thenew;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSelect_ChangeLevelNumber_HeaderFile

@@ -6,33 +6,20 @@
 #ifndef _Standard_Overflow_HeaderFile
 #define _Standard_Overflow_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_DefineException_HeaderFile
 #include <Standard_DefineException.hxx>
-#endif
-#ifndef _Standard_SStream_HeaderFile
 #include <Standard_SStream.hxx>
-#endif
-
-#ifndef _Standard_NumericError_HeaderFile
 #include <Standard_NumericError.hxx>
-#endif
-#ifndef _Handle_Standard_Overflow_HeaderFile
 #include <Handle_Standard_Overflow.hxx>
-#endif
 
 #if !defined No_Exception && !defined No_Standard_Overflow
-#define Standard_Overflow_Raise_if(CONDITION,MESSAGE) \
+  #define Standard_Overflow_Raise_if(CONDITION, MESSAGE) \
   if (CONDITION) Standard_Overflow::Raise(MESSAGE);
 #else
-#define Standard_Overflow_Raise_if(CONDITION,MESSAGE)
+  #define Standard_Overflow_Raise_if(CONDITION, MESSAGE)
 #endif
 
-DEFINE_STANDARD_EXCEPTION(Standard_Overflow,Standard_NumericError)
+DEFINE_STANDARD_EXCEPTION(Standard_Overflow, Standard_NumericError)
 
-#endif
+#endif // _Standard_Overflow_HeaderFile

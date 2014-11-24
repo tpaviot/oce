@@ -6,36 +6,28 @@
 #ifndef _TopOpeBRep_Bipoint_HeaderFile
 #define _TopOpeBRep_Bipoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 
 
 
-class TopOpeBRep_Bipoint  {
+class TopOpeBRep_Bipoint 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRep_Bipoint();
+  Standard_EXPORT TopOpeBRep_Bipoint();
   
-  Standard_EXPORT   TopOpeBRep_Bipoint(const Standard_Integer I1,const Standard_Integer I2);
+  Standard_EXPORT TopOpeBRep_Bipoint(const Standard_Integer I1, const Standard_Integer I2);
   
-  Standard_EXPORT     Standard_Integer I1() const;
+  Standard_EXPORT   Standard_Integer I1()  const;
   
-  Standard_EXPORT     Standard_Integer I2() const;
-
+  Standard_EXPORT   Standard_Integer I2()  const;
 
 
 
@@ -50,8 +42,8 @@ private:
 
 
 
-Standard_Integer myI1;
-Standard_Integer myI2;
+  Standard_Integer myI1;
+  Standard_Integer myI2;
 
 
 };
@@ -60,7 +52,6 @@ Standard_Integer myI2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRep_Bipoint_HeaderFile

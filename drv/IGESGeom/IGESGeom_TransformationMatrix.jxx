@@ -1,15 +1,5 @@
-#ifndef _TColStd_HArray2OfReal_HeaderFile
 #include <TColStd_HArray2OfReal.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _gp_GTrsf_HeaderFile
 #include <gp_GTrsf.hxx>
-#endif
-#ifndef _IGESGeom_TransformationMatrix_HeaderFile
 #include <IGESGeom_TransformationMatrix.hxx>
-#endif

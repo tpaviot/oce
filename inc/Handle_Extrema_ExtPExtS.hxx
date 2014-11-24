@@ -6,22 +6,15 @@
 #ifndef _Handle_Extrema_ExtPExtS_HeaderFile
 #define _Handle_Extrema_ExtPExtS_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Standard_Transient);
 class Extrema_ExtPExtS;
 
-DEFINE_STANDARD_HANDLE(Extrema_ExtPExtS,Standard_Transient)
+DEFINE_STANDARD_HANDLE(Extrema_ExtPExtS, Standard_Transient)
 
-#endif
+#endif // _Handle_Extrema_ExtPExtS_HeaderFile

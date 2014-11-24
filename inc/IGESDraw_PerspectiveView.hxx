@@ -6,40 +6,18 @@
 #ifndef _IGESDraw_PerspectiveView_HeaderFile
 #define _IGESDraw_PerspectiveView_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESDraw_PerspectiveView_HeaderFile
 #include <Handle_IGESDraw_PerspectiveView.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _gp_XY_HeaderFile
 #include <gp_XY.hxx>
-#endif
-#ifndef _IGESData_ViewKindEntity_HeaderFile
 #include <IGESData_ViewKindEntity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_IGESData_ViewKindEntity_HeaderFile
 #include <Handle_IGESData_ViewKindEntity.hxx>
-#endif
-#ifndef _Handle_IGESData_TransfEntity_HeaderFile
 #include <Handle_IGESData_TransfEntity.hxx>
-#endif
 class Standard_OutOfRange;
 class gp_XYZ;
 class gp_XY;
@@ -50,82 +28,101 @@ class gp_Pnt2d;
 class IGESData_TransfEntity;
 
 
-//! defines IGESPerspectiveView, Type <410> Form <1> <br>
-//!          in package IGESDraw <br>
-//! <br>
-//!          Supports a perspective view. <br>
-//!          Any geometric projection is defined by a view plane <br>
-//!          and the projectors that pass through the view plane. <br>
-//!          Projectors can be visualized as rays of light that <br>
-//!          form an image by passing through the viewed object <br>
-//!          and striking the view plane. <br>
-//!          The projectors are defined via a point called the <br>
-//!          Centre-of-Projection or the eye-point. <br>
-//!          A perspective view is formed by all projectors that <br>
-//!          emanate from the Centre-of-Projection and pass <br>
-//!          through the view plane. <br>
-class IGESDraw_PerspectiveView : public IGESData_ViewKindEntity {
+//! defines IGESPerspectiveView, Type <410> Form <1>
+//! in package IGESDraw
+//!
+//! Supports a perspective view.
+//! Any geometric projection is defined by a view plane
+//! and the projectors that pass through the view plane.
+//! Projectors can be visualized as rays of light that
+//! form an image by passing through the viewed object
+//! and striking the view plane.
+//! The projectors are defined via a point called the
+//! Centre-of-Projection or the eye-point.
+//! A perspective view is formed by all projectors that
+//! emanate from the Centre-of-Projection and pass
+//! through the view plane.
+class IGESDraw_PerspectiveView : public IGESData_ViewKindEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESDraw_PerspectiveView();
-  //! This method is used to set the fields of the class <br>
-//!           PerspectiveView <br>
-//!       - aViewNumber         : The desired view <br>
-//!       - aScaleFactor        : Scale factor <br>
-//!       - aViewNormalVector   : View plane normal vector (model space) <br>
-//!       - aViewReferencePoint : View reference point     (model space) <br>
-//!       - aCenterOfProjection : Center Of Projection     (model space) <br>
-//!       - aViewUpVector       : View up vector           (model space) <br>
-//!       - aViewPlaneDistance  : View plane distance      (model space) <br>
-//!       - aTopLeft            : Top-left point of clipping window <br>
-//!       - aBottomRight        : Bottom-right point of clipping window <br>
-//!       - aDepthClip          : Depth clipping indicator <br>
-//!       - aBackPlaneDistance  : Distance of back clipping plane <br>
-//!       - aFrontPlaneDistance : Distance of front clipping plane <br>
-  Standard_EXPORT     void Init(const Standard_Integer aViewNumber,const Standard_Real aScaleFactor,const gp_XYZ& aViewNormalVector,const gp_XYZ& aViewReferencePoint,const gp_XYZ& aCenterOfProjection,const gp_XYZ& aViewUpVector,const Standard_Real aViewPlaneDistance,const gp_XY& aTopLeft,const gp_XY& aBottomRight,const Standard_Integer aDepthClip,const Standard_Real aBackPlaneDistance,const Standard_Real aFrontPlaneDistance) ;
-  //! Returns True (for a single view) <br>
-  Standard_EXPORT     Standard_Boolean IsSingle() const;
-  //! Returns 1 (single view) <br>
-  Standard_EXPORT     Standard_Integer NbViews() const;
-  //! For a single view, returns <me> whatever <num> <br>
-  Standard_EXPORT     Handle_IGESData_ViewKindEntity ViewItem(const Standard_Integer num) const;
-  //! returns the view number associated with <me> <br>
-  Standard_EXPORT     Standard_Integer ViewNumber() const;
-  //! returns the scale factor associated with <me> <br>
-  Standard_EXPORT     Standard_Real ScaleFactor() const;
-  //! returns the View plane normal vector (model space) <br>
-  Standard_EXPORT     gp_Vec ViewNormalVector() const;
-  //! returns the View reference point (model space) <br>
-  Standard_EXPORT     gp_Pnt ViewReferencePoint() const;
-  //! returns the Center Of Projection (model space) <br>
-  Standard_EXPORT     gp_Pnt CenterOfProjection() const;
-  //! returns the View up vector (model space) <br>
-  Standard_EXPORT     gp_Vec ViewUpVector() const;
-  //! returns the View plane distance (model space) <br>
-  Standard_EXPORT     Standard_Real ViewPlaneDistance() const;
-  //! returns the top left point of the clipping window <br>
-  Standard_EXPORT     gp_Pnt2d TopLeft() const;
-  //! returns the bottom right point of the clipping window <br>
-  Standard_EXPORT     gp_Pnt2d BottomRight() const;
-  //! returns the Depth clipping indicator <br>
-//!     0 = No depth clipping <br>
-//!     1 = Back clipping plane ON <br>
-//!     2 = Front clipping plane ON <br>
-//!     3 = Back and front clipping planes ON <br>
-  Standard_EXPORT     Standard_Integer DepthClip() const;
-  //! returns the View coordinate denoting the location of <br>
-//! the back clipping plane <br>
-  Standard_EXPORT     Standard_Real BackPlaneDistance() const;
-  //! returns the View coordinate denoting the location of <br>
-//! the front clipping plane <br>
-  Standard_EXPORT     Standard_Real FrontPlaneDistance() const;
-  //! returns the Transformation Matrix <br>
-  Standard_EXPORT     Handle_IGESData_TransfEntity ViewMatrix() const;
-  //! returns XYX from the Model space to the View space by <br>
-//! applying the View Matrix <br>
-  Standard_EXPORT     gp_XYZ ModelToView(const gp_XYZ& coords) const;
+  Standard_EXPORT IGESDraw_PerspectiveView();
+  
+  //! This method is used to set the fields of the class
+  //! PerspectiveView
+  //! - aViewNumber         : The desired view
+  //! - aScaleFactor        : Scale factor
+  //! - aViewNormalVector   : View plane normal vector (model space)
+  //! - aViewReferencePoint : View reference point     (model space)
+  //! - aCenterOfProjection : Center Of Projection     (model space)
+  //! - aViewUpVector       : View up vector           (model space)
+  //! - aViewPlaneDistance  : View plane distance      (model space)
+  //! - aTopLeft            : Top-left point of clipping window
+  //! - aBottomRight        : Bottom-right point of clipping window
+  //! - aDepthClip          : Depth clipping indicator
+  //! - aBackPlaneDistance  : Distance of back clipping plane
+  //! - aFrontPlaneDistance : Distance of front clipping plane
+  Standard_EXPORT   void Init (const Standard_Integer aViewNumber, const Standard_Real aScaleFactor, const gp_XYZ& aViewNormalVector, const gp_XYZ& aViewReferencePoint, const gp_XYZ& aCenterOfProjection, const gp_XYZ& aViewUpVector, const Standard_Real aViewPlaneDistance, const gp_XY& aTopLeft, const gp_XY& aBottomRight, const Standard_Integer aDepthClip, const Standard_Real aBackPlaneDistance, const Standard_Real aFrontPlaneDistance) ;
+  
+  //! Returns True (for a single view)
+  Standard_EXPORT   Standard_Boolean IsSingle()  const;
+  
+  //! Returns 1 (single view)
+  Standard_EXPORT   Standard_Integer NbViews()  const;
+  
+  //! For a single view, returns <me> whatever <num>
+  Standard_EXPORT   Handle(IGESData_ViewKindEntity) ViewItem (const Standard_Integer num)  const;
+  
+  //! returns the view number associated with <me>
+  Standard_EXPORT   Standard_Integer ViewNumber()  const;
+  
+  //! returns the scale factor associated with <me>
+  Standard_EXPORT   Standard_Real ScaleFactor()  const;
+  
+  //! returns the View plane normal vector (model space)
+  Standard_EXPORT   gp_Vec ViewNormalVector()  const;
+  
+  //! returns the View reference point (model space)
+  Standard_EXPORT   gp_Pnt ViewReferencePoint()  const;
+  
+  //! returns the Center Of Projection (model space)
+  Standard_EXPORT   gp_Pnt CenterOfProjection()  const;
+  
+  //! returns the View up vector (model space)
+  Standard_EXPORT   gp_Vec ViewUpVector()  const;
+  
+  //! returns the View plane distance (model space)
+  Standard_EXPORT   Standard_Real ViewPlaneDistance()  const;
+  
+  //! returns the top left point of the clipping window
+  Standard_EXPORT   gp_Pnt2d TopLeft()  const;
+  
+  //! returns the bottom right point of the clipping window
+  Standard_EXPORT   gp_Pnt2d BottomRight()  const;
+  
+  //! returns the Depth clipping indicator
+  //! 0 = No depth clipping
+  //! 1 = Back clipping plane ON
+  //! 2 = Front clipping plane ON
+  //! 3 = Back and front clipping planes ON
+  Standard_EXPORT   Standard_Integer DepthClip()  const;
+  
+  //! returns the View coordinate denoting the location of
+  //! the back clipping plane
+  Standard_EXPORT   Standard_Real BackPlaneDistance()  const;
+  
+  //! returns the View coordinate denoting the location of
+  //! the front clipping plane
+  Standard_EXPORT   Standard_Real FrontPlaneDistance()  const;
+  
+  //! returns the Transformation Matrix
+  Standard_EXPORT   Handle(IGESData_TransfEntity) ViewMatrix()  const;
+  
+  //! returns XYX from the Model space to the View space by
+  //! applying the View Matrix
+  Standard_EXPORT   gp_XYZ ModelToView (const gp_XYZ& coords)  const;
 
 
 
@@ -140,18 +137,18 @@ protected:
 private: 
 
 
-Standard_Integer theViewNumber;
-Standard_Real theScaleFactor;
-gp_XYZ theViewNormalVector;
-gp_XYZ theViewReferencePoint;
-gp_XYZ theCenterOfProjection;
-gp_XYZ theViewUpVector;
-Standard_Real theViewPlaneDistance;
-gp_XY theTopLeft;
-gp_XY theBottomRight;
-Standard_Integer theDepthClip;
-Standard_Real theBackPlaneDistance;
-Standard_Real theFrontPlaneDistance;
+  Standard_Integer theViewNumber;
+  Standard_Real theScaleFactor;
+  gp_XYZ theViewNormalVector;
+  gp_XYZ theViewReferencePoint;
+  gp_XYZ theCenterOfProjection;
+  gp_XYZ theViewUpVector;
+  Standard_Real theViewPlaneDistance;
+  gp_XY theTopLeft;
+  gp_XY theBottomRight;
+  Standard_Integer theDepthClip;
+  Standard_Real theBackPlaneDistance;
+  Standard_Real theFrontPlaneDistance;
 
 
 };
@@ -160,7 +157,6 @@ Standard_Real theFrontPlaneDistance;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESDraw_PerspectiveView_HeaderFile

@@ -5,18 +5,10 @@
 
 #include <Bnd_SeqOfBox.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
-#ifndef _Bnd_SequenceNodeOfSeqOfBox_HeaderFile
 #include <Bnd_SequenceNodeOfSeqOfBox.hxx>
-#endif
  
 
 #define SeqItem Bnd_Box

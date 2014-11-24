@@ -6,31 +6,15 @@
 #ifndef _HLRBRep_EdgeBuilder_HeaderFile
 #define _HLRBRep_EdgeBuilder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopAbs_State_HeaderFile
 #include <TopAbs_State.hxx>
-#endif
-#ifndef _Handle_HLRBRep_AreaLimit_HeaderFile
 #include <Handle_HLRBRep_AreaLimit.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
 class HLRBRep_AreaLimit;
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
@@ -40,76 +24,85 @@ class HLRAlgo_Intersection;
 
 
 
-class HLRBRep_EdgeBuilder  {
+class HLRBRep_EdgeBuilder 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates  an   EdgeBuilder    algorithm.    <VList> <br>
-//!          describes   the edge    and  the    interferences. <br>
-//!          AreaLimits   are   created  from   the   vertices. <br>
-//!          Builds(IN) is automatically called. <br>
-  Standard_EXPORT   HLRBRep_EdgeBuilder(HLRBRep_VertexList& VList);
-  //! Initialize an iteration on the areas. <br>
-  Standard_EXPORT     void InitAreas() ;
-  //! Set the current area to the next area. <br>
-  Standard_EXPORT     void NextArea() ;
-  //! Set the current area to the previous area. <br>
-  Standard_EXPORT     void PreviousArea() ;
-  //! Returns True if there is a current area. <br>
-  Standard_EXPORT     Standard_Boolean HasArea() const;
-  //! Returns the state of the current area. <br>
-  Standard_EXPORT     TopAbs_State AreaState() const;
-  //! Returns the edge state of the current area. <br>
-  Standard_EXPORT     TopAbs_State AreaEdgeState() const;
-  //! Returns the  AreaLimit beginning the current area. <br>
-//!          This is a NULL handle when the area is infinite on <br>
-//!          the left. <br>
-//! <br>
-  Standard_EXPORT     Handle_HLRBRep_AreaLimit LeftLimit() const;
-  //! Returns the  AreaLimit   ending  the current area. <br>
-//!          This is a NULL handle when the area is infinite on <br>
-//!          the right. <br>
-//! <br>
-  Standard_EXPORT     Handle_HLRBRep_AreaLimit RightLimit() const;
-  //! Reinitialize  the results  iteration  to the parts <br>
-//!          with State <ToBuild>. If this method is not called <br>
-//!          after construction the default is <ToBuild> = IN. <br>
-//! <br>
-  Standard_EXPORT     void Builds(const TopAbs_State ToBuild) ;
-  //! Returns True if there are more new edges to build. <br>
-  Standard_EXPORT     Standard_Boolean MoreEdges() const;
-  //! Proceeds  to  the  next  edge to  build.  Skip all <br>
-//!          remaining vertices on the current edge. <br>
-//! <br>
-  Standard_EXPORT     void NextEdge() ;
-  //! True if there are more vertices in the current new <br>
-//!          edge. <br>
-//! <br>
-  Standard_EXPORT     Standard_Boolean MoreVertices() const;
-  //! Proceeds to the next vertex of the current edge. <br>
-//! <br>
-  Standard_EXPORT     void NextVertex() ;
-  //! Returns the current vertex of the current edge. <br>
-  Standard_EXPORT    const HLRAlgo_Intersection& Current() const;
-  //! Returns True if the  current vertex comes from the <br>
-//!          boundary of the edge. <br>
-//! <br>
-  Standard_EXPORT     Standard_Boolean IsBoundary() const;
-  //! Returns  True if    the  current  vertex  was   an <br>
-//!          interference. <br>
-//! <br>
-  Standard_EXPORT     Standard_Boolean IsInterference() const;
-  //! Returns the new orientation of the current vertex. <br>
-//! <br>
-  Standard_EXPORT     TopAbs_Orientation Orientation() const;
   
-  Standard_EXPORT     void Destroy() ;
+  //! Creates  an   EdgeBuilder    algorithm.    <VList>
+  //! describes   the edge    and  the    interferences.
+  //! AreaLimits   are   created  from   the   vertices.
+  //! Builds(IN) is automatically called.
+  Standard_EXPORT HLRBRep_EdgeBuilder(HLRBRep_VertexList& VList);
+  
+  //! Initialize an iteration on the areas.
+  Standard_EXPORT   void InitAreas() ;
+  
+  //! Set the current area to the next area.
+  Standard_EXPORT   void NextArea() ;
+  
+  //! Set the current area to the previous area.
+  Standard_EXPORT   void PreviousArea() ;
+  
+  //! Returns True if there is a current area.
+  Standard_EXPORT   Standard_Boolean HasArea()  const;
+  
+  //! Returns the state of the current area.
+  Standard_EXPORT   TopAbs_State AreaState()  const;
+  
+  //! Returns the edge state of the current area.
+  Standard_EXPORT   TopAbs_State AreaEdgeState()  const;
+  
+  //! Returns the  AreaLimit beginning the current area.
+  //! This is a NULL handle when the area is infinite on
+  //! the left.
+  Standard_EXPORT   Handle(HLRBRep_AreaLimit) LeftLimit()  const;
+  
+  //! Returns the  AreaLimit   ending  the current area.
+  //! This is a NULL handle when the area is infinite on
+  //! the right.
+  Standard_EXPORT   Handle(HLRBRep_AreaLimit) RightLimit()  const;
+  
+  //! Reinitialize  the results  iteration  to the parts
+  //! with State <ToBuild>. If this method is not called
+  //! after construction the default is <ToBuild> = IN.
+  Standard_EXPORT   void Builds (const TopAbs_State ToBuild) ;
+  
+  //! Returns True if there are more new edges to build.
+  Standard_EXPORT   Standard_Boolean MoreEdges()  const;
+  
+  //! Proceeds  to  the  next  edge to  build.  Skip all
+  //! remaining vertices on the current edge.
+  Standard_EXPORT   void NextEdge() ;
+  
+  //! True if there are more vertices in the current new
+  //! edge.
+  Standard_EXPORT   Standard_Boolean MoreVertices()  const;
+  
+  //! Proceeds to the next vertex of the current edge.
+  Standard_EXPORT   void NextVertex() ;
+  
+  //! Returns the current vertex of the current edge.
+  Standard_EXPORT  const  HLRAlgo_Intersection& Current()  const;
+  
+  //! Returns True if the  current vertex comes from the
+  //! boundary of the edge.
+  Standard_EXPORT   Standard_Boolean IsBoundary()  const;
+  
+  //! Returns  True if    the  current  vertex  was   an
+  //! interference.
+  Standard_EXPORT   Standard_Boolean IsInterference()  const;
+  
+  //! Returns the new orientation of the current vertex.
+  Standard_EXPORT   TopAbs_Orientation Orientation()  const;
+  
+  Standard_EXPORT   void Destroy() ;
 ~HLRBRep_EdgeBuilder()
 {
   Destroy();
 }
-
 
 
 
@@ -124,11 +117,11 @@ private:
 
 
 
-TopAbs_State toBuild;
-Handle_HLRBRep_AreaLimit myLimits;
-Handle_HLRBRep_AreaLimit left;
-Handle_HLRBRep_AreaLimit right;
-Standard_Integer current;
+  TopAbs_State toBuild;
+  Handle(HLRBRep_AreaLimit) myLimits;
+  Handle(HLRBRep_AreaLimit) left;
+  Handle(HLRBRep_AreaLimit) right;
+  Standard_Integer current;
 
 
 };
@@ -137,7 +130,6 @@ Standard_Integer current;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_EdgeBuilder_HeaderFile

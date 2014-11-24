@@ -6,38 +6,27 @@
 #ifndef _BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape_HeaderFile
 #define _BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape_HeaderFile
 #include <Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape.hxx>
-#endif
 
-#ifndef _TopTools_SequenceOfShape_HeaderFile
 #include <TopTools_SequenceOfShape.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class TopTools_SequenceOfShape;
 class BRepOffsetAPI_SequenceOfSequenceOfShape;
 
 
 
-class BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape : public TCollection_SeqNode {
+class BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape : public TCollection_SeqNode
+{
 
 public:
 
   
-      BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape(const TopTools_SequenceOfShape& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape(const TopTools_SequenceOfShape& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        TopTools_SequenceOfShape& Value() const;
+      TopTools_SequenceOfShape& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-TopTools_SequenceOfShape myValue;
+  TopTools_SequenceOfShape myValue;
 
 
 };
@@ -78,7 +67,6 @@ TopTools_SequenceOfShape myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape_HeaderFile

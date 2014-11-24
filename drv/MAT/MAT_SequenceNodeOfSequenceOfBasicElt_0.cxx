@@ -5,16 +5,10 @@
 
 #include <MAT_SequenceNodeOfSequenceOfBasicElt.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _MAT_BasicElt_HeaderFile
 #include <MAT_BasicElt.hxx>
-#endif
-#ifndef _MAT_SequenceOfBasicElt_HeaderFile
 #include <MAT_SequenceOfBasicElt.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(MAT_SequenceNodeOfSequenceOfBasicElt,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(MAT_SequenceNodeOfSequenceOfBasicElt)
 
 
-#define SeqItem Handle_MAT_BasicElt
+#define SeqItem Handle(MAT_BasicElt)
 #define SeqItem_hxx <MAT_BasicElt.hxx>
 #define TCollection_SequenceNode MAT_SequenceNodeOfSequenceOfBasicElt
 #define TCollection_SequenceNode_hxx <MAT_SequenceNodeOfSequenceOfBasicElt.hxx>

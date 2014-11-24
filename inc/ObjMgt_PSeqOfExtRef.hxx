@@ -6,37 +6,17 @@
 #ifndef _ObjMgt_PSeqOfExtRef_HeaderFile
 #define _ObjMgt_PSeqOfExtRef_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_ObjMgt_PSeqOfExtRef_HeaderFile
 #include <Handle_ObjMgt_PSeqOfExtRef.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_ObjMgt_ExternRef_HeaderFile
 #include <Handle_ObjMgt_ExternRef.hxx>
-#endif
-#ifndef _Handle_ObjMgt_PSeqOfExtRef_HeaderFile
 #include <Handle_ObjMgt_PSeqOfExtRef.hxx>
-#endif
-#ifndef _Handle_ObjMgt_SeqNodeOfPSeqOfExtRef_HeaderFile
 #include <Handle_ObjMgt_SeqNodeOfPSeqOfExtRef.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
 class ObjMgt_ExternRef;
 class ObjMgt_SeqNodeOfPSeqOfExtRef;
 class Standard_NoSuchObject;
@@ -44,62 +24,63 @@ class Standard_OutOfRange;
 class ObjMgt_SeqExplorerOfPSeqOfExtRef;
 
 
-class ObjMgt_PSeqOfExtRef : public Standard_Persistent {
+class ObjMgt_PSeqOfExtRef : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   ObjMgt_PSeqOfExtRef();
+  Standard_EXPORT ObjMgt_PSeqOfExtRef();
   
-  Standard_EXPORT     Standard_Boolean IsEmpty() const;
+  Standard_EXPORT   Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     Standard_Integer Length() const;
+  Standard_EXPORT   Standard_Integer Length()  const;
   
-  Standard_EXPORT     Handle_ObjMgt_ExternRef First() const;
+  Standard_EXPORT   Handle(ObjMgt_ExternRef) First()  const;
   
-  Standard_EXPORT     Handle_ObjMgt_ExternRef Last() const;
+  Standard_EXPORT   Handle(ObjMgt_ExternRef) Last()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void Append(const Handle(ObjMgt_ExternRef)& T) ;
+  Standard_EXPORT   void Append (const Handle(ObjMgt_ExternRef)& T) ;
   
-  Standard_EXPORT     void Append(const Handle(ObjMgt_PSeqOfExtRef)& S) ;
+  Standard_EXPORT   void Append (const Handle(ObjMgt_PSeqOfExtRef)& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(ObjMgt_ExternRef)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(ObjMgt_ExternRef)& T) ;
   
-  Standard_EXPORT     void Prepend(const Handle(ObjMgt_PSeqOfExtRef)& S) ;
+  Standard_EXPORT   void Prepend (const Handle(ObjMgt_PSeqOfExtRef)& S) ;
   
-  Standard_EXPORT     void Reverse() ;
+  Standard_EXPORT   void Reverse() ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer Index,const Handle(ObjMgt_ExternRef)& T) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer Index, const Handle(ObjMgt_ExternRef)& T) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer Index,const Handle(ObjMgt_PSeqOfExtRef)& S) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer Index, const Handle(ObjMgt_PSeqOfExtRef)& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(ObjMgt_ExternRef)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(ObjMgt_ExternRef)& T) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(ObjMgt_PSeqOfExtRef)& S) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(ObjMgt_PSeqOfExtRef)& S) ;
   
-  Standard_EXPORT     void Exchange(const Standard_Integer I,const Standard_Integer J) ;
+  Standard_EXPORT   void Exchange (const Standard_Integer I, const Standard_Integer J) ;
   
-  Standard_EXPORT     Handle_ObjMgt_PSeqOfExtRef SubSequence(const Standard_Integer FromIndex,const Standard_Integer ToIndex) const;
+  Standard_EXPORT   Handle(ObjMgt_PSeqOfExtRef) SubSequence (const Standard_Integer FromIndex, const Standard_Integer ToIndex)  const;
   
-  Standard_EXPORT     Handle_ObjMgt_PSeqOfExtRef Split(const Standard_Integer Index) ;
+  Standard_EXPORT   Handle(ObjMgt_PSeqOfExtRef) Split (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(ObjMgt_ExternRef)& T) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(ObjMgt_ExternRef)& T) ;
   
-  Standard_EXPORT     Handle_ObjMgt_ExternRef Value(const Standard_Integer Index) const;
+  Standard_EXPORT   Handle(ObjMgt_ExternRef) Value (const Standard_Integer Index)  const;
   
-  Standard_EXPORT     Standard_Boolean Contains(const Handle(ObjMgt_ExternRef)& T) const;
+  Standard_EXPORT   Standard_Boolean Contains (const Handle(ObjMgt_ExternRef)& T)  const;
   
-  Standard_EXPORT     Standard_Integer Location(const Standard_Integer N,const Handle(ObjMgt_ExternRef)& T,const Standard_Integer FromIndex,const Standard_Integer ToIndex) const;
+  Standard_EXPORT   Standard_Integer Location (const Standard_Integer N, const Handle(ObjMgt_ExternRef)& T, const Standard_Integer FromIndex, const Standard_Integer ToIndex)  const;
   
-  Standard_EXPORT     Standard_Integer Location(const Standard_Integer N,const Handle(ObjMgt_ExternRef)& T) const;
+  Standard_EXPORT   Standard_Integer Location (const Standard_Integer N, const Handle(ObjMgt_ExternRef)& T)  const;
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
   
-  Standard_EXPORT     void Destroy() ;
+  Standard_EXPORT   void Destroy() ;
 ~ObjMgt_PSeqOfExtRef()
 {
   Destroy();
@@ -128,13 +109,13 @@ protected:
 private: 
 
   
-  Standard_EXPORT     Handle_ObjMgt_SeqNodeOfPSeqOfExtRef GetFirst() const;
+  Standard_EXPORT   Handle(ObjMgt_SeqNodeOfPSeqOfExtRef) GetFirst()  const;
   
-  Standard_EXPORT     Handle_ObjMgt_SeqNodeOfPSeqOfExtRef GetLast() const;
+  Standard_EXPORT   Handle(ObjMgt_SeqNodeOfPSeqOfExtRef) GetLast()  const;
 
-Handle_ObjMgt_SeqNodeOfPSeqOfExtRef FirstItem;
-Handle_ObjMgt_SeqNodeOfPSeqOfExtRef LastItem;
-Standard_Integer Size;
+  Handle(ObjMgt_SeqNodeOfPSeqOfExtRef) FirstItem;
+  Handle(ObjMgt_SeqNodeOfPSeqOfExtRef) LastItem;
+  Standard_Integer Size;
 
 
 };
@@ -143,7 +124,6 @@ Standard_Integer Size;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ObjMgt_PSeqOfExtRef_HeaderFile

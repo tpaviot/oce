@@ -6,22 +6,15 @@
 #ifndef _Handle_StepGeom_SurfaceOfLinearExtrusion_HeaderFile
 #define _Handle_StepGeom_SurfaceOfLinearExtrusion_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepGeom_SweptSurface_HeaderFile
 #include <Handle_StepGeom_SweptSurface.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepGeom_SweptSurface);
 class StepGeom_SurfaceOfLinearExtrusion;
 
-DEFINE_STANDARD_HANDLE(StepGeom_SurfaceOfLinearExtrusion,StepGeom_SweptSurface)
+DEFINE_STANDARD_HANDLE(StepGeom_SurfaceOfLinearExtrusion, StepGeom_SweptSurface)
 
-#endif
+#endif // _Handle_StepGeom_SurfaceOfLinearExtrusion_HeaderFile

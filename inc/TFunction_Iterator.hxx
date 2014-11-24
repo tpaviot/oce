@@ -6,86 +6,77 @@
 #ifndef _TFunction_Iterator_HeaderFile
 #define _TFunction_Iterator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TDF_LabelList_HeaderFile
 #include <TDF_LabelList.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TDF_LabelMap_HeaderFile
 #include <TDF_LabelMap.hxx>
-#endif
-#ifndef _Handle_TFunction_Scope_HeaderFile
 #include <Handle_TFunction_Scope.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TFunction_ExecutionStatus_HeaderFile
 #include <TFunction_ExecutionStatus.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class TFunction_Scope;
 class TDF_Label;
 class TDF_LabelList;
 
 
-//! Iterator of the graph of functions <br>
-class TFunction_Iterator  {
+//! Iterator of the graph of functions
+class TFunction_Iterator 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! An empty constructor. <br>
-  Standard_EXPORT   TFunction_Iterator();
-  //! A constructor. <br>
-//!          Initializes the iterator. <br>
-  Standard_EXPORT   TFunction_Iterator(const TDF_Label& Access);
-  //! Initializes the Iterator. <br>
-  Standard_EXPORT   virtual  void Init(const TDF_Label& Access) ;
-  //! Defines the mode of iteration - usage or not of the execution status. <br>
-//!          If the iterator takes into account the execution status, <br>
-//!          the method ::Current() returns only "not executed" functions <br>
-//!          while their status is not changed. <br>
-//!          If the iterator ignores the execution status, <br>
-//!          the method ::Current() returns the functions <br>
-//!          following their dependencies and ignoring the execution status. <br>
-  Standard_EXPORT     void SetUsageOfExecutionStatus(const Standard_Boolean usage) ;
-  //! Returns usage of execution status by the iterator. <br>
-  Standard_EXPORT     Standard_Boolean GetUsageOfExecutionStatus() const;
-  //! Analyses the graph of dependencies and returns <br>
-//!          maximum number of threads may be used to calculate the model. <br>
-  Standard_EXPORT   virtual  Standard_Integer GetMaxNbThreads() const;
-  //! Returns the current list of functions. <br>
-//!          If the iterator uses the execution status, <br>
-//!          the returned list contains only the functions <br>
-//!          with "not executed" status. <br>
-  Standard_EXPORT   virtual const TDF_LabelList& Current() const;
-  //! Returns false if the graph of functions is fully iterated. <br>
-  Standard_EXPORT   virtual  Standard_Boolean More() const;
-  //! Switches the iterator to the next list of current functions. <br>
-  Standard_EXPORT   virtual  void Next() ;
-  //! A help-function aimed to help the user to check the status of retrurned function. <br>
-//!          It calls TFunction_GraphNode::GetStatus() inside. <br>
-  Standard_EXPORT     TFunction_ExecutionStatus GetStatus(const TDF_Label& func) const;
-  //! A help-function aimed to help the user to change the execution status of a function. <br>
-//!          It calls TFunction_GraphNode::SetStatus() inside. <br>
-  Standard_EXPORT     void SetStatus(const TDF_Label& func,const TFunction_ExecutionStatus status) const;
   
-  Standard_EXPORT     Standard_OStream& Dump(Standard_OStream& OS) const;
-
+  //! An empty constructor.
+  Standard_EXPORT TFunction_Iterator();
+  
+  //! A constructor.
+  //! Initializes the iterator.
+  Standard_EXPORT TFunction_Iterator(const TDF_Label& Access);
+  
+  //! Initializes the Iterator.
+  Standard_EXPORT virtual   void Init (const TDF_Label& Access) ;
+  
+  //! Defines the mode of iteration - usage or not of the execution status.
+  //! If the iterator takes into account the execution status,
+  //! the method ::Current() returns only "not executed" functions
+  //! while their status is not changed.
+  //! If the iterator ignores the execution status,
+  //! the method ::Current() returns the functions
+  //! following their dependencies and ignoring the execution status.
+  Standard_EXPORT   void SetUsageOfExecutionStatus (const Standard_Boolean usage) ;
+  
+  //! Returns usage of execution status by the iterator.
+  Standard_EXPORT   Standard_Boolean GetUsageOfExecutionStatus()  const;
+  
+  //! Analyses the graph of dependencies and returns
+  //! maximum number of threads may be used to calculate the model.
+  Standard_EXPORT virtual   Standard_Integer GetMaxNbThreads()  const;
+  
+  //! Returns the current list of functions.
+  //! If the iterator uses the execution status,
+  //! the returned list contains only the functions
+  //! with "not executed" status.
+  Standard_EXPORT virtual  const  TDF_LabelList& Current()  const;
+  
+  //! Returns false if the graph of functions is fully iterated.
+  Standard_EXPORT virtual   Standard_Boolean More()  const;
+  
+  //! Switches the iterator to the next list of current functions.
+  Standard_EXPORT virtual   void Next() ;
+  
+  //! A help-function aimed to help the user to check the status of retrurned function.
+  //! It calls TFunction_GraphNode::GetStatus() inside.
+  Standard_EXPORT   TFunction_ExecutionStatus GetStatus (const TDF_Label& func)  const;
+  
+  //! A help-function aimed to help the user to change the execution status of a function.
+  //! It calls TFunction_GraphNode::SetStatus() inside.
+  Standard_EXPORT   void SetStatus (const TDF_Label& func, const TFunction_ExecutionStatus status)  const;
+  
+  Standard_EXPORT   Standard_OStream& Dump (Standard_OStream& OS)  const;
 
 
 
@@ -100,10 +91,10 @@ private:
 
 
 
-TDF_LabelList myCurrent;
-Standard_Boolean myUsageOfExecutionStatus;
-TDF_LabelMap myPassedFunctions;
-Handle_TFunction_Scope myScope;
+  TDF_LabelList myCurrent;
+  Standard_Boolean myUsageOfExecutionStatus;
+  TDF_LabelMap myPassedFunctions;
+  Handle(TFunction_Scope) myScope;
 
 
 };
@@ -112,7 +103,6 @@ Handle_TFunction_Scope myScope;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TFunction_Iterator_HeaderFile

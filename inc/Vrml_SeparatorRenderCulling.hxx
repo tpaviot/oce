@@ -6,15 +6,14 @@
 #ifndef _Vrml_SeparatorRenderCulling_HeaderFile
 #define _Vrml_SeparatorRenderCulling_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Vrml_SeparatorRenderCulling {
+
+enum Vrml_SeparatorRenderCulling
+{
 Vrml_OFF,
 Vrml_ON,
 Vrml_AUTO
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Vrml_SeparatorRenderCulling_HeaderFile

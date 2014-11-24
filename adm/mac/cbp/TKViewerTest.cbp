@@ -98,6 +98,8 @@
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 			<Add library="objc" />
 			<Add library="freeimage" />
 			<Add library="freetype" />

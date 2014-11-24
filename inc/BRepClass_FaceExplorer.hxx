@@ -6,86 +6,76 @@
 #ifndef _BRepClass_FaceExplorer_HeaderFile
 #define _BRepClass_FaceExplorer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _TopExp_Explorer_HeaderFile
 #include <TopExp_Explorer.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
 class TopoDS_Face;
 class gp_Pnt2d;
 class gp_Lin2d;
 class BRepClass_Edge;
 
 
-//! Provide an   exploration of a  BRep Face   for the <br>
-//!          classification. Return UV edges. <br>
-class BRepClass_FaceExplorer  {
+//! Provide an   exploration of a  BRep Face   for the
+//! classification. Return UV edges.
+class BRepClass_FaceExplorer 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepClass_FaceExplorer(const TopoDS_Face& F);
-  //! Should  return  True  if the  point  is  outside a <br>
-//!          bounding volume of the face. <br>
-  Standard_EXPORT     Standard_Boolean Reject(const gp_Pnt2d& P) const;
-  //! Returns  in <L>, <Par>  a segment having at least <br>
-//!          one  intersection  with  the   face  boundary  to <br>
-//!          compute  intersections. <br>
-  Standard_EXPORT     Standard_Boolean Segment(const gp_Pnt2d& P,gp_Lin2d& L,Standard_Real& Par) ;
-  //! Returns  in <L>, <Par>  a segment having at least <br>
-//!          one  intersection  with  the   face  boundary  to <br>
-//!          compute  intersections. Each call gives another segment. <br>
-  Standard_EXPORT     Standard_Boolean OtherSegment(const gp_Pnt2d& P,gp_Lin2d& L,Standard_Real& Par) ;
-  //! Starts an exploration of the wires. <br>
-  Standard_EXPORT     void InitWires() ;
-  //! Returns True if there is  a current wire. <br>
-//! <br>
-        Standard_Boolean MoreWires() const;
-  //! Sets the explorer  to the  next  wire. <br>
-//! <br>
-        void NextWire() ;
-  //! Returns True  if the wire  bounding volume does not <br>
-//!          intersect the segment. <br>
-  Standard_EXPORT     Standard_Boolean RejectWire(const gp_Lin2d& L,const Standard_Real Par) const;
-  //! Starts an exploration of the  edges of the current <br>
-//!          wire. <br>
-  Standard_EXPORT     void InitEdges() ;
-  //! Returns True if there is a current edge. <br>
-//! <br>
-        Standard_Boolean MoreEdges() const;
-  //! Sets the explorer  to the  next  edge. <br>
-//! <br>
-        void NextEdge() ;
-  //! Returns True  if the edge  bounding volume does not <br>
-//!          intersect the segment. <br>
-  Standard_EXPORT     Standard_Boolean RejectEdge(const gp_Lin2d& L,const Standard_Real Par) const;
-  //! Current edge in current wire and its orientation. <br>
-  Standard_EXPORT     void CurrentEdge(BRepClass_Edge& E,TopAbs_Orientation& Or) const;
-
+  Standard_EXPORT BRepClass_FaceExplorer(const TopoDS_Face& F);
+  
+  //! Should  return  True  if the  point  is  outside a
+  //! bounding volume of the face.
+  Standard_EXPORT   Standard_Boolean Reject (const gp_Pnt2d& P)  const;
+  
+  //! Returns  in <L>, <Par>  a segment having at least
+  //! one  intersection  with  the   face  boundary  to
+  //! compute  intersections.
+  Standard_EXPORT   Standard_Boolean Segment (const gp_Pnt2d& P, gp_Lin2d& L, Standard_Real& Par) ;
+  
+  //! Returns  in <L>, <Par>  a segment having at least
+  //! one  intersection  with  the   face  boundary  to
+  //! compute  intersections. Each call gives another segment.
+  Standard_EXPORT   Standard_Boolean OtherSegment (const gp_Pnt2d& P, gp_Lin2d& L, Standard_Real& Par) ;
+  
+  //! Starts an exploration of the wires.
+  Standard_EXPORT   void InitWires() ;
+  
+  //! Returns True if there is  a current wire.
+      Standard_Boolean MoreWires()  const;
+  
+  //! Sets the explorer  to the  next  wire.
+      void NextWire() ;
+  
+  //! Returns True  if the wire  bounding volume does not
+  //! intersect the segment.
+  Standard_EXPORT   Standard_Boolean RejectWire (const gp_Lin2d& L, const Standard_Real Par)  const;
+  
+  //! Starts an exploration of the  edges of the current
+  //! wire.
+  Standard_EXPORT   void InitEdges() ;
+  
+  //! Returns True if there is a current edge.
+      Standard_Boolean MoreEdges()  const;
+  
+  //! Sets the explorer  to the  next  edge.
+      void NextEdge() ;
+  
+  //! Returns True  if the edge  bounding volume does not
+  //! intersect the segment.
+  Standard_EXPORT   Standard_Boolean RejectEdge (const gp_Lin2d& L, const Standard_Real Par)  const;
+  
+  //! Current edge in current wire and its orientation.
+  Standard_EXPORT   void CurrentEdge (BRepClass_Edge& E, TopAbs_Orientation& Or)  const;
 
 
 
@@ -100,11 +90,11 @@ private:
 
 
 
-TopoDS_Face myFace;
-TopExp_Explorer myWExplorer;
-TopExp_Explorer myEExplorer;
-Standard_Integer myCurEdgeInd;
-Standard_Real myCurEdgePar;
+  TopoDS_Face myFace;
+  TopExp_Explorer myWExplorer;
+  TopExp_Explorer myEExplorer;
+  Standard_Integer myCurEdgeInd;
+  Standard_Real myCurEdgePar;
 
 
 };
@@ -114,7 +104,6 @@ Standard_Real myCurEdgePar;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepClass_FaceExplorer_HeaderFile

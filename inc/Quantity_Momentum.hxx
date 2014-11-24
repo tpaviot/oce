@@ -6,13 +6,11 @@
 #ifndef _Quantity_Momentum_HeaderFile
 #define _Quantity_Momentum_HeaderFile
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 
 typedef Standard_Real Quantity_Momentum;
 
 
 #define Quantity_Momentum_Type_() Standard_Real_Type_()
 
-#endif
+#endif // _Quantity_Momentum_HeaderFile

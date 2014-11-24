@@ -6,33 +6,24 @@
 #ifndef _TCollection_MapNode_HeaderFile
 #define _TCollection_MapNode_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TCollection_MapNode_HeaderFile
 #include <Handle_TCollection_MapNode.hxx>
-#endif
 
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 
 
-//! Basic class root of all the Maps. <br>
-class TCollection_MapNode : public MMgt_TShared {
+//! Basic class root of all the Maps.
+class TCollection_MapNode : public MMgt_TShared
+{
 
 public:
 
   
-      TCollection_MapNode(const TCollection_MapNodePtr& n);
+    TCollection_MapNode(const TCollection_MapNodePtr& n);
   
-        TCollection_MapNodePtr& Next() const;
+      TCollection_MapNodePtr& Next()  const;
 
 
 
@@ -47,7 +38,7 @@ protected:
 private: 
 
 
-TCollection_MapNodePtr myNext;
+  TCollection_MapNodePtr myNext;
 
 
 };
@@ -57,7 +48,6 @@ TCollection_MapNodePtr myNext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TCollection_MapNode_HeaderFile

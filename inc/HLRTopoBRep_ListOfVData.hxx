@@ -6,28 +6,14 @@
 #ifndef _HLRTopoBRep_ListOfVData_HeaderFile
 #define _HLRTopoBRep_ListOfVData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_HLRTopoBRep_ListNodeOfListOfVData_HeaderFile
 #include <Handle_HLRTopoBRep_ListNodeOfListOfVData.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class HLRTopoBRep_ListIteratorOfListOfVData;
 class HLRTopoBRep_VData;
@@ -35,63 +21,63 @@ class HLRTopoBRep_ListNodeOfListOfVData;
 
 
 
-class HLRTopoBRep_ListOfVData  {
+class HLRTopoBRep_ListOfVData 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   HLRTopoBRep_ListOfVData();
+  Standard_EXPORT HLRTopoBRep_ListOfVData();
   
-  Standard_EXPORT   HLRTopoBRep_ListOfVData(const HLRTopoBRep_ListOfVData& Other);
+  Standard_EXPORT HLRTopoBRep_ListOfVData(const HLRTopoBRep_ListOfVData& Other);
   
-  Standard_EXPORT     void Assign(const HLRTopoBRep_ListOfVData& Other) ;
-    void operator=(const HLRTopoBRep_ListOfVData& Other) 
+  Standard_EXPORT   void Assign (const HLRTopoBRep_ListOfVData& Other) ;
+  void operator= (const HLRTopoBRep_ListOfVData& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~HLRTopoBRep_ListOfVData()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const HLRTopoBRep_VData& I) ;
+  Standard_EXPORT   void Prepend (const HLRTopoBRep_VData& I) ;
   
-  Standard_EXPORT     void Prepend(const HLRTopoBRep_VData& I,HLRTopoBRep_ListIteratorOfListOfVData& theIt) ;
+  Standard_EXPORT   void Prepend (const HLRTopoBRep_VData& I, HLRTopoBRep_ListIteratorOfListOfVData& theIt) ;
   
-  Standard_EXPORT     void Prepend(HLRTopoBRep_ListOfVData& Other) ;
+  Standard_EXPORT   void Prepend (HLRTopoBRep_ListOfVData& Other) ;
   
-  Standard_EXPORT     void Append(const HLRTopoBRep_VData& I) ;
+  Standard_EXPORT   void Append (const HLRTopoBRep_VData& I) ;
   
-  Standard_EXPORT     void Append(const HLRTopoBRep_VData& I,HLRTopoBRep_ListIteratorOfListOfVData& theIt) ;
+  Standard_EXPORT   void Append (const HLRTopoBRep_VData& I, HLRTopoBRep_ListIteratorOfListOfVData& theIt) ;
   
-  Standard_EXPORT     void Append(HLRTopoBRep_ListOfVData& Other) ;
+  Standard_EXPORT   void Append (HLRTopoBRep_ListOfVData& Other) ;
   
-  Standard_EXPORT     HLRTopoBRep_VData& First() const;
+  Standard_EXPORT   HLRTopoBRep_VData& First()  const;
   
-  Standard_EXPORT     HLRTopoBRep_VData& Last() const;
+  Standard_EXPORT   HLRTopoBRep_VData& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(HLRTopoBRep_ListIteratorOfListOfVData& It) ;
+  Standard_EXPORT   void Remove (HLRTopoBRep_ListIteratorOfListOfVData& It) ;
   
-  Standard_EXPORT     void InsertBefore(const HLRTopoBRep_VData& I,HLRTopoBRep_ListIteratorOfListOfVData& It) ;
+  Standard_EXPORT   void InsertBefore (const HLRTopoBRep_VData& I, HLRTopoBRep_ListIteratorOfListOfVData& It) ;
   
-  Standard_EXPORT     void InsertBefore(HLRTopoBRep_ListOfVData& Other,HLRTopoBRep_ListIteratorOfListOfVData& It) ;
+  Standard_EXPORT   void InsertBefore (HLRTopoBRep_ListOfVData& Other, HLRTopoBRep_ListIteratorOfListOfVData& It) ;
   
-  Standard_EXPORT     void InsertAfter(const HLRTopoBRep_VData& I,HLRTopoBRep_ListIteratorOfListOfVData& It) ;
+  Standard_EXPORT   void InsertAfter (const HLRTopoBRep_VData& I, HLRTopoBRep_ListIteratorOfListOfVData& It) ;
   
-  Standard_EXPORT     void InsertAfter(HLRTopoBRep_ListOfVData& Other,HLRTopoBRep_ListIteratorOfListOfVData& It) ;
+  Standard_EXPORT   void InsertAfter (HLRTopoBRep_ListOfVData& Other, HLRTopoBRep_ListIteratorOfListOfVData& It) ;
 
 
 friend class HLRTopoBRep_ListIteratorOfListOfVData;
-
 
 
 protected:
@@ -104,8 +90,8 @@ private:
 
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
@@ -135,7 +121,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRTopoBRep_ListOfVData_HeaderFile

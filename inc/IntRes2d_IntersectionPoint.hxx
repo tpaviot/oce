@@ -6,74 +6,65 @@
 #ifndef _IntRes2d_IntersectionPoint_HeaderFile
 #define _IntRes2d_IntersectionPoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _IntRes2d_Transition_HeaderFile
 #include <IntRes2d_Transition.hxx>
-#endif
-#ifndef _Standard_Storable_HeaderFile
 #include <Standard_Storable.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
 #include <Standard_PrimitiveTypes.hxx>
-#endif
 class gp_Pnt2d;
 class IntRes2d_Transition;
 
 
 Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(IntRes2d_IntersectionPoint);
 
-//! Definition of an intersection point between two <br>
-//!          2D curves. <br>
-class IntRes2d_IntersectionPoint  {
+//! Definition of an intersection point between two
+//! 2D curves.
+class IntRes2d_IntersectionPoint 
+{
 
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor. <br>
-  Standard_EXPORT   IntRes2d_IntersectionPoint();
-  //! Creates an IntersectionPoint. <br>
-//!          if ReversedFlag is False, the parameter Uc1(resp. Uc2) <br>
-//!          and the Transition Trans1 (resp. Trans2) refer to <br>
-//!          the first curve (resp. second curve) otherwise Uc1 <br>
-//!          and Trans1 (resp. Uc2 and Trans2) refer to the <br>
-//!          second curve (resp. the first curve). <br>
-      IntRes2d_IntersectionPoint(const gp_Pnt2d& P,const Standard_Real Uc1,const Standard_Real Uc2,const IntRes2d_Transition& Trans1,const IntRes2d_Transition& Trans2,const Standard_Boolean ReversedFlag);
-  //! Sets the values for an existing intersection <br>
-//!          point. The meaning of the parameters are the same <br>
-//!          as for the Create. <br>
-        void SetValues(const gp_Pnt2d& P,const Standard_Real Uc1,const Standard_Real Uc2,const IntRes2d_Transition& Trans1,const IntRes2d_Transition& Trans2,const Standard_Boolean ReversedFlag) ;
-  //! Returns the value of the coordinates of the <br>
-//!          intersection point in the 2D space. <br>
-       const gp_Pnt2d& Value() const;
-  //! Returns the parameter on the first curve. <br>
-        Standard_Real ParamOnFirst() const;
-  //! Returns the parameter on the second curve. <br>
-        Standard_Real ParamOnSecond() const;
-  //! Returns the transition of the 1st curve compared to <br>
-//!          the 2nd one. <br>
-       const IntRes2d_Transition& TransitionOfFirst() const;
-  //! returns the transition of the 2nd curve compared to <br>
-//!          the 1st one. <br>
-       const IntRes2d_Transition& TransitionOfSecond() const;
+  
+  //! Empty constructor.
+  Standard_EXPORT IntRes2d_IntersectionPoint();
+  
+  //! Creates an IntersectionPoint.
+  //! if ReversedFlag is False, the parameter Uc1(resp. Uc2)
+  //! and the Transition Trans1 (resp. Trans2) refer to
+  //! the first curve (resp. second curve) otherwise Uc1
+  //! and Trans1 (resp. Uc2 and Trans2) refer to the
+  //! second curve (resp. the first curve).
+    IntRes2d_IntersectionPoint(const gp_Pnt2d& P, const Standard_Real Uc1, const Standard_Real Uc2, const IntRes2d_Transition& Trans1, const IntRes2d_Transition& Trans2, const Standard_Boolean ReversedFlag);
+  
+  //! Sets the values for an existing intersection
+  //! point. The meaning of the parameters are the same
+  //! as for the Create.
+      void SetValues (const gp_Pnt2d& P, const Standard_Real Uc1, const Standard_Real Uc2, const IntRes2d_Transition& Trans1, const IntRes2d_Transition& Trans2, const Standard_Boolean ReversedFlag) ;
+  
+  //! Returns the value of the coordinates of the
+  //! intersection point in the 2D space.
+     const  gp_Pnt2d& Value()  const;
+  
+  //! Returns the parameter on the first curve.
+      Standard_Real ParamOnFirst()  const;
+  
+  //! Returns the parameter on the second curve.
+      Standard_Real ParamOnSecond()  const;
+  
+  //! Returns the transition of the 1st curve compared to
+  //! the 2nd one.
+     const  IntRes2d_Transition& TransitionOfFirst()  const;
+  
+  //! returns the transition of the 2nd curve compared to
+  //! the 1st one.
+     const  IntRes2d_Transition& TransitionOfSecond()  const;
     const gp_Pnt2d& _CSFDB_GetIntRes2d_IntersectionPointpt() const { return pt; }
     Standard_Real _CSFDB_GetIntRes2d_IntersectionPointp1() const { return p1; }
     void _CSFDB_SetIntRes2d_IntersectionPointp1(const Standard_Real p) { p1 = p; }
@@ -92,11 +83,11 @@ protected:
 private: 
 
 
-gp_Pnt2d pt;
-Standard_Real p1;
-Standard_Real p2;
-IntRes2d_Transition trans1;
-IntRes2d_Transition trans2;
+  gp_Pnt2d pt;
+  Standard_Real p1;
+  Standard_Real p2;
+  IntRes2d_Transition trans1;
+  IntRes2d_Transition trans2;
 
 
 };
@@ -106,7 +97,6 @@ IntRes2d_Transition trans2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntRes2d_IntersectionPoint_HeaderFile

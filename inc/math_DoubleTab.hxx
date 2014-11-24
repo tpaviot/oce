@@ -6,63 +6,49 @@
 #ifndef _math_DoubleTab_HeaderFile
 #define _math_DoubleTab_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 
 
 
-class math_DoubleTab  {
+class math_DoubleTab 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   math_DoubleTab(const Standard_Integer LowerRow,const Standard_Integer UpperRow,const Standard_Integer LowerCol,const Standard_Integer UpperCol);
+  Standard_EXPORT math_DoubleTab(const Standard_Integer LowerRow, const Standard_Integer UpperRow, const Standard_Integer LowerCol, const Standard_Integer UpperCol);
   
-  Standard_EXPORT   math_DoubleTab(const Standard_Address Tab,const Standard_Integer LowerRow,const Standard_Integer UpperRow,const Standard_Integer LowerCol,const Standard_Integer UpperCol);
+  Standard_EXPORT math_DoubleTab(const Standard_Address Tab, const Standard_Integer LowerRow, const Standard_Integer UpperRow, const Standard_Integer LowerCol, const Standard_Integer UpperCol);
   
-  Standard_EXPORT     void Init(const Standard_Real InitValue) ;
+  Standard_EXPORT   void Init (const Standard_Real InitValue) ;
   
-  Standard_EXPORT   math_DoubleTab(const math_DoubleTab& Other);
+  Standard_EXPORT math_DoubleTab(const math_DoubleTab& Other);
   
-        void Copy(math_DoubleTab& Other) const;
+      void Copy (math_DoubleTab& Other)  const;
   
-  Standard_EXPORT     void SetLowerRow(const Standard_Integer LowerRow) ;
+  Standard_EXPORT   void SetLowerRow (const Standard_Integer LowerRow) ;
   
-  Standard_EXPORT     void SetLowerCol(const Standard_Integer LowerCol) ;
+  Standard_EXPORT   void SetLowerCol (const Standard_Integer LowerCol) ;
   
-        Standard_Real& Value(const Standard_Integer RowIndex,const Standard_Integer ColIndex) const;
-      Standard_Real& operator()(const Standard_Integer RowIndex,const Standard_Integer ColIndex) const
+      Standard_Real& Value (const Standard_Integer RowIndex, const Standard_Integer ColIndex)  const;
+    Standard_Real& operator() (const Standard_Integer RowIndex, const Standard_Integer ColIndex)  const
 {
   return Value(RowIndex,ColIndex);
 }
   
-  Standard_EXPORT     void Free() ;
+  Standard_EXPORT   void Free() ;
 ~math_DoubleTab()
 {
   Free();
 }
-
 
 
 
@@ -76,18 +62,18 @@ protected:
 private:
 
   
-  Standard_EXPORT     void Allocate() ;
+  Standard_EXPORT   void Allocate() ;
 
 
-Standard_Address Addr;
-Standard_Address AddrBuf[32];
-Standard_Real Buf[512];
-Standard_Boolean isAddrAllocated;
-Standard_Boolean isAllocated;
-Standard_Integer LowR;
-Standard_Integer UppR;
-Standard_Integer LowC;
-Standard_Integer UppC;
+  Standard_Address Addr;
+  Standard_Address AddrBuf[32];
+  Standard_Real Buf[512];
+  Standard_Boolean isAddrAllocated;
+  Standard_Boolean isAllocated;
+  Standard_Integer LowR;
+  Standard_Integer UppR;
+  Standard_Integer LowC;
+  Standard_Integer UppC;
 
 
 };
@@ -97,7 +83,6 @@ Standard_Integer UppC;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _math_DoubleTab_HeaderFile

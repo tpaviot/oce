@@ -6,13 +6,11 @@
 #ifndef _BRepTopAdaptor_SeqOfPtr_HeaderFile
 #define _BRepTopAdaptor_SeqOfPtr_HeaderFile
 
-#ifndef _TColStd_SequenceOfAddress_HeaderFile
 #include <TColStd_SequenceOfAddress.hxx>
-#endif
 
 typedef TColStd_SequenceOfAddress BRepTopAdaptor_SeqOfPtr;
 
 
 #define BRepTopAdaptor_SeqOfPtr_Type_() TColStd_SequenceOfAddress_Type_()
 
-#endif
+#endif // _BRepTopAdaptor_SeqOfPtr_HeaderFile

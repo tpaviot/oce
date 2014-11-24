@@ -1,6 +1,2 @@
-#ifndef _StepVisual_CurveStyle_HeaderFile
 #include <StepVisual_CurveStyle.hxx>
-#endif
-#ifndef _StepVisual_SurfaceStyleSegmentationCurve_HeaderFile
 #include <StepVisual_SurfaceStyleSegmentationCurve.hxx>
-#endif

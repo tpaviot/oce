@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKDraw"
-	ProjectGUID="{2DD1F113-0968-02BB-1895-5CCB9D3BC20A}"
+	ProjectGUID="{CE1FB578-002B-0889-086B-3F0E1AB70918}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -248,7 +248,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Draw;..\..\..\src\Draw;..\..\..\drv\DBRep;..\..\..\src\DBRep;..\..\..\drv\DrawTrSurf;..\..\..\src\DrawTrSurf;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Draw_DLL;__DBRep_DLL;__DrawTrSurf_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Draw_DLL;__DBRep_DLL;__DrawTrSurf_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Draw_DLL;__DBRep_DLL;__DrawTrSurf_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Draw_DLL;__DBRep_DLL;__DrawTrSurf_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -343,7 +343,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Draw;..\..\..\src\Draw;..\..\..\drv\DBRep;..\..\..\src\DBRep;..\..\..\drv\DrawTrSurf;..\..\..\src\DrawTrSurf;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Draw_DLL;__DBRep_DLL;__DrawTrSurf_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Draw_DLL;__DBRep_DLL;__DrawTrSurf_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -365,7 +365,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Draw_DLL;__DBRep_DLL;__DrawTrSurf_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Draw_DLL;__DBRep_DLL;__DrawTrSurf_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"

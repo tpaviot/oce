@@ -6,8 +6,11 @@
 #ifndef _Quantity_PhysicalQuantity_HeaderFile
 #define _Quantity_PhysicalQuantity_HeaderFile
 
-//! List of all physical quantities(Afnor) <br>
-enum Quantity_PhysicalQuantity {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! List of all physical quantities(Afnor)
+enum Quantity_PhysicalQuantity
+{
 Quantity_MASS,
 Quantity_PLANEANGLE,
 Quantity_SOLIDANGLE,
@@ -78,8 +81,4 @@ Quantity_ABSORBEDDOSE,
 Quantity_DOSEEQUIVALENT
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Quantity_PhysicalQuantity_HeaderFile

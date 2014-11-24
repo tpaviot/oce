@@ -5,28 +5,14 @@
 
 #include <PColgp_HArray1OfVec.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _PColgp_FieldOfHArray1OfVec_HeaderFile
 #include <PColgp_FieldOfHArray1OfVec.hxx>
-#endif
-#ifndef _PColgp_VArrayNodeOfFieldOfHArray1OfVec_HeaderFile
 #include <PColgp_VArrayNodeOfFieldOfHArray1OfVec.hxx>
-#endif
-#ifndef _PColgp_VArrayTNodeOfFieldOfHArray1OfVec_HeaderFile
 #include <PColgp_VArrayTNodeOfFieldOfHArray1OfVec.hxx>
-#endif
 
  
 

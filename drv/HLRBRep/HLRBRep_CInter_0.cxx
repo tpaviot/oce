@@ -5,48 +5,20 @@
 
 #include <HLRBRep_CInter.hxx>
 
-#ifndef _Standard_ConstructionError_HeaderFile
 #include <Standard_ConstructionError.hxx>
-#endif
-#ifndef _HLRBRep_CurveTool_HeaderFile
 #include <HLRBRep_CurveTool.hxx>
-#endif
-#ifndef _HLRBRep_TheProjPCurOfCInter_HeaderFile
 #include <HLRBRep_TheProjPCurOfCInter.hxx>
-#endif
-#ifndef _HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_HeaderFile
 #include <HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter.hxx>
-#endif
-#ifndef _HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_HeaderFile
 #include <HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx>
-#endif
-#ifndef _HLRBRep_TheIntConicCurveOfCInter_HeaderFile
 #include <HLRBRep_TheIntConicCurveOfCInter.hxx>
-#endif
-#ifndef _HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_HeaderFile
 #include <HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx>
-#endif
-#ifndef _HLRBRep_IntConicCurveOfCInter_HeaderFile
 #include <HLRBRep_IntConicCurveOfCInter.hxx>
-#endif
-#ifndef _HLRBRep_TheIntPCurvePCurveOfCInter_HeaderFile
 #include <HLRBRep_TheIntPCurvePCurveOfCInter.hxx>
-#endif
-#ifndef _HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_HeaderFile
 #include <HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx>
-#endif
-#ifndef _HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_HeaderFile
 #include <HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx>
-#endif
-#ifndef _HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_HeaderFile
 #include <HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx>
-#endif
-#ifndef _IntRes2d_Domain_HeaderFile
 #include <IntRes2d_Domain.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
  
 
 #define TheCurve Standard_Address

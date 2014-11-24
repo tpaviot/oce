@@ -6,38 +6,27 @@
 #ifndef _TColStd_SequenceNodeOfSequenceOfHExtendedString_HeaderFile
 #define _TColStd_SequenceNodeOfSequenceOfHExtendedString_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString_HeaderFile
 #include <Handle_TColStd_SequenceNodeOfSequenceOfHExtendedString.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HExtendedString_HeaderFile
 #include <Handle_TCollection_HExtendedString.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class TCollection_HExtendedString;
 class TColStd_SequenceOfHExtendedString;
 
 
 
-class TColStd_SequenceNodeOfSequenceOfHExtendedString : public TCollection_SeqNode {
+class TColStd_SequenceNodeOfSequenceOfHExtendedString : public TCollection_SeqNode
+{
 
 public:
 
   
-      TColStd_SequenceNodeOfSequenceOfHExtendedString(const Handle(TCollection_HExtendedString)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    TColStd_SequenceNodeOfSequenceOfHExtendedString(const Handle(TCollection_HExtendedString)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_TCollection_HExtendedString& Value() const;
+      Handle(TCollection_HExtendedString)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_TCollection_HExtendedString myValue;
+  Handle(TCollection_HExtendedString) myValue;
 
 
 };
 
-#define SeqItem Handle_TCollection_HExtendedString
+#define SeqItem Handle(TCollection_HExtendedString)
 #define SeqItem_hxx <TCollection_HExtendedString.hxx>
 #define TCollection_SequenceNode TColStd_SequenceNodeOfSequenceOfHExtendedString
 #define TCollection_SequenceNode_hxx <TColStd_SequenceNodeOfSequenceOfHExtendedString.hxx>
@@ -78,7 +67,6 @@ Handle_TCollection_HExtendedString myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_SequenceNodeOfSequenceOfHExtendedString_HeaderFile

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKG3d"
-	ProjectGUID="{524F24EC-14B5-0E8D-0072-3BD49902B81D}"
+	ProjectGUID="{05D4B4BC-0319-07B3-1801-F52322D59B01}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -248,7 +248,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Geom;..\..\..\src\Geom;..\..\..\drv\TColGeom;..\..\..\src\TColGeom;..\..\..\drv\GeomAdaptor;..\..\..\src\GeomAdaptor;..\..\..\drv\AdvApprox;..\..\..\src\AdvApprox;..\..\..\drv\GeomLProp;..\..\..\src\GeomLProp;..\..\..\drv\Adaptor3d;..\..\..\src\Adaptor3d;..\..\..\drv\LProp3d;..\..\..\src\LProp3d;..\..\..\drv\TopAbs;..\..\..\src\TopAbs;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Geom_DLL;__TColGeom_DLL;__GeomAdaptor_DLL;__AdvApprox_DLL;__GeomLProp_DLL;__Adaptor3d_DLL;__LProp3d_DLL;__TopAbs_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Geom_DLL;__TColGeom_DLL;__GeomAdaptor_DLL;__AdvApprox_DLL;__GeomLProp_DLL;__Adaptor3d_DLL;__LProp3d_DLL;__TopAbs_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Geom_DLL;__TColGeom_DLL;__GeomAdaptor_DLL;__AdvApprox_DLL;__GeomLProp_DLL;__Adaptor3d_DLL;__LProp3d_DLL;__TopAbs_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Geom_DLL;__TColGeom_DLL;__GeomAdaptor_DLL;__AdvApprox_DLL;__GeomLProp_DLL;__Adaptor3d_DLL;__LProp3d_DLL;__TopAbs_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -343,7 +343,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Geom;..\..\..\src\Geom;..\..\..\drv\TColGeom;..\..\..\src\TColGeom;..\..\..\drv\GeomAdaptor;..\..\..\src\GeomAdaptor;..\..\..\drv\AdvApprox;..\..\..\src\AdvApprox;..\..\..\drv\GeomLProp;..\..\..\src\GeomLProp;..\..\..\drv\Adaptor3d;..\..\..\src\Adaptor3d;..\..\..\drv\LProp3d;..\..\..\src\LProp3d;..\..\..\drv\TopAbs;..\..\..\src\TopAbs;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Geom_DLL;__TColGeom_DLL;__GeomAdaptor_DLL;__AdvApprox_DLL;__GeomLProp_DLL;__Adaptor3d_DLL;__LProp3d_DLL;__TopAbs_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Geom_DLL;__TColGeom_DLL;__GeomAdaptor_DLL;__AdvApprox_DLL;__GeomLProp_DLL;__Adaptor3d_DLL;__LProp3d_DLL;__TopAbs_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -365,7 +365,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Geom_DLL;__TColGeom_DLL;__GeomAdaptor_DLL;__AdvApprox_DLL;__GeomLProp_DLL;__Adaptor3d_DLL;__LProp3d_DLL;__TopAbs_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Geom_DLL;__TColGeom_DLL;__GeomAdaptor_DLL;__AdvApprox_DLL;__GeomLProp_DLL;__Adaptor3d_DLL;__LProp3d_DLL;__TopAbs_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"

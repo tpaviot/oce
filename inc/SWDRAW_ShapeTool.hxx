@@ -6,34 +6,27 @@
 #ifndef _SWDRAW_ShapeTool_HeaderFile
 #define _SWDRAW_ShapeTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Draw_Interpretor_HeaderFile
 #include <Draw_Interpretor.hxx>
-#endif
 
 
-//! Defines functions to control shapes (in way useful for XSTEP), <br>
-//!           additional features which should be basic, or call tools which <br>
-//!           are bound with transfer needs. <br>
-//!           But these functions work on shapes, geometry, nothing else <br>
-//!           (no file, no model, no entity) <br>
-class SWDRAW_ShapeTool  {
+//! Defines functions to control shapes (in way useful for XSTEP),
+//! additional features which should be basic, or call tools which
+//! are bound with transfer needs.
+//! But these functions work on shapes, geometry, nothing else
+//! (no file, no model, no entity)
+class SWDRAW_ShapeTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Defines and loads all basic functions for SWDRAW on Shapes <br>
-  Standard_EXPORT   static  void InitCommands(Draw_Interpretor& theCommands) ;
-
+  
+  //! Defines and loads all basic functions for SWDRAW on Shapes
+  Standard_EXPORT static   void InitCommands (Draw_Interpretor& theCommands) ;
 
 
 
@@ -56,7 +49,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SWDRAW_ShapeTool_HeaderFile

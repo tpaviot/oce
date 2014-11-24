@@ -6,28 +6,14 @@
 #ifndef _IntTools_ListOfSurfaceRangeSample_HeaderFile
 #define _IntTools_ListOfSurfaceRangeSample_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_IntTools_ListNodeOfListOfSurfaceRangeSample_HeaderFile
 #include <Handle_IntTools_ListNodeOfListOfSurfaceRangeSample.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class IntTools_ListIteratorOfListOfSurfaceRangeSample;
 class IntTools_SurfaceRangeSample;
@@ -35,63 +21,63 @@ class IntTools_ListNodeOfListOfSurfaceRangeSample;
 
 
 
-class IntTools_ListOfSurfaceRangeSample  {
+class IntTools_ListOfSurfaceRangeSample 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntTools_ListOfSurfaceRangeSample();
+  Standard_EXPORT IntTools_ListOfSurfaceRangeSample();
   
-  Standard_EXPORT   IntTools_ListOfSurfaceRangeSample(const IntTools_ListOfSurfaceRangeSample& Other);
+  Standard_EXPORT IntTools_ListOfSurfaceRangeSample(const IntTools_ListOfSurfaceRangeSample& Other);
   
-  Standard_EXPORT     void Assign(const IntTools_ListOfSurfaceRangeSample& Other) ;
-    void operator=(const IntTools_ListOfSurfaceRangeSample& Other) 
+  Standard_EXPORT   void Assign (const IntTools_ListOfSurfaceRangeSample& Other) ;
+  void operator= (const IntTools_ListOfSurfaceRangeSample& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~IntTools_ListOfSurfaceRangeSample()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const IntTools_SurfaceRangeSample& I) ;
+  Standard_EXPORT   void Prepend (const IntTools_SurfaceRangeSample& I) ;
   
-  Standard_EXPORT     void Prepend(const IntTools_SurfaceRangeSample& I,IntTools_ListIteratorOfListOfSurfaceRangeSample& theIt) ;
+  Standard_EXPORT   void Prepend (const IntTools_SurfaceRangeSample& I, IntTools_ListIteratorOfListOfSurfaceRangeSample& theIt) ;
   
-  Standard_EXPORT     void Prepend(IntTools_ListOfSurfaceRangeSample& Other) ;
+  Standard_EXPORT   void Prepend (IntTools_ListOfSurfaceRangeSample& Other) ;
   
-  Standard_EXPORT     void Append(const IntTools_SurfaceRangeSample& I) ;
+  Standard_EXPORT   void Append (const IntTools_SurfaceRangeSample& I) ;
   
-  Standard_EXPORT     void Append(const IntTools_SurfaceRangeSample& I,IntTools_ListIteratorOfListOfSurfaceRangeSample& theIt) ;
+  Standard_EXPORT   void Append (const IntTools_SurfaceRangeSample& I, IntTools_ListIteratorOfListOfSurfaceRangeSample& theIt) ;
   
-  Standard_EXPORT     void Append(IntTools_ListOfSurfaceRangeSample& Other) ;
+  Standard_EXPORT   void Append (IntTools_ListOfSurfaceRangeSample& Other) ;
   
-  Standard_EXPORT     IntTools_SurfaceRangeSample& First() const;
+  Standard_EXPORT   IntTools_SurfaceRangeSample& First()  const;
   
-  Standard_EXPORT     IntTools_SurfaceRangeSample& Last() const;
+  Standard_EXPORT   IntTools_SurfaceRangeSample& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(IntTools_ListIteratorOfListOfSurfaceRangeSample& It) ;
+  Standard_EXPORT   void Remove (IntTools_ListIteratorOfListOfSurfaceRangeSample& It) ;
   
-  Standard_EXPORT     void InsertBefore(const IntTools_SurfaceRangeSample& I,IntTools_ListIteratorOfListOfSurfaceRangeSample& It) ;
+  Standard_EXPORT   void InsertBefore (const IntTools_SurfaceRangeSample& I, IntTools_ListIteratorOfListOfSurfaceRangeSample& It) ;
   
-  Standard_EXPORT     void InsertBefore(IntTools_ListOfSurfaceRangeSample& Other,IntTools_ListIteratorOfListOfSurfaceRangeSample& It) ;
+  Standard_EXPORT   void InsertBefore (IntTools_ListOfSurfaceRangeSample& Other, IntTools_ListIteratorOfListOfSurfaceRangeSample& It) ;
   
-  Standard_EXPORT     void InsertAfter(const IntTools_SurfaceRangeSample& I,IntTools_ListIteratorOfListOfSurfaceRangeSample& It) ;
+  Standard_EXPORT   void InsertAfter (const IntTools_SurfaceRangeSample& I, IntTools_ListIteratorOfListOfSurfaceRangeSample& It) ;
   
-  Standard_EXPORT     void InsertAfter(IntTools_ListOfSurfaceRangeSample& Other,IntTools_ListIteratorOfListOfSurfaceRangeSample& It) ;
+  Standard_EXPORT   void InsertAfter (IntTools_ListOfSurfaceRangeSample& Other, IntTools_ListIteratorOfListOfSurfaceRangeSample& It) ;
 
 
 friend class IntTools_ListIteratorOfListOfSurfaceRangeSample;
-
 
 
 protected:
@@ -104,8 +90,8 @@ private:
 
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
@@ -135,7 +121,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_ListOfSurfaceRangeSample_HeaderFile

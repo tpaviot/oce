@@ -6,45 +6,33 @@
 #ifndef _PNaming_VArrayTNodeOfFieldOfHArray1OfNamedShape_HeaderFile
 #define _PNaming_VArrayTNodeOfFieldOfHArray1OfNamedShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_PNaming_NamedShape_HeaderFile
 #include <Handle_PNaming_NamedShape.hxx>
-#endif
-#ifndef _Handle_PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape_HeaderFile
 #include <Handle_PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class PNaming_NamedShape;
 class PNaming_FieldOfHArray1OfNamedShape;
 class PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape;
 
 
 
-class PNaming_VArrayTNodeOfFieldOfHArray1OfNamedShape  {
+class PNaming_VArrayTNodeOfFieldOfHArray1OfNamedShape 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      PNaming_VArrayTNodeOfFieldOfHArray1OfNamedShape();
+    PNaming_VArrayTNodeOfFieldOfHArray1OfNamedShape();
   
-      PNaming_VArrayTNodeOfFieldOfHArray1OfNamedShape(const Handle(PNaming_NamedShape)& aValue);
+    PNaming_VArrayTNodeOfFieldOfHArray1OfNamedShape(const Handle(PNaming_NamedShape)& aValue);
   
-        void SetValue(const Handle(PNaming_NamedShape)& aValue) ;
+      void SetValue (const Handle(PNaming_NamedShape)& aValue) ;
   
-        Standard_Address Value() const;
-
+      Standard_Address Value()  const;
 
 
 
@@ -59,12 +47,12 @@ private:
 
 
 
-Handle_PNaming_NamedShape myValue;
+  Handle(PNaming_NamedShape) myValue;
 
 
 };
 
-#define Item Handle_PNaming_NamedShape
+#define Item Handle(PNaming_NamedShape)
 #define Item_hxx <PNaming_NamedShape.hxx>
 #define DBC_VArrayNode PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape
 #define DBC_VArrayNode_hxx <PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape.hxx>
@@ -89,7 +77,6 @@ Handle_PNaming_NamedShape myValue;
 #undef DBC_VArray_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PNaming_VArrayTNodeOfFieldOfHArray1OfNamedShape_HeaderFile

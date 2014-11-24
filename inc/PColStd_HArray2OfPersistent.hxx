@@ -6,37 +6,17 @@
 #ifndef _PColStd_HArray2OfPersistent_HeaderFile
 #define _PColStd_HArray2OfPersistent_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PColStd_HArray2OfPersistent_HeaderFile
 #include <Handle_PColStd_HArray2OfPersistent.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
 #include <Handle_Standard_Persistent.hxx>
-#endif
-#ifndef _PColStd_FieldOfHArray2OfPersistent_HeaderFile
 #include <PColStd_FieldOfHArray2OfPersistent.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _Handle_PColStd_VArrayNodeOfFieldOfHArray2OfPersistent_HeaderFile
 #include <Handle_PColStd_VArrayNodeOfFieldOfHArray2OfPersistent.hxx>
-#endif
 class Standard_Persistent;
 class Standard_RangeError;
 class Standard_OutOfRange;
@@ -45,32 +25,33 @@ class PColStd_VArrayNodeOfFieldOfHArray2OfPersistent;
 class PColStd_VArrayTNodeOfFieldOfHArray2OfPersistent;
 
 
-class PColStd_HArray2OfPersistent : public Standard_Persistent {
+class PColStd_HArray2OfPersistent : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PColStd_HArray2OfPersistent(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+  Standard_EXPORT PColStd_HArray2OfPersistent(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2);
   
-  Standard_EXPORT   PColStd_HArray2OfPersistent(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Handle(Standard_Persistent)& V);
+  Standard_EXPORT PColStd_HArray2OfPersistent(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2, const Handle(Standard_Persistent)& V);
   
-  Standard_EXPORT     Standard_Integer ColLength() const;
+  Standard_EXPORT   Standard_Integer ColLength()  const;
   
-        Standard_Integer LowerCol() const;
+      Standard_Integer LowerCol()  const;
   
-        Standard_Integer LowerRow() const;
+      Standard_Integer LowerRow()  const;
   
-  Standard_EXPORT     Standard_Integer RowLength() const;
+  Standard_EXPORT   Standard_Integer RowLength()  const;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Handle(Standard_Persistent)& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Row, const Standard_Integer Col, const Handle(Standard_Persistent)& Value) ;
   
-        Standard_Integer UpperCol() const;
+      Standard_Integer UpperCol()  const;
   
-        Standard_Integer UpperRow() const;
+      Standard_Integer UpperRow()  const;
   
-  Standard_EXPORT     Handle_Standard_Persistent Value(const Standard_Integer Row,const Standard_Integer Col) const;
+  Standard_EXPORT   Handle(Standard_Persistent) Value (const Standard_Integer Row, const Standard_Integer Col)  const;
 
-  PColStd_HArray2OfPersistent( )
+PColStd_HArray2OfPersistent( )
 {
   
 }
@@ -100,20 +81,20 @@ protected:
 private: 
 
   
-  Standard_EXPORT     PColStd_FieldOfHArray2OfPersistent Field() const;
+  Standard_EXPORT   PColStd_FieldOfHArray2OfPersistent Field()  const;
   
-  Standard_EXPORT     Standard_Address Datas() const;
+  Standard_EXPORT   Standard_Address Datas()  const;
 
-Standard_Integer myLowerRow;
-Standard_Integer myLowerCol;
-Standard_Integer myUpperRow;
-Standard_Integer myUpperCol;
-PColStd_FieldOfHArray2OfPersistent Data;
+  Standard_Integer myLowerRow;
+  Standard_Integer myLowerCol;
+  Standard_Integer myUpperRow;
+  Standard_Integer myUpperCol;
+  PColStd_FieldOfHArray2OfPersistent Data;
 
 
 };
 
-#define Item Handle_Standard_Persistent
+#define Item Handle(Standard_Persistent)
 #define Item_hxx <Standard_Persistent.hxx>
 #define PCollection_FieldOfHArray2 PColStd_FieldOfHArray2OfPersistent
 #define PCollection_FieldOfHArray2_hxx <PColStd_FieldOfHArray2OfPersistent.hxx>
@@ -158,7 +139,6 @@ PColStd_FieldOfHArray2OfPersistent Data;
 #undef PCollection_HArray2_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PColStd_HArray2OfPersistent_HeaderFile

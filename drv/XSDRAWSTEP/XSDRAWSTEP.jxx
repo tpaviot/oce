@@ -1,3 +1,1 @@
-#ifndef _XSDRAWSTEP_HeaderFile
 #include <XSDRAWSTEP.hxx>
-#endif

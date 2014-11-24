@@ -6,23 +6,22 @@
 #ifndef _AIS_DisplayStatus_HeaderFile
 #define _AIS_DisplayStatus_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-//! To give the display status of an Interactive Object. <br>
-//! This will be one of the following: <br>
-//! -   DS_Displayed: the Interactive Object is <br>
-//!   displayed in the main viewer; <br>
-//! -   DS_Erased: the Interactive Object is hidden in main viewer; <br>
-//! -   DS_Temporary: the Interactive Object is temporarily displayed; <br>
-//! -   DS_None: the Interactive Object is nowhere displayed. <br>
-enum AIS_DisplayStatus {
+
+//! To give the display status of an Interactive Object.
+//! This will be one of the following:
+//! -   DS_Displayed: the Interactive Object is
+//! displayed in the main viewer;
+//! -   DS_Erased: the Interactive Object is hidden in main viewer;
+//! -   DS_Temporary: the Interactive Object is temporarily displayed;
+//! -   DS_None: the Interactive Object is nowhere displayed.
+enum AIS_DisplayStatus
+{
 AIS_DS_Displayed,
 AIS_DS_Erased,
 AIS_DS_Temporary,
 AIS_DS_None
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _AIS_DisplayStatus_HeaderFile

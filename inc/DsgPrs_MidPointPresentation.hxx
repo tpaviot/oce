@@ -6,25 +6,13 @@
 #ifndef _DsgPrs_MidPointPresentation_HeaderFile
 #define _DsgPrs_MidPointPresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Handle_Prs3d_Drawer_HeaderFile
 #include <Handle_Prs3d_Drawer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Prs3d_Presentation;
 class Prs3d_Drawer;
 class gp_Ax2;
@@ -34,24 +22,28 @@ class gp_Elips;
 
 
 
-class DsgPrs_MidPointPresentation  {
+class DsgPrs_MidPointPresentation 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! draws the representation of a MidPoint between <br>
-//!          two vertices. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Prs3d_Drawer)& aDrawer,const gp_Ax2& theAxe,const gp_Pnt& MidPoint,const gp_Pnt& Position,const gp_Pnt& AttachPoint,const Standard_Boolean first) ;
-  //! draws the representation of a MidPoint between <br>
-//!          two lines or linear segments. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Prs3d_Drawer)& aDrawer,const gp_Ax2& theAxe,const gp_Pnt& MidPoint,const gp_Pnt& Position,const gp_Pnt& AttachPoint,const gp_Pnt& Point1,const gp_Pnt& Point2,const Standard_Boolean first) ;
-  //! draws the representation of a MidPoint between <br>
-//!          two entire circles or two circular arcs. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Prs3d_Drawer)& aDrawer,const gp_Circ& aCircle,const gp_Pnt& MidPoint,const gp_Pnt& Position,const gp_Pnt& AttachPoint,const gp_Pnt& Point1,const gp_Pnt& Point2,const Standard_Boolean first) ;
-  //! draws the representation of a MidPoint between <br>
-//!          two entire ellipses or two elliptic arcs. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Prs3d_Drawer)& aDrawer,const gp_Elips& anElips,const gp_Pnt& MidPoint,const gp_Pnt& Position,const gp_Pnt& AttachPoint,const gp_Pnt& Point1,const gp_Pnt& Point2,const Standard_Boolean first) ;
-
+  
+  //! draws the representation of a MidPoint between
+  //! two vertices.
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Prs3d_Drawer)& aDrawer, const gp_Ax2& theAxe, const gp_Pnt& MidPoint, const gp_Pnt& Position, const gp_Pnt& AttachPoint, const Standard_Boolean first) ;
+  
+  //! draws the representation of a MidPoint between
+  //! two lines or linear segments.
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Prs3d_Drawer)& aDrawer, const gp_Ax2& theAxe, const gp_Pnt& MidPoint, const gp_Pnt& Position, const gp_Pnt& AttachPoint, const gp_Pnt& Point1, const gp_Pnt& Point2, const Standard_Boolean first) ;
+  
+  //! draws the representation of a MidPoint between
+  //! two entire circles or two circular arcs.
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Prs3d_Drawer)& aDrawer, const gp_Circ& aCircle, const gp_Pnt& MidPoint, const gp_Pnt& Position, const gp_Pnt& AttachPoint, const gp_Pnt& Point1, const gp_Pnt& Point2, const Standard_Boolean first) ;
+  
+  //! draws the representation of a MidPoint between
+  //! two entire ellipses or two elliptic arcs.
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Prs3d_Drawer)& aDrawer, const gp_Elips& anElips, const gp_Pnt& MidPoint, const gp_Pnt& Position, const gp_Pnt& AttachPoint, const gp_Pnt& Point1, const gp_Pnt& Point2, const Standard_Boolean first) ;
 
 
 
@@ -74,7 +66,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DsgPrs_MidPointPresentation_HeaderFile

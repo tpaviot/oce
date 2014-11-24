@@ -6,15 +6,14 @@
 #ifndef _StepFEA_CoordinateSystemType_HeaderFile
 #define _StepFEA_CoordinateSystemType_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepFEA_CoordinateSystemType {
+
+enum StepFEA_CoordinateSystemType
+{
 StepFEA_Cartesian,
 StepFEA_Cylindrical,
 StepFEA_Spherical
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepFEA_CoordinateSystemType_HeaderFile

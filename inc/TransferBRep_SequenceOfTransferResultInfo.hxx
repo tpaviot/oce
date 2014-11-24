@@ -6,28 +6,14 @@
 #ifndef _TransferBRep_SequenceOfTransferResultInfo_HeaderFile
 #define _TransferBRep_SequenceOfTransferResultInfo_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_TransferBRep_TransferResultInfo_HeaderFile
 #include <Handle_TransferBRep_TransferResultInfo.hxx>
-#endif
-#ifndef _Handle_TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo_HeaderFile
 #include <Handle_TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class TransferBRep_TransferResultInfo;
@@ -35,68 +21,68 @@ class TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo;
 
 
 
-class TransferBRep_SequenceOfTransferResultInfo  : public TCollection_BaseSequence {
+class TransferBRep_SequenceOfTransferResultInfo  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      TransferBRep_SequenceOfTransferResultInfo();
+    TransferBRep_SequenceOfTransferResultInfo();
   
-  Standard_EXPORT   TransferBRep_SequenceOfTransferResultInfo(const TransferBRep_SequenceOfTransferResultInfo& Other);
+  Standard_EXPORT TransferBRep_SequenceOfTransferResultInfo(const TransferBRep_SequenceOfTransferResultInfo& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TransferBRep_SequenceOfTransferResultInfo()
 {
   Clear();
 }
   
-  Standard_EXPORT    const TransferBRep_SequenceOfTransferResultInfo& Assign(const TransferBRep_SequenceOfTransferResultInfo& Other) ;
-   const TransferBRep_SequenceOfTransferResultInfo& operator =(const TransferBRep_SequenceOfTransferResultInfo& Other) 
+  Standard_EXPORT  const  TransferBRep_SequenceOfTransferResultInfo& Assign (const TransferBRep_SequenceOfTransferResultInfo& Other) ;
+ const  TransferBRep_SequenceOfTransferResultInfo& operator = (const TransferBRep_SequenceOfTransferResultInfo& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(TransferBRep_TransferResultInfo)& T) ;
+  Standard_EXPORT   void Append (const Handle(TransferBRep_TransferResultInfo)& T) ;
   
-        void Append(TransferBRep_SequenceOfTransferResultInfo& S) ;
+      void Append (TransferBRep_SequenceOfTransferResultInfo& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(TransferBRep_TransferResultInfo)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(TransferBRep_TransferResultInfo)& T) ;
   
-        void Prepend(TransferBRep_SequenceOfTransferResultInfo& S) ;
+      void Prepend (TransferBRep_SequenceOfTransferResultInfo& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(TransferBRep_TransferResultInfo)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(TransferBRep_TransferResultInfo)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,TransferBRep_SequenceOfTransferResultInfo& S) ;
+      void InsertBefore (const Standard_Integer Index, TransferBRep_SequenceOfTransferResultInfo& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(TransferBRep_TransferResultInfo)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(TransferBRep_TransferResultInfo)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,TransferBRep_SequenceOfTransferResultInfo& S) ;
+      void InsertAfter (const Standard_Integer Index, TransferBRep_SequenceOfTransferResultInfo& S) ;
   
-  Standard_EXPORT    const Handle_TransferBRep_TransferResultInfo& First() const;
+  Standard_EXPORT  const  Handle(TransferBRep_TransferResultInfo)& First()  const;
   
-  Standard_EXPORT    const Handle_TransferBRep_TransferResultInfo& Last() const;
+  Standard_EXPORT  const  Handle(TransferBRep_TransferResultInfo)& Last()  const;
   
-        void Split(const Standard_Integer Index,TransferBRep_SequenceOfTransferResultInfo& Sub) ;
+      void Split (const Standard_Integer Index, TransferBRep_SequenceOfTransferResultInfo& Sub) ;
   
-  Standard_EXPORT    const Handle_TransferBRep_TransferResultInfo& Value(const Standard_Integer Index) const;
-   const Handle_TransferBRep_TransferResultInfo& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(TransferBRep_TransferResultInfo)& Value (const Standard_Integer Index)  const;
+ const  Handle(TransferBRep_TransferResultInfo)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(TransferBRep_TransferResultInfo)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(TransferBRep_TransferResultInfo)& I) ;
   
-  Standard_EXPORT     Handle_TransferBRep_TransferResultInfo& ChangeValue(const Standard_Integer Index) ;
-    Handle_TransferBRep_TransferResultInfo& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(TransferBRep_TransferResultInfo)& ChangeValue (const Standard_Integer Index) ;
+  Handle(TransferBRep_TransferResultInfo)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -115,7 +101,7 @@ private:
 
 };
 
-#define SeqItem Handle_TransferBRep_TransferResultInfo
+#define SeqItem Handle(TransferBRep_TransferResultInfo)
 #define SeqItem_hxx <TransferBRep_TransferResultInfo.hxx>
 #define TCollection_SequenceNode TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo
 #define TCollection_SequenceNode_hxx <TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TransferBRep_SequenceOfTransferResultInfo_HeaderFile

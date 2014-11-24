@@ -6,28 +6,14 @@
 #ifndef _StepBasic_HArray1OfProductDefinition_HeaderFile
 #define _StepBasic_HArray1OfProductDefinition_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_HArray1OfProductDefinition_HeaderFile
 #include <Handle_StepBasic_HArray1OfProductDefinition.hxx>
-#endif
 
-#ifndef _StepBasic_Array1OfProductDefinition_HeaderFile
 #include <StepBasic_Array1OfProductDefinition.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinition_HeaderFile
 #include <Handle_StepBasic_ProductDefinition.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class StepBasic_Array1OfProductDefinition;
 
 
 
-class StepBasic_HArray1OfProductDefinition : public MMgt_TShared {
+class StepBasic_HArray1OfProductDefinition : public MMgt_TShared
+{
 
 public:
 
   
-      StepBasic_HArray1OfProductDefinition(const Standard_Integer Low,const Standard_Integer Up);
+    StepBasic_HArray1OfProductDefinition(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepBasic_HArray1OfProductDefinition(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepBasic_ProductDefinition)& V);
+    StepBasic_HArray1OfProductDefinition(const Standard_Integer Low, const Standard_Integer Up, const Handle(StepBasic_ProductDefinition)& V);
   
-        void Init(const Handle(StepBasic_ProductDefinition)& V) ;
+      void Init (const Handle(StepBasic_ProductDefinition)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(StepBasic_ProductDefinition)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(StepBasic_ProductDefinition)& Value) ;
   
-       const Handle_StepBasic_ProductDefinition& Value(const Standard_Integer Index) const;
+     const  Handle(StepBasic_ProductDefinition)& Value (const Standard_Integer Index)  const;
   
-        Handle_StepBasic_ProductDefinition& ChangeValue(const Standard_Integer Index) ;
+      Handle(StepBasic_ProductDefinition)& ChangeValue (const Standard_Integer Index) ;
   
-       const StepBasic_Array1OfProductDefinition& Array1() const;
+     const  StepBasic_Array1OfProductDefinition& Array1()  const;
   
-        StepBasic_Array1OfProductDefinition& ChangeArray1() ;
+      StepBasic_Array1OfProductDefinition& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-StepBasic_Array1OfProductDefinition myArray;
+  StepBasic_Array1OfProductDefinition myArray;
 
 
 };
 
-#define ItemHArray1 Handle_StepBasic_ProductDefinition
+#define ItemHArray1 Handle(StepBasic_ProductDefinition)
 #define ItemHArray1_hxx <StepBasic_ProductDefinition.hxx>
 #define TheArray1 StepBasic_Array1OfProductDefinition
 #define TheArray1_hxx <StepBasic_Array1OfProductDefinition.hxx>
@@ -103,7 +90,6 @@ StepBasic_Array1OfProductDefinition myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_HArray1OfProductDefinition_HeaderFile

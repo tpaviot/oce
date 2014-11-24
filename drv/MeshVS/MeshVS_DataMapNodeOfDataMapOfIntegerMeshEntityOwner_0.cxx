@@ -5,22 +5,12 @@
 
 #include <MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _MeshVS_MeshEntityOwner_HeaderFile
 #include <MeshVS_MeshEntityOwner.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _MeshVS_DataMapOfIntegerMeshEntityOwner_HeaderFile
 #include <MeshVS_DataMapOfIntegerMeshEntityOwner.hxx>
-#endif
-#ifndef _MeshVS_DataMapIteratorOfDataMapOfIntegerMeshEntityOwner_HeaderFile
 #include <MeshVS_DataMapIteratorOfDataMapOfIntegerMeshEntityOwner.hxx>
-#endif
 
  
 
@@ -41,7 +31,7 @@ IMPLEMENT_STANDARD_RTTI(MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner)
 
 #define TheKey Standard_Integer
 #define TheKey_hxx <Standard_Integer.hxx>
-#define TheItem Handle_MeshVS_MeshEntityOwner
+#define TheItem Handle(MeshVS_MeshEntityOwner)
 #define TheItem_hxx <MeshVS_MeshEntityOwner.hxx>
 #define Hasher TColStd_MapIntegerHasher
 #define Hasher_hxx <TColStd_MapIntegerHasher.hxx>

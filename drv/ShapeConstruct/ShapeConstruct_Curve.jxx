@@ -1,27 +1,9 @@
-#ifndef _Geom_Curve_HeaderFile
 #include <Geom_Curve.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Geom2d_Curve_HeaderFile
 #include <Geom2d_Curve.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _Geom_BSplineCurve_HeaderFile
 #include <Geom_BSplineCurve.hxx>
-#endif
-#ifndef _Geom2d_BSplineCurve_HeaderFile
 #include <Geom2d_BSplineCurve.hxx>
-#endif
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _ShapeConstruct_Curve_HeaderFile
 #include <ShapeConstruct_Curve.hxx>
-#endif

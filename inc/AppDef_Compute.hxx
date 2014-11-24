@@ -6,55 +6,23 @@
 #ifndef _AppDef_Compute_HeaderFile
 #define _AppDef_Compute_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _AppParCurves_SequenceOfMultiCurve_HeaderFile
 #include <AppParCurves_SequenceOfMultiCurve.hxx>
-#endif
-#ifndef _AppParCurves_MultiCurve_HeaderFile
 #include <AppParCurves_MultiCurve.hxx>
-#endif
-#ifndef _AppParCurves_MultiBSpCurve_HeaderFile
 #include <AppParCurves_MultiBSpCurve.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Approx_ParametrizationType_HeaderFile
 #include <Approx_ParametrizationType.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Approx_SequenceOfHArray1OfReal_HeaderFile
 #include <Approx_SequenceOfHArray1OfReal.hxx>
-#endif
-#ifndef _TColStd_SequenceOfReal_HeaderFile
 #include <TColStd_SequenceOfReal.hxx>
-#endif
-#ifndef _Handle_AppParCurves_HArray1OfConstraintCouple_HeaderFile
 #include <Handle_AppParCurves_HArray1OfConstraintCouple.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _AppParCurves_Constraint_HeaderFile
 #include <AppParCurves_Constraint.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
 #include <math_Vector.hxx>
-#endif
 class TColStd_HArray1OfReal;
 class AppParCurves_HArray1OfConstraintCouple;
 class AppDef_MultiLine;
@@ -70,48 +38,48 @@ class TColStd_Array1OfReal;
 
 
 
-class AppDef_Compute  {
+class AppDef_Compute 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   AppDef_Compute(const AppDef_MultiLine& Line,const Standard_Integer degreemin = 4,const Standard_Integer degreemax = 8,const Standard_Real Tolerance3d = 1.0e-3,const Standard_Real Tolerance2d = 1.0e-6,const Standard_Integer NbIterations = 5,const Standard_Boolean cutting = Standard_True,const Approx_ParametrizationType parametrization = Approx_ChordLength,const Standard_Boolean Squares = Standard_False);
+  Standard_EXPORT AppDef_Compute(const AppDef_MultiLine& Line, const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-3, const Standard_Real Tolerance2d = 1.0e-6, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Approx_ParametrizationType parametrization = Approx_ChordLength, const Standard_Boolean Squares = Standard_False);
   
-  Standard_EXPORT   AppDef_Compute(const AppDef_MultiLine& Line,const math_Vector& Parameters,const Standard_Integer degreemin = 4,const Standard_Integer degreemax = 8,const Standard_Real Tolerance3d = 1.0e-03,const Standard_Real Tolerance2d = 1.0e-06,const Standard_Integer NbIterations = 5,const Standard_Boolean cutting = Standard_True,const Standard_Boolean Squares = Standard_False);
+  Standard_EXPORT AppDef_Compute(const AppDef_MultiLine& Line, const math_Vector& Parameters, const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-03, const Standard_Real Tolerance2d = 1.0e-06, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Standard_Boolean Squares = Standard_False);
   
-  Standard_EXPORT   AppDef_Compute(const math_Vector& Parameters,const Standard_Integer degreemin = 4,const Standard_Integer degreemax = 8,const Standard_Real Tolerance3d = 1.0e-03,const Standard_Real Tolerance2d = 1.0e-06,const Standard_Integer NbIterations = 5,const Standard_Boolean cutting = Standard_True,const Standard_Boolean Squares = Standard_False);
+  Standard_EXPORT AppDef_Compute(const math_Vector& Parameters, const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-03, const Standard_Real Tolerance2d = 1.0e-06, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Standard_Boolean Squares = Standard_False);
   
-  Standard_EXPORT   AppDef_Compute(const Standard_Integer degreemin = 4,const Standard_Integer degreemax = 8,const Standard_Real Tolerance3d = 1.0e-03,const Standard_Real Tolerance2d = 1.0e-06,const Standard_Integer NbIterations = 5,const Standard_Boolean cutting = Standard_True,const Approx_ParametrizationType parametrization = Approx_ChordLength,const Standard_Boolean Squares = Standard_False);
+  Standard_EXPORT AppDef_Compute(const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-03, const Standard_Real Tolerance2d = 1.0e-06, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Approx_ParametrizationType parametrization = Approx_ChordLength, const Standard_Boolean Squares = Standard_False);
   
-  Standard_EXPORT     void Init(const Standard_Integer degreemin = 4,const Standard_Integer degreemax = 8,const Standard_Real Tolerance3d = 1.0e-03,const Standard_Real Tolerance2d = 1.0e-06,const Standard_Integer NbIterations = 5,const Standard_Boolean cutting = Standard_True,const Approx_ParametrizationType parametrization = Approx_ChordLength,const Standard_Boolean Squares = Standard_False) ;
+  Standard_EXPORT   void Init (const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-03, const Standard_Real Tolerance2d = 1.0e-06, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Approx_ParametrizationType parametrization = Approx_ChordLength, const Standard_Boolean Squares = Standard_False) ;
   
-  Standard_EXPORT     void Perform(const AppDef_MultiLine& Line) ;
+  Standard_EXPORT   void Perform (const AppDef_MultiLine& Line) ;
   
-  Standard_EXPORT     void SetDegrees(const Standard_Integer degreemin,const Standard_Integer degreemax) ;
+  Standard_EXPORT   void SetDegrees (const Standard_Integer degreemin, const Standard_Integer degreemax) ;
   
-  Standard_EXPORT     void SetTolerances(const Standard_Real Tolerance3d,const Standard_Real Tolerance2d) ;
+  Standard_EXPORT   void SetTolerances (const Standard_Real Tolerance3d, const Standard_Real Tolerance2d) ;
   
-  Standard_EXPORT     void SetConstraints(const AppParCurves_Constraint firstC,const AppParCurves_Constraint lastC) ;
+  Standard_EXPORT   void SetConstraints (const AppParCurves_Constraint firstC, const AppParCurves_Constraint lastC) ;
   
-  Standard_EXPORT     Standard_Boolean IsAllApproximated() const;
+  Standard_EXPORT   Standard_Boolean IsAllApproximated()  const;
   
-  Standard_EXPORT     Standard_Boolean IsToleranceReached() const;
+  Standard_EXPORT   Standard_Boolean IsToleranceReached()  const;
   
-  Standard_EXPORT     void Error(const Standard_Integer Index,Standard_Real& tol3d,Standard_Real& tol2d) const;
+  Standard_EXPORT   void Error (const Standard_Integer Index, Standard_Real& tol3d, Standard_Real& tol2d)  const;
   
-  Standard_EXPORT     Standard_Integer NbMultiCurves() const;
+  Standard_EXPORT   Standard_Integer NbMultiCurves()  const;
   
-  Standard_EXPORT    const AppParCurves_MultiCurve& Value(const Standard_Integer Index = 1) const;
+  Standard_EXPORT  const  AppParCurves_MultiCurve& Value (const Standard_Integer Index = 1)  const;
   
-  Standard_EXPORT     AppParCurves_MultiCurve& ChangeValue(const Standard_Integer Index = 1) ;
+  Standard_EXPORT   AppParCurves_MultiCurve& ChangeValue (const Standard_Integer Index = 1) ;
   
-  Standard_EXPORT    const AppParCurves_MultiBSpCurve& SplineValue() ;
+  Standard_EXPORT  const  AppParCurves_MultiBSpCurve& SplineValue() ;
   
-  Standard_EXPORT     void Parametrization(Approx_ParametrizationType& partype) const;
+  Standard_EXPORT   void Parametrization (Approx_ParametrizationType& partype)  const;
   
-  Standard_EXPORT    const TColStd_Array1OfReal& Parameters(const Standard_Integer Index = 1) const;
-
+  Standard_EXPORT  const  TColStd_Array1OfReal& Parameters (const Standard_Integer Index = 1)  const;
 
 
 
@@ -125,46 +93,46 @@ protected:
 private:
 
   
-  Standard_EXPORT     Standard_Boolean Compute(const AppDef_MultiLine& Line,const Standard_Integer fpt,const Standard_Integer lpt,math_Vector& Para,Standard_Real& TheTol3d,Standard_Real& TheTol2d) ;
+  Standard_EXPORT   Standard_Boolean Compute (const AppDef_MultiLine& Line, const Standard_Integer fpt, const Standard_Integer lpt, math_Vector& Para, Standard_Real& TheTol3d, Standard_Real& TheTol2d) ;
   
-  Standard_EXPORT     Standard_Boolean ComputeCurve(const AppDef_MultiLine& Line,const Standard_Integer firspt,const Standard_Integer lastpt) ;
+  Standard_EXPORT   Standard_Boolean ComputeCurve (const AppDef_MultiLine& Line, const Standard_Integer firspt, const Standard_Integer lastpt) ;
   
-  Standard_EXPORT     void Parameters(const AppDef_MultiLine& Line,const Standard_Integer firstP,const Standard_Integer LastP,math_Vector& TheParameters) const;
+  Standard_EXPORT   void Parameters (const AppDef_MultiLine& Line, const Standard_Integer firstP, const Standard_Integer LastP, math_Vector& TheParameters)  const;
   
-  Standard_EXPORT     Standard_Real SearchFirstLambda(const AppDef_MultiLine& Line,const math_Vector& Para,const math_Vector& V,const Standard_Integer index) const;
+  Standard_EXPORT   Standard_Real SearchFirstLambda (const AppDef_MultiLine& Line, const math_Vector& Para, const math_Vector& V, const Standard_Integer index)  const;
   
-  Standard_EXPORT     Standard_Real SearchLastLambda(const AppDef_MultiLine& Line,const math_Vector& Para,const math_Vector& V,const Standard_Integer index) const;
+  Standard_EXPORT   Standard_Real SearchLastLambda (const AppDef_MultiLine& Line, const math_Vector& Para, const math_Vector& V, const Standard_Integer index)  const;
   
-  Standard_EXPORT     void FirstTangencyVector(const AppDef_MultiLine& Line,const Standard_Integer index,math_Vector& V) const;
+  Standard_EXPORT   void FirstTangencyVector (const AppDef_MultiLine& Line, const Standard_Integer index, math_Vector& V)  const;
   
-  Standard_EXPORT     void LastTangencyVector(const AppDef_MultiLine& Line,const Standard_Integer index,math_Vector& V) const;
+  Standard_EXPORT   void LastTangencyVector (const AppDef_MultiLine& Line, const Standard_Integer index, math_Vector& V)  const;
 
 
-AppParCurves_SequenceOfMultiCurve myMultiCurves;
-AppParCurves_MultiCurve TheMultiCurve;
-AppParCurves_MultiBSpCurve myspline;
-Standard_Boolean alldone;
-Standard_Boolean tolreached;
-Approx_ParametrizationType Par;
-Handle_TColStd_HArray1OfReal myParameters;
-Handle_TColStd_HArray1OfReal myfirstParam;
-Approx_SequenceOfHArray1OfReal myPar;
-TColStd_SequenceOfReal Tolers3d;
-TColStd_SequenceOfReal Tolers2d;
-Handle_AppParCurves_HArray1OfConstraintCouple myConstraints;
-Standard_Integer mydegremin;
-Standard_Integer mydegremax;
-Standard_Real mytol3d;
-Standard_Real mytol2d;
-Standard_Real currenttol3d;
-Standard_Real currenttol2d;
-Standard_Boolean mycut;
-Standard_Boolean mysquares;
-Standard_Integer myitermax;
-AppParCurves_Constraint myfirstC;
-AppParCurves_Constraint mylastC;
-Standard_Integer myMultiLineNb;
-Standard_Boolean myIsClear;
+  AppParCurves_SequenceOfMultiCurve myMultiCurves;
+  AppParCurves_MultiCurve TheMultiCurve;
+  AppParCurves_MultiBSpCurve myspline;
+  Standard_Boolean alldone;
+  Standard_Boolean tolreached;
+  Approx_ParametrizationType Par;
+  Handle(TColStd_HArray1OfReal) myParameters;
+  Handle(TColStd_HArray1OfReal) myfirstParam;
+  Approx_SequenceOfHArray1OfReal myPar;
+  TColStd_SequenceOfReal Tolers3d;
+  TColStd_SequenceOfReal Tolers2d;
+  Handle(AppParCurves_HArray1OfConstraintCouple) myConstraints;
+  Standard_Integer mydegremin;
+  Standard_Integer mydegremax;
+  Standard_Real mytol3d;
+  Standard_Real mytol2d;
+  Standard_Real currenttol3d;
+  Standard_Real currenttol2d;
+  Standard_Boolean mycut;
+  Standard_Boolean mysquares;
+  Standard_Integer myitermax;
+  AppParCurves_Constraint myfirstC;
+  AppParCurves_Constraint mylastC;
+  Standard_Integer myMultiLineNb;
+  Standard_Boolean myIsClear;
 
 
 };
@@ -173,7 +141,6 @@ Standard_Boolean myIsClear;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AppDef_Compute_HeaderFile

@@ -6,44 +6,36 @@
 #ifndef _BRepGProp_Cinert_HeaderFile
 #define _BRepGProp_Cinert_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _GProp_GProps_HeaderFile
 #include <GProp_GProps.hxx>
-#endif
 class BRepAdaptor_Curve;
 class gp_Pnt;
 
 
 
-//!  Computes the  global properties of bounded curves <br>
-//!  in 3D space. The curve must have at least a continuity C1. <br>
-//!  It can be a curve as defined in the template CurveTool from <br>
-//!  package GProp. This template gives the minimum of methods <br>
-//!  required to evaluate the global properties of a curve 3D with <br>
-//!  the algorithmes of GProp. <br>
-class BRepGProp_Cinert  : public GProp_GProps {
+//! Computes the  global properties of bounded curves
+//! in 3D space. The curve must have at least a continuity C1.
+//! It can be a curve as defined in the template CurveTool from
+//! package GProp. This template gives the minimum of methods
+//! required to evaluate the global properties of a curve 3D with
+//! the algorithmes of GProp.
+class BRepGProp_Cinert  : public GProp_GProps
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepGProp_Cinert();
+  Standard_EXPORT BRepGProp_Cinert();
   
-  Standard_EXPORT   BRepGProp_Cinert(const BRepAdaptor_Curve& C,const gp_Pnt& CLocation);
+  Standard_EXPORT BRepGProp_Cinert(const BRepAdaptor_Curve& C, const gp_Pnt& CLocation);
   
-  Standard_EXPORT     void SetLocation(const gp_Pnt& CLocation) ;
+  Standard_EXPORT   void SetLocation (const gp_Pnt& CLocation) ;
   
-  Standard_EXPORT     void Perform(const BRepAdaptor_Curve& C) ;
-
+  Standard_EXPORT   void Perform (const BRepAdaptor_Curve& C) ;
 
 
 
@@ -66,7 +58,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepGProp_Cinert_HeaderFile

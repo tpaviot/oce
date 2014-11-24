@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKMath"
-	ProjectGUID="{481C52C3-0B14-14AE-0CE3-956C5CFD422B}"
+	ProjectGUID="{C275F3EC-169E-1314-0AA5-2F1898F7B533}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -248,7 +248,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\math;..\..\..\src\math;..\..\..\drv\ElCLib;..\..\..\src\ElCLib;..\..\..\drv\ElSLib;..\..\..\src\ElSLib;..\..\..\drv\BSplCLib;..\..\..\src\BSplCLib;..\..\..\drv\BSplSLib;..\..\..\src\BSplSLib;..\..\..\drv\PLib;..\..\..\src\PLib;..\..\..\drv\Precision;..\..\..\src\Precision;..\..\..\drv\GeomAbs;..\..\..\src\GeomAbs;..\..\..\drv\Poly;..\..\..\src\Poly;..\..\..\drv\CSLib;..\..\..\src\CSLib;..\..\..\drv\Convert;..\..\..\src\Convert;..\..\..\drv\Bnd;..\..\..\src\Bnd;..\..\..\drv\BVH;..\..\..\src\BVH;..\..\..\drv\gp;..\..\..\src\gp;..\..\..\drv\TColgp;..\..\..\src\TColgp;..\..\..\drv\TopLoc;..\..\..\src\TopLoc;..\..\..\drv\Expr;..\..\..\src\Expr;..\..\..\drv\ExprIntrp;..\..\..\src\ExprIntrp;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__math_DLL;__ElCLib_DLL;__ElSLib_DLL;__BSplCLib_DLL;__BSplSLib_DLL;__PLib_DLL;__Precision_DLL;__GeomAbs_DLL;__Poly_DLL;__CSLib_DLL;__Convert_DLL;__Bnd_DLL;__BVH_DLL;__gp_DLL;__TColgp_DLL;__TopLoc_DLL;__Expr_DLL;__ExprIntrp_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__math_DLL;__ElCLib_DLL;__ElSLib_DLL;__BSplCLib_DLL;__BSplSLib_DLL;__PLib_DLL;__Precision_DLL;__GeomAbs_DLL;__Poly_DLL;__CSLib_DLL;__Convert_DLL;__Bnd_DLL;__BVH_DLL;__gp_DLL;__TColgp_DLL;__TopLoc_DLL;__Expr_DLL;__ExprIntrp_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__math_DLL;__ElCLib_DLL;__ElSLib_DLL;__BSplCLib_DLL;__BSplSLib_DLL;__PLib_DLL;__Precision_DLL;__GeomAbs_DLL;__Poly_DLL;__CSLib_DLL;__Convert_DLL;__Bnd_DLL;__BVH_DLL;__gp_DLL;__TColgp_DLL;__TopLoc_DLL;__Expr_DLL;__ExprIntrp_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__math_DLL;__ElCLib_DLL;__ElSLib_DLL;__BSplCLib_DLL;__BSplSLib_DLL;__PLib_DLL;__Precision_DLL;__GeomAbs_DLL;__Poly_DLL;__CSLib_DLL;__Convert_DLL;__Bnd_DLL;__BVH_DLL;__gp_DLL;__TColgp_DLL;__TopLoc_DLL;__Expr_DLL;__ExprIntrp_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -343,7 +343,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\math;..\..\..\src\math;..\..\..\drv\ElCLib;..\..\..\src\ElCLib;..\..\..\drv\ElSLib;..\..\..\src\ElSLib;..\..\..\drv\BSplCLib;..\..\..\src\BSplCLib;..\..\..\drv\BSplSLib;..\..\..\src\BSplSLib;..\..\..\drv\PLib;..\..\..\src\PLib;..\..\..\drv\Precision;..\..\..\src\Precision;..\..\..\drv\GeomAbs;..\..\..\src\GeomAbs;..\..\..\drv\Poly;..\..\..\src\Poly;..\..\..\drv\CSLib;..\..\..\src\CSLib;..\..\..\drv\Convert;..\..\..\src\Convert;..\..\..\drv\Bnd;..\..\..\src\Bnd;..\..\..\drv\BVH;..\..\..\src\BVH;..\..\..\drv\gp;..\..\..\src\gp;..\..\..\drv\TColgp;..\..\..\src\TColgp;..\..\..\drv\TopLoc;..\..\..\src\TopLoc;..\..\..\drv\Expr;..\..\..\src\Expr;..\..\..\drv\ExprIntrp;..\..\..\src\ExprIntrp;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__math_DLL;__ElCLib_DLL;__ElSLib_DLL;__BSplCLib_DLL;__BSplSLib_DLL;__PLib_DLL;__Precision_DLL;__GeomAbs_DLL;__Poly_DLL;__CSLib_DLL;__Convert_DLL;__Bnd_DLL;__BVH_DLL;__gp_DLL;__TColgp_DLL;__TopLoc_DLL;__Expr_DLL;__ExprIntrp_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__math_DLL;__ElCLib_DLL;__ElSLib_DLL;__BSplCLib_DLL;__BSplSLib_DLL;__PLib_DLL;__Precision_DLL;__GeomAbs_DLL;__Poly_DLL;__CSLib_DLL;__Convert_DLL;__Bnd_DLL;__BVH_DLL;__gp_DLL;__TColgp_DLL;__TopLoc_DLL;__Expr_DLL;__ExprIntrp_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -365,7 +365,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__math_DLL;__ElCLib_DLL;__ElSLib_DLL;__BSplCLib_DLL;__BSplSLib_DLL;__PLib_DLL;__Precision_DLL;__GeomAbs_DLL;__Poly_DLL;__CSLib_DLL;__Convert_DLL;__Bnd_DLL;__BVH_DLL;__gp_DLL;__TColgp_DLL;__TopLoc_DLL;__Expr_DLL;__ExprIntrp_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__math_DLL;__ElCLib_DLL;__ElSLib_DLL;__BSplCLib_DLL;__BSplSLib_DLL;__PLib_DLL;__Precision_DLL;__GeomAbs_DLL;__Poly_DLL;__CSLib_DLL;__Convert_DLL;__Bnd_DLL;__BVH_DLL;__gp_DLL;__TColgp_DLL;__TopLoc_DLL;__Expr_DLL;__ExprIntrp_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"

@@ -5,21 +5,13 @@
 
 #include <AIS_SequenceOfInteractive.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _AIS_InteractiveObject_HeaderFile
 #include <AIS_InteractiveObject.hxx>
-#endif
-#ifndef _AIS_SequenceNodeOfSequenceOfInteractive_HeaderFile
 #include <AIS_SequenceNodeOfSequenceOfInteractive.hxx>
-#endif
  
 
-#define SeqItem Handle_AIS_InteractiveObject
+#define SeqItem Handle(AIS_InteractiveObject)
 #define SeqItem_hxx <AIS_InteractiveObject.hxx>
 #define TCollection_SequenceNode AIS_SequenceNodeOfSequenceOfInteractive
 #define TCollection_SequenceNode_hxx <AIS_SequenceNodeOfSequenceOfInteractive.hxx>

@@ -6,22 +6,12 @@
 #ifndef _IntTools_DataMapIteratorOfDataMapOfCurveSampleBox_HeaderFile
 #define _IntTools_DataMapIteratorOfDataMapOfCurveSampleBox_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox_HeaderFile
 #include <Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox.hxx>
-#endif
 class Standard_NoSuchObject;
 class IntTools_CurveRangeSample;
 class Bnd_Box;
@@ -31,22 +21,22 @@ class IntTools_DataMapNodeOfDataMapOfCurveSampleBox;
 
 
 
-class IntTools_DataMapIteratorOfDataMapOfCurveSampleBox  : public TCollection_BasicMapIterator {
+class IntTools_DataMapIteratorOfDataMapOfCurveSampleBox  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntTools_DataMapIteratorOfDataMapOfCurveSampleBox();
+  Standard_EXPORT IntTools_DataMapIteratorOfDataMapOfCurveSampleBox();
   
-  Standard_EXPORT   IntTools_DataMapIteratorOfDataMapOfCurveSampleBox(const IntTools_DataMapOfCurveSampleBox& aMap);
+  Standard_EXPORT IntTools_DataMapIteratorOfDataMapOfCurveSampleBox(const IntTools_DataMapOfCurveSampleBox& aMap);
   
-  Standard_EXPORT     void Initialize(const IntTools_DataMapOfCurveSampleBox& aMap) ;
+  Standard_EXPORT   void Initialize (const IntTools_DataMapOfCurveSampleBox& aMap) ;
   
-  Standard_EXPORT    const IntTools_CurveRangeSample& Key() const;
+  Standard_EXPORT  const  IntTools_CurveRangeSample& Key()  const;
   
-  Standard_EXPORT    const Bnd_Box& Value() const;
-
+  Standard_EXPORT  const  Bnd_Box& Value()  const;
 
 
 
@@ -69,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_DataMapIteratorOfDataMapOfCurveSampleBox_HeaderFile

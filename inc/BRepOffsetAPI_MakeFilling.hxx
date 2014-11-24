@@ -6,34 +6,16 @@
 #ifndef _BRepOffsetAPI_MakeFilling_HeaderFile
 #define _BRepOffsetAPI_MakeFilling_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepFill_Filling_HeaderFile
 #include <BRepFill_Filling.hxx>
-#endif
-#ifndef _BRepBuilderAPI_MakeShape_HeaderFile
 #include <BRepBuilderAPI_MakeShape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
 class StdFail_NotDone;
 class Standard_OutOfRange;
 class Standard_ConstructionError;
@@ -44,165 +26,184 @@ class TopTools_ListOfShape;
 class TopoDS_Shape;
 
 
-//! N-Side Filling <br>
-//!  This algorithm avoids to build a face from: <br>
-//!  * a set of edges defining the bounds of the face and some <br>
-//!    constraints the surface of the face has to satisfy <br>
-//!  * a set of edges and points defining some constraints <br>
-//!    the support surface has to satisfy <br>
-//!  * an initial surface to deform for satisfying the constraints <br>
-//!  * a set of parameters to control the constraints. <br>
-//! <br>
-//!  The support surface of the face is computed by deformation <br>
-//!  of the initial surface in order to satisfy the given constraints. <br>
-//!  The set of bounding edges defines the wire of the face. <br>
-//! <br>
-//!  If no initial surface is given, the algorithm computes it <br>
-//!  automatically. <br>
-//!  If the set of edges is not connected (Free constraint) <br>
-//!  missing edges are automatically computed. <br>
-//! <br>
-//!  Limitations: <br>
-//!  * If some constraints are not compatible <br>
-//!    The algorithm does not take them into account. <br>
-//!    So the constraints will not be satisfyed in an area containing <br>
-//!    the incompatibilitries. <br>
-//!  * The constraints defining the bound of the face have to be <br>
-//!    entered in order to have a continuous wire. <br>
-//! <br>
-//!  Other Applications: <br>
-//!  * Deformation of a face to satisfy internal constraints <br>
-//!  * Deformation of a face to improve Gi continuity with <br>
-//!    connected faces <br>
-class BRepOffsetAPI_MakeFilling  : public BRepBuilderAPI_MakeShape {
+//! N-Side Filling
+//! This algorithm avoids to build a face from:
+//! * a set of edges defining the bounds of the face and some
+//! constraints the surface of the face has to satisfy
+//! * a set of edges and points defining some constraints
+//! the support surface has to satisfy
+//! * an initial surface to deform for satisfying the constraints
+//! * a set of parameters to control the constraints.
+//!
+//! The support surface of the face is computed by deformation
+//! of the initial surface in order to satisfy the given constraints.
+//! The set of bounding edges defines the wire of the face.
+//!
+//! If no initial surface is given, the algorithm computes it
+//! automatically.
+//! If the set of edges is not connected (Free constraint)
+//! missing edges are automatically computed.
+//!
+//! Limitations:
+//! * If some constraints are not compatible
+//! The algorithm does not take them into account.
+//! So the constraints will not be satisfyed in an area containing
+//! the incompatibilitries.
+//! * The constraints defining the bound of the face have to be
+//! entered in order to have a continuous wire.
+//!
+//! Other Applications:
+//! * Deformation of a face to satisfy internal constraints
+//! * Deformation of a face to improve Gi continuity with
+//! connected faces
+class BRepOffsetAPI_MakeFilling  : public BRepBuilderAPI_MakeShape
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Constructs a wire filling object defined by <br>
-//! - the energy minimizing criterion Degree <br>
-//! - the number of points on the curve NbPntsOnCur <br>
-//! - the number of iterations NbIter <br>
-//! - the Boolean Anisotropie <br>
-//! - the 2D tolerance Tol2d <br>
-//! - the 3D tolerance Tol3d <br>
-//! - the angular tolerance TolAng <br>
-//! - the tolerance for curvature TolCur <br>
-//! - the highest polynomial degree MaxDeg <br>
-//! - the greatest number of segments MaxSeg. <br>
-//! If the Boolean Anistropie is true, the algorithm's <br>
-//! performance is better in cases where the ratio of the <br>
-//! length U and the length V indicate a great difference <br>
-//! between the two. In other words, when the surface is, for <br>
-//! example, extremely long. <br>
-  Standard_EXPORT   BRepOffsetAPI_MakeFilling(const Standard_Integer Degree = 3,const Standard_Integer NbPtsOnCur = 15,const Standard_Integer NbIter = 2,const Standard_Boolean Anisotropie = Standard_False,const Standard_Real Tol2d = 0.00001,const Standard_Real Tol3d = 0.0001,const Standard_Real TolAng = 0.01,const Standard_Real TolCurv = 0.1,const Standard_Integer MaxDeg = 8,const Standard_Integer MaxSegments = 9);
-  //! Sets the values of Tolerances used to control the constraint. <br>
-//!	Tol2d: <br>
-//!	Tol3d:   it is the maximum distance allowed between the support surface <br>
-//!	         and the constraints <br>
-//!	TolAng:  it is the maximum angle allowed between the normal of the surface <br>
-//!	         and the constraints <br>
-//!	TolCurv: it is the maximum difference of curvature allowed between <br>
-//!	         the surface and the constraint <br>
-  Standard_EXPORT     void SetConstrParam(const Standard_Real Tol2d = 0.00001,const Standard_Real Tol3d = 0.0001,const Standard_Real TolAng = 0.01,const Standard_Real TolCurv = 0.1) ;
-  //! Sets the parameters used for resolution. <br>
-//!	The default values of these parameters have been chosen for a good <br>
-//!	ratio quality/performance. <br>
-//!	Degree:      it is the order of energy criterion to minimize for computing <br>
-//!	             the deformation of the surface. <br>
-//!	             The default value is 3 <br>
-//!	             The recommanded value is i+2 where i is the maximum order of the <br>
-//!	             constraints. <br>
-//!	NbPtsOnCur:  it is the average number of points for discretisation <br>
-//!	             of the edges. <br>
-//!	NbIter:      it is the maximum number of iterations of the process. <br>
-//!	             For each iteration the number of discretisation points is <br>
-//!	             increased. <br>
-//!	Anisotropie: <br>
-  Standard_EXPORT     void SetResolParam(const Standard_Integer Degree = 3,const Standard_Integer NbPtsOnCur = 15,const Standard_Integer NbIter = 2,const Standard_Boolean Anisotropie = Standard_False) ;
-  //! Sets the parameters used to approximate the filling <br>
-//! surface. These include: <br>
-//! - MaxDeg - the highest degree which the polynomial <br>
-//!   defining the filling surface can have <br>
-//! - MaxSegments - the greatest number of segments <br>
-//!   which the filling surface can have. <br>
-  Standard_EXPORT     void SetApproxParam(const Standard_Integer MaxDeg = 8,const Standard_Integer MaxSegments = 9) ;
-  //! Loads the initial surface Surf to <br>
-//! begin the construction of the surface. <br>
-//! This optional function is useful if the surface resulting from <br>
-//! construction for the algorithm is likely to be complex. <br>
-//! The support surface of the face under construction is computed by a <br>
-//! deformation of Surf which satisfies the given constraints. <br>
-//! The set of bounding edges defines the wire of the face. <br>
-//! If no initial surface is given, the algorithm computes it <br>
-//! automatically. If the set of edges is not connected (Free constraint), <br>
-//! missing edges are automatically computed. <br>
-//! Important: the initial surface must have orthogonal local coordinates, <br>
-//! i.e. partial derivatives dS/du and dS/dv must be orthogonal <br>
-//! at each point of surface. <br>
-//! If this condition breaks, distortions of resulting surface <br>
-//! are possible. <br>
-  Standard_EXPORT     void LoadInitSurface(const TopoDS_Face& Surf) ;
-  //! Adds a new constraint which also defines an edge of the wire <br>
-//!	        of the face <br>
-//!	Order: Order of the constraint: <br>
-//!	       GeomAbs_C0 : the surface has to pass by 3D representation <br>
-//!	                    of the edge <br>
-//!	       GeomAbs_G1 : the surface has to pass by 3D representation <br>
-//!	                    of the edge and to respect tangency with the first <br>
-//!	                    face of the edge <br>
-//!	       GeomAbs_G2 : the surface has to pass by 3D representation <br>
-//!	                    of the edge and to respect tangency and curvature <br>
-//!	                    with the first face of the edge. <br>
-//!  Raises ConstructionError if the edge has no representation on a face and Order is <br>
-//! GeomAbs_G1 or GeomAbs_G2. <br>
-  Standard_EXPORT     Standard_Integer Add(const TopoDS_Edge& Constr,const GeomAbs_Shape Order,const Standard_Boolean IsBound = Standard_True) ;
-  //! Adds a new constraint which also defines an edge of the wire <br>
-//!	        of the face <br>
-//!	Order: Order of the constraint: <br>
-//!	       GeomAbs_C0 : the surface has to pass by 3D representation <br>
-//!	                    of the edge <br>
-//!	       GeomAbs_G1 : the surface has to pass by 3D representation <br>
-//!	                    of the edge and to respect tangency with the <br>
-//!	                    given face <br>
-//!	       GeomAbs_G2 : the surface has to pass by 3D representation <br>
-//!	                    of the edge and to respect tangency and curvature <br>
-//!                    with the given face. <br>
-//! Raises ConstructionError if the edge has no 2d representation on the given face <br>
-  Standard_EXPORT     Standard_Integer Add(const TopoDS_Edge& Constr,const TopoDS_Face& Support,const GeomAbs_Shape Order,const Standard_Boolean IsBound = Standard_True) ;
-  //! Adds a free constraint on a face. The corresponding edge has to <br>
-//!	be automatically recomputed. It is always a bound. <br>
-  Standard_EXPORT     Standard_Integer Add(const TopoDS_Face& Support,const GeomAbs_Shape Order) ;
-  //! Adds a punctual constraint. <br>
-  Standard_EXPORT     Standard_Integer Add(const gp_Pnt& Point) ;
-  //! Adds a punctual constraint. <br>
-  Standard_EXPORT     Standard_Integer Add(const Standard_Real U,const Standard_Real V,const TopoDS_Face& Support,const GeomAbs_Shape Order) ;
-  //! Builds the resulting faces <br>
-  Standard_EXPORT   virtual  void Build() ;
-  //! Tests whether computation of the filling plate has been completed. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsDone() const;
-  //! Returns the list of shapes generated from the <br>
-//!          shape <S>. <br>
-  Standard_EXPORT   virtual const TopTools_ListOfShape& Generated(const TopoDS_Shape& S) ;
-  //! Returns the maximum distance between the result and <br>
-//! the constraints. This is set at construction time. <br>
-  Standard_EXPORT     Standard_Real G0Error() const;
-  //! Returns the maximum angle between the result and the <br>
-//! constraints. This is set at construction time. <br>
-  Standard_EXPORT     Standard_Real G1Error() const;
-  //! Returns the maximum angle between the result and the <br>
-//! constraints. This is set at construction time. <br>
-  Standard_EXPORT     Standard_Real G2Error() const;
-  //! Returns the maximum distance attained between the <br>
-//! result and the constraint Index. This is set at construction time. <br>
-  Standard_EXPORT     Standard_Real G0Error(const Standard_Integer Index) ;
-  //! Returns the maximum angle between the result and the <br>
-//! constraints. This is set at construction time. <br>
-  Standard_EXPORT     Standard_Real G1Error(const Standard_Integer Index) ;
-  //! Returns the greatest difference in curvature found <br>
-//! between the result and the constraint Index. <br>
-  Standard_EXPORT     Standard_Real G2Error(const Standard_Integer Index) ;
-
+  
+  //! Constructs a wire filling object defined by
+  //! - the energy minimizing criterion Degree
+  //! - the number of points on the curve NbPntsOnCur
+  //! - the number of iterations NbIter
+  //! - the Boolean Anisotropie
+  //! - the 2D tolerance Tol2d
+  //! - the 3D tolerance Tol3d
+  //! - the angular tolerance TolAng
+  //! - the tolerance for curvature TolCur
+  //! - the highest polynomial degree MaxDeg
+  //! - the greatest number of segments MaxSeg.
+  //! If the Boolean Anistropie is true, the algorithm's
+  //! performance is better in cases where the ratio of the
+  //! length U and the length V indicate a great difference
+  //! between the two. In other words, when the surface is, for
+  //! example, extremely long.
+  Standard_EXPORT BRepOffsetAPI_MakeFilling(const Standard_Integer Degree = 3, const Standard_Integer NbPtsOnCur = 15, const Standard_Integer NbIter = 2, const Standard_Boolean Anisotropie = Standard_False, const Standard_Real Tol2d = 0.00001, const Standard_Real Tol3d = 0.0001, const Standard_Real TolAng = 0.01, const Standard_Real TolCurv = 0.1, const Standard_Integer MaxDeg = 8, const Standard_Integer MaxSegments = 9);
+  
+  //! Sets the values of Tolerances used to control the constraint.
+  //! Tol2d:
+  //! Tol3d:   it is the maximum distance allowed between the support surface
+  //! and the constraints
+  //! TolAng:  it is the maximum angle allowed between the normal of the surface
+  //! and the constraints
+  //! TolCurv: it is the maximum difference of curvature allowed between
+  //! the surface and the constraint
+  Standard_EXPORT   void SetConstrParam (const Standard_Real Tol2d = 0.00001, const Standard_Real Tol3d = 0.0001, const Standard_Real TolAng = 0.01, const Standard_Real TolCurv = 0.1) ;
+  
+  //! Sets the parameters used for resolution.
+  //! The default values of these parameters have been chosen for a good
+  //! ratio quality/performance.
+  //! Degree:      it is the order of energy criterion to minimize for computing
+  //! the deformation of the surface.
+  //! The default value is 3
+  //! The recommanded value is i+2 where i is the maximum order of the
+  //! constraints.
+  //! NbPtsOnCur:  it is the average number of points for discretisation
+  //! of the edges.
+  //! NbIter:      it is the maximum number of iterations of the process.
+  //! For each iteration the number of discretisation points is
+  //! increased.
+  //! Anisotropie:
+  Standard_EXPORT   void SetResolParam (const Standard_Integer Degree = 3, const Standard_Integer NbPtsOnCur = 15, const Standard_Integer NbIter = 2, const Standard_Boolean Anisotropie = Standard_False) ;
+  
+  //! Sets the parameters used to approximate the filling
+  //! surface. These include:
+  //! - MaxDeg - the highest degree which the polynomial
+  //! defining the filling surface can have
+  //! - MaxSegments - the greatest number of segments
+  //! which the filling surface can have.
+  Standard_EXPORT   void SetApproxParam (const Standard_Integer MaxDeg = 8, const Standard_Integer MaxSegments = 9) ;
+  
+  //! Loads the initial surface Surf to
+  //! begin the construction of the surface.
+  //! This optional function is useful if the surface resulting from
+  //! construction for the algorithm is likely to be complex.
+  //! The support surface of the face under construction is computed by a
+  //! deformation of Surf which satisfies the given constraints.
+  //! The set of bounding edges defines the wire of the face.
+  //! If no initial surface is given, the algorithm computes it
+  //! automatically. If the set of edges is not connected (Free constraint),
+  //! missing edges are automatically computed.
+  //! Important: the initial surface must have orthogonal local coordinates,
+  //! i.e. partial derivatives dS/du and dS/dv must be orthogonal
+  //! at each point of surface.
+  //! If this condition breaks, distortions of resulting surface
+  //! are possible.
+  Standard_EXPORT   void LoadInitSurface (const TopoDS_Face& Surf) ;
+  
+  //! Adds a new constraint which also defines an edge of the wire
+  //! of the face
+  //! Order: Order of the constraint:
+  //! GeomAbs_C0 : the surface has to pass by 3D representation
+  //! of the edge
+  //! GeomAbs_G1 : the surface has to pass by 3D representation
+  //! of the edge and to respect tangency with the first
+  //! face of the edge
+  //! GeomAbs_G2 : the surface has to pass by 3D representation
+  //! of the edge and to respect tangency and curvature
+  //! with the first face of the edge.
+  //! Raises ConstructionError if the edge has no representation on a face and Order is
+  //! GeomAbs_G1 or GeomAbs_G2.
+  Standard_EXPORT   Standard_Integer Add (const TopoDS_Edge& Constr, const GeomAbs_Shape Order, const Standard_Boolean IsBound = Standard_True) ;
+  
+  //! Adds a new constraint which also defines an edge of the wire
+  //! of the face
+  //! Order: Order of the constraint:
+  //! GeomAbs_C0 : the surface has to pass by 3D representation
+  //! of the edge
+  //! GeomAbs_G1 : the surface has to pass by 3D representation
+  //! of the edge and to respect tangency with the
+  //! given face
+  //! GeomAbs_G2 : the surface has to pass by 3D representation
+  //! of the edge and to respect tangency and curvature
+  //! with the given face.
+  //! Raises ConstructionError if the edge has no 2d representation on the given face
+  Standard_EXPORT   Standard_Integer Add (const TopoDS_Edge& Constr, const TopoDS_Face& Support, const GeomAbs_Shape Order, const Standard_Boolean IsBound = Standard_True) ;
+  
+  //! Adds a free constraint on a face. The corresponding edge has to
+  //! be automatically recomputed. It is always a bound.
+  Standard_EXPORT   Standard_Integer Add (const TopoDS_Face& Support, const GeomAbs_Shape Order) ;
+  
+  //! Adds a punctual constraint.
+  Standard_EXPORT   Standard_Integer Add (const gp_Pnt& Point) ;
+  
+  //! Adds a punctual constraint.
+  Standard_EXPORT   Standard_Integer Add (const Standard_Real U, const Standard_Real V, const TopoDS_Face& Support, const GeomAbs_Shape Order) ;
+  
+  //! Builds the resulting faces
+  Standard_EXPORT virtual   void Build() ;
+  
+  //! Tests whether computation of the filling plate has been completed.
+  Standard_EXPORT virtual   Standard_Boolean IsDone()  const;
+  
+  //! Returns the list of shapes generated from the
+  //! shape <S>.
+  Standard_EXPORT virtual  const  TopTools_ListOfShape& Generated (const TopoDS_Shape& S) ;
+  
+  //! Returns the maximum distance between the result and
+  //! the constraints. This is set at construction time.
+  Standard_EXPORT   Standard_Real G0Error()  const;
+  
+  //! Returns the maximum angle between the result and the
+  //! constraints. This is set at construction time.
+  Standard_EXPORT   Standard_Real G1Error()  const;
+  
+  //! Returns the maximum angle between the result and the
+  //! constraints. This is set at construction time.
+  Standard_EXPORT   Standard_Real G2Error()  const;
+  
+  //! Returns the maximum distance attained between the
+  //! result and the constraint Index. This is set at construction time.
+  Standard_EXPORT   Standard_Real G0Error (const Standard_Integer Index) ;
+  
+  //! Returns the maximum angle between the result and the
+  //! constraints. This is set at construction time.
+  Standard_EXPORT   Standard_Real G1Error (const Standard_Integer Index) ;
+  
+  //! Returns the greatest difference in curvature found
+  //! between the result and the constraint Index.
+  Standard_EXPORT   Standard_Real G2Error (const Standard_Integer Index) ;
 
 
 
@@ -217,7 +218,7 @@ private:
 
 
 
-BRepFill_Filling myFilling;
+  BRepFill_Filling myFilling;
 
 
 };
@@ -226,7 +227,6 @@ BRepFill_Filling myFilling;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepOffsetAPI_MakeFilling_HeaderFile

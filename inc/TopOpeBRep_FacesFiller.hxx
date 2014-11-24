@@ -6,73 +6,29 @@
 #ifndef _TopOpeBRep_FacesFiller_HeaderFile
 #define _TopOpeBRep_FacesFiller_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
-#ifndef _TopOpeBRep_PFacesIntersector_HeaderFile
 #include <TopOpeBRep_PFacesIntersector.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_HDataStructure_HeaderFile
 #include <Handle_TopOpeBRepDS_HDataStructure.hxx>
-#endif
-#ifndef _TopOpeBRepDS_PDataStructure_HeaderFile
 #include <TopOpeBRepDS_PDataStructure.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopOpeBRep_PLineInter_HeaderFile
 #include <TopOpeBRep_PLineInter.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Transition_HeaderFile
 #include <TopOpeBRepDS_Transition.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _TopOpeBRepDS_ListOfInterference_HeaderFile
 #include <TopOpeBRepDS_ListOfInterference.hxx>
-#endif
-#ifndef _TopOpeBRep_PointClassifier_HeaderFile
 #include <TopOpeBRep_PointClassifier.hxx>
-#endif
-#ifndef _TopOpeBRepTool_PShapeClassifier_HeaderFile
 #include <TopOpeBRepTool_PShapeClassifier.hxx>
-#endif
-#ifndef _Handle_TopOpeBRep_FFDumper_HeaderFile
 #include <Handle_TopOpeBRep_FFDumper.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Kind_HeaderFile
 #include <TopOpeBRepDS_Kind.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_Interference_HeaderFile
 #include <Handle_TopOpeBRepDS_Interference.hxx>
-#endif
-#ifndef _TopAbs_State_HeaderFile
 #include <TopAbs_State.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TopOpeBRepDS_HDataStructure;
 class TopOpeBRep_FFDumper;
 class TopoDS_Shape;
@@ -92,149 +48,178 @@ class gp_Pnt;
 class TopOpeBRepDS_DataStructure;
 
 
-//! Fills a DataStructure from TopOpeBRepDS with the result <br>
-//! of Face/Face instersection described by FacesIntersector from TopOpeBRep. <br>
-//! if the faces have same Domain, record it in the DS. <br>
-//! else record lines and  points and attach list of interferences <br>
-//! to the faces, the lines and the edges. <br>
-class TopOpeBRep_FacesFiller  {
+//! Fills a DataStructure from TopOpeBRepDS with the result
+//! of Face/Face instersection described by FacesIntersector from TopOpeBRep.
+//! if the faces have same Domain, record it in the DS.
+//! else record lines and  points and attach list of interferences
+//! to the faces, the lines and the edges.
+class TopOpeBRep_FacesFiller 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRep_FacesFiller();
-  //! Stores in <DS> the intersections of <S1> and <S2>. <br>
-  Standard_EXPORT     void Insert(const TopoDS_Shape& F1,const TopoDS_Shape& F2,TopOpeBRep_FacesIntersector& FACINT,const Handle(TopOpeBRepDS_HDataStructure)& HDS) ;
+  Standard_EXPORT TopOpeBRep_FacesFiller();
   
-  Standard_EXPORT     void ProcessSectionEdges() ;
+  //! Stores in <DS> the intersections of <S1> and <S2>.
+  Standard_EXPORT   void Insert (const TopoDS_Shape& F1, const TopoDS_Shape& F2, TopOpeBRep_FacesIntersector& FACINT, const Handle(TopOpeBRepDS_HDataStructure)& HDS) ;
   
-  Standard_EXPORT     TopOpeBRep_PointClassifier& ChangePointClassifier() ;
-  //! return field myPShapeClassifier. <br>
-  Standard_EXPORT     TopOpeBRepTool_PShapeClassifier PShapeClassifier() const;
-  //! set field myPShapeClassifier. <br>
-  Standard_EXPORT     void SetPShapeClassifier(const TopOpeBRepTool_PShapeClassifier& PSC) ;
+  Standard_EXPORT   void ProcessSectionEdges() ;
   
-  Standard_EXPORT     void LoadLine(TopOpeBRep_LineInter& L) ;
+  Standard_EXPORT   TopOpeBRep_PointClassifier& ChangePointClassifier() ;
   
-  Standard_EXPORT     Standard_Boolean CheckLine(TopOpeBRep_LineInter& L) const;
-  //! compute position of VPoints of lines <br>
-  Standard_EXPORT     void VP_Position(TopOpeBRep_FacesIntersector& FACINT) ;
-  //! compute position of VPoints of line L <br>
-  Standard_EXPORT     void VP_Position(TopOpeBRep_LineInter& L) ;
-  //! compute position of VPoints of non-restriction line L. <br>
-  Standard_EXPORT     void VP_PositionOnL(TopOpeBRep_LineInter& L) ;
-  //! compute position of VPoints of restriction line L. <br>
-  Standard_EXPORT     void VP_PositionOnR(TopOpeBRep_LineInter& L) ;
-  //! compute position of VP with current faces, <br>
-//!          according to VP.ShapeIndex() . <br>
-  Standard_EXPORT     void VP_Position(TopOpeBRep_VPointInter& VP,TopOpeBRep_VPointInterClassifier& VPC) ;
-  //! Process current intersection line (set by LoadLine) <br>
-  Standard_EXPORT     void ProcessLine() ;
+  //! return field myPShapeClassifier.
+  Standard_EXPORT   TopOpeBRepTool_PShapeClassifier PShapeClassifier()  const;
   
-  Standard_EXPORT     void ResetDSC() ;
-  //! Process current restriction line, adding restriction edge <br>
-//!          and computing face/edge interference. <br>
-  Standard_EXPORT     void ProcessRLine() ;
-  //!  VP processing for restriction  line  and line sharing <br>
-//!           same domain with  section edges : <br>
-//!            - if restriction : <br>
-//!            Adds restriction edges as  section edges and compute <br>
-//!           face/edge  interference. <br>
-//!            - if  same domain : <br>
-//!            If line share same domain  with section edges, compute <br>
-//!           parts of line IN/IN the two faces, and compute curve/point <br>
-//!           interference for VP boundaries. <br>
-  Standard_EXPORT     void FillLineVPonR() ;
+  //! set field myPShapeClassifier.
+  Standard_EXPORT   void SetPShapeClassifier (const TopOpeBRepTool_PShapeClassifier& PSC) ;
   
-  Standard_EXPORT     void FillLine() ;
-  //! compute 3d curve, pcurves and face/curve interferences <br>
-//!          for current NDSC. Add them to the DS. <br>
-  Standard_EXPORT     void AddShapesLine() ;
-  //! Get map <mapES > of restriction edges having parts IN one <br>
-//!          of the 2 faces. <br>
-  Standard_EXPORT     void GetESL(TopTools_ListOfShape& LES) ;
-  //! calling the followings ProcessVPIonR and ProcessVPonR. <br>
-  Standard_EXPORT     void ProcessVPR(TopOpeBRep_FacesFiller& FF,const TopOpeBRep_VPointInter& VP) ;
-  //! processing ProcessVPonR for VPI. <br>
-  Standard_EXPORT     void ProcessVPIonR(TopOpeBRep_VPointInterIterator& VPI,const TopOpeBRepDS_Transition& trans1,const TopoDS_Shape& F1,const Standard_Integer ShapeIndex) ;
-  //! adds <VP>'s   geometric   point (if not   stored)  and <br>
-//!          computes (curve or edge)/(point or vertex) interference. <br>
-  Standard_EXPORT     void ProcessVPonR(const TopOpeBRep_VPointInter& VP,const TopOpeBRepDS_Transition& trans1,const TopoDS_Shape& F1,const Standard_Integer ShapeIndex) ;
-  //! VP processing on closing arc. <br>
-  Standard_EXPORT     void ProcessVPonclosingR(const TopOpeBRep_VPointInter& VP,const TopoDS_Shape& F1,const Standard_Integer ShapeIndex,const TopOpeBRepDS_Transition& transEdge,const TopOpeBRepDS_Kind PVKind,const Standard_Integer PVIndex,const Standard_Boolean EPIfound,const Handle(TopOpeBRepDS_Interference)& IEPI) ;
-  //! VP processing on degenerated arc. <br>
-  Standard_EXPORT     Standard_Boolean ProcessVPondgE(const TopOpeBRep_VPointInter& VP,const Standard_Integer ShapeIndex,TopOpeBRepDS_Kind& PVKind,Standard_Integer& PVIndex,Standard_Boolean& EPIfound,Handle(TopOpeBRepDS_Interference)& IEPI,Standard_Boolean& CPIfound,Handle(TopOpeBRepDS_Interference)& ICPI) ;
-  //! processing ProcessVPnotonR for VPI. <br>
-  Standard_EXPORT     void ProcessVPInotonR(TopOpeBRep_VPointInterIterator& VPI) ;
-  //! adds <VP>'s  geometrical point to the DS (if not stored) <br>
-//!          and computes curve point interference. <br>
-  Standard_EXPORT     void ProcessVPnotonR(const TopOpeBRep_VPointInter& VP) ;
+  Standard_EXPORT   void LoadLine (TopOpeBRep_LineInter& L) ;
   
-//! Get the geometry of a DS point <DSP>. <br>
-//! Search for it with ScanInterfList (previous method). <br>
-//! if found, set <G> to the geometry of the interference found. <br>
-//! else, add the point <DSP> in the <DS> and set <G> to the <br>
-//! value of the new geometry such created. <br>
-//! returns the value of ScanInterfList(). <br>
-  Standard_EXPORT     Standard_Boolean GetGeometry(TopOpeBRepDS_ListIteratorOfListOfInterference& IT,const TopOpeBRep_VPointInter& VP,Standard_Integer& G,TopOpeBRepDS_Kind& K) ;
+  Standard_EXPORT   Standard_Boolean CheckLine (TopOpeBRep_LineInter& L)  const;
   
-  Standard_EXPORT     Standard_Integer MakeGeometry(const TopOpeBRep_VPointInter& VP,const Standard_Integer ShapeIndex,TopOpeBRepDS_Kind& K) ;
+  //! compute position of VPoints of lines
+  Standard_EXPORT   void VP_Position (TopOpeBRep_FacesIntersector& FACINT) ;
   
-//! Add interference <I> to list myDSCIL. <br>
-//! on a given line, at first call, add a new DS curve. <br>
-  Standard_EXPORT     void StoreCurveInterference(const Handle(TopOpeBRepDS_Interference)& I) ;
-  //! search for G = geometry of Point which is identical to <DSP> <br>
-//!          among the DS Points created in the CURRENT face/face <br>
-//!          intersection ( current Insert() call). <br>
-  Standard_EXPORT     Standard_Boolean GetFFGeometry(const TopOpeBRepDS_Point& DSP,TopOpeBRepDS_Kind& K,Standard_Integer& G) const;
-  //! search for G = geometry of Point which is identical to <VP> <br>
-//!          among the DS Points created in the CURRENT face/face <br>
-//!          intersection ( current Insert() call). <br>
-  Standard_EXPORT     Standard_Boolean GetFFGeometry(const TopOpeBRep_VPointInter& VP,TopOpeBRepDS_Kind& K,Standard_Integer& G) const;
+  //! compute position of VPoints of line L
+  Standard_EXPORT   void VP_Position (TopOpeBRep_LineInter& L) ;
   
-  Standard_EXPORT     TopOpeBRep_FacesIntersector& ChangeFacesIntersector() ;
+  //! compute position of VPoints of non-restriction line L.
+  Standard_EXPORT   void VP_PositionOnL (TopOpeBRep_LineInter& L) ;
   
-  Standard_EXPORT     Handle_TopOpeBRepDS_HDataStructure HDataStructure() ;
+  //! compute position of VPoints of restriction line L.
+  Standard_EXPORT   void VP_PositionOnR (TopOpeBRep_LineInter& L) ;
   
-  Standard_EXPORT     TopOpeBRepDS_DataStructure& ChangeDataStructure() ;
+  //! compute position of VP with current faces,
+  //! according to VP.ShapeIndex() .
+  Standard_EXPORT   void VP_Position (TopOpeBRep_VPointInter& VP, TopOpeBRep_VPointInterClassifier& VPC) ;
   
-  Standard_EXPORT    const TopoDS_Face& Face(const Standard_Integer I) const;
+  //! Process current intersection line (set by LoadLine)
+  Standard_EXPORT   void ProcessLine() ;
   
-  Standard_EXPORT    const TopOpeBRepDS_Transition& FaceFaceTransition(const TopOpeBRep_LineInter& L,const Standard_Integer I) const;
+  Standard_EXPORT   void ResetDSC() ;
   
-  Standard_EXPORT    const TopOpeBRepDS_Transition& FaceFaceTransition(const Standard_Integer I) const;
+  //! Process current restriction line, adding restriction edge
+  //! and computing face/edge interference.
+  Standard_EXPORT   void ProcessRLine() ;
   
-  Standard_EXPORT     TopOpeBRep_PFacesIntersector PFacesIntersectorDummy() const;
+  //! VP processing for restriction  line  and line sharing
+  //! same domain with  section edges :
+  //! - if restriction :
+  //! Adds restriction edges as  section edges and compute
+  //! face/edge  interference.
+  //! - if  same domain :
+  //! If line share same domain  with section edges, compute
+  //! parts of line IN/IN the two faces, and compute curve/point
+  //! interference for VP boundaries.
+  Standard_EXPORT   void FillLineVPonR() ;
   
-  Standard_EXPORT     TopOpeBRepDS_PDataStructure PDataStructureDummy() const;
+  Standard_EXPORT   void FillLine() ;
   
-  Standard_EXPORT     TopOpeBRep_PLineInter PLineInterDummy() const;
+  //! compute 3d curve, pcurves and face/curve interferences
+  //! for current NDSC. Add them to the DS.
+  Standard_EXPORT   void AddShapesLine() ;
   
-  Standard_EXPORT     void SetTraceIndex(const Standard_Integer exF1,const Standard_Integer exF2) ;
+  //! Get map <mapES > of restriction edges having parts IN one
+  //! of the 2 faces.
+  Standard_EXPORT   void GetESL (TopTools_ListOfShape& LES) ;
   
-  Standard_EXPORT     void GetTraceIndex(Standard_Integer& exF1,Standard_Integer& exF2) const;
-  //! Computes <pmin> and <pmax> the upper and lower bounds of <L> <br>
-//!          enclosing all vpoints. <br>
-  Standard_EXPORT   static  void Lminmax(const TopOpeBRep_LineInter& L,Standard_Real& pmin,Standard_Real& pmax) ;
-  //! Returns <True> if <L> shares a same geometric domain with <br>
-//!          at least one of the section edges of <ERL>. <br>
-  Standard_EXPORT   static  Standard_Boolean LSameDomainERL(const TopOpeBRep_LineInter& L,const TopTools_ListOfShape& ERL) ;
-  //! Computes the transition <T> of the VPoint <iVP> on the edge <br>
-//!          of <SI12>. Returns <False> if the status is unknown. <br>
-  Standard_EXPORT   static  Standard_Boolean IsVPtransLok(const TopOpeBRep_LineInter& L,const Standard_Integer iVP,const Standard_Integer SI12,TopOpeBRepDS_Transition& T) ;
-  //! Computes   transition   on line for  VP<iVP>   on edge <br>
-//!          restriction of <SI>.  If <isINOUT>  :  returns <true> if <br>
-//!          transition computed is IN/OUT else : returns <true> if <br>
-//!          transition computed is OUT/IN. <br>
-  Standard_EXPORT   static  Standard_Boolean TransvpOK(const TopOpeBRep_LineInter& L,const Standard_Integer iVP,const Standard_Integer SI,const Standard_Boolean isINOUT) ;
-  //! Returns parameter u of vp on the restriction edge. <br>
-  Standard_EXPORT   static  Standard_Real VPParamOnER(const TopOpeBRep_VPointInter& vp,const TopOpeBRep_LineInter& Lrest) ;
+  //! calling the followings ProcessVPIonR and ProcessVPonR.
+  Standard_EXPORT   void ProcessVPR (TopOpeBRep_FacesFiller& FF, const TopOpeBRep_VPointInter& VP) ;
   
-  Standard_EXPORT   static  Standard_Boolean EqualpPonR(const TopOpeBRep_LineInter& Lrest,const TopOpeBRep_VPointInter& VP1,const TopOpeBRep_VPointInter& VP2) ;
+  //! processing ProcessVPonR for VPI.
+  Standard_EXPORT   void ProcessVPIonR (TopOpeBRep_VPointInterIterator& VPI, const TopOpeBRepDS_Transition& trans1, const TopoDS_Shape& F1, const Standard_Integer ShapeIndex) ;
   
-  Standard_EXPORT   static  Standard_Boolean EqualpP(const TopOpeBRep_LineInter& L,const Standard_Integer iVP1,const Standard_Integer iVP2) ;
+  //! adds <VP>'s   geometric   point (if not   stored)  and
+  //! computes (curve or edge)/(point or vertex) interference.
+  Standard_EXPORT   void ProcessVPonR (const TopOpeBRep_VPointInter& VP, const TopOpeBRepDS_Transition& trans1, const TopoDS_Shape& F1, const Standard_Integer ShapeIndex) ;
+  
+  //! VP processing on closing arc.
+  Standard_EXPORT   void ProcessVPonclosingR (const TopOpeBRep_VPointInter& VP, const TopoDS_Shape& F1, const Standard_Integer ShapeIndex, const TopOpeBRepDS_Transition& transEdge, const TopOpeBRepDS_Kind PVKind, const Standard_Integer PVIndex, const Standard_Boolean EPIfound, const Handle(TopOpeBRepDS_Interference)& IEPI) ;
+  
+  //! VP processing on degenerated arc.
+  Standard_EXPORT   Standard_Boolean ProcessVPondgE (const TopOpeBRep_VPointInter& VP, const Standard_Integer ShapeIndex, TopOpeBRepDS_Kind& PVKind, Standard_Integer& PVIndex, Standard_Boolean& EPIfound, Handle(TopOpeBRepDS_Interference)& IEPI, Standard_Boolean& CPIfound, Handle(TopOpeBRepDS_Interference)& ICPI) ;
+  
+  //! processing ProcessVPnotonR for VPI.
+  Standard_EXPORT   void ProcessVPInotonR (TopOpeBRep_VPointInterIterator& VPI) ;
+  
+  //! adds <VP>'s  geometrical point to the DS (if not stored)
+  //! and computes curve point interference.
+  Standard_EXPORT   void ProcessVPnotonR (const TopOpeBRep_VPointInter& VP) ;
+  
 
+  //! Get the geometry of a DS point <DSP>.
+  //! Search for it with ScanInterfList (previous method).
+  //! if found, set <G> to the geometry of the interference found.
+  //! else, add the point <DSP> in the <DS> and set <G> to the
+  //! value of the new geometry such created.
+  //! returns the value of ScanInterfList().
+  Standard_EXPORT   Standard_Boolean GetGeometry (TopOpeBRepDS_ListIteratorOfListOfInterference& IT, const TopOpeBRep_VPointInter& VP, Standard_Integer& G, TopOpeBRepDS_Kind& K) ;
+  
+  Standard_EXPORT   Standard_Integer MakeGeometry (const TopOpeBRep_VPointInter& VP, const Standard_Integer ShapeIndex, TopOpeBRepDS_Kind& K) ;
+  
+
+  //! Add interference <I> to list myDSCIL.
+  //! on a given line, at first call, add a new DS curve.
+  Standard_EXPORT   void StoreCurveInterference (const Handle(TopOpeBRepDS_Interference)& I) ;
+  
+  //! search for G = geometry of Point which is identical to <DSP>
+  //! among the DS Points created in the CURRENT face/face
+  //! intersection ( current Insert() call).
+  Standard_EXPORT   Standard_Boolean GetFFGeometry (const TopOpeBRepDS_Point& DSP, TopOpeBRepDS_Kind& K, Standard_Integer& G)  const;
+  
+  //! search for G = geometry of Point which is identical to <VP>
+  //! among the DS Points created in the CURRENT face/face
+  //! intersection ( current Insert() call).
+  Standard_EXPORT   Standard_Boolean GetFFGeometry (const TopOpeBRep_VPointInter& VP, TopOpeBRepDS_Kind& K, Standard_Integer& G)  const;
+  
+  Standard_EXPORT   TopOpeBRep_FacesIntersector& ChangeFacesIntersector() ;
+  
+  Standard_EXPORT   Handle(TopOpeBRepDS_HDataStructure) HDataStructure() ;
+  
+  Standard_EXPORT   TopOpeBRepDS_DataStructure& ChangeDataStructure() ;
+  
+  Standard_EXPORT  const  TopoDS_Face& Face (const Standard_Integer I)  const;
+  
+  Standard_EXPORT  const  TopOpeBRepDS_Transition& FaceFaceTransition (const TopOpeBRep_LineInter& L, const Standard_Integer I)  const;
+  
+  Standard_EXPORT  const  TopOpeBRepDS_Transition& FaceFaceTransition (const Standard_Integer I)  const;
+  
+  Standard_EXPORT   TopOpeBRep_PFacesIntersector PFacesIntersectorDummy()  const;
+  
+  Standard_EXPORT   TopOpeBRepDS_PDataStructure PDataStructureDummy()  const;
+  
+  Standard_EXPORT   TopOpeBRep_PLineInter PLineInterDummy()  const;
+  
+  Standard_EXPORT   void SetTraceIndex (const Standard_Integer exF1, const Standard_Integer exF2) ;
+  
+  Standard_EXPORT   void GetTraceIndex (Standard_Integer& exF1, Standard_Integer& exF2)  const;
+  
+  //! Computes <pmin> and <pmax> the upper and lower bounds of <L>
+  //! enclosing all vpoints.
+  Standard_EXPORT static   void Lminmax (const TopOpeBRep_LineInter& L, Standard_Real& pmin, Standard_Real& pmax) ;
+  
+  //! Returns <True> if <L> shares a same geometric domain with
+  //! at least one of the section edges of <ERL>.
+  Standard_EXPORT static   Standard_Boolean LSameDomainERL (const TopOpeBRep_LineInter& L, const TopTools_ListOfShape& ERL) ;
+  
+  //! Computes the transition <T> of the VPoint <iVP> on the edge
+  //! of <SI12>. Returns <False> if the status is unknown.
+  Standard_EXPORT static   Standard_Boolean IsVPtransLok (const TopOpeBRep_LineInter& L, const Standard_Integer iVP, const Standard_Integer SI12, TopOpeBRepDS_Transition& T) ;
+  
+  //! Computes   transition   on line for  VP<iVP>   on edge
+  //! restriction of <SI>.  If <isINOUT>  :  returns <true> if
+  //! transition computed is IN/OUT else : returns <true> if
+  //! transition computed is OUT/IN.
+  Standard_EXPORT static   Standard_Boolean TransvpOK (const TopOpeBRep_LineInter& L, const Standard_Integer iVP, const Standard_Integer SI, const Standard_Boolean isINOUT) ;
+  
+  //! Returns parameter u of vp on the restriction edge.
+  Standard_EXPORT static   Standard_Real VPParamOnER (const TopOpeBRep_VPointInter& vp, const TopOpeBRep_LineInter& Lrest) ;
+  
+  Standard_EXPORT static   Standard_Boolean EqualpPonR (const TopOpeBRep_LineInter& Lrest, const TopOpeBRep_VPointInter& VP1, const TopOpeBRep_VPointInter& VP2) ;
+  
+  Standard_EXPORT static   Standard_Boolean EqualpP (const TopOpeBRep_LineInter& L, const Standard_Integer iVP1, const Standard_Integer iVP2) ;
 
 
 
@@ -248,45 +233,48 @@ protected:
 private:
 
   
-  Standard_EXPORT     Standard_Boolean KeepRLine(const TopOpeBRep_LineInter& Lrest,const Standard_Boolean checkkeep) const;
+  Standard_EXPORT   Standard_Boolean KeepRLine (const TopOpeBRep_LineInter& Lrest, const Standard_Boolean checkkeep)  const;
   
-  Standard_EXPORT     TopOpeBRepDS_Transition GetEdgeTrans(const TopOpeBRep_VPointInter& VP,const TopOpeBRepDS_Kind PVKind,const Standard_Integer PVIndex,const Standard_Integer Sind,const TopoDS_Face& F) ;
-  //! If <VP>'s index != 3, calls a classifier to determine <br>
-//!          <VP>'s state on the face. <br>
-  Standard_EXPORT     TopAbs_State StateVPonFace(const TopOpeBRep_VPointInter& VP) const;
-  //! <VP> is of geometry <P>. <br>
-//!          Looks after a   VPoint on RESTRICTION <Lrest>  with <br>
-//!          geometric value  <P>. If true, updates states ON for <VP>. <br>
-  Standard_EXPORT     Standard_Boolean PequalVPonR(const gp_Pnt& P3D,const Standard_Integer VPshapeindex,TopOpeBRep_VPointInter& VP,TopOpeBRep_LineInter& Lrest) const;
-  //! Classifies (VPf, VPl) middle point on restriction edge <br>
-  Standard_EXPORT     TopAbs_State StBipVPonF(const TopOpeBRep_VPointInter& IVPf,const TopOpeBRep_VPointInter& IVPl,const TopOpeBRep_LineInter& Lrest,const Standard_Boolean isonedge1) const;
+  Standard_EXPORT   TopOpeBRepDS_Transition GetEdgeTrans (const TopOpeBRep_VPointInter& VP, const TopOpeBRepDS_Kind PVKind, const Standard_Integer PVIndex, const Standard_Integer Sind, const TopoDS_Face& F) ;
+  
+  //! If <VP>'s index != 3, calls a classifier to determine
+  //! <VP>'s state on the face.
+  Standard_EXPORT   TopAbs_State StateVPonFace (const TopOpeBRep_VPointInter& VP)  const;
+  
+  //! <VP> is of geometry <P>.
+  //! Looks after a   VPoint on RESTRICTION <Lrest>  with
+  //! geometric value  <P>. If true, updates states ON for <VP>.
+  Standard_EXPORT   Standard_Boolean PequalVPonR (const gp_Pnt& P3D, const Standard_Integer VPshapeindex, TopOpeBRep_VPointInter& VP, TopOpeBRep_LineInter& Lrest)  const;
+  
+  //! Classifies (VPf, VPl) middle point on restriction edge
+  Standard_EXPORT   TopAbs_State StBipVPonF (const TopOpeBRep_VPointInter& IVPf, const TopOpeBRep_VPointInter& IVPl, const TopOpeBRep_LineInter& Lrest, const Standard_Boolean isonedge1)  const;
 
 
-TopoDS_Face myF1;
-TopoDS_Face myF2;
-TopAbs_Orientation myF1ori;
-TopAbs_Orientation myF2ori;
-TopOpeBRep_PFacesIntersector myFacesIntersector;
-Handle_TopOpeBRepDS_HDataStructure myHDS;
-TopOpeBRepDS_PDataStructure myDS;
-Standard_Integer myFFfirstDSP;
-TopOpeBRep_PLineInter myLine;
-Standard_Boolean myLineOK;
-Standard_Boolean myLineINL;
-TopOpeBRepDS_Transition myLineTonF1;
-TopOpeBRepDS_Transition myLineTonF2;
-Standard_Boolean myLineIsonEdge;
-TopTools_ListOfShape myERL;
-TopTools_DataMapOfShapeListOfShape myDataforDegenEd;
-Standard_Boolean myLastVPison0;
-Standard_Boolean mykeptVPnbr;
-Standard_Integer myDSCIndex;
-TopOpeBRepDS_ListOfInterference myDSCIL;
-TopOpeBRep_PointClassifier myPointClassifier;
-TopOpeBRepTool_PShapeClassifier myPShapeClassifier;
-Standard_Integer myexF1;
-Standard_Integer myexF2;
-Handle_TopOpeBRep_FFDumper myHFFD;
+  TopoDS_Face myF1;
+  TopoDS_Face myF2;
+  TopAbs_Orientation myF1ori;
+  TopAbs_Orientation myF2ori;
+  TopOpeBRep_PFacesIntersector myFacesIntersector;
+  Handle(TopOpeBRepDS_HDataStructure) myHDS;
+  TopOpeBRepDS_PDataStructure myDS;
+  Standard_Integer myFFfirstDSP;
+  TopOpeBRep_PLineInter myLine;
+  Standard_Boolean myLineOK;
+  Standard_Boolean myLineINL;
+  TopOpeBRepDS_Transition myLineTonF1;
+  TopOpeBRepDS_Transition myLineTonF2;
+  Standard_Boolean myLineIsonEdge;
+  TopTools_ListOfShape myERL;
+  TopTools_DataMapOfShapeListOfShape myDataforDegenEd;
+  Standard_Boolean myLastVPison0;
+  Standard_Boolean mykeptVPnbr;
+  Standard_Integer myDSCIndex;
+  TopOpeBRepDS_ListOfInterference myDSCIL;
+  TopOpeBRep_PointClassifier myPointClassifier;
+  TopOpeBRepTool_PShapeClassifier myPShapeClassifier;
+  Standard_Integer myexF1;
+  Standard_Integer myexF2;
+  Handle(TopOpeBRep_FFDumper) myHFFD;
 
 
 };
@@ -295,7 +283,6 @@ Handle_TopOpeBRep_FFDumper myHFFD;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRep_FacesFiller_HeaderFile

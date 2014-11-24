@@ -5,22 +5,12 @@
 
 #include <PColgp_SeqNodeOfHSequenceOfXYZ.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _PColgp_SeqNodeOfHSequenceOfXYZ_HeaderFile
 #include <PColgp_SeqNodeOfHSequenceOfXYZ.hxx>
-#endif
-#ifndef _PColgp_HSequenceOfXYZ_HeaderFile
 #include <PColgp_HSequenceOfXYZ.hxx>
-#endif
-#ifndef _PColgp_SeqExplorerOfHSequenceOfXYZ_HeaderFile
 #include <PColgp_SeqExplorerOfHSequenceOfXYZ.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
 
  
 

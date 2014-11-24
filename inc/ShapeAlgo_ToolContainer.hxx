@@ -6,40 +6,32 @@
 #ifndef _ShapeAlgo_ToolContainer_HeaderFile
 #define _ShapeAlgo_ToolContainer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeAlgo_ToolContainer_HeaderFile
 #include <Handle_ShapeAlgo_ToolContainer.hxx>
-#endif
 
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_ShapeFix_Shape_HeaderFile
 #include <Handle_ShapeFix_Shape.hxx>
-#endif
-#ifndef _Handle_ShapeFix_EdgeProjAux_HeaderFile
 #include <Handle_ShapeFix_EdgeProjAux.hxx>
-#endif
 class ShapeFix_Shape;
 class ShapeFix_EdgeProjAux;
 
 
-//!  Returns tools used by AlgoContainer <br>
-class ShapeAlgo_ToolContainer : public MMgt_TShared {
+//! Returns tools used by AlgoContainer
+class ShapeAlgo_ToolContainer : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   ShapeAlgo_ToolContainer();
-  //! Returns ShapeFix_Shape <br>
-  Standard_EXPORT   virtual  Handle_ShapeFix_Shape FixShape() const;
-  //! Returns ShapeFix_EdgeProjAux <br>
-  Standard_EXPORT   virtual  Handle_ShapeFix_EdgeProjAux EdgeProjAux() const;
+  
+  //! Empty constructor
+  Standard_EXPORT ShapeAlgo_ToolContainer();
+  
+  //! Returns ShapeFix_Shape
+  Standard_EXPORT virtual   Handle(ShapeFix_Shape) FixShape()  const;
+  
+  //! Returns ShapeFix_EdgeProjAux
+  Standard_EXPORT virtual   Handle(ShapeFix_EdgeProjAux) EdgeProjAux()  const;
 
 
 
@@ -62,7 +54,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeAlgo_ToolContainer_HeaderFile

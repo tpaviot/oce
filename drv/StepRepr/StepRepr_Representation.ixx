@@ -5,9 +5,7 @@
 
 #include <StepRepr_Representation.jxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
 
  

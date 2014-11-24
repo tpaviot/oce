@@ -5,21 +5,13 @@
 
 #include <TColGeom_SequenceOfSurface.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Geom_Surface_HeaderFile
 #include <Geom_Surface.hxx>
-#endif
-#ifndef _TColGeom_SequenceNodeOfSequenceOfSurface_HeaderFile
 #include <TColGeom_SequenceNodeOfSequenceOfSurface.hxx>
-#endif
  
 
-#define SeqItem Handle_Geom_Surface
+#define SeqItem Handle(Geom_Surface)
 #define SeqItem_hxx <Geom_Surface.hxx>
 #define TCollection_SequenceNode TColGeom_SequenceNodeOfSequenceOfSurface
 #define TCollection_SequenceNode_hxx <TColGeom_SequenceNodeOfSequenceOfSurface.hxx>

@@ -6,69 +6,63 @@
 #ifndef _Interface_FileParameter_HeaderFile
 #define _Interface_FileParameter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Interface_ParamType_HeaderFile
 #include <Interface_ParamType.hxx>
-#endif
-#ifndef _Standard_PCharacter_HeaderFile
 #include <Standard_PCharacter.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
 class TCollection_AsciiString;
 
 
-//! Auxiliary class to store a litteral parameter in a file <br>
-//!           intermediate directory or in an UndefinedContent : a reference <br>
-//!           type Parameter detains an Integer which is used to address a <br>
-//!           record in the directory. <br>
-//!           FileParameter is intended to be stored in a ParamSet : hence <br>
-//!           memory management is performed by ParamSet, which calls Clear <br>
-//!           to work, while the Destructor (see Destroy) does nothing. <br>
-//!           Also a FileParameter can be read for consultation only, not to <br>
-//!           be read from a Structure to be included into another one. <br>
-class Interface_FileParameter  {
+//! Auxiliary class to store a litteral parameter in a file
+//! intermediate directory or in an UndefinedContent : a reference
+//! type Parameter detains an Integer which is used to address a
+//! record in the directory.
+//! FileParameter is intended to be stored in a ParamSet : hence
+//! memory management is performed by ParamSet, which calls Clear
+//! to work, while the Destructor (see Destroy) does nothing.
+//! Also a FileParameter can be read for consultation only, not to
+//! be read from a Structure to be included into another one.
+class Interface_FileParameter 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Interface_FileParameter();
-  //! Fills fields (with Entity Number set to zero) <br>
-  Standard_EXPORT     void Init(const TCollection_AsciiString& val,const Interface_ParamType typ) ;
-  //! Same as above, but builds the Value from a CString <br>
-  Standard_EXPORT     void Init(const Standard_CString val,const Interface_ParamType typ) ;
-  //! Same as above, but as a CString (for immediate exploitation) <br>
-//! was C++ : return const <br>
-  Standard_EXPORT     Standard_CString CValue() const;
-  //! Returns the type of the parameter <br>
-  Standard_EXPORT     Interface_ParamType ParamType() const;
-  //! Allows to set a reference to an Entity in a numbered list <br>
-  Standard_EXPORT     void SetEntityNumber(const Standard_Integer num) ;
-  //! Returns value set by SetEntityNumber <br>
-  Standard_EXPORT     Standard_Integer EntityNumber() const;
-  //! Clears stored data : frees memory taken for the String Value <br>
-  Standard_EXPORT     void Clear() ;
-  //! Destructor. Does nothing because Memory is managed by ParamSet <br>
-  Standard_EXPORT     void Destroy() ;
+  Standard_EXPORT Interface_FileParameter();
+  
+  //! Fills fields (with Entity Number set to zero)
+  Standard_EXPORT   void Init (const TCollection_AsciiString& val, const Interface_ParamType typ) ;
+  
+  //! Same as above, but builds the Value from a CString
+  Standard_EXPORT   void Init (const Standard_CString val, const Interface_ParamType typ) ;
+  
+  //! Same as above, but as a CString (for immediate exploitation)
+  //! was C++ : return const
+  Standard_EXPORT   Standard_CString CValue()  const;
+  
+  //! Returns the type of the parameter
+  Standard_EXPORT   Interface_ParamType ParamType()  const;
+  
+  //! Allows to set a reference to an Entity in a numbered list
+  Standard_EXPORT   void SetEntityNumber (const Standard_Integer num) ;
+  
+  //! Returns value set by SetEntityNumber
+  Standard_EXPORT   Standard_Integer EntityNumber()  const;
+  
+  //! Clears stored data : frees memory taken for the String Value
+  Standard_EXPORT   void Clear() ;
+  
+  //! Destructor. Does nothing because Memory is managed by ParamSet
+  Standard_EXPORT   void Destroy() ;
 ~Interface_FileParameter()
 {
   Destroy();
 }
-
 
 
 
@@ -83,9 +77,9 @@ private:
 
 
 
-Interface_ParamType thetype;
-Standard_PCharacter theval;
-Standard_Integer thenum;
+  Interface_ParamType thetype;
+  Standard_PCharacter theval;
+  Standard_Integer thenum;
 
 
 };
@@ -94,7 +88,6 @@ Standard_Integer thenum;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Interface_FileParameter_HeaderFile

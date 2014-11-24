@@ -6,52 +6,39 @@
 #ifndef _AdvApprox_PrefAndRec_HeaderFile
 #define _AdvApprox_PrefAndRec_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _AdvApprox_Cutting_HeaderFile
 #include <AdvApprox_Cutting.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_DomainError;
 class TColStd_Array1OfReal;
 
 
 
-//! inherits class Cutting; contains a list of preferential points (pi)i <br>
-//! and a list of Recommended points used in cutting management. <br>
-//! if Cutting is necessary in [a,b], we cut at the di nearest from (a+b)/2 <br>
-class AdvApprox_PrefAndRec  : public AdvApprox_Cutting {
+//! inherits class Cutting; contains a list of preferential points (pi)i
+//! and a list of Recommended points used in cutting management.
+//! if Cutting is necessary in [a,b], we cut at the di nearest from (a+b)/2
+class AdvApprox_PrefAndRec  : public AdvApprox_Cutting
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   AdvApprox_PrefAndRec(const TColStd_Array1OfReal& RecomendedCut,const TColStd_Array1OfReal& PrefferedCut,const Standard_Real Weight = 5);
+  Standard_EXPORT AdvApprox_PrefAndRec(const TColStd_Array1OfReal& RecomendedCut, const TColStd_Array1OfReal& PrefferedCut, const Standard_Real Weight = 5);
   
-//!     cuting value is <br>
-//!    - the recommended point nerest of (a+b)/2 <br>
-//!      if pi is in ]a,b[ or else <br>
-//!   -  the preferential point nearest of (a+b) / 2 <br>
-//!     if pi is in ](r*a+b)/(r+1) , (a+r*b)/(r+1)[ where r = Weight <br>
-//!   -  or (a+b)/2 else. <br>
-  Standard_EXPORT   virtual  Standard_Boolean Value(const Standard_Real a,const Standard_Real b,Standard_Real& cuttingvalue) const;
 
+  //! cuting value is
+  //! - the recommended point nerest of (a+b)/2
+  //! if pi is in ]a,b[ or else
+  //! -  the preferential point nearest of (a+b) / 2
+  //! if pi is in ](r*a+b)/(r+1) , (a+r*b)/(r+1)[ where r = Weight
+  //! -  or (a+b)/2 else.
+  Standard_EXPORT virtual   Standard_Boolean Value (const Standard_Real a, const Standard_Real b, Standard_Real& cuttingvalue)  const;
 
 
 
@@ -66,9 +53,9 @@ private:
 
 
 
-TColStd_Array1OfReal myRecCutting;
-TColStd_Array1OfReal myPrefCutting;
-Standard_Real myWeight;
+  TColStd_Array1OfReal myRecCutting;
+  TColStd_Array1OfReal myPrefCutting;
+  Standard_Real myWeight;
 
 
 };
@@ -77,7 +64,6 @@ Standard_Real myWeight;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AdvApprox_PrefAndRec_HeaderFile

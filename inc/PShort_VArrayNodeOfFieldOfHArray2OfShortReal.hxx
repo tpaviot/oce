@@ -6,44 +6,31 @@
 #ifndef _PShort_VArrayNodeOfFieldOfHArray2OfShortReal_HeaderFile
 #define _PShort_VArrayNodeOfFieldOfHArray2OfShortReal_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PShort_VArrayNodeOfFieldOfHArray2OfShortReal_HeaderFile
 #include <Handle_PShort_VArrayNodeOfFieldOfHArray2OfShortReal.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
-#endif
-#ifndef _PStandard_ArrayNode_HeaderFile
 #include <PStandard_ArrayNode.hxx>
-#endif
 class PShort_FieldOfHArray2OfShortReal;
 class PShort_VArrayTNodeOfFieldOfHArray2OfShortReal;
 
 
-class PShort_VArrayNodeOfFieldOfHArray2OfShortReal : public PStandard_ArrayNode {
+class PShort_VArrayNodeOfFieldOfHArray2OfShortReal : public PStandard_ArrayNode
+{
 
 public:
 
   
-  Standard_EXPORT   PShort_VArrayNodeOfFieldOfHArray2OfShortReal();
+  Standard_EXPORT PShort_VArrayNodeOfFieldOfHArray2OfShortReal();
   
-  Standard_EXPORT   PShort_VArrayNodeOfFieldOfHArray2OfShortReal(const Standard_ShortReal& aValue);
+  Standard_EXPORT PShort_VArrayNodeOfFieldOfHArray2OfShortReal(const Standard_ShortReal& aValue);
   
-  Standard_EXPORT     void SetValue(const Standard_ShortReal& aValue) ;
+  Standard_EXPORT   void SetValue (const Standard_ShortReal& aValue) ;
   
-  Standard_EXPORT     Standard_Address Value() const;
+  Standard_EXPORT   Standard_Address Value()  const;
 
 PShort_VArrayNodeOfFieldOfHArray2OfShortReal(const Storage_stCONSTclCOM& a) : PStandard_ArrayNode(a)
 {
@@ -64,7 +51,7 @@ protected:
 private: 
 
 
-Standard_ShortReal myValue;
+  Standard_ShortReal myValue;
 
 
 };
@@ -73,7 +60,6 @@ Standard_ShortReal myValue;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PShort_VArrayNodeOfFieldOfHArray2OfShortReal_HeaderFile

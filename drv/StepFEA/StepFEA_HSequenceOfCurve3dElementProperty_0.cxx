@@ -5,22 +5,12 @@
 
 #include <StepFEA_HSequenceOfCurve3dElementProperty.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StepFEA_Curve3dElementProperty_HeaderFile
 #include <StepFEA_Curve3dElementProperty.hxx>
-#endif
-#ifndef _StepFEA_SequenceOfCurve3dElementProperty_HeaderFile
 #include <StepFEA_SequenceOfCurve3dElementProperty.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(StepFEA_HSequenceOfCurve3dElementProperty,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(StepFEA_HSequenceOfCurve3dElementProperty)
 
 
-#define Item Handle_StepFEA_Curve3dElementProperty
+#define Item Handle(StepFEA_Curve3dElementProperty)
 #define Item_hxx <StepFEA_Curve3dElementProperty.hxx>
 #define TheSequence StepFEA_SequenceOfCurve3dElementProperty
 #define TheSequence_hxx <StepFEA_SequenceOfCurve3dElementProperty.hxx>

@@ -6,25 +6,13 @@
 #ifndef _StepVisual_HArray1OfBoxCharacteristicSelect_HeaderFile
 #define _StepVisual_HArray1OfBoxCharacteristicSelect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_HArray1OfBoxCharacteristicSelect_HeaderFile
 #include <Handle_StepVisual_HArray1OfBoxCharacteristicSelect.hxx>
-#endif
 
-#ifndef _StepVisual_Array1OfBoxCharacteristicSelect_HeaderFile
 #include <StepVisual_Array1OfBoxCharacteristicSelect.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class StepVisual_Array1OfBoxCharacteristicSelect;
 
 
 
-class StepVisual_HArray1OfBoxCharacteristicSelect : public MMgt_TShared {
+class StepVisual_HArray1OfBoxCharacteristicSelect : public MMgt_TShared
+{
 
 public:
 
   
-      StepVisual_HArray1OfBoxCharacteristicSelect(const Standard_Integer Low,const Standard_Integer Up);
+    StepVisual_HArray1OfBoxCharacteristicSelect(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepVisual_HArray1OfBoxCharacteristicSelect(const Standard_Integer Low,const Standard_Integer Up,const StepVisual_BoxCharacteristicSelect& V);
+    StepVisual_HArray1OfBoxCharacteristicSelect(const Standard_Integer Low, const Standard_Integer Up, const StepVisual_BoxCharacteristicSelect& V);
   
-        void Init(const StepVisual_BoxCharacteristicSelect& V) ;
+      void Init (const StepVisual_BoxCharacteristicSelect& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const StepVisual_BoxCharacteristicSelect& Value) ;
+      void SetValue (const Standard_Integer Index, const StepVisual_BoxCharacteristicSelect& Value) ;
   
-       const StepVisual_BoxCharacteristicSelect& Value(const Standard_Integer Index) const;
+     const  StepVisual_BoxCharacteristicSelect& Value (const Standard_Integer Index)  const;
   
-        StepVisual_BoxCharacteristicSelect& ChangeValue(const Standard_Integer Index) ;
+      StepVisual_BoxCharacteristicSelect& ChangeValue (const Standard_Integer Index) ;
   
-       const StepVisual_Array1OfBoxCharacteristicSelect& Array1() const;
+     const  StepVisual_Array1OfBoxCharacteristicSelect& Array1()  const;
   
-        StepVisual_Array1OfBoxCharacteristicSelect& ChangeArray1() ;
+      StepVisual_Array1OfBoxCharacteristicSelect& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-StepVisual_Array1OfBoxCharacteristicSelect myArray;
+  StepVisual_Array1OfBoxCharacteristicSelect myArray;
 
 
 };
@@ -100,7 +89,6 @@ StepVisual_Array1OfBoxCharacteristicSelect myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_HArray1OfBoxCharacteristicSelect_HeaderFile

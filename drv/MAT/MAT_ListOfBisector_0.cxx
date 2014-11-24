@@ -5,16 +5,10 @@
 
 #include <MAT_ListOfBisector.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _MAT_TListNodeOfListOfBisector_HeaderFile
 #include <MAT_TListNodeOfListOfBisector.hxx>
-#endif
-#ifndef _MAT_Bisector_HeaderFile
 #include <MAT_Bisector.hxx>
-#endif
 
  
 
@@ -32,7 +26,7 @@ IMPLEMENT_DOWNCAST(MAT_ListOfBisector,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(MAT_ListOfBisector)
 
 
-#define Item Handle_MAT_Bisector
+#define Item Handle(MAT_Bisector)
 #define Item_hxx <MAT_Bisector.hxx>
 #define MAT_TListNode MAT_TListNodeOfListOfBisector
 #define MAT_TListNode_hxx <MAT_TListNodeOfListOfBisector.hxx>

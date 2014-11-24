@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0102151104B90D4E11540C61"
+               BlueprintIdentifier = "0C8218E90D580A7C0ECF08C3"
                BuildableName = "libTKFillet.dylib"
                BlueprintName = "TKFillet"
                ReferencedContainer = "container:TKFillet.xcodeproj">

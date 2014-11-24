@@ -1,9 +1,3 @@
-#ifndef _StepAP214_HArray1OfPresentedItemSelect_HeaderFile
 #include <StepAP214_HArray1OfPresentedItemSelect.hxx>
-#endif
-#ifndef _StepAP214_PresentedItemSelect_HeaderFile
 #include <StepAP214_PresentedItemSelect.hxx>
-#endif
-#ifndef _StepAP214_AppliedPresentedItem_HeaderFile
 #include <StepAP214_AppliedPresentedItem.hxx>
-#endif

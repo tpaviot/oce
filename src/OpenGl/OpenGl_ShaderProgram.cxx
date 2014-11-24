@@ -24,6 +24,7 @@
 #include <OpenGl_Context.hxx>
 #include <OpenGl_ShaderProgram.hxx>
 #include <OpenGl_ShaderManager.hxx>
+#include <OpenGl_ArbTexBindless.hxx>
 
 IMPLEMENT_STANDARD_HANDLE (OpenGl_ShaderProgram, OpenGl_Resource)
 IMPLEMENT_STANDARD_RTTIEXT(OpenGl_ShaderProgram, OpenGl_Resource)
@@ -786,6 +787,70 @@ Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)&
 
 // =======================================================================
 // function : SetUniform
+// purpose  : Specifies the value of the 64-bit unsigned uniform variable
+// =======================================================================
+Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)& theCtx,
+                                                   const GLchar*                 theName,
+                                                   GLuint64                      theValue)
+{
+  return SetUniform (theCtx, GetUniformLocation (theCtx, theName), theValue);
+}
+
+// =======================================================================
+// function : SetUniform
+// purpose  : Specifies the value of the 64-bit unsigned uniform variable
+// =======================================================================
+Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)& theCtx,
+                                                   GLint                         theLocation,
+                                                   GLuint64                      theValue)
+{
+  if (theCtx->arbTexBindless == NULL || myProgramID == NO_PROGRAM || theLocation == INVALID_LOCATION)
+  {
+    return Standard_False;
+  }
+
+#if !defined(GL_ES_VERSION_2_0)
+  theCtx->arbTexBindless->glUniformHandleui64ARB (theLocation, theValue);
+#endif
+
+  return Standard_True;
+}
+
+// =======================================================================
+// function : SetUniform
+// purpose  : Specifies the value of the 64-bit unsigned uniform array
+// =======================================================================
+Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)& theCtx,
+                                                   const GLchar*                 theName,
+                                                   const GLsizei                 theCount,
+                                                   const GLuint64*               theValue)
+{
+  return SetUniform (theCtx, GetUniformLocation (theCtx, theName), theCount, theValue);
+}
+
+// =======================================================================
+// function : SetUniform
+// purpose  : Specifies the value of the 64-bit unsigned uniform array
+// =======================================================================
+Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)& theCtx,
+                                                   GLint                         theLocation,
+                                                   const GLsizei                 theCount,
+                                                   const GLuint64*               theValue)
+{
+  if (theCtx->arbTexBindless == NULL || myProgramID == NO_PROGRAM || theLocation == INVALID_LOCATION)
+  {
+    return Standard_False;
+  }
+
+#if !defined(GL_ES_VERSION_2_0)
+  theCtx->arbTexBindless->glUniformHandleui64vARB (theLocation, theCount, theValue);
+#endif
+
+  return Standard_True;
+}
+
+// =======================================================================
+// function : SetUniform
 // purpose  : Specifies the value of the floating-point uniform variable
 // =======================================================================
 Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)& theCtx,
@@ -986,7 +1051,7 @@ Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)&
 // =======================================================================
 Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)& theCtx,
                                                    const GLchar*                 theName,
-                                                   const OpenGl_Matrix&          theValue,
+                                                   const OpenGl_Mat4&            theValue,
                                                    GLboolean                     theTranspose)
 {
   return SetUniform (theCtx, GetUniformLocation (theCtx, theName), theValue, theTranspose);
@@ -998,7 +1063,7 @@ Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)&
 // =======================================================================
 Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)& theCtx,
                                                    GLint                         theLocation,
-                                                   const OpenGl_Matrix&          theValue,
+                                                   const OpenGl_Mat4&            theValue,
                                                    GLboolean                     theTranspose)
 {
   if (myProgramID == NO_PROGRAM || theLocation == INVALID_LOCATION)
@@ -1006,7 +1071,7 @@ Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)&
     return Standard_False;
   }
 
-  theCtx->core20->glUniformMatrix4fv (theLocation, 1, theTranspose, *theValue.mat);
+  theCtx->core20->glUniformMatrix4fv (theLocation, 1, GL_FALSE, theTranspose ? theValue.Transposed() : theValue);
   return Standard_True;
 }
 
@@ -1016,7 +1081,7 @@ Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)&
 // =======================================================================
 Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)& theCtx,
                                                    const GLchar*                 theName,
-                                                   const Tmatrix3&               theValue,
+                                                   const OpenGl_Matrix&          theValue,
                                                    GLboolean                     theTranspose)
 {
   return SetUniform (theCtx, GetUniformLocation (theCtx, theName), theValue, theTranspose);
@@ -1028,16 +1093,10 @@ Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)&
 // =======================================================================
 Standard_Boolean OpenGl_ShaderProgram::SetUniform (const Handle(OpenGl_Context)& theCtx,
                                                    GLint                         theLocation,
-                                                   const Tmatrix3&               theValue,
+                                                   const OpenGl_Matrix&          theValue,
                                                    GLboolean                     theTranspose)
 {
-  if (myProgramID == NO_PROGRAM || theLocation == INVALID_LOCATION)
-  {
-    return Standard_False;
-  }
-
-  theCtx->core20->glUniformMatrix4fv (theLocation, 1, theTranspose, *theValue);
-  return Standard_True;
+  return SetUniform (theCtx, theLocation, OpenGl_Mat4::Map (*theValue.mat), theTranspose);
 }
 
 // =======================================================================

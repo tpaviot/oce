@@ -6,19 +6,11 @@
 #ifndef _TCollection_HeaderFile
 #define _TCollection_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TCollection_AsciiString;
 class TCollection_ExtendedString;
 class TCollection_HAsciiString;
@@ -59,21 +51,22 @@ class TCollection_CompareOfInteger;
 class TCollection_CompareOfReal;
 
 
-//! The package <TCollection> provides the services for the <br>
-//! transient basic data structures. <br>
-class TCollection  {
+//! The package <TCollection> provides the services for the
+//! transient basic data structures.
+class TCollection 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a  prime number greater than  <I> suitable <br>
-//! to dimension a Map.  When  <I> becomes great there <br>
-//! is  a  limit on  the  result (today  the  limit is <br>
-//! around 1 000 000). This is not a limit of the number of <br>
-//! items but a limit in the number  of buckets.  i.e. <br>
-//! there will be more collisions  in  the map. <br>
-  Standard_EXPORT   static  Standard_Integer NextPrimeForMap(const Standard_Integer I) ;
-
+  
+  //! Returns a  prime number greater than  <I> suitable
+  //! to dimension a Map.  When  <I> becomes great there
+  //! is  a  limit on  the  result (today  the  limit is
+  //! around 1 000 000). This is not a limit of the number of
+  //! items but a limit in the number  of buckets.  i.e.
+  //! there will be more collisions  in  the map.
+  Standard_EXPORT static   Standard_Integer NextPrimeForMap (const Standard_Integer I) ;
 
 
 
@@ -134,7 +127,6 @@ friend class TCollection_CompareOfReal;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TCollection_HeaderFile

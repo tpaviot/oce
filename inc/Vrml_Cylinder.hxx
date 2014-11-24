@@ -6,55 +6,43 @@
 #ifndef _Vrml_Cylinder_HeaderFile
 #define _Vrml_Cylinder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Vrml_CylinderParts_HeaderFile
 #include <Vrml_CylinderParts.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 
 
-//! defines a Cylinder node of VRML specifying geometry shapes. <br>
-//! This  node  represents  a  simple  capped  cylinder  centred  around the  y-axis. <br>
-//! By  default ,  the  cylinder  is  centred  at  (0,0,0) <br>
-//! and  has  size  of  -1  to  +1  in  the  all  three  dimensions. <br>
-//! The  cylinder  has  three  parts: <br>
-//! the  sides,  the  top  (y=+1)  and  the  bottom (y=-1) <br>
-class Vrml_Cylinder  {
+//! defines a Cylinder node of VRML specifying geometry shapes.
+//! This  node  represents  a  simple  capped  cylinder  centred  around the  y-axis.
+//! By  default ,  the  cylinder  is  centred  at  (0,0,0)
+//! and  has  size  of  -1  to  +1  in  the  all  three  dimensions.
+//! The  cylinder  has  three  parts:
+//! the  sides,  the  top  (y=+1)  and  the  bottom (y=-1)
+class Vrml_Cylinder 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Vrml_Cylinder(const Vrml_CylinderParts aParts = Vrml_CylinderALL,const Standard_Real aRadius = 1,const Standard_Real aHeight = 2);
+  Standard_EXPORT Vrml_Cylinder(const Vrml_CylinderParts aParts = Vrml_CylinderALL, const Standard_Real aRadius = 1, const Standard_Real aHeight = 2);
   
-  Standard_EXPORT     void SetParts(const Vrml_CylinderParts aParts) ;
+  Standard_EXPORT   void SetParts (const Vrml_CylinderParts aParts) ;
   
-  Standard_EXPORT     Vrml_CylinderParts Parts() const;
+  Standard_EXPORT   Vrml_CylinderParts Parts()  const;
   
-  Standard_EXPORT     void SetRadius(const Standard_Real aRadius) ;
+  Standard_EXPORT   void SetRadius (const Standard_Real aRadius) ;
   
-  Standard_EXPORT     Standard_Real Radius() const;
+  Standard_EXPORT   Standard_Real Radius()  const;
   
-  Standard_EXPORT     void SetHeight(const Standard_Real aHeight) ;
+  Standard_EXPORT   void SetHeight (const Standard_Real aHeight) ;
   
-  Standard_EXPORT     Standard_Real Height() const;
+  Standard_EXPORT   Standard_Real Height()  const;
   
-  Standard_EXPORT     Standard_OStream& Print(Standard_OStream& anOStream) const;
-
+  Standard_EXPORT   Standard_OStream& Print (Standard_OStream& anOStream)  const;
 
 
 
@@ -69,9 +57,9 @@ private:
 
 
 
-Vrml_CylinderParts myParts;
-Standard_Real myRadius;
-Standard_Real myHeight;
+  Vrml_CylinderParts myParts;
+  Standard_Real myRadius;
+  Standard_Real myHeight;
 
 
 };
@@ -80,7 +68,6 @@ Standard_Real myHeight;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Vrml_Cylinder_HeaderFile

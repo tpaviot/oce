@@ -6,19 +6,18 @@
 #ifndef _Aspect_TypeOfLayer_HeaderFile
 #define _Aspect_TypeOfLayer_HeaderFile
 
-//! Modes of drawing for the objects in a layer <br>
-//! <br>
-//!          TOL_OVERLAY, the graphic of the layer is draw <br>
-//!                       after the 3d graphic. <br>
-//!          TOL_UNDERLAY, the graphic of the layer is draw <br>
-//!                       before the 3d graphic. <br>
-enum Aspect_TypeOfLayer {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Modes of drawing for the objects in a layer
+//!
+//! TOL_OVERLAY, the graphic of the layer is draw
+//! after the 3d graphic.
+//! TOL_UNDERLAY, the graphic of the layer is draw
+//! before the 3d graphic.
+enum Aspect_TypeOfLayer
+{
 Aspect_TOL_OVERLAY,
 Aspect_TOL_UNDERLAY
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_TypeOfLayer_HeaderFile

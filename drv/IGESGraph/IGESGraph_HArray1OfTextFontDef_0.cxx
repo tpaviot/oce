@@ -5,28 +5,14 @@
 
 #include <IGESGraph_HArray1OfTextFontDef.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _IGESGraph_TextFontDef_HeaderFile
 #include <IGESGraph_TextFontDef.hxx>
-#endif
-#ifndef _IGESGraph_Array1OfTextFontDef_HeaderFile
 #include <IGESGraph_Array1OfTextFontDef.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(IGESGraph_HArray1OfTextFontDef,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(IGESGraph_HArray1OfTextFontDef)
 
 
-#define ItemHArray1 Handle_IGESGraph_TextFontDef
+#define ItemHArray1 Handle(IGESGraph_TextFontDef)
 #define ItemHArray1_hxx <IGESGraph_TextFontDef.hxx>
 #define TheArray1 IGESGraph_Array1OfTextFontDef
 #define TheArray1_hxx <IGESGraph_Array1OfTextFontDef.hxx>

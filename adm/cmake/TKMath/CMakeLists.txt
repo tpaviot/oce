@@ -299,7 +299,26 @@ ENDIF()
 
 if (WIN32)
 elseif(APPLE)
+  if(USE_TBB)
+    list( APPEND TKMath_USED_LIBS tbb )
+  endif()
+  if(USE_TBB)
+    list( APPEND TKMath_USED_LIBS tbbmalloc )
+  endif()
+elseif(ANDROID)
+  if(USE_TBB)
+    list( APPEND TKMath_USED_LIBS tbb )
+  endif()
+  if(USE_TBB)
+    list( APPEND TKMath_USED_LIBS tbbmalloc )
+  endif()
 else()
+  if(USE_TBB)
+    list( APPEND TKMath_USED_LIBS tbb )
+  endif()
+  if(USE_TBB)
+    list( APPEND TKMath_USED_LIBS tbbmalloc )
+  endif()
 endif()
 
   IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "" AND EXISTS "${BUILD_PATCH_DIR}//drv/math/math_Array1OfValueAndWeight_0.cxx")
@@ -3638,13 +3657,13 @@ if ("${USED_TOOLKITS}" STREQUAL "" OR DEFINED TurnONtheTKMath)
  set_property(TARGET TKMath PROPERTY FOLDER FoundationClasses)
 
  install( TARGETS TKMath
-                                 RUNTIME DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_SUFFIX}"
-                                 ARCHIVE DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_SUFFIX}"
-                                 LIBRARY DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_SUFFIX}")
+                                 RUNTIME DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_POSTFIX}"
+                                 ARCHIVE DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_POSTFIX}"
+                                 LIBRARY DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_POSTFIX}")
 
  if (MSVC)
-  install( FILES  ${CMAKE_BINARY_DIR}/out/bin/Debug/TKMath.pdb CONFIGURATIONS Debug
-                                  DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_SUFFIX}")
+  install( FILES  ${CMAKE_BINARY_DIR}/out/bind/Debug/TKMath.pdb CONFIGURATIONS Debug
+                                  DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_POSTFIX}")
  endif()
 
 

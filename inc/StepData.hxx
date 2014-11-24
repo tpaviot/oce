@@ -6,19 +6,11 @@
 #ifndef _StepData_HeaderFile
 #define _StepData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepData_Protocol_HeaderFile
 #include <Handle_StepData_Protocol.hxx>
-#endif
 class StepData_Protocol;
 class StepData_StepModel;
 class StepData_UndefinedEntity;
@@ -63,27 +55,31 @@ class StepData_GlobalNodeOfWriterLib;
 class StepData_NodeOfWriterLib;
 
 
-//! Gives basic data definition for Step Interface. <br>
-//!           Any class of a data model described in EXPRESS Language <br>
-//!           is candidate to be managed by a Step Interface <br>
-class StepData  {
+//! Gives basic data definition for Step Interface.
+//! Any class of a data model described in EXPRESS Language
+//! is candidate to be managed by a Step Interface
+class StepData 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns the recorded HeaderProtocol, which can be : <br>
-//!           - a Null Handle if no Header Protocol was yet defined <br>
-//!           - a simple Protocol if only one was defined <br>
-//!           - a FileProtocol if more than one Protocol was yet defined <br>
-  Standard_EXPORT   static  Handle_StepData_Protocol HeaderProtocol() ;
-  //! Adds a new Header Protocol to the Header Definition <br>
-  Standard_EXPORT   static  void AddHeaderProtocol(const Handle(StepData_Protocol)& headerproto) ;
-  //! Prepares General Data required to work with this package, <br>
-//!           which are the Protocol and Modules to be loaded into Libraries <br>
-  Standard_EXPORT   static  void Init() ;
-  //! Returns a Protocol from StepData (avoids to create it) <br>
-  Standard_EXPORT   static  Handle_StepData_Protocol Protocol() ;
-
+  
+  //! Returns the recorded HeaderProtocol, which can be :
+  //! - a Null Handle if no Header Protocol was yet defined
+  //! - a simple Protocol if only one was defined
+  //! - a FileProtocol if more than one Protocol was yet defined
+  Standard_EXPORT static   Handle(StepData_Protocol) HeaderProtocol() ;
+  
+  //! Adds a new Header Protocol to the Header Definition
+  Standard_EXPORT static   void AddHeaderProtocol (const Handle(StepData_Protocol)& headerproto) ;
+  
+  //! Prepares General Data required to work with this package,
+  //! which are the Protocol and Modules to be loaded into Libraries
+  Standard_EXPORT static   void Init() ;
+  
+  //! Returns a Protocol from StepData (avoids to create it)
+  Standard_EXPORT static   Handle(StepData_Protocol) Protocol() ;
 
 
 
@@ -147,7 +143,6 @@ friend class StepData_NodeOfWriterLib;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepData_HeaderFile

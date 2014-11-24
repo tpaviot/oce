@@ -6,22 +6,15 @@
 #ifndef _Handle_Expr_NotEvaluable_HeaderFile
 #define _Handle_Expr_NotEvaluable_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Expr_ExprFailure_HeaderFile
 #include <Handle_Expr_ExprFailure.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Expr_ExprFailure);
 class Expr_NotEvaluable;
 
-DEFINE_STANDARD_HANDLE(Expr_NotEvaluable,Expr_ExprFailure)
+DEFINE_STANDARD_HANDLE(Expr_NotEvaluable, Expr_ExprFailure)
 
-#endif
+#endif // _Handle_Expr_NotEvaluable_HeaderFile

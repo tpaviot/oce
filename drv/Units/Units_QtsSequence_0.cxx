@@ -5,21 +5,13 @@
 
 #include <Units_QtsSequence.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Units_Quantity_HeaderFile
 #include <Units_Quantity.hxx>
-#endif
-#ifndef _Units_SequenceNodeOfQtsSequence_HeaderFile
 #include <Units_SequenceNodeOfQtsSequence.hxx>
-#endif
  
 
-#define SeqItem Handle_Units_Quantity
+#define SeqItem Handle(Units_Quantity)
 #define SeqItem_hxx <Units_Quantity.hxx>
 #define TCollection_SequenceNode Units_SequenceNodeOfQtsSequence
 #define TCollection_SequenceNode_hxx <Units_SequenceNodeOfQtsSequence.hxx>

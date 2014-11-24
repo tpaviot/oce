@@ -6,22 +6,12 @@
 #ifndef _GeomInt_HeaderFile
 #define _GeomInt_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class GeomInt_IntSS;
 class GeomInt_LineConstructor;
 class GeomInt_LineTool;
@@ -54,16 +44,17 @@ class GeomInt_TheComputeLineBezierOfWLApprox;
 class GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation;
 
 
-//! Provides intersections on between two surfaces of Geom. <br>
-//!          The result are curves from Geom. <br>
-class GeomInt  {
+//! Provides intersections on between two surfaces of Geom.
+//! The result are curves from Geom.
+class GeomInt 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //!  Adjusts the parameter <thePar> to the range [theParMin,  theParMax] <br>
-  Standard_EXPORT   static  Standard_Boolean AdjustPeriodic(const Standard_Real thePar,const Standard_Real theParMin,const Standard_Real theParMax,const Standard_Real thePeriod,Standard_Real& theNewPar,Standard_Real& theOffset,const Standard_Real theEps = 0.0) ;
-
+  
+  //! Adjusts the parameter <thePar> to the range [theParMin,  theParMax]
+  Standard_EXPORT static   Standard_Boolean AdjustPeriodic (const Standard_Real thePar, const Standard_Real theParMin, const Standard_Real theParMax, const Standard_Real thePeriod, Standard_Real& theNewPar, Standard_Real& theOffset, const Standard_Real theEps = 0.0) ;
 
 
 
@@ -116,7 +107,6 @@ friend class GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomInt_HeaderFile

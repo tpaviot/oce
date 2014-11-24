@@ -6,22 +6,15 @@
 #ifndef _Handle_StepData_DefaultGeneral_HeaderFile
 #define _Handle_StepData_DefaultGeneral_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepData_GeneralModule_HeaderFile
 #include <Handle_StepData_GeneralModule.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepData_GeneralModule);
 class StepData_DefaultGeneral;
 
-DEFINE_STANDARD_HANDLE(StepData_DefaultGeneral,StepData_GeneralModule)
+DEFINE_STANDARD_HANDLE(StepData_DefaultGeneral, StepData_GeneralModule)
 
-#endif
+#endif // _Handle_StepData_DefaultGeneral_HeaderFile

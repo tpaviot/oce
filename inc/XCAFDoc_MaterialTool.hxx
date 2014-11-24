@@ -6,37 +6,17 @@
 #ifndef _XCAFDoc_MaterialTool_HeaderFile
 #define _XCAFDoc_MaterialTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_XCAFDoc_MaterialTool_HeaderFile
 #include <Handle_XCAFDoc_MaterialTool.hxx>
-#endif
 
-#ifndef _Handle_XCAFDoc_ShapeTool_HeaderFile
 #include <Handle_XCAFDoc_ShapeTool.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
 class XCAFDoc_ShapeTool;
 class TDF_Label;
 class Standard_GUID;
@@ -46,52 +26,63 @@ class TDF_Attribute;
 class TDF_RelocationTable;
 
 
-//! Provides tools to store and retrieve attributes (materials) <br>
-//!          of TopoDS_Shape in and from TDocStd_Document <br>
-//!          A Document is intended to hold different <br>
-//!          attributes of ONE shape and it's sub-shapes <br>
-//!          Provide tools for management of Materialss section of document. <br>
-class XCAFDoc_MaterialTool : public TDF_Attribute {
+//! Provides tools to store and retrieve attributes (materials)
+//! of TopoDS_Shape in and from TDocStd_Document
+//! A Document is intended to hold different
+//! attributes of ONE shape and it's sub-shapes
+//! Provide tools for management of Materialss section of document.
+class XCAFDoc_MaterialTool : public TDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   XCAFDoc_MaterialTool();
-  //! Creates (if not exist) MaterialTool. <br>
-  Standard_EXPORT   static  Handle_XCAFDoc_MaterialTool Set(const TDF_Label& L) ;
+  Standard_EXPORT XCAFDoc_MaterialTool();
   
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
-  //! returns the label under which colors are stored <br>
-  Standard_EXPORT     TDF_Label BaseLabel() const;
-  //! Returns internal XCAFDoc_ShapeTool tool <br>
-  Standard_EXPORT    const Handle_XCAFDoc_ShapeTool& ShapeTool() ;
-  //! Returns True if label belongs to a material table and <br>
-//!          is a Material definition <br>
-  Standard_EXPORT     Standard_Boolean IsMaterial(const TDF_Label& lab) const;
-  //! Returns a sequence of materials currently stored <br>
-//!          in the material table <br>
-  Standard_EXPORT     void GetMaterialLabels(TDF_LabelSequence& Labels) const;
-  //! Adds a Material definition to a table and returns its label <br>
-  Standard_EXPORT     TDF_Label AddMaterial(const Handle(TCollection_HAsciiString)& aName,const Handle(TCollection_HAsciiString)& aDescription,const Standard_Real aDensity,const Handle(TCollection_HAsciiString)& aDensName,const Handle(TCollection_HAsciiString)& aDensValType) const;
-  //! Sets a link with GUID <br>
-  Standard_EXPORT     void SetMaterial(const TDF_Label& L,const TDF_Label& MatL) const;
-  //! Sets a link with GUID <br>
-//!          Adds a Material as necessary <br>
-  Standard_EXPORT     void SetMaterial(const TDF_Label& L,const Handle(TCollection_HAsciiString)& aName,const Handle(TCollection_HAsciiString)& aDescription,const Standard_Real aDensity,const Handle(TCollection_HAsciiString)& aDensName,const Handle(TCollection_HAsciiString)& aDensValType) const;
-  //! Returns Material assigned to <MatL> <br>
-//!          Returns False if no such Material is assigned <br>
-  Standard_EXPORT     Standard_Boolean GetMaterial(const TDF_Label& MatL,Handle(TCollection_HAsciiString)& aName,Handle(TCollection_HAsciiString)& aDescription,Standard_Real& aDensity,Handle(TCollection_HAsciiString)& aDensName,Handle(TCollection_HAsciiString)& aDensValType) const;
-  //! Find referred material and return density from it <br>
-//!          if no material --> return 0 <br>
-  Standard_EXPORT   static  Standard_Real GetDensityForShape(const TDF_Label& ShapeL) ;
+  //! Creates (if not exist) MaterialTool.
+  Standard_EXPORT static   Handle(XCAFDoc_MaterialTool) Set (const TDF_Label& L) ;
   
-  Standard_EXPORT    const Standard_GUID& ID() const;
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-  Standard_EXPORT     void Restore(const Handle(TDF_Attribute)& with) ;
+  //! returns the label under which colors are stored
+  Standard_EXPORT   TDF_Label BaseLabel()  const;
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  //! Returns internal XCAFDoc_ShapeTool tool
+  Standard_EXPORT  const  Handle(XCAFDoc_ShapeTool)& ShapeTool() ;
   
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& into,const Handle(TDF_RelocationTable)& RT) const;
+  //! Returns True if label belongs to a material table and
+  //! is a Material definition
+  Standard_EXPORT   Standard_Boolean IsMaterial (const TDF_Label& lab)  const;
+  
+  //! Returns a sequence of materials currently stored
+  //! in the material table
+  Standard_EXPORT   void GetMaterialLabels (TDF_LabelSequence& Labels)  const;
+  
+  //! Adds a Material definition to a table and returns its label
+  Standard_EXPORT   TDF_Label AddMaterial (const Handle(TCollection_HAsciiString)& aName, const Handle(TCollection_HAsciiString)& aDescription, const Standard_Real aDensity, const Handle(TCollection_HAsciiString)& aDensName, const Handle(TCollection_HAsciiString)& aDensValType)  const;
+  
+  //! Sets a link with GUID
+  Standard_EXPORT   void SetMaterial (const TDF_Label& L, const TDF_Label& MatL)  const;
+  
+  //! Sets a link with GUID
+  //! Adds a Material as necessary
+  Standard_EXPORT   void SetMaterial (const TDF_Label& L, const Handle(TCollection_HAsciiString)& aName, const Handle(TCollection_HAsciiString)& aDescription, const Standard_Real aDensity, const Handle(TCollection_HAsciiString)& aDensName, const Handle(TCollection_HAsciiString)& aDensValType)  const;
+  
+  //! Returns Material assigned to <MatL>
+  //! Returns False if no such Material is assigned
+  Standard_EXPORT   Standard_Boolean GetMaterial (const TDF_Label& MatL, Handle(TCollection_HAsciiString)& aName, Handle(TCollection_HAsciiString)& aDescription, Standard_Real& aDensity, Handle(TCollection_HAsciiString)& aDensName, Handle(TCollection_HAsciiString)& aDensValType)  const;
+  
+  //! Find referred material and return density from it
+  //! if no material --> return 0
+  Standard_EXPORT static   Standard_Real GetDensityForShape (const TDF_Label& ShapeL) ;
+  
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
+  
+  Standard_EXPORT   void Restore (const Handle(TDF_Attribute)& with) ;
+  
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
+  
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& into, const Handle(TDF_RelocationTable)& RT)  const;
 
 
 
@@ -106,7 +97,7 @@ protected:
 private: 
 
 
-Handle_XCAFDoc_ShapeTool myShapeTool;
+  Handle(XCAFDoc_ShapeTool) myShapeTool;
 
 
 };
@@ -115,7 +106,6 @@ Handle_XCAFDoc_ShapeTool myShapeTool;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XCAFDoc_MaterialTool_HeaderFile

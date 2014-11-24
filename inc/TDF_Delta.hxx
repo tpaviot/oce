@@ -6,37 +6,17 @@
 #ifndef _TDF_Delta_HeaderFile
 #define _TDF_Delta_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDF_Delta_HeaderFile
 #include <Handle_TDF_Delta.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TDF_AttributeDeltaList_HeaderFile
 #include <TDF_AttributeDeltaList.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_TDF_AttributeDelta_HeaderFile
 #include <Handle_TDF_AttributeDelta.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class Standard_OutOfRange;
 class TDF_Data;
 class TDF_AttributeDelta;
@@ -45,39 +25,47 @@ class TDF_AttributeDeltaList;
 class TCollection_ExtendedString;
 
 
-//! A set of AttributeDelta for a given transaction <br>
-//!        number and reference time number. <br>
-//!        A delta set is available at <aSourceTime>. If <br>
-//!          applied, it restores the TDF_Data in the state it <br>
-//!          was at <aTargetTime>. <br>
-class TDF_Delta : public MMgt_TShared {
+//! A set of AttributeDelta for a given transaction
+//! number and reference time number.
+//! A delta set is available at <aSourceTime>. If
+//! applied, it restores the TDF_Data in the state it
+//! was at <aTargetTime>.
+class TDF_Delta : public MMgt_TShared
+{
 
 public:
 
-  //! Creates a delta. <br>
-  Standard_EXPORT   TDF_Delta();
-  //! Returns true if there is nothing to undo. <br>
-//! <br>
-        Standard_Boolean IsEmpty() const;
-  //! Returns true if the Undo action of <me> is <br>
-//!          applicable at <aCurrentTime>. <br>
-//! <br>
-        Standard_Boolean IsApplicable(const Standard_Integer aCurrentTime) const;
-  //! Returns the field <myBeginTime>. <br>
-        Standard_Integer BeginTime() const;
-  //! Returns the field <myEndTime>. <br>
-        Standard_Integer EndTime() const;
-  //! Adds in <aLabelList> the labels of the attribute deltas. <br>
-//!          Caution: <aLabelList> is not cleared before use. <br>
-  Standard_EXPORT     void Labels(TDF_LabelList& aLabelList) const;
-  //! Returns the field <myAttDeltaList>. <br>
-       const TDF_AttributeDeltaList& AttributeDeltas() const;
-  //! Returns a name associated with this delta. <br>
-        TCollection_ExtendedString Name() const;
-  //! Associates a name <theName> with this delta <br>
-        void SetName(const TCollection_ExtendedString& theName) ;
   
-  Standard_EXPORT     void Dump(Standard_OStream& OS) const;
+  //! Creates a delta.
+  Standard_EXPORT TDF_Delta();
+  
+  //! Returns true if there is nothing to undo.
+      Standard_Boolean IsEmpty()  const;
+  
+  //! Returns true if the Undo action of <me> is
+  //! applicable at <aCurrentTime>.
+      Standard_Boolean IsApplicable (const Standard_Integer aCurrentTime)  const;
+  
+  //! Returns the field <myBeginTime>.
+      Standard_Integer BeginTime()  const;
+  
+  //! Returns the field <myEndTime>.
+      Standard_Integer EndTime()  const;
+  
+  //! Adds in <aLabelList> the labels of the attribute deltas.
+  //! Caution: <aLabelList> is not cleared before use.
+  Standard_EXPORT   void Labels (TDF_LabelList& aLabelList)  const;
+  
+  //! Returns the field <myAttDeltaList>.
+     const  TDF_AttributeDeltaList& AttributeDeltas()  const;
+  
+  //! Returns a name associated with this delta.
+      TCollection_ExtendedString Name()  const;
+  
+  //! Associates a name <theName> with this delta
+      void SetName (const TCollection_ExtendedString& theName) ;
+  
+  Standard_EXPORT   void Dump (Standard_OStream& OS)  const;
 
 
 friend class TDF_Data;
@@ -87,27 +75,29 @@ friend class TDF_Data;
 
 protected:
 
-  //! Validates <me> at <aBeginTime>. If applied, it <br>
-//!          restores the TDF_Data in the state it was at <br>
-//!          <anEndTime>. Reserved to TDF_Data. <br>
-  Standard_EXPORT     void Validity(const Standard_Integer aBeginTime,const Standard_Integer anEndTime) ;
-  //! Adds an AttributeDelta to the list. Reserved to <br>
-//!          TDF_Data. <br>
-  Standard_EXPORT     void AddAttributeDelta(const Handle(TDF_AttributeDelta)& anAttributeDelta) ;
+  
+  //! Validates <me> at <aBeginTime>. If applied, it
+  //! restores the TDF_Data in the state it was at
+  //! <anEndTime>. Reserved to TDF_Data.
+  Standard_EXPORT   void Validity (const Standard_Integer aBeginTime, const Standard_Integer anEndTime) ;
+  
+  //! Adds an AttributeDelta to the list. Reserved to
+  //! TDF_Data.
+  Standard_EXPORT   void AddAttributeDelta (const Handle(TDF_AttributeDelta)& anAttributeDelta) ;
 
 
 
 private: 
 
   
-  Standard_EXPORT     void BeforeOrAfterApply(const Standard_Boolean before) const;
+  Standard_EXPORT   void BeforeOrAfterApply (const Standard_Boolean before)  const;
   
-  Standard_EXPORT     void Apply() ;
+  Standard_EXPORT   void Apply() ;
 
-Standard_Integer myBeginTime;
-Standard_Integer myEndTime;
-TDF_AttributeDeltaList myAttDeltaList;
-TCollection_ExtendedString myName;
+  Standard_Integer myBeginTime;
+  Standard_Integer myEndTime;
+  TDF_AttributeDeltaList myAttDeltaList;
+  TCollection_ExtendedString myName;
 
 
 };
@@ -117,7 +107,6 @@ TCollection_ExtendedString myName;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_Delta_HeaderFile

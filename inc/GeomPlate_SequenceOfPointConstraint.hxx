@@ -6,28 +6,14 @@
 #ifndef _GeomPlate_SequenceOfPointConstraint_HeaderFile
 #define _GeomPlate_SequenceOfPointConstraint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_GeomPlate_PointConstraint_HeaderFile
 #include <Handle_GeomPlate_PointConstraint.hxx>
-#endif
-#ifndef _Handle_GeomPlate_SequenceNodeOfSequenceOfPointConstraint_HeaderFile
 #include <Handle_GeomPlate_SequenceNodeOfSequenceOfPointConstraint.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class GeomPlate_PointConstraint;
@@ -35,68 +21,68 @@ class GeomPlate_SequenceNodeOfSequenceOfPointConstraint;
 
 
 
-class GeomPlate_SequenceOfPointConstraint  : public TCollection_BaseSequence {
+class GeomPlate_SequenceOfPointConstraint  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      GeomPlate_SequenceOfPointConstraint();
+    GeomPlate_SequenceOfPointConstraint();
   
-  Standard_EXPORT   GeomPlate_SequenceOfPointConstraint(const GeomPlate_SequenceOfPointConstraint& Other);
+  Standard_EXPORT GeomPlate_SequenceOfPointConstraint(const GeomPlate_SequenceOfPointConstraint& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~GeomPlate_SequenceOfPointConstraint()
 {
   Clear();
 }
   
-  Standard_EXPORT    const GeomPlate_SequenceOfPointConstraint& Assign(const GeomPlate_SequenceOfPointConstraint& Other) ;
-   const GeomPlate_SequenceOfPointConstraint& operator =(const GeomPlate_SequenceOfPointConstraint& Other) 
+  Standard_EXPORT  const  GeomPlate_SequenceOfPointConstraint& Assign (const GeomPlate_SequenceOfPointConstraint& Other) ;
+ const  GeomPlate_SequenceOfPointConstraint& operator = (const GeomPlate_SequenceOfPointConstraint& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(GeomPlate_PointConstraint)& T) ;
+  Standard_EXPORT   void Append (const Handle(GeomPlate_PointConstraint)& T) ;
   
-        void Append(GeomPlate_SequenceOfPointConstraint& S) ;
+      void Append (GeomPlate_SequenceOfPointConstraint& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(GeomPlate_PointConstraint)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(GeomPlate_PointConstraint)& T) ;
   
-        void Prepend(GeomPlate_SequenceOfPointConstraint& S) ;
+      void Prepend (GeomPlate_SequenceOfPointConstraint& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(GeomPlate_PointConstraint)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(GeomPlate_PointConstraint)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,GeomPlate_SequenceOfPointConstraint& S) ;
+      void InsertBefore (const Standard_Integer Index, GeomPlate_SequenceOfPointConstraint& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(GeomPlate_PointConstraint)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(GeomPlate_PointConstraint)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,GeomPlate_SequenceOfPointConstraint& S) ;
+      void InsertAfter (const Standard_Integer Index, GeomPlate_SequenceOfPointConstraint& S) ;
   
-  Standard_EXPORT    const Handle_GeomPlate_PointConstraint& First() const;
+  Standard_EXPORT  const  Handle(GeomPlate_PointConstraint)& First()  const;
   
-  Standard_EXPORT    const Handle_GeomPlate_PointConstraint& Last() const;
+  Standard_EXPORT  const  Handle(GeomPlate_PointConstraint)& Last()  const;
   
-        void Split(const Standard_Integer Index,GeomPlate_SequenceOfPointConstraint& Sub) ;
+      void Split (const Standard_Integer Index, GeomPlate_SequenceOfPointConstraint& Sub) ;
   
-  Standard_EXPORT    const Handle_GeomPlate_PointConstraint& Value(const Standard_Integer Index) const;
-   const Handle_GeomPlate_PointConstraint& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(GeomPlate_PointConstraint)& Value (const Standard_Integer Index)  const;
+ const  Handle(GeomPlate_PointConstraint)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(GeomPlate_PointConstraint)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(GeomPlate_PointConstraint)& I) ;
   
-  Standard_EXPORT     Handle_GeomPlate_PointConstraint& ChangeValue(const Standard_Integer Index) ;
-    Handle_GeomPlate_PointConstraint& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(GeomPlate_PointConstraint)& ChangeValue (const Standard_Integer Index) ;
+  Handle(GeomPlate_PointConstraint)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -115,7 +101,7 @@ private:
 
 };
 
-#define SeqItem Handle_GeomPlate_PointConstraint
+#define SeqItem Handle(GeomPlate_PointConstraint)
 #define SeqItem_hxx <GeomPlate_PointConstraint.hxx>
 #define TCollection_SequenceNode GeomPlate_SequenceNodeOfSequenceOfPointConstraint
 #define TCollection_SequenceNode_hxx <GeomPlate_SequenceNodeOfSequenceOfPointConstraint.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomPlate_SequenceOfPointConstraint_HeaderFile

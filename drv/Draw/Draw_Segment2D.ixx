@@ -5,9 +5,7 @@
 
 #include <Draw_Segment2D.jxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
 
  

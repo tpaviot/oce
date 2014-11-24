@@ -5,33 +5,15 @@
 
 #include <Extrema_LocECC.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Adaptor3d_Curve_HeaderFile
 #include <Adaptor3d_Curve.hxx>
-#endif
-#ifndef _Extrema_CurveTool_HeaderFile
 #include <Extrema_CurveTool.hxx>
-#endif
-#ifndef _Extrema_POnCurv_HeaderFile
 #include <Extrema_POnCurv.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _Extrema_CCLocFOfLocECC_HeaderFile
 #include <Extrema_CCLocFOfLocECC.hxx>
-#endif
-#ifndef _Extrema_SeqPOnCOfCCLocFOfLocECC_HeaderFile
 #include <Extrema_SeqPOnCOfCCLocFOfLocECC.hxx>
-#endif
  
 
 #define Curve1 Adaptor3d_Curve

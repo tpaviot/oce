@@ -6,22 +6,15 @@
 #ifndef _Handle_Expr_LogOf10_HeaderFile
 #define _Handle_Expr_LogOf10_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Expr_UnaryExpression_HeaderFile
 #include <Handle_Expr_UnaryExpression.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Expr_UnaryExpression);
 class Expr_LogOf10;
 
-DEFINE_STANDARD_HANDLE(Expr_LogOf10,Expr_UnaryExpression)
+DEFINE_STANDARD_HANDLE(Expr_LogOf10, Expr_UnaryExpression)
 
-#endif
+#endif // _Handle_Expr_LogOf10_HeaderFile

@@ -5,12 +5,8 @@
 
 #include <PDataStd_VArrayTNodeOfFieldOfHArray1OfByte.hxx>
 
-#ifndef _PDataStd_FieldOfHArray1OfByte_HeaderFile
 #include <PDataStd_FieldOfHArray1OfByte.hxx>
-#endif
-#ifndef _PDataStd_VArrayNodeOfFieldOfHArray1OfByte_HeaderFile
 #include <PDataStd_VArrayNodeOfFieldOfHArray1OfByte.hxx>
-#endif
  
 
 #define Item Standard_Byte

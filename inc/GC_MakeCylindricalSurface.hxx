@@ -6,25 +6,13 @@
 #ifndef _GC_MakeCylindricalSurface_HeaderFile
 #define _GC_MakeCylindricalSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom_CylindricalSurface_HeaderFile
 #include <Handle_Geom_CylindricalSurface.hxx>
-#endif
-#ifndef _GC_Root_HeaderFile
 #include <GC_Root.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Geom_CylindricalSurface;
 class StdFail_NotDone;
 class gp_Ax2;
@@ -34,80 +22,88 @@ class gp_Ax1;
 class gp_Circ;
 
 
-//! This class implements the following algorithms used <br>
-//!           to create a CylindricalSurface from Geom. <br>
-//!           * Create a CylindricalSurface parallel to another and <br>
-//!           passing through a point. <br>
-//!           * Create a CylindricalSurface parallel to another at a <br>
-//!           distance <br>
-//!             <Dist>. <br>
-//!           * Create a CylindricalSurface passing through 3 points. <br>
-//!           * Create a CylindricalSurface by its axis and radius. <br>
-//!           * Create a cylindricalSurface by its circular base. <br>
-//!  The local coordinate system of the CylindricalSurface is defined <br>
-//!  with an axis placement (see class ElementarySurface). <br>
-//! <br>
-//!  The "ZAxis" is the symmetry axis of the CylindricalSurface, <br>
-//!  it gives the direction of increasing parametric value V. <br>
-//! <br>
-//!  The parametrization range is : <br>
-//!       U [0, 2*PI],  V ]- infinite, + infinite[ <br>
-//! <br>
-//!  The "XAxis" and the "YAxis" define the placement plane of the <br>
-//!  surface (Z = 0, and parametric value V = 0)  perpendicular to <br>
-//!  the symmetry axis. The "XAxis" defines the origin of the <br>
-//!  parameter U = 0.  The trigonometric sense gives the positive <br>
-//!  orientation for the parameter U. <br>
-class GC_MakeCylindricalSurface  : public GC_Root {
+//! This class implements the following algorithms used
+//! to create a CylindricalSurface from Geom.
+//! * Create a CylindricalSurface parallel to another and
+//! passing through a point.
+//! * Create a CylindricalSurface parallel to another at a
+//! distance
+//! <Dist>.
+//! * Create a CylindricalSurface passing through 3 points.
+//! * Create a CylindricalSurface by its axis and radius.
+//! * Create a cylindricalSurface by its circular base.
+//! The local coordinate system of the CylindricalSurface is defined
+//! with an axis placement (see class ElementarySurface).
+//!
+//! The "ZAxis" is the symmetry axis of the CylindricalSurface,
+//! it gives the direction of increasing parametric value V.
+//!
+//! The parametrization range is :
+//! U [0, 2*PI],  V ]- infinite, + infinite[
+//!
+//! The "XAxis" and the "YAxis" define the placement plane of the
+//! surface (Z = 0, and parametric value V = 0)  perpendicular to
+//! the symmetry axis. The "XAxis" defines the origin of the
+//! parameter U = 0.  The trigonometric sense gives the positive
+//! orientation for the parameter U.
+class GC_MakeCylindricalSurface  : public GC_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//!  A2 defines the local coordinate system of the cylindrical surface. <br>
-//!  The "ZDirection" of A2 defines the direction of the surface's <br>
-//!  axis of symmetry. <br>
-//!  At the creation the parametrization of the surface is defined <br>
-//!  such that the normal Vector (N = D1U ^ D1V) is oriented towards <br>
-//!  the "outside region" of the surface. <br>
-//! Warnings : <br>
-//!  It is not forbidden to create a cylindrical surface with <br>
-//!  Radius = 0.0 <br>
-//! Status is "NegativeRadius" if Radius < 0.0 <br>
-  Standard_EXPORT   GC_MakeCylindricalSurface(const gp_Ax2& A2,const Standard_Real Radius);
-  
-//!  Creates a CylindricalSurface from a non persistent Cylinder <br>
-//!  from package gp. <br>
-  Standard_EXPORT   GC_MakeCylindricalSurface(const gp_Cylinder& C);
-  //! Make a CylindricalSurface from Geom <TheCylinder> <br>
-//!           parallel to another <br>
-//!           CylindricalSurface <Cylinder> and passing through a <br>
-//!           Pnt <Point>. <br>
-  Standard_EXPORT   GC_MakeCylindricalSurface(const gp_Cylinder& Cyl,const gp_Pnt& Point);
-  //! Make a CylindricalSurface from Geom <TheCylinder> <br>
-//!           parallel to another <br>
-//!           CylindricalSurface <Cylinder> at the distance <Dist> <br>
-//!           which can be greater or lower than zero. <br>
-//!           The radius of the result is the absolute value of the <br>
-//!           radius of <Cyl> plus <Dist> <br>
-  Standard_EXPORT   GC_MakeCylindricalSurface(const gp_Cylinder& Cyl,const Standard_Real Dist);
-  //! Make a CylindricalSurface from Geom <TheCylinder> <br>
-//!           passing through 3 Pnt <P1>,<P2>,<P3>. <br>
-//!           Its axis is <P1P2> and its radius is the distance <br>
-//!           between <P3> and <P1P2> <br>
-  Standard_EXPORT   GC_MakeCylindricalSurface(const gp_Pnt& P1,const gp_Pnt& P2,const gp_Pnt& P3);
-  //! Make a CylindricalSurface by its axis <Axis> and radius <br>
-//!          <Radius>. <br>
-  Standard_EXPORT   GC_MakeCylindricalSurface(const gp_Ax1& Axis,const Standard_Real Radius);
-  //! Make a CylindricalSurface by its circular base. <br>
-  Standard_EXPORT   GC_MakeCylindricalSurface(const gp_Circ& Circ);
-  //! Returns the constructed cylinder. <br>
-//! Exceptions StdFail_NotDone if no cylinder is constructed. <br>
-  Standard_EXPORT    const Handle_Geom_CylindricalSurface& Value() const;
-  
-  Standard_EXPORT    const Handle_Geom_CylindricalSurface& Operator() const;
-Standard_EXPORT operator Handle_Geom_CylindricalSurface() const;
 
+  //! A2 defines the local coordinate system of the cylindrical surface.
+  //! The "ZDirection" of A2 defines the direction of the surface's
+  //! axis of symmetry.
+  //! At the creation the parametrization of the surface is defined
+  //! such that the normal Vector (N = D1U ^ D1V) is oriented towards
+  //! the "outside region" of the surface.
+  //! Warnings :
+  //! It is not forbidden to create a cylindrical surface with
+  //! Radius = 0.0
+  //! Status is "NegativeRadius" if Radius < 0.0
+  Standard_EXPORT GC_MakeCylindricalSurface(const gp_Ax2& A2, const Standard_Real Radius);
+  
+
+  //! Creates a CylindricalSurface from a non persistent Cylinder
+  //! from package gp.
+  Standard_EXPORT GC_MakeCylindricalSurface(const gp_Cylinder& C);
+  
+  //! Make a CylindricalSurface from Geom <TheCylinder>
+  //! parallel to another
+  //! CylindricalSurface <Cylinder> and passing through a
+  //! Pnt <Point>.
+  Standard_EXPORT GC_MakeCylindricalSurface(const gp_Cylinder& Cyl, const gp_Pnt& Point);
+  
+  //! Make a CylindricalSurface from Geom <TheCylinder>
+  //! parallel to another
+  //! CylindricalSurface <Cylinder> at the distance <Dist>
+  //! which can be greater or lower than zero.
+  //! The radius of the result is the absolute value of the
+  //! radius of <Cyl> plus <Dist>
+  Standard_EXPORT GC_MakeCylindricalSurface(const gp_Cylinder& Cyl, const Standard_Real Dist);
+  
+  //! Make a CylindricalSurface from Geom <TheCylinder>
+  //! passing through 3 Pnt <P1>,<P2>,<P3>.
+  //! Its axis is <P1P2> and its radius is the distance
+  //! between <P3> and <P1P2>
+  Standard_EXPORT GC_MakeCylindricalSurface(const gp_Pnt& P1, const gp_Pnt& P2, const gp_Pnt& P3);
+  
+  //! Make a CylindricalSurface by its axis <Axis> and radius
+  //! <Radius>.
+  Standard_EXPORT GC_MakeCylindricalSurface(const gp_Ax1& Axis, const Standard_Real Radius);
+  
+  //! Make a CylindricalSurface by its circular base.
+  Standard_EXPORT GC_MakeCylindricalSurface(const gp_Circ& Circ);
+  
+  //! Returns the constructed cylinder.
+  //! Exceptions StdFail_NotDone if no cylinder is constructed.
+  Standard_EXPORT  const  Handle(Geom_CylindricalSurface)& Value()  const;
+  
+  Standard_EXPORT  const  Handle(Geom_CylindricalSurface)& Operator()  const;
+Standard_EXPORT operator Handle_Geom_CylindricalSurface() const;
 
 
 
@@ -122,7 +118,7 @@ private:
 
 
 
-Handle_Geom_CylindricalSurface TheCylinder;
+  Handle(Geom_CylindricalSurface) TheCylinder;
 
 
 };
@@ -131,7 +127,6 @@ Handle_Geom_CylindricalSurface TheCylinder;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GC_MakeCylindricalSurface_HeaderFile

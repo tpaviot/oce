@@ -6,22 +6,12 @@
 #ifndef _ProjLib_HCompProjectedCurve_HeaderFile
 #define _ProjLib_HCompProjectedCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ProjLib_HCompProjectedCurve_HeaderFile
 #include <Handle_ProjLib_HCompProjectedCurve.hxx>
-#endif
 
-#ifndef _ProjLib_CompProjectedCurve_HeaderFile
 #include <ProjLib_CompProjectedCurve.hxx>
-#endif
-#ifndef _Adaptor2d_HCurve2d_HeaderFile
 #include <Adaptor2d_HCurve2d.hxx>
-#endif
 class Standard_OutOfRange;
 class Standard_NoSuchObject;
 class Standard_DomainError;
@@ -30,20 +20,21 @@ class Adaptor2d_Curve2d;
 
 
 
-class ProjLib_HCompProjectedCurve : public Adaptor2d_HCurve2d {
+class ProjLib_HCompProjectedCurve : public Adaptor2d_HCurve2d
+{
 
 public:
 
   
-  Standard_EXPORT   ProjLib_HCompProjectedCurve();
+  Standard_EXPORT ProjLib_HCompProjectedCurve();
   
-  Standard_EXPORT   ProjLib_HCompProjectedCurve(const ProjLib_CompProjectedCurve& C);
+  Standard_EXPORT ProjLib_HCompProjectedCurve(const ProjLib_CompProjectedCurve& C);
   
-  Standard_EXPORT     void Set(const ProjLib_CompProjectedCurve& C) ;
+  Standard_EXPORT   void Set (const ProjLib_CompProjectedCurve& C) ;
   
-  Standard_EXPORT    const Adaptor2d_Curve2d& Curve2d() const;
+  Standard_EXPORT  const  Adaptor2d_Curve2d& Curve2d()  const;
   
-        ProjLib_CompProjectedCurve& ChangeCurve2d() ;
+      ProjLib_CompProjectedCurve& ChangeCurve2d() ;
 
 
 
@@ -53,7 +44,7 @@ public:
 protected:
 
 
-ProjLib_CompProjectedCurve myCurve;
+  ProjLib_CompProjectedCurve myCurve;
 
 
 private: 
@@ -80,7 +71,6 @@ private:
 #undef Adaptor2d_GenHCurve2d_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ProjLib_HCompProjectedCurve_HeaderFile

@@ -6,31 +6,15 @@
 #ifndef _Transfer_HSequenceOfBinder_HeaderFile
 #define _Transfer_HSequenceOfBinder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Transfer_HSequenceOfBinder_HeaderFile
 #include <Handle_Transfer_HSequenceOfBinder.hxx>
-#endif
 
-#ifndef _Transfer_SequenceOfBinder_HeaderFile
 #include <Transfer_SequenceOfBinder.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_Transfer_Binder_HeaderFile
 #include <Handle_Transfer_Binder.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Transfer_Binder;
@@ -38,56 +22,57 @@ class Transfer_SequenceOfBinder;
 
 
 
-class Transfer_HSequenceOfBinder : public MMgt_TShared {
+class Transfer_HSequenceOfBinder : public MMgt_TShared
+{
 
 public:
 
   
-      Transfer_HSequenceOfBinder();
+    Transfer_HSequenceOfBinder();
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void Append(const Handle(Transfer_Binder)& anItem) ;
+  Standard_EXPORT   void Append (const Handle(Transfer_Binder)& anItem) ;
   
-  Standard_EXPORT     void Append(const Handle(Transfer_HSequenceOfBinder)& aSequence) ;
+  Standard_EXPORT   void Append (const Handle(Transfer_HSequenceOfBinder)& aSequence) ;
   
-  Standard_EXPORT     void Prepend(const Handle(Transfer_Binder)& anItem) ;
+  Standard_EXPORT   void Prepend (const Handle(Transfer_Binder)& anItem) ;
   
-  Standard_EXPORT     void Prepend(const Handle(Transfer_HSequenceOfBinder)& aSequence) ;
+  Standard_EXPORT   void Prepend (const Handle(Transfer_HSequenceOfBinder)& aSequence) ;
   
-  Standard_EXPORT     void Reverse() ;
+  Standard_EXPORT   void Reverse() ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(Transfer_Binder)& anItem) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(Transfer_Binder)& anItem) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(Transfer_HSequenceOfBinder)& aSequence) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(Transfer_HSequenceOfBinder)& aSequence) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(Transfer_Binder)& anItem) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(Transfer_Binder)& anItem) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(Transfer_HSequenceOfBinder)& aSequence) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(Transfer_HSequenceOfBinder)& aSequence) ;
   
-  Standard_EXPORT     void Exchange(const Standard_Integer anIndex,const Standard_Integer anOtherIndex) ;
+  Standard_EXPORT   void Exchange (const Standard_Integer anIndex, const Standard_Integer anOtherIndex) ;
   
-  Standard_EXPORT     Handle_Transfer_HSequenceOfBinder Split(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(Transfer_HSequenceOfBinder) Split (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer anIndex,const Handle(Transfer_Binder)& anItem) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer anIndex, const Handle(Transfer_Binder)& anItem) ;
   
-  Standard_EXPORT    const Handle_Transfer_Binder& Value(const Standard_Integer anIndex) const;
+  Standard_EXPORT  const  Handle(Transfer_Binder)& Value (const Standard_Integer anIndex)  const;
   
-  Standard_EXPORT     Handle_Transfer_Binder& ChangeValue(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(Transfer_Binder)& ChangeValue (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer anIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer fromIndex,const Standard_Integer toIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer fromIndex, const Standard_Integer toIndex) ;
   
-       const Transfer_SequenceOfBinder& Sequence() const;
+     const  Transfer_SequenceOfBinder& Sequence()  const;
   
-        Transfer_SequenceOfBinder& ChangeSequence() ;
+      Transfer_SequenceOfBinder& ChangeSequence() ;
   
-  Standard_EXPORT     Handle_Transfer_HSequenceOfBinder ShallowCopy() const;
+  Standard_EXPORT   Handle(Transfer_HSequenceOfBinder) ShallowCopy()  const;
 
 
 
@@ -102,12 +87,12 @@ protected:
 private: 
 
 
-Transfer_SequenceOfBinder mySequence;
+  Transfer_SequenceOfBinder mySequence;
 
 
 };
 
-#define Item Handle_Transfer_Binder
+#define Item Handle(Transfer_Binder)
 #define Item_hxx <Transfer_Binder.hxx>
 #define TheSequence Transfer_SequenceOfBinder
 #define TheSequence_hxx <Transfer_SequenceOfBinder.hxx>
@@ -128,11 +113,10 @@ Transfer_SequenceOfBinder mySequence;
 #undef TCollection_HSequence_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline Handle_Transfer_HSequenceOfBinder ShallowCopy(const Handle_Transfer_HSequenceOfBinder& me) {
+inline Handle(Transfer_HSequenceOfBinder) ShallowCopy(const Handle(Transfer_HSequenceOfBinder)& me) {
  return me->ShallowCopy();
 }
 
 
 
-#endif
+#endif // _Transfer_HSequenceOfBinder_HeaderFile

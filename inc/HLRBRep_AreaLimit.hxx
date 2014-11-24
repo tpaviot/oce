@@ -6,75 +6,61 @@
 #ifndef _HLRBRep_AreaLimit_HeaderFile
 #define _HLRBRep_AreaLimit_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_HLRBRep_AreaLimit_HeaderFile
 #include <Handle_HLRBRep_AreaLimit.hxx>
-#endif
 
-#ifndef _HLRAlgo_Intersection_HeaderFile
 #include <HLRAlgo_Intersection.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopAbs_State_HeaderFile
 #include <TopAbs_State.hxx>
-#endif
-#ifndef _Handle_HLRBRep_AreaLimit_HeaderFile
 #include <Handle_HLRBRep_AreaLimit.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class HLRAlgo_Intersection;
 
 
-//! The  private  nested class AreaLimit represents   a -- <br>
-//!          vertex on  the Edge with the  state on the left and -- <br>
-//!          the right. <br>
-class HLRBRep_AreaLimit : public MMgt_TShared {
+//! The  private  nested class AreaLimit represents   a --
+//! vertex on  the Edge with the  state on the left and --
+//! the right.
+class HLRBRep_AreaLimit : public MMgt_TShared
+{
 
 public:
 
-  //! The previous and next field are set to NULL. <br>
-  Standard_EXPORT   HLRBRep_AreaLimit(const HLRAlgo_Intersection& V,const Standard_Boolean Boundary,const Standard_Boolean Interference,const TopAbs_State StateBefore,const TopAbs_State StateAfter,const TopAbs_State EdgeBefore,const TopAbs_State EdgeAfter);
   
-  Standard_EXPORT     void StateBefore(const TopAbs_State St) ;
+  //! The previous and next field are set to NULL.
+  Standard_EXPORT HLRBRep_AreaLimit(const HLRAlgo_Intersection& V, const Standard_Boolean Boundary, const Standard_Boolean Interference, const TopAbs_State StateBefore, const TopAbs_State StateAfter, const TopAbs_State EdgeBefore, const TopAbs_State EdgeAfter);
   
-  Standard_EXPORT     void StateAfter(const TopAbs_State St) ;
+  Standard_EXPORT   void StateBefore (const TopAbs_State St) ;
   
-  Standard_EXPORT     void EdgeBefore(const TopAbs_State St) ;
+  Standard_EXPORT   void StateAfter (const TopAbs_State St) ;
   
-  Standard_EXPORT     void EdgeAfter(const TopAbs_State St) ;
+  Standard_EXPORT   void EdgeBefore (const TopAbs_State St) ;
   
-  Standard_EXPORT     void Previous(const Handle(HLRBRep_AreaLimit)& P) ;
+  Standard_EXPORT   void EdgeAfter (const TopAbs_State St) ;
   
-  Standard_EXPORT     void Next(const Handle(HLRBRep_AreaLimit)& N) ;
+  Standard_EXPORT   void Previous (const Handle(HLRBRep_AreaLimit)& P) ;
   
-  Standard_EXPORT    const HLRAlgo_Intersection& Vertex() const;
+  Standard_EXPORT   void Next (const Handle(HLRBRep_AreaLimit)& N) ;
   
-  Standard_EXPORT     Standard_Boolean IsBoundary() const;
+  Standard_EXPORT  const  HLRAlgo_Intersection& Vertex()  const;
   
-  Standard_EXPORT     Standard_Boolean IsInterference() const;
+  Standard_EXPORT   Standard_Boolean IsBoundary()  const;
   
-  Standard_EXPORT     TopAbs_State StateBefore() const;
+  Standard_EXPORT   Standard_Boolean IsInterference()  const;
   
-  Standard_EXPORT     TopAbs_State StateAfter() const;
+  Standard_EXPORT   TopAbs_State StateBefore()  const;
   
-  Standard_EXPORT     TopAbs_State EdgeBefore() const;
+  Standard_EXPORT   TopAbs_State StateAfter()  const;
   
-  Standard_EXPORT     TopAbs_State EdgeAfter() const;
+  Standard_EXPORT   TopAbs_State EdgeBefore()  const;
   
-  Standard_EXPORT     Handle_HLRBRep_AreaLimit Previous() const;
+  Standard_EXPORT   TopAbs_State EdgeAfter()  const;
   
-  Standard_EXPORT     Handle_HLRBRep_AreaLimit Next() const;
+  Standard_EXPORT   Handle(HLRBRep_AreaLimit) Previous()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   Handle(HLRBRep_AreaLimit) Next()  const;
+  
+  Standard_EXPORT   void Clear() ;
 
 
 
@@ -89,15 +75,15 @@ protected:
 private: 
 
 
-HLRAlgo_Intersection myVertex;
-Standard_Boolean myBoundary;
-Standard_Boolean myInterference;
-TopAbs_State myStateBefore;
-TopAbs_State myStateAfter;
-TopAbs_State myEdgeBefore;
-TopAbs_State myEdgeAfter;
-Handle_HLRBRep_AreaLimit myPrevious;
-Handle_HLRBRep_AreaLimit myNext;
+  HLRAlgo_Intersection myVertex;
+  Standard_Boolean myBoundary;
+  Standard_Boolean myInterference;
+  TopAbs_State myStateBefore;
+  TopAbs_State myStateAfter;
+  TopAbs_State myEdgeBefore;
+  TopAbs_State myEdgeAfter;
+  Handle(HLRBRep_AreaLimit) myPrevious;
+  Handle(HLRBRep_AreaLimit) myNext;
 
 
 };
@@ -106,7 +92,6 @@ Handle_HLRBRep_AreaLimit myNext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_AreaLimit_HeaderFile

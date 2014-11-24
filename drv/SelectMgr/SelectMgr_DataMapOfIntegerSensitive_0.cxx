@@ -5,29 +5,17 @@
 
 #include <SelectMgr_DataMapOfIntegerSensitive.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _SelectBasics_SensitiveEntity_HeaderFile
 #include <SelectBasics_SensitiveEntity.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _SelectMgr_DataMapNodeOfDataMapOfIntegerSensitive_HeaderFile
 #include <SelectMgr_DataMapNodeOfDataMapOfIntegerSensitive.hxx>
-#endif
-#ifndef _SelectMgr_DataMapIteratorOfDataMapOfIntegerSensitive_HeaderFile
 #include <SelectMgr_DataMapIteratorOfDataMapOfIntegerSensitive.hxx>
-#endif
  
 
 #define TheKey Standard_Integer
 #define TheKey_hxx <Standard_Integer.hxx>
-#define TheItem Handle_SelectBasics_SensitiveEntity
+#define TheItem Handle(SelectBasics_SensitiveEntity)
 #define TheItem_hxx <SelectBasics_SensitiveEntity.hxx>
 #define Hasher TColStd_MapIntegerHasher
 #define Hasher_hxx <TColStd_MapIntegerHasher.hxx>

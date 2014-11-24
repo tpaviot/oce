@@ -6,33 +6,20 @@
 #ifndef _Expr_ExprFailure_HeaderFile
 #define _Expr_ExprFailure_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_DefineException_HeaderFile
 #include <Standard_DefineException.hxx>
-#endif
-#ifndef _Standard_SStream_HeaderFile
 #include <Standard_SStream.hxx>
-#endif
-
-#ifndef _Standard_Failure_HeaderFile
 #include <Standard_Failure.hxx>
-#endif
-#ifndef _Handle_Expr_ExprFailure_HeaderFile
 #include <Handle_Expr_ExprFailure.hxx>
-#endif
 
 #if !defined No_Exception && !defined No_Expr_ExprFailure
-#define Expr_ExprFailure_Raise_if(CONDITION,MESSAGE) \
+  #define Expr_ExprFailure_Raise_if(CONDITION, MESSAGE) \
   if (CONDITION) Expr_ExprFailure::Raise(MESSAGE);
 #else
-#define Expr_ExprFailure_Raise_if(CONDITION,MESSAGE)
+  #define Expr_ExprFailure_Raise_if(CONDITION, MESSAGE)
 #endif
 
-DEFINE_STANDARD_EXCEPTION(Expr_ExprFailure,Standard_Failure)
+DEFINE_STANDARD_EXCEPTION(Expr_ExprFailure, Standard_Failure)
 
-#endif
+#endif // _Expr_ExprFailure_HeaderFile

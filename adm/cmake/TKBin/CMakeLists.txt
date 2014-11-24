@@ -5,7 +5,6 @@ if (WIN32)
   list( APPEND TKBin_PRECOMPILED_DEFS "-D__BinMDataXtd_DLL" )
   list( APPEND TKBin_PRECOMPILED_DEFS "-D__BinMPrsStd_DLL" )
   list( APPEND TKBin_PRECOMPILED_DEFS "-D__BinMNaming_DLL" )
-  list( APPEND TKBin_PRECOMPILED_DEFS "-D__BinTools_DLL" )
   string( REGEX REPLACE ";" " " TKBin_PRECOMPILED_DEFS "${TKBin_PRECOMPILED_DEFS}")
 endif()
 
@@ -46,13 +45,6 @@ endif()
       list( APPEND TKBin_COMPILER_DIRECTORIES "${BUILD_PATCH_DIR}/src/BinMNaming" )
     ENDIF()
 
-    IF(EXISTS "${BUILD_PATCH_DIR}/drv/BinTools")
-      list( APPEND TKBin_COMPILER_DIRECTORIES "${BUILD_PATCH_DIR}/drv/BinTools" )
-    ENDIF()
-    IF(EXISTS "${BUILD_PATCH_DIR}/src/BinTools")
-      list( APPEND TKBin_COMPILER_DIRECTORIES "${BUILD_PATCH_DIR}/src/BinTools" )
-    ENDIF()
-
   ENDIF()
 
   IF(EXISTS "${CMAKE_SOURCE_DIR}/drv/BinDrivers")
@@ -83,13 +75,6 @@ endif()
     list( APPEND TKBin_COMPILER_DIRECTORIES "${CMAKE_SOURCE_DIR}/src/BinMNaming" )
   ENDIF()
 
-  IF(EXISTS "${CMAKE_SOURCE_DIR}/drv/BinTools")
-    list( APPEND TKBin_COMPILER_DIRECTORIES "${CMAKE_SOURCE_DIR}/drv/BinTools" )
-  ENDIF()
-  IF(EXISTS "${CMAKE_SOURCE_DIR}/src/BinTools")
-    list( APPEND TKBin_COMPILER_DIRECTORIES "${CMAKE_SOURCE_DIR}/src/BinTools" )
-  ENDIF()
-
 IF (WIN32)
   IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "")
   ENDIF()
@@ -113,6 +98,7 @@ ENDIF()
 
 if (WIN32)
 elseif(APPLE)
+elseif(ANDROID)
 else()
 endif()
 
@@ -296,66 +282,6 @@ endif()
     ENDIF()
   ENDIF()
 
-  IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "" AND EXISTS "${BUILD_PATCH_DIR}//src/BinTools/BinTools.cxx")
-    list( APPEND TKBin_USED_SRCFILES "${BUILD_PATCH_DIR}//src/BinTools/BinTools.cxx" )
-    SOURCE_GROUP (BinTools FILES "${BUILD_PATCH_DIR}//src/BinTools/BinTools.cxx")
-  ELSE()
-    IF(EXISTS "${CMAKE_SOURCE_DIR}//src/BinTools/BinTools.cxx")
-      list( APPEND TKBin_USED_SRCFILES "${CMAKE_SOURCE_DIR}//src/BinTools/BinTools.cxx" )
-      SOURCE_GROUP (BinTools FILES "${CMAKE_SOURCE_DIR}//src/BinTools/BinTools.cxx")
-    ENDIF()
-  ENDIF()
-
-  IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "" AND EXISTS "${BUILD_PATCH_DIR}//src/BinTools/BinTools_Curve2dSet.cxx")
-    list( APPEND TKBin_USED_SRCFILES "${BUILD_PATCH_DIR}//src/BinTools/BinTools_Curve2dSet.cxx" )
-    SOURCE_GROUP (BinTools FILES "${BUILD_PATCH_DIR}//src/BinTools/BinTools_Curve2dSet.cxx")
-  ELSE()
-    IF(EXISTS "${CMAKE_SOURCE_DIR}//src/BinTools/BinTools_Curve2dSet.cxx")
-      list( APPEND TKBin_USED_SRCFILES "${CMAKE_SOURCE_DIR}//src/BinTools/BinTools_Curve2dSet.cxx" )
-      SOURCE_GROUP (BinTools FILES "${CMAKE_SOURCE_DIR}//src/BinTools/BinTools_Curve2dSet.cxx")
-    ENDIF()
-  ENDIF()
-
-  IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "" AND EXISTS "${BUILD_PATCH_DIR}//src/BinTools/BinTools_CurveSet.cxx")
-    list( APPEND TKBin_USED_SRCFILES "${BUILD_PATCH_DIR}//src/BinTools/BinTools_CurveSet.cxx" )
-    SOURCE_GROUP (BinTools FILES "${BUILD_PATCH_DIR}//src/BinTools/BinTools_CurveSet.cxx")
-  ELSE()
-    IF(EXISTS "${CMAKE_SOURCE_DIR}//src/BinTools/BinTools_CurveSet.cxx")
-      list( APPEND TKBin_USED_SRCFILES "${CMAKE_SOURCE_DIR}//src/BinTools/BinTools_CurveSet.cxx" )
-      SOURCE_GROUP (BinTools FILES "${CMAKE_SOURCE_DIR}//src/BinTools/BinTools_CurveSet.cxx")
-    ENDIF()
-  ENDIF()
-
-  IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "" AND EXISTS "${BUILD_PATCH_DIR}//src/BinTools/BinTools_LocationSet.cxx")
-    list( APPEND TKBin_USED_SRCFILES "${BUILD_PATCH_DIR}//src/BinTools/BinTools_LocationSet.cxx" )
-    SOURCE_GROUP (BinTools FILES "${BUILD_PATCH_DIR}//src/BinTools/BinTools_LocationSet.cxx")
-  ELSE()
-    IF(EXISTS "${CMAKE_SOURCE_DIR}//src/BinTools/BinTools_LocationSet.cxx")
-      list( APPEND TKBin_USED_SRCFILES "${CMAKE_SOURCE_DIR}//src/BinTools/BinTools_LocationSet.cxx" )
-      SOURCE_GROUP (BinTools FILES "${CMAKE_SOURCE_DIR}//src/BinTools/BinTools_LocationSet.cxx")
-    ENDIF()
-  ENDIF()
-
-  IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "" AND EXISTS "${BUILD_PATCH_DIR}//src/BinTools/BinTools_ShapeSet.cxx")
-    list( APPEND TKBin_USED_SRCFILES "${BUILD_PATCH_DIR}//src/BinTools/BinTools_ShapeSet.cxx" )
-    SOURCE_GROUP (BinTools FILES "${BUILD_PATCH_DIR}//src/BinTools/BinTools_ShapeSet.cxx")
-  ELSE()
-    IF(EXISTS "${CMAKE_SOURCE_DIR}//src/BinTools/BinTools_ShapeSet.cxx")
-      list( APPEND TKBin_USED_SRCFILES "${CMAKE_SOURCE_DIR}//src/BinTools/BinTools_ShapeSet.cxx" )
-      SOURCE_GROUP (BinTools FILES "${CMAKE_SOURCE_DIR}//src/BinTools/BinTools_ShapeSet.cxx")
-    ENDIF()
-  ENDIF()
-
-  IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "" AND EXISTS "${BUILD_PATCH_DIR}//src/BinTools/BinTools_SurfaceSet.cxx")
-    list( APPEND TKBin_USED_SRCFILES "${BUILD_PATCH_DIR}//src/BinTools/BinTools_SurfaceSet.cxx" )
-    SOURCE_GROUP (BinTools FILES "${BUILD_PATCH_DIR}//src/BinTools/BinTools_SurfaceSet.cxx")
-  ELSE()
-    IF(EXISTS "${CMAKE_SOURCE_DIR}//src/BinTools/BinTools_SurfaceSet.cxx")
-      list( APPEND TKBin_USED_SRCFILES "${CMAKE_SOURCE_DIR}//src/BinTools/BinTools_SurfaceSet.cxx" )
-      SOURCE_GROUP (BinTools FILES "${CMAKE_SOURCE_DIR}//src/BinTools/BinTools_SurfaceSet.cxx")
-    ENDIF()
-  ENDIF()
-
 
 IF (WIN32)
 ELSE()
@@ -372,13 +298,13 @@ if ("${USED_TOOLKITS}" STREQUAL "" OR DEFINED TurnONtheTKBin)
  set_property(TARGET TKBin PROPERTY FOLDER ApplicationFramework)
 
  install( TARGETS TKBin
-                                 RUNTIME DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_SUFFIX}"
-                                 ARCHIVE DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_SUFFIX}"
-                                 LIBRARY DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_SUFFIX}")
+                                 RUNTIME DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_POSTFIX}"
+                                 ARCHIVE DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_POSTFIX}"
+                                 LIBRARY DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_POSTFIX}")
 
  if (MSVC)
-  install( FILES  ${CMAKE_BINARY_DIR}/out/bin/Debug/TKBin.pdb CONFIGURATIONS Debug
-                                  DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_SUFFIX}")
+  install( FILES  ${CMAKE_BINARY_DIR}/out/bind/Debug/TKBin.pdb CONFIGURATIONS Debug
+                                  DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_POSTFIX}")
  endif()
 
 

@@ -6,47 +6,31 @@
 #ifndef _IntPatch_RstInt_HeaderFile
 #define _IntPatch_RstInt_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_IntPatch_Line_HeaderFile
 #include <Handle_IntPatch_Line.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_TopolTool_HeaderFile
 #include <Handle_Adaptor3d_TopolTool.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Standard_DomainError;
 class IntPatch_Line;
 class Adaptor3d_HSurface;
 class Adaptor3d_TopolTool;
 
 
-//! trouver les points d intersection entre la ligne de <br>
-//!          cheminement et les arcs de restriction <br>
-class IntPatch_RstInt  {
+//! trouver les points d intersection entre la ligne de
+//! cheminement et les arcs de restriction
+class IntPatch_RstInt 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  void PutVertexOnLine(Handle(IntPatch_Line)& L,const Handle(Adaptor3d_HSurface)& Surf,const Handle(Adaptor3d_TopolTool)& Domain,const Handle(Adaptor3d_HSurface)& OtherSurf,const Standard_Boolean OnFirst,const Standard_Real Tol,const Standard_Boolean hasBeenAdded = Standard_False) ;
-
+  Standard_EXPORT static   void PutVertexOnLine (Handle(IntPatch_Line)& L, const Handle(Adaptor3d_HSurface)& Surf, const Handle(Adaptor3d_TopolTool)& Domain, const Handle(Adaptor3d_HSurface)& OtherSurf, const Standard_Boolean OnFirst, const Standard_Real Tol, const Standard_Boolean hasBeenAdded = Standard_False) ;
 
 
 
@@ -69,7 +53,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntPatch_RstInt_HeaderFile

@@ -5,21 +5,11 @@
 
 #include <IntTools_MapIteratorOfMapOfSurfaceSample.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _IntTools_SurfaceRangeSample_HeaderFile
 #include <IntTools_SurfaceRangeSample.hxx>
-#endif
-#ifndef _IntTools_SurfaceRangeSampleMapHasher_HeaderFile
 #include <IntTools_SurfaceRangeSampleMapHasher.hxx>
-#endif
-#ifndef _IntTools_MapOfSurfaceSample_HeaderFile
 #include <IntTools_MapOfSurfaceSample.hxx>
-#endif
-#ifndef _IntTools_StdMapNodeOfMapOfSurfaceSample_HeaderFile
 #include <IntTools_StdMapNodeOfMapOfSurfaceSample.hxx>
-#endif
  
 
 #define TheKey IntTools_SurfaceRangeSample

@@ -6,22 +6,15 @@
 #ifndef _Handle_StepFEA_NodeGroup_HeaderFile
 #define _Handle_StepFEA_NodeGroup_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepFEA_FeaGroup_HeaderFile
 #include <Handle_StepFEA_FeaGroup.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepFEA_FeaGroup);
 class StepFEA_NodeGroup;
 
-DEFINE_STANDARD_HANDLE(StepFEA_NodeGroup,StepFEA_FeaGroup)
+DEFINE_STANDARD_HANDLE(StepFEA_NodeGroup, StepFEA_FeaGroup)
 
-#endif
+#endif // _Handle_StepFEA_NodeGroup_HeaderFile

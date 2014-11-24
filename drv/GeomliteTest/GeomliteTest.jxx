@@ -1,3 +1,1 @@
-#ifndef _GeomliteTest_HeaderFile
 #include <GeomliteTest.hxx>
-#endif

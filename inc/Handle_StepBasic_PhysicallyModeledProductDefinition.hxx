@@ -6,22 +6,15 @@
 #ifndef _Handle_StepBasic_PhysicallyModeledProductDefinition_HeaderFile
 #define _Handle_StepBasic_PhysicallyModeledProductDefinition_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepBasic_ProductDefinition_HeaderFile
 #include <Handle_StepBasic_ProductDefinition.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepBasic_ProductDefinition);
 class StepBasic_PhysicallyModeledProductDefinition;
 
-DEFINE_STANDARD_HANDLE(StepBasic_PhysicallyModeledProductDefinition,StepBasic_ProductDefinition)
+DEFINE_STANDARD_HANDLE(StepBasic_PhysicallyModeledProductDefinition, StepBasic_ProductDefinition)
 
-#endif
+#endif // _Handle_StepBasic_PhysicallyModeledProductDefinition_HeaderFile

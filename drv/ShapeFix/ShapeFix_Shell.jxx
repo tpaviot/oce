@@ -1,21 +1,7 @@
-#ifndef _ShapeFix_Face_HeaderFile
 #include <ShapeFix_Face.hxx>
-#endif
-#ifndef _TopoDS_Shell_HeaderFile
 #include <TopoDS_Shell.hxx>
-#endif
-#ifndef _Message_ProgressIndicator_HeaderFile
 #include <Message_ProgressIndicator.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopoDS_Compound_HeaderFile
 #include <TopoDS_Compound.hxx>
-#endif
-#ifndef _ShapeExtend_BasicMsgRegistrator_HeaderFile
 #include <ShapeExtend_BasicMsgRegistrator.hxx>
-#endif
-#ifndef _ShapeFix_Shell_HeaderFile
 #include <ShapeFix_Shell.hxx>
-#endif

@@ -6,36 +6,30 @@
 #ifndef _IGESToBRep_AlgoContainer_HeaderFile
 #define _IGESToBRep_AlgoContainer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESToBRep_AlgoContainer_HeaderFile
 #include <Handle_IGESToBRep_AlgoContainer.hxx>
-#endif
 
-#ifndef _Handle_IGESToBRep_ToolContainer_HeaderFile
 #include <Handle_IGESToBRep_ToolContainer.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class IGESToBRep_ToolContainer;
 
 
 
-class IGESToBRep_AlgoContainer : public MMgt_TShared {
+class IGESToBRep_AlgoContainer : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   IGESToBRep_AlgoContainer();
-  //! Sets ToolContainer <br>
-        void SetToolContainer(const Handle(IGESToBRep_ToolContainer)& TC) ;
-  //! Returns ToolContainer <br>
-        Handle_IGESToBRep_ToolContainer ToolContainer() const;
+  
+  //! Empty constructor
+  Standard_EXPORT IGESToBRep_AlgoContainer();
+  
+  //! Sets ToolContainer
+      void SetToolContainer (const Handle(IGESToBRep_ToolContainer)& TC) ;
+  
+  //! Returns ToolContainer
+      Handle(IGESToBRep_ToolContainer) ToolContainer()  const;
 
 
 
@@ -50,7 +44,7 @@ protected:
 private: 
 
 
-Handle_IGESToBRep_ToolContainer myTC;
+  Handle(IGESToBRep_ToolContainer) myTC;
 
 
 };
@@ -60,7 +54,6 @@ Handle_IGESToBRep_ToolContainer myTC;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESToBRep_AlgoContainer_HeaderFile

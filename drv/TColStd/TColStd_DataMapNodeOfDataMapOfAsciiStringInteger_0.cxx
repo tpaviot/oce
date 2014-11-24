@@ -5,19 +5,11 @@
 
 #include <TColStd_DataMapNodeOfDataMapOfAsciiStringInteger.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TColStd_DataMapOfAsciiStringInteger_HeaderFile
 #include <TColStd_DataMapOfAsciiStringInteger.hxx>
-#endif
-#ifndef _TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger_HeaderFile
 #include <TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger.hxx>
-#endif
 
  
 

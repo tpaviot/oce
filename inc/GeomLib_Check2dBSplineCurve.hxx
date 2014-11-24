@@ -6,53 +6,42 @@
 #ifndef _GeomLib_Check2dBSplineCurve_HeaderFile
 #define _GeomLib_Check2dBSplineCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom2d_BSplineCurve_HeaderFile
 #include <Handle_Geom2d_BSplineCurve.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
 class Geom2d_BSplineCurve;
 class StdFail_NotDone;
 class Standard_OutOfRange;
 
 
-//!  Checks for the end  tangents : wether or not those <br>
-//!           are reversed <br>
-class GeomLib_Check2dBSplineCurve  {
+//! Checks for the end  tangents : wether or not those
+//! are reversed
+class GeomLib_Check2dBSplineCurve 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomLib_Check2dBSplineCurve(const Handle(Geom2d_BSplineCurve)& Curve,const Standard_Real Tolerance,const Standard_Real AngularTolerance);
+  Standard_EXPORT GeomLib_Check2dBSplineCurve(const Handle(Geom2d_BSplineCurve)& Curve, const Standard_Real Tolerance, const Standard_Real AngularTolerance);
   
-        Standard_Boolean IsDone() const;
+      Standard_Boolean IsDone()  const;
   
-  Standard_EXPORT     void NeedTangentFix(Standard_Boolean& FirstFlag,Standard_Boolean& SecondFlag) const;
+  Standard_EXPORT   void NeedTangentFix (Standard_Boolean& FirstFlag, Standard_Boolean& SecondFlag)  const;
   
-  Standard_EXPORT     void FixTangent(const Standard_Boolean FirstFlag,const Standard_Boolean LastFlag) ;
-  //!  modifies the curve <br>
-//! by fixing the first or the last tangencies <br>
-//! <br>//! if Index3D not in the Range [1,Nb3dSpaces] <br>//! if the Approx is not Done <br>
-  Standard_EXPORT     Handle_Geom2d_BSplineCurve FixedTangent(const Standard_Boolean FirstFlag,const Standard_Boolean LastFlag) ;
-
+  Standard_EXPORT   void FixTangent (const Standard_Boolean FirstFlag, const Standard_Boolean LastFlag) ;
+  
+  //! modifies the curve
+  //! by fixing the first or the last tangencies
+  //!
+  //! if Index3D not in the Range [1,Nb3dSpaces]
+  //! if the Approx is not Done
+  Standard_EXPORT   Handle(Geom2d_BSplineCurve) FixedTangent (const Standard_Boolean FirstFlag, const Standard_Boolean LastFlag) ;
 
 
 
@@ -67,14 +56,14 @@ private:
 
 
 
-Handle_Geom2d_BSplineCurve myCurve;
-Standard_Boolean myDone;
-Standard_Boolean myFixFirstTangent;
-Standard_Boolean myFixLastTangent;
-Standard_Real myAngularTolerance;
-Standard_Real myTolerance;
-gp_Pnt2d myFirstPole;
-gp_Pnt2d myLastPole;
+  Handle(Geom2d_BSplineCurve) myCurve;
+  Standard_Boolean myDone;
+  Standard_Boolean myFixFirstTangent;
+  Standard_Boolean myFixLastTangent;
+  Standard_Real myAngularTolerance;
+  Standard_Real myTolerance;
+  gp_Pnt2d myFirstPole;
+  gp_Pnt2d myLastPole;
 
 
 };
@@ -84,7 +73,6 @@ gp_Pnt2d myLastPole;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomLib_Check2dBSplineCurve_HeaderFile

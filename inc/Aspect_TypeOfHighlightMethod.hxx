@@ -6,20 +6,18 @@
 #ifndef _Aspect_TypeOfHighlightMethod_HeaderFile
 #define _Aspect_TypeOfHighlightMethod_HeaderFile
 
-//! Definition of a highlight method <br>
-//! <br>
-//!          TOHM_COLOR          drawn in the highlight color <br>
-//!                              (default white) <br>
-//!          TOHM_BOUNDBOX       enclosed by the boundary box <br>
-//!                              (default white) <br>
-//! <br>
-enum Aspect_TypeOfHighlightMethod {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Definition of a highlight method
+//!
+//! TOHM_COLOR          drawn in the highlight color
+//! (default white)
+//! TOHM_BOUNDBOX       enclosed by the boundary box
+//! (default white)
+enum Aspect_TypeOfHighlightMethod
+{
 Aspect_TOHM_COLOR,
 Aspect_TOHM_BOUNDBOX
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_TypeOfHighlightMethod_HeaderFile

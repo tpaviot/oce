@@ -5,24 +5,12 @@
 
 #include <XSDRAWSTLVRML_ElemNodesMap.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TColStd_DataMapOfIntegerInteger_HeaderFile
 #include <TColStd_DataMapOfIntegerInteger.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _XSDRAWSTLVRML_DataMapNodeOfElemNodesMap_HeaderFile
 #include <XSDRAWSTLVRML_DataMapNodeOfElemNodesMap.hxx>
-#endif
-#ifndef _XSDRAWSTLVRML_DataMapIteratorOfElemNodesMap_HeaderFile
 #include <XSDRAWSTLVRML_DataMapIteratorOfElemNodesMap.hxx>
-#endif
  
 
 #define TheKey Standard_Integer

@@ -1,12 +1,4 @@
-#ifndef _MoniTool_SignText_HeaderFile
 #include <MoniTool_SignText.hxx>
-#endif
-#ifndef _Interface_CheckIterator_HeaderFile
 #include <Interface_CheckIterator.hxx>
-#endif
-#ifndef _Interface_InterfaceModel_HeaderFile
 #include <Interface_InterfaceModel.hxx>
-#endif
-#ifndef _IFSelect_CheckCounter_HeaderFile
 #include <IFSelect_CheckCounter.hxx>
-#endif

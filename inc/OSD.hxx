@@ -6,31 +6,15 @@
 #ifndef _OSD_HeaderFile
 #define _OSD_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_PCharacter_HeaderFile
 #include <Standard_PCharacter.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
 class OSD_Error;
 class OSD_Protection;
 class OSD_Path;
@@ -51,92 +35,102 @@ class OSD_SharedLibrary;
 class OSD_Thread;
 
 
-//! Set of Operating Sytem Dependent Tools <br>
-//!         (O)perating (S)ystem (D)ependent <br>
-class OSD  {
+//! Set of Operating Sytem Dependent Tools
+//! (O)perating (S)ystem (D)ependent
+class OSD 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! A tool to manage threads <br>
-//! Sets signal and exception handlers. <br>
-//! <b>Windows-specific notes<\b> <br>
-//! Compiled with MS VC++ sets 3 main handlers: <br>
-//! @li Signal handlers (via ::signal() functions) that translate system signals <br>
-//!     (SIGSEGV, SIGFPE, SIGILL) into C++ exceptions (classes inheriting <br>
-//!     Standard_Failure). They only be called if user calls ::raise() function <br>
-//!     with one of supported signal type set. <br>
-//! @li Exception handler OSD::WntHandler() (via ::SetUnhandledExceptionFilter()) <br>
-//!     that will be used when user's code is compiled with /EHs option. <br>
-//! @li Structured exception (SE) translator (via _set_se_translator()) that <br>
-//!     translates SE exceptions (aka asynchronous exceptions) into the <br>
-//!     C++ exceptions inheriting Standard_Failure. This translator will be <br>
-//!     used when user's code is compiled with /EHa option. <br>
-//! . <br>
-//! This approach ensures that regardless of the option the user chooses to <br>
-//! compile his code with (/EHs or /EHa), signals (or SE exceptions) will be <br>
-//! translated into Open CASCADE C++ exceptions. <br>
-//! . <br>
-//! If @a theFloatingSignal is TRUE then floating point exceptions will be <br>
-//! generated in accordance with the mask <br>
-//! <tt>_EM_INVALID | _EM_DENORMAL | _EM_ZERODIVIDE | _EM_OVERFLOW<\tt> that is <br>
-//! used to call ::_controlfp() system function. If @a theFloatingSignal is FALSE <br>
-//! corresponding operations (e.g. division by zero) will gracefully complete <br>
-//! without an exception. <br>
-//! . <br>
-//! <b>Unix-specific notes<\b> <br>
-//! OSD::SetSignal() sets handlers (via ::sigaction()) for multiple signals <br>
-//! (SIGFPE, SIGSEGV, etc). Currently the number of handled signals is much <br>
-//! greater than for Windows, in the future this may change to provide better <br>
-//! consistency with Windows. <br>
-//! . <br>
-//! @a theFloatingSignal is recognized on Sun Solaris, Linux, and SGI Irix to <br>
-//! generate floating-point exception according to the mask <br>
-//! <tt>FE_INVALID | FE_DIVBYZERO | FE_OVERFLOW</tt> (in Linux conventions).<br> <br>
-//! When compiled with OBJS macro defined, already set signal handlers (e.g. <br>
-//! by Data Base Managers) are not redefined. <br>
-//! . <br>
-//! <b>Common notes<\b> <br>
-//! If OSD::SetSignal() method is used in at least one thread, it must also be <br>
-//! called in any other thread where Open CASCADE will be used, to ensure <br>
-//! consistency of behavior. Its @a aFloatingSignal argument must be consistent <br>
-//! across threads. <br>
-//! . <br>
-//! Keep in mind that whether the C++ exception will really be thrown (i.e. <br>
-//! ::throw() will be called) is regulated by the NO_CXX_EXCEPTIONS and <br>
-//! OCC_CONVERT_SIGNALS macros used during compilation of Open CASCADE and <br>
-//! user's code. Refer to Foundation Classes User's Guide for further details. <br>
-//! <br>
-  Standard_EXPORT   static  void SetSignal(const Standard_Boolean theFloatingSignal = Standard_True) ;
-  //! Returns available memory in Kilobytes. <br>
-  Standard_EXPORT   static  Standard_Integer AvailableMemory() ;
-  //! Commands the process to sleep for a number of seconds. <br>
-  Standard_EXPORT   static  void SecSleep(const Standard_Integer aDelay) ;
-  //! Commands the process to sleep for a number of milliseconds <br>
-  Standard_EXPORT   static  void MilliSecSleep(const Standard_Integer aDelay) ;
   
-//!  Converts aReal into aCstring in exponential format with a period as <br>
-//!  decimal point, no thousand separator and no grouping of digits. <br>
-//!  The conversion is independant from the current locale <br>
-  Standard_EXPORT   static  Standard_Boolean RealToCString(const Standard_Real aReal,Standard_PCharacter& aString) ;
+  //! A tool to manage threads
+  //!
+  //! Sets signal and exception handlers.
+  //! <b>Windows-specific notes<\b>
+  //! Compiled with MS VC++ sets 3 main handlers:
+  //! @li Signal handlers (via ::signal() functions) that translate system signals
+  //! (SIGSEGV, SIGFPE, SIGILL) into C++ exceptions (classes inheriting
+  //! Standard_Failure). They only be called if user calls ::raise() function
+  //! with one of supported signal type set.
+  //! @li Exception handler OSD::WntHandler() (via ::SetUnhandledExceptionFilter())
+  //! that will be used when user's code is compiled with /EHs option.
+  //! @li Structured exception (SE) translator (via _set_se_translator()) that
+  //! translates SE exceptions (aka asynchronous exceptions) into the
+  //! C++ exceptions inheriting Standard_Failure. This translator will be
+  //! used when user's code is compiled with /EHa option.
+  //!
+  //! This approach ensures that regardless of the option the user chooses to
+  //! compile his code with (/EHs or /EHa), signals (or SE exceptions) will be
+  //! translated into Open CASCADE C++ exceptions.
+  //!
+  //! If @a theFloatingSignal is TRUE then floating point exceptions will be
+  //! generated in accordance with the mask
+  //! <tt>_EM_INVALID | _EM_DENORMAL | _EM_ZERODIVIDE | _EM_OVERFLOW<\tt> that is
+  //! used to call ::_controlfp() system function. If @a theFloatingSignal is FALSE
+  //! corresponding operations (e.g. division by zero) will gracefully complete
+  //! without an exception.
+  //!
+  //! <b>Unix-specific notes<\b>
+  //! OSD::SetSignal() sets handlers (via ::sigaction()) for multiple signals
+  //! (SIGFPE, SIGSEGV, etc). Currently the number of handled signals is much
+  //! greater than for Windows, in the future this may change to provide better
+  //! consistency with Windows.
+  //!
+  //! @a theFloatingSignal is recognized on Sun Solaris, Linux, and SGI Irix to
+  //! generate floating-point exception according to the mask
+  //! <tt>FE_INVALID | FE_DIVBYZERO | FE_OVERFLOW</tt> (in Linux conventions).<br>
+  //! When compiled with OBJS macro defined, already set signal handlers (e.g.
+  //! by Data Base Managers) are not redefined.
+  //!
+  //! <b>Common notes<\b>
+  //! If OSD::SetSignal() method is used in at least one thread, it must also be
+  //! called in any other thread where Open CASCADE will be used, to ensure
+  //! consistency of behavior. Its @a aFloatingSignal argument must be consistent
+  //! across threads.
+  //!
+  //! Keep in mind that whether the C++ exception will really be thrown (i.e.
+  //! ::throw() will be called) is regulated by the NO_CXX_EXCEPTIONS and
+  //! OCC_CONVERT_SIGNALS macros used during compilation of Open CASCADE and
+  //! user's code. Refer to Foundation Classes User's Guide for further details.
+  Standard_EXPORT static   void SetSignal (const Standard_Boolean theFloatingSignal = Standard_True) ;
   
-//!  Converts aCstring representing a real with a period as <br>
-//!  decimal point, no thousand separator and no grouping of digits <br>
-//!  into aReal . <br>
-//!  The conversion is independant from the current locale. <br>
-  Standard_EXPORT   static  Standard_Boolean CStringToReal(const Standard_CString aString,Standard_Real& aReal) ;
-  //! Tests if the quotient theDividend/theDivisor <br>
-//!          does not overflow <br>
-  Standard_EXPORT   static  Standard_Boolean IsDivisible(const Standard_Real aDividend,const Standard_Real aDivisor) ;
-  //! Returns the exponent in base 2 of a floating-point number. <br>
-  Standard_EXPORT   static  Standard_Integer GetExponent(const Standard_Real aReal) ;
-  //! Returns the mantissa of a floating-point number. <br>
-  Standard_EXPORT   static  Standard_Real GetMantissa(const Standard_Real aReal) ;
-  //! since Windows NT does not support 'SIGINT' signal like UNIX, <br>
-//!          then this method checks whether Ctrl-Break keystroke was or <br>
-//!          not. If yes then raises Exception_CTRL_BREAK. <br>
-  Standard_EXPORT   static  void ControlBreak() ;
+  //! Returns available memory in Kilobytes.
+  Standard_EXPORT static   Standard_Integer AvailableMemory() ;
+  
+  //! Commands the process to sleep for a number of seconds.
+  Standard_EXPORT static   void SecSleep (const Standard_Integer aDelay) ;
+  
+  //! Commands the process to sleep for a number of milliseconds
+  Standard_EXPORT static   void MilliSecSleep (const Standard_Integer aDelay) ;
+  
 
+  //! Converts aReal into aCstring in exponential format with a period as
+  //! decimal point, no thousand separator and no grouping of digits.
+  //! The conversion is independant from the current locale
+  Standard_EXPORT static   Standard_Boolean RealToCString (const Standard_Real aReal, Standard_PCharacter& aString) ;
+  
+
+  //! Converts aCstring representing a real with a period as
+  //! decimal point, no thousand separator and no grouping of digits
+  //! into aReal .
+  //! The conversion is independant from the current locale.
+  Standard_EXPORT static   Standard_Boolean CStringToReal (const Standard_CString aString, Standard_Real& aReal) ;
+  
+  //! Tests if the quotient theDividend/theDivisor
+  //! does not overflow
+  Standard_EXPORT static   Standard_Boolean IsDivisible (const Standard_Real aDividend, const Standard_Real aDivisor) ;
+  
+  //! Returns the exponent in base 2 of a floating-point number.
+  Standard_EXPORT static   Standard_Integer GetExponent (const Standard_Real aReal) ;
+  
+  //! Returns the mantissa of a floating-point number.
+  Standard_EXPORT static   Standard_Real GetMantissa (const Standard_Real aReal) ;
+  
+  //! since Windows NT does not support 'SIGINT' signal like UNIX,
+  //! then this method checks whether Ctrl-Break keystroke was or
+  //! not. If yes then raises Exception_CTRL_BREAK.
+  Standard_EXPORT static   void ControlBreak() ;
 
 
 
@@ -177,7 +171,6 @@ friend class OSD_Thread;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _OSD_HeaderFile

@@ -6,8 +6,11 @@
 #ifndef _IntWalk_StatusDeflection_HeaderFile
 #define _IntWalk_StatusDeflection_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum IntWalk_StatusDeflection {
+
+enum IntWalk_StatusDeflection
+{
 IntWalk_PasTropGrand,
 IntWalk_PointConfondu,
 IntWalk_ArretSurPointPrecedent,
@@ -15,8 +18,4 @@ IntWalk_ArretSurPoint,
 IntWalk_OK
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _IntWalk_StatusDeflection_HeaderFile

@@ -7,7 +7,6 @@
 #define _TopOpeBRep_PLineInter_HeaderFile
 
 class TopOpeBRep_LineInter;
-
 typedef TopOpeBRep_LineInter* TopOpeBRep_PLineInter;
 
-#endif
+#endif // _TopOpeBRep_PLineInter_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_IFSelect_DispPerOne_HeaderFile
 #define _Handle_IFSelect_DispPerOne_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IFSelect_Dispatch_HeaderFile
 #include <Handle_IFSelect_Dispatch.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IFSelect_Dispatch);
 class IFSelect_DispPerOne;
 
-DEFINE_STANDARD_HANDLE(IFSelect_DispPerOne,IFSelect_Dispatch)
+DEFINE_STANDARD_HANDLE(IFSelect_DispPerOne, IFSelect_Dispatch)
 
-#endif
+#endif // _Handle_IFSelect_DispPerOne_HeaderFile

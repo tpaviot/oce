@@ -5,18 +5,10 @@
 
 #include <TDF_LabelMap.hxx>
 
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TDF_LabelMapHasher_HeaderFile
 #include <TDF_LabelMapHasher.hxx>
-#endif
-#ifndef _TDF_StdMapNodeOfLabelMap_HeaderFile
 #include <TDF_StdMapNodeOfLabelMap.hxx>
-#endif
-#ifndef _TDF_MapIteratorOfLabelMap_HeaderFile
 #include <TDF_MapIteratorOfLabelMap.hxx>
-#endif
  
 
 #define TheKey TDF_Label

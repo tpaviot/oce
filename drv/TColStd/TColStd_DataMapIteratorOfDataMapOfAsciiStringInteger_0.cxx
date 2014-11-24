@@ -5,18 +5,10 @@
 
 #include <TColStd_DataMapIteratorOfDataMapOfAsciiStringInteger.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TColStd_DataMapOfAsciiStringInteger_HeaderFile
 #include <TColStd_DataMapOfAsciiStringInteger.hxx>
-#endif
-#ifndef _TColStd_DataMapNodeOfDataMapOfAsciiStringInteger_HeaderFile
 #include <TColStd_DataMapNodeOfDataMapOfAsciiStringInteger.hxx>
-#endif
  
 
 #define TheKey TCollection_AsciiString

@@ -6,46 +6,20 @@
 #ifndef _Contap_TheSearch_HeaderFile
 #define _Contap_TheSearch_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Contap_SequenceOfSegmentOfTheSearch_HeaderFile
 #include <Contap_SequenceOfSegmentOfTheSearch.hxx>
-#endif
-#ifndef _Contap_SequenceOfPathPointOfTheSearch_HeaderFile
 #include <Contap_SequenceOfPathPointOfTheSearch.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HVertex_HeaderFile
 #include <Handle_Adaptor3d_HVertex.hxx>
-#endif
-#ifndef _Handle_Adaptor2d_HCurve2d_HeaderFile
 #include <Handle_Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_TopolTool_HeaderFile
 #include <Handle_Adaptor3d_TopolTool.hxx>
-#endif
-#ifndef _Handle_Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch_HeaderFile
 #include <Handle_Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch.hxx>
-#endif
-#ifndef _Handle_Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch_HeaderFile
 #include <Handle_Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StdFail_NotDone;
 class Standard_OutOfRange;
 class Standard_ConstructionError;
@@ -64,28 +38,28 @@ class Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch;
 
 
 
-class Contap_TheSearch  {
+class Contap_TheSearch 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Contap_TheSearch();
+  Standard_EXPORT Contap_TheSearch();
   
-  Standard_EXPORT     void Perform(Contap_ArcFunction& F,const Handle(Adaptor3d_TopolTool)& Domain,const Standard_Real TolBoundary,const Standard_Real TolTangency,const Standard_Boolean RecheckOnRegularity = Standard_False) ;
+  Standard_EXPORT   void Perform (Contap_ArcFunction& F, const Handle(Adaptor3d_TopolTool)& Domain, const Standard_Real TolBoundary, const Standard_Real TolTangency, const Standard_Boolean RecheckOnRegularity = Standard_False) ;
   
-        Standard_Boolean IsDone() const;
+      Standard_Boolean IsDone()  const;
   
-        Standard_Boolean AllArcSolution() const;
+      Standard_Boolean AllArcSolution()  const;
   
-        Standard_Integer NbPoints() const;
+      Standard_Integer NbPoints()  const;
   
-       const Contap_ThePathPointOfTheSearch& Point(const Standard_Integer Index) const;
+     const  Contap_ThePathPointOfTheSearch& Point (const Standard_Integer Index)  const;
   
-        Standard_Integer NbSegments() const;
+      Standard_Integer NbSegments()  const;
   
-       const Contap_TheSegmentOfTheSearch& Segment(const Standard_Integer Index) const;
-
+     const  Contap_TheSegmentOfTheSearch& Segment (const Standard_Integer Index)  const;
 
 
 
@@ -100,17 +74,17 @@ private:
 
 
 
-Standard_Boolean done;
-Standard_Boolean all;
-Contap_SequenceOfSegmentOfTheSearch sseg;
-Contap_SequenceOfPathPointOfTheSearch spnt;
+  Standard_Boolean done;
+  Standard_Boolean all;
+  Contap_SequenceOfSegmentOfTheSearch sseg;
+  Contap_SequenceOfPathPointOfTheSearch spnt;
 
 
 };
 
-#define TheVertex Handle_Adaptor3d_HVertex
+#define TheVertex Handle(Adaptor3d_HVertex)
 #define TheVertex_hxx <Adaptor3d_HVertex.hxx>
-#define TheArc Handle_Adaptor2d_HCurve2d
+#define TheArc Handle(Adaptor2d_HCurve2d)
 #define TheArc_hxx <Adaptor2d_HCurve2d.hxx>
 #define TheArcTool Contap_HCurve2dTool
 #define TheArcTool_hxx <Contap_HCurve2dTool.hxx>
@@ -191,7 +165,6 @@ Contap_SequenceOfPathPointOfTheSearch spnt;
 #undef IntStart_SearchOnBoundaries_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Contap_TheSearch_HeaderFile

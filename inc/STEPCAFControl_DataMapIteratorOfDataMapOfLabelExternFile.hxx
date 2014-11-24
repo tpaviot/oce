@@ -6,25 +6,13 @@
 #ifndef _STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile_HeaderFile
 #define _STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_STEPCAFControl_ExternFile_HeaderFile
 #include <Handle_STEPCAFControl_ExternFile.hxx>
-#endif
-#ifndef _Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile_HeaderFile
 #include <Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile.hxx>
-#endif
 class Standard_NoSuchObject;
 class TDF_Label;
 class STEPCAFControl_ExternFile;
@@ -34,22 +22,22 @@ class STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile;
 
 
 
-class STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile  : public TCollection_BasicMapIterator {
+class STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile();
+  Standard_EXPORT STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile();
   
-  Standard_EXPORT   STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile(const STEPCAFControl_DataMapOfLabelExternFile& aMap);
+  Standard_EXPORT STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile(const STEPCAFControl_DataMapOfLabelExternFile& aMap);
   
-  Standard_EXPORT     void Initialize(const STEPCAFControl_DataMapOfLabelExternFile& aMap) ;
+  Standard_EXPORT   void Initialize (const STEPCAFControl_DataMapOfLabelExternFile& aMap) ;
   
-  Standard_EXPORT    const TDF_Label& Key() const;
+  Standard_EXPORT  const  TDF_Label& Key()  const;
   
-  Standard_EXPORT    const Handle_STEPCAFControl_ExternFile& Value() const;
-
+  Standard_EXPORT  const  Handle(STEPCAFControl_ExternFile)& Value()  const;
 
 
 
@@ -72,7 +60,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile_HeaderFile

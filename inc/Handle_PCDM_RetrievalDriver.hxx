@@ -6,22 +6,15 @@
 #ifndef _Handle_PCDM_RetrievalDriver_HeaderFile
 #define _Handle_PCDM_RetrievalDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_PCDM_Reader_HeaderFile
 #include <Handle_PCDM_Reader.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(PCDM_Reader);
 class PCDM_RetrievalDriver;
 
-DEFINE_STANDARD_HANDLE(PCDM_RetrievalDriver,PCDM_Reader)
+DEFINE_STANDARD_HANDLE(PCDM_RetrievalDriver, PCDM_Reader)
 
-#endif
+#endif // _Handle_PCDM_RetrievalDriver_HeaderFile

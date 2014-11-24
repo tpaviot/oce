@@ -6,15 +6,9 @@
 #ifndef _TDocStd_HeaderFile
 #define _TDocStd_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
 class TDF_IDList;
 class TDocStd_Application;
@@ -39,47 +33,49 @@ class TDocStd_SequenceNodeOfSequenceOfApplicationDelta;
 class TDocStd_SequenceNodeOfSequenceOfDocument;
 
 
-//! This package define  CAF main classes. <br>
-//! <br>
-//!          * The standard application root class <br>
-//! <br>
-//!          * The standard document wich contains data <br>
-//! <br>
-//!          * The external reference mechanism between documents <br>
-//! <br>
-//!          * Attributes for Document management <br>
-//! Standard documents offer you a ready-to-use <br>
-//! document containing a TDF-based data <br>
-//!  structure. The documents themselves are <br>
-//!  contained in a class inheriting from <br>
-//! TDocStd_Application which manages creation, <br>
-//! storage and retrieval of documents. <br>
-//! You can implement undo and redo in your <br>
-//! document, and refer from the data framework of <br>
-//! one document to that of another one. This is <br>
-//! done by means of external link attributes, which <br>
-//! store the path and the entry of external links. To <br>
-//! sum up, standard documents alone provide <br>
-//! access to the data framework. They also allow <br>
-//! you to: <br>
-//! -   Update external links <br>
-//! -   Manage the saving and opening of data <br>
-//! -   Manage undo/redo functionality. <br>
-//! Note <br>
-//! For information on the relations between this <br>
-//! component of OCAF and the others, refer to the <br>
-//! OCAF User's Guide. <br>
-class TDocStd  {
+//! This package define  CAF main classes.
+//!
+//! * The standard application root class
+//!
+//! * The standard document wich contains data
+//!
+//! * The external reference mechanism between documents
+//!
+//! * Attributes for Document management
+//! Standard documents offer you a ready-to-use
+//! document containing a TDF-based data
+//! structure. The documents themselves are
+//! contained in a class inheriting from
+//! TDocStd_Application which manages creation,
+//! storage and retrieval of documents.
+//! You can implement undo and redo in your
+//! document, and refer from the data framework of
+//! one document to that of another one. This is
+//! done by means of external link attributes, which
+//! store the path and the entry of external links. To
+//! sum up, standard documents alone provide
+//! access to the data framework. They also allow
+//! you to:
+//! -   Update external links
+//! -   Manage the saving and opening of data
+//! -   Manage undo/redo functionality.
+//! Note
+//! For information on the relations between this
+//! component of OCAF and the others, refer to the
+//! OCAF User's Guide.
+class TDocStd 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! specific GUID of this package <br>
-//!          ============================= <br>//! Appends to <anIDList> the list of the attributes <br>
-//!          IDs of this package. CAUTION: <anIDList> is NOT <br>
-//!          cleared before use. <br>
-  Standard_EXPORT   static  void IDList(TDF_IDList& anIDList) ;
-
+  
+  //! specific GUID of this package
+  //! =============================
+  //! Appends to <anIDList> the list of the attributes
+  //! IDs of this package. CAUTION: <anIDList> is NOT
+  //! cleared before use.
+  Standard_EXPORT static   void IDList (TDF_IDList& anIDList) ;
 
 
 
@@ -122,7 +118,6 @@ friend class TDocStd_SequenceNodeOfSequenceOfDocument;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDocStd_HeaderFile

@@ -5,23 +5,15 @@
 
 #include <Contap_TheSegmentOfTheSearch.hxx>
 
-#ifndef _Adaptor2d_HCurve2d_HeaderFile
 #include <Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Adaptor3d_HVertex_HeaderFile
 #include <Adaptor3d_HVertex.hxx>
-#endif
-#ifndef _Contap_ThePathPointOfTheSearch_HeaderFile
 #include <Contap_ThePathPointOfTheSearch.hxx>
-#endif
  
 
-#define TheVertex Handle_Adaptor3d_HVertex
+#define TheVertex Handle(Adaptor3d_HVertex)
 #define TheVertex_hxx <Adaptor3d_HVertex.hxx>
-#define TheArc Handle_Adaptor2d_HCurve2d
+#define TheArc Handle(Adaptor2d_HCurve2d)
 #define TheArc_hxx <Adaptor2d_HCurve2d.hxx>
 #define ThePathPoint Contap_ThePathPointOfTheSearch
 #define ThePathPoint_hxx <Contap_ThePathPointOfTheSearch.hxx>

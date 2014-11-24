@@ -6,28 +6,14 @@
 #ifndef _MAT_SequenceOfArc_HeaderFile
 #define _MAT_SequenceOfArc_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_MAT_Arc_HeaderFile
 #include <Handle_MAT_Arc.hxx>
-#endif
-#ifndef _Handle_MAT_SequenceNodeOfSequenceOfArc_HeaderFile
 #include <Handle_MAT_SequenceNodeOfSequenceOfArc.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class MAT_Arc;
@@ -35,68 +21,68 @@ class MAT_SequenceNodeOfSequenceOfArc;
 
 
 
-class MAT_SequenceOfArc  : public TCollection_BaseSequence {
+class MAT_SequenceOfArc  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      MAT_SequenceOfArc();
+    MAT_SequenceOfArc();
   
-  Standard_EXPORT   MAT_SequenceOfArc(const MAT_SequenceOfArc& Other);
+  Standard_EXPORT MAT_SequenceOfArc(const MAT_SequenceOfArc& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~MAT_SequenceOfArc()
 {
   Clear();
 }
   
-  Standard_EXPORT    const MAT_SequenceOfArc& Assign(const MAT_SequenceOfArc& Other) ;
-   const MAT_SequenceOfArc& operator =(const MAT_SequenceOfArc& Other) 
+  Standard_EXPORT  const  MAT_SequenceOfArc& Assign (const MAT_SequenceOfArc& Other) ;
+ const  MAT_SequenceOfArc& operator = (const MAT_SequenceOfArc& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(MAT_Arc)& T) ;
+  Standard_EXPORT   void Append (const Handle(MAT_Arc)& T) ;
   
-        void Append(MAT_SequenceOfArc& S) ;
+      void Append (MAT_SequenceOfArc& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(MAT_Arc)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(MAT_Arc)& T) ;
   
-        void Prepend(MAT_SequenceOfArc& S) ;
+      void Prepend (MAT_SequenceOfArc& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(MAT_Arc)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(MAT_Arc)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,MAT_SequenceOfArc& S) ;
+      void InsertBefore (const Standard_Integer Index, MAT_SequenceOfArc& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(MAT_Arc)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(MAT_Arc)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,MAT_SequenceOfArc& S) ;
+      void InsertAfter (const Standard_Integer Index, MAT_SequenceOfArc& S) ;
   
-  Standard_EXPORT    const Handle_MAT_Arc& First() const;
+  Standard_EXPORT  const  Handle(MAT_Arc)& First()  const;
   
-  Standard_EXPORT    const Handle_MAT_Arc& Last() const;
+  Standard_EXPORT  const  Handle(MAT_Arc)& Last()  const;
   
-        void Split(const Standard_Integer Index,MAT_SequenceOfArc& Sub) ;
+      void Split (const Standard_Integer Index, MAT_SequenceOfArc& Sub) ;
   
-  Standard_EXPORT    const Handle_MAT_Arc& Value(const Standard_Integer Index) const;
-   const Handle_MAT_Arc& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(MAT_Arc)& Value (const Standard_Integer Index)  const;
+ const  Handle(MAT_Arc)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(MAT_Arc)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(MAT_Arc)& I) ;
   
-  Standard_EXPORT     Handle_MAT_Arc& ChangeValue(const Standard_Integer Index) ;
-    Handle_MAT_Arc& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(MAT_Arc)& ChangeValue (const Standard_Integer Index) ;
+  Handle(MAT_Arc)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -115,7 +101,7 @@ private:
 
 };
 
-#define SeqItem Handle_MAT_Arc
+#define SeqItem Handle(MAT_Arc)
 #define SeqItem_hxx <MAT_Arc.hxx>
 #define TCollection_SequenceNode MAT_SequenceNodeOfSequenceOfArc
 #define TCollection_SequenceNode_hxx <MAT_SequenceNodeOfSequenceOfArc.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MAT_SequenceOfArc_HeaderFile

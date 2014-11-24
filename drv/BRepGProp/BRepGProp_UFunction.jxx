@@ -1,12 +1,4 @@
-#ifndef _BRepGProp_Face_HeaderFile
 #include <BRepGProp_Face.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _BRepGProp_UFunction_HeaderFile
 #include <BRepGProp_UFunction.hxx>
-#endif

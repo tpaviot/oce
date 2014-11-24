@@ -6,15 +6,14 @@
 #ifndef _StdSelect_DisplayMode_HeaderFile
 #define _StdSelect_DisplayMode_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StdSelect_DisplayMode {
+
+enum StdSelect_DisplayMode
+{
 StdSelect_DM_Wireframe,
 StdSelect_DM_Shading,
 StdSelect_DM_HLR
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StdSelect_DisplayMode_HeaderFile

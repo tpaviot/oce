@@ -69,9 +69,10 @@ struct OPENGL_CLIP_PLANE
 /*
 *  Set des lumieres
 */
-static void bind_light (const OpenGl_Light& theLight,
-                        GLenum&             theLightGlId,
-                        Graphic3d_Vec4&     theAmbientColor)
+static void bindLight (const OpenGl_Light&             theLight,
+                       GLenum&                         theLightGlId,
+                       Graphic3d_Vec4&                 theAmbientColor,
+                       const Handle(OpenGl_Workspace)& theWorkspace)
 {
   // Only 8 lights in OpenGL...
   if (theLightGlId > GL_LIGHT7)
@@ -86,14 +87,16 @@ static void bind_light (const OpenGl_Light& theLight,
     return;
   }
 
+  const Handle(OpenGl_Context)& aContext = theWorkspace->GetGlContext();
+
   // the light is a headlight?
-  GLint aMatrixModeOld = 0;
   if (theLight.IsHeadlight)
   {
-    glGetIntegerv (GL_MATRIX_MODE, &aMatrixModeOld);
-    glMatrixMode  (GL_MODELVIEW);
-    glPushMatrix();
-    glLoadIdentity();
+
+    aContext->WorldViewState.Push();
+    aContext->WorldViewState.SetIdentity();
+
+    aContext->ApplyWorldViewMatrix();
   }
 
   // setup light type
@@ -148,8 +151,7 @@ static void bind_light (const OpenGl_Light& theLight,
   // restore matrix in case of headlight
   if (theLight.IsHeadlight)
   {
-    glPopMatrix();
-    glMatrixMode (aMatrixModeOld);
+    aContext->WorldViewState.Pop();
   }
 
   glEnable (theLightGlId++);
@@ -169,12 +171,16 @@ void OpenGl_View::DrawBackground (OpenGl_Workspace& theWorkspace)
 
     glPushAttrib( GL_ENABLE_BIT | GL_TEXTURE_BIT );
 
-    glMatrixMode( GL_PROJECTION );
-    glPushMatrix();
-    glLoadIdentity();
-    glMatrixMode( GL_MODELVIEW );
-    glPushMatrix();
-    glLoadIdentity();
+    const Handle(OpenGl_Context)& aContext = theWorkspace.GetGlContext();
+
+    aContext->WorldViewState.Push();
+    aContext->ProjectionState.Push();
+
+    aContext->WorldViewState.SetIdentity();
+    aContext->ProjectionState.SetIdentity();
+
+    aContext->ApplyProjectionMatrix();
+    aContext->ApplyWorldViewMatrix();
 
     if ( glIsEnabled( GL_DEPTH_TEST ) )
       glDisable( GL_DEPTH_TEST ); //push GL_ENABLE_BIT
@@ -335,10 +341,10 @@ void OpenGl_View::DrawBackground (OpenGl_Workspace& theWorkspace)
       glEnd();
     }
 
-    glPopMatrix();
-    glMatrixMode( GL_PROJECTION );
-    glPopMatrix();
-    glMatrixMode( GL_MODELVIEW );
+    aContext->WorldViewState.Pop();
+    aContext->ProjectionState.Pop();
+
+    aContext->ApplyProjectionMatrix();
 
     glPopAttrib(); //GL_ENABLE_BIT | GL_TEXTURE_BIT
 
@@ -388,6 +394,7 @@ void OpenGl_View::Render (const Handle(OpenGl_PrinterContext)& thePrintContext,
   }
 #endif
 
+  // Update states of OpenGl_BVHTreeSelector (frustum culling algorithm).
   Standard_Boolean isProjectionMatUpdateNeeded  = Standard_False;
   Standard_Boolean isOrientationMatUpdateNeeded = Standard_False;
   if (myBVHSelector.ProjectionState() != myCamera->ProjectionState())
@@ -401,46 +408,39 @@ void OpenGl_View::Render (const Handle(OpenGl_PrinterContext)& thePrintContext,
     myBVHSelector.ChangeModelViewState() = myCamera->ModelViewState();
   }
 
-  // Set OCCT state uniform variables
-  const Handle(OpenGl_ShaderManager) aManager   = aContext->ShaderManager();
-  const Standard_Boolean             isSameView = aManager->IsSameView (this); // force camera state update when needed
-  if (!aManager->IsEmpty())
-  {
-    if (StateInfo (myCurrLightSourceState, aManager->LightSourceState().Index()) != myLastLightSourceState)
-    {
-      aManager->UpdateLightSourceStateTo (&myLights);
-      myLastLightSourceState = StateInfo (myCurrLightSourceState, aManager->LightSourceState().Index());
-    }
-
-    if (myProjectionState != myCamera->ProjectionState()
-    || !isSameView)
-    {
-      myProjectionState = myCamera->ProjectionState();
-      aManager->UpdateProjectionStateTo ((const Tmatrix3*)myCamera->ProjectionMatrixF().GetData());
-    }
-
-    if (myModelViewState != myCamera->ModelViewState()
-    || !isSameView)
-    {
-      myModelViewState = myCamera->ModelViewState();
-      aManager->UpdateWorldViewStateTo ((const Tmatrix3*)myCamera->OrientationMatrixF().GetData());
-    }
-
-    if (aManager->ModelWorldState().Index() == 0)
-    {
-      Tmatrix3 aModelWorldState = { { 1.f, 0.f, 0.f, 0.f },
-                                    { 0.f, 1.f, 0.f, 0.f },
-                                    { 0.f, 0.f, 1.f, 0.f },
-                                    { 0.f, 0.f, 0.f, 1.f } };
-
-      aContext->ShaderManager()->UpdateModelWorldStateTo (&aModelWorldState);
-    }
-  }
-
   if (isProjectionMatUpdateNeeded
    || isOrientationMatUpdateNeeded)
   {
     myBVHSelector.SetViewVolume (myCamera);
+  }
+
+  const Handle(OpenGl_ShaderManager) aManager   = aContext->ShaderManager();
+  const Standard_Boolean             isSameView = aManager->IsSameView (this); // force camera state update when needed
+  if (StateInfo (myCurrLightSourceState, aManager->LightSourceState().Index()) != myLastLightSourceState)
+  {
+    aManager->UpdateLightSourceStateTo (&myLights);
+    myLastLightSourceState = StateInfo (myCurrLightSourceState, aManager->LightSourceState().Index());
+  }
+
+  if (myProjectionState != myCamera->ProjectionState()
+  || !isSameView)
+  {
+    myProjectionState = myCamera->ProjectionState();
+    aContext->ProjectionState.SetCurrent (myCamera->ProjectionMatrixF());
+    aContext->ApplyProjectionMatrix();
+  }
+
+  if (myModelViewState != myCamera->ModelViewState()
+  || !isSameView)
+  {
+    myModelViewState = myCamera->ModelViewState();
+    aContext->WorldViewState.SetCurrent (myCamera->OrientationMatrixF());
+    aContext->ApplyWorldViewMatrix();
+  }
+
+  if (aManager->ModelWorldState().Index() == 0)
+  {
+    aContext->ShaderManager()->UpdateModelWorldStateTo (OpenGl_Mat4());
   }
 
   // ====================================
@@ -462,7 +462,7 @@ void OpenGl_View::Render (const Handle(OpenGl_PrinterContext)& thePrintContext,
   //      Step 3: Draw underlayer
   // =================================
 
-  RedrawLayer2d (thePrintContext, theCView, theCUnderLayer);
+  RedrawLayer2d (thePrintContext, theWorkspace, theCView, theCUnderLayer);
 
   // =================================
   //      Step 4: Redraw main plane
@@ -486,12 +486,16 @@ void OpenGl_View::Render (const Handle(OpenGl_PrinterContext)& thePrintContext,
   // if the view is scaled normal vectors are scaled to unit
   // length for correct displaying of shaded objects
   const gp_Pnt anAxialScale = myCamera->AxialScale();
-  if(anAxialScale.X() != 1.F ||
-     anAxialScale.Y() != 1.F ||
-     anAxialScale.Z() != 1.F)
-    glEnable(GL_NORMALIZE);
-  else if(glIsEnabled(GL_NORMALIZE))
-    glDisable(GL_NORMALIZE);
+  if (anAxialScale.X() != 1.F ||
+      anAxialScale.Y() != 1.F ||
+      anAxialScale.Z() != 1.F)
+  {
+    aContext->SetGlNormalizeEnabled (Standard_True);
+  }
+  else
+  {
+    aContext->SetGlNormalizeEnabled (Standard_False);
+  }
 
   // Apply Fog
   if ( myFog.IsOn )
@@ -547,25 +551,21 @@ void OpenGl_View::Render (const Handle(OpenGl_PrinterContext)& thePrintContext,
   if (!myCamera->IsStereo() || !aContext->HasStereoBuffers())
   {
     // single-pass monographic rendering
-    const OpenGl_Matrix* aProj = (const OpenGl_Matrix*) &myCamera->ProjectionMatrixF();
-
-    const OpenGl_Matrix* aOrient = (const OpenGl_Matrix*) &myCamera->OrientationMatrixF();
-
     // redraw scene with normal orientation and projection
-    RedrawScene (thePrintContext, theWorkspace, aProj, aOrient);
+    RedrawScene (thePrintContext, theWorkspace);
   }
   else
   {
     // two stereographic passes
-    const OpenGl_Matrix* aLProj  = (const OpenGl_Matrix*) &myCamera->ProjectionStereoLeftF();
-    const OpenGl_Matrix* aRProj  = (const OpenGl_Matrix*) &myCamera->ProjectionStereoRightF();
-    const OpenGl_Matrix* aOrient = (const OpenGl_Matrix*) &myCamera->OrientationMatrixF();
 
     // safely switch to left Eye buffer
     aContext->SetDrawBufferLeft();
 
+    aContext->ProjectionState.SetCurrent (myCamera->ProjectionStereoLeftF());
+    aContext->ApplyProjectionMatrix();
+
     // redraw left Eye
-    RedrawScene (thePrintContext, theWorkspace, aLProj, aOrient);
+    RedrawScene (thePrintContext, theWorkspace);
 
     // reset depth buffer of first rendering pass
     if (theWorkspace->UseDepthTest())
@@ -575,8 +575,11 @@ void OpenGl_View::Render (const Handle(OpenGl_PrinterContext)& thePrintContext,
     // safely switch to right Eye buffer
     aContext->SetDrawBufferRight();
 
+    aContext->ProjectionState.SetCurrent (myCamera->ProjectionStereoRightF());
+    aContext->ApplyProjectionMatrix();
+
     // redraw right Eye
-    RedrawScene (thePrintContext, theWorkspace, aRProj, aOrient);
+    RedrawScene (thePrintContext, theWorkspace);
 
     // switch back to monographic rendering
     aContext->SetDrawBufferMono();
@@ -630,7 +633,7 @@ void OpenGl_View::Render (const Handle(OpenGl_PrinterContext)& thePrintContext,
   const int aMode = 0;
   theWorkspace->DisplayCallback (theCView, (aMode | OCC_PRE_OVERLAY));
 
-  RedrawLayer2d (thePrintContext, theCView, theCOverLayer);
+  RedrawLayer2d (thePrintContext, theWorkspace, theCView, theCOverLayer);
 
   theWorkspace->DisplayCallback (theCView, aMode);
 
@@ -727,7 +730,8 @@ void OpenGl_View::RenderStructs (const Handle(OpenGl_Workspace) &AWorkspace)
 
 //call_togl_redraw_layer2d
 void OpenGl_View::RedrawLayer2d (const Handle(OpenGl_PrinterContext)& thePrintContext,
-                                 const Graphic3d_CView&               ACView,
+                                 const Handle(OpenGl_Workspace)&      theWorkspace,
+                                 const Graphic3d_CView&               /*ACView*/,
                                  const Aspect_CLayer2d&               ACLayer)
 {
 #if !defined(GL_ES_VERSION_2_0)
@@ -735,19 +739,22 @@ void OpenGl_View::RedrawLayer2d (const Handle(OpenGl_PrinterContext)& thePrintCo
    || ACLayer.ptrLayer == NULL
    || ACLayer.ptrLayer->listIndex == 0) return;
 
+  const Handle(OpenGl_Context)& aContext = theWorkspace->GetGlContext();
+
   GLsizei dispWidth  = (GLsizei )ACLayer.viewport[0];
   GLsizei dispHeight = (GLsizei )ACLayer.viewport[1];
 
-  glMatrixMode( GL_MODELVIEW );
-  glPushMatrix ();
-  glLoadIdentity ();
+  aContext->WorldViewState.Push();
+  aContext->ProjectionState.Push();
 
-  glMatrixMode (GL_PROJECTION);
-  glPushMatrix ();
-  glLoadIdentity ();
+  aContext->WorldViewState.SetIdentity();
+  aContext->ProjectionState.SetIdentity();
+
+  aContext->ApplyWorldViewMatrix();
+  aContext->ApplyProjectionMatrix();
 
   if (!ACLayer.sizeDependent)
-    glViewport (0, 0, dispWidth, dispHeight);
+    aContext->core11fwd->glViewport (0, 0, dispWidth, dispHeight);
 
   float left = ACLayer.ortho[0];
   float right = ACLayer.ortho[1];
@@ -756,11 +763,9 @@ void OpenGl_View::RedrawLayer2d (const Handle(OpenGl_PrinterContext)& thePrintCo
 
   int attach = ACLayer.attach;
 
-  float ratio;
-  if (!ACLayer.sizeDependent)
-    ratio = (float) dispWidth/dispHeight;
-  else
-    ratio = ACView.DefWindow.dx/ACView.DefWindow.dy;
+  const float ratio = !ACLayer.sizeDependent
+                    ? float(dispWidth) / float(dispHeight)
+                    : float(theWorkspace->Width()) / float(theWorkspace->Height());
 
   float delta;
   if (ratio >= 1.0) {
@@ -808,7 +813,10 @@ void OpenGl_View::RedrawLayer2d (const Handle(OpenGl_PrinterContext)& thePrintCo
     // tiling; scaling of graphics by matrix helps render a
     // part of a view (frame) in same viewport, but with higher
     // resolution
-    thePrintContext->LoadProjTransformation();
+
+    // set printing scale/tiling transformation
+    aContext->ProjectionState.SetCurrent (thePrintContext->ProjTransformation());
+    aContext->ApplyProjectionMatrix();
 
     // printing operation also assumes other viewport dimension
     // to comply with transformation matrix or graphics scaling
@@ -817,7 +825,7 @@ void OpenGl_View::RedrawLayer2d (const Handle(OpenGl_PrinterContext)& thePrintCo
     GLsizei anViewportY = 0;
     thePrintContext->GetLayerViewport (anViewportX, anViewportY);
     if (anViewportX != 0 && anViewportY != 0)
-      glViewport (0, 0, anViewportX, anViewportY);
+      aContext->core11fwd->glViewport (0, 0, anViewportX, anViewportY);
   }
 #endif
 
@@ -845,14 +853,14 @@ void OpenGl_View::RedrawLayer2d (const Handle(OpenGl_PrinterContext)& thePrintCo
 
   glPopAttrib ();
 
-  glMatrixMode (GL_PROJECTION);
-  glPopMatrix ();
+  aContext->WorldViewState.Pop();
+  aContext->ProjectionState.Pop();
 
-  glMatrixMode( GL_MODELVIEW );
-  glPopMatrix ();
+  aContext->ApplyProjectionMatrix();
+  aContext->ApplyWorldViewMatrix();
 
   if (!ACLayer.sizeDependent)
-    glViewport (0, 0, (GLsizei) ACView.DefWindow.dx, (GLsizei) ACView.DefWindow.dy);
+    aContext->core11fwd->glViewport (0, 0, theWorkspace->Width(), theWorkspace->Height());
 
   glFlush ();
 #endif
@@ -1110,9 +1118,7 @@ void OpenGl_View::ChangePriority (const OpenGl_Structure *theStructure,
 //=======================================================================
 
 void OpenGl_View::RedrawScene (const Handle(OpenGl_PrinterContext)& thePrintContext,
-                               const Handle(OpenGl_Workspace)& theWorkspace,
-                               const OpenGl_Matrix* theProjection,
-                               const OpenGl_Matrix* theOrientation)
+                               const Handle(OpenGl_Workspace)& theWorkspace)
 {
   const Handle(OpenGl_Context)& aContext = theWorkspace->GetGlContext();
 
@@ -1164,36 +1170,15 @@ void OpenGl_View::RedrawScene (const Handle(OpenGl_PrinterContext)& thePrintCont
     }
   }
 
-#if !defined(GL_ES_VERSION_2_0)
-  // Setup view projection
-  glMatrixMode (GL_PROJECTION);
-
 #ifdef _WIN32
-  // add printing scale/tiling transformation
+  // set printing scale/tiling transformation
   if (!thePrintContext.IsNull())
   {
-    thePrintContext->LoadProjTransformation();
-  }
-  else
-#endif
-    glLoadIdentity();
-
-  glMultMatrixf ((const GLfloat*)theProjection);
-
-  if (!thePrintContext.IsNull())
-  {
-    // update shader uniform projection matrix with new data
-    Tmatrix3 aResultProjection;
-    glGetFloatv (GL_PROJECTION_MATRIX, *aResultProjection);
-    aContext->ShaderManager()->UpdateProjectionStateTo (&aResultProjection);
-
-    // force shader uniform restore on next frame
-    myProjectionState = 0;
+    aContext->ProjectionState.Push();
+    aContext->ProjectionState.SetCurrent (thePrintContext->ProjTransformation() * aContext->ProjectionState.Current());
+    aContext->ApplyProjectionMatrix();
   }
 #endif
-
-  // Setup view orientation
-  theWorkspace->SetViewMatrix (theOrientation);
 
   // Specify clipping planes in view transformation space
   if (!myClipPlanes.IsEmpty())
@@ -1232,7 +1217,7 @@ void OpenGl_View::RedrawScene (const Handle(OpenGl_PrinterContext)& thePrintCont
     for (OpenGl_ListOfLight::Iterator aLightIt (myLights);
          aLightIt.More(); aLightIt.Next())
     {
-      bind_light (aLightIt.Value(), aLightGlId, anAmbientColor);
+      bindLight (aLightIt.Value(), aLightGlId, anAmbientColor, theWorkspace);
     }
 
     // apply accumulated ambient color
@@ -1324,4 +1309,17 @@ void OpenGl_View::RedrawScene (const Handle(OpenGl_PrinterContext)& thePrintCont
       }
       break;
   }
+
+  // Apply restored view matrix.
+  aContext->ApplyWorldViewMatrix();
+
+#ifdef _WIN32
+  // set printing scale/tiling transformation
+  if (!thePrintContext.IsNull())
+  {
+    aContext->ProjectionState.Pop();
+    aContext->ApplyProjectionMatrix();
+  }
+#endif
+
 }

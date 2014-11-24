@@ -2,22 +2,19 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{BCEA7F6C-054B-01FC-0ADF-80196E058D38}</UniqueIdentifier>
+      <UniqueIdentifier>{89D86ABD-0ED8-181E-03C5-4AD83CBA72C8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BinDrivers">
-      <UniqueIdentifier>{7A7D7F6C-0E08-01E5-1794-1D316C97B0B1}</UniqueIdentifier>
+      <UniqueIdentifier>{C5E03C80-0755-063B-17FD-E697F0013EC0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BinMDataXtd">
-      <UniqueIdentifier>{D14427FD-17F8-08CE-0D23-D19655E4B3B1}</UniqueIdentifier>
+      <UniqueIdentifier>{BEBD9D29-0FFC-12E5-040D-0A4BA6ECB83E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BinMPrsStd">
-      <UniqueIdentifier>{D1311A9E-097C-177B-0A47-19EFC3CC2952}</UniqueIdentifier>
+      <UniqueIdentifier>{33F51311-0D8E-060D-1105-1D35EDBF809E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BinMNaming">
-      <UniqueIdentifier>{ACD1AC1F-1730-0A5E-0D51-61EFEDCEDD6C}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source files\BinTools">
-      <UniqueIdentifier>{2B0E14BA-187A-041C-0D19-75488EEE8B63}</UniqueIdentifier>
+      <UniqueIdentifier>{9527D1A6-1671-05E5-0D65-AC8C5832146D}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -74,24 +71,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\BinMNaming\BinMNaming_NamingDriver.cxx">
       <Filter>Source files\BinMNaming</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BinTools\BinTools.cxx">
-      <Filter>Source files\BinTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BinTools\BinTools_Curve2dSet.cxx">
-      <Filter>Source files\BinTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BinTools\BinTools_CurveSet.cxx">
-      <Filter>Source files\BinTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BinTools\BinTools_LocationSet.cxx">
-      <Filter>Source files\BinTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BinTools\BinTools_ShapeSet.cxx">
-      <Filter>Source files\BinTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BinTools\BinTools_SurfaceSet.cxx">
-      <Filter>Source files\BinTools</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

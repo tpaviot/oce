@@ -6,25 +6,13 @@
 #ifndef _TopOpeBRepBuild_EdgeBuilder_HeaderFile
 #define _TopOpeBRepBuild_EdgeBuilder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopOpeBRepBuild_Area1dBuilder_HeaderFile
 #include <TopOpeBRepBuild_Area1dBuilder.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TopOpeBRepBuild_PaveSet;
 class TopOpeBRepBuild_PaveClassifier;
 class TopOpeBRepBuild_LoopSet;
@@ -33,35 +21,36 @@ class TopoDS_Shape;
 
 
 
-class TopOpeBRepBuild_EdgeBuilder  : public TopOpeBRepBuild_Area1dBuilder {
+class TopOpeBRepBuild_EdgeBuilder  : public TopOpeBRepBuild_Area1dBuilder
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepBuild_EdgeBuilder();
-  //! Creates a EdgeBuilder to find the areas of <br>
-//! the shapes described by <LS> using the classifier <LC>. <br>
-  Standard_EXPORT   TopOpeBRepBuild_EdgeBuilder(TopOpeBRepBuild_PaveSet& LS,TopOpeBRepBuild_PaveClassifier& LC,const Standard_Boolean ForceClass = Standard_False);
+  Standard_EXPORT TopOpeBRepBuild_EdgeBuilder();
   
-  Standard_EXPORT     void InitEdgeBuilder(TopOpeBRepBuild_LoopSet& LS,TopOpeBRepBuild_LoopClassifier& LC,const Standard_Boolean ForceClass = Standard_False) ;
+  //! Creates a EdgeBuilder to find the areas of
+  //! the shapes described by <LS> using the classifier <LC>.
+  Standard_EXPORT TopOpeBRepBuild_EdgeBuilder(TopOpeBRepBuild_PaveSet& LS, TopOpeBRepBuild_PaveClassifier& LC, const Standard_Boolean ForceClass = Standard_False);
   
-  Standard_EXPORT     void InitEdge() ;
+  Standard_EXPORT   void InitEdgeBuilder (TopOpeBRepBuild_LoopSet& LS, TopOpeBRepBuild_LoopClassifier& LC, const Standard_Boolean ForceClass = Standard_False) ;
   
-  Standard_EXPORT     Standard_Boolean MoreEdge() const;
+  Standard_EXPORT   void InitEdge() ;
   
-  Standard_EXPORT     void NextEdge() ;
+  Standard_EXPORT   Standard_Boolean MoreEdge()  const;
   
-  Standard_EXPORT     void InitVertex() ;
+  Standard_EXPORT   void NextEdge() ;
   
-  Standard_EXPORT     Standard_Boolean MoreVertex() const;
+  Standard_EXPORT   void InitVertex() ;
   
-  Standard_EXPORT     void NextVertex() ;
+  Standard_EXPORT   Standard_Boolean MoreVertex()  const;
   
-  Standard_EXPORT    const TopoDS_Shape& Vertex() const;
+  Standard_EXPORT   void NextVertex() ;
   
-  Standard_EXPORT     Standard_Real Parameter() const;
-
+  Standard_EXPORT  const  TopoDS_Shape& Vertex()  const;
+  
+  Standard_EXPORT   Standard_Real Parameter()  const;
 
 
 
@@ -84,7 +73,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepBuild_EdgeBuilder_HeaderFile

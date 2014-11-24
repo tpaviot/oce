@@ -6,28 +6,22 @@
 #ifndef _StepRepr_StructuralResponseProperty_HeaderFile
 #define _StepRepr_StructuralResponseProperty_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepRepr_StructuralResponseProperty_HeaderFile
 #include <Handle_StepRepr_StructuralResponseProperty.hxx>
-#endif
 
-#ifndef _StepRepr_PropertyDefinition_HeaderFile
 #include <StepRepr_PropertyDefinition.hxx>
-#endif
 
 
-//! Representation of STEP entity StructuralResponseProperty <br>
-class StepRepr_StructuralResponseProperty : public StepRepr_PropertyDefinition {
+//! Representation of STEP entity StructuralResponseProperty
+class StepRepr_StructuralResponseProperty : public StepRepr_PropertyDefinition
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepRepr_StructuralResponseProperty();
+  
+  //! Empty constructor
+  Standard_EXPORT StepRepr_StructuralResponseProperty();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_StructuralResponseProperty_HeaderFile

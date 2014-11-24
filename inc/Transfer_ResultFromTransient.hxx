@@ -6,43 +6,19 @@
 #ifndef _Transfer_ResultFromTransient_HeaderFile
 #define _Transfer_ResultFromTransient_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Transfer_ResultFromTransient_HeaderFile
 #include <Handle_Transfer_ResultFromTransient.hxx>
-#endif
 
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Transfer_Binder_HeaderFile
 #include <Handle_Transfer_Binder.hxx>
-#endif
-#ifndef _Handle_TColStd_HSequenceOfTransient_HeaderFile
 #include <Handle_TColStd_HSequenceOfTransient.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
-#ifndef _Interface_CheckStatus_HeaderFile
 #include <Interface_CheckStatus.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Transfer_TransientProcess_HeaderFile
 #include <Handle_Transfer_TransientProcess.hxx>
-#endif
 class Standard_Transient;
 class Transfer_Binder;
 class TColStd_HSequenceOfTransient;
@@ -51,62 +27,80 @@ class TColStd_IndexedMapOfTransient;
 class Transfer_TransientProcess;
 
 
-//! This class, in conjunction with ResultFromModel, allows to <br>
-//!           record the result of a transfer initially stored in a <br>
-//!           TransientProcess. <br>
-//! <br>
-//!           A ResultFromTransient records a couple (Transient,Binder for <br>
-//!           the result and checks) plus a list of "sub-results", which <br>
-//!           have been recorded in the TrabsientProcess, under scope <br>
-//!           attached to the starting transient. <br>
-class Transfer_ResultFromTransient : public MMgt_TShared {
+//! This class, in conjunction with ResultFromModel, allows to
+//! record the result of a transfer initially stored in a
+//! TransientProcess.
+//!
+//! A ResultFromTransient records a couple (Transient,Binder for
+//! the result and checks) plus a list of "sub-results", which
+//! have been recorded in the TrabsientProcess, under scope
+//! attached to the starting transient.
+class Transfer_ResultFromTransient : public MMgt_TShared
+{
 
 public:
 
-  //! Creates a ResultFromTransient, empty <br>
-  Standard_EXPORT   Transfer_ResultFromTransient();
-  //! Sets starting entity <br>
-  Standard_EXPORT     void SetStart(const Handle(Standard_Transient)& start) ;
-  //! Sets Binder (for result plus individual check) <br>
-  Standard_EXPORT     void SetBinder(const Handle(Transfer_Binder)& binder) ;
-  //! Returns the starting entity <br>
-  Standard_EXPORT     Handle_Standard_Transient Start() const;
-  //! Returns the binder <br>
-  Standard_EXPORT     Handle_Transfer_Binder Binder() const;
-  //! Returns True if a result is recorded <br>
-  Standard_EXPORT     Standard_Boolean HasResult() const;
-  //! Returns the check (or an empty one if no binder) <br>
-  Standard_EXPORT    const Handle_Interface_Check Check() const;
-  //! Returns the check status <br>
-  Standard_EXPORT     Interface_CheckStatus CheckStatus() const;
-  //! Clears the list of (immediate) sub-results <br>
-  Standard_EXPORT     void ClearSubs() ;
-  //! Adds a sub-result <br>
-  Standard_EXPORT     void AddSubResult(const Handle(Transfer_ResultFromTransient)& sub) ;
-  //! Returns the count of recorded sub-results <br>
-  Standard_EXPORT     Standard_Integer NbSubResults() const;
-  //! Returns a sub-result, given its rank <br>
-  Standard_EXPORT     Handle_Transfer_ResultFromTransient SubResult(const Standard_Integer num) const;
-  //! Returns the ResultFromTransient attached to a given starting <br>
-//!           entity (the key). Returns a null handle if not found <br>
-  Standard_EXPORT     Handle_Transfer_ResultFromTransient ResultFromKey(const Handle(Standard_Transient)& key) const;
-  //! This method is used by ResultFromModel to collate the list of <br>
-//!           ResultFromTransient, avoiding duplications with a map <br>
-//!           Remark : <me> is already in the map and has not to be bound <br>
-  Standard_EXPORT     void FillMap(TColStd_IndexedMapOfTransient& map) const;
-  //! Fills from a TransientProcess, with the starting entity which <br>
-//!           must have been set before. It works with scopes, calls Fill <br>
-//!           on each of its sub-results <br>
-  Standard_EXPORT     void Fill(const Handle(Transfer_TransientProcess)& TP) ;
-  //! Clears some data attached to binders used by TransientProcess, <br>
-//!           which become useless once the transfer has been done : <br>
-//!           the list of sub-scoped binders, which is now recorded as <br>
-//!           sub-results <br>
-  Standard_EXPORT     void Strip() ;
-  //! Fills back a TransientProcess with definition of a <br>
-//!           ResultFromTransient, respectfully to its structuration in <br>
-//!           scopes <br>
-  Standard_EXPORT     void FillBack(const Handle(Transfer_TransientProcess)& TP) const;
+  
+  //! Creates a ResultFromTransient, empty
+  Standard_EXPORT Transfer_ResultFromTransient();
+  
+  //! Sets starting entity
+  Standard_EXPORT   void SetStart (const Handle(Standard_Transient)& start) ;
+  
+  //! Sets Binder (for result plus individual check)
+  Standard_EXPORT   void SetBinder (const Handle(Transfer_Binder)& binder) ;
+  
+  //! Returns the starting entity
+  Standard_EXPORT   Handle(Standard_Transient) Start()  const;
+  
+  //! Returns the binder
+  Standard_EXPORT   Handle(Transfer_Binder) Binder()  const;
+  
+  //! Returns True if a result is recorded
+  Standard_EXPORT   Standard_Boolean HasResult()  const;
+  
+  //! Returns the check (or an empty one if no binder)
+  Standard_EXPORT  const  Handle(Interface_Check) Check()  const;
+  
+  //! Returns the check status
+  Standard_EXPORT   Interface_CheckStatus CheckStatus()  const;
+  
+  //! Clears the list of (immediate) sub-results
+  Standard_EXPORT   void ClearSubs() ;
+  
+  //! Adds a sub-result
+  Standard_EXPORT   void AddSubResult (const Handle(Transfer_ResultFromTransient)& sub) ;
+  
+  //! Returns the count of recorded sub-results
+  Standard_EXPORT   Standard_Integer NbSubResults()  const;
+  
+  //! Returns a sub-result, given its rank
+  Standard_EXPORT   Handle(Transfer_ResultFromTransient) SubResult (const Standard_Integer num)  const;
+  
+  //! Returns the ResultFromTransient attached to a given starting
+  //! entity (the key). Returns a null handle if not found
+  Standard_EXPORT   Handle(Transfer_ResultFromTransient) ResultFromKey (const Handle(Standard_Transient)& key)  const;
+  
+  //! This method is used by ResultFromModel to collate the list of
+  //! ResultFromTransient, avoiding duplications with a map
+  //! Remark : <me> is already in the map and has not to be bound
+  Standard_EXPORT   void FillMap (TColStd_IndexedMapOfTransient& map)  const;
+  
+  //! Fills from a TransientProcess, with the starting entity which
+  //! must have been set before. It works with scopes, calls Fill
+  //! on each of its sub-results
+  Standard_EXPORT   void Fill (const Handle(Transfer_TransientProcess)& TP) ;
+  
+  //! Clears some data attached to binders used by TransientProcess,
+  //! which become useless once the transfer has been done :
+  //! the list of sub-scoped binders, which is now recorded as
+  //! sub-results
+  Standard_EXPORT   void Strip() ;
+  
+  //! Fills back a TransientProcess with definition of a
+  //! ResultFromTransient, respectfully to its structuration in
+  //! scopes
+  Standard_EXPORT   void FillBack (const Handle(Transfer_TransientProcess)& TP)  const;
 
 
 
@@ -121,9 +115,9 @@ protected:
 private: 
 
 
-Handle_Standard_Transient thestart;
-Handle_Transfer_Binder thebinder;
-Handle_TColStd_HSequenceOfTransient thesubs;
+  Handle(Standard_Transient) thestart;
+  Handle(Transfer_Binder) thebinder;
+  Handle(TColStd_HSequenceOfTransient) thesubs;
 
 
 };
@@ -132,7 +126,6 @@ Handle_TColStd_HSequenceOfTransient thesubs;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Transfer_ResultFromTransient_HeaderFile

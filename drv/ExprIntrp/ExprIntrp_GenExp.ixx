@@ -5,9 +5,7 @@
 
 #include <ExprIntrp_GenExp.jxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
 
  

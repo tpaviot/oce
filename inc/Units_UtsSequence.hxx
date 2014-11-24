@@ -6,28 +6,14 @@
 #ifndef _Units_UtsSequence_HeaderFile
 #define _Units_UtsSequence_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_Units_Unit_HeaderFile
 #include <Handle_Units_Unit.hxx>
-#endif
-#ifndef _Handle_Units_SequenceNodeOfUtsSequence_HeaderFile
 #include <Handle_Units_SequenceNodeOfUtsSequence.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Units_Unit;
@@ -35,68 +21,68 @@ class Units_SequenceNodeOfUtsSequence;
 
 
 
-class Units_UtsSequence  : public TCollection_BaseSequence {
+class Units_UtsSequence  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Units_UtsSequence();
+    Units_UtsSequence();
   
-  Standard_EXPORT   Units_UtsSequence(const Units_UtsSequence& Other);
+  Standard_EXPORT Units_UtsSequence(const Units_UtsSequence& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~Units_UtsSequence()
 {
   Clear();
 }
   
-  Standard_EXPORT    const Units_UtsSequence& Assign(const Units_UtsSequence& Other) ;
-   const Units_UtsSequence& operator =(const Units_UtsSequence& Other) 
+  Standard_EXPORT  const  Units_UtsSequence& Assign (const Units_UtsSequence& Other) ;
+ const  Units_UtsSequence& operator = (const Units_UtsSequence& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(Units_Unit)& T) ;
+  Standard_EXPORT   void Append (const Handle(Units_Unit)& T) ;
   
-        void Append(Units_UtsSequence& S) ;
+      void Append (Units_UtsSequence& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(Units_Unit)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(Units_Unit)& T) ;
   
-        void Prepend(Units_UtsSequence& S) ;
+      void Prepend (Units_UtsSequence& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(Units_Unit)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(Units_Unit)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,Units_UtsSequence& S) ;
+      void InsertBefore (const Standard_Integer Index, Units_UtsSequence& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(Units_Unit)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(Units_Unit)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,Units_UtsSequence& S) ;
+      void InsertAfter (const Standard_Integer Index, Units_UtsSequence& S) ;
   
-  Standard_EXPORT    const Handle_Units_Unit& First() const;
+  Standard_EXPORT  const  Handle(Units_Unit)& First()  const;
   
-  Standard_EXPORT    const Handle_Units_Unit& Last() const;
+  Standard_EXPORT  const  Handle(Units_Unit)& Last()  const;
   
-        void Split(const Standard_Integer Index,Units_UtsSequence& Sub) ;
+      void Split (const Standard_Integer Index, Units_UtsSequence& Sub) ;
   
-  Standard_EXPORT    const Handle_Units_Unit& Value(const Standard_Integer Index) const;
-   const Handle_Units_Unit& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(Units_Unit)& Value (const Standard_Integer Index)  const;
+ const  Handle(Units_Unit)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(Units_Unit)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(Units_Unit)& I) ;
   
-  Standard_EXPORT     Handle_Units_Unit& ChangeValue(const Standard_Integer Index) ;
-    Handle_Units_Unit& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(Units_Unit)& ChangeValue (const Standard_Integer Index) ;
+  Handle(Units_Unit)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -115,7 +101,7 @@ private:
 
 };
 
-#define SeqItem Handle_Units_Unit
+#define SeqItem Handle(Units_Unit)
 #define SeqItem_hxx <Units_Unit.hxx>
 #define TCollection_SequenceNode Units_SequenceNodeOfUtsSequence
 #define TCollection_SequenceNode_hxx <Units_SequenceNodeOfUtsSequence.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Units_UtsSequence_HeaderFile

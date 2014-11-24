@@ -6,63 +6,59 @@
 #ifndef _StepBasic_DocumentProductAssociation_HeaderFile
 #define _StepBasic_DocumentProductAssociation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_DocumentProductAssociation_HeaderFile
 #include <Handle_StepBasic_DocumentProductAssociation.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepBasic_Document_HeaderFile
 #include <Handle_StepBasic_Document.hxx>
-#endif
-#ifndef _StepBasic_ProductOrFormationOrDefinition_HeaderFile
 #include <StepBasic_ProductOrFormationOrDefinition.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepBasic_Document;
 class StepBasic_ProductOrFormationOrDefinition;
 
 
-//! Representation of STEP entity DocumentProductAssociation <br>
-class StepBasic_DocumentProductAssociation : public MMgt_TShared {
+//! Representation of STEP entity DocumentProductAssociation
+class StepBasic_DocumentProductAssociation : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepBasic_DocumentProductAssociation();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aName,const Standard_Boolean hasDescription,const Handle(TCollection_HAsciiString)& aDescription,const Handle(StepBasic_Document)& aRelatingDocument,const StepBasic_ProductOrFormationOrDefinition& aRelatedProduct) ;
-  //! Returns field Name <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Name() const;
-  //! Set field Name <br>
-  Standard_EXPORT     void SetName(const Handle(TCollection_HAsciiString)& Name) ;
-  //! Returns field Description <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Description() const;
-  //! Set field Description <br>
-  Standard_EXPORT     void SetDescription(const Handle(TCollection_HAsciiString)& Description) ;
-  //! Returns True if optional field Description is defined <br>
-  Standard_EXPORT     Standard_Boolean HasDescription() const;
-  //! Returns field RelatingDocument <br>
-  Standard_EXPORT     Handle_StepBasic_Document RelatingDocument() const;
-  //! Set field RelatingDocument <br>
-  Standard_EXPORT     void SetRelatingDocument(const Handle(StepBasic_Document)& RelatingDocument) ;
-  //! Returns field RelatedProduct <br>
-  Standard_EXPORT     StepBasic_ProductOrFormationOrDefinition RelatedProduct() const;
-  //! Set field RelatedProduct <br>
-  Standard_EXPORT     void SetRelatedProduct(const StepBasic_ProductOrFormationOrDefinition& RelatedProduct) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepBasic_DocumentProductAssociation();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aName, const Standard_Boolean hasDescription, const Handle(TCollection_HAsciiString)& aDescription, const Handle(StepBasic_Document)& aRelatingDocument, const StepBasic_ProductOrFormationOrDefinition& aRelatedProduct) ;
+  
+  //! Returns field Name
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Name()  const;
+  
+  //! Set field Name
+  Standard_EXPORT   void SetName (const Handle(TCollection_HAsciiString)& Name) ;
+  
+  //! Returns field Description
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Description()  const;
+  
+  //! Set field Description
+  Standard_EXPORT   void SetDescription (const Handle(TCollection_HAsciiString)& Description) ;
+  
+  //! Returns True if optional field Description is defined
+  Standard_EXPORT   Standard_Boolean HasDescription()  const;
+  
+  //! Returns field RelatingDocument
+  Standard_EXPORT   Handle(StepBasic_Document) RelatingDocument()  const;
+  
+  //! Set field RelatingDocument
+  Standard_EXPORT   void SetRelatingDocument (const Handle(StepBasic_Document)& RelatingDocument) ;
+  
+  //! Returns field RelatedProduct
+  Standard_EXPORT   StepBasic_ProductOrFormationOrDefinition RelatedProduct()  const;
+  
+  //! Set field RelatedProduct
+  Standard_EXPORT   void SetRelatedProduct (const StepBasic_ProductOrFormationOrDefinition& RelatedProduct) ;
 
 
 
@@ -77,11 +73,11 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString theName;
-Handle_TCollection_HAsciiString theDescription;
-Handle_StepBasic_Document theRelatingDocument;
-StepBasic_ProductOrFormationOrDefinition theRelatedProduct;
-Standard_Boolean defDescription;
+  Handle(TCollection_HAsciiString) theName;
+  Handle(TCollection_HAsciiString) theDescription;
+  Handle(StepBasic_Document) theRelatingDocument;
+  StepBasic_ProductOrFormationOrDefinition theRelatedProduct;
+  Standard_Boolean defDescription;
 
 
 };
@@ -90,7 +86,6 @@ Standard_Boolean defDescription;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_DocumentProductAssociation_HeaderFile

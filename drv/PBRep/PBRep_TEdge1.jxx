@@ -1,6 +1,2 @@
-#ifndef _PBRep_CurveRepresentation_HeaderFile
 #include <PBRep_CurveRepresentation.hxx>
-#endif
-#ifndef _PBRep_TEdge1_HeaderFile
 #include <PBRep_TEdge1.hxx>
-#endif

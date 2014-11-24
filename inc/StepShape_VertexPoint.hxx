@@ -6,44 +6,34 @@
 #ifndef _StepShape_VertexPoint_HeaderFile
 #define _StepShape_VertexPoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_VertexPoint_HeaderFile
 #include <Handle_StepShape_VertexPoint.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Point_HeaderFile
 #include <Handle_StepGeom_Point.hxx>
-#endif
-#ifndef _StepShape_Vertex_HeaderFile
 #include <StepShape_Vertex.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepGeom_Point;
 class TCollection_HAsciiString;
 
 
 
-class StepShape_VertexPoint : public StepShape_Vertex {
+class StepShape_VertexPoint : public StepShape_Vertex
+{
 
 public:
 
-  //! Returns a VertexPoint <br>
-  Standard_EXPORT   StepShape_VertexPoint();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a VertexPoint
+  Standard_EXPORT StepShape_VertexPoint();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_Point)& aVertexGeometry) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetVertexGeometry(const Handle(StepGeom_Point)& aVertexGeometry) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_Point)& aVertexGeometry) ;
   
-  Standard_EXPORT     Handle_StepGeom_Point VertexGeometry() const;
+  Standard_EXPORT   void SetVertexGeometry (const Handle(StepGeom_Point)& aVertexGeometry) ;
+  
+  Standard_EXPORT   Handle(StepGeom_Point) VertexGeometry()  const;
 
 
 
@@ -58,7 +48,7 @@ protected:
 private: 
 
 
-Handle_StepGeom_Point vertexGeometry;
+  Handle(StepGeom_Point) vertexGeometry;
 
 
 };
@@ -67,7 +57,6 @@ Handle_StepGeom_Point vertexGeometry;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_VertexPoint_HeaderFile

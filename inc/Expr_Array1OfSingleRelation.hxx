@@ -6,28 +6,14 @@
 #ifndef _Expr_Array1OfSingleRelation_HeaderFile
 #define _Expr_Array1OfSingleRelation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Expr_SingleRelation_HeaderFile
 #include <Handle_Expr_SingleRelation.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -36,52 +22,52 @@ class Expr_SingleRelation;
 
 
 
-class Expr_Array1OfSingleRelation  {
+class Expr_Array1OfSingleRelation 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Expr_Array1OfSingleRelation(const Standard_Integer Low,const Standard_Integer Up);
+    Expr_Array1OfSingleRelation(const Standard_Integer Low, const Standard_Integer Up);
   
-      Expr_Array1OfSingleRelation(const Handle(Expr_SingleRelation)& Item,const Standard_Integer Low,const Standard_Integer Up);
+    Expr_Array1OfSingleRelation(const Handle(Expr_SingleRelation)& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const Handle(Expr_SingleRelation)& V) ;
+  Standard_EXPORT   void Init (const Handle(Expr_SingleRelation)& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~Expr_Array1OfSingleRelation()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const Expr_Array1OfSingleRelation& Assign(const Expr_Array1OfSingleRelation& Other) ;
-   const Expr_Array1OfSingleRelation& operator =(const Expr_Array1OfSingleRelation& Other) 
+  Standard_EXPORT  const  Expr_Array1OfSingleRelation& Assign (const Expr_Array1OfSingleRelation& Other) ;
+ const  Expr_Array1OfSingleRelation& operator = (const Expr_Array1OfSingleRelation& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(Expr_SingleRelation)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(Expr_SingleRelation)& Value) ;
   
-       const Handle_Expr_SingleRelation& Value(const Standard_Integer Index) const;
-     const Handle_Expr_SingleRelation& operator ()(const Standard_Integer Index) const
+     const  Handle(Expr_SingleRelation)& Value (const Standard_Integer Index)  const;
+   const  Handle(Expr_SingleRelation)& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        Handle_Expr_SingleRelation& ChangeValue(const Standard_Integer Index) ;
-      Handle_Expr_SingleRelation& operator ()(const Standard_Integer Index) 
+      Handle(Expr_SingleRelation)& ChangeValue (const Standard_Integer Index) ;
+    Handle(Expr_SingleRelation)& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -95,18 +81,18 @@ protected:
 private:
 
   
-  Standard_EXPORT   Expr_Array1OfSingleRelation(const Expr_Array1OfSingleRelation& AnArray);
+  Standard_EXPORT Expr_Array1OfSingleRelation(const Expr_Array1OfSingleRelation& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
 
-#define Array1Item Handle_Expr_SingleRelation
+#define Array1Item Handle(Expr_SingleRelation)
 #define Array1Item_hxx <Expr_SingleRelation.hxx>
 #define TCollection_Array1 Expr_Array1OfSingleRelation
 #define TCollection_Array1_hxx <Expr_Array1OfSingleRelation.hxx>
@@ -119,7 +105,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Expr_Array1OfSingleRelation_HeaderFile

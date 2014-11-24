@@ -6,28 +6,14 @@
 #ifndef _ExprIntrp_ListIteratorOfStackOfGeneralRelation_HeaderFile
 #define _ExprIntrp_ListIteratorOfStackOfGeneralRelation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_Expr_GeneralRelation_HeaderFile
 #include <Handle_Expr_GeneralRelation.hxx>
-#endif
-#ifndef _Handle_ExprIntrp_ListNodeOfStackOfGeneralRelation_HeaderFile
 #include <Handle_ExprIntrp_ListNodeOfStackOfGeneralRelation.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class ExprIntrp_StackOfGeneralRelation;
@@ -36,27 +22,27 @@ class ExprIntrp_ListNodeOfStackOfGeneralRelation;
 
 
 
-class ExprIntrp_ListIteratorOfStackOfGeneralRelation  {
+class ExprIntrp_ListIteratorOfStackOfGeneralRelation 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   ExprIntrp_ListIteratorOfStackOfGeneralRelation();
+  Standard_EXPORT ExprIntrp_ListIteratorOfStackOfGeneralRelation();
   
-  Standard_EXPORT   ExprIntrp_ListIteratorOfStackOfGeneralRelation(const ExprIntrp_StackOfGeneralRelation& L);
+  Standard_EXPORT ExprIntrp_ListIteratorOfStackOfGeneralRelation(const ExprIntrp_StackOfGeneralRelation& L);
   
-  Standard_EXPORT     void Initialize(const ExprIntrp_StackOfGeneralRelation& L) ;
+  Standard_EXPORT   void Initialize (const ExprIntrp_StackOfGeneralRelation& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     Handle_Expr_GeneralRelation& Value() const;
+  Standard_EXPORT   Handle(Expr_GeneralRelation)& Value()  const;
 
 
 friend class ExprIntrp_StackOfGeneralRelation;
-
 
 
 protected:
@@ -69,13 +55,13 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
 
-#define Item Handle_Expr_GeneralRelation
+#define Item Handle(Expr_GeneralRelation)
 #define Item_hxx <Expr_GeneralRelation.hxx>
 #define TCollection_ListNode ExprIntrp_ListNodeOfStackOfGeneralRelation
 #define TCollection_ListNode_hxx <ExprIntrp_ListNodeOfStackOfGeneralRelation.hxx>
@@ -100,7 +86,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ExprIntrp_ListIteratorOfStackOfGeneralRelation_HeaderFile

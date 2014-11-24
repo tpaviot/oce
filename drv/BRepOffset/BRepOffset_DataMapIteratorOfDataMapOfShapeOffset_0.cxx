@@ -5,24 +5,12 @@
 
 #include <BRepOffset_DataMapIteratorOfDataMapOfShapeOffset.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _BRepOffset_Offset_HeaderFile
 #include <BRepOffset_Offset.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _BRepOffset_DataMapOfShapeOffset_HeaderFile
 #include <BRepOffset_DataMapOfShapeOffset.hxx>
-#endif
-#ifndef _BRepOffset_DataMapNodeOfDataMapOfShapeOffset_HeaderFile
 #include <BRepOffset_DataMapNodeOfDataMapOfShapeOffset.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape

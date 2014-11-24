@@ -6,22 +6,15 @@
 #ifndef _Handle_IGESSelect_IGESName_HeaderFile
 #define _Handle_IGESSelect_IGESName_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IFSelect_Signature_HeaderFile
 #include <Handle_IFSelect_Signature.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IFSelect_Signature);
 class IGESSelect_IGESName;
 
-DEFINE_STANDARD_HANDLE(IGESSelect_IGESName,IFSelect_Signature)
+DEFINE_STANDARD_HANDLE(IGESSelect_IGESName, IFSelect_Signature)
 
-#endif
+#endif // _Handle_IGESSelect_IGESName_HeaderFile

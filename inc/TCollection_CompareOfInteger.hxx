@@ -6,40 +6,30 @@
 #ifndef _TCollection_CompareOfInteger_HeaderFile
 #define _TCollection_CompareOfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_PrivCompareOfInteger_HeaderFile
 #include <TCollection_PrivCompareOfInteger.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 
 
 
-class TCollection_CompareOfInteger  : public TCollection_PrivCompareOfInteger {
+class TCollection_CompareOfInteger  : public TCollection_PrivCompareOfInteger
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TCollection_CompareOfInteger();
-  //! Returns True if <Left> is lower than <Right>. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsLower(const Standard_Integer& Left,const Standard_Integer& Right) const;
-  //! Returns True if <Left> is greater than <Right>. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsGreater(const Standard_Integer& Left,const Standard_Integer& Right) const;
-
+  Standard_EXPORT TCollection_CompareOfInteger();
+  
+  //! Returns True if <Left> is lower than <Right>.
+  Standard_EXPORT virtual   Standard_Boolean IsLower (const Standard_Integer& Left, const Standard_Integer& Right)  const;
+  
+  //! Returns True if <Left> is greater than <Right>.
+  Standard_EXPORT virtual   Standard_Boolean IsGreater (const Standard_Integer& Left, const Standard_Integer& Right)  const;
 
 
 
@@ -62,7 +52,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TCollection_CompareOfInteger_HeaderFile

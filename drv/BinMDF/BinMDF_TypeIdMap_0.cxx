@@ -5,33 +5,17 @@
 
 #include <BinMDF_TypeIdMap.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_MultiplyDefined_HeaderFile
 #include <Standard_MultiplyDefined.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _BinMDF_DoubleMapNodeOfTypeIdMap_HeaderFile
 #include <BinMDF_DoubleMapNodeOfTypeIdMap.hxx>
-#endif
-#ifndef _BinMDF_DoubleMapIteratorOfTypeIdMap_HeaderFile
 #include <BinMDF_DoubleMapIteratorOfTypeIdMap.hxx>
-#endif
  
 
-#define TheKey1 Handle_Standard_Type
+#define TheKey1 Handle(Standard_Type)
 #define TheKey1_hxx <Standard_Type.hxx>
 #define TheKey2 Standard_Integer
 #define TheKey2_hxx <Standard_Integer.hxx>

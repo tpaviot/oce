@@ -5,24 +5,14 @@
 
 #include <StepGeom_Array1OfCompositeCurveSegment.hxx>
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _StepGeom_CompositeCurveSegment_HeaderFile
 #include <StepGeom_CompositeCurveSegment.hxx>
-#endif
  
 
-#define Array1Item Handle_StepGeom_CompositeCurveSegment
+#define Array1Item Handle(StepGeom_CompositeCurveSegment)
 #define Array1Item_hxx <StepGeom_CompositeCurveSegment.hxx>
 #define TCollection_Array1 StepGeom_Array1OfCompositeCurveSegment
 #define TCollection_Array1_hxx <StepGeom_Array1OfCompositeCurveSegment.hxx>

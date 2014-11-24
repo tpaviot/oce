@@ -6,47 +6,32 @@
 #ifndef _XmlDrivers_DocumentStorageDriver_HeaderFile
 #define _XmlDrivers_DocumentStorageDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_XmlDrivers_DocumentStorageDriver_HeaderFile
 #include <Handle_XmlDrivers_DocumentStorageDriver.hxx>
-#endif
 
-#ifndef _XmlLDrivers_DocumentStorageDriver_HeaderFile
 #include <XmlLDrivers_DocumentStorageDriver.hxx>
-#endif
-#ifndef _Handle_XmlMDF_ADriverTable_HeaderFile
 #include <Handle_XmlMDF_ADriverTable.hxx>
-#endif
-#ifndef _Handle_CDM_MessageDriver_HeaderFile
 #include <Handle_CDM_MessageDriver.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _XmlObjMgt_Element_HeaderFile
 #include <XmlObjMgt_Element.hxx>
-#endif
 class TCollection_ExtendedString;
 class XmlMDF_ADriverTable;
 class CDM_MessageDriver;
 
 
 
-class XmlDrivers_DocumentStorageDriver : public XmlLDrivers_DocumentStorageDriver {
+class XmlDrivers_DocumentStorageDriver : public XmlLDrivers_DocumentStorageDriver
+{
 
 public:
 
   
-  Standard_EXPORT   XmlDrivers_DocumentStorageDriver(const TCollection_ExtendedString& theCopyright);
+  Standard_EXPORT XmlDrivers_DocumentStorageDriver(const TCollection_ExtendedString& theCopyright);
   
-  Standard_EXPORT   virtual  Handle_XmlMDF_ADriverTable AttributeDrivers(const Handle(CDM_MessageDriver)& theMsgDriver) ;
+  Standard_EXPORT virtual   Handle(XmlMDF_ADriverTable) AttributeDrivers (const Handle(CDM_MessageDriver)& theMsgDriver) ;
   
-  Standard_EXPORT   virtual  Standard_Boolean WriteShapeSection(XmlObjMgt_Element& thePDoc) ;
+  Standard_EXPORT virtual   Standard_Boolean WriteShapeSection (XmlObjMgt_Element& thePDoc) ;
 
 
 
@@ -69,7 +54,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XmlDrivers_DocumentStorageDriver_HeaderFile

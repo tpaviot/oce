@@ -5,16 +5,10 @@
 
 #include <Visual3d_SequenceNodeOfSequenceOfLight.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Visual3d_Light_HeaderFile
 #include <Visual3d_Light.hxx>
-#endif
-#ifndef _Visual3d_SequenceOfLight_HeaderFile
 #include <Visual3d_SequenceOfLight.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(Visual3d_SequenceNodeOfSequenceOfLight,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Visual3d_SequenceNodeOfSequenceOfLight)
 
 
-#define SeqItem Handle_Visual3d_Light
+#define SeqItem Handle(Visual3d_Light)
 #define SeqItem_hxx <Visual3d_Light.hxx>
 #define TCollection_SequenceNode Visual3d_SequenceNodeOfSequenceOfLight
 #define TCollection_SequenceNode_hxx <Visual3d_SequenceNodeOfSequenceOfLight.hxx>

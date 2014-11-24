@@ -6,37 +6,33 @@
 #ifndef _IFSelect_SelectUnion_HeaderFile
 #define _IFSelect_SelectUnion_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_SelectUnion_HeaderFile
 #include <Handle_IFSelect_SelectUnion.hxx>
-#endif
 
-#ifndef _IFSelect_SelectCombine_HeaderFile
 #include <IFSelect_SelectCombine.hxx>
-#endif
 class Interface_EntityIterator;
 class Interface_Graph;
 class TCollection_AsciiString;
 
 
-//! A SelectUnion cumulates the Entities issued from several other <br>
-//!           Selections (union of results : "OR" operator) <br>
-class IFSelect_SelectUnion : public IFSelect_SelectCombine {
+//! A SelectUnion cumulates the Entities issued from several other
+//! Selections (union of results : "OR" operator)
+class IFSelect_SelectUnion : public IFSelect_SelectCombine
+{
 
 public:
 
-  //! Creates an empty SelectUnion <br>
-  Standard_EXPORT   IFSelect_SelectUnion();
-  //! Returns the list of selected Entities, which is the addition <br>
-//!           result from all input selections. Uniqueness is guaranteed. <br>
-  Standard_EXPORT     Interface_EntityIterator RootResult(const Interface_Graph& G) const;
-  //! Returns a text defining the criterium : "Union (OR)" <br>
-  Standard_EXPORT     TCollection_AsciiString Label() const;
+  
+  //! Creates an empty SelectUnion
+  Standard_EXPORT IFSelect_SelectUnion();
+  
+  //! Returns the list of selected Entities, which is the addition
+  //! result from all input selections. Uniqueness is guaranteed.
+  Standard_EXPORT   Interface_EntityIterator RootResult (const Interface_Graph& G)  const;
+  
+  //! Returns a text defining the criterium : "Union (OR)"
+  Standard_EXPORT   TCollection_AsciiString Label()  const;
 
 
 
@@ -59,7 +55,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_SelectUnion_HeaderFile

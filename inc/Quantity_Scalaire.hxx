@@ -6,13 +6,11 @@
 #ifndef _Quantity_Scalaire_HeaderFile
 #define _Quantity_Scalaire_HeaderFile
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 
 typedef Standard_Real Quantity_Scalaire;
 
 
 #define Quantity_Scalaire_Type_() Standard_Real_Type_()
 
-#endif
+#endif // _Quantity_Scalaire_HeaderFile

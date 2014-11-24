@@ -6,56 +6,54 @@
 #ifndef _IntCurveSurface_IntersectionPoint_HeaderFile
 #define _IntCurveSurface_IntersectionPoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _IntCurveSurface_TransitionOnCurve_HeaderFile
 #include <IntCurveSurface_TransitionOnCurve.hxx>
-#endif
 class gp_Pnt;
 
 
-//! Definition of an interserction point between a <br>
-//!          curve and a surface. <br>
-class IntCurveSurface_IntersectionPoint  {
+//! Definition of an interserction point between a
+//! curve and a surface.
+class IntCurveSurface_IntersectionPoint 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty Constructor. <br>
-  Standard_EXPORT   IntCurveSurface_IntersectionPoint();
-  //! Create an IntersectionPoint. <br>
-  Standard_EXPORT   IntCurveSurface_IntersectionPoint(const gp_Pnt& P,const Standard_Real USurf,const Standard_Real VSurf,const Standard_Real UCurv,const IntCurveSurface_TransitionOnCurve TrCurv);
-  //! Set the fields of the current IntersectionPoint. <br>
-  Standard_EXPORT     void SetValues(const gp_Pnt& P,const Standard_Real USurf,const Standard_Real VSurf,const Standard_Real UCurv,const IntCurveSurface_TransitionOnCurve TrCurv) ;
-  //! Get the fields of the current IntersectionPoint. <br>
-  Standard_EXPORT     void Values(gp_Pnt& P,Standard_Real& USurf,Standard_Real& VSurf,Standard_Real& UCurv,IntCurveSurface_TransitionOnCurve& TrCurv) const;
-  //! returns the geometric point. <br>
-       const gp_Pnt& Pnt() const;
-  //! returns the U parameter on the surface. <br>
-        Standard_Real U() const;
-  //! returns the V parameter on the surface. <br>
-        Standard_Real V() const;
-  //! returns the parameter on the curve. <br>
-        Standard_Real W() const;
-  //! returns the Transition of the point. <br>
-        IntCurveSurface_TransitionOnCurve Transition() const;
-  //! Dump all the fields. <br>
-  Standard_EXPORT     void Dump() const;
-
+  
+  //! Empty Constructor.
+  Standard_EXPORT IntCurveSurface_IntersectionPoint();
+  
+  //! Create an IntersectionPoint.
+  Standard_EXPORT IntCurveSurface_IntersectionPoint(const gp_Pnt& P, const Standard_Real USurf, const Standard_Real VSurf, const Standard_Real UCurv, const IntCurveSurface_TransitionOnCurve TrCurv);
+  
+  //! Set the fields of the current IntersectionPoint.
+  Standard_EXPORT   void SetValues (const gp_Pnt& P, const Standard_Real USurf, const Standard_Real VSurf, const Standard_Real UCurv, const IntCurveSurface_TransitionOnCurve TrCurv) ;
+  
+  //! Get the fields of the current IntersectionPoint.
+  Standard_EXPORT   void Values (gp_Pnt& P, Standard_Real& USurf, Standard_Real& VSurf, Standard_Real& UCurv, IntCurveSurface_TransitionOnCurve& TrCurv)  const;
+  
+  //! returns the geometric point.
+     const  gp_Pnt& Pnt()  const;
+  
+  //! returns the U parameter on the surface.
+      Standard_Real U()  const;
+  
+  //! returns the V parameter on the surface.
+      Standard_Real V()  const;
+  
+  //! returns the parameter on the curve.
+      Standard_Real W()  const;
+  
+  //! returns the Transition of the point.
+      IntCurveSurface_TransitionOnCurve Transition()  const;
+  
+  //! Dump all the fields.
+  Standard_EXPORT   void Dump()  const;
 
 
 
@@ -70,11 +68,11 @@ private:
 
 
 
-gp_Pnt myP;
-Standard_Real myUSurf;
-Standard_Real myVSurf;
-Standard_Real myUCurv;
-IntCurveSurface_TransitionOnCurve myTrOnCurv;
+  gp_Pnt myP;
+  Standard_Real myUSurf;
+  Standard_Real myVSurf;
+  Standard_Real myUCurv;
+  IntCurveSurface_TransitionOnCurve myTrOnCurv;
 
 
 };
@@ -84,7 +82,6 @@ IntCurveSurface_TransitionOnCurve myTrOnCurv;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntCurveSurface_IntersectionPoint_HeaderFile

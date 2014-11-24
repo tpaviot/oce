@@ -1,12 +1,4 @@
-#ifndef _AppParCurves_MultiCurve_HeaderFile
 #include <AppParCurves_MultiCurve.hxx>
-#endif
-#ifndef _AppParCurves_SequenceOfMultiCurve_HeaderFile
 #include <AppParCurves_SequenceOfMultiCurve.hxx>
-#endif
-#ifndef _AppParCurves_MultiBSpCurve_HeaderFile
 #include <AppParCurves_MultiBSpCurve.hxx>
-#endif
-#ifndef _Approx_MCurvesToBSpCurve_HeaderFile
 #include <Approx_MCurvesToBSpCurve.hxx>
-#endif

@@ -2,46 +2,46 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{0DADCBA0-0F8E-1260-0261-381DDA2FF9CA}</UniqueIdentifier>
+      <UniqueIdentifier>{740E9496-0530-190B-18CC-E2298112D938}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepAP214">
-      <UniqueIdentifier>{B8666A44-0613-1042-1578-B40178CC949F}</UniqueIdentifier>
+      <UniqueIdentifier>{731C4B94-142D-0C18-059C-D49AA7F55A44}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\RWStepAP214">
-      <UniqueIdentifier>{31726B84-0FF3-0779-0C72-A591F210DE14}</UniqueIdentifier>
+      <UniqueIdentifier>{F946A6B8-1480-0B31-1147-ED77FB601D73}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepAP203">
-      <UniqueIdentifier>{6415721B-0C39-01FB-1659-71CFA0F62CC9}</UniqueIdentifier>
+      <UniqueIdentifier>{2D73FBB1-0FC1-06AE-06A2-8B1B53AF1205}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\RWStepAP203">
-      <UniqueIdentifier>{F662775B-0111-07FB-0468-D596D2A0BA09}</UniqueIdentifier>
+      <UniqueIdentifier>{C8168333-0089-1030-0FDC-2C54354C8F42}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\STEPConstruct">
-      <UniqueIdentifier>{15B82BBE-0285-1226-0990-702D93C02095}</UniqueIdentifier>
+      <UniqueIdentifier>{515FC0F6-1355-05CF-05E6-2739722C9A1E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\STEPEdit">
-      <UniqueIdentifier>{9B376905-04C2-0264-1644-83D53622F502}</UniqueIdentifier>
+      <UniqueIdentifier>{3A5F0DC3-0DB5-095D-04ED-798022CB76FF}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\GeomToStep">
-      <UniqueIdentifier>{038382BA-06F3-0179-05F2-4B7B71954CE5}</UniqueIdentifier>
+      <UniqueIdentifier>{F17F8E3E-03E1-0158-1093-03FC1E9D1CC2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepToGeom">
-      <UniqueIdentifier>{EB5C057E-001D-0525-13E2-4F2A29590E52}</UniqueIdentifier>
+      <UniqueIdentifier>{CB18DF7C-02D5-0BAC-0EC6-7428ED2AF561}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepToTopoDS">
-      <UniqueIdentifier>{BB390ED9-10CF-0488-0846-561F3D1D0F34}</UniqueIdentifier>
+      <UniqueIdentifier>{53CBFBA7-0059-05B9-0B84-5647CD83F2C7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopoDSToStep">
-      <UniqueIdentifier>{D13AAD56-172A-01A8-0A68-B769CE83621C}</UniqueIdentifier>
+      <UniqueIdentifier>{B7ECB901-176F-0039-13DB-029C716CE94A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\STEPControl">
-      <UniqueIdentifier>{9E4405D8-1636-0CD2-0CF0-D161FB77D5DB}</UniqueIdentifier>
+      <UniqueIdentifier>{4822863D-129B-0048-0223-17676A867B61}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\STEPSelections">
-      <UniqueIdentifier>{794CCDCA-0B36-0A0E-0B47-54C9406897CB}</UniqueIdentifier>
+      <UniqueIdentifier>{0E274AC3-1918-09CE-0BAB-AD7472B80EAB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepAP209">
-      <UniqueIdentifier>{C5A5AA2F-0130-1448-0DBF-CC8D7A5C60B1}</UniqueIdentifier>
+      <UniqueIdentifier>{CB1E4232-139D-17B6-11C0-AEDBC2DDB57F}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

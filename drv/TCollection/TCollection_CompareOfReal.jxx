@@ -1,3 +1,1 @@
-#ifndef _TCollection_CompareOfReal_HeaderFile
 #include <TCollection_CompareOfReal.hxx>
-#endif

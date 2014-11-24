@@ -6,22 +6,12 @@
 #ifndef _ChFiDS_HElSpine_HeaderFile
 #define _ChFiDS_HElSpine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ChFiDS_HElSpine_HeaderFile
 #include <Handle_ChFiDS_HElSpine.hxx>
-#endif
 
-#ifndef _ChFiDS_ElSpine_HeaderFile
 #include <ChFiDS_ElSpine.hxx>
-#endif
-#ifndef _Adaptor3d_HCurve_HeaderFile
 #include <Adaptor3d_HCurve.hxx>
-#endif
 class Standard_OutOfRange;
 class Standard_NoSuchObject;
 class Standard_DomainError;
@@ -30,22 +20,23 @@ class Adaptor3d_Curve;
 
 
 
-class ChFiDS_HElSpine : public Adaptor3d_HCurve {
+class ChFiDS_HElSpine : public Adaptor3d_HCurve
+{
 
 public:
 
   
-  Standard_EXPORT   ChFiDS_HElSpine();
+  Standard_EXPORT ChFiDS_HElSpine();
   
-  Standard_EXPORT   ChFiDS_HElSpine(const ChFiDS_ElSpine& C);
+  Standard_EXPORT ChFiDS_HElSpine(const ChFiDS_ElSpine& C);
   
-  Standard_EXPORT     void Set(const ChFiDS_ElSpine& C) ;
+  Standard_EXPORT   void Set (const ChFiDS_ElSpine& C) ;
   
-  Standard_EXPORT    const Adaptor3d_Curve& Curve() const;
+  Standard_EXPORT  const  Adaptor3d_Curve& Curve()  const;
   
-  Standard_EXPORT     Adaptor3d_Curve& GetCurve() ;
+  Standard_EXPORT   Adaptor3d_Curve& GetCurve() ;
   
-        ChFiDS_ElSpine& ChangeCurve() ;
+      ChFiDS_ElSpine& ChangeCurve() ;
 
 
 
@@ -55,7 +46,7 @@ public:
 protected:
 
 
-ChFiDS_ElSpine myCurve;
+  ChFiDS_ElSpine myCurve;
 
 
 private: 
@@ -82,7 +73,6 @@ private:
 #undef Adaptor3d_GenHCurve_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ChFiDS_HElSpine_HeaderFile

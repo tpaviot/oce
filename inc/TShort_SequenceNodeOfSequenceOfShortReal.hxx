@@ -6,37 +6,26 @@
 #ifndef _TShort_SequenceNodeOfSequenceOfShortReal_HeaderFile
 #define _TShort_SequenceNodeOfSequenceOfShortReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TShort_SequenceNodeOfSequenceOfShortReal_HeaderFile
 #include <Handle_TShort_SequenceNodeOfSequenceOfShortReal.hxx>
-#endif
 
-#ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class TShort_SequenceOfShortReal;
 
 
 
-class TShort_SequenceNodeOfSequenceOfShortReal : public TCollection_SeqNode {
+class TShort_SequenceNodeOfSequenceOfShortReal : public TCollection_SeqNode
+{
 
 public:
 
   
-      TShort_SequenceNodeOfSequenceOfShortReal(const Standard_ShortReal& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    TShort_SequenceNodeOfSequenceOfShortReal(const Standard_ShortReal& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Standard_ShortReal& Value() const;
+      Standard_ShortReal& Value()  const;
 
 
 
@@ -51,7 +40,7 @@ protected:
 private: 
 
 
-Standard_ShortReal myValue;
+  Standard_ShortReal myValue;
 
 
 };
@@ -77,7 +66,6 @@ Standard_ShortReal myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TShort_SequenceNodeOfSequenceOfShortReal_HeaderFile

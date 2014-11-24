@@ -5,15 +5,9 @@
 
 #include <PTopoDS_VArrayTNodeOfFieldOfHArray1OfShape1.hxx>
 
-#ifndef _PTopoDS_Shape1_HeaderFile
 #include <PTopoDS_Shape1.hxx>
-#endif
-#ifndef _PTopoDS_FieldOfHArray1OfShape1_HeaderFile
 #include <PTopoDS_FieldOfHArray1OfShape1.hxx>
-#endif
-#ifndef _PTopoDS_VArrayNodeOfFieldOfHArray1OfShape1_HeaderFile
 #include <PTopoDS_VArrayNodeOfFieldOfHArray1OfShape1.hxx>
-#endif
  
 
 #define Item PTopoDS_Shape1

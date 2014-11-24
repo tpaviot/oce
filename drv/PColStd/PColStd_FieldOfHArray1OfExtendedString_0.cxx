@@ -5,31 +5,15 @@
 
 #include <PColStd_FieldOfHArray1OfExtendedString.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NegativeValue_HeaderFile
 #include <Standard_NegativeValue.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_NullObject_HeaderFile
 #include <Standard_NullObject.hxx>
-#endif
-#ifndef _PCollection_HExtendedString_HeaderFile
 #include <PCollection_HExtendedString.hxx>
-#endif
-#ifndef _PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString_HeaderFile
 #include <PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString.hxx>
-#endif
-#ifndef _PColStd_VArrayTNodeOfFieldOfHArray1OfExtendedString_HeaderFile
 #include <PColStd_VArrayTNodeOfFieldOfHArray1OfExtendedString.hxx>
-#endif
 
 IMPLEMENT_STANDARD_TYPE(PColStd_FieldOfHArray1OfExtendedString)
 IMPLEMENT_STANDARD_SUPERTYPE_ARRAY()
@@ -40,7 +24,7 @@ IMPLEMENT_STANDARD_SUPERTYPE_ARRAY_END()
 IMPLEMENT_STANDARD_TYPE_END(PColStd_FieldOfHArray1OfExtendedString)
  
 
-#define Item Handle_PCollection_HExtendedString
+#define Item Handle(PCollection_HExtendedString)
 #define Item_hxx <PCollection_HExtendedString.hxx>
 #define DBC_VArrayNode PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString
 #define DBC_VArrayNode_hxx <PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString.hxx>

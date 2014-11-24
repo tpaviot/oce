@@ -6,25 +6,13 @@
 #ifndef _Poly_HArray1OfTriangle_HeaderFile
 #define _Poly_HArray1OfTriangle_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Poly_HArray1OfTriangle_HeaderFile
 #include <Handle_Poly_HArray1OfTriangle.hxx>
-#endif
 
-#ifndef _Poly_Array1OfTriangle_HeaderFile
 #include <Poly_Array1OfTriangle.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class Poly_Array1OfTriangle;
 
 
 
-class Poly_HArray1OfTriangle : public MMgt_TShared {
+class Poly_HArray1OfTriangle : public MMgt_TShared
+{
 
 public:
 
   
-      Poly_HArray1OfTriangle(const Standard_Integer Low,const Standard_Integer Up);
+    Poly_HArray1OfTriangle(const Standard_Integer Low, const Standard_Integer Up);
   
-      Poly_HArray1OfTriangle(const Standard_Integer Low,const Standard_Integer Up,const Poly_Triangle& V);
+    Poly_HArray1OfTriangle(const Standard_Integer Low, const Standard_Integer Up, const Poly_Triangle& V);
   
-        void Init(const Poly_Triangle& V) ;
+      void Init (const Poly_Triangle& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Poly_Triangle& Value) ;
+      void SetValue (const Standard_Integer Index, const Poly_Triangle& Value) ;
   
-       const Poly_Triangle& Value(const Standard_Integer Index) const;
+     const  Poly_Triangle& Value (const Standard_Integer Index)  const;
   
-        Poly_Triangle& ChangeValue(const Standard_Integer Index) ;
+      Poly_Triangle& ChangeValue (const Standard_Integer Index) ;
   
-       const Poly_Array1OfTriangle& Array1() const;
+     const  Poly_Array1OfTriangle& Array1()  const;
   
-        Poly_Array1OfTriangle& ChangeArray1() ;
+      Poly_Array1OfTriangle& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-Poly_Array1OfTriangle myArray;
+  Poly_Array1OfTriangle myArray;
 
 
 };
@@ -100,7 +89,6 @@ Poly_Array1OfTriangle myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Poly_HArray1OfTriangle_HeaderFile

@@ -6,72 +6,58 @@
 #ifndef _ProjLib_PrjFunc_HeaderFile
 #define _ProjLib_PrjFunc_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Adaptor3d_CurvePtr_HeaderFile
 #include <Adaptor3d_CurvePtr.hxx>
-#endif
-#ifndef _Adaptor3d_SurfacePtr_HeaderFile
 #include <Adaptor3d_SurfacePtr.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _math_FunctionSetWithDerivatives_HeaderFile
 #include <math_FunctionSetWithDerivatives.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
 #include <math_Vector.hxx>
-#endif
 class Standard_ConstructionError;
 class math_Matrix;
 class gp_Pnt2d;
 
 
 
-class ProjLib_PrjFunc  : public math_FunctionSetWithDerivatives {
+class ProjLib_PrjFunc  : public math_FunctionSetWithDerivatives
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   ProjLib_PrjFunc(const Adaptor3d_CurvePtr& C,const Standard_Real FixVal,const Adaptor3d_SurfacePtr& S,const Standard_Integer Fix);
-  //! returns the number of variables of the function. <br>
-  Standard_EXPORT     Standard_Integer NbVariables() const;
-  //! returns the number of equations of the function. <br>
-  Standard_EXPORT     Standard_Integer NbEquations() const;
-  //! computes the values <F> of the Functions for the <br>
-//!          variable <X>. <br>
-//!          Returns True if the computation was done successfully, <br>
-//!          False otherwise. <br>
-  Standard_EXPORT     Standard_Boolean Value(const math_Vector& X,math_Vector& F) ;
-  //! returns the values <D> of the derivatives for the <br>
-//!          variable <X>. <br>
-//!          Returns True if the computation was done successfully, <br>
-//!          False otherwise. <br>
-  Standard_EXPORT     Standard_Boolean Derivatives(const math_Vector& X,math_Matrix& D) ;
-  //! returns the values <F> of the functions and the derivatives <br>
-//!          <D> for the variable <X>. <br>
-//!          Returns True if the computation was done successfully, <br>
-//!          False otherwise. <br>
-  Standard_EXPORT     Standard_Boolean Values(const math_Vector& X,math_Vector& F,math_Matrix& D) ;
-  //!  returns  point  on  surface <br>
-  Standard_EXPORT     gp_Pnt2d Solution() const;
-
+  Standard_EXPORT ProjLib_PrjFunc(const Adaptor3d_CurvePtr& C, const Standard_Real FixVal, const Adaptor3d_SurfacePtr& S, const Standard_Integer Fix);
+  
+  //! returns the number of variables of the function.
+  Standard_EXPORT   Standard_Integer NbVariables()  const;
+  
+  //! returns the number of equations of the function.
+  Standard_EXPORT   Standard_Integer NbEquations()  const;
+  
+  //! computes the values <F> of the Functions for the
+  //! variable <X>.
+  //! Returns True if the computation was done successfully,
+  //! False otherwise.
+  Standard_EXPORT   Standard_Boolean Value (const math_Vector& X, math_Vector& F) ;
+  
+  //! returns the values <D> of the derivatives for the
+  //! variable <X>.
+  //! Returns True if the computation was done successfully,
+  //! False otherwise.
+  Standard_EXPORT   Standard_Boolean Derivatives (const math_Vector& X, math_Matrix& D) ;
+  
+  //! returns the values <F> of the functions and the derivatives
+  //! <D> for the variable <X>.
+  //! Returns True if the computation was done successfully,
+  //! False otherwise.
+  Standard_EXPORT   Standard_Boolean Values (const math_Vector& X, math_Vector& F, math_Matrix& D) ;
+  
+  //! returns  point  on  surface
+  Standard_EXPORT   gp_Pnt2d Solution()  const;
 
 
 
@@ -86,13 +72,13 @@ private:
 
 
 
-Adaptor3d_CurvePtr myCurve;
-Adaptor3d_SurfacePtr mySurface;
-Standard_Real myt;
-Standard_Real myU;
-Standard_Real myV;
-Standard_Integer myFix;
-Standard_Real myNorm;
+  Adaptor3d_CurvePtr myCurve;
+  Adaptor3d_SurfacePtr mySurface;
+  Standard_Real myt;
+  Standard_Real myU;
+  Standard_Real myV;
+  Standard_Integer myFix;
+  Standard_Real myNorm;
 
 
 };
@@ -101,7 +87,6 @@ Standard_Real myNorm;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ProjLib_PrjFunc_HeaderFile

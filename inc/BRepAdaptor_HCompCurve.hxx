@@ -6,22 +6,12 @@
 #ifndef _BRepAdaptor_HCompCurve_HeaderFile
 #define _BRepAdaptor_HCompCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepAdaptor_HCompCurve_HeaderFile
 #include <Handle_BRepAdaptor_HCompCurve.hxx>
-#endif
 
-#ifndef _BRepAdaptor_CompCurve_HeaderFile
 #include <BRepAdaptor_CompCurve.hxx>
-#endif
-#ifndef _Adaptor3d_HCurve_HeaderFile
 #include <Adaptor3d_HCurve.hxx>
-#endif
 class Standard_OutOfRange;
 class Standard_NoSuchObject;
 class Standard_DomainError;
@@ -30,22 +20,23 @@ class Adaptor3d_Curve;
 
 
 
-class BRepAdaptor_HCompCurve : public Adaptor3d_HCurve {
+class BRepAdaptor_HCompCurve : public Adaptor3d_HCurve
+{
 
 public:
 
   
-  Standard_EXPORT   BRepAdaptor_HCompCurve();
+  Standard_EXPORT BRepAdaptor_HCompCurve();
   
-  Standard_EXPORT   BRepAdaptor_HCompCurve(const BRepAdaptor_CompCurve& C);
+  Standard_EXPORT BRepAdaptor_HCompCurve(const BRepAdaptor_CompCurve& C);
   
-  Standard_EXPORT     void Set(const BRepAdaptor_CompCurve& C) ;
+  Standard_EXPORT   void Set (const BRepAdaptor_CompCurve& C) ;
   
-  Standard_EXPORT    const Adaptor3d_Curve& Curve() const;
+  Standard_EXPORT  const  Adaptor3d_Curve& Curve()  const;
   
-  Standard_EXPORT     Adaptor3d_Curve& GetCurve() ;
+  Standard_EXPORT   Adaptor3d_Curve& GetCurve() ;
   
-        BRepAdaptor_CompCurve& ChangeCurve() ;
+      BRepAdaptor_CompCurve& ChangeCurve() ;
 
 
 
@@ -55,7 +46,7 @@ public:
 protected:
 
 
-BRepAdaptor_CompCurve myCurve;
+  BRepAdaptor_CompCurve myCurve;
 
 
 private: 
@@ -82,7 +73,6 @@ private:
 #undef Adaptor3d_GenHCurve_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepAdaptor_HCompCurve_HeaderFile

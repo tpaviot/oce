@@ -6,22 +6,15 @@
 #ifndef _Handle_StepRepr_ValueRange_HeaderFile
 #define _Handle_StepRepr_ValueRange_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepRepr_CompoundRepresentationItem_HeaderFile
 #include <Handle_StepRepr_CompoundRepresentationItem.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepRepr_CompoundRepresentationItem);
 class StepRepr_ValueRange;
 
-DEFINE_STANDARD_HANDLE(StepRepr_ValueRange,StepRepr_CompoundRepresentationItem)
+DEFINE_STANDARD_HANDLE(StepRepr_ValueRange, StepRepr_CompoundRepresentationItem)
 
-#endif
+#endif // _Handle_StepRepr_ValueRange_HeaderFile

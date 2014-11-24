@@ -6,59 +6,47 @@
 #ifndef _StepShape_Block_HeaderFile
 #define _StepShape_Block_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_Block_HeaderFile
 #include <Handle_StepShape_Block.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Axis2Placement3d_HeaderFile
 #include <Handle_StepGeom_Axis2Placement3d.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _StepGeom_GeometricRepresentationItem_HeaderFile
 #include <StepGeom_GeometricRepresentationItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepGeom_Axis2Placement3d;
 class TCollection_HAsciiString;
 
 
 
-class StepShape_Block : public StepGeom_GeometricRepresentationItem {
+class StepShape_Block : public StepGeom_GeometricRepresentationItem
+{
 
 public:
 
-  //! Returns a Block <br>
-  Standard_EXPORT   StepShape_Block();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a Block
+  Standard_EXPORT StepShape_Block();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_Axis2Placement3d)& aPosition,const Standard_Real aX,const Standard_Real aY,const Standard_Real aZ) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetPosition(const Handle(StepGeom_Axis2Placement3d)& aPosition) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_Axis2Placement3d)& aPosition, const Standard_Real aX, const Standard_Real aY, const Standard_Real aZ) ;
   
-  Standard_EXPORT     Handle_StepGeom_Axis2Placement3d Position() const;
+  Standard_EXPORT   void SetPosition (const Handle(StepGeom_Axis2Placement3d)& aPosition) ;
   
-  Standard_EXPORT     void SetX(const Standard_Real aX) ;
+  Standard_EXPORT   Handle(StepGeom_Axis2Placement3d) Position()  const;
   
-  Standard_EXPORT     Standard_Real X() const;
+  Standard_EXPORT   void SetX (const Standard_Real aX) ;
   
-  Standard_EXPORT     void SetY(const Standard_Real aY) ;
+  Standard_EXPORT   Standard_Real X()  const;
   
-  Standard_EXPORT     Standard_Real Y() const;
+  Standard_EXPORT   void SetY (const Standard_Real aY) ;
   
-  Standard_EXPORT     void SetZ(const Standard_Real aZ) ;
+  Standard_EXPORT   Standard_Real Y()  const;
   
-  Standard_EXPORT     Standard_Real Z() const;
+  Standard_EXPORT   void SetZ (const Standard_Real aZ) ;
+  
+  Standard_EXPORT   Standard_Real Z()  const;
 
 
 
@@ -73,10 +61,10 @@ protected:
 private: 
 
 
-Handle_StepGeom_Axis2Placement3d position;
-Standard_Real x;
-Standard_Real y;
-Standard_Real z;
+  Handle(StepGeom_Axis2Placement3d) position;
+  Standard_Real x;
+  Standard_Real y;
+  Standard_Real z;
 
 
 };
@@ -85,7 +73,6 @@ Standard_Real z;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_Block_HeaderFile

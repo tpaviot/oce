@@ -6,55 +6,56 @@
 #ifndef _QANewBRepNaming_Fillet_HeaderFile
 #define _QANewBRepNaming_Fillet_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _QANewBRepNaming_TopNaming_HeaderFile
 #include <QANewBRepNaming_TopNaming.hxx>
-#endif
 class TDF_Label;
 class TopoDS_Shape;
 class BRepFilletAPI_MakeFillet;
 
 
-//! For topological naming of a fillet <br>
-class QANewBRepNaming_Fillet  : public QANewBRepNaming_TopNaming {
+//! For topological naming of a fillet
+class QANewBRepNaming_Fillet  : public QANewBRepNaming_TopNaming
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   QANewBRepNaming_Fillet();
+  Standard_EXPORT QANewBRepNaming_Fillet();
   
-  Standard_EXPORT   QANewBRepNaming_Fillet(const TDF_Label& ResultLabel);
+  Standard_EXPORT QANewBRepNaming_Fillet(const TDF_Label& ResultLabel);
   
-  Standard_EXPORT     void Init(const TDF_Label& ResultLabel) ;
-  //! Loads a fillet in a data framework <br>
-  Standard_EXPORT     void Load(const TopoDS_Shape& part,BRepFilletAPI_MakeFillet& mkFillet) const;
-  //! Returns a label for deleted faces of the part. <br>
-  Standard_EXPORT     TDF_Label DeletedFaces() const;
-  //! Returns a label for modified faces of the part. <br>
-  Standard_EXPORT     TDF_Label ModifiedFaces() const;
-  //! Returns a label for faces generated from edges of the part. <br>
-  Standard_EXPORT     TDF_Label FacesFromEdges() const;
-  //! Returns a label for faces generated from vertices of the part. <br>
-  Standard_EXPORT     TDF_Label FacesFromVertices() const;
-  //! Returns a label for WorkAround Face number 1 <br>
-  Standard_EXPORT     TDF_Label WRFace1() const;
-  //! Returns a label for WorkAround Face number 2 <br>
-  Standard_EXPORT     TDF_Label WRFace2() const;
-  //! Returns a label for WorkAround Edge number 1 <br>
-  Standard_EXPORT     TDF_Label WREdge1() const;
-  //! Returns a label for WorkAround Edge number 2 <br>
-  Standard_EXPORT     TDF_Label WREdge2() const;
-
+  Standard_EXPORT   void Init (const TDF_Label& ResultLabel) ;
+  
+  //! Loads a fillet in a data framework
+  Standard_EXPORT   void Load (const TopoDS_Shape& part, BRepFilletAPI_MakeFillet& mkFillet)  const;
+  
+  //! Returns a label for deleted faces of the part.
+  Standard_EXPORT   TDF_Label DeletedFaces()  const;
+  
+  //! Returns a label for modified faces of the part.
+  Standard_EXPORT   TDF_Label ModifiedFaces()  const;
+  
+  //! Returns a label for faces generated from edges of the part.
+  Standard_EXPORT   TDF_Label FacesFromEdges()  const;
+  
+  //! Returns a label for faces generated from vertices of the part.
+  Standard_EXPORT   TDF_Label FacesFromVertices()  const;
+  
+  //! Returns a label for WorkAround Face number 1
+  Standard_EXPORT   TDF_Label WRFace1()  const;
+  
+  //! Returns a label for WorkAround Face number 2
+  Standard_EXPORT   TDF_Label WRFace2()  const;
+  
+  //! Returns a label for WorkAround Edge number 1
+  Standard_EXPORT   TDF_Label WREdge1()  const;
+  
+  //! Returns a label for WorkAround Edge number 2
+  Standard_EXPORT   TDF_Label WREdge2()  const;
 
 
 
@@ -77,7 +78,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QANewBRepNaming_Fillet_HeaderFile

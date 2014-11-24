@@ -6,19 +6,11 @@
 #ifndef _IGESBasic_HeaderFile
 #define _IGESBasic_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_IGESBasic_Protocol_HeaderFile
 #include <Handle_IGESBasic_Protocol.hxx>
-#endif
 class IGESBasic_Protocol;
 class IGESBasic_SubfigureDef;
 class IGESBasic_Group;
@@ -67,17 +59,19 @@ class IGESBasic_HArray1OfHArray1OfIGESEntity;
 class IGESBasic_HArray1OfLineFontEntity;
 
 
-//! This package represents basic entities from IGES <br>
-class IGESBasic  {
+//! This package represents basic entities from IGES
+class IGESBasic 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Prepares dynqmic data (Protocol, Modules) for this package <br>
-  Standard_EXPORT   static  void Init() ;
-  //! Returns the Protocol for this Package <br>
-  Standard_EXPORT   static  Handle_IGESBasic_Protocol Protocol() ;
-
+  
+  //! Prepares dynqmic data (Protocol, Modules) for this package
+  Standard_EXPORT static   void Init() ;
+  
+  //! Returns the Protocol for this Package
+  Standard_EXPORT static   Handle(IGESBasic_Protocol) Protocol() ;
 
 
 
@@ -145,7 +139,6 @@ friend class IGESBasic_HArray1OfLineFontEntity;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESBasic_HeaderFile

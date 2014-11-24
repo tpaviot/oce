@@ -6,48 +6,35 @@
 #ifndef _StdPrs_WFSurface_HeaderFile
 #define _StdPrs_WFSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Prs3d_Root_HeaderFile
 #include <Prs3d_Root.hxx>
-#endif
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Handle_Prs3d_Drawer_HeaderFile
 #include <Handle_Prs3d_Drawer.hxx>
-#endif
 class Prs3d_Presentation;
 class Adaptor3d_HSurface;
 class Prs3d_Drawer;
 
 
-//! Computes the wireframe presentation of surfaces <br>
-//!          by displaying a given number of U and/or V isoparametric <br>
-//!         curves. The isoparametric curves are drawn with respect <br>
-//!          to a given number of points. <br>
-class StdPrs_WFSurface  : public Prs3d_Root {
+//! Computes the wireframe presentation of surfaces
+//! by displaying a given number of U and/or V isoparametric
+//! curves. The isoparametric curves are drawn with respect
+//! to a given number of points.
+class StdPrs_WFSurface  : public Prs3d_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Draws a surface by drawing the isoparametric curves with respect to <br>
-//! a fixed number of points given by the Drawer. <br>
-//! The number of isoparametric curves to be drawn and their color are <br>
-//! controlled by the furnished Drawer. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Adaptor3d_HSurface)& aSurface,const Handle(Prs3d_Drawer)& aDrawer) ;
-
+  
+  //! Draws a surface by drawing the isoparametric curves with respect to
+  //! a fixed number of points given by the Drawer.
+  //! The number of isoparametric curves to be drawn and their color are
+  //! controlled by the furnished Drawer.
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Adaptor3d_HSurface)& aSurface, const Handle(Prs3d_Drawer)& aDrawer) ;
 
 
 
@@ -70,7 +57,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StdPrs_WFSurface_HeaderFile

@@ -6,21 +6,20 @@
 #ifndef _V3d_TypeOfZclipping_HeaderFile
 #define _V3d_TypeOfZclipping_HeaderFile
 
-//! The available options are <br>
-//! -   V3d_OFF: Zclipping (clipping executed in the <br>
-//!   depth of the view) is deactivated, <br>
-//! -   V3d_BACK: back Zclipping is activated, <br>
-//! -   V3d_FRONT: front Zclipping is activated, <br>
-//! -   V3d_SLICE: both front and back Zclippings are activated. <br>
-enum V3d_TypeOfZclipping {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! The available options are
+//! -   V3d_OFF: Zclipping (clipping executed in the
+//! depth of the view) is deactivated,
+//! -   V3d_BACK: back Zclipping is activated,
+//! -   V3d_FRONT: front Zclipping is activated,
+//! -   V3d_SLICE: both front and back Zclippings are activated.
+enum V3d_TypeOfZclipping
+{
 V3d_OFF,
 V3d_BACK,
 V3d_FRONT,
 V3d_SLICE
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _V3d_TypeOfZclipping_HeaderFile

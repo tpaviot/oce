@@ -6,37 +6,32 @@
 #ifndef _math_CompareOfValueAndWeight_HeaderFile
 #define _math_CompareOfValueAndWeight_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class math_ValueAndWeight;
 
 
 
-class math_CompareOfValueAndWeight  {
+class math_CompareOfValueAndWeight 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   math_CompareOfValueAndWeight();
-  //! Returns True if <Left.Value()> is lower than <Right.Value()>. <br>
-  Standard_EXPORT     Standard_Boolean IsLower(const math_ValueAndWeight& Left,const math_ValueAndWeight& Right) const;
-  //! Returns True if <Left.Value()> is greater than <Right.Value()>. <br>
-  Standard_EXPORT     Standard_Boolean IsGreater(const math_ValueAndWeight& Left,const math_ValueAndWeight& Right) const;
-  //! returns True when <Right> and <Left> are equal. <br>
-  Standard_EXPORT     Standard_Boolean IsEqual(const math_ValueAndWeight& Left,const math_ValueAndWeight& Right) const;
-
+  Standard_EXPORT math_CompareOfValueAndWeight();
+  
+  //! Returns True if <Left.Value()> is lower than <Right.Value()>.
+  Standard_EXPORT   Standard_Boolean IsLower (const math_ValueAndWeight& Left, const math_ValueAndWeight& Right)  const;
+  
+  //! Returns True if <Left.Value()> is greater than <Right.Value()>.
+  Standard_EXPORT   Standard_Boolean IsGreater (const math_ValueAndWeight& Left, const math_ValueAndWeight& Right)  const;
+  
+  //! returns True when <Right> and <Left> are equal.
+  Standard_EXPORT   Standard_Boolean IsEqual (const math_ValueAndWeight& Left, const math_ValueAndWeight& Right)  const;
 
 
 
@@ -59,7 +54,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _math_CompareOfValueAndWeight_HeaderFile

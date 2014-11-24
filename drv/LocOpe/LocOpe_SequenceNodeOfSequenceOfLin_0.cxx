@@ -5,16 +5,10 @@
 
 #include <LocOpe_SequenceNodeOfSequenceOfLin.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
-#endif
-#ifndef _LocOpe_SequenceOfLin_HeaderFile
 #include <LocOpe_SequenceOfLin.hxx>
-#endif
 
  
 

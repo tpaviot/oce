@@ -6,34 +6,16 @@
 #ifndef _GeomAPI_IntCS_HeaderFile
 #define _GeomAPI_IntCS_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _IntCurveSurface_HInter_HeaderFile
 #include <IntCurveSurface_HInter.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Quantity_Parameter_HeaderFile
 #include <Quantity_Parameter.hxx>
-#endif
 class Geom_Curve;
 class StdFail_NotDone;
 class Standard_OutOfRange;
@@ -41,68 +23,78 @@ class Geom_Surface;
 class gp_Pnt;
 
 
-//! This class implements methods for <br>
-//!  computing intersection points and  segments between a <br>
-class GeomAPI_IntCS  {
+//! This class implements methods for
+//! computing intersection points and  segments between a
+class GeomAPI_IntCS 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an empty object. Use the <br>
-//! function Perform for further initialization of the algorithm by <br>
-//! the curve and the surface. <br>
-  Standard_EXPORT   GeomAPI_IntCS();
-  //! Computes the intersections between <br>
-//! the curve C and the surface S. <br>
-//! Warning <br>
-//! Use function IsDone to verify that the intersections are computed successfully. <br>
-  Standard_EXPORT   GeomAPI_IntCS(const Handle(Geom_Curve)& C,const Handle(Geom_Surface)& S);
-  //! This function Initializes an algorithm with the curve C and the <br>
-//! surface S and computes the intersections between C and S. <br>
-//! Warning <br>
-//! Use function IsDone to verify that the intersections are computed successfully. <br>
-  Standard_EXPORT     void Perform(const Handle(Geom_Curve)& C,const Handle(Geom_Surface)& S) ;
-  //! Returns true if the intersections are successfully computed. <br>
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-  //! Returns the number of Intersection Points <br>
-//!          if IsDone returns True. <br>
-//!          else NotDone is raised. <br>
-  Standard_EXPORT     Standard_Integer NbPoints() const;
-  //! Returns the Intersection Point of range <Index>in case of cross intersection. <br>
-//!         Raises NotDone if the computation has failed or if <br>
-//!          the computation has not been done <br>
-//!          raises OutOfRange if Index is not in the range <1..NbPoints> <br>
-  Standard_EXPORT    const gp_Pnt& Point(const Standard_Integer Index) const;
-  //! Returns parameter W on the curve <br>
-//! and (parameters U,V) on the surface of the computed intersection point <br>
-//! of index Index in case of cross intersection. <br>
-//! Exceptions <br>
-//! StdFail_NotDone if intersection algorithm fails or is not initialized. <br>
-//! Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where <br>
-//! NbPoints is the number of computed intersection points. <br>
-  Standard_EXPORT     void Parameters(const Standard_Integer Index,Quantity_Parameter& U,Quantity_Parameter& V,Quantity_Parameter& W) const;
-  //! Returns the number of computed <br>
-//! intersection segments in case of tangential intersection. <br>
-//! Exceptions <br>
-//! StdFail_NotDone if the intersection algorithm fails or is not initialized. <br>
-  Standard_EXPORT     Standard_Integer NbSegments() const;
-  //! Returns the computed intersection <br>
-//! segment of index Index in case of tangential intersection. <br>
-//! Intersection segment is a portion of the initial curve tangent to surface. <br>
-//! Exceptions <br>
-//! StdFail_NotDone if intersection algorithm fails or is not initialized. <br>
-//! Standard_OutOfRange if Index is not in the range [ 1,NbSegments ], <br>
-//! where NbSegments is the number of computed intersection segments. <br>
-  Standard_EXPORT     Handle_Geom_Curve Segment(const Standard_Integer Index) const;
-  //! Returns the parameters of the first (U1,V1) and the last (U2,V2) points <br>
-//! of curve's segment on the surface in case of tangential intersection. <br>
-//! Index is the number of computed intersection segments. <br>
-//! Exceptions <br>
-//! StdFail_NotDone if intersection algorithm fails or is not initialized. <br>
-//! Standard_OutOfRange if Index is not in the range [ 1,NbSegments ], <br>
-//! where NbSegments is the number of computed intersection segments. <br>
-  Standard_EXPORT     void Parameters(const Standard_Integer Index,Quantity_Parameter& U1,Quantity_Parameter& V1,Quantity_Parameter& U2,Quantity_Parameter& V2) const;
-
+  
+  //! Creates an empty object. Use the
+  //! function Perform for further initialization of the algorithm by
+  //! the curve and the surface.
+  Standard_EXPORT GeomAPI_IntCS();
+  
+  //! Computes the intersections between
+  //! the curve C and the surface S.
+  //! Warning
+  //! Use function IsDone to verify that the intersections are computed successfully.
+  Standard_EXPORT GeomAPI_IntCS(const Handle(Geom_Curve)& C, const Handle(Geom_Surface)& S);
+  
+  //! This function Initializes an algorithm with the curve C and the
+  //! surface S and computes the intersections between C and S.
+  //! Warning
+  //! Use function IsDone to verify that the intersections are computed successfully.
+  Standard_EXPORT   void Perform (const Handle(Geom_Curve)& C, const Handle(Geom_Surface)& S) ;
+  
+  //! Returns true if the intersections are successfully computed.
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
+  
+  //! Returns the number of Intersection Points
+  //! if IsDone returns True.
+  //! else NotDone is raised.
+  Standard_EXPORT   Standard_Integer NbPoints()  const;
+  
+  //! Returns the Intersection Point of range <Index>in case of cross intersection.
+  //! Raises NotDone if the computation has failed or if
+  //! the computation has not been done
+  //! raises OutOfRange if Index is not in the range <1..NbPoints>
+  Standard_EXPORT  const  gp_Pnt& Point (const Standard_Integer Index)  const;
+  
+  //! Returns parameter W on the curve
+  //! and (parameters U,V) on the surface of the computed intersection point
+  //! of index Index in case of cross intersection.
+  //! Exceptions
+  //! StdFail_NotDone if intersection algorithm fails or is not initialized.
+  //! Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where
+  //! NbPoints is the number of computed intersection points.
+  Standard_EXPORT   void Parameters (const Standard_Integer Index, Quantity_Parameter& U, Quantity_Parameter& V, Quantity_Parameter& W)  const;
+  
+  //! Returns the number of computed
+  //! intersection segments in case of tangential intersection.
+  //! Exceptions
+  //! StdFail_NotDone if the intersection algorithm fails or is not initialized.
+  Standard_EXPORT   Standard_Integer NbSegments()  const;
+  
+  //! Returns the computed intersection
+  //! segment of index Index in case of tangential intersection.
+  //! Intersection segment is a portion of the initial curve tangent to surface.
+  //! Exceptions
+  //! StdFail_NotDone if intersection algorithm fails or is not initialized.
+  //! Standard_OutOfRange if Index is not in the range [ 1,NbSegments ],
+  //! where NbSegments is the number of computed intersection segments.
+  Standard_EXPORT   Handle(Geom_Curve) Segment (const Standard_Integer Index)  const;
+  
+  //! Returns the parameters of the first (U1,V1) and the last (U2,V2) points
+  //! of curve's segment on the surface in case of tangential intersection.
+  //! Index is the number of computed intersection segments.
+  //! Exceptions
+  //! StdFail_NotDone if intersection algorithm fails or is not initialized.
+  //! Standard_OutOfRange if Index is not in the range [ 1,NbSegments ],
+  //! where NbSegments is the number of computed intersection segments.
+  Standard_EXPORT   void Parameters (const Standard_Integer Index, Quantity_Parameter& U1, Quantity_Parameter& V1, Quantity_Parameter& U2, Quantity_Parameter& V2)  const;
 
 
 
@@ -117,8 +109,8 @@ private:
 
 
 
-Handle_Geom_Curve myCurve;
-IntCurveSurface_HInter myIntCS;
+  Handle(Geom_Curve) myCurve;
+  IntCurveSurface_HInter myIntCS;
 
 
 };
@@ -127,7 +119,6 @@ IntCurveSurface_HInter myIntCS;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomAPI_IntCS_HeaderFile

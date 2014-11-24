@@ -6,97 +6,95 @@
 #ifndef _ShapeFix_Root_HeaderFile
 #define _ShapeFix_Root_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeFix_Root_HeaderFile
 #include <Handle_ShapeFix_Root.hxx>
-#endif
 
-#ifndef _Handle_ShapeBuild_ReShape_HeaderFile
 #include <Handle_ShapeBuild_ReShape.hxx>
-#endif
-#ifndef _Handle_ShapeExtend_BasicMsgRegistrator_HeaderFile
 #include <Handle_ShapeExtend_BasicMsgRegistrator.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Message_Gravity_HeaderFile
 #include <Message_Gravity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class ShapeBuild_ReShape;
 class ShapeExtend_BasicMsgRegistrator;
 class TopoDS_Shape;
 class Message_Msg;
 
 
-//! Root class for fixing operations <br>
-//!          Provides context for recording changes (optional), <br>
-//!          basic precision value and limit (minimal and <br>
-//!          maximal) values for tolerances, <br>
-//!          and message registrator <br>
-class ShapeFix_Root : public MMgt_TShared {
+//! Root class for fixing operations
+//! Provides context for recording changes (optional),
+//! basic precision value and limit (minimal and
+//! maximal) values for tolerances,
+//! and message registrator
+class ShapeFix_Root : public MMgt_TShared
+{
 
 public:
 
-  //! Empty Constructor (no context is created) <br>
-  Standard_EXPORT   ShapeFix_Root();
-  //! Copy all fields from another Root object <br>
-  Standard_EXPORT   virtual  void Set(const Handle(ShapeFix_Root)& Root) ;
-  //! Sets context <br>
-  Standard_EXPORT   virtual  void SetContext(const Handle(ShapeBuild_ReShape)& context) ;
-  //! Returns context <br>
-        Handle_ShapeBuild_ReShape Context() const;
-  //! Sets message registrator <br>
-  Standard_EXPORT   virtual  void SetMsgRegistrator(const Handle(ShapeExtend_BasicMsgRegistrator)& msgreg) ;
-  //! Returns message registrator <br>
-        Handle_ShapeExtend_BasicMsgRegistrator MsgRegistrator() const;
-  //! Sets basic precision value <br>
-  Standard_EXPORT   virtual  void SetPrecision(const Standard_Real preci) ;
-  //! Returns basic precision value <br>
-        Standard_Real Precision() const;
-  //! Sets minimal allowed tolerance <br>
-  Standard_EXPORT   virtual  void SetMinTolerance(const Standard_Real mintol) ;
-  //! Returns minimal allowed tolerance <br>
-        Standard_Real MinTolerance() const;
-  //! Sets maximal allowed tolerance <br>
-  Standard_EXPORT   virtual  void SetMaxTolerance(const Standard_Real maxtol) ;
-  //! Returns maximal allowed tolerance <br>
-        Standard_Real MaxTolerance() const;
-  //! Returns tolerance limited by [myMinTol,myMaxTol] <br>
-        Standard_Real LimitTolerance(const Standard_Real toler) const;
-  //! Sends a message to be attached to the shape. <br>
-//!          Calls corresponding message of message registrator. <br>
-  Standard_EXPORT     void SendMsg(const TopoDS_Shape& shape,const Message_Msg& message,const Message_Gravity gravity = Message_Info) const;
-  //! Sends a message to be attached to myShape. <br>
-//!          Calls previous method. <br>
-        void SendMsg(const Message_Msg& message,const Message_Gravity gravity = Message_Info) const;
-  //! Sends a warning to be attached to the shape. <br>
-//!          Calls SendMsg with gravity set to Message_Warning. <br>
-        void SendWarning(const TopoDS_Shape& shape,const Message_Msg& message) const;
-  //! Calls previous method for myShape. <br>
-        void SendWarning(const Message_Msg& message) const;
-  //! Sends a fail to be attached to the shape. <br>
-//!          Calls SendMsg with gravity set to Message_Fail. <br>
-        void SendFail(const TopoDS_Shape& shape,const Message_Msg& message) const;
-  //! Calls previous method for myShape. <br>
-        void SendFail(const Message_Msg& message) const;
+  
+  //! Empty Constructor (no context is created)
+  Standard_EXPORT ShapeFix_Root();
+  
+  //! Copy all fields from another Root object
+  Standard_EXPORT virtual   void Set (const Handle(ShapeFix_Root)& Root) ;
+  
+  //! Sets context
+  Standard_EXPORT virtual   void SetContext (const Handle(ShapeBuild_ReShape)& context) ;
+  
+  //! Returns context
+      Handle(ShapeBuild_ReShape) Context()  const;
+  
+  //! Sets message registrator
+  Standard_EXPORT virtual   void SetMsgRegistrator (const Handle(ShapeExtend_BasicMsgRegistrator)& msgreg) ;
+  
+  //! Returns message registrator
+      Handle(ShapeExtend_BasicMsgRegistrator) MsgRegistrator()  const;
+  
+  //! Sets basic precision value
+  Standard_EXPORT virtual   void SetPrecision (const Standard_Real preci) ;
+  
+  //! Returns basic precision value
+      Standard_Real Precision()  const;
+  
+  //! Sets minimal allowed tolerance
+  Standard_EXPORT virtual   void SetMinTolerance (const Standard_Real mintol) ;
+  
+  //! Returns minimal allowed tolerance
+      Standard_Real MinTolerance()  const;
+  
+  //! Sets maximal allowed tolerance
+  Standard_EXPORT virtual   void SetMaxTolerance (const Standard_Real maxtol) ;
+  
+  //! Returns maximal allowed tolerance
+      Standard_Real MaxTolerance()  const;
+  
+  //! Returns tolerance limited by [myMinTol,myMaxTol]
+      Standard_Real LimitTolerance (const Standard_Real toler)  const;
+  
+  //! Sends a message to be attached to the shape.
+  //! Calls corresponding message of message registrator.
+  Standard_EXPORT   void SendMsg (const TopoDS_Shape& shape, const Message_Msg& message, const Message_Gravity gravity = Message_Info)  const;
+  
+  //! Sends a message to be attached to myShape.
+  //! Calls previous method.
+      void SendMsg (const Message_Msg& message, const Message_Gravity gravity = Message_Info)  const;
+  
+  //! Sends a warning to be attached to the shape.
+  //! Calls SendMsg with gravity set to Message_Warning.
+      void SendWarning (const TopoDS_Shape& shape, const Message_Msg& message)  const;
+  
+  //! Calls previous method for myShape.
+      void SendWarning (const Message_Msg& message)  const;
+  
+  //! Sends a fail to be attached to the shape.
+  //! Calls SendMsg with gravity set to Message_Fail.
+      void SendFail (const TopoDS_Shape& shape, const Message_Msg& message)  const;
+  
+  //! Calls previous method for myShape.
+      void SendFail (const Message_Msg& message)  const;
 
 
 
@@ -105,21 +103,22 @@ public:
 
 protected:
 
-  //! Auxiliary method for work with three-position <br>
-//!          (on/off/default) flags (modes) in ShapeFix. <br>
-      static  Standard_Boolean NeedFix(const Standard_Integer flag,const Standard_Boolean def = Standard_True) ;
+  
+  //! Auxiliary method for work with three-position
+  //! (on/off/default) flags (modes) in ShapeFix.
+    static   Standard_Boolean NeedFix (const Standard_Integer flag, const Standard_Boolean def = Standard_True) ;
 
-TopoDS_Shape myShape;
+  TopoDS_Shape myShape;
 
 
 private: 
 
 
-Handle_ShapeBuild_ReShape myContext;
-Handle_ShapeExtend_BasicMsgRegistrator myMsgReg;
-Standard_Real myPrecision;
-Standard_Real myMinTol;
-Standard_Real myMaxTol;
+  Handle(ShapeBuild_ReShape) myContext;
+  Handle(ShapeExtend_BasicMsgRegistrator) myMsgReg;
+  Standard_Real myPrecision;
+  Standard_Real myMinTol;
+  Standard_Real myMaxTol;
 
 
 };
@@ -129,7 +128,6 @@ Standard_Real myMaxTol;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeFix_Root_HeaderFile

@@ -5,21 +5,13 @@
 
 #include <IntPatch_SequenceOfLine.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IntPatch_Line_HeaderFile
 #include <IntPatch_Line.hxx>
-#endif
-#ifndef _IntPatch_SequenceNodeOfSequenceOfLine_HeaderFile
 #include <IntPatch_SequenceNodeOfSequenceOfLine.hxx>
-#endif
  
 
-#define SeqItem Handle_IntPatch_Line
+#define SeqItem Handle(IntPatch_Line)
 #define SeqItem_hxx <IntPatch_Line.hxx>
 #define TCollection_SequenceNode IntPatch_SequenceNodeOfSequenceOfLine
 #define TCollection_SequenceNode_hxx <IntPatch_SequenceNodeOfSequenceOfLine.hxx>

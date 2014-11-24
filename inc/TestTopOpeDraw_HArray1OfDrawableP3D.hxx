@@ -6,28 +6,14 @@
 #ifndef _TestTopOpeDraw_HArray1OfDrawableP3D_HeaderFile
 #define _TestTopOpeDraw_HArray1OfDrawableP3D_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TestTopOpeDraw_HArray1OfDrawableP3D_HeaderFile
 #include <Handle_TestTopOpeDraw_HArray1OfDrawableP3D.hxx>
-#endif
 
-#ifndef _TestTopOpeDraw_Array1OfDrawableP3D_HeaderFile
 #include <TestTopOpeDraw_Array1OfDrawableP3D.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_TestTopOpeDraw_DrawableP3D_HeaderFile
 #include <Handle_TestTopOpeDraw_DrawableP3D.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class TestTopOpeDraw_Array1OfDrawableP3D;
 
 
 
-class TestTopOpeDraw_HArray1OfDrawableP3D : public MMgt_TShared {
+class TestTopOpeDraw_HArray1OfDrawableP3D : public MMgt_TShared
+{
 
 public:
 
   
-      TestTopOpeDraw_HArray1OfDrawableP3D(const Standard_Integer Low,const Standard_Integer Up);
+    TestTopOpeDraw_HArray1OfDrawableP3D(const Standard_Integer Low, const Standard_Integer Up);
   
-      TestTopOpeDraw_HArray1OfDrawableP3D(const Standard_Integer Low,const Standard_Integer Up,const Handle(TestTopOpeDraw_DrawableP3D)& V);
+    TestTopOpeDraw_HArray1OfDrawableP3D(const Standard_Integer Low, const Standard_Integer Up, const Handle(TestTopOpeDraw_DrawableP3D)& V);
   
-        void Init(const Handle(TestTopOpeDraw_DrawableP3D)& V) ;
+      void Init (const Handle(TestTopOpeDraw_DrawableP3D)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(TestTopOpeDraw_DrawableP3D)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(TestTopOpeDraw_DrawableP3D)& Value) ;
   
-       const Handle_TestTopOpeDraw_DrawableP3D& Value(const Standard_Integer Index) const;
+     const  Handle(TestTopOpeDraw_DrawableP3D)& Value (const Standard_Integer Index)  const;
   
-        Handle_TestTopOpeDraw_DrawableP3D& ChangeValue(const Standard_Integer Index) ;
+      Handle(TestTopOpeDraw_DrawableP3D)& ChangeValue (const Standard_Integer Index) ;
   
-       const TestTopOpeDraw_Array1OfDrawableP3D& Array1() const;
+     const  TestTopOpeDraw_Array1OfDrawableP3D& Array1()  const;
   
-        TestTopOpeDraw_Array1OfDrawableP3D& ChangeArray1() ;
+      TestTopOpeDraw_Array1OfDrawableP3D& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-TestTopOpeDraw_Array1OfDrawableP3D myArray;
+  TestTopOpeDraw_Array1OfDrawableP3D myArray;
 
 
 };
 
-#define ItemHArray1 Handle_TestTopOpeDraw_DrawableP3D
+#define ItemHArray1 Handle(TestTopOpeDraw_DrawableP3D)
 #define ItemHArray1_hxx <TestTopOpeDraw_DrawableP3D.hxx>
 #define TheArray1 TestTopOpeDraw_Array1OfDrawableP3D
 #define TheArray1_hxx <TestTopOpeDraw_Array1OfDrawableP3D.hxx>
@@ -103,7 +90,6 @@ TestTopOpeDraw_Array1OfDrawableP3D myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TestTopOpeDraw_HArray1OfDrawableP3D_HeaderFile

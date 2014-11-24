@@ -6,48 +6,43 @@
 #ifndef _PGeom2d_Ellipse_HeaderFile
 #define _PGeom2d_Ellipse_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom2d_Ellipse_HeaderFile
 #include <Handle_PGeom2d_Ellipse.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _PGeom2d_Conic_HeaderFile
 #include <PGeom2d_Conic.hxx>
-#endif
 class gp_Ax22d;
 
 
-class PGeom2d_Ellipse : public PGeom2d_Conic {
+class PGeom2d_Ellipse : public PGeom2d_Conic
+{
 
 public:
 
-  //! Creates an ellipse with default values. <br>
-  Standard_EXPORT   PGeom2d_Ellipse();
-  //!      Creates   an Ellipse      with  <aPosition>, <br>
-//!         <aMajorRadius> and <aMinorRadius> as  field values. <br>
-//!         The major radius of  the ellipse is  on the "XAxis" <br>
-//!         and  the minor radius   of the ellipse   is  on the <br>
-//!         "YAxis". <br>
-  Standard_EXPORT   PGeom2d_Ellipse(const gp_Ax22d& aPosition,const Standard_Real aMajorRadius,const Standard_Real aMinorRadius);
-  //! Set the value of the field majorRadius with <aMajorRadius>. <br>
-  Standard_EXPORT     void MajorRadius(const Standard_Real aMajorRadius) ;
-  //! Returns the value of the field majorRadius. <br>
-  Standard_EXPORT     Standard_Real MajorRadius() const;
-  //! Set the value of the field minorRadius with <aMinorRadius>. <br>
-  Standard_EXPORT     void MinorRadius(const Standard_Real aMinorRadius) ;
-  //! Returns the value of the field minorRadius. <br>
-  Standard_EXPORT     Standard_Real MinorRadius() const;
+  
+  //! Creates an ellipse with default values.
+  Standard_EXPORT PGeom2d_Ellipse();
+  
+  //! Creates   an Ellipse      with  <aPosition>,
+  //! <aMajorRadius> and <aMinorRadius> as  field values.
+  //! The major radius of  the ellipse is  on the "XAxis"
+  //! and  the minor radius   of the ellipse   is  on the
+  //! "YAxis".
+  Standard_EXPORT PGeom2d_Ellipse(const gp_Ax22d& aPosition, const Standard_Real aMajorRadius, const Standard_Real aMinorRadius);
+  
+  //! Set the value of the field majorRadius with <aMajorRadius>.
+  Standard_EXPORT   void MajorRadius (const Standard_Real aMajorRadius) ;
+  
+  //! Returns the value of the field majorRadius.
+  Standard_EXPORT   Standard_Real MajorRadius()  const;
+  
+  //! Set the value of the field minorRadius with <aMinorRadius>.
+  Standard_EXPORT   void MinorRadius (const Standard_Real aMinorRadius) ;
+  
+  //! Returns the value of the field minorRadius.
+  Standard_EXPORT   Standard_Real MinorRadius()  const;
 
 PGeom2d_Ellipse(const Storage_stCONSTclCOM& a) : PGeom2d_Conic(a)
 {
@@ -70,8 +65,8 @@ protected:
 private: 
 
 
-Standard_Real majorRadius;
-Standard_Real minorRadius;
+  Standard_Real majorRadius;
+  Standard_Real minorRadius;
 
 
 };
@@ -80,7 +75,6 @@ Standard_Real minorRadius;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom2d_Ellipse_HeaderFile

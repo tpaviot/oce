@@ -6,39 +6,28 @@
 #ifndef _TDF_ListNodeOfDeltaList_HeaderFile
 #define _TDF_ListNodeOfDeltaList_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDF_ListNodeOfDeltaList_HeaderFile
 #include <Handle_TDF_ListNodeOfDeltaList.hxx>
-#endif
 
-#ifndef _Handle_TDF_Delta_HeaderFile
 #include <Handle_TDF_Delta.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TDF_Delta;
 class TDF_DeltaList;
 class TDF_ListIteratorOfDeltaList;
 
 
 
-class TDF_ListNodeOfDeltaList : public TCollection_MapNode {
+class TDF_ListNodeOfDeltaList : public TCollection_MapNode
+{
 
 public:
 
   
-      TDF_ListNodeOfDeltaList(const Handle(TDF_Delta)& I,const TCollection_MapNodePtr& n);
+    TDF_ListNodeOfDeltaList(const Handle(TDF_Delta)& I, const TCollection_MapNodePtr& n);
   
-        Handle_TDF_Delta& Value() const;
+      Handle(TDF_Delta)& Value()  const;
 
 
 
@@ -53,12 +42,12 @@ protected:
 private: 
 
 
-Handle_TDF_Delta myValue;
+  Handle(TDF_Delta) myValue;
 
 
 };
 
-#define Item Handle_TDF_Delta
+#define Item Handle(TDF_Delta)
 #define Item_hxx <TDF_Delta.hxx>
 #define TCollection_ListNode TDF_ListNodeOfDeltaList
 #define TCollection_ListNode_hxx <TDF_ListNodeOfDeltaList.hxx>
@@ -83,7 +72,6 @@ Handle_TDF_Delta myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_ListNodeOfDeltaList_HeaderFile

@@ -5,24 +5,14 @@
 
 #include <DDF_ListIteratorOfTransactionStack.hxx>
 
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _DDF_TransactionStack_HeaderFile
 #include <DDF_TransactionStack.hxx>
-#endif
-#ifndef _DDF_Transaction_HeaderFile
 #include <DDF_Transaction.hxx>
-#endif
-#ifndef _DDF_ListNodeOfTransactionStack_HeaderFile
 #include <DDF_ListNodeOfTransactionStack.hxx>
-#endif
  
 
-#define Item Handle_DDF_Transaction
+#define Item Handle(DDF_Transaction)
 #define Item_hxx <DDF_Transaction.hxx>
 #define TCollection_ListNode DDF_ListNodeOfTransactionStack
 #define TCollection_ListNode_hxx <DDF_ListNodeOfTransactionStack.hxx>

@@ -6,28 +6,14 @@
 #ifndef _PCDM_SequenceOfDocument_HeaderFile
 #define _PCDM_SequenceOfDocument_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_PCDM_Document_HeaderFile
 #include <Handle_PCDM_Document.hxx>
-#endif
-#ifndef _Handle_PCDM_SequenceNodeOfSequenceOfDocument_HeaderFile
 #include <Handle_PCDM_SequenceNodeOfSequenceOfDocument.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class PCDM_Document;
@@ -35,68 +21,68 @@ class PCDM_SequenceNodeOfSequenceOfDocument;
 
 
 
-class PCDM_SequenceOfDocument  : public TCollection_BaseSequence {
+class PCDM_SequenceOfDocument  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      PCDM_SequenceOfDocument();
+    PCDM_SequenceOfDocument();
   
-  Standard_EXPORT   PCDM_SequenceOfDocument(const PCDM_SequenceOfDocument& Other);
+  Standard_EXPORT PCDM_SequenceOfDocument(const PCDM_SequenceOfDocument& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~PCDM_SequenceOfDocument()
 {
   Clear();
 }
   
-  Standard_EXPORT    const PCDM_SequenceOfDocument& Assign(const PCDM_SequenceOfDocument& Other) ;
-   const PCDM_SequenceOfDocument& operator =(const PCDM_SequenceOfDocument& Other) 
+  Standard_EXPORT  const  PCDM_SequenceOfDocument& Assign (const PCDM_SequenceOfDocument& Other) ;
+ const  PCDM_SequenceOfDocument& operator = (const PCDM_SequenceOfDocument& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(PCDM_Document)& T) ;
+  Standard_EXPORT   void Append (const Handle(PCDM_Document)& T) ;
   
-        void Append(PCDM_SequenceOfDocument& S) ;
+      void Append (PCDM_SequenceOfDocument& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(PCDM_Document)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(PCDM_Document)& T) ;
   
-        void Prepend(PCDM_SequenceOfDocument& S) ;
+      void Prepend (PCDM_SequenceOfDocument& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(PCDM_Document)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(PCDM_Document)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,PCDM_SequenceOfDocument& S) ;
+      void InsertBefore (const Standard_Integer Index, PCDM_SequenceOfDocument& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(PCDM_Document)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(PCDM_Document)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,PCDM_SequenceOfDocument& S) ;
+      void InsertAfter (const Standard_Integer Index, PCDM_SequenceOfDocument& S) ;
   
-  Standard_EXPORT    const Handle_PCDM_Document& First() const;
+  Standard_EXPORT  const  Handle(PCDM_Document)& First()  const;
   
-  Standard_EXPORT    const Handle_PCDM_Document& Last() const;
+  Standard_EXPORT  const  Handle(PCDM_Document)& Last()  const;
   
-        void Split(const Standard_Integer Index,PCDM_SequenceOfDocument& Sub) ;
+      void Split (const Standard_Integer Index, PCDM_SequenceOfDocument& Sub) ;
   
-  Standard_EXPORT    const Handle_PCDM_Document& Value(const Standard_Integer Index) const;
-   const Handle_PCDM_Document& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(PCDM_Document)& Value (const Standard_Integer Index)  const;
+ const  Handle(PCDM_Document)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(PCDM_Document)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(PCDM_Document)& I) ;
   
-  Standard_EXPORT     Handle_PCDM_Document& ChangeValue(const Standard_Integer Index) ;
-    Handle_PCDM_Document& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(PCDM_Document)& ChangeValue (const Standard_Integer Index) ;
+  Handle(PCDM_Document)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -115,7 +101,7 @@ private:
 
 };
 
-#define SeqItem Handle_PCDM_Document
+#define SeqItem Handle(PCDM_Document)
 #define SeqItem_hxx <PCDM_Document.hxx>
 #define TCollection_SequenceNode PCDM_SequenceNodeOfSequenceOfDocument
 #define TCollection_SequenceNode_hxx <PCDM_SequenceNodeOfSequenceOfDocument.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PCDM_SequenceOfDocument_HeaderFile

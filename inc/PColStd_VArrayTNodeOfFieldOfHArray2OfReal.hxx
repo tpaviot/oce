@@ -6,44 +6,32 @@
 #ifndef _PColStd_VArrayTNodeOfFieldOfHArray2OfReal_HeaderFile
 #define _PColStd_VArrayTNodeOfFieldOfHArray2OfReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_PColStd_VArrayNodeOfFieldOfHArray2OfReal_HeaderFile
 #include <Handle_PColStd_VArrayNodeOfFieldOfHArray2OfReal.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class PColStd_FieldOfHArray2OfReal;
 class PColStd_VArrayNodeOfFieldOfHArray2OfReal;
 
 
 
-class PColStd_VArrayTNodeOfFieldOfHArray2OfReal  {
+class PColStd_VArrayTNodeOfFieldOfHArray2OfReal 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      PColStd_VArrayTNodeOfFieldOfHArray2OfReal();
+    PColStd_VArrayTNodeOfFieldOfHArray2OfReal();
   
-      PColStd_VArrayTNodeOfFieldOfHArray2OfReal(const Standard_Real& aValue);
+    PColStd_VArrayTNodeOfFieldOfHArray2OfReal(const Standard_Real& aValue);
   
-        void SetValue(const Standard_Real& aValue) ;
+      void SetValue (const Standard_Real& aValue) ;
   
-        Standard_Address Value() const;
-
+      Standard_Address Value()  const;
 
 
 
@@ -58,7 +46,7 @@ private:
 
 
 
-Standard_Real myValue;
+  Standard_Real myValue;
 
 
 };
@@ -88,7 +76,6 @@ Standard_Real myValue;
 #undef DBC_VArray_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PColStd_VArrayTNodeOfFieldOfHArray2OfReal_HeaderFile

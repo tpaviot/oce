@@ -6,64 +6,50 @@
 #ifndef _TColStd_MapOfInteger_HeaderFile
 #define _TColStd_MapOfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TColStd_StdMapNodeOfMapOfInteger_HeaderFile
 #include <Handle_TColStd_StdMapNodeOfMapOfInteger.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TColStd_MapIntegerHasher;
 class TColStd_StdMapNodeOfMapOfInteger;
 class TColStd_MapIteratorOfMapOfInteger;
 
 
 
-class TColStd_MapOfInteger  : public TCollection_BasicMap {
+class TColStd_MapOfInteger  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TColStd_MapOfInteger(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT TColStd_MapOfInteger(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT   TColStd_MapOfInteger(const TColStd_MapOfInteger& Other);
+  Standard_EXPORT TColStd_MapOfInteger(const TColStd_MapOfInteger& Other);
   
-  Standard_EXPORT     TColStd_MapOfInteger& Assign(const TColStd_MapOfInteger& Other) ;
-    TColStd_MapOfInteger& operator =(const TColStd_MapOfInteger& Other) 
+  Standard_EXPORT   TColStd_MapOfInteger& Assign (const TColStd_MapOfInteger& Other) ;
+  TColStd_MapOfInteger& operator = (const TColStd_MapOfInteger& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TColStd_MapOfInteger()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Add(const Standard_Integer& aKey) ;
+  Standard_EXPORT   Standard_Boolean Add (const Standard_Integer& aKey) ;
   
-  Standard_EXPORT     Standard_Boolean Contains(const Standard_Integer& aKey) const;
+  Standard_EXPORT   Standard_Boolean Contains (const Standard_Integer& aKey)  const;
   
-  Standard_EXPORT     Standard_Boolean Remove(const Standard_Integer& aKey) ;
-
+  Standard_EXPORT   Standard_Boolean Remove (const Standard_Integer& aKey) ;
 
 
 
@@ -86,7 +72,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_MapOfInteger_HeaderFile

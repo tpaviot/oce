@@ -6,15 +6,14 @@
 #ifndef _AIS_TypeOfIso_HeaderFile
 #define _AIS_TypeOfIso_HeaderFile
 
-//! Declares the type of isoparameter displayed. <br>
-enum AIS_TypeOfIso {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Declares the type of isoparameter displayed.
+enum AIS_TypeOfIso
+{
 AIS_TOI_IsoU,
 AIS_TOI_IsoV,
 AIS_TOI_Both
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _AIS_TypeOfIso_HeaderFile

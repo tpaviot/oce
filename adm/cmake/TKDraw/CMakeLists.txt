@@ -83,6 +83,8 @@ ENDIF()
   list( APPEND TKDraw_USED_LIBS TKHLR )
 
 if (WIN32)
+  list( APPEND TKDraw_USED_LIBS tcl${3RDPARTY_TCL_LIBRARY_VERSION}.lib )
+  list( APPEND TKDraw_USED_LIBS tk${3RDPARTY_TCL_LIBRARY_VERSION}.lib )
   list( APPEND TKDraw_USED_LIBS gdi32.lib )
   list( APPEND TKDraw_USED_LIBS advapi32.lib )
   list( APPEND TKDraw_USED_LIBS user32.lib )
@@ -102,10 +104,20 @@ elseif(APPLE)
   list( APPEND TKDraw_USED_LIBS ${FRAMEWORKS_APPKIT} )
   find_library(FRAMEWORKS_IOKIT NAMES IOKit)
   list( APPEND TKDraw_USED_LIBS ${FRAMEWORKS_IOKIT} )
-else()
+elseif(ANDROID)
   list( APPEND TKDraw_USED_LIBS tcl8.6 )
   list( APPEND TKDraw_USED_LIBS X11 )
   list( APPEND TKDraw_USED_LIBS tk8.6 )
+  if(USE_TBB)
+    list( APPEND TKDraw_USED_LIBS tbb )
+  endif()
+  if(USE_TBB)
+    list( APPEND TKDraw_USED_LIBS tbbmalloc )
+  endif()
+else()
+  list( APPEND TKDraw_USED_LIBS tcl${3RDPARTY_TCL_LIBRARY_VERSION} )
+  list( APPEND TKDraw_USED_LIBS X11 )
+  list( APPEND TKDraw_USED_LIBS tk${3RDPARTY_TK_LIBRARY_VERSION} )
   if(USE_TBB)
     list( APPEND TKDraw_USED_LIBS tbb )
   endif()
@@ -870,13 +882,13 @@ if ("${USED_TOOLKITS}" STREQUAL "" OR DEFINED TurnONtheTKDraw)
  set_property(TARGET TKDraw PROPERTY FOLDER Draw)
 
  install( TARGETS TKDraw
-                                 RUNTIME DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_SUFFIX}"
-                                 ARCHIVE DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_SUFFIX}"
-                                 LIBRARY DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_SUFFIX}")
+                                 RUNTIME DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_POSTFIX}"
+                                 ARCHIVE DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_POSTFIX}"
+                                 LIBRARY DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_POSTFIX}")
 
  if (MSVC)
-  install( FILES  ${CMAKE_BINARY_DIR}/out/bin/Debug/TKDraw.pdb CONFIGURATIONS Debug
-                                  DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_SUFFIX}")
+  install( FILES  ${CMAKE_BINARY_DIR}/out/bind/Debug/TKDraw.pdb CONFIGURATIONS Debug
+                                  DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_POSTFIX}")
  endif()
 
 

@@ -6,25 +6,13 @@
 #ifndef _TestTopOpeTools_HArray1OfMesure_HeaderFile
 #define _TestTopOpeTools_HArray1OfMesure_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TestTopOpeTools_HArray1OfMesure_HeaderFile
 #include <Handle_TestTopOpeTools_HArray1OfMesure.hxx>
-#endif
 
-#ifndef _TestTopOpeTools_Array1OfMesure_HeaderFile
 #include <TestTopOpeTools_Array1OfMesure.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class TestTopOpeTools_Array1OfMesure;
 
 
 
-class TestTopOpeTools_HArray1OfMesure : public MMgt_TShared {
+class TestTopOpeTools_HArray1OfMesure : public MMgt_TShared
+{
 
 public:
 
   
-      TestTopOpeTools_HArray1OfMesure(const Standard_Integer Low,const Standard_Integer Up);
+    TestTopOpeTools_HArray1OfMesure(const Standard_Integer Low, const Standard_Integer Up);
   
-      TestTopOpeTools_HArray1OfMesure(const Standard_Integer Low,const Standard_Integer Up,const TestTopOpeTools_Mesure& V);
+    TestTopOpeTools_HArray1OfMesure(const Standard_Integer Low, const Standard_Integer Up, const TestTopOpeTools_Mesure& V);
   
-        void Init(const TestTopOpeTools_Mesure& V) ;
+      void Init (const TestTopOpeTools_Mesure& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const TestTopOpeTools_Mesure& Value) ;
+      void SetValue (const Standard_Integer Index, const TestTopOpeTools_Mesure& Value) ;
   
-       const TestTopOpeTools_Mesure& Value(const Standard_Integer Index) const;
+     const  TestTopOpeTools_Mesure& Value (const Standard_Integer Index)  const;
   
-        TestTopOpeTools_Mesure& ChangeValue(const Standard_Integer Index) ;
+      TestTopOpeTools_Mesure& ChangeValue (const Standard_Integer Index) ;
   
-       const TestTopOpeTools_Array1OfMesure& Array1() const;
+     const  TestTopOpeTools_Array1OfMesure& Array1()  const;
   
-        TestTopOpeTools_Array1OfMesure& ChangeArray1() ;
+      TestTopOpeTools_Array1OfMesure& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-TestTopOpeTools_Array1OfMesure myArray;
+  TestTopOpeTools_Array1OfMesure myArray;
 
 
 };
@@ -100,7 +89,6 @@ TestTopOpeTools_Array1OfMesure myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TestTopOpeTools_HArray1OfMesure_HeaderFile

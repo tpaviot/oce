@@ -6,31 +6,15 @@
 #ifndef _AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs_HeaderFile
 #define _AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs_HeaderFile
 #include <Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs.hxx>
-#endif
 
-#ifndef _Handle_SelectMgr_EntityOwner_HeaderFile
 #include <Handle_SelectMgr_EntityOwner.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
 class SelectMgr_EntityOwner;
 class Prs3d_Presentation;
 class TColStd_MapTransientHasher;
@@ -38,20 +22,21 @@ class AIS_IndexedDataMapOfOwnerPrs;
 
 
 
-class AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs : public TCollection_MapNode {
+class AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs : public TCollection_MapNode
+{
 
 public:
 
   
-      AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs(const Handle(SelectMgr_EntityOwner)& K1,const Standard_Integer K2,const Handle(Prs3d_Presentation)& I,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+    AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs(const Handle(SelectMgr_EntityOwner)& K1, const Standard_Integer K2, const Handle(Prs3d_Presentation)& I, const TCollection_MapNodePtr& n1, const TCollection_MapNodePtr& n2);
   
-        Handle_SelectMgr_EntityOwner& Key1() const;
+      Handle(SelectMgr_EntityOwner)& Key1()  const;
   
-        Standard_Integer& Key2() const;
+      Standard_Integer& Key2()  const;
   
-        TCollection_MapNodePtr& Next2() const;
+      TCollection_MapNodePtr& Next2()  const;
   
-        Handle_Prs3d_Presentation& Value() const;
+      Handle(Prs3d_Presentation)& Value()  const;
 
 
 
@@ -66,17 +51,17 @@ protected:
 private: 
 
 
-Handle_SelectMgr_EntityOwner myKey1;
-Standard_Integer myKey2;
-Handle_Prs3d_Presentation myValue;
-TCollection_MapNodePtr myNext2;
+  Handle(SelectMgr_EntityOwner) myKey1;
+  Standard_Integer myKey2;
+  Handle(Prs3d_Presentation) myValue;
+  TCollection_MapNodePtr myNext2;
 
 
 };
 
-#define TheKey Handle_SelectMgr_EntityOwner
+#define TheKey Handle(SelectMgr_EntityOwner)
 #define TheKey_hxx <SelectMgr_EntityOwner.hxx>
-#define TheItem Handle_Prs3d_Presentation
+#define TheItem Handle(Prs3d_Presentation)
 #define TheItem_hxx <Prs3d_Presentation.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>
@@ -103,7 +88,6 @@ TCollection_MapNodePtr myNext2;
 #undef TCollection_IndexedDataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs_HeaderFile

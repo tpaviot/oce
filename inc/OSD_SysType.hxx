@@ -6,14 +6,17 @@
 #ifndef _OSD_SysType_HeaderFile
 #define _OSD_SysType_HeaderFile
 
-//! Thisd is a set of possible system types. <br>
-//!          'Default' means SysType of machine operating this process. <br>
-//!          This can be used with the Path class. <br>
-//!          All UNIX-like are grouped under "UnixBSD" or "UnixSystemV". <br>
-//!          Such systems are Solaris, NexTOS ... <br>
-//!          A category of systems accept MSDOS-like path such as <br>
-//!          WindowsNT and OS2. <br>
-enum OSD_SysType {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Thisd is a set of possible system types.
+//! 'Default' means SysType of machine operating this process.
+//! This can be used with the Path class.
+//! All UNIX-like are grouped under "UnixBSD" or "UnixSystemV".
+//! Such systems are Solaris, NexTOS ...
+//! A category of systems accept MSDOS-like path such as
+//! WindowsNT and OS2.
+enum OSD_SysType
+{
 OSD_Unknown,
 OSD_Default,
 OSD_UnixBSD,
@@ -28,8 +31,4 @@ OSD_LinuxREDHAT,
 OSD_Aix
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _OSD_SysType_HeaderFile

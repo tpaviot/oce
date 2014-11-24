@@ -6,67 +6,60 @@
 #ifndef _Geom2dLProp_CurAndInf2d_HeaderFile
 #define _Geom2dLProp_CurAndInf2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _LProp_CurAndInf_HeaderFile
 #include <LProp_CurAndInf.hxx>
-#endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
 class Geom2d_Curve;
 
 
-//! An algorithm for computing local properties of a curve. <br>
-//! These properties include: <br>
-//! - the maximum and minimum curvatures <br>
-//! - the inflection points. <br>
-//!   A CurAndInf2d object provides the framework for: <br>
-//! - defining the curve to be analyzed <br>
-//! - implementing the computation algorithms <br>
-//! - consulting the results. <br>
-class Geom2dLProp_CurAndInf2d  : public LProp_CurAndInf {
+//! An algorithm for computing local properties of a curve.
+//! These properties include:
+//! - the maximum and minimum curvatures
+//! - the inflection points.
+//! A CurAndInf2d object provides the framework for:
+//! - defining the curve to be analyzed
+//! - implementing the computation algorithms
+//! - consulting the results.
+class Geom2dLProp_CurAndInf2d  : public LProp_CurAndInf
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Initializes the framework. <br>
-//! Note: The curve on which the local properties are <br>
-//! computed is defined using one of the following <br>
-//! functions: Perform, PerformCurExt or PerformInf. <br>
-  Standard_EXPORT   Geom2dLProp_CurAndInf2d();
-  //! For the curve C, Computes both the <br>
-//!  inflection points and the maximum and minimum curvatures. <br>
-  Standard_EXPORT     void Perform(const Handle(Geom2d_Curve)& C) ;
-  //! For the curve C, Computes the locals extremas of curvature. <br>
-  Standard_EXPORT     void PerformCurExt(const Handle(Geom2d_Curve)& C) ;
-  //! For the curve C, Computes the inflections. <br>
-//! After computation, the following functions can be used: <br>
-//! - IsDone to check if the computation was successful <br>
-//! - NbPoints to obtain the number of computed particular points <br>
-//! - Parameter to obtain the parameter on the curve for <br>
-//!   each particular point <br>
-//! - Type to check if the point is an inflection point or an <br>
-//!   extremum of curvature of the curve C. <br>
-//!   Warning <br>
-//! These functions can be used to analyze a series of <br>
-//! curves, however it is necessary to clear the table of <br>
-//! results between each computation. <br>
-  Standard_EXPORT     void PerformInf(const Handle(Geom2d_Curve)& C) ;
-  //! True if the solutions are found. <br>
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-
+  
+  //! Initializes the framework.
+  //! Note: The curve on which the local properties are
+  //! computed is defined using one of the following
+  //! functions: Perform, PerformCurExt or PerformInf.
+  Standard_EXPORT Geom2dLProp_CurAndInf2d();
+  
+  //! For the curve C, Computes both the
+  //! inflection points and the maximum and minimum curvatures.
+  Standard_EXPORT   void Perform (const Handle(Geom2d_Curve)& C) ;
+  
+  //! For the curve C, Computes the locals extremas of curvature.
+  Standard_EXPORT   void PerformCurExt (const Handle(Geom2d_Curve)& C) ;
+  
+  //! For the curve C, Computes the inflections.
+  //! After computation, the following functions can be used:
+  //! - IsDone to check if the computation was successful
+  //! - NbPoints to obtain the number of computed particular points
+  //! - Parameter to obtain the parameter on the curve for
+  //! each particular point
+  //! - Type to check if the point is an inflection point or an
+  //! extremum of curvature of the curve C.
+  //! Warning
+  //! These functions can be used to analyze a series of
+  //! curves, however it is necessary to clear the table of
+  //! results between each computation.
+  Standard_EXPORT   void PerformInf (const Handle(Geom2d_Curve)& C) ;
+  
+  //! True if the solutions are found.
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
 
 
 
@@ -81,7 +74,7 @@ private:
 
 
 
-Standard_Boolean isDone;
+  Standard_Boolean isDone;
 
 
 };
@@ -90,7 +83,6 @@ Standard_Boolean isDone;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dLProp_CurAndInf2d_HeaderFile

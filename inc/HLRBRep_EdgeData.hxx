@@ -6,131 +6,111 @@
 #ifndef _HLRBRep_EdgeData_HeaderFile
 #define _HLRBRep_EdgeData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _HLRAlgo_EdgeStatus_HeaderFile
 #include <HLRAlgo_EdgeStatus.hxx>
-#endif
-#ifndef _HLRBRep_Curve_HeaderFile
 #include <HLRBRep_Curve.hxx>
-#endif
-#ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class TopoDS_Edge;
 class HLRAlgo_EdgeStatus;
 class HLRBRep_Curve;
 
 
 
-class HLRBRep_EdgeData  {
+class HLRBRep_EdgeData 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   HLRBRep_EdgeData();
+  Standard_EXPORT HLRBRep_EdgeData();
   
-  Standard_EXPORT     void Set(const Standard_Boolean Reg1,const Standard_Boolean RegN,const TopoDS_Edge& EG,const Standard_Integer V1,const Standard_Integer V2,const Standard_Boolean Out1,const Standard_Boolean Out2,const Standard_Boolean Cut1,const Standard_Boolean Cut2,const Standard_Real Start,const Standard_ShortReal TolStart,const Standard_Real End,const Standard_ShortReal TolEnd) ;
+  Standard_EXPORT   void Set (const Standard_Boolean Reg1, const Standard_Boolean RegN, const TopoDS_Edge& EG, const Standard_Integer V1, const Standard_Integer V2, const Standard_Boolean Out1, const Standard_Boolean Out2, const Standard_Boolean Cut1, const Standard_Boolean Cut2, const Standard_Real Start, const Standard_ShortReal TolStart, const Standard_Real End, const Standard_ShortReal TolEnd) ;
   
-        Standard_Boolean Selected() const;
+      Standard_Boolean Selected()  const;
   
-        void Selected(const Standard_Boolean B) ;
+      void Selected (const Standard_Boolean B) ;
   
-        Standard_Boolean Rg1Line() const;
+      Standard_Boolean Rg1Line()  const;
   
-        void Rg1Line(const Standard_Boolean B) ;
+      void Rg1Line (const Standard_Boolean B) ;
   
-        Standard_Boolean RgNLine() const;
+      Standard_Boolean RgNLine()  const;
   
-        void RgNLine(const Standard_Boolean B) ;
+      void RgNLine (const Standard_Boolean B) ;
   
-        Standard_Boolean Vertical() const;
+      Standard_Boolean Vertical()  const;
   
-        void Vertical(const Standard_Boolean B) ;
+      void Vertical (const Standard_Boolean B) ;
   
-        Standard_Boolean Simple() const;
+      Standard_Boolean Simple()  const;
   
-        void Simple(const Standard_Boolean B) ;
+      void Simple (const Standard_Boolean B) ;
   
-        Standard_Boolean OutLVSta() const;
+      Standard_Boolean OutLVSta()  const;
   
-        void OutLVSta(const Standard_Boolean B) ;
+      void OutLVSta (const Standard_Boolean B) ;
   
-        Standard_Boolean OutLVEnd() const;
+      Standard_Boolean OutLVEnd()  const;
   
-        void OutLVEnd(const Standard_Boolean B) ;
+      void OutLVEnd (const Standard_Boolean B) ;
   
-        Standard_Boolean CutAtSta() const;
+      Standard_Boolean CutAtSta()  const;
   
-        void CutAtSta(const Standard_Boolean B) ;
+      void CutAtSta (const Standard_Boolean B) ;
   
-        Standard_Boolean CutAtEnd() const;
+      Standard_Boolean CutAtEnd()  const;
   
-        void CutAtEnd(const Standard_Boolean B) ;
+      void CutAtEnd (const Standard_Boolean B) ;
   
-        Standard_Boolean VerAtSta() const;
+      Standard_Boolean VerAtSta()  const;
   
-        void VerAtSta(const Standard_Boolean B) ;
+      void VerAtSta (const Standard_Boolean B) ;
   
-        Standard_Boolean VerAtEnd() const;
+      Standard_Boolean VerAtEnd()  const;
   
-        void VerAtEnd(const Standard_Boolean B) ;
+      void VerAtEnd (const Standard_Boolean B) ;
   
-        Standard_Boolean AutoIntersectionDone() const;
+      Standard_Boolean AutoIntersectionDone()  const;
   
-        void AutoIntersectionDone(const Standard_Boolean B) ;
+      void AutoIntersectionDone (const Standard_Boolean B) ;
   
-        Standard_Boolean Used() const;
+      Standard_Boolean Used()  const;
   
-        void Used(const Standard_Boolean B) ;
+      void Used (const Standard_Boolean B) ;
   
-        Standard_Integer HideCount() const;
+      Standard_Integer HideCount()  const;
   
-        void HideCount(const Standard_Integer I) ;
+      void HideCount (const Standard_Integer I) ;
   
-        Standard_Integer VSta() const;
+      Standard_Integer VSta()  const;
   
-        void VSta(const Standard_Integer I) ;
+      void VSta (const Standard_Integer I) ;
   
-        Standard_Integer VEnd() const;
+      Standard_Integer VEnd()  const;
   
-        void VEnd(const Standard_Integer I) ;
+      void VEnd (const Standard_Integer I) ;
   
-  Standard_EXPORT     void UpdateMinMax(const Standard_Address TotMinMax) ;
+  Standard_EXPORT   void UpdateMinMax (const Standard_Address TotMinMax) ;
   
-        Standard_Address MinMax() const;
+      Standard_Address MinMax()  const;
   
-        HLRAlgo_EdgeStatus& Status() ;
+      HLRAlgo_EdgeStatus& Status() ;
   
-        HLRBRep_Curve& ChangeGeometry() ;
+      HLRBRep_Curve& ChangeGeometry() ;
   
-       const HLRBRep_Curve& Geometry() const;
+     const  HLRBRep_Curve& Geometry()  const;
   
-        Standard_Address Curve() ;
+      Standard_Address Curve() ;
   
-        Standard_ShortReal Tolerance() const;
-
+      Standard_ShortReal Tolerance()  const;
 
 
 
@@ -145,14 +125,14 @@ private:
 
 
 
-Standard_Boolean myFlags;
-Standard_Integer myHideCount;
-Standard_Integer myVSta;
-Standard_Integer myVEnd;
-Standard_Integer myMinMax[16];
-HLRAlgo_EdgeStatus myStatus;
-HLRBRep_Curve myGeometry;
-Standard_ShortReal myTolerance;
+  Standard_Boolean myFlags;
+  Standard_Integer myHideCount;
+  Standard_Integer myVSta;
+  Standard_Integer myVEnd;
+  Standard_Integer myMinMax[16];
+  HLRAlgo_EdgeStatus myStatus;
+  HLRBRep_Curve myGeometry;
+  Standard_ShortReal myTolerance;
 
 
 };
@@ -162,7 +142,6 @@ Standard_ShortReal myTolerance;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_EdgeData_HeaderFile

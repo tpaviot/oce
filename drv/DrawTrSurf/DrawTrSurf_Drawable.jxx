@@ -1,15 +1,5 @@
-#ifndef _Adaptor2d_Curve2d_HeaderFile
 #include <Adaptor2d_Curve2d.hxx>
-#endif
-#ifndef _Draw_Display_HeaderFile
 #include <Draw_Display.hxx>
-#endif
-#ifndef _Adaptor3d_Curve_HeaderFile
 #include <Adaptor3d_Curve.hxx>
-#endif
-#ifndef _Adaptor3d_IsoCurve_HeaderFile
 #include <Adaptor3d_IsoCurve.hxx>
-#endif
-#ifndef _DrawTrSurf_Drawable_HeaderFile
 #include <DrawTrSurf_Drawable.hxx>
-#endif

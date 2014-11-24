@@ -5,29 +5,17 @@
 
 #include <Storage_MapOfCallBack.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Storage_TypedCallBack_HeaderFile
 #include <Storage_TypedCallBack.hxx>
-#endif
-#ifndef _Storage_DataMapNodeOfMapOfCallBack_HeaderFile
 #include <Storage_DataMapNodeOfMapOfCallBack.hxx>
-#endif
-#ifndef _Storage_DataMapIteratorOfMapOfCallBack_HeaderFile
 #include <Storage_DataMapIteratorOfMapOfCallBack.hxx>
-#endif
  
 
 #define TheKey TCollection_AsciiString
 #define TheKey_hxx <TCollection_AsciiString.hxx>
-#define TheItem Handle_Storage_TypedCallBack
+#define TheItem Handle(Storage_TypedCallBack)
 #define TheItem_hxx <Storage_TypedCallBack.hxx>
 #define Hasher TCollection_AsciiString
 #define Hasher_hxx <TCollection_AsciiString.hxx>

@@ -6,52 +6,22 @@
 #ifndef _MAT2d_Tool2d_HeaderFile
 #define _MAT2d_Tool2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _GeomAbs_JoinType_HeaderFile
 #include <GeomAbs_JoinType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_MAT2d_Circuit_HeaderFile
 #include <Handle_MAT2d_Circuit.hxx>
-#endif
-#ifndef _MAT2d_DataMapOfIntegerBisec_HeaderFile
 #include <MAT2d_DataMapOfIntegerBisec.hxx>
-#endif
-#ifndef _MAT2d_DataMapOfIntegerPnt2d_HeaderFile
 #include <MAT2d_DataMapOfIntegerPnt2d.hxx>
-#endif
-#ifndef _MAT2d_DataMapOfIntegerVec2d_HeaderFile
 #include <MAT2d_DataMapOfIntegerVec2d.hxx>
-#endif
-#ifndef _TColStd_SequenceOfInteger_HeaderFile
 #include <TColStd_SequenceOfInteger.hxx>
-#endif
-#ifndef _MAT_Side_HeaderFile
 #include <MAT_Side.hxx>
-#endif
-#ifndef _Handle_MAT_Bisector_HeaderFile
-#include <Handle_MAT_Bisector.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Geom2d_Geometry_HeaderFile
+#include <Handle_MAT_Bisector.hxx>
 #include <Handle_Geom2d_Geometry.hxx>
-#endif
 class MAT2d_Circuit;
 class MAT_Bisector;
 class Bisector_Bisec;
@@ -60,92 +30,107 @@ class gp_Pnt2d;
 class gp_Vec2d;
 
 
-//! Set of the methods useful for the MAT's computation. <br>
-//!          Tool2d contains the geometry of the bisecting locus. <br>
-class MAT2d_Tool2d  {
+//! Set of the methods useful for the MAT's computation.
+//! Tool2d contains the geometry of the bisecting locus.
+class MAT2d_Tool2d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty Constructor. <br>
-  Standard_EXPORT   MAT2d_Tool2d();
-  //!<aSide> defines the side of the computation of the map. <br>
-  Standard_EXPORT     void Sense(const MAT_Side aside) ;
   
-  Standard_EXPORT     void SetJoinType(const GeomAbs_JoinType aJoinType) ;
-  //! InitItems cuts the line in Items. <br>
-//!            this Items are the geometrics representations of <br>
-//!            the BasicElts from MAT. <br>
-  Standard_EXPORT     void InitItems(const Handle(MAT2d_Circuit)& aCircuit) ;
-  //! Returns the Number of Items . <br>
-  Standard_EXPORT     Standard_Integer NumberOfItems() const;
-  //! Returns tolerance to test the confusion of two points. <br>
-  Standard_EXPORT     Standard_Real ToleranceOfConfusion() const;
-  //! Creates the point at the origin of the bisector between <br>
-//!            anitem and the previous  item. <br>
-//!            dist is the distance from the FirstPoint to <anitem>. <br>
-//!            Returns the index of this point in <theGeomPnts>. <br>
-  Standard_EXPORT     Standard_Integer FirstPoint(const Standard_Integer anitem,Standard_Real& dist) ;
-  //! Creates the Tangent at the end of the Item defined <br>
-//!            by <anitem>. Returns the index of this vector in <br>
-//!            <theGeomVecs> <br>
-  Standard_EXPORT     Standard_Integer TangentBefore(const Standard_Integer anitem) ;
-  //! Creates the Reversed Tangent at the origin of the Item <br>
-//!            defined by <anitem>. Returns the index of this vector in <br>
-//!            <theGeomVecs> <br>
-  Standard_EXPORT     Standard_Integer TangentAfter(const Standard_Integer anitem) ;
-  //! Creates the Tangent at the end of the bisector defined <br>
-//!            by <bisector>. Returns the index of this vector in <br>
-//!            <theGeomVecs> <br>
-  Standard_EXPORT     Standard_Integer Tangent(const Standard_Integer bisector) ;
-  //! Creates the geometric bisector defined by <abisector>. <br>
-  Standard_EXPORT     void CreateBisector(const Handle(MAT_Bisector)& abisector) ;
-  //! Trims the geometric bisector by the <firstparameter> <br>
-//!            of <abisector>. <br>
-//!            If the parameter is out of the bisector, Return FALSE. <br>
-//!            else Return True. <br>
-  Standard_EXPORT     Standard_Boolean TrimBisector(const Handle(MAT_Bisector)& abisector) ;
-  //! Trims the geometric bisector by the point of index <br>
-//!            <apoint> in <theGeomPnts>. <br>
-//!            If the point is out of the bisector, Return FALSE. <br>
-//!            else Return True. <br>
-  Standard_EXPORT     Standard_Boolean TrimBisector(const Handle(MAT_Bisector)& abisector,const Standard_Integer apoint) ;
-  //! Computes  the point  of  intersection between  the <br>
-//!             bisectors defined  by  <bisectorone>  and <br>
-//!             <bisectortwo> . <br>
-//!             If this point exists,  <intpnt> is its  index <br>
-//!             in <theGeomPnts> and Return the distance of the point <br>
-//!             from the bisector else Return <RealLast>. <br>
-  Standard_EXPORT     Standard_Real IntersectBisector(const Handle(MAT_Bisector)& bisectorone,const Handle(MAT_Bisector)& bisectortwo,Standard_Integer& intpnt) ;
-  //! Returns the distance between the two points designed <br>
-//!          by their parameters on <abisector>. <br>
-  Standard_EXPORT     Standard_Real Distance(const Handle(MAT_Bisector)& abisector,const Standard_Real param1,const Standard_Real param2) const;
-  //! displays informations about the bisector defined by <br>
-//!            <bisector>. <br>
-  Standard_EXPORT     void Dump(const Standard_Integer bisector,const Standard_Integer erease) const;
-  //! Returns the <Bisec> of index <Index> in <br>
-//!            <theGeomBisectors>. <br>
-//! <br>
-  Standard_EXPORT    const Bisector_Bisec& GeomBis(const Standard_Integer Index) const;
-  //! Returns the Geometry of index <Index> in <theGeomElts>. <br>
-  Standard_EXPORT     Handle_Geom2d_Geometry GeomElt(const Standard_Integer Index) const;
-  //! Returns the point of index <Index> in the <theGeomPnts>. <br>
-//! <br>
-  Standard_EXPORT    const gp_Pnt2d& GeomPnt(const Standard_Integer Index) const;
-  //! Returns the  vector  of index <Index> in the <br>
-//!            <theGeomVecs>. <br>
-//! <br>
-  Standard_EXPORT    const gp_Vec2d& GeomVec(const Standard_Integer Index) const;
+  //! Empty Constructor.
+  Standard_EXPORT MAT2d_Tool2d();
   
-//! <br>
-  Standard_EXPORT     Handle_MAT2d_Circuit Circuit() const;
+  //! <aSide> defines the side of the computation of the map.
+  Standard_EXPORT   void Sense (const MAT_Side aside) ;
   
-  Standard_EXPORT     void BisecFusion(const Standard_Integer Index1,const Standard_Integer Index2) ;
-  //! Returns the <Bisec> of index <Index> in <br>
-//!            <theGeomBisectors>. <br>
-//! <br>
-  Standard_EXPORT     Bisector_Bisec& ChangeGeomBis(const Standard_Integer Index) ;
-
+  Standard_EXPORT   void SetJoinType (const GeomAbs_JoinType aJoinType) ;
+  
+  //! InitItems cuts the line in Items.
+  //! this Items are the geometrics representations of
+  //! the BasicElts from MAT.
+  Standard_EXPORT   void InitItems (const Handle(MAT2d_Circuit)& aCircuit) ;
+  
+  //! Returns the Number of Items .
+  Standard_EXPORT   Standard_Integer NumberOfItems()  const;
+  
+  //! Returns tolerance to test the confusion of two points.
+  Standard_EXPORT   Standard_Real ToleranceOfConfusion()  const;
+  
+  //! Creates the point at the origin of the bisector between
+  //! anitem and the previous  item.
+  //! dist is the distance from the FirstPoint to <anitem>.
+  //! Returns the index of this point in <theGeomPnts>.
+  Standard_EXPORT   Standard_Integer FirstPoint (const Standard_Integer anitem, Standard_Real& dist) ;
+  
+  //! Creates the Tangent at the end of the Item defined
+  //! by <anitem>. Returns the index of this vector in
+  //! <theGeomVecs>
+  Standard_EXPORT   Standard_Integer TangentBefore (const Standard_Integer anitem, const Standard_Boolean IsOpenResult) ;
+  
+  //! Creates the Reversed Tangent at the origin of the Item
+  //! defined by <anitem>. Returns the index of this vector in
+  //! <theGeomVecs>
+  Standard_EXPORT   Standard_Integer TangentAfter (const Standard_Integer anitem, const Standard_Boolean IsOpenResult) ;
+  
+  //! Creates the Tangent at the end of the bisector defined
+  //! by <bisector>. Returns the index of this vector in
+  //! <theGeomVecs>
+  Standard_EXPORT   Standard_Integer Tangent (const Standard_Integer bisector) ;
+  
+  //! Creates the geometric bisector defined by <abisector>.
+  Standard_EXPORT   void CreateBisector (const Handle(MAT_Bisector)& abisector) ;
+  
+  //! Trims the geometric bisector by the <firstparameter>
+  //! of <abisector>.
+  //! If the parameter is out of the bisector, Return FALSE.
+  //! else Return True.
+  Standard_EXPORT   Standard_Boolean TrimBisector (const Handle(MAT_Bisector)& abisector) ;
+  
+  //! Trims the geometric bisector by the point of index
+  //! <apoint> in <theGeomPnts>.
+  //! If the point is out of the bisector, Return FALSE.
+  //! else Return True.
+  Standard_EXPORT   Standard_Boolean TrimBisector (const Handle(MAT_Bisector)& abisector, const Standard_Integer apoint) ;
+  
+  //! Computes  the point  of  intersection between  the
+  //! bisectors defined  by  <bisectorone>  and
+  //! <bisectortwo> .
+  //! If this point exists,  <intpnt> is its  index
+  //! in <theGeomPnts> and Return the distance of the point
+  //! from the bisector else Return <RealLast>.
+  Standard_EXPORT   Standard_Real IntersectBisector (const Handle(MAT_Bisector)& bisectorone, const Handle(MAT_Bisector)& bisectortwo, Standard_Integer& intpnt) ;
+  
+  //! Returns the distance between the two points designed
+  //! by their parameters on <abisector>.
+  Standard_EXPORT   Standard_Real Distance (const Handle(MAT_Bisector)& abisector, const Standard_Real param1, const Standard_Real param2)  const;
+  
+  //! displays informations about the bisector defined by
+  //! <bisector>.
+  Standard_EXPORT   void Dump (const Standard_Integer bisector, const Standard_Integer erease)  const;
+  
+  //! Returns the <Bisec> of index <Index> in
+  //! <theGeomBisectors>.
+  Standard_EXPORT  const  Bisector_Bisec& GeomBis (const Standard_Integer Index)  const;
+  
+  //! Returns the Geometry of index <Index> in <theGeomElts>.
+  Standard_EXPORT   Handle(Geom2d_Geometry) GeomElt (const Standard_Integer Index)  const;
+  
+  //! Returns the point of index <Index> in the <theGeomPnts>.
+  Standard_EXPORT  const  gp_Pnt2d& GeomPnt (const Standard_Integer Index)  const;
+  
+  //! Returns the  vector  of index <Index> in the
+  //! <theGeomVecs>.
+  Standard_EXPORT  const  gp_Vec2d& GeomVec (const Standard_Integer Index)  const;
+  
+  Standard_EXPORT   Handle(MAT2d_Circuit) Circuit()  const;
+  
+  Standard_EXPORT   void BisecFusion (const Standard_Integer Index1, const Standard_Integer Index2) ;
+  
+  //! Returns the <Bisec> of index <Index> in
+  //! <theGeomBisectors>.
+  Standard_EXPORT   Bisector_Bisec& ChangeGeomBis (const Standard_Integer Index) ;
 
 
 
@@ -158,31 +143,33 @@ protected:
 
 private:
 
-  //! Returns True if the point <apoint> is equidistant to <br>
-//!            the elements separated by bisectors <bisectorone> and <br>
-//!            <bisectortwo>. <br>
-//!            In this case <adistance> is the distance of the point <br>
-//!            from the bisectors. <br>
-  Standard_EXPORT     Standard_Boolean IsSameDistance(const Handle(MAT_Bisector)& bisectorone,const Handle(MAT_Bisector)& bisectortwo,const gp_Pnt2d& apoint,Standard_Real& adistance) const;
-  //! Return <True> if the Point can be projected <br>
-//!          on the element designed by <IndexElt>. <br>
-//!          In this case <Distance> is the minimum of distance <br>
-//!          between Point and its projections. <br>
-  Standard_EXPORT     Standard_Boolean Projection(const Standard_Integer IndexElt,const gp_Pnt2d& Point,Standard_Real& Distance) const;
   
-  Standard_EXPORT     void TrimBisec(Bisector_Bisec& Bis,const Standard_Integer IndexEdge,const Standard_Boolean OnLine,const Standard_Integer StartOrEnd) const;
+  //! Returns True if the point <apoint> is equidistant to
+  //! the elements separated by bisectors <bisectorone> and
+  //! <bisectortwo>.
+  //! In this case <adistance> is the distance of the point
+  //! from the bisectors.
+  Standard_EXPORT   Standard_Boolean IsSameDistance (const Handle(MAT_Bisector)& bisectorone, const Handle(MAT_Bisector)& bisectortwo, const gp_Pnt2d& apoint, Standard_Real& adistance)  const;
+  
+  //! Return <True> if the Point can be projected
+  //! on the element designed by <IndexElt>.
+  //! In this case <Distance> is the minimum of distance
+  //! between Point and its projections.
+  Standard_EXPORT   Standard_Boolean Projection (const Standard_Integer IndexElt, const gp_Pnt2d& Point, Standard_Real& Distance)  const;
+  
+  Standard_EXPORT   void TrimBisec (Bisector_Bisec& Bis, const Standard_Integer IndexEdge, const Standard_Boolean OnLine, const Standard_Integer StartOrEnd)  const;
 
 
-Standard_Real theDirection;
-GeomAbs_JoinType theJoinType;
-Standard_Integer theNumberOfBisectors;
-Standard_Integer theNumberOfPnts;
-Standard_Integer theNumberOfVecs;
-Handle_MAT2d_Circuit theCircuit;
-MAT2d_DataMapOfIntegerBisec theGeomBisectors;
-MAT2d_DataMapOfIntegerPnt2d theGeomPnts;
-MAT2d_DataMapOfIntegerVec2d theGeomVecs;
-TColStd_SequenceOfInteger theLinesLength;
+  Standard_Real theDirection;
+  GeomAbs_JoinType theJoinType;
+  Standard_Integer theNumberOfBisectors;
+  Standard_Integer theNumberOfPnts;
+  Standard_Integer theNumberOfVecs;
+  Handle(MAT2d_Circuit) theCircuit;
+  MAT2d_DataMapOfIntegerBisec theGeomBisectors;
+  MAT2d_DataMapOfIntegerPnt2d theGeomPnts;
+  MAT2d_DataMapOfIntegerVec2d theGeomVecs;
+  TColStd_SequenceOfInteger theLinesLength;
 
 
 };
@@ -191,7 +178,6 @@ TColStd_SequenceOfInteger theLinesLength;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MAT2d_Tool2d_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_IGESDimen_OrdinateDimension_HeaderFile
 #define _Handle_IGESDimen_OrdinateDimension_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IGESData_IGESEntity);
 class IGESDimen_OrdinateDimension;
 
-DEFINE_STANDARD_HANDLE(IGESDimen_OrdinateDimension,IGESData_IGESEntity)
+DEFINE_STANDARD_HANDLE(IGESDimen_OrdinateDimension, IGESData_IGESEntity)
 
-#endif
+#endif // _Handle_IGESDimen_OrdinateDimension_HeaderFile

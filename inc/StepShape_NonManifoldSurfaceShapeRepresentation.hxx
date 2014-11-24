@@ -6,28 +6,22 @@
 #ifndef _StepShape_NonManifoldSurfaceShapeRepresentation_HeaderFile
 #define _StepShape_NonManifoldSurfaceShapeRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_NonManifoldSurfaceShapeRepresentation_HeaderFile
 #include <Handle_StepShape_NonManifoldSurfaceShapeRepresentation.hxx>
-#endif
 
-#ifndef _StepShape_ShapeRepresentation_HeaderFile
 #include <StepShape_ShapeRepresentation.hxx>
-#endif
 
 
-//! Representation of STEP entity NonManifoldSurfaceShapeRepresentation <br>
-class StepShape_NonManifoldSurfaceShapeRepresentation : public StepShape_ShapeRepresentation {
+//! Representation of STEP entity NonManifoldSurfaceShapeRepresentation
+class StepShape_NonManifoldSurfaceShapeRepresentation : public StepShape_ShapeRepresentation
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepShape_NonManifoldSurfaceShapeRepresentation();
+  
+  //! Empty constructor
+  Standard_EXPORT StepShape_NonManifoldSurfaceShapeRepresentation();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_NonManifoldSurfaceShapeRepresentation_HeaderFile

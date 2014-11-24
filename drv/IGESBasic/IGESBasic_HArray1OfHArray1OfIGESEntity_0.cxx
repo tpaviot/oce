@@ -5,13 +5,9 @@
 
 #include <IGESBasic_HArray1OfHArray1OfIGESEntity.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IGESData_HArray1OfIGESEntity_HeaderFile
 #include <IGESData_HArray1OfIGESEntity.hxx>
-#endif
 
  
 

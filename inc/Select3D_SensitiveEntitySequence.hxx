@@ -6,28 +6,14 @@
 #ifndef _Select3D_SensitiveEntitySequence_HeaderFile
 #define _Select3D_SensitiveEntitySequence_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_Select3D_SensitiveEntity_HeaderFile
 #include <Handle_Select3D_SensitiveEntity.hxx>
-#endif
-#ifndef _Handle_Select3D_SequenceNodeOfSensitiveEntitySequence_HeaderFile
 #include <Handle_Select3D_SequenceNodeOfSensitiveEntitySequence.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Select3D_SensitiveEntity;
@@ -35,68 +21,68 @@ class Select3D_SequenceNodeOfSensitiveEntitySequence;
 
 
 
-class Select3D_SensitiveEntitySequence  : public TCollection_BaseSequence {
+class Select3D_SensitiveEntitySequence  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Select3D_SensitiveEntitySequence();
+    Select3D_SensitiveEntitySequence();
   
-  Standard_EXPORT   Select3D_SensitiveEntitySequence(const Select3D_SensitiveEntitySequence& Other);
+  Standard_EXPORT Select3D_SensitiveEntitySequence(const Select3D_SensitiveEntitySequence& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~Select3D_SensitiveEntitySequence()
 {
   Clear();
 }
   
-  Standard_EXPORT    const Select3D_SensitiveEntitySequence& Assign(const Select3D_SensitiveEntitySequence& Other) ;
-   const Select3D_SensitiveEntitySequence& operator =(const Select3D_SensitiveEntitySequence& Other) 
+  Standard_EXPORT  const  Select3D_SensitiveEntitySequence& Assign (const Select3D_SensitiveEntitySequence& Other) ;
+ const  Select3D_SensitiveEntitySequence& operator = (const Select3D_SensitiveEntitySequence& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(Select3D_SensitiveEntity)& T) ;
+  Standard_EXPORT   void Append (const Handle(Select3D_SensitiveEntity)& T) ;
   
-        void Append(Select3D_SensitiveEntitySequence& S) ;
+      void Append (Select3D_SensitiveEntitySequence& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(Select3D_SensitiveEntity)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(Select3D_SensitiveEntity)& T) ;
   
-        void Prepend(Select3D_SensitiveEntitySequence& S) ;
+      void Prepend (Select3D_SensitiveEntitySequence& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(Select3D_SensitiveEntity)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(Select3D_SensitiveEntity)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,Select3D_SensitiveEntitySequence& S) ;
+      void InsertBefore (const Standard_Integer Index, Select3D_SensitiveEntitySequence& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(Select3D_SensitiveEntity)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(Select3D_SensitiveEntity)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,Select3D_SensitiveEntitySequence& S) ;
+      void InsertAfter (const Standard_Integer Index, Select3D_SensitiveEntitySequence& S) ;
   
-  Standard_EXPORT    const Handle_Select3D_SensitiveEntity& First() const;
+  Standard_EXPORT  const  Handle(Select3D_SensitiveEntity)& First()  const;
   
-  Standard_EXPORT    const Handle_Select3D_SensitiveEntity& Last() const;
+  Standard_EXPORT  const  Handle(Select3D_SensitiveEntity)& Last()  const;
   
-        void Split(const Standard_Integer Index,Select3D_SensitiveEntitySequence& Sub) ;
+      void Split (const Standard_Integer Index, Select3D_SensitiveEntitySequence& Sub) ;
   
-  Standard_EXPORT    const Handle_Select3D_SensitiveEntity& Value(const Standard_Integer Index) const;
-   const Handle_Select3D_SensitiveEntity& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(Select3D_SensitiveEntity)& Value (const Standard_Integer Index)  const;
+ const  Handle(Select3D_SensitiveEntity)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(Select3D_SensitiveEntity)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(Select3D_SensitiveEntity)& I) ;
   
-  Standard_EXPORT     Handle_Select3D_SensitiveEntity& ChangeValue(const Standard_Integer Index) ;
-    Handle_Select3D_SensitiveEntity& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(Select3D_SensitiveEntity)& ChangeValue (const Standard_Integer Index) ;
+  Handle(Select3D_SensitiveEntity)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -115,7 +101,7 @@ private:
 
 };
 
-#define SeqItem Handle_Select3D_SensitiveEntity
+#define SeqItem Handle(Select3D_SensitiveEntity)
 #define SeqItem_hxx <Select3D_SensitiveEntity.hxx>
 #define TCollection_SequenceNode Select3D_SequenceNodeOfSensitiveEntitySequence
 #define TCollection_SequenceNode_hxx <Select3D_SequenceNodeOfSensitiveEntitySequence.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Select3D_SensitiveEntitySequence_HeaderFile

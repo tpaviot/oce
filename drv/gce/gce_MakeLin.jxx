@@ -1,18 +1,6 @@
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _gp_Ax1_HeaderFile
 #include <gp_Ax1.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
-#endif
-#ifndef _gce_MakeLin_HeaderFile
 #include <gce_MakeLin.hxx>
-#endif

@@ -6,44 +6,37 @@
 #ifndef _Contap_SurfProps_HeaderFile
 #define _Contap_SurfProps_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Adaptor3d_HSurface;
 class gp_Pnt;
 class gp_Vec;
 
 
-//! Internal tool used  to compute the  normal and its <br>
-//!          derivatives. <br>
-class Contap_SurfProps  {
+//! Internal tool used  to compute the  normal and its
+//! derivatives.
+class Contap_SurfProps 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Computes  the point <P>, and  normal vector <N> on <br>
-//!          <S> at parameters U,V. <br>
-  Standard_EXPORT   static  void Normale(const Handle(Adaptor3d_HSurface)& S,const Standard_Real U,const Standard_Real V,gp_Pnt& P,gp_Vec& N) ;
-  //! Computes  the point <P>, and  normal vector <N> on <br>
-//!          <S> at parameters U,V. <br>
-  Standard_EXPORT   static  void DerivAndNorm(const Handle(Adaptor3d_HSurface)& S,const Standard_Real U,const Standard_Real V,gp_Pnt& P,gp_Vec& d1u,gp_Vec& d1v,gp_Vec& N) ;
-  //! Computes the point <P>, normal vector <N>, and its <br>
-//!          derivatives <Dnu> and <Dnv> on <S> at parameters U,V. <br>
-  Standard_EXPORT   static  void NormAndDn(const Handle(Adaptor3d_HSurface)& S,const Standard_Real U,const Standard_Real V,gp_Pnt& P,gp_Vec& N,gp_Vec& Dnu,gp_Vec& Dnv) ;
-
+  
+  //! Computes  the point <P>, and  normal vector <N> on
+  //! <S> at parameters U,V.
+  Standard_EXPORT static   void Normale (const Handle(Adaptor3d_HSurface)& S, const Standard_Real U, const Standard_Real V, gp_Pnt& P, gp_Vec& N) ;
+  
+  //! Computes  the point <P>, and  normal vector <N> on
+  //! <S> at parameters U,V.
+  Standard_EXPORT static   void DerivAndNorm (const Handle(Adaptor3d_HSurface)& S, const Standard_Real U, const Standard_Real V, gp_Pnt& P, gp_Vec& d1u, gp_Vec& d1v, gp_Vec& N) ;
+  
+  //! Computes the point <P>, normal vector <N>, and its
+  //! derivatives <Dnu> and <Dnv> on <S> at parameters U,V.
+  Standard_EXPORT static   void NormAndDn (const Handle(Adaptor3d_HSurface)& S, const Standard_Real U, const Standard_Real V, gp_Pnt& P, gp_Vec& N, gp_Vec& Dnu, gp_Vec& Dnv) ;
 
 
 
@@ -66,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Contap_SurfProps_HeaderFile

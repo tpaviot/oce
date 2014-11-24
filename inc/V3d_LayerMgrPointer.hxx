@@ -7,7 +7,6 @@
 #define _V3d_LayerMgrPointer_HeaderFile
 
 class V3d_LayerMgr;
-
 typedef V3d_LayerMgr* V3d_LayerMgrPointer;
 
-#endif
+#endif // _V3d_LayerMgrPointer_HeaderFile

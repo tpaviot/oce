@@ -6,39 +6,28 @@
 #ifndef _TDF_ListNodeOfIDList_HeaderFile
 #define _TDF_ListNodeOfIDList_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDF_ListNodeOfIDList_HeaderFile
 #include <Handle_TDF_ListNodeOfIDList.hxx>
-#endif
 
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Standard_GUID;
 class TDF_IDList;
 class TDF_ListIteratorOfIDList;
 
 
 
-class TDF_ListNodeOfIDList : public TCollection_MapNode {
+class TDF_ListNodeOfIDList : public TCollection_MapNode
+{
 
 public:
 
   
-      TDF_ListNodeOfIDList(const Standard_GUID& I,const TCollection_MapNodePtr& n);
+    TDF_ListNodeOfIDList(const Standard_GUID& I, const TCollection_MapNodePtr& n);
   
-        Standard_GUID& Value() const;
+      Standard_GUID& Value()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-Standard_GUID myValue;
+  Standard_GUID myValue;
 
 
 };
@@ -83,7 +72,6 @@ Standard_GUID myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_ListNodeOfIDList_HeaderFile

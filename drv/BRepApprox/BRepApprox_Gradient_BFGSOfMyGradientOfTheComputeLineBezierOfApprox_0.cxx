@@ -5,27 +5,13 @@
 
 #include <BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox.hxx>
 
-#ifndef _BRepApprox_TheMultiLineOfApprox_HeaderFile
 #include <BRepApprox_TheMultiLineOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_TheMultiLineToolOfApprox_HeaderFile
 #include <BRepApprox_TheMultiLineToolOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_HeaderFile
 #include <BRepApprox_MyGradientOfTheComputeLineBezierOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_HeaderFile
 #include <BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_HeaderFile
 #include <BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_HeaderFile
 #include <BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx>
-#endif
-#ifndef _math_MultipleVarFunctionWithGradient_HeaderFile
 #include <math_MultipleVarFunctionWithGradient.hxx>
-#endif
  
 
 #define MultiLine BRepApprox_TheMultiLineOfApprox

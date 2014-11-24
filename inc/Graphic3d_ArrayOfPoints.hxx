@@ -6,38 +6,28 @@
 #ifndef _Graphic3d_ArrayOfPoints_HeaderFile
 #define _Graphic3d_ArrayOfPoints_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Graphic3d_ArrayOfPoints_HeaderFile
 #include <Handle_Graphic3d_ArrayOfPoints.hxx>
-#endif
 
-#ifndef _Graphic3d_ArrayOfPrimitives_HeaderFile
 #include <Graphic3d_ArrayOfPrimitives.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 
 
-//! Contains points array definition <br>
-class Graphic3d_ArrayOfPoints : public Graphic3d_ArrayOfPrimitives {
+//! Contains points array definition
+class Graphic3d_ArrayOfPoints : public Graphic3d_ArrayOfPrimitives
+{
 
 public:
 
-  //! Creates an array of points, <br>
-//! a single pixel point is drawn at each vertex. <br>
-//! The array must be filled using the AddVertex(Point) method. <br>
-//! When <hasVColors> is TRUE , you must use only AddVertex(Point,Color) method. <br>
-//! When <hasVNormals> is TRUE , you must use only AddVertex(Point,Normal) method. <br>
-  Standard_EXPORT   Graphic3d_ArrayOfPoints(const Standard_Integer maxVertexs,const Standard_Boolean hasVColors = Standard_False,const Standard_Boolean hasVNormals = Standard_False);
+  
+  //! Creates an array of points,
+  //! a single pixel point is drawn at each vertex.
+  //! The array must be filled using the AddVertex(Point) method.
+  //! When <hasVColors> is TRUE , you must use only AddVertex(Point,Color) method.
+  //! When <hasVNormals> is TRUE , you must use only AddVertex(Point,Normal) method.
+  Standard_EXPORT Graphic3d_ArrayOfPoints(const Standard_Integer maxVertexs, const Standard_Boolean hasVColors = Standard_False, const Standard_Boolean hasVNormals = Standard_False);
 
 
 
@@ -60,7 +50,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Graphic3d_ArrayOfPoints_HeaderFile

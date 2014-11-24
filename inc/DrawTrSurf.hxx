@@ -6,64 +6,26 @@
 #ifndef _DrawTrSurf_HeaderFile
 #define _DrawTrSurf_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_Geom_Geometry_HeaderFile
 #include <Handle_Geom_Geometry.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _Handle_Poly_Triangulation_HeaderFile
 #include <Handle_Poly_Triangulation.hxx>
-#endif
-#ifndef _Handle_Poly_Polygon3D_HeaderFile
 #include <Handle_Poly_Polygon3D.hxx>
-#endif
-#ifndef _Handle_Poly_Polygon2D_HeaderFile
 #include <Handle_Poly_Polygon2D.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _Handle_Geom_BezierCurve_HeaderFile
 #include <Handle_Geom_BezierCurve.hxx>
-#endif
-#ifndef _Handle_Geom_BSplineCurve_HeaderFile
 #include <Handle_Geom_BSplineCurve.hxx>
-#endif
-#ifndef _Handle_Geom2d_BezierCurve_HeaderFile
 #include <Handle_Geom2d_BezierCurve.hxx>
-#endif
-#ifndef _Handle_Geom2d_BSplineCurve_HeaderFile
 #include <Handle_Geom2d_BSplineCurve.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _Handle_Geom_BezierSurface_HeaderFile
 #include <Handle_Geom_BezierSurface.hxx>
-#endif
-#ifndef _Handle_Geom_BSplineSurface_HeaderFile
 #include <Handle_Geom_BSplineSurface.hxx>
-#endif
-#ifndef _Draw_Interpretor_HeaderFile
 #include <Draw_Interpretor.hxx>
-#endif
 class gp_Pnt;
 class gp_Pnt2d;
 class Geom_Geometry;
@@ -96,98 +58,121 @@ class DrawTrSurf_Polygon3D;
 class DrawTrSurf_Polygon2D;
 
 
-//! This  package supports the   display of parametric <br>
-//!          curves and surfaces. <br>
-//! <br>
-//!          The  Drawable deferred  classes is  inherited from <br>
-//!          the Drawable3D  class  from  the package Draw,  it <br>
-//!          adds methods to  draw 3D Curves  and  Curves on 3D <br>
-//!          Surfaces. <br>
-//! <br>
-//!          The classes Curve Curve2d and Surface are drawable <br>
-//!          and  can be  used  to  draw a   single  curve from <br>
-//!          packages Geom or Geom2d or a surface from Geom. <br>
-//! <br>
-//!          The  Triangulation  and Polygon  from the  package <br>
-//!          Poly are also supported. <br>
-class DrawTrSurf  {
+//! This  package supports the   display of parametric
+//! curves and surfaces.
+//!
+//! The  Drawable deferred  classes is  inherited from
+//! the Drawable3D  class  from  the package Draw,  it
+//! adds methods to  draw 3D Curves  and  Curves on 3D
+//! Surfaces.
+//!
+//! The classes Curve Curve2d and Surface are drawable
+//! and  can be  used  to  draw a   single  curve from
+//! packages Geom or Geom2d or a surface from Geom.
+//!
+//! The  Triangulation  and Polygon  from the  package
+//! Poly are also supported.
+class DrawTrSurf 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Sets <G> in the variable <Name>.  Overwrite the <br>
-//!          variable if already set. <br>
-  Standard_EXPORT   static  void Set(const Standard_CString Name,const gp_Pnt& G) ;
-  //! Sets <G> in the variable <Name>.  Overwrite the <br>
-//!          variable if already set. <br>
-  Standard_EXPORT   static  void Set(const Standard_CString Name,const gp_Pnt2d& G) ;
-  //! Sets <G> in the variable <Name>.  Overwrite the <br>
-//!          variable if already set. <br>
-//!          isSenseMarker indicates whether to render the <br>
-//!          sense glyph (arrow) for curves or not <br>
-  Standard_EXPORT   static  void Set(const Standard_CString Name,const Handle(Geom_Geometry)& G,const Standard_Boolean isSenseMarker = Standard_True) ;
-  //! Sets <C> in the variable <Name>.  Overwrite the <br>
-//!          variable if already set. <br>
-//!          isSenseMarker indicates whether to render the <br>
-//!          sense glyph (arrow) for curves or not <br>
-  Standard_EXPORT   static  void Set(const Standard_CString Name,const Handle(Geom2d_Curve)& C,const Standard_Boolean isSenseMarker = Standard_True) ;
-  //! Sets <T> in the variable <Name>.  Overwrite the <br>
-//!          variable if already set. <br>
-  Standard_EXPORT   static  void Set(const Standard_CString Name,const Handle(Poly_Triangulation)& T) ;
-  //! Sets <P> in the variable <Name>.  Overwrite the <br>
-//!          variable if already set. <br>
-  Standard_EXPORT   static  void Set(const Standard_CString Name,const Handle(Poly_Polygon3D)& P) ;
-  //! Sets <P> in the variable <Name>.  Overwrite the <br>
-//!          variable if already set. <br>
-  Standard_EXPORT   static  void Set(const Standard_CString Name,const Handle(Poly_Polygon2D)& P) ;
-  //! Get  the variable <S>.  Returns a  null  handle if <br>
-//!          none, and print a warning message. <br>
-  Standard_EXPORT   static  Handle_Geom_Geometry Get(Standard_CString& Name) ;
-  //! Gets the variable. Returns False if none and print <br>
-//!          a warning message. <br>
-  Standard_EXPORT   static  Standard_Boolean GetPoint(Standard_CString& Name,gp_Pnt& P) ;
-  //! Gets the variable. Returns False if none and print <br>
-//!          a warning message. <br>
-  Standard_EXPORT   static  Standard_Boolean GetPoint2d(Standard_CString& Name,gp_Pnt2d& P) ;
-  //! Get  the variable <S>.  Returns a  null  handle if <br>
-//!          none, and print a warning message. <br>
-  Standard_EXPORT   static  Handle_Geom_Curve GetCurve(Standard_CString& Name) ;
-  //! Get  the variable <S>.  Returns a  null  handle if <br>
-//!          none, and print a warning message. <br>
-  Standard_EXPORT   static  Handle_Geom_BezierCurve GetBezierCurve(Standard_CString& Name) ;
-  //! Get  the variable <S>.  Returns a  null  handle if <br>
-//!          none, and print a warning message. <br>
-  Standard_EXPORT   static  Handle_Geom_BSplineCurve GetBSplineCurve(Standard_CString& Name) ;
-  //! Get  the variable <S>.  Returns a  null  handle if <br>
-//!          none, and print a warning message. <br>
-  Standard_EXPORT   static  Handle_Geom2d_Curve GetCurve2d(Standard_CString& Name) ;
-  //! Get  the variable <S>.  Returns a  null  handle if <br>
-//!          none, and print a warning message. <br>
-  Standard_EXPORT   static  Handle_Geom2d_BezierCurve GetBezierCurve2d(Standard_CString& Name) ;
-  //! Get  the variable <S>.  Returns a  null  handle if <br>
-//!          none, and print a warning message. <br>
-  Standard_EXPORT   static  Handle_Geom2d_BSplineCurve GetBSplineCurve2d(Standard_CString& Name) ;
-  //! Get  the variable <S>.  Returns a  null  handle if <br>
-//!          none, and print a warning message. <br>
-  Standard_EXPORT   static  Handle_Geom_Surface GetSurface(Standard_CString& Name) ;
-  //! Get  the variable <S>.  Returns a  null  handle if <br>
-//!          none, and print a warning message. <br>
-  Standard_EXPORT   static  Handle_Geom_BezierSurface GetBezierSurface(Standard_CString& Name) ;
-  //! Get  the variable <S>.  Returns a  null  handle if <br>
-//!          none, and print a warning message. <br>
-  Standard_EXPORT   static  Handle_Geom_BSplineSurface GetBSplineSurface(Standard_CString& Name) ;
-  //! Get  the variable <S>.  Returns a  null  handle if <br>
-//!          none, and print a warning message. <br>
-  Standard_EXPORT   static  Handle_Poly_Triangulation GetTriangulation(Standard_CString& Name) ;
-  //! Get  the variable <S>.  Returns a  null  handle if <br>
-//!          none, and print a warning message. <br>
-  Standard_EXPORT   static  Handle_Poly_Polygon3D GetPolygon3D(Standard_CString& Name) ;
-  //! Get  the variable <S>.  Returns a  null  handle if <br>
-//!          none, and print a warning message. <br>
-  Standard_EXPORT   static  Handle_Poly_Polygon2D GetPolygon2D(Standard_CString& Name) ;
-  //! defines display commands. <br>
-  Standard_EXPORT   static  void BasicCommands(Draw_Interpretor& I) ;
-
+  
+  //! Sets <G> in the variable <Name>.  Overwrite the
+  //! variable if already set.
+  Standard_EXPORT static   void Set (const Standard_CString Name, const gp_Pnt& G) ;
+  
+  //! Sets <G> in the variable <Name>.  Overwrite the
+  //! variable if already set.
+  Standard_EXPORT static   void Set (const Standard_CString Name, const gp_Pnt2d& G) ;
+  
+  //! Sets <G> in the variable <Name>.  Overwrite the
+  //! variable if already set.
+  //! isSenseMarker indicates whether to render the
+  //! sense glyph (arrow) for curves or not
+  Standard_EXPORT static   void Set (const Standard_CString Name, const Handle(Geom_Geometry)& G, const Standard_Boolean isSenseMarker = Standard_True) ;
+  
+  //! Sets <C> in the variable <Name>.  Overwrite the
+  //! variable if already set.
+  //! isSenseMarker indicates whether to render the
+  //! sense glyph (arrow) for curves or not
+  Standard_EXPORT static   void Set (const Standard_CString Name, const Handle(Geom2d_Curve)& C, const Standard_Boolean isSenseMarker = Standard_True) ;
+  
+  //! Sets <T> in the variable <Name>.  Overwrite the
+  //! variable if already set.
+  Standard_EXPORT static   void Set (const Standard_CString Name, const Handle(Poly_Triangulation)& T) ;
+  
+  //! Sets <P> in the variable <Name>.  Overwrite the
+  //! variable if already set.
+  Standard_EXPORT static   void Set (const Standard_CString Name, const Handle(Poly_Polygon3D)& P) ;
+  
+  //! Sets <P> in the variable <Name>.  Overwrite the
+  //! variable if already set.
+  Standard_EXPORT static   void Set (const Standard_CString Name, const Handle(Poly_Polygon2D)& P) ;
+  
+  //! Get  the variable <S>.  Returns a  null  handle if
+  //! none, and print a warning message.
+  Standard_EXPORT static   Handle(Geom_Geometry) Get (Standard_CString& Name) ;
+  
+  //! Gets the variable. Returns False if none and print
+  //! a warning message.
+  Standard_EXPORT static   Standard_Boolean GetPoint (Standard_CString& Name, gp_Pnt& P) ;
+  
+  //! Gets the variable. Returns False if none and print
+  //! a warning message.
+  Standard_EXPORT static   Standard_Boolean GetPoint2d (Standard_CString& Name, gp_Pnt2d& P) ;
+  
+  //! Get  the variable <S>.  Returns a  null  handle if
+  //! none, and print a warning message.
+  Standard_EXPORT static   Handle(Geom_Curve) GetCurve (Standard_CString& Name) ;
+  
+  //! Get  the variable <S>.  Returns a  null  handle if
+  //! none, and print a warning message.
+  Standard_EXPORT static   Handle(Geom_BezierCurve) GetBezierCurve (Standard_CString& Name) ;
+  
+  //! Get  the variable <S>.  Returns a  null  handle if
+  //! none, and print a warning message.
+  Standard_EXPORT static   Handle(Geom_BSplineCurve) GetBSplineCurve (Standard_CString& Name) ;
+  
+  //! Get  the variable <S>.  Returns a  null  handle if
+  //! none, and print a warning message.
+  Standard_EXPORT static   Handle(Geom2d_Curve) GetCurve2d (Standard_CString& Name) ;
+  
+  //! Get  the variable <S>.  Returns a  null  handle if
+  //! none, and print a warning message.
+  Standard_EXPORT static   Handle(Geom2d_BezierCurve) GetBezierCurve2d (Standard_CString& Name) ;
+  
+  //! Get  the variable <S>.  Returns a  null  handle if
+  //! none, and print a warning message.
+  Standard_EXPORT static   Handle(Geom2d_BSplineCurve) GetBSplineCurve2d (Standard_CString& Name) ;
+  
+  //! Get  the variable <S>.  Returns a  null  handle if
+  //! none, and print a warning message.
+  Standard_EXPORT static   Handle(Geom_Surface) GetSurface (Standard_CString& Name) ;
+  
+  //! Get  the variable <S>.  Returns a  null  handle if
+  //! none, and print a warning message.
+  Standard_EXPORT static   Handle(Geom_BezierSurface) GetBezierSurface (Standard_CString& Name) ;
+  
+  //! Get  the variable <S>.  Returns a  null  handle if
+  //! none, and print a warning message.
+  Standard_EXPORT static   Handle(Geom_BSplineSurface) GetBSplineSurface (Standard_CString& Name) ;
+  
+  //! Get  the variable <S>.  Returns a  null  handle if
+  //! none, and print a warning message.
+  Standard_EXPORT static   Handle(Poly_Triangulation) GetTriangulation (Standard_CString& Name) ;
+  
+  //! Get  the variable <S>.  Returns a  null  handle if
+  //! none, and print a warning message.
+  Standard_EXPORT static   Handle(Poly_Polygon3D) GetPolygon3D (Standard_CString& Name) ;
+  
+  //! Get  the variable <S>.  Returns a  null  handle if
+  //! none, and print a warning message.
+  Standard_EXPORT static   Handle(Poly_Polygon2D) GetPolygon2D (Standard_CString& Name) ;
+  
+  //! defines display commands.
+  Standard_EXPORT static   void BasicCommands (Draw_Interpretor& I) ;
 
 
 
@@ -225,7 +210,6 @@ friend class DrawTrSurf_Polygon2D;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DrawTrSurf_HeaderFile

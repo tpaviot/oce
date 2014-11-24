@@ -1,6 +1,2 @@
-#ifndef _StepVisual_CurveStyle_HeaderFile
 #include <StepVisual_CurveStyle.hxx>
-#endif
-#ifndef _StepVisual_SurfaceStyleSilhouette_HeaderFile
 #include <StepVisual_SurfaceStyleSilhouette.hxx>
-#endif

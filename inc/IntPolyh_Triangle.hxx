@@ -6,127 +6,107 @@
 #ifndef _IntPolyh_Triangle_HeaderFile
 #define _IntPolyh_Triangle_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _IntPolyh_ArrayOfPoints_HeaderFile
 #include <IntPolyh_ArrayOfPoints.hxx>
-#endif
-#ifndef _IntPolyh_ArrayOfTriangles_HeaderFile
 #include <IntPolyh_ArrayOfTriangles.hxx>
-#endif
-#ifndef _IntPolyh_ArrayOfEdges_HeaderFile
 #include <IntPolyh_ArrayOfEdges.hxx>
-#endif
-#ifndef _IntPolyh_ArrayOfCouples_HeaderFile
 #include <IntPolyh_ArrayOfCouples.hxx>
-#endif
 class Adaptor3d_HSurface;
 class Bnd_Box;
 class IntPolyh_StartPoint;
 
 
 
-class IntPolyh_Triangle  {
+class IntPolyh_Triangle 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntPolyh_Triangle();
+  Standard_EXPORT IntPolyh_Triangle();
   
-  Standard_EXPORT   IntPolyh_Triangle(const Standard_Integer i1,const Standard_Integer i2,const Standard_Integer i3);
+  Standard_EXPORT IntPolyh_Triangle(const Standard_Integer i1, const Standard_Integer i2, const Standard_Integer i3);
   
-  Standard_EXPORT     Standard_Integer FirstPoint() const;
+  Standard_EXPORT   Standard_Integer FirstPoint()  const;
   
-  Standard_EXPORT     Standard_Integer SecondPoint() const;
+  Standard_EXPORT   Standard_Integer SecondPoint()  const;
   
-  Standard_EXPORT     Standard_Integer ThirdPoint() const;
+  Standard_EXPORT   Standard_Integer ThirdPoint()  const;
   
-  Standard_EXPORT     Standard_Integer FirstEdge() const;
+  Standard_EXPORT   Standard_Integer FirstEdge()  const;
   
-  Standard_EXPORT     Standard_Integer FirstEdgeOrientation() const;
+  Standard_EXPORT   Standard_Integer FirstEdgeOrientation()  const;
   
-  Standard_EXPORT     Standard_Integer SecondEdge() const;
+  Standard_EXPORT   Standard_Integer SecondEdge()  const;
   
-  Standard_EXPORT     Standard_Integer SecondEdgeOrientation() const;
+  Standard_EXPORT   Standard_Integer SecondEdgeOrientation()  const;
   
-  Standard_EXPORT     Standard_Integer ThirdEdge() const;
+  Standard_EXPORT   Standard_Integer ThirdEdge()  const;
   
-  Standard_EXPORT     Standard_Integer ThirdEdgeOrientation() const;
+  Standard_EXPORT   Standard_Integer ThirdEdgeOrientation()  const;
   
-  Standard_EXPORT     Standard_Real GetFleche() const;
+  Standard_EXPORT   Standard_Real GetFleche()  const;
   
-  Standard_EXPORT     Standard_Integer IndiceIntersectionPossible() const;
+  Standard_EXPORT   Standard_Integer IndiceIntersectionPossible()  const;
   
-  Standard_EXPORT     Standard_Integer IndiceIntersection() const;
+  Standard_EXPORT   Standard_Integer IndiceIntersection()  const;
   
-  Standard_EXPORT     void SetFirstPoint(const Standard_Integer v) ;
+  Standard_EXPORT   void SetFirstPoint (const Standard_Integer v) ;
   
-  Standard_EXPORT     void SetSecondPoint(const Standard_Integer v) ;
+  Standard_EXPORT   void SetSecondPoint (const Standard_Integer v) ;
   
-  Standard_EXPORT     void SetThirdPoint(const Standard_Integer v) ;
+  Standard_EXPORT   void SetThirdPoint (const Standard_Integer v) ;
   
-  Standard_EXPORT     void SetFirstEdge(const Standard_Integer v,const Standard_Integer s) ;
+  Standard_EXPORT   void SetFirstEdge (const Standard_Integer v, const Standard_Integer s) ;
   
-  Standard_EXPORT     void SetSecondEdge(const Standard_Integer v,const Standard_Integer s) ;
+  Standard_EXPORT   void SetSecondEdge (const Standard_Integer v, const Standard_Integer s) ;
   
-  Standard_EXPORT     void SetThirdEdge(const Standard_Integer v,const Standard_Integer s) ;
+  Standard_EXPORT   void SetThirdEdge (const Standard_Integer v, const Standard_Integer s) ;
   
-  Standard_EXPORT     void SetFleche(const Standard_Real v) ;
+  Standard_EXPORT   void SetFleche (const Standard_Real v) ;
   
-  Standard_EXPORT     void SetIndiceIntersectionPossible(const Standard_Integer v) ;
+  Standard_EXPORT   void SetIndiceIntersectionPossible (const Standard_Integer v) ;
   
-  Standard_EXPORT     void SetIndiceIntersection(const Standard_Integer v) ;
+  Standard_EXPORT   void SetIndiceIntersection (const Standard_Integer v) ;
   
-  Standard_EXPORT     Standard_Integer GetEdgeNumber(const Standard_Integer v) const;
+  Standard_EXPORT   Standard_Integer GetEdgeNumber (const Standard_Integer v)  const;
   
-  Standard_EXPORT     void SetEdge(const Standard_Integer v,const Standard_Integer en) ;
+  Standard_EXPORT   void SetEdge (const Standard_Integer v, const Standard_Integer en) ;
   
-  Standard_EXPORT     Standard_Integer GetEdgeOrientation(const Standard_Integer v) const;
+  Standard_EXPORT   Standard_Integer GetEdgeOrientation (const Standard_Integer v)  const;
   
-  Standard_EXPORT     void SetEdgeOrientation(const Standard_Integer v,const Standard_Integer oe) ;
+  Standard_EXPORT   void SetEdgeOrientation (const Standard_Integer v, const Standard_Integer oe) ;
   
-  Standard_EXPORT     void TriangleDeflection(const Handle(Adaptor3d_HSurface)& MaSurface,const IntPolyh_ArrayOfPoints& TP) ;
+  Standard_EXPORT   void TriangleDeflection (const Handle(Adaptor3d_HSurface)& MaSurface, const IntPolyh_ArrayOfPoints& TP) ;
   
-  Standard_EXPORT     Standard_Integer CheckCommonEdge(const Standard_Integer PE1,const Standard_Integer PE2,const Standard_Integer P3,const Standard_Integer Index,const IntPolyh_ArrayOfTriangles& TTriangles) const;
+  Standard_EXPORT   Standard_Integer CheckCommonEdge (const Standard_Integer PE1, const Standard_Integer PE2, const Standard_Integer P3, const Standard_Integer Index, const IntPolyh_ArrayOfTriangles& TTriangles)  const;
   
-  Standard_EXPORT     Standard_Integer GetNextTriangle2(const Standard_Integer NumTri,const Standard_Integer NumEdge,const IntPolyh_ArrayOfEdges& TEdges) const;
+  Standard_EXPORT   Standard_Integer GetNextTriangle2 (const Standard_Integer NumTri, const Standard_Integer NumEdge, const IntPolyh_ArrayOfEdges& TEdges)  const;
   
-  Standard_EXPORT     void MiddleRefinement(const Standard_Integer TriangleNumber,const Handle(Adaptor3d_HSurface)& MySurface,IntPolyh_ArrayOfPoints& TPoints,IntPolyh_ArrayOfTriangles& TTriangles,IntPolyh_ArrayOfEdges& TEdges) ;
+  Standard_EXPORT   void MiddleRefinement (const Standard_Integer TriangleNumber, const Handle(Adaptor3d_HSurface)& MySurface, IntPolyh_ArrayOfPoints& TPoints, IntPolyh_ArrayOfTriangles& TTriangles, IntPolyh_ArrayOfEdges& TEdges) ;
   
-  Standard_EXPORT     void MultipleMiddleRefinement(const Standard_Integer NombreAffinages,const Standard_Integer TriangleNumber,const Handle(Adaptor3d_HSurface)& MySurface,IntPolyh_ArrayOfPoints& TPoints,IntPolyh_ArrayOfTriangles& TTriangles,IntPolyh_ArrayOfEdges& TEdges) ;
+  Standard_EXPORT   void MultipleMiddleRefinement (const Standard_Integer NombreAffinages, const Standard_Integer TriangleNumber, const Handle(Adaptor3d_HSurface)& MySurface, IntPolyh_ArrayOfPoints& TPoints, IntPolyh_ArrayOfTriangles& TTriangles, IntPolyh_ArrayOfEdges& TEdges) ;
   
-  Standard_EXPORT     Standard_Integer CompareBoxTriangle(const Bnd_Box& b,const IntPolyh_ArrayOfPoints& TPoints) const;
+  Standard_EXPORT   Standard_Integer CompareBoxTriangle (const Bnd_Box& b, const IntPolyh_ArrayOfPoints& TPoints)  const;
   
-  Standard_EXPORT     void MultipleMiddleRefinement2(const Standard_Real RefineCriterion,const Bnd_Box& thebox,const Standard_Integer TriangleNumber,const Handle(Adaptor3d_HSurface)& MySurface,IntPolyh_ArrayOfPoints& TPoints,IntPolyh_ArrayOfTriangles& TTriangles,IntPolyh_ArrayOfEdges& TEdges) ;
+  Standard_EXPORT   void MultipleMiddleRefinement2 (const Standard_Real RefineCriterion, const Bnd_Box& thebox, const Standard_Integer TriangleNumber, const Handle(Adaptor3d_HSurface)& MySurface, IntPolyh_ArrayOfPoints& TPoints, IntPolyh_ArrayOfTriangles& TTriangles, IntPolyh_ArrayOfEdges& TEdges) ;
   
-  Standard_EXPORT     Standard_Integer GetNextChainTriangle(const IntPolyh_StartPoint& SPIni,const Standard_Integer LastTTC,IntPolyh_ArrayOfCouples& TriContactsArray,const IntPolyh_ArrayOfTriangles& TTriangles1,const IntPolyh_ArrayOfTriangles& TTriangles2,Standard_Integer& NumContact,Standard_Integer& NextTriangle) const;
+  Standard_EXPORT   Standard_Integer GetNextChainTriangle (const IntPolyh_StartPoint& SPIni, const Standard_Integer LastTTC, IntPolyh_ArrayOfCouples& TriContactsArray, const IntPolyh_ArrayOfTriangles& TTriangles1, const IntPolyh_ArrayOfTriangles& TTriangles2, Standard_Integer& NumContact, Standard_Integer& NextTriangle)  const;
   
-  Standard_EXPORT     void LinkEdges2Triangle(const IntPolyh_ArrayOfEdges& TEdges,const Standard_Integer ed1,const Standard_Integer ed2,const Standard_Integer ed3) ;
+  Standard_EXPORT   void LinkEdges2Triangle (const IntPolyh_ArrayOfEdges& TEdges, const Standard_Integer ed1, const Standard_Integer ed2, const Standard_Integer ed3) ;
   
-  Standard_EXPORT     void SetEdgeandOrientation(const Standard_Integer Edge,const IntPolyh_ArrayOfEdges& TEdges) ;
+  Standard_EXPORT   void SetEdgeandOrientation (const Standard_Integer Edge, const IntPolyh_ArrayOfEdges& TEdges) ;
   
-  Standard_EXPORT     void Dump(const Standard_Integer v) const;
+  Standard_EXPORT   void Dump (const Standard_Integer v)  const;
   
-  Standard_EXPORT     void DumpFleche(const Standard_Integer v) const;
-
+  Standard_EXPORT   void DumpFleche (const Standard_Integer v)  const;
 
 
 
@@ -141,18 +121,18 @@ private:
 
 
 
-Standard_Integer p1;
-Standard_Integer p2;
-Standard_Integer p3;
-Standard_Integer e1;
-Standard_Integer oe1;
-Standard_Integer e2;
-Standard_Integer oe2;
-Standard_Integer e3;
-Standard_Integer oe3;
-Standard_Integer II;
-Standard_Integer IP;
-Standard_Real Fleche;
+  Standard_Integer p1;
+  Standard_Integer p2;
+  Standard_Integer p3;
+  Standard_Integer e1;
+  Standard_Integer oe1;
+  Standard_Integer e2;
+  Standard_Integer oe2;
+  Standard_Integer e3;
+  Standard_Integer oe3;
+  Standard_Integer II;
+  Standard_Integer IP;
+  Standard_Real Fleche;
 
 
 };
@@ -161,7 +141,6 @@ Standard_Real Fleche;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntPolyh_Triangle_HeaderFile

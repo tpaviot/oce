@@ -6,31 +6,15 @@
 #ifndef _LocOpe_FindEdgesInFace_HeaderFile
 #define _LocOpe_FindEdgesInFace_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _TopTools_ListIteratorOfListOfShape_HeaderFile
 #include <TopTools_ListIteratorOfListOfShape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_ConstructionError;
 class Standard_NoSuchObject;
 class Standard_NoMoreObject;
@@ -40,26 +24,26 @@ class TopoDS_Edge;
 
 
 
-class LocOpe_FindEdgesInFace  {
+class LocOpe_FindEdgesInFace 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      LocOpe_FindEdgesInFace();
+    LocOpe_FindEdgesInFace();
   
-      LocOpe_FindEdgesInFace(const TopoDS_Shape& S,const TopoDS_Face& F);
+    LocOpe_FindEdgesInFace(const TopoDS_Shape& S, const TopoDS_Face& F);
   
-  Standard_EXPORT     void Set(const TopoDS_Shape& S,const TopoDS_Face& F) ;
+  Standard_EXPORT   void Set (const TopoDS_Shape& S, const TopoDS_Face& F) ;
   
-        void Init() ;
+      void Init() ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-       const TopoDS_Edge& Edge() const;
+     const  TopoDS_Edge& Edge()  const;
   
-        void Next() ;
-
+      void Next() ;
 
 
 
@@ -74,10 +58,10 @@ private:
 
 
 
-TopoDS_Shape myShape;
-TopoDS_Face myFace;
-TopTools_ListOfShape myList;
-TopTools_ListIteratorOfListOfShape myIt;
+  TopoDS_Shape myShape;
+  TopoDS_Face myFace;
+  TopTools_ListOfShape myList;
+  TopTools_ListIteratorOfListOfShape myIt;
 
 
 };
@@ -87,7 +71,6 @@ TopTools_ListIteratorOfListOfShape myIt;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _LocOpe_FindEdgesInFace_HeaderFile

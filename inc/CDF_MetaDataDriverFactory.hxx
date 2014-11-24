@@ -6,32 +6,23 @@
 #ifndef _CDF_MetaDataDriverFactory_HeaderFile
 #define _CDF_MetaDataDriverFactory_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_CDF_MetaDataDriverFactory_HeaderFile
 #include <Handle_CDF_MetaDataDriverFactory.hxx>
-#endif
 
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Handle_CDF_MetaDataDriver_HeaderFile
 #include <Handle_CDF_MetaDataDriver.hxx>
-#endif
 class CDF_MetaDataDriver;
 
 
 
-class CDF_MetaDataDriverFactory : public Standard_Transient {
+class CDF_MetaDataDriverFactory : public Standard_Transient
+{
 
 public:
 
   
-  Standard_EXPORT   virtual  Handle_CDF_MetaDataDriver Build() const = 0;
+  Standard_EXPORT virtual   Handle(CDF_MetaDataDriver) Build()  const = 0;
 
 
 
@@ -54,7 +45,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _CDF_MetaDataDriverFactory_HeaderFile

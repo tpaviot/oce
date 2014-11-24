@@ -80,6 +80,8 @@
 			<Add library="TKG3d" />
 			<Add library="TKMesh" />
 			<Add library="freetype" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />

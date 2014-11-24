@@ -1,9 +1,3 @@
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _gp_Elips2d_HeaderFile
 #include <gp_Elips2d.hxx>
-#endif
-#ifndef _Convert_EllipseToBSplineCurve_HeaderFile
 #include <Convert_EllipseToBSplineCurve.hxx>
-#endif

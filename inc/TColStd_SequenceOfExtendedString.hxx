@@ -6,25 +6,13 @@
 #ifndef _TColStd_SequenceOfExtendedString_HeaderFile
 #define _TColStd_SequenceOfExtendedString_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_TColStd_SequenceNodeOfSequenceOfExtendedString_HeaderFile
 #include <Handle_TColStd_SequenceNodeOfSequenceOfExtendedString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class TCollection_ExtendedString;
@@ -32,68 +20,68 @@ class TColStd_SequenceNodeOfSequenceOfExtendedString;
 
 
 
-class TColStd_SequenceOfExtendedString  : public TCollection_BaseSequence {
+class TColStd_SequenceOfExtendedString  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      TColStd_SequenceOfExtendedString();
+    TColStd_SequenceOfExtendedString();
   
-  Standard_EXPORT   TColStd_SequenceOfExtendedString(const TColStd_SequenceOfExtendedString& Other);
+  Standard_EXPORT TColStd_SequenceOfExtendedString(const TColStd_SequenceOfExtendedString& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TColStd_SequenceOfExtendedString()
 {
   Clear();
 }
   
-  Standard_EXPORT    const TColStd_SequenceOfExtendedString& Assign(const TColStd_SequenceOfExtendedString& Other) ;
-   const TColStd_SequenceOfExtendedString& operator =(const TColStd_SequenceOfExtendedString& Other) 
+  Standard_EXPORT  const  TColStd_SequenceOfExtendedString& Assign (const TColStd_SequenceOfExtendedString& Other) ;
+ const  TColStd_SequenceOfExtendedString& operator = (const TColStd_SequenceOfExtendedString& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const TCollection_ExtendedString& T) ;
+  Standard_EXPORT   void Append (const TCollection_ExtendedString& T) ;
   
-        void Append(TColStd_SequenceOfExtendedString& S) ;
+      void Append (TColStd_SequenceOfExtendedString& S) ;
   
-  Standard_EXPORT     void Prepend(const TCollection_ExtendedString& T) ;
+  Standard_EXPORT   void Prepend (const TCollection_ExtendedString& T) ;
   
-        void Prepend(TColStd_SequenceOfExtendedString& S) ;
+      void Prepend (TColStd_SequenceOfExtendedString& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const TCollection_ExtendedString& T) ;
+      void InsertBefore (const Standard_Integer Index, const TCollection_ExtendedString& T) ;
   
-        void InsertBefore(const Standard_Integer Index,TColStd_SequenceOfExtendedString& S) ;
+      void InsertBefore (const Standard_Integer Index, TColStd_SequenceOfExtendedString& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const TCollection_ExtendedString& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const TCollection_ExtendedString& T) ;
   
-        void InsertAfter(const Standard_Integer Index,TColStd_SequenceOfExtendedString& S) ;
+      void InsertAfter (const Standard_Integer Index, TColStd_SequenceOfExtendedString& S) ;
   
-  Standard_EXPORT    const TCollection_ExtendedString& First() const;
+  Standard_EXPORT  const  TCollection_ExtendedString& First()  const;
   
-  Standard_EXPORT    const TCollection_ExtendedString& Last() const;
+  Standard_EXPORT  const  TCollection_ExtendedString& Last()  const;
   
-        void Split(const Standard_Integer Index,TColStd_SequenceOfExtendedString& Sub) ;
+      void Split (const Standard_Integer Index, TColStd_SequenceOfExtendedString& Sub) ;
   
-  Standard_EXPORT    const TCollection_ExtendedString& Value(const Standard_Integer Index) const;
-   const TCollection_ExtendedString& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  TCollection_ExtendedString& Value (const Standard_Integer Index)  const;
+ const  TCollection_ExtendedString& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const TCollection_ExtendedString& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const TCollection_ExtendedString& I) ;
   
-  Standard_EXPORT     TCollection_ExtendedString& ChangeValue(const Standard_Integer Index) ;
-    TCollection_ExtendedString& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   TCollection_ExtendedString& ChangeValue (const Standard_Integer Index) ;
+  TCollection_ExtendedString& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_SequenceOfExtendedString_HeaderFile

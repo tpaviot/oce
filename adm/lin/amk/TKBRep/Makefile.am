@@ -8,7 +8,8 @@ VPATH = @srcdir@ : \
 @top_srcdir@/drv/BRep : @top_srcdir@/src/BRep: \
 @top_srcdir@/drv/BRepLProp : @top_srcdir@/src/BRepLProp: \
 @top_srcdir@/drv/BRepAdaptor : @top_srcdir@/src/BRepAdaptor: \
-@top_srcdir@/drv/BRepTools : @top_srcdir@/src/BRepTools
+@top_srcdir@/drv/BRepTools : @top_srcdir@/src/BRepTools: \
+@top_srcdir@/drv/BinTools : @top_srcdir@/src/BinTools
 
 
 AM_CXXFLAGS = 
@@ -25,7 +26,8 @@ INCLUDES = $(CSF_OPT_INCLUDES) $(STLPort_INCLUDES)  \
 -I@top_srcdir@/drv/BRep -I@top_srcdir@/src/BRep \
 -I@top_srcdir@/drv/BRepLProp -I@top_srcdir@/src/BRepLProp \
 -I@top_srcdir@/drv/BRepAdaptor -I@top_srcdir@/src/BRepAdaptor \
--I@top_srcdir@/drv/BRepTools -I@top_srcdir@/src/BRepTools
+-I@top_srcdir@/drv/BRepTools -I@top_srcdir@/src/BRepTools \
+-I@top_srcdir@/drv/BinTools -I@top_srcdir@/src/BinTools
 
 
 lib_LTLIBRARIES=libTKBRep.la
@@ -161,6 +163,12 @@ libTKBRep_la_SOURCES = \
 @top_srcdir@/src/BRepTools/BRepTools_Substitution.cxx \
 @top_srcdir@/src/BRepTools/BRepTools_TrsfModification.cxx \
 @top_srcdir@/src/BRepTools/BRepTools_WireExplorer.cxx \
+@top_srcdir@/src/BinTools/BinTools.cxx \
+@top_srcdir@/src/BinTools/BinTools_Curve2dSet.cxx \
+@top_srcdir@/src/BinTools/BinTools_CurveSet.cxx \
+@top_srcdir@/src/BinTools/BinTools_LocationSet.cxx \
+@top_srcdir@/src/BinTools/BinTools_ShapeSet.cxx \
+@top_srcdir@/src/BinTools/BinTools_SurfaceSet.cxx \
 @top_srcdir@/src/TopExp/TopExp.cxx \
 @top_srcdir@/src/TopExp/TopExp_Explorer.cxx \
 @top_srcdir@/src/TopTools/TopTools.cxx \

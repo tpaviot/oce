@@ -1,27 +1,9 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Contap_Contour_HeaderFile
 #include <Contap_Contour.hxx>
-#endif
-#ifndef _HLRTopoBRep_Data_HeaderFile
 #include <HLRTopoBRep_Data.hxx>
-#endif
-#ifndef _BRepTopAdaptor_MapOfShapeTool_HeaderFile
 #include <BRepTopAdaptor_MapOfShapeTool.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _TopoDS_Vertex_HeaderFile
 #include <TopoDS_Vertex.hxx>
-#endif
-#ifndef _Contap_Point_HeaderFile
 #include <Contap_Point.hxx>
-#endif
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _HLRTopoBRep_DSFiller_HeaderFile
 #include <HLRTopoBRep_DSFiller.hxx>
-#endif

@@ -6,22 +6,15 @@
 #ifndef _Handle_Expr_Difference_HeaderFile
 #define _Handle_Expr_Difference_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Expr_BinaryExpression_HeaderFile
 #include <Handle_Expr_BinaryExpression.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Expr_BinaryExpression);
 class Expr_Difference;
 
-DEFINE_STANDARD_HANDLE(Expr_Difference,Expr_BinaryExpression)
+DEFINE_STANDARD_HANDLE(Expr_Difference, Expr_BinaryExpression)
 
-#endif
+#endif // _Handle_Expr_Difference_HeaderFile

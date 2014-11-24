@@ -5,22 +5,12 @@
 
 #include <TColStd_HSequenceOfHExtendedString.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TCollection_HExtendedString_HeaderFile
 #include <TCollection_HExtendedString.hxx>
-#endif
-#ifndef _TColStd_SequenceOfHExtendedString_HeaderFile
 #include <TColStd_SequenceOfHExtendedString.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(TColStd_HSequenceOfHExtendedString,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(TColStd_HSequenceOfHExtendedString)
 
 
-#define Item Handle_TCollection_HExtendedString
+#define Item Handle(TCollection_HExtendedString)
 #define Item_hxx <TCollection_HExtendedString.hxx>
 #define TheSequence TColStd_SequenceOfHExtendedString
 #define TheSequence_hxx <TColStd_SequenceOfHExtendedString.hxx>

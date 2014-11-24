@@ -5,25 +5,13 @@
 
 #include <BRepAdaptor_HCurve2d.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _BRepAdaptor_Curve2d_HeaderFile
 #include <BRepAdaptor_Curve2d.hxx>
-#endif
-#ifndef _Adaptor2d_Curve2d_HeaderFile
 #include <Adaptor2d_Curve2d.hxx>
-#endif
 
  
 

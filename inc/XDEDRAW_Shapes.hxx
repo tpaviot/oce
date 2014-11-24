@@ -6,30 +6,22 @@
 #ifndef _XDEDRAW_Shapes_HeaderFile
 #define _XDEDRAW_Shapes_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Draw_Interpretor_HeaderFile
 #include <Draw_Interpretor.hxx>
-#endif
 
 
-//! Contains commands to work with shapes and assemblies <br>
-class XDEDRAW_Shapes  {
+//! Contains commands to work with shapes and assemblies
+class XDEDRAW_Shapes 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  void InitCommands(Draw_Interpretor& theCommands) ;
-
+  Standard_EXPORT static   void InitCommands (Draw_Interpretor& theCommands) ;
 
 
 
@@ -52,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XDEDRAW_Shapes_HeaderFile

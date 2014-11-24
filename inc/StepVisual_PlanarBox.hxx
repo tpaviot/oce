@@ -6,47 +6,35 @@
 #ifndef _StepVisual_PlanarBox_HeaderFile
 #define _StepVisual_PlanarBox_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_PlanarBox_HeaderFile
 #include <Handle_StepVisual_PlanarBox.hxx>
-#endif
 
-#ifndef _StepGeom_Axis2Placement_HeaderFile
 #include <StepGeom_Axis2Placement.hxx>
-#endif
-#ifndef _StepVisual_PlanarExtent_HeaderFile
 #include <StepVisual_PlanarExtent.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepGeom_Axis2Placement;
 
 
 
-class StepVisual_PlanarBox : public StepVisual_PlanarExtent {
+class StepVisual_PlanarBox : public StepVisual_PlanarExtent
+{
 
 public:
 
-  //! Returns a PlanarBox <br>
-  Standard_EXPORT   StepVisual_PlanarBox();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Standard_Real aSizeInX,const Standard_Real aSizeInY) ;
+  //! Returns a PlanarBox
+  Standard_EXPORT StepVisual_PlanarBox();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Standard_Real aSizeInX,const Standard_Real aSizeInY,const StepGeom_Axis2Placement& aPlacement) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Standard_Real aSizeInX, const Standard_Real aSizeInY) ;
   
-  Standard_EXPORT     void SetPlacement(const StepGeom_Axis2Placement& aPlacement) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Standard_Real aSizeInX, const Standard_Real aSizeInY, const StepGeom_Axis2Placement& aPlacement) ;
   
-  Standard_EXPORT     StepGeom_Axis2Placement Placement() const;
+  Standard_EXPORT   void SetPlacement (const StepGeom_Axis2Placement& aPlacement) ;
+  
+  Standard_EXPORT   StepGeom_Axis2Placement Placement()  const;
 
 
 
@@ -61,7 +49,7 @@ protected:
 private: 
 
 
-StepGeom_Axis2Placement placement;
+  StepGeom_Axis2Placement placement;
 
 
 };
@@ -70,7 +58,6 @@ StepGeom_Axis2Placement placement;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_PlanarBox_HeaderFile

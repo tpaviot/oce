@@ -5,21 +5,13 @@
 
 #include <Contap_SequenceOfIWLineOfTheIWalking.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Contap_TheIWLineOfTheIWalking_HeaderFile
 #include <Contap_TheIWLineOfTheIWalking.hxx>
-#endif
-#ifndef _Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking_HeaderFile
 #include <Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking.hxx>
-#endif
  
 
-#define SeqItem Handle_Contap_TheIWLineOfTheIWalking
+#define SeqItem Handle(Contap_TheIWLineOfTheIWalking)
 #define SeqItem_hxx <Contap_TheIWLineOfTheIWalking.hxx>
 #define TCollection_SequenceNode Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking
 #define TCollection_SequenceNode_hxx <Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking.hxx>

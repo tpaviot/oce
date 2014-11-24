@@ -5,21 +5,13 @@
 
 #include <Graphic3d_MapOfStructure.hxx>
 
-#ifndef _Graphic3d_Structure_HeaderFile
 #include <Graphic3d_Structure.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _Graphic3d_StdMapNodeOfMapOfStructure_HeaderFile
 #include <Graphic3d_StdMapNodeOfMapOfStructure.hxx>
-#endif
-#ifndef _Graphic3d_MapIteratorOfMapOfStructure_HeaderFile
 #include <Graphic3d_MapIteratorOfMapOfStructure.hxx>
-#endif
  
 
-#define TheKey Handle_Graphic3d_Structure
+#define TheKey Handle(Graphic3d_Structure)
 #define TheKey_hxx <Graphic3d_Structure.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>

@@ -6,28 +6,14 @@
 #ifndef _Select3D_ListIteratorOfListOfSensitive_HeaderFile
 #define _Select3D_ListIteratorOfListOfSensitive_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_Select3D_SensitiveEntity_HeaderFile
 #include <Handle_Select3D_SensitiveEntity.hxx>
-#endif
-#ifndef _Handle_Select3D_ListNodeOfListOfSensitive_HeaderFile
 #include <Handle_Select3D_ListNodeOfListOfSensitive.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class Select3D_ListOfSensitive;
@@ -36,27 +22,27 @@ class Select3D_ListNodeOfListOfSensitive;
 
 
 
-class Select3D_ListIteratorOfListOfSensitive  {
+class Select3D_ListIteratorOfListOfSensitive 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Select3D_ListIteratorOfListOfSensitive();
+  Standard_EXPORT Select3D_ListIteratorOfListOfSensitive();
   
-  Standard_EXPORT   Select3D_ListIteratorOfListOfSensitive(const Select3D_ListOfSensitive& L);
+  Standard_EXPORT Select3D_ListIteratorOfListOfSensitive(const Select3D_ListOfSensitive& L);
   
-  Standard_EXPORT     void Initialize(const Select3D_ListOfSensitive& L) ;
+  Standard_EXPORT   void Initialize (const Select3D_ListOfSensitive& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     Handle_Select3D_SensitiveEntity& Value() const;
+  Standard_EXPORT   Handle(Select3D_SensitiveEntity)& Value()  const;
 
 
 friend class Select3D_ListOfSensitive;
-
 
 
 protected:
@@ -69,13 +55,13 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
 
-#define Item Handle_Select3D_SensitiveEntity
+#define Item Handle(Select3D_SensitiveEntity)
 #define Item_hxx <Select3D_SensitiveEntity.hxx>
 #define TCollection_ListNode Select3D_ListNodeOfListOfSensitive
 #define TCollection_ListNode_hxx <Select3D_ListNodeOfListOfSensitive.hxx>
@@ -100,7 +86,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Select3D_ListIteratorOfListOfSensitive_HeaderFile

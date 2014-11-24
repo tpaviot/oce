@@ -6,40 +6,18 @@
 #ifndef _StepShape_FacetedBrepAndBrepWithVoids_HeaderFile
 #define _StepShape_FacetedBrepAndBrepWithVoids_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_FacetedBrepAndBrepWithVoids_HeaderFile
 #include <Handle_StepShape_FacetedBrepAndBrepWithVoids.hxx>
-#endif
 
-#ifndef _Handle_StepShape_FacetedBrep_HeaderFile
 #include <Handle_StepShape_FacetedBrep.hxx>
-#endif
-#ifndef _Handle_StepShape_BrepWithVoids_HeaderFile
 #include <Handle_StepShape_BrepWithVoids.hxx>
-#endif
-#ifndef _StepShape_ManifoldSolidBrep_HeaderFile
 #include <StepShape_ManifoldSolidBrep.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepShape_ClosedShell_HeaderFile
 #include <Handle_StepShape_ClosedShell.hxx>
-#endif
-#ifndef _Handle_StepShape_HArray1OfOrientedClosedShell_HeaderFile
 #include <Handle_StepShape_HArray1OfOrientedClosedShell.hxx>
-#endif
-#ifndef _Handle_StepShape_OrientedClosedShell_HeaderFile
 #include <Handle_StepShape_OrientedClosedShell.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StepShape_FacetedBrep;
 class StepShape_BrepWithVoids;
 class TCollection_HAsciiString;
@@ -49,34 +27,36 @@ class StepShape_OrientedClosedShell;
 
 
 
-class StepShape_FacetedBrepAndBrepWithVoids : public StepShape_ManifoldSolidBrep {
+class StepShape_FacetedBrepAndBrepWithVoids : public StepShape_ManifoldSolidBrep
+{
 
 public:
 
-  //! Returns a FacetedBrepAndBrepWithVoids <br>
-  Standard_EXPORT   StepShape_FacetedBrepAndBrepWithVoids();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepShape_ClosedShell)& aOuter) ;
+  //! Returns a FacetedBrepAndBrepWithVoids
+  Standard_EXPORT StepShape_FacetedBrepAndBrepWithVoids();
   
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepShape_ClosedShell)& aOuter,const Handle(StepShape_FacetedBrep)& aFacetedBrep,const Handle(StepShape_BrepWithVoids)& aBrepWithVoids) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepShape_ClosedShell)& aOuter) ;
   
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepShape_ClosedShell)& aOuter,const Handle(StepShape_HArray1OfOrientedClosedShell)& aVoids) ;
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepShape_ClosedShell)& aOuter, const Handle(StepShape_FacetedBrep)& aFacetedBrep, const Handle(StepShape_BrepWithVoids)& aBrepWithVoids) ;
   
-  Standard_EXPORT     void SetFacetedBrep(const Handle(StepShape_FacetedBrep)& aFacetedBrep) ;
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepShape_ClosedShell)& aOuter, const Handle(StepShape_HArray1OfOrientedClosedShell)& aVoids) ;
   
-  Standard_EXPORT     Handle_StepShape_FacetedBrep FacetedBrep() const;
+  Standard_EXPORT   void SetFacetedBrep (const Handle(StepShape_FacetedBrep)& aFacetedBrep) ;
   
-  Standard_EXPORT     void SetBrepWithVoids(const Handle(StepShape_BrepWithVoids)& aBrepWithVoids) ;
+  Standard_EXPORT   Handle(StepShape_FacetedBrep) FacetedBrep()  const;
   
-  Standard_EXPORT     Handle_StepShape_BrepWithVoids BrepWithVoids() const;
+  Standard_EXPORT   void SetBrepWithVoids (const Handle(StepShape_BrepWithVoids)& aBrepWithVoids) ;
   
-  Standard_EXPORT     void SetVoids(const Handle(StepShape_HArray1OfOrientedClosedShell)& aVoids) ;
+  Standard_EXPORT   Handle(StepShape_BrepWithVoids) BrepWithVoids()  const;
   
-  Standard_EXPORT     Handle_StepShape_HArray1OfOrientedClosedShell Voids() const;
+  Standard_EXPORT   void SetVoids (const Handle(StepShape_HArray1OfOrientedClosedShell)& aVoids) ;
   
-  Standard_EXPORT     Handle_StepShape_OrientedClosedShell VoidsValue(const Standard_Integer num) const;
+  Standard_EXPORT   Handle(StepShape_HArray1OfOrientedClosedShell) Voids()  const;
   
-  Standard_EXPORT     Standard_Integer NbVoids() const;
+  Standard_EXPORT   Handle(StepShape_OrientedClosedShell) VoidsValue (const Standard_Integer num)  const;
+  
+  Standard_EXPORT   Standard_Integer NbVoids()  const;
 
 
 
@@ -91,8 +71,8 @@ protected:
 private: 
 
 
-Handle_StepShape_FacetedBrep facetedBrep;
-Handle_StepShape_BrepWithVoids brepWithVoids;
+  Handle(StepShape_FacetedBrep) facetedBrep;
+  Handle(StepShape_BrepWithVoids) brepWithVoids;
 
 
 };
@@ -101,7 +81,6 @@ Handle_StepShape_BrepWithVoids brepWithVoids;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_FacetedBrepAndBrepWithVoids_HeaderFile

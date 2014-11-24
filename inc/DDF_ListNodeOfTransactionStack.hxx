@@ -6,39 +6,28 @@
 #ifndef _DDF_ListNodeOfTransactionStack_HeaderFile
 #define _DDF_ListNodeOfTransactionStack_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_DDF_ListNodeOfTransactionStack_HeaderFile
 #include <Handle_DDF_ListNodeOfTransactionStack.hxx>
-#endif
 
-#ifndef _Handle_DDF_Transaction_HeaderFile
 #include <Handle_DDF_Transaction.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class DDF_Transaction;
 class DDF_TransactionStack;
 class DDF_ListIteratorOfTransactionStack;
 
 
 
-class DDF_ListNodeOfTransactionStack : public TCollection_MapNode {
+class DDF_ListNodeOfTransactionStack : public TCollection_MapNode
+{
 
 public:
 
   
-      DDF_ListNodeOfTransactionStack(const Handle(DDF_Transaction)& I,const TCollection_MapNodePtr& n);
+    DDF_ListNodeOfTransactionStack(const Handle(DDF_Transaction)& I, const TCollection_MapNodePtr& n);
   
-        Handle_DDF_Transaction& Value() const;
+      Handle(DDF_Transaction)& Value()  const;
 
 
 
@@ -53,12 +42,12 @@ protected:
 private: 
 
 
-Handle_DDF_Transaction myValue;
+  Handle(DDF_Transaction) myValue;
 
 
 };
 
-#define Item Handle_DDF_Transaction
+#define Item Handle(DDF_Transaction)
 #define Item_hxx <DDF_Transaction.hxx>
 #define TCollection_ListNode DDF_ListNodeOfTransactionStack
 #define TCollection_ListNode_hxx <DDF_ListNodeOfTransactionStack.hxx>
@@ -83,7 +72,6 @@ Handle_DDF_Transaction myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DDF_ListNodeOfTransactionStack_HeaderFile

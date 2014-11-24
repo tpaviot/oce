@@ -6,25 +6,13 @@
 #ifndef _Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_HeaderFile
 #define _Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_HeaderFile
 #include <Handle_Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Extrema_POnCurv2d;
@@ -32,68 +20,68 @@ class Geom2dInt_SequenceNodeOfSeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter
 
 
 
-class Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter  : public TCollection_BaseSequence {
+class Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter();
+    Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter();
   
-  Standard_EXPORT   Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter(const Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter& Other);
+  Standard_EXPORT Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter(const Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter()
 {
   Clear();
 }
   
-  Standard_EXPORT    const Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter& Assign(const Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter& Other) ;
-   const Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter& operator =(const Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter& Other) 
+  Standard_EXPORT  const  Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter& Assign (const Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter& Other) ;
+ const  Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter& operator = (const Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Extrema_POnCurv2d& T) ;
+  Standard_EXPORT   void Append (const Extrema_POnCurv2d& T) ;
   
-        void Append(Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter& S) ;
+      void Append (Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter& S) ;
   
-  Standard_EXPORT     void Prepend(const Extrema_POnCurv2d& T) ;
+  Standard_EXPORT   void Prepend (const Extrema_POnCurv2d& T) ;
   
-        void Prepend(Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter& S) ;
+      void Prepend (Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Extrema_POnCurv2d& T) ;
+      void InsertBefore (const Standard_Integer Index, const Extrema_POnCurv2d& T) ;
   
-        void InsertBefore(const Standard_Integer Index,Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter& S) ;
+      void InsertBefore (const Standard_Integer Index, Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Extrema_POnCurv2d& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Extrema_POnCurv2d& T) ;
   
-        void InsertAfter(const Standard_Integer Index,Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter& S) ;
+      void InsertAfter (const Standard_Integer Index, Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter& S) ;
   
-  Standard_EXPORT    const Extrema_POnCurv2d& First() const;
+  Standard_EXPORT  const  Extrema_POnCurv2d& First()  const;
   
-  Standard_EXPORT    const Extrema_POnCurv2d& Last() const;
+  Standard_EXPORT  const  Extrema_POnCurv2d& Last()  const;
   
-        void Split(const Standard_Integer Index,Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter& Sub) ;
+      void Split (const Standard_Integer Index, Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter& Sub) ;
   
-  Standard_EXPORT    const Extrema_POnCurv2d& Value(const Standard_Integer Index) const;
-   const Extrema_POnCurv2d& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Extrema_POnCurv2d& Value (const Standard_Integer Index)  const;
+ const  Extrema_POnCurv2d& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Extrema_POnCurv2d& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Extrema_POnCurv2d& I) ;
   
-  Standard_EXPORT     Extrema_POnCurv2d& ChangeValue(const Standard_Integer Index) ;
-    Extrema_POnCurv2d& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Extrema_POnCurv2d& ChangeValue (const Standard_Integer Index) ;
+  Extrema_POnCurv2d& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dInt_SeqPCOfPCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_HeaderFile

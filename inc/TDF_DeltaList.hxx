@@ -6,31 +6,15 @@
 #ifndef _TDF_DeltaList_HeaderFile
 #define _TDF_DeltaList_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_TDF_Delta_HeaderFile
 #include <Handle_TDF_Delta.hxx>
-#endif
-#ifndef _Handle_TDF_ListNodeOfDeltaList_HeaderFile
 #include <Handle_TDF_ListNodeOfDeltaList.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class TDF_ListIteratorOfDeltaList;
 class TDF_Delta;
@@ -38,63 +22,63 @@ class TDF_ListNodeOfDeltaList;
 
 
 
-class TDF_DeltaList  {
+class TDF_DeltaList 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TDF_DeltaList();
+  Standard_EXPORT TDF_DeltaList();
   
-  Standard_EXPORT   TDF_DeltaList(const TDF_DeltaList& Other);
+  Standard_EXPORT TDF_DeltaList(const TDF_DeltaList& Other);
   
-  Standard_EXPORT     void Assign(const TDF_DeltaList& Other) ;
-    void operator=(const TDF_DeltaList& Other) 
+  Standard_EXPORT   void Assign (const TDF_DeltaList& Other) ;
+  void operator= (const TDF_DeltaList& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TDF_DeltaList()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const Handle(TDF_Delta)& I) ;
+  Standard_EXPORT   void Prepend (const Handle(TDF_Delta)& I) ;
   
-  Standard_EXPORT     void Prepend(const Handle(TDF_Delta)& I,TDF_ListIteratorOfDeltaList& theIt) ;
+  Standard_EXPORT   void Prepend (const Handle(TDF_Delta)& I, TDF_ListIteratorOfDeltaList& theIt) ;
   
-  Standard_EXPORT     void Prepend(TDF_DeltaList& Other) ;
+  Standard_EXPORT   void Prepend (TDF_DeltaList& Other) ;
   
-  Standard_EXPORT     void Append(const Handle(TDF_Delta)& I) ;
+  Standard_EXPORT   void Append (const Handle(TDF_Delta)& I) ;
   
-  Standard_EXPORT     void Append(const Handle(TDF_Delta)& I,TDF_ListIteratorOfDeltaList& theIt) ;
+  Standard_EXPORT   void Append (const Handle(TDF_Delta)& I, TDF_ListIteratorOfDeltaList& theIt) ;
   
-  Standard_EXPORT     void Append(TDF_DeltaList& Other) ;
+  Standard_EXPORT   void Append (TDF_DeltaList& Other) ;
   
-  Standard_EXPORT     Handle_TDF_Delta& First() const;
+  Standard_EXPORT   Handle(TDF_Delta)& First()  const;
   
-  Standard_EXPORT     Handle_TDF_Delta& Last() const;
+  Standard_EXPORT   Handle(TDF_Delta)& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(TDF_ListIteratorOfDeltaList& It) ;
+  Standard_EXPORT   void Remove (TDF_ListIteratorOfDeltaList& It) ;
   
-  Standard_EXPORT     void InsertBefore(const Handle(TDF_Delta)& I,TDF_ListIteratorOfDeltaList& It) ;
+  Standard_EXPORT   void InsertBefore (const Handle(TDF_Delta)& I, TDF_ListIteratorOfDeltaList& It) ;
   
-  Standard_EXPORT     void InsertBefore(TDF_DeltaList& Other,TDF_ListIteratorOfDeltaList& It) ;
+  Standard_EXPORT   void InsertBefore (TDF_DeltaList& Other, TDF_ListIteratorOfDeltaList& It) ;
   
-  Standard_EXPORT     void InsertAfter(const Handle(TDF_Delta)& I,TDF_ListIteratorOfDeltaList& It) ;
+  Standard_EXPORT   void InsertAfter (const Handle(TDF_Delta)& I, TDF_ListIteratorOfDeltaList& It) ;
   
-  Standard_EXPORT     void InsertAfter(TDF_DeltaList& Other,TDF_ListIteratorOfDeltaList& It) ;
+  Standard_EXPORT   void InsertAfter (TDF_DeltaList& Other, TDF_ListIteratorOfDeltaList& It) ;
 
 
 friend class TDF_ListIteratorOfDeltaList;
-
 
 
 protected:
@@ -107,13 +91,13 @@ private:
 
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
 
-#define Item Handle_TDF_Delta
+#define Item Handle(TDF_Delta)
 #define Item_hxx <TDF_Delta.hxx>
 #define TCollection_ListNode TDF_ListNodeOfDeltaList
 #define TCollection_ListNode_hxx <TDF_ListNodeOfDeltaList.hxx>
@@ -138,7 +122,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_DeltaList_HeaderFile

@@ -6,28 +6,14 @@
 #ifndef _Aspect_HeaderFile
 #define _Aspect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Aspect_FormatOfSheetPaper_HeaderFile
 #include <Aspect_FormatOfSheetPaper.hxx>
-#endif
-#ifndef _Quantity_Length_HeaderFile
 #include <Quantity_Length.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TCollection_ExtendedString;
 class TColStd_Array2OfReal;
 class Aspect_AspectLine;
@@ -47,26 +33,29 @@ class Aspect_SequenceOfColor;
 class Aspect_SequenceNodeOfSequenceOfColor;
 
 
-//! This package contains the group of graphic elements common <br>
-//!          to different types of visualisers. It allows the description <br>
-//!          of a screen background, a window, an edge, and groups of <br>
-//!          graphic attributes that can be used in describing 2D <br>
-//!          and 3D objects. <br>
-class Aspect  {
+//! This package contains the group of graphic elements common
+//! to different types of visualisers. It allows the description
+//! of a screen background, a window, an edge, and groups of
+//! graphic attributes that can be used in describing 2D
+//! and 3D objects.
+class Aspect 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns the format size according to the default <br>
-//!      LENGTH unit of the required format <aFOSP>. <br>
-//!      Returns more the normalized format name. <br>
-  Standard_EXPORT   static  Standard_CString ValuesOfFOSP(const Aspect_FormatOfSheetPaper aFOSP,Quantity_Length& aWidth,Quantity_Length& aHeight) ;
-  //! Translates an ExtendedString to a CString <br>
-//!          depending of the local format. <br>
-  Standard_EXPORT   static  Standard_CString ToCString(const TCollection_ExtendedString& aString) ;
-  //! Inverses <aMat> a 4x4 matrix. <br>
-  Standard_EXPORT   static  Standard_Boolean Inverse(const TColStd_Array2OfReal& aMat,TColStd_Array2OfReal& Inv) ;
-
+  
+  //! Returns the format size according to the default
+  //! LENGTH unit of the required format <aFOSP>.
+  //! Returns more the normalized format name.
+  Standard_EXPORT static   Standard_CString ValuesOfFOSP (const Aspect_FormatOfSheetPaper aFOSP, Quantity_Length& aWidth, Quantity_Length& aHeight) ;
+  
+  //! Translates an ExtendedString to a CString
+  //! depending of the local format.
+  Standard_EXPORT static   Standard_CString ToCString (const TCollection_ExtendedString& aString) ;
+  
+  //! Inverses <aMat> a 4x4 matrix.
+  Standard_EXPORT static   Standard_Boolean Inverse (const TColStd_Array2OfReal& aMat, TColStd_Array2OfReal& Inv) ;
 
 
 
@@ -104,7 +93,6 @@ friend class Aspect_SequenceNodeOfSequenceOfColor;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Aspect_HeaderFile

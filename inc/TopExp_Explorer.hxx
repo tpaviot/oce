@@ -6,149 +6,137 @@
 #ifndef _TopExp_Explorer_HeaderFile
 #define _TopExp_Explorer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopExp_Stack_HeaderFile
 #include <TopExp_Stack.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class TopoDS_Shape;
 
 
-//! An Explorer is a Tool to visit  a Topological Data <br>
-//!          Structure form the TopoDS package. <br>
-//! <br>
-//!          An Explorer is built with : <br>
-//! <br>
-//!            * The Shape to explore. <br>
-//! <br>
-//!            * The type of Shapes to find : e.g VERTEX, EDGE. <br>
-//!            This type cannot be SHAPE. <br>
-//! <br>
-//!            * The type of Shapes to avoid. e.g  SHELL, EDGE. <br>
-//!            By default   this type is  SHAPE which  means no <br>
-//!            restriction on the exploration. <br>
-//! <br>
-//! <br>
-//!          The Explorer  visits  all the  structure   to find <br>
-//!          shapes of the   requested  type  which   are   not <br>
-//!          contained in the type to avoid. <br>
-//! <br>
-//!          Example to find all the Faces in the Shape S : <br>
-//! <br>
-//!          TopExp_Explorer Ex; <br>
-//!          for (Ex.Init(S,TopAbs_FACE); Ex.More(); Ex.Next()) { <br>
-//!            ProcessFace(Ex.Current()); <br>
-//!            } <br>
-//! <br>
-//!          // an other way <br>
-//!          TopExp_Explorer Ex(S,TopAbs_FACE); <br>
-//!          while (Ex.More()) { <br>
-//!            ProcessFace(Ex.Current()); <br>
-//!            Ex.Next(); <br>
-//!            } <br>
-//! <br>
-//!          To find all the vertices which are not in an edge : <br>
-//! <br>
-//!          for (Ex.Init(S,TopAbs_VERTEX,TopAbs_EDGE); ...) <br>
-//! <br>
-//! <br>
-//!          To  find all the faces  in   a SHELL, then all the <br>
-//!          faces not in a SHELL : <br>
-//! <br>
-//!          TopExp_Explorer Ex1, Ex2; <br>
-//! <br>
-//!          for (Ex1.Init(S,TopAbs_SHELL),...) { <br>
-//!            // visit all shells <br>
-//!            for (Ex2.Init(Ex1.Current(),TopAbs_FACE),...) { <br>
-//!              // visit all the faces of the current shell <br>
-//!              } <br>
-//!            } <br>
-//! <br>
-//!          for (Ex1.Init(S,TopAbs_FACE,TopAbs_SHELL),...) { <br>
-//!            // visit all faces not in a shell <br>
-//!            } <br>
-//! <br>
-//! <br>
-//!          If   the type  to avoid  is   the same  or is less <br>
-//!          complex than the type to find it has no effect. <br>
-//! <br>
-//!          For example searching edges  not in a vertex  does <br>
-//!          not make a difference. <br>
-//! <br>
-class TopExp_Explorer  {
+//! An Explorer is a Tool to visit  a Topological Data
+//! Structure form the TopoDS package.
+//!
+//! An Explorer is built with :
+//!
+//! * The Shape to explore.
+//!
+//! * The type of Shapes to find : e.g VERTEX, EDGE.
+//! This type cannot be SHAPE.
+//!
+//! * The type of Shapes to avoid. e.g  SHELL, EDGE.
+//! By default   this type is  SHAPE which  means no
+//! restriction on the exploration.
+//!
+//! The Explorer  visits  all the  structure   to find
+//! shapes of the   requested  type  which   are   not
+//! contained in the type to avoid.
+//!
+//! Example to find all the Faces in the Shape S :
+//!
+//! TopExp_Explorer Ex;
+//! for (Ex.Init(S,TopAbs_FACE); Ex.More(); Ex.Next()) {
+//! ProcessFace(Ex.Current());
+//! }
+//!
+//! // an other way
+//! TopExp_Explorer Ex(S,TopAbs_FACE);
+//! while (Ex.More()) {
+//! ProcessFace(Ex.Current());
+//! Ex.Next();
+//! }
+//!
+//! To find all the vertices which are not in an edge :
+//!
+//! for (Ex.Init(S,TopAbs_VERTEX,TopAbs_EDGE); ...)
+//!
+//! To  find all the faces  in   a SHELL, then all the
+//! faces not in a SHELL :
+//!
+//! TopExp_Explorer Ex1, Ex2;
+//!
+//! for (Ex1.Init(S,TopAbs_SHELL),...) {
+//! // visit all shells
+//! for (Ex2.Init(Ex1.Current(),TopAbs_FACE),...) {
+//! // visit all the faces of the current shell
+//! }
+//! }
+//!
+//! for (Ex1.Init(S,TopAbs_FACE,TopAbs_SHELL),...) {
+//! // visit all faces not in a shell
+//! }
+//!
+//! If   the type  to avoid  is   the same  or is less
+//! complex than the type to find it has no effect.
+//!
+//! For example searching edges  not in a vertex  does
+//! not make a difference.
+class TopExp_Explorer 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an empty explorer, becomes usefull after Init. <br>
-  Standard_EXPORT   TopExp_Explorer();
-  //! Creates an Explorer on the Shape <S>. <br>
-//! <br>
-//!          <ToFind> is the type of shapes to search. <br>
-//!              TopAbs_VERTEX, TopAbs_EDGE, ... <br>
-//! <br>
-//!          <ToAvoid>   is the type   of shape to  skip in the <br>
-//!          exploration.   If   <ToAvoid>  is  equal  or  less <br>
-//!          complex than <ToFind> or if  <ToAVoid> is SHAPE it <br>
-//!          has no effect on the exploration. <br>
-//! <br>
-  Standard_EXPORT   TopExp_Explorer(const TopoDS_Shape& S,const TopAbs_ShapeEnum ToFind,const TopAbs_ShapeEnum ToAvoid = TopAbs_SHAPE);
-  //! Resets this explorer on the shape S. It is initialized to <br>
-//! search the shape S, for shapes of type ToFind, that <br>
-//! are not part of a shape ToAvoid. <br>
-//! If the shape ToAvoid is equal to TopAbs_SHAPE, or <br>
-//! if it is the same as, or less complex than, the shape <br>
-//! ToFind it has no effect on the search. <br>
-  Standard_EXPORT     void Init(const TopoDS_Shape& S,const TopAbs_ShapeEnum ToFind,const TopAbs_ShapeEnum ToAvoid = TopAbs_SHAPE) ;
-  //! Returns  True if  there are   more  shapes in  the <br>
-//!          exploration. <br>
-        Standard_Boolean More() const;
-  //! Moves to the next Shape in the exploration. <br>
-//! Exceptions <br>
-//! Standard_NoMoreObject if there are no more shapes to explore. <br>
-  Standard_EXPORT     void Next() ;
-  //! Returns the current shape in the exploration. <br>
-//! Exceptions <br>
-//! Standard_NoSuchObject if this explorer has no more shapes to explore. <br>
-  Standard_EXPORT    const TopoDS_Shape& Current() const;
-  //! Reinitialize  the    exploration with the original <br>
-//!          arguments. <br>
-  Standard_EXPORT     void ReInit() ;
-  //! Returns the current depth of the exploration. 0 is <br>
-//!          the shape to explore itself. <br>
-        Standard_Integer Depth() const;
-  //! Clears the content of the explorer. It will return <br>
-//!          False on More(). <br>
-        void Clear() ;
   
-  Standard_EXPORT     void Destroy() ;
+  //! Creates an empty explorer, becomes usefull after Init.
+  Standard_EXPORT TopExp_Explorer();
+  
+  //! Creates an Explorer on the Shape <S>.
+  //!
+  //! <ToFind> is the type of shapes to search.
+  //! TopAbs_VERTEX, TopAbs_EDGE, ...
+  //!
+  //! <ToAvoid>   is the type   of shape to  skip in the
+  //! exploration.   If   <ToAvoid>  is  equal  or  less
+  //! complex than <ToFind> or if  <ToAVoid> is SHAPE it
+  //! has no effect on the exploration.
+  Standard_EXPORT TopExp_Explorer(const TopoDS_Shape& S, const TopAbs_ShapeEnum ToFind, const TopAbs_ShapeEnum ToAvoid = TopAbs_SHAPE);
+  
+  //! Resets this explorer on the shape S. It is initialized to
+  //! search the shape S, for shapes of type ToFind, that
+  //! are not part of a shape ToAvoid.
+  //! If the shape ToAvoid is equal to TopAbs_SHAPE, or
+  //! if it is the same as, or less complex than, the shape
+  //! ToFind it has no effect on the search.
+  Standard_EXPORT   void Init (const TopoDS_Shape& S, const TopAbs_ShapeEnum ToFind, const TopAbs_ShapeEnum ToAvoid = TopAbs_SHAPE) ;
+  
+  //! Returns  True if  there are   more  shapes in  the
+  //! exploration.
+      Standard_Boolean More()  const;
+  
+  //! Moves to the next Shape in the exploration.
+  //! Exceptions
+  //! Standard_NoMoreObject if there are no more shapes to explore.
+  Standard_EXPORT   void Next() ;
+  
+  //! Returns the current shape in the exploration.
+  //! Exceptions
+  //! Standard_NoSuchObject if this explorer has no more shapes to explore.
+  Standard_EXPORT  const  TopoDS_Shape& Current()  const;
+  
+  //! Reinitialize  the    exploration with the original
+  //! arguments.
+  Standard_EXPORT   void ReInit() ;
+  
+  //! Returns the current depth of the exploration. 0 is
+  //! the shape to explore itself.
+      Standard_Integer Depth()  const;
+  
+  //! Clears the content of the explorer. It will return
+  //! False on More().
+      void Clear() ;
+  
+  Standard_EXPORT   void Destroy() ;
 ~TopExp_Explorer()
 {
   Destroy();
 }
-
 
 
 
@@ -163,13 +151,13 @@ private:
 
 
 
-TopExp_Stack myStack;
-Standard_Integer myTop;
-Standard_Integer mySizeOfStack;
-TopoDS_Shape myShape;
-Standard_Boolean hasMore;
-TopAbs_ShapeEnum toFind;
-TopAbs_ShapeEnum toAvoid;
+  TopExp_Stack myStack;
+  Standard_Integer myTop;
+  Standard_Integer mySizeOfStack;
+  TopoDS_Shape myShape;
+  Standard_Boolean hasMore;
+  TopAbs_ShapeEnum toFind;
+  TopAbs_ShapeEnum toAvoid;
 
 
 };
@@ -179,7 +167,6 @@ TopAbs_ShapeEnum toAvoid;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopExp_Explorer_HeaderFile

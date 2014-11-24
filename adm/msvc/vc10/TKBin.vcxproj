@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7BDCB05D-18E4-1878-1683-A4201B37ECBE}</ProjectGuid>
+    <ProjectGuid>{C3D8D0EC-1290-0F41-1742-762F2E139AAF}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -77,11 +77,11 @@
     </Midl>
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\BinDrivers;..\..\..\src\BinDrivers;..\..\..\drv\BinMDataXtd;..\..\..\src\BinMDataXtd;..\..\..\drv\BinMPrsStd;..\..\..\src\BinMPrsStd;..\..\..\drv\BinMNaming;..\..\..\src\BinMNaming;..\..\..\drv\BinTools;..\..\..\src\BinTools;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\BinDrivers;..\..\..\src\BinDrivers;..\..\..\drv\BinMDataXtd;..\..\..\src\BinMDataXtd;..\..\..\drv\BinMPrsStd;..\..\..\src\BinMPrsStd;..\..\..\drv\BinMNaming;..\..\..\src\BinMNaming;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL;__BinTools_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -97,7 +97,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL;__BinTools_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKBRep.lib;TKMath.lib;TKernel.lib;TKG2d.lib;TKG3d.lib;TKCAF.lib;TKCDF.lib;TKLCAF.lib;TKV3d.lib;TKBinL.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -121,11 +121,11 @@
     </Midl>
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\BinDrivers;..\..\..\src\BinDrivers;..\..\..\drv\BinMDataXtd;..\..\..\src\BinMDataXtd;..\..\..\drv\BinMPrsStd;..\..\..\src\BinMPrsStd;..\..\..\drv\BinMNaming;..\..\..\src\BinMNaming;..\..\..\drv\BinTools;..\..\..\src\BinTools;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\BinDrivers;..\..\..\src\BinDrivers;..\..\..\drv\BinMDataXtd;..\..\..\src\BinMDataXtd;..\..\..\drv\BinMPrsStd;..\..\..\src\BinMPrsStd;..\..\..\drv\BinMNaming;..\..\..\src\BinMNaming;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL;__BinTools_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win32\vc10\objd\TKBin/</AssemblerListingLocation>
@@ -142,7 +142,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL;__BinTools_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKBRep.lib;TKMath.lib;TKernel.lib;TKG2d.lib;TKG3d.lib;TKCAF.lib;TKCDF.lib;TKLCAF.lib;TKV3d.lib;TKBinL.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -167,11 +167,11 @@
     </Midl>
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\BinDrivers;..\..\..\src\BinDrivers;..\..\..\drv\BinMDataXtd;..\..\..\src\BinMDataXtd;..\..\..\drv\BinMPrsStd;..\..\..\src\BinMPrsStd;..\..\..\drv\BinMNaming;..\..\..\src\BinMNaming;..\..\..\drv\BinTools;..\..\..\src\BinTools;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\BinDrivers;..\..\..\src\BinDrivers;..\..\..\drv\BinMDataXtd;..\..\..\src\BinMDataXtd;..\..\..\drv\BinMPrsStd;..\..\..\src\BinMPrsStd;..\..\..\drv\BinMNaming;..\..\..\src\BinMNaming;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL;__BinTools_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -186,7 +186,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL;__BinTools_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKBRep.lib;TKMath.lib;TKernel.lib;TKG2d.lib;TKG3d.lib;TKCAF.lib;TKCDF.lib;TKLCAF.lib;TKV3d.lib;TKBinL.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -210,11 +210,11 @@
     </Midl>
     <ClCompile>
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\BinDrivers;..\..\..\src\BinDrivers;..\..\..\drv\BinMDataXtd;..\..\..\src\BinMDataXtd;..\..\..\drv\BinMPrsStd;..\..\..\src\BinMPrsStd;..\..\..\drv\BinMNaming;..\..\..\src\BinMNaming;..\..\..\drv\BinTools;..\..\..\src\BinTools;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\inc;..\..\..\drv\BinDrivers;..\..\..\src\BinDrivers;..\..\..\drv\BinMDataXtd;..\..\..\src\BinMDataXtd;..\..\..\drv\BinMPrsStd;..\..\..\src\BinMPrsStd;..\..\..\drv\BinMNaming;..\..\..\src\BinMNaming;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL;__BinTools_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win64\vc10\objd\TKBin/</AssemblerListingLocation>
@@ -230,7 +230,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL;__BinTools_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKBRep.lib;TKMath.lib;TKernel.lib;TKG2d.lib;TKG3d.lib;TKCAF.lib;TKCDF.lib;TKLCAF.lib;TKV3d.lib;TKBinL.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -279,18 +279,6 @@
     <ClCompile Include="..\..\..\src\BinMNaming\BinMNaming_NamedShapeDriver.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\BinMNaming\BinMNaming_NamingDriver.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BinTools\BinTools.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BinTools\BinTools_Curve2dSet.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BinTools\BinTools_CurveSet.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BinTools\BinTools_LocationSet.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BinTools\BinTools_ShapeSet.cxx">
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\BinTools\BinTools_SurfaceSet.cxx">
     </ClCompile>
 
   </ItemGroup>

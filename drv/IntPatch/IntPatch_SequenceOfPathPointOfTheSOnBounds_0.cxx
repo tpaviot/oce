@@ -5,18 +5,10 @@
 
 #include <IntPatch_SequenceOfPathPointOfTheSOnBounds.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IntPatch_ThePathPointOfTheSOnBounds_HeaderFile
 #include <IntPatch_ThePathPointOfTheSOnBounds.hxx>
-#endif
-#ifndef _IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds_HeaderFile
 #include <IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds.hxx>
-#endif
  
 
 #define SeqItem IntPatch_ThePathPointOfTheSOnBounds

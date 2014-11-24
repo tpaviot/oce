@@ -6,8 +6,11 @@
 #ifndef _Graphic3d_TypeOfPrimitiveArray_HeaderFile
 #define _Graphic3d_TypeOfPrimitiveArray_HeaderFile
 
-//! The type of primitive array in a group in a structure. <br>
-enum Graphic3d_TypeOfPrimitiveArray {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! The type of primitive array in a group in a structure.
+enum Graphic3d_TypeOfPrimitiveArray
+{
 Graphic3d_TOPA_UNDEFINED,
 Graphic3d_TOPA_POINTS,
 Graphic3d_TOPA_POLYLINES,
@@ -20,8 +23,4 @@ Graphic3d_TOPA_QUADRANGLESTRIPS,
 Graphic3d_TOPA_TRIANGLEFANS
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Graphic3d_TypeOfPrimitiveArray_HeaderFile

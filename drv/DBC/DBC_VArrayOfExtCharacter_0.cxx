@@ -5,28 +5,14 @@
 
 #include <DBC_VArrayOfExtCharacter.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NegativeValue_HeaderFile
 #include <Standard_NegativeValue.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_NullObject_HeaderFile
 #include <Standard_NullObject.hxx>
-#endif
-#ifndef _DBC_VArrayNodeOfVArrayOfExtCharacter_HeaderFile
 #include <DBC_VArrayNodeOfVArrayOfExtCharacter.hxx>
-#endif
-#ifndef _DBC_VArrayTNodeOfVArrayOfExtCharacter_HeaderFile
 #include <DBC_VArrayTNodeOfVArrayOfExtCharacter.hxx>
-#endif
 
 IMPLEMENT_STANDARD_TYPE(DBC_VArrayOfExtCharacter)
 IMPLEMENT_STANDARD_SUPERTYPE_ARRAY()

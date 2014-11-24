@@ -6,28 +6,14 @@
 #ifndef _Geom_VectorWithMagnitude_HeaderFile
 #define _Geom_VectorWithMagnitude_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Geom_VectorWithMagnitude_HeaderFile
 #include <Handle_Geom_VectorWithMagnitude.hxx>
-#endif
 
-#ifndef _Geom_Vector_HeaderFile
 #include <Geom_Vector.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Geom_Vector_HeaderFile
 #include <Handle_Geom_Vector.hxx>
-#endif
-#ifndef _Handle_Geom_Geometry_HeaderFile
 #include <Handle_Geom_Geometry.hxx>
-#endif
 class Standard_ConstructionError;
 class gp_Vec;
 class gp_Pnt;
@@ -37,84 +23,113 @@ class Geom_Geometry;
 
 
 
-//!  Defines a vector with magnitude. <br>
-//!  A vector with magnitude can have a zero length. <br>
-class Geom_VectorWithMagnitude : public Geom_Vector {
+//! Defines a vector with magnitude.
+//! A vector with magnitude can have a zero length.
+class Geom_VectorWithMagnitude : public Geom_Vector
+{
 
 public:
 
-  //! Creates a transient copy of V. <br>
-  Standard_EXPORT   Geom_VectorWithMagnitude(const gp_Vec& V);
-  //! Creates a vector with three cartesian coordinates. <br>
-  Standard_EXPORT   Geom_VectorWithMagnitude(const Standard_Real X,const Standard_Real Y,const Standard_Real Z);
   
-//!  Creates a vector from the point P1 to the point P2. <br>
-//!  The magnitude of the vector is the distance between P1 and P2 <br>
-  Standard_EXPORT   Geom_VectorWithMagnitude(const gp_Pnt& P1,const gp_Pnt& P2);
-  //!  Assigns the values X, Y and Z to the coordinates of this vector. <br>
-  Standard_EXPORT     void SetCoord(const Standard_Real X,const Standard_Real Y,const Standard_Real Z) ;
-  //!  Converts the gp_Vec vector V into this vector. <br>
-  Standard_EXPORT     void SetVec(const gp_Vec& V) ;
-  //! Changes the X coordinate of <me>. <br>
-  Standard_EXPORT     void SetX(const Standard_Real X) ;
-  //!  Changes the Y coordinate of <me> <br>
-  Standard_EXPORT     void SetY(const Standard_Real Y) ;
-  //! Changes the Z coordinate of <me>. <br>
-  Standard_EXPORT     void SetZ(const Standard_Real Z) ;
-  //! Returns the magnitude of <me>. <br>
-  Standard_EXPORT     Standard_Real Magnitude() const;
-  //! Returns the square magnitude of <me>. <br>
-  Standard_EXPORT     Standard_Real SquareMagnitude() const;
+  //! Creates a transient copy of V.
+  Standard_EXPORT Geom_VectorWithMagnitude(const gp_Vec& V);
   
-//!  Adds the Vector Other to <me>. <br>
-  Standard_EXPORT     void Add(const Handle(Geom_Vector)& Other) ;
+  //! Creates a vector with three cartesian coordinates.
+  Standard_EXPORT Geom_VectorWithMagnitude(const Standard_Real X, const Standard_Real Y, const Standard_Real Z);
   
-//!  Adds the vector Other to <me>. <br>
-  Standard_EXPORT     Handle_Geom_VectorWithMagnitude Added(const Handle(Geom_Vector)& Other) const;
+
+  //! Creates a vector from the point P1 to the point P2.
+  //! The magnitude of the vector is the distance between P1 and P2
+  Standard_EXPORT Geom_VectorWithMagnitude(const gp_Pnt& P1, const gp_Pnt& P2);
   
-//!  Computes the cross product  between <me> and Other <br>
-//!  <me> ^ Other. <br>
-  Standard_EXPORT     void Cross(const Handle(Geom_Vector)& Other) ;
+  //! Assigns the values X, Y and Z to the coordinates of this vector.
+  Standard_EXPORT   void SetCoord (const Standard_Real X, const Standard_Real Y, const Standard_Real Z) ;
   
-//!  Computes the cross product  between <me> and Other <br>
-//!  <me> ^ Other. A new vector is returned. <br>
-  Standard_EXPORT     Handle_Geom_Vector Crossed(const Handle(Geom_Vector)& Other) const;
+  //! Converts the gp_Vec vector V into this vector.
+  Standard_EXPORT   void SetVec (const gp_Vec& V) ;
   
-//!  Computes the triple vector product  <me> ^ (V1 ^ V2). <br>
-  Standard_EXPORT     void CrossCross(const Handle(Geom_Vector)& V1,const Handle(Geom_Vector)& V2) ;
+  //! Changes the X coordinate of <me>.
+  Standard_EXPORT   void SetX (const Standard_Real X) ;
   
-//!  Computes the triple vector product  <me> ^ (V1 ^ V2). <br>
-//!  A new vector is returned. <br>
-  Standard_EXPORT     Handle_Geom_Vector CrossCrossed(const Handle(Geom_Vector)& V1,const Handle(Geom_Vector)& V2) const;
-  //! Divides <me> by a scalar. <br>
-  Standard_EXPORT     void Divide(const Standard_Real Scalar) ;
+  //! Changes the Y coordinate of <me>
+  Standard_EXPORT   void SetY (const Standard_Real Y) ;
   
-//!  Divides <me> by a scalar. A new vector is returned. <br>
-  Standard_EXPORT     Handle_Geom_VectorWithMagnitude Divided(const Standard_Real Scalar) const;
+  //! Changes the Z coordinate of <me>.
+  Standard_EXPORT   void SetZ (const Standard_Real Z) ;
   
-//!  Computes the product of the vector <me> by a scalar. <br>
-//!  A new vector is returned. <br>
-  Standard_EXPORT     Handle_Geom_VectorWithMagnitude Multiplied(const Standard_Real Scalar) const;
+  //! Returns the magnitude of <me>.
+  Standard_EXPORT   Standard_Real Magnitude()  const;
   
-//!  Computes the product of the vector <me> by a scalar. <br>
-  Standard_EXPORT     void Multiply(const Standard_Real Scalar) ;
-  //! Normalizes <me>. <br>
-//!  Raised if the magnitude of the vector is lower or equal to <br>
-//!  Resolution from package gp. <br>
-  Standard_EXPORT     void Normalize() ;
-  //! Returns a copy of <me> Normalized. <br>
-//!  Raised if the magnitude of the vector is lower or equal to <br>
-//!  Resolution from package gp. <br>
-  Standard_EXPORT     Handle_Geom_VectorWithMagnitude Normalized() const;
-  //! Subtracts the Vector Other to <me>. <br>
-  Standard_EXPORT     void Subtract(const Handle(Geom_Vector)& Other) ;
+  //! Returns the square magnitude of <me>.
+  Standard_EXPORT   Standard_Real SquareMagnitude()  const;
   
-//!  Subtracts the vector Other to <me>. A new vector is returned. <br>
-  Standard_EXPORT     Handle_Geom_VectorWithMagnitude Subtracted(const Handle(Geom_Vector)& Other) const;
-  //! Applies the transformation T to this vector. <br>
-  Standard_EXPORT     void Transform(const gp_Trsf& T) ;
-  //! Creates a new object which is a copy of this vector. <br>
-  Standard_EXPORT     Handle_Geom_Geometry Copy() const;
+
+  //! Adds the Vector Other to <me>.
+  Standard_EXPORT   void Add (const Handle(Geom_Vector)& Other) ;
+  
+
+  //! Adds the vector Other to <me>.
+  Standard_EXPORT   Handle(Geom_VectorWithMagnitude) Added (const Handle(Geom_Vector)& Other)  const;
+  
+
+  //! Computes the cross product  between <me> and Other
+  //! <me> ^ Other.
+  Standard_EXPORT   void Cross (const Handle(Geom_Vector)& Other) ;
+  
+
+  //! Computes the cross product  between <me> and Other
+  //! <me> ^ Other. A new vector is returned.
+  Standard_EXPORT   Handle(Geom_Vector) Crossed (const Handle(Geom_Vector)& Other)  const;
+  
+
+  //! Computes the triple vector product  <me> ^ (V1 ^ V2).
+  Standard_EXPORT   void CrossCross (const Handle(Geom_Vector)& V1, const Handle(Geom_Vector)& V2) ;
+  
+
+  //! Computes the triple vector product  <me> ^ (V1 ^ V2).
+  //! A new vector is returned.
+  Standard_EXPORT   Handle(Geom_Vector) CrossCrossed (const Handle(Geom_Vector)& V1, const Handle(Geom_Vector)& V2)  const;
+  
+  //! Divides <me> by a scalar.
+  Standard_EXPORT   void Divide (const Standard_Real Scalar) ;
+  
+
+  //! Divides <me> by a scalar. A new vector is returned.
+  Standard_EXPORT   Handle(Geom_VectorWithMagnitude) Divided (const Standard_Real Scalar)  const;
+  
+
+  //! Computes the product of the vector <me> by a scalar.
+  //! A new vector is returned.
+  Standard_EXPORT   Handle(Geom_VectorWithMagnitude) Multiplied (const Standard_Real Scalar)  const;
+  
+
+  //! Computes the product of the vector <me> by a scalar.
+  Standard_EXPORT   void Multiply (const Standard_Real Scalar) ;
+  
+  //! Normalizes <me>.
+  //!
+  //! Raised if the magnitude of the vector is lower or equal to
+  //! Resolution from package gp.
+  Standard_EXPORT   void Normalize() ;
+  
+  //! Returns a copy of <me> Normalized.
+  //!
+  //! Raised if the magnitude of the vector is lower or equal to
+  //! Resolution from package gp.
+  Standard_EXPORT   Handle(Geom_VectorWithMagnitude) Normalized()  const;
+  
+  //! Subtracts the Vector Other to <me>.
+  Standard_EXPORT   void Subtract (const Handle(Geom_Vector)& Other) ;
+  
+
+  //! Subtracts the vector Other to <me>. A new vector is returned.
+  Standard_EXPORT   Handle(Geom_VectorWithMagnitude) Subtracted (const Handle(Geom_Vector)& Other)  const;
+  
+  //! Applies the transformation T to this vector.
+  Standard_EXPORT   void Transform (const gp_Trsf& T) ;
+  
+  //! Creates a new object which is a copy of this vector.
+  Standard_EXPORT   Handle(Geom_Geometry) Copy()  const;
 
 
 
@@ -137,7 +152,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom_VectorWithMagnitude_HeaderFile

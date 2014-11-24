@@ -1,9 +1,3 @@
-#ifndef _StepVisual_PresentedItem_HeaderFile
 #include <StepVisual_PresentedItem.hxx>
-#endif
-#ifndef _StepVisual_PresentationRepresentationSelect_HeaderFile
 #include <StepVisual_PresentationRepresentationSelect.hxx>
-#endif
-#ifndef _StepVisual_PresentedItemRepresentation_HeaderFile
 #include <StepVisual_PresentedItemRepresentation.hxx>
-#endif

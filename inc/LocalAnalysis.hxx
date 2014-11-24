@@ -6,19 +6,11 @@
 #ifndef _LocalAnalysis_HeaderFile
 #define _LocalAnalysis_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class LocalAnalysis_SurfaceContinuity;
 class LocalAnalysis_CurveContinuity;
 class LocalAnalysis_SurfaceContinuity;
@@ -26,23 +18,26 @@ class LocalAnalysis_CurveContinuity;
 
 
 
-//! This package gives tools to check the local continuity <br>
-//! between two  points situated  on two curves or two surfaces. <br>
-class LocalAnalysis  {
+//! This package gives tools to check the local continuity
+//! between two  points situated  on two curves or two surfaces.
+class LocalAnalysis 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//! This  class  compute <br>
-//! s  and gives  tools to check  the  local <br>
-//! continuity  between two points situated  on 2  curves) <br>
-//! This fonction gives informations  about a  variable CurveContinuity <br>
-  Standard_EXPORT   static  void Dump(const LocalAnalysis_SurfaceContinuity& surfconti,Standard_OStream& o) ;
-  
-//! This fonction gives informations  about a variable SurfaceContinuity <br>
-  Standard_EXPORT   static  void Dump(const LocalAnalysis_CurveContinuity& curvconti,Standard_OStream& o) ;
 
+  //! This  class  compute
+  //! s  and gives  tools to check  the  local
+  //! continuity  between two points situated  on 2  curves)
+  //!
+  //! This fonction gives informations  about a  variable CurveContinuity
+  Standard_EXPORT static   void Dump (const LocalAnalysis_SurfaceContinuity& surfconti, Standard_OStream& o) ;
+  
+
+  //! This fonction gives informations  about a variable SurfaceContinuity
+  Standard_EXPORT static   void Dump (const LocalAnalysis_CurveContinuity& curvconti, Standard_OStream& o) ;
 
 
 
@@ -67,7 +62,6 @@ friend class LocalAnalysis_CurveContinuity;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _LocalAnalysis_HeaderFile

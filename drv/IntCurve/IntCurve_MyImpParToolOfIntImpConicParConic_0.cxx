@@ -5,15 +5,9 @@
 
 #include <IntCurve_MyImpParToolOfIntImpConicParConic.hxx>
 
-#ifndef _IntCurve_IConicTool_HeaderFile
 #include <IntCurve_IConicTool.hxx>
-#endif
-#ifndef _IntCurve_PConic_HeaderFile
 #include <IntCurve_PConic.hxx>
-#endif
-#ifndef _IntCurve_PConicTool_HeaderFile
 #include <IntCurve_PConicTool.hxx>
-#endif
  
 
 #define ImpTool IntCurve_IConicTool

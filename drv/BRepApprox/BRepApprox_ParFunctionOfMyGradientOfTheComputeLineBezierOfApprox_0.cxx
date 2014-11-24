@@ -5,27 +5,13 @@
 
 #include <BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx>
 
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _AppParCurves_HArray1OfConstraintCouple_HeaderFile
 #include <AppParCurves_HArray1OfConstraintCouple.hxx>
-#endif
-#ifndef _BRepApprox_TheMultiLineOfApprox_HeaderFile
 #include <BRepApprox_TheMultiLineOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_TheMultiLineToolOfApprox_HeaderFile
 #include <BRepApprox_TheMultiLineToolOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_HeaderFile
 #include <BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_HeaderFile
 #include <BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx>
-#endif
-#ifndef _AppParCurves_MultiCurve_HeaderFile
 #include <AppParCurves_MultiCurve.hxx>
-#endif
  
 
 #define MultiLine BRepApprox_TheMultiLineOfApprox

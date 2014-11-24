@@ -5,19 +5,11 @@
 
 #include <SelectMgr_ListNodeOfListOfFilter.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _SelectMgr_Filter_HeaderFile
 #include <SelectMgr_Filter.hxx>
-#endif
-#ifndef _SelectMgr_ListOfFilter_HeaderFile
 #include <SelectMgr_ListOfFilter.hxx>
-#endif
-#ifndef _SelectMgr_ListIteratorOfListOfFilter_HeaderFile
 #include <SelectMgr_ListIteratorOfListOfFilter.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(SelectMgr_ListNodeOfListOfFilter,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(SelectMgr_ListNodeOfListOfFilter)
 
 
-#define Item Handle_SelectMgr_Filter
+#define Item Handle(SelectMgr_Filter)
 #define Item_hxx <SelectMgr_Filter.hxx>
 #define TCollection_ListNode SelectMgr_ListNodeOfListOfFilter
 #define TCollection_ListNode_hxx <SelectMgr_ListNodeOfListOfFilter.hxx>

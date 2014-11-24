@@ -6,28 +6,14 @@
 #ifndef _AIS_DataMapNodeOfDataMapOfSelStat_HeaderFile
 #define _AIS_DataMapNodeOfDataMapOfSelStat_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_AIS_DataMapNodeOfDataMapOfSelStat_HeaderFile
 #include <Handle_AIS_DataMapNodeOfDataMapOfSelStat.hxx>
-#endif
 
-#ifndef _Handle_SelectMgr_SelectableObject_HeaderFile
 #include <Handle_SelectMgr_SelectableObject.hxx>
-#endif
-#ifndef _Handle_AIS_LocalStatus_HeaderFile
 #include <Handle_AIS_LocalStatus.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class SelectMgr_SelectableObject;
 class AIS_LocalStatus;
 class TColStd_MapTransientHasher;
@@ -36,16 +22,17 @@ class AIS_DataMapIteratorOfDataMapOfSelStat;
 
 
 
-class AIS_DataMapNodeOfDataMapOfSelStat : public TCollection_MapNode {
+class AIS_DataMapNodeOfDataMapOfSelStat : public TCollection_MapNode
+{
 
 public:
 
   
-      AIS_DataMapNodeOfDataMapOfSelStat(const Handle(SelectMgr_SelectableObject)& K,const Handle(AIS_LocalStatus)& I,const TCollection_MapNodePtr& n);
+    AIS_DataMapNodeOfDataMapOfSelStat(const Handle(SelectMgr_SelectableObject)& K, const Handle(AIS_LocalStatus)& I, const TCollection_MapNodePtr& n);
   
-        Handle_SelectMgr_SelectableObject& Key() const;
+      Handle(SelectMgr_SelectableObject)& Key()  const;
   
-        Handle_AIS_LocalStatus& Value() const;
+      Handle(AIS_LocalStatus)& Value()  const;
 
 
 
@@ -60,15 +47,15 @@ protected:
 private: 
 
 
-Handle_SelectMgr_SelectableObject myKey;
-Handle_AIS_LocalStatus myValue;
+  Handle(SelectMgr_SelectableObject) myKey;
+  Handle(AIS_LocalStatus) myValue;
 
 
 };
 
-#define TheKey Handle_SelectMgr_SelectableObject
+#define TheKey Handle(SelectMgr_SelectableObject)
 #define TheKey_hxx <SelectMgr_SelectableObject.hxx>
-#define TheItem Handle_AIS_LocalStatus
+#define TheItem Handle(AIS_LocalStatus)
 #define TheItem_hxx <AIS_LocalStatus.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>
@@ -99,7 +86,6 @@ Handle_AIS_LocalStatus myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_DataMapNodeOfDataMapOfSelStat_HeaderFile

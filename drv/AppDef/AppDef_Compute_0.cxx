@@ -5,42 +5,18 @@
 
 #include <AppDef_Compute.hxx>
 
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _AppParCurves_HArray1OfConstraintCouple_HeaderFile
 #include <AppParCurves_HArray1OfConstraintCouple.hxx>
-#endif
-#ifndef _AppDef_MultiLine_HeaderFile
 #include <AppDef_MultiLine.hxx>
-#endif
-#ifndef _AppDef_MyLineTool_HeaderFile
 #include <AppDef_MyLineTool.hxx>
-#endif
-#ifndef _AppDef_MyGradientOfCompute_HeaderFile
 #include <AppDef_MyGradientOfCompute.hxx>
-#endif
-#ifndef _AppDef_ParLeastSquareOfMyGradientOfCompute_HeaderFile
 #include <AppDef_ParLeastSquareOfMyGradientOfCompute.hxx>
-#endif
-#ifndef _AppDef_ResConstraintOfMyGradientOfCompute_HeaderFile
 #include <AppDef_ResConstraintOfMyGradientOfCompute.hxx>
-#endif
-#ifndef _AppDef_ParFunctionOfMyGradientOfCompute_HeaderFile
 #include <AppDef_ParFunctionOfMyGradientOfCompute.hxx>
-#endif
-#ifndef _AppDef_Gradient_BFGSOfMyGradientOfCompute_HeaderFile
 #include <AppDef_Gradient_BFGSOfMyGradientOfCompute.hxx>
-#endif
-#ifndef _AppParCurves_MultiCurve_HeaderFile
 #include <AppParCurves_MultiCurve.hxx>
-#endif
-#ifndef _AppParCurves_MultiBSpCurve_HeaderFile
 #include <AppParCurves_MultiBSpCurve.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
  
 
 #define MultiLine AppDef_MultiLine

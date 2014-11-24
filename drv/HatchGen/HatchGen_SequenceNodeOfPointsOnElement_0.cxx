@@ -5,16 +5,10 @@
 
 #include <HatchGen_SequenceNodeOfPointsOnElement.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _HatchGen_PointOnElement_HeaderFile
 #include <HatchGen_PointOnElement.hxx>
-#endif
-#ifndef _HatchGen_PointsOnElement_HeaderFile
 #include <HatchGen_PointsOnElement.hxx>
-#endif
 
  
 

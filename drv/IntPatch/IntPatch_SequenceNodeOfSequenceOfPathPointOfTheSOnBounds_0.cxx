@@ -5,16 +5,10 @@
 
 #include <IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IntPatch_ThePathPointOfTheSOnBounds_HeaderFile
 #include <IntPatch_ThePathPointOfTheSOnBounds.hxx>
-#endif
-#ifndef _IntPatch_SequenceOfPathPointOfTheSOnBounds_HeaderFile
 #include <IntPatch_SequenceOfPathPointOfTheSOnBounds.hxx>
-#endif
 
  
 

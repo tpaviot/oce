@@ -1,12 +1,4 @@
-#ifndef _TopoDS_Shell_HeaderFile
 #include <TopoDS_Shell.hxx>
-#endif
-#ifndef _TopoDS_Solid_HeaderFile
 #include <TopoDS_Solid.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_ShellToSolid_HeaderFile
 #include <TopOpeBRepBuild_ShellToSolid.hxx>
-#endif

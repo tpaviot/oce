@@ -5,12 +5,10 @@
 
 #include <CDM_DocumentHasher.hxx>
 
-#ifndef _CDM_Document_HeaderFile
 #include <CDM_Document.hxx>
-#endif
  
 
-#define Key Handle_CDM_Document
+#define Key Handle(CDM_Document)
 #define Key_hxx <CDM_Document.hxx>
 #define TCollection_MapHasher CDM_DocumentHasher
 #define TCollection_MapHasher_hxx <CDM_DocumentHasher.hxx>

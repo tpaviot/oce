@@ -1,6 +1,2 @@
-#ifndef _PrsMgr_PresentationManager_HeaderFile
 #include <PrsMgr_PresentationManager.hxx>
-#endif
-#ifndef _MeshVS_MeshEntityOwner_HeaderFile
 #include <MeshVS_MeshEntityOwner.hxx>
-#endif

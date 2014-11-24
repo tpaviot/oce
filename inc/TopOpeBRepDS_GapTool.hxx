@@ -6,40 +6,18 @@
 #ifndef _TopOpeBRepDS_GapTool_HeaderFile
 #define _TopOpeBRepDS_GapTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_GapTool_HeaderFile
 #include <Handle_TopOpeBRepDS_GapTool.hxx>
-#endif
 
-#ifndef _Handle_TopOpeBRepDS_HDataStructure_HeaderFile
 #include <Handle_TopOpeBRepDS_HDataStructure.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapOfIntegerListOfInterference_HeaderFile
 #include <TopOpeBRepDS_DataMapOfIntegerListOfInterference.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapOfInterferenceShape_HeaderFile
 #include <TopOpeBRepDS_DataMapOfInterferenceShape.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_Interference_HeaderFile
 #include <Handle_TopOpeBRepDS_Interference.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TopOpeBRepDS_HDataStructure;
 class TopOpeBRepDS_ListOfInterference;
 class TopOpeBRepDS_Interference;
@@ -48,35 +26,37 @@ class TopoDS_Shape;
 
 
 
-class TopOpeBRepDS_GapTool : public MMgt_TShared {
+class TopOpeBRepDS_GapTool : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   TopOpeBRepDS_GapTool();
+  Standard_EXPORT TopOpeBRepDS_GapTool();
   
-  Standard_EXPORT   TopOpeBRepDS_GapTool(const Handle(TopOpeBRepDS_HDataStructure)& HDS);
+  Standard_EXPORT TopOpeBRepDS_GapTool(const Handle(TopOpeBRepDS_HDataStructure)& HDS);
   
-  Standard_EXPORT     void Init(const Handle(TopOpeBRepDS_HDataStructure)& HDS) ;
+  Standard_EXPORT   void Init (const Handle(TopOpeBRepDS_HDataStructure)& HDS) ;
   
-  Standard_EXPORT    const TopOpeBRepDS_ListOfInterference& Interferences(const Standard_Integer IndexPoint) const;
+  Standard_EXPORT  const  TopOpeBRepDS_ListOfInterference& Interferences (const Standard_Integer IndexPoint)  const;
   
-  Standard_EXPORT    const TopOpeBRepDS_ListOfInterference& SameInterferences(const Handle(TopOpeBRepDS_Interference)& I) const;
+  Standard_EXPORT  const  TopOpeBRepDS_ListOfInterference& SameInterferences (const Handle(TopOpeBRepDS_Interference)& I)  const;
   
-  Standard_EXPORT     TopOpeBRepDS_ListOfInterference& ChangeSameInterferences(const Handle(TopOpeBRepDS_Interference)& I) ;
+  Standard_EXPORT   TopOpeBRepDS_ListOfInterference& ChangeSameInterferences (const Handle(TopOpeBRepDS_Interference)& I) ;
   
-  Standard_EXPORT     Standard_Boolean Curve(const Handle(TopOpeBRepDS_Interference)& I,TopOpeBRepDS_Curve& C) const;
+  Standard_EXPORT   Standard_Boolean Curve (const Handle(TopOpeBRepDS_Interference)& I, TopOpeBRepDS_Curve& C)  const;
   
-  Standard_EXPORT     Standard_Boolean EdgeSupport(const Handle(TopOpeBRepDS_Interference)& I,TopoDS_Shape& E) const;
-  //! Return les faces qui  ont genere la section origine <br>
-//!          de I <br>
-  Standard_EXPORT     Standard_Boolean FacesSupport(const Handle(TopOpeBRepDS_Interference)& I,TopoDS_Shape& F1,TopoDS_Shape& F2) const;
+  Standard_EXPORT   Standard_Boolean EdgeSupport (const Handle(TopOpeBRepDS_Interference)& I, TopoDS_Shape& E)  const;
   
-  Standard_EXPORT     Standard_Boolean ParameterOnEdge(const Handle(TopOpeBRepDS_Interference)& I,const TopoDS_Shape& E,Standard_Real& U) const;
+  //! Return les faces qui  ont genere la section origine
+  //! de I
+  Standard_EXPORT   Standard_Boolean FacesSupport (const Handle(TopOpeBRepDS_Interference)& I, TopoDS_Shape& F1, TopoDS_Shape& F2)  const;
   
-  Standard_EXPORT     void SetPoint(const Handle(TopOpeBRepDS_Interference)& I,const Standard_Integer IndexPoint) ;
+  Standard_EXPORT   Standard_Boolean ParameterOnEdge (const Handle(TopOpeBRepDS_Interference)& I, const TopoDS_Shape& E, Standard_Real& U)  const;
   
-  Standard_EXPORT     void SetParameterOnEdge(const Handle(TopOpeBRepDS_Interference)& I,const TopoDS_Shape& E,const Standard_Real U) ;
+  Standard_EXPORT   void SetPoint (const Handle(TopOpeBRepDS_Interference)& I, const Standard_Integer IndexPoint) ;
+  
+  Standard_EXPORT   void SetParameterOnEdge (const Handle(TopOpeBRepDS_Interference)& I, const TopoDS_Shape& E, const Standard_Real U) ;
 
 
 
@@ -91,9 +71,9 @@ protected:
 private: 
 
 
-Handle_TopOpeBRepDS_HDataStructure myHDS;
-TopOpeBRepDS_DataMapOfIntegerListOfInterference myGToI;
-TopOpeBRepDS_DataMapOfInterferenceShape myInterToShape;
+  Handle(TopOpeBRepDS_HDataStructure) myHDS;
+  TopOpeBRepDS_DataMapOfIntegerListOfInterference myGToI;
+  TopOpeBRepDS_DataMapOfInterferenceShape myInterToShape;
 
 
 };
@@ -102,7 +82,6 @@ TopOpeBRepDS_DataMapOfInterferenceShape myInterToShape;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_GapTool_HeaderFile

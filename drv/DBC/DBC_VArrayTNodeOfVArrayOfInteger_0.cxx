@@ -5,12 +5,8 @@
 
 #include <DBC_VArrayTNodeOfVArrayOfInteger.hxx>
 
-#ifndef _DBC_VArrayOfInteger_HeaderFile
 #include <DBC_VArrayOfInteger.hxx>
-#endif
-#ifndef _DBC_VArrayNodeOfVArrayOfInteger_HeaderFile
 #include <DBC_VArrayNodeOfVArrayOfInteger.hxx>
-#endif
  
 
 #define Item Standard_Integer

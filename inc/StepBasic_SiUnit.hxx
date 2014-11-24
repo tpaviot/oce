@@ -6,61 +6,47 @@
 #ifndef _StepBasic_SiUnit_HeaderFile
 #define _StepBasic_SiUnit_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_SiUnit_HeaderFile
 #include <Handle_StepBasic_SiUnit.hxx>
-#endif
 
-#ifndef _StepBasic_SiPrefix_HeaderFile
 #include <StepBasic_SiPrefix.hxx>
-#endif
-#ifndef _StepBasic_SiUnitName_HeaderFile
 #include <StepBasic_SiUnitName.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _StepBasic_NamedUnit_HeaderFile
 #include <StepBasic_NamedUnit.hxx>
-#endif
-#ifndef _Handle_StepBasic_DimensionalExponents_HeaderFile
 #include <Handle_StepBasic_DimensionalExponents.hxx>
-#endif
 class StepBasic_DimensionalExponents;
 
 
 
-class StepBasic_SiUnit : public StepBasic_NamedUnit {
+class StepBasic_SiUnit : public StepBasic_NamedUnit
+{
 
 public:
 
-  //! Returns a SiUnit <br>
-  Standard_EXPORT   StepBasic_SiUnit();
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepBasic_DimensionalExponents)& aDimensions) ;
+  //! Returns a SiUnit
+  Standard_EXPORT StepBasic_SiUnit();
   
-  Standard_EXPORT   virtual  void Init(const Standard_Boolean hasAprefix,const StepBasic_SiPrefix aPrefix,const StepBasic_SiUnitName aName) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepBasic_DimensionalExponents)& aDimensions) ;
   
-  Standard_EXPORT     void SetPrefix(const StepBasic_SiPrefix aPrefix) ;
+  Standard_EXPORT virtual   void Init (const Standard_Boolean hasAprefix, const StepBasic_SiPrefix aPrefix, const StepBasic_SiUnitName aName) ;
   
-  Standard_EXPORT     void UnSetPrefix() ;
+  Standard_EXPORT   void SetPrefix (const StepBasic_SiPrefix aPrefix) ;
   
-  Standard_EXPORT     StepBasic_SiPrefix Prefix() const;
+  Standard_EXPORT   void UnSetPrefix() ;
   
-  Standard_EXPORT     Standard_Boolean HasPrefix() const;
+  Standard_EXPORT   StepBasic_SiPrefix Prefix()  const;
   
-  Standard_EXPORT     void SetName(const StepBasic_SiUnitName aName) ;
+  Standard_EXPORT   Standard_Boolean HasPrefix()  const;
   
-  Standard_EXPORT     StepBasic_SiUnitName Name() const;
+  Standard_EXPORT   void SetName (const StepBasic_SiUnitName aName) ;
   
-  Standard_EXPORT   virtual  void SetDimensions(const Handle(StepBasic_DimensionalExponents)& aDimensions) ;
+  Standard_EXPORT   StepBasic_SiUnitName Name()  const;
   
-  Standard_EXPORT   virtual  Handle_StepBasic_DimensionalExponents Dimensions() const;
+  Standard_EXPORT virtual   void SetDimensions (const Handle(StepBasic_DimensionalExponents)& aDimensions) ;
+  
+  Standard_EXPORT virtual   Handle(StepBasic_DimensionalExponents) Dimensions()  const;
 
 
 
@@ -75,9 +61,9 @@ protected:
 private: 
 
 
-StepBasic_SiPrefix prefix;
-StepBasic_SiUnitName name;
-Standard_Boolean hasPrefix;
+  StepBasic_SiPrefix prefix;
+  StepBasic_SiUnitName name;
+  Standard_Boolean hasPrefix;
 
 
 };
@@ -86,7 +72,6 @@ Standard_Boolean hasPrefix;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_SiUnit_HeaderFile

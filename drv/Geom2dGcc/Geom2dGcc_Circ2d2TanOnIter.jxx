@@ -1,27 +1,9 @@
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _GccEnt_QualifiedCirc_HeaderFile
 #include <GccEnt_QualifiedCirc.hxx>
-#endif
-#ifndef _Geom2dGcc_QCurve_HeaderFile
 #include <Geom2dGcc_QCurve.hxx>
-#endif
-#ifndef _gp_Lin2d_HeaderFile
 #include <gp_Lin2d.hxx>
-#endif
-#ifndef _GccEnt_QualifiedLin_HeaderFile
 #include <GccEnt_QualifiedLin.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _gp_Circ2d_HeaderFile
 #include <gp_Circ2d.hxx>
-#endif
-#ifndef _Geom2dAdaptor_Curve_HeaderFile
 #include <Geom2dAdaptor_Curve.hxx>
-#endif
-#ifndef _Geom2dGcc_Circ2d2TanOnIter_HeaderFile
 #include <Geom2dGcc_Circ2d2TanOnIter.hxx>
-#endif

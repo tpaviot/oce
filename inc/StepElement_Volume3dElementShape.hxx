@@ -6,16 +6,15 @@
 #ifndef _StepElement_Volume3dElementShape_HeaderFile
 #define _StepElement_Volume3dElementShape_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepElement_Volume3dElementShape {
+
+enum StepElement_Volume3dElementShape
+{
 StepElement_Hexahedron,
 StepElement_Wedge,
 StepElement_Tetrahedron,
 StepElement_Pyramid
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepElement_Volume3dElementShape_HeaderFile

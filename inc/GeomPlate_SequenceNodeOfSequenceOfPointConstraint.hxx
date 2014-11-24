@@ -6,38 +6,27 @@
 #ifndef _GeomPlate_SequenceNodeOfSequenceOfPointConstraint_HeaderFile
 #define _GeomPlate_SequenceNodeOfSequenceOfPointConstraint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_GeomPlate_SequenceNodeOfSequenceOfPointConstraint_HeaderFile
 #include <Handle_GeomPlate_SequenceNodeOfSequenceOfPointConstraint.hxx>
-#endif
 
-#ifndef _Handle_GeomPlate_PointConstraint_HeaderFile
 #include <Handle_GeomPlate_PointConstraint.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class GeomPlate_PointConstraint;
 class GeomPlate_SequenceOfPointConstraint;
 
 
 
-class GeomPlate_SequenceNodeOfSequenceOfPointConstraint : public TCollection_SeqNode {
+class GeomPlate_SequenceNodeOfSequenceOfPointConstraint : public TCollection_SeqNode
+{
 
 public:
 
   
-      GeomPlate_SequenceNodeOfSequenceOfPointConstraint(const Handle(GeomPlate_PointConstraint)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    GeomPlate_SequenceNodeOfSequenceOfPointConstraint(const Handle(GeomPlate_PointConstraint)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_GeomPlate_PointConstraint& Value() const;
+      Handle(GeomPlate_PointConstraint)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_GeomPlate_PointConstraint myValue;
+  Handle(GeomPlate_PointConstraint) myValue;
 
 
 };
 
-#define SeqItem Handle_GeomPlate_PointConstraint
+#define SeqItem Handle(GeomPlate_PointConstraint)
 #define SeqItem_hxx <GeomPlate_PointConstraint.hxx>
 #define TCollection_SequenceNode GeomPlate_SequenceNodeOfSequenceOfPointConstraint
 #define TCollection_SequenceNode_hxx <GeomPlate_SequenceNodeOfSequenceOfPointConstraint.hxx>
@@ -78,7 +67,6 @@ Handle_GeomPlate_PointConstraint myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomPlate_SequenceNodeOfSequenceOfPointConstraint_HeaderFile

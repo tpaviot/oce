@@ -5,16 +5,10 @@
 
 #include <Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Contap_TheIWLineOfTheIWalking_HeaderFile
 #include <Contap_TheIWLineOfTheIWalking.hxx>
-#endif
-#ifndef _Contap_SequenceOfIWLineOfTheIWalking_HeaderFile
 #include <Contap_SequenceOfIWLineOfTheIWalking.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking,Standard_T
 IMPLEMENT_STANDARD_RTTI(Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking)
 
 
-#define SeqItem Handle_Contap_TheIWLineOfTheIWalking
+#define SeqItem Handle(Contap_TheIWLineOfTheIWalking)
 #define SeqItem_hxx <Contap_TheIWLineOfTheIWalking.hxx>
 #define TCollection_SequenceNode Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking
 #define TCollection_SequenceNode_hxx <Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking.hxx>

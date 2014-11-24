@@ -6,85 +6,74 @@
 #ifndef _HLRAlgo_EdgeStatus_HeaderFile
 #define _HLRAlgo_EdgeStatus_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Intrv_Intervals_HeaderFile
 #include <Intrv_Intervals.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_OutOfRange;
 
 
-//! This class describes the Hidden  Line status of an <br>
-//!          Edge. It contains : <br>
-//! <br>
-//!            The Bounds of the Edge and their tolerances <br>
-//! <br>
-//!            Two flags indicating if the edge is full visible <br>
-//!            or full hidden. <br>
-//! <br>
-//!            The Sequence  of visible Intervals  on the Edge. <br>
-class HLRAlgo_EdgeStatus  {
+//! This class describes the Hidden  Line status of an
+//! Edge. It contains :
+//!
+//! The Bounds of the Edge and their tolerances
+//!
+//! Two flags indicating if the edge is full visible
+//! or full hidden.
+//!
+//! The Sequence  of visible Intervals  on the Edge.
+class HLRAlgo_EdgeStatus 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   HLRAlgo_EdgeStatus();
-  //! Creates a  new  EdgeStatus.  Default visible.  The <br>
-//!          Edge is   bounded by the  interval  <Start>, <End> <br>
-//!          with the tolerances <TolStart>, <TolEnd>. <br>
-  Standard_EXPORT   HLRAlgo_EdgeStatus(const Standard_Real Start,const Standard_ShortReal TolStart,const Standard_Real End,const Standard_ShortReal TolEnd);
-  //! Initialize  an  EdgeStatus.  Default visible.  The <br>
-//!          Edge is   bounded by the  interval  <Start>, <End> <br>
-//!          with the tolerances <TolStart>, <TolEnd>. <br>
-  Standard_EXPORT     void Initialize(const Standard_Real Start,const Standard_ShortReal TolStart,const Standard_Real End,const Standard_ShortReal TolEnd) ;
+  Standard_EXPORT HLRAlgo_EdgeStatus();
   
-        void Bounds(Standard_Real& Start,Standard_ShortReal& TolStart,Standard_Real& End,Standard_ShortReal& TolEnd) const;
+  //! Creates a  new  EdgeStatus.  Default visible.  The
+  //! Edge is   bounded by the  interval  <Start>, <End>
+  //! with the tolerances <TolStart>, <TolEnd>.
+  Standard_EXPORT HLRAlgo_EdgeStatus(const Standard_Real Start, const Standard_ShortReal TolStart, const Standard_Real End, const Standard_ShortReal TolEnd);
   
-  Standard_EXPORT     Standard_Integer NbVisiblePart() const;
+  //! Initialize  an  EdgeStatus.  Default visible.  The
+  //! Edge is   bounded by the  interval  <Start>, <End>
+  //! with the tolerances <TolStart>, <TolEnd>.
+  Standard_EXPORT   void Initialize (const Standard_Real Start, const Standard_ShortReal TolStart, const Standard_Real End, const Standard_ShortReal TolEnd) ;
   
-  Standard_EXPORT     void VisiblePart(const Standard_Integer Index,Standard_Real& Start,Standard_ShortReal& TolStart,Standard_Real& End,Standard_ShortReal& TolEnd) const;
-  //! Hides  the  interval  <Start>,    <End>   with the <br>
-//!          tolerances <TolStart>,  <TolEnd>. This interval is <br>
-//!          subtracted from the visible  parts.  If the hidden <br>
-//!          part is on ( or under ) the face the flag <OnFace> <br>
-//!          is True ( or False ).  If the hidden  part is on ( <br>
-//!          or  inside  ) the boundary  of  the  face the flag <br>
-//!          <OnBoundary> is True ( or False ). <br>
-  Standard_EXPORT     void Hide(const Standard_Real Start,const Standard_ShortReal TolStart,const Standard_Real End,const Standard_ShortReal TolEnd,const Standard_Boolean OnFace,const Standard_Boolean OnBoundary) ;
-  //! Hide the whole Edge. <br>
-        void HideAll() ;
-  //! Show the whole Edge. <br>
-        void ShowAll() ;
+      void Bounds (Standard_Real& Start, Standard_ShortReal& TolStart, Standard_Real& End, Standard_ShortReal& TolEnd)  const;
   
-        Standard_Boolean AllHidden() const;
+  Standard_EXPORT   Standard_Integer NbVisiblePart()  const;
   
-        void AllHidden(const Standard_Boolean B) ;
+  Standard_EXPORT   void VisiblePart (const Standard_Integer Index, Standard_Real& Start, Standard_ShortReal& TolStart, Standard_Real& End, Standard_ShortReal& TolEnd)  const;
   
-        Standard_Boolean AllVisible() const;
+  //! Hides  the  interval  <Start>,    <End>   with the
+  //! tolerances <TolStart>,  <TolEnd>. This interval is
+  //! subtracted from the visible  parts.  If the hidden
+  //! part is on ( or under ) the face the flag <OnFace>
+  //! is True ( or False ).  If the hidden  part is on (
+  //! or  inside  ) the boundary  of  the  face the flag
+  //! <OnBoundary> is True ( or False ).
+  Standard_EXPORT   void Hide (const Standard_Real Start, const Standard_ShortReal TolStart, const Standard_Real End, const Standard_ShortReal TolEnd, const Standard_Boolean OnFace, const Standard_Boolean OnBoundary) ;
   
-        void AllVisible(const Standard_Boolean B) ;
-
+  //! Hide the whole Edge.
+      void HideAll() ;
+  
+  //! Show the whole Edge.
+      void ShowAll() ;
+  
+      Standard_Boolean AllHidden()  const;
+  
+      void AllHidden (const Standard_Boolean B) ;
+  
+      Standard_Boolean AllVisible()  const;
+  
+      void AllVisible (const Standard_Boolean B) ;
 
 
 
@@ -99,12 +88,12 @@ private:
 
 
 
-Standard_Real myStart;
-Standard_Real myEnd;
-Standard_ShortReal myTolStart;
-Standard_ShortReal myTolEnd;
-Standard_Boolean myFlags;
-Intrv_Intervals myVisibles;
+  Standard_Real myStart;
+  Standard_Real myEnd;
+  Standard_ShortReal myTolStart;
+  Standard_ShortReal myTolEnd;
+  Standard_Boolean myFlags;
+  Intrv_Intervals myVisibles;
 
 
 };
@@ -114,7 +103,6 @@ Intrv_Intervals myVisibles;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRAlgo_EdgeStatus_HeaderFile

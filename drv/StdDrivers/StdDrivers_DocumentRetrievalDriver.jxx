@@ -1,9 +1,3 @@
-#ifndef _MDF_ARDriverTable_HeaderFile
 #include <MDF_ARDriverTable.hxx>
-#endif
-#ifndef _CDM_MessageDriver_HeaderFile
 #include <CDM_MessageDriver.hxx>
-#endif
-#ifndef _StdDrivers_DocumentRetrievalDriver_HeaderFile
 #include <StdDrivers_DocumentRetrievalDriver.hxx>
-#endif

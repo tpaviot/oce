@@ -6,56 +6,45 @@
 #ifndef _StepFEA_FeaAxis2Placement3d_HeaderFile
 #define _StepFEA_FeaAxis2Placement3d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepFEA_FeaAxis2Placement3d_HeaderFile
 #include <Handle_StepFEA_FeaAxis2Placement3d.hxx>
-#endif
 
-#ifndef _StepFEA_CoordinateSystemType_HeaderFile
 #include <StepFEA_CoordinateSystemType.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepGeom_Axis2Placement3d_HeaderFile
 #include <StepGeom_Axis2Placement3d.hxx>
-#endif
-#ifndef _Handle_StepGeom_CartesianPoint_HeaderFile
 #include <Handle_StepGeom_CartesianPoint.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepGeom_Direction_HeaderFile
 #include <Handle_StepGeom_Direction.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepGeom_CartesianPoint;
 class StepGeom_Direction;
 
 
-//! Representation of STEP entity FeaAxis2Placement3d <br>
-class StepFEA_FeaAxis2Placement3d : public StepGeom_Axis2Placement3d {
+//! Representation of STEP entity FeaAxis2Placement3d
+class StepFEA_FeaAxis2Placement3d : public StepGeom_Axis2Placement3d
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepFEA_FeaAxis2Placement3d();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aRepresentationItem_Name,const Handle(StepGeom_CartesianPoint)& aPlacement_Location,const Standard_Boolean hasAxis2Placement3d_Axis,const Handle(StepGeom_Direction)& aAxis2Placement3d_Axis,const Standard_Boolean hasAxis2Placement3d_RefDirection,const Handle(StepGeom_Direction)& aAxis2Placement3d_RefDirection,const StepFEA_CoordinateSystemType aSystemType,const Handle(TCollection_HAsciiString)& aDescription) ;
-  //! Returns field SystemType <br>
-  Standard_EXPORT     StepFEA_CoordinateSystemType SystemType() const;
-  //! Set field SystemType <br>
-  Standard_EXPORT     void SetSystemType(const StepFEA_CoordinateSystemType SystemType) ;
-  //! Returns field Description <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Description() const;
-  //! Set field Description <br>
-  Standard_EXPORT     void SetDescription(const Handle(TCollection_HAsciiString)& Description) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepFEA_FeaAxis2Placement3d();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aRepresentationItem_Name, const Handle(StepGeom_CartesianPoint)& aPlacement_Location, const Standard_Boolean hasAxis2Placement3d_Axis, const Handle(StepGeom_Direction)& aAxis2Placement3d_Axis, const Standard_Boolean hasAxis2Placement3d_RefDirection, const Handle(StepGeom_Direction)& aAxis2Placement3d_RefDirection, const StepFEA_CoordinateSystemType aSystemType, const Handle(TCollection_HAsciiString)& aDescription) ;
+  
+  //! Returns field SystemType
+  Standard_EXPORT   StepFEA_CoordinateSystemType SystemType()  const;
+  
+  //! Set field SystemType
+  Standard_EXPORT   void SetSystemType (const StepFEA_CoordinateSystemType SystemType) ;
+  
+  //! Returns field Description
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Description()  const;
+  
+  //! Set field Description
+  Standard_EXPORT   void SetDescription (const Handle(TCollection_HAsciiString)& Description) ;
 
 
 
@@ -70,8 +59,8 @@ protected:
 private: 
 
 
-StepFEA_CoordinateSystemType theSystemType;
-Handle_TCollection_HAsciiString theDescription;
+  StepFEA_CoordinateSystemType theSystemType;
+  Handle(TCollection_HAsciiString) theDescription;
 
 
 };
@@ -80,7 +69,6 @@ Handle_TCollection_HAsciiString theDescription;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_FeaAxis2Placement3d_HeaderFile

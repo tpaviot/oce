@@ -98,6 +98,8 @@
 			<Add library="TKG3d" />
 			<Add library="PTKernel" />
 			<Add library="TKBRep" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />

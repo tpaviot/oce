@@ -6,53 +6,40 @@
 #ifndef _BRep_PolygonOnClosedSurface_HeaderFile
 #define _BRep_PolygonOnClosedSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRep_PolygonOnClosedSurface_HeaderFile
 #include <Handle_BRep_PolygonOnClosedSurface.hxx>
-#endif
 
-#ifndef _Handle_Poly_Polygon2D_HeaderFile
 #include <Handle_Poly_Polygon2D.hxx>
-#endif
-#ifndef _BRep_PolygonOnSurface_HeaderFile
 #include <BRep_PolygonOnSurface.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_BRep_CurveRepresentation_HeaderFile
 #include <Handle_BRep_CurveRepresentation.hxx>
-#endif
 class Poly_Polygon2D;
 class Geom_Surface;
 class TopLoc_Location;
 class BRep_CurveRepresentation;
 
 
-//! Representation by two 2d polygons in the parametric <br>
-//!          space of a surface. <br>
-class BRep_PolygonOnClosedSurface : public BRep_PolygonOnSurface {
+//! Representation by two 2d polygons in the parametric
+//! space of a surface.
+class BRep_PolygonOnClosedSurface : public BRep_PolygonOnSurface
+{
 
 public:
 
   
-  Standard_EXPORT   BRep_PolygonOnClosedSurface(const Handle(Poly_Polygon2D)& P1,const Handle(Poly_Polygon2D)& P2,const Handle(Geom_Surface)& S,const TopLoc_Location& L);
-  //! returns True. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsPolygonOnClosedSurface() const;
+  Standard_EXPORT BRep_PolygonOnClosedSurface(const Handle(Poly_Polygon2D)& P1, const Handle(Poly_Polygon2D)& P2, const Handle(Geom_Surface)& S, const TopLoc_Location& L);
   
-  Standard_EXPORT   virtual const Handle_Poly_Polygon2D& Polygon2() const;
+  //! returns True.
+  Standard_EXPORT virtual   Standard_Boolean IsPolygonOnClosedSurface()  const;
   
-  Standard_EXPORT   virtual  void Polygon2(const Handle(Poly_Polygon2D)& P) ;
-  //! Return a copy of this representation. <br>
-  Standard_EXPORT   virtual  Handle_BRep_CurveRepresentation Copy() const;
+  Standard_EXPORT virtual  const  Handle(Poly_Polygon2D)& Polygon2()  const;
+  
+  Standard_EXPORT virtual   void Polygon2 (const Handle(Poly_Polygon2D)& P) ;
+  
+  //! Return a copy of this representation.
+  Standard_EXPORT virtual   Handle(BRep_CurveRepresentation) Copy()  const;
 
 
 
@@ -67,7 +54,7 @@ protected:
 private: 
 
 
-Handle_Poly_Polygon2D myPolygon2;
+  Handle(Poly_Polygon2D) myPolygon2;
 
 
 };
@@ -76,7 +63,6 @@ Handle_Poly_Polygon2D myPolygon2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRep_PolygonOnClosedSurface_HeaderFile

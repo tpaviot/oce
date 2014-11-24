@@ -5,19 +5,11 @@
 
 #include <SelectMgr_IndexedMapNodeOfIndexedMapOfOwner.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _SelectMgr_EntityOwner_HeaderFile
 #include <SelectMgr_EntityOwner.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _SelectMgr_IndexedMapOfOwner_HeaderFile
 #include <SelectMgr_IndexedMapOfOwner.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(SelectMgr_IndexedMapNodeOfIndexedMapOfOwner,Standard_Transien
 IMPLEMENT_STANDARD_RTTI(SelectMgr_IndexedMapNodeOfIndexedMapOfOwner)
 
 
-#define TheKey Handle_SelectMgr_EntityOwner
+#define TheKey Handle(SelectMgr_EntityOwner)
 #define TheKey_hxx <SelectMgr_EntityOwner.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>

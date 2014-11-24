@@ -6,39 +6,28 @@
 #ifndef _TopOpeBRep_ListNodeOfListOfBipoint_HeaderFile
 #define _TopOpeBRep_ListNodeOfListOfBipoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRep_ListNodeOfListOfBipoint_HeaderFile
 #include <Handle_TopOpeBRep_ListNodeOfListOfBipoint.hxx>
-#endif
 
-#ifndef _TopOpeBRep_Bipoint_HeaderFile
 #include <TopOpeBRep_Bipoint.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopOpeBRep_Bipoint;
 class TopOpeBRep_ListOfBipoint;
 class TopOpeBRep_ListIteratorOfListOfBipoint;
 
 
 
-class TopOpeBRep_ListNodeOfListOfBipoint : public TCollection_MapNode {
+class TopOpeBRep_ListNodeOfListOfBipoint : public TCollection_MapNode
+{
 
 public:
 
   
-      TopOpeBRep_ListNodeOfListOfBipoint(const TopOpeBRep_Bipoint& I,const TCollection_MapNodePtr& n);
+    TopOpeBRep_ListNodeOfListOfBipoint(const TopOpeBRep_Bipoint& I, const TCollection_MapNodePtr& n);
   
-        TopOpeBRep_Bipoint& Value() const;
+      TopOpeBRep_Bipoint& Value()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-TopOpeBRep_Bipoint myValue;
+  TopOpeBRep_Bipoint myValue;
 
 
 };
@@ -83,7 +72,6 @@ TopOpeBRep_Bipoint myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRep_ListNodeOfListOfBipoint_HeaderFile

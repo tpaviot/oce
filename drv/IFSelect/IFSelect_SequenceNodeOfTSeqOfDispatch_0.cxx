@@ -5,16 +5,10 @@
 
 #include <IFSelect_SequenceNodeOfTSeqOfDispatch.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IFSelect_Dispatch_HeaderFile
 #include <IFSelect_Dispatch.hxx>
-#endif
-#ifndef _IFSelect_TSeqOfDispatch_HeaderFile
 #include <IFSelect_TSeqOfDispatch.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(IFSelect_SequenceNodeOfTSeqOfDispatch,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(IFSelect_SequenceNodeOfTSeqOfDispatch)
 
 
-#define SeqItem Handle_IFSelect_Dispatch
+#define SeqItem Handle(IFSelect_Dispatch)
 #define SeqItem_hxx <IFSelect_Dispatch.hxx>
 #define TCollection_SequenceNode IFSelect_SequenceNodeOfTSeqOfDispatch
 #define TCollection_SequenceNode_hxx <IFSelect_SequenceNodeOfTSeqOfDispatch.hxx>

@@ -1,36 +1,12 @@
-#ifndef _TColGeom_HArray2OfSurface_HeaderFile
 #include <TColGeom_HArray2OfSurface.hxx>
-#endif
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _Geom_Surface_HeaderFile
 #include <Geom_Surface.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _gp_Trsf2d_HeaderFile
 #include <gp_Trsf2d.hxx>
-#endif
-#ifndef _gp_Trsf_HeaderFile
 #include <gp_Trsf.hxx>
-#endif
-#ifndef _Geom_Geometry_HeaderFile
 #include <Geom_Geometry.hxx>
-#endif
-#ifndef _Geom_Curve_HeaderFile
 #include <Geom_Curve.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _ShapeExtend_CompositeSurface_HeaderFile
 #include <ShapeExtend_CompositeSurface.hxx>
-#endif

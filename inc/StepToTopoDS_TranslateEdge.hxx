@@ -6,49 +6,21 @@
 #ifndef _StepToTopoDS_TranslateEdge_HeaderFile
 #define _StepToTopoDS_TranslateEdge_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepToTopoDS_TranslateEdgeError_HeaderFile
 #include <StepToTopoDS_TranslateEdgeError.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _StepToTopoDS_Root_HeaderFile
 #include <StepToTopoDS_Root.hxx>
-#endif
-#ifndef _Handle_StepShape_Edge_HeaderFile
 #include <Handle_StepShape_Edge.hxx>
-#endif
-#ifndef _Handle_StepGeom_Curve_HeaderFile
 #include <Handle_StepGeom_Curve.hxx>
-#endif
-#ifndef _Handle_StepShape_EdgeCurve_HeaderFile
 #include <Handle_StepShape_EdgeCurve.hxx>
-#endif
-#ifndef _Handle_StepShape_Vertex_HeaderFile
 #include <Handle_StepShape_Vertex.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _Handle_StepGeom_Pcurve_HeaderFile
 #include <Handle_StepGeom_Pcurve.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
 class StdFail_NotDone;
 class StepShape_Edge;
 class StepToTopoDS_Tool;
@@ -65,28 +37,28 @@ class TopoDS_Shape;
 
 
 
-//! <br>
-class StepToTopoDS_TranslateEdge  : public StepToTopoDS_Root {
+class StepToTopoDS_TranslateEdge  : public StepToTopoDS_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepToTopoDS_TranslateEdge();
+  Standard_EXPORT StepToTopoDS_TranslateEdge();
   
-  Standard_EXPORT   StepToTopoDS_TranslateEdge(const Handle(StepShape_Edge)& E,StepToTopoDS_Tool& T,StepToTopoDS_NMTool& NMTool);
+  Standard_EXPORT StepToTopoDS_TranslateEdge(const Handle(StepShape_Edge)& E, StepToTopoDS_Tool& T, StepToTopoDS_NMTool& NMTool);
   
-  Standard_EXPORT     void Init(const Handle(StepShape_Edge)& E,StepToTopoDS_Tool& T,StepToTopoDS_NMTool& NMTool) ;
-  //!  Warning! C3D is assumed to be a Curve 3D ... <br>
-//!    other cases to checked before calling this <br>
-  Standard_EXPORT     void MakeFromCurve3D(const Handle(StepGeom_Curve)& C3D,const Handle(StepShape_EdgeCurve)& EC,const Handle(StepShape_Vertex)& Vend,const Standard_Real preci,TopoDS_Edge& E,TopoDS_Vertex& V1,TopoDS_Vertex& V2,StepToTopoDS_Tool& T) ;
+  Standard_EXPORT   void Init (const Handle(StepShape_Edge)& E, StepToTopoDS_Tool& T, StepToTopoDS_NMTool& NMTool) ;
   
-  Standard_EXPORT     Handle_Geom2d_Curve MakePCurve(const Handle(StepGeom_Pcurve)& PCU,const Handle(Geom_Surface)& ConvSurf) const;
+  //! Warning! C3D is assumed to be a Curve 3D ...
+  //! other cases to checked before calling this
+  Standard_EXPORT   void MakeFromCurve3D (const Handle(StepGeom_Curve)& C3D, const Handle(StepShape_EdgeCurve)& EC, const Handle(StepShape_Vertex)& Vend, const Standard_Real preci, TopoDS_Edge& E, TopoDS_Vertex& V1, TopoDS_Vertex& V2, StepToTopoDS_Tool& T) ;
   
-  Standard_EXPORT    const TopoDS_Shape& Value() const;
+  Standard_EXPORT   Handle(Geom2d_Curve) MakePCurve (const Handle(StepGeom_Pcurve)& PCU, const Handle(Geom_Surface)& ConvSurf)  const;
   
-  Standard_EXPORT     StepToTopoDS_TranslateEdgeError Error() const;
-
+  Standard_EXPORT  const  TopoDS_Shape& Value()  const;
+  
+  Standard_EXPORT   StepToTopoDS_TranslateEdgeError Error()  const;
 
 
 
@@ -101,8 +73,8 @@ private:
 
 
 
-StepToTopoDS_TranslateEdgeError myError;
-TopoDS_Shape myResult;
+  StepToTopoDS_TranslateEdgeError myError;
+  TopoDS_Shape myResult;
 
 
 };
@@ -111,7 +83,6 @@ TopoDS_Shape myResult;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToTopoDS_TranslateEdge_HeaderFile

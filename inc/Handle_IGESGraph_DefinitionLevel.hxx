@@ -6,22 +6,15 @@
 #ifndef _Handle_IGESGraph_DefinitionLevel_HeaderFile
 #define _Handle_IGESGraph_DefinitionLevel_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IGESData_LevelListEntity_HeaderFile
 #include <Handle_IGESData_LevelListEntity.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IGESData_LevelListEntity);
 class IGESGraph_DefinitionLevel;
 
-DEFINE_STANDARD_HANDLE(IGESGraph_DefinitionLevel,IGESData_LevelListEntity)
+DEFINE_STANDARD_HANDLE(IGESGraph_DefinitionLevel, IGESData_LevelListEntity)
 
-#endif
+#endif // _Handle_IGESGraph_DefinitionLevel_HeaderFile

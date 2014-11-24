@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{C39B7E21-1528-07CE-0957-432D8A62D63D}</ProjectGuid>
+    <ProjectGuid>{F50A56D7-0D05-18C9-09BE-66000B8CDA96}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -173,7 +173,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -188,7 +188,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKMath.lib;TKernel.lib;TKG2d.lib;TKG3d.lib;PTKernel.lib;TKBRep.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -216,7 +216,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win64\vc11\objd\TKPShape/</AssemblerListingLocation>
@@ -232,7 +232,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKMath.lib;TKernel.lib;TKG2d.lib;TKG3d.lib;PTKernel.lib;TKBRep.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>

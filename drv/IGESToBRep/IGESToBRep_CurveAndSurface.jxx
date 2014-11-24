@@ -1,21 +1,7 @@
-#ifndef _Geom_Surface_HeaderFile
 #include <Geom_Surface.hxx>
-#endif
-#ifndef _IGESData_IGESModel_HeaderFile
 #include <IGESData_IGESModel.hxx>
-#endif
-#ifndef _Transfer_TransientProcess_HeaderFile
 #include <Transfer_TransientProcess.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Message_Msg_HeaderFile
 #include <Message_Msg.hxx>
-#endif
-#ifndef _IGESToBRep_CurveAndSurface_HeaderFile
 #include <IGESToBRep_CurveAndSurface.hxx>
-#endif

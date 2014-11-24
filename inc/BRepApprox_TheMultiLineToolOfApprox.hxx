@@ -6,28 +6,14 @@
 #ifndef _BRepApprox_TheMultiLineToolOfApprox_HeaderFile
 #define _BRepApprox_TheMultiLineToolOfApprox_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _BRepApprox_TheMultiLineOfApprox_HeaderFile
 #include <BRepApprox_TheMultiLineOfApprox.hxx>
-#endif
-#ifndef _Approx_Status_HeaderFile
 #include <Approx_Status.hxx>
-#endif
 class BRepApprox_TheMultiLineOfApprox;
 class ApproxInt_SvSurfaces;
 class TColgp_Array1OfPnt;
@@ -37,42 +23,42 @@ class TColgp_Array1OfVec2d;
 
 
 
-class BRepApprox_TheMultiLineToolOfApprox  {
+class BRepApprox_TheMultiLineToolOfApprox 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      static  Standard_Integer FirstPoint(const BRepApprox_TheMultiLineOfApprox& ML) ;
+    static   Standard_Integer FirstPoint (const BRepApprox_TheMultiLineOfApprox& ML) ;
   
-      static  Standard_Integer LastPoint(const BRepApprox_TheMultiLineOfApprox& ML) ;
+    static   Standard_Integer LastPoint (const BRepApprox_TheMultiLineOfApprox& ML) ;
   
-      static  Standard_Integer NbP2d(const BRepApprox_TheMultiLineOfApprox& ML) ;
+    static   Standard_Integer NbP2d (const BRepApprox_TheMultiLineOfApprox& ML) ;
   
-      static  Standard_Integer NbP3d(const BRepApprox_TheMultiLineOfApprox& ML) ;
+    static   Standard_Integer NbP3d (const BRepApprox_TheMultiLineOfApprox& ML) ;
   
-      static  void Value(const BRepApprox_TheMultiLineOfApprox& ML,const Standard_Integer MPointIndex,TColgp_Array1OfPnt& tabPt) ;
+    static   void Value (const BRepApprox_TheMultiLineOfApprox& ML, const Standard_Integer MPointIndex, TColgp_Array1OfPnt& tabPt) ;
   
-      static  void Value(const BRepApprox_TheMultiLineOfApprox& ML,const Standard_Integer MPointIndex,TColgp_Array1OfPnt2d& tabPt2d) ;
+    static   void Value (const BRepApprox_TheMultiLineOfApprox& ML, const Standard_Integer MPointIndex, TColgp_Array1OfPnt2d& tabPt2d) ;
   
-      static  void Value(const BRepApprox_TheMultiLineOfApprox& ML,const Standard_Integer MPointIndex,TColgp_Array1OfPnt& tabPt,TColgp_Array1OfPnt2d& tabPt2d) ;
+    static   void Value (const BRepApprox_TheMultiLineOfApprox& ML, const Standard_Integer MPointIndex, TColgp_Array1OfPnt& tabPt, TColgp_Array1OfPnt2d& tabPt2d) ;
   
-      static  Standard_Boolean Tangency(const BRepApprox_TheMultiLineOfApprox& ML,const Standard_Integer MPointIndex,TColgp_Array1OfVec& tabV) ;
+    static   Standard_Boolean Tangency (const BRepApprox_TheMultiLineOfApprox& ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec& tabV) ;
   
-      static  Standard_Boolean Tangency(const BRepApprox_TheMultiLineOfApprox& ML,const Standard_Integer MPointIndex,TColgp_Array1OfVec2d& tabV2d) ;
+    static   Standard_Boolean Tangency (const BRepApprox_TheMultiLineOfApprox& ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec2d& tabV2d) ;
   
-      static  Standard_Boolean Tangency(const BRepApprox_TheMultiLineOfApprox& ML,const Standard_Integer MPointIndex,TColgp_Array1OfVec& tabV,TColgp_Array1OfVec2d& tabV2d) ;
+    static   Standard_Boolean Tangency (const BRepApprox_TheMultiLineOfApprox& ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec& tabV, TColgp_Array1OfVec2d& tabV2d) ;
   
-      static  Standard_Boolean Curvature(const BRepApprox_TheMultiLineOfApprox& ML,const Standard_Integer MPointIndex,TColgp_Array1OfVec& tabV) ;
+    static   Standard_Boolean Curvature (const BRepApprox_TheMultiLineOfApprox& ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec& tabV) ;
   
-      static  Standard_Boolean Curvature(const BRepApprox_TheMultiLineOfApprox& ML,const Standard_Integer MPointIndex,TColgp_Array1OfVec2d& tabV2d) ;
+    static   Standard_Boolean Curvature (const BRepApprox_TheMultiLineOfApprox& ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec2d& tabV2d) ;
   
-      static  Standard_Boolean Curvature(const BRepApprox_TheMultiLineOfApprox& ML,const Standard_Integer MPointIndex,TColgp_Array1OfVec& tabV,TColgp_Array1OfVec2d& tabV2d) ;
+    static   Standard_Boolean Curvature (const BRepApprox_TheMultiLineOfApprox& ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec& tabV, TColgp_Array1OfVec2d& tabV2d) ;
   
-      static  BRepApprox_TheMultiLineOfApprox MakeMLBetween(const BRepApprox_TheMultiLineOfApprox& ML,const Standard_Integer I1,const Standard_Integer I2,const Standard_Integer NbPMin) ;
+    static   BRepApprox_TheMultiLineOfApprox MakeMLBetween (const BRepApprox_TheMultiLineOfApprox& ML, const Standard_Integer I1, const Standard_Integer I2, const Standard_Integer NbPMin) ;
   
-      static  Approx_Status WhatStatus(const BRepApprox_TheMultiLineOfApprox& ML,const Standard_Integer I1,const Standard_Integer I2) ;
-
+    static   Approx_Status WhatStatus (const BRepApprox_TheMultiLineOfApprox& ML, const Standard_Integer I1, const Standard_Integer I2) ;
 
 
 
@@ -108,7 +94,6 @@ private:
 #undef ApproxInt_MultiLineTool_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepApprox_TheMultiLineToolOfApprox_HeaderFile

@@ -6,25 +6,13 @@
 #ifndef _AppDef_MyLineTool_HeaderFile
 #define _AppDef_MyLineTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Approx_Status_HeaderFile
 #include <Approx_Status.hxx>
-#endif
 class AppDef_MultiLine;
 class TColgp_Array1OfPnt;
 class TColgp_Array1OfPnt2d;
@@ -32,55 +20,70 @@ class TColgp_Array1OfVec;
 class TColgp_Array1OfVec2d;
 
 
-//! example of MultiLine tool corresponding to the tools of the packages <br>
-//! AppParCurves and Approx. For Approx, the tool will not addd points <br>
-//! if the algorithms want some. <br>
-class AppDef_MyLineTool  {
+//! example of MultiLine tool corresponding to the tools of the packages
+//! AppParCurves and Approx. For Approx, the tool will not addd points
+//! if the algorithms want some.
+class AppDef_MyLineTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns the first index of multipoints of the MultiLine. <br>
-  Standard_EXPORT   static  Standard_Integer FirstPoint(const AppDef_MultiLine& ML) ;
-  //! Returns the last index of multipoints of the MultiLine. <br>
-  Standard_EXPORT   static  Standard_Integer LastPoint(const AppDef_MultiLine& ML) ;
-  //! Returns the number of 2d points of a MultiLine. <br>
-  Standard_EXPORT   static  Standard_Integer NbP2d(const AppDef_MultiLine& ML) ;
-  //! Returns the number of 3d points of a MultiLine. <br>
-  Standard_EXPORT   static  Standard_Integer NbP3d(const AppDef_MultiLine& ML) ;
-  //! returns the 3d points of the multipoint <MPointIndex> <br>
-//!          when only 3d points exist. <br>
-  Standard_EXPORT   static  void Value(const AppDef_MultiLine& ML,const Standard_Integer MPointIndex,TColgp_Array1OfPnt& tabPt) ;
-  //! returns the 2d points of the multipoint <MPointIndex> <br>
-//!          when only 2d points exist. <br>
-  Standard_EXPORT   static  void Value(const AppDef_MultiLine& ML,const Standard_Integer MPointIndex,TColgp_Array1OfPnt2d& tabPt2d) ;
-  //! returns the 3d and 2d points of the multipoint <br>
-//!          <MPointIndex>. <br>
-  Standard_EXPORT   static  void Value(const AppDef_MultiLine& ML,const Standard_Integer MPointIndex,TColgp_Array1OfPnt& tabPt,TColgp_Array1OfPnt2d& tabPt2d) ;
-  //! returns the 3d points of the multipoint <MPointIndex> <br>
-//!          when only 3d points exist. <br>
-  Standard_EXPORT   static  Standard_Boolean Tangency(const AppDef_MultiLine& ML,const Standard_Integer MPointIndex,TColgp_Array1OfVec& tabV) ;
-  //! returns the 2d tangency points of the multipoint <br>
-//!          <MPointIndex> only when 2d points exist. <br>
-  Standard_EXPORT   static  Standard_Boolean Tangency(const AppDef_MultiLine& ML,const Standard_Integer MPointIndex,TColgp_Array1OfVec2d& tabV2d) ;
-  //! returns the 3d and 2d points of the multipoint <br>
-//!          <MPointIndex>. <br>
-  Standard_EXPORT   static  Standard_Boolean Tangency(const AppDef_MultiLine& ML,const Standard_Integer MPointIndex,TColgp_Array1OfVec& tabV,TColgp_Array1OfVec2d& tabV2d) ;
-  //! returns the 3d curvatures of the multipoint <MPointIndex> <br>
-//!          when only 3d points exist. <br>
-  Standard_EXPORT   static  Standard_Boolean Curvature(const AppDef_MultiLine& ML,const Standard_Integer MPointIndex,TColgp_Array1OfVec& tabV) ;
-  //! returns the 2d curvatures of the multipoint <br>
-//!          <MPointIndex> only when 2d points exist. <br>
-  Standard_EXPORT   static  Standard_Boolean Curvature(const AppDef_MultiLine& ML,const Standard_Integer MPointIndex,TColgp_Array1OfVec2d& tabV2d) ;
-  //! returns the 3d and 2d curvatures of the multipoint <br>
-//!          <MPointIndex>. <br>
-  Standard_EXPORT   static  Standard_Boolean Curvature(const AppDef_MultiLine& ML,const Standard_Integer MPointIndex,TColgp_Array1OfVec& tabV,TColgp_Array1OfVec2d& tabV2d) ;
-  //!  returns NoPointsAdded <br>
-  Standard_EXPORT   static  Approx_Status WhatStatus(const AppDef_MultiLine& ML,const Standard_Integer I1,const Standard_Integer I2) ;
-  //! Is never called in the algorithms. <br>
-//!          Nothing is done. <br>
-  Standard_EXPORT   static  AppDef_MultiLine& MakeMLBetween(const AppDef_MultiLine& ML,const Standard_Integer I1,const Standard_Integer I2,const Standard_Integer NbPMin) ;
-
+  
+  //! Returns the first index of multipoints of the MultiLine.
+  Standard_EXPORT static   Standard_Integer FirstPoint (const AppDef_MultiLine& ML) ;
+  
+  //! Returns the last index of multipoints of the MultiLine.
+  Standard_EXPORT static   Standard_Integer LastPoint (const AppDef_MultiLine& ML) ;
+  
+  //! Returns the number of 2d points of a MultiLine.
+  Standard_EXPORT static   Standard_Integer NbP2d (const AppDef_MultiLine& ML) ;
+  
+  //! Returns the number of 3d points of a MultiLine.
+  Standard_EXPORT static   Standard_Integer NbP3d (const AppDef_MultiLine& ML) ;
+  
+  //! returns the 3d points of the multipoint <MPointIndex>
+  //! when only 3d points exist.
+  Standard_EXPORT static   void Value (const AppDef_MultiLine& ML, const Standard_Integer MPointIndex, TColgp_Array1OfPnt& tabPt) ;
+  
+  //! returns the 2d points of the multipoint <MPointIndex>
+  //! when only 2d points exist.
+  Standard_EXPORT static   void Value (const AppDef_MultiLine& ML, const Standard_Integer MPointIndex, TColgp_Array1OfPnt2d& tabPt2d) ;
+  
+  //! returns the 3d and 2d points of the multipoint
+  //! <MPointIndex>.
+  Standard_EXPORT static   void Value (const AppDef_MultiLine& ML, const Standard_Integer MPointIndex, TColgp_Array1OfPnt& tabPt, TColgp_Array1OfPnt2d& tabPt2d) ;
+  
+  //! returns the 3d points of the multipoint <MPointIndex>
+  //! when only 3d points exist.
+  Standard_EXPORT static   Standard_Boolean Tangency (const AppDef_MultiLine& ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec& tabV) ;
+  
+  //! returns the 2d tangency points of the multipoint
+  //! <MPointIndex> only when 2d points exist.
+  Standard_EXPORT static   Standard_Boolean Tangency (const AppDef_MultiLine& ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec2d& tabV2d) ;
+  
+  //! returns the 3d and 2d points of the multipoint
+  //! <MPointIndex>.
+  Standard_EXPORT static   Standard_Boolean Tangency (const AppDef_MultiLine& ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec& tabV, TColgp_Array1OfVec2d& tabV2d) ;
+  
+  //! returns the 3d curvatures of the multipoint <MPointIndex>
+  //! when only 3d points exist.
+  Standard_EXPORT static   Standard_Boolean Curvature (const AppDef_MultiLine& ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec& tabV) ;
+  
+  //! returns the 2d curvatures of the multipoint
+  //! <MPointIndex> only when 2d points exist.
+  Standard_EXPORT static   Standard_Boolean Curvature (const AppDef_MultiLine& ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec2d& tabV2d) ;
+  
+  //! returns the 3d and 2d curvatures of the multipoint
+  //! <MPointIndex>.
+  Standard_EXPORT static   Standard_Boolean Curvature (const AppDef_MultiLine& ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec& tabV, TColgp_Array1OfVec2d& tabV2d) ;
+  
+  //! returns NoPointsAdded
+  Standard_EXPORT static   Approx_Status WhatStatus (const AppDef_MultiLine& ML, const Standard_Integer I1, const Standard_Integer I2) ;
+  
+  //! Is never called in the algorithms.
+  //! Nothing is done.
+  Standard_EXPORT static   AppDef_MultiLine& MakeMLBetween (const AppDef_MultiLine& ML, const Standard_Integer I1, const Standard_Integer I2, const Standard_Integer NbPMin) ;
 
 
 
@@ -103,7 +106,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AppDef_MyLineTool_HeaderFile

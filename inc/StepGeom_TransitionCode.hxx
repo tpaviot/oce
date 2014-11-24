@@ -6,16 +6,15 @@
 #ifndef _StepGeom_TransitionCode_HeaderFile
 #define _StepGeom_TransitionCode_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepGeom_TransitionCode {
+
+enum StepGeom_TransitionCode
+{
 StepGeom_tcDiscontinuous,
 StepGeom_tcContinuous,
 StepGeom_tcContSameGradient,
 StepGeom_tcContSameGradientSameCurvature
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepGeom_TransitionCode_HeaderFile

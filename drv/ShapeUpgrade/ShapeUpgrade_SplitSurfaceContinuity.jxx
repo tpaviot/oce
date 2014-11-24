@@ -1,3 +1,1 @@
-#ifndef _ShapeUpgrade_SplitSurfaceContinuity_HeaderFile
 #include <ShapeUpgrade_SplitSurfaceContinuity.hxx>
-#endif

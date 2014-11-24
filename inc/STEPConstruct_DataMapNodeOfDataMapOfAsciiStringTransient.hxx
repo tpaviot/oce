@@ -6,28 +6,14 @@
 #ifndef _STEPConstruct_DataMapNodeOfDataMapOfAsciiStringTransient_HeaderFile
 #define _STEPConstruct_DataMapNodeOfDataMapOfAsciiStringTransient_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_STEPConstruct_DataMapNodeOfDataMapOfAsciiStringTransient_HeaderFile
 #include <Handle_STEPConstruct_DataMapNodeOfDataMapOfAsciiStringTransient.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Standard_Transient;
 class TCollection_AsciiString;
 class STEPConstruct_DataMapOfAsciiStringTransient;
@@ -35,16 +21,17 @@ class STEPConstruct_DataMapIteratorOfDataMapOfAsciiStringTransient;
 
 
 
-class STEPConstruct_DataMapNodeOfDataMapOfAsciiStringTransient : public TCollection_MapNode {
+class STEPConstruct_DataMapNodeOfDataMapOfAsciiStringTransient : public TCollection_MapNode
+{
 
 public:
 
   
-      STEPConstruct_DataMapNodeOfDataMapOfAsciiStringTransient(const TCollection_AsciiString& K,const Handle(Standard_Transient)& I,const TCollection_MapNodePtr& n);
+    STEPConstruct_DataMapNodeOfDataMapOfAsciiStringTransient(const TCollection_AsciiString& K, const Handle(Standard_Transient)& I, const TCollection_MapNodePtr& n);
   
-        TCollection_AsciiString& Key() const;
+      TCollection_AsciiString& Key()  const;
   
-        Handle_Standard_Transient& Value() const;
+      Handle(Standard_Transient)& Value()  const;
 
 
 
@@ -59,15 +46,15 @@ protected:
 private: 
 
 
-TCollection_AsciiString myKey;
-Handle_Standard_Transient myValue;
+  TCollection_AsciiString myKey;
+  Handle(Standard_Transient) myValue;
 
 
 };
 
 #define TheKey TCollection_AsciiString
 #define TheKey_hxx <TCollection_AsciiString.hxx>
-#define TheItem Handle_Standard_Transient
+#define TheItem Handle(Standard_Transient)
 #define TheItem_hxx <Standard_Transient.hxx>
 #define Hasher TCollection_AsciiString
 #define Hasher_hxx <TCollection_AsciiString.hxx>
@@ -98,7 +85,6 @@ Handle_Standard_Transient myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPConstruct_DataMapNodeOfDataMapOfAsciiStringTransient_HeaderFile

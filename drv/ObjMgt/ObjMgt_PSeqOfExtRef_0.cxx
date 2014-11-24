@@ -5,28 +5,14 @@
 
 #include <ObjMgt_PSeqOfExtRef.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _ObjMgt_ExternRef_HeaderFile
 #include <ObjMgt_ExternRef.hxx>
-#endif
-#ifndef _ObjMgt_PSeqOfExtRef_HeaderFile
 #include <ObjMgt_PSeqOfExtRef.hxx>
-#endif
-#ifndef _ObjMgt_SeqNodeOfPSeqOfExtRef_HeaderFile
 #include <ObjMgt_SeqNodeOfPSeqOfExtRef.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _ObjMgt_SeqExplorerOfPSeqOfExtRef_HeaderFile
 #include <ObjMgt_SeqExplorerOfPSeqOfExtRef.hxx>
-#endif
  
 
 
@@ -43,7 +29,7 @@ IMPLEMENT_DOWNCAST(ObjMgt_PSeqOfExtRef,Standard_Persistent)
 IMPLEMENT_STANDARD_RTTI(ObjMgt_PSeqOfExtRef)
 
 
-#define Item Handle_ObjMgt_ExternRef
+#define Item Handle(ObjMgt_ExternRef)
 #define Item_hxx <ObjMgt_ExternRef.hxx>
 #define PCollection_SeqNode ObjMgt_SeqNodeOfPSeqOfExtRef
 #define PCollection_SeqNode_hxx <ObjMgt_SeqNodeOfPSeqOfExtRef.hxx>

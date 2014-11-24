@@ -5,18 +5,10 @@
 
 #include <AdvApp2Var_SequenceOfPatch.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _AdvApp2Var_Patch_HeaderFile
 #include <AdvApp2Var_Patch.hxx>
-#endif
-#ifndef _AdvApp2Var_SequenceNodeOfSequenceOfPatch_HeaderFile
 #include <AdvApp2Var_SequenceNodeOfSequenceOfPatch.hxx>
-#endif
  
 
 #define SeqItem AdvApp2Var_Patch

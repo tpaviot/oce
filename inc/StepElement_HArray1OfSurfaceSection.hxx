@@ -6,28 +6,14 @@
 #ifndef _StepElement_HArray1OfSurfaceSection_HeaderFile
 #define _StepElement_HArray1OfSurfaceSection_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepElement_HArray1OfSurfaceSection_HeaderFile
 #include <Handle_StepElement_HArray1OfSurfaceSection.hxx>
-#endif
 
-#ifndef _StepElement_Array1OfSurfaceSection_HeaderFile
 #include <StepElement_Array1OfSurfaceSection.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_StepElement_SurfaceSection_HeaderFile
 #include <Handle_StepElement_SurfaceSection.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class StepElement_Array1OfSurfaceSection;
 
 
 
-class StepElement_HArray1OfSurfaceSection : public MMgt_TShared {
+class StepElement_HArray1OfSurfaceSection : public MMgt_TShared
+{
 
 public:
 
   
-      StepElement_HArray1OfSurfaceSection(const Standard_Integer Low,const Standard_Integer Up);
+    StepElement_HArray1OfSurfaceSection(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepElement_HArray1OfSurfaceSection(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepElement_SurfaceSection)& V);
+    StepElement_HArray1OfSurfaceSection(const Standard_Integer Low, const Standard_Integer Up, const Handle(StepElement_SurfaceSection)& V);
   
-        void Init(const Handle(StepElement_SurfaceSection)& V) ;
+      void Init (const Handle(StepElement_SurfaceSection)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(StepElement_SurfaceSection)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(StepElement_SurfaceSection)& Value) ;
   
-       const Handle_StepElement_SurfaceSection& Value(const Standard_Integer Index) const;
+     const  Handle(StepElement_SurfaceSection)& Value (const Standard_Integer Index)  const;
   
-        Handle_StepElement_SurfaceSection& ChangeValue(const Standard_Integer Index) ;
+      Handle(StepElement_SurfaceSection)& ChangeValue (const Standard_Integer Index) ;
   
-       const StepElement_Array1OfSurfaceSection& Array1() const;
+     const  StepElement_Array1OfSurfaceSection& Array1()  const;
   
-        StepElement_Array1OfSurfaceSection& ChangeArray1() ;
+      StepElement_Array1OfSurfaceSection& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-StepElement_Array1OfSurfaceSection myArray;
+  StepElement_Array1OfSurfaceSection myArray;
 
 
 };
 
-#define ItemHArray1 Handle_StepElement_SurfaceSection
+#define ItemHArray1 Handle(StepElement_SurfaceSection)
 #define ItemHArray1_hxx <StepElement_SurfaceSection.hxx>
 #define TheArray1 StepElement_Array1OfSurfaceSection
 #define TheArray1_hxx <StepElement_Array1OfSurfaceSection.hxx>
@@ -103,7 +90,6 @@ StepElement_Array1OfSurfaceSection myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_HArray1OfSurfaceSection_HeaderFile

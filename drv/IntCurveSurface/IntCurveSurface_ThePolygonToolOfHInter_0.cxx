@@ -5,18 +5,10 @@
 
 #include <IntCurveSurface_ThePolygonToolOfHInter.hxx>
 
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _IntCurveSurface_ThePolygonOfHInter_HeaderFile
 #include <IntCurveSurface_ThePolygonOfHInter.hxx>
-#endif
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
  
 
 #define ThePoint gp_Pnt

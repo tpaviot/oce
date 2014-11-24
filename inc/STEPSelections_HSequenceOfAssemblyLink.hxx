@@ -6,31 +6,15 @@
 #ifndef _STEPSelections_HSequenceOfAssemblyLink_HeaderFile
 #define _STEPSelections_HSequenceOfAssemblyLink_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_STEPSelections_HSequenceOfAssemblyLink_HeaderFile
 #include <Handle_STEPSelections_HSequenceOfAssemblyLink.hxx>
-#endif
 
-#ifndef _STEPSelections_SequenceOfAssemblyLink_HeaderFile
 #include <STEPSelections_SequenceOfAssemblyLink.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_STEPSelections_AssemblyLink_HeaderFile
 #include <Handle_STEPSelections_AssemblyLink.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class STEPSelections_AssemblyLink;
@@ -38,56 +22,57 @@ class STEPSelections_SequenceOfAssemblyLink;
 
 
 
-class STEPSelections_HSequenceOfAssemblyLink : public MMgt_TShared {
+class STEPSelections_HSequenceOfAssemblyLink : public MMgt_TShared
+{
 
 public:
 
   
-      STEPSelections_HSequenceOfAssemblyLink();
+    STEPSelections_HSequenceOfAssemblyLink();
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void Append(const Handle(STEPSelections_AssemblyLink)& anItem) ;
+  Standard_EXPORT   void Append (const Handle(STEPSelections_AssemblyLink)& anItem) ;
   
-  Standard_EXPORT     void Append(const Handle(STEPSelections_HSequenceOfAssemblyLink)& aSequence) ;
+  Standard_EXPORT   void Append (const Handle(STEPSelections_HSequenceOfAssemblyLink)& aSequence) ;
   
-  Standard_EXPORT     void Prepend(const Handle(STEPSelections_AssemblyLink)& anItem) ;
+  Standard_EXPORT   void Prepend (const Handle(STEPSelections_AssemblyLink)& anItem) ;
   
-  Standard_EXPORT     void Prepend(const Handle(STEPSelections_HSequenceOfAssemblyLink)& aSequence) ;
+  Standard_EXPORT   void Prepend (const Handle(STEPSelections_HSequenceOfAssemblyLink)& aSequence) ;
   
-  Standard_EXPORT     void Reverse() ;
+  Standard_EXPORT   void Reverse() ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(STEPSelections_AssemblyLink)& anItem) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(STEPSelections_AssemblyLink)& anItem) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(STEPSelections_HSequenceOfAssemblyLink)& aSequence) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(STEPSelections_HSequenceOfAssemblyLink)& aSequence) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(STEPSelections_AssemblyLink)& anItem) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(STEPSelections_AssemblyLink)& anItem) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(STEPSelections_HSequenceOfAssemblyLink)& aSequence) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(STEPSelections_HSequenceOfAssemblyLink)& aSequence) ;
   
-  Standard_EXPORT     void Exchange(const Standard_Integer anIndex,const Standard_Integer anOtherIndex) ;
+  Standard_EXPORT   void Exchange (const Standard_Integer anIndex, const Standard_Integer anOtherIndex) ;
   
-  Standard_EXPORT     Handle_STEPSelections_HSequenceOfAssemblyLink Split(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(STEPSelections_HSequenceOfAssemblyLink) Split (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer anIndex,const Handle(STEPSelections_AssemblyLink)& anItem) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer anIndex, const Handle(STEPSelections_AssemblyLink)& anItem) ;
   
-  Standard_EXPORT    const Handle_STEPSelections_AssemblyLink& Value(const Standard_Integer anIndex) const;
+  Standard_EXPORT  const  Handle(STEPSelections_AssemblyLink)& Value (const Standard_Integer anIndex)  const;
   
-  Standard_EXPORT     Handle_STEPSelections_AssemblyLink& ChangeValue(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(STEPSelections_AssemblyLink)& ChangeValue (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer anIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer fromIndex,const Standard_Integer toIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer fromIndex, const Standard_Integer toIndex) ;
   
-       const STEPSelections_SequenceOfAssemblyLink& Sequence() const;
+     const  STEPSelections_SequenceOfAssemblyLink& Sequence()  const;
   
-        STEPSelections_SequenceOfAssemblyLink& ChangeSequence() ;
+      STEPSelections_SequenceOfAssemblyLink& ChangeSequence() ;
   
-  Standard_EXPORT     Handle_STEPSelections_HSequenceOfAssemblyLink ShallowCopy() const;
+  Standard_EXPORT   Handle(STEPSelections_HSequenceOfAssemblyLink) ShallowCopy()  const;
 
 
 
@@ -102,12 +87,12 @@ protected:
 private: 
 
 
-STEPSelections_SequenceOfAssemblyLink mySequence;
+  STEPSelections_SequenceOfAssemblyLink mySequence;
 
 
 };
 
-#define Item Handle_STEPSelections_AssemblyLink
+#define Item Handle(STEPSelections_AssemblyLink)
 #define Item_hxx <STEPSelections_AssemblyLink.hxx>
 #define TheSequence STEPSelections_SequenceOfAssemblyLink
 #define TheSequence_hxx <STEPSelections_SequenceOfAssemblyLink.hxx>
@@ -128,11 +113,10 @@ STEPSelections_SequenceOfAssemblyLink mySequence;
 #undef TCollection_HSequence_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline Handle_STEPSelections_HSequenceOfAssemblyLink ShallowCopy(const Handle_STEPSelections_HSequenceOfAssemblyLink& me) {
+inline Handle(STEPSelections_HSequenceOfAssemblyLink) ShallowCopy(const Handle(STEPSelections_HSequenceOfAssemblyLink)& me) {
  return me->ShallowCopy();
 }
 
 
 
-#endif
+#endif // _STEPSelections_HSequenceOfAssemblyLink_HeaderFile

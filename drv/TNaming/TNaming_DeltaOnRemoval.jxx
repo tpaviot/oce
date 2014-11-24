@@ -1,9 +1,3 @@
-#ifndef _TNaming_DeltaOnModification_HeaderFile
 #include <TNaming_DeltaOnModification.hxx>
-#endif
-#ifndef _TNaming_NamedShape_HeaderFile
 #include <TNaming_NamedShape.hxx>
-#endif
-#ifndef _TNaming_DeltaOnRemoval_HeaderFile
 #include <TNaming_DeltaOnRemoval.hxx>
-#endif

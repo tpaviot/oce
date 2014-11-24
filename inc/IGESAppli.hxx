@@ -6,19 +6,11 @@
 #ifndef _IGESAppli_HeaderFile
 #define _IGESAppli_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_IGESAppli_Protocol_HeaderFile
 #include <Handle_IGESAppli_Protocol.hxx>
-#endif
 class IGESAppli_Protocol;
 class IGESAppli_Node;
 class IGESAppli_FiniteElement;
@@ -70,18 +62,20 @@ class IGESAppli_HArray1OfNode;
 class IGESAppli_HArray1OfFiniteElement;
 
 
-//! This package represents collection of miscellaneous <br>
-//!           entities from IGES <br>
-class IGESAppli  {
+//! This package represents collection of miscellaneous
+//! entities from IGES
+class IGESAppli 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Prepares dynamic data (Protocol, Modules) for this package <br>
-  Standard_EXPORT   static  void Init() ;
-  //! Returns the Protocol for this Package <br>
-  Standard_EXPORT   static  Handle_IGESAppli_Protocol Protocol() ;
-
+  
+  //! Prepares dynamic data (Protocol, Modules) for this package
+  Standard_EXPORT static   void Init() ;
+  
+  //! Returns the Protocol for this Package
+  Standard_EXPORT static   Handle(IGESAppli_Protocol) Protocol() ;
 
 
 
@@ -152,7 +146,6 @@ friend class IGESAppli_HArray1OfFiniteElement;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESAppli_HeaderFile

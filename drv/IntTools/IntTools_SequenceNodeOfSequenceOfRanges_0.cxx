@@ -5,16 +5,10 @@
 
 #include <IntTools_SequenceNodeOfSequenceOfRanges.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IntTools_Range_HeaderFile
 #include <IntTools_Range.hxx>
-#endif
-#ifndef _IntTools_SequenceOfRanges_HeaderFile
 #include <IntTools_SequenceOfRanges.hxx>
-#endif
 
  
 

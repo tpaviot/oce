@@ -6,46 +6,41 @@
 #ifndef _StepShape_DimensionalSize_HeaderFile
 #define _StepShape_DimensionalSize_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_DimensionalSize_HeaderFile
 #include <Handle_StepShape_DimensionalSize.hxx>
-#endif
 
-#ifndef _Handle_StepRepr_ShapeAspect_HeaderFile
 #include <Handle_StepRepr_ShapeAspect.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepRepr_ShapeAspect;
 class TCollection_HAsciiString;
 
 
-//! Representation of STEP entity DimensionalSize <br>
-class StepShape_DimensionalSize : public MMgt_TShared {
+//! Representation of STEP entity DimensionalSize
+class StepShape_DimensionalSize : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepShape_DimensionalSize();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(StepRepr_ShapeAspect)& aAppliesTo,const Handle(TCollection_HAsciiString)& aName) ;
-  //! Returns field AppliesTo <br>
-  Standard_EXPORT     Handle_StepRepr_ShapeAspect AppliesTo() const;
-  //! Set field AppliesTo <br>
-  Standard_EXPORT     void SetAppliesTo(const Handle(StepRepr_ShapeAspect)& AppliesTo) ;
-  //! Returns field Name <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Name() const;
-  //! Set field Name <br>
-  Standard_EXPORT     void SetName(const Handle(TCollection_HAsciiString)& Name) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepShape_DimensionalSize();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(StepRepr_ShapeAspect)& aAppliesTo, const Handle(TCollection_HAsciiString)& aName) ;
+  
+  //! Returns field AppliesTo
+  Standard_EXPORT   Handle(StepRepr_ShapeAspect) AppliesTo()  const;
+  
+  //! Set field AppliesTo
+  Standard_EXPORT   void SetAppliesTo (const Handle(StepRepr_ShapeAspect)& AppliesTo) ;
+  
+  //! Returns field Name
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Name()  const;
+  
+  //! Set field Name
+  Standard_EXPORT   void SetName (const Handle(TCollection_HAsciiString)& Name) ;
 
 
 
@@ -60,8 +55,8 @@ protected:
 private: 
 
 
-Handle_StepRepr_ShapeAspect theAppliesTo;
-Handle_TCollection_HAsciiString theName;
+  Handle(StepRepr_ShapeAspect) theAppliesTo;
+  Handle(TCollection_HAsciiString) theName;
 
 
 };
@@ -70,7 +65,6 @@ Handle_TCollection_HAsciiString theName;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_DimensionalSize_HeaderFile

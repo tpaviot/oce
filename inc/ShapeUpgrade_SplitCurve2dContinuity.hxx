@@ -6,46 +6,37 @@
 #ifndef _ShapeUpgrade_SplitCurve2dContinuity_HeaderFile
 #define _ShapeUpgrade_SplitCurve2dContinuity_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeUpgrade_SplitCurve2dContinuity_HeaderFile
 #include <Handle_ShapeUpgrade_SplitCurve2dContinuity.hxx>
-#endif
 
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _ShapeUpgrade_SplitCurve2d_HeaderFile
 #include <ShapeUpgrade_SplitCurve2d.hxx>
-#endif
 
 
-//! Corrects/splits a 2d curve with a continuity criterion. <br>
-//!  Tolerance is used to correct the curve at a knot that respects <br>
-//!  geometrically the criterion, in order to reduce the <br>
-//!  multiplicity of the knot. <br>
-class ShapeUpgrade_SplitCurve2dContinuity : public ShapeUpgrade_SplitCurve2d {
+//! Corrects/splits a 2d curve with a continuity criterion.
+//! Tolerance is used to correct the curve at a knot that respects
+//! geometrically the criterion, in order to reduce the
+//! multiplicity of the knot.
+class ShapeUpgrade_SplitCurve2dContinuity : public ShapeUpgrade_SplitCurve2d
+{
 
 public:
 
-  //! Empty constructor. <br>
-  Standard_EXPORT   ShapeUpgrade_SplitCurve2dContinuity();
-  //! Sets criterion for splitting. <br>
-  Standard_EXPORT     void SetCriterion(const GeomAbs_Shape Criterion) ;
-  //! Sets tolerance. <br>
-  Standard_EXPORT     void SetTolerance(const Standard_Real Tol) ;
-  //! Calculates points for correction/splitting of the curve <br>
-  Standard_EXPORT   virtual  void Compute() ;
+  
+  //! Empty constructor.
+  Standard_EXPORT ShapeUpgrade_SplitCurve2dContinuity();
+  
+  //! Sets criterion for splitting.
+  Standard_EXPORT   void SetCriterion (const GeomAbs_Shape Criterion) ;
+  
+  //! Sets tolerance.
+  Standard_EXPORT   void SetTolerance (const Standard_Real Tol) ;
+  
+  //! Calculates points for correction/splitting of the curve
+  Standard_EXPORT virtual   void Compute() ;
 
 
 
@@ -60,9 +51,9 @@ protected:
 private: 
 
 
-GeomAbs_Shape myCriterion;
-Standard_Integer myCont;
-Standard_Real myTolerance;
+  GeomAbs_Shape myCriterion;
+  Standard_Integer myCont;
+  Standard_Real myTolerance;
 
 
 };
@@ -71,7 +62,6 @@ Standard_Real myTolerance;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeUpgrade_SplitCurve2dContinuity_HeaderFile

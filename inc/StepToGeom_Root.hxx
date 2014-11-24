@@ -6,31 +6,23 @@
 #ifndef _StepToGeom_Root_HeaderFile
 #define _StepToGeom_Root_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 
 
-//! This class implements the common services for <br>
-//!           all classes of StepToGeom which report error. <br>
-class StepToGeom_Root  {
+//! This class implements the common services for
+//! all classes of StepToGeom which report error.
+class StepToGeom_Root 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
 
 
 
@@ -39,7 +31,7 @@ protected:
 
 
 
-Standard_Boolean done;
+  Standard_Boolean done;
 
 
 private:
@@ -54,7 +46,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToGeom_Root_HeaderFile

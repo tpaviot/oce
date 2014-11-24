@@ -5,16 +5,10 @@
 
 #include <BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColStd_SequenceOfInteger_HeaderFile
 #include <TColStd_SequenceOfInteger.hxx>
-#endif
-#ifndef _BRepAlgo_SequenceOfSequenceOfInteger_HeaderFile
 #include <BRepAlgo_SequenceOfSequenceOfInteger.hxx>
-#endif
 
  
 

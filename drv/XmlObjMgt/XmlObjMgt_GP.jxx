@@ -1,12 +1,4 @@
-#ifndef _gp_Trsf_HeaderFile
 #include <gp_Trsf.hxx>
-#endif
-#ifndef _gp_Mat_HeaderFile
 #include <gp_Mat.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _XmlObjMgt_GP_HeaderFile
 #include <XmlObjMgt_GP.hxx>
-#endif

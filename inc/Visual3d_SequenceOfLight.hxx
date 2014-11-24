@@ -6,28 +6,14 @@
 #ifndef _Visual3d_SequenceOfLight_HeaderFile
 #define _Visual3d_SequenceOfLight_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_Visual3d_Light_HeaderFile
 #include <Handle_Visual3d_Light.hxx>
-#endif
-#ifndef _Handle_Visual3d_SequenceNodeOfSequenceOfLight_HeaderFile
 #include <Handle_Visual3d_SequenceNodeOfSequenceOfLight.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Visual3d_Light;
@@ -35,68 +21,68 @@ class Visual3d_SequenceNodeOfSequenceOfLight;
 
 
 
-class Visual3d_SequenceOfLight  : public TCollection_BaseSequence {
+class Visual3d_SequenceOfLight  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Visual3d_SequenceOfLight();
+    Visual3d_SequenceOfLight();
   
-  Standard_EXPORT   Visual3d_SequenceOfLight(const Visual3d_SequenceOfLight& Other);
+  Standard_EXPORT Visual3d_SequenceOfLight(const Visual3d_SequenceOfLight& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~Visual3d_SequenceOfLight()
 {
   Clear();
 }
   
-  Standard_EXPORT    const Visual3d_SequenceOfLight& Assign(const Visual3d_SequenceOfLight& Other) ;
-   const Visual3d_SequenceOfLight& operator =(const Visual3d_SequenceOfLight& Other) 
+  Standard_EXPORT  const  Visual3d_SequenceOfLight& Assign (const Visual3d_SequenceOfLight& Other) ;
+ const  Visual3d_SequenceOfLight& operator = (const Visual3d_SequenceOfLight& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(Visual3d_Light)& T) ;
+  Standard_EXPORT   void Append (const Handle(Visual3d_Light)& T) ;
   
-        void Append(Visual3d_SequenceOfLight& S) ;
+      void Append (Visual3d_SequenceOfLight& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(Visual3d_Light)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(Visual3d_Light)& T) ;
   
-        void Prepend(Visual3d_SequenceOfLight& S) ;
+      void Prepend (Visual3d_SequenceOfLight& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(Visual3d_Light)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(Visual3d_Light)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,Visual3d_SequenceOfLight& S) ;
+      void InsertBefore (const Standard_Integer Index, Visual3d_SequenceOfLight& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(Visual3d_Light)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(Visual3d_Light)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,Visual3d_SequenceOfLight& S) ;
+      void InsertAfter (const Standard_Integer Index, Visual3d_SequenceOfLight& S) ;
   
-  Standard_EXPORT    const Handle_Visual3d_Light& First() const;
+  Standard_EXPORT  const  Handle(Visual3d_Light)& First()  const;
   
-  Standard_EXPORT    const Handle_Visual3d_Light& Last() const;
+  Standard_EXPORT  const  Handle(Visual3d_Light)& Last()  const;
   
-        void Split(const Standard_Integer Index,Visual3d_SequenceOfLight& Sub) ;
+      void Split (const Standard_Integer Index, Visual3d_SequenceOfLight& Sub) ;
   
-  Standard_EXPORT    const Handle_Visual3d_Light& Value(const Standard_Integer Index) const;
-   const Handle_Visual3d_Light& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(Visual3d_Light)& Value (const Standard_Integer Index)  const;
+ const  Handle(Visual3d_Light)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(Visual3d_Light)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(Visual3d_Light)& I) ;
   
-  Standard_EXPORT     Handle_Visual3d_Light& ChangeValue(const Standard_Integer Index) ;
-    Handle_Visual3d_Light& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(Visual3d_Light)& ChangeValue (const Standard_Integer Index) ;
+  Handle(Visual3d_Light)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -115,7 +101,7 @@ private:
 
 };
 
-#define SeqItem Handle_Visual3d_Light
+#define SeqItem Handle(Visual3d_Light)
 #define SeqItem_hxx <Visual3d_Light.hxx>
 #define TCollection_SequenceNode Visual3d_SequenceNodeOfSequenceOfLight
 #define TCollection_SequenceNode_hxx <Visual3d_SequenceNodeOfSequenceOfLight.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Visual3d_SequenceOfLight_HeaderFile

@@ -6,34 +6,16 @@
 #ifndef _BRepClass_FClassifier_HeaderFile
 #define _BRepClass_FClassifier_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepClass_FClass2dOfFClassifier_HeaderFile
 #include <BRepClass_FClass2dOfFClassifier.hxx>
-#endif
-#ifndef _BRepClass_Edge_HeaderFile
 #include <BRepClass_Edge.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _IntRes2d_Position_HeaderFile
 #include <IntRes2d_Position.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopAbs_State_HeaderFile
 #include <TopAbs_State.hxx>
-#endif
 class Standard_DomainError;
 class BRepClass_FaceExplorer;
 class BRepClass_Edge;
@@ -43,30 +25,30 @@ class gp_Pnt2d;
 
 
 
-class BRepClass_FClassifier  {
+class BRepClass_FClassifier 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepClass_FClassifier();
+  Standard_EXPORT BRepClass_FClassifier();
   
-  Standard_EXPORT   BRepClass_FClassifier(BRepClass_FaceExplorer& F,const gp_Pnt2d& P,const Standard_Real Tol);
+  Standard_EXPORT BRepClass_FClassifier(BRepClass_FaceExplorer& F, const gp_Pnt2d& P, const Standard_Real Tol);
   
-  Standard_EXPORT     void Perform(BRepClass_FaceExplorer& F,const gp_Pnt2d& P,const Standard_Real Tol) ;
+  Standard_EXPORT   void Perform (BRepClass_FaceExplorer& F, const gp_Pnt2d& P, const Standard_Real Tol) ;
   
-  Standard_EXPORT     TopAbs_State State() const;
+  Standard_EXPORT   TopAbs_State State()  const;
   
-        Standard_Boolean Rejected() const;
+      Standard_Boolean Rejected()  const;
   
-        Standard_Boolean NoWires() const;
+      Standard_Boolean NoWires()  const;
   
-  Standard_EXPORT    const BRepClass_Edge& Edge() const;
+  Standard_EXPORT  const  BRepClass_Edge& Edge()  const;
   
-  Standard_EXPORT     Standard_Real EdgeParameter() const;
+  Standard_EXPORT   Standard_Real EdgeParameter()  const;
   
-        IntRes2d_Position Position() const;
-
+      IntRes2d_Position Position()  const;
 
 
 
@@ -75,12 +57,12 @@ protected:
 
 
 
-BRepClass_FClass2dOfFClassifier myClassifier;
-BRepClass_Edge myEdge;
-Standard_Real myEdgeParameter;
-IntRes2d_Position myPosition;
-Standard_Boolean rejected;
-Standard_Boolean nowires;
+  BRepClass_FClass2dOfFClassifier myClassifier;
+  BRepClass_Edge myEdge;
+  Standard_Real myEdgeParameter;
+  IntRes2d_Position myPosition;
+  Standard_Boolean rejected;
+  Standard_Boolean nowires;
 
 
 private:
@@ -116,7 +98,6 @@ private:
 #undef TopClass_FaceClassifier_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepClass_FClassifier_HeaderFile

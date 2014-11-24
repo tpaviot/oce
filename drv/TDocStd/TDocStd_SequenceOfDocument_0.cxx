@@ -5,21 +5,13 @@
 
 #include <TDocStd_SequenceOfDocument.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TDocStd_Document_HeaderFile
 #include <TDocStd_Document.hxx>
-#endif
-#ifndef _TDocStd_SequenceNodeOfSequenceOfDocument_HeaderFile
 #include <TDocStd_SequenceNodeOfSequenceOfDocument.hxx>
-#endif
  
 
-#define SeqItem Handle_TDocStd_Document
+#define SeqItem Handle(TDocStd_Document)
 #define SeqItem_hxx <TDocStd_Document.hxx>
 #define TCollection_SequenceNode TDocStd_SequenceNodeOfSequenceOfDocument
 #define TCollection_SequenceNode_hxx <TDocStd_SequenceNodeOfSequenceOfDocument.hxx>

@@ -6,22 +6,12 @@
 #ifndef _MgtTopLoc_HeaderFile
 #define _MgtTopLoc_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_PTopLoc_Datum3D_HeaderFile
 #include <Handle_PTopLoc_Datum3D.hxx>
-#endif
-#ifndef _Handle_TopLoc_Datum3D_HeaderFile
 #include <Handle_TopLoc_Datum3D.hxx>
-#endif
 class PTopLoc_Datum3D;
 class TopLoc_Datum3D;
 class PTColStd_TransientPersistentMap;
@@ -30,52 +20,56 @@ class PTopLoc_Location;
 class TopLoc_Location;
 
 
-//! The package  MgtTopLoc provides methods   to store <br>
-//!          and retrieve local    coordinate    systems.  i.e. <br>
-//!          translationg them from Persistent to Transient and <br>
-//!          vice-versa. <br>
-//! <br>
-//!          * Persistent local coordinate systems are provided <br>
-//!          by the package PTopLoc. <br>
-//! <br>
-//!          * Transient local  coordinate systems are provided <br>
-//!          by the package TopLoc. <br>
-//! <br>
-//!          This package keeps  track of previous translations <br>
-//!          to preserve the incremental  feature of coordinate <br>
-//!          systems. i.e.  once a  data  has  been translated, <br>
-//!          translating it back will give the original data. <br>
-//! <br>
-//!          Two kinds of objects are managed : <br>
-//! <br>
-//!          *   Datum3D :  A  Datum3D   is an elementary local <br>
-//!          coordinate system handled by reference. <br>
-//! <br>
-//!          *  Location   : A Location   is  a  complex  local <br>
-//!          coordinate system   made   by  linking  elementary <br>
-//!          coordinate systems  (Datum3D).  If  a Location  is <br>
-//!          translated twice only the local coordinate systems <br>
-//!          will be the same.  This  is not a problem  as  the <br>
-//!          comparison of Locations is based on the comparison <br>
-//!          of local coordinate systems. <br>
-class MgtTopLoc  {
+//! The package  MgtTopLoc provides methods   to store
+//! and retrieve local    coordinate    systems.  i.e.
+//! translationg them from Persistent to Transient and
+//! vice-versa.
+//!
+//! * Persistent local coordinate systems are provided
+//! by the package PTopLoc.
+//!
+//! * Transient local  coordinate systems are provided
+//! by the package TopLoc.
+//!
+//! This package keeps  track of previous translations
+//! to preserve the incremental  feature of coordinate
+//! systems. i.e.  once a  data  has  been translated,
+//! translating it back will give the original data.
+//!
+//! Two kinds of objects are managed :
+//!
+//! *   Datum3D :  A  Datum3D   is an elementary local
+//! coordinate system handled by reference.
+//!
+//! *  Location   : A Location   is  a  complex  local
+//! coordinate system   made   by  linking  elementary
+//! coordinate systems  (Datum3D).  If  a Location  is
+//! translated twice only the local coordinate systems
+//! will be the same.  This  is not a problem  as  the
+//! comparison of Locations is based on the comparison
+//! of local coordinate systems.
+class MgtTopLoc 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Translate a  transient   Datum3D to  a  persistant <br>
-//!          Datum3D. <br>
-  Standard_EXPORT   static  Handle_PTopLoc_Datum3D Translate(const Handle(TopLoc_Datum3D)& D,PTColStd_TransientPersistentMap& M) ;
-  //! Translate a  persistant   Datum3D to  a  transient <br>
-//!          Datum3D. <br>
-  Standard_EXPORT   static  Handle_TopLoc_Datum3D Translate(const Handle(PTopLoc_Datum3D)& D,PTColStd_PersistentTransientMap& M) ;
-  //! Translate a non  storable  Location to  a storable <br>
-//!          Location. <br>
-  Standard_EXPORT   static  PTopLoc_Location Translate(const TopLoc_Location& L,PTColStd_TransientPersistentMap& M) ;
-  //! Translate a storable  Location  to a non  storable <br>
-//!          Location. <br>
-  Standard_EXPORT   static  TopLoc_Location Translate(const PTopLoc_Location& L,PTColStd_PersistentTransientMap& M) ;
-
+  
+  //! Translate a  transient   Datum3D to  a  persistant
+  //! Datum3D.
+  Standard_EXPORT static   Handle(PTopLoc_Datum3D) Translate (const Handle(TopLoc_Datum3D)& D, PTColStd_TransientPersistentMap& M) ;
+  
+  //! Translate a  persistant   Datum3D to  a  transient
+  //! Datum3D.
+  Standard_EXPORT static   Handle(TopLoc_Datum3D) Translate (const Handle(PTopLoc_Datum3D)& D, PTColStd_PersistentTransientMap& M) ;
+  
+  //! Translate a non  storable  Location to  a storable
+  //! Location.
+  Standard_EXPORT static   PTopLoc_Location Translate (const TopLoc_Location& L, PTColStd_TransientPersistentMap& M) ;
+  
+  //! Translate a storable  Location  to a non  storable
+  //! Location.
+  Standard_EXPORT static   TopLoc_Location Translate (const PTopLoc_Location& L, PTColStd_PersistentTransientMap& M) ;
 
 
 
@@ -98,7 +92,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MgtTopLoc_HeaderFile

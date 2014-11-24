@@ -6,42 +6,35 @@
 #ifndef _StepAP203_Change_HeaderFile
 #define _StepAP203_Change_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepAP203_Change_HeaderFile
 #include <Handle_StepAP203_Change.hxx>
-#endif
 
-#ifndef _Handle_StepAP203_HArray1OfWorkItem_HeaderFile
 #include <Handle_StepAP203_HArray1OfWorkItem.hxx>
-#endif
-#ifndef _StepBasic_ActionAssignment_HeaderFile
 #include <StepBasic_ActionAssignment.hxx>
-#endif
-#ifndef _Handle_StepBasic_Action_HeaderFile
 #include <Handle_StepBasic_Action.hxx>
-#endif
 class StepAP203_HArray1OfWorkItem;
 class StepBasic_Action;
 
 
-//! Representation of STEP entity Change <br>
-class StepAP203_Change : public StepBasic_ActionAssignment {
+//! Representation of STEP entity Change
+class StepAP203_Change : public StepBasic_ActionAssignment
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepAP203_Change();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(StepBasic_Action)& aActionAssignment_AssignedAction,const Handle(StepAP203_HArray1OfWorkItem)& aItems) ;
-  //! Returns field Items <br>
-  Standard_EXPORT     Handle_StepAP203_HArray1OfWorkItem Items() const;
-  //! Set field Items <br>
-  Standard_EXPORT     void SetItems(const Handle(StepAP203_HArray1OfWorkItem)& Items) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepAP203_Change();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(StepBasic_Action)& aActionAssignment_AssignedAction, const Handle(StepAP203_HArray1OfWorkItem)& aItems) ;
+  
+  //! Returns field Items
+  Standard_EXPORT   Handle(StepAP203_HArray1OfWorkItem) Items()  const;
+  
+  //! Set field Items
+  Standard_EXPORT   void SetItems (const Handle(StepAP203_HArray1OfWorkItem)& Items) ;
 
 
 
@@ -56,7 +49,7 @@ protected:
 private: 
 
 
-Handle_StepAP203_HArray1OfWorkItem theItems;
+  Handle(StepAP203_HArray1OfWorkItem) theItems;
 
 
 };
@@ -65,7 +58,6 @@ Handle_StepAP203_HArray1OfWorkItem theItems;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP203_Change_HeaderFile

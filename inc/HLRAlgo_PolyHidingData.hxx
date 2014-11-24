@@ -6,42 +6,30 @@
 #ifndef _HLRAlgo_PolyHidingData_HeaderFile
 #define _HLRAlgo_PolyHidingData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 
 
-//! Data structure of a set of Hiding Triangles. <br>
-class HLRAlgo_PolyHidingData  {
+//! Data structure of a set of Hiding Triangles.
+class HLRAlgo_PolyHidingData 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      HLRAlgo_PolyHidingData();
+    HLRAlgo_PolyHidingData();
   
-        void Set(const Standard_Integer Index,const Standard_Integer Minim,const Standard_Integer Maxim,const Standard_Real A,const Standard_Real B,const Standard_Real C,const Standard_Real D) ;
+      void Set (const Standard_Integer Index, const Standard_Integer Minim, const Standard_Integer Maxim, const Standard_Real A, const Standard_Real B, const Standard_Real C, const Standard_Real D) ;
   
-        Standard_Address IndexAndMinMax() const;
+      Standard_Address IndexAndMinMax()  const;
   
-        Standard_Address Plan() const;
-
+      Standard_Address Plan()  const;
 
 
 
@@ -56,8 +44,8 @@ private:
 
 
 
-Standard_Integer myMinMax[3];
-Standard_Real myPlan[4];
+  Standard_Integer myMinMax[3];
+  Standard_Real myPlan[4];
 
 
 };
@@ -67,7 +55,6 @@ Standard_Real myPlan[4];
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRAlgo_PolyHidingData_HeaderFile

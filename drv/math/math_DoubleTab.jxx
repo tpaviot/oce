@@ -1,3 +1,1 @@
-#ifndef _math_DoubleTab_HeaderFile
 #include <math_DoubleTab.hxx>
-#endif

@@ -6,37 +6,17 @@
 #ifndef _Extrema_ECC2d_HeaderFile
 #define _Extrema_ECC2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
 #include <math_Vector.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TColStd_SequenceOfReal_HeaderFile
 #include <TColStd_SequenceOfReal.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray1OfPnt2d_HeaderFile
 #include <Handle_TColgp_HArray1OfPnt2d.hxx>
-#endif
 class StdFail_InfiniteSolutions;
 class StdFail_NotDone;
 class Standard_OutOfRange;
@@ -49,32 +29,32 @@ class gp_Vec2d;
 
 
 
-class Extrema_ECC2d  {
+class Extrema_ECC2d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Extrema_ECC2d();
+  Standard_EXPORT Extrema_ECC2d();
   
-  Standard_EXPORT   Extrema_ECC2d(const Adaptor2d_Curve2d& C1,const Adaptor2d_Curve2d& C2);
+  Standard_EXPORT Extrema_ECC2d(const Adaptor2d_Curve2d& C1, const Adaptor2d_Curve2d& C2);
   
-  Standard_EXPORT   Extrema_ECC2d(const Adaptor2d_Curve2d& C1,const Adaptor2d_Curve2d& C2,const Standard_Real Uinf,const Standard_Real Usup,const Standard_Real Vinf,const Standard_Real Vsup);
+  Standard_EXPORT Extrema_ECC2d(const Adaptor2d_Curve2d& C1, const Adaptor2d_Curve2d& C2, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real Vinf, const Standard_Real Vsup);
   
-  Standard_EXPORT     void SetParams(const Adaptor2d_Curve2d& C1,const Adaptor2d_Curve2d& C2,const Standard_Real Uinf,const Standard_Real Usup,const Standard_Real Vinf,const Standard_Real Vsup) ;
+  Standard_EXPORT   void SetParams (const Adaptor2d_Curve2d& C1, const Adaptor2d_Curve2d& C2, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real Vinf, const Standard_Real Vsup) ;
   
-  Standard_EXPORT     void SetTolerance(const Standard_Real Tol) ;
+  Standard_EXPORT   void SetTolerance (const Standard_Real Tol) ;
   
-  Standard_EXPORT     void Perform() ;
+  Standard_EXPORT   void Perform() ;
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
   
-  Standard_EXPORT     Standard_Integer NbExt() const;
+  Standard_EXPORT   Standard_Integer NbExt()  const;
   
-  Standard_EXPORT     Standard_Real SquareDistance(const Standard_Integer N = 1) const;
+  Standard_EXPORT   Standard_Real SquareDistance (const Standard_Integer N = 1)  const;
   
-  Standard_EXPORT     void Points(const Standard_Integer N,Extrema_POnCurv2d& P1,Extrema_POnCurv2d& P2) const;
-
+  Standard_EXPORT   void Points (const Standard_Integer N, Extrema_POnCurv2d& P1, Extrema_POnCurv2d& P2)  const;
 
 
 
@@ -89,14 +69,14 @@ private:
 
 
 
-Standard_Real myCurveMinTol;
-math_Vector myLowBorder;
-math_Vector myUppBorder;
-Standard_Integer mySolCount;
-TColStd_SequenceOfReal myPoints1;
-TColStd_SequenceOfReal myPoints2;
-Standard_Address myC[2];
-Standard_Boolean myDone;
+  Standard_Real myCurveMinTol;
+  math_Vector myLowBorder;
+  math_Vector myUppBorder;
+  Standard_Integer mySolCount;
+  TColStd_SequenceOfReal myPoints1;
+  TColStd_SequenceOfReal myPoints2;
+  Standard_Address myC[2];
+  Standard_Boolean myDone;
 
 
 };
@@ -105,7 +85,6 @@ Standard_Boolean myDone;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Extrema_ECC2d_HeaderFile

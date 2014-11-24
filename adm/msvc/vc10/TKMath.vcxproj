@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{158BCCA8-03E9-0749-0D0F-1EC25B69FD8E}</ProjectGuid>
+    <ProjectGuid>{3B9AE543-0388-0416-109C-10517954E418}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -171,7 +171,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__math_DLL;__ElCLib_DLL;__ElSLib_DLL;__BSplCLib_DLL;__BSplSLib_DLL;__PLib_DLL;__Precision_DLL;__GeomAbs_DLL;__Poly_DLL;__CSLib_DLL;__Convert_DLL;__Bnd_DLL;__BVH_DLL;__gp_DLL;__TColgp_DLL;__TopLoc_DLL;__Expr_DLL;__ExprIntrp_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__math_DLL;__ElCLib_DLL;__ElSLib_DLL;__BSplCLib_DLL;__BSplSLib_DLL;__PLib_DLL;__Precision_DLL;__GeomAbs_DLL;__Poly_DLL;__CSLib_DLL;__Convert_DLL;__Bnd_DLL;__BVH_DLL;__gp_DLL;__TColgp_DLL;__TopLoc_DLL;__Expr_DLL;__ExprIntrp_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -186,7 +186,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__math_DLL;__ElCLib_DLL;__ElSLib_DLL;__BSplCLib_DLL;__BSplSLib_DLL;__PLib_DLL;__Precision_DLL;__GeomAbs_DLL;__Poly_DLL;__CSLib_DLL;__Convert_DLL;__Bnd_DLL;__BVH_DLL;__gp_DLL;__TColgp_DLL;__TopLoc_DLL;__Expr_DLL;__ExprIntrp_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__math_DLL;__ElCLib_DLL;__ElSLib_DLL;__BSplCLib_DLL;__BSplSLib_DLL;__PLib_DLL;__Precision_DLL;__GeomAbs_DLL;__Poly_DLL;__CSLib_DLL;__Convert_DLL;__Bnd_DLL;__BVH_DLL;__gp_DLL;__TColgp_DLL;__TopLoc_DLL;__Expr_DLL;__ExprIntrp_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKernel.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -214,7 +214,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__math_DLL;__ElCLib_DLL;__ElSLib_DLL;__BSplCLib_DLL;__BSplSLib_DLL;__PLib_DLL;__Precision_DLL;__GeomAbs_DLL;__Poly_DLL;__CSLib_DLL;__Convert_DLL;__Bnd_DLL;__BVH_DLL;__gp_DLL;__TColgp_DLL;__TopLoc_DLL;__Expr_DLL;__ExprIntrp_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__math_DLL;__ElCLib_DLL;__ElSLib_DLL;__BSplCLib_DLL;__BSplSLib_DLL;__PLib_DLL;__Precision_DLL;__GeomAbs_DLL;__Poly_DLL;__CSLib_DLL;__Convert_DLL;__Bnd_DLL;__BVH_DLL;__gp_DLL;__TColgp_DLL;__TopLoc_DLL;__Expr_DLL;__ExprIntrp_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win64\vc10\objd\TKMath/</AssemblerListingLocation>
@@ -230,7 +230,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__math_DLL;__ElCLib_DLL;__ElSLib_DLL;__BSplCLib_DLL;__BSplSLib_DLL;__PLib_DLL;__Precision_DLL;__GeomAbs_DLL;__Poly_DLL;__CSLib_DLL;__Convert_DLL;__Bnd_DLL;__BVH_DLL;__gp_DLL;__TColgp_DLL;__TopLoc_DLL;__Expr_DLL;__ExprIntrp_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__math_DLL;__ElCLib_DLL;__ElSLib_DLL;__BSplCLib_DLL;__BSplSLib_DLL;__PLib_DLL;__Precision_DLL;__GeomAbs_DLL;__Poly_DLL;__CSLib_DLL;__Convert_DLL;__Bnd_DLL;__BVH_DLL;__gp_DLL;__TColgp_DLL;__TopLoc_DLL;__Expr_DLL;__ExprIntrp_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKernel.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>

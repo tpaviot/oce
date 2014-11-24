@@ -1,15 +1,5 @@
-#ifndef _OSD_OSDError_HeaderFile
 #include <OSD_OSDError.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Quantity_Date_HeaderFile
 #include <Quantity_Date.hxx>
-#endif
-#ifndef _OSD_Path_HeaderFile
 #include <OSD_Path.hxx>
-#endif
-#ifndef _OSD_Process_HeaderFile
 #include <OSD_Process.hxx>
-#endif

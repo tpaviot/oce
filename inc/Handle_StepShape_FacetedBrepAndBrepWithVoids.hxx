@@ -6,22 +6,15 @@
 #ifndef _Handle_StepShape_FacetedBrepAndBrepWithVoids_HeaderFile
 #define _Handle_StepShape_FacetedBrepAndBrepWithVoids_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepShape_ManifoldSolidBrep_HeaderFile
 #include <Handle_StepShape_ManifoldSolidBrep.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepShape_ManifoldSolidBrep);
 class StepShape_FacetedBrepAndBrepWithVoids;
 
-DEFINE_STANDARD_HANDLE(StepShape_FacetedBrepAndBrepWithVoids,StepShape_ManifoldSolidBrep)
+DEFINE_STANDARD_HANDLE(StepShape_FacetedBrepAndBrepWithVoids, StepShape_ManifoldSolidBrep)
 
-#endif
+#endif // _Handle_StepShape_FacetedBrepAndBrepWithVoids_HeaderFile

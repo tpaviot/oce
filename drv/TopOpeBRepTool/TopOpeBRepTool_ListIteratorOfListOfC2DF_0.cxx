@@ -5,21 +5,11 @@
 
 #include <TopOpeBRepTool_ListIteratorOfListOfC2DF.hxx>
 
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopOpeBRepTool_ListOfC2DF_HeaderFile
 #include <TopOpeBRepTool_ListOfC2DF.hxx>
-#endif
-#ifndef _TopOpeBRepTool_C2DF_HeaderFile
 #include <TopOpeBRepTool_C2DF.hxx>
-#endif
-#ifndef _TopOpeBRepTool_ListNodeOfListOfC2DF_HeaderFile
 #include <TopOpeBRepTool_ListNodeOfListOfC2DF.hxx>
-#endif
  
 
 #define Item TopOpeBRepTool_C2DF

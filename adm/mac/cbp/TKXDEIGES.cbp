@@ -80,6 +80,8 @@
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 		</Linker>
 		<Unit filename="../../../src/IGESCAFControl/IGESCAFControl.cxx" />
 		<Unit filename="../../../src/IGESCAFControl/IGESCAFControl_Reader.cxx" />

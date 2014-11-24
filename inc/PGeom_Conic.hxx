@@ -6,36 +6,27 @@
 #ifndef _PGeom_Conic_HeaderFile
 #define _PGeom_Conic_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom_Conic_HeaderFile
 #include <Handle_PGeom_Conic.hxx>
-#endif
 
-#ifndef _gp_Ax2_HeaderFile
 #include <gp_Ax2.hxx>
-#endif
-#ifndef _PGeom_Curve_HeaderFile
 #include <PGeom_Curve.hxx>
-#endif
 class gp_Ax2;
 
 
-class PGeom_Conic : public PGeom_Curve {
+class PGeom_Conic : public PGeom_Curve
+{
 
 public:
 
-  //! Set the value of the field position with <aPosition>. <br>
-  Standard_EXPORT     void Position(const gp_Ax2& aPosition) ;
-  //! Returns the value of the field <position>. <br>
-  Standard_EXPORT     gp_Ax2 Position() const;
+  
+  //! Set the value of the field position with <aPosition>.
+  Standard_EXPORT   void Position (const gp_Ax2& aPosition) ;
+  
+  //! Returns the value of the field <position>.
+  Standard_EXPORT   gp_Ax2 Position()  const;
 
 PGeom_Conic(const Storage_stCONSTclCOM& a) : PGeom_Curve(a)
 {
@@ -49,12 +40,14 @@ PGeom_Conic(const Storage_stCONSTclCOM& a) : PGeom_Curve(a)
 
 protected:
 
-  //! Initializes the field(s) with default value(s). <br>
-  Standard_EXPORT   PGeom_Conic();
-  //! Initializes the field position with <aPosition>. <br>
-  Standard_EXPORT   PGeom_Conic(const gp_Ax2& aPosition);
+  
+  //! Initializes the field(s) with default value(s).
+  Standard_EXPORT PGeom_Conic();
+  
+  //! Initializes the field position with <aPosition>.
+  Standard_EXPORT PGeom_Conic(const gp_Ax2& aPosition);
 
-gp_Ax2 position;
+  gp_Ax2 position;
 
 
 private: 
@@ -68,7 +61,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom_Conic_HeaderFile

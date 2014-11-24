@@ -6,48 +6,37 @@
 #ifndef _StepShape_AngularLocation_HeaderFile
 #define _StepShape_AngularLocation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_AngularLocation_HeaderFile
 #include <Handle_StepShape_AngularLocation.hxx>
-#endif
 
-#ifndef _StepShape_AngleRelator_HeaderFile
 #include <StepShape_AngleRelator.hxx>
-#endif
-#ifndef _StepShape_DimensionalLocation_HeaderFile
 #include <StepShape_DimensionalLocation.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepRepr_ShapeAspect_HeaderFile
 #include <Handle_StepRepr_ShapeAspect.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepRepr_ShapeAspect;
 
 
-//! Representation of STEP entity AngularLocation <br>
-class StepShape_AngularLocation : public StepShape_DimensionalLocation {
+//! Representation of STEP entity AngularLocation
+class StepShape_AngularLocation : public StepShape_DimensionalLocation
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepShape_AngularLocation();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aShapeAspectRelationship_Name,const Standard_Boolean hasShapeAspectRelationship_Description,const Handle(TCollection_HAsciiString)& aShapeAspectRelationship_Description,const Handle(StepRepr_ShapeAspect)& aShapeAspectRelationship_RelatingShapeAspect,const Handle(StepRepr_ShapeAspect)& aShapeAspectRelationship_RelatedShapeAspect,const StepShape_AngleRelator aAngleSelection) ;
-  //! Returns field AngleSelection <br>
-  Standard_EXPORT     StepShape_AngleRelator AngleSelection() const;
-  //! Set field AngleSelection <br>
-  Standard_EXPORT     void SetAngleSelection(const StepShape_AngleRelator AngleSelection) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepShape_AngularLocation();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aShapeAspectRelationship_Name, const Standard_Boolean hasShapeAspectRelationship_Description, const Handle(TCollection_HAsciiString)& aShapeAspectRelationship_Description, const Handle(StepRepr_ShapeAspect)& aShapeAspectRelationship_RelatingShapeAspect, const Handle(StepRepr_ShapeAspect)& aShapeAspectRelationship_RelatedShapeAspect, const StepShape_AngleRelator aAngleSelection) ;
+  
+  //! Returns field AngleSelection
+  Standard_EXPORT   StepShape_AngleRelator AngleSelection()  const;
+  
+  //! Set field AngleSelection
+  Standard_EXPORT   void SetAngleSelection (const StepShape_AngleRelator AngleSelection) ;
 
 
 
@@ -62,7 +51,7 @@ protected:
 private: 
 
 
-StepShape_AngleRelator theAngleSelection;
+  StepShape_AngleRelator theAngleSelection;
 
 
 };
@@ -71,7 +60,6 @@ StepShape_AngleRelator theAngleSelection;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_AngularLocation_HeaderFile

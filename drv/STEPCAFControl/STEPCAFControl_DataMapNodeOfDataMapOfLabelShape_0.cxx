@@ -5,25 +5,13 @@
 
 #include <STEPCAFControl_DataMapNodeOfDataMapOfLabelShape.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TDF_LabelMapHasher_HeaderFile
 #include <TDF_LabelMapHasher.hxx>
-#endif
-#ifndef _STEPCAFControl_DataMapOfLabelShape_HeaderFile
 #include <STEPCAFControl_DataMapOfLabelShape.hxx>
-#endif
-#ifndef _STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape_HeaderFile
 #include <STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape.hxx>
-#endif
 
  
 

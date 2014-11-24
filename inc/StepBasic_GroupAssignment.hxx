@@ -6,38 +6,33 @@
 #ifndef _StepBasic_GroupAssignment_HeaderFile
 #define _StepBasic_GroupAssignment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_GroupAssignment_HeaderFile
 #include <Handle_StepBasic_GroupAssignment.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_Group_HeaderFile
 #include <Handle_StepBasic_Group.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepBasic_Group;
 
 
-//! Representation of STEP entity GroupAssignment <br>
-class StepBasic_GroupAssignment : public MMgt_TShared {
+//! Representation of STEP entity GroupAssignment
+class StepBasic_GroupAssignment : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepBasic_GroupAssignment();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(StepBasic_Group)& aAssignedGroup) ;
-  //! Returns field AssignedGroup <br>
-  Standard_EXPORT     Handle_StepBasic_Group AssignedGroup() const;
-  //! Set field AssignedGroup <br>
-  Standard_EXPORT     void SetAssignedGroup(const Handle(StepBasic_Group)& AssignedGroup) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepBasic_GroupAssignment();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(StepBasic_Group)& aAssignedGroup) ;
+  
+  //! Returns field AssignedGroup
+  Standard_EXPORT   Handle(StepBasic_Group) AssignedGroup()  const;
+  
+  //! Set field AssignedGroup
+  Standard_EXPORT   void SetAssignedGroup (const Handle(StepBasic_Group)& AssignedGroup) ;
 
 
 
@@ -52,7 +47,7 @@ protected:
 private: 
 
 
-Handle_StepBasic_Group theAssignedGroup;
+  Handle(StepBasic_Group) theAssignedGroup;
 
 
 };
@@ -61,7 +56,6 @@ Handle_StepBasic_Group theAssignedGroup;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_GroupAssignment_HeaderFile

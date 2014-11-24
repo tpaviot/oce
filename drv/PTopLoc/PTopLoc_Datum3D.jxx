@@ -1,9 +1,3 @@
-#ifndef _Standard_ConstructionError_HeaderFile
 #include <Standard_ConstructionError.hxx>
-#endif
-#ifndef _gp_Trsf_HeaderFile
 #include <gp_Trsf.hxx>
-#endif
-#ifndef _PTopLoc_Datum3D_HeaderFile
 #include <PTopLoc_Datum3D.hxx>
-#endif

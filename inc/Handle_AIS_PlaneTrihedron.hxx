@@ -6,22 +6,15 @@
 #ifndef _Handle_AIS_PlaneTrihedron_HeaderFile
 #define _Handle_AIS_PlaneTrihedron_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_AIS_InteractiveObject_HeaderFile
 #include <Handle_AIS_InteractiveObject.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(AIS_InteractiveObject);
 class AIS_PlaneTrihedron;
 
-DEFINE_STANDARD_HANDLE(AIS_PlaneTrihedron,AIS_InteractiveObject)
+DEFINE_STANDARD_HANDLE(AIS_PlaneTrihedron, AIS_InteractiveObject)
 
-#endif
+#endif // _Handle_AIS_PlaneTrihedron_HeaderFile

@@ -6,49 +6,21 @@
 #ifndef _XSDRAWSTLVRML_DataSource3D_HeaderFile
 #define _XSDRAWSTLVRML_DataSource3D_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_XSDRAWSTLVRML_DataSource3D_HeaderFile
 #include <Handle_XSDRAWSTLVRML_DataSource3D.hxx>
-#endif
 
-#ifndef _TColStd_PackedMapOfInteger_HeaderFile
 #include <TColStd_PackedMapOfInteger.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfInteger_HeaderFile
 #include <Handle_TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray2OfReal_HeaderFile
 #include <Handle_TColStd_HArray2OfReal.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray2OfInteger_HeaderFile
 #include <Handle_TColStd_HArray2OfInteger.hxx>
-#endif
-#ifndef _MeshVS_DataSource_HeaderFile
 #include <MeshVS_DataSource.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _MeshVS_EntityType_HeaderFile
 #include <MeshVS_EntityType.hxx>
-#endif
-#ifndef _Handle_MeshVS_HArray1OfSequenceOfInteger_HeaderFile
 #include <Handle_MeshVS_HArray1OfSequenceOfInteger.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TColStd_HArray1OfInteger;
 class TColStd_HArray2OfReal;
 class TColStd_HArray2OfInteger;
@@ -57,35 +29,45 @@ class MeshVS_HArray1OfSequenceOfInteger;
 class TColStd_Array1OfInteger;
 
 
-//! The sample DataSource3D for working with STLMesh_Mesh <br>
-class XSDRAWSTLVRML_DataSource3D : public MeshVS_DataSource {
+//! The sample DataSource3D for working with STLMesh_Mesh
+class XSDRAWSTLVRML_DataSource3D : public MeshVS_DataSource
+{
 
 public:
 
-  //! Constructor <br>
-  Standard_EXPORT   XSDRAWSTLVRML_DataSource3D();
-  //! Returns geometry information about node ( if IsElement is False ) or element ( IsElement is True ) <br>
-//! by co-ordinates. For element this method must return all its nodes co-ordinates in the strict order: X, Y, Z and <br>
-//! with nodes order is the same as in wire bounding the face or link. NbNodes is number of nodes of element. <br>
-//! It is recommended to return 1 for node. Type is an element type. <br>
-  Standard_EXPORT     Standard_Boolean GetGeom(const Standard_Integer theID,const Standard_Boolean theIsElement,TColStd_Array1OfReal& theCoords,Standard_Integer& theNbNodes,MeshVS_EntityType& theType) const;
-  //! This method returns topology information about 3D-element <br>
-//! Returns false if element with ID isn't 3D or because other troubles <br>
-  Standard_EXPORT   virtual  Standard_Boolean Get3DGeom(const Standard_Integer theID,Standard_Integer& theNbNodes,Handle(MeshVS_HArray1OfSequenceOfInteger)& theData) const;
-  //! This method is similar to GetGeom, but returns only element or node type. This method is provided for <br>
-//! a fine performance. <br>
-  Standard_EXPORT     Standard_Boolean GetGeomType(const Standard_Integer theID,const Standard_Boolean theIsElement,MeshVS_EntityType& theType) const;
-  //! This method returns by number an address of any entity which represents element or node data structure. <br>
-  Standard_EXPORT     Standard_Address GetAddr(const Standard_Integer theID,const Standard_Boolean theIsElement) const;
-  //! This method returns information about what node this element consist of. <br>
-  Standard_EXPORT   virtual  Standard_Boolean GetNodesByElement(const Standard_Integer theID,TColStd_Array1OfInteger& theNodeIDs,Standard_Integer& theNbNodes) const;
-  //! This method returns map of all nodes the object consist of. <br>
-  Standard_EXPORT    const TColStd_PackedMapOfInteger& GetAllNodes() const;
-  //! This method returns map of all elements the object consist of. <br>
-  Standard_EXPORT    const TColStd_PackedMapOfInteger& GetAllElements() const;
-  //! This method calculates normal of face, which is using for correct reflection presentation. <br>
-//!   There is default method, for advance reflection this method can be redefined. <br>
-  Standard_EXPORT   virtual  Standard_Boolean GetNormal(const Standard_Integer theID,const Standard_Integer theMax,Standard_Real& theNx,Standard_Real& theNy,Standard_Real& theNz) const;
+  
+  //! Constructor
+  Standard_EXPORT XSDRAWSTLVRML_DataSource3D();
+  
+  //! Returns geometry information about node ( if IsElement is False ) or element ( IsElement is True )
+  //! by co-ordinates. For element this method must return all its nodes co-ordinates in the strict order: X, Y, Z and
+  //! with nodes order is the same as in wire bounding the face or link. NbNodes is number of nodes of element.
+  //! It is recommended to return 1 for node. Type is an element type.
+  Standard_EXPORT   Standard_Boolean GetGeom (const Standard_Integer theID, const Standard_Boolean theIsElement, TColStd_Array1OfReal& theCoords, Standard_Integer& theNbNodes, MeshVS_EntityType& theType)  const;
+  
+  //! This method returns topology information about 3D-element
+  //! Returns false if element with ID isn't 3D or because other troubles
+  Standard_EXPORT virtual   Standard_Boolean Get3DGeom (const Standard_Integer theID, Standard_Integer& theNbNodes, Handle(MeshVS_HArray1OfSequenceOfInteger)& theData)  const;
+  
+  //! This method is similar to GetGeom, but returns only element or node type. This method is provided for
+  //! a fine performance.
+  Standard_EXPORT   Standard_Boolean GetGeomType (const Standard_Integer theID, const Standard_Boolean theIsElement, MeshVS_EntityType& theType)  const;
+  
+  //! This method returns by number an address of any entity which represents element or node data structure.
+  Standard_EXPORT   Standard_Address GetAddr (const Standard_Integer theID, const Standard_Boolean theIsElement)  const;
+  
+  //! This method returns information about what node this element consist of.
+  Standard_EXPORT virtual   Standard_Boolean GetNodesByElement (const Standard_Integer theID, TColStd_Array1OfInteger& theNodeIDs, Standard_Integer& theNbNodes)  const;
+  
+  //! This method returns map of all nodes the object consist of.
+  Standard_EXPORT  const  TColStd_PackedMapOfInteger& GetAllNodes()  const;
+  
+  //! This method returns map of all elements the object consist of.
+  Standard_EXPORT  const  TColStd_PackedMapOfInteger& GetAllElements()  const;
+  
+  //! This method calculates normal of face, which is using for correct reflection presentation.
+  //! There is default method, for advance reflection this method can be redefined.
+  Standard_EXPORT virtual   Standard_Boolean GetNormal (const Standard_Integer theID, const Standard_Integer theMax, Standard_Real& theNx, Standard_Real& theNy, Standard_Real& theNz)  const;
 
 
 
@@ -100,11 +82,11 @@ protected:
 private: 
 
 
-TColStd_PackedMapOfInteger myNodes;
-TColStd_PackedMapOfInteger myElements;
-Handle_TColStd_HArray1OfInteger myElemNbNodes;
-Handle_TColStd_HArray2OfReal myNodeCoords;
-Handle_TColStd_HArray2OfInteger myElemNodes;
+  TColStd_PackedMapOfInteger myNodes;
+  TColStd_PackedMapOfInteger myElements;
+  Handle(TColStd_HArray1OfInteger) myElemNbNodes;
+  Handle(TColStd_HArray2OfReal) myNodeCoords;
+  Handle(TColStd_HArray2OfInteger) myElemNodes;
 
 
 };
@@ -113,7 +95,6 @@ Handle_TColStd_HArray2OfInteger myElemNodes;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XSDRAWSTLVRML_DataSource3D_HeaderFile

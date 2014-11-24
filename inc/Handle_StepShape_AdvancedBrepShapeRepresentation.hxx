@@ -6,22 +6,15 @@
 #ifndef _Handle_StepShape_AdvancedBrepShapeRepresentation_HeaderFile
 #define _Handle_StepShape_AdvancedBrepShapeRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepShape_ShapeRepresentation_HeaderFile
 #include <Handle_StepShape_ShapeRepresentation.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepShape_ShapeRepresentation);
 class StepShape_AdvancedBrepShapeRepresentation;
 
-DEFINE_STANDARD_HANDLE(StepShape_AdvancedBrepShapeRepresentation,StepShape_ShapeRepresentation)
+DEFINE_STANDARD_HANDLE(StepShape_AdvancedBrepShapeRepresentation, StepShape_ShapeRepresentation)
 
-#endif
+#endif // _Handle_StepShape_AdvancedBrepShapeRepresentation_HeaderFile

@@ -6,39 +6,28 @@
 #ifndef _TColStd_ListNodeOfListOfTransient_HeaderFile
 #define _TColStd_ListNodeOfListOfTransient_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColStd_ListNodeOfListOfTransient_HeaderFile
 #include <Handle_TColStd_ListNodeOfListOfTransient.hxx>
-#endif
 
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Standard_Transient;
 class TColStd_ListOfTransient;
 class TColStd_ListIteratorOfListOfTransient;
 
 
 
-class TColStd_ListNodeOfListOfTransient : public TCollection_MapNode {
+class TColStd_ListNodeOfListOfTransient : public TCollection_MapNode
+{
 
 public:
 
   
-      TColStd_ListNodeOfListOfTransient(const Handle(Standard_Transient)& I,const TCollection_MapNodePtr& n);
+    TColStd_ListNodeOfListOfTransient(const Handle(Standard_Transient)& I, const TCollection_MapNodePtr& n);
   
-        Handle_Standard_Transient& Value() const;
+      Handle(Standard_Transient)& Value()  const;
 
 
 
@@ -53,12 +42,12 @@ protected:
 private: 
 
 
-Handle_Standard_Transient myValue;
+  Handle(Standard_Transient) myValue;
 
 
 };
 
-#define Item Handle_Standard_Transient
+#define Item Handle(Standard_Transient)
 #define Item_hxx <Standard_Transient.hxx>
 #define TCollection_ListNode TColStd_ListNodeOfListOfTransient
 #define TCollection_ListNode_hxx <TColStd_ListNodeOfListOfTransient.hxx>
@@ -83,7 +72,6 @@ Handle_Standard_Transient myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_ListNodeOfListOfTransient_HeaderFile

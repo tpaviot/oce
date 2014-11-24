@@ -91,7 +91,11 @@
 			<Add library="TKGeomBase" />
 			<Add library="TKGeomAlgo" />
 			<Add library="TKBO" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 			<Add library="dl" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
 		</Linker>

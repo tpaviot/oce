@@ -5,21 +5,11 @@
 
 #include <IntTools_MapIteratorOfMapOfCurveSample.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _IntTools_CurveRangeSample_HeaderFile
 #include <IntTools_CurveRangeSample.hxx>
-#endif
-#ifndef _IntTools_CurveRangeSampleMapHasher_HeaderFile
 #include <IntTools_CurveRangeSampleMapHasher.hxx>
-#endif
-#ifndef _IntTools_MapOfCurveSample_HeaderFile
 #include <IntTools_MapOfCurveSample.hxx>
-#endif
-#ifndef _IntTools_StdMapNodeOfMapOfCurveSample_HeaderFile
 #include <IntTools_StdMapNodeOfMapOfCurveSample.hxx>
-#endif
  
 
 #define TheKey IntTools_CurveRangeSample

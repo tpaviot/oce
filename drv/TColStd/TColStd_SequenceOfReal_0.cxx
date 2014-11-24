@@ -5,15 +5,9 @@
 
 #include <TColStd_SequenceOfReal.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TColStd_SequenceNodeOfSequenceOfReal_HeaderFile
 #include <TColStd_SequenceNodeOfSequenceOfReal.hxx>
-#endif
  
 
 #define SeqItem Standard_Real

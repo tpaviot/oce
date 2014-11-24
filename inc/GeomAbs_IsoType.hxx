@@ -6,16 +6,15 @@
 #ifndef _GeomAbs_IsoType_HeaderFile
 #define _GeomAbs_IsoType_HeaderFile
 
-//! this enumeration describes if a curve is an U isoparaetric <br>
-//!          or V isoparametric <br>
-enum GeomAbs_IsoType {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! this enumeration describes if a curve is an U isoparaetric
+//! or V isoparametric
+enum GeomAbs_IsoType
+{
 GeomAbs_IsoU,
 GeomAbs_IsoV,
 GeomAbs_NoneIso
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _GeomAbs_IsoType_HeaderFile

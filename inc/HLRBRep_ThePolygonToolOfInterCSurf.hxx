@@ -6,25 +6,13 @@
 #ifndef _HLRBRep_ThePolygonToolOfInterCSurf_HeaderFile
 #define _HLRBRep_ThePolygonToolOfInterCSurf_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_OutOfRange;
 class gp_Pnt;
 class HLRBRep_ThePolygonOfInterCSurf;
@@ -32,26 +20,26 @@ class Bnd_Box;
 
 
 
-class HLRBRep_ThePolygonToolOfInterCSurf  {
+class HLRBRep_ThePolygonToolOfInterCSurf 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      static const Bnd_Box& Bounding(const HLRBRep_ThePolygonOfInterCSurf& thePolygon) ;
+    static  const  Bnd_Box& Bounding (const HLRBRep_ThePolygonOfInterCSurf& thePolygon) ;
   
-      static  Standard_Real DeflectionOverEstimation(const HLRBRep_ThePolygonOfInterCSurf& thePolygon) ;
+    static   Standard_Real DeflectionOverEstimation (const HLRBRep_ThePolygonOfInterCSurf& thePolygon) ;
   
-      static  Standard_Boolean Closed(const HLRBRep_ThePolygonOfInterCSurf& thePolygon) ;
+    static   Standard_Boolean Closed (const HLRBRep_ThePolygonOfInterCSurf& thePolygon) ;
   
-      static  Standard_Integer NbSegments(const HLRBRep_ThePolygonOfInterCSurf& thePolygon) ;
+    static   Standard_Integer NbSegments (const HLRBRep_ThePolygonOfInterCSurf& thePolygon) ;
   
-      static const gp_Pnt& BeginOfSeg(const HLRBRep_ThePolygonOfInterCSurf& thePolygon,const Standard_Integer Index) ;
+    static  const  gp_Pnt& BeginOfSeg (const HLRBRep_ThePolygonOfInterCSurf& thePolygon, const Standard_Integer Index) ;
   
-      static const gp_Pnt& EndOfSeg(const HLRBRep_ThePolygonOfInterCSurf& thePolygon,const Standard_Integer Index) ;
+    static  const  gp_Pnt& EndOfSeg (const HLRBRep_ThePolygonOfInterCSurf& thePolygon, const Standard_Integer Index) ;
   
-  Standard_EXPORT   static  void Dump(const HLRBRep_ThePolygonOfInterCSurf& thePolygon) ;
-
+  Standard_EXPORT static   void Dump (const HLRBRep_ThePolygonOfInterCSurf& thePolygon) ;
 
 
 
@@ -91,7 +79,6 @@ private:
 #undef IntCurveSurface_PolygonTool_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_ThePolygonToolOfInterCSurf_HeaderFile

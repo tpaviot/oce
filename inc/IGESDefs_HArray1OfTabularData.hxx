@@ -6,28 +6,14 @@
 #ifndef _IGESDefs_HArray1OfTabularData_HeaderFile
 #define _IGESDefs_HArray1OfTabularData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESDefs_HArray1OfTabularData_HeaderFile
 #include <Handle_IGESDefs_HArray1OfTabularData.hxx>
-#endif
 
-#ifndef _IGESDefs_Array1OfTabularData_HeaderFile
 #include <IGESDefs_Array1OfTabularData.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_IGESDefs_TabularData_HeaderFile
 #include <Handle_IGESDefs_TabularData.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class IGESDefs_Array1OfTabularData;
 
 
 
-class IGESDefs_HArray1OfTabularData : public MMgt_TShared {
+class IGESDefs_HArray1OfTabularData : public MMgt_TShared
+{
 
 public:
 
   
-      IGESDefs_HArray1OfTabularData(const Standard_Integer Low,const Standard_Integer Up);
+    IGESDefs_HArray1OfTabularData(const Standard_Integer Low, const Standard_Integer Up);
   
-      IGESDefs_HArray1OfTabularData(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESDefs_TabularData)& V);
+    IGESDefs_HArray1OfTabularData(const Standard_Integer Low, const Standard_Integer Up, const Handle(IGESDefs_TabularData)& V);
   
-        void Init(const Handle(IGESDefs_TabularData)& V) ;
+      void Init (const Handle(IGESDefs_TabularData)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(IGESDefs_TabularData)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(IGESDefs_TabularData)& Value) ;
   
-       const Handle_IGESDefs_TabularData& Value(const Standard_Integer Index) const;
+     const  Handle(IGESDefs_TabularData)& Value (const Standard_Integer Index)  const;
   
-        Handle_IGESDefs_TabularData& ChangeValue(const Standard_Integer Index) ;
+      Handle(IGESDefs_TabularData)& ChangeValue (const Standard_Integer Index) ;
   
-       const IGESDefs_Array1OfTabularData& Array1() const;
+     const  IGESDefs_Array1OfTabularData& Array1()  const;
   
-        IGESDefs_Array1OfTabularData& ChangeArray1() ;
+      IGESDefs_Array1OfTabularData& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-IGESDefs_Array1OfTabularData myArray;
+  IGESDefs_Array1OfTabularData myArray;
 
 
 };
 
-#define ItemHArray1 Handle_IGESDefs_TabularData
+#define ItemHArray1 Handle(IGESDefs_TabularData)
 #define ItemHArray1_hxx <IGESDefs_TabularData.hxx>
 #define TheArray1 IGESDefs_Array1OfTabularData
 #define TheArray1_hxx <IGESDefs_Array1OfTabularData.hxx>
@@ -103,7 +90,6 @@ IGESDefs_Array1OfTabularData myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESDefs_HArray1OfTabularData_HeaderFile

@@ -6,8 +6,11 @@
 #ifndef _GeomAbs_SurfaceType_HeaderFile
 #define _GeomAbs_SurfaceType_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum GeomAbs_SurfaceType {
+
+enum GeomAbs_SurfaceType
+{
 GeomAbs_Plane,
 GeomAbs_Cylinder,
 GeomAbs_Cone,
@@ -21,8 +24,4 @@ GeomAbs_OffsetSurface,
 GeomAbs_OtherSurface
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _GeomAbs_SurfaceType_HeaderFile

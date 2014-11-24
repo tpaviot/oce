@@ -5,24 +5,14 @@
 
 #include <StepBasic_Array1OfOrganization.hxx>
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _StepBasic_Organization_HeaderFile
 #include <StepBasic_Organization.hxx>
-#endif
  
 
-#define Array1Item Handle_StepBasic_Organization
+#define Array1Item Handle(StepBasic_Organization)
 #define Array1Item_hxx <StepBasic_Organization.hxx>
 #define TCollection_Array1 StepBasic_Array1OfOrganization
 #define TCollection_Array1_hxx <StepBasic_Array1OfOrganization.hxx>

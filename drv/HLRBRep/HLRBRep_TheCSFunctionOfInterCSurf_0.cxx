@@ -5,21 +5,11 @@
 
 #include <HLRBRep_TheCSFunctionOfInterCSurf.hxx>
 
-#ifndef _HLRBRep_SurfaceTool_HeaderFile
 #include <HLRBRep_SurfaceTool.hxx>
-#endif
-#ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
-#endif
-#ifndef _HLRBRep_LineTool_HeaderFile
 #include <HLRBRep_LineTool.hxx>
-#endif
-#ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
  
 
 #define ThePSurface Standard_Address

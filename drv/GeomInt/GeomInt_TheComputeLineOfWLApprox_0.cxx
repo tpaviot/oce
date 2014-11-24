@@ -5,60 +5,24 @@
 
 #include <GeomInt_TheComputeLineOfWLApprox.hxx>
 
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _AppParCurves_HArray1OfConstraintCouple_HeaderFile
 #include <AppParCurves_HArray1OfConstraintCouple.hxx>
-#endif
-#ifndef _GeomInt_TheMultiLineOfWLApprox_HeaderFile
 #include <GeomInt_TheMultiLineOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_TheMultiLineToolOfWLApprox_HeaderFile
 #include <GeomInt_TheMultiLineToolOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox_HeaderFile
 #include <GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox_HeaderFile
 #include <GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_HeaderFile
 #include <GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox_HeaderFile
 #include <GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_MyGradientbisOfTheComputeLineOfWLApprox_HeaderFile
 #include <GeomInt_MyGradientbisOfTheComputeLineOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox_HeaderFile
 #include <GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox_HeaderFile
 #include <GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox_HeaderFile
 #include <GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox_HeaderFile
 #include <GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _TColStd_Array1OfInteger_HeaderFile
 #include <TColStd_Array1OfInteger.hxx>
-#endif
-#ifndef _AppParCurves_MultiBSpCurve_HeaderFile
 #include <AppParCurves_MultiBSpCurve.hxx>
-#endif
-#ifndef _AppParCurves_MultiCurve_HeaderFile
 #include <AppParCurves_MultiCurve.hxx>
-#endif
  
 
 #define MultiLine GeomInt_TheMultiLineOfWLApprox

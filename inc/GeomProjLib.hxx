@@ -6,34 +6,16 @@
 #ifndef _GeomProjLib_HeaderFile
 #define _GeomProjLib_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _Handle_Geom_Plane_HeaderFile
 #include <Handle_Geom_Plane.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Geom2d_Curve;
 class Geom_Curve;
 class Geom_Surface;
@@ -41,79 +23,87 @@ class Geom_Plane;
 class gp_Dir;
 
 
-//! Projection of a curve on a surface. <br>
-class GeomProjLib  {
+//! Projection of a curve on a surface.
+class GeomProjLib 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! gives  the 2d-curve   of  a 3d-curve  lying on   a <br>
-//!          surface (  uses GeomProjLib_ProjectedCurve   ) <br>
-//!          The 3dCurve is taken between the parametrization <br>
-//!          range [First, Last] <br>
-//!          <Tolerance> is used as input if the projection needs <br>
-//!          an approximation. In this case, the reached <br>
-//!          tolerance is set in <Tolerance> as output. <br>
-//!          WARNING :  if   the projection has  failed,   this <br>
-//!          method returns a null Handle. <br>
-  Standard_EXPORT   static  Handle_Geom2d_Curve Curve2d(const Handle(Geom_Curve)& C,const Standard_Real First,const Standard_Real Last,const Handle(Geom_Surface)& S,const Standard_Real UFirst,const Standard_Real ULast,const Standard_Real VFirst,const Standard_Real VLast,Standard_Real& Tolerance) ;
-  //! gives  the 2d-curve   of  a 3d-curve  lying on   a <br>
-//!          surface (  uses GeomProjLib_ProjectedCurve   ) <br>
-//!          The 3dCurve is taken between the parametrization <br>
-//!          range [First, Last] <br>
-//!          <Tolerance> is used as input if the projection needs <br>
-//!          an approximation. In this case, the reached <br>
-//!          tolerance is set in <Tolerance> as output. <br>
-//!          WARNING :  if   the projection has  failed,   this <br>
-//!          method returns a null Handle. <br>
-  Standard_EXPORT   static  Handle_Geom2d_Curve Curve2d(const Handle(Geom_Curve)& C,const Standard_Real First,const Standard_Real Last,const Handle(Geom_Surface)& S,Standard_Real& Tolerance) ;
-  //! gives  the 2d-curve   of  a 3d-curve  lying on   a <br>
-//!          surface (  uses GeomProjLib_ProjectedCurve   ) <br>
-//!          The 3dCurve is taken between the parametrization <br>
-//!          range [First, Last] <br>
-//!          If the projection needs an approximation, <br>
-//!          Precision::PApproximation() is used. <br>
-//!          WARNING :  if   the projection has  failed,   this <br>
-//!          method returns a null Handle. <br>
-  Standard_EXPORT   static  Handle_Geom2d_Curve Curve2d(const Handle(Geom_Curve)& C,const Standard_Real First,const Standard_Real Last,const Handle(Geom_Surface)& S) ;
-  //! gives  the  2d-curve  of  a  3d-curve lying   on a <br>
-//!          surface   ( uses   GeomProjLib_ProjectedCurve ). <br>
-//!          If the projection needs an approximation, <br>
-//!          Precision::PApproximation() is used. <br>
-//!          WARNING  :  if the   projection has  failed,  this <br>
-//!          method returns a null Handle. <br>
-  Standard_EXPORT   static  Handle_Geom2d_Curve Curve2d(const Handle(Geom_Curve)& C,const Handle(Geom_Surface)& S) ;
-  //! gives  the  2d-curve  of  a  3d-curve lying   on a <br>
-//!          surface   ( uses   GeomProjLib_ProjectedCurve ). <br>
-//!          If the projection needs an approximation, <br>
-//!          Precision::PApproximation() is used. <br>
-//!          WARNING  :  if the   projection has  failed,  this <br>
-//!          method returns a null Handle. <br>
-//!          can expand a little the bounds of surface <br>
-  Standard_EXPORT   static  Handle_Geom2d_Curve Curve2d(const Handle(Geom_Curve)& C,const Handle(Geom_Surface)& S,const Standard_Real UDeb,const Standard_Real UFin,const Standard_Real VDeb,const Standard_Real VFin) ;
-  //! gives  the  2d-curve  of  a  3d-curve lying   on a <br>
-//!          surface   ( uses   GeomProjLib_ProjectedCurve ). <br>
-//!          If the projection needs an approximation, <br>
-//!          Precision::PApproximation() is used. <br>
-//!          WARNING  :  if the   projection has  failed,  this <br>
-//!          method returns a null Handle. <br>
-//!          can expand a little the bounds of surface <br>
-  Standard_EXPORT   static  Handle_Geom2d_Curve Curve2d(const Handle(Geom_Curve)& C,const Handle(Geom_Surface)& S,const Standard_Real UDeb,const Standard_Real UFin,const Standard_Real VDeb,const Standard_Real VFin,Standard_Real& Tolerance) ;
-  //! Constructs   the  3d-curve  from the normal <br>
-//!          projection  of the  Curve <C> on  the surface <S>. <br>
-//!          WARNING : if the  projection has failes returns  a <br>
-//!          null Handle. <br>
-  Standard_EXPORT   static  Handle_Geom_Curve Project(const Handle(Geom_Curve)& C,const Handle(Geom_Surface)& S) ;
-  //! Constructs  the 3d-curves from the projection <br>
-//!          of the  curve  <Curve> on the  plane <Plane> along <br>
-//!          the direction <Dir>. <br>
-//!          If <KeepParametrization> is true, the parametrization <br>
-//!          of the Projected Curve <PC> will be  the same as  the <br>
-//!          parametrization of the initial curve <C>. <br>
-//!          It meens: proj(C(u)) = PC(u) for each u. <br>
-//!          Otherwize, the parametrization may change. <br>
-  Standard_EXPORT   static  Handle_Geom_Curve ProjectOnPlane(const Handle(Geom_Curve)& Curve,const Handle(Geom_Plane)& Plane,const gp_Dir& Dir,const Standard_Boolean KeepParametrization) ;
-
+  
+  //! gives  the 2d-curve   of  a 3d-curve  lying on   a
+  //! surface (  uses GeomProjLib_ProjectedCurve   )
+  //! The 3dCurve is taken between the parametrization
+  //! range [First, Last]
+  //! <Tolerance> is used as input if the projection needs
+  //! an approximation. In this case, the reached
+  //! tolerance is set in <Tolerance> as output.
+  //! WARNING :  if   the projection has  failed,   this
+  //! method returns a null Handle.
+  Standard_EXPORT static   Handle(Geom2d_Curve) Curve2d (const Handle(Geom_Curve)& C, const Standard_Real First, const Standard_Real Last, const Handle(Geom_Surface)& S, const Standard_Real UFirst, const Standard_Real ULast, const Standard_Real VFirst, const Standard_Real VLast, Standard_Real& Tolerance) ;
+  
+  //! gives  the 2d-curve   of  a 3d-curve  lying on   a
+  //! surface (  uses GeomProjLib_ProjectedCurve   )
+  //! The 3dCurve is taken between the parametrization
+  //! range [First, Last]
+  //! <Tolerance> is used as input if the projection needs
+  //! an approximation. In this case, the reached
+  //! tolerance is set in <Tolerance> as output.
+  //! WARNING :  if   the projection has  failed,   this
+  //! method returns a null Handle.
+  Standard_EXPORT static   Handle(Geom2d_Curve) Curve2d (const Handle(Geom_Curve)& C, const Standard_Real First, const Standard_Real Last, const Handle(Geom_Surface)& S, Standard_Real& Tolerance) ;
+  
+  //! gives  the 2d-curve   of  a 3d-curve  lying on   a
+  //! surface (  uses GeomProjLib_ProjectedCurve   )
+  //! The 3dCurve is taken between the parametrization
+  //! range [First, Last]
+  //! If the projection needs an approximation,
+  //! Precision::PApproximation() is used.
+  //! WARNING :  if   the projection has  failed,   this
+  //! method returns a null Handle.
+  Standard_EXPORT static   Handle(Geom2d_Curve) Curve2d (const Handle(Geom_Curve)& C, const Standard_Real First, const Standard_Real Last, const Handle(Geom_Surface)& S) ;
+  
+  //! gives  the  2d-curve  of  a  3d-curve lying   on a
+  //! surface   ( uses   GeomProjLib_ProjectedCurve ).
+  //! If the projection needs an approximation,
+  //! Precision::PApproximation() is used.
+  //! WARNING  :  if the   projection has  failed,  this
+  //! method returns a null Handle.
+  Standard_EXPORT static   Handle(Geom2d_Curve) Curve2d (const Handle(Geom_Curve)& C, const Handle(Geom_Surface)& S) ;
+  
+  //! gives  the  2d-curve  of  a  3d-curve lying   on a
+  //! surface   ( uses   GeomProjLib_ProjectedCurve ).
+  //! If the projection needs an approximation,
+  //! Precision::PApproximation() is used.
+  //! WARNING  :  if the   projection has  failed,  this
+  //! method returns a null Handle.
+  //! can expand a little the bounds of surface
+  Standard_EXPORT static   Handle(Geom2d_Curve) Curve2d (const Handle(Geom_Curve)& C, const Handle(Geom_Surface)& S, const Standard_Real UDeb, const Standard_Real UFin, const Standard_Real VDeb, const Standard_Real VFin) ;
+  
+  //! gives  the  2d-curve  of  a  3d-curve lying   on a
+  //! surface   ( uses   GeomProjLib_ProjectedCurve ).
+  //! If the projection needs an approximation,
+  //! Precision::PApproximation() is used.
+  //! WARNING  :  if the   projection has  failed,  this
+  //! method returns a null Handle.
+  //! can expand a little the bounds of surface
+  Standard_EXPORT static   Handle(Geom2d_Curve) Curve2d (const Handle(Geom_Curve)& C, const Handle(Geom_Surface)& S, const Standard_Real UDeb, const Standard_Real UFin, const Standard_Real VDeb, const Standard_Real VFin, Standard_Real& Tolerance) ;
+  
+  //! Constructs   the  3d-curve  from the normal
+  //! projection  of the  Curve <C> on  the surface <S>.
+  //! WARNING : if the  projection has failes returns  a
+  //! null Handle.
+  Standard_EXPORT static   Handle(Geom_Curve) Project (const Handle(Geom_Curve)& C, const Handle(Geom_Surface)& S) ;
+  
+  //! Constructs  the 3d-curves from the projection
+  //! of the  curve  <Curve> on the  plane <Plane> along
+  //! the direction <Dir>.
+  //! If <KeepParametrization> is true, the parametrization
+  //! of the Projected Curve <PC> will be  the same as  the
+  //! parametrization of the initial curve <C>.
+  //! It meens: proj(C(u)) = PC(u) for each u.
+  //! Otherwize, the parametrization may change.
+  Standard_EXPORT static   Handle(Geom_Curve) ProjectOnPlane (const Handle(Geom_Curve)& Curve, const Handle(Geom_Plane)& Plane, const gp_Dir& Dir, const Standard_Boolean KeepParametrization) ;
 
 
 
@@ -136,7 +126,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomProjLib_HeaderFile

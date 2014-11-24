@@ -6,34 +6,16 @@
 #ifndef _HLRBRep_IntConicCurveOfCInter_HeaderFile
 #define _HLRBRep_IntConicCurveOfCInter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _IntCurve_IntConicConic_HeaderFile
 #include <IntCurve_IntConicConic.hxx>
-#endif
-#ifndef _HLRBRep_TheIntConicCurveOfCInter_HeaderFile
 #include <HLRBRep_TheIntConicCurveOfCInter.hxx>
-#endif
-#ifndef _IntRes2d_Intersection_HeaderFile
 #include <IntRes2d_Intersection.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_ConstructionError;
 class IntCurve_IConicTool;
 class HLRBRep_CurveTool;
@@ -47,34 +29,34 @@ class gp_Hypr2d;
 
 
 
-class HLRBRep_IntConicCurveOfCInter  : public IntRes2d_Intersection {
+class HLRBRep_IntConicCurveOfCInter  : public IntRes2d_Intersection
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   HLRBRep_IntConicCurveOfCInter();
+  Standard_EXPORT HLRBRep_IntConicCurveOfCInter();
   
-  Standard_EXPORT   HLRBRep_IntConicCurveOfCInter(const gp_Lin2d& L,const IntRes2d_Domain& D1,const Standard_Address& PCurve,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol);
+  Standard_EXPORT HLRBRep_IntConicCurveOfCInter(const gp_Lin2d& L, const IntRes2d_Domain& D1, const Standard_Address& PCurve, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol);
   
-  Standard_EXPORT   HLRBRep_IntConicCurveOfCInter(const gp_Circ2d& C,const IntRes2d_Domain& D1,const Standard_Address& PCurve,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol);
+  Standard_EXPORT HLRBRep_IntConicCurveOfCInter(const gp_Circ2d& C, const IntRes2d_Domain& D1, const Standard_Address& PCurve, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol);
   
-  Standard_EXPORT   HLRBRep_IntConicCurveOfCInter(const gp_Elips2d& E,const IntRes2d_Domain& D1,const Standard_Address& PCurve,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol);
+  Standard_EXPORT HLRBRep_IntConicCurveOfCInter(const gp_Elips2d& E, const IntRes2d_Domain& D1, const Standard_Address& PCurve, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol);
   
-  Standard_EXPORT   HLRBRep_IntConicCurveOfCInter(const gp_Parab2d& Prb,const IntRes2d_Domain& D1,const Standard_Address& PCurve,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol);
+  Standard_EXPORT HLRBRep_IntConicCurveOfCInter(const gp_Parab2d& Prb, const IntRes2d_Domain& D1, const Standard_Address& PCurve, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol);
   
-  Standard_EXPORT   HLRBRep_IntConicCurveOfCInter(const gp_Hypr2d& H,const IntRes2d_Domain& D1,const Standard_Address& PCurve,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol);
+  Standard_EXPORT HLRBRep_IntConicCurveOfCInter(const gp_Hypr2d& H, const IntRes2d_Domain& D1, const Standard_Address& PCurve, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol);
   
-  Standard_EXPORT     void Perform(const gp_Lin2d& L,const IntRes2d_Domain& D1,const Standard_Address& PCurve,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol) ;
+  Standard_EXPORT   void Perform (const gp_Lin2d& L, const IntRes2d_Domain& D1, const Standard_Address& PCurve, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol) ;
   
-  Standard_EXPORT     void Perform(const gp_Circ2d& C,const IntRes2d_Domain& D1,const Standard_Address& PCurve,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol) ;
+  Standard_EXPORT   void Perform (const gp_Circ2d& C, const IntRes2d_Domain& D1, const Standard_Address& PCurve, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol) ;
   
-  Standard_EXPORT     void Perform(const gp_Elips2d& E,const IntRes2d_Domain& D1,const Standard_Address& PCurve,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol) ;
+  Standard_EXPORT   void Perform (const gp_Elips2d& E, const IntRes2d_Domain& D1, const Standard_Address& PCurve, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol) ;
   
-  Standard_EXPORT     void Perform(const gp_Parab2d& Prb,const IntRes2d_Domain& D1,const Standard_Address& PCurve,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol) ;
+  Standard_EXPORT   void Perform (const gp_Parab2d& Prb, const IntRes2d_Domain& D1, const Standard_Address& PCurve, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol) ;
   
-  Standard_EXPORT     void Perform(const gp_Hypr2d& H,const IntRes2d_Domain& D1,const Standard_Address& PCurve,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol) ;
-
+  Standard_EXPORT   void Perform (const gp_Hypr2d& H, const IntRes2d_Domain& D1, const Standard_Address& PCurve, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol) ;
 
 
 
@@ -88,23 +70,23 @@ protected:
 private:
 
   
-  Standard_EXPORT     void InternalPerform(const gp_Lin2d& Lin1,const IntRes2d_Domain& D1,const Standard_Address& PCurve,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol,const Standard_Boolean Composite) ;
+  Standard_EXPORT   void InternalPerform (const gp_Lin2d& Lin1, const IntRes2d_Domain& D1, const Standard_Address& PCurve, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol, const Standard_Boolean Composite) ;
   
-  Standard_EXPORT     void InternalPerform(const gp_Circ2d& Circ1,const IntRes2d_Domain& D1,const Standard_Address& PCurve,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol,const Standard_Boolean Composite) ;
+  Standard_EXPORT   void InternalPerform (const gp_Circ2d& Circ1, const IntRes2d_Domain& D1, const Standard_Address& PCurve, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol, const Standard_Boolean Composite) ;
   
-  Standard_EXPORT     void InternalPerform(const gp_Elips2d& Eli1,const IntRes2d_Domain& D1,const Standard_Address& PCurve,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol,const Standard_Boolean Composite) ;
+  Standard_EXPORT   void InternalPerform (const gp_Elips2d& Eli1, const IntRes2d_Domain& D1, const Standard_Address& PCurve, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol, const Standard_Boolean Composite) ;
   
-  Standard_EXPORT     void InternalPerform(const gp_Parab2d& Prb1,const IntRes2d_Domain& D1,const Standard_Address& PCurve,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol,const Standard_Boolean Composite) ;
+  Standard_EXPORT   void InternalPerform (const gp_Parab2d& Prb1, const IntRes2d_Domain& D1, const Standard_Address& PCurve, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol, const Standard_Boolean Composite) ;
   
-  Standard_EXPORT     void InternalPerform(const gp_Hypr2d& Hpr1,const IntRes2d_Domain& D1,const Standard_Address& PCurve,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol,const Standard_Boolean Composite) ;
+  Standard_EXPORT   void InternalPerform (const gp_Hypr2d& Hpr1, const IntRes2d_Domain& D1, const Standard_Address& PCurve, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol, const Standard_Boolean Composite) ;
 
 
-Standard_Real param1inf;
-Standard_Real param1sup;
-Standard_Real param2inf;
-Standard_Real param2sup;
-IntCurve_IntConicConic intconiconi;
-HLRBRep_TheIntConicCurveOfCInter intconicurv;
+  Standard_Real param1inf;
+  Standard_Real param1sup;
+  Standard_Real param2inf;
+  Standard_Real param2sup;
+  IntCurve_IntConicConic intconiconi;
+  HLRBRep_TheIntConicCurveOfCInter intconicurv;
 
 
 };
@@ -113,7 +95,6 @@ HLRBRep_TheIntConicCurveOfCInter intconicurv;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_IntConicCurveOfCInter_HeaderFile

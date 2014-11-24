@@ -1,3 +1,1 @@
-#ifndef _PGeom_Curve_HeaderFile
 #include <PGeom_Curve.hxx>
-#endif

@@ -5,22 +5,12 @@
 
 #include <XCAFPrs_DataMapNodeOfDataMapOfStyleShape.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _XCAFPrs_Style_HeaderFile
 #include <XCAFPrs_Style.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _XCAFPrs_DataMapOfStyleShape_HeaderFile
 #include <XCAFPrs_DataMapOfStyleShape.hxx>
-#endif
-#ifndef _XCAFPrs_DataMapIteratorOfDataMapOfStyleShape_HeaderFile
 #include <XCAFPrs_DataMapIteratorOfDataMapOfStyleShape.hxx>
-#endif
 
  
 

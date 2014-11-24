@@ -6,25 +6,13 @@
 #ifndef _Extrema_LocEPCOfLocateExtPC_HeaderFile
 #define _Extrema_LocEPCOfLocateExtPC_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Extrema_PCLocFOfLocEPCOfLocateExtPC_HeaderFile
 #include <Extrema_PCLocFOfLocEPCOfLocateExtPC.hxx>
-#endif
 class Standard_DomainError;
 class Standard_TypeMismatch;
 class StdFail_NotDone;
@@ -38,30 +26,30 @@ class Extrema_SeqPCOfPCLocFOfLocEPCOfLocateExtPC;
 
 
 
-class Extrema_LocEPCOfLocateExtPC  {
+class Extrema_LocEPCOfLocateExtPC 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Extrema_LocEPCOfLocateExtPC();
+  Standard_EXPORT Extrema_LocEPCOfLocateExtPC();
   
-  Standard_EXPORT   Extrema_LocEPCOfLocateExtPC(const gp_Pnt& P,const Adaptor3d_Curve& C,const Standard_Real U0,const Standard_Real TolU);
+  Standard_EXPORT Extrema_LocEPCOfLocateExtPC(const gp_Pnt& P, const Adaptor3d_Curve& C, const Standard_Real U0, const Standard_Real TolU);
   
-  Standard_EXPORT   Extrema_LocEPCOfLocateExtPC(const gp_Pnt& P,const Adaptor3d_Curve& C,const Standard_Real U0,const Standard_Real Umin,const Standard_Real Usup,const Standard_Real TolU);
+  Standard_EXPORT Extrema_LocEPCOfLocateExtPC(const gp_Pnt& P, const Adaptor3d_Curve& C, const Standard_Real U0, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU);
   
-  Standard_EXPORT     void Initialize(const Adaptor3d_Curve& C,const Standard_Real Umin,const Standard_Real Usup,const Standard_Real TolU) ;
+  Standard_EXPORT   void Initialize (const Adaptor3d_Curve& C, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU) ;
   
-  Standard_EXPORT     void Perform(const gp_Pnt& P,const Standard_Real U0) ;
+  Standard_EXPORT   void Perform (const gp_Pnt& P, const Standard_Real U0) ;
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
   
-  Standard_EXPORT     Standard_Real SquareDistance() const;
+  Standard_EXPORT   Standard_Real SquareDistance()  const;
   
-  Standard_EXPORT     Standard_Boolean IsMin() const;
+  Standard_EXPORT   Standard_Boolean IsMin()  const;
   
-  Standard_EXPORT    const Extrema_POnCurv& Point() const;
-
+  Standard_EXPORT  const  Extrema_POnCurv& Point()  const;
 
 
 
@@ -76,11 +64,11 @@ private:
 
 
 
-Standard_Boolean myDone;
-Standard_Real mytolU;
-Standard_Real myumin;
-Standard_Real myusup;
-Extrema_PCLocFOfLocEPCOfLocateExtPC myF;
+  Standard_Boolean myDone;
+  Standard_Real mytolU;
+  Standard_Real myumin;
+  Standard_Real myusup;
+  Extrema_PCLocFOfLocEPCOfLocateExtPC myF;
 
 
 };
@@ -89,7 +77,6 @@ Extrema_PCLocFOfLocEPCOfLocateExtPC myF;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Extrema_LocEPCOfLocateExtPC_HeaderFile

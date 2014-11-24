@@ -6,34 +6,16 @@
 #ifndef _StepVisual_CurveStyleFontSelect_HeaderFile
 #define _StepVisual_CurveStyleFontSelect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepVisual_CurveStyleFont_HeaderFile
 #include <Handle_StepVisual_CurveStyleFont.hxx>
-#endif
-#ifndef _Handle_StepVisual_PreDefinedCurveFont_HeaderFile
 #include <Handle_StepVisual_PreDefinedCurveFont.hxx>
-#endif
-#ifndef _Handle_StepVisual_ExternallyDefinedCurveFont_HeaderFile
 #include <Handle_StepVisual_ExternallyDefinedCurveFont.hxx>
-#endif
 class Standard_Transient;
 class StepVisual_CurveStyleFont;
 class StepVisual_PreDefinedCurveFont;
@@ -41,26 +23,31 @@ class StepVisual_ExternallyDefinedCurveFont;
 
 
 
-class StepVisual_CurveStyleFontSelect  : public StepData_SelectType {
+class StepVisual_CurveStyleFontSelect  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a CurveStyleFontSelect SelectType <br>
-  Standard_EXPORT   StepVisual_CurveStyleFontSelect();
-  //! Recognizes a CurveStyleFontSelect Kind Entity that is : <br>
-//!        1 -> CurveStyleFont <br>
-//!        2 -> PreDefinedCurveFont <br>
-//!        3 -> ExternallyDefinedCurveFont <br>
-//!        0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! returns Value as a CurveStyleFont (Null if another type) <br>
-  Standard_EXPORT     Handle_StepVisual_CurveStyleFont CurveStyleFont() const;
-  //! returns Value as a PreDefinedCurveFont (Null if another type) <br>
-  Standard_EXPORT     Handle_StepVisual_PreDefinedCurveFont PreDefinedCurveFont() const;
-  //! returns Value as a ExternallyDefinedCurveFont (Null if another type) <br>
-  Standard_EXPORT     Handle_StepVisual_ExternallyDefinedCurveFont ExternallyDefinedCurveFont() const;
-
+  
+  //! Returns a CurveStyleFontSelect SelectType
+  Standard_EXPORT StepVisual_CurveStyleFontSelect();
+  
+  //! Recognizes a CurveStyleFontSelect Kind Entity that is :
+  //! 1 -> CurveStyleFont
+  //! 2 -> PreDefinedCurveFont
+  //! 3 -> ExternallyDefinedCurveFont
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! returns Value as a CurveStyleFont (Null if another type)
+  Standard_EXPORT   Handle(StepVisual_CurveStyleFont) CurveStyleFont()  const;
+  
+  //! returns Value as a PreDefinedCurveFont (Null if another type)
+  Standard_EXPORT   Handle(StepVisual_PreDefinedCurveFont) PreDefinedCurveFont()  const;
+  
+  //! returns Value as a ExternallyDefinedCurveFont (Null if another type)
+  Standard_EXPORT   Handle(StepVisual_ExternallyDefinedCurveFont) ExternallyDefinedCurveFont()  const;
 
 
 
@@ -83,7 +70,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_CurveStyleFontSelect_HeaderFile

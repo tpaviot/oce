@@ -1,9 +1,3 @@
-#ifndef _IGESBasic_SubfigureDef_HeaderFile
 #include <IGESBasic_SubfigureDef.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _IGESBasic_SingularSubfigure_HeaderFile
 #include <IGESBasic_SingularSubfigure.hxx>
-#endif

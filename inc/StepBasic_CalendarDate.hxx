@@ -6,43 +6,35 @@
 #ifndef _StepBasic_CalendarDate_HeaderFile
 #define _StepBasic_CalendarDate_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_CalendarDate_HeaderFile
 #include <Handle_StepBasic_CalendarDate.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _StepBasic_Date_HeaderFile
 #include <StepBasic_Date.hxx>
-#endif
 
 
 
-class StepBasic_CalendarDate : public StepBasic_Date {
+class StepBasic_CalendarDate : public StepBasic_Date
+{
 
 public:
 
-  //! Returns a CalendarDate <br>
-  Standard_EXPORT   StepBasic_CalendarDate();
   
-  Standard_EXPORT   virtual  void Init(const Standard_Integer aYearComponent) ;
+  //! Returns a CalendarDate
+  Standard_EXPORT StepBasic_CalendarDate();
   
-  Standard_EXPORT   virtual  void Init(const Standard_Integer aYearComponent,const Standard_Integer aDayComponent,const Standard_Integer aMonthComponent) ;
+  Standard_EXPORT virtual   void Init (const Standard_Integer aYearComponent) ;
   
-  Standard_EXPORT     void SetDayComponent(const Standard_Integer aDayComponent) ;
+  Standard_EXPORT virtual   void Init (const Standard_Integer aYearComponent, const Standard_Integer aDayComponent, const Standard_Integer aMonthComponent) ;
   
-  Standard_EXPORT     Standard_Integer DayComponent() const;
+  Standard_EXPORT   void SetDayComponent (const Standard_Integer aDayComponent) ;
   
-  Standard_EXPORT     void SetMonthComponent(const Standard_Integer aMonthComponent) ;
+  Standard_EXPORT   Standard_Integer DayComponent()  const;
   
-  Standard_EXPORT     Standard_Integer MonthComponent() const;
+  Standard_EXPORT   void SetMonthComponent (const Standard_Integer aMonthComponent) ;
+  
+  Standard_EXPORT   Standard_Integer MonthComponent()  const;
 
 
 
@@ -57,8 +49,8 @@ protected:
 private: 
 
 
-Standard_Integer dayComponent;
-Standard_Integer monthComponent;
+  Standard_Integer dayComponent;
+  Standard_Integer monthComponent;
 
 
 };
@@ -67,7 +59,6 @@ Standard_Integer monthComponent;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_CalendarDate_HeaderFile

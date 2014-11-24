@@ -1,15 +1,5 @@
-#ifndef _IGESDimen_GeneralNote_HeaderFile
 #include <IGESDimen_GeneralNote.hxx>
-#endif
-#ifndef _IGESDimen_LeaderArrow_HeaderFile
 #include <IGESDimen_LeaderArrow.hxx>
-#endif
-#ifndef _IGESDimen_WitnessLine_HeaderFile
 #include <IGESDimen_WitnessLine.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IGESDimen_LinearDimension_HeaderFile
 #include <IGESDimen_LinearDimension.hxx>
-#endif

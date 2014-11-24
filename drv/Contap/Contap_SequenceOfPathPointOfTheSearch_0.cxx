@@ -5,18 +5,10 @@
 
 #include <Contap_SequenceOfPathPointOfTheSearch.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Contap_ThePathPointOfTheSearch_HeaderFile
 #include <Contap_ThePathPointOfTheSearch.hxx>
-#endif
-#ifndef _Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch_HeaderFile
 #include <Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch.hxx>
-#endif
  
 
 #define SeqItem Contap_ThePathPointOfTheSearch

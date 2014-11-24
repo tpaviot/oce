@@ -6,40 +6,32 @@
 #ifndef _StepRepr_DescriptiveRepresentationItem_HeaderFile
 #define _StepRepr_DescriptiveRepresentationItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepRepr_DescriptiveRepresentationItem_HeaderFile
 #include <Handle_StepRepr_DescriptiveRepresentationItem.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepRepr_RepresentationItem_HeaderFile
 #include <StepRepr_RepresentationItem.hxx>
-#endif
 class TCollection_HAsciiString;
 
 
 
-class StepRepr_DescriptiveRepresentationItem : public StepRepr_RepresentationItem {
+class StepRepr_DescriptiveRepresentationItem : public StepRepr_RepresentationItem
+{
 
 public:
 
-  //! Returns a DescriptiveRepresentationItem <br>
-  Standard_EXPORT   StepRepr_DescriptiveRepresentationItem();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a DescriptiveRepresentationItem
+  Standard_EXPORT StepRepr_DescriptiveRepresentationItem();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(TCollection_HAsciiString)& aDescription) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetDescription(const Handle(TCollection_HAsciiString)& aDescription) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(TCollection_HAsciiString)& aDescription) ;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString Description() const;
+  Standard_EXPORT   void SetDescription (const Handle(TCollection_HAsciiString)& aDescription) ;
+  
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Description()  const;
 
 
 
@@ -54,7 +46,7 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString description;
+  Handle(TCollection_HAsciiString) description;
 
 
 };
@@ -63,7 +55,6 @@ Handle_TCollection_HAsciiString description;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_DescriptiveRepresentationItem_HeaderFile

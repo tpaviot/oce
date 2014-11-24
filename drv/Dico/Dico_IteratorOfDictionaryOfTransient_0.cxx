@@ -5,24 +5,14 @@
 
 #include <Dico_IteratorOfDictionaryOfTransient.hxx>
 
-#ifndef _Dico_DictionaryOfTransient_HeaderFile
 #include <Dico_DictionaryOfTransient.hxx>
-#endif
-#ifndef _Dico_StackItemOfDictionaryOfTransient_HeaderFile
 #include <Dico_StackItemOfDictionaryOfTransient.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
  
 
-#define TheItem Handle_Standard_Transient
+#define TheItem Handle(Standard_Transient)
 #define TheItem_hxx <Standard_Transient.hxx>
 #define Dico_Iterator Dico_IteratorOfDictionaryOfTransient
 #define Dico_Iterator_hxx <Dico_IteratorOfDictionaryOfTransient.hxx>

@@ -6,22 +6,15 @@
 #ifndef _Handle_Interface_CheckFailure_HeaderFile
 #define _Handle_Interface_CheckFailure_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Interface_InterfaceError_HeaderFile
 #include <Handle_Interface_InterfaceError.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Interface_InterfaceError);
 class Interface_CheckFailure;
 
-DEFINE_STANDARD_HANDLE(Interface_CheckFailure,Interface_InterfaceError)
+DEFINE_STANDARD_HANDLE(Interface_CheckFailure, Interface_InterfaceError)
 
-#endif
+#endif // _Handle_Interface_CheckFailure_HeaderFile

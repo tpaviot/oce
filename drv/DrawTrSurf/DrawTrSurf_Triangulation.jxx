@@ -1,15 +1,5 @@
-#ifndef _Poly_Triangulation_HeaderFile
 #include <Poly_Triangulation.hxx>
-#endif
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Draw_Display_HeaderFile
 #include <Draw_Display.hxx>
-#endif
-#ifndef _Draw_Drawable3D_HeaderFile
 #include <Draw_Drawable3D.hxx>
-#endif
-#ifndef _DrawTrSurf_Triangulation_HeaderFile
 #include <DrawTrSurf_Triangulation.hxx>
-#endif

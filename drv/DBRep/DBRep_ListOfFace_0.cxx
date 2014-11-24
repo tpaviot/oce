@@ -5,21 +5,13 @@
 
 #include <DBRep_ListOfFace.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _DBRep_ListIteratorOfListOfFace_HeaderFile
 #include <DBRep_ListIteratorOfListOfFace.hxx>
-#endif
-#ifndef _DBRep_Face_HeaderFile
 #include <DBRep_Face.hxx>
-#endif
-#ifndef _DBRep_ListNodeOfListOfFace_HeaderFile
 #include <DBRep_ListNodeOfListOfFace.hxx>
-#endif
  
 
-#define Item Handle_DBRep_Face
+#define Item Handle(DBRep_Face)
 #define Item_hxx <DBRep_Face.hxx>
 #define TCollection_ListNode DBRep_ListNodeOfListOfFace
 #define TCollection_ListNode_hxx <DBRep_ListNodeOfListOfFace.hxx>

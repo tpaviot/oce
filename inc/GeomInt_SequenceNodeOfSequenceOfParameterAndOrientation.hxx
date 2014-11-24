@@ -6,38 +6,27 @@
 #ifndef _GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation_HeaderFile
 #define _GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation_HeaderFile
 #include <Handle_GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation.hxx>
-#endif
 
-#ifndef _GeomInt_ParameterAndOrientation_HeaderFile
 #include <GeomInt_ParameterAndOrientation.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class GeomInt_ParameterAndOrientation;
 class GeomInt_SequenceOfParameterAndOrientation;
 
 
 
-class GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation : public TCollection_SeqNode {
+class GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation : public TCollection_SeqNode
+{
 
 public:
 
   
-      GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation(const GeomInt_ParameterAndOrientation& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation(const GeomInt_ParameterAndOrientation& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        GeomInt_ParameterAndOrientation& Value() const;
+      GeomInt_ParameterAndOrientation& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-GeomInt_ParameterAndOrientation myValue;
+  GeomInt_ParameterAndOrientation myValue;
 
 
 };
@@ -78,7 +67,6 @@ GeomInt_ParameterAndOrientation myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation_HeaderFile

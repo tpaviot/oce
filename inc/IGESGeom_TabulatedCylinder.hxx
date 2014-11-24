@@ -6,58 +6,51 @@
 #ifndef _IGESGeom_TabulatedCylinder_HeaderFile
 #define _IGESGeom_TabulatedCylinder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESGeom_TabulatedCylinder_HeaderFile
 #include <Handle_IGESGeom_TabulatedCylinder.hxx>
-#endif
 
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
 class IGESData_IGESEntity;
 class gp_XYZ;
 class gp_Pnt;
 
 
-//! defines IGESTabulatedCylinder, Type <122> Form <0> <br>
-//!          in package IGESGeom <br>
-//!          A tabulated cylinder is a surface formed by moving a line <br>
-//!          segment called generatrix parallel to itself along a curve <br>
-//!          called directrix. The curve may be a line, circular arc, <br>
-//!          conic arc, parametric spline curve, rational B-spline <br>
-//!          curve or composite curve. <br>
-class IGESGeom_TabulatedCylinder : public IGESData_IGESEntity {
+//! defines IGESTabulatedCylinder, Type <122> Form <0>
+//! in package IGESGeom
+//! A tabulated cylinder is a surface formed by moving a line
+//! segment called generatrix parallel to itself along a curve
+//! called directrix. The curve may be a line, circular arc,
+//! conic arc, parametric spline curve, rational B-spline
+//! curve or composite curve.
+class IGESGeom_TabulatedCylinder : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESGeom_TabulatedCylinder();
-  //! This method is used to set the fields of the class <br>
-//!           TabulatedCylinder <br>
-//!       - aDirectrix : Directrix Curve of the tabulated cylinder <br>
-//!       - anEnd      : Coordinates of the terminate point of the <br>
-//!                      generatrix <br>
-//! The start point of the directrix is identical to the start <br>
-//! point of the generatrix <br>
-  Standard_EXPORT     void Init(const Handle(IGESData_IGESEntity)& aDirectrix,const gp_XYZ& anEnd) ;
-  //! returns the directrix curve of the tabulated cylinder <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity Directrix() const;
-  //! returns end point of generatrix of the tabulated cylinder <br>
-  Standard_EXPORT     gp_Pnt EndPoint() const;
-  //! returns end point of generatrix of the tabulated cylinder <br>
-//! after applying Transf. Matrix <br>
-  Standard_EXPORT     gp_Pnt TransformedEndPoint() const;
+  Standard_EXPORT IGESGeom_TabulatedCylinder();
+  
+  //! This method is used to set the fields of the class
+  //! TabulatedCylinder
+  //! - aDirectrix : Directrix Curve of the tabulated cylinder
+  //! - anEnd      : Coordinates of the terminate point of the
+  //! generatrix
+  //! The start point of the directrix is identical to the start
+  //! point of the generatrix
+  Standard_EXPORT   void Init (const Handle(IGESData_IGESEntity)& aDirectrix, const gp_XYZ& anEnd) ;
+  
+  //! returns the directrix curve of the tabulated cylinder
+  Standard_EXPORT   Handle(IGESData_IGESEntity) Directrix()  const;
+  
+  //! returns end point of generatrix of the tabulated cylinder
+  Standard_EXPORT   gp_Pnt EndPoint()  const;
+  
+  //! returns end point of generatrix of the tabulated cylinder
+  //! after applying Transf. Matrix
+  Standard_EXPORT   gp_Pnt TransformedEndPoint()  const;
 
 
 
@@ -72,8 +65,8 @@ protected:
 private: 
 
 
-Handle_IGESData_IGESEntity theDirectrix;
-gp_XYZ theEnd;
+  Handle(IGESData_IGESEntity) theDirectrix;
+  gp_XYZ theEnd;
 
 
 };
@@ -82,7 +75,6 @@ gp_XYZ theEnd;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGeom_TabulatedCylinder_HeaderFile

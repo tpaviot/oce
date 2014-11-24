@@ -1,3 +1,1 @@
-#ifndef _XDEDRAW_HeaderFile
 #include <XDEDRAW.hxx>
-#endif

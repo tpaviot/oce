@@ -1,6 +1,2 @@
-#ifndef _ShapeExtend_CompositeSurface_HeaderFile
 #include <ShapeExtend_CompositeSurface.hxx>
-#endif
-#ifndef _ShapeUpgrade_ConvertSurfaceToBezierBasis_HeaderFile
 #include <ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx>
-#endif

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKPLCAF"
-	ProjectGUID="{65BAE3CD-0BFB-04F2-0970-CA60BD9519B9}"
+	ProjectGUID="{D09F2B28-0FBC-05B9-147D-E8ED5D3780EE}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -248,7 +248,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\PDF;..\..\..\src\PDF;..\..\..\drv\PDataStd;..\..\..\src\PDataStd;..\..\..\drv\PFunction;..\..\..\src\PFunction;..\..\..\drv\PDocStd;..\..\..\src\PDocStd;..\..\..\drv\MDF;..\..\..\src\MDF;..\..\..\drv\MDataStd;..\..\..\src\MDataStd;..\..\..\drv\MFunction;..\..\..\src\MFunction;..\..\..\drv\MDocStd;..\..\..\src\MDocStd;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PDF_DLL;__PDataStd_DLL;__PFunction_DLL;__PDocStd_DLL;__MDF_DLL;__MDataStd_DLL;__MFunction_DLL;__MDocStd_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PDF_DLL;__PDataStd_DLL;__PFunction_DLL;__PDocStd_DLL;__MDF_DLL;__MDataStd_DLL;__MFunction_DLL;__MDocStd_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PDF_DLL;__PDataStd_DLL;__PFunction_DLL;__PDocStd_DLL;__MDF_DLL;__MDataStd_DLL;__MFunction_DLL;__MDocStd_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PDF_DLL;__PDataStd_DLL;__PFunction_DLL;__PDocStd_DLL;__MDF_DLL;__MDataStd_DLL;__MFunction_DLL;__MDocStd_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -343,7 +343,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\PDF;..\..\..\src\PDF;..\..\..\drv\PDataStd;..\..\..\src\PDataStd;..\..\..\drv\PFunction;..\..\..\src\PFunction;..\..\..\drv\PDocStd;..\..\..\src\PDocStd;..\..\..\drv\MDF;..\..\..\src\MDF;..\..\..\drv\MDataStd;..\..\..\src\MDataStd;..\..\..\drv\MFunction;..\..\..\src\MFunction;..\..\..\drv\MDocStd;..\..\..\src\MDocStd;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PDF_DLL;__PDataStd_DLL;__PFunction_DLL;__PDocStd_DLL;__MDF_DLL;__MDataStd_DLL;__MFunction_DLL;__MDocStd_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PDF_DLL;__PDataStd_DLL;__PFunction_DLL;__PDocStd_DLL;__MDF_DLL;__MDataStd_DLL;__MFunction_DLL;__MDocStd_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -365,7 +365,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PDF_DLL;__PDataStd_DLL;__PFunction_DLL;__PDocStd_DLL;__MDF_DLL;__MDataStd_DLL;__MFunction_DLL;__MDocStd_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PDF_DLL;__PDataStd_DLL;__PFunction_DLL;__PDocStd_DLL;__MDF_DLL;__MDataStd_DLL;__MFunction_DLL;__MDocStd_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"

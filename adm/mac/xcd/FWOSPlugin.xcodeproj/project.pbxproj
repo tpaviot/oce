@@ -6,62 +6,62 @@
 	objectVersion = 46;
 	objects = {
 
-		075411CC0BE30CE500DC13AA = {isa = PBXBuildFile; fileRef = 0BE315B102F9014719700BBF ;};
-		0058060911BA042D148007A1 = {isa = PBXBuildFile; fileRef = 0D44063A16550005028F06CF ;};
+		19140C46030613A908D40D63 = {isa = PBXBuildFile; fileRef = 15ED01EC10E904770CFD17FA ;};
+		0BFF06470AFC049A06470113 = {isa = PBXBuildFile; fileRef = 068B0A600EC20379153D0971 ;};
 
-		01310DE5197A0CF109A60645 = {isa = PBXBuildFile; fileRef = 171114DD064113630EB3080D ; };
-		04A205C9032E09251348037A = {isa = PBXBuildFile; fileRef = 05DE14D40671142210DF1553 ; };
+		17650C81022516C310930D14 = {isa = PBXBuildFile; fileRef = 1381099109891213053D0075 ; };
+		10481858114210C90DAE0634 = {isa = PBXBuildFile; fileRef = 137011040E1C0BD307B61088 ; };
 
-		0E560E94116C168506DA0126 = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libFWOSPlugin.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		107B06510B280D260D861777 = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libFWOSPlugin.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 
-		0BE315B102F9014719700BBF = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FWOSDriver.cxx; path = ../../../src/FWOSDriver/FWOSDriver.cxx; sourceTree = "<group>"; };
-		0D44063A16550005028F06CF = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FWOSDriver_DriverFactory.cxx; path = ../../../src/FWOSDriver/FWOSDriver_DriverFactory.cxx; sourceTree = "<group>"; };
+		15ED01EC10E904770CFD17FA = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FWOSDriver.cxx; path = ../../../src/FWOSDriver/FWOSDriver.cxx; sourceTree = "<group>"; };
+		068B0A600EC20379153D0971 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FWOSDriver_DriverFactory.cxx; path = ../../../src/FWOSDriver/FWOSDriver_DriverFactory.cxx; sourceTree = "<group>"; };
 
-		171114DD064113630EB3080D = {isa = PBXFileReference; lastKnownFileType = file; name = libTKernel.dylib; path = libTKernel.dylib; sourceTree = "<group>"; };
-		05DE14D40671142210DF1553 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKCDF.dylib; path = libTKCDF.dylib; sourceTree = "<group>"; };
+		1381099109891213053D0075 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKernel.dylib; path = libTKernel.dylib; sourceTree = "<group>"; };
+		137011040E1C0BD307B61088 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKCDF.dylib; path = libTKCDF.dylib; sourceTree = "<group>"; };
 
-		185913DC116A130E030D141C = {
+		0F7C16FB03AE03DB08860577 = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01310DE5197A0CF109A60645 ,
-				04A205C9032E09251348037A ,
+				17650C81022516C310930D14 ,
+				10481858114210C90DAE0634 ,
 
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 
-		039B192B12D702E7161D0E66 = {
+		0C43093D0FCE0534093C0D02 = {
 			isa = PBXGroup;
 			children = (
-				0BE315B102F9014719700BBF ,
-				0D44063A16550005028F06CF ,
+				15ED01EC10E904770CFD17FA ,
+				068B0A600EC20379153D0971 ,
 			);
 			name = FWOSDriver;
 			sourceTree = "<group>";
 		};
 
-		01BC10B6174B11B010E30153 = {
+		063403E609610A0D0FCA0F1F = {
 			isa = PBXGroup;
 			children = (
-				171114DD064113630EB3080D ,
-				05DE14D40671142210DF1553 ,
+				1381099109891213053D0075 ,
+				137011040E1C0BD307B61088 ,
 
-				02DC0D5C12BB0EEF043C0288 ,
-				0E560E94116C168506DA0126 ,
+				15A911C30E020CC4050A0573 ,
+				107B06510B280D260D861777 ,
 			);
 			sourceTree = "<group>";
 		};
-		02DC0D5C12BB0EEF043C0288 = {
+		15A911C30E020CC4050A0573 = {
 			isa = PBXGroup;
 			children = (
-				039B192B12D702E7161D0E66 ,
+				0C43093D0FCE0534093C0D02 ,
 			);
 			name = "Source files";
 			sourceTree = "<group>";
 		};
 
-		0F8317B3031F044813460BD1 = {
+		0AD4034B0C5213341055137A = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -69,13 +69,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 
-		0D680D320B970AB3013C0DA6 = {
+		1708005B0E42185E13B10997 = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0CD0031D1026162A0A490B98 ;
+			buildConfigurationList = 12C6146116E603BF01340223 ;
 			buildPhases = (
-				15F212FB0668117C165B0957 ,
-				185913DC116A130E030D141C ,
-				0F8317B3031F044813460BD1 ,
+				00B4107E11120E7404F70059 ,
+				0F7C16FB03AE03DB08860577 ,
+				0AD4034B0C5213341055137A ,
 			);
 			buildRules = (
 			);
@@ -83,43 +83,43 @@
 			);
 			name = FWOSPlugin;
 			productName = FWOSPlugin;
-			productReference = 0E560E94116C168506DA0126 ;
+			productReference = 107B06510B280D260D861777 ;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 
-		002210470988164B0AD60F9F = {
+		018000B30A070BE314D710C0 = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0430;
 			};
-			buildConfigurationList = 0A8214D60B7209CD14BD1848 ;
+			buildConfigurationList = 0BAB0EEE01CD186A13160C02 ;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 01BC10B6174B11B010E30153;
-			productRefGroup = 01BC10B6174B11B010E30153;
+			mainGroup = 063403E609610A0D0FCA0F1F;
+			productRefGroup = 063403E609610A0D0FCA0F1F;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0D680D320B970AB3013C0DA6 ,
+				1708005B0E42185E13B10997 ,
 			);
 		};
 
-		15F212FB0668117C165B0957 = {
+		00B4107E11120E7404F70059 = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				075411CC0BE30CE500DC13AA ,
-				0058060911BA042D148007A1 ,
+				19140C46030613A908D40D63 ,
+				0BFF06470AFC049A06470113 ,
 
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 
-		06761791024C15A411870663 = {
+		180D0E53192916EF0E70049D = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -144,7 +144,7 @@
 			};
 			name = Debug;
 		};
-		04FC044A04F809D900C90641 = {
+		065010FA129C098409180B74 = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -162,7 +162,7 @@
 			};
 			name = Release;
 		};
-		1426116C033C153F1134107F = {
+		041D07B70F5D0110013D11F0 = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_EXTENSION = dylib;
@@ -175,7 +175,7 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					../../../inc,
-					/Users/mnt/tools/WOK671/site/../lib,
+					/Users/mnt/tools/WOK680/site/../lib,
 					../../../drv/FWOSDriver,
 					../../../src/FWOSDriver,
 					"$(CSF_OPT_INC)",
@@ -187,12 +187,12 @@
 					"$(OTHER_CFLAGS)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = " ../../../inc /Users/mnt/tools/WOK671/site/../lib ../../../drv/FWOSDriver ../../../src/FWOSDriver";
+				USER_HEADER_SEARCH_PATHS = " ../../../inc /Users/mnt/tools/WOK680/site/../lib ../../../drv/FWOSDriver ../../../src/FWOSDriver";
 				WRAPPER_EXTENSION = dylib;
 			};
 			name = Debug;
 		};
-		0E1C015708700605123B129E = {
+		16EC04F20EB715511654053B = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_EXTENSION = dylib;
@@ -205,7 +205,7 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					../../../inc,
-					/Users/mnt/tools/WOK671/site/../lib,
+					/Users/mnt/tools/WOK680/site/../lib,
 					../../../drv/FWOSDriver,
 					../../../src/FWOSDriver,
 					"$(CSF_OPT_INC)",
@@ -217,31 +217,31 @@
 					"$(OTHER_CFLAGS)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = " ../../../inc /Users/mnt/tools/WOK671/site/../lib ../../../drv/FWOSDriver ../../../src/FWOSDriver";
+				USER_HEADER_SEARCH_PATHS = " ../../../inc /Users/mnt/tools/WOK680/site/../lib ../../../drv/FWOSDriver ../../../src/FWOSDriver";
 				WRAPPER_EXTENSION = dylib;
 			};
 			name = Release;
 		};
 
-		0A8214D60B7209CD14BD1848 = {
+		0BAB0EEE01CD186A13160C02 = {
 			isa = XCConfigurationList;
 		buildConfigurations = (
-				06761791024C15A411870663 ,
-				04FC044A04F809D900C90641 ,
+				180D0E53192916EF0E70049D ,
+				065010FA129C098409180B74 ,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0CD0031D1026162A0A490B98 = {
+		12C6146116E603BF01340223 = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1426116C033C153F1134107F ,
-				0E1C015708700605123B129E ,
+				041D07B70F5D0110013D11F0 ,
+				16EC04F20EB715511654053B ,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 
 	};
-	rootObject = 002210470988164B0AD60F9F ;
+	rootObject = 018000B30A070BE314D710C0 ;
 }

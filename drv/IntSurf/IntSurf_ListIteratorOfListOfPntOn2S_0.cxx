@@ -5,21 +5,11 @@
 
 #include <IntSurf_ListIteratorOfListOfPntOn2S.hxx>
 
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _IntSurf_ListOfPntOn2S_HeaderFile
 #include <IntSurf_ListOfPntOn2S.hxx>
-#endif
-#ifndef _IntSurf_PntOn2S_HeaderFile
 #include <IntSurf_PntOn2S.hxx>
-#endif
-#ifndef _IntSurf_ListNodeOfListOfPntOn2S_HeaderFile
 #include <IntSurf_ListNodeOfListOfPntOn2S.hxx>
-#endif
  
 
 #define Item IntSurf_PntOn2S

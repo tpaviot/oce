@@ -1,9 +1,3 @@
-#ifndef _StepBasic_ObjectRole_HeaderFile
 #include <StepBasic_ObjectRole.hxx>
-#endif
-#ifndef _StepBasic_RoleSelect_HeaderFile
 #include <StepBasic_RoleSelect.hxx>
-#endif
-#ifndef _StepBasic_RoleAssociation_HeaderFile
 #include <StepBasic_RoleAssociation.hxx>
-#endif

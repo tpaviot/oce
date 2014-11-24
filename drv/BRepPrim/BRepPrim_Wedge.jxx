@@ -1,9 +1,3 @@
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _gp_Ax2_HeaderFile
 #include <gp_Ax2.hxx>
-#endif
-#ifndef _BRepPrim_Wedge_HeaderFile
 #include <BRepPrim_Wedge.hxx>
-#endif

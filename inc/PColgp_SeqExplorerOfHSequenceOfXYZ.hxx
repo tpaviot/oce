@@ -6,28 +6,14 @@
 #ifndef _PColgp_SeqExplorerOfHSequenceOfXYZ_HeaderFile
 #define _PColgp_SeqExplorerOfHSequenceOfXYZ_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_PColgp_SeqNodeOfHSequenceOfXYZ_HeaderFile
 #include <Handle_PColgp_SeqNodeOfHSequenceOfXYZ.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_PColgp_HSequenceOfXYZ_HeaderFile
 #include <Handle_PColgp_HSequenceOfXYZ.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class PColgp_SeqNodeOfHSequenceOfXYZ;
 class PColgp_HSequenceOfXYZ;
 class Standard_NoSuchObject;
@@ -36,22 +22,22 @@ class gp_XYZ;
 
 
 
-class PColgp_SeqExplorerOfHSequenceOfXYZ  {
+class PColgp_SeqExplorerOfHSequenceOfXYZ 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   PColgp_SeqExplorerOfHSequenceOfXYZ(const Handle(PColgp_HSequenceOfXYZ)& S);
+  Standard_EXPORT PColgp_SeqExplorerOfHSequenceOfXYZ(const Handle(PColgp_HSequenceOfXYZ)& S);
   
-  Standard_EXPORT     gp_XYZ Value(const Standard_Integer Index) ;
+  Standard_EXPORT   gp_XYZ Value (const Standard_Integer Index) ;
   
-  Standard_EXPORT     Standard_Boolean Contains(const gp_XYZ& T) ;
+  Standard_EXPORT   Standard_Boolean Contains (const gp_XYZ& T) ;
   
-  Standard_EXPORT     Standard_Integer Location(const Standard_Integer N,const gp_XYZ& T,const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
+  Standard_EXPORT   Standard_Integer Location (const Standard_Integer N, const gp_XYZ& T, const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
   
-  Standard_EXPORT     Standard_Integer Location(const Standard_Integer N,const gp_XYZ& T) ;
-
+  Standard_EXPORT   Standard_Integer Location (const Standard_Integer N, const gp_XYZ& T) ;
 
 
 
@@ -66,9 +52,9 @@ private:
 
 
 
-Handle_PColgp_SeqNodeOfHSequenceOfXYZ CurrentItem;
-Standard_Integer CurrentIndex;
-Handle_PColgp_HSequenceOfXYZ TheSequence;
+  Handle(PColgp_SeqNodeOfHSequenceOfXYZ) CurrentItem;
+  Standard_Integer CurrentIndex;
+  Handle(PColgp_HSequenceOfXYZ) TheSequence;
 
 
 };
@@ -77,7 +63,6 @@ Handle_PColgp_HSequenceOfXYZ TheSequence;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PColgp_SeqExplorerOfHSequenceOfXYZ_HeaderFile

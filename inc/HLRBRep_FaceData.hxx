@@ -6,127 +6,110 @@
 #ifndef _HLRBRep_FaceData_HeaderFile
 #define _HLRBRep_FaceData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_HLRAlgo_WiresBlock_HeaderFile
 #include <Handle_HLRAlgo_WiresBlock.hxx>
-#endif
-#ifndef _HLRBRep_Surface_HeaderFile
 #include <HLRBRep_Surface.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class HLRAlgo_WiresBlock;
 class TopoDS_Face;
 class HLRBRep_Surface;
 
 
 
-class HLRBRep_FaceData  {
+class HLRBRep_FaceData 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   HLRBRep_FaceData();
-  //! <Or> is the orientation of the face.  <Cl> is true <br>
-//!          if the face  belongs to a  closed  volume. <NW> is <br>
-//!          the number of wires ( or block  of  edges ) of the <br>
-//!          face. <br>
-  Standard_EXPORT     void Set(const TopoDS_Face& FG,const TopAbs_Orientation Or,const Standard_Boolean Cl,const Standard_Integer NW) ;
-  //! Set <NE> the number  of  edges of the wire  number <br>
-//!          <WI>. <br>
-  Standard_EXPORT     void SetWire(const Standard_Integer WI,const Standard_Integer NE) ;
-  //! Set the edge number <EWI> of the  wire <WI>. <br>
-  Standard_EXPORT     void SetWEdge(const Standard_Integer WI,const Standard_Integer EWI,const Standard_Integer EI,const TopAbs_Orientation Or,const Standard_Boolean OutL,const Standard_Boolean Inte,const Standard_Boolean Dble,const Standard_Boolean IsoL) ;
+  Standard_EXPORT HLRBRep_FaceData();
   
-        Standard_Boolean Selected() const;
+  //! <Or> is the orientation of the face.  <Cl> is true
+  //! if the face  belongs to a  closed  volume. <NW> is
+  //! the number of wires ( or block  of  edges ) of the
+  //! face.
+  Standard_EXPORT   void Set (const TopoDS_Face& FG, const TopAbs_Orientation Or, const Standard_Boolean Cl, const Standard_Integer NW) ;
   
-        void Selected(const Standard_Boolean B) ;
+  //! Set <NE> the number  of  edges of the wire  number
+  //! <WI>.
+  Standard_EXPORT   void SetWire (const Standard_Integer WI, const Standard_Integer NE) ;
   
-        Standard_Boolean Back() const;
+  //! Set the edge number <EWI> of the  wire <WI>.
+  Standard_EXPORT   void SetWEdge (const Standard_Integer WI, const Standard_Integer EWI, const Standard_Integer EI, const TopAbs_Orientation Or, const Standard_Boolean OutL, const Standard_Boolean Inte, const Standard_Boolean Dble, const Standard_Boolean IsoL) ;
   
-        void Back(const Standard_Boolean B) ;
+      Standard_Boolean Selected()  const;
   
-        Standard_Boolean Side() const;
+      void Selected (const Standard_Boolean B) ;
   
-        void Side(const Standard_Boolean B) ;
+      Standard_Boolean Back()  const;
   
-        Standard_Boolean Closed() const;
+      void Back (const Standard_Boolean B) ;
   
-        void Closed(const Standard_Boolean B) ;
+      Standard_Boolean Side()  const;
   
-        Standard_Boolean Hiding() const;
+      void Side (const Standard_Boolean B) ;
   
-        void Hiding(const Standard_Boolean B) ;
+      Standard_Boolean Closed()  const;
   
-        Standard_Boolean Simple() const;
+      void Closed (const Standard_Boolean B) ;
   
-        void Simple(const Standard_Boolean B) ;
+      Standard_Boolean Hiding()  const;
   
-        Standard_Boolean Cut() const;
+      void Hiding (const Standard_Boolean B) ;
   
-        void Cut(const Standard_Boolean B) ;
+      Standard_Boolean Simple()  const;
   
-        Standard_Boolean WithOutL() const;
+      void Simple (const Standard_Boolean B) ;
   
-        void WithOutL(const Standard_Boolean B) ;
+      Standard_Boolean Cut()  const;
   
-        Standard_Boolean Plane() const;
+      void Cut (const Standard_Boolean B) ;
   
-        void Plane(const Standard_Boolean B) ;
+      Standard_Boolean WithOutL()  const;
   
-        Standard_Boolean Cylinder() const;
+      void WithOutL (const Standard_Boolean B) ;
   
-        void Cylinder(const Standard_Boolean B) ;
+      Standard_Boolean Plane()  const;
   
-        Standard_Boolean Cone() const;
+      void Plane (const Standard_Boolean B) ;
   
-        void Cone(const Standard_Boolean B) ;
+      Standard_Boolean Cylinder()  const;
   
-        Standard_Boolean Sphere() const;
+      void Cylinder (const Standard_Boolean B) ;
   
-        void Sphere(const Standard_Boolean B) ;
+      Standard_Boolean Cone()  const;
   
-        Standard_Boolean Torus() const;
+      void Cone (const Standard_Boolean B) ;
   
-        void Torus(const Standard_Boolean B) ;
+      Standard_Boolean Sphere()  const;
   
-        Standard_Real Size() const;
+      void Sphere (const Standard_Boolean B) ;
   
-        void Size(const Standard_Real S) ;
+      Standard_Boolean Torus()  const;
   
-        TopAbs_Orientation Orientation() const;
+      void Torus (const Standard_Boolean B) ;
   
-        void Orientation(const TopAbs_Orientation O) ;
+      Standard_Real Size()  const;
   
-        Handle_HLRAlgo_WiresBlock& Wires() ;
+      void Size (const Standard_Real S) ;
   
-        HLRBRep_Surface& Geometry() ;
+      TopAbs_Orientation Orientation()  const;
   
-        Standard_ShortReal Tolerance() const;
-
+      void Orientation (const TopAbs_Orientation O) ;
+  
+      Handle(HLRAlgo_WiresBlock)& Wires() ;
+  
+      HLRBRep_Surface& Geometry() ;
+  
+      Standard_ShortReal Tolerance()  const;
 
 
 
@@ -141,11 +124,11 @@ private:
 
 
 
-Standard_Boolean myFlags;
-Handle_HLRAlgo_WiresBlock myWires;
-HLRBRep_Surface myGeometry;
-Standard_Real mySize;
-Standard_ShortReal myTolerance;
+  Standard_Boolean myFlags;
+  Handle(HLRAlgo_WiresBlock) myWires;
+  HLRBRep_Surface myGeometry;
+  Standard_Real mySize;
+  Standard_ShortReal myTolerance;
 
 
 };
@@ -155,7 +138,6 @@ Standard_ShortReal myTolerance;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_FaceData_HeaderFile

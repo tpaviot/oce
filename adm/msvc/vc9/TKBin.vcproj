@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKBin"
-	ProjectGUID="{BCD7616E-01C9-182A-0056-63F6D7E2C90D}"
+	ProjectGUID="{BC116941-0BEA-0473-07A2-15B0CB0A11BB}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -49,10 +49,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="-MP"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BinDrivers;..\..\..\src\BinDrivers;..\..\..\drv\BinMDataXtd;..\..\..\src\BinMDataXtd;..\..\..\drv\BinMPrsStd;..\..\..\src\BinMPrsStd;..\..\..\drv\BinMNaming;..\..\..\src\BinMNaming;..\..\..\drv\BinTools;..\..\..\src\BinTools;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BinDrivers;..\..\..\src\BinDrivers;..\..\..\drv\BinMDataXtd;..\..\..\src\BinMDataXtd;..\..\..\drv\BinMPrsStd;..\..\..\src\BinMPrsStd;..\..\..\drv\BinMNaming;..\..\..\src\BinMNaming;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL;__BinTools_DLL"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -73,7 +73,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL;__BinTools_DLL"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -147,10 +147,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="-MP"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BinDrivers;..\..\..\src\BinDrivers;..\..\..\drv\BinMDataXtd;..\..\..\src\BinMDataXtd;..\..\..\drv\BinMPrsStd;..\..\..\src\BinMPrsStd;..\..\..\drv\BinMNaming;..\..\..\src\BinMNaming;..\..\..\drv\BinTools;..\..\..\src\BinTools;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BinDrivers;..\..\..\src\BinDrivers;..\..\..\drv\BinMDataXtd;..\..\..\src\BinMDataXtd;..\..\..\drv\BinMPrsStd;..\..\..\src\BinMPrsStd;..\..\..\drv\BinMNaming;..\..\..\src\BinMNaming;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL;__BinTools_DLL"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -173,7 +173,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL;__BinTools_DLL"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -245,10 +245,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="-MP -favor:blend"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BinDrivers;..\..\..\src\BinDrivers;..\..\..\drv\BinMDataXtd;..\..\..\src\BinMDataXtd;..\..\..\drv\BinMPrsStd;..\..\..\src\BinMPrsStd;..\..\..\drv\BinMNaming;..\..\..\src\BinMNaming;..\..\..\drv\BinTools;..\..\..\src\BinTools;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BinDrivers;..\..\..\src\BinDrivers;..\..\..\drv\BinMDataXtd;..\..\..\src\BinMDataXtd;..\..\..\drv\BinMPrsStd;..\..\..\src\BinMPrsStd;..\..\..\drv\BinMNaming;..\..\..\src\BinMNaming;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL;__BinTools_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL;__BinTools_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -340,10 +340,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="-MP -favor:blend"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BinDrivers;..\..\..\src\BinDrivers;..\..\..\drv\BinMDataXtd;..\..\..\src\BinMDataXtd;..\..\..\drv\BinMPrsStd;..\..\..\src\BinMPrsStd;..\..\..\drv\BinMNaming;..\..\..\src\BinMNaming;..\..\..\drv\BinTools;..\..\..\src\BinTools;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BinDrivers;..\..\..\src\BinDrivers;..\..\..\drv\BinMDataXtd;..\..\..\src\BinMDataXtd;..\..\..\drv\BinMPrsStd;..\..\..\src\BinMPrsStd;..\..\..\drv\BinMNaming;..\..\..\src\BinMNaming;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL;__BinTools_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -365,7 +365,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL;__BinTools_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BinDrivers_DLL;__BinMDataXtd_DLL;__BinMPrsStd_DLL;__BinMNaming_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -480,28 +480,6 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\BinMNaming\BinMNaming_NamingDriver.cxx">
-				</File>
-			</Filter>
-			<Filter
-				Name="BinTools"
-				>
-				<File
-					RelativePath="..\..\..\src\BinTools\BinTools.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BinTools\BinTools_Curve2dSet.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BinTools\BinTools_CurveSet.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BinTools\BinTools_LocationSet.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BinTools\BinTools_ShapeSet.cxx">
-				</File>
-				<File
-					RelativePath="..\..\..\src\BinTools\BinTools_SurfaceSet.cxx">
 				</File>
 			</Filter>
 

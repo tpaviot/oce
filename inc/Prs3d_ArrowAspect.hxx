@@ -6,65 +6,56 @@
 #ifndef _Prs3d_ArrowAspect_HeaderFile
 #define _Prs3d_ArrowAspect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Prs3d_ArrowAspect_HeaderFile
 #include <Handle_Prs3d_ArrowAspect.hxx>
-#endif
 
-#ifndef _Handle_Graphic3d_AspectLine3d_HeaderFile
 #include <Handle_Graphic3d_AspectLine3d.hxx>
-#endif
-#ifndef _Quantity_PlaneAngle_HeaderFile
 #include <Quantity_PlaneAngle.hxx>
-#endif
-#ifndef _Quantity_Length_HeaderFile
 #include <Quantity_Length.hxx>
-#endif
-#ifndef _Prs3d_BasicAspect_HeaderFile
 #include <Prs3d_BasicAspect.hxx>
-#endif
-#ifndef _Quantity_NameOfColor_HeaderFile
 #include <Quantity_NameOfColor.hxx>
-#endif
 class Graphic3d_AspectLine3d;
 class Prs3d_InvalidAngle;
 class Quantity_Color;
 
 
-//! A framework for displaying arrows in representations <br>
-//! of dimensions and relations. <br>
-class Prs3d_ArrowAspect : public Prs3d_BasicAspect {
+//! A framework for displaying arrows in representations
+//! of dimensions and relations.
+class Prs3d_ArrowAspect : public Prs3d_BasicAspect
+{
 
 public:
 
-  //! Constructs an empty framework for displaying arrows <br>
-//! in representations of lengths. The lengths displayed <br>
-//! are either on their own or in chamfers, fillets, <br>
-//! diameters and radii. <br>
-  Standard_EXPORT   Prs3d_ArrowAspect();
-  //! Constructs a framework to display an arrow with a <br>
-//! shaft of the length aLength and having a head with <br>
-//! sides at the angle anAngle from each other. <br>
-  Standard_EXPORT   Prs3d_ArrowAspect(const Quantity_PlaneAngle anAngle,const Quantity_Length aLength);
-  //! defines the angle of the arrows. <br>
-  Standard_EXPORT     void SetAngle(const Quantity_PlaneAngle anAngle) ;
-  //! returns the current value of the angle used when drawing an arrow. <br>
-  Standard_EXPORT     Quantity_PlaneAngle Angle() const;
-  //! defines the length of the arrows. <br>
-  Standard_EXPORT     void SetLength(const Quantity_Length aLength) ;
-  //! returns the current value of the length used when drawing an arrow. <br>
-  Standard_EXPORT     Quantity_Length Length() const;
   
-  Standard_EXPORT     void SetColor(const Quantity_Color& aColor) ;
+  //! Constructs an empty framework for displaying arrows
+  //! in representations of lengths. The lengths displayed
+  //! are either on their own or in chamfers, fillets,
+  //! diameters and radii.
+  Standard_EXPORT Prs3d_ArrowAspect();
   
-  Standard_EXPORT     void SetColor(const Quantity_NameOfColor aColor) ;
+  //! Constructs a framework to display an arrow with a
+  //! shaft of the length aLength and having a head with
+  //! sides at the angle anAngle from each other.
+  Standard_EXPORT Prs3d_ArrowAspect(const Quantity_PlaneAngle anAngle, const Quantity_Length aLength);
   
-  Standard_EXPORT     Handle_Graphic3d_AspectLine3d Aspect() const;
+  //! defines the angle of the arrows.
+  Standard_EXPORT   void SetAngle (const Quantity_PlaneAngle anAngle) ;
+  
+  //! returns the current value of the angle used when drawing an arrow.
+  Standard_EXPORT   Quantity_PlaneAngle Angle()  const;
+  
+  //! defines the length of the arrows.
+  Standard_EXPORT   void SetLength (const Quantity_Length aLength) ;
+  
+  //! returns the current value of the length used when drawing an arrow.
+  Standard_EXPORT   Quantity_Length Length()  const;
+  
+  Standard_EXPORT   void SetColor (const Quantity_Color& aColor) ;
+  
+  Standard_EXPORT   void SetColor (const Quantity_NameOfColor aColor) ;
+  
+  Standard_EXPORT   Handle(Graphic3d_AspectLine3d) Aspect()  const;
 
 
 
@@ -79,9 +70,9 @@ protected:
 private: 
 
 
-Handle_Graphic3d_AspectLine3d myArrowAspect;
-Quantity_PlaneAngle myAngle;
-Quantity_Length myLength;
+  Handle(Graphic3d_AspectLine3d) myArrowAspect;
+  Quantity_PlaneAngle myAngle;
+  Quantity_Length myLength;
 
 
 };
@@ -90,7 +81,6 @@ Quantity_Length myLength;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Prs3d_ArrowAspect_HeaderFile

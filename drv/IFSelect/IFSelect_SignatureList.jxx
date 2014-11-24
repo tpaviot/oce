@@ -1,27 +1,9 @@
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Dico_DictionaryOfInteger_HeaderFile
 #include <Dico_DictionaryOfInteger.hxx>
-#endif
-#ifndef _Dico_DictionaryOfTransient_HeaderFile
 #include <Dico_DictionaryOfTransient.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfHAsciiString_HeaderFile
 #include <TColStd_HSequenceOfHAsciiString.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfTransient_HeaderFile
 #include <TColStd_HSequenceOfTransient.hxx>
-#endif
-#ifndef _Message_Messenger_HeaderFile
 #include <Message_Messenger.hxx>
-#endif
-#ifndef _Interface_InterfaceModel_HeaderFile
 #include <Interface_InterfaceModel.hxx>
-#endif
-#ifndef _IFSelect_SignatureList_HeaderFile
 #include <IFSelect_SignatureList.hxx>
-#endif

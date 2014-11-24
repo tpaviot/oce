@@ -7,7 +7,6 @@
 #define _SelectMgr_SOPtr_HeaderFile
 
 class SelectMgr_SelectableObject;
-
 typedef SelectMgr_SelectableObject* SelectMgr_SOPtr;
 
-#endif
+#endif // _SelectMgr_SOPtr_HeaderFile

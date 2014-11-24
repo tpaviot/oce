@@ -6,9 +6,12 @@
 #ifndef _BRepLib_EdgeError_HeaderFile
 #define _BRepLib_EdgeError_HeaderFile
 
-//! Errors that can occur at edge construction. <br>
-//! no error <br>
-enum BRepLib_EdgeError {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Errors that can occur at edge construction.
+//! no error
+enum BRepLib_EdgeError
+{
 BRepLib_EdgeDone,
 BRepLib_PointProjectionFailed,
 BRepLib_ParameterOutOfRange,
@@ -18,8 +21,4 @@ BRepLib_DifferentsPointAndParameter,
 BRepLib_LineThroughIdenticPoints
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BRepLib_EdgeError_HeaderFile

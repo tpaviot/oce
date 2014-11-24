@@ -6,36 +6,28 @@
 #ifndef _TDF_DeltaOnModification_HeaderFile
 #define _TDF_DeltaOnModification_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDF_DeltaOnModification_HeaderFile
 #include <Handle_TDF_DeltaOnModification.hxx>
-#endif
 
-#ifndef _TDF_AttributeDelta_HeaderFile
 #include <TDF_AttributeDelta.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
 class TDF_Attribute;
 
 
-//! This class provides default services for an <br>
-//!          AttributeDelta on a MODIFICATION action. <br>
-//! <br>
-//!          Applying this AttributeDelta means GOING BACK to <br>
-//!          the attribute previously registered state. <br>
-class TDF_DeltaOnModification : public TDF_AttributeDelta {
+//! This class provides default services for an
+//! AttributeDelta on a MODIFICATION action.
+//!
+//! Applying this AttributeDelta means GOING BACK to
+//! the attribute previously registered state.
+class TDF_DeltaOnModification : public TDF_AttributeDelta
+{
 
 public:
 
-  //! Applies the delta to the attribute. <br>
-  Standard_EXPORT   virtual  void Apply() ;
+  
+  //! Applies the delta to the attribute.
+  Standard_EXPORT virtual   void Apply() ;
 
 
 
@@ -44,8 +36,9 @@ public:
 
 protected:
 
-  //! Initializes a TDF_DeltaOnModification. <br>
-  Standard_EXPORT   TDF_DeltaOnModification(const Handle(TDF_Attribute)& anAttribute);
+  
+  //! Initializes a TDF_DeltaOnModification.
+  Standard_EXPORT TDF_DeltaOnModification(const Handle(TDF_Attribute)& anAttribute);
 
 
 
@@ -60,7 +53,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_DeltaOnModification_HeaderFile

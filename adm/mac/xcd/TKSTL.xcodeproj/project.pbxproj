@@ -6,148 +6,148 @@
 	objectVersion = 46;
 	objects = {
 
-		028E177414EF0EFC14A21672 = {isa = PBXBuildFile; fileRef = 0FD113DF12100AE303B90F7F ;};
-		0CBA16D50BF4072A0F760634 = {isa = PBXBuildFile; fileRef = 0F2E03D007720EE704630595 ;};
-		047F130F01A81647097D0A3A = {isa = PBXBuildFile; fileRef = 146617FF0B6D02780BC506D2 ;};
-		01FE164F0E4C0FD20BBA0B63 = {isa = PBXBuildFile; fileRef = 09C311A00FBC07C40D1B0BD2 ;};
-		19750ACF16A7197C0DA318AA = {isa = PBXBuildFile; fileRef = 0CCD0AA5015810B3151F18E7 ;};
-		15B417350D2B0A070B140ADF = {isa = PBXBuildFile; fileRef = 01520A6517EC0A4C16110E1C ;};
-		098706D3000C03F716090D11 = {isa = PBXBuildFile; fileRef = 062F165B0B850034053F115F ;};
-		09710F0D0D6018EC0643192A = {isa = PBXBuildFile; fileRef = 0DA5166801CD0DCD124406C0 ;};
-		0C7805EF0A9C0DDA00E80A39 = {isa = PBXBuildFile; fileRef = 126D07F50B321046175408A6 ;};
-		0DDD072309E30957126B0C0C = {isa = PBXBuildFile; fileRef = 09FC0F33168914A512400592 ;};
-		051105B504870C0B18100B4A = {isa = PBXBuildFile; fileRef = 12AD0CF61505038011B81115 ;};
-		0A5B01B90CE20A7108131515 = {isa = PBXBuildFile; fileRef = 134B11AD140B0EC7014900F9 ;};
-		0E9C080A0F25180600330AFD = {isa = PBXBuildFile; fileRef = 15551973046F1781090404A3 ;};
-		0FC90A980E78180E03940197 = {isa = PBXBuildFile; fileRef = 0A9B175F098B037B03E60BE9 ;};
-		1159197C13D1037D15EF13CE = {isa = PBXBuildFile; fileRef = 1830146D0A9916BF18640280 ;};
-		04D4092A182F0056035F090C = {isa = PBXBuildFile; fileRef = 02B214B4173011650F6C06E3 ;};
+		1392191800F005CA05A60285 = {isa = PBXBuildFile; fileRef = 1752093C00F5096414E907AF ;};
+		0157054218A70155110C15EA = {isa = PBXBuildFile; fileRef = 006E048D012F000000B80F05 ;};
+		05B814AC05B9001F12D008C7 = {isa = PBXBuildFile; fileRef = 1703097F113F0162032312CB ;};
+		16B6040A0CF113C909480442 = {isa = PBXBuildFile; fileRef = 0763165D00B5006118C4040F ;};
+		17C1066E140006DE0E4B034B = {isa = PBXBuildFile; fileRef = 10EC039F0813010E092802C0 ;};
+		1156066617F3009817EF0E9C = {isa = PBXBuildFile; fileRef = 0D1A10C016BA160E05D2135A ;};
+		090E12FE0ACB0D2D193B0822 = {isa = PBXBuildFile; fileRef = 13F301CF148B06D6065D094C ;};
+		0D9E02360E1219251227015C = {isa = PBXBuildFile; fileRef = 08631265016B11F20DE016ED ;};
+		138608200666182B103A0A06 = {isa = PBXBuildFile; fileRef = 079C0750011F18BA095F0557 ;};
+		0BD216C212D607B2141A0459 = {isa = PBXBuildFile; fileRef = 11C912FD0F22064606B10A5F ;};
+		0FDF0D8B0209069507880D2E = {isa = PBXBuildFile; fileRef = 180A157117F613EF0BA60203 ;};
+		0B430F8211320ED9077B123A = {isa = PBXBuildFile; fileRef = 150013A918C100BE17D50F45 ;};
+		112B116D06B210060A700796 = {isa = PBXBuildFile; fileRef = 007F174F01AD07A20E89155E ;};
+		02DB02EF0EAF0D8D13861532 = {isa = PBXBuildFile; fileRef = 118103F111280E4F05AB101D ;};
+		125C127B15C60A4A04871278 = {isa = PBXBuildFile; fileRef = 15D70C71057018A9107B085A ;};
+		08610AB40E5C056C0A2503A8 = {isa = PBXBuildFile; fileRef = 00CA0C1D0FBE131D021F16F3 ;};
 
-		01310DE5197A0CF109A60645 = {isa = PBXBuildFile; fileRef = 171114DD064113630EB3080D ; };
-		0B3A10DC038A1843097B1252 = {isa = PBXBuildFile; fileRef = 14E217E313F8189105940630 ; };
-		0D681004184A095C08120013 = {isa = PBXBuildFile; fileRef = 14D311570AA916CA03A101A7 ; };
-		02290EE60A9A00CC17581102 = {isa = PBXBuildFile; fileRef = 0AAB08761323176407F707C7 ; };
-		01EF058101ED13D201780D80 = {isa = PBXBuildFile; fileRef = 047400D0197A096D0688178C ; };
-		047802A8110611A30691010E = {isa = PBXBuildFile; fileRef = 068A1895065D17D8118B10CC ; };
-		1274137814690E6203CB090E = {isa = PBXBuildFile; fileRef = 15FA01210E9506CD126C0B3D ; };
+		17650C81022516C310930D14 = {isa = PBXBuildFile; fileRef = 1381099109891213053D0075 ; };
+		08990E72153910550AC61185 = {isa = PBXBuildFile; fileRef = 030B049712E71312128A083E ; };
+		18DE08AF0F44116D15B20AD7 = {isa = PBXBuildFile; fileRef = 065C053503231269092B0B29 ; };
+		0190006D194C012D16A718A2 = {isa = PBXBuildFile; fileRef = 01E20986024C00B4196A0438 ; };
+		130A01F2120E12BE18D400C1 = {isa = PBXBuildFile; fileRef = 0D57151713F5122B0BBB1891 ; };
+		00A418CA0A03066312460ECE = {isa = PBXBuildFile; fileRef = 0314132E010509F518231698 ; };
+		05D4028312470B27127B0FF6 = {isa = PBXBuildFile; fileRef = 11E60C520B7F080612DE06C4 ; };
 
-		01750ED81817149A0F27021F = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libTKSTL.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		11280C49038C0FBB18BF09F6 = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libTKSTL.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 
-		0FD113DF12100AE303B90F7F = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RWStl.cxx; path = ../../../src/RWStl/RWStl.cxx; sourceTree = "<group>"; };
-		0F2E03D007720EE704630595 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlAPI.cxx; path = ../../../src/StlAPI/StlAPI.cxx; sourceTree = "<group>"; };
-		146617FF0B6D02780BC506D2 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlAPI_Reader.cxx; path = ../../../src/StlAPI/StlAPI_Reader.cxx; sourceTree = "<group>"; };
-		09C311A00FBC07C40D1B0BD2 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlAPI_Writer.cxx; path = ../../../src/StlAPI/StlAPI_Writer.cxx; sourceTree = "<group>"; };
-		0CCD0AA5015810B3151F18E7 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlMesh_SequenceNodeOfSequenceOfMeshDomain_0.cxx; path = ../../../drv/StlMesh/StlMesh_SequenceNodeOfSequenceOfMeshDomain_0.cxx; sourceTree = "<group>"; };
-		01520A6517EC0A4C16110E1C = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlMesh_SequenceNodeOfSequenceOfMeshTriangle_0.cxx; path = ../../../drv/StlMesh/StlMesh_SequenceNodeOfSequenceOfMeshTriangle_0.cxx; sourceTree = "<group>"; };
-		062F165B0B850034053F115F = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlMesh_SequenceNodeOfSequenceOfMesh_0.cxx; path = ../../../drv/StlMesh/StlMesh_SequenceNodeOfSequenceOfMesh_0.cxx; sourceTree = "<group>"; };
-		0DA5166801CD0DCD124406C0 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlMesh_SequenceOfMeshDomain_0.cxx; path = ../../../drv/StlMesh/StlMesh_SequenceOfMeshDomain_0.cxx; sourceTree = "<group>"; };
-		126D07F50B321046175408A6 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlMesh_SequenceOfMeshTriangle_0.cxx; path = ../../../drv/StlMesh/StlMesh_SequenceOfMeshTriangle_0.cxx; sourceTree = "<group>"; };
-		09FC0F33168914A512400592 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlMesh_SequenceOfMesh_0.cxx; path = ../../../drv/StlMesh/StlMesh_SequenceOfMesh_0.cxx; sourceTree = "<group>"; };
-		12AD0CF61505038011B81115 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlMesh.cxx; path = ../../../src/StlMesh/StlMesh.cxx; sourceTree = "<group>"; };
-		134B11AD140B0EC7014900F9 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlMesh_Mesh.cxx; path = ../../../src/StlMesh/StlMesh_Mesh.cxx; sourceTree = "<group>"; };
-		15551973046F1781090404A3 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlMesh_MeshDomain.cxx; path = ../../../src/StlMesh/StlMesh_MeshDomain.cxx; sourceTree = "<group>"; };
-		0A9B175F098B037B03E60BE9 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlMesh_MeshExplorer.cxx; path = ../../../src/StlMesh/StlMesh_MeshExplorer.cxx; sourceTree = "<group>"; };
-		1830146D0A9916BF18640280 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlMesh_MeshTriangle.cxx; path = ../../../src/StlMesh/StlMesh_MeshTriangle.cxx; sourceTree = "<group>"; };
-		02B214B4173011650F6C06E3 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlTransfer.cxx; path = ../../../src/StlTransfer/StlTransfer.cxx; sourceTree = "<group>"; };
+		1752093C00F5096414E907AF = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RWStl.cxx; path = ../../../src/RWStl/RWStl.cxx; sourceTree = "<group>"; };
+		006E048D012F000000B80F05 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlAPI.cxx; path = ../../../src/StlAPI/StlAPI.cxx; sourceTree = "<group>"; };
+		1703097F113F0162032312CB = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlAPI_Reader.cxx; path = ../../../src/StlAPI/StlAPI_Reader.cxx; sourceTree = "<group>"; };
+		0763165D00B5006118C4040F = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlAPI_Writer.cxx; path = ../../../src/StlAPI/StlAPI_Writer.cxx; sourceTree = "<group>"; };
+		10EC039F0813010E092802C0 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlMesh_SequenceNodeOfSequenceOfMeshDomain_0.cxx; path = ../../../drv/StlMesh/StlMesh_SequenceNodeOfSequenceOfMeshDomain_0.cxx; sourceTree = "<group>"; };
+		0D1A10C016BA160E05D2135A = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlMesh_SequenceNodeOfSequenceOfMeshTriangle_0.cxx; path = ../../../drv/StlMesh/StlMesh_SequenceNodeOfSequenceOfMeshTriangle_0.cxx; sourceTree = "<group>"; };
+		13F301CF148B06D6065D094C = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlMesh_SequenceNodeOfSequenceOfMesh_0.cxx; path = ../../../drv/StlMesh/StlMesh_SequenceNodeOfSequenceOfMesh_0.cxx; sourceTree = "<group>"; };
+		08631265016B11F20DE016ED = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlMesh_SequenceOfMeshDomain_0.cxx; path = ../../../drv/StlMesh/StlMesh_SequenceOfMeshDomain_0.cxx; sourceTree = "<group>"; };
+		079C0750011F18BA095F0557 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlMesh_SequenceOfMeshTriangle_0.cxx; path = ../../../drv/StlMesh/StlMesh_SequenceOfMeshTriangle_0.cxx; sourceTree = "<group>"; };
+		11C912FD0F22064606B10A5F = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlMesh_SequenceOfMesh_0.cxx; path = ../../../drv/StlMesh/StlMesh_SequenceOfMesh_0.cxx; sourceTree = "<group>"; };
+		180A157117F613EF0BA60203 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlMesh.cxx; path = ../../../src/StlMesh/StlMesh.cxx; sourceTree = "<group>"; };
+		150013A918C100BE17D50F45 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlMesh_Mesh.cxx; path = ../../../src/StlMesh/StlMesh_Mesh.cxx; sourceTree = "<group>"; };
+		007F174F01AD07A20E89155E = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlMesh_MeshDomain.cxx; path = ../../../src/StlMesh/StlMesh_MeshDomain.cxx; sourceTree = "<group>"; };
+		118103F111280E4F05AB101D = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlMesh_MeshExplorer.cxx; path = ../../../src/StlMesh/StlMesh_MeshExplorer.cxx; sourceTree = "<group>"; };
+		15D70C71057018A9107B085A = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlMesh_MeshTriangle.cxx; path = ../../../src/StlMesh/StlMesh_MeshTriangle.cxx; sourceTree = "<group>"; };
+		00CA0C1D0FBE131D021F16F3 = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StlTransfer.cxx; path = ../../../src/StlTransfer/StlTransfer.cxx; sourceTree = "<group>"; };
 
-		171114DD064113630EB3080D = {isa = PBXFileReference; lastKnownFileType = file; name = libTKernel.dylib; path = libTKernel.dylib; sourceTree = "<group>"; };
-		14E217E313F8189105940630 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKMath.dylib; path = libTKMath.dylib; sourceTree = "<group>"; };
-		14D311570AA916CA03A101A7 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKBRep.dylib; path = libTKBRep.dylib; sourceTree = "<group>"; };
-		0AAB08761323176407F707C7 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKG2d.dylib; path = libTKG2d.dylib; sourceTree = "<group>"; };
-		047400D0197A096D0688178C = {isa = PBXFileReference; lastKnownFileType = file; name = libTKG3d.dylib; path = libTKG3d.dylib; sourceTree = "<group>"; };
-		068A1895065D17D8118B10CC = {isa = PBXFileReference; lastKnownFileType = file; name = libTKMesh.dylib; path = libTKMesh.dylib; sourceTree = "<group>"; };
-		15FA01210E9506CD126C0B3D = {isa = PBXFileReference; lastKnownFileType = file; name = libTKTopAlgo.dylib; path = libTKTopAlgo.dylib; sourceTree = "<group>"; };
+		1381099109891213053D0075 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKernel.dylib; path = libTKernel.dylib; sourceTree = "<group>"; };
+		030B049712E71312128A083E = {isa = PBXFileReference; lastKnownFileType = file; name = libTKMath.dylib; path = libTKMath.dylib; sourceTree = "<group>"; };
+		065C053503231269092B0B29 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKBRep.dylib; path = libTKBRep.dylib; sourceTree = "<group>"; };
+		01E20986024C00B4196A0438 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKG2d.dylib; path = libTKG2d.dylib; sourceTree = "<group>"; };
+		0D57151713F5122B0BBB1891 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKG3d.dylib; path = libTKG3d.dylib; sourceTree = "<group>"; };
+		0314132E010509F518231698 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKMesh.dylib; path = libTKMesh.dylib; sourceTree = "<group>"; };
+		11E60C520B7F080612DE06C4 = {isa = PBXFileReference; lastKnownFileType = file; name = libTKTopAlgo.dylib; path = libTKTopAlgo.dylib; sourceTree = "<group>"; };
 
-		0494011B012901560D9A0026 = {
+		0B91191408070C7A05A11373 = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01310DE5197A0CF109A60645 ,
-				0B3A10DC038A1843097B1252 ,
-				0D681004184A095C08120013 ,
-				02290EE60A9A00CC17581102 ,
-				01EF058101ED13D201780D80 ,
-				047802A8110611A30691010E ,
-				1274137814690E6203CB090E ,
+				17650C81022516C310930D14 ,
+				08990E72153910550AC61185 ,
+				18DE08AF0F44116D15B20AD7 ,
+				0190006D194C012D16A718A2 ,
+				130A01F2120E12BE18D400C1 ,
+				00A418CA0A03066312460ECE ,
+				05D4028312470B27127B0FF6 ,
 
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 
-		195A0885115E012B11970FC9 = {
+		0AEA18F011750245051C1966 = {
 			isa = PBXGroup;
 			children = (
-				0FD113DF12100AE303B90F7F ,
+				1752093C00F5096414E907AF ,
 			);
 			name = RWStl;
 			sourceTree = "<group>";
 		};
-		183F010F0E6B145017260AC6 = {
+		191B04BD038C18E60C080FFB = {
 			isa = PBXGroup;
 			children = (
-				0F2E03D007720EE704630595 ,
-				146617FF0B6D02780BC506D2 ,
-				09C311A00FBC07C40D1B0BD2 ,
+				006E048D012F000000B80F05 ,
+				1703097F113F0162032312CB ,
+				0763165D00B5006118C4040F ,
 			);
 			name = StlAPI;
 			sourceTree = "<group>";
 		};
-		08E509A9107A0E2C0C840866 = {
+		14A908AB17A216DE0B2B0044 = {
 			isa = PBXGroup;
 			children = (
-				0CCD0AA5015810B3151F18E7 ,
-				01520A6517EC0A4C16110E1C ,
-				062F165B0B850034053F115F ,
-				0DA5166801CD0DCD124406C0 ,
-				126D07F50B321046175408A6 ,
-				09FC0F33168914A512400592 ,
-				12AD0CF61505038011B81115 ,
-				134B11AD140B0EC7014900F9 ,
-				15551973046F1781090404A3 ,
-				0A9B175F098B037B03E60BE9 ,
-				1830146D0A9916BF18640280 ,
+				10EC039F0813010E092802C0 ,
+				0D1A10C016BA160E05D2135A ,
+				13F301CF148B06D6065D094C ,
+				08631265016B11F20DE016ED ,
+				079C0750011F18BA095F0557 ,
+				11C912FD0F22064606B10A5F ,
+				180A157117F613EF0BA60203 ,
+				150013A918C100BE17D50F45 ,
+				007F174F01AD07A20E89155E ,
+				118103F111280E4F05AB101D ,
+				15D70C71057018A9107B085A ,
 			);
 			name = StlMesh;
 			sourceTree = "<group>";
 		};
-		18B001E309EC0D4901350299 = {
+		09A40613147E0A840D970A74 = {
 			isa = PBXGroup;
 			children = (
-				02B214B4173011650F6C06E3 ,
+				00CA0C1D0FBE131D021F16F3 ,
 			);
 			name = StlTransfer;
 			sourceTree = "<group>";
 		};
 
-		046114451841115F12A115D8 = {
+		022113E90DA0178502A60CF9 = {
 			isa = PBXGroup;
 			children = (
-				171114DD064113630EB3080D ,
-				14E217E313F8189105940630 ,
-				14D311570AA916CA03A101A7 ,
-				0AAB08761323176407F707C7 ,
-				047400D0197A096D0688178C ,
-				068A1895065D17D8118B10CC ,
-				15FA01210E9506CD126C0B3D ,
+				1381099109891213053D0075 ,
+				030B049712E71312128A083E ,
+				065C053503231269092B0B29 ,
+				01E20986024C00B4196A0438 ,
+				0D57151713F5122B0BBB1891 ,
+				0314132E010509F518231698 ,
+				11E60C520B7F080612DE06C4 ,
 
-				1151075B0AD410F119350EA2 ,
-				01750ED81817149A0F27021F ,
+				15860E560FDA0D8109B915C6 ,
+				11280C49038C0FBB18BF09F6 ,
 			);
 			sourceTree = "<group>";
 		};
-		1151075B0AD410F119350EA2 = {
+		15860E560FDA0D8109B915C6 = {
 			isa = PBXGroup;
 			children = (
-				195A0885115E012B11970FC9 ,
-				183F010F0E6B145017260AC6 ,
-				08E509A9107A0E2C0C840866 ,
-				18B001E309EC0D4901350299 ,
+				0AEA18F011750245051C1966 ,
+				191B04BD038C18E60C080FFB ,
+				14A908AB17A216DE0B2B0044 ,
+				09A40613147E0A840D970A74 ,
 			);
 			name = "Source files";
 			sourceTree = "<group>";
 		};
 
-		0F8D103113B513551061098D = {
+		00D1020C04D714CD14431092 = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -155,13 +155,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 
-		0407135805FE1604038D17DA = {
+		06460DB301A30C1E17450933 = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 154512EF02400685149113F7 ;
+			buildConfigurationList = 10D617BC07C000F519810498 ;
 			buildPhases = (
-				0F4A153D14C913FC0B7F023D ,
-				0494011B012901560D9A0026 ,
-				0F8D103113B513551061098D ,
+				02D5169A146E03F21110059A ,
+				0B91191408070C7A05A11373 ,
+				00D1020C04D714CD14431092 ,
 			);
 			buildRules = (
 			);
@@ -169,57 +169,57 @@
 			);
 			name = TKSTL;
 			productName = TKSTL;
-			productReference = 01750ED81817149A0F27021F ;
+			productReference = 11280C49038C0FBB18BF09F6 ;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 
-		107B0A560DFD0A2E0511142F = {
+		00B502BA192C1545195D057D = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0430;
 			};
-			buildConfigurationList = 14590E5C0B9C1542019B09E8 ;
+			buildConfigurationList = 02AC04C80E70058015CA0FD3 ;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 046114451841115F12A115D8;
-			productRefGroup = 046114451841115F12A115D8;
+			mainGroup = 022113E90DA0178502A60CF9;
+			productRefGroup = 022113E90DA0178502A60CF9;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0407135805FE1604038D17DA ,
+				06460DB301A30C1E17450933 ,
 			);
 		};
 
-		0F4A153D14C913FC0B7F023D = {
+		02D5169A146E03F21110059A = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				028E177414EF0EFC14A21672 ,
-				0CBA16D50BF4072A0F760634 ,
-				047F130F01A81647097D0A3A ,
-				01FE164F0E4C0FD20BBA0B63 ,
-				19750ACF16A7197C0DA318AA ,
-				15B417350D2B0A070B140ADF ,
-				098706D3000C03F716090D11 ,
-				09710F0D0D6018EC0643192A ,
-				0C7805EF0A9C0DDA00E80A39 ,
-				0DDD072309E30957126B0C0C ,
-				051105B504870C0B18100B4A ,
-				0A5B01B90CE20A7108131515 ,
-				0E9C080A0F25180600330AFD ,
-				0FC90A980E78180E03940197 ,
-				1159197C13D1037D15EF13CE ,
-				04D4092A182F0056035F090C ,
+				1392191800F005CA05A60285 ,
+				0157054218A70155110C15EA ,
+				05B814AC05B9001F12D008C7 ,
+				16B6040A0CF113C909480442 ,
+				17C1066E140006DE0E4B034B ,
+				1156066617F3009817EF0E9C ,
+				090E12FE0ACB0D2D193B0822 ,
+				0D9E02360E1219251227015C ,
+				138608200666182B103A0A06 ,
+				0BD216C212D607B2141A0459 ,
+				0FDF0D8B0209069507880D2E ,
+				0B430F8211320ED9077B123A ,
+				112B116D06B210060A700796 ,
+				02DB02EF0EAF0D8D13861532 ,
+				125C127B15C60A4A04871278 ,
+				08610AB40E5C056C0A2503A8 ,
 
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 
-		0527100F087A08E60DC606B0 = {
+		10530672042616C10BEB0D86 = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -244,7 +244,7 @@
 			};
 			name = Debug;
 		};
-		0D6E05860A9B02FC143803F0 = {
+		15D20A080C84041814C1053B = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -262,7 +262,7 @@
 			};
 			name = Release;
 		};
-		0533151F15DA04F112A10940 = {
+		1477143903C00460067C05BC = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_EXTENSION = dylib;
@@ -275,7 +275,7 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					../../../inc,
-					/Users/mnt/tools/WOK671/site/../lib,
+					/Users/mnt/tools/WOK680/site/../lib,
 					../../../drv/RWStl,
 					../../../src/RWStl,
 					../../../drv/StlAPI,
@@ -293,12 +293,12 @@
 					"$(OTHER_CFLAGS)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = " ../../../inc /Users/mnt/tools/WOK671/site/../lib ../../../drv/RWStl ../../../src/RWStl ../../../drv/StlAPI ../../../src/StlAPI ../../../drv/StlMesh ../../../src/StlMesh ../../../drv/StlTransfer ../../../src/StlTransfer";
+				USER_HEADER_SEARCH_PATHS = " ../../../inc /Users/mnt/tools/WOK680/site/../lib ../../../drv/RWStl ../../../src/RWStl ../../../drv/StlAPI ../../../src/StlAPI ../../../drv/StlMesh ../../../src/StlMesh ../../../drv/StlTransfer ../../../src/StlTransfer";
 				WRAPPER_EXTENSION = dylib;
 			};
 			name = Debug;
 		};
-		091A183C0D56044F18B20CD7 = {
+		0F2203C10B360BF00EEE147F = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_EXTENSION = dylib;
@@ -311,7 +311,7 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					../../../inc,
-					/Users/mnt/tools/WOK671/site/../lib,
+					/Users/mnt/tools/WOK680/site/../lib,
 					../../../drv/RWStl,
 					../../../src/RWStl,
 					../../../drv/StlAPI,
@@ -329,31 +329,31 @@
 					"$(OTHER_CFLAGS)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = " ../../../inc /Users/mnt/tools/WOK671/site/../lib ../../../drv/RWStl ../../../src/RWStl ../../../drv/StlAPI ../../../src/StlAPI ../../../drv/StlMesh ../../../src/StlMesh ../../../drv/StlTransfer ../../../src/StlTransfer";
+				USER_HEADER_SEARCH_PATHS = " ../../../inc /Users/mnt/tools/WOK680/site/../lib ../../../drv/RWStl ../../../src/RWStl ../../../drv/StlAPI ../../../src/StlAPI ../../../drv/StlMesh ../../../src/StlMesh ../../../drv/StlTransfer ../../../src/StlTransfer";
 				WRAPPER_EXTENSION = dylib;
 			};
 			name = Release;
 		};
 
-		14590E5C0B9C1542019B09E8 = {
+		02AC04C80E70058015CA0FD3 = {
 			isa = XCConfigurationList;
 		buildConfigurations = (
-				0527100F087A08E60DC606B0 ,
-				0D6E05860A9B02FC143803F0 ,
+				10530672042616C10BEB0D86 ,
+				15D20A080C84041814C1053B ,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		154512EF02400685149113F7 = {
+		10D617BC07C000F519810498 = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0533151F15DA04F112A10940 ,
-				091A183C0D56044F18B20CD7 ,
+				1477143903C00460067C05BC ,
+				0F2203C10B360BF00EEE147F ,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 
 	};
-	rootObject = 107B0A560DFD0A2E0511142F ;
+	rootObject = 00B502BA192C1545195D057D ;
 }

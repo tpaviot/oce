@@ -6,38 +6,27 @@
 #ifndef _BRepBlend_SequenceNodeOfSequenceOfLine_HeaderFile
 #define _BRepBlend_SequenceNodeOfSequenceOfLine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepBlend_SequenceNodeOfSequenceOfLine_HeaderFile
 #include <Handle_BRepBlend_SequenceNodeOfSequenceOfLine.hxx>
-#endif
 
-#ifndef _Handle_BRepBlend_Line_HeaderFile
 #include <Handle_BRepBlend_Line.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class BRepBlend_Line;
 class BRepBlend_SequenceOfLine;
 
 
 
-class BRepBlend_SequenceNodeOfSequenceOfLine : public TCollection_SeqNode {
+class BRepBlend_SequenceNodeOfSequenceOfLine : public TCollection_SeqNode
+{
 
 public:
 
   
-      BRepBlend_SequenceNodeOfSequenceOfLine(const Handle(BRepBlend_Line)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    BRepBlend_SequenceNodeOfSequenceOfLine(const Handle(BRepBlend_Line)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_BRepBlend_Line& Value() const;
+      Handle(BRepBlend_Line)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_BRepBlend_Line myValue;
+  Handle(BRepBlend_Line) myValue;
 
 
 };
 
-#define SeqItem Handle_BRepBlend_Line
+#define SeqItem Handle(BRepBlend_Line)
 #define SeqItem_hxx <BRepBlend_Line.hxx>
 #define TCollection_SequenceNode BRepBlend_SequenceNodeOfSequenceOfLine
 #define TCollection_SequenceNode_hxx <BRepBlend_SequenceNodeOfSequenceOfLine.hxx>
@@ -78,7 +67,6 @@ Handle_BRepBlend_Line myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepBlend_SequenceNodeOfSequenceOfLine_HeaderFile

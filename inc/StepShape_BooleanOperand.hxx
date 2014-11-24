@@ -6,31 +6,15 @@
 #ifndef _StepShape_BooleanOperand_HeaderFile
 #define _StepShape_BooleanOperand_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepShape_SolidModel_HeaderFile
 #include <Handle_StepShape_SolidModel.hxx>
-#endif
-#ifndef _Handle_StepShape_HalfSpaceSolid_HeaderFile
 #include <Handle_StepShape_HalfSpaceSolid.hxx>
-#endif
-#ifndef _StepShape_CsgPrimitive_HeaderFile
 #include <StepShape_CsgPrimitive.hxx>
-#endif
-#ifndef _Handle_StepShape_BooleanResult_HeaderFile
 #include <Handle_StepShape_BooleanResult.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StepShape_SolidModel;
 class StepShape_HalfSpaceSolid;
 class StepShape_BooleanResult;
@@ -38,39 +22,44 @@ class StepShape_CsgPrimitive;
 
 
 
-class StepShape_BooleanOperand  {
+class StepShape_BooleanOperand 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a BooleanOperand SelectType <br>
-  Standard_EXPORT   StepShape_BooleanOperand();
   
-  Standard_EXPORT     void SetTypeOfContent(const Standard_Integer aTypeOfContent) ;
+  //! Returns a BooleanOperand SelectType
+  Standard_EXPORT StepShape_BooleanOperand();
   
-  Standard_EXPORT     Standard_Integer TypeOfContent() const;
-  //! returns Value as a SolidModel (Null if another <br>
-//!         type) <br>
-  Standard_EXPORT     Handle_StepShape_SolidModel SolidModel() const;
+  Standard_EXPORT   void SetTypeOfContent (const Standard_Integer aTypeOfContent) ;
   
-  Standard_EXPORT     void SetSolidModel(const Handle(StepShape_SolidModel)& aSolidModel) ;
-  //! returns Value as a HalfSpaceSolid (Null if <br>
-//!         another type) <br>
-  Standard_EXPORT     Handle_StepShape_HalfSpaceSolid HalfSpaceSolid() const;
+  Standard_EXPORT   Standard_Integer TypeOfContent()  const;
   
-  Standard_EXPORT     void SetHalfSpaceSolid(const Handle(StepShape_HalfSpaceSolid)& aHalfSpaceSolid) ;
-  //! returns Value as a CsgPrimitive (Null if another <br>
-//!           type) <br>
-//!           CsgPrimitive is another Select Type <br>
-  Standard_EXPORT     StepShape_CsgPrimitive CsgPrimitive() const;
+  //! returns Value as a SolidModel (Null if another
+  //! type)
+  Standard_EXPORT   Handle(StepShape_SolidModel) SolidModel()  const;
   
-  Standard_EXPORT     void SetCsgPrimitive(const StepShape_CsgPrimitive& aCsgPrimitive) ;
-  //! returns Value as a BooleanResult (Null if another <br>
-//!           type) <br>
-  Standard_EXPORT     Handle_StepShape_BooleanResult BooleanResult() const;
+  Standard_EXPORT   void SetSolidModel (const Handle(StepShape_SolidModel)& aSolidModel) ;
   
-  Standard_EXPORT     void SetBooleanResult(const Handle(StepShape_BooleanResult)& aBooleanResult) ;
-
+  //! returns Value as a HalfSpaceSolid (Null if
+  //! another type)
+  Standard_EXPORT   Handle(StepShape_HalfSpaceSolid) HalfSpaceSolid()  const;
+  
+  Standard_EXPORT   void SetHalfSpaceSolid (const Handle(StepShape_HalfSpaceSolid)& aHalfSpaceSolid) ;
+  
+  //! returns Value as a CsgPrimitive (Null if another
+  //! type)
+  //! CsgPrimitive is another Select Type
+  Standard_EXPORT   StepShape_CsgPrimitive CsgPrimitive()  const;
+  
+  Standard_EXPORT   void SetCsgPrimitive (const StepShape_CsgPrimitive& aCsgPrimitive) ;
+  
+  //! returns Value as a BooleanResult (Null if another
+  //! type)
+  Standard_EXPORT   Handle(StepShape_BooleanResult) BooleanResult()  const;
+  
+  Standard_EXPORT   void SetBooleanResult (const Handle(StepShape_BooleanResult)& aBooleanResult) ;
 
 
 
@@ -85,11 +74,11 @@ private:
 
 
 
-Handle_StepShape_SolidModel theSolidModel;
-Handle_StepShape_HalfSpaceSolid theHalfSpaceSolid;
-StepShape_CsgPrimitive theCsgPrimitive;
-Handle_StepShape_BooleanResult theBooleanResult;
-Standard_Integer theTypeOfContent;
+  Handle(StepShape_SolidModel) theSolidModel;
+  Handle(StepShape_HalfSpaceSolid) theHalfSpaceSolid;
+  StepShape_CsgPrimitive theCsgPrimitive;
+  Handle(StepShape_BooleanResult) theBooleanResult;
+  Standard_Integer theTypeOfContent;
 
 
 };
@@ -98,7 +87,6 @@ Standard_Integer theTypeOfContent;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_BooleanOperand_HeaderFile

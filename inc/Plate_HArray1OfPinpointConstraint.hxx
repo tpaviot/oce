@@ -6,25 +6,13 @@
 #ifndef _Plate_HArray1OfPinpointConstraint_HeaderFile
 #define _Plate_HArray1OfPinpointConstraint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Plate_HArray1OfPinpointConstraint_HeaderFile
 #include <Handle_Plate_HArray1OfPinpointConstraint.hxx>
-#endif
 
-#ifndef _Plate_Array1OfPinpointConstraint_HeaderFile
 #include <Plate_Array1OfPinpointConstraint.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class Plate_Array1OfPinpointConstraint;
 
 
 
-class Plate_HArray1OfPinpointConstraint : public MMgt_TShared {
+class Plate_HArray1OfPinpointConstraint : public MMgt_TShared
+{
 
 public:
 
   
-      Plate_HArray1OfPinpointConstraint(const Standard_Integer Low,const Standard_Integer Up);
+    Plate_HArray1OfPinpointConstraint(const Standard_Integer Low, const Standard_Integer Up);
   
-      Plate_HArray1OfPinpointConstraint(const Standard_Integer Low,const Standard_Integer Up,const Plate_PinpointConstraint& V);
+    Plate_HArray1OfPinpointConstraint(const Standard_Integer Low, const Standard_Integer Up, const Plate_PinpointConstraint& V);
   
-        void Init(const Plate_PinpointConstraint& V) ;
+      void Init (const Plate_PinpointConstraint& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Plate_PinpointConstraint& Value) ;
+      void SetValue (const Standard_Integer Index, const Plate_PinpointConstraint& Value) ;
   
-       const Plate_PinpointConstraint& Value(const Standard_Integer Index) const;
+     const  Plate_PinpointConstraint& Value (const Standard_Integer Index)  const;
   
-        Plate_PinpointConstraint& ChangeValue(const Standard_Integer Index) ;
+      Plate_PinpointConstraint& ChangeValue (const Standard_Integer Index) ;
   
-       const Plate_Array1OfPinpointConstraint& Array1() const;
+     const  Plate_Array1OfPinpointConstraint& Array1()  const;
   
-        Plate_Array1OfPinpointConstraint& ChangeArray1() ;
+      Plate_Array1OfPinpointConstraint& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-Plate_Array1OfPinpointConstraint myArray;
+  Plate_Array1OfPinpointConstraint myArray;
 
 
 };
@@ -100,7 +89,6 @@ Plate_Array1OfPinpointConstraint myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Plate_HArray1OfPinpointConstraint_HeaderFile

@@ -6,55 +6,23 @@
 #ifndef _GeomFill_CorrectedFrenet_HeaderFile
 #define _GeomFill_CorrectedFrenet_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_GeomFill_CorrectedFrenet_HeaderFile
 #include <Handle_GeomFill_CorrectedFrenet.hxx>
-#endif
 
-#ifndef _Handle_GeomFill_Frenet_HeaderFile
 #include <Handle_GeomFill_Frenet.hxx>
-#endif
-#ifndef _Handle_Law_Function_HeaderFile
 #include <Handle_Law_Function.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray1OfVec_HeaderFile
 #include <Handle_TColgp_HArray1OfVec.hxx>
-#endif
-#ifndef _GeomFill_TrihedronLaw_HeaderFile
 #include <GeomFill_TrihedronLaw.hxx>
-#endif
-#ifndef _Handle_GeomFill_TrihedronLaw_HeaderFile
 #include <Handle_GeomFill_TrihedronLaw.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HCurve_HeaderFile
 #include <Handle_Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _GeomFill_Trihedron_HeaderFile
 #include <GeomFill_Trihedron.hxx>
-#endif
 class GeomFill_Frenet;
 class Law_Function;
 class TColStd_HArray1OfReal;
@@ -69,58 +37,68 @@ class Adaptor3d_HCurve;
 class TColStd_Array1OfReal;
 
 
-//!  Defined an Corrected Frenet  Trihedron  Law It is <br>
-//!          like Frenet with an Torsion's minimization <br>
-class GeomFill_CorrectedFrenet : public GeomFill_TrihedronLaw {
+//! Defined an Corrected Frenet  Trihedron  Law It is
+//! like Frenet with an Torsion's minimization
+class GeomFill_CorrectedFrenet : public GeomFill_TrihedronLaw
+{
 
 public:
 
   
-  Standard_EXPORT   GeomFill_CorrectedFrenet();
+  Standard_EXPORT GeomFill_CorrectedFrenet();
   
-  Standard_EXPORT   GeomFill_CorrectedFrenet(const Standard_Boolean ForEvaluation);
+  Standard_EXPORT GeomFill_CorrectedFrenet(const Standard_Boolean ForEvaluation);
   
-  Standard_EXPORT   virtual  Handle_GeomFill_TrihedronLaw Copy() const;
+  Standard_EXPORT virtual   Handle(GeomFill_TrihedronLaw) Copy()  const;
   
-  Standard_EXPORT   virtual  void SetCurve(const Handle(Adaptor3d_HCurve)& C) ;
+  Standard_EXPORT virtual   void SetCurve (const Handle(Adaptor3d_HCurve)& C) ;
   
-  Standard_EXPORT   virtual  void SetInterval(const Standard_Real First,const Standard_Real Last) ;
-  //! compute Triedrhon on curve at parameter <Param> <br>
-  Standard_EXPORT   virtual  Standard_Boolean D0(const Standard_Real Param,gp_Vec& Tangent,gp_Vec& Normal,gp_Vec& BiNormal) ;
-  //! compute Triedrhon and  derivative Trihedron  on curve <br>
-//!          at parameter <Param> <br>
-//!  Warning : It used only for C1 or C2 aproximation <br>
-  Standard_EXPORT   virtual  Standard_Boolean D1(const Standard_Real Param,gp_Vec& Tangent,gp_Vec& DTangent,gp_Vec& Normal,gp_Vec& DNormal,gp_Vec& BiNormal,gp_Vec& DBiNormal) ;
-  //! compute  Trihedron on curve <br>
-//!          first and seconde  derivatives. <br>
-//!  Warning : It used only for C2 aproximation <br>
-  Standard_EXPORT   virtual  Standard_Boolean D2(const Standard_Real Param,gp_Vec& Tangent,gp_Vec& DTangent,gp_Vec& D2Tangent,gp_Vec& Normal,gp_Vec& DNormal,gp_Vec& D2Normal,gp_Vec& BiNormal,gp_Vec& DBiNormal,gp_Vec& D2BiNormal) ;
-  //! Returns  the number  of  intervals for  continuity <br>
-//!          <S>. <br>
-//!          May be one if Continuity(me) >= <S> <br>
-  Standard_EXPORT   virtual  Standard_Integer NbIntervals(const GeomAbs_Shape S) const;
-  //! Stores in <T> the  parameters bounding the intervals <br>
-//!          of continuity <S>. <br>
-//! <br>
-//!          The array must provide  enough room to  accomodate <br>
-//!          for the parameters. i.e. T.Length() > NbIntervals() <br>
-  Standard_EXPORT   virtual  void Intervals(TColStd_Array1OfReal& T,const GeomAbs_Shape S) const;
-  //! Tries to define the best trihedron mode <br>
-//!          for the curve. It can be: <br>
-//!          - Frenet <br>
-//!          - CorrectedFrenet <br>
-//!          - DiscreteTrihedron <br>
-//!          Warning: the CorrectedFrenet must be constructed <br>
-//!          with option ForEvaluation = True, <br>
-//!          the curve must be set by method SetCurve. <br>
-  Standard_EXPORT     GeomFill_Trihedron EvaluateBestMode() ;
-  //! Get average value of Tangent(t) and Normal(t) it is usfull to <br>
-//!          make fast approximation of rational  surfaces. <br>
-  Standard_EXPORT   virtual  void GetAverageLaw(gp_Vec& ATangent,gp_Vec& ANormal,gp_Vec& ABiNormal) ;
-  //! Say if the law is Constant. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsConstant() const;
-  //! Return True. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsOnlyBy3dCurve() const;
+  Standard_EXPORT virtual   void SetInterval (const Standard_Real First, const Standard_Real Last) ;
+  
+  //! compute Triedrhon on curve at parameter <Param>
+  Standard_EXPORT virtual   Standard_Boolean D0 (const Standard_Real Param, gp_Vec& Tangent, gp_Vec& Normal, gp_Vec& BiNormal) ;
+  
+  //! compute Triedrhon and  derivative Trihedron  on curve
+  //! at parameter <Param>
+  //! Warning : It used only for C1 or C2 aproximation
+  Standard_EXPORT virtual   Standard_Boolean D1 (const Standard_Real Param, gp_Vec& Tangent, gp_Vec& DTangent, gp_Vec& Normal, gp_Vec& DNormal, gp_Vec& BiNormal, gp_Vec& DBiNormal) ;
+  
+  //! compute  Trihedron on curve
+  //! first and seconde  derivatives.
+  //! Warning : It used only for C2 aproximation
+  Standard_EXPORT virtual   Standard_Boolean D2 (const Standard_Real Param, gp_Vec& Tangent, gp_Vec& DTangent, gp_Vec& D2Tangent, gp_Vec& Normal, gp_Vec& DNormal, gp_Vec& D2Normal, gp_Vec& BiNormal, gp_Vec& DBiNormal, gp_Vec& D2BiNormal) ;
+  
+  //! Returns  the number  of  intervals for  continuity
+  //! <S>.
+  //! May be one if Continuity(me) >= <S>
+  Standard_EXPORT virtual   Standard_Integer NbIntervals (const GeomAbs_Shape S)  const;
+  
+  //! Stores in <T> the  parameters bounding the intervals
+  //! of continuity <S>.
+  //!
+  //! The array must provide  enough room to  accomodate
+  //! for the parameters. i.e. T.Length() > NbIntervals()
+  Standard_EXPORT virtual   void Intervals (TColStd_Array1OfReal& T, const GeomAbs_Shape S)  const;
+  
+  //! Tries to define the best trihedron mode
+  //! for the curve. It can be:
+  //! - Frenet
+  //! - CorrectedFrenet
+  //! - DiscreteTrihedron
+  //! Warning: the CorrectedFrenet must be constructed
+  //! with option ForEvaluation = True,
+  //! the curve must be set by method SetCurve.
+  Standard_EXPORT   GeomFill_Trihedron EvaluateBestMode() ;
+  
+  //! Get average value of Tangent(t) and Normal(t) it is usfull to
+  //! make fast approximation of rational  surfaces.
+  Standard_EXPORT virtual   void GetAverageLaw (gp_Vec& ATangent, gp_Vec& ANormal, gp_Vec& ABiNormal) ;
+  
+  //! Say if the law is Constant.
+  Standard_EXPORT virtual   Standard_Boolean IsConstant()  const;
+  
+  //! Return True.
+  Standard_EXPORT virtual   Standard_Boolean IsOnlyBy3dCurve()  const;
 
 
 
@@ -135,26 +113,29 @@ protected:
 private: 
 
   
-  Standard_EXPORT     void Init() ;
-  //!  Computes BSpline representation of Normal evolution at one <br>
-//! interval of continuity of Frenet. Returns True if FuncInt = 0 <br>
-  Standard_EXPORT     Standard_Boolean InitInterval(const Standard_Real First,const Standard_Real Last,const Standard_Real Step,Standard_Real& startAng,gp_Vec& prevTangent,gp_Vec& prevNormal,gp_Vec& aT,gp_Vec& aN,Handle(Law_Function)& FuncInt,TColStd_SequenceOfReal& SeqPoles,TColStd_SequenceOfReal& SeqAngle,TColgp_SequenceOfVec& SeqTangent,TColgp_SequenceOfVec& SeqNormal) const;
-  //!  Computes angle of Normal evolution of Frenet between any two points on the curve. <br>
-  Standard_EXPORT     Standard_Real CalcAngleAT(const gp_Vec& Tangent,const gp_Vec& Normal,const gp_Vec& prevTangent,const gp_Vec& prevNormal) const;
-  //!  Get corrected value of angle of Normal evolution of Frenet <br>
-  Standard_EXPORT     Standard_Real GetAngleAT(const Standard_Real P) const;
+  Standard_EXPORT   void Init() ;
+  
+  //! Computes BSpline representation of Normal evolution at one
+  //! interval of continuity of Frenet. Returns True if FuncInt = 0
+  Standard_EXPORT   Standard_Boolean InitInterval (const Standard_Real First, const Standard_Real Last, const Standard_Real Step, Standard_Real& startAng, gp_Vec& prevTangent, gp_Vec& prevNormal, gp_Vec& aT, gp_Vec& aN, Handle(Law_Function)& FuncInt, TColStd_SequenceOfReal& SeqPoles, TColStd_SequenceOfReal& SeqAngle, TColgp_SequenceOfVec& SeqTangent, TColgp_SequenceOfVec& SeqNormal)  const;
+  
+  //! Computes angle of Normal evolution of Frenet between any two points on the curve.
+  Standard_EXPORT   Standard_Real CalcAngleAT (const gp_Vec& Tangent, const gp_Vec& Normal, const gp_Vec& prevTangent, const gp_Vec& prevNormal)  const;
+  
+  //! Get corrected value of angle of Normal evolution of Frenet
+  Standard_EXPORT   Standard_Real GetAngleAT (const Standard_Real P)  const;
 
-Handle_GeomFill_Frenet frenet;
-Handle_Law_Function EvolAroundT;
-Handle_Law_Function TLaw;
-gp_Vec AT;
-gp_Vec AN;
-Standard_Boolean isFrenet;
-Standard_Boolean myForEvaluation;
-Handle_TColStd_HArray1OfReal HArrPoles;
-Handle_TColStd_HArray1OfReal HArrAngle;
-Handle_TColgp_HArray1OfVec HArrTangent;
-Handle_TColgp_HArray1OfVec HArrNormal;
+  Handle(GeomFill_Frenet) frenet;
+  Handle(Law_Function) EvolAroundT;
+  Handle(Law_Function) TLaw;
+  gp_Vec AT;
+  gp_Vec AN;
+  Standard_Boolean isFrenet;
+  Standard_Boolean myForEvaluation;
+  Handle(TColStd_HArray1OfReal) HArrPoles;
+  Handle(TColStd_HArray1OfReal) HArrAngle;
+  Handle(TColgp_HArray1OfVec) HArrTangent;
+  Handle(TColgp_HArray1OfVec) HArrNormal;
 
 
 };
@@ -163,7 +144,6 @@ Handle_TColgp_HArray1OfVec HArrNormal;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomFill_CorrectedFrenet_HeaderFile

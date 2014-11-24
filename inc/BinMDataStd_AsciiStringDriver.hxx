@@ -6,52 +6,37 @@
 #ifndef _BinMDataStd_AsciiStringDriver_HeaderFile
 #define _BinMDataStd_AsciiStringDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BinMDataStd_AsciiStringDriver_HeaderFile
 #include <Handle_BinMDataStd_AsciiStringDriver.hxx>
-#endif
 
-#ifndef _BinMDF_ADriver_HeaderFile
 #include <BinMDF_ADriver.hxx>
-#endif
-#ifndef _Handle_CDM_MessageDriver_HeaderFile
 #include <Handle_CDM_MessageDriver.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _BinObjMgt_RRelocationTable_HeaderFile
 #include <BinObjMgt_RRelocationTable.hxx>
-#endif
-#ifndef _BinObjMgt_SRelocationTable_HeaderFile
 #include <BinObjMgt_SRelocationTable.hxx>
-#endif
 class CDM_MessageDriver;
 class TDF_Attribute;
 class BinObjMgt_Persistent;
 
 
-//! TDataStd_AsciiString attribute Driver. <br>
-class BinMDataStd_AsciiStringDriver : public BinMDF_ADriver {
+//! TDataStd_AsciiString attribute Driver.
+class BinMDataStd_AsciiStringDriver : public BinMDF_ADriver
+{
 
 public:
 
   
-  Standard_EXPORT   BinMDataStd_AsciiStringDriver(const Handle(CDM_MessageDriver)& theMessageDriver);
+  Standard_EXPORT BinMDataStd_AsciiStringDriver(const Handle(CDM_MessageDriver)& theMessageDriver);
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
-  //! persistent -> transient (retrieve) <br>
-  Standard_EXPORT     Standard_Boolean Paste(const BinObjMgt_Persistent& Source,const Handle(TDF_Attribute)& Target,BinObjMgt_RRelocationTable& RelocTable) const;
-  //! transient -> persistent (store) <br>
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& Source,BinObjMgt_Persistent& Target,BinObjMgt_SRelocationTable& RelocTable) const;
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
+  
+  //! persistent -> transient (retrieve)
+  Standard_EXPORT   Standard_Boolean Paste (const BinObjMgt_Persistent& Source, const Handle(TDF_Attribute)& Target, BinObjMgt_RRelocationTable& RelocTable)  const;
+  
+  //! transient -> persistent (store)
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& Source, BinObjMgt_Persistent& Target, BinObjMgt_SRelocationTable& RelocTable)  const;
 
 
 
@@ -74,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BinMDataStd_AsciiStringDriver_HeaderFile

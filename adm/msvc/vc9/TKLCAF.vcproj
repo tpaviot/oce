@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKLCAF"
-	ProjectGUID="{0D6CC5A6-0A83-018C-0D18-A800C4CA551F}"
+	ProjectGUID="{E5CB6E38-0470-17D9-06BC-903D54AA6A9A}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -248,7 +248,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\TDF;..\..\..\src\TDF;..\..\..\drv\TDataStd;..\..\..\src\TDataStd;..\..\..\drv\TFunction;..\..\..\src\TFunction;..\..\..\drv\TDocStd;..\..\..\src\TDocStd;..\..\..\drv\AppStdL;..\..\..\src\AppStdL;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TDF_DLL;__TDataStd_DLL;__TFunction_DLL;__TDocStd_DLL;__AppStdL_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TDF_DLL;__TDataStd_DLL;__TFunction_DLL;__TDocStd_DLL;__AppStdL_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TDF_DLL;__TDataStd_DLL;__TFunction_DLL;__TDocStd_DLL;__AppStdL_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TDF_DLL;__TDataStd_DLL;__TFunction_DLL;__TDocStd_DLL;__AppStdL_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -343,7 +343,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\TDF;..\..\..\src\TDF;..\..\..\drv\TDataStd;..\..\..\src\TDataStd;..\..\..\drv\TFunction;..\..\..\src\TFunction;..\..\..\drv\TDocStd;..\..\..\src\TDocStd;..\..\..\drv\AppStdL;..\..\..\src\AppStdL;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TDF_DLL;__TDataStd_DLL;__TFunction_DLL;__TDocStd_DLL;__AppStdL_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TDF_DLL;__TDataStd_DLL;__TFunction_DLL;__TDocStd_DLL;__AppStdL_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -365,7 +365,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TDF_DLL;__TDataStd_DLL;__TFunction_DLL;__TDocStd_DLL;__AppStdL_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TDF_DLL;__TDataStd_DLL;__TFunction_DLL;__TDocStd_DLL;__AppStdL_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"

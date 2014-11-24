@@ -6,43 +6,19 @@
 #ifndef _StepData_Plex_HeaderFile
 #define _StepData_Plex_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepData_Plex_HeaderFile
 #include <Handle_StepData_Plex.hxx>
-#endif
 
-#ifndef _TColStd_SequenceOfTransient_HeaderFile
 #include <TColStd_SequenceOfTransient.hxx>
-#endif
-#ifndef _StepData_Described_HeaderFile
 #include <StepData_Described.hxx>
-#endif
-#ifndef _Handle_StepData_ECDescr_HeaderFile
 #include <Handle_StepData_ECDescr.hxx>
-#endif
-#ifndef _Handle_StepData_Simple_HeaderFile
 #include <Handle_StepData_Simple.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TColStd_HSequenceOfAsciiString_HeaderFile
 #include <Handle_TColStd_HSequenceOfAsciiString.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
 class Interface_InterfaceMismatch;
 class StepData_ECDescr;
 class StepData_Simple;
@@ -52,46 +28,61 @@ class Interface_Check;
 class Interface_EntityIterator;
 
 
-//! A Plex (for Complex) Entity is defined as a list of Simple <br>
-//!           Members ("external mapping") <br>
-//!           The types of these members must be in alphabetic order <br>
-class StepData_Plex : public StepData_Described {
+//! A Plex (for Complex) Entity is defined as a list of Simple
+//! Members ("external mapping")
+//! The types of these members must be in alphabetic order
+class StepData_Plex : public StepData_Described
+{
 
 public:
 
-  //! Creates a Plex (empty). The complete creation is made by the <br>
-//!           ECDescr itself, by calling Add <br>
-  Standard_EXPORT   StepData_Plex(const Handle(StepData_ECDescr)& descr);
-  //! Adds a member to <me> <br>
-  Standard_EXPORT     void Add(const Handle(StepData_Simple)& member) ;
-  //! Returns the Description as for a Plex <br>
-  Standard_EXPORT     Handle_StepData_ECDescr ECDescr() const;
-  //! Returns False <br>
-  Standard_EXPORT     Standard_Boolean IsComplex() const;
-  //! Tells if a step type is matched by <me> <br>
-//!           For a Simple Entity : own type or super type <br>
-//!           For a Complex Entity : one of the members <br>
-  Standard_EXPORT     Standard_Boolean Matches(const Standard_CString steptype) const;
-  //! Returns a Simple Entity which matches with a Type in <me> : <br>
-//!           For a Simple Entity : me if it matches, else a null handle <br>
-//!           For a Complex Entity : the member which matches, else null <br>
-  Standard_EXPORT     Handle_StepData_Simple As(const Standard_CString steptype) const;
-  //! Tells if a Field brings a given name <br>
-  Standard_EXPORT     Standard_Boolean HasField(const Standard_CString name) const;
-  //! Returns a Field from its name; read-only <br>
-  Standard_EXPORT    const StepData_Field& Field(const Standard_CString name) const;
-  //! Returns a Field from its name; read or write <br>
-  Standard_EXPORT     StepData_Field& CField(const Standard_CString name) ;
-  //! Returns the count of simple members <br>
-  Standard_EXPORT     Standard_Integer NbMembers() const;
-  //! Returns a simple member from its rank <br>
-  Standard_EXPORT     Handle_StepData_Simple Member(const Standard_Integer num) const;
-  //! Returns the actual list of members types <br>
-  Standard_EXPORT     Handle_TColStd_HSequenceOfAsciiString TypeList() const;
-  //! Fills a Check by using its Description <br>
-  Standard_EXPORT     void Check(Handle(Interface_Check)& ach) const;
-  //! Fills an EntityIterator with entities shared by <me> <br>
-  Standard_EXPORT     void Shared(Interface_EntityIterator& list) const;
+  
+  //! Creates a Plex (empty). The complete creation is made by the
+  //! ECDescr itself, by calling Add
+  Standard_EXPORT StepData_Plex(const Handle(StepData_ECDescr)& descr);
+  
+  //! Adds a member to <me>
+  Standard_EXPORT   void Add (const Handle(StepData_Simple)& member) ;
+  
+  //! Returns the Description as for a Plex
+  Standard_EXPORT   Handle(StepData_ECDescr) ECDescr()  const;
+  
+  //! Returns False
+  Standard_EXPORT   Standard_Boolean IsComplex()  const;
+  
+  //! Tells if a step type is matched by <me>
+  //! For a Simple Entity : own type or super type
+  //! For a Complex Entity : one of the members
+  Standard_EXPORT   Standard_Boolean Matches (const Standard_CString steptype)  const;
+  
+  //! Returns a Simple Entity which matches with a Type in <me> :
+  //! For a Simple Entity : me if it matches, else a null handle
+  //! For a Complex Entity : the member which matches, else null
+  Standard_EXPORT   Handle(StepData_Simple) As (const Standard_CString steptype)  const;
+  
+  //! Tells if a Field brings a given name
+  Standard_EXPORT   Standard_Boolean HasField (const Standard_CString name)  const;
+  
+  //! Returns a Field from its name; read-only
+  Standard_EXPORT  const  StepData_Field& Field (const Standard_CString name)  const;
+  
+  //! Returns a Field from its name; read or write
+  Standard_EXPORT   StepData_Field& CField (const Standard_CString name) ;
+  
+  //! Returns the count of simple members
+  Standard_EXPORT   Standard_Integer NbMembers()  const;
+  
+  //! Returns a simple member from its rank
+  Standard_EXPORT   Handle(StepData_Simple) Member (const Standard_Integer num)  const;
+  
+  //! Returns the actual list of members types
+  Standard_EXPORT   Handle(TColStd_HSequenceOfAsciiString) TypeList()  const;
+  
+  //! Fills a Check by using its Description
+  Standard_EXPORT   void Check (Handle(Interface_Check)& ach)  const;
+  
+  //! Fills an EntityIterator with entities shared by <me>
+  Standard_EXPORT   void Shared (Interface_EntityIterator& list)  const;
 
 
 
@@ -106,7 +97,7 @@ protected:
 private: 
 
 
-TColStd_SequenceOfTransient themembers;
+  TColStd_SequenceOfTransient themembers;
 
 
 };
@@ -115,7 +106,6 @@ TColStd_SequenceOfTransient themembers;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepData_Plex_HeaderFile

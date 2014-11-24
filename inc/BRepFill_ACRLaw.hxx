@@ -6,39 +6,28 @@
 #ifndef _BRepFill_ACRLaw_HeaderFile
 #define _BRepFill_ACRLaw_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepFill_ACRLaw_HeaderFile
 #include <Handle_BRepFill_ACRLaw.hxx>
-#endif
 
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _BRepFill_LocationLaw_HeaderFile
 #include <BRepFill_LocationLaw.hxx>
-#endif
-#ifndef _Handle_GeomFill_LocationGuide_HeaderFile
 #include <Handle_GeomFill_LocationGuide.hxx>
-#endif
 class TColStd_HArray1OfReal;
 class TopoDS_Wire;
 class GeomFill_LocationGuide;
 
 
-//! Build Location Law,  with a Wire.   In the case <br>
-//!          of guided contour and trihedron by reduced <br>
-//!          curvilinear abscissa <br>
-class BRepFill_ACRLaw : public BRepFill_LocationLaw {
+//! Build Location Law,  with a Wire.   In the case
+//! of guided contour and trihedron by reduced
+//! curvilinear abscissa
+class BRepFill_ACRLaw : public BRepFill_LocationLaw
+{
 
 public:
 
   
-  Standard_EXPORT   BRepFill_ACRLaw(const TopoDS_Wire& Path,const Handle(GeomFill_LocationGuide)& Law);
+  Standard_EXPORT BRepFill_ACRLaw(const TopoDS_Wire& Path, const Handle(GeomFill_LocationGuide)& Law);
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-Handle_TColStd_HArray1OfReal OrigParam;
+  Handle(TColStd_HArray1OfReal) OrigParam;
 
 
 };
@@ -62,7 +51,6 @@ Handle_TColStd_HArray1OfReal OrigParam;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepFill_ACRLaw_HeaderFile

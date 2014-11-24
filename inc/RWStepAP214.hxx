@@ -6,15 +6,9 @@
 #ifndef _RWStepAP214_HeaderFile
 #define _RWStepAP214_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
 class RWStepAP214_ReadWriteModule;
 class RWStepAP214_GeneralModule;
@@ -47,14 +41,15 @@ class RWStepAP214_RWRepItemGroup;
 
 
 
-class RWStepAP214  {
+class RWStepAP214 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! enforced the initialisation of the  libraries <br>
-  Standard_EXPORT   static  void Init() ;
-
+  
+  //! enforced the initialisation of the  libraries
+  Standard_EXPORT static   void Init() ;
 
 
 
@@ -105,7 +100,6 @@ friend class RWStepAP214_RWRepItemGroup;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _RWStepAP214_HeaderFile

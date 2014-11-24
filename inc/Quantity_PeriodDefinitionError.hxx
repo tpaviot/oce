@@ -6,33 +6,20 @@
 #ifndef _Quantity_PeriodDefinitionError_HeaderFile
 #define _Quantity_PeriodDefinitionError_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_DefineException_HeaderFile
 #include <Standard_DefineException.hxx>
-#endif
-#ifndef _Standard_SStream_HeaderFile
 #include <Standard_SStream.hxx>
-#endif
-
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Handle_Quantity_PeriodDefinitionError_HeaderFile
 #include <Handle_Quantity_PeriodDefinitionError.hxx>
-#endif
 
 #if !defined No_Exception && !defined No_Quantity_PeriodDefinitionError
-#define Quantity_PeriodDefinitionError_Raise_if(CONDITION,MESSAGE) \
+  #define Quantity_PeriodDefinitionError_Raise_if(CONDITION, MESSAGE) \
   if (CONDITION) Quantity_PeriodDefinitionError::Raise(MESSAGE);
 #else
-#define Quantity_PeriodDefinitionError_Raise_if(CONDITION,MESSAGE)
+  #define Quantity_PeriodDefinitionError_Raise_if(CONDITION, MESSAGE)
 #endif
 
-DEFINE_STANDARD_EXCEPTION(Quantity_PeriodDefinitionError,Standard_DomainError)
+DEFINE_STANDARD_EXCEPTION(Quantity_PeriodDefinitionError, Standard_DomainError)
 
-#endif
+#endif // _Quantity_PeriodDefinitionError_HeaderFile

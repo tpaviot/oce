@@ -5,16 +5,10 @@
 
 #include <DBC_VArrayNodeOfVArrayOfInteger.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _DBC_VArrayOfInteger_HeaderFile
 #include <DBC_VArrayOfInteger.hxx>
-#endif
-#ifndef _DBC_VArrayTNodeOfVArrayOfInteger_HeaderFile
 #include <DBC_VArrayTNodeOfVArrayOfInteger.hxx>
-#endif
 
  
 

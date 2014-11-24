@@ -6,50 +6,40 @@
 #ifndef _Geom2dLProp_FuncCurExt_HeaderFile
 #define _Geom2dLProp_FuncCurExt_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _math_FunctionWithDerivative_HeaderFile
 #include <math_FunctionWithDerivative.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Geom2d_Curve;
 
 
-//! Function used to find the extremas of curvature in 2d. <br>
-class Geom2dLProp_FuncCurExt  : public math_FunctionWithDerivative {
+//! Function used to find the extremas of curvature in 2d.
+class Geom2dLProp_FuncCurExt  : public math_FunctionWithDerivative
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Geom2dLProp_FuncCurExt(const Handle(Geom2d_Curve)& C,const Standard_Real Tol);
-  //! Returns the value for the variable <X>. <br>
-  Standard_EXPORT     Standard_Boolean Value(const Standard_Real X,Standard_Real& F) ;
-  //! Returns the derivative for the variable <X>. <br>
-  Standard_EXPORT     Standard_Boolean Derivative(const Standard_Real X,Standard_Real& D) ;
-  //! Returns the value of the function and the derivative <br>
-//!          for the variable <X>. <br>
-  Standard_EXPORT     Standard_Boolean Values(const Standard_Real X,Standard_Real& F,Standard_Real& D) ;
-  //! True  if  Param  corresponds  to  a minus <br>
-//!          of the radius of curvature. <br>
-  Standard_EXPORT     Standard_Boolean IsMinKC(const Standard_Real Param) const;
-
+  Standard_EXPORT Geom2dLProp_FuncCurExt(const Handle(Geom2d_Curve)& C, const Standard_Real Tol);
+  
+  //! Returns the value for the variable <X>.
+  Standard_EXPORT   Standard_Boolean Value (const Standard_Real X, Standard_Real& F) ;
+  
+  //! Returns the derivative for the variable <X>.
+  Standard_EXPORT   Standard_Boolean Derivative (const Standard_Real X, Standard_Real& D) ;
+  
+  //! Returns the value of the function and the derivative
+  //! for the variable <X>.
+  Standard_EXPORT   Standard_Boolean Values (const Standard_Real X, Standard_Real& F, Standard_Real& D) ;
+  
+  //! True  if  Param  corresponds  to  a minus
+  //! of the radius of curvature.
+  Standard_EXPORT   Standard_Boolean IsMinKC (const Standard_Real Param)  const;
 
 
 
@@ -64,8 +54,8 @@ private:
 
 
 
-Handle_Geom2d_Curve theCurve;
-Standard_Real epsX;
+  Handle(Geom2d_Curve) theCurve;
+  Standard_Real epsX;
 
 
 };
@@ -74,7 +64,6 @@ Standard_Real epsX;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dLProp_FuncCurExt_HeaderFile

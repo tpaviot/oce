@@ -5,15 +5,9 @@
 
 #include <PColgp_VArrayTNodeOfFieldOfHArray1OfDir.hxx>
 
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _PColgp_FieldOfHArray1OfDir_HeaderFile
 #include <PColgp_FieldOfHArray1OfDir.hxx>
-#endif
-#ifndef _PColgp_VArrayNodeOfFieldOfHArray1OfDir_HeaderFile
 #include <PColgp_VArrayNodeOfFieldOfHArray1OfDir.hxx>
-#endif
  
 
 #define Item gp_Dir

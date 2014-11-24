@@ -6,34 +6,16 @@
 #ifndef _Geom_SurfaceOfLinearExtrusion_HeaderFile
 #define _Geom_SurfaceOfLinearExtrusion_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Geom_SurfaceOfLinearExtrusion_HeaderFile
 #include <Handle_Geom_SurfaceOfLinearExtrusion.hxx>
-#endif
 
-#ifndef _Geom_SweptSurface_HeaderFile
 #include <Geom_SweptSurface.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Geom_Geometry_HeaderFile
 #include <Handle_Geom_Geometry.hxx>
-#endif
 class Standard_RangeError;
 class Geom_UndefinedDerivative;
 class Geom_Curve;
@@ -45,206 +27,233 @@ class gp_GTrsf2d;
 class Geom_Geometry;
 
 
-//! Describes a surface of linear extrusion ("extruded <br>
-//! surface"), e.g. a generalized cylinder. Such a surface <br>
-//! is obtained by sweeping a curve (called the "extruded <br>
-//! curve" or "basis") in a given direction (referred to as <br>
-//! the "direction of extrusion" and defined by a unit vector). <br>
-//! The u parameter is along the extruded curve. The v <br>
-//! parameter is along the direction of extrusion. <br>
-//! The parameter range for the u parameter is defined <br>
-//! by the reference curve. <br>
-//! The parameter range for the v parameter is ] - <br>
-//! infinity, + infinity [. <br>
-//! The position of the curve gives the origin of the v parameter. <br>
-//! The surface is "CN" in the v parametric direction. <br>
-//! The form of a surface of linear extrusion is generally a <br>
-//! ruled surface (GeomAbs_RuledForm). It can be: <br>
-//! - a cylindrical surface, if the extruded curve is a circle, <br>
-//!   or a trimmed circle, with an axis parallel to the <br>
-//!   direction of extrusion (GeomAbs_CylindricalForm), or <br>
-//! - a planar surface, if the extruded curve is a line <br>
-//!   (GeomAbs_PlanarForm). <br>
-//! Note: The surface of extrusion is built from a copy of <br>
-//! the original basis curve, so the original curve is not <br>
-//! modified when the surface is modified. <br>
-//! Warning <br>
-//! Degenerate surfaces are not detected. A degenerate <br>
-//! surface is obtained, for example, when the extruded <br>
-//! curve is a line and the direction of extrusion is parallel <br>
-//! to that line. <br>
-class Geom_SurfaceOfLinearExtrusion : public Geom_SweptSurface {
+//! Describes a surface of linear extrusion ("extruded
+//! surface"), e.g. a generalized cylinder. Such a surface
+//! is obtained by sweeping a curve (called the "extruded
+//! curve" or "basis") in a given direction (referred to as
+//! the "direction of extrusion" and defined by a unit vector).
+//! The u parameter is along the extruded curve. The v
+//! parameter is along the direction of extrusion.
+//! The parameter range for the u parameter is defined
+//! by the reference curve.
+//! The parameter range for the v parameter is ] -
+//! infinity, + infinity [.
+//! The position of the curve gives the origin of the v parameter.
+//! The surface is "CN" in the v parametric direction.
+//! The form of a surface of linear extrusion is generally a
+//! ruled surface (GeomAbs_RuledForm). It can be:
+//! - a cylindrical surface, if the extruded curve is a circle,
+//! or a trimmed circle, with an axis parallel to the
+//! direction of extrusion (GeomAbs_CylindricalForm), or
+//! - a planar surface, if the extruded curve is a line
+//! (GeomAbs_PlanarForm).
+//! Note: The surface of extrusion is built from a copy of
+//! the original basis curve, so the original curve is not
+//! modified when the surface is modified.
+//! Warning
+//! Degenerate surfaces are not detected. A degenerate
+//! surface is obtained, for example, when the extruded
+//! curve is a line and the direction of extrusion is parallel
+//! to that line.
+class Geom_SurfaceOfLinearExtrusion : public Geom_SweptSurface
+{
 
 public:
 
   
-//!  V is the direction of extrusion. <br>
-//!  C is the extruded curve. <br>
-//!  The form of a SurfaceOfLinearExtrusion can be : <br>
-//!  . ruled surface (RuledForm), <br>
-//!  . a cylindrical surface if the extruded curve is a circle or <br>
-//!    a trimmed circle (CylindricalForm), <br>
-//!  . a plane surface if the extruded curve is a Line (PlanarForm). <br>
-//!  Warnings : <br>
-//!  Degenerated surface cases are not detected. For example if the <br>
-//!  curve C is a line and V is parallel to the direction of this <br>
-//!  line. <br>
-  Standard_EXPORT   Geom_SurfaceOfLinearExtrusion(const Handle(Geom_Curve)& C,const gp_Dir& V);
-  //! Assigns V as the "direction of extrusion" for this <br>
-//! surface of linear extrusion. <br>
-  Standard_EXPORT     void SetDirection(const gp_Dir& V) ;
-  //! Modifies this surface of linear extrusion by redefining <br>
-//! its "basis curve" (the "extruded curve"). <br>
-  Standard_EXPORT     void SetBasisCurve(const Handle(Geom_Curve)& C) ;
-  //!  Changes the orientation of this surface of linear <br>
-//! extrusion in the u  parametric direction. The <br>
-//! bounds of the surface are not changed, but the given <br>
-//! parametric direction is reversed. Hence the <br>
-//! orientation of the surface is reversed. <br>
-//! In the case of a surface of linear extrusion: <br>
-//! - UReverse reverses the basis curve, and <br>
-//! - VReverse reverses the direction of linear extrusion. <br>
-  Standard_EXPORT     void UReverse() ;
-  //! Computes the u parameter on the modified <br>
-//! surface, produced by reversing its u  parametric <br>
-//! direction, for any point of u parameter U  on this surface of linear extrusion. <br>
-//! In the case of an extruded surface: <br>
-//! - UReverseParameter returns the reversed <br>
-//!   parameter given by the function <br>
-//!   ReversedParameter called with U on the basis   curve, <br>
-  Standard_EXPORT     Standard_Real UReversedParameter(const Standard_Real U) const;
-  //! Changes the orientation of this surface of linear <br>
-//! extrusion in the v parametric direction. The <br>
-//! bounds of the surface are not changed, but the given <br>
-//! parametric direction is reversed. Hence the <br>
-//! orientation of the surface is reversed. <br>
-//! In the case of a surface of linear extrusion: <br>
-//! - UReverse reverses the basis curve, and <br>
-//! - VReverse reverses the direction of linear extrusion. <br>
-  Standard_EXPORT     void VReverse() ;
-  //! Computes the v parameter on the modified <br>
-//! surface, produced by reversing its u v parametric <br>
-//! direction, for any point of v parameter V on this surface of linear extrusion. <br>
-//! In the case of an extruded surface VReverse returns -V. <br>
-  Standard_EXPORT     Standard_Real VReversedParameter(const Standard_Real V) const;
-  //! Returns the parametric bounds U1, U2, V1 and V2 of <br>
-//! this surface of linear extrusion. <br>
-//! A surface of linear extrusion is infinite in the v <br>
-//! parametric direction, so: <br>
-//!     - V1 = Standard_Real::RealFirst() <br>
-//! - V2 = Standard_Real::RealLast(). <br>
-  Standard_EXPORT     void Bounds(Standard_Real& U1,Standard_Real& U2,Standard_Real& V1,Standard_Real& V2) const;
-  //!  IsUClosed returns true if the "basis curve" of this <br>
-//! surface of linear extrusion is closed. <br>
-  Standard_EXPORT     Standard_Boolean IsUClosed() const;
-  //! IsVClosed always returns false. <br>
-  Standard_EXPORT     Standard_Boolean IsVClosed() const;
-  //! IsCNu returns true if the degree of continuity for the <br>
-//! "basis curve" of this surface of linear extrusion is at least N. <br>
-//!  Raises RangeError if N < 0. <br>
-  Standard_EXPORT     Standard_Boolean IsCNu(const Standard_Integer N) const;
-  //! IsCNv always returns true. <br>
-  Standard_EXPORT     Standard_Boolean IsCNv(const Standard_Integer N) const;
-  //! IsUPeriodic returns true if the "basis curve" of this <br>
-//! surface of linear extrusion is periodic. <br>
-  Standard_EXPORT     Standard_Boolean IsUPeriodic() const;
-  //! IsVPeriodic always returns false. <br>
-  Standard_EXPORT     Standard_Boolean IsVPeriodic() const;
-  //! Computes the U isoparametric curve of this surface <br>
-//! of linear extrusion. This is the line parallel to the <br>
-//! direction of extrusion, passing through the point of <br>
-//! parameter U of the basis curve. <br>
-  Standard_EXPORT     Handle_Geom_Curve UIso(const Standard_Real U) const;
-  //! Computes the V isoparametric curve of this surface <br>
-//! of linear extrusion. This curve is obtained by <br>
-//! translating the extruded curve in the direction of <br>
-//! extrusion, with the magnitude V. <br>
-  Standard_EXPORT     Handle_Geom_Curve VIso(const Standard_Real V) const;
+
+  //! V is the direction of extrusion.
+  //! C is the extruded curve.
+  //! The form of a SurfaceOfLinearExtrusion can be :
+  //! . ruled surface (RuledForm),
+  //! . a cylindrical surface if the extruded curve is a circle or
+  //! a trimmed circle (CylindricalForm),
+  //! . a plane surface if the extruded curve is a Line (PlanarForm).
+  //! Warnings :
+  //! Degenerated surface cases are not detected. For example if the
+  //! curve C is a line and V is parallel to the direction of this
+  //! line.
+  Standard_EXPORT Geom_SurfaceOfLinearExtrusion(const Handle(Geom_Curve)& C, const gp_Dir& V);
   
-//!  Computes the  point P (U, V) on the surface. <br>
-//!  The parameter U is the parameter on the extruded curve. <br>
-//!  The parametrization V is a linear parametrization, and <br>
-//!  the direction of parametrization is the direction of <br>
-//!  extrusion. If the point is on the extruded curve, V = 0.0 <br>
-  Standard_EXPORT     void D0(const Standard_Real U,const Standard_Real V,gp_Pnt& P) const;
+  //! Assigns V as the "direction of extrusion" for this
+  //! surface of linear extrusion.
+  Standard_EXPORT   void SetDirection (const gp_Dir& V) ;
   
-//!  Computes the current point and the first derivatives in the <br>
-//!  directions U and V. <br>
-//!  Raises UndefinedDerivative if the continuity of the surface is not C1. <br>
-  Standard_EXPORT     void D1(const Standard_Real U,const Standard_Real V,gp_Pnt& P,gp_Vec& D1U,gp_Vec& D1V) const;
-  //!--- Purpose ; <br>
-//!  Computes the current point, the first and the second derivatives <br>
-//!  in the directions U and V. <br>
-//!  Raises UndefinedDerivative if the continuity of the surface is not C2. <br>
-  Standard_EXPORT     void D2(const Standard_Real U,const Standard_Real V,gp_Pnt& P,gp_Vec& D1U,gp_Vec& D1V,gp_Vec& D2U,gp_Vec& D2V,gp_Vec& D2UV) const;
+  //! Modifies this surface of linear extrusion by redefining
+  //! its "basis curve" (the "extruded curve").
+  Standard_EXPORT   void SetBasisCurve (const Handle(Geom_Curve)& C) ;
   
-//!  Computes the current point, the first,the second and the third <br>
-//!  derivatives in the directions U and V. <br>
-//!  Raises UndefinedDerivative if the continuity of the surface is not C3. <br>
-  Standard_EXPORT     void D3(const Standard_Real U,const Standard_Real V,gp_Pnt& P,gp_Vec& D1U,gp_Vec& D1V,gp_Vec& D2U,gp_Vec& D2V,gp_Vec& D2UV,gp_Vec& D3U,gp_Vec& D3V,gp_Vec& D3UUV,gp_Vec& D3UVV) const;
+  //! Changes the orientation of this surface of linear
+  //! extrusion in the u  parametric direction. The
+  //! bounds of the surface are not changed, but the given
+  //! parametric direction is reversed. Hence the
+  //! orientation of the surface is reversed.
+  //! In the case of a surface of linear extrusion:
+  //! - UReverse reverses the basis curve, and
+  //! - VReverse reverses the direction of linear extrusion.
+  Standard_EXPORT   void UReverse() ;
   
-//!  Computes the derivative of order Nu in the direction u <br>
-//!  and Nv in the direction v. <br>
-//!  Raises UndefinedDerivative if the continuity of the surface is not CNu in the u <br>
-//!  direction and CNv in the v direction. <br>
-//! Raises RangeError if Nu + Nv < 1 or Nu < 0 or Nv < 0. <br>
-  Standard_EXPORT     gp_Vec DN(const Standard_Real U,const Standard_Real V,const Standard_Integer Nu,const Standard_Integer Nv) const;
-  //! The following  functions  evaluates the  local <br>
-//! derivatives on surface. Useful to manage discontinuities <br>
-//! on the surface. <br>
-//!           if    Side  =  1  ->  P  =  S( U+,V ) <br>
-//!           if    Side  = -1  ->  P  =  S( U-,V ) <br>
-//!           else  P  is betveen discontinuities <br>
-//!           can be evaluated using methods  of <br>
-//!           global evaluations    P  =  S( U ,V ) <br>
-  Standard_EXPORT     void LocalD0(const Standard_Real U,const Standard_Real V,const Standard_Integer USide,gp_Pnt& P) const;
+  //! Computes the u parameter on the modified
+  //! surface, produced by reversing its u  parametric
+  //! direction, for any point of u parameter U  on this surface of linear extrusion.
+  //! In the case of an extruded surface:
+  //! - UReverseParameter returns the reversed
+  //! parameter given by the function
+  //! ReversedParameter called with U on the basis   curve,
+  Standard_EXPORT   Standard_Real UReversedParameter (const Standard_Real U)  const;
   
-  Standard_EXPORT     void LocalD1(const Standard_Real U,const Standard_Real V,const Standard_Integer USide,gp_Pnt& P,gp_Vec& D1U,gp_Vec& D1V) const;
+  //! Changes the orientation of this surface of linear
+  //! extrusion in the v parametric direction. The
+  //! bounds of the surface are not changed, but the given
+  //! parametric direction is reversed. Hence the
+  //! orientation of the surface is reversed.
+  //! In the case of a surface of linear extrusion:
+  //! - UReverse reverses the basis curve, and
+  //! - VReverse reverses the direction of linear extrusion.
+  Standard_EXPORT   void VReverse() ;
   
-  Standard_EXPORT     void LocalD2(const Standard_Real U,const Standard_Real V,const Standard_Integer USide,gp_Pnt& P,gp_Vec& D1U,gp_Vec& D1V,gp_Vec& D2U,gp_Vec& D2V,gp_Vec& D2UV) const;
+  //! Computes the v parameter on the modified
+  //! surface, produced by reversing its u v parametric
+  //! direction, for any point of v parameter V on this surface of linear extrusion.
+  //! In the case of an extruded surface VReverse returns -V.
+  Standard_EXPORT   Standard_Real VReversedParameter (const Standard_Real V)  const;
   
-  Standard_EXPORT     void LocalD3(const Standard_Real U,const Standard_Real V,const Standard_Integer USide,gp_Pnt& P,gp_Vec& D1U,gp_Vec& D1V,gp_Vec& D2U,gp_Vec& D2V,gp_Vec& D2UV,gp_Vec& D3U,gp_Vec& D3V,gp_Vec& D3UUV,gp_Vec& D3UVV) const;
+  //! Returns the parametric bounds U1, U2, V1 and V2 of
+  //! this surface of linear extrusion.
+  //! A surface of linear extrusion is infinite in the v
+  //! parametric direction, so:
+  //! - V1 = Standard_Real::RealFirst()
+  //! - V2 = Standard_Real::RealLast().
+  Standard_EXPORT   void Bounds (Standard_Real& U1, Standard_Real& U2, Standard_Real& V1, Standard_Real& V2)  const;
   
-  Standard_EXPORT     gp_Vec LocalDN(const Standard_Real U,const Standard_Real V,const Standard_Integer USide,const Standard_Integer Nu,const Standard_Integer Nv) const;
-  //! Applies the transformation T to this surface of linear extrusion. <br>
-  Standard_EXPORT     void Transform(const gp_Trsf& T) ;
-  //! Computes the  parameters on the  transformed  surface for <br>
-//!          the transform of the point of parameters U,V on <me>. <br>
-//! <br>
-//!          me->Transformed(T)->Value(U',V') <br>
-//! <br>
-//!          is the same point as <br>
-//! <br>
-//!          me->Value(U,V).Transformed(T) <br>
-//! <br>
-//!          Where U',V' are the new values of U,V after calling <br>
-//! <br>
-//!          me->TranformParameters(U,V,T) <br>
-//! <br>
-//!          This methods multiplies : <br>
-//!          U by BasisCurve()->ParametricTransformation(T) <br>
-//!          V by T.ScaleFactor() <br>
-  Standard_EXPORT   virtual  void TransformParameters(Standard_Real& U,Standard_Real& V,const gp_Trsf& T) const;
-  //! Returns a 2d transformation  used to find the  new <br>
-//!          parameters of a point on the transformed surface. <br>
-//! <br>
-//!          me->Transformed(T)->Value(U',V') <br>
-//! <br>
-//!          is the same point as <br>
-//! <br>
-//!          me->Value(U,V).Transformed(T) <br>
-//! <br>
-//!          Where U',V' are  obtained by transforming U,V with <br>
-//!          th 2d transformation returned by <br>
-//! <br>
-//!          me->ParametricTransformation(T) <br>
-//! <br>
-//!          This  methods  returns  a scale <br>
-//!          U by BasisCurve()->ParametricTransformation(T) <br>
-//!          V by T.ScaleFactor() <br>
-  Standard_EXPORT   virtual  gp_GTrsf2d ParametricTransformation(const gp_Trsf& T) const;
-  //! Creates a new object which is a copy of this surface of linear extrusion. <br>
-  Standard_EXPORT     Handle_Geom_Geometry Copy() const;
+  //! IsUClosed returns true if the "basis curve" of this
+  //! surface of linear extrusion is closed.
+  Standard_EXPORT   Standard_Boolean IsUClosed()  const;
+  
+  //! IsVClosed always returns false.
+  Standard_EXPORT   Standard_Boolean IsVClosed()  const;
+  
+  //! IsCNu returns true if the degree of continuity for the
+  //! "basis curve" of this surface of linear extrusion is at least N.
+  //! Raises RangeError if N < 0.
+  Standard_EXPORT   Standard_Boolean IsCNu (const Standard_Integer N)  const;
+  
+  //! IsCNv always returns true.
+  Standard_EXPORT   Standard_Boolean IsCNv (const Standard_Integer N)  const;
+  
+  //! IsUPeriodic returns true if the "basis curve" of this
+  //! surface of linear extrusion is periodic.
+  Standard_EXPORT   Standard_Boolean IsUPeriodic()  const;
+  
+  //! IsVPeriodic always returns false.
+  Standard_EXPORT   Standard_Boolean IsVPeriodic()  const;
+  
+  //! Computes the U isoparametric curve of this surface
+  //! of linear extrusion. This is the line parallel to the
+  //! direction of extrusion, passing through the point of
+  //! parameter U of the basis curve.
+  Standard_EXPORT   Handle(Geom_Curve) UIso (const Standard_Real U)  const;
+  
+  //! Computes the V isoparametric curve of this surface
+  //! of linear extrusion. This curve is obtained by
+  //! translating the extruded curve in the direction of
+  //! extrusion, with the magnitude V.
+  Standard_EXPORT   Handle(Geom_Curve) VIso (const Standard_Real V)  const;
+  
+
+  //! Computes the  point P (U, V) on the surface.
+  //! The parameter U is the parameter on the extruded curve.
+  //! The parametrization V is a linear parametrization, and
+  //! the direction of parametrization is the direction of
+  //! extrusion. If the point is on the extruded curve, V = 0.0
+  Standard_EXPORT   void D0 (const Standard_Real U, const Standard_Real V, gp_Pnt& P)  const;
+  
+
+  //! Computes the current point and the first derivatives in the
+  //! directions U and V.
+  //! Raises UndefinedDerivative if the continuity of the surface is not C1.
+  Standard_EXPORT   void D1 (const Standard_Real U, const Standard_Real V, gp_Pnt& P, gp_Vec& D1U, gp_Vec& D1V)  const;
+  
+  //! --- Purpose ;
+  //! Computes the current point, the first and the second derivatives
+  //! in the directions U and V.
+  //! Raises UndefinedDerivative if the continuity of the surface is not C2.
+  Standard_EXPORT   void D2 (const Standard_Real U, const Standard_Real V, gp_Pnt& P, gp_Vec& D1U, gp_Vec& D1V, gp_Vec& D2U, gp_Vec& D2V, gp_Vec& D2UV)  const;
+  
+
+  //! Computes the current point, the first,the second and the third
+  //! derivatives in the directions U and V.
+  //! Raises UndefinedDerivative if the continuity of the surface is not C3.
+  Standard_EXPORT   void D3 (const Standard_Real U, const Standard_Real V, gp_Pnt& P, gp_Vec& D1U, gp_Vec& D1V, gp_Vec& D2U, gp_Vec& D2V, gp_Vec& D2UV, gp_Vec& D3U, gp_Vec& D3V, gp_Vec& D3UUV, gp_Vec& D3UVV)  const;
+  
+
+  //! Computes the derivative of order Nu in the direction u
+  //! and Nv in the direction v.
+  //! Raises UndefinedDerivative if the continuity of the surface is not CNu in the u
+  //! direction and CNv in the v direction.
+  //! Raises RangeError if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+  Standard_EXPORT   gp_Vec DN (const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv)  const;
+  
+  //! The following  functions  evaluates the  local
+  //! derivatives on surface. Useful to manage discontinuities
+  //! on the surface.
+  //! if    Side  =  1  ->  P  =  S( U+,V )
+  //! if    Side  = -1  ->  P  =  S( U-,V )
+  //! else  P  is betveen discontinuities
+  //! can be evaluated using methods  of
+  //! global evaluations    P  =  S( U ,V )
+  Standard_EXPORT   void LocalD0 (const Standard_Real U, const Standard_Real V, const Standard_Integer USide, gp_Pnt& P)  const;
+  
+  Standard_EXPORT   void LocalD1 (const Standard_Real U, const Standard_Real V, const Standard_Integer USide, gp_Pnt& P, gp_Vec& D1U, gp_Vec& D1V)  const;
+  
+  Standard_EXPORT   void LocalD2 (const Standard_Real U, const Standard_Real V, const Standard_Integer USide, gp_Pnt& P, gp_Vec& D1U, gp_Vec& D1V, gp_Vec& D2U, gp_Vec& D2V, gp_Vec& D2UV)  const;
+  
+  Standard_EXPORT   void LocalD3 (const Standard_Real U, const Standard_Real V, const Standard_Integer USide, gp_Pnt& P, gp_Vec& D1U, gp_Vec& D1V, gp_Vec& D2U, gp_Vec& D2V, gp_Vec& D2UV, gp_Vec& D3U, gp_Vec& D3V, gp_Vec& D3UUV, gp_Vec& D3UVV)  const;
+  
+  Standard_EXPORT   gp_Vec LocalDN (const Standard_Real U, const Standard_Real V, const Standard_Integer USide, const Standard_Integer Nu, const Standard_Integer Nv)  const;
+  
+  //! Applies the transformation T to this surface of linear extrusion.
+  Standard_EXPORT   void Transform (const gp_Trsf& T) ;
+  
+  //! Computes the  parameters on the  transformed  surface for
+  //! the transform of the point of parameters U,V on <me>.
+  //!
+  //! me->Transformed(T)->Value(U',V')
+  //!
+  //! is the same point as
+  //!
+  //! me->Value(U,V).Transformed(T)
+  //!
+  //! Where U',V' are the new values of U,V after calling
+  //!
+  //! me->TranformParameters(U,V,T)
+  //!
+  //! This methods multiplies :
+  //! U by BasisCurve()->ParametricTransformation(T)
+  //! V by T.ScaleFactor()
+  Standard_EXPORT virtual   void TransformParameters (Standard_Real& U, Standard_Real& V, const gp_Trsf& T)  const;
+  
+  //! Returns a 2d transformation  used to find the  new
+  //! parameters of a point on the transformed surface.
+  //!
+  //! me->Transformed(T)->Value(U',V')
+  //!
+  //! is the same point as
+  //!
+  //! me->Value(U,V).Transformed(T)
+  //!
+  //! Where U',V' are  obtained by transforming U,V with
+  //! th 2d transformation returned by
+  //!
+  //! me->ParametricTransformation(T)
+  //!
+  //! This  methods  returns  a scale
+  //! U by BasisCurve()->ParametricTransformation(T)
+  //! V by T.ScaleFactor()
+  Standard_EXPORT virtual   gp_GTrsf2d ParametricTransformation (const gp_Trsf& T)  const;
+  
+  //! Creates a new object which is a copy of this surface of linear extrusion.
+  Standard_EXPORT   Handle(Geom_Geometry) Copy()  const;
 
 
 
@@ -267,7 +276,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom_SurfaceOfLinearExtrusion_HeaderFile

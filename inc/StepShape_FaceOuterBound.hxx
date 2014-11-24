@@ -6,28 +6,22 @@
 #ifndef _StepShape_FaceOuterBound_HeaderFile
 #define _StepShape_FaceOuterBound_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_FaceOuterBound_HeaderFile
 #include <Handle_StepShape_FaceOuterBound.hxx>
-#endif
 
-#ifndef _StepShape_FaceBound_HeaderFile
 #include <StepShape_FaceBound.hxx>
-#endif
 
 
 
-class StepShape_FaceOuterBound : public StepShape_FaceBound {
+class StepShape_FaceOuterBound : public StepShape_FaceBound
+{
 
 public:
 
-  //! Returns a FaceOuterBound <br>
-  Standard_EXPORT   StepShape_FaceOuterBound();
+  
+  //! Returns a FaceOuterBound
+  Standard_EXPORT StepShape_FaceOuterBound();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_FaceOuterBound_HeaderFile

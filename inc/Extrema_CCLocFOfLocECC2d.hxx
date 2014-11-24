@@ -6,49 +6,21 @@
 #ifndef _Extrema_CCLocFOfLocECC2d_HeaderFile
 #define _Extrema_CCLocFOfLocECC2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _gp_Vec2d_HeaderFile
 #include <gp_Vec2d.hxx>
-#endif
-#ifndef _TColStd_SequenceOfReal_HeaderFile
 #include <TColStd_SequenceOfReal.hxx>
-#endif
-#ifndef _Extrema_SeqPOnCOfCCLocFOfLocECC2d_HeaderFile
 #include <Extrema_SeqPOnCOfCCLocFOfLocECC2d.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _math_FunctionSetWithDerivatives_HeaderFile
 #include <math_FunctionSetWithDerivatives.hxx>
-#endif
-#ifndef _Handle_Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC2d_HeaderFile
 #include <Handle_Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC2d.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
 #include <math_Vector.hxx>
-#endif
 class Standard_OutOfRange;
 class Adaptor2d_Curve2d;
 class Extrema_Curve2dTool;
@@ -61,46 +33,46 @@ class math_Matrix;
 
 
 
-class Extrema_CCLocFOfLocECC2d  : public math_FunctionSetWithDerivatives {
+class Extrema_CCLocFOfLocECC2d  : public math_FunctionSetWithDerivatives
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Extrema_CCLocFOfLocECC2d(const Standard_Real thetol = 1.0e-10);
+  Standard_EXPORT Extrema_CCLocFOfLocECC2d(const Standard_Real thetol = 1.0e-10);
   
-  Standard_EXPORT   Extrema_CCLocFOfLocECC2d(const Adaptor2d_Curve2d& C1,const Adaptor2d_Curve2d& C2,const Standard_Real thetol = 1.0e-10);
+  Standard_EXPORT Extrema_CCLocFOfLocECC2d(const Adaptor2d_Curve2d& C1, const Adaptor2d_Curve2d& C2, const Standard_Real thetol = 1.0e-10);
   
-  Standard_EXPORT     void SetCurve(const Standard_Integer theRank,const Adaptor2d_Curve2d& C1) ;
+  Standard_EXPORT   void SetCurve (const Standard_Integer theRank, const Adaptor2d_Curve2d& C1) ;
   
-        void SetTolerance(const Standard_Real theTol) ;
+      void SetTolerance (const Standard_Real theTol) ;
   
-      virtual  Standard_Integer NbVariables() const;
+    virtual   Standard_Integer NbVariables()  const;
   
-      virtual  Standard_Integer NbEquations() const;
+    virtual   Standard_Integer NbEquations()  const;
   
-  Standard_EXPORT   virtual  Standard_Boolean Value(const math_Vector& UV,math_Vector& F) ;
+  Standard_EXPORT virtual   Standard_Boolean Value (const math_Vector& UV, math_Vector& F) ;
   
-  Standard_EXPORT     Standard_Boolean Derivatives(const math_Vector& UV,math_Matrix& DF) ;
+  Standard_EXPORT   Standard_Boolean Derivatives (const math_Vector& UV, math_Matrix& DF) ;
   
-  Standard_EXPORT     Standard_Boolean Values(const math_Vector& UV,math_Vector& F,math_Matrix& DF) ;
+  Standard_EXPORT   Standard_Boolean Values (const math_Vector& UV, math_Vector& F, math_Matrix& DF) ;
   
-  Standard_EXPORT   virtual  Standard_Integer GetStateNumber() ;
+  Standard_EXPORT virtual   Standard_Integer GetStateNumber() ;
   
-        Standard_Integer NbExt() const;
+      Standard_Integer NbExt()  const;
   
-        Standard_Real SquareDistance(const Standard_Integer N) const;
+      Standard_Real SquareDistance (const Standard_Integer N)  const;
   
-  Standard_EXPORT     void Points(const Standard_Integer N,Extrema_POnCurv2d& P1,Extrema_POnCurv2d& P2) const;
+  Standard_EXPORT   void Points (const Standard_Integer N, Extrema_POnCurv2d& P1, Extrema_POnCurv2d& P2)  const;
   
-        Standard_Address CurvePtr(const Standard_Integer theRank) const;
+      Standard_Address CurvePtr (const Standard_Integer theRank)  const;
   
-        Standard_Real Tolerance() const;
+      Standard_Real Tolerance()  const;
   
-  Standard_EXPORT     void SubIntervalInitialize(const math_Vector& theUfirst,const math_Vector& theUlast) ;
+  Standard_EXPORT   void SubIntervalInitialize (const math_Vector& theUfirst, const math_Vector& theUlast) ;
   
-  Standard_EXPORT     Standard_Real SearchOfTolerance(const Standard_Address C) ;
-
+  Standard_EXPORT   Standard_Real SearchOfTolerance (const Standard_Address C) ;
 
 
 
@@ -115,25 +87,25 @@ private:
 
 
 
-Standard_Address myC1;
-Standard_Address myC2;
-Standard_Real myTol;
-Standard_Real myU;
-Standard_Real myV;
-gp_Pnt2d myP1;
-gp_Pnt2d myP2;
-gp_Vec2d myDu;
-gp_Vec2d myDv;
-TColStd_SequenceOfReal mySqDist;
-Extrema_SeqPOnCOfCCLocFOfLocECC2d myPoints;
-Standard_Real myTolC1;
-Standard_Real myTolC2;
-Standard_Integer myMaxDerivOrderC1;
-Standard_Integer myMaxDerivOrderC2;
-Standard_Real myUinfium;
-Standard_Real myUsupremum;
-Standard_Real myVinfium;
-Standard_Real myVsupremum;
+  Standard_Address myC1;
+  Standard_Address myC2;
+  Standard_Real myTol;
+  Standard_Real myU;
+  Standard_Real myV;
+  gp_Pnt2d myP1;
+  gp_Pnt2d myP2;
+  gp_Vec2d myDu;
+  gp_Vec2d myDv;
+  TColStd_SequenceOfReal mySqDist;
+  Extrema_SeqPOnCOfCCLocFOfLocECC2d myPoints;
+  Standard_Real myTolC1;
+  Standard_Real myTolC2;
+  Standard_Integer myMaxDerivOrderC1;
+  Standard_Integer myMaxDerivOrderC2;
+  Standard_Real myUinfium;
+  Standard_Real myUsupremum;
+  Standard_Real myVinfium;
+  Standard_Real myVsupremum;
 
 
 };
@@ -195,7 +167,6 @@ Standard_Real myVsupremum;
 #undef Extrema_FuncExtCC_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Extrema_CCLocFOfLocECC2d_HeaderFile

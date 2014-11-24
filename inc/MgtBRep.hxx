@@ -6,22 +6,12 @@
 #ifndef _MgtBRep_HeaderFile
 #define _MgtBRep_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_PTopoDS_HShape_HeaderFile
 #include <Handle_PTopoDS_HShape.hxx>
-#endif
-#ifndef _MgtBRep_TriangleMode_HeaderFile
 #include <MgtBRep_TriangleMode.hxx>
-#endif
 class PTopoDS_HShape;
 class TopoDS_Shape;
 class PTColStd_TransientPersistentMap;
@@ -31,70 +21,74 @@ class MgtBRep_TranslateTool;
 class MgtBRep_TranslateTool1;
 
 
-//! The MgtBRep package  provides methods to translate <br>
-//!          data  between  the  BRep    package and the  PBRep <br>
-//!          package. <br>
-//! <br>
-//!          That  is   to    translate  persistent  BRep  data <br>
-//!          structures  in  Transient BRep data structures and <br>
-//!          vice-versa. <br>
-//! <br>
-//!          The MgtBRep package uses : <br>
-//! <br>
-//!          * The  MgtBas  package to bind  a  transient and a <br>
-//!          persistent object. <br>
-//! <br>
-//!          * The  MgtTopoDS package to provide basic methods <br>
-//!          to translate TopoDS and PTopoDS data. <br>
-//! <br>
-//!          * The MgtTopLoc package to translate Locations. <br>
-//! <br>
-//!          * The  MgtGeom,  MgtGeom2d  packages to translate <br>
-//!          geometric data. <br>
-//! <br>
-//!          * The MgtPoly package to translate triangulation data. <br>
-//! <br>
-//!          The Translate methods has TriangleMode argument. <br>
-//!          If it is MgtBRep_WithTriangle, the methods returns or <br>
-//!          create a Shape with triangulation. <br>
-class MgtBRep  {
+//! The MgtBRep package  provides methods to translate
+//! data  between  the  BRep    package and the  PBRep
+//! package.
+//!
+//! That  is   to    translate  persistent  BRep  data
+//! structures  in  Transient BRep data structures and
+//! vice-versa.
+//!
+//! The MgtBRep package uses :
+//!
+//! * The  MgtBas  package to bind  a  transient and a
+//! persistent object.
+//!
+//! * The  MgtTopoDS package to provide basic methods
+//! to translate TopoDS and PTopoDS data.
+//!
+//! * The MgtTopLoc package to translate Locations.
+//!
+//! * The  MgtGeom,  MgtGeom2d  packages to translate
+//! geometric data.
+//!
+//! * The MgtPoly package to translate triangulation data.
+//!
+//! The Translate methods has TriangleMode argument.
+//! If it is MgtBRep_WithTriangle, the methods returns or
+//! create a Shape with triangulation.
+class MgtBRep 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Translate a transient Shape to a persistent Shape. <br>
-//!         he translation is performed according <br>
-//!  to the map aMap and the triangulation <br>
-//!  specified by aTriMode <br>
-  Standard_EXPORT   static  Handle_PTopoDS_HShape Translate(const TopoDS_Shape& aShape,PTColStd_TransientPersistentMap& aMap,const MgtBRep_TriangleMode aTriMode) ;
-  //! Translate a transient Shape to a persistent Shape. <br>
-//!	The translation is performed according to the map aMap and the <br>
-//!   triangulation specified by aTriMode. <br>
-//! The map, aMap, is a tool that lets you share <br>
-//! topological components. When the map is <br>
-//! initialized, it is empty. It is built up and used by the <br>
-//! Translate function every time a topological <br>
-//! component is converted from persistent to <br>
-//! transient and vice versa. This is true for all <br>
-//! topological components that can be shared: <br>
-//! vertex, edge, wire, face, shell, solid, and so on. <br>
-//! This map allows you to share individual <br>
-//! components as they are translated, and also lets <br>
-//! you share previously converted components <br>
-//! when you translate other objects which share <br>
-//! (i.e. refer to) these components. <br>
-//! The triangulation mode, aTriMode, specifies <br>
-//! whether a representation of the object as a set <br>
-//! of triangles - if such a representation exists - is <br>
-//! to be translated or not in addition to the <br>
-//! canonical definition of the object. <br>
-  Standard_EXPORT   static  void Translate1(const TopoDS_Shape& aShape,PTColStd_TransientPersistentMap& aMap,PTopoDS_Shape1& aResult,const MgtBRep_TriangleMode aTriMode) ;
-  //! Translate a persistent Shape to a transient Shape. <br>
-//!          Used for upwards compatibility. <br>
-  Standard_EXPORT   static  void Translate(const Handle(PTopoDS_HShape)& aShape,PTColStd_PersistentTransientMap& aMap,TopoDS_Shape& aResult,const MgtBRep_TriangleMode aTriMode) ;
-  //! Translate a persistent Shape to a transient Shape. <br>
-  Standard_EXPORT   static  void Translate1(const PTopoDS_Shape1& aShape,PTColStd_PersistentTransientMap& aMap,TopoDS_Shape& aResult,const MgtBRep_TriangleMode aTriMode) ;
-
+  
+  //! Translate a transient Shape to a persistent Shape.
+  //! he translation is performed according
+  //! to the map aMap and the triangulation
+  //! specified by aTriMode
+  Standard_EXPORT static   Handle(PTopoDS_HShape) Translate (const TopoDS_Shape& aShape, PTColStd_TransientPersistentMap& aMap, const MgtBRep_TriangleMode aTriMode) ;
+  
+  //! Translate a transient Shape to a persistent Shape.
+  //! The translation is performed according to the map aMap and the
+  //! triangulation specified by aTriMode.
+  //! The map, aMap, is a tool that lets you share
+  //! topological components. When the map is
+  //! initialized, it is empty. It is built up and used by the
+  //! Translate function every time a topological
+  //! component is converted from persistent to
+  //! transient and vice versa. This is true for all
+  //! topological components that can be shared:
+  //! vertex, edge, wire, face, shell, solid, and so on.
+  //! This map allows you to share individual
+  //! components as they are translated, and also lets
+  //! you share previously converted components
+  //! when you translate other objects which share
+  //! (i.e. refer to) these components.
+  //! The triangulation mode, aTriMode, specifies
+  //! whether a representation of the object as a set
+  //! of triangles - if such a representation exists - is
+  //! to be translated or not in addition to the
+  //! canonical definition of the object.
+  Standard_EXPORT static   void Translate1 (const TopoDS_Shape& aShape, PTColStd_TransientPersistentMap& aMap, PTopoDS_Shape1& aResult, const MgtBRep_TriangleMode aTriMode) ;
+  
+  //! Translate a persistent Shape to a transient Shape.
+  //! Used for upwards compatibility.
+  Standard_EXPORT static   void Translate (const Handle(PTopoDS_HShape)& aShape, PTColStd_PersistentTransientMap& aMap, TopoDS_Shape& aResult, const MgtBRep_TriangleMode aTriMode) ;
+  
+  //! Translate a persistent Shape to a transient Shape.
+  Standard_EXPORT static   void Translate1 (const PTopoDS_Shape1& aShape, PTColStd_PersistentTransientMap& aMap, TopoDS_Shape& aResult, const MgtBRep_TriangleMode aTriMode) ;
 
 
 
@@ -119,7 +113,6 @@ friend class MgtBRep_TranslateTool1;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MgtBRep_HeaderFile

@@ -1,21 +1,7 @@
-#ifndef _Interface_InterfaceError_HeaderFile
 #include <Interface_InterfaceError.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
-#ifndef _Interface_Graph_HeaderFile
 #include <Interface_Graph.hxx>
-#endif
-#ifndef _Interface_Check_HeaderFile
 #include <Interface_Check.hxx>
-#endif
-#ifndef _Interface_InterfaceModel_HeaderFile
 #include <Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Interface_Protocol_HeaderFile
 #include <Interface_Protocol.hxx>
-#endif

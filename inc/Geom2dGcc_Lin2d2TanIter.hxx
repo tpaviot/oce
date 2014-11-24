@@ -6,31 +6,15 @@
 #ifndef _Geom2dGcc_Lin2d2TanIter_HeaderFile
 #define _Geom2dGcc_Lin2d2TanIter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _gp_Lin2d_HeaderFile
 #include <gp_Lin2d.hxx>
-#endif
-#ifndef _GccEnt_Position_HeaderFile
 #include <GccEnt_Position.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class GccEnt_BadQualifier;
 class StdFail_NotDone;
 class Geom2dGcc_QCurve;
@@ -39,58 +23,64 @@ class GccEnt_QualifiedCirc;
 class gp_Lin2d;
 
 
-//! This class implements the algorithms used to <br>
-//!          create 2d lines tangent to 2 other elements which <br>
-//!          can be circles, curves or points. <br>
-//!          More than one argument must be a curve. <br>
-//! <br>
-//! Note: Some constructors may check the type of the qualified argument <br>
-//!         and raise BadQualifier Error in case of incorrect couple (qualifier, <br>
-//!         curv). <br>
-//!         For example: "EnclosedCirc". <br>
-class Geom2dGcc_Lin2d2TanIter  {
+//! This class implements the algorithms used to
+//! create 2d lines tangent to 2 other elements which
+//! can be circles, curves or points.
+//! More than one argument must be a curve.
+//!
+//! Note: Some constructors may check the type of the qualified argument
+//! and raise BadQualifier Error in case of incorrect couple (qualifier,
+//! curv).
+//! For example: "EnclosedCirc".
+class Geom2dGcc_Lin2d2TanIter 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! This class implements the algorithms used to create 2d <br>
-//!          lines passing thrue a point and tangent to a curve. <br>
-//!          Tolang is used to determine the tolerance for the <br>
-//!          tangency points. <br>
-//!          Param2 is used for the initial guess on the curve. <br>
-  Standard_EXPORT   Geom2dGcc_Lin2d2TanIter(const Geom2dGcc_QCurve& Qualified1,const gp_Pnt2d& ThePoint,const Standard_Real Param1,const Standard_Real Tolang);
-  //! This class implements the algorithms used to create 2d <br>
-//!          line tangent to a circle and to a cuve. <br>
-//!          Tolang is used to determine the tolerance for the <br>
-//!          tangency points. <br>
-//!          Param2 is used for the initial guess on the curve. <br>
-//!          Exception BadQualifier is raised in the case of <br>
-//!          EnclosedCirc <br>
-  Standard_EXPORT   Geom2dGcc_Lin2d2TanIter(const GccEnt_QualifiedCirc& Qualified1,const Geom2dGcc_QCurve& Qualified2,const Standard_Real Param2,const Standard_Real Tolang);
-  //! This class implements the algorithms used to create 2d <br>
-//!          line tangent to two curves. <br>
-//!          Tolang is used to determine the tolerance for the <br>
-//!          tangency points. <br>
-//!          Param1 is used for the initial guess on the first curve. <br>
-//!          Param2 is used for the initial guess on the second curve. <br>
-  Standard_EXPORT   Geom2dGcc_Lin2d2TanIter(const Geom2dGcc_QCurve& Qualified1,const Geom2dGcc_QCurve& Qualified2,const Standard_Real Param1,const Standard_Real Param2,const Standard_Real Tolang);
-  //! This methode returns true when there is a solution <br>
-//!          and false in the other cases. <br>
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-  //! Returns the solution. <br>
-  Standard_EXPORT     gp_Lin2d ThisSolution() const;
   
-  Standard_EXPORT     void WhichQualifier(GccEnt_Position& Qualif1,GccEnt_Position& Qualif2) const;
-  //! Returns informations about the tangency point between the <br>
-//!          result and the first argument. <br>
-//!          ParSol is the intrinsic parameter of the point PntSol on <br>
-//!          the solution curv. <br>
-//!          ParArg is the intrinsic parameter of the point PntSol on <br>
-//!          the argument curv. <br>
-  Standard_EXPORT     void Tangency1(Standard_Real& ParSol,Standard_Real& ParArg,gp_Pnt2d& PntSol) const;
+  //! This class implements the algorithms used to create 2d
+  //! lines passing thrue a point and tangent to a curve.
+  //! Tolang is used to determine the tolerance for the
+  //! tangency points.
+  //! Param2 is used for the initial guess on the curve.
+  Standard_EXPORT Geom2dGcc_Lin2d2TanIter(const Geom2dGcc_QCurve& Qualified1, const gp_Pnt2d& ThePoint, const Standard_Real Param1, const Standard_Real Tolang);
   
-  Standard_EXPORT     void Tangency2(Standard_Real& ParSol,Standard_Real& ParArg,gp_Pnt2d& PntSol) const;
-
+  //! This class implements the algorithms used to create 2d
+  //! line tangent to a circle and to a cuve.
+  //! Tolang is used to determine the tolerance for the
+  //! tangency points.
+  //! Param2 is used for the initial guess on the curve.
+  //! Exception BadQualifier is raised in the case of
+  //! EnclosedCirc
+  Standard_EXPORT Geom2dGcc_Lin2d2TanIter(const GccEnt_QualifiedCirc& Qualified1, const Geom2dGcc_QCurve& Qualified2, const Standard_Real Param2, const Standard_Real Tolang);
+  
+  //! This class implements the algorithms used to create 2d
+  //! line tangent to two curves.
+  //! Tolang is used to determine the tolerance for the
+  //! tangency points.
+  //! Param1 is used for the initial guess on the first curve.
+  //! Param2 is used for the initial guess on the second curve.
+  Standard_EXPORT Geom2dGcc_Lin2d2TanIter(const Geom2dGcc_QCurve& Qualified1, const Geom2dGcc_QCurve& Qualified2, const Standard_Real Param1, const Standard_Real Param2, const Standard_Real Tolang);
+  
+  //! This methode returns true when there is a solution
+  //! and false in the other cases.
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
+  
+  //! Returns the solution.
+  Standard_EXPORT   gp_Lin2d ThisSolution()  const;
+  
+  Standard_EXPORT   void WhichQualifier (GccEnt_Position& Qualif1, GccEnt_Position& Qualif2)  const;
+  
+  //! Returns informations about the tangency point between the
+  //! result and the first argument.
+  //! ParSol is the intrinsic parameter of the point PntSol on
+  //! the solution curv.
+  //! ParArg is the intrinsic parameter of the point PntSol on
+  //! the argument curv.
+  Standard_EXPORT   void Tangency1 (Standard_Real& ParSol, Standard_Real& ParArg, gp_Pnt2d& PntSol)  const;
+  
+  Standard_EXPORT   void Tangency2 (Standard_Real& ParSol, Standard_Real& ParArg, gp_Pnt2d& PntSol)  const;
 
 
 
@@ -105,16 +95,16 @@ private:
 
 
 
-Standard_Boolean WellDone;
-gp_Lin2d linsol;
-GccEnt_Position qualifier1;
-GccEnt_Position qualifier2;
-gp_Pnt2d pnttg1sol;
-gp_Pnt2d pnttg2sol;
-Standard_Real par1sol;
-Standard_Real par2sol;
-Standard_Real pararg1;
-Standard_Real pararg2;
+  Standard_Boolean WellDone;
+  gp_Lin2d linsol;
+  GccEnt_Position qualifier1;
+  GccEnt_Position qualifier2;
+  gp_Pnt2d pnttg1sol;
+  gp_Pnt2d pnttg2sol;
+  Standard_Real par1sol;
+  Standard_Real par2sol;
+  Standard_Real pararg1;
+  Standard_Real pararg2;
 
 
 };
@@ -123,7 +113,6 @@ Standard_Real pararg2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dGcc_Lin2d2TanIter_HeaderFile

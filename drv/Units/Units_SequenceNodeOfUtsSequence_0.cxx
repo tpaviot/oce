@@ -5,16 +5,10 @@
 
 #include <Units_SequenceNodeOfUtsSequence.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Units_Unit_HeaderFile
 #include <Units_Unit.hxx>
-#endif
-#ifndef _Units_UtsSequence_HeaderFile
 #include <Units_UtsSequence.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(Units_SequenceNodeOfUtsSequence,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Units_SequenceNodeOfUtsSequence)
 
 
-#define SeqItem Handle_Units_Unit
+#define SeqItem Handle(Units_Unit)
 #define SeqItem_hxx <Units_Unit.hxx>
 #define TCollection_SequenceNode Units_SequenceNodeOfUtsSequence
 #define TCollection_SequenceNode_hxx <Units_SequenceNodeOfUtsSequence.hxx>

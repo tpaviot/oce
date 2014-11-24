@@ -6,38 +6,28 @@
 #ifndef _QANewBRepNaming_LoaderParent_HeaderFile
 #define _QANewBRepNaming_LoaderParent_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopoDS_Shape;
 class TNaming_Builder;
 class TopTools_DataMapOfShapeShape;
 
 
 
-class QANewBRepNaming_LoaderParent  {
+class QANewBRepNaming_LoaderParent 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  void LoadGeneratedDangleShapes(const TopoDS_Shape& ShapeIn,const TopAbs_ShapeEnum GeneratedFrom,TNaming_Builder& GenBuider) ;
+  Standard_EXPORT static   void LoadGeneratedDangleShapes (const TopoDS_Shape& ShapeIn, const TopAbs_ShapeEnum GeneratedFrom, TNaming_Builder& GenBuider) ;
   
-  Standard_EXPORT   static  Standard_Boolean GetDangleShapes(const TopoDS_Shape& ShapeIn,const TopAbs_ShapeEnum GeneratedFrom,TopTools_DataMapOfShapeShape& Dangles) ;
-
+  Standard_EXPORT static   Standard_Boolean GetDangleShapes (const TopoDS_Shape& ShapeIn, const TopAbs_ShapeEnum GeneratedFrom, TopTools_DataMapOfShapeShape& Dangles) ;
 
 
 
@@ -60,7 +50,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QANewBRepNaming_LoaderParent_HeaderFile

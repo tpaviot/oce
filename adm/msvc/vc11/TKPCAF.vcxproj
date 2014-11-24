@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{FE4E9E3D-0629-1963-1656-8F9E5AE533D2}</ProjectGuid>
+    <ProjectGuid>{56C6365E-07D5-0830-0337-A5CCA31E15FB}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -173,7 +173,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PDataXtd_DLL;__PNaming_DLL;__PPrsStd_DLL;__MDataXtd_DLL;__MPrsStd_DLL;__MNaming_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PDataXtd_DLL;__PNaming_DLL;__PPrsStd_DLL;__MDataXtd_DLL;__MPrsStd_DLL;__MNaming_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -188,7 +188,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PDataXtd_DLL;__PNaming_DLL;__PPrsStd_DLL;__MDataXtd_DLL;__MPrsStd_DLL;__MNaming_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PDataXtd_DLL;__PNaming_DLL;__PPrsStd_DLL;__MDataXtd_DLL;__MPrsStd_DLL;__MNaming_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>PTKernel.lib;TKBRep.lib;TKMath.lib;TKernel.lib;TKCDF.lib;TKG2d.lib;TKV3d.lib;TKService.lib;TKG3d.lib;TKPShape.lib;TKCAF.lib;TKLCAF.lib;TKPLCAF.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -216,7 +216,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PDataXtd_DLL;__PNaming_DLL;__PPrsStd_DLL;__MDataXtd_DLL;__MPrsStd_DLL;__MNaming_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PDataXtd_DLL;__PNaming_DLL;__PPrsStd_DLL;__MDataXtd_DLL;__MPrsStd_DLL;__MNaming_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win64\vc11\objd\TKPCAF/</AssemblerListingLocation>
@@ -232,7 +232,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PDataXtd_DLL;__PNaming_DLL;__PPrsStd_DLL;__MDataXtd_DLL;__MPrsStd_DLL;__MNaming_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PDataXtd_DLL;__PNaming_DLL;__PPrsStd_DLL;__MDataXtd_DLL;__MPrsStd_DLL;__MNaming_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>PTKernel.lib;TKBRep.lib;TKMath.lib;TKernel.lib;TKCDF.lib;TKG2d.lib;TKV3d.lib;TKService.lib;TKG3d.lib;TKPShape.lib;TKCAF.lib;TKLCAF.lib;TKPLCAF.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>

@@ -5,24 +5,14 @@
 
 #include <Approx_Array1OfAdHSurface.hxx>
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _Adaptor3d_HSurface_HeaderFile
 #include <Adaptor3d_HSurface.hxx>
-#endif
  
 
-#define Array1Item Handle_Adaptor3d_HSurface
+#define Array1Item Handle(Adaptor3d_HSurface)
 #define Array1Item_hxx <Adaptor3d_HSurface.hxx>
 #define TCollection_Array1 Approx_Array1OfAdHSurface
 #define TCollection_Array1_hxx <Approx_Array1OfAdHSurface.hxx>

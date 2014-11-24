@@ -6,40 +6,32 @@
 #ifndef _GccInt_BLine_HeaderFile
 #define _GccInt_BLine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_GccInt_BLine_HeaderFile
 #include <Handle_GccInt_BLine.hxx>
-#endif
 
-#ifndef _gp_Lin2d_HeaderFile
 #include <gp_Lin2d.hxx>
-#endif
-#ifndef _GccInt_Bisec_HeaderFile
 #include <GccInt_Bisec.hxx>
-#endif
-#ifndef _GccInt_IType_HeaderFile
 #include <GccInt_IType.hxx>
-#endif
 class gp_Lin2d;
 
 
-//!  Describes a line as a bisecting curve between two 2D <br>
-//! geometric objects (such as lines, circles or points). <br>
-class GccInt_BLine : public GccInt_Bisec {
+//! Describes a line as a bisecting curve between two 2D
+//! geometric objects (such as lines, circles or points).
+class GccInt_BLine : public GccInt_Bisec
+{
 
 public:
 
-  //! Constructs a bisecting line whose geometry is the 2D line Line. <br>
-  Standard_EXPORT   GccInt_BLine(const gp_Lin2d& Line);
-  //! Returns a 2D line which is the geometry of this bisecting line. <br>
-  Standard_EXPORT   virtual  gp_Lin2d Line() const;
-  //! Returns GccInt_Lin, which is the type of any GccInt_BLine bisecting line. <br>
-  Standard_EXPORT     GccInt_IType ArcType() const;
+  
+  //! Constructs a bisecting line whose geometry is the 2D line Line.
+  Standard_EXPORT GccInt_BLine(const gp_Lin2d& Line);
+  
+  //! Returns a 2D line which is the geometry of this bisecting line.
+  Standard_EXPORT virtual   gp_Lin2d Line()  const;
+  
+  //! Returns GccInt_Lin, which is the type of any GccInt_BLine bisecting line.
+  Standard_EXPORT   GccInt_IType ArcType()  const;
 
 
 
@@ -54,7 +46,7 @@ protected:
 private: 
 
 
-gp_Lin2d lin;
+  gp_Lin2d lin;
 
 
 };
@@ -63,7 +55,6 @@ gp_Lin2d lin;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GccInt_BLine_HeaderFile

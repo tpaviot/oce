@@ -1,12 +1,4 @@
-#ifndef _TopOpeBRepDS_ListOfInterference_HeaderFile
 #include <TopOpeBRepDS_ListOfInterference.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Interference_HeaderFile
 #include <TopOpeBRepDS_Interference.hxx>
-#endif
-#ifndef _TopOpeBRepDS_ListIteratorOfListOfInterference_HeaderFile
 #include <TopOpeBRepDS_ListIteratorOfListOfInterference.hxx>
-#endif
-#ifndef _TopOpeBRepDS_InterferenceIterator_HeaderFile
 #include <TopOpeBRepDS_InterferenceIterator.hxx>
-#endif

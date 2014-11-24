@@ -6,79 +6,63 @@
 #ifndef _MeshVS_MeshOwner_HeaderFile
 #define _MeshVS_MeshOwner_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MeshVS_MeshOwner_HeaderFile
 #include <Handle_MeshVS_MeshOwner.hxx>
-#endif
 
-#ifndef _Handle_MeshVS_DataSource_HeaderFile
 #include <Handle_MeshVS_DataSource.hxx>
-#endif
-#ifndef _Handle_TColStd_HPackedMapOfInteger_HeaderFile
 #include <Handle_TColStd_HPackedMapOfInteger.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _SelectMgr_EntityOwner_HeaderFile
 #include <SelectMgr_EntityOwner.hxx>
-#endif
-#ifndef _SelectMgr_SOPtr_HeaderFile
 #include <SelectMgr_SOPtr.hxx>
-#endif
-#ifndef _PrsMgr_PresentationManager3d_HeaderFile
 #include <PrsMgr_PresentationManager3d.hxx>
-#endif
-#ifndef _Quantity_NameOfColor_HeaderFile
 #include <Quantity_NameOfColor.hxx>
-#endif
-#ifndef _Handle_PrsMgr_PresentationManager_HeaderFile
 #include <Handle_PrsMgr_PresentationManager.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class MeshVS_DataSource;
 class TColStd_HPackedMapOfInteger;
 class PrsMgr_PresentationManager;
 
 
-//! The custom mesh owner used for advanced mesh selection. This class provides methods to store information: <br>
-//! 1) IDs of hilighted mesh nodes and elements <br>
-//! 2) IDs of mesh nodes and elements selected on the mesh <br>
-class MeshVS_MeshOwner : public SelectMgr_EntityOwner {
+//! The custom mesh owner used for advanced mesh selection. This class provides methods to store information:
+//! 1) IDs of hilighted mesh nodes and elements
+//! 2) IDs of mesh nodes and elements selected on the mesh
+class MeshVS_MeshOwner : public SelectMgr_EntityOwner
+{
 
 public:
 
   
-  Standard_EXPORT   MeshVS_MeshOwner(const SelectMgr_SOPtr& theSelObj,const Handle(MeshVS_DataSource)& theDS,const Standard_Integer thePriority = 0);
+  Standard_EXPORT MeshVS_MeshOwner(const SelectMgr_SOPtr& theSelObj, const Handle(MeshVS_DataSource)& theDS, const Standard_Integer thePriority = 0);
   
-  Standard_EXPORT    const Handle_MeshVS_DataSource& GetDataSource() const;
-  //! Returns ids of selected mesh nodes <br>
-  Standard_EXPORT    const Handle_TColStd_HPackedMapOfInteger& GetSelectedNodes() const;
-  //! Returns ids of selected mesh elements <br>
-  Standard_EXPORT    const Handle_TColStd_HPackedMapOfInteger& GetSelectedElements() const;
-  //! Saves ids of selected mesh entities <br>
-  Standard_EXPORT   virtual  void AddSelectedEntities(const Handle(TColStd_HPackedMapOfInteger)& Nodes,const Handle(TColStd_HPackedMapOfInteger)& Elems) ;
-  //! Clears ids of selected mesh entities <br>
-  Standard_EXPORT   virtual  void ClearSelectedEntities() ;
-  //! Returns ids of hilighted mesh nodes <br>
-  Standard_EXPORT    const Handle_TColStd_HPackedMapOfInteger& GetDetectedNodes() const;
-  //! Returns ids of hilighted mesh elements <br>
-  Standard_EXPORT    const Handle_TColStd_HPackedMapOfInteger& GetDetectedElements() const;
-  //! Saves ids of hilighted mesh entities <br>
-  Standard_EXPORT     void SetDetectedEntities(const Handle(TColStd_HPackedMapOfInteger)& Nodes,const Handle(TColStd_HPackedMapOfInteger)& Elems) ;
+  Standard_EXPORT  const  Handle(MeshVS_DataSource)& GetDataSource()  const;
   
-  Standard_EXPORT   virtual  void HilightWithColor(const Handle(PrsMgr_PresentationManager3d)& PM,const Quantity_NameOfColor theColor,const Standard_Integer Mode = 0) ;
+  //! Returns ids of selected mesh nodes
+  Standard_EXPORT  const  Handle(TColStd_HPackedMapOfInteger)& GetSelectedNodes()  const;
   
-  Standard_EXPORT   virtual  void Unhilight(const Handle(PrsMgr_PresentationManager)& PM,const Standard_Integer Mode = 0) ;
+  //! Returns ids of selected mesh elements
+  Standard_EXPORT  const  Handle(TColStd_HPackedMapOfInteger)& GetSelectedElements()  const;
   
-  Standard_EXPORT   virtual  Standard_Boolean IsForcedHilight() const;
+  //! Saves ids of selected mesh entities
+  Standard_EXPORT virtual   void AddSelectedEntities (const Handle(TColStd_HPackedMapOfInteger)& Nodes, const Handle(TColStd_HPackedMapOfInteger)& Elems) ;
+  
+  //! Clears ids of selected mesh entities
+  Standard_EXPORT virtual   void ClearSelectedEntities() ;
+  
+  //! Returns ids of hilighted mesh nodes
+  Standard_EXPORT  const  Handle(TColStd_HPackedMapOfInteger)& GetDetectedNodes()  const;
+  
+  //! Returns ids of hilighted mesh elements
+  Standard_EXPORT  const  Handle(TColStd_HPackedMapOfInteger)& GetDetectedElements()  const;
+  
+  //! Saves ids of hilighted mesh entities
+  Standard_EXPORT   void SetDetectedEntities (const Handle(TColStd_HPackedMapOfInteger)& Nodes, const Handle(TColStd_HPackedMapOfInteger)& Elems) ;
+  
+  Standard_EXPORT virtual   void HilightWithColor (const Handle(PrsMgr_PresentationManager3d)& PM, const Quantity_NameOfColor theColor, const Standard_Integer Mode = 0) ;
+  
+  Standard_EXPORT virtual   void Unhilight (const Handle(PrsMgr_PresentationManager)& PM, const Standard_Integer Mode = 0) ;
+  
+  Standard_EXPORT virtual   Standard_Boolean IsForcedHilight()  const;
 
 
 
@@ -88,17 +72,17 @@ public:
 protected:
 
 
-Handle_TColStd_HPackedMapOfInteger mySelectedNodes;
-Handle_TColStd_HPackedMapOfInteger mySelectedElems;
+  Handle(TColStd_HPackedMapOfInteger) mySelectedNodes;
+  Handle(TColStd_HPackedMapOfInteger) mySelectedElems;
 
 
 private: 
 
 
-Handle_MeshVS_DataSource myDataSource;
-Handle_TColStd_HPackedMapOfInteger myDetectedNodes;
-Handle_TColStd_HPackedMapOfInteger myDetectedElems;
-Standard_Integer myLastID;
+  Handle(MeshVS_DataSource) myDataSource;
+  Handle(TColStd_HPackedMapOfInteger) myDetectedNodes;
+  Handle(TColStd_HPackedMapOfInteger) myDetectedElems;
+  Standard_Integer myLastID;
 
 
 };
@@ -107,7 +91,6 @@ Standard_Integer myLastID;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MeshVS_MeshOwner_HeaderFile

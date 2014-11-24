@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{16FA3B48-0D5A-1477-05C0-98DBDD8ABF4D}</ProjectGuid>
+    <ProjectGuid>{807E5BFE-07B6-0B7B-094A-639CE3D116FA}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -171,7 +171,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -186,7 +186,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>advapi32.lib;gdi32.lib;user32.lib;kernel32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -214,7 +214,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win64\vc10\objd\TKernel/</AssemblerListingLocation>
@@ -230,7 +230,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__FSD_DLL;__MMgt_DLL;__OSD_DLL;__Plugin_DLL;__Quantity_DLL;__Resource_DLL;__SortTools_DLL;__Standard_DLL;__StdFail_DLL;__Storage_DLL;__TColStd_DLL;__TCollection_DLL;__TShort_DLL;__Units_DLL;__UnitsAPI_DLL;__Dico_DLL;__NCollection_DLL;__Message_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>advapi32.lib;gdi32.lib;user32.lib;kernel32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -339,6 +339,8 @@
     <ClCompile Include="..\..\..\src\OSD\OSD_MAllocHook.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_MemInfo.cxx">
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OSD\OSD_OpenFile.cxx">
     </ClCompile>
     <ClCompile Include="..\..\..\src\OSD\OSD_Path.cxx">
     </ClCompile>

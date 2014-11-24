@@ -6,34 +6,16 @@
 #ifndef _LocOpe_Pipe_HeaderFile
 #define _LocOpe_Pipe_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepFill_Pipe_HeaderFile
 #include <BRepFill_Pipe.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _TColGeom_SequenceOfCurve_HeaderFile
 #include <TColGeom_SequenceOfCurve.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_DomainError;
 class TopoDS_Wire;
@@ -44,32 +26,32 @@ class TColgp_SequenceOfPnt;
 class Geom_Curve;
 
 
-//! Defines a  pipe  (near from   Pipe from BRepFill), <br>
-//!          with modifications provided for the Pipe feature. <br>
-class LocOpe_Pipe  {
+//! Defines a  pipe  (near from   Pipe from BRepFill),
+//! with modifications provided for the Pipe feature.
+class LocOpe_Pipe 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   LocOpe_Pipe(const TopoDS_Wire& Spine,const TopoDS_Shape& Profile);
+  Standard_EXPORT LocOpe_Pipe(const TopoDS_Wire& Spine, const TopoDS_Shape& Profile);
   
-       const TopoDS_Shape& Spine() const;
+     const  TopoDS_Shape& Spine()  const;
   
-       const TopoDS_Shape& Profile() const;
+     const  TopoDS_Shape& Profile()  const;
   
-       const TopoDS_Shape& FirstShape() const;
+     const  TopoDS_Shape& FirstShape()  const;
   
-       const TopoDS_Shape& LastShape() const;
+     const  TopoDS_Shape& LastShape()  const;
   
-  Standard_EXPORT    const TopoDS_Shape& Shape() const;
+  Standard_EXPORT  const  TopoDS_Shape& Shape()  const;
   
-  Standard_EXPORT    const TopTools_ListOfShape& Shapes(const TopoDS_Shape& S) ;
+  Standard_EXPORT  const  TopTools_ListOfShape& Shapes (const TopoDS_Shape& S) ;
   
-  Standard_EXPORT    const TColGeom_SequenceOfCurve& Curves(const TColgp_SequenceOfPnt& Spt) ;
+  Standard_EXPORT  const  TColGeom_SequenceOfCurve& Curves (const TColgp_SequenceOfPnt& Spt) ;
   
-  Standard_EXPORT     Handle_Geom_Curve BarycCurve() ;
-
+  Standard_EXPORT   Handle(Geom_Curve) BarycCurve() ;
 
 
 
@@ -84,13 +66,13 @@ private:
 
 
 
-BRepFill_Pipe myPipe;
-TopTools_DataMapOfShapeListOfShape myMap;
-TopoDS_Shape myRes;
-TopTools_ListOfShape myGShap;
-TColGeom_SequenceOfCurve myCrvs;
-TopoDS_Shape myFirstShape;
-TopoDS_Shape myLastShape;
+  BRepFill_Pipe myPipe;
+  TopTools_DataMapOfShapeListOfShape myMap;
+  TopoDS_Shape myRes;
+  TopTools_ListOfShape myGShap;
+  TColGeom_SequenceOfCurve myCrvs;
+  TopoDS_Shape myFirstShape;
+  TopoDS_Shape myLastShape;
 
 
 };
@@ -100,7 +82,6 @@ TopoDS_Shape myLastShape;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _LocOpe_Pipe_HeaderFile

@@ -6,55 +6,41 @@
 #ifndef _ProjLib_ComputeApprox_HeaderFile
 #define _ProjLib_ComputeApprox_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Geom2d_BSplineCurve_HeaderFile
 #include <Handle_Geom2d_BSplineCurve.hxx>
-#endif
-#ifndef _Handle_Geom2d_BezierCurve_HeaderFile
 #include <Handle_Geom2d_BezierCurve.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HCurve_HeaderFile
 #include <Handle_Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
-#endif
 class Geom2d_BSplineCurve;
 class Geom2d_BezierCurve;
 class Adaptor3d_HCurve;
 class Adaptor3d_HSurface;
 
 
-//! Approximate the  projection of  a 3d curve   on an <br>
-//!          analytic surface and stores the result in Approx. <br>
-//!          The result is a 2d curve. <br>
-class ProjLib_ComputeApprox  {
+//! Approximate the  projection of  a 3d curve   on an
+//! analytic surface and stores the result in Approx.
+//! The result is a 2d curve.
+class ProjLib_ComputeApprox 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! <Tol>    is   the   tolerance   with  which    the <br>
-//!          approximation is performed. <br>
-  Standard_EXPORT   ProjLib_ComputeApprox(const Handle(Adaptor3d_HCurve)& C,const Handle(Adaptor3d_HSurface)& S,const Standard_Real Tol);
   
-  Standard_EXPORT     Handle_Geom2d_BSplineCurve BSpline() const;
+  //! <Tol>    is   the   tolerance   with  which    the
+  //! approximation is performed.
+  Standard_EXPORT ProjLib_ComputeApprox(const Handle(Adaptor3d_HCurve)& C, const Handle(Adaptor3d_HSurface)& S, const Standard_Real Tol);
   
-  Standard_EXPORT     Handle_Geom2d_BezierCurve Bezier() const;
-  //! returns the reached Tolerance. <br>
-  Standard_EXPORT     Standard_Real Tolerance() const;
-
+  Standard_EXPORT   Handle(Geom2d_BSplineCurve) BSpline()  const;
+  
+  Standard_EXPORT   Handle(Geom2d_BezierCurve) Bezier()  const;
+  
+  //! returns the reached Tolerance.
+  Standard_EXPORT   Standard_Real Tolerance()  const;
 
 
 
@@ -69,9 +55,9 @@ private:
 
 
 
-Standard_Real myTolerance;
-Handle_Geom2d_BSplineCurve myBSpline;
-Handle_Geom2d_BezierCurve myBezier;
+  Standard_Real myTolerance;
+  Handle(Geom2d_BSplineCurve) myBSpline;
+  Handle(Geom2d_BezierCurve) myBezier;
 
 
 };
@@ -80,7 +66,6 @@ Handle_Geom2d_BezierCurve myBezier;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ProjLib_ComputeApprox_HeaderFile

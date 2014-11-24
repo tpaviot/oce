@@ -6,28 +6,14 @@
 #ifndef _MAT_DataMapNodeOfDataMapOfIntegerBasicElt_HeaderFile
 #define _MAT_DataMapNodeOfDataMapOfIntegerBasicElt_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MAT_DataMapNodeOfDataMapOfIntegerBasicElt_HeaderFile
 #include <Handle_MAT_DataMapNodeOfDataMapOfIntegerBasicElt.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_MAT_BasicElt_HeaderFile
 #include <Handle_MAT_BasicElt.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class MAT_BasicElt;
 class TColStd_MapIntegerHasher;
 class MAT_DataMapOfIntegerBasicElt;
@@ -35,16 +21,17 @@ class MAT_DataMapIteratorOfDataMapOfIntegerBasicElt;
 
 
 
-class MAT_DataMapNodeOfDataMapOfIntegerBasicElt : public TCollection_MapNode {
+class MAT_DataMapNodeOfDataMapOfIntegerBasicElt : public TCollection_MapNode
+{
 
 public:
 
   
-      MAT_DataMapNodeOfDataMapOfIntegerBasicElt(const Standard_Integer& K,const Handle(MAT_BasicElt)& I,const TCollection_MapNodePtr& n);
+    MAT_DataMapNodeOfDataMapOfIntegerBasicElt(const Standard_Integer& K, const Handle(MAT_BasicElt)& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Key() const;
+      Standard_Integer& Key()  const;
   
-        Handle_MAT_BasicElt& Value() const;
+      Handle(MAT_BasicElt)& Value()  const;
 
 
 
@@ -59,15 +46,15 @@ protected:
 private: 
 
 
-Standard_Integer myKey;
-Handle_MAT_BasicElt myValue;
+  Standard_Integer myKey;
+  Handle(MAT_BasicElt) myValue;
 
 
 };
 
 #define TheKey Standard_Integer
 #define TheKey_hxx <Standard_Integer.hxx>
-#define TheItem Handle_MAT_BasicElt
+#define TheItem Handle(MAT_BasicElt)
 #define TheItem_hxx <MAT_BasicElt.hxx>
 #define Hasher TColStd_MapIntegerHasher
 #define Hasher_hxx <TColStd_MapIntegerHasher.hxx>
@@ -98,7 +85,6 @@ Handle_MAT_BasicElt myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MAT_DataMapNodeOfDataMapOfIntegerBasicElt_HeaderFile

@@ -5,19 +5,11 @@
 
 #include <IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _IntTools_IndexedDataMapOfTransientAddress_HeaderFile
 #include <IntTools_IndexedDataMapOfTransientAddress.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress
 IMPLEMENT_STANDARD_RTTI(IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress)
 
 
-#define TheKey Handle_Standard_Transient
+#define TheKey Handle(Standard_Transient)
 #define TheKey_hxx <Standard_Transient.hxx>
 #define TheItem Standard_Address
 #define TheItem_hxx <Standard_Address.hxx>

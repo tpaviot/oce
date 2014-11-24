@@ -6,22 +6,12 @@
 #ifndef _GeomAdaptor_GHCurve_HeaderFile
 #define _GeomAdaptor_GHCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_GeomAdaptor_GHCurve_HeaderFile
 #include <Handle_GeomAdaptor_GHCurve.hxx>
-#endif
 
-#ifndef _GeomAdaptor_Curve_HeaderFile
 #include <GeomAdaptor_Curve.hxx>
-#endif
-#ifndef _Adaptor3d_HCurve_HeaderFile
 #include <Adaptor3d_HCurve.hxx>
-#endif
 class Standard_OutOfRange;
 class Standard_NoSuchObject;
 class Standard_DomainError;
@@ -30,22 +20,23 @@ class Adaptor3d_Curve;
 
 
 
-class GeomAdaptor_GHCurve : public Adaptor3d_HCurve {
+class GeomAdaptor_GHCurve : public Adaptor3d_HCurve
+{
 
 public:
 
   
-  Standard_EXPORT   GeomAdaptor_GHCurve();
+  Standard_EXPORT GeomAdaptor_GHCurve();
   
-  Standard_EXPORT   GeomAdaptor_GHCurve(const GeomAdaptor_Curve& C);
+  Standard_EXPORT GeomAdaptor_GHCurve(const GeomAdaptor_Curve& C);
   
-  Standard_EXPORT     void Set(const GeomAdaptor_Curve& C) ;
+  Standard_EXPORT   void Set (const GeomAdaptor_Curve& C) ;
   
-  Standard_EXPORT    const Adaptor3d_Curve& Curve() const;
+  Standard_EXPORT  const  Adaptor3d_Curve& Curve()  const;
   
-  Standard_EXPORT     Adaptor3d_Curve& GetCurve() ;
+  Standard_EXPORT   Adaptor3d_Curve& GetCurve() ;
   
-        GeomAdaptor_Curve& ChangeCurve() ;
+      GeomAdaptor_Curve& ChangeCurve() ;
 
 
 
@@ -55,7 +46,7 @@ public:
 protected:
 
 
-GeomAdaptor_Curve myCurve;
+  GeomAdaptor_Curve myCurve;
 
 
 private: 
@@ -82,7 +73,6 @@ private:
 #undef Adaptor3d_GenHCurve_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomAdaptor_GHCurve_HeaderFile

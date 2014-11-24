@@ -6,15 +6,14 @@
 #ifndef _Extrema_ExtFlag_HeaderFile
 #define _Extrema_ExtFlag_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Extrema_ExtFlag {
+
+enum Extrema_ExtFlag
+{
 Extrema_ExtFlag_MIN,
 Extrema_ExtFlag_MAX,
 Extrema_ExtFlag_MINMAX
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Extrema_ExtFlag_HeaderFile

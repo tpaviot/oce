@@ -6,38 +6,27 @@
 #ifndef _Storage_SequenceNodeOfSeqOfRoot_HeaderFile
 #define _Storage_SequenceNodeOfSeqOfRoot_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Storage_SequenceNodeOfSeqOfRoot_HeaderFile
 #include <Handle_Storage_SequenceNodeOfSeqOfRoot.hxx>
-#endif
 
-#ifndef _Handle_Storage_Root_HeaderFile
 #include <Handle_Storage_Root.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Storage_Root;
 class Storage_SeqOfRoot;
 
 
 
-class Storage_SequenceNodeOfSeqOfRoot : public TCollection_SeqNode {
+class Storage_SequenceNodeOfSeqOfRoot : public TCollection_SeqNode
+{
 
 public:
 
   
-      Storage_SequenceNodeOfSeqOfRoot(const Handle(Storage_Root)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    Storage_SequenceNodeOfSeqOfRoot(const Handle(Storage_Root)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_Storage_Root& Value() const;
+      Handle(Storage_Root)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_Storage_Root myValue;
+  Handle(Storage_Root) myValue;
 
 
 };
 
-#define SeqItem Handle_Storage_Root
+#define SeqItem Handle(Storage_Root)
 #define SeqItem_hxx <Storage_Root.hxx>
 #define TCollection_SequenceNode Storage_SequenceNodeOfSeqOfRoot
 #define TCollection_SequenceNode_hxx <Storage_SequenceNodeOfSeqOfRoot.hxx>
@@ -78,7 +67,6 @@ Handle_Storage_Root myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Storage_SequenceNodeOfSeqOfRoot_HeaderFile

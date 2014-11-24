@@ -6,39 +6,28 @@
 #ifndef _TDF_StdMapNodeOfIDMap_HeaderFile
 #define _TDF_StdMapNodeOfIDMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDF_StdMapNodeOfIDMap_HeaderFile
 #include <Handle_TDF_StdMapNodeOfIDMap.hxx>
-#endif
 
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Standard_GUID;
 class TDF_IDMap;
 class TDF_MapIteratorOfIDMap;
 
 
 
-class TDF_StdMapNodeOfIDMap : public TCollection_MapNode {
+class TDF_StdMapNodeOfIDMap : public TCollection_MapNode
+{
 
 public:
 
   
-      TDF_StdMapNodeOfIDMap(const Standard_GUID& K,const TCollection_MapNodePtr& n);
+    TDF_StdMapNodeOfIDMap(const Standard_GUID& K, const TCollection_MapNodePtr& n);
   
-        Standard_GUID& Key() const;
+      Standard_GUID& Key()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-Standard_GUID myKey;
+  Standard_GUID myKey;
 
 
 };
@@ -87,7 +76,6 @@ Standard_GUID myKey;
 #undef TCollection_Map_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_StdMapNodeOfIDMap_HeaderFile

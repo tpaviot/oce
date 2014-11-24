@@ -6,25 +6,13 @@
 #ifndef _BRepOffsetAPI_SequenceOfSequenceOfShape_HeaderFile
 #define _BRepOffsetAPI_SequenceOfSequenceOfShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape_HeaderFile
 #include <Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class TopTools_SequenceOfShape;
@@ -32,68 +20,68 @@ class BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfShape;
 
 
 
-class BRepOffsetAPI_SequenceOfSequenceOfShape  : public TCollection_BaseSequence {
+class BRepOffsetAPI_SequenceOfSequenceOfShape  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      BRepOffsetAPI_SequenceOfSequenceOfShape();
+    BRepOffsetAPI_SequenceOfSequenceOfShape();
   
-  Standard_EXPORT   BRepOffsetAPI_SequenceOfSequenceOfShape(const BRepOffsetAPI_SequenceOfSequenceOfShape& Other);
+  Standard_EXPORT BRepOffsetAPI_SequenceOfSequenceOfShape(const BRepOffsetAPI_SequenceOfSequenceOfShape& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~BRepOffsetAPI_SequenceOfSequenceOfShape()
 {
   Clear();
 }
   
-  Standard_EXPORT    const BRepOffsetAPI_SequenceOfSequenceOfShape& Assign(const BRepOffsetAPI_SequenceOfSequenceOfShape& Other) ;
-   const BRepOffsetAPI_SequenceOfSequenceOfShape& operator =(const BRepOffsetAPI_SequenceOfSequenceOfShape& Other) 
+  Standard_EXPORT  const  BRepOffsetAPI_SequenceOfSequenceOfShape& Assign (const BRepOffsetAPI_SequenceOfSequenceOfShape& Other) ;
+ const  BRepOffsetAPI_SequenceOfSequenceOfShape& operator = (const BRepOffsetAPI_SequenceOfSequenceOfShape& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const TopTools_SequenceOfShape& T) ;
+  Standard_EXPORT   void Append (const TopTools_SequenceOfShape& T) ;
   
-        void Append(BRepOffsetAPI_SequenceOfSequenceOfShape& S) ;
+      void Append (BRepOffsetAPI_SequenceOfSequenceOfShape& S) ;
   
-  Standard_EXPORT     void Prepend(const TopTools_SequenceOfShape& T) ;
+  Standard_EXPORT   void Prepend (const TopTools_SequenceOfShape& T) ;
   
-        void Prepend(BRepOffsetAPI_SequenceOfSequenceOfShape& S) ;
+      void Prepend (BRepOffsetAPI_SequenceOfSequenceOfShape& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const TopTools_SequenceOfShape& T) ;
+      void InsertBefore (const Standard_Integer Index, const TopTools_SequenceOfShape& T) ;
   
-        void InsertBefore(const Standard_Integer Index,BRepOffsetAPI_SequenceOfSequenceOfShape& S) ;
+      void InsertBefore (const Standard_Integer Index, BRepOffsetAPI_SequenceOfSequenceOfShape& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const TopTools_SequenceOfShape& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const TopTools_SequenceOfShape& T) ;
   
-        void InsertAfter(const Standard_Integer Index,BRepOffsetAPI_SequenceOfSequenceOfShape& S) ;
+      void InsertAfter (const Standard_Integer Index, BRepOffsetAPI_SequenceOfSequenceOfShape& S) ;
   
-  Standard_EXPORT    const TopTools_SequenceOfShape& First() const;
+  Standard_EXPORT  const  TopTools_SequenceOfShape& First()  const;
   
-  Standard_EXPORT    const TopTools_SequenceOfShape& Last() const;
+  Standard_EXPORT  const  TopTools_SequenceOfShape& Last()  const;
   
-        void Split(const Standard_Integer Index,BRepOffsetAPI_SequenceOfSequenceOfShape& Sub) ;
+      void Split (const Standard_Integer Index, BRepOffsetAPI_SequenceOfSequenceOfShape& Sub) ;
   
-  Standard_EXPORT    const TopTools_SequenceOfShape& Value(const Standard_Integer Index) const;
-   const TopTools_SequenceOfShape& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  TopTools_SequenceOfShape& Value (const Standard_Integer Index)  const;
+ const  TopTools_SequenceOfShape& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const TopTools_SequenceOfShape& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const TopTools_SequenceOfShape& I) ;
   
-  Standard_EXPORT     TopTools_SequenceOfShape& ChangeValue(const Standard_Integer Index) ;
-    TopTools_SequenceOfShape& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   TopTools_SequenceOfShape& ChangeValue (const Standard_Integer Index) ;
+  TopTools_SequenceOfShape& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepOffsetAPI_SequenceOfSequenceOfShape_HeaderFile

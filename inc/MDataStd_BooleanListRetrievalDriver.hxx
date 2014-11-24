@@ -6,37 +6,17 @@
 #ifndef _MDataStd_BooleanListRetrievalDriver_HeaderFile
 #define _MDataStd_BooleanListRetrievalDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MDataStd_BooleanListRetrievalDriver_HeaderFile
 #include <Handle_MDataStd_BooleanListRetrievalDriver.hxx>
-#endif
 
-#ifndef _MDF_ARDriver_HeaderFile
 #include <MDF_ARDriver.hxx>
-#endif
-#ifndef _Handle_CDM_MessageDriver_HeaderFile
 #include <Handle_CDM_MessageDriver.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_PDF_Attribute_HeaderFile
 #include <Handle_PDF_Attribute.hxx>
-#endif
-#ifndef _Handle_MDF_RRelocationTable_HeaderFile
 #include <Handle_MDF_RRelocationTable.hxx>
-#endif
 class CDM_MessageDriver;
 class Standard_Type;
 class TDF_Attribute;
@@ -45,20 +25,21 @@ class MDF_RRelocationTable;
 
 
 
-class MDataStd_BooleanListRetrievalDriver : public MDF_ARDriver {
+class MDataStd_BooleanListRetrievalDriver : public MDF_ARDriver
+{
 
 public:
 
   
-  Standard_EXPORT   MDataStd_BooleanListRetrievalDriver(const Handle(CDM_MessageDriver)& theMessageDriver);
+  Standard_EXPORT MDataStd_BooleanListRetrievalDriver(const Handle(CDM_MessageDriver)& theMessageDriver);
   
-  Standard_EXPORT     Standard_Integer VersionNumber() const;
+  Standard_EXPORT   Standard_Integer VersionNumber()  const;
   
-  Standard_EXPORT     Handle_Standard_Type SourceType() const;
+  Standard_EXPORT   Handle(Standard_Type) SourceType()  const;
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
   
-  Standard_EXPORT     void Paste(const Handle(PDF_Attribute)& Source,const Handle(TDF_Attribute)& Target,const Handle(MDF_RRelocationTable)& RelocTable) const;
+  Standard_EXPORT   void Paste (const Handle(PDF_Attribute)& Source, const Handle(TDF_Attribute)& Target, const Handle(MDF_RRelocationTable)& RelocTable)  const;
 
 
 
@@ -81,7 +62,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MDataStd_BooleanListRetrievalDriver_HeaderFile

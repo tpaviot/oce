@@ -6,39 +6,30 @@
 #ifndef _ShapeUpgrade_SplitSurfaceArea_HeaderFile
 #define _ShapeUpgrade_SplitSurfaceArea_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeUpgrade_SplitSurfaceArea_HeaderFile
 #include <Handle_ShapeUpgrade_SplitSurfaceArea.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _ShapeUpgrade_SplitSurface_HeaderFile
 #include <ShapeUpgrade_SplitSurface.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 
 
-//!Split surface in the parametric space <br>
-//! in according specified number of splits on the <br>
-class ShapeUpgrade_SplitSurfaceArea : public ShapeUpgrade_SplitSurface {
+//! Split surface in the parametric space
+//! in according specified number of splits on the
+class ShapeUpgrade_SplitSurfaceArea : public ShapeUpgrade_SplitSurface
+{
 
 public:
 
-  //! Empty constructor. <br>
-  Standard_EXPORT   ShapeUpgrade_SplitSurfaceArea();
-  //!Set number of split for surfaces <br>
-        Standard_Integer& NbParts() ;
   
-  Standard_EXPORT   virtual  void Compute(const Standard_Boolean Segment = Standard_True) ;
+  //! Empty constructor.
+  Standard_EXPORT ShapeUpgrade_SplitSurfaceArea();
+  
+  //! Set number of split for surfaces
+      Standard_Integer& NbParts() ;
+  
+  Standard_EXPORT virtual   void Compute (const Standard_Boolean Segment = Standard_True) ;
 
 
 
@@ -53,7 +44,7 @@ protected:
 private: 
 
 
-Standard_Integer myNbParts;
+  Standard_Integer myNbParts;
 
 
 };
@@ -63,7 +54,6 @@ Standard_Integer myNbParts;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeUpgrade_SplitSurfaceArea_HeaderFile

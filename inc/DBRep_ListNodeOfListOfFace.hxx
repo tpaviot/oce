@@ -6,39 +6,28 @@
 #ifndef _DBRep_ListNodeOfListOfFace_HeaderFile
 #define _DBRep_ListNodeOfListOfFace_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_DBRep_ListNodeOfListOfFace_HeaderFile
 #include <Handle_DBRep_ListNodeOfListOfFace.hxx>
-#endif
 
-#ifndef _Handle_DBRep_Face_HeaderFile
 #include <Handle_DBRep_Face.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class DBRep_Face;
 class DBRep_ListOfFace;
 class DBRep_ListIteratorOfListOfFace;
 
 
 
-class DBRep_ListNodeOfListOfFace : public TCollection_MapNode {
+class DBRep_ListNodeOfListOfFace : public TCollection_MapNode
+{
 
 public:
 
   
-      DBRep_ListNodeOfListOfFace(const Handle(DBRep_Face)& I,const TCollection_MapNodePtr& n);
+    DBRep_ListNodeOfListOfFace(const Handle(DBRep_Face)& I, const TCollection_MapNodePtr& n);
   
-        Handle_DBRep_Face& Value() const;
+      Handle(DBRep_Face)& Value()  const;
 
 
 
@@ -53,12 +42,12 @@ protected:
 private: 
 
 
-Handle_DBRep_Face myValue;
+  Handle(DBRep_Face) myValue;
 
 
 };
 
-#define Item Handle_DBRep_Face
+#define Item Handle(DBRep_Face)
 #define Item_hxx <DBRep_Face.hxx>
 #define TCollection_ListNode DBRep_ListNodeOfListOfFace
 #define TCollection_ListNode_hxx <DBRep_ListNodeOfListOfFace.hxx>
@@ -83,7 +72,6 @@ Handle_DBRep_Face myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DBRep_ListNodeOfListOfFace_HeaderFile

@@ -6,44 +6,34 @@
 #ifndef _StepGeom_ElementarySurface_HeaderFile
 #define _StepGeom_ElementarySurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_ElementarySurface_HeaderFile
 #include <Handle_StepGeom_ElementarySurface.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Axis2Placement3d_HeaderFile
 #include <Handle_StepGeom_Axis2Placement3d.hxx>
-#endif
-#ifndef _StepGeom_Surface_HeaderFile
 #include <StepGeom_Surface.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepGeom_Axis2Placement3d;
 class TCollection_HAsciiString;
 
 
 
-class StepGeom_ElementarySurface : public StepGeom_Surface {
+class StepGeom_ElementarySurface : public StepGeom_Surface
+{
 
 public:
 
-  //! Returns a ElementarySurface <br>
-  Standard_EXPORT   StepGeom_ElementarySurface();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a ElementarySurface
+  Standard_EXPORT StepGeom_ElementarySurface();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_Axis2Placement3d)& aPosition) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetPosition(const Handle(StepGeom_Axis2Placement3d)& aPosition) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_Axis2Placement3d)& aPosition) ;
   
-  Standard_EXPORT     Handle_StepGeom_Axis2Placement3d Position() const;
+  Standard_EXPORT   void SetPosition (const Handle(StepGeom_Axis2Placement3d)& aPosition) ;
+  
+  Standard_EXPORT   Handle(StepGeom_Axis2Placement3d) Position()  const;
 
 
 
@@ -58,7 +48,7 @@ protected:
 private: 
 
 
-Handle_StepGeom_Axis2Placement3d position;
+  Handle(StepGeom_Axis2Placement3d) position;
 
 
 };
@@ -67,7 +57,6 @@ Handle_StepGeom_Axis2Placement3d position;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_ElementarySurface_HeaderFile

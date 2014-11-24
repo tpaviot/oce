@@ -6,30 +6,23 @@
 #ifndef _HeaderSection_HeaderRecognizer_HeaderFile
 #define _HeaderSection_HeaderRecognizer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_HeaderSection_HeaderRecognizer_HeaderFile
 #include <Handle_HeaderSection_HeaderRecognizer.hxx>
-#endif
 
-#ifndef _StepData_FileRecognizer_HeaderFile
 #include <StepData_FileRecognizer.hxx>
-#endif
 class TCollection_AsciiString;
 
 
-//! Recognizes STEP Standard Header Entities <br>
-//!           (FileName, FileDescription, FileSchema) <br>
-class HeaderSection_HeaderRecognizer : public StepData_FileRecognizer {
+//! Recognizes STEP Standard Header Entities
+//! (FileName, FileDescription, FileSchema)
+class HeaderSection_HeaderRecognizer : public StepData_FileRecognizer
+{
 
 public:
 
   
-  Standard_EXPORT   HeaderSection_HeaderRecognizer();
+  Standard_EXPORT HeaderSection_HeaderRecognizer();
 
 
 
@@ -38,8 +31,9 @@ public:
 
 protected:
 
-  //! Recognizes data types of Header STEP Standard <br>
-  Standard_EXPORT     void Eval(const TCollection_AsciiString& key) ;
+  
+  //! Recognizes data types of Header STEP Standard
+  Standard_EXPORT   void Eval (const TCollection_AsciiString& key) ;
 
 
 
@@ -54,7 +48,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HeaderSection_HeaderRecognizer_HeaderFile

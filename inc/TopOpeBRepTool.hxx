@@ -6,25 +6,13 @@
 #ifndef _TopOpeBRepTool_HeaderFile
 #define _TopOpeBRepTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
-#ifndef _TopOpeBRepTool_OutCurveType_HeaderFile
 #include <TopOpeBRepTool_OutCurveType.hxx>
-#endif
 class TopoDS_Face;
 class TopTools_DataMapOfShapeInteger;
 class TopTools_IndexedMapOfOrientedShape;
@@ -74,58 +62,65 @@ class TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface;
 class TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeface;
 
 
-//! This package provides services used by the TopOpeBRep <br>
-//!          package performing topological operations on the BRep <br>
-//!          data structure. <br>
-//! <br>
-class TopOpeBRepTool  {
+//! This package provides services used by the TopOpeBRep
+//! package performing topological operations on the BRep
+//! data structure.
+class TopOpeBRepTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //!  Fuse  edges (in a   wire) of a  shape   where we have <br>
-//!          useless vertex. <br>//! In case face <FF> is built on UV-non-connexed  wires <br>
-//!          (with the two closing edges  FORWARD and REVERSED, in <br>
-//!          spite of one only), we find out the faulty edge, add <br>
-//!          the faulty shapes (edge,wire,face) to <MshNOK>. <br>
-//!          <FF> is a face descendant of <F>. <br>
-//!          <MWisOld>(wire) = 1 if wire is wire of <F> <br>
-//!                            0    wire results from <F>'s wire splitted. <br>
-//!          returns false if purge fails <br>
-  Standard_EXPORT   static  Standard_Boolean PurgeClosingEdges(const TopoDS_Face& F,const TopoDS_Face& FF,const TopTools_DataMapOfShapeInteger& MWisOld,TopTools_IndexedMapOfOrientedShape& MshNOK) ;
   
-  Standard_EXPORT   static  Standard_Boolean PurgeClosingEdges(const TopoDS_Face& F,const TopTools_ListOfShape& LOF,const TopTools_DataMapOfShapeInteger& MWisOld,TopTools_IndexedMapOfOrientedShape& MshNOK) ;
+  //! Fuse  edges (in a   wire) of a  shape   where we have
+  //! useless vertex.
+  //! In case face <FF> is built on UV-non-connexed  wires
+  //! (with the two closing edges  FORWARD and REVERSED, in
+  //! spite of one only), we find out the faulty edge, add
+  //! the faulty shapes (edge,wire,face) to <MshNOK>.
+  //! <FF> is a face descendant of <F>.
+  //! <MWisOld>(wire) = 1 if wire is wire of <F>
+  //! 0    wire results from <F>'s wire splitted.
+  //! returns false if purge fails
+  Standard_EXPORT static   Standard_Boolean PurgeClosingEdges (const TopoDS_Face& F, const TopoDS_Face& FF, const TopTools_DataMapOfShapeInteger& MWisOld, TopTools_IndexedMapOfOrientedShape& MshNOK) ;
   
-  Standard_EXPORT   static  Standard_Boolean CorrectONUVISO(const TopoDS_Face& F,TopoDS_Face& Fsp) ;
-  //! Builds up the correct list of faces <LOFF> from <LOF>, using <br>
-//!          faulty shapes from map <MshNOK>. <br>
-//!          <LOF> is the list of <F>'s descendant faces. <br>
-//!          returns false if building fails <br>
-  Standard_EXPORT   static  Standard_Boolean MakeFaces(const TopoDS_Face& F,const TopTools_ListOfShape& LOF,const TopTools_IndexedMapOfOrientedShape& MshNOK,TopTools_ListOfShape& LOFF) ;
-  //! Returns <False>  if  the  face is  valid (the UV <br>
-//!          representation  of  the  face is   a set   of  pcurves <br>
-//!          connexed by points with   connexity 2). <br>
-//!          Else,  splits <aFace> in order to return a list of valid <br>
-//!          faces. <br>
-  Standard_EXPORT   static  Standard_Boolean Regularize(const TopoDS_Face& aFace,TopTools_ListOfShape& aListOfFaces,TopTools_DataMapOfShapeListOfShape& ESplits) ;
-  //! Returns <False>  if  the  face is  valid (the UV <br>
-//!          representation  of  the  face is   a set   of  pcurves <br>
-//!          connexed by points with   connexity 2). <br>
-//!          Else,  splits wires of the face, these are boundaries of the <br>
-//!          new faces to build up; <OldWiresNewWires> describes (wire, <br>
-//!          splits of wire); <ESplits> describes (edge, edge's splits) <br>
-  Standard_EXPORT   static  Standard_Boolean RegularizeWires(const TopoDS_Face& aFace,TopTools_DataMapOfShapeListOfShape& OldWiresNewWires,TopTools_DataMapOfShapeListOfShape& ESplits) ;
-  //!  Classify wire's splits of map <OldWiresnewWires> in order to <br>
-//!           compute <aListOfFaces>, the splits of <aFace>. <br>
-  Standard_EXPORT   static  Standard_Boolean RegularizeFace(const TopoDS_Face& aFace,const TopTools_DataMapOfShapeListOfShape& OldWiresnewWires,TopTools_ListOfShape& aListOfFaces) ;
-  //! Returns <False> if the shell is valid (the solid is a set <br>
-//!          of faces connexed by edges with connexity 2). <br>
-//!          Else, splits faces of the shell; <OldFacesnewFaces> describes <br>
-//!          (face, splits of face). <br>
-  Standard_EXPORT   static  Standard_Boolean RegularizeShells(const TopoDS_Solid& aSolid,TopTools_DataMapOfShapeListOfShape& OldSheNewShe,TopTools_DataMapOfShapeListOfShape& FSplits) ;
-  //! Prints <OCT> as string on stream <S>; returns <S>. <br>
-  Standard_EXPORT   static  Standard_OStream& Print(const TopOpeBRepTool_OutCurveType OCT,Standard_OStream& S) ;
-
+  Standard_EXPORT static   Standard_Boolean PurgeClosingEdges (const TopoDS_Face& F, const TopTools_ListOfShape& LOF, const TopTools_DataMapOfShapeInteger& MWisOld, TopTools_IndexedMapOfOrientedShape& MshNOK) ;
+  
+  Standard_EXPORT static   Standard_Boolean CorrectONUVISO (const TopoDS_Face& F, TopoDS_Face& Fsp) ;
+  
+  //! Builds up the correct list of faces <LOFF> from <LOF>, using
+  //! faulty shapes from map <MshNOK>.
+  //! <LOF> is the list of <F>'s descendant faces.
+  //! returns false if building fails
+  Standard_EXPORT static   Standard_Boolean MakeFaces (const TopoDS_Face& F, const TopTools_ListOfShape& LOF, const TopTools_IndexedMapOfOrientedShape& MshNOK, TopTools_ListOfShape& LOFF) ;
+  
+  //! Returns <False>  if  the  face is  valid (the UV
+  //! representation  of  the  face is   a set   of  pcurves
+  //! connexed by points with   connexity 2).
+  //! Else,  splits <aFace> in order to return a list of valid
+  //! faces.
+  Standard_EXPORT static   Standard_Boolean Regularize (const TopoDS_Face& aFace, TopTools_ListOfShape& aListOfFaces, TopTools_DataMapOfShapeListOfShape& ESplits) ;
+  
+  //! Returns <False>  if  the  face is  valid (the UV
+  //! representation  of  the  face is   a set   of  pcurves
+  //! connexed by points with   connexity 2).
+  //! Else,  splits wires of the face, these are boundaries of the
+  //! new faces to build up; <OldWiresNewWires> describes (wire,
+  //! splits of wire); <ESplits> describes (edge, edge's splits)
+  Standard_EXPORT static   Standard_Boolean RegularizeWires (const TopoDS_Face& aFace, TopTools_DataMapOfShapeListOfShape& OldWiresNewWires, TopTools_DataMapOfShapeListOfShape& ESplits) ;
+  
+  //! Classify wire's splits of map <OldWiresnewWires> in order to
+  //! compute <aListOfFaces>, the splits of <aFace>.
+  Standard_EXPORT static   Standard_Boolean RegularizeFace (const TopoDS_Face& aFace, const TopTools_DataMapOfShapeListOfShape& OldWiresnewWires, TopTools_ListOfShape& aListOfFaces) ;
+  
+  //! Returns <False> if the shell is valid (the solid is a set
+  //! of faces connexed by edges with connexity 2).
+  //! Else, splits faces of the shell; <OldFacesnewFaces> describes
+  //! (face, splits of face).
+  Standard_EXPORT static   Standard_Boolean RegularizeShells (const TopoDS_Solid& aSolid, TopTools_DataMapOfShapeListOfShape& OldSheNewShe, TopTools_DataMapOfShapeListOfShape& FSplits) ;
+  
+  //! Prints <OCT> as string on stream <S>; returns <S>.
+  Standard_EXPORT static   Standard_OStream& Print (const TopOpeBRepTool_OutCurveType OCT, Standard_OStream& S) ;
 
 
 
@@ -189,7 +184,6 @@ friend class TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeface;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepTool_HeaderFile

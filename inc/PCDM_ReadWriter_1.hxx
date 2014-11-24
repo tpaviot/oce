@@ -6,31 +6,15 @@
 #ifndef _PCDM_ReadWriter_1_HeaderFile
 #define _PCDM_ReadWriter_1_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_PCDM_ReadWriter_1_HeaderFile
 #include <Handle_PCDM_ReadWriter_1.hxx>
-#endif
 
-#ifndef _PCDM_ReadWriter_HeaderFile
 #include <PCDM_ReadWriter.hxx>
-#endif
-#ifndef _Handle_Storage_Data_HeaderFile
 #include <Handle_Storage_Data.hxx>
-#endif
-#ifndef _Handle_CDM_Document_HeaderFile
 #include <Handle_CDM_Document.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_CDM_MessageDriver_HeaderFile
 #include <Handle_CDM_MessageDriver.hxx>
-#endif
 class TCollection_AsciiString;
 class Storage_Data;
 class CDM_Document;
@@ -41,30 +25,32 @@ class TColStd_SequenceOfExtendedString;
 
 
 
-class PCDM_ReadWriter_1 : public PCDM_ReadWriter {
+class PCDM_ReadWriter_1 : public PCDM_ReadWriter
+{
 
 public:
 
   
-  Standard_EXPORT   PCDM_ReadWriter_1();
-  //! returns PCDM_ReadWriter_1. <br>
-  Standard_EXPORT     TCollection_AsciiString Version() const;
+  Standard_EXPORT PCDM_ReadWriter_1();
   
-  Standard_EXPORT     void WriteReferenceCounter(const Handle(Storage_Data)& aData,const Handle(CDM_Document)& aDocument) const;
+  //! returns PCDM_ReadWriter_1.
+  Standard_EXPORT   TCollection_AsciiString Version()  const;
   
-  Standard_EXPORT     void WriteReferences(const Handle(Storage_Data)& aData,const Handle(CDM_Document)& aDocument,const TCollection_ExtendedString& theReferencerFileName) const;
+  Standard_EXPORT   void WriteReferenceCounter (const Handle(Storage_Data)& aData, const Handle(CDM_Document)& aDocument)  const;
   
-  Standard_EXPORT     void WriteExtensions(const Handle(Storage_Data)& aData,const Handle(CDM_Document)& aDocument) const;
+  Standard_EXPORT   void WriteReferences (const Handle(Storage_Data)& aData, const Handle(CDM_Document)& aDocument, const TCollection_ExtendedString& theReferencerFileName)  const;
   
-  Standard_EXPORT     void WriteVersion(const Handle(Storage_Data)& aData,const Handle(CDM_Document)& aDocument) const;
+  Standard_EXPORT   void WriteExtensions (const Handle(Storage_Data)& aData, const Handle(CDM_Document)& aDocument)  const;
   
-  Standard_EXPORT     Standard_Integer ReadReferenceCounter(const TCollection_ExtendedString& aFileName,const Handle(CDM_MessageDriver)& theMsgDriver) const;
+  Standard_EXPORT   void WriteVersion (const Handle(Storage_Data)& aData, const Handle(CDM_Document)& aDocument)  const;
   
-  Standard_EXPORT     void ReadReferences(const TCollection_ExtendedString& aFileName,PCDM_SequenceOfReference& theReferences,const Handle(CDM_MessageDriver)& theMsgDriver) const;
+  Standard_EXPORT   Standard_Integer ReadReferenceCounter (const TCollection_ExtendedString& aFileName, const Handle(CDM_MessageDriver)& theMsgDriver)  const;
   
-  Standard_EXPORT     void ReadExtensions(const TCollection_ExtendedString& aFileName,TColStd_SequenceOfExtendedString& theExtensions,const Handle(CDM_MessageDriver)& theMsgDriver) const;
+  Standard_EXPORT   void ReadReferences (const TCollection_ExtendedString& aFileName, PCDM_SequenceOfReference& theReferences, const Handle(CDM_MessageDriver)& theMsgDriver)  const;
   
-  Standard_EXPORT     Standard_Integer ReadDocumentVersion(const TCollection_ExtendedString& aFileName,const Handle(CDM_MessageDriver)& theMsgDriver) const;
+  Standard_EXPORT   void ReadExtensions (const TCollection_ExtendedString& aFileName, TColStd_SequenceOfExtendedString& theExtensions, const Handle(CDM_MessageDriver)& theMsgDriver)  const;
+  
+  Standard_EXPORT   Standard_Integer ReadDocumentVersion (const TCollection_ExtendedString& aFileName, const Handle(CDM_MessageDriver)& theMsgDriver)  const;
 
 
 
@@ -79,7 +65,7 @@ protected:
 private: 
 
   
-  Standard_EXPORT   static  void ReadUserInfo(const TCollection_ExtendedString& aFileName,const TCollection_AsciiString& Start,const TCollection_AsciiString& End,TColStd_SequenceOfExtendedString& theUserInfo,const Handle(CDM_MessageDriver)& theMsgDriver) ;
+  Standard_EXPORT static   void ReadUserInfo (const TCollection_ExtendedString& aFileName, const TCollection_AsciiString& Start, const TCollection_AsciiString& End, TColStd_SequenceOfExtendedString& theUserInfo, const Handle(CDM_MessageDriver)& theMsgDriver) ;
 
 
 
@@ -89,7 +75,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PCDM_ReadWriter_1_HeaderFile

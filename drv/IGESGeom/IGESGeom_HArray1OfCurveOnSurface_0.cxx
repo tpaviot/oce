@@ -5,28 +5,14 @@
 
 #include <IGESGeom_HArray1OfCurveOnSurface.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _IGESGeom_CurveOnSurface_HeaderFile
 #include <IGESGeom_CurveOnSurface.hxx>
-#endif
-#ifndef _IGESGeom_Array1OfCurveOnSurface_HeaderFile
 #include <IGESGeom_Array1OfCurveOnSurface.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(IGESGeom_HArray1OfCurveOnSurface,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(IGESGeom_HArray1OfCurveOnSurface)
 
 
-#define ItemHArray1 Handle_IGESGeom_CurveOnSurface
+#define ItemHArray1 Handle(IGESGeom_CurveOnSurface)
 #define ItemHArray1_hxx <IGESGeom_CurveOnSurface.hxx>
 #define TheArray1 IGESGeom_Array1OfCurveOnSurface
 #define TheArray1_hxx <IGESGeom_Array1OfCurveOnSurface.hxx>

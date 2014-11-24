@@ -6,25 +6,13 @@
 #ifndef _TopBas_ListIteratorOfListOfTestInterference_HeaderFile
 #define _TopBas_ListIteratorOfListOfTestInterference_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_TopBas_ListNodeOfListOfTestInterference_HeaderFile
 #include <Handle_TopBas_ListNodeOfListOfTestInterference.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class TopBas_ListOfTestInterference;
@@ -33,27 +21,27 @@ class TopBas_ListNodeOfListOfTestInterference;
 
 
 
-class TopBas_ListIteratorOfListOfTestInterference  {
+class TopBas_ListIteratorOfListOfTestInterference 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopBas_ListIteratorOfListOfTestInterference();
+  Standard_EXPORT TopBas_ListIteratorOfListOfTestInterference();
   
-  Standard_EXPORT   TopBas_ListIteratorOfListOfTestInterference(const TopBas_ListOfTestInterference& L);
+  Standard_EXPORT TopBas_ListIteratorOfListOfTestInterference(const TopBas_ListOfTestInterference& L);
   
-  Standard_EXPORT     void Initialize(const TopBas_ListOfTestInterference& L) ;
+  Standard_EXPORT   void Initialize (const TopBas_ListOfTestInterference& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     TopBas_TestInterference& Value() const;
+  Standard_EXPORT   TopBas_TestInterference& Value()  const;
 
 
 friend class TopBas_ListOfTestInterference;
-
 
 
 protected:
@@ -66,8 +54,8 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
@@ -97,7 +85,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopBas_ListIteratorOfListOfTestInterference_HeaderFile

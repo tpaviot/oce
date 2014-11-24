@@ -5,39 +5,17 @@
 
 #include <GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox.hxx>
 
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _GeomInt_TheMultiLineOfWLApprox_HeaderFile
 #include <GeomInt_TheMultiLineOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_TheMultiLineToolOfWLApprox_HeaderFile
 #include <GeomInt_TheMultiLineToolOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox_HeaderFile
 #include <GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_HeaderFile
 #include <GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox_HeaderFile
 #include <GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox.hxx>
-#endif
-#ifndef _AppParCurves_HArray1OfConstraintCouple_HeaderFile
 #include <AppParCurves_HArray1OfConstraintCouple.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _TColStd_Array1OfInteger_HeaderFile
 #include <TColStd_Array1OfInteger.hxx>
-#endif
-#ifndef _AppParCurves_MultiBSpCurve_HeaderFile
 #include <AppParCurves_MultiBSpCurve.hxx>
-#endif
  
 
 #define MultiLine GeomInt_TheMultiLineOfWLApprox

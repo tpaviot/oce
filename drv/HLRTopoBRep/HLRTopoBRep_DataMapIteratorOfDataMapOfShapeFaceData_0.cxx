@@ -5,24 +5,12 @@
 
 #include <HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _HLRTopoBRep_FaceData_HeaderFile
 #include <HLRTopoBRep_FaceData.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _HLRTopoBRep_DataMapOfShapeFaceData_HeaderFile
 #include <HLRTopoBRep_DataMapOfShapeFaceData.hxx>
-#endif
-#ifndef _HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData_HeaderFile
 #include <HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape

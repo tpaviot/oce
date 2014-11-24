@@ -5,13 +5,9 @@
 
 #include <TColStd_SequenceNodeOfSequenceOfBoolean.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColStd_SequenceOfBoolean_HeaderFile
 #include <TColStd_SequenceOfBoolean.hxx>
-#endif
 
  
 

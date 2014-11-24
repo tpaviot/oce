@@ -5,27 +5,13 @@
 
 #include <ShapeFix_DataMapOfShapeBox2d.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Bnd_Box2d_HeaderFile
 #include <Bnd_Box2d.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _ShapeFix_DataMapNodeOfDataMapOfShapeBox2d_HeaderFile
 #include <ShapeFix_DataMapNodeOfDataMapOfShapeBox2d.hxx>
-#endif
-#ifndef _ShapeFix_DataMapIteratorOfDataMapOfShapeBox2d_HeaderFile
 #include <ShapeFix_DataMapIteratorOfDataMapOfShapeBox2d.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape

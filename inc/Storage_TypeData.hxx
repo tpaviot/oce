@@ -6,37 +6,17 @@
 #ifndef _Storage_TypeData_HeaderFile
 #define _Storage_TypeData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Storage_TypeData_HeaderFile
 #include <Handle_Storage_TypeData.hxx>
-#endif
 
-#ifndef _Storage_PType_HeaderFile
 #include <Storage_PType.hxx>
-#endif
-#ifndef _Storage_Error_HeaderFile
 #include <Storage_Error.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TColStd_HSequenceOfAsciiString_HeaderFile
 #include <Handle_TColStd_HSequenceOfAsciiString.hxx>
-#endif
 class Standard_NoSuchObject;
 class Storage_Schema;
 class TCollection_AsciiString;
@@ -44,26 +24,27 @@ class TColStd_HSequenceOfAsciiString;
 
 
 
-class Storage_TypeData : public MMgt_TShared {
+class Storage_TypeData : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   Storage_TypeData();
+  Standard_EXPORT Storage_TypeData();
   
-  Standard_EXPORT     Standard_Integer NumberOfTypes() const;
+  Standard_EXPORT   Standard_Integer NumberOfTypes()  const;
   
-  Standard_EXPORT     Standard_Boolean IsType(const TCollection_AsciiString& aName) const;
+  Standard_EXPORT   Standard_Boolean IsType (const TCollection_AsciiString& aName)  const;
   
-  Standard_EXPORT     Handle_TColStd_HSequenceOfAsciiString Types() const;
+  Standard_EXPORT   Handle(TColStd_HSequenceOfAsciiString) Types()  const;
   
-  Standard_EXPORT     Storage_Error ErrorStatus() const;
+  Standard_EXPORT   Storage_Error ErrorStatus()  const;
   
-  Standard_EXPORT     TCollection_AsciiString ErrorStatusExtension() const;
+  Standard_EXPORT   TCollection_AsciiString ErrorStatusExtension()  const;
   
-  Standard_EXPORT     void ClearErrorStatus() ;
+  Standard_EXPORT   void ClearErrorStatus() ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 
 
 friend class Storage_Schema;
@@ -78,20 +59,23 @@ protected:
 
 private: 
 
-  //! add a type to the list <br>
-  Standard_EXPORT     void AddType(const TCollection_AsciiString& aName,const Standard_Integer aTypeNum) ;
-  //! returns the name of the type with number <aTypeNum> <br>
-  Standard_EXPORT     TCollection_AsciiString Type(const Standard_Integer aTypeNum) const;
-  //! returns the name of the type with number <aTypeNum> <br>
-  Standard_EXPORT     Standard_Integer Type(const TCollection_AsciiString& aTypeName) const;
   
-  Standard_EXPORT     void SetErrorStatus(const Storage_Error anError) ;
+  //! add a type to the list
+  Standard_EXPORT   void AddType (const TCollection_AsciiString& aName, const Standard_Integer aTypeNum) ;
   
-  Standard_EXPORT     void SetErrorStatusExtension(const TCollection_AsciiString& anErrorExt) ;
+  //! returns the name of the type with number <aTypeNum>
+  Standard_EXPORT   TCollection_AsciiString Type (const Standard_Integer aTypeNum)  const;
+  
+  //! returns the name of the type with number <aTypeNum>
+  Standard_EXPORT   Standard_Integer Type (const TCollection_AsciiString& aTypeName)  const;
+  
+  Standard_EXPORT   void SetErrorStatus (const Storage_Error anError) ;
+  
+  Standard_EXPORT   void SetErrorStatusExtension (const TCollection_AsciiString& anErrorExt) ;
 
-Storage_PType myPt;
-Storage_Error myErrorStatus;
-TCollection_AsciiString myErrorStatusExt;
+  Storage_PType myPt;
+  Storage_Error myErrorStatus;
+  TCollection_AsciiString myErrorStatusExt;
 
 
 };
@@ -100,7 +84,6 @@ TCollection_AsciiString myErrorStatusExt;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Storage_TypeData_HeaderFile

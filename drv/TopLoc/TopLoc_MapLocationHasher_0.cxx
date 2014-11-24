@@ -5,9 +5,7 @@
 
 #include <TopLoc_MapLocationHasher.hxx>
 
-#ifndef _TopLoc_Location_HeaderFile
 #include <TopLoc_Location.hxx>
-#endif
  
 
 #define Key TopLoc_Location

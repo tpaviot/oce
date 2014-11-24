@@ -6,46 +6,38 @@
 #ifndef _BOPTest_HeaderFile
 #define _BOPTest_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Draw_Interpretor_HeaderFile
 #include <Draw_Interpretor.hxx>
-#endif
 class BOPTest_Objects;
 class BOPTest_DrawableShape;
 
 
 
-class BOPTest  {
+class BOPTest 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  void AllCommands(Draw_Interpretor& aDI) ;
+  Standard_EXPORT static   void AllCommands (Draw_Interpretor& aDI) ;
   
-  Standard_EXPORT   static  void BOPCommands(Draw_Interpretor& aDI) ;
+  Standard_EXPORT static   void BOPCommands (Draw_Interpretor& aDI) ;
   
-  Standard_EXPORT   static  void CheckCommands(Draw_Interpretor& aDI) ;
+  Standard_EXPORT static   void CheckCommands (Draw_Interpretor& aDI) ;
   
-  Standard_EXPORT   static  void TolerCommands(Draw_Interpretor& aDI) ;
+  Standard_EXPORT static   void TolerCommands (Draw_Interpretor& aDI) ;
   
-  Standard_EXPORT   static  void LowCommands(Draw_Interpretor& aDI) ;
+  Standard_EXPORT static   void LowCommands (Draw_Interpretor& aDI) ;
   
-  Standard_EXPORT   static  void ObjCommands(Draw_Interpretor& aDI) ;
+  Standard_EXPORT static   void ObjCommands (Draw_Interpretor& aDI) ;
   
-  Standard_EXPORT   static  void PartitionCommands(Draw_Interpretor& aDI) ;
+  Standard_EXPORT static   void PartitionCommands (Draw_Interpretor& aDI) ;
   
-  Standard_EXPORT   static  void Factory(Draw_Interpretor& aDI) ;
-
+  Standard_EXPORT static   void Factory (Draw_Interpretor& aDI) ;
 
 
 
@@ -70,7 +62,6 @@ friend class BOPTest_DrawableShape;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BOPTest_HeaderFile

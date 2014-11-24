@@ -5,19 +5,11 @@
 
 #include <Select3D_ListNodeOfListOfSensitiveTriangle.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Select3D_SensitiveTriangle_HeaderFile
 #include <Select3D_SensitiveTriangle.hxx>
-#endif
-#ifndef _Select3D_ListOfSensitiveTriangle_HeaderFile
 #include <Select3D_ListOfSensitiveTriangle.hxx>
-#endif
-#ifndef _Select3D_ListIteratorOfListOfSensitiveTriangle_HeaderFile
 #include <Select3D_ListIteratorOfListOfSensitiveTriangle.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(Select3D_ListNodeOfListOfSensitiveTriangle,Standard_Transient
 IMPLEMENT_STANDARD_RTTI(Select3D_ListNodeOfListOfSensitiveTriangle)
 
 
-#define Item Handle_Select3D_SensitiveTriangle
+#define Item Handle(Select3D_SensitiveTriangle)
 #define Item_hxx <Select3D_SensitiveTriangle.hxx>
 #define TCollection_ListNode Select3D_ListNodeOfListOfSensitiveTriangle
 #define TCollection_ListNode_hxx <Select3D_ListNodeOfListOfSensitiveTriangle.hxx>

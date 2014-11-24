@@ -1,9 +1,3 @@
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _BRepPrimAPI_MakeBox_HeaderFile
 #include <BRepPrimAPI_MakeBox.hxx>
-#endif
-#ifndef _QANewBRepNaming_Box_HeaderFile
 #include <QANewBRepNaming_Box.hxx>
-#endif

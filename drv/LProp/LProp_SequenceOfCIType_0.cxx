@@ -5,15 +5,9 @@
 
 #include <LProp_SequenceOfCIType.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _LProp_SequenceNodeOfSequenceOfCIType_HeaderFile
 #include <LProp_SequenceNodeOfSequenceOfCIType.hxx>
-#endif
  
 
 #define SeqItem LProp_CIType

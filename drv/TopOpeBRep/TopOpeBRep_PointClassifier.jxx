@@ -1,15 +1,5 @@
-#ifndef _BRepTopAdaptor_TopolTool_HeaderFile
 #include <BRepTopAdaptor_TopolTool.hxx>
-#endif
-#ifndef _BRepAdaptor_HSurface_HeaderFile
 #include <BRepAdaptor_HSurface.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _TopOpeBRep_PointClassifier_HeaderFile
 #include <TopOpeBRep_PointClassifier.hxx>
-#endif

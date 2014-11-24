@@ -1,21 +1,7 @@
-#ifndef _Interface_InterfaceModel_HeaderFile
 #include <Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Interface_Protocol_HeaderFile
 #include <Interface_Protocol.hxx>
-#endif
-#ifndef _IFSelect_ContextWrite_HeaderFile
 #include <IFSelect_ContextWrite.hxx>
-#endif
-#ifndef _IGESData_Protocol_HeaderFile
 #include <IGESData_Protocol.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Message_Messenger_HeaderFile
 #include <Message_Messenger.hxx>
-#endif
-#ifndef _IGESSelect_WorkLibrary_HeaderFile
 #include <IGESSelect_WorkLibrary.hxx>
-#endif

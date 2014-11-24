@@ -1,12 +1,4 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepBasic_ProductDefinition_HeaderFile
 #include <StepBasic_ProductDefinition.hxx>
-#endif
-#ifndef _StepRepr_ShapeAspect_HeaderFile
 #include <StepRepr_ShapeAspect.hxx>
-#endif
-#ifndef _StepAP203_SpecifiedItem_HeaderFile
 #include <StepAP203_SpecifiedItem.hxx>
-#endif

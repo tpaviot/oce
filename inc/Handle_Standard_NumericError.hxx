@@ -6,22 +6,15 @@
 #ifndef _Handle_Standard_NumericError_HeaderFile
 #define _Handle_Standard_NumericError_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Standard_Failure_HeaderFile
 #include <Handle_Standard_Failure.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Standard_Failure);
 class Standard_NumericError;
 
-DEFINE_STANDARD_HANDLE(Standard_NumericError,Standard_Failure)
+DEFINE_STANDARD_HANDLE(Standard_NumericError, Standard_Failure)
 
-#endif
+#endif // _Handle_Standard_NumericError_HeaderFile

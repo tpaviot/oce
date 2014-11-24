@@ -6,28 +6,14 @@
 #ifndef _XCAFDoc_DataMapNodeOfDataMapOfShapeLabel_HeaderFile
 #define _XCAFDoc_DataMapNodeOfDataMapOfShapeLabel_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel_HeaderFile
 #include <Handle_XCAFDoc_DataMapNodeOfDataMapOfShapeLabel.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopoDS_Shape;
 class TDF_Label;
 class TopTools_ShapeMapHasher;
@@ -36,16 +22,17 @@ class XCAFDoc_DataMapIteratorOfDataMapOfShapeLabel;
 
 
 
-class XCAFDoc_DataMapNodeOfDataMapOfShapeLabel : public TCollection_MapNode {
+class XCAFDoc_DataMapNodeOfDataMapOfShapeLabel : public TCollection_MapNode
+{
 
 public:
 
   
-      XCAFDoc_DataMapNodeOfDataMapOfShapeLabel(const TopoDS_Shape& K,const TDF_Label& I,const TCollection_MapNodePtr& n);
+    XCAFDoc_DataMapNodeOfDataMapOfShapeLabel(const TopoDS_Shape& K, const TDF_Label& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        TDF_Label& Value() const;
+      TDF_Label& Value()  const;
 
 
 
@@ -60,8 +47,8 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-TDF_Label myValue;
+  TopoDS_Shape myKey;
+  TDF_Label myValue;
 
 
 };
@@ -99,7 +86,6 @@ TDF_Label myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XCAFDoc_DataMapNodeOfDataMapOfShapeLabel_HeaderFile

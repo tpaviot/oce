@@ -1,6 +1,2 @@
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _HeaderSection_HeaderRecognizer_HeaderFile
 #include <HeaderSection_HeaderRecognizer.hxx>
-#endif

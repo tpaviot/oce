@@ -5,9 +5,7 @@
 
 #include <Quantity_PeriodDefinitionError.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
 IMPLEMENT_STANDARD_EXCEPTION(Quantity_PeriodDefinitionError)
  

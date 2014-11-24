@@ -6,54 +6,41 @@
 #ifndef _STEPSelections_AssemblyLink_HeaderFile
 #define _STEPSelections_AssemblyLink_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_STEPSelections_AssemblyLink_HeaderFile
 #include <Handle_STEPSelections_AssemblyLink.hxx>
-#endif
 
-#ifndef _Handle_StepRepr_NextAssemblyUsageOccurrence_HeaderFile
 #include <Handle_StepRepr_NextAssemblyUsageOccurrence.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_STEPSelections_AssemblyComponent_HeaderFile
 #include <Handle_STEPSelections_AssemblyComponent.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepRepr_NextAssemblyUsageOccurrence;
 class Standard_Transient;
 class STEPSelections_AssemblyComponent;
 
 
 
-class STEPSelections_AssemblyLink : public MMgt_TShared {
+class STEPSelections_AssemblyLink : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   STEPSelections_AssemblyLink();
+  Standard_EXPORT STEPSelections_AssemblyLink();
   
-  Standard_EXPORT   STEPSelections_AssemblyLink(const Handle(StepRepr_NextAssemblyUsageOccurrence)& nauo,const Handle(Standard_Transient)& item,const Handle(STEPSelections_AssemblyComponent)& part);
+  Standard_EXPORT STEPSelections_AssemblyLink(const Handle(StepRepr_NextAssemblyUsageOccurrence)& nauo, const Handle(Standard_Transient)& item, const Handle(STEPSelections_AssemblyComponent)& part);
   
-        Handle_StepRepr_NextAssemblyUsageOccurrence GetNAUO() const;
+      Handle(StepRepr_NextAssemblyUsageOccurrence) GetNAUO()  const;
   
-        Handle_Standard_Transient GetItem() const;
+      Handle(Standard_Transient) GetItem()  const;
   
-        Handle_STEPSelections_AssemblyComponent GetComponent() const;
+      Handle(STEPSelections_AssemblyComponent) GetComponent()  const;
   
-        void SetNAUO(const Handle(StepRepr_NextAssemblyUsageOccurrence)& nauo) ;
+      void SetNAUO (const Handle(StepRepr_NextAssemblyUsageOccurrence)& nauo) ;
   
-        void SetItem(const Handle(Standard_Transient)& item) ;
+      void SetItem (const Handle(Standard_Transient)& item) ;
   
-        void SetComponent(const Handle(STEPSelections_AssemblyComponent)& part) ;
+      void SetComponent (const Handle(STEPSelections_AssemblyComponent)& part) ;
 
 
 
@@ -68,9 +55,9 @@ protected:
 private: 
 
 
-Handle_StepRepr_NextAssemblyUsageOccurrence myNAUO;
-Handle_Standard_Transient myItem;
-Handle_STEPSelections_AssemblyComponent myComponent;
+  Handle(StepRepr_NextAssemblyUsageOccurrence) myNAUO;
+  Handle(Standard_Transient) myItem;
+  Handle(STEPSelections_AssemblyComponent) myComponent;
 
 
 };
@@ -80,7 +67,6 @@ Handle_STEPSelections_AssemblyComponent myComponent;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPSelections_AssemblyLink_HeaderFile

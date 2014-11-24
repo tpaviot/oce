@@ -7,7 +7,6 @@
 #define _Graphic3d_CStructurePtr_HeaderFile
 
 class Graphic3d_CStructure;
-
 typedef Graphic3d_CStructure* Graphic3d_CStructurePtr;
 
-#endif
+#endif // _Graphic3d_CStructurePtr_HeaderFile

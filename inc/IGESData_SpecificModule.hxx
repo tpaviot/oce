@@ -6,66 +6,53 @@
 #ifndef _IGESData_SpecificModule_HeaderFile
 #define _IGESData_SpecificModule_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESData_SpecificModule_HeaderFile
 #include <Handle_IGESData_SpecificModule.hxx>
-#endif
 
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Handle_Message_Messenger_HeaderFile
 #include <Handle_Message_Messenger.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class IGESData_IGESEntity;
 class IGESData_IGESDumper;
 class Message_Messenger;
 
 
-//! This class defines some Services which are specifically <br>
-//!           attached to IGES Entities : Dump <br>
-class IGESData_SpecificModule : public Standard_Transient {
+//! This class defines some Services which are specifically
+//! attached to IGES Entities : Dump
+class IGESData_SpecificModule : public Standard_Transient
+{
 
 public:
 
-  //! Specific Dump for each type of IGES Entity : it concerns only <br>
-//!           own parameters, the general data (Directory Part, Lists) are <br>
-//!           taken into account by the IGESDumper <br>
-//!           See class IGESDumper for the rules to follow for <own> and <br>
-//!           <attached> level <br>
-  Standard_EXPORT   virtual  void OwnDump(const Standard_Integer CN,const Handle(IGESData_IGESEntity)& ent,const IGESData_IGESDumper& dumper,const Handle(Message_Messenger)& S,const Standard_Integer own) const = 0;
-  //! Specific Automatic Correction on own Parameters of an Entity. <br>
-//!           It works by setting in accordance redundant data, if there are <br>
-//!           when there is no ambiguity (else, it does nothing). <br>
-//!           Remark that classic Corrections on Directory Entry (to set <br>
-//!           void data) are taken into account alsewhere. <br>
-//! <br>
-//!           For instance, many "Associativity Entities" have a Number of <br>
-//!           Properties which must have a fixed value. <br>
-//!           Or, a ConicalArc has its Form Number which records the kind of <br>
-//!           Conic, also determined from its coefficients <br>
-//!           But, a CircularArc of which Distances (Center-Start) and <br>
-//!           (Center-End) are not equal cannot be corrected ... <br>
-//! <br>
-//!           Returns True if something has been corrected in <ent> <br>
-//!           By default, does nothing. If at least one of the Types <br>
-//!           processed by a sub-class of SpecificModule has a Correct <br>
-//!           procedure attached, this method can be redefined <br>
-  Standard_EXPORT   virtual  Standard_Boolean OwnCorrect(const Standard_Integer CN,const Handle(IGESData_IGESEntity)& ent) const;
+  
+  //! Specific Dump for each type of IGES Entity : it concerns only
+  //! own parameters, the general data (Directory Part, Lists) are
+  //! taken into account by the IGESDumper
+  //! See class IGESDumper for the rules to follow for <own> and
+  //! <attached> level
+  Standard_EXPORT virtual   void OwnDump (const Standard_Integer CN, const Handle(IGESData_IGESEntity)& ent, const IGESData_IGESDumper& dumper, const Handle(Message_Messenger)& S, const Standard_Integer own)  const = 0;
+  
+  //! Specific Automatic Correction on own Parameters of an Entity.
+  //! It works by setting in accordance redundant data, if there are
+  //! when there is no ambiguity (else, it does nothing).
+  //! Remark that classic Corrections on Directory Entry (to set
+  //! void data) are taken into account alsewhere.
+  //!
+  //! For instance, many "Associativity Entities" have a Number of
+  //! Properties which must have a fixed value.
+  //! Or, a ConicalArc has its Form Number which records the kind of
+  //! Conic, also determined from its coefficients
+  //! But, a CircularArc of which Distances (Center-Start) and
+  //! (Center-End) are not equal cannot be corrected ...
+  //!
+  //! Returns True if something has been corrected in <ent>
+  //! By default, does nothing. If at least one of the Types
+  //! processed by a sub-class of SpecificModule has a Correct
+  //! procedure attached, this method can be redefined
+  Standard_EXPORT virtual   Standard_Boolean OwnCorrect (const Standard_Integer CN, const Handle(IGESData_IGESEntity)& ent)  const;
 
 
 
@@ -88,7 +75,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESData_SpecificModule_HeaderFile

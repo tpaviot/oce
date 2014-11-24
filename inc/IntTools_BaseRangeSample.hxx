@@ -6,36 +6,28 @@
 #ifndef _IntTools_BaseRangeSample_HeaderFile
 #define _IntTools_BaseRangeSample_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 
 
-//! base class for range index management <br>
-class IntTools_BaseRangeSample  {
+//! base class for range index management
+class IntTools_BaseRangeSample 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntTools_BaseRangeSample();
+  Standard_EXPORT IntTools_BaseRangeSample();
   
-  Standard_EXPORT   IntTools_BaseRangeSample(const Standard_Integer theDepth);
+  Standard_EXPORT IntTools_BaseRangeSample(const Standard_Integer theDepth);
   
-        void SetDepth(const Standard_Integer theDepth) ;
+      void SetDepth (const Standard_Integer theDepth) ;
   
-        Standard_Integer GetDepth() const;
-
+      Standard_Integer GetDepth()  const;
 
 
 
@@ -50,7 +42,7 @@ private:
 
 
 
-Standard_Integer myDepth;
+  Standard_Integer myDepth;
 
 
 };
@@ -60,7 +52,6 @@ Standard_Integer myDepth;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_BaseRangeSample_HeaderFile

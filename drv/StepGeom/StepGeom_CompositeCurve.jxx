@@ -1,12 +1,4 @@
-#ifndef _StepGeom_HArray1OfCompositeCurveSegment_HeaderFile
 #include <StepGeom_HArray1OfCompositeCurveSegment.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepGeom_CompositeCurveSegment_HeaderFile
 #include <StepGeom_CompositeCurveSegment.hxx>
-#endif
-#ifndef _StepGeom_CompositeCurve_HeaderFile
 #include <StepGeom_CompositeCurve.hxx>
-#endif

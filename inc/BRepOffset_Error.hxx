@@ -6,8 +6,11 @@
 #ifndef _BRepOffset_Error_HeaderFile
 #define _BRepOffset_Error_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum BRepOffset_Error {
+
+enum BRepOffset_Error
+{
 BRepOffset_NoError,
 BRepOffset_OffsetSurfaceFailed,
 BRepOffset_UnCorrectClosingFace,
@@ -16,8 +19,4 @@ BRepOffset_RadiusEqualOffset,
 BRepOffset_UnknownError
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BRepOffset_Error_HeaderFile

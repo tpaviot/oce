@@ -1,24 +1,8 @@
-#ifndef _TopOpeBRep_HArray1OfLineInter_HeaderFile
 #include <TopOpeBRep_HArray1OfLineInter.hxx>
-#endif
-#ifndef _BRepAdaptor_HSurface_HeaderFile
 #include <BRepAdaptor_HSurface.hxx>
-#endif
-#ifndef _BRepTopAdaptor_TopolTool_HeaderFile
 #include <BRepTopAdaptor_TopolTool.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
-#ifndef _TopTools_IndexedMapOfShape_HeaderFile
 #include <TopTools_IndexedMapOfShape.hxx>
-#endif
-#ifndef _TopOpeBRep_LineInter_HeaderFile
 #include <TopOpeBRep_LineInter.hxx>
-#endif
-#ifndef _TopOpeBRep_FacesIntersector_HeaderFile
 #include <TopOpeBRep_FacesIntersector.hxx>
-#endif

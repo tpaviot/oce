@@ -6,8 +6,11 @@
 #ifndef _V3d_TypeOfPickLight_HeaderFile
 #define _V3d_TypeOfPickLight_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum V3d_TypeOfPickLight {
+
+enum V3d_TypeOfPickLight
+{
 V3d_POSITIONLIGHT,
 V3d_SPACELIGHT,
 V3d_RADIUSTEXTLIGHT,
@@ -16,8 +19,4 @@ V3d_IntRADIUSLIGHT,
 V3d_NOTHING
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _V3d_TypeOfPickLight_HeaderFile

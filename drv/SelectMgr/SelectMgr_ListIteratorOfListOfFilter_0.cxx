@@ -5,24 +5,14 @@
 
 #include <SelectMgr_ListIteratorOfListOfFilter.hxx>
 
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _SelectMgr_ListOfFilter_HeaderFile
 #include <SelectMgr_ListOfFilter.hxx>
-#endif
-#ifndef _SelectMgr_Filter_HeaderFile
 #include <SelectMgr_Filter.hxx>
-#endif
-#ifndef _SelectMgr_ListNodeOfListOfFilter_HeaderFile
 #include <SelectMgr_ListNodeOfListOfFilter.hxx>
-#endif
  
 
-#define Item Handle_SelectMgr_Filter
+#define Item Handle(SelectMgr_Filter)
 #define Item_hxx <SelectMgr_Filter.hxx>
 #define TCollection_ListNode SelectMgr_ListNodeOfListOfFilter
 #define TCollection_ListNode_hxx <SelectMgr_ListNodeOfListOfFilter.hxx>

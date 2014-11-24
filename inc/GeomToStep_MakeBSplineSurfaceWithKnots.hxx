@@ -6,45 +6,33 @@
 #ifndef _GeomToStep_MakeBSplineSurfaceWithKnots_HeaderFile
 #define _GeomToStep_MakeBSplineSurfaceWithKnots_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_BSplineSurfaceWithKnots_HeaderFile
 #include <Handle_StepGeom_BSplineSurfaceWithKnots.hxx>
-#endif
-#ifndef _GeomToStep_Root_HeaderFile
 #include <GeomToStep_Root.hxx>
-#endif
-#ifndef _Handle_Geom_BSplineSurface_HeaderFile
 #include <Handle_Geom_BSplineSurface.hxx>
-#endif
 class StepGeom_BSplineSurfaceWithKnots;
 class StdFail_NotDone;
 class Geom_BSplineSurface;
 
 
-//! This class implements the mapping between class <br>
-//!          BSplineSurface from Geom and the class <br>
-//!          BSplineSurfaceWithKnots from <br>
-//!          StepGeom which describes a <br>
-//!          bspline_Surface_with_knots from Prostep <br>
-class GeomToStep_MakeBSplineSurfaceWithKnots  : public GeomToStep_Root {
+//! This class implements the mapping between class
+//! BSplineSurface from Geom and the class
+//! BSplineSurfaceWithKnots from
+//! StepGeom which describes a
+//! bspline_Surface_with_knots from Prostep
+class GeomToStep_MakeBSplineSurfaceWithKnots  : public GeomToStep_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomToStep_MakeBSplineSurfaceWithKnots(const Handle(Geom_BSplineSurface)& Bsplin);
+  Standard_EXPORT GeomToStep_MakeBSplineSurfaceWithKnots(const Handle(Geom_BSplineSurface)& Bsplin);
   
-  Standard_EXPORT    const Handle_StepGeom_BSplineSurfaceWithKnots& Value() const;
-
+  Standard_EXPORT  const  Handle(StepGeom_BSplineSurfaceWithKnots)& Value()  const;
 
 
 
@@ -59,7 +47,7 @@ private:
 
 
 
-Handle_StepGeom_BSplineSurfaceWithKnots theBSplineSurfaceWithKnots;
+  Handle(StepGeom_BSplineSurfaceWithKnots) theBSplineSurfaceWithKnots;
 
 
 };
@@ -68,7 +56,6 @@ Handle_StepGeom_BSplineSurfaceWithKnots theBSplineSurfaceWithKnots;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomToStep_MakeBSplineSurfaceWithKnots_HeaderFile

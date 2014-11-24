@@ -5,32 +5,18 @@
 
 #include <Transfer_TransferMapOfProcessForFinder.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Transfer_Finder_HeaderFile
 #include <Transfer_Finder.hxx>
-#endif
-#ifndef _Transfer_Binder_HeaderFile
 #include <Transfer_Binder.hxx>
-#endif
-#ifndef _Transfer_FindHasher_HeaderFile
 #include <Transfer_FindHasher.hxx>
-#endif
-#ifndef _Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder_HeaderFile
 #include <Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder.hxx>
-#endif
  
 
-#define TheKey Handle_Transfer_Finder
+#define TheKey Handle(Transfer_Finder)
 #define TheKey_hxx <Transfer_Finder.hxx>
-#define TheItem Handle_Transfer_Binder
+#define TheItem Handle(Transfer_Binder)
 #define TheItem_hxx <Transfer_Binder.hxx>
 #define Hasher Transfer_FindHasher
 #define Hasher_hxx <Transfer_FindHasher.hxx>

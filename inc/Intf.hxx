@@ -6,22 +6,12 @@
 #ifndef _Intf_HeaderFile
 #define _Intf_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class gp_Pnt;
 class gp_XYZ;
 class Intf_Polygon2d;
@@ -41,23 +31,27 @@ class Intf_SequenceNodeOfSeqOfTangentZone;
 class Intf_SequenceNodeOfSeqOfSectionLine;
 
 
-//! Interference computation  between polygons, lines  and <br>
-//!          polyhedra with only  triangular  facets. These objects <br>
-//!          are polygonal  representations of complex   curves and <br>
-//!          triangulated representations of complex surfaces. <br>
-class Intf  {
+//! Interference computation  between polygons, lines  and
+//! polyhedra with only  triangular  facets. These objects
+//! are polygonal  representations of complex   curves and
+//! triangulated representations of complex surfaces.
+class Intf 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Computes   the  interference between   two polygons in  2d. <br>
-//!          Result : points of intersections and zones of tangence. <br>//! Computes the interference  between a polygon or  a straight <br>
-//!          line and a polyhedron.   Points of intersection  and zones <br>
-//!          of tangence. <br>//! Give the plane equation of the triangle <P1> <P2> <P3>. <br>
-  Standard_EXPORT   static  void PlaneEquation(const gp_Pnt& P1,const gp_Pnt& P2,const gp_Pnt& P3,gp_XYZ& NormalVector,Standard_Real& PolarDistance) ;
-  //! Compute if the triangle <P1> <P2> <P3> contain <ThePnt>. <br>
-  Standard_EXPORT   static  Standard_Boolean Contain(const gp_Pnt& P1,const gp_Pnt& P2,const gp_Pnt& P3,const gp_Pnt& ThePnt) ;
-
+  
+  //! Computes   the  interference between   two polygons in  2d.
+  //! Result : points of intersections and zones of tangence.
+  //! Computes the interference  between a polygon or  a straight
+  //! line and a polyhedron.   Points of intersection  and zones
+  //! of tangence.
+  //! Give the plane equation of the triangle <P1> <P2> <P3>.
+  Standard_EXPORT static   void PlaneEquation (const gp_Pnt& P1, const gp_Pnt& P2, const gp_Pnt& P3, gp_XYZ& NormalVector, Standard_Real& PolarDistance) ;
+  
+  //! Compute if the triangle <P1> <P2> <P3> contain <ThePnt>.
+  Standard_EXPORT static   Standard_Boolean Contain (const gp_Pnt& P1, const gp_Pnt& P2, const gp_Pnt& P3, const gp_Pnt& ThePnt) ;
 
 
 
@@ -95,7 +89,6 @@ friend class Intf_SequenceNodeOfSeqOfSectionLine;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Intf_HeaderFile

@@ -6,49 +6,46 @@
 #ifndef _StepElement_UniformSurfaceSection_HeaderFile
 #define _StepElement_UniformSurfaceSection_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepElement_UniformSurfaceSection_HeaderFile
 #include <Handle_StepElement_UniformSurfaceSection.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _StepElement_MeasureOrUnspecifiedValue_HeaderFile
 #include <StepElement_MeasureOrUnspecifiedValue.hxx>
-#endif
-#ifndef _StepElement_SurfaceSection_HeaderFile
 #include <StepElement_SurfaceSection.hxx>
-#endif
 class StepElement_MeasureOrUnspecifiedValue;
 
 
-//! Representation of STEP entity UniformSurfaceSection <br>
-class StepElement_UniformSurfaceSection : public StepElement_SurfaceSection {
+//! Representation of STEP entity UniformSurfaceSection
+class StepElement_UniformSurfaceSection : public StepElement_SurfaceSection
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepElement_UniformSurfaceSection();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const StepElement_MeasureOrUnspecifiedValue& aSurfaceSection_Offset,const StepElement_MeasureOrUnspecifiedValue& aSurfaceSection_NonStructuralMass,const StepElement_MeasureOrUnspecifiedValue& aSurfaceSection_NonStructuralMassOffset,const Standard_Real aThickness,const StepElement_MeasureOrUnspecifiedValue& aBendingThickness,const StepElement_MeasureOrUnspecifiedValue& aShearThickness) ;
-  //! Returns field Thickness <br>
-  Standard_EXPORT     Standard_Real Thickness() const;
-  //! Set field Thickness <br>
-  Standard_EXPORT     void SetThickness(const Standard_Real Thickness) ;
-  //! Returns field BendingThickness <br>
-  Standard_EXPORT     StepElement_MeasureOrUnspecifiedValue BendingThickness() const;
-  //! Set field BendingThickness <br>
-  Standard_EXPORT     void SetBendingThickness(const StepElement_MeasureOrUnspecifiedValue& BendingThickness) ;
-  //! Returns field ShearThickness <br>
-  Standard_EXPORT     StepElement_MeasureOrUnspecifiedValue ShearThickness() const;
-  //! Set field ShearThickness <br>
-  Standard_EXPORT     void SetShearThickness(const StepElement_MeasureOrUnspecifiedValue& ShearThickness) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepElement_UniformSurfaceSection();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const StepElement_MeasureOrUnspecifiedValue& aSurfaceSection_Offset, const StepElement_MeasureOrUnspecifiedValue& aSurfaceSection_NonStructuralMass, const StepElement_MeasureOrUnspecifiedValue& aSurfaceSection_NonStructuralMassOffset, const Standard_Real aThickness, const StepElement_MeasureOrUnspecifiedValue& aBendingThickness, const StepElement_MeasureOrUnspecifiedValue& aShearThickness) ;
+  
+  //! Returns field Thickness
+  Standard_EXPORT   Standard_Real Thickness()  const;
+  
+  //! Set field Thickness
+  Standard_EXPORT   void SetThickness (const Standard_Real Thickness) ;
+  
+  //! Returns field BendingThickness
+  Standard_EXPORT   StepElement_MeasureOrUnspecifiedValue BendingThickness()  const;
+  
+  //! Set field BendingThickness
+  Standard_EXPORT   void SetBendingThickness (const StepElement_MeasureOrUnspecifiedValue& BendingThickness) ;
+  
+  //! Returns field ShearThickness
+  Standard_EXPORT   StepElement_MeasureOrUnspecifiedValue ShearThickness()  const;
+  
+  //! Set field ShearThickness
+  Standard_EXPORT   void SetShearThickness (const StepElement_MeasureOrUnspecifiedValue& ShearThickness) ;
 
 
 
@@ -63,9 +60,9 @@ protected:
 private: 
 
 
-Standard_Real theThickness;
-StepElement_MeasureOrUnspecifiedValue theBendingThickness;
-StepElement_MeasureOrUnspecifiedValue theShearThickness;
+  Standard_Real theThickness;
+  StepElement_MeasureOrUnspecifiedValue theBendingThickness;
+  StepElement_MeasureOrUnspecifiedValue theShearThickness;
 
 
 };
@@ -74,7 +71,6 @@ StepElement_MeasureOrUnspecifiedValue theShearThickness;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_UniformSurfaceSection_HeaderFile

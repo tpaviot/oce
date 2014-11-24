@@ -5,21 +5,11 @@
 
 #include <Geom2dHatch_DataMapIteratorOfMapOfElements.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Geom2dHatch_Element_HeaderFile
 #include <Geom2dHatch_Element.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _Geom2dHatch_MapOfElements_HeaderFile
 #include <Geom2dHatch_MapOfElements.hxx>
-#endif
-#ifndef _Geom2dHatch_DataMapNodeOfMapOfElements_HeaderFile
 #include <Geom2dHatch_DataMapNodeOfMapOfElements.hxx>
-#endif
  
 
 #define TheKey Standard_Integer

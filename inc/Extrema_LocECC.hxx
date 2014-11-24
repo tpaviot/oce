@@ -6,25 +6,13 @@
 #ifndef _Extrema_LocECC_HeaderFile
 #define _Extrema_LocECC_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Extrema_POnCurv_HeaderFile
 #include <Extrema_POnCurv.hxx>
-#endif
 class Standard_DomainError;
 class StdFail_NotDone;
 class Adaptor3d_Curve;
@@ -37,20 +25,20 @@ class Extrema_SeqPOnCOfCCLocFOfLocECC;
 
 
 
-class Extrema_LocECC  {
+class Extrema_LocECC 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Extrema_LocECC(const Adaptor3d_Curve& C1,const Adaptor3d_Curve& C2,const Standard_Real U0,const Standard_Real V0,const Standard_Real TolU,const Standard_Real TolV);
+  Standard_EXPORT Extrema_LocECC(const Adaptor3d_Curve& C1, const Adaptor3d_Curve& C2, const Standard_Real U0, const Standard_Real V0, const Standard_Real TolU, const Standard_Real TolV);
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
   
-  Standard_EXPORT     Standard_Real SquareDistance() const;
+  Standard_EXPORT   Standard_Real SquareDistance()  const;
   
-  Standard_EXPORT     void Point(Extrema_POnCurv& P1,Extrema_POnCurv& P2) const;
-
+  Standard_EXPORT   void Point (Extrema_POnCurv& P1, Extrema_POnCurv& P2)  const;
 
 
 
@@ -65,10 +53,10 @@ private:
 
 
 
-Standard_Boolean myDone;
-Standard_Real mySqDist;
-Extrema_POnCurv myPoint1;
-Extrema_POnCurv myPoint2;
+  Standard_Boolean myDone;
+  Standard_Real mySqDist;
+  Extrema_POnCurv myPoint1;
+  Extrema_POnCurv myPoint2;
 
 
 };
@@ -77,7 +65,6 @@ Extrema_POnCurv myPoint2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Extrema_LocECC_HeaderFile

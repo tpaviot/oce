@@ -1,15 +1,5 @@
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Interface_ParamSet_HeaderFile
 #include <Interface_ParamSet.hxx>
-#endif
-#ifndef _Interface_Check_HeaderFile
 #include <Interface_Check.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _IGESData_GlobalSection_HeaderFile
 #include <IGESData_GlobalSection.hxx>
-#endif

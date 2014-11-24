@@ -6,83 +6,68 @@
 #ifndef _Extrema_FuncExtSS_HeaderFile
 #define _Extrema_FuncExtSS_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Adaptor3d_SurfacePtr_HeaderFile
 #include <Adaptor3d_SurfacePtr.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TColStd_SequenceOfReal_HeaderFile
 #include <TColStd_SequenceOfReal.hxx>
-#endif
-#ifndef _Extrema_SequenceOfPOnSurf_HeaderFile
 #include <Extrema_SequenceOfPOnSurf.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _math_FunctionSetWithDerivatives_HeaderFile
 #include <math_FunctionSetWithDerivatives.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
 #include <math_Vector.hxx>
-#endif
 class Standard_OutOfRange;
 class Adaptor3d_Surface;
 class math_Matrix;
 class Extrema_POnSurf;
 
 
-//! Function to find extrema of the <br>
-//!          distance between two surfaces. <br>
-class Extrema_FuncExtSS  : public math_FunctionSetWithDerivatives {
+//! Function to find extrema of the
+//! distance between two surfaces.
+class Extrema_FuncExtSS  : public math_FunctionSetWithDerivatives
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Extrema_FuncExtSS();
+  Standard_EXPORT Extrema_FuncExtSS();
   
-  Standard_EXPORT   Extrema_FuncExtSS(const Adaptor3d_Surface& S1,const Adaptor3d_Surface& S2);
-  //! sets the field mysurf of the function. <br>
-  Standard_EXPORT     void Initialize(const Adaptor3d_Surface& S1,const Adaptor3d_Surface& S2) ;
+  Standard_EXPORT Extrema_FuncExtSS(const Adaptor3d_Surface& S1, const Adaptor3d_Surface& S2);
   
-  Standard_EXPORT     Standard_Integer NbVariables() const;
+  //! sets the field mysurf of the function.
+  Standard_EXPORT   void Initialize (const Adaptor3d_Surface& S1, const Adaptor3d_Surface& S2) ;
   
-  Standard_EXPORT     Standard_Integer NbEquations() const;
-  //! Calculate Fi(U,V). <br>
-  Standard_EXPORT     Standard_Boolean Value(const math_Vector& UV,math_Vector& F) ;
-  //! Calculate Fi'(U,V). <br>
-  Standard_EXPORT     Standard_Boolean Derivatives(const math_Vector& UV,math_Matrix& DF) ;
-  //! Calculate Fi(U,V) and Fi'(U,V). <br>
-  Standard_EXPORT     Standard_Boolean Values(const math_Vector& UV,math_Vector& F,math_Matrix& DF) ;
-  //! Save the found extremum. <br>
-  Standard_EXPORT   virtual  Standard_Integer GetStateNumber() ;
-  //! Return the number of found extrema. <br>
-  Standard_EXPORT     Standard_Integer NbExt() const;
-  //! Return the value of the Nth distance. <br>
-  Standard_EXPORT     Standard_Real SquareDistance(const Standard_Integer N) const;
-  //! Return the Nth extremum on S1. <br>
-  Standard_EXPORT    const Extrema_POnSurf& PointOnS1(const Standard_Integer N) const;
-  //! Renvoie le Nieme extremum sur S2. <br>
-  Standard_EXPORT    const Extrema_POnSurf& PointOnS2(const Standard_Integer N) const;
-
+  Standard_EXPORT   Standard_Integer NbVariables()  const;
+  
+  Standard_EXPORT   Standard_Integer NbEquations()  const;
+  
+  //! Calculate Fi(U,V).
+  Standard_EXPORT   Standard_Boolean Value (const math_Vector& UV, math_Vector& F) ;
+  
+  //! Calculate Fi'(U,V).
+  Standard_EXPORT   Standard_Boolean Derivatives (const math_Vector& UV, math_Matrix& DF) ;
+  
+  //! Calculate Fi(U,V) and Fi'(U,V).
+  Standard_EXPORT   Standard_Boolean Values (const math_Vector& UV, math_Vector& F, math_Matrix& DF) ;
+  
+  //! Save the found extremum.
+  Standard_EXPORT virtual   Standard_Integer GetStateNumber() ;
+  
+  //! Return the number of found extrema.
+  Standard_EXPORT   Standard_Integer NbExt()  const;
+  
+  //! Return the value of the Nth distance.
+  Standard_EXPORT   Standard_Real SquareDistance (const Standard_Integer N)  const;
+  
+  //! Return the Nth extremum on S1.
+  Standard_EXPORT  const  Extrema_POnSurf& PointOnS1 (const Standard_Integer N)  const;
+  
+  //! Renvoie le Nieme extremum sur S2.
+  Standard_EXPORT  const  Extrema_POnSurf& PointOnS2 (const Standard_Integer N)  const;
 
 
 
@@ -96,22 +81,22 @@ protected:
 private:
 
   
-  Standard_EXPORT     Adaptor3d_SurfacePtr Bidon() const;
+  Standard_EXPORT   Adaptor3d_SurfacePtr Bidon()  const;
 
 
-Adaptor3d_SurfacePtr myS1;
-Adaptor3d_SurfacePtr myS2;
-gp_Pnt myP1;
-gp_Pnt myP2;
-Standard_Real myU1;
-Standard_Real myV1;
-Standard_Real myU2;
-Standard_Real myV2;
-TColStd_SequenceOfReal mySqDist;
-Extrema_SequenceOfPOnSurf myPoint1;
-Extrema_SequenceOfPOnSurf myPoint2;
-Standard_Boolean myS1init;
-Standard_Boolean myS2init;
+  Adaptor3d_SurfacePtr myS1;
+  Adaptor3d_SurfacePtr myS2;
+  gp_Pnt myP1;
+  gp_Pnt myP2;
+  Standard_Real myU1;
+  Standard_Real myV1;
+  Standard_Real myU2;
+  Standard_Real myV2;
+  TColStd_SequenceOfReal mySqDist;
+  Extrema_SequenceOfPOnSurf myPoint1;
+  Extrema_SequenceOfPOnSurf myPoint2;
+  Standard_Boolean myS1init;
+  Standard_Boolean myS2init;
 
 
 };
@@ -120,7 +105,6 @@ Standard_Boolean myS2init;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Extrema_FuncExtSS_HeaderFile

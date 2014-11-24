@@ -6,22 +6,12 @@
 #ifndef _TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeface_HeaderFile
 #define _TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface_HeaderFile
 #include <Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface.hxx>
-#endif
 class Standard_NoSuchObject;
 class TopoDS_Shape;
 class TopOpeBRepTool_face;
@@ -31,22 +21,22 @@ class TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface;
 
 
 
-class TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeface  : public TCollection_BasicMapIterator {
+class TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeface  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeface();
+  Standard_EXPORT TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeface();
   
-  Standard_EXPORT   TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeface(const TopOpeBRepTool_DataMapOfShapeface& aMap);
+  Standard_EXPORT TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeface(const TopOpeBRepTool_DataMapOfShapeface& aMap);
   
-  Standard_EXPORT     void Initialize(const TopOpeBRepTool_DataMapOfShapeface& aMap) ;
+  Standard_EXPORT   void Initialize (const TopOpeBRepTool_DataMapOfShapeface& aMap) ;
   
-  Standard_EXPORT    const TopoDS_Shape& Key() const;
+  Standard_EXPORT  const  TopoDS_Shape& Key()  const;
   
-  Standard_EXPORT    const TopOpeBRepTool_face& Value() const;
-
+  Standard_EXPORT  const  TopOpeBRepTool_face& Value()  const;
 
 
 
@@ -69,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeface_HeaderFile

@@ -6,40 +6,18 @@
 #ifndef _StepRepr_RepresentedDefinition_HeaderFile
 #define _StepRepr_RepresentedDefinition_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepBasic_GeneralProperty_HeaderFile
 #include <Handle_StepBasic_GeneralProperty.hxx>
-#endif
-#ifndef _Handle_StepRepr_PropertyDefinition_HeaderFile
 #include <Handle_StepRepr_PropertyDefinition.hxx>
-#endif
-#ifndef _Handle_StepRepr_PropertyDefinitionRelationship_HeaderFile
 #include <Handle_StepRepr_PropertyDefinitionRelationship.hxx>
-#endif
-#ifndef _Handle_StepRepr_ShapeAspect_HeaderFile
 #include <Handle_StepRepr_ShapeAspect.hxx>
-#endif
-#ifndef _Handle_StepRepr_ShapeAspectRelationship_HeaderFile
 #include <Handle_StepRepr_ShapeAspectRelationship.hxx>
-#endif
 class Standard_Transient;
 class StepBasic_GeneralProperty;
 class StepRepr_PropertyDefinition;
@@ -48,33 +26,40 @@ class StepRepr_ShapeAspect;
 class StepRepr_ShapeAspectRelationship;
 
 
-//! Representation of STEP SELECT type RepresentedDefinition <br>
-class StepRepr_RepresentedDefinition  : public StepData_SelectType {
+//! Representation of STEP SELECT type RepresentedDefinition
+class StepRepr_RepresentedDefinition  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepRepr_RepresentedDefinition();
-  //! Recognizes a kind of RepresentedDefinition select type <br>
-//!          1 -> GeneralProperty from StepBasic <br>
-//!          2 -> PropertyDefinition from StepRepr <br>
-//!          3 -> PropertyDefinitionRelationship from StepRepr <br>
-//!          4 -> ShapeAspect from StepRepr <br>
-//!          5 -> ShapeAspectRelationship from StepRepr <br>
-//!          0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! Returns Value as GeneralProperty (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_GeneralProperty GeneralProperty() const;
-  //! Returns Value as PropertyDefinition (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepRepr_PropertyDefinition PropertyDefinition() const;
-  //! Returns Value as PropertyDefinitionRelationship (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepRepr_PropertyDefinitionRelationship PropertyDefinitionRelationship() const;
-  //! Returns Value as ShapeAspect (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepRepr_ShapeAspect ShapeAspect() const;
-  //! Returns Value as ShapeAspectRelationship (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepRepr_ShapeAspectRelationship ShapeAspectRelationship() const;
-
+  
+  //! Empty constructor
+  Standard_EXPORT StepRepr_RepresentedDefinition();
+  
+  //! Recognizes a kind of RepresentedDefinition select type
+  //! 1 -> GeneralProperty from StepBasic
+  //! 2 -> PropertyDefinition from StepRepr
+  //! 3 -> PropertyDefinitionRelationship from StepRepr
+  //! 4 -> ShapeAspect from StepRepr
+  //! 5 -> ShapeAspectRelationship from StepRepr
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! Returns Value as GeneralProperty (or Null if another type)
+  Standard_EXPORT   Handle(StepBasic_GeneralProperty) GeneralProperty()  const;
+  
+  //! Returns Value as PropertyDefinition (or Null if another type)
+  Standard_EXPORT   Handle(StepRepr_PropertyDefinition) PropertyDefinition()  const;
+  
+  //! Returns Value as PropertyDefinitionRelationship (or Null if another type)
+  Standard_EXPORT   Handle(StepRepr_PropertyDefinitionRelationship) PropertyDefinitionRelationship()  const;
+  
+  //! Returns Value as ShapeAspect (or Null if another type)
+  Standard_EXPORT   Handle(StepRepr_ShapeAspect) ShapeAspect()  const;
+  
+  //! Returns Value as ShapeAspectRelationship (or Null if another type)
+  Standard_EXPORT   Handle(StepRepr_ShapeAspectRelationship) ShapeAspectRelationship()  const;
 
 
 
@@ -97,7 +82,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_RepresentedDefinition_HeaderFile

@@ -6,39 +6,28 @@
 #ifndef _MDF_ListNodeOfDriverListOfASDriverTable_HeaderFile
 #define _MDF_ListNodeOfDriverListOfASDriverTable_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MDF_ListNodeOfDriverListOfASDriverTable_HeaderFile
 #include <Handle_MDF_ListNodeOfDriverListOfASDriverTable.hxx>
-#endif
 
-#ifndef _Handle_MDF_ASDriver_HeaderFile
 #include <Handle_MDF_ASDriver.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class MDF_ASDriver;
 class MDF_DriverListOfASDriverTable;
 class MDF_ListIteratorOfDriverListOfASDriverTable;
 
 
 
-class MDF_ListNodeOfDriverListOfASDriverTable : public TCollection_MapNode {
+class MDF_ListNodeOfDriverListOfASDriverTable : public TCollection_MapNode
+{
 
 public:
 
   
-      MDF_ListNodeOfDriverListOfASDriverTable(const Handle(MDF_ASDriver)& I,const TCollection_MapNodePtr& n);
+    MDF_ListNodeOfDriverListOfASDriverTable(const Handle(MDF_ASDriver)& I, const TCollection_MapNodePtr& n);
   
-        Handle_MDF_ASDriver& Value() const;
+      Handle(MDF_ASDriver)& Value()  const;
 
 
 
@@ -53,12 +42,12 @@ protected:
 private: 
 
 
-Handle_MDF_ASDriver myValue;
+  Handle(MDF_ASDriver) myValue;
 
 
 };
 
-#define Item Handle_MDF_ASDriver
+#define Item Handle(MDF_ASDriver)
 #define Item_hxx <MDF_ASDriver.hxx>
 #define TCollection_ListNode MDF_ListNodeOfDriverListOfASDriverTable
 #define TCollection_ListNode_hxx <MDF_ListNodeOfDriverListOfASDriverTable.hxx>
@@ -83,7 +72,6 @@ Handle_MDF_ASDriver myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MDF_ListNodeOfDriverListOfASDriverTable_HeaderFile

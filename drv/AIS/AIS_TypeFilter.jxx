@@ -1,6 +1,2 @@
-#ifndef _SelectMgr_EntityOwner_HeaderFile
 #include <SelectMgr_EntityOwner.hxx>
-#endif
-#ifndef _AIS_TypeFilter_HeaderFile
 #include <AIS_TypeFilter.hxx>
-#endif

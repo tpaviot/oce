@@ -6,28 +6,14 @@
 #ifndef _Geom2dHatch_DataMapNodeOfHatchings_HeaderFile
 #define _Geom2dHatch_DataMapNodeOfHatchings_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Geom2dHatch_DataMapNodeOfHatchings_HeaderFile
 #include <Handle_Geom2dHatch_DataMapNodeOfHatchings.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Geom2dHatch_Hatching_HeaderFile
 #include <Geom2dHatch_Hatching.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Geom2dHatch_Hatching;
 class TColStd_MapIntegerHasher;
 class Geom2dHatch_Hatchings;
@@ -35,16 +21,17 @@ class Geom2dHatch_DataMapIteratorOfHatchings;
 
 
 
-class Geom2dHatch_DataMapNodeOfHatchings : public TCollection_MapNode {
+class Geom2dHatch_DataMapNodeOfHatchings : public TCollection_MapNode
+{
 
 public:
 
   
-      Geom2dHatch_DataMapNodeOfHatchings(const Standard_Integer& K,const Geom2dHatch_Hatching& I,const TCollection_MapNodePtr& n);
+    Geom2dHatch_DataMapNodeOfHatchings(const Standard_Integer& K, const Geom2dHatch_Hatching& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Key() const;
+      Standard_Integer& Key()  const;
   
-        Geom2dHatch_Hatching& Value() const;
+      Geom2dHatch_Hatching& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-Standard_Integer myKey;
-Geom2dHatch_Hatching myValue;
+  Standard_Integer myKey;
+  Geom2dHatch_Hatching myValue;
 
 
 };
@@ -98,7 +85,6 @@ Geom2dHatch_Hatching myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dHatch_DataMapNodeOfHatchings_HeaderFile

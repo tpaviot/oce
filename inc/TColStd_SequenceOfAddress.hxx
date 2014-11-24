@@ -6,96 +6,82 @@
 #ifndef _TColStd_SequenceOfAddress_HeaderFile
 #define _TColStd_SequenceOfAddress_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_TColStd_SequenceNodeOfSequenceOfAddress_HeaderFile
 #include <Handle_TColStd_SequenceNodeOfSequenceOfAddress.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class TColStd_SequenceNodeOfSequenceOfAddress;
 
 
 
-class TColStd_SequenceOfAddress  : public TCollection_BaseSequence {
+class TColStd_SequenceOfAddress  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      TColStd_SequenceOfAddress();
+    TColStd_SequenceOfAddress();
   
-  Standard_EXPORT   TColStd_SequenceOfAddress(const TColStd_SequenceOfAddress& Other);
+  Standard_EXPORT TColStd_SequenceOfAddress(const TColStd_SequenceOfAddress& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TColStd_SequenceOfAddress()
 {
   Clear();
 }
   
-  Standard_EXPORT    const TColStd_SequenceOfAddress& Assign(const TColStd_SequenceOfAddress& Other) ;
-   const TColStd_SequenceOfAddress& operator =(const TColStd_SequenceOfAddress& Other) 
+  Standard_EXPORT  const  TColStd_SequenceOfAddress& Assign (const TColStd_SequenceOfAddress& Other) ;
+ const  TColStd_SequenceOfAddress& operator = (const TColStd_SequenceOfAddress& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Standard_Address& T) ;
+  Standard_EXPORT   void Append (const Standard_Address& T) ;
   
-        void Append(TColStd_SequenceOfAddress& S) ;
+      void Append (TColStd_SequenceOfAddress& S) ;
   
-  Standard_EXPORT     void Prepend(const Standard_Address& T) ;
+  Standard_EXPORT   void Prepend (const Standard_Address& T) ;
   
-        void Prepend(TColStd_SequenceOfAddress& S) ;
+      void Prepend (TColStd_SequenceOfAddress& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Standard_Address& T) ;
+      void InsertBefore (const Standard_Integer Index, const Standard_Address& T) ;
   
-        void InsertBefore(const Standard_Integer Index,TColStd_SequenceOfAddress& S) ;
+      void InsertBefore (const Standard_Integer Index, TColStd_SequenceOfAddress& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Standard_Address& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Standard_Address& T) ;
   
-        void InsertAfter(const Standard_Integer Index,TColStd_SequenceOfAddress& S) ;
+      void InsertAfter (const Standard_Integer Index, TColStd_SequenceOfAddress& S) ;
   
-  Standard_EXPORT    const Standard_Address& First() const;
+  Standard_EXPORT  const  Standard_Address& First()  const;
   
-  Standard_EXPORT    const Standard_Address& Last() const;
+  Standard_EXPORT  const  Standard_Address& Last()  const;
   
-        void Split(const Standard_Integer Index,TColStd_SequenceOfAddress& Sub) ;
+      void Split (const Standard_Integer Index, TColStd_SequenceOfAddress& Sub) ;
   
-  Standard_EXPORT    const Standard_Address& Value(const Standard_Integer Index) const;
-   const Standard_Address& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Standard_Address& Value (const Standard_Integer Index)  const;
+ const  Standard_Address& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Standard_Address& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Standard_Address& I) ;
   
-  Standard_EXPORT     Standard_Address& ChangeValue(const Standard_Integer Index) ;
-    Standard_Address& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Standard_Address& ChangeValue (const Standard_Integer Index) ;
+  Standard_Address& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -135,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_SequenceOfAddress_HeaderFile

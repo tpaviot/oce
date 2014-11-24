@@ -6,46 +6,20 @@
 #ifndef _BRepFeat_MakeRevol_HeaderFile
 #define _BRepFeat_MakeRevol_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _gp_Ax1_HeaderFile
 #include <gp_Ax1.hxx>
-#endif
-#ifndef _TColGeom_SequenceOfCurve_HeaderFile
 #include <TColGeom_SequenceOfCurve.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _BRepFeat_StatusError_HeaderFile
 #include <BRepFeat_StatusError.hxx>
-#endif
-#ifndef _BRepFeat_Form_HeaderFile
 #include <BRepFeat_Form.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Geom_Curve;
 class Standard_ConstructionError;
 class TopoDS_Shape;
@@ -55,48 +29,54 @@ class TopoDS_Edge;
 class TColGeom_SequenceOfCurve;
 
 
-//! Describes functions to build revolved shells from basis shapes. <br>
-class BRepFeat_MakeRevol  : public BRepFeat_Form {
+//! Describes functions to build revolved shells from basis shapes.
+class BRepFeat_MakeRevol  : public BRepFeat_Form
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! initializes the revolved shell class. <br>
-      BRepFeat_MakeRevol();
-  //! a face Pbase is selected in the <br>
-//!   shape Sbase to serve as the basis for the <br>
-//!   revolved shell. The revolution will be defined <br>
-//!   by the axis Axis and Fuse offers a choice between: <br>
-//!   -   removing matter with a Boolean cut using the setting 0 <br>
-//!   -   adding matter with Boolean fusion using the setting 1. <br>
-//!     The sketch face Skface serves to determine <br>
-//! the type of operation. If it is inside the basis <br>
-//! shape, a local operation such as glueing can be performed. <br>
-      BRepFeat_MakeRevol(const TopoDS_Shape& Sbase,const TopoDS_Shape& Pbase,const TopoDS_Face& Skface,const gp_Ax1& Axis,const Standard_Integer Fuse,const Standard_Boolean Modify);
   
-  Standard_EXPORT     void Init(const TopoDS_Shape& Sbase,const TopoDS_Shape& Pbase,const TopoDS_Face& Skface,const gp_Ax1& Axis,const Standard_Integer Fuse,const Standard_Boolean Modify) ;
-  //! Indicates that the edge <E> will slide on the face <br>
-//! <OnFace>. Raises ConstructionError if the  face does not belong to the <br>
-//! basis shape, or the edge to the prismed shape. <br>
-  Standard_EXPORT     void Add(const TopoDS_Edge& E,const TopoDS_Face& OnFace) ;
+  //! initializes the revolved shell class.
+    BRepFeat_MakeRevol();
   
-  Standard_EXPORT     void Perform(const Standard_Real Angle) ;
+  //! a face Pbase is selected in the
+  //! shape Sbase to serve as the basis for the
+  //! revolved shell. The revolution will be defined
+  //! by the axis Axis and Fuse offers a choice between:
+  //! -   removing matter with a Boolean cut using the setting 0
+  //! -   adding matter with Boolean fusion using the setting 1.
+  //! The sketch face Skface serves to determine
+  //! the type of operation. If it is inside the basis
+  //! shape, a local operation such as glueing can be performed.
+    BRepFeat_MakeRevol(const TopoDS_Shape& Sbase, const TopoDS_Shape& Pbase, const TopoDS_Face& Skface, const gp_Ax1& Axis, const Standard_Integer Fuse, const Standard_Boolean Modify);
   
-  Standard_EXPORT     void Perform(const TopoDS_Shape& Until) ;
-  //! Reconstructs the feature topologically. <br>
-  Standard_EXPORT     void Perform(const TopoDS_Shape& From,const TopoDS_Shape& Until) ;
-  //! Builds an infinite shell. The infinite descendants <br>
-//! will not be kept in the result. <br>
-  Standard_EXPORT     void PerformThruAll() ;
-  //! Assigns both a limiting shape, Until from <br>
-//! TopoDS_Shape, and an angle, Angle at <br>
-//! which to stop generation of the revolved shell feature. <br>
-  Standard_EXPORT     void PerformUntilAngle(const TopoDS_Shape& Until,const Standard_Real Angle) ;
+  Standard_EXPORT   void Init (const TopoDS_Shape& Sbase, const TopoDS_Shape& Pbase, const TopoDS_Face& Skface, const gp_Ax1& Axis, const Standard_Integer Fuse, const Standard_Boolean Modify) ;
   
-  Standard_EXPORT     void Curves(TColGeom_SequenceOfCurve& S) ;
+  //! Indicates that the edge <E> will slide on the face
+  //! <OnFace>. Raises ConstructionError if the  face does not belong to the
+  //! basis shape, or the edge to the prismed shape.
+  Standard_EXPORT   void Add (const TopoDS_Edge& E, const TopoDS_Face& OnFace) ;
   
-  Standard_EXPORT     Handle_Geom_Curve BarycCurve() ;
-
+  Standard_EXPORT   void Perform (const Standard_Real Angle) ;
+  
+  Standard_EXPORT   void Perform (const TopoDS_Shape& Until) ;
+  
+  //! Reconstructs the feature topologically.
+  Standard_EXPORT   void Perform (const TopoDS_Shape& From, const TopoDS_Shape& Until) ;
+  
+  //! Builds an infinite shell. The infinite descendants
+  //! will not be kept in the result.
+  Standard_EXPORT   void PerformThruAll() ;
+  
+  //! Assigns both a limiting shape, Until from
+  //! TopoDS_Shape, and an angle, Angle at
+  //! which to stop generation of the revolved shell feature.
+  Standard_EXPORT   void PerformUntilAngle (const TopoDS_Shape& Until, const Standard_Real Angle) ;
+  
+  Standard_EXPORT   void Curves (TColGeom_SequenceOfCurve& S) ;
+  
+  Standard_EXPORT   Handle(Geom_Curve) BarycCurve() ;
 
 
 
@@ -111,12 +91,12 @@ private:
 
 
 
-TopoDS_Shape myPbase;
-TopTools_DataMapOfShapeListOfShape mySlface;
-gp_Ax1 myAxis;
-TColGeom_SequenceOfCurve myCurves;
-Handle_Geom_Curve myBCurve;
-BRepFeat_StatusError myStatusError;
+  TopoDS_Shape myPbase;
+  TopTools_DataMapOfShapeListOfShape mySlface;
+  gp_Ax1 myAxis;
+  TColGeom_SequenceOfCurve myCurves;
+  Handle(Geom_Curve) myBCurve;
+  BRepFeat_StatusError myStatusError;
 
 
 };
@@ -126,7 +106,6 @@ BRepFeat_StatusError myStatusError;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepFeat_MakeRevol_HeaderFile

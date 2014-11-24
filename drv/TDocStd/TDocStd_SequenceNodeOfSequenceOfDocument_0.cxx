@@ -5,16 +5,10 @@
 
 #include <TDocStd_SequenceNodeOfSequenceOfDocument.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TDocStd_Document_HeaderFile
 #include <TDocStd_Document.hxx>
-#endif
-#ifndef _TDocStd_SequenceOfDocument_HeaderFile
 #include <TDocStd_SequenceOfDocument.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(TDocStd_SequenceNodeOfSequenceOfDocument,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(TDocStd_SequenceNodeOfSequenceOfDocument)
 
 
-#define SeqItem Handle_TDocStd_Document
+#define SeqItem Handle(TDocStd_Document)
 #define SeqItem_hxx <TDocStd_Document.hxx>
 #define TCollection_SequenceNode TDocStd_SequenceNodeOfSequenceOfDocument
 #define TCollection_SequenceNode_hxx <TDocStd_SequenceNodeOfSequenceOfDocument.hxx>

@@ -1,6 +1,2 @@
-#ifndef _Vrml_Material_HeaderFile
 #include <Vrml_Material.hxx>
-#endif
-#ifndef _VrmlConverter_PointAspect_HeaderFile
 #include <VrmlConverter_PointAspect.hxx>
-#endif

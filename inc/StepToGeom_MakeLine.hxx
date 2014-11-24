@@ -6,40 +6,28 @@
 #ifndef _StepToGeom_MakeLine_HeaderFile
 #define _StepToGeom_MakeLine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepGeom_Line_HeaderFile
 #include <Handle_StepGeom_Line.hxx>
-#endif
-#ifndef _Handle_Geom_Line_HeaderFile
 #include <Handle_Geom_Line.hxx>
-#endif
 class StepGeom_Line;
 class Geom_Line;
 
 
-//! This class implements the mapping between classes <br>
-//!          Line from StepGeom which describes a line from <br>
-//!          Prostep and Line from Geom. <br>
-class StepToGeom_MakeLine  {
+//! This class implements the mapping between classes
+//! Line from StepGeom which describes a line from
+//! Prostep and Line from Geom.
+class StepToGeom_MakeLine 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Standard_Boolean Convert(const Handle(StepGeom_Line)& SC,Handle(Geom_Line)& CC) ;
-
+  Standard_EXPORT static   Standard_Boolean Convert (const Handle(StepGeom_Line)& SC, Handle(Geom_Line)& CC) ;
 
 
 
@@ -62,7 +50,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToGeom_MakeLine_HeaderFile

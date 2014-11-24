@@ -6,49 +6,21 @@
 #ifndef _IGESDimen_GeneralNote_HeaderFile
 #define _IGESDimen_GeneralNote_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESDimen_GeneralNote_HeaderFile
 #include <Handle_IGESDimen_GeneralNote.hxx>
-#endif
 
-#ifndef _Handle_TColStd_HArray1OfInteger_HeaderFile
 #include <Handle_TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Handle_IGESGraph_HArray1OfTextFontDef_HeaderFile
 #include <Handle_IGESGraph_HArray1OfTextFontDef.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray1OfXYZ_HeaderFile
 #include <Handle_TColgp_HArray1OfXYZ.hxx>
-#endif
-#ifndef _Handle_Interface_HArray1OfHAsciiString_HeaderFile
 #include <Handle_Interface_HArray1OfHAsciiString.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_IGESGraph_TextFontDef_HeaderFile
 #include <Handle_IGESGraph_TextFontDef.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class TColStd_HArray1OfInteger;
 class TColStd_HArray1OfReal;
 class IGESGraph_HArray1OfTextFontDef;
@@ -61,86 +33,104 @@ class gp_Pnt;
 class TCollection_HAsciiString;
 
 
-//! defines GeneralNote, Type <212> Form <0-8, 100-200, 105> <br>
-//!          in package IGESDimen <br>
-//!          Used for formatting boxed text in different ways <br>
-class IGESDimen_GeneralNote : public IGESData_IGESEntity {
+//! defines GeneralNote, Type <212> Form <0-8, 100-200, 105>
+//! in package IGESDimen
+//! Used for formatting boxed text in different ways
+class IGESDimen_GeneralNote : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESDimen_GeneralNote();
-  //! This method is used to set the fields of the class <br>
-//!           GeneralNote <br>
-//!       - nNbChars      : number of chars strings <br>
-//!       - widths        : Box widths <br>
-//!       - heights       : Box heights <br>
-//!       - fontCodes     : Font codes, default = 1 <br>
-//!       - fonts         : Text Font Definition Entities <br>
-//!       - slants        : Slant angles in radians <br>
-//!       - rotations     : Rotation angles in radians <br>
-//!       - mirrorFlags   : Mirror flags <br>
-//!       - rotFlags      : Rotation internal text flags <br>
-//!       - start         : Text start points <br>
-//!       - texts         : Text strings <br>
-//! raises exception if there is mismatch between the various <br>
-//! Array Lengths. <br>
-  Standard_EXPORT     void Init(const Handle(TColStd_HArray1OfInteger)& nbChars,const Handle(TColStd_HArray1OfReal)& widths,const Handle(TColStd_HArray1OfReal)& heights,const Handle(TColStd_HArray1OfInteger)& fontCodes,const Handle(IGESGraph_HArray1OfTextFontDef)& fonts,const Handle(TColStd_HArray1OfReal)& slants,const Handle(TColStd_HArray1OfReal)& rotations,const Handle(TColStd_HArray1OfInteger)& mirrorFlags,const Handle(TColStd_HArray1OfInteger)& rotFlags,const Handle(TColgp_HArray1OfXYZ)& start,const Handle(Interface_HArray1OfHAsciiString)& texts) ;
-  //! Changes FormNumber (indicates Graphical Representation) <br>
-//!           Error if not in ranges [0-8] or [100-102] or 105 <br>
-  Standard_EXPORT     void SetFormNumber(const Standard_Integer form) ;
-  //! returns number of text strings in General Note <br>
-  Standard_EXPORT     Standard_Integer NbStrings() const;
-  //! returns number of characters of string or zero <br>
-//! raises exception if Index <= 0 or Index > NbStrings() <br>
-  Standard_EXPORT     Standard_Integer NbCharacters(const Standard_Integer Index) const;
-  //! returns Box width of string <br>
-//! raises exception if Index <= 0 or Index > NbStrings() <br>
-  Standard_EXPORT     Standard_Real BoxWidth(const Standard_Integer Index) const;
-  //! returns Box height of string <br>
-//! raises exception if Index <= 0 or Index > NbStrings() <br>
-  Standard_EXPORT     Standard_Real BoxHeight(const Standard_Integer Index) const;
-  //! returns False if Value, True if Entity <br>
-//! raises exception if Index <= 0 or Index > NbStrings() <br>
-  Standard_EXPORT     Standard_Boolean IsFontEntity(const Standard_Integer Index) const;
-  //! returns Font code (default = 1) of string <br>
-//! returns 0 if IsFontEntity () is True <br>
-//! raises exception if Index <= 0 or Index > NbStrings() <br>
-  Standard_EXPORT     Standard_Integer FontCode(const Standard_Integer Index) const;
-  //! returns Text Font Definition Entity of string <br>
-//! returns a Null Handle if IsFontEntity () returns False <br>
-//! raises exception if Index <= 0 or Index > NbStrings() <br>
-  Standard_EXPORT     Handle_IGESGraph_TextFontDef FontEntity(const Standard_Integer Index) const;
-  //! returns Slant angle of string in radians <br>
-//! default value = PI/2 <br>
-//! raises exception if Index <= 0 or Index > NbStrings() <br>
-  Standard_EXPORT     Standard_Real SlantAngle(const Standard_Integer Index) const;
-  //! returns Rotation angle of string in radians <br>
-//! raises exception if Index <= 0 or Index > NbStrings() <br>
-  Standard_EXPORT     Standard_Real RotationAngle(const Standard_Integer Index) const;
-  //! returns Mirror Flag of string <br>
-//!      0 = no mirroring <br>
-//!      1 = mirror axis is perpendicular to the text base line <br>
-//!      2 = mirror axis is text base line <br>
-//! raises exception if Index <= 0 or Index > NbStrings() <br>
-  Standard_EXPORT     Standard_Integer MirrorFlag(const Standard_Integer Index) const;
-  //! returns Rotate internal text Flag of string <br>
-//!      0 = text horizontal <br>
-//!      1 = text vertical <br>
-//! raises exception if Index <= 0 or Index > NbStrings() <br>
-  Standard_EXPORT     Standard_Integer RotateFlag(const Standard_Integer Index) const;
-  //! returns text start point of Index'th string <br>
-//! raises exception if Index <= 0 or Index > NbStrings() <br>
-  Standard_EXPORT     gp_Pnt StartPoint(const Standard_Integer Index) const;
-  //! returns text start point of Index'th string after Transformation <br>
-//! raises exception if Index <= 0 or Index > NbStrings() <br>
-  Standard_EXPORT     gp_Pnt TransformedStartPoint(const Standard_Integer Index) const;
-  //! returns distance from Start Point plane of string <br>
-//! raises exception if Index <= 0 or Index > NbStrings() <br>
-  Standard_EXPORT     Standard_Real ZDepthStartPoint(const Standard_Integer Index) const;
-  //! returns text string <br>
-//! raises exception if Index <= 0 or Index > NbStrings() <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Text(const Standard_Integer Index) const;
+  Standard_EXPORT IGESDimen_GeneralNote();
+  
+  //! This method is used to set the fields of the class
+  //! GeneralNote
+  //! - nNbChars      : number of chars strings
+  //! - widths        : Box widths
+  //! - heights       : Box heights
+  //! - fontCodes     : Font codes, default = 1
+  //! - fonts         : Text Font Definition Entities
+  //! - slants        : Slant angles in radians
+  //! - rotations     : Rotation angles in radians
+  //! - mirrorFlags   : Mirror flags
+  //! - rotFlags      : Rotation internal text flags
+  //! - start         : Text start points
+  //! - texts         : Text strings
+  //! raises exception if there is mismatch between the various
+  //! Array Lengths.
+  Standard_EXPORT   void Init (const Handle(TColStd_HArray1OfInteger)& nbChars, const Handle(TColStd_HArray1OfReal)& widths, const Handle(TColStd_HArray1OfReal)& heights, const Handle(TColStd_HArray1OfInteger)& fontCodes, const Handle(IGESGraph_HArray1OfTextFontDef)& fonts, const Handle(TColStd_HArray1OfReal)& slants, const Handle(TColStd_HArray1OfReal)& rotations, const Handle(TColStd_HArray1OfInteger)& mirrorFlags, const Handle(TColStd_HArray1OfInteger)& rotFlags, const Handle(TColgp_HArray1OfXYZ)& start, const Handle(Interface_HArray1OfHAsciiString)& texts) ;
+  
+  //! Changes FormNumber (indicates Graphical Representation)
+  //! Error if not in ranges [0-8] or [100-102] or 105
+  Standard_EXPORT   void SetFormNumber (const Standard_Integer form) ;
+  
+  //! returns number of text strings in General Note
+  Standard_EXPORT   Standard_Integer NbStrings()  const;
+  
+  //! returns number of characters of string or zero
+  //! raises exception if Index <= 0 or Index > NbStrings()
+  Standard_EXPORT   Standard_Integer NbCharacters (const Standard_Integer Index)  const;
+  
+  //! returns Box width of string
+  //! raises exception if Index <= 0 or Index > NbStrings()
+  Standard_EXPORT   Standard_Real BoxWidth (const Standard_Integer Index)  const;
+  
+  //! returns Box height of string
+  //! raises exception if Index <= 0 or Index > NbStrings()
+  Standard_EXPORT   Standard_Real BoxHeight (const Standard_Integer Index)  const;
+  
+  //! returns False if Value, True if Entity
+  //! raises exception if Index <= 0 or Index > NbStrings()
+  Standard_EXPORT   Standard_Boolean IsFontEntity (const Standard_Integer Index)  const;
+  
+  //! returns Font code (default = 1) of string
+  //! returns 0 if IsFontEntity () is True
+  //! raises exception if Index <= 0 or Index > NbStrings()
+  Standard_EXPORT   Standard_Integer FontCode (const Standard_Integer Index)  const;
+  
+  //! returns Text Font Definition Entity of string
+  //! returns a Null Handle if IsFontEntity () returns False
+  //! raises exception if Index <= 0 or Index > NbStrings()
+  Standard_EXPORT   Handle(IGESGraph_TextFontDef) FontEntity (const Standard_Integer Index)  const;
+  
+  //! returns Slant angle of string in radians
+  //! default value = PI/2
+  //! raises exception if Index <= 0 or Index > NbStrings()
+  Standard_EXPORT   Standard_Real SlantAngle (const Standard_Integer Index)  const;
+  
+  //! returns Rotation angle of string in radians
+  //! raises exception if Index <= 0 or Index > NbStrings()
+  Standard_EXPORT   Standard_Real RotationAngle (const Standard_Integer Index)  const;
+  
+  //! returns Mirror Flag of string
+  //! 0 = no mirroring
+  //! 1 = mirror axis is perpendicular to the text base line
+  //! 2 = mirror axis is text base line
+  //! raises exception if Index <= 0 or Index > NbStrings()
+  Standard_EXPORT   Standard_Integer MirrorFlag (const Standard_Integer Index)  const;
+  
+  //! returns Rotate internal text Flag of string
+  //! 0 = text horizontal
+  //! 1 = text vertical
+  //! raises exception if Index <= 0 or Index > NbStrings()
+  Standard_EXPORT   Standard_Integer RotateFlag (const Standard_Integer Index)  const;
+  
+  //! returns text start point of Index'th string
+  //! raises exception if Index <= 0 or Index > NbStrings()
+  Standard_EXPORT   gp_Pnt StartPoint (const Standard_Integer Index)  const;
+  
+  //! returns text start point of Index'th string after Transformation
+  //! raises exception if Index <= 0 or Index > NbStrings()
+  Standard_EXPORT   gp_Pnt TransformedStartPoint (const Standard_Integer Index)  const;
+  
+  //! returns distance from Start Point plane of string
+  //! raises exception if Index <= 0 or Index > NbStrings()
+  Standard_EXPORT   Standard_Real ZDepthStartPoint (const Standard_Integer Index)  const;
+  
+  //! returns text string
+  //! raises exception if Index <= 0 or Index > NbStrings()
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Text (const Standard_Integer Index)  const;
 
 
 
@@ -155,17 +145,17 @@ protected:
 private: 
 
 
-Handle_TColStd_HArray1OfInteger theNbChars;
-Handle_TColStd_HArray1OfReal theBoxWidths;
-Handle_TColStd_HArray1OfReal theBoxHeights;
-Handle_TColStd_HArray1OfInteger theFontCodes;
-Handle_IGESGraph_HArray1OfTextFontDef theFontEntities;
-Handle_TColStd_HArray1OfReal theSlantAngles;
-Handle_TColStd_HArray1OfReal theRotationAngles;
-Handle_TColStd_HArray1OfInteger theMirrorFlags;
-Handle_TColStd_HArray1OfInteger theRotateFlags;
-Handle_TColgp_HArray1OfXYZ theStartPoints;
-Handle_Interface_HArray1OfHAsciiString theTexts;
+  Handle(TColStd_HArray1OfInteger) theNbChars;
+  Handle(TColStd_HArray1OfReal) theBoxWidths;
+  Handle(TColStd_HArray1OfReal) theBoxHeights;
+  Handle(TColStd_HArray1OfInteger) theFontCodes;
+  Handle(IGESGraph_HArray1OfTextFontDef) theFontEntities;
+  Handle(TColStd_HArray1OfReal) theSlantAngles;
+  Handle(TColStd_HArray1OfReal) theRotationAngles;
+  Handle(TColStd_HArray1OfInteger) theMirrorFlags;
+  Handle(TColStd_HArray1OfInteger) theRotateFlags;
+  Handle(TColgp_HArray1OfXYZ) theStartPoints;
+  Handle(Interface_HArray1OfHAsciiString) theTexts;
 
 
 };
@@ -174,7 +164,6 @@ Handle_Interface_HArray1OfHAsciiString theTexts;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESDimen_GeneralNote_HeaderFile

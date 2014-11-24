@@ -6,28 +6,14 @@
 #ifndef _Graphic3d_SequenceOfStructure_HeaderFile
 #define _Graphic3d_SequenceOfStructure_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_Graphic3d_Structure_HeaderFile
 #include <Handle_Graphic3d_Structure.hxx>
-#endif
-#ifndef _Handle_Graphic3d_SequenceNodeOfSequenceOfStructure_HeaderFile
 #include <Handle_Graphic3d_SequenceNodeOfSequenceOfStructure.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Graphic3d_Structure;
@@ -35,68 +21,68 @@ class Graphic3d_SequenceNodeOfSequenceOfStructure;
 
 
 
-class Graphic3d_SequenceOfStructure  : public TCollection_BaseSequence {
+class Graphic3d_SequenceOfStructure  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Graphic3d_SequenceOfStructure();
+    Graphic3d_SequenceOfStructure();
   
-  Standard_EXPORT   Graphic3d_SequenceOfStructure(const Graphic3d_SequenceOfStructure& Other);
+  Standard_EXPORT Graphic3d_SequenceOfStructure(const Graphic3d_SequenceOfStructure& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~Graphic3d_SequenceOfStructure()
 {
   Clear();
 }
   
-  Standard_EXPORT    const Graphic3d_SequenceOfStructure& Assign(const Graphic3d_SequenceOfStructure& Other) ;
-   const Graphic3d_SequenceOfStructure& operator =(const Graphic3d_SequenceOfStructure& Other) 
+  Standard_EXPORT  const  Graphic3d_SequenceOfStructure& Assign (const Graphic3d_SequenceOfStructure& Other) ;
+ const  Graphic3d_SequenceOfStructure& operator = (const Graphic3d_SequenceOfStructure& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(Graphic3d_Structure)& T) ;
+  Standard_EXPORT   void Append (const Handle(Graphic3d_Structure)& T) ;
   
-        void Append(Graphic3d_SequenceOfStructure& S) ;
+      void Append (Graphic3d_SequenceOfStructure& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(Graphic3d_Structure)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(Graphic3d_Structure)& T) ;
   
-        void Prepend(Graphic3d_SequenceOfStructure& S) ;
+      void Prepend (Graphic3d_SequenceOfStructure& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(Graphic3d_Structure)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(Graphic3d_Structure)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,Graphic3d_SequenceOfStructure& S) ;
+      void InsertBefore (const Standard_Integer Index, Graphic3d_SequenceOfStructure& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(Graphic3d_Structure)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(Graphic3d_Structure)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,Graphic3d_SequenceOfStructure& S) ;
+      void InsertAfter (const Standard_Integer Index, Graphic3d_SequenceOfStructure& S) ;
   
-  Standard_EXPORT    const Handle_Graphic3d_Structure& First() const;
+  Standard_EXPORT  const  Handle(Graphic3d_Structure)& First()  const;
   
-  Standard_EXPORT    const Handle_Graphic3d_Structure& Last() const;
+  Standard_EXPORT  const  Handle(Graphic3d_Structure)& Last()  const;
   
-        void Split(const Standard_Integer Index,Graphic3d_SequenceOfStructure& Sub) ;
+      void Split (const Standard_Integer Index, Graphic3d_SequenceOfStructure& Sub) ;
   
-  Standard_EXPORT    const Handle_Graphic3d_Structure& Value(const Standard_Integer Index) const;
-   const Handle_Graphic3d_Structure& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(Graphic3d_Structure)& Value (const Standard_Integer Index)  const;
+ const  Handle(Graphic3d_Structure)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(Graphic3d_Structure)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(Graphic3d_Structure)& I) ;
   
-  Standard_EXPORT     Handle_Graphic3d_Structure& ChangeValue(const Standard_Integer Index) ;
-    Handle_Graphic3d_Structure& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(Graphic3d_Structure)& ChangeValue (const Standard_Integer Index) ;
+  Handle(Graphic3d_Structure)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -115,7 +101,7 @@ private:
 
 };
 
-#define SeqItem Handle_Graphic3d_Structure
+#define SeqItem Handle(Graphic3d_Structure)
 #define SeqItem_hxx <Graphic3d_Structure.hxx>
 #define TCollection_SequenceNode Graphic3d_SequenceNodeOfSequenceOfStructure
 #define TCollection_SequenceNode_hxx <Graphic3d_SequenceNodeOfSequenceOfStructure.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Graphic3d_SequenceOfStructure_HeaderFile

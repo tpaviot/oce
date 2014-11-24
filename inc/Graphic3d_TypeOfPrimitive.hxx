@@ -6,8 +6,11 @@
 #ifndef _Graphic3d_TypeOfPrimitive_HeaderFile
 #define _Graphic3d_TypeOfPrimitive_HeaderFile
 
-//! The type of primitive in a group in a structure. <br>
-enum Graphic3d_TypeOfPrimitive {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! The type of primitive in a group in a structure.
+enum Graphic3d_TypeOfPrimitive
+{
 Graphic3d_TOP_UNDEFINED,
 Graphic3d_TOP_POLYLINE,
 Graphic3d_TOP_POLYGON,
@@ -18,8 +21,4 @@ Graphic3d_TOP_MARKER,
 Graphic3d_TOP_PARRAY
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Graphic3d_TypeOfPrimitive_HeaderFile

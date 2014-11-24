@@ -6,22 +6,15 @@
 #ifndef _Handle_StepShape_VertexPoint_HeaderFile
 #define _Handle_StepShape_VertexPoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepShape_Vertex_HeaderFile
 #include <Handle_StepShape_Vertex.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepShape_Vertex);
 class StepShape_VertexPoint;
 
-DEFINE_STANDARD_HANDLE(StepShape_VertexPoint,StepShape_Vertex)
+DEFINE_STANDARD_HANDLE(StepShape_VertexPoint, StepShape_Vertex)
 
-#endif
+#endif // _Handle_StepShape_VertexPoint_HeaderFile

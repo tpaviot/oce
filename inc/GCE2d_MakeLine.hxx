@@ -6,25 +6,13 @@
 #ifndef _GCE2d_MakeLine_HeaderFile
 #define _GCE2d_MakeLine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom2d_Line_HeaderFile
 #include <Handle_Geom2d_Line.hxx>
-#endif
-#ifndef _GCE2d_Root_HeaderFile
 #include <GCE2d_Root.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Geom2d_Line;
 class StdFail_NotDone;
 class gp_Ax2d;
@@ -33,46 +21,53 @@ class gp_Pnt2d;
 class gp_Dir2d;
 
 
-//! This class implements the following algorithms used <br>
-//!           to create a Line from Geom2d. <br>
-//!           * Create a Line parallel to another and passing <br>
-//!             through a point. <br>
-//!           * Create a Line passing through 2 points. <br>
-class GCE2d_MakeLine  : public GCE2d_Root {
+//! This class implements the following algorithms used
+//! to create a Line from Geom2d.
+//! * Create a Line parallel to another and passing
+//! through a point.
+//! * Create a Line passing through 2 points.
+class GCE2d_MakeLine  : public GCE2d_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//!  Creates a line located in 2D space with the axis placement A. <br>
-//!  The Location of A is the origin of the line. <br>
-  Standard_EXPORT   GCE2d_MakeLine(const gp_Ax2d& A);
-  
-//!  Creates a line from a non persistent line from package gp. <br>
-  Standard_EXPORT   GCE2d_MakeLine(const gp_Lin2d& L);
-  
-//!  P is the origin and V is the direction of the line. <br>
-  Standard_EXPORT   GCE2d_MakeLine(const gp_Pnt2d& P,const gp_Dir2d& V);
-  //! Make a Line from Geom2d <TheLin> parallel to another <br>
-//!           Lin <Lin> and passing through a Pnt <Point>. <br>
-  Standard_EXPORT   GCE2d_MakeLine(const gp_Lin2d& Lin,const gp_Pnt2d& Point);
-  //! Make a Line from Geom2d <TheLin> parallel to another <br>
-//!           Lin <Lin> at a distance <Dist>. <br>
-  Standard_EXPORT   GCE2d_MakeLine(const gp_Lin2d& Lin,const Standard_Real Dist);
-  //! Make a Line from Geom2d <TheLin> passing through 2 <br>
-//!           Pnt <P1>,<P2>. <br>
-//!           It returns false if <p1> and <P2> are confused. <br>
-//! Warning <br>
-//! If points P1 and P2 coincident (that is, when IsDone <br>
-//! returns false), the Status function returns gce_ConfusedPoints. <br>
-  Standard_EXPORT   GCE2d_MakeLine(const gp_Pnt2d& P1,const gp_Pnt2d& P2);
-  //! Returns the constructed line. <br>
-//! Exceptions StdFail_NotDone if no line is constructed. <br>
-  Standard_EXPORT    const Handle_Geom2d_Line& Value() const;
-  
-  Standard_EXPORT    const Handle_Geom2d_Line& Operator() const;
-Standard_EXPORT operator Handle_Geom2d_Line() const;
 
+  //! Creates a line located in 2D space with the axis placement A.
+  //! The Location of A is the origin of the line.
+  Standard_EXPORT GCE2d_MakeLine(const gp_Ax2d& A);
+  
+
+  //! Creates a line from a non persistent line from package gp.
+  Standard_EXPORT GCE2d_MakeLine(const gp_Lin2d& L);
+  
+
+  //! P is the origin and V is the direction of the line.
+  Standard_EXPORT GCE2d_MakeLine(const gp_Pnt2d& P, const gp_Dir2d& V);
+  
+  //! Make a Line from Geom2d <TheLin> parallel to another
+  //! Lin <Lin> and passing through a Pnt <Point>.
+  Standard_EXPORT GCE2d_MakeLine(const gp_Lin2d& Lin, const gp_Pnt2d& Point);
+  
+  //! Make a Line from Geom2d <TheLin> parallel to another
+  //! Lin <Lin> at a distance <Dist>.
+  Standard_EXPORT GCE2d_MakeLine(const gp_Lin2d& Lin, const Standard_Real Dist);
+  
+  //! Make a Line from Geom2d <TheLin> passing through 2
+  //! Pnt <P1>,<P2>.
+  //! It returns false if <p1> and <P2> are confused.
+  //! Warning
+  //! If points P1 and P2 coincident (that is, when IsDone
+  //! returns false), the Status function returns gce_ConfusedPoints.
+  Standard_EXPORT GCE2d_MakeLine(const gp_Pnt2d& P1, const gp_Pnt2d& P2);
+  
+  //! Returns the constructed line.
+  //! Exceptions StdFail_NotDone if no line is constructed.
+  Standard_EXPORT  const  Handle(Geom2d_Line)& Value()  const;
+  
+  Standard_EXPORT  const  Handle(Geom2d_Line)& Operator()  const;
+Standard_EXPORT operator Handle_Geom2d_Line() const;
 
 
 
@@ -87,7 +82,7 @@ private:
 
 
 
-Handle_Geom2d_Line TheLine;
+  Handle(Geom2d_Line) TheLine;
 
 
 };
@@ -96,7 +91,6 @@ Handle_Geom2d_Line TheLine;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GCE2d_MakeLine_HeaderFile

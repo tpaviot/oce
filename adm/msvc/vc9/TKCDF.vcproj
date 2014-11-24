@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKCDF"
-	ProjectGUID="{4F980AC8-0196-0825-126D-FDFD901221F7}"
+	ProjectGUID="{4BA88A92-01BC-048E-1442-06D6D301EE0D}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -248,7 +248,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\CDM;..\..\..\src\CDM;..\..\..\drv\PCDM;..\..\..\src\PCDM;..\..\..\drv\CDF;..\..\..\src\CDF;..\..\..\drv\UTL;..\..\..\src\UTL;..\..\..\drv\LDOM;..\..\..\src\LDOM;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__CDM_DLL;__PCDM_DLL;__CDF_DLL;__UTL_DLL;__LDOM_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__CDM_DLL;__PCDM_DLL;__CDF_DLL;__UTL_DLL;__LDOM_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__CDM_DLL;__PCDM_DLL;__CDF_DLL;__UTL_DLL;__LDOM_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__CDM_DLL;__PCDM_DLL;__CDF_DLL;__UTL_DLL;__LDOM_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -343,7 +343,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\CDM;..\..\..\src\CDM;..\..\..\drv\PCDM;..\..\..\src\PCDM;..\..\..\drv\CDF;..\..\..\src\CDF;..\..\..\drv\UTL;..\..\..\src\UTL;..\..\..\drv\LDOM;..\..\..\src\LDOM;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__CDM_DLL;__PCDM_DLL;__CDF_DLL;__UTL_DLL;__LDOM_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__CDM_DLL;__PCDM_DLL;__CDF_DLL;__UTL_DLL;__LDOM_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -365,7 +365,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__CDM_DLL;__PCDM_DLL;__CDF_DLL;__UTL_DLL;__LDOM_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__CDM_DLL;__PCDM_DLL;__CDF_DLL;__UTL_DLL;__LDOM_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"

@@ -6,58 +6,41 @@
 #ifndef _PDataStd_ExtStringArray_1_HeaderFile
 #define _PDataStd_ExtStringArray_1_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PDataStd_ExtStringArray_1_HeaderFile
 #include <Handle_PDataStd_ExtStringArray_1.hxx>
-#endif
 
-#ifndef _Handle_PCollection_HExtendedString_HeaderFile
 #include <Handle_PCollection_HExtendedString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_PColStd_HArray1OfExtendedString_HeaderFile
 #include <Handle_PColStd_HArray1OfExtendedString.hxx>
-#endif
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
 class PCollection_HExtendedString;
 class PColStd_HArray1OfExtendedString;
 
 
-class PDataStd_ExtStringArray_1 : public PDF_Attribute {
+class PDataStd_ExtStringArray_1 : public PDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   PDataStd_ExtStringArray_1();
+  Standard_EXPORT PDataStd_ExtStringArray_1();
   
-  Standard_EXPORT     void Init(const Standard_Integer lower,const Standard_Integer upper) ;
+  Standard_EXPORT   void Init (const Standard_Integer lower, const Standard_Integer upper) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(PCollection_HExtendedString)& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(PCollection_HExtendedString)& Value) ;
   
-  Standard_EXPORT     Handle_PCollection_HExtendedString Value(const Standard_Integer Index) const;
+  Standard_EXPORT   Handle(PCollection_HExtendedString) Value (const Standard_Integer Index)  const;
   
-  Standard_EXPORT     Standard_Integer Lower() const;
+  Standard_EXPORT   Standard_Integer Lower()  const;
   
-  Standard_EXPORT     Standard_Integer Upper() const;
+  Standard_EXPORT   Standard_Integer Upper()  const;
   
-  Standard_EXPORT     void SetDelta(const Standard_Boolean delta) ;
+  Standard_EXPORT   void SetDelta (const Standard_Boolean delta) ;
   
-  Standard_EXPORT     Standard_Boolean GetDelta() const;
+  Standard_EXPORT   Standard_Boolean GetDelta()  const;
 
 PDataStd_ExtStringArray_1(const Storage_stCONSTclCOM& a) : PDF_Attribute(a)
 {
@@ -80,8 +63,8 @@ protected:
 private: 
 
 
-Handle_PColStd_HArray1OfExtendedString myValue;
-Standard_Boolean myDelta;
+  Handle(PColStd_HArray1OfExtendedString) myValue;
+  Standard_Boolean myDelta;
 
 
 };
@@ -90,7 +73,6 @@ Standard_Boolean myDelta;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDataStd_ExtStringArray_1_HeaderFile

@@ -87,7 +87,11 @@
 			<Add library="TKGeomAlgo" />
 			<Add library="TKGeomBase" />
 			<Add library="TKPrim" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 			<Add library="dl" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
 		</Linker>
@@ -185,7 +189,6 @@
 		<Unit filename="../../../src/BOPAlgo/BOPAlgo_Algo.cxx" />
 		<Unit filename="../../../src/BOPAlgo/BOPAlgo_ArgumentAnalyzer.cxx" />
 		<Unit filename="../../../src/BOPAlgo/BOPAlgo_BOP.cxx" />
-		<Unit filename="../../../src/BOPAlgo/BOPAlgo_BOP_1.cxx" />
 		<Unit filename="../../../src/BOPAlgo/BOPAlgo_Builder.cxx" />
 		<Unit filename="../../../src/BOPAlgo/BOPAlgo_BuilderArea.cxx" />
 		<Unit filename="../../../src/BOPAlgo/BOPAlgo_BuilderFace.cxx" />
@@ -209,6 +212,7 @@
 		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_7.cxx" />
 		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_8.cxx" />
 		<Unit filename="../../../src/BOPAlgo/BOPAlgo_PaveFiller_9.cxx" />
+		<Unit filename="../../../src/BOPAlgo/BOPAlgo_Section.cxx" />
 		<Unit filename="../../../src/BOPAlgo/BOPAlgo_SectionAttribute.cxx" />
 		<Unit filename="../../../src/BOPAlgo/BOPAlgo_ShellSplitter.cxx" />
 		<Unit filename="../../../src/BOPAlgo/BOPAlgo_Tools.cxx" />

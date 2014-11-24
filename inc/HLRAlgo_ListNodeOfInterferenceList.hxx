@@ -6,39 +6,28 @@
 #ifndef _HLRAlgo_ListNodeOfInterferenceList_HeaderFile
 #define _HLRAlgo_ListNodeOfInterferenceList_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_HLRAlgo_ListNodeOfInterferenceList_HeaderFile
 #include <Handle_HLRAlgo_ListNodeOfInterferenceList.hxx>
-#endif
 
-#ifndef _HLRAlgo_Interference_HeaderFile
 #include <HLRAlgo_Interference.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class HLRAlgo_Interference;
 class HLRAlgo_InterferenceList;
 class HLRAlgo_ListIteratorOfInterferenceList;
 
 
 
-class HLRAlgo_ListNodeOfInterferenceList : public TCollection_MapNode {
+class HLRAlgo_ListNodeOfInterferenceList : public TCollection_MapNode
+{
 
 public:
 
   
-      HLRAlgo_ListNodeOfInterferenceList(const HLRAlgo_Interference& I,const TCollection_MapNodePtr& n);
+    HLRAlgo_ListNodeOfInterferenceList(const HLRAlgo_Interference& I, const TCollection_MapNodePtr& n);
   
-        HLRAlgo_Interference& Value() const;
+      HLRAlgo_Interference& Value()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-HLRAlgo_Interference myValue;
+  HLRAlgo_Interference myValue;
 
 
 };
@@ -83,7 +72,6 @@ HLRAlgo_Interference myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRAlgo_ListNodeOfInterferenceList_HeaderFile

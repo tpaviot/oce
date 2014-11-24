@@ -6,28 +6,21 @@
 #ifndef _StepRepr_ShapeRepresentationRelationshipWithTransformation_HeaderFile
 #define _StepRepr_ShapeRepresentationRelationshipWithTransformation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepRepr_ShapeRepresentationRelationshipWithTransformation_HeaderFile
 #include <Handle_StepRepr_ShapeRepresentationRelationshipWithTransformation.hxx>
-#endif
 
-#ifndef _StepRepr_RepresentationRelationshipWithTransformation_HeaderFile
 #include <StepRepr_RepresentationRelationshipWithTransformation.hxx>
-#endif
 
 
 
-class StepRepr_ShapeRepresentationRelationshipWithTransformation : public StepRepr_RepresentationRelationshipWithTransformation {
+class StepRepr_ShapeRepresentationRelationshipWithTransformation : public StepRepr_RepresentationRelationshipWithTransformation
+{
 
 public:
 
   
-  Standard_EXPORT   StepRepr_ShapeRepresentationRelationshipWithTransformation();
+  Standard_EXPORT StepRepr_ShapeRepresentationRelationshipWithTransformation();
 
 
 
@@ -50,7 +43,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_ShapeRepresentationRelationshipWithTransformation_HeaderFile

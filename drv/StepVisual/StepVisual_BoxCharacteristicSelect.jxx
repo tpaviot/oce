@@ -1,3 +1,1 @@
-#ifndef _StepVisual_BoxCharacteristicSelect_HeaderFile
 #include <StepVisual_BoxCharacteristicSelect.hxx>
-#endif

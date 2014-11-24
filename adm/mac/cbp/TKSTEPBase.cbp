@@ -88,6 +88,8 @@
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 		</Linker>
 		<Unit filename="../../../drv/StepBasic/StepBasic_Array1OfApproval_0.cxx" />
 		<Unit filename="../../../drv/StepBasic/StepBasic_Array1OfDerivedUnitElement_0.cxx" />

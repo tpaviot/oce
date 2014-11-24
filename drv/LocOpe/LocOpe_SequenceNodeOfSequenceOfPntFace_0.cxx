@@ -5,16 +5,10 @@
 
 #include <LocOpe_SequenceNodeOfSequenceOfPntFace.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _LocOpe_PntFace_HeaderFile
 #include <LocOpe_PntFace.hxx>
-#endif
-#ifndef _LocOpe_SequenceOfPntFace_HeaderFile
 #include <LocOpe_SequenceOfPntFace.hxx>
-#endif
 
  
 

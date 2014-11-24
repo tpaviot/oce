@@ -1,12 +1,4 @@
-#ifndef _PGeom_Surface_HeaderFile
 #include <PGeom_Surface.hxx>
-#endif
-#ifndef _Standard_NullObject_HeaderFile
 #include <Standard_NullObject.hxx>
-#endif
-#ifndef _PTopLoc_Location_HeaderFile
 #include <PTopLoc_Location.hxx>
-#endif
-#ifndef _PBRep_CurveOn2Surfaces_HeaderFile
 #include <PBRep_CurveOn2Surfaces.hxx>
-#endif

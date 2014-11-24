@@ -6,42 +6,35 @@
 #ifndef _StepFEA_NodeSet_HeaderFile
 #define _StepFEA_NodeSet_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepFEA_NodeSet_HeaderFile
 #include <Handle_StepFEA_NodeSet.hxx>
-#endif
 
-#ifndef _Handle_StepFEA_HArray1OfNodeRepresentation_HeaderFile
 #include <Handle_StepFEA_HArray1OfNodeRepresentation.hxx>
-#endif
-#ifndef _StepGeom_GeometricRepresentationItem_HeaderFile
 #include <StepGeom_GeometricRepresentationItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepFEA_HArray1OfNodeRepresentation;
 class TCollection_HAsciiString;
 
 
-//! Representation of STEP entity NodeSet <br>
-class StepFEA_NodeSet : public StepGeom_GeometricRepresentationItem {
+//! Representation of STEP entity NodeSet
+class StepFEA_NodeSet : public StepGeom_GeometricRepresentationItem
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepFEA_NodeSet();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aRepresentationItem_Name,const Handle(StepFEA_HArray1OfNodeRepresentation)& aNodes) ;
-  //! Returns field Nodes <br>
-  Standard_EXPORT     Handle_StepFEA_HArray1OfNodeRepresentation Nodes() const;
-  //! Set field Nodes <br>
-  Standard_EXPORT     void SetNodes(const Handle(StepFEA_HArray1OfNodeRepresentation)& Nodes) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepFEA_NodeSet();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aRepresentationItem_Name, const Handle(StepFEA_HArray1OfNodeRepresentation)& aNodes) ;
+  
+  //! Returns field Nodes
+  Standard_EXPORT   Handle(StepFEA_HArray1OfNodeRepresentation) Nodes()  const;
+  
+  //! Set field Nodes
+  Standard_EXPORT   void SetNodes (const Handle(StepFEA_HArray1OfNodeRepresentation)& Nodes) ;
 
 
 
@@ -56,7 +49,7 @@ protected:
 private: 
 
 
-Handle_StepFEA_HArray1OfNodeRepresentation theNodes;
+  Handle(StepFEA_HArray1OfNodeRepresentation) theNodes;
 
 
 };
@@ -65,7 +58,6 @@ Handle_StepFEA_HArray1OfNodeRepresentation theNodes;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_NodeSet_HeaderFile

@@ -6,28 +6,14 @@
 #ifndef _DNaming_DataMapNodeOfDataMapOfShapeOfName_HeaderFile
 #define _DNaming_DataMapNodeOfDataMapOfShapeOfName_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_DNaming_DataMapNodeOfDataMapOfShapeOfName_HeaderFile
 #include <Handle_DNaming_DataMapNodeOfDataMapOfShapeOfName.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopoDS_Shape;
 class TCollection_AsciiString;
 class TopTools_ShapeMapHasher;
@@ -36,16 +22,17 @@ class DNaming_DataMapIteratorOfDataMapOfShapeOfName;
 
 
 
-class DNaming_DataMapNodeOfDataMapOfShapeOfName : public TCollection_MapNode {
+class DNaming_DataMapNodeOfDataMapOfShapeOfName : public TCollection_MapNode
+{
 
 public:
 
   
-      DNaming_DataMapNodeOfDataMapOfShapeOfName(const TopoDS_Shape& K,const TCollection_AsciiString& I,const TCollection_MapNodePtr& n);
+    DNaming_DataMapNodeOfDataMapOfShapeOfName(const TopoDS_Shape& K, const TCollection_AsciiString& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        TCollection_AsciiString& Value() const;
+      TCollection_AsciiString& Value()  const;
 
 
 
@@ -60,8 +47,8 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-TCollection_AsciiString myValue;
+  TopoDS_Shape myKey;
+  TCollection_AsciiString myValue;
 
 
 };
@@ -99,7 +86,6 @@ TCollection_AsciiString myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DNaming_DataMapNodeOfDataMapOfShapeOfName_HeaderFile

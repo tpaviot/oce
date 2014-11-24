@@ -5,24 +5,12 @@
 
 #include <Geom2dHatch_Hatchings.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Geom2dHatch_Hatching_HeaderFile
 #include <Geom2dHatch_Hatching.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _Geom2dHatch_DataMapNodeOfHatchings_HeaderFile
 #include <Geom2dHatch_DataMapNodeOfHatchings.hxx>
-#endif
-#ifndef _Geom2dHatch_DataMapIteratorOfHatchings_HeaderFile
 #include <Geom2dHatch_DataMapIteratorOfHatchings.hxx>
-#endif
  
 
 #define TheKey Standard_Integer

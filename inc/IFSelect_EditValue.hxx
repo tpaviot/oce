@@ -6,14 +6,17 @@
 #ifndef _IFSelect_EditValue_HeaderFile
 #define _IFSelect_EditValue_HeaderFile
 
-//! Controls access on Values by an Editor <br>
-//!           EditOptional  : normal access, in addition may be removed <br>
-//!           Editable      : normal access, must be present <br>
-//!           EditProtected : access must be validated <br>
-//!           EditComputed  : why write it ?  it will be recomputed <br>
-//!           EditRead      : no way to write it, only for read <br>
-//!           EditDynamic   : not a field, only to be displayed <br>
-enum IFSelect_EditValue {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Controls access on Values by an Editor
+//! EditOptional  : normal access, in addition may be removed
+//! Editable      : normal access, must be present
+//! EditProtected : access must be validated
+//! EditComputed  : why write it ?  it will be recomputed
+//! EditRead      : no way to write it, only for read
+//! EditDynamic   : not a field, only to be displayed
+enum IFSelect_EditValue
+{
 IFSelect_Optional,
 IFSelect_Editable,
 IFSelect_EditProtected,
@@ -22,8 +25,4 @@ IFSelect_EditRead,
 IFSelect_EditDynamic
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _IFSelect_EditValue_HeaderFile

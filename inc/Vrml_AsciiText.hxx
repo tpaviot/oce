@@ -6,70 +6,55 @@
 #ifndef _Vrml_AsciiText_HeaderFile
 #define _Vrml_AsciiText_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Vrml_AsciiText_HeaderFile
 #include <Handle_Vrml_AsciiText.hxx>
-#endif
 
-#ifndef _Handle_TColStd_HArray1OfAsciiString_HeaderFile
 #include <Handle_TColStd_HArray1OfAsciiString.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Vrml_AsciiTextJustification_HeaderFile
 #include <Vrml_AsciiTextJustification.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class TColStd_HArray1OfAsciiString;
 
 
-//! defines a AsciiText node of VRML specifying geometry shapes. <br>
-//! This  node  represents  strings  of  text  characters  from  ASCII  coded <br>
-//! character  set. All subsequent strings advance y by -( size * spacing). <br>
-//! The justification field determines the placement of the strings in the x <br>
-//! dimension. LEFT (the default) places the left edge of each string at x=0. <br>
-//! CENTER places the center of each string at x=0. RIGHT places the right edge <br>
-//! of each string at x=0. Text is rendered from left to right, top to <br>
-//! bottom in the font set by FontStyle. <br>
-//! The  default  value  for  the  wigth  field  indicates  the  natural  width <br>
-//! should  be  used  for  that  string. <br>
-class Vrml_AsciiText : public MMgt_TShared {
+//! defines a AsciiText node of VRML specifying geometry shapes.
+//! This  node  represents  strings  of  text  characters  from  ASCII  coded
+//! character  set. All subsequent strings advance y by -( size * spacing).
+//! The justification field determines the placement of the strings in the x
+//! dimension. LEFT (the default) places the left edge of each string at x=0.
+//! CENTER places the center of each string at x=0. RIGHT places the right edge
+//! of each string at x=0. Text is rendered from left to right, top to
+//! bottom in the font set by FontStyle.
+//! The  default  value  for  the  wigth  field  indicates  the  natural  width
+//! should  be  used  for  that  string.
+class Vrml_AsciiText : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   Vrml_AsciiText();
+  Standard_EXPORT Vrml_AsciiText();
   
-  Standard_EXPORT   Vrml_AsciiText(const Handle(TColStd_HArray1OfAsciiString)& aString,const Standard_Real aSpacing,const Vrml_AsciiTextJustification aJustification,const Standard_Real aWidth);
+  Standard_EXPORT Vrml_AsciiText(const Handle(TColStd_HArray1OfAsciiString)& aString, const Standard_Real aSpacing, const Vrml_AsciiTextJustification aJustification, const Standard_Real aWidth);
   
-  Standard_EXPORT     void SetString(const Handle(TColStd_HArray1OfAsciiString)& aString) ;
+  Standard_EXPORT   void SetString (const Handle(TColStd_HArray1OfAsciiString)& aString) ;
   
-  Standard_EXPORT     Handle_TColStd_HArray1OfAsciiString String() const;
+  Standard_EXPORT   Handle(TColStd_HArray1OfAsciiString) String()  const;
   
-  Standard_EXPORT     void SetSpacing(const Standard_Real aSpacing) ;
+  Standard_EXPORT   void SetSpacing (const Standard_Real aSpacing) ;
   
-  Standard_EXPORT     Standard_Real Spacing() const;
+  Standard_EXPORT   Standard_Real Spacing()  const;
   
-  Standard_EXPORT     void SetJustification(const Vrml_AsciiTextJustification aJustification) ;
+  Standard_EXPORT   void SetJustification (const Vrml_AsciiTextJustification aJustification) ;
   
-  Standard_EXPORT     Vrml_AsciiTextJustification Justification() const;
+  Standard_EXPORT   Vrml_AsciiTextJustification Justification()  const;
   
-  Standard_EXPORT     void SetWidth(const Standard_Real aWidth) ;
+  Standard_EXPORT   void SetWidth (const Standard_Real aWidth) ;
   
-  Standard_EXPORT     Standard_Real Width() const;
+  Standard_EXPORT   Standard_Real Width()  const;
   
-  Standard_EXPORT     Standard_OStream& Print(Standard_OStream& anOStream) const;
+  Standard_EXPORT   Standard_OStream& Print (Standard_OStream& anOStream)  const;
 
 
 
@@ -84,10 +69,10 @@ protected:
 private: 
 
 
-Handle_TColStd_HArray1OfAsciiString myString;
-Standard_Real mySpacing;
-Vrml_AsciiTextJustification myJustification;
-Standard_Real myWidth;
+  Handle(TColStd_HArray1OfAsciiString) myString;
+  Standard_Real mySpacing;
+  Vrml_AsciiTextJustification myJustification;
+  Standard_Real myWidth;
 
 
 };
@@ -96,7 +81,6 @@ Standard_Real myWidth;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Vrml_AsciiText_HeaderFile

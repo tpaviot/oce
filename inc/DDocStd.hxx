@@ -6,34 +6,16 @@
 #ifndef _DDocStd_HeaderFile
 #define _DDocStd_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TDocStd_Application_HeaderFile
 #include <Handle_TDocStd_Application.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_TDocStd_Document_HeaderFile
 #include <Handle_TDocStd_Document.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Draw_Interpretor_HeaderFile
 #include <Draw_Interpretor.hxx>
-#endif
 class TDocStd_Application;
 class TDocStd_Document;
 class TDF_Label;
@@ -42,45 +24,50 @@ class TDF_Attribute;
 class DDocStd_DrawDocument;
 
 
-//! This package   provides Draw services to test  CAF <br>
-//!          standard documents (see TDocStd package) <br>
-//! <br>
-//!          It provides : <br>
-//! <br>
-//!          * Modification registration and Update management. <br>
-//! <br>
-//!          * External references mechanism <br>
-//! <br>
-//!          * UNDO/REDO <br>
-//! <br>
-//!          * Document Creation, Save and Restore <br>
-class DDocStd  {
+//! This package   provides Draw services to test  CAF
+//! standard documents (see TDocStd package)
+//!
+//! It provides :
+//!
+//! * Modification registration and Update management.
+//!
+//! * External references mechanism
+//!
+//! * UNDO/REDO
+//!
+//! * Document Creation, Save and Restore
+class DDocStd 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! return the application of the session. False <br>
-//!          if there is noone current application. <br>
-  Standard_EXPORT   static  Standard_Boolean Find(Handle(TDocStd_Application)& Appli,const Standard_Boolean Complain = Standard_True) ;
   
-  Standard_EXPORT   static  Standard_Boolean GetDocument(Standard_CString& Name,Handle(TDocStd_Document)& Doc,const Standard_Boolean Complain = Standard_True) ;
+  //! return the application of the session. False
+  //! if there is noone current application.
+  Standard_EXPORT static   Standard_Boolean Find (Handle(TDocStd_Application)& Appli, const Standard_Boolean Complain = Standard_True) ;
   
-  Standard_EXPORT   static  Standard_Boolean Find(const Handle(TDocStd_Document)& Document,const Standard_CString Entry,TDF_Label& Label,const Standard_Boolean Complain = Standard_True) ;
+  Standard_EXPORT static   Standard_Boolean GetDocument (Standard_CString& Name, Handle(TDocStd_Document)& Doc, const Standard_Boolean Complain = Standard_True) ;
   
-  Standard_EXPORT   static  Standard_Boolean Find(const Handle(TDocStd_Document)& Document,const Standard_CString Entry,const Standard_GUID& ID,Handle(TDF_Attribute)& A,const Standard_Boolean Complain = Standard_True) ;
+  Standard_EXPORT static   Standard_Boolean Find (const Handle(TDocStd_Document)& Document, const Standard_CString Entry, TDF_Label& Label, const Standard_Boolean Complain = Standard_True) ;
   
-  Standard_EXPORT   static  Draw_Interpretor& ReturnLabel(Draw_Interpretor& theCommands,const TDF_Label& L) ;
+  Standard_EXPORT static   Standard_Boolean Find (const Handle(TDocStd_Document)& Document, const Standard_CString Entry, const Standard_GUID& ID, Handle(TDF_Attribute)& A, const Standard_Boolean Complain = Standard_True) ;
   
-  Standard_EXPORT   static  void AllCommands(Draw_Interpretor& theCommands) ;
-  //! NewDocument, Open, SaveAs, Save <br>
-  Standard_EXPORT   static  void ApplicationCommands(Draw_Interpretor& theCommands) ;
-  //! Undo, Redo, SetModified, Propagate <br>
-  Standard_EXPORT   static  void DocumentCommands(Draw_Interpretor& theCommands) ;
-  //! Modified, Update <br>
-  Standard_EXPORT   static  void ToolsCommands(Draw_Interpretor& theCommands) ;
-  //! Create, Add, Remove, Open, Commit, Undo, Redo, SetNestedMode <br>
-  Standard_EXPORT   static  void MTMCommands(Draw_Interpretor& theCommands) ;
-
+  Standard_EXPORT static   Draw_Interpretor& ReturnLabel (Draw_Interpretor& theCommands, const TDF_Label& L) ;
+  
+  Standard_EXPORT static   void AllCommands (Draw_Interpretor& theCommands) ;
+  
+  //! NewDocument, Open, SaveAs, Save
+  Standard_EXPORT static   void ApplicationCommands (Draw_Interpretor& theCommands) ;
+  
+  //! Undo, Redo, SetModified, Propagate
+  Standard_EXPORT static   void DocumentCommands (Draw_Interpretor& theCommands) ;
+  
+  //! Modified, Update
+  Standard_EXPORT static   void ToolsCommands (Draw_Interpretor& theCommands) ;
+  
+  //! Create, Add, Remove, Open, Commit, Undo, Redo, SetNestedMode
+  Standard_EXPORT static   void MTMCommands (Draw_Interpretor& theCommands) ;
 
 
 
@@ -104,7 +91,6 @@ friend class DDocStd_DrawDocument;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DDocStd_HeaderFile

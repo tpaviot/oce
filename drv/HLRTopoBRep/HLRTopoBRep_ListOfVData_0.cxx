@@ -5,18 +5,10 @@
 
 #include <HLRTopoBRep_ListOfVData.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _HLRTopoBRep_ListIteratorOfListOfVData_HeaderFile
 #include <HLRTopoBRep_ListIteratorOfListOfVData.hxx>
-#endif
-#ifndef _HLRTopoBRep_VData_HeaderFile
 #include <HLRTopoBRep_VData.hxx>
-#endif
-#ifndef _HLRTopoBRep_ListNodeOfListOfVData_HeaderFile
 #include <HLRTopoBRep_ListNodeOfListOfVData.hxx>
-#endif
  
 
 #define Item HLRTopoBRep_VData

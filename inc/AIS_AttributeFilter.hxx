@@ -6,90 +6,85 @@
 #ifndef _AIS_AttributeFilter_HeaderFile
 #define _AIS_AttributeFilter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_AIS_AttributeFilter_HeaderFile
 #include <Handle_AIS_AttributeFilter.hxx>
-#endif
 
-#ifndef _Quantity_NameOfColor_HeaderFile
 #include <Quantity_NameOfColor.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _SelectMgr_Filter_HeaderFile
 #include <SelectMgr_Filter.hxx>
-#endif
-#ifndef _Handle_SelectMgr_EntityOwner_HeaderFile
 #include <Handle_SelectMgr_EntityOwner.hxx>
-#endif
 class SelectMgr_EntityOwner;
 
 
-//! Selects Interactive Objects, which have the desired width or color. <br>
-//! The filter questions each Interactive Object in local <br>
-//! context to determine whether it has an non-null <br>
-//! owner, and if so, whether it has the required color <br>
-//! and width attributes. If the object returns true in each <br>
-//! case, it is kept. If not, it is rejected. <br>
-//! This filter is used only in an open local context. <br>
-//! In the Collector viewer, you can only locate <br>
-//! Interactive Objects, which answer positively to the <br>
-//! filters, which are in position when a local context is open. <br>
-class AIS_AttributeFilter : public SelectMgr_Filter {
+//! Selects Interactive Objects, which have the desired width or color.
+//! The filter questions each Interactive Object in local
+//! context to determine whether it has an non-null
+//! owner, and if so, whether it has the required color
+//! and width attributes. If the object returns true in each
+//! case, it is kept. If not, it is rejected.
+//! This filter is used only in an open local context.
+//! In the Collector viewer, you can only locate
+//! Interactive Objects, which answer positively to the
+//! filters, which are in position when a local context is open.
+class AIS_AttributeFilter : public SelectMgr_Filter
+{
 
 public:
 
   
-//! Constructs an empty attribute filter object. <br>
-//! This filter object determines whether selectable <br>
-//! interactive objects have a non-null owner. <br>
-  Standard_EXPORT   AIS_AttributeFilter();
+
+  //! Constructs an empty attribute filter object.
+  //! This filter object determines whether selectable
+  //! interactive objects have a non-null owner.
+  Standard_EXPORT AIS_AttributeFilter();
   
-//! Constructs an attribute filter object defined by the <br>
-//! color attribute aCol. <br>
-  Standard_EXPORT   AIS_AttributeFilter(const Quantity_NameOfColor aCol);
+
+  //! Constructs an attribute filter object defined by the
+  //! color attribute aCol.
+  Standard_EXPORT AIS_AttributeFilter(const Quantity_NameOfColor aCol);
   
-//! Constructs an attribute filter object defined by the line <br>
-//! width attribute aWidth. <br>
-  Standard_EXPORT   AIS_AttributeFilter(const Standard_Real aWidth);
+
+  //! Constructs an attribute filter object defined by the line
+  //! width attribute aWidth.
+  Standard_EXPORT AIS_AttributeFilter(const Standard_Real aWidth);
   
-//! Indicates that the Interactive Object has the color <br>
-//! setting specified by the argument aCol at construction time. <br>
-        Standard_Boolean HasColor() const;
+
+  //! Indicates that the Interactive Object has the color
+  //! setting specified by the argument aCol at construction time.
+      Standard_Boolean HasColor()  const;
   
-//! Indicates that the Interactive Object has the width <br>
-//! setting specified by the argument aWidth at <br>
-//! construction time. <br>
-        Standard_Boolean HasWidth() const;
-  //! Sets the color aCol. <br>
-//! This must be chosen from the list of colors in Quantity_NameOfColor. <br>
-        void SetColor(const Quantity_NameOfColor aCol) ;
-  //!  Sets the line width aWidth. <br>
-        void SetWidth(const Standard_Real aWidth) ;
+
+  //! Indicates that the Interactive Object has the width
+  //! setting specified by the argument aWidth at
+  //! construction time.
+      Standard_Boolean HasWidth()  const;
   
-//! Removes the setting for color from the filter. <br>
-        void UnsetColor() ;
+  //! Sets the color aCol.
+  //! This must be chosen from the list of colors in Quantity_NameOfColor.
+      void SetColor (const Quantity_NameOfColor aCol) ;
   
-//! Removes the setting for width from the filter. <br>
-        void UnsetWidth() ;
-  //! Indicates that the selected Interactive Object passes <br>
-//! the filter. The owner, anObj, can be either direct or <br>
-//! user. A direct owner is the corresponding <br>
-//! construction element, whereas a user is the <br>
-//! compound shape of which the entity forms a part. <br>
-//! If the Interactive Object returns Standard_True <br>
-//! when detected by the Local Context selector through <br>
-//! the mouse, the object is kept; if not, it is rejected. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsOk(const Handle(SelectMgr_EntityOwner)& anObj) const;
+  //! Sets the line width aWidth.
+      void SetWidth (const Standard_Real aWidth) ;
+  
+
+  //! Removes the setting for color from the filter.
+      void UnsetColor() ;
+  
+
+  //! Removes the setting for width from the filter.
+      void UnsetWidth() ;
+  
+  //! Indicates that the selected Interactive Object passes
+  //! the filter. The owner, anObj, can be either direct or
+  //! user. A direct owner is the corresponding
+  //! construction element, whereas a user is the
+  //! compound shape of which the entity forms a part.
+  //! If the Interactive Object returns Standard_True
+  //! when detected by the Local Context selector through
+  //! the mouse, the object is kept; if not, it is rejected.
+  Standard_EXPORT virtual   Standard_Boolean IsOk (const Handle(SelectMgr_EntityOwner)& anObj)  const;
 
 
 
@@ -104,10 +99,10 @@ protected:
 private: 
 
 
-Quantity_NameOfColor myCol;
-Standard_Real myWid;
-Standard_Boolean hasC;
-Standard_Boolean hasW;
+  Quantity_NameOfColor myCol;
+  Standard_Real myWid;
+  Standard_Boolean hasC;
+  Standard_Boolean hasW;
 
 
 };
@@ -117,7 +112,6 @@ Standard_Boolean hasW;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_AttributeFilter_HeaderFile

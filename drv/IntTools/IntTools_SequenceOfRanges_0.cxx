@@ -5,18 +5,10 @@
 
 #include <IntTools_SequenceOfRanges.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IntTools_Range_HeaderFile
 #include <IntTools_Range.hxx>
-#endif
-#ifndef _IntTools_SequenceNodeOfSequenceOfRanges_HeaderFile
 #include <IntTools_SequenceNodeOfSequenceOfRanges.hxx>
-#endif
  
 
 #define SeqItem IntTools_Range

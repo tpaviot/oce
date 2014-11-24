@@ -6,34 +6,16 @@
 #ifndef _IGESDimen_RadiusDimension_HeaderFile
 #define _IGESDimen_RadiusDimension_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESDimen_RadiusDimension_HeaderFile
 #include <Handle_IGESDimen_RadiusDimension.hxx>
-#endif
 
-#ifndef _Handle_IGESDimen_GeneralNote_HeaderFile
 #include <Handle_IGESDimen_GeneralNote.hxx>
-#endif
-#ifndef _Handle_IGESDimen_LeaderArrow_HeaderFile
 #include <Handle_IGESDimen_LeaderArrow.hxx>
-#endif
-#ifndef _gp_XY_HeaderFile
 #include <gp_XY.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class IGESDimen_GeneralNote;
 class IGESDimen_LeaderArrow;
 class gp_XY;
@@ -41,36 +23,44 @@ class gp_Pnt2d;
 class gp_Pnt;
 
 
-//! Defines IGES Radius Dimension, type <222> Form <0, 1>, <br>
-//!          in package IGESDimen. <br>
-//!          A Radius Dimension Entity consists of a General Note, a <br>
-//!          leader, and an arc center point. A second form of this <br>
-//!          entity accounts for the occasional need to have two <br>
-//!          leader entities referenced. <br>
-class IGESDimen_RadiusDimension : public IGESData_IGESEntity {
+//! Defines IGES Radius Dimension, type <222> Form <0, 1>,
+//! in package IGESDimen.
+//! A Radius Dimension Entity consists of a General Note, a
+//! leader, and an arc center point. A second form of this
+//! entity accounts for the occasional need to have two
+//! leader entities referenced.
+class IGESDimen_RadiusDimension : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESDimen_RadiusDimension();
+  Standard_EXPORT IGESDimen_RadiusDimension();
   
-  Standard_EXPORT     void Init(const Handle(IGESDimen_GeneralNote)& aNote,const Handle(IGESDimen_LeaderArrow)& anArrow,const gp_XY& arcCenter,const Handle(IGESDimen_LeaderArrow)& anotherArrow) ;
-  //! Allows to change Form Number <br>
-//!           (1 admits null arrow) <br>
-  Standard_EXPORT     void InitForm(const Standard_Integer form) ;
-  //! returns the General Note entity <br>
-  Standard_EXPORT     Handle_IGESDimen_GeneralNote Note() const;
-  //! returns the Leader Arrow entity <br>
-  Standard_EXPORT     Handle_IGESDimen_LeaderArrow Leader() const;
-  //! returns the coordinates of the Arc Center <br>
-  Standard_EXPORT     gp_Pnt2d Center() const;
-  //! returns the coordinates of the Arc Center after Transformation <br>
-//! (Z coord taken from ZDepth of Leader Entity) <br>
-  Standard_EXPORT     gp_Pnt TransformedCenter() const;
-  //! returns True if form is 1, False if 0 <br>
-  Standard_EXPORT     Standard_Boolean HasLeader2() const;
-  //! returns Null handle if Form is 0 <br>
-  Standard_EXPORT     Handle_IGESDimen_LeaderArrow Leader2() const;
+  Standard_EXPORT   void Init (const Handle(IGESDimen_GeneralNote)& aNote, const Handle(IGESDimen_LeaderArrow)& anArrow, const gp_XY& arcCenter, const Handle(IGESDimen_LeaderArrow)& anotherArrow) ;
+  
+  //! Allows to change Form Number
+  //! (1 admits null arrow)
+  Standard_EXPORT   void InitForm (const Standard_Integer form) ;
+  
+  //! returns the General Note entity
+  Standard_EXPORT   Handle(IGESDimen_GeneralNote) Note()  const;
+  
+  //! returns the Leader Arrow entity
+  Standard_EXPORT   Handle(IGESDimen_LeaderArrow) Leader()  const;
+  
+  //! returns the coordinates of the Arc Center
+  Standard_EXPORT   gp_Pnt2d Center()  const;
+  
+  //! returns the coordinates of the Arc Center after Transformation
+  //! (Z coord taken from ZDepth of Leader Entity)
+  Standard_EXPORT   gp_Pnt TransformedCenter()  const;
+  
+  //! returns True if form is 1, False if 0
+  Standard_EXPORT   Standard_Boolean HasLeader2()  const;
+  
+  //! returns Null handle if Form is 0
+  Standard_EXPORT   Handle(IGESDimen_LeaderArrow) Leader2()  const;
 
 
 
@@ -85,10 +75,10 @@ protected:
 private: 
 
 
-Handle_IGESDimen_GeneralNote theNote;
-Handle_IGESDimen_LeaderArrow theLeaderArrow;
-gp_XY theCenter;
-Handle_IGESDimen_LeaderArrow theLeader2;
+  Handle(IGESDimen_GeneralNote) theNote;
+  Handle(IGESDimen_LeaderArrow) theLeaderArrow;
+  gp_XY theCenter;
+  Handle(IGESDimen_LeaderArrow) theLeader2;
 
 
 };
@@ -97,7 +87,6 @@ Handle_IGESDimen_LeaderArrow theLeader2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESDimen_RadiusDimension_HeaderFile

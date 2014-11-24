@@ -5,24 +5,12 @@
 
 #include <MAT2d_DataMapOfIntegerBisec.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Bisector_Bisec_HeaderFile
 #include <Bisector_Bisec.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _MAT2d_DataMapNodeOfDataMapOfIntegerBisec_HeaderFile
 #include <MAT2d_DataMapNodeOfDataMapOfIntegerBisec.hxx>
-#endif
-#ifndef _MAT2d_DataMapIteratorOfDataMapOfIntegerBisec_HeaderFile
 #include <MAT2d_DataMapIteratorOfDataMapOfIntegerBisec.hxx>
-#endif
  
 
 #define TheKey Standard_Integer

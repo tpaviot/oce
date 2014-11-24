@@ -6,28 +6,21 @@
 #ifndef _StepRepr_ExternallyDefinedRepresentation_HeaderFile
 #define _StepRepr_ExternallyDefinedRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepRepr_ExternallyDefinedRepresentation_HeaderFile
 #include <Handle_StepRepr_ExternallyDefinedRepresentation.hxx>
-#endif
 
-#ifndef _StepRepr_Representation_HeaderFile
 #include <StepRepr_Representation.hxx>
-#endif
 
 
 
-class StepRepr_ExternallyDefinedRepresentation : public StepRepr_Representation {
+class StepRepr_ExternallyDefinedRepresentation : public StepRepr_Representation
+{
 
 public:
 
   
-  Standard_EXPORT   StepRepr_ExternallyDefinedRepresentation();
+  Standard_EXPORT StepRepr_ExternallyDefinedRepresentation();
 
 
 
@@ -50,7 +43,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_ExternallyDefinedRepresentation_HeaderFile

@@ -6,40 +6,18 @@
 #ifndef _XCAFDoc_DimTolTool_HeaderFile
 #define _XCAFDoc_DimTolTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_XCAFDoc_DimTolTool_HeaderFile
 #include <Handle_XCAFDoc_DimTolTool.hxx>
-#endif
 
-#ifndef _Handle_XCAFDoc_ShapeTool_HeaderFile
 #include <Handle_XCAFDoc_ShapeTool.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
 class XCAFDoc_ShapeTool;
 class TDF_Label;
 class Standard_GUID;
@@ -50,83 +28,105 @@ class TDF_Attribute;
 class TDF_RelocationTable;
 
 
-//! Provides tools to store and retrieve attributes (colors) <br>
-//!          of TopoDS_Shape in and from TDocStd_Document <br>
-//!          A Document is intended to hold different <br>
-//!          attributes of ONE shape and it's sub-shapes. <br>
-//!          Attribute containing DimTol section of DECAF document. <br>
-//!          Provide tools for management of DimTol section of document. <br>
-class XCAFDoc_DimTolTool : public TDF_Attribute {
+//! Provides tools to store and retrieve attributes (colors)
+//! of TopoDS_Shape in and from TDocStd_Document
+//! A Document is intended to hold different
+//! attributes of ONE shape and it's sub-shapes.
+//! Attribute containing DimTol section of DECAF document.
+//! Provide tools for management of DimTol section of document.
+class XCAFDoc_DimTolTool : public TDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   XCAFDoc_DimTolTool();
-  //! Creates (if not exist) DimTolTool. <br>
-  Standard_EXPORT   static  Handle_XCAFDoc_DimTolTool Set(const TDF_Label& L) ;
+  Standard_EXPORT XCAFDoc_DimTolTool();
   
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
-  //! returns the label under which colors are stored <br>
-  Standard_EXPORT     TDF_Label BaseLabel() const;
-  //! Returns internal XCAFDoc_ShapeTool tool <br>
-  Standard_EXPORT    const Handle_XCAFDoc_ShapeTool& ShapeTool() ;
-  //! Returns True if label belongs to a dimtoltable and <br>
-//!          is a DimTol definition <br>
-  Standard_EXPORT     Standard_Boolean IsDimTol(const TDF_Label& lab) const;
-  //! Returns a sequence of D&GTs currently stored <br>
-//!          in the DGTtable <br>
-  Standard_EXPORT     void GetDimTolLabels(TDF_LabelSequence& Labels) const;
-  //! Finds a dimtol definition in a DGTtable and returns <br>
-//!          its label if found <br>
-//!          Returns False if dimtol is not found in DGTtable <br>
-  Standard_EXPORT     Standard_Boolean FindDimTol(const Standard_Integer kind,const Handle(TColStd_HArray1OfReal)& aVal,const Handle(TCollection_HAsciiString)& aName,const Handle(TCollection_HAsciiString)& aDescription,TDF_Label& lab) const;
-  //! Finds a dimtol definition in a DGTtable and returns <br>
-//!          its label if found (or Null label else) <br>
-  Standard_EXPORT     TDF_Label FindDimTol(const Standard_Integer kind,const Handle(TColStd_HArray1OfReal)& aVal,const Handle(TCollection_HAsciiString)& aName,const Handle(TCollection_HAsciiString)& aDescription) const;
-  //! Adds a dimtol definition to a DGTtable and returns its label <br>
-  Standard_EXPORT     TDF_Label AddDimTol(const Standard_Integer kind,const Handle(TColStd_HArray1OfReal)& aVal,const Handle(TCollection_HAsciiString)& aName,const Handle(TCollection_HAsciiString)& aDescription) const;
-  //! Sets a link with GUID <br>
-  Standard_EXPORT     void SetDimTol(const TDF_Label& L,const TDF_Label& DimTolL) const;
-  //! Sets a link with GUID <br>
-//!          Adds a DimTol as necessary <br>
-  Standard_EXPORT     TDF_Label SetDimTol(const TDF_Label& L,const Standard_Integer kind,const Handle(TColStd_HArray1OfReal)& aVal,const Handle(TCollection_HAsciiString)& aName,const Handle(TCollection_HAsciiString)& aDescription) const;
-  //! Returns ShapeL defined for label DimTolL <br>
-//!          Returns False if the DimTolL is not in DGTtable <br>
-  Standard_EXPORT     Standard_Boolean GetRefShapeLabel(const TDF_Label& DimTolL,TDF_Label& ShapeL) const;
-  //! Returns all DimTol labels defined for label ShapeL <br>
-  Standard_EXPORT     Standard_Boolean GetRefDGTLabels(const TDF_Label& ShapeL,TDF_LabelSequence& DimTols) const;
-  //! Returns dimtol assigned to <DimTolL> <br>
-//!          Returns False if no such dimtol is assigned <br>
-  Standard_EXPORT     Standard_Boolean GetDimTol(const TDF_Label& DimTolL,Standard_Integer& kind,Handle(TColStd_HArray1OfReal)& aVal,Handle(TCollection_HAsciiString)& aName,Handle(TCollection_HAsciiString)& aDescription) const;
-  //! Returns True if label belongs to a dimtoltable and <br>
-//!          is a Datum definition <br>
-  Standard_EXPORT     Standard_Boolean IsDatum(const TDF_Label& lab) const;
-  //! Returns a sequence of Datumss currently stored <br>
-//!          in the DGTtable <br>
-  Standard_EXPORT     void GetDatumLabels(TDF_LabelSequence& Labels) const;
-  //! Finds a datum and returns its label if found <br>
-  Standard_EXPORT     Standard_Boolean FindDatum(const Handle(TCollection_HAsciiString)& aName,const Handle(TCollection_HAsciiString)& aDescription,const Handle(TCollection_HAsciiString)& anIdentification,TDF_Label& lab) const;
-  //! Adds a datum definition to a DGTtable and returns its label <br>
-  Standard_EXPORT     TDF_Label AddDatum(const Handle(TCollection_HAsciiString)& aName,const Handle(TCollection_HAsciiString)& aDescription,const Handle(TCollection_HAsciiString)& anIdentification) const;
-  //! Sets a link with GUID <br>
-  Standard_EXPORT     void SetDatum(const TDF_Label& L,const TDF_Label& DatumL) const;
-  //! Sets a link with GUID for Datum <br>
-//!          Adds a Datum as necessary <br>
-//!          Sets connection between Datum and Tolerance <br>
-  Standard_EXPORT     void SetDatum(const TDF_Label& L,const TDF_Label& TolerL,const Handle(TCollection_HAsciiString)& aName,const Handle(TCollection_HAsciiString)& aDescription,const Handle(TCollection_HAsciiString)& anIdentification) const;
-  //! Returns datum assigned to <DatumL> <br>
-//!          Returns False if no such datum is assigned <br>
-  Standard_EXPORT     Standard_Boolean GetDatum(const TDF_Label& DatumL,Handle(TCollection_HAsciiString)& aName,Handle(TCollection_HAsciiString)& aDescription,Handle(TCollection_HAsciiString)& anIdentification) const;
-  //! Returns all Datum labels defined for label DimTolL <br>
-  Standard_EXPORT     Standard_Boolean GetDatumTolerLabels(const TDF_Label& DimTolL,TDF_LabelSequence& Datums) const;
+  //! Creates (if not exist) DimTolTool.
+  Standard_EXPORT static   Handle(XCAFDoc_DimTolTool) Set (const TDF_Label& L) ;
   
-  Standard_EXPORT    const Standard_GUID& ID() const;
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-  Standard_EXPORT     void Restore(const Handle(TDF_Attribute)& with) ;
+  //! returns the label under which colors are stored
+  Standard_EXPORT   TDF_Label BaseLabel()  const;
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  //! Returns internal XCAFDoc_ShapeTool tool
+  Standard_EXPORT  const  Handle(XCAFDoc_ShapeTool)& ShapeTool() ;
   
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& into,const Handle(TDF_RelocationTable)& RT) const;
+  //! Returns True if label belongs to a dimtoltable and
+  //! is a DimTol definition
+  Standard_EXPORT   Standard_Boolean IsDimTol (const TDF_Label& lab)  const;
+  
+  //! Returns a sequence of D&GTs currently stored
+  //! in the DGTtable
+  Standard_EXPORT   void GetDimTolLabels (TDF_LabelSequence& Labels)  const;
+  
+  //! Finds a dimtol definition in a DGTtable and returns
+  //! its label if found
+  //! Returns False if dimtol is not found in DGTtable
+  Standard_EXPORT   Standard_Boolean FindDimTol (const Standard_Integer kind, const Handle(TColStd_HArray1OfReal)& aVal, const Handle(TCollection_HAsciiString)& aName, const Handle(TCollection_HAsciiString)& aDescription, TDF_Label& lab)  const;
+  
+  //! Finds a dimtol definition in a DGTtable and returns
+  //! its label if found (or Null label else)
+  Standard_EXPORT   TDF_Label FindDimTol (const Standard_Integer kind, const Handle(TColStd_HArray1OfReal)& aVal, const Handle(TCollection_HAsciiString)& aName, const Handle(TCollection_HAsciiString)& aDescription)  const;
+  
+  //! Adds a dimtol definition to a DGTtable and returns its label
+  Standard_EXPORT   TDF_Label AddDimTol (const Standard_Integer kind, const Handle(TColStd_HArray1OfReal)& aVal, const Handle(TCollection_HAsciiString)& aName, const Handle(TCollection_HAsciiString)& aDescription)  const;
+  
+  //! Sets a link with GUID
+  Standard_EXPORT   void SetDimTol (const TDF_Label& L, const TDF_Label& DimTolL)  const;
+  
+  //! Sets a link with GUID
+  //! Adds a DimTol as necessary
+  Standard_EXPORT   TDF_Label SetDimTol (const TDF_Label& L, const Standard_Integer kind, const Handle(TColStd_HArray1OfReal)& aVal, const Handle(TCollection_HAsciiString)& aName, const Handle(TCollection_HAsciiString)& aDescription)  const;
+  
+  //! Returns ShapeL defined for label DimTolL
+  //! Returns False if the DimTolL is not in DGTtable
+  Standard_EXPORT   Standard_Boolean GetRefShapeLabel (const TDF_Label& DimTolL, TDF_Label& ShapeL)  const;
+  
+  //! Returns all DimTol labels defined for label ShapeL
+  Standard_EXPORT   Standard_Boolean GetRefDGTLabels (const TDF_Label& ShapeL, TDF_LabelSequence& DimTols)  const;
+  
+  //! Returns dimtol assigned to <DimTolL>
+  //! Returns False if no such dimtol is assigned
+  Standard_EXPORT   Standard_Boolean GetDimTol (const TDF_Label& DimTolL, Standard_Integer& kind, Handle(TColStd_HArray1OfReal)& aVal, Handle(TCollection_HAsciiString)& aName, Handle(TCollection_HAsciiString)& aDescription)  const;
+  
+  //! Returns True if label belongs to a dimtoltable and
+  //! is a Datum definition
+  Standard_EXPORT   Standard_Boolean IsDatum (const TDF_Label& lab)  const;
+  
+  //! Returns a sequence of Datumss currently stored
+  //! in the DGTtable
+  Standard_EXPORT   void GetDatumLabels (TDF_LabelSequence& Labels)  const;
+  
+  //! Finds a datum and returns its label if found
+  Standard_EXPORT   Standard_Boolean FindDatum (const Handle(TCollection_HAsciiString)& aName, const Handle(TCollection_HAsciiString)& aDescription, const Handle(TCollection_HAsciiString)& anIdentification, TDF_Label& lab)  const;
+  
+  //! Adds a datum definition to a DGTtable and returns its label
+  Standard_EXPORT   TDF_Label AddDatum (const Handle(TCollection_HAsciiString)& aName, const Handle(TCollection_HAsciiString)& aDescription, const Handle(TCollection_HAsciiString)& anIdentification)  const;
+  
+  //! Sets a link with GUID
+  Standard_EXPORT   void SetDatum (const TDF_Label& L, const TDF_Label& DatumL)  const;
+  
+  //! Sets a link with GUID for Datum
+  //! Adds a Datum as necessary
+  //! Sets connection between Datum and Tolerance
+  Standard_EXPORT   void SetDatum (const TDF_Label& L, const TDF_Label& TolerL, const Handle(TCollection_HAsciiString)& aName, const Handle(TCollection_HAsciiString)& aDescription, const Handle(TCollection_HAsciiString)& anIdentification)  const;
+  
+  //! Returns datum assigned to <DatumL>
+  //! Returns False if no such datum is assigned
+  Standard_EXPORT   Standard_Boolean GetDatum (const TDF_Label& DatumL, Handle(TCollection_HAsciiString)& aName, Handle(TCollection_HAsciiString)& aDescription, Handle(TCollection_HAsciiString)& anIdentification)  const;
+  
+  //! Returns all Datum labels defined for label DimTolL
+  Standard_EXPORT   Standard_Boolean GetDatumTolerLabels (const TDF_Label& DimTolL, TDF_LabelSequence& Datums)  const;
+  
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
+  
+  Standard_EXPORT   void Restore (const Handle(TDF_Attribute)& with) ;
+  
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
+  
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& into, const Handle(TDF_RelocationTable)& RT)  const;
 
 
 
@@ -141,7 +141,7 @@ protected:
 private: 
 
 
-Handle_XCAFDoc_ShapeTool myShapeTool;
+  Handle(XCAFDoc_ShapeTool) myShapeTool;
 
 
 };
@@ -150,7 +150,6 @@ Handle_XCAFDoc_ShapeTool myShapeTool;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XCAFDoc_DimTolTool_HeaderFile

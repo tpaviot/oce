@@ -6,87 +6,71 @@
 #ifndef _BRepGProp_UFunction_HeaderFile
 #define _BRepGProp_UFunction_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepGProp_Face_HeaderFile
 #include <BRepGProp_Face.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _GProp_ValueType_HeaderFile
 #include <GProp_ValueType.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _math_Function_HeaderFile
 #include <math_Function.hxx>
-#endif
 class BRepGProp_Face;
 class gp_Pnt;
 class gp_XYZ;
 
 
-//! This class represents the integrand function for <br>
-//!          computation of an inner integral. The returned value <br>
-//!          depends on the value type and the flag IsByPoint. <br>
-//! <br>
-//!          The type of returned value is the one of the following <br>
-//!          values: <br>
-//!            -  GProp_Mass - volume computation. <br>
-//!            -  GProp_CenterMassX, GProp_CenterMassY, <br>
-//!               GProp_CenterMassZ - X, Y and Z coordinates of center <br>
-//!                                   of mass computation. <br>
-//!            -  GProp_InertiaXX, GProp_InertiaYY, GProp_InertiaZZ, <br>
-//!               GProp_InertiaXY, GProp_InertiaXZ, GProp_InertiaYZ <br>
-//!                                 - moments of inertia computation. <br>
-//! <br>
-//!          If the flag IsByPoint is set to Standard_True, the value is <br>
-//!          returned for the region of space that is delimited by a <br>
-//!          surface and a point. Otherwise all computations are <br>
-//!          performed for the region of space delimited by a surface <br>
-//!          and a plane. <br>
-class BRepGProp_UFunction  : public math_Function {
+//! This class represents the integrand function for
+//! computation of an inner integral. The returned value
+//! depends on the value type and the flag IsByPoint.
+//!
+//! The type of returned value is the one of the following
+//! values:
+//! -  GProp_Mass - volume computation.
+//! -  GProp_CenterMassX, GProp_CenterMassY,
+//! GProp_CenterMassZ - X, Y and Z coordinates of center
+//! of mass computation.
+//! -  GProp_InertiaXX, GProp_InertiaYY, GProp_InertiaZZ,
+//! GProp_InertiaXY, GProp_InertiaXZ, GProp_InertiaYZ
+//! - moments of inertia computation.
+//!
+//! If the flag IsByPoint is set to Standard_True, the value is
+//! returned for the region of space that is delimited by a
+//! surface and a point. Otherwise all computations are
+//! performed for the region of space delimited by a surface
+//! and a plane.
+class BRepGProp_UFunction  : public math_Function
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Constructor. Initializes the function with the face, the <br>
-//!          location point, the flag IsByPoint and the coefficients <br>
-//!          theCoeff that have different meaning depending on the value <br>
-//!          of IsByPoint. <br>
-//!          If IsByPoint is equal to Standard_True, the number of the <br>
-//!          coefficients is equal to 3 and they represent X, Y and Z <br>
-//!          coordinates (theCoeff[0], theCoeff[1] and theCoeff[2] <br>
-//!          correspondingly) of the shift, if the inertia is computed <br>
-//!          with respect to the point different then the location. <br>
-//!          If IsByPoint is equal to Standard_False, the number of the <br>
-//!          coefficients is 4 and they represent the combination of <br>
-//!          plane parameters and shift values. <br>
-  Standard_EXPORT   BRepGProp_UFunction(const BRepGProp_Face& theSurface,const gp_Pnt& theVertex,const Standard_Boolean IsByPoint,const Standard_Address theCoeffs);
-  //! Setting the type of the value to be returned. <br>
-        void SetValueType(const GProp_ValueType theType) ;
-  //! Setting the V parameter that is constant during the <br>
-//!          integral computation. <br>
-        void SetVParam(const Standard_Real theVParam) ;
-  //! Returns a value of the function. <br>
-  Standard_EXPORT   virtual  Standard_Boolean Value(const Standard_Real X,Standard_Real& F) ;
-
+  
+  //! Constructor. Initializes the function with the face, the
+  //! location point, the flag IsByPoint and the coefficients
+  //! theCoeff that have different meaning depending on the value
+  //! of IsByPoint.
+  //! If IsByPoint is equal to Standard_True, the number of the
+  //! coefficients is equal to 3 and they represent X, Y and Z
+  //! coordinates (theCoeff[0], theCoeff[1] and theCoeff[2]
+  //! correspondingly) of the shift, if the inertia is computed
+  //! with respect to the point different then the location.
+  //! If IsByPoint is equal to Standard_False, the number of the
+  //! coefficients is 4 and they represent the combination of
+  //! plane parameters and shift values.
+  Standard_EXPORT BRepGProp_UFunction(const BRepGProp_Face& theSurface, const gp_Pnt& theVertex, const Standard_Boolean IsByPoint, const Standard_Address theCoeffs);
+  
+  //! Setting the type of the value to be returned.
+      void SetValueType (const GProp_ValueType theType) ;
+  
+  //! Setting the V parameter that is constant during the
+  //! integral computation.
+      void SetVParam (const Standard_Real theVParam) ;
+  
+  //! Returns a value of the function.
+  Standard_EXPORT virtual   Standard_Boolean Value (const Standard_Real X, Standard_Real& F) ;
 
 
 
@@ -99,34 +83,37 @@ protected:
 
 private:
 
-  //! Private method. Returns the value for volume computation. <br>
-//!          Other returned values are: <br>
-//!            -  thePMP0 - PSurf(X,Y) minus Location. <br>
-//!            -  theS and theD1 coeffitients that are computed and used <br>
-//!               for computation of center of mass and inertia values <br>
-//!               by plane. <br>
-  Standard_EXPORT     Standard_Real VolumeValue(const Standard_Real X,gp_XYZ& thePMP0,Standard_Real& theS,Standard_Real& theD1) ;
-  //! Private method. Returns a value for the center of mass <br>
-//!          computation. If the value type other then GProp_CenterMassX, <br>
-//!          GProp_CenterMassY or GProp_CenterMassZ this method returns <br>
-//!          Standard_False. Returns Standard_True in case of successful <br>
-//!          computation of a value. <br>
-  Standard_EXPORT     Standard_Boolean CenterMassValue(const Standard_Real X,Standard_Real& F) ;
-  //! Private method. Computes the value of intertia. The type of <br>
-//!          a value returned is defined by the value type. If it is <br>
-//!          other then GProp_InertiaXX, GProp_InertiaYY, <br>
-//!          GProp_InertiaZZ, GProp_InertiaXY, GProp_InertiaXZ or <br>
-//!          GProp_InertiaYZ, the method returns Standard_False. Returns <br>
-//!          Standard_True in case of successful computation of a value <br>
-  Standard_EXPORT     Standard_Boolean InertiaValue(const Standard_Real X,Standard_Real& F) ;
+  
+  //! Private method. Returns the value for volume computation.
+  //! Other returned values are:
+  //! -  thePMP0 - PSurf(X,Y) minus Location.
+  //! -  theS and theD1 coeffitients that are computed and used
+  //! for computation of center of mass and inertia values
+  //! by plane.
+  Standard_EXPORT   Standard_Real VolumeValue (const Standard_Real X, gp_XYZ& thePMP0, Standard_Real& theS, Standard_Real& theD1) ;
+  
+  //! Private method. Returns a value for the center of mass
+  //! computation. If the value type other then GProp_CenterMassX,
+  //! GProp_CenterMassY or GProp_CenterMassZ this method returns
+  //! Standard_False. Returns Standard_True in case of successful
+  //! computation of a value.
+  Standard_EXPORT   Standard_Boolean CenterMassValue (const Standard_Real X, Standard_Real& F) ;
+  
+  //! Private method. Computes the value of intertia. The type of
+  //! a value returned is defined by the value type. If it is
+  //! other then GProp_InertiaXX, GProp_InertiaYY,
+  //! GProp_InertiaZZ, GProp_InertiaXY, GProp_InertiaXZ or
+  //! GProp_InertiaYZ, the method returns Standard_False. Returns
+  //! Standard_True in case of successful computation of a value
+  Standard_EXPORT   Standard_Boolean InertiaValue (const Standard_Real X, Standard_Real& F) ;
 
 
-BRepGProp_Face mySurface;
-gp_Pnt myVertex;
-Standard_Address myCoeffs;
-Standard_Real myVParam;
-GProp_ValueType myValueType;
-Standard_Boolean myIsByPoint;
+  BRepGProp_Face mySurface;
+  gp_Pnt myVertex;
+  Standard_Address myCoeffs;
+  Standard_Real myVParam;
+  GProp_ValueType myValueType;
+  Standard_Boolean myIsByPoint;
 
 
 };
@@ -136,7 +123,6 @@ Standard_Boolean myIsByPoint;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepGProp_UFunction_HeaderFile

@@ -6,61 +6,55 @@
 #ifndef _TestTopOpe_HeaderFile
 #define _TestTopOpe_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Draw_Interpretor_HeaderFile
 #include <Draw_Interpretor.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepBuild_HBuilder_HeaderFile
 #include <Handle_TopOpeBRepBuild_HBuilder.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_HDataStructure_HeaderFile
 #include <Handle_TopOpeBRepDS_HDataStructure.hxx>
-#endif
 class TopOpeBRepBuild_HBuilder;
 class TopOpeBRepDS_HDataStructure;
 class TopoDS_Shape;
 
 
 
-class TestTopOpe  {
+class TestTopOpe 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Defines all Top. Ope. test commands <br>
-  Standard_EXPORT   static  void AllCommands(Draw_Interpretor& I) ;
   
-  Standard_EXPORT   static  void TOPOCommands(Draw_Interpretor& I) ;
+  //! Defines all Top. Ope. test commands
+  Standard_EXPORT static   void AllCommands (Draw_Interpretor& I) ;
   
-  Standard_EXPORT   static  void BOOPCommands(Draw_Interpretor& I) ;
-  //! commands on a HDS involved in topological operations <br>
-  Standard_EXPORT   static  void HDSCommands(Draw_Interpretor& I) ;
-  //! Defines the HBuilder on which BOOPCommands will operate. <br>
-  Standard_EXPORT   static  void CurrentHB(const Handle(TopOpeBRepBuild_HBuilder)& HDS) ;
-  //! Defines the HDS on which HDSCommands/BOOPCommands will operate. <br>
-  Standard_EXPORT   static  void CurrentDS(const Handle(TopOpeBRepDS_HDataStructure)& HDS) ;
-  //! Defines current shapes of current topological operation <br>
-  Standard_EXPORT   static  void Shapes(const TopoDS_Shape& S1,const TopoDS_Shape& S2) ;
+  Standard_EXPORT static   void TOPOCommands (Draw_Interpretor& I) ;
   
-  Standard_EXPORT   static  void MesureCommands(Draw_Interpretor& I) ;
+  Standard_EXPORT static   void BOOPCommands (Draw_Interpretor& I) ;
   
-  Standard_EXPORT   static  void CORCommands(Draw_Interpretor& I) ;
+  //! commands on a HDS involved in topological operations
+  Standard_EXPORT static   void HDSCommands (Draw_Interpretor& I) ;
   
-  Standard_EXPORT   static  void DSACommands(Draw_Interpretor& I) ;
+  //! Defines the HBuilder on which BOOPCommands will operate.
+  Standard_EXPORT static   void CurrentHB (const Handle(TopOpeBRepBuild_HBuilder)& HDS) ;
   
-  Standard_EXPORT   static  void OtherCommands(Draw_Interpretor& I) ;
-  //! Loads all Draw commands of TKDrawDEB. Used for plugin. <br>
-  Standard_EXPORT   static  void Factory(Draw_Interpretor& theDI) ;
-
+  //! Defines the HDS on which HDSCommands/BOOPCommands will operate.
+  Standard_EXPORT static   void CurrentDS (const Handle(TopOpeBRepDS_HDataStructure)& HDS) ;
+  
+  //! Defines current shapes of current topological operation
+  Standard_EXPORT static   void Shapes (const TopoDS_Shape& S1, const TopoDS_Shape& S2) ;
+  
+  Standard_EXPORT static   void MesureCommands (Draw_Interpretor& I) ;
+  
+  Standard_EXPORT static   void CORCommands (Draw_Interpretor& I) ;
+  
+  Standard_EXPORT static   void DSACommands (Draw_Interpretor& I) ;
+  
+  Standard_EXPORT static   void OtherCommands (Draw_Interpretor& I) ;
+  
+  //! Loads all Draw commands of TKDrawDEB. Used for plugin.
+  Standard_EXPORT static   void Factory (Draw_Interpretor& theDI) ;
 
 
 
@@ -83,7 +77,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TestTopOpe_HeaderFile

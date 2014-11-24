@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKFillet"
-	ProjectGUID="{4BDF1C02-0AB5-0B98-1569-88BC37FCC2BE}"
+	ProjectGUID="{3280E09A-0063-027D-1095-3DFECA228FCC}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -248,7 +248,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\ChFiDS;..\..\..\src\ChFiDS;..\..\..\drv\ChFi2d;..\..\..\src\ChFi2d;..\..\..\drv\ChFi3d;..\..\..\src\ChFi3d;..\..\..\drv\ChFiKPart;..\..\..\src\ChFiKPart;..\..\..\drv\Blend;..\..\..\src\Blend;..\..\..\drv\BRepBlend;..\..\..\src\BRepBlend;..\..\..\drv\BlendFunc;..\..\..\src\BlendFunc;..\..\..\drv\BRepFilletAPI;..\..\..\src\BRepFilletAPI;..\..\..\drv\FilletSurf;..\..\..\src\FilletSurf;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ChFiDS_DLL;__ChFi2d_DLL;__ChFi3d_DLL;__ChFiKPart_DLL;__Blend_DLL;__BRepBlend_DLL;__BlendFunc_DLL;__BRepFilletAPI_DLL;__FilletSurf_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ChFiDS_DLL;__ChFi2d_DLL;__ChFi3d_DLL;__ChFiKPart_DLL;__Blend_DLL;__BRepBlend_DLL;__BlendFunc_DLL;__BRepFilletAPI_DLL;__FilletSurf_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ChFiDS_DLL;__ChFi2d_DLL;__ChFi3d_DLL;__ChFiKPart_DLL;__Blend_DLL;__BRepBlend_DLL;__BlendFunc_DLL;__BRepFilletAPI_DLL;__FilletSurf_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ChFiDS_DLL;__ChFi2d_DLL;__ChFi3d_DLL;__ChFiKPart_DLL;__Blend_DLL;__BRepBlend_DLL;__BlendFunc_DLL;__BRepFilletAPI_DLL;__FilletSurf_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -343,7 +343,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\ChFiDS;..\..\..\src\ChFiDS;..\..\..\drv\ChFi2d;..\..\..\src\ChFi2d;..\..\..\drv\ChFi3d;..\..\..\src\ChFi3d;..\..\..\drv\ChFiKPart;..\..\..\src\ChFiKPart;..\..\..\drv\Blend;..\..\..\src\Blend;..\..\..\drv\BRepBlend;..\..\..\src\BRepBlend;..\..\..\drv\BlendFunc;..\..\..\src\BlendFunc;..\..\..\drv\BRepFilletAPI;..\..\..\src\BRepFilletAPI;..\..\..\drv\FilletSurf;..\..\..\src\FilletSurf;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ChFiDS_DLL;__ChFi2d_DLL;__ChFi3d_DLL;__ChFiKPart_DLL;__Blend_DLL;__BRepBlend_DLL;__BlendFunc_DLL;__BRepFilletAPI_DLL;__FilletSurf_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ChFiDS_DLL;__ChFi2d_DLL;__ChFi3d_DLL;__ChFiKPart_DLL;__Blend_DLL;__BRepBlend_DLL;__BlendFunc_DLL;__BRepFilletAPI_DLL;__FilletSurf_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -365,7 +365,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ChFiDS_DLL;__ChFi2d_DLL;__ChFi3d_DLL;__ChFiKPart_DLL;__Blend_DLL;__BRepBlend_DLL;__BlendFunc_DLL;__BRepFilletAPI_DLL;__FilletSurf_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ChFiDS_DLL;__ChFi2d_DLL;__ChFi3d_DLL;__ChFiKPart_DLL;__Blend_DLL;__BRepBlend_DLL;__BlendFunc_DLL;__BRepFilletAPI_DLL;__FilletSurf_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"

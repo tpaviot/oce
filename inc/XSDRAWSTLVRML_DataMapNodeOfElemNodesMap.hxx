@@ -6,28 +6,14 @@
 #ifndef _XSDRAWSTLVRML_DataMapNodeOfElemNodesMap_HeaderFile
 #define _XSDRAWSTLVRML_DataMapNodeOfElemNodesMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_XSDRAWSTLVRML_DataMapNodeOfElemNodesMap_HeaderFile
 #include <Handle_XSDRAWSTLVRML_DataMapNodeOfElemNodesMap.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TColStd_DataMapOfIntegerInteger_HeaderFile
 #include <TColStd_DataMapOfIntegerInteger.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TColStd_DataMapOfIntegerInteger;
 class TColStd_MapIntegerHasher;
 class XSDRAWSTLVRML_ElemNodesMap;
@@ -35,16 +21,17 @@ class XSDRAWSTLVRML_DataMapIteratorOfElemNodesMap;
 
 
 
-class XSDRAWSTLVRML_DataMapNodeOfElemNodesMap : public TCollection_MapNode {
+class XSDRAWSTLVRML_DataMapNodeOfElemNodesMap : public TCollection_MapNode
+{
 
 public:
 
   
-      XSDRAWSTLVRML_DataMapNodeOfElemNodesMap(const Standard_Integer& K,const TColStd_DataMapOfIntegerInteger& I,const TCollection_MapNodePtr& n);
+    XSDRAWSTLVRML_DataMapNodeOfElemNodesMap(const Standard_Integer& K, const TColStd_DataMapOfIntegerInteger& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Key() const;
+      Standard_Integer& Key()  const;
   
-        TColStd_DataMapOfIntegerInteger& Value() const;
+      TColStd_DataMapOfIntegerInteger& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-Standard_Integer myKey;
-TColStd_DataMapOfIntegerInteger myValue;
+  Standard_Integer myKey;
+  TColStd_DataMapOfIntegerInteger myValue;
 
 
 };
@@ -98,7 +85,6 @@ TColStd_DataMapOfIntegerInteger myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XSDRAWSTLVRML_DataMapNodeOfElemNodesMap_HeaderFile

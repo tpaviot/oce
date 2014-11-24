@@ -6,39 +6,28 @@
 #ifndef _TNaming_ListNodeOfListOfNamedShape_HeaderFile
 #define _TNaming_ListNodeOfListOfNamedShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TNaming_ListNodeOfListOfNamedShape_HeaderFile
 #include <Handle_TNaming_ListNodeOfListOfNamedShape.hxx>
-#endif
 
-#ifndef _Handle_TNaming_NamedShape_HeaderFile
 #include <Handle_TNaming_NamedShape.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TNaming_NamedShape;
 class TNaming_ListOfNamedShape;
 class TNaming_ListIteratorOfListOfNamedShape;
 
 
 
-class TNaming_ListNodeOfListOfNamedShape : public TCollection_MapNode {
+class TNaming_ListNodeOfListOfNamedShape : public TCollection_MapNode
+{
 
 public:
 
   
-      TNaming_ListNodeOfListOfNamedShape(const Handle(TNaming_NamedShape)& I,const TCollection_MapNodePtr& n);
+    TNaming_ListNodeOfListOfNamedShape(const Handle(TNaming_NamedShape)& I, const TCollection_MapNodePtr& n);
   
-        Handle_TNaming_NamedShape& Value() const;
+      Handle(TNaming_NamedShape)& Value()  const;
 
 
 
@@ -53,12 +42,12 @@ protected:
 private: 
 
 
-Handle_TNaming_NamedShape myValue;
+  Handle(TNaming_NamedShape) myValue;
 
 
 };
 
-#define Item Handle_TNaming_NamedShape
+#define Item Handle(TNaming_NamedShape)
 #define Item_hxx <TNaming_NamedShape.hxx>
 #define TCollection_ListNode TNaming_ListNodeOfListOfNamedShape
 #define TCollection_ListNode_hxx <TNaming_ListNodeOfListOfNamedShape.hxx>
@@ -83,7 +72,6 @@ Handle_TNaming_NamedShape myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TNaming_ListNodeOfListOfNamedShape_HeaderFile

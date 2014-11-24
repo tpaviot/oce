@@ -5,16 +5,10 @@
 
 #include <TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColgp_HArray1OfPnt2d_HeaderFile
 #include <TColgp_HArray1OfPnt2d.hxx>
-#endif
-#ifndef _TColgp_SequenceOfArray1OfPnt2d_HeaderFile
 #include <TColgp_SequenceOfArray1OfPnt2d.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d,Standard_Transie
 IMPLEMENT_STANDARD_RTTI(TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d)
 
 
-#define SeqItem Handle_TColgp_HArray1OfPnt2d
+#define SeqItem Handle(TColgp_HArray1OfPnt2d)
 #define SeqItem_hxx <TColgp_HArray1OfPnt2d.hxx>
 #define TCollection_SequenceNode TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d
 #define TCollection_SequenceNode_hxx <TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>

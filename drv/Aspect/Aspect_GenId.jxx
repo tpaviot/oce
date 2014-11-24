@@ -1,6 +1,2 @@
-#ifndef _Aspect_IdentDefinitionError_HeaderFile
 #include <Aspect_IdentDefinitionError.hxx>
-#endif
-#ifndef _Aspect_GenId_HeaderFile
 #include <Aspect_GenId.hxx>
-#endif

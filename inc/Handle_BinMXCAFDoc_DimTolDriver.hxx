@@ -6,22 +6,15 @@
 #ifndef _Handle_BinMXCAFDoc_DimTolDriver_HeaderFile
 #define _Handle_BinMXCAFDoc_DimTolDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_BinMDF_ADriver_HeaderFile
 #include <Handle_BinMDF_ADriver.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(BinMDF_ADriver);
 class BinMXCAFDoc_DimTolDriver;
 
-DEFINE_STANDARD_HANDLE(BinMXCAFDoc_DimTolDriver,BinMDF_ADriver)
+DEFINE_STANDARD_HANDLE(BinMXCAFDoc_DimTolDriver, BinMDF_ADriver)
 
-#endif
+#endif // _Handle_BinMXCAFDoc_DimTolDriver_HeaderFile

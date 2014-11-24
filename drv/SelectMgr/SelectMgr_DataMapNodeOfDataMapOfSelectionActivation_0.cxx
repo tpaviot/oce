@@ -5,22 +5,12 @@
 
 #include <SelectMgr_DataMapNodeOfDataMapOfSelectionActivation.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _SelectMgr_Selection_HeaderFile
 #include <SelectMgr_Selection.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _SelectMgr_DataMapOfSelectionActivation_HeaderFile
 #include <SelectMgr_DataMapOfSelectionActivation.hxx>
-#endif
-#ifndef _SelectMgr_DataMapIteratorOfDataMapOfSelectionActivation_HeaderFile
 #include <SelectMgr_DataMapIteratorOfDataMapOfSelectionActivation.hxx>
-#endif
 
  
 
@@ -39,7 +29,7 @@ IMPLEMENT_DOWNCAST(SelectMgr_DataMapNodeOfDataMapOfSelectionActivation,Standard_
 IMPLEMENT_STANDARD_RTTI(SelectMgr_DataMapNodeOfDataMapOfSelectionActivation)
 
 
-#define TheKey Handle_SelectMgr_Selection
+#define TheKey Handle(SelectMgr_Selection)
 #define TheKey_hxx <SelectMgr_Selection.hxx>
 #define TheItem Standard_Integer
 #define TheItem_hxx <Standard_Integer.hxx>

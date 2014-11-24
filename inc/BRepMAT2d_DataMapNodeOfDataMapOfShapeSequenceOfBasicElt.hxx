@@ -6,28 +6,14 @@
 #ifndef _BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt_HeaderFile
 #define _BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt_HeaderFile
 #include <Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _MAT_SequenceOfBasicElt_HeaderFile
 #include <MAT_SequenceOfBasicElt.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopoDS_Shape;
 class MAT_SequenceOfBasicElt;
 class TopTools_ShapeMapHasher;
@@ -36,16 +22,17 @@ class BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt;
 
 
 
-class BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt : public TCollection_MapNode {
+class BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt : public TCollection_MapNode
+{
 
 public:
 
   
-      BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt(const TopoDS_Shape& K,const MAT_SequenceOfBasicElt& I,const TCollection_MapNodePtr& n);
+    BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt(const TopoDS_Shape& K, const MAT_SequenceOfBasicElt& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        MAT_SequenceOfBasicElt& Value() const;
+      MAT_SequenceOfBasicElt& Value()  const;
 
 
 
@@ -60,8 +47,8 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-MAT_SequenceOfBasicElt myValue;
+  TopoDS_Shape myKey;
+  MAT_SequenceOfBasicElt myValue;
 
 
 };
@@ -99,7 +86,6 @@ MAT_SequenceOfBasicElt myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt_HeaderFile

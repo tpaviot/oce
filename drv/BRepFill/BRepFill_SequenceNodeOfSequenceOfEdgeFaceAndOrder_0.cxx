@@ -5,16 +5,10 @@
 
 #include <BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _BRepFill_EdgeFaceAndOrder_HeaderFile
 #include <BRepFill_EdgeFaceAndOrder.hxx>
-#endif
-#ifndef _BRepFill_SequenceOfEdgeFaceAndOrder_HeaderFile
 #include <BRepFill_SequenceOfEdgeFaceAndOrder.hxx>
-#endif
 
  
 

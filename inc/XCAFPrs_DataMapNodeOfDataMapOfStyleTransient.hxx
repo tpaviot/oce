@@ -6,28 +6,14 @@
 #ifndef _XCAFPrs_DataMapNodeOfDataMapOfStyleTransient_HeaderFile
 #define _XCAFPrs_DataMapNodeOfDataMapOfStyleTransient_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient_HeaderFile
 #include <Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient.hxx>
-#endif
 
-#ifndef _XCAFPrs_Style_HeaderFile
 #include <XCAFPrs_Style.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Standard_Transient;
 class XCAFPrs_Style;
 class XCAFPrs_DataMapOfStyleTransient;
@@ -35,16 +21,17 @@ class XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient;
 
 
 
-class XCAFPrs_DataMapNodeOfDataMapOfStyleTransient : public TCollection_MapNode {
+class XCAFPrs_DataMapNodeOfDataMapOfStyleTransient : public TCollection_MapNode
+{
 
 public:
 
   
-      XCAFPrs_DataMapNodeOfDataMapOfStyleTransient(const XCAFPrs_Style& K,const Handle(Standard_Transient)& I,const TCollection_MapNodePtr& n);
+    XCAFPrs_DataMapNodeOfDataMapOfStyleTransient(const XCAFPrs_Style& K, const Handle(Standard_Transient)& I, const TCollection_MapNodePtr& n);
   
-        XCAFPrs_Style& Key() const;
+      XCAFPrs_Style& Key()  const;
   
-        Handle_Standard_Transient& Value() const;
+      Handle(Standard_Transient)& Value()  const;
 
 
 
@@ -59,15 +46,15 @@ protected:
 private: 
 
 
-XCAFPrs_Style myKey;
-Handle_Standard_Transient myValue;
+  XCAFPrs_Style myKey;
+  Handle(Standard_Transient) myValue;
 
 
 };
 
 #define TheKey XCAFPrs_Style
 #define TheKey_hxx <XCAFPrs_Style.hxx>
-#define TheItem Handle_Standard_Transient
+#define TheItem Handle(Standard_Transient)
 #define TheItem_hxx <Standard_Transient.hxx>
 #define Hasher XCAFPrs_Style
 #define Hasher_hxx <XCAFPrs_Style.hxx>
@@ -98,7 +85,6 @@ Handle_Standard_Transient myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XCAFPrs_DataMapNodeOfDataMapOfStyleTransient_HeaderFile

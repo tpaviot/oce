@@ -6,31 +6,15 @@
 #ifndef _IFSelect_DispPerSignature_HeaderFile
 #define _IFSelect_DispPerSignature_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_DispPerSignature_HeaderFile
 #include <Handle_IFSelect_DispPerSignature.hxx>
-#endif
 
-#ifndef _Handle_IFSelect_SignCounter_HeaderFile
 #include <Handle_IFSelect_SignCounter.hxx>
-#endif
-#ifndef _IFSelect_Dispatch_HeaderFile
 #include <IFSelect_Dispatch.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class IFSelect_SignCounter;
 class Interface_InterfaceError;
 class TCollection_AsciiString;
@@ -38,31 +22,39 @@ class Interface_Graph;
 class IFGraph_SubPartsIterator;
 
 
-//! A DispPerSignature sorts input Entities according to a <br>
-//!           Signature : it works with a SignCounter to do this. <br>
-class IFSelect_DispPerSignature : public IFSelect_Dispatch {
+//! A DispPerSignature sorts input Entities according to a
+//! Signature : it works with a SignCounter to do this.
+class IFSelect_DispPerSignature : public IFSelect_Dispatch
+{
 
 public:
 
-  //! Creates a DispPerSignature with no SignCounter (by default, <br>
-//!           produces only one packet) <br>
-  Standard_EXPORT   IFSelect_DispPerSignature();
-  //! Returns the SignCounter used for splitting <br>
-  Standard_EXPORT     Handle_IFSelect_SignCounter SignCounter() const;
-  //! Sets a SignCounter for sort <br>
-//!           Remark : it is set to record lists of entities, not only counts <br>
-  Standard_EXPORT     void SetSignCounter(const Handle(IFSelect_SignCounter)& sign) ;
-  //! Returns the name of the SignCounter, which caracterises the <br>
-//!           sorting criterium for this Dispatch <br>
-  Standard_EXPORT     Standard_CString SignName() const;
-  //! Returns as Label, "One File per Signature <name>" <br>
-  Standard_EXPORT     TCollection_AsciiString Label() const;
-  //! Returns True, maximum count is given as <nbent> <br>
-  Standard_EXPORT   virtual  Standard_Boolean LimitedMax(const Standard_Integer nbent,Standard_Integer& max) const;
-  //! Computes the list of produced Packets. It defines Packets from <br>
-//!           the SignCounter, which sirts the input Entities per Signature <br>
-//!           (specific of the SignCounter). <br>
-  Standard_EXPORT     void Packets(const Interface_Graph& G,IFGraph_SubPartsIterator& packs) const;
+  
+  //! Creates a DispPerSignature with no SignCounter (by default,
+  //! produces only one packet)
+  Standard_EXPORT IFSelect_DispPerSignature();
+  
+  //! Returns the SignCounter used for splitting
+  Standard_EXPORT   Handle(IFSelect_SignCounter) SignCounter()  const;
+  
+  //! Sets a SignCounter for sort
+  //! Remark : it is set to record lists of entities, not only counts
+  Standard_EXPORT   void SetSignCounter (const Handle(IFSelect_SignCounter)& sign) ;
+  
+  //! Returns the name of the SignCounter, which caracterises the
+  //! sorting criterium for this Dispatch
+  Standard_EXPORT   Standard_CString SignName()  const;
+  
+  //! Returns as Label, "One File per Signature <name>"
+  Standard_EXPORT   TCollection_AsciiString Label()  const;
+  
+  //! Returns True, maximum count is given as <nbent>
+  Standard_EXPORT virtual   Standard_Boolean LimitedMax (const Standard_Integer nbent, Standard_Integer& max)  const;
+  
+  //! Computes the list of produced Packets. It defines Packets from
+  //! the SignCounter, which sirts the input Entities per Signature
+  //! (specific of the SignCounter).
+  Standard_EXPORT   void Packets (const Interface_Graph& G, IFGraph_SubPartsIterator& packs)  const;
 
 
 
@@ -77,7 +69,7 @@ protected:
 private: 
 
 
-Handle_IFSelect_SignCounter thesign;
+  Handle(IFSelect_SignCounter) thesign;
 
 
 };
@@ -86,7 +78,6 @@ Handle_IFSelect_SignCounter thesign;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_DispPerSignature_HeaderFile

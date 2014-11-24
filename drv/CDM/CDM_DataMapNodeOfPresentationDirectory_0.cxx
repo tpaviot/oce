@@ -5,22 +5,12 @@
 
 #include <CDM_DataMapNodeOfPresentationDirectory.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _CDM_Document_HeaderFile
 #include <CDM_Document.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _CDM_PresentationDirectory_HeaderFile
 #include <CDM_PresentationDirectory.hxx>
-#endif
-#ifndef _CDM_DataMapIteratorOfPresentationDirectory_HeaderFile
 #include <CDM_DataMapIteratorOfPresentationDirectory.hxx>
-#endif
 
  
 
@@ -41,7 +31,7 @@ IMPLEMENT_STANDARD_RTTI(CDM_DataMapNodeOfPresentationDirectory)
 
 #define TheKey TCollection_ExtendedString
 #define TheKey_hxx <TCollection_ExtendedString.hxx>
-#define TheItem Handle_CDM_Document
+#define TheItem Handle(CDM_Document)
 #define TheItem_hxx <CDM_Document.hxx>
 #define Hasher TCollection_ExtendedString
 #define Hasher_hxx <TCollection_ExtendedString.hxx>

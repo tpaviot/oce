@@ -5,19 +5,11 @@
 
 #include <DDF_ListNodeOfTransactionStack.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _DDF_Transaction_HeaderFile
 #include <DDF_Transaction.hxx>
-#endif
-#ifndef _DDF_TransactionStack_HeaderFile
 #include <DDF_TransactionStack.hxx>
-#endif
-#ifndef _DDF_ListIteratorOfTransactionStack_HeaderFile
 #include <DDF_ListIteratorOfTransactionStack.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(DDF_ListNodeOfTransactionStack,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(DDF_ListNodeOfTransactionStack)
 
 
-#define Item Handle_DDF_Transaction
+#define Item Handle(DDF_Transaction)
 #define Item_hxx <DDF_Transaction.hxx>
 #define TCollection_ListNode DDF_ListNodeOfTransactionStack
 #define TCollection_ListNode_hxx <DDF_ListNodeOfTransactionStack.hxx>

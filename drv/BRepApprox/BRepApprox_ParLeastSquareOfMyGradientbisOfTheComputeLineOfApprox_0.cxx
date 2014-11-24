@@ -5,45 +5,19 @@
 
 #include <BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx>
 
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_DimensionError_HeaderFile
 #include <Standard_DimensionError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _BRepApprox_TheMultiLineOfApprox_HeaderFile
 #include <BRepApprox_TheMultiLineOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_TheMultiLineToolOfApprox_HeaderFile
 #include <BRepApprox_TheMultiLineToolOfApprox.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _TColStd_Array1OfInteger_HeaderFile
 #include <TColStd_Array1OfInteger.hxx>
-#endif
-#ifndef _AppParCurves_MultiCurve_HeaderFile
 #include <AppParCurves_MultiCurve.hxx>
-#endif
-#ifndef _AppParCurves_MultiBSpCurve_HeaderFile
 #include <AppParCurves_MultiBSpCurve.hxx>
-#endif
-#ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
-#endif
  
 
 #define MultiLine BRepApprox_TheMultiLineOfApprox

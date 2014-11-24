@@ -6,94 +6,78 @@
 #ifndef _BRepCheck_ListOfStatus_HeaderFile
 #define _BRepCheck_ListOfStatus_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _BRepCheck_Status_HeaderFile
 #include <BRepCheck_Status.hxx>
-#endif
-#ifndef _Handle_BRepCheck_ListNodeOfListOfStatus_HeaderFile
 #include <Handle_BRepCheck_ListNodeOfListOfStatus.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class BRepCheck_ListIteratorOfListOfStatus;
 class BRepCheck_ListNodeOfListOfStatus;
 
 
 
-class BRepCheck_ListOfStatus  {
+class BRepCheck_ListOfStatus 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepCheck_ListOfStatus();
+  Standard_EXPORT BRepCheck_ListOfStatus();
   
-  Standard_EXPORT   BRepCheck_ListOfStatus(const BRepCheck_ListOfStatus& Other);
+  Standard_EXPORT BRepCheck_ListOfStatus(const BRepCheck_ListOfStatus& Other);
   
-  Standard_EXPORT     void Assign(const BRepCheck_ListOfStatus& Other) ;
-    void operator=(const BRepCheck_ListOfStatus& Other) 
+  Standard_EXPORT   void Assign (const BRepCheck_ListOfStatus& Other) ;
+  void operator= (const BRepCheck_ListOfStatus& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~BRepCheck_ListOfStatus()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const BRepCheck_Status& I) ;
+  Standard_EXPORT   void Prepend (const BRepCheck_Status& I) ;
   
-  Standard_EXPORT     void Prepend(const BRepCheck_Status& I,BRepCheck_ListIteratorOfListOfStatus& theIt) ;
+  Standard_EXPORT   void Prepend (const BRepCheck_Status& I, BRepCheck_ListIteratorOfListOfStatus& theIt) ;
   
-  Standard_EXPORT     void Prepend(BRepCheck_ListOfStatus& Other) ;
+  Standard_EXPORT   void Prepend (BRepCheck_ListOfStatus& Other) ;
   
-  Standard_EXPORT     void Append(const BRepCheck_Status& I) ;
+  Standard_EXPORT   void Append (const BRepCheck_Status& I) ;
   
-  Standard_EXPORT     void Append(const BRepCheck_Status& I,BRepCheck_ListIteratorOfListOfStatus& theIt) ;
+  Standard_EXPORT   void Append (const BRepCheck_Status& I, BRepCheck_ListIteratorOfListOfStatus& theIt) ;
   
-  Standard_EXPORT     void Append(BRepCheck_ListOfStatus& Other) ;
+  Standard_EXPORT   void Append (BRepCheck_ListOfStatus& Other) ;
   
-  Standard_EXPORT     BRepCheck_Status& First() const;
+  Standard_EXPORT   BRepCheck_Status& First()  const;
   
-  Standard_EXPORT     BRepCheck_Status& Last() const;
+  Standard_EXPORT   BRepCheck_Status& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(BRepCheck_ListIteratorOfListOfStatus& It) ;
+  Standard_EXPORT   void Remove (BRepCheck_ListIteratorOfListOfStatus& It) ;
   
-  Standard_EXPORT     void InsertBefore(const BRepCheck_Status& I,BRepCheck_ListIteratorOfListOfStatus& It) ;
+  Standard_EXPORT   void InsertBefore (const BRepCheck_Status& I, BRepCheck_ListIteratorOfListOfStatus& It) ;
   
-  Standard_EXPORT     void InsertBefore(BRepCheck_ListOfStatus& Other,BRepCheck_ListIteratorOfListOfStatus& It) ;
+  Standard_EXPORT   void InsertBefore (BRepCheck_ListOfStatus& Other, BRepCheck_ListIteratorOfListOfStatus& It) ;
   
-  Standard_EXPORT     void InsertAfter(const BRepCheck_Status& I,BRepCheck_ListIteratorOfListOfStatus& It) ;
+  Standard_EXPORT   void InsertAfter (const BRepCheck_Status& I, BRepCheck_ListIteratorOfListOfStatus& It) ;
   
-  Standard_EXPORT     void InsertAfter(BRepCheck_ListOfStatus& Other,BRepCheck_ListIteratorOfListOfStatus& It) ;
+  Standard_EXPORT   void InsertAfter (BRepCheck_ListOfStatus& Other, BRepCheck_ListIteratorOfListOfStatus& It) ;
 
 
 friend class BRepCheck_ListIteratorOfListOfStatus;
-
 
 
 protected:
@@ -106,8 +90,8 @@ private:
 
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
@@ -137,7 +121,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepCheck_ListOfStatus_HeaderFile

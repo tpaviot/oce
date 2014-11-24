@@ -6,37 +6,17 @@
 #ifndef _AIS_IndexedDataMapOfOwnerPrs_HeaderFile
 #define _AIS_IndexedDataMapOfOwnerPrs_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_SelectMgr_EntityOwner_HeaderFile
 #include <Handle_SelectMgr_EntityOwner.hxx>
-#endif
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs_HeaderFile
 #include <Handle_AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_OutOfRange;
 class Standard_NoSuchObject;
@@ -47,60 +27,60 @@ class AIS_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs;
 
 
 
-class AIS_IndexedDataMapOfOwnerPrs  : public TCollection_BasicMap {
+class AIS_IndexedDataMapOfOwnerPrs  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   AIS_IndexedDataMapOfOwnerPrs(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT AIS_IndexedDataMapOfOwnerPrs(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     AIS_IndexedDataMapOfOwnerPrs& Assign(const AIS_IndexedDataMapOfOwnerPrs& Other) ;
-    AIS_IndexedDataMapOfOwnerPrs& operator =(const AIS_IndexedDataMapOfOwnerPrs& Other) 
+  Standard_EXPORT   AIS_IndexedDataMapOfOwnerPrs& Assign (const AIS_IndexedDataMapOfOwnerPrs& Other) ;
+  AIS_IndexedDataMapOfOwnerPrs& operator = (const AIS_IndexedDataMapOfOwnerPrs& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~AIS_IndexedDataMapOfOwnerPrs()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Integer Add(const Handle(SelectMgr_EntityOwner)& K,const Handle(Prs3d_Presentation)& I) ;
+  Standard_EXPORT   Standard_Integer Add (const Handle(SelectMgr_EntityOwner)& K, const Handle(Prs3d_Presentation)& I) ;
   
-  Standard_EXPORT     void Substitute(const Standard_Integer I,const Handle(SelectMgr_EntityOwner)& K,const Handle(Prs3d_Presentation)& T) ;
+  Standard_EXPORT   void Substitute (const Standard_Integer I, const Handle(SelectMgr_EntityOwner)& K, const Handle(Prs3d_Presentation)& T) ;
   
-  Standard_EXPORT     void RemoveLast() ;
+  Standard_EXPORT   void RemoveLast() ;
   
-  Standard_EXPORT     Standard_Boolean Contains(const Handle(SelectMgr_EntityOwner)& K) const;
+  Standard_EXPORT   Standard_Boolean Contains (const Handle(SelectMgr_EntityOwner)& K)  const;
   
-  Standard_EXPORT    const Handle_SelectMgr_EntityOwner& FindKey(const Standard_Integer I) const;
+  Standard_EXPORT  const  Handle(SelectMgr_EntityOwner)& FindKey (const Standard_Integer I)  const;
   
-  Standard_EXPORT    const Handle_Prs3d_Presentation& FindFromIndex(const Standard_Integer I) const;
-   const Handle_Prs3d_Presentation& operator ()(const Standard_Integer I) const
+  Standard_EXPORT  const  Handle(Prs3d_Presentation)& FindFromIndex (const Standard_Integer I)  const;
+ const  Handle(Prs3d_Presentation)& operator () (const Standard_Integer I)  const
 {
   return FindFromIndex(I);
 }
   
-  Standard_EXPORT     Handle_Prs3d_Presentation& ChangeFromIndex(const Standard_Integer I) ;
-    Handle_Prs3d_Presentation& operator ()(const Standard_Integer I) 
+  Standard_EXPORT   Handle(Prs3d_Presentation)& ChangeFromIndex (const Standard_Integer I) ;
+  Handle(Prs3d_Presentation)& operator () (const Standard_Integer I) 
 {
   return ChangeFromIndex(I);
 }
   
-  Standard_EXPORT     Standard_Integer FindIndex(const Handle(SelectMgr_EntityOwner)& K) const;
+  Standard_EXPORT   Standard_Integer FindIndex (const Handle(SelectMgr_EntityOwner)& K)  const;
   
-  Standard_EXPORT    const Handle_Prs3d_Presentation& FindFromKey(const Handle(SelectMgr_EntityOwner)& K) const;
+  Standard_EXPORT  const  Handle(Prs3d_Presentation)& FindFromKey (const Handle(SelectMgr_EntityOwner)& K)  const;
   
-  Standard_EXPORT     Handle_Prs3d_Presentation& ChangeFromKey(const Handle(SelectMgr_EntityOwner)& K) ;
+  Standard_EXPORT   Handle(Prs3d_Presentation)& ChangeFromKey (const Handle(SelectMgr_EntityOwner)& K) ;
   
-  Standard_EXPORT     Standard_Address FindFromKey1(const Handle(SelectMgr_EntityOwner)& K) const;
+  Standard_EXPORT   Standard_Address FindFromKey1 (const Handle(SelectMgr_EntityOwner)& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFromKey1(const Handle(SelectMgr_EntityOwner)& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFromKey1 (const Handle(SelectMgr_EntityOwner)& K) ;
 
 
 
@@ -114,7 +94,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   AIS_IndexedDataMapOfOwnerPrs(const AIS_IndexedDataMapOfOwnerPrs& Other);
+  Standard_EXPORT AIS_IndexedDataMapOfOwnerPrs(const AIS_IndexedDataMapOfOwnerPrs& Other);
 
 
 
@@ -125,7 +105,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_IndexedDataMapOfOwnerPrs_HeaderFile

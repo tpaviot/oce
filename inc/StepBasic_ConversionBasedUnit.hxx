@@ -6,52 +6,40 @@
 #ifndef _StepBasic_ConversionBasedUnit_HeaderFile
 #define _StepBasic_ConversionBasedUnit_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_ConversionBasedUnit_HeaderFile
 #include <Handle_StepBasic_ConversionBasedUnit.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepBasic_MeasureWithUnit_HeaderFile
 #include <Handle_StepBasic_MeasureWithUnit.hxx>
-#endif
-#ifndef _StepBasic_NamedUnit_HeaderFile
 #include <StepBasic_NamedUnit.hxx>
-#endif
-#ifndef _Handle_StepBasic_DimensionalExponents_HeaderFile
 #include <Handle_StepBasic_DimensionalExponents.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepBasic_MeasureWithUnit;
 class StepBasic_DimensionalExponents;
 
 
 
-class StepBasic_ConversionBasedUnit : public StepBasic_NamedUnit {
+class StepBasic_ConversionBasedUnit : public StepBasic_NamedUnit
+{
 
 public:
 
-  //! Returns a ConversionBasedUnit <br>
-  Standard_EXPORT   StepBasic_ConversionBasedUnit();
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepBasic_DimensionalExponents)& aDimensions) ;
+  //! Returns a ConversionBasedUnit
+  Standard_EXPORT StepBasic_ConversionBasedUnit();
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepBasic_DimensionalExponents)& aDimensions,const Handle(TCollection_HAsciiString)& aName,const Handle(StepBasic_MeasureWithUnit)& aConversionFactor) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepBasic_DimensionalExponents)& aDimensions) ;
   
-  Standard_EXPORT     void SetName(const Handle(TCollection_HAsciiString)& aName) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepBasic_DimensionalExponents)& aDimensions, const Handle(TCollection_HAsciiString)& aName, const Handle(StepBasic_MeasureWithUnit)& aConversionFactor) ;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString Name() const;
+  Standard_EXPORT   void SetName (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetConversionFactor(const Handle(StepBasic_MeasureWithUnit)& aConversionFactor) ;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Name()  const;
   
-  Standard_EXPORT     Handle_StepBasic_MeasureWithUnit ConversionFactor() const;
+  Standard_EXPORT   void SetConversionFactor (const Handle(StepBasic_MeasureWithUnit)& aConversionFactor) ;
+  
+  Standard_EXPORT   Handle(StepBasic_MeasureWithUnit) ConversionFactor()  const;
 
 
 
@@ -66,8 +54,8 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString name;
-Handle_StepBasic_MeasureWithUnit conversionFactor;
+  Handle(TCollection_HAsciiString) name;
+  Handle(StepBasic_MeasureWithUnit) conversionFactor;
 
 
 };
@@ -76,7 +64,6 @@ Handle_StepBasic_MeasureWithUnit conversionFactor;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_ConversionBasedUnit_HeaderFile

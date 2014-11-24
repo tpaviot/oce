@@ -6,8 +6,11 @@
 #ifndef _BRepPrim_Direction_HeaderFile
 #define _BRepPrim_Direction_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum BRepPrim_Direction {
+
+enum BRepPrim_Direction
+{
 BRepPrim_XMin,
 BRepPrim_XMax,
 BRepPrim_YMin,
@@ -16,8 +19,4 @@ BRepPrim_ZMin,
 BRepPrim_ZMax
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BRepPrim_Direction_HeaderFile

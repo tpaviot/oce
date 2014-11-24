@@ -6,38 +6,26 @@
 #ifndef _MeshVS_TwoNodesHasher_HeaderFile
 #define _MeshVS_TwoNodesHasher_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _MeshVS_TwoNodes_HeaderFile
 #include <MeshVS_TwoNodes.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 
 
 
-class MeshVS_TwoNodesHasher  {
+class MeshVS_TwoNodesHasher 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Standard_Integer HashCode(const MeshVS_TwoNodes& K,const Standard_Integer Upper) ;
+  Standard_EXPORT static   Standard_Integer HashCode (const MeshVS_TwoNodes& K, const Standard_Integer Upper) ;
   
-  Standard_EXPORT   static  Standard_Boolean IsEqual(const MeshVS_TwoNodes& K1,const MeshVS_TwoNodes& K2) ;
-
+  Standard_EXPORT static   Standard_Boolean IsEqual (const MeshVS_TwoNodes& K1, const MeshVS_TwoNodes& K2) ;
 
 
 
@@ -60,7 +48,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MeshVS_TwoNodesHasher_HeaderFile

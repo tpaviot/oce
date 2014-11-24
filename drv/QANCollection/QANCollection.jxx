@@ -1,3 +1,1 @@
-#ifndef _QANCollection_HeaderFile
 #include <QANCollection.hxx>
-#endif

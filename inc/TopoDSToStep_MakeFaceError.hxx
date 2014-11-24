@@ -6,8 +6,11 @@
 #ifndef _TopoDSToStep_MakeFaceError_HeaderFile
 #define _TopoDSToStep_MakeFaceError_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum TopoDSToStep_MakeFaceError {
+
+enum TopoDSToStep_MakeFaceError
+{
 TopoDSToStep_FaceDone,
 TopoDSToStep_InfiniteFace,
 TopoDSToStep_NonManifoldFace,
@@ -15,8 +18,4 @@ TopoDSToStep_NoWireMapped,
 TopoDSToStep_FaceOther
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _TopoDSToStep_MakeFaceError_HeaderFile

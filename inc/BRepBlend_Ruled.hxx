@@ -6,13 +6,11 @@
 #ifndef _BRepBlend_Ruled_HeaderFile
 #define _BRepBlend_Ruled_HeaderFile
 
-#ifndef _BlendFunc_Ruled_HeaderFile
 #include <BlendFunc_Ruled.hxx>
-#endif
 
 typedef BlendFunc_Ruled BRepBlend_Ruled;
 
 
 #define BRepBlend_Ruled_Type_() BlendFunc_Ruled_Type_()
 
-#endif
+#endif // _BRepBlend_Ruled_HeaderFile

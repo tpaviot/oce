@@ -6,19 +6,11 @@
 #ifndef _GC_MakeMirror_HeaderFile
 #define _GC_MakeMirror_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom_Transformation_HeaderFile
 #include <Handle_Geom_Transformation.hxx>
-#endif
 class Geom_Transformation;
 class gp_Pnt;
 class gp_Ax1;
@@ -28,37 +20,41 @@ class gp_Pln;
 class gp_Ax2;
 
 
-//! This class implements elementary construction algorithms for a <br>
-//! symmetrical transformation in 3D space about a point, <br>
-//! axis or plane. The result is a Geom_Transformation transformation. <br>
-//! A MakeMirror object provides a framework for: <br>
-//! -   defining the construction of the transformation, <br>
-//! -   implementing the construction algorithm, and <br>
-//! -   consulting the result. <br>
-class GC_MakeMirror  {
+//! This class implements elementary construction algorithms for a
+//! symmetrical transformation in 3D space about a point,
+//! axis or plane. The result is a Geom_Transformation transformation.
+//! A MakeMirror object provides a framework for:
+//! -   defining the construction of the transformation,
+//! -   implementing the construction algorithm, and
+//! -   consulting the result.
+class GC_MakeMirror 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GC_MakeMirror(const gp_Pnt& Point);
+  Standard_EXPORT GC_MakeMirror(const gp_Pnt& Point);
   
-  Standard_EXPORT   GC_MakeMirror(const gp_Ax1& Axis);
+  Standard_EXPORT GC_MakeMirror(const gp_Ax1& Axis);
   
-  Standard_EXPORT   GC_MakeMirror(const gp_Lin& Line);
-  //! Make a symetry transformation af axis defined by <br>
-//!          <Point> and <Direc>. <br>
-  Standard_EXPORT   GC_MakeMirror(const gp_Pnt& Point,const gp_Dir& Direc);
-  //! Make a symetry transformation of plane <Plane>. <br>
-  Standard_EXPORT   GC_MakeMirror(const gp_Pln& Plane);
-  //! Make a symetry transformation of plane <Plane>. <br>
-  Standard_EXPORT   GC_MakeMirror(const gp_Ax2& Plane);
-  //! Returns the constructed transformation. <br>
-  Standard_EXPORT    const Handle_Geom_Transformation& Value() const;
+  Standard_EXPORT GC_MakeMirror(const gp_Lin& Line);
   
-  Standard_EXPORT    const Handle_Geom_Transformation& Operator() const;
+  //! Make a symetry transformation af axis defined by
+  //! <Point> and <Direc>.
+  Standard_EXPORT GC_MakeMirror(const gp_Pnt& Point, const gp_Dir& Direc);
+  
+  //! Make a symetry transformation of plane <Plane>.
+  Standard_EXPORT GC_MakeMirror(const gp_Pln& Plane);
+  
+  //! Make a symetry transformation of plane <Plane>.
+  Standard_EXPORT GC_MakeMirror(const gp_Ax2& Plane);
+  
+  //! Returns the constructed transformation.
+  Standard_EXPORT  const  Handle(Geom_Transformation)& Value()  const;
+  
+  Standard_EXPORT  const  Handle(Geom_Transformation)& Operator()  const;
 Standard_EXPORT operator Handle_Geom_Transformation() const;
-
 
 
 
@@ -73,7 +69,7 @@ private:
 
 
 
-Handle_Geom_Transformation TheMirror;
+  Handle(Geom_Transformation) TheMirror;
 
 
 };
@@ -82,7 +78,6 @@ Handle_Geom_Transformation TheMirror;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GC_MakeMirror_HeaderFile

@@ -6,45 +6,33 @@
 #ifndef _PColStd_VArrayTNodeOfFieldOfHArray2OfPersistent_HeaderFile
 #define _PColStd_VArrayTNodeOfFieldOfHArray2OfPersistent_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Standard_Persistent_HeaderFile
 #include <Handle_Standard_Persistent.hxx>
-#endif
-#ifndef _Handle_PColStd_VArrayNodeOfFieldOfHArray2OfPersistent_HeaderFile
 #include <Handle_PColStd_VArrayNodeOfFieldOfHArray2OfPersistent.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_Persistent;
 class PColStd_FieldOfHArray2OfPersistent;
 class PColStd_VArrayNodeOfFieldOfHArray2OfPersistent;
 
 
 
-class PColStd_VArrayTNodeOfFieldOfHArray2OfPersistent  {
+class PColStd_VArrayTNodeOfFieldOfHArray2OfPersistent 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      PColStd_VArrayTNodeOfFieldOfHArray2OfPersistent();
+    PColStd_VArrayTNodeOfFieldOfHArray2OfPersistent();
   
-      PColStd_VArrayTNodeOfFieldOfHArray2OfPersistent(const Handle(Standard_Persistent)& aValue);
+    PColStd_VArrayTNodeOfFieldOfHArray2OfPersistent(const Handle(Standard_Persistent)& aValue);
   
-        void SetValue(const Handle(Standard_Persistent)& aValue) ;
+      void SetValue (const Handle(Standard_Persistent)& aValue) ;
   
-        Standard_Address Value() const;
-
+      Standard_Address Value()  const;
 
 
 
@@ -59,12 +47,12 @@ private:
 
 
 
-Handle_Standard_Persistent myValue;
+  Handle(Standard_Persistent) myValue;
 
 
 };
 
-#define Item Handle_Standard_Persistent
+#define Item Handle(Standard_Persistent)
 #define Item_hxx <Standard_Persistent.hxx>
 #define DBC_VArrayNode PColStd_VArrayNodeOfFieldOfHArray2OfPersistent
 #define DBC_VArrayNode_hxx <PColStd_VArrayNodeOfFieldOfHArray2OfPersistent.hxx>
@@ -89,7 +77,6 @@ Handle_Standard_Persistent myValue;
 #undef DBC_VArray_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PColStd_VArrayTNodeOfFieldOfHArray2OfPersistent_HeaderFile

@@ -6,40 +6,18 @@
 #ifndef _Transfer_IteratorOfProcessForTransient_HeaderFile
 #define _Transfer_IteratorOfProcessForTransient_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_TColStd_HSequenceOfTransient_HeaderFile
 #include <Handle_TColStd_HSequenceOfTransient.hxx>
-#endif
-#ifndef _Transfer_TransferIterator_HeaderFile
 #include <Transfer_TransferIterator.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Transfer_ProcessForTransient_HeaderFile
 #include <Handle_Transfer_ProcessForTransient.hxx>
-#endif
-#ifndef _Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient_HeaderFile
 #include <Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient.hxx>
-#endif
-#ifndef _Handle_Transfer_ActorOfProcessForTransient_HeaderFile
 #include <Handle_Transfer_ActorOfProcessForTransient.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Transfer_Binder_HeaderFile
 #include <Handle_Transfer_Binder.hxx>
-#endif
 class TColStd_HSequenceOfTransient;
 class Standard_NoSuchObject;
 class Standard_Transient;
@@ -52,24 +30,24 @@ class Transfer_Binder;
 
 
 
-class Transfer_IteratorOfProcessForTransient  : public Transfer_TransferIterator {
+class Transfer_IteratorOfProcessForTransient  : public Transfer_TransferIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Transfer_IteratorOfProcessForTransient(const Standard_Boolean withstarts);
+  Standard_EXPORT Transfer_IteratorOfProcessForTransient(const Standard_Boolean withstarts);
   
-  Standard_EXPORT     void Add(const Handle(Transfer_Binder)& binder) ;
+  Standard_EXPORT   void Add (const Handle(Transfer_Binder)& binder) ;
   
-  Standard_EXPORT     void Add(const Handle(Transfer_Binder)& binder,const Handle(Standard_Transient)& start) ;
+  Standard_EXPORT   void Add (const Handle(Transfer_Binder)& binder, const Handle(Standard_Transient)& start) ;
   
-  Standard_EXPORT     void Filter(const Handle(TColStd_HSequenceOfTransient)& list,const Standard_Boolean keep = Standard_True) ;
+  Standard_EXPORT   void Filter (const Handle(TColStd_HSequenceOfTransient)& list, const Standard_Boolean keep = Standard_True) ;
   
-  Standard_EXPORT     Standard_Boolean HasStarting() const;
+  Standard_EXPORT   Standard_Boolean HasStarting()  const;
   
-  Standard_EXPORT    const Handle_Standard_Transient& Starting() const;
-
+  Standard_EXPORT  const  Handle(Standard_Transient)& Starting()  const;
 
 
 
@@ -84,7 +62,7 @@ private:
 
 
 
-Handle_TColStd_HSequenceOfTransient thestarts;
+  Handle(TColStd_HSequenceOfTransient) thestarts;
 
 
 };
@@ -93,7 +71,6 @@ Handle_TColStd_HSequenceOfTransient thestarts;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Transfer_IteratorOfProcessForTransient_HeaderFile

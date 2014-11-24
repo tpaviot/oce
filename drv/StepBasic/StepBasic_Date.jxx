@@ -1,3 +1,1 @@
-#ifndef _StepBasic_Date_HeaderFile
 #include <StepBasic_Date.hxx>
-#endif

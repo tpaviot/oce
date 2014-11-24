@@ -1,48 +1,16 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepBasic_Approval_HeaderFile
 #include <StepBasic_Approval.hxx>
-#endif
-#ifndef _StepBasic_DocumentRelationship_HeaderFile
 #include <StepBasic_DocumentRelationship.hxx>
-#endif
-#ifndef _StepRepr_ExternallyDefinedRepresentation_HeaderFile
 #include <StepRepr_ExternallyDefinedRepresentation.hxx>
-#endif
-#ifndef _StepRepr_MappedItem_HeaderFile
 #include <StepRepr_MappedItem.hxx>
-#endif
-#ifndef _StepRepr_MaterialDesignation_HeaderFile
 #include <StepRepr_MaterialDesignation.hxx>
-#endif
-#ifndef _StepVisual_PresentationArea_HeaderFile
 #include <StepVisual_PresentationArea.hxx>
-#endif
-#ifndef _StepVisual_PresentationView_HeaderFile
 #include <StepVisual_PresentationView.hxx>
-#endif
-#ifndef _StepBasic_ProductCategory_HeaderFile
 #include <StepBasic_ProductCategory.hxx>
-#endif
-#ifndef _StepBasic_ProductDefinition_HeaderFile
 #include <StepBasic_ProductDefinition.hxx>
-#endif
-#ifndef _StepBasic_ProductDefinitionRelationship_HeaderFile
 #include <StepBasic_ProductDefinitionRelationship.hxx>
-#endif
-#ifndef _StepRepr_PropertyDefinition_HeaderFile
 #include <StepRepr_PropertyDefinition.hxx>
-#endif
-#ifndef _StepRepr_Representation_HeaderFile
 #include <StepRepr_Representation.hxx>
-#endif
-#ifndef _StepRepr_RepresentationRelationship_HeaderFile
 #include <StepRepr_RepresentationRelationship.hxx>
-#endif
-#ifndef _StepRepr_ShapeAspect_HeaderFile
 #include <StepRepr_ShapeAspect.hxx>
-#endif
-#ifndef _StepAP214_AutoDesignReferencingItem_HeaderFile
 #include <StepAP214_AutoDesignReferencingItem.hxx>
-#endif

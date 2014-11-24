@@ -6,45 +6,32 @@
 #ifndef _PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString_HeaderFile
 #define _PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString_HeaderFile
 #include <Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_PCollection_HAsciiString_HeaderFile
 #include <Handle_PCollection_HAsciiString.hxx>
-#endif
-#ifndef _PStandard_ArrayNode_HeaderFile
 #include <PStandard_ArrayNode.hxx>
-#endif
 class PCollection_HAsciiString;
 class PDataStd_FieldOfHArray1OfHAsciiString;
 class PDataStd_VArrayTNodeOfFieldOfHArray1OfHAsciiString;
 
 
-class PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString : public PStandard_ArrayNode {
+class PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString : public PStandard_ArrayNode
+{
 
 public:
 
   
-  Standard_EXPORT   PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString();
+  Standard_EXPORT PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString();
   
-  Standard_EXPORT   PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString(const Handle(PCollection_HAsciiString)& aValue);
+  Standard_EXPORT PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString(const Handle(PCollection_HAsciiString)& aValue);
   
-  Standard_EXPORT     void SetValue(const Handle(PCollection_HAsciiString)& aValue) ;
+  Standard_EXPORT   void SetValue (const Handle(PCollection_HAsciiString)& aValue) ;
   
-  Standard_EXPORT     Standard_Address Value() const;
+  Standard_EXPORT   Standard_Address Value()  const;
 
 PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString(const Storage_stCONSTclCOM& a) : PStandard_ArrayNode(a)
 {
@@ -65,7 +52,7 @@ protected:
 private: 
 
 
-Handle_PCollection_HAsciiString myValue;
+  Handle(PCollection_HAsciiString) myValue;
 
 
 };
@@ -74,7 +61,6 @@ Handle_PCollection_HAsciiString myValue;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString_HeaderFile

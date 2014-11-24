@@ -6,53 +6,51 @@
 #ifndef _QANewBRepNaming_BooleanOperation_HeaderFile
 #define _QANewBRepNaming_BooleanOperation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _QANewBRepNaming_TopNaming_HeaderFile
 #include <QANewBRepNaming_TopNaming.hxx>
-#endif
 class TDF_Label;
 class BRepAlgo_BooleanOperation;
 
 
-//! To load the BooleanOperation results <br>
-class QANewBRepNaming_BooleanOperation  : public QANewBRepNaming_TopNaming {
+//! To load the BooleanOperation results
+class QANewBRepNaming_BooleanOperation  : public QANewBRepNaming_TopNaming
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   QANewBRepNaming_BooleanOperation();
+  Standard_EXPORT QANewBRepNaming_BooleanOperation();
   
-  Standard_EXPORT   QANewBRepNaming_BooleanOperation(const TDF_Label& ResultLabel);
+  Standard_EXPORT QANewBRepNaming_BooleanOperation(const TDF_Label& ResultLabel);
   
-  Standard_EXPORT     void Init(const TDF_Label& ResultLabel) ;
-  //! Load the boolean operation. <br>
-//!           Makes a new part attached to the ResultLabel. <br>
-  Standard_EXPORT     void Load(BRepAlgo_BooleanOperation& mkBoolOp) const;
-  //! Returns the label of the modified faces <br>
-//!          of the first shape (S1). <br>
-  Standard_EXPORT     TDF_Label FirstModified() const;
-  //! Returns the label of the deleted faces <br>
-//!          of the first shape (S1). <br>
-  Standard_EXPORT     TDF_Label FirstDeleted() const;
-  //! Returns the label of the modified faces <br>
-//!          of the second shape (S2). <br>
-  Standard_EXPORT     TDF_Label SecondModified() const;
-  //! Returns the label of the deleted faces <br>
-//!          of the second shape (S2). <br>
-  Standard_EXPORT     TDF_Label SecondDeleted() const;
-  //! Returns the label of intersections <br>
-  Standard_EXPORT     TDF_Label Intersections() const;
-
+  Standard_EXPORT   void Init (const TDF_Label& ResultLabel) ;
+  
+  //! Load the boolean operation.
+  //! Makes a new part attached to the ResultLabel.
+  Standard_EXPORT   void Load (BRepAlgo_BooleanOperation& mkBoolOp)  const;
+  
+  //! Returns the label of the modified faces
+  //! of the first shape (S1).
+  Standard_EXPORT   TDF_Label FirstModified()  const;
+  
+  //! Returns the label of the deleted faces
+  //! of the first shape (S1).
+  Standard_EXPORT   TDF_Label FirstDeleted()  const;
+  
+  //! Returns the label of the modified faces
+  //! of the second shape (S2).
+  Standard_EXPORT   TDF_Label SecondModified()  const;
+  
+  //! Returns the label of the deleted faces
+  //! of the second shape (S2).
+  Standard_EXPORT   TDF_Label SecondDeleted()  const;
+  
+  //! Returns the label of intersections
+  Standard_EXPORT   TDF_Label Intersections()  const;
 
 
 
@@ -75,7 +73,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QANewBRepNaming_BooleanOperation_HeaderFile

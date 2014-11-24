@@ -1,6 +1,2 @@
-#ifndef _IGESGeom_Protocol_HeaderFile
 #include <IGESGeom_Protocol.hxx>
-#endif
-#ifndef _IGESGeom_HeaderFile
 #include <IGESGeom.hxx>
-#endif

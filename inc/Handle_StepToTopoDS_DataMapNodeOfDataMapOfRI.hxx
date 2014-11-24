@@ -6,22 +6,15 @@
 #ifndef _Handle_StepToTopoDS_DataMapNodeOfDataMapOfRI_HeaderFile
 #define _Handle_StepToTopoDS_DataMapNodeOfDataMapOfRI_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TCollection_MapNode_HeaderFile
 #include <Handle_TCollection_MapNode.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TCollection_MapNode);
 class StepToTopoDS_DataMapNodeOfDataMapOfRI;
 
-DEFINE_STANDARD_HANDLE(StepToTopoDS_DataMapNodeOfDataMapOfRI,TCollection_MapNode)
+DEFINE_STANDARD_HANDLE(StepToTopoDS_DataMapNodeOfDataMapOfRI, TCollection_MapNode)
 
-#endif
+#endif // _Handle_StepToTopoDS_DataMapNodeOfDataMapOfRI_HeaderFile

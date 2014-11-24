@@ -1,27 +1,9 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepBasic_CharacterizedObject_HeaderFile
 #include <StepBasic_CharacterizedObject.hxx>
-#endif
-#ifndef _StepBasic_ProductDefinition_HeaderFile
 #include <StepBasic_ProductDefinition.hxx>
-#endif
-#ifndef _StepBasic_ProductDefinitionRelationship_HeaderFile
 #include <StepBasic_ProductDefinitionRelationship.hxx>
-#endif
-#ifndef _StepRepr_ProductDefinitionShape_HeaderFile
 #include <StepRepr_ProductDefinitionShape.hxx>
-#endif
-#ifndef _StepRepr_ShapeAspect_HeaderFile
 #include <StepRepr_ShapeAspect.hxx>
-#endif
-#ifndef _StepRepr_ShapeAspectRelationship_HeaderFile
 #include <StepRepr_ShapeAspectRelationship.hxx>
-#endif
-#ifndef _StepBasic_DocumentFile_HeaderFile
 #include <StepBasic_DocumentFile.hxx>
-#endif
-#ifndef _StepRepr_CharacterizedDefinition_HeaderFile
 #include <StepRepr_CharacterizedDefinition.hxx>
-#endif

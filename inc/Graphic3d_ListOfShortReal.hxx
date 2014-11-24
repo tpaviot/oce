@@ -6,94 +6,78 @@
 #ifndef _Graphic3d_ListOfShortReal_HeaderFile
 #define _Graphic3d_ListOfShortReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
-#endif
-#ifndef _Handle_Graphic3d_ListNodeOfListOfShortReal_HeaderFile
 #include <Handle_Graphic3d_ListNodeOfListOfShortReal.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class Graphic3d_ListIteratorOfListOfShortReal;
 class Graphic3d_ListNodeOfListOfShortReal;
 
 
 
-class Graphic3d_ListOfShortReal  {
+class Graphic3d_ListOfShortReal 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Graphic3d_ListOfShortReal();
+  Standard_EXPORT Graphic3d_ListOfShortReal();
   
-  Standard_EXPORT   Graphic3d_ListOfShortReal(const Graphic3d_ListOfShortReal& Other);
+  Standard_EXPORT Graphic3d_ListOfShortReal(const Graphic3d_ListOfShortReal& Other);
   
-  Standard_EXPORT     void Assign(const Graphic3d_ListOfShortReal& Other) ;
-    void operator=(const Graphic3d_ListOfShortReal& Other) 
+  Standard_EXPORT   void Assign (const Graphic3d_ListOfShortReal& Other) ;
+  void operator= (const Graphic3d_ListOfShortReal& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~Graphic3d_ListOfShortReal()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const Standard_ShortReal& I) ;
+  Standard_EXPORT   void Prepend (const Standard_ShortReal& I) ;
   
-  Standard_EXPORT     void Prepend(const Standard_ShortReal& I,Graphic3d_ListIteratorOfListOfShortReal& theIt) ;
+  Standard_EXPORT   void Prepend (const Standard_ShortReal& I, Graphic3d_ListIteratorOfListOfShortReal& theIt) ;
   
-  Standard_EXPORT     void Prepend(Graphic3d_ListOfShortReal& Other) ;
+  Standard_EXPORT   void Prepend (Graphic3d_ListOfShortReal& Other) ;
   
-  Standard_EXPORT     void Append(const Standard_ShortReal& I) ;
+  Standard_EXPORT   void Append (const Standard_ShortReal& I) ;
   
-  Standard_EXPORT     void Append(const Standard_ShortReal& I,Graphic3d_ListIteratorOfListOfShortReal& theIt) ;
+  Standard_EXPORT   void Append (const Standard_ShortReal& I, Graphic3d_ListIteratorOfListOfShortReal& theIt) ;
   
-  Standard_EXPORT     void Append(Graphic3d_ListOfShortReal& Other) ;
+  Standard_EXPORT   void Append (Graphic3d_ListOfShortReal& Other) ;
   
-  Standard_EXPORT     Standard_ShortReal& First() const;
+  Standard_EXPORT   Standard_ShortReal& First()  const;
   
-  Standard_EXPORT     Standard_ShortReal& Last() const;
+  Standard_EXPORT   Standard_ShortReal& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(Graphic3d_ListIteratorOfListOfShortReal& It) ;
+  Standard_EXPORT   void Remove (Graphic3d_ListIteratorOfListOfShortReal& It) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_ShortReal& I,Graphic3d_ListIteratorOfListOfShortReal& It) ;
+  Standard_EXPORT   void InsertBefore (const Standard_ShortReal& I, Graphic3d_ListIteratorOfListOfShortReal& It) ;
   
-  Standard_EXPORT     void InsertBefore(Graphic3d_ListOfShortReal& Other,Graphic3d_ListIteratorOfListOfShortReal& It) ;
+  Standard_EXPORT   void InsertBefore (Graphic3d_ListOfShortReal& Other, Graphic3d_ListIteratorOfListOfShortReal& It) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_ShortReal& I,Graphic3d_ListIteratorOfListOfShortReal& It) ;
+  Standard_EXPORT   void InsertAfter (const Standard_ShortReal& I, Graphic3d_ListIteratorOfListOfShortReal& It) ;
   
-  Standard_EXPORT     void InsertAfter(Graphic3d_ListOfShortReal& Other,Graphic3d_ListIteratorOfListOfShortReal& It) ;
+  Standard_EXPORT   void InsertAfter (Graphic3d_ListOfShortReal& Other, Graphic3d_ListIteratorOfListOfShortReal& It) ;
 
 
 friend class Graphic3d_ListIteratorOfListOfShortReal;
-
 
 
 protected:
@@ -106,8 +90,8 @@ private:
 
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
@@ -137,7 +121,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Graphic3d_ListOfShortReal_HeaderFile

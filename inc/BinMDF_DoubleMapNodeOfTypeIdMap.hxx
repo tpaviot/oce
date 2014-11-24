@@ -6,28 +6,14 @@
 #ifndef _BinMDF_DoubleMapNodeOfTypeIdMap_HeaderFile
 #define _BinMDF_DoubleMapNodeOfTypeIdMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BinMDF_DoubleMapNodeOfTypeIdMap_HeaderFile
 #include <Handle_BinMDF_DoubleMapNodeOfTypeIdMap.hxx>
-#endif
 
-#ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
 class Standard_Type;
 class TColStd_MapTransientHasher;
 class TColStd_MapIntegerHasher;
@@ -36,18 +22,19 @@ class BinMDF_DoubleMapIteratorOfTypeIdMap;
 
 
 
-class BinMDF_DoubleMapNodeOfTypeIdMap : public TCollection_MapNode {
+class BinMDF_DoubleMapNodeOfTypeIdMap : public TCollection_MapNode
+{
 
 public:
 
   
-      BinMDF_DoubleMapNodeOfTypeIdMap(const Handle(Standard_Type)& K1,const Standard_Integer& K2,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+    BinMDF_DoubleMapNodeOfTypeIdMap(const Handle(Standard_Type)& K1, const Standard_Integer& K2, const TCollection_MapNodePtr& n1, const TCollection_MapNodePtr& n2);
   
-        Handle_Standard_Type& Key1() const;
+      Handle(Standard_Type)& Key1()  const;
   
-        Standard_Integer& Key2() const;
+      Standard_Integer& Key2()  const;
   
-        TCollection_MapNodePtr& Next2() const;
+      TCollection_MapNodePtr& Next2()  const;
 
 
 
@@ -62,14 +49,14 @@ protected:
 private: 
 
 
-Handle_Standard_Type myKey1;
-Standard_Integer myKey2;
-TCollection_MapNodePtr myNext2;
+  Handle(Standard_Type) myKey1;
+  Standard_Integer myKey2;
+  TCollection_MapNodePtr myNext2;
 
 
 };
 
-#define TheKey1 Handle_Standard_Type
+#define TheKey1 Handle(Standard_Type)
 #define TheKey1_hxx <Standard_Type.hxx>
 #define TheKey2 Standard_Integer
 #define TheKey2_hxx <Standard_Integer.hxx>
@@ -106,7 +93,6 @@ TCollection_MapNodePtr myNext2;
 #undef TCollection_DoubleMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BinMDF_DoubleMapNodeOfTypeIdMap_HeaderFile

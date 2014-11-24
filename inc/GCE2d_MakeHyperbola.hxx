@@ -6,28 +6,14 @@
 #ifndef _GCE2d_MakeHyperbola_HeaderFile
 #define _GCE2d_MakeHyperbola_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom2d_Hyperbola_HeaderFile
 #include <Handle_Geom2d_Hyperbola.hxx>
-#endif
-#ifndef _GCE2d_Root_HeaderFile
 #include <GCE2d_Root.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Geom2d_Hyperbola;
 class StdFail_NotDone;
 class gp_Hypr2d;
@@ -36,79 +22,84 @@ class gp_Ax22d;
 class gp_Pnt2d;
 
 
-//!This class implements the following algorithms used to <br>
-//!          create Hyperbola from Geom2d. <br>
-//!          * Create an Hyperbola from two apex  and the center. <br>
-//!  Defines the main branch of an hyperbola. <br>
-//!  The parameterization range is ]-infinite,+infinite[ <br>
-//!  It is possible to get the other branch and the two conjugate <br>
-//!  branches of the main branch. <br>
-//! <br>
-//!                         ^YAxis <br>
-//!                         | <br>
-//!                  FirstConjugateBranch <br>
-//!                         | <br>
-//!        Other            |                Main <br>
-//!   --------------------- C ------------------------------>XAxis <br>
-//!        Branch           |                Branch <br>
-//!                         | <br>
-//!                   SecondConjugateBranch <br>
-//!                         | <br>
-//! <br>
-//!  The major radius is the distance between the Location point <br>
-//!  of the hyperbola C and the apex of the main Branch (or the <br>
-//!  Other branch). The major axis is the "XAxis". <br>
-//!  The minor radius is the distance between the Location point <br>
-//!  of the hyperbola C and the apex of the First (or Second) <br>
-//!  Conjugate branch. The minor axis is the "YAxis". <br>
-//!  The major radius can be lower than the minor radius. <br>
-class GCE2d_MakeHyperbola  : public GCE2d_Root {
+//! This class implements the following algorithms used to
+//! create Hyperbola from Geom2d.
+//! * Create an Hyperbola from two apex  and the center.
+//! Defines the main branch of an hyperbola.
+//! The parameterization range is ]-infinite,+infinite[
+//! It is possible to get the other branch and the two conjugate
+//! branches of the main branch.
+//!
+//! ^YAxis
+//! |
+//! FirstConjugateBranch
+//! |
+//! Other            |                Main
+//! --------------------- C ------------------------------>XAxis
+//! Branch           |                Branch
+//! |
+//! SecondConjugateBranch
+//! |
+//!
+//! The major radius is the distance between the Location point
+//! of the hyperbola C and the apex of the main Branch (or the
+//! Other branch). The major axis is the "XAxis".
+//! The minor radius is the distance between the Location point
+//! of the hyperbola C and the apex of the First (or Second)
+//! Conjugate branch. The minor axis is the "YAxis".
+//! The major radius can be lower than the minor radius.
+class GCE2d_MakeHyperbola  : public GCE2d_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//!  Creates  an Hyperbola from a non persistent one from package gp <br>
-  Standard_EXPORT   GCE2d_MakeHyperbola(const gp_Hypr2d& H);
-  
-//!  MajorAxis is the "XAxis" of the hyperbola. <br>
-//!  The major radius of the hyperbola is on this "XAxis" and <br>
-//!  the minor radius is on the "YAxis" of the hyperbola. <br>
-//!  The status is "NegativeRadius" if MajorRadius < 0.0 or if <br>
-//!  MinorRadius < 0.0 <br>
-  Standard_EXPORT   GCE2d_MakeHyperbola(const gp_Ax2d& MajorAxis,const Standard_Real MajorRadius,const Standard_Real MinorRadius,const Standard_Boolean Sense);
-  
-//!  Axis is the local coordinate system of the hyperbola. <br>
-//!  The major radius of the hyperbola is on this "XAxis" and <br>
-//!  the minor radius is on the "YAxis" of the hyperbola. <br>
-//!  The status is "NegativeRadius" if MajorRadius < 0.0 or if <br>
-//!  MinorRadius < 0.0 <br>
-  Standard_EXPORT   GCE2d_MakeHyperbola(const gp_Ax22d& Axis,const Standard_Real MajorRadius,const Standard_Real MinorRadius);
-  //! Creates a hyperbol centered on the origin of the coordinate system <br>
-//!  Axis, with major and minor radii MajorRadius and <br>
-//!   MinorRadius, where the major axis is the "X Axis" <br>
-//!   of Axis (Axis is the local coordinate system of the hyperbola). <br>
-//!   The implicit orientation of the ellipse is: <br>
-//! -   the sense defined by Axis or H, <br>
-//! -   the sense defined by points Center, S1 and S2, <br>
-//! -   the trigonometric sense if Sense is not given or is true, or <br>
-//! -   the opposite sense if Sense is false. <br>
-//! Warning <br>
-//! If an error occurs (that is, when IsDone returns <br>
-//! false), the Status function returns: <br>
-//! -   gce_NegativeRadius if MajorRadius or <br>
-//!   MinorRadius is less than 0.0, or <br>
-//! -   gce_InvertAxis if the major radius defined by <br>
-//!   Center and S1 is less than the minor radius <br>
-//!   defined by Center, S1 and S2.Make an Hyperbola with its center and two apexes. <br>
-  Standard_EXPORT   GCE2d_MakeHyperbola(const gp_Pnt2d& S1,const gp_Pnt2d& S2,const gp_Pnt2d& Center);
-  //! Returns the constructed hyperbola. <br>
-//! Exceptions: StdFail_NotDone if no hyperbola is constructed. <br>
-  Standard_EXPORT    const Handle_Geom2d_Hyperbola& Value() const;
-  
-  Standard_EXPORT    const Handle_Geom2d_Hyperbola& Operator() const;
-Standard_EXPORT operator Handle_Geom2d_Hyperbola() const;
 
+  //! Creates  an Hyperbola from a non persistent one from package gp
+  Standard_EXPORT GCE2d_MakeHyperbola(const gp_Hypr2d& H);
+  
+
+  //! MajorAxis is the "XAxis" of the hyperbola.
+  //! The major radius of the hyperbola is on this "XAxis" and
+  //! the minor radius is on the "YAxis" of the hyperbola.
+  //! The status is "NegativeRadius" if MajorRadius < 0.0 or if
+  //! MinorRadius < 0.0
+  Standard_EXPORT GCE2d_MakeHyperbola(const gp_Ax2d& MajorAxis, const Standard_Real MajorRadius, const Standard_Real MinorRadius, const Standard_Boolean Sense);
+  
+
+  //! Axis is the local coordinate system of the hyperbola.
+  //! The major radius of the hyperbola is on this "XAxis" and
+  //! the minor radius is on the "YAxis" of the hyperbola.
+  //! The status is "NegativeRadius" if MajorRadius < 0.0 or if
+  //! MinorRadius < 0.0
+  Standard_EXPORT GCE2d_MakeHyperbola(const gp_Ax22d& Axis, const Standard_Real MajorRadius, const Standard_Real MinorRadius);
+  
+  //! Creates a hyperbol centered on the origin of the coordinate system
+  //! Axis, with major and minor radii MajorRadius and
+  //! MinorRadius, where the major axis is the "X Axis"
+  //! of Axis (Axis is the local coordinate system of the hyperbola).
+  //! The implicit orientation of the ellipse is:
+  //! -   the sense defined by Axis or H,
+  //! -   the sense defined by points Center, S1 and S2,
+  //! -   the trigonometric sense if Sense is not given or is true, or
+  //! -   the opposite sense if Sense is false.
+  //! Warning
+  //! If an error occurs (that is, when IsDone returns
+  //! false), the Status function returns:
+  //! -   gce_NegativeRadius if MajorRadius or
+  //! MinorRadius is less than 0.0, or
+  //! -   gce_InvertAxis if the major radius defined by
+  //! Center and S1 is less than the minor radius
+  //! defined by Center, S1 and S2.Make an Hyperbola with its center and two apexes.
+  Standard_EXPORT GCE2d_MakeHyperbola(const gp_Pnt2d& S1, const gp_Pnt2d& S2, const gp_Pnt2d& Center);
+  
+  //! Returns the constructed hyperbola.
+  //! Exceptions: StdFail_NotDone if no hyperbola is constructed.
+  Standard_EXPORT  const  Handle(Geom2d_Hyperbola)& Value()  const;
+  
+  Standard_EXPORT  const  Handle(Geom2d_Hyperbola)& Operator()  const;
+Standard_EXPORT operator Handle_Geom2d_Hyperbola() const;
 
 
 
@@ -123,7 +114,7 @@ private:
 
 
 
-Handle_Geom2d_Hyperbola TheHyperbola;
+  Handle(Geom2d_Hyperbola) TheHyperbola;
 
 
 };
@@ -132,7 +123,6 @@ Handle_Geom2d_Hyperbola TheHyperbola;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GCE2d_MakeHyperbola_HeaderFile

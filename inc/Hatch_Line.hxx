@@ -6,61 +6,44 @@
 #ifndef _Hatch_Line_HeaderFile
 #define _Hatch_Line_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Lin2d_HeaderFile
 #include <gp_Lin2d.hxx>
-#endif
-#ifndef _Hatch_LineForm_HeaderFile
 #include <Hatch_LineForm.hxx>
-#endif
-#ifndef _Hatch_SequenceOfParameter_HeaderFile
 #include <Hatch_SequenceOfParameter.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Hatch_Hatcher;
 class gp_Lin2d;
 
 
-//! Stores a Line in the Hatcher. Represented by : <br>
-//! <br>
-//!          * A Lin2d from gp, the geometry of the line. <br>
-//! <br>
-//!          * Bounding parameters for the line. <br>
-//! <br>
-//!          * A sorted List  of Parameters, the  intersections <br>
-//!          on the line. <br>
-class Hatch_Line  {
+//! Stores a Line in the Hatcher. Represented by :
+//!
+//! * A Lin2d from gp, the geometry of the line.
+//!
+//! * Bounding parameters for the line.
+//!
+//! * A sorted List  of Parameters, the  intersections
+//! on the line.
+class Hatch_Line 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Hatch_Line();
+  Standard_EXPORT Hatch_Line();
   
-  Standard_EXPORT   Hatch_Line(const gp_Lin2d& L,const Hatch_LineForm T);
-  //! Insert a new intersection in the sorted list. <br>
-  Standard_EXPORT     void AddIntersection(const Standard_Real Par1,const Standard_Boolean Start,const Standard_Integer Index,const Standard_Real Par2,const Standard_Real theToler) ;
+  Standard_EXPORT Hatch_Line(const gp_Lin2d& L, const Hatch_LineForm T);
+  
+  //! Insert a new intersection in the sorted list.
+  Standard_EXPORT   void AddIntersection (const Standard_Real Par1, const Standard_Boolean Start, const Standard_Integer Index, const Standard_Real Par2, const Standard_Real theToler) ;
 
 
 friend class Hatch_Hatcher;
-
 
 
 protected:
@@ -73,9 +56,9 @@ private:
 
 
 
-gp_Lin2d myLin;
-Hatch_LineForm myForm;
-Hatch_SequenceOfParameter myInters;
+  gp_Lin2d myLin;
+  Hatch_LineForm myForm;
+  Hatch_SequenceOfParameter myInters;
 
 
 };
@@ -84,7 +67,6 @@ Hatch_SequenceOfParameter myInters;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Hatch_Line_HeaderFile

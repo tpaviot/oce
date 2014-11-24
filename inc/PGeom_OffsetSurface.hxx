@@ -6,51 +6,44 @@
 #ifndef _PGeom_OffsetSurface_HeaderFile
 #define _PGeom_OffsetSurface_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom_OffsetSurface_HeaderFile
 #include <Handle_PGeom_OffsetSurface.hxx>
-#endif
 
-#ifndef _Handle_PGeom_Surface_HeaderFile
 #include <Handle_PGeom_Surface.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _PGeom_Surface_HeaderFile
 #include <PGeom_Surface.hxx>
-#endif
 class PGeom_Surface;
 
 
-class PGeom_OffsetSurface : public PGeom_Surface {
+class PGeom_OffsetSurface : public PGeom_Surface
+{
 
 public:
 
-  //! Creates an OffsetSurface with default values. <br>
-  Standard_EXPORT   PGeom_OffsetSurface();
-  //!  <aBasisSurface>    is  the   basis      surface, <br>
-//!         <aOffsetValue> is the distance between <me> and the <br>
-//!         basis  surface at any  point.    <aOffsetDirection> <br>
-//!         defines  the  fixed  reference  direction   (offset <br>
-//!         direction). <br>
-  Standard_EXPORT   PGeom_OffsetSurface(const Handle(PGeom_Surface)& aBasisSurface,const Standard_Real aOffsetValue);
-  //! Set the field basisSurface with <aBasisSurface>. <br>
-  Standard_EXPORT     void BasisSurface(const Handle(PGeom_Surface)& aBasisSurface) ;
-  //! The basis surface can be an offset surface. <br>
-  Standard_EXPORT     Handle_PGeom_Surface BasisSurface() const;
-  //! Set the field offsetValue with <aOffsetValue>. <br>
-  Standard_EXPORT     void OffsetValue(const Standard_Real aOffsetValue) ;
-  //! Returns the value of the field offsetValue. <br>
-  Standard_EXPORT     Standard_Real OffsetValue() const;
+  
+  //! Creates an OffsetSurface with default values.
+  Standard_EXPORT PGeom_OffsetSurface();
+  
+  //! <aBasisSurface>    is  the   basis      surface,
+  //! <aOffsetValue> is the distance between <me> and the
+  //! basis  surface at any  point.    <aOffsetDirection>
+  //! defines  the  fixed  reference  direction   (offset
+  //! direction).
+  Standard_EXPORT PGeom_OffsetSurface(const Handle(PGeom_Surface)& aBasisSurface, const Standard_Real aOffsetValue);
+  
+  //! Set the field basisSurface with <aBasisSurface>.
+  Standard_EXPORT   void BasisSurface (const Handle(PGeom_Surface)& aBasisSurface) ;
+  
+  //! The basis surface can be an offset surface.
+  Standard_EXPORT   Handle(PGeom_Surface) BasisSurface()  const;
+  
+  //! Set the field offsetValue with <aOffsetValue>.
+  Standard_EXPORT   void OffsetValue (const Standard_Real aOffsetValue) ;
+  
+  //! Returns the value of the field offsetValue.
+  Standard_EXPORT   Standard_Real OffsetValue()  const;
 
 PGeom_OffsetSurface(const Storage_stCONSTclCOM& a) : PGeom_Surface(a)
 {
@@ -73,8 +66,8 @@ protected:
 private: 
 
 
-Handle_PGeom_Surface basisSurface;
-Standard_Real offsetValue;
+  Handle(PGeom_Surface) basisSurface;
+  Standard_Real offsetValue;
 
 
 };
@@ -83,7 +76,6 @@ Standard_Real offsetValue;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom_OffsetSurface_HeaderFile

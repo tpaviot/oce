@@ -6,46 +6,36 @@
 #ifndef _StepVisual_PresentationSize_HeaderFile
 #define _StepVisual_PresentationSize_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_PresentationSize_HeaderFile
 #include <Handle_StepVisual_PresentationSize.hxx>
-#endif
 
-#ifndef _StepVisual_PresentationSizeAssignmentSelect_HeaderFile
 #include <StepVisual_PresentationSizeAssignmentSelect.hxx>
-#endif
-#ifndef _Handle_StepVisual_PlanarBox_HeaderFile
 #include <Handle_StepVisual_PlanarBox.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepVisual_PlanarBox;
 class StepVisual_PresentationSizeAssignmentSelect;
 
 
 
-class StepVisual_PresentationSize : public MMgt_TShared {
+class StepVisual_PresentationSize : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a PresentationSize <br>
-  Standard_EXPORT   StepVisual_PresentationSize();
   
-  Standard_EXPORT   virtual  void Init(const StepVisual_PresentationSizeAssignmentSelect& aUnit,const Handle(StepVisual_PlanarBox)& aSize) ;
+  //! Returns a PresentationSize
+  Standard_EXPORT StepVisual_PresentationSize();
   
-  Standard_EXPORT     void SetUnit(const StepVisual_PresentationSizeAssignmentSelect& aUnit) ;
+  Standard_EXPORT virtual   void Init (const StepVisual_PresentationSizeAssignmentSelect& aUnit, const Handle(StepVisual_PlanarBox)& aSize) ;
   
-  Standard_EXPORT     StepVisual_PresentationSizeAssignmentSelect Unit() const;
+  Standard_EXPORT   void SetUnit (const StepVisual_PresentationSizeAssignmentSelect& aUnit) ;
   
-  Standard_EXPORT     void SetSize(const Handle(StepVisual_PlanarBox)& aSize) ;
+  Standard_EXPORT   StepVisual_PresentationSizeAssignmentSelect Unit()  const;
   
-  Standard_EXPORT     Handle_StepVisual_PlanarBox Size() const;
+  Standard_EXPORT   void SetSize (const Handle(StepVisual_PlanarBox)& aSize) ;
+  
+  Standard_EXPORT   Handle(StepVisual_PlanarBox) Size()  const;
 
 
 
@@ -60,8 +50,8 @@ protected:
 private: 
 
 
-StepVisual_PresentationSizeAssignmentSelect unit;
-Handle_StepVisual_PlanarBox size;
+  StepVisual_PresentationSizeAssignmentSelect unit;
+  Handle(StepVisual_PlanarBox) size;
 
 
 };
@@ -70,7 +60,6 @@ Handle_StepVisual_PlanarBox size;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_PresentationSize_HeaderFile

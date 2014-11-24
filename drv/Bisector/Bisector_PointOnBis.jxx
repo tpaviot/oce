@@ -1,6 +1,2 @@
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _Bisector_PointOnBis_HeaderFile
 #include <Bisector_PointOnBis.hxx>
-#endif

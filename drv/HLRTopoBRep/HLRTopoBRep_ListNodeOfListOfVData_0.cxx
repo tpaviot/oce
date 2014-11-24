@@ -5,19 +5,11 @@
 
 #include <HLRTopoBRep_ListNodeOfListOfVData.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _HLRTopoBRep_VData_HeaderFile
 #include <HLRTopoBRep_VData.hxx>
-#endif
-#ifndef _HLRTopoBRep_ListOfVData_HeaderFile
 #include <HLRTopoBRep_ListOfVData.hxx>
-#endif
-#ifndef _HLRTopoBRep_ListIteratorOfListOfVData_HeaderFile
 #include <HLRTopoBRep_ListIteratorOfListOfVData.hxx>
-#endif
 
  
 

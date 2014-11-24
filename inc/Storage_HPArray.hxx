@@ -6,28 +6,14 @@
 #ifndef _Storage_HPArray_HeaderFile
 #define _Storage_HPArray_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Storage_HPArray_HeaderFile
 #include <Handle_Storage_HPArray.hxx>
-#endif
 
-#ifndef _Storage_PArray_HeaderFile
 #include <Storage_PArray.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
 #include <Handle_Standard_Persistent.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class Storage_PArray;
 
 
 
-class Storage_HPArray : public MMgt_TShared {
+class Storage_HPArray : public MMgt_TShared
+{
 
 public:
 
   
-      Storage_HPArray(const Standard_Integer Low,const Standard_Integer Up);
+    Storage_HPArray(const Standard_Integer Low, const Standard_Integer Up);
   
-      Storage_HPArray(const Standard_Integer Low,const Standard_Integer Up,const Handle(Standard_Persistent)& V);
+    Storage_HPArray(const Standard_Integer Low, const Standard_Integer Up, const Handle(Standard_Persistent)& V);
   
-        void Init(const Handle(Standard_Persistent)& V) ;
+      void Init (const Handle(Standard_Persistent)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(Standard_Persistent)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(Standard_Persistent)& Value) ;
   
-       const Handle_Standard_Persistent& Value(const Standard_Integer Index) const;
+     const  Handle(Standard_Persistent)& Value (const Standard_Integer Index)  const;
   
-        Handle_Standard_Persistent& ChangeValue(const Standard_Integer Index) ;
+      Handle(Standard_Persistent)& ChangeValue (const Standard_Integer Index) ;
   
-       const Storage_PArray& Array1() const;
+     const  Storage_PArray& Array1()  const;
   
-        Storage_PArray& ChangeArray1() ;
+      Storage_PArray& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-Storage_PArray myArray;
+  Storage_PArray myArray;
 
 
 };
 
-#define ItemHArray1 Handle_Standard_Persistent
+#define ItemHArray1 Handle(Standard_Persistent)
 #define ItemHArray1_hxx <Standard_Persistent.hxx>
 #define TheArray1 Storage_PArray
 #define TheArray1_hxx <Storage_PArray.hxx>
@@ -103,7 +90,6 @@ Storage_PArray myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Storage_HPArray_HeaderFile

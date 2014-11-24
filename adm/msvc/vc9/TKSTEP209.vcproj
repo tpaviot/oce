@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKSTEP209"
-	ProjectGUID="{285866EC-1837-0DD5-0D92-AF8509472095}"
+	ProjectGUID="{B7AAE3D3-14BB-1135-188A-543CAA5ADCDE}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -248,7 +248,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\StepElement;..\..\..\src\StepElement;..\..\..\drv\StepFEA;..\..\..\src\StepFEA;..\..\..\drv\RWStepElement;..\..\..\src\RWStepElement;..\..\..\drv\RWStepFEA;..\..\..\src\RWStepFEA;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__StepElement_DLL;__StepFEA_DLL;__RWStepElement_DLL;__RWStepFEA_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__StepElement_DLL;__StepFEA_DLL;__RWStepElement_DLL;__RWStepFEA_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__StepElement_DLL;__StepFEA_DLL;__RWStepElement_DLL;__RWStepFEA_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__StepElement_DLL;__StepFEA_DLL;__RWStepElement_DLL;__RWStepFEA_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -343,7 +343,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\StepElement;..\..\..\src\StepElement;..\..\..\drv\StepFEA;..\..\..\src\StepFEA;..\..\..\drv\RWStepElement;..\..\..\src\RWStepElement;..\..\..\drv\RWStepFEA;..\..\..\src\RWStepFEA;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__StepElement_DLL;__StepFEA_DLL;__RWStepElement_DLL;__RWStepFEA_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__StepElement_DLL;__StepFEA_DLL;__RWStepElement_DLL;__RWStepFEA_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -365,7 +365,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__StepElement_DLL;__StepFEA_DLL;__RWStepElement_DLL;__RWStepFEA_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__StepElement_DLL;__StepFEA_DLL;__RWStepElement_DLL;__RWStepFEA_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"

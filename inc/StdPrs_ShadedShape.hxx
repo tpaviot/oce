@@ -6,49 +6,38 @@
 #ifndef _StdPrs_ShadedShape_HeaderFile
 #define _StdPrs_ShadedShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Prs3d_Root_HeaderFile
 #include <Prs3d_Root.hxx>
-#endif
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Handle_Prs3d_Drawer_HeaderFile
 #include <Handle_Prs3d_Drawer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Prs3d_Presentation;
 class TopoDS_Shape;
 class Prs3d_Drawer;
 class gp_Pnt2d;
 
 
-//! Auxiliary procedures to prepare Shaded presentation of specified shape. <br>
-class StdPrs_ShadedShape  : public Prs3d_Root {
+//! Auxiliary procedures to prepare Shaded presentation of specified shape.
+class StdPrs_ShadedShape  : public Prs3d_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Shades <theShape>. <br>
-//! @param theToExploreSolids when set to true, explodes compound into two groups - with closed Solids and open Shells <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& thePresentation,const TopoDS_Shape& theShape,const Handle(Prs3d_Drawer)& theDrawer,const Standard_Boolean theToExploreSolids = Standard_True) ;
-  //! Shades <theShape> with texture coordinates. <br>
-//! @param theToExploreSolids when set to true, explodes compound into two groups - with closed Solids and open Shells <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& thePresentation,const TopoDS_Shape& theShape,const Handle(Prs3d_Drawer)& theDrawer,const Standard_Boolean theHasTexels,const gp_Pnt2d& theUVOrigin,const gp_Pnt2d& theUVRepeat,const gp_Pnt2d& theUVScale,const Standard_Boolean theToExploreSolids = Standard_True) ;
-  //! Validates triangulation within the shape and performs tessellation if necessary. <br>
-  Standard_EXPORT   static  void Tessellate(const TopoDS_Shape& theShape,const Handle(Prs3d_Drawer)& theDrawer) ;
-
+  
+  //! Shades <theShape>.
+  //! @param theToExploreSolids when set to true, explodes compound into two groups - with closed Solids and open Shells
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& thePresentation, const TopoDS_Shape& theShape, const Handle(Prs3d_Drawer)& theDrawer, const Standard_Boolean theToExploreSolids = Standard_True) ;
+  
+  //! Shades <theShape> with texture coordinates.
+  //! @param theToExploreSolids when set to true, explodes compound into two groups - with closed Solids and open Shells
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& thePresentation, const TopoDS_Shape& theShape, const Handle(Prs3d_Drawer)& theDrawer, const Standard_Boolean theHasTexels, const gp_Pnt2d& theUVOrigin, const gp_Pnt2d& theUVRepeat, const gp_Pnt2d& theUVScale, const Standard_Boolean theToExploreSolids = Standard_True) ;
+  
+  //! Validates triangulation within the shape and performs tessellation if necessary.
+  Standard_EXPORT static   void Tessellate (const TopoDS_Shape& theShape, const Handle(Prs3d_Drawer)& theDrawer) ;
 
 
 
@@ -71,7 +60,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StdPrs_ShadedShape_HeaderFile

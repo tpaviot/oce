@@ -6,58 +6,49 @@
 #ifndef _BRepAdaptor_Curve2d_HeaderFile
 #define _BRepAdaptor_Curve2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _Geom2dAdaptor_Curve_HeaderFile
 #include <Geom2dAdaptor_Curve.hxx>
-#endif
 class Standard_NullObject;
 class TopoDS_Edge;
 class TopoDS_Face;
 
 
-//! The Curve2d from BRepAdaptor allows to use an Edge <br>
-//!          on   a Face like   a  2d   curve. (curve  in   the <br>
-//!          parametric space). <br>
-//! <br>
-//!          It  has  the methods    of the class Curve2d  from <br>
-//!          Adpator. <br>
-//! <br>
-//!          It  is created or  initialized with a  Face and an <br>
-//!          Edge.  The methods are  inherited from  Curve from <br>
-//!          Geom2dAdaptor. <br>
-class BRepAdaptor_Curve2d  : public Geom2dAdaptor_Curve {
+//! The Curve2d from BRepAdaptor allows to use an Edge
+//! on   a Face like   a  2d   curve. (curve  in   the
+//! parametric space).
+//!
+//! It  has  the methods    of the class Curve2d  from
+//! Adpator.
+//!
+//! It  is created or  initialized with a  Face and an
+//! Edge.  The methods are  inherited from  Curve from
+//! Geom2dAdaptor.
+class BRepAdaptor_Curve2d  : public Geom2dAdaptor_Curve
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an uninitialized curve2d. <br>
-  Standard_EXPORT   BRepAdaptor_Curve2d();
-  //! Creates with the pcurve of <E> on <F>. <br>
-  Standard_EXPORT   BRepAdaptor_Curve2d(const TopoDS_Edge& E,const TopoDS_Face& F);
-  //! Initialize with the pcurve of <E> on <F>. <br>
-  Standard_EXPORT     void Initialize(const TopoDS_Edge& E,const TopoDS_Face& F) ;
-  //! Returns the Edge. <br>
-//! <br>
-  Standard_EXPORT    const TopoDS_Edge& Edge() const;
-  //! Returns the Face. <br>
-//! <br>
-  Standard_EXPORT    const TopoDS_Face& Face() const;
-
+  
+  //! Creates an uninitialized curve2d.
+  Standard_EXPORT BRepAdaptor_Curve2d();
+  
+  //! Creates with the pcurve of <E> on <F>.
+  Standard_EXPORT BRepAdaptor_Curve2d(const TopoDS_Edge& E, const TopoDS_Face& F);
+  
+  //! Initialize with the pcurve of <E> on <F>.
+  Standard_EXPORT   void Initialize (const TopoDS_Edge& E, const TopoDS_Face& F) ;
+  
+  //! Returns the Edge.
+  Standard_EXPORT  const  TopoDS_Edge& Edge()  const;
+  
+  //! Returns the Face.
+  Standard_EXPORT  const  TopoDS_Face& Face()  const;
 
 
 
@@ -72,8 +63,8 @@ private:
 
 
 
-TopoDS_Edge myEdge;
-TopoDS_Face myFace;
+  TopoDS_Edge myEdge;
+  TopoDS_Face myFace;
 
 
 };
@@ -82,7 +73,6 @@ TopoDS_Face myFace;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepAdaptor_Curve2d_HeaderFile

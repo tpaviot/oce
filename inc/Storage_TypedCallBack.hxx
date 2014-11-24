@@ -6,53 +6,40 @@
 #ifndef _Storage_TypedCallBack_HeaderFile
 #define _Storage_TypedCallBack_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Storage_TypedCallBack_HeaderFile
 #include <Handle_Storage_TypedCallBack.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Handle_Storage_CallBack_HeaderFile
 #include <Handle_Storage_CallBack.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class Storage_CallBack;
 class TCollection_AsciiString;
 
 
 
-class Storage_TypedCallBack : public MMgt_TShared {
+class Storage_TypedCallBack : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   Storage_TypedCallBack();
+  Standard_EXPORT Storage_TypedCallBack();
   
-  Standard_EXPORT   Storage_TypedCallBack(const TCollection_AsciiString& aTypeName,const Handle(Storage_CallBack)& aCallBack);
+  Standard_EXPORT Storage_TypedCallBack(const TCollection_AsciiString& aTypeName, const Handle(Storage_CallBack)& aCallBack);
   
-  Standard_EXPORT     void SetType(const TCollection_AsciiString& aType) ;
+  Standard_EXPORT   void SetType (const TCollection_AsciiString& aType) ;
   
-  Standard_EXPORT     TCollection_AsciiString Type() const;
+  Standard_EXPORT   TCollection_AsciiString Type()  const;
   
-  Standard_EXPORT     void SetCallBack(const Handle(Storage_CallBack)& aCallBack) ;
+  Standard_EXPORT   void SetCallBack (const Handle(Storage_CallBack)& aCallBack) ;
   
-  Standard_EXPORT     Handle_Storage_CallBack CallBack() const;
+  Standard_EXPORT   Handle(Storage_CallBack) CallBack()  const;
   
-  Standard_EXPORT     void SetIndex(const Standard_Integer anIndex) ;
+  Standard_EXPORT   void SetIndex (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     Standard_Integer Index() const;
+  Standard_EXPORT   Standard_Integer Index()  const;
 
 
 
@@ -67,9 +54,9 @@ protected:
 private: 
 
 
-TCollection_AsciiString myType;
-Handle_Storage_CallBack myCallBack;
-Standard_Integer myIndex;
+  TCollection_AsciiString myType;
+  Handle(Storage_CallBack) myCallBack;
+  Standard_Integer myIndex;
 
 
 };
@@ -78,7 +65,6 @@ Standard_Integer myIndex;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Storage_TypedCallBack_HeaderFile

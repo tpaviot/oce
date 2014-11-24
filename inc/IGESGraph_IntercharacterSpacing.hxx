@@ -6,48 +6,40 @@
 #ifndef _IGESGraph_IntercharacterSpacing_HeaderFile
 #define _IGESGraph_IntercharacterSpacing_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESGraph_IntercharacterSpacing_HeaderFile
 #include <Handle_IGESGraph_IntercharacterSpacing.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
 
 
-//! defines IGESIntercharacterSpacing, Type <406> Form <18> <br>
-//!          in package IGESGraph <br>
-//! <br>
-//!          Specifies the gap between letters when fixed-pitch <br>
-//!          spacing is used <br>
-class IGESGraph_IntercharacterSpacing : public IGESData_IGESEntity {
+//! defines IGESIntercharacterSpacing, Type <406> Form <18>
+//! in package IGESGraph
+//!
+//! Specifies the gap between letters when fixed-pitch
+//! spacing is used
+class IGESGraph_IntercharacterSpacing : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESGraph_IntercharacterSpacing();
-  //! This method is used to set the fields of the class <br>
-//!           IntercharacterSpacing <br>
-//!       - nbProps  : Number of property values (NP = 1) <br>
-//!       - anISpace : Intercharacter spacing percentage <br>
-  Standard_EXPORT     void Init(const Standard_Integer nbProps,const Standard_Real anISpace) ;
-  //! returns the number of property values in <me> <br>
-  Standard_EXPORT     Standard_Integer NbPropertyValues() const;
-  //! returns the Intercharacter Space of <me> in percentage <br>
-//! of the text height (Range = 0..100) <br>
-  Standard_EXPORT     Standard_Real ISpace() const;
+  Standard_EXPORT IGESGraph_IntercharacterSpacing();
+  
+  //! This method is used to set the fields of the class
+  //! IntercharacterSpacing
+  //! - nbProps  : Number of property values (NP = 1)
+  //! - anISpace : Intercharacter spacing percentage
+  Standard_EXPORT   void Init (const Standard_Integer nbProps, const Standard_Real anISpace) ;
+  
+  //! returns the number of property values in <me>
+  Standard_EXPORT   Standard_Integer NbPropertyValues()  const;
+  
+  //! returns the Intercharacter Space of <me> in percentage
+  //! of the text height (Range = 0..100)
+  Standard_EXPORT   Standard_Real ISpace()  const;
 
 
 
@@ -62,8 +54,8 @@ protected:
 private: 
 
 
-Standard_Integer theNbPropertyValues;
-Standard_Real theISpace;
+  Standard_Integer theNbPropertyValues;
+  Standard_Real theISpace;
 
 
 };
@@ -72,7 +64,6 @@ Standard_Real theISpace;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGraph_IntercharacterSpacing_HeaderFile

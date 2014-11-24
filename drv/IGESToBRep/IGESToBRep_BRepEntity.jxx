@@ -1,39 +1,13 @@
-#ifndef _IGESToBRep_CurveAndSurface_HeaderFile
 #include <IGESToBRep_CurveAndSurface.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _TopoDS_Vertex_HeaderFile
 #include <TopoDS_Vertex.hxx>
-#endif
-#ifndef _IGESSolid_VertexList_HeaderFile
 #include <IGESSolid_VertexList.hxx>
-#endif
-#ifndef _IGESSolid_EdgeList_HeaderFile
 #include <IGESSolid_EdgeList.hxx>
-#endif
-#ifndef _IGESSolid_Loop_HeaderFile
 #include <IGESSolid_Loop.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _gp_Trsf2d_HeaderFile
 #include <gp_Trsf2d.hxx>
-#endif
-#ifndef _IGESSolid_Face_HeaderFile
 #include <IGESSolid_Face.hxx>
-#endif
-#ifndef _IGESSolid_Shell_HeaderFile
 #include <IGESSolid_Shell.hxx>
-#endif
-#ifndef _IGESSolid_ManifoldSolid_HeaderFile
 #include <IGESSolid_ManifoldSolid.hxx>
-#endif
-#ifndef _IGESToBRep_BRepEntity_HeaderFile
 #include <IGESToBRep_BRepEntity.hxx>
-#endif

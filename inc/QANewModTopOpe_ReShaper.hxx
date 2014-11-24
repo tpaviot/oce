@@ -6,54 +6,42 @@
 #ifndef _QANewModTopOpe_ReShaper_HeaderFile
 #define _QANewModTopOpe_ReShaper_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_QANewModTopOpe_ReShaper_HeaderFile
 #include <Handle_QANewModTopOpe_ReShaper.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_MapOfShape_HeaderFile
 #include <TopTools_MapOfShape.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_TopTools_HSequenceOfShape_HeaderFile
 #include <Handle_TopTools_HSequenceOfShape.hxx>
-#endif
 class TopoDS_Shape;
 class TopTools_MapOfShape;
 class TopTools_HSequenceOfShape;
 
 
-//! to remove  "floating" objects from compound. <br>
-//! "floating" objects are wires, edges, vertices that do not belong <br>
-//! solids, shells or faces. <br>
-class QANewModTopOpe_ReShaper : public MMgt_TShared {
+//! to remove  "floating" objects from compound.
+//! "floating" objects are wires, edges, vertices that do not belong
+//! solids, shells or faces.
+class QANewModTopOpe_ReShaper : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   QANewModTopOpe_ReShaper(const TopoDS_Shape& TheInitialShape);
+  Standard_EXPORT QANewModTopOpe_ReShaper(const TopoDS_Shape& TheInitialShape);
   
-  Standard_EXPORT   QANewModTopOpe_ReShaper(const TopoDS_Shape& TheInitialShape,const TopTools_MapOfShape& TheMap);
+  Standard_EXPORT QANewModTopOpe_ReShaper(const TopoDS_Shape& TheInitialShape, const TopTools_MapOfShape& TheMap);
   
-  Standard_EXPORT   QANewModTopOpe_ReShaper(const TopoDS_Shape& TheInitialShape,const Handle(TopTools_HSequenceOfShape)& TheShapeToBeRemoved);
+  Standard_EXPORT QANewModTopOpe_ReShaper(const TopoDS_Shape& TheInitialShape, const Handle(TopTools_HSequenceOfShape)& TheShapeToBeRemoved);
   
-  Standard_EXPORT     void Remove(const TopoDS_Shape& TheS) ;
+  Standard_EXPORT   void Remove (const TopoDS_Shape& TheS) ;
   
-  Standard_EXPORT     void Perform() ;
-  //!  to  clear  all  added  for  removing  shapes  from  inner  map. <br>
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Perform() ;
   
-  Standard_EXPORT    const TopoDS_Shape& GetResult() const;
+  //! to  clear  all  added  for  removing  shapes  from  inner  map.
+  Standard_EXPORT   void Clear() ;
+  
+  Standard_EXPORT  const  TopoDS_Shape& GetResult()  const;
 Standard_EXPORT operator TopoDS_Shape() const;
 
 
@@ -69,9 +57,9 @@ protected:
 private: 
 
 
-TopoDS_Shape myInitShape;
-TopoDS_Shape myResult;
-TopTools_MapOfShape myMap;
+  TopoDS_Shape myInitShape;
+  TopoDS_Shape myResult;
+  TopTools_MapOfShape myMap;
 
 
 };
@@ -80,7 +68,6 @@ TopTools_MapOfShape myMap;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QANewModTopOpe_ReShaper_HeaderFile

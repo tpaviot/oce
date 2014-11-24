@@ -6,31 +6,15 @@
 #ifndef _ExprIntrp_StackOfGeneralRelation_HeaderFile
 #define _ExprIntrp_StackOfGeneralRelation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_Expr_GeneralRelation_HeaderFile
 #include <Handle_Expr_GeneralRelation.hxx>
-#endif
-#ifndef _Handle_ExprIntrp_ListNodeOfStackOfGeneralRelation_HeaderFile
 #include <Handle_ExprIntrp_ListNodeOfStackOfGeneralRelation.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class ExprIntrp_ListIteratorOfStackOfGeneralRelation;
 class Expr_GeneralRelation;
@@ -38,63 +22,63 @@ class ExprIntrp_ListNodeOfStackOfGeneralRelation;
 
 
 
-class ExprIntrp_StackOfGeneralRelation  {
+class ExprIntrp_StackOfGeneralRelation 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   ExprIntrp_StackOfGeneralRelation();
+  Standard_EXPORT ExprIntrp_StackOfGeneralRelation();
   
-  Standard_EXPORT   ExprIntrp_StackOfGeneralRelation(const ExprIntrp_StackOfGeneralRelation& Other);
+  Standard_EXPORT ExprIntrp_StackOfGeneralRelation(const ExprIntrp_StackOfGeneralRelation& Other);
   
-  Standard_EXPORT     void Assign(const ExprIntrp_StackOfGeneralRelation& Other) ;
-    void operator=(const ExprIntrp_StackOfGeneralRelation& Other) 
+  Standard_EXPORT   void Assign (const ExprIntrp_StackOfGeneralRelation& Other) ;
+  void operator= (const ExprIntrp_StackOfGeneralRelation& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~ExprIntrp_StackOfGeneralRelation()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const Handle(Expr_GeneralRelation)& I) ;
+  Standard_EXPORT   void Prepend (const Handle(Expr_GeneralRelation)& I) ;
   
-  Standard_EXPORT     void Prepend(const Handle(Expr_GeneralRelation)& I,ExprIntrp_ListIteratorOfStackOfGeneralRelation& theIt) ;
+  Standard_EXPORT   void Prepend (const Handle(Expr_GeneralRelation)& I, ExprIntrp_ListIteratorOfStackOfGeneralRelation& theIt) ;
   
-  Standard_EXPORT     void Prepend(ExprIntrp_StackOfGeneralRelation& Other) ;
+  Standard_EXPORT   void Prepend (ExprIntrp_StackOfGeneralRelation& Other) ;
   
-  Standard_EXPORT     void Append(const Handle(Expr_GeneralRelation)& I) ;
+  Standard_EXPORT   void Append (const Handle(Expr_GeneralRelation)& I) ;
   
-  Standard_EXPORT     void Append(const Handle(Expr_GeneralRelation)& I,ExprIntrp_ListIteratorOfStackOfGeneralRelation& theIt) ;
+  Standard_EXPORT   void Append (const Handle(Expr_GeneralRelation)& I, ExprIntrp_ListIteratorOfStackOfGeneralRelation& theIt) ;
   
-  Standard_EXPORT     void Append(ExprIntrp_StackOfGeneralRelation& Other) ;
+  Standard_EXPORT   void Append (ExprIntrp_StackOfGeneralRelation& Other) ;
   
-  Standard_EXPORT     Handle_Expr_GeneralRelation& First() const;
+  Standard_EXPORT   Handle(Expr_GeneralRelation)& First()  const;
   
-  Standard_EXPORT     Handle_Expr_GeneralRelation& Last() const;
+  Standard_EXPORT   Handle(Expr_GeneralRelation)& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(ExprIntrp_ListIteratorOfStackOfGeneralRelation& It) ;
+  Standard_EXPORT   void Remove (ExprIntrp_ListIteratorOfStackOfGeneralRelation& It) ;
   
-  Standard_EXPORT     void InsertBefore(const Handle(Expr_GeneralRelation)& I,ExprIntrp_ListIteratorOfStackOfGeneralRelation& It) ;
+  Standard_EXPORT   void InsertBefore (const Handle(Expr_GeneralRelation)& I, ExprIntrp_ListIteratorOfStackOfGeneralRelation& It) ;
   
-  Standard_EXPORT     void InsertBefore(ExprIntrp_StackOfGeneralRelation& Other,ExprIntrp_ListIteratorOfStackOfGeneralRelation& It) ;
+  Standard_EXPORT   void InsertBefore (ExprIntrp_StackOfGeneralRelation& Other, ExprIntrp_ListIteratorOfStackOfGeneralRelation& It) ;
   
-  Standard_EXPORT     void InsertAfter(const Handle(Expr_GeneralRelation)& I,ExprIntrp_ListIteratorOfStackOfGeneralRelation& It) ;
+  Standard_EXPORT   void InsertAfter (const Handle(Expr_GeneralRelation)& I, ExprIntrp_ListIteratorOfStackOfGeneralRelation& It) ;
   
-  Standard_EXPORT     void InsertAfter(ExprIntrp_StackOfGeneralRelation& Other,ExprIntrp_ListIteratorOfStackOfGeneralRelation& It) ;
+  Standard_EXPORT   void InsertAfter (ExprIntrp_StackOfGeneralRelation& Other, ExprIntrp_ListIteratorOfStackOfGeneralRelation& It) ;
 
 
 friend class ExprIntrp_ListIteratorOfStackOfGeneralRelation;
-
 
 
 protected:
@@ -107,13 +91,13 @@ private:
 
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
 
-#define Item Handle_Expr_GeneralRelation
+#define Item Handle(Expr_GeneralRelation)
 #define Item_hxx <Expr_GeneralRelation.hxx>
 #define TCollection_ListNode ExprIntrp_ListNodeOfStackOfGeneralRelation
 #define TCollection_ListNode_hxx <ExprIntrp_ListNodeOfStackOfGeneralRelation.hxx>
@@ -138,7 +122,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ExprIntrp_StackOfGeneralRelation_HeaderFile

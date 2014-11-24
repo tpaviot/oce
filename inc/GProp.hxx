@@ -6,19 +6,11 @@
 #ifndef _GProp_HeaderFile
 #define _GProp_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class gp_Pnt;
 class gp_Mat;
 class GProp_GProps;
@@ -31,40 +23,42 @@ class GProp_PEquation;
 
 
 
-//!  This package defines algorithmes to compute the global properties <br>
-//!  of a set of points, a curve, a surface, a solid (non infinite <br>
-//!  region of space delimited with geometric entities), a compound <br>
-//!  geometric system (heterogeneous composition of the previous <br>
-//!  entities). <br>
-//! <br>
-//!  Global properties are : <br>
-//!  . length, area, volume, <br>
-//!  . centre of mass, <br>
-//!  . axis of inertia, <br>
-//!  . moments of inertia, <br>
-//!  . radius of gyration. <br>
-//! <br>
-//!  It provides  also a class to  compile the average point or <br>
-//!  line of a set of points. <br>
-class GProp  {
+//! This package defines algorithmes to compute the global properties
+//! of a set of points, a curve, a surface, a solid (non infinite
+//! region of space delimited with geometric entities), a compound
+//! geometric system (heterogeneous composition of the previous
+//! entities).
+//!
+//! Global properties are :
+//! . length, area, volume,
+//! . centre of mass,
+//! . axis of inertia,
+//! . moments of inertia,
+//! . radius of gyration.
+//!
+//! It provides  also a class to  compile the average point or
+//! line of a set of points.
+class GProp 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! methods of package <br>//! Computes the matrix Operator, referred to as the <br>
-//! "Huyghens Operator" of a geometric system at the <br>
-//! point Q of the space, using the following data : <br>
-//! - Mass, i.e. the mass of the system, <br>
-//! - G, the center of mass of the system. <br>
-//!   The "Huyghens Operator" is used to compute <br>
-//! Inertia/Q, the matrix of inertia of the system at <br>
-//! the point Q using Huyghens' theorem : <br>
-//!    Inertia/Q = Inertia/G + HOperator (Q, G, Mass) <br>
-//! where Inertia/G is the matrix of inertia of the <br>
-//! system relative to its center of mass as returned by <br>
-//! the function MatrixOfInertia on any GProp_GProps object. <br>
-  Standard_EXPORT   static  void HOperator(const gp_Pnt& G,const gp_Pnt& Q,const Standard_Real Mass,gp_Mat& Operator) ;
-
+  
+  //! methods of package
+  //! Computes the matrix Operator, referred to as the
+  //! "Huyghens Operator" of a geometric system at the
+  //! point Q of the space, using the following data :
+  //! - Mass, i.e. the mass of the system,
+  //! - G, the center of mass of the system.
+  //! The "Huyghens Operator" is used to compute
+  //! Inertia/Q, the matrix of inertia of the system at
+  //! the point Q using Huyghens' theorem :
+  //! Inertia/Q = Inertia/G + HOperator (Q, G, Mass)
+  //! where Inertia/G is the matrix of inertia of the
+  //! system relative to its center of mass as returned by
+  //! the function MatrixOfInertia on any GProp_GProps object.
+  Standard_EXPORT static   void HOperator (const gp_Pnt& G, const gp_Pnt& Q, const Standard_Real Mass, gp_Mat& Operator) ;
 
 
 
@@ -94,7 +88,6 @@ friend class GProp_PEquation;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GProp_HeaderFile

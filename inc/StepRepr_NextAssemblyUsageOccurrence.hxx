@@ -6,28 +6,22 @@
 #ifndef _StepRepr_NextAssemblyUsageOccurrence_HeaderFile
 #define _StepRepr_NextAssemblyUsageOccurrence_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepRepr_NextAssemblyUsageOccurrence_HeaderFile
 #include <Handle_StepRepr_NextAssemblyUsageOccurrence.hxx>
-#endif
 
-#ifndef _StepRepr_AssemblyComponentUsage_HeaderFile
 #include <StepRepr_AssemblyComponentUsage.hxx>
-#endif
 
 
-//! Representation of STEP entity NextAssemblyUsageOccurrence <br>
-class StepRepr_NextAssemblyUsageOccurrence : public StepRepr_AssemblyComponentUsage {
+//! Representation of STEP entity NextAssemblyUsageOccurrence
+class StepRepr_NextAssemblyUsageOccurrence : public StepRepr_AssemblyComponentUsage
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepRepr_NextAssemblyUsageOccurrence();
+  
+  //! Empty constructor
+  Standard_EXPORT StepRepr_NextAssemblyUsageOccurrence();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_NextAssemblyUsageOccurrence_HeaderFile

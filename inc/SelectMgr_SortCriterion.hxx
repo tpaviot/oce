@@ -6,73 +6,62 @@
 #ifndef _SelectMgr_SortCriterion_HeaderFile
 #define _SelectMgr_SortCriterion_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 
 
-//! This class provides data and criterion for sorting candidate <br>
-//!          entities in the process of interactive selection by mouse click <br>
-class SelectMgr_SortCriterion  {
+//! This class provides data and criterion for sorting candidate
+//! entities in the process of interactive selection by mouse click
+class SelectMgr_SortCriterion 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   SelectMgr_SortCriterion();
-  //! Defines parameters of selection criterion: <br>
-//! - Priority: selection priority <br>
-//! - Depth: distance from the view plane to the entity <br>
-//! - MinDist: distance from the clicked point to the entity on the view plane <br>
-//! - Tol: tolerance used for selecting candidates <br>
-//! - PreferClosest: specify whether closest object is preferred even if <br>
-//!                  if has less priority <br>
-  Standard_EXPORT   SelectMgr_SortCriterion(const Standard_Integer thePriority,const Standard_Real theDepth,const Standard_Real theMinDist,const Standard_Real theTol,const Standard_Boolean PreferClosest);
+  Standard_EXPORT SelectMgr_SortCriterion();
   
-        void SetPriority(const Standard_Integer P) ;
+  //! Defines parameters of selection criterion:
+  //! - Priority: selection priority
+  //! - Depth: distance from the view plane to the entity
+  //! - MinDist: distance from the clicked point to the entity on the view plane
+  //! - Tol: tolerance used for selecting candidates
+  //! - PreferClosest: specify whether closest object is preferred even if
+  //! if has less priority
+  Standard_EXPORT SelectMgr_SortCriterion(const Standard_Integer thePriority, const Standard_Real theDepth, const Standard_Real theMinDist, const Standard_Real theTol, const Standard_Boolean PreferClosest);
   
-        void SetDepth(const Standard_Real D) ;
+      void SetPriority (const Standard_Integer P) ;
   
-        void SetMinDist(const Standard_Real D) ;
+      void SetDepth (const Standard_Real D) ;
   
-        void SetTol(const Standard_Real T) ;
+      void SetMinDist (const Standard_Real D) ;
   
-        Standard_Integer Priority() const;
+      void SetTol (const Standard_Real T) ;
   
-        Standard_Real Depth() const;
+      Standard_Integer Priority()  const;
   
-        Standard_Real MinDist() const;
+      Standard_Real Depth()  const;
   
-        Standard_Real Tol() const;
+      Standard_Real MinDist()  const;
   
-  Standard_EXPORT     Standard_Boolean IsGreater(const SelectMgr_SortCriterion& anOtherCriterion) const;
-    Standard_Boolean operator >(const SelectMgr_SortCriterion& anOtherCriterion) const
+      Standard_Real Tol()  const;
+  
+  Standard_EXPORT   Standard_Boolean IsGreater (const SelectMgr_SortCriterion& anOtherCriterion)  const;
+  Standard_Boolean operator > (const SelectMgr_SortCriterion& anOtherCriterion)  const
 {
   return IsGreater(anOtherCriterion);
 }
   
-  Standard_EXPORT     Standard_Boolean IsLower(const SelectMgr_SortCriterion& anOtherCriterion) const;
-    Standard_Boolean operator <(const SelectMgr_SortCriterion& anOtherCriterion) const
+  Standard_EXPORT   Standard_Boolean IsLower (const SelectMgr_SortCriterion& anOtherCriterion)  const;
+  Standard_Boolean operator < (const SelectMgr_SortCriterion& anOtherCriterion)  const
 {
   return IsLower(anOtherCriterion);
 }
-
 
 
 
@@ -87,11 +76,11 @@ private:
 
 
 
-Standard_Integer myPrior;
-Standard_Real myDepth;
-Standard_Real myDist;
-Standard_Real myTol;
-Standard_Boolean myPreferClosest;
+  Standard_Integer myPrior;
+  Standard_Real myDepth;
+  Standard_Real myDist;
+  Standard_Real myTol;
+  Standard_Boolean myPreferClosest;
 
 
 };
@@ -101,7 +90,6 @@ Standard_Boolean myPreferClosest;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SelectMgr_SortCriterion_HeaderFile

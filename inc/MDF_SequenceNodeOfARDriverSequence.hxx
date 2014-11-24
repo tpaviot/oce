@@ -6,38 +6,27 @@
 #ifndef _MDF_SequenceNodeOfARDriverSequence_HeaderFile
 #define _MDF_SequenceNodeOfARDriverSequence_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MDF_SequenceNodeOfARDriverSequence_HeaderFile
 #include <Handle_MDF_SequenceNodeOfARDriverSequence.hxx>
-#endif
 
-#ifndef _Handle_MDF_ARDriver_HeaderFile
 #include <Handle_MDF_ARDriver.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class MDF_ARDriver;
 class MDF_ARDriverSequence;
 
 
 
-class MDF_SequenceNodeOfARDriverSequence : public TCollection_SeqNode {
+class MDF_SequenceNodeOfARDriverSequence : public TCollection_SeqNode
+{
 
 public:
 
   
-      MDF_SequenceNodeOfARDriverSequence(const Handle(MDF_ARDriver)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    MDF_SequenceNodeOfARDriverSequence(const Handle(MDF_ARDriver)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_MDF_ARDriver& Value() const;
+      Handle(MDF_ARDriver)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_MDF_ARDriver myValue;
+  Handle(MDF_ARDriver) myValue;
 
 
 };
 
-#define SeqItem Handle_MDF_ARDriver
+#define SeqItem Handle(MDF_ARDriver)
 #define SeqItem_hxx <MDF_ARDriver.hxx>
 #define TCollection_SequenceNode MDF_SequenceNodeOfARDriverSequence
 #define TCollection_SequenceNode_hxx <MDF_SequenceNodeOfARDriverSequence.hxx>
@@ -78,7 +67,6 @@ Handle_MDF_ARDriver myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MDF_SequenceNodeOfARDriverSequence_HeaderFile

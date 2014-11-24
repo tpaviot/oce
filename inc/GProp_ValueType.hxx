@@ -6,8 +6,11 @@
 #ifndef _GProp_ValueType_HeaderFile
 #define _GProp_ValueType_HeaderFile
 
-//! Algorithmes : <br>
-enum GProp_ValueType {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Algorithmes :
+enum GProp_ValueType
+{
 GProp_Mass,
 GProp_CenterMassX,
 GProp_CenterMassY,
@@ -21,8 +24,4 @@ GProp_InertiaYZ,
 GProp_Unknown
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _GProp_ValueType_HeaderFile

@@ -6,16 +6,15 @@
 #ifndef _Draft_ErrorStatus_HeaderFile
 #define _Draft_ErrorStatus_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Draft_ErrorStatus {
+
+enum Draft_ErrorStatus
+{
 Draft_NoError,
 Draft_FaceRecomputation,
 Draft_EdgeRecomputation,
 Draft_VertexRecomputation
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Draft_ErrorStatus_HeaderFile

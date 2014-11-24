@@ -6,39 +6,28 @@
 #ifndef _ExprIntrp_ListNodeOfStackOfGeneralFunction_HeaderFile
 #define _ExprIntrp_ListNodeOfStackOfGeneralFunction_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ExprIntrp_ListNodeOfStackOfGeneralFunction_HeaderFile
 #include <Handle_ExprIntrp_ListNodeOfStackOfGeneralFunction.hxx>
-#endif
 
-#ifndef _Handle_Expr_GeneralFunction_HeaderFile
 #include <Handle_Expr_GeneralFunction.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Expr_GeneralFunction;
 class ExprIntrp_StackOfGeneralFunction;
 class ExprIntrp_ListIteratorOfStackOfGeneralFunction;
 
 
 
-class ExprIntrp_ListNodeOfStackOfGeneralFunction : public TCollection_MapNode {
+class ExprIntrp_ListNodeOfStackOfGeneralFunction : public TCollection_MapNode
+{
 
 public:
 
   
-      ExprIntrp_ListNodeOfStackOfGeneralFunction(const Handle(Expr_GeneralFunction)& I,const TCollection_MapNodePtr& n);
+    ExprIntrp_ListNodeOfStackOfGeneralFunction(const Handle(Expr_GeneralFunction)& I, const TCollection_MapNodePtr& n);
   
-        Handle_Expr_GeneralFunction& Value() const;
+      Handle(Expr_GeneralFunction)& Value()  const;
 
 
 
@@ -53,12 +42,12 @@ protected:
 private: 
 
 
-Handle_Expr_GeneralFunction myValue;
+  Handle(Expr_GeneralFunction) myValue;
 
 
 };
 
-#define Item Handle_Expr_GeneralFunction
+#define Item Handle(Expr_GeneralFunction)
 #define Item_hxx <Expr_GeneralFunction.hxx>
 #define TCollection_ListNode ExprIntrp_ListNodeOfStackOfGeneralFunction
 #define TCollection_ListNode_hxx <ExprIntrp_ListNodeOfStackOfGeneralFunction.hxx>
@@ -83,7 +72,6 @@ Handle_Expr_GeneralFunction myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ExprIntrp_ListNodeOfStackOfGeneralFunction_HeaderFile

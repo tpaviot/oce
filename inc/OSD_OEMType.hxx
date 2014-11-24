@@ -6,9 +6,12 @@
 #ifndef _OSD_OEMType_HeaderFile
 #define _OSD_OEMType_HeaderFile
 
-//! This is set of possible machine types <br>
-//!          used in OSD_Host::MachineType <br>
-enum OSD_OEMType {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! This is set of possible machine types
+//! used in OSD_Host::MachineType
+enum OSD_OEMType
+{
 OSD_Unavailable,
 OSD_SUN,
 OSD_DEC,
@@ -23,8 +26,4 @@ OSD_LIN,
 OSD_AIX
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _OSD_OEMType_HeaderFile

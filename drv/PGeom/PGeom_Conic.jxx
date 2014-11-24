@@ -1,6 +1,2 @@
-#ifndef _gp_Ax2_HeaderFile
 #include <gp_Ax2.hxx>
-#endif
-#ifndef _PGeom_Conic_HeaderFile
 #include <PGeom_Conic.hxx>
-#endif

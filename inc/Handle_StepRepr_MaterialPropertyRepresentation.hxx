@@ -6,22 +6,15 @@
 #ifndef _Handle_StepRepr_MaterialPropertyRepresentation_HeaderFile
 #define _Handle_StepRepr_MaterialPropertyRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepRepr_PropertyDefinitionRepresentation_HeaderFile
 #include <Handle_StepRepr_PropertyDefinitionRepresentation.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepRepr_PropertyDefinitionRepresentation);
 class StepRepr_MaterialPropertyRepresentation;
 
-DEFINE_STANDARD_HANDLE(StepRepr_MaterialPropertyRepresentation,StepRepr_PropertyDefinitionRepresentation)
+DEFINE_STANDARD_HANDLE(StepRepr_MaterialPropertyRepresentation, StepRepr_PropertyDefinitionRepresentation)
 
-#endif
+#endif // _Handle_StepRepr_MaterialPropertyRepresentation_HeaderFile

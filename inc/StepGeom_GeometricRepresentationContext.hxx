@@ -6,43 +6,33 @@
 #ifndef _StepGeom_GeometricRepresentationContext_HeaderFile
 #define _StepGeom_GeometricRepresentationContext_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_GeometricRepresentationContext_HeaderFile
 #include <Handle_StepGeom_GeometricRepresentationContext.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _StepRepr_RepresentationContext_HeaderFile
 #include <StepRepr_RepresentationContext.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class TCollection_HAsciiString;
 
 
 
-class StepGeom_GeometricRepresentationContext : public StepRepr_RepresentationContext {
+class StepGeom_GeometricRepresentationContext : public StepRepr_RepresentationContext
+{
 
 public:
 
-  //! Returns a GeometricRepresentationContext <br>
-  Standard_EXPORT   StepGeom_GeometricRepresentationContext();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aContextIdentifier,const Handle(TCollection_HAsciiString)& aContextType) ;
+  //! Returns a GeometricRepresentationContext
+  Standard_EXPORT StepGeom_GeometricRepresentationContext();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aContextIdentifier,const Handle(TCollection_HAsciiString)& aContextType,const Standard_Integer aCoordinateSpaceDimension) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aContextIdentifier, const Handle(TCollection_HAsciiString)& aContextType) ;
   
-  Standard_EXPORT     void SetCoordinateSpaceDimension(const Standard_Integer aCoordinateSpaceDimension) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aContextIdentifier, const Handle(TCollection_HAsciiString)& aContextType, const Standard_Integer aCoordinateSpaceDimension) ;
   
-  Standard_EXPORT     Standard_Integer CoordinateSpaceDimension() const;
+  Standard_EXPORT   void SetCoordinateSpaceDimension (const Standard_Integer aCoordinateSpaceDimension) ;
+  
+  Standard_EXPORT   Standard_Integer CoordinateSpaceDimension()  const;
 
 
 
@@ -57,7 +47,7 @@ protected:
 private: 
 
 
-Standard_Integer coordinateSpaceDimension;
+  Standard_Integer coordinateSpaceDimension;
 
 
 };
@@ -66,7 +56,6 @@ Standard_Integer coordinateSpaceDimension;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_GeometricRepresentationContext_HeaderFile

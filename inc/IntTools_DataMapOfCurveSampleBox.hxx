@@ -6,31 +6,15 @@
 #ifndef _IntTools_DataMapOfCurveSampleBox_HeaderFile
 #define _IntTools_DataMapOfCurveSampleBox_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox_HeaderFile
 #include <Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class IntTools_CurveRangeSample;
@@ -41,50 +25,50 @@ class IntTools_DataMapIteratorOfDataMapOfCurveSampleBox;
 
 
 
-class IntTools_DataMapOfCurveSampleBox  : public TCollection_BasicMap {
+class IntTools_DataMapOfCurveSampleBox  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntTools_DataMapOfCurveSampleBox(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT IntTools_DataMapOfCurveSampleBox(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     IntTools_DataMapOfCurveSampleBox& Assign(const IntTools_DataMapOfCurveSampleBox& Other) ;
-    IntTools_DataMapOfCurveSampleBox& operator =(const IntTools_DataMapOfCurveSampleBox& Other) 
+  Standard_EXPORT   IntTools_DataMapOfCurveSampleBox& Assign (const IntTools_DataMapOfCurveSampleBox& Other) ;
+  IntTools_DataMapOfCurveSampleBox& operator = (const IntTools_DataMapOfCurveSampleBox& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~IntTools_DataMapOfCurveSampleBox()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Bind(const IntTools_CurveRangeSample& K,const Bnd_Box& I) ;
+  Standard_EXPORT   Standard_Boolean Bind (const IntTools_CurveRangeSample& K, const Bnd_Box& I) ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const IntTools_CurveRangeSample& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound (const IntTools_CurveRangeSample& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind(const IntTools_CurveRangeSample& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind (const IntTools_CurveRangeSample& K) ;
   
-  Standard_EXPORT    const Bnd_Box& Find(const IntTools_CurveRangeSample& K) const;
-   const Bnd_Box& operator()(const IntTools_CurveRangeSample& K) const
+  Standard_EXPORT  const  Bnd_Box& Find (const IntTools_CurveRangeSample& K)  const;
+ const  Bnd_Box& operator() (const IntTools_CurveRangeSample& K)  const
 {
   return Find(K);
 }
   
-  Standard_EXPORT     Bnd_Box& ChangeFind(const IntTools_CurveRangeSample& K) ;
-    Bnd_Box& operator()(const IntTools_CurveRangeSample& K) 
+  Standard_EXPORT   Bnd_Box& ChangeFind (const IntTools_CurveRangeSample& K) ;
+  Bnd_Box& operator() (const IntTools_CurveRangeSample& K) 
 {
   return ChangeFind(K);
 }
   
-  Standard_EXPORT     Standard_Address Find1(const IntTools_CurveRangeSample& K) const;
+  Standard_EXPORT   Standard_Address Find1 (const IntTools_CurveRangeSample& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFind1(const IntTools_CurveRangeSample& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFind1 (const IntTools_CurveRangeSample& K) ;
 
 
 
@@ -98,7 +82,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   IntTools_DataMapOfCurveSampleBox(const IntTools_DataMapOfCurveSampleBox& Other);
+  Standard_EXPORT IntTools_DataMapOfCurveSampleBox(const IntTools_DataMapOfCurveSampleBox& Other);
 
 
 
@@ -109,7 +93,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_DataMapOfCurveSampleBox_HeaderFile

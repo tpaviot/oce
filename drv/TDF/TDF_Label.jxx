@@ -1,36 +1,12 @@
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_NullObject_HeaderFile
 #include <Standard_NullObject.hxx>
-#endif
-#ifndef _TDF_ChildIterator_HeaderFile
 #include <TDF_ChildIterator.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _TDF_AttributeIterator_HeaderFile
 #include <TDF_AttributeIterator.hxx>
-#endif
-#ifndef _TDF_Data_HeaderFile
 #include <TDF_Data.hxx>
-#endif
-#ifndef _TDF_LabelMapHasher_HeaderFile
 #include <TDF_LabelMapHasher.hxx>
-#endif
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _TDF_IDFilter_HeaderFile
 #include <TDF_IDFilter.hxx>
-#endif
-#ifndef _TDF_AttributeIndexedMap_HeaderFile
 #include <TDF_AttributeIndexedMap.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif

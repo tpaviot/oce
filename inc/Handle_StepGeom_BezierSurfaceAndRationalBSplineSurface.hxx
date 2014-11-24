@@ -6,22 +6,15 @@
 #ifndef _Handle_StepGeom_BezierSurfaceAndRationalBSplineSurface_HeaderFile
 #define _Handle_StepGeom_BezierSurfaceAndRationalBSplineSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepGeom_BSplineSurface_HeaderFile
 #include <Handle_StepGeom_BSplineSurface.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepGeom_BSplineSurface);
 class StepGeom_BezierSurfaceAndRationalBSplineSurface;
 
-DEFINE_STANDARD_HANDLE(StepGeom_BezierSurfaceAndRationalBSplineSurface,StepGeom_BSplineSurface)
+DEFINE_STANDARD_HANDLE(StepGeom_BezierSurfaceAndRationalBSplineSurface, StepGeom_BSplineSurface)
 
-#endif
+#endif // _Handle_StepGeom_BezierSurfaceAndRationalBSplineSurface_HeaderFile

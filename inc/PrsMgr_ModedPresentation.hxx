@@ -6,40 +6,30 @@
 #ifndef _PrsMgr_ModedPresentation_HeaderFile
 #define _PrsMgr_ModedPresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_PrsMgr_Presentation_HeaderFile
 #include <Handle_PrsMgr_Presentation.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class PrsMgr_Presentation;
 
 
 
-class PrsMgr_ModedPresentation  {
+class PrsMgr_ModedPresentation 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   PrsMgr_ModedPresentation();
+  Standard_EXPORT PrsMgr_ModedPresentation();
   
-  Standard_EXPORT   PrsMgr_ModedPresentation(const Handle(PrsMgr_Presentation)& thePrs,const Standard_Integer theMode);
+  Standard_EXPORT PrsMgr_ModedPresentation(const Handle(PrsMgr_Presentation)& thePrs, const Standard_Integer theMode);
   
-  Standard_EXPORT    const Handle_PrsMgr_Presentation& Presentation() const;
+  Standard_EXPORT  const  Handle(PrsMgr_Presentation)& Presentation()  const;
   
-  Standard_EXPORT     Standard_Integer Mode() const;
-
+  Standard_EXPORT   Standard_Integer Mode()  const;
 
 
 
@@ -54,8 +44,8 @@ private:
 
 
 
-Handle_PrsMgr_Presentation myPresentation;
-Standard_Integer myMode;
+  Handle(PrsMgr_Presentation) myPresentation;
+  Standard_Integer myMode;
 
 
 };
@@ -64,7 +54,6 @@ Standard_Integer myMode;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PrsMgr_ModedPresentation_HeaderFile

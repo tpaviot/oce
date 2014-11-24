@@ -6,15 +6,14 @@
 #ifndef _Hatch_LineForm_HeaderFile
 #define _Hatch_LineForm_HeaderFile
 
-//! Form of a trimmed line <br>
-enum Hatch_LineForm {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Form of a trimmed line
+enum Hatch_LineForm
+{
 Hatch_XLINE,
 Hatch_YLINE,
 Hatch_ANYLINE
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Hatch_LineForm_HeaderFile

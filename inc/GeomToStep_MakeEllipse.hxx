@@ -6,28 +6,14 @@
 #ifndef _GeomToStep_MakeEllipse_HeaderFile
 #define _GeomToStep_MakeEllipse_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Ellipse_HeaderFile
 #include <Handle_StepGeom_Ellipse.hxx>
-#endif
-#ifndef _GeomToStep_Root_HeaderFile
 #include <GeomToStep_Root.hxx>
-#endif
-#ifndef _Handle_Geom_Ellipse_HeaderFile
 #include <Handle_Geom_Ellipse.hxx>
-#endif
-#ifndef _Handle_Geom2d_Ellipse_HeaderFile
 #include <Handle_Geom2d_Ellipse.hxx>
-#endif
 class StepGeom_Ellipse;
 class StdFail_NotDone;
 class gp_Elips;
@@ -35,24 +21,24 @@ class Geom_Ellipse;
 class Geom2d_Ellipse;
 
 
-//! This class implements the mapping between classes <br>
-//!          Ellipse from Geom, and Circ from gp, and the class <br>
-//!          Ellipse from StepGeom which describes a Ellipse from <br>
-//!          Prostep. <br>
-class GeomToStep_MakeEllipse  : public GeomToStep_Root {
+//! This class implements the mapping between classes
+//! Ellipse from Geom, and Circ from gp, and the class
+//! Ellipse from StepGeom which describes a Ellipse from
+//! Prostep.
+class GeomToStep_MakeEllipse  : public GeomToStep_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomToStep_MakeEllipse(const gp_Elips& C);
+  Standard_EXPORT GeomToStep_MakeEllipse(const gp_Elips& C);
   
-  Standard_EXPORT   GeomToStep_MakeEllipse(const Handle(Geom_Ellipse)& C);
+  Standard_EXPORT GeomToStep_MakeEllipse(const Handle(Geom_Ellipse)& C);
   
-  Standard_EXPORT   GeomToStep_MakeEllipse(const Handle(Geom2d_Ellipse)& C);
+  Standard_EXPORT GeomToStep_MakeEllipse(const Handle(Geom2d_Ellipse)& C);
   
-  Standard_EXPORT    const Handle_StepGeom_Ellipse& Value() const;
-
+  Standard_EXPORT  const  Handle(StepGeom_Ellipse)& Value()  const;
 
 
 
@@ -67,7 +53,7 @@ private:
 
 
 
-Handle_StepGeom_Ellipse theEllipse;
+  Handle(StepGeom_Ellipse) theEllipse;
 
 
 };
@@ -76,7 +62,6 @@ Handle_StepGeom_Ellipse theEllipse;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomToStep_MakeEllipse_HeaderFile

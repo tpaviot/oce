@@ -6,49 +6,21 @@
 #ifndef _MeshVS_SensitivePolyhedron_HeaderFile
 #define _MeshVS_SensitivePolyhedron_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MeshVS_SensitivePolyhedron_HeaderFile
 #include <Handle_MeshVS_SensitivePolyhedron.hxx>
-#endif
 
-#ifndef _Handle_TColgp_HArray1OfPnt_HeaderFile
 #include <Handle_TColgp_HArray1OfPnt.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray1OfPnt2d_HeaderFile
 #include <Handle_TColgp_HArray1OfPnt2d.hxx>
-#endif
-#ifndef _Handle_MeshVS_HArray1OfSequenceOfInteger_HeaderFile
 #include <Handle_MeshVS_HArray1OfSequenceOfInteger.hxx>
-#endif
-#ifndef _gp_XY_HeaderFile
 #include <gp_XY.hxx>
-#endif
-#ifndef _Select3D_SensitiveEntity_HeaderFile
 #include <Select3D_SensitiveEntity.hxx>
-#endif
-#ifndef _Handle_SelectBasics_EntityOwner_HeaderFile
 #include <Handle_SelectBasics_EntityOwner.hxx>
-#endif
-#ifndef _Handle_Select3D_Projector_HeaderFile
 #include <Handle_Select3D_Projector.hxx>
-#endif
-#ifndef _Handle_Select3D_SensitiveEntity_HeaderFile
 #include <Handle_Select3D_SensitiveEntity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _SelectBasics_PickArgs_HeaderFile
 #include <SelectBasics_PickArgs.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TColgp_HArray1OfPnt;
 class TColgp_HArray1OfPnt2d;
 class MeshVS_HArray1OfSequenceOfInteger;
@@ -65,26 +37,27 @@ class SelectBasics_ListOfBox2d;
 
 
 
-class MeshVS_SensitivePolyhedron : public Select3D_SensitiveEntity {
+class MeshVS_SensitivePolyhedron : public Select3D_SensitiveEntity
+{
 
 public:
 
   
-  Standard_EXPORT   MeshVS_SensitivePolyhedron(const Handle(SelectBasics_EntityOwner)& Owner,const TColgp_Array1OfPnt& Nodes,const Handle(MeshVS_HArray1OfSequenceOfInteger)& Topo);
+  Standard_EXPORT MeshVS_SensitivePolyhedron(const Handle(SelectBasics_EntityOwner)& Owner, const TColgp_Array1OfPnt& Nodes, const Handle(MeshVS_HArray1OfSequenceOfInteger)& Topo);
   
-  Standard_EXPORT   virtual  void Project(const Handle(Select3D_Projector)& aProjector) ;
+  Standard_EXPORT virtual   void Project (const Handle(Select3D_Projector)& aProjector) ;
   
-  Standard_EXPORT   virtual  Handle_Select3D_SensitiveEntity GetConnected(const TopLoc_Location& aLocation) ;
+  Standard_EXPORT virtual   Handle(Select3D_SensitiveEntity) GetConnected (const TopLoc_Location& aLocation) ;
   
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const SelectBasics_PickArgs& thePickArgs,Standard_Real& theMatchDMin,Standard_Real& theMatchDepth) ;
+  Standard_EXPORT virtual   Standard_Boolean Matches (const SelectBasics_PickArgs& thePickArgs, Standard_Real& theMatchDMin, Standard_Real& theMatchDepth) ;
   
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol) ;
+  Standard_EXPORT virtual   Standard_Boolean Matches (const Standard_Real XMin, const Standard_Real YMin, const Standard_Real XMax, const Standard_Real YMax, const Standard_Real aTol) ;
   
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const TColgp_Array1OfPnt2d& Polyline,const Bnd_Box2d& aBox,const Standard_Real aTol) ;
+  Standard_EXPORT virtual   Standard_Boolean Matches (const TColgp_Array1OfPnt2d& Polyline, const Bnd_Box2d& aBox, const Standard_Real aTol) ;
   
-  Standard_EXPORT   virtual  Standard_Real ComputeDepth(const gp_Lin& EyeLine) const;
+  Standard_EXPORT virtual   Standard_Real ComputeDepth (const gp_Lin& EyeLine)  const;
   
-  Standard_EXPORT   virtual  void Areas(SelectBasics_ListOfBox2d& aResult) ;
+  Standard_EXPORT virtual   void Areas (SelectBasics_ListOfBox2d& aResult) ;
 
 
 
@@ -94,19 +67,19 @@ public:
 protected:
 
   
-  Standard_EXPORT     void GetBox2d(Bnd_Box2d& aBox) const;
+  Standard_EXPORT   void GetBox2d (Bnd_Box2d& aBox)  const;
   
-  Standard_EXPORT     Standard_Real FindIntersection(const TColStd_SequenceOfInteger& NodesIndices,const gp_Lin& EyeLine) const;
+  Standard_EXPORT   Standard_Real FindIntersection (const TColStd_SequenceOfInteger& NodesIndices, const gp_Lin& EyeLine)  const;
 
 
 
 private: 
 
 
-Handle_TColgp_HArray1OfPnt myNodes;
-Handle_TColgp_HArray1OfPnt2d myNodes2d;
-Handle_MeshVS_HArray1OfSequenceOfInteger myTopo;
-gp_XY myCenter;
+  Handle(TColgp_HArray1OfPnt) myNodes;
+  Handle(TColgp_HArray1OfPnt2d) myNodes2d;
+  Handle(MeshVS_HArray1OfSequenceOfInteger) myTopo;
+  gp_XY myCenter;
 
 
 };
@@ -115,7 +88,6 @@ gp_XY myCenter;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MeshVS_SensitivePolyhedron_HeaderFile

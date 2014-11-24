@@ -5,29 +5,17 @@
 
 #include <XCAFPrs_DataMapOfStyleTransient.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _XCAFPrs_Style_HeaderFile
 #include <XCAFPrs_Style.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _XCAFPrs_DataMapNodeOfDataMapOfStyleTransient_HeaderFile
 #include <XCAFPrs_DataMapNodeOfDataMapOfStyleTransient.hxx>
-#endif
-#ifndef _XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient_HeaderFile
 #include <XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient.hxx>
-#endif
  
 
 #define TheKey XCAFPrs_Style
 #define TheKey_hxx <XCAFPrs_Style.hxx>
-#define TheItem Handle_Standard_Transient
+#define TheItem Handle(Standard_Transient)
 #define TheItem_hxx <Standard_Transient.hxx>
 #define Hasher XCAFPrs_Style
 #define Hasher_hxx <XCAFPrs_Style.hxx>

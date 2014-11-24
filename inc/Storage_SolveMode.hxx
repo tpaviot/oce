@@ -6,15 +6,14 @@
 #ifndef _Storage_SolveMode_HeaderFile
 #define _Storage_SolveMode_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Storage_SolveMode {
+
+enum Storage_SolveMode
+{
 Storage_AddSolve,
 Storage_WriteSolve,
 Storage_ReadSolve
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Storage_SolveMode_HeaderFile

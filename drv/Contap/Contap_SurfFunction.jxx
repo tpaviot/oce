@@ -1,24 +1,8 @@
-#ifndef _Adaptor3d_HSurface_HeaderFile
 #include <Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _StdFail_UndefinedDerivative_HeaderFile
 #include <StdFail_UndefinedDerivative.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _gp_Dir2d_HeaderFile
 #include <gp_Dir2d.hxx>
-#endif
-#ifndef _Contap_SurfFunction_HeaderFile
 #include <Contap_SurfFunction.hxx>
-#endif

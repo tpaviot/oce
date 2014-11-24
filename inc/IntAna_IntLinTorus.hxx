@@ -6,28 +6,14 @@
 #ifndef _IntAna_IntLinTorus_HeaderFile
 #define _IntAna_IntLinTorus_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class StdFail_NotDone;
 class Standard_OutOfRange;
 class gp_Lin;
@@ -35,36 +21,38 @@ class gp_Torus;
 class gp_Pnt;
 
 
-//! Intersection between a line and a torus. <br>
-class IntAna_IntLinTorus  {
+//! Intersection between a line and a torus.
+class IntAna_IntLinTorus 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntAna_IntLinTorus();
-  //! Creates the intersection between a line and a torus. <br>
-  Standard_EXPORT   IntAna_IntLinTorus(const gp_Lin& L,const gp_Torus& T);
-  //! Intersects a line and a torus. <br>
-  Standard_EXPORT     void Perform(const gp_Lin& L,const gp_Torus& T) ;
-  //! Returns True if the computation was successful. <br>
-//! <br>
-        Standard_Boolean IsDone() const;
-  //! Returns the number of intersection points. <br>
-//! <br>
-        Standard_Integer NbPoints() const;
-  //! Returns the intersection point of range Index. <br>
-//! <br>
-       const gp_Pnt& Value(const Standard_Integer Index) const;
-  //! Returns the parameter on the line of the intersection <br>
-//!          point of range Index. <br>
-//! <br>
-        Standard_Real ParamOnLine(const Standard_Integer Index) const;
-  //! Returns the parameters on the torus of the intersection <br>
-//!          point of range Index. <br>
-//! <br>
-        void ParamOnTorus(const Standard_Integer Index,Standard_Real& FI,Standard_Real& THETA) const;
-
+  Standard_EXPORT IntAna_IntLinTorus();
+  
+  //! Creates the intersection between a line and a torus.
+  Standard_EXPORT IntAna_IntLinTorus(const gp_Lin& L, const gp_Torus& T);
+  
+  //! Intersects a line and a torus.
+  Standard_EXPORT   void Perform (const gp_Lin& L, const gp_Torus& T) ;
+  
+  //! Returns True if the computation was successful.
+      Standard_Boolean IsDone()  const;
+  
+  //! Returns the number of intersection points.
+      Standard_Integer NbPoints()  const;
+  
+  //! Returns the intersection point of range Index.
+     const  gp_Pnt& Value (const Standard_Integer Index)  const;
+  
+  //! Returns the parameter on the line of the intersection
+  //! point of range Index.
+      Standard_Real ParamOnLine (const Standard_Integer Index)  const;
+  
+  //! Returns the parameters on the torus of the intersection
+  //! point of range Index.
+      void ParamOnTorus (const Standard_Integer Index, Standard_Real& FI, Standard_Real& THETA)  const;
 
 
 
@@ -79,12 +67,12 @@ private:
 
 
 
-Standard_Boolean done;
-Standard_Integer nbpt;
-gp_Pnt thePoint[4];
-Standard_Real theParam[4];
-Standard_Real theFi[4];
-Standard_Real theTheta[4];
+  Standard_Boolean done;
+  Standard_Integer nbpt;
+  gp_Pnt thePoint[4];
+  Standard_Real theParam[4];
+  Standard_Real theFi[4];
+  Standard_Real theTheta[4];
 
 
 };
@@ -94,7 +82,6 @@ Standard_Real theTheta[4];
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntAna_IntLinTorus_HeaderFile

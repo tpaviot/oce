@@ -6,16 +6,15 @@
 #ifndef _Graphic3d_RenderingMode_HeaderFile
 #define _Graphic3d_RenderingMode_HeaderFile
 
-//! Describes rendering modes. <br>
-//! - RM_RASTERIZATION: enables OpenGL rasterization mode; <br>
-//! - RM_RAYTRACING: enables GPU ray-tracing mode. <br>
-enum Graphic3d_RenderingMode {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Describes rendering modes.
+//! - RM_RASTERIZATION: enables OpenGL rasterization mode;
+//! - RM_RAYTRACING: enables GPU ray-tracing mode.
+enum Graphic3d_RenderingMode
+{
 Graphic3d_RM_RASTERIZATION,
 Graphic3d_RM_RAYTRACING
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Graphic3d_RenderingMode_HeaderFile

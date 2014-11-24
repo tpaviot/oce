@@ -6,25 +6,13 @@
 #ifndef _DsgPrs_ParalPresentation_HeaderFile
 #define _DsgPrs_ParalPresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Handle_Prs3d_Drawer_HeaderFile
 #include <Handle_Prs3d_Drawer.hxx>
-#endif
-#ifndef _DsgPrs_ArrowSide_HeaderFile
 #include <DsgPrs_ArrowSide.hxx>
-#endif
 class Prs3d_Presentation;
 class Prs3d_Drawer;
 class TCollection_ExtendedString;
@@ -32,32 +20,34 @@ class gp_Pnt;
 class gp_Dir;
 
 
-//! A framework to define display of relations of parallelism between shapes. <br>
-class DsgPrs_ParalPresentation  {
+//! A framework to define display of relations of parallelism between shapes.
+class DsgPrs_ParalPresentation 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Defines the display of elements showing relations of <br>
-//! parallelism between shapes. <br>
-//! These include the two points of attachment <br>
-//! AttachmentPoint1 and AttachmentPoint1, the <br>
-//! direction aDirection, and the offset point OffsetPoint. <br>
-//! These arguments are added to the presentation <br>
-//! object aPresentation. Their display attributes are <br>
-//! defined by the attribute manager aDrawer. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Prs3d_Drawer)& aDrawer,const TCollection_ExtendedString& aText,const gp_Pnt& AttachmentPoint1,const gp_Pnt& AttachmentPoint2,const gp_Dir& aDirection,const gp_Pnt& OffsetPoint) ;
-  //! Defines the display of elements showing relations of <br>
-//! parallelism between shapes. <br>
-//! These include the two points of attachment <br>
-//! AttachmentPoint1 and AttachmentPoint1, the <br>
-//! direction aDirection, the offset point OffsetPoint and <br>
-//! the text aText. <br>
-//! These arguments are added to the presentation <br>
-//! object aPresentation. Their display attributes are <br>
-//! defined by the attribute manager aDrawer. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Prs3d_Drawer)& aDrawer,const TCollection_ExtendedString& aText,const gp_Pnt& AttachmentPoint1,const gp_Pnt& AttachmentPoint2,const gp_Dir& aDirection,const gp_Pnt& OffsetPoint,const DsgPrs_ArrowSide ArrowSide) ;
-
+  
+  //! Defines the display of elements showing relations of
+  //! parallelism between shapes.
+  //! These include the two points of attachment
+  //! AttachmentPoint1 and AttachmentPoint1, the
+  //! direction aDirection, and the offset point OffsetPoint.
+  //! These arguments are added to the presentation
+  //! object aPresentation. Their display attributes are
+  //! defined by the attribute manager aDrawer.
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Prs3d_Drawer)& aDrawer, const TCollection_ExtendedString& aText, const gp_Pnt& AttachmentPoint1, const gp_Pnt& AttachmentPoint2, const gp_Dir& aDirection, const gp_Pnt& OffsetPoint) ;
+  
+  //! Defines the display of elements showing relations of
+  //! parallelism between shapes.
+  //! These include the two points of attachment
+  //! AttachmentPoint1 and AttachmentPoint1, the
+  //! direction aDirection, the offset point OffsetPoint and
+  //! the text aText.
+  //! These arguments are added to the presentation
+  //! object aPresentation. Their display attributes are
+  //! defined by the attribute manager aDrawer.
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Prs3d_Drawer)& aDrawer, const TCollection_ExtendedString& aText, const gp_Pnt& AttachmentPoint1, const gp_Pnt& AttachmentPoint2, const gp_Dir& aDirection, const gp_Pnt& OffsetPoint, const DsgPrs_ArrowSide ArrowSide) ;
 
 
 
@@ -80,7 +70,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DsgPrs_ParalPresentation_HeaderFile

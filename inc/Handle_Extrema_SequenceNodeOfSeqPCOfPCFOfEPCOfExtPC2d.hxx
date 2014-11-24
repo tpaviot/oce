@@ -6,22 +6,15 @@
 #ifndef _Handle_Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC2d_HeaderFile
 #define _Handle_Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TCollection_SeqNode_HeaderFile
 #include <Handle_TCollection_SeqNode.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TCollection_SeqNode);
 class Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC2d;
 
-DEFINE_STANDARD_HANDLE(Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC2d,TCollection_SeqNode)
+DEFINE_STANDARD_HANDLE(Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC2d, TCollection_SeqNode)
 
-#endif
+#endif // _Handle_Extrema_SequenceNodeOfSeqPCOfPCFOfEPCOfExtPC2d_HeaderFile

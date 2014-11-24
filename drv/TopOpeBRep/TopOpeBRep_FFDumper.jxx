@@ -1,12 +1,4 @@
-#ifndef _TopOpeBRep_LineInter_HeaderFile
 #include <TopOpeBRep_LineInter.hxx>
-#endif
-#ifndef _TopOpeBRep_VPointInter_HeaderFile
 #include <TopOpeBRep_VPointInter.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopOpeBRep_FFDumper_HeaderFile
 #include <TopOpeBRep_FFDumper.hxx>
-#endif

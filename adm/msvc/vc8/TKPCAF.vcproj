@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKPCAF"
-	ProjectGUID="{C33B7B17-0CE4-0D0E-125F-F0073A6A7EA7}"
+	ProjectGUID="{D7FA3F16-0626-04ED-038D-EE7398E70853}"
 	>
 	<Platforms>
 		<Platform
@@ -63,6 +63,7 @@
 				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
+				EnableEnhancedInstructionSet="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -163,6 +164,7 @@
 				DebugInformationFormat="3"
 				CompileAs="0"
 				DisableSpecificWarnings="4996"
+				EnableEnhancedInstructionSet="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -187,6 +189,7 @@
 				ProgramDatabaseFile="..\..\..\win32\vc8\bind\TKPCAF.pdb"
 				SubSystem="2"
 				ImportLibrary="..\..\..\win32\vc8\libd\TKPCAF.lib"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -248,7 +251,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\PDataXtd;..\..\..\src\PDataXtd;..\..\..\drv\PNaming;..\..\..\src\PNaming;..\..\..\drv\PPrsStd;..\..\..\src\PPrsStd;..\..\..\drv\MDataXtd;..\..\..\src\MDataXtd;..\..\..\drv\MPrsStd;..\..\..\src\MPrsStd;..\..\..\drv\MNaming;..\..\..\src\MNaming;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PDataXtd_DLL;__PNaming_DLL;__PPrsStd_DLL;__MDataXtd_DLL;__MPrsStd_DLL;__MNaming_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PDataXtd_DLL;__PNaming_DLL;__PPrsStd_DLL;__MDataXtd_DLL;__MPrsStd_DLL;__MNaming_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +271,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PDataXtd_DLL;__PNaming_DLL;__PPrsStd_DLL;__MDataXtd_DLL;__MPrsStd_DLL;__MNaming_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PDataXtd_DLL;__PNaming_DLL;__PPrsStd_DLL;__MDataXtd_DLL;__MPrsStd_DLL;__MNaming_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -276,7 +279,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL PTKernel.lib TKBRep.lib TKMath.lib TKernel.lib TKCDF.lib TKG2d.lib TKV3d.lib TKService.lib TKG3d.lib TKPShape.lib TKCAF.lib TKLCAF.lib TKPLCAF.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="PTKernel.lib TKBRep.lib TKMath.lib TKernel.lib TKCDF.lib TKG2d.lib TKV3d.lib TKService.lib TKG3d.lib TKPShape.lib TKCAF.lib TKLCAF.lib TKPLCAF.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bin\TKPCAF.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -284,7 +287,7 @@
 				ProgramDatabaseFile=".\..\..\..\win64\vc8\bin\TKPCAF.pdb"
 				SubSystem="2"
 				ImportLibrary="..\..\..\win64\vc8\lib\TKPCAF.lib"
-				TargetMachine="X64"
+				TargetMachine="17"
 			/>
 			<Tool
  				Name="VCALinkTool"
@@ -347,7 +350,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\PDataXtd;..\..\..\src\PDataXtd;..\..\..\drv\PNaming;..\..\..\src\PNaming;..\..\..\drv\PPrsStd;..\..\..\src\PPrsStd;..\..\..\drv\MDataXtd;..\..\..\src\MDataXtd;..\..\..\drv\MPrsStd;..\..\..\src\MPrsStd;..\..\..\drv\MNaming;..\..\..\src\MNaming;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PDataXtd_DLL;__PNaming_DLL;__PPrsStd_DLL;__MDataXtd_DLL;__MPrsStd_DLL;__MNaming_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PDataXtd_DLL;__PNaming_DLL;__PPrsStd_DLL;__MDataXtd_DLL;__MPrsStd_DLL;__MNaming_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -369,7 +372,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PDataXtd_DLL;__PNaming_DLL;__PPrsStd_DLL;__MDataXtd_DLL;__MPrsStd_DLL;__MNaming_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PDataXtd_DLL;__PNaming_DLL;__PPrsStd_DLL;__MDataXtd_DLL;__MPrsStd_DLL;__MNaming_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -377,7 +380,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL PTKernel.lib TKBRep.lib TKMath.lib TKernel.lib TKCDF.lib TKG2d.lib TKV3d.lib TKService.lib TKG3d.lib TKPShape.lib TKCAF.lib TKLCAF.lib TKPLCAF.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="PTKernel.lib TKBRep.lib TKMath.lib TKernel.lib TKCDF.lib TKG2d.lib TKV3d.lib TKService.lib TKG3d.lib TKPShape.lib TKCAF.lib TKLCAF.lib TKPLCAF.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bind\TKPCAF.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -386,7 +389,7 @@
 				ProgramDatabaseFile="..\..\..\win64\vc8\bind\TKPCAF.pdb"
 				SubSystem="2"
 				ImportLibrary="..\..\..\win64\vc8\libd\TKPCAF.lib"
-				TargetMachine="X64"
+				TargetMachine="17"
 			/>
 			<Tool
 				Name="VCALinkTool"

@@ -6,36 +6,27 @@
 #ifndef _PGeom_Vector_HeaderFile
 #define _PGeom_Vector_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom_Vector_HeaderFile
 #include <Handle_PGeom_Vector.hxx>
-#endif
 
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _PGeom_Geometry_HeaderFile
 #include <PGeom_Geometry.hxx>
-#endif
 class gp_Vec;
 
 
-class PGeom_Vector : public PGeom_Geometry {
+class PGeom_Vector : public PGeom_Geometry
+{
 
 public:
 
-  //! Set the field vec. <br>
-  Standard_EXPORT     void Vec(const gp_Vec& aVec) ;
-  //! Returns the value of the field vec. <br>
-  Standard_EXPORT     gp_Vec Vec() const;
+  
+  //! Set the field vec.
+  Standard_EXPORT   void Vec (const gp_Vec& aVec) ;
+  
+  //! Returns the value of the field vec.
+  Standard_EXPORT   gp_Vec Vec()  const;
 
 PGeom_Vector(const Storage_stCONSTclCOM& a) : PGeom_Geometry(a)
 {
@@ -49,12 +40,14 @@ PGeom_Vector(const Storage_stCONSTclCOM& a) : PGeom_Geometry(a)
 
 protected:
 
-  //! Initializes the field(s) with default value(s). <br>
-  Standard_EXPORT   PGeom_Vector();
-  //! Initializes the field vec with <aVec>. <br>
-  Standard_EXPORT   PGeom_Vector(const gp_Vec& aVec);
+  
+  //! Initializes the field(s) with default value(s).
+  Standard_EXPORT PGeom_Vector();
+  
+  //! Initializes the field vec with <aVec>.
+  Standard_EXPORT PGeom_Vector(const gp_Vec& aVec);
 
-gp_Vec vec;
+  gp_Vec vec;
 
 
 private: 
@@ -68,7 +61,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom_Vector_HeaderFile

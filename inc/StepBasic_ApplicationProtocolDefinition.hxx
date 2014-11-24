@@ -6,57 +6,45 @@
 #ifndef _StepBasic_ApplicationProtocolDefinition_HeaderFile
 #define _StepBasic_ApplicationProtocolDefinition_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_ApplicationProtocolDefinition_HeaderFile
 #include <Handle_StepBasic_ApplicationProtocolDefinition.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_StepBasic_ApplicationContext_HeaderFile
 #include <Handle_StepBasic_ApplicationContext.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepBasic_ApplicationContext;
 
 
 
-class StepBasic_ApplicationProtocolDefinition : public MMgt_TShared {
+class StepBasic_ApplicationProtocolDefinition : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a ApplicationProtocolDefinition <br>
-  Standard_EXPORT   StepBasic_ApplicationProtocolDefinition();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aStatus,const Handle(TCollection_HAsciiString)& aApplicationInterpretedModelSchemaName,const Standard_Integer aApplicationProtocolYear,const Handle(StepBasic_ApplicationContext)& aApplication) ;
+  //! Returns a ApplicationProtocolDefinition
+  Standard_EXPORT StepBasic_ApplicationProtocolDefinition();
   
-  Standard_EXPORT     void SetStatus(const Handle(TCollection_HAsciiString)& aStatus) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aStatus, const Handle(TCollection_HAsciiString)& aApplicationInterpretedModelSchemaName, const Standard_Integer aApplicationProtocolYear, const Handle(StepBasic_ApplicationContext)& aApplication) ;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString Status() const;
+  Standard_EXPORT   void SetStatus (const Handle(TCollection_HAsciiString)& aStatus) ;
   
-  Standard_EXPORT     void SetApplicationInterpretedModelSchemaName(const Handle(TCollection_HAsciiString)& aApplicationInterpretedModelSchemaName) ;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Status()  const;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString ApplicationInterpretedModelSchemaName() const;
+  Standard_EXPORT   void SetApplicationInterpretedModelSchemaName (const Handle(TCollection_HAsciiString)& aApplicationInterpretedModelSchemaName) ;
   
-  Standard_EXPORT     void SetApplicationProtocolYear(const Standard_Integer aApplicationProtocolYear) ;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) ApplicationInterpretedModelSchemaName()  const;
   
-  Standard_EXPORT     Standard_Integer ApplicationProtocolYear() const;
+  Standard_EXPORT   void SetApplicationProtocolYear (const Standard_Integer aApplicationProtocolYear) ;
   
-  Standard_EXPORT     void SetApplication(const Handle(StepBasic_ApplicationContext)& aApplication) ;
+  Standard_EXPORT   Standard_Integer ApplicationProtocolYear()  const;
   
-  Standard_EXPORT     Handle_StepBasic_ApplicationContext Application() const;
+  Standard_EXPORT   void SetApplication (const Handle(StepBasic_ApplicationContext)& aApplication) ;
+  
+  Standard_EXPORT   Handle(StepBasic_ApplicationContext) Application()  const;
 
 
 
@@ -71,10 +59,10 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString status;
-Handle_TCollection_HAsciiString applicationInterpretedModelSchemaName;
-Standard_Integer applicationProtocolYear;
-Handle_StepBasic_ApplicationContext application;
+  Handle(TCollection_HAsciiString) status;
+  Handle(TCollection_HAsciiString) applicationInterpretedModelSchemaName;
+  Standard_Integer applicationProtocolYear;
+  Handle(StepBasic_ApplicationContext) application;
 
 
 };
@@ -83,7 +71,6 @@ Handle_StepBasic_ApplicationContext application;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_ApplicationProtocolDefinition_HeaderFile

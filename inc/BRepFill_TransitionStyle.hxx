@@ -6,15 +6,14 @@
 #ifndef _BRepFill_TransitionStyle_HeaderFile
 #define _BRepFill_TransitionStyle_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum BRepFill_TransitionStyle {
+
+enum BRepFill_TransitionStyle
+{
 BRepFill_Modified,
 BRepFill_Right,
 BRepFill_Round
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BRepFill_TransitionStyle_HeaderFile

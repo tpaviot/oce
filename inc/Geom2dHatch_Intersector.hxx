@@ -6,64 +6,63 @@
 #ifndef _Geom2dHatch_Intersector_HeaderFile
 #define _Geom2dHatch_Intersector_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Geom2dInt_GInter_HeaderFile
 #include <Geom2dInt_GInter.hxx>
-#endif
 class Geom2dAdaptor_Curve;
 class gp_Lin2d;
 class gp_Dir2d;
 
 
 
-class Geom2dHatch_Intersector  : public Geom2dInt_GInter {
+class Geom2dHatch_Intersector  : public Geom2dInt_GInter
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an intersector. <br>
-      Geom2dHatch_Intersector(const Standard_Real Confusion,const Standard_Real Tangency);
-  //! Returns the confusion tolerance of the <br>
-//!          intersector. <br>
-        Standard_Real ConfusionTolerance() const;
-  //! Sets the confusion tolerance of the intersector. <br>
-        void SetConfusionTolerance(const Standard_Real Confusion) ;
-  //! Returns the tangency tolerance of the <br>
-//!          intersector. <br>
-        Standard_Real TangencyTolerance() const;
-  //! Sets the tangency tolerance of the intersector. <br>
-        void SetTangencyTolerance(const Standard_Real Tangency) ;
-  //! Intersects the curves C1 and C2. <br>
-//!          The results are retreived by the usual methods <br>
-//!          described in IntRes2d_Intersection. <br>//! Creates an intersector. <br>
-        void Intersect(const Geom2dAdaptor_Curve& C1,const Geom2dAdaptor_Curve& C2) ;
   
-  Standard_EXPORT   Geom2dHatch_Intersector();
-  //! Performs the intersection   between the  2d   line <br>
-//!          segment (<L>, <P>) and  the  Curve <E>.  The  line <br>
-//!          segment  is the  part  of  the  2d   line   <L> of <br>
-//!          parameter range [0, <P>] (P is positive and can be <br>
-//!          RealLast()). Tol is the  Tolerance on the segment. <br>
-//!          The order  is relevant, the  first argument is the <br>
-//!          segment, the second the Edge. <br>
-  Standard_EXPORT     void Perform(const gp_Lin2d& L,const Standard_Real P,const Standard_Real Tol,const Geom2dAdaptor_Curve& E) ;
-  //! Returns in <T>,  <N> and <C>  the tangent,  normal <br>
-//!          and  curvature of the edge  <E> at parameter value <br>
-//!          <U>. <br>
-  Standard_EXPORT     void LocalGeometry(const Geom2dAdaptor_Curve& E,const Standard_Real U,gp_Dir2d& T,gp_Dir2d& N,Standard_Real& C) const;
-
+  //! Creates an intersector.
+    Geom2dHatch_Intersector(const Standard_Real Confusion, const Standard_Real Tangency);
+  
+  //! Returns the confusion tolerance of the
+  //! intersector.
+      Standard_Real ConfusionTolerance()  const;
+  
+  //! Sets the confusion tolerance of the intersector.
+      void SetConfusionTolerance (const Standard_Real Confusion) ;
+  
+  //! Returns the tangency tolerance of the
+  //! intersector.
+      Standard_Real TangencyTolerance()  const;
+  
+  //! Sets the tangency tolerance of the intersector.
+      void SetTangencyTolerance (const Standard_Real Tangency) ;
+  
+  //! Intersects the curves C1 and C2.
+  //! The results are retreived by the usual methods
+  //! described in IntRes2d_Intersection.
+  //! Creates an intersector.
+      void Intersect (const Geom2dAdaptor_Curve& C1, const Geom2dAdaptor_Curve& C2) ;
+  
+  Standard_EXPORT Geom2dHatch_Intersector();
+  
+  //! Performs the intersection   between the  2d   line
+  //! segment (<L>, <P>) and  the  Curve <E>.  The  line
+  //! segment  is the  part  of  the  2d   line   <L> of
+  //! parameter range [0, <P>] (P is positive and can be
+  //! RealLast()). Tol is the  Tolerance on the segment.
+  //! The order  is relevant, the  first argument is the
+  //! segment, the second the Edge.
+  Standard_EXPORT   void Perform (const gp_Lin2d& L, const Standard_Real P, const Standard_Real Tol, const Geom2dAdaptor_Curve& E) ;
+  
+  //! Returns in <T>,  <N> and <C>  the tangent,  normal
+  //! and  curvature of the edge  <E> at parameter value
+  //! <U>.
+  Standard_EXPORT   void LocalGeometry (const Geom2dAdaptor_Curve& E, const Standard_Real U, gp_Dir2d& T, gp_Dir2d& N, Standard_Real& C)  const;
 
 
 
@@ -78,8 +77,8 @@ private:
 
 
 
-Standard_Real myConfusionTolerance;
-Standard_Real myTangencyTolerance;
+  Standard_Real myConfusionTolerance;
+  Standard_Real myTangencyTolerance;
 
 
 };
@@ -89,7 +88,6 @@ Standard_Real myTangencyTolerance;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dHatch_Intersector_HeaderFile

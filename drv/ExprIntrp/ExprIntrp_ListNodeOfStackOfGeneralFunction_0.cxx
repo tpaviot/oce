@@ -5,19 +5,11 @@
 
 #include <ExprIntrp_ListNodeOfStackOfGeneralFunction.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Expr_GeneralFunction_HeaderFile
 #include <Expr_GeneralFunction.hxx>
-#endif
-#ifndef _ExprIntrp_StackOfGeneralFunction_HeaderFile
 #include <ExprIntrp_StackOfGeneralFunction.hxx>
-#endif
-#ifndef _ExprIntrp_ListIteratorOfStackOfGeneralFunction_HeaderFile
 #include <ExprIntrp_ListIteratorOfStackOfGeneralFunction.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(ExprIntrp_ListNodeOfStackOfGeneralFunction,Standard_Transient
 IMPLEMENT_STANDARD_RTTI(ExprIntrp_ListNodeOfStackOfGeneralFunction)
 
 
-#define Item Handle_Expr_GeneralFunction
+#define Item Handle(Expr_GeneralFunction)
 #define Item_hxx <Expr_GeneralFunction.hxx>
 #define TCollection_ListNode ExprIntrp_ListNodeOfStackOfGeneralFunction
 #define TCollection_ListNode_hxx <ExprIntrp_ListNodeOfStackOfGeneralFunction.hxx>

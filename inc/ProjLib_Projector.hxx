@@ -6,46 +6,20 @@
 #ifndef _ProjLib_Projector_HeaderFile
 #define _ProjLib_Projector_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _GeomAbs_CurveType_HeaderFile
 #include <GeomAbs_CurveType.hxx>
-#endif
-#ifndef _gp_Lin2d_HeaderFile
 #include <gp_Lin2d.hxx>
-#endif
-#ifndef _gp_Circ2d_HeaderFile
 #include <gp_Circ2d.hxx>
-#endif
-#ifndef _gp_Elips2d_HeaderFile
 #include <gp_Elips2d.hxx>
-#endif
-#ifndef _gp_Hypr2d_HeaderFile
 #include <gp_Hypr2d.hxx>
-#endif
-#ifndef _gp_Parab2d_HeaderFile
 #include <gp_Parab2d.hxx>
-#endif
-#ifndef _Handle_Geom2d_BSplineCurve_HeaderFile
 #include <Handle_Geom2d_BSplineCurve.hxx>
-#endif
-#ifndef _Handle_Geom2d_BezierCurve_HeaderFile
 #include <Handle_Geom2d_BezierCurve.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Geom2d_BSplineCurve;
 class Geom2d_BezierCurve;
 class Standard_NoSuchObject;
@@ -62,66 +36,70 @@ class gp_Parab;
 class gp_Hypr;
 
 
-//! Root class for projection algorithms, stores the result. <br>
-class ProjLib_Projector  {
+//! Root class for projection algorithms, stores the result.
+class ProjLib_Projector 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Sets the type to OtherCurve <br>
-  Standard_EXPORT   ProjLib_Projector();
   
-  Standard_EXPORT   virtual  void Delete() ;
+  //! Sets the type to OtherCurve
+  Standard_EXPORT ProjLib_Projector();
+  
+  Standard_EXPORT virtual   void Delete() ;
 Standard_EXPORT virtual ~ProjLib_Projector(){Delete() ; }
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-  //! Set isDone = Standard_True; <br>
-  Standard_EXPORT     void Done() ;
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
   
-  Standard_EXPORT     GeomAbs_CurveType GetType() const;
+  //! Set isDone = Standard_True;
+  Standard_EXPORT   void Done() ;
   
-  Standard_EXPORT     void SetBSpline(const Handle(Geom2d_BSplineCurve)& C) ;
+  Standard_EXPORT   GeomAbs_CurveType GetType()  const;
   
-  Standard_EXPORT     void SetBezier(const Handle(Geom2d_BezierCurve)& C) ;
+  Standard_EXPORT   void SetBSpline (const Handle(Geom2d_BSplineCurve)& C) ;
   
-  Standard_EXPORT     void SetType(const GeomAbs_CurveType Type) ;
+  Standard_EXPORT   void SetBezier (const Handle(Geom2d_BezierCurve)& C) ;
   
-  Standard_EXPORT     Standard_Boolean IsPeriodic() const;
+  Standard_EXPORT   void SetType (const GeomAbs_CurveType Type) ;
   
-  Standard_EXPORT     void SetPeriodic() ;
+  Standard_EXPORT   Standard_Boolean IsPeriodic()  const;
   
-  Standard_EXPORT    const gp_Lin2d& Line() const;
+  Standard_EXPORT   void SetPeriodic() ;
   
-  Standard_EXPORT    const gp_Circ2d& Circle() const;
+  Standard_EXPORT  const  gp_Lin2d& Line()  const;
   
-  Standard_EXPORT    const gp_Elips2d& Ellipse() const;
+  Standard_EXPORT  const  gp_Circ2d& Circle()  const;
   
-  Standard_EXPORT    const gp_Hypr2d& Hyperbola() const;
+  Standard_EXPORT  const  gp_Elips2d& Ellipse()  const;
   
-  Standard_EXPORT    const gp_Parab2d& Parabola() const;
+  Standard_EXPORT  const  gp_Hypr2d& Hyperbola()  const;
   
-  Standard_EXPORT     Handle_Geom2d_BezierCurve Bezier() const;
+  Standard_EXPORT  const  gp_Parab2d& Parabola()  const;
   
-  Standard_EXPORT     Handle_Geom2d_BSplineCurve BSpline() const;
+  Standard_EXPORT   Handle(Geom2d_BezierCurve) Bezier()  const;
   
-  Standard_EXPORT   virtual  void Project(const gp_Lin& L) ;
+  Standard_EXPORT   Handle(Geom2d_BSplineCurve) BSpline()  const;
   
-  Standard_EXPORT   virtual  void Project(const gp_Circ& C) ;
+  Standard_EXPORT virtual   void Project (const gp_Lin& L) ;
   
-  Standard_EXPORT   virtual  void Project(const gp_Elips& E) ;
+  Standard_EXPORT virtual   void Project (const gp_Circ& C) ;
   
-  Standard_EXPORT   virtual  void Project(const gp_Parab& P) ;
+  Standard_EXPORT virtual   void Project (const gp_Elips& E) ;
   
-  Standard_EXPORT   virtual  void Project(const gp_Hypr& H) ;
-  //! Translates the 2d curve <br>
-//!          to set the part of the curve [CFirst, CLast] <br>
-//!          in the range [ UFirst, UFirst + Period [ <br>
-  Standard_EXPORT     void UFrame(const Standard_Real CFirst,const Standard_Real CLast,const Standard_Real UFirst,const Standard_Real Period) ;
-  //! Translates the 2d curve <br>
-//!          to set the part of the curve [CFirst, CLast] <br>
-//!          in the range [ VFirst, VFirst + Period [ <br>
-  Standard_EXPORT     void VFrame(const Standard_Real CFirst,const Standard_Real CLast,const Standard_Real VFirst,const Standard_Real Period) ;
-
+  Standard_EXPORT virtual   void Project (const gp_Parab& P) ;
+  
+  Standard_EXPORT virtual   void Project (const gp_Hypr& H) ;
+  
+  //! Translates the 2d curve
+  //! to set the part of the curve [CFirst, CLast]
+  //! in the range [ UFirst, UFirst + Period [
+  Standard_EXPORT   void UFrame (const Standard_Real CFirst, const Standard_Real CLast, const Standard_Real UFirst, const Standard_Real Period) ;
+  
+  //! Translates the 2d curve
+  //! to set the part of the curve [CFirst, CLast]
+  //! in the range [ VFirst, VFirst + Period [
+  Standard_EXPORT   void VFrame (const Standard_Real CFirst, const Standard_Real CLast, const Standard_Real VFirst, const Standard_Real Period) ;
 
 
 
@@ -130,16 +108,16 @@ protected:
 
 
 
-GeomAbs_CurveType myType;
-gp_Lin2d myLin;
-gp_Circ2d myCirc;
-gp_Elips2d myElips;
-gp_Hypr2d myHypr;
-gp_Parab2d myParab;
-Handle_Geom2d_BSplineCurve myBSpline;
-Handle_Geom2d_BezierCurve myBezier;
-Standard_Boolean myIsPeriodic;
-Standard_Boolean isDone;
+  GeomAbs_CurveType myType;
+  gp_Lin2d myLin;
+  gp_Circ2d myCirc;
+  gp_Elips2d myElips;
+  gp_Hypr2d myHypr;
+  gp_Parab2d myParab;
+  Handle(Geom2d_BSplineCurve) myBSpline;
+  Handle(Geom2d_BezierCurve) myBezier;
+  Standard_Boolean myIsPeriodic;
+  Standard_Boolean isDone;
 
 
 private:
@@ -154,7 +132,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ProjLib_Projector_HeaderFile

@@ -6,40 +6,18 @@
 #ifndef _XSDRAW_Vars_HeaderFile
 #define _XSDRAW_Vars_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_XSDRAW_Vars_HeaderFile
 #include <Handle_XSDRAW_Vars.hxx>
-#endif
 
-#ifndef _XSControl_Vars_HeaderFile
 #include <XSControl_Vars.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Geom_Geometry_HeaderFile
 #include <Handle_Geom_Geometry.hxx>
-#endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_Transient;
 class Geom_Geometry;
 class Geom2d_Curve;
@@ -50,35 +28,36 @@ class gp_Pnt2d;
 class TopoDS_Shape;
 
 
-//! Vars for DRAW session (i.e. DBRep and DrawTrSurf) <br>
-class XSDRAW_Vars : public XSControl_Vars {
+//! Vars for DRAW session (i.e. DBRep and DrawTrSurf)
+class XSDRAW_Vars : public XSControl_Vars
+{
 
 public:
 
   
-  Standard_EXPORT   XSDRAW_Vars();
+  Standard_EXPORT XSDRAW_Vars();
   
-  Standard_EXPORT   virtual  void Set(const Standard_CString name,const Handle(Standard_Transient)& val) ;
+  Standard_EXPORT virtual   void Set (const Standard_CString name, const Handle(Standard_Transient)& val) ;
   
-  Standard_EXPORT   virtual  Handle_Geom_Geometry GetGeom(Standard_CString& name) const;
+  Standard_EXPORT virtual   Handle(Geom_Geometry) GetGeom (Standard_CString& name)  const;
   
-  Standard_EXPORT   virtual  Handle_Geom2d_Curve GetCurve2d(Standard_CString& name) const;
+  Standard_EXPORT virtual   Handle(Geom2d_Curve) GetCurve2d (Standard_CString& name)  const;
   
-  Standard_EXPORT   virtual  Handle_Geom_Curve GetCurve(Standard_CString& name) const;
+  Standard_EXPORT virtual   Handle(Geom_Curve) GetCurve (Standard_CString& name)  const;
   
-  Standard_EXPORT   virtual  Handle_Geom_Surface GetSurface(Standard_CString& name) const;
+  Standard_EXPORT virtual   Handle(Geom_Surface) GetSurface (Standard_CString& name)  const;
   
-  Standard_EXPORT   virtual  void SetPoint(const Standard_CString name,const gp_Pnt& val) ;
+  Standard_EXPORT virtual   void SetPoint (const Standard_CString name, const gp_Pnt& val) ;
   
-  Standard_EXPORT   virtual  void SetPoint2d(const Standard_CString name,const gp_Pnt2d& val) ;
+  Standard_EXPORT virtual   void SetPoint2d (const Standard_CString name, const gp_Pnt2d& val) ;
   
-  Standard_EXPORT   virtual  Standard_Boolean GetPoint(Standard_CString& name,gp_Pnt& pnt) const;
+  Standard_EXPORT virtual   Standard_Boolean GetPoint (Standard_CString& name, gp_Pnt& pnt)  const;
   
-  Standard_EXPORT   virtual  Standard_Boolean GetPoint2d(Standard_CString& name,gp_Pnt2d& pnt) const;
+  Standard_EXPORT virtual   Standard_Boolean GetPoint2d (Standard_CString& name, gp_Pnt2d& pnt)  const;
   
-  Standard_EXPORT   virtual  void SetShape(const Standard_CString name,const TopoDS_Shape& val) ;
+  Standard_EXPORT virtual   void SetShape (const Standard_CString name, const TopoDS_Shape& val) ;
   
-  Standard_EXPORT   virtual  TopoDS_Shape GetShape(Standard_CString& name) const;
+  Standard_EXPORT virtual   TopoDS_Shape GetShape (Standard_CString& name)  const;
 
 
 
@@ -101,7 +80,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XSDRAW_Vars_HeaderFile

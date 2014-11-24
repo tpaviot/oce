@@ -6,13 +6,16 @@
 #ifndef _Aspect_TypeOfFont_HeaderFile
 #define _Aspect_TypeOfFont_HeaderFile
 
-//! Definition of line types <br>
-//! <br>
-//!          TOF_DEFAULT         Default system font <br>
-//!          TOF_COURIER <br>
-//!          TOF_HELVETICA <br>
-//!          TOF_USERDEFINED     defined by Users <br>
-enum Aspect_TypeOfFont {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Definition of line types
+//!
+//! TOF_DEFAULT         Default system font
+//! TOF_COURIER
+//! TOF_HELVETICA
+//! TOF_USERDEFINED     defined by Users
+enum Aspect_TypeOfFont
+{
 Aspect_TOF_DEFAULT,
 Aspect_TOF_COURIER,
 Aspect_TOF_HELVETICA,
@@ -20,8 +23,4 @@ Aspect_TOF_TIMES,
 Aspect_TOF_USERDEFINED
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_TypeOfFont_HeaderFile

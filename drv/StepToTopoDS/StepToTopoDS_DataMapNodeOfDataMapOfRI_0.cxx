@@ -5,25 +5,13 @@
 
 #include <StepToTopoDS_DataMapNodeOfDataMapOfRI.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _StepRepr_RepresentationItem_HeaderFile
 #include <StepRepr_RepresentationItem.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _StepToTopoDS_DataMapOfRI_HeaderFile
 #include <StepToTopoDS_DataMapOfRI.hxx>
-#endif
-#ifndef _StepToTopoDS_DataMapIteratorOfDataMapOfRI_HeaderFile
 #include <StepToTopoDS_DataMapIteratorOfDataMapOfRI.hxx>
-#endif
 
  
 
@@ -42,7 +30,7 @@ IMPLEMENT_DOWNCAST(StepToTopoDS_DataMapNodeOfDataMapOfRI,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(StepToTopoDS_DataMapNodeOfDataMapOfRI)
 
 
-#define TheKey Handle_StepRepr_RepresentationItem
+#define TheKey Handle(StepRepr_RepresentationItem)
 #define TheKey_hxx <StepRepr_RepresentationItem.hxx>
 #define TheItem TopoDS_Shape
 #define TheItem_hxx <TopoDS_Shape.hxx>

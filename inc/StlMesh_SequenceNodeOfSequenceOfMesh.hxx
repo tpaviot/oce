@@ -6,38 +6,27 @@
 #ifndef _StlMesh_SequenceNodeOfSequenceOfMesh_HeaderFile
 #define _StlMesh_SequenceNodeOfSequenceOfMesh_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StlMesh_SequenceNodeOfSequenceOfMesh_HeaderFile
 #include <Handle_StlMesh_SequenceNodeOfSequenceOfMesh.hxx>
-#endif
 
-#ifndef _Handle_StlMesh_Mesh_HeaderFile
 #include <Handle_StlMesh_Mesh.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class StlMesh_Mesh;
 class StlMesh_SequenceOfMesh;
 
 
 
-class StlMesh_SequenceNodeOfSequenceOfMesh : public TCollection_SeqNode {
+class StlMesh_SequenceNodeOfSequenceOfMesh : public TCollection_SeqNode
+{
 
 public:
 
   
-      StlMesh_SequenceNodeOfSequenceOfMesh(const Handle(StlMesh_Mesh)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    StlMesh_SequenceNodeOfSequenceOfMesh(const Handle(StlMesh_Mesh)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_StlMesh_Mesh& Value() const;
+      Handle(StlMesh_Mesh)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_StlMesh_Mesh myValue;
+  Handle(StlMesh_Mesh) myValue;
 
 
 };
 
-#define SeqItem Handle_StlMesh_Mesh
+#define SeqItem Handle(StlMesh_Mesh)
 #define SeqItem_hxx <StlMesh_Mesh.hxx>
 #define TCollection_SequenceNode StlMesh_SequenceNodeOfSequenceOfMesh
 #define TCollection_SequenceNode_hxx <StlMesh_SequenceNodeOfSequenceOfMesh.hxx>
@@ -78,7 +67,6 @@ Handle_StlMesh_Mesh myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StlMesh_SequenceNodeOfSequenceOfMesh_HeaderFile

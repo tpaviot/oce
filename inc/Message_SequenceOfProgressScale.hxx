@@ -6,25 +6,13 @@
 #ifndef _Message_SequenceOfProgressScale_HeaderFile
 #define _Message_SequenceOfProgressScale_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_Message_SequenceNodeOfSequenceOfProgressScale_HeaderFile
 #include <Handle_Message_SequenceNodeOfSequenceOfProgressScale.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Message_ProgressScale;
@@ -32,68 +20,68 @@ class Message_SequenceNodeOfSequenceOfProgressScale;
 
 
 
-class Message_SequenceOfProgressScale  : public TCollection_BaseSequence {
+class Message_SequenceOfProgressScale  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Message_SequenceOfProgressScale();
+    Message_SequenceOfProgressScale();
   
-  Standard_EXPORT   Message_SequenceOfProgressScale(const Message_SequenceOfProgressScale& Other);
+  Standard_EXPORT Message_SequenceOfProgressScale(const Message_SequenceOfProgressScale& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~Message_SequenceOfProgressScale()
 {
   Clear();
 }
   
-  Standard_EXPORT    const Message_SequenceOfProgressScale& Assign(const Message_SequenceOfProgressScale& Other) ;
-   const Message_SequenceOfProgressScale& operator =(const Message_SequenceOfProgressScale& Other) 
+  Standard_EXPORT  const  Message_SequenceOfProgressScale& Assign (const Message_SequenceOfProgressScale& Other) ;
+ const  Message_SequenceOfProgressScale& operator = (const Message_SequenceOfProgressScale& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Message_ProgressScale& T) ;
+  Standard_EXPORT   void Append (const Message_ProgressScale& T) ;
   
-        void Append(Message_SequenceOfProgressScale& S) ;
+      void Append (Message_SequenceOfProgressScale& S) ;
   
-  Standard_EXPORT     void Prepend(const Message_ProgressScale& T) ;
+  Standard_EXPORT   void Prepend (const Message_ProgressScale& T) ;
   
-        void Prepend(Message_SequenceOfProgressScale& S) ;
+      void Prepend (Message_SequenceOfProgressScale& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Message_ProgressScale& T) ;
+      void InsertBefore (const Standard_Integer Index, const Message_ProgressScale& T) ;
   
-        void InsertBefore(const Standard_Integer Index,Message_SequenceOfProgressScale& S) ;
+      void InsertBefore (const Standard_Integer Index, Message_SequenceOfProgressScale& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Message_ProgressScale& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Message_ProgressScale& T) ;
   
-        void InsertAfter(const Standard_Integer Index,Message_SequenceOfProgressScale& S) ;
+      void InsertAfter (const Standard_Integer Index, Message_SequenceOfProgressScale& S) ;
   
-  Standard_EXPORT    const Message_ProgressScale& First() const;
+  Standard_EXPORT  const  Message_ProgressScale& First()  const;
   
-  Standard_EXPORT    const Message_ProgressScale& Last() const;
+  Standard_EXPORT  const  Message_ProgressScale& Last()  const;
   
-        void Split(const Standard_Integer Index,Message_SequenceOfProgressScale& Sub) ;
+      void Split (const Standard_Integer Index, Message_SequenceOfProgressScale& Sub) ;
   
-  Standard_EXPORT    const Message_ProgressScale& Value(const Standard_Integer Index) const;
-   const Message_ProgressScale& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Message_ProgressScale& Value (const Standard_Integer Index)  const;
+ const  Message_ProgressScale& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Message_ProgressScale& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Message_ProgressScale& I) ;
   
-  Standard_EXPORT     Message_ProgressScale& ChangeValue(const Standard_Integer Index) ;
-    Message_ProgressScale& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Message_ProgressScale& ChangeValue (const Standard_Integer Index) ;
+  Message_ProgressScale& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Message_SequenceOfProgressScale_HeaderFile

@@ -6,44 +6,31 @@
 #ifndef _MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors_HeaderFile
 #define _MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors_HeaderFile
 #include <Handle_MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _MeshVS_TwoColors_HeaderFile
 #include <MeshVS_TwoColors.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TColStd_MapIntegerHasher;
 class MeshVS_DataMapOfIntegerTwoColors;
 class MeshVS_DataMapIteratorOfDataMapOfIntegerTwoColors;
 
 
 
-class MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors : public TCollection_MapNode {
+class MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors : public TCollection_MapNode
+{
 
 public:
 
   
-      MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors(const Standard_Integer& K,const MeshVS_TwoColors& I,const TCollection_MapNodePtr& n);
+    MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors(const Standard_Integer& K, const MeshVS_TwoColors& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Key() const;
+      Standard_Integer& Key()  const;
   
-        MeshVS_TwoColors& Value() const;
+      MeshVS_TwoColors& Value()  const;
 
 
 
@@ -58,8 +45,8 @@ protected:
 private: 
 
 
-Standard_Integer myKey;
-MeshVS_TwoColors myValue;
+  Standard_Integer myKey;
+  MeshVS_TwoColors myValue;
 
 
 };
@@ -97,7 +84,6 @@ MeshVS_TwoColors myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MeshVS_DataMapNodeOfDataMapOfIntegerTwoColors_HeaderFile

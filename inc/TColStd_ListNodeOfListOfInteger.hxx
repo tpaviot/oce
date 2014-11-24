@@ -6,38 +6,27 @@
 #ifndef _TColStd_ListNodeOfListOfInteger_HeaderFile
 #define _TColStd_ListNodeOfListOfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColStd_ListNodeOfListOfInteger_HeaderFile
 #include <Handle_TColStd_ListNodeOfListOfInteger.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TColStd_ListOfInteger;
 class TColStd_ListIteratorOfListOfInteger;
 
 
 
-class TColStd_ListNodeOfListOfInteger : public TCollection_MapNode {
+class TColStd_ListNodeOfListOfInteger : public TCollection_MapNode
+{
 
 public:
 
   
-      TColStd_ListNodeOfListOfInteger(const Standard_Integer& I,const TCollection_MapNodePtr& n);
+    TColStd_ListNodeOfListOfInteger(const Standard_Integer& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Value() const;
+      Standard_Integer& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-Standard_Integer myValue;
+  Standard_Integer myValue;
 
 
 };
@@ -82,7 +71,6 @@ Standard_Integer myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_ListNodeOfListOfInteger_HeaderFile

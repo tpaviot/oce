@@ -78,6 +78,8 @@
 			<Add library="TKG3d" />
 			<Add library="TKG2d" />
 			<Add library="freetype" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 			<Add library="objc" />
 			<Add library="freeimage" />
 			<Add library="freetype" />

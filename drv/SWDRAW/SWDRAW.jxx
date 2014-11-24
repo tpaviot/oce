@@ -1,3 +1,1 @@
-#ifndef _SWDRAW_HeaderFile
 #include <SWDRAW.hxx>
-#endif

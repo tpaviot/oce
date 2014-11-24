@@ -6,46 +6,42 @@
 #ifndef _GeomToIGES_GeomEntity_HeaderFile
 #define _GeomToIGES_GeomEntity_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_IGESData_IGESModel_HeaderFile
 #include <Handle_IGESData_IGESModel.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class IGESData_IGESModel;
 
 
-//! provides methods to transfer Geom entity from CASCADE to IGES. <br>
-class GeomToIGES_GeomEntity  {
+//! provides methods to transfer Geom entity from CASCADE to IGES.
+class GeomToIGES_GeomEntity 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates a tool GeomEntity <br>
-  Standard_EXPORT   GeomToIGES_GeomEntity();
-  //! Creates a tool ready to run and sets its <br>
-//!         fields as GE's. <br>
-  Standard_EXPORT   GeomToIGES_GeomEntity(const GeomToIGES_GeomEntity& GE);
-  //! Set the value of "TheModel" <br>
-  Standard_EXPORT     void SetModel(const Handle(IGESData_IGESModel)& model) ;
-  //! Returns the value of "TheModel" <br>
-  Standard_EXPORT     Handle_IGESData_IGESModel GetModel() const;
-  //! Sets the value of the UnitFlag <br>
-  Standard_EXPORT     void SetUnit(const Standard_Real unit) ;
-  //! Returns the value of the UnitFlag of the header of the model <br>
-//!           in meters. <br>
-  Standard_EXPORT     Standard_Real GetUnit() const;
-
+  
+  //! Creates a tool GeomEntity
+  Standard_EXPORT GeomToIGES_GeomEntity();
+  
+  //! Creates a tool ready to run and sets its
+  //! fields as GE's.
+  Standard_EXPORT GeomToIGES_GeomEntity(const GeomToIGES_GeomEntity& GE);
+  
+  //! Set the value of "TheModel"
+  Standard_EXPORT   void SetModel (const Handle(IGESData_IGESModel)& model) ;
+  
+  //! Returns the value of "TheModel"
+  Standard_EXPORT   Handle(IGESData_IGESModel) GetModel()  const;
+  
+  //! Sets the value of the UnitFlag
+  Standard_EXPORT   void SetUnit (const Standard_Real unit) ;
+  
+  //! Returns the value of the UnitFlag of the header of the model
+  //! in meters.
+  Standard_EXPORT   Standard_Real GetUnit()  const;
 
 
 
@@ -60,8 +56,8 @@ private:
 
 
 
-Handle_IGESData_IGESModel TheModel;
-Standard_Real TheUnitFactor;
+  Handle(IGESData_IGESModel) TheModel;
+  Standard_Real TheUnitFactor;
 
 
 };
@@ -70,7 +66,6 @@ Standard_Real TheUnitFactor;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomToIGES_GeomEntity_HeaderFile

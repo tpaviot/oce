@@ -1,18 +1,6 @@
-#ifndef _Quantity_Color_HeaderFile
 #include <Quantity_Color.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TColStd_SequenceOfExtendedString_HeaderFile
 #include <TColStd_SequenceOfExtendedString.hxx>
-#endif
-#ifndef _Aspect_SequenceOfColor_HeaderFile
 #include <Aspect_SequenceOfColor.hxx>
-#endif
-#ifndef _Aspect_ColorScale_HeaderFile
 #include <Aspect_ColorScale.hxx>
-#endif

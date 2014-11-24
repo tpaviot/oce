@@ -6,62 +6,53 @@
 #ifndef _Hermit_HeaderFile
 #define _Hermit_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom2d_BSplineCurve_HeaderFile
 #include <Handle_Geom2d_BSplineCurve.hxx>
-#endif
-#ifndef _Handle_Geom_BSplineCurve_HeaderFile
 #include <Handle_Geom_BSplineCurve.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Geom2d_BSplineCurve;
 class Geom_BSplineCurve;
 
 
-//! This  is used to  reparameterize Rational  BSpline <br>
-//!           Curves so that we can   concatenate them later to <br>
-//!          build C1 Curves  It builds and 1D-reparameterizing <br>
-//!          function starting from an Hermite interpolation and <br>
-//!          adding knots and modifying poles of the 1D BSpline <br>
-//!          obtained that way. The goal is to build a(u) so that <br>
-//!          if we consider a BSpline curve <br>
-//!                          N(u) <br>
-//!                 f(u) =  ----- <br>
-//!                          D(u) <br>
-//! <br>
-//!          the function a(u)D(u) has value 1 at the umin and umax <br>
-//!          and has 0.0e0 derivative value a umin and umax. <br>
-//!          The details of the computation occuring in this package <br>
-//!          can be found by reading : <br>
-//!          " Etude sur la concatenation de NURBS en vue du <br>
-//!            balayage de surfaces" PFE n S85 Ensam Lille <br>
-class Hermit  {
+//! This  is used to  reparameterize Rational  BSpline
+//! Curves so that we can   concatenate them later to
+//! build C1 Curves  It builds and 1D-reparameterizing
+//! function starting from an Hermite interpolation and
+//! adding knots and modifying poles of the 1D BSpline
+//! obtained that way. The goal is to build a(u) so that
+//! if we consider a BSpline curve
+//! N(u)
+//! f(u) =  -----
+//! D(u)
+//!
+//! the function a(u)D(u) has value 1 at the umin and umax
+//! and has 0.0e0 derivative value a umin and umax.
+//! The details of the computation occuring in this package
+//! can be found by reading :
+//! " Etude sur la concatenation de NURBS en vue du
+//! balayage de surfaces" PFE n S85 Ensam Lille
+class Hermit 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //!returns the correct spline a(u) which will <br>
-//!                 be multiplicated with BS later. <br>
-  Standard_EXPORT   static  Handle_Geom2d_BSplineCurve Solution(const Handle(Geom_BSplineCurve)& BS,const Standard_Real TolPoles = 0.000001,const Standard_Real TolKnots = 0.000001) ;
-  //!returns the correct spline a(u) which will <br>
-//!                 be multiplicated with BS later. <br>
-  Standard_EXPORT   static  Handle_Geom2d_BSplineCurve Solution(const Handle(Geom2d_BSplineCurve)& BS,const Standard_Real TolPoles = 0.000001,const Standard_Real TolKnots = 0.000001) ;
-  //!returns the knots to insert to a(u) to <br>
-//!         stay with a constant sign and in the <br>
-//!         tolerances. <br>
-  Standard_EXPORT   static  void Solutionbis(const Handle(Geom_BSplineCurve)& BS,Standard_Real& Knotmin,Standard_Real& Knotmax,const Standard_Real TolPoles = 0.000001,const Standard_Real TolKnots = 0.000001) ;
-
+  
+  //! returns the correct spline a(u) which will
+  //! be multiplicated with BS later.
+  Standard_EXPORT static   Handle(Geom2d_BSplineCurve) Solution (const Handle(Geom_BSplineCurve)& BS, const Standard_Real TolPoles = 0.000001, const Standard_Real TolKnots = 0.000001) ;
+  
+  //! returns the correct spline a(u) which will
+  //! be multiplicated with BS later.
+  Standard_EXPORT static   Handle(Geom2d_BSplineCurve) Solution (const Handle(Geom2d_BSplineCurve)& BS, const Standard_Real TolPoles = 0.000001, const Standard_Real TolKnots = 0.000001) ;
+  
+  //! returns the knots to insert to a(u) to
+  //! stay with a constant sign and in the
+  //! tolerances.
+  Standard_EXPORT static   void Solutionbis (const Handle(Geom_BSplineCurve)& BS, Standard_Real& Knotmin, Standard_Real& Knotmax, const Standard_Real TolPoles = 0.000001, const Standard_Real TolKnots = 0.000001) ;
 
 
 
@@ -84,7 +75,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Hermit_HeaderFile

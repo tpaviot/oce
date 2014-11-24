@@ -6,22 +6,15 @@
 #ifndef _Handle_BinMDataXtd_ConstraintDriver_HeaderFile
 #define _Handle_BinMDataXtd_ConstraintDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_BinMDF_ADriver_HeaderFile
 #include <Handle_BinMDF_ADriver.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(BinMDF_ADriver);
 class BinMDataXtd_ConstraintDriver;
 
-DEFINE_STANDARD_HANDLE(BinMDataXtd_ConstraintDriver,BinMDF_ADriver)
+DEFINE_STANDARD_HANDLE(BinMDataXtd_ConstraintDriver, BinMDF_ADriver)
 
-#endif
+#endif // _Handle_BinMDataXtd_ConstraintDriver_HeaderFile

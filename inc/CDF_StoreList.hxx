@@ -6,40 +6,18 @@
 #ifndef _CDF_StoreList_HeaderFile
 #define _CDF_StoreList_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_CDF_StoreList_HeaderFile
 #include <Handle_CDF_StoreList.hxx>
-#endif
 
-#ifndef _CDM_MapOfDocument_HeaderFile
 #include <CDM_MapOfDocument.hxx>
-#endif
-#ifndef _CDM_ListOfDocument_HeaderFile
 #include <CDM_ListOfDocument.hxx>
-#endif
-#ifndef _CDM_MapIteratorOfMapOfDocument_HeaderFile
 #include <CDM_MapIteratorOfMapOfDocument.hxx>
-#endif
-#ifndef _Handle_CDM_Document_HeaderFile
 #include <Handle_CDM_Document.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _PCDM_StoreStatus_HeaderFile
 #include <PCDM_StoreStatus.hxx>
-#endif
-#ifndef _Handle_CDM_MetaData_HeaderFile
 #include <Handle_CDM_MetaData.hxx>
-#endif
 class CDM_Document;
 class Standard_NoSuchObject;
 class CDM_MetaData;
@@ -47,25 +25,27 @@ class TCollection_ExtendedString;
 
 
 
-class CDF_StoreList : public Standard_Transient {
+class CDF_StoreList : public Standard_Transient
+{
 
 public:
 
   
-  Standard_EXPORT   CDF_StoreList(const Handle(CDM_Document)& aDocument);
+  Standard_EXPORT CDF_StoreList(const Handle(CDM_Document)& aDocument);
   
-  Standard_EXPORT     Standard_Boolean IsConsistent() const;
-  //! stores each object of the storelist in the reverse <br>
-//!          order of which they had been added. <br>
-  Standard_EXPORT     PCDM_StoreStatus Store(Handle(CDM_MetaData)& aMetaData,TCollection_ExtendedString& aStatusAssociatedText) ;
+  Standard_EXPORT   Standard_Boolean IsConsistent()  const;
   
-  Standard_EXPORT     void Init() ;
+  //! stores each object of the storelist in the reverse
+  //! order of which they had been added.
+  Standard_EXPORT   PCDM_StoreStatus Store (Handle(CDM_MetaData)& aMetaData, TCollection_ExtendedString& aStatusAssociatedText) ;
   
-  Standard_EXPORT     Standard_Boolean More() const;
+  Standard_EXPORT   void Init() ;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   Standard_Boolean More()  const;
   
-  Standard_EXPORT     Handle_CDM_Document Value() const;
+  Standard_EXPORT   void Next() ;
+  
+  Standard_EXPORT   Handle(CDM_Document) Value()  const;
 
 
 
@@ -80,12 +60,12 @@ protected:
 private: 
 
   
-  Standard_EXPORT     void Add(const Handle(CDM_Document)& aDocument) ;
+  Standard_EXPORT   void Add (const Handle(CDM_Document)& aDocument) ;
 
-CDM_MapOfDocument myItems;
-CDM_ListOfDocument myStack;
-CDM_MapIteratorOfMapOfDocument myIterator;
-Handle_CDM_Document myMainDocument;
+  CDM_MapOfDocument myItems;
+  CDM_ListOfDocument myStack;
+  CDM_MapIteratorOfMapOfDocument myIterator;
+  Handle(CDM_Document) myMainDocument;
 
 
 };
@@ -94,7 +74,6 @@ Handle_CDM_Document myMainDocument;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _CDF_StoreList_HeaderFile

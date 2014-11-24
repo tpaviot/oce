@@ -5,32 +5,18 @@
 
 #include <AIS_DataMapOfSelStat.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _SelectMgr_SelectableObject_HeaderFile
 #include <SelectMgr_SelectableObject.hxx>
-#endif
-#ifndef _AIS_LocalStatus_HeaderFile
 #include <AIS_LocalStatus.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _AIS_DataMapNodeOfDataMapOfSelStat_HeaderFile
 #include <AIS_DataMapNodeOfDataMapOfSelStat.hxx>
-#endif
-#ifndef _AIS_DataMapIteratorOfDataMapOfSelStat_HeaderFile
 #include <AIS_DataMapIteratorOfDataMapOfSelStat.hxx>
-#endif
  
 
-#define TheKey Handle_SelectMgr_SelectableObject
+#define TheKey Handle(SelectMgr_SelectableObject)
 #define TheKey_hxx <SelectMgr_SelectableObject.hxx>
-#define TheItem Handle_AIS_LocalStatus
+#define TheItem Handle(AIS_LocalStatus)
 #define TheItem_hxx <AIS_LocalStatus.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>

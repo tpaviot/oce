@@ -6,36 +6,28 @@
 #ifndef _QANewBRepNaming_Common_HeaderFile
 #define _QANewBRepNaming_Common_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _QANewBRepNaming_BooleanOperationFeat_HeaderFile
 #include <QANewBRepNaming_BooleanOperationFeat.hxx>
-#endif
 class TDF_Label;
 class BRepAlgoAPI_BooleanOperation;
 
 
 
-class QANewBRepNaming_Common  : public QANewBRepNaming_BooleanOperationFeat {
+class QANewBRepNaming_Common  : public QANewBRepNaming_BooleanOperationFeat
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   QANewBRepNaming_Common();
+  Standard_EXPORT QANewBRepNaming_Common();
   
-  Standard_EXPORT   QANewBRepNaming_Common(const TDF_Label& ResultLabel);
+  Standard_EXPORT QANewBRepNaming_Common(const TDF_Label& ResultLabel);
   
-  Standard_EXPORT     void Load(BRepAlgoAPI_BooleanOperation& MakeShape) const;
-
+  Standard_EXPORT   void Load (BRepAlgoAPI_BooleanOperation& MakeShape)  const;
 
 
 
@@ -58,7 +50,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QANewBRepNaming_Common_HeaderFile

@@ -6,28 +6,14 @@
 #ifndef _Law_ListIteratorOfLaws_HeaderFile
 #define _Law_ListIteratorOfLaws_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_Law_Function_HeaderFile
 #include <Handle_Law_Function.hxx>
-#endif
-#ifndef _Handle_Law_ListNodeOfLaws_HeaderFile
 #include <Handle_Law_ListNodeOfLaws.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class Law_Laws;
@@ -36,27 +22,27 @@ class Law_ListNodeOfLaws;
 
 
 
-class Law_ListIteratorOfLaws  {
+class Law_ListIteratorOfLaws 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Law_ListIteratorOfLaws();
+  Standard_EXPORT Law_ListIteratorOfLaws();
   
-  Standard_EXPORT   Law_ListIteratorOfLaws(const Law_Laws& L);
+  Standard_EXPORT Law_ListIteratorOfLaws(const Law_Laws& L);
   
-  Standard_EXPORT     void Initialize(const Law_Laws& L) ;
+  Standard_EXPORT   void Initialize (const Law_Laws& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     Handle_Law_Function& Value() const;
+  Standard_EXPORT   Handle(Law_Function)& Value()  const;
 
 
 friend class Law_Laws;
-
 
 
 protected:
@@ -69,13 +55,13 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
 
-#define Item Handle_Law_Function
+#define Item Handle(Law_Function)
 #define Item_hxx <Law_Function.hxx>
 #define TCollection_ListNode Law_ListNodeOfLaws
 #define TCollection_ListNode_hxx <Law_ListNodeOfLaws.hxx>
@@ -100,7 +86,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Law_ListIteratorOfLaws_HeaderFile

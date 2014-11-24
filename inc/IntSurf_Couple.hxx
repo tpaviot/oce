@@ -6,36 +6,30 @@
 #ifndef _IntSurf_Couple_HeaderFile
 #define _IntSurf_Couple_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 
 
-//! creation d 'un couple de 2 entiers <br>
-class IntSurf_Couple  {
+//! creation d 'un couple de 2 entiers
+class IntSurf_Couple 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      IntSurf_Couple();
+    IntSurf_Couple();
   
-      IntSurf_Couple(const Standard_Integer Index1,const Standard_Integer Index2);
-  //! returns the first element <br>
-        Standard_Integer First() const;
-  //! returns the Second element <br>
-        Standard_Integer Second() const;
-
+    IntSurf_Couple(const Standard_Integer Index1, const Standard_Integer Index2);
+  
+  //! returns the first element
+      Standard_Integer First()  const;
+  
+  //! returns the Second element
+      Standard_Integer Second()  const;
 
 
 
@@ -50,8 +44,8 @@ private:
 
 
 
-Standard_Integer firstInteger;
-Standard_Integer secondInteger;
+  Standard_Integer firstInteger;
+  Standard_Integer secondInteger;
 
 
 };
@@ -61,7 +55,6 @@ Standard_Integer secondInteger;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntSurf_Couple_HeaderFile

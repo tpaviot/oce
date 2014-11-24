@@ -6,46 +6,20 @@
 #ifndef _ShapeProcess_ShapeContext_HeaderFile
 #define _ShapeProcess_ShapeContext_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeProcess_ShapeContext_HeaderFile
 #include <Handle_ShapeProcess_ShapeContext.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeShape_HeaderFile
 #include <TopTools_DataMapOfShapeShape.hxx>
-#endif
-#ifndef _Handle_ShapeExtend_MsgRegistrator_HeaderFile
 #include <Handle_ShapeExtend_MsgRegistrator.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _ShapeProcess_Context_HeaderFile
 #include <ShapeProcess_Context.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_ShapeBuild_ReShape_HeaderFile
 #include <Handle_ShapeBuild_ReShape.hxx>
-#endif
-#ifndef _Message_Gravity_HeaderFile
 #include <Message_Gravity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
 class ShapeExtend_MsgRegistrator;
 class TopoDS_Shape;
 class TopTools_DataMapOfShapeShape;
@@ -54,80 +28,94 @@ class BRepTools_Modifier;
 class Message_Msg;
 
 
-//! Extends Context to handle shapes <br>
-//!          Contains map of shape-shape, and messages <br>
-//!          attached to shapes <br>
-class ShapeProcess_ShapeContext : public ShapeProcess_Context {
+//! Extends Context to handle shapes
+//! Contains map of shape-shape, and messages
+//! attached to shapes
+class ShapeProcess_ShapeContext : public ShapeProcess_Context
+{
 
 public:
 
   
-  Standard_EXPORT   ShapeProcess_ShapeContext(const Standard_CString file,const Standard_CString seq = "");
-  //! Initializes a tool by resource file and shape <br>
-//!          to be processed <br>
-  Standard_EXPORT   ShapeProcess_ShapeContext(const TopoDS_Shape& S,const Standard_CString file,const Standard_CString seq = "");
-  //! Initializes tool by a new shape and clears all results <br>
-  Standard_EXPORT     void Init(const TopoDS_Shape& S) ;
-  //! Returns shape being processed <br>
-  Standard_EXPORT    const TopoDS_Shape& Shape() const;
-  //! Returns current result <br>
-  Standard_EXPORT    const TopoDS_Shape& Result() const;
-  //! Returns map of replacements shape -> shape <br>
-//!          This map is not recursive <br>
-  Standard_EXPORT    const TopTools_DataMapOfShapeShape& Map() const;
+  Standard_EXPORT ShapeProcess_ShapeContext(const Standard_CString file, const Standard_CString seq = "");
   
-  Standard_EXPORT    const Handle_ShapeExtend_MsgRegistrator& Messages() const;
-  //! Returns messages recorded during shape processing <br>
-//!          It can be nullified before processing in order to <br>
-//!          avoid recording messages <br>
-  Standard_EXPORT     Handle_ShapeExtend_MsgRegistrator& Messages() ;
+  //! Initializes a tool by resource file and shape
+  //! to be processed
+  Standard_EXPORT ShapeProcess_ShapeContext(const TopoDS_Shape& S, const Standard_CString file, const Standard_CString seq = "");
   
-  Standard_EXPORT     void SetDetalisation(const TopAbs_ShapeEnum level) ;
-  //! Set and get value for detalisation level <br>
-//!          Only shapes of types from TopoDS_COMPOUND and until <br>
-//!          specified detalisation level will be recorded in maps <br>
-//!          To cancel mapping, use TopAbs_SHAPE <br>
-//!          To force full mapping, use TopAbs_VERTEX <br>
-//!          The default level is TopAbs_FACE <br>
-  Standard_EXPORT     TopAbs_ShapeEnum GetDetalisation() const;
-  //! Sets a new result shape <br>
-//!          NOTE: this method should be used very carefully <br>
-//!          to keep consistency of modifications <br>
-//!          It is recommended to use RecordModification() methods <br>
-//!          with explicit definition of mapping from current <br>
-//!          result to a new one <br>
-  Standard_EXPORT     void SetResult(const TopoDS_Shape& S) ;
+  //! Initializes tool by a new shape and clears all results
+  Standard_EXPORT   void Init (const TopoDS_Shape& S) ;
   
-  Standard_EXPORT     void RecordModification(const TopTools_DataMapOfShapeShape& repl) ;
+  //! Returns shape being processed
+  Standard_EXPORT  const  TopoDS_Shape& Shape()  const;
   
-  Standard_EXPORT     void RecordModification(const Handle(ShapeBuild_ReShape)& repl,const Handle(ShapeExtend_MsgRegistrator)& msg) ;
+  //! Returns current result
+  Standard_EXPORT  const  TopoDS_Shape& Result()  const;
   
-  Standard_EXPORT     void RecordModification(const Handle(ShapeBuild_ReShape)& repl) ;
-  //! Records modifications and resets result accordingly <br>
-//!          NOTE: modification of resulting shape should be explicitly <br>
-//!          defined in the maps along with modifications of subshapes <br>
-//! <br>
-//!          In the last function, sh is the shape on which Modifier <br>
-//!          was run. It can be different from the whole shape, <br>
-//!          but in that case result as a whole should be reset later <br>
-//!          either by call to SetResult(), or by another call to <br>
-//!          RecordModification() which contains mapping of current <br>
-//!          result to a new one explicitly <br>
-  Standard_EXPORT     void RecordModification(const TopoDS_Shape& sh,const BRepTools_Modifier& repl) ;
-  //! Record a message for shape S <br>
-//!          Shape S should be one of subshapes of original shape <br>
-//!          (or whole one), but not one of intermediate shapes <br>
-//!          Records only if Message() is not Null <br>
-  Standard_EXPORT     void AddMessage(const TopoDS_Shape& S,const Message_Msg& msg,const Message_Gravity gravity = Message_Warning) ;
-  //! Get value of parameter as being of the type GeomAbs_Shape <br>
-//!          Returns False if parameter is not defined or has a wrong type <br>
-  Standard_EXPORT     Standard_Boolean GetContinuity(const Standard_CString param,GeomAbs_Shape& val) const;
-  //! Get value of parameter as being of the type GeomAbs_Shape <br>
-//!          If parameter is not defined or does not have expected <br>
-//!          type, returns default value as specified <br>
-  Standard_EXPORT     GeomAbs_Shape ContinuityVal(const Standard_CString param,const GeomAbs_Shape def) const;
-  //! Prints statistics on Shape Processing onto the current Messenger. <br>
-  Standard_EXPORT     void PrintStatistics() const;
+  //! Returns map of replacements shape -> shape
+  //! This map is not recursive
+  Standard_EXPORT  const  TopTools_DataMapOfShapeShape& Map()  const;
+  
+  Standard_EXPORT  const  Handle(ShapeExtend_MsgRegistrator)& Messages()  const;
+  
+  //! Returns messages recorded during shape processing
+  //! It can be nullified before processing in order to
+  //! avoid recording messages
+  Standard_EXPORT   Handle(ShapeExtend_MsgRegistrator)& Messages() ;
+  
+  Standard_EXPORT   void SetDetalisation (const TopAbs_ShapeEnum level) ;
+  
+  //! Set and get value for detalisation level
+  //! Only shapes of types from TopoDS_COMPOUND and until
+  //! specified detalisation level will be recorded in maps
+  //! To cancel mapping, use TopAbs_SHAPE
+  //! To force full mapping, use TopAbs_VERTEX
+  //! The default level is TopAbs_FACE
+  Standard_EXPORT   TopAbs_ShapeEnum GetDetalisation()  const;
+  
+  //! Sets a new result shape
+  //! NOTE: this method should be used very carefully
+  //! to keep consistency of modifications
+  //! It is recommended to use RecordModification() methods
+  //! with explicit definition of mapping from current
+  //! result to a new one
+  Standard_EXPORT   void SetResult (const TopoDS_Shape& S) ;
+  
+  Standard_EXPORT   void RecordModification (const TopTools_DataMapOfShapeShape& repl) ;
+  
+  Standard_EXPORT   void RecordModification (const Handle(ShapeBuild_ReShape)& repl, const Handle(ShapeExtend_MsgRegistrator)& msg) ;
+  
+  Standard_EXPORT   void RecordModification (const Handle(ShapeBuild_ReShape)& repl) ;
+  
+  //! Records modifications and resets result accordingly
+  //! NOTE: modification of resulting shape should be explicitly
+  //! defined in the maps along with modifications of subshapes
+  //!
+  //! In the last function, sh is the shape on which Modifier
+  //! was run. It can be different from the whole shape,
+  //! but in that case result as a whole should be reset later
+  //! either by call to SetResult(), or by another call to
+  //! RecordModification() which contains mapping of current
+  //! result to a new one explicitly
+  Standard_EXPORT   void RecordModification (const TopoDS_Shape& sh, const BRepTools_Modifier& repl) ;
+  
+  //! Record a message for shape S
+  //! Shape S should be one of subshapes of original shape
+  //! (or whole one), but not one of intermediate shapes
+  //! Records only if Message() is not Null
+  Standard_EXPORT   void AddMessage (const TopoDS_Shape& S, const Message_Msg& msg, const Message_Gravity gravity = Message_Warning) ;
+  
+  //! Get value of parameter as being of the type GeomAbs_Shape
+  //! Returns False if parameter is not defined or has a wrong type
+  Standard_EXPORT   Standard_Boolean GetContinuity (const Standard_CString param, GeomAbs_Shape& val)  const;
+  
+  //! Get value of parameter as being of the type GeomAbs_Shape
+  //! If parameter is not defined or does not have expected
+  //! type, returns default value as specified
+  Standard_EXPORT   GeomAbs_Shape ContinuityVal (const Standard_CString param, const GeomAbs_Shape def)  const;
+  
+  //! Prints statistics on Shape Processing onto the current Messenger.
+  Standard_EXPORT   void PrintStatistics()  const;
 
 
 
@@ -142,11 +130,11 @@ protected:
 private: 
 
 
-TopoDS_Shape myShape;
-TopoDS_Shape myResult;
-TopTools_DataMapOfShapeShape myMap;
-Handle_ShapeExtend_MsgRegistrator myMsg;
-TopAbs_ShapeEnum myUntil;
+  TopoDS_Shape myShape;
+  TopoDS_Shape myResult;
+  TopTools_DataMapOfShapeShape myMap;
+  Handle(ShapeExtend_MsgRegistrator) myMsg;
+  TopAbs_ShapeEnum myUntil;
 
 
 };
@@ -155,7 +143,6 @@ TopAbs_ShapeEnum myUntil;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeProcess_ShapeContext_HeaderFile

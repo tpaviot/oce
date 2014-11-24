@@ -6,19 +6,11 @@
 #ifndef _QANCollection_HeaderFile
 #define _QANCollection_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Draw_Interpretor_HeaderFile
 #include <Draw_Interpretor.hxx>
-#endif
 class QANCollection_ListOfPnt;
 class QANCollection_DataMapOfRealPnt;
 class QANCollection_IndexedDataMapOfRealPnt;
@@ -33,24 +25,24 @@ class QANCollection_DoubleMapIteratorOfDoubleMapOfRealInteger;
 
 
 
-class QANCollection  {
+class QANCollection 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  void Commands(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void Commands (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void CommandsSimple(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void CommandsSimple (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void CommandsTest(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void CommandsTest (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void CommandsPerf(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void CommandsPerf (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void CommandsAlloc(Draw_Interpretor& DI) ;
+  Standard_EXPORT static   void CommandsAlloc (Draw_Interpretor& DI) ;
   
-  Standard_EXPORT   static  void CommandsStl(Draw_Interpretor& DI) ;
-
+  Standard_EXPORT static   void CommandsStl (Draw_Interpretor& DI) ;
 
 
 
@@ -84,7 +76,6 @@ friend class QANCollection_DoubleMapIteratorOfDoubleMapOfRealInteger;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QANCollection_HeaderFile

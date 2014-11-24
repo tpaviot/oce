@@ -84,6 +84,8 @@
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 		</Linker>
 		<Unit filename="../../../src/BRepPrim/BRepPrim_Builder.cxx" />
 		<Unit filename="../../../src/BRepPrim/BRepPrim_Cone.cxx" />

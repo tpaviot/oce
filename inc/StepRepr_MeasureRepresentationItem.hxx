@@ -6,49 +6,38 @@
 #ifndef _StepRepr_MeasureRepresentationItem_HeaderFile
 #define _StepRepr_MeasureRepresentationItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepRepr_MeasureRepresentationItem_HeaderFile
 #include <Handle_StepRepr_MeasureRepresentationItem.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_MeasureWithUnit_HeaderFile
 #include <Handle_StepBasic_MeasureWithUnit.hxx>
-#endif
-#ifndef _StepRepr_RepresentationItem_HeaderFile
 #include <StepRepr_RepresentationItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepBasic_MeasureValueMember_HeaderFile
 #include <Handle_StepBasic_MeasureValueMember.hxx>
-#endif
 class StepBasic_MeasureWithUnit;
 class TCollection_HAsciiString;
 class StepBasic_MeasureValueMember;
 class StepBasic_Unit;
 
 
-//! Implements a measure_representation_item entity <br>
-//!          which is used for storing validation properties <br>
-//!          (e.g. area) for shapes <br>
-class StepRepr_MeasureRepresentationItem : public StepRepr_RepresentationItem {
+//! Implements a measure_representation_item entity
+//! which is used for storing validation properties
+//! (e.g. area) for shapes
+class StepRepr_MeasureRepresentationItem : public StepRepr_RepresentationItem
+{
 
 public:
 
-  //! Creates empty object <br>
-  Standard_EXPORT   StepRepr_MeasureRepresentationItem();
-  //! Init all fields <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepBasic_MeasureValueMember)& aValueComponent,const StepBasic_Unit& aUnitComponent) ;
   
-  Standard_EXPORT     void SetMeasure(const Handle(StepBasic_MeasureWithUnit)& Measure) ;
+  //! Creates empty object
+  Standard_EXPORT StepRepr_MeasureRepresentationItem();
   
-  Standard_EXPORT     Handle_StepBasic_MeasureWithUnit Measure() const;
+  //! Init all fields
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepBasic_MeasureValueMember)& aValueComponent, const StepBasic_Unit& aUnitComponent) ;
+  
+  Standard_EXPORT   void SetMeasure (const Handle(StepBasic_MeasureWithUnit)& Measure) ;
+  
+  Standard_EXPORT   Handle(StepBasic_MeasureWithUnit) Measure()  const;
 
 
 
@@ -63,7 +52,7 @@ protected:
 private: 
 
 
-Handle_StepBasic_MeasureWithUnit myMeasure;
+  Handle(StepBasic_MeasureWithUnit) myMeasure;
 
 
 };
@@ -72,7 +61,6 @@ Handle_StepBasic_MeasureWithUnit myMeasure;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_MeasureRepresentationItem_HeaderFile

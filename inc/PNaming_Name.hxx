@@ -6,61 +6,46 @@
 #ifndef _PNaming_Name_HeaderFile
 #define _PNaming_Name_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PNaming_Name_HeaderFile
 #include <Handle_PNaming_Name.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_PNaming_HArray1OfNamedShape_HeaderFile
 #include <Handle_PNaming_HArray1OfNamedShape.hxx>
-#endif
-#ifndef _Handle_PNaming_NamedShape_HeaderFile
 #include <Handle_PNaming_NamedShape.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
 class PNaming_HArray1OfNamedShape;
 class PNaming_NamedShape;
 
 
-class PNaming_Name : public Standard_Persistent {
+class PNaming_Name : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PNaming_Name();
+  Standard_EXPORT PNaming_Name();
   
-        void Type(const Standard_Integer T) ;
+      void Type (const Standard_Integer T) ;
   
-        void ShapeType(const Standard_Integer T) ;
+      void ShapeType (const Standard_Integer T) ;
   
-        void Arguments(const Handle(PNaming_HArray1OfNamedShape)& Args) ;
+      void Arguments (const Handle(PNaming_HArray1OfNamedShape)& Args) ;
   
-        void StopNamedShape(const Handle(PNaming_NamedShape)& arg) ;
+      void StopNamedShape (const Handle(PNaming_NamedShape)& arg) ;
   
-        Standard_Integer Type() const;
+      Standard_Integer Type()  const;
   
-        Standard_Integer ShapeType() const;
+      Standard_Integer ShapeType()  const;
   
-        Handle_PNaming_HArray1OfNamedShape Arguments() const;
+      Handle(PNaming_HArray1OfNamedShape) Arguments()  const;
   
-        Handle_PNaming_NamedShape StopNamedShape() const;
+      Handle(PNaming_NamedShape) StopNamedShape()  const;
   
-        void Index(const Standard_Integer I) ;
+      void Index (const Standard_Integer I) ;
   
-        Standard_Integer Index() const;
+      Standard_Integer Index()  const;
 
 PNaming_Name(const Storage_stCONSTclCOM& a) : Standard_Persistent(a)
 {
@@ -89,11 +74,11 @@ protected:
 private: 
 
 
-Standard_Integer myType;
-Standard_Integer myShapeType;
-Handle_PNaming_HArray1OfNamedShape myArgs;
-Handle_PNaming_NamedShape myStop;
-Standard_Integer myIndex;
+  Standard_Integer myType;
+  Standard_Integer myShapeType;
+  Handle(PNaming_HArray1OfNamedShape) myArgs;
+  Handle(PNaming_NamedShape) myStop;
+  Standard_Integer myIndex;
 
 
 };
@@ -103,7 +88,6 @@ Standard_Integer myIndex;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PNaming_Name_HeaderFile

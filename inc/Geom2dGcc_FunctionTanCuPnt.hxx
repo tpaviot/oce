@@ -6,59 +6,46 @@
 #ifndef _Geom2dGcc_FunctionTanCuPnt_HeaderFile
 #define _Geom2dGcc_FunctionTanCuPnt_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Geom2dAdaptor_Curve_HeaderFile
 #include <Geom2dAdaptor_Curve.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _math_FunctionWithDerivative_HeaderFile
 #include <math_FunctionWithDerivative.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Geom2dAdaptor_Curve;
 class gp_Pnt2d;
 
 
-//! This abstract class describes a Function of 1 Variable <br>
-//!          used to find a line tangent to a curve and passing <br>
-//!          through a point. <br>
-class Geom2dGcc_FunctionTanCuPnt  : public math_FunctionWithDerivative {
+//! This abstract class describes a Function of 1 Variable
+//! used to find a line tangent to a curve and passing
+//! through a point.
+class Geom2dGcc_FunctionTanCuPnt  : public math_FunctionWithDerivative
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Geom2dGcc_FunctionTanCuPnt(const Geom2dAdaptor_Curve& C,const gp_Pnt2d& Point);
-  //! Computes the value of the function F for the variable X. <br>
-//!          It returns True if the computation is successfully done, <br>
-//!          False otherwise. <br>
-  Standard_EXPORT     Standard_Boolean Value(const Standard_Real X,Standard_Real& F) ;
-  //! Computes the derivative of the function F for the variable X. <br>
-//!          It returns True if the computation is successfully done, <br>
-//!          False otherwise. <br>
-  Standard_EXPORT     Standard_Boolean Derivative(const Standard_Real X,Standard_Real& Deriv) ;
-  //! Computes the value and the derivative of the function F <br>
-//!          for the variable X. <br>
-//!          It returns True if the computation is successfully done, <br>
-//!          False otherwise. <br>
-  Standard_EXPORT     Standard_Boolean Values(const Standard_Real X,Standard_Real& F,Standard_Real& Deriv) ;
-
+  Standard_EXPORT Geom2dGcc_FunctionTanCuPnt(const Geom2dAdaptor_Curve& C, const gp_Pnt2d& Point);
+  
+  //! Computes the value of the function F for the variable X.
+  //! It returns True if the computation is successfully done,
+  //! False otherwise.
+  Standard_EXPORT   Standard_Boolean Value (const Standard_Real X, Standard_Real& F) ;
+  
+  //! Computes the derivative of the function F for the variable X.
+  //! It returns True if the computation is successfully done,
+  //! False otherwise.
+  Standard_EXPORT   Standard_Boolean Derivative (const Standard_Real X, Standard_Real& Deriv) ;
+  
+  //! Computes the value and the derivative of the function F
+  //! for the variable X.
+  //! It returns True if the computation is successfully done,
+  //! False otherwise.
+  Standard_EXPORT   Standard_Boolean Values (const Standard_Real X, Standard_Real& F, Standard_Real& Deriv) ;
 
 
 
@@ -73,8 +60,8 @@ private:
 
 
 
-Geom2dAdaptor_Curve TheCurv;
-gp_Pnt2d ThePoint;
+  Geom2dAdaptor_Curve TheCurv;
+  gp_Pnt2d ThePoint;
 
 
 };
@@ -83,7 +70,6 @@ gp_Pnt2d ThePoint;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dGcc_FunctionTanCuPnt_HeaderFile

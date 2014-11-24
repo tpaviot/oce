@@ -6,22 +6,12 @@
 #ifndef _QANewBRepNaming_HeaderFile
 #define _QANewBRepNaming_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TNaming_Evolution_HeaderFile
 #include <TNaming_Evolution.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TDF_Label;
 class TNaming_Builder;
 class TopoDS_Shape;
@@ -47,25 +37,25 @@ class QANewBRepNaming_Intersection;
 class QANewBRepNaming_Limitation;
 
 
-//! Implements  methods   to   load  the  Make   Shape <br>
-//!          operations in  the  naming data-structure (package <br>
-//!          TNaming),  which    provides  topological   naming <br>
-//!          facilities.  Shape  generation, modifications  and <br>
-//!          deletions   are  recorded in   the  data-framework <br>
-//!          (package  TDF)   using the builder  from   package <br>
-//!          TNaming. <br>
-class QANewBRepNaming  {
+//! Implements  methods   to   load  the  Make   Shape
+//! operations in  the  naming data-structure (package
+//! TNaming),  which    provides  topological   naming
+//! facilities.  Shape  generation, modifications  and
+//! deletions   are  recorded in   the  data-framework
+//! (package  TDF)   using the builder  from   package
+//! TNaming.
+class QANewBRepNaming 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  void CleanStructure(const TDF_Label& theLabel) ;
+  Standard_EXPORT static   void CleanStructure (const TDF_Label& theLabel) ;
   
-  Standard_EXPORT   static  void LoadNamedShape(TNaming_Builder& theBuilder,const TNaming_Evolution theEvol,const TopoDS_Shape& theOS,const TopoDS_Shape& theNS) ;
+  Standard_EXPORT static   void LoadNamedShape (TNaming_Builder& theBuilder, const TNaming_Evolution theEvol, const TopoDS_Shape& theOS, const TopoDS_Shape& theNS) ;
   
-  Standard_EXPORT   static  void Displace(const TDF_Label& theLabel,const TopLoc_Location& theLoc,const Standard_Boolean theWithOld) ;
-
+  Standard_EXPORT static   void Displace (const TDF_Label& theLabel, const TopLoc_Location& theLoc, const Standard_Boolean theWithOld) ;
 
 
 
@@ -107,7 +97,6 @@ friend class QANewBRepNaming_Limitation;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QANewBRepNaming_HeaderFile

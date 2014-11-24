@@ -6,62 +6,54 @@
 #ifndef _Law_Constant_HeaderFile
 #define _Law_Constant_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Law_Constant_HeaderFile
 #include <Handle_Law_Constant.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Law_Function_HeaderFile
 #include <Law_Function.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Law_Function_HeaderFile
 #include <Handle_Law_Function.hxx>
-#endif
 class Standard_OutOfRange;
 class TColStd_Array1OfReal;
 class Law_Function;
 
 
-//! Loi constante <br>
-class Law_Constant : public Law_Function {
+//! Loi constante
+class Law_Constant : public Law_Function
+{
 
 public:
 
   
-  Standard_EXPORT   Law_Constant();
-  //! Set the radius and the range of the constant Law. <br>
-  Standard_EXPORT     void Set(const Standard_Real Radius,const Standard_Real PFirst,const Standard_Real PLast) ;
-  //! Returns GeomAbs_CN <br>
-  Standard_EXPORT     GeomAbs_Shape Continuity() const;
-  //! Returns  1 <br>
-  Standard_EXPORT     Standard_Integer NbIntervals(const GeomAbs_Shape S) const;
+  Standard_EXPORT Law_Constant();
   
-  Standard_EXPORT     void Intervals(TColStd_Array1OfReal& T,const GeomAbs_Shape S) const;
-  //! Returns the value at parameter X. <br>
-  Standard_EXPORT     Standard_Real Value(const Standard_Real X) ;
-  //! Returns the value and the first derivative at parameter X. <br>
-  Standard_EXPORT     void D1(const Standard_Real X,Standard_Real& F,Standard_Real& D) ;
-  //! Returns the value, first and second derivatives <br>
-//!          at parameter X. <br>
-  Standard_EXPORT     void D2(const Standard_Real X,Standard_Real& F,Standard_Real& D,Standard_Real& D2) ;
+  //! Set the radius and the range of the constant Law.
+  Standard_EXPORT   void Set (const Standard_Real Radius, const Standard_Real PFirst, const Standard_Real PLast) ;
   
-  Standard_EXPORT     Handle_Law_Function Trim(const Standard_Real PFirst,const Standard_Real PLast,const Standard_Real Tol) const;
-  //! Returns the parametric bounds of the function. <br>
-  Standard_EXPORT     void Bounds(Standard_Real& PFirst,Standard_Real& PLast) ;
+  //! Returns GeomAbs_CN
+  Standard_EXPORT   GeomAbs_Shape Continuity()  const;
+  
+  //! Returns  1
+  Standard_EXPORT   Standard_Integer NbIntervals (const GeomAbs_Shape S)  const;
+  
+  Standard_EXPORT   void Intervals (TColStd_Array1OfReal& T, const GeomAbs_Shape S)  const;
+  
+  //! Returns the value at parameter X.
+  Standard_EXPORT   Standard_Real Value (const Standard_Real X) ;
+  
+  //! Returns the value and the first derivative at parameter X.
+  Standard_EXPORT   void D1 (const Standard_Real X, Standard_Real& F, Standard_Real& D) ;
+  
+  //! Returns the value, first and second derivatives
+  //! at parameter X.
+  Standard_EXPORT   void D2 (const Standard_Real X, Standard_Real& F, Standard_Real& D, Standard_Real& D2) ;
+  
+  Standard_EXPORT   Handle(Law_Function) Trim (const Standard_Real PFirst, const Standard_Real PLast, const Standard_Real Tol)  const;
+  
+  //! Returns the parametric bounds of the function.
+  Standard_EXPORT   void Bounds (Standard_Real& PFirst, Standard_Real& PLast) ;
 
 
 
@@ -76,9 +68,9 @@ protected:
 private: 
 
 
-Standard_Real radius;
-Standard_Real first;
-Standard_Real last;
+  Standard_Real radius;
+  Standard_Real first;
+  Standard_Real last;
 
 
 };
@@ -87,7 +79,6 @@ Standard_Real last;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Law_Constant_HeaderFile

@@ -5,51 +5,21 @@
 
 #include <Geom2dInt_GInter.hxx>
 
-#ifndef _Standard_ConstructionError_HeaderFile
 #include <Standard_ConstructionError.hxx>
-#endif
-#ifndef _Adaptor2d_Curve2d_HeaderFile
 #include <Adaptor2d_Curve2d.hxx>
-#endif
-#ifndef _Geom2dInt_Geom2dCurveTool_HeaderFile
 #include <Geom2dInt_Geom2dCurveTool.hxx>
-#endif
-#ifndef _Geom2dInt_TheProjPCurOfGInter_HeaderFile
 #include <Geom2dInt_TheProjPCurOfGInter.hxx>
-#endif
-#ifndef _Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter_HeaderFile
 #include <Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter.hxx>
-#endif
-#ifndef _Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_HeaderFile
 #include <Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter.hxx>
-#endif
-#ifndef _Geom2dInt_TheIntConicCurveOfGInter_HeaderFile
 #include <Geom2dInt_TheIntConicCurveOfGInter.hxx>
-#endif
-#ifndef _Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_HeaderFile
 #include <Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter.hxx>
-#endif
-#ifndef _Geom2dInt_IntConicCurveOfGInter_HeaderFile
 #include <Geom2dInt_IntConicCurveOfGInter.hxx>
-#endif
-#ifndef _Geom2dInt_TheIntPCurvePCurveOfGInter_HeaderFile
 #include <Geom2dInt_TheIntPCurvePCurveOfGInter.hxx>
-#endif
-#ifndef _Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_HeaderFile
 #include <Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter.hxx>
-#endif
-#ifndef _Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter_HeaderFile
 #include <Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter.hxx>
-#endif
-#ifndef _Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter_HeaderFile
 #include <Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter.hxx>
-#endif
-#ifndef _IntRes2d_Domain_HeaderFile
 #include <IntRes2d_Domain.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
  
 
 #define TheCurve Adaptor2d_Curve2d

@@ -5,33 +5,15 @@
 
 #include <Extrema_ECC.hxx>
 
-#ifndef _StdFail_InfiniteSolutions_HeaderFile
 #include <StdFail_InfiniteSolutions.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Adaptor3d_Curve_HeaderFile
 #include <Adaptor3d_Curve.hxx>
-#endif
-#ifndef _Extrema_CurveTool_HeaderFile
 #include <Extrema_CurveTool.hxx>
-#endif
-#ifndef _TColgp_HArray1OfPnt_HeaderFile
 #include <TColgp_HArray1OfPnt.hxx>
-#endif
-#ifndef _Extrema_POnCurv_HeaderFile
 #include <Extrema_POnCurv.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
  
 
 #define Curve1 Adaptor3d_Curve

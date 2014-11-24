@@ -1,6 +1,2 @@
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _FEmTool_SparseMatrix_HeaderFile
 #include <FEmTool_SparseMatrix.hxx>
-#endif

@@ -5,16 +5,10 @@
 
 #include <StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _StepFEA_Curve3dElementProperty_HeaderFile
 #include <StepFEA_Curve3dElementProperty.hxx>
-#endif
-#ifndef _StepFEA_SequenceOfCurve3dElementProperty_HeaderFile
 #include <StepFEA_SequenceOfCurve3dElementProperty.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty,Standa
 IMPLEMENT_STANDARD_RTTI(StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty)
 
 
-#define SeqItem Handle_StepFEA_Curve3dElementProperty
+#define SeqItem Handle(StepFEA_Curve3dElementProperty)
 #define SeqItem_hxx <StepFEA_Curve3dElementProperty.hxx>
 #define TCollection_SequenceNode StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty
 #define TCollection_SequenceNode_hxx <StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty.hxx>

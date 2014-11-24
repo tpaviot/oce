@@ -6,95 +6,93 @@
 #ifndef _Interface_LineBuffer_HeaderFile
 #define _Interface_LineBuffer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Character_HeaderFile
 #include <Standard_Character.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class Standard_OutOfRange;
 class TCollection_AsciiString;
 class TCollection_HAsciiString;
 
 
-//! Simple Management of a Line Buffer, to be used by Interface <br>
-//!           File Writers. <br>
-//!           While a String is suitable to do that, this class ensures an <br>
-//!           optimised Memory Management, because this is a hard point of <br>
-//!           File Writing. <br>
-class Interface_LineBuffer  {
+//! Simple Management of a Line Buffer, to be used by Interface
+//! File Writers.
+//! While a String is suitable to do that, this class ensures an
+//! optimised Memory Management, because this is a hard point of
+//! File Writing.
+class Interface_LineBuffer 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates a LineBuffer with an absolute maximum size <br>
-//!           (Default value is only to satisfy compiler requirement) <br>
-  Standard_EXPORT   Interface_LineBuffer(const Standard_Integer size = 10);
-  //! Changes Maximum allowed size of Buffer. <br>
-//!           If <max> is Zero, Maximum size is set to the initial size. <br>
-  Standard_EXPORT     void SetMax(const Standard_Integer max) ;
-  //! Sets an Initial reservation for Blank characters <br>
-//!           (this reservation is counted in the size of the current Line) <br>
-  Standard_EXPORT     void SetInitial(const Standard_Integer initial) ;
-  //! Sets a Keep Status at current Length. It means that at next <br>
-//!           Move, the new line will begin by characters between Keep + 1 <br>
-//!           and current Length <br>
-  Standard_EXPORT     void SetKeep() ;
-  //! Returns True if there is room enough to add <more> characters <br>
-//!           Else, it is required to Dump the Buffer before refilling it <br>
-//!           <more> is recorded to manage SetKeep status <br>
-  Standard_EXPORT     Standard_Boolean CanGet(const Standard_Integer more) ;
-  //! Returns the Content of the LineBuffer <br>
-//! was C++ : return const <br>
-  Standard_EXPORT     Standard_CString Content() const;
-  //! Returns the Length of the LineBuffer <br>
-  Standard_EXPORT     Standard_Integer Length() const;
-  //! Clears completely the LineBuffer <br>
-  Standard_EXPORT     void Clear() ;
-  //! Inhibits effect of SetInitial until the next Move (i.e. Keep) <br>
-//!           Then Prepare will not insert initial blanks, but further ones <br>
-//!           will. This allows to cancel initial blanks on an internal Split <br>
-//!           A call to SetInitial has no effect on this until Move <br>
-  Standard_EXPORT     void FreezeInitial() ;
-  //! Fills a AsciiString <str> with the Content of the Line Buffer, <br>
-//!           then Clears the LineBuffer <br>
-  Standard_EXPORT     void Move(TCollection_AsciiString& str) ;
-  //! Same as above, but <str> is known through a Handle <br>
-  Standard_EXPORT     void Move(const Handle(TCollection_HAsciiString)& str) ;
-  //! Same as above, but generates the HAsciiString <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Moved() ;
-  //! Adds a text as a CString. Its Length is evaluated from the <br>
-//!           text (by C function strlen) <br>
-  Standard_EXPORT     void Add(const Standard_CString text) ;
-  //! Adds a text as a CString. Its length is given as <lntext> <br>
-  Standard_EXPORT     void Add(const Standard_CString text,const Standard_Integer lntext) ;
-  //! Adds a text as a AsciiString from TCollection <br>
-  Standard_EXPORT     void Add(const TCollection_AsciiString& text) ;
-  //! Adds a text made of only ONE Character <br>
-  Standard_EXPORT     void Add(const Standard_Character text) ;
-
+  
+  //! Creates a LineBuffer with an absolute maximum size
+  //! (Default value is only to satisfy compiler requirement)
+  Standard_EXPORT Interface_LineBuffer(const Standard_Integer size = 10);
+  
+  //! Changes Maximum allowed size of Buffer.
+  //! If <max> is Zero, Maximum size is set to the initial size.
+  Standard_EXPORT   void SetMax (const Standard_Integer max) ;
+  
+  //! Sets an Initial reservation for Blank characters
+  //! (this reservation is counted in the size of the current Line)
+  Standard_EXPORT   void SetInitial (const Standard_Integer initial) ;
+  
+  //! Sets a Keep Status at current Length. It means that at next
+  //! Move, the new line will begin by characters between Keep + 1
+  //! and current Length
+  Standard_EXPORT   void SetKeep() ;
+  
+  //! Returns True if there is room enough to add <more> characters
+  //! Else, it is required to Dump the Buffer before refilling it
+  //! <more> is recorded to manage SetKeep status
+  Standard_EXPORT   Standard_Boolean CanGet (const Standard_Integer more) ;
+  
+  //! Returns the Content of the LineBuffer
+  //! was C++ : return const
+  Standard_EXPORT   Standard_CString Content()  const;
+  
+  //! Returns the Length of the LineBuffer
+  Standard_EXPORT   Standard_Integer Length()  const;
+  
+  //! Clears completely the LineBuffer
+  Standard_EXPORT   void Clear() ;
+  
+  //! Inhibits effect of SetInitial until the next Move (i.e. Keep)
+  //! Then Prepare will not insert initial blanks, but further ones
+  //! will. This allows to cancel initial blanks on an internal Split
+  //! A call to SetInitial has no effect on this until Move
+  Standard_EXPORT   void FreezeInitial() ;
+  
+  //! Fills a AsciiString <str> with the Content of the Line Buffer,
+  //! then Clears the LineBuffer
+  Standard_EXPORT   void Move (TCollection_AsciiString& str) ;
+  
+  //! Same as above, but <str> is known through a Handle
+  Standard_EXPORT   void Move (const Handle(TCollection_HAsciiString)& str) ;
+  
+  //! Same as above, but generates the HAsciiString
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Moved() ;
+  
+  //! Adds a text as a CString. Its Length is evaluated from the
+  //! text (by C function strlen)
+  Standard_EXPORT   void Add (const Standard_CString text) ;
+  
+  //! Adds a text as a CString. Its length is given as <lntext>
+  Standard_EXPORT   void Add (const Standard_CString text, const Standard_Integer lntext) ;
+  
+  //! Adds a text as a AsciiString from TCollection
+  Standard_EXPORT   void Add (const TCollection_AsciiString& text) ;
+  
+  //! Adds a text made of only ONE Character
+  Standard_EXPORT   void Add (const Standard_Character text) ;
 
 
 
@@ -107,23 +105,25 @@ protected:
 
 private:
 
-  //! Prepares Move : Inserts Initial Blanks if required, and <br>
-//!           determines if SetKeep can be supported (it cannot be if Length <br>
-//!           + Next String to get (see CanGet) overpass Max Size) <br>
-  Standard_EXPORT     void Prepare() ;
-  //! Keeps characters from SetKeep. If SetKeep is Zero, equivalent <br>
-//!           to Clear <br>
-  Standard_EXPORT     void Keep() ;
+  
+  //! Prepares Move : Inserts Initial Blanks if required, and
+  //! determines if SetKeep can be supported (it cannot be if Length
+  //! + Next String to get (see CanGet) overpass Max Size)
+  Standard_EXPORT   void Prepare() ;
+  
+  //! Keeps characters from SetKeep. If SetKeep is Zero, equivalent
+  //! to Clear
+  Standard_EXPORT   void Keep() ;
 
 
-TCollection_AsciiString theline;
-Standard_Integer themax;
-Standard_Integer theinit;
-Standard_Integer thekeep;
-Standard_Integer theget;
-Standard_Integer thelen;
-Standard_Integer thefriz;
-Standard_Character thekept;
+  TCollection_AsciiString theline;
+  Standard_Integer themax;
+  Standard_Integer theinit;
+  Standard_Integer thekeep;
+  Standard_Integer theget;
+  Standard_Integer thelen;
+  Standard_Integer thefriz;
+  Standard_Character thekept;
 
 
 };
@@ -132,7 +132,6 @@ Standard_Character thekept;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Interface_LineBuffer_HeaderFile

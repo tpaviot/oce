@@ -1,3 +1,1 @@
-#ifndef _TCollection_CompareOfInteger_HeaderFile
 #include <TCollection_CompareOfInteger.hxx>
-#endif

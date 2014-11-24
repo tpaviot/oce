@@ -6,25 +6,13 @@
 #ifndef _TColStd_StdMapNodeOfMapOfTransient_HeaderFile
 #define _TColStd_StdMapNodeOfMapOfTransient_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColStd_StdMapNodeOfMapOfTransient_HeaderFile
 #include <Handle_TColStd_StdMapNodeOfMapOfTransient.hxx>
-#endif
 
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Standard_Transient;
 class TColStd_MapTransientHasher;
 class TColStd_MapOfTransient;
@@ -32,14 +20,15 @@ class TColStd_MapIteratorOfMapOfTransient;
 
 
 
-class TColStd_StdMapNodeOfMapOfTransient : public TCollection_MapNode {
+class TColStd_StdMapNodeOfMapOfTransient : public TCollection_MapNode
+{
 
 public:
 
   
-      TColStd_StdMapNodeOfMapOfTransient(const Handle(Standard_Transient)& K,const TCollection_MapNodePtr& n);
+    TColStd_StdMapNodeOfMapOfTransient(const Handle(Standard_Transient)& K, const TCollection_MapNodePtr& n);
   
-        Handle_Standard_Transient& Key() const;
+      Handle(Standard_Transient)& Key()  const;
 
 
 
@@ -54,12 +43,12 @@ protected:
 private: 
 
 
-Handle_Standard_Transient myKey;
+  Handle(Standard_Transient) myKey;
 
 
 };
 
-#define TheKey Handle_Standard_Transient
+#define TheKey Handle(Standard_Transient)
 #define TheKey_hxx <Standard_Transient.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>
@@ -88,7 +77,6 @@ Handle_Standard_Transient myKey;
 #undef TCollection_Map_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_StdMapNodeOfMapOfTransient_HeaderFile

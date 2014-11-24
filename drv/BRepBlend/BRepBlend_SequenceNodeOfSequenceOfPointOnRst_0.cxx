@@ -5,16 +5,10 @@
 
 #include <BRepBlend_SequenceNodeOfSequenceOfPointOnRst.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _BRepBlend_PointOnRst_HeaderFile
 #include <BRepBlend_PointOnRst.hxx>
-#endif
-#ifndef _BRepBlend_SequenceOfPointOnRst_HeaderFile
 #include <BRepBlend_SequenceOfPointOnRst.hxx>
-#endif
 
  
 

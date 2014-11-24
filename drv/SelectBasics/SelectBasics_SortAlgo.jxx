@@ -1,9 +1,3 @@
-#ifndef _Bnd_Box2d_HeaderFile
 #include <Bnd_Box2d.hxx>
-#endif
-#ifndef _Bnd_HArray1OfBox2d_HeaderFile
 #include <Bnd_HArray1OfBox2d.hxx>
-#endif
-#ifndef _SelectBasics_SortAlgo_HeaderFile
 #include <SelectBasics_SortAlgo.hxx>
-#endif

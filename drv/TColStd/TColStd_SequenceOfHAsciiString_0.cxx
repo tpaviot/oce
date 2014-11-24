@@ -5,21 +5,13 @@
 
 #include <TColStd_SequenceOfHAsciiString.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _TColStd_SequenceNodeOfSequenceOfHAsciiString_HeaderFile
 #include <TColStd_SequenceNodeOfSequenceOfHAsciiString.hxx>
-#endif
  
 
-#define SeqItem Handle_TCollection_HAsciiString
+#define SeqItem Handle(TCollection_HAsciiString)
 #define SeqItem_hxx <TCollection_HAsciiString.hxx>
 #define TCollection_SequenceNode TColStd_SequenceNodeOfSequenceOfHAsciiString
 #define TCollection_SequenceNode_hxx <TColStd_SequenceNodeOfSequenceOfHAsciiString.hxx>

@@ -1,6 +1,2 @@
-#ifndef _XSAlgo_AlgoContainer_HeaderFile
 #include <XSAlgo_AlgoContainer.hxx>
-#endif
-#ifndef _XSAlgo_HeaderFile
 #include <XSAlgo.hxx>
-#endif

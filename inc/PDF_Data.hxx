@@ -6,53 +6,43 @@
 #ifndef _PDF_Data_HeaderFile
 #define _PDF_Data_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PDF_Data_HeaderFile
 #include <Handle_PDF_Data.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_PColStd_HArray1OfInteger_HeaderFile
 #include <Handle_PColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Handle_PDF_HAttributeArray1_HeaderFile
 #include <Handle_PDF_HAttributeArray1.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
 class PColStd_HArray1OfInteger;
 class PDF_HAttributeArray1;
 
 
-class PDF_Data : public Standard_Persistent {
+class PDF_Data : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PDF_Data();
+  Standard_EXPORT PDF_Data();
   
-  Standard_EXPORT   PDF_Data(const Standard_Integer aVersionNumber);
-  //! Returns the value of the field <myVersion>. <br>
-        Standard_Integer VersionNumber() const;
-  //! Sets the field <myLabels> with <theLabels>. <br>
-        void Labels(const Handle(PColStd_HArray1OfInteger)& theLabels) ;
-  //! Returns the value of the field <myLabels>. <br>
-        Handle_PColStd_HArray1OfInteger Labels() const;
-  //! Sets the field <myAttributes> with <theAttributes>. <br>
-        void Attributes(const Handle(PDF_HAttributeArray1)& theAttributes) ;
-  //! Returns the value of the field <myAttributes>. <br>
-        Handle_PDF_HAttributeArray1 Attributes() const;
+  Standard_EXPORT PDF_Data(const Standard_Integer aVersionNumber);
+  
+  //! Returns the value of the field <myVersion>.
+      Standard_Integer VersionNumber()  const;
+  
+  //! Sets the field <myLabels> with <theLabels>.
+      void Labels (const Handle(PColStd_HArray1OfInteger)& theLabels) ;
+  
+  //! Returns the value of the field <myLabels>.
+      Handle(PColStd_HArray1OfInteger) Labels()  const;
+  
+  //! Sets the field <myAttributes> with <theAttributes>.
+      void Attributes (const Handle(PDF_HAttributeArray1)& theAttributes) ;
+  
+  //! Returns the value of the field <myAttributes>.
+      Handle(PDF_HAttributeArray1) Attributes()  const;
 
 PDF_Data(const Storage_stCONSTclCOM& a) : Standard_Persistent(a)
 {
@@ -77,9 +67,9 @@ protected:
 private: 
 
 
-Standard_Integer myVersion;
-Handle_PColStd_HArray1OfInteger myLabels;
-Handle_PDF_HAttributeArray1 myAttributes;
+  Standard_Integer myVersion;
+  Handle(PColStd_HArray1OfInteger) myLabels;
+  Handle(PDF_HAttributeArray1) myAttributes;
 
 
 };
@@ -89,7 +79,6 @@ Handle_PDF_HAttributeArray1 myAttributes;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDF_Data_HeaderFile

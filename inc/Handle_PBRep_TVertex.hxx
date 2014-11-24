@@ -6,18 +6,10 @@
 #ifndef _Handle_PBRep_TVertex_HeaderFile
 #define _Handle_PBRep_TVertex_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PTopoDS_TVertex_HeaderFile
 #include <Handle_PTopoDS_TVertex.hxx>
-#endif
 
 class Standard_Persistent;
 class Handle(Standard_Type);

@@ -5,22 +5,12 @@
 
 #include <GeomPlate_HSequenceOfPointConstraint.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _GeomPlate_PointConstraint_HeaderFile
 #include <GeomPlate_PointConstraint.hxx>
-#endif
-#ifndef _GeomPlate_SequenceOfPointConstraint_HeaderFile
 #include <GeomPlate_SequenceOfPointConstraint.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(GeomPlate_HSequenceOfPointConstraint,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(GeomPlate_HSequenceOfPointConstraint)
 
 
-#define Item Handle_GeomPlate_PointConstraint
+#define Item Handle(GeomPlate_PointConstraint)
 #define Item_hxx <GeomPlate_PointConstraint.hxx>
 #define TheSequence GeomPlate_SequenceOfPointConstraint
 #define TheSequence_hxx <GeomPlate_SequenceOfPointConstraint.hxx>

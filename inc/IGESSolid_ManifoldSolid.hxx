@@ -6,34 +6,16 @@
 #ifndef _IGESSolid_ManifoldSolid_HeaderFile
 #define _IGESSolid_ManifoldSolid_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSolid_ManifoldSolid_HeaderFile
 #include <Handle_IGESSolid_ManifoldSolid.hxx>
-#endif
 
-#ifndef _Handle_IGESSolid_Shell_HeaderFile
 #include <Handle_IGESSolid_Shell.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_IGESSolid_HArray1OfShell_HeaderFile
 #include <Handle_IGESSolid_HArray1OfShell.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfInteger_HeaderFile
 #include <Handle_TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class IGESSolid_Shell;
 class IGESSolid_HArray1OfShell;
 class TColStd_HArray1OfInteger;
@@ -41,37 +23,44 @@ class Standard_DimensionMismatch;
 class Standard_OutOfRange;
 
 
-//! defines ManifoldSolid, Type <186> Form Number <0> <br>
-//!          in package IGESSolid <br>
-//!          A manifold solid is a bounded, closed, and finite volume <br>
-//!          in three dimensional Euclidean space <br>
-class IGESSolid_ManifoldSolid : public IGESData_IGESEntity {
+//! defines ManifoldSolid, Type <186> Form Number <0>
+//! in package IGESSolid
+//! A manifold solid is a bounded, closed, and finite volume
+//! in three dimensional Euclidean space
+class IGESSolid_ManifoldSolid : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESSolid_ManifoldSolid();
-  //! This method is used to set the fields of the class <br>
-//!           ManifoldSolid <br>
-//!       - aShell         : pointer to the shell <br>
-//!       - shellflag      : orientation flag of shell <br>
-//!       - voidShells     : the void shells <br>
-//!       - voidShellFlags : orientation of the void shells <br>
-//! raises exception if length of voidShells and voidShellFlags <br>
-//! do not match <br>
-  Standard_EXPORT     void Init(const Handle(IGESSolid_Shell)& aShell,const Standard_Boolean shellflag,const Handle(IGESSolid_HArray1OfShell)& voidShells,const Handle(TColStd_HArray1OfInteger)& voidShellFlags) ;
-  //! returns the Shell entity which is being referred <br>
-  Standard_EXPORT     Handle_IGESSolid_Shell Shell() const;
-  //! returns the orientation flag of the shell <br>
-  Standard_EXPORT     Standard_Boolean OrientationFlag() const;
-  //! returns the number of void shells <br>
-  Standard_EXPORT     Standard_Integer NbVoidShells() const;
-  //! returns Index'th void shell. <br>
-//! raises exception if Index  <= 0 or Index > NbVoidShells() <br>
-  Standard_EXPORT     Handle_IGESSolid_Shell VoidShell(const Standard_Integer Index) const;
-  //! returns Index'th orientation flag. <br>
-//! raises exception if Index  <= 0 or Index > NbVoidShells() <br>
-  Standard_EXPORT     Standard_Boolean VoidOrientationFlag(const Standard_Integer Index) const;
+  Standard_EXPORT IGESSolid_ManifoldSolid();
+  
+  //! This method is used to set the fields of the class
+  //! ManifoldSolid
+  //! - aShell         : pointer to the shell
+  //! - shellflag      : orientation flag of shell
+  //! - voidShells     : the void shells
+  //! - voidShellFlags : orientation of the void shells
+  //! raises exception if length of voidShells and voidShellFlags
+  //! do not match
+  Standard_EXPORT   void Init (const Handle(IGESSolid_Shell)& aShell, const Standard_Boolean shellflag, const Handle(IGESSolid_HArray1OfShell)& voidShells, const Handle(TColStd_HArray1OfInteger)& voidShellFlags) ;
+  
+  //! returns the Shell entity which is being referred
+  Standard_EXPORT   Handle(IGESSolid_Shell) Shell()  const;
+  
+  //! returns the orientation flag of the shell
+  Standard_EXPORT   Standard_Boolean OrientationFlag()  const;
+  
+  //! returns the number of void shells
+  Standard_EXPORT   Standard_Integer NbVoidShells()  const;
+  
+  //! returns Index'th void shell.
+  //! raises exception if Index  <= 0 or Index > NbVoidShells()
+  Standard_EXPORT   Handle(IGESSolid_Shell) VoidShell (const Standard_Integer Index)  const;
+  
+  //! returns Index'th orientation flag.
+  //! raises exception if Index  <= 0 or Index > NbVoidShells()
+  Standard_EXPORT   Standard_Boolean VoidOrientationFlag (const Standard_Integer Index)  const;
 
 
 
@@ -86,10 +75,10 @@ protected:
 private: 
 
 
-Handle_IGESSolid_Shell theShell;
-Standard_Boolean theOrientationFlag;
-Handle_IGESSolid_HArray1OfShell theVoidShells;
-Handle_TColStd_HArray1OfInteger theOrientFlags;
+  Handle(IGESSolid_Shell) theShell;
+  Standard_Boolean theOrientationFlag;
+  Handle(IGESSolid_HArray1OfShell) theVoidShells;
+  Handle(TColStd_HArray1OfInteger) theOrientFlags;
 
 
 };
@@ -98,7 +87,6 @@ Handle_TColStd_HArray1OfInteger theOrientFlags;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSolid_ManifoldSolid_HeaderFile

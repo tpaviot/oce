@@ -1,15 +1,5 @@
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Geom_Surface_HeaderFile
 #include <Geom_Surface.hxx>
-#endif
-#ifndef _Geom_Curve_HeaderFile
 #include <Geom_Curve.hxx>
-#endif
-#ifndef _GeomAPI_IntSS_HeaderFile
 #include <GeomAPI_IntSS.hxx>
-#endif

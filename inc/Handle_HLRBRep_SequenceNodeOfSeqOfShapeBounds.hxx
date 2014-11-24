@@ -6,22 +6,15 @@
 #ifndef _Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds_HeaderFile
 #define _Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TCollection_SeqNode_HeaderFile
 #include <Handle_TCollection_SeqNode.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TCollection_SeqNode);
 class HLRBRep_SequenceNodeOfSeqOfShapeBounds;
 
-DEFINE_STANDARD_HANDLE(HLRBRep_SequenceNodeOfSeqOfShapeBounds,TCollection_SeqNode)
+DEFINE_STANDARD_HANDLE(HLRBRep_SequenceNodeOfSeqOfShapeBounds, TCollection_SeqNode)
 
-#endif
+#endif // _Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds_HeaderFile

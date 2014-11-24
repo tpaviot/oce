@@ -5,16 +5,10 @@
 
 #include <Convert_SequenceNodeOfSequenceOfArray1OfPoles.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColgp_HArray1OfPnt_HeaderFile
 #include <TColgp_HArray1OfPnt.hxx>
-#endif
-#ifndef _Convert_SequenceOfArray1OfPoles_HeaderFile
 #include <Convert_SequenceOfArray1OfPoles.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(Convert_SequenceNodeOfSequenceOfArray1OfPoles,Standard_Transi
 IMPLEMENT_STANDARD_RTTI(Convert_SequenceNodeOfSequenceOfArray1OfPoles)
 
 
-#define SeqItem Handle_TColgp_HArray1OfPnt
+#define SeqItem Handle(TColgp_HArray1OfPnt)
 #define SeqItem_hxx <TColgp_HArray1OfPnt.hxx>
 #define TCollection_SequenceNode Convert_SequenceNodeOfSequenceOfArray1OfPoles
 #define TCollection_SequenceNode_hxx <Convert_SequenceNodeOfSequenceOfArray1OfPoles.hxx>

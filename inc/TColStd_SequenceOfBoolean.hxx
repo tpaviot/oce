@@ -6,96 +6,82 @@
 #ifndef _TColStd_SequenceOfBoolean_HeaderFile
 #define _TColStd_SequenceOfBoolean_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TColStd_SequenceNodeOfSequenceOfBoolean_HeaderFile
 #include <Handle_TColStd_SequenceNodeOfSequenceOfBoolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class TColStd_SequenceNodeOfSequenceOfBoolean;
 
 
 
-class TColStd_SequenceOfBoolean  : public TCollection_BaseSequence {
+class TColStd_SequenceOfBoolean  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      TColStd_SequenceOfBoolean();
+    TColStd_SequenceOfBoolean();
   
-  Standard_EXPORT   TColStd_SequenceOfBoolean(const TColStd_SequenceOfBoolean& Other);
+  Standard_EXPORT TColStd_SequenceOfBoolean(const TColStd_SequenceOfBoolean& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TColStd_SequenceOfBoolean()
 {
   Clear();
 }
   
-  Standard_EXPORT    const TColStd_SequenceOfBoolean& Assign(const TColStd_SequenceOfBoolean& Other) ;
-   const TColStd_SequenceOfBoolean& operator =(const TColStd_SequenceOfBoolean& Other) 
+  Standard_EXPORT  const  TColStd_SequenceOfBoolean& Assign (const TColStd_SequenceOfBoolean& Other) ;
+ const  TColStd_SequenceOfBoolean& operator = (const TColStd_SequenceOfBoolean& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Standard_Boolean& T) ;
+  Standard_EXPORT   void Append (const Standard_Boolean& T) ;
   
-        void Append(TColStd_SequenceOfBoolean& S) ;
+      void Append (TColStd_SequenceOfBoolean& S) ;
   
-  Standard_EXPORT     void Prepend(const Standard_Boolean& T) ;
+  Standard_EXPORT   void Prepend (const Standard_Boolean& T) ;
   
-        void Prepend(TColStd_SequenceOfBoolean& S) ;
+      void Prepend (TColStd_SequenceOfBoolean& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Standard_Boolean& T) ;
+      void InsertBefore (const Standard_Integer Index, const Standard_Boolean& T) ;
   
-        void InsertBefore(const Standard_Integer Index,TColStd_SequenceOfBoolean& S) ;
+      void InsertBefore (const Standard_Integer Index, TColStd_SequenceOfBoolean& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Standard_Boolean& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Standard_Boolean& T) ;
   
-        void InsertAfter(const Standard_Integer Index,TColStd_SequenceOfBoolean& S) ;
+      void InsertAfter (const Standard_Integer Index, TColStd_SequenceOfBoolean& S) ;
   
-  Standard_EXPORT    const Standard_Boolean& First() const;
+  Standard_EXPORT  const  Standard_Boolean& First()  const;
   
-  Standard_EXPORT    const Standard_Boolean& Last() const;
+  Standard_EXPORT  const  Standard_Boolean& Last()  const;
   
-        void Split(const Standard_Integer Index,TColStd_SequenceOfBoolean& Sub) ;
+      void Split (const Standard_Integer Index, TColStd_SequenceOfBoolean& Sub) ;
   
-  Standard_EXPORT    const Standard_Boolean& Value(const Standard_Integer Index) const;
-   const Standard_Boolean& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Standard_Boolean& Value (const Standard_Integer Index)  const;
+ const  Standard_Boolean& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Standard_Boolean& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Standard_Boolean& I) ;
   
-  Standard_EXPORT     Standard_Boolean& ChangeValue(const Standard_Integer Index) ;
-    Standard_Boolean& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Standard_Boolean& ChangeValue (const Standard_Integer Index) ;
+  Standard_Boolean& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -135,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_SequenceOfBoolean_HeaderFile

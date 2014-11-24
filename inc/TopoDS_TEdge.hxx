@@ -6,32 +6,24 @@
 #ifndef _TopoDS_TEdge_HeaderFile
 #define _TopoDS_TEdge_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopoDS_TEdge_HeaderFile
 #include <Handle_TopoDS_TEdge.hxx>
-#endif
 
-#ifndef _TopoDS_TShape_HeaderFile
 #include <TopoDS_TShape.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
 
 
-//! A topological part  of a  curve  in 2D or 3D,  the <br>
-//!          boundary    is   a   set  of oriented    Vertices. <br>
-class TopoDS_TEdge : public TopoDS_TShape {
+//! A topological part  of a  curve  in 2D or 3D,  the
+//! boundary    is   a   set  of oriented    Vertices.
+class TopoDS_TEdge : public TopoDS_TShape
+{
 
 public:
 
-  //! Returns  EDGE. <br>
-  Standard_EXPORT     TopAbs_ShapeEnum ShapeType() const;
+  
+  //! Returns  EDGE.
+  Standard_EXPORT   TopAbs_ShapeEnum ShapeType()  const;
 
 
 
@@ -40,8 +32,9 @@ public:
 
 protected:
 
-  //! Construct an edge. <br>
-      TopoDS_TEdge();
+  
+  //! Construct an edge.
+    TopoDS_TEdge();
 
 
 
@@ -57,7 +50,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopoDS_TEdge_HeaderFile

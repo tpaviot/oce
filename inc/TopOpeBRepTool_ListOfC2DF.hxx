@@ -6,28 +6,14 @@
 #ifndef _TopOpeBRepTool_ListOfC2DF_HeaderFile
 #define _TopOpeBRepTool_ListOfC2DF_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepTool_ListNodeOfListOfC2DF_HeaderFile
 #include <Handle_TopOpeBRepTool_ListNodeOfListOfC2DF.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class TopOpeBRepTool_ListIteratorOfListOfC2DF;
 class TopOpeBRepTool_C2DF;
@@ -35,63 +21,63 @@ class TopOpeBRepTool_ListNodeOfListOfC2DF;
 
 
 
-class TopOpeBRepTool_ListOfC2DF  {
+class TopOpeBRepTool_ListOfC2DF 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepTool_ListOfC2DF();
+  Standard_EXPORT TopOpeBRepTool_ListOfC2DF();
   
-  Standard_EXPORT   TopOpeBRepTool_ListOfC2DF(const TopOpeBRepTool_ListOfC2DF& Other);
+  Standard_EXPORT TopOpeBRepTool_ListOfC2DF(const TopOpeBRepTool_ListOfC2DF& Other);
   
-  Standard_EXPORT     void Assign(const TopOpeBRepTool_ListOfC2DF& Other) ;
-    void operator=(const TopOpeBRepTool_ListOfC2DF& Other) 
+  Standard_EXPORT   void Assign (const TopOpeBRepTool_ListOfC2DF& Other) ;
+  void operator= (const TopOpeBRepTool_ListOfC2DF& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TopOpeBRepTool_ListOfC2DF()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const TopOpeBRepTool_C2DF& I) ;
+  Standard_EXPORT   void Prepend (const TopOpeBRepTool_C2DF& I) ;
   
-  Standard_EXPORT     void Prepend(const TopOpeBRepTool_C2DF& I,TopOpeBRepTool_ListIteratorOfListOfC2DF& theIt) ;
+  Standard_EXPORT   void Prepend (const TopOpeBRepTool_C2DF& I, TopOpeBRepTool_ListIteratorOfListOfC2DF& theIt) ;
   
-  Standard_EXPORT     void Prepend(TopOpeBRepTool_ListOfC2DF& Other) ;
+  Standard_EXPORT   void Prepend (TopOpeBRepTool_ListOfC2DF& Other) ;
   
-  Standard_EXPORT     void Append(const TopOpeBRepTool_C2DF& I) ;
+  Standard_EXPORT   void Append (const TopOpeBRepTool_C2DF& I) ;
   
-  Standard_EXPORT     void Append(const TopOpeBRepTool_C2DF& I,TopOpeBRepTool_ListIteratorOfListOfC2DF& theIt) ;
+  Standard_EXPORT   void Append (const TopOpeBRepTool_C2DF& I, TopOpeBRepTool_ListIteratorOfListOfC2DF& theIt) ;
   
-  Standard_EXPORT     void Append(TopOpeBRepTool_ListOfC2DF& Other) ;
+  Standard_EXPORT   void Append (TopOpeBRepTool_ListOfC2DF& Other) ;
   
-  Standard_EXPORT     TopOpeBRepTool_C2DF& First() const;
+  Standard_EXPORT   TopOpeBRepTool_C2DF& First()  const;
   
-  Standard_EXPORT     TopOpeBRepTool_C2DF& Last() const;
+  Standard_EXPORT   TopOpeBRepTool_C2DF& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(TopOpeBRepTool_ListIteratorOfListOfC2DF& It) ;
+  Standard_EXPORT   void Remove (TopOpeBRepTool_ListIteratorOfListOfC2DF& It) ;
   
-  Standard_EXPORT     void InsertBefore(const TopOpeBRepTool_C2DF& I,TopOpeBRepTool_ListIteratorOfListOfC2DF& It) ;
+  Standard_EXPORT   void InsertBefore (const TopOpeBRepTool_C2DF& I, TopOpeBRepTool_ListIteratorOfListOfC2DF& It) ;
   
-  Standard_EXPORT     void InsertBefore(TopOpeBRepTool_ListOfC2DF& Other,TopOpeBRepTool_ListIteratorOfListOfC2DF& It) ;
+  Standard_EXPORT   void InsertBefore (TopOpeBRepTool_ListOfC2DF& Other, TopOpeBRepTool_ListIteratorOfListOfC2DF& It) ;
   
-  Standard_EXPORT     void InsertAfter(const TopOpeBRepTool_C2DF& I,TopOpeBRepTool_ListIteratorOfListOfC2DF& It) ;
+  Standard_EXPORT   void InsertAfter (const TopOpeBRepTool_C2DF& I, TopOpeBRepTool_ListIteratorOfListOfC2DF& It) ;
   
-  Standard_EXPORT     void InsertAfter(TopOpeBRepTool_ListOfC2DF& Other,TopOpeBRepTool_ListIteratorOfListOfC2DF& It) ;
+  Standard_EXPORT   void InsertAfter (TopOpeBRepTool_ListOfC2DF& Other, TopOpeBRepTool_ListIteratorOfListOfC2DF& It) ;
 
 
 friend class TopOpeBRepTool_ListIteratorOfListOfC2DF;
-
 
 
 protected:
@@ -104,8 +90,8 @@ private:
 
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
@@ -135,7 +121,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepTool_ListOfC2DF_HeaderFile

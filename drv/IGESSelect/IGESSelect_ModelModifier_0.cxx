@@ -5,28 +5,14 @@
 
 #include <IGESSelect_ModelModifier.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IGESData_IGESModel_HeaderFile
 #include <IGESData_IGESModel.hxx>
-#endif
-#ifndef _IGESData_Protocol_HeaderFile
 #include <IGESData_Protocol.hxx>
-#endif
-#ifndef _IFSelect_ContextModif_HeaderFile
 #include <IFSelect_ContextModif.hxx>
-#endif
-#ifndef _Interface_InterfaceModel_HeaderFile
 #include <Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Interface_Protocol_HeaderFile
 #include <Interface_Protocol.hxx>
-#endif
-#ifndef _Interface_CopyTool_HeaderFile
 #include <Interface_CopyTool.hxx>
-#endif
 
  
 

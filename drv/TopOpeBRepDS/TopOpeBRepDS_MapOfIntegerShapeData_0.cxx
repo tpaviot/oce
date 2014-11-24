@@ -5,24 +5,12 @@
 
 #include <TopOpeBRepDS_MapOfIntegerShapeData.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopOpeBRepDS_ShapeData_HeaderFile
 #include <TopOpeBRepDS_ShapeData.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData_HeaderFile
 #include <TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapIteratorOfMapOfIntegerShapeData_HeaderFile
 #include <TopOpeBRepDS_DataMapIteratorOfMapOfIntegerShapeData.hxx>
-#endif
  
 
 #define TheKey Standard_Integer

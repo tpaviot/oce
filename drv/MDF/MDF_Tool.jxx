@@ -1,30 +1,10 @@
-#ifndef _TDF_Data_HeaderFile
 #include <TDF_Data.hxx>
-#endif
-#ifndef _PDF_Data_HeaderFile
 #include <PDF_Data.hxx>
-#endif
-#ifndef _MDF_TypeASDriverMap_HeaderFile
 #include <MDF_TypeASDriverMap.hxx>
-#endif
-#ifndef _MDF_SRelocationTable_HeaderFile
 #include <MDF_SRelocationTable.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _PColStd_HArray1OfInteger_HeaderFile
 #include <PColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _PDF_HAttributeArray1_HeaderFile
 #include <PDF_HAttributeArray1.hxx>
-#endif
-#ifndef _MDF_TypeARDriverMap_HeaderFile
 #include <MDF_TypeARDriverMap.hxx>
-#endif
-#ifndef _MDF_RRelocationTable_HeaderFile
 #include <MDF_RRelocationTable.hxx>
-#endif
-#ifndef _MDF_Tool_HeaderFile
 #include <MDF_Tool.hxx>
-#endif

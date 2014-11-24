@@ -6,31 +6,15 @@
 #ifndef _ShapeExtend_MsgRegistrator_HeaderFile
 #define _ShapeExtend_MsgRegistrator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeExtend_MsgRegistrator_HeaderFile
 #include <Handle_ShapeExtend_MsgRegistrator.hxx>
-#endif
 
-#ifndef _ShapeExtend_DataMapOfTransientListOfMsg_HeaderFile
 #include <ShapeExtend_DataMapOfTransientListOfMsg.hxx>
-#endif
-#ifndef _ShapeExtend_DataMapOfShapeListOfMsg_HeaderFile
 #include <ShapeExtend_DataMapOfShapeListOfMsg.hxx>
-#endif
-#ifndef _ShapeExtend_BasicMsgRegistrator_HeaderFile
 #include <ShapeExtend_BasicMsgRegistrator.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Message_Gravity_HeaderFile
 #include <Message_Gravity.hxx>
-#endif
 class Standard_Transient;
 class Message_Msg;
 class TopoDS_Shape;
@@ -38,32 +22,38 @@ class ShapeExtend_DataMapOfTransientListOfMsg;
 class ShapeExtend_DataMapOfShapeListOfMsg;
 
 
-//! Attaches messages to the objects (generic Transient or shape). <br>
-//!          The objects of this class are transmitted to the Shape Healing <br>
-//!          algorithms so that they could collect messages occurred during <br>
-//!          processing. <br>
-//! <br>
-//!          Messages are added to the Maps (stored as a field) that can be <br>
-//!          used, for instance, by Data Exchange processors to attach those <br>
-//!          messages to initial file entities. <br>
-class ShapeExtend_MsgRegistrator : public ShapeExtend_BasicMsgRegistrator {
+//! Attaches messages to the objects (generic Transient or shape).
+//! The objects of this class are transmitted to the Shape Healing
+//! algorithms so that they could collect messages occurred during
+//! processing.
+//!
+//! Messages are added to the Maps (stored as a field) that can be
+//! used, for instance, by Data Exchange processors to attach those
+//! messages to initial file entities.
+class ShapeExtend_MsgRegistrator : public ShapeExtend_BasicMsgRegistrator
+{
 
 public:
 
-  //! Creates an object. <br>
-  Standard_EXPORT   ShapeExtend_MsgRegistrator();
-  //! Sends a message to be attached to the object. <br>
-//!          If the object is in the map then the message is added to the <br>
-//!          list, otherwise the object is firstly added to the map. <br>
-  Standard_EXPORT   virtual  void Send(const Handle(Standard_Transient)& object,const Message_Msg& message,const Message_Gravity gravity) ;
-  //! Sends a message to be attached to the shape. <br>
-//!          If the shape is in the map then the message is added to the <br>
-//!          list, otherwise the shape is firstly added to the map. <br>
-  Standard_EXPORT   virtual  void Send(const TopoDS_Shape& shape,const Message_Msg& message,const Message_Gravity gravity) ;
-  //! Returns a Map of objects and message list <br>
-       const ShapeExtend_DataMapOfTransientListOfMsg& MapTransient() const;
-  //! Returns a Map of shapes and message list <br>
-       const ShapeExtend_DataMapOfShapeListOfMsg& MapShape() const;
+  
+  //! Creates an object.
+  Standard_EXPORT ShapeExtend_MsgRegistrator();
+  
+  //! Sends a message to be attached to the object.
+  //! If the object is in the map then the message is added to the
+  //! list, otherwise the object is firstly added to the map.
+  Standard_EXPORT virtual   void Send (const Handle(Standard_Transient)& object, const Message_Msg& message, const Message_Gravity gravity) ;
+  
+  //! Sends a message to be attached to the shape.
+  //! If the shape is in the map then the message is added to the
+  //! list, otherwise the shape is firstly added to the map.
+  Standard_EXPORT virtual   void Send (const TopoDS_Shape& shape, const Message_Msg& message, const Message_Gravity gravity) ;
+  
+  //! Returns a Map of objects and message list
+     const  ShapeExtend_DataMapOfTransientListOfMsg& MapTransient()  const;
+  
+  //! Returns a Map of shapes and message list
+     const  ShapeExtend_DataMapOfShapeListOfMsg& MapShape()  const;
 
 
 
@@ -78,8 +68,8 @@ protected:
 private: 
 
 
-ShapeExtend_DataMapOfTransientListOfMsg myMapTransient;
-ShapeExtend_DataMapOfShapeListOfMsg myMapShape;
+  ShapeExtend_DataMapOfTransientListOfMsg myMapTransient;
+  ShapeExtend_DataMapOfShapeListOfMsg myMapShape;
 
 
 };
@@ -89,7 +79,6 @@ ShapeExtend_DataMapOfShapeListOfMsg myMapShape;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeExtend_MsgRegistrator_HeaderFile

@@ -1,9 +1,3 @@
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _TPrsStd_Driver_HeaderFile
 #include <TPrsStd_Driver.hxx>
-#endif
-#ifndef _TPrsStd_DriverTable_HeaderFile
 #include <TPrsStd_DriverTable.hxx>
-#endif

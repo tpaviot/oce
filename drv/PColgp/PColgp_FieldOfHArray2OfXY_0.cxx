@@ -5,31 +5,15 @@
 
 #include <PColgp_FieldOfHArray2OfXY.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NegativeValue_HeaderFile
 #include <Standard_NegativeValue.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_NullObject_HeaderFile
 #include <Standard_NullObject.hxx>
-#endif
-#ifndef _gp_XY_HeaderFile
 #include <gp_XY.hxx>
-#endif
-#ifndef _PColgp_VArrayNodeOfFieldOfHArray2OfXY_HeaderFile
 #include <PColgp_VArrayNodeOfFieldOfHArray2OfXY.hxx>
-#endif
-#ifndef _PColgp_VArrayTNodeOfFieldOfHArray2OfXY_HeaderFile
 #include <PColgp_VArrayTNodeOfFieldOfHArray2OfXY.hxx>
-#endif
 
 IMPLEMENT_STANDARD_TYPE(PColgp_FieldOfHArray2OfXY)
 IMPLEMENT_STANDARD_SUPERTYPE_ARRAY()

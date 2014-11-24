@@ -6,58 +6,47 @@
 #ifndef _IGESDimen_GeneralLabel_HeaderFile
 #define _IGESDimen_GeneralLabel_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESDimen_GeneralLabel_HeaderFile
 #include <Handle_IGESDimen_GeneralLabel.hxx>
-#endif
 
-#ifndef _Handle_IGESDimen_GeneralNote_HeaderFile
 #include <Handle_IGESDimen_GeneralNote.hxx>
-#endif
-#ifndef _Handle_IGESDimen_HArray1OfLeaderArrow_HeaderFile
 #include <Handle_IGESDimen_HArray1OfLeaderArrow.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_IGESDimen_LeaderArrow_HeaderFile
 #include <Handle_IGESDimen_LeaderArrow.hxx>
-#endif
 class IGESDimen_GeneralNote;
 class IGESDimen_HArray1OfLeaderArrow;
 class Standard_OutOfRange;
 class IGESDimen_LeaderArrow;
 
 
-//! defines GeneralLabel, Type <210> Form <0> <br>
-//!          in package IGESDimen <br>
-//!          Used for general labeling with leaders <br>
-class IGESDimen_GeneralLabel : public IGESData_IGESEntity {
+//! defines GeneralLabel, Type <210> Form <0>
+//! in package IGESDimen
+//! Used for general labeling with leaders
+class IGESDimen_GeneralLabel : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESDimen_GeneralLabel();
-  //! This method is used to set the fields of the class <br>
-//!           GeneralLabel <br>
-//!       - aNote       : General Note Entity <br>
-//!       - someLeaders : Associated Leader Entities <br>
-  Standard_EXPORT     void Init(const Handle(IGESDimen_GeneralNote)& aNote,const Handle(IGESDimen_HArray1OfLeaderArrow)& someLeaders) ;
-  //! returns General Note Entity <br>
-  Standard_EXPORT     Handle_IGESDimen_GeneralNote Note() const;
-  //! returns Number of Leaders <br>
-  Standard_EXPORT     Standard_Integer NbLeaders() const;
-  //! returns Leader Entity <br>
-//! raises exception if Index <= 0 or Index > NbLeaders() <br>
-  Standard_EXPORT     Handle_IGESDimen_LeaderArrow Leader(const Standard_Integer Index) const;
+  Standard_EXPORT IGESDimen_GeneralLabel();
+  
+  //! This method is used to set the fields of the class
+  //! GeneralLabel
+  //! - aNote       : General Note Entity
+  //! - someLeaders : Associated Leader Entities
+  Standard_EXPORT   void Init (const Handle(IGESDimen_GeneralNote)& aNote, const Handle(IGESDimen_HArray1OfLeaderArrow)& someLeaders) ;
+  
+  //! returns General Note Entity
+  Standard_EXPORT   Handle(IGESDimen_GeneralNote) Note()  const;
+  
+  //! returns Number of Leaders
+  Standard_EXPORT   Standard_Integer NbLeaders()  const;
+  
+  //! returns Leader Entity
+  //! raises exception if Index <= 0 or Index > NbLeaders()
+  Standard_EXPORT   Handle(IGESDimen_LeaderArrow) Leader (const Standard_Integer Index)  const;
 
 
 
@@ -72,8 +61,8 @@ protected:
 private: 
 
 
-Handle_IGESDimen_GeneralNote theNote;
-Handle_IGESDimen_HArray1OfLeaderArrow theLeaders;
+  Handle(IGESDimen_GeneralNote) theNote;
+  Handle(IGESDimen_HArray1OfLeaderArrow) theLeaders;
 
 
 };
@@ -82,7 +71,6 @@ Handle_IGESDimen_HArray1OfLeaderArrow theLeaders;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESDimen_GeneralLabel_HeaderFile

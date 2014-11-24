@@ -1,6 +1,2 @@
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _TDF_DefaultDeltaOnModification_HeaderFile
 #include <TDF_DefaultDeltaOnModification.hxx>
-#endif

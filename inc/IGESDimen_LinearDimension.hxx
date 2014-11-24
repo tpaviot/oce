@@ -6,77 +6,69 @@
 #ifndef _IGESDimen_LinearDimension_HeaderFile
 #define _IGESDimen_LinearDimension_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESDimen_LinearDimension_HeaderFile
 #include <Handle_IGESDimen_LinearDimension.hxx>
-#endif
 
-#ifndef _Handle_IGESDimen_GeneralNote_HeaderFile
 #include <Handle_IGESDimen_GeneralNote.hxx>
-#endif
-#ifndef _Handle_IGESDimen_LeaderArrow_HeaderFile
 #include <Handle_IGESDimen_LeaderArrow.hxx>
-#endif
-#ifndef _Handle_IGESDimen_WitnessLine_HeaderFile
 #include <Handle_IGESDimen_WitnessLine.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class IGESDimen_GeneralNote;
 class IGESDimen_LeaderArrow;
 class IGESDimen_WitnessLine;
 class Standard_OutOfRange;
 
 
-//! defines LinearDimension, Type <216> Form <0> <br>
-//!          in package IGESDimen <br>
-//!          Used for linear dimensioning <br>
-class IGESDimen_LinearDimension : public IGESData_IGESEntity {
+//! defines LinearDimension, Type <216> Form <0>
+//! in package IGESDimen
+//! Used for linear dimensioning
+class IGESDimen_LinearDimension : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESDimen_LinearDimension();
-  //! This method is used to set the fields of the class <br>
-//!           LinearDimension <br>
-//!       - aNote          : General Note Entity <br>
-//!       - aLeader        : First Leader Entity <br>
-//!       - anotherLeader  : Second Leader Entity <br>
-//!       - aWitness       : First Witness Line Entity or a Null <br>
-//!                          Handle <br>
-//!       - anotherWitness : Second Witness Line Entity or a Null <br>
-//!                          Handle <br>
-  Standard_EXPORT     void Init(const Handle(IGESDimen_GeneralNote)& aNote,const Handle(IGESDimen_LeaderArrow)& aLeader,const Handle(IGESDimen_LeaderArrow)& anotherLeader,const Handle(IGESDimen_WitnessLine)& aWitness,const Handle(IGESDimen_WitnessLine)& anotherWitness) ;
-  //! Changes FormNumber (indicates the Nature of the Dimension <br>
-//!           Unspecified, Diameter or Radius) <br>
-//!           Error if not in range [0-2] <br>
-  Standard_EXPORT     void SetFormNumber(const Standard_Integer form) ;
-  //! returns General Note Entity <br>
-  Standard_EXPORT     Handle_IGESDimen_GeneralNote Note() const;
-  //! returns first Leader Entity <br>
-  Standard_EXPORT     Handle_IGESDimen_LeaderArrow FirstLeader() const;
-  //! returns second Leader Entity <br>
-  Standard_EXPORT     Handle_IGESDimen_LeaderArrow SecondLeader() const;
-  //! returns False if no first witness line <br>
-  Standard_EXPORT     Standard_Boolean HasFirstWitness() const;
-  //! returns first Witness Line Entity or a Null Handle <br>
-  Standard_EXPORT     Handle_IGESDimen_WitnessLine FirstWitness() const;
-  //! returns False if no second witness line <br>
-  Standard_EXPORT     Standard_Boolean HasSecondWitness() const;
-  //! returns second Witness Line Entity or a Null Handle <br>
-  Standard_EXPORT     Handle_IGESDimen_WitnessLine SecondWitness() const;
+  Standard_EXPORT IGESDimen_LinearDimension();
+  
+  //! This method is used to set the fields of the class
+  //! LinearDimension
+  //! - aNote          : General Note Entity
+  //! - aLeader        : First Leader Entity
+  //! - anotherLeader  : Second Leader Entity
+  //! - aWitness       : First Witness Line Entity or a Null
+  //! Handle
+  //! - anotherWitness : Second Witness Line Entity or a Null
+  //! Handle
+  Standard_EXPORT   void Init (const Handle(IGESDimen_GeneralNote)& aNote, const Handle(IGESDimen_LeaderArrow)& aLeader, const Handle(IGESDimen_LeaderArrow)& anotherLeader, const Handle(IGESDimen_WitnessLine)& aWitness, const Handle(IGESDimen_WitnessLine)& anotherWitness) ;
+  
+  //! Changes FormNumber (indicates the Nature of the Dimension
+  //! Unspecified, Diameter or Radius)
+  //! Error if not in range [0-2]
+  Standard_EXPORT   void SetFormNumber (const Standard_Integer form) ;
+  
+  //! returns General Note Entity
+  Standard_EXPORT   Handle(IGESDimen_GeneralNote) Note()  const;
+  
+  //! returns first Leader Entity
+  Standard_EXPORT   Handle(IGESDimen_LeaderArrow) FirstLeader()  const;
+  
+  //! returns second Leader Entity
+  Standard_EXPORT   Handle(IGESDimen_LeaderArrow) SecondLeader()  const;
+  
+  //! returns False if no first witness line
+  Standard_EXPORT   Standard_Boolean HasFirstWitness()  const;
+  
+  //! returns first Witness Line Entity or a Null Handle
+  Standard_EXPORT   Handle(IGESDimen_WitnessLine) FirstWitness()  const;
+  
+  //! returns False if no second witness line
+  Standard_EXPORT   Standard_Boolean HasSecondWitness()  const;
+  
+  //! returns second Witness Line Entity or a Null Handle
+  Standard_EXPORT   Handle(IGESDimen_WitnessLine) SecondWitness()  const;
 
 
 
@@ -91,11 +83,11 @@ protected:
 private: 
 
 
-Handle_IGESDimen_GeneralNote theNote;
-Handle_IGESDimen_LeaderArrow theFirstLeader;
-Handle_IGESDimen_LeaderArrow theSecondLeader;
-Handle_IGESDimen_WitnessLine theFirstWitness;
-Handle_IGESDimen_WitnessLine theSecondWitness;
+  Handle(IGESDimen_GeneralNote) theNote;
+  Handle(IGESDimen_LeaderArrow) theFirstLeader;
+  Handle(IGESDimen_LeaderArrow) theSecondLeader;
+  Handle(IGESDimen_WitnessLine) theFirstWitness;
+  Handle(IGESDimen_WitnessLine) theSecondWitness;
 
 
 };
@@ -104,7 +96,6 @@ Handle_IGESDimen_WitnessLine theSecondWitness;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESDimen_LinearDimension_HeaderFile

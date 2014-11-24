@@ -6,50 +6,37 @@
 #ifndef _IFSelect_SignType_HeaderFile
 #define _IFSelect_SignType_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_SignType_HeaderFile
 #include <Handle_IFSelect_SignType.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _IFSelect_Signature_HeaderFile
 #include <IFSelect_Signature.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
 class Standard_Transient;
 class Interface_InterfaceModel;
 
 
-//! This Signature returns the cdl Type of an entity, under two <br>
-//!           forms : <br>
-//!           - complete dynamic type (package and class) <br>
-//!           - class type, without package name <br>
-class IFSelect_SignType : public IFSelect_Signature {
+//! This Signature returns the cdl Type of an entity, under two
+//! forms :
+//! - complete dynamic type (package and class)
+//! - class type, without package name
+class IFSelect_SignType : public IFSelect_Signature
+{
 
 public:
 
-  //! Returns a SignType <br>
-//!           <nopk> false (D) : complete dynamic type (name = Dynamic Type) <br>
-//!           <nopk> true : class type without pk (name = Class Type) <br>
-  Standard_EXPORT   IFSelect_SignType(const Standard_Boolean nopk = Standard_False);
-  //! Returns the Signature for a Transient object, as its Dynamic <br>
-//!           Type, with or without package name, according starting option <br>
-  Standard_EXPORT     Standard_CString Value(const Handle(Standard_Transient)& ent,const Handle(Interface_InterfaceModel)& model) const;
+  
+  //! Returns a SignType
+  //! <nopk> false (D) : complete dynamic type (name = Dynamic Type)
+  //! <nopk> true : class type without pk (name = Class Type)
+  Standard_EXPORT IFSelect_SignType(const Standard_Boolean nopk = Standard_False);
+  
+  //! Returns the Signature for a Transient object, as its Dynamic
+  //! Type, with or without package name, according starting option
+  Standard_EXPORT   Standard_CString Value (const Handle(Standard_Transient)& ent, const Handle(Interface_InterfaceModel)& model)  const;
 
 
 
@@ -64,7 +51,7 @@ protected:
 private: 
 
 
-Standard_Boolean thenopk;
+  Standard_Boolean thenopk;
 
 
 };
@@ -73,7 +60,6 @@ Standard_Boolean thenopk;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_SignType_HeaderFile

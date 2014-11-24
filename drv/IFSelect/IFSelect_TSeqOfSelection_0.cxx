@@ -5,21 +5,13 @@
 
 #include <IFSelect_TSeqOfSelection.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IFSelect_Selection_HeaderFile
 #include <IFSelect_Selection.hxx>
-#endif
-#ifndef _IFSelect_SequenceNodeOfTSeqOfSelection_HeaderFile
 #include <IFSelect_SequenceNodeOfTSeqOfSelection.hxx>
-#endif
  
 
-#define SeqItem Handle_IFSelect_Selection
+#define SeqItem Handle(IFSelect_Selection)
 #define SeqItem_hxx <IFSelect_Selection.hxx>
 #define TCollection_SequenceNode IFSelect_SequenceNodeOfTSeqOfSelection
 #define TCollection_SequenceNode_hxx <IFSelect_SequenceNodeOfTSeqOfSelection.hxx>

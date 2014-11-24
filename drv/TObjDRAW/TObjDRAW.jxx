@@ -1,3 +1,1 @@
-#ifndef _TObjDRAW_HeaderFile
 #include <TObjDRAW.hxx>
-#endif

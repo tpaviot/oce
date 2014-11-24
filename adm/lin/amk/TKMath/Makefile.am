@@ -28,7 +28,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(CSF_OPT_INCLUDES) $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES) $(STLPort_INCLUDES) $(CSF_TBB_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/math -I@top_srcdir@/src/math \
 -I@top_srcdir@/drv/ElCLib -I@top_srcdir@/src/ElCLib \
@@ -55,7 +55,7 @@ lib_LTLIBRARIES=libTKMath.la
 libTKMath_la_LIBADD = $(CSF_OPT_LIBS) \
  \
 ../TKernel/libTKernel.la \
-$(STLPort_LIB) 
+$(STLPort_LIB) $(CSF_TBB_LIB) 
 
 libTKMath_la_SOURCES = \
 @top_srcdir@/drv/Bnd/Bnd_Array1OfBox2d_0.cxx \

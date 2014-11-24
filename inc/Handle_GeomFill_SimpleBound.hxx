@@ -6,22 +6,15 @@
 #ifndef _Handle_GeomFill_SimpleBound_HeaderFile
 #define _Handle_GeomFill_SimpleBound_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_GeomFill_Boundary_HeaderFile
 #include <Handle_GeomFill_Boundary.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(GeomFill_Boundary);
 class GeomFill_SimpleBound;
 
-DEFINE_STANDARD_HANDLE(GeomFill_SimpleBound,GeomFill_Boundary)
+DEFINE_STANDARD_HANDLE(GeomFill_SimpleBound, GeomFill_Boundary)
 
-#endif
+#endif // _Handle_GeomFill_SimpleBound_HeaderFile

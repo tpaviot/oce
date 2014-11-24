@@ -5,33 +5,17 @@
 
 #include <ViewerTest_DoubleMapOfInteractiveAndName.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_MultiplyDefined_HeaderFile
 #include <Standard_MultiplyDefined.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _ViewerTest_DoubleMapNodeOfDoubleMapOfInteractiveAndName_HeaderFile
 #include <ViewerTest_DoubleMapNodeOfDoubleMapOfInteractiveAndName.hxx>
-#endif
-#ifndef _ViewerTest_DoubleMapIteratorOfDoubleMapOfInteractiveAndName_HeaderFile
 #include <ViewerTest_DoubleMapIteratorOfDoubleMapOfInteractiveAndName.hxx>
-#endif
  
 
-#define TheKey1 Handle_Standard_Transient
+#define TheKey1 Handle(Standard_Transient)
 #define TheKey1_hxx <Standard_Transient.hxx>
 #define TheKey2 TCollection_AsciiString
 #define TheKey2_hxx <TCollection_AsciiString.hxx>

@@ -6,34 +6,16 @@
 #ifndef _StepShape_GeometricSetSelect_HeaderFile
 #define _StepShape_GeometricSetSelect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepGeom_Point_HeaderFile
 #include <Handle_StepGeom_Point.hxx>
-#endif
-#ifndef _Handle_StepGeom_Curve_HeaderFile
 #include <Handle_StepGeom_Curve.hxx>
-#endif
-#ifndef _Handle_StepGeom_Surface_HeaderFile
 #include <Handle_StepGeom_Surface.hxx>
-#endif
 class Standard_Transient;
 class StepGeom_Point;
 class StepGeom_Curve;
@@ -41,26 +23,31 @@ class StepGeom_Surface;
 
 
 
-class StepShape_GeometricSetSelect  : public StepData_SelectType {
+class StepShape_GeometricSetSelect  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a GeometricSetSelect SelectType <br>
-  Standard_EXPORT   StepShape_GeometricSetSelect();
-  //! Recognizes a GeometricSetSelect Kind Entity that is : <br>
-//!        1 -> Point <br>
-//!        2 -> Curve <br>
-//!        3 -> Surface <br>
-//!        0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! returns Value as a Point (Null if another type) <br>
-  Standard_EXPORT     Handle_StepGeom_Point Point() const;
-  //! returns Value as a Curve (Null if another type) <br>
-  Standard_EXPORT     Handle_StepGeom_Curve Curve() const;
-  //! returns Value as a Surface (Null if another type) <br>
-  Standard_EXPORT     Handle_StepGeom_Surface Surface() const;
-
+  
+  //! Returns a GeometricSetSelect SelectType
+  Standard_EXPORT StepShape_GeometricSetSelect();
+  
+  //! Recognizes a GeometricSetSelect Kind Entity that is :
+  //! 1 -> Point
+  //! 2 -> Curve
+  //! 3 -> Surface
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! returns Value as a Point (Null if another type)
+  Standard_EXPORT   Handle(StepGeom_Point) Point()  const;
+  
+  //! returns Value as a Curve (Null if another type)
+  Standard_EXPORT   Handle(StepGeom_Curve) Curve()  const;
+  
+  //! returns Value as a Surface (Null if another type)
+  Standard_EXPORT   Handle(StepGeom_Surface) Surface()  const;
 
 
 
@@ -83,7 +70,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_GeometricSetSelect_HeaderFile

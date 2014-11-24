@@ -6,39 +6,28 @@
 #ifndef _TopOpeBRepBuild_ListNodeOfListOfPave_HeaderFile
 #define _TopOpeBRepBuild_ListNodeOfListOfPave_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepBuild_ListNodeOfListOfPave_HeaderFile
 #include <Handle_TopOpeBRepBuild_ListNodeOfListOfPave.hxx>
-#endif
 
-#ifndef _Handle_TopOpeBRepBuild_Pave_HeaderFile
 #include <Handle_TopOpeBRepBuild_Pave.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopOpeBRepBuild_Pave;
 class TopOpeBRepBuild_ListOfPave;
 class TopOpeBRepBuild_ListIteratorOfListOfPave;
 
 
 
-class TopOpeBRepBuild_ListNodeOfListOfPave : public TCollection_MapNode {
+class TopOpeBRepBuild_ListNodeOfListOfPave : public TCollection_MapNode
+{
 
 public:
 
   
-      TopOpeBRepBuild_ListNodeOfListOfPave(const Handle(TopOpeBRepBuild_Pave)& I,const TCollection_MapNodePtr& n);
+    TopOpeBRepBuild_ListNodeOfListOfPave(const Handle(TopOpeBRepBuild_Pave)& I, const TCollection_MapNodePtr& n);
   
-        Handle_TopOpeBRepBuild_Pave& Value() const;
+      Handle(TopOpeBRepBuild_Pave)& Value()  const;
 
 
 
@@ -53,12 +42,12 @@ protected:
 private: 
 
 
-Handle_TopOpeBRepBuild_Pave myValue;
+  Handle(TopOpeBRepBuild_Pave) myValue;
 
 
 };
 
-#define Item Handle_TopOpeBRepBuild_Pave
+#define Item Handle(TopOpeBRepBuild_Pave)
 #define Item_hxx <TopOpeBRepBuild_Pave.hxx>
 #define TCollection_ListNode TopOpeBRepBuild_ListNodeOfListOfPave
 #define TCollection_ListNode_hxx <TopOpeBRepBuild_ListNodeOfListOfPave.hxx>
@@ -83,7 +72,6 @@ Handle_TopOpeBRepBuild_Pave myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepBuild_ListNodeOfListOfPave_HeaderFile

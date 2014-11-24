@@ -93,6 +93,8 @@
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 		</Linker>
 		<Unit filename="../../../drv/HLRTopoBRep/HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData_0.cxx" />
 		<Unit filename="../../../drv/HLRTopoBRep/HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData_0.cxx" />

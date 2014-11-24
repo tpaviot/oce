@@ -6,28 +6,22 @@
 #ifndef _StepDimTol_SymmetryTolerance_HeaderFile
 #define _StepDimTol_SymmetryTolerance_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepDimTol_SymmetryTolerance_HeaderFile
 #include <Handle_StepDimTol_SymmetryTolerance.hxx>
-#endif
 
-#ifndef _StepDimTol_GeometricToleranceWithDatumReference_HeaderFile
 #include <StepDimTol_GeometricToleranceWithDatumReference.hxx>
-#endif
 
 
-//! Representation of STEP entity SymmetryTolerance <br>
-class StepDimTol_SymmetryTolerance : public StepDimTol_GeometricToleranceWithDatumReference {
+//! Representation of STEP entity SymmetryTolerance
+class StepDimTol_SymmetryTolerance : public StepDimTol_GeometricToleranceWithDatumReference
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepDimTol_SymmetryTolerance();
+  
+  //! Empty constructor
+  Standard_EXPORT StepDimTol_SymmetryTolerance();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepDimTol_SymmetryTolerance_HeaderFile

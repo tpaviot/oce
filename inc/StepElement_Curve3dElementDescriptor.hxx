@@ -6,45 +6,36 @@
 #ifndef _StepElement_Curve3dElementDescriptor_HeaderFile
 #define _StepElement_Curve3dElementDescriptor_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepElement_Curve3dElementDescriptor_HeaderFile
 #include <Handle_StepElement_Curve3dElementDescriptor.hxx>
-#endif
 
-#ifndef _Handle_StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_HeaderFile
 #include <Handle_StepElement_HArray1OfHSequenceOfCurveElementPurposeMember.hxx>
-#endif
-#ifndef _StepElement_ElementDescriptor_HeaderFile
 #include <StepElement_ElementDescriptor.hxx>
-#endif
-#ifndef _StepElement_ElementOrder_HeaderFile
 #include <StepElement_ElementOrder.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepElement_HArray1OfHSequenceOfCurveElementPurposeMember;
 class TCollection_HAsciiString;
 
 
-//! Representation of STEP entity Curve3dElementDescriptor <br>
-class StepElement_Curve3dElementDescriptor : public StepElement_ElementDescriptor {
+//! Representation of STEP entity Curve3dElementDescriptor
+class StepElement_Curve3dElementDescriptor : public StepElement_ElementDescriptor
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepElement_Curve3dElementDescriptor();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const StepElement_ElementOrder aElementDescriptor_TopologyOrder,const Handle(TCollection_HAsciiString)& aElementDescriptor_Description,const Handle(StepElement_HArray1OfHSequenceOfCurveElementPurposeMember)& aPurpose) ;
-  //! Returns field Purpose <br>
-  Standard_EXPORT     Handle_StepElement_HArray1OfHSequenceOfCurveElementPurposeMember Purpose() const;
-  //! Set field Purpose <br>
-  Standard_EXPORT     void SetPurpose(const Handle(StepElement_HArray1OfHSequenceOfCurveElementPurposeMember)& Purpose) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepElement_Curve3dElementDescriptor();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const StepElement_ElementOrder aElementDescriptor_TopologyOrder, const Handle(TCollection_HAsciiString)& aElementDescriptor_Description, const Handle(StepElement_HArray1OfHSequenceOfCurveElementPurposeMember)& aPurpose) ;
+  
+  //! Returns field Purpose
+  Standard_EXPORT   Handle(StepElement_HArray1OfHSequenceOfCurveElementPurposeMember) Purpose()  const;
+  
+  //! Set field Purpose
+  Standard_EXPORT   void SetPurpose (const Handle(StepElement_HArray1OfHSequenceOfCurveElementPurposeMember)& Purpose) ;
 
 
 
@@ -59,7 +50,7 @@ protected:
 private: 
 
 
-Handle_StepElement_HArray1OfHSequenceOfCurveElementPurposeMember thePurpose;
+  Handle(StepElement_HArray1OfHSequenceOfCurveElementPurposeMember) thePurpose;
 
 
 };
@@ -68,7 +59,6 @@ Handle_StepElement_HArray1OfHSequenceOfCurveElementPurposeMember thePurpose;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_Curve3dElementDescriptor_HeaderFile

@@ -6,40 +6,18 @@
 #ifndef _VrmlAPI_Writer_HeaderFile
 #define _VrmlAPI_Writer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _VrmlAPI_RepresentationOfShape_HeaderFile
 #include <VrmlAPI_RepresentationOfShape.hxx>
-#endif
-#ifndef _Handle_VrmlConverter_Drawer_HeaderFile
 #include <Handle_VrmlConverter_Drawer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_VrmlConverter_Projector_HeaderFile
 #include <Handle_VrmlConverter_Projector.hxx>
-#endif
-#ifndef _Handle_Vrml_Material_HeaderFile
 #include <Handle_Vrml_Material.hxx>
-#endif
-#ifndef _Quantity_Length_HeaderFile
 #include <Quantity_Length.hxx>
-#endif
-#ifndef _Handle_Quantity_HArray1OfColor_HeaderFile
 #include <Handle_Quantity_HArray1OfColor.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
 class VrmlConverter_Drawer;
 class VrmlConverter_Projector;
 class Vrml_Material;
@@ -47,71 +25,79 @@ class Quantity_HArray1OfColor;
 class TopoDS_Shape;
 
 
-//! Creates and writes VRML files from Open <br>
-//! CASCADE shapes. A VRML file can be written to <br>
-//! an existing VRML file or to a new one. <br>
-class VrmlAPI_Writer  {
+//! Creates and writes VRML files from Open
+//! CASCADE shapes. A VRML file can be written to
+//! an existing VRML file or to a new one.
+class VrmlAPI_Writer 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates a writer object with default parameters. <br>
-  Standard_EXPORT   VrmlAPI_Writer();
-  //! Resets all parameters (representation, deflection) <br>
-//! to their default values.. <br>
-  Standard_EXPORT     void ResetToDefaults() ;
-  //! Returns drawer object <br>
-  Standard_EXPORT     Handle_VrmlConverter_Drawer Drawer() const;
-  //! Sets the deflection aDef of <br>
-//! the mesh algorithm which is used to compute the shaded <br>
-//! representation of the translated shape. The default <br>
-//! value is -1. When the deflection value is less than <br>
-//! 0, the deflection is calculated from the relative <br>
-//! size of the shaped. <br>
-  Standard_EXPORT     void SetDeflection(const Standard_Real aDef) ;
-  //! Sets the representation of the <br>
-//! shape aRep which is written to the VRML file. The three options are : <br>
-//! -      shaded <br>
-//! -      wireframe <br>
-//! -      both shaded and wireframe (default) <br>
-//! defined through the VrmlAPI_RepresentationOfShape enumeration. <br>
-  Standard_EXPORT     void SetRepresentation(const VrmlAPI_RepresentationOfShape aRep) ;
-  //! Set transparency to given material <br>
-  Standard_EXPORT     void SetTransparencyToMaterial(Handle(Vrml_Material)& aMaterial,const Standard_Real aTransparency) ;
   
-  Standard_EXPORT     void SetShininessToMaterial(Handle(Vrml_Material)& aMaterial,const Standard_Real aShininess) ;
+  //! Creates a writer object with default parameters.
+  Standard_EXPORT VrmlAPI_Writer();
   
-  Standard_EXPORT     void SetAmbientColorToMaterial(Handle(Vrml_Material)& aMaterial,const Handle(Quantity_HArray1OfColor)& Color) ;
+  //! Resets all parameters (representation, deflection)
+  //! to their default values..
+  Standard_EXPORT   void ResetToDefaults() ;
   
-  Standard_EXPORT     void SetDiffuseColorToMaterial(Handle(Vrml_Material)& aMaterial,const Handle(Quantity_HArray1OfColor)& Color) ;
+  //! Returns drawer object
+  Standard_EXPORT   Handle(VrmlConverter_Drawer) Drawer()  const;
   
-  Standard_EXPORT     void SetSpecularColorToMaterial(Handle(Vrml_Material)& aMaterial,const Handle(Quantity_HArray1OfColor)& Color) ;
+  //! Sets the deflection aDef of
+  //! the mesh algorithm which is used to compute the shaded
+  //! representation of the translated shape. The default
+  //! value is -1. When the deflection value is less than
+  //! 0, the deflection is calculated from the relative
+  //! size of the shaped.
+  Standard_EXPORT   void SetDeflection (const Standard_Real aDef) ;
   
-  Standard_EXPORT     void SetEmissiveColorToMaterial(Handle(Vrml_Material)& aMaterial,const Handle(Quantity_HArray1OfColor)& Color) ;
-  //! Returns the representation of the shape which is <br>
-//! written to the VRML file. Types of representation are set through the <br>
-//! VrmlAPI_RepresentationOfShape enumeration. <br>
-  Standard_EXPORT     VrmlAPI_RepresentationOfShape GetRepresentation() const;
+  //! Sets the representation of the
+  //! shape aRep which is written to the VRML file. The three options are :
+  //! -      shaded
+  //! -      wireframe
+  //! -      both shaded and wireframe (default)
+  //! defined through the VrmlAPI_RepresentationOfShape enumeration.
+  Standard_EXPORT   void SetRepresentation (const VrmlAPI_RepresentationOfShape aRep) ;
   
-  Standard_EXPORT     Handle_Vrml_Material GetFrontMaterial() const;
+  //! Set transparency to given material
+  Standard_EXPORT   void SetTransparencyToMaterial (Handle(Vrml_Material)& aMaterial, const Standard_Real aTransparency) ;
   
-  Standard_EXPORT     Handle_Vrml_Material GetPointsMaterial() const;
+  Standard_EXPORT   void SetShininessToMaterial (Handle(Vrml_Material)& aMaterial, const Standard_Real aShininess) ;
   
-  Standard_EXPORT     Handle_Vrml_Material GetUisoMaterial() const;
+  Standard_EXPORT   void SetAmbientColorToMaterial (Handle(Vrml_Material)& aMaterial, const Handle(Quantity_HArray1OfColor)& Color) ;
   
-  Standard_EXPORT     Handle_Vrml_Material GetVisoMaterial() const;
+  Standard_EXPORT   void SetDiffuseColorToMaterial (Handle(Vrml_Material)& aMaterial, const Handle(Quantity_HArray1OfColor)& Color) ;
   
-  Standard_EXPORT     Handle_Vrml_Material GetLineMaterial() const;
+  Standard_EXPORT   void SetSpecularColorToMaterial (Handle(Vrml_Material)& aMaterial, const Handle(Quantity_HArray1OfColor)& Color) ;
   
-  Standard_EXPORT     Handle_Vrml_Material GetWireMaterial() const;
+  Standard_EXPORT   void SetEmissiveColorToMaterial (Handle(Vrml_Material)& aMaterial, const Handle(Quantity_HArray1OfColor)& Color) ;
   
-  Standard_EXPORT     Handle_Vrml_Material GetFreeBoundsMaterial() const;
+  //! Returns the representation of the shape which is
+  //! written to the VRML file. Types of representation are set through the
+  //! VrmlAPI_RepresentationOfShape enumeration.
+  Standard_EXPORT   VrmlAPI_RepresentationOfShape GetRepresentation()  const;
   
-  Standard_EXPORT     Handle_Vrml_Material GetUnfreeBoundsMaterial() const;
-  //! Converts the shape aShape to <br>
-//! VRML format and writes it to the file identified by aFile. <br>
-  Standard_EXPORT     void Write(const TopoDS_Shape& aShape,const Standard_CString aFile) const;
-
+  Standard_EXPORT   Handle(Vrml_Material) GetFrontMaterial()  const;
+  
+  Standard_EXPORT   Handle(Vrml_Material) GetPointsMaterial()  const;
+  
+  Standard_EXPORT   Handle(Vrml_Material) GetUisoMaterial()  const;
+  
+  Standard_EXPORT   Handle(Vrml_Material) GetVisoMaterial()  const;
+  
+  Standard_EXPORT   Handle(Vrml_Material) GetLineMaterial()  const;
+  
+  Standard_EXPORT   Handle(Vrml_Material) GetWireMaterial()  const;
+  
+  Standard_EXPORT   Handle(Vrml_Material) GetFreeBoundsMaterial()  const;
+  
+  Standard_EXPORT   Handle(Vrml_Material) GetUnfreeBoundsMaterial()  const;
+  
+  //! Converts the shape aShape to
+  //! VRML format and writes it to the file identified by aFile.
+  Standard_EXPORT   void Write (const TopoDS_Shape& aShape, const Standard_CString aFile)  const;
 
 
 
@@ -126,28 +112,28 @@ private:
 
 
 
-VrmlAPI_RepresentationOfShape myRepresentation;
-Handle_VrmlConverter_Drawer myDrawer;
-Standard_Real myDeflection;
-Handle_VrmlConverter_Projector myPerespectiveCamera;
-Handle_VrmlConverter_Projector myOrthographicCamera;
-Standard_Real myTransparency;
-Standard_Real myShininess;
-Handle_Vrml_Material myFrontMaterial;
-Handle_Vrml_Material myPointsMaterial;
-Handle_Vrml_Material myUisoMaterial;
-Handle_Vrml_Material myVisoMaterial;
-Handle_Vrml_Material myLineMaterial;
-Handle_Vrml_Material myWireMaterial;
-Handle_Vrml_Material myFreeBoundsMaterial;
-Handle_Vrml_Material myUnfreeBoundsMaterial;
-Quantity_Length DX;
-Quantity_Length DY;
-Quantity_Length DZ;
-Quantity_Length XUp;
-Quantity_Length YUp;
-Quantity_Length ZUp;
-Quantity_Length Focus;
+  VrmlAPI_RepresentationOfShape myRepresentation;
+  Handle(VrmlConverter_Drawer) myDrawer;
+  Standard_Real myDeflection;
+  Handle(VrmlConverter_Projector) myPerespectiveCamera;
+  Handle(VrmlConverter_Projector) myOrthographicCamera;
+  Standard_Real myTransparency;
+  Standard_Real myShininess;
+  Handle(Vrml_Material) myFrontMaterial;
+  Handle(Vrml_Material) myPointsMaterial;
+  Handle(Vrml_Material) myUisoMaterial;
+  Handle(Vrml_Material) myVisoMaterial;
+  Handle(Vrml_Material) myLineMaterial;
+  Handle(Vrml_Material) myWireMaterial;
+  Handle(Vrml_Material) myFreeBoundsMaterial;
+  Handle(Vrml_Material) myUnfreeBoundsMaterial;
+  Quantity_Length DX;
+  Quantity_Length DY;
+  Quantity_Length DZ;
+  Quantity_Length XUp;
+  Quantity_Length YUp;
+  Quantity_Length ZUp;
+  Quantity_Length Focus;
 
 
 };
@@ -156,7 +142,6 @@ Quantity_Length Focus;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _VrmlAPI_Writer_HeaderFile

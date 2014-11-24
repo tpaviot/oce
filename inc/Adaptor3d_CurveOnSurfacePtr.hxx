@@ -7,7 +7,6 @@
 #define _Adaptor3d_CurveOnSurfacePtr_HeaderFile
 
 class Adaptor3d_CurveOnSurface;
-
 typedef Adaptor3d_CurveOnSurface* Adaptor3d_CurveOnSurfacePtr;
 
-#endif
+#endif // _Adaptor3d_CurveOnSurfacePtr_HeaderFile

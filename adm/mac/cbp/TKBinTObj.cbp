@@ -77,6 +77,8 @@
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 		</Linker>
 		<Unit filename="../../../src/BinTObjDrivers/BinTObjDrivers.cxx" />
 		<Unit filename="../../../src/BinTObjDrivers/BinTObjDrivers_DocumentRetrievalDriver.cxx" />

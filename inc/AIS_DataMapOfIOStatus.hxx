@@ -6,37 +6,17 @@
 #ifndef _AIS_DataMapOfIOStatus_HeaderFile
 #define _AIS_DataMapOfIOStatus_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_AIS_InteractiveObject_HeaderFile
 #include <Handle_AIS_InteractiveObject.hxx>
-#endif
-#ifndef _Handle_AIS_GlobalStatus_HeaderFile
 #include <Handle_AIS_GlobalStatus.hxx>
-#endif
-#ifndef _Handle_AIS_DataMapNodeOfDataMapOfIOStatus_HeaderFile
 #include <Handle_AIS_DataMapNodeOfDataMapOfIOStatus.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class AIS_InteractiveObject;
@@ -47,50 +27,50 @@ class AIS_DataMapIteratorOfDataMapOfIOStatus;
 
 
 
-class AIS_DataMapOfIOStatus  : public TCollection_BasicMap {
+class AIS_DataMapOfIOStatus  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   AIS_DataMapOfIOStatus(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT AIS_DataMapOfIOStatus(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     AIS_DataMapOfIOStatus& Assign(const AIS_DataMapOfIOStatus& Other) ;
-    AIS_DataMapOfIOStatus& operator =(const AIS_DataMapOfIOStatus& Other) 
+  Standard_EXPORT   AIS_DataMapOfIOStatus& Assign (const AIS_DataMapOfIOStatus& Other) ;
+  AIS_DataMapOfIOStatus& operator = (const AIS_DataMapOfIOStatus& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~AIS_DataMapOfIOStatus()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Bind(const Handle(AIS_InteractiveObject)& K,const Handle(AIS_GlobalStatus)& I) ;
+  Standard_EXPORT   Standard_Boolean Bind (const Handle(AIS_InteractiveObject)& K, const Handle(AIS_GlobalStatus)& I) ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const Handle(AIS_InteractiveObject)& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound (const Handle(AIS_InteractiveObject)& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind(const Handle(AIS_InteractiveObject)& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind (const Handle(AIS_InteractiveObject)& K) ;
   
-  Standard_EXPORT    const Handle_AIS_GlobalStatus& Find(const Handle(AIS_InteractiveObject)& K) const;
-   const Handle_AIS_GlobalStatus& operator()(const Handle(AIS_InteractiveObject)& K) const
+  Standard_EXPORT  const  Handle(AIS_GlobalStatus)& Find (const Handle(AIS_InteractiveObject)& K)  const;
+ const  Handle(AIS_GlobalStatus)& operator() (const Handle(AIS_InteractiveObject)& K)  const
 {
   return Find(K);
 }
   
-  Standard_EXPORT     Handle_AIS_GlobalStatus& ChangeFind(const Handle(AIS_InteractiveObject)& K) ;
-    Handle_AIS_GlobalStatus& operator()(const Handle(AIS_InteractiveObject)& K) 
+  Standard_EXPORT   Handle(AIS_GlobalStatus)& ChangeFind (const Handle(AIS_InteractiveObject)& K) ;
+  Handle(AIS_GlobalStatus)& operator() (const Handle(AIS_InteractiveObject)& K) 
 {
   return ChangeFind(K);
 }
   
-  Standard_EXPORT     Standard_Address Find1(const Handle(AIS_InteractiveObject)& K) const;
+  Standard_EXPORT   Standard_Address Find1 (const Handle(AIS_InteractiveObject)& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFind1(const Handle(AIS_InteractiveObject)& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFind1 (const Handle(AIS_InteractiveObject)& K) ;
 
 
 
@@ -104,7 +84,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   AIS_DataMapOfIOStatus(const AIS_DataMapOfIOStatus& Other);
+  Standard_EXPORT AIS_DataMapOfIOStatus(const AIS_DataMapOfIOStatus& Other);
 
 
 
@@ -115,7 +95,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_DataMapOfIOStatus_HeaderFile

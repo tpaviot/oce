@@ -6,22 +6,15 @@
 #ifndef _Handle_TNaming_DeltaOnRemoval_HeaderFile
 #define _Handle_TNaming_DeltaOnRemoval_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TDF_DeltaOnRemoval_HeaderFile
 #include <Handle_TDF_DeltaOnRemoval.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TDF_DeltaOnRemoval);
 class TNaming_DeltaOnRemoval;
 
-DEFINE_STANDARD_HANDLE(TNaming_DeltaOnRemoval,TDF_DeltaOnRemoval)
+DEFINE_STANDARD_HANDLE(TNaming_DeltaOnRemoval, TDF_DeltaOnRemoval)
 
-#endif
+#endif // _Handle_TNaming_DeltaOnRemoval_HeaderFile

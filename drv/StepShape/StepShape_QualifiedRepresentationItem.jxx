@@ -1,12 +1,4 @@
-#ifndef _StepShape_HArray1OfValueQualifier_HeaderFile
 #include <StepShape_HArray1OfValueQualifier.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepShape_ValueQualifier_HeaderFile
 #include <StepShape_ValueQualifier.hxx>
-#endif
-#ifndef _StepShape_QualifiedRepresentationItem_HeaderFile
 #include <StepShape_QualifiedRepresentationItem.hxx>
-#endif

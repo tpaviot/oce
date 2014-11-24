@@ -6,34 +6,29 @@
 #ifndef _XSDRAWIGES_HeaderFile
 #define _XSDRAWIGES_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Draw_Interpretor_HeaderFile
 #include <Draw_Interpretor.hxx>
-#endif
 
 
-//! XSDRAW for IGES : commands IGESSelect, Controller, transfer <br>
-class XSDRAWIGES  {
+//! XSDRAW for IGES : commands IGESSelect, Controller, transfer
+class XSDRAWIGES 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Inits IGESSelect commands, for DRAW <br>
-  Standard_EXPORT   static  void InitSelect() ;
-  //! Inits IGESToBRep for DRAW <br>
-  Standard_EXPORT   static  void InitToBRep(Draw_Interpretor& theCommands) ;
-  //! Inits BRepToIGES for DRAW <br>
-  Standard_EXPORT   static  void InitFromBRep(Draw_Interpretor& theCommands) ;
-
+  
+  //! Inits IGESSelect commands, for DRAW
+  Standard_EXPORT static   void InitSelect() ;
+  
+  //! Inits IGESToBRep for DRAW
+  Standard_EXPORT static   void InitToBRep (Draw_Interpretor& theCommands) ;
+  
+  //! Inits BRepToIGES for DRAW
+  Standard_EXPORT static   void InitFromBRep (Draw_Interpretor& theCommands) ;
 
 
 
@@ -56,7 +51,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XSDRAWIGES_HeaderFile

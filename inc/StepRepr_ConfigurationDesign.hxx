@@ -6,46 +6,41 @@
 #ifndef _StepRepr_ConfigurationDesign_HeaderFile
 #define _StepRepr_ConfigurationDesign_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepRepr_ConfigurationDesign_HeaderFile
 #include <Handle_StepRepr_ConfigurationDesign.hxx>
-#endif
 
-#ifndef _Handle_StepRepr_ConfigurationItem_HeaderFile
 #include <Handle_StepRepr_ConfigurationItem.hxx>
-#endif
-#ifndef _StepRepr_ConfigurationDesignItem_HeaderFile
 #include <StepRepr_ConfigurationDesignItem.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepRepr_ConfigurationItem;
 class StepRepr_ConfigurationDesignItem;
 
 
-//! Representation of STEP entity ConfigurationDesign <br>
-class StepRepr_ConfigurationDesign : public MMgt_TShared {
+//! Representation of STEP entity ConfigurationDesign
+class StepRepr_ConfigurationDesign : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepRepr_ConfigurationDesign();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(StepRepr_ConfigurationItem)& aConfiguration,const StepRepr_ConfigurationDesignItem& aDesign) ;
-  //! Returns field Configuration <br>
-  Standard_EXPORT     Handle_StepRepr_ConfigurationItem Configuration() const;
-  //! Set field Configuration <br>
-  Standard_EXPORT     void SetConfiguration(const Handle(StepRepr_ConfigurationItem)& Configuration) ;
-  //! Returns field Design <br>
-  Standard_EXPORT     StepRepr_ConfigurationDesignItem Design() const;
-  //! Set field Design <br>
-  Standard_EXPORT     void SetDesign(const StepRepr_ConfigurationDesignItem& Design) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepRepr_ConfigurationDesign();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(StepRepr_ConfigurationItem)& aConfiguration, const StepRepr_ConfigurationDesignItem& aDesign) ;
+  
+  //! Returns field Configuration
+  Standard_EXPORT   Handle(StepRepr_ConfigurationItem) Configuration()  const;
+  
+  //! Set field Configuration
+  Standard_EXPORT   void SetConfiguration (const Handle(StepRepr_ConfigurationItem)& Configuration) ;
+  
+  //! Returns field Design
+  Standard_EXPORT   StepRepr_ConfigurationDesignItem Design()  const;
+  
+  //! Set field Design
+  Standard_EXPORT   void SetDesign (const StepRepr_ConfigurationDesignItem& Design) ;
 
 
 
@@ -60,8 +55,8 @@ protected:
 private: 
 
 
-Handle_StepRepr_ConfigurationItem theConfiguration;
-StepRepr_ConfigurationDesignItem theDesign;
+  Handle(StepRepr_ConfigurationItem) theConfiguration;
+  StepRepr_ConfigurationDesignItem theDesign;
 
 
 };
@@ -70,7 +65,6 @@ StepRepr_ConfigurationDesignItem theDesign;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_ConfigurationDesign_HeaderFile

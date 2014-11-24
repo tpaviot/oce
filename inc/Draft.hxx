@@ -6,19 +6,11 @@
 #ifndef _Draft_HeaderFile
 #define _Draft_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TopoDS_Face;
 class gp_Dir;
 class Draft_Modification;
@@ -37,20 +29,21 @@ class Draft_DataMapIteratorOfDataMapOfVertexVertexInfo;
 
 
 
-class Draft  {
+class Draft 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns the draft angle of the  face <F> using the <br>
-//!          direction <Direction>.  The  method is valid for : <br>
-//!          - Plane  faces, <br>
-//!          - Cylindrical or conical faces, when the direction <br>
-//!          of the axis of the surface is colinear with the <br>
-//!          direction. <br>
-//!          Otherwise, the exception DomainError is raised. <br>
-  Standard_EXPORT   static  Standard_Real Angle(const TopoDS_Face& F,const gp_Dir& Direction) ;
-
+  
+  //! Returns the draft angle of the  face <F> using the
+  //! direction <Direction>.  The  method is valid for :
+  //! - Plane  faces,
+  //! - Cylindrical or conical faces, when the direction
+  //! of the axis of the surface is colinear with the
+  //! direction.
+  //! Otherwise, the exception DomainError is raised.
+  Standard_EXPORT static   Standard_Real Angle (const TopoDS_Face& F, const gp_Dir& Direction) ;
 
 
 
@@ -86,7 +79,6 @@ friend class Draft_DataMapIteratorOfDataMapOfVertexVertexInfo;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Draft_HeaderFile

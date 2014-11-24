@@ -6,31 +6,15 @@
 #ifndef _DBC_VArrayOfReal_HeaderFile
 #define _DBC_VArrayOfReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _DBC_BaseArray_HeaderFile
 #include <DBC_BaseArray.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_DBC_VArrayNodeOfVArrayOfReal_HeaderFile
 #include <Handle_DBC_VArrayNodeOfVArrayOfReal.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
 #include <Standard_PrimitiveTypes.hxx>
-#endif
 class Standard_NegativeValue;
 class Standard_OutOfRange;
 class Standard_DimensionMismatch;
@@ -43,36 +27,37 @@ class DBC_VArrayTNodeOfVArrayOfReal;
 Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(DBC_VArrayOfReal);
 
 
-class DBC_VArrayOfReal  : public DBC_BaseArray {
+class DBC_VArrayOfReal  : public DBC_BaseArray
+{
 
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   DBC_VArrayOfReal();
+  Standard_EXPORT DBC_VArrayOfReal();
   
-  Standard_EXPORT   DBC_VArrayOfReal(const Standard_Integer Size);
+  Standard_EXPORT DBC_VArrayOfReal(const Standard_Integer Size);
   
-  Standard_EXPORT   DBC_VArrayOfReal(const DBC_VArrayOfReal& Varray);
+  Standard_EXPORT DBC_VArrayOfReal(const DBC_VArrayOfReal& Varray);
   
-  Standard_EXPORT     void Resize(const Standard_Integer Size) ;
+  Standard_EXPORT   void Resize (const Standard_Integer Size) ;
   
-  Standard_EXPORT     void Assign(const DBC_VArrayOfReal& Other) ;
-    void operator =(const DBC_VArrayOfReal& Other) 
+  Standard_EXPORT   void Assign (const DBC_VArrayOfReal& Other) ;
+  void operator = (const DBC_VArrayOfReal& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Standard_Real& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Standard_Real& Value) ;
   
-  Standard_EXPORT     Standard_Real& Value(const Standard_Integer Index) const;
-    Standard_Real& operator ()(const Standard_Integer Index) const
+  Standard_EXPORT   Standard_Real& Value (const Standard_Integer Index)  const;
+  Standard_Real& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void Destroy() ;
+  Standard_EXPORT   void Destroy() ;
 ~DBC_VArrayOfReal()
 {
   Destroy();
@@ -100,7 +85,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DBC_VArrayOfReal_HeaderFile

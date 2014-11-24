@@ -6,46 +6,33 @@
 #ifndef _Interface_IndexedMapNodeOfIndexedMapOfAsciiString_HeaderFile
 #define _Interface_IndexedMapNodeOfIndexedMapOfAsciiString_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Interface_IndexedMapNodeOfIndexedMapOfAsciiString_HeaderFile
 #include <Handle_Interface_IndexedMapNodeOfIndexedMapOfAsciiString.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
 class TCollection_AsciiString;
 class Interface_MapAsciiStringHasher;
 class Interface_IndexedMapOfAsciiString;
 
 
 
-class Interface_IndexedMapNodeOfIndexedMapOfAsciiString : public TCollection_MapNode {
+class Interface_IndexedMapNodeOfIndexedMapOfAsciiString : public TCollection_MapNode
+{
 
 public:
 
   
-      Interface_IndexedMapNodeOfIndexedMapOfAsciiString(const TCollection_AsciiString& K1,const Standard_Integer K2,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+    Interface_IndexedMapNodeOfIndexedMapOfAsciiString(const TCollection_AsciiString& K1, const Standard_Integer K2, const TCollection_MapNodePtr& n1, const TCollection_MapNodePtr& n2);
   
-        TCollection_AsciiString& Key1() const;
+      TCollection_AsciiString& Key1()  const;
   
-        Standard_Integer& Key2() const;
+      Standard_Integer& Key2()  const;
   
-        TCollection_MapNodePtr& Next2() const;
+      TCollection_MapNodePtr& Next2()  const;
 
 
 
@@ -60,9 +47,9 @@ protected:
 private: 
 
 
-TCollection_AsciiString myKey1;
-Standard_Integer myKey2;
-TCollection_MapNodePtr myNext2;
+  TCollection_AsciiString myKey1;
+  Standard_Integer myKey2;
+  TCollection_MapNodePtr myNext2;
 
 
 };
@@ -92,7 +79,6 @@ TCollection_MapNodePtr myNext2;
 #undef TCollection_IndexedMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Interface_IndexedMapNodeOfIndexedMapOfAsciiString_HeaderFile

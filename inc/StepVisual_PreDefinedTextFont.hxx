@@ -6,28 +6,22 @@
 #ifndef _StepVisual_PreDefinedTextFont_HeaderFile
 #define _StepVisual_PreDefinedTextFont_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_PreDefinedTextFont_HeaderFile
 #include <Handle_StepVisual_PreDefinedTextFont.hxx>
-#endif
 
-#ifndef _StepVisual_PreDefinedItem_HeaderFile
 #include <StepVisual_PreDefinedItem.hxx>
-#endif
 
 
 
-class StepVisual_PreDefinedTextFont : public StepVisual_PreDefinedItem {
+class StepVisual_PreDefinedTextFont : public StepVisual_PreDefinedItem
+{
 
 public:
 
-  //! Returns a PreDefinedTextFont <br>
-  Standard_EXPORT   StepVisual_PreDefinedTextFont();
+  
+  //! Returns a PreDefinedTextFont
+  Standard_EXPORT StepVisual_PreDefinedTextFont();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_PreDefinedTextFont_HeaderFile

@@ -76,7 +76,7 @@
 /* Copy the first part of user declarations.  */
 
 /* Line 189 of yacc.c  */
-#line 18 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-10-10-IR-2014-10-09-occt/src/StepFile/step.yacc"
+#line 18 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-11-07-master-occt/src/StepFile/step.yacc"
 
 #include "recfile.ph"		/* definitions des types d'arguments */
 #include "recfile.pc"		/* la-dedans, tout y est */
@@ -1445,49 +1445,49 @@ yyreduce:
         case 11:
 
 /* Line 1455 of yacc.c  */
-#line 72 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-10-10-IR-2014-10-09-occt/src/StepFile/step.yacc"
+#line 72 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-11-07-master-occt/src/StepFile/step.yacc"
     {  rec_finfile();  return(0);  /*  fini pour celui-la  */  ;}
     break;
 
   case 16:
 
 /* Line 1455 of yacc.c  */
-#line 81 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-10-10-IR-2014-10-09-occt/src/StepFile/step.yacc"
+#line 81 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-11-07-master-occt/src/StepFile/step.yacc"
     {  rec_finhead();  ;}
     break;
 
   case 17:
 
 /* Line 1455 of yacc.c  */
-#line 83 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-10-10-IR-2014-10-09-occt/src/StepFile/step.yacc"
+#line 83 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-11-07-master-occt/src/StepFile/step.yacc"
     {  rec_typarg(rec_argIdent);     rec_newarg();  ;}
     break;
 
   case 18:
 
 /* Line 1455 of yacc.c  */
-#line 84 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-10-10-IR-2014-10-09-occt/src/StepFile/step.yacc"
+#line 84 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-11-07-master-occt/src/StepFile/step.yacc"
     {  /* deja fait par lex*/ 	 rec_newarg();  ;}
     break;
 
   case 19:
 
 /* Line 1455 of yacc.c  */
-#line 85 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-10-10-IR-2014-10-09-occt/src/StepFile/step.yacc"
+#line 85 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-11-07-master-occt/src/StepFile/step.yacc"
     {  rec_newarg();  ;}
     break;
 
   case 20:
 
 /* Line 1455 of yacc.c  */
-#line 86 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-10-10-IR-2014-10-09-occt/src/StepFile/step.yacc"
+#line 86 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-11-07-master-occt/src/StepFile/step.yacc"
     {  rec_newarg();  ;}
     break;
 
   case 21:
 
 /* Line 1455 of yacc.c  */
-#line 87 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-10-10-IR-2014-10-09-occt/src/StepFile/step.yacc"
+#line 87 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-11-07-master-occt/src/StepFile/step.yacc"
     {  rec_typarg(rec_argMisc);      rec_newarg();
 			   yyerrstatus = 1; yyclearin;  ;}
     break;
@@ -1495,21 +1495,21 @@ yyreduce:
   case 22:
 
 /* Line 1455 of yacc.c  */
-#line 92 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-10-10-IR-2014-10-09-occt/src/StepFile/step.yacc"
+#line 92 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-11-07-master-occt/src/StepFile/step.yacc"
     {  rec_listype();  ;}
     break;
 
   case 23:
 
 /* Line 1455 of yacc.c  */
-#line 95 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-10-10-IR-2014-10-09-occt/src/StepFile/step.yacc"
+#line 95 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-11-07-master-occt/src/StepFile/step.yacc"
     {  rec_deblist();  ;}
     break;
 
   case 24:
 
 /* Line 1455 of yacc.c  */
-#line 98 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-10-10-IR-2014-10-09-occt/src/StepFile/step.yacc"
+#line 98 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-11-07-master-occt/src/StepFile/step.yacc"
     {  if (modeprint > 0)
 		{  printf("Record no : %d -- ",nbrec+1);  rec_print(currec);  }
 	   rec_newent ();  yyerrstatus = 0; ;}
@@ -1518,35 +1518,35 @@ yyreduce:
   case 41:
 
 /* Line 1455 of yacc.c  */
-#line 125 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-10-10-IR-2014-10-09-occt/src/StepFile/step.yacc"
+#line 125 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-11-07-master-occt/src/StepFile/step.yacc"
     {  scope_debut();  ;}
     break;
 
   case 42:
 
 /* Line 1455 of yacc.c  */
-#line 128 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-10-10-IR-2014-10-09-occt/src/StepFile/step.yacc"
+#line 128 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-11-07-master-occt/src/StepFile/step.yacc"
     {  rec_typarg(rec_argIdent);    rec_newarg();  ;}
     break;
 
   case 45:
 
 /* Line 1455 of yacc.c  */
-#line 134 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-10-10-IR-2014-10-09-occt/src/StepFile/step.yacc"
+#line 134 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-11-07-master-occt/src/StepFile/step.yacc"
     {  rec_deblist();  ;}
     break;
 
   case 46:
 
 /* Line 1455 of yacc.c  */
-#line 137 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-10-10-IR-2014-10-09-occt/src/StepFile/step.yacc"
+#line 137 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-11-07-master-occt/src/StepFile/step.yacc"
     {  scope_fin();  ;}
     break;
 
   case 47:
 
 /* Line 1455 of yacc.c  */
-#line 139 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-10-10-IR-2014-10-09-occt/src/StepFile/step.yacc"
+#line 139 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-11-07-master-occt/src/StepFile/step.yacc"
     {  printf("***  Warning : Export List not yet processed\n");
 	   rec_newent();  scope_fin() ; ;}
     break;
@@ -1554,14 +1554,14 @@ yyreduce:
   case 48:
 
 /* Line 1455 of yacc.c  */
-#line 144 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-10-10-IR-2014-10-09-occt/src/StepFile/step.yacc"
+#line 144 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-11-07-master-occt/src/StepFile/step.yacc"
     {  rec_ident();  ;}
     break;
 
   case 49:
 
 /* Line 1455 of yacc.c  */
-#line 147 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-10-10-IR-2014-10-09-occt/src/StepFile/step.yacc"
+#line 147 "/misc/dn63/LocalWOK/wok_entities/LOC/dev/IR-2014-11-07-master-occt/src/StepFile/step.yacc"
     {  rec_type ();  ;}
     break;
 

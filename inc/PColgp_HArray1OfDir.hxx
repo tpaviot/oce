@@ -6,37 +6,17 @@
 #ifndef _PColgp_HArray1OfDir_HeaderFile
 #define _PColgp_HArray1OfDir_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PColgp_HArray1OfDir_HeaderFile
 #include <Handle_PColgp_HArray1OfDir.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _PColgp_FieldOfHArray1OfDir_HeaderFile
 #include <PColgp_FieldOfHArray1OfDir.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _Handle_PColgp_VArrayNodeOfFieldOfHArray1OfDir_HeaderFile
 #include <Handle_PColgp_VArrayNodeOfFieldOfHArray1OfDir.hxx>
-#endif
 class Standard_OutOfRange;
 class Standard_RangeError;
 class gp_Dir;
@@ -45,26 +25,27 @@ class PColgp_VArrayNodeOfFieldOfHArray1OfDir;
 class PColgp_VArrayTNodeOfFieldOfHArray1OfDir;
 
 
-class PColgp_HArray1OfDir : public Standard_Persistent {
+class PColgp_HArray1OfDir : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PColgp_HArray1OfDir(const Standard_Integer Low,const Standard_Integer Up);
+  Standard_EXPORT PColgp_HArray1OfDir(const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT   PColgp_HArray1OfDir(const Standard_Integer Low,const Standard_Integer Up,const gp_Dir& V);
+  Standard_EXPORT PColgp_HArray1OfDir(const Standard_Integer Low, const Standard_Integer Up, const gp_Dir& V);
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const gp_Dir& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const gp_Dir& Value) ;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-  Standard_EXPORT     gp_Dir Value(const Standard_Integer Index) const;
+  Standard_EXPORT   gp_Dir Value (const Standard_Integer Index)  const;
 
-  PColgp_HArray1OfDir( )
+PColgp_HArray1OfDir( )
 {
   
 }
@@ -90,13 +71,13 @@ protected:
 private: 
 
   
-  Standard_EXPORT     PColgp_FieldOfHArray1OfDir Field() const;
+  Standard_EXPORT   PColgp_FieldOfHArray1OfDir Field()  const;
   
-  Standard_EXPORT     Standard_Address Datas() const;
+  Standard_EXPORT   Standard_Address Datas()  const;
 
-Standard_Integer LowerBound;
-Standard_Integer UpperBound;
-PColgp_FieldOfHArray1OfDir Data;
+  Standard_Integer LowerBound;
+  Standard_Integer UpperBound;
+  PColgp_FieldOfHArray1OfDir Data;
 
 
 };
@@ -146,7 +127,6 @@ PColgp_FieldOfHArray1OfDir Data;
 #undef PCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PColgp_HArray1OfDir_HeaderFile

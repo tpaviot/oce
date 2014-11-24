@@ -6,38 +6,27 @@
 #ifndef _PDataStd_UAttribute_HeaderFile
 #define _PDataStd_UAttribute_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PDataStd_UAttribute_HeaderFile
 #include <Handle_PDataStd_UAttribute.hxx>
-#endif
 
-#ifndef _Handle_PCollection_HExtendedString_HeaderFile
 #include <Handle_PCollection_HExtendedString.hxx>
-#endif
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
 class PCollection_HExtendedString;
 
 
-class PDataStd_UAttribute : public PDF_Attribute {
+class PDataStd_UAttribute : public PDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   PDataStd_UAttribute();
+  Standard_EXPORT PDataStd_UAttribute();
   
-  Standard_EXPORT     void SetID(const Handle(PCollection_HExtendedString)& guid) ;
+  Standard_EXPORT   void SetID (const Handle(PCollection_HExtendedString)& guid) ;
   
-  Standard_EXPORT     Handle_PCollection_HExtendedString GetID() const;
+  Standard_EXPORT   Handle(PCollection_HExtendedString) GetID()  const;
 
 PDataStd_UAttribute(const Storage_stCONSTclCOM& a) : PDF_Attribute(a)
 {
@@ -58,7 +47,7 @@ protected:
 private: 
 
 
-Handle_PCollection_HExtendedString myID;
+  Handle(PCollection_HExtendedString) myID;
 
 
 };
@@ -67,7 +56,6 @@ Handle_PCollection_HExtendedString myID;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDataStd_UAttribute_HeaderFile

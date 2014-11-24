@@ -6,25 +6,13 @@
 #ifndef _BRepFill_SequenceOfFaceAndOrder_HeaderFile
 #define _BRepFill_SequenceOfFaceAndOrder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_BRepFill_SequenceNodeOfSequenceOfFaceAndOrder_HeaderFile
 #include <Handle_BRepFill_SequenceNodeOfSequenceOfFaceAndOrder.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class BRepFill_FaceAndOrder;
@@ -32,68 +20,68 @@ class BRepFill_SequenceNodeOfSequenceOfFaceAndOrder;
 
 
 
-class BRepFill_SequenceOfFaceAndOrder  : public TCollection_BaseSequence {
+class BRepFill_SequenceOfFaceAndOrder  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      BRepFill_SequenceOfFaceAndOrder();
+    BRepFill_SequenceOfFaceAndOrder();
   
-  Standard_EXPORT   BRepFill_SequenceOfFaceAndOrder(const BRepFill_SequenceOfFaceAndOrder& Other);
+  Standard_EXPORT BRepFill_SequenceOfFaceAndOrder(const BRepFill_SequenceOfFaceAndOrder& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~BRepFill_SequenceOfFaceAndOrder()
 {
   Clear();
 }
   
-  Standard_EXPORT    const BRepFill_SequenceOfFaceAndOrder& Assign(const BRepFill_SequenceOfFaceAndOrder& Other) ;
-   const BRepFill_SequenceOfFaceAndOrder& operator =(const BRepFill_SequenceOfFaceAndOrder& Other) 
+  Standard_EXPORT  const  BRepFill_SequenceOfFaceAndOrder& Assign (const BRepFill_SequenceOfFaceAndOrder& Other) ;
+ const  BRepFill_SequenceOfFaceAndOrder& operator = (const BRepFill_SequenceOfFaceAndOrder& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const BRepFill_FaceAndOrder& T) ;
+  Standard_EXPORT   void Append (const BRepFill_FaceAndOrder& T) ;
   
-        void Append(BRepFill_SequenceOfFaceAndOrder& S) ;
+      void Append (BRepFill_SequenceOfFaceAndOrder& S) ;
   
-  Standard_EXPORT     void Prepend(const BRepFill_FaceAndOrder& T) ;
+  Standard_EXPORT   void Prepend (const BRepFill_FaceAndOrder& T) ;
   
-        void Prepend(BRepFill_SequenceOfFaceAndOrder& S) ;
+      void Prepend (BRepFill_SequenceOfFaceAndOrder& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const BRepFill_FaceAndOrder& T) ;
+      void InsertBefore (const Standard_Integer Index, const BRepFill_FaceAndOrder& T) ;
   
-        void InsertBefore(const Standard_Integer Index,BRepFill_SequenceOfFaceAndOrder& S) ;
+      void InsertBefore (const Standard_Integer Index, BRepFill_SequenceOfFaceAndOrder& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const BRepFill_FaceAndOrder& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const BRepFill_FaceAndOrder& T) ;
   
-        void InsertAfter(const Standard_Integer Index,BRepFill_SequenceOfFaceAndOrder& S) ;
+      void InsertAfter (const Standard_Integer Index, BRepFill_SequenceOfFaceAndOrder& S) ;
   
-  Standard_EXPORT    const BRepFill_FaceAndOrder& First() const;
+  Standard_EXPORT  const  BRepFill_FaceAndOrder& First()  const;
   
-  Standard_EXPORT    const BRepFill_FaceAndOrder& Last() const;
+  Standard_EXPORT  const  BRepFill_FaceAndOrder& Last()  const;
   
-        void Split(const Standard_Integer Index,BRepFill_SequenceOfFaceAndOrder& Sub) ;
+      void Split (const Standard_Integer Index, BRepFill_SequenceOfFaceAndOrder& Sub) ;
   
-  Standard_EXPORT    const BRepFill_FaceAndOrder& Value(const Standard_Integer Index) const;
-   const BRepFill_FaceAndOrder& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  BRepFill_FaceAndOrder& Value (const Standard_Integer Index)  const;
+ const  BRepFill_FaceAndOrder& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const BRepFill_FaceAndOrder& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const BRepFill_FaceAndOrder& I) ;
   
-  Standard_EXPORT     BRepFill_FaceAndOrder& ChangeValue(const Standard_Integer Index) ;
-    BRepFill_FaceAndOrder& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   BRepFill_FaceAndOrder& ChangeValue (const Standard_Integer Index) ;
+  BRepFill_FaceAndOrder& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepFill_SequenceOfFaceAndOrder_HeaderFile

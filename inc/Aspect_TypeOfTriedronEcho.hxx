@@ -6,18 +6,21 @@
 #ifndef _Aspect_TypeOfTriedronEcho_HeaderFile
 #define _Aspect_TypeOfTriedronEcho_HeaderFile
 
-//! Definition of the Triedron echo zone to highlight <br>
-//! <br>
-//!          TOTE_NONE           no echo zone <br>
-//!          TOTE_ORIGIN         a box on origin of the Triedron <br>
-//!          TOTE_AXIS_X         highlights the X axis <br>
-//!          TOTE_AXIS_Y         highlights the Y axis <br>
-//!          TOTE_AXIS_Z         highlights the Z axis <br>
-//!          TOTE_TEXT_X         highlights the X character <br>
-//!          TOTE_TEXT_Y         highlights the Y character <br>
-//!          TOTE_TEXT_Z         highlights the Z character <br>
-//!          TOTE_01 to TOTE_10  not yet implemented. <br>
-enum Aspect_TypeOfTriedronEcho {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Definition of the Triedron echo zone to highlight
+//!
+//! TOTE_NONE           no echo zone
+//! TOTE_ORIGIN         a box on origin of the Triedron
+//! TOTE_AXIS_X         highlights the X axis
+//! TOTE_AXIS_Y         highlights the Y axis
+//! TOTE_AXIS_Z         highlights the Z axis
+//! TOTE_TEXT_X         highlights the X character
+//! TOTE_TEXT_Y         highlights the Y character
+//! TOTE_TEXT_Z         highlights the Z character
+//! TOTE_01 to TOTE_10  not yet implemented.
+enum Aspect_TypeOfTriedronEcho
+{
 Aspect_TOTE_NONE,
 Aspect_TOTE_ORIGIN,
 Aspect_TOTE_AXIS_X,
@@ -38,8 +41,4 @@ Aspect_TOTE_09,
 Aspect_TOTE_10
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_TypeOfTriedronEcho_HeaderFile

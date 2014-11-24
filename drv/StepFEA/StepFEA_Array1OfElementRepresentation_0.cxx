@@ -5,24 +5,14 @@
 
 #include <StepFEA_Array1OfElementRepresentation.hxx>
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _StepFEA_ElementRepresentation_HeaderFile
 #include <StepFEA_ElementRepresentation.hxx>
-#endif
  
 
-#define Array1Item Handle_StepFEA_ElementRepresentation
+#define Array1Item Handle(StepFEA_ElementRepresentation)
 #define Array1Item_hxx <StepFEA_ElementRepresentation.hxx>
 #define TCollection_Array1 StepFEA_Array1OfElementRepresentation
 #define TCollection_Array1_hxx <StepFEA_Array1OfElementRepresentation.hxx>

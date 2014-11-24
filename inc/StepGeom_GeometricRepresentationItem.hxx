@@ -6,28 +6,22 @@
 #ifndef _StepGeom_GeometricRepresentationItem_HeaderFile
 #define _StepGeom_GeometricRepresentationItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_GeometricRepresentationItem_HeaderFile
 #include <Handle_StepGeom_GeometricRepresentationItem.hxx>
-#endif
 
-#ifndef _StepRepr_RepresentationItem_HeaderFile
 #include <StepRepr_RepresentationItem.hxx>
-#endif
 
 
 
-class StepGeom_GeometricRepresentationItem : public StepRepr_RepresentationItem {
+class StepGeom_GeometricRepresentationItem : public StepRepr_RepresentationItem
+{
 
 public:
 
-  //! Returns a GeometricRepresentationItem <br>
-  Standard_EXPORT   StepGeom_GeometricRepresentationItem();
+  
+  //! Returns a GeometricRepresentationItem
+  Standard_EXPORT StepGeom_GeometricRepresentationItem();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_GeometricRepresentationItem_HeaderFile

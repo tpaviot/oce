@@ -6,46 +6,20 @@
 #ifndef _IFSelect_TransformStandard_HeaderFile
 #define _IFSelect_TransformStandard_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_TransformStandard_HeaderFile
 #include <Handle_IFSelect_TransformStandard.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_IFSelect_Selection_HeaderFile
 #include <Handle_IFSelect_Selection.hxx>
-#endif
-#ifndef _IFSelect_SequenceOfGeneralModifier_HeaderFile
 #include <IFSelect_SequenceOfGeneralModifier.hxx>
-#endif
-#ifndef _Handle_Interface_CopyControl_HeaderFile
 #include <Handle_Interface_CopyControl.hxx>
-#endif
-#ifndef _IFSelect_Transformer_HeaderFile
 #include <IFSelect_Transformer.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_IFSelect_Modifier_HeaderFile
 #include <Handle_IFSelect_Modifier.hxx>
-#endif
-#ifndef _Handle_Interface_Protocol_HeaderFile
 #include <Handle_Interface_Protocol.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
 class IFSelect_Selection;
 class Interface_CopyControl;
 class IFSelect_Modifier;
@@ -58,97 +32,116 @@ class Standard_Transient;
 class TCollection_AsciiString;
 
 
-//! This class runs transformations made by Modifiers, as <br>
-//!           the ModelCopier does when it produces files (the same set <br>
-//!           of Modifiers can then be used, as to transform the starting <br>
-//!           Model, as at file sending time). <br>
-//! <br>
-//!           First, considering the resulting model, two options : <br>
-//!           - modifications are made directly on the starting model <br>
-//!             (OnTheSpot option), or <br>
-//!           - data are copied by the standard service Copy, only the <br>
-//!             remaining (not yet sent in a file) entities are copied <br>
-//!             (StandardCopy option) <br>
-//! <br>
-//!           If a Selection is set, it forces the list of Entities on which <br>
-//!           the Modifiers are applied. Else, each Modifier is considered <br>
-//!           its Selection. By default, it is for the whole Model <br>
-//! <br>
-//!           Then, the Modifiers are sequentially applied <br>
-//!           If at least one Modifier "May Change Graph", or if the option <br>
-//!           StandardCopy is selected, the graph will be recomputed <br>
-//!           (by the WorkSession, see method RunTransformer) <br>
-//! <br>
-//!           Remark that a TransformStandard with option StandardCopy <br>
-//!           and no Modifier at all has the effect of computing the <br>
-//!           remaining data (those not yet sent in any output file). <br>
-//!           Moreover, the Protocol is not changed <br>
-class IFSelect_TransformStandard : public IFSelect_Transformer {
+//! This class runs transformations made by Modifiers, as
+//! the ModelCopier does when it produces files (the same set
+//! of Modifiers can then be used, as to transform the starting
+//! Model, as at file sending time).
+//!
+//! First, considering the resulting model, two options :
+//! - modifications are made directly on the starting model
+//! (OnTheSpot option), or
+//! - data are copied by the standard service Copy, only the
+//! remaining (not yet sent in a file) entities are copied
+//! (StandardCopy option)
+//!
+//! If a Selection is set, it forces the list of Entities on which
+//! the Modifiers are applied. Else, each Modifier is considered
+//! its Selection. By default, it is for the whole Model
+//!
+//! Then, the Modifiers are sequentially applied
+//! If at least one Modifier "May Change Graph", or if the option
+//! StandardCopy is selected, the graph will be recomputed
+//! (by the WorkSession, see method RunTransformer)
+//!
+//! Remark that a TransformStandard with option StandardCopy
+//! and no Modifier at all has the effect of computing the
+//! remaining data (those not yet sent in any output file).
+//! Moreover, the Protocol is not changed
+class IFSelect_TransformStandard : public IFSelect_Transformer
+{
 
 public:
 
-  //! Creates a TransformStandard, option StandardCopy, no Modifier <br>
-  Standard_EXPORT   IFSelect_TransformStandard();
-  //! Sets the Copy option to a new value : <br>
-//!           - True for StandardCopy  - False for OnTheSpot <br>
-  Standard_EXPORT     void SetCopyOption(const Standard_Boolean option) ;
-  //! Returns the Copy option <br>
-  Standard_EXPORT     Standard_Boolean CopyOption() const;
-  //! Sets a Selection (or unsets if Null) <br>
-//!           This Selection then defines the list of entities on which the <br>
-//!           Modifiers will be applied <br>
-//!           If it is set, it has priority on Selections of Modifiers <br>
-//!           Else, for each Modifier its Selection is evaluated <br>
-//!           By default, all the Model is taken <br>
-  Standard_EXPORT     void SetSelection(const Handle(IFSelect_Selection)& sel) ;
-  //! Returns the Selection, Null by default <br>
-  Standard_EXPORT     Handle_IFSelect_Selection Selection() const;
-  //! Returns the count of recorded Modifiers <br>
-  Standard_EXPORT     Standard_Integer NbModifiers() const;
-  //! Returns a Modifier given its rank in the list <br>
-  Standard_EXPORT     Handle_IFSelect_Modifier Modifier(const Standard_Integer num) const;
-  //! Returns the rank of a Modifier in the list, 0 if unknown <br>
-  Standard_EXPORT     Standard_Integer ModifierRank(const Handle(IFSelect_Modifier)& modif) const;
-  //! Adds a Modifier to the list : <br>
-//!           - <atnum> = 0 (default) : at the end of the list <br>
-//!           - <atnum> > 0 : at rank <atnum> <br>
-//!           Returns True if done, False if <atnum> is out of range <br>
-  Standard_EXPORT     Standard_Boolean AddModifier(const Handle(IFSelect_Modifier)& modif,const Standard_Integer atnum = 0) ;
-  //! Removes a Modifier from the list <br>
-//!           Returns True if done, False if <modif> not in the list <br>
-  Standard_EXPORT     Standard_Boolean RemoveModifier(const Handle(IFSelect_Modifier)& modif) ;
-  //! Removes a Modifier from the list, given its rank <br>
-//!           Returns True if done, False if <num> is out of range <br>
-  Standard_EXPORT     Standard_Boolean RemoveModifier(const Standard_Integer num) ;
-  //! Performs the Standard Transformation, by calling Copy then <br>
-//!           ApplyModifiers (which can return an error status) <br>
-  Standard_EXPORT     Standard_Boolean Perform(const Interface_Graph& G,const Handle(Interface_Protocol)& protocol,Interface_CheckIterator& checks,Handle(Interface_InterfaceModel)& newmod) ;
-  //! This the first operation. It calls StandardCopy or OnTheSpot <br>
-//!           according the option <br>
-  Standard_EXPORT     void Copy(const Interface_Graph& G,Interface_CopyTool& TC,Handle(Interface_InterfaceModel)& newmod) const;
-  //! This is the standard action of Copy : its takes into account <br>
-//!           only the remaining entities (noted by Graph Status positive) <br>
-//!           and their proper dependances of course. Produces a new model. <br>
-  Standard_EXPORT     void StandardCopy(const Interface_Graph& G,Interface_CopyTool& TC,Handle(Interface_InterfaceModel)& newmod) const;
-  //! This is the OnTheSpot action : each entity is bound with ... <br>
-//!           itself. The produced model is the same as the starting one. <br>
-  Standard_EXPORT     void OnTheSpot(const Interface_Graph& G,Interface_CopyTool& TC,Handle(Interface_InterfaceModel)& newmod) const;
-  //! Applies the modifiers sequencially. <br>
-//!           For each one, prepares required data (if a Selection is <br>
-//!           associated as a filter). <br>
-//!           For the option OnTheSpot, it determines if the graph may be <br>
-//!           changed and updates <newmod> if required <br>
-//!           If a Modifier causes an error (check "HasFailed"), <br>
-//!           ApplyModifier stops : the following Modifiers are ignored <br>
-  Standard_EXPORT     Standard_Boolean ApplyModifiers(const Interface_Graph& G,const Handle(Interface_Protocol)& protocol,Interface_CopyTool& TC,Interface_CheckIterator& checks,Handle(Interface_InterfaceModel)& newmod) const;
-  //! This methods allows to know what happened to a starting <br>
-//!           entity after the last Perform. It reads result from the map <br>
-//!           which was filled by Perform. <br>
-  Standard_EXPORT     Standard_Boolean Updated(const Handle(Standard_Transient)& entfrom,Handle(Standard_Transient)& entto) const;
-  //! Returns a text which defines the way a Transformer works : <br>
-//!           "On the spot edition" or "Standard Copy" followed by <br>
-//!           "<nn> Modifiers" <br>
-  Standard_EXPORT     TCollection_AsciiString Label() const;
+  
+  //! Creates a TransformStandard, option StandardCopy, no Modifier
+  Standard_EXPORT IFSelect_TransformStandard();
+  
+  //! Sets the Copy option to a new value :
+  //! - True for StandardCopy  - False for OnTheSpot
+  Standard_EXPORT   void SetCopyOption (const Standard_Boolean option) ;
+  
+  //! Returns the Copy option
+  Standard_EXPORT   Standard_Boolean CopyOption()  const;
+  
+  //! Sets a Selection (or unsets if Null)
+  //! This Selection then defines the list of entities on which the
+  //! Modifiers will be applied
+  //! If it is set, it has priority on Selections of Modifiers
+  //! Else, for each Modifier its Selection is evaluated
+  //! By default, all the Model is taken
+  Standard_EXPORT   void SetSelection (const Handle(IFSelect_Selection)& sel) ;
+  
+  //! Returns the Selection, Null by default
+  Standard_EXPORT   Handle(IFSelect_Selection) Selection()  const;
+  
+  //! Returns the count of recorded Modifiers
+  Standard_EXPORT   Standard_Integer NbModifiers()  const;
+  
+  //! Returns a Modifier given its rank in the list
+  Standard_EXPORT   Handle(IFSelect_Modifier) Modifier (const Standard_Integer num)  const;
+  
+  //! Returns the rank of a Modifier in the list, 0 if unknown
+  Standard_EXPORT   Standard_Integer ModifierRank (const Handle(IFSelect_Modifier)& modif)  const;
+  
+  //! Adds a Modifier to the list :
+  //! - <atnum> = 0 (default) : at the end of the list
+  //! - <atnum> > 0 : at rank <atnum>
+  //! Returns True if done, False if <atnum> is out of range
+  Standard_EXPORT   Standard_Boolean AddModifier (const Handle(IFSelect_Modifier)& modif, const Standard_Integer atnum = 0) ;
+  
+  //! Removes a Modifier from the list
+  //! Returns True if done, False if <modif> not in the list
+  Standard_EXPORT   Standard_Boolean RemoveModifier (const Handle(IFSelect_Modifier)& modif) ;
+  
+  //! Removes a Modifier from the list, given its rank
+  //! Returns True if done, False if <num> is out of range
+  Standard_EXPORT   Standard_Boolean RemoveModifier (const Standard_Integer num) ;
+  
+  //! Performs the Standard Transformation, by calling Copy then
+  //! ApplyModifiers (which can return an error status)
+  Standard_EXPORT   Standard_Boolean Perform (const Interface_Graph& G, const Handle(Interface_Protocol)& protocol, Interface_CheckIterator& checks, Handle(Interface_InterfaceModel)& newmod) ;
+  
+  //! This the first operation. It calls StandardCopy or OnTheSpot
+  //! according the option
+  Standard_EXPORT   void Copy (const Interface_Graph& G, Interface_CopyTool& TC, Handle(Interface_InterfaceModel)& newmod)  const;
+  
+  //! This is the standard action of Copy : its takes into account
+  //! only the remaining entities (noted by Graph Status positive)
+  //! and their proper dependances of course. Produces a new model.
+  Standard_EXPORT   void StandardCopy (const Interface_Graph& G, Interface_CopyTool& TC, Handle(Interface_InterfaceModel)& newmod)  const;
+  
+  //! This is the OnTheSpot action : each entity is bound with ...
+  //! itself. The produced model is the same as the starting one.
+  Standard_EXPORT   void OnTheSpot (const Interface_Graph& G, Interface_CopyTool& TC, Handle(Interface_InterfaceModel)& newmod)  const;
+  
+  //! Applies the modifiers sequencially.
+  //! For each one, prepares required data (if a Selection is
+  //! associated as a filter).
+  //! For the option OnTheSpot, it determines if the graph may be
+  //! changed and updates <newmod> if required
+  //! If a Modifier causes an error (check "HasFailed"),
+  //! ApplyModifier stops : the following Modifiers are ignored
+  Standard_EXPORT   Standard_Boolean ApplyModifiers (const Interface_Graph& G, const Handle(Interface_Protocol)& protocol, Interface_CopyTool& TC, Interface_CheckIterator& checks, Handle(Interface_InterfaceModel)& newmod)  const;
+  
+  //! This methods allows to know what happened to a starting
+  //! entity after the last Perform. It reads result from the map
+  //! which was filled by Perform.
+  Standard_EXPORT   Standard_Boolean Updated (const Handle(Standard_Transient)& entfrom, Handle(Standard_Transient)& entto)  const;
+  
+  //! Returns a text which defines the way a Transformer works :
+  //! "On the spot edition" or "Standard Copy" followed by
+  //! "<nn> Modifiers"
+  Standard_EXPORT   TCollection_AsciiString Label()  const;
 
 
 
@@ -163,10 +156,10 @@ protected:
 private: 
 
 
-Standard_Boolean thecopy;
-Handle_IFSelect_Selection thesel;
-IFSelect_SequenceOfGeneralModifier themodifs;
-Handle_Interface_CopyControl themap;
+  Standard_Boolean thecopy;
+  Handle(IFSelect_Selection) thesel;
+  IFSelect_SequenceOfGeneralModifier themodifs;
+  Handle(Interface_CopyControl) themap;
 
 
 };
@@ -175,7 +168,6 @@ Handle_Interface_CopyControl themap;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_TransformStandard_HeaderFile

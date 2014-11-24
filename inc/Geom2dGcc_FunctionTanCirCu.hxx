@@ -6,58 +6,45 @@
 #ifndef _Geom2dGcc_FunctionTanCirCu_HeaderFile
 #define _Geom2dGcc_FunctionTanCirCu_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Circ2d_HeaderFile
 #include <gp_Circ2d.hxx>
-#endif
-#ifndef _Geom2dAdaptor_Curve_HeaderFile
 #include <Geom2dAdaptor_Curve.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _math_FunctionWithDerivative_HeaderFile
 #include <math_FunctionWithDerivative.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class gp_Circ2d;
 class Geom2dAdaptor_Curve;
 
 
-//! This abstract class describes a Function of 1 Variable <br>
-//!          used to find a line tangent to a curve and a circle. <br>
-class Geom2dGcc_FunctionTanCirCu  : public math_FunctionWithDerivative {
+//! This abstract class describes a Function of 1 Variable
+//! used to find a line tangent to a curve and a circle.
+class Geom2dGcc_FunctionTanCirCu  : public math_FunctionWithDerivative
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Geom2dGcc_FunctionTanCirCu(const gp_Circ2d& Circ,const Geom2dAdaptor_Curve& Curv);
-  //! Computes the value of the function F for the variable X. <br>
-//!          It returns True if the computation is successfully done, <br>
-//!          False otherwise. <br>
-  Standard_EXPORT     Standard_Boolean Value(const Standard_Real X,Standard_Real& F) ;
-  //! Computes the derivative of the function F for the variable X. <br>
-//!          It returns True if the computation is successfully done, <br>
-//!          False otherwise. <br>
-  Standard_EXPORT     Standard_Boolean Derivative(const Standard_Real X,Standard_Real& Deriv) ;
-  //! Computes the value and the derivative of the function F <br>
-//!          for the variable X. <br>
-//!          It returns True if the computation is successfully done, <br>
-//!          False otherwise. <br>
-  Standard_EXPORT     Standard_Boolean Values(const Standard_Real X,Standard_Real& F,Standard_Real& Deriv) ;
-
+  Standard_EXPORT Geom2dGcc_FunctionTanCirCu(const gp_Circ2d& Circ, const Geom2dAdaptor_Curve& Curv);
+  
+  //! Computes the value of the function F for the variable X.
+  //! It returns True if the computation is successfully done,
+  //! False otherwise.
+  Standard_EXPORT   Standard_Boolean Value (const Standard_Real X, Standard_Real& F) ;
+  
+  //! Computes the derivative of the function F for the variable X.
+  //! It returns True if the computation is successfully done,
+  //! False otherwise.
+  Standard_EXPORT   Standard_Boolean Derivative (const Standard_Real X, Standard_Real& Deriv) ;
+  
+  //! Computes the value and the derivative of the function F
+  //! for the variable X.
+  //! It returns True if the computation is successfully done,
+  //! False otherwise.
+  Standard_EXPORT   Standard_Boolean Values (const Standard_Real X, Standard_Real& F, Standard_Real& Deriv) ;
 
 
 
@@ -72,9 +59,9 @@ private:
 
 
 
-gp_Circ2d TheCirc;
-Geom2dAdaptor_Curve Curve;
-Standard_Real myWeight;
+  gp_Circ2d TheCirc;
+  Geom2dAdaptor_Curve Curve;
+  Standard_Real myWeight;
 
 
 };
@@ -83,7 +70,6 @@ Standard_Real myWeight;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dGcc_FunctionTanCirCu_HeaderFile

@@ -6,25 +6,13 @@
 #ifndef _StepVisual_HArray1OfLayeredItem_HeaderFile
 #define _StepVisual_HArray1OfLayeredItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_HArray1OfLayeredItem_HeaderFile
 #include <Handle_StepVisual_HArray1OfLayeredItem.hxx>
-#endif
 
-#ifndef _StepVisual_Array1OfLayeredItem_HeaderFile
 #include <StepVisual_Array1OfLayeredItem.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class StepVisual_Array1OfLayeredItem;
 
 
 
-class StepVisual_HArray1OfLayeredItem : public MMgt_TShared {
+class StepVisual_HArray1OfLayeredItem : public MMgt_TShared
+{
 
 public:
 
   
-      StepVisual_HArray1OfLayeredItem(const Standard_Integer Low,const Standard_Integer Up);
+    StepVisual_HArray1OfLayeredItem(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepVisual_HArray1OfLayeredItem(const Standard_Integer Low,const Standard_Integer Up,const StepVisual_LayeredItem& V);
+    StepVisual_HArray1OfLayeredItem(const Standard_Integer Low, const Standard_Integer Up, const StepVisual_LayeredItem& V);
   
-        void Init(const StepVisual_LayeredItem& V) ;
+      void Init (const StepVisual_LayeredItem& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const StepVisual_LayeredItem& Value) ;
+      void SetValue (const Standard_Integer Index, const StepVisual_LayeredItem& Value) ;
   
-       const StepVisual_LayeredItem& Value(const Standard_Integer Index) const;
+     const  StepVisual_LayeredItem& Value (const Standard_Integer Index)  const;
   
-        StepVisual_LayeredItem& ChangeValue(const Standard_Integer Index) ;
+      StepVisual_LayeredItem& ChangeValue (const Standard_Integer Index) ;
   
-       const StepVisual_Array1OfLayeredItem& Array1() const;
+     const  StepVisual_Array1OfLayeredItem& Array1()  const;
   
-        StepVisual_Array1OfLayeredItem& ChangeArray1() ;
+      StepVisual_Array1OfLayeredItem& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-StepVisual_Array1OfLayeredItem myArray;
+  StepVisual_Array1OfLayeredItem myArray;
 
 
 };
@@ -100,7 +89,6 @@ StepVisual_Array1OfLayeredItem myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_HArray1OfLayeredItem_HeaderFile

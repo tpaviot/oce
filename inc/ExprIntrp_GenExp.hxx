@@ -6,48 +6,40 @@
 #ifndef _ExprIntrp_GenExp_HeaderFile
 #define _ExprIntrp_GenExp_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ExprIntrp_GenExp_HeaderFile
 #include <Handle_ExprIntrp_GenExp.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Expr_GeneralExpression_HeaderFile
 #include <Handle_Expr_GeneralExpression.hxx>
-#endif
-#ifndef _ExprIntrp_Generator_HeaderFile
 #include <ExprIntrp_Generator.hxx>
-#endif
 class Expr_GeneralExpression;
 class Standard_NoSuchObject;
 class TCollection_AsciiString;
 
 
-//! This class permits, from a string, to create any <br>
-//!          kind of expression of package Expr by using <br>
-//!          built-in functions such as Sin,Cos, etc, and by <br>
-//!          creating variables. <br>
-class ExprIntrp_GenExp : public ExprIntrp_Generator {
+//! This class permits, from a string, to create any
+//! kind of expression of package Expr by using
+//! built-in functions such as Sin,Cos, etc, and by
+//! creating variables.
+class ExprIntrp_GenExp : public ExprIntrp_Generator
+{
 
 public:
 
   
-  Standard_EXPORT   static  Handle_ExprIntrp_GenExp Create() ;
-  //! Processes given string. <br>
-  Standard_EXPORT     void Process(const TCollection_AsciiString& str) ;
-  //! Returns false if any syntax error has occurred during <br>
-//!          process. <br>
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-  //! Returns expression generated. Raises an exception if <br>
-//!          IsDone answers false. <br>
-  Standard_EXPORT     Handle_Expr_GeneralExpression Expression() const;
+  Standard_EXPORT static   Handle(ExprIntrp_GenExp) Create() ;
+  
+  //! Processes given string.
+  Standard_EXPORT   void Process (const TCollection_AsciiString& str) ;
+  
+  //! Returns false if any syntax error has occurred during
+  //! process.
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
+  
+  //! Returns expression generated. Raises an exception if
+  //! IsDone answers false.
+  Standard_EXPORT   Handle(Expr_GeneralExpression) Expression()  const;
 
 
 
@@ -61,11 +53,12 @@ protected:
 
 private: 
 
-  //! Creates an empty generator <br>
-  Standard_EXPORT   ExprIntrp_GenExp();
+  
+  //! Creates an empty generator
+  Standard_EXPORT ExprIntrp_GenExp();
 
-Standard_Boolean done;
-Handle_Expr_GeneralExpression myExpression;
+  Standard_Boolean done;
+  Handle(Expr_GeneralExpression) myExpression;
 
 
 };
@@ -74,7 +67,6 @@ Handle_Expr_GeneralExpression myExpression;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ExprIntrp_GenExp_HeaderFile

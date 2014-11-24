@@ -6,51 +6,35 @@
 #ifndef _BOPAlgo_BuilderArea_HeaderFile
 #define _BOPAlgo_BuilderArea_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_IntTools_Context_HeaderFile
 #include <Handle_IntTools_Context.hxx>
-#endif
-#ifndef _BOPCol_ListOfShape_HeaderFile
 #include <BOPCol_ListOfShape.hxx>
-#endif
-#ifndef _BOPCol_MapOfOrientedShape_HeaderFile
 #include <BOPCol_MapOfOrientedShape.hxx>
-#endif
-#ifndef _BOPAlgo_Algo_HeaderFile
 #include <BOPAlgo_Algo.hxx>
-#endif
-#ifndef _BOPCol_BaseAllocator_HeaderFile
 #include <BOPCol_BaseAllocator.hxx>
-#endif
 class IntTools_Context;
 
 
-//! The root class for algorithms to build <br>
-//!          faces/solids from set of edges/faces <br>
-class BOPAlgo_BuilderArea  : public BOPAlgo_Algo {
+//! The root class for algorithms to build
+//! faces/solids from set of edges/faces
+class BOPAlgo_BuilderArea  : public BOPAlgo_Algo
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT     void SetContext(const Handle(IntTools_Context)& theContext) ;
+  Standard_EXPORT   void SetContext (const Handle(IntTools_Context)& theContext) ;
   
-  Standard_EXPORT    const BOPCol_ListOfShape& Shapes() const;
+  Standard_EXPORT  const  BOPCol_ListOfShape& Shapes()  const;
 Standard_EXPORT void SetShapes(const BOPCol_ListOfShape& theLS);
   
-  Standard_EXPORT    const BOPCol_ListOfShape& Loops() const;
+  Standard_EXPORT  const  BOPCol_ListOfShape& Loops()  const;
   
-  Standard_EXPORT    const BOPCol_ListOfShape& Areas() const;
-
+  Standard_EXPORT  const  BOPCol_ListOfShape& Areas()  const;
 
 
 
@@ -58,26 +42,26 @@ Standard_EXPORT void SetShapes(const BOPCol_ListOfShape& theLS);
 protected:
 
   
-  Standard_EXPORT   BOPAlgo_BuilderArea();
+  Standard_EXPORT BOPAlgo_BuilderArea();
 Standard_EXPORT virtual ~BOPAlgo_BuilderArea();
   
-  Standard_EXPORT   BOPAlgo_BuilderArea(const BOPCol_BaseAllocator& theAllocator);
+  Standard_EXPORT BOPAlgo_BuilderArea(const BOPCol_BaseAllocator& theAllocator);
   
-  Standard_EXPORT   virtual  void PerformShapesToAvoid()  = 0;
+  Standard_EXPORT virtual   void PerformShapesToAvoid()  = 0;
   
-  Standard_EXPORT   virtual  void PerformLoops()  = 0;
+  Standard_EXPORT virtual   void PerformLoops()  = 0;
   
-  Standard_EXPORT   virtual  void PerformAreas()  = 0;
+  Standard_EXPORT virtual   void PerformAreas()  = 0;
   
-  Standard_EXPORT   virtual  void PerformInternalShapes()  = 0;
+  Standard_EXPORT virtual   void PerformInternalShapes()  = 0;
 
 
-Handle_IntTools_Context myContext;
-BOPCol_ListOfShape myShapes;
-BOPCol_ListOfShape myLoops;
-BOPCol_ListOfShape myLoopsInternal;
-BOPCol_ListOfShape myAreas;
-BOPCol_MapOfOrientedShape myShapesToAvoid;
+  Handle(IntTools_Context) myContext;
+  BOPCol_ListOfShape myShapes;
+  BOPCol_ListOfShape myLoops;
+  BOPCol_ListOfShape myLoopsInternal;
+  BOPCol_ListOfShape myAreas;
+  BOPCol_MapOfOrientedShape myShapesToAvoid;
 
 
 private:
@@ -92,7 +76,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BOPAlgo_BuilderArea_HeaderFile

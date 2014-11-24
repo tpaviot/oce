@@ -6,48 +6,33 @@
 #ifndef _CPnts_MyGaussFunction_HeaderFile
 #define _CPnts_MyGaussFunction_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _CPnts_RealFunction_HeaderFile
 #include <CPnts_RealFunction.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _math_Function_HeaderFile
 #include <math_Function.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 
 
-//! for implementation, compute values for Gauss <br>
-class CPnts_MyGaussFunction  : public math_Function {
+//! for implementation, compute values for Gauss
+class CPnts_MyGaussFunction  : public math_Function
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      CPnts_MyGaussFunction();
-  //! F  is a pointer on a  function  D is a client data <br>
-//! <br>
-//!          Each value is computed with F(D) <br>
-  Standard_EXPORT     void Init(const CPnts_RealFunction& F,const Standard_Address D) ;
+    CPnts_MyGaussFunction();
   
-  Standard_EXPORT     Standard_Boolean Value(const Standard_Real X,Standard_Real& F) ;
-
+  //! F  is a pointer on a  function  D is a client data
+  //!
+  //! Each value is computed with F(D)
+  Standard_EXPORT   void Init (const CPnts_RealFunction& F, const Standard_Address D) ;
+  
+  Standard_EXPORT   Standard_Boolean Value (const Standard_Real X, Standard_Real& F) ;
 
 
 
@@ -62,8 +47,8 @@ private:
 
 
 
-CPnts_RealFunction myFunction;
-Standard_Address myData;
+  CPnts_RealFunction myFunction;
+  Standard_Address myData;
 
 
 };
@@ -73,7 +58,6 @@ Standard_Address myData;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _CPnts_MyGaussFunction_HeaderFile

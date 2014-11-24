@@ -5,13 +5,9 @@
 
 #include <TColStd_SequenceNodeOfSequenceOfAddress.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColStd_SequenceOfAddress_HeaderFile
 #include <TColStd_SequenceOfAddress.hxx>
-#endif
 
  
 

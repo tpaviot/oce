@@ -6,48 +6,37 @@
 #ifndef _StepShape_SurfaceModel_HeaderFile
 #define _StepShape_SurfaceModel_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepShape_ShellBasedSurfaceModel_HeaderFile
 #include <Handle_StepShape_ShellBasedSurfaceModel.hxx>
-#endif
 class Standard_Transient;
 class StepShape_ShellBasedSurfaceModel;
 
 
 
-class StepShape_SurfaceModel  : public StepData_SelectType {
+class StepShape_SurfaceModel  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a SurfaceModel SelectType <br>
-  Standard_EXPORT   StepShape_SurfaceModel();
-  //! Recognizes a SurfaceModel Kind Entity that is : <br>
-//!        1 -> ShellBasedSurfaceModel <br>
-//!        2 -> FaceBasedSurfaceModel <br>
-//!        0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! returns Value as a ShellBasedSurfaceModel (Null if another type) <br>
-  Standard_EXPORT     Handle_StepShape_ShellBasedSurfaceModel ShellBasedSurfaceModel() const;
-
+  
+  //! Returns a SurfaceModel SelectType
+  Standard_EXPORT StepShape_SurfaceModel();
+  
+  //! Recognizes a SurfaceModel Kind Entity that is :
+  //! 1 -> ShellBasedSurfaceModel
+  //! 2 -> FaceBasedSurfaceModel
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! returns Value as a ShellBasedSurfaceModel (Null if another type)
+  Standard_EXPORT   Handle(StepShape_ShellBasedSurfaceModel) ShellBasedSurfaceModel()  const;
 
 
 
@@ -70,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_SurfaceModel_HeaderFile

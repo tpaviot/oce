@@ -6,40 +6,30 @@
 #ifndef _TopOpeBRepDS_SurfaceData_HeaderFile
 #define _TopOpeBRepDS_SurfaceData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopOpeBRepDS_Surface_HeaderFile
 #include <TopOpeBRepDS_Surface.hxx>
-#endif
-#ifndef _TopOpeBRepDS_GeometryData_HeaderFile
 #include <TopOpeBRepDS_GeometryData.hxx>
-#endif
 class TopOpeBRepDS_DataStructure;
 class TopOpeBRepDS_Surface;
 
 
 
-class TopOpeBRepDS_SurfaceData  : public TopOpeBRepDS_GeometryData {
+class TopOpeBRepDS_SurfaceData  : public TopOpeBRepDS_GeometryData
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepDS_SurfaceData();
+  Standard_EXPORT TopOpeBRepDS_SurfaceData();
   
-  Standard_EXPORT   TopOpeBRepDS_SurfaceData(const TopOpeBRepDS_Surface& S);
+  Standard_EXPORT TopOpeBRepDS_SurfaceData(const TopOpeBRepDS_Surface& S);
 
 
 friend class TopOpeBRepDS_DataStructure;
-
 
 
 protected:
@@ -52,7 +42,7 @@ private:
 
 
 
-TopOpeBRepDS_Surface mySurface;
+  TopOpeBRepDS_Surface mySurface;
 
 
 };
@@ -61,7 +51,6 @@ TopOpeBRepDS_Surface mySurface;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_SurfaceData_HeaderFile

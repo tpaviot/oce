@@ -6,45 +6,32 @@
 #ifndef _TColStd_IndexedMapNodeOfIndexedMapOfReal_HeaderFile
 #define _TColStd_IndexedMapNodeOfIndexedMapOfReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal_HeaderFile
 #include <Handle_TColStd_IndexedMapNodeOfIndexedMapOfReal.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
 class TColStd_MapRealHasher;
 class TColStd_IndexedMapOfReal;
 
 
 
-class TColStd_IndexedMapNodeOfIndexedMapOfReal : public TCollection_MapNode {
+class TColStd_IndexedMapNodeOfIndexedMapOfReal : public TCollection_MapNode
+{
 
 public:
 
   
-      TColStd_IndexedMapNodeOfIndexedMapOfReal(const Standard_Real& K1,const Standard_Integer K2,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+    TColStd_IndexedMapNodeOfIndexedMapOfReal(const Standard_Real& K1, const Standard_Integer K2, const TCollection_MapNodePtr& n1, const TCollection_MapNodePtr& n2);
   
-        Standard_Real& Key1() const;
+      Standard_Real& Key1()  const;
   
-        Standard_Integer& Key2() const;
+      Standard_Integer& Key2()  const;
   
-        TCollection_MapNodePtr& Next2() const;
+      TCollection_MapNodePtr& Next2()  const;
 
 
 
@@ -59,9 +46,9 @@ protected:
 private: 
 
 
-Standard_Real myKey1;
-Standard_Integer myKey2;
-TCollection_MapNodePtr myNext2;
+  Standard_Real myKey1;
+  Standard_Integer myKey2;
+  TCollection_MapNodePtr myNext2;
 
 
 };
@@ -91,7 +78,6 @@ TCollection_MapNodePtr myNext2;
 #undef TCollection_IndexedMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_IndexedMapNodeOfIndexedMapOfReal_HeaderFile

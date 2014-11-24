@@ -6,43 +6,19 @@
 #ifndef _IGESSelect_CounterOfLevelNumber_HeaderFile
 #define _IGESSelect_CounterOfLevelNumber_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSelect_CounterOfLevelNumber_HeaderFile
 #include <Handle_IGESSelect_CounterOfLevelNumber.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfInteger_HeaderFile
 #include <Handle_TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _IFSelect_SignCounter_HeaderFile
 #include <IFSelect_SignCounter.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Handle_TColStd_HSequenceOfInteger_HeaderFile
 #include <Handle_TColStd_HSequenceOfInteger.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_Message_Messenger_HeaderFile
 #include <Handle_Message_Messenger.hxx>
-#endif
 class TColStd_HArray1OfInteger;
 class Standard_Transient;
 class Interface_InterfaceModel;
@@ -51,48 +27,58 @@ class TCollection_HAsciiString;
 class Message_Messenger;
 
 
-//! This class gives information about Level Number. It counts <br>
-//!           entities according level number, considering also the <br>
-//!           multiple level (see the class LevelList) for which an entity <br>
-//!           is attached to each of the listed levels. <br>
-//! <br>
-//!           Data are available, as level number, or as their alphanumeric <br>
-//!           counterparts ("LEVEL nnnnnnn", " NO LEVEL", " LEVEL LIST") <br>
-class IGESSelect_CounterOfLevelNumber : public IFSelect_SignCounter {
+//! This class gives information about Level Number. It counts
+//! entities according level number, considering also the
+//! multiple level (see the class LevelList) for which an entity
+//! is attached to each of the listed levels.
+//!
+//! Data are available, as level number, or as their alphanumeric
+//! counterparts ("LEVEL nnnnnnn", " NO LEVEL", " LEVEL LIST")
+class IGESSelect_CounterOfLevelNumber : public IFSelect_SignCounter
+{
 
 public:
 
-  //! Creates a CounterOfLevelNumber, clear, ready to work <br>
-//!           <withmap> and <withlist> are transmitted to SignCounter <br>
-  Standard_EXPORT   IGESSelect_CounterOfLevelNumber(const Standard_Boolean withmap = Standard_True,const Standard_Boolean withlist = Standard_False);
-  //! Resets already memorized informations : also numeric data <br>
-  Standard_EXPORT   virtual  void Clear() ;
-  //! Adds an entity by considering its lrvrl number(s) <br>
-//!	         A level is added both in numeric and alphanumeric form, <br>
-//!           i.e. LevelList gives "LEVEL LIST", others (no level or <br>
-//!           positive level) displays level number on 7 digits (C : %7d) <br>
-//!           Remark : an entity attached to a Level List is added for <br>
-//!           " LEVEL LIST", and for each of its constituant levels <br>
-  Standard_EXPORT   virtual  void AddSign(const Handle(Standard_Transient)& ent,const Handle(Interface_InterfaceModel)& model) ;
-  //! The internal action to record a new level number, positive, <br>
-//!           null (no level) or negative (level list) <br>
-  Standard_EXPORT     void AddLevel(const Handle(Standard_Transient)& ent,const Standard_Integer level) ;
-  //! Returns the highest value found for a level number <br>
-  Standard_EXPORT     Standard_Integer HighestLevel() const;
-  //! Returns the number of times a level is used, <br>
-//!           0 if it has not been recorded at all <br>
-//!           <level> = 0 counts entities attached to no level <br>
-//!           <level> < 0 counts entities attached to a LevelList <br>
-  Standard_EXPORT     Standard_Integer NbTimesLevel(const Standard_Integer level) const;
-  //! Returns the ordered list of used positive Level numbers <br>
-  Standard_EXPORT     Handle_TColStd_HSequenceOfInteger Levels() const;
-  //! Determines and returns the value of the signature for an <br>
-//!           entity as an HAsciiString. Redefined, gives the same result <br>
-//!           as AddSign, see this method ("LEVEL LIST" or "nnnnnnn") <br>
-  Standard_EXPORT   virtual  Handle_TCollection_HAsciiString Sign(const Handle(Standard_Transient)& ent,const Handle(Interface_InterfaceModel)& model) const;
-  //! Prints the counts of items (not the list) then the Highest <br>
-//!           Level Number recorded <br>
-  Standard_EXPORT   virtual  void PrintCount(const Handle(Message_Messenger)& S) const;
+  
+  //! Creates a CounterOfLevelNumber, clear, ready to work
+  //! <withmap> and <withlist> are transmitted to SignCounter
+  Standard_EXPORT IGESSelect_CounterOfLevelNumber(const Standard_Boolean withmap = Standard_True, const Standard_Boolean withlist = Standard_False);
+  
+  //! Resets already memorized informations : also numeric data
+  Standard_EXPORT virtual   void Clear() ;
+  
+  //! Adds an entity by considering its lrvrl number(s)
+  //! A level is added both in numeric and alphanumeric form,
+  //! i.e. LevelList gives "LEVEL LIST", others (no level or
+  //! positive level) displays level number on 7 digits (C : %7d)
+  //! Remark : an entity attached to a Level List is added for
+  //! " LEVEL LIST", and for each of its constituant levels
+  Standard_EXPORT virtual   void AddSign (const Handle(Standard_Transient)& ent, const Handle(Interface_InterfaceModel)& model) ;
+  
+  //! The internal action to record a new level number, positive,
+  //! null (no level) or negative (level list)
+  Standard_EXPORT   void AddLevel (const Handle(Standard_Transient)& ent, const Standard_Integer level) ;
+  
+  //! Returns the highest value found for a level number
+  Standard_EXPORT   Standard_Integer HighestLevel()  const;
+  
+  //! Returns the number of times a level is used,
+  //! 0 if it has not been recorded at all
+  //! <level> = 0 counts entities attached to no level
+  //! <level> < 0 counts entities attached to a LevelList
+  Standard_EXPORT   Standard_Integer NbTimesLevel (const Standard_Integer level)  const;
+  
+  //! Returns the ordered list of used positive Level numbers
+  Standard_EXPORT   Handle(TColStd_HSequenceOfInteger) Levels()  const;
+  
+  //! Determines and returns the value of the signature for an
+  //! entity as an HAsciiString. Redefined, gives the same result
+  //! as AddSign, see this method ("LEVEL LIST" or "nnnnnnn")
+  Standard_EXPORT virtual   Handle(TCollection_HAsciiString) Sign (const Handle(Standard_Transient)& ent, const Handle(Interface_InterfaceModel)& model)  const;
+  
+  //! Prints the counts of items (not the list) then the Highest
+  //! Level Number recorded
+  Standard_EXPORT virtual   void PrintCount (const Handle(Message_Messenger)& S)  const;
 
 
 
@@ -107,9 +93,9 @@ protected:
 private: 
 
 
-Standard_Integer thehigh;
-Standard_Integer thenblists;
-Handle_TColStd_HArray1OfInteger thelevels;
+  Standard_Integer thehigh;
+  Standard_Integer thenblists;
+  Handle(TColStd_HArray1OfInteger) thelevels;
 
 
 };
@@ -118,7 +104,6 @@ Handle_TColStd_HArray1OfInteger thelevels;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSelect_CounterOfLevelNumber_HeaderFile

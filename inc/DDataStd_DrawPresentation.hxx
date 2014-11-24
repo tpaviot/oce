@@ -6,34 +6,16 @@
 #ifndef _DDataStd_DrawPresentation_HeaderFile
 #define _DDataStd_DrawPresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_DDataStd_DrawPresentation_HeaderFile
 #include <Handle_DDataStd_DrawPresentation.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Draw_Drawable3D_HeaderFile
 #include <Handle_Draw_Drawable3D.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
-#ifndef _Handle_TDF_AttributeDelta_HeaderFile
 #include <Handle_TDF_AttributeDelta.hxx>
-#endif
 class Draw_Drawable3D;
 class TDF_Label;
 class Standard_GUID;
@@ -42,57 +24,63 @@ class TDF_RelocationTable;
 class TDF_AttributeDelta;
 
 
-//! draw presentaion of a label of a document <br>
-class DDataStd_DrawPresentation : public TDF_Attribute {
+//! draw presentaion of a label of a document
+class DDataStd_DrawPresentation : public TDF_Attribute
+{
 
 public:
 
-  //! api methods on draw presentation <br>
-//!          ================================ <br>
-  Standard_EXPORT   static  Standard_Boolean HasPresentation(const TDF_Label& L) ;
   
-  Standard_EXPORT   static  Standard_Boolean IsDisplayed(const TDF_Label& L) ;
+  //! api methods on draw presentation
+  //! ================================
+  Standard_EXPORT static   Standard_Boolean HasPresentation (const TDF_Label& L) ;
   
-  Standard_EXPORT   static  void Display(const TDF_Label& L) ;
+  Standard_EXPORT static   Standard_Boolean IsDisplayed (const TDF_Label& L) ;
   
-  Standard_EXPORT   static  void Erase(const TDF_Label& L) ;
-  //! attribute implementation <br>
-//!          ======================== <br>
-  Standard_EXPORT   static  void Update(const TDF_Label& L) ;
+  Standard_EXPORT static   void Display (const TDF_Label& L) ;
   
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
+  Standard_EXPORT static   void Erase (const TDF_Label& L) ;
   
-  Standard_EXPORT   DDataStd_DrawPresentation();
+  //! attribute implementation
+  //! ========================
+  Standard_EXPORT static   void Update (const TDF_Label& L) ;
   
-  Standard_EXPORT     void SetDisplayed(const Standard_Boolean status) ;
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-  Standard_EXPORT     Standard_Boolean IsDisplayed() const;
+  Standard_EXPORT DDataStd_DrawPresentation();
   
-  Standard_EXPORT     void SetDrawable(const Handle(Draw_Drawable3D)& D) ;
+  Standard_EXPORT   void SetDisplayed (const Standard_Boolean status) ;
   
-  Standard_EXPORT     Handle_Draw_Drawable3D GetDrawable() const;
+  Standard_EXPORT   Standard_Boolean IsDisplayed()  const;
   
-  Standard_EXPORT    const Standard_GUID& ID() const;
+  Standard_EXPORT   void SetDrawable (const Handle(Draw_Drawable3D)& D) ;
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  Standard_EXPORT   Handle(Draw_Drawable3D) GetDrawable()  const;
   
-  Standard_EXPORT     void Restore(const Handle(TDF_Attribute)& with) ;
-  //! call backs for viewer updating <br>
-//!          ============================== <br>
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& into,const Handle(TDF_RelocationTable)& RT) const;
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
   
-  Standard_EXPORT   virtual  void AfterAddition() ;
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
   
-  Standard_EXPORT   virtual  void BeforeRemoval() ;
+  Standard_EXPORT   void Restore (const Handle(TDF_Attribute)& with) ;
   
-  Standard_EXPORT   virtual  void BeforeForget() ;
+  //! call backs for viewer updating
+  //! ==============================
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& into, const Handle(TDF_RelocationTable)& RT)  const;
   
-  Standard_EXPORT   virtual  void AfterResume() ;
+  Standard_EXPORT virtual   void AfterAddition() ;
   
-  Standard_EXPORT   virtual  Standard_Boolean BeforeUndo(const Handle(TDF_AttributeDelta)& anAttDelta,const Standard_Boolean forceIt = Standard_False) ;
-  //! update draw viewer according to delta <br>//! private methods <br>
-//!          =============== <br>
-  Standard_EXPORT   virtual  Standard_Boolean AfterUndo(const Handle(TDF_AttributeDelta)& anAttDelta,const Standard_Boolean forceIt = Standard_False) ;
+  Standard_EXPORT virtual   void BeforeRemoval() ;
+  
+  Standard_EXPORT virtual   void BeforeForget() ;
+  
+  Standard_EXPORT virtual   void AfterResume() ;
+  
+  Standard_EXPORT virtual   Standard_Boolean BeforeUndo (const Handle(TDF_AttributeDelta)& anAttDelta, const Standard_Boolean forceIt = Standard_False) ;
+  
+  //! update draw viewer according to delta
+  //! private methods
+  //! ===============
+  Standard_EXPORT virtual   Standard_Boolean AfterUndo (const Handle(TDF_AttributeDelta)& anAttDelta, const Standard_Boolean forceIt = Standard_False) ;
 
 
 
@@ -107,14 +95,14 @@ protected:
 private: 
 
   
-  Standard_EXPORT     void DrawBuild() ;
+  Standard_EXPORT   void DrawBuild() ;
   
-  Standard_EXPORT   static  void DrawDisplay(const TDF_Label& L,const Handle(DDataStd_DrawPresentation)& P) ;
+  Standard_EXPORT static   void DrawDisplay (const TDF_Label& L, const Handle(DDataStd_DrawPresentation)& P) ;
   
-  Standard_EXPORT   static  void DrawErase(const TDF_Label& L,const Handle(DDataStd_DrawPresentation)& P) ;
+  Standard_EXPORT static   void DrawErase (const TDF_Label& L, const Handle(DDataStd_DrawPresentation)& P) ;
 
-Standard_Boolean isDisplayed;
-Handle_Draw_Drawable3D myDrawable;
+  Standard_Boolean isDisplayed;
+  Handle(Draw_Drawable3D) myDrawable;
 
 
 };
@@ -123,7 +111,6 @@ Handle_Draw_Drawable3D myDrawable;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DDataStd_DrawPresentation_HeaderFile

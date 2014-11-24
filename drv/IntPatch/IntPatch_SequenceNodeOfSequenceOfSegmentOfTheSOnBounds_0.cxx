@@ -5,16 +5,10 @@
 
 #include <IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IntPatch_TheSegmentOfTheSOnBounds_HeaderFile
 #include <IntPatch_TheSegmentOfTheSOnBounds.hxx>
-#endif
-#ifndef _IntPatch_SequenceOfSegmentOfTheSOnBounds_HeaderFile
 #include <IntPatch_SequenceOfSegmentOfTheSOnBounds.hxx>
-#endif
 
  
 

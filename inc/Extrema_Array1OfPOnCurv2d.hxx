@@ -6,25 +6,13 @@
 #ifndef _Extrema_Array1OfPOnCurv2d_HeaderFile
 #define _Extrema_Array1OfPOnCurv2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -33,52 +21,52 @@ class Extrema_POnCurv2d;
 
 
 
-class Extrema_Array1OfPOnCurv2d  {
+class Extrema_Array1OfPOnCurv2d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Extrema_Array1OfPOnCurv2d(const Standard_Integer Low,const Standard_Integer Up);
+    Extrema_Array1OfPOnCurv2d(const Standard_Integer Low, const Standard_Integer Up);
   
-      Extrema_Array1OfPOnCurv2d(const Extrema_POnCurv2d& Item,const Standard_Integer Low,const Standard_Integer Up);
+    Extrema_Array1OfPOnCurv2d(const Extrema_POnCurv2d& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const Extrema_POnCurv2d& V) ;
+  Standard_EXPORT   void Init (const Extrema_POnCurv2d& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~Extrema_Array1OfPOnCurv2d()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const Extrema_Array1OfPOnCurv2d& Assign(const Extrema_Array1OfPOnCurv2d& Other) ;
-   const Extrema_Array1OfPOnCurv2d& operator =(const Extrema_Array1OfPOnCurv2d& Other) 
+  Standard_EXPORT  const  Extrema_Array1OfPOnCurv2d& Assign (const Extrema_Array1OfPOnCurv2d& Other) ;
+ const  Extrema_Array1OfPOnCurv2d& operator = (const Extrema_Array1OfPOnCurv2d& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Extrema_POnCurv2d& Value) ;
+      void SetValue (const Standard_Integer Index, const Extrema_POnCurv2d& Value) ;
   
-       const Extrema_POnCurv2d& Value(const Standard_Integer Index) const;
-     const Extrema_POnCurv2d& operator ()(const Standard_Integer Index) const
+     const  Extrema_POnCurv2d& Value (const Standard_Integer Index)  const;
+   const  Extrema_POnCurv2d& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        Extrema_POnCurv2d& ChangeValue(const Standard_Integer Index) ;
-      Extrema_POnCurv2d& operator ()(const Standard_Integer Index) 
+      Extrema_POnCurv2d& ChangeValue (const Standard_Integer Index) ;
+    Extrema_POnCurv2d& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -92,13 +80,13 @@ protected:
 private:
 
   
-  Standard_EXPORT   Extrema_Array1OfPOnCurv2d(const Extrema_Array1OfPOnCurv2d& AnArray);
+  Standard_EXPORT Extrema_Array1OfPOnCurv2d(const Extrema_Array1OfPOnCurv2d& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
@@ -116,7 +104,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Extrema_Array1OfPOnCurv2d_HeaderFile

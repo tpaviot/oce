@@ -6,28 +6,14 @@
 #ifndef _TColStd_HArray1OfCharacter_HeaderFile
 #define _TColStd_HArray1OfCharacter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfCharacter_HeaderFile
 #include <Handle_TColStd_HArray1OfCharacter.hxx>
-#endif
 
-#ifndef _TColStd_Array1OfCharacter_HeaderFile
 #include <TColStd_Array1OfCharacter.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Character_HeaderFile
 #include <Standard_Character.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -36,32 +22,33 @@ class TColStd_Array1OfCharacter;
 
 
 
-class TColStd_HArray1OfCharacter : public MMgt_TShared {
+class TColStd_HArray1OfCharacter : public MMgt_TShared
+{
 
 public:
 
   
-      TColStd_HArray1OfCharacter(const Standard_Integer Low,const Standard_Integer Up);
+    TColStd_HArray1OfCharacter(const Standard_Integer Low, const Standard_Integer Up);
   
-      TColStd_HArray1OfCharacter(const Standard_Integer Low,const Standard_Integer Up,const Standard_Character& V);
+    TColStd_HArray1OfCharacter(const Standard_Integer Low, const Standard_Integer Up, const Standard_Character& V);
   
-        void Init(const Standard_Character& V) ;
+      void Init (const Standard_Character& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Standard_Character& Value) ;
+      void SetValue (const Standard_Integer Index, const Standard_Character& Value) ;
   
-       const Standard_Character& Value(const Standard_Integer Index) const;
+     const  Standard_Character& Value (const Standard_Integer Index)  const;
   
-        Standard_Character& ChangeValue(const Standard_Integer Index) ;
+      Standard_Character& ChangeValue (const Standard_Integer Index) ;
   
-       const TColStd_Array1OfCharacter& Array1() const;
+     const  TColStd_Array1OfCharacter& Array1()  const;
   
-        TColStd_Array1OfCharacter& ChangeArray1() ;
+      TColStd_Array1OfCharacter& ChangeArray1() ;
 
 
 
@@ -76,7 +63,7 @@ protected:
 private: 
 
 
-TColStd_Array1OfCharacter myArray;
+  TColStd_Array1OfCharacter myArray;
 
 
 };
@@ -102,7 +89,6 @@ TColStd_Array1OfCharacter myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_HArray1OfCharacter_HeaderFile

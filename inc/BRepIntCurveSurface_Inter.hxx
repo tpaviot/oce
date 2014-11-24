@@ -6,49 +6,21 @@
 #ifndef _BRepIntCurveSurface_Inter_HeaderFile
 #define _BRepIntCurveSurface_Inter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_GeomAdaptor_HCurve_HeaderFile
 #include <Handle_GeomAdaptor_HCurve.hxx>
-#endif
-#ifndef _IntCurveSurface_HInter_HeaderFile
 #include <IntCurveSurface_HInter.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_BRepTopAdaptor_TopolTool_HeaderFile
 #include <Handle_BRepTopAdaptor_TopolTool.hxx>
-#endif
-#ifndef _TopAbs_State_HeaderFile
 #include <TopAbs_State.hxx>
-#endif
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
-#ifndef _TopTools_SequenceOfShape_HeaderFile
 #include <TopTools_SequenceOfShape.hxx>
-#endif
-#ifndef _Handle_Bnd_HArray1OfBox_HeaderFile
 #include <Handle_Bnd_HArray1OfBox.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _IntCurveSurface_TransitionOnCurve_HeaderFile
 #include <IntCurveSurface_TransitionOnCurve.hxx>
-#endif
 class GeomAdaptor_HCurve;
 class BRepTopAdaptor_TopolTool;
 class Bnd_HArray1OfBox;
@@ -61,80 +33,98 @@ class gp_Pnt;
 class TopoDS_Face;
 
 
-//! Computes the intersection between a face and a <br>
-//!          curve. To intersect one curve with shape method <br>
-//!          Init(Shape, curve, tTol) should be used.  To <br>
-//!          intersect a few curves with specified shape it is <br>
-//!          necessary to load shape one time using method <br>
-//!          Load(shape, tol) and find intersection points for <br>
-//!          each curve using method Init(curve).  For <br>
-//!          iteration by intersection points method More() and <br>
-//!          Next() should be used. <br>
-//! <br>
-//! Example: <br>
-//!  Inter.Load(shape, tol); <br>
-//!  for( i =1; i <= nbCurves;i++) <br>
-//!   { <br>
-//!    Inter.Init(curve); <br>
-//!    for(  ;Inter.More(); Inter.Next()) <br>
-//!    { <br>
-//!     ....... <br>
-//!    } <br>
-//!   } <br>
-class BRepIntCurveSurface_Inter  {
+//! Computes the intersection between a face and a
+//! curve. To intersect one curve with shape method
+//! Init(Shape, curve, tTol) should be used.  To
+//! intersect a few curves with specified shape it is
+//! necessary to load shape one time using method
+//! Load(shape, tol) and find intersection points for
+//! each curve using method Init(curve).  For
+//! iteration by intersection points method More() and
+//! Next() should be used.
+//!
+//! Example:
+//! Inter.Load(shape, tol);
+//! for( i =1; i <= nbCurves;i++)
+//! {
+//! Inter.Init(curve);
+//! for(  ;Inter.More(); Inter.Next())
+//! {
+//! .......
+//! }
+//! }
+class BRepIntCurveSurface_Inter 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor; <br>
-  Standard_EXPORT   BRepIntCurveSurface_Inter();
-  //! Load the Shape, the curve  and initialize the <br>
-//!           tolerance used for the classification. <br>
-  Standard_EXPORT     void Init(const TopoDS_Shape& theShape,const GeomAdaptor_Curve& theCurve,const Standard_Real theTol) ;
-  //! Load the Shape, the curve  and initialize the <br>
-//!           tolerance used for the classification. <br>
-  Standard_EXPORT     void Init(const TopoDS_Shape& theShape,const gp_Lin& theLine,const Standard_Real theTol) ;
-  //! Load the Shape,   and initialize the <br>
-//!           tolerance used for the classification. <br>
-  Standard_EXPORT     void Load(const TopoDS_Shape& theShape,const Standard_Real theTol) ;
-  //! Method to find intersections of specified curve with loaded shape. <br>
-  Standard_EXPORT     void Init(const GeomAdaptor_Curve& theCurve) ;
-  //! returns True if there is a current face. <br>
-  Standard_EXPORT     Standard_Boolean More() const;
-  //! Sets the next intersection point to check. <br>
-  Standard_EXPORT     void Next() ;
-  //! returns the current Intersection point. <br>
-  Standard_EXPORT     IntCurveSurface_IntersectionPoint Point() const;
-  //! returns the current geometric Point <br>
-  Standard_EXPORT    const gp_Pnt& Pnt() const;
-  //! returns the U parameter of the current point <br>
-//!          on the current face. <br>
-  Standard_EXPORT     Standard_Real U() const;
-  //! returns the V parameter of the current point <br>
-//!          on the current face. <br>
-  Standard_EXPORT     Standard_Real V() const;
-  //! returns the  parameter of the current point <br>
-//!          on the curve. <br>
-  Standard_EXPORT     Standard_Real W() const;
-  //! returns the current state  (IN or ON) <br>
-  Standard_EXPORT     TopAbs_State State() const;
-  //! returns the transition of the line on the surface (IN or OUT or UNKNOWN) <br>
-  Standard_EXPORT     IntCurveSurface_TransitionOnCurve Transition() const;
-  //! returns the current face. <br>
-  Standard_EXPORT    const TopoDS_Face& Face() const;
-
+  
+  //! Empty constructor;
+  Standard_EXPORT BRepIntCurveSurface_Inter();
+  
+  //! Load the Shape, the curve  and initialize the
+  //! tolerance used for the classification.
+  Standard_EXPORT   void Init (const TopoDS_Shape& theShape, const GeomAdaptor_Curve& theCurve, const Standard_Real theTol) ;
+  
+  //! Load the Shape, the curve  and initialize the
+  //! tolerance used for the classification.
+  Standard_EXPORT   void Init (const TopoDS_Shape& theShape, const gp_Lin& theLine, const Standard_Real theTol) ;
+  
+  //! Load the Shape,   and initialize the
+  //! tolerance used for the classification.
+  Standard_EXPORT   void Load (const TopoDS_Shape& theShape, const Standard_Real theTol) ;
+  
+  //! Method to find intersections of specified curve with loaded shape.
+  Standard_EXPORT   void Init (const GeomAdaptor_Curve& theCurve) ;
+  
+  //! returns True if there is a current face.
+  Standard_EXPORT   Standard_Boolean More()  const;
+  
+  //! Sets the next intersection point to check.
+  Standard_EXPORT   void Next() ;
+  
+  //! returns the current Intersection point.
+  Standard_EXPORT   IntCurveSurface_IntersectionPoint Point()  const;
+  
+  //! returns the current geometric Point
+  Standard_EXPORT  const  gp_Pnt& Pnt()  const;
+  
+  //! returns the U parameter of the current point
+  //! on the current face.
+  Standard_EXPORT   Standard_Real U()  const;
+  
+  //! returns the V parameter of the current point
+  //! on the current face.
+  Standard_EXPORT   Standard_Real V()  const;
+  
+  //! returns the  parameter of the current point
+  //! on the curve.
+  Standard_EXPORT   Standard_Real W()  const;
+  
+  //! returns the current state  (IN or ON)
+  Standard_EXPORT   TopAbs_State State()  const;
+  
+  //! returns the transition of the line on the surface (IN or OUT or UNKNOWN)
+  Standard_EXPORT   IntCurveSurface_TransitionOnCurve Transition()  const;
+  
+  //! returns the current face.
+  Standard_EXPORT  const  TopoDS_Face& Face()  const;
 
 
 
 
 protected:
 
-  //! Internal function <br>
-  Standard_EXPORT     void Find() ;
-  //! Method chec found intersection point <br>
-  Standard_EXPORT     Standard_Boolean FindPoint() ;
-  //! Method to clear fields of class <br>
-  Standard_EXPORT     void Clear() ;
+  
+  //! Internal function
+  Standard_EXPORT   void Find() ;
+  
+  //! Method chec found intersection point
+  Standard_EXPORT   Standard_Boolean FindPoint() ;
+  
+  //! Method to clear fields of class
+  Standard_EXPORT   void Clear() ;
 
 
 
@@ -143,19 +133,19 @@ private:
 
 
 
-Standard_Real myTolerance;
-Handle_GeomAdaptor_HCurve myCurve;
-IntCurveSurface_HInter myIntcs;
-Standard_Integer myCurrentindex;
-Standard_Integer myCurrentnbpoints;
-Handle_BRepTopAdaptor_TopolTool myFastClass;
-TopAbs_State myCurrentstate;
-Standard_Real myCurrentU;
-Standard_Real myCurrentV;
-Bnd_Box myCurveBox;
-Standard_Integer myIndFace;
-TopTools_SequenceOfShape myFaces;
-Handle_Bnd_HArray1OfBox myFaceBoxes;
+  Standard_Real myTolerance;
+  Handle(GeomAdaptor_HCurve) myCurve;
+  IntCurveSurface_HInter myIntcs;
+  Standard_Integer myCurrentindex;
+  Standard_Integer myCurrentnbpoints;
+  Handle(BRepTopAdaptor_TopolTool) myFastClass;
+  TopAbs_State myCurrentstate;
+  Standard_Real myCurrentU;
+  Standard_Real myCurrentV;
+  Bnd_Box myCurveBox;
+  Standard_Integer myIndFace;
+  TopTools_SequenceOfShape myFaces;
+  Handle(Bnd_HArray1OfBox) myFaceBoxes;
 
 
 };
@@ -164,7 +154,6 @@ Handle_Bnd_HArray1OfBox myFaceBoxes;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepIntCurveSurface_Inter_HeaderFile

@@ -6,162 +6,155 @@
 #ifndef _Graphic3d_AspectFillArea3d_HeaderFile
 #define _Graphic3d_AspectFillArea3d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Graphic3d_AspectFillArea3d_HeaderFile
 #include <Handle_Graphic3d_AspectFillArea3d.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Graphic3d_TextureMap_HeaderFile
 #include <Handle_Graphic3d_TextureMap.hxx>
-#endif
-#ifndef _Graphic3d_MaterialAspect_HeaderFile
 #include <Graphic3d_MaterialAspect.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
-#endif
-#ifndef _Graphic3d_ShaderProgram_Handle_HeaderFile
 #include <Graphic3d_ShaderProgram_Handle.hxx>
-#endif
-#ifndef _Aspect_AspectFillArea_HeaderFile
 #include <Aspect_AspectFillArea.hxx>
-#endif
-#ifndef _Aspect_InteriorStyle_HeaderFile
 #include <Aspect_InteriorStyle.hxx>
-#endif
-#ifndef _Aspect_TypeOfLine_HeaderFile
 #include <Aspect_TypeOfLine.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Graphic3d_TextureMap;
 class Quantity_Color;
 class Graphic3d_MaterialAspect;
 
 
-//! This class permits the creation and updating of <br>
-//!          a graphic attribute context for opaque 3d <br>
-//!          primitives (polygons, triangles, quadrilaterals) <br>
-//!  Keywords: Face, FillArea, Triangle, Quadrangle, Polygon, <br>
-//!           TriangleMesh, QuadrangleMesh, Edge, Border, Interior, <br>
-//!           Color, Type, Width, Style, Hatch, Material, <br>
-//!           BackFaceRemoval, DistinguishMode <br>
-class Graphic3d_AspectFillArea3d : public Aspect_AspectFillArea {
+//! This class permits the creation and updating of
+//! a graphic attribute context for opaque 3d
+//! primitives (polygons, triangles, quadrilaterals)
+//! Keywords: Face, FillArea, Triangle, Quadrangle, Polygon,
+//! TriangleMesh, QuadrangleMesh, Edge, Border, Interior,
+//! Color, Type, Width, Style, Hatch, Material,
+//! BackFaceRemoval, DistinguishMode
+class Graphic3d_AspectFillArea3d : public Aspect_AspectFillArea
+{
 
 public:
 
-  //! Creates a context table for fill area primitives <br>
-//!          defined with the following default values: <br>
-//! <br>
-//!          InteriorStyle       : IS_EMPTY <br>
-//!          InteriorColor       : NOC_CYAN1 <br>
-//!          EdgeColor           : NOC_WHITE <br>
-//!          EdgeLineType        : TOL_SOLID <br>
-//!          EdgeWidth           : 1.0 <br>
-//!          FrontMaterial       : NOM_BRASS <br>
-//!          BackMaterial        : NOM_BRASS <br>
-//! <br>
-//!          Display of back-facing filled polygons. <br>
-//!          No distinction between external and internal <br>
-//!          faces of FillAreas. <br>
-//!          The edges are not drawn. <br>
-//!          Polygon offset parameters: mode = Aspect_POM_None, factor = 1., units = 0. <br>
-  Standard_EXPORT   Graphic3d_AspectFillArea3d();
-  //! Creates a context table for fill area primitives <br>
-//!          defined with the specified values. <br>
-//! <br>
-//!          Display of back-facing filled polygons. <br>
-//!          No distinction between external and internal <br>
-//!          faces of FillAreas. <br>
-//!          The edges are not drawn. <br>
-//!          Polygon offset parameters: mode = Aspect_POM_None, factor = 1., units = 0. <br>
-//! Warning <br>
-//! EdgeWidth is the "line width scale factor".   The <br>
-//! nominal line width is 1 pixel.   The width of the line is <br>
-//! determined by applying the line width scale factor to <br>
-//! this nominal line width.   The supported line widths <br>
-//! vary by 1-pixel units. <br>
-  Standard_EXPORT   Graphic3d_AspectFillArea3d(const Aspect_InteriorStyle Interior,const Quantity_Color& InteriorColor,const Quantity_Color& EdgeColor,const Aspect_TypeOfLine EdgeLineType,const Standard_Real EdgeWidth,const Graphic3d_MaterialAspect& FrontMaterial,const Graphic3d_MaterialAspect& BackMaterial);
-  //! Allows the display of back-facing filled <br>
-//!          polygons. <br>
-  Standard_EXPORT     void AllowBackFace() ;
-  //! Modifies the surface material of internal faces <br>
-  Standard_EXPORT     void SetBackMaterial(const Graphic3d_MaterialAspect& AMaterial) ;
-  //! Allows distinction between external and internal <br>
-//!          faces of FillAreas. <br>
-  Standard_EXPORT     void SetDistinguishOn() ;
-  //! Forbids distinction between external and internal <br>
-//!          faces of FillAreas. <br>
-  Standard_EXPORT     void SetDistinguishOff() ;
-  //! The edges of FillAreas are drawn. <br>
-  Standard_EXPORT     void SetEdgeOn() ;
-  //! The edges of FillAreas are not drawn. <br>
-  Standard_EXPORT     void SetEdgeOff() ;
-  //! Modifies the surface material of external faces <br>
-  Standard_EXPORT     void SetFrontMaterial(const Graphic3d_MaterialAspect& AMaterial) ;
-  //! Suppress the display of back-facing filled <br>
-//!          polygons. <br>
-//!          A back-facing polygon is defined as a polygon whose <br>
-//!          vertices are in a clockwise order with respect <br>
-//!          to screen coordinates. <br>
-  Standard_EXPORT     void SuppressBackFace() ;
   
-  Standard_EXPORT     void SetTextureMap(const Handle(Graphic3d_TextureMap)& ATexture) ;
+  //! Creates a context table for fill area primitives
+  //! defined with the following default values:
+  //!
+  //! InteriorStyle       : IS_EMPTY
+  //! InteriorColor       : NOC_CYAN1
+  //! EdgeColor           : NOC_WHITE
+  //! EdgeLineType        : TOL_SOLID
+  //! EdgeWidth           : 1.0
+  //! FrontMaterial       : NOM_BRASS
+  //! BackMaterial        : NOM_BRASS
+  //!
+  //! Display of back-facing filled polygons.
+  //! No distinction between external and internal
+  //! faces of FillAreas.
+  //! The edges are not drawn.
+  //! Polygon offset parameters: mode = Aspect_POM_None, factor = 1., units = 0.
+  Standard_EXPORT Graphic3d_AspectFillArea3d();
   
-  Standard_EXPORT     void SetTextureMapOn() ;
+  //! Creates a context table for fill area primitives
+  //! defined with the specified values.
+  //!
+  //! Display of back-facing filled polygons.
+  //! No distinction between external and internal
+  //! faces of FillAreas.
+  //! The edges are not drawn.
+  //! Polygon offset parameters: mode = Aspect_POM_None, factor = 1., units = 0.
+  //! Warning
+  //! EdgeWidth is the "line width scale factor".   The
+  //! nominal line width is 1 pixel.   The width of the line is
+  //! determined by applying the line width scale factor to
+  //! this nominal line width.   The supported line widths
+  //! vary by 1-pixel units.
+  Standard_EXPORT Graphic3d_AspectFillArea3d(const Aspect_InteriorStyle Interior, const Quantity_Color& InteriorColor, const Quantity_Color& EdgeColor, const Aspect_TypeOfLine EdgeLineType, const Standard_Real EdgeWidth, const Graphic3d_MaterialAspect& FrontMaterial, const Graphic3d_MaterialAspect& BackMaterial);
   
-  Standard_EXPORT     void SetTextureMapOff() ;
-  //! Sets up OpenGL polygon offsets mechanism. <br>
-//!          <aMode> parameter can contain various combinations of <br>
-//!          Aspect_PolygonOffsetMode enumeration elements (Aspect_POM_None means <br>
-//!          that polygon offsets are not changed). <br>
-//!          If <aMode> is different from Aspect_POM_Off and Aspect_POM_None, then <aFactor> and <aUnits> <br>
-//!          arguments are used by graphic renderer to calculate a depth offset value: <br>
-//! <br>
-//!          offset = <aFactor> * m + <aUnits> * r, where <br>
-//!          m - maximum depth slope for the polygon currently being displayed, <br>
-//!          r - minimum window coordinates depth resolution (implementation-specific) <br>
-//! <br>
-//!          Deafult settings for OCC 3D viewer: mode = Aspect_POM_Fill, factor = 1., units = 0. <br>
-//! <br>
-//!          Negative offset values move polygons closer to the viewport, <br>
-//!          while positive values shift polygons away. <br>
-//!          Consult OpenGL reference for details (glPolygonOffset function description). <br>
-  Standard_EXPORT     void SetPolygonOffsets(const Standard_Integer aMode,const Standard_ShortReal aFactor = 1.0,const Standard_ShortReal aUnits = 0.0) ;
-  //! Sets up OpenGL/GLSL shader program. <br>
-  Standard_EXPORT     void SetShaderProgram(const Graphic3d_ShaderProgram_Handle& theProgram) ;
-  //! Returns the Back Face Removal status. <br>
-//!          Standard_True if SuppressBackFace is activated. <br>
-  Standard_EXPORT     Standard_Boolean BackFace() const;
-  //! Returns the Distinguish Mode status. <br>
-  Standard_EXPORT     Standard_Boolean Distinguish() const;
-  //! Returns Standard_True if the edges are drawn and <br>
-//!          Standard_False if the edges are not drawn. <br>
-  Standard_EXPORT     Standard_Boolean Edge() const;
-  //! Returns the surface material of internal faces <br>
-  Standard_EXPORT    const Graphic3d_MaterialAspect& BackMaterial() const;
-  //! Returns the surface material of external faces <br>
-  Standard_EXPORT    const Graphic3d_MaterialAspect& FrontMaterial() const;
+  //! Allows the display of back-facing filled
+  //! polygons.
+  Standard_EXPORT   void AllowBackFace() ;
   
-  Standard_EXPORT     Handle_Graphic3d_TextureMap TextureMap() const;
+  //! Modifies the surface material of internal faces
+  Standard_EXPORT   void SetBackMaterial (const Graphic3d_MaterialAspect& AMaterial) ;
   
-  Standard_EXPORT     Standard_Boolean TextureMapState() const;
-  //! Returns current polygon offsets settings. <br>
-  Standard_EXPORT     void PolygonOffsets(Standard_Integer& aMode,Standard_ShortReal& aFactor,Standard_ShortReal& aUnits) const;
+  //! Allows distinction between external and internal
+  //! faces of FillAreas.
+  Standard_EXPORT   void SetDistinguishOn() ;
   
-  Standard_EXPORT    const Graphic3d_ShaderProgram_Handle& ShaderProgram() const;
+  //! Forbids distinction between external and internal
+  //! faces of FillAreas.
+  Standard_EXPORT   void SetDistinguishOff() ;
+  
+  //! The edges of FillAreas are drawn.
+  Standard_EXPORT   void SetEdgeOn() ;
+  
+  //! The edges of FillAreas are not drawn.
+  Standard_EXPORT   void SetEdgeOff() ;
+  
+  //! Modifies the surface material of external faces
+  Standard_EXPORT   void SetFrontMaterial (const Graphic3d_MaterialAspect& AMaterial) ;
+  
+  //! Suppress the display of back-facing filled
+  //! polygons.
+  //! A back-facing polygon is defined as a polygon whose
+  //! vertices are in a clockwise order with respect
+  //! to screen coordinates.
+  Standard_EXPORT   void SuppressBackFace() ;
+  
+  Standard_EXPORT   void SetTextureMap (const Handle(Graphic3d_TextureMap)& ATexture) ;
+  
+  Standard_EXPORT   void SetTextureMapOn() ;
+  
+  Standard_EXPORT   void SetTextureMapOff() ;
+  
+  //! Sets up OpenGL polygon offsets mechanism.
+  //! <aMode> parameter can contain various combinations of
+  //! Aspect_PolygonOffsetMode enumeration elements (Aspect_POM_None means
+  //! that polygon offsets are not changed).
+  //! If <aMode> is different from Aspect_POM_Off and Aspect_POM_None, then <aFactor> and <aUnits>
+  //! arguments are used by graphic renderer to calculate a depth offset value:
+  //!
+  //! offset = <aFactor> * m + <aUnits> * r, where
+  //! m - maximum depth slope for the polygon currently being displayed,
+  //! r - minimum window coordinates depth resolution (implementation-specific)
+  //!
+  //! Deafult settings for OCC 3D viewer: mode = Aspect_POM_Fill, factor = 1., units = 0.
+  //!
+  //! Negative offset values move polygons closer to the viewport,
+  //! while positive values shift polygons away.
+  //! Consult OpenGL reference for details (glPolygonOffset function description).
+  Standard_EXPORT   void SetPolygonOffsets (const Standard_Integer aMode, const Standard_ShortReal aFactor = 1.0, const Standard_ShortReal aUnits = 0.0) ;
+  
+  //! Sets up OpenGL/GLSL shader program.
+  Standard_EXPORT   void SetShaderProgram (const Graphic3d_ShaderProgram_Handle& theProgram) ;
+  
+  //! Returns the Back Face Removal status.
+  //! Standard_True if SuppressBackFace is activated.
+  Standard_EXPORT   Standard_Boolean BackFace()  const;
+  
+  //! Returns the Distinguish Mode status.
+  Standard_EXPORT   Standard_Boolean Distinguish()  const;
+  
+  //! Returns Standard_True if the edges are drawn and
+  //! Standard_False if the edges are not drawn.
+  Standard_EXPORT   Standard_Boolean Edge()  const;
+  
+  //! Returns the surface material of internal faces
+  Standard_EXPORT  const  Graphic3d_MaterialAspect& BackMaterial()  const;
+  
+  //! Returns the surface material of external faces
+  Standard_EXPORT  const  Graphic3d_MaterialAspect& FrontMaterial()  const;
+  
+  Standard_EXPORT   Handle(Graphic3d_TextureMap) TextureMap()  const;
+  
+  Standard_EXPORT   Standard_Boolean TextureMapState()  const;
+  
+  //! Returns current polygon offsets settings.
+  Standard_EXPORT   void PolygonOffsets (Standard_Integer& aMode, Standard_ShortReal& aFactor, Standard_ShortReal& aUnits)  const;
+  
+  Standard_EXPORT  const  Graphic3d_ShaderProgram_Handle& ShaderProgram()  const;
 
 
 
@@ -176,17 +169,17 @@ protected:
 private: 
 
 
-Standard_Boolean DistinguishModeActive;
-Standard_Boolean EdgeModeActive;
-Standard_Boolean BackFaceRemovalActive;
-Handle_Graphic3d_TextureMap MyTextureMap;
-Standard_Boolean MyTextureMapState;
-Graphic3d_MaterialAspect MyFrontMaterial;
-Graphic3d_MaterialAspect MyBackMaterial;
-Standard_Integer MyPolygonOffsetMode;
-Standard_ShortReal MyPolygonOffsetFactor;
-Standard_ShortReal MyPolygonOffsetUnits;
-Graphic3d_ShaderProgram_Handle MyShaderProgram;
+  Standard_Boolean DistinguishModeActive;
+  Standard_Boolean EdgeModeActive;
+  Standard_Boolean BackFaceRemovalActive;
+  Handle(Graphic3d_TextureMap) MyTextureMap;
+  Standard_Boolean MyTextureMapState;
+  Graphic3d_MaterialAspect MyFrontMaterial;
+  Graphic3d_MaterialAspect MyBackMaterial;
+  Standard_Integer MyPolygonOffsetMode;
+  Standard_ShortReal MyPolygonOffsetFactor;
+  Standard_ShortReal MyPolygonOffsetUnits;
+  Graphic3d_ShaderProgram_Handle MyShaderProgram;
 
 
 };
@@ -195,7 +188,6 @@ Graphic3d_ShaderProgram_Handle MyShaderProgram;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Graphic3d_AspectFillArea3d_HeaderFile

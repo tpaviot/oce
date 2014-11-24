@@ -5,40 +5,18 @@
 
 #include <MDF_ASDriverTable.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _MDF_ASDriver_HeaderFile
 #include <MDF_ASDriver.hxx>
-#endif
-#ifndef _MDF_ASDriverHSequence_HeaderFile
 #include <MDF_ASDriverHSequence.hxx>
-#endif
-#ifndef _MDF_TypeASDriverMap_HeaderFile
 #include <MDF_TypeASDriverMap.hxx>
-#endif
-#ifndef _MDF_DriverListOfASDriverTable_HeaderFile
 #include <MDF_DriverListOfASDriverTable.hxx>
-#endif
-#ifndef _MDF_ListNodeOfDriverListOfASDriverTable_HeaderFile
 #include <MDF_ListNodeOfDriverListOfASDriverTable.hxx>
-#endif
-#ifndef _MDF_ListIteratorOfDriverListOfASDriverTable_HeaderFile
 #include <MDF_ListIteratorOfDriverListOfASDriverTable.hxx>
-#endif
-#ifndef _MDF_TypeDriverListMapOfASDriverTable_HeaderFile
 #include <MDF_TypeDriverListMapOfASDriverTable.hxx>
-#endif
-#ifndef _MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable_HeaderFile
 #include <MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable.hxx>
-#endif
-#ifndef _MDF_DataMapIteratorOfTypeDriverListMapOfASDriverTable_HeaderFile
 #include <MDF_DataMapIteratorOfTypeDriverListMapOfASDriverTable.hxx>
-#endif
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
  
 

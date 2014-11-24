@@ -6,46 +6,31 @@
 #ifndef _AIS_C0RegularityFilter_HeaderFile
 #define _AIS_C0RegularityFilter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_AIS_C0RegularityFilter_HeaderFile
 #include <Handle_AIS_C0RegularityFilter.hxx>
-#endif
 
-#ifndef _TopTools_MapOfShape_HeaderFile
 #include <TopTools_MapOfShape.hxx>
-#endif
-#ifndef _SelectMgr_Filter_HeaderFile
 #include <SelectMgr_Filter.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _Handle_SelectMgr_EntityOwner_HeaderFile
 #include <Handle_SelectMgr_EntityOwner.hxx>
-#endif
 class TopoDS_Shape;
 class SelectMgr_EntityOwner;
 
 
 
-class AIS_C0RegularityFilter : public SelectMgr_Filter {
+class AIS_C0RegularityFilter : public SelectMgr_Filter
+{
 
 public:
 
   
-  Standard_EXPORT   AIS_C0RegularityFilter(const TopoDS_Shape& aShape);
+  Standard_EXPORT AIS_C0RegularityFilter(const TopoDS_Shape& aShape);
   
-  Standard_EXPORT   virtual  Standard_Boolean ActsOn(const TopAbs_ShapeEnum aType) const;
+  Standard_EXPORT virtual   Standard_Boolean ActsOn (const TopAbs_ShapeEnum aType)  const;
   
-  Standard_EXPORT   virtual  Standard_Boolean IsOk(const Handle(SelectMgr_EntityOwner)& EO) const;
+  Standard_EXPORT virtual   Standard_Boolean IsOk (const Handle(SelectMgr_EntityOwner)& EO)  const;
 
 
 
@@ -60,7 +45,7 @@ protected:
 private: 
 
 
-TopTools_MapOfShape myMapOfEdges;
+  TopTools_MapOfShape myMapOfEdges;
 
 
 };
@@ -69,7 +54,6 @@ TopTools_MapOfShape myMapOfEdges;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_C0RegularityFilter_HeaderFile

@@ -6,45 +6,32 @@
 #ifndef _PPoly_VArrayNodeOfFieldOfHArray1OfTriangle_HeaderFile
 #define _PPoly_VArrayNodeOfFieldOfHArray1OfTriangle_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PPoly_VArrayNodeOfFieldOfHArray1OfTriangle_HeaderFile
 #include <Handle_PPoly_VArrayNodeOfFieldOfHArray1OfTriangle.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _PPoly_Triangle_HeaderFile
 #include <PPoly_Triangle.hxx>
-#endif
-#ifndef _PStandard_ArrayNode_HeaderFile
 #include <PStandard_ArrayNode.hxx>
-#endif
 class PPoly_Triangle;
 class PPoly_FieldOfHArray1OfTriangle;
 class PPoly_VArrayTNodeOfFieldOfHArray1OfTriangle;
 
 
-class PPoly_VArrayNodeOfFieldOfHArray1OfTriangle : public PStandard_ArrayNode {
+class PPoly_VArrayNodeOfFieldOfHArray1OfTriangle : public PStandard_ArrayNode
+{
 
 public:
 
   
-  Standard_EXPORT   PPoly_VArrayNodeOfFieldOfHArray1OfTriangle();
+  Standard_EXPORT PPoly_VArrayNodeOfFieldOfHArray1OfTriangle();
   
-  Standard_EXPORT   PPoly_VArrayNodeOfFieldOfHArray1OfTriangle(const PPoly_Triangle& aValue);
+  Standard_EXPORT PPoly_VArrayNodeOfFieldOfHArray1OfTriangle(const PPoly_Triangle& aValue);
   
-  Standard_EXPORT     void SetValue(const PPoly_Triangle& aValue) ;
+  Standard_EXPORT   void SetValue (const PPoly_Triangle& aValue) ;
   
-  Standard_EXPORT     Standard_Address Value() const;
+  Standard_EXPORT   Standard_Address Value()  const;
 
 PPoly_VArrayNodeOfFieldOfHArray1OfTriangle(const Storage_stCONSTclCOM& a) : PStandard_ArrayNode(a)
 {
@@ -64,7 +51,7 @@ protected:
 private: 
 
 
-PPoly_Triangle myValue;
+  PPoly_Triangle myValue;
 
 
 };
@@ -73,7 +60,6 @@ PPoly_Triangle myValue;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PPoly_VArrayNodeOfFieldOfHArray1OfTriangle_HeaderFile

@@ -5,13 +5,9 @@
 
 #include <TColStd_SequenceNodeOfSequenceOfInteger.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColStd_SequenceOfInteger_HeaderFile
 #include <TColStd_SequenceOfInteger.hxx>
-#endif
 
  
 

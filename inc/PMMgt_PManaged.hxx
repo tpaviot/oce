@@ -6,26 +6,17 @@
 #ifndef _PMMgt_PManaged_HeaderFile
 #define _PMMgt_PManaged_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PMMgt_PManaged_HeaderFile
 #include <Handle_PMMgt_PManaged.hxx>
-#endif
 
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
 class Standard_OutOfMemory;
 
 
-class PMMgt_PManaged : public Standard_Persistent {
+class PMMgt_PManaged : public Standard_Persistent
+{
 
 public:
 
@@ -42,21 +33,23 @@ PMMgt_PManaged(const Storage_stCONSTclCOM& a) : Standard_Persistent(a)
 protected:
 
   
-//!   Returns an instance. The storage of the given "size" is <br>
-//!   allocated by <StorageManager>. <br>
-//! <br>
-//!   Returns the storage of the given size to the <StorageManager>. <br>
-//!   The application using "Delete" must guarantee that the <br>
-//!   instance is not shared. <br>
-//! <br>
-//! -C++: alias "void operator delete (void*, size_t);" <br>
-//!   The virtual Destructor for the class "PManaged". This <br>
-//!   declaration is necessary for the C++ compiler to <br>
-//!   generate a call to "operator delete" with the real size <br>
-//!   of the object. <br>
-//! <br>
-//! -C+..+: alias "virtual ~PMMgt_PManaged();" <br>
-  Standard_EXPORT   PMMgt_PManaged();
+
+  //! Returns an instance. The storage of the given "size" is
+  //! allocated by <StorageManager>.
+  //!
+  //! Returns the storage of the given size to the <StorageManager>.
+  //! The application using "Delete" must guarantee that the
+  //! instance is not shared.
+  //!
+  //! -C++: alias "void operator delete (void*, size_t);"
+  //!
+  //! The virtual Destructor for the class "PManaged". This
+  //! declaration is necessary for the C++ compiler to
+  //! generate a call to "operator delete" with the real size
+  //! of the object.
+  //!
+  //! -C+..+: alias "virtual ~PMMgt_PManaged();"
+  Standard_EXPORT PMMgt_PManaged();
 
 
 
@@ -71,7 +64,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PMMgt_PManaged_HeaderFile

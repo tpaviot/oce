@@ -5,16 +5,10 @@
 
 #include <BRepBlend_SequenceNodeOfSequenceOfLine.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _BRepBlend_Line_HeaderFile
 #include <BRepBlend_Line.hxx>
-#endif
-#ifndef _BRepBlend_SequenceOfLine_HeaderFile
 #include <BRepBlend_SequenceOfLine.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(BRepBlend_SequenceNodeOfSequenceOfLine,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(BRepBlend_SequenceNodeOfSequenceOfLine)
 
 
-#define SeqItem Handle_BRepBlend_Line
+#define SeqItem Handle(BRepBlend_Line)
 #define SeqItem_hxx <BRepBlend_Line.hxx>
 #define TCollection_SequenceNode BRepBlend_SequenceNodeOfSequenceOfLine
 #define TCollection_SequenceNode_hxx <BRepBlend_SequenceNodeOfSequenceOfLine.hxx>

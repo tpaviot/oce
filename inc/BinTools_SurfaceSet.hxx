@@ -6,68 +6,59 @@
 #ifndef _BinTools_SurfaceSet_HeaderFile
 #define _BinTools_SurfaceSet_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TColStd_IndexedMapOfTransient_HeaderFile
 #include <TColStd_IndexedMapOfTransient.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
-#ifndef _Standard_IStream_HeaderFile
 #include <Standard_IStream.hxx>
-#endif
 class Standard_OutOfRange;
 class Geom_Surface;
 
 
-//! Stores a set of Surfaces from Geom in binary format. <br>
-class BinTools_SurfaceSet  {
+//! Stores a set of Surfaces from Geom in binary format.
+class BinTools_SurfaceSet 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns an empty set of Surfaces. <br>
-  Standard_EXPORT   BinTools_SurfaceSet();
-  //! Clears the content of the set. <br>
-  Standard_EXPORT     void Clear() ;
-  //! Incorporate a new Surface in the  set and returns <br>
-//!          its index. <br>
-  Standard_EXPORT     Standard_Integer Add(const Handle(Geom_Surface)& S) ;
-  //! Returns the Surface of index <I>. <br>
-  Standard_EXPORT     Handle_Geom_Surface Surface(const Standard_Integer I) const;
-  //! Returns the index of <L>. <br>
-  Standard_EXPORT     Standard_Integer Index(const Handle(Geom_Surface)& S) const;
-  //! Writes the content of  me  on the stream <OS> in <br>
-//!          binary format that can be read back by Read. <br>
-  Standard_EXPORT     void Write(Standard_OStream& OS) const;
-  //! Reads the content of me from the  stream  <IS>. me <br>
-//!          is first cleared. <br>
-//! <br>
-  Standard_EXPORT     void Read(Standard_IStream& IS) ;
-  //! Dumps the surface on the stream in binary <br>
-//!          format that can be read back. <br>
-  Standard_EXPORT   static  void WriteSurface(const Handle(Geom_Surface)& S,Standard_OStream& OS) ;
-  //! Reads the surface  from  the stream.  The  surface  is <br>
-//!          assumed   to have  been  written  with  the Write <br>
-//!          method. <br>
-//! <br>
-  Standard_EXPORT   static  Standard_IStream& ReadSurface(Standard_IStream& IS,Handle(Geom_Surface)& S) ;
-
+  
+  //! Returns an empty set of Surfaces.
+  Standard_EXPORT BinTools_SurfaceSet();
+  
+  //! Clears the content of the set.
+  Standard_EXPORT   void Clear() ;
+  
+  //! Incorporate a new Surface in the  set and returns
+  //! its index.
+  Standard_EXPORT   Standard_Integer Add (const Handle(Geom_Surface)& S) ;
+  
+  //! Returns the Surface of index <I>.
+  Standard_EXPORT   Handle(Geom_Surface) Surface (const Standard_Integer I)  const;
+  
+  //! Returns the index of <L>.
+  Standard_EXPORT   Standard_Integer Index (const Handle(Geom_Surface)& S)  const;
+  
+  //! Writes the content of  me  on the stream <OS> in
+  //! binary format that can be read back by Read.
+  Standard_EXPORT   void Write (Standard_OStream& OS)  const;
+  
+  //! Reads the content of me from the  stream  <IS>. me
+  //! is first cleared.
+  Standard_EXPORT   void Read (Standard_IStream& IS) ;
+  
+  //! Dumps the surface on the stream in binary
+  //! format that can be read back.
+  Standard_EXPORT static   void WriteSurface (const Handle(Geom_Surface)& S, Standard_OStream& OS) ;
+  
+  //! Reads the surface  from  the stream.  The  surface  is
+  //! assumed   to have  been  written  with  the Write
+  //! method.
+  Standard_EXPORT static   Standard_IStream& ReadSurface (Standard_IStream& IS, Handle(Geom_Surface)& S) ;
 
 
 
@@ -82,7 +73,7 @@ private:
 
 
 
-TColStd_IndexedMapOfTransient myMap;
+  TColStd_IndexedMapOfTransient myMap;
 
 
 };
@@ -91,7 +82,6 @@ TColStd_IndexedMapOfTransient myMap;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BinTools_SurfaceSet_HeaderFile

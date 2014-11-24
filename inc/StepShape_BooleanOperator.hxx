@@ -6,15 +6,14 @@
 #ifndef _StepShape_BooleanOperator_HeaderFile
 #define _StepShape_BooleanOperator_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepShape_BooleanOperator {
+
+enum StepShape_BooleanOperator
+{
 StepShape_boDifference,
 StepShape_boIntersection,
 StepShape_boUnion
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepShape_BooleanOperator_HeaderFile

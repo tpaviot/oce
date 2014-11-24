@@ -7,7 +7,6 @@
 #define _BOPAlgo_PWireEdgeSet_HeaderFile
 
 class BOPAlgo_WireEdgeSet;
-
 typedef BOPAlgo_WireEdgeSet* BOPAlgo_PWireEdgeSet;
 
-#endif
+#endif // _BOPAlgo_PWireEdgeSet_HeaderFile

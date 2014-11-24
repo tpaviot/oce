@@ -6,43 +6,19 @@
 #ifndef _BRepSweep_NumLinearRegularSweep_HeaderFile
 #define _BRepSweep_NumLinearRegularSweep_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepSweep_Builder_HeaderFile
 #include <BRepSweep_Builder.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Sweep_NumShape_HeaderFile
 #include <Sweep_NumShape.hxx>
-#endif
-#ifndef _BRepSweep_Tool_HeaderFile
 #include <BRepSweep_Tool.hxx>
-#endif
-#ifndef _Sweep_NumShapeTool_HeaderFile
 #include <Sweep_NumShapeTool.hxx>
-#endif
-#ifndef _TopTools_Array2OfShape_HeaderFile
 #include <TopTools_Array2OfShape.hxx>
-#endif
-#ifndef _TColStd_Array2OfBoolean_HeaderFile
 #include <TColStd_Array2OfBoolean.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class Standard_RangeError;
@@ -52,167 +28,192 @@ class TopoDS_Shape;
 class Sweep_NumShape;
 
 
-//! This  a generic  class  is  used   to build Sweept <br>
-//!          primitives   with    a  generating  "shape"  and a <br>
-//!          directing "line". <br>
-//! <br>
-//!          The indexation and type analysis services required <br>
-//!          for the generatrix are given by <Tool from BRepSweep>. <br>
-//! <br>
-//!          The indexation and type analysis services required <br>
-//!          for the directrix are given by <NumShapeTool from Sweep>. <br>
-//! <br>
-//!          The iteration services required for the generatrix <br>
-//!          are given by <Iterator from BRepSweep>. <br>
-//! <br>
-//!          The iteration services required  for the directrix <br>
-//!          are given by <NumShapeIterator from Sweep>. <br>
-//! <br>
-//!          The topology is like a grid of shapes.  Each shape <br>
-//!          of the grid  must be addressable without confusion <br>
-//!          by one  or  two objects   from  the generating  or <br>
-//!          directing   shapes.  Here are  exemples of correct <br>
-//!          associations to address: <br>
-//! <br>
-//!          - a vertex : GenVertex - DirVertex <br>
-//!          - an edge  : GenVertex - DirEdge <br>
-//!          -          : GenEdge   - DirVertex <br>
-//!          - a face   : GenEdge   - DirEdge <br>
-//!                       GenFace   - DirVertex <br>
-//!                       ... <br>
-//! <br>
-//!          "GenObject" is used to identify an object from the <br>
-//!          Generating     Shape,  and  "DirObject"  from  the <br>
-//!          Directing Shape.  So may they   be  from different <br>
-//!          types. <br>
-//! <br>
-//!          The method Has... is given because in some special <br>
-//!          cases, a vertex,    an  edge or   a   face may  be <br>
-//!          geometricaly nonexistant or not usefull. <br>
-class BRepSweep_NumLinearRegularSweep  {
+//! This  a generic  class  is  used   to build Sweept
+//! primitives   with    a  generating  "shape"  and a
+//! directing "line".
+//!
+//! The indexation and type analysis services required
+//! for the generatrix are given by <Tool from BRepSweep>.
+//!
+//! The indexation and type analysis services required
+//! for the directrix are given by <NumShapeTool from Sweep>.
+//!
+//! The iteration services required for the generatrix
+//! are given by <Iterator from BRepSweep>.
+//!
+//! The iteration services required  for the directrix
+//! are given by <NumShapeIterator from Sweep>.
+//!
+//! The topology is like a grid of shapes.  Each shape
+//! of the grid  must be addressable without confusion
+//! by one  or  two objects   from  the generating  or
+//! directing   shapes.  Here are  exemples of correct
+//! associations to address:
+//!
+//! - a vertex : GenVertex - DirVertex
+//! - an edge  : GenVertex - DirEdge
+//! -          : GenEdge   - DirVertex
+//! - a face   : GenEdge   - DirEdge
+//! GenFace   - DirVertex
+//! ...
+//!
+//! "GenObject" is used to identify an object from the
+//! Generating     Shape,  and  "DirObject"  from  the
+//! Directing Shape.  So may they   be  from different
+//! types.
+//!
+//! The method Has... is given because in some special
+//! cases, a vertex,    an  edge or   a   face may  be
+//! geometricaly nonexistant or not usefull.
+class BRepSweep_NumLinearRegularSweep 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   virtual  void Delete() ;
+  Standard_EXPORT virtual   void Delete() ;
 ~BRepSweep_NumLinearRegularSweep()
 {
   Delete();
 }
-  //! Builds the vertex addressed by [aGenV,aDirV], with its <br>
-//!          geometric part, but without subcomponents. <br>
-  Standard_EXPORT   virtual  TopoDS_Shape MakeEmptyVertex(const TopoDS_Shape& aGenV,const Sweep_NumShape& aDirV)  = 0;
-  //! Builds the edge addressed by [aGenV,aDirE], with its <br>
-//!          geometric part, but without subcomponents. <br>
-  Standard_EXPORT   virtual  TopoDS_Shape MakeEmptyDirectingEdge(const TopoDS_Shape& aGenV,const Sweep_NumShape& aDirE)  = 0;
-  //! Builds the edge addressed by [aGenE,aDirV], with its <br>
-//!          geometric part, but without subcomponents. <br>
-  Standard_EXPORT   virtual  TopoDS_Shape MakeEmptyGeneratingEdge(const TopoDS_Shape& aGenE,const Sweep_NumShape& aDirV)  = 0;
-  //! Sets the  parameters of the new  vertex  on the new <br>
-//!          face. The new face and  new vertex where generated <br>
-//!          from aGenF, aGenV and aDirV . <br>
-  Standard_EXPORT   virtual  void SetParameters(const TopoDS_Shape& aNewFace,TopoDS_Shape& aNewVertex,const TopoDS_Shape& aGenF,const TopoDS_Shape& aGenV,const Sweep_NumShape& aDirV)  = 0;
-  //! Sets the  parameter of the new  vertex  on the new <br>
-//!          edge. The new edge and  new vertex where generated <br>
-//!          from aGenV aDirE, and aDirV. <br>
-  Standard_EXPORT   virtual  void SetDirectingParameter(const TopoDS_Shape& aNewEdge,TopoDS_Shape& aNewVertex,const TopoDS_Shape& aGenV,const Sweep_NumShape& aDirE,const Sweep_NumShape& aDirV)  = 0;
-  //! Sets the  parameter of the new  vertex  on the new <br>
-//!          edge. The new edge and  new vertex where generated <br>
-//!          from aGenE, aGenV and aDirV . <br>
-  Standard_EXPORT   virtual  void SetGeneratingParameter(const TopoDS_Shape& aNewEdge,TopoDS_Shape& aNewVertex,const TopoDS_Shape& aGenE,const TopoDS_Shape& aGenV,const Sweep_NumShape& aDirV)  = 0;
-  //! Builds the face  addressed by  [aGenS,aDirS], with <br>
-//!          its geometric part, but without subcomponents. The <br>
-//!          couple aGenS, aDirS  can be a "generating face and <br>
-//!          a directing vertex"   or "a generating  edge and a <br>
-//!          directing  edge". <br>
-  Standard_EXPORT   virtual  TopoDS_Shape MakeEmptyFace(const TopoDS_Shape& aGenS,const Sweep_NumShape& aDirS)  = 0;
-  //! Sets the PCurve for a new edge on a new face. The <br>
-//!          new edge and  the  new face were generated  using <br>
-//!          aGenF, aGenE and aDirV. <br>
-  Standard_EXPORT   virtual  void SetPCurve(const TopoDS_Shape& aNewFace,TopoDS_Shape& aNewEdge,const TopoDS_Shape& aGenF,const TopoDS_Shape& aGenE,const Sweep_NumShape& aDirV,const TopAbs_Orientation orien)  = 0;
-  //! Sets the PCurve for a new edge on a new face. The <br>
-//!          new edge and  the  new face were generated  using <br>
-//!          aGenE, aDirE and aDirV. <br>
-  Standard_EXPORT   virtual  void SetGeneratingPCurve(const TopoDS_Shape& aNewFace,TopoDS_Shape& aNewEdge,const TopoDS_Shape& aGenE,const Sweep_NumShape& aDirE,const Sweep_NumShape& aDirV,const TopAbs_Orientation orien)  = 0;
-  //! Sets the PCurve for a new edge on a new face. The <br>
-//!          new edge and  the  new face were generated  using <br>
-//!          aGenE, aDirE and aGenV. <br>
-  Standard_EXPORT   virtual  void SetDirectingPCurve(const TopoDS_Shape& aNewFace,TopoDS_Shape& aNewEdge,const TopoDS_Shape& aGenE,const TopoDS_Shape& aGenV,const Sweep_NumShape& aDirE,const TopAbs_Orientation orien)  = 0;
-  //! Returns the Orientation of the  shell in the solid <br>
-//!          generated by the face aGenS  with  the edge aDirS. <br>
-//!          It is  REVERSED  if the surface is  swept  in  the <br>
-//!          direction of the normal. <br>
-  Standard_EXPORT   virtual  TopAbs_Orientation DirectSolid(const TopoDS_Shape& aGenS,const Sweep_NumShape& aDirS)  = 0;
-  //! Returns   true   if  aNewSubShape    (addressed by <br>
-//!          aSubGenS  and aDirS)  must  be added  in aNewShape <br>
-//!          (addressed by aGenS and aDirS). <br>
-  Standard_EXPORT   virtual  Standard_Boolean GGDShapeIsToAdd(const TopoDS_Shape& aNewShape,const TopoDS_Shape& aNewSubShape,const TopoDS_Shape& aGenS,const TopoDS_Shape& aSubGenS,const Sweep_NumShape& aDirS) const = 0;
-  //! Returns   true   if  aNewSubShape    (addressed by <br>
-//!          aGenS  and aSubDirS)  must  be added  in aNewShape <br>
-//!          (addressed by aGenS and aDirS). <br>
-  Standard_EXPORT   virtual  Standard_Boolean GDDShapeIsToAdd(const TopoDS_Shape& aNewShape,const TopoDS_Shape& aNewSubShape,const TopoDS_Shape& aGenS,const Sweep_NumShape& aDirS,const Sweep_NumShape& aSubDirS) const = 0;
-  //! In  some  particular  cases  the   topology  of  a <br>
-//!          generated  face must be  composed  of  independant <br>
-//!          closed wires,  in this case  this function returns <br>
-//!          true. <br>
-  Standard_EXPORT   virtual  Standard_Boolean SeparatedWires(const TopoDS_Shape& aNewShape,const TopoDS_Shape& aNewSubShape,const TopoDS_Shape& aGenS,const TopoDS_Shape& aSubGenS,const Sweep_NumShape& aDirS) const = 0;
-  //! In  some  particular  cases  the   topology  of  a <br>
-//!          generated  Shell must be  composed  of  independant <br>
-//!          closed Shells,  in this case  this function returns <br>
-//!          a Compound of independant Shells. <br>
-  Standard_EXPORT   virtual  TopoDS_Shape SplitShell(const TopoDS_Shape& aNewShape) const;
-  //! Called to propagate the continuity of  every vertex <br>
-//!          between two edges of the  generating wire  aGenS on <br>
-//!          the generated edge and faces. <br>
-  Standard_EXPORT   virtual  void SetContinuity(const TopoDS_Shape& aGenS,const Sweep_NumShape& aDirS)  = 0;
-  //! Returns true   if aDirS   and aGenS  addresses   a <br>
-//!          resulting Shape. In some  specific cases the shape <br>
-//!          can  be    geometrically   inexsistant,  then this <br>
-//!          function returns false. <br>
-  Standard_EXPORT   virtual  Standard_Boolean HasShape(const TopoDS_Shape& aGenS,const Sweep_NumShape& aDirS) const = 0;
-  //! Returns the resulting  Shape indexed by aDirS  and <br>
-//!          aGenS. <br>
-  Standard_EXPORT     TopoDS_Shape Shape(const TopoDS_Shape& aGenS,const Sweep_NumShape& aDirS) ;
-  //! Returns  the resulting Shape  indexed by myDirWire <br>
-//!          and aGenS. <br>
-  Standard_EXPORT     TopoDS_Shape Shape(const TopoDS_Shape& aGenS) ;
-  //! Returns the resulting  Shape indexed by  myDirWire <br>
-//!          and myGenShape. <br>
-  Standard_EXPORT     TopoDS_Shape Shape() ;
-  //! Returns the resulting Shape  indexed by the  first <br>
-//!          Vertex  of myDirWire and myGenShape. <br>
-  Standard_EXPORT     TopoDS_Shape FirstShape() ;
-  //! Returns the  resulting Shape  indexed by the  last <br>
-//!          Vertex of myDirWire and myGenShape. <br>
-  Standard_EXPORT     TopoDS_Shape LastShape() ;
-  //! Returns the resulting Shape  indexed by the  first <br>
-//!          Vertex  of myDirWire and aGenS. <br>
-  Standard_EXPORT     TopoDS_Shape FirstShape(const TopoDS_Shape& aGenS) ;
-  //! Returns the  resulting Shape  indexed by the  last <br>
-//!          Vertex of myDirWire and aGenS. <br>
-  Standard_EXPORT     TopoDS_Shape LastShape(const TopoDS_Shape& aGenS) ;
   
-  Standard_EXPORT     Standard_Boolean Closed() const;
-
+  //! Builds the vertex addressed by [aGenV,aDirV], with its
+  //! geometric part, but without subcomponents.
+  Standard_EXPORT virtual   TopoDS_Shape MakeEmptyVertex (const TopoDS_Shape& aGenV, const Sweep_NumShape& aDirV)  = 0;
+  
+  //! Builds the edge addressed by [aGenV,aDirE], with its
+  //! geometric part, but without subcomponents.
+  Standard_EXPORT virtual   TopoDS_Shape MakeEmptyDirectingEdge (const TopoDS_Shape& aGenV, const Sweep_NumShape& aDirE)  = 0;
+  
+  //! Builds the edge addressed by [aGenE,aDirV], with its
+  //! geometric part, but without subcomponents.
+  Standard_EXPORT virtual   TopoDS_Shape MakeEmptyGeneratingEdge (const TopoDS_Shape& aGenE, const Sweep_NumShape& aDirV)  = 0;
+  
+  //! Sets the  parameters of the new  vertex  on the new
+  //! face. The new face and  new vertex where generated
+  //! from aGenF, aGenV and aDirV .
+  Standard_EXPORT virtual   void SetParameters (const TopoDS_Shape& aNewFace, TopoDS_Shape& aNewVertex, const TopoDS_Shape& aGenF, const TopoDS_Shape& aGenV, const Sweep_NumShape& aDirV)  = 0;
+  
+  //! Sets the  parameter of the new  vertex  on the new
+  //! edge. The new edge and  new vertex where generated
+  //! from aGenV aDirE, and aDirV.
+  Standard_EXPORT virtual   void SetDirectingParameter (const TopoDS_Shape& aNewEdge, TopoDS_Shape& aNewVertex, const TopoDS_Shape& aGenV, const Sweep_NumShape& aDirE, const Sweep_NumShape& aDirV)  = 0;
+  
+  //! Sets the  parameter of the new  vertex  on the new
+  //! edge. The new edge and  new vertex where generated
+  //! from aGenE, aGenV and aDirV .
+  Standard_EXPORT virtual   void SetGeneratingParameter (const TopoDS_Shape& aNewEdge, TopoDS_Shape& aNewVertex, const TopoDS_Shape& aGenE, const TopoDS_Shape& aGenV, const Sweep_NumShape& aDirV)  = 0;
+  
+  //! Builds the face  addressed by  [aGenS,aDirS], with
+  //! its geometric part, but without subcomponents. The
+  //! couple aGenS, aDirS  can be a "generating face and
+  //! a directing vertex"   or "a generating  edge and a
+  //! directing  edge".
+  Standard_EXPORT virtual   TopoDS_Shape MakeEmptyFace (const TopoDS_Shape& aGenS, const Sweep_NumShape& aDirS)  = 0;
+  
+  //! Sets the PCurve for a new edge on a new face. The
+  //! new edge and  the  new face were generated  using
+  //! aGenF, aGenE and aDirV.
+  Standard_EXPORT virtual   void SetPCurve (const TopoDS_Shape& aNewFace, TopoDS_Shape& aNewEdge, const TopoDS_Shape& aGenF, const TopoDS_Shape& aGenE, const Sweep_NumShape& aDirV, const TopAbs_Orientation orien)  = 0;
+  
+  //! Sets the PCurve for a new edge on a new face. The
+  //! new edge and  the  new face were generated  using
+  //! aGenE, aDirE and aDirV.
+  Standard_EXPORT virtual   void SetGeneratingPCurve (const TopoDS_Shape& aNewFace, TopoDS_Shape& aNewEdge, const TopoDS_Shape& aGenE, const Sweep_NumShape& aDirE, const Sweep_NumShape& aDirV, const TopAbs_Orientation orien)  = 0;
+  
+  //! Sets the PCurve for a new edge on a new face. The
+  //! new edge and  the  new face were generated  using
+  //! aGenE, aDirE and aGenV.
+  Standard_EXPORT virtual   void SetDirectingPCurve (const TopoDS_Shape& aNewFace, TopoDS_Shape& aNewEdge, const TopoDS_Shape& aGenE, const TopoDS_Shape& aGenV, const Sweep_NumShape& aDirE, const TopAbs_Orientation orien)  = 0;
+  
+  //! Returns the Orientation of the  shell in the solid
+  //! generated by the face aGenS  with  the edge aDirS.
+  //! It is  REVERSED  if the surface is  swept  in  the
+  //! direction of the normal.
+  Standard_EXPORT virtual   TopAbs_Orientation DirectSolid (const TopoDS_Shape& aGenS, const Sweep_NumShape& aDirS)  = 0;
+  
+  //! Returns   true   if  aNewSubShape    (addressed by
+  //! aSubGenS  and aDirS)  must  be added  in aNewShape
+  //! (addressed by aGenS and aDirS).
+  Standard_EXPORT virtual   Standard_Boolean GGDShapeIsToAdd (const TopoDS_Shape& aNewShape, const TopoDS_Shape& aNewSubShape, const TopoDS_Shape& aGenS, const TopoDS_Shape& aSubGenS, const Sweep_NumShape& aDirS)  const = 0;
+  
+  //! Returns   true   if  aNewSubShape    (addressed by
+  //! aGenS  and aSubDirS)  must  be added  in aNewShape
+  //! (addressed by aGenS and aDirS).
+  Standard_EXPORT virtual   Standard_Boolean GDDShapeIsToAdd (const TopoDS_Shape& aNewShape, const TopoDS_Shape& aNewSubShape, const TopoDS_Shape& aGenS, const Sweep_NumShape& aDirS, const Sweep_NumShape& aSubDirS)  const = 0;
+  
+  //! In  some  particular  cases  the   topology  of  a
+  //! generated  face must be  composed  of  independant
+  //! closed wires,  in this case  this function returns
+  //! true.
+  Standard_EXPORT virtual   Standard_Boolean SeparatedWires (const TopoDS_Shape& aNewShape, const TopoDS_Shape& aNewSubShape, const TopoDS_Shape& aGenS, const TopoDS_Shape& aSubGenS, const Sweep_NumShape& aDirS)  const = 0;
+  
+  //! In  some  particular  cases  the   topology  of  a
+  //! generated  Shell must be  composed  of  independant
+  //! closed Shells,  in this case  this function returns
+  //! a Compound of independant Shells.
+  Standard_EXPORT virtual   TopoDS_Shape SplitShell (const TopoDS_Shape& aNewShape)  const;
+  
+  //! Called to propagate the continuity of  every vertex
+  //! between two edges of the  generating wire  aGenS on
+  //! the generated edge and faces.
+  Standard_EXPORT virtual   void SetContinuity (const TopoDS_Shape& aGenS, const Sweep_NumShape& aDirS)  = 0;
+  
+  //! Returns true   if aDirS   and aGenS  addresses   a
+  //! resulting Shape. In some  specific cases the shape
+  //! can  be    geometrically   inexsistant,  then this
+  //! function returns false.
+  Standard_EXPORT virtual   Standard_Boolean HasShape (const TopoDS_Shape& aGenS, const Sweep_NumShape& aDirS)  const = 0;
+  
+  //! Returns the resulting  Shape indexed by aDirS  and
+  //! aGenS.
+  Standard_EXPORT   TopoDS_Shape Shape (const TopoDS_Shape& aGenS, const Sweep_NumShape& aDirS) ;
+  
+  //! Returns  the resulting Shape  indexed by myDirWire
+  //! and aGenS.
+  Standard_EXPORT   TopoDS_Shape Shape (const TopoDS_Shape& aGenS) ;
+  
+  //! Returns the resulting  Shape indexed by  myDirWire
+  //! and myGenShape.
+  Standard_EXPORT   TopoDS_Shape Shape() ;
+  
+  //! Returns the resulting Shape  indexed by the  first
+  //! Vertex  of myDirWire and myGenShape.
+  Standard_EXPORT   TopoDS_Shape FirstShape() ;
+  
+  //! Returns the  resulting Shape  indexed by the  last
+  //! Vertex of myDirWire and myGenShape.
+  Standard_EXPORT   TopoDS_Shape LastShape() ;
+  
+  //! Returns the resulting Shape  indexed by the  first
+  //! Vertex  of myDirWire and aGenS.
+  Standard_EXPORT   TopoDS_Shape FirstShape (const TopoDS_Shape& aGenS) ;
+  
+  //! Returns the  resulting Shape  indexed by the  last
+  //! Vertex of myDirWire and aGenS.
+  Standard_EXPORT   TopoDS_Shape LastShape (const TopoDS_Shape& aGenS) ;
+  
+  Standard_EXPORT   Standard_Boolean Closed()  const;
 
 
 
 
 protected:
 
-  //! Creates a NumLinearRegularSweep.    <aBuilder>  gives <br>
-//!          basic topological services. <br>
-  Standard_EXPORT   BRepSweep_NumLinearRegularSweep(const BRepSweep_Builder& aBuilder,const TopoDS_Shape& aGenShape,const Sweep_NumShape& aDirWire);
+  
+  //! Creates a NumLinearRegularSweep.    <aBuilder>  gives
+  //! basic topological services.
+  Standard_EXPORT BRepSweep_NumLinearRegularSweep(const BRepSweep_Builder& aBuilder, const TopoDS_Shape& aGenShape, const Sweep_NumShape& aDirWire);
 
 
-BRepSweep_Builder myBuilder;
-TopoDS_Shape myGenShape;
-Sweep_NumShape myDirWire;
-BRepSweep_Tool myGenShapeTool;
-Sweep_NumShapeTool myDirShapeTool;
-TopTools_Array2OfShape myShapes;
-TColStd_Array2OfBoolean myBuiltShapes;
+  BRepSweep_Builder myBuilder;
+  TopoDS_Shape myGenShape;
+  Sweep_NumShape myDirWire;
+  BRepSweep_Tool myGenShapeTool;
+  Sweep_NumShapeTool myDirShapeTool;
+  TopTools_Array2OfShape myShapes;
+  TColStd_Array2OfBoolean myBuiltShapes;
 
 
 private:
@@ -227,7 +228,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepSweep_NumLinearRegularSweep_HeaderFile

@@ -5,18 +5,10 @@
 
 #include <Contap_TheSequenceOfLine.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Contap_Line_HeaderFile
 #include <Contap_Line.hxx>
-#endif
-#ifndef _Contap_SequenceNodeOfTheSequenceOfLine_HeaderFile
 #include <Contap_SequenceNodeOfTheSequenceOfLine.hxx>
-#endif
  
 
 #define SeqItem Contap_Line

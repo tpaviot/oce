@@ -5,21 +5,13 @@
 
 #include <StepFEA_SequenceOfNodeRepresentation.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StepFEA_NodeRepresentation_HeaderFile
 #include <StepFEA_NodeRepresentation.hxx>
-#endif
-#ifndef _StepFEA_SequenceNodeOfSequenceOfNodeRepresentation_HeaderFile
 #include <StepFEA_SequenceNodeOfSequenceOfNodeRepresentation.hxx>
-#endif
  
 
-#define SeqItem Handle_StepFEA_NodeRepresentation
+#define SeqItem Handle(StepFEA_NodeRepresentation)
 #define SeqItem_hxx <StepFEA_NodeRepresentation.hxx>
 #define TCollection_SequenceNode StepFEA_SequenceNodeOfSequenceOfNodeRepresentation
 #define TCollection_SequenceNode_hxx <StepFEA_SequenceNodeOfSequenceOfNodeRepresentation.hxx>

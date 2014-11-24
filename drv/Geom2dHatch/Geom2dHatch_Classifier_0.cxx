@@ -5,24 +5,12 @@
 
 #include <Geom2dHatch_Classifier.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Geom2dHatch_Elements_HeaderFile
 #include <Geom2dHatch_Elements.hxx>
-#endif
-#ifndef _Geom2dAdaptor_Curve_HeaderFile
 #include <Geom2dAdaptor_Curve.hxx>
-#endif
-#ifndef _Geom2dHatch_Intersector_HeaderFile
 #include <Geom2dHatch_Intersector.hxx>
-#endif
-#ifndef _Geom2dHatch_FClass2dOfClassifier_HeaderFile
 #include <Geom2dHatch_FClass2dOfClassifier.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
  
 
 #define TheFaceExplorer Geom2dHatch_Elements

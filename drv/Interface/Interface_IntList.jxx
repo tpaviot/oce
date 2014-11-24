@@ -1,6 +1,2 @@
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Interface_IntList_HeaderFile
 #include <Interface_IntList.hxx>
-#endif

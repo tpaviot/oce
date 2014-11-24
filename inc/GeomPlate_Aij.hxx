@@ -6,40 +6,30 @@
 #ifndef _GeomPlate_Aij_HeaderFile
 #define _GeomPlate_Aij_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
 class GeomPlate_BuildAveragePlane;
 class gp_Vec;
 
 
-//! A structure containing indexes of two normals and its cross product <br>
-class GeomPlate_Aij  {
+//! A structure containing indexes of two normals and its cross product
+class GeomPlate_Aij 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomPlate_Aij();
+  Standard_EXPORT GeomPlate_Aij();
   
-  Standard_EXPORT   GeomPlate_Aij(const Standard_Integer anInd1,const Standard_Integer anInd2,const gp_Vec& aVec);
+  Standard_EXPORT GeomPlate_Aij(const Standard_Integer anInd1, const Standard_Integer anInd2, const gp_Vec& aVec);
 
 
 friend class GeomPlate_BuildAveragePlane;
-
 
 
 protected:
@@ -52,9 +42,9 @@ private:
 
 
 
-Standard_Integer Ind1;
-Standard_Integer Ind2;
-gp_Vec Vec;
+  Standard_Integer Ind1;
+  Standard_Integer Ind2;
+  gp_Vec Vec;
 
 
 };
@@ -63,7 +53,6 @@ gp_Vec Vec;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomPlate_Aij_HeaderFile

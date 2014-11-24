@@ -6,68 +6,56 @@
 #ifndef _IGESData_Protocol_HeaderFile
 #define _IGESData_Protocol_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESData_Protocol_HeaderFile
 #include <Handle_IGESData_Protocol.hxx>
-#endif
 
-#ifndef _Interface_Protocol_HeaderFile
 #include <Interface_Protocol.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Interface_Protocol_HeaderFile
 #include <Handle_Interface_Protocol.hxx>
-#endif
-#ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
 class Interface_Protocol;
 class Standard_Type;
 class Interface_InterfaceModel;
 class Standard_Transient;
 
 
-//! Description of basic Protocol for IGES <br>
-//!           This comprises treatement of IGESModel and Recognition of <br>
-//!           Undefined-FreeFormat-Entity <br>
-class IGESData_Protocol : public Interface_Protocol {
+//! Description of basic Protocol for IGES
+//! This comprises treatement of IGESModel and Recognition of
+//! Undefined-FreeFormat-Entity
+class IGESData_Protocol : public Interface_Protocol
+{
 
 public:
 
   
-  Standard_EXPORT   IGESData_Protocol();
-  //! Gives the count of Resource Protocol. Here, none <br>
-  Standard_EXPORT     Standard_Integer NbResources() const;
-  //! Returns a Resource, given a rank. Here, none <br>
-  Standard_EXPORT     Handle_Interface_Protocol Resource(const Standard_Integer num) const;
-  //! Returns a Case Number, specific of each recognized Type <br>
-//!         Here, Undefined and Free Format Entities have the Number 1. <br>
-  Standard_EXPORT     Standard_Integer TypeNumber(const Handle(Standard_Type)& atype) const;
-  //! Creates an empty Model for IGES Norm <br>
-  Standard_EXPORT     Handle_Interface_InterfaceModel NewModel() const;
-  //! Returns True if <model> is a Model of IGES Norm <br>
-  Standard_EXPORT     Standard_Boolean IsSuitableModel(const Handle(Interface_InterfaceModel)& model) const;
-  //! Creates a new Unknown Entity for IGES (UndefinedEntity) <br>
-  Standard_EXPORT     Handle_Standard_Transient UnknownEntity() const;
-  //! Returns True if <ent> is an Unknown Entity for the Norm, i.e. <br>
-//!           Type UndefinedEntity, status Unknown <br>
-  Standard_EXPORT     Standard_Boolean IsUnknownEntity(const Handle(Standard_Transient)& ent) const;
+  Standard_EXPORT IGESData_Protocol();
+  
+  //! Gives the count of Resource Protocol. Here, none
+  Standard_EXPORT   Standard_Integer NbResources()  const;
+  
+  //! Returns a Resource, given a rank. Here, none
+  Standard_EXPORT   Handle(Interface_Protocol) Resource (const Standard_Integer num)  const;
+  
+  //! Returns a Case Number, specific of each recognized Type
+  //! Here, Undefined and Free Format Entities have the Number 1.
+  Standard_EXPORT   Standard_Integer TypeNumber (const Handle(Standard_Type)& atype)  const;
+  
+  //! Creates an empty Model for IGES Norm
+  Standard_EXPORT   Handle(Interface_InterfaceModel) NewModel()  const;
+  
+  //! Returns True if <model> is a Model of IGES Norm
+  Standard_EXPORT   Standard_Boolean IsSuitableModel (const Handle(Interface_InterfaceModel)& model)  const;
+  
+  //! Creates a new Unknown Entity for IGES (UndefinedEntity)
+  Standard_EXPORT   Handle(Standard_Transient) UnknownEntity()  const;
+  
+  //! Returns True if <ent> is an Unknown Entity for the Norm, i.e.
+  //! Type UndefinedEntity, status Unknown
+  Standard_EXPORT   Standard_Boolean IsUnknownEntity (const Handle(Standard_Transient)& ent)  const;
 
 
 
@@ -90,7 +78,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESData_Protocol_HeaderFile

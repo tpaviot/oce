@@ -6,28 +6,14 @@
 #ifndef _IFSelect_ModifReorder_HeaderFile
 #define _IFSelect_ModifReorder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_ModifReorder_HeaderFile
 #include <Handle_IFSelect_ModifReorder.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _IFSelect_Modifier_HeaderFile
 #include <IFSelect_Modifier.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Handle_Interface_Protocol_HeaderFile
 #include <Handle_Interface_Protocol.hxx>
-#endif
 class IFSelect_ContextModif;
 class Interface_InterfaceModel;
 class Interface_Protocol;
@@ -35,25 +21,29 @@ class Interface_CopyTool;
 class TCollection_AsciiString;
 
 
-//! This modifier reorders a whole model from its roots, i.e. <br>
-//!           according to <rootlast> status, it considers each of its <br>
-//!           roots, then it orders all its shared entities at any level, <br>
-//!           the result begins by the lower level entities ... ends by <br>
-//!           the roots. <br>
-class IFSelect_ModifReorder : public IFSelect_Modifier {
+//! This modifier reorders a whole model from its roots, i.e.
+//! according to <rootlast> status, it considers each of its
+//! roots, then it orders all its shared entities at any level,
+//! the result begins by the lower level entities ... ends by
+//! the roots.
+class IFSelect_ModifReorder : public IFSelect_Modifier
+{
 
 public:
 
-  //! Creates a ModifReorder. It may change the graph (it does !) <br>
-//!           If <rootlast> is True (D), roots are set at the end of packets <br>
-//!           Else, they are set at beginning (as done by AddWithRefs) <br>
-  Standard_EXPORT   IFSelect_ModifReorder(const Standard_Boolean rootlast = Standard_True);
-  //! Acts by computing orders (by method All from ShareTool) then <br>
-//!           forcing them in the model. Remark that selection is ignored : <br>
-//!           ALL the model is processed in once <br>
-  Standard_EXPORT     void Perform(IFSelect_ContextModif& ctx,const Handle(Interface_InterfaceModel)& target,const Handle(Interface_Protocol)& protocol,Interface_CopyTool& TC) const;
-  //! Returns Label as "Reorder, Roots (last or first)" <br>
-  Standard_EXPORT     TCollection_AsciiString Label() const;
+  
+  //! Creates a ModifReorder. It may change the graph (it does !)
+  //! If <rootlast> is True (D), roots are set at the end of packets
+  //! Else, they are set at beginning (as done by AddWithRefs)
+  Standard_EXPORT IFSelect_ModifReorder(const Standard_Boolean rootlast = Standard_True);
+  
+  //! Acts by computing orders (by method All from ShareTool) then
+  //! forcing them in the model. Remark that selection is ignored :
+  //! ALL the model is processed in once
+  Standard_EXPORT   void Perform (IFSelect_ContextModif& ctx, const Handle(Interface_InterfaceModel)& target, const Handle(Interface_Protocol)& protocol, Interface_CopyTool& TC)  const;
+  
+  //! Returns Label as "Reorder, Roots (last or first)"
+  Standard_EXPORT   TCollection_AsciiString Label()  const;
 
 
 
@@ -68,7 +58,7 @@ protected:
 private: 
 
 
-Standard_Boolean thertl;
+  Standard_Boolean thertl;
 
 
 };
@@ -77,7 +67,6 @@ Standard_Boolean thertl;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_ModifReorder_HeaderFile

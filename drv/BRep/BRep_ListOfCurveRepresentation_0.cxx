@@ -5,21 +5,13 @@
 
 #include <BRep_ListOfCurveRepresentation.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _BRep_ListIteratorOfListOfCurveRepresentation_HeaderFile
 #include <BRep_ListIteratorOfListOfCurveRepresentation.hxx>
-#endif
-#ifndef _BRep_CurveRepresentation_HeaderFile
 #include <BRep_CurveRepresentation.hxx>
-#endif
-#ifndef _BRep_ListNodeOfListOfCurveRepresentation_HeaderFile
 #include <BRep_ListNodeOfListOfCurveRepresentation.hxx>
-#endif
  
 
-#define Item Handle_BRep_CurveRepresentation
+#define Item Handle(BRep_CurveRepresentation)
 #define Item_hxx <BRep_CurveRepresentation.hxx>
 #define TCollection_ListNode BRep_ListNodeOfListOfCurveRepresentation
 #define TCollection_ListNode_hxx <BRep_ListNodeOfListOfCurveRepresentation.hxx>

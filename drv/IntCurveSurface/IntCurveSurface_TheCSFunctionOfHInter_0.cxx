@@ -5,31 +5,19 @@
 
 #include <IntCurveSurface_TheCSFunctionOfHInter.hxx>
 
-#ifndef _Adaptor3d_HSurface_HeaderFile
 #include <Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Adaptor3d_HCurve_HeaderFile
 #include <Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _Adaptor3d_HSurfaceTool_HeaderFile
 #include <Adaptor3d_HSurfaceTool.hxx>
-#endif
-#ifndef _IntCurveSurface_TheHCurveTool_HeaderFile
 #include <IntCurveSurface_TheHCurveTool.hxx>
-#endif
-#ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
  
 
-#define ThePSurface Handle_Adaptor3d_HSurface
+#define ThePSurface Handle(Adaptor3d_HSurface)
 #define ThePSurface_hxx <Adaptor3d_HSurface.hxx>
 #define ThePSurfaceTool Adaptor3d_HSurfaceTool
 #define ThePSurfaceTool_hxx <Adaptor3d_HSurfaceTool.hxx>
-#define TheCurve Handle_Adaptor3d_HCurve
+#define TheCurve Handle(Adaptor3d_HCurve)
 #define TheCurve_hxx <Adaptor3d_HCurve.hxx>
 #define TheCurveTool IntCurveSurface_TheHCurveTool
 #define TheCurveTool_hxx <IntCurveSurface_TheHCurveTool.hxx>

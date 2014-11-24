@@ -6,28 +6,14 @@
 #ifndef _PTColStd_DataMapNodeOfPersistentTransientMap_HeaderFile
 #define _PTColStd_DataMapNodeOfPersistentTransientMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_PTColStd_DataMapNodeOfPersistentTransientMap_HeaderFile
 #include <Handle_PTColStd_DataMapNodeOfPersistentTransientMap.hxx>
-#endif
 
-#ifndef _Handle_Standard_Persistent_HeaderFile
 #include <Handle_Standard_Persistent.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Standard_Persistent;
 class Standard_Transient;
 class PTColStd_MapPersistentHasher;
@@ -36,16 +22,17 @@ class PTColStd_DataMapIteratorOfPersistentTransientMap;
 
 
 
-class PTColStd_DataMapNodeOfPersistentTransientMap : public TCollection_MapNode {
+class PTColStd_DataMapNodeOfPersistentTransientMap : public TCollection_MapNode
+{
 
 public:
 
   
-      PTColStd_DataMapNodeOfPersistentTransientMap(const Handle(Standard_Persistent)& K,const Handle(Standard_Transient)& I,const TCollection_MapNodePtr& n);
+    PTColStd_DataMapNodeOfPersistentTransientMap(const Handle(Standard_Persistent)& K, const Handle(Standard_Transient)& I, const TCollection_MapNodePtr& n);
   
-        Handle_Standard_Persistent& Key() const;
+      Handle(Standard_Persistent)& Key()  const;
   
-        Handle_Standard_Transient& Value() const;
+      Handle(Standard_Transient)& Value()  const;
 
 
 
@@ -60,15 +47,15 @@ protected:
 private: 
 
 
-Handle_Standard_Persistent myKey;
-Handle_Standard_Transient myValue;
+  Handle(Standard_Persistent) myKey;
+  Handle(Standard_Transient) myValue;
 
 
 };
 
-#define TheKey Handle_Standard_Persistent
+#define TheKey Handle(Standard_Persistent)
 #define TheKey_hxx <Standard_Persistent.hxx>
-#define TheItem Handle_Standard_Transient
+#define TheItem Handle(Standard_Transient)
 #define TheItem_hxx <Standard_Transient.hxx>
 #define Hasher PTColStd_MapPersistentHasher
 #define Hasher_hxx <PTColStd_MapPersistentHasher.hxx>
@@ -99,7 +86,6 @@ Handle_Standard_Transient myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PTColStd_DataMapNodeOfPersistentTransientMap_HeaderFile

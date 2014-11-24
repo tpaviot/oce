@@ -6,37 +6,17 @@
 #ifndef _PDF_HAttributeArray1_HeaderFile
 #define _PDF_HAttributeArray1_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PDF_HAttributeArray1_HeaderFile
 #include <Handle_PDF_HAttributeArray1.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_PDF_Attribute_HeaderFile
 #include <Handle_PDF_Attribute.hxx>
-#endif
-#ifndef _PDF_FieldOfHAttributeArray1_HeaderFile
 #include <PDF_FieldOfHAttributeArray1.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _Handle_PDF_VArrayNodeOfFieldOfHAttributeArray1_HeaderFile
 #include <Handle_PDF_VArrayNodeOfFieldOfHAttributeArray1.hxx>
-#endif
 class PDF_Attribute;
 class Standard_OutOfRange;
 class Standard_RangeError;
@@ -45,26 +25,27 @@ class PDF_VArrayNodeOfFieldOfHAttributeArray1;
 class PDF_VArrayTNodeOfFieldOfHAttributeArray1;
 
 
-class PDF_HAttributeArray1 : public Standard_Persistent {
+class PDF_HAttributeArray1 : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PDF_HAttributeArray1(const Standard_Integer Low,const Standard_Integer Up);
+  Standard_EXPORT PDF_HAttributeArray1(const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT   PDF_HAttributeArray1(const Standard_Integer Low,const Standard_Integer Up,const Handle(PDF_Attribute)& V);
+  Standard_EXPORT PDF_HAttributeArray1(const Standard_Integer Low, const Standard_Integer Up, const Handle(PDF_Attribute)& V);
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(PDF_Attribute)& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(PDF_Attribute)& Value) ;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-  Standard_EXPORT     Handle_PDF_Attribute Value(const Standard_Integer Index) const;
+  Standard_EXPORT   Handle(PDF_Attribute) Value (const Standard_Integer Index)  const;
 
-  PDF_HAttributeArray1( )
+PDF_HAttributeArray1( )
 {
   
 }
@@ -90,18 +71,18 @@ protected:
 private: 
 
   
-  Standard_EXPORT     PDF_FieldOfHAttributeArray1 Field() const;
+  Standard_EXPORT   PDF_FieldOfHAttributeArray1 Field()  const;
   
-  Standard_EXPORT     Standard_Address Datas() const;
+  Standard_EXPORT   Standard_Address Datas()  const;
 
-Standard_Integer LowerBound;
-Standard_Integer UpperBound;
-PDF_FieldOfHAttributeArray1 Data;
+  Standard_Integer LowerBound;
+  Standard_Integer UpperBound;
+  PDF_FieldOfHAttributeArray1 Data;
 
 
 };
 
-#define Item Handle_PDF_Attribute
+#define Item Handle(PDF_Attribute)
 #define Item_hxx <PDF_Attribute.hxx>
 #define PCollection_FieldOfHArray1 PDF_FieldOfHAttributeArray1
 #define PCollection_FieldOfHArray1_hxx <PDF_FieldOfHAttributeArray1.hxx>
@@ -146,7 +127,6 @@ PDF_FieldOfHAttributeArray1 Data;
 #undef PCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDF_HAttributeArray1_HeaderFile

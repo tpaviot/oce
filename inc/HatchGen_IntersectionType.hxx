@@ -6,17 +6,16 @@
 #ifndef _HatchGen_IntersectionType_HeaderFile
 #define _HatchGen_IntersectionType_HeaderFile
 
-//! Intersection type between the hatching and the <br>
-//!          element. <br>
-enum HatchGen_IntersectionType {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Intersection type between the hatching and the
+//! element.
+enum HatchGen_IntersectionType
+{
 HatchGen_TRUE,
 HatchGen_TOUCH,
 HatchGen_TANGENT,
 HatchGen_UNDETERMINED
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _HatchGen_IntersectionType_HeaderFile

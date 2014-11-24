@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "046704230B3B0765196A0133"
+               BlueprintIdentifier = "049C040A121306EA010F17A5"
                BuildableName = "libTKGeomBase.dylib"
                BlueprintName = "TKGeomBase"
                ReferencedContainer = "container:TKGeomBase.xcodeproj">

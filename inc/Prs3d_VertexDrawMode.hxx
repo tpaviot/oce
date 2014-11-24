@@ -6,18 +6,17 @@
 #ifndef _Prs3d_VertexDrawMode_HeaderFile
 #define _Prs3d_VertexDrawMode_HeaderFile
 
-//! Describes supported modes of visualization of the shape's vertices: <br>
-//! VDM_Isolated  - only isolated vertices (not belonging to a face) are displayed. <br>
-//! VDM_All       - all vertices of the shape are displayed. <br>
-//! VDM_Inherited - the global settings are inherited and applied to the shape's presentation. <br>
-enum Prs3d_VertexDrawMode {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Describes supported modes of visualization of the shape's vertices:
+//! VDM_Isolated  - only isolated vertices (not belonging to a face) are displayed.
+//! VDM_All       - all vertices of the shape are displayed.
+//! VDM_Inherited - the global settings are inherited and applied to the shape's presentation.
+enum Prs3d_VertexDrawMode
+{
 Prs3d_VDM_Isolated,
 Prs3d_VDM_All,
 Prs3d_VDM_Inherited
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Prs3d_VertexDrawMode_HeaderFile

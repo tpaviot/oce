@@ -6,38 +6,33 @@
 #ifndef _StepBasic_CertificationAssignment_HeaderFile
 #define _StepBasic_CertificationAssignment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_CertificationAssignment_HeaderFile
 #include <Handle_StepBasic_CertificationAssignment.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_Certification_HeaderFile
 #include <Handle_StepBasic_Certification.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepBasic_Certification;
 
 
-//! Representation of STEP entity CertificationAssignment <br>
-class StepBasic_CertificationAssignment : public MMgt_TShared {
+//! Representation of STEP entity CertificationAssignment
+class StepBasic_CertificationAssignment : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepBasic_CertificationAssignment();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(StepBasic_Certification)& aAssignedCertification) ;
-  //! Returns field AssignedCertification <br>
-  Standard_EXPORT     Handle_StepBasic_Certification AssignedCertification() const;
-  //! Set field AssignedCertification <br>
-  Standard_EXPORT     void SetAssignedCertification(const Handle(StepBasic_Certification)& AssignedCertification) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepBasic_CertificationAssignment();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(StepBasic_Certification)& aAssignedCertification) ;
+  
+  //! Returns field AssignedCertification
+  Standard_EXPORT   Handle(StepBasic_Certification) AssignedCertification()  const;
+  
+  //! Set field AssignedCertification
+  Standard_EXPORT   void SetAssignedCertification (const Handle(StepBasic_Certification)& AssignedCertification) ;
 
 
 
@@ -52,7 +47,7 @@ protected:
 private: 
 
 
-Handle_StepBasic_Certification theAssignedCertification;
+  Handle(StepBasic_Certification) theAssignedCertification;
 
 
 };
@@ -61,7 +56,6 @@ Handle_StepBasic_Certification theAssignedCertification;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_CertificationAssignment_HeaderFile

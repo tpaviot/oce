@@ -5,60 +5,24 @@
 
 #include <AppDef_BSplineCompute.hxx>
 
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _AppParCurves_HArray1OfConstraintCouple_HeaderFile
 #include <AppParCurves_HArray1OfConstraintCouple.hxx>
-#endif
-#ifndef _AppDef_MultiLine_HeaderFile
 #include <AppDef_MultiLine.hxx>
-#endif
-#ifndef _AppDef_MyLineTool_HeaderFile
 #include <AppDef_MyLineTool.hxx>
-#endif
-#ifndef _AppDef_MyBSplGradientOfBSplineCompute_HeaderFile
 #include <AppDef_MyBSplGradientOfBSplineCompute.hxx>
-#endif
-#ifndef _AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_HeaderFile
 #include <AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx>
-#endif
-#ifndef _AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_HeaderFile
 #include <AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute.hxx>
-#endif
-#ifndef _AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_HeaderFile
 #include <AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute.hxx>
-#endif
-#ifndef _AppDef_MyGradientbisOfBSplineCompute_HeaderFile
 #include <AppDef_MyGradientbisOfBSplineCompute.hxx>
-#endif
-#ifndef _AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_HeaderFile
 #include <AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx>
-#endif
-#ifndef _AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_HeaderFile
 #include <AppDef_ResConstraintOfMyGradientbisOfBSplineCompute.hxx>
-#endif
-#ifndef _AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_HeaderFile
 #include <AppDef_ParFunctionOfMyGradientbisOfBSplineCompute.hxx>
-#endif
-#ifndef _AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_HeaderFile
 #include <AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _TColStd_Array1OfInteger_HeaderFile
 #include <TColStd_Array1OfInteger.hxx>
-#endif
-#ifndef _AppParCurves_MultiBSpCurve_HeaderFile
 #include <AppParCurves_MultiBSpCurve.hxx>
-#endif
-#ifndef _AppParCurves_MultiCurve_HeaderFile
 #include <AppParCurves_MultiCurve.hxx>
-#endif
  
 
 #define MultiLine AppDef_MultiLine

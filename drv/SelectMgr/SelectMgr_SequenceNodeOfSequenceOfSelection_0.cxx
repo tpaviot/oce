@@ -5,16 +5,10 @@
 
 #include <SelectMgr_SequenceNodeOfSequenceOfSelection.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _SelectMgr_Selection_HeaderFile
 #include <SelectMgr_Selection.hxx>
-#endif
-#ifndef _SelectMgr_SequenceOfSelection_HeaderFile
 #include <SelectMgr_SequenceOfSelection.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(SelectMgr_SequenceNodeOfSequenceOfSelection,Standard_Transien
 IMPLEMENT_STANDARD_RTTI(SelectMgr_SequenceNodeOfSequenceOfSelection)
 
 
-#define SeqItem Handle_SelectMgr_Selection
+#define SeqItem Handle(SelectMgr_Selection)
 #define SeqItem_hxx <SelectMgr_Selection.hxx>
 #define TCollection_SequenceNode SelectMgr_SequenceNodeOfSequenceOfSelection
 #define TCollection_SequenceNode_hxx <SelectMgr_SequenceNodeOfSequenceOfSelection.hxx>

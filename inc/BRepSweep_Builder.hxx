@@ -6,52 +6,50 @@
 #ifndef _BRepSweep_Builder_HeaderFile
 #define _BRepSweep_Builder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRep_Builder_HeaderFile
 #include <BRep_Builder.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
 class BRep_Builder;
 class TopoDS_Shape;
 
 
-//! implements the abstract Builder with the BRep Builder <br>
-class BRepSweep_Builder  {
+//! implements the abstract Builder with the BRep Builder
+class BRepSweep_Builder 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates a Builder. <br>
-  Standard_EXPORT   BRepSweep_Builder(const BRep_Builder& aBuilder);
   
-       const BRep_Builder& Builder() const;
-  //! Returns an empty Compound. <br>
-  Standard_EXPORT     void MakeCompound(TopoDS_Shape& aCompound) const;
-  //! Returns an empty CompSolid. <br>
-  Standard_EXPORT     void MakeCompSolid(TopoDS_Shape& aCompSolid) const;
-  //! Returns an empty Solid. <br>
-  Standard_EXPORT     void MakeSolid(TopoDS_Shape& aSolid) const;
-  //! Returns an empty Shell. <br>
-  Standard_EXPORT     void MakeShell(TopoDS_Shape& aShell) const;
-  //! Returns an empty Wire. <br>
-  Standard_EXPORT     void MakeWire(TopoDS_Shape& aWire) const;
-  //! Adds the Shape 1 in the Shape 2, set to <br>
-//!          <Orient> orientation. <br>
-  Standard_EXPORT     void Add(TopoDS_Shape& aShape1,const TopoDS_Shape& aShape2,const TopAbs_Orientation Orient) const;
-  //! Adds the Shape 1 in the Shape 2. <br>
-  Standard_EXPORT     void Add(TopoDS_Shape& aShape1,const TopoDS_Shape& aShape2) const;
-
+  //! Creates a Builder.
+  Standard_EXPORT BRepSweep_Builder(const BRep_Builder& aBuilder);
+  
+     const  BRep_Builder& Builder()  const;
+  
+  //! Returns an empty Compound.
+  Standard_EXPORT   void MakeCompound (TopoDS_Shape& aCompound)  const;
+  
+  //! Returns an empty CompSolid.
+  Standard_EXPORT   void MakeCompSolid (TopoDS_Shape& aCompSolid)  const;
+  
+  //! Returns an empty Solid.
+  Standard_EXPORT   void MakeSolid (TopoDS_Shape& aSolid)  const;
+  
+  //! Returns an empty Shell.
+  Standard_EXPORT   void MakeShell (TopoDS_Shape& aShell)  const;
+  
+  //! Returns an empty Wire.
+  Standard_EXPORT   void MakeWire (TopoDS_Shape& aWire)  const;
+  
+  //! Adds the Shape 1 in the Shape 2, set to
+  //! <Orient> orientation.
+  Standard_EXPORT   void Add (TopoDS_Shape& aShape1, const TopoDS_Shape& aShape2, const TopAbs_Orientation Orient)  const;
+  
+  //! Adds the Shape 1 in the Shape 2.
+  Standard_EXPORT   void Add (TopoDS_Shape& aShape1, const TopoDS_Shape& aShape2)  const;
 
 
 
@@ -66,7 +64,7 @@ private:
 
 
 
-BRep_Builder myBuilder;
+  BRep_Builder myBuilder;
 
 
 };
@@ -76,7 +74,6 @@ BRep_Builder myBuilder;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepSweep_Builder_HeaderFile

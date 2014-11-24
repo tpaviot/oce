@@ -6,22 +6,15 @@
 #ifndef _Handle_AIS_MaxRadiusDimension_HeaderFile
 #define _Handle_AIS_MaxRadiusDimension_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_AIS_EllipseRadiusDimension_HeaderFile
 #include <Handle_AIS_EllipseRadiusDimension.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(AIS_EllipseRadiusDimension);
 class AIS_MaxRadiusDimension;
 
-DEFINE_STANDARD_HANDLE(AIS_MaxRadiusDimension,AIS_EllipseRadiusDimension)
+DEFINE_STANDARD_HANDLE(AIS_MaxRadiusDimension, AIS_EllipseRadiusDimension)
 
-#endif
+#endif // _Handle_AIS_MaxRadiusDimension_HeaderFile

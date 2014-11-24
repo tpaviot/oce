@@ -6,68 +6,50 @@
 #ifndef _PBRep_TFace1_HeaderFile
 #define _PBRep_TFace1_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PBRep_TFace1_HeaderFile
 #include <Handle_PBRep_TFace1.hxx>
-#endif
 
-#ifndef _Handle_PGeom_Surface_HeaderFile
 #include <Handle_PGeom_Surface.hxx>
-#endif
-#ifndef _Handle_PPoly_Triangulation_HeaderFile
 #include <Handle_PPoly_Triangulation.hxx>
-#endif
-#ifndef _PTopLoc_Location_HeaderFile
 #include <PTopLoc_Location.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _PTopoDS_TFace1_HeaderFile
 #include <PTopoDS_TFace1.hxx>
-#endif
 class PGeom_Surface;
 class PPoly_Triangulation;
 class PTopLoc_Location;
 
 
-class PBRep_TFace1 : public PTopoDS_TFace1 {
+class PBRep_TFace1 : public PTopoDS_TFace1
+{
 
 public:
 
-  //! Creates an empty TFace1. <br>
-  Standard_EXPORT   PBRep_TFace1();
   
-  Standard_EXPORT     Handle_PGeom_Surface Surface() const;
+  //! Creates an empty TFace1.
+  Standard_EXPORT PBRep_TFace1();
   
-  Standard_EXPORT     Handle_PPoly_Triangulation Triangulation() const;
+  Standard_EXPORT   Handle(PGeom_Surface) Surface()  const;
   
-  Standard_EXPORT     PTopLoc_Location Location() const;
+  Standard_EXPORT   Handle(PPoly_Triangulation) Triangulation()  const;
   
-  Standard_EXPORT     Standard_Real Tolerance() const;
+  Standard_EXPORT   PTopLoc_Location Location()  const;
   
-  Standard_EXPORT     void Surface(const Handle(PGeom_Surface)& S) ;
+  Standard_EXPORT   Standard_Real Tolerance()  const;
   
-  Standard_EXPORT     void Triangulation(const Handle(PPoly_Triangulation)& T) ;
+  Standard_EXPORT   void Surface (const Handle(PGeom_Surface)& S) ;
   
-  Standard_EXPORT     void Location(const PTopLoc_Location& L) ;
+  Standard_EXPORT   void Triangulation (const Handle(PPoly_Triangulation)& T) ;
   
-  Standard_EXPORT     void Tolerance(const Standard_Real T) ;
+  Standard_EXPORT   void Location (const PTopLoc_Location& L) ;
   
-  Standard_EXPORT     Standard_Boolean NaturalRestriction() const;
+  Standard_EXPORT   void Tolerance (const Standard_Real T) ;
   
-  Standard_EXPORT     void NaturalRestriction(const Standard_Boolean N) ;
+  Standard_EXPORT   Standard_Boolean NaturalRestriction()  const;
+  
+  Standard_EXPORT   void NaturalRestriction (const Standard_Boolean N) ;
 
 PBRep_TFace1(const Storage_stCONSTclCOM& a) : PTopoDS_TFace1(a)
 {
@@ -95,11 +77,11 @@ protected:
 private: 
 
 
-Handle_PGeom_Surface mySurface;
-Handle_PPoly_Triangulation myTriangulation;
-PTopLoc_Location myLocation;
-Standard_Real myTolerance;
-Standard_Boolean myNaturalRestriction;
+  Handle(PGeom_Surface) mySurface;
+  Handle(PPoly_Triangulation) myTriangulation;
+  PTopLoc_Location myLocation;
+  Standard_Real myTolerance;
+  Standard_Boolean myNaturalRestriction;
 
 
 };
@@ -108,7 +90,6 @@ Standard_Boolean myNaturalRestriction;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PBRep_TFace1_HeaderFile

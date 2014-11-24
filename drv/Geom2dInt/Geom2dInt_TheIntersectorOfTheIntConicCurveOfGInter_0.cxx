@@ -5,33 +5,15 @@
 
 #include <Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter.hxx>
 
-#ifndef _Standard_ConstructionError_HeaderFile
 #include <Standard_ConstructionError.hxx>
-#endif
-#ifndef _IntCurve_IConicTool_HeaderFile
 #include <IntCurve_IConicTool.hxx>
-#endif
-#ifndef _Adaptor2d_Curve2d_HeaderFile
 #include <Adaptor2d_Curve2d.hxx>
-#endif
-#ifndef _Geom2dInt_Geom2dCurveTool_HeaderFile
 #include <Geom2dInt_Geom2dCurveTool.hxx>
-#endif
-#ifndef _Geom2dInt_TheProjPCurOfGInter_HeaderFile
 #include <Geom2dInt_TheProjPCurOfGInter.hxx>
-#endif
-#ifndef _Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter_HeaderFile
 #include <Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter.hxx>
-#endif
-#ifndef _IntRes2d_Domain_HeaderFile
 #include <IntRes2d_Domain.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
  
 
 #define ImpTool IntCurve_IConicTool

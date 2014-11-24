@@ -6,39 +6,28 @@
 #ifndef _BRepOffset_ListNodeOfListOfInterval_HeaderFile
 #define _BRepOffset_ListNodeOfListOfInterval_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepOffset_ListNodeOfListOfInterval_HeaderFile
 #include <Handle_BRepOffset_ListNodeOfListOfInterval.hxx>
-#endif
 
-#ifndef _BRepOffset_Interval_HeaderFile
 #include <BRepOffset_Interval.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class BRepOffset_Interval;
 class BRepOffset_ListOfInterval;
 class BRepOffset_ListIteratorOfListOfInterval;
 
 
 
-class BRepOffset_ListNodeOfListOfInterval : public TCollection_MapNode {
+class BRepOffset_ListNodeOfListOfInterval : public TCollection_MapNode
+{
 
 public:
 
   
-      BRepOffset_ListNodeOfListOfInterval(const BRepOffset_Interval& I,const TCollection_MapNodePtr& n);
+    BRepOffset_ListNodeOfListOfInterval(const BRepOffset_Interval& I, const TCollection_MapNodePtr& n);
   
-        BRepOffset_Interval& Value() const;
+      BRepOffset_Interval& Value()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-BRepOffset_Interval myValue;
+  BRepOffset_Interval myValue;
 
 
 };
@@ -83,7 +72,6 @@ BRepOffset_Interval myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepOffset_ListNodeOfListOfInterval_HeaderFile

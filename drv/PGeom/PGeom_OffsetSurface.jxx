@@ -1,6 +1,2 @@
-#ifndef _PGeom_Surface_HeaderFile
 #include <PGeom_Surface.hxx>
-#endif
-#ifndef _PGeom_OffsetSurface_HeaderFile
 #include <PGeom_OffsetSurface.hxx>
-#endif

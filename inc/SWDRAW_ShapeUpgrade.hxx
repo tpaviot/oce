@@ -6,41 +6,34 @@
 #ifndef _SWDRAW_ShapeUpgrade_HeaderFile
 #define _SWDRAW_ShapeUpgrade_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Draw_Interpretor_HeaderFile
 #include <Draw_Interpretor.hxx>
-#endif
 
 
-//! Contains commands to activate package ShapeUpgrade <br>
-//!          List of DRAW commands and corresponding functionalities: <br>
-//!          DT_ShapeDivide         - ShapeUpgrade_ShapeDivide <br>
-//!          DT_PlaneDividedFace    - ShapeUpgrade_PlaneDividedFace <br>
-//!          DT_PlaneGridShell      - ShapeUpgrade_PlaneGridShell <br>
-//!          DT_PlaneFaceCommon     - ShapeUpgrade_PlaneFaceCommon <br>
-//!          DT_Split2dCurve        - ShapeUpgrade_Split2dCurve <br>
-//!          DT_SplitCurve          - ShapeUpgrade_SplitCurve <br>
-//!          DT_SplitSurface        - ShapeUpgrade_SplitSurface <br>
-//!          DT_SupportModification - ShapeUpgrade_DataMapOfShapeSurface <br>
-//!          DT_Debug               - ShapeUpgrade::SetDebug <br>
-//!          shellsolid             - ShapeAnalysis_Shell/ShapeUpgrade_ShellSewing <br>
-class SWDRAW_ShapeUpgrade  {
+//! Contains commands to activate package ShapeUpgrade
+//! List of DRAW commands and corresponding functionalities:
+//! DT_ShapeDivide         - ShapeUpgrade_ShapeDivide
+//! DT_PlaneDividedFace    - ShapeUpgrade_PlaneDividedFace
+//! DT_PlaneGridShell      - ShapeUpgrade_PlaneGridShell
+//! DT_PlaneFaceCommon     - ShapeUpgrade_PlaneFaceCommon
+//! DT_Split2dCurve        - ShapeUpgrade_Split2dCurve
+//! DT_SplitCurve          - ShapeUpgrade_SplitCurve
+//! DT_SplitSurface        - ShapeUpgrade_SplitSurface
+//! DT_SupportModification - ShapeUpgrade_DataMapOfShapeSurface
+//! DT_Debug               - ShapeUpgrade::SetDebug
+//! shellsolid             - ShapeAnalysis_Shell/ShapeUpgrade_ShellSewing
+class SWDRAW_ShapeUpgrade 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Loads commands defined in ShapeUpgrade <br>
-  Standard_EXPORT   static  void InitCommands(Draw_Interpretor& theCommands) ;
-
+  
+  //! Loads commands defined in ShapeUpgrade
+  Standard_EXPORT static   void InitCommands (Draw_Interpretor& theCommands) ;
 
 
 
@@ -63,7 +56,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SWDRAW_ShapeUpgrade_HeaderFile

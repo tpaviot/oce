@@ -6,53 +6,48 @@
 #ifndef _IntAna_Int3Pln_HeaderFile
 #define _IntAna_Int3Pln_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
 class StdFail_NotDone;
 class Standard_DomainError;
 class gp_Pln;
 class gp_Pnt;
 
 
-//! Intersection between 3 planes. The algorithm searches <br>
-//!          for an intersection point. If two of the planes are <br>
-//!          parallel or identical, IsEmpty returns TRUE. <br>
-class IntAna_Int3Pln  {
+//! Intersection between 3 planes. The algorithm searches
+//! for an intersection point. If two of the planes are
+//! parallel or identical, IsEmpty returns TRUE.
+class IntAna_Int3Pln 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntAna_Int3Pln();
-  //! Determination of the intersection point between <br>
-//!          3 planes. <br>
-  Standard_EXPORT   IntAna_Int3Pln(const gp_Pln& P1,const gp_Pln& P2,const gp_Pln& P3);
-  //! Determination of the intersection point between <br>
-//!          3 planes. <br>
-  Standard_EXPORT     void Perform(const gp_Pln& P1,const gp_Pln& P2,const gp_Pln& P3) ;
-  //! Returns True if the computation was successful. <br>
-        Standard_Boolean IsDone() const;
-  //! Returns TRUE if there is no intersection POINT. <br>
-//!          If 2 planes are identical or parallel, IsEmpty <br>
-//!          will return TRUE. <br>
-        Standard_Boolean IsEmpty() const;
-  //! Returns the intersection point. <br>
-       const gp_Pnt& Value() const;
-
+  Standard_EXPORT IntAna_Int3Pln();
+  
+  //! Determination of the intersection point between
+  //! 3 planes.
+  Standard_EXPORT IntAna_Int3Pln(const gp_Pln& P1, const gp_Pln& P2, const gp_Pln& P3);
+  
+  //! Determination of the intersection point between
+  //! 3 planes.
+  Standard_EXPORT   void Perform (const gp_Pln& P1, const gp_Pln& P2, const gp_Pln& P3) ;
+  
+  //! Returns True if the computation was successful.
+      Standard_Boolean IsDone()  const;
+  
+  //! Returns TRUE if there is no intersection POINT.
+  //! If 2 planes are identical or parallel, IsEmpty
+  //! will return TRUE.
+      Standard_Boolean IsEmpty()  const;
+  
+  //! Returns the intersection point.
+     const  gp_Pnt& Value()  const;
 
 
 
@@ -67,9 +62,9 @@ private:
 
 
 
-Standard_Boolean done;
-Standard_Boolean empt;
-gp_Pnt pnt;
+  Standard_Boolean done;
+  Standard_Boolean empt;
+  gp_Pnt pnt;
 
 
 };
@@ -79,7 +74,6 @@ gp_Pnt pnt;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntAna_Int3Pln_HeaderFile

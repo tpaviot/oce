@@ -1,12 +1,4 @@
-#ifndef _StepShape_BoxDomain_HeaderFile
 #include <StepShape_BoxDomain.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepGeom_Surface_HeaderFile
 #include <StepGeom_Surface.hxx>
-#endif
-#ifndef _StepShape_BoxedHalfSpace_HeaderFile
 #include <StepShape_BoxedHalfSpace.hxx>
-#endif

@@ -6,34 +6,16 @@
 #ifndef _TNaming_DataMapOfShapePtrRefShape_HeaderFile
 #define _TNaming_DataMapOfShapePtrRefShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _TNaming_PtrRefShape_HeaderFile
 #include <TNaming_PtrRefShape.hxx>
-#endif
-#ifndef _Handle_TNaming_DataMapNodeOfDataMapOfShapePtrRefShape_HeaderFile
 #include <Handle_TNaming_DataMapNodeOfDataMapOfShapePtrRefShape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class TopoDS_Shape;
@@ -43,50 +25,50 @@ class TNaming_DataMapIteratorOfDataMapOfShapePtrRefShape;
 
 
 
-class TNaming_DataMapOfShapePtrRefShape  : public TCollection_BasicMap {
+class TNaming_DataMapOfShapePtrRefShape  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TNaming_DataMapOfShapePtrRefShape(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT TNaming_DataMapOfShapePtrRefShape(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     TNaming_DataMapOfShapePtrRefShape& Assign(const TNaming_DataMapOfShapePtrRefShape& Other) ;
-    TNaming_DataMapOfShapePtrRefShape& operator =(const TNaming_DataMapOfShapePtrRefShape& Other) 
+  Standard_EXPORT   TNaming_DataMapOfShapePtrRefShape& Assign (const TNaming_DataMapOfShapePtrRefShape& Other) ;
+  TNaming_DataMapOfShapePtrRefShape& operator = (const TNaming_DataMapOfShapePtrRefShape& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TNaming_DataMapOfShapePtrRefShape()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Bind(const TopoDS_Shape& K,const TNaming_PtrRefShape& I) ;
+  Standard_EXPORT   Standard_Boolean Bind (const TopoDS_Shape& K, const TNaming_PtrRefShape& I) ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const TopoDS_Shape& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound (const TopoDS_Shape& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind(const TopoDS_Shape& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind (const TopoDS_Shape& K) ;
   
-  Standard_EXPORT    const TNaming_PtrRefShape& Find(const TopoDS_Shape& K) const;
-   const TNaming_PtrRefShape& operator()(const TopoDS_Shape& K) const
+  Standard_EXPORT  const  TNaming_PtrRefShape& Find (const TopoDS_Shape& K)  const;
+ const  TNaming_PtrRefShape& operator() (const TopoDS_Shape& K)  const
 {
   return Find(K);
 }
   
-  Standard_EXPORT     TNaming_PtrRefShape& ChangeFind(const TopoDS_Shape& K) ;
-    TNaming_PtrRefShape& operator()(const TopoDS_Shape& K) 
+  Standard_EXPORT   TNaming_PtrRefShape& ChangeFind (const TopoDS_Shape& K) ;
+  TNaming_PtrRefShape& operator() (const TopoDS_Shape& K) 
 {
   return ChangeFind(K);
 }
   
-  Standard_EXPORT     Standard_Address Find1(const TopoDS_Shape& K) const;
+  Standard_EXPORT   Standard_Address Find1 (const TopoDS_Shape& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFind1(const TopoDS_Shape& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFind1 (const TopoDS_Shape& K) ;
 
 
 
@@ -100,7 +82,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   TNaming_DataMapOfShapePtrRefShape(const TNaming_DataMapOfShapePtrRefShape& Other);
+  Standard_EXPORT TNaming_DataMapOfShapePtrRefShape(const TNaming_DataMapOfShapePtrRefShape& Other);
 
 
 
@@ -111,7 +93,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TNaming_DataMapOfShapePtrRefShape_HeaderFile

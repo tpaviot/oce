@@ -6,53 +6,39 @@
 #ifndef _AdvApp2Var_Criterion_HeaderFile
 #define _AdvApp2Var_Criterion_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _AdvApp2Var_CriterionType_HeaderFile
 #include <AdvApp2Var_CriterionType.hxx>
-#endif
-#ifndef _AdvApp2Var_CriterionRepartition_HeaderFile
 #include <AdvApp2Var_CriterionRepartition.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class AdvApp2Var_Patch;
 class AdvApp2Var_Context;
 
 
 
-//! this class contains a given criterion to be satisfied <br>
-class AdvApp2Var_Criterion  {
+//! this class contains a given criterion to be satisfied
+class AdvApp2Var_Criterion 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   virtual  void Delete() ;
+  Standard_EXPORT virtual   void Delete() ;
 Standard_EXPORT virtual ~AdvApp2Var_Criterion(){Delete() ; }
   
-  Standard_EXPORT   virtual  void Value(AdvApp2Var_Patch& P,const AdvApp2Var_Context& C) const = 0;
+  Standard_EXPORT virtual   void Value (AdvApp2Var_Patch& P, const AdvApp2Var_Context& C)  const = 0;
   
-  Standard_EXPORT   virtual  Standard_Boolean IsSatisfied(const AdvApp2Var_Patch& P) const = 0;
+  Standard_EXPORT virtual   Standard_Boolean IsSatisfied (const AdvApp2Var_Patch& P)  const = 0;
   
-  Standard_EXPORT     Standard_Real MaxValue() const;
+  Standard_EXPORT   Standard_Real MaxValue()  const;
   
-  Standard_EXPORT     AdvApp2Var_CriterionType Type() const;
+  Standard_EXPORT   AdvApp2Var_CriterionType Type()  const;
   
-  Standard_EXPORT     AdvApp2Var_CriterionRepartition Repartition() const;
-
+  Standard_EXPORT   AdvApp2Var_CriterionRepartition Repartition()  const;
 
 
 
@@ -61,9 +47,9 @@ protected:
 
 
 
-Standard_Real myMaxValue;
-AdvApp2Var_CriterionType myType;
-AdvApp2Var_CriterionRepartition myRepartition;
+  Standard_Real myMaxValue;
+  AdvApp2Var_CriterionType myType;
+  AdvApp2Var_CriterionRepartition myRepartition;
 
 
 private:
@@ -78,7 +64,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AdvApp2Var_Criterion_HeaderFile

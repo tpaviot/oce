@@ -5,21 +5,11 @@
 
 #include <PColgp_SeqExplorerOfHSequenceOfXYZ.hxx>
 
-#ifndef _PColgp_SeqNodeOfHSequenceOfXYZ_HeaderFile
 #include <PColgp_SeqNodeOfHSequenceOfXYZ.hxx>
-#endif
-#ifndef _PColgp_HSequenceOfXYZ_HeaderFile
 #include <PColgp_HSequenceOfXYZ.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
  
 
 #define Item gp_XYZ

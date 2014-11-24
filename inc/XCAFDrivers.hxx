@@ -6,19 +6,11 @@
 #ifndef _XCAFDrivers_HeaderFile
 #define _XCAFDrivers_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
 class Standard_Transient;
 class Standard_GUID;
 class XCAFDrivers_DocumentRetrievalDriver;
@@ -26,26 +18,27 @@ class XCAFDrivers_DocumentStorageDriver;
 
 
 
-class XCAFDrivers  {
+class XCAFDrivers 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Depending from the  ID, returns a list of  storage <br>
-//!          or retrieval attribute drivers. Used for plugin. <br>
-//! <br>
-//!          Standard data model drivers <br>
-//!          =========================== <br>
-//!          47b0b826-d931-11d1-b5da-00a0c9064368 Transient-Persistent <br>
-//!          47b0b827-d931-11d1-b5da-00a0c9064368 Persistent-Transient <br>
-//! <br>
-//!          XCAF data model drivers <br>
-//!          ================================= <br>
-//!          ed8793f8-3142-11d4-b9b5-0060b0ee281b Transient-Persistent <br>
-//!          ed8793f9-3142-11d4-b9b5-0060b0ee281b Persistent-Transient <br>
-//!          ed8793fa-3142-11d4-b9b5-0060b0ee281b XCAFSchema <br>
-  Standard_EXPORT   static  Handle_Standard_Transient Factory(const Standard_GUID& aGUID) ;
-
+  
+  //! Depending from the  ID, returns a list of  storage
+  //! or retrieval attribute drivers. Used for plugin.
+  //!
+  //! Standard data model drivers
+  //! ===========================
+  //! 47b0b826-d931-11d1-b5da-00a0c9064368 Transient-Persistent
+  //! 47b0b827-d931-11d1-b5da-00a0c9064368 Persistent-Transient
+  //!
+  //! XCAF data model drivers
+  //! =================================
+  //! ed8793f8-3142-11d4-b9b5-0060b0ee281b Transient-Persistent
+  //! ed8793f9-3142-11d4-b9b5-0060b0ee281b Persistent-Transient
+  //! ed8793fa-3142-11d4-b9b5-0060b0ee281b XCAFSchema
+  Standard_EXPORT static   Handle(Standard_Transient) Factory (const Standard_GUID& aGUID) ;
 
 
 
@@ -70,7 +63,6 @@ friend class XCAFDrivers_DocumentStorageDriver;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XCAFDrivers_HeaderFile

@@ -6,87 +6,81 @@
 #ifndef _TestTopOpeTools_HeaderFile
 #define _TestTopOpeTools_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Draw_Interpretor_HeaderFile
 #include <Draw_Interpretor.hxx>
-#endif
 class TestTopOpeTools_Mesure;
 class TestTopOpeTools_Array1OfMesure;
 class TestTopOpeTools_HArray1OfMesure;
 
 
 
-//! <br>
-//!  Provide Trace control on packages involved in <br>
-//!  topological operations kernel, from Draw command interpretor. <br>
-//! <br>
-//!  They may be used by users of topological operation kernel, such as : <br>
-//! <br>
-//!  * topological operation performer, <br>
-//!  * hidden line removal performer, <br>
-//!  * fillet, chamfer performer <br>
-//! <br>
-//!  Trace  control   consists  in  management  of <br>
-//!  control functions,  activating/desactivating  execution  of <br>
-//!  instructions considered as purely PASSIVE code, <br>
-//!  performing dumps, prints, and drawing of internal objects <br>
-//!  dealed by some topological operation packages. <br>
-//! <br>
-//!  All of the Trace controls in top.ope. kernel <br>
-//!  are enclosed by the C conditional compilation statements : <br>
-//!  #ifdef DEB  ...  #endif <br>
-//! <br>
-//!  The "Traced" packages of topological operation kernel are : <br>
-//!     - TopBuild <br>
-//!     - TopOpeBRepTool <br>
-//!     - TopOpeBRepDS <br>
-//! <br>
-//!  How to use the Trace : <br>
-//!  ---------------------- <br>
-//! <br>
-//!  In a Test.cxx program using  the Draw command interpretor, dealing <br>
-//!  a set of commands theCommands (Draw_CommandManager theCommands)  : <br>
-//! <br>
-//!  TestTopOpeTools::TraceCommands(); <br>
-//! <br>
-//!  Compile your Test.cxx, run and then, under the command manager prompt : <br>
-//! <br>
-//!  Trace : prints the list of the Trace flags available on top.ope. kernel <br>
-//!  Trace <flag> : activates Trace code of <flag> <br>
-//!  Trace <flag> <1 | 0> : activates/desactivates Trace code of <flag> <br>
-//!  Trace <1 | 0> : activates/desactivates all Trace code of top.ope. kernel <br>
-//! <br>
-//!  How to add Traces : <br>
-//!  ------------------- <br>
-//! <br>
-//!  It it possible to add your own "Traced" portions of code in your code. <br>
-//!  In your test program, simply add : <br>
-//! <br>
-//!  #include <TestTopOpeTools_AddTrace.hxx> <br>
-//! <br>
-//!  and see the file TestTopOpeTools_Trace.hxx for explanations. <br>
-class TestTopOpeTools  {
+//! Provide Trace control on packages involved in
+//! topological operations kernel, from Draw command interpretor.
+//!
+//! They may be used by users of topological operation kernel, such as :
+//!
+//! * topological operation performer,
+//! * hidden line removal performer,
+//! * fillet, chamfer performer
+//!
+//! Trace  control   consists  in  management  of
+//! control functions,  activating/desactivating  execution  of
+//! instructions considered as purely PASSIVE code,
+//! performing dumps, prints, and drawing of internal objects
+//! dealed by some topological operation packages.
+//!
+//! All of the Trace controls in top.ope. kernel
+//! are enclosed by the C conditional compilation statements :
+//! #ifdef OCCT_DEBUG  ...  #endif
+//!
+//! The "Traced" packages of topological operation kernel are :
+//! - TopBuild
+//! - TopOpeBRepTool
+//! - TopOpeBRepDS
+//!
+//! How to use the Trace :
+//! ----------------------
+//!
+//! In a Test.cxx program using  the Draw command interpretor, dealing
+//! a set of commands theCommands (Draw_CommandManager theCommands)  :
+//!
+//! TestTopOpeTools::TraceCommands();
+//!
+//! Compile your Test.cxx, run and then, under the command manager prompt :
+//!
+//! Trace : prints the list of the Trace flags available on top.ope. kernel
+//! Trace <flag> : activates Trace code of <flag>
+//! Trace <flag> <1 | 0> : activates/desactivates Trace code of <flag>
+//! Trace <1 | 0> : activates/desactivates all Trace code of top.ope. kernel
+//!
+//! How to add Traces :
+//! -------------------
+//!
+//! It it possible to add your own "Traced" portions of code in your code.
+//! In your test program, simply add :
+//!
+//! #include <TestTopOpeTools_AddTrace.hxx>
+//!
+//! and see the file TestTopOpeTools_Trace.hxx for explanations.
+class TestTopOpeTools 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Defines all topological operation test commands <br>
-  Standard_EXPORT   static  void AllCommands(Draw_Interpretor& I) ;
-  //! Defines the dump commands on <br>
-//!          topological operation packages. <br>
-  Standard_EXPORT   static  void TraceCommands(Draw_Interpretor& I) ;
-  //! Defines auxiliary commands <br>
-  Standard_EXPORT   static  void OtherCommands(Draw_Interpretor& I) ;
-
+  
+  //! Defines all topological operation test commands
+  Standard_EXPORT static   void AllCommands (Draw_Interpretor& I) ;
+  
+  //! Defines the dump commands on
+  //! topological operation packages.
+  Standard_EXPORT static   void TraceCommands (Draw_Interpretor& I) ;
+  
+  //! Defines auxiliary commands
+  Standard_EXPORT static   void OtherCommands (Draw_Interpretor& I) ;
 
 
 
@@ -112,7 +106,6 @@ friend class TestTopOpeTools_HArray1OfMesure;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TestTopOpeTools_HeaderFile

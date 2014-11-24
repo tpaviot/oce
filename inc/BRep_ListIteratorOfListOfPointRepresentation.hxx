@@ -6,28 +6,14 @@
 #ifndef _BRep_ListIteratorOfListOfPointRepresentation_HeaderFile
 #define _BRep_ListIteratorOfListOfPointRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_BRep_PointRepresentation_HeaderFile
 #include <Handle_BRep_PointRepresentation.hxx>
-#endif
-#ifndef _Handle_BRep_ListNodeOfListOfPointRepresentation_HeaderFile
 #include <Handle_BRep_ListNodeOfListOfPointRepresentation.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class BRep_ListOfPointRepresentation;
@@ -36,27 +22,27 @@ class BRep_ListNodeOfListOfPointRepresentation;
 
 
 
-class BRep_ListIteratorOfListOfPointRepresentation  {
+class BRep_ListIteratorOfListOfPointRepresentation 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRep_ListIteratorOfListOfPointRepresentation();
+  Standard_EXPORT BRep_ListIteratorOfListOfPointRepresentation();
   
-  Standard_EXPORT   BRep_ListIteratorOfListOfPointRepresentation(const BRep_ListOfPointRepresentation& L);
+  Standard_EXPORT BRep_ListIteratorOfListOfPointRepresentation(const BRep_ListOfPointRepresentation& L);
   
-  Standard_EXPORT     void Initialize(const BRep_ListOfPointRepresentation& L) ;
+  Standard_EXPORT   void Initialize (const BRep_ListOfPointRepresentation& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     Handle_BRep_PointRepresentation& Value() const;
+  Standard_EXPORT   Handle(BRep_PointRepresentation)& Value()  const;
 
 
 friend class BRep_ListOfPointRepresentation;
-
 
 
 protected:
@@ -69,13 +55,13 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
 
-#define Item Handle_BRep_PointRepresentation
+#define Item Handle(BRep_PointRepresentation)
 #define Item_hxx <BRep_PointRepresentation.hxx>
 #define TCollection_ListNode BRep_ListNodeOfListOfPointRepresentation
 #define TCollection_ListNode_hxx <BRep_ListNodeOfListOfPointRepresentation.hxx>
@@ -100,7 +86,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRep_ListIteratorOfListOfPointRepresentation_HeaderFile

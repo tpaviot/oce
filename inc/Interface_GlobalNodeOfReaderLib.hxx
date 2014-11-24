@@ -6,34 +6,16 @@
 #ifndef _Interface_GlobalNodeOfReaderLib_HeaderFile
 #define _Interface_GlobalNodeOfReaderLib_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Interface_GlobalNodeOfReaderLib_HeaderFile
 #include <Handle_Interface_GlobalNodeOfReaderLib.hxx>
-#endif
 
-#ifndef _Handle_Interface_ReaderModule_HeaderFile
 #include <Handle_Interface_ReaderModule.hxx>
-#endif
-#ifndef _Handle_Interface_Protocol_HeaderFile
 #include <Handle_Interface_Protocol.hxx>
-#endif
-#ifndef _Handle_Interface_GlobalNodeOfReaderLib_HeaderFile
 #include <Handle_Interface_GlobalNodeOfReaderLib.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Interface_NodeOfReaderLib_HeaderFile
 #include <Handle_Interface_NodeOfReaderLib.hxx>
-#endif
 class Interface_ReaderModule;
 class Interface_Protocol;
 class Standard_Transient;
@@ -42,20 +24,21 @@ class Interface_NodeOfReaderLib;
 
 
 
-class Interface_GlobalNodeOfReaderLib : public Standard_Transient {
+class Interface_GlobalNodeOfReaderLib : public Standard_Transient
+{
 
 public:
 
   
-  Standard_EXPORT   Interface_GlobalNodeOfReaderLib();
+  Standard_EXPORT Interface_GlobalNodeOfReaderLib();
   
-  Standard_EXPORT     void Add(const Handle(Interface_ReaderModule)& amodule,const Handle(Interface_Protocol)& aprotocol) ;
+  Standard_EXPORT   void Add (const Handle(Interface_ReaderModule)& amodule, const Handle(Interface_Protocol)& aprotocol) ;
   
-  Standard_EXPORT    const Handle_Interface_ReaderModule& Module() const;
+  Standard_EXPORT  const  Handle(Interface_ReaderModule)& Module()  const;
   
-  Standard_EXPORT    const Handle_Interface_Protocol& Protocol() const;
+  Standard_EXPORT  const  Handle(Interface_Protocol)& Protocol()  const;
   
-  Standard_EXPORT    const Handle_Interface_GlobalNodeOfReaderLib& Next() const;
+  Standard_EXPORT  const  Handle(Interface_GlobalNodeOfReaderLib)& Next()  const;
 
 
 
@@ -70,9 +53,9 @@ protected:
 private: 
 
 
-Handle_Interface_ReaderModule themod;
-Handle_Interface_Protocol theprot;
-Handle_Interface_GlobalNodeOfReaderLib thenext;
+  Handle(Interface_ReaderModule) themod;
+  Handle(Interface_Protocol) theprot;
+  Handle(Interface_GlobalNodeOfReaderLib) thenext;
 
 
 };
@@ -81,7 +64,6 @@ Handle_Interface_GlobalNodeOfReaderLib thenext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Interface_GlobalNodeOfReaderLib_HeaderFile

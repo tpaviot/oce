@@ -6,54 +6,44 @@
 #ifndef _StepRepr_RepresentationRelationship_HeaderFile
 #define _StepRepr_RepresentationRelationship_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepRepr_RepresentationRelationship_HeaderFile
 #include <Handle_StepRepr_RepresentationRelationship.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepRepr_Representation_HeaderFile
 #include <Handle_StepRepr_Representation.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepRepr_Representation;
 
 
 
-class StepRepr_RepresentationRelationship : public MMgt_TShared {
+class StepRepr_RepresentationRelationship : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a RepresentationRelationship <br>
-  Standard_EXPORT   StepRepr_RepresentationRelationship();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(TCollection_HAsciiString)& aDescription,const Handle(StepRepr_Representation)& aRep1,const Handle(StepRepr_Representation)& aRep2) ;
+  //! Returns a RepresentationRelationship
+  Standard_EXPORT StepRepr_RepresentationRelationship();
   
-  Standard_EXPORT     void SetName(const Handle(TCollection_HAsciiString)& aName) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(TCollection_HAsciiString)& aDescription, const Handle(StepRepr_Representation)& aRep1, const Handle(StepRepr_Representation)& aRep2) ;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString Name() const;
+  Standard_EXPORT   void SetName (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetDescription(const Handle(TCollection_HAsciiString)& aDescription) ;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Name()  const;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString Description() const;
+  Standard_EXPORT   void SetDescription (const Handle(TCollection_HAsciiString)& aDescription) ;
   
-  Standard_EXPORT     void SetRep1(const Handle(StepRepr_Representation)& aRep1) ;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Description()  const;
   
-  Standard_EXPORT     Handle_StepRepr_Representation Rep1() const;
+  Standard_EXPORT   void SetRep1 (const Handle(StepRepr_Representation)& aRep1) ;
   
-  Standard_EXPORT     void SetRep2(const Handle(StepRepr_Representation)& aRep2) ;
+  Standard_EXPORT   Handle(StepRepr_Representation) Rep1()  const;
   
-  Standard_EXPORT     Handle_StepRepr_Representation Rep2() const;
+  Standard_EXPORT   void SetRep2 (const Handle(StepRepr_Representation)& aRep2) ;
+  
+  Standard_EXPORT   Handle(StepRepr_Representation) Rep2()  const;
 
 
 
@@ -68,10 +58,10 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString name;
-Handle_TCollection_HAsciiString description;
-Handle_StepRepr_Representation rep1;
-Handle_StepRepr_Representation rep2;
+  Handle(TCollection_HAsciiString) name;
+  Handle(TCollection_HAsciiString) description;
+  Handle(StepRepr_Representation) rep1;
+  Handle(StepRepr_Representation) rep2;
 
 
 };
@@ -80,7 +70,6 @@ Handle_StepRepr_Representation rep2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_RepresentationRelationship_HeaderFile

@@ -5,28 +5,14 @@
 
 #include <IGESAppli_HArray1OfFlow.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _IGESAppli_Flow_HeaderFile
 #include <IGESAppli_Flow.hxx>
-#endif
-#ifndef _IGESAppli_Array1OfFlow_HeaderFile
 #include <IGESAppli_Array1OfFlow.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(IGESAppli_HArray1OfFlow,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(IGESAppli_HArray1OfFlow)
 
 
-#define ItemHArray1 Handle_IGESAppli_Flow
+#define ItemHArray1 Handle(IGESAppli_Flow)
 #define ItemHArray1_hxx <IGESAppli_Flow.hxx>
 #define TheArray1 IGESAppli_Array1OfFlow
 #define TheArray1_hxx <IGESAppli_Array1OfFlow.hxx>

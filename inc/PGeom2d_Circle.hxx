@@ -6,41 +6,34 @@
 #ifndef _PGeom2d_Circle_HeaderFile
 #define _PGeom2d_Circle_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom2d_Circle_HeaderFile
 #include <Handle_PGeom2d_Circle.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _PGeom2d_Conic_HeaderFile
 #include <PGeom2d_Conic.hxx>
-#endif
 class gp_Ax22d;
 
 
-class PGeom2d_Circle : public PGeom2d_Conic {
+class PGeom2d_Circle : public PGeom2d_Conic
+{
 
 public:
 
-  //! Creates a circle with default values. <br>
-  Standard_EXPORT   PGeom2d_Circle();
-  //! Creates a Circle with <aPosition> and <aRadius> as field <br>
-//!         values. <br>
-  Standard_EXPORT   PGeom2d_Circle(const gp_Ax22d& aPosition,const Standard_Real aRadius);
-  //! Set the value of the field radius with <aRadius>. <br>
-  Standard_EXPORT     void Radius(const Standard_Real aRadius) ;
-  //! Returns the value of the field radius. <br>
-  Standard_EXPORT     Standard_Real Radius() const;
+  
+  //! Creates a circle with default values.
+  Standard_EXPORT PGeom2d_Circle();
+  
+  //! Creates a Circle with <aPosition> and <aRadius> as field
+  //! values.
+  Standard_EXPORT PGeom2d_Circle(const gp_Ax22d& aPosition, const Standard_Real aRadius);
+  
+  //! Set the value of the field radius with <aRadius>.
+  Standard_EXPORT   void Radius (const Standard_Real aRadius) ;
+  
+  //! Returns the value of the field radius.
+  Standard_EXPORT   Standard_Real Radius()  const;
 
 PGeom2d_Circle(const Storage_stCONSTclCOM& a) : PGeom2d_Conic(a)
 {
@@ -61,7 +54,7 @@ protected:
 private: 
 
 
-Standard_Real radius;
+  Standard_Real radius;
 
 
 };
@@ -70,7 +63,6 @@ Standard_Real radius;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom2d_Circle_HeaderFile

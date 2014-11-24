@@ -5,21 +5,11 @@
 
 #include <BRepAlgo_DataMapIteratorOfDataMapOfShapeBoolean.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _BRepAlgo_DataMapOfShapeBoolean_HeaderFile
 #include <BRepAlgo_DataMapOfShapeBoolean.hxx>
-#endif
-#ifndef _BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean_HeaderFile
 #include <BRepAlgo_DataMapNodeOfDataMapOfShapeBoolean.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape

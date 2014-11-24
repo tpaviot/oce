@@ -5,16 +5,10 @@
 
 #include <StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _StepFEA_ElementGeometricRelationship_HeaderFile
 #include <StepFEA_ElementGeometricRelationship.hxx>
-#endif
-#ifndef _StepFEA_SequenceOfElementGeometricRelationship_HeaderFile
 #include <StepFEA_SequenceOfElementGeometricRelationship.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship,
 IMPLEMENT_STANDARD_RTTI(StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship)
 
 
-#define SeqItem Handle_StepFEA_ElementGeometricRelationship
+#define SeqItem Handle(StepFEA_ElementGeometricRelationship)
 #define SeqItem_hxx <StepFEA_ElementGeometricRelationship.hxx>
 #define TCollection_SequenceNode StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship
 #define TCollection_SequenceNode_hxx <StepFEA_SequenceNodeOfSequenceOfElementGeometricRelationship.hxx>

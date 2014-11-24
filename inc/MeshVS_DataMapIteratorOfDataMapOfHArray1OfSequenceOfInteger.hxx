@@ -6,28 +6,14 @@
 #ifndef _MeshVS_DataMapIteratorOfDataMapOfHArray1OfSequenceOfInteger_HeaderFile
 #define _MeshVS_DataMapIteratorOfDataMapOfHArray1OfSequenceOfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_MeshVS_HArray1OfSequenceOfInteger_HeaderFile
 #include <Handle_MeshVS_HArray1OfSequenceOfInteger.hxx>
-#endif
-#ifndef _Handle_MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger_HeaderFile
 #include <Handle_MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger.hxx>
-#endif
 class Standard_NoSuchObject;
 class MeshVS_HArray1OfSequenceOfInteger;
 class TColStd_MapIntegerHasher;
@@ -36,22 +22,22 @@ class MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger;
 
 
 
-class MeshVS_DataMapIteratorOfDataMapOfHArray1OfSequenceOfInteger  : public TCollection_BasicMapIterator {
+class MeshVS_DataMapIteratorOfDataMapOfHArray1OfSequenceOfInteger  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   MeshVS_DataMapIteratorOfDataMapOfHArray1OfSequenceOfInteger();
+  Standard_EXPORT MeshVS_DataMapIteratorOfDataMapOfHArray1OfSequenceOfInteger();
   
-  Standard_EXPORT   MeshVS_DataMapIteratorOfDataMapOfHArray1OfSequenceOfInteger(const MeshVS_DataMapOfHArray1OfSequenceOfInteger& aMap);
+  Standard_EXPORT MeshVS_DataMapIteratorOfDataMapOfHArray1OfSequenceOfInteger(const MeshVS_DataMapOfHArray1OfSequenceOfInteger& aMap);
   
-  Standard_EXPORT     void Initialize(const MeshVS_DataMapOfHArray1OfSequenceOfInteger& aMap) ;
+  Standard_EXPORT   void Initialize (const MeshVS_DataMapOfHArray1OfSequenceOfInteger& aMap) ;
   
-  Standard_EXPORT    const Standard_Integer& Key() const;
+  Standard_EXPORT  const  Standard_Integer& Key()  const;
   
-  Standard_EXPORT    const Handle_MeshVS_HArray1OfSequenceOfInteger& Value() const;
-
+  Standard_EXPORT  const  Handle(MeshVS_HArray1OfSequenceOfInteger)& Value()  const;
 
 
 
@@ -74,7 +60,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MeshVS_DataMapIteratorOfDataMapOfHArray1OfSequenceOfInteger_HeaderFile

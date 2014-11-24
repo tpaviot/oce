@@ -6,28 +6,14 @@
 #ifndef _StepFEA_SequenceOfCurve3dElementProperty_HeaderFile
 #define _StepFEA_SequenceOfCurve3dElementProperty_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_StepFEA_Curve3dElementProperty_HeaderFile
 #include <Handle_StepFEA_Curve3dElementProperty.hxx>
-#endif
-#ifndef _Handle_StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty_HeaderFile
 #include <Handle_StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class StepFEA_Curve3dElementProperty;
@@ -35,68 +21,68 @@ class StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty;
 
 
 
-class StepFEA_SequenceOfCurve3dElementProperty  : public TCollection_BaseSequence {
+class StepFEA_SequenceOfCurve3dElementProperty  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      StepFEA_SequenceOfCurve3dElementProperty();
+    StepFEA_SequenceOfCurve3dElementProperty();
   
-  Standard_EXPORT   StepFEA_SequenceOfCurve3dElementProperty(const StepFEA_SequenceOfCurve3dElementProperty& Other);
+  Standard_EXPORT StepFEA_SequenceOfCurve3dElementProperty(const StepFEA_SequenceOfCurve3dElementProperty& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~StepFEA_SequenceOfCurve3dElementProperty()
 {
   Clear();
 }
   
-  Standard_EXPORT    const StepFEA_SequenceOfCurve3dElementProperty& Assign(const StepFEA_SequenceOfCurve3dElementProperty& Other) ;
-   const StepFEA_SequenceOfCurve3dElementProperty& operator =(const StepFEA_SequenceOfCurve3dElementProperty& Other) 
+  Standard_EXPORT  const  StepFEA_SequenceOfCurve3dElementProperty& Assign (const StepFEA_SequenceOfCurve3dElementProperty& Other) ;
+ const  StepFEA_SequenceOfCurve3dElementProperty& operator = (const StepFEA_SequenceOfCurve3dElementProperty& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(StepFEA_Curve3dElementProperty)& T) ;
+  Standard_EXPORT   void Append (const Handle(StepFEA_Curve3dElementProperty)& T) ;
   
-        void Append(StepFEA_SequenceOfCurve3dElementProperty& S) ;
+      void Append (StepFEA_SequenceOfCurve3dElementProperty& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(StepFEA_Curve3dElementProperty)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(StepFEA_Curve3dElementProperty)& T) ;
   
-        void Prepend(StepFEA_SequenceOfCurve3dElementProperty& S) ;
+      void Prepend (StepFEA_SequenceOfCurve3dElementProperty& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(StepFEA_Curve3dElementProperty)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(StepFEA_Curve3dElementProperty)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,StepFEA_SequenceOfCurve3dElementProperty& S) ;
+      void InsertBefore (const Standard_Integer Index, StepFEA_SequenceOfCurve3dElementProperty& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(StepFEA_Curve3dElementProperty)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(StepFEA_Curve3dElementProperty)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,StepFEA_SequenceOfCurve3dElementProperty& S) ;
+      void InsertAfter (const Standard_Integer Index, StepFEA_SequenceOfCurve3dElementProperty& S) ;
   
-  Standard_EXPORT    const Handle_StepFEA_Curve3dElementProperty& First() const;
+  Standard_EXPORT  const  Handle(StepFEA_Curve3dElementProperty)& First()  const;
   
-  Standard_EXPORT    const Handle_StepFEA_Curve3dElementProperty& Last() const;
+  Standard_EXPORT  const  Handle(StepFEA_Curve3dElementProperty)& Last()  const;
   
-        void Split(const Standard_Integer Index,StepFEA_SequenceOfCurve3dElementProperty& Sub) ;
+      void Split (const Standard_Integer Index, StepFEA_SequenceOfCurve3dElementProperty& Sub) ;
   
-  Standard_EXPORT    const Handle_StepFEA_Curve3dElementProperty& Value(const Standard_Integer Index) const;
-   const Handle_StepFEA_Curve3dElementProperty& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(StepFEA_Curve3dElementProperty)& Value (const Standard_Integer Index)  const;
+ const  Handle(StepFEA_Curve3dElementProperty)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(StepFEA_Curve3dElementProperty)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(StepFEA_Curve3dElementProperty)& I) ;
   
-  Standard_EXPORT     Handle_StepFEA_Curve3dElementProperty& ChangeValue(const Standard_Integer Index) ;
-    Handle_StepFEA_Curve3dElementProperty& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(StepFEA_Curve3dElementProperty)& ChangeValue (const Standard_Integer Index) ;
+  Handle(StepFEA_Curve3dElementProperty)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -115,7 +101,7 @@ private:
 
 };
 
-#define SeqItem Handle_StepFEA_Curve3dElementProperty
+#define SeqItem Handle(StepFEA_Curve3dElementProperty)
 #define SeqItem_hxx <StepFEA_Curve3dElementProperty.hxx>
 #define TCollection_SequenceNode StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty
 #define TCollection_SequenceNode_hxx <StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_SequenceOfCurve3dElementProperty_HeaderFile

@@ -6,28 +6,14 @@
 #ifndef _StepToTopoDS_DataMapNodeOfPointVertexMap_HeaderFile
 #define _StepToTopoDS_DataMapNodeOfPointVertexMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepToTopoDS_DataMapNodeOfPointVertexMap_HeaderFile
 #include <Handle_StepToTopoDS_DataMapNodeOfPointVertexMap.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_CartesianPoint_HeaderFile
 #include <Handle_StepGeom_CartesianPoint.hxx>
-#endif
-#ifndef _TopoDS_Vertex_HeaderFile
 #include <TopoDS_Vertex.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class StepGeom_CartesianPoint;
 class TopoDS_Vertex;
 class StepToTopoDS_CartesianPointHasher;
@@ -36,16 +22,17 @@ class StepToTopoDS_DataMapIteratorOfPointVertexMap;
 
 
 
-class StepToTopoDS_DataMapNodeOfPointVertexMap : public TCollection_MapNode {
+class StepToTopoDS_DataMapNodeOfPointVertexMap : public TCollection_MapNode
+{
 
 public:
 
   
-      StepToTopoDS_DataMapNodeOfPointVertexMap(const Handle(StepGeom_CartesianPoint)& K,const TopoDS_Vertex& I,const TCollection_MapNodePtr& n);
+    StepToTopoDS_DataMapNodeOfPointVertexMap(const Handle(StepGeom_CartesianPoint)& K, const TopoDS_Vertex& I, const TCollection_MapNodePtr& n);
   
-        Handle_StepGeom_CartesianPoint& Key() const;
+      Handle(StepGeom_CartesianPoint)& Key()  const;
   
-        TopoDS_Vertex& Value() const;
+      TopoDS_Vertex& Value()  const;
 
 
 
@@ -60,13 +47,13 @@ protected:
 private: 
 
 
-Handle_StepGeom_CartesianPoint myKey;
-TopoDS_Vertex myValue;
+  Handle(StepGeom_CartesianPoint) myKey;
+  TopoDS_Vertex myValue;
 
 
 };
 
-#define TheKey Handle_StepGeom_CartesianPoint
+#define TheKey Handle(StepGeom_CartesianPoint)
 #define TheKey_hxx <StepGeom_CartesianPoint.hxx>
 #define TheItem TopoDS_Vertex
 #define TheItem_hxx <TopoDS_Vertex.hxx>
@@ -99,7 +86,6 @@ TopoDS_Vertex myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToTopoDS_DataMapNodeOfPointVertexMap_HeaderFile

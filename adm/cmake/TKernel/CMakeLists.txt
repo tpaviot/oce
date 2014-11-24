@@ -308,6 +308,14 @@ elseif(APPLE)
   if(USE_TBB)
     list( APPEND TKernel_USED_LIBS tbbmalloc )
   endif()
+elseif(ANDROID)
+  list( APPEND TKernel_USED_LIBS c )
+  if(USE_TBB)
+    list( APPEND TKernel_USED_LIBS tbb )
+  endif()
+  if(USE_TBB)
+    list( APPEND TKernel_USED_LIBS tbbmalloc )
+  endif()
 else()
   list( APPEND TKernel_USED_LIBS pthread )
   list( APPEND TKernel_USED_LIBS rt )
@@ -796,6 +804,16 @@ endif()
     IF(EXISTS "${CMAKE_SOURCE_DIR}//src/OSD/OSD_MemInfo.cxx")
       list( APPEND TKernel_USED_SRCFILES "${CMAKE_SOURCE_DIR}//src/OSD/OSD_MemInfo.cxx" )
       SOURCE_GROUP (OSD FILES "${CMAKE_SOURCE_DIR}//src/OSD/OSD_MemInfo.cxx")
+    ENDIF()
+  ENDIF()
+
+  IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "" AND EXISTS "${BUILD_PATCH_DIR}//src/OSD/OSD_OpenFile.cxx")
+    list( APPEND TKernel_USED_SRCFILES "${BUILD_PATCH_DIR}//src/OSD/OSD_OpenFile.cxx" )
+    SOURCE_GROUP (OSD FILES "${BUILD_PATCH_DIR}//src/OSD/OSD_OpenFile.cxx")
+  ELSE()
+    IF(EXISTS "${CMAKE_SOURCE_DIR}//src/OSD/OSD_OpenFile.cxx")
+      list( APPEND TKernel_USED_SRCFILES "${CMAKE_SOURCE_DIR}//src/OSD/OSD_OpenFile.cxx" )
+      SOURCE_GROUP (OSD FILES "${CMAKE_SOURCE_DIR}//src/OSD/OSD_OpenFile.cxx")
     ENDIF()
   ENDIF()
 
@@ -4175,13 +4193,13 @@ if ("${USED_TOOLKITS}" STREQUAL "" OR DEFINED TurnONtheTKernel)
  set_property(TARGET TKernel PROPERTY FOLDER FoundationClasses)
 
  install( TARGETS TKernel
-                                 RUNTIME DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_SUFFIX}"
-                                 ARCHIVE DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_SUFFIX}"
-                                 LIBRARY DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_SUFFIX}")
+                                 RUNTIME DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_POSTFIX}"
+                                 ARCHIVE DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_POSTFIX}"
+                                 LIBRARY DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_POSTFIX}")
 
  if (MSVC)
-  install( FILES  ${CMAKE_BINARY_DIR}/out/bin/Debug/TKernel.pdb CONFIGURATIONS Debug
-                                  DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_SUFFIX}")
+  install( FILES  ${CMAKE_BINARY_DIR}/out/bind/Debug/TKernel.pdb CONFIGURATIONS Debug
+                                  DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_POSTFIX}")
  endif()
 
 

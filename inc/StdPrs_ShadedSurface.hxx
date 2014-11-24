@@ -6,46 +6,35 @@
 #ifndef _StdPrs_ShadedSurface_HeaderFile
 #define _StdPrs_ShadedSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Prs3d_Root_HeaderFile
 #include <Prs3d_Root.hxx>
-#endif
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Handle_Prs3d_Drawer_HeaderFile
 #include <Handle_Prs3d_Drawer.hxx>
-#endif
 class Prs3d_Presentation;
 class Adaptor3d_Surface;
 class Prs3d_Drawer;
 
 
-//! Computes the shading presentation of surfaces. <br>
-//! Draws a surface by drawing the isoparametric curves with respect to <br>
-//! a maximal chordial deviation. <br>
-//! The number of isoparametric curves to be drawn and their color are <br>
-//! controlled by the furnished Drawer. <br>
-class StdPrs_ShadedSurface  : public Prs3d_Root {
+//! Computes the shading presentation of surfaces.
+//! Draws a surface by drawing the isoparametric curves with respect to
+//! a maximal chordial deviation.
+//! The number of isoparametric curves to be drawn and their color are
+//! controlled by the furnished Drawer.
+class StdPrs_ShadedSurface  : public Prs3d_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Adds the surface aSurface to the presentation object aPresentation. <br>
-//! The surface's display attributes are set in the attribute manager aDrawer. <br>
-//! The surface object from Adaptor3d provides data <br>
-//! from a Geom surface in order to use the surface in an algorithm. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Adaptor3d_Surface& aSurface,const Handle(Prs3d_Drawer)& aDrawer) ;
-
+  
+  //! Adds the surface aSurface to the presentation object aPresentation.
+  //! The surface's display attributes are set in the attribute manager aDrawer.
+  //! The surface object from Adaptor3d provides data
+  //! from a Geom surface in order to use the surface in an algorithm.
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const Adaptor3d_Surface& aSurface, const Handle(Prs3d_Drawer)& aDrawer) ;
 
 
 
@@ -68,7 +57,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StdPrs_ShadedSurface_HeaderFile

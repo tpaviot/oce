@@ -2,58 +2,58 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{07CF536B-116C-081F-0025-4F5C4E353334}</UniqueIdentifier>
+      <UniqueIdentifier>{0CDF1F60-170C-0756-0D73-90F7174E19C2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\math">
-      <UniqueIdentifier>{B4A33C24-1763-085D-0542-EECA05113E70}</UniqueIdentifier>
+      <UniqueIdentifier>{7D24BD8F-0A2C-034D-056A-8A9F75EACC0A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ElCLib">
-      <UniqueIdentifier>{1A60708B-06B9-1134-06EA-0D7FD744223C}</UniqueIdentifier>
+      <UniqueIdentifier>{F9C2BE16-13FA-048E-0A02-5270274144EC}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ElSLib">
-      <UniqueIdentifier>{23B00D3F-04AD-1598-10F1-FBF8917BFA25}</UniqueIdentifier>
+      <UniqueIdentifier>{13F9AD76-074F-0056-05D1-579192162086}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BSplCLib">
-      <UniqueIdentifier>{63B12240-1453-0143-004D-8B2F66D4EF0D}</UniqueIdentifier>
+      <UniqueIdentifier>{B14CD872-0353-11C5-0429-B5F843BE1D06}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BSplSLib">
-      <UniqueIdentifier>{9A702573-0E76-12F9-0255-6D97F012188D}</UniqueIdentifier>
+      <UniqueIdentifier>{63AEBDA6-034A-0CD4-0CD8-1168A6ED9FAA}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PLib">
-      <UniqueIdentifier>{09F9060B-0FC5-0FC8-0832-7163D05029F3}</UniqueIdentifier>
+      <UniqueIdentifier>{8D7A61A5-15F1-1616-0A05-DFB5C8179449}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Precision">
-      <UniqueIdentifier>{F22BDD41-033C-09AC-0F96-B817E729419F}</UniqueIdentifier>
+      <UniqueIdentifier>{08473B97-1087-139C-10DA-857147CFEF25}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Poly">
-      <UniqueIdentifier>{936BDE08-06E8-1545-1589-5E2D9903C20E}</UniqueIdentifier>
+      <UniqueIdentifier>{5DA5A422-17DA-06E9-0F01-127497A46CB8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\CSLib">
-      <UniqueIdentifier>{B9381E31-0DD8-0F03-00B0-9E54D4D3485C}</UniqueIdentifier>
+      <UniqueIdentifier>{DDD40FA8-1219-02EF-0839-DA9B4B099145}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Convert">
-      <UniqueIdentifier>{33C9E270-1299-15B1-12CE-8B227382E32D}</UniqueIdentifier>
+      <UniqueIdentifier>{205F1604-0E34-1710-156E-38A5B106296E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Bnd">
-      <UniqueIdentifier>{10DEB498-01EA-0EFF-0715-CF0C18232390}</UniqueIdentifier>
+      <UniqueIdentifier>{89FF8A8E-0EBD-096C-0002-468339512C75}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BVH">
-      <UniqueIdentifier>{F3EE1799-04E2-154B-10B0-8899BC252E6F}</UniqueIdentifier>
+      <UniqueIdentifier>{3DBBA44E-0FD7-13BE-1872-B6C7FD03BFB8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\gp">
-      <UniqueIdentifier>{0B823449-0071-0FD9-0B9A-F1D9EC1A3C6B}</UniqueIdentifier>
+      <UniqueIdentifier>{1FCD245D-0EB4-097C-0B44-41B7907A5953}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TColgp">
-      <UniqueIdentifier>{74A23064-011E-136B-16F6-2B74A7F7B144}</UniqueIdentifier>
+      <UniqueIdentifier>{7E8CB4D4-0C7E-1820-0BEA-08B74738975C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopLoc">
-      <UniqueIdentifier>{970ABBC4-13EA-10C2-0695-284564E3E453}</UniqueIdentifier>
+      <UniqueIdentifier>{591E421D-03E9-02EA-194C-7F851BFBD656}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Expr">
-      <UniqueIdentifier>{A319177C-0795-0F9E-0E01-EEFDF1620F09}</UniqueIdentifier>
+      <UniqueIdentifier>{B4B904ED-1668-0793-037B-818A419BC941}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\ExprIntrp">
-      <UniqueIdentifier>{C92981AC-1039-17A1-0EE9-26B3AFDEC47F}</UniqueIdentifier>
+      <UniqueIdentifier>{B9E87694-0084-1532-105F-71CC481AB5C4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

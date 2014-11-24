@@ -6,25 +6,13 @@
 #ifndef _GeomConvert_BSplineSurfaceKnotSplitting_HeaderFile
 #define _GeomConvert_BSplineSurfaceKnotSplitting_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_TColStd_HArray1OfInteger_HeaderFile
 #include <Handle_TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Handle_Geom_BSplineSurface_HeaderFile
 #include <Handle_Geom_BSplineSurface.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TColStd_HArray1OfInteger;
 class Standard_DimensionError;
 class Standard_RangeError;
@@ -32,124 +20,130 @@ class Geom_BSplineSurface;
 class TColStd_Array1OfInteger;
 
 
-//! An algorithm to determine isoparametric curves along <br>
-//! which a BSpline surface should be split in order to <br>
-//! obtain patches of the same continuity. The continuity order is given at the <br>
-//!  construction time. It is possible to compute the surface patches <br>
-//!  corresponding to the splitting with the method of package <br>
-//!  SplitBSplineSurface. <br>
-//!  For a B-spline surface the discontinuities are localised at <br>
-//!  the knot values. Between two knots values the B-spline is <br>
-//!  infinitely continuously differentiable.  For each parametric <br>
-//!  direction at a knot of range index the continuity in this <br>
-//!  direction is equal to :  Degree - Mult (Index)   where  Degree <br>
-//!  is the degree of the basis B-spline functions and Mult the <br>
-//!  multiplicity of the knot of range Index in the given direction. <br>
-//!  If for your computation you need to have B-spline surface with a <br>
-//!  minima of continuity it can be interesting to know between which <br>
-//!  knot values, a B-spline patch, has a continuity of given order. <br>
-//!  This algorithm computes the indexes of the knots where you should <br>
-//!  split the surface, to obtain patches with a constant continuity <br>
-//!  given at the construction time. If you just want to compute the <br>
-//!  local derivatives on the surface you don't need to create the <br>
-//!  BSpline patches, you can use the functions LocalD1, LocalD2, <br>
-//!  LocalD3, LocalDN of the class BSplineSurface from package Geom. <br>
-class GeomConvert_BSplineSurfaceKnotSplitting  {
+//! An algorithm to determine isoparametric curves along
+//! which a BSpline surface should be split in order to
+//! obtain patches of the same continuity. The continuity order is given at the
+//! construction time. It is possible to compute the surface patches
+//! corresponding to the splitting with the method of package
+//! SplitBSplineSurface.
+//! For a B-spline surface the discontinuities are localised at
+//! the knot values. Between two knots values the B-spline is
+//! infinitely continuously differentiable.  For each parametric
+//! direction at a knot of range index the continuity in this
+//! direction is equal to :  Degree - Mult (Index)   where  Degree
+//! is the degree of the basis B-spline functions and Mult the
+//! multiplicity of the knot of range Index in the given direction.
+//! If for your computation you need to have B-spline surface with a
+//! minima of continuity it can be interesting to know between which
+//! knot values, a B-spline patch, has a continuity of given order.
+//! This algorithm computes the indexes of the knots where you should
+//! split the surface, to obtain patches with a constant continuity
+//! given at the construction time. If you just want to compute the
+//! local derivatives on the surface you don't need to create the
+//! BSpline patches, you can use the functions LocalD1, LocalD2,
+//! LocalD3, LocalDN of the class BSplineSurface from package Geom.
+class GeomConvert_BSplineSurfaceKnotSplitting 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Determines the u- and v-isoparametric curves <br>
-//!  along which the BSpline surface BasisSurface <br>
-//! should be split in order to obtain patches with a <br>
-//! degree of continuity equal to UContinuityRange in <br>
-//! the u parametric direction, and to <br>
-//! VContinuityRange in the v parametric direction. <br>
-//! These isoparametric curves are defined by <br>
-//! parameters, which are BasisSurface knot values in <br>
-//! the u or v parametric direction. They are identified <br>
-//! by indices in the BasisSurface knots table in the <br>
-//! corresponding parametric direction. <br>
-//! Use the available interrogation functions to access <br>
-//! computed values, followed by the global function <br>
-//! SplitBSplineSurface (provided by the package <br>
-//! GeomConvert) to split the surface. <br>
-//! Exceptions <br>
-//! Standard_RangeError if UContinuityRange or <br>
-//! VContinuityRange is less than zero. <br>
-  Standard_EXPORT   GeomConvert_BSplineSurfaceKnotSplitting(const Handle(Geom_BSplineSurface)& BasisSurface,const Standard_Integer UContinuityRange,const Standard_Integer VContinuityRange);
-  //! Returns the number of u-isoparametric curves <br>
-//! along which the analysed BSpline surface should be <br>
-//! split in order to obtain patches with the continuity <br>
-//! required by this framework. <br>
-//! The parameters which define these curves are knot <br>
-//! values in the corresponding parametric direction. <br>
-//! Note that the four curves which bound the surface are <br>
-//! counted among these splitting curves. <br>
-  Standard_EXPORT     Standard_Integer NbUSplits() const;
-  //! Returns the number of v-isoparametric curves <br>
-//! along which the analysed BSpline surface should be <br>
-//! split in order to obtain patches with the continuity <br>
-//! required by this framework. <br>
-//! The parameters which define these curves are knot <br>
-//! values in the corresponding parametric direction. <br>
-//! Note that the four curves which bound the surface are <br>
-//! counted among these splitting curves. <br>
-  Standard_EXPORT     Standard_Integer NbVSplits() const;
-  //! Loads the USplit and VSplit tables with the split <br>
-//! knots values computed in this framework. Each value <br>
-//! in these tables is an index in the knots table <br>
-//! corresponding to the u or v parametric direction of <br>
-//! the BSpline surface analysed by this algorithm. <br>
-//! The USplit and VSplit values are given in ascending <br>
-//! order and comprise the indices of the knots which <br>
-//! give the first and last isoparametric curves of the <br>
-//! surface in the corresponding parametric direction. <br>
-//! Use two consecutive values from the USplit table and <br>
-//! two consecutive values from the VSplit table as <br>
-//! arguments of the global function <br>
-//! SplitBSplineSurface (provided by the package <br>
-//! GeomConvert) to split the surface. <br>
-//! Exceptions <br>
-//! Standard_DimensionError if: <br>
-//! -   the array USplit was not created with the following bounds: <br>
-//!   -   1 , and <br>
-//!   -   the number of split knots in the u parametric <br>
-//!    direction computed in this framework (as given <br>
-//!    by the function NbUSplits); or <br>
-//! -   the array VSplit was not created with the following bounds: <br>
-//!   -   1 , and <br>
-//!   -   the number of split knots in the v parametric <br>
-//!    direction computed in this framework (as given <br>
-//!    by the function NbVSplits). <br>
-  Standard_EXPORT     void Splitting(TColStd_Array1OfInteger& USplit,TColStd_Array1OfInteger& VSplit) const;
-  //! Returns the split knot of index UIndex <br>
-//! to the split knots table for the u  parametric direction <br>
-//! computed in this framework. The returned value is <br>
-//! an index in the knots table relative to the u <br>
-//!  parametric direction of the BSpline surface analysed by this algorithm. <br>
-//! Note: If UIndex is equal to 1, or to the number of split knots for the u <br>
-//!  parametric direction computed in <br>
-//! this framework, the corresponding knot gives the <br>
-//! parameter of one of the bounding curves of the surface. <br>
-//! Exceptions <br>
-//! Standard_RangeError if UIndex  is less than 1 or greater than the number <br>
-//! of split knots for the u parametric direction computed in this framework. <br>
-  Standard_EXPORT     Standard_Integer USplitValue(const Standard_Integer UIndex) const;
-  //!  Returns the split knot of index VIndex <br>
-//! to the split knots table for the v  parametric direction <br>
-//! computed in this framework. The returned value is <br>
-//! an index in the knots table relative to the v <br>
-//!  parametric direction of the BSpline surface analysed by this algorithm. <br>
-//! Note: If UIndex is equal to 1, or to the number of split knots for the v <br>
-//!  parametric direction computed in <br>
-//! this framework, the corresponding knot gives the <br>
-//! parameter of one of the bounding curves of the surface. <br>
-//! Exceptions <br>
-//! Standard_RangeError if VIndex  is less than 1 or greater than the number <br>
-//! of split knots for the v parametric direction computed in this framework. <br>
-  Standard_EXPORT     Standard_Integer VSplitValue(const Standard_Integer VIndex) const;
-
+  
+  //! Determines the u- and v-isoparametric curves
+  //! along which the BSpline surface BasisSurface
+  //! should be split in order to obtain patches with a
+  //! degree of continuity equal to UContinuityRange in
+  //! the u parametric direction, and to
+  //! VContinuityRange in the v parametric direction.
+  //! These isoparametric curves are defined by
+  //! parameters, which are BasisSurface knot values in
+  //! the u or v parametric direction. They are identified
+  //! by indices in the BasisSurface knots table in the
+  //! corresponding parametric direction.
+  //! Use the available interrogation functions to access
+  //! computed values, followed by the global function
+  //! SplitBSplineSurface (provided by the package
+  //! GeomConvert) to split the surface.
+  //! Exceptions
+  //! Standard_RangeError if UContinuityRange or
+  //! VContinuityRange is less than zero.
+  Standard_EXPORT GeomConvert_BSplineSurfaceKnotSplitting(const Handle(Geom_BSplineSurface)& BasisSurface, const Standard_Integer UContinuityRange, const Standard_Integer VContinuityRange);
+  
+  //! Returns the number of u-isoparametric curves
+  //! along which the analysed BSpline surface should be
+  //! split in order to obtain patches with the continuity
+  //! required by this framework.
+  //! The parameters which define these curves are knot
+  //! values in the corresponding parametric direction.
+  //! Note that the four curves which bound the surface are
+  //! counted among these splitting curves.
+  Standard_EXPORT   Standard_Integer NbUSplits()  const;
+  
+  //! Returns the number of v-isoparametric curves
+  //! along which the analysed BSpline surface should be
+  //! split in order to obtain patches with the continuity
+  //! required by this framework.
+  //! The parameters which define these curves are knot
+  //! values in the corresponding parametric direction.
+  //! Note that the four curves which bound the surface are
+  //! counted among these splitting curves.
+  Standard_EXPORT   Standard_Integer NbVSplits()  const;
+  
+  //! Loads the USplit and VSplit tables with the split
+  //! knots values computed in this framework. Each value
+  //! in these tables is an index in the knots table
+  //! corresponding to the u or v parametric direction of
+  //! the BSpline surface analysed by this algorithm.
+  //! The USplit and VSplit values are given in ascending
+  //! order and comprise the indices of the knots which
+  //! give the first and last isoparametric curves of the
+  //! surface in the corresponding parametric direction.
+  //! Use two consecutive values from the USplit table and
+  //! two consecutive values from the VSplit table as
+  //! arguments of the global function
+  //! SplitBSplineSurface (provided by the package
+  //! GeomConvert) to split the surface.
+  //! Exceptions
+  //! Standard_DimensionError if:
+  //! -   the array USplit was not created with the following bounds:
+  //! -   1 , and
+  //! -   the number of split knots in the u parametric
+  //! direction computed in this framework (as given
+  //! by the function NbUSplits); or
+  //! -   the array VSplit was not created with the following bounds:
+  //! -   1 , and
+  //! -   the number of split knots in the v parametric
+  //! direction computed in this framework (as given
+  //! by the function NbVSplits).
+  Standard_EXPORT   void Splitting (TColStd_Array1OfInteger& USplit, TColStd_Array1OfInteger& VSplit)  const;
+  
+  //! Returns the split knot of index UIndex
+  //! to the split knots table for the u  parametric direction
+  //! computed in this framework. The returned value is
+  //! an index in the knots table relative to the u
+  //! parametric direction of the BSpline surface analysed by this algorithm.
+  //! Note: If UIndex is equal to 1, or to the number of split knots for the u
+  //! parametric direction computed in
+  //! this framework, the corresponding knot gives the
+  //! parameter of one of the bounding curves of the surface.
+  //! Exceptions
+  //! Standard_RangeError if UIndex  is less than 1 or greater than the number
+  //! of split knots for the u parametric direction computed in this framework.
+  Standard_EXPORT   Standard_Integer USplitValue (const Standard_Integer UIndex)  const;
+  
+  //! Returns the split knot of index VIndex
+  //! to the split knots table for the v  parametric direction
+  //! computed in this framework. The returned value is
+  //! an index in the knots table relative to the v
+  //! parametric direction of the BSpline surface analysed by this algorithm.
+  //! Note: If UIndex is equal to 1, or to the number of split knots for the v
+  //! parametric direction computed in
+  //! this framework, the corresponding knot gives the
+  //! parameter of one of the bounding curves of the surface.
+  //! Exceptions
+  //! Standard_RangeError if VIndex  is less than 1 or greater than the number
+  //! of split knots for the v parametric direction computed in this framework.
+  Standard_EXPORT   Standard_Integer VSplitValue (const Standard_Integer VIndex)  const;
 
 
 
@@ -164,8 +158,8 @@ private:
 
 
 
-Handle_TColStd_HArray1OfInteger usplitIndexes;
-Handle_TColStd_HArray1OfInteger vsplitIndexes;
+  Handle(TColStd_HArray1OfInteger) usplitIndexes;
+  Handle(TColStd_HArray1OfInteger) vsplitIndexes;
 
 
 };
@@ -174,7 +168,6 @@ Handle_TColStd_HArray1OfInteger vsplitIndexes;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomConvert_BSplineSurfaceKnotSplitting_HeaderFile

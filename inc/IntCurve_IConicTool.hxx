@@ -6,28 +6,14 @@
 #ifndef _IntCurve_IConicTool_HeaderFile
 #define _IntCurve_IConicTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _gp_Ax22d_HeaderFile
 #include <gp_Ax22d.hxx>
-#endif
-#ifndef _GeomAbs_CurveType_HeaderFile
 #include <GeomAbs_CurveType.hxx>
-#endif
-#ifndef _gp_Trsf2d_HeaderFile
 #include <gp_Trsf2d.hxx>
-#endif
 class gp_Elips2d;
 class gp_Lin2d;
 class gp_Circ2d;
@@ -37,47 +23,50 @@ class gp_Pnt2d;
 class gp_Vec2d;
 
 
-//! Implementation of the ImpTool from IntImpParGen <br>
-//!          for conics of gp. <br>
-class IntCurve_IConicTool  {
+//! Implementation of the ImpTool from IntImpParGen
+//! for conics of gp.
+class IntCurve_IConicTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntCurve_IConicTool();
+  Standard_EXPORT IntCurve_IConicTool();
   
-  Standard_EXPORT   IntCurve_IConicTool(const IntCurve_IConicTool& IT);
+  Standard_EXPORT IntCurve_IConicTool(const IntCurve_IConicTool& IT);
   
-  Standard_EXPORT   IntCurve_IConicTool(const gp_Elips2d& E);
+  Standard_EXPORT IntCurve_IConicTool(const gp_Elips2d& E);
   
-  Standard_EXPORT   IntCurve_IConicTool(const gp_Lin2d& L);
+  Standard_EXPORT IntCurve_IConicTool(const gp_Lin2d& L);
   
-  Standard_EXPORT   IntCurve_IConicTool(const gp_Circ2d& C);
+  Standard_EXPORT IntCurve_IConicTool(const gp_Circ2d& C);
   
-  Standard_EXPORT   IntCurve_IConicTool(const gp_Parab2d& P);
+  Standard_EXPORT IntCurve_IConicTool(const gp_Parab2d& P);
   
-  Standard_EXPORT   IntCurve_IConicTool(const gp_Hypr2d& H);
+  Standard_EXPORT IntCurve_IConicTool(const gp_Hypr2d& H);
   
-  Standard_EXPORT     gp_Pnt2d Value(const Standard_Real X) const;
+  Standard_EXPORT   gp_Pnt2d Value (const Standard_Real X)  const;
   
-  Standard_EXPORT     void D1(const Standard_Real U,gp_Pnt2d& P,gp_Vec2d& T) const;
+  Standard_EXPORT   void D1 (const Standard_Real U, gp_Pnt2d& P, gp_Vec2d& T)  const;
   
-  Standard_EXPORT     void D2(const Standard_Real U,gp_Pnt2d& P,gp_Vec2d& T,gp_Vec2d& N) const;
-  //! Computes the value of the signed  distance between <br>
-//!          the point P and the implicit curve. <br>
-  Standard_EXPORT     Standard_Real Distance(const gp_Pnt2d& P) const;
-  //! Computes  the   Gradient  of  the  Signed Distance <br>
-//!          between  a  point and  the  implicit curve, at the <br>
-//!          point P. <br>
-  Standard_EXPORT     gp_Vec2d GradDistance(const gp_Pnt2d& P) const;
-  //! Returns the   parameter  U of   the point  on  the <br>
-//!          implicit curve corresponding to  the point P.  The <br>
-//!          correspondance between P and the point P(U) on the <br>
-//!          implicit curve must be coherent  with the  way  of <br>
-//!          determination of the signed distance. <br>
-  Standard_EXPORT     Standard_Real FindParameter(const gp_Pnt2d& P) const;
-
+  Standard_EXPORT   void D2 (const Standard_Real U, gp_Pnt2d& P, gp_Vec2d& T, gp_Vec2d& N)  const;
+  
+  //! Computes the value of the signed  distance between
+  //! the point P and the implicit curve.
+  Standard_EXPORT   Standard_Real Distance (const gp_Pnt2d& P)  const;
+  
+  //! Computes  the   Gradient  of  the  Signed Distance
+  //! between  a  point and  the  implicit curve, at the
+  //! point P.
+  Standard_EXPORT   gp_Vec2d GradDistance (const gp_Pnt2d& P)  const;
+  
+  //! Returns the   parameter  U of   the point  on  the
+  //! implicit curve corresponding to  the point P.  The
+  //! correspondance between P and the point P(U) on the
+  //! implicit curve must be coherent  with the  way  of
+  //! determination of the signed distance.
+  Standard_EXPORT   Standard_Real FindParameter (const gp_Pnt2d& P)  const;
 
 
 
@@ -92,12 +81,12 @@ private:
 
 
 
-Standard_Real prm1;
-Standard_Real prm2;
-Standard_Real prm3;
-gp_Ax22d Axis;
-GeomAbs_CurveType type;
-gp_Trsf2d Abs_To_Object;
+  Standard_Real prm1;
+  Standard_Real prm2;
+  Standard_Real prm3;
+  gp_Ax22d Axis;
+  GeomAbs_CurveType type;
+  gp_Trsf2d Abs_To_Object;
 
 
 };
@@ -106,7 +95,6 @@ gp_Trsf2d Abs_To_Object;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntCurve_IConicTool_HeaderFile

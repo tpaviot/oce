@@ -6,22 +6,15 @@
 #ifndef _Handle_BinMFunction_GraphNodeDriver_HeaderFile
 #define _Handle_BinMFunction_GraphNodeDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_BinMDF_ADriver_HeaderFile
 #include <Handle_BinMDF_ADriver.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(BinMDF_ADriver);
 class BinMFunction_GraphNodeDriver;
 
-DEFINE_STANDARD_HANDLE(BinMFunction_GraphNodeDriver,BinMDF_ADriver)
+DEFINE_STANDARD_HANDLE(BinMFunction_GraphNodeDriver, BinMDF_ADriver)
 
-#endif
+#endif // _Handle_BinMFunction_GraphNodeDriver_HeaderFile

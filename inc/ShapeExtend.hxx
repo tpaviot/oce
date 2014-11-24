@@ -6,25 +6,13 @@
 #ifndef _ShapeExtend_HeaderFile
 #define _ShapeExtend_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _ShapeExtend_Status_HeaderFile
 #include <ShapeExtend_Status.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class ShapeExtend_ComplexCurve;
 class ShapeExtend_CompositeSurface;
 class ShapeExtend_WireData;
@@ -39,34 +27,37 @@ class ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg;
 class ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg;
 
 
-//! This package provides general tools and data structures common <br>
-//!	        for other packages in SHAPEWORKS and extending CAS.CADE <br>
-//!          structures. <br>
-//!          The following items are provided by this package: <br>
-//!          - enumeration Status used for coding status flags in methods <br>
-//!            inside the SHAPEWORKS <br>
-//!          - enumeration Parametrisation used for setting global parametrisation <br>
-//!            on the composite surface <br>
-//!          - class CompositeSurface representing a composite surface <br>
-//!            made of a grid of surface patches <br>
-//!          - class WireData representing a wire in the form of ordered <br>
-//!            list of edges <br>
-//!          - class MsgRegistrator for attaching messages to the objects <br>
-//!          - tools for exploring the shapes <br>
-//! -       tools for creating       new shapes. <br>
-class ShapeExtend  {
+//! This package provides general tools and data structures common
+//! for other packages in SHAPEWORKS and extending CAS.CADE
+//! structures.
+//! The following items are provided by this package:
+//! - enumeration Status used for coding status flags in methods
+//! inside the SHAPEWORKS
+//! - enumeration Parametrisation used for setting global parametrisation
+//! on the composite surface
+//! - class CompositeSurface representing a composite surface
+//! made of a grid of surface patches
+//! - class WireData representing a wire in the form of ordered
+//! list of edges
+//! - class MsgRegistrator for attaching messages to the objects
+//! - tools for exploring the shapes
+//! -       tools for creating       new shapes.
+class ShapeExtend 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Inits using of ShapeExtend. <br>
-//!          Currently, loads messages output by ShapeHealing algorithms. <br>
-  Standard_EXPORT   static  void Init() ;
-  //! Encodes status (enumeration) to a bit flag <br>
-  Standard_EXPORT   static  Standard_Integer EncodeStatus(const ShapeExtend_Status status) ;
-  //! Tells if a bit flag contains bit corresponding to enumerated status <br>
-  Standard_EXPORT   static  Standard_Boolean DecodeStatus(const Standard_Integer flag,const ShapeExtend_Status status) ;
-
+  
+  //! Inits using of ShapeExtend.
+  //! Currently, loads messages output by ShapeHealing algorithms.
+  Standard_EXPORT static   void Init() ;
+  
+  //! Encodes status (enumeration) to a bit flag
+  Standard_EXPORT static   Standard_Integer EncodeStatus (const ShapeExtend_Status status) ;
+  
+  //! Tells if a bit flag contains bit corresponding to enumerated status
+  Standard_EXPORT static   Standard_Boolean DecodeStatus (const Standard_Integer flag, const ShapeExtend_Status status) ;
 
 
 
@@ -101,7 +92,6 @@ friend class ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeExtend_HeaderFile

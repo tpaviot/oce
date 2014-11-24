@@ -218,13 +218,15 @@ static Standard_Integer DNaming_AddDriver (Draw_Interpretor& /*theDI*/,
       Standard_GUID drvGUID;
       if(!GetFuncGUID(theArg[i],drvGUID)) continue;      
       aFunctionDrvTable->AddDriver(drvGUID, GetDriver(theArg[i]));
-#ifdef DEBUG
+#ifdef OCCT_DEBUG
       cout << "DNaming_AddDriver : " << theArg[i] << " driver is added" <<endl;
 #endif
     }
     return 0;
   }
+#ifdef OCCT_DEBUG
   cout << "DNaming_AddDriver : Error" << endl;
+#endif
   return 1;  
 }
 
@@ -501,7 +503,7 @@ static Standard_Integer DNaming_SolveFlatFrom (Draw_Interpretor& /*theDI*/,
       goto ERR;
     TCollection_AsciiString entry;   
     TDF_Tool::Entry(FatherLab, entry);
-#ifdef DEBUG
+#ifdef OCCT_DEBUG
     cout << "DNaming_SolveFlatFrom: Father label = " << entry << endl;
 #endif
     Standard_Boolean found(Standard_False);
@@ -529,7 +531,7 @@ static Standard_Integer DNaming_SolveFlatFrom (Draw_Interpretor& /*theDI*/,
 	    cout << "DNaming_SolveFlatFrom: Driver failed at label = " << entry << endl;
 	    return 1;
 	  }
-#ifdef DEBUG
+#ifdef OCCT_DEBUG
 	  cout <<"DNaming_SolveFlatFrom : function from label " << entry << " is recomputed" << endl;
 #endif
 	} catch (EXCEPTION) {
@@ -557,13 +559,13 @@ static Standard_Integer DNaming_InitLogBook (Draw_Interpretor& /*theDI*/,
     Standard_CString aDocS(theArg[1]);
     if (!DDocStd::GetDocument(aDocS, aDoc)) return 1;  
     if(GetLogBook().IsEmpty()) {
-#ifdef DEBUG
+#ifdef OCCT_DEBUG
       cout << "DNaming_InitLogBook : is empty" <<endl;
 #endif
     }
     else {
       GetLogBook().Clear();
-#ifdef DEBUG
+#ifdef OCCT_DEBUG
       cout << "DNaming_InitLogBook : cleaned" <<endl;
 #endif
     }
@@ -628,7 +630,7 @@ static Standard_Integer DNaming_ComputeFun (Draw_Interpretor& /*theDI*/,
 	 cout << "DNaming_ComputeFun : No Driver or Driver failed" << endl;
 	 return 1;
        }
-#ifdef DEBUG
+#ifdef OCCT_DEBUG
       cout <<"DNaming_ComputeFun : function from label " << theArg[2] << " is recomputed" << endl;
 #endif
       return 0;
@@ -686,7 +688,7 @@ static Standard_Integer DNaming_AttachShape (Draw_Interpretor& di,
 	  if (nb == 7) 
 	    aGeometry = (Standard_Boolean) Draw::Atoi(a[6]);
 	  Handle(TNaming_NamedShape) aCont =  DNaming::GetObjectValue(aContext);
-#ifdef DEBUG
+#ifdef OCCT_DEBUG
 	  if(aCont.IsNull() || aCont->IsEmpty())
 	    cout <<"Wrong Context ..." <<endl;
 #endif
@@ -695,12 +697,13 @@ static Standard_Integer DNaming_AttachShape (Draw_Interpretor& di,
 	    TNaming_Selector aSelector(aResultLabel);
 	    if(!aSelector.Select(aShape, aCONTEXT, aGeometry, aKeepOrientation))
 	      return 1;
-	  }catch (...) {
+	  }
+          catch (Standard_Failure) {
 	    cout << "EXCEPTION: SELECTION_IMPOSSIBLE" <<endl;
 	  }
     
 	  if(!aCont.IsNull()) {
-#ifdef DEBUG
+#ifdef OCCT_DEBUG
 	    TCollection_AsciiString entry;
 	    TDF_Tool::Entry(aCont->Label(), entry);
 	    cout << "ContextNS Label = " << entry <<endl;
@@ -771,7 +774,8 @@ static Standard_Integer DNaming_XAttachShape (Draw_Interpretor& di,
 	      TNaming_Selector aSelector(aResultLabel);
 	      if(!aSelector.Select(aShape, aCONTEXT, aGeometry, aKeepOrientation))
 		return 1;
-	    } catch (...) {
+	    }
+            catch (Standard_Failure) {
 	      cout << "EXCEPTION: SELECTION_IMPOSSIBLE" <<endl;
 	    }
     
@@ -1041,7 +1045,7 @@ static Standard_Integer DNaming_PTranslateDXYZ (Draw_Interpretor& di,
 						const char** a)
 {
   if (nb > 3) {
-#ifdef DEBUG
+#ifdef OCCT_DEBUG
     cout << "NB = " << nb <<endl;
 #endif
     Handle(TDocStd_Document) aDocument;   
@@ -1088,7 +1092,7 @@ static Standard_Integer DNaming_PTranslateLine (Draw_Interpretor& di,
 						const char** a)
 {
   if (nb > 4) {
-#ifdef DEBUG
+#ifdef OCCT_DEBUG
     cout << "NB = " << nb <<endl;
 #endif
     Handle(TDocStd_Document) aDocument;   
@@ -1931,7 +1935,7 @@ static Standard_Integer DNaming_TestSingle (Draw_Interpretor& theDI,
 	  isFirst = Standard_False;
 	  TCollection_AsciiString entry;
 	  TDF_Tool::Entry(FirstAuxObj->Label(), entry);
-#ifdef DEBUG
+#ifdef OCCT_DEBUG
 	  cout << "First Selection function at " << entry <<endl;
 #endif
 	}
@@ -2067,7 +2071,7 @@ static Standard_Integer DNaming_Multiple (Draw_Interpretor& theDI,
 	if(isFirst) {
 	  FirstAuxObj = auxObj;
 	  isFirst = Standard_False;
-#ifdef DEBUG
+#ifdef OCCT_DEBUG
 	  TCollection_AsciiString entry;
 	  TDF_Tool::Entry(FirstAuxObj->Label(), entry);
 	  cout << "First Selection function at " << entry <<endl;

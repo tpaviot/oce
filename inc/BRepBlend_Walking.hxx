@@ -6,58 +6,24 @@
 #ifndef _BRepBlend_Walking_HeaderFile
 #define _BRepBlend_Walking_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Blend_Point_HeaderFile
 #include <Blend_Point.hxx>
-#endif
-#ifndef _Handle_BRepBlend_Line_HeaderFile
 #include <Handle_BRepBlend_Line.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
 #include <math_Vector.hxx>
-#endif
-#ifndef _Blend_SequenceOfPoint_HeaderFile
 #include <Blend_SequenceOfPoint.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_TopolTool_HeaderFile
 #include <Handle_Adaptor3d_TopolTool.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HVertex_HeaderFile
 #include <Handle_Adaptor3d_HVertex.hxx>
-#endif
-#ifndef _Handle_Adaptor2d_HCurve2d_HeaderFile
 #include <Handle_Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HCurve_HeaderFile
 #include <Handle_Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopAbs_State_HeaderFile
 #include <TopAbs_State.hxx>
-#endif
-#ifndef _Blend_Status_HeaderFile
 #include <Blend_Status.hxx>
-#endif
 class BRepBlend_Line;
 class Adaptor3d_HSurface;
 class Adaptor3d_TopolTool;
@@ -80,46 +46,46 @@ class IntSurf_Transition;
 
 
 
-class BRepBlend_Walking  {
+class BRepBlend_Walking 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepBlend_Walking(const Handle(Adaptor3d_HSurface)& Surf1,const Handle(Adaptor3d_HSurface)& Surf2,const Handle(Adaptor3d_TopolTool)& Domain1,const Handle(Adaptor3d_TopolTool)& Domain2);
+  Standard_EXPORT BRepBlend_Walking(const Handle(Adaptor3d_HSurface)& Surf1, const Handle(Adaptor3d_HSurface)& Surf2, const Handle(Adaptor3d_TopolTool)& Domain1, const Handle(Adaptor3d_TopolTool)& Domain2);
   
-  Standard_EXPORT     void SetDomainsToRecadre(const Handle(Adaptor3d_TopolTool)& RecDomain1,const Handle(Adaptor3d_TopolTool)& RecDomain2) ;
+  Standard_EXPORT   void SetDomainsToRecadre (const Handle(Adaptor3d_TopolTool)& RecDomain1, const Handle(Adaptor3d_TopolTool)& RecDomain2) ;
   
-  Standard_EXPORT     void AddSingularPoint(const Blend_Point& P) ;
+  Standard_EXPORT   void AddSingularPoint (const Blend_Point& P) ;
   
-  Standard_EXPORT     void Perform(Blend_Function& F,Blend_FuncInv& FInv,const Standard_Real Pdep,const Standard_Real Pmax,const Standard_Real MaxStep,const Standard_Real TolGuide,const math_Vector& Soldep,const Standard_Real Tolesp,const Standard_Real Fleche,const Standard_Boolean Appro = Standard_False) ;
+  Standard_EXPORT   void Perform (Blend_Function& F, Blend_FuncInv& FInv, const Standard_Real Pdep, const Standard_Real Pmax, const Standard_Real MaxStep, const Standard_Real TolGuide, const math_Vector& Soldep, const Standard_Real Tolesp, const Standard_Real Fleche, const Standard_Boolean Appro = Standard_False) ;
   
-  Standard_EXPORT     Standard_Boolean PerformFirstSection(Blend_Function& F,const Standard_Real Pdep,math_Vector& ParDep,const Standard_Real Tolesp,const Standard_Real TolGuide,TopAbs_State& Pos1,TopAbs_State& Pos2) ;
+  Standard_EXPORT   Standard_Boolean PerformFirstSection (Blend_Function& F, const Standard_Real Pdep, math_Vector& ParDep, const Standard_Real Tolesp, const Standard_Real TolGuide, TopAbs_State& Pos1, TopAbs_State& Pos2) ;
   
-  Standard_EXPORT     Standard_Boolean PerformFirstSection(Blend_Function& F,Blend_FuncInv& FInv,const Standard_Real Pdep,const Standard_Real Pmax,const math_Vector& ParDep,const Standard_Real Tolesp,const Standard_Real TolGuide,const Standard_Boolean RecOnS1,const Standard_Boolean RecOnS2,Standard_Real& Psol,math_Vector& ParSol) ;
+  Standard_EXPORT   Standard_Boolean PerformFirstSection (Blend_Function& F, Blend_FuncInv& FInv, const Standard_Real Pdep, const Standard_Real Pmax, const math_Vector& ParDep, const Standard_Real Tolesp, const Standard_Real TolGuide, const Standard_Boolean RecOnS1, const Standard_Boolean RecOnS2, Standard_Real& Psol, math_Vector& ParSol) ;
   
-  Standard_EXPORT     Standard_Boolean Continu(Blend_Function& F,Blend_FuncInv& FInv,const Standard_Real P) ;
+  Standard_EXPORT   Standard_Boolean Continu (Blend_Function& F, Blend_FuncInv& FInv, const Standard_Real P) ;
   
-  Standard_EXPORT     Standard_Boolean Continu(Blend_Function& F,Blend_FuncInv& FInv,const Standard_Real P,const Standard_Boolean OnS1) ;
+  Standard_EXPORT   Standard_Boolean Continu (Blend_Function& F, Blend_FuncInv& FInv, const Standard_Real P, const Standard_Boolean OnS1) ;
   
-  Standard_EXPORT     Standard_Boolean Complete(Blend_Function& F,Blend_FuncInv& FInv,const Standard_Real Pmin) ;
+  Standard_EXPORT   Standard_Boolean Complete (Blend_Function& F, Blend_FuncInv& FInv, const Standard_Real Pmin) ;
   
-  Standard_EXPORT     void ClassificationOnS1(const Standard_Boolean C) ;
+  Standard_EXPORT   void ClassificationOnS1 (const Standard_Boolean C) ;
   
-  Standard_EXPORT     void ClassificationOnS2(const Standard_Boolean C) ;
+  Standard_EXPORT   void ClassificationOnS2 (const Standard_Boolean C) ;
   
-  Standard_EXPORT     void Check2d(const Standard_Boolean C) ;
+  Standard_EXPORT   void Check2d (const Standard_Boolean C) ;
   
-  Standard_EXPORT     void Check(const Standard_Boolean C) ;
+  Standard_EXPORT   void Check (const Standard_Boolean C) ;
   
-        Standard_Boolean TwistOnS1() const;
+      Standard_Boolean TwistOnS1()  const;
   
-        Standard_Boolean TwistOnS2() const;
+      Standard_Boolean TwistOnS2()  const;
   
-        Standard_Boolean IsDone() const;
+      Standard_Boolean IsDone()  const;
   
-       const Handle_BRepBlend_Line& Line() const;
-
+     const  Handle(BRepBlend_Line)& Line()  const;
 
 
 
@@ -133,60 +99,60 @@ protected:
 private:
 
   
-  Standard_EXPORT     void InternalPerform(Blend_Function& F,Blend_FuncInv& FInv,const Standard_Real Bound) ;
+  Standard_EXPORT   void InternalPerform (Blend_Function& F, Blend_FuncInv& FInv, const Standard_Real Bound) ;
   
-  Standard_EXPORT     Standard_Integer ArcToRecadre(const Standard_Boolean OnFirst,const math_Vector& Sol,const Standard_Integer PrevIndex,gp_Pnt2d& lpt2d,gp_Pnt2d& pt2d,Standard_Real& ponarc) ;
+  Standard_EXPORT   Standard_Integer ArcToRecadre (const Standard_Boolean OnFirst, const math_Vector& Sol, const Standard_Integer PrevIndex, gp_Pnt2d& lpt2d, gp_Pnt2d& pt2d, Standard_Real& ponarc) ;
   
-  Standard_EXPORT     Standard_Boolean Recadre(Blend_FuncInv& FInv,const Standard_Boolean OnFirst,const math_Vector& Sol,math_Vector& Solrst,Standard_Integer& Indexsol,Standard_Boolean& IsVtx,Handle(Adaptor3d_HVertex)& Vtx,const Standard_Real Extrap = 0.0) ;
+  Standard_EXPORT   Standard_Boolean Recadre (Blend_FuncInv& FInv, const Standard_Boolean OnFirst, const math_Vector& Sol, math_Vector& Solrst, Standard_Integer& Indexsol, Standard_Boolean& IsVtx, Handle(Adaptor3d_HVertex)& Vtx, const Standard_Real Extrap = 0.0) ;
   
-  Standard_EXPORT     void Transition(const Standard_Boolean OnFirst,const Handle(Adaptor2d_HCurve2d)& A,const Standard_Real Param,IntSurf_Transition& TLine,IntSurf_Transition& TArc) ;
+  Standard_EXPORT   void Transition (const Standard_Boolean OnFirst, const Handle(Adaptor2d_HCurve2d)& A, const Standard_Real Param, IntSurf_Transition& TLine, IntSurf_Transition& TArc) ;
   
-  Standard_EXPORT     void MakeExtremity(BRepBlend_Extremity& Extrem,const Standard_Boolean OnFirst,const Standard_Integer Index,const Standard_Real Param,const Standard_Boolean IsVtx,const Handle(Adaptor3d_HVertex)& Vtx) ;
+  Standard_EXPORT   void MakeExtremity (BRepBlend_Extremity& Extrem, const Standard_Boolean OnFirst, const Standard_Integer Index, const Standard_Real Param, const Standard_Boolean IsVtx, const Handle(Adaptor3d_HVertex)& Vtx) ;
   
-  Standard_EXPORT     void MakeSingularExtremity(BRepBlend_Extremity& Extrem,const Standard_Boolean OnFirst,const Handle(Adaptor3d_HVertex)& Vtx) ;
+  Standard_EXPORT   void MakeSingularExtremity (BRepBlend_Extremity& Extrem, const Standard_Boolean OnFirst, const Handle(Adaptor3d_HVertex)& Vtx) ;
   
-  Standard_EXPORT     Blend_Status CheckDeflection(const Standard_Boolean OnFirst,const Blend_Point& CurPoint) ;
+  Standard_EXPORT   Blend_Status CheckDeflection (const Standard_Boolean OnFirst, const Blend_Point& CurPoint) ;
   
-  Standard_EXPORT     Blend_Status TestArret(Blend_Function& F,const Blend_Status State,const Standard_Boolean TestDeflection = Standard_True,const Standard_Boolean TestSolution = Standard_True,const Standard_Boolean TestLengthStep = Standard_False) ;
+  Standard_EXPORT   Blend_Status TestArret (Blend_Function& F, const Blend_Status State, const Standard_Boolean TestDeflection = Standard_True, const Standard_Boolean TestSolution = Standard_True, const Standard_Boolean TestLengthStep = Standard_False) ;
 
 
-Blend_Point previousP;
-Handle_BRepBlend_Line line;
-math_Vector sol;
-Blend_SequenceOfPoint jalons;
-Handle_Adaptor3d_HSurface surf1;
-Handle_Adaptor3d_HSurface surf2;
-Handle_Adaptor3d_TopolTool domain1;
-Handle_Adaptor3d_TopolTool domain2;
-Handle_Adaptor3d_TopolTool recdomain1;
-Handle_Adaptor3d_TopolTool recdomain2;
-Standard_Real tolesp;
-Standard_Real tolgui;
-Standard_Real pasmax;
-Standard_Real fleche;
-Standard_Real param;
-Standard_Real sens;
-Standard_Boolean done;
-Standard_Boolean rebrou;
-Standard_Boolean iscomplete;
-Standard_Boolean comptra;
-Standard_Boolean clasonS1;
-Standard_Boolean clasonS2;
-Standard_Boolean check2d;
-Standard_Boolean check;
-Standard_Boolean twistflag1;
-Standard_Boolean twistflag2;
+  Blend_Point previousP;
+  Handle(BRepBlend_Line) line;
+  math_Vector sol;
+  Blend_SequenceOfPoint jalons;
+  Handle(Adaptor3d_HSurface) surf1;
+  Handle(Adaptor3d_HSurface) surf2;
+  Handle(Adaptor3d_TopolTool) domain1;
+  Handle(Adaptor3d_TopolTool) domain2;
+  Handle(Adaptor3d_TopolTool) recdomain1;
+  Handle(Adaptor3d_TopolTool) recdomain2;
+  Standard_Real tolesp;
+  Standard_Real tolgui;
+  Standard_Real pasmax;
+  Standard_Real fleche;
+  Standard_Real param;
+  Standard_Real sens;
+  Standard_Boolean done;
+  Standard_Boolean rebrou;
+  Standard_Boolean iscomplete;
+  Standard_Boolean comptra;
+  Standard_Boolean clasonS1;
+  Standard_Boolean clasonS2;
+  Standard_Boolean check2d;
+  Standard_Boolean check;
+  Standard_Boolean twistflag1;
+  Standard_Boolean twistflag2;
 
 
 };
 
-#define TheVertex Handle_Adaptor3d_HVertex
+#define TheVertex Handle(Adaptor3d_HVertex)
 #define TheVertex_hxx <Adaptor3d_HVertex.hxx>
-#define TheArc Handle_Adaptor2d_HCurve2d
+#define TheArc Handle(Adaptor2d_HCurve2d)
 #define TheArc_hxx <Adaptor2d_HCurve2d.hxx>
-#define TheSurface Handle_Adaptor3d_HSurface
+#define TheSurface Handle(Adaptor3d_HSurface)
 #define TheSurface_hxx <Adaptor3d_HSurface.hxx>
-#define TheCurve Handle_Adaptor3d_HCurve
+#define TheCurve Handle(Adaptor3d_HCurve)
 #define TheCurve_hxx <Adaptor3d_HCurve.hxx>
 #define TheVertexTool Standard_Integer
 #define TheVertexTool_hxx <Standard_Integer.hxx>
@@ -249,7 +215,6 @@ Standard_Boolean twistflag2;
 #undef Blend_Walking_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepBlend_Walking_HeaderFile

@@ -5,36 +5,16 @@
 
 #include <AppDef_MyGradientOfCompute.hxx>
 
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _AppDef_MultiLine_HeaderFile
 #include <AppDef_MultiLine.hxx>
-#endif
-#ifndef _AppDef_MyLineTool_HeaderFile
 #include <AppDef_MyLineTool.hxx>
-#endif
-#ifndef _AppDef_ParLeastSquareOfMyGradientOfCompute_HeaderFile
 #include <AppDef_ParLeastSquareOfMyGradientOfCompute.hxx>
-#endif
-#ifndef _AppDef_ResConstraintOfMyGradientOfCompute_HeaderFile
 #include <AppDef_ResConstraintOfMyGradientOfCompute.hxx>
-#endif
-#ifndef _AppDef_ParFunctionOfMyGradientOfCompute_HeaderFile
 #include <AppDef_ParFunctionOfMyGradientOfCompute.hxx>
-#endif
-#ifndef _AppDef_Gradient_BFGSOfMyGradientOfCompute_HeaderFile
 #include <AppDef_Gradient_BFGSOfMyGradientOfCompute.hxx>
-#endif
-#ifndef _AppParCurves_HArray1OfConstraintCouple_HeaderFile
 #include <AppParCurves_HArray1OfConstraintCouple.hxx>
-#endif
-#ifndef _AppParCurves_MultiCurve_HeaderFile
 #include <AppParCurves_MultiCurve.hxx>
-#endif
  
 
 #define MultiLine AppDef_MultiLine

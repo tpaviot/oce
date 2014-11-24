@@ -5,21 +5,13 @@
 
 #include <Transfer_SequenceOfFinder.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Transfer_Finder_HeaderFile
 #include <Transfer_Finder.hxx>
-#endif
-#ifndef _Transfer_SequenceNodeOfSequenceOfFinder_HeaderFile
 #include <Transfer_SequenceNodeOfSequenceOfFinder.hxx>
-#endif
  
 
-#define SeqItem Handle_Transfer_Finder
+#define SeqItem Handle(Transfer_Finder)
 #define SeqItem_hxx <Transfer_Finder.hxx>
 #define TCollection_SequenceNode Transfer_SequenceNodeOfSequenceOfFinder
 #define TCollection_SequenceNode_hxx <Transfer_SequenceNodeOfSequenceOfFinder.hxx>

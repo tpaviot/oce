@@ -1,6 +1,2 @@
-#ifndef _StepData_Field_HeaderFile
 #include <StepData_Field.hxx>
-#endif
-#ifndef _StepData_SelectNamed_HeaderFile
 #include <StepData_SelectNamed.hxx>
-#endif

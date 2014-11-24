@@ -5,33 +5,15 @@
 
 #include <HLRBRep_TheInterferenceOfInterCSurf.hxx>
 
-#ifndef _HLRBRep_ThePolygonOfInterCSurf_HeaderFile
 #include <HLRBRep_ThePolygonOfInterCSurf.hxx>
-#endif
-#ifndef _HLRBRep_ThePolygonToolOfInterCSurf_HeaderFile
 #include <HLRBRep_ThePolygonToolOfInterCSurf.hxx>
-#endif
-#ifndef _HLRBRep_ThePolyhedronOfInterCSurf_HeaderFile
 #include <HLRBRep_ThePolyhedronOfInterCSurf.hxx>
-#endif
-#ifndef _HLRBRep_ThePolyhedronToolOfInterCSurf_HeaderFile
 #include <HLRBRep_ThePolyhedronToolOfInterCSurf.hxx>
-#endif
-#ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
-#endif
-#ifndef _Intf_Array1OfLin_HeaderFile
 #include <Intf_Array1OfLin.hxx>
-#endif
-#ifndef _Bnd_BoundSortBox_HeaderFile
 #include <Bnd_BoundSortBox.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
  
 
 #define Polygon3d HLRBRep_ThePolygonOfInterCSurf

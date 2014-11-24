@@ -6,31 +6,15 @@
 #ifndef _MAT2d_DataMapOfBiIntInteger_HeaderFile
 #define _MAT2d_DataMapOfBiIntInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_MAT2d_DataMapNodeOfDataMapOfBiIntInteger_HeaderFile
 #include <Handle_MAT2d_DataMapNodeOfDataMapOfBiIntInteger.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class MAT2d_BiInt;
@@ -40,50 +24,50 @@ class MAT2d_DataMapIteratorOfDataMapOfBiIntInteger;
 
 
 
-class MAT2d_DataMapOfBiIntInteger  : public TCollection_BasicMap {
+class MAT2d_DataMapOfBiIntInteger  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   MAT2d_DataMapOfBiIntInteger(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT MAT2d_DataMapOfBiIntInteger(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     MAT2d_DataMapOfBiIntInteger& Assign(const MAT2d_DataMapOfBiIntInteger& Other) ;
-    MAT2d_DataMapOfBiIntInteger& operator =(const MAT2d_DataMapOfBiIntInteger& Other) 
+  Standard_EXPORT   MAT2d_DataMapOfBiIntInteger& Assign (const MAT2d_DataMapOfBiIntInteger& Other) ;
+  MAT2d_DataMapOfBiIntInteger& operator = (const MAT2d_DataMapOfBiIntInteger& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~MAT2d_DataMapOfBiIntInteger()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Bind(const MAT2d_BiInt& K,const Standard_Integer& I) ;
+  Standard_EXPORT   Standard_Boolean Bind (const MAT2d_BiInt& K, const Standard_Integer& I) ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const MAT2d_BiInt& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound (const MAT2d_BiInt& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind(const MAT2d_BiInt& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind (const MAT2d_BiInt& K) ;
   
-  Standard_EXPORT    const Standard_Integer& Find(const MAT2d_BiInt& K) const;
-   const Standard_Integer& operator()(const MAT2d_BiInt& K) const
+  Standard_EXPORT  const  Standard_Integer& Find (const MAT2d_BiInt& K)  const;
+ const  Standard_Integer& operator() (const MAT2d_BiInt& K)  const
 {
   return Find(K);
 }
   
-  Standard_EXPORT     Standard_Integer& ChangeFind(const MAT2d_BiInt& K) ;
-    Standard_Integer& operator()(const MAT2d_BiInt& K) 
+  Standard_EXPORT   Standard_Integer& ChangeFind (const MAT2d_BiInt& K) ;
+  Standard_Integer& operator() (const MAT2d_BiInt& K) 
 {
   return ChangeFind(K);
 }
   
-  Standard_EXPORT     Standard_Address Find1(const MAT2d_BiInt& K) const;
+  Standard_EXPORT   Standard_Address Find1 (const MAT2d_BiInt& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFind1(const MAT2d_BiInt& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFind1 (const MAT2d_BiInt& K) ;
 
 
 
@@ -97,7 +81,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   MAT2d_DataMapOfBiIntInteger(const MAT2d_DataMapOfBiIntInteger& Other);
+  Standard_EXPORT MAT2d_DataMapOfBiIntInteger(const MAT2d_DataMapOfBiIntInteger& Other);
 
 
 
@@ -108,7 +92,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MAT2d_DataMapOfBiIntInteger_HeaderFile

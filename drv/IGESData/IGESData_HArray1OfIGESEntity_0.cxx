@@ -5,28 +5,14 @@
 
 #include <IGESData_HArray1OfIGESEntity.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _IGESData_Array1OfIGESEntity_HeaderFile
 #include <IGESData_Array1OfIGESEntity.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(IGESData_HArray1OfIGESEntity,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(IGESData_HArray1OfIGESEntity)
 
 
-#define ItemHArray1 Handle_IGESData_IGESEntity
+#define ItemHArray1 Handle(IGESData_IGESEntity)
 #define ItemHArray1_hxx <IGESData_IGESEntity.hxx>
 #define TheArray1 IGESData_Array1OfIGESEntity
 #define TheArray1_hxx <IGESData_Array1OfIGESEntity.hxx>

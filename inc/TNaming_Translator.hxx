@@ -6,50 +6,40 @@
 #ifndef _TNaming_Translator_HeaderFile
 #define _TNaming_Translator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TColStd_IndexedDataMapOfTransientTransient_HeaderFile
 #include <TColStd_IndexedDataMapOfTransientTransient.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeShape_HeaderFile
 #include <TopTools_DataMapOfShapeShape.hxx>
-#endif
 class TopoDS_Shape;
 class TopTools_DataMapOfShapeShape;
 
 
-//! only  for  Shape  Copy  test - to move in DNaming <br>
-class TNaming_Translator  {
+//! only  for  Shape  Copy  test - to move in DNaming
+class TNaming_Translator 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TNaming_Translator();
+  Standard_EXPORT TNaming_Translator();
   
-  Standard_EXPORT     void Add(const TopoDS_Shape& aShape) ;
+  Standard_EXPORT   void Add (const TopoDS_Shape& aShape) ;
   
-  Standard_EXPORT     void Perform() ;
+  Standard_EXPORT   void Perform() ;
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-  //! returns copied  shape <br>
-  Standard_EXPORT    const TopoDS_Shape Copied(const TopoDS_Shape& aShape) const;
-  //! returns  DataMap  of  results;  (shape <-> copied  shape) <br>
-  Standard_EXPORT    const TopTools_DataMapOfShapeShape& Copied() const;
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
   
-  Standard_EXPORT     void DumpMap(const Standard_Boolean isWrite = Standard_False) const;
-
+  //! returns copied  shape
+  Standard_EXPORT  const  TopoDS_Shape Copied (const TopoDS_Shape& aShape)  const;
+  
+  //! returns  DataMap  of  results;  (shape <-> copied  shape)
+  Standard_EXPORT  const  TopTools_DataMapOfShapeShape& Copied()  const;
+  
+  Standard_EXPORT   void DumpMap (const Standard_Boolean isWrite = Standard_False)  const;
 
 
 
@@ -64,9 +54,9 @@ private:
 
 
 
-Standard_Boolean myIsDone;
-TColStd_IndexedDataMapOfTransientTransient myMap;
-TopTools_DataMapOfShapeShape myDataMapOfResults;
+  Standard_Boolean myIsDone;
+  TColStd_IndexedDataMapOfTransientTransient myMap;
+  TopTools_DataMapOfShapeShape myDataMapOfResults;
 
 
 };
@@ -75,7 +65,6 @@ TopTools_DataMapOfShapeShape myDataMapOfResults;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TNaming_Translator_HeaderFile

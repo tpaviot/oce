@@ -6,61 +6,47 @@
 #ifndef _math_EigenValuesSearcher_HeaderFile
 #define _math_EigenValuesSearcher_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray2OfReal_HeaderFile
 #include <Handle_TColStd_HArray2OfReal.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
 #include <math_Vector.hxx>
-#endif
 class TColStd_HArray1OfReal;
 class TColStd_HArray2OfReal;
 class StdFail_NotDone;
 class TColStd_Array1OfReal;
 
 
-//! This class finds eigen values and vectors of <br>
-//!          real symmetric tridiagonal matrix <br>
-class math_EigenValuesSearcher  {
+//! This class finds eigen values and vectors of
+//! real symmetric tridiagonal matrix
+class math_EigenValuesSearcher 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   math_EigenValuesSearcher(const TColStd_Array1OfReal& Diagonal,const TColStd_Array1OfReal& Subdiagonal);
-  //! Returns Standard_True if computation is performed <br>
-//!          successfully. <br>
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-  //! Returns the dimension of matrix <br>
-  Standard_EXPORT     Standard_Integer Dimension() const;
-  //! Returns the Index_th eigen value of matrix <br>
-//!          Index must be in [1, Dimension()] <br>
-  Standard_EXPORT     Standard_Real EigenValue(const Standard_Integer Index) const;
-  //! Returns the Index_th eigen vector of matrix <br>
-//!          Index must be in [1, Dimension()] <br>
-  Standard_EXPORT     math_Vector EigenVector(const Standard_Integer Index) const;
-
+  Standard_EXPORT math_EigenValuesSearcher(const TColStd_Array1OfReal& Diagonal, const TColStd_Array1OfReal& Subdiagonal);
+  
+  //! Returns Standard_True if computation is performed
+  //! successfully.
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
+  
+  //! Returns the dimension of matrix
+  Standard_EXPORT   Standard_Integer Dimension()  const;
+  
+  //! Returns the Index_th eigen value of matrix
+  //! Index must be in [1, Dimension()]
+  Standard_EXPORT   Standard_Real EigenValue (const Standard_Integer Index)  const;
+  
+  //! Returns the Index_th eigen vector of matrix
+  //! Index must be in [1, Dimension()]
+  Standard_EXPORT   math_Vector EigenVector (const Standard_Integer Index)  const;
 
 
 
@@ -75,12 +61,12 @@ private:
 
 
 
-Handle_TColStd_HArray1OfReal myDiagonal;
-Handle_TColStd_HArray1OfReal mySubdiagonal;
-Standard_Boolean myIsDone;
-Standard_Integer myN;
-Handle_TColStd_HArray1OfReal myEigenValues;
-Handle_TColStd_HArray2OfReal myEigenVectors;
+  Handle(TColStd_HArray1OfReal) myDiagonal;
+  Handle(TColStd_HArray1OfReal) mySubdiagonal;
+  Standard_Boolean myIsDone;
+  Standard_Integer myN;
+  Handle(TColStd_HArray1OfReal) myEigenValues;
+  Handle(TColStd_HArray2OfReal) myEigenVectors;
 
 
 };
@@ -89,7 +75,6 @@ Handle_TColStd_HArray2OfReal myEigenVectors;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _math_EigenValuesSearcher_HeaderFile

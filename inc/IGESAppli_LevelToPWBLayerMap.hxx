@@ -6,31 +6,15 @@
 #ifndef _IGESAppli_LevelToPWBLayerMap_HeaderFile
 #define _IGESAppli_LevelToPWBLayerMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESAppli_LevelToPWBLayerMap_HeaderFile
 #include <Handle_IGESAppli_LevelToPWBLayerMap.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfInteger_HeaderFile
 #include <Handle_TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Handle_Interface_HArray1OfHAsciiString_HeaderFile
 #include <Handle_Interface_HArray1OfHAsciiString.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class TColStd_HArray1OfInteger;
 class Interface_HArray1OfHAsciiString;
 class Standard_DimensionMismatch;
@@ -38,43 +22,50 @@ class Standard_OutOfRange;
 class TCollection_HAsciiString;
 
 
-//! defines LevelToPWBLayerMap, Type <406> Form <24> <br>
-//!          in package IGESAppli <br>
-//!          Used to correlate an exchange file level number with <br>
-//!          its corresponding native level identifier, physical PWB <br>
-//!          layer number and predefined functional level <br>
-//!          identification <br>
-class IGESAppli_LevelToPWBLayerMap : public IGESData_IGESEntity {
+//! defines LevelToPWBLayerMap, Type <406> Form <24>
+//! in package IGESAppli
+//! Used to correlate an exchange file level number with
+//! its corresponding native level identifier, physical PWB
+//! layer number and predefined functional level
+//! identification
+class IGESAppli_LevelToPWBLayerMap : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESAppli_LevelToPWBLayerMap();
-  //! This method is used to set the fields of the class <br>
-//!           LevelToPWBLayerMap <br>
-//!       - nbPropVal       : Number of property values <br>
-//!       - allExchLevels   : Exchange File Level Numbers <br>
-//!       - allNativeLevels : Native Level Identifications <br>
-//!       - allPhysLevels   : Physical Layer Numbers <br>
-//!       - allExchIdents   : Exchange File Level Identifications <br>
-//! raises exception if allExchLevels, allNativeLevels, allPhysLevels <br>
-//! and all ExchIdents are not of same dimensions <br>
-  Standard_EXPORT     void Init(const Standard_Integer nbPropVal,const Handle(TColStd_HArray1OfInteger)& allExchLevels,const Handle(Interface_HArray1OfHAsciiString)& allNativeLevels,const Handle(TColStd_HArray1OfInteger)& allPhysLevels,const Handle(Interface_HArray1OfHAsciiString)& allExchIdents) ;
-  //! returns number of property values <br>
-  Standard_EXPORT     Standard_Integer NbPropertyValues() const;
-  //! returns number of level to layer definitions <br>
-  Standard_EXPORT     Standard_Integer NbLevelToLayerDefs() const;
-  //! returns Exchange File Level Number <br>
-//! raises exception if Index <= 0 or Index > NbLevelToLayerDefs <br>
-  Standard_EXPORT     Standard_Integer ExchangeFileLevelNumber(const Standard_Integer Index) const;
-  //! returns Native Level Identification <br>
-//! raises exception if Index <= 0 or Index > NbLevelToLayerDefs <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString NativeLevel(const Standard_Integer Index) const;
-  //! returns Physical Layer Number <br>
-//! raises exception if Index <= 0 or Index > NbLevelToLayerDefs <br>
-  Standard_EXPORT     Standard_Integer PhysicalLayerNumber(const Standard_Integer Index) const;
+  Standard_EXPORT IGESAppli_LevelToPWBLayerMap();
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString ExchangeFileLevelIdent(const Standard_Integer Index) const;
+  //! This method is used to set the fields of the class
+  //! LevelToPWBLayerMap
+  //! - nbPropVal       : Number of property values
+  //! - allExchLevels   : Exchange File Level Numbers
+  //! - allNativeLevels : Native Level Identifications
+  //! - allPhysLevels   : Physical Layer Numbers
+  //! - allExchIdents   : Exchange File Level Identifications
+  //! raises exception if allExchLevels, allNativeLevels, allPhysLevels
+  //! and all ExchIdents are not of same dimensions
+  Standard_EXPORT   void Init (const Standard_Integer nbPropVal, const Handle(TColStd_HArray1OfInteger)& allExchLevels, const Handle(Interface_HArray1OfHAsciiString)& allNativeLevels, const Handle(TColStd_HArray1OfInteger)& allPhysLevels, const Handle(Interface_HArray1OfHAsciiString)& allExchIdents) ;
+  
+  //! returns number of property values
+  Standard_EXPORT   Standard_Integer NbPropertyValues()  const;
+  
+  //! returns number of level to layer definitions
+  Standard_EXPORT   Standard_Integer NbLevelToLayerDefs()  const;
+  
+  //! returns Exchange File Level Number
+  //! raises exception if Index <= 0 or Index > NbLevelToLayerDefs
+  Standard_EXPORT   Standard_Integer ExchangeFileLevelNumber (const Standard_Integer Index)  const;
+  
+  //! returns Native Level Identification
+  //! raises exception if Index <= 0 or Index > NbLevelToLayerDefs
+  Standard_EXPORT   Handle(TCollection_HAsciiString) NativeLevel (const Standard_Integer Index)  const;
+  
+  //! returns Physical Layer Number
+  //! raises exception if Index <= 0 or Index > NbLevelToLayerDefs
+  Standard_EXPORT   Standard_Integer PhysicalLayerNumber (const Standard_Integer Index)  const;
+  
+  Standard_EXPORT   Handle(TCollection_HAsciiString) ExchangeFileLevelIdent (const Standard_Integer Index)  const;
 
 
 
@@ -89,11 +80,11 @@ protected:
 private: 
 
 
-Standard_Integer theNbPropertyValues;
-Handle_TColStd_HArray1OfInteger theExchangeFileLevelNumber;
-Handle_Interface_HArray1OfHAsciiString theNativeLevel;
-Handle_TColStd_HArray1OfInteger thePhysicalLayerNumber;
-Handle_Interface_HArray1OfHAsciiString theExchangeFileLevelIdent;
+  Standard_Integer theNbPropertyValues;
+  Handle(TColStd_HArray1OfInteger) theExchangeFileLevelNumber;
+  Handle(Interface_HArray1OfHAsciiString) theNativeLevel;
+  Handle(TColStd_HArray1OfInteger) thePhysicalLayerNumber;
+  Handle(Interface_HArray1OfHAsciiString) theExchangeFileLevelIdent;
 
 
 };
@@ -102,7 +93,6 @@ Handle_Interface_HArray1OfHAsciiString theExchangeFileLevelIdent;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESAppli_LevelToPWBLayerMap_HeaderFile

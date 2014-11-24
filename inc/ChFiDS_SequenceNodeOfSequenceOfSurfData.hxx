@@ -6,38 +6,27 @@
 #ifndef _ChFiDS_SequenceNodeOfSequenceOfSurfData_HeaderFile
 #define _ChFiDS_SequenceNodeOfSequenceOfSurfData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ChFiDS_SequenceNodeOfSequenceOfSurfData_HeaderFile
 #include <Handle_ChFiDS_SequenceNodeOfSequenceOfSurfData.hxx>
-#endif
 
-#ifndef _Handle_ChFiDS_SurfData_HeaderFile
 #include <Handle_ChFiDS_SurfData.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class ChFiDS_SurfData;
 class ChFiDS_SequenceOfSurfData;
 
 
 
-class ChFiDS_SequenceNodeOfSequenceOfSurfData : public TCollection_SeqNode {
+class ChFiDS_SequenceNodeOfSequenceOfSurfData : public TCollection_SeqNode
+{
 
 public:
 
   
-      ChFiDS_SequenceNodeOfSequenceOfSurfData(const Handle(ChFiDS_SurfData)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    ChFiDS_SequenceNodeOfSequenceOfSurfData(const Handle(ChFiDS_SurfData)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_ChFiDS_SurfData& Value() const;
+      Handle(ChFiDS_SurfData)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_ChFiDS_SurfData myValue;
+  Handle(ChFiDS_SurfData) myValue;
 
 
 };
 
-#define SeqItem Handle_ChFiDS_SurfData
+#define SeqItem Handle(ChFiDS_SurfData)
 #define SeqItem_hxx <ChFiDS_SurfData.hxx>
 #define TCollection_SequenceNode ChFiDS_SequenceNodeOfSequenceOfSurfData
 #define TCollection_SequenceNode_hxx <ChFiDS_SequenceNodeOfSequenceOfSurfData.hxx>
@@ -78,7 +67,6 @@ Handle_ChFiDS_SurfData myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ChFiDS_SequenceNodeOfSequenceOfSurfData_HeaderFile

@@ -6,31 +6,15 @@
 #ifndef _CDM_ListOfReferences_HeaderFile
 #define _CDM_ListOfReferences_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_CDM_Reference_HeaderFile
 #include <Handle_CDM_Reference.hxx>
-#endif
-#ifndef _Handle_CDM_ListNodeOfListOfReferences_HeaderFile
 #include <Handle_CDM_ListNodeOfListOfReferences.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class CDM_ListIteratorOfListOfReferences;
 class CDM_Reference;
@@ -38,63 +22,63 @@ class CDM_ListNodeOfListOfReferences;
 
 
 
-class CDM_ListOfReferences  {
+class CDM_ListOfReferences 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   CDM_ListOfReferences();
+  Standard_EXPORT CDM_ListOfReferences();
   
-  Standard_EXPORT   CDM_ListOfReferences(const CDM_ListOfReferences& Other);
+  Standard_EXPORT CDM_ListOfReferences(const CDM_ListOfReferences& Other);
   
-  Standard_EXPORT     void Assign(const CDM_ListOfReferences& Other) ;
-    void operator=(const CDM_ListOfReferences& Other) 
+  Standard_EXPORT   void Assign (const CDM_ListOfReferences& Other) ;
+  void operator= (const CDM_ListOfReferences& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~CDM_ListOfReferences()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const Handle(CDM_Reference)& I) ;
+  Standard_EXPORT   void Prepend (const Handle(CDM_Reference)& I) ;
   
-  Standard_EXPORT     void Prepend(const Handle(CDM_Reference)& I,CDM_ListIteratorOfListOfReferences& theIt) ;
+  Standard_EXPORT   void Prepend (const Handle(CDM_Reference)& I, CDM_ListIteratorOfListOfReferences& theIt) ;
   
-  Standard_EXPORT     void Prepend(CDM_ListOfReferences& Other) ;
+  Standard_EXPORT   void Prepend (CDM_ListOfReferences& Other) ;
   
-  Standard_EXPORT     void Append(const Handle(CDM_Reference)& I) ;
+  Standard_EXPORT   void Append (const Handle(CDM_Reference)& I) ;
   
-  Standard_EXPORT     void Append(const Handle(CDM_Reference)& I,CDM_ListIteratorOfListOfReferences& theIt) ;
+  Standard_EXPORT   void Append (const Handle(CDM_Reference)& I, CDM_ListIteratorOfListOfReferences& theIt) ;
   
-  Standard_EXPORT     void Append(CDM_ListOfReferences& Other) ;
+  Standard_EXPORT   void Append (CDM_ListOfReferences& Other) ;
   
-  Standard_EXPORT     Handle_CDM_Reference& First() const;
+  Standard_EXPORT   Handle(CDM_Reference)& First()  const;
   
-  Standard_EXPORT     Handle_CDM_Reference& Last() const;
+  Standard_EXPORT   Handle(CDM_Reference)& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(CDM_ListIteratorOfListOfReferences& It) ;
+  Standard_EXPORT   void Remove (CDM_ListIteratorOfListOfReferences& It) ;
   
-  Standard_EXPORT     void InsertBefore(const Handle(CDM_Reference)& I,CDM_ListIteratorOfListOfReferences& It) ;
+  Standard_EXPORT   void InsertBefore (const Handle(CDM_Reference)& I, CDM_ListIteratorOfListOfReferences& It) ;
   
-  Standard_EXPORT     void InsertBefore(CDM_ListOfReferences& Other,CDM_ListIteratorOfListOfReferences& It) ;
+  Standard_EXPORT   void InsertBefore (CDM_ListOfReferences& Other, CDM_ListIteratorOfListOfReferences& It) ;
   
-  Standard_EXPORT     void InsertAfter(const Handle(CDM_Reference)& I,CDM_ListIteratorOfListOfReferences& It) ;
+  Standard_EXPORT   void InsertAfter (const Handle(CDM_Reference)& I, CDM_ListIteratorOfListOfReferences& It) ;
   
-  Standard_EXPORT     void InsertAfter(CDM_ListOfReferences& Other,CDM_ListIteratorOfListOfReferences& It) ;
+  Standard_EXPORT   void InsertAfter (CDM_ListOfReferences& Other, CDM_ListIteratorOfListOfReferences& It) ;
 
 
 friend class CDM_ListIteratorOfListOfReferences;
-
 
 
 protected:
@@ -107,13 +91,13 @@ private:
 
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
 
-#define Item Handle_CDM_Reference
+#define Item Handle(CDM_Reference)
 #define Item_hxx <CDM_Reference.hxx>
 #define TCollection_ListNode CDM_ListNodeOfListOfReferences
 #define TCollection_ListNode_hxx <CDM_ListNodeOfListOfReferences.hxx>
@@ -138,7 +122,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _CDM_ListOfReferences_HeaderFile

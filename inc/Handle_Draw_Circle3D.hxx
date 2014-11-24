@@ -6,22 +6,15 @@
 #ifndef _Handle_Draw_Circle3D_HeaderFile
 #define _Handle_Draw_Circle3D_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Draw_Drawable3D_HeaderFile
 #include <Handle_Draw_Drawable3D.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Draw_Drawable3D);
 class Draw_Circle3D;
 
-DEFINE_STANDARD_HANDLE(Draw_Circle3D,Draw_Drawable3D)
+DEFINE_STANDARD_HANDLE(Draw_Circle3D, Draw_Drawable3D)
 
-#endif
+#endif // _Handle_Draw_Circle3D_HeaderFile

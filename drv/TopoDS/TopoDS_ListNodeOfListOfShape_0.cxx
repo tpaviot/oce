@@ -5,19 +5,11 @@
 
 #include <TopoDS_ListNodeOfListOfShape.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopoDS_ListOfShape_HeaderFile
 #include <TopoDS_ListOfShape.hxx>
-#endif
-#ifndef _TopoDS_ListIteratorOfListOfShape_HeaderFile
 #include <TopoDS_ListIteratorOfListOfShape.hxx>
-#endif
 
  
 

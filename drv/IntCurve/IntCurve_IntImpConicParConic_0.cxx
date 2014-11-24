@@ -5,33 +5,15 @@
 
 #include <IntCurve_IntImpConicParConic.hxx>
 
-#ifndef _Standard_ConstructionError_HeaderFile
 #include <Standard_ConstructionError.hxx>
-#endif
-#ifndef _IntCurve_IConicTool_HeaderFile
 #include <IntCurve_IConicTool.hxx>
-#endif
-#ifndef _IntCurve_PConic_HeaderFile
 #include <IntCurve_PConic.hxx>
-#endif
-#ifndef _IntCurve_PConicTool_HeaderFile
 #include <IntCurve_PConicTool.hxx>
-#endif
-#ifndef _IntCurve_ProjectOnPConicTool_HeaderFile
 #include <IntCurve_ProjectOnPConicTool.hxx>
-#endif
-#ifndef _IntCurve_MyImpParToolOfIntImpConicParConic_HeaderFile
 #include <IntCurve_MyImpParToolOfIntImpConicParConic.hxx>
-#endif
-#ifndef _IntRes2d_Domain_HeaderFile
 #include <IntRes2d_Domain.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
  
 
 #define ImpTool IntCurve_IConicTool

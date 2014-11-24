@@ -5,22 +5,12 @@
 
 #include <Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Transfer_Finder_HeaderFile
 #include <Transfer_Finder.hxx>
-#endif
-#ifndef _Transfer_Binder_HeaderFile
 #include <Transfer_Binder.hxx>
-#endif
-#ifndef _Transfer_FindHasher_HeaderFile
 #include <Transfer_FindHasher.hxx>
-#endif
-#ifndef _Transfer_TransferMapOfProcessForFinder_HeaderFile
 #include <Transfer_TransferMapOfProcessForFinder.hxx>
-#endif
 
  
 
@@ -39,9 +29,9 @@ IMPLEMENT_DOWNCAST(Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder,St
 IMPLEMENT_STANDARD_RTTI(Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder)
 
 
-#define TheKey Handle_Transfer_Finder
+#define TheKey Handle(Transfer_Finder)
 #define TheKey_hxx <Transfer_Finder.hxx>
-#define TheItem Handle_Transfer_Binder
+#define TheItem Handle(Transfer_Binder)
 #define TheItem_hxx <Transfer_Binder.hxx>
 #define Hasher Transfer_FindHasher
 #define Hasher_hxx <Transfer_FindHasher.hxx>

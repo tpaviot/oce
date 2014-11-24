@@ -1,54 +1,18 @@
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _AppParCurves_HArray1OfConstraintCouple_HeaderFile
 #include <AppParCurves_HArray1OfConstraintCouple.hxx>
-#endif
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _AppDef_SmoothCriterion_HeaderFile
 #include <AppDef_SmoothCriterion.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_DimensionError_HeaderFile
 #include <Standard_DimensionError.hxx>
-#endif
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_ConstructionError_HeaderFile
 #include <Standard_ConstructionError.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _gp_VectorWithNullMagnitude_HeaderFile
 #include <gp_VectorWithNullMagnitude.hxx>
-#endif
-#ifndef _AppDef_MultiLine_HeaderFile
 #include <AppDef_MultiLine.hxx>
-#endif
-#ifndef _AppParCurves_MultiBSpCurve_HeaderFile
 #include <AppParCurves_MultiBSpCurve.hxx>
-#endif
-#ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
-#endif
-#ifndef _FEmTool_Curve_HeaderFile
 #include <FEmTool_Curve.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _FEmTool_Assembly_HeaderFile
 #include <FEmTool_Assembly.hxx>
-#endif
-#ifndef _PLib_Base_HeaderFile
 #include <PLib_Base.hxx>
-#endif
-#ifndef _AppDef_Variational_HeaderFile
 #include <AppDef_Variational.hxx>
-#endif

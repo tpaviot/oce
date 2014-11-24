@@ -6,42 +6,32 @@
 #ifndef _GeomToStep_MakePolyline_HeaderFile
 #define _GeomToStep_MakePolyline_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Polyline_HeaderFile
 #include <Handle_StepGeom_Polyline.hxx>
-#endif
-#ifndef _GeomToStep_Root_HeaderFile
 #include <GeomToStep_Root.hxx>
-#endif
 class StepGeom_Polyline;
 class StdFail_NotDone;
 class TColgp_Array1OfPnt;
 class TColgp_Array1OfPnt2d;
 
 
-//! This class implements the mapping between an Array1 of points <br>
-//!          from gp and a Polyline from StepGeom. <br>
-class GeomToStep_MakePolyline  : public GeomToStep_Root {
+//! This class implements the mapping between an Array1 of points
+//! from gp and a Polyline from StepGeom.
+class GeomToStep_MakePolyline  : public GeomToStep_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomToStep_MakePolyline(const TColgp_Array1OfPnt& P);
+  Standard_EXPORT GeomToStep_MakePolyline(const TColgp_Array1OfPnt& P);
   
-  Standard_EXPORT   GeomToStep_MakePolyline(const TColgp_Array1OfPnt2d& P);
+  Standard_EXPORT GeomToStep_MakePolyline(const TColgp_Array1OfPnt2d& P);
   
-  Standard_EXPORT    const Handle_StepGeom_Polyline& Value() const;
-
+  Standard_EXPORT  const  Handle(StepGeom_Polyline)& Value()  const;
 
 
 
@@ -56,7 +46,7 @@ private:
 
 
 
-Handle_StepGeom_Polyline thePolyline;
+  Handle(StepGeom_Polyline) thePolyline;
 
 
 };
@@ -65,7 +55,6 @@ Handle_StepGeom_Polyline thePolyline;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomToStep_MakePolyline_HeaderFile

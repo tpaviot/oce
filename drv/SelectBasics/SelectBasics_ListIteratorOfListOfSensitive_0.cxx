@@ -5,24 +5,14 @@
 
 #include <SelectBasics_ListIteratorOfListOfSensitive.hxx>
 
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _SelectBasics_ListOfSensitive_HeaderFile
 #include <SelectBasics_ListOfSensitive.hxx>
-#endif
-#ifndef _SelectBasics_SensitiveEntity_HeaderFile
 #include <SelectBasics_SensitiveEntity.hxx>
-#endif
-#ifndef _SelectBasics_ListNodeOfListOfSensitive_HeaderFile
 #include <SelectBasics_ListNodeOfListOfSensitive.hxx>
-#endif
  
 
-#define Item Handle_SelectBasics_SensitiveEntity
+#define Item Handle(SelectBasics_SensitiveEntity)
 #define Item_hxx <SelectBasics_SensitiveEntity.hxx>
 #define TCollection_ListNode SelectBasics_ListNodeOfListOfSensitive
 #define TCollection_ListNode_hxx <SelectBasics_ListNodeOfListOfSensitive.hxx>

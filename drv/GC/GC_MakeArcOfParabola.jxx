@@ -1,15 +1,5 @@
-#ifndef _Geom_TrimmedCurve_HeaderFile
 #include <Geom_TrimmedCurve.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _gp_Parab_HeaderFile
 #include <gp_Parab.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _GC_MakeArcOfParabola_HeaderFile
 #include <GC_MakeArcOfParabola.hxx>
-#endif

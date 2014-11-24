@@ -5,18 +5,10 @@
 
 #include <Contap_SequenceOfSegmentOfTheSearch.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Contap_TheSegmentOfTheSearch_HeaderFile
 #include <Contap_TheSegmentOfTheSearch.hxx>
-#endif
-#ifndef _Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch_HeaderFile
 #include <Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch.hxx>
-#endif
  
 
 #define SeqItem Contap_TheSegmentOfTheSearch

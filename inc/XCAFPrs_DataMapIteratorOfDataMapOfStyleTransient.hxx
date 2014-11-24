@@ -6,25 +6,13 @@
 #ifndef _XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient_HeaderFile
 #define _XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient_HeaderFile
 #include <Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleTransient.hxx>
-#endif
 class Standard_NoSuchObject;
 class XCAFPrs_Style;
 class Standard_Transient;
@@ -33,22 +21,22 @@ class XCAFPrs_DataMapNodeOfDataMapOfStyleTransient;
 
 
 
-class XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient  : public TCollection_BasicMapIterator {
+class XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient();
+  Standard_EXPORT XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient();
   
-  Standard_EXPORT   XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient(const XCAFPrs_DataMapOfStyleTransient& aMap);
+  Standard_EXPORT XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient(const XCAFPrs_DataMapOfStyleTransient& aMap);
   
-  Standard_EXPORT     void Initialize(const XCAFPrs_DataMapOfStyleTransient& aMap) ;
+  Standard_EXPORT   void Initialize (const XCAFPrs_DataMapOfStyleTransient& aMap) ;
   
-  Standard_EXPORT    const XCAFPrs_Style& Key() const;
+  Standard_EXPORT  const  XCAFPrs_Style& Key()  const;
   
-  Standard_EXPORT    const Handle_Standard_Transient& Value() const;
-
+  Standard_EXPORT  const  Handle(Standard_Transient)& Value()  const;
 
 
 
@@ -71,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient_HeaderFile

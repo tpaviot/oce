@@ -1,15 +1,5 @@
-#ifndef _Select3D_Projector_HeaderFile
 #include <Select3D_Projector.hxx>
-#endif
-#ifndef _V3d_View_HeaderFile
 #include <V3d_View.hxx>
-#endif
-#ifndef _SelectMgr_Selection_HeaderFile
 #include <SelectMgr_Selection.hxx>
-#endif
-#ifndef _Prs3d_Drawer_HeaderFile
 #include <Prs3d_Drawer.hxx>
-#endif
-#ifndef _StdSelect_HeaderFile
 #include <StdSelect.hxx>
-#endif

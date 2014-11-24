@@ -6,96 +6,86 @@
 #ifndef _Poly_PolygonOnTriangulation_HeaderFile
 #define _Poly_PolygonOnTriangulation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Poly_PolygonOnTriangulation_HeaderFile
 #include <Handle_Poly_PolygonOnTriangulation.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TColStd_Array1OfInteger_HeaderFile
 #include <TColStd_Array1OfInteger.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TColStd_HArray1OfReal;
 class Standard_NullObject;
 class TColStd_Array1OfInteger;
 class TColStd_Array1OfReal;
 
 
-//! This class provides a polygon in 3D space, based on the triangulation <br>
-//! of a surface. It may be the approximate representation of a <br>
-//! curve on the surface, or more generally the shape. <br>
-//! A PolygonOnTriangulation is defined by a table of <br>
-//! nodes. Each node is an index in the table of nodes specific <br>
-//! to a triangulation, and represents a point on the surface. If <br>
-//! the polygon is closed, the index of the point of closure is <br>
-//! repeated at the end of the table of nodes. <br>
-//! If the polygon is an approximate representation of a curve <br>
-//! on a surface, you can associate with each of its nodes the <br>
-//! value of the parameter of the corresponding point on the <br>
-//! curve.represents a 3d Polygon <br>
-class Poly_PolygonOnTriangulation : public MMgt_TShared {
+//! This class provides a polygon in 3D space, based on the triangulation
+//! of a surface. It may be the approximate representation of a
+//! curve on the surface, or more generally the shape.
+//! A PolygonOnTriangulation is defined by a table of
+//! nodes. Each node is an index in the table of nodes specific
+//! to a triangulation, and represents a point on the surface. If
+//! the polygon is closed, the index of the point of closure is
+//! repeated at the end of the table of nodes.
+//! If the polygon is an approximate representation of a curve
+//! on a surface, you can associate with each of its nodes the
+//! value of the parameter of the corresponding point on the
+//! curve.represents a 3d Polygon
+class Poly_PolygonOnTriangulation : public MMgt_TShared
+{
 
 public:
 
-  //! Constructs a 3D polygon on the triangulation of a shape, <br>
-//! defined by the table of nodes, <Nodes>. <br>
-  Standard_EXPORT   Poly_PolygonOnTriangulation(const TColStd_Array1OfInteger& Nodes);
   
-//! Constructs a 3D polygon on the triangulation of a shape, defined by: <br>
-//!  -   the table of nodes, Nodes, and the table of parameters, <Parameters>. <br>
-//! where: <br>
-//! -   a node value is an index in the table of nodes specific <br>
-//!   to an existing triangulation of a shape <br>
-//! -   and a parameter value is the value of the parameter of <br>
-//!   the corresponding point on the curve approximated by <br>
-//!   the constructed polygon. <br>
-//! Warning <br>
-//! The tables Nodes and Parameters must be the same size. <br>
-//! This property is not checked at construction time. <br>
-  Standard_EXPORT   Poly_PolygonOnTriangulation(const TColStd_Array1OfInteger& Nodes,const TColStd_Array1OfReal& Parameters);
-  //! Returns the deflection of this polygon <br>
-  Standard_EXPORT     Standard_Real Deflection() const;
-  //! Sets the deflection of this polygon to D. <br>
-//! See more on deflection in Poly_Polygones2D. <br>
-  Standard_EXPORT     void Deflection(const Standard_Real D) ;
+  //! Constructs a 3D polygon on the triangulation of a shape,
+  //! defined by the table of nodes, <Nodes>.
+  Standard_EXPORT Poly_PolygonOnTriangulation(const TColStd_Array1OfInteger& Nodes);
   
-//! Returns the number of nodes for this polygon. <br>
-//! Note: If the polygon is closed, the point of closure is <br>
-//! repeated at the end of its table of nodes. Thus, on a closed <br>
-//! triangle, the function NbNodes returns 4. <br>
-        Standard_Integer NbNodes() const;
-  //! Returns the table of nodes for this polygon. A node value <br>
-//! is an index in the table of nodes specific to an existing <br>
-//! triangulation of a shape. <br>
-  Standard_EXPORT    const TColStd_Array1OfInteger& Nodes() const;
+
+  //! Constructs a 3D polygon on the triangulation of a shape, defined by:
+  //! -   the table of nodes, Nodes, and the table of parameters, <Parameters>.
+  //! where:
+  //! -   a node value is an index in the table of nodes specific
+  //! to an existing triangulation of a shape
+  //! -   and a parameter value is the value of the parameter of
+  //! the corresponding point on the curve approximated by
+  //! the constructed polygon.
+  //! Warning
+  //! The tables Nodes and Parameters must be the same size.
+  //! This property is not checked at construction time.
+  Standard_EXPORT Poly_PolygonOnTriangulation(const TColStd_Array1OfInteger& Nodes, const TColStd_Array1OfReal& Parameters);
   
-//! Returns true if parameters are associated with the nodes in this polygon. <br>
-  Standard_EXPORT     Standard_Boolean HasParameters() const;
-  //! Returns the table of the parameters associated with each node in this polygon. <br>
-//! Warning <br>
-//! Use the function HasParameters to check if parameters <br>
-//! are associated with the nodes in this polygon. <br>
-//! <br>
-  Standard_EXPORT     Handle_TColStd_HArray1OfReal Parameters() const;
+  //! Returns the deflection of this polygon
+  Standard_EXPORT   Standard_Real Deflection()  const;
+  
+  //! Sets the deflection of this polygon to D.
+  //! See more on deflection in Poly_Polygones2D.
+  Standard_EXPORT   void Deflection (const Standard_Real D) ;
+  
+
+  //! Returns the number of nodes for this polygon.
+  //! Note: If the polygon is closed, the point of closure is
+  //! repeated at the end of its table of nodes. Thus, on a closed
+  //! triangle, the function NbNodes returns 4.
+      Standard_Integer NbNodes()  const;
+  
+  //! Returns the table of nodes for this polygon. A node value
+  //! is an index in the table of nodes specific to an existing
+  //! triangulation of a shape.
+  Standard_EXPORT  const  TColStd_Array1OfInteger& Nodes()  const;
+  
+
+  //! Returns true if parameters are associated with the nodes in this polygon.
+  Standard_EXPORT   Standard_Boolean HasParameters()  const;
+  
+  //! Returns the table of the parameters associated with each node in this polygon.
+  //! Warning
+  //! Use the function HasParameters to check if parameters
+  //! are associated with the nodes in this polygon.
+  Standard_EXPORT   Handle(TColStd_HArray1OfReal) Parameters()  const;
 
 
 
@@ -110,9 +100,9 @@ protected:
 private: 
 
 
-Standard_Real myDeflection;
-TColStd_Array1OfInteger myNodes;
-Handle_TColStd_HArray1OfReal myParameters;
+  Standard_Real myDeflection;
+  TColStd_Array1OfInteger myNodes;
+  Handle(TColStd_HArray1OfReal) myParameters;
 
 
 };
@@ -122,7 +112,6 @@ Handle_TColStd_HArray1OfReal myParameters;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Poly_PolygonOnTriangulation_HeaderFile

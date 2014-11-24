@@ -6,28 +6,14 @@
 #ifndef _TopOpeBRepDS_DoubleMapOfIntegerShape_HeaderFile
 #define _TopOpeBRepDS_DoubleMapOfIntegerShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape_HeaderFile
 #include <Handle_TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_DomainError;
 class Standard_MultiplyDefined;
 class Standard_NoSuchObject;
@@ -39,44 +25,44 @@ class TopOpeBRepDS_DoubleMapIteratorOfDoubleMapOfIntegerShape;
 
 
 
-class TopOpeBRepDS_DoubleMapOfIntegerShape  : public TCollection_BasicMap {
+class TopOpeBRepDS_DoubleMapOfIntegerShape  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepDS_DoubleMapOfIntegerShape(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT TopOpeBRepDS_DoubleMapOfIntegerShape(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     TopOpeBRepDS_DoubleMapOfIntegerShape& Assign(const TopOpeBRepDS_DoubleMapOfIntegerShape& Other) ;
-    TopOpeBRepDS_DoubleMapOfIntegerShape& operator =(const TopOpeBRepDS_DoubleMapOfIntegerShape& Other) 
+  Standard_EXPORT   TopOpeBRepDS_DoubleMapOfIntegerShape& Assign (const TopOpeBRepDS_DoubleMapOfIntegerShape& Other) ;
+  TopOpeBRepDS_DoubleMapOfIntegerShape& operator = (const TopOpeBRepDS_DoubleMapOfIntegerShape& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TopOpeBRepDS_DoubleMapOfIntegerShape()
 {
   Clear();
 }
   
-  Standard_EXPORT     void Bind(const Standard_Integer& K1,const TopoDS_Shape& K2) ;
+  Standard_EXPORT   void Bind (const Standard_Integer& K1, const TopoDS_Shape& K2) ;
   
-  Standard_EXPORT     Standard_Boolean AreBound(const Standard_Integer& K1,const TopoDS_Shape& K2) const;
+  Standard_EXPORT   Standard_Boolean AreBound (const Standard_Integer& K1, const TopoDS_Shape& K2)  const;
   
-  Standard_EXPORT     Standard_Boolean IsBound1(const Standard_Integer& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound1 (const Standard_Integer& K)  const;
   
-  Standard_EXPORT     Standard_Boolean IsBound2(const TopoDS_Shape& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound2 (const TopoDS_Shape& K)  const;
   
-  Standard_EXPORT    const TopoDS_Shape& Find1(const Standard_Integer& K) const;
+  Standard_EXPORT  const  TopoDS_Shape& Find1 (const Standard_Integer& K)  const;
   
-  Standard_EXPORT    const Standard_Integer& Find2(const TopoDS_Shape& K) const;
+  Standard_EXPORT  const  Standard_Integer& Find2 (const TopoDS_Shape& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind1(const Standard_Integer& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind1 (const Standard_Integer& K) ;
   
-  Standard_EXPORT     Standard_Boolean UnBind2(const TopoDS_Shape& K) ;
-
+  Standard_EXPORT   Standard_Boolean UnBind2 (const TopoDS_Shape& K) ;
 
 
 
@@ -90,7 +76,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   TopOpeBRepDS_DoubleMapOfIntegerShape(const TopOpeBRepDS_DoubleMapOfIntegerShape& Other);
+  Standard_EXPORT TopOpeBRepDS_DoubleMapOfIntegerShape(const TopOpeBRepDS_DoubleMapOfIntegerShape& Other);
 
 
 
@@ -101,7 +87,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_DoubleMapOfIntegerShape_HeaderFile

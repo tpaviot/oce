@@ -1,3 +1,1 @@
-#ifndef _PTopoDS_TSolid1_HeaderFile
 #include <PTopoDS_TSolid1.hxx>
-#endif

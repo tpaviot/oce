@@ -5,22 +5,12 @@
 
 #include <StepFEA_HSequenceOfElementGeometricRelationship.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StepFEA_ElementGeometricRelationship_HeaderFile
 #include <StepFEA_ElementGeometricRelationship.hxx>
-#endif
-#ifndef _StepFEA_SequenceOfElementGeometricRelationship_HeaderFile
 #include <StepFEA_SequenceOfElementGeometricRelationship.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(StepFEA_HSequenceOfElementGeometricRelationship,Standard_Tran
 IMPLEMENT_STANDARD_RTTI(StepFEA_HSequenceOfElementGeometricRelationship)
 
 
-#define Item Handle_StepFEA_ElementGeometricRelationship
+#define Item Handle(StepFEA_ElementGeometricRelationship)
 #define Item_hxx <StepFEA_ElementGeometricRelationship.hxx>
 #define TheSequence StepFEA_SequenceOfElementGeometricRelationship
 #define TheSequence_hxx <StepFEA_SequenceOfElementGeometricRelationship.hxx>

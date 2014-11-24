@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKQADraw"
-	ProjectGUID="{E40EA357-0E7F-15CF-07FD-FCB583F0B117}"
+	ProjectGUID="{CD85D4F0-0469-0BE4-0541-09637C629E6E}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -248,7 +248,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\QABugs;..\..\..\src\QABugs;..\..\..\drv\QADNaming;..\..\..\src\QADNaming;..\..\..\drv\QADraw;..\..\..\src\QADraw;..\..\..\drv\QANCollection;..\..\..\src\QANCollection;..\..\..\drv\QANewBRepNaming;..\..\..\src\QANewBRepNaming;..\..\..\drv\QANewDBRepNaming;..\..\..\src\QANewDBRepNaming;..\..\..\drv\QANewModTopOpe;..\..\..\src\QANewModTopOpe;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -343,7 +343,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\QABugs;..\..\..\src\QABugs;..\..\..\drv\QADNaming;..\..\..\src\QADNaming;..\..\..\drv\QADraw;..\..\..\src\QADraw;..\..\..\drv\QANCollection;..\..\..\src\QANCollection;..\..\..\drv\QANewBRepNaming;..\..\..\src\QANewBRepNaming;..\..\..\drv\QANewDBRepNaming;..\..\..\src\QANewDBRepNaming;..\..\..\drv\QANewModTopOpe;..\..\..\src\QANewModTopOpe;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -365,7 +365,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__QABugs_DLL;__QADNaming_DLL;__QADraw_DLL;__QANCollection_DLL;__QANewBRepNaming_DLL;__QANewDBRepNaming_DLL;__QANewModTopOpe_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"

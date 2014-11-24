@@ -1,6 +1,2 @@
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _BRepBuilderAPI_Command_HeaderFile
 #include <BRepBuilderAPI_Command.hxx>
-#endif

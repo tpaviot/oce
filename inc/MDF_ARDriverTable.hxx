@@ -6,46 +6,20 @@
 #ifndef _MDF_ARDriverTable_HeaderFile
 #define _MDF_ARDriverTable_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MDF_ARDriverTable_HeaderFile
 #include <Handle_MDF_ARDriverTable.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _MDF_TypeARDriverMap_HeaderFile
 #include <MDF_TypeARDriverMap.hxx>
-#endif
-#ifndef _MDF_TypeDriverListMapOfARDriverTable_HeaderFile
 #include <MDF_TypeDriverListMapOfARDriverTable.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_MDF_ARDriver_HeaderFile
 #include <Handle_MDF_ARDriver.hxx>
-#endif
-#ifndef _Handle_MDF_ARDriverHSequence_HeaderFile
 #include <Handle_MDF_ARDriverHSequence.hxx>
-#endif
-#ifndef _Handle_MDF_ListNodeOfDriverListOfARDriverTable_HeaderFile
 #include <Handle_MDF_ListNodeOfDriverListOfARDriverTable.hxx>
-#endif
-#ifndef _Handle_MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable_HeaderFile
 #include <Handle_MDF_DataMapNodeOfTypeDriverListMapOfARDriverTable.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
 class MDF_ARDriver;
 class MDF_ARDriverHSequence;
 class MDF_TypeARDriverMap;
@@ -59,20 +33,21 @@ class Standard_Type;
 
 
 
-class MDF_ARDriverTable : public MMgt_TShared {
+class MDF_ARDriverTable : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   MDF_ARDriverTable();
+  Standard_EXPORT MDF_ARDriverTable();
   
-  Standard_EXPORT     void SetDriver(const Handle(MDF_ARDriver)& anHDriver) ;
+  Standard_EXPORT   void SetDriver (const Handle(MDF_ARDriver)& anHDriver) ;
   
-  Standard_EXPORT     void SetDrivers(const Handle(MDF_ARDriverHSequence)& aDriverHSeq) ;
+  Standard_EXPORT   void SetDrivers (const Handle(MDF_ARDriverHSequence)& aDriverHSeq) ;
   
-  Standard_EXPORT    const MDF_TypeARDriverMap& GetDrivers(const Standard_Integer aVersion = 0) ;
+  Standard_EXPORT  const  MDF_TypeARDriverMap& GetDrivers (const Standard_Integer aVersion = 0) ;
   
-  Standard_EXPORT     Standard_Boolean GetDriver(const Handle(Standard_Type)& aType,Handle(MDF_ARDriver)& anHDriver,const Standard_Integer aVersion = 0) const;
+  Standard_EXPORT   Standard_Boolean GetDriver (const Handle(Standard_Type)& aType, Handle(MDF_ARDriver)& anHDriver, const Standard_Integer aVersion = 0)  const;
 
 
 
@@ -87,9 +62,9 @@ protected:
 private: 
 
 
-Standard_Integer myVersion;
-MDF_TypeARDriverMap myMap;
-MDF_TypeDriverListMapOfARDriverTable myMapOfLst;
+  Standard_Integer myVersion;
+  MDF_TypeARDriverMap myMap;
+  MDF_TypeDriverListMapOfARDriverTable myMapOfLst;
 
 
 };
@@ -98,7 +73,6 @@ MDF_TypeDriverListMapOfARDriverTable myMapOfLst;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MDF_ARDriverTable_HeaderFile

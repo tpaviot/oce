@@ -6,31 +6,15 @@
 #ifndef _XCAFDoc_ShapeMapTool_HeaderFile
 #define _XCAFDoc_ShapeMapTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_XCAFDoc_ShapeMapTool_HeaderFile
 #include <Handle_XCAFDoc_ShapeMapTool.hxx>
-#endif
 
-#ifndef _TopTools_IndexedMapOfShape_HeaderFile
 #include <TopTools_IndexedMapOfShape.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
 class Standard_GUID;
 class TDF_Label;
 class TopoDS_Shape;
@@ -39,32 +23,37 @@ class TDF_RelocationTable;
 class TopTools_IndexedMapOfShape;
 
 
-//! attribute containing map of sub shapes <br>
-class XCAFDoc_ShapeMapTool : public TDF_Attribute {
+//! attribute containing map of sub shapes
+class XCAFDoc_ShapeMapTool : public TDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
-  //! Create (if not exist) ShapeTool from XCAFDoc on <L>. <br>
-  Standard_EXPORT   static  Handle_XCAFDoc_ShapeMapTool Set(const TDF_Label& L) ;
-  //! Creates an empty tool <br>
-  Standard_EXPORT   XCAFDoc_ShapeMapTool();
-  //! Checks whether shape <sub> is subshape of shape stored on <br>
-//!          label shapeL <br>
-  Standard_EXPORT     Standard_Boolean IsSubShape(const TopoDS_Shape& sub) const;
-  //! Sets representation (TopoDS_Shape) for top-level shape <br>
-  Standard_EXPORT     void SetShape(const TopoDS_Shape& S) ;
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-  Standard_EXPORT    const Standard_GUID& ID() const;
+  //! Create (if not exist) ShapeTool from XCAFDoc on <L>.
+  Standard_EXPORT static   Handle(XCAFDoc_ShapeMapTool) Set (const TDF_Label& L) ;
   
-  Standard_EXPORT     void Restore(const Handle(TDF_Attribute)& with) ;
+  //! Creates an empty tool
+  Standard_EXPORT XCAFDoc_ShapeMapTool();
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  //! Checks whether shape <sub> is subshape of shape stored on
+  //! label shapeL
+  Standard_EXPORT   Standard_Boolean IsSubShape (const TopoDS_Shape& sub)  const;
   
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& into,const Handle(TDF_RelocationTable)& RT) const;
+  //! Sets representation (TopoDS_Shape) for top-level shape
+  Standard_EXPORT   void SetShape (const TopoDS_Shape& S) ;
   
-  Standard_EXPORT    const TopTools_IndexedMapOfShape& GetMap() const;
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
+  
+  Standard_EXPORT   void Restore (const Handle(TDF_Attribute)& with) ;
+  
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
+  
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& into, const Handle(TDF_RelocationTable)& RT)  const;
+  
+  Standard_EXPORT  const  TopTools_IndexedMapOfShape& GetMap()  const;
 
 
 
@@ -79,7 +68,7 @@ protected:
 private: 
 
 
-TopTools_IndexedMapOfShape myMap;
+  TopTools_IndexedMapOfShape myMap;
 
 
 };
@@ -88,7 +77,6 @@ TopTools_IndexedMapOfShape myMap;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XCAFDoc_ShapeMapTool_HeaderFile

@@ -2,16 +2,16 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{05D4A66C-0DC1-07A5-01C4-86BAF35BA8D0}</UniqueIdentifier>
+      <UniqueIdentifier>{A561FE9C-0E78-008F-09CA-8CBD1BD33E0C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XCAFApp">
-      <UniqueIdentifier>{A81E8BB6-154F-175B-1202-3DF3E05612F2}</UniqueIdentifier>
+      <UniqueIdentifier>{8EBD21F2-146D-0CDC-0964-C2AD25F5979D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XCAFDoc">
-      <UniqueIdentifier>{F5DCE9F7-15AC-0E74-0528-7947623D872D}</UniqueIdentifier>
+      <UniqueIdentifier>{B4D9F075-18F9-108A-0CC3-D81D0D5B57FE}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XCAFPrs">
-      <UniqueIdentifier>{75A11EEA-1043-0A47-0C27-B1FCD24D6340}</UniqueIdentifier>
+      <UniqueIdentifier>{EE094B7A-00E9-0AD6-177C-DED7EE3283A3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

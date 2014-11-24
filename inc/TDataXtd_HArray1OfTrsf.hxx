@@ -6,25 +6,13 @@
 #ifndef _TDataXtd_HArray1OfTrsf_HeaderFile
 #define _TDataXtd_HArray1OfTrsf_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDataXtd_HArray1OfTrsf_HeaderFile
 #include <Handle_TDataXtd_HArray1OfTrsf.hxx>
-#endif
 
-#ifndef _TDataXtd_Array1OfTrsf_HeaderFile
 #include <TDataXtd_Array1OfTrsf.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class TDataXtd_Array1OfTrsf;
 
 
 
-class TDataXtd_HArray1OfTrsf : public MMgt_TShared {
+class TDataXtd_HArray1OfTrsf : public MMgt_TShared
+{
 
 public:
 
   
-      TDataXtd_HArray1OfTrsf(const Standard_Integer Low,const Standard_Integer Up);
+    TDataXtd_HArray1OfTrsf(const Standard_Integer Low, const Standard_Integer Up);
   
-      TDataXtd_HArray1OfTrsf(const Standard_Integer Low,const Standard_Integer Up,const gp_Trsf& V);
+    TDataXtd_HArray1OfTrsf(const Standard_Integer Low, const Standard_Integer Up, const gp_Trsf& V);
   
-        void Init(const gp_Trsf& V) ;
+      void Init (const gp_Trsf& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const gp_Trsf& Value) ;
+      void SetValue (const Standard_Integer Index, const gp_Trsf& Value) ;
   
-       const gp_Trsf& Value(const Standard_Integer Index) const;
+     const  gp_Trsf& Value (const Standard_Integer Index)  const;
   
-        gp_Trsf& ChangeValue(const Standard_Integer Index) ;
+      gp_Trsf& ChangeValue (const Standard_Integer Index) ;
   
-       const TDataXtd_Array1OfTrsf& Array1() const;
+     const  TDataXtd_Array1OfTrsf& Array1()  const;
   
-        TDataXtd_Array1OfTrsf& ChangeArray1() ;
+      TDataXtd_Array1OfTrsf& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-TDataXtd_Array1OfTrsf myArray;
+  TDataXtd_Array1OfTrsf myArray;
 
 
 };
@@ -100,7 +89,6 @@ TDataXtd_Array1OfTrsf myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataXtd_HArray1OfTrsf_HeaderFile

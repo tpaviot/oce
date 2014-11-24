@@ -6,40 +6,18 @@
 #ifndef _CDM_Application_HeaderFile
 #define _CDM_Application_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_CDM_Application_HeaderFile
 #include <Handle_CDM_Application.hxx>
-#endif
 
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Handle_CDM_Document_HeaderFile
 #include <Handle_CDM_Document.hxx>
-#endif
-#ifndef _Handle_CDM_MetaData_HeaderFile
 #include <Handle_CDM_MetaData.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Resource_Manager_HeaderFile
 #include <Handle_Resource_Manager.hxx>
-#endif
-#ifndef _Handle_CDM_MessageDriver_HeaderFile
 #include <Handle_CDM_MessageDriver.hxx>
-#endif
-#ifndef _Standard_ExtString_HeaderFile
 #include <Standard_ExtString.hxx>
-#endif
 class CDM_Reference;
 class CDM_MetaData;
 class CDM_Document;
@@ -49,24 +27,29 @@ class TCollection_ExtendedString;
 
 
 
-class CDM_Application : public Standard_Transient {
+class CDM_Application : public Standard_Transient
+{
 
 public:
 
-  //! the manager returned by  this virtual  method will be <br>
-//!          used to search for Format`.Retrieval  resource items. <br>
-//! <br>
-  Standard_EXPORT   virtual  Handle_Resource_Manager Resources()  = 0;
-  //! By default returns a NullMessageDriver; <br>
-  Standard_EXPORT   virtual  Handle_CDM_MessageDriver MessageDriver() ;
-  //! this method is called before the update of a document. <br>
-//!         By default, writes in MessageDriver(). <br>
-  Standard_EXPORT   virtual  void BeginOfUpdate(const Handle(CDM_Document)& aDocument) ;
-  //! this method is called affter the update of a document. <br>
-//!         By default, writes in MessageDriver(). <br>
-  Standard_EXPORT   virtual  void EndOfUpdate(const Handle(CDM_Document)& aDocument,const Standard_Boolean Status,const TCollection_ExtendedString& ErrorString) ;
-  //! writes the string in the application MessagerDriver. <br>
-  Standard_EXPORT     void Write(const Standard_ExtString aString) ;
+  
+  //! the manager returned by  this virtual  method will be
+  //! used to search for Format`.Retrieval  resource items.
+  Standard_EXPORT virtual   Handle(Resource_Manager) Resources()  = 0;
+  
+  //! By default returns a NullMessageDriver;
+  Standard_EXPORT virtual   Handle(CDM_MessageDriver) MessageDriver() ;
+  
+  //! this method is called before the update of a document.
+  //! By default, writes in MessageDriver().
+  Standard_EXPORT virtual   void BeginOfUpdate (const Handle(CDM_Document)& aDocument) ;
+  
+  //! this method is called affter the update of a document.
+  //! By default, writes in MessageDriver().
+  Standard_EXPORT virtual   void EndOfUpdate (const Handle(CDM_Document)& aDocument, const Standard_Boolean Status, const TCollection_ExtendedString& ErrorString) ;
+  
+  //! writes the string in the application MessagerDriver.
+  Standard_EXPORT   void Write (const Standard_ExtString aString) ;
 
 
 friend class CDM_Reference;
@@ -78,18 +61,19 @@ friend class CDM_MetaData;
 protected:
 
   
-  Standard_EXPORT     void SetDocumentVersion(const Handle(CDM_Document)& aDocument,const Handle(CDM_MetaData)& aMetaData) const;
+  Standard_EXPORT   void SetDocumentVersion (const Handle(CDM_Document)& aDocument, const Handle(CDM_MetaData)& aMetaData)  const;
   
-  Standard_EXPORT     void SetReferenceCounter(const Handle(CDM_Document)& aDocument,const Standard_Integer aReferenceCounter) ;
+  Standard_EXPORT   void SetReferenceCounter (const Handle(CDM_Document)& aDocument, const Standard_Integer aReferenceCounter) ;
 
 
 
 private: 
 
   
-  Standard_EXPORT   virtual  Handle_CDM_Document Retrieve(const Handle(CDM_MetaData)& aMetaData,const Standard_Boolean UseStorageConfiguration)  = 0;
-  //! returns -1 if the metadata has no modification counter. <br>
-  Standard_EXPORT   virtual  Standard_Integer DocumentVersion(const Handle(CDM_MetaData)& aMetaData)  = 0;
+  Standard_EXPORT virtual   Handle(CDM_Document) Retrieve (const Handle(CDM_MetaData)& aMetaData, const Standard_Boolean UseStorageConfiguration)  = 0;
+  
+  //! returns -1 if the metadata has no modification counter.
+  Standard_EXPORT virtual   Standard_Integer DocumentVersion (const Handle(CDM_MetaData)& aMetaData)  = 0;
 
 
 
@@ -99,7 +83,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _CDM_Application_HeaderFile

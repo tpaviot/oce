@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKXSDRAW"
-	ProjectGUID="{67DD9450-112A-0087-16CB-A821BA3E4A92}"
+	ProjectGUID="{74E129C6-10EB-083E-066A-3525A239D22D}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -248,7 +248,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\XSDRAW;..\..\..\src\XSDRAW;..\..\..\drv\XSDRAWIGES;..\..\..\src\XSDRAWIGES;..\..\..\drv\XSDRAWSTEP;..\..\..\src\XSDRAWSTEP;..\..\..\drv\XSDRAWSTLVRML;..\..\..\src\XSDRAWSTLVRML;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__XSDRAW_DLL;__XSDRAWIGES_DLL;__XSDRAWSTEP_DLL;__XSDRAWSTLVRML_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__XSDRAW_DLL;__XSDRAWIGES_DLL;__XSDRAWSTEP_DLL;__XSDRAWSTLVRML_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__XSDRAW_DLL;__XSDRAWIGES_DLL;__XSDRAWSTEP_DLL;__XSDRAWSTLVRML_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__XSDRAW_DLL;__XSDRAWIGES_DLL;__XSDRAWSTEP_DLL;__XSDRAWSTLVRML_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -343,7 +343,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\XSDRAW;..\..\..\src\XSDRAW;..\..\..\drv\XSDRAWIGES;..\..\..\src\XSDRAWIGES;..\..\..\drv\XSDRAWSTEP;..\..\..\src\XSDRAWSTEP;..\..\..\drv\XSDRAWSTLVRML;..\..\..\src\XSDRAWSTLVRML;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__XSDRAW_DLL;__XSDRAWIGES_DLL;__XSDRAWSTEP_DLL;__XSDRAWSTLVRML_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__XSDRAW_DLL;__XSDRAWIGES_DLL;__XSDRAWSTEP_DLL;__XSDRAWSTLVRML_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -365,7 +365,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__XSDRAW_DLL;__XSDRAWIGES_DLL;__XSDRAWSTEP_DLL;__XSDRAWSTLVRML_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__XSDRAW_DLL;__XSDRAWIGES_DLL;__XSDRAWSTEP_DLL;__XSDRAWSTLVRML_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"

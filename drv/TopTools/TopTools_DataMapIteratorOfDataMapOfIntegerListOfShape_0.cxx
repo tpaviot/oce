@@ -5,21 +5,11 @@
 
 #include <TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _TopTools_DataMapOfIntegerListOfShape_HeaderFile
 #include <TopTools_DataMapOfIntegerListOfShape.hxx>
-#endif
-#ifndef _TopTools_DataMapNodeOfDataMapOfIntegerListOfShape_HeaderFile
 #include <TopTools_DataMapNodeOfDataMapOfIntegerListOfShape.hxx>
-#endif
  
 
 #define TheKey Standard_Integer

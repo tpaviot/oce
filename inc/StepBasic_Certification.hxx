@@ -6,50 +6,47 @@
 #ifndef _StepBasic_Certification_HeaderFile
 #define _StepBasic_Certification_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_Certification_HeaderFile
 #include <Handle_StepBasic_Certification.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepBasic_CertificationType_HeaderFile
 #include <Handle_StepBasic_CertificationType.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepBasic_CertificationType;
 
 
-//! Representation of STEP entity Certification <br>
-class StepBasic_Certification : public MMgt_TShared {
+//! Representation of STEP entity Certification
+class StepBasic_Certification : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepBasic_Certification();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(TCollection_HAsciiString)& aPurpose,const Handle(StepBasic_CertificationType)& aKind) ;
-  //! Returns field Name <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Name() const;
-  //! Set field Name <br>
-  Standard_EXPORT     void SetName(const Handle(TCollection_HAsciiString)& Name) ;
-  //! Returns field Purpose <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Purpose() const;
-  //! Set field Purpose <br>
-  Standard_EXPORT     void SetPurpose(const Handle(TCollection_HAsciiString)& Purpose) ;
-  //! Returns field Kind <br>
-  Standard_EXPORT     Handle_StepBasic_CertificationType Kind() const;
-  //! Set field Kind <br>
-  Standard_EXPORT     void SetKind(const Handle(StepBasic_CertificationType)& Kind) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepBasic_Certification();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(TCollection_HAsciiString)& aPurpose, const Handle(StepBasic_CertificationType)& aKind) ;
+  
+  //! Returns field Name
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Name()  const;
+  
+  //! Set field Name
+  Standard_EXPORT   void SetName (const Handle(TCollection_HAsciiString)& Name) ;
+  
+  //! Returns field Purpose
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Purpose()  const;
+  
+  //! Set field Purpose
+  Standard_EXPORT   void SetPurpose (const Handle(TCollection_HAsciiString)& Purpose) ;
+  
+  //! Returns field Kind
+  Standard_EXPORT   Handle(StepBasic_CertificationType) Kind()  const;
+  
+  //! Set field Kind
+  Standard_EXPORT   void SetKind (const Handle(StepBasic_CertificationType)& Kind) ;
 
 
 
@@ -64,9 +61,9 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString theName;
-Handle_TCollection_HAsciiString thePurpose;
-Handle_StepBasic_CertificationType theKind;
+  Handle(TCollection_HAsciiString) theName;
+  Handle(TCollection_HAsciiString) thePurpose;
+  Handle(StepBasic_CertificationType) theKind;
 
 
 };
@@ -75,7 +72,6 @@ Handle_StepBasic_CertificationType theKind;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_Certification_HeaderFile

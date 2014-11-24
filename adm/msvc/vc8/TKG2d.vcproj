@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKG2d"
-	ProjectGUID="{3EAC3FC9-08E9-0F9A-0112-4A2E79311457}"
+	ProjectGUID="{BD756BE6-16CA-17FB-0626-5A7F0A4A9967}"
 	>
 	<Platforms>
 		<Platform
@@ -63,6 +63,7 @@
 				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
+				EnableEnhancedInstructionSet="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -163,6 +164,7 @@
 				DebugInformationFormat="3"
 				CompileAs="0"
 				DisableSpecificWarnings="4996"
+				EnableEnhancedInstructionSet="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -187,6 +189,7 @@
 				ProgramDatabaseFile="..\..\..\win32\vc8\bind\TKG2d.pdb"
 				SubSystem="2"
 				ImportLibrary="..\..\..\win32\vc8\libd\TKG2d.lib"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -248,7 +251,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Geom2d;..\..\..\src\Geom2d;..\..\..\drv\LProp;..\..\..\src\LProp;..\..\..\drv\TColGeom2d;..\..\..\src\TColGeom2d;..\..\..\drv\Adaptor2d;..\..\..\src\Adaptor2d;..\..\..\drv\Geom2dLProp;..\..\..\src\Geom2dLProp;..\..\..\drv\Geom2dAdaptor;..\..\..\src\Geom2dAdaptor;..\..\..\drv\GProp;..\..\..\src\GProp;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Geom2d_DLL;__LProp_DLL;__TColGeom2d_DLL;__Adaptor2d_DLL;__Geom2dLProp_DLL;__Geom2dAdaptor_DLL;__GProp_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Geom2d_DLL;__LProp_DLL;__TColGeom2d_DLL;__Adaptor2d_DLL;__Geom2dLProp_DLL;__Geom2dAdaptor_DLL;__GProp_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +271,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Geom2d_DLL;__LProp_DLL;__TColGeom2d_DLL;__Adaptor2d_DLL;__Geom2dLProp_DLL;__Geom2dAdaptor_DLL;__GProp_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Geom2d_DLL;__LProp_DLL;__TColGeom2d_DLL;__Adaptor2d_DLL;__Geom2dLProp_DLL;__Geom2dAdaptor_DLL;__GProp_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -276,7 +279,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKernel.lib TKMath.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKernel.lib TKMath.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bin\TKG2d.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -284,7 +287,7 @@
 				ProgramDatabaseFile=".\..\..\..\win64\vc8\bin\TKG2d.pdb"
 				SubSystem="2"
 				ImportLibrary="..\..\..\win64\vc8\lib\TKG2d.lib"
-				TargetMachine="X64"
+				TargetMachine="17"
 			/>
 			<Tool
  				Name="VCALinkTool"
@@ -347,7 +350,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Geom2d;..\..\..\src\Geom2d;..\..\..\drv\LProp;..\..\..\src\LProp;..\..\..\drv\TColGeom2d;..\..\..\src\TColGeom2d;..\..\..\drv\Adaptor2d;..\..\..\src\Adaptor2d;..\..\..\drv\Geom2dLProp;..\..\..\src\Geom2dLProp;..\..\..\drv\Geom2dAdaptor;..\..\..\src\Geom2dAdaptor;..\..\..\drv\GProp;..\..\..\src\GProp;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Geom2d_DLL;__LProp_DLL;__TColGeom2d_DLL;__Adaptor2d_DLL;__Geom2dLProp_DLL;__Geom2dAdaptor_DLL;__GProp_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Geom2d_DLL;__LProp_DLL;__TColGeom2d_DLL;__Adaptor2d_DLL;__Geom2dLProp_DLL;__Geom2dAdaptor_DLL;__GProp_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -369,7 +372,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Geom2d_DLL;__LProp_DLL;__TColGeom2d_DLL;__Adaptor2d_DLL;__Geom2dLProp_DLL;__Geom2dAdaptor_DLL;__GProp_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Geom2d_DLL;__LProp_DLL;__TColGeom2d_DLL;__Adaptor2d_DLL;__Geom2dLProp_DLL;__Geom2dAdaptor_DLL;__GProp_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -377,7 +380,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKernel.lib TKMath.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKernel.lib TKMath.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bind\TKG2d.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -386,7 +389,7 @@
 				ProgramDatabaseFile="..\..\..\win64\vc8\bind\TKG2d.pdb"
 				SubSystem="2"
 				ImportLibrary="..\..\..\win64\vc8\libd\TKG2d.lib"
-				TargetMachine="X64"
+				TargetMachine="17"
 			/>
 			<Tool
 				Name="VCALinkTool"

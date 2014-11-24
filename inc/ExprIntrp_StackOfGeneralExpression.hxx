@@ -6,31 +6,15 @@
 #ifndef _ExprIntrp_StackOfGeneralExpression_HeaderFile
 #define _ExprIntrp_StackOfGeneralExpression_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_Expr_GeneralExpression_HeaderFile
 #include <Handle_Expr_GeneralExpression.hxx>
-#endif
-#ifndef _Handle_ExprIntrp_ListNodeOfStackOfGeneralExpression_HeaderFile
 #include <Handle_ExprIntrp_ListNodeOfStackOfGeneralExpression.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class ExprIntrp_ListIteratorOfStackOfGeneralExpression;
 class Expr_GeneralExpression;
@@ -38,63 +22,63 @@ class ExprIntrp_ListNodeOfStackOfGeneralExpression;
 
 
 
-class ExprIntrp_StackOfGeneralExpression  {
+class ExprIntrp_StackOfGeneralExpression 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   ExprIntrp_StackOfGeneralExpression();
+  Standard_EXPORT ExprIntrp_StackOfGeneralExpression();
   
-  Standard_EXPORT   ExprIntrp_StackOfGeneralExpression(const ExprIntrp_StackOfGeneralExpression& Other);
+  Standard_EXPORT ExprIntrp_StackOfGeneralExpression(const ExprIntrp_StackOfGeneralExpression& Other);
   
-  Standard_EXPORT     void Assign(const ExprIntrp_StackOfGeneralExpression& Other) ;
-    void operator=(const ExprIntrp_StackOfGeneralExpression& Other) 
+  Standard_EXPORT   void Assign (const ExprIntrp_StackOfGeneralExpression& Other) ;
+  void operator= (const ExprIntrp_StackOfGeneralExpression& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~ExprIntrp_StackOfGeneralExpression()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const Handle(Expr_GeneralExpression)& I) ;
+  Standard_EXPORT   void Prepend (const Handle(Expr_GeneralExpression)& I) ;
   
-  Standard_EXPORT     void Prepend(const Handle(Expr_GeneralExpression)& I,ExprIntrp_ListIteratorOfStackOfGeneralExpression& theIt) ;
+  Standard_EXPORT   void Prepend (const Handle(Expr_GeneralExpression)& I, ExprIntrp_ListIteratorOfStackOfGeneralExpression& theIt) ;
   
-  Standard_EXPORT     void Prepend(ExprIntrp_StackOfGeneralExpression& Other) ;
+  Standard_EXPORT   void Prepend (ExprIntrp_StackOfGeneralExpression& Other) ;
   
-  Standard_EXPORT     void Append(const Handle(Expr_GeneralExpression)& I) ;
+  Standard_EXPORT   void Append (const Handle(Expr_GeneralExpression)& I) ;
   
-  Standard_EXPORT     void Append(const Handle(Expr_GeneralExpression)& I,ExprIntrp_ListIteratorOfStackOfGeneralExpression& theIt) ;
+  Standard_EXPORT   void Append (const Handle(Expr_GeneralExpression)& I, ExprIntrp_ListIteratorOfStackOfGeneralExpression& theIt) ;
   
-  Standard_EXPORT     void Append(ExprIntrp_StackOfGeneralExpression& Other) ;
+  Standard_EXPORT   void Append (ExprIntrp_StackOfGeneralExpression& Other) ;
   
-  Standard_EXPORT     Handle_Expr_GeneralExpression& First() const;
+  Standard_EXPORT   Handle(Expr_GeneralExpression)& First()  const;
   
-  Standard_EXPORT     Handle_Expr_GeneralExpression& Last() const;
+  Standard_EXPORT   Handle(Expr_GeneralExpression)& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(ExprIntrp_ListIteratorOfStackOfGeneralExpression& It) ;
+  Standard_EXPORT   void Remove (ExprIntrp_ListIteratorOfStackOfGeneralExpression& It) ;
   
-  Standard_EXPORT     void InsertBefore(const Handle(Expr_GeneralExpression)& I,ExprIntrp_ListIteratorOfStackOfGeneralExpression& It) ;
+  Standard_EXPORT   void InsertBefore (const Handle(Expr_GeneralExpression)& I, ExprIntrp_ListIteratorOfStackOfGeneralExpression& It) ;
   
-  Standard_EXPORT     void InsertBefore(ExprIntrp_StackOfGeneralExpression& Other,ExprIntrp_ListIteratorOfStackOfGeneralExpression& It) ;
+  Standard_EXPORT   void InsertBefore (ExprIntrp_StackOfGeneralExpression& Other, ExprIntrp_ListIteratorOfStackOfGeneralExpression& It) ;
   
-  Standard_EXPORT     void InsertAfter(const Handle(Expr_GeneralExpression)& I,ExprIntrp_ListIteratorOfStackOfGeneralExpression& It) ;
+  Standard_EXPORT   void InsertAfter (const Handle(Expr_GeneralExpression)& I, ExprIntrp_ListIteratorOfStackOfGeneralExpression& It) ;
   
-  Standard_EXPORT     void InsertAfter(ExprIntrp_StackOfGeneralExpression& Other,ExprIntrp_ListIteratorOfStackOfGeneralExpression& It) ;
+  Standard_EXPORT   void InsertAfter (ExprIntrp_StackOfGeneralExpression& Other, ExprIntrp_ListIteratorOfStackOfGeneralExpression& It) ;
 
 
 friend class ExprIntrp_ListIteratorOfStackOfGeneralExpression;
-
 
 
 protected:
@@ -107,13 +91,13 @@ private:
 
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
 
-#define Item Handle_Expr_GeneralExpression
+#define Item Handle(Expr_GeneralExpression)
 #define Item_hxx <Expr_GeneralExpression.hxx>
 #define TCollection_ListNode ExprIntrp_ListNodeOfStackOfGeneralExpression
 #define TCollection_ListNode_hxx <ExprIntrp_ListNodeOfStackOfGeneralExpression.hxx>
@@ -138,7 +122,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ExprIntrp_StackOfGeneralExpression_HeaderFile

@@ -6,43 +6,19 @@
 #ifndef _IGESDefs_AttributeTable_HeaderFile
 #define _IGESDefs_AttributeTable_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESDefs_AttributeTable_HeaderFile
 #include <Handle_IGESDefs_AttributeTable.hxx>
-#endif
 
-#ifndef _Handle_TColStd_HArray2OfTransient_HeaderFile
 #include <Handle_TColStd_HArray2OfTransient.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Handle_IGESDefs_AttributeDef_HeaderFile
 #include <Handle_IGESDefs_AttributeDef.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TColStd_HArray2OfTransient;
 class Standard_OutOfRange;
 class Standard_NullObject;
@@ -52,54 +28,71 @@ class TCollection_HAsciiString;
 class IGESData_IGESEntity;
 
 
-//! defines IGES Attribute Table, Type <422> Form <0, 1> <br>
-//!          in package IGESDefs <br>
-//!          This class is used to represent an occurence of <br>
-//!          Attribute Table. This Class may be independent <br>
-//!          or dependent or pointed at by other Entities. <br>
-class IGESDefs_AttributeTable : public IGESData_IGESEntity {
+//! defines IGES Attribute Table, Type <422> Form <0, 1>
+//! in package IGESDefs
+//! This class is used to represent an occurence of
+//! Attribute Table. This Class may be independent
+//! or dependent or pointed at by other Entities.
+class IGESDefs_AttributeTable : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESDefs_AttributeTable();
-  //! This method is used to set the fields of the class <br>
-//!           AttributeTable <br>
-//!       - attributes : Attribute instances, created as <br>
-//!          (1,NbAttributes,1,NbRows) <br>
-//!       - NbRows = 1 is a particular case (Form 0) <br>
-  Standard_EXPORT     void Init(const Handle(TColStd_HArray2OfTransient)& attributes) ;
-  //! Sets a Definition as Structure information <br>
-//!           (works by calling InitMisc) <br>
-  Standard_EXPORT     void SetDefinition(const Handle(IGESDefs_AttributeDef)& def) ;
-  //! Return the Structure information in Directory Entry, <br>
-//! casted as an AttributeDef <br>
-  Standard_EXPORT     Handle_IGESDefs_AttributeDef Definition() const;
-  //! returns Number of Rows. Remark that it is always 1 if Form = 0 <br>
-//! It means that the list of Attributes (by their number, and for each <br>
-//! one its type and ValueCount) is repeated <NbRows> times <br>
-  Standard_EXPORT     Standard_Integer NbRows() const;
-  //! returns Number of Attributes <br>
-  Standard_EXPORT     Standard_Integer NbAttributes() const;
-  //! returns the Type of an Attribute, given its No. : it is read in the <br>
-//! Definition. <br>
-//!  (1 : Integer, 2 : Real, 3 : String, 4 : Entity, 6 : Logical) <br>
-  Standard_EXPORT     Standard_Integer DataType(const Standard_Integer Atnum) const;
-  //! returns the Count of Value for an Attribute, given its No. : <br>
-//! it is read in the Definition. <br>
-  Standard_EXPORT     Standard_Integer ValueCount(const Standard_Integer Atnum) const;
+  Standard_EXPORT IGESDefs_AttributeTable();
   
-  Standard_EXPORT     Handle_Standard_Transient AttributeList(const Standard_Integer Attribnum,const Standard_Integer Rownum) const;
-  //! Returns Attribute Value <AtNum, Rownum, rank ValNum> as an Integer <br>//!   Error if Indices out of Range, or no Value defined, or not an Integer <br>
-  Standard_EXPORT     Standard_Integer AttributeAsInteger(const Standard_Integer AtNum,const Standard_Integer Rownum,const Standard_Integer ValNum) const;
-  //! Returns Attribute Value <AtNum, Rownum, rank ValNum> as a Real <br>//!   Error if Indices out of Range, or no Value defined, or not a Real <br>
-  Standard_EXPORT     Standard_Real AttributeAsReal(const Standard_Integer AtNum,const Standard_Integer Rownum,const Standard_Integer ValNum) const;
-  //! Returns Attribute Value <AtNum, Rownum, rank ValNum> as an Integer <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString AttributeAsString(const Standard_Integer AtNum,const Standard_Integer Rownum,const Standard_Integer ValNum) const;
-  //! Returns Attribute Value <AtNum, Rownum, rank ValNum> as an Entity <br>//!   Error if Indices out of Range, or no Value defined, or not an Entity <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity AttributeAsEntity(const Standard_Integer AtNum,const Standard_Integer Rownum,const Standard_Integer ValNum) const;
-  //! Returns Attribute Value <AtNum, Rownum, rank ValNum> as a Boolean <br>//!   Error if Indices out of Range, or no Value defined, or not a Logical <br>
-  Standard_EXPORT     Standard_Boolean AttributeAsLogical(const Standard_Integer AtNum,const Standard_Integer Rownum,const Standard_Integer ValNum) const;
+  //! This method is used to set the fields of the class
+  //! AttributeTable
+  //! - attributes : Attribute instances, created as
+  //! (1,NbAttributes,1,NbRows)
+  //! - NbRows = 1 is a particular case (Form 0)
+  Standard_EXPORT   void Init (const Handle(TColStd_HArray2OfTransient)& attributes) ;
+  
+  //! Sets a Definition as Structure information
+  //! (works by calling InitMisc)
+  Standard_EXPORT   void SetDefinition (const Handle(IGESDefs_AttributeDef)& def) ;
+  
+  //! Return the Structure information in Directory Entry,
+  //! casted as an AttributeDef
+  Standard_EXPORT   Handle(IGESDefs_AttributeDef) Definition()  const;
+  
+  //! returns Number of Rows. Remark that it is always 1 if Form = 0
+  //! It means that the list of Attributes (by their number, and for each
+  //! one its type and ValueCount) is repeated <NbRows> times
+  Standard_EXPORT   Standard_Integer NbRows()  const;
+  
+  //! returns Number of Attributes
+  Standard_EXPORT   Standard_Integer NbAttributes()  const;
+  
+  //! returns the Type of an Attribute, given its No. : it is read in the
+  //! Definition.
+  //! (1 : Integer, 2 : Real, 3 : String, 4 : Entity, 6 : Logical)
+  Standard_EXPORT   Standard_Integer DataType (const Standard_Integer Atnum)  const;
+  
+  //! returns the Count of Value for an Attribute, given its No. :
+  //! it is read in the Definition.
+  Standard_EXPORT   Standard_Integer ValueCount (const Standard_Integer Atnum)  const;
+  
+  Standard_EXPORT   Handle(Standard_Transient) AttributeList (const Standard_Integer Attribnum, const Standard_Integer Rownum)  const;
+  
+  //! Returns Attribute Value <AtNum, Rownum, rank ValNum> as an Integer
+  //! Error if Indices out of Range, or no Value defined, or not an Integer
+  Standard_EXPORT   Standard_Integer AttributeAsInteger (const Standard_Integer AtNum, const Standard_Integer Rownum, const Standard_Integer ValNum)  const;
+  
+  //! Returns Attribute Value <AtNum, Rownum, rank ValNum> as a Real
+  //! Error if Indices out of Range, or no Value defined, or not a Real
+  Standard_EXPORT   Standard_Real AttributeAsReal (const Standard_Integer AtNum, const Standard_Integer Rownum, const Standard_Integer ValNum)  const;
+  
+  //! Returns Attribute Value <AtNum, Rownum, rank ValNum> as an Integer
+  Standard_EXPORT   Handle(TCollection_HAsciiString) AttributeAsString (const Standard_Integer AtNum, const Standard_Integer Rownum, const Standard_Integer ValNum)  const;
+  
+  //! Returns Attribute Value <AtNum, Rownum, rank ValNum> as an Entity
+  //! Error if Indices out of Range, or no Value defined, or not an Entity
+  Standard_EXPORT   Handle(IGESData_IGESEntity) AttributeAsEntity (const Standard_Integer AtNum, const Standard_Integer Rownum, const Standard_Integer ValNum)  const;
+  
+  //! Returns Attribute Value <AtNum, Rownum, rank ValNum> as a Boolean
+  //! Error if Indices out of Range, or no Value defined, or not a Logical
+  Standard_EXPORT   Standard_Boolean AttributeAsLogical (const Standard_Integer AtNum, const Standard_Integer Rownum, const Standard_Integer ValNum)  const;
 
 
 
@@ -114,7 +107,7 @@ protected:
 private: 
 
 
-Handle_TColStd_HArray2OfTransient theAttributes;
+  Handle(TColStd_HArray2OfTransient) theAttributes;
 
 
 };
@@ -123,7 +116,6 @@ Handle_TColStd_HArray2OfTransient theAttributes;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESDefs_AttributeTable_HeaderFile

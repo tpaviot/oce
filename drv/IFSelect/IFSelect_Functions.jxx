@@ -1,15 +1,5 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _IFSelect_WorkSession_HeaderFile
 #include <IFSelect_WorkSession.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfTransient_HeaderFile
 #include <TColStd_HSequenceOfTransient.hxx>
-#endif
-#ifndef _IFSelect_Dispatch_HeaderFile
 #include <IFSelect_Dispatch.hxx>
-#endif
-#ifndef _IFSelect_Functions_HeaderFile
 #include <IFSelect_Functions.hxx>
-#endif

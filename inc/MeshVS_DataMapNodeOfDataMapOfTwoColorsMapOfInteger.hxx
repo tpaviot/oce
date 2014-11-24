@@ -6,28 +6,14 @@
 #ifndef _MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger_HeaderFile
 #define _MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger_HeaderFile
 #include <Handle_MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger.hxx>
-#endif
 
-#ifndef _MeshVS_TwoColors_HeaderFile
 #include <MeshVS_TwoColors.hxx>
-#endif
-#ifndef _TColStd_MapOfInteger_HeaderFile
 #include <TColStd_MapOfInteger.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TColStd_MapOfInteger;
 class MeshVS_TwoColorsHasher;
 class MeshVS_DataMapOfTwoColorsMapOfInteger;
@@ -35,16 +21,17 @@ class MeshVS_DataMapIteratorOfDataMapOfTwoColorsMapOfInteger;
 
 
 
-class MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger : public TCollection_MapNode {
+class MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger : public TCollection_MapNode
+{
 
 public:
 
   
-      MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger(const MeshVS_TwoColors& K,const TColStd_MapOfInteger& I,const TCollection_MapNodePtr& n);
+    MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger(const MeshVS_TwoColors& K, const TColStd_MapOfInteger& I, const TCollection_MapNodePtr& n);
   
-        MeshVS_TwoColors& Key() const;
+      MeshVS_TwoColors& Key()  const;
   
-        TColStd_MapOfInteger& Value() const;
+      TColStd_MapOfInteger& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-MeshVS_TwoColors myKey;
-TColStd_MapOfInteger myValue;
+  MeshVS_TwoColors myKey;
+  TColStd_MapOfInteger myValue;
 
 
 };
@@ -98,7 +85,6 @@ TColStd_MapOfInteger myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger_HeaderFile

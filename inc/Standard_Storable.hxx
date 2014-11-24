@@ -6,60 +6,52 @@
 #ifndef _Standard_Storable_HeaderFile
 #define _Standard_Storable_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
 #include <Standard_PrimitiveTypes.hxx>
-#endif
 
 
 Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(Standard_Storable);
 
-//! This class Storable is an abstract class that allows built-in <br>
-//!          primitive types to be extended. They are not themselves <br>
-//!          persistent, but are known by the database, therefore can be used <br>
-//!         to define the internal representation of persistent objects. <br>
-//!         Otherwise, all the fields of subclasses of Object MUST inherit <br>
-//!         from Storable. <br>
-//! <br>
-//!         This class provides also a framework for copying, comparing and <br>
-//!         printing. <br>
-class Standard_Storable  {
+//! This class Storable is an abstract class that allows built-in
+//! primitive types to be extended. They are not themselves
+//! persistent, but are known by the database, therefore can be used
+//! to define the internal representation of persistent objects.
+//! Otherwise, all the fields of subclasses of Object MUST inherit
+//! from Storable.
+//!
+//! This class provides also a framework for copying, comparing and
+//! printing.
+class Standard_Storable 
+{
 
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   virtual  void Delete() ;
+  Standard_EXPORT virtual   void Delete() ;
 Standard_EXPORT virtual ~Standard_Storable(){Delete();}
-  //! Returns a hashed value denoting <me>. This value is in <br>
-//!         the range 1..<Upper>. <br>
-  Standard_EXPORT   virtual  Standard_Integer HashCode(const Standard_Integer Upper) const;
-  //! Returns true if the direct contents of <me> and <br>
-//!         <Other> are memberwise equal. <br>
-  Standard_EXPORT     Standard_Boolean IsEqual(const Standard_Storable& Other) const;
-    Standard_Boolean operator ==(const Standard_Storable& Other) const
+  
+  //! Returns a hashed value denoting <me>. This value is in
+  //! the range 1..<Upper>.
+  Standard_EXPORT virtual   Standard_Integer HashCode (const Standard_Integer Upper)  const;
+  
+  //! Returns true if the direct contents of <me> and
+  //! <Other> are memberwise equal.
+  Standard_EXPORT   Standard_Boolean IsEqual (const Standard_Storable& Other)  const;
+  Standard_Boolean operator == (const Standard_Storable& Other)  const
 {
   return IsEqual(Other);
 }
-  //! Returns true if the Deep contents of <me> and <br>
-//!         <Other> are memberwise equal. <br>
-  Standard_EXPORT     Standard_Boolean IsSimilar(const Standard_Storable& Other) const;
+  
+  //! Returns true if the Deep contents of <me> and
+  //! <Other> are memberwise equal.
+  Standard_EXPORT   Standard_Boolean IsSimilar (const Standard_Storable& Other)  const;
 
 
 
@@ -79,7 +71,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 inline Standard_Integer HashCode(const Standard_Storable& me,const Standard_Integer Upper) {
  return me.HashCode(Upper);
 }
@@ -90,4 +81,4 @@ inline Standard_Boolean IsSimilar(const Standard_Storable& me,const Standard_Sto
 
 
 
-#endif
+#endif // _Standard_Storable_HeaderFile

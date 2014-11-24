@@ -6,34 +6,16 @@
 #ifndef _StepData_GlobalNodeOfWriterLib_HeaderFile
 #define _StepData_GlobalNodeOfWriterLib_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepData_GlobalNodeOfWriterLib_HeaderFile
 #include <Handle_StepData_GlobalNodeOfWriterLib.hxx>
-#endif
 
-#ifndef _Handle_StepData_ReadWriteModule_HeaderFile
 #include <Handle_StepData_ReadWriteModule.hxx>
-#endif
-#ifndef _Handle_StepData_Protocol_HeaderFile
 #include <Handle_StepData_Protocol.hxx>
-#endif
-#ifndef _Handle_StepData_GlobalNodeOfWriterLib_HeaderFile
 #include <Handle_StepData_GlobalNodeOfWriterLib.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepData_NodeOfWriterLib_HeaderFile
 #include <Handle_StepData_NodeOfWriterLib.hxx>
-#endif
 class StepData_ReadWriteModule;
 class StepData_Protocol;
 class Standard_Transient;
@@ -42,20 +24,21 @@ class StepData_NodeOfWriterLib;
 
 
 
-class StepData_GlobalNodeOfWriterLib : public Standard_Transient {
+class StepData_GlobalNodeOfWriterLib : public Standard_Transient
+{
 
 public:
 
   
-  Standard_EXPORT   StepData_GlobalNodeOfWriterLib();
+  Standard_EXPORT StepData_GlobalNodeOfWriterLib();
   
-  Standard_EXPORT     void Add(const Handle(StepData_ReadWriteModule)& amodule,const Handle(StepData_Protocol)& aprotocol) ;
+  Standard_EXPORT   void Add (const Handle(StepData_ReadWriteModule)& amodule, const Handle(StepData_Protocol)& aprotocol) ;
   
-  Standard_EXPORT    const Handle_StepData_ReadWriteModule& Module() const;
+  Standard_EXPORT  const  Handle(StepData_ReadWriteModule)& Module()  const;
   
-  Standard_EXPORT    const Handle_StepData_Protocol& Protocol() const;
+  Standard_EXPORT  const  Handle(StepData_Protocol)& Protocol()  const;
   
-  Standard_EXPORT    const Handle_StepData_GlobalNodeOfWriterLib& Next() const;
+  Standard_EXPORT  const  Handle(StepData_GlobalNodeOfWriterLib)& Next()  const;
 
 
 
@@ -70,9 +53,9 @@ protected:
 private: 
 
 
-Handle_StepData_ReadWriteModule themod;
-Handle_StepData_Protocol theprot;
-Handle_StepData_GlobalNodeOfWriterLib thenext;
+  Handle(StepData_ReadWriteModule) themod;
+  Handle(StepData_Protocol) theprot;
+  Handle(StepData_GlobalNodeOfWriterLib) thenext;
 
 
 };
@@ -81,7 +64,6 @@ Handle_StepData_GlobalNodeOfWriterLib thenext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepData_GlobalNodeOfWriterLib_HeaderFile

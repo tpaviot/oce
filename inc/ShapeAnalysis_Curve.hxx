@@ -6,31 +6,15 @@
 #ifndef _ShapeAnalysis_Curve_HeaderFile
 #define _ShapeAnalysis_Curve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Geom_Curve;
 class gp_Pnt;
 class Adaptor3d_Curve;
@@ -42,95 +26,110 @@ class TColgp_SequenceOfPnt2d;
 class TColgp_SequenceOfPnt;
 
 
-//! Analyzing tool for 2d or 3d curve. <br>
-//!          Computes parameters of projected point onto a curve. <br>
-class ShapeAnalysis_Curve  {
+//! Analyzing tool for 2d or 3d curve.
+//! Computes parameters of projected point onto a curve.
+class ShapeAnalysis_Curve 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Projects a Point on a Curve. <br>
-//!           Computes the projected point and its parameter on the curve. <br>
-//!           <preci> is used as 3d precision (hence, 0 will produce <br>
-//!           reject unless exact confusion). <br>
-//!           The number of iterations is limited. <br>
-//!           If AdjustToEnds is True, point will be adjusted to the end <br>
-//!           of the curve if distance is less than <preci> <br>
-//! <br>
-//!           Returned value is the distance between the given point and <br>
-//!           computed one. <br>
-  Standard_EXPORT     Standard_Real Project(const Handle(Geom_Curve)& C3D,const gp_Pnt& P3D,const Standard_Real preci,gp_Pnt& proj,Standard_Real& param,const Standard_Boolean AdjustToEnds = Standard_True) const;
-  //! Projects a Point on a Curve. <br>
-//!           Computes the projected point and its parameter on the curve. <br>
-//!           <preci> is used as 3d precision (hence, 0 will produce <br>
-//!           reject unless exact confusion). <br>
-//!           The number of iterations is limited. <br>
-//! <br>
-//!           Returned value is the distance between the given point and <br>
-//!           computed one. <br>
-  Standard_EXPORT     Standard_Real Project(const Adaptor3d_Curve& C3D,const gp_Pnt& P3D,const Standard_Real preci,gp_Pnt& proj,Standard_Real& param,const Standard_Boolean AdjustToEnds = Standard_True) const;
-  //! Projects a Point on a Curve, but parameters are limited <br>
-//!           between <cf> and <cl>. <br>
-//!           The range [cf, cl] is extended with help of Adaptor3d on the <br>
-//!           basis of 3d precision <preci>. <br>
-//!           If AdjustToEnds is True, point will be adjusted to the end <br>
-//!           of the curve if distance is less than <preci> <br>
-  Standard_EXPORT     Standard_Real Project(const Handle(Geom_Curve)& C3D,const gp_Pnt& P3D,const Standard_Real preci,gp_Pnt& proj,Standard_Real& param,const Standard_Real cf,const Standard_Real cl,const Standard_Boolean AdjustToEnds = Standard_True) const;
   
-  Standard_EXPORT     Standard_Real ProjectAct(const Adaptor3d_Curve& C3D,const gp_Pnt& P3D,const Standard_Real preci,gp_Pnt& proj,Standard_Real& param) const;
-  //! Projects a Point on a Curve using Newton method. <br>
-//!          <paramPrev> is taken as the first approximation of solution. <br>
-//!          If Newton algorithm fails the method Project() is used. <br>
-//!          If AdjustToEnds is True, point will be adjusted to the end <br>
-//!          of the curve if distance is less than <preci> <br>
-  Standard_EXPORT     Standard_Real NextProject(const Standard_Real paramPrev,const Handle(Geom_Curve)& C3D,const gp_Pnt& P3D,const Standard_Real preci,gp_Pnt& proj,Standard_Real& param,const Standard_Real cf,const Standard_Real cl,const Standard_Boolean AdjustToEnds = Standard_True) const;
-  //! Projects a Point on a Curve using Newton method. <br>
-//!          <paramPrev> is taken as the first approximation of solution. <br>
-//!          If Newton algorithm fails the method Project() is used. <br>
-  Standard_EXPORT     Standard_Real NextProject(const Standard_Real paramPrev,const Adaptor3d_Curve& C3D,const gp_Pnt& P3D,const Standard_Real preci,gp_Pnt& proj,Standard_Real& param) const;
-  //! Validate parameters First and Last for the given curve <br>
-//!          in order to make them valid for creation of edge. <br>
-//!          This includes: <br>
-//!          - limiting range [First,Last] by range of curve <br>
-//!          - adjusting range [First,Last] for periodic (or closed) <br>
-//!            curve if Last < First <br>
-//!          Returns True if parameters are OK or are successfully <br>
-//!          corrected, or False if parameters cannot be corrected. <br>
-//!          In the latter case, parameters are reset to range of curve. <br>
-  Standard_EXPORT     Standard_Boolean ValidateRange(const Handle(Geom_Curve)& Crv,Standard_Real& First,Standard_Real& Last,const Standard_Real prec) const;
-  //! Computes a boundary box on segment of curve C2d from First <br>
-//!          to Last. This is done by taking NPoints points from the <br>
-//!          curve and, if Exact is True, by searching for exact <br>
-//!          extrema. All these points are added to Box. <br>
-  Standard_EXPORT     void FillBndBox(const Handle(Geom2d_Curve)& C2d,const Standard_Real First,const Standard_Real Last,const Standard_Integer NPoints,const Standard_Boolean Exact,Bnd_Box2d& Box) const;
-  //! Defines which pcurve (C1 or C2) should be chosen for FORWARD <br>
-//!          seam edge. <br>
-  Standard_EXPORT     Standard_Integer SelectForwardSeam(const Handle(Geom2d_Curve)& C1,const Handle(Geom2d_Curve)& C2) const;
-  //! Checks if points are planar with given preci. If Normal has not zero <br>
-//!          modulus, checks with given normal <br>
-  Standard_EXPORT   static  Standard_Boolean IsPlanar(const TColgp_Array1OfPnt& pnts,gp_XYZ& Normal,const Standard_Real preci = 0) ;
-  //! Checks if curve is planar with given preci. If Normal has not zero <br>
-//!          modulus, checks with given normal <br>
-  Standard_EXPORT   static  Standard_Boolean IsPlanar(const Handle(Geom_Curve)& curve,gp_XYZ& Normal,const Standard_Real preci = 0) ;
-  //! Returns sample points which will serve as linearisation <br>
-//!          of the2d curve in range (first, last) <br>
-//!          The distribution of sample points is consystent with <br>
-//!          what is used by BRepTopAdaptor_FClass2d <br>
-  Standard_EXPORT   static  Standard_Boolean GetSamplePoints(const Handle(Geom2d_Curve)& curve,const Standard_Real first,const Standard_Real last,TColgp_SequenceOfPnt2d& seq) ;
-  //! Returns sample points which will serve as linearisation <br>
-//!          of the curve in range (first, last) <br>
-  Standard_EXPORT   static  Standard_Boolean GetSamplePoints(const Handle(Geom_Curve)& curve,const Standard_Real first,const Standard_Real last,TColgp_SequenceOfPnt& seq) ;
-  //! Tells if the Curve is closed with given precision. <br>
-//!          If <preci> < 0 then Precision::Confusion is used. <br>
-  Standard_EXPORT   static  Standard_Boolean IsClosed(const Handle(Geom_Curve)& curve,const Standard_Real preci = -1) ;
-  //! This method was implemented as fix for changes in trimmed curve <br>
-//!          behaviour. For the moment trimmed curve returns false anyway. <br>
-//!          So it is necessary to adapt all Data exchange tools for this behaviour. <br>
-//!          Current implementation takes into account that curve may be offset. <br>
-  Standard_EXPORT   static  Standard_Boolean IsPeriodic(const Handle(Geom_Curve)& curve) ;
-  //! The same as for Curve3d. <br>
-  Standard_EXPORT   static  Standard_Boolean IsPeriodic(const Handle(Geom2d_Curve)& curve) ;
-
+  //! Projects a Point on a Curve.
+  //! Computes the projected point and its parameter on the curve.
+  //! <preci> is used as 3d precision (hence, 0 will produce
+  //! reject unless exact confusion).
+  //! The number of iterations is limited.
+  //! If AdjustToEnds is True, point will be adjusted to the end
+  //! of the curve if distance is less than <preci>
+  //!
+  //! Returned value is the distance between the given point and
+  //! computed one.
+  Standard_EXPORT   Standard_Real Project (const Handle(Geom_Curve)& C3D, const gp_Pnt& P3D, const Standard_Real preci, gp_Pnt& proj, Standard_Real& param, const Standard_Boolean AdjustToEnds = Standard_True)  const;
+  
+  //! Projects a Point on a Curve.
+  //! Computes the projected point and its parameter on the curve.
+  //! <preci> is used as 3d precision (hence, 0 will produce
+  //! reject unless exact confusion).
+  //! The number of iterations is limited.
+  //!
+  //! Returned value is the distance between the given point and
+  //! computed one.
+  Standard_EXPORT   Standard_Real Project (const Adaptor3d_Curve& C3D, const gp_Pnt& P3D, const Standard_Real preci, gp_Pnt& proj, Standard_Real& param, const Standard_Boolean AdjustToEnds = Standard_True)  const;
+  
+  //! Projects a Point on a Curve, but parameters are limited
+  //! between <cf> and <cl>.
+  //! The range [cf, cl] is extended with help of Adaptor3d on the
+  //! basis of 3d precision <preci>.
+  //! If AdjustToEnds is True, point will be adjusted to the end
+  //! of the curve if distance is less than <preci>
+  Standard_EXPORT   Standard_Real Project (const Handle(Geom_Curve)& C3D, const gp_Pnt& P3D, const Standard_Real preci, gp_Pnt& proj, Standard_Real& param, const Standard_Real cf, const Standard_Real cl, const Standard_Boolean AdjustToEnds = Standard_True)  const;
+  
+  Standard_EXPORT   Standard_Real ProjectAct (const Adaptor3d_Curve& C3D, const gp_Pnt& P3D, const Standard_Real preci, gp_Pnt& proj, Standard_Real& param)  const;
+  
+  //! Projects a Point on a Curve using Newton method.
+  //! <paramPrev> is taken as the first approximation of solution.
+  //! If Newton algorithm fails the method Project() is used.
+  //! If AdjustToEnds is True, point will be adjusted to the end
+  //! of the curve if distance is less than <preci>
+  Standard_EXPORT   Standard_Real NextProject (const Standard_Real paramPrev, const Handle(Geom_Curve)& C3D, const gp_Pnt& P3D, const Standard_Real preci, gp_Pnt& proj, Standard_Real& param, const Standard_Real cf, const Standard_Real cl, const Standard_Boolean AdjustToEnds = Standard_True)  const;
+  
+  //! Projects a Point on a Curve using Newton method.
+  //! <paramPrev> is taken as the first approximation of solution.
+  //! If Newton algorithm fails the method Project() is used.
+  Standard_EXPORT   Standard_Real NextProject (const Standard_Real paramPrev, const Adaptor3d_Curve& C3D, const gp_Pnt& P3D, const Standard_Real preci, gp_Pnt& proj, Standard_Real& param)  const;
+  
+  //! Validate parameters First and Last for the given curve
+  //! in order to make them valid for creation of edge.
+  //! This includes:
+  //! - limiting range [First,Last] by range of curve
+  //! - adjusting range [First,Last] for periodic (or closed)
+  //! curve if Last < First
+  //! Returns True if parameters are OK or are successfully
+  //! corrected, or False if parameters cannot be corrected.
+  //! In the latter case, parameters are reset to range of curve.
+  Standard_EXPORT   Standard_Boolean ValidateRange (const Handle(Geom_Curve)& Crv, Standard_Real& First, Standard_Real& Last, const Standard_Real prec)  const;
+  
+  //! Computes a boundary box on segment of curve C2d from First
+  //! to Last. This is done by taking NPoints points from the
+  //! curve and, if Exact is True, by searching for exact
+  //! extrema. All these points are added to Box.
+  Standard_EXPORT   void FillBndBox (const Handle(Geom2d_Curve)& C2d, const Standard_Real First, const Standard_Real Last, const Standard_Integer NPoints, const Standard_Boolean Exact, Bnd_Box2d& Box)  const;
+  
+  //! Defines which pcurve (C1 or C2) should be chosen for FORWARD
+  //! seam edge.
+  Standard_EXPORT   Standard_Integer SelectForwardSeam (const Handle(Geom2d_Curve)& C1, const Handle(Geom2d_Curve)& C2)  const;
+  
+  //! Checks if points are planar with given preci. If Normal has not zero
+  //! modulus, checks with given normal
+  Standard_EXPORT static   Standard_Boolean IsPlanar (const TColgp_Array1OfPnt& pnts, gp_XYZ& Normal, const Standard_Real preci = 0) ;
+  
+  //! Checks if curve is planar with given preci. If Normal has not zero
+  //! modulus, checks with given normal
+  Standard_EXPORT static   Standard_Boolean IsPlanar (const Handle(Geom_Curve)& curve, gp_XYZ& Normal, const Standard_Real preci = 0) ;
+  
+  //! Returns sample points which will serve as linearisation
+  //! of the2d curve in range (first, last)
+  //! The distribution of sample points is consystent with
+  //! what is used by BRepTopAdaptor_FClass2d
+  Standard_EXPORT static   Standard_Boolean GetSamplePoints (const Handle(Geom2d_Curve)& curve, const Standard_Real first, const Standard_Real last, TColgp_SequenceOfPnt2d& seq) ;
+  
+  //! Returns sample points which will serve as linearisation
+  //! of the curve in range (first, last)
+  Standard_EXPORT static   Standard_Boolean GetSamplePoints (const Handle(Geom_Curve)& curve, const Standard_Real first, const Standard_Real last, TColgp_SequenceOfPnt& seq) ;
+  
+  //! Tells if the Curve is closed with given precision.
+  //! If <preci> < 0 then Precision::Confusion is used.
+  Standard_EXPORT static   Standard_Boolean IsClosed (const Handle(Geom_Curve)& curve, const Standard_Real preci = -1) ;
+  
+  //! This method was implemented as fix for changes in trimmed curve
+  //! behaviour. For the moment trimmed curve returns false anyway.
+  //! So it is necessary to adapt all Data exchange tools for this behaviour.
+  //! Current implementation takes into account that curve may be offset.
+  Standard_EXPORT static   Standard_Boolean IsPeriodic (const Handle(Geom_Curve)& curve) ;
+  
+  //! The same as for Curve3d.
+  Standard_EXPORT static   Standard_Boolean IsPeriodic (const Handle(Geom2d_Curve)& curve) ;
 
 
 
@@ -153,7 +152,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeAnalysis_Curve_HeaderFile

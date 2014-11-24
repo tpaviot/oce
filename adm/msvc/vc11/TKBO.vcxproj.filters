@@ -2,25 +2,25 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{58CDA1C2-18D7-08C8-01A4-5DA9DB3A8C71}</UniqueIdentifier>
+      <UniqueIdentifier>{4F6CB4E6-13B7-1094-093A-DC1402A5A5CC}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IntTools">
-      <UniqueIdentifier>{DA52EF77-1919-15E4-0387-C931CFE54765}</UniqueIdentifier>
+      <UniqueIdentifier>{28348609-0EAC-14B2-0FF0-E4362BA04495}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepAlgoAPI">
-      <UniqueIdentifier>{B260DDAF-16A3-006E-094D-C837D4C97AAE}</UniqueIdentifier>
+      <UniqueIdentifier>{F6CBF75C-0DDE-0D14-17DB-C38D6C79EAE1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BOPCol">
-      <UniqueIdentifier>{95659CA4-0BBA-1590-0731-7D1C85DB8B18}</UniqueIdentifier>
+      <UniqueIdentifier>{2B7E7027-0006-1661-187F-2F990BE8CD61}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BOPDS">
-      <UniqueIdentifier>{8906D922-1090-09F5-107F-F45EBA77368D}</UniqueIdentifier>
+      <UniqueIdentifier>{03C3C022-0763-0F31-105A-52347EF46EA0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BOPAlgo">
-      <UniqueIdentifier>{9E75AF14-0144-0D94-183B-E0B8015068E0}</UniqueIdentifier>
+      <UniqueIdentifier>{8ACBE3F4-0346-139B-0A53-904DB5DDAD07}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BOPTools">
-      <UniqueIdentifier>{156DAD4D-031B-06FF-0F75-8DFC2FA78468}</UniqueIdentifier>
+      <UniqueIdentifier>{8AE69C72-0D0B-11D4-031A-08512206B005}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -306,9 +306,6 @@
     <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_BOP.cxx">
       <Filter>Source files\BOPAlgo</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_BOP_1.cxx">
-      <Filter>Source files\BOPAlgo</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_Builder.cxx">
       <Filter>Source files\BOPAlgo</Filter>
     </ClCompile>
@@ -376,6 +373,9 @@
       <Filter>Source files\BOPAlgo</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_PaveFiller_9.cxx">
+      <Filter>Source files\BOPAlgo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_Section.cxx">
       <Filter>Source files\BOPAlgo</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\BOPAlgo\BOPAlgo_SectionAttribute.cxx">

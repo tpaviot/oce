@@ -6,61 +6,25 @@
 #ifndef _ShapeAlgo_AlgoContainer_HeaderFile
 #define _ShapeAlgo_AlgoContainer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeAlgo_AlgoContainer_HeaderFile
 #include <Handle_ShapeAlgo_AlgoContainer.hxx>
-#endif
 
-#ifndef _Handle_ShapeAlgo_ToolContainer_HeaderFile
 #include <Handle_ShapeAlgo_ToolContainer.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_ShapeAnalysis_Wire_HeaderFile
 #include <Handle_ShapeAnalysis_Wire.hxx>
-#endif
-#ifndef _Handle_ShapeExtend_WireData_HeaderFile
 #include <Handle_ShapeExtend_WireData.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Geom_BSplineCurve_HeaderFile
 #include <Handle_Geom_BSplineCurve.hxx>
-#endif
-#ifndef _Handle_Geom2d_BSplineCurve_HeaderFile
 #include <Handle_Geom2d_BSplineCurve.hxx>
-#endif
-#ifndef _Handle_TColGeom_HSequenceOfBoundedCurve_HeaderFile
 #include <Handle_TColGeom_HSequenceOfBoundedCurve.hxx>
-#endif
-#ifndef _Handle_TColGeom2d_HSequenceOfBoundedCurve_HeaderFile
 #include <Handle_TColGeom2d_HSequenceOfBoundedCurve.hxx>
-#endif
-#ifndef _Handle_Geom_BSplineSurface_HeaderFile
 #include <Handle_Geom_BSplineSurface.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class ShapeAlgo_ToolContainer;
 class ShapeAnalysis_Wire;
 class ShapeExtend_WireData;
@@ -79,54 +43,67 @@ class Geom_Curve;
 
 
 
-class ShapeAlgo_AlgoContainer : public MMgt_TShared {
+class ShapeAlgo_AlgoContainer : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   ShapeAlgo_AlgoContainer();
-  //! Sets ToolContainer <br>
-        void SetToolContainer(const Handle(ShapeAlgo_ToolContainer)& TC) ;
-  //! Returns ToolContainer <br>
-        Handle_ShapeAlgo_ToolContainer ToolContainer() const;
-  //! Finds the best way to connect and connects <nextsewd> to already <br>
-//!          built <sewd> (in <saw>). <br>
-//!          Returns False if <nextsewd> cannot be connected, otherwise - True. <br>
-//!          <maxtol> specifies the maximum tolerance with which <nextsewd> can <br>
-//!          be added. <br>
-//!          <distmin> is used to receive the minimum distance between <nextsewd> <br>
-//!          and <sewd>. <br>
-//!          <revsewd>   is True if <sewd>     has been reversed before connecting. <br>
-//!          <revnextwd> is True if <nextsewd> has been reversed before connecting. <br>
-//!          Uses functionality of ShapeAnalysis_Wire. <br>
-  Standard_EXPORT   virtual  Standard_Boolean ConnectNextWire(const Handle(ShapeAnalysis_Wire)& saw,const Handle(ShapeExtend_WireData)& nextsewd,const Standard_Real maxtol,Standard_Real& distmin,Standard_Boolean& revsewd,Standard_Boolean& revnextsewd) const;
   
-  Standard_EXPORT   virtual  void ApproxBSplineCurve(const Handle(Geom_BSplineCurve)& bspline,TColGeom_SequenceOfCurve& seq) const;
+  //! Empty constructor
+  Standard_EXPORT ShapeAlgo_AlgoContainer();
   
-  Standard_EXPORT   virtual  void ApproxBSplineCurve(const Handle(Geom2d_BSplineCurve)& bspline,TColGeom2d_SequenceOfCurve& seq) const;
+  //! Sets ToolContainer
+      void SetToolContainer (const Handle(ShapeAlgo_ToolContainer)& TC) ;
   
-  Standard_EXPORT   virtual  Standard_Boolean C0BSplineToSequenceOfC1BSplineCurve(const Handle(Geom_BSplineCurve)& BS,Handle(TColGeom_HSequenceOfBoundedCurve)& seqBS) const;
-  //! Converts C0 B-Spline curve into sequence of C1 B-Spline curves. <br>
-//!          Calls ShapeUpgrade::C0BSplineToSequenceOfC1BSplineCurve. <br>
-  Standard_EXPORT   virtual  Standard_Boolean C0BSplineToSequenceOfC1BSplineCurve(const Handle(Geom2d_BSplineCurve)& BS,Handle(TColGeom2d_HSequenceOfBoundedCurve)& seqBS) const;
-  //! Converts a shape on C0 geometry into the shape on C1 geometry. <br>
-  Standard_EXPORT   virtual  TopoDS_Shape C0ShapeToC1Shape(const TopoDS_Shape& shape,const Standard_Real tol) const;
-  //! Converts a surface to B-Spline. <br>
-//!          Uses ShapeConstruct. <br>
-  Standard_EXPORT   virtual  Handle_Geom_BSplineSurface ConvertSurfaceToBSpline(const Handle(Geom_Surface)& surf,const Standard_Real UF,const Standard_Real UL,const Standard_Real VF,const Standard_Real VL) const;
-  //! Return 2 wires with the same number of edges. The both Edges <br>
-//!          number i of these wires have got the same ratio between <br>
-//!          theirs parameter lengths and their wire parameter lengths. <br>
-  Standard_EXPORT   virtual  Standard_Boolean HomoWires(const TopoDS_Wire& wireIn1,const TopoDS_Wire& wireIn2,TopoDS_Wire& wireOut1,TopoDS_Wire& wireOut2,const Standard_Boolean byParam) const;
-  //! Returns the outer wire on the face <Face>. <br>
-  Standard_EXPORT   virtual  TopoDS_Wire OuterWire(const TopoDS_Face& face) const;
-  //! Converts surface to periodic form. <br>
-//!          Calls ShapeCustom_Surface. <br>
-  Standard_EXPORT   virtual  Handle_Geom_Surface ConvertToPeriodic(const Handle(Geom_Surface)& surf) const;
-  //! Computes exact UV bounds of all wires on the face <br>
-  Standard_EXPORT   virtual  void GetFaceUVBounds(const TopoDS_Face& F,Standard_Real& Umin,Standard_Real& Umax,Standard_Real& Vmin,Standard_Real& Vmax) const;
-  //! Convert Geom_Curve to Geom_BSplineCurve <br>
-  Standard_EXPORT   virtual  Handle_Geom_BSplineCurve ConvertCurveToBSpline(const Handle(Geom_Curve)& C3D,const Standard_Real First,const Standard_Real Last,const Standard_Real Tol3d,const GeomAbs_Shape Continuity,const Standard_Integer MaxSegments,const Standard_Integer MaxDegree) const;
+  //! Returns ToolContainer
+      Handle(ShapeAlgo_ToolContainer) ToolContainer()  const;
+  
+  //! Finds the best way to connect and connects <nextsewd> to already
+  //! built <sewd> (in <saw>).
+  //! Returns False if <nextsewd> cannot be connected, otherwise - True.
+  //! <maxtol> specifies the maximum tolerance with which <nextsewd> can
+  //! be added.
+  //! <distmin> is used to receive the minimum distance between <nextsewd>
+  //! and <sewd>.
+  //! <revsewd>   is True if <sewd>     has been reversed before connecting.
+  //! <revnextwd> is True if <nextsewd> has been reversed before connecting.
+  //! Uses functionality of ShapeAnalysis_Wire.
+  Standard_EXPORT virtual   Standard_Boolean ConnectNextWire (const Handle(ShapeAnalysis_Wire)& saw, const Handle(ShapeExtend_WireData)& nextsewd, const Standard_Real maxtol, Standard_Real& distmin, Standard_Boolean& revsewd, Standard_Boolean& revnextsewd)  const;
+  
+  Standard_EXPORT virtual   void ApproxBSplineCurve (const Handle(Geom_BSplineCurve)& bspline, TColGeom_SequenceOfCurve& seq)  const;
+  
+  Standard_EXPORT virtual   void ApproxBSplineCurve (const Handle(Geom2d_BSplineCurve)& bspline, TColGeom2d_SequenceOfCurve& seq)  const;
+  
+  Standard_EXPORT virtual   Standard_Boolean C0BSplineToSequenceOfC1BSplineCurve (const Handle(Geom_BSplineCurve)& BS, Handle(TColGeom_HSequenceOfBoundedCurve)& seqBS)  const;
+  
+  //! Converts C0 B-Spline curve into sequence of C1 B-Spline curves.
+  //! Calls ShapeUpgrade::C0BSplineToSequenceOfC1BSplineCurve.
+  Standard_EXPORT virtual   Standard_Boolean C0BSplineToSequenceOfC1BSplineCurve (const Handle(Geom2d_BSplineCurve)& BS, Handle(TColGeom2d_HSequenceOfBoundedCurve)& seqBS)  const;
+  
+  //! Converts a shape on C0 geometry into the shape on C1 geometry.
+  Standard_EXPORT virtual   TopoDS_Shape C0ShapeToC1Shape (const TopoDS_Shape& shape, const Standard_Real tol)  const;
+  
+  //! Converts a surface to B-Spline.
+  //! Uses ShapeConstruct.
+  Standard_EXPORT virtual   Handle(Geom_BSplineSurface) ConvertSurfaceToBSpline (const Handle(Geom_Surface)& surf, const Standard_Real UF, const Standard_Real UL, const Standard_Real VF, const Standard_Real VL)  const;
+  
+  //! Return 2 wires with the same number of edges. The both Edges
+  //! number i of these wires have got the same ratio between
+  //! theirs parameter lengths and their wire parameter lengths.
+  Standard_EXPORT virtual   Standard_Boolean HomoWires (const TopoDS_Wire& wireIn1, const TopoDS_Wire& wireIn2, TopoDS_Wire& wireOut1, TopoDS_Wire& wireOut2, const Standard_Boolean byParam)  const;
+  
+  //! Returns the outer wire on the face <Face>.
+  Standard_EXPORT virtual   TopoDS_Wire OuterWire (const TopoDS_Face& face)  const;
+  
+  //! Converts surface to periodic form.
+  //! Calls ShapeCustom_Surface.
+  Standard_EXPORT virtual   Handle(Geom_Surface) ConvertToPeriodic (const Handle(Geom_Surface)& surf)  const;
+  
+  //! Computes exact UV bounds of all wires on the face
+  Standard_EXPORT virtual   void GetFaceUVBounds (const TopoDS_Face& F, Standard_Real& Umin, Standard_Real& Umax, Standard_Real& Vmin, Standard_Real& Vmax)  const;
+  
+  //! Convert Geom_Curve to Geom_BSplineCurve
+  Standard_EXPORT virtual   Handle(Geom_BSplineCurve) ConvertCurveToBSpline (const Handle(Geom_Curve)& C3D, const Standard_Real First, const Standard_Real Last, const Standard_Real Tol3d, const GeomAbs_Shape Continuity, const Standard_Integer MaxSegments, const Standard_Integer MaxDegree)  const;
 
 
 
@@ -141,7 +118,7 @@ protected:
 private: 
 
 
-Handle_ShapeAlgo_ToolContainer myTC;
+  Handle(ShapeAlgo_ToolContainer) myTC;
 
 
 };
@@ -151,7 +128,6 @@ Handle_ShapeAlgo_ToolContainer myTC;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeAlgo_AlgoContainer_HeaderFile

@@ -6,66 +6,56 @@
 #ifndef _StepElement_SurfaceElementPurpose_HeaderFile
 #define _StepElement_SurfaceElementPurpose_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepData_SelectMember_HeaderFile
 #include <Handle_StepData_SelectMember.hxx>
-#endif
-#ifndef _StepElement_EnumeratedSurfaceElementPurpose_HeaderFile
 #include <StepElement_EnumeratedSurfaceElementPurpose.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class Standard_Transient;
 class StepData_SelectMember;
 class TCollection_HAsciiString;
 
 
-//! Representation of STEP SELECT type SurfaceElementPurpose <br>
-class StepElement_SurfaceElementPurpose  : public StepData_SelectType {
+//! Representation of STEP SELECT type SurfaceElementPurpose
+class StepElement_SurfaceElementPurpose  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepElement_SurfaceElementPurpose();
-  //! Recognizes a kind of SurfaceElementPurpose select type <br>
-//!          return 0 <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! Recognizes a items of select member SurfaceElementPurposeMember <br>
-//!          1 -> EnumeratedSurfaceElementPurpose <br>
-//!          2 -> ApplicationDefinedElementPurpose <br>
-//!          0 else <br>
-  Standard_EXPORT   virtual  Standard_Integer CaseMem(const Handle(StepData_SelectMember)& ent) const;
-  //! Returns a new select member the type SurfaceElementPurposeMember <br>
-  Standard_EXPORT   virtual  Handle_StepData_SelectMember NewMember() const;
-  //! Set Value for EnumeratedSurfaceElementPurpose <br>
-  Standard_EXPORT     void SetEnumeratedSurfaceElementPurpose(const StepElement_EnumeratedSurfaceElementPurpose aVal) ;
-  //! Returns Value as EnumeratedSurfaceElementPurpose (or Null if another type) <br>
-  Standard_EXPORT     StepElement_EnumeratedSurfaceElementPurpose EnumeratedSurfaceElementPurpose() const;
-  //! Set Value for ApplicationDefinedElementPurpose <br>
-  Standard_EXPORT     void SetApplicationDefinedElementPurpose(const Handle(TCollection_HAsciiString)& aVal) ;
-  //! Returns Value as ApplicationDefinedElementPurpose (or Null if another type) <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString ApplicationDefinedElementPurpose() const;
-
+  
+  //! Empty constructor
+  Standard_EXPORT StepElement_SurfaceElementPurpose();
+  
+  //! Recognizes a kind of SurfaceElementPurpose select type
+  //! return 0
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! Recognizes a items of select member SurfaceElementPurposeMember
+  //! 1 -> EnumeratedSurfaceElementPurpose
+  //! 2 -> ApplicationDefinedElementPurpose
+  //! 0 else
+  Standard_EXPORT virtual   Standard_Integer CaseMem (const Handle(StepData_SelectMember)& ent)  const;
+  
+  //! Returns a new select member the type SurfaceElementPurposeMember
+  Standard_EXPORT virtual   Handle(StepData_SelectMember) NewMember()  const;
+  
+  //! Set Value for EnumeratedSurfaceElementPurpose
+  Standard_EXPORT   void SetEnumeratedSurfaceElementPurpose (const StepElement_EnumeratedSurfaceElementPurpose aVal) ;
+  
+  //! Returns Value as EnumeratedSurfaceElementPurpose (or Null if another type)
+  Standard_EXPORT   StepElement_EnumeratedSurfaceElementPurpose EnumeratedSurfaceElementPurpose()  const;
+  
+  //! Set Value for ApplicationDefinedElementPurpose
+  Standard_EXPORT   void SetApplicationDefinedElementPurpose (const Handle(TCollection_HAsciiString)& aVal) ;
+  
+  //! Returns Value as ApplicationDefinedElementPurpose (or Null if another type)
+  Standard_EXPORT   Handle(TCollection_HAsciiString) ApplicationDefinedElementPurpose()  const;
 
 
 
@@ -88,7 +78,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_SurfaceElementPurpose_HeaderFile

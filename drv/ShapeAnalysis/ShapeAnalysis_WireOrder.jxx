@@ -1,18 +1,6 @@
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _TColgp_HSequenceOfXYZ_HeaderFile
 #include <TColgp_HSequenceOfXYZ.hxx>
-#endif
-#ifndef _Standard_TypeMismatch_HeaderFile
 #include <Standard_TypeMismatch.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _gp_XY_HeaderFile
 #include <gp_XY.hxx>
-#endif
-#ifndef _ShapeAnalysis_WireOrder_HeaderFile
 #include <ShapeAnalysis_WireOrder.hxx>
-#endif

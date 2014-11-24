@@ -6,25 +6,13 @@
 #ifndef _Contap_SequenceOfPathPointOfTheSearch_HeaderFile
 #define _Contap_SequenceOfPathPointOfTheSearch_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch_HeaderFile
 #include <Handle_Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Contap_ThePathPointOfTheSearch;
@@ -32,68 +20,68 @@ class Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch;
 
 
 
-class Contap_SequenceOfPathPointOfTheSearch  : public TCollection_BaseSequence {
+class Contap_SequenceOfPathPointOfTheSearch  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Contap_SequenceOfPathPointOfTheSearch();
+    Contap_SequenceOfPathPointOfTheSearch();
   
-  Standard_EXPORT   Contap_SequenceOfPathPointOfTheSearch(const Contap_SequenceOfPathPointOfTheSearch& Other);
+  Standard_EXPORT Contap_SequenceOfPathPointOfTheSearch(const Contap_SequenceOfPathPointOfTheSearch& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~Contap_SequenceOfPathPointOfTheSearch()
 {
   Clear();
 }
   
-  Standard_EXPORT    const Contap_SequenceOfPathPointOfTheSearch& Assign(const Contap_SequenceOfPathPointOfTheSearch& Other) ;
-   const Contap_SequenceOfPathPointOfTheSearch& operator =(const Contap_SequenceOfPathPointOfTheSearch& Other) 
+  Standard_EXPORT  const  Contap_SequenceOfPathPointOfTheSearch& Assign (const Contap_SequenceOfPathPointOfTheSearch& Other) ;
+ const  Contap_SequenceOfPathPointOfTheSearch& operator = (const Contap_SequenceOfPathPointOfTheSearch& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Contap_ThePathPointOfTheSearch& T) ;
+  Standard_EXPORT   void Append (const Contap_ThePathPointOfTheSearch& T) ;
   
-        void Append(Contap_SequenceOfPathPointOfTheSearch& S) ;
+      void Append (Contap_SequenceOfPathPointOfTheSearch& S) ;
   
-  Standard_EXPORT     void Prepend(const Contap_ThePathPointOfTheSearch& T) ;
+  Standard_EXPORT   void Prepend (const Contap_ThePathPointOfTheSearch& T) ;
   
-        void Prepend(Contap_SequenceOfPathPointOfTheSearch& S) ;
+      void Prepend (Contap_SequenceOfPathPointOfTheSearch& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Contap_ThePathPointOfTheSearch& T) ;
+      void InsertBefore (const Standard_Integer Index, const Contap_ThePathPointOfTheSearch& T) ;
   
-        void InsertBefore(const Standard_Integer Index,Contap_SequenceOfPathPointOfTheSearch& S) ;
+      void InsertBefore (const Standard_Integer Index, Contap_SequenceOfPathPointOfTheSearch& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Contap_ThePathPointOfTheSearch& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Contap_ThePathPointOfTheSearch& T) ;
   
-        void InsertAfter(const Standard_Integer Index,Contap_SequenceOfPathPointOfTheSearch& S) ;
+      void InsertAfter (const Standard_Integer Index, Contap_SequenceOfPathPointOfTheSearch& S) ;
   
-  Standard_EXPORT    const Contap_ThePathPointOfTheSearch& First() const;
+  Standard_EXPORT  const  Contap_ThePathPointOfTheSearch& First()  const;
   
-  Standard_EXPORT    const Contap_ThePathPointOfTheSearch& Last() const;
+  Standard_EXPORT  const  Contap_ThePathPointOfTheSearch& Last()  const;
   
-        void Split(const Standard_Integer Index,Contap_SequenceOfPathPointOfTheSearch& Sub) ;
+      void Split (const Standard_Integer Index, Contap_SequenceOfPathPointOfTheSearch& Sub) ;
   
-  Standard_EXPORT    const Contap_ThePathPointOfTheSearch& Value(const Standard_Integer Index) const;
-   const Contap_ThePathPointOfTheSearch& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Contap_ThePathPointOfTheSearch& Value (const Standard_Integer Index)  const;
+ const  Contap_ThePathPointOfTheSearch& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Contap_ThePathPointOfTheSearch& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Contap_ThePathPointOfTheSearch& I) ;
   
-  Standard_EXPORT     Contap_ThePathPointOfTheSearch& ChangeValue(const Standard_Integer Index) ;
-    Contap_ThePathPointOfTheSearch& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Contap_ThePathPointOfTheSearch& ChangeValue (const Standard_Integer Index) ;
+  Contap_ThePathPointOfTheSearch& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Contap_SequenceOfPathPointOfTheSearch_HeaderFile

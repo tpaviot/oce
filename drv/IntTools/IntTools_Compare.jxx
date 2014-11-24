@@ -1,6 +1,2 @@
-#ifndef _IntTools_Root_HeaderFile
 #include <IntTools_Root.hxx>
-#endif
-#ifndef _IntTools_Compare_HeaderFile
 #include <IntTools_Compare.hxx>
-#endif

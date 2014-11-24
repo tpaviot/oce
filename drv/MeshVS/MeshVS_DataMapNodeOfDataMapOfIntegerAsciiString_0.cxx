@@ -5,22 +5,12 @@
 
 #include <MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _MeshVS_DataMapOfIntegerAsciiString_HeaderFile
 #include <MeshVS_DataMapOfIntegerAsciiString.hxx>
-#endif
-#ifndef _MeshVS_DataMapIteratorOfDataMapOfIntegerAsciiString_HeaderFile
 #include <MeshVS_DataMapIteratorOfDataMapOfIntegerAsciiString.hxx>
-#endif
 
  
 

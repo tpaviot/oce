@@ -3542,6 +3542,166 @@ static Standard_Integer VSetLocation (Draw_Interpretor& /*di*/,
   return 0;
 }
 
+//=======================================================================
+//function : TransformPresentation
+//purpose  : Change transformation of AIS interactive object
+//=======================================================================
+static Standard_Integer LocalTransformPresentation (Draw_Interpretor& /*theDi*/,
+                                                    Standard_Integer theArgNb,
+                                                    const char** theArgVec)
+{
+  if (theArgNb <= 1)
+  {
+    std::cout << "Error: too few arguments.\n";
+    return 1;
+  }
+
+  Handle(AIS_InteractiveContext) aContext = ViewerTest::GetAISContext();
+  ViewerTest_AutoUpdater anUpdateTool(aContext, ViewerTest::CurrentView());
+  if (aContext.IsNull())
+  {
+    std::cout << "Error: no active view!\n";
+    return 1;
+  }
+
+  gp_Trsf aTrsf;
+  Standard_Integer aLast = theArgNb;
+  const char* aName = theArgVec[0];
+
+  Standard_Boolean isReset = Standard_False;
+  Standard_Boolean isMove = Standard_False;
+
+  // Prefix 'vloc'
+  aName += 4;
+
+  if (!strcmp (aName, "reset"))
+  {
+    isReset = Standard_True;
+  }
+  else if (!strcmp (aName, "move"))
+  {
+    if (theArgNb < 3)
+    {
+      std::cout << "Error: too few arguments.\n";
+      return 1;
+    }
+
+    const ViewerTest_DoubleMapOfInteractiveAndName& aMap = GetMapOfAIS();
+
+    Handle(AIS_InteractiveObject) anIObj;
+    if (aMap.IsBound2 (theArgVec[theArgNb - 1]))
+    {
+      anIObj = Handle(AIS_InteractiveObject)::DownCast (aMap.Find2 (theArgVec[theArgNb - 1]));
+    }
+
+    if (anIObj.IsNull())
+    {
+      std::cout << "Error: object '" << theArgVec[theArgNb - 1] << "' is not displayed!\n";
+      return 1;
+    }
+
+    isMove = Standard_True;
+
+    aTrsf = anIObj->Transformation();
+    aLast = theArgNb - 1;
+  }
+  else if (!strcmp (aName, "translate"))
+  {
+    if (theArgNb < 5)
+    {
+      std::cout << "Error: too few arguments.\n";
+      return 1;
+    }
+    aTrsf.SetTranslation (gp_Vec (Draw::Atof (theArgVec[theArgNb - 3]),
+                                  Draw::Atof (theArgVec[theArgNb - 2]),
+                                  Draw::Atof (theArgVec[theArgNb - 1])));
+    aLast = theArgNb - 3;
+  }
+  else if (!strcmp (aName, "rotate"))
+  {
+    if (theArgNb < 9)
+    {
+      std::cout << "Error: too few arguments.\n";
+      return 1;
+    }
+
+    aTrsf.SetRotation (
+      gp_Ax1 (gp_Pnt (Draw::Atof (theArgVec[theArgNb - 7]),
+                      Draw::Atof (theArgVec[theArgNb - 6]),
+                      Draw::Atof (theArgVec[theArgNb - 5])),
+              gp_Vec (Draw::Atof (theArgVec[theArgNb - 4]),
+                      Draw::Atof (theArgVec[theArgNb - 3]),
+                      Draw::Atof (theArgVec[theArgNb - 2]))),
+      Draw::Atof (theArgVec[theArgNb - 1]) * (M_PI / 180.0));
+
+    aLast = theArgNb - 7;
+  }
+  else if (!strcmp (aName, "mirror"))
+  {
+    if (theArgNb < 8)
+    {
+      std::cout << "Error: too few arguments.\n";
+      return 1;
+    }
+
+    aTrsf.SetMirror (gp_Ax2 (gp_Pnt (Draw::Atof(theArgVec[theArgNb - 6]),
+                                     Draw::Atof(theArgVec[theArgNb - 5]),
+                                     Draw::Atof(theArgVec[theArgNb - 4])),
+                             gp_Vec (Draw::Atof(theArgVec[theArgNb - 3]),
+                                     Draw::Atof(theArgVec[theArgNb - 2]),
+                                     Draw::Atof(theArgVec[theArgNb - 1]))));
+    aLast = theArgNb - 6;
+  }
+  else if (!strcmp (aName, "scale"))
+  {
+    if (theArgNb < 6)
+    {
+      std::cout << "Error: too few arguments.\n";
+      return 1;
+    }
+
+    aTrsf.SetScale (gp_Pnt (Draw::Atof(theArgVec[theArgNb - 4]),
+                            Draw::Atof(theArgVec[theArgNb - 3]),
+                            Draw::Atof(theArgVec[theArgNb - 2])),
+                    Draw::Atof(theArgVec[theArgNb - 1]));
+    aLast = theArgNb - 4;
+  }
+
+  for (Standard_Integer anIdx = 1; anIdx < aLast; anIdx++)
+  {
+    // find object
+    const ViewerTest_DoubleMapOfInteractiveAndName& aMap = GetMapOfAIS();
+    Handle(AIS_InteractiveObject) anIObj;
+    if (aMap.IsBound2 (theArgVec[anIdx]))
+    {
+      anIObj = Handle(AIS_InteractiveObject)::DownCast (aMap.Find2 (theArgVec[anIdx]));
+    }
+    if (anIObj.IsNull())
+    {
+      std::cout << "Error: object '" << theArgVec[anIdx] << "' is not displayed!\n";
+      return 1;
+    }
+    
+    if (isReset)
+    {
+      // aTrsf already identity
+    }
+    else if (isMove)
+    {
+      aTrsf = anIObj->LocalTransformation() * anIObj->Transformation().Inverted() * aTrsf;
+    }
+    else
+    {
+      aTrsf = anIObj->LocalTransformation() * aTrsf;
+    }
+
+    TopLoc_Location aLocation (aTrsf);
+    aContext->SetLocation (anIObj, aLocation);
+  }
+
+  return 0;
+}
+
 //===============================================================================================
 //function : VConnect
 //purpose  : Creates and displays AIS_ConnectedInteractive object from input object and location 
@@ -5606,6 +5766,81 @@ static Standard_Integer VPointCloud (Draw_Interpretor& theDI,
 }
 
 //=======================================================================
+//function : VPriority
+//purpose  : Prints or sets the display priority for an object
+//=======================================================================
+
+static int VPriority (Draw_Interpretor& theDI,
+                      Standard_Integer  theArgNum,
+                      const char**      theArgs)
+{
+  Handle(AIS_InteractiveContext) aContext = ViewerTest::GetAISContext();
+  ViewerTest_AutoUpdater anUpdateTool (aContext, ViewerTest::CurrentView());
+  if (aContext.IsNull())
+  {
+    std::cout << "Error: no view available, call 'vinit' before!" << std::endl;
+    return 1;
+  }
+
+  TCollection_AsciiString aLastArg (theArgs[theArgNum - 1]);
+  Standard_Integer aPriority = -1;
+  Standard_Integer aNbArgs   = theArgNum;
+  if (aLastArg.IsIntegerValue())
+  {
+    aPriority = aLastArg.IntegerValue();
+    --aNbArgs;
+    if (aPriority < 0 || aPriority > 10)
+    {
+      std::cout << "Error: the specified display priority value '" << aLastArg
+                << "' is outside the valid range [0..10]" << std::endl;
+      return 1;
+    }
+  }
+  else
+  {
+    anUpdateTool.Invalidate();
+  }
+
+  if (aNbArgs < 2)
+  {
+    std::cout << "Error: wrong number of arguments! See usage:\n";
+    theDI.PrintHelp (theArgs[0]);
+    return 1;
+  }
+
+  for (Standard_Integer anArgIter = 1; anArgIter < aNbArgs; ++anArgIter)
+  {
+    if (anUpdateTool.parseRedrawMode (theArgs[anArgIter]))
+    {
+      continue;
+    }
+
+    TCollection_AsciiString aName (theArgs[anArgIter]);
+    Handle(AIS_InteractiveObject) anIObj;
+    if (GetMapOfAIS().IsBound2 (aName))
+    {
+      anIObj = Handle(AIS_InteractiveObject)::DownCast (GetMapOfAIS().Find2 (aName));
+    }
+
+    if (anIObj.IsNull())
+    {
+      std::cout << "Error: the object '" << theArgs[1] << "' is not displayed" << std::endl;
+      return 1;
+    }
+
+    if (aPriority < 1)
+    {
+      theDI << aContext->DisplayPriority (anIObj) << " ";
+    }
+    else
+    {
+      aContext->SetDisplayPriority (anIObj, aPriority);
+    }
+  }
+  return 0;
+}
+
+//=======================================================================
 //function : ObjectsCommands
 //purpose  :
 //=======================================================================
@@ -5818,4 +6053,39 @@ void ViewerTest::ObjectCommands(Draw_Interpretor& theCommands)
                    "\n\t\t:  -noNormals - do not generate normal per point"
                    "\n",
                    __FILE__, VPointCloud, group);
+
+  theCommands.Add("vlocreset",
+    "vlocreset name1 name2 ...\n\t\t  remove object local transformation",
+    __FILE__,
+    LocalTransformPresentation, group);
+
+  theCommands.Add("vlocmove",
+    "vlocmove name1 name2 ... name\n\t\t  set local transform to match transform of 'name'",
+    __FILE__,
+    LocalTransformPresentation, group);
+
+  theCommands.Add("vloctranslate",
+    "vloctranslate name1 name2 ... dx dy dz\n\t\t  applies translation to local transformation",
+    __FILE__,
+    LocalTransformPresentation, group);
+
+  theCommands.Add("vlocrotate",
+    "vlocrotate name1 name2 ... x y z dx dy dz angle\n\t\t  applies rotation to local transformation",
+    __FILE__,
+    LocalTransformPresentation, group);
+
+  theCommands.Add("vlocmirror",
+    "vlocmirror name x y z dx dy dz\n\t\t  applies mirror to local transformation",
+    __FILE__,
+    LocalTransformPresentation, group);
+
+  theCommands.Add("vlocscale",
+    "vlocscale name x y z scale\n\t\t  applies scale to local transformation",
+    __FILE__,
+    LocalTransformPresentation, group);
+
+  theCommands.Add("vpriority",
+    "vpriority [-noupdate|-update] name [value]\n\t\t  prints or sets the display priority for an object",
+    __FILE__,
+    VPriority, group);
 }

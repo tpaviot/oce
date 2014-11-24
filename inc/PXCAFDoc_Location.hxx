@@ -6,40 +6,29 @@
 #ifndef _PXCAFDoc_Location_HeaderFile
 #define _PXCAFDoc_Location_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PXCAFDoc_Location_HeaderFile
 #include <Handle_PXCAFDoc_Location.hxx>
-#endif
 
-#ifndef _PTopLoc_Location_HeaderFile
 #include <PTopLoc_Location.hxx>
-#endif
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
 class PTopLoc_Location;
 
 
-class PXCAFDoc_Location : public PDF_Attribute {
+class PXCAFDoc_Location : public PDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   PXCAFDoc_Location();
+  Standard_EXPORT PXCAFDoc_Location();
   
-  Standard_EXPORT   PXCAFDoc_Location(const PTopLoc_Location& Loc);
+  Standard_EXPORT PXCAFDoc_Location(const PTopLoc_Location& Loc);
   
-  Standard_EXPORT     void Set(const PTopLoc_Location& Loc) ;
+  Standard_EXPORT   void Set (const PTopLoc_Location& Loc) ;
   
-  Standard_EXPORT     PTopLoc_Location Get() const;
+  Standard_EXPORT   PTopLoc_Location Get()  const;
 
 PXCAFDoc_Location(const Storage_stCONSTclCOM& a) : PDF_Attribute(a)
 {
@@ -59,7 +48,7 @@ protected:
 private: 
 
 
-PTopLoc_Location myPLocation;
+  PTopLoc_Location myPLocation;
 
 
 };
@@ -68,7 +57,6 @@ PTopLoc_Location myPLocation;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PXCAFDoc_Location_HeaderFile

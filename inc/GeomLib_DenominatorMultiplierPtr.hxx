@@ -7,7 +7,6 @@
 #define _GeomLib_DenominatorMultiplierPtr_HeaderFile
 
 class GeomLib_DenominatorMultiplier;
-
 typedef GeomLib_DenominatorMultiplier* GeomLib_DenominatorMultiplierPtr;
 
-#endif
+#endif // _GeomLib_DenominatorMultiplierPtr_HeaderFile

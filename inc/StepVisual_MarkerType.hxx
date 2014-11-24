@@ -6,8 +6,11 @@
 #ifndef _StepVisual_MarkerType_HeaderFile
 #define _StepVisual_MarkerType_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepVisual_MarkerType {
+
+enum StepVisual_MarkerType
+{
 StepVisual_mtDot,
 StepVisual_mtX,
 StepVisual_mtPlus,
@@ -17,8 +20,4 @@ StepVisual_mtSquare,
 StepVisual_mtTriangle
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepVisual_MarkerType_HeaderFile

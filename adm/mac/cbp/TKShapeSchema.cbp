@@ -79,6 +79,8 @@
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 		</Linker>
 		<Unit filename="../../../drv/ShapeSchema/ShapeSchema.cxx" />
 		<Unit filename="../../../drv/ShapeSchema/ShapeSchema_DBC_VArrayOfCharacter.cxx" />

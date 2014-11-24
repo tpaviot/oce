@@ -6,28 +6,14 @@
 #ifndef _TDocStd_SequenceOfApplicationDelta_HeaderFile
 #define _TDocStd_SequenceOfApplicationDelta_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_TDocStd_ApplicationDelta_HeaderFile
 #include <Handle_TDocStd_ApplicationDelta.hxx>
-#endif
-#ifndef _Handle_TDocStd_SequenceNodeOfSequenceOfApplicationDelta_HeaderFile
 #include <Handle_TDocStd_SequenceNodeOfSequenceOfApplicationDelta.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class TDocStd_ApplicationDelta;
@@ -35,68 +21,68 @@ class TDocStd_SequenceNodeOfSequenceOfApplicationDelta;
 
 
 
-class TDocStd_SequenceOfApplicationDelta  : public TCollection_BaseSequence {
+class TDocStd_SequenceOfApplicationDelta  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      TDocStd_SequenceOfApplicationDelta();
+    TDocStd_SequenceOfApplicationDelta();
   
-  Standard_EXPORT   TDocStd_SequenceOfApplicationDelta(const TDocStd_SequenceOfApplicationDelta& Other);
+  Standard_EXPORT TDocStd_SequenceOfApplicationDelta(const TDocStd_SequenceOfApplicationDelta& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TDocStd_SequenceOfApplicationDelta()
 {
   Clear();
 }
   
-  Standard_EXPORT    const TDocStd_SequenceOfApplicationDelta& Assign(const TDocStd_SequenceOfApplicationDelta& Other) ;
-   const TDocStd_SequenceOfApplicationDelta& operator =(const TDocStd_SequenceOfApplicationDelta& Other) 
+  Standard_EXPORT  const  TDocStd_SequenceOfApplicationDelta& Assign (const TDocStd_SequenceOfApplicationDelta& Other) ;
+ const  TDocStd_SequenceOfApplicationDelta& operator = (const TDocStd_SequenceOfApplicationDelta& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(TDocStd_ApplicationDelta)& T) ;
+  Standard_EXPORT   void Append (const Handle(TDocStd_ApplicationDelta)& T) ;
   
-        void Append(TDocStd_SequenceOfApplicationDelta& S) ;
+      void Append (TDocStd_SequenceOfApplicationDelta& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(TDocStd_ApplicationDelta)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(TDocStd_ApplicationDelta)& T) ;
   
-        void Prepend(TDocStd_SequenceOfApplicationDelta& S) ;
+      void Prepend (TDocStd_SequenceOfApplicationDelta& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(TDocStd_ApplicationDelta)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(TDocStd_ApplicationDelta)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,TDocStd_SequenceOfApplicationDelta& S) ;
+      void InsertBefore (const Standard_Integer Index, TDocStd_SequenceOfApplicationDelta& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(TDocStd_ApplicationDelta)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(TDocStd_ApplicationDelta)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,TDocStd_SequenceOfApplicationDelta& S) ;
+      void InsertAfter (const Standard_Integer Index, TDocStd_SequenceOfApplicationDelta& S) ;
   
-  Standard_EXPORT    const Handle_TDocStd_ApplicationDelta& First() const;
+  Standard_EXPORT  const  Handle(TDocStd_ApplicationDelta)& First()  const;
   
-  Standard_EXPORT    const Handle_TDocStd_ApplicationDelta& Last() const;
+  Standard_EXPORT  const  Handle(TDocStd_ApplicationDelta)& Last()  const;
   
-        void Split(const Standard_Integer Index,TDocStd_SequenceOfApplicationDelta& Sub) ;
+      void Split (const Standard_Integer Index, TDocStd_SequenceOfApplicationDelta& Sub) ;
   
-  Standard_EXPORT    const Handle_TDocStd_ApplicationDelta& Value(const Standard_Integer Index) const;
-   const Handle_TDocStd_ApplicationDelta& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(TDocStd_ApplicationDelta)& Value (const Standard_Integer Index)  const;
+ const  Handle(TDocStd_ApplicationDelta)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(TDocStd_ApplicationDelta)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(TDocStd_ApplicationDelta)& I) ;
   
-  Standard_EXPORT     Handle_TDocStd_ApplicationDelta& ChangeValue(const Standard_Integer Index) ;
-    Handle_TDocStd_ApplicationDelta& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(TDocStd_ApplicationDelta)& ChangeValue (const Standard_Integer Index) ;
+  Handle(TDocStd_ApplicationDelta)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -115,7 +101,7 @@ private:
 
 };
 
-#define SeqItem Handle_TDocStd_ApplicationDelta
+#define SeqItem Handle(TDocStd_ApplicationDelta)
 #define SeqItem_hxx <TDocStd_ApplicationDelta.hxx>
 #define TCollection_SequenceNode TDocStd_SequenceNodeOfSequenceOfApplicationDelta
 #define TCollection_SequenceNode_hxx <TDocStd_SequenceNodeOfSequenceOfApplicationDelta.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDocStd_SequenceOfApplicationDelta_HeaderFile

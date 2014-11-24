@@ -6,34 +6,16 @@
 #ifndef _MAT_DataMapOfIntegerBasicElt_HeaderFile
 #define _MAT_DataMapOfIntegerBasicElt_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_MAT_BasicElt_HeaderFile
 #include <Handle_MAT_BasicElt.hxx>
-#endif
-#ifndef _Handle_MAT_DataMapNodeOfDataMapOfIntegerBasicElt_HeaderFile
 #include <Handle_MAT_DataMapNodeOfDataMapOfIntegerBasicElt.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class MAT_BasicElt;
@@ -43,50 +25,50 @@ class MAT_DataMapIteratorOfDataMapOfIntegerBasicElt;
 
 
 
-class MAT_DataMapOfIntegerBasicElt  : public TCollection_BasicMap {
+class MAT_DataMapOfIntegerBasicElt  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   MAT_DataMapOfIntegerBasicElt(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT MAT_DataMapOfIntegerBasicElt(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     MAT_DataMapOfIntegerBasicElt& Assign(const MAT_DataMapOfIntegerBasicElt& Other) ;
-    MAT_DataMapOfIntegerBasicElt& operator =(const MAT_DataMapOfIntegerBasicElt& Other) 
+  Standard_EXPORT   MAT_DataMapOfIntegerBasicElt& Assign (const MAT_DataMapOfIntegerBasicElt& Other) ;
+  MAT_DataMapOfIntegerBasicElt& operator = (const MAT_DataMapOfIntegerBasicElt& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~MAT_DataMapOfIntegerBasicElt()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Bind(const Standard_Integer& K,const Handle(MAT_BasicElt)& I) ;
+  Standard_EXPORT   Standard_Boolean Bind (const Standard_Integer& K, const Handle(MAT_BasicElt)& I) ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const Standard_Integer& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound (const Standard_Integer& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind(const Standard_Integer& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind (const Standard_Integer& K) ;
   
-  Standard_EXPORT    const Handle_MAT_BasicElt& Find(const Standard_Integer& K) const;
-   const Handle_MAT_BasicElt& operator()(const Standard_Integer& K) const
+  Standard_EXPORT  const  Handle(MAT_BasicElt)& Find (const Standard_Integer& K)  const;
+ const  Handle(MAT_BasicElt)& operator() (const Standard_Integer& K)  const
 {
   return Find(K);
 }
   
-  Standard_EXPORT     Handle_MAT_BasicElt& ChangeFind(const Standard_Integer& K) ;
-    Handle_MAT_BasicElt& operator()(const Standard_Integer& K) 
+  Standard_EXPORT   Handle(MAT_BasicElt)& ChangeFind (const Standard_Integer& K) ;
+  Handle(MAT_BasicElt)& operator() (const Standard_Integer& K) 
 {
   return ChangeFind(K);
 }
   
-  Standard_EXPORT     Standard_Address Find1(const Standard_Integer& K) const;
+  Standard_EXPORT   Standard_Address Find1 (const Standard_Integer& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFind1(const Standard_Integer& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFind1 (const Standard_Integer& K) ;
 
 
 
@@ -100,7 +82,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   MAT_DataMapOfIntegerBasicElt(const MAT_DataMapOfIntegerBasicElt& Other);
+  Standard_EXPORT MAT_DataMapOfIntegerBasicElt(const MAT_DataMapOfIntegerBasicElt& Other);
 
 
 
@@ -111,7 +93,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MAT_DataMapOfIntegerBasicElt_HeaderFile

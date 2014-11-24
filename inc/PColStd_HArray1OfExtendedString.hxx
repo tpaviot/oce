@@ -6,37 +6,17 @@
 #ifndef _PColStd_HArray1OfExtendedString_HeaderFile
 #define _PColStd_HArray1OfExtendedString_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PColStd_HArray1OfExtendedString_HeaderFile
 #include <Handle_PColStd_HArray1OfExtendedString.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_PCollection_HExtendedString_HeaderFile
 #include <Handle_PCollection_HExtendedString.hxx>
-#endif
-#ifndef _PColStd_FieldOfHArray1OfExtendedString_HeaderFile
 #include <PColStd_FieldOfHArray1OfExtendedString.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _Handle_PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString_HeaderFile
 #include <Handle_PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString.hxx>
-#endif
 class PCollection_HExtendedString;
 class Standard_OutOfRange;
 class Standard_RangeError;
@@ -45,26 +25,27 @@ class PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString;
 class PColStd_VArrayTNodeOfFieldOfHArray1OfExtendedString;
 
 
-class PColStd_HArray1OfExtendedString : public Standard_Persistent {
+class PColStd_HArray1OfExtendedString : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PColStd_HArray1OfExtendedString(const Standard_Integer Low,const Standard_Integer Up);
+  Standard_EXPORT PColStd_HArray1OfExtendedString(const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT   PColStd_HArray1OfExtendedString(const Standard_Integer Low,const Standard_Integer Up,const Handle(PCollection_HExtendedString)& V);
+  Standard_EXPORT PColStd_HArray1OfExtendedString(const Standard_Integer Low, const Standard_Integer Up, const Handle(PCollection_HExtendedString)& V);
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(PCollection_HExtendedString)& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(PCollection_HExtendedString)& Value) ;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-  Standard_EXPORT     Handle_PCollection_HExtendedString Value(const Standard_Integer Index) const;
+  Standard_EXPORT   Handle(PCollection_HExtendedString) Value (const Standard_Integer Index)  const;
 
-  PColStd_HArray1OfExtendedString( )
+PColStd_HArray1OfExtendedString( )
 {
   
 }
@@ -90,18 +71,18 @@ protected:
 private: 
 
   
-  Standard_EXPORT     PColStd_FieldOfHArray1OfExtendedString Field() const;
+  Standard_EXPORT   PColStd_FieldOfHArray1OfExtendedString Field()  const;
   
-  Standard_EXPORT     Standard_Address Datas() const;
+  Standard_EXPORT   Standard_Address Datas()  const;
 
-Standard_Integer LowerBound;
-Standard_Integer UpperBound;
-PColStd_FieldOfHArray1OfExtendedString Data;
+  Standard_Integer LowerBound;
+  Standard_Integer UpperBound;
+  PColStd_FieldOfHArray1OfExtendedString Data;
 
 
 };
 
-#define Item Handle_PCollection_HExtendedString
+#define Item Handle(PCollection_HExtendedString)
 #define Item_hxx <PCollection_HExtendedString.hxx>
 #define PCollection_FieldOfHArray1 PColStd_FieldOfHArray1OfExtendedString
 #define PCollection_FieldOfHArray1_hxx <PColStd_FieldOfHArray1OfExtendedString.hxx>
@@ -146,7 +127,6 @@ PColStd_FieldOfHArray1OfExtendedString Data;
 #undef PCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PColStd_HArray1OfExtendedString_HeaderFile

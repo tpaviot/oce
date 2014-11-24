@@ -6,22 +6,15 @@
 #ifndef _Handle_Geom2dGcc_IsParallel_HeaderFile
 #define _Handle_Geom2dGcc_IsParallel_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Standard_DomainError_HeaderFile
 #include <Handle_Standard_DomainError.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Standard_DomainError);
 class Geom2dGcc_IsParallel;
 
-DEFINE_STANDARD_HANDLE(Geom2dGcc_IsParallel,Standard_DomainError)
+DEFINE_STANDARD_HANDLE(Geom2dGcc_IsParallel, Standard_DomainError)
 
-#endif
+#endif // _Handle_Geom2dGcc_IsParallel_HeaderFile

@@ -6,62 +6,56 @@
 #ifndef _BRepBndLib_HeaderFile
 #define _BRepBndLib_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopoDS_Shape;
 class Bnd_Box;
 
 
-//! This package provides the bounding boxes for curves <br>
-//!          and surfaces from BRepAdaptor. <br>
-//! Functions to add a topological shape to a bounding box <br>
-class BRepBndLib  {
+//! This package provides the bounding boxes for curves
+//! and surfaces from BRepAdaptor.
+//! Functions to add a topological shape to a bounding box
+class BRepBndLib 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //!Adds the shape S to the bounding box B. <br>
-//! More precisely are successively added to B: <br>
-//! -   each face of S; the triangulation of the face is used if it exists, <br>
-//! -   then each edge of S which does not belong to a face, <br>
-//!   the polygon of the edge is used if it exists <br>
-//! -   and last each vertex of S which does not belong to an edge. <br>
-//!   After each elementary operation, the bounding box B is <br>
-//! enlarged by the tolerance value of the relative sub-shape. <br>
-//! When working with the triangulation of a face this value of <br>
-//! enlargement is the sum of the triangulation deflection and <br>
-//! the face tolerance. When working with the <br>
-//! polygon of an edge this value of enlargement is <br>
-//! the sum of the polygon deflection and the edge tolerance. <br>
-//! Warning <br>
-//! -   This algorithm is time consuming if triangulation has not <br>
-//!   been inserted inside the data structure of the shape S. <br>
-//! -   The resulting bounding box may be somewhat larger than the object. <br>
-  Standard_EXPORT   static  void Add(const TopoDS_Shape& S,Bnd_Box& B,const Standard_Boolean useTriangulation = Standard_True) ;
-  //! Adds the shape S to the bounding box B. <br>
-//! This is a quick algorithm but only works if the shape S is <br>
-//! composed of polygonal planar faces, as is the case if S is <br>
-//! an approached polyhedral representation of an exact <br>
-//! shape. Pay particular attention to this because this <br>
-//! condition is not checked and, if it not respected, an error <br>
-//! may occur in the algorithm for which the bounding box is built. <br>
-//! Note that the resulting bounding box is not enlarged by the <br>
-//! tolerance value of the sub-shapes as is the case with the <br>
-//! Add function. So the added part of the resulting bounding <br>
-//! box is closer to the shape S. <br>
-  Standard_EXPORT   static  void AddClose(const TopoDS_Shape& S,Bnd_Box& B) ;
-
+  
+  //! Adds the shape S to the bounding box B.
+  //! More precisely are successively added to B:
+  //! -   each face of S; the triangulation of the face is used if it exists,
+  //! -   then each edge of S which does not belong to a face,
+  //! the polygon of the edge is used if it exists
+  //! -   and last each vertex of S which does not belong to an edge.
+  //! After each elementary operation, the bounding box B is
+  //! enlarged by the tolerance value of the relative sub-shape.
+  //! When working with the triangulation of a face this value of
+  //! enlargement is the sum of the triangulation deflection and
+  //! the face tolerance. When working with the
+  //! polygon of an edge this value of enlargement is
+  //! the sum of the polygon deflection and the edge tolerance.
+  //! Warning
+  //! -   This algorithm is time consuming if triangulation has not
+  //! been inserted inside the data structure of the shape S.
+  //! -   The resulting bounding box may be somewhat larger than the object.
+  Standard_EXPORT static   void Add (const TopoDS_Shape& S, Bnd_Box& B, const Standard_Boolean useTriangulation = Standard_True) ;
+  
+  //! Adds the shape S to the bounding box B.
+  //! This is a quick algorithm but only works if the shape S is
+  //! composed of polygonal planar faces, as is the case if S is
+  //! an approached polyhedral representation of an exact
+  //! shape. Pay particular attention to this because this
+  //! condition is not checked and, if it not respected, an error
+  //! may occur in the algorithm for which the bounding box is built.
+  //! Note that the resulting bounding box is not enlarged by the
+  //! tolerance value of the sub-shapes as is the case with the
+  //! Add function. So the added part of the resulting bounding
+  //! box is closer to the shape S.
+  Standard_EXPORT static   void AddClose (const TopoDS_Shape& S, Bnd_Box& B) ;
 
 
 
@@ -84,7 +78,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepBndLib_HeaderFile

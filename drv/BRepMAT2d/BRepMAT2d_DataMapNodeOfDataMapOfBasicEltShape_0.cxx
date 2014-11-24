@@ -5,25 +5,13 @@
 
 #include <BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _MAT_BasicElt_HeaderFile
 #include <MAT_BasicElt.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _BRepMAT2d_DataMapOfBasicEltShape_HeaderFile
 #include <BRepMAT2d_DataMapOfBasicEltShape.hxx>
-#endif
-#ifndef _BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape_HeaderFile
 #include <BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape.hxx>
-#endif
 
  
 
@@ -42,7 +30,7 @@ IMPLEMENT_DOWNCAST(BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape,Standard_Transi
 IMPLEMENT_STANDARD_RTTI(BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape)
 
 
-#define TheKey Handle_MAT_BasicElt
+#define TheKey Handle(MAT_BasicElt)
 #define TheKey_hxx <MAT_BasicElt.hxx>
 #define TheItem TopoDS_Shape
 #define TheItem_hxx <TopoDS_Shape.hxx>

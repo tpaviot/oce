@@ -6,22 +6,12 @@
 #ifndef _ExprIntrp_HeaderFile
 #define _ExprIntrp_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_ExprIntrp_Generator_HeaderFile
 #include <Handle_ExprIntrp_Generator.hxx>
-#endif
 class ExprIntrp_Generator;
 class TCollection_AsciiString;
 class ExprIntrp_Generator;
@@ -44,14 +34,14 @@ class ExprIntrp_ListNodeOfStackOfGeneralFunction;
 class ExprIntrp_ListIteratorOfStackOfGeneralFunction;
 
 
-//! Describes an interpreter for GeneralExpressions, <br>
-//!          GeneralFunctions, and GeneralRelations defined in <br>
-//!          package Expr. <br>
-class ExprIntrp  {
+//! Describes an interpreter for GeneralExpressions,
+//! GeneralFunctions, and GeneralRelations defined in
+//! package Expr.
+class ExprIntrp 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
-
 
 
 
@@ -66,7 +56,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   static  Standard_Boolean Parse(const Handle(ExprIntrp_Generator)& gen,const TCollection_AsciiString& str) ;
+  Standard_EXPORT static   Standard_Boolean Parse (const Handle(ExprIntrp_Generator)& gen, const TCollection_AsciiString& str) ;
 
 
 
@@ -95,7 +85,6 @@ friend class ExprIntrp_ListIteratorOfStackOfGeneralFunction;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ExprIntrp_HeaderFile

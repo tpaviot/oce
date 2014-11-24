@@ -6,28 +6,14 @@
 #ifndef _BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape_HeaderFile
 #define _BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape_HeaderFile
 #include <Handle_BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopoDS_Shape;
 class TopTools_ListOfShape;
 class TopTools_OrientedShapeMapHasher;
@@ -36,16 +22,17 @@ class BRepFill_DataMapIteratorOfDataMapOfOrientedShapeListOfShape;
 
 
 
-class BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape : public TCollection_MapNode {
+class BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape : public TCollection_MapNode
+{
 
 public:
 
   
-      BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape(const TopoDS_Shape& K,const TopTools_ListOfShape& I,const TCollection_MapNodePtr& n);
+    BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape(const TopoDS_Shape& K, const TopTools_ListOfShape& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        TopTools_ListOfShape& Value() const;
+      TopTools_ListOfShape& Value()  const;
 
 
 
@@ -60,8 +47,8 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-TopTools_ListOfShape myValue;
+  TopoDS_Shape myKey;
+  TopTools_ListOfShape myValue;
 
 
 };
@@ -99,7 +86,6 @@ TopTools_ListOfShape myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepFill_DataMapNodeOfDataMapOfOrientedShapeListOfShape_HeaderFile

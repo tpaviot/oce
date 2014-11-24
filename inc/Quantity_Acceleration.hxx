@@ -6,13 +6,11 @@
 #ifndef _Quantity_Acceleration_HeaderFile
 #define _Quantity_Acceleration_HeaderFile
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 
 typedef Standard_Real Quantity_Acceleration;
 
 
 #define Quantity_Acceleration_Type_() Standard_Real_Type_()
 
-#endif
+#endif // _Quantity_Acceleration_HeaderFile

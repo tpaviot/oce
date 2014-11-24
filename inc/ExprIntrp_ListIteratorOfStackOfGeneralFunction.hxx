@@ -6,28 +6,14 @@
 #ifndef _ExprIntrp_ListIteratorOfStackOfGeneralFunction_HeaderFile
 #define _ExprIntrp_ListIteratorOfStackOfGeneralFunction_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_Expr_GeneralFunction_HeaderFile
 #include <Handle_Expr_GeneralFunction.hxx>
-#endif
-#ifndef _Handle_ExprIntrp_ListNodeOfStackOfGeneralFunction_HeaderFile
 #include <Handle_ExprIntrp_ListNodeOfStackOfGeneralFunction.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class ExprIntrp_StackOfGeneralFunction;
@@ -36,27 +22,27 @@ class ExprIntrp_ListNodeOfStackOfGeneralFunction;
 
 
 
-class ExprIntrp_ListIteratorOfStackOfGeneralFunction  {
+class ExprIntrp_ListIteratorOfStackOfGeneralFunction 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   ExprIntrp_ListIteratorOfStackOfGeneralFunction();
+  Standard_EXPORT ExprIntrp_ListIteratorOfStackOfGeneralFunction();
   
-  Standard_EXPORT   ExprIntrp_ListIteratorOfStackOfGeneralFunction(const ExprIntrp_StackOfGeneralFunction& L);
+  Standard_EXPORT ExprIntrp_ListIteratorOfStackOfGeneralFunction(const ExprIntrp_StackOfGeneralFunction& L);
   
-  Standard_EXPORT     void Initialize(const ExprIntrp_StackOfGeneralFunction& L) ;
+  Standard_EXPORT   void Initialize (const ExprIntrp_StackOfGeneralFunction& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     Handle_Expr_GeneralFunction& Value() const;
+  Standard_EXPORT   Handle(Expr_GeneralFunction)& Value()  const;
 
 
 friend class ExprIntrp_StackOfGeneralFunction;
-
 
 
 protected:
@@ -69,13 +55,13 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
 
-#define Item Handle_Expr_GeneralFunction
+#define Item Handle(Expr_GeneralFunction)
 #define Item_hxx <Expr_GeneralFunction.hxx>
 #define TCollection_ListNode ExprIntrp_ListNodeOfStackOfGeneralFunction
 #define TCollection_ListNode_hxx <ExprIntrp_ListNodeOfStackOfGeneralFunction.hxx>
@@ -100,7 +86,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ExprIntrp_ListIteratorOfStackOfGeneralFunction_HeaderFile

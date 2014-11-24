@@ -1,9 +1,3 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepShape_ShellBasedSurfaceModel_HeaderFile
 #include <StepShape_ShellBasedSurfaceModel.hxx>
-#endif
-#ifndef _StepShape_SurfaceModel_HeaderFile
 #include <StepShape_SurfaceModel.hxx>
-#endif

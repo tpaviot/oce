@@ -6,54 +6,46 @@
 #ifndef _BOPDS_Tools_HeaderFile
 #define _BOPDS_Tools_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 
 
 
-//! The class BOPDS_Tools contains <br>
-//! a set auxiliary static functions <br>
-//! of the package BOPDS <br>
-class BOPDS_Tools  {
+//! The class BOPDS_Tools contains
+//! a set auxiliary static functions
+//! of the package BOPDS
+class BOPDS_Tools 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//! Converts the conmbination of two types <br>
-//!  of shape <theT1>,<theT2> <br>
-//! to the one integer value, that is returned <br>
-      static  Standard_Integer TypeToInteger(const TopAbs_ShapeEnum theT1,const TopAbs_ShapeEnum theT2) ;
-  
-//! Converts the type of shape <theT>, <br>
-//! to integer value, that is returned <br>
-      static  Standard_Integer TypeToInteger(const TopAbs_ShapeEnum theT) ;
-  
-//! Returns true if the type  <theT> correspond <br>
-//! to a shape having boundary representation <br>
-      static  Standard_Boolean HasBRep(const TopAbs_ShapeEnum theT) ;
-  
-//! Returns true if the type <theT> can be participant of <br>
-//! an interference <br>
-      static  Standard_Boolean IsInterfering(const TopAbs_ShapeEnum theT) ;
 
+  //! Converts the conmbination of two types
+  //! of shape <theT1>,<theT2>
+  //! to the one integer value, that is returned
+    static   Standard_Integer TypeToInteger (const TopAbs_ShapeEnum theT1, const TopAbs_ShapeEnum theT2) ;
+  
+
+  //! Converts the type of shape <theT>,
+  //! to integer value, that is returned
+    static   Standard_Integer TypeToInteger (const TopAbs_ShapeEnum theT) ;
+  
+
+  //! Returns true if the type  <theT> correspond
+  //! to a shape having boundary representation
+    static   Standard_Boolean HasBRep (const TopAbs_ShapeEnum theT) ;
+  
+
+  //! Returns true if the type <theT> can be participant of
+  //! an interference
+    static   Standard_Boolean IsInterfering (const TopAbs_ShapeEnum theT) ;
 
 
 
@@ -77,7 +69,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BOPDS_Tools_HeaderFile

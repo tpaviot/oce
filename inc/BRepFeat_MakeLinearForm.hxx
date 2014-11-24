@@ -6,43 +6,19 @@
 #ifndef _BRepFeat_MakeLinearForm_HeaderFile
 #define _BRepFeat_MakeLinearForm_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _Handle_Geom_Plane_HeaderFile
 #include <Handle_Geom_Plane.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _BRepFeat_RibSlot_HeaderFile
 #include <BRepFeat_RibSlot.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Geom_Curve;
 class Geom_Plane;
 class Standard_ConstructionError;
@@ -55,68 +31,74 @@ class TopTools_ListOfShape;
 class gp_Pnt;
 
 
-//! Builds a rib or a groove along a developable, planar surface. <br>
-//! The semantics of mechanical features is built around <br>
-//! giving thickness to a contour. This thickness can either <br>
-//! be symmetrical - on one side of the contour - or <br>
-//! dissymmetrical - on both sides. As in the semantics of <br>
-//! form features, the thickness is defined by construction of <br>
-//! shapes in specific contexts. <br>
-//! The development contexts differ, however, in case of <br>
-//! mechanical features. Here they include extrusion: <br>
-//! -   to a limiting face of the basis shape <br>
-//! -   to or from a limiting plane <br>
-//! -   to a height. <br>
-class BRepFeat_MakeLinearForm  : public BRepFeat_RibSlot {
+//! Builds a rib or a groove along a developable, planar surface.
+//! The semantics of mechanical features is built around
+//! giving thickness to a contour. This thickness can either
+//! be symmetrical - on one side of the contour - or
+//! dissymmetrical - on both sides. As in the semantics of
+//! form features, the thickness is defined by construction of
+//! shapes in specific contexts.
+//! The development contexts differ, however, in case of
+//! mechanical features. Here they include extrusion:
+//! -   to a limiting face of the basis shape
+//! -   to or from a limiting plane
+//! -   to a height.
+class BRepFeat_MakeLinearForm  : public BRepFeat_RibSlot
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! initializes the linear form class <br>
-      BRepFeat_MakeLinearForm();
-  //!  contour W, a shape Sbase and a <br>
-//!   plane P are initialized to serve as the basic <br>
-//!   elements in the construction of the rib or groove. <br>
-//!   Direction and Direction1 give The vectors for <br>
-//!   defining the direction(s) in which thickness will be built up. <br>
-//!  Fuse offers a choice between: <br>
-//! -   removing matter with a Boolean cut using the <br>
-//!   setting 0 in case of the groove <br>
-//! -   adding matter with Boolean fusion using the <br>
-//!   setting 1 in case of the rib. <br>
-      BRepFeat_MakeLinearForm(const TopoDS_Shape& Sbase,const TopoDS_Wire& W,const Handle(Geom_Plane)& P,const gp_Vec& Direction,const gp_Vec& Direction1,const Standard_Integer Fuse,const Standard_Boolean Modify);
-  //! Initializes this construction algorithm. <br>
-//! A contour W, a shape Sbase and a plane P are <br>
-//! initialized to serve as the basic elements in the <br>
-//! construction of the rib or groove. The vectors for <br>
-//! defining the direction(s) in which thickness will be built <br>
-//! up are given by Direction and Direction1. <br>
-//! Fuse offers a choice between: <br>
-//! -   removing matter with a Boolean cut using the setting <br>
-//!   0 in case of the groove <br>
-//! -   adding matter with Boolean fusion using the setting 1 <br>
-//!   in case of the rib. <br>
-  Standard_EXPORT     void Init(const TopoDS_Shape& Sbase,const TopoDS_Wire& W,const Handle(Geom_Plane)& P,const gp_Vec& Direction,const gp_Vec& Direction1,const Standard_Integer Fuse,const Standard_Boolean Modify) ;
-  //! Indicates that the edge <E> will slide on the face <br>
-//!          <OnFace>. <br>
-//! Raises ConstructionError if the  face does not belong to the <br>
-//! basis shape, or the edge to the prismed shape. <br>
-  Standard_EXPORT     void Add(const TopoDS_Edge& E,const TopoDS_Face& OnFace) ;
-  //! Performs a prism from the wire to the plane along the <br>
-//! basis shape Sbase. Reconstructs the feature topologically. <br>
-  Standard_EXPORT     void Perform() ;
-  //! Limits construction of the linear form feature by using <br>
-//! one of the following three semantics: <br>
-//! -   from a limiting plane <br>
-//! -   to a limiting plane <br>
-//! -   from one limiting plane to another. <br>
-//! The setting is provided by a flag, flag, which can be set <br>
-//! to from and/or until. The third semantic possibility above <br>
-//! is selected by showing both from and until at the same time. <br>
-  Standard_EXPORT     void TransformShapeFU(const Standard_Integer flag) ;
   
-  Standard_EXPORT     Standard_Boolean Propagate(TopTools_ListOfShape& L,const TopoDS_Face& F,const gp_Pnt& FPoint,const gp_Pnt& LPoint,Standard_Boolean& falseside) ;
-
+  //! initializes the linear form class
+    BRepFeat_MakeLinearForm();
+  
+  //! contour W, a shape Sbase and a
+  //! plane P are initialized to serve as the basic
+  //! elements in the construction of the rib or groove.
+  //! Direction and Direction1 give The vectors for
+  //! defining the direction(s) in which thickness will be built up.
+  //! Fuse offers a choice between:
+  //! -   removing matter with a Boolean cut using the
+  //! setting 0 in case of the groove
+  //! -   adding matter with Boolean fusion using the
+  //! setting 1 in case of the rib.
+    BRepFeat_MakeLinearForm(const TopoDS_Shape& Sbase, const TopoDS_Wire& W, const Handle(Geom_Plane)& P, const gp_Vec& Direction, const gp_Vec& Direction1, const Standard_Integer Fuse, const Standard_Boolean Modify);
+  
+  //! Initializes this construction algorithm.
+  //! A contour W, a shape Sbase and a plane P are
+  //! initialized to serve as the basic elements in the
+  //! construction of the rib or groove. The vectors for
+  //! defining the direction(s) in which thickness will be built
+  //! up are given by Direction and Direction1.
+  //! Fuse offers a choice between:
+  //! -   removing matter with a Boolean cut using the setting
+  //! 0 in case of the groove
+  //! -   adding matter with Boolean fusion using the setting 1
+  //! in case of the rib.
+  Standard_EXPORT   void Init (const TopoDS_Shape& Sbase, const TopoDS_Wire& W, const Handle(Geom_Plane)& P, const gp_Vec& Direction, const gp_Vec& Direction1, const Standard_Integer Fuse, const Standard_Boolean Modify) ;
+  
+  //! Indicates that the edge <E> will slide on the face
+  //! <OnFace>.
+  //! Raises ConstructionError if the  face does not belong to the
+  //! basis shape, or the edge to the prismed shape.
+  Standard_EXPORT   void Add (const TopoDS_Edge& E, const TopoDS_Face& OnFace) ;
+  
+  //! Performs a prism from the wire to the plane along the
+  //! basis shape Sbase. Reconstructs the feature topologically.
+  Standard_EXPORT   void Perform() ;
+  
+  //! Limits construction of the linear form feature by using
+  //! one of the following three semantics:
+  //! -   from a limiting plane
+  //! -   to a limiting plane
+  //! -   from one limiting plane to another.
+  //! The setting is provided by a flag, flag, which can be set
+  //! to from and/or until. The third semantic possibility above
+  //! is selected by showing both from and until at the same time.
+  Standard_EXPORT   void TransformShapeFU (const Standard_Integer flag) ;
+  
+  Standard_EXPORT   Standard_Boolean Propagate (TopTools_ListOfShape& L, const TopoDS_Face& F, const gp_Pnt& FPoint, const gp_Pnt& LPoint, Standard_Boolean& falseside) ;
 
 
 
@@ -131,14 +113,14 @@ private:
 
 
 
-Handle_Geom_Curve myCrv;
-gp_Vec myDir;
-gp_Vec myDir1;
-Handle_Geom_Plane myPln;
-Standard_Real myBnd;
-TopTools_DataMapOfShapeListOfShape mySlface;
-TopTools_ListOfShape myListOfEdges;
-Standard_Real myTol;
+  Handle(Geom_Curve) myCrv;
+  gp_Vec myDir;
+  gp_Vec myDir1;
+  Handle(Geom_Plane) myPln;
+  Standard_Real myBnd;
+  TopTools_DataMapOfShapeListOfShape mySlface;
+  TopTools_ListOfShape myListOfEdges;
+  Standard_Real myTol;
 
 
 };
@@ -148,7 +130,6 @@ Standard_Real myTol;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepFeat_MakeLinearForm_HeaderFile

@@ -1,30 +1,10 @@
-#ifndef _Plate_HArray1OfPinpointConstraint_HeaderFile
 #include <Plate_HArray1OfPinpointConstraint.hxx>
-#endif
-#ifndef _TColgp_HArray2OfXYZ_HeaderFile
 #include <TColgp_HArray2OfXYZ.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Plate_PinpointConstraint_HeaderFile
 #include <Plate_PinpointConstraint.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _Plate_Array1OfPinpointConstraint_HeaderFile
 #include <Plate_Array1OfPinpointConstraint.hxx>
-#endif
-#ifndef _TColgp_Array1OfXYZ_HeaderFile
 #include <TColgp_Array1OfXYZ.hxx>
-#endif
-#ifndef _TColgp_Array2OfXYZ_HeaderFile
 #include <TColgp_Array2OfXYZ.hxx>
-#endif
-#ifndef _Plate_LinearScalarConstraint_HeaderFile
 #include <Plate_LinearScalarConstraint.hxx>
-#endif

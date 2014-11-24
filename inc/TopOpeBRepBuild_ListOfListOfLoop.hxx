@@ -6,28 +6,14 @@
 #ifndef _TopOpeBRepBuild_ListOfListOfLoop_HeaderFile
 #define _TopOpeBRepBuild_ListOfListOfLoop_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepBuild_ListNodeOfListOfListOfLoop_HeaderFile
 #include <Handle_TopOpeBRepBuild_ListNodeOfListOfListOfLoop.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class TopOpeBRepBuild_ListIteratorOfListOfListOfLoop;
 class TopOpeBRepBuild_ListOfLoop;
@@ -35,63 +21,63 @@ class TopOpeBRepBuild_ListNodeOfListOfListOfLoop;
 
 
 
-class TopOpeBRepBuild_ListOfListOfLoop  {
+class TopOpeBRepBuild_ListOfListOfLoop 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepBuild_ListOfListOfLoop();
+  Standard_EXPORT TopOpeBRepBuild_ListOfListOfLoop();
   
-  Standard_EXPORT   TopOpeBRepBuild_ListOfListOfLoop(const TopOpeBRepBuild_ListOfListOfLoop& Other);
+  Standard_EXPORT TopOpeBRepBuild_ListOfListOfLoop(const TopOpeBRepBuild_ListOfListOfLoop& Other);
   
-  Standard_EXPORT     void Assign(const TopOpeBRepBuild_ListOfListOfLoop& Other) ;
-    void operator=(const TopOpeBRepBuild_ListOfListOfLoop& Other) 
+  Standard_EXPORT   void Assign (const TopOpeBRepBuild_ListOfListOfLoop& Other) ;
+  void operator= (const TopOpeBRepBuild_ListOfListOfLoop& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TopOpeBRepBuild_ListOfListOfLoop()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const TopOpeBRepBuild_ListOfLoop& I) ;
+  Standard_EXPORT   void Prepend (const TopOpeBRepBuild_ListOfLoop& I) ;
   
-  Standard_EXPORT     void Prepend(const TopOpeBRepBuild_ListOfLoop& I,TopOpeBRepBuild_ListIteratorOfListOfListOfLoop& theIt) ;
+  Standard_EXPORT   void Prepend (const TopOpeBRepBuild_ListOfLoop& I, TopOpeBRepBuild_ListIteratorOfListOfListOfLoop& theIt) ;
   
-  Standard_EXPORT     void Prepend(TopOpeBRepBuild_ListOfListOfLoop& Other) ;
+  Standard_EXPORT   void Prepend (TopOpeBRepBuild_ListOfListOfLoop& Other) ;
   
-  Standard_EXPORT     void Append(const TopOpeBRepBuild_ListOfLoop& I) ;
+  Standard_EXPORT   void Append (const TopOpeBRepBuild_ListOfLoop& I) ;
   
-  Standard_EXPORT     void Append(const TopOpeBRepBuild_ListOfLoop& I,TopOpeBRepBuild_ListIteratorOfListOfListOfLoop& theIt) ;
+  Standard_EXPORT   void Append (const TopOpeBRepBuild_ListOfLoop& I, TopOpeBRepBuild_ListIteratorOfListOfListOfLoop& theIt) ;
   
-  Standard_EXPORT     void Append(TopOpeBRepBuild_ListOfListOfLoop& Other) ;
+  Standard_EXPORT   void Append (TopOpeBRepBuild_ListOfListOfLoop& Other) ;
   
-  Standard_EXPORT     TopOpeBRepBuild_ListOfLoop& First() const;
+  Standard_EXPORT   TopOpeBRepBuild_ListOfLoop& First()  const;
   
-  Standard_EXPORT     TopOpeBRepBuild_ListOfLoop& Last() const;
+  Standard_EXPORT   TopOpeBRepBuild_ListOfLoop& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(TopOpeBRepBuild_ListIteratorOfListOfListOfLoop& It) ;
+  Standard_EXPORT   void Remove (TopOpeBRepBuild_ListIteratorOfListOfListOfLoop& It) ;
   
-  Standard_EXPORT     void InsertBefore(const TopOpeBRepBuild_ListOfLoop& I,TopOpeBRepBuild_ListIteratorOfListOfListOfLoop& It) ;
+  Standard_EXPORT   void InsertBefore (const TopOpeBRepBuild_ListOfLoop& I, TopOpeBRepBuild_ListIteratorOfListOfListOfLoop& It) ;
   
-  Standard_EXPORT     void InsertBefore(TopOpeBRepBuild_ListOfListOfLoop& Other,TopOpeBRepBuild_ListIteratorOfListOfListOfLoop& It) ;
+  Standard_EXPORT   void InsertBefore (TopOpeBRepBuild_ListOfListOfLoop& Other, TopOpeBRepBuild_ListIteratorOfListOfListOfLoop& It) ;
   
-  Standard_EXPORT     void InsertAfter(const TopOpeBRepBuild_ListOfLoop& I,TopOpeBRepBuild_ListIteratorOfListOfListOfLoop& It) ;
+  Standard_EXPORT   void InsertAfter (const TopOpeBRepBuild_ListOfLoop& I, TopOpeBRepBuild_ListIteratorOfListOfListOfLoop& It) ;
   
-  Standard_EXPORT     void InsertAfter(TopOpeBRepBuild_ListOfListOfLoop& Other,TopOpeBRepBuild_ListIteratorOfListOfListOfLoop& It) ;
+  Standard_EXPORT   void InsertAfter (TopOpeBRepBuild_ListOfListOfLoop& Other, TopOpeBRepBuild_ListIteratorOfListOfListOfLoop& It) ;
 
 
 friend class TopOpeBRepBuild_ListIteratorOfListOfListOfLoop;
-
 
 
 protected:
@@ -104,8 +90,8 @@ private:
 
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
@@ -135,7 +121,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepBuild_ListOfListOfLoop_HeaderFile

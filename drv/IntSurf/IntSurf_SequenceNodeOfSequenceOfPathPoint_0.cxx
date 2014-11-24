@@ -5,16 +5,10 @@
 
 #include <IntSurf_SequenceNodeOfSequenceOfPathPoint.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IntSurf_PathPoint_HeaderFile
 #include <IntSurf_PathPoint.hxx>
-#endif
-#ifndef _IntSurf_SequenceOfPathPoint_HeaderFile
 #include <IntSurf_SequenceOfPathPoint.hxx>
-#endif
 
  
 

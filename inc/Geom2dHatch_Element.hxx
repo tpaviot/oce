@@ -6,46 +6,42 @@
 #ifndef _Geom2dHatch_Element_HeaderFile
 #define _Geom2dHatch_Element_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Geom2dAdaptor_Curve_HeaderFile
 #include <Geom2dAdaptor_Curve.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
 class Geom2dAdaptor_Curve;
 
 
 
-class Geom2dHatch_Element  {
+class Geom2dHatch_Element 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Geom2dHatch_Element();
-  //! Magic constructor. <br>
-  Standard_EXPORT   Geom2dHatch_Element(const Geom2dHatch_Element& Other);
-  //! Creates an element. <br>
-  Standard_EXPORT   Geom2dHatch_Element(const Geom2dAdaptor_Curve& Curve,const TopAbs_Orientation Orientation = TopAbs_FORWARD);
-  //! Returns the curve associated to the element. <br>
-  Standard_EXPORT    const Geom2dAdaptor_Curve& Curve() const;
-  //! Returns the curve associated to the element. <br>
-  Standard_EXPORT     Geom2dAdaptor_Curve& ChangeCurve() ;
-  //! Sets the orientation of the element. <br>
-  Standard_EXPORT     void Orientation(const TopAbs_Orientation Orientation) ;
-  //! Returns the orientation of the element. <br>
-  Standard_EXPORT     TopAbs_Orientation Orientation() const;
-
+  Standard_EXPORT Geom2dHatch_Element();
+  
+  //! Magic constructor.
+  Standard_EXPORT Geom2dHatch_Element(const Geom2dHatch_Element& Other);
+  
+  //! Creates an element.
+  Standard_EXPORT Geom2dHatch_Element(const Geom2dAdaptor_Curve& Curve, const TopAbs_Orientation Orientation = TopAbs_FORWARD);
+  
+  //! Returns the curve associated to the element.
+  Standard_EXPORT  const  Geom2dAdaptor_Curve& Curve()  const;
+  
+  //! Returns the curve associated to the element.
+  Standard_EXPORT   Geom2dAdaptor_Curve& ChangeCurve() ;
+  
+  //! Sets the orientation of the element.
+  Standard_EXPORT   void Orientation (const TopAbs_Orientation Orientation) ;
+  
+  //! Returns the orientation of the element.
+  Standard_EXPORT   TopAbs_Orientation Orientation()  const;
 
 
 
@@ -60,8 +56,8 @@ private:
 
 
 
-Geom2dAdaptor_Curve myCurve;
-TopAbs_Orientation myOrientation;
+  Geom2dAdaptor_Curve myCurve;
+  TopAbs_Orientation myOrientation;
 
 
 };
@@ -70,7 +66,6 @@ TopAbs_Orientation myOrientation;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dHatch_Element_HeaderFile

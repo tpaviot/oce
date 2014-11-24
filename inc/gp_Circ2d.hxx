@@ -6,34 +6,16 @@
 #ifndef _gp_Circ2d_HeaderFile
 #define _gp_Circ2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Ax22d_HeaderFile
 #include <gp_Ax22d.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Storable_HeaderFile
 #include <Standard_Storable.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _gp_Ax2d_HeaderFile
 #include <gp_Ax2d.hxx>
-#endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
 #include <Standard_PrimitiveTypes.hxx>
-#endif
 class Standard_ConstructionError;
 class gp_Ax2d;
 class gp_Ax22d;
@@ -44,153 +26,187 @@ class gp_Vec2d;
 
 Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(gp_Circ2d);
 
-//! Describes a circle in the plane (2D space). <br>
-//! A circle is defined by its radius and positioned in the <br>
-//! plane with a coordinate system (a gp_Ax22d object) as follows: <br>
-//! -   the origin of the coordinate system is the center of the circle, and <br>
-//! -   the orientation (direct or indirect) of the coordinate <br>
-//!   system gives an implicit orientation to the circle (and <br>
-//!   defines its trigonometric sense). <br>
-//! This positioning coordinate system is the "local <br>
-//! coordinate system" of the circle. <br>
-//! Note: when a gp_Circ2d circle is converted into a <br>
-//! Geom2d_Circle circle, some implicit properties of the <br>
-//! circle are used explicitly: <br>
-//! -   the implicit orientation corresponds to the direction in <br>
-//!   which parameter values increase, <br>
-//! -   the starting point for parameterization is that of the "X <br>
-//!   Axis" of the local coordinate system (i.e. the "X Axis" of the circle). <br>
-//!   See Also <br>
-//! GccAna and Geom2dGcc packages which provide <br>
-//! functions for constructing circles defined by geometric constraints <br>
-//! gce_MakeCirc2d which provides functions for more <br>
-//! complex circle constructions <br>
-//! Geom2d_Circle which provides additional functions for <br>
-//! constructing circles and works, with the parametric <br>
-//! equations of circles in particular  gp_Ax22d <br>
-class gp_Circ2d  {
+//! Describes a circle in the plane (2D space).
+//! A circle is defined by its radius and positioned in the
+//! plane with a coordinate system (a gp_Ax22d object) as follows:
+//! -   the origin of the coordinate system is the center of the circle, and
+//! -   the orientation (direct or indirect) of the coordinate
+//! system gives an implicit orientation to the circle (and
+//! defines its trigonometric sense).
+//! This positioning coordinate system is the "local
+//! coordinate system" of the circle.
+//! Note: when a gp_Circ2d circle is converted into a
+//! Geom2d_Circle circle, some implicit properties of the
+//! circle are used explicitly:
+//! -   the implicit orientation corresponds to the direction in
+//! which parameter values increase,
+//! -   the starting point for parameterization is that of the "X
+//! Axis" of the local coordinate system (i.e. the "X Axis" of the circle).
+//! See Also
+//! GccAna and Geom2dGcc packages which provide
+//! functions for constructing circles defined by geometric constraints
+//! gce_MakeCirc2d which provides functions for more
+//! complex circle constructions
+//! Geom2d_Circle which provides additional functions for
+//! constructing circles and works, with the parametric
+//! equations of circles in particular  gp_Ax22d
+class gp_Circ2d 
+{
 
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! creates an indefinite circle. <br>
-      gp_Circ2d();
   
-//!  The location point of XAxis is the center of the circle. <br>
-//!  Warnings : <br>
-//!  It is not forbidden to create a circle with Radius = 0.0   Raises ConstructionError if Radius < 0.0. <br>//! Raised if Radius < 0.0. <br>
-      gp_Circ2d(const gp_Ax2d& XAxis,const Standard_Real Radius,const Standard_Boolean Sense = Standard_True);
+  //! creates an indefinite circle.
+    gp_Circ2d();
   
-//!  Axis defines the Xaxis and Yaxis of the circle which defines <br>
-//!  the origin and the sense of parametrization. <br>
-//!  The location point of Axis is the center of the circle. <br>
-//!  Warnings : <br>
-//!  It is not forbidden to create a circle with Radius = 0.0 Raises ConstructionError if Radius < 0.0. <br>//! Raised if Radius < 0.0. <br>
-      gp_Circ2d(const gp_Ax22d& Axis,const Standard_Real Radius);
-  //! Changes the location point (center) of the circle. <br>
-  Standard_EXPORT     void SetLocation(const gp_Pnt2d& P) ;
-  //! Changes the X axis of the circle. <br>
-        void SetXAxis(const gp_Ax2d& A) ;
-  //! Changes the X axis of the circle. <br>
-        void SetAxis(const gp_Ax22d& A) ;
-  //! Changes the Y axis of the circle. <br>
-        void SetYAxis(const gp_Ax2d& A) ;
-  //!    Modifies the radius of this circle. <br>
-//! This class does not prevent the creation of a circle where <br>
-//! Radius is null. <br>
-//! Exceptions <br>
-//! Standard_ConstructionError if Radius is negative. <br>
-        void SetRadius(const Standard_Real Radius) ;
-  //! Computes the area of the circle. <br>
-        Standard_Real Area() const;
+
+  //! The location point of XAxis is the center of the circle.
+  //! Warnings :
+  //! It is not forbidden to create a circle with Radius = 0.0   Raises ConstructionError if Radius < 0.0.
+  //! Raised if Radius < 0.0.
+    gp_Circ2d(const gp_Ax2d& XAxis, const Standard_Real Radius, const Standard_Boolean Sense = Standard_True);
   
-//!  Returns the normalized coefficients from the implicit equation <br>
-//!  of the circle : <br>
-//!  A * (X**2) + B * (Y**2) + 2*C*(X*Y) + 2*D*X + 2*E*Y + F = 0.0 <br>
-        void Coefficients(Standard_Real& A,Standard_Real& B,Standard_Real& C,Standard_Real& D,Standard_Real& E,Standard_Real& F) const;
-  //! Does <me> contain P ? <br>
-//!  Returns True if the distance between P and any point on <br>
-//!  the circumference of the circle is lower of equal to <br>
-//!  <LinearTolerance>. <br>
-        Standard_Boolean Contains(const gp_Pnt2d& P,const Standard_Real LinearTolerance) const;
+
+  //! Axis defines the Xaxis and Yaxis of the circle which defines
+  //! the origin and the sense of parametrization.
+  //! The location point of Axis is the center of the circle.
+  //! Warnings :
+  //! It is not forbidden to create a circle with Radius = 0.0 Raises ConstructionError if Radius < 0.0.
+  //! Raised if Radius < 0.0.
+    gp_Circ2d(const gp_Ax22d& Axis, const Standard_Real Radius);
   
-//!  Computes the minimum of distance between the point P and any <br>
-//!  point on the circumference of the circle. <br>
-        Standard_Real Distance(const gp_Pnt2d& P) const;
+  //! Changes the location point (center) of the circle.
+  Standard_EXPORT   void SetLocation (const gp_Pnt2d& P) ;
   
-//!  Computes the square distance between <me> and the point P. <br>
-        Standard_Real SquareDistance(const gp_Pnt2d& P) const;
-  //! computes the circumference of the circle. <br>
-        Standard_Real Length() const;
-  //! Returns the location point (center) of the circle. <br>
-       const gp_Pnt2d& Location() const;
-  //! Returns the radius value of the circle. <br>
-        Standard_Real Radius() const;
-  //! returns the position of the circle. <br>
-       const gp_Ax22d& Axis() const;
-  //! returns the position of the circle. Idem Axis(me). <br>
-       const gp_Ax22d& Position() const;
-  //! returns the X axis of the circle. <br>
-        gp_Ax2d XAxis() const;
-  //! Returns the Y axis of the circle. <br>//! Reverses the direction of the circle. <br>
-        gp_Ax2d YAxis() const;
-  //! Reverses the orientation of the local coordinate system <br>
-//! of this circle (the "Y Direction" is reversed) and therefore <br>
-//! changes the implicit orientation of this circle. <br>
-//!   Reverse assigns the result to this circle, <br>
-        void Reverse() ;
-  //! Reverses the orientation of the local coordinate system <br>
-//! of this circle (the "Y Direction" is reversed) and therefore <br>
-//! changes the implicit orientation of this circle. <br>
-//!   Reversed creates a new circle. <br>
-        gp_Circ2d Reversed() const;
-  //! Returns true if the local coordinate system is direct <br>
-//! and false in the other case. <br>
-        Standard_Boolean IsDirect() const;
+  //! Changes the X axis of the circle.
+      void SetXAxis (const gp_Ax2d& A) ;
   
-  Standard_EXPORT     void Mirror(const gp_Pnt2d& P) ;
+  //! Changes the X axis of the circle.
+      void SetAxis (const gp_Ax22d& A) ;
   
-//!  Performs the symmetrical transformation of a circle with respect <br>
-//!  to the point P which is the center of the symmetry <br>
-  Standard_EXPORT     gp_Circ2d Mirrored(const gp_Pnt2d& P) const;
+  //! Changes the Y axis of the circle.
+      void SetYAxis (const gp_Ax2d& A) ;
   
-  Standard_EXPORT     void Mirror(const gp_Ax2d& A) ;
+  //! Modifies the radius of this circle.
+  //! This class does not prevent the creation of a circle where
+  //! Radius is null.
+  //! Exceptions
+  //! Standard_ConstructionError if Radius is negative.
+      void SetRadius (const Standard_Real Radius) ;
   
-//!  Performs the symmetrical transformation of a circle with respect <br>
-//!  to an axis placement which is the axis of the symmetry. <br>
-  Standard_EXPORT     gp_Circ2d Mirrored(const gp_Ax2d& A) const;
+  //! Computes the area of the circle.
+      Standard_Real Area()  const;
   
-        void Rotate(const gp_Pnt2d& P,const Standard_Real Ang) ;
+
+  //! Returns the normalized coefficients from the implicit equation
+  //! of the circle :
+  //! A * (X**2) + B * (Y**2) + 2*C*(X*Y) + 2*D*X + 2*E*Y + F = 0.0
+      void Coefficients (Standard_Real& A, Standard_Real& B, Standard_Real& C, Standard_Real& D, Standard_Real& E, Standard_Real& F)  const;
   
-//!  Rotates a circle. P is the center of the rotation. <br>
-//!  Ang is the angular value of the rotation in radians. <br>
-        gp_Circ2d Rotated(const gp_Pnt2d& P,const Standard_Real Ang) const;
+  //! Does <me> contain P ?
+  //! Returns True if the distance between P and any point on
+  //! the circumference of the circle is lower of equal to
+  //! <LinearTolerance>.
+      Standard_Boolean Contains (const gp_Pnt2d& P, const Standard_Real LinearTolerance)  const;
   
-        void Scale(const gp_Pnt2d& P,const Standard_Real S) ;
+
+  //! Computes the minimum of distance between the point P and any
+  //! point on the circumference of the circle.
+      Standard_Real Distance (const gp_Pnt2d& P)  const;
   
-//!  Scales a circle. S is the scaling value. <br>
-//! Warnings : <br>
-//!  If S is negative the radius stay positive but <br>
-//!  the "XAxis" and the "YAxis" are  reversed as for <br>
-//!  an ellipse. <br>
-        gp_Circ2d Scaled(const gp_Pnt2d& P,const Standard_Real S) const;
+
+  //! Computes the square distance between <me> and the point P.
+      Standard_Real SquareDistance (const gp_Pnt2d& P)  const;
   
-        void Transform(const gp_Trsf2d& T) ;
+  //! computes the circumference of the circle.
+      Standard_Real Length()  const;
   
-//!  Transforms a circle with the transformation T from class Trsf2d. <br>
-        gp_Circ2d Transformed(const gp_Trsf2d& T) const;
+  //! Returns the location point (center) of the circle.
+     const  gp_Pnt2d& Location()  const;
   
-        void Translate(const gp_Vec2d& V) ;
+  //! Returns the radius value of the circle.
+      Standard_Real Radius()  const;
   
-//!  Translates a circle in the direction of the vector V. <br>
-//!  The magnitude of the translation is the vector's magnitude. <br>
-        gp_Circ2d Translated(const gp_Vec2d& V) const;
+  //! returns the position of the circle.
+     const  gp_Ax22d& Axis()  const;
   
-        void Translate(const gp_Pnt2d& P1,const gp_Pnt2d& P2) ;
+  //! returns the position of the circle. Idem Axis(me).
+     const  gp_Ax22d& Position()  const;
   
-//!  Translates a circle from the point P1 to the point P2. <br>
-        gp_Circ2d Translated(const gp_Pnt2d& P1,const gp_Pnt2d& P2) const;
+  //! returns the X axis of the circle.
+      gp_Ax2d XAxis()  const;
+  
+  //! Returns the Y axis of the circle.
+  //! Reverses the direction of the circle.
+      gp_Ax2d YAxis()  const;
+  
+  //! Reverses the orientation of the local coordinate system
+  //! of this circle (the "Y Direction" is reversed) and therefore
+  //! changes the implicit orientation of this circle.
+  //! Reverse assigns the result to this circle,
+      void Reverse() ;
+  
+  //! Reverses the orientation of the local coordinate system
+  //! of this circle (the "Y Direction" is reversed) and therefore
+  //! changes the implicit orientation of this circle.
+  //! Reversed creates a new circle.
+      gp_Circ2d Reversed()  const;
+  
+  //! Returns true if the local coordinate system is direct
+  //! and false in the other case.
+      Standard_Boolean IsDirect()  const;
+  
+  Standard_EXPORT   void Mirror (const gp_Pnt2d& P) ;
+  
+
+  //! Performs the symmetrical transformation of a circle with respect
+  //! to the point P which is the center of the symmetry
+  Standard_EXPORT   gp_Circ2d Mirrored (const gp_Pnt2d& P)  const;
+  
+  Standard_EXPORT   void Mirror (const gp_Ax2d& A) ;
+  
+
+  //! Performs the symmetrical transformation of a circle with respect
+  //! to an axis placement which is the axis of the symmetry.
+  Standard_EXPORT   gp_Circ2d Mirrored (const gp_Ax2d& A)  const;
+  
+      void Rotate (const gp_Pnt2d& P, const Standard_Real Ang) ;
+  
+
+  //! Rotates a circle. P is the center of the rotation.
+  //! Ang is the angular value of the rotation in radians.
+      gp_Circ2d Rotated (const gp_Pnt2d& P, const Standard_Real Ang)  const;
+  
+      void Scale (const gp_Pnt2d& P, const Standard_Real S) ;
+  
+
+  //! Scales a circle. S is the scaling value.
+  //! Warnings :
+  //! If S is negative the radius stay positive but
+  //! the "XAxis" and the "YAxis" are  reversed as for
+  //! an ellipse.
+      gp_Circ2d Scaled (const gp_Pnt2d& P, const Standard_Real S)  const;
+  
+      void Transform (const gp_Trsf2d& T) ;
+  
+
+  //! Transforms a circle with the transformation T from class Trsf2d.
+      gp_Circ2d Transformed (const gp_Trsf2d& T)  const;
+  
+      void Translate (const gp_Vec2d& V) ;
+  
+
+  //! Translates a circle in the direction of the vector V.
+  //! The magnitude of the translation is the vector's magnitude.
+      gp_Circ2d Translated (const gp_Vec2d& V)  const;
+  
+      void Translate (const gp_Pnt2d& P1, const gp_Pnt2d& P2) ;
+  
+
+  //! Translates a circle from the point P1 to the point P2.
+      gp_Circ2d Translated (const gp_Pnt2d& P1, const gp_Pnt2d& P2)  const;
     const gp_Ax22d& _CSFDB_Getgp_Circ2dpos() const { return pos; }
     Standard_Real _CSFDB_Getgp_Circ2dradius() const { return radius; }
     void _CSFDB_Setgp_Circ2dradius(const Standard_Real p) { radius = p; }
@@ -205,8 +221,8 @@ protected:
 private: 
 
 
-gp_Ax22d pos;
-Standard_Real radius;
+  gp_Ax22d pos;
+  Standard_Real radius;
 
 
 };
@@ -216,7 +232,6 @@ Standard_Real radius;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _gp_Circ2d_HeaderFile

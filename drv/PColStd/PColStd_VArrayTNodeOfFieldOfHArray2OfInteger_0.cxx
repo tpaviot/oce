@@ -5,12 +5,8 @@
 
 #include <PColStd_VArrayTNodeOfFieldOfHArray2OfInteger.hxx>
 
-#ifndef _PColStd_FieldOfHArray2OfInteger_HeaderFile
 #include <PColStd_FieldOfHArray2OfInteger.hxx>
-#endif
-#ifndef _PColStd_VArrayNodeOfFieldOfHArray2OfInteger_HeaderFile
 #include <PColStd_VArrayNodeOfFieldOfHArray2OfInteger.hxx>
-#endif
  
 
 #define Item Standard_Integer

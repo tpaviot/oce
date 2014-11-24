@@ -6,25 +6,13 @@
 #ifndef _IntTools_StdMapNodeOfMapOfSurfaceSample_HeaderFile
 #define _IntTools_StdMapNodeOfMapOfSurfaceSample_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IntTools_StdMapNodeOfMapOfSurfaceSample_HeaderFile
 #include <Handle_IntTools_StdMapNodeOfMapOfSurfaceSample.hxx>
-#endif
 
-#ifndef _IntTools_SurfaceRangeSample_HeaderFile
 #include <IntTools_SurfaceRangeSample.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class IntTools_SurfaceRangeSample;
 class IntTools_SurfaceRangeSampleMapHasher;
 class IntTools_MapOfSurfaceSample;
@@ -32,14 +20,15 @@ class IntTools_MapIteratorOfMapOfSurfaceSample;
 
 
 
-class IntTools_StdMapNodeOfMapOfSurfaceSample : public TCollection_MapNode {
+class IntTools_StdMapNodeOfMapOfSurfaceSample : public TCollection_MapNode
+{
 
 public:
 
   
-      IntTools_StdMapNodeOfMapOfSurfaceSample(const IntTools_SurfaceRangeSample& K,const TCollection_MapNodePtr& n);
+    IntTools_StdMapNodeOfMapOfSurfaceSample(const IntTools_SurfaceRangeSample& K, const TCollection_MapNodePtr& n);
   
-        IntTools_SurfaceRangeSample& Key() const;
+      IntTools_SurfaceRangeSample& Key()  const;
 
 
 
@@ -54,7 +43,7 @@ protected:
 private: 
 
 
-IntTools_SurfaceRangeSample myKey;
+  IntTools_SurfaceRangeSample myKey;
 
 
 };
@@ -88,7 +77,6 @@ IntTools_SurfaceRangeSample myKey;
 #undef TCollection_Map_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_StdMapNodeOfMapOfSurfaceSample_HeaderFile

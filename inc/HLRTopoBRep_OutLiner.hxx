@@ -6,28 +6,14 @@
 #ifndef _HLRTopoBRep_OutLiner_HeaderFile
 #define _HLRTopoBRep_OutLiner_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_HLRTopoBRep_OutLiner_HeaderFile
 #include <Handle_HLRTopoBRep_OutLiner.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _HLRTopoBRep_Data_HeaderFile
 #include <HLRTopoBRep_Data.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TopoDS_Shape;
 class HLRTopoBRep_Data;
 class HLRAlgo_Projector;
@@ -36,28 +22,29 @@ class TopoDS_Face;
 
 
 
-class HLRTopoBRep_OutLiner : public MMgt_TShared {
+class HLRTopoBRep_OutLiner : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   HLRTopoBRep_OutLiner();
+  Standard_EXPORT HLRTopoBRep_OutLiner();
   
-  Standard_EXPORT   HLRTopoBRep_OutLiner(const TopoDS_Shape& OriSh);
+  Standard_EXPORT HLRTopoBRep_OutLiner(const TopoDS_Shape& OriSh);
   
-  Standard_EXPORT   HLRTopoBRep_OutLiner(const TopoDS_Shape& OriS,const TopoDS_Shape& OutS);
+  Standard_EXPORT HLRTopoBRep_OutLiner(const TopoDS_Shape& OriS, const TopoDS_Shape& OutS);
   
-        void OriginalShape(const TopoDS_Shape& OriS) ;
+      void OriginalShape (const TopoDS_Shape& OriS) ;
   
-        TopoDS_Shape& OriginalShape() ;
+      TopoDS_Shape& OriginalShape() ;
   
-        void OutLinedShape(const TopoDS_Shape& OutS) ;
+      void OutLinedShape (const TopoDS_Shape& OutS) ;
   
-        TopoDS_Shape& OutLinedShape() ;
+      TopoDS_Shape& OutLinedShape() ;
   
-        HLRTopoBRep_Data& DataStructure() ;
+      HLRTopoBRep_Data& DataStructure() ;
   
-  Standard_EXPORT     void Fill(const HLRAlgo_Projector& P,BRepTopAdaptor_MapOfShapeTool& MST,const Standard_Integer nbIso) ;
+  Standard_EXPORT   void Fill (const HLRAlgo_Projector& P, BRepTopAdaptor_MapOfShapeTool& MST, const Standard_Integer nbIso) ;
 
 
 
@@ -71,14 +58,15 @@ protected:
 
 private: 
 
-  //! Builds faces from F and add them to S. <br>
-  Standard_EXPORT     void ProcessFace(const TopoDS_Face& F,TopoDS_Shape& S,BRepTopAdaptor_MapOfShapeTool& M) ;
   
-  Standard_EXPORT     void BuildShape(BRepTopAdaptor_MapOfShapeTool& M) ;
+  //! Builds faces from F and add them to S.
+  Standard_EXPORT   void ProcessFace (const TopoDS_Face& F, TopoDS_Shape& S, BRepTopAdaptor_MapOfShapeTool& M) ;
+  
+  Standard_EXPORT   void BuildShape (BRepTopAdaptor_MapOfShapeTool& M) ;
 
-TopoDS_Shape myOriginalShape;
-TopoDS_Shape myOutLinedShape;
-HLRTopoBRep_Data myDS;
+  TopoDS_Shape myOriginalShape;
+  TopoDS_Shape myOutLinedShape;
+  HLRTopoBRep_Data myDS;
 
 
 };
@@ -88,7 +76,6 @@ HLRTopoBRep_Data myDS;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRTopoBRep_OutLiner_HeaderFile

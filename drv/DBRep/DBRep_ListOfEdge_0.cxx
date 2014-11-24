@@ -5,21 +5,13 @@
 
 #include <DBRep_ListOfEdge.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _DBRep_ListIteratorOfListOfEdge_HeaderFile
 #include <DBRep_ListIteratorOfListOfEdge.hxx>
-#endif
-#ifndef _DBRep_Edge_HeaderFile
 #include <DBRep_Edge.hxx>
-#endif
-#ifndef _DBRep_ListNodeOfListOfEdge_HeaderFile
 #include <DBRep_ListNodeOfListOfEdge.hxx>
-#endif
  
 
-#define Item Handle_DBRep_Edge
+#define Item Handle(DBRep_Edge)
 #define Item_hxx <DBRep_Edge.hxx>
 #define TCollection_ListNode DBRep_ListNodeOfListOfEdge
 #define TCollection_ListNode_hxx <DBRep_ListNodeOfListOfEdge.hxx>

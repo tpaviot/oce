@@ -6,49 +6,34 @@
 #ifndef _GeomFill_TrihedronWithGuide_HeaderFile
 #define _GeomFill_TrihedronWithGuide_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_GeomFill_TrihedronWithGuide_HeaderFile
 #include <Handle_GeomFill_TrihedronWithGuide.hxx>
-#endif
 
-#ifndef _Handle_Adaptor3d_HCurve_HeaderFile
 #include <Handle_Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _GeomFill_TrihedronLaw_HeaderFile
 #include <GeomFill_TrihedronLaw.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Adaptor3d_HCurve;
 class Standard_OutOfRange;
 class Standard_NotImplemented;
 class gp_Pnt;
 
 
-//! To define Trihedron along one Curve with a guide <br>
-//! <br>
-//! <br>
-//! <br>
-class GeomFill_TrihedronWithGuide : public GeomFill_TrihedronLaw {
+//! To define Trihedron along one Curve with a guide
+class GeomFill_TrihedronWithGuide : public GeomFill_TrihedronLaw
+{
 
 public:
 
   
-  Standard_EXPORT   virtual  Handle_Adaptor3d_HCurve Guide() const = 0;
+  Standard_EXPORT virtual   Handle(Adaptor3d_HCurve) Guide()  const = 0;
   
-  Standard_EXPORT   virtual  void Origine(const Standard_Real Param1,const Standard_Real Param2)  = 0;
-  //! Returns the current point on guide <br>
-//!          found by D0, D1 or D2. <br>
-  Standard_EXPORT     gp_Pnt CurrentPointOnGuide() const;
+  Standard_EXPORT virtual   void Origine (const Standard_Real Param1, const Standard_Real Param2)  = 0;
+  
+  //! Returns the current point on guide
+  //! found by D0, D1 or D2.
+  Standard_EXPORT   gp_Pnt CurrentPointOnGuide()  const;
 
 
 
@@ -58,9 +43,9 @@ public:
 protected:
 
 
-Handle_Adaptor3d_HCurve myGuide;
-Handle_Adaptor3d_HCurve myTrimG;
-gp_Pnt myCurPointOnGuide;
+  Handle(Adaptor3d_HCurve) myGuide;
+  Handle(Adaptor3d_HCurve) myTrimG;
+  gp_Pnt myCurPointOnGuide;
 
 
 private: 
@@ -74,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomFill_TrihedronWithGuide_HeaderFile

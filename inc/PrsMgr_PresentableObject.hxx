@@ -6,79 +6,31 @@
 #ifndef _PrsMgr_PresentableObject_HeaderFile
 #define _PrsMgr_PresentableObject_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_PrsMgr_PresentableObject_HeaderFile
 #include <Handle_PrsMgr_PresentableObject.hxx>
-#endif
 
-#ifndef _PrsMgr_Presentations_HeaderFile
 #include <PrsMgr_Presentations.hxx>
-#endif
-#ifndef _PrsMgr_TypeOfPresentation3d_HeaderFile
 #include <PrsMgr_TypeOfPresentation3d.hxx>
-#endif
-#ifndef _Graphic3d_SequenceOfHClipPlane_HeaderFile
 #include <Graphic3d_SequenceOfHClipPlane.hxx>
-#endif
-#ifndef _Graphic3d_CTransPersStruct_HeaderFile
 #include <Graphic3d_CTransPersStruct.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _PrsMgr_PresentableObjectPointer_HeaderFile
 #include <PrsMgr_PresentableObjectPointer.hxx>
-#endif
-#ifndef _gp_Trsf_HeaderFile
 #include <gp_Trsf.hxx>
-#endif
-#ifndef _PrsMgr_ListOfPresentableObjects_HeaderFile
 #include <PrsMgr_ListOfPresentableObjects.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_Graphic3d_Structure_HeaderFile
 #include <Handle_Graphic3d_Structure.hxx>
-#endif
-#ifndef _Handle_Graphic3d_DataStructureManager_HeaderFile
 #include <Handle_Graphic3d_DataStructureManager.hxx>
-#endif
-#ifndef _PrsMgr_Presentation_HeaderFile
 #include <PrsMgr_Presentation.hxx>
-#endif
-#ifndef _Handle_Geom_Transformation_HeaderFile
 #include <Handle_Geom_Transformation.hxx>
-#endif
-#ifndef _PrsMgr_PresentationManager3d_HeaderFile
 #include <PrsMgr_PresentationManager3d.hxx>
-#endif
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Prs3d_Projector_HeaderFile
 #include <Handle_Prs3d_Projector.hxx>
-#endif
-#ifndef _Handle_PrsMgr_PresentationManager_HeaderFile
 #include <Handle_PrsMgr_PresentationManager.hxx>
-#endif
-#ifndef _Handle_PrsMgr_Presentation_HeaderFile
 #include <Handle_PrsMgr_Presentation.hxx>
-#endif
-#ifndef _Graphic3d_TransModeFlags_HeaderFile
 #include <Graphic3d_TransModeFlags.hxx>
-#endif
-#ifndef _Graphic3d_ClipPlane_Handle_HeaderFile
 #include <Graphic3d_ClipPlane_Handle.hxx>
-#endif
 class Standard_NotImplemented;
 class PrsMgr_Presentation;
 class PrsMgr_PresentationManager;
@@ -93,139 +45,164 @@ class TColStd_ListOfInteger;
 class gp_Trsf;
 
 
-//! A framework to supply the Graphic3d <br>
-//! structure of the object to be presented. On the first <br>
-//! display request, this structure is created by calling the <br>
-//! appropriate algorithm and retaining this frameworkfor <br>
-//! further display. <br>
-//! This abstract framework is inherited in Application <br>
-//! Interactive Services (AIS), notably in: <br>
-//! -   AIS_InteractiveObject <br>
-//! -   AIS_ConnectedInteractive <br>
-//! -   AIS_MultipleConnectedInteractive <br>
-//! -   AIS_Shape <br>
-//!   Consequently, 3D presentation should be handled by <br>
-//! the relevant daughter classes and their member <br>
-//! functions in AIS. This is particularly true in the <br>
-//! creation of new interactive objects. <br>
-class PrsMgr_PresentableObject : public MMgt_TShared {
+//! A framework to supply the Graphic3d
+//! structure of the object to be presented. On the first
+//! display request, this structure is created by calling the
+//! appropriate algorithm and retaining this frameworkfor
+//! further display.
+//! This abstract framework is inherited in Application
+//! Interactive Services (AIS), notably in:
+//! -   AIS_InteractiveObject
+//! -   AIS_ConnectedInteractive
+//! -   AIS_MultipleConnectedInteractive
+//! -   AIS_Shape
+//! Consequently, 3D presentation should be handled by
+//! the relevant daughter classes and their member
+//! functions in AIS. This is particularly true in the
+//! creation of new interactive objects.
+class PrsMgr_PresentableObject : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT     PrsMgr_Presentations& Presentations() ;
-  //! Returns information on whether the object accepts display in HLR mode or not. <br>
-  Standard_EXPORT     PrsMgr_TypeOfPresentation3d TypeOfPresentation3d() const;
-  //!  Sets up Transform Persistence Mode for this object. <br>
-//! This function used to lock in object position, rotation and / or zooming relative to camera position. <br>
-//! Object will be drawn in the origin setted by APoint parameter (except Graphic3d_TMF_TriedronPers flag <br>
-//! - see description later). aFlag should be: <br>
-//! -   Graphic3d_TMF_None - no persistence attributes (reset); <br>
-//! -   Graphic3d_TMF_PanPers - object doesn't move; <br>
-//! -   Graphic3d_TMF_ZoomPers - object doesn't resize; <br>
-//! -   Graphic3d_TMF_RotatePers - object doesn't rotate; <br>
-//! -   Graphic3d_TMF_FullPers - pan, zoom and rotate transform persistence; <br>
-//! -   Graphic3d_TMF_TriedronPers - object behaves like trihedron; <br>
-//! -   combination (Graphic3d_TMF_PanPers | Graphic3d_TMF_ZoomPers); <br>
-//! -   combination (Graphic3d_TMF_PanPers | Graphic3d_TMF_RotatePers); <br>
-//! -   combination (Graphic3d_TMF_ZoomPers | Graphic3d_TMF_RotatePers). <br>
-//! If Graphic3d_TMF_TriedronPers persistence mode selected APoint coordinates X and Y means: <br>
-//! -   X = 0.0, Y = 0.0 - center of view window; <br>
-//! -   X > 0.0, Y > 0.0 - right upper corner of view window; <br>
-//! -   X > 0.0, Y < 0.0 - right lower corner of view window; <br>
-//! -   X < 0.0, Y > 0.0 - left  upper corner of view window; <br>
-//! -   X < 0.0, Y < 0.0 - left  lower corner of view window. <br>
-//! And Z coordinate defines the gap from border of view window (except center position). <br>
-  Standard_EXPORT   virtual  void SetTransformPersistence(const Graphic3d_TransModeFlags& aFlag,const gp_Pnt& APoint) ;
-  //!  Calls previous method  with  point  (0,0,0) <br>
-  Standard_EXPORT     void SetTransformPersistence(const Graphic3d_TransModeFlags& aFlag) ;
-  //!  Gets  Transform  Persistence Mode  for  this  object <br>
-  Standard_EXPORT     Graphic3d_TransModeFlags GetTransformPersistenceMode() const;
-  //!  Gets  point  of  transform  persistence for  this  object <br>
-  Standard_EXPORT     gp_Pnt GetTransformPersistencePoint() const;
+  Standard_EXPORT   PrsMgr_Presentations& Presentations() ;
   
-  Standard_EXPORT     void SetTypeOfPresentation(const PrsMgr_TypeOfPresentation3d aType) ;
-  //! flags the Prs of mode <AMode> to be Updated. <br>
-//!          the Update will be done when needed. <br>
-  Standard_EXPORT     void SetToUpdate(const Standard_Integer aMode) ;
-  //! flags all the Presentations to be Updated. <br>
-  Standard_EXPORT     void SetToUpdate() ;
-  //! gives the list of modes which are flagged "to be updated". <br>
-  Standard_EXPORT     void ToBeUpdated(TColStd_ListOfInteger& ListOfMode) const;
-  //! Sets local transformation to theTransformation. <br>
-  Standard_EXPORT   virtual  void SetLocalTransformation(const gp_Trsf& theTransformation) ;
-  //! Returns true if object has a transformation that is different from the identity. <br>
-  Standard_EXPORT     Standard_Boolean HasTransformation() const;
+  //! Returns information on whether the object accepts display in HLR mode or not.
+  Standard_EXPORT   PrsMgr_TypeOfPresentation3d TypeOfPresentation3d()  const;
   
-       const gp_Trsf& LocalTransformation() const;
+  //! Sets up Transform Persistence Mode for this object.
+  //! This function used to lock in object position, rotation and / or zooming relative to camera position.
+  //! Object will be drawn in the origin setted by APoint parameter (except Graphic3d_TMF_TriedronPers flag
+  //! - see description later). aFlag should be:
+  //! -   Graphic3d_TMF_None - no persistence attributes (reset);
+  //! -   Graphic3d_TMF_PanPers - object doesn't move;
+  //! -   Graphic3d_TMF_ZoomPers - object doesn't resize;
+  //! -   Graphic3d_TMF_RotatePers - object doesn't rotate;
+  //! -   Graphic3d_TMF_FullPers - pan, zoom and rotate transform persistence;
+  //! -   Graphic3d_TMF_TriedronPers - object behaves like trihedron;
+  //! -   combination (Graphic3d_TMF_PanPers | Graphic3d_TMF_ZoomPers);
+  //! -   combination (Graphic3d_TMF_PanPers | Graphic3d_TMF_RotatePers);
+  //! -   combination (Graphic3d_TMF_ZoomPers | Graphic3d_TMF_RotatePers).
+  //! If Graphic3d_TMF_TriedronPers persistence mode selected APoint coordinates X and Y means:
+  //! -   X = 0.0, Y = 0.0 - center of view window;
+  //! -   X > 0.0, Y > 0.0 - right upper corner of view window;
+  //! -   X > 0.0, Y < 0.0 - right lower corner of view window;
+  //! -   X < 0.0, Y > 0.0 - left  upper corner of view window;
+  //! -   X < 0.0, Y < 0.0 - left  lower corner of view window.
+  //! And Z coordinate defines the gap from border of view window (except center position).
+  Standard_EXPORT virtual   void SetTransformPersistence (const Graphic3d_TransModeFlags& aFlag, const gp_Pnt& APoint) ;
   
-       const gp_Trsf& Transformation() const;
-  //! resets local transformation to identity. <br>
-  Standard_EXPORT   virtual  void ResetTransformation() ;
+  //! Calls previous method  with  point  (0,0,0)
+  Standard_EXPORT   void SetTransformPersistence (const Graphic3d_TransModeFlags& aFlag) ;
   
-  Standard_EXPORT   virtual  void UpdateTransformation() ;
+  //! Gets  Transform  Persistence Mode  for  this  object
+  Standard_EXPORT   Graphic3d_TransModeFlags GetTransformPersistenceMode()  const;
   
-  Standard_EXPORT   virtual  void UpdateTransformation(const Handle(Prs3d_Presentation)& P) ;
-  //! Set Z layer ID and update all presentations of <br>
-//! the presentable object. The layer can be set only for displayed object. <br>
-//! If all object presentations are removed, the layer ID will be set to <br>
-//! default value when computing presentation. The layers mechanism allows <br>
-//! drawing objects in higher layers in overlay of objects in lower layers. <br>
-  Standard_EXPORT   virtual  void SetZLayer(const Handle(PrsMgr_PresentationManager)& thePrsMgr,const Standard_Integer theLayerId) ;
-  //! Get ID of Z layer. If no presentations of object is displayed, <br>
-//! and layer ID is unavailable, the -1 value is returned. <br>
-  Standard_EXPORT     Standard_Integer GetZLayer(const Handle(PrsMgr_PresentationManager)& thePrsMgr) const;
-  //! Adds clip plane for graphical clipping for all display mode <br>
-//! presentations. The composition of clip planes truncates the rendering <br>
-//! space to convex volume. Please be aware that number of supported <br>
-//! clip plane is limited. The planes which exceed the limit are ignored. <br>
-//! Besides of this, some planes can be already set in view where the object <br>
-//! is shown: the number of these planes should be substracted from limit <br>
-//! to predict the maximum possible number of object clipping planes. <br>
-//! @param thePlane [in] the clip plane to be appended to map of clip planes. <br>
-  Standard_EXPORT   virtual  void AddClipPlane(const Graphic3d_ClipPlane_Handle& thePlane) ;
-  //! Removes previously added clip plane. <br>
-//! @param thePlane [in] the clip plane to be removed from map of clip planes. <br>
-  Standard_EXPORT   virtual  void RemoveClipPlane(const Graphic3d_ClipPlane_Handle& thePlane) ;
-  //! Set clip planes for graphical clipping for all display mode presentations. <br>
-//! The composition of clip planes truncates the rendering space to convex <br>
-//! volume. Please be aware that number of supported clip plane is limited. <br>
-//! The planes which exceed the limit are ignored. Besides of this, some <br>
-//! planes can be already set in view where the object is shown: the number <br>
-//! of these planes should be substracted from limit to predict the maximum <br>
-//! possible number of object clipping planes. <br>
-  Standard_EXPORT   virtual  void SetClipPlanes(const Graphic3d_SequenceOfHClipPlane& thePlanes) ;
-  //! Get clip planes. <br>
-//! @return set of previously added clip planes for all display mode presentations. <br>
-       const Graphic3d_SequenceOfHClipPlane& GetClipPlanes() const;
-  //! Sets if the object has mutable nature (content or location will be changed regularly). <br>
-//! This method should be called before object displaying to take effect. <br>
-  Standard_EXPORT   virtual  void SetMutable(const Standard_Boolean theIsMutable) ;
-  //! Returns true if object has mutable nature (content or location are be changed regularly). <br>
-//! Mutable object will be managed in different way than static onces (another optimizations). <br>
-  Standard_EXPORT    const Standard_Boolean IsMutable() const;
-  //! Makes theObject child of current object in scene hierarchy. <br>
-  Standard_EXPORT   virtual  void AddChild(const Handle(PrsMgr_PresentableObject)& theObject) ;
-  //! Removes theObject from children of current object in scene hierarchy. <br>
-  Standard_EXPORT   virtual  void RemoveChild(const Handle(PrsMgr_PresentableObject)& theObject) ;
-  //! Returns children of the current object. <br>
-  Standard_EXPORT    const PrsMgr_ListOfPresentableObjects& Children() const;
-  //! Returns true if object should have own presentations. <br>
-  Standard_EXPORT    const Standard_Boolean HasOwnPresentations() const;
-  //! Returns parent of current object in scene hierarchy. <br>
-  Standard_EXPORT    const PrsMgr_PresentableObjectPointer Parent() const;
+  //! Gets  point  of  transform  persistence for  this  object
+  Standard_EXPORT   gp_Pnt GetTransformPersistencePoint()  const;
+  
+  Standard_EXPORT   void SetTypeOfPresentation (const PrsMgr_TypeOfPresentation3d aType) ;
+  
+  //! flags the Prs of mode <AMode> to be Updated.
+  //! the Update will be done when needed.
+  Standard_EXPORT   void SetToUpdate (const Standard_Integer aMode) ;
+  
+  //! flags all the Presentations to be Updated.
+  Standard_EXPORT   void SetToUpdate() ;
+  
+  //! gives the list of modes which are flagged "to be updated".
+  Standard_EXPORT   void ToBeUpdated (TColStd_ListOfInteger& ListOfMode)  const;
+  
+  //! Sets local transformation to theTransformation.
+  Standard_EXPORT virtual   void SetLocalTransformation (const gp_Trsf& theTransformation) ;
+  
+  //! Returns true if object has a transformation that is different from the identity.
+  Standard_EXPORT   Standard_Boolean HasTransformation()  const;
+  
+     const  gp_Trsf& LocalTransformation()  const;
+  
+     const  gp_Trsf& Transformation()  const;
+  
+  //! resets local transformation to identity.
+  Standard_EXPORT virtual   void ResetTransformation() ;
+  
+  Standard_EXPORT virtual   void UpdateTransformation() ;
+  
+  Standard_EXPORT virtual   void UpdateTransformation (const Handle(Prs3d_Presentation)& P) ;
+  
+  //! Set Z layer ID and update all presentations of
+  //! the presentable object. The layer can be set only for displayed object.
+  //! If all object presentations are removed, the layer ID will be set to
+  //! default value when computing presentation. The layers mechanism allows
+  //! drawing objects in higher layers in overlay of objects in lower layers.
+  Standard_EXPORT virtual   void SetZLayer (const Handle(PrsMgr_PresentationManager)& thePrsMgr, const Standard_Integer theLayerId) ;
+  
+  //! Get ID of Z layer. If no presentations of object is displayed,
+  //! and layer ID is unavailable, the -1 value is returned.
+  Standard_EXPORT   Standard_Integer GetZLayer (const Handle(PrsMgr_PresentationManager)& thePrsMgr)  const;
+  
+  //! Adds clip plane for graphical clipping for all display mode
+  //! presentations. The composition of clip planes truncates the rendering
+  //! space to convex volume. Please be aware that number of supported
+  //! clip plane is limited. The planes which exceed the limit are ignored.
+  //! Besides of this, some planes can be already set in view where the object
+  //! is shown: the number of these planes should be substracted from limit
+  //! to predict the maximum possible number of object clipping planes.
+  //! @param thePlane [in] the clip plane to be appended to map of clip planes.
+  Standard_EXPORT virtual   void AddClipPlane (const Graphic3d_ClipPlane_Handle& thePlane) ;
+  
+  //! Removes previously added clip plane.
+  //! @param thePlane [in] the clip plane to be removed from map of clip planes.
+  Standard_EXPORT virtual   void RemoveClipPlane (const Graphic3d_ClipPlane_Handle& thePlane) ;
+  
+  //! Set clip planes for graphical clipping for all display mode presentations.
+  //! The composition of clip planes truncates the rendering space to convex
+  //! volume. Please be aware that number of supported clip plane is limited.
+  //! The planes which exceed the limit are ignored. Besides of this, some
+  //! planes can be already set in view where the object is shown: the number
+  //! of these planes should be substracted from limit to predict the maximum
+  //! possible number of object clipping planes.
+  Standard_EXPORT virtual   void SetClipPlanes (const Graphic3d_SequenceOfHClipPlane& thePlanes) ;
+  
+  //! Get clip planes.
+  //! @return set of previously added clip planes for all display mode presentations.
+     const  Graphic3d_SequenceOfHClipPlane& GetClipPlanes()  const;
+  
+  //! Sets if the object has mutable nature (content or location will be changed regularly).
+  //! This method should be called before object displaying to take effect.
+  Standard_EXPORT virtual   void SetMutable (const Standard_Boolean theIsMutable) ;
+  
+  //! Returns true if object has mutable nature (content or location are be changed regularly).
+  //! Mutable object will be managed in different way than static onces (another optimizations).
+  Standard_EXPORT  const  Standard_Boolean IsMutable()  const;
+  
+  //! Makes theObject child of current object in scene hierarchy.
+  Standard_EXPORT virtual   void AddChild (const Handle(PrsMgr_PresentableObject)& theObject) ;
+  
+  //! Removes theObject from children of current object in scene hierarchy.
+  Standard_EXPORT virtual   void RemoveChild (const Handle(PrsMgr_PresentableObject)& theObject) ;
+  
+  //! Returns children of the current object.
+  Standard_EXPORT  const  PrsMgr_ListOfPresentableObjects& Children()  const;
+  
+  //! Returns true if object should have own presentations.
+  Standard_EXPORT  const  Standard_Boolean HasOwnPresentations()  const;
+  
+  //! Returns parent of current object in scene hierarchy.
+  Standard_EXPORT  const  PrsMgr_PresentableObjectPointer Parent()  const;
 
 
 friend class PrsMgr_Presentation;
 friend class PrsMgr_PresentationManager;
 friend   
-  Standard_EXPORT   Handle_Graphic3d_Structure PrsMgr_Presentation::Compute(const Handle(Graphic3d_DataStructureManager)& theProjector) ;
+  Standard_EXPORT   Handle(Graphic3d_Structure) PrsMgr_Presentation::Compute (const Handle(Graphic3d_DataStructureManager)& theProjector) ;
 friend   
-  Standard_EXPORT   void PrsMgr_Presentation::Compute(const Handle(Graphic3d_DataStructureManager)& theProjector,const Handle(Graphic3d_Structure)& theGivenStruct) ;
+  Standard_EXPORT   void PrsMgr_Presentation::Compute (const Handle(Graphic3d_DataStructureManager)& theProjector, const Handle(Graphic3d_Structure)& theGivenStruct) ;
 friend   
-  Standard_EXPORT   Handle_Graphic3d_Structure PrsMgr_Presentation::Compute(const Handle(Graphic3d_DataStructureManager)& theProjector,const Handle(Geom_Transformation)& theTrsf) ;
+  Standard_EXPORT   Handle(Graphic3d_Structure) PrsMgr_Presentation::Compute (const Handle(Graphic3d_DataStructureManager)& theProjector, const Handle(Geom_Transformation)& theTrsf) ;
 friend   
-  Standard_EXPORT   void PrsMgr_Presentation::Compute(const Handle(Graphic3d_DataStructureManager)& theProjector,const Handle(Geom_Transformation)& theTrsf,const Handle(Graphic3d_Structure)& theGivenStruct) ;
+  Standard_EXPORT   void PrsMgr_Presentation::Compute (const Handle(Graphic3d_DataStructureManager)& theProjector, const Handle(Geom_Transformation)& theTrsf, const Handle(Graphic3d_Structure)& theGivenStruct) ;
 
 
   DEFINE_STANDARD_RTTI(PrsMgr_PresentableObject)
@@ -233,70 +210,78 @@ friend
 protected:
 
   
-  Standard_EXPORT   PrsMgr_PresentableObject(const PrsMgr_TypeOfPresentation3d aTypeOfPresentation3d = PrsMgr_TOP_AllView);
+  Standard_EXPORT PrsMgr_PresentableObject(const PrsMgr_TypeOfPresentation3d aTypeOfPresentation3d = PrsMgr_TOP_AllView);
 Standard_EXPORT virtual ~PrsMgr_PresentableObject();
-  //! Calculates the 3D view aPresentation and its <br>
-//! updates. The latter are managed by aPresentationManager. <br>
-//! aPresentableObject has the display mode aMode; <br>
-//! this has the default value of 0, that is, the wireframe display mode. <br>
-  Standard_EXPORT   virtual  void Compute(const Handle(PrsMgr_PresentationManager3d)& aPresentationManager,const Handle(Prs3d_Presentation)& aPresentation,const Standard_Integer aMode = 0) ;
-  //! Calculates the 3D view aPresentation and its <br>
-//! updates. The latter are managed by <br>
-//! aPresentationManager. Each of the views in the <br>
-//! viewer and every modification such as rotation, for <br>
-//! example, entails recalculation. <br>
-//! It must be redefined to implement hidden line removal <br>
-//! for the object. The user never calls this method <br>
-//! himself. This is done via the InteractiveContext object <br>
-//! and is dependent on the point of view from which the <br>
-//! object is displayed. <br>
-  Standard_EXPORT   virtual  void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Prs3d_Presentation)& aPresentation) ;
-  //! Calculates the 3D view aPresentation and its <br>
-//! updates. The latter are managed by <br>
-//! aPresentationManager. A point of view is provided <br>
-//! by the projector aProjector, and the geometric <br>
-//! transformation which has transformed associated <br>
-//! presentable objects is specified by aTrsf. <br>
-//! This function is to be used in case where a hidden <br>
-//! line removal display cannot be calculated <br>
-//! automatically. This occurs   when associated <br>
-//! presentable objects have been transformed <br>
-//! geometrically, but not translated. <br>
-//! Warning <br>
-//! The transformation aTrsf must be applied to the <br>
-//! object before computation. <br>
-  Standard_EXPORT   virtual  void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Geom_Transformation)& aTrsf,const Handle(Prs3d_Presentation)& aPresentation) ;
-  //! recomputes all presentations of the object. <br>
-  Standard_EXPORT     void Update(const Standard_Boolean AllModes = Standard_False) ;
-  //! Recomputes the presentation in the given mode. <br>
-//!          If ClearOther is true, other presentation will be cleared. <br>
-  Standard_EXPORT     void Update(const Standard_Integer aMode,const Standard_Boolean ClearOther) ;
-  //! High-level interface for controlling polygon offsets <br>
-  Standard_EXPORT   virtual  void Fill(const Handle(PrsMgr_PresentationManager)& aPresentationManager,const Handle(PrsMgr_Presentation)& aPresentation,const Standard_Integer aMode = 0) ;
-  //! Sets myCombinedParentTransform to theTransformation. Thus object receives transformation <br>
-//! from parent node and able to derive its own. <br>
-  Standard_EXPORT   virtual  void SetCombinedParentTransform(const gp_Trsf& theTransformation) ;
-  //! General virtual method for internal update of presentation state <br>
-//! when some modifications on list of clip planes occurs. Base <br>
-//! implementation propagate clip planes to every presentation. <br>
-  Standard_EXPORT   virtual  void UpdateClipping() ;
+  
+  //! Calculates the 3D view aPresentation and its
+  //! updates. The latter are managed by aPresentationManager.
+  //! aPresentableObject has the display mode aMode;
+  //! this has the default value of 0, that is, the wireframe display mode.
+  Standard_EXPORT virtual   void Compute (const Handle(PrsMgr_PresentationManager3d)& aPresentationManager, const Handle(Prs3d_Presentation)& aPresentation, const Standard_Integer aMode = 0) ;
+  
+  //! Calculates the 3D view aPresentation and its
+  //! updates. The latter are managed by
+  //! aPresentationManager. Each of the views in the
+  //! viewer and every modification such as rotation, for
+  //! example, entails recalculation.
+  //! It must be redefined to implement hidden line removal
+  //! for the object. The user never calls this method
+  //! himself. This is done via the InteractiveContext object
+  //! and is dependent on the point of view from which the
+  //! object is displayed.
+  Standard_EXPORT virtual   void Compute (const Handle(Prs3d_Projector)& aProjector, const Handle(Prs3d_Presentation)& aPresentation) ;
+  
+  //! Calculates the 3D view aPresentation and its
+  //! updates. The latter are managed by
+  //! aPresentationManager. A point of view is provided
+  //! by the projector aProjector, and the geometric
+  //! transformation which has transformed associated
+  //! presentable objects is specified by aTrsf.
+  //! This function is to be used in case where a hidden
+  //! line removal display cannot be calculated
+  //! automatically. This occurs   when associated
+  //! presentable objects have been transformed
+  //! geometrically, but not translated.
+  //! Warning
+  //! The transformation aTrsf must be applied to the
+  //! object before computation.
+  Standard_EXPORT virtual   void Compute (const Handle(Prs3d_Projector)& aProjector, const Handle(Geom_Transformation)& aTrsf, const Handle(Prs3d_Presentation)& aPresentation) ;
+  
+  //! recomputes all presentations of the object.
+  Standard_EXPORT   void Update (const Standard_Boolean AllModes = Standard_False) ;
+  
+  //! Recomputes the presentation in the given mode.
+  //! If ClearOther is true, other presentation will be cleared.
+  Standard_EXPORT   void Update (const Standard_Integer aMode, const Standard_Boolean ClearOther) ;
+  
+  //! High-level interface for controlling polygon offsets
+  Standard_EXPORT virtual   void Fill (const Handle(PrsMgr_PresentationManager)& aPresentationManager, const Handle(PrsMgr_Presentation)& aPresentation, const Standard_Integer aMode = 0) ;
+  
+  //! Sets myCombinedParentTransform to theTransformation. Thus object receives transformation
+  //! from parent node and able to derive its own.
+  Standard_EXPORT virtual   void SetCombinedParentTransform (const gp_Trsf& theTransformation) ;
+  
+  //! General virtual method for internal update of presentation state
+  //! when some modifications on list of clip planes occurs. Base
+  //! implementation propagate clip planes to every presentation.
+  Standard_EXPORT virtual   void UpdateClipping() ;
 
-PrsMgr_Presentations myPresentations;
-PrsMgr_TypeOfPresentation3d myTypeOfPresentation3d;
-Graphic3d_SequenceOfHClipPlane myClipPlanes;
-Standard_Boolean myIsMutable;
-Standard_Boolean myHasOwnPresentations;
+  PrsMgr_Presentations myPresentations;
+  PrsMgr_TypeOfPresentation3d myTypeOfPresentation3d;
+  Graphic3d_SequenceOfHClipPlane myClipPlanes;
+  Standard_Boolean myIsMutable;
+  Standard_Boolean myHasOwnPresentations;
 
 
 private: 
 
 
-Graphic3d_CTransPersStruct myTransformPersistence;
-PrsMgr_PresentableObjectPointer myParent;
-gp_Trsf myLocalTransformation;
-gp_Trsf myTransformation;
-gp_Trsf myCombinedParentTransform;
-PrsMgr_ListOfPresentableObjects myChildren;
+  Graphic3d_CTransPersStruct myTransformPersistence;
+  PrsMgr_PresentableObjectPointer myParent;
+  gp_Trsf myLocalTransformation;
+  gp_Trsf myTransformation;
+  gp_Trsf myCombinedParentTransform;
+  PrsMgr_ListOfPresentableObjects myChildren;
 
 
 };
@@ -306,7 +291,6 @@ PrsMgr_ListOfPresentableObjects myChildren;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PrsMgr_PresentableObject_HeaderFile

@@ -1,9 +1,3 @@
-#ifndef _StepRepr_ConfigurationItem_HeaderFile
 #include <StepRepr_ConfigurationItem.hxx>
-#endif
-#ifndef _StepRepr_ConfigurationDesignItem_HeaderFile
 #include <StepRepr_ConfigurationDesignItem.hxx>
-#endif
-#ifndef _StepRepr_ConfigurationDesign_HeaderFile
 #include <StepRepr_ConfigurationDesign.hxx>
-#endif

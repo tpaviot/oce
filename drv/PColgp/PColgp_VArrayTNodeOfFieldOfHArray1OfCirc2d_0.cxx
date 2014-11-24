@@ -5,15 +5,9 @@
 
 #include <PColgp_VArrayTNodeOfFieldOfHArray1OfCirc2d.hxx>
 
-#ifndef _gp_Circ2d_HeaderFile
 #include <gp_Circ2d.hxx>
-#endif
-#ifndef _PColgp_FieldOfHArray1OfCirc2d_HeaderFile
 #include <PColgp_FieldOfHArray1OfCirc2d.hxx>
-#endif
-#ifndef _PColgp_VArrayNodeOfFieldOfHArray1OfCirc2d_HeaderFile
 #include <PColgp_VArrayNodeOfFieldOfHArray1OfCirc2d.hxx>
-#endif
  
 
 #define Item gp_Circ2d

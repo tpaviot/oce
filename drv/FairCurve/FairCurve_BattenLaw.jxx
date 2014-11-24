@@ -1,3 +1,1 @@
-#ifndef _FairCurve_BattenLaw_HeaderFile
 #include <FairCurve_BattenLaw.hxx>
-#endif

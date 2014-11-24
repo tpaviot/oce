@@ -7,7 +7,6 @@
 #define _TNaming_PtrDataMapOfShapePtrRefShape_HeaderFile
 
 class TNaming_DataMapOfShapePtrRefShape;
-
 typedef TNaming_DataMapOfShapePtrRefShape* TNaming_PtrDataMapOfShapePtrRefShape;
 
-#endif
+#endif // _TNaming_PtrDataMapOfShapePtrRefShape_HeaderFile

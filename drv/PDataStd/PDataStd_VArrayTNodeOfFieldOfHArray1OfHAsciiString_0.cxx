@@ -5,18 +5,12 @@
 
 #include <PDataStd_VArrayTNodeOfFieldOfHArray1OfHAsciiString.hxx>
 
-#ifndef _PCollection_HAsciiString_HeaderFile
 #include <PCollection_HAsciiString.hxx>
-#endif
-#ifndef _PDataStd_FieldOfHArray1OfHAsciiString_HeaderFile
 #include <PDataStd_FieldOfHArray1OfHAsciiString.hxx>
-#endif
-#ifndef _PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString_HeaderFile
 #include <PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString.hxx>
-#endif
  
 
-#define Item Handle_PCollection_HAsciiString
+#define Item Handle(PCollection_HAsciiString)
 #define Item_hxx <PCollection_HAsciiString.hxx>
 #define DBC_VArrayNode PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString
 #define DBC_VArrayNode_hxx <PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString.hxx>

@@ -6,15 +6,14 @@
 #ifndef _Vrml_VertexOrdering_HeaderFile
 #define _Vrml_VertexOrdering_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Vrml_VertexOrdering {
+
+enum Vrml_VertexOrdering
+{
 Vrml_UNKNOWN_ORDERING,
 Vrml_CLOCKWISE,
 Vrml_COUNTERCLOCKWISE
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Vrml_VertexOrdering_HeaderFile

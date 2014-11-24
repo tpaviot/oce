@@ -5,15 +5,9 @@
 
 #include <HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf.hxx>
 
-#ifndef _IntSurf_Quadric_HeaderFile
 #include <IntSurf_Quadric.hxx>
-#endif
-#ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
-#endif
-#ifndef _HLRBRep_LineTool_HeaderFile
 #include <HLRBRep_LineTool.hxx>
-#endif
  
 
 #define TheQuadric IntSurf_Quadric

@@ -6,28 +6,14 @@
 #ifndef _Storage_DataMapNodeOfMapOfPers_HeaderFile
 #define _Storage_DataMapNodeOfMapOfPers_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Storage_DataMapNodeOfMapOfPers_HeaderFile
 #include <Handle_Storage_DataMapNodeOfMapOfPers.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Handle_Storage_Root_HeaderFile
 #include <Handle_Storage_Root.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Storage_Root;
 class TCollection_AsciiString;
 class Storage_MapOfPers;
@@ -35,16 +21,17 @@ class Storage_DataMapIteratorOfMapOfPers;
 
 
 
-class Storage_DataMapNodeOfMapOfPers : public TCollection_MapNode {
+class Storage_DataMapNodeOfMapOfPers : public TCollection_MapNode
+{
 
 public:
 
   
-      Storage_DataMapNodeOfMapOfPers(const TCollection_AsciiString& K,const Handle(Storage_Root)& I,const TCollection_MapNodePtr& n);
+    Storage_DataMapNodeOfMapOfPers(const TCollection_AsciiString& K, const Handle(Storage_Root)& I, const TCollection_MapNodePtr& n);
   
-        TCollection_AsciiString& Key() const;
+      TCollection_AsciiString& Key()  const;
   
-        Handle_Storage_Root& Value() const;
+      Handle(Storage_Root)& Value()  const;
 
 
 
@@ -59,15 +46,15 @@ protected:
 private: 
 
 
-TCollection_AsciiString myKey;
-Handle_Storage_Root myValue;
+  TCollection_AsciiString myKey;
+  Handle(Storage_Root) myValue;
 
 
 };
 
 #define TheKey TCollection_AsciiString
 #define TheKey_hxx <TCollection_AsciiString.hxx>
-#define TheItem Handle_Storage_Root
+#define TheItem Handle(Storage_Root)
 #define TheItem_hxx <Storage_Root.hxx>
 #define Hasher TCollection_AsciiString
 #define Hasher_hxx <TCollection_AsciiString.hxx>
@@ -98,7 +85,6 @@ Handle_Storage_Root myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Storage_DataMapNodeOfMapOfPers_HeaderFile

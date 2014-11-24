@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKGeomBase"
-	ProjectGUID="{85A71C69-06A4-13F0-0E66-BC0E53508DE2}"
+	ProjectGUID="{B389A6D1-06D6-0BF3-0356-4129FE2BFE02}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -248,7 +248,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\ProjLib;..\..\..\src\ProjLib;..\..\..\drv\GeomProjLib;..\..\..\src\GeomProjLib;..\..\..\drv\GCPnts;..\..\..\src\GCPnts;..\..\..\drv\CPnts;..\..\..\src\CPnts;..\..\..\drv\Approx;..\..\..\src\Approx;..\..\..\drv\AppParCurves;..\..\..\src\AppParCurves;..\..\..\drv\FEmTool;..\..\..\src\FEmTool;..\..\..\drv\AppCont;..\..\..\src\AppCont;..\..\..\drv\Extrema;..\..\..\src\Extrema;..\..\..\drv\IntAna;..\..\..\src\IntAna;..\..\..\drv\IntAna2d;..\..\..\src\IntAna2d;..\..\..\drv\GeomConvert;..\..\..\src\GeomConvert;..\..\..\drv\AdvApp2Var;..\..\..\src\AdvApp2Var;..\..\..\drv\GeomLib;..\..\..\src\GeomLib;..\..\..\drv\Geom2dConvert;..\..\..\src\Geom2dConvert;..\..\..\drv\Hermit;..\..\..\src\Hermit;..\..\..\drv\BndLib;..\..\..\src\BndLib;..\..\..\drv\AppDef;..\..\..\src\AppDef;..\..\..\drv\GeomTools;..\..\..\src\GeomTools;..\..\..\drv\GC;..\..\..\src\GC;..\..\..\drv\GCE2d;..\..\..\src\GCE2d;..\..\..\drv\gce;..\..\..\src\gce;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ProjLib_DLL;__GeomProjLib_DLL;__GCPnts_DLL;__CPnts_DLL;__Approx_DLL;__AppParCurves_DLL;__FEmTool_DLL;__AppCont_DLL;__Extrema_DLL;__IntAna_DLL;__IntAna2d_DLL;__GeomConvert_DLL;__AdvApp2Var_DLL;__GeomLib_DLL;__Geom2dConvert_DLL;__Hermit_DLL;__BndLib_DLL;__AppDef_DLL;__GeomTools_DLL;__GC_DLL;__GCE2d_DLL;__gce_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ProjLib_DLL;__GeomProjLib_DLL;__GCPnts_DLL;__CPnts_DLL;__Approx_DLL;__AppParCurves_DLL;__FEmTool_DLL;__AppCont_DLL;__Extrema_DLL;__IntAna_DLL;__IntAna2d_DLL;__GeomConvert_DLL;__AdvApp2Var_DLL;__GeomLib_DLL;__Geom2dConvert_DLL;__Hermit_DLL;__BndLib_DLL;__AppDef_DLL;__GeomTools_DLL;__GC_DLL;__GCE2d_DLL;__gce_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ProjLib_DLL;__GeomProjLib_DLL;__GCPnts_DLL;__CPnts_DLL;__Approx_DLL;__AppParCurves_DLL;__FEmTool_DLL;__AppCont_DLL;__Extrema_DLL;__IntAna_DLL;__IntAna2d_DLL;__GeomConvert_DLL;__AdvApp2Var_DLL;__GeomLib_DLL;__Geom2dConvert_DLL;__Hermit_DLL;__BndLib_DLL;__AppDef_DLL;__GeomTools_DLL;__GC_DLL;__GCE2d_DLL;__gce_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ProjLib_DLL;__GeomProjLib_DLL;__GCPnts_DLL;__CPnts_DLL;__Approx_DLL;__AppParCurves_DLL;__FEmTool_DLL;__AppCont_DLL;__Extrema_DLL;__IntAna_DLL;__IntAna2d_DLL;__GeomConvert_DLL;__AdvApp2Var_DLL;__GeomLib_DLL;__Geom2dConvert_DLL;__Hermit_DLL;__BndLib_DLL;__AppDef_DLL;__GeomTools_DLL;__GC_DLL;__GCE2d_DLL;__gce_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -343,7 +343,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\ProjLib;..\..\..\src\ProjLib;..\..\..\drv\GeomProjLib;..\..\..\src\GeomProjLib;..\..\..\drv\GCPnts;..\..\..\src\GCPnts;..\..\..\drv\CPnts;..\..\..\src\CPnts;..\..\..\drv\Approx;..\..\..\src\Approx;..\..\..\drv\AppParCurves;..\..\..\src\AppParCurves;..\..\..\drv\FEmTool;..\..\..\src\FEmTool;..\..\..\drv\AppCont;..\..\..\src\AppCont;..\..\..\drv\Extrema;..\..\..\src\Extrema;..\..\..\drv\IntAna;..\..\..\src\IntAna;..\..\..\drv\IntAna2d;..\..\..\src\IntAna2d;..\..\..\drv\GeomConvert;..\..\..\src\GeomConvert;..\..\..\drv\AdvApp2Var;..\..\..\src\AdvApp2Var;..\..\..\drv\GeomLib;..\..\..\src\GeomLib;..\..\..\drv\Geom2dConvert;..\..\..\src\Geom2dConvert;..\..\..\drv\Hermit;..\..\..\src\Hermit;..\..\..\drv\BndLib;..\..\..\src\BndLib;..\..\..\drv\AppDef;..\..\..\src\AppDef;..\..\..\drv\GeomTools;..\..\..\src\GeomTools;..\..\..\drv\GC;..\..\..\src\GC;..\..\..\drv\GCE2d;..\..\..\src\GCE2d;..\..\..\drv\gce;..\..\..\src\gce;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ProjLib_DLL;__GeomProjLib_DLL;__GCPnts_DLL;__CPnts_DLL;__Approx_DLL;__AppParCurves_DLL;__FEmTool_DLL;__AppCont_DLL;__Extrema_DLL;__IntAna_DLL;__IntAna2d_DLL;__GeomConvert_DLL;__AdvApp2Var_DLL;__GeomLib_DLL;__Geom2dConvert_DLL;__Hermit_DLL;__BndLib_DLL;__AppDef_DLL;__GeomTools_DLL;__GC_DLL;__GCE2d_DLL;__gce_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ProjLib_DLL;__GeomProjLib_DLL;__GCPnts_DLL;__CPnts_DLL;__Approx_DLL;__AppParCurves_DLL;__FEmTool_DLL;__AppCont_DLL;__Extrema_DLL;__IntAna_DLL;__IntAna2d_DLL;__GeomConvert_DLL;__AdvApp2Var_DLL;__GeomLib_DLL;__Geom2dConvert_DLL;__Hermit_DLL;__BndLib_DLL;__AppDef_DLL;__GeomTools_DLL;__GC_DLL;__GCE2d_DLL;__gce_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -365,7 +365,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ProjLib_DLL;__GeomProjLib_DLL;__GCPnts_DLL;__CPnts_DLL;__Approx_DLL;__AppParCurves_DLL;__FEmTool_DLL;__AppCont_DLL;__Extrema_DLL;__IntAna_DLL;__IntAna2d_DLL;__GeomConvert_DLL;__AdvApp2Var_DLL;__GeomLib_DLL;__Geom2dConvert_DLL;__Hermit_DLL;__BndLib_DLL;__AppDef_DLL;__GeomTools_DLL;__GC_DLL;__GCE2d_DLL;__gce_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ProjLib_DLL;__GeomProjLib_DLL;__GCPnts_DLL;__CPnts_DLL;__Approx_DLL;__AppParCurves_DLL;__FEmTool_DLL;__AppCont_DLL;__Extrema_DLL;__IntAna_DLL;__IntAna2d_DLL;__GeomConvert_DLL;__AdvApp2Var_DLL;__GeomLib_DLL;__Geom2dConvert_DLL;__Hermit_DLL;__BndLib_DLL;__AppDef_DLL;__GeomTools_DLL;__GC_DLL;__GCE2d_DLL;__gce_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"

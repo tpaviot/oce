@@ -6,31 +6,15 @@
 #ifndef _TColStd_IndexedMapOfTransient_HeaderFile
 #define _TColStd_IndexedMapOfTransient_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient_HeaderFile
 #include <Handle_TColStd_IndexedMapNodeOfIndexedMapOfTransient.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_DomainError;
 class Standard_OutOfRange;
 class Standard_Transient;
@@ -39,46 +23,46 @@ class TColStd_IndexedMapNodeOfIndexedMapOfTransient;
 
 
 
-class TColStd_IndexedMapOfTransient  : public TCollection_BasicMap {
+class TColStd_IndexedMapOfTransient  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TColStd_IndexedMapOfTransient(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT TColStd_IndexedMapOfTransient(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT   TColStd_IndexedMapOfTransient(const TColStd_IndexedMapOfTransient& Other);
+  Standard_EXPORT TColStd_IndexedMapOfTransient(const TColStd_IndexedMapOfTransient& Other);
   
-  Standard_EXPORT     TColStd_IndexedMapOfTransient& Assign(const TColStd_IndexedMapOfTransient& Other) ;
-    TColStd_IndexedMapOfTransient& operator =(const TColStd_IndexedMapOfTransient& Other) 
+  Standard_EXPORT   TColStd_IndexedMapOfTransient& Assign (const TColStd_IndexedMapOfTransient& Other) ;
+  TColStd_IndexedMapOfTransient& operator = (const TColStd_IndexedMapOfTransient& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TColStd_IndexedMapOfTransient()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Integer Add(const Handle(Standard_Transient)& K) ;
+  Standard_EXPORT   Standard_Integer Add (const Handle(Standard_Transient)& K) ;
   
-  Standard_EXPORT     void Substitute(const Standard_Integer I,const Handle(Standard_Transient)& K) ;
+  Standard_EXPORT   void Substitute (const Standard_Integer I, const Handle(Standard_Transient)& K) ;
   
-  Standard_EXPORT     void RemoveLast() ;
+  Standard_EXPORT   void RemoveLast() ;
   
-  Standard_EXPORT     Standard_Boolean Contains(const Handle(Standard_Transient)& K) const;
+  Standard_EXPORT   Standard_Boolean Contains (const Handle(Standard_Transient)& K)  const;
   
-  Standard_EXPORT    const Handle_Standard_Transient& FindKey(const Standard_Integer I) const;
-   const Handle_Standard_Transient& operator ()(const Standard_Integer I) const
+  Standard_EXPORT  const  Handle(Standard_Transient)& FindKey (const Standard_Integer I)  const;
+ const  Handle(Standard_Transient)& operator () (const Standard_Integer I)  const
 {
   return FindKey(I);
 }
   
-  Standard_EXPORT     Standard_Integer FindIndex(const Handle(Standard_Transient)& K) const;
-
+  Standard_EXPORT   Standard_Integer FindIndex (const Handle(Standard_Transient)& K)  const;
 
 
 
@@ -101,7 +85,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_IndexedMapOfTransient_HeaderFile

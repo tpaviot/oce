@@ -5,21 +5,11 @@
 
 #include <HLRBRep_TheProjPCurOfCInter.hxx>
 
-#ifndef _HLRBRep_CurveTool_HeaderFile
 #include <HLRBRep_CurveTool.hxx>
-#endif
-#ifndef _HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_HeaderFile
 #include <HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter.hxx>
-#endif
-#ifndef _HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_HeaderFile
 #include <HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx>
-#endif
-#ifndef _HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_HeaderFile
 #include <HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
  
 
 #define TheCurve Standard_Address

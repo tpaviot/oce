@@ -6,35 +6,26 @@
 #ifndef _StdSelect_Prs_HeaderFile
 #define _StdSelect_Prs_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StdSelect_Prs_HeaderFile
 #include <Handle_StdSelect_Prs.hxx>
-#endif
 
-#ifndef _Handle_Graphic3d_StructureManager_HeaderFile
 #include <Handle_Graphic3d_StructureManager.hxx>
-#endif
-#ifndef _Prs3d_Presentation_HeaderFile
 #include <Prs3d_Presentation.hxx>
-#endif
 class Graphic3d_StructureManager;
 
 
-//! allows entities owners to be hilighted <br>
-//!          independantly from PresentableObjects <br>
-class StdSelect_Prs : public Prs3d_Presentation {
+//! allows entities owners to be hilighted
+//! independantly from PresentableObjects
+class StdSelect_Prs : public Prs3d_Presentation
+{
 
 public:
 
   
-  Standard_EXPORT   StdSelect_Prs(const Handle(Graphic3d_StructureManager)& aStructureManager);
+  Standard_EXPORT StdSelect_Prs(const Handle(Graphic3d_StructureManager)& aStructureManager);
   
-       const Handle_Graphic3d_StructureManager& Manager() const;
+     const  Handle(Graphic3d_StructureManager)& Manager()  const;
 
 
 
@@ -49,7 +40,7 @@ protected:
 private: 
 
 
-Handle_Graphic3d_StructureManager myManager;
+  Handle(Graphic3d_StructureManager) myManager;
 
 
 };
@@ -59,7 +50,6 @@ Handle_Graphic3d_StructureManager myManager;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StdSelect_Prs_HeaderFile

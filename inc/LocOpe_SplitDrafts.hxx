@@ -6,28 +6,14 @@
 #ifndef _LocOpe_SplitDrafts_HeaderFile
 #define _LocOpe_SplitDrafts_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class StdFail_NotDone;
 class Standard_NoSuchObject;
 class Standard_ConstructionError;
@@ -40,59 +26,65 @@ class gp_Pln;
 class TopTools_ListOfShape;
 
 
-//! This  class  provides  a    tool to   realize  the <br>
-//!          following operations on a shape : <br>
-//!           - split a face of the shape with a wire, <br>
-//!           - put draft angle on both side of the wire. <br>
-//!          For each side, the draft angle may be different. <br>
-class LocOpe_SplitDrafts  {
+//! This  class  provides  a    tool to   realize  the
+//! following operations on a shape :
+//! - split a face of the shape with a wire,
+//! - put draft angle on both side of the wire.
+//! For each side, the draft angle may be different.
+class LocOpe_SplitDrafts 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor. <br>
-      LocOpe_SplitDrafts();
-  //! Creates the algoritm on the shape <S>. <br>
-      LocOpe_SplitDrafts(const TopoDS_Shape& S);
-  //! Initializes the algoritm with the shape <S>. <br>
-  Standard_EXPORT     void Init(const TopoDS_Shape& S) ;
-  //! Splits the face <F> of the former given shape with <br>
-//!          the wire  <W>.  The wire is  assumed to lie on the <br>
-//!          face.    Puts a draft  angle on  both parts of the <br>
-//!          wire.    <Extractg>,  <Nplg>, <Angleg> define  the <br>
-//!          arguments  for   the   left  part   of the   wire. <br>
-//!          <Extractd>,  <Npld>, <Angled> define the arguments <br>
-//!          for the right part of the wire. The draft angle is <br>
-//!          measured    with the  direction  <Extract>.  <Npl> <br>
-//!          defines the neutral plane (points belonging to the <br>
-//!          neutral plane are not  modified).  <Angle> is  the <br>
-//!          value of the draft  angle.  If <ModifyLeft> is set <br>
-//!          to <Standard_False>, no draft  angle is applied to <br>
-//!          the left part of the wire. If <ModifyRight> is set <br>
-//!          to <Standard_False>,no draft  angle  is applied to <br>
-//!          the right part of the wire. <br>
-//! <br>
-//! <br>
-  Standard_EXPORT     void Perform(const TopoDS_Face& F,const TopoDS_Wire& W,const gp_Dir& Extractg,const gp_Pln& NPlg,const Standard_Real Angleg,const gp_Dir& Extractd,const gp_Pln& NPld,const Standard_Real Angled,const Standard_Boolean ModifyLeft = Standard_True,const Standard_Boolean ModifyRight = Standard_True) ;
-  //! Splits the face <F> of the former given shape with <br>
-//!          the  wire <W>.  The wire is  assumed to lie on the <br>
-//!          face.  Puts a draft angle  on the left part of the <br>
-//!          wire.   The draft    angle is   measured  with the <br>
-//!          direction  <Extract>.   <Npl> defines the  neutral <br>
-//!          plane (points belonging  to the neutral plane  are <br>
-//!          not modified). <Angle> is  the value of  the draft <br>
-//!          angle. <br>
-  Standard_EXPORT     void Perform(const TopoDS_Face& F,const TopoDS_Wire& W,const gp_Dir& Extract,const gp_Pln& NPl,const Standard_Real Angle) ;
-  //! Returns <Standard_True>  if the  modification  has <br>
-//!          been succesfully performed. <br>
-        Standard_Boolean IsDone() const;
   
-       const TopoDS_Shape& OriginalShape() const;
-  //! Returns the modified shape. <br>
-  Standard_EXPORT    const TopoDS_Shape& Shape() const;
-  //! Manages the descendant shapes. <br>
-  Standard_EXPORT    const TopTools_ListOfShape& ShapesFromShape(const TopoDS_Shape& S) const;
-
+  //! Empty constructor.
+    LocOpe_SplitDrafts();
+  
+  //! Creates the algoritm on the shape <S>.
+    LocOpe_SplitDrafts(const TopoDS_Shape& S);
+  
+  //! Initializes the algoritm with the shape <S>.
+  Standard_EXPORT   void Init (const TopoDS_Shape& S) ;
+  
+  //! Splits the face <F> of the former given shape with
+  //! the wire  <W>.  The wire is  assumed to lie on the
+  //! face.    Puts a draft  angle on  both parts of the
+  //! wire.    <Extractg>,  <Nplg>, <Angleg> define  the
+  //! arguments  for   the   left  part   of the   wire.
+  //! <Extractd>,  <Npld>, <Angled> define the arguments
+  //! for the right part of the wire. The draft angle is
+  //! measured    with the  direction  <Extract>.  <Npl>
+  //! defines the neutral plane (points belonging to the
+  //! neutral plane are not  modified).  <Angle> is  the
+  //! value of the draft  angle.  If <ModifyLeft> is set
+  //! to <Standard_False>, no draft  angle is applied to
+  //! the left part of the wire. If <ModifyRight> is set
+  //! to <Standard_False>,no draft  angle  is applied to
+  //! the right part of the wire.
+  Standard_EXPORT   void Perform (const TopoDS_Face& F, const TopoDS_Wire& W, const gp_Dir& Extractg, const gp_Pln& NPlg, const Standard_Real Angleg, const gp_Dir& Extractd, const gp_Pln& NPld, const Standard_Real Angled, const Standard_Boolean ModifyLeft = Standard_True, const Standard_Boolean ModifyRight = Standard_True) ;
+  
+  //! Splits the face <F> of the former given shape with
+  //! the  wire <W>.  The wire is  assumed to lie on the
+  //! face.  Puts a draft angle  on the left part of the
+  //! wire.   The draft    angle is   measured  with the
+  //! direction  <Extract>.   <Npl> defines the  neutral
+  //! plane (points belonging  to the neutral plane  are
+  //! not modified). <Angle> is  the value of  the draft
+  //! angle.
+  Standard_EXPORT   void Perform (const TopoDS_Face& F, const TopoDS_Wire& W, const gp_Dir& Extract, const gp_Pln& NPl, const Standard_Real Angle) ;
+  
+  //! Returns <Standard_True>  if the  modification  has
+  //! been succesfully performed.
+      Standard_Boolean IsDone()  const;
+  
+     const  TopoDS_Shape& OriginalShape()  const;
+  
+  //! Returns the modified shape.
+  Standard_EXPORT  const  TopoDS_Shape& Shape()  const;
+  
+  //! Manages the descendant shapes.
+  Standard_EXPORT  const  TopTools_ListOfShape& ShapesFromShape (const TopoDS_Shape& S)  const;
 
 
 
@@ -107,9 +99,9 @@ private:
 
 
 
-TopoDS_Shape myShape;
-TopoDS_Shape myResult;
-TopTools_DataMapOfShapeListOfShape myMap;
+  TopoDS_Shape myShape;
+  TopoDS_Shape myResult;
+  TopTools_DataMapOfShapeListOfShape myMap;
 
 
 };
@@ -119,7 +111,6 @@ TopTools_DataMapOfShapeListOfShape myMap;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _LocOpe_SplitDrafts_HeaderFile

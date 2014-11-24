@@ -6,19 +6,11 @@
 #ifndef _HeaderSection_HeaderFile
 #define _HeaderSection_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_HeaderSection_Protocol_HeaderFile
 #include <Handle_HeaderSection_Protocol.hxx>
-#endif
 class HeaderSection_Protocol;
 class HeaderSection_Protocol;
 class HeaderSection_FileName;
@@ -28,14 +20,15 @@ class HeaderSection_HeaderRecognizer;
 
 
 
-class HeaderSection  {
+class HeaderSection 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! creates a Protocol <br>
-  Standard_EXPORT   static  Handle_HeaderSection_Protocol Protocol() ;
-
+  
+  //! creates a Protocol
+  Standard_EXPORT static   Handle(HeaderSection_Protocol) Protocol() ;
 
 
 
@@ -63,7 +56,6 @@ friend class HeaderSection_HeaderRecognizer;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HeaderSection_HeaderFile

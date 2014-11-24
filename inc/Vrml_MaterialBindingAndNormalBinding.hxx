@@ -6,8 +6,11 @@
 #ifndef _Vrml_MaterialBindingAndNormalBinding_HeaderFile
 #define _Vrml_MaterialBindingAndNormalBinding_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Vrml_MaterialBindingAndNormalBinding {
+
+enum Vrml_MaterialBindingAndNormalBinding
+{
 Vrml_DEFAULT,
 Vrml_OVERALL,
 Vrml_PER_PART,
@@ -18,8 +21,4 @@ Vrml_PER_VERTEX,
 Vrml_PER_VERTEX_INDEXED
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Vrml_MaterialBindingAndNormalBinding_HeaderFile

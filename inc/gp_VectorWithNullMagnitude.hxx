@@ -6,33 +6,20 @@
 #ifndef _gp_VectorWithNullMagnitude_HeaderFile
 #define _gp_VectorWithNullMagnitude_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_DefineException_HeaderFile
 #include <Standard_DefineException.hxx>
-#endif
-#ifndef _Standard_SStream_HeaderFile
 #include <Standard_SStream.hxx>
-#endif
-
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Handle_gp_VectorWithNullMagnitude_HeaderFile
 #include <Handle_gp_VectorWithNullMagnitude.hxx>
-#endif
 
 #if !defined No_Exception && !defined No_gp_VectorWithNullMagnitude
-#define gp_VectorWithNullMagnitude_Raise_if(CONDITION,MESSAGE) \
+  #define gp_VectorWithNullMagnitude_Raise_if(CONDITION, MESSAGE) \
   if (CONDITION) gp_VectorWithNullMagnitude::Raise(MESSAGE);
 #else
-#define gp_VectorWithNullMagnitude_Raise_if(CONDITION,MESSAGE)
+  #define gp_VectorWithNullMagnitude_Raise_if(CONDITION, MESSAGE)
 #endif
 
-DEFINE_STANDARD_EXCEPTION(gp_VectorWithNullMagnitude,Standard_DomainError)
+DEFINE_STANDARD_EXCEPTION(gp_VectorWithNullMagnitude, Standard_DomainError)
 
-#endif
+#endif // _gp_VectorWithNullMagnitude_HeaderFile

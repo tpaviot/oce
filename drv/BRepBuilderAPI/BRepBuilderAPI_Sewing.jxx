@@ -1,66 +1,22 @@
-#ifndef _BRepTools_ReShape_HeaderFile
 #include <BRepTools_ReShape.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Message_ProgressIndicator_HeaderFile
 #include <Message_ProgressIndicator.hxx>
-#endif
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _TopTools_SequenceOfShape_HeaderFile
 #include <TopTools_SequenceOfShape.hxx>
-#endif
-#ifndef _TColStd_IndexedMapOfInteger_HeaderFile
 #include <TColStd_IndexedMapOfInteger.hxx>
-#endif
-#ifndef _TColStd_SequenceOfInteger_HeaderFile
 #include <TColStd_SequenceOfInteger.hxx>
-#endif
-#ifndef _Geom_Surface_HeaderFile
 #include <Geom_Surface.hxx>
-#endif
-#ifndef _TopLoc_Location_HeaderFile
 #include <TopLoc_Location.hxx>
-#endif
-#ifndef _TopTools_MapOfShape_HeaderFile
 #include <TopTools_MapOfShape.hxx>
-#endif
-#ifndef _TColStd_Array1OfBoolean_HeaderFile
 #include <TColStd_Array1OfBoolean.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _Geom2d_Curve_HeaderFile
 #include <Geom2d_Curve.hxx>
-#endif
-#ifndef _TColgp_Array1OfPnt_HeaderFile
 #include <TColgp_Array1OfPnt.hxx>
-#endif
-#ifndef _Geom_Curve_HeaderFile
 #include <Geom_Curve.hxx>
-#endif
-#ifndef _TopTools_IndexedMapOfShape_HeaderFile
 #include <TopTools_IndexedMapOfShape.hxx>
-#endif
-#ifndef _TColStd_SequenceOfReal_HeaderFile
 #include <TColStd_SequenceOfReal.hxx>
-#endif
-#ifndef _BRepBuilderAPI_Sewing_HeaderFile
 #include <BRepBuilderAPI_Sewing.hxx>
-#endif

@@ -6,13 +6,11 @@
 #ifndef _BRepBlend_ChAsym_HeaderFile
 #define _BRepBlend_ChAsym_HeaderFile
 
-#ifndef _BlendFunc_ChAsym_HeaderFile
 #include <BlendFunc_ChAsym.hxx>
-#endif
 
 typedef BlendFunc_ChAsym BRepBlend_ChAsym;
 
 
 #define BRepBlend_ChAsym_Type_() BlendFunc_ChAsym_Type_()
 
-#endif
+#endif // _BRepBlend_ChAsym_HeaderFile

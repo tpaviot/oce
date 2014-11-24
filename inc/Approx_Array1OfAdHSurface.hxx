@@ -6,28 +6,14 @@
 #ifndef _Approx_Array1OfAdHSurface_HeaderFile
 #define _Approx_Array1OfAdHSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -36,52 +22,52 @@ class Adaptor3d_HSurface;
 
 
 
-class Approx_Array1OfAdHSurface  {
+class Approx_Array1OfAdHSurface 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Approx_Array1OfAdHSurface(const Standard_Integer Low,const Standard_Integer Up);
+    Approx_Array1OfAdHSurface(const Standard_Integer Low, const Standard_Integer Up);
   
-      Approx_Array1OfAdHSurface(const Handle(Adaptor3d_HSurface)& Item,const Standard_Integer Low,const Standard_Integer Up);
+    Approx_Array1OfAdHSurface(const Handle(Adaptor3d_HSurface)& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const Handle(Adaptor3d_HSurface)& V) ;
+  Standard_EXPORT   void Init (const Handle(Adaptor3d_HSurface)& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~Approx_Array1OfAdHSurface()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const Approx_Array1OfAdHSurface& Assign(const Approx_Array1OfAdHSurface& Other) ;
-   const Approx_Array1OfAdHSurface& operator =(const Approx_Array1OfAdHSurface& Other) 
+  Standard_EXPORT  const  Approx_Array1OfAdHSurface& Assign (const Approx_Array1OfAdHSurface& Other) ;
+ const  Approx_Array1OfAdHSurface& operator = (const Approx_Array1OfAdHSurface& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(Adaptor3d_HSurface)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(Adaptor3d_HSurface)& Value) ;
   
-       const Handle_Adaptor3d_HSurface& Value(const Standard_Integer Index) const;
-     const Handle_Adaptor3d_HSurface& operator ()(const Standard_Integer Index) const
+     const  Handle(Adaptor3d_HSurface)& Value (const Standard_Integer Index)  const;
+   const  Handle(Adaptor3d_HSurface)& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        Handle_Adaptor3d_HSurface& ChangeValue(const Standard_Integer Index) ;
-      Handle_Adaptor3d_HSurface& operator ()(const Standard_Integer Index) 
+      Handle(Adaptor3d_HSurface)& ChangeValue (const Standard_Integer Index) ;
+    Handle(Adaptor3d_HSurface)& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -95,18 +81,18 @@ protected:
 private:
 
   
-  Standard_EXPORT   Approx_Array1OfAdHSurface(const Approx_Array1OfAdHSurface& AnArray);
+  Standard_EXPORT Approx_Array1OfAdHSurface(const Approx_Array1OfAdHSurface& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
 
-#define Array1Item Handle_Adaptor3d_HSurface
+#define Array1Item Handle(Adaptor3d_HSurface)
 #define Array1Item_hxx <Adaptor3d_HSurface.hxx>
 #define TCollection_Array1 Approx_Array1OfAdHSurface
 #define TCollection_Array1_hxx <Approx_Array1OfAdHSurface.hxx>
@@ -119,7 +105,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Approx_Array1OfAdHSurface_HeaderFile

@@ -6,28 +6,14 @@
 #ifndef _TopoDS_ListOfShape_HeaderFile
 #define _TopoDS_ListOfShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_TopoDS_ListNodeOfListOfShape_HeaderFile
 #include <Handle_TopoDS_ListNodeOfListOfShape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class TopoDS_ListIteratorOfListOfShape;
 class TopoDS_Shape;
@@ -35,63 +21,63 @@ class TopoDS_ListNodeOfListOfShape;
 
 
 
-class TopoDS_ListOfShape  {
+class TopoDS_ListOfShape 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopoDS_ListOfShape();
+  Standard_EXPORT TopoDS_ListOfShape();
   
-  Standard_EXPORT   TopoDS_ListOfShape(const TopoDS_ListOfShape& Other);
+  Standard_EXPORT TopoDS_ListOfShape(const TopoDS_ListOfShape& Other);
   
-  Standard_EXPORT     void Assign(const TopoDS_ListOfShape& Other) ;
-    void operator=(const TopoDS_ListOfShape& Other) 
+  Standard_EXPORT   void Assign (const TopoDS_ListOfShape& Other) ;
+  void operator= (const TopoDS_ListOfShape& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TopoDS_ListOfShape()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const TopoDS_Shape& I) ;
+  Standard_EXPORT   void Prepend (const TopoDS_Shape& I) ;
   
-  Standard_EXPORT     void Prepend(const TopoDS_Shape& I,TopoDS_ListIteratorOfListOfShape& theIt) ;
+  Standard_EXPORT   void Prepend (const TopoDS_Shape& I, TopoDS_ListIteratorOfListOfShape& theIt) ;
   
-  Standard_EXPORT     void Prepend(TopoDS_ListOfShape& Other) ;
+  Standard_EXPORT   void Prepend (TopoDS_ListOfShape& Other) ;
   
-  Standard_EXPORT     void Append(const TopoDS_Shape& I) ;
+  Standard_EXPORT   void Append (const TopoDS_Shape& I) ;
   
-  Standard_EXPORT     void Append(const TopoDS_Shape& I,TopoDS_ListIteratorOfListOfShape& theIt) ;
+  Standard_EXPORT   void Append (const TopoDS_Shape& I, TopoDS_ListIteratorOfListOfShape& theIt) ;
   
-  Standard_EXPORT     void Append(TopoDS_ListOfShape& Other) ;
+  Standard_EXPORT   void Append (TopoDS_ListOfShape& Other) ;
   
-  Standard_EXPORT     TopoDS_Shape& First() const;
+  Standard_EXPORT   TopoDS_Shape& First()  const;
   
-  Standard_EXPORT     TopoDS_Shape& Last() const;
+  Standard_EXPORT   TopoDS_Shape& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(TopoDS_ListIteratorOfListOfShape& It) ;
+  Standard_EXPORT   void Remove (TopoDS_ListIteratorOfListOfShape& It) ;
   
-  Standard_EXPORT     void InsertBefore(const TopoDS_Shape& I,TopoDS_ListIteratorOfListOfShape& It) ;
+  Standard_EXPORT   void InsertBefore (const TopoDS_Shape& I, TopoDS_ListIteratorOfListOfShape& It) ;
   
-  Standard_EXPORT     void InsertBefore(TopoDS_ListOfShape& Other,TopoDS_ListIteratorOfListOfShape& It) ;
+  Standard_EXPORT   void InsertBefore (TopoDS_ListOfShape& Other, TopoDS_ListIteratorOfListOfShape& It) ;
   
-  Standard_EXPORT     void InsertAfter(const TopoDS_Shape& I,TopoDS_ListIteratorOfListOfShape& It) ;
+  Standard_EXPORT   void InsertAfter (const TopoDS_Shape& I, TopoDS_ListIteratorOfListOfShape& It) ;
   
-  Standard_EXPORT     void InsertAfter(TopoDS_ListOfShape& Other,TopoDS_ListIteratorOfListOfShape& It) ;
+  Standard_EXPORT   void InsertAfter (TopoDS_ListOfShape& Other, TopoDS_ListIteratorOfListOfShape& It) ;
 
 
 friend class TopoDS_ListIteratorOfListOfShape;
-
 
 
 protected:
@@ -104,8 +90,8 @@ private:
 
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
@@ -135,7 +121,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopoDS_ListOfShape_HeaderFile

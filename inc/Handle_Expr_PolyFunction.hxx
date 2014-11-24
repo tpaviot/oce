@@ -6,22 +6,15 @@
 #ifndef _Handle_Expr_PolyFunction_HeaderFile
 #define _Handle_Expr_PolyFunction_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Expr_PolyExpression_HeaderFile
 #include <Handle_Expr_PolyExpression.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Expr_PolyExpression);
 class Expr_PolyFunction;
 
-DEFINE_STANDARD_HANDLE(Expr_PolyFunction,Expr_PolyExpression)
+DEFINE_STANDARD_HANDLE(Expr_PolyFunction, Expr_PolyExpression)
 
-#endif
+#endif // _Handle_Expr_PolyFunction_HeaderFile

@@ -6,47 +6,34 @@
 #ifndef _PDataStd_Variable_HeaderFile
 #define _PDataStd_Variable_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PDataStd_Variable_HeaderFile
 #include <Handle_PDataStd_Variable.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_PCollection_HAsciiString_HeaderFile
 #include <Handle_PCollection_HAsciiString.hxx>
-#endif
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
 class PCollection_HAsciiString;
 
 
-class PDataStd_Variable : public PDF_Attribute {
+class PDataStd_Variable : public PDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   PDataStd_Variable();
+  Standard_EXPORT PDataStd_Variable();
   
-  Standard_EXPORT   PDataStd_Variable(const Standard_Boolean constant);
+  Standard_EXPORT PDataStd_Variable(const Standard_Boolean constant);
   
-  Standard_EXPORT     void Constant(const Standard_Boolean status) ;
+  Standard_EXPORT   void Constant (const Standard_Boolean status) ;
   
-  Standard_EXPORT     Standard_Boolean Constant() const;
+  Standard_EXPORT   Standard_Boolean Constant()  const;
   
-  Standard_EXPORT     void Unit(const Handle(PCollection_HAsciiString)& unit) ;
+  Standard_EXPORT   void Unit (const Handle(PCollection_HAsciiString)& unit) ;
   
-  Standard_EXPORT     Handle_PCollection_HAsciiString Unit() const;
+  Standard_EXPORT   Handle(PCollection_HAsciiString) Unit()  const;
 
 PDataStd_Variable(const Storage_stCONSTclCOM& a) : PDF_Attribute(a)
 {
@@ -69,8 +56,8 @@ protected:
 private: 
 
 
-Standard_Boolean isConstant;
-Handle_PCollection_HAsciiString myUnit;
+  Standard_Boolean isConstant;
+  Handle(PCollection_HAsciiString) myUnit;
 
 
 };
@@ -79,7 +66,6 @@ Handle_PCollection_HAsciiString myUnit;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDataStd_Variable_HeaderFile

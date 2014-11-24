@@ -6,25 +6,13 @@
 #ifndef _Intf_SeqOfSectionLine_HeaderFile
 #define _Intf_SeqOfSectionLine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_Intf_SequenceNodeOfSeqOfSectionLine_HeaderFile
 #include <Handle_Intf_SequenceNodeOfSeqOfSectionLine.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Intf_SectionLine;
@@ -32,68 +20,68 @@ class Intf_SequenceNodeOfSeqOfSectionLine;
 
 
 
-class Intf_SeqOfSectionLine  : public TCollection_BaseSequence {
+class Intf_SeqOfSectionLine  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Intf_SeqOfSectionLine();
+    Intf_SeqOfSectionLine();
   
-  Standard_EXPORT   Intf_SeqOfSectionLine(const Intf_SeqOfSectionLine& Other);
+  Standard_EXPORT Intf_SeqOfSectionLine(const Intf_SeqOfSectionLine& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~Intf_SeqOfSectionLine()
 {
   Clear();
 }
   
-  Standard_EXPORT    const Intf_SeqOfSectionLine& Assign(const Intf_SeqOfSectionLine& Other) ;
-   const Intf_SeqOfSectionLine& operator =(const Intf_SeqOfSectionLine& Other) 
+  Standard_EXPORT  const  Intf_SeqOfSectionLine& Assign (const Intf_SeqOfSectionLine& Other) ;
+ const  Intf_SeqOfSectionLine& operator = (const Intf_SeqOfSectionLine& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Intf_SectionLine& T) ;
+  Standard_EXPORT   void Append (const Intf_SectionLine& T) ;
   
-        void Append(Intf_SeqOfSectionLine& S) ;
+      void Append (Intf_SeqOfSectionLine& S) ;
   
-  Standard_EXPORT     void Prepend(const Intf_SectionLine& T) ;
+  Standard_EXPORT   void Prepend (const Intf_SectionLine& T) ;
   
-        void Prepend(Intf_SeqOfSectionLine& S) ;
+      void Prepend (Intf_SeqOfSectionLine& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Intf_SectionLine& T) ;
+      void InsertBefore (const Standard_Integer Index, const Intf_SectionLine& T) ;
   
-        void InsertBefore(const Standard_Integer Index,Intf_SeqOfSectionLine& S) ;
+      void InsertBefore (const Standard_Integer Index, Intf_SeqOfSectionLine& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Intf_SectionLine& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Intf_SectionLine& T) ;
   
-        void InsertAfter(const Standard_Integer Index,Intf_SeqOfSectionLine& S) ;
+      void InsertAfter (const Standard_Integer Index, Intf_SeqOfSectionLine& S) ;
   
-  Standard_EXPORT    const Intf_SectionLine& First() const;
+  Standard_EXPORT  const  Intf_SectionLine& First()  const;
   
-  Standard_EXPORT    const Intf_SectionLine& Last() const;
+  Standard_EXPORT  const  Intf_SectionLine& Last()  const;
   
-        void Split(const Standard_Integer Index,Intf_SeqOfSectionLine& Sub) ;
+      void Split (const Standard_Integer Index, Intf_SeqOfSectionLine& Sub) ;
   
-  Standard_EXPORT    const Intf_SectionLine& Value(const Standard_Integer Index) const;
-   const Intf_SectionLine& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Intf_SectionLine& Value (const Standard_Integer Index)  const;
+ const  Intf_SectionLine& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Intf_SectionLine& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Intf_SectionLine& I) ;
   
-  Standard_EXPORT     Intf_SectionLine& ChangeValue(const Standard_Integer Index) ;
-    Intf_SectionLine& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Intf_SectionLine& ChangeValue (const Standard_Integer Index) ;
+  Intf_SectionLine& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Intf_SeqOfSectionLine_HeaderFile

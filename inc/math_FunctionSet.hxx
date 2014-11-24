@@ -6,63 +6,55 @@
 #ifndef _math_FunctionSet_HeaderFile
 #define _math_FunctionSet_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
 #include <math_Vector.hxx>
-#endif
 
 
 
-//! This abstract class describes the virtual functions associated to <br>
-//! a set on N Functions of M independant variables. <br>
-class math_FunctionSet  {
+//! This abstract class describes the virtual functions associated to
+//! a set on N Functions of M independant variables.
+class math_FunctionSet 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   virtual  void Delete() ;
+  Standard_EXPORT virtual   void Delete() ;
 Standard_EXPORT virtual ~math_FunctionSet(){Delete();}
-  //! Returns the number of variables of the function. <br>
-  Standard_EXPORT   virtual  Standard_Integer NbVariables() const = 0;
-  //! Returns the number of equations of the function. <br>
-  Standard_EXPORT   virtual  Standard_Integer NbEquations() const = 0;
-  //! Computes the values <F> of the functions for the <br>
-//!          variable <X>. <br>
-//!          returns True if the computation was done successfully, <br>
-//!          False otherwise. <br>
-  Standard_EXPORT   virtual  Standard_Boolean Value(const math_Vector& X,math_Vector& F)  = 0;
-  //! Returns the state of the function corresponding to the <br>
-//!          latestcall of any methods associated with the function. <br>
-//!          This function is called by each of the algorithms <br>
-//!          described later which define the function Integer <br>
-//!          Algorithm::StateNumber(). The algorithm has the <br>
-//!          responsibility to call this function when it has found <br>
-//!          a solution (i.e. a root or a minimum) and has to maintain <br>
-//!          the association between the solution found and this <br>
-//!          StateNumber. <br>
-//!          Byu default, this method returns 0 (which means for the <br>
-//!          algorithm: no state has been saved). It is the <br>
-//!          responsibility of the programmer to decide if he needs <br>
-//!          to save the current state of the function and to return <br>
-//!          an Integer that allows retrieval of the state. <br>
-  Standard_EXPORT   virtual  Standard_Integer GetStateNumber() ;
-
+  
+  //! Returns the number of variables of the function.
+  Standard_EXPORT virtual   Standard_Integer NbVariables()  const = 0;
+  
+  //! Returns the number of equations of the function.
+  Standard_EXPORT virtual   Standard_Integer NbEquations()  const = 0;
+  
+  //! Computes the values <F> of the functions for the
+  //! variable <X>.
+  //! returns True if the computation was done successfully,
+  //! False otherwise.
+  Standard_EXPORT virtual   Standard_Boolean Value (const math_Vector& X, math_Vector& F)  = 0;
+  
+  //! Returns the state of the function corresponding to the
+  //! latestcall of any methods associated with the function.
+  //! This function is called by each of the algorithms
+  //! described later which define the function Integer
+  //! Algorithm::StateNumber(). The algorithm has the
+  //! responsibility to call this function when it has found
+  //! a solution (i.e. a root or a minimum) and has to maintain
+  //! the association between the solution found and this
+  //! StateNumber.
+  //! Byu default, this method returns 0 (which means for the
+  //! algorithm: no state has been saved). It is the
+  //! responsibility of the programmer to decide if he needs
+  //! to save the current state of the function and to return
+  //! an Integer that allows retrieval of the state.
+  Standard_EXPORT virtual   Standard_Integer GetStateNumber() ;
 
 
 
@@ -85,7 +77,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _math_FunctionSet_HeaderFile

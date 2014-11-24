@@ -1,6 +1,2 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_OrientedShapeMapHasher_HeaderFile
 #include <TopTools_OrientedShapeMapHasher.hxx>
-#endif

@@ -24,7 +24,9 @@
 #include <OpenGl_ArbDbg.hxx>
 #include <OpenGl_ArbFBO.hxx>
 #include <OpenGl_ExtGS.hxx>
+#include <OpenGl_ArbTexBindless.hxx>
 #include <OpenGl_GlCore20.hxx>
+#include <OpenGl_Sampler.hxx>
 #include <OpenGl_ShaderManager.hxx>
 
 #include <Message_Messenger.hxx>
@@ -44,18 +46,6 @@
   #include <dlfcn.h>
 #else
   #include <GL/glx.h> // glXGetProcAddress()
-#endif
-
-// GL_NVX_gpu_memory_info
-#ifndef GL_GPU_MEMORY_INFO_DEDICATED_VIDMEM_NVX
-  enum
-  {
-    GL_GPU_MEMORY_INFO_DEDICATED_VIDMEM_NVX         = 0x9047,
-    GL_GPU_MEMORY_INFO_TOTAL_AVAILABLE_MEMORY_NVX   = 0x9048,
-    GL_GPU_MEMORY_INFO_CURRENT_AVAILABLE_VIDMEM_NVX = 0x9049,
-    GL_GPU_MEMORY_INFO_EVICTION_COUNT_NVX           = 0x904A,
-    GL_GPU_MEMORY_INFO_EVICTED_MEMORY_NVX           = 0x904B
-  };
 #endif
 
 IMPLEMENT_STANDARD_HANDLE (OpenGl_Context, Standard_Transient)
@@ -79,6 +69,8 @@ OpenGl_Context::OpenGl_Context (const Handle(OpenGl_Caps)& theCaps)
   core20fwd  (NULL),
   core32     (NULL),
   core32back (NULL),
+  core33     (NULL),
+  core33back (NULL),
   core41     (NULL),
   core41back (NULL),
   core42     (NULL),
@@ -95,8 +87,11 @@ OpenGl_Context::OpenGl_Context (const Handle(OpenGl_Caps)& theCaps)
   hasHighp   (Standard_True),
   hasTexRGBA8(Standard_True),
 #endif
-  arbNPTW(Standard_False),
+  arbNPTW  (Standard_False),
+  arbTexRG (Standard_False),
+  arbTexBindless (NULL),
   arbTBO (NULL),
+  arbTboRGB32 (Standard_False),
   arbIns (NULL),
   arbDbg (NULL),
   arbFBO (NULL),
@@ -120,6 +115,7 @@ OpenGl_Context::OpenGl_Context (const Handle(OpenGl_Caps)& theCaps)
   myGlVerMinor (0),
   myIsInitialized (Standard_False),
   myIsStereoBuffers (Standard_False),
+  myIsGlNormalizeEnabled (Standard_False),
 #if !defined(GL_ES_VERSION_2_0)
   myRenderMode (GL_RENDER),
 #else
@@ -127,7 +123,7 @@ OpenGl_Context::OpenGl_Context (const Handle(OpenGl_Caps)& theCaps)
 #endif
   myDrawBuffer (0)
 {
-#if defined(MAC_OS_X_VERSION_10_3) && !defined(MACOSX_USE_GLX)
+#if defined(__APPLE__) && !defined(MACOSX_USE_GLX)
   // Vendors can not extend functionality on this system
   // and developers are limited to OpenGL support provided by Mac OS X SDK.
   // We retrieve function pointers from system library
@@ -169,6 +165,12 @@ OpenGl_Context::~OpenGl_Context()
   mySharedResources.Nullify();
   myDelayed.Nullify();
 
+  // release sampler object
+  if (!myTexSampler.IsNull())
+  {
+    myTexSampler->Release (this);
+  }
+
 #if !defined(GL_ES_VERSION_2_0)
   if (arbDbg != NULL
    && caps->contextDebug
@@ -183,6 +185,23 @@ OpenGl_Context::~OpenGl_Context()
     }
   }
 #endif
+}
+
+// =======================================================================
+// function : forcedRelease
+// purpose  :
+// =======================================================================
+void OpenGl_Context::forcedRelease()
+{
+  ReleaseDelayed();
+  for (NCollection_DataMap<TCollection_AsciiString, Handle(OpenGl_Resource)>::Iterator anIter (*mySharedResources);
+       anIter.More(); anIter.Next())
+  {
+    anIter.Value()->Release (this);
+  }
+  mySharedResources->Clear();
+  myShaderManager->clear();
+  myShaderManager->SetContext (NULL);
 }
 
 // =======================================================================
@@ -496,7 +515,9 @@ Standard_Boolean OpenGl_Context::CheckExtension (const char* theExtName) const
 {
   if (theExtName  == NULL)
   {
+#ifdef OCCT_DEBUG
     std::cerr << "CheckExtension called with NULL string!\n";
+#endif
     return Standard_False;
   }
 
@@ -841,6 +862,8 @@ void OpenGl_Context::init()
   core20fwd  = NULL;
   core32     = NULL;
   core32back = NULL;
+  core33     = NULL;
+  core33back = NULL;
   core41     = NULL;
   core41back = NULL;
   core42     = NULL;
@@ -850,6 +873,7 @@ void OpenGl_Context::init()
   core44     = NULL;
   core44back = NULL;
   arbTBO     = NULL;
+  arbTboRGB32 = Standard_False;
   arbIns     = NULL;
   arbDbg     = NULL;
   arbFBO     = NULL;
@@ -859,8 +883,12 @@ void OpenGl_Context::init()
 
   hasTexRGBA8 = IsGlGreaterEqual (3, 0)
              || CheckExtension ("GL_OES_rgb8_rgba8");
-  arbNPTW     = IsGlGreaterEqual (3, 0)
-             || CheckExtension ("GL_OES_texture_npot");
+  // NPOT textures has limited support within OpenGL ES 2.0
+  // which are relaxed by OpenGL ES 3.0 or some extensions
+  //arbNPTW     = IsGlGreaterEqual (3, 0)
+  //           || CheckExtension ("GL_OES_texture_npot")
+  //           || CheckExtension ("GL_NV_texture_npot_2D_mipmap");
+  arbNPTW     = Standard_True;
   arbTexRG    = IsGlGreaterEqual (3, 0)
              || CheckExtension ("GL_EXT_texture_rg");
   extBgra     = CheckExtension ("GL_EXT_texture_format_BGRA8888");
@@ -982,7 +1010,7 @@ void OpenGl_Context::init()
     {
       // setup default callback
       arbDbg->glDebugMessageCallbackARB (debugCallbackWrap, this);
-    #ifdef DEB
+    #ifdef OCCT_DEBUG
       glEnable (GL_DEBUG_OUTPUT_SYNCHRONOUS_ARB);
     #endif
     }
@@ -1720,6 +1748,7 @@ void OpenGl_Context::init()
   {
     arbTBO = (OpenGl_ArbTBO* )(&(*myFuncs));
   }
+  arbTboRGB32 = CheckExtension ("GL_ARB_texture_buffer_object_rgb32");
 
   // initialize hardware instancing extension (ARB)
   if (!has31
@@ -1742,6 +1771,28 @@ void OpenGl_Context::init()
    && FindProcShort (glProgramParameteriEXT))
   {
     extGS = (OpenGl_ExtGS* )(&(*myFuncs));
+  }
+
+  // initialize bindless texture extension (ARB)
+  if (CheckExtension ("GL_ARB_bindless_texture")
+   && FindProcShort (glGetTextureHandleARB)
+   && FindProcShort (glGetTextureSamplerHandleARB)
+   && FindProcShort (glMakeTextureHandleResidentARB)
+   && FindProcShort (glMakeTextureHandleNonResidentARB)
+   && FindProcShort (glGetImageHandleARB)
+   && FindProcShort (glMakeImageHandleResidentARB)
+   && FindProcShort (glMakeImageHandleNonResidentARB)
+   && FindProcShort (glUniformHandleui64ARB)
+   && FindProcShort (glUniformHandleui64vARB)
+   && FindProcShort (glProgramUniformHandleui64ARB)
+   && FindProcShort (glProgramUniformHandleui64vARB)
+   && FindProcShort (glIsTextureHandleResidentARB)
+   && FindProcShort (glIsImageHandleResidentARB)
+   && FindProcShort (glVertexAttribL1ui64ARB)
+   && FindProcShort (glVertexAttribL1ui64vARB)
+   && FindProcShort (glGetVertexAttribLui64vARB))
+  {
+    arbTexBindless = (OpenGl_ArbTexBindless* )(&(*myFuncs));
   }
 
   if (!has12)
@@ -1819,6 +1870,12 @@ void OpenGl_Context::init()
     myGlVerMinor = 2;
     return;
   }
+  core33     = (OpenGl_GlCore33*     )(&(*myFuncs));
+  core33back = (OpenGl_GlCore33Back* )(&(*myFuncs));
+
+  // initialize sampler object
+  myTexSampler = new OpenGl_Sampler();
+  myTexSampler->Init (*this);
 
   if (!has40)
   {
@@ -1826,6 +1883,7 @@ void OpenGl_Context::init()
     myGlVerMinor = 3;
     return;
   }
+  arbTboRGB32 = Standard_True; // in core since OpenGL 4.0
 
   if (!has41)
   {
@@ -2125,4 +2183,115 @@ void OpenGl_Context::SetPointSize (const Standard_ShortReal theSize)
     }
   }
 #endif
+}
+
+// =======================================================================
+// function : SetGlNormalizeEnabled
+// purpose  :
+// =======================================================================
+Standard_Boolean OpenGl_Context::SetGlNormalizeEnabled (Standard_Boolean isEnabled)
+{
+  if (isEnabled == myIsGlNormalizeEnabled)
+  {
+    return myIsGlNormalizeEnabled;
+  }
+
+  Standard_Boolean anOldGlNormalize = myIsGlNormalizeEnabled;
+
+  myIsGlNormalizeEnabled = isEnabled;
+
+#if !defined(GL_ES_VERSION_2_0)
+  if (isEnabled)
+  {
+    glEnable (GL_NORMALIZE);
+  }
+  else
+  {
+    glDisable (GL_NORMALIZE);
+  }
+#endif
+
+  return anOldGlNormalize;
+}
+
+// =======================================================================
+// function : ApplyModelWorldMatrix
+// purpose  :
+// =======================================================================
+void OpenGl_Context::ApplyModelWorldMatrix()
+{
+#if !defined(GL_ES_VERSION_2_0)
+  if (core11 != NULL)
+  {
+    core11->glMatrixMode (GL_MODELVIEW);
+    core11->glLoadMatrixf (ModelWorldState.Current());
+  }
+#endif
+
+  if (!myShaderManager->IsEmpty())
+  {
+    myShaderManager->UpdateModelWorldStateTo (ModelWorldState.Current());
+  }
+}
+
+// =======================================================================
+// function : ApplyWorldViewMatrix
+// purpose  :
+// =======================================================================
+void OpenGl_Context::ApplyWorldViewMatrix()
+{
+#if !defined(GL_ES_VERSION_2_0)
+  if (core11 != NULL)
+  {
+    core11->glMatrixMode (GL_MODELVIEW);
+    core11->glLoadMatrixf (WorldViewState.Current());
+  }
+#endif
+
+  if (!myShaderManager->IsEmpty())
+  {
+    myShaderManager->UpdateWorldViewStateTo (WorldViewState.Current());
+  }
+}
+
+// =======================================================================
+// function : ApplyModelViewMatrix
+// purpose  :
+// =======================================================================
+void OpenGl_Context::ApplyModelViewMatrix()
+{
+#if !defined(GL_ES_VERSION_2_0)
+  if (core11 != NULL)
+  {
+    OpenGl_Mat4 aModelView = WorldViewState.Current() * ModelWorldState.Current();
+    core11->glMatrixMode (GL_MODELVIEW);
+    core11->glLoadMatrixf (aModelView.GetData());
+  }
+#endif
+
+  if (!myShaderManager->IsEmpty())
+  {
+    myShaderManager->UpdateModelWorldStateTo (ModelWorldState.Current());
+    myShaderManager->UpdateWorldViewStateTo (WorldViewState.Current());
+  }
+}
+
+// =======================================================================
+// function : ApplyProjectionMatrix
+// purpose  :
+// =======================================================================
+void OpenGl_Context::ApplyProjectionMatrix()
+{
+#if !defined(GL_ES_VERSION_2_0)
+  if (core11 != NULL)
+  {
+    core11->glMatrixMode (GL_PROJECTION);
+    core11->glLoadMatrixf (ProjectionState.Current().GetData());
+  }
+#endif
+
+  if (!myShaderManager->IsEmpty())
+  {
+    myShaderManager->UpdateProjectionStateTo (ProjectionState.Current());
+  }
 }

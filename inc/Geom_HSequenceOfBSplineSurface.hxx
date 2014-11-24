@@ -6,31 +6,15 @@
 #ifndef _Geom_HSequenceOfBSplineSurface_HeaderFile
 #define _Geom_HSequenceOfBSplineSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Geom_HSequenceOfBSplineSurface_HeaderFile
 #include <Handle_Geom_HSequenceOfBSplineSurface.hxx>
-#endif
 
-#ifndef _Geom_SequenceOfBSplineSurface_HeaderFile
 #include <Geom_SequenceOfBSplineSurface.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_Geom_BSplineSurface_HeaderFile
 #include <Handle_Geom_BSplineSurface.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Geom_BSplineSurface;
@@ -38,56 +22,57 @@ class Geom_SequenceOfBSplineSurface;
 
 
 
-class Geom_HSequenceOfBSplineSurface : public MMgt_TShared {
+class Geom_HSequenceOfBSplineSurface : public MMgt_TShared
+{
 
 public:
 
   
-      Geom_HSequenceOfBSplineSurface();
+    Geom_HSequenceOfBSplineSurface();
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void Append(const Handle(Geom_BSplineSurface)& anItem) ;
+  Standard_EXPORT   void Append (const Handle(Geom_BSplineSurface)& anItem) ;
   
-  Standard_EXPORT     void Append(const Handle(Geom_HSequenceOfBSplineSurface)& aSequence) ;
+  Standard_EXPORT   void Append (const Handle(Geom_HSequenceOfBSplineSurface)& aSequence) ;
   
-  Standard_EXPORT     void Prepend(const Handle(Geom_BSplineSurface)& anItem) ;
+  Standard_EXPORT   void Prepend (const Handle(Geom_BSplineSurface)& anItem) ;
   
-  Standard_EXPORT     void Prepend(const Handle(Geom_HSequenceOfBSplineSurface)& aSequence) ;
+  Standard_EXPORT   void Prepend (const Handle(Geom_HSequenceOfBSplineSurface)& aSequence) ;
   
-  Standard_EXPORT     void Reverse() ;
+  Standard_EXPORT   void Reverse() ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(Geom_BSplineSurface)& anItem) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(Geom_BSplineSurface)& anItem) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(Geom_HSequenceOfBSplineSurface)& aSequence) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(Geom_HSequenceOfBSplineSurface)& aSequence) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(Geom_BSplineSurface)& anItem) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(Geom_BSplineSurface)& anItem) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(Geom_HSequenceOfBSplineSurface)& aSequence) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(Geom_HSequenceOfBSplineSurface)& aSequence) ;
   
-  Standard_EXPORT     void Exchange(const Standard_Integer anIndex,const Standard_Integer anOtherIndex) ;
+  Standard_EXPORT   void Exchange (const Standard_Integer anIndex, const Standard_Integer anOtherIndex) ;
   
-  Standard_EXPORT     Handle_Geom_HSequenceOfBSplineSurface Split(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(Geom_HSequenceOfBSplineSurface) Split (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer anIndex,const Handle(Geom_BSplineSurface)& anItem) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer anIndex, const Handle(Geom_BSplineSurface)& anItem) ;
   
-  Standard_EXPORT    const Handle_Geom_BSplineSurface& Value(const Standard_Integer anIndex) const;
+  Standard_EXPORT  const  Handle(Geom_BSplineSurface)& Value (const Standard_Integer anIndex)  const;
   
-  Standard_EXPORT     Handle_Geom_BSplineSurface& ChangeValue(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(Geom_BSplineSurface)& ChangeValue (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer anIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer fromIndex,const Standard_Integer toIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer fromIndex, const Standard_Integer toIndex) ;
   
-       const Geom_SequenceOfBSplineSurface& Sequence() const;
+     const  Geom_SequenceOfBSplineSurface& Sequence()  const;
   
-        Geom_SequenceOfBSplineSurface& ChangeSequence() ;
+      Geom_SequenceOfBSplineSurface& ChangeSequence() ;
   
-  Standard_EXPORT     Handle_Geom_HSequenceOfBSplineSurface ShallowCopy() const;
+  Standard_EXPORT   Handle(Geom_HSequenceOfBSplineSurface) ShallowCopy()  const;
 
 
 
@@ -102,12 +87,12 @@ protected:
 private: 
 
 
-Geom_SequenceOfBSplineSurface mySequence;
+  Geom_SequenceOfBSplineSurface mySequence;
 
 
 };
 
-#define Item Handle_Geom_BSplineSurface
+#define Item Handle(Geom_BSplineSurface)
 #define Item_hxx <Geom_BSplineSurface.hxx>
 #define TheSequence Geom_SequenceOfBSplineSurface
 #define TheSequence_hxx <Geom_SequenceOfBSplineSurface.hxx>
@@ -128,11 +113,10 @@ Geom_SequenceOfBSplineSurface mySequence;
 #undef TCollection_HSequence_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline Handle_Geom_HSequenceOfBSplineSurface ShallowCopy(const Handle_Geom_HSequenceOfBSplineSurface& me) {
+inline Handle(Geom_HSequenceOfBSplineSurface) ShallowCopy(const Handle(Geom_HSequenceOfBSplineSurface)& me) {
  return me->ShallowCopy();
 }
 
 
 
-#endif
+#endif // _Geom_HSequenceOfBSplineSurface_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_StepBasic_ProductContext_HeaderFile
 #define _Handle_StepBasic_ProductContext_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepBasic_ApplicationContextElement_HeaderFile
 #include <Handle_StepBasic_ApplicationContextElement.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepBasic_ApplicationContextElement);
 class StepBasic_ProductContext;
 
-DEFINE_STANDARD_HANDLE(StepBasic_ProductContext,StepBasic_ApplicationContextElement)
+DEFINE_STANDARD_HANDLE(StepBasic_ProductContext, StepBasic_ApplicationContextElement)
 
-#endif
+#endif // _Handle_StepBasic_ProductContext_HeaderFile

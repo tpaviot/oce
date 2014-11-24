@@ -1,9 +1,3 @@
-#ifndef _IntPatch_Polyhedron_HeaderFile
 #include <IntPatch_Polyhedron.hxx>
-#endif
-#ifndef _Intf_TangentZone_HeaderFile
 #include <Intf_TangentZone.hxx>
-#endif
-#ifndef _IntPatch_InterferencePolyhedron_HeaderFile
 #include <IntPatch_InterferencePolyhedron.hxx>
-#endif

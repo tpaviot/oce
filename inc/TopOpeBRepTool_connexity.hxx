@@ -6,67 +6,53 @@
 #ifndef _TopOpeBRepTool_connexity_HeaderFile
 #define _TopOpeBRepTool_connexity_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_Array1OfListOfShape_HeaderFile
 #include <TopTools_Array1OfListOfShape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopoDS_Shape;
 class TopTools_ListOfShape;
 
 
 
-class TopOpeBRepTool_connexity  {
+class TopOpeBRepTool_connexity 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepTool_connexity();
+  Standard_EXPORT TopOpeBRepTool_connexity();
   
-  Standard_EXPORT   TopOpeBRepTool_connexity(const TopoDS_Shape& Key);
+  Standard_EXPORT TopOpeBRepTool_connexity(const TopoDS_Shape& Key);
   
-  Standard_EXPORT     void SetKey(const TopoDS_Shape& Key) ;
+  Standard_EXPORT   void SetKey (const TopoDS_Shape& Key) ;
   
-  Standard_EXPORT    const TopoDS_Shape& Key() const;
+  Standard_EXPORT  const  TopoDS_Shape& Key()  const;
   
-  Standard_EXPORT     Standard_Integer Item(const Standard_Integer OriKey,TopTools_ListOfShape& Item) const;
+  Standard_EXPORT   Standard_Integer Item (const Standard_Integer OriKey, TopTools_ListOfShape& Item)  const;
   
-  Standard_EXPORT     Standard_Integer AllItems(TopTools_ListOfShape& Item) const;
+  Standard_EXPORT   Standard_Integer AllItems (TopTools_ListOfShape& Item)  const;
   
-  Standard_EXPORT     void AddItem(const Standard_Integer OriKey,const TopTools_ListOfShape& Item) ;
+  Standard_EXPORT   void AddItem (const Standard_Integer OriKey, const TopTools_ListOfShape& Item) ;
   
-  Standard_EXPORT     void AddItem(const Standard_Integer OriKey,const TopoDS_Shape& Item) ;
+  Standard_EXPORT   void AddItem (const Standard_Integer OriKey, const TopoDS_Shape& Item) ;
   
-  Standard_EXPORT     Standard_Boolean RemoveItem(const Standard_Integer OriKey,const TopoDS_Shape& Item) ;
+  Standard_EXPORT   Standard_Boolean RemoveItem (const Standard_Integer OriKey, const TopoDS_Shape& Item) ;
   
-  Standard_EXPORT     Standard_Boolean RemoveItem(const TopoDS_Shape& Item) ;
+  Standard_EXPORT   Standard_Boolean RemoveItem (const TopoDS_Shape& Item) ;
   
-  Standard_EXPORT     TopTools_ListOfShape& ChangeItem(const Standard_Integer OriKey) ;
+  Standard_EXPORT   TopTools_ListOfShape& ChangeItem (const Standard_Integer OriKey) ;
   
-  Standard_EXPORT     Standard_Boolean IsMultiple() const;
+  Standard_EXPORT   Standard_Boolean IsMultiple()  const;
   
-  Standard_EXPORT     Standard_Boolean IsFaulty() const;
+  Standard_EXPORT   Standard_Boolean IsFaulty()  const;
   
-  Standard_EXPORT     Standard_Integer IsInternal(TopTools_ListOfShape& Item) const;
-
+  Standard_EXPORT   Standard_Integer IsInternal (TopTools_ListOfShape& Item)  const;
 
 
 
@@ -81,8 +67,8 @@ private:
 
 
 
-TopoDS_Shape theKey;
-TopTools_Array1OfListOfShape theItems;
+  TopoDS_Shape theKey;
+  TopTools_Array1OfListOfShape theItems;
 
 
 };
@@ -91,7 +77,6 @@ TopTools_Array1OfListOfShape theItems;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepTool_connexity_HeaderFile

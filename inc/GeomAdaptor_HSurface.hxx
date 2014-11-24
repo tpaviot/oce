@@ -6,46 +6,36 @@
 #ifndef _GeomAdaptor_HSurface_HeaderFile
 #define _GeomAdaptor_HSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_GeomAdaptor_HSurface_HeaderFile
 #include <Handle_GeomAdaptor_HSurface.hxx>
-#endif
 
-#ifndef _GeomAdaptor_GHSurface_HeaderFile
 #include <GeomAdaptor_GHSurface.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Standard_ConstructionError;
 class GeomAdaptor_Surface;
 class Geom_Surface;
 
 
-//! An interface between the services provided by any <br>
-//! surface from the package Geom and those required <br>
-//! of the surface by algorithms which use it. <br>
-//! Provides a  surface handled by reference. <br>
-class GeomAdaptor_HSurface : public GeomAdaptor_GHSurface {
+//! An interface between the services provided by any
+//! surface from the package Geom and those required
+//! of the surface by algorithms which use it.
+//! Provides a  surface handled by reference.
+class GeomAdaptor_HSurface : public GeomAdaptor_GHSurface
+{
 
 public:
 
   
-      GeomAdaptor_HSurface();
+    GeomAdaptor_HSurface();
   
-      GeomAdaptor_HSurface(const GeomAdaptor_Surface& AS);
+    GeomAdaptor_HSurface(const GeomAdaptor_Surface& AS);
   
-      GeomAdaptor_HSurface(const Handle(Geom_Surface)& S);
-  //! ConstructionError is raised if UFirst>ULast or VFirst>VLast <br>
-      GeomAdaptor_HSurface(const Handle(Geom_Surface)& S,const Standard_Real UFirst,const Standard_Real ULast,const Standard_Real VFirst,const Standard_Real VLast,const Standard_Real TolU = 0.0,const Standard_Real TolV = 0.0);
+    GeomAdaptor_HSurface(const Handle(Geom_Surface)& S);
+  
+  //! ConstructionError is raised if UFirst>ULast or VFirst>VLast
+    GeomAdaptor_HSurface(const Handle(Geom_Surface)& S, const Standard_Real UFirst, const Standard_Real ULast, const Standard_Real VFirst, const Standard_Real VLast, const Standard_Real TolU = 0.0, const Standard_Real TolV = 0.0);
 
 
 
@@ -69,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomAdaptor_HSurface_HeaderFile

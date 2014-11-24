@@ -6,28 +6,14 @@
 #ifndef _Visual3d_SequenceOfView_HeaderFile
 #define _Visual3d_SequenceOfView_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_Visual3d_View_HeaderFile
 #include <Handle_Visual3d_View.hxx>
-#endif
-#ifndef _Handle_Visual3d_SequenceNodeOfSequenceOfView_HeaderFile
 #include <Handle_Visual3d_SequenceNodeOfSequenceOfView.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Visual3d_View;
@@ -35,68 +21,68 @@ class Visual3d_SequenceNodeOfSequenceOfView;
 
 
 
-class Visual3d_SequenceOfView  : public TCollection_BaseSequence {
+class Visual3d_SequenceOfView  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Visual3d_SequenceOfView();
+    Visual3d_SequenceOfView();
   
-  Standard_EXPORT   Visual3d_SequenceOfView(const Visual3d_SequenceOfView& Other);
+  Standard_EXPORT Visual3d_SequenceOfView(const Visual3d_SequenceOfView& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~Visual3d_SequenceOfView()
 {
   Clear();
 }
   
-  Standard_EXPORT    const Visual3d_SequenceOfView& Assign(const Visual3d_SequenceOfView& Other) ;
-   const Visual3d_SequenceOfView& operator =(const Visual3d_SequenceOfView& Other) 
+  Standard_EXPORT  const  Visual3d_SequenceOfView& Assign (const Visual3d_SequenceOfView& Other) ;
+ const  Visual3d_SequenceOfView& operator = (const Visual3d_SequenceOfView& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(Visual3d_View)& T) ;
+  Standard_EXPORT   void Append (const Handle(Visual3d_View)& T) ;
   
-        void Append(Visual3d_SequenceOfView& S) ;
+      void Append (Visual3d_SequenceOfView& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(Visual3d_View)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(Visual3d_View)& T) ;
   
-        void Prepend(Visual3d_SequenceOfView& S) ;
+      void Prepend (Visual3d_SequenceOfView& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(Visual3d_View)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(Visual3d_View)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,Visual3d_SequenceOfView& S) ;
+      void InsertBefore (const Standard_Integer Index, Visual3d_SequenceOfView& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(Visual3d_View)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(Visual3d_View)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,Visual3d_SequenceOfView& S) ;
+      void InsertAfter (const Standard_Integer Index, Visual3d_SequenceOfView& S) ;
   
-  Standard_EXPORT    const Handle_Visual3d_View& First() const;
+  Standard_EXPORT  const  Handle(Visual3d_View)& First()  const;
   
-  Standard_EXPORT    const Handle_Visual3d_View& Last() const;
+  Standard_EXPORT  const  Handle(Visual3d_View)& Last()  const;
   
-        void Split(const Standard_Integer Index,Visual3d_SequenceOfView& Sub) ;
+      void Split (const Standard_Integer Index, Visual3d_SequenceOfView& Sub) ;
   
-  Standard_EXPORT    const Handle_Visual3d_View& Value(const Standard_Integer Index) const;
-   const Handle_Visual3d_View& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(Visual3d_View)& Value (const Standard_Integer Index)  const;
+ const  Handle(Visual3d_View)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(Visual3d_View)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(Visual3d_View)& I) ;
   
-  Standard_EXPORT     Handle_Visual3d_View& ChangeValue(const Standard_Integer Index) ;
-    Handle_Visual3d_View& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(Visual3d_View)& ChangeValue (const Standard_Integer Index) ;
+  Handle(Visual3d_View)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -115,7 +101,7 @@ private:
 
 };
 
-#define SeqItem Handle_Visual3d_View
+#define SeqItem Handle(Visual3d_View)
 #define SeqItem_hxx <Visual3d_View.hxx>
 #define TCollection_SequenceNode Visual3d_SequenceNodeOfSequenceOfView
 #define TCollection_SequenceNode_hxx <Visual3d_SequenceNodeOfSequenceOfView.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Visual3d_SequenceOfView_HeaderFile

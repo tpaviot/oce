@@ -6,13 +6,11 @@
 #ifndef _Quantity_Normality_HeaderFile
 #define _Quantity_Normality_HeaderFile
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 
 typedef Standard_Real Quantity_Normality;
 
 
 #define Quantity_Normality_Type_() Standard_Real_Type_()
 
-#endif
+#endif // _Quantity_Normality_HeaderFile

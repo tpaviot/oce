@@ -6,28 +6,14 @@
 #ifndef _BOPTools_HeaderFile
 #define _BOPTools_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BOPCol_MapOfShape_HeaderFile
 #include <BOPCol_MapOfShape.hxx>
-#endif
-#ifndef _BOPCol_IndexedMapOfShape_HeaderFile
 #include <BOPCol_IndexedMapOfShape.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _BOPCol_IndexedDataMapOfShapeListOfShape_HeaderFile
 #include <BOPCol_IndexedDataMapOfShapeListOfShape.hxx>
-#endif
 class TopoDS_Shape;
 class BOPTools_ShapeSet;
 class BOPTools_EdgeSet;
@@ -39,20 +25,20 @@ class BOPTools_AlgoTools3D;
 
 
 
-class BOPTools  {
+class BOPTools 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  void MapShapes(const TopoDS_Shape& S,BOPCol_MapOfShape& M) ;
+  Standard_EXPORT static   void MapShapes (const TopoDS_Shape& S, BOPCol_MapOfShape& M) ;
   
-  Standard_EXPORT   static  void MapShapes(const TopoDS_Shape& S,BOPCol_IndexedMapOfShape& M) ;
+  Standard_EXPORT static   void MapShapes (const TopoDS_Shape& S, BOPCol_IndexedMapOfShape& M) ;
   
-  Standard_EXPORT   static  void MapShapes(const TopoDS_Shape& S,const TopAbs_ShapeEnum T,BOPCol_IndexedMapOfShape& M) ;
+  Standard_EXPORT static   void MapShapes (const TopoDS_Shape& S, const TopAbs_ShapeEnum T, BOPCol_IndexedMapOfShape& M) ;
   
-  Standard_EXPORT   static  void MapShapesAndAncestors(const TopoDS_Shape& S,const TopAbs_ShapeEnum TS,const TopAbs_ShapeEnum TA,BOPCol_IndexedDataMapOfShapeListOfShape& M) ;
-
+  Standard_EXPORT static   void MapShapesAndAncestors (const TopoDS_Shape& S, const TopAbs_ShapeEnum TS, const TopAbs_ShapeEnum TA, BOPCol_IndexedDataMapOfShapeListOfShape& M) ;
 
 
 
@@ -82,7 +68,6 @@ friend class BOPTools_AlgoTools3D;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BOPTools_HeaderFile

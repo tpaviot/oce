@@ -1,24 +1,8 @@
-#ifndef _Standard_DimensionError_HeaderFile
 #include <Standard_DimensionError.hxx>
-#endif
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _TColgp_Array1OfPnt_HeaderFile
 #include <TColgp_Array1OfPnt.hxx>
-#endif
-#ifndef _TColgp_Array2OfPnt_HeaderFile
 #include <TColgp_Array2OfPnt.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _TColStd_Array2OfReal_HeaderFile
 #include <TColStd_Array2OfReal.hxx>
-#endif
-#ifndef _GProp_PGProps_HeaderFile
 #include <GProp_PGProps.hxx>
-#endif

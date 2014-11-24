@@ -1,18 +1,6 @@
-#ifndef _BRepTools_Modification_HeaderFile
 #include <BRepTools_Modification.hxx>
-#endif
-#ifndef _Standard_NullObject_HeaderFile
 #include <Standard_NullObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _BRepBuilderAPI_ModifyShape_HeaderFile
 #include <BRepBuilderAPI_ModifyShape.hxx>
-#endif

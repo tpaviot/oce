@@ -6,8 +6,11 @@
 #ifndef _TopOpeBRep_P2Dstatus_HeaderFile
 #define _TopOpeBRep_P2Dstatus_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum TopOpeBRep_P2Dstatus {
+
+enum TopOpeBRep_P2Dstatus
+{
 TopOpeBRep_P2DUNK,
 TopOpeBRep_P2DINT,
 TopOpeBRep_P2DSGF,
@@ -15,8 +18,4 @@ TopOpeBRep_P2DSGL,
 TopOpeBRep_P2DNEW
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _TopOpeBRep_P2Dstatus_HeaderFile

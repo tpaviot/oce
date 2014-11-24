@@ -1,30 +1,10 @@
-#ifndef _XSControl_WorkSession_HeaderFile
 #include <XSControl_WorkSession.hxx>
-#endif
-#ifndef _TDocStd_Document_HeaderFile
 #include <TDocStd_Document.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TDF_LabelSequence_HeaderFile
 #include <TDF_LabelSequence.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _XCAFPrs_DataMapOfShapeStyle_HeaderFile
 #include <XCAFPrs_DataMapOfShapeStyle.hxx>
-#endif
-#ifndef _XCAFPrs_DataMapOfStyleTransient_HeaderFile
 #include <XCAFPrs_DataMapOfStyleTransient.hxx>
-#endif
-#ifndef _TopTools_MapOfShape_HeaderFile
 #include <TopTools_MapOfShape.hxx>
-#endif
-#ifndef _XCAFPrs_Style_HeaderFile
 #include <XCAFPrs_Style.hxx>
-#endif
-#ifndef _IGESCAFControl_Writer_HeaderFile
 #include <IGESCAFControl_Writer.hxx>
-#endif

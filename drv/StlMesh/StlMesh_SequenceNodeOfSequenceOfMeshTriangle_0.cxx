@@ -5,16 +5,10 @@
 
 #include <StlMesh_SequenceNodeOfSequenceOfMeshTriangle.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _StlMesh_MeshTriangle_HeaderFile
 #include <StlMesh_MeshTriangle.hxx>
-#endif
-#ifndef _StlMesh_SequenceOfMeshTriangle_HeaderFile
 #include <StlMesh_SequenceOfMeshTriangle.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(StlMesh_SequenceNodeOfSequenceOfMeshTriangle,Standard_Transie
 IMPLEMENT_STANDARD_RTTI(StlMesh_SequenceNodeOfSequenceOfMeshTriangle)
 
 
-#define SeqItem Handle_StlMesh_MeshTriangle
+#define SeqItem Handle(StlMesh_MeshTriangle)
 #define SeqItem_hxx <StlMesh_MeshTriangle.hxx>
 #define TCollection_SequenceNode StlMesh_SequenceNodeOfSequenceOfMeshTriangle
 #define TCollection_SequenceNode_hxx <StlMesh_SequenceNodeOfSequenceOfMeshTriangle.hxx>

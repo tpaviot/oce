@@ -1,45 +1,15 @@
-#ifndef _Geom2d_BSplineCurve_HeaderFile
 #include <Geom2d_BSplineCurve.hxx>
-#endif
-#ifndef _Geom2d_BezierCurve_HeaderFile
 #include <Geom2d_BezierCurve.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_NotImplemented_HeaderFile
 #include <Standard_NotImplemented.hxx>
-#endif
-#ifndef _gp_Lin2d_HeaderFile
 #include <gp_Lin2d.hxx>
-#endif
-#ifndef _gp_Circ2d_HeaderFile
 #include <gp_Circ2d.hxx>
-#endif
-#ifndef _gp_Elips2d_HeaderFile
 #include <gp_Elips2d.hxx>
-#endif
-#ifndef _gp_Hypr2d_HeaderFile
 #include <gp_Hypr2d.hxx>
-#endif
-#ifndef _gp_Parab2d_HeaderFile
 #include <gp_Parab2d.hxx>
-#endif
-#ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
-#endif
-#ifndef _gp_Circ_HeaderFile
 #include <gp_Circ.hxx>
-#endif
-#ifndef _gp_Elips_HeaderFile
 #include <gp_Elips.hxx>
-#endif
-#ifndef _gp_Parab_HeaderFile
 #include <gp_Parab.hxx>
-#endif
-#ifndef _gp_Hypr_HeaderFile
 #include <gp_Hypr.hxx>
-#endif
-#ifndef _ProjLib_Projector_HeaderFile
 #include <ProjLib_Projector.hxx>
-#endif

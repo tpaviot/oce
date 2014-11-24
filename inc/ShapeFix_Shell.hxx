@@ -6,46 +6,20 @@
 #ifndef _ShapeFix_Shell_HeaderFile
 #define _ShapeFix_Shell_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeFix_Shell_HeaderFile
 #include <Handle_ShapeFix_Shell.hxx>
-#endif
 
-#ifndef _TopoDS_Shell_HeaderFile
 #include <TopoDS_Shell.hxx>
-#endif
-#ifndef _TopoDS_Compound_HeaderFile
 #include <TopoDS_Compound.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_ShapeFix_Face_HeaderFile
 #include <Handle_ShapeFix_Face.hxx>
-#endif
-#ifndef _ShapeFix_Root_HeaderFile
 #include <ShapeFix_Root.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Message_ProgressIndicator_HeaderFile
 #include <Handle_Message_ProgressIndicator.hxx>
-#endif
-#ifndef _ShapeExtend_Status_HeaderFile
 #include <ShapeExtend_Status.hxx>
-#endif
-#ifndef _Handle_ShapeExtend_BasicMsgRegistrator_HeaderFile
 #include <Handle_ShapeExtend_BasicMsgRegistrator.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class ShapeFix_Face;
 class TopoDS_Shell;
 class Message_ProgressIndicator;
@@ -54,66 +28,83 @@ class TopoDS_Compound;
 class ShapeExtend_BasicMsgRegistrator;
 
 
-//! Fixing orientation of faces in shell <br>
-class ShapeFix_Shell : public ShapeFix_Root {
+//! Fixing orientation of faces in shell
+class ShapeFix_Shell : public ShapeFix_Root
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   ShapeFix_Shell();
-  //! Initializes by shell. <br>
-  Standard_EXPORT   ShapeFix_Shell(const TopoDS_Shell& shape);
-  //! Initializes by shell. <br>
-  Standard_EXPORT     void Init(const TopoDS_Shell& shell) ;
-  //! Iterates on subshapes and performs fixes <br>
-//!          (for each face calls ShapeFix_Face::Perform and <br>
-//!          then calls FixFaceOrientation). The passed progress <br>
-//!          indicator allows user to consult the current progress <br>
-//!          stage and abort algorithm if needed. <br>
-  Standard_EXPORT     Standard_Boolean Perform(const Handle(Message_ProgressIndicator)& theProgress = 0) ;
-  //! Fixes orientation of faces in shell. <br>
-//!          Changes orientation of face in the shell, if it is oriented opposite <br>
-//!          to neigbouring faces. If it is not possible to orient all faces in the <br>
-//!          shell (like in case of mebious band), this method orients only subset <br>
-//!          of faces. Other faces are stored in Error compound. <br>
-//!          Modes : <br>
-//!    	    isAccountMultiConex - mode for account cases of multiconnexity. <br>
-//!          If this mode is equal to Standard_True, separate shells will be created <br>
-//!          in the cases of multiconnexity. If this mode is equal to Standard_False, <br>
-//!          one shell will be created without account of multiconnexity.By defautt - Standard_True; <br>
-//!          NonManifold - mode for creation of non-manifold shells. <br>
-//!          If this mode is equal to Standard_True one non-manifold will be created from shell <br>
-//!          contains multishared edges. Else if this mode is equal to Standard_False only <br>
-//!          manifold shells will be created. By default - Standard_False. <br>
-//! <br>
-  Standard_EXPORT     Standard_Boolean FixFaceOrientation(const TopoDS_Shell& shell,const Standard_Boolean isAccountMultiConex = Standard_True,const Standard_Boolean NonManifold = Standard_False) ;
-  //! Returns fixed shell (or subset of oriented faces). <br>
-  Standard_EXPORT     TopoDS_Shell Shell() ;
-  //! In case of multiconnexity returns compound of fixed shells <br>
-//!          else returns one shell.. <br>
-  Standard_EXPORT     TopoDS_Shape Shape() ;
-  //! Returns Number of obtainrd shells; <br>
-  Standard_EXPORT     Standard_Integer NbShells() const;
-  //! Returns not oriented subset of faces. <br>
-  Standard_EXPORT     TopoDS_Compound ErrorFaces() const;
-  //! Returns the status of the last Fix. <br>
-  Standard_EXPORT     Standard_Boolean Status(const ShapeExtend_Status status) const;
-  //! Returns tool for fixing faces. <br>
-        Handle_ShapeFix_Face FixFaceTool() ;
-  //! Sets message registrator <br>
-  Standard_EXPORT   virtual  void SetMsgRegistrator(const Handle(ShapeExtend_BasicMsgRegistrator)& msgreg) ;
-  //! Sets basic precision value (also to FixWireTool) <br>
-  Standard_EXPORT   virtual  void SetPrecision(const Standard_Real preci) ;
-  //! Sets minimal allowed tolerance (also to FixWireTool) <br>
-  Standard_EXPORT   virtual  void SetMinTolerance(const Standard_Real mintol) ;
-  //! Sets maximal allowed tolerance (also to FixWireTool) <br>
-  Standard_EXPORT   virtual  void SetMaxTolerance(const Standard_Real maxtol) ;
-  //! Returns (modifiable) the mode for applying fixes of <br>
-//!          ShapeFix_Face, by default True. <br>
-        Standard_Integer& FixFaceMode() ;
-  //! Returns (modifiable) the mode for applying <br>
-//!          FixFaceOrientation, by default True. <br>
-        Standard_Integer& FixOrientationMode() ;
+  
+  //! Empty constructor
+  Standard_EXPORT ShapeFix_Shell();
+  
+  //! Initializes by shell.
+  Standard_EXPORT ShapeFix_Shell(const TopoDS_Shell& shape);
+  
+  //! Initializes by shell.
+  Standard_EXPORT   void Init (const TopoDS_Shell& shell) ;
+  
+  //! Iterates on subshapes and performs fixes
+  //! (for each face calls ShapeFix_Face::Perform and
+  //! then calls FixFaceOrientation). The passed progress
+  //! indicator allows user to consult the current progress
+  //! stage and abort algorithm if needed.
+  Standard_EXPORT   Standard_Boolean Perform (const Handle(Message_ProgressIndicator)& theProgress = 0) ;
+  
+  //! Fixes orientation of faces in shell.
+  //! Changes orientation of face in the shell, if it is oriented opposite
+  //! to neigbouring faces. If it is not possible to orient all faces in the
+  //! shell (like in case of mebious band), this method orients only subset
+  //! of faces. Other faces are stored in Error compound.
+  //! Modes :
+  //! isAccountMultiConex - mode for account cases of multiconnexity.
+  //! If this mode is equal to Standard_True, separate shells will be created
+  //! in the cases of multiconnexity. If this mode is equal to Standard_False,
+  //! one shell will be created without account of multiconnexity.By defautt - Standard_True;
+  //! NonManifold - mode for creation of non-manifold shells.
+  //! If this mode is equal to Standard_True one non-manifold will be created from shell
+  //! contains multishared edges. Else if this mode is equal to Standard_False only
+  //! manifold shells will be created. By default - Standard_False.
+  Standard_EXPORT   Standard_Boolean FixFaceOrientation (const TopoDS_Shell& shell, const Standard_Boolean isAccountMultiConex = Standard_True, const Standard_Boolean NonManifold = Standard_False) ;
+  
+  //! Returns fixed shell (or subset of oriented faces).
+  Standard_EXPORT   TopoDS_Shell Shell() ;
+  
+  //! In case of multiconnexity returns compound of fixed shells
+  //! else returns one shell..
+  Standard_EXPORT   TopoDS_Shape Shape() ;
+  
+  //! Returns Number of obtainrd shells;
+  Standard_EXPORT   Standard_Integer NbShells()  const;
+  
+  //! Returns not oriented subset of faces.
+  Standard_EXPORT   TopoDS_Compound ErrorFaces()  const;
+  
+  //! Returns the status of the last Fix.
+  Standard_EXPORT   Standard_Boolean Status (const ShapeExtend_Status status)  const;
+  
+  //! Returns tool for fixing faces.
+      Handle(ShapeFix_Face) FixFaceTool() ;
+  
+  //! Sets message registrator
+  Standard_EXPORT virtual   void SetMsgRegistrator (const Handle(ShapeExtend_BasicMsgRegistrator)& msgreg) ;
+  
+  //! Sets basic precision value (also to FixWireTool)
+  Standard_EXPORT virtual   void SetPrecision (const Standard_Real preci) ;
+  
+  //! Sets minimal allowed tolerance (also to FixWireTool)
+  Standard_EXPORT virtual   void SetMinTolerance (const Standard_Real mintol) ;
+  
+  //! Sets maximal allowed tolerance (also to FixWireTool)
+  Standard_EXPORT virtual   void SetMaxTolerance (const Standard_Real maxtol) ;
+  
+  //! Returns (modifiable) the mode for applying fixes of
+  //! ShapeFix_Face, by default True.
+      Standard_Integer& FixFaceMode() ;
+  
+  //! Returns (modifiable) the mode for applying
+  //! FixFaceOrientation, by default True.
+      Standard_Integer& FixOrientationMode() ;
 
 
 
@@ -123,13 +114,13 @@ public:
 protected:
 
 
-TopoDS_Shell myShell;
-TopoDS_Compound myErrFaces;
-Standard_Integer myStatus;
-Handle_ShapeFix_Face myFixFace;
-Standard_Integer myFixFaceMode;
-Standard_Integer myFixOrientationMode;
-Standard_Integer myNbShells;
+  TopoDS_Shell myShell;
+  TopoDS_Compound myErrFaces;
+  Standard_Integer myStatus;
+  Handle(ShapeFix_Face) myFixFace;
+  Standard_Integer myFixFaceMode;
+  Standard_Integer myFixOrientationMode;
+  Standard_Integer myNbShells;
 
 
 private: 
@@ -144,7 +135,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeFix_Shell_HeaderFile

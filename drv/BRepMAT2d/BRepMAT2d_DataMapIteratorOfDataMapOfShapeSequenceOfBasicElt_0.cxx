@@ -5,24 +5,12 @@
 
 #include <BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _MAT_SequenceOfBasicElt_HeaderFile
 #include <MAT_SequenceOfBasicElt.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _BRepMAT2d_DataMapOfShapeSequenceOfBasicElt_HeaderFile
 #include <BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.hxx>
-#endif
-#ifndef _BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt_HeaderFile
 #include <BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape

@@ -6,28 +6,14 @@
 #ifndef _TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger_HeaderFile
 #define _TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger_HeaderFile
 #include <Handle_TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopoDS_Shape;
 class TopTools_OrientedShapeMapHasher;
 class TopTools_DataMapOfOrientedShapeInteger;
@@ -35,16 +21,17 @@ class TopTools_DataMapIteratorOfDataMapOfOrientedShapeInteger;
 
 
 
-class TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger : public TCollection_MapNode {
+class TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger : public TCollection_MapNode
+{
 
 public:
 
   
-      TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger(const TopoDS_Shape& K,const Standard_Integer& I,const TCollection_MapNodePtr& n);
+    TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger(const TopoDS_Shape& K, const Standard_Integer& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        Standard_Integer& Value() const;
+      Standard_Integer& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-Standard_Integer myValue;
+  TopoDS_Shape myKey;
+  Standard_Integer myValue;
 
 
 };
@@ -98,7 +85,6 @@ Standard_Integer myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopTools_DataMapNodeOfDataMapOfOrientedShapeInteger_HeaderFile

@@ -5,22 +5,12 @@
 
 #include <Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Transfer_Binder_HeaderFile
 #include <Transfer_Binder.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _Transfer_TransferMapOfProcessForTransient_HeaderFile
 #include <Transfer_TransferMapOfProcessForTransient.hxx>
-#endif
 
  
 
@@ -39,9 +29,9 @@ IMPLEMENT_DOWNCAST(Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient
 IMPLEMENT_STANDARD_RTTI(Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient)
 
 
-#define TheKey Handle_Standard_Transient
+#define TheKey Handle(Standard_Transient)
 #define TheKey_hxx <Standard_Transient.hxx>
-#define TheItem Handle_Transfer_Binder
+#define TheItem Handle(Transfer_Binder)
 #define TheItem_hxx <Transfer_Binder.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>

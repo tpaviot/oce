@@ -109,6 +109,8 @@
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 		</Linker>
 		<Unit filename="../../../drv/Interface/Interface_Array1OfFileParameter_0.cxx" />
 		<Unit filename="../../../drv/Interface/Interface_Array1OfHAsciiString_0.cxx" />

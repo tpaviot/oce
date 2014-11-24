@@ -6,91 +6,93 @@
 #ifndef _Intf_TangentZone_HeaderFile
 #define _Intf_TangentZone_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Intf_SeqOfSectionPoint_HeaderFile
 #include <Intf_SeqOfSectionPoint.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_OutOfRange;
 class Intf_SectionPoint;
 
 
-//! Describes   a  zone  of  tangence  between  polygons  or <br>
-//!          polyhedra as a sequence of points of intersection. <br>
-class Intf_TangentZone  {
+//! Describes   a  zone  of  tangence  between  polygons  or
+//! polyhedra as a sequence of points of intersection.
+class Intf_TangentZone 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns number of SectionPoint in this TangentZone. <br>
-        Standard_Integer NumberOfPoints() const;
-  //! Gives   the   SectionPoint   of  address  <Index>  in  the <br>
-//!          TangentZone. <br>
-//! <br>
-  Standard_EXPORT    const Intf_SectionPoint& GetPoint(const Standard_Integer Index) const;
-  //! Compares two TangentZones. <br>
-//! <br>
-  Standard_EXPORT     Standard_Boolean IsEqual(const Intf_TangentZone& Other) const;
-    Standard_Boolean operator ==(const Intf_TangentZone& Other) const
+  
+  //! Returns number of SectionPoint in this TangentZone.
+      Standard_Integer NumberOfPoints()  const;
+  
+  //! Gives   the   SectionPoint   of  address  <Index>  in  the
+  //! TangentZone.
+  Standard_EXPORT  const  Intf_SectionPoint& GetPoint (const Standard_Integer Index)  const;
+  
+  //! Compares two TangentZones.
+  Standard_EXPORT   Standard_Boolean IsEqual (const Intf_TangentZone& Other)  const;
+  Standard_Boolean operator == (const Intf_TangentZone& Other)  const
 {
   return IsEqual(Other);
 }
-  //! Checks if <ThePI> is in TangentZone. <br>
-  Standard_EXPORT     Standard_Boolean Contains(const Intf_SectionPoint& ThePI) const;
-  //! Gives  the parameter range of the  TangentZone on the first <br>
-//!          argument of the Interference. (Usable only for polygon) <br>
-        void ParamOnFirst(Standard_Real& paraMin,Standard_Real& paraMax) const;
-  //! Gives the parameter range of the  TangentZone on the second <br>
-//!          argument of the Interference. (Usable only for polygon) <br>
-        void ParamOnSecond(Standard_Real& paraMin,Standard_Real& paraMax) const;
-  //! Gives information  about  the    first argument   of   the <br>
-//!          Interference. (Usable only for polygon) <br>
-  Standard_EXPORT     void InfoFirst(Standard_Integer& segMin,Standard_Real& paraMin,Standard_Integer& segMax,Standard_Real& paraMax) const;
-  //! Gives   informations  about  the  second   argument of  the <br>
-//!          Interference. (Usable only for polygon) <br>
-  Standard_EXPORT     void InfoSecond(Standard_Integer& segMin,Standard_Real& paraMin,Standard_Integer& segMax,Standard_Real& paraMax) const;
-  //! Returns True if  <ThePI>  is in the parameter  range of the <br>
-//!          TangentZone. <br>
-  Standard_EXPORT     Standard_Boolean RangeContains(const Intf_SectionPoint& ThePI) const;
-  //! Returns True if the TangentZone  <Other> has  a common part <br>
-//!          with <me>. <br>
-  Standard_EXPORT     Standard_Boolean HasCommonRange(const Intf_TangentZone& Other) const;
-  //! Builds an empty tangent zone. <br>
-  Standard_EXPORT   Intf_TangentZone();
-  //! Copies a Tangent zone. <br>
-  Standard_EXPORT   Intf_TangentZone(const Intf_TangentZone& Other);
-  //! Adds a SectionPoint to the TangentZone. <br>
-  Standard_EXPORT     void Append(const Intf_SectionPoint& Pi) ;
-  //! Adds the TangentZone <Tzi> to <me>. <br>
-  Standard_EXPORT     void Append(const Intf_TangentZone& Tzi) ;
-  //! Inserts a SectionPoint in the TangentZone. <br>
-  Standard_EXPORT     Standard_Boolean Insert(const Intf_SectionPoint& Pi) ;
-  //! Inserts a point in the polygonal TangentZone. <br>
-  Standard_EXPORT     void PolygonInsert(const Intf_SectionPoint& Pi) ;
-  //! Inserts a SectionPoint before <Index> in the TangentZone. <br>
-  Standard_EXPORT     void InsertBefore(const Standard_Integer Index,const Intf_SectionPoint& Pi) ;
-  //! Inserts a SectionPoint after <Index> in the TangentZone. <br>
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Intf_SectionPoint& Pi) ;
   
-  Standard_EXPORT     void Dump(const Standard_Integer Indent) const;
-
+  //! Checks if <ThePI> is in TangentZone.
+  Standard_EXPORT   Standard_Boolean Contains (const Intf_SectionPoint& ThePI)  const;
+  
+  //! Gives  the parameter range of the  TangentZone on the first
+  //! argument of the Interference. (Usable only for polygon)
+      void ParamOnFirst (Standard_Real& paraMin, Standard_Real& paraMax)  const;
+  
+  //! Gives the parameter range of the  TangentZone on the second
+  //! argument of the Interference. (Usable only for polygon)
+      void ParamOnSecond (Standard_Real& paraMin, Standard_Real& paraMax)  const;
+  
+  //! Gives information  about  the    first argument   of   the
+  //! Interference. (Usable only for polygon)
+  Standard_EXPORT   void InfoFirst (Standard_Integer& segMin, Standard_Real& paraMin, Standard_Integer& segMax, Standard_Real& paraMax)  const;
+  
+  //! Gives   informations  about  the  second   argument of  the
+  //! Interference. (Usable only for polygon)
+  Standard_EXPORT   void InfoSecond (Standard_Integer& segMin, Standard_Real& paraMin, Standard_Integer& segMax, Standard_Real& paraMax)  const;
+  
+  //! Returns True if  <ThePI>  is in the parameter  range of the
+  //! TangentZone.
+  Standard_EXPORT   Standard_Boolean RangeContains (const Intf_SectionPoint& ThePI)  const;
+  
+  //! Returns True if the TangentZone  <Other> has  a common part
+  //! with <me>.
+  Standard_EXPORT   Standard_Boolean HasCommonRange (const Intf_TangentZone& Other)  const;
+  
+  //! Builds an empty tangent zone.
+  Standard_EXPORT Intf_TangentZone();
+  
+  //! Copies a Tangent zone.
+  Standard_EXPORT Intf_TangentZone(const Intf_TangentZone& Other);
+  
+  //! Adds a SectionPoint to the TangentZone.
+  Standard_EXPORT   void Append (const Intf_SectionPoint& Pi) ;
+  
+  //! Adds the TangentZone <Tzi> to <me>.
+  Standard_EXPORT   void Append (const Intf_TangentZone& Tzi) ;
+  
+  //! Inserts a SectionPoint in the TangentZone.
+  Standard_EXPORT   Standard_Boolean Insert (const Intf_SectionPoint& Pi) ;
+  
+  //! Inserts a point in the polygonal TangentZone.
+  Standard_EXPORT   void PolygonInsert (const Intf_SectionPoint& Pi) ;
+  
+  //! Inserts a SectionPoint before <Index> in the TangentZone.
+  Standard_EXPORT   void InsertBefore (const Standard_Integer Index, const Intf_SectionPoint& Pi) ;
+  
+  //! Inserts a SectionPoint after <Index> in the TangentZone.
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Intf_SectionPoint& Pi) ;
+  
+  Standard_EXPORT   void Dump (const Standard_Integer Indent)  const;
 
 
 
@@ -105,11 +107,11 @@ private:
 
 
 
-Intf_SeqOfSectionPoint Result;
-Standard_Real ParamOnFirstMin;
-Standard_Real ParamOnFirstMax;
-Standard_Real ParamOnSecondMin;
-Standard_Real ParamOnSecondMax;
+  Intf_SeqOfSectionPoint Result;
+  Standard_Real ParamOnFirstMin;
+  Standard_Real ParamOnFirstMax;
+  Standard_Real ParamOnSecondMin;
+  Standard_Real ParamOnSecondMax;
 
 
 };
@@ -119,7 +121,6 @@ Standard_Real ParamOnSecondMax;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Intf_TangentZone_HeaderFile

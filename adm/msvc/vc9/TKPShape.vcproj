@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKPShape"
-	ProjectGUID="{05012EA9-1871-09B8-0292-D2389F837933}"
+	ProjectGUID="{4C72FF41-1535-0093-0A9C-A401745B9A4A}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -248,7 +248,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\PBRep;..\..\..\src\PBRep;..\..\..\drv\PTopoDS;..\..\..\src\PTopoDS;..\..\..\drv\PGeom;..\..\..\src\PGeom;..\..\..\drv\PGeom2d;..\..\..\src\PGeom2d;..\..\..\drv\PPoly;..\..\..\src\PPoly;..\..\..\drv\PColgp;..\..\..\src\PColgp;..\..\..\drv\PTopLoc;..\..\..\src\PTopLoc;..\..\..\drv\MgtBRep;..\..\..\src\MgtBRep;..\..\..\drv\MgtGeom;..\..\..\src\MgtGeom;..\..\..\drv\MgtGeom2d;..\..\..\src\MgtGeom2d;..\..\..\drv\MgtPoly;..\..\..\src\MgtPoly;..\..\..\drv\MgtTopLoc;..\..\..\src\MgtTopLoc;..\..\..\drv\MgtTopoDS;..\..\..\src\MgtTopoDS;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -343,7 +343,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\PBRep;..\..\..\src\PBRep;..\..\..\drv\PTopoDS;..\..\..\src\PTopoDS;..\..\..\drv\PGeom;..\..\..\src\PGeom;..\..\..\drv\PGeom2d;..\..\..\src\PGeom2d;..\..\..\drv\PPoly;..\..\..\src\PPoly;..\..\..\drv\PColgp;..\..\..\src\PColgp;..\..\..\drv\PTopLoc;..\..\..\src\PTopLoc;..\..\..\drv\MgtBRep;..\..\..\src\MgtBRep;..\..\..\drv\MgtGeom;..\..\..\src\MgtGeom;..\..\..\drv\MgtGeom2d;..\..\..\src\MgtGeom2d;..\..\..\drv\MgtPoly;..\..\..\src\MgtPoly;..\..\..\drv\MgtTopLoc;..\..\..\src\MgtTopLoc;..\..\..\drv\MgtTopoDS;..\..\..\src\MgtTopoDS;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -365,7 +365,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__PBRep_DLL;__PTopoDS_DLL;__PGeom_DLL;__PGeom2d_DLL;__PPoly_DLL;__PColgp_DLL;__PTopLoc_DLL;__MgtBRep_DLL;__MgtGeom_DLL;__MgtGeom2d_DLL;__MgtPoly_DLL;__MgtTopLoc_DLL;__MgtTopoDS_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"

@@ -6,28 +6,14 @@
 #ifndef _Storage_SeqOfRoot_HeaderFile
 #define _Storage_SeqOfRoot_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_Storage_Root_HeaderFile
 #include <Handle_Storage_Root.hxx>
-#endif
-#ifndef _Handle_Storage_SequenceNodeOfSeqOfRoot_HeaderFile
 #include <Handle_Storage_SequenceNodeOfSeqOfRoot.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Storage_Root;
@@ -35,68 +21,68 @@ class Storage_SequenceNodeOfSeqOfRoot;
 
 
 
-class Storage_SeqOfRoot  : public TCollection_BaseSequence {
+class Storage_SeqOfRoot  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Storage_SeqOfRoot();
+    Storage_SeqOfRoot();
   
-  Standard_EXPORT   Storage_SeqOfRoot(const Storage_SeqOfRoot& Other);
+  Standard_EXPORT Storage_SeqOfRoot(const Storage_SeqOfRoot& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~Storage_SeqOfRoot()
 {
   Clear();
 }
   
-  Standard_EXPORT    const Storage_SeqOfRoot& Assign(const Storage_SeqOfRoot& Other) ;
-   const Storage_SeqOfRoot& operator =(const Storage_SeqOfRoot& Other) 
+  Standard_EXPORT  const  Storage_SeqOfRoot& Assign (const Storage_SeqOfRoot& Other) ;
+ const  Storage_SeqOfRoot& operator = (const Storage_SeqOfRoot& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(Storage_Root)& T) ;
+  Standard_EXPORT   void Append (const Handle(Storage_Root)& T) ;
   
-        void Append(Storage_SeqOfRoot& S) ;
+      void Append (Storage_SeqOfRoot& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(Storage_Root)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(Storage_Root)& T) ;
   
-        void Prepend(Storage_SeqOfRoot& S) ;
+      void Prepend (Storage_SeqOfRoot& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(Storage_Root)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(Storage_Root)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,Storage_SeqOfRoot& S) ;
+      void InsertBefore (const Standard_Integer Index, Storage_SeqOfRoot& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(Storage_Root)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(Storage_Root)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,Storage_SeqOfRoot& S) ;
+      void InsertAfter (const Standard_Integer Index, Storage_SeqOfRoot& S) ;
   
-  Standard_EXPORT    const Handle_Storage_Root& First() const;
+  Standard_EXPORT  const  Handle(Storage_Root)& First()  const;
   
-  Standard_EXPORT    const Handle_Storage_Root& Last() const;
+  Standard_EXPORT  const  Handle(Storage_Root)& Last()  const;
   
-        void Split(const Standard_Integer Index,Storage_SeqOfRoot& Sub) ;
+      void Split (const Standard_Integer Index, Storage_SeqOfRoot& Sub) ;
   
-  Standard_EXPORT    const Handle_Storage_Root& Value(const Standard_Integer Index) const;
-   const Handle_Storage_Root& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(Storage_Root)& Value (const Standard_Integer Index)  const;
+ const  Handle(Storage_Root)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(Storage_Root)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(Storage_Root)& I) ;
   
-  Standard_EXPORT     Handle_Storage_Root& ChangeValue(const Standard_Integer Index) ;
-    Handle_Storage_Root& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(Storage_Root)& ChangeValue (const Standard_Integer Index) ;
+  Handle(Storage_Root)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -115,7 +101,7 @@ private:
 
 };
 
-#define SeqItem Handle_Storage_Root
+#define SeqItem Handle(Storage_Root)
 #define SeqItem_hxx <Storage_Root.hxx>
 #define TCollection_SequenceNode Storage_SequenceNodeOfSeqOfRoot
 #define TCollection_SequenceNode_hxx <Storage_SequenceNodeOfSeqOfRoot.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Storage_SeqOfRoot_HeaderFile

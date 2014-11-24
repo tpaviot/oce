@@ -1,15 +1,5 @@
-#ifndef _StepAP214_HArray1OfAutoDesignGeneralOrgItem_HeaderFile
 #include <StepAP214_HArray1OfAutoDesignGeneralOrgItem.hxx>
-#endif
-#ifndef _StepBasic_Organization_HeaderFile
 #include <StepBasic_Organization.hxx>
-#endif
-#ifndef _StepBasic_OrganizationRole_HeaderFile
 #include <StepBasic_OrganizationRole.hxx>
-#endif
-#ifndef _StepAP214_AutoDesignGeneralOrgItem_HeaderFile
 #include <StepAP214_AutoDesignGeneralOrgItem.hxx>
-#endif
-#ifndef _StepAP214_AutoDesignOrganizationAssignment_HeaderFile
 #include <StepAP214_AutoDesignOrganizationAssignment.hxx>
-#endif

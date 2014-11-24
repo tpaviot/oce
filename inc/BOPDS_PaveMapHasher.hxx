@@ -6,36 +6,26 @@
 #ifndef _BOPDS_PaveMapHasher_HeaderFile
 #define _BOPDS_PaveMapHasher_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class BOPDS_Pave;
 
 
 
-class BOPDS_PaveMapHasher  {
+class BOPDS_PaveMapHasher 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      static  Standard_Integer HashCode(const BOPDS_Pave& aPave,const Standard_Integer Upper) ;
+    static   Standard_Integer HashCode (const BOPDS_Pave& aPave, const Standard_Integer Upper) ;
   
-      static  Standard_Boolean IsEqual(const BOPDS_Pave& aPave1,const BOPDS_Pave& aPave2) ;
-
+    static   Standard_Boolean IsEqual (const BOPDS_Pave& aPave1, const BOPDS_Pave& aPave2) ;
 
 
 
@@ -59,7 +49,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BOPDS_PaveMapHasher_HeaderFile

@@ -5,21 +5,13 @@
 
 #include <ExprIntrp_StackOfGeneralRelation.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _ExprIntrp_ListIteratorOfStackOfGeneralRelation_HeaderFile
 #include <ExprIntrp_ListIteratorOfStackOfGeneralRelation.hxx>
-#endif
-#ifndef _Expr_GeneralRelation_HeaderFile
 #include <Expr_GeneralRelation.hxx>
-#endif
-#ifndef _ExprIntrp_ListNodeOfStackOfGeneralRelation_HeaderFile
 #include <ExprIntrp_ListNodeOfStackOfGeneralRelation.hxx>
-#endif
  
 
-#define Item Handle_Expr_GeneralRelation
+#define Item Handle(Expr_GeneralRelation)
 #define Item_hxx <Expr_GeneralRelation.hxx>
 #define TCollection_ListNode ExprIntrp_ListNodeOfStackOfGeneralRelation
 #define TCollection_ListNode_hxx <ExprIntrp_ListNodeOfStackOfGeneralRelation.hxx>

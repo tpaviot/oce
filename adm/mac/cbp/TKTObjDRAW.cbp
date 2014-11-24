@@ -84,6 +84,8 @@
 			<Add library="tbbmalloc" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 			<Add library="objc" />
 		</Linker>
 		<Unit filename="../../../src/TObjDRAW/TObjDRAW.cxx" />

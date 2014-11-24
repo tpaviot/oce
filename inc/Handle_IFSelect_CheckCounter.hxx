@@ -6,22 +6,15 @@
 #ifndef _Handle_IFSelect_CheckCounter_HeaderFile
 #define _Handle_IFSelect_CheckCounter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IFSelect_SignatureList_HeaderFile
 #include <Handle_IFSelect_SignatureList.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IFSelect_SignatureList);
 class IFSelect_CheckCounter;
 
-DEFINE_STANDARD_HANDLE(IFSelect_CheckCounter,IFSelect_SignatureList)
+DEFINE_STANDARD_HANDLE(IFSelect_CheckCounter, IFSelect_SignatureList)
 
-#endif
+#endif // _Handle_IFSelect_CheckCounter_HeaderFile

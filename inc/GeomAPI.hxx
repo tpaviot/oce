@@ -6,22 +6,12 @@
 #ifndef _GeomAPI_HeaderFile
 #define _GeomAPI_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
 class Geom2d_Curve;
 class Geom_Curve;
 class gp_Pln;
@@ -37,67 +27,67 @@ class GeomAPI_IntSS;
 class GeomAPI_IntCS;
 
 
-//! The   GeomAPI   package  provides  an  Application <br>
-//!          Programming Interface for the Geometry. <br>
-//! <br>
-//!          The API is a set of  classes and methods aiming to <br>
-//!          provide : <br>
-//! <br>
-//!          * High level and simple calls  for the most common <br>
-//!          operations. <br>
-//! <br>
-//!          *    Keeping   an   access  on    the    low-level <br>
-//!          implementation of high-level calls. <br>
-//! <br>
-//! <br>
-//! 	    The API  provides classes to  call the algorithmes <br>
-//! 	    of the Geometry <br>
-//! <br>
-//! 	    * The  constructors  of the classes  provides  the <br>
-//! 	    different constructions methods. <br>
-//! <br>
-//! 	    * The  class keeps as fields the   different tools <br>
-//! 	    used by the algorithmes <br>
-//! <br>
-//! 	    *   The class  provides  a  casting  method to get <br>
-//! 	    automatically the  result  with  a   function-like <br>
-//! 	    call. <br>
-//! <br>
-//! 	    For example to evaluate the distance <D> between a <br>
-//! 	    point <P> and a curve <C>, one can writes : <br>
-//! <br>
-//! 	        D = GeomAPI_ProjectPointOnCurve(P,C); <br>
-//! <br>
-//! 	    or <br>
-//! <br>
-//! 	        GeomAPI_ProjectPointOnCurve PonC(P,C); <br>
-//! 	        D = PonC.LowerDistance(); <br>
-//! <br>
-class GeomAPI  {
+//! The   GeomAPI   package  provides  an  Application
+//! Programming Interface for the Geometry.
+//!
+//! The API is a set of  classes and methods aiming to
+//! provide :
+//!
+//! * High level and simple calls  for the most common
+//! operations.
+//!
+//! *    Keeping   an   access  on    the    low-level
+//! implementation of high-level calls.
+//!
+//! The API  provides classes to  call the algorithmes
+//! of the Geometry
+//!
+//! * The  constructors  of the classes  provides  the
+//! different constructions methods.
+//!
+//! * The  class keeps as fields the   different tools
+//! used by the algorithmes
+//!
+//! *   The class  provides  a  casting  method to get
+//! automatically the  result  with  a   function-like
+//! call.
+//!
+//! For example to evaluate the distance <D> between a
+//! point <P> and a curve <C>, one can writes :
+//!
+//! D = GeomAPI_ProjectPointOnCurve(P,C);
+//!
+//! or
+//!
+//! GeomAPI_ProjectPointOnCurve PonC(P,C);
+//! D = PonC.LowerDistance();
+class GeomAPI 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! This function builds (in the <br>
-//! parametric space of the plane P) a 2D curve equivalent to the 3D curve <br>
-//! C. The 3D curve C is considered to be located in the plane P. <br>
-//! Warning <br>
-//! The 3D curve C must be of one of the following types: <br>
-//! -      a line <br>
-//! -      a circle <br>
-//! -      an ellipse <br>
-//! -      a hyperbola <br>
-//! -      a parabola <br>
-//! -      a Bezier curve <br>
-//! -      a BSpline curve <br>
-//! Exceptions Standard_NoSuchObject if C is not a defined type curve. <br>
-  Standard_EXPORT   static  Handle_Geom2d_Curve To2d(const Handle(Geom_Curve)& C,const gp_Pln& P) ;
-  //! Builds a 3D curve equivalent to the 2D curve C <br>
-//! described in the parametric space defined by the local <br>
-//! coordinate system of plane P. <br>
-//! The resulting 3D curve is of the same nature as that of the curve C. <br>
-  Standard_EXPORT   static  Handle_Geom_Curve To3d(const Handle(Geom2d_Curve)& C,const gp_Pln& P) ;
-
+  
+  //! This function builds (in the
+  //! parametric space of the plane P) a 2D curve equivalent to the 3D curve
+  //! C. The 3D curve C is considered to be located in the plane P.
+  //! Warning
+  //! The 3D curve C must be of one of the following types:
+  //! -      a line
+  //! -      a circle
+  //! -      an ellipse
+  //! -      a hyperbola
+  //! -      a parabola
+  //! -      a Bezier curve
+  //! -      a BSpline curve
+  //! Exceptions Standard_NoSuchObject if C is not a defined type curve.
+  Standard_EXPORT static   Handle(Geom2d_Curve) To2d (const Handle(Geom_Curve)& C, const gp_Pln& P) ;
+  
+  //! Builds a 3D curve equivalent to the 2D curve C
+  //! described in the parametric space defined by the local
+  //! coordinate system of plane P.
+  //! The resulting 3D curve is of the same nature as that of the curve C.
+  Standard_EXPORT static   Handle(Geom_Curve) To3d (const Handle(Geom2d_Curve)& C, const gp_Pln& P) ;
 
 
 
@@ -130,7 +120,6 @@ friend class GeomAPI_IntCS;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomAPI_HeaderFile

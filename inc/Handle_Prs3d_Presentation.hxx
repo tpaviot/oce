@@ -6,22 +6,15 @@
 #ifndef _Handle_Prs3d_Presentation_HeaderFile
 #define _Handle_Prs3d_Presentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Graphic3d_Structure_HeaderFile
 #include <Handle_Graphic3d_Structure.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Graphic3d_Structure);
 class Prs3d_Presentation;
 
-DEFINE_STANDARD_HANDLE(Prs3d_Presentation,Graphic3d_Structure)
+DEFINE_STANDARD_HANDLE(Prs3d_Presentation, Graphic3d_Structure)
 
-#endif
+#endif // _Handle_Prs3d_Presentation_HeaderFile

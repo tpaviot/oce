@@ -6,31 +6,15 @@
 #ifndef _TDF_AttributeList_HeaderFile
 #define _TDF_AttributeList_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_ListNodeOfAttributeList_HeaderFile
 #include <Handle_TDF_ListNodeOfAttributeList.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class TDF_ListIteratorOfAttributeList;
 class TDF_Attribute;
@@ -38,63 +22,63 @@ class TDF_ListNodeOfAttributeList;
 
 
 
-class TDF_AttributeList  {
+class TDF_AttributeList 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TDF_AttributeList();
+  Standard_EXPORT TDF_AttributeList();
   
-  Standard_EXPORT   TDF_AttributeList(const TDF_AttributeList& Other);
+  Standard_EXPORT TDF_AttributeList(const TDF_AttributeList& Other);
   
-  Standard_EXPORT     void Assign(const TDF_AttributeList& Other) ;
-    void operator=(const TDF_AttributeList& Other) 
+  Standard_EXPORT   void Assign (const TDF_AttributeList& Other) ;
+  void operator= (const TDF_AttributeList& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TDF_AttributeList()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const Handle(TDF_Attribute)& I) ;
+  Standard_EXPORT   void Prepend (const Handle(TDF_Attribute)& I) ;
   
-  Standard_EXPORT     void Prepend(const Handle(TDF_Attribute)& I,TDF_ListIteratorOfAttributeList& theIt) ;
+  Standard_EXPORT   void Prepend (const Handle(TDF_Attribute)& I, TDF_ListIteratorOfAttributeList& theIt) ;
   
-  Standard_EXPORT     void Prepend(TDF_AttributeList& Other) ;
+  Standard_EXPORT   void Prepend (TDF_AttributeList& Other) ;
   
-  Standard_EXPORT     void Append(const Handle(TDF_Attribute)& I) ;
+  Standard_EXPORT   void Append (const Handle(TDF_Attribute)& I) ;
   
-  Standard_EXPORT     void Append(const Handle(TDF_Attribute)& I,TDF_ListIteratorOfAttributeList& theIt) ;
+  Standard_EXPORT   void Append (const Handle(TDF_Attribute)& I, TDF_ListIteratorOfAttributeList& theIt) ;
   
-  Standard_EXPORT     void Append(TDF_AttributeList& Other) ;
+  Standard_EXPORT   void Append (TDF_AttributeList& Other) ;
   
-  Standard_EXPORT     Handle_TDF_Attribute& First() const;
+  Standard_EXPORT   Handle(TDF_Attribute)& First()  const;
   
-  Standard_EXPORT     Handle_TDF_Attribute& Last() const;
+  Standard_EXPORT   Handle(TDF_Attribute)& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(TDF_ListIteratorOfAttributeList& It) ;
+  Standard_EXPORT   void Remove (TDF_ListIteratorOfAttributeList& It) ;
   
-  Standard_EXPORT     void InsertBefore(const Handle(TDF_Attribute)& I,TDF_ListIteratorOfAttributeList& It) ;
+  Standard_EXPORT   void InsertBefore (const Handle(TDF_Attribute)& I, TDF_ListIteratorOfAttributeList& It) ;
   
-  Standard_EXPORT     void InsertBefore(TDF_AttributeList& Other,TDF_ListIteratorOfAttributeList& It) ;
+  Standard_EXPORT   void InsertBefore (TDF_AttributeList& Other, TDF_ListIteratorOfAttributeList& It) ;
   
-  Standard_EXPORT     void InsertAfter(const Handle(TDF_Attribute)& I,TDF_ListIteratorOfAttributeList& It) ;
+  Standard_EXPORT   void InsertAfter (const Handle(TDF_Attribute)& I, TDF_ListIteratorOfAttributeList& It) ;
   
-  Standard_EXPORT     void InsertAfter(TDF_AttributeList& Other,TDF_ListIteratorOfAttributeList& It) ;
+  Standard_EXPORT   void InsertAfter (TDF_AttributeList& Other, TDF_ListIteratorOfAttributeList& It) ;
 
 
 friend class TDF_ListIteratorOfAttributeList;
-
 
 
 protected:
@@ -107,13 +91,13 @@ private:
 
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
 
-#define Item Handle_TDF_Attribute
+#define Item Handle(TDF_Attribute)
 #define Item_hxx <TDF_Attribute.hxx>
 #define TCollection_ListNode TDF_ListNodeOfAttributeList
 #define TCollection_ListNode_hxx <TDF_ListNodeOfAttributeList.hxx>
@@ -138,7 +122,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_AttributeList_HeaderFile

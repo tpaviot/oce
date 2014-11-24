@@ -1,15 +1,5 @@
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Standard_DimensionError_HeaderFile
 #include <Standard_DimensionError.hxx>
-#endif
-#ifndef _math_MultipleVarFunction_HeaderFile
 #include <math_MultipleVarFunction.hxx>
-#endif
-#ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
-#endif
-#ifndef _math_Powell_HeaderFile
 #include <math_Powell.hxx>
-#endif

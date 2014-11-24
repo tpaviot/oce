@@ -5,36 +5,18 @@
 
 #include <Geom2dLProp_CLProps2d.hxx>
 
-#ifndef _Geom2d_Curve_HeaderFile
 #include <Geom2d_Curve.hxx>
-#endif
-#ifndef _LProp_BadContinuity_HeaderFile
 #include <LProp_BadContinuity.hxx>
-#endif
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _LProp_NotDefined_HeaderFile
 #include <LProp_NotDefined.hxx>
-#endif
-#ifndef _gp_Vec2d_HeaderFile
 #include <gp_Vec2d.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _gp_Dir2d_HeaderFile
 #include <gp_Dir2d.hxx>
-#endif
-#ifndef _Geom2dLProp_Curve2dTool_HeaderFile
 #include <Geom2dLProp_Curve2dTool.hxx>
-#endif
  
 
-#define Curve Handle_Geom2d_Curve
+#define Curve Handle(Geom2d_Curve)
 #define Curve_hxx <Geom2d_Curve.hxx>
 #define Vec gp_Vec2d
 #define Vec_hxx <gp_Vec2d.hxx>

@@ -5,39 +5,17 @@
 
 #include <BRepApprox_MyBSplGradientOfTheComputeLineOfApprox.hxx>
 
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _BRepApprox_TheMultiLineOfApprox_HeaderFile
 #include <BRepApprox_TheMultiLineOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_TheMultiLineToolOfApprox_HeaderFile
 #include <BRepApprox_TheMultiLineToolOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_HeaderFile
 #include <BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_HeaderFile
 #include <BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_HeaderFile
 #include <BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox.hxx>
-#endif
-#ifndef _AppParCurves_HArray1OfConstraintCouple_HeaderFile
 #include <AppParCurves_HArray1OfConstraintCouple.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _TColStd_Array1OfInteger_HeaderFile
 #include <TColStd_Array1OfInteger.hxx>
-#endif
-#ifndef _AppParCurves_MultiBSpCurve_HeaderFile
 #include <AppParCurves_MultiBSpCurve.hxx>
-#endif
  
 
 #define MultiLine BRepApprox_TheMultiLineOfApprox

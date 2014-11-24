@@ -6,22 +6,15 @@
 #ifndef _Handle_DrawTrSurf_Polygon2D_HeaderFile
 #define _Handle_DrawTrSurf_Polygon2D_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Draw_Drawable2D_HeaderFile
 #include <Handle_Draw_Drawable2D.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Draw_Drawable2D);
 class DrawTrSurf_Polygon2D;
 
-DEFINE_STANDARD_HANDLE(DrawTrSurf_Polygon2D,Draw_Drawable2D)
+DEFINE_STANDARD_HANDLE(DrawTrSurf_Polygon2D, Draw_Drawable2D)
 
-#endif
+#endif // _Handle_DrawTrSurf_Polygon2D_HeaderFile

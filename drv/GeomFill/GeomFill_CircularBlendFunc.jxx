@@ -1,30 +1,10 @@
-#ifndef _Adaptor3d_HCurve_HeaderFile
 #include <Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TColgp_Array1OfPnt_HeaderFile
 #include <TColgp_Array1OfPnt.hxx>
-#endif
-#ifndef _TColgp_Array1OfPnt2d_HeaderFile
 #include <TColgp_Array1OfPnt2d.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _TColgp_Array1OfVec_HeaderFile
 #include <TColgp_Array1OfVec.hxx>
-#endif
-#ifndef _TColgp_Array1OfVec2d_HeaderFile
 #include <TColgp_Array1OfVec2d.hxx>
-#endif
-#ifndef _TColStd_Array1OfInteger_HeaderFile
 #include <TColStd_Array1OfInteger.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _GeomFill_CircularBlendFunc_HeaderFile
 #include <GeomFill_CircularBlendFunc.hxx>
-#endif

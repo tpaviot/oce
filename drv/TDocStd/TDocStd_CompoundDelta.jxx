@@ -1,6 +1,2 @@
-#ifndef _TDocStd_Document_HeaderFile
 #include <TDocStd_Document.hxx>
-#endif
-#ifndef _TDocStd_CompoundDelta_HeaderFile
 #include <TDocStd_CompoundDelta.hxx>
-#endif

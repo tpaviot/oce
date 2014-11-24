@@ -6,32 +6,24 @@
 #ifndef _TopoDSToStep_FacetedTool_HeaderFile
 #define _TopoDSToStep_FacetedTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDSToStep_FacetedError_HeaderFile
 #include <TopoDSToStep_FacetedError.hxx>
-#endif
 class TopoDS_Shape;
 
 
-//! This Tool Class provides Information about Faceted Shapes <br>
-//!          to be mapped to STEP. <br>
-class TopoDSToStep_FacetedTool  {
+//! This Tool Class provides Information about Faceted Shapes
+//! to be mapped to STEP.
+class TopoDSToStep_FacetedTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  TopoDSToStep_FacetedError CheckTopoDSShape(const TopoDS_Shape& SH) ;
-
+  Standard_EXPORT static   TopoDSToStep_FacetedError CheckTopoDSShape (const TopoDS_Shape& SH) ;
 
 
 
@@ -54,7 +46,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopoDSToStep_FacetedTool_HeaderFile

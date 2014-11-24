@@ -6,15 +6,9 @@
 #ifndef _GccEnt_HeaderFile
 #define _GccEnt_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
 class GccEnt_QualifiedLin;
 class gp_Lin2d;
@@ -25,65 +19,72 @@ class GccEnt_QualifiedCirc;
 class GccEnt_Array1OfPosition;
 
 
-//! This package provides an implementation of the qualified <br>
-//!          entities useful to create 2d entities with geometric <br>
-//!          constraints. The qualifier explains which subfamily of <br>
-//!          solutions we want to obtain. It uses the following law: the <br>
-//!          matter/the interior side is at the left of the line, if we go <br>
-//!          from the beginning to the end. <br>
-//!          The qualifiers are: <br>
-//!            Enclosing   : the solution(s) must enclose the argument. <br>
-//!            Enclosed    : the solution(s) must be enclosed in the <br>
-//!                          argument. <br>
-//!            Outside     : both the solution(s) and the argument must be <br>
-//!                          outside to each other. <br>
-//!            Unqualified : the position is undefined, so give all the <br>
-//!                          solutions. <br>
-//!          The use of a qualifier is always required if such <br>
-//!          subfamilies exist. For example, it is not used for a point. <br>
-//! Note:    the interior of a curve is defined as the left-hand <br>
-//!          side of the curve in relation to its orientation. <br>
-class GccEnt  {
+//! This package provides an implementation of the qualified
+//! entities useful to create 2d entities with geometric
+//! constraints. The qualifier explains which subfamily of
+//! solutions we want to obtain. It uses the following law: the
+//! matter/the interior side is at the left of the line, if we go
+//! from the beginning to the end.
+//! The qualifiers are:
+//! Enclosing   : the solution(s) must enclose the argument.
+//! Enclosed    : the solution(s) must be enclosed in the
+//! argument.
+//! Outside     : both the solution(s) and the argument must be
+//! outside to each other.
+//! Unqualified : the position is undefined, so give all the
+//! solutions.
+//! The use of a qualifier is always required if such
+//! subfamilies exist. For example, it is not used for a point.
+//! Note:    the interior of a curve is defined as the left-hand
+//! side of the curve in relation to its orientation.
+class GccEnt 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Constructs a qualified line, <br>
-//! so that the relative position to the circle or line of the <br>
-//! solution computed by a construction algorithm using the <br>
-//! qualified circle or line is not qualified, i.e. all solutions apply. <br>
-  Standard_EXPORT   static  GccEnt_QualifiedLin Unqualified(const gp_Lin2d& Obj) ;
-  //! Constructs a qualified circle <br>
-//! so that the relative position to the circle or line of the <br>
-//! solution computed by a construction algorithm using the <br>
-//! qualified circle or line is not qualified, i.e. all solutions apply. <br>
-  Standard_EXPORT   static  GccEnt_QualifiedCirc Unqualified(const gp_Circ2d& Obj) ;
   
-//! Constructs such a qualified circle that the solution <br>
-//! computed by a construction algorithm using the qualified <br>
-//! circle encloses the circle. <br>
-  Standard_EXPORT   static  GccEnt_QualifiedCirc Enclosing(const gp_Circ2d& Obj) ;
-  //! Constructs a qualified line, <br>
-//! so that the solution computed by a construction <br>
-//! algorithm using the qualified circle or line is enclosed by <br>
-//! the circle or line. <br>
-  Standard_EXPORT   static  GccEnt_QualifiedLin Enclosed(const gp_Lin2d& Obj) ;
-  //! Constructs a qualified circle <br>
-//! so that the solution computed by a construction <br>
-//! algorithm using the qualified circle or line is enclosed by <br>
-//! the circle or line. <br>
-  Standard_EXPORT   static  GccEnt_QualifiedCirc Enclosed(const gp_Circ2d& Obj) ;
-  //! Constructs a qualified line, <br>
-//! so that the solution computed by a construction <br>
-//! algorithm using the qualified circle or line and the circle <br>
-//! or line are external to one another. <br>
-  Standard_EXPORT   static  GccEnt_QualifiedLin Outside(const gp_Lin2d& Obj) ;
-  //! Constructs a qualified circle <br>
-//! so that the solution computed by a construction <br>
-//! algorithm using the qualified circle or line and the circle <br>
-//! or line are external to one another. <br>
-  Standard_EXPORT   static  GccEnt_QualifiedCirc Outside(const gp_Circ2d& Obj) ;
+  //! Constructs a qualified line,
+  //! so that the relative position to the circle or line of the
+  //! solution computed by a construction algorithm using the
+  //! qualified circle or line is not qualified, i.e. all solutions apply.
+  Standard_EXPORT static   GccEnt_QualifiedLin Unqualified (const gp_Lin2d& Obj) ;
+  
+  //! Constructs a qualified circle
+  //! so that the relative position to the circle or line of the
+  //! solution computed by a construction algorithm using the
+  //! qualified circle or line is not qualified, i.e. all solutions apply.
+  Standard_EXPORT static   GccEnt_QualifiedCirc Unqualified (const gp_Circ2d& Obj) ;
+  
 
+  //! Constructs such a qualified circle that the solution
+  //! computed by a construction algorithm using the qualified
+  //! circle encloses the circle.
+  Standard_EXPORT static   GccEnt_QualifiedCirc Enclosing (const gp_Circ2d& Obj) ;
+  
+  //! Constructs a qualified line,
+  //! so that the solution computed by a construction
+  //! algorithm using the qualified circle or line is enclosed by
+  //! the circle or line.
+  Standard_EXPORT static   GccEnt_QualifiedLin Enclosed (const gp_Lin2d& Obj) ;
+  
+  //! Constructs a qualified circle
+  //! so that the solution computed by a construction
+  //! algorithm using the qualified circle or line is enclosed by
+  //! the circle or line.
+  Standard_EXPORT static   GccEnt_QualifiedCirc Enclosed (const gp_Circ2d& Obj) ;
+  
+  //! Constructs a qualified line,
+  //! so that the solution computed by a construction
+  //! algorithm using the qualified circle or line and the circle
+  //! or line are external to one another.
+  Standard_EXPORT static   GccEnt_QualifiedLin Outside (const gp_Lin2d& Obj) ;
+  
+  //! Constructs a qualified circle
+  //! so that the solution computed by a construction
+  //! algorithm using the qualified circle or line and the circle
+  //! or line are external to one another.
+  Standard_EXPORT static   GccEnt_QualifiedCirc Outside (const gp_Circ2d& Obj) ;
 
 
 
@@ -109,7 +110,6 @@ friend class GccEnt_Array1OfPosition;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GccEnt_HeaderFile

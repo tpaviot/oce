@@ -5,21 +5,13 @@
 
 #include <ChFiDS_SequenceOfSpine.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _ChFiDS_Spine_HeaderFile
 #include <ChFiDS_Spine.hxx>
-#endif
-#ifndef _ChFiDS_SequenceNodeOfSequenceOfSpine_HeaderFile
 #include <ChFiDS_SequenceNodeOfSequenceOfSpine.hxx>
-#endif
  
 
-#define SeqItem Handle_ChFiDS_Spine
+#define SeqItem Handle(ChFiDS_Spine)
 #define SeqItem_hxx <ChFiDS_Spine.hxx>
 #define TCollection_SequenceNode ChFiDS_SequenceNodeOfSequenceOfSpine
 #define TCollection_SequenceNode_hxx <ChFiDS_SequenceNodeOfSequenceOfSpine.hxx>

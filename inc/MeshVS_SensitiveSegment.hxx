@@ -6,40 +6,18 @@
 #ifndef _MeshVS_SensitiveSegment_HeaderFile
 #define _MeshVS_SensitiveSegment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MeshVS_SensitiveSegment_HeaderFile
 #include <Handle_MeshVS_SensitiveSegment.hxx>
-#endif
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _Select3D_SensitiveSegment_HeaderFile
 #include <Select3D_SensitiveSegment.hxx>
-#endif
-#ifndef _Handle_SelectBasics_EntityOwner_HeaderFile
 #include <Handle_SelectBasics_EntityOwner.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Select3D_Projector_HeaderFile
 #include <Handle_Select3D_Projector.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class SelectBasics_EntityOwner;
 class gp_Pnt;
 class Select3D_Projector;
@@ -47,19 +25,20 @@ class TColgp_Array1OfPnt2d;
 class Bnd_Box2d;
 
 
-//! This class provides custom sensitive face, which will be selected if it center is in rectangle. <br>
-class MeshVS_SensitiveSegment : public Select3D_SensitiveSegment {
+//! This class provides custom sensitive face, which will be selected if it center is in rectangle.
+class MeshVS_SensitiveSegment : public Select3D_SensitiveSegment
+{
 
 public:
 
   
-  Standard_EXPORT   MeshVS_SensitiveSegment(const Handle(SelectBasics_EntityOwner)& theOwner,const gp_Pnt& theFirstP,const gp_Pnt& theLastP,const Standard_Integer theMaxRect = 1);
+  Standard_EXPORT MeshVS_SensitiveSegment(const Handle(SelectBasics_EntityOwner)& theOwner, const gp_Pnt& theFirstP, const gp_Pnt& theLastP, const Standard_Integer theMaxRect = 1);
   
-  Standard_EXPORT   virtual  void Project(const Handle(Select3D_Projector)& aProjector) ;
+  Standard_EXPORT virtual   void Project (const Handle(Select3D_Projector)& aProjector) ;
   
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol) ;
+  Standard_EXPORT virtual   Standard_Boolean Matches (const Standard_Real XMin, const Standard_Real YMin, const Standard_Real XMax, const Standard_Real YMax, const Standard_Real aTol) ;
   
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const TColgp_Array1OfPnt2d& Polyline,const Bnd_Box2d& aBox,const Standard_Real aTol) ;
+  Standard_EXPORT virtual   Standard_Boolean Matches (const TColgp_Array1OfPnt2d& Polyline, const Bnd_Box2d& aBox, const Standard_Real aTol) ;
 
 
 
@@ -69,8 +48,8 @@ public:
 protected:
 
 
-gp_Pnt myCentre;
-gp_Pnt2d myProjCentre;
+  gp_Pnt myCentre;
+  gp_Pnt2d myProjCentre;
 
 
 private: 
@@ -84,7 +63,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MeshVS_SensitiveSegment_HeaderFile

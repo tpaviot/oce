@@ -6,22 +6,15 @@
 #ifndef _Handle_StepGeom_DegenerateToroidalSurface_HeaderFile
 #define _Handle_StepGeom_DegenerateToroidalSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepGeom_ToroidalSurface_HeaderFile
 #include <Handle_StepGeom_ToroidalSurface.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepGeom_ToroidalSurface);
 class StepGeom_DegenerateToroidalSurface;
 
-DEFINE_STANDARD_HANDLE(StepGeom_DegenerateToroidalSurface,StepGeom_ToroidalSurface)
+DEFINE_STANDARD_HANDLE(StepGeom_DegenerateToroidalSurface, StepGeom_ToroidalSurface)
 
-#endif
+#endif // _Handle_StepGeom_DegenerateToroidalSurface_HeaderFile

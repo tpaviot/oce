@@ -6,58 +6,52 @@
 #ifndef _BRepTools_Modifier_HeaderFile
 #define _BRepTools_Modifier_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopTools_DataMapOfShapeShape_HeaderFile
 #include <TopTools_DataMapOfShapeShape.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_BRepTools_Modification_HeaderFile
 #include <Handle_BRepTools_Modification.hxx>
-#endif
+#include <Handle_Message_ProgressIndicator.hxx>
 class Standard_NullObject;
 class Standard_NoSuchObject;
 class TopoDS_Shape;
 class BRepTools_Modification;
+class Message_ProgressIndicator;
 
 
-//! Performs geometric modifications on a shape. <br>
-class BRepTools_Modifier  {
+//! Performs geometric modifications on a shape.
+class BRepTools_Modifier 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an empty Modifier. <br>
-  Standard_EXPORT   BRepTools_Modifier();
-  //! Creates a modifier on the shape <S>. <br>
-  Standard_EXPORT   BRepTools_Modifier(const TopoDS_Shape& S);
-  //! Creates a modifier on  the shape <S>, and performs <br>
-//!          the modifications described by <M>. <br>
-  Standard_EXPORT   BRepTools_Modifier(const TopoDS_Shape& S,const Handle(BRepTools_Modification)& M);
-  //! Initializes the modifier with the shape <S>. <br>
-  Standard_EXPORT     void Init(const TopoDS_Shape& S) ;
-  //! Performs the modifications described by <M>. <br>
-  Standard_EXPORT     void Perform(const Handle(BRepTools_Modification)& M) ;
-  //! Returns Standard_True if the modification has <br>
-//!          been computed successfully. <br>
-//! <br>
-        Standard_Boolean IsDone() const;
-  //! Returns the modified shape corresponding to <S>. <br>
-       const TopoDS_Shape& ModifiedShape(const TopoDS_Shape& S) const;
-
+  
+  //! Creates an empty Modifier.
+  Standard_EXPORT BRepTools_Modifier();
+  
+  //! Creates a modifier on the shape <S>.
+  Standard_EXPORT BRepTools_Modifier(const TopoDS_Shape& S);
+  
+  //! Creates a modifier on  the shape <S>, and performs
+  //! the modifications described by <M>.
+  Standard_EXPORT BRepTools_Modifier(const TopoDS_Shape& S, const Handle(BRepTools_Modification)& M);
+  
+  //! Initializes the modifier with the shape <S>.
+  Standard_EXPORT   void Init (const TopoDS_Shape& S) ;
+  
+  //! Performs the modifications described by <M>.
+  Standard_EXPORT   void Perform (const Handle(BRepTools_Modification)& M, const Handle(Message_ProgressIndicator)& aProgress = NULL) ;
+  
+  //! Returns Standard_True if the modification has
+  //! been computed successfully.
+      Standard_Boolean IsDone()  const;
+  
+  //! Returns the modified shape corresponding to <S>.
+     const  TopoDS_Shape& ModifiedShape (const TopoDS_Shape& S)  const;
 
 
 
@@ -71,14 +65,14 @@ protected:
 private:
 
   
-  Standard_EXPORT     void Put(const TopoDS_Shape& S) ;
+  Standard_EXPORT   void Put (const TopoDS_Shape& S) ;
   
-  Standard_EXPORT     Standard_Boolean Rebuild(const TopoDS_Shape& S,const Handle(BRepTools_Modification)& M) ;
+  Standard_EXPORT   Standard_Boolean Rebuild (const TopoDS_Shape& S, const Handle(BRepTools_Modification)& M, const Handle(Message_ProgressIndicator)& aProgress = NULL) ;
 
 
-TopTools_DataMapOfShapeShape myMap;
-TopoDS_Shape myShape;
-Standard_Boolean myDone;
+  TopTools_DataMapOfShapeShape myMap;
+  TopoDS_Shape myShape;
+  Standard_Boolean myDone;
 
 
 };
@@ -88,7 +82,6 @@ Standard_Boolean myDone;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepTools_Modifier_HeaderFile

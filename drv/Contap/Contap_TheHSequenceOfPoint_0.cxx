@@ -5,22 +5,12 @@
 
 #include <Contap_TheHSequenceOfPoint.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Contap_Point_HeaderFile
 #include <Contap_Point.hxx>
-#endif
-#ifndef _Contap_TheSequenceOfPoint_HeaderFile
 #include <Contap_TheSequenceOfPoint.hxx>
-#endif
 
  
 

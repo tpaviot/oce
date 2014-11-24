@@ -6,46 +6,36 @@
 #ifndef _TDocStd_PathParser_HeaderFile
 #define _TDocStd_PathParser_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TCollection_ExtendedString;
 
 
-//! parse an OS path <br>
-class TDocStd_PathParser  {
+//! parse an OS path
+class TDocStd_PathParser 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TDocStd_PathParser(const TCollection_ExtendedString& path);
+  Standard_EXPORT TDocStd_PathParser(const TCollection_ExtendedString& path);
   
-  Standard_EXPORT     void Parse() ;
+  Standard_EXPORT   void Parse() ;
   
-  Standard_EXPORT     TCollection_ExtendedString Trek() const;
+  Standard_EXPORT   TCollection_ExtendedString Trek()  const;
   
-  Standard_EXPORT     TCollection_ExtendedString Name() const;
+  Standard_EXPORT   TCollection_ExtendedString Name()  const;
   
-  Standard_EXPORT     TCollection_ExtendedString Extension() const;
+  Standard_EXPORT   TCollection_ExtendedString Extension()  const;
   
-  Standard_EXPORT     TCollection_ExtendedString Path() const;
+  Standard_EXPORT   TCollection_ExtendedString Path()  const;
   
-  Standard_EXPORT     Standard_Integer Length() const;
-
+  Standard_EXPORT   Standard_Integer Length()  const;
 
 
 
@@ -60,10 +50,10 @@ private:
 
 
 
-TCollection_ExtendedString myPath;
-TCollection_ExtendedString myExtension;
-TCollection_ExtendedString myTrek;
-TCollection_ExtendedString myName;
+  TCollection_ExtendedString myPath;
+  TCollection_ExtendedString myExtension;
+  TCollection_ExtendedString myTrek;
+  TCollection_ExtendedString myName;
 
 
 };
@@ -72,7 +62,6 @@ TCollection_ExtendedString myName;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDocStd_PathParser_HeaderFile

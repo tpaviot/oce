@@ -6,22 +6,15 @@
 #ifndef _Handle_Prs3d_InvalidAngle_HeaderFile
 #define _Handle_Prs3d_InvalidAngle_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Standard_RangeError_HeaderFile
 #include <Handle_Standard_RangeError.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Standard_RangeError);
 class Prs3d_InvalidAngle;
 
-DEFINE_STANDARD_HANDLE(Prs3d_InvalidAngle,Standard_RangeError)
+DEFINE_STANDARD_HANDLE(Prs3d_InvalidAngle, Standard_RangeError)
 
-#endif
+#endif // _Handle_Prs3d_InvalidAngle_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_StepShape_ClosedShell_HeaderFile
 #define _Handle_StepShape_ClosedShell_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepShape_ConnectedFaceSet_HeaderFile
 #include <Handle_StepShape_ConnectedFaceSet.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepShape_ConnectedFaceSet);
 class StepShape_ClosedShell;
 
-DEFINE_STANDARD_HANDLE(StepShape_ClosedShell,StepShape_ConnectedFaceSet)
+DEFINE_STANDARD_HANDLE(StepShape_ClosedShell, StepShape_ConnectedFaceSet)
 
-#endif
+#endif // _Handle_StepShape_ClosedShell_HeaderFile

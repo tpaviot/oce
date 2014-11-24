@@ -1,42 +1,14 @@
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _StepShape_ManifoldSolidBrep_HeaderFile
 #include <StepShape_ManifoldSolidBrep.hxx>
-#endif
-#ifndef _Transfer_TransientProcess_HeaderFile
 #include <Transfer_TransientProcess.hxx>
-#endif
-#ifndef _StepShape_BrepWithVoids_HeaderFile
 #include <StepShape_BrepWithVoids.hxx>
-#endif
-#ifndef _StepShape_FacetedBrep_HeaderFile
 #include <StepShape_FacetedBrep.hxx>
-#endif
-#ifndef _StepShape_FacetedBrepAndBrepWithVoids_HeaderFile
 #include <StepShape_FacetedBrepAndBrepWithVoids.hxx>
-#endif
-#ifndef _StepShape_ShellBasedSurfaceModel_HeaderFile
 #include <StepShape_ShellBasedSurfaceModel.hxx>
-#endif
-#ifndef _StepToTopoDS_NMTool_HeaderFile
 #include <StepToTopoDS_NMTool.hxx>
-#endif
-#ifndef _StepShape_GeometricSet_HeaderFile
 #include <StepShape_GeometricSet.hxx>
-#endif
-#ifndef _StepShape_EdgeBasedWireframeModel_HeaderFile
 #include <StepShape_EdgeBasedWireframeModel.hxx>
-#endif
-#ifndef _StepShape_FaceBasedSurfaceModel_HeaderFile
 #include <StepShape_FaceBasedSurfaceModel.hxx>
-#endif
-#ifndef _Transfer_ActorOfTransientProcess_HeaderFile
 #include <Transfer_ActorOfTransientProcess.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _StepToTopoDS_Builder_HeaderFile
 #include <StepToTopoDS_Builder.hxx>
-#endif

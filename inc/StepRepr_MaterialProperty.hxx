@@ -6,28 +6,22 @@
 #ifndef _StepRepr_MaterialProperty_HeaderFile
 #define _StepRepr_MaterialProperty_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepRepr_MaterialProperty_HeaderFile
 #include <Handle_StepRepr_MaterialProperty.hxx>
-#endif
 
-#ifndef _StepRepr_PropertyDefinition_HeaderFile
 #include <StepRepr_PropertyDefinition.hxx>
-#endif
 
 
-//! Representation of STEP entity MaterialProperty <br>
-class StepRepr_MaterialProperty : public StepRepr_PropertyDefinition {
+//! Representation of STEP entity MaterialProperty
+class StepRepr_MaterialProperty : public StepRepr_PropertyDefinition
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepRepr_MaterialProperty();
+  
+  //! Empty constructor
+  Standard_EXPORT StepRepr_MaterialProperty();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_MaterialProperty_HeaderFile

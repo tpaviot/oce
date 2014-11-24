@@ -6,28 +6,14 @@
 #ifndef _TColStd_DataMapNodeOfDataMapOfIntegerTransient_HeaderFile
 #define _TColStd_DataMapNodeOfDataMapOfIntegerTransient_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient_HeaderFile
 #include <Handle_TColStd_DataMapNodeOfDataMapOfIntegerTransient.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Standard_Transient;
 class TColStd_MapIntegerHasher;
 class TColStd_DataMapOfIntegerTransient;
@@ -35,16 +21,17 @@ class TColStd_DataMapIteratorOfDataMapOfIntegerTransient;
 
 
 
-class TColStd_DataMapNodeOfDataMapOfIntegerTransient : public TCollection_MapNode {
+class TColStd_DataMapNodeOfDataMapOfIntegerTransient : public TCollection_MapNode
+{
 
 public:
 
   
-      TColStd_DataMapNodeOfDataMapOfIntegerTransient(const Standard_Integer& K,const Handle(Standard_Transient)& I,const TCollection_MapNodePtr& n);
+    TColStd_DataMapNodeOfDataMapOfIntegerTransient(const Standard_Integer& K, const Handle(Standard_Transient)& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Key() const;
+      Standard_Integer& Key()  const;
   
-        Handle_Standard_Transient& Value() const;
+      Handle(Standard_Transient)& Value()  const;
 
 
 
@@ -59,15 +46,15 @@ protected:
 private: 
 
 
-Standard_Integer myKey;
-Handle_Standard_Transient myValue;
+  Standard_Integer myKey;
+  Handle(Standard_Transient) myValue;
 
 
 };
 
 #define TheKey Standard_Integer
 #define TheKey_hxx <Standard_Integer.hxx>
-#define TheItem Handle_Standard_Transient
+#define TheItem Handle(Standard_Transient)
 #define TheItem_hxx <Standard_Transient.hxx>
 #define Hasher TColStd_MapIntegerHasher
 #define Hasher_hxx <TColStd_MapIntegerHasher.hxx>
@@ -98,7 +85,6 @@ Handle_Standard_Transient myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_DataMapNodeOfDataMapOfIntegerTransient_HeaderFile

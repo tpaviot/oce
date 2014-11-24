@@ -1,9 +1,3 @@
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepGeom_Direction_HeaderFile
 #include <StepGeom_Direction.hxx>
-#endif

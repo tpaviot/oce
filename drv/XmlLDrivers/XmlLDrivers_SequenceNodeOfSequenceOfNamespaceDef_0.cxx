@@ -5,16 +5,10 @@
 
 #include <XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _XmlLDrivers_NamespaceDef_HeaderFile
 #include <XmlLDrivers_NamespaceDef.hxx>
-#endif
-#ifndef _XmlLDrivers_SequenceOfNamespaceDef_HeaderFile
 #include <XmlLDrivers_SequenceOfNamespaceDef.hxx>
-#endif
 
  
 

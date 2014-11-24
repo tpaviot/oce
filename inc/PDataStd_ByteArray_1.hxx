@@ -6,45 +6,32 @@
 #ifndef _PDataStd_ByteArray_1_HeaderFile
 #define _PDataStd_ByteArray_1_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PDataStd_ByteArray_1_HeaderFile
 #include <Handle_PDataStd_ByteArray_1.hxx>
-#endif
 
-#ifndef _Handle_PColStd_HArray1OfInteger_HeaderFile
 #include <Handle_PColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
 class PColStd_HArray1OfInteger;
 
 
-class PDataStd_ByteArray_1 : public PDF_Attribute {
+class PDataStd_ByteArray_1 : public PDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   PDataStd_ByteArray_1();
+  Standard_EXPORT PDataStd_ByteArray_1();
   
-  Standard_EXPORT     void Set(const Handle(PColStd_HArray1OfInteger)& values) ;
+  Standard_EXPORT   void Set (const Handle(PColStd_HArray1OfInteger)& values) ;
   
-  Standard_EXPORT    const Handle_PColStd_HArray1OfInteger& Get() const;
+  Standard_EXPORT  const  Handle(PColStd_HArray1OfInteger)& Get()  const;
   
-  Standard_EXPORT     void SetDelta(const Standard_Boolean delta) ;
+  Standard_EXPORT   void SetDelta (const Standard_Boolean delta) ;
   
-  Standard_EXPORT     Standard_Boolean GetDelta() const;
+  Standard_EXPORT   Standard_Boolean GetDelta()  const;
 
 PDataStd_ByteArray_1(const Storage_stCONSTclCOM& a) : PDF_Attribute(a)
 {
@@ -67,8 +54,8 @@ protected:
 private: 
 
 
-Handle_PColStd_HArray1OfInteger myValues;
-Standard_Boolean myDelta;
+  Handle(PColStd_HArray1OfInteger) myValues;
+  Standard_Boolean myDelta;
 
 
 };
@@ -77,7 +64,6 @@ Standard_Boolean myDelta;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDataStd_ByteArray_1_HeaderFile

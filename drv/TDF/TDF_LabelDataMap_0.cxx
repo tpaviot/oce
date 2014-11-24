@@ -5,24 +5,12 @@
 
 #include <TDF_LabelDataMap.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TDF_LabelMapHasher_HeaderFile
 #include <TDF_LabelMapHasher.hxx>
-#endif
-#ifndef _TDF_DataMapNodeOfLabelDataMap_HeaderFile
 #include <TDF_DataMapNodeOfLabelDataMap.hxx>
-#endif
-#ifndef _TDF_DataMapIteratorOfLabelDataMap_HeaderFile
 #include <TDF_DataMapIteratorOfLabelDataMap.hxx>
-#endif
  
 
 #define TheKey TDF_Label

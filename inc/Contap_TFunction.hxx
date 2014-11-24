@@ -6,16 +6,15 @@
 #ifndef _Contap_TFunction_HeaderFile
 #define _Contap_TFunction_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Contap_TFunction {
+
+enum Contap_TFunction
+{
 Contap_ContourStd,
 Contap_ContourPrs,
 Contap_DraftStd,
 Contap_DraftPrs
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Contap_TFunction_HeaderFile

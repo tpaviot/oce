@@ -6,8 +6,11 @@
 #ifndef _GeomFill_Trihedron_HeaderFile
 #define _GeomFill_Trihedron_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum GeomFill_Trihedron {
+
+enum GeomFill_Trihedron
+{
 GeomFill_IsCorrectedFrenet,
 GeomFill_IsFixed,
 GeomFill_IsFrenet,
@@ -20,8 +23,4 @@ GeomFill_IsGuidePlanWithContact,
 GeomFill_IsDiscreteTrihedron
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _GeomFill_Trihedron_HeaderFile

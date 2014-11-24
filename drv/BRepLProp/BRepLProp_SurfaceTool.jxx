@@ -1,12 +1,4 @@
-#ifndef _BRepAdaptor_Surface_HeaderFile
 #include <BRepAdaptor_Surface.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _BRepLProp_SurfaceTool_HeaderFile
 #include <BRepLProp_SurfaceTool.hxx>
-#endif

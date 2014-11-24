@@ -5,21 +5,11 @@
 
 #include <HLRBRep_ListIteratorOfListOfBPoint.hxx>
 
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _HLRBRep_ListOfBPoint_HeaderFile
 #include <HLRBRep_ListOfBPoint.hxx>
-#endif
-#ifndef _HLRBRep_BiPoint_HeaderFile
 #include <HLRBRep_BiPoint.hxx>
-#endif
-#ifndef _HLRBRep_ListNodeOfListOfBPoint_HeaderFile
 #include <HLRBRep_ListNodeOfListOfBPoint.hxx>
-#endif
  
 
 #define Item HLRBRep_BiPoint

@@ -6,42 +6,31 @@
 #ifndef _TDataStd_HDataMapOfStringByte_HeaderFile
 #define _TDataStd_HDataMapOfStringByte_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDataStd_HDataMapOfStringByte_HeaderFile
 #include <Handle_TDataStd_HDataMapOfStringByte.hxx>
-#endif
 
-#ifndef _TDataStd_DataMapOfStringByte_HeaderFile
 #include <TDataStd_DataMapOfStringByte.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TDataStd_DataMapOfStringByte;
 
 
-//! Extension of TDataStd_DataMapOfStringByte class <br>
-//!          to be manipulated by handle. <br>
-class TDataStd_HDataMapOfStringByte : public MMgt_TShared {
+//! Extension of TDataStd_DataMapOfStringByte class
+//! to be manipulated by handle.
+class TDataStd_HDataMapOfStringByte : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   TDataStd_HDataMapOfStringByte(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT TDataStd_HDataMapOfStringByte(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT   TDataStd_HDataMapOfStringByte(const TDataStd_DataMapOfStringByte& theOther);
+  Standard_EXPORT TDataStd_HDataMapOfStringByte(const TDataStd_DataMapOfStringByte& theOther);
   
-       const TDataStd_DataMapOfStringByte& Map() const;
+     const  TDataStd_DataMapOfStringByte& Map()  const;
   
-        TDataStd_DataMapOfStringByte& ChangeMap() ;
+      TDataStd_DataMapOfStringByte& ChangeMap() ;
 
 
 
@@ -56,7 +45,7 @@ protected:
 private: 
 
 
-TDataStd_DataMapOfStringByte myMap;
+  TDataStd_DataMapOfStringByte myMap;
 
 
 };
@@ -66,7 +55,6 @@ TDataStd_DataMapOfStringByte myMap;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_HDataMapOfStringByte_HeaderFile

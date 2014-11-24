@@ -1,18 +1,6 @@
-#ifndef _TopOpeBRepBuild_WireEdgeSet_HeaderFile
 #include <TopOpeBRepBuild_WireEdgeSet.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_IndexedDataMapOfShapeShape_HeaderFile
 #include <TopTools_IndexedDataMapOfShapeShape.hxx>
-#endif
-#ifndef _TopTools_IndexedMapOfShape_HeaderFile
 #include <TopTools_IndexedMapOfShape.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_ShapeSet_HeaderFile
 #include <TopOpeBRepBuild_ShapeSet.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_FaceBuilder_HeaderFile
 #include <TopOpeBRepBuild_FaceBuilder.hxx>
-#endif

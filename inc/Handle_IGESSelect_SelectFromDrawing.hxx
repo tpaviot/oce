@@ -6,22 +6,15 @@
 #ifndef _Handle_IGESSelect_SelectFromDrawing_HeaderFile
 #define _Handle_IGESSelect_SelectFromDrawing_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IFSelect_SelectDeduct_HeaderFile
 #include <Handle_IFSelect_SelectDeduct.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IFSelect_SelectDeduct);
 class IGESSelect_SelectFromDrawing;
 
-DEFINE_STANDARD_HANDLE(IGESSelect_SelectFromDrawing,IFSelect_SelectDeduct)
+DEFINE_STANDARD_HANDLE(IGESSelect_SelectFromDrawing, IFSelect_SelectDeduct)
 
-#endif
+#endif // _Handle_IGESSelect_SelectFromDrawing_HeaderFile

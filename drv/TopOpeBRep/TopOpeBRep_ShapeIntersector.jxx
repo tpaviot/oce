@@ -1,24 +1,8 @@
-#ifndef _TopOpeBRepTool_HBoxTool_HeaderFile
 #include <TopOpeBRepTool_HBoxTool.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _TopOpeBRep_FacesIntersector_HeaderFile
 #include <TopOpeBRep_FacesIntersector.hxx>
-#endif
-#ifndef _TopOpeBRep_EdgesIntersector_HeaderFile
 #include <TopOpeBRep_EdgesIntersector.hxx>
-#endif
-#ifndef _TopOpeBRep_FaceEdgeIntersector_HeaderFile
 #include <TopOpeBRep_FaceEdgeIntersector.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _TopOpeBRep_ShapeIntersector_HeaderFile
 #include <TopOpeBRep_ShapeIntersector.hxx>
-#endif

@@ -6,22 +6,15 @@
 #ifndef _Handle_DrawTrSurf_BSplineCurve_HeaderFile
 #define _Handle_DrawTrSurf_BSplineCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_DrawTrSurf_Curve_HeaderFile
 #include <Handle_DrawTrSurf_Curve.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(DrawTrSurf_Curve);
 class DrawTrSurf_BSplineCurve;
 
-DEFINE_STANDARD_HANDLE(DrawTrSurf_BSplineCurve,DrawTrSurf_Curve)
+DEFINE_STANDARD_HANDLE(DrawTrSurf_BSplineCurve, DrawTrSurf_Curve)
 
-#endif
+#endif // _Handle_DrawTrSurf_BSplineCurve_HeaderFile

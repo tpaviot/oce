@@ -6,75 +6,69 @@
 #ifndef _Draw_ProgressIndicator_HeaderFile
 #define _Draw_ProgressIndicator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Draw_ProgressIndicator_HeaderFile
 #include <Handle_Draw_ProgressIndicator.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Size_HeaderFile
 #include <Standard_Size.hxx>
-#endif
-#ifndef _Message_ProgressIndicator_HeaderFile
 #include <Message_ProgressIndicator.hxx>
-#endif
-#ifndef _Draw_Interpretor_HeaderFile
 #include <Draw_Interpretor.hxx>
-#endif
 
 
-//! Implements ProgressIndicator (interface provided by Message) <br>
-//!          for DRAW, with possibility to output to TCL window <br>
-//!          and/or trace file <br>
-class Draw_ProgressIndicator : public Message_ProgressIndicator {
+//! Implements ProgressIndicator (interface provided by Message)
+//! for DRAW, with possibility to output to TCL window
+//! and/or trace file
+class Draw_ProgressIndicator : public Message_ProgressIndicator
+{
 
 public:
 
-  //! Creates a progress indicator and remembers pointer to <br>
-//!          Draw_Interpretor <br>
-//!          The updateTime, if given, defines time interval between <br>
-//!          updates of the indicator (in seconds) <br>
-  Standard_EXPORT   Draw_ProgressIndicator(const Draw_Interpretor& di,const Standard_Integer updateTime = 0);
-  //! Destructor; calls Reset() <br>
-  Standard_EXPORT     void Destroy() ;
+  
+  //! Creates a progress indicator and remembers pointer to
+  //! Draw_Interpretor
+  //! The updateTime, if given, defines time interval between
+  //! updates of the indicator (in seconds)
+  Standard_EXPORT Draw_ProgressIndicator(const Draw_Interpretor& di, const Standard_Integer updateTime = 0);
+  
+  //! Destructor; calls Reset()
+  Standard_EXPORT   void Destroy() ;
 ~Draw_ProgressIndicator()
 {
   Destroy();
 }
-  //! Sets text output mode (on/off) <br>
-  Standard_EXPORT     void SetTextMode(const Standard_Boolean theTextMode) ;
-  //! Gets text output mode (on/off) <br>
-  Standard_EXPORT     Standard_Boolean GetTextMode() const;
-  //! Sets graphical output mode (on/off) <br>
-  Standard_EXPORT     void SetGraphMode(const Standard_Boolean theGraphMode) ;
-  //! Gets graphical output mode (on/off) <br>
-  Standard_EXPORT     Standard_Boolean GetGraphMode() const;
-  //! Clears/erases opened TCL windows if any <br>
-//!          and sets myBreak to False <br>
-  Standard_EXPORT   virtual  void Reset() ;
-  //! Defines method Show of Progress Indicator <br>
-  Standard_EXPORT   virtual  Standard_Boolean Show(const Standard_Boolean force = Standard_True) ;
-  //! Redefines method UserBreak of Progress Indicator <br>
-  Standard_EXPORT   virtual  Standard_Boolean UserBreak() ;
   
-  Standard_EXPORT   static  Standard_Boolean& DefaultTextMode() ;
-  //! Get/Set default values for output modes <br>
-  Standard_EXPORT   static  Standard_Boolean& DefaultGraphMode() ;
-  //! Internal method for implementation of UserBreak mechanism <br>
-  Standard_EXPORT   static  Standard_Integer& StopIndicator() ;
+  //! Sets text output mode (on/off)
+  Standard_EXPORT   void SetTextMode (const Standard_Boolean theTextMode) ;
+  
+  //! Gets text output mode (on/off)
+  Standard_EXPORT   Standard_Boolean GetTextMode()  const;
+  
+  //! Sets graphical output mode (on/off)
+  Standard_EXPORT   void SetGraphMode (const Standard_Boolean theGraphMode) ;
+  
+  //! Gets graphical output mode (on/off)
+  Standard_EXPORT   Standard_Boolean GetGraphMode()  const;
+  
+  //! Clears/erases opened TCL windows if any
+  //! and sets myBreak to False
+  Standard_EXPORT virtual   void Reset() ;
+  
+  //! Defines method Show of Progress Indicator
+  Standard_EXPORT virtual   Standard_Boolean Show (const Standard_Boolean force = Standard_True) ;
+  
+  //! Redefines method UserBreak of Progress Indicator
+  Standard_EXPORT virtual   Standard_Boolean UserBreak() ;
+  
+  Standard_EXPORT static   Standard_Boolean& DefaultTextMode() ;
+  
+  //! Get/Set default values for output modes
+  Standard_EXPORT static   Standard_Boolean& DefaultGraphMode() ;
+  
+  //! Internal method for implementation of UserBreak mechanism
+  Standard_EXPORT static   Standard_Integer& StopIndicator() ;
 
 
 
@@ -88,14 +82,14 @@ protected:
 private: 
 
 
-Standard_Boolean myTextMode;
-Standard_Boolean myGraphMode;
-Standard_Address myDraw;
-Standard_Boolean myShown;
-Standard_Boolean myBreak;
-Standard_Integer myUpdateTime;
-Standard_Size myLastUpdate;
-Standard_Size myStartTime;
+  Standard_Boolean myTextMode;
+  Standard_Boolean myGraphMode;
+  Standard_Address myDraw;
+  Standard_Boolean myShown;
+  Standard_Boolean myBreak;
+  Standard_Integer myUpdateTime;
+  Standard_Size myLastUpdate;
+  Standard_Size myStartTime;
 
 
 };
@@ -104,7 +98,6 @@ Standard_Size myStartTime;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Draw_ProgressIndicator_HeaderFile

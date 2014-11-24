@@ -6,43 +6,19 @@
 #ifndef _Geom2dGcc_Circ2dTanOnRadGeo_HeaderFile
 #define _Geom2dGcc_Circ2dTanOnRadGeo_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TColgp_Array1OfCirc2d_HeaderFile
 #include <TColgp_Array1OfCirc2d.hxx>
-#endif
-#ifndef _GccEnt_Array1OfPosition_HeaderFile
 #include <GccEnt_Array1OfPosition.hxx>
-#endif
-#ifndef _TColStd_Array1OfInteger_HeaderFile
 #include <TColStd_Array1OfInteger.hxx>
-#endif
-#ifndef _TColgp_Array1OfPnt2d_HeaderFile
 #include <TColgp_Array1OfPnt2d.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _GccEnt_Position_HeaderFile
 #include <GccEnt_Position.hxx>
-#endif
 class Standard_NegativeValue;
 class Standard_OutOfRange;
 class GccEnt_BadQualifier;
@@ -56,108 +32,131 @@ class GccEnt_QualifiedLin;
 class gp_Pnt2d;
 
 
-//! This class implements the algorithms used to <br>
-//!          create a 2d circle tangent to a 2d entity, <br>
-//!          centered on a 2d entity and with a given radius. <br>
-//!          More than one argument must be a curve. <br>
-//!          The arguments of all construction methods are : <br>
-//!             - The qualified element for the tangency constrains <br>
-//!             (QualifiedCirc, QualifiedLin, QualifiedCurvPoints). <br>
-//!             - The Center element (circle, line, curve). <br>
-//!             - A real Tolerance. <br>
-//!          Tolerance is only used in the limits cases. <br>
-//!          For example : <br>
-//!          We want to create a circle tangent to an OutsideCurv Cu1 <br>
-//!          centered on a line OnLine with a radius Radius and with <br>
-//!          a tolerance Tolerance. <br>
-//!          If we did not use Tolerance it is impossible to <br>
-//!          find a solution in the following case : OnLine is <br>
-//!          outside Cu1. There is no intersection point between Cu1 <br>
-//!          and OnLine. The distance between the line and the <br>
-//!          circle is greater than Radius. <br>
-//!          With Tolerance we will give a solution if the <br>
-//!          distance between Cu1 and OnLine is lower than or <br>
-//!          equal Tolerance. <br>
-class Geom2dGcc_Circ2dTanOnRadGeo  {
+//! This class implements the algorithms used to
+//! create a 2d circle tangent to a 2d entity,
+//! centered on a 2d entity and with a given radius.
+//! More than one argument must be a curve.
+//! The arguments of all construction methods are :
+//! - The qualified element for the tangency constrains
+//! (QualifiedCirc, QualifiedLin, QualifiedCurvPoints).
+//! - The Center element (circle, line, curve).
+//! - A real Tolerance.
+//! Tolerance is only used in the limits cases.
+//! For example :
+//! We want to create a circle tangent to an OutsideCurv Cu1
+//! centered on a line OnLine with a radius Radius and with
+//! a tolerance Tolerance.
+//! If we did not use Tolerance it is impossible to
+//! find a solution in the following case : OnLine is
+//! outside Cu1. There is no intersection point between Cu1
+//! and OnLine. The distance between the line and the
+//! circle is greater than Radius.
+//! With Tolerance we will give a solution if the
+//! distance between Cu1 and OnLine is lower than or
+//! equal Tolerance.
+class Geom2dGcc_Circ2dTanOnRadGeo 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! This methods implements the algorithms used to create <br>
-//!          2d Circles tangent to a curve and centered on a 2d Line <br>
-//!          with a given radius. <br>
-//!          Tolerance is used to find solution in every limit cases. <br>//! raises NegativeValue in case of NegativeRadius. <br>
-  Standard_EXPORT   Geom2dGcc_Circ2dTanOnRadGeo(const Geom2dGcc_QCurve& Qualified1,const gp_Lin2d& OnLine,const Standard_Real Radius,const Standard_Real Tolerance);
-  //! This methods implements the algorithms used to create <br>
-//!          2d Circles tangent to a curve and centered on a 2d Circle <br>
-//!          with a given radius. <br>
-//!          Tolerance is used to find solution in every limit cases. <br>//! raises NegativeValue in case of NegativeRadius. <br>
-  Standard_EXPORT   Geom2dGcc_Circ2dTanOnRadGeo(const Geom2dGcc_QCurve& Qualified1,const gp_Circ2d& OnCirc,const Standard_Real Radius,const Standard_Real Tolerance);
-  //! This methods implements the algorithms used to create <br>
-//!          2d Circles tangent to a circle and centered on a 2d curve <br>
-//!          with a given radius. <br>
-//!          Tolerance is used to find solution in every limit cases. <br>//! raises NegativeValue in case of NegativeRadius. <br>
-  Standard_EXPORT   Geom2dGcc_Circ2dTanOnRadGeo(const GccEnt_QualifiedCirc& Qualified1,const Geom2dAdaptor_Curve& OnCurv,const Standard_Real Radius,const Standard_Real Tolerance);
-  //! This methods implements the algorithms used to create <br>
-//!          2d Circles tangent to a 2d Line and centered on a 2d curve <br>
-//!          with a given radius. <br>
-//!          Tolerance is used to find solution in every limit cases. <br>//! raises NegativeValue in case of NegativeRadius. <br>
-  Standard_EXPORT   Geom2dGcc_Circ2dTanOnRadGeo(const GccEnt_QualifiedLin& Qualified1,const Geom2dAdaptor_Curve& OnCurv,const Standard_Real Radius,const Standard_Real Tolerance);
-  //! This methods implements the algorithms used to create <br>
-//!          2d Circles tangent to a 2d curve and centered on a 2d curve <br>
-//!          with a given radius. <br>
-//!          Tolerance is used to find solution in every limit cases. <br>//! raises NegativeValue in case of NegativeRadius. <br>
-  Standard_EXPORT   Geom2dGcc_Circ2dTanOnRadGeo(const Geom2dGcc_QCurve& Qualified1,const Geom2dAdaptor_Curve& OnCurv,const Standard_Real Radius,const Standard_Real Tolerance);
-  //! This methods implements the algorithms used to create <br>
-//!          2d Circles passing through a 2d point and centered on a <br>
-//!          2d curve with a given radius. <br>
-//!          Tolerance is used to find solution in every limit cases. <br>//! raises NegativeValue in case of NegativeRadius. <br>
-  Standard_EXPORT   Geom2dGcc_Circ2dTanOnRadGeo(const gp_Pnt2d& Point1,const Geom2dAdaptor_Curve& OnCurv,const Standard_Real Radius,const Standard_Real Tolerance);
-  //! This method returns True if the construction <br>
-//!          algorithm succeeded. <br>
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-  //! This method returns the number of solutions. <br>//! It raises NotDone if the construction algorithm <br>
-//!          didn't succeed. <br>
-  Standard_EXPORT     Standard_Integer NbSolutions() const;
-  //! Returns the solution number Index and raises OutOfRange <br>
-//!   	exception if Index is greater than the number of solutions. <br>
-//!          Be careful: the Index is only a way to get all the <br>
-//!          solutions, but is not associated to theses outside the <br>
-//!          context of the algorithm-object. <br>//! It raises NotDone if the construction algorithm <br>
-//!          didn't succeed. <br>
-//!          It raises OutOfRange if Index is greater than the <br>
-//!          number of solutions. <br>
-  Standard_EXPORT     gp_Circ2d ThisSolution(const Standard_Integer Index) const;
   
-  Standard_EXPORT     void WhichQualifier(const Standard_Integer Index,GccEnt_Position& Qualif1) const;
-  //! Returns informations about the tangency point between the <br>
-//!          result number Index and the first argument. <br>
-//!          ParSol is the intrinsic parameter of the point on the <br>
-//!          solution curv. <br>
-//!          ParArg is the intrinsic parameter of the point on the <br>
-//!          argument curv. <br>
-//!          PntSol is the tangency point on the solution curv. <br>
-//!          PntArg is the tangency point on the argument curv. <br>//! It raises NotDone if the construction algorithm <br>
-//!          didn't succeed. <br>
-//!          It raises OutOfRange if Index is greater than the <br>
-//!          number of solutions. <br>
-  Standard_EXPORT     void Tangency1(const Standard_Integer Index,Standard_Real& ParSol,Standard_Real& ParArg,gp_Pnt2d& PntSol) const;
-  //! Returns informations about the center (on the curv) <br>
-//!          of the result. <br>
-//!          ParArg is the intrinsic parameter of the point on <br>
-//!          the argument curv. <br>
-//!          PntSol is the center point of the solution curv. <br>//! It raises NotDone if the construction algorithm <br>
-//!          didn't succeed. <br>
-//!          It raises OutOfRange if Index is greater than the <br>
-//!          number of solutions. <br>
-  Standard_EXPORT     void CenterOn3(const Standard_Integer Index,Standard_Real& ParArg,gp_Pnt2d& PntSol) const;
-  //! Returns True if the solution number Index is equal to <br>
-//!          the first argument and False in the other cases. <br>//! It raises NotDone if the construction algorithm <br>
-//!          didn't succeed. <br>
-//!          It raises OutOfRange if Index is greater than the <br>
-//!          number of solutions. <br>
-  Standard_EXPORT     Standard_Boolean IsTheSame1(const Standard_Integer Index) const;
-
+  //! This methods implements the algorithms used to create
+  //! 2d Circles tangent to a curve and centered on a 2d Line
+  //! with a given radius.
+  //! Tolerance is used to find solution in every limit cases.
+  //! raises NegativeValue in case of NegativeRadius.
+  Standard_EXPORT Geom2dGcc_Circ2dTanOnRadGeo(const Geom2dGcc_QCurve& Qualified1, const gp_Lin2d& OnLine, const Standard_Real Radius, const Standard_Real Tolerance);
+  
+  //! This methods implements the algorithms used to create
+  //! 2d Circles tangent to a curve and centered on a 2d Circle
+  //! with a given radius.
+  //! Tolerance is used to find solution in every limit cases.
+  //! raises NegativeValue in case of NegativeRadius.
+  Standard_EXPORT Geom2dGcc_Circ2dTanOnRadGeo(const Geom2dGcc_QCurve& Qualified1, const gp_Circ2d& OnCirc, const Standard_Real Radius, const Standard_Real Tolerance);
+  
+  //! This methods implements the algorithms used to create
+  //! 2d Circles tangent to a circle and centered on a 2d curve
+  //! with a given radius.
+  //! Tolerance is used to find solution in every limit cases.
+  //! raises NegativeValue in case of NegativeRadius.
+  Standard_EXPORT Geom2dGcc_Circ2dTanOnRadGeo(const GccEnt_QualifiedCirc& Qualified1, const Geom2dAdaptor_Curve& OnCurv, const Standard_Real Radius, const Standard_Real Tolerance);
+  
+  //! This methods implements the algorithms used to create
+  //! 2d Circles tangent to a 2d Line and centered on a 2d curve
+  //! with a given radius.
+  //! Tolerance is used to find solution in every limit cases.
+  //! raises NegativeValue in case of NegativeRadius.
+  Standard_EXPORT Geom2dGcc_Circ2dTanOnRadGeo(const GccEnt_QualifiedLin& Qualified1, const Geom2dAdaptor_Curve& OnCurv, const Standard_Real Radius, const Standard_Real Tolerance);
+  
+  //! This methods implements the algorithms used to create
+  //! 2d Circles tangent to a 2d curve and centered on a 2d curve
+  //! with a given radius.
+  //! Tolerance is used to find solution in every limit cases.
+  //! raises NegativeValue in case of NegativeRadius.
+  Standard_EXPORT Geom2dGcc_Circ2dTanOnRadGeo(const Geom2dGcc_QCurve& Qualified1, const Geom2dAdaptor_Curve& OnCurv, const Standard_Real Radius, const Standard_Real Tolerance);
+  
+  //! This methods implements the algorithms used to create
+  //! 2d Circles passing through a 2d point and centered on a
+  //! 2d curve with a given radius.
+  //! Tolerance is used to find solution in every limit cases.
+  //! raises NegativeValue in case of NegativeRadius.
+  Standard_EXPORT Geom2dGcc_Circ2dTanOnRadGeo(const gp_Pnt2d& Point1, const Geom2dAdaptor_Curve& OnCurv, const Standard_Real Radius, const Standard_Real Tolerance);
+  
+  //! This method returns True if the construction
+  //! algorithm succeeded.
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
+  
+  //! This method returns the number of solutions.
+  //! It raises NotDone if the construction algorithm
+  //! didn't succeed.
+  Standard_EXPORT   Standard_Integer NbSolutions()  const;
+  
+  //! Returns the solution number Index and raises OutOfRange
+  //! exception if Index is greater than the number of solutions.
+  //! Be careful: the Index is only a way to get all the
+  //! solutions, but is not associated to theses outside the
+  //! context of the algorithm-object.
+  //! It raises NotDone if the construction algorithm
+  //! didn't succeed.
+  //! It raises OutOfRange if Index is greater than the
+  //! number of solutions.
+  Standard_EXPORT   gp_Circ2d ThisSolution (const Standard_Integer Index)  const;
+  
+  Standard_EXPORT   void WhichQualifier (const Standard_Integer Index, GccEnt_Position& Qualif1)  const;
+  
+  //! Returns informations about the tangency point between the
+  //! result number Index and the first argument.
+  //! ParSol is the intrinsic parameter of the point on the
+  //! solution curv.
+  //! ParArg is the intrinsic parameter of the point on the
+  //! argument curv.
+  //! PntSol is the tangency point on the solution curv.
+  //! PntArg is the tangency point on the argument curv.
+  //! It raises NotDone if the construction algorithm
+  //! didn't succeed.
+  //! It raises OutOfRange if Index is greater than the
+  //! number of solutions.
+  Standard_EXPORT   void Tangency1 (const Standard_Integer Index, Standard_Real& ParSol, Standard_Real& ParArg, gp_Pnt2d& PntSol)  const;
+  
+  //! Returns informations about the center (on the curv)
+  //! of the result.
+  //! ParArg is the intrinsic parameter of the point on
+  //! the argument curv.
+  //! PntSol is the center point of the solution curv.
+  //! It raises NotDone if the construction algorithm
+  //! didn't succeed.
+  //! It raises OutOfRange if Index is greater than the
+  //! number of solutions.
+  Standard_EXPORT   void CenterOn3 (const Standard_Integer Index, Standard_Real& ParArg, gp_Pnt2d& PntSol)  const;
+  
+  //! Returns True if the solution number Index is equal to
+  //! the first argument and False in the other cases.
+  //! It raises NotDone if the construction algorithm
+  //! didn't succeed.
+  //! It raises OutOfRange if Index is greater than the
+  //! number of solutions.
+  Standard_EXPORT   Standard_Boolean IsTheSame1 (const Standard_Integer Index)  const;
 
 
 
@@ -172,16 +171,16 @@ private:
 
 
 
-Standard_Boolean WellDone;
-Standard_Integer NbrSol;
-TColgp_Array1OfCirc2d cirsol;
-GccEnt_Array1OfPosition qualifier1;
-TColStd_Array1OfInteger TheSame1;
-TColgp_Array1OfPnt2d pnttg1sol;
-TColgp_Array1OfPnt2d pntcen3;
-TColStd_Array1OfReal par1sol;
-TColStd_Array1OfReal pararg1;
-TColStd_Array1OfReal parcen3;
+  Standard_Boolean WellDone;
+  Standard_Integer NbrSol;
+  TColgp_Array1OfCirc2d cirsol;
+  GccEnt_Array1OfPosition qualifier1;
+  TColStd_Array1OfInteger TheSame1;
+  TColgp_Array1OfPnt2d pnttg1sol;
+  TColgp_Array1OfPnt2d pntcen3;
+  TColStd_Array1OfReal par1sol;
+  TColStd_Array1OfReal pararg1;
+  TColStd_Array1OfReal parcen3;
 
 
 };
@@ -190,7 +189,6 @@ TColStd_Array1OfReal parcen3;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dGcc_Circ2dTanOnRadGeo_HeaderFile

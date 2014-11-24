@@ -6,54 +6,42 @@
 #ifndef _StepAP203_ClassifiedItem_HeaderFile
 #define _StepAP203_ClassifiedItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinitionFormation_HeaderFile
 #include <Handle_StepBasic_ProductDefinitionFormation.hxx>
-#endif
-#ifndef _Handle_StepRepr_AssemblyComponentUsage_HeaderFile
 #include <Handle_StepRepr_AssemblyComponentUsage.hxx>
-#endif
 class Standard_Transient;
 class StepBasic_ProductDefinitionFormation;
 class StepRepr_AssemblyComponentUsage;
 
 
-//! Representation of STEP SELECT type ClassifiedItem <br>
-class StepAP203_ClassifiedItem  : public StepData_SelectType {
+//! Representation of STEP SELECT type ClassifiedItem
+class StepAP203_ClassifiedItem  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepAP203_ClassifiedItem();
-  //! Recognizes a kind of ClassifiedItem select type <br>
-//!          1 -> ProductDefinitionFormation from StepBasic <br>
-//!          2 -> AssemblyComponentUsage from StepRepr <br>
-//!          0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! Returns Value as ProductDefinitionFormation (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_ProductDefinitionFormation ProductDefinitionFormation() const;
-  //! Returns Value as AssemblyComponentUsage (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepRepr_AssemblyComponentUsage AssemblyComponentUsage() const;
-
+  
+  //! Empty constructor
+  Standard_EXPORT StepAP203_ClassifiedItem();
+  
+  //! Recognizes a kind of ClassifiedItem select type
+  //! 1 -> ProductDefinitionFormation from StepBasic
+  //! 2 -> AssemblyComponentUsage from StepRepr
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! Returns Value as ProductDefinitionFormation (or Null if another type)
+  Standard_EXPORT   Handle(StepBasic_ProductDefinitionFormation) ProductDefinitionFormation()  const;
+  
+  //! Returns Value as AssemblyComponentUsage (or Null if another type)
+  Standard_EXPORT   Handle(StepRepr_AssemblyComponentUsage) AssemblyComponentUsage()  const;
 
 
 
@@ -76,7 +64,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP203_ClassifiedItem_HeaderFile

@@ -6,10 +6,13 @@
 #ifndef _BRepLib_FaceError_HeaderFile
 #define _BRepLib_FaceError_HeaderFile
 
-//! Errors that can occur at face construction. <br>
-//! no error <br>
-//! not initialised <br>
-enum BRepLib_FaceError {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Errors that can occur at face construction.
+//! no error
+//! not initialised
+enum BRepLib_FaceError
+{
 BRepLib_FaceDone,
 BRepLib_NoFace,
 BRepLib_NotPlanar,
@@ -17,8 +20,4 @@ BRepLib_CurveProjectionFailed,
 BRepLib_ParametersOutOfRange
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BRepLib_FaceError_HeaderFile

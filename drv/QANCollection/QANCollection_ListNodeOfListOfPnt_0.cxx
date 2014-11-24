@@ -5,19 +5,11 @@
 
 #include <QANCollection_ListNodeOfListOfPnt.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _QANCollection_ListOfPnt_HeaderFile
 #include <QANCollection_ListOfPnt.hxx>
-#endif
-#ifndef _QANCollection_ListIteratorOfListOfPnt_HeaderFile
 #include <QANCollection_ListIteratorOfListOfPnt.hxx>
-#endif
 
  
 

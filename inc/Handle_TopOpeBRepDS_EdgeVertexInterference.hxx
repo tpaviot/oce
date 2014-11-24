@@ -6,22 +6,15 @@
 #ifndef _Handle_TopOpeBRepDS_EdgeVertexInterference_HeaderFile
 #define _Handle_TopOpeBRepDS_EdgeVertexInterference_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TopOpeBRepDS_ShapeShapeInterference_HeaderFile
 #include <Handle_TopOpeBRepDS_ShapeShapeInterference.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TopOpeBRepDS_ShapeShapeInterference);
 class TopOpeBRepDS_EdgeVertexInterference;
 
-DEFINE_STANDARD_HANDLE(TopOpeBRepDS_EdgeVertexInterference,TopOpeBRepDS_ShapeShapeInterference)
+DEFINE_STANDARD_HANDLE(TopOpeBRepDS_EdgeVertexInterference, TopOpeBRepDS_ShapeShapeInterference)
 
-#endif
+#endif // _Handle_TopOpeBRepDS_EdgeVertexInterference_HeaderFile

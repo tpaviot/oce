@@ -6,22 +6,15 @@
 #ifndef _Handle_WNT_Window_HeaderFile
 #define _Handle_WNT_Window_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Aspect_Window_HeaderFile
 #include <Handle_Aspect_Window.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Aspect_Window);
 class WNT_Window;
 
-DEFINE_STANDARD_HANDLE(WNT_Window,Aspect_Window)
+DEFINE_STANDARD_HANDLE(WNT_Window, Aspect_Window)
 
-#endif
+#endif // _Handle_WNT_Window_HeaderFile

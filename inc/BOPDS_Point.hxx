@@ -6,75 +6,71 @@
 #ifndef _BOPDS_Point_HeaderFile
 #define _BOPDS_Point_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class gp_Pnt;
 class gp_Pnt2d;
 
 
 
-//! The class BOPDS_Point is to store <br>
-//! the information about intersection point <br>
-class BOPDS_Point  {
+//! The class BOPDS_Point is to store
+//! the information about intersection point
+class BOPDS_Point 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//! Empty contructor <br>
-//! <br>
-      BOPDS_Point();
+
+  //! Empty contructor
+    BOPDS_Point();
 virtual ~BOPDS_Point();
   
-//! Modifier <br>
-//! Sets 3D point <thePnt> <br>
-        void SetPnt(const gp_Pnt& thePnt) ;
-  
-//! Selector <br>
-//! Returns 3D point <br>
-       const gp_Pnt& Pnt() const;
-  
-//! Modifier <br>
-//! Sets 2D point on the first face <thePnt> <br>
-        void SetPnt2D1(const gp_Pnt2d& thePnt) ;
-  
-//! Selector <br>
-//! Returns 2D point on the first face <thePnt> <br>
-       const gp_Pnt2d& Pnt2D1() const;
-  
-//! Modifier <br>
-//! Sets 2D point on the second face <thePnt> <br>
-        void SetPnt2D2(const gp_Pnt2d& thePnt) ;
-  
-//! Selector <br>
-//! Returns 2D point on the second face <thePnt> <br>
-       const gp_Pnt2d& Pnt2D2() const;
-  
-//! Modifier <br>
-//! Sets the index of the vertex <theIndex> <br>
-        void SetIndex(const Standard_Integer theIndex) ;
-  
-//! Selector <br>
-//! Returns index of the vertex <br>
-        Standard_Integer Index() const;
 
+  //! Modifier
+  //! Sets 3D point <thePnt>
+      void SetPnt (const gp_Pnt& thePnt) ;
+  
+
+  //! Selector
+  //! Returns 3D point
+     const  gp_Pnt& Pnt()  const;
+  
+
+  //! Modifier
+  //! Sets 2D point on the first face <thePnt>
+      void SetPnt2D1 (const gp_Pnt2d& thePnt) ;
+  
+
+  //! Selector
+  //! Returns 2D point on the first face <thePnt>
+     const  gp_Pnt2d& Pnt2D1()  const;
+  
+
+  //! Modifier
+  //! Sets 2D point on the second face <thePnt>
+      void SetPnt2D2 (const gp_Pnt2d& thePnt) ;
+  
+
+  //! Selector
+  //! Returns 2D point on the second face <thePnt>
+     const  gp_Pnt2d& Pnt2D2()  const;
+  
+
+  //! Modifier
+  //! Sets the index of the vertex <theIndex>
+      void SetIndex (const Standard_Integer theIndex) ;
+  
+
+  //! Selector
+  //! Returns index of the vertex
+      Standard_Integer Index()  const;
 
 
 
@@ -83,10 +79,10 @@ protected:
 
 
 
-gp_Pnt myPnt;
-gp_Pnt2d myPnt2D1;
-gp_Pnt2d myPnt2D2;
-Standard_Integer myIndex;
+  gp_Pnt myPnt;
+  gp_Pnt2d myPnt2D1;
+  gp_Pnt2d myPnt2D2;
+  Standard_Integer myIndex;
 
 
 private:
@@ -102,7 +98,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BOPDS_Point_HeaderFile

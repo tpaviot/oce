@@ -6,80 +6,63 @@
 #ifndef _TopOpeBRepBuild_ShellFaceClassifier_HeaderFile
 #define _TopOpeBRepBuild_ShellFaceClassifier_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _TopoDS_Shell_HeaderFile
 #include <TopoDS_Shell.hxx>
-#endif
-#ifndef _BRep_Builder_HeaderFile
 #include <BRep_Builder.hxx>
-#endif
-#ifndef _TopOpeBRepTool_SolidClassifier_HeaderFile
 #include <TopOpeBRepTool_SolidClassifier.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeShape_HeaderFile
 #include <TopTools_DataMapOfShapeShape.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_CompositeClassifier_HeaderFile
 #include <TopOpeBRepBuild_CompositeClassifier.hxx>
-#endif
-#ifndef _TopAbs_State_HeaderFile
 #include <TopAbs_State.hxx>
-#endif
 class TopOpeBRepBuild_BlockBuilder;
 class TopoDS_Shape;
 
 
 
-//! Classify faces and shells. <br>
-//! shapes are Shells, Elements are Faces. <br>
-class TopOpeBRepBuild_ShellFaceClassifier  : public TopOpeBRepBuild_CompositeClassifier {
+//! Classify faces and shells.
+//! shapes are Shells, Elements are Faces.
+class TopOpeBRepBuild_ShellFaceClassifier  : public TopOpeBRepBuild_CompositeClassifier
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates a classifier in 3D space, to compare : <br>
-//! a face with a set of faces <br>
-//! a shell with a set of faces <br>
-//! a shell with a shell <br>
-  Standard_EXPORT   TopOpeBRepBuild_ShellFaceClassifier(const TopOpeBRepBuild_BlockBuilder& BB);
   
-  Standard_EXPORT     void Clear() ;
-  //! classify shell <B1> with shell <B2> <br>
-  Standard_EXPORT     TopAbs_State CompareShapes(const TopoDS_Shape& B1,const TopoDS_Shape& B2) ;
-  //! classify face <F> with shell <S> <br>
-  Standard_EXPORT     TopAbs_State CompareElementToShape(const TopoDS_Shape& F,const TopoDS_Shape& S) ;
-  //! prepare classification involving shell <S> <br>
-//! calls ResetElement on first face of <S> <br>
-  Standard_EXPORT     void ResetShape(const TopoDS_Shape& S) ;
-  //! prepare classification involving face <F> <br>
-//! define 3D point (later used in Compare()) on first vertex of face <F>. <br>
-  Standard_EXPORT     void ResetElement(const TopoDS_Shape& F) ;
-  //! Add the face <F> in the set of faces used in 3D point <br>
-//! classification. Returns FALSE if the face <F> has been already <br>
-//! added to the set of faces, otherwise returns TRUE. <br>
-  Standard_EXPORT     Standard_Boolean CompareElement(const TopoDS_Shape& F) ;
-  //! Returns state of classification of 3D point, defined by <br>
-//! ResetElement, with the current set of faces, defined by Compare. <br>
-  Standard_EXPORT     TopAbs_State State() ;
-
+  //! Creates a classifier in 3D space, to compare :
+  //! a face with a set of faces
+  //! a shell with a set of faces
+  //! a shell with a shell
+  Standard_EXPORT TopOpeBRepBuild_ShellFaceClassifier(const TopOpeBRepBuild_BlockBuilder& BB);
+  
+  Standard_EXPORT   void Clear() ;
+  
+  //! classify shell <B1> with shell <B2>
+  Standard_EXPORT   TopAbs_State CompareShapes (const TopoDS_Shape& B1, const TopoDS_Shape& B2) ;
+  
+  //! classify face <F> with shell <S>
+  Standard_EXPORT   TopAbs_State CompareElementToShape (const TopoDS_Shape& F, const TopoDS_Shape& S) ;
+  
+  //! prepare classification involving shell <S>
+  //! calls ResetElement on first face of <S>
+  Standard_EXPORT   void ResetShape (const TopoDS_Shape& S) ;
+  
+  //! prepare classification involving face <F>
+  //! define 3D point (later used in Compare()) on first vertex of face <F>.
+  Standard_EXPORT   void ResetElement (const TopoDS_Shape& F) ;
+  
+  //! Add the face <F> in the set of faces used in 3D point
+  //! classification. Returns FALSE if the face <F> has been already
+  //! added to the set of faces, otherwise returns TRUE.
+  Standard_EXPORT   Standard_Boolean CompareElement (const TopoDS_Shape& F) ;
+  
+  //! Returns state of classification of 3D point, defined by
+  //! ResetElement, with the current set of faces, defined by Compare.
+  Standard_EXPORT   TopAbs_State State() ;
 
 
 
@@ -94,13 +77,13 @@ private:
 
 
 
-Standard_Boolean myFirstCompare;
-gp_Pnt myPoint3d;
-TopoDS_Shell myShell;
-BRep_Builder myBuilder;
-TopOpeBRepTool_SolidClassifier mySolidClassifier;
-TopTools_DataMapOfShapeShape myFaceShellMap;
-TopoDS_Shape myShape;
+  Standard_Boolean myFirstCompare;
+  gp_Pnt myPoint3d;
+  TopoDS_Shell myShell;
+  BRep_Builder myBuilder;
+  TopOpeBRepTool_SolidClassifier mySolidClassifier;
+  TopTools_DataMapOfShapeShape myFaceShellMap;
+  TopoDS_Shape myShape;
 
 
 };
@@ -109,7 +92,6 @@ TopoDS_Shape myShape;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepBuild_ShellFaceClassifier_HeaderFile

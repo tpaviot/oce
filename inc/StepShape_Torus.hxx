@@ -6,55 +6,43 @@
 #ifndef _StepShape_Torus_HeaderFile
 #define _StepShape_Torus_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_Torus_HeaderFile
 #include <Handle_StepShape_Torus.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Axis1Placement_HeaderFile
 #include <Handle_StepGeom_Axis1Placement.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _StepGeom_GeometricRepresentationItem_HeaderFile
 #include <StepGeom_GeometricRepresentationItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepGeom_Axis1Placement;
 class TCollection_HAsciiString;
 
 
 
-class StepShape_Torus : public StepGeom_GeometricRepresentationItem {
+class StepShape_Torus : public StepGeom_GeometricRepresentationItem
+{
 
 public:
 
-  //! Returns a Torus <br>
-  Standard_EXPORT   StepShape_Torus();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a Torus
+  Standard_EXPORT StepShape_Torus();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_Axis1Placement)& aPosition,const Standard_Real aMajorRadius,const Standard_Real aMinorRadius) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetPosition(const Handle(StepGeom_Axis1Placement)& aPosition) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_Axis1Placement)& aPosition, const Standard_Real aMajorRadius, const Standard_Real aMinorRadius) ;
   
-  Standard_EXPORT     Handle_StepGeom_Axis1Placement Position() const;
+  Standard_EXPORT   void SetPosition (const Handle(StepGeom_Axis1Placement)& aPosition) ;
   
-  Standard_EXPORT     void SetMajorRadius(const Standard_Real aMajorRadius) ;
+  Standard_EXPORT   Handle(StepGeom_Axis1Placement) Position()  const;
   
-  Standard_EXPORT     Standard_Real MajorRadius() const;
+  Standard_EXPORT   void SetMajorRadius (const Standard_Real aMajorRadius) ;
   
-  Standard_EXPORT     void SetMinorRadius(const Standard_Real aMinorRadius) ;
+  Standard_EXPORT   Standard_Real MajorRadius()  const;
   
-  Standard_EXPORT     Standard_Real MinorRadius() const;
+  Standard_EXPORT   void SetMinorRadius (const Standard_Real aMinorRadius) ;
+  
+  Standard_EXPORT   Standard_Real MinorRadius()  const;
 
 
 
@@ -69,9 +57,9 @@ protected:
 private: 
 
 
-Handle_StepGeom_Axis1Placement position;
-Standard_Real majorRadius;
-Standard_Real minorRadius;
+  Handle(StepGeom_Axis1Placement) position;
+  Standard_Real majorRadius;
+  Standard_Real minorRadius;
 
 
 };
@@ -80,7 +68,6 @@ Standard_Real minorRadius;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_Torus_HeaderFile

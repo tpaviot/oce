@@ -1,9 +1,3 @@
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _AIS_InteractiveObject_HeaderFile
 #include <AIS_InteractiveObject.hxx>
-#endif
-#ifndef _TPrsStd_GeometryDriver_HeaderFile
 #include <TPrsStd_GeometryDriver.hxx>
-#endif

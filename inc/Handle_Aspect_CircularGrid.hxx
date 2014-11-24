@@ -6,22 +6,15 @@
 #ifndef _Handle_Aspect_CircularGrid_HeaderFile
 #define _Handle_Aspect_CircularGrid_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Aspect_Grid_HeaderFile
 #include <Handle_Aspect_Grid.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Aspect_Grid);
 class Aspect_CircularGrid;
 
-DEFINE_STANDARD_HANDLE(Aspect_CircularGrid,Aspect_Grid)
+DEFINE_STANDARD_HANDLE(Aspect_CircularGrid, Aspect_Grid)
 
-#endif
+#endif // _Handle_Aspect_CircularGrid_HeaderFile

@@ -6,25 +6,13 @@
 #ifndef _GeomFill_SequenceOfTrsf_HeaderFile
 #define _GeomFill_SequenceOfTrsf_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_GeomFill_SequenceNodeOfSequenceOfTrsf_HeaderFile
 #include <Handle_GeomFill_SequenceNodeOfSequenceOfTrsf.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class gp_Trsf;
@@ -32,68 +20,68 @@ class GeomFill_SequenceNodeOfSequenceOfTrsf;
 
 
 
-class GeomFill_SequenceOfTrsf  : public TCollection_BaseSequence {
+class GeomFill_SequenceOfTrsf  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      GeomFill_SequenceOfTrsf();
+    GeomFill_SequenceOfTrsf();
   
-  Standard_EXPORT   GeomFill_SequenceOfTrsf(const GeomFill_SequenceOfTrsf& Other);
+  Standard_EXPORT GeomFill_SequenceOfTrsf(const GeomFill_SequenceOfTrsf& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~GeomFill_SequenceOfTrsf()
 {
   Clear();
 }
   
-  Standard_EXPORT    const GeomFill_SequenceOfTrsf& Assign(const GeomFill_SequenceOfTrsf& Other) ;
-   const GeomFill_SequenceOfTrsf& operator =(const GeomFill_SequenceOfTrsf& Other) 
+  Standard_EXPORT  const  GeomFill_SequenceOfTrsf& Assign (const GeomFill_SequenceOfTrsf& Other) ;
+ const  GeomFill_SequenceOfTrsf& operator = (const GeomFill_SequenceOfTrsf& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const gp_Trsf& T) ;
+  Standard_EXPORT   void Append (const gp_Trsf& T) ;
   
-        void Append(GeomFill_SequenceOfTrsf& S) ;
+      void Append (GeomFill_SequenceOfTrsf& S) ;
   
-  Standard_EXPORT     void Prepend(const gp_Trsf& T) ;
+  Standard_EXPORT   void Prepend (const gp_Trsf& T) ;
   
-        void Prepend(GeomFill_SequenceOfTrsf& S) ;
+      void Prepend (GeomFill_SequenceOfTrsf& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const gp_Trsf& T) ;
+      void InsertBefore (const Standard_Integer Index, const gp_Trsf& T) ;
   
-        void InsertBefore(const Standard_Integer Index,GeomFill_SequenceOfTrsf& S) ;
+      void InsertBefore (const Standard_Integer Index, GeomFill_SequenceOfTrsf& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const gp_Trsf& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const gp_Trsf& T) ;
   
-        void InsertAfter(const Standard_Integer Index,GeomFill_SequenceOfTrsf& S) ;
+      void InsertAfter (const Standard_Integer Index, GeomFill_SequenceOfTrsf& S) ;
   
-  Standard_EXPORT    const gp_Trsf& First() const;
+  Standard_EXPORT  const  gp_Trsf& First()  const;
   
-  Standard_EXPORT    const gp_Trsf& Last() const;
+  Standard_EXPORT  const  gp_Trsf& Last()  const;
   
-        void Split(const Standard_Integer Index,GeomFill_SequenceOfTrsf& Sub) ;
+      void Split (const Standard_Integer Index, GeomFill_SequenceOfTrsf& Sub) ;
   
-  Standard_EXPORT    const gp_Trsf& Value(const Standard_Integer Index) const;
-   const gp_Trsf& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  gp_Trsf& Value (const Standard_Integer Index)  const;
+ const  gp_Trsf& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const gp_Trsf& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const gp_Trsf& I) ;
   
-  Standard_EXPORT     gp_Trsf& ChangeValue(const Standard_Integer Index) ;
-    gp_Trsf& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   gp_Trsf& ChangeValue (const Standard_Integer Index) ;
+  gp_Trsf& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomFill_SequenceOfTrsf_HeaderFile

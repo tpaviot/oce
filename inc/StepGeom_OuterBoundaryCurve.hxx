@@ -6,28 +6,22 @@
 #ifndef _StepGeom_OuterBoundaryCurve_HeaderFile
 #define _StepGeom_OuterBoundaryCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_OuterBoundaryCurve_HeaderFile
 #include <Handle_StepGeom_OuterBoundaryCurve.hxx>
-#endif
 
-#ifndef _StepGeom_BoundaryCurve_HeaderFile
 #include <StepGeom_BoundaryCurve.hxx>
-#endif
 
 
 
-class StepGeom_OuterBoundaryCurve : public StepGeom_BoundaryCurve {
+class StepGeom_OuterBoundaryCurve : public StepGeom_BoundaryCurve
+{
 
 public:
 
-  //! Returns a OuterBoundaryCurve <br>
-  Standard_EXPORT   StepGeom_OuterBoundaryCurve();
+  
+  //! Returns a OuterBoundaryCurve
+  Standard_EXPORT StepGeom_OuterBoundaryCurve();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_OuterBoundaryCurve_HeaderFile

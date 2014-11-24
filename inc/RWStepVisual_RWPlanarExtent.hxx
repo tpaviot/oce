@@ -6,47 +6,33 @@
 #ifndef _RWStepVisual_RWPlanarExtent_HeaderFile
 #define _RWStepVisual_RWPlanarExtent_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepData_StepReaderData_HeaderFile
 #include <Handle_StepData_StepReaderData.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
-#ifndef _Handle_StepVisual_PlanarExtent_HeaderFile
 #include <Handle_StepVisual_PlanarExtent.hxx>
-#endif
 class StepData_StepReaderData;
 class Interface_Check;
 class StepVisual_PlanarExtent;
 class StepData_StepWriter;
 
 
-//! Read & Write Module for PlanarExtent <br>
-class RWStepVisual_RWPlanarExtent  {
+//! Read & Write Module for PlanarExtent
+class RWStepVisual_RWPlanarExtent 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   RWStepVisual_RWPlanarExtent();
+  Standard_EXPORT RWStepVisual_RWPlanarExtent();
   
-  Standard_EXPORT     void ReadStep(const Handle(StepData_StepReaderData)& data,const Standard_Integer num,Handle(Interface_Check)& ach,const Handle(StepVisual_PlanarExtent)& ent) const;
+  Standard_EXPORT   void ReadStep (const Handle(StepData_StepReaderData)& data, const Standard_Integer num, Handle(Interface_Check)& ach, const Handle(StepVisual_PlanarExtent)& ent)  const;
   
-  Standard_EXPORT     void WriteStep(StepData_StepWriter& SW,const Handle(StepVisual_PlanarExtent)& ent) const;
-
+  Standard_EXPORT   void WriteStep (StepData_StepWriter& SW, const Handle(StepVisual_PlanarExtent)& ent)  const;
 
 
 
@@ -69,7 +55,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _RWStepVisual_RWPlanarExtent_HeaderFile

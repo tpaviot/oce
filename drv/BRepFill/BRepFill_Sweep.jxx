@@ -1,36 +1,12 @@
-#ifndef _BRepFill_LocationLaw_HeaderFile
 #include <BRepFill_LocationLaw.hxx>
-#endif
-#ifndef _BRepFill_SectionLaw_HeaderFile
 #include <BRepFill_SectionLaw.hxx>
-#endif
-#ifndef _TopTools_HArray2OfShape_HeaderFile
 #include <TopTools_HArray2OfShape.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_ConstructionError_HeaderFile
 #include <Standard_ConstructionError.hxx>
-#endif
-#ifndef _TopoDS_Wire_HeaderFile
 #include <TopoDS_Wire.hxx>
-#endif
-#ifndef _TopTools_MapOfShape_HeaderFile
 #include <TopTools_MapOfShape.hxx>
-#endif
-#ifndef _BRepFill_DataMapOfShapeHArray2OfShape_HeaderFile
 #include <BRepFill_DataMapOfShapeHArray2OfShape.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _BRepFill_Sweep_HeaderFile
 #include <BRepFill_Sweep.hxx>
-#endif

@@ -5,16 +5,10 @@
 
 #include <TDocStd_SequenceNodeOfSequenceOfApplicationDelta.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TDocStd_ApplicationDelta_HeaderFile
 #include <TDocStd_ApplicationDelta.hxx>
-#endif
-#ifndef _TDocStd_SequenceOfApplicationDelta_HeaderFile
 #include <TDocStd_SequenceOfApplicationDelta.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(TDocStd_SequenceNodeOfSequenceOfApplicationDelta,Standard_Tra
 IMPLEMENT_STANDARD_RTTI(TDocStd_SequenceNodeOfSequenceOfApplicationDelta)
 
 
-#define SeqItem Handle_TDocStd_ApplicationDelta
+#define SeqItem Handle(TDocStd_ApplicationDelta)
 #define SeqItem_hxx <TDocStd_ApplicationDelta.hxx>
 #define TCollection_SequenceNode TDocStd_SequenceNodeOfSequenceOfApplicationDelta
 #define TCollection_SequenceNode_hxx <TDocStd_SequenceNodeOfSequenceOfApplicationDelta.hxx>

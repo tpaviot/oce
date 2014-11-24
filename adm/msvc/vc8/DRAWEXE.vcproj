@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="DRAWEXE"
-	ProjectGUID="{685029E6-0E1F-0720-1650-8A7AED8C6E4B}"
+	ProjectGUID="{C513C3F9-119C-0D1C-06FA-115DB61F6495}"
 	>
 	<Platforms>
 		<Platform
@@ -61,6 +61,7 @@
 				SuppressStartupBanner="true"
 				DebugInformationFormat="3"
 				DisableSpecificWarnings="4996"
+				EnableEnhancedInstructionSet="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -157,6 +158,7 @@
 				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
+				EnableEnhancedInstructionSet="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -240,7 +242,7 @@
 				AdditionalOptions="/favor:blend"
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\DRAWEXE;..\..\..\src\DRAWEXE;$(CSF_OPT_INC)"
 				Optimization="0"
-				PreprocessorDefinitions="WIN64;DEB;_DEBUG;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__DRAWEXE_DLL;_OCC64"
+				PreprocessorDefinitions="WIN64;DEB;_DEBUG;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__DRAWEXE_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -259,7 +261,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="WIN64;DEB;_DEBUG;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__DRAWEXE_DLL;_OCC64"
+				PreprocessorDefinitions="WIN64;DEB;_DEBUG;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__DRAWEXE_DLL"
 				Culture="1033"
 			/>
 			<Tool
@@ -276,7 +278,7 @@
 				ProgramDatabaseFile=".\..\..\..\win64\vc8\bind\DRAWEXE.pdb"
 				SubSystem="1"
 				ImportLibrary="..\..\..\win64\vc8\libd\DRAWEXE.lib"
-				TargetMachine="X64"
+				TargetMachine="17"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -338,7 +340,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\DRAWEXE;..\..\..\src\DRAWEXE;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="WIN64;NDEBUG;No_Exception;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__DRAWEXE_DLL;_OCC64"
+				PreprocessorDefinitions="WIN64;NDEBUG;No_Exception;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__DRAWEXE_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -357,7 +359,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="WIN64;NDEBUG;No_Exception;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__DRAWEXE_DLL;_OCC64"
+				PreprocessorDefinitions="WIN64;NDEBUG;No_Exception;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__DRAWEXE_DLL"
 				Culture="1033"
 			/>
 			<Tool
@@ -373,7 +375,7 @@
 				ProgramDatabaseFile=".\..\..\..\win64\vc8\bin\DRAWEXE.pdb"
 				SubSystem="1"
 				ImportLibrary="..\..\..\win64\vc8\lib\DRAWEXE.lib"
-				TargetMachine="X64"
+				TargetMachine="17"
 			/>
 			<Tool
 				Name="VCALinkTool"

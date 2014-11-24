@@ -6,22 +6,15 @@
 #ifndef _Handle_StepRepr_ProductDefinitionShape_HeaderFile
 #define _Handle_StepRepr_ProductDefinitionShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepRepr_PropertyDefinition_HeaderFile
 #include <Handle_StepRepr_PropertyDefinition.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepRepr_PropertyDefinition);
 class StepRepr_ProductDefinitionShape;
 
-DEFINE_STANDARD_HANDLE(StepRepr_ProductDefinitionShape,StepRepr_PropertyDefinition)
+DEFINE_STANDARD_HANDLE(StepRepr_ProductDefinitionShape, StepRepr_PropertyDefinition)
 
-#endif
+#endif // _Handle_StepRepr_ProductDefinitionShape_HeaderFile

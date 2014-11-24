@@ -5,21 +5,11 @@
 
 #include <MAT2d_DataMapIteratorOfDataMapOfIntegerSequenceOfConnexion.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _MAT2d_SequenceOfConnexion_HeaderFile
 #include <MAT2d_SequenceOfConnexion.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _MAT2d_DataMapOfIntegerSequenceOfConnexion_HeaderFile
 #include <MAT2d_DataMapOfIntegerSequenceOfConnexion.hxx>
-#endif
-#ifndef _MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion_HeaderFile
 #include <MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion.hxx>
-#endif
  
 
 #define TheKey Standard_Integer

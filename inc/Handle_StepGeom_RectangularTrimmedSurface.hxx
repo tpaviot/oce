@@ -6,22 +6,15 @@
 #ifndef _Handle_StepGeom_RectangularTrimmedSurface_HeaderFile
 #define _Handle_StepGeom_RectangularTrimmedSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepGeom_BoundedSurface_HeaderFile
 #include <Handle_StepGeom_BoundedSurface.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepGeom_BoundedSurface);
 class StepGeom_RectangularTrimmedSurface;
 
-DEFINE_STANDARD_HANDLE(StepGeom_RectangularTrimmedSurface,StepGeom_BoundedSurface)
+DEFINE_STANDARD_HANDLE(StepGeom_RectangularTrimmedSurface, StepGeom_BoundedSurface)
 
-#endif
+#endif // _Handle_StepGeom_RectangularTrimmedSurface_HeaderFile

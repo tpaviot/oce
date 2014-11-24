@@ -5,18 +5,10 @@
 
 #include <Hatch_SequenceOfLine.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Hatch_Line_HeaderFile
 #include <Hatch_Line.hxx>
-#endif
-#ifndef _Hatch_SequenceNodeOfSequenceOfLine_HeaderFile
 #include <Hatch_SequenceNodeOfSequenceOfLine.hxx>
-#endif
  
 
 #define SeqItem Hatch_Line

@@ -6,51 +6,44 @@
 #ifndef _IntImpParGen_ImpTool_HeaderFile
 #define _IntImpParGen_ImpTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class gp_Pnt2d;
 class gp_Vec2d;
 
 
-//! Template class for an implicit curve. <br>
-class IntImpParGen_ImpTool  {
+//! Template class for an implicit curve.
+class IntImpParGen_ImpTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT     gp_Pnt2d Value(const Standard_Real U) const;
+  Standard_EXPORT   gp_Pnt2d Value (const Standard_Real U)  const;
   
-  Standard_EXPORT     void D1(const Standard_Real U,gp_Pnt2d& P,gp_Vec2d& T) const;
+  Standard_EXPORT   void D1 (const Standard_Real U, gp_Pnt2d& P, gp_Vec2d& T)  const;
   
-  Standard_EXPORT     void D2(const Standard_Real U,gp_Pnt2d& P,gp_Vec2d& T,gp_Vec2d& N) const;
-  //! Computes the value of the signed distance between <br>
-//!          the point P and the implicit curve. <br>
-//! <br>
-  Standard_EXPORT     Standard_Real Distance(const gp_Pnt2d& P) const;
-  //! Computes the Gradient of the Signed Distance <br>
-//!          between a point and the implicit curve, at the <br>
-//!          point P. <br>
-//! <br>
-  Standard_EXPORT     gp_Vec2d GradDistance(const gp_Pnt2d& P) const;
-  //! Returns the parameter U of the point on the <br>
-//!          implicit curve corresponding to the point P. <br>
-//!          The correspondance between P and the point P(U) on <br>
-//!          the implicit curve must be coherent with the way <br>
-//!          of determination of the signed distance. <br>
-  Standard_EXPORT     Standard_Real FindParameter(const gp_Pnt2d& P) const;
-
+  Standard_EXPORT   void D2 (const Standard_Real U, gp_Pnt2d& P, gp_Vec2d& T, gp_Vec2d& N)  const;
+  
+  //! Computes the value of the signed distance between
+  //! the point P and the implicit curve.
+  Standard_EXPORT   Standard_Real Distance (const gp_Pnt2d& P)  const;
+  
+  //! Computes the Gradient of the Signed Distance
+  //! between a point and the implicit curve, at the
+  //! point P.
+  Standard_EXPORT   gp_Vec2d GradDistance (const gp_Pnt2d& P)  const;
+  
+  //! Returns the parameter U of the point on the
+  //! implicit curve corresponding to the point P.
+  //! The correspondance between P and the point P(U) on
+  //! the implicit curve must be coherent with the way
+  //! of determination of the signed distance.
+  Standard_EXPORT   Standard_Real FindParameter (const gp_Pnt2d& P)  const;
 
 
 
@@ -73,7 +66,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntImpParGen_ImpTool_HeaderFile

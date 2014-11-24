@@ -2,31 +2,31 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{54CD9B28-016D-0B9E-157C-2352DA146BEC}</UniqueIdentifier>
+      <UniqueIdentifier>{997998DF-13BB-13B0-0D9C-68488871FB4A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepBasic">
-      <UniqueIdentifier>{B971C4CD-177E-150B-11D2-8AF7A1878807}</UniqueIdentifier>
+      <UniqueIdentifier>{28F27C84-0ED8-131C-04AD-0C73726F6D80}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\RWStepBasic">
-      <UniqueIdentifier>{F399E49F-0466-0D6D-0F28-6A35FAFDE627}</UniqueIdentifier>
+      <UniqueIdentifier>{7E15310A-0D53-0D14-0E05-D0F61CCDE3AB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepRepr">
-      <UniqueIdentifier>{1129363A-0193-0D9C-1688-65C54179548F}</UniqueIdentifier>
+      <UniqueIdentifier>{1DFDCFD0-12C4-02B1-158B-D20292A6CE06}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\RWStepRepr">
-      <UniqueIdentifier>{9EA94127-0092-1381-078C-0D7D178F7FE7}</UniqueIdentifier>
+      <UniqueIdentifier>{1FFC260E-0084-13FD-1950-D43FACA05A8E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepGeom">
-      <UniqueIdentifier>{164837DD-10EF-03D4-1884-95323713F844}</UniqueIdentifier>
+      <UniqueIdentifier>{9955455A-14E9-0088-0073-303DAC2124D9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\RWStepGeom">
-      <UniqueIdentifier>{1038663E-0A31-00B4-1116-A03C80E421E1}</UniqueIdentifier>
+      <UniqueIdentifier>{FA36A0E1-0DC4-0DB8-0E20-ECEC067BB5C8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepShape">
-      <UniqueIdentifier>{6C460166-0D4D-0388-1451-25254DB408C5}</UniqueIdentifier>
+      <UniqueIdentifier>{DB7969E0-036E-056A-01E9-104EF0AE7AE7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\RWStepShape">
-      <UniqueIdentifier>{ABF8DB65-1322-07AB-0115-1230070F22C8}</UniqueIdentifier>
+      <UniqueIdentifier>{070026B9-028E-0BEF-15D4-5D89B1FAC637}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

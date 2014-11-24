@@ -6,43 +6,19 @@
 #ifndef _StepShape_CsgPrimitive_HeaderFile
 #define _StepShape_CsgPrimitive_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepShape_Sphere_HeaderFile
 #include <Handle_StepShape_Sphere.hxx>
-#endif
-#ifndef _Handle_StepShape_Block_HeaderFile
 #include <Handle_StepShape_Block.hxx>
-#endif
-#ifndef _Handle_StepShape_RightAngularWedge_HeaderFile
 #include <Handle_StepShape_RightAngularWedge.hxx>
-#endif
-#ifndef _Handle_StepShape_Torus_HeaderFile
 #include <Handle_StepShape_Torus.hxx>
-#endif
-#ifndef _Handle_StepShape_RightCircularCone_HeaderFile
 #include <Handle_StepShape_RightCircularCone.hxx>
-#endif
-#ifndef _Handle_StepShape_RightCircularCylinder_HeaderFile
 #include <Handle_StepShape_RightCircularCylinder.hxx>
-#endif
 class Standard_Transient;
 class StepShape_Sphere;
 class StepShape_Block;
@@ -53,35 +29,43 @@ class StepShape_RightCircularCylinder;
 
 
 
-class StepShape_CsgPrimitive  : public StepData_SelectType {
+class StepShape_CsgPrimitive  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a CsgPrimitive SelectType <br>
-  Standard_EXPORT   StepShape_CsgPrimitive();
-  //! Recognizes a CsgPrimitive Kind Entity that is : <br>
-//!        1 -> Sphere <br>
-//!        2 -> Block <br>
-//!        3 -> RightAngularWedge <br>
-//!        4 -> Torus <br>
-//!        5 -> RightCircularCone <br>
-//!        6 -> RightCircularCylinder <br>
-//!        0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! returns Value as a Sphere (Null if another type) <br>
-  Standard_EXPORT     Handle_StepShape_Sphere Sphere() const;
-  //! returns Value as a Block (Null if another type) <br>
-  Standard_EXPORT     Handle_StepShape_Block Block() const;
-  //! returns Value as a RightAngularWedge (Null if another type) <br>
-  Standard_EXPORT     Handle_StepShape_RightAngularWedge RightAngularWedge() const;
-  //! returns Value as a Torus (Null if another type) <br>
-  Standard_EXPORT     Handle_StepShape_Torus Torus() const;
-  //! returns Value as a RightCircularCone (Null if another type) <br>
-  Standard_EXPORT     Handle_StepShape_RightCircularCone RightCircularCone() const;
-  //! returns Value as a RightCircularCylinder (Null if another type) <br>
-  Standard_EXPORT     Handle_StepShape_RightCircularCylinder RightCircularCylinder() const;
-
+  
+  //! Returns a CsgPrimitive SelectType
+  Standard_EXPORT StepShape_CsgPrimitive();
+  
+  //! Recognizes a CsgPrimitive Kind Entity that is :
+  //! 1 -> Sphere
+  //! 2 -> Block
+  //! 3 -> RightAngularWedge
+  //! 4 -> Torus
+  //! 5 -> RightCircularCone
+  //! 6 -> RightCircularCylinder
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! returns Value as a Sphere (Null if another type)
+  Standard_EXPORT   Handle(StepShape_Sphere) Sphere()  const;
+  
+  //! returns Value as a Block (Null if another type)
+  Standard_EXPORT   Handle(StepShape_Block) Block()  const;
+  
+  //! returns Value as a RightAngularWedge (Null if another type)
+  Standard_EXPORT   Handle(StepShape_RightAngularWedge) RightAngularWedge()  const;
+  
+  //! returns Value as a Torus (Null if another type)
+  Standard_EXPORT   Handle(StepShape_Torus) Torus()  const;
+  
+  //! returns Value as a RightCircularCone (Null if another type)
+  Standard_EXPORT   Handle(StepShape_RightCircularCone) RightCircularCone()  const;
+  
+  //! returns Value as a RightCircularCylinder (Null if another type)
+  Standard_EXPORT   Handle(StepShape_RightCircularCylinder) RightCircularCylinder()  const;
 
 
 
@@ -104,7 +88,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_CsgPrimitive_HeaderFile

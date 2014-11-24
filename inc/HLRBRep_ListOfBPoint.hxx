@@ -6,28 +6,14 @@
 #ifndef _HLRBRep_ListOfBPoint_HeaderFile
 #define _HLRBRep_ListOfBPoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_HLRBRep_ListNodeOfListOfBPoint_HeaderFile
 #include <Handle_HLRBRep_ListNodeOfListOfBPoint.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class HLRBRep_ListIteratorOfListOfBPoint;
 class HLRBRep_BiPoint;
@@ -35,63 +21,63 @@ class HLRBRep_ListNodeOfListOfBPoint;
 
 
 
-class HLRBRep_ListOfBPoint  {
+class HLRBRep_ListOfBPoint 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   HLRBRep_ListOfBPoint();
+  Standard_EXPORT HLRBRep_ListOfBPoint();
   
-  Standard_EXPORT   HLRBRep_ListOfBPoint(const HLRBRep_ListOfBPoint& Other);
+  Standard_EXPORT HLRBRep_ListOfBPoint(const HLRBRep_ListOfBPoint& Other);
   
-  Standard_EXPORT     void Assign(const HLRBRep_ListOfBPoint& Other) ;
-    void operator=(const HLRBRep_ListOfBPoint& Other) 
+  Standard_EXPORT   void Assign (const HLRBRep_ListOfBPoint& Other) ;
+  void operator= (const HLRBRep_ListOfBPoint& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~HLRBRep_ListOfBPoint()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const HLRBRep_BiPoint& I) ;
+  Standard_EXPORT   void Prepend (const HLRBRep_BiPoint& I) ;
   
-  Standard_EXPORT     void Prepend(const HLRBRep_BiPoint& I,HLRBRep_ListIteratorOfListOfBPoint& theIt) ;
+  Standard_EXPORT   void Prepend (const HLRBRep_BiPoint& I, HLRBRep_ListIteratorOfListOfBPoint& theIt) ;
   
-  Standard_EXPORT     void Prepend(HLRBRep_ListOfBPoint& Other) ;
+  Standard_EXPORT   void Prepend (HLRBRep_ListOfBPoint& Other) ;
   
-  Standard_EXPORT     void Append(const HLRBRep_BiPoint& I) ;
+  Standard_EXPORT   void Append (const HLRBRep_BiPoint& I) ;
   
-  Standard_EXPORT     void Append(const HLRBRep_BiPoint& I,HLRBRep_ListIteratorOfListOfBPoint& theIt) ;
+  Standard_EXPORT   void Append (const HLRBRep_BiPoint& I, HLRBRep_ListIteratorOfListOfBPoint& theIt) ;
   
-  Standard_EXPORT     void Append(HLRBRep_ListOfBPoint& Other) ;
+  Standard_EXPORT   void Append (HLRBRep_ListOfBPoint& Other) ;
   
-  Standard_EXPORT     HLRBRep_BiPoint& First() const;
+  Standard_EXPORT   HLRBRep_BiPoint& First()  const;
   
-  Standard_EXPORT     HLRBRep_BiPoint& Last() const;
+  Standard_EXPORT   HLRBRep_BiPoint& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(HLRBRep_ListIteratorOfListOfBPoint& It) ;
+  Standard_EXPORT   void Remove (HLRBRep_ListIteratorOfListOfBPoint& It) ;
   
-  Standard_EXPORT     void InsertBefore(const HLRBRep_BiPoint& I,HLRBRep_ListIteratorOfListOfBPoint& It) ;
+  Standard_EXPORT   void InsertBefore (const HLRBRep_BiPoint& I, HLRBRep_ListIteratorOfListOfBPoint& It) ;
   
-  Standard_EXPORT     void InsertBefore(HLRBRep_ListOfBPoint& Other,HLRBRep_ListIteratorOfListOfBPoint& It) ;
+  Standard_EXPORT   void InsertBefore (HLRBRep_ListOfBPoint& Other, HLRBRep_ListIteratorOfListOfBPoint& It) ;
   
-  Standard_EXPORT     void InsertAfter(const HLRBRep_BiPoint& I,HLRBRep_ListIteratorOfListOfBPoint& It) ;
+  Standard_EXPORT   void InsertAfter (const HLRBRep_BiPoint& I, HLRBRep_ListIteratorOfListOfBPoint& It) ;
   
-  Standard_EXPORT     void InsertAfter(HLRBRep_ListOfBPoint& Other,HLRBRep_ListIteratorOfListOfBPoint& It) ;
+  Standard_EXPORT   void InsertAfter (HLRBRep_ListOfBPoint& Other, HLRBRep_ListIteratorOfListOfBPoint& It) ;
 
 
 friend class HLRBRep_ListIteratorOfListOfBPoint;
-
 
 
 protected:
@@ -104,8 +90,8 @@ private:
 
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
@@ -135,7 +121,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_ListOfBPoint_HeaderFile

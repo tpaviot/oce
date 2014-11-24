@@ -5,26 +5,16 @@
 
 #include <TColStd_DataMapIteratorOfDataMapOfTransientTransient.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _TColStd_DataMapOfTransientTransient_HeaderFile
 #include <TColStd_DataMapOfTransientTransient.hxx>
-#endif
-#ifndef _TColStd_DataMapNodeOfDataMapOfTransientTransient_HeaderFile
 #include <TColStd_DataMapNodeOfDataMapOfTransientTransient.hxx>
-#endif
  
 
-#define TheKey Handle_Standard_Transient
+#define TheKey Handle(Standard_Transient)
 #define TheKey_hxx <Standard_Transient.hxx>
-#define TheItem Handle_Standard_Transient
+#define TheItem Handle(Standard_Transient)
 #define TheItem_hxx <Standard_Transient.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>

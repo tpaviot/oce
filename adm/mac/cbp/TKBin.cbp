@@ -72,8 +72,6 @@
 			<Add directory="../../../src/BinMPrsStd" />
 			<Add directory="../../../drv/BinMNaming" />
 			<Add directory="../../../src/BinMNaming" />
-			<Add directory="../../../drv/BinTools" />
-			<Add directory="../../../src/BinTools" />
 		</Compiler>
 		<Linker>
 			<Add option="-framework OpenGL" />
@@ -87,6 +85,8 @@
 			<Add library="TKLCAF" />
 			<Add library="TKV3d" />
 			<Add library="TKBinL" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
@@ -110,11 +110,5 @@
 		<Unit filename="../../../src/BinMNaming/BinMNaming.cxx" />
 		<Unit filename="../../../src/BinMNaming/BinMNaming_NamedShapeDriver.cxx" />
 		<Unit filename="../../../src/BinMNaming/BinMNaming_NamingDriver.cxx" />
-		<Unit filename="../../../src/BinTools/BinTools.cxx" />
-		<Unit filename="../../../src/BinTools/BinTools_Curve2dSet.cxx" />
-		<Unit filename="../../../src/BinTools/BinTools_CurveSet.cxx" />
-		<Unit filename="../../../src/BinTools/BinTools_LocationSet.cxx" />
-		<Unit filename="../../../src/BinTools/BinTools_ShapeSet.cxx" />
-		<Unit filename="../../../src/BinTools/BinTools_SurfaceSet.cxx" />
 	</Project>
 </CodeBlocks_project_file>

@@ -6,19 +6,11 @@
 #ifndef _XSDRAWSTLVRML_HeaderFile
 #define _XSDRAWSTLVRML_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Draw_Interpretor_HeaderFile
 #include <Draw_Interpretor.hxx>
-#endif
 class XSDRAWSTLVRML_DataSource;
 class XSDRAWSTLVRML_DataSource3D;
 class XSDRAWSTLVRML_DrawableMesh;
@@ -32,16 +24,19 @@ class XSDRAWSTLVRML_DataMapIteratorOfCoordsMap;
 
 
 
-class XSDRAWSTLVRML  {
+class XSDRAWSTLVRML 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! A utility which writes a Shape to VRML format <br>//! Inits commands for writing to STL and VRML formats <br>
-  Standard_EXPORT   static  void InitCommands(Draw_Interpretor& theCommands) ;
-  //! Loads all Draw commands of TKXSDRAW. Used for plugin. <br>
-  Standard_EXPORT   static  void Factory(Draw_Interpretor& theDI) ;
-
+  
+  //! A utility which writes a Shape to VRML format
+  //! Inits commands for writing to STL and VRML formats
+  Standard_EXPORT static   void InitCommands (Draw_Interpretor& theCommands) ;
+  
+  //! Loads all Draw commands of TKXSDRAW. Used for plugin.
+  Standard_EXPORT static   void Factory (Draw_Interpretor& theDI) ;
 
 
 
@@ -74,7 +69,6 @@ friend class XSDRAWSTLVRML_DataMapIteratorOfCoordsMap;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XSDRAWSTLVRML_HeaderFile

@@ -1,9 +1,3 @@
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepBasic_Approval_HeaderFile
 #include <StepBasic_Approval.hxx>
-#endif
-#ifndef _StepBasic_ApprovalRelationship_HeaderFile
 #include <StepBasic_ApprovalRelationship.hxx>
-#endif

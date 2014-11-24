@@ -2,52 +2,52 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{14A539B6-136E-0EFF-032B-17C5118B1EBC}</UniqueIdentifier>
+      <UniqueIdentifier>{A1ED18CD-0186-0C54-0AEB-52801A585114}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Interface">
-      <UniqueIdentifier>{8F088527-01D6-07E2-185C-8934FEF6247C}</UniqueIdentifier>
+      <UniqueIdentifier>{3330A4DB-0046-0107-0ACB-AB9A1B126F44}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Transfer">
-      <UniqueIdentifier>{D56DCCE1-0466-13A8-03C7-07CB64BA3A41}</UniqueIdentifier>
+      <UniqueIdentifier>{46EEF04F-13F7-0FB0-0866-F51E3D944A42}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IFGraph">
-      <UniqueIdentifier>{46B3871B-07C6-019E-1258-04D54A4F2DE8}</UniqueIdentifier>
+      <UniqueIdentifier>{97747DC6-0458-1939-1941-917CD299C155}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IFSelect">
-      <UniqueIdentifier>{4F136F68-173A-05C1-12B1-C2B54109F736}</UniqueIdentifier>
+      <UniqueIdentifier>{63EAA37C-0773-12CE-1661-4ED1D1B126DD}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TransferBRep">
-      <UniqueIdentifier>{4513610F-050D-16D5-0621-4DEC8DE52244}</UniqueIdentifier>
+      <UniqueIdentifier>{6EA6B5E8-0782-10AA-0ADA-F845E4B4B4A6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XSControl">
-      <UniqueIdentifier>{2C9F54D9-0769-03B8-1663-32E699C1740B}</UniqueIdentifier>
+      <UniqueIdentifier>{C0368EE3-02C0-1464-0317-EBE53013BC04}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepData">
-      <UniqueIdentifier>{A9BA92D1-1420-189C-00D3-FEA6515931B0}</UniqueIdentifier>
+      <UniqueIdentifier>{9CC9EFB8-018B-16C6-129A-FDE192E46F1E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepFile">
-      <UniqueIdentifier>{CD352CE5-02DF-162A-178D-CD0FBCC40BD9}</UniqueIdentifier>
+      <UniqueIdentifier>{3B3C5DFF-0D62-0306-0729-37DB130FF6FA}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\HeaderSection">
-      <UniqueIdentifier>{E5DFBF8C-0595-0127-05A2-8A33EF5795D4}</UniqueIdentifier>
+      <UniqueIdentifier>{1FB04016-0673-0BA7-1085-63F5F2A7EFE3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\RWHeaderSection">
-      <UniqueIdentifier>{2DA0DC19-09BD-0519-0845-A05E5E936F2E}</UniqueIdentifier>
+      <UniqueIdentifier>{765A6092-113E-0AC1-137E-AF89F48A202C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\APIHeaderSection">
-      <UniqueIdentifier>{68401304-15E8-14EA-1075-A9700CFB2BDC}</UniqueIdentifier>
+      <UniqueIdentifier>{4632B9AA-1762-0623-18CF-9DDD482ADFD5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StepSelect">
-      <UniqueIdentifier>{FC97CB15-1256-13E7-0CBB-15D1796B758B}</UniqueIdentifier>
+      <UniqueIdentifier>{CD3BE9B1-0CBF-09ED-160F-0547E4B2F9F5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\UnitsMethods">
-      <UniqueIdentifier>{F21FDF40-0451-0BED-1751-09CBF62DA245}</UniqueIdentifier>
+      <UniqueIdentifier>{385AC03C-0E58-1486-0708-3574E08C214F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\XSAlgo">
-      <UniqueIdentifier>{F8741B48-1031-15A2-0666-079C81B40754}</UniqueIdentifier>
+      <UniqueIdentifier>{DED9B75A-0C09-165E-16F2-99A37EBCDCE5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MoniTool">
-      <UniqueIdentifier>{4D312FDD-0225-0A24-1865-FCDEF29106CA}</UniqueIdentifier>
+      <UniqueIdentifier>{4A6CED43-138A-1621-192D-E3C12C9F3236}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

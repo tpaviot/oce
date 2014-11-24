@@ -6,25 +6,13 @@
 #ifndef _IntSurf_SequenceOfCouple_HeaderFile
 #define _IntSurf_SequenceOfCouple_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_IntSurf_SequenceNodeOfSequenceOfCouple_HeaderFile
 #include <Handle_IntSurf_SequenceNodeOfSequenceOfCouple.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class IntSurf_Couple;
@@ -32,68 +20,68 @@ class IntSurf_SequenceNodeOfSequenceOfCouple;
 
 
 
-class IntSurf_SequenceOfCouple  : public TCollection_BaseSequence {
+class IntSurf_SequenceOfCouple  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      IntSurf_SequenceOfCouple();
+    IntSurf_SequenceOfCouple();
   
-  Standard_EXPORT   IntSurf_SequenceOfCouple(const IntSurf_SequenceOfCouple& Other);
+  Standard_EXPORT IntSurf_SequenceOfCouple(const IntSurf_SequenceOfCouple& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~IntSurf_SequenceOfCouple()
 {
   Clear();
 }
   
-  Standard_EXPORT    const IntSurf_SequenceOfCouple& Assign(const IntSurf_SequenceOfCouple& Other) ;
-   const IntSurf_SequenceOfCouple& operator =(const IntSurf_SequenceOfCouple& Other) 
+  Standard_EXPORT  const  IntSurf_SequenceOfCouple& Assign (const IntSurf_SequenceOfCouple& Other) ;
+ const  IntSurf_SequenceOfCouple& operator = (const IntSurf_SequenceOfCouple& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const IntSurf_Couple& T) ;
+  Standard_EXPORT   void Append (const IntSurf_Couple& T) ;
   
-        void Append(IntSurf_SequenceOfCouple& S) ;
+      void Append (IntSurf_SequenceOfCouple& S) ;
   
-  Standard_EXPORT     void Prepend(const IntSurf_Couple& T) ;
+  Standard_EXPORT   void Prepend (const IntSurf_Couple& T) ;
   
-        void Prepend(IntSurf_SequenceOfCouple& S) ;
+      void Prepend (IntSurf_SequenceOfCouple& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const IntSurf_Couple& T) ;
+      void InsertBefore (const Standard_Integer Index, const IntSurf_Couple& T) ;
   
-        void InsertBefore(const Standard_Integer Index,IntSurf_SequenceOfCouple& S) ;
+      void InsertBefore (const Standard_Integer Index, IntSurf_SequenceOfCouple& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const IntSurf_Couple& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const IntSurf_Couple& T) ;
   
-        void InsertAfter(const Standard_Integer Index,IntSurf_SequenceOfCouple& S) ;
+      void InsertAfter (const Standard_Integer Index, IntSurf_SequenceOfCouple& S) ;
   
-  Standard_EXPORT    const IntSurf_Couple& First() const;
+  Standard_EXPORT  const  IntSurf_Couple& First()  const;
   
-  Standard_EXPORT    const IntSurf_Couple& Last() const;
+  Standard_EXPORT  const  IntSurf_Couple& Last()  const;
   
-        void Split(const Standard_Integer Index,IntSurf_SequenceOfCouple& Sub) ;
+      void Split (const Standard_Integer Index, IntSurf_SequenceOfCouple& Sub) ;
   
-  Standard_EXPORT    const IntSurf_Couple& Value(const Standard_Integer Index) const;
-   const IntSurf_Couple& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  IntSurf_Couple& Value (const Standard_Integer Index)  const;
+ const  IntSurf_Couple& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const IntSurf_Couple& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const IntSurf_Couple& I) ;
   
-  Standard_EXPORT     IntSurf_Couple& ChangeValue(const Standard_Integer Index) ;
-    IntSurf_Couple& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   IntSurf_Couple& ChangeValue (const Standard_Integer Index) ;
+  IntSurf_Couple& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntSurf_SequenceOfCouple_HeaderFile

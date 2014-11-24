@@ -6,22 +6,15 @@
 #ifndef _Handle_StepAP214_AutoDesignPresentedItem_HeaderFile
 #define _Handle_StepAP214_AutoDesignPresentedItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepVisual_PresentedItem_HeaderFile
 #include <Handle_StepVisual_PresentedItem.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepVisual_PresentedItem);
 class StepAP214_AutoDesignPresentedItem;
 
-DEFINE_STANDARD_HANDLE(StepAP214_AutoDesignPresentedItem,StepVisual_PresentedItem)
+DEFINE_STANDARD_HANDLE(StepAP214_AutoDesignPresentedItem, StepVisual_PresentedItem)
 
-#endif
+#endif // _Handle_StepAP214_AutoDesignPresentedItem_HeaderFile

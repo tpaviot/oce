@@ -6,38 +6,27 @@
 #ifndef _SelectMgr_SequenceNodeOfSequenceOfSelection_HeaderFile
 #define _SelectMgr_SequenceNodeOfSequenceOfSelection_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_SelectMgr_SequenceNodeOfSequenceOfSelection_HeaderFile
 #include <Handle_SelectMgr_SequenceNodeOfSequenceOfSelection.hxx>
-#endif
 
-#ifndef _Handle_SelectMgr_Selection_HeaderFile
 #include <Handle_SelectMgr_Selection.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class SelectMgr_Selection;
 class SelectMgr_SequenceOfSelection;
 
 
 
-class SelectMgr_SequenceNodeOfSequenceOfSelection : public TCollection_SeqNode {
+class SelectMgr_SequenceNodeOfSequenceOfSelection : public TCollection_SeqNode
+{
 
 public:
 
   
-      SelectMgr_SequenceNodeOfSequenceOfSelection(const Handle(SelectMgr_Selection)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    SelectMgr_SequenceNodeOfSequenceOfSelection(const Handle(SelectMgr_Selection)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_SelectMgr_Selection& Value() const;
+      Handle(SelectMgr_Selection)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_SelectMgr_Selection myValue;
+  Handle(SelectMgr_Selection) myValue;
 
 
 };
 
-#define SeqItem Handle_SelectMgr_Selection
+#define SeqItem Handle(SelectMgr_Selection)
 #define SeqItem_hxx <SelectMgr_Selection.hxx>
 #define TCollection_SequenceNode SelectMgr_SequenceNodeOfSequenceOfSelection
 #define TCollection_SequenceNode_hxx <SelectMgr_SequenceNodeOfSequenceOfSelection.hxx>
@@ -78,7 +67,6 @@ Handle_SelectMgr_Selection myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SelectMgr_SequenceNodeOfSequenceOfSelection_HeaderFile

@@ -6,42 +6,36 @@
 #ifndef _PDocStd_XLink_HeaderFile
 #define _PDocStd_XLink_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PDocStd_XLink_HeaderFile
 #include <Handle_PDocStd_XLink.hxx>
-#endif
 
-#ifndef _Handle_PCollection_HAsciiString_HeaderFile
 #include <Handle_PCollection_HAsciiString.hxx>
-#endif
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
 class PCollection_HAsciiString;
 
 
-class PDocStd_XLink : public PDF_Attribute {
+class PDocStd_XLink : public PDF_Attribute
+{
 
 public:
 
-  //! Returns an empty persistent external reference. <br>
-  Standard_EXPORT   PDocStd_XLink();
-  //! Sets the field <myDocEntry> with <aDocEntry>. <br>
-  Standard_EXPORT     void DocumentEntry(const Handle(PCollection_HAsciiString)& aDocEntry) ;
-  //! Returns the contents of the field <myDocEntry>. <br>
-  Standard_EXPORT     Handle_PCollection_HAsciiString DocumentEntry() const;
-  //! Sets the field <myLabEntry> with <aLabEntry>. <br>
-  Standard_EXPORT     void LabelEntry(const Handle(PCollection_HAsciiString)& aLabEntry) ;
-  //! Returns the contents of the field <myLabEntry>. <br>
-  Standard_EXPORT     Handle_PCollection_HAsciiString LabelEntry() const;
+  
+  //! Returns an empty persistent external reference.
+  Standard_EXPORT PDocStd_XLink();
+  
+  //! Sets the field <myDocEntry> with <aDocEntry>.
+  Standard_EXPORT   void DocumentEntry (const Handle(PCollection_HAsciiString)& aDocEntry) ;
+  
+  //! Returns the contents of the field <myDocEntry>.
+  Standard_EXPORT   Handle(PCollection_HAsciiString) DocumentEntry()  const;
+  
+  //! Sets the field <myLabEntry> with <aLabEntry>.
+  Standard_EXPORT   void LabelEntry (const Handle(PCollection_HAsciiString)& aLabEntry) ;
+  
+  //! Returns the contents of the field <myLabEntry>.
+  Standard_EXPORT   Handle(PCollection_HAsciiString) LabelEntry()  const;
 
 PDocStd_XLink(const Storage_stCONSTclCOM& a) : PDF_Attribute(a)
 {
@@ -64,8 +58,8 @@ protected:
 private: 
 
 
-Handle_PCollection_HAsciiString myDocEntry;
-Handle_PCollection_HAsciiString myLabEntry;
+  Handle(PCollection_HAsciiString) myDocEntry;
+  Handle(PCollection_HAsciiString) myLabEntry;
 
 
 };
@@ -74,7 +68,6 @@ Handle_PCollection_HAsciiString myLabEntry;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDocStd_XLink_HeaderFile

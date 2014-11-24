@@ -1,3 +1,1 @@
-#ifndef _math_RealRandom_HeaderFile
 #include <math_RealRandom.hxx>
-#endif

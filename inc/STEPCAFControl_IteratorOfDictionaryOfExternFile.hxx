@@ -6,37 +6,17 @@
 #ifndef _STEPCAFControl_IteratorOfDictionaryOfExternFile_HeaderFile
 #define _STEPCAFControl_IteratorOfDictionaryOfExternFile_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_STEPCAFControl_DictionaryOfExternFile_HeaderFile
 #include <Handle_STEPCAFControl_DictionaryOfExternFile.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile_HeaderFile
 #include <Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_STEPCAFControl_ExternFile_HeaderFile
 #include <Handle_STEPCAFControl_ExternFile.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
 class STEPCAFControl_DictionaryOfExternFile;
 class STEPCAFControl_StackItemOfDictionaryOfExternFile;
 class Standard_NoSuchObject;
@@ -45,28 +25,28 @@ class TCollection_AsciiString;
 
 
 
-class STEPCAFControl_IteratorOfDictionaryOfExternFile  {
+class STEPCAFControl_IteratorOfDictionaryOfExternFile 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   STEPCAFControl_IteratorOfDictionaryOfExternFile(const Handle(STEPCAFControl_DictionaryOfExternFile)& acell);
+  Standard_EXPORT STEPCAFControl_IteratorOfDictionaryOfExternFile(const Handle(STEPCAFControl_DictionaryOfExternFile)& acell);
   
-  Standard_EXPORT   STEPCAFControl_IteratorOfDictionaryOfExternFile(const Handle(STEPCAFControl_DictionaryOfExternFile)& acell,const Standard_CString basename);
+  Standard_EXPORT STEPCAFControl_IteratorOfDictionaryOfExternFile(const Handle(STEPCAFControl_DictionaryOfExternFile)& acell, const Standard_CString basename);
   
-  Standard_EXPORT   STEPCAFControl_IteratorOfDictionaryOfExternFile(const Handle(STEPCAFControl_DictionaryOfExternFile)& acell,const TCollection_AsciiString& basename);
+  Standard_EXPORT STEPCAFControl_IteratorOfDictionaryOfExternFile(const Handle(STEPCAFControl_DictionaryOfExternFile)& acell, const TCollection_AsciiString& basename);
   
-  Standard_EXPORT     void Start() ;
+  Standard_EXPORT   void Start() ;
   
-  Standard_EXPORT     Standard_Boolean More() ;
+  Standard_EXPORT   Standard_Boolean More() ;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT    const Handle_STEPCAFControl_ExternFile& Value() const;
+  Standard_EXPORT  const  Handle(STEPCAFControl_ExternFile)& Value()  const;
   
-  Standard_EXPORT     TCollection_AsciiString Name() const;
-
+  Standard_EXPORT   TCollection_AsciiString Name()  const;
 
 
 
@@ -80,16 +60,16 @@ protected:
 private:
 
   
-  Standard_EXPORT     void AppendStack(const Handle(STEPCAFControl_DictionaryOfExternFile)& val) ;
+  Standard_EXPORT   void AppendStack (const Handle(STEPCAFControl_DictionaryOfExternFile)& val) ;
 
 
-Handle_STEPCAFControl_DictionaryOfExternFile thebase;
-TCollection_AsciiString thename;
-Handle_STEPCAFControl_StackItemOfDictionaryOfExternFile thelast;
-Standard_Integer thenb;
-Standard_Boolean themore;
-Standard_Boolean theinit;
-Standard_Boolean thenext;
+  Handle(STEPCAFControl_DictionaryOfExternFile) thebase;
+  TCollection_AsciiString thename;
+  Handle(STEPCAFControl_StackItemOfDictionaryOfExternFile) thelast;
+  Standard_Integer thenb;
+  Standard_Boolean themore;
+  Standard_Boolean theinit;
+  Standard_Boolean thenext;
 
 
 };
@@ -98,7 +78,6 @@ Standard_Boolean thenext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPCAFControl_IteratorOfDictionaryOfExternFile_HeaderFile

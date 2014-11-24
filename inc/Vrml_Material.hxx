@@ -6,72 +6,59 @@
 #ifndef _Vrml_Material_HeaderFile
 #define _Vrml_Material_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Vrml_Material_HeaderFile
 #include <Handle_Vrml_Material.hxx>
-#endif
 
-#ifndef _Handle_Quantity_HArray1OfColor_HeaderFile
 #include <Handle_Quantity_HArray1OfColor.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class Quantity_HArray1OfColor;
 class TColStd_HArray1OfReal;
 
 
-//! defines a Material node of VRML specifying properties of geometry <br>
-//!          and its appearance. <br>
-//!  This node defines the current surface material properties for all subsequent shapes. <br>
-//!  Material sets several components of the current material during traversal. Different shapes <br>
-//!  interpret materials with multiple values differently. To bind materials to shapes, use a <br>
-//!  MaterialBinding node. <br>
-class Vrml_Material : public MMgt_TShared {
+//! defines a Material node of VRML specifying properties of geometry
+//! and its appearance.
+//! This node defines the current surface material properties for all subsequent shapes.
+//! Material sets several components of the current material during traversal. Different shapes
+//! interpret materials with multiple values differently. To bind materials to shapes, use a
+//! MaterialBinding node.
+class Vrml_Material : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   Vrml_Material(const Handle(Quantity_HArray1OfColor)& aAmbientColor,const Handle(Quantity_HArray1OfColor)& aDiffuseColor,const Handle(Quantity_HArray1OfColor)& aSpecularColor,const Handle(Quantity_HArray1OfColor)& aEmissiveColor,const Handle(TColStd_HArray1OfReal)& aShininess,const Handle(TColStd_HArray1OfReal)& aTransparency);
+  Standard_EXPORT Vrml_Material(const Handle(Quantity_HArray1OfColor)& aAmbientColor, const Handle(Quantity_HArray1OfColor)& aDiffuseColor, const Handle(Quantity_HArray1OfColor)& aSpecularColor, const Handle(Quantity_HArray1OfColor)& aEmissiveColor, const Handle(TColStd_HArray1OfReal)& aShininess, const Handle(TColStd_HArray1OfReal)& aTransparency);
   
-  Standard_EXPORT   Vrml_Material();
+  Standard_EXPORT Vrml_Material();
   
-  Standard_EXPORT     void SetAmbientColor(const Handle(Quantity_HArray1OfColor)& aAmbientColor) ;
+  Standard_EXPORT   void SetAmbientColor (const Handle(Quantity_HArray1OfColor)& aAmbientColor) ;
   
-  Standard_EXPORT     Handle_Quantity_HArray1OfColor AmbientColor() const;
+  Standard_EXPORT   Handle(Quantity_HArray1OfColor) AmbientColor()  const;
   
-  Standard_EXPORT     void SetDiffuseColor(const Handle(Quantity_HArray1OfColor)& aDiffuseColor) ;
+  Standard_EXPORT   void SetDiffuseColor (const Handle(Quantity_HArray1OfColor)& aDiffuseColor) ;
   
-  Standard_EXPORT     Handle_Quantity_HArray1OfColor DiffuseColor() const;
+  Standard_EXPORT   Handle(Quantity_HArray1OfColor) DiffuseColor()  const;
   
-  Standard_EXPORT     void SetSpecularColor(const Handle(Quantity_HArray1OfColor)& aSpecularColor) ;
+  Standard_EXPORT   void SetSpecularColor (const Handle(Quantity_HArray1OfColor)& aSpecularColor) ;
   
-  Standard_EXPORT     Handle_Quantity_HArray1OfColor SpecularColor() const;
+  Standard_EXPORT   Handle(Quantity_HArray1OfColor) SpecularColor()  const;
   
-  Standard_EXPORT     void SetEmissiveColor(const Handle(Quantity_HArray1OfColor)& aEmissiveColor) ;
+  Standard_EXPORT   void SetEmissiveColor (const Handle(Quantity_HArray1OfColor)& aEmissiveColor) ;
   
-  Standard_EXPORT     Handle_Quantity_HArray1OfColor EmissiveColor() const;
+  Standard_EXPORT   Handle(Quantity_HArray1OfColor) EmissiveColor()  const;
   
-  Standard_EXPORT     void SetShininess(const Handle(TColStd_HArray1OfReal)& aShininess) ;
+  Standard_EXPORT   void SetShininess (const Handle(TColStd_HArray1OfReal)& aShininess) ;
   
-  Standard_EXPORT     Handle_TColStd_HArray1OfReal Shininess() const;
+  Standard_EXPORT   Handle(TColStd_HArray1OfReal) Shininess()  const;
   
-  Standard_EXPORT     void SetTransparency(const Handle(TColStd_HArray1OfReal)& aTransparency) ;
+  Standard_EXPORT   void SetTransparency (const Handle(TColStd_HArray1OfReal)& aTransparency) ;
   
-  Standard_EXPORT     Handle_TColStd_HArray1OfReal Transparency() const;
+  Standard_EXPORT   Handle(TColStd_HArray1OfReal) Transparency()  const;
   
-  Standard_EXPORT     Standard_OStream& Print(Standard_OStream& anOStream) const;
+  Standard_EXPORT   Standard_OStream& Print (Standard_OStream& anOStream)  const;
 
 
 
@@ -86,12 +73,12 @@ protected:
 private: 
 
 
-Handle_Quantity_HArray1OfColor myAmbientColor;
-Handle_Quantity_HArray1OfColor myDiffuseColor;
-Handle_Quantity_HArray1OfColor mySpecularColor;
-Handle_Quantity_HArray1OfColor myEmissiveColor;
-Handle_TColStd_HArray1OfReal myShininess;
-Handle_TColStd_HArray1OfReal myTransparency;
+  Handle(Quantity_HArray1OfColor) myAmbientColor;
+  Handle(Quantity_HArray1OfColor) myDiffuseColor;
+  Handle(Quantity_HArray1OfColor) mySpecularColor;
+  Handle(Quantity_HArray1OfColor) myEmissiveColor;
+  Handle(TColStd_HArray1OfReal) myShininess;
+  Handle(TColStd_HArray1OfReal) myTransparency;
 
 
 };
@@ -100,7 +87,6 @@ Handle_TColStd_HArray1OfReal myTransparency;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Vrml_Material_HeaderFile

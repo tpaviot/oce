@@ -85,6 +85,8 @@
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 		</Linker>
 		<Unit filename="../../../drv/XmlLDrivers/XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef_0.cxx" />
 		<Unit filename="../../../drv/XmlLDrivers/XmlLDrivers_SequenceOfNamespaceDef_0.cxx" />

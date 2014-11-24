@@ -1,75 +1,25 @@
-#ifndef _SelectMgr_SelectionManager_HeaderFile
 #include <SelectMgr_SelectionManager.hxx>
-#endif
-#ifndef _V3d_Viewer_HeaderFile
 #include <V3d_Viewer.hxx>
-#endif
-#ifndef _StdSelect_ViewerSelector3d_HeaderFile
 #include <StdSelect_ViewerSelector3d.hxx>
-#endif
-#ifndef _AIS_InteractiveObject_HeaderFile
 #include <AIS_InteractiveObject.hxx>
-#endif
-#ifndef _SelectMgr_OrFilter_HeaderFile
 #include <SelectMgr_OrFilter.hxx>
-#endif
-#ifndef _Prs3d_Drawer_HeaderFile
 #include <Prs3d_Drawer.hxx>
-#endif
-#ifndef _V3d_View_HeaderFile
 #include <V3d_View.hxx>
-#endif
-#ifndef _AIS_LocalContext_HeaderFile
 #include <AIS_LocalContext.hxx>
-#endif
-#ifndef _TopLoc_Location_HeaderFile
 #include <TopLoc_Location.hxx>
-#endif
-#ifndef _Quantity_Color_HeaderFile
 #include <Quantity_Color.hxx>
-#endif
-#ifndef _AIS_Drawer_HeaderFile
 #include <AIS_Drawer.hxx>
-#endif
-#ifndef _TColStd_ListOfInteger_HeaderFile
 #include <TColStd_ListOfInteger.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _Prs3d_LineAspect_HeaderFile
 #include <Prs3d_LineAspect.hxx>
-#endif
-#ifndef _Prs3d_BasicAspect_HeaderFile
 #include <Prs3d_BasicAspect.hxx>
-#endif
-#ifndef _TColgp_Array1OfPnt2d_HeaderFile
 #include <TColgp_Array1OfPnt2d.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _SelectMgr_EntityOwner_HeaderFile
 #include <SelectMgr_EntityOwner.hxx>
-#endif
-#ifndef _SelectMgr_IndexedMapOfOwner_HeaderFile
 #include <SelectMgr_IndexedMapOfOwner.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _SelectMgr_Filter_HeaderFile
 #include <SelectMgr_Filter.hxx>
-#endif
-#ifndef _SelectMgr_ListOfFilter_HeaderFile
 #include <SelectMgr_ListOfFilter.hxx>
-#endif
-#ifndef _AIS_ListOfInteractive_HeaderFile
 #include <AIS_ListOfInteractive.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _AIS_InteractiveContext_HeaderFile
 #include <AIS_InteractiveContext.hxx>
-#endif

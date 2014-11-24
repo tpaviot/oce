@@ -6,38 +6,28 @@
 #ifndef _BRepFill_DraftLaw_HeaderFile
 #define _BRepFill_DraftLaw_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepFill_DraftLaw_HeaderFile
 #include <Handle_BRepFill_DraftLaw.hxx>
-#endif
 
-#ifndef _BRepFill_Edge3DLaw_HeaderFile
 #include <BRepFill_Edge3DLaw.hxx>
-#endif
-#ifndef _Handle_GeomFill_LocationDraft_HeaderFile
 #include <Handle_GeomFill_LocationDraft.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TopoDS_Wire;
 class GeomFill_LocationDraft;
 
 
-//! Build Location Law, with a  Wire. <br>
-class BRepFill_DraftLaw : public BRepFill_Edge3DLaw {
+//! Build Location Law, with a  Wire.
+class BRepFill_DraftLaw : public BRepFill_Edge3DLaw
+{
 
 public:
 
   
-  Standard_EXPORT   BRepFill_DraftLaw(const TopoDS_Wire& Path,const Handle(GeomFill_LocationDraft)& Law);
-  //! To clean the little discontinuities. <br>
-  Standard_EXPORT     void CleanLaw(const Standard_Real TolAngular) ;
+  Standard_EXPORT BRepFill_DraftLaw(const TopoDS_Wire& Path, const Handle(GeomFill_LocationDraft)& Law);
+  
+  //! To clean the little discontinuities.
+  Standard_EXPORT   void CleanLaw (const Standard_Real TolAngular) ;
 
 
 
@@ -60,7 +50,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepFill_DraftLaw_HeaderFile

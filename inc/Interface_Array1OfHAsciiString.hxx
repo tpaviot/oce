@@ -6,28 +6,14 @@
 #ifndef _Interface_Array1OfHAsciiString_HeaderFile
 #define _Interface_Array1OfHAsciiString_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -36,52 +22,52 @@ class TCollection_HAsciiString;
 
 
 
-class Interface_Array1OfHAsciiString  {
+class Interface_Array1OfHAsciiString 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Interface_Array1OfHAsciiString(const Standard_Integer Low,const Standard_Integer Up);
+    Interface_Array1OfHAsciiString(const Standard_Integer Low, const Standard_Integer Up);
   
-      Interface_Array1OfHAsciiString(const Handle(TCollection_HAsciiString)& Item,const Standard_Integer Low,const Standard_Integer Up);
+    Interface_Array1OfHAsciiString(const Handle(TCollection_HAsciiString)& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& V) ;
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~Interface_Array1OfHAsciiString()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const Interface_Array1OfHAsciiString& Assign(const Interface_Array1OfHAsciiString& Other) ;
-   const Interface_Array1OfHAsciiString& operator =(const Interface_Array1OfHAsciiString& Other) 
+  Standard_EXPORT  const  Interface_Array1OfHAsciiString& Assign (const Interface_Array1OfHAsciiString& Other) ;
+ const  Interface_Array1OfHAsciiString& operator = (const Interface_Array1OfHAsciiString& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(TCollection_HAsciiString)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(TCollection_HAsciiString)& Value) ;
   
-       const Handle_TCollection_HAsciiString& Value(const Standard_Integer Index) const;
-     const Handle_TCollection_HAsciiString& operator ()(const Standard_Integer Index) const
+     const  Handle(TCollection_HAsciiString)& Value (const Standard_Integer Index)  const;
+   const  Handle(TCollection_HAsciiString)& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        Handle_TCollection_HAsciiString& ChangeValue(const Standard_Integer Index) ;
-      Handle_TCollection_HAsciiString& operator ()(const Standard_Integer Index) 
+      Handle(TCollection_HAsciiString)& ChangeValue (const Standard_Integer Index) ;
+    Handle(TCollection_HAsciiString)& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -95,18 +81,18 @@ protected:
 private:
 
   
-  Standard_EXPORT   Interface_Array1OfHAsciiString(const Interface_Array1OfHAsciiString& AnArray);
+  Standard_EXPORT Interface_Array1OfHAsciiString(const Interface_Array1OfHAsciiString& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
 
-#define Array1Item Handle_TCollection_HAsciiString
+#define Array1Item Handle(TCollection_HAsciiString)
 #define Array1Item_hxx <TCollection_HAsciiString.hxx>
 #define TCollection_Array1 Interface_Array1OfHAsciiString
 #define TCollection_Array1_hxx <Interface_Array1OfHAsciiString.hxx>
@@ -119,7 +105,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Interface_Array1OfHAsciiString_HeaderFile

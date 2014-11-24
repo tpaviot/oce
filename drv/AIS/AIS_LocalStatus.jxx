@@ -1,9 +1,3 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _TColStd_ListOfInteger_HeaderFile
 #include <TColStd_ListOfInteger.hxx>
-#endif
-#ifndef _AIS_LocalStatus_HeaderFile
 #include <AIS_LocalStatus.hxx>
-#endif

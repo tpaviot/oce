@@ -6,51 +6,36 @@
 #ifndef _QANCollection_IndexedDataMapNodeOfIndexedDataMapOfRealPnt_HeaderFile
 #define _QANCollection_IndexedDataMapNodeOfIndexedDataMapOfRealPnt_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_QANCollection_IndexedDataMapNodeOfIndexedDataMapOfRealPnt_HeaderFile
 #include <Handle_QANCollection_IndexedDataMapNodeOfIndexedDataMapOfRealPnt.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
 class gp_Pnt;
 class TColStd_MapRealHasher;
 class QANCollection_IndexedDataMapOfRealPnt;
 
 
 
-class QANCollection_IndexedDataMapNodeOfIndexedDataMapOfRealPnt : public TCollection_MapNode {
+class QANCollection_IndexedDataMapNodeOfIndexedDataMapOfRealPnt : public TCollection_MapNode
+{
 
 public:
 
   
-      QANCollection_IndexedDataMapNodeOfIndexedDataMapOfRealPnt(const Standard_Real& K1,const Standard_Integer K2,const gp_Pnt& I,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+    QANCollection_IndexedDataMapNodeOfIndexedDataMapOfRealPnt(const Standard_Real& K1, const Standard_Integer K2, const gp_Pnt& I, const TCollection_MapNodePtr& n1, const TCollection_MapNodePtr& n2);
   
-        Standard_Real& Key1() const;
+      Standard_Real& Key1()  const;
   
-        Standard_Integer& Key2() const;
+      Standard_Integer& Key2()  const;
   
-        TCollection_MapNodePtr& Next2() const;
+      TCollection_MapNodePtr& Next2()  const;
   
-        gp_Pnt& Value() const;
+      gp_Pnt& Value()  const;
 
 
 
@@ -65,10 +50,10 @@ protected:
 private: 
 
 
-Standard_Real myKey1;
-Standard_Integer myKey2;
-gp_Pnt myValue;
-TCollection_MapNodePtr myNext2;
+  Standard_Real myKey1;
+  Standard_Integer myKey2;
+  gp_Pnt myValue;
+  TCollection_MapNodePtr myNext2;
 
 
 };
@@ -102,7 +87,6 @@ TCollection_MapNodePtr myNext2;
 #undef TCollection_IndexedDataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QANCollection_IndexedDataMapNodeOfIndexedDataMapOfRealPnt_HeaderFile

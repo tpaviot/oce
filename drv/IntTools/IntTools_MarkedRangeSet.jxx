@@ -1,12 +1,4 @@
-#ifndef _IntTools_CArray1OfReal_HeaderFile
 #include <IntTools_CArray1OfReal.hxx>
-#endif
-#ifndef _IntTools_Range_HeaderFile
 #include <IntTools_Range.hxx>
-#endif
-#ifndef _TColStd_SequenceOfInteger_HeaderFile
 #include <TColStd_SequenceOfInteger.hxx>
-#endif
-#ifndef _IntTools_MarkedRangeSet_HeaderFile
 #include <IntTools_MarkedRangeSet.hxx>
-#endif

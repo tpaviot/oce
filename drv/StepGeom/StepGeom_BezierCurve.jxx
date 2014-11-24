@@ -1,3 +1,1 @@
-#ifndef _StepGeom_BezierCurve_HeaderFile
 #include <StepGeom_BezierCurve.hxx>
-#endif

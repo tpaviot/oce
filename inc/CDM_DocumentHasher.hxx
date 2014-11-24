@@ -6,39 +6,27 @@
 #ifndef _CDM_DocumentHasher_HeaderFile
 #define _CDM_DocumentHasher_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_CDM_Document_HeaderFile
 #include <Handle_CDM_Document.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class CDM_Document;
 
 
 
-class CDM_DocumentHasher  {
+class CDM_DocumentHasher 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Standard_Integer HashCode(const Handle(CDM_Document)& K,const Standard_Integer Upper) ;
+  Standard_EXPORT static   Standard_Integer HashCode (const Handle(CDM_Document)& K, const Standard_Integer Upper) ;
   
-  Standard_EXPORT   static  Standard_Boolean IsEqual(const Handle(CDM_Document)& K1,const Handle(CDM_Document)& K2) ;
-
+  Standard_EXPORT static   Standard_Boolean IsEqual (const Handle(CDM_Document)& K1, const Handle(CDM_Document)& K2) ;
 
 
 
@@ -61,7 +49,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _CDM_DocumentHasher_HeaderFile

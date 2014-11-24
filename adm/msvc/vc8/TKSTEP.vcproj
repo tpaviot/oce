@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKSTEP"
-	ProjectGUID="{B13C684F-00F6-09A7-08FE-92A67DF06211}"
+	ProjectGUID="{304E4C06-13AC-0097-0AA0-25D2F33C7716}"
 	>
 	<Platforms>
 		<Platform
@@ -63,6 +63,7 @@
 				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
+				EnableEnhancedInstructionSet="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -163,6 +164,7 @@
 				DebugInformationFormat="3"
 				CompileAs="0"
 				DisableSpecificWarnings="4996"
+				EnableEnhancedInstructionSet="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -187,6 +189,7 @@
 				ProgramDatabaseFile="..\..\..\win32\vc8\bind\TKSTEP.pdb"
 				SubSystem="2"
 				ImportLibrary="..\..\..\win32\vc8\libd\TKSTEP.lib"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -248,7 +251,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\StepAP214;..\..\..\src\StepAP214;..\..\..\drv\RWStepAP214;..\..\..\src\RWStepAP214;..\..\..\drv\StepAP203;..\..\..\src\StepAP203;..\..\..\drv\RWStepAP203;..\..\..\src\RWStepAP203;..\..\..\drv\STEPConstruct;..\..\..\src\STEPConstruct;..\..\..\drv\STEPEdit;..\..\..\src\STEPEdit;..\..\..\drv\GeomToStep;..\..\..\src\GeomToStep;..\..\..\drv\StepToGeom;..\..\..\src\StepToGeom;..\..\..\drv\StepToTopoDS;..\..\..\src\StepToTopoDS;..\..\..\drv\TopoDSToStep;..\..\..\src\TopoDSToStep;..\..\..\drv\STEPControl;..\..\..\src\STEPControl;..\..\..\drv\STEPSelections;..\..\..\src\STEPSelections;..\..\..\drv\StepAP209;..\..\..\src\StepAP209;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +271,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -276,7 +279,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKernel.lib TKSTEPAttr.lib TKSTEP209.lib TKSTEPBase.lib TKBRep.lib TKMath.lib TKG2d.lib TKShHealing.lib TKTopAlgo.lib TKG3d.lib TKGeomBase.lib TKGeomAlgo.lib TKXSBase.lib wsock32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKernel.lib TKSTEPAttr.lib TKSTEP209.lib TKSTEPBase.lib TKBRep.lib TKMath.lib TKG2d.lib TKShHealing.lib TKTopAlgo.lib TKG3d.lib TKGeomBase.lib TKGeomAlgo.lib TKXSBase.lib wsock32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bin\TKSTEP.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -284,7 +287,7 @@
 				ProgramDatabaseFile=".\..\..\..\win64\vc8\bin\TKSTEP.pdb"
 				SubSystem="2"
 				ImportLibrary="..\..\..\win64\vc8\lib\TKSTEP.lib"
-				TargetMachine="X64"
+				TargetMachine="17"
 			/>
 			<Tool
  				Name="VCALinkTool"
@@ -347,7 +350,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\StepAP214;..\..\..\src\StepAP214;..\..\..\drv\RWStepAP214;..\..\..\src\RWStepAP214;..\..\..\drv\StepAP203;..\..\..\src\StepAP203;..\..\..\drv\RWStepAP203;..\..\..\src\RWStepAP203;..\..\..\drv\STEPConstruct;..\..\..\src\STEPConstruct;..\..\..\drv\STEPEdit;..\..\..\src\STEPEdit;..\..\..\drv\GeomToStep;..\..\..\src\GeomToStep;..\..\..\drv\StepToGeom;..\..\..\src\StepToGeom;..\..\..\drv\StepToTopoDS;..\..\..\src\StepToTopoDS;..\..\..\drv\TopoDSToStep;..\..\..\src\TopoDSToStep;..\..\..\drv\STEPControl;..\..\..\src\STEPControl;..\..\..\drv\STEPSelections;..\..\..\src\STEPSelections;..\..\..\drv\StepAP209;..\..\..\src\StepAP209;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -369,7 +372,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -377,7 +380,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKernel.lib TKSTEPAttr.lib TKSTEP209.lib TKSTEPBase.lib TKBRep.lib TKMath.lib TKG2d.lib TKShHealing.lib TKTopAlgo.lib TKG3d.lib TKGeomBase.lib TKGeomAlgo.lib TKXSBase.lib wsock32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKernel.lib TKSTEPAttr.lib TKSTEP209.lib TKSTEPBase.lib TKBRep.lib TKMath.lib TKG2d.lib TKShHealing.lib TKTopAlgo.lib TKG3d.lib TKGeomBase.lib TKGeomAlgo.lib TKXSBase.lib wsock32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bind\TKSTEP.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -386,7 +389,7 @@
 				ProgramDatabaseFile="..\..\..\win64\vc8\bind\TKSTEP.pdb"
 				SubSystem="2"
 				ImportLibrary="..\..\..\win64\vc8\libd\TKSTEP.lib"
-				TargetMachine="X64"
+				TargetMachine="17"
 			/>
 			<Tool
 				Name="VCALinkTool"

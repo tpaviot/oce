@@ -1,33 +1,11 @@
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NotImplemented_HeaderFile
 #include <Standard_NotImplemented.hxx>
-#endif
-#ifndef _Adaptor2d_Curve2d_HeaderFile
 #include <Adaptor2d_Curve2d.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _gp_Vec2d_HeaderFile
 #include <gp_Vec2d.hxx>
-#endif
-#ifndef _Geom2d_BezierCurve_HeaderFile
 #include <Geom2d_BezierCurve.hxx>
-#endif
-#ifndef _Geom2d_BSplineCurve_HeaderFile
 #include <Geom2d_BSplineCurve.hxx>
-#endif
-#ifndef _Adaptor2d_HCurve2d_HeaderFile
 #include <Adaptor2d_HCurve2d.hxx>
-#endif

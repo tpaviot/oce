@@ -6,25 +6,13 @@
 #ifndef _STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR_HeaderFile
 #define _STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_StepShape_ShapeDefinitionRepresentation_HeaderFile
 #include <Handle_StepShape_ShapeDefinitionRepresentation.hxx>
-#endif
-#ifndef _Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR_HeaderFile
 #include <Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR.hxx>
-#endif
 class Standard_NoSuchObject;
 class TopoDS_Shape;
 class StepShape_ShapeDefinitionRepresentation;
@@ -34,22 +22,22 @@ class STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR;
 
 
 
-class STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR  : public TCollection_BasicMapIterator {
+class STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR();
+  Standard_EXPORT STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR();
   
-  Standard_EXPORT   STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR(const STEPCAFControl_DataMapOfShapeSDR& aMap);
+  Standard_EXPORT STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR(const STEPCAFControl_DataMapOfShapeSDR& aMap);
   
-  Standard_EXPORT     void Initialize(const STEPCAFControl_DataMapOfShapeSDR& aMap) ;
+  Standard_EXPORT   void Initialize (const STEPCAFControl_DataMapOfShapeSDR& aMap) ;
   
-  Standard_EXPORT    const TopoDS_Shape& Key() const;
+  Standard_EXPORT  const  TopoDS_Shape& Key()  const;
   
-  Standard_EXPORT    const Handle_StepShape_ShapeDefinitionRepresentation& Value() const;
-
+  Standard_EXPORT  const  Handle(StepShape_ShapeDefinitionRepresentation)& Value()  const;
 
 
 
@@ -72,7 +60,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR_HeaderFile

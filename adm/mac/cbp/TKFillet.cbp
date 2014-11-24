@@ -97,6 +97,8 @@
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 		</Linker>
 		<Unit filename="../../../drv/ChFiDS/ChFiDS_HData_0.cxx" />
 		<Unit filename="../../../drv/ChFiDS/ChFiDS_HElSpine_0.cxx" />

@@ -1,6 +1,2 @@
-#ifndef _Graphic3d_VectorError_HeaderFile
 #include <Graphic3d_VectorError.hxx>
-#endif
-#ifndef _Graphic3d_Vector_HeaderFile
 #include <Graphic3d_Vector.hxx>
-#endif

@@ -6,46 +6,33 @@
 #ifndef _SelectMgr_IndexedMapNodeOfIndexedMapOfOwner_HeaderFile
 #define _SelectMgr_IndexedMapNodeOfIndexedMapOfOwner_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_SelectMgr_IndexedMapNodeOfIndexedMapOfOwner_HeaderFile
 #include <Handle_SelectMgr_IndexedMapNodeOfIndexedMapOfOwner.hxx>
-#endif
 
-#ifndef _Handle_SelectMgr_EntityOwner_HeaderFile
 #include <Handle_SelectMgr_EntityOwner.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
 class SelectMgr_EntityOwner;
 class TColStd_MapTransientHasher;
 class SelectMgr_IndexedMapOfOwner;
 
 
 
-class SelectMgr_IndexedMapNodeOfIndexedMapOfOwner : public TCollection_MapNode {
+class SelectMgr_IndexedMapNodeOfIndexedMapOfOwner : public TCollection_MapNode
+{
 
 public:
 
   
-      SelectMgr_IndexedMapNodeOfIndexedMapOfOwner(const Handle(SelectMgr_EntityOwner)& K1,const Standard_Integer K2,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+    SelectMgr_IndexedMapNodeOfIndexedMapOfOwner(const Handle(SelectMgr_EntityOwner)& K1, const Standard_Integer K2, const TCollection_MapNodePtr& n1, const TCollection_MapNodePtr& n2);
   
-        Handle_SelectMgr_EntityOwner& Key1() const;
+      Handle(SelectMgr_EntityOwner)& Key1()  const;
   
-        Standard_Integer& Key2() const;
+      Standard_Integer& Key2()  const;
   
-        TCollection_MapNodePtr& Next2() const;
+      TCollection_MapNodePtr& Next2()  const;
 
 
 
@@ -60,14 +47,14 @@ protected:
 private: 
 
 
-Handle_SelectMgr_EntityOwner myKey1;
-Standard_Integer myKey2;
-TCollection_MapNodePtr myNext2;
+  Handle(SelectMgr_EntityOwner) myKey1;
+  Standard_Integer myKey2;
+  TCollection_MapNodePtr myNext2;
 
 
 };
 
-#define TheKey Handle_SelectMgr_EntityOwner
+#define TheKey Handle(SelectMgr_EntityOwner)
 #define TheKey_hxx <SelectMgr_EntityOwner.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>
@@ -92,7 +79,6 @@ TCollection_MapNodePtr myNext2;
 #undef TCollection_IndexedMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SelectMgr_IndexedMapNodeOfIndexedMapOfOwner_HeaderFile

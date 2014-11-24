@@ -1,6 +1,2 @@
-#ifndef _Units_QuantitiesSequence_HeaderFile
 #include <Units_QuantitiesSequence.hxx>
-#endif
-#ifndef _Units_UnitSentence_HeaderFile
 #include <Units_UnitSentence.hxx>
-#endif

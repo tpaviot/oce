@@ -6,50 +6,38 @@
 #ifndef _IGESGraph_SpecificModule_HeaderFile
 #define _IGESGraph_SpecificModule_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESGraph_SpecificModule_HeaderFile
 #include <Handle_IGESGraph_SpecificModule.hxx>
-#endif
 
-#ifndef _IGESData_SpecificModule_HeaderFile
 #include <IGESData_SpecificModule.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Handle_Message_Messenger_HeaderFile
 #include <Handle_Message_Messenger.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class IGESData_IGESEntity;
 class IGESData_IGESDumper;
 class Message_Messenger;
 
 
-//! Defines Services attached to IGES Entities : <br>
-//!           Dump & OwnCorrect, for IGESGraph <br>
-class IGESGraph_SpecificModule : public IGESData_SpecificModule {
+//! Defines Services attached to IGES Entities :
+//! Dump & OwnCorrect, for IGESGraph
+class IGESGraph_SpecificModule : public IGESData_SpecificModule
+{
 
 public:
 
-  //! Creates a SpecificModule from IGESGraph & puts it into SpecificLib <br>
-  Standard_EXPORT   IGESGraph_SpecificModule();
-  //! Specific Dump (own parameters) for IGESGraph <br>
-  Standard_EXPORT     void OwnDump(const Standard_Integer CN,const Handle(IGESData_IGESEntity)& ent,const IGESData_IGESDumper& dumper,const Handle(Message_Messenger)& S,const Standard_Integer own) const;
-  //! Performs non-ambiguous Corrections on Entities which support <br>
-//!           them (DrawingSize,DrawingUnits,HighLight,IntercharacterSpacing, <br>
-//!           LineFontPredefined,NominalSize,Pick,UniformRectGrid) <br>
-  Standard_EXPORT   virtual  Standard_Boolean OwnCorrect(const Standard_Integer CN,const Handle(IGESData_IGESEntity)& ent) const;
+  
+  //! Creates a SpecificModule from IGESGraph & puts it into SpecificLib
+  Standard_EXPORT IGESGraph_SpecificModule();
+  
+  //! Specific Dump (own parameters) for IGESGraph
+  Standard_EXPORT   void OwnDump (const Standard_Integer CN, const Handle(IGESData_IGESEntity)& ent, const IGESData_IGESDumper& dumper, const Handle(Message_Messenger)& S, const Standard_Integer own)  const;
+  
+  //! Performs non-ambiguous Corrections on Entities which support
+  //! them (DrawingSize,DrawingUnits,HighLight,IntercharacterSpacing,
+  //! LineFontPredefined,NominalSize,Pick,UniformRectGrid)
+  Standard_EXPORT virtual   Standard_Boolean OwnCorrect (const Standard_Integer CN, const Handle(IGESData_IGESEntity)& ent)  const;
 
 
 
@@ -72,7 +60,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGraph_SpecificModule_HeaderFile

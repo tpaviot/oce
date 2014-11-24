@@ -1,9 +1,3 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
-#ifndef _BRepBndLib_HeaderFile
 #include <BRepBndLib.hxx>
-#endif

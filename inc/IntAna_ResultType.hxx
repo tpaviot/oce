@@ -6,8 +6,11 @@
 #ifndef _IntAna_ResultType_HeaderFile
 #define _IntAna_ResultType_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum IntAna_ResultType {
+
+enum IntAna_ResultType
+{
 IntAna_Point,
 IntAna_Line,
 IntAna_Circle,
@@ -20,8 +23,4 @@ IntAna_Same,
 IntAna_NoGeometricSolution
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _IntAna_ResultType_HeaderFile

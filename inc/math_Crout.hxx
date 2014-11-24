@@ -6,83 +6,74 @@
 #ifndef _math_Crout_HeaderFile
 #define _math_Crout_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
 #include <math_Vector.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class StdFail_NotDone;
 class math_NotSquare;
 class Standard_DimensionError;
 class math_Matrix;
 
 
-//! This class implements the Crout algorithm used to solve a <br>
-//!          system A*X = B where A is a symmetric matrix. It can be used to <br>
-//!          invert a symmetric matrix. <br>
-//!          This algorithm is similar to Gauss but is faster than Gauss. <br>
-//!          Only the inferior triangle of A and the diagonal can be given. <br>
-class math_Crout  {
+//! This class implements the Crout algorithm used to solve a
+//! system A*X = B where A is a symmetric matrix. It can be used to
+//! invert a symmetric matrix.
+//! This algorithm is similar to Gauss but is faster than Gauss.
+//! Only the inferior triangle of A and the diagonal can be given.
+class math_Crout 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Given an input matrix A, this algorithm inverts A by the <br>
-//!          Crout algorithm. The user can give only the inferior <br>
-//!          triangle for the implementation. <br>
-//!          A can be decomposed like this: <br>
-//!          A = L * D * T(L) where L is triangular inferior and D is <br>
-//!          diagonal. <br>
-//!          If one element of A is less than MinPivot, A is <br>
-//!          considered as singular. <br>
-//!          Exception NotSquare is raised if A is not a square matrix. <br>
-  Standard_EXPORT   math_Crout(const math_Matrix& A,const Standard_Real MinPivot = 1.0e-20);
-  //! Returns True if all has been correctly done. <br>
-        Standard_Boolean IsDone() const;
-  //! Given an input vector <B>, this routine returns the <br>
-//!          solution of the set of linear equations A . X = B. <br>
-//!          Exception NotDone is raised if the decomposition was not <br>
-//!          done successfully. <br>
-//!          Exception DimensionError is raised if the range of B is <br>
-//!          not equal to the rowrange of A. <br>
-  Standard_EXPORT     void Solve(const math_Vector& B,math_Vector& X) const;
-  //! returns the inverse matrix of A. Only the inferior <br>
-//!          triangle is returned. <br>
-//!          Exception NotDone is raised if NotDone. <br>
-       const math_Matrix& Inverse() const;
-  //! returns in Inv the inverse matrix of A. Only the inferior <br>
-//!          triangle is returned. <br>
-//!          Exception NotDone is raised if NotDone. <br>
-        void Invert(math_Matrix& Inv) const;
-  //! Returns the value of the determinant of the previously LU <br>
-//! decomposed matrix A. Zero is returned if the matrix A is considered as singular. <br>
-//! Exceptions <br>
-//! StdFail_NotDone if the algorithm fails (and IsDone returns false). <br>
-        Standard_Real Determinant() const;
-  //! Prints on the stream o information on the current state <br>
-//!          of the object. <br>
-  Standard_EXPORT     void Dump(Standard_OStream& o) const;
-
+  
+  //! Given an input matrix A, this algorithm inverts A by the
+  //! Crout algorithm. The user can give only the inferior
+  //! triangle for the implementation.
+  //! A can be decomposed like this:
+  //! A = L * D * T(L) where L is triangular inferior and D is
+  //! diagonal.
+  //! If one element of A is less than MinPivot, A is
+  //! considered as singular.
+  //! Exception NotSquare is raised if A is not a square matrix.
+  Standard_EXPORT math_Crout(const math_Matrix& A, const Standard_Real MinPivot = 1.0e-20);
+  
+  //! Returns True if all has been correctly done.
+      Standard_Boolean IsDone()  const;
+  
+  //! Given an input vector <B>, this routine returns the
+  //! solution of the set of linear equations A . X = B.
+  //! Exception NotDone is raised if the decomposition was not
+  //! done successfully.
+  //! Exception DimensionError is raised if the range of B is
+  //! not equal to the rowrange of A.
+  Standard_EXPORT   void Solve (const math_Vector& B, math_Vector& X)  const;
+  
+  //! returns the inverse matrix of A. Only the inferior
+  //! triangle is returned.
+  //! Exception NotDone is raised if NotDone.
+     const  math_Matrix& Inverse()  const;
+  
+  //! returns in Inv the inverse matrix of A. Only the inferior
+  //! triangle is returned.
+  //! Exception NotDone is raised if NotDone.
+      void Invert (math_Matrix& Inv)  const;
+  
+  //! Returns the value of the determinant of the previously LU
+  //! decomposed matrix A. Zero is returned if the matrix A is considered as singular.
+  //! Exceptions
+  //! StdFail_NotDone if the algorithm fails (and IsDone returns false).
+      Standard_Real Determinant()  const;
+  
+  //! Prints on the stream o information on the current state
+  //! of the object.
+  Standard_EXPORT   void Dump (Standard_OStream& o)  const;
 
 
 
@@ -97,9 +88,9 @@ private:
 
 
 
-math_Matrix InvA;
-Standard_Boolean Done;
-Standard_Real Det;
+  math_Matrix InvA;
+  Standard_Boolean Done;
+  Standard_Real Det;
 
 
 };
@@ -109,7 +100,6 @@ Standard_Real Det;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _math_Crout_HeaderFile

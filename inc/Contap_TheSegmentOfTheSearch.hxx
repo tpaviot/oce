@@ -6,28 +6,14 @@
 #ifndef _Contap_TheSegmentOfTheSearch_HeaderFile
 #define _Contap_TheSegmentOfTheSearch_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Adaptor2d_HCurve2d_HeaderFile
 #include <Handle_Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Contap_ThePathPointOfTheSearch_HeaderFile
 #include <Contap_ThePathPointOfTheSearch.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HVertex_HeaderFile
 #include <Handle_Adaptor3d_HVertex.hxx>
-#endif
 class Adaptor2d_HCurve2d;
 class Standard_DomainError;
 class Adaptor3d_HVertex;
@@ -35,28 +21,28 @@ class Contap_ThePathPointOfTheSearch;
 
 
 
-class Contap_TheSegmentOfTheSearch  {
+class Contap_TheSegmentOfTheSearch 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Contap_TheSegmentOfTheSearch();
+  Standard_EXPORT Contap_TheSegmentOfTheSearch();
   
-        void SetValue(const Handle(Adaptor2d_HCurve2d)& A) ;
+      void SetValue (const Handle(Adaptor2d_HCurve2d)& A) ;
   
-  Standard_EXPORT     void SetLimitPoint(const Contap_ThePathPointOfTheSearch& V,const Standard_Boolean First) ;
+  Standard_EXPORT   void SetLimitPoint (const Contap_ThePathPointOfTheSearch& V, const Standard_Boolean First) ;
   
-       const Handle_Adaptor2d_HCurve2d& Curve() const;
+     const  Handle(Adaptor2d_HCurve2d)& Curve()  const;
   
-        Standard_Boolean HasFirstPoint() const;
+      Standard_Boolean HasFirstPoint()  const;
   
-       const Contap_ThePathPointOfTheSearch& FirstPoint() const;
+     const  Contap_ThePathPointOfTheSearch& FirstPoint()  const;
   
-        Standard_Boolean HasLastPoint() const;
+      Standard_Boolean HasLastPoint()  const;
   
-       const Contap_ThePathPointOfTheSearch& LastPoint() const;
-
+     const  Contap_ThePathPointOfTheSearch& LastPoint()  const;
 
 
 
@@ -71,18 +57,18 @@ private:
 
 
 
-Handle_Adaptor2d_HCurve2d arc;
-Standard_Boolean hasfp;
-Contap_ThePathPointOfTheSearch thefp;
-Standard_Boolean haslp;
-Contap_ThePathPointOfTheSearch thelp;
+  Handle(Adaptor2d_HCurve2d) arc;
+  Standard_Boolean hasfp;
+  Contap_ThePathPointOfTheSearch thefp;
+  Standard_Boolean haslp;
+  Contap_ThePathPointOfTheSearch thelp;
 
 
 };
 
-#define TheVertex Handle_Adaptor3d_HVertex
+#define TheVertex Handle(Adaptor3d_HVertex)
 #define TheVertex_hxx <Adaptor3d_HVertex.hxx>
-#define TheArc Handle_Adaptor2d_HCurve2d
+#define TheArc Handle(Adaptor2d_HCurve2d)
 #define TheArc_hxx <Adaptor2d_HCurve2d.hxx>
 #define ThePathPoint Contap_ThePathPointOfTheSearch
 #define ThePathPoint_hxx <Contap_ThePathPointOfTheSearch.hxx>
@@ -101,7 +87,6 @@ Contap_ThePathPointOfTheSearch thelp;
 #undef IntStart_Segment_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Contap_TheSegmentOfTheSearch_HeaderFile

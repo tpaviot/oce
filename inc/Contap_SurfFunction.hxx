@@ -6,49 +6,21 @@
 #ifndef _Contap_SurfFunction_HeaderFile
 #define _Contap_SurfFunction_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Contap_TFunction_HeaderFile
 #include <Contap_TFunction.hxx>
-#endif
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Dir2d_HeaderFile
 #include <gp_Dir2d.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _math_FunctionSetWithDerivatives_HeaderFile
 #include <math_FunctionSetWithDerivatives.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
 #include <math_Vector.hxx>
-#endif
 class Adaptor3d_HSurface;
 class StdFail_UndefinedDerivative;
 class gp_Pnt;
@@ -58,65 +30,71 @@ class gp_Vec;
 class gp_Dir2d;
 
 
-//! This class describes the function on a parametric surface. <br>
-//!          the form of the function is F(u,v) = 0 where u and v are <br>
-//!          the parameteric coordinates of a point on the surface, <br>
-//!          to compute the contours of the surface. <br>
-class Contap_SurfFunction  : public math_FunctionSetWithDerivatives {
+//! This class describes the function on a parametric surface.
+//! the form of the function is F(u,v) = 0 where u and v are
+//! the parameteric coordinates of a point on the surface,
+//! to compute the contours of the surface.
+class Contap_SurfFunction  : public math_FunctionSetWithDerivatives
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Contap_SurfFunction();
+  Standard_EXPORT Contap_SurfFunction();
   
-  Standard_EXPORT     void Set(const Handle(Adaptor3d_HSurface)& S) ;
+  Standard_EXPORT   void Set (const Handle(Adaptor3d_HSurface)& S) ;
   
-        void Set(const gp_Pnt& Eye) ;
+      void Set (const gp_Pnt& Eye) ;
   
-        void Set(const gp_Dir& Dir) ;
+      void Set (const gp_Dir& Dir) ;
   
-        void Set(const gp_Dir& Dir,const Standard_Real Angle) ;
+      void Set (const gp_Dir& Dir, const Standard_Real Angle) ;
   
-        void Set(const gp_Pnt& Eye,const Standard_Real Angle) ;
+      void Set (const gp_Pnt& Eye, const Standard_Real Angle) ;
   
-        void Set(const Standard_Real Tolerance) ;
-  //! This method has to return 2. <br>
-  Standard_EXPORT     Standard_Integer NbVariables() const;
-  //! This method has to return 1. <br>
-  Standard_EXPORT     Standard_Integer NbEquations() const;
-  //! The dimension of F is 1. <br>
-  Standard_EXPORT     Standard_Boolean Value(const math_Vector& X,math_Vector& F) ;
-  //! The dimension of D is (1,2). <br>
-  Standard_EXPORT     Standard_Boolean Derivatives(const math_Vector& X,math_Matrix& D) ;
+      void Set (const Standard_Real Tolerance) ;
   
-  Standard_EXPORT     Standard_Boolean Values(const math_Vector& X,math_Vector& F,math_Matrix& D) ;
-  //! Root is the value of the function at the solution. <br>
-//!          It is a vector of dimension 1, i-e a real. <br>
-        Standard_Real Root() const;
-  //! Returns the value Tol so that if Abs(Func.Root())<Tol <br>
-//!          the function is considered null. <br>
-//! <br>
-        Standard_Real Tolerance() const;
-  //! Returns the value of the solution point on the surface. <br>
-       const gp_Pnt& Point() const;
+  //! This method has to return 2.
+  Standard_EXPORT   Standard_Integer NbVariables()  const;
   
-  Standard_EXPORT     Standard_Boolean IsTangent() ;
+  //! This method has to return 1.
+  Standard_EXPORT   Standard_Integer NbEquations()  const;
   
-       const gp_Vec& Direction3d() ;
+  //! The dimension of F is 1.
+  Standard_EXPORT   Standard_Boolean Value (const math_Vector& X, math_Vector& F) ;
   
-       const gp_Dir2d& Direction2d() ;
+  //! The dimension of D is (1,2).
+  Standard_EXPORT   Standard_Boolean Derivatives (const math_Vector& X, math_Matrix& D) ;
   
-        Contap_TFunction FunctionType() const;
+  Standard_EXPORT   Standard_Boolean Values (const math_Vector& X, math_Vector& F, math_Matrix& D) ;
   
-       const gp_Pnt& Eye() const;
+  //! Root is the value of the function at the solution.
+  //! It is a vector of dimension 1, i-e a real.
+      Standard_Real Root()  const;
   
-       const gp_Dir& Direction() const;
+  //! Returns the value Tol so that if Abs(Func.Root())<Tol
+  //! the function is considered null.
+      Standard_Real Tolerance()  const;
   
-        Standard_Real Angle() const;
+  //! Returns the value of the solution point on the surface.
+     const  gp_Pnt& Point()  const;
   
-       const Handle_Adaptor3d_HSurface& Surface() const;
-
+  Standard_EXPORT   Standard_Boolean IsTangent() ;
+  
+     const  gp_Vec& Direction3d() ;
+  
+     const  gp_Dir2d& Direction2d() ;
+  
+      Contap_TFunction FunctionType()  const;
+  
+     const  gp_Pnt& Eye()  const;
+  
+     const  gp_Dir& Direction()  const;
+  
+      Standard_Real Angle()  const;
+  
+     const  Handle(Adaptor3d_HSurface)& Surface()  const;
 
 
 
@@ -131,25 +109,25 @@ private:
 
 
 
-Handle_Adaptor3d_HSurface mySurf;
-Standard_Real myMean;
-Contap_TFunction myType;
-gp_Dir myDir;
-gp_Pnt myEye;
-Standard_Real myAng;
-Standard_Real myCosAng;
-Standard_Real tol;
-gp_Pnt solpt;
-Standard_Real valf;
-Standard_Real Usol;
-Standard_Real Vsol;
-Standard_Real Fpu;
-Standard_Real Fpv;
-gp_Dir2d d2d;
-gp_Vec d3d;
-Standard_Boolean tangent;
-Standard_Boolean computed;
-Standard_Boolean derived;
+  Handle(Adaptor3d_HSurface) mySurf;
+  Standard_Real myMean;
+  Contap_TFunction myType;
+  gp_Dir myDir;
+  gp_Pnt myEye;
+  Standard_Real myAng;
+  Standard_Real myCosAng;
+  Standard_Real tol;
+  gp_Pnt solpt;
+  Standard_Real valf;
+  Standard_Real Usol;
+  Standard_Real Vsol;
+  Standard_Real Fpu;
+  Standard_Real Fpv;
+  gp_Dir2d d2d;
+  gp_Vec d3d;
+  Standard_Boolean tangent;
+  Standard_Boolean computed;
+  Standard_Boolean derived;
 
 
 };
@@ -159,7 +137,6 @@ Standard_Boolean derived;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Contap_SurfFunction_HeaderFile

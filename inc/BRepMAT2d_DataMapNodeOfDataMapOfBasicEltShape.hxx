@@ -6,28 +6,14 @@
 #ifndef _BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape_HeaderFile
 #define _BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape_HeaderFile
 #include <Handle_BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape.hxx>
-#endif
 
-#ifndef _Handle_MAT_BasicElt_HeaderFile
 #include <Handle_MAT_BasicElt.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class MAT_BasicElt;
 class TopoDS_Shape;
 class TColStd_MapTransientHasher;
@@ -36,16 +22,17 @@ class BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape;
 
 
 
-class BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape : public TCollection_MapNode {
+class BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape : public TCollection_MapNode
+{
 
 public:
 
   
-      BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape(const Handle(MAT_BasicElt)& K,const TopoDS_Shape& I,const TCollection_MapNodePtr& n);
+    BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape(const Handle(MAT_BasicElt)& K, const TopoDS_Shape& I, const TCollection_MapNodePtr& n);
   
-        Handle_MAT_BasicElt& Key() const;
+      Handle(MAT_BasicElt)& Key()  const;
   
-        TopoDS_Shape& Value() const;
+      TopoDS_Shape& Value()  const;
 
 
 
@@ -60,13 +47,13 @@ protected:
 private: 
 
 
-Handle_MAT_BasicElt myKey;
-TopoDS_Shape myValue;
+  Handle(MAT_BasicElt) myKey;
+  TopoDS_Shape myValue;
 
 
 };
 
-#define TheKey Handle_MAT_BasicElt
+#define TheKey Handle(MAT_BasicElt)
 #define TheKey_hxx <MAT_BasicElt.hxx>
 #define TheItem TopoDS_Shape
 #define TheItem_hxx <TopoDS_Shape.hxx>
@@ -99,7 +86,6 @@ TopoDS_Shape myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepMAT2d_DataMapNodeOfDataMapOfBasicEltShape_HeaderFile

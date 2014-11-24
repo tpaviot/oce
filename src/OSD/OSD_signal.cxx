@@ -187,7 +187,9 @@ static void Handler (const int theSignal)
       if (aCurInfoHandle) {
         // cout << "OSD::Handler: calling previous signal handler with info " << aCurInfoHandle <<  endl ;
         (*aCurInfoHandle) (theSignal, aSigInfo, theContext);
+#ifdef OCCT_DEBUG
         cerr << " previous signal handler return" <<  endl ;
+#endif
         return;
       }
       else {
@@ -200,7 +202,9 @@ static void Handler (const int theSignal)
       if(aCurHandler) {
         // cout << "OSD::Handler: calling previous signal handler" <<  endl ;
         (*aCurHandler) (theSignal);
+#ifdef OCCT_DEBUG
         cerr << " previous signal handler return" <<  endl ;
+#endif
         return;
       }
     }
@@ -264,10 +268,7 @@ static void Handler (const int theSignal)
     sigprocmask(SIG_UNBLOCK, &set, NULL) ;
 #ifdef DECOSF1
     // Pour DEC/OSF1 SIGFPE = Division par zero.
-    // should be clarified why in debug mode only?
-#ifdef DEBUG
     Standard_DivideByZero::NewInstance('')->Jump;
-#endif
     break;
 #endif
 #if (!defined (__sun)) && (!defined(SOLARIS))
@@ -314,7 +315,9 @@ static void Handler (const int theSignal)
     Standard_DivideByZero::NewInstance("SIGTRAP IntegerDivideByZero")->Jump(); break;
 #endif
   default:
+#ifdef OCCT_DEBUG
     cout << "Unexpected signal " << theSignal << endl ;
+#endif
     break;
   }
 }
@@ -353,9 +356,11 @@ static void SegvHandler(const int theSignal,
        OSD_SIGSEGV::NewInstance(Msg)->Jump();
      }
   }
+#ifdef OCCT_DEBUG
   else {
     cout << "Wrong undefined address." << endl ;
   }
+#endif
   exit(SIGSEGV);
 }
 
@@ -382,9 +387,11 @@ static void SegvHandler(const int theSignal,
 //    scp->sc_pcoq_tail = scp->sc_pcoq_tail + 0x4 ; l'intruction suivant le segv.
     }
   }
+#ifdef OCCT_DEBUG
   else {
     cout << "Wrong undefined address." << endl ;
   }
+#endif
   exit(SIGSEGV);
 }
 
@@ -413,7 +420,9 @@ void OSD::SetSignal(const Standard_Boolean aFloatingSignal)
     //stat = ieee_handler("set", "inexact", PHandler) || stat;
 
     if (stat) {
+#ifdef OCCT_DEBUG
       cerr << "ieee_handler does not work !!! KO " << endl;
+#endif
     }
 #elif defined (linux)
     feenableexcept (FE_INVALID | FE_DIVBYZERO | FE_OVERFLOW);
@@ -430,9 +439,11 @@ void OSD::SetSignal(const Standard_Boolean aFloatingSignal)
  if ( first_time & 2 ) {
    char *TRAP_FPE = getenv("TRAP_FPE") ;
    if ( TRAP_FPE == NULL ) {
+#ifdef OCCT_DEBUG
      cout << "On SGI you must set TRAP_FPE environment variable : " << endl ;
      cout << "set env(TRAP_FPE) \"UNDERFL=FLUSH_ZERO;OVERFL=DEFAULT;DIVZERO=DEFAULT;INT_OVERFL=DEFAULT\" or" << endl ;
      cout << "setenv TRAP_FPE \"UNDERFL=FLUSH_ZERO;OVERFL=DEFAULT;DIVZERO=DEFAULT;INT_OVERFL=DEFAULT\"" << endl ;
+#endif
 //     exit(1) ;
      first_time = first_time & (~ 2) ;
    }
@@ -458,7 +469,9 @@ void OSD::SetSignal(const Standard_Boolean aFloatingSignal)
   //==== Always detected the signal "SIGFPE" =================================
   stat = sigaction(SIGFPE,&act,&oact);   // ...... floating point exception 
   if (stat) {
+#ifdef OCCT_DEBUG
      cerr << "sigaction does not work !!! KO " << endl;
+#endif
      perror("sigaction ");
   }
 

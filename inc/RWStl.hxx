@@ -6,74 +6,67 @@
 #ifndef _RWStl_HeaderFile
 #define _RWStl_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StlMesh_Mesh_HeaderFile
 #include <Handle_StlMesh_Mesh.hxx>
-#endif
-#ifndef _Handle_Message_ProgressIndicator_HeaderFile
 #include <Handle_Message_ProgressIndicator.hxx>
-#endif
 class StlMesh_Mesh;
 class OSD_Path;
 class Message_ProgressIndicator;
 
 
-//! This package contains the methods to be used in <br>
-//!          the Stereo Lithograpy Application. The main <br>
-//!          features of this application are ,starting from a <br>
-//!          Shape : <br>
-//!          - mesh this shape with a maximun tolerance, <br>
-//!          - display the meshing, <br>
-//!          - write the meshing in a file (binary or ascii), <br>
-//!          - read of file (binary or ascii) and display it, <br>
-//!          - translate a binary file to an ascii file, <br>
-//!          - translate an ascii file to an binary file. <br>
-class RWStl  {
+//! This package contains the methods to be used in
+//! the Stereo Lithograpy Application. The main
+//! features of this application are ,starting from a
+//! Shape :
+//! - mesh this shape with a maximun tolerance,
+//! - display the meshing,
+//! - write the meshing in a file (binary or ascii),
+//! - read of file (binary or ascii) and display it,
+//! - translate a binary file to an ascii file,
+//! - translate an ascii file to an binary file.
+class RWStl 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! write the meshing in a file following the <br>
-//!         binary format of an STL file. <br>
-//!         Returns false if the cannot be opened; <br>
-  Standard_EXPORT   static  Standard_Boolean WriteBinary(const Handle(StlMesh_Mesh)& aMesh,const OSD_Path& aPath,const Handle(Message_ProgressIndicator)& aProgInd = NULL) ;
-  //! write the meshing in a file following the <br>
-//!         Ascii  format of an STL file. <br>
-//!         Returns false if the cannot be opened; <br>
-  Standard_EXPORT   static  Standard_Boolean WriteAscii(const Handle(StlMesh_Mesh)& aMesh,const OSD_Path& aPath,const Handle(Message_ProgressIndicator)& aProgInd = NULL) ;
-  //! This method will chwck if the file is a binary <br>
-//!         file or an AsciiFile testing  the 5 first <br>
-//!         characters of the file wich are :"solid" in an <br>
-//!         ascii file. If we do not find that word we assume <br>
-//!         that it is a binary file. <br>
-  Standard_EXPORT   static  Handle_StlMesh_Mesh ReadFile(const OSD_Path& aPath,const Handle(Message_ProgressIndicator)& aProgInd = NULL) ;
-  //! Read a meshing from a binary file <br>
-//!        Raises NoMoreObject from Standard if a statement <br>
-//!        does not contain the right number of tokens <br>
-//!        Raises TypeMisMatch if a token has not the good <br>
-//!        type (often real) <br>
-  Standard_EXPORT   static  Handle_StlMesh_Mesh ReadBinary(const OSD_Path& aPath,const Handle(Message_ProgressIndicator)& aProgInd = NULL) ;
-  //! Read a meshing from a binary file <br>
-//!        Raises NoMoreObject from Standard if a statement <br>
-//!        does not contain the right number of tokens <br>
-//!        Raises TypeMisMatch if a token has not the good <br>
-//!        type (often real) <br>
-//!        Raises MoMoreObject if a file is finished before <br>
-//!        having found the word endsolid; <br>
-  Standard_EXPORT   static  Handle_StlMesh_Mesh ReadAscii(const OSD_Path& aPath,const Handle(Message_ProgressIndicator)& aProgInd = NULL) ;
-
+  
+  //! write the meshing in a file following the
+  //! binary format of an STL file.
+  //! Returns false if the cannot be opened;
+  Standard_EXPORT static   Standard_Boolean WriteBinary (const Handle(StlMesh_Mesh)& aMesh, const OSD_Path& aPath, const Handle(Message_ProgressIndicator)& aProgInd = NULL) ;
+  
+  //! write the meshing in a file following the
+  //! Ascii  format of an STL file.
+  //! Returns false if the cannot be opened;
+  Standard_EXPORT static   Standard_Boolean WriteAscii (const Handle(StlMesh_Mesh)& aMesh, const OSD_Path& aPath, const Handle(Message_ProgressIndicator)& aProgInd = NULL) ;
+  
+  //! This method will chwck if the file is a binary
+  //! file or an AsciiFile testing  the 5 first
+  //! characters of the file wich are :"solid" in an
+  //! ascii file. If we do not find that word we assume
+  //! that it is a binary file.
+  Standard_EXPORT static   Handle(StlMesh_Mesh) ReadFile (const OSD_Path& aPath, const Handle(Message_ProgressIndicator)& aProgInd = NULL) ;
+  
+  //! Read a meshing from a binary file
+  //! Raises NoMoreObject from Standard if a statement
+  //! does not contain the right number of tokens
+  //! Raises TypeMisMatch if a token has not the good
+  //! type (often real)
+  Standard_EXPORT static   Handle(StlMesh_Mesh) ReadBinary (const OSD_Path& aPath, const Handle(Message_ProgressIndicator)& aProgInd = NULL) ;
+  
+  //! Read a meshing from a binary file
+  //! Raises NoMoreObject from Standard if a statement
+  //! does not contain the right number of tokens
+  //! Raises TypeMisMatch if a token has not the good
+  //! type (often real)
+  //! Raises MoMoreObject if a file is finished before
+  //! having found the word endsolid;
+  Standard_EXPORT static   Handle(StlMesh_Mesh) ReadAscii (const OSD_Path& aPath, const Handle(Message_ProgressIndicator)& aProgInd = NULL) ;
 
 
 
@@ -96,7 +89,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _RWStl_HeaderFile

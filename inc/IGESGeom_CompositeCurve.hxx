@@ -6,53 +6,43 @@
 #ifndef _IGESGeom_CompositeCurve_HeaderFile
 #define _IGESGeom_CompositeCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESGeom_CompositeCurve_HeaderFile
 #include <Handle_IGESGeom_CompositeCurve.hxx>
-#endif
 
-#ifndef _Handle_IGESData_HArray1OfIGESEntity_HeaderFile
 #include <Handle_IGESData_HArray1OfIGESEntity.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
 class IGESData_HArray1OfIGESEntity;
 class Standard_OutOfRange;
 class IGESData_IGESEntity;
 
 
-//! defines IGESCompositeCurve, Type <102> Form <0> <br>
-//!          in package IGESGeom <br>
-//!          A composite curve is defined as an ordered list of entities <br>
-//!          consisting of a point, connect point and parametrised curve <br>
-//!          entities (excluding the CompositeCurve entity). <br>
-class IGESGeom_CompositeCurve : public IGESData_IGESEntity {
+//! defines IGESCompositeCurve, Type <102> Form <0>
+//! in package IGESGeom
+//! A composite curve is defined as an ordered list of entities
+//! consisting of a point, connect point and parametrised curve
+//! entities (excluding the CompositeCurve entity).
+class IGESGeom_CompositeCurve : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESGeom_CompositeCurve();
-  //! This method is used to set the fields of the class <br>
-//!           CompositeCurve <br>
-//!       - allEntities : Constituent Entities of the composite curve <br>
-  Standard_EXPORT     void Init(const Handle(IGESData_HArray1OfIGESEntity)& allEntities) ;
-  //! returns the number of curves contained in the CompositeCurve <br>
-  Standard_EXPORT     Standard_Integer NbCurves() const;
-  //! returns Component of the CompositeCurve (a curve or a point) <br>
-//! raises exception if Index <= 0 or Index > NbCurves() <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity Curve(const Standard_Integer Index) const;
+  Standard_EXPORT IGESGeom_CompositeCurve();
+  
+  //! This method is used to set the fields of the class
+  //! CompositeCurve
+  //! - allEntities : Constituent Entities of the composite curve
+  Standard_EXPORT   void Init (const Handle(IGESData_HArray1OfIGESEntity)& allEntities) ;
+  
+  //! returns the number of curves contained in the CompositeCurve
+  Standard_EXPORT   Standard_Integer NbCurves()  const;
+  
+  //! returns Component of the CompositeCurve (a curve or a point)
+  //! raises exception if Index <= 0 or Index > NbCurves()
+  Standard_EXPORT   Handle(IGESData_IGESEntity) Curve (const Standard_Integer Index)  const;
 
 
 
@@ -67,7 +57,7 @@ protected:
 private: 
 
 
-Handle_IGESData_HArray1OfIGESEntity theEntities;
+  Handle(IGESData_HArray1OfIGESEntity) theEntities;
 
 
 };
@@ -76,7 +66,6 @@ Handle_IGESData_HArray1OfIGESEntity theEntities;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGeom_CompositeCurve_HeaderFile

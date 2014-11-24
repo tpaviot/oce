@@ -6,49 +6,36 @@
 #ifndef _PDataStd_TreeNode_HeaderFile
 #define _PDataStd_TreeNode_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PDataStd_TreeNode_HeaderFile
 #include <Handle_PDataStd_TreeNode.hxx>
-#endif
 
-#ifndef _Handle_PDataStd_TreeNode_HeaderFile
 #include <Handle_PDataStd_TreeNode.hxx>
-#endif
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
 class Standard_GUID;
 
 
-class PDataStd_TreeNode : public PDF_Attribute {
+class PDataStd_TreeNode : public PDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   PDataStd_TreeNode();
+  Standard_EXPORT PDataStd_TreeNode();
   
-  Standard_EXPORT     Handle_PDataStd_TreeNode First() const;
+  Standard_EXPORT   Handle(PDataStd_TreeNode) First()  const;
   
-  Standard_EXPORT     void SetFirst(const Handle(PDataStd_TreeNode)& F) ;
+  Standard_EXPORT   void SetFirst (const Handle(PDataStd_TreeNode)& F) ;
   
-  Standard_EXPORT     Handle_PDataStd_TreeNode Next() const;
+  Standard_EXPORT   Handle(PDataStd_TreeNode) Next()  const;
   
-  Standard_EXPORT     void SetNext(const Handle(PDataStd_TreeNode)& F) ;
+  Standard_EXPORT   void SetNext (const Handle(PDataStd_TreeNode)& F) ;
   
-  Standard_EXPORT     void SetTreeID(const Standard_GUID& GUID) ;
+  Standard_EXPORT   void SetTreeID (const Standard_GUID& GUID) ;
   
-  Standard_EXPORT     Standard_GUID GetTreeID() const;
+  Standard_EXPORT   Standard_GUID GetTreeID()  const;
 
 PDataStd_TreeNode(const Storage_stCONSTclCOM& a) : PDF_Attribute(a)
 {
@@ -72,9 +59,9 @@ protected:
 private: 
 
 
-Handle_PDataStd_TreeNode myFirst;
-Handle_PDataStd_TreeNode myNext;
-Standard_GUID myTreeID;
+  Handle(PDataStd_TreeNode) myFirst;
+  Handle(PDataStd_TreeNode) myNext;
+  Standard_GUID myTreeID;
 
 
 };
@@ -83,7 +70,6 @@ Standard_GUID myTreeID;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDataStd_TreeNode_HeaderFile

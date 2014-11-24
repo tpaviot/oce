@@ -6,28 +6,14 @@
 #ifndef _Interface_DataMapNodeOfDataMapOfTransientInteger_HeaderFile
 #define _Interface_DataMapNodeOfDataMapOfTransientInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Interface_DataMapNodeOfDataMapOfTransientInteger_HeaderFile
 #include <Handle_Interface_DataMapNodeOfDataMapOfTransientInteger.hxx>
-#endif
 
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Standard_Transient;
 class TColStd_MapTransientHasher;
 class Interface_DataMapOfTransientInteger;
@@ -35,16 +21,17 @@ class Interface_DataMapIteratorOfDataMapOfTransientInteger;
 
 
 
-class Interface_DataMapNodeOfDataMapOfTransientInteger : public TCollection_MapNode {
+class Interface_DataMapNodeOfDataMapOfTransientInteger : public TCollection_MapNode
+{
 
 public:
 
   
-      Interface_DataMapNodeOfDataMapOfTransientInteger(const Handle(Standard_Transient)& K,const Standard_Integer& I,const TCollection_MapNodePtr& n);
+    Interface_DataMapNodeOfDataMapOfTransientInteger(const Handle(Standard_Transient)& K, const Standard_Integer& I, const TCollection_MapNodePtr& n);
   
-        Handle_Standard_Transient& Key() const;
+      Handle(Standard_Transient)& Key()  const;
   
-        Standard_Integer& Value() const;
+      Standard_Integer& Value()  const;
 
 
 
@@ -59,13 +46,13 @@ protected:
 private: 
 
 
-Handle_Standard_Transient myKey;
-Standard_Integer myValue;
+  Handle(Standard_Transient) myKey;
+  Standard_Integer myValue;
 
 
 };
 
-#define TheKey Handle_Standard_Transient
+#define TheKey Handle(Standard_Transient)
 #define TheKey_hxx <Standard_Transient.hxx>
 #define TheItem Standard_Integer
 #define TheItem_hxx <Standard_Integer.hxx>
@@ -98,7 +85,6 @@ Standard_Integer myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Interface_DataMapNodeOfDataMapOfTransientInteger_HeaderFile

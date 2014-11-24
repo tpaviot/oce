@@ -6,19 +6,18 @@
 #ifndef _GeomAbs_BSplKnotDistribution_HeaderFile
 #define _GeomAbs_BSplKnotDistribution_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-//!  This enumeration is used in the classes BSplineCurve and <br>
-//!  BSplineSurface to describe the repartition of set of knots. <br>
-//!  (comments in classes BSplineCurve and BSplineSurface) <br>
-enum GeomAbs_BSplKnotDistribution {
+
+//! This enumeration is used in the classes BSplineCurve and
+//! BSplineSurface to describe the repartition of set of knots.
+//! (comments in classes BSplineCurve and BSplineSurface)
+enum GeomAbs_BSplKnotDistribution
+{
 GeomAbs_NonUniform,
 GeomAbs_Uniform,
 GeomAbs_QuasiUniform,
 GeomAbs_PiecewiseBezier
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _GeomAbs_BSplKnotDistribution_HeaderFile

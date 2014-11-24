@@ -6,57 +6,47 @@
 #ifndef _Units_UnitsLexicon_HeaderFile
 #define _Units_UnitsLexicon_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Units_UnitsLexicon_HeaderFile
 #include <Handle_Units_UnitsLexicon.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_Time_HeaderFile
 #include <Standard_Time.hxx>
-#endif
-#ifndef _Units_Lexicon_HeaderFile
 #include <Units_Lexicon.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TCollection_HAsciiString;
 class TCollection_AsciiString;
 
 
-//! This class defines a lexicon useful to analyse and <br>
-//!          recognize the different key  words  included  in a <br>
-//!          sentence. The  lexicon is stored  in a sequence of <br>
-//!          tokens. <br>
-class Units_UnitsLexicon : public Units_Lexicon {
+//! This class defines a lexicon useful to analyse and
+//! recognize the different key  words  included  in a
+//! sentence. The  lexicon is stored  in a sequence of
+//! tokens.
+class Units_UnitsLexicon : public Units_Lexicon
+{
 
 public:
 
-  //! Returns an empty instance of UnitsLexicon <br>
-  Standard_EXPORT   Units_UnitsLexicon();
-  //! Reads  the files  <afilename1>  and  <afilename2>   to <br>
-//!          create     a   sequence     of    tokens   stored   in <br>
-//!          <thesequenceoftokens>. <br>
-  Standard_EXPORT     void Creates(const Standard_CString afilename1,const Standard_CString afilename2,const Standard_Boolean amode = Standard_True) ;
-  //! Returns in a AsciiString from TCollection the name of the file. <br>
-  Standard_EXPORT     TCollection_AsciiString FileName2() const;
-  //! Returns true if  the  file has not  changed  since the <br>
-//!          creation   of   the  Lexicon   object.   Returns false <br>
-//!          otherwise. <br>
-  Standard_EXPORT   virtual  Standard_Boolean UpToDate() const;
-  //! Useful for debugging. <br>
-      virtual  void Dump() const;
+  
+  //! Returns an empty instance of UnitsLexicon
+  Standard_EXPORT Units_UnitsLexicon();
+  
+  //! Reads  the files  <afilename1>  and  <afilename2>   to
+  //! create     a   sequence     of    tokens   stored   in
+  //! <thesequenceoftokens>.
+  Standard_EXPORT   void Creates (const Standard_CString afilename1, const Standard_CString afilename2, const Standard_Boolean amode = Standard_True) ;
+  
+  //! Returns in a AsciiString from TCollection the name of the file.
+  Standard_EXPORT   TCollection_AsciiString FileName2()  const;
+  
+  //! Returns true if  the  file has not  changed  since the
+  //! creation   of   the  Lexicon   object.   Returns false
+  //! otherwise.
+  Standard_EXPORT virtual   Standard_Boolean UpToDate()  const;
+  
+  //! Useful for debugging.
+    virtual   void Dump()  const;
 
 
 
@@ -71,8 +61,8 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString thefilename;
-Standard_Time thetime;
+  Handle(TCollection_HAsciiString) thefilename;
+  Standard_Time thetime;
 
 
 };
@@ -82,7 +72,6 @@ Standard_Time thetime;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Units_UnitsLexicon_HeaderFile

@@ -6,58 +6,24 @@
 #ifndef _StepAP203_ApprovedItem_HeaderFile
 #define _StepAP203_ApprovedItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinitionFormation_HeaderFile
 #include <Handle_StepBasic_ProductDefinitionFormation.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinition_HeaderFile
 #include <Handle_StepBasic_ProductDefinition.hxx>
-#endif
-#ifndef _Handle_StepRepr_ConfigurationEffectivity_HeaderFile
 #include <Handle_StepRepr_ConfigurationEffectivity.hxx>
-#endif
-#ifndef _Handle_StepRepr_ConfigurationItem_HeaderFile
 #include <Handle_StepRepr_ConfigurationItem.hxx>
-#endif
-#ifndef _Handle_StepBasic_SecurityClassification_HeaderFile
 #include <Handle_StepBasic_SecurityClassification.hxx>
-#endif
-#ifndef _Handle_StepAP203_ChangeRequest_HeaderFile
 #include <Handle_StepAP203_ChangeRequest.hxx>
-#endif
-#ifndef _Handle_StepAP203_Change_HeaderFile
 #include <Handle_StepAP203_Change.hxx>
-#endif
-#ifndef _Handle_StepAP203_StartRequest_HeaderFile
 #include <Handle_StepAP203_StartRequest.hxx>
-#endif
-#ifndef _Handle_StepAP203_StartWork_HeaderFile
 #include <Handle_StepAP203_StartWork.hxx>
-#endif
-#ifndef _Handle_StepBasic_Certification_HeaderFile
 #include <Handle_StepBasic_Certification.hxx>
-#endif
-#ifndef _Handle_StepBasic_Contract_HeaderFile
 #include <Handle_StepBasic_Contract.hxx>
-#endif
 class Standard_Transient;
 class StepBasic_ProductDefinitionFormation;
 class StepBasic_ProductDefinition;
@@ -72,51 +38,64 @@ class StepBasic_Certification;
 class StepBasic_Contract;
 
 
-//! Representation of STEP SELECT type ApprovedItem <br>
-class StepAP203_ApprovedItem  : public StepData_SelectType {
+//! Representation of STEP SELECT type ApprovedItem
+class StepAP203_ApprovedItem  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepAP203_ApprovedItem();
-  //! Recognizes a kind of ApprovedItem select type <br>
-//!          1 -> ProductDefinitionFormation from StepBasic <br>
-//!          2 -> ProductDefinition from StepBasic <br>
-//!          3 -> ConfigurationEffectivity from StepRepr <br>
-//!          4 -> ConfigurationItem from StepRepr <br>
-//!          5 -> SecurityClassification from StepBasic <br>
-//!          6 -> ChangeRequest from StepAP203 <br>
-//!          7 -> Change from StepAP203 <br>
-//!          8 -> StartRequest from StepAP203 <br>
-//!          9 -> StartWork from StepAP203 <br>
-//!          10 -> Certification from StepBasic <br>
-//!          11 -> Contract from StepBasic <br>
-//!          0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! Returns Value as ProductDefinitionFormation (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_ProductDefinitionFormation ProductDefinitionFormation() const;
-  //! Returns Value as ProductDefinition (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_ProductDefinition ProductDefinition() const;
-  //! Returns Value as ConfigurationEffectivity (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepRepr_ConfigurationEffectivity ConfigurationEffectivity() const;
-  //! Returns Value as ConfigurationItem (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepRepr_ConfigurationItem ConfigurationItem() const;
-  //! Returns Value as SecurityClassification (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_SecurityClassification SecurityClassification() const;
-  //! Returns Value as ChangeRequest (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepAP203_ChangeRequest ChangeRequest() const;
-  //! Returns Value as Change (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepAP203_Change Change() const;
-  //! Returns Value as StartRequest (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepAP203_StartRequest StartRequest() const;
-  //! Returns Value as StartWork (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepAP203_StartWork StartWork() const;
-  //! Returns Value as Certification (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_Certification Certification() const;
-  //! Returns Value as Contract (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_Contract Contract() const;
-
+  
+  //! Empty constructor
+  Standard_EXPORT StepAP203_ApprovedItem();
+  
+  //! Recognizes a kind of ApprovedItem select type
+  //! 1 -> ProductDefinitionFormation from StepBasic
+  //! 2 -> ProductDefinition from StepBasic
+  //! 3 -> ConfigurationEffectivity from StepRepr
+  //! 4 -> ConfigurationItem from StepRepr
+  //! 5 -> SecurityClassification from StepBasic
+  //! 6 -> ChangeRequest from StepAP203
+  //! 7 -> Change from StepAP203
+  //! 8 -> StartRequest from StepAP203
+  //! 9 -> StartWork from StepAP203
+  //! 10 -> Certification from StepBasic
+  //! 11 -> Contract from StepBasic
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! Returns Value as ProductDefinitionFormation (or Null if another type)
+  Standard_EXPORT   Handle(StepBasic_ProductDefinitionFormation) ProductDefinitionFormation()  const;
+  
+  //! Returns Value as ProductDefinition (or Null if another type)
+  Standard_EXPORT   Handle(StepBasic_ProductDefinition) ProductDefinition()  const;
+  
+  //! Returns Value as ConfigurationEffectivity (or Null if another type)
+  Standard_EXPORT   Handle(StepRepr_ConfigurationEffectivity) ConfigurationEffectivity()  const;
+  
+  //! Returns Value as ConfigurationItem (or Null if another type)
+  Standard_EXPORT   Handle(StepRepr_ConfigurationItem) ConfigurationItem()  const;
+  
+  //! Returns Value as SecurityClassification (or Null if another type)
+  Standard_EXPORT   Handle(StepBasic_SecurityClassification) SecurityClassification()  const;
+  
+  //! Returns Value as ChangeRequest (or Null if another type)
+  Standard_EXPORT   Handle(StepAP203_ChangeRequest) ChangeRequest()  const;
+  
+  //! Returns Value as Change (or Null if another type)
+  Standard_EXPORT   Handle(StepAP203_Change) Change()  const;
+  
+  //! Returns Value as StartRequest (or Null if another type)
+  Standard_EXPORT   Handle(StepAP203_StartRequest) StartRequest()  const;
+  
+  //! Returns Value as StartWork (or Null if another type)
+  Standard_EXPORT   Handle(StepAP203_StartWork) StartWork()  const;
+  
+  //! Returns Value as Certification (or Null if another type)
+  Standard_EXPORT   Handle(StepBasic_Certification) Certification()  const;
+  
+  //! Returns Value as Contract (or Null if another type)
+  Standard_EXPORT   Handle(StepBasic_Contract) Contract()  const;
 
 
 
@@ -139,7 +118,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP203_ApprovedItem_HeaderFile

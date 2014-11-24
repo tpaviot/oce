@@ -6,28 +6,14 @@
 #ifndef _StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_HeaderFile
 #define _StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_HeaderFile
 #include <Handle_StepElement_HArray1OfHSequenceOfCurveElementPurposeMember.hxx>
-#endif
 
-#ifndef _StepElement_Array1OfHSequenceOfCurveElementPurposeMember_HeaderFile
 #include <StepElement_Array1OfHSequenceOfCurveElementPurposeMember.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_StepElement_HSequenceOfCurveElementPurposeMember_HeaderFile
 #include <Handle_StepElement_HSequenceOfCurveElementPurposeMember.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class StepElement_Array1OfHSequenceOfCurveElementPurposeMember;
 
 
 
-class StepElement_HArray1OfHSequenceOfCurveElementPurposeMember : public MMgt_TShared {
+class StepElement_HArray1OfHSequenceOfCurveElementPurposeMember : public MMgt_TShared
+{
 
 public:
 
   
-      StepElement_HArray1OfHSequenceOfCurveElementPurposeMember(const Standard_Integer Low,const Standard_Integer Up);
+    StepElement_HArray1OfHSequenceOfCurveElementPurposeMember(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepElement_HArray1OfHSequenceOfCurveElementPurposeMember(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepElement_HSequenceOfCurveElementPurposeMember)& V);
+    StepElement_HArray1OfHSequenceOfCurveElementPurposeMember(const Standard_Integer Low, const Standard_Integer Up, const Handle(StepElement_HSequenceOfCurveElementPurposeMember)& V);
   
-        void Init(const Handle(StepElement_HSequenceOfCurveElementPurposeMember)& V) ;
+      void Init (const Handle(StepElement_HSequenceOfCurveElementPurposeMember)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(StepElement_HSequenceOfCurveElementPurposeMember)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(StepElement_HSequenceOfCurveElementPurposeMember)& Value) ;
   
-       const Handle_StepElement_HSequenceOfCurveElementPurposeMember& Value(const Standard_Integer Index) const;
+     const  Handle(StepElement_HSequenceOfCurveElementPurposeMember)& Value (const Standard_Integer Index)  const;
   
-        Handle_StepElement_HSequenceOfCurveElementPurposeMember& ChangeValue(const Standard_Integer Index) ;
+      Handle(StepElement_HSequenceOfCurveElementPurposeMember)& ChangeValue (const Standard_Integer Index) ;
   
-       const StepElement_Array1OfHSequenceOfCurveElementPurposeMember& Array1() const;
+     const  StepElement_Array1OfHSequenceOfCurveElementPurposeMember& Array1()  const;
   
-        StepElement_Array1OfHSequenceOfCurveElementPurposeMember& ChangeArray1() ;
+      StepElement_Array1OfHSequenceOfCurveElementPurposeMember& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-StepElement_Array1OfHSequenceOfCurveElementPurposeMember myArray;
+  StepElement_Array1OfHSequenceOfCurveElementPurposeMember myArray;
 
 
 };
 
-#define ItemHArray1 Handle_StepElement_HSequenceOfCurveElementPurposeMember
+#define ItemHArray1 Handle(StepElement_HSequenceOfCurveElementPurposeMember)
 #define ItemHArray1_hxx <StepElement_HSequenceOfCurveElementPurposeMember.hxx>
 #define TheArray1 StepElement_Array1OfHSequenceOfCurveElementPurposeMember
 #define TheArray1_hxx <StepElement_Array1OfHSequenceOfCurveElementPurposeMember.hxx>
@@ -103,7 +90,6 @@ StepElement_Array1OfHSequenceOfCurveElementPurposeMember myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_HeaderFile

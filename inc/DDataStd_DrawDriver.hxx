@@ -6,65 +6,54 @@
 #ifndef _DDataStd_DrawDriver_HeaderFile
 #define _DDataStd_DrawDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_DDataStd_DrawDriver_HeaderFile
 #include <Handle_DDataStd_DrawDriver.hxx>
-#endif
 
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_Draw_Drawable3D_HeaderFile
 #include <Handle_Draw_Drawable3D.hxx>
-#endif
-#ifndef _Handle_TDataXtd_Constraint_HeaderFile
 #include <Handle_TDataXtd_Constraint.hxx>
-#endif
-#ifndef _Draw_ColorKind_HeaderFile
 #include <Draw_ColorKind.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Draw_Drawable3D;
 class TDF_Label;
 class TDataXtd_Constraint;
 class TopoDS_Shape;
 
 
-//! Root class of drivers to build draw variables from TDF_Label. <br>
-//!          Priority rule to display standard attributes is : <br>
-//!          * 1 Constraint <br>
-//!          * 2 Object <br>
-//!          * 3 Datum      (Point,Axis,Plane) <br>
-//!          * 4 Geometry <br>
-//!          * 5 NamedShape <br>
-class DDataStd_DrawDriver : public MMgt_TShared {
+//! Root class of drivers to build draw variables from TDF_Label.
+//! Priority rule to display standard attributes is :
+//! * 1 Constraint
+//! * 2 Object
+//! * 3 Datum      (Point,Axis,Plane)
+//! * 4 Geometry
+//! * 5 NamedShape
+class DDataStd_DrawDriver : public MMgt_TShared
+{
 
 public:
 
-  //! access to the current DrawDriver <br>
-//!          ================================ <br>
-  Standard_EXPORT   static  void Set(const Handle(DDataStd_DrawDriver)& DD) ;
   
-  Standard_EXPORT   static  Handle_DDataStd_DrawDriver Get() ;
-  //! next method is called by DrawPresentation (may be redefined) <br>
-//!          ============================================================ <br>
-  Standard_EXPORT   DDataStd_DrawDriver();
-  //! reusable methods (may used when redefined <Drawable>) <br>
-//!          ===================================================== <br>
-  Standard_EXPORT   virtual  Handle_Draw_Drawable3D Drawable(const TDF_Label& L) const;
+  //! access to the current DrawDriver
+  //! ================================
+  Standard_EXPORT static   void Set (const Handle(DDataStd_DrawDriver)& DD) ;
   
-  Standard_EXPORT     Handle_Draw_Drawable3D DrawableConstraint(const Handle(TDataXtd_Constraint)& C) const;
+  Standard_EXPORT static   Handle(DDataStd_DrawDriver) Get() ;
   
-  Standard_EXPORT     Handle_Draw_Drawable3D DrawableShape(const TDF_Label& L,const Draw_ColorKind color,const Standard_Boolean current = Standard_True) const;
-  //! May be used for temporary display of a shape <br>
-  Standard_EXPORT   static  Handle_Draw_Drawable3D DrawableShape(const TopoDS_Shape& s,const Draw_ColorKind color) ;
+  //! next method is called by DrawPresentation (may be redefined)
+  //! ============================================================
+  Standard_EXPORT DDataStd_DrawDriver();
+  
+  //! reusable methods (may used when redefined <Drawable>)
+  //! =====================================================
+  Standard_EXPORT virtual   Handle(Draw_Drawable3D) Drawable (const TDF_Label& L)  const;
+  
+  Standard_EXPORT   Handle(Draw_Drawable3D) DrawableConstraint (const Handle(TDataXtd_Constraint)& C)  const;
+  
+  Standard_EXPORT   Handle(Draw_Drawable3D) DrawableShape (const TDF_Label& L, const Draw_ColorKind color, const Standard_Boolean current = Standard_True)  const;
+  
+  //! May be used for temporary display of a shape
+  Standard_EXPORT static   Handle(Draw_Drawable3D) DrawableShape (const TopoDS_Shape& s, const Draw_ColorKind color) ;
 
 
 
@@ -87,7 +76,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DDataStd_DrawDriver_HeaderFile

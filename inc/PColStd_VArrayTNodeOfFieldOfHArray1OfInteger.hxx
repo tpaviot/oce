@@ -6,44 +6,32 @@
 #ifndef _PColStd_VArrayTNodeOfFieldOfHArray1OfInteger_HeaderFile
 #define _PColStd_VArrayTNodeOfFieldOfHArray1OfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_PColStd_VArrayNodeOfFieldOfHArray1OfInteger_HeaderFile
 #include <Handle_PColStd_VArrayNodeOfFieldOfHArray1OfInteger.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class PColStd_FieldOfHArray1OfInteger;
 class PColStd_VArrayNodeOfFieldOfHArray1OfInteger;
 
 
 
-class PColStd_VArrayTNodeOfFieldOfHArray1OfInteger  {
+class PColStd_VArrayTNodeOfFieldOfHArray1OfInteger 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      PColStd_VArrayTNodeOfFieldOfHArray1OfInteger();
+    PColStd_VArrayTNodeOfFieldOfHArray1OfInteger();
   
-      PColStd_VArrayTNodeOfFieldOfHArray1OfInteger(const Standard_Integer& aValue);
+    PColStd_VArrayTNodeOfFieldOfHArray1OfInteger(const Standard_Integer& aValue);
   
-        void SetValue(const Standard_Integer& aValue) ;
+      void SetValue (const Standard_Integer& aValue) ;
   
-        Standard_Address Value() const;
-
+      Standard_Address Value()  const;
 
 
 
@@ -58,7 +46,7 @@ private:
 
 
 
-Standard_Integer myValue;
+  Standard_Integer myValue;
 
 
 };
@@ -88,7 +76,6 @@ Standard_Integer myValue;
 #undef DBC_VArray_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PColStd_VArrayTNodeOfFieldOfHArray1OfInteger_HeaderFile

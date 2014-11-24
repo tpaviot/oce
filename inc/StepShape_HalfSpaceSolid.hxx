@@ -6,51 +6,39 @@
 #ifndef _StepShape_HalfSpaceSolid_HeaderFile
 #define _StepShape_HalfSpaceSolid_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_HalfSpaceSolid_HeaderFile
 #include <Handle_StepShape_HalfSpaceSolid.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Surface_HeaderFile
 #include <Handle_StepGeom_Surface.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _StepGeom_GeometricRepresentationItem_HeaderFile
 #include <StepGeom_GeometricRepresentationItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepGeom_Surface;
 class TCollection_HAsciiString;
 
 
 
-class StepShape_HalfSpaceSolid : public StepGeom_GeometricRepresentationItem {
+class StepShape_HalfSpaceSolid : public StepGeom_GeometricRepresentationItem
+{
 
 public:
 
-  //! Returns a HalfSpaceSolid <br>
-  Standard_EXPORT   StepShape_HalfSpaceSolid();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a HalfSpaceSolid
+  Standard_EXPORT StepShape_HalfSpaceSolid();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_Surface)& aBaseSurface,const Standard_Boolean aAgreementFlag) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetBaseSurface(const Handle(StepGeom_Surface)& aBaseSurface) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_Surface)& aBaseSurface, const Standard_Boolean aAgreementFlag) ;
   
-  Standard_EXPORT     Handle_StepGeom_Surface BaseSurface() const;
+  Standard_EXPORT   void SetBaseSurface (const Handle(StepGeom_Surface)& aBaseSurface) ;
   
-  Standard_EXPORT     void SetAgreementFlag(const Standard_Boolean aAgreementFlag) ;
+  Standard_EXPORT   Handle(StepGeom_Surface) BaseSurface()  const;
   
-  Standard_EXPORT     Standard_Boolean AgreementFlag() const;
+  Standard_EXPORT   void SetAgreementFlag (const Standard_Boolean aAgreementFlag) ;
+  
+  Standard_EXPORT   Standard_Boolean AgreementFlag()  const;
 
 
 
@@ -65,8 +53,8 @@ protected:
 private: 
 
 
-Handle_StepGeom_Surface baseSurface;
-Standard_Boolean agreementFlag;
+  Handle(StepGeom_Surface) baseSurface;
+  Standard_Boolean agreementFlag;
 
 
 };
@@ -75,7 +63,6 @@ Standard_Boolean agreementFlag;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_HalfSpaceSolid_HeaderFile

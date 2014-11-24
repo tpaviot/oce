@@ -1,18 +1,6 @@
-#ifndef _Geom_Surface_HeaderFile
 #include <Geom_Surface.hxx>
-#endif
-#ifndef _Standard_NullObject_HeaderFile
 #include <Standard_NullObject.hxx>
-#endif
-#ifndef _TopLoc_Location_HeaderFile
 #include <TopLoc_Location.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _BRep_CurveRepresentation_HeaderFile
 #include <BRep_CurveRepresentation.hxx>
-#endif
-#ifndef _BRep_CurveOn2Surfaces_HeaderFile
 #include <BRep_CurveOn2Surfaces.hxx>
-#endif

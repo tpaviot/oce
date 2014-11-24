@@ -5,19 +5,11 @@
 
 #include <IntTools_ListNodeOfListOfSurfaceRangeSample.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IntTools_SurfaceRangeSample_HeaderFile
 #include <IntTools_SurfaceRangeSample.hxx>
-#endif
-#ifndef _IntTools_ListOfSurfaceRangeSample_HeaderFile
 #include <IntTools_ListOfSurfaceRangeSample.hxx>
-#endif
-#ifndef _IntTools_ListIteratorOfListOfSurfaceRangeSample_HeaderFile
 #include <IntTools_ListIteratorOfListOfSurfaceRangeSample.hxx>
-#endif
 
  
 

@@ -6,54 +6,42 @@
 #ifndef _StepVisual_PresentationRepresentationSelect_HeaderFile
 #define _StepVisual_PresentationRepresentationSelect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepVisual_PresentationRepresentation_HeaderFile
 #include <Handle_StepVisual_PresentationRepresentation.hxx>
-#endif
-#ifndef _Handle_StepVisual_PresentationSet_HeaderFile
 #include <Handle_StepVisual_PresentationSet.hxx>
-#endif
 class Standard_Transient;
 class StepVisual_PresentationRepresentation;
 class StepVisual_PresentationSet;
 
 
 
-class StepVisual_PresentationRepresentationSelect  : public StepData_SelectType {
+class StepVisual_PresentationRepresentationSelect  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a PresentationRepresentationSelect SelectType <br>
-  Standard_EXPORT   StepVisual_PresentationRepresentationSelect();
-  //! Recognizes a PresentationRepresentationSelect Kind Entity that is : <br>
-//!        1 -> PresentationRepresentation <br>
-//!        2 -> PresentationSet <br>
-//!        0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! returns Value as a PresentationRepresentation (Null if another type) <br>
-  Standard_EXPORT     Handle_StepVisual_PresentationRepresentation PresentationRepresentation() const;
-  //! returns Value as a PresentationSet (Null if another type) <br>
-  Standard_EXPORT     Handle_StepVisual_PresentationSet PresentationSet() const;
-
+  
+  //! Returns a PresentationRepresentationSelect SelectType
+  Standard_EXPORT StepVisual_PresentationRepresentationSelect();
+  
+  //! Recognizes a PresentationRepresentationSelect Kind Entity that is :
+  //! 1 -> PresentationRepresentation
+  //! 2 -> PresentationSet
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! returns Value as a PresentationRepresentation (Null if another type)
+  Standard_EXPORT   Handle(StepVisual_PresentationRepresentation) PresentationRepresentation()  const;
+  
+  //! returns Value as a PresentationSet (Null if another type)
+  Standard_EXPORT   Handle(StepVisual_PresentationSet) PresentationSet()  const;
 
 
 
@@ -76,7 +64,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_PresentationRepresentationSelect_HeaderFile

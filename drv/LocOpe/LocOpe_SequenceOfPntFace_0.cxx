@@ -5,18 +5,10 @@
 
 #include <LocOpe_SequenceOfPntFace.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _LocOpe_PntFace_HeaderFile
 #include <LocOpe_PntFace.hxx>
-#endif
-#ifndef _LocOpe_SequenceNodeOfSequenceOfPntFace_HeaderFile
 #include <LocOpe_SequenceNodeOfSequenceOfPntFace.hxx>
-#endif
  
 
 #define SeqItem LocOpe_PntFace

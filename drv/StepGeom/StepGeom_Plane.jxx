@@ -1,3 +1,1 @@
-#ifndef _StepGeom_Plane_HeaderFile
 #include <StepGeom_Plane.hxx>
-#endif

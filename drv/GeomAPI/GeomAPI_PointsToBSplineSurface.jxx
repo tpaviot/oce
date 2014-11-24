@@ -1,15 +1,5 @@
-#ifndef _Geom_BSplineSurface_HeaderFile
 #include <Geom_BSplineSurface.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _TColgp_Array2OfPnt_HeaderFile
 #include <TColgp_Array2OfPnt.hxx>
-#endif
-#ifndef _TColStd_Array2OfReal_HeaderFile
 #include <TColStd_Array2OfReal.hxx>
-#endif
-#ifndef _GeomAPI_PointsToBSplineSurface_HeaderFile
 #include <GeomAPI_PointsToBSplineSurface.hxx>
-#endif

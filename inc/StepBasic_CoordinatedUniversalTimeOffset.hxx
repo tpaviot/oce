@@ -6,55 +6,43 @@
 #ifndef _StepBasic_CoordinatedUniversalTimeOffset_HeaderFile
 #define _StepBasic_CoordinatedUniversalTimeOffset_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_CoordinatedUniversalTimeOffset_HeaderFile
 #include <Handle_StepBasic_CoordinatedUniversalTimeOffset.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _StepBasic_AheadOrBehind_HeaderFile
 #include <StepBasic_AheadOrBehind.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 
 
 
-class StepBasic_CoordinatedUniversalTimeOffset : public MMgt_TShared {
+class StepBasic_CoordinatedUniversalTimeOffset : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a CoordinatedUniversalTimeOffset <br>
-  Standard_EXPORT   StepBasic_CoordinatedUniversalTimeOffset();
   
-  Standard_EXPORT   virtual  void Init(const Standard_Integer aHourOffset,const Standard_Boolean hasAminuteOffset,const Standard_Integer aMinuteOffset,const StepBasic_AheadOrBehind aSense) ;
+  //! Returns a CoordinatedUniversalTimeOffset
+  Standard_EXPORT StepBasic_CoordinatedUniversalTimeOffset();
   
-  Standard_EXPORT     void SetHourOffset(const Standard_Integer aHourOffset) ;
+  Standard_EXPORT virtual   void Init (const Standard_Integer aHourOffset, const Standard_Boolean hasAminuteOffset, const Standard_Integer aMinuteOffset, const StepBasic_AheadOrBehind aSense) ;
   
-  Standard_EXPORT     Standard_Integer HourOffset() const;
+  Standard_EXPORT   void SetHourOffset (const Standard_Integer aHourOffset) ;
   
-  Standard_EXPORT     void SetMinuteOffset(const Standard_Integer aMinuteOffset) ;
+  Standard_EXPORT   Standard_Integer HourOffset()  const;
   
-  Standard_EXPORT     void UnSetMinuteOffset() ;
+  Standard_EXPORT   void SetMinuteOffset (const Standard_Integer aMinuteOffset) ;
   
-  Standard_EXPORT     Standard_Integer MinuteOffset() const;
+  Standard_EXPORT   void UnSetMinuteOffset() ;
   
-  Standard_EXPORT     Standard_Boolean HasMinuteOffset() const;
+  Standard_EXPORT   Standard_Integer MinuteOffset()  const;
   
-  Standard_EXPORT     void SetSense(const StepBasic_AheadOrBehind aSense) ;
+  Standard_EXPORT   Standard_Boolean HasMinuteOffset()  const;
   
-  Standard_EXPORT     StepBasic_AheadOrBehind Sense() const;
+  Standard_EXPORT   void SetSense (const StepBasic_AheadOrBehind aSense) ;
+  
+  Standard_EXPORT   StepBasic_AheadOrBehind Sense()  const;
 
 
 
@@ -69,10 +57,10 @@ protected:
 private: 
 
 
-Standard_Integer hourOffset;
-Standard_Integer minuteOffset;
-StepBasic_AheadOrBehind sense;
-Standard_Boolean hasMinuteOffset;
+  Standard_Integer hourOffset;
+  Standard_Integer minuteOffset;
+  StepBasic_AheadOrBehind sense;
+  Standard_Boolean hasMinuteOffset;
 
 
 };
@@ -81,7 +69,6 @@ Standard_Boolean hasMinuteOffset;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_CoordinatedUniversalTimeOffset_HeaderFile

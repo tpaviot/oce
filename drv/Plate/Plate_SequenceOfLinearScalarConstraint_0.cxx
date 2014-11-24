@@ -5,18 +5,10 @@
 
 #include <Plate_SequenceOfLinearScalarConstraint.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Plate_LinearScalarConstraint_HeaderFile
 #include <Plate_LinearScalarConstraint.hxx>
-#endif
-#ifndef _Plate_SequenceNodeOfSequenceOfLinearScalarConstraint_HeaderFile
 #include <Plate_SequenceNodeOfSequenceOfLinearScalarConstraint.hxx>
-#endif
  
 
 #define SeqItem Plate_LinearScalarConstraint

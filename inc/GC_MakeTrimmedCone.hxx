@@ -6,77 +6,68 @@
 #ifndef _GC_MakeTrimmedCone_HeaderFile
 #define _GC_MakeTrimmedCone_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom_RectangularTrimmedSurface_HeaderFile
 #include <Handle_Geom_RectangularTrimmedSurface.hxx>
-#endif
-#ifndef _GC_Root_HeaderFile
 #include <GC_Root.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Geom_RectangularTrimmedSurface;
 class StdFail_NotDone;
 class gp_Pnt;
 
 
-//! Implements construction algorithms for a trimmed <br>
-//! cone limited by two planes orthogonal to its axis. The <br>
-//! result is a Geom_RectangularTrimmedSurface surface. <br>
-//! A MakeTrimmedCone provides a framework for: <br>
-//! -   defining the construction of the trimmed cone, <br>
-//! -   implementing the construction algorithm, and <br>
-//! -   consulting the results. In particular, the Value <br>
-//!   function returns the constructed trimmed cone. <br>
-class GC_MakeTrimmedCone  : public GC_Root {
+//! Implements construction algorithms for a trimmed
+//! cone limited by two planes orthogonal to its axis. The
+//! result is a Geom_RectangularTrimmedSurface surface.
+//! A MakeTrimmedCone provides a framework for:
+//! -   defining the construction of the trimmed cone,
+//! -   implementing the construction algorithm, and
+//! -   consulting the results. In particular, the Value
+//! function returns the constructed trimmed cone.
+class GC_MakeTrimmedCone  : public GC_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Make a RectangularTrimmedSurface <TheCone> from Geom <br>
-//!          It is trimmed by P3 and P4. <br>
-//!          Its axis is <P1P2> and the radius of its base is <br>
-//!          the distance between <P3> and <P1P2>. <br>
-//!          The distance between <P4> and <P1P2> is the radius of <br>
-//!          the section passing through <P4>. <br>
-//!          An error iss raised if <P1>,<P2>,<P3>,<P4> are <br>
-//!          colinear or if <P3P4> is perpendicular to <P1P2> or <br>
-//!          <P3P4> is colinear to <P1P2>. <br>
-  Standard_EXPORT   GC_MakeTrimmedCone(const gp_Pnt& P1,const gp_Pnt& P2,const gp_Pnt& P3,const gp_Pnt& P4);
-  //! Make a RectangularTrimmedSurface from Geom <TheCone> <br>
-//!           from a cone and trimmed by two points P1 and P2 and <br>
-//!           the two radius <R1> and <R2> of the sections passing <br>
-//!           through <P1> an <P2>. <br>
-//! Warning <br>
-//! If an error occurs (that is, when IsDone returns <br>
-//! false), the Status function returns: <br>
-//! -   gce_ConfusedPoints if points P1 and P2, or P3 and P4, are coincident; <br>
-//! -   gce_NullAngle if: <br>
-//!   -   the lines joining P1 to P2 and P3 to P4 are parallel, or <br>
-//! -   R1 and R2 are equal (i.e. their difference is less than gp::Resolution()); <br>
-//! -   gce_NullRadius if: <br>
-//!   -   the line joining P1 to P2 is perpendicular to the line joining P3 to P4, or <br>
-//!   -   the points P1, P2, P3 and P4 are collinear; <br>
-//! -   gce_NegativeRadius if R1 or R2 is negative; or <br>
-//! -   gce_NullAxis if points P1 and P2 are coincident (2nd syntax only). <br>
-  Standard_EXPORT   GC_MakeTrimmedCone(const gp_Pnt& P1,const gp_Pnt& P2,const Standard_Real R1,const Standard_Real R2);
-  //! Returns the constructed trimmed cone. <br>
-//! StdFail_NotDone if no trimmed cone is constructed. <br>
-  Standard_EXPORT    const Handle_Geom_RectangularTrimmedSurface& Value() const;
   
-  Standard_EXPORT    const Handle_Geom_RectangularTrimmedSurface& Operator() const;
+  //! Make a RectangularTrimmedSurface <TheCone> from Geom
+  //! It is trimmed by P3 and P4.
+  //! Its axis is <P1P2> and the radius of its base is
+  //! the distance between <P3> and <P1P2>.
+  //! The distance between <P4> and <P1P2> is the radius of
+  //! the section passing through <P4>.
+  //! An error iss raised if <P1>,<P2>,<P3>,<P4> are
+  //! colinear or if <P3P4> is perpendicular to <P1P2> or
+  //! <P3P4> is colinear to <P1P2>.
+  Standard_EXPORT GC_MakeTrimmedCone(const gp_Pnt& P1, const gp_Pnt& P2, const gp_Pnt& P3, const gp_Pnt& P4);
+  
+  //! Make a RectangularTrimmedSurface from Geom <TheCone>
+  //! from a cone and trimmed by two points P1 and P2 and
+  //! the two radius <R1> and <R2> of the sections passing
+  //! through <P1> an <P2>.
+  //! Warning
+  //! If an error occurs (that is, when IsDone returns
+  //! false), the Status function returns:
+  //! -   gce_ConfusedPoints if points P1 and P2, or P3 and P4, are coincident;
+  //! -   gce_NullAngle if:
+  //! -   the lines joining P1 to P2 and P3 to P4 are parallel, or
+  //! -   R1 and R2 are equal (i.e. their difference is less than gp::Resolution());
+  //! -   gce_NullRadius if:
+  //! -   the line joining P1 to P2 is perpendicular to the line joining P3 to P4, or
+  //! -   the points P1, P2, P3 and P4 are collinear;
+  //! -   gce_NegativeRadius if R1 or R2 is negative; or
+  //! -   gce_NullAxis if points P1 and P2 are coincident (2nd syntax only).
+  Standard_EXPORT GC_MakeTrimmedCone(const gp_Pnt& P1, const gp_Pnt& P2, const Standard_Real R1, const Standard_Real R2);
+  
+  //! Returns the constructed trimmed cone.
+  //! StdFail_NotDone if no trimmed cone is constructed.
+  Standard_EXPORT  const  Handle(Geom_RectangularTrimmedSurface)& Value()  const;
+  
+  Standard_EXPORT  const  Handle(Geom_RectangularTrimmedSurface)& Operator()  const;
 Standard_EXPORT operator Handle_Geom_RectangularTrimmedSurface() const;
-
 
 
 
@@ -91,7 +82,7 @@ private:
 
 
 
-Handle_Geom_RectangularTrimmedSurface TheCone;
+  Handle(Geom_RectangularTrimmedSurface) TheCone;
 
 
 };
@@ -100,7 +91,6 @@ Handle_Geom_RectangularTrimmedSurface TheCone;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GC_MakeTrimmedCone_HeaderFile

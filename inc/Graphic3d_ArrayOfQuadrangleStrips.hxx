@@ -6,58 +6,48 @@
 #ifndef _Graphic3d_ArrayOfQuadrangleStrips_HeaderFile
 #define _Graphic3d_ArrayOfQuadrangleStrips_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Graphic3d_ArrayOfQuadrangleStrips_HeaderFile
 #include <Handle_Graphic3d_ArrayOfQuadrangleStrips.hxx>
-#endif
 
-#ifndef _Graphic3d_ArrayOfPrimitives_HeaderFile
 #include <Graphic3d_ArrayOfPrimitives.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 
 
-//! Contains quadrangles strip array definition <br>
-class Graphic3d_ArrayOfQuadrangleStrips : public Graphic3d_ArrayOfPrimitives {
+//! Contains quadrangles strip array definition
+class Graphic3d_ArrayOfQuadrangleStrips : public Graphic3d_ArrayOfPrimitives
+{
 
 public:
 
-  //! Creates an array of quadrangle strips, <br>
-//! a polygon can be filled as: <br>
-//! 1) creating a single strip defined with his vertexs. <br>
-//!    i.e: <br>
-//!    myArray = Graphic3d_ArrayOfQuadrangleStrips(7) <br>
-//!    myArray->AddVertex(x1,y1,z1) <br>
-//!	.... <br>
-//!    myArray->AddVertex(x7,y7,z7) <br>
-//! 2) creating separate strips defined with a predefined <br>
-//!    number of strips and the number of vertex per strip. <br>
-//!    i.e: <br>
-//!    myArray = Graphic3d_ArrayOfQuadrangleStrips(8,2) <br>
-//!    myArray->AddBound(4) <br>
-//!    myArray->AddVertex(x1,y1,z1) <br>
-//!	.... <br>
-//!    myArray->AddVertex(x4,y4,z4) <br>
-//!    myArray->AddBound(4) <br>
-//!    myArray->AddVertex(x5,y5,z5) <br>
-//!	.... <br>
-//!    myArray->AddVertex(x8,y8,z8) <br>
-//! <br>
-//! <maxVertexs> defined the maximun allowed vertex number in the array. <br>
-//! <maxStrips> defined the maximun allowed strip number in the array. <br>
-//! The number of quadrangle really drawn is : <br>
-//! VertexNumber()/2-Min(1,BoundNumber()) <br>
-  Standard_EXPORT   Graphic3d_ArrayOfQuadrangleStrips(const Standard_Integer maxVertexs,const Standard_Integer maxStrips = 0,const Standard_Boolean hasVNormals = Standard_False,const Standard_Boolean hasVColors = Standard_False,const Standard_Boolean hasSColors = Standard_False,const Standard_Boolean hasTexels = Standard_False);
+  
+  //! Creates an array of quadrangle strips,
+  //! a polygon can be filled as:
+  //! 1) creating a single strip defined with his vertexs.
+  //! i.e:
+  //! myArray = Graphic3d_ArrayOfQuadrangleStrips(7)
+  //! myArray->AddVertex(x1,y1,z1)
+  //! ....
+  //! myArray->AddVertex(x7,y7,z7)
+  //! 2) creating separate strips defined with a predefined
+  //! number of strips and the number of vertex per strip.
+  //! i.e:
+  //! myArray = Graphic3d_ArrayOfQuadrangleStrips(8,2)
+  //! myArray->AddBound(4)
+  //! myArray->AddVertex(x1,y1,z1)
+  //! ....
+  //! myArray->AddVertex(x4,y4,z4)
+  //! myArray->AddBound(4)
+  //! myArray->AddVertex(x5,y5,z5)
+  //! ....
+  //! myArray->AddVertex(x8,y8,z8)
+  //!
+  //! <maxVertexs> defined the maximun allowed vertex number in the array.
+  //! <maxStrips> defined the maximun allowed strip number in the array.
+  //! The number of quadrangle really drawn is :
+  //! VertexNumber()/2-Min(1,BoundNumber())
+  Standard_EXPORT Graphic3d_ArrayOfQuadrangleStrips(const Standard_Integer maxVertexs, const Standard_Integer maxStrips = 0, const Standard_Boolean hasVNormals = Standard_False, const Standard_Boolean hasVColors = Standard_False, const Standard_Boolean hasSColors = Standard_False, const Standard_Boolean hasTexels = Standard_False);
 
 
 
@@ -80,7 +70,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Graphic3d_ArrayOfQuadrangleStrips_HeaderFile

@@ -5,16 +5,10 @@
 
 #include <GeomFill_SequenceNodeOfSequenceOfTrsf.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _gp_Trsf_HeaderFile
 #include <gp_Trsf.hxx>
-#endif
-#ifndef _GeomFill_SequenceOfTrsf_HeaderFile
 #include <GeomFill_SequenceOfTrsf.hxx>
-#endif
 
  
 

@@ -2,40 +2,40 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{87C82F66-0D08-1058-0B4C-912DF05EFC5E}</UniqueIdentifier>
+      <UniqueIdentifier>{4A9F5B62-07BA-168F-00EA-15ED67951CD4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\V3d">
-      <UniqueIdentifier>{0AAA1502-06C6-02DE-0137-927398E325E4}</UniqueIdentifier>
+      <UniqueIdentifier>{97B38588-118A-02C4-1463-5D7852865D87}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Graphic3d">
-      <UniqueIdentifier>{CCB34530-10CE-0774-0D56-1DE77E49143B}</UniqueIdentifier>
+      <UniqueIdentifier>{66551B55-0CD4-1326-0A25-7E9304E6078F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Visual3d">
-      <UniqueIdentifier>{CF55A43F-1622-0E41-0EA0-D839C0B79EF2}</UniqueIdentifier>
+      <UniqueIdentifier>{FA55DA41-0C3D-0447-02AD-FC9006538F73}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Select3D">
-      <UniqueIdentifier>{2453FCB0-06CE-0CA6-064D-DFA7756B31DC}</UniqueIdentifier>
+      <UniqueIdentifier>{EEC93D1D-1186-128A-077E-14828885EDD8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Prs3d">
-      <UniqueIdentifier>{966F0A45-020B-111D-04FC-B50D8B8C2F66}</UniqueIdentifier>
+      <UniqueIdentifier>{C2415064-024F-0865-0810-27E105264EF1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StdPrs">
-      <UniqueIdentifier>{7BEB7729-13FB-0D52-0D5F-574306F1562B}</UniqueIdentifier>
+      <UniqueIdentifier>{08BFADC6-0E8B-054F-01EF-66E4E03C642F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\SelectMgr">
-      <UniqueIdentifier>{503FCBC8-0CA9-0D7E-0813-0DF0361578A4}</UniqueIdentifier>
+      <UniqueIdentifier>{D57C0BDC-085A-16BB-0FBA-1AC35F10B256}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PrsMgr">
-      <UniqueIdentifier>{A36A0148-0D0A-038E-0769-7896E8FB6040}</UniqueIdentifier>
+      <UniqueIdentifier>{2C68A888-10D7-0161-0841-C688C83E1554}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\AIS">
-      <UniqueIdentifier>{6C3F155A-01BA-11BA-02A6-9E4091A1025F}</UniqueIdentifier>
+      <UniqueIdentifier>{EA723CEF-068F-0BFC-083C-053FF5A9F066}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\DsgPrs">
-      <UniqueIdentifier>{A2B403CD-07C4-13EB-00D8-E4EA6ADA023A}</UniqueIdentifier>
+      <UniqueIdentifier>{E5C6BA65-09D1-185E-0A5F-ED53860694D7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\StdSelect">
-      <UniqueIdentifier>{C86A487B-147E-17CA-04CE-612174DB6313}</UniqueIdentifier>
+      <UniqueIdentifier>{15C8E993-01D4-0052-0DE1-E17C57AA5277}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

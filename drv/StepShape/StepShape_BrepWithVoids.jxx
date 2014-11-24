@@ -1,15 +1,5 @@
-#ifndef _StepShape_HArray1OfOrientedClosedShell_HeaderFile
 #include <StepShape_HArray1OfOrientedClosedShell.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepShape_ClosedShell_HeaderFile
 #include <StepShape_ClosedShell.hxx>
-#endif
-#ifndef _StepShape_OrientedClosedShell_HeaderFile
 #include <StepShape_OrientedClosedShell.hxx>
-#endif
-#ifndef _StepShape_BrepWithVoids_HeaderFile
 #include <StepShape_BrepWithVoids.hxx>
-#endif

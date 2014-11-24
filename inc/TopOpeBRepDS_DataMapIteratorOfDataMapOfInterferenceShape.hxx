@@ -6,25 +6,13 @@
 #ifndef _TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceShape_HeaderFile
 #define _TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_Interference_HeaderFile
 #include <Handle_TopOpeBRepDS_Interference.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape_HeaderFile
 #include <Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape.hxx>
-#endif
 class Standard_NoSuchObject;
 class TopOpeBRepDS_Interference;
 class TopoDS_Shape;
@@ -34,22 +22,22 @@ class TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape;
 
 
 
-class TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceShape  : public TCollection_BasicMapIterator {
+class TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceShape  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceShape();
+  Standard_EXPORT TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceShape();
   
-  Standard_EXPORT   TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceShape(const TopOpeBRepDS_DataMapOfInterferenceShape& aMap);
+  Standard_EXPORT TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceShape(const TopOpeBRepDS_DataMapOfInterferenceShape& aMap);
   
-  Standard_EXPORT     void Initialize(const TopOpeBRepDS_DataMapOfInterferenceShape& aMap) ;
+  Standard_EXPORT   void Initialize (const TopOpeBRepDS_DataMapOfInterferenceShape& aMap) ;
   
-  Standard_EXPORT    const Handle_TopOpeBRepDS_Interference& Key() const;
+  Standard_EXPORT  const  Handle(TopOpeBRepDS_Interference)& Key()  const;
   
-  Standard_EXPORT    const TopoDS_Shape& Value() const;
-
+  Standard_EXPORT  const  TopoDS_Shape& Value()  const;
 
 
 
@@ -72,7 +60,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceShape_HeaderFile

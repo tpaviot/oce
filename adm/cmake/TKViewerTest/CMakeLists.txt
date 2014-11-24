@@ -64,6 +64,8 @@ ENDIF()
   list( APPEND TKViewerTest_USED_LIBS TKOpenGl )
 
 if (WIN32)
+  list( APPEND TKViewerTest_USED_LIBS tcl${3RDPARTY_TCL_LIBRARY_VERSION}.lib )
+  list( APPEND TKViewerTest_USED_LIBS tk${3RDPARTY_TCL_LIBRARY_VERSION}.lib )
   list( APPEND TKViewerTest_USED_LIBS user32.lib )
   list( APPEND TKViewerTest_USED_LIBS gdi32.lib )
   list( APPEND TKViewerTest_USED_LIBS opengl32.lib )
@@ -86,10 +88,17 @@ elseif(APPLE)
   find_library(FRAMEWORKS_IOKIT NAMES IOKit)
   list( APPEND TKViewerTest_USED_LIBS ${FRAMEWORKS_IOKIT} )
   list( APPEND TKViewerTest_USED_LIBS freetype )
-else()
+elseif(ANDROID)
   list( APPEND TKViewerTest_USED_LIBS tcl8.6 )
   list( APPEND TKViewerTest_USED_LIBS X11 )
   list( APPEND TKViewerTest_USED_LIBS tk8.6 )
+  list( APPEND TKViewerTest_USED_LIBS EGL )
+  list( APPEND TKViewerTest_USED_LIBS GLESv2 )
+  list( APPEND TKViewerTest_USED_LIBS freetype )
+else()
+  list( APPEND TKViewerTest_USED_LIBS tcl${3RDPARTY_TCL_LIBRARY_VERSION} )
+  list( APPEND TKViewerTest_USED_LIBS X11 )
+  list( APPEND TKViewerTest_USED_LIBS tk${3RDPARTY_TK_LIBRARY_VERSION} )
   list( APPEND TKViewerTest_USED_LIBS GLU )
   list( APPEND TKViewerTest_USED_LIBS GL )
   list( APPEND TKViewerTest_USED_LIBS freetype )
@@ -251,13 +260,13 @@ if ("${USED_TOOLKITS}" STREQUAL "" OR DEFINED TurnONtheTKViewerTest)
  set_property(TARGET TKViewerTest PROPERTY FOLDER Draw)
 
  install( TARGETS TKViewerTest
-                                 RUNTIME DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_SUFFIX}"
-                                 ARCHIVE DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_SUFFIX}"
-                                 LIBRARY DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_SUFFIX}")
+                                 RUNTIME DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_POSTFIX}"
+                                 ARCHIVE DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_POSTFIX}"
+                                 LIBRARY DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_POSTFIX}")
 
  if (MSVC)
-  install( FILES  ${CMAKE_BINARY_DIR}/out/bin/Debug/TKViewerTest.pdb CONFIGURATIONS Debug
-                                  DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_SUFFIX}")
+  install( FILES  ${CMAKE_BINARY_DIR}/out/bind/Debug/TKViewerTest.pdb CONFIGURATIONS Debug
+                                  DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_POSTFIX}")
  endif()
 
 

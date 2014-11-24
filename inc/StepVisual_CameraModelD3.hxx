@@ -6,52 +6,40 @@
 #ifndef _StepVisual_CameraModelD3_HeaderFile
 #define _StepVisual_CameraModelD3_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_CameraModelD3_HeaderFile
 #include <Handle_StepVisual_CameraModelD3.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Axis2Placement3d_HeaderFile
 #include <Handle_StepGeom_Axis2Placement3d.hxx>
-#endif
-#ifndef _Handle_StepVisual_ViewVolume_HeaderFile
 #include <Handle_StepVisual_ViewVolume.hxx>
-#endif
-#ifndef _StepVisual_CameraModel_HeaderFile
 #include <StepVisual_CameraModel.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepGeom_Axis2Placement3d;
 class StepVisual_ViewVolume;
 class TCollection_HAsciiString;
 
 
 
-class StepVisual_CameraModelD3 : public StepVisual_CameraModel {
+class StepVisual_CameraModelD3 : public StepVisual_CameraModel
+{
 
 public:
 
-  //! Returns a CameraModelD3 <br>
-  Standard_EXPORT   StepVisual_CameraModelD3();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a CameraModelD3
+  Standard_EXPORT StepVisual_CameraModelD3();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_Axis2Placement3d)& aViewReferenceSystem,const Handle(StepVisual_ViewVolume)& aPerspectiveOfVolume) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetViewReferenceSystem(const Handle(StepGeom_Axis2Placement3d)& aViewReferenceSystem) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_Axis2Placement3d)& aViewReferenceSystem, const Handle(StepVisual_ViewVolume)& aPerspectiveOfVolume) ;
   
-  Standard_EXPORT     Handle_StepGeom_Axis2Placement3d ViewReferenceSystem() const;
+  Standard_EXPORT   void SetViewReferenceSystem (const Handle(StepGeom_Axis2Placement3d)& aViewReferenceSystem) ;
   
-  Standard_EXPORT     void SetPerspectiveOfVolume(const Handle(StepVisual_ViewVolume)& aPerspectiveOfVolume) ;
+  Standard_EXPORT   Handle(StepGeom_Axis2Placement3d) ViewReferenceSystem()  const;
   
-  Standard_EXPORT     Handle_StepVisual_ViewVolume PerspectiveOfVolume() const;
+  Standard_EXPORT   void SetPerspectiveOfVolume (const Handle(StepVisual_ViewVolume)& aPerspectiveOfVolume) ;
+  
+  Standard_EXPORT   Handle(StepVisual_ViewVolume) PerspectiveOfVolume()  const;
 
 
 
@@ -66,8 +54,8 @@ protected:
 private: 
 
 
-Handle_StepGeom_Axis2Placement3d viewReferenceSystem;
-Handle_StepVisual_ViewVolume perspectiveOfVolume;
+  Handle(StepGeom_Axis2Placement3d) viewReferenceSystem;
+  Handle(StepVisual_ViewVolume) perspectiveOfVolume;
 
 
 };
@@ -76,7 +64,6 @@ Handle_StepVisual_ViewVolume perspectiveOfVolume;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_CameraModelD3_HeaderFile

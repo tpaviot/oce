@@ -1,21 +1,7 @@
-#ifndef _StdFail_UndefinedDerivative_HeaderFile
 #include <StdFail_UndefinedDerivative.hxx>
-#endif
-#ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
-#endif
-#ifndef _IntRes2d_IntersectionPoint_HeaderFile
 #include <IntRes2d_IntersectionPoint.hxx>
-#endif
-#ifndef _IntCurveSurface_IntersectionPoint_HeaderFile
 #include <IntCurveSurface_IntersectionPoint.hxx>
-#endif
-#ifndef _IntRes2d_IntersectionSegment_HeaderFile
 #include <IntRes2d_IntersectionSegment.hxx>
-#endif
-#ifndef _IntCurveSurface_IntersectionSegment_HeaderFile
 #include <IntCurveSurface_IntersectionSegment.hxx>
-#endif
-#ifndef _HLRBRep_Intersector_HeaderFile
 #include <HLRBRep_Intersector.hxx>
-#endif

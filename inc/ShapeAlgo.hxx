@@ -6,37 +6,33 @@
 #ifndef _ShapeAlgo_HeaderFile
 #define _ShapeAlgo_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_ShapeAlgo_AlgoContainer_HeaderFile
 #include <Handle_ShapeAlgo_AlgoContainer.hxx>
-#endif
 class ShapeAlgo_AlgoContainer;
 class ShapeAlgo_ToolContainer;
 class ShapeAlgo_AlgoContainer;
 
 
 
-class ShapeAlgo  {
+class ShapeAlgo 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Provides initerface to the algorithms from Shape Healing. <br>//! Creates and initializes default AlgoContainer. <br>
-  Standard_EXPORT   static  void Init() ;
-  //! Sets default AlgoContainer <br>
-  Standard_EXPORT   static  void SetAlgoContainer(const Handle(ShapeAlgo_AlgoContainer)& aContainer) ;
-  //! Returns default AlgoContainer <br>
-  Standard_EXPORT   static  Handle_ShapeAlgo_AlgoContainer AlgoContainer() ;
-
+  
+  //! Provides initerface to the algorithms from Shape Healing.
+  //! Creates and initializes default AlgoContainer.
+  Standard_EXPORT static   void Init() ;
+  
+  //! Sets default AlgoContainer
+  Standard_EXPORT static   void SetAlgoContainer (const Handle(ShapeAlgo_AlgoContainer)& aContainer) ;
+  
+  //! Returns default AlgoContainer
+  Standard_EXPORT static   Handle(ShapeAlgo_AlgoContainer) AlgoContainer() ;
 
 
 
@@ -61,7 +57,6 @@ friend class ShapeAlgo_AlgoContainer;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeAlgo_HeaderFile

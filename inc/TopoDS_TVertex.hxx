@@ -6,32 +6,24 @@
 #ifndef _TopoDS_TVertex_HeaderFile
 #define _TopoDS_TVertex_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopoDS_TVertex_HeaderFile
 #include <Handle_TopoDS_TVertex.hxx>
-#endif
 
-#ifndef _TopoDS_TShape_HeaderFile
 #include <TopoDS_TShape.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
 
 
-//! A  Vertex is a topological  point in  two or three <br>
-//!          dimensions. <br>
-class TopoDS_TVertex : public TopoDS_TShape {
+//! A  Vertex is a topological  point in  two or three
+//! dimensions.
+class TopoDS_TVertex : public TopoDS_TShape
+{
 
 public:
 
-  //! Returns VERTEX. <br>
-  Standard_EXPORT     TopAbs_ShapeEnum ShapeType() const;
+  
+  //! Returns VERTEX.
+  Standard_EXPORT   TopAbs_ShapeEnum ShapeType()  const;
 
 
 
@@ -40,8 +32,9 @@ public:
 
 protected:
 
-  //! Construct a vertex. <br>
-      TopoDS_TVertex();
+  
+  //! Construct a vertex.
+    TopoDS_TVertex();
 
 
 
@@ -57,7 +50,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopoDS_TVertex_HeaderFile

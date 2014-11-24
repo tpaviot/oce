@@ -6,15 +6,14 @@
 #ifndef _TopoDSToStep_FacetedError_HeaderFile
 #define _TopoDSToStep_FacetedError_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum TopoDSToStep_FacetedError {
+
+enum TopoDSToStep_FacetedError
+{
 TopoDSToStep_FacetedDone,
 TopoDSToStep_SurfaceNotPlane,
 TopoDSToStep_PCurveNotLinear
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _TopoDSToStep_FacetedError_HeaderFile

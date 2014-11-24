@@ -6,41 +6,30 @@
 #ifndef _StepData_SelectArrReal_HeaderFile
 #define _StepData_SelectArrReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepData_SelectArrReal_HeaderFile
 #include <Handle_StepData_SelectArrReal.hxx>
-#endif
 
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _StepData_SelectNamed_HeaderFile
 #include <StepData_SelectNamed.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TColStd_HArray1OfReal;
 
 
 
-class StepData_SelectArrReal : public StepData_SelectNamed {
+class StepData_SelectArrReal : public StepData_SelectNamed
+{
 
 public:
 
   
-  Standard_EXPORT   StepData_SelectArrReal();
+  Standard_EXPORT StepData_SelectArrReal();
   
-  Standard_EXPORT   virtual  Standard_Integer Kind() const;
+  Standard_EXPORT virtual   Standard_Integer Kind()  const;
   
-  Standard_EXPORT     Handle_TColStd_HArray1OfReal ArrReal() const;
+  Standard_EXPORT   Handle(TColStd_HArray1OfReal) ArrReal()  const;
   
-  Standard_EXPORT     void SetArrReal(const Handle(TColStd_HArray1OfReal)& arr) ;
+  Standard_EXPORT   void SetArrReal (const Handle(TColStd_HArray1OfReal)& arr) ;
 
 
 
@@ -55,7 +44,7 @@ protected:
 private: 
 
 
-Handle_TColStd_HArray1OfReal theArr;
+  Handle(TColStd_HArray1OfReal) theArr;
 
 
 };
@@ -64,7 +53,6 @@ Handle_TColStd_HArray1OfReal theArr;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepData_SelectArrReal_HeaderFile

@@ -6,13 +6,11 @@
 #ifndef _PrsMgr_Presentation3d_HeaderFile
 #define _PrsMgr_Presentation3d_HeaderFile
 
-#ifndef _PrsMgr_Presentation_HeaderFile
 #include <PrsMgr_Presentation.hxx>
-#endif
 
 typedef PrsMgr_Presentation PrsMgr_Presentation3d;
 typedef Handle_PrsMgr_Presentation Handle_PrsMgr_Presentation3d;
 
 #define PrsMgr_Presentation3d_Type_() PrsMgr_Presentation_Type_()
 
-#endif
+#endif // _PrsMgr_Presentation3d_HeaderFile

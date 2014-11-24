@@ -6,42 +6,35 @@
 #ifndef _StepFEA_FeaShellMembraneBendingCouplingStiffness_HeaderFile
 #define _StepFEA_FeaShellMembraneBendingCouplingStiffness_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepFEA_FeaShellMembraneBendingCouplingStiffness_HeaderFile
 #include <Handle_StepFEA_FeaShellMembraneBendingCouplingStiffness.hxx>
-#endif
 
-#ifndef _StepFEA_SymmetricTensor42d_HeaderFile
 #include <StepFEA_SymmetricTensor42d.hxx>
-#endif
-#ifndef _StepFEA_FeaMaterialPropertyRepresentationItem_HeaderFile
 #include <StepFEA_FeaMaterialPropertyRepresentationItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepFEA_SymmetricTensor42d;
 
 
-//! Representation of STEP entity FeaShellMembraneBendingCouplingStiffness <br>
-class StepFEA_FeaShellMembraneBendingCouplingStiffness : public StepFEA_FeaMaterialPropertyRepresentationItem {
+//! Representation of STEP entity FeaShellMembraneBendingCouplingStiffness
+class StepFEA_FeaShellMembraneBendingCouplingStiffness : public StepFEA_FeaMaterialPropertyRepresentationItem
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepFEA_FeaShellMembraneBendingCouplingStiffness();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aRepresentationItem_Name,const StepFEA_SymmetricTensor42d& aFeaConstants) ;
-  //! Returns field FeaConstants <br>
-  Standard_EXPORT     StepFEA_SymmetricTensor42d FeaConstants() const;
-  //! Set field FeaConstants <br>
-  Standard_EXPORT     void SetFeaConstants(const StepFEA_SymmetricTensor42d& FeaConstants) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepFEA_FeaShellMembraneBendingCouplingStiffness();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aRepresentationItem_Name, const StepFEA_SymmetricTensor42d& aFeaConstants) ;
+  
+  //! Returns field FeaConstants
+  Standard_EXPORT   StepFEA_SymmetricTensor42d FeaConstants()  const;
+  
+  //! Set field FeaConstants
+  Standard_EXPORT   void SetFeaConstants (const StepFEA_SymmetricTensor42d& FeaConstants) ;
 
 
 
@@ -56,7 +49,7 @@ protected:
 private: 
 
 
-StepFEA_SymmetricTensor42d theFeaConstants;
+  StepFEA_SymmetricTensor42d theFeaConstants;
 
 
 };
@@ -65,7 +58,6 @@ StepFEA_SymmetricTensor42d theFeaConstants;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_FeaShellMembraneBendingCouplingStiffness_HeaderFile

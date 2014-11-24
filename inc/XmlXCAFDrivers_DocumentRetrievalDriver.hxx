@@ -6,38 +6,27 @@
 #ifndef _XmlXCAFDrivers_DocumentRetrievalDriver_HeaderFile
 #define _XmlXCAFDrivers_DocumentRetrievalDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_XmlXCAFDrivers_DocumentRetrievalDriver_HeaderFile
 #include <Handle_XmlXCAFDrivers_DocumentRetrievalDriver.hxx>
-#endif
 
-#ifndef _XmlDrivers_DocumentRetrievalDriver_HeaderFile
 #include <XmlDrivers_DocumentRetrievalDriver.hxx>
-#endif
-#ifndef _Handle_XmlMDF_ADriverTable_HeaderFile
 #include <Handle_XmlMDF_ADriverTable.hxx>
-#endif
-#ifndef _Handle_CDM_MessageDriver_HeaderFile
 #include <Handle_CDM_MessageDriver.hxx>
-#endif
 class XmlMDF_ADriverTable;
 class CDM_MessageDriver;
 
 
-//! retrieval driver of a XS document <br>
-class XmlXCAFDrivers_DocumentRetrievalDriver : public XmlDrivers_DocumentRetrievalDriver {
+//! retrieval driver of a XS document
+class XmlXCAFDrivers_DocumentRetrievalDriver : public XmlDrivers_DocumentRetrievalDriver
+{
 
 public:
 
   
-  Standard_EXPORT   XmlXCAFDrivers_DocumentRetrievalDriver();
+  Standard_EXPORT XmlXCAFDrivers_DocumentRetrievalDriver();
   
-  Standard_EXPORT   virtual  Handle_XmlMDF_ADriverTable AttributeDrivers(const Handle(CDM_MessageDriver)& theMsgDriver) ;
+  Standard_EXPORT virtual   Handle(XmlMDF_ADriverTable) AttributeDrivers (const Handle(CDM_MessageDriver)& theMsgDriver) ;
 
 
 
@@ -60,7 +49,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XmlXCAFDrivers_DocumentRetrievalDriver_HeaderFile

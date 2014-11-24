@@ -6,39 +6,28 @@
 #ifndef _Select3D_ListNodeOfListOfSensitiveTriangle_HeaderFile
 #define _Select3D_ListNodeOfListOfSensitiveTriangle_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Select3D_ListNodeOfListOfSensitiveTriangle_HeaderFile
 #include <Handle_Select3D_ListNodeOfListOfSensitiveTriangle.hxx>
-#endif
 
-#ifndef _Handle_Select3D_SensitiveTriangle_HeaderFile
 #include <Handle_Select3D_SensitiveTriangle.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Select3D_SensitiveTriangle;
 class Select3D_ListOfSensitiveTriangle;
 class Select3D_ListIteratorOfListOfSensitiveTriangle;
 
 
 
-class Select3D_ListNodeOfListOfSensitiveTriangle : public TCollection_MapNode {
+class Select3D_ListNodeOfListOfSensitiveTriangle : public TCollection_MapNode
+{
 
 public:
 
   
-      Select3D_ListNodeOfListOfSensitiveTriangle(const Handle(Select3D_SensitiveTriangle)& I,const TCollection_MapNodePtr& n);
+    Select3D_ListNodeOfListOfSensitiveTriangle(const Handle(Select3D_SensitiveTriangle)& I, const TCollection_MapNodePtr& n);
   
-        Handle_Select3D_SensitiveTriangle& Value() const;
+      Handle(Select3D_SensitiveTriangle)& Value()  const;
 
 
 
@@ -53,12 +42,12 @@ protected:
 private: 
 
 
-Handle_Select3D_SensitiveTriangle myValue;
+  Handle(Select3D_SensitiveTriangle) myValue;
 
 
 };
 
-#define Item Handle_Select3D_SensitiveTriangle
+#define Item Handle(Select3D_SensitiveTriangle)
 #define Item_hxx <Select3D_SensitiveTriangle.hxx>
 #define TCollection_ListNode Select3D_ListNodeOfListOfSensitiveTriangle
 #define TCollection_ListNode_hxx <Select3D_ListNodeOfListOfSensitiveTriangle.hxx>
@@ -83,7 +72,6 @@ Handle_Select3D_SensitiveTriangle myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Select3D_ListNodeOfListOfSensitiveTriangle_HeaderFile

@@ -5,18 +5,12 @@
 
 #include <PColStd_VArrayTNodeOfFieldOfHArray1OfExtendedString.hxx>
 
-#ifndef _PCollection_HExtendedString_HeaderFile
 #include <PCollection_HExtendedString.hxx>
-#endif
-#ifndef _PColStd_FieldOfHArray1OfExtendedString_HeaderFile
 #include <PColStd_FieldOfHArray1OfExtendedString.hxx>
-#endif
-#ifndef _PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString_HeaderFile
 #include <PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString.hxx>
-#endif
  
 
-#define Item Handle_PCollection_HExtendedString
+#define Item Handle(PCollection_HExtendedString)
 #define Item_hxx <PCollection_HExtendedString.hxx>
 #define DBC_VArrayNode PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString
 #define DBC_VArrayNode_hxx <PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString.hxx>

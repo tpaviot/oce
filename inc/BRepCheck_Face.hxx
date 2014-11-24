@@ -6,61 +6,49 @@
 #ifndef _BRepCheck_Face_HeaderFile
 #define _BRepCheck_Face_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepCheck_Face_HeaderFile
 #include <Handle_BRepCheck_Face.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _BRepCheck_Status_HeaderFile
 #include <BRepCheck_Status.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _BRepCheck_Result_HeaderFile
 #include <BRepCheck_Result.hxx>
-#endif
 class TopoDS_Face;
 class TopoDS_Shape;
 
 
 
-class BRepCheck_Face : public BRepCheck_Result {
+class BRepCheck_Face : public BRepCheck_Result
+{
 
 public:
 
   
-  Standard_EXPORT   BRepCheck_Face(const TopoDS_Face& F);
+  Standard_EXPORT BRepCheck_Face(const TopoDS_Face& F);
   
-  Standard_EXPORT     void InContext(const TopoDS_Shape& ContextShape) ;
+  Standard_EXPORT   void InContext (const TopoDS_Shape& ContextShape) ;
   
-  Standard_EXPORT     void Minimum() ;
+  Standard_EXPORT   void Minimum() ;
   
-  Standard_EXPORT     void Blind() ;
+  Standard_EXPORT   void Blind() ;
   
-  Standard_EXPORT     BRepCheck_Status IntersectWires(const Standard_Boolean Update = Standard_False) ;
+  Standard_EXPORT   BRepCheck_Status IntersectWires (const Standard_Boolean Update = Standard_False) ;
   
-  Standard_EXPORT     BRepCheck_Status ClassifyWires(const Standard_Boolean Update = Standard_False) ;
+  Standard_EXPORT   BRepCheck_Status ClassifyWires (const Standard_Boolean Update = Standard_False) ;
   
-  Standard_EXPORT     BRepCheck_Status OrientationOfWires(const Standard_Boolean Update = Standard_False) ;
+  Standard_EXPORT   BRepCheck_Status OrientationOfWires (const Standard_Boolean Update = Standard_False) ;
   
-  Standard_EXPORT     void SetUnorientable() ;
-  //! Sets status of Face; <br>
-  Standard_EXPORT     void SetStatus(const BRepCheck_Status theStatus) ;
+  Standard_EXPORT   void SetUnorientable() ;
   
-  Standard_EXPORT     Standard_Boolean IsUnorientable() const;
+  //! Sets status of Face;
+  Standard_EXPORT   void SetStatus (const BRepCheck_Status theStatus) ;
   
-  Standard_EXPORT     Standard_Boolean GeometricControls() const;
+  Standard_EXPORT   Standard_Boolean IsUnorientable()  const;
   
-  Standard_EXPORT     void GeometricControls(const Standard_Boolean B) ;
+  Standard_EXPORT   Standard_Boolean GeometricControls()  const;
+  
+  Standard_EXPORT   void GeometricControls (const Standard_Boolean B) ;
 
 
 
@@ -75,14 +63,14 @@ protected:
 private: 
 
 
-Standard_Boolean myIntdone;
-BRepCheck_Status myIntres;
-Standard_Boolean myImbdone;
-BRepCheck_Status myImbres;
-Standard_Boolean myOridone;
-BRepCheck_Status myOrires;
-TopTools_DataMapOfShapeListOfShape myMapImb;
-Standard_Boolean myGctrl;
+  Standard_Boolean myIntdone;
+  BRepCheck_Status myIntres;
+  Standard_Boolean myImbdone;
+  BRepCheck_Status myImbres;
+  Standard_Boolean myOridone;
+  BRepCheck_Status myOrires;
+  TopTools_DataMapOfShapeListOfShape myMapImb;
+  Standard_Boolean myGctrl;
 
 
 };
@@ -91,7 +79,6 @@ Standard_Boolean myGctrl;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepCheck_Face_HeaderFile

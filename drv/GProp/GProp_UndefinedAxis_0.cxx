@@ -5,9 +5,7 @@
 
 #include <GProp_UndefinedAxis.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
 IMPLEMENT_STANDARD_EXCEPTION(GProp_UndefinedAxis)
  

@@ -6,25 +6,13 @@
 #ifndef _Extrema_LocECC2d_HeaderFile
 #define _Extrema_LocECC2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Extrema_POnCurv2d_HeaderFile
 #include <Extrema_POnCurv2d.hxx>
-#endif
 class Standard_DomainError;
 class StdFail_NotDone;
 class Adaptor2d_Curve2d;
@@ -37,20 +25,20 @@ class Extrema_SeqPOnCOfCCLocFOfLocECC2d;
 
 
 
-class Extrema_LocECC2d  {
+class Extrema_LocECC2d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Extrema_LocECC2d(const Adaptor2d_Curve2d& C1,const Adaptor2d_Curve2d& C2,const Standard_Real U0,const Standard_Real V0,const Standard_Real TolU,const Standard_Real TolV);
+  Standard_EXPORT Extrema_LocECC2d(const Adaptor2d_Curve2d& C1, const Adaptor2d_Curve2d& C2, const Standard_Real U0, const Standard_Real V0, const Standard_Real TolU, const Standard_Real TolV);
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
   
-  Standard_EXPORT     Standard_Real SquareDistance() const;
+  Standard_EXPORT   Standard_Real SquareDistance()  const;
   
-  Standard_EXPORT     void Point(Extrema_POnCurv2d& P1,Extrema_POnCurv2d& P2) const;
-
+  Standard_EXPORT   void Point (Extrema_POnCurv2d& P1, Extrema_POnCurv2d& P2)  const;
 
 
 
@@ -65,10 +53,10 @@ private:
 
 
 
-Standard_Boolean myDone;
-Standard_Real mySqDist;
-Extrema_POnCurv2d myPoint1;
-Extrema_POnCurv2d myPoint2;
+  Standard_Boolean myDone;
+  Standard_Real mySqDist;
+  Extrema_POnCurv2d myPoint1;
+  Extrema_POnCurv2d myPoint2;
 
 
 };
@@ -77,7 +65,6 @@ Extrema_POnCurv2d myPoint2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Extrema_LocECC2d_HeaderFile

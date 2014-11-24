@@ -2,28 +2,31 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{FBBA1B07-0963-0C59-0A29-B07916DDB81F}</UniqueIdentifier>
+      <UniqueIdentifier>{B1DC288E-06C3-040F-0B94-D2021B886E53}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopoDS">
-      <UniqueIdentifier>{6304E63D-019F-0EBD-04F6-DDC122B2C280}</UniqueIdentifier>
+      <UniqueIdentifier>{031736FE-1693-00CE-0E8E-A1F998098ACB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopExp">
-      <UniqueIdentifier>{FF7F9B51-0183-1622-0EF6-233341FA099A}</UniqueIdentifier>
+      <UniqueIdentifier>{7727658B-17AE-1112-0EE3-134349A6AD42}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\TopTools">
-      <UniqueIdentifier>{8C9E135D-1125-036B-0AF1-B615753AB6BD}</UniqueIdentifier>
+      <UniqueIdentifier>{B8F37917-154F-1869-05BE-D68DF60248C9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRep">
-      <UniqueIdentifier>{B35A6AEF-1377-120F-07A0-0ABE18462BA1}</UniqueIdentifier>
+      <UniqueIdentifier>{F8AEB279-063D-18D0-16A6-A6F8F1219DBA}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepLProp">
-      <UniqueIdentifier>{DA6273B7-1239-0F75-0CE1-9FBAAF995F7C}</UniqueIdentifier>
+      <UniqueIdentifier>{FA59E692-048A-115C-077B-5D2FE2F2DF3E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepAdaptor">
-      <UniqueIdentifier>{4BF35575-1317-182A-01FF-707C63F661F7}</UniqueIdentifier>
+      <UniqueIdentifier>{1E6BBA93-071F-0356-0DDD-8B9D97172CFD}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepTools">
-      <UniqueIdentifier>{99AE7F38-1651-0A0A-09DB-425F2975840F}</UniqueIdentifier>
+      <UniqueIdentifier>{8AB5E3CA-106A-06D6-0B15-F0FCB65F13C6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\BinTools">
+      <UniqueIdentifier>{0B348FAA-141A-00AC-00F1-57BB73D3ADF9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -479,6 +482,24 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\BRepTools\BRepTools_WireExplorer.cxx">
       <Filter>Source files\BRepTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BinTools\BinTools.cxx">
+      <Filter>Source files\BinTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BinTools\BinTools_Curve2dSet.cxx">
+      <Filter>Source files\BinTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BinTools\BinTools_CurveSet.cxx">
+      <Filter>Source files\BinTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BinTools\BinTools_LocationSet.cxx">
+      <Filter>Source files\BinTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BinTools\BinTools_ShapeSet.cxx">
+      <Filter>Source files\BinTools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BinTools\BinTools_SurfaceSet.cxx">
+      <Filter>Source files\BinTools</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

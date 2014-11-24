@@ -1,15 +1,5 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepRepr_ProductDefinitionShape_HeaderFile
 #include <StepRepr_ProductDefinitionShape.hxx>
-#endif
-#ifndef _StepRepr_ShapeAspect_HeaderFile
 #include <StepRepr_ShapeAspect.hxx>
-#endif
-#ifndef _StepRepr_ShapeAspectRelationship_HeaderFile
 #include <StepRepr_ShapeAspectRelationship.hxx>
-#endif
-#ifndef _StepRepr_ShapeDefinition_HeaderFile
 #include <StepRepr_ShapeDefinition.hxx>
-#endif

@@ -6,92 +6,92 @@
 #ifndef _IGESGeom_CopiousData_HeaderFile
 #define _IGESGeom_CopiousData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESGeom_CopiousData_HeaderFile
 #include <Handle_IGESGeom_CopiousData.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TColStd_HArray1OfReal;
 class Standard_OutOfRange;
 class gp_Pnt;
 class gp_Vec;
 
 
-//! defines IGESCopiousData, Type <106> Form <1-3,11-13,63> <br>
-//!          in package IGESGeom <br>
-//!          This entity stores data points in the form of pairs, <br>
-//!          triples, or sextuples. An interpretation flag value <br>
-//!          signifies which of these forms is being used. <br>
-class IGESGeom_CopiousData : public IGESData_IGESEntity {
+//! defines IGESCopiousData, Type <106> Form <1-3,11-13,63>
+//! in package IGESGeom
+//! This entity stores data points in the form of pairs,
+//! triples, or sextuples. An interpretation flag value
+//! signifies which of these forms is being used.
+class IGESGeom_CopiousData : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESGeom_CopiousData();
-  //! This method is used to set the fields of the class <br>
-//!           CopiousData <br>
-//!       - aDataType : Specifies whether data is a pair or a triple <br>
-//!                     or a sextuple. <br>
-//!       - aZPlane   : Common Z value for all points if datatype = 1 <br>
-//!       - allData   : Data to be read in groups of 2, 3 or 6 <br>
-  Standard_EXPORT     void Init(const Standard_Integer aDataType,const Standard_Real aZPlane,const Handle(TColStd_HArray1OfReal)& allData) ;
-  //! Sets Copious Data to be a Polyline if <mode> is True <br>
-//!           (Form = 11-12-13) or a Set of Points else (Form 1-2-3) <br>
-  Standard_EXPORT     void SetPolyline(const Standard_Boolean mode) ;
-  //! Sets Copious Data to be a Closed Path 2D (Form 63) <br>
-//!  Warning : DataType is not checked and must be set to ONE by Init <br>
-  Standard_EXPORT     void SetClosedPath2D() ;
-  //! Returns True if <me> is a Set of Points (Form 1-2-3) <br>
-  Standard_EXPORT     Standard_Boolean IsPointSet() const;
-  //! Returns True if <me> is a Polyline (Form 11-12-13) <br>
-  Standard_EXPORT     Standard_Boolean IsPolyline() const;
-  //! Returns True if <me> is a Closed Path 2D (Form 63) <br>
-  Standard_EXPORT     Standard_Boolean IsClosedPath2D() const;
-  //! returns data type <br>
-//! 1 = XY ( with common Z given by plane) <br>
-//! 2 = XYZ ( point) <br>
-//! 3 = XYZ + Vec(XYZ) (point + normal vector) <br>
-  Standard_EXPORT     Standard_Integer DataType() const;
-  //! returns the number of tuples <br>
-  Standard_EXPORT     Standard_Integer NbPoints() const;
-  //! Returns an individual Data, given the N0 of the Point <br>//!           and the B0 of the Coordinate (according DataType) <br>
-  Standard_EXPORT     Standard_Real Data(const Standard_Integer NumPoint,const Standard_Integer NumData) const;
-  //! If datatype = 1, then returns common z value for all data <br>
-//! else returns 0 <br>
-  Standard_EXPORT     Standard_Real ZPlane() const;
-  //! returns the coordinates of the point specified by the anIndex <br>
-//! raises exception if anIndex <= 0 or anIndex > NbPoints() <br>
-  Standard_EXPORT     gp_Pnt Point(const Standard_Integer anIndex) const;
-  //! returns the coordinates of the point specified by the anIndex <br>
-//! after applying Transf. Matrix <br>
-//! raises exception if anIndex <= 0 or anIndex > NbPoints() <br>
-  Standard_EXPORT     gp_Pnt TransformedPoint(const Standard_Integer anIndex) const;
-  //! returns i, j, k values if 3-tuple else returns (0, 0, 0) <br>
-//! raises exception if anIndex <= 0 or anIndex > NbPoints() <br>
-  Standard_EXPORT     gp_Vec Vector(const Standard_Integer anIndex) const;
-  //! returns transformed vector if 3-tuple else returns (0, 0, 0) <br>
-//! raises exception if anIndex <= 0 or anIndex > NbPoints() <br>
-  Standard_EXPORT     gp_Vec TransformedVector(const Standard_Integer anIndex) const;
+  Standard_EXPORT IGESGeom_CopiousData();
+  
+  //! This method is used to set the fields of the class
+  //! CopiousData
+  //! - aDataType : Specifies whether data is a pair or a triple
+  //! or a sextuple.
+  //! - aZPlane   : Common Z value for all points if datatype = 1
+  //! - allData   : Data to be read in groups of 2, 3 or 6
+  Standard_EXPORT   void Init (const Standard_Integer aDataType, const Standard_Real aZPlane, const Handle(TColStd_HArray1OfReal)& allData) ;
+  
+  //! Sets Copious Data to be a Polyline if <mode> is True
+  //! (Form = 11-12-13) or a Set of Points else (Form 1-2-3)
+  Standard_EXPORT   void SetPolyline (const Standard_Boolean mode) ;
+  
+  //! Sets Copious Data to be a Closed Path 2D (Form 63)
+  //! Warning : DataType is not checked and must be set to ONE by Init
+  Standard_EXPORT   void SetClosedPath2D() ;
+  
+  //! Returns True if <me> is a Set of Points (Form 1-2-3)
+  Standard_EXPORT   Standard_Boolean IsPointSet()  const;
+  
+  //! Returns True if <me> is a Polyline (Form 11-12-13)
+  Standard_EXPORT   Standard_Boolean IsPolyline()  const;
+  
+  //! Returns True if <me> is a Closed Path 2D (Form 63)
+  Standard_EXPORT   Standard_Boolean IsClosedPath2D()  const;
+  
+  //! returns data type
+  //! 1 = XY ( with common Z given by plane)
+  //! 2 = XYZ ( point)
+  //! 3 = XYZ + Vec(XYZ) (point + normal vector)
+  Standard_EXPORT   Standard_Integer DataType()  const;
+  
+  //! returns the number of tuples
+  Standard_EXPORT   Standard_Integer NbPoints()  const;
+  
+  //! Returns an individual Data, given the N0 of the Point
+  //! and the B0 of the Coordinate (according DataType)
+  Standard_EXPORT   Standard_Real Data (const Standard_Integer NumPoint, const Standard_Integer NumData)  const;
+  
+  //! If datatype = 1, then returns common z value for all data
+  //! else returns 0
+  Standard_EXPORT   Standard_Real ZPlane()  const;
+  
+  //! returns the coordinates of the point specified by the anIndex
+  //! raises exception if anIndex <= 0 or anIndex > NbPoints()
+  Standard_EXPORT   gp_Pnt Point (const Standard_Integer anIndex)  const;
+  
+  //! returns the coordinates of the point specified by the anIndex
+  //! after applying Transf. Matrix
+  //! raises exception if anIndex <= 0 or anIndex > NbPoints()
+  Standard_EXPORT   gp_Pnt TransformedPoint (const Standard_Integer anIndex)  const;
+  
+  //! returns i, j, k values if 3-tuple else returns (0, 0, 0)
+  //! raises exception if anIndex <= 0 or anIndex > NbPoints()
+  Standard_EXPORT   gp_Vec Vector (const Standard_Integer anIndex)  const;
+  
+  //! returns transformed vector if 3-tuple else returns (0, 0, 0)
+  //! raises exception if anIndex <= 0 or anIndex > NbPoints()
+  Standard_EXPORT   gp_Vec TransformedVector (const Standard_Integer anIndex)  const;
 
 
 
@@ -106,9 +106,9 @@ protected:
 private: 
 
 
-Standard_Integer theDataType;
-Standard_Real theZPlane;
-Handle_TColStd_HArray1OfReal theData;
+  Standard_Integer theDataType;
+  Standard_Real theZPlane;
+  Handle(TColStd_HArray1OfReal) theData;
 
 
 };
@@ -117,7 +117,6 @@ Handle_TColStd_HArray1OfReal theData;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGeom_CopiousData_HeaderFile

@@ -1,9 +1,3 @@
-#ifndef _IFSelect_Selection_HeaderFile
 #include <IFSelect_Selection.hxx>
-#endif
-#ifndef _IFSelect_SelectionIterator_HeaderFile
 #include <IFSelect_SelectionIterator.hxx>
-#endif
-#ifndef _IFSelect_SelectControl_HeaderFile
 #include <IFSelect_SelectControl.hxx>
-#endif

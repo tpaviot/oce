@@ -5,25 +5,13 @@
 
 #include <TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _TDF_LabelMapHasher_HeaderFile
 #include <TDF_LabelMapHasher.hxx>
-#endif
-#ifndef _TFunction_DoubleMapOfIntegerLabel_HeaderFile
 #include <TFunction_DoubleMapOfIntegerLabel.hxx>
-#endif
-#ifndef _TFunction_DoubleMapIteratorOfDoubleMapOfIntegerLabel_HeaderFile
 #include <TFunction_DoubleMapIteratorOfDoubleMapOfIntegerLabel.hxx>
-#endif
 
  
 

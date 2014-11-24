@@ -6,28 +6,14 @@
 #ifndef _TopoDSToStep_Builder_HeaderFile
 #define _TopoDSToStep_Builder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepShape_TopologicalRepresentationItem_HeaderFile
 #include <Handle_StepShape_TopologicalRepresentationItem.hxx>
-#endif
-#ifndef _TopoDSToStep_BuilderError_HeaderFile
 #include <TopoDSToStep_BuilderError.hxx>
-#endif
-#ifndef _TopoDSToStep_Root_HeaderFile
 #include <TopoDSToStep_Root.hxx>
-#endif
-#ifndef _Handle_Transfer_FinderProcess_HeaderFile
 #include <Handle_Transfer_FinderProcess.hxx>
-#endif
 class StepShape_TopologicalRepresentationItem;
 class StdFail_NotDone;
 class TopoDS_Shape;
@@ -35,24 +21,24 @@ class TopoDSToStep_Tool;
 class Transfer_FinderProcess;
 
 
-//! This builder Class provides services to build <br>
-//!          a ProSTEP Shape model from a Cas.Cad BRep. <br>
-class TopoDSToStep_Builder  : public TopoDSToStep_Root {
+//! This builder Class provides services to build
+//! a ProSTEP Shape model from a Cas.Cad BRep.
+class TopoDSToStep_Builder  : public TopoDSToStep_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopoDSToStep_Builder();
+  Standard_EXPORT TopoDSToStep_Builder();
   
-  Standard_EXPORT   TopoDSToStep_Builder(const TopoDS_Shape& S,TopoDSToStep_Tool& T,const Handle(Transfer_FinderProcess)& FP);
+  Standard_EXPORT TopoDSToStep_Builder(const TopoDS_Shape& S, TopoDSToStep_Tool& T, const Handle(Transfer_FinderProcess)& FP);
   
-  Standard_EXPORT     void Init(const TopoDS_Shape& S,TopoDSToStep_Tool& T,const Handle(Transfer_FinderProcess)& FP) ;
+  Standard_EXPORT   void Init (const TopoDS_Shape& S, TopoDSToStep_Tool& T, const Handle(Transfer_FinderProcess)& FP) ;
   
-  Standard_EXPORT     TopoDSToStep_BuilderError Error() const;
+  Standard_EXPORT   TopoDSToStep_BuilderError Error()  const;
   
-  Standard_EXPORT    const Handle_StepShape_TopologicalRepresentationItem& Value() const;
-
+  Standard_EXPORT  const  Handle(StepShape_TopologicalRepresentationItem)& Value()  const;
 
 
 
@@ -67,8 +53,8 @@ private:
 
 
 
-Handle_StepShape_TopologicalRepresentationItem myResult;
-TopoDSToStep_BuilderError myError;
+  Handle(StepShape_TopologicalRepresentationItem) myResult;
+  TopoDSToStep_BuilderError myError;
 
 
 };
@@ -77,7 +63,6 @@ TopoDSToStep_BuilderError myError;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopoDSToStep_Builder_HeaderFile

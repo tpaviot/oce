@@ -78,6 +78,8 @@
 			<Add directory="../../../src/BRepAdaptor" />
 			<Add directory="../../../drv/BRepTools" />
 			<Add directory="../../../src/BRepTools" />
+			<Add directory="../../../drv/BinTools" />
+			<Add directory="../../../src/BinTools" />
 		</Compiler>
 		<Linker>
 			<Add library="TKMath" />
@@ -85,6 +87,8 @@
 			<Add library="TKG2d" />
 			<Add library="TKG3d" />
 			<Add library="TKGeomBase" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
@@ -240,5 +244,11 @@
 		<Unit filename="../../../src/BRepTools/BRepTools_Substitution.cxx" />
 		<Unit filename="../../../src/BRepTools/BRepTools_TrsfModification.cxx" />
 		<Unit filename="../../../src/BRepTools/BRepTools_WireExplorer.cxx" />
+		<Unit filename="../../../src/BinTools/BinTools.cxx" />
+		<Unit filename="../../../src/BinTools/BinTools_Curve2dSet.cxx" />
+		<Unit filename="../../../src/BinTools/BinTools_CurveSet.cxx" />
+		<Unit filename="../../../src/BinTools/BinTools_LocationSet.cxx" />
+		<Unit filename="../../../src/BinTools/BinTools_ShapeSet.cxx" />
+		<Unit filename="../../../src/BinTools/BinTools_SurfaceSet.cxx" />
 	</Project>
 </CodeBlocks_project_file>

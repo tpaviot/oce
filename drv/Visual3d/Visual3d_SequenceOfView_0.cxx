@@ -5,21 +5,13 @@
 
 #include <Visual3d_SequenceOfView.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Visual3d_View_HeaderFile
 #include <Visual3d_View.hxx>
-#endif
-#ifndef _Visual3d_SequenceNodeOfSequenceOfView_HeaderFile
 #include <Visual3d_SequenceNodeOfSequenceOfView.hxx>
-#endif
  
 
-#define SeqItem Handle_Visual3d_View
+#define SeqItem Handle(Visual3d_View)
 #define SeqItem_hxx <Visual3d_View.hxx>
 #define TCollection_SequenceNode Visual3d_SequenceNodeOfSequenceOfView
 #define TCollection_SequenceNode_hxx <Visual3d_SequenceNodeOfSequenceOfView.hxx>

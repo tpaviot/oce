@@ -6,55 +6,42 @@
 #ifndef _MAT_TListNodeOfListOfBisector_HeaderFile
 #define _MAT_TListNodeOfListOfBisector_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MAT_TListNodeOfListOfBisector_HeaderFile
 #include <Handle_MAT_TListNodeOfListOfBisector.hxx>
-#endif
 
-#ifndef _Handle_MAT_TListNodeOfListOfBisector_HeaderFile
 #include <Handle_MAT_TListNodeOfListOfBisector.hxx>
-#endif
-#ifndef _Handle_MAT_Bisector_HeaderFile
 #include <Handle_MAT_Bisector.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_MAT_ListOfBisector_HeaderFile
 #include <Handle_MAT_ListOfBisector.hxx>
-#endif
 class MAT_Bisector;
 class MAT_ListOfBisector;
 
 
 
-class MAT_TListNodeOfListOfBisector : public MMgt_TShared {
+class MAT_TListNodeOfListOfBisector : public MMgt_TShared
+{
 
 public:
 
   
-      MAT_TListNodeOfListOfBisector();
+    MAT_TListNodeOfListOfBisector();
   
-      MAT_TListNodeOfListOfBisector(const Handle(MAT_Bisector)& anitem);
+    MAT_TListNodeOfListOfBisector(const Handle(MAT_Bisector)& anitem);
   
-        Handle_MAT_Bisector GetItem() const;
+      Handle(MAT_Bisector) GetItem()  const;
   
-        Handle_MAT_TListNodeOfListOfBisector Next() const;
+      Handle(MAT_TListNodeOfListOfBisector) Next()  const;
   
-        Handle_MAT_TListNodeOfListOfBisector Previous() const;
+      Handle(MAT_TListNodeOfListOfBisector) Previous()  const;
   
-        void SetItem(const Handle(MAT_Bisector)& anitem) ;
+      void SetItem (const Handle(MAT_Bisector)& anitem) ;
   
-        void Next(const Handle(MAT_TListNodeOfListOfBisector)& atlistnode) ;
+      void Next (const Handle(MAT_TListNodeOfListOfBisector)& atlistnode) ;
   
-        void Previous(const Handle(MAT_TListNodeOfListOfBisector)& atlistnode) ;
+      void Previous (const Handle(MAT_TListNodeOfListOfBisector)& atlistnode) ;
   
-  Standard_EXPORT     void Dummy() const;
+  Standard_EXPORT   void Dummy()  const;
 
 
 
@@ -69,14 +56,14 @@ protected:
 private: 
 
 
-Handle_MAT_TListNodeOfListOfBisector thenext;
-Handle_MAT_TListNodeOfListOfBisector theprevious;
-Handle_MAT_Bisector theitem;
+  Handle(MAT_TListNodeOfListOfBisector) thenext;
+  Handle(MAT_TListNodeOfListOfBisector) theprevious;
+  Handle(MAT_Bisector) theitem;
 
 
 };
 
-#define Item Handle_MAT_Bisector
+#define Item Handle(MAT_Bisector)
 #define Item_hxx <MAT_Bisector.hxx>
 #define MAT_TListNode MAT_TListNodeOfListOfBisector
 #define MAT_TListNode_hxx <MAT_TListNodeOfListOfBisector.hxx>
@@ -101,7 +88,6 @@ Handle_MAT_Bisector theitem;
 #undef MAT_TList_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MAT_TListNodeOfListOfBisector_HeaderFile

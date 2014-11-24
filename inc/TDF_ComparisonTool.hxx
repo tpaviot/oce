@@ -6,92 +6,83 @@
 #ifndef _TDF_ComparisonTool_HeaderFile
 #define _TDF_ComparisonTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_TDF_DataSet_HeaderFile
 #include <Handle_TDF_DataSet.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TDF_DataSet;
 class TDF_IDFilter;
 class TDF_RelocationTable;
 class TDF_Label;
 
 
-//! This class provides services to compare sets of <br>
-//!          information. The use of this tool can works after <br>
-//!          a copy, acted by a CopyTool. <br>
-//! <br>
-//!          * Compare(...) compares two DataSet and returns <br>
-//!          the result. <br>
-//! <br>
-//!          * SourceUnbound(...) builds the difference between <br>
-//!          a relocation dictionnary and a source set of <br>
-//!          information. <br>
-//! <br>
-//!          * TargetUnbound(...) does the same between a <br>
-//!          relocation dictionnary and a target set of <br>
-//!          information. <br>
-//! <br>
-//!          * Cut(aDataSet, anLabel) removes a set of <br>
-//!          attributes. <br>
-//! <br>
-//!          * IsSelfContained(...) returns true if all the <br>
-//!          labels of the attributes of the given DataSet are <br>
-//!          descendant of the given label. <br>
-class TDF_ComparisonTool  {
+//! This class provides services to compare sets of
+//! information. The use of this tool can works after
+//! a copy, acted by a CopyTool.
+//!
+//! * Compare(...) compares two DataSet and returns
+//! the result.
+//!
+//! * SourceUnbound(...) builds the difference between
+//! a relocation dictionnary and a source set of
+//! information.
+//!
+//! * TargetUnbound(...) does the same between a
+//! relocation dictionnary and a target set of
+//! information.
+//!
+//! * Cut(aDataSet, anLabel) removes a set of
+//! attributes.
+//!
+//! * IsSelfContained(...) returns true if all the
+//! labels of the attributes of the given DataSet are
+//! descendant of the given label.
+class TDF_ComparisonTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Compares <aSourceDataSet> with <aTargetDataSet>, <br>
-//!          updating <aRelocationTable> with labels and <br>
-//!          attributes found in both sets. <br>
-  Standard_EXPORT   static  void Compare(const Handle(TDF_DataSet)& aSourceDataSet,const Handle(TDF_DataSet)& aTargetDataSet,const TDF_IDFilter& aFilter,const Handle(TDF_RelocationTable)& aRelocationTable) ;
-  //! Finds from <aRefDataSet> all the keys not bound <br>
-//!          into <aRelocationTable> and put them into <br>
-//!          <aDiffDataSet>. Returns True if the difference <br>
-//!          contains at least one key. (A key is a source <br>
-//!          object). <br>
-//! <br>
-//!          <anOption> may take the following values: <br>
-//!          1 : labels treatment only; <br>
-//!          2 : attributes treatment only (default value); <br>
-//!          3 : both labels & attributes treatment. <br>
-  Standard_EXPORT   static  Standard_Boolean SourceUnbound(const Handle(TDF_DataSet)& aRefDataSet,const Handle(TDF_RelocationTable)& aRelocationTable,const TDF_IDFilter& aFilter,const Handle(TDF_DataSet)& aDiffDataSet,const Standard_Integer anOption = 2) ;
-  //! Substracts from <aRefDataSet> all the items bound <br>
-//!          into <aRelocationTable>. The result is put into <br>
-//!          <aDiffDataSet>. Returns True if the difference <br>
-//!          contains at least one item. (An item is a target <br>
-//!          object). <br>
-//! <br>
-//!          <anOption> may take the following values: <br>
-//!          1 : labels treatment only; <br>
-//!          2 : attributes treatment  only(default value); <br>
-//!          3 : both labels & attributes treatment. <br>
-  Standard_EXPORT   static  Standard_Boolean TargetUnbound(const Handle(TDF_DataSet)& aRefDataSet,const Handle(TDF_RelocationTable)& aRelocationTable,const TDF_IDFilter& aFilter,const Handle(TDF_DataSet)& aDiffDataSet,const Standard_Integer anOption = 2) ;
-  //! Removes attributes from <aDataSet>. <br>
-  Standard_EXPORT   static  void Cut(const Handle(TDF_DataSet)& aDataSet) ;
-  //! Returns true if all the labels of <aDataSet> are <br>
-//!          descendant of <aLabel>. <br>
-  Standard_EXPORT   static  Standard_Boolean IsSelfContained(const TDF_Label& aLabel,const Handle(TDF_DataSet)& aDataSet) ;
-
+  
+  //! Compares <aSourceDataSet> with <aTargetDataSet>,
+  //! updating <aRelocationTable> with labels and
+  //! attributes found in both sets.
+  Standard_EXPORT static   void Compare (const Handle(TDF_DataSet)& aSourceDataSet, const Handle(TDF_DataSet)& aTargetDataSet, const TDF_IDFilter& aFilter, const Handle(TDF_RelocationTable)& aRelocationTable) ;
+  
+  //! Finds from <aRefDataSet> all the keys not bound
+  //! into <aRelocationTable> and put them into
+  //! <aDiffDataSet>. Returns True if the difference
+  //! contains at least one key. (A key is a source
+  //! object).
+  //!
+  //! <anOption> may take the following values:
+  //! 1 : labels treatment only;
+  //! 2 : attributes treatment only (default value);
+  //! 3 : both labels & attributes treatment.
+  Standard_EXPORT static   Standard_Boolean SourceUnbound (const Handle(TDF_DataSet)& aRefDataSet, const Handle(TDF_RelocationTable)& aRelocationTable, const TDF_IDFilter& aFilter, const Handle(TDF_DataSet)& aDiffDataSet, const Standard_Integer anOption = 2) ;
+  
+  //! Substracts from <aRefDataSet> all the items bound
+  //! into <aRelocationTable>. The result is put into
+  //! <aDiffDataSet>. Returns True if the difference
+  //! contains at least one item. (An item is a target
+  //! object).
+  //!
+  //! <anOption> may take the following values:
+  //! 1 : labels treatment only;
+  //! 2 : attributes treatment  only(default value);
+  //! 3 : both labels & attributes treatment.
+  Standard_EXPORT static   Standard_Boolean TargetUnbound (const Handle(TDF_DataSet)& aRefDataSet, const Handle(TDF_RelocationTable)& aRelocationTable, const TDF_IDFilter& aFilter, const Handle(TDF_DataSet)& aDiffDataSet, const Standard_Integer anOption = 2) ;
+  
+  //! Removes attributes from <aDataSet>.
+  Standard_EXPORT static   void Cut (const Handle(TDF_DataSet)& aDataSet) ;
+  
+  //! Returns true if all the labels of <aDataSet> are
+  //! descendant of <aLabel>.
+  Standard_EXPORT static   Standard_Boolean IsSelfContained (const TDF_Label& aLabel, const Handle(TDF_DataSet)& aDataSet) ;
 
 
 
@@ -104,11 +95,13 @@ protected:
 
 private:
 
-  //! Internal comparison method used by Compare(...). <br>
-  Standard_EXPORT   static  void Compare(const TDF_Label& aSrcLabel,const TDF_Label& aTrgLabel,const Handle(TDF_DataSet)& aSourceDataSet,const Handle(TDF_DataSet)& aTargetDataSet,const TDF_IDFilter& aFilter,const Handle(TDF_RelocationTable)& aRelocationTable) ;
-  //! Internal function used by SourceUnbound() and <br>
-//!          TargetUnbound(). <br>
-  Standard_EXPORT   static  Standard_Boolean Unbound(const Handle(TDF_DataSet)& aRefDataSet,const Handle(TDF_RelocationTable)& aRelocationTable,const TDF_IDFilter& aFilter,const Handle(TDF_DataSet)& aDiffDataSet,const Standard_Integer anOption,const Standard_Boolean theSource) ;
+  
+  //! Internal comparison method used by Compare(...).
+  Standard_EXPORT static   void Compare (const TDF_Label& aSrcLabel, const TDF_Label& aTrgLabel, const Handle(TDF_DataSet)& aSourceDataSet, const Handle(TDF_DataSet)& aTargetDataSet, const TDF_IDFilter& aFilter, const Handle(TDF_RelocationTable)& aRelocationTable) ;
+  
+  //! Internal function used by SourceUnbound() and
+  //! TargetUnbound().
+  Standard_EXPORT static   Standard_Boolean Unbound (const Handle(TDF_DataSet)& aRefDataSet, const Handle(TDF_RelocationTable)& aRelocationTable, const TDF_IDFilter& aFilter, const Handle(TDF_DataSet)& aDiffDataSet, const Standard_Integer anOption, const Standard_Boolean theSource) ;
 
 
 
@@ -119,7 +112,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_ComparisonTool_HeaderFile

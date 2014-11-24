@@ -5,25 +5,13 @@
 
 #include <TNaming_DataMapNodeOfDataMapOfShapeShapesSet.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TNaming_ShapesSet_HeaderFile
 #include <TNaming_ShapesSet.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _TNaming_DataMapOfShapeShapesSet_HeaderFile
 #include <TNaming_DataMapOfShapeShapesSet.hxx>
-#endif
-#ifndef _TNaming_DataMapIteratorOfDataMapOfShapeShapesSet_HeaderFile
 #include <TNaming_DataMapIteratorOfDataMapOfShapeShapesSet.hxx>
-#endif
 
  
 

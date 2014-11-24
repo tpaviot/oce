@@ -6,38 +6,27 @@
 #ifndef _BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder_HeaderFile
 #define _BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder_HeaderFile
 #include <Handle_BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder.hxx>
-#endif
 
-#ifndef _BRepFill_EdgeFaceAndOrder_HeaderFile
 #include <BRepFill_EdgeFaceAndOrder.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class BRepFill_EdgeFaceAndOrder;
 class BRepFill_SequenceOfEdgeFaceAndOrder;
 
 
 
-class BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder : public TCollection_SeqNode {
+class BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder : public TCollection_SeqNode
+{
 
 public:
 
   
-      BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder(const BRepFill_EdgeFaceAndOrder& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder(const BRepFill_EdgeFaceAndOrder& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        BRepFill_EdgeFaceAndOrder& Value() const;
+      BRepFill_EdgeFaceAndOrder& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-BRepFill_EdgeFaceAndOrder myValue;
+  BRepFill_EdgeFaceAndOrder myValue;
 
 
 };
@@ -78,7 +67,6 @@ BRepFill_EdgeFaceAndOrder myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepFill_SequenceNodeOfSequenceOfEdgeFaceAndOrder_HeaderFile

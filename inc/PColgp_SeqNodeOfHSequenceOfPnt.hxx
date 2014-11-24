@@ -6,60 +6,45 @@
 #ifndef _PColgp_SeqNodeOfHSequenceOfPnt_HeaderFile
 #define _PColgp_SeqNodeOfHSequenceOfPnt_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PColgp_SeqNodeOfHSequenceOfPnt_HeaderFile
 #include <Handle_PColgp_SeqNodeOfHSequenceOfPnt.hxx>
-#endif
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Handle_PColgp_SeqNodeOfHSequenceOfPnt_HeaderFile
 #include <Handle_PColgp_SeqNodeOfHSequenceOfPnt.hxx>
-#endif
-#ifndef _PMMgt_PManaged_HeaderFile
 #include <PMMgt_PManaged.hxx>
-#endif
-#ifndef _Handle_PColgp_HSequenceOfPnt_HeaderFile
 #include <Handle_PColgp_HSequenceOfPnt.hxx>
-#endif
 class PColgp_HSequenceOfPnt;
 class PColgp_SeqExplorerOfHSequenceOfPnt;
 class gp_Pnt;
 
 
-class PColgp_SeqNodeOfHSequenceOfPnt : public PMMgt_PManaged {
+class PColgp_SeqNodeOfHSequenceOfPnt : public PMMgt_PManaged
+{
 
 public:
 
   
-  Standard_EXPORT   PColgp_SeqNodeOfHSequenceOfPnt(const Handle(PColgp_SeqNodeOfHSequenceOfPnt)& TheLast,const gp_Pnt& TheItem);
+  Standard_EXPORT PColgp_SeqNodeOfHSequenceOfPnt(const Handle(PColgp_SeqNodeOfHSequenceOfPnt)& TheLast, const gp_Pnt& TheItem);
   
-  Standard_EXPORT   PColgp_SeqNodeOfHSequenceOfPnt(const gp_Pnt& TheItem,const Handle(PColgp_SeqNodeOfHSequenceOfPnt)& TheFirst);
+  Standard_EXPORT PColgp_SeqNodeOfHSequenceOfPnt(const gp_Pnt& TheItem, const Handle(PColgp_SeqNodeOfHSequenceOfPnt)& TheFirst);
   
-  Standard_EXPORT   PColgp_SeqNodeOfHSequenceOfPnt(const Handle(PColgp_SeqNodeOfHSequenceOfPnt)& ThePrevious,const Handle(PColgp_SeqNodeOfHSequenceOfPnt)& TheNext,const gp_Pnt& TheItem);
+  Standard_EXPORT PColgp_SeqNodeOfHSequenceOfPnt(const Handle(PColgp_SeqNodeOfHSequenceOfPnt)& ThePrevious, const Handle(PColgp_SeqNodeOfHSequenceOfPnt)& TheNext, const gp_Pnt& TheItem);
   
-  Standard_EXPORT     gp_Pnt Value() const;
+  Standard_EXPORT   gp_Pnt Value()  const;
   
-  Standard_EXPORT     Handle_PColgp_SeqNodeOfHSequenceOfPnt Next() const;
+  Standard_EXPORT   Handle(PColgp_SeqNodeOfHSequenceOfPnt) Next()  const;
   
-  Standard_EXPORT     Handle_PColgp_SeqNodeOfHSequenceOfPnt Previous() const;
+  Standard_EXPORT   Handle(PColgp_SeqNodeOfHSequenceOfPnt) Previous()  const;
   
-  Standard_EXPORT     void SetValue(const gp_Pnt& AnItem) ;
+  Standard_EXPORT   void SetValue (const gp_Pnt& AnItem) ;
   
-  Standard_EXPORT     void SetNext(const Handle(PColgp_SeqNodeOfHSequenceOfPnt)& ANode) ;
+  Standard_EXPORT   void SetNext (const Handle(PColgp_SeqNodeOfHSequenceOfPnt)& ANode) ;
   
-  Standard_EXPORT     void SetPrevious(const Handle(PColgp_SeqNodeOfHSequenceOfPnt)& ANode) ;
+  Standard_EXPORT   void SetPrevious (const Handle(PColgp_SeqNodeOfHSequenceOfPnt)& ANode) ;
 
-  PColgp_SeqNodeOfHSequenceOfPnt( )
+PColgp_SeqNodeOfHSequenceOfPnt( )
 {
   
 }
@@ -87,9 +72,9 @@ protected:
 private: 
 
 
-Handle_PColgp_SeqNodeOfHSequenceOfPnt MyPrevious;
-gp_Pnt MyItem;
-Handle_PColgp_SeqNodeOfHSequenceOfPnt MyNext;
+  Handle(PColgp_SeqNodeOfHSequenceOfPnt) MyPrevious;
+  gp_Pnt MyItem;
+  Handle(PColgp_SeqNodeOfHSequenceOfPnt) MyNext;
 
 
 };
@@ -98,7 +83,6 @@ Handle_PColgp_SeqNodeOfHSequenceOfPnt MyNext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PColgp_SeqNodeOfHSequenceOfPnt_HeaderFile

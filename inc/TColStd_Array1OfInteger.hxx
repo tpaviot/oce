@@ -6,25 +6,13 @@
 #ifndef _TColStd_Array1OfInteger_HeaderFile
 #define _TColStd_Array1OfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -32,52 +20,52 @@ class Standard_OutOfMemory;
 
 
 
-class TColStd_Array1OfInteger  {
+class TColStd_Array1OfInteger 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      TColStd_Array1OfInteger(const Standard_Integer Low,const Standard_Integer Up);
+    TColStd_Array1OfInteger(const Standard_Integer Low, const Standard_Integer Up);
   
-      TColStd_Array1OfInteger(const Standard_Integer& Item,const Standard_Integer Low,const Standard_Integer Up);
+    TColStd_Array1OfInteger(const Standard_Integer& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const Standard_Integer& V) ;
+  Standard_EXPORT   void Init (const Standard_Integer& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~TColStd_Array1OfInteger()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const TColStd_Array1OfInteger& Assign(const TColStd_Array1OfInteger& Other) ;
-   const TColStd_Array1OfInteger& operator =(const TColStd_Array1OfInteger& Other) 
+  Standard_EXPORT  const  TColStd_Array1OfInteger& Assign (const TColStd_Array1OfInteger& Other) ;
+ const  TColStd_Array1OfInteger& operator = (const TColStd_Array1OfInteger& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Standard_Integer& Value) ;
+      void SetValue (const Standard_Integer Index, const Standard_Integer& Value) ;
   
-       const Standard_Integer& Value(const Standard_Integer Index) const;
-     const Standard_Integer& operator ()(const Standard_Integer Index) const
+     const  Standard_Integer& Value (const Standard_Integer Index)  const;
+   const  Standard_Integer& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        Standard_Integer& ChangeValue(const Standard_Integer Index) ;
-      Standard_Integer& operator ()(const Standard_Integer Index) 
+      Standard_Integer& ChangeValue (const Standard_Integer Index) ;
+    Standard_Integer& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -91,13 +79,13 @@ protected:
 private:
 
   
-  Standard_EXPORT   TColStd_Array1OfInteger(const TColStd_Array1OfInteger& AnArray);
+  Standard_EXPORT TColStd_Array1OfInteger(const TColStd_Array1OfInteger& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
@@ -115,7 +103,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_Array1OfInteger_HeaderFile

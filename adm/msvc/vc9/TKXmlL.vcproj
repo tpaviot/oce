@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKXmlL"
-	ProjectGUID="{A9AF2F82-0C80-0CDD-15DA-E898767192EF}"
+	ProjectGUID="{FF860FCB-05AC-1168-07A5-2338B76098D0}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -248,7 +248,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\XmlLDrivers;..\..\..\src\XmlLDrivers;..\..\..\drv\XmlMDF;..\..\..\src\XmlMDF;..\..\..\drv\XmlMDataStd;..\..\..\src\XmlMDataStd;..\..\..\drv\XmlMDocStd;..\..\..\src\XmlMDocStd;..\..\..\drv\XmlMFunction;..\..\..\src\XmlMFunction;..\..\..\drv\XmlObjMgt;..\..\..\src\XmlObjMgt;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__XmlLDrivers_DLL;__XmlMDF_DLL;__XmlMDataStd_DLL;__XmlMDocStd_DLL;__XmlMFunction_DLL;__XmlObjMgt_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__XmlLDrivers_DLL;__XmlMDF_DLL;__XmlMDataStd_DLL;__XmlMDocStd_DLL;__XmlMFunction_DLL;__XmlObjMgt_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__XmlLDrivers_DLL;__XmlMDF_DLL;__XmlMDataStd_DLL;__XmlMDocStd_DLL;__XmlMFunction_DLL;__XmlObjMgt_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__XmlLDrivers_DLL;__XmlMDF_DLL;__XmlMDataStd_DLL;__XmlMDocStd_DLL;__XmlMFunction_DLL;__XmlObjMgt_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -343,7 +343,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\XmlLDrivers;..\..\..\src\XmlLDrivers;..\..\..\drv\XmlMDF;..\..\..\src\XmlMDF;..\..\..\drv\XmlMDataStd;..\..\..\src\XmlMDataStd;..\..\..\drv\XmlMDocStd;..\..\..\src\XmlMDocStd;..\..\..\drv\XmlMFunction;..\..\..\src\XmlMFunction;..\..\..\drv\XmlObjMgt;..\..\..\src\XmlObjMgt;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__XmlLDrivers_DLL;__XmlMDF_DLL;__XmlMDataStd_DLL;__XmlMDocStd_DLL;__XmlMFunction_DLL;__XmlObjMgt_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__XmlLDrivers_DLL;__XmlMDF_DLL;__XmlMDataStd_DLL;__XmlMDocStd_DLL;__XmlMFunction_DLL;__XmlObjMgt_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -365,7 +365,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__XmlLDrivers_DLL;__XmlMDF_DLL;__XmlMDataStd_DLL;__XmlMDocStd_DLL;__XmlMFunction_DLL;__XmlObjMgt_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__XmlLDrivers_DLL;__XmlMDF_DLL;__XmlMDataStd_DLL;__XmlMDocStd_DLL;__XmlMFunction_DLL;__XmlObjMgt_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"

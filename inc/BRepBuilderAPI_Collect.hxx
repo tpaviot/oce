@@ -6,51 +6,39 @@
 #ifndef _BRepBuilderAPI_Collect_HeaderFile
 #define _BRepBuilderAPI_Collect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_MapOfShape_HeaderFile
 #include <TopTools_MapOfShape.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
-#endif
 class TopoDS_Shape;
 class BRepBuilderAPI_MakeShape;
 class TopTools_DataMapOfShapeListOfShape;
 
 
 
-class BRepBuilderAPI_Collect  {
+class BRepBuilderAPI_Collect 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepBuilderAPI_Collect();
+  Standard_EXPORT BRepBuilderAPI_Collect();
   
-  Standard_EXPORT     void Add(const TopoDS_Shape& SI,BRepBuilderAPI_MakeShape& MKS) ;
+  Standard_EXPORT   void Add (const TopoDS_Shape& SI, BRepBuilderAPI_MakeShape& MKS) ;
   
-  Standard_EXPORT     void AddGenerated(const TopoDS_Shape& S,const TopoDS_Shape& Gen) ;
+  Standard_EXPORT   void AddGenerated (const TopoDS_Shape& S, const TopoDS_Shape& Gen) ;
   
-  Standard_EXPORT     void AddModif(const TopoDS_Shape& S,const TopoDS_Shape& Mod) ;
+  Standard_EXPORT   void AddModif (const TopoDS_Shape& S, const TopoDS_Shape& Mod) ;
   
-  Standard_EXPORT     void Filter(const TopoDS_Shape& SF) ;
+  Standard_EXPORT   void Filter (const TopoDS_Shape& SF) ;
   
-  Standard_EXPORT    const TopTools_DataMapOfShapeListOfShape& Modification() const;
+  Standard_EXPORT  const  TopTools_DataMapOfShapeListOfShape& Modification()  const;
   
-  Standard_EXPORT    const TopTools_DataMapOfShapeListOfShape& Generated() const;
-
+  Standard_EXPORT  const  TopTools_DataMapOfShapeListOfShape& Generated()  const;
 
 
 
@@ -65,10 +53,10 @@ private:
 
 
 
-TopoDS_Shape myInitialShape;
-TopTools_MapOfShape myDeleted;
-TopTools_DataMapOfShapeListOfShape myMod;
-TopTools_DataMapOfShapeListOfShape myGen;
+  TopoDS_Shape myInitialShape;
+  TopTools_MapOfShape myDeleted;
+  TopTools_DataMapOfShapeListOfShape myMod;
+  TopTools_DataMapOfShapeListOfShape myGen;
 
 
 };
@@ -77,7 +65,6 @@ TopTools_DataMapOfShapeListOfShape myGen;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepBuilderAPI_Collect_HeaderFile

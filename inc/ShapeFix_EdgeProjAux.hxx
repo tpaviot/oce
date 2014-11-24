@@ -6,63 +6,46 @@
 #ifndef _ShapeFix_EdgeProjAux_HeaderFile
 #define _ShapeFix_EdgeProjAux_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeFix_EdgeProjAux_HeaderFile
 #include <Handle_ShapeFix_EdgeProjAux.hxx>
-#endif
 
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
 class TopoDS_Face;
 class TopoDS_Edge;
 class Geom2d_Curve;
 
 
-//! Project 3D point (vertex) on pcurves to find Vertex Parameter <br>
-//!          on parametric representation of an edge <br>
-class ShapeFix_EdgeProjAux : public MMgt_TShared {
+//! Project 3D point (vertex) on pcurves to find Vertex Parameter
+//! on parametric representation of an edge
+class ShapeFix_EdgeProjAux : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   ShapeFix_EdgeProjAux();
+  Standard_EXPORT ShapeFix_EdgeProjAux();
   
-  Standard_EXPORT   ShapeFix_EdgeProjAux(const TopoDS_Face& F,const TopoDS_Edge& E);
+  Standard_EXPORT ShapeFix_EdgeProjAux(const TopoDS_Face& F, const TopoDS_Edge& E);
   
-  Standard_EXPORT     void Init(const TopoDS_Face& F,const TopoDS_Edge& E) ;
+  Standard_EXPORT   void Init (const TopoDS_Face& F, const TopoDS_Edge& E) ;
   
-  Standard_EXPORT     void Compute(const Standard_Real preci) ;
+  Standard_EXPORT   void Compute (const Standard_Real preci) ;
   
-  Standard_EXPORT     Standard_Boolean IsFirstDone() const;
+  Standard_EXPORT   Standard_Boolean IsFirstDone()  const;
   
-  Standard_EXPORT     Standard_Boolean IsLastDone() const;
+  Standard_EXPORT   Standard_Boolean IsLastDone()  const;
   
-  Standard_EXPORT     Standard_Real FirstParam() const;
+  Standard_EXPORT   Standard_Real FirstParam()  const;
   
-  Standard_EXPORT     Standard_Real LastParam() const;
+  Standard_EXPORT   Standard_Real LastParam()  const;
   
-  Standard_EXPORT     Standard_Boolean IsIso(const Handle(Geom2d_Curve)& C) ;
+  Standard_EXPORT   Standard_Boolean IsIso (const Handle(Geom2d_Curve)& C) ;
 
 
 
@@ -72,18 +55,18 @@ public:
 protected:
 
   
-  Standard_EXPORT     void Init2d(const Standard_Real preci) ;
+  Standard_EXPORT   void Init2d (const Standard_Real preci) ;
   
-  Standard_EXPORT     void Init3d(const Standard_Real preci) ;
+  Standard_EXPORT   void Init3d (const Standard_Real preci) ;
   
-  Standard_EXPORT     void UpdateParam2d(const Handle(Geom2d_Curve)& C) ;
+  Standard_EXPORT   void UpdateParam2d (const Handle(Geom2d_Curve)& C) ;
 
-TopoDS_Face myFace;
-TopoDS_Edge myEdge;
-Standard_Real myFirstParam;
-Standard_Real myLastParam;
-Standard_Boolean myFirstDone;
-Standard_Boolean myLastDone;
+  TopoDS_Face myFace;
+  TopoDS_Edge myEdge;
+  Standard_Real myFirstParam;
+  Standard_Real myLastParam;
+  Standard_Boolean myFirstDone;
+  Standard_Boolean myLastDone;
 
 
 private: 
@@ -97,7 +80,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeFix_EdgeProjAux_HeaderFile

@@ -5,19 +5,11 @@
 
 #include <TDF_ListNodeOfIDList.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _TDF_IDList_HeaderFile
 #include <TDF_IDList.hxx>
-#endif
-#ifndef _TDF_ListIteratorOfIDList_HeaderFile
 #include <TDF_ListIteratorOfIDList.hxx>
-#endif
 
  
 

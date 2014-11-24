@@ -6,25 +6,13 @@
 #ifndef _TopOpeBRepBuild_ListIteratorOfListOfShapeListOfShape_HeaderFile
 #define _TopOpeBRepBuild_ListIteratorOfListOfShapeListOfShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape_HeaderFile
 #include <Handle_TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class TopOpeBRepBuild_ListOfShapeListOfShape;
@@ -33,27 +21,27 @@ class TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape;
 
 
 
-class TopOpeBRepBuild_ListIteratorOfListOfShapeListOfShape  {
+class TopOpeBRepBuild_ListIteratorOfListOfShapeListOfShape 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepBuild_ListIteratorOfListOfShapeListOfShape();
+  Standard_EXPORT TopOpeBRepBuild_ListIteratorOfListOfShapeListOfShape();
   
-  Standard_EXPORT   TopOpeBRepBuild_ListIteratorOfListOfShapeListOfShape(const TopOpeBRepBuild_ListOfShapeListOfShape& L);
+  Standard_EXPORT TopOpeBRepBuild_ListIteratorOfListOfShapeListOfShape(const TopOpeBRepBuild_ListOfShapeListOfShape& L);
   
-  Standard_EXPORT     void Initialize(const TopOpeBRepBuild_ListOfShapeListOfShape& L) ;
+  Standard_EXPORT   void Initialize (const TopOpeBRepBuild_ListOfShapeListOfShape& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     TopOpeBRepBuild_ShapeListOfShape& Value() const;
+  Standard_EXPORT   TopOpeBRepBuild_ShapeListOfShape& Value()  const;
 
 
 friend class TopOpeBRepBuild_ListOfShapeListOfShape;
-
 
 
 protected:
@@ -66,8 +54,8 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
@@ -97,7 +85,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepBuild_ListIteratorOfListOfShapeListOfShape_HeaderFile

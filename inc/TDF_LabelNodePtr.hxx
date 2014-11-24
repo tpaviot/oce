@@ -7,7 +7,6 @@
 #define _TDF_LabelNodePtr_HeaderFile
 
 class TDF_LabelNode;
-
 typedef TDF_LabelNode* TDF_LabelNodePtr;
 
-#endif
+#endif // _TDF_LabelNodePtr_HeaderFile

@@ -6,22 +6,12 @@
 #ifndef _TopOpeBRep_FFTransitionTool_HeaderFile
 #define _TopOpeBRep_FFTransitionTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
 class TopOpeBRepDS_Transition;
 class TopOpeBRep_VPointInter;
 class TopOpeBRep_LineInter;
@@ -29,28 +19,29 @@ class TopoDS_Shape;
 
 
 
-class TopOpeBRep_FFTransitionTool  {
+class TopOpeBRep_FFTransitionTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  TopOpeBRepDS_Transition ProcessLineTransition(const TopOpeBRep_VPointInter& P,const Standard_Integer Index,const TopAbs_Orientation EdgeOrientation) ;
+  Standard_EXPORT static   TopOpeBRepDS_Transition ProcessLineTransition (const TopOpeBRep_VPointInter& P, const Standard_Integer Index, const TopAbs_Orientation EdgeOrientation) ;
   
-  Standard_EXPORT   static  TopOpeBRepDS_Transition ProcessLineTransition(const TopOpeBRep_VPointInter& P,const TopOpeBRep_LineInter& L) ;
+  Standard_EXPORT static   TopOpeBRepDS_Transition ProcessLineTransition (const TopOpeBRep_VPointInter& P, const TopOpeBRep_LineInter& L) ;
   
-  Standard_EXPORT   static  TopOpeBRepDS_Transition ProcessEdgeTransition(const TopOpeBRep_VPointInter& P,const Standard_Integer Index,const TopAbs_Orientation LineOrientation) ;
+  Standard_EXPORT static   TopOpeBRepDS_Transition ProcessEdgeTransition (const TopOpeBRep_VPointInter& P, const Standard_Integer Index, const TopAbs_Orientation LineOrientation) ;
   
-  Standard_EXPORT   static  TopOpeBRepDS_Transition ProcessFaceTransition(const TopOpeBRep_LineInter& L,const Standard_Integer Index,const TopAbs_Orientation FaceOrientation) ;
-  //! compute transition on "IntPatch_Restriction line" edge <R> <br>
-//! when crossing edge <E> of face <F> at point <VP>. <br>
-//! VP is given on edge <E> of face <F> of index <Index> (1 or 2). <br>
-//! <VP> has been classified by FacesFiller as TopAbs_ON an edge <R> <br>
-//! of the other face than <F> of current (face/face) intersection. <br>
-//! Transition depends on the orientation of E in F. <br>
-//! This method should be provided by IntPatch_Line (NYI) <br>
-  Standard_EXPORT   static  TopOpeBRepDS_Transition ProcessEdgeONTransition(const TopOpeBRep_VPointInter& VP,const Standard_Integer Index,const TopoDS_Shape& R,const TopoDS_Shape& E,const TopoDS_Shape& F) ;
-
+  Standard_EXPORT static   TopOpeBRepDS_Transition ProcessFaceTransition (const TopOpeBRep_LineInter& L, const Standard_Integer Index, const TopAbs_Orientation FaceOrientation) ;
+  
+  //! compute transition on "IntPatch_Restriction line" edge <R>
+  //! when crossing edge <E> of face <F> at point <VP>.
+  //! VP is given on edge <E> of face <F> of index <Index> (1 or 2).
+  //! <VP> has been classified by FacesFiller as TopAbs_ON an edge <R>
+  //! of the other face than <F> of current (face/face) intersection.
+  //! Transition depends on the orientation of E in F.
+  //! This method should be provided by IntPatch_Line (NYI)
+  Standard_EXPORT static   TopOpeBRepDS_Transition ProcessEdgeONTransition (const TopOpeBRep_VPointInter& VP, const Standard_Integer Index, const TopoDS_Shape& R, const TopoDS_Shape& E, const TopoDS_Shape& F) ;
 
 
 
@@ -73,7 +64,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRep_FFTransitionTool_HeaderFile

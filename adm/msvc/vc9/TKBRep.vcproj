@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKBRep"
-	ProjectGUID="{93298628-0701-1222-16CD-6CE1A351AEB5}"
+	ProjectGUID="{315AD5C4-111E-0283-0733-BDB0417EAAF8}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -49,10 +49,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="-MP"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\TopoDS;..\..\..\src\TopoDS;..\..\..\drv\TopExp;..\..\..\src\TopExp;..\..\..\drv\TopTools;..\..\..\src\TopTools;..\..\..\drv\BRep;..\..\..\src\BRep;..\..\..\drv\BRepLProp;..\..\..\src\BRepLProp;..\..\..\drv\BRepAdaptor;..\..\..\src\BRepAdaptor;..\..\..\drv\BRepTools;..\..\..\src\BRepTools;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\TopoDS;..\..\..\src\TopoDS;..\..\..\drv\TopExp;..\..\..\src\TopExp;..\..\..\drv\TopTools;..\..\..\src\TopTools;..\..\..\drv\BRep;..\..\..\src\BRep;..\..\..\drv\BRepLProp;..\..\..\src\BRepLProp;..\..\..\drv\BRepAdaptor;..\..\..\src\BRepAdaptor;..\..\..\drv\BRepTools;..\..\..\src\BRepTools;..\..\..\drv\BinTools;..\..\..\src\BinTools;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TopoDS_DLL;__TopExp_DLL;__TopTools_DLL;__BRep_DLL;__BRepLProp_DLL;__BRepAdaptor_DLL;__BRepTools_DLL"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TopoDS_DLL;__TopExp_DLL;__TopTools_DLL;__BRep_DLL;__BRepLProp_DLL;__BRepAdaptor_DLL;__BRepTools_DLL;__BinTools_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -73,7 +73,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TopoDS_DLL;__TopExp_DLL;__TopTools_DLL;__BRep_DLL;__BRepLProp_DLL;__BRepAdaptor_DLL;__BRepTools_DLL"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TopoDS_DLL;__TopExp_DLL;__TopTools_DLL;__BRep_DLL;__BRepLProp_DLL;__BRepAdaptor_DLL;__BRepTools_DLL;__BinTools_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -147,10 +147,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="-MP"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\TopoDS;..\..\..\src\TopoDS;..\..\..\drv\TopExp;..\..\..\src\TopExp;..\..\..\drv\TopTools;..\..\..\src\TopTools;..\..\..\drv\BRep;..\..\..\src\BRep;..\..\..\drv\BRepLProp;..\..\..\src\BRepLProp;..\..\..\drv\BRepAdaptor;..\..\..\src\BRepAdaptor;..\..\..\drv\BRepTools;..\..\..\src\BRepTools;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\TopoDS;..\..\..\src\TopoDS;..\..\..\drv\TopExp;..\..\..\src\TopExp;..\..\..\drv\TopTools;..\..\..\src\TopTools;..\..\..\drv\BRep;..\..\..\src\BRep;..\..\..\drv\BRepLProp;..\..\..\src\BRepLProp;..\..\..\drv\BRepAdaptor;..\..\..\src\BRepAdaptor;..\..\..\drv\BRepTools;..\..\..\src\BRepTools;..\..\..\drv\BinTools;..\..\..\src\BinTools;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TopoDS_DLL;__TopExp_DLL;__TopTools_DLL;__BRep_DLL;__BRepLProp_DLL;__BRepAdaptor_DLL;__BRepTools_DLL"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TopoDS_DLL;__TopExp_DLL;__TopTools_DLL;__BRep_DLL;__BRepLProp_DLL;__BRepAdaptor_DLL;__BRepTools_DLL;__BinTools_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -173,7 +173,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TopoDS_DLL;__TopExp_DLL;__TopTools_DLL;__BRep_DLL;__BRepLProp_DLL;__BRepAdaptor_DLL;__BRepTools_DLL"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN32;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TopoDS_DLL;__TopExp_DLL;__TopTools_DLL;__BRep_DLL;__BRepLProp_DLL;__BRepAdaptor_DLL;__BRepTools_DLL;__BinTools_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -245,10 +245,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="-MP -favor:blend"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\TopoDS;..\..\..\src\TopoDS;..\..\..\drv\TopExp;..\..\..\src\TopExp;..\..\..\drv\TopTools;..\..\..\src\TopTools;..\..\..\drv\BRep;..\..\..\src\BRep;..\..\..\drv\BRepLProp;..\..\..\src\BRepLProp;..\..\..\drv\BRepAdaptor;..\..\..\src\BRepAdaptor;..\..\..\drv\BRepTools;..\..\..\src\BRepTools;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\TopoDS;..\..\..\src\TopoDS;..\..\..\drv\TopExp;..\..\..\src\TopExp;..\..\..\drv\TopTools;..\..\..\src\TopTools;..\..\..\drv\BRep;..\..\..\src\BRep;..\..\..\drv\BRepLProp;..\..\..\src\BRepLProp;..\..\..\drv\BRepAdaptor;..\..\..\src\BRepAdaptor;..\..\..\drv\BRepTools;..\..\..\src\BRepTools;..\..\..\drv\BinTools;..\..\..\src\BinTools;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TopoDS_DLL;__TopExp_DLL;__TopTools_DLL;__BRep_DLL;__BRepLProp_DLL;__BRepAdaptor_DLL;__BRepTools_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TopoDS_DLL;__TopExp_DLL;__TopTools_DLL;__BRep_DLL;__BRepLProp_DLL;__BRepAdaptor_DLL;__BRepTools_DLL;__BinTools_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TopoDS_DLL;__TopExp_DLL;__TopTools_DLL;__BRep_DLL;__BRepLProp_DLL;__BRepAdaptor_DLL;__BRepTools_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__TopoDS_DLL;__TopExp_DLL;__TopTools_DLL;__BRep_DLL;__BRepLProp_DLL;__BRepAdaptor_DLL;__BRepTools_DLL;__BinTools_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -340,10 +340,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="-MP -favor:blend"
-				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\TopoDS;..\..\..\src\TopoDS;..\..\..\drv\TopExp;..\..\..\src\TopExp;..\..\..\drv\TopTools;..\..\..\src\TopTools;..\..\..\drv\BRep;..\..\..\src\BRep;..\..\..\drv\BRepLProp;..\..\..\src\BRepLProp;..\..\..\drv\BRepAdaptor;..\..\..\src\BRepAdaptor;..\..\..\drv\BRepTools;..\..\..\src\BRepTools;$(CSF_OPT_INC)"
+				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\TopoDS;..\..\..\src\TopoDS;..\..\..\drv\TopExp;..\..\..\src\TopExp;..\..\..\drv\TopTools;..\..\..\src\TopTools;..\..\..\drv\BRep;..\..\..\src\BRep;..\..\..\drv\BRepLProp;..\..\..\src\BRepLProp;..\..\..\drv\BRepAdaptor;..\..\..\src\BRepAdaptor;..\..\..\drv\BRepTools;..\..\..\src\BRepTools;..\..\..\drv\BinTools;..\..\..\src\BinTools;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TopoDS_DLL;__TopExp_DLL;__TopTools_DLL;__BRep_DLL;__BRepLProp_DLL;__BRepAdaptor_DLL;__BRepTools_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TopoDS_DLL;__TopExp_DLL;__TopTools_DLL;__BRep_DLL;__BRepLProp_DLL;__BRepAdaptor_DLL;__BRepTools_DLL;__BinTools_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -365,7 +365,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TopoDS_DLL;__TopExp_DLL;__TopTools_DLL;__BRep_DLL;__BRepLProp_DLL;__BRepAdaptor_DLL;__BRepTools_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__TopoDS_DLL;__TopExp_DLL;__TopTools_DLL;__BRep_DLL;__BRepLProp_DLL;__BRepAdaptor_DLL;__BRepTools_DLL;__BinTools_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -891,6 +891,28 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\BRepTools\BRepTools_WireExplorer.cxx">
+				</File>
+			</Filter>
+			<Filter
+				Name="BinTools"
+				>
+				<File
+					RelativePath="..\..\..\src\BinTools\BinTools.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BinTools\BinTools_Curve2dSet.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BinTools\BinTools_CurveSet.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BinTools\BinTools_LocationSet.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BinTools\BinTools_ShapeSet.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\BinTools\BinTools_SurfaceSet.cxx">
 				</File>
 			</Filter>
 

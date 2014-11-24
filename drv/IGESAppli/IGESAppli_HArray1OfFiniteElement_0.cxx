@@ -5,28 +5,14 @@
 
 #include <IGESAppli_HArray1OfFiniteElement.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _IGESAppli_FiniteElement_HeaderFile
 #include <IGESAppli_FiniteElement.hxx>
-#endif
-#ifndef _IGESAppli_Array1OfFiniteElement_HeaderFile
 #include <IGESAppli_Array1OfFiniteElement.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(IGESAppli_HArray1OfFiniteElement,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(IGESAppli_HArray1OfFiniteElement)
 
 
-#define ItemHArray1 Handle_IGESAppli_FiniteElement
+#define ItemHArray1 Handle(IGESAppli_FiniteElement)
 #define ItemHArray1_hxx <IGESAppli_FiniteElement.hxx>
 #define TheArray1 IGESAppli_Array1OfFiniteElement
 #define TheArray1_hxx <IGESAppli_Array1OfFiniteElement.hxx>

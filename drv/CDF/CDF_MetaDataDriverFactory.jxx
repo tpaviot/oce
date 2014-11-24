@@ -1,6 +1,2 @@
-#ifndef _CDF_MetaDataDriver_HeaderFile
 #include <CDF_MetaDataDriver.hxx>
-#endif
-#ifndef _CDF_MetaDataDriverFactory_HeaderFile
 #include <CDF_MetaDataDriverFactory.hxx>
-#endif

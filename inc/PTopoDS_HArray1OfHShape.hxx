@@ -6,37 +6,17 @@
 #ifndef _PTopoDS_HArray1OfHShape_HeaderFile
 #define _PTopoDS_HArray1OfHShape_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PTopoDS_HArray1OfHShape_HeaderFile
 #include <Handle_PTopoDS_HArray1OfHShape.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_PTopoDS_HShape_HeaderFile
 #include <Handle_PTopoDS_HShape.hxx>
-#endif
-#ifndef _PTopoDS_FieldOfHArray1OfHShape_HeaderFile
 #include <PTopoDS_FieldOfHArray1OfHShape.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _Handle_PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape_HeaderFile
 #include <Handle_PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape.hxx>
-#endif
 class PTopoDS_HShape;
 class Standard_OutOfRange;
 class Standard_RangeError;
@@ -45,26 +25,27 @@ class PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape;
 class PTopoDS_VArrayTNodeOfFieldOfHArray1OfHShape;
 
 
-class PTopoDS_HArray1OfHShape : public Standard_Persistent {
+class PTopoDS_HArray1OfHShape : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PTopoDS_HArray1OfHShape(const Standard_Integer Low,const Standard_Integer Up);
+  Standard_EXPORT PTopoDS_HArray1OfHShape(const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT   PTopoDS_HArray1OfHShape(const Standard_Integer Low,const Standard_Integer Up,const Handle(PTopoDS_HShape)& V);
+  Standard_EXPORT PTopoDS_HArray1OfHShape(const Standard_Integer Low, const Standard_Integer Up, const Handle(PTopoDS_HShape)& V);
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(PTopoDS_HShape)& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(PTopoDS_HShape)& Value) ;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-  Standard_EXPORT     Handle_PTopoDS_HShape Value(const Standard_Integer Index) const;
+  Standard_EXPORT   Handle(PTopoDS_HShape) Value (const Standard_Integer Index)  const;
 
-  PTopoDS_HArray1OfHShape( )
+PTopoDS_HArray1OfHShape( )
 {
   
 }
@@ -90,18 +71,18 @@ protected:
 private: 
 
   
-  Standard_EXPORT     PTopoDS_FieldOfHArray1OfHShape Field() const;
+  Standard_EXPORT   PTopoDS_FieldOfHArray1OfHShape Field()  const;
   
-  Standard_EXPORT     Standard_Address Datas() const;
+  Standard_EXPORT   Standard_Address Datas()  const;
 
-Standard_Integer LowerBound;
-Standard_Integer UpperBound;
-PTopoDS_FieldOfHArray1OfHShape Data;
+  Standard_Integer LowerBound;
+  Standard_Integer UpperBound;
+  PTopoDS_FieldOfHArray1OfHShape Data;
 
 
 };
 
-#define Item Handle_PTopoDS_HShape
+#define Item Handle(PTopoDS_HShape)
 #define Item_hxx <PTopoDS_HShape.hxx>
 #define PCollection_FieldOfHArray1 PTopoDS_FieldOfHArray1OfHShape
 #define PCollection_FieldOfHArray1_hxx <PTopoDS_FieldOfHArray1OfHShape.hxx>
@@ -146,7 +127,6 @@ PTopoDS_FieldOfHArray1OfHShape Data;
 #undef PCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PTopoDS_HArray1OfHShape_HeaderFile

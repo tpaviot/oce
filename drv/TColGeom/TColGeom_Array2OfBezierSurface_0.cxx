@@ -5,24 +5,14 @@
 
 #include <TColGeom_Array2OfBezierSurface.hxx>
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Geom_BezierSurface_HeaderFile
 #include <Geom_BezierSurface.hxx>
-#endif
  
 
-#define Array2Item Handle_Geom_BezierSurface
+#define Array2Item Handle(Geom_BezierSurface)
 #define Array2Item_hxx <Geom_BezierSurface.hxx>
 #define TCollection_Array2 TColGeom_Array2OfBezierSurface
 #define TCollection_Array2_hxx <TColGeom_Array2OfBezierSurface.hxx>

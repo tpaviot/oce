@@ -6,28 +6,14 @@
 #ifndef _MeshVS_DataMapNodeOfDataMapOfIntegerVector_HeaderFile
 #define _MeshVS_DataMapNodeOfDataMapOfIntegerVector_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MeshVS_DataMapNodeOfDataMapOfIntegerVector_HeaderFile
 #include <Handle_MeshVS_DataMapNodeOfDataMapOfIntegerVector.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class gp_Vec;
 class TColStd_MapIntegerHasher;
 class MeshVS_DataMapOfIntegerVector;
@@ -35,16 +21,17 @@ class MeshVS_DataMapIteratorOfDataMapOfIntegerVector;
 
 
 
-class MeshVS_DataMapNodeOfDataMapOfIntegerVector : public TCollection_MapNode {
+class MeshVS_DataMapNodeOfDataMapOfIntegerVector : public TCollection_MapNode
+{
 
 public:
 
   
-      MeshVS_DataMapNodeOfDataMapOfIntegerVector(const Standard_Integer& K,const gp_Vec& I,const TCollection_MapNodePtr& n);
+    MeshVS_DataMapNodeOfDataMapOfIntegerVector(const Standard_Integer& K, const gp_Vec& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Key() const;
+      Standard_Integer& Key()  const;
   
-        gp_Vec& Value() const;
+      gp_Vec& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-Standard_Integer myKey;
-gp_Vec myValue;
+  Standard_Integer myKey;
+  gp_Vec myValue;
 
 
 };
@@ -98,7 +85,6 @@ gp_Vec myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MeshVS_DataMapNodeOfDataMapOfIntegerVector_HeaderFile

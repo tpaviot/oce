@@ -5,22 +5,12 @@
 
 #include <StdSelect_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _SelectBasics_EntityOwner_HeaderFile
 #include <SelectBasics_EntityOwner.hxx>
-#endif
-#ifndef _StdSelect_Prs_HeaderFile
 #include <StdSelect_Prs.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _StdSelect_IndexedDataMapOfOwnerPrs_HeaderFile
 #include <StdSelect_IndexedDataMapOfOwnerPrs.hxx>
-#endif
 
  
 
@@ -39,9 +29,9 @@ IMPLEMENT_DOWNCAST(StdSelect_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs,Standa
 IMPLEMENT_STANDARD_RTTI(StdSelect_IndexedDataMapNodeOfIndexedDataMapOfOwnerPrs)
 
 
-#define TheKey Handle_SelectBasics_EntityOwner
+#define TheKey Handle(SelectBasics_EntityOwner)
 #define TheKey_hxx <SelectBasics_EntityOwner.hxx>
-#define TheItem Handle_StdSelect_Prs
+#define TheItem Handle(StdSelect_Prs)
 #define TheItem_hxx <StdSelect_Prs.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>

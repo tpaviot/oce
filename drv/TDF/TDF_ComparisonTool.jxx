@@ -1,15 +1,5 @@
-#ifndef _TDF_DataSet_HeaderFile
 #include <TDF_DataSet.hxx>
-#endif
-#ifndef _TDF_IDFilter_HeaderFile
 #include <TDF_IDFilter.hxx>
-#endif
-#ifndef _TDF_RelocationTable_HeaderFile
 #include <TDF_RelocationTable.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TDF_ComparisonTool_HeaderFile
 #include <TDF_ComparisonTool.hxx>
-#endif

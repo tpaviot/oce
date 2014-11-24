@@ -6,52 +6,40 @@
 #ifndef _TopOpeBRepDS_ShapeWithState_HeaderFile
 #define _TopOpeBRepDS_ShapeWithState_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _TopAbs_State_HeaderFile
 #include <TopAbs_State.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopTools_ListOfShape;
 class TopoDS_Shape;
 
 
 
-class TopOpeBRepDS_ShapeWithState  {
+class TopOpeBRepDS_ShapeWithState 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepDS_ShapeWithState();
+  Standard_EXPORT TopOpeBRepDS_ShapeWithState();
   
-  Standard_EXPORT    const TopTools_ListOfShape& Part(const TopAbs_State aState) const;
+  Standard_EXPORT  const  TopTools_ListOfShape& Part (const TopAbs_State aState)  const;
   
-  Standard_EXPORT     void AddPart(const TopoDS_Shape& aShape,const TopAbs_State aState) ;
+  Standard_EXPORT   void AddPart (const TopoDS_Shape& aShape, const TopAbs_State aState) ;
   
-  Standard_EXPORT     void AddParts(const TopTools_ListOfShape& aListOfShape,const TopAbs_State aState) ;
+  Standard_EXPORT   void AddParts (const TopTools_ListOfShape& aListOfShape, const TopAbs_State aState) ;
   
-  Standard_EXPORT     void SetState(const TopAbs_State aState) ;
+  Standard_EXPORT   void SetState (const TopAbs_State aState) ;
   
-  Standard_EXPORT     TopAbs_State State() const;
+  Standard_EXPORT   TopAbs_State State()  const;
   
-  Standard_EXPORT     void SetIsSplitted(const Standard_Boolean anIsSplitted) ;
+  Standard_EXPORT   void SetIsSplitted (const Standard_Boolean anIsSplitted) ;
   
-  Standard_EXPORT     Standard_Boolean IsSplitted() const;
-
+  Standard_EXPORT   Standard_Boolean IsSplitted()  const;
 
 
 
@@ -66,11 +54,11 @@ private:
 
 
 
-TopTools_ListOfShape myPartIn;
-TopTools_ListOfShape myPartOut;
-TopTools_ListOfShape myPartOn;
-TopAbs_State myState;
-Standard_Boolean myIsSplitted;
+  TopTools_ListOfShape myPartIn;
+  TopTools_ListOfShape myPartOut;
+  TopTools_ListOfShape myPartOn;
+  TopAbs_State myState;
+  Standard_Boolean myIsSplitted;
 
 
 };
@@ -79,7 +67,6 @@ Standard_Boolean myIsSplitted;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_ShapeWithState_HeaderFile

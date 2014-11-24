@@ -6,31 +6,15 @@
 #ifndef _Geom2dGcc_Lin2dTanOblIter_HeaderFile
 #define _Geom2dGcc_Lin2dTanOblIter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _gp_Lin2d_HeaderFile
 #include <gp_Lin2d.hxx>
-#endif
-#ifndef _GccEnt_Position_HeaderFile
 #include <GccEnt_Position.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class GccEnt_BadQualifier;
 class StdFail_NotDone;
 class Geom2dGcc_IsParallel;
@@ -39,36 +23,38 @@ class gp_Lin2d;
 class gp_Pnt2d;
 
 
-//! This class implements the algorithms used to <br>
-//!          create 2d line tangent to a curve QualifiedCurv and <br>
-//!          doing an angle Angle with a line TheLin. <br>
-//!          The angle must be in Radian. <br>
-class Geom2dGcc_Lin2dTanOblIter  {
+//! This class implements the algorithms used to
+//! create 2d line tangent to a curve QualifiedCurv and
+//! doing an angle Angle with a line TheLin.
+//! The angle must be in Radian.
+class Geom2dGcc_Lin2dTanOblIter 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! This class implements the algorithm used to <br>
-//!          create 2d line tangent to a curve and doing an <br>
-//!          angle Angle with the line TheLin. <br>
-//!          Angle must be in Radian. <br>
-//!          Param2 is the initial guess on the curve QualifiedCurv. <br>
-//!          Tolang is the angular tolerance. <br>
-  Standard_EXPORT   Geom2dGcc_Lin2dTanOblIter(const Geom2dGcc_QCurve& Qualified1,const gp_Lin2d& TheLin,const Standard_Real Param1,const Standard_Real TolAng,const Standard_Real Angle = 0);
-  //! This method returns true when there is a solution <br>
-//!          and false in the other cases. <br>
-  Standard_EXPORT     Standard_Boolean IsDone() const;
   
-  Standard_EXPORT     gp_Lin2d ThisSolution() const;
+  //! This class implements the algorithm used to
+  //! create 2d line tangent to a curve and doing an
+  //! angle Angle with the line TheLin.
+  //! Angle must be in Radian.
+  //! Param2 is the initial guess on the curve QualifiedCurv.
+  //! Tolang is the angular tolerance.
+  Standard_EXPORT Geom2dGcc_Lin2dTanOblIter(const Geom2dGcc_QCurve& Qualified1, const gp_Lin2d& TheLin, const Standard_Real Param1, const Standard_Real TolAng, const Standard_Real Angle = 0);
   
-  Standard_EXPORT     void WhichQualifier(GccEnt_Position& Qualif1) const;
+  //! This method returns true when there is a solution
+  //! and false in the other cases.
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
   
-  Standard_EXPORT     void Tangency1(Standard_Real& ParSol,Standard_Real& ParArg,gp_Pnt2d& PntSol) const;
+  Standard_EXPORT   gp_Lin2d ThisSolution()  const;
   
-  Standard_EXPORT     void Intersection2(Standard_Real& ParSol,Standard_Real& ParArg,gp_Pnt2d& PntSol) const;
+  Standard_EXPORT   void WhichQualifier (GccEnt_Position& Qualif1)  const;
   
-  Standard_EXPORT     Standard_Boolean IsParallel2() const;
-
+  Standard_EXPORT   void Tangency1 (Standard_Real& ParSol, Standard_Real& ParArg, gp_Pnt2d& PntSol)  const;
+  
+  Standard_EXPORT   void Intersection2 (Standard_Real& ParSol, Standard_Real& ParArg, gp_Pnt2d& PntSol)  const;
+  
+  Standard_EXPORT   Standard_Boolean IsParallel2()  const;
 
 
 
@@ -83,16 +69,16 @@ private:
 
 
 
-Standard_Boolean WellDone;
-Standard_Boolean Paral2;
-gp_Lin2d linsol;
-GccEnt_Position qualifier1;
-gp_Pnt2d pnttg1sol;
-gp_Pnt2d pntint2sol;
-Standard_Real par1sol;
-Standard_Real par2sol;
-Standard_Real pararg1;
-Standard_Real pararg2;
+  Standard_Boolean WellDone;
+  Standard_Boolean Paral2;
+  gp_Lin2d linsol;
+  GccEnt_Position qualifier1;
+  gp_Pnt2d pnttg1sol;
+  gp_Pnt2d pntint2sol;
+  Standard_Real par1sol;
+  Standard_Real par2sol;
+  Standard_Real pararg1;
+  Standard_Real pararg2;
 
 
 };
@@ -101,7 +87,6 @@ Standard_Real pararg2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dGcc_Lin2dTanOblIter_HeaderFile

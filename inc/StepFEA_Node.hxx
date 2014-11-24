@@ -6,28 +6,22 @@
 #ifndef _StepFEA_Node_HeaderFile
 #define _StepFEA_Node_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepFEA_Node_HeaderFile
 #include <Handle_StepFEA_Node.hxx>
-#endif
 
-#ifndef _StepFEA_NodeRepresentation_HeaderFile
 #include <StepFEA_NodeRepresentation.hxx>
-#endif
 
 
-//! Representation of STEP entity Node <br>
-class StepFEA_Node : public StepFEA_NodeRepresentation {
+//! Representation of STEP entity Node
+class StepFEA_Node : public StepFEA_NodeRepresentation
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepFEA_Node();
+  
+  //! Empty constructor
+  Standard_EXPORT StepFEA_Node();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_Node_HeaderFile

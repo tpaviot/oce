@@ -1,9 +1,3 @@
-#ifndef _PCollection_HExtendedString_HeaderFile
 #include <PCollection_HExtendedString.hxx>
-#endif
-#ifndef _PDF_HAttributeArray1_HeaderFile
 #include <PDF_HAttributeArray1.hxx>
-#endif
-#ifndef _PDataStd_Expression_HeaderFile
 #include <PDataStd_Expression.hxx>
-#endif

@@ -5,16 +5,10 @@
 
 #include <AIS_SequenceNodeOfSequenceOfInteractive.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _AIS_InteractiveObject_HeaderFile
 #include <AIS_InteractiveObject.hxx>
-#endif
-#ifndef _AIS_SequenceOfInteractive_HeaderFile
 #include <AIS_SequenceOfInteractive.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(AIS_SequenceNodeOfSequenceOfInteractive,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(AIS_SequenceNodeOfSequenceOfInteractive)
 
 
-#define SeqItem Handle_AIS_InteractiveObject
+#define SeqItem Handle(AIS_InteractiveObject)
 #define SeqItem_hxx <AIS_InteractiveObject.hxx>
 #define TCollection_SequenceNode AIS_SequenceNodeOfSequenceOfInteractive
 #define TCollection_SequenceNode_hxx <AIS_SequenceNodeOfSequenceOfInteractive.hxx>

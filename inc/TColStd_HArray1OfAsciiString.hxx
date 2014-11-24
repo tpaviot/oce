@@ -6,25 +6,13 @@
 #ifndef _TColStd_HArray1OfAsciiString_HeaderFile
 #define _TColStd_HArray1OfAsciiString_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfAsciiString_HeaderFile
 #include <Handle_TColStd_HArray1OfAsciiString.hxx>
-#endif
 
-#ifndef _TColStd_Array1OfAsciiString_HeaderFile
 #include <TColStd_Array1OfAsciiString.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class TColStd_Array1OfAsciiString;
 
 
 
-class TColStd_HArray1OfAsciiString : public MMgt_TShared {
+class TColStd_HArray1OfAsciiString : public MMgt_TShared
+{
 
 public:
 
   
-      TColStd_HArray1OfAsciiString(const Standard_Integer Low,const Standard_Integer Up);
+    TColStd_HArray1OfAsciiString(const Standard_Integer Low, const Standard_Integer Up);
   
-      TColStd_HArray1OfAsciiString(const Standard_Integer Low,const Standard_Integer Up,const TCollection_AsciiString& V);
+    TColStd_HArray1OfAsciiString(const Standard_Integer Low, const Standard_Integer Up, const TCollection_AsciiString& V);
   
-        void Init(const TCollection_AsciiString& V) ;
+      void Init (const TCollection_AsciiString& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const TCollection_AsciiString& Value) ;
+      void SetValue (const Standard_Integer Index, const TCollection_AsciiString& Value) ;
   
-       const TCollection_AsciiString& Value(const Standard_Integer Index) const;
+     const  TCollection_AsciiString& Value (const Standard_Integer Index)  const;
   
-        TCollection_AsciiString& ChangeValue(const Standard_Integer Index) ;
+      TCollection_AsciiString& ChangeValue (const Standard_Integer Index) ;
   
-       const TColStd_Array1OfAsciiString& Array1() const;
+     const  TColStd_Array1OfAsciiString& Array1()  const;
   
-        TColStd_Array1OfAsciiString& ChangeArray1() ;
+      TColStd_Array1OfAsciiString& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-TColStd_Array1OfAsciiString myArray;
+  TColStd_Array1OfAsciiString myArray;
 
 
 };
@@ -100,7 +89,6 @@ TColStd_Array1OfAsciiString myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_HArray1OfAsciiString_HeaderFile

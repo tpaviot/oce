@@ -6,61 +6,52 @@
 #ifndef _Units_Sentence_HeaderFile
 #define _Units_Sentence_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Units_TokensSequence_HeaderFile
 #include <Handle_Units_TokensSequence.hxx>
-#endif
-#ifndef _Handle_Units_Lexicon_HeaderFile
 #include <Handle_Units_Lexicon.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_Units_Token_HeaderFile
 #include <Handle_Units_Token.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Units_TokensSequence;
 class Units_Lexicon;
 class Units_Token;
 
 
-//! This class describes all the methods to create and <br>
-//!          compute an expression contained in a string. <br>
-class Units_Sentence  {
+//! This class describes all the methods to create and
+//! compute an expression contained in a string.
+class Units_Sentence 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates and  returns  a   Sentence, by  analyzing  the <br>
-//!          string <astring> with the lexicon <alexicon>. <br>
-  Standard_EXPORT   Units_Sentence(const Handle(Units_Lexicon)& alexicon,const Standard_CString astring);
-  //! For each constant encountered, sets the value. <br>
-  Standard_EXPORT     void SetConstants() ;
-  //! Returns <thesequenceoftokens>. <br>
-        Handle_Units_TokensSequence Sequence() const;
-  //! Sets the field <thesequenceoftokens> to <asequenceoftokens>. <br>
-        void Sequence(const Handle(Units_TokensSequence)& asequenceoftokens) ;
-  //! Computes and  returns in a   token the result  of  the <br>
-//!          expression. <br>
-  Standard_EXPORT     Handle_Units_Token Evaluate() ;
-  //! Return True if number of created tokens > 0 <br>
-//!          (i.e creation of sentence is succesfull) <br>
-        Standard_Boolean IsDone() const;
-  //! Useful for debugging. <br>
-        void Dump() const;
-
+  
+  //! Creates and  returns  a   Sentence, by  analyzing  the
+  //! string <astring> with the lexicon <alexicon>.
+  Standard_EXPORT Units_Sentence(const Handle(Units_Lexicon)& alexicon, const Standard_CString astring);
+  
+  //! For each constant encountered, sets the value.
+  Standard_EXPORT   void SetConstants() ;
+  
+  //! Returns <thesequenceoftokens>.
+      Handle(Units_TokensSequence) Sequence()  const;
+  
+  //! Sets the field <thesequenceoftokens> to <asequenceoftokens>.
+      void Sequence (const Handle(Units_TokensSequence)& asequenceoftokens) ;
+  
+  //! Computes and  returns in a   token the result  of  the
+  //! expression.
+  Standard_EXPORT   Handle(Units_Token) Evaluate() ;
+  
+  //! Return True if number of created tokens > 0
+  //! (i.e creation of sentence is succesfull)
+      Standard_Boolean IsDone()  const;
+  
+  //! Useful for debugging.
+      void Dump()  const;
 
 
 
@@ -75,7 +66,7 @@ private:
 
 
 
-Handle_Units_TokensSequence thesequenceoftokens;
+  Handle(Units_TokensSequence) thesequenceoftokens;
 
 
 };
@@ -85,7 +76,6 @@ Handle_Units_TokensSequence thesequenceoftokens;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Units_Sentence_HeaderFile

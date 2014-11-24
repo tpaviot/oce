@@ -6,99 +6,87 @@
 #ifndef _V3d_PositionalLight_HeaderFile
 #define _V3d_PositionalLight_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_V3d_PositionalLight_HeaderFile
 #include <Handle_V3d_PositionalLight.hxx>
-#endif
 
-#ifndef _V3d_PositionLight_HeaderFile
 #include <V3d_PositionLight.hxx>
-#endif
-#ifndef _Handle_V3d_Viewer_HeaderFile
 #include <Handle_V3d_Viewer.hxx>
-#endif
-#ifndef _V3d_Coordinate_HeaderFile
 #include <V3d_Coordinate.hxx>
-#endif
-#ifndef _Quantity_NameOfColor_HeaderFile
 #include <Quantity_NameOfColor.hxx>
-#endif
-#ifndef _Quantity_Coefficient_HeaderFile
 #include <Quantity_Coefficient.hxx>
-#endif
-#ifndef _Handle_V3d_View_HeaderFile
 #include <Handle_V3d_View.hxx>
-#endif
-#ifndef _V3d_TypeOfRepresentation_HeaderFile
 #include <V3d_TypeOfRepresentation.hxx>
-#endif
-#ifndef _Handle_Graphic3d_Group_HeaderFile
 #include <Handle_Graphic3d_Group.hxx>
-#endif
 class V3d_BadValue;
 class V3d_Viewer;
 class V3d_View;
 class Graphic3d_Group;
 
 
-//! Creation and modification of an isolated <br>
-//!          (positional) light source. <br>
-class V3d_PositionalLight : public V3d_PositionLight {
+//! Creation and modification of an isolated
+//! (positional) light source.
+class V3d_PositionalLight : public V3d_PositionLight
+{
 
 public:
 
-  //! Creates an isolated light source X,Y,Z in the viewer. <br>
-//!          It is also defined by the color Color and <br>
-//!          two attenuation factors Attenuation1, Attenuation2. <br>
-//!	    The resulting attenuation factor determining the <br>
-//!	    illumination of a surface depends on the following <br>
-//!	    formula : <br>
-//!	    F = 1/(A1 + A2*Length) <br>
-//!		A1,A2 being the two factors of attenuation <br>
-//!	 	Length is the distance of the isolated source <br>
-//!	    from the surface. <br>//!  Warning!  raises BadValue from V3d <br>
-//!          if one of the attenuation coefficients is not between 0 et 1. <br>
-  Standard_EXPORT   V3d_PositionalLight(const Handle(V3d_Viewer)& VM,const V3d_Coordinate X,const V3d_Coordinate Y,const V3d_Coordinate Z,const Quantity_NameOfColor Color = Quantity_NOC_WHITE,const Quantity_Coefficient Attenuation1 = 1.0,const Quantity_Coefficient Attenuation2 = 0.0);
-  //! Creates a light source of the Positional type <br>
-//!          in the viewer. <br>
-//!          Xt,Yt,Zt : Coordinate of Target light source. <br>
-//!          Xp,Yp,Zp : Coordinate of Position light source. <br>
-//!          The light source is also defined by the color Color <br>
-//!          and two attenuation factors Attenuation1, <br>
-//!          Attenuation2 that determine the illumination of a <br>
-//!          surface using the following formula : <br>
-//!          F = 1/(A1 + A2*Length) where: <br>
-//!          -   A1,A2 are the two attenuation factors, and <br>
-//!          -   Length is the distance from the isolated source. <br>//!  Warning! raises BadValue from V3d <br>
-//!          if one of the attenuation coefficients is not between 0 et 1. <br>
-  Standard_EXPORT   V3d_PositionalLight(const Handle(V3d_Viewer)& VM,const V3d_Coordinate Xt,const V3d_Coordinate Yt,const V3d_Coordinate Zt,const V3d_Coordinate Xp,const V3d_Coordinate Yp,const V3d_Coordinate Zp,const Quantity_NameOfColor Color = Quantity_NOC_WHITE,const Quantity_Coefficient Attenuation1 = 1.0,const Quantity_Coefficient Attenuation2 = 0.0);
-  //! Defines the position of the light source. <br>
-  Standard_EXPORT   virtual  void SetPosition(const V3d_Coordinate X,const V3d_Coordinate Y,const V3d_Coordinate Z) ;
-  //! Defines the attenuation factors. <br>
-//!  Warning: raises BadValue from V3d <br>
-//!          if one of the attenuation coefficients is not between 0 et 1. <br>
-  Standard_EXPORT     void SetAttenuation(const Quantity_Coefficient A1,const Quantity_Coefficient A2) ;
-  //! Display the graphic structure of light source <br>
-//!          in the choosen view. We have three type of representation <br>
-//!          - SIMPLE   : Only the light source is displayed. <br>
-//!          - PARTIAL  : The light source and the light space are <br>
-//!                       displayed. <br>
-//!          - COMPLETE : The light source, the light space and the <br>
-//!                       radius of light space are displayed. <br>
-//!          We can choose the "SAMELAST" as parameter of representation <br>
-//!          In this case the graphic structure representation will be <br>
-//!          the last displayed. <br>
-  Standard_EXPORT     void Display(const Handle(V3d_View)& aView,const V3d_TypeOfRepresentation Representation) ;
-  //! Returns the position of the light source. <br>
-  Standard_EXPORT     void Position(V3d_Coordinate& X,V3d_Coordinate& Y,V3d_Coordinate& Z) const;
-  //! Returns the attenuation factors A1,A2 of the light <br>
-//! source used at construction time. <br>
-  Standard_EXPORT     void Attenuation(Quantity_Coefficient& A1,Quantity_Coefficient& A2) const;
+  
+  //! Creates an isolated light source X,Y,Z in the viewer.
+  //! It is also defined by the color Color and
+  //! two attenuation factors Attenuation1, Attenuation2.
+  //! The resulting attenuation factor determining the
+  //! illumination of a surface depends on the following
+  //! formula :
+  //! F = 1/(A1 + A2*Length)
+  //! A1,A2 being the two factors of attenuation
+  //! Length is the distance of the isolated source
+  //! from the surface.
+  //! Warning!  raises BadValue from V3d
+  //! if one of the attenuation coefficients is not between 0 et 1.
+  Standard_EXPORT V3d_PositionalLight(const Handle(V3d_Viewer)& VM, const V3d_Coordinate X, const V3d_Coordinate Y, const V3d_Coordinate Z, const Quantity_NameOfColor Color = Quantity_NOC_WHITE, const Quantity_Coefficient Attenuation1 = 1.0, const Quantity_Coefficient Attenuation2 = 0.0);
+  
+  //! Creates a light source of the Positional type
+  //! in the viewer.
+  //! Xt,Yt,Zt : Coordinate of Target light source.
+  //! Xp,Yp,Zp : Coordinate of Position light source.
+  //! The light source is also defined by the color Color
+  //! and two attenuation factors Attenuation1,
+  //! Attenuation2 that determine the illumination of a
+  //! surface using the following formula :
+  //! F = 1/(A1 + A2*Length) where:
+  //! -   A1,A2 are the two attenuation factors, and
+  //! -   Length is the distance from the isolated source.
+  //! Warning! raises BadValue from V3d
+  //! if one of the attenuation coefficients is not between 0 et 1.
+  Standard_EXPORT V3d_PositionalLight(const Handle(V3d_Viewer)& VM, const V3d_Coordinate Xt, const V3d_Coordinate Yt, const V3d_Coordinate Zt, const V3d_Coordinate Xp, const V3d_Coordinate Yp, const V3d_Coordinate Zp, const Quantity_NameOfColor Color = Quantity_NOC_WHITE, const Quantity_Coefficient Attenuation1 = 1.0, const Quantity_Coefficient Attenuation2 = 0.0);
+  
+  //! Defines the position of the light source.
+  Standard_EXPORT virtual   void SetPosition (const V3d_Coordinate X, const V3d_Coordinate Y, const V3d_Coordinate Z) ;
+  
+  //! Defines the attenuation factors.
+  //! Warning: raises BadValue from V3d
+  //! if one of the attenuation coefficients is not between 0 et 1.
+  Standard_EXPORT   void SetAttenuation (const Quantity_Coefficient A1, const Quantity_Coefficient A2) ;
+  
+  //! Display the graphic structure of light source
+  //! in the choosen view. We have three type of representation
+  //! - SIMPLE   : Only the light source is displayed.
+  //! - PARTIAL  : The light source and the light space are
+  //! displayed.
+  //! - COMPLETE : The light source, the light space and the
+  //! radius of light space are displayed.
+  //! We can choose the "SAMELAST" as parameter of representation
+  //! In this case the graphic structure representation will be
+  //! the last displayed.
+  Standard_EXPORT   void Display (const Handle(V3d_View)& aView, const V3d_TypeOfRepresentation Representation) ;
+  
+  //! Returns the position of the light source.
+  Standard_EXPORT   void Position (V3d_Coordinate& X, V3d_Coordinate& Y, V3d_Coordinate& Z)  const;
+  
+  //! Returns the attenuation factors A1,A2 of the light
+  //! source used at construction time.
+  Standard_EXPORT   void Attenuation (Quantity_Coefficient& A1, Quantity_Coefficient& A2)  const;
 
 
 
@@ -112,8 +100,9 @@ protected:
 
 private: 
 
-  //! Defined the representation of the positional light source. <br>
-  Standard_EXPORT     void Symbol(const Handle(Graphic3d_Group)& gsymbol,const Handle(V3d_View)& aView) const;
+  
+  //! Defined the representation of the positional light source.
+  Standard_EXPORT   void Symbol (const Handle(Graphic3d_Group)& gsymbol, const Handle(V3d_View)& aView)  const;
 
 
 
@@ -123,7 +112,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _V3d_PositionalLight_HeaderFile

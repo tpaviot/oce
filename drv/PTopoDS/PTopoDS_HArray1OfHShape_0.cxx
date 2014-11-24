@@ -5,28 +5,14 @@
 
 #include <PTopoDS_HArray1OfHShape.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _PTopoDS_HShape_HeaderFile
 #include <PTopoDS_HShape.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _PTopoDS_FieldOfHArray1OfHShape_HeaderFile
 #include <PTopoDS_FieldOfHArray1OfHShape.hxx>
-#endif
-#ifndef _PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape_HeaderFile
 #include <PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape.hxx>
-#endif
-#ifndef _PTopoDS_VArrayTNodeOfFieldOfHArray1OfHShape_HeaderFile
 #include <PTopoDS_VArrayTNodeOfFieldOfHArray1OfHShape.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(PTopoDS_HArray1OfHShape,Standard_Persistent)
 IMPLEMENT_STANDARD_RTTI(PTopoDS_HArray1OfHShape)
 
 
-#define Item Handle_PTopoDS_HShape
+#define Item Handle(PTopoDS_HShape)
 #define Item_hxx <PTopoDS_HShape.hxx>
 #define PCollection_FieldOfHArray1 PTopoDS_FieldOfHArray1OfHShape
 #define PCollection_FieldOfHArray1_hxx <PTopoDS_FieldOfHArray1OfHShape.hxx>

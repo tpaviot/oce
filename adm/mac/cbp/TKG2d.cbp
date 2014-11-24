@@ -85,6 +85,8 @@
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 		</Linker>
 		<Unit filename="../../../drv/Geom2d/Geom2d_UndefinedDerivative_0.cxx" />
 		<Unit filename="../../../drv/Geom2d/Geom2d_UndefinedValue_0.cxx" />

@@ -6,25 +6,13 @@
 #ifndef _XmlLDrivers_SequenceOfNamespaceDef_HeaderFile
 #define _XmlLDrivers_SequenceOfNamespaceDef_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef_HeaderFile
 #include <Handle_XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class XmlLDrivers_NamespaceDef;
@@ -32,68 +20,68 @@ class XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef;
 
 
 
-class XmlLDrivers_SequenceOfNamespaceDef  : public TCollection_BaseSequence {
+class XmlLDrivers_SequenceOfNamespaceDef  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      XmlLDrivers_SequenceOfNamespaceDef();
+    XmlLDrivers_SequenceOfNamespaceDef();
   
-  Standard_EXPORT   XmlLDrivers_SequenceOfNamespaceDef(const XmlLDrivers_SequenceOfNamespaceDef& Other);
+  Standard_EXPORT XmlLDrivers_SequenceOfNamespaceDef(const XmlLDrivers_SequenceOfNamespaceDef& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~XmlLDrivers_SequenceOfNamespaceDef()
 {
   Clear();
 }
   
-  Standard_EXPORT    const XmlLDrivers_SequenceOfNamespaceDef& Assign(const XmlLDrivers_SequenceOfNamespaceDef& Other) ;
-   const XmlLDrivers_SequenceOfNamespaceDef& operator =(const XmlLDrivers_SequenceOfNamespaceDef& Other) 
+  Standard_EXPORT  const  XmlLDrivers_SequenceOfNamespaceDef& Assign (const XmlLDrivers_SequenceOfNamespaceDef& Other) ;
+ const  XmlLDrivers_SequenceOfNamespaceDef& operator = (const XmlLDrivers_SequenceOfNamespaceDef& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const XmlLDrivers_NamespaceDef& T) ;
+  Standard_EXPORT   void Append (const XmlLDrivers_NamespaceDef& T) ;
   
-        void Append(XmlLDrivers_SequenceOfNamespaceDef& S) ;
+      void Append (XmlLDrivers_SequenceOfNamespaceDef& S) ;
   
-  Standard_EXPORT     void Prepend(const XmlLDrivers_NamespaceDef& T) ;
+  Standard_EXPORT   void Prepend (const XmlLDrivers_NamespaceDef& T) ;
   
-        void Prepend(XmlLDrivers_SequenceOfNamespaceDef& S) ;
+      void Prepend (XmlLDrivers_SequenceOfNamespaceDef& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const XmlLDrivers_NamespaceDef& T) ;
+      void InsertBefore (const Standard_Integer Index, const XmlLDrivers_NamespaceDef& T) ;
   
-        void InsertBefore(const Standard_Integer Index,XmlLDrivers_SequenceOfNamespaceDef& S) ;
+      void InsertBefore (const Standard_Integer Index, XmlLDrivers_SequenceOfNamespaceDef& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const XmlLDrivers_NamespaceDef& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const XmlLDrivers_NamespaceDef& T) ;
   
-        void InsertAfter(const Standard_Integer Index,XmlLDrivers_SequenceOfNamespaceDef& S) ;
+      void InsertAfter (const Standard_Integer Index, XmlLDrivers_SequenceOfNamespaceDef& S) ;
   
-  Standard_EXPORT    const XmlLDrivers_NamespaceDef& First() const;
+  Standard_EXPORT  const  XmlLDrivers_NamespaceDef& First()  const;
   
-  Standard_EXPORT    const XmlLDrivers_NamespaceDef& Last() const;
+  Standard_EXPORT  const  XmlLDrivers_NamespaceDef& Last()  const;
   
-        void Split(const Standard_Integer Index,XmlLDrivers_SequenceOfNamespaceDef& Sub) ;
+      void Split (const Standard_Integer Index, XmlLDrivers_SequenceOfNamespaceDef& Sub) ;
   
-  Standard_EXPORT    const XmlLDrivers_NamespaceDef& Value(const Standard_Integer Index) const;
-   const XmlLDrivers_NamespaceDef& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  XmlLDrivers_NamespaceDef& Value (const Standard_Integer Index)  const;
+ const  XmlLDrivers_NamespaceDef& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const XmlLDrivers_NamespaceDef& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const XmlLDrivers_NamespaceDef& I) ;
   
-  Standard_EXPORT     XmlLDrivers_NamespaceDef& ChangeValue(const Standard_Integer Index) ;
-    XmlLDrivers_NamespaceDef& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   XmlLDrivers_NamespaceDef& ChangeValue (const Standard_Integer Index) ;
+  XmlLDrivers_NamespaceDef& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XmlLDrivers_SequenceOfNamespaceDef_HeaderFile

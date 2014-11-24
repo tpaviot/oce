@@ -6,46 +6,36 @@
 #ifndef _Vrml_Scale_HeaderFile
 #define _Vrml_Scale_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class gp_Vec;
 
 
-//! defines a Scale node of VRML specifying transform <br>
-//!          properties. <br>
-//!  This  node  defines  a  3D  scaling  about  the  origin. <br>
-//!  By  default  : <br>
-//!    myRotation  =  (1 1 1) <br>
-class Vrml_Scale  {
+//! defines a Scale node of VRML specifying transform
+//! properties.
+//! This  node  defines  a  3D  scaling  about  the  origin.
+//! By  default  :
+//! myRotation  =  (1 1 1)
+class Vrml_Scale 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Vrml_Scale();
+  Standard_EXPORT Vrml_Scale();
   
-  Standard_EXPORT   Vrml_Scale(const gp_Vec& aScaleFactor);
+  Standard_EXPORT Vrml_Scale(const gp_Vec& aScaleFactor);
   
-  Standard_EXPORT     void SetScaleFactor(const gp_Vec& aScaleFactor) ;
+  Standard_EXPORT   void SetScaleFactor (const gp_Vec& aScaleFactor) ;
   
-  Standard_EXPORT     gp_Vec ScaleFactor() const;
+  Standard_EXPORT   gp_Vec ScaleFactor()  const;
   
-  Standard_EXPORT     Standard_OStream& Print(Standard_OStream& anOStream) const;
-
+  Standard_EXPORT   Standard_OStream& Print (Standard_OStream& anOStream)  const;
 
 
 
@@ -60,7 +50,7 @@ private:
 
 
 
-gp_Vec myScaleFactor;
+  gp_Vec myScaleFactor;
 
 
 };
@@ -69,7 +59,6 @@ gp_Vec myScaleFactor;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Vrml_Scale_HeaderFile

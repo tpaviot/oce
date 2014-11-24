@@ -6,76 +6,49 @@
 #ifndef _BOPAlgo_BOP_HeaderFile
 #define _BOPAlgo_BOP_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BOPAlgo_Operation_HeaderFile
 #include <BOPAlgo_Operation.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _BOPCol_ListOfShape_HeaderFile
 #include <BOPCol_ListOfShape.hxx>
-#endif
-#ifndef _BOPCol_MapOfShape_HeaderFile
 #include <BOPCol_MapOfShape.hxx>
-#endif
-#ifndef _BOPAlgo_Builder_HeaderFile
 #include <BOPAlgo_Builder.hxx>
-#endif
-#ifndef _BOPCol_BaseAllocator_HeaderFile
 #include <BOPCol_BaseAllocator.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _BOPCol_IndexedDataMapOfShapeListOfShape_HeaderFile
 #include <BOPCol_IndexedDataMapOfShapeListOfShape.hxx>
-#endif
 class TopoDS_Shape;
 class BOPAlgo_PaveFiller;
-class TopTools_ListOfShape;
 
 
 
-class BOPAlgo_BOP  : public BOPAlgo_Builder {
+class BOPAlgo_BOP  : public BOPAlgo_Builder
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //!  Empty constructor <br>
-  Standard_EXPORT   BOPAlgo_BOP();
+  
+  //! Empty constructor
+  Standard_EXPORT BOPAlgo_BOP();
 Standard_EXPORT virtual ~BOPAlgo_BOP();
   
-  Standard_EXPORT   BOPAlgo_BOP(const BOPCol_BaseAllocator& theAllocator);
-  //!  Clears internal fields and arguments <br>
-  Standard_EXPORT   virtual  void Clear() ;
-  //!  Adds Tool argument of the operation <br>
-  Standard_EXPORT   virtual  void AddTool(const TopoDS_Shape& theShape) ;
+  Standard_EXPORT BOPAlgo_BOP(const BOPCol_BaseAllocator& theAllocator);
   
-  Standard_EXPORT     void SetOperation(const BOPAlgo_Operation theOperation) ;
+  //! Clears internal fields and arguments
+  Standard_EXPORT virtual   void Clear() ;
   
-  Standard_EXPORT     BOPAlgo_Operation Operation() const;
+  //! Adds Tool argument of the operation
+  Standard_EXPORT virtual   void AddTool (const TopoDS_Shape& theShape) ;
   
-  Standard_EXPORT   virtual  void Perform() ;
-  //! Returns the  list of shapes generated from the <br>
-//!          shape theS. <br>
-  Standard_EXPORT   virtual const TopTools_ListOfShape& Generated(const TopoDS_Shape& theS) ;
-
+  Standard_EXPORT   void SetOperation (const BOPAlgo_Operation theOperation) ;
+  
+  Standard_EXPORT   BOPAlgo_Operation Operation()  const;
+  
+  Standard_EXPORT virtual   void Perform() ;
 
 
 
@@ -83,31 +56,31 @@ Standard_EXPORT virtual ~BOPAlgo_BOP();
 protected:
 
   
-  Standard_EXPORT   virtual  void CheckData() ;
-  //!  Provides preparing actions <br>
-  Standard_EXPORT   virtual  void Prepare() ;
-  //!  Performs calculations using prepared Filler <br>
-//!           object <thePF> <br>
-  Standard_EXPORT   virtual  void PerformInternal1(const BOPAlgo_PaveFiller& thePF) ;
+  Standard_EXPORT virtual   void CheckData() ;
   
-  Standard_EXPORT   virtual  void BuildResult(const TopAbs_ShapeEnum theType) ;
+  //! Provides preparing actions
+  Standard_EXPORT virtual   void Prepare() ;
   
-  Standard_EXPORT     void BuildShape() ;
+  //! Performs calculations using prepared Filler
+  //! object <thePF>
+  Standard_EXPORT virtual   void PerformInternal1 (const BOPAlgo_PaveFiller& thePF) ;
   
-  Standard_EXPORT     void BuildRC() ;
+  Standard_EXPORT virtual   void BuildResult (const TopAbs_ShapeEnum theType) ;
   
-  Standard_EXPORT     void BuildSolid() ;
+  Standard_EXPORT   void BuildShape() ;
   
-  Standard_EXPORT     void BuildSection() ;
+  Standard_EXPORT   void BuildRC() ;
   
-  Standard_EXPORT     Standard_Boolean IsBoundSplits(const TopoDS_Shape& theS,BOPCol_IndexedDataMapOfShapeListOfShape& theMEF) ;
+  Standard_EXPORT   void BuildSolid() ;
+  
+  Standard_EXPORT   Standard_Boolean IsBoundSplits (const TopoDS_Shape& theS, BOPCol_IndexedDataMapOfShapeListOfShape& theMEF) ;
 
 
-BOPAlgo_Operation myOperation;
-Standard_Integer myDims[2];
-TopoDS_Shape myRC;
-BOPCol_ListOfShape myTools;
-BOPCol_MapOfShape myMapTools;
+  BOPAlgo_Operation myOperation;
+  Standard_Integer myDims[2];
+  TopoDS_Shape myRC;
+  BOPCol_ListOfShape myTools;
+  BOPCol_MapOfShape myMapTools;
 
 
 private:
@@ -122,7 +95,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BOPAlgo_BOP_HeaderFile

@@ -6,31 +6,23 @@
 #ifndef _StdPrs_ToolVertex_HeaderFile
 #define _StdPrs_ToolVertex_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Quantity_Length_HeaderFile
 #include <Quantity_Length.hxx>
-#endif
 class TopoDS_Vertex;
 
 
 
-class StdPrs_ToolVertex  {
+class StdPrs_ToolVertex 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  void Coord(const TopoDS_Vertex& aPoint,Quantity_Length& X,Quantity_Length& Y,Quantity_Length& Z) ;
-
+  Standard_EXPORT static   void Coord (const TopoDS_Vertex& aPoint, Quantity_Length& X, Quantity_Length& Y, Quantity_Length& Z) ;
 
 
 
@@ -53,7 +45,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StdPrs_ToolVertex_HeaderFile

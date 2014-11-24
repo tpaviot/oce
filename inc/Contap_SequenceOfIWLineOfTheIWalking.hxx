@@ -6,28 +6,14 @@
 #ifndef _Contap_SequenceOfIWLineOfTheIWalking_HeaderFile
 #define _Contap_SequenceOfIWLineOfTheIWalking_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_Contap_TheIWLineOfTheIWalking_HeaderFile
 #include <Handle_Contap_TheIWLineOfTheIWalking.hxx>
-#endif
-#ifndef _Handle_Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking_HeaderFile
 #include <Handle_Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Contap_TheIWLineOfTheIWalking;
@@ -35,68 +21,68 @@ class Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking;
 
 
 
-class Contap_SequenceOfIWLineOfTheIWalking  : public TCollection_BaseSequence {
+class Contap_SequenceOfIWLineOfTheIWalking  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Contap_SequenceOfIWLineOfTheIWalking();
+    Contap_SequenceOfIWLineOfTheIWalking();
   
-  Standard_EXPORT   Contap_SequenceOfIWLineOfTheIWalking(const Contap_SequenceOfIWLineOfTheIWalking& Other);
+  Standard_EXPORT Contap_SequenceOfIWLineOfTheIWalking(const Contap_SequenceOfIWLineOfTheIWalking& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~Contap_SequenceOfIWLineOfTheIWalking()
 {
   Clear();
 }
   
-  Standard_EXPORT    const Contap_SequenceOfIWLineOfTheIWalking& Assign(const Contap_SequenceOfIWLineOfTheIWalking& Other) ;
-   const Contap_SequenceOfIWLineOfTheIWalking& operator =(const Contap_SequenceOfIWLineOfTheIWalking& Other) 
+  Standard_EXPORT  const  Contap_SequenceOfIWLineOfTheIWalking& Assign (const Contap_SequenceOfIWLineOfTheIWalking& Other) ;
+ const  Contap_SequenceOfIWLineOfTheIWalking& operator = (const Contap_SequenceOfIWLineOfTheIWalking& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(Contap_TheIWLineOfTheIWalking)& T) ;
+  Standard_EXPORT   void Append (const Handle(Contap_TheIWLineOfTheIWalking)& T) ;
   
-        void Append(Contap_SequenceOfIWLineOfTheIWalking& S) ;
+      void Append (Contap_SequenceOfIWLineOfTheIWalking& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(Contap_TheIWLineOfTheIWalking)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(Contap_TheIWLineOfTheIWalking)& T) ;
   
-        void Prepend(Contap_SequenceOfIWLineOfTheIWalking& S) ;
+      void Prepend (Contap_SequenceOfIWLineOfTheIWalking& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(Contap_TheIWLineOfTheIWalking)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(Contap_TheIWLineOfTheIWalking)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,Contap_SequenceOfIWLineOfTheIWalking& S) ;
+      void InsertBefore (const Standard_Integer Index, Contap_SequenceOfIWLineOfTheIWalking& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(Contap_TheIWLineOfTheIWalking)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(Contap_TheIWLineOfTheIWalking)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,Contap_SequenceOfIWLineOfTheIWalking& S) ;
+      void InsertAfter (const Standard_Integer Index, Contap_SequenceOfIWLineOfTheIWalking& S) ;
   
-  Standard_EXPORT    const Handle_Contap_TheIWLineOfTheIWalking& First() const;
+  Standard_EXPORT  const  Handle(Contap_TheIWLineOfTheIWalking)& First()  const;
   
-  Standard_EXPORT    const Handle_Contap_TheIWLineOfTheIWalking& Last() const;
+  Standard_EXPORT  const  Handle(Contap_TheIWLineOfTheIWalking)& Last()  const;
   
-        void Split(const Standard_Integer Index,Contap_SequenceOfIWLineOfTheIWalking& Sub) ;
+      void Split (const Standard_Integer Index, Contap_SequenceOfIWLineOfTheIWalking& Sub) ;
   
-  Standard_EXPORT    const Handle_Contap_TheIWLineOfTheIWalking& Value(const Standard_Integer Index) const;
-   const Handle_Contap_TheIWLineOfTheIWalking& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(Contap_TheIWLineOfTheIWalking)& Value (const Standard_Integer Index)  const;
+ const  Handle(Contap_TheIWLineOfTheIWalking)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(Contap_TheIWLineOfTheIWalking)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(Contap_TheIWLineOfTheIWalking)& I) ;
   
-  Standard_EXPORT     Handle_Contap_TheIWLineOfTheIWalking& ChangeValue(const Standard_Integer Index) ;
-    Handle_Contap_TheIWLineOfTheIWalking& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(Contap_TheIWLineOfTheIWalking)& ChangeValue (const Standard_Integer Index) ;
+  Handle(Contap_TheIWLineOfTheIWalking)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -115,7 +101,7 @@ private:
 
 };
 
-#define SeqItem Handle_Contap_TheIWLineOfTheIWalking
+#define SeqItem Handle(Contap_TheIWLineOfTheIWalking)
 #define SeqItem_hxx <Contap_TheIWLineOfTheIWalking.hxx>
 #define TCollection_SequenceNode Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking
 #define TCollection_SequenceNode_hxx <Contap_SequenceNodeOfSequenceOfIWLineOfTheIWalking.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Contap_SequenceOfIWLineOfTheIWalking_HeaderFile

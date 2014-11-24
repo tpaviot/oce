@@ -2,25 +2,25 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{896C7F13-061F-0FD1-08AF-3333FA996DFC}</UniqueIdentifier>
+      <UniqueIdentifier>{1D461B6E-1623-0F30-0211-E9B1E09CF4E0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PDataXtd">
-      <UniqueIdentifier>{03CD2309-0602-0968-052E-01EF43034662}</UniqueIdentifier>
+      <UniqueIdentifier>{90C35E70-0E5C-1730-07FC-4C48090D5FA4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PNaming">
-      <UniqueIdentifier>{01FB1FB0-1074-085A-1346-F015620BE4CC}</UniqueIdentifier>
+      <UniqueIdentifier>{0239401F-0A62-117B-1278-C471D90E7692}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\PPrsStd">
-      <UniqueIdentifier>{DA1F9114-1634-0B51-1593-CCFF97A0538A}</UniqueIdentifier>
+      <UniqueIdentifier>{8A84675F-0928-10C7-04B8-6EC08621D60E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MDataXtd">
-      <UniqueIdentifier>{CCAC38F3-0D96-06C5-02C8-A786E6898733}</UniqueIdentifier>
+      <UniqueIdentifier>{6C463AD7-0EFC-08E7-1436-0CC1A77DBF11}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MPrsStd">
-      <UniqueIdentifier>{0B413DFE-0205-18D6-07B7-B60F15982D9A}</UniqueIdentifier>
+      <UniqueIdentifier>{8B357496-17E9-0426-0E08-D1F97750FC41}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\MNaming">
-      <UniqueIdentifier>{D9ECBE54-0336-05DE-09BE-9011AD78A9F9}</UniqueIdentifier>
+      <UniqueIdentifier>{E13501C5-1960-11BC-183D-A81112F8DFA6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -5,21 +5,13 @@
 
 #include <Expr_SequenceOfGeneralExpression.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Expr_GeneralExpression_HeaderFile
 #include <Expr_GeneralExpression.hxx>
-#endif
-#ifndef _Expr_SequenceNodeOfSequenceOfGeneralExpression_HeaderFile
 #include <Expr_SequenceNodeOfSequenceOfGeneralExpression.hxx>
-#endif
  
 
-#define SeqItem Handle_Expr_GeneralExpression
+#define SeqItem Handle(Expr_GeneralExpression)
 #define SeqItem_hxx <Expr_GeneralExpression.hxx>
 #define TCollection_SequenceNode Expr_SequenceNodeOfSequenceOfGeneralExpression
 #define TCollection_SequenceNode_hxx <Expr_SequenceNodeOfSequenceOfGeneralExpression.hxx>

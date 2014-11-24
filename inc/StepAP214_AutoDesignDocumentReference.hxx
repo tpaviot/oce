@@ -6,31 +6,15 @@
 #ifndef _StepAP214_AutoDesignDocumentReference_HeaderFile
 #define _StepAP214_AutoDesignDocumentReference_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepAP214_AutoDesignDocumentReference_HeaderFile
 #include <Handle_StepAP214_AutoDesignDocumentReference.hxx>
-#endif
 
-#ifndef _Handle_StepAP214_HArray1OfAutoDesignReferencingItem_HeaderFile
 #include <Handle_StepAP214_HArray1OfAutoDesignReferencingItem.hxx>
-#endif
-#ifndef _StepBasic_DocumentReference_HeaderFile
 #include <StepBasic_DocumentReference.hxx>
-#endif
-#ifndef _Handle_StepBasic_Document_HeaderFile
 #include <Handle_StepBasic_Document.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StepAP214_HArray1OfAutoDesignReferencingItem;
 class StepBasic_Document;
 class TCollection_HAsciiString;
@@ -38,22 +22,23 @@ class StepAP214_AutoDesignReferencingItem;
 
 
 
-class StepAP214_AutoDesignDocumentReference : public StepBasic_DocumentReference {
+class StepAP214_AutoDesignDocumentReference : public StepBasic_DocumentReference
+{
 
 public:
 
   
-  Standard_EXPORT   StepAP214_AutoDesignDocumentReference();
+  Standard_EXPORT StepAP214_AutoDesignDocumentReference();
   
-  Standard_EXPORT     void Init(const Handle(StepBasic_Document)& aAssignedDocument,const Handle(TCollection_HAsciiString)& aSource,const Handle(StepAP214_HArray1OfAutoDesignReferencingItem)& aItems) ;
+  Standard_EXPORT   void Init (const Handle(StepBasic_Document)& aAssignedDocument, const Handle(TCollection_HAsciiString)& aSource, const Handle(StepAP214_HArray1OfAutoDesignReferencingItem)& aItems) ;
   
-  Standard_EXPORT     Handle_StepAP214_HArray1OfAutoDesignReferencingItem Items() const;
+  Standard_EXPORT   Handle(StepAP214_HArray1OfAutoDesignReferencingItem) Items()  const;
   
-  Standard_EXPORT     void SetItems(const Handle(StepAP214_HArray1OfAutoDesignReferencingItem)& aItems) ;
+  Standard_EXPORT   void SetItems (const Handle(StepAP214_HArray1OfAutoDesignReferencingItem)& aItems) ;
   
-  Standard_EXPORT     StepAP214_AutoDesignReferencingItem ItemsValue(const Standard_Integer num) const;
+  Standard_EXPORT   StepAP214_AutoDesignReferencingItem ItemsValue (const Standard_Integer num)  const;
   
-  Standard_EXPORT     Standard_Integer NbItems() const;
+  Standard_EXPORT   Standard_Integer NbItems()  const;
 
 
 
@@ -68,7 +53,7 @@ protected:
 private: 
 
 
-Handle_StepAP214_HArray1OfAutoDesignReferencingItem items;
+  Handle(StepAP214_HArray1OfAutoDesignReferencingItem) items;
 
 
 };
@@ -77,7 +62,6 @@ Handle_StepAP214_HArray1OfAutoDesignReferencingItem items;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP214_AutoDesignDocumentReference_HeaderFile

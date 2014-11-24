@@ -6,92 +6,84 @@
 #ifndef _StepData_FreeFormEntity_HeaderFile
 #define _StepData_FreeFormEntity_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepData_FreeFormEntity_HeaderFile
 #include <Handle_StepData_FreeFormEntity.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Handle_StepData_HArray1OfField_HeaderFile
 #include <Handle_StepData_HArray1OfField.hxx>
-#endif
-#ifndef _Handle_StepData_FreeFormEntity_HeaderFile
 #include <Handle_StepData_FreeFormEntity.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TColStd_HSequenceOfAsciiString_HeaderFile
 #include <Handle_TColStd_HSequenceOfAsciiString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StepData_HArray1OfField;
 class TColStd_HSequenceOfAsciiString;
 class StepData_Field;
 
 
-//! A Free Form Entity allows to record any kind of STEP <br>
-//!           parameters, in any way of typing <br>
-//!           It is implemented with an array of fields <br>
-//!           A Complex entity can be defined, as a chain of FreeFormEntity <br>
-//!           (see Next and As) <br>
-class StepData_FreeFormEntity : public MMgt_TShared {
+//! A Free Form Entity allows to record any kind of STEP
+//! parameters, in any way of typing
+//! It is implemented with an array of fields
+//! A Complex entity can be defined, as a chain of FreeFormEntity
+//! (see Next and As)
+class StepData_FreeFormEntity : public MMgt_TShared
+{
 
 public:
 
-  //! Creates a FreeFormEntity, with no field, no type <br>
-  Standard_EXPORT   StepData_FreeFormEntity();
-  //! Sets the type of an entity <br>
-//!           For a complex one, the type of this member <br>
-  Standard_EXPORT     void SetStepType(const Standard_CString typenam) ;
-  //! Returns the recorded StepType <br>
-//!           For a complex one, the type of this member <br>
-  Standard_EXPORT     Standard_CString StepType() const;
-  //! Sets a next member, in order to define or complete a Complex <br>
-//!           entity <br>
-//!           If <last> is True (D), this next will be set as last of list <br>
-//!           Else, it is inserted just as next of <me> <br>
-//!           If <next> is Null, Next is cleared <br>
-  Standard_EXPORT     void SetNext(const Handle(StepData_FreeFormEntity)& next,const Standard_Boolean last = Standard_True) ;
-  //! Returns the next member of a Complex entity <br>
-//!           (remark : the last member has none) <br>
-  Standard_EXPORT     Handle_StepData_FreeFormEntity Next() const;
-  //! Returns True if a FreeFormEntity is Complex (i.e. has Next) <br>
-  Standard_EXPORT     Standard_Boolean IsComplex() const;
-  //! Returns the member of a FreeFormEntity of which the type name <br>
-//!           is given (exact match, no sub-type) <br>
-  Standard_EXPORT     Handle_StepData_FreeFormEntity Typed(const Standard_CString typenam) const;
-  //! Returns the list of types (one type for a simple entity), <br>
-//!           as is (non reordered) <br>
-  Standard_EXPORT     Handle_TColStd_HSequenceOfAsciiString TypeList() const;
-  //! Reorders a Complex entity if required, i.e. if member types <br>
-//!           are not in alphabetic order <br>
-//!           Returns False if nothing done (order was OK or simple entity), <br>
-//!           True plus modified <ent> if <ent> has been reordered <br>
-  Standard_EXPORT   static  Standard_Boolean Reorder(Handle(StepData_FreeFormEntity)& ent) ;
-  //! Sets a count of Fields, from scratch <br>
-  Standard_EXPORT     void SetNbFields(const Standard_Integer nb) ;
-  //! Returns the count of fields <br>
-  Standard_EXPORT     Standard_Integer NbFields() const;
-  //! Returns a field from its rank, for read-only use <br>
-  Standard_EXPORT    const StepData_Field& Field(const Standard_Integer num) const;
-  //! Returns a field from its rank, in order to modify it <br>
-  Standard_EXPORT     StepData_Field& CField(const Standard_Integer num) ;
+  
+  //! Creates a FreeFormEntity, with no field, no type
+  Standard_EXPORT StepData_FreeFormEntity();
+  
+  //! Sets the type of an entity
+  //! For a complex one, the type of this member
+  Standard_EXPORT   void SetStepType (const Standard_CString typenam) ;
+  
+  //! Returns the recorded StepType
+  //! For a complex one, the type of this member
+  Standard_EXPORT   Standard_CString StepType()  const;
+  
+  //! Sets a next member, in order to define or complete a Complex
+  //! entity
+  //! If <last> is True (D), this next will be set as last of list
+  //! Else, it is inserted just as next of <me>
+  //! If <next> is Null, Next is cleared
+  Standard_EXPORT   void SetNext (const Handle(StepData_FreeFormEntity)& next, const Standard_Boolean last = Standard_True) ;
+  
+  //! Returns the next member of a Complex entity
+  //! (remark : the last member has none)
+  Standard_EXPORT   Handle(StepData_FreeFormEntity) Next()  const;
+  
+  //! Returns True if a FreeFormEntity is Complex (i.e. has Next)
+  Standard_EXPORT   Standard_Boolean IsComplex()  const;
+  
+  //! Returns the member of a FreeFormEntity of which the type name
+  //! is given (exact match, no sub-type)
+  Standard_EXPORT   Handle(StepData_FreeFormEntity) Typed (const Standard_CString typenam)  const;
+  
+  //! Returns the list of types (one type for a simple entity),
+  //! as is (non reordered)
+  Standard_EXPORT   Handle(TColStd_HSequenceOfAsciiString) TypeList()  const;
+  
+  //! Reorders a Complex entity if required, i.e. if member types
+  //! are not in alphabetic order
+  //! Returns False if nothing done (order was OK or simple entity),
+  //! True plus modified <ent> if <ent> has been reordered
+  Standard_EXPORT static   Standard_Boolean Reorder (Handle(StepData_FreeFormEntity)& ent) ;
+  
+  //! Sets a count of Fields, from scratch
+  Standard_EXPORT   void SetNbFields (const Standard_Integer nb) ;
+  
+  //! Returns the count of fields
+  Standard_EXPORT   Standard_Integer NbFields()  const;
+  
+  //! Returns a field from its rank, for read-only use
+  Standard_EXPORT  const  StepData_Field& Field (const Standard_Integer num)  const;
+  
+  //! Returns a field from its rank, in order to modify it
+  Standard_EXPORT   StepData_Field& CField (const Standard_Integer num) ;
 
 
 
@@ -106,9 +98,9 @@ protected:
 private: 
 
 
-TCollection_AsciiString thetype;
-Handle_StepData_HArray1OfField thefields;
-Handle_StepData_FreeFormEntity thenext;
+  TCollection_AsciiString thetype;
+  Handle(StepData_HArray1OfField) thefields;
+  Handle(StepData_FreeFormEntity) thenext;
 
 
 };
@@ -117,7 +109,6 @@ Handle_StepData_FreeFormEntity thenext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepData_FreeFormEntity_HeaderFile

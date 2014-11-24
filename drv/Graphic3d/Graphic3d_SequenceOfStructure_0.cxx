@@ -5,21 +5,13 @@
 
 #include <Graphic3d_SequenceOfStructure.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Graphic3d_Structure_HeaderFile
 #include <Graphic3d_Structure.hxx>
-#endif
-#ifndef _Graphic3d_SequenceNodeOfSequenceOfStructure_HeaderFile
 #include <Graphic3d_SequenceNodeOfSequenceOfStructure.hxx>
-#endif
  
 
-#define SeqItem Handle_Graphic3d_Structure
+#define SeqItem Handle(Graphic3d_Structure)
 #define SeqItem_hxx <Graphic3d_Structure.hxx>
 #define TCollection_SequenceNode Graphic3d_SequenceNodeOfSequenceOfStructure
 #define TCollection_SequenceNode_hxx <Graphic3d_SequenceNodeOfSequenceOfStructure.hxx>

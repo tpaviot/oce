@@ -6,13 +6,12 @@
 #ifndef _StepElement_UnspecifiedValue_HeaderFile
 #define _StepElement_UnspecifiedValue_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepElement_UnspecifiedValue {
+
+enum StepElement_UnspecifiedValue
+{
 StepElement_Unspecified
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepElement_UnspecifiedValue_HeaderFile

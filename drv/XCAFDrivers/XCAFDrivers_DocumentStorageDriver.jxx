@@ -1,9 +1,3 @@
-#ifndef _MDF_ASDriverTable_HeaderFile
 #include <MDF_ASDriverTable.hxx>
-#endif
-#ifndef _CDM_MessageDriver_HeaderFile
 #include <CDM_MessageDriver.hxx>
-#endif
-#ifndef _XCAFDrivers_DocumentStorageDriver_HeaderFile
 #include <XCAFDrivers_DocumentStorageDriver.hxx>
-#endif

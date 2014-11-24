@@ -6,25 +6,16 @@
 #ifndef _PDF_Attribute_HeaderFile
 #define _PDF_Attribute_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PDF_Attribute_HeaderFile
 #include <Handle_PDF_Attribute.hxx>
-#endif
 
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
 
 
-class PDF_Attribute : public Standard_Persistent {
+class PDF_Attribute : public Standard_Persistent
+{
 
 public:
 
@@ -33,7 +24,7 @@ PDF_Attribute(const Storage_stCONSTclCOM& a) : Standard_Persistent(a)
 {
   
 }
-  PDF_Attribute( )
+PDF_Attribute( )
 {
   
 }
@@ -58,7 +49,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDF_Attribute_HeaderFile

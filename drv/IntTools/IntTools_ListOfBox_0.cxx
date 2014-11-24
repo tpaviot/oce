@@ -5,18 +5,10 @@
 
 #include <IntTools_ListOfBox.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _IntTools_ListIteratorOfListOfBox_HeaderFile
 #include <IntTools_ListIteratorOfListOfBox.hxx>
-#endif
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
-#ifndef _IntTools_ListNodeOfListOfBox_HeaderFile
 #include <IntTools_ListNodeOfListOfBox.hxx>
-#endif
  
 
 #define Item Bnd_Box

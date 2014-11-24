@@ -5,28 +5,14 @@
 
 #include <GeomPlate_HArray1OfHCurveOnSurface.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _Adaptor3d_HCurveOnSurface_HeaderFile
 #include <Adaptor3d_HCurveOnSurface.hxx>
-#endif
-#ifndef _GeomPlate_Array1OfHCurveOnSurface_HeaderFile
 #include <GeomPlate_Array1OfHCurveOnSurface.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(GeomPlate_HArray1OfHCurveOnSurface,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(GeomPlate_HArray1OfHCurveOnSurface)
 
 
-#define ItemHArray1 Handle_Adaptor3d_HCurveOnSurface
+#define ItemHArray1 Handle(Adaptor3d_HCurveOnSurface)
 #define ItemHArray1_hxx <Adaptor3d_HCurveOnSurface.hxx>
 #define TheArray1 GeomPlate_Array1OfHCurveOnSurface
 #define TheArray1_hxx <GeomPlate_Array1OfHCurveOnSurface.hxx>

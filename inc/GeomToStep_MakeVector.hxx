@@ -6,28 +6,14 @@
 #ifndef _GeomToStep_MakeVector_HeaderFile
 #define _GeomToStep_MakeVector_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Vector_HeaderFile
 #include <Handle_StepGeom_Vector.hxx>
-#endif
-#ifndef _GeomToStep_Root_HeaderFile
 #include <GeomToStep_Root.hxx>
-#endif
-#ifndef _Handle_Geom_Vector_HeaderFile
 #include <Handle_Geom_Vector.hxx>
-#endif
-#ifndef _Handle_Geom2d_Vector_HeaderFile
 #include <Handle_Geom2d_Vector.hxx>
-#endif
 class StepGeom_Vector;
 class StdFail_NotDone;
 class gp_Vec;
@@ -36,26 +22,26 @@ class Geom_Vector;
 class Geom2d_Vector;
 
 
-//! This class implements the mapping between classes <br>
-//!          Vector from Geom, Geom2d and Vec, Vec2d from gp, and the class <br>
-//!          Vector from StepGeom which describes a Vector from <br>
-//!          Prostep. <br>
-class GeomToStep_MakeVector  : public GeomToStep_Root {
+//! This class implements the mapping between classes
+//! Vector from Geom, Geom2d and Vec, Vec2d from gp, and the class
+//! Vector from StepGeom which describes a Vector from
+//! Prostep.
+class GeomToStep_MakeVector  : public GeomToStep_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomToStep_MakeVector(const gp_Vec& V);
+  Standard_EXPORT GeomToStep_MakeVector(const gp_Vec& V);
   
-  Standard_EXPORT   GeomToStep_MakeVector(const gp_Vec2d& V);
+  Standard_EXPORT GeomToStep_MakeVector(const gp_Vec2d& V);
   
-  Standard_EXPORT   GeomToStep_MakeVector(const Handle(Geom_Vector)& V);
+  Standard_EXPORT GeomToStep_MakeVector(const Handle(Geom_Vector)& V);
   
-  Standard_EXPORT   GeomToStep_MakeVector(const Handle(Geom2d_Vector)& V);
+  Standard_EXPORT GeomToStep_MakeVector(const Handle(Geom2d_Vector)& V);
   
-  Standard_EXPORT    const Handle_StepGeom_Vector& Value() const;
-
+  Standard_EXPORT  const  Handle(StepGeom_Vector)& Value()  const;
 
 
 
@@ -70,7 +56,7 @@ private:
 
 
 
-Handle_StepGeom_Vector theVector;
+  Handle(StepGeom_Vector) theVector;
 
 
 };
@@ -79,7 +65,6 @@ Handle_StepGeom_Vector theVector;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomToStep_MakeVector_HeaderFile

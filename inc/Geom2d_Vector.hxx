@@ -6,66 +6,66 @@
 #ifndef _Geom2d_Vector_HeaderFile
 #define _Geom2d_Vector_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Geom2d_Vector_HeaderFile
 #include <Handle_Geom2d_Vector.hxx>
-#endif
 
-#ifndef _gp_Vec2d_HeaderFile
 #include <gp_Vec2d.hxx>
-#endif
-#ifndef _Geom2d_Geometry_HeaderFile
 #include <Geom2d_Geometry.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Standard_DomainError;
 class gp_VectorWithNullMagnitude;
 class gp_Vec2d;
 
 
-//!  The abstract class Vector describes the common <br>
-//! behavior of vectors in 2D space. <br>
-//! The Geom2d package provides two concrete <br>
-//! classes of vectors: Geom2d_Direction (unit vector) <br>
-//! and Geom2d_VectorWithMagnitude. <br>
-class Geom2d_Vector : public Geom2d_Geometry {
+//! The abstract class Vector describes the common
+//! behavior of vectors in 2D space.
+//! The Geom2d package provides two concrete
+//! classes of vectors: Geom2d_Direction (unit vector)
+//! and Geom2d_VectorWithMagnitude.
+class Geom2d_Vector : public Geom2d_Geometry
+{
 
 public:
 
-  //! Reverses the vector <me>. <br>
-  Standard_EXPORT     void Reverse() ;
-  //! Returns a copy of <me> reversed. <br>
-  Standard_EXPORT     Handle_Geom2d_Vector Reversed() const;
-  //! Computes the angular value, in radians, between this <br>
-//! vector and vector Other. The result is a value <br>
-//! between -Pi and Pi. The orientation is from this <br>
-//! vector to vector Other. <br>
-//!    Raises VectorWithNullMagnitude if one of the two vectors is a vector with <br>
-//!  null magnitude because the angular value is indefinite. <br>
-  Standard_EXPORT     Standard_Real Angle(const Handle(Geom2d_Vector)& Other) const;
-  //! Returns the coordinates of <me>. <br>
-  Standard_EXPORT     void Coord(Standard_Real& X,Standard_Real& Y) const;
-  //! Returns the  Magnitude of <me>. <br>
-  Standard_EXPORT   virtual  Standard_Real Magnitude() const = 0;
-  //! Returns the square magnitude of <me>. <br>
-  Standard_EXPORT   virtual  Standard_Real SquareMagnitude() const = 0;
-  //! Returns the X coordinate of <me>. <br>
-  Standard_EXPORT     Standard_Real X() const;
-  //! Returns the Y coordinate of <me>. <br>
-  Standard_EXPORT     Standard_Real Y() const;
-  //! Cross product of <me> with the vector <Other>. <br>
-  Standard_EXPORT   virtual  Standard_Real Crossed(const Handle(Geom2d_Vector)& Other) const = 0;
-  //! Returns the scalar product of 2 Vectors. <br>
-  Standard_EXPORT     Standard_Real Dot(const Handle(Geom2d_Vector)& Other) const;
-  //! Returns a non persistent copy of <me>. <br>
-  Standard_EXPORT     gp_Vec2d Vec2d() const;
+  
+  //! Reverses the vector <me>.
+  Standard_EXPORT   void Reverse() ;
+  
+  //! Returns a copy of <me> reversed.
+  Standard_EXPORT   Handle(Geom2d_Vector) Reversed()  const;
+  
+  //! Computes the angular value, in radians, between this
+  //! vector and vector Other. The result is a value
+  //! between -Pi and Pi. The orientation is from this
+  //! vector to vector Other.
+  //! Raises VectorWithNullMagnitude if one of the two vectors is a vector with
+  //! null magnitude because the angular value is indefinite.
+  Standard_EXPORT   Standard_Real Angle (const Handle(Geom2d_Vector)& Other)  const;
+  
+  //! Returns the coordinates of <me>.
+  Standard_EXPORT   void Coord (Standard_Real& X, Standard_Real& Y)  const;
+  
+  //! Returns the  Magnitude of <me>.
+  Standard_EXPORT virtual   Standard_Real Magnitude()  const = 0;
+  
+  //! Returns the square magnitude of <me>.
+  Standard_EXPORT virtual   Standard_Real SquareMagnitude()  const = 0;
+  
+  //! Returns the X coordinate of <me>.
+  Standard_EXPORT   Standard_Real X()  const;
+  
+  //! Returns the Y coordinate of <me>.
+  Standard_EXPORT   Standard_Real Y()  const;
+  
+  //! Cross product of <me> with the vector <Other>.
+  Standard_EXPORT virtual   Standard_Real Crossed (const Handle(Geom2d_Vector)& Other)  const = 0;
+  
+  //! Returns the scalar product of 2 Vectors.
+  Standard_EXPORT   Standard_Real Dot (const Handle(Geom2d_Vector)& Other)  const;
+  
+  //! Returns a non persistent copy of <me>.
+  Standard_EXPORT   gp_Vec2d Vec2d()  const;
 
 
 
@@ -75,7 +75,7 @@ public:
 protected:
 
 
-gp_Vec2d gpVec2d;
+  gp_Vec2d gpVec2d;
 
 
 private: 
@@ -89,7 +89,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2d_Vector_HeaderFile

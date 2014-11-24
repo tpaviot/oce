@@ -6,55 +6,41 @@
 #ifndef _TopOpeBRepTool_C2DF_HeaderFile
 #define _TopOpeBRepTool_C2DF_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Geom2d_Curve;
 class TopoDS_Face;
 
 
 
-class TopOpeBRepTool_C2DF  {
+class TopOpeBRepTool_C2DF 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepTool_C2DF();
+  Standard_EXPORT TopOpeBRepTool_C2DF();
   
-  Standard_EXPORT   TopOpeBRepTool_C2DF(const Handle(Geom2d_Curve)& PC,const Standard_Real f2d,const Standard_Real l2d,const Standard_Real tol,const TopoDS_Face& F);
+  Standard_EXPORT TopOpeBRepTool_C2DF(const Handle(Geom2d_Curve)& PC, const Standard_Real f2d, const Standard_Real l2d, const Standard_Real tol, const TopoDS_Face& F);
   
-  Standard_EXPORT     void SetPC(const Handle(Geom2d_Curve)& PC,const Standard_Real f2d,const Standard_Real l2d,const Standard_Real tol) ;
+  Standard_EXPORT   void SetPC (const Handle(Geom2d_Curve)& PC, const Standard_Real f2d, const Standard_Real l2d, const Standard_Real tol) ;
   
-  Standard_EXPORT     void SetFace(const TopoDS_Face& F) ;
+  Standard_EXPORT   void SetFace (const TopoDS_Face& F) ;
   
-  Standard_EXPORT    const Handle_Geom2d_Curve& PC(Standard_Real& f2d,Standard_Real& l2d,Standard_Real& tol) const;
+  Standard_EXPORT  const  Handle(Geom2d_Curve)& PC (Standard_Real& f2d, Standard_Real& l2d, Standard_Real& tol)  const;
   
-  Standard_EXPORT    const TopoDS_Face& Face() const;
+  Standard_EXPORT  const  TopoDS_Face& Face()  const;
   
-  Standard_EXPORT     Standard_Boolean IsPC(const Handle(Geom2d_Curve)& PC) const;
+  Standard_EXPORT   Standard_Boolean IsPC (const Handle(Geom2d_Curve)& PC)  const;
   
-  Standard_EXPORT     Standard_Boolean IsFace(const TopoDS_Face& F) const;
-
+  Standard_EXPORT   Standard_Boolean IsFace (const TopoDS_Face& F)  const;
 
 
 
@@ -69,11 +55,11 @@ private:
 
 
 
-Handle_Geom2d_Curve myPC;
-Standard_Real myf2d;
-Standard_Real myl2d;
-Standard_Real mytol;
-TopoDS_Face myFace;
+  Handle(Geom2d_Curve) myPC;
+  Standard_Real myf2d;
+  Standard_Real myl2d;
+  Standard_Real mytol;
+  TopoDS_Face myFace;
 
 
 };
@@ -82,7 +68,6 @@ TopoDS_Face myFace;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepTool_C2DF_HeaderFile

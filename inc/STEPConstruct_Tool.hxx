@@ -6,34 +6,16 @@
 #ifndef _STEPConstruct_Tool_HeaderFile
 #define _STEPConstruct_Tool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_XSControl_WorkSession_HeaderFile
 #include <Handle_XSControl_WorkSession.hxx>
-#endif
-#ifndef _Handle_Transfer_FinderProcess_HeaderFile
 #include <Handle_Transfer_FinderProcess.hxx>
-#endif
-#ifndef _Handle_Transfer_TransientProcess_HeaderFile
 #include <Handle_Transfer_TransientProcess.hxx>
-#endif
-#ifndef _Handle_Interface_HGraph_HeaderFile
 #include <Handle_Interface_HGraph.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
 class XSControl_WorkSession;
 class Transfer_FinderProcess;
 class Transfer_TransientProcess;
@@ -42,46 +24,54 @@ class Interface_InterfaceModel;
 class Interface_Graph;
 
 
-//! Provides basic functionalities for tools which are intended <br>
-//!          for encoding/decoding specific STEP constructs <br>
-//! <br>
-//!          It is initialized by WorkSession and allows easy access to <br>
-//!          its fields and internal data such as Model, TP and FP <br>
-//! <br>
-//!          NOTE: Call to method Graph() with True (or for a first time, <br>
-//!          if you have updated the model since last computation of model) <br>
-//!          can take a time, so it is recommended to avoid creation of <br>
-//!          this (and derived) tool multiple times <br>
-class STEPConstruct_Tool  {
+//! Provides basic functionalities for tools which are intended
+//! for encoding/decoding specific STEP constructs
+//!
+//! It is initialized by WorkSession and allows easy access to
+//! its fields and internal data such as Model, TP and FP
+//!
+//! NOTE: Call to method Graph() with True (or for a first time,
+//! if you have updated the model since last computation of model)
+//! can take a time, so it is recommended to avoid creation of
+//! this (and derived) tool multiple times
+class STEPConstruct_Tool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an empty tool <br>
-  Standard_EXPORT   STEPConstruct_Tool();
-  //! Creates a tool and loads it with worksession <br>
-  Standard_EXPORT   STEPConstruct_Tool(const Handle(XSControl_WorkSession)& WS);
-  //! Returns currently loaded WorkSession <br>
-       const Handle_XSControl_WorkSession& WS() const;
-  //! Returns current model (Null if not loaded) <br>
-        Handle_Interface_InterfaceModel Model() const;
-  //! Returns current graph (recomputing if necessary) <br>
-       const Interface_Graph& Graph(const Standard_Boolean recompute = Standard_False) const;
-  //! Returns TransientProcess (reading; Null if not loaded) <br>
-       const Handle_Transfer_TransientProcess& TransientProcess() const;
-  //! Returns FinderProcess (writing; Null if not loaded) <br>
-       const Handle_Transfer_FinderProcess& FinderProcess() const;
-
+  
+  //! Creates an empty tool
+  Standard_EXPORT STEPConstruct_Tool();
+  
+  //! Creates a tool and loads it with worksession
+  Standard_EXPORT STEPConstruct_Tool(const Handle(XSControl_WorkSession)& WS);
+  
+  //! Returns currently loaded WorkSession
+     const  Handle(XSControl_WorkSession)& WS()  const;
+  
+  //! Returns current model (Null if not loaded)
+      Handle(Interface_InterfaceModel) Model()  const;
+  
+  //! Returns current graph (recomputing if necessary)
+     const  Interface_Graph& Graph (const Standard_Boolean recompute = Standard_False)  const;
+  
+  //! Returns TransientProcess (reading; Null if not loaded)
+     const  Handle(Transfer_TransientProcess)& TransientProcess()  const;
+  
+  //! Returns FinderProcess (writing; Null if not loaded)
+     const  Handle(Transfer_FinderProcess)& FinderProcess()  const;
 
 
 
 
 protected:
 
-  //! Load worksession; returns True if succeeded <br>
-//!          Returns False if either FinderProcess of TransientProcess <br>
-//!          cannot be obtained or are Null <br>
-  Standard_EXPORT     Standard_Boolean SetWS(const Handle(XSControl_WorkSession)& WS) ;
+  
+  //! Load worksession; returns True if succeeded
+  //! Returns False if either FinderProcess of TransientProcess
+  //! cannot be obtained or are Null
+  Standard_EXPORT   Standard_Boolean SetWS (const Handle(XSControl_WorkSession)& WS) ;
 
 
 
@@ -90,10 +80,10 @@ private:
 
 
 
-Handle_XSControl_WorkSession myWS;
-Handle_Transfer_FinderProcess myFinderProcess;
-Handle_Transfer_TransientProcess myTransientProcess;
-Handle_Interface_HGraph myHGraph;
+  Handle(XSControl_WorkSession) myWS;
+  Handle(Transfer_FinderProcess) myFinderProcess;
+  Handle(Transfer_TransientProcess) myTransientProcess;
+  Handle(Interface_HGraph) myHGraph;
 
 
 };
@@ -103,7 +93,6 @@ Handle_Interface_HGraph myHGraph;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPConstruct_Tool_HeaderFile

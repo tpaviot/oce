@@ -6,28 +6,14 @@
 #ifndef _SelectMgr_DataMapNodeOfDataMapOfObjectSelectors_HeaderFile
 #define _SelectMgr_DataMapNodeOfDataMapOfObjectSelectors_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_SelectMgr_DataMapNodeOfDataMapOfObjectSelectors_HeaderFile
 #include <Handle_SelectMgr_DataMapNodeOfDataMapOfObjectSelectors.hxx>
-#endif
 
-#ifndef _Handle_SelectMgr_SelectableObject_HeaderFile
 #include <Handle_SelectMgr_SelectableObject.hxx>
-#endif
-#ifndef _SelectMgr_SequenceOfSelector_HeaderFile
 #include <SelectMgr_SequenceOfSelector.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class SelectMgr_SelectableObject;
 class SelectMgr_SequenceOfSelector;
 class TColStd_MapTransientHasher;
@@ -36,16 +22,17 @@ class SelectMgr_DataMapIteratorOfDataMapOfObjectSelectors;
 
 
 
-class SelectMgr_DataMapNodeOfDataMapOfObjectSelectors : public TCollection_MapNode {
+class SelectMgr_DataMapNodeOfDataMapOfObjectSelectors : public TCollection_MapNode
+{
 
 public:
 
   
-      SelectMgr_DataMapNodeOfDataMapOfObjectSelectors(const Handle(SelectMgr_SelectableObject)& K,const SelectMgr_SequenceOfSelector& I,const TCollection_MapNodePtr& n);
+    SelectMgr_DataMapNodeOfDataMapOfObjectSelectors(const Handle(SelectMgr_SelectableObject)& K, const SelectMgr_SequenceOfSelector& I, const TCollection_MapNodePtr& n);
   
-        Handle_SelectMgr_SelectableObject& Key() const;
+      Handle(SelectMgr_SelectableObject)& Key()  const;
   
-        SelectMgr_SequenceOfSelector& Value() const;
+      SelectMgr_SequenceOfSelector& Value()  const;
 
 
 
@@ -60,13 +47,13 @@ protected:
 private: 
 
 
-Handle_SelectMgr_SelectableObject myKey;
-SelectMgr_SequenceOfSelector myValue;
+  Handle(SelectMgr_SelectableObject) myKey;
+  SelectMgr_SequenceOfSelector myValue;
 
 
 };
 
-#define TheKey Handle_SelectMgr_SelectableObject
+#define TheKey Handle(SelectMgr_SelectableObject)
 #define TheKey_hxx <SelectMgr_SelectableObject.hxx>
 #define TheItem SelectMgr_SequenceOfSelector
 #define TheItem_hxx <SelectMgr_SequenceOfSelector.hxx>
@@ -99,7 +86,6 @@ SelectMgr_SequenceOfSelector myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SelectMgr_DataMapNodeOfDataMapOfObjectSelectors_HeaderFile

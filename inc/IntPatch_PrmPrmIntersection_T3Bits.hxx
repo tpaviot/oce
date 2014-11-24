@@ -6,49 +6,39 @@
 #ifndef _IntPatch_PrmPrmIntersection_T3Bits_HeaderFile
 #define _IntPatch_PrmPrmIntersection_T3Bits_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 
 
 
-class IntPatch_PrmPrmIntersection_T3Bits  {
+class IntPatch_PrmPrmIntersection_T3Bits 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntPatch_PrmPrmIntersection_T3Bits(const Standard_Integer size);
+  Standard_EXPORT IntPatch_PrmPrmIntersection_T3Bits(const Standard_Integer size);
   
-  Standard_EXPORT     void Destroy() ;
+  Standard_EXPORT   void Destroy() ;
 ~IntPatch_PrmPrmIntersection_T3Bits()
 {
   Destroy();
 }
   
-        void Add(const Standard_Integer t) ;
+      void Add (const Standard_Integer t) ;
   
-        Standard_Integer Val(const Standard_Integer t) const;
+      Standard_Integer Val (const Standard_Integer t)  const;
   
-        void Raz(const Standard_Integer t) ;
+      void Raz (const Standard_Integer t) ;
   
-  Standard_EXPORT     void ResetAnd() ;
+  Standard_EXPORT   void ResetAnd() ;
   
-  Standard_EXPORT     Standard_Integer And(IntPatch_PrmPrmIntersection_T3Bits& Oth,Standard_Integer& indiceprecedent) ;
-
+  Standard_EXPORT   Standard_Integer And (IntPatch_PrmPrmIntersection_T3Bits& Oth, Standard_Integer& indiceprecedent) ;
 
 
 
@@ -63,8 +53,8 @@ private:
 
 
 
-Standard_Address p;
-Standard_Integer Isize;
+  Standard_Address p;
+  Standard_Integer Isize;
 
 
 };
@@ -74,7 +64,6 @@ Standard_Integer Isize;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntPatch_PrmPrmIntersection_T3Bits_HeaderFile

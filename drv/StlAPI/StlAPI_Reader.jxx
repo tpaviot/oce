@@ -1,6 +1,2 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _StlAPI_Reader_HeaderFile
 #include <StlAPI_Reader.hxx>
-#endif

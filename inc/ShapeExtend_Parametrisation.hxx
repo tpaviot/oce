@@ -6,18 +6,17 @@
 #ifndef _ShapeExtend_Parametrisation_HeaderFile
 #define _ShapeExtend_Parametrisation_HeaderFile
 
-//! Defines kind of global parametrisation on the composite surface <br>
-//! each patch of the 1st row and column adds its range, Ui+1 = Ui + URange(i,1), etc. <br>
-//! each patch gives range 1.: Ui = i-1, Vj = j-1 <br>
-//! uniform parametrisation with global range [0,1] <br>
-enum ShapeExtend_Parametrisation {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Defines kind of global parametrisation on the composite surface
+//! each patch of the 1st row and column adds its range, Ui+1 = Ui + URange(i,1), etc.
+//! each patch gives range 1.: Ui = i-1, Vj = j-1
+//! uniform parametrisation with global range [0,1]
+enum ShapeExtend_Parametrisation
+{
 ShapeExtend_Natural,
 ShapeExtend_Uniform,
 ShapeExtend_Unitary
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _ShapeExtend_Parametrisation_HeaderFile

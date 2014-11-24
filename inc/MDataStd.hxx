@@ -6,31 +6,15 @@
 #ifndef _MDataStd_HeaderFile
 #define _MDataStd_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_MDF_ASDriverHSequence_HeaderFile
 #include <Handle_MDF_ASDriverHSequence.hxx>
-#endif
-#ifndef _Handle_CDM_MessageDriver_HeaderFile
 #include <Handle_CDM_MessageDriver.hxx>
-#endif
-#ifndef _Handle_MDF_ARDriverHSequence_HeaderFile
 #include <Handle_MDF_ARDriverHSequence.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TDataStd_RealEnum_HeaderFile
 #include <TDataStd_RealEnum.hxx>
-#endif
 class MDF_ASDriverHSequence;
 class CDM_MessageDriver;
 class MDF_ARDriverHSequence;
@@ -93,25 +77,28 @@ class MDataStd_IntPackedMapRetrievalDriver;
 class MDataStd_IntPackedMapRetrievalDriver_1;
 
 
-//! Storage    and  Retrieval  drivers   for modelling <br>
-//!          attributes.   Transient  attributes are defined in <br>
-//!          package TDataStd and persistent one are defined in <br>
-//!          package PDataStd <br>
-class MDataStd  {
+//! Storage    and  Retrieval  drivers   for modelling
+//! attributes.   Transient  attributes are defined in
+//! package TDataStd and persistent one are defined in
+//! package PDataStd
+class MDataStd 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Adds the attribute storage drivers to <aDriverSeq>. <br>
-  Standard_EXPORT   static  void AddStorageDrivers(const Handle(MDF_ASDriverHSequence)& aDriverSeq,const Handle(CDM_MessageDriver)& theMessageDriver) ;
-  //! Adds the attribute retrieval drivers to <aDriverSeq>. <br>//! Translation of TDataStd enumerations to integer <br>
-//!          =============================================== <br>
-  Standard_EXPORT   static  void AddRetrievalDrivers(const Handle(MDF_ARDriverHSequence)& aDriverSeq,const Handle(CDM_MessageDriver)& theMessageDriver) ;
   
-  Standard_EXPORT   static  Standard_Integer RealDimensionToInteger(const TDataStd_RealEnum e) ;
+  //! Adds the attribute storage drivers to <aDriverSeq>.
+  Standard_EXPORT static   void AddStorageDrivers (const Handle(MDF_ASDriverHSequence)& aDriverSeq, const Handle(CDM_MessageDriver)& theMessageDriver) ;
   
-  Standard_EXPORT   static  TDataStd_RealEnum IntegerToRealDimension(const Standard_Integer i) ;
-
+  //! Adds the attribute retrieval drivers to <aDriverSeq>.
+  //! Translation of TDataStd enumerations to integer
+  //! ===============================================
+  Standard_EXPORT static   void AddRetrievalDrivers (const Handle(MDF_ARDriverHSequence)& aDriverSeq, const Handle(CDM_MessageDriver)& theMessageDriver) ;
+  
+  Standard_EXPORT static   Standard_Integer RealDimensionToInteger (const TDataStd_RealEnum e) ;
+  
+  Standard_EXPORT static   TDataStd_RealEnum IntegerToRealDimension (const Standard_Integer i) ;
 
 
 
@@ -191,7 +178,6 @@ friend class MDataStd_IntPackedMapRetrievalDriver_1;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MDataStd_HeaderFile

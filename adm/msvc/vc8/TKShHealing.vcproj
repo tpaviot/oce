@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKShHealing"
-	ProjectGUID="{C3997A59-048A-059D-0B7A-D69CD7D323B1}"
+	ProjectGUID="{07F1B138-006B-0EE6-025A-26C1F186D724}"
 	>
 	<Platforms>
 		<Platform
@@ -63,6 +63,7 @@
 				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
+				EnableEnhancedInstructionSet="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -163,6 +164,7 @@
 				DebugInformationFormat="3"
 				CompileAs="0"
 				DisableSpecificWarnings="4996"
+				EnableEnhancedInstructionSet="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -187,6 +189,7 @@
 				ProgramDatabaseFile="..\..\..\win32\vc8\bind\TKShHealing.pdb"
 				SubSystem="2"
 				ImportLibrary="..\..\..\win32\vc8\libd\TKShHealing.lib"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -248,7 +251,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\ShapeBuild;..\..\..\src\ShapeBuild;..\..\..\drv\ShapeExtend;..\..\..\src\ShapeExtend;..\..\..\drv\ShapeConstruct;..\..\..\src\ShapeConstruct;..\..\..\drv\ShapeCustom;..\..\..\src\ShapeCustom;..\..\..\drv\ShapeAnalysis;..\..\..\src\ShapeAnalysis;..\..\..\drv\ShapeFix;..\..\..\src\ShapeFix;..\..\..\drv\ShapeUpgrade;..\..\..\src\ShapeUpgrade;..\..\..\drv\ShapeAlgo;..\..\..\src\ShapeAlgo;..\..\..\drv\ShapeProcess;..\..\..\src\ShapeProcess;..\..\..\drv\ShapeProcessAPI;..\..\..\src\ShapeProcessAPI;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ShapeBuild_DLL;__ShapeExtend_DLL;__ShapeConstruct_DLL;__ShapeCustom_DLL;__ShapeAnalysis_DLL;__ShapeFix_DLL;__ShapeUpgrade_DLL;__ShapeAlgo_DLL;__ShapeProcess_DLL;__ShapeProcessAPI_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ShapeBuild_DLL;__ShapeExtend_DLL;__ShapeConstruct_DLL;__ShapeCustom_DLL;__ShapeAnalysis_DLL;__ShapeFix_DLL;__ShapeUpgrade_DLL;__ShapeAlgo_DLL;__ShapeProcess_DLL;__ShapeProcessAPI_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +271,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ShapeBuild_DLL;__ShapeExtend_DLL;__ShapeConstruct_DLL;__ShapeCustom_DLL;__ShapeAnalysis_DLL;__ShapeFix_DLL;__ShapeUpgrade_DLL;__ShapeAlgo_DLL;__ShapeProcess_DLL;__ShapeProcessAPI_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ShapeBuild_DLL;__ShapeExtend_DLL;__ShapeConstruct_DLL;__ShapeCustom_DLL;__ShapeAnalysis_DLL;__ShapeFix_DLL;__ShapeUpgrade_DLL;__ShapeAlgo_DLL;__ShapeProcess_DLL;__ShapeProcessAPI_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -276,7 +279,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKBRep.lib TKernel.lib TKMath.lib TKG2d.lib TKTopAlgo.lib TKG3d.lib TKGeomBase.lib TKGeomAlgo.lib wsock32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKG2d.lib TKTopAlgo.lib TKG3d.lib TKGeomBase.lib TKGeomAlgo.lib wsock32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bin\TKShHealing.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -284,7 +287,7 @@
 				ProgramDatabaseFile=".\..\..\..\win64\vc8\bin\TKShHealing.pdb"
 				SubSystem="2"
 				ImportLibrary="..\..\..\win64\vc8\lib\TKShHealing.lib"
-				TargetMachine="X64"
+				TargetMachine="17"
 			/>
 			<Tool
  				Name="VCALinkTool"
@@ -347,7 +350,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\ShapeBuild;..\..\..\src\ShapeBuild;..\..\..\drv\ShapeExtend;..\..\..\src\ShapeExtend;..\..\..\drv\ShapeConstruct;..\..\..\src\ShapeConstruct;..\..\..\drv\ShapeCustom;..\..\..\src\ShapeCustom;..\..\..\drv\ShapeAnalysis;..\..\..\src\ShapeAnalysis;..\..\..\drv\ShapeFix;..\..\..\src\ShapeFix;..\..\..\drv\ShapeUpgrade;..\..\..\src\ShapeUpgrade;..\..\..\drv\ShapeAlgo;..\..\..\src\ShapeAlgo;..\..\..\drv\ShapeProcess;..\..\..\src\ShapeProcess;..\..\..\drv\ShapeProcessAPI;..\..\..\src\ShapeProcessAPI;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ShapeBuild_DLL;__ShapeExtend_DLL;__ShapeConstruct_DLL;__ShapeCustom_DLL;__ShapeAnalysis_DLL;__ShapeFix_DLL;__ShapeUpgrade_DLL;__ShapeAlgo_DLL;__ShapeProcess_DLL;__ShapeProcessAPI_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ShapeBuild_DLL;__ShapeExtend_DLL;__ShapeConstruct_DLL;__ShapeCustom_DLL;__ShapeAnalysis_DLL;__ShapeFix_DLL;__ShapeUpgrade_DLL;__ShapeAlgo_DLL;__ShapeProcess_DLL;__ShapeProcessAPI_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -369,7 +372,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ShapeBuild_DLL;__ShapeExtend_DLL;__ShapeConstruct_DLL;__ShapeCustom_DLL;__ShapeAnalysis_DLL;__ShapeFix_DLL;__ShapeUpgrade_DLL;__ShapeAlgo_DLL;__ShapeProcess_DLL;__ShapeProcessAPI_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ShapeBuild_DLL;__ShapeExtend_DLL;__ShapeConstruct_DLL;__ShapeCustom_DLL;__ShapeAnalysis_DLL;__ShapeFix_DLL;__ShapeUpgrade_DLL;__ShapeAlgo_DLL;__ShapeProcess_DLL;__ShapeProcessAPI_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -377,7 +380,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKBRep.lib TKernel.lib TKMath.lib TKG2d.lib TKTopAlgo.lib TKG3d.lib TKGeomBase.lib TKGeomAlgo.lib wsock32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKBRep.lib TKernel.lib TKMath.lib TKG2d.lib TKTopAlgo.lib TKG3d.lib TKGeomBase.lib TKGeomAlgo.lib wsock32.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bind\TKShHealing.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -386,7 +389,7 @@
 				ProgramDatabaseFile="..\..\..\win64\vc8\bind\TKShHealing.pdb"
 				SubSystem="2"
 				ImportLibrary="..\..\..\win64\vc8\libd\TKShHealing.lib"
-				TargetMachine="X64"
+				TargetMachine="17"
 			/>
 			<Tool
 				Name="VCALinkTool"

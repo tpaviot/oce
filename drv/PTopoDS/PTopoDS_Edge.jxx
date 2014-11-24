@@ -1,3 +1,1 @@
-#ifndef _PTopoDS_Edge_HeaderFile
 #include <PTopoDS_Edge.hxx>
-#endif

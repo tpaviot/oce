@@ -1,24 +1,8 @@
-#ifndef _FEmTool_HAssemblyTable_HeaderFile
 #include <FEmTool_HAssemblyTable.hxx>
-#endif
-#ifndef _FEmTool_ProfileMatrix_HeaderFile
 #include <FEmTool_ProfileMatrix.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Standard_DimensionError_HeaderFile
 #include <Standard_DimensionError.hxx>
-#endif
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _TColStd_Array2OfInteger_HeaderFile
 #include <TColStd_Array2OfInteger.hxx>
-#endif
-#ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
-#endif
-#ifndef _FEmTool_Assembly_HeaderFile
 #include <FEmTool_Assembly.hxx>
-#endif

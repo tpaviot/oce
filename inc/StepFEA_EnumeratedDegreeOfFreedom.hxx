@@ -6,8 +6,11 @@
 #ifndef _StepFEA_EnumeratedDegreeOfFreedom_HeaderFile
 #define _StepFEA_EnumeratedDegreeOfFreedom_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepFEA_EnumeratedDegreeOfFreedom {
+
+enum StepFEA_EnumeratedDegreeOfFreedom
+{
 StepFEA_XTranslation,
 StepFEA_YTranslation,
 StepFEA_ZTranslation,
@@ -17,8 +20,4 @@ StepFEA_ZRotation,
 StepFEA_Warp
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepFEA_EnumeratedDegreeOfFreedom_HeaderFile

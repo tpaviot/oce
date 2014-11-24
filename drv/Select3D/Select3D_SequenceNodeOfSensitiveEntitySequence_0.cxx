@@ -5,16 +5,10 @@
 
 #include <Select3D_SequenceNodeOfSensitiveEntitySequence.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Select3D_SensitiveEntity_HeaderFile
 #include <Select3D_SensitiveEntity.hxx>
-#endif
-#ifndef _Select3D_SensitiveEntitySequence_HeaderFile
 #include <Select3D_SensitiveEntitySequence.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(Select3D_SequenceNodeOfSensitiveEntitySequence,Standard_Trans
 IMPLEMENT_STANDARD_RTTI(Select3D_SequenceNodeOfSensitiveEntitySequence)
 
 
-#define SeqItem Handle_Select3D_SensitiveEntity
+#define SeqItem Handle(Select3D_SensitiveEntity)
 #define SeqItem_hxx <Select3D_SensitiveEntity.hxx>
 #define TCollection_SequenceNode Select3D_SequenceNodeOfSensitiveEntitySequence
 #define TCollection_SequenceNode_hxx <Select3D_SequenceNodeOfSensitiveEntitySequence.hxx>

@@ -6,28 +6,14 @@
 #ifndef _ExprIntrp_SequenceOfNamedFunction_HeaderFile
 #define _ExprIntrp_SequenceOfNamedFunction_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_Expr_NamedFunction_HeaderFile
 #include <Handle_Expr_NamedFunction.hxx>
-#endif
-#ifndef _Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction_HeaderFile
 #include <Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedFunction.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Expr_NamedFunction;
@@ -35,68 +21,68 @@ class ExprIntrp_SequenceNodeOfSequenceOfNamedFunction;
 
 
 
-class ExprIntrp_SequenceOfNamedFunction  : public TCollection_BaseSequence {
+class ExprIntrp_SequenceOfNamedFunction  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      ExprIntrp_SequenceOfNamedFunction();
+    ExprIntrp_SequenceOfNamedFunction();
   
-  Standard_EXPORT   ExprIntrp_SequenceOfNamedFunction(const ExprIntrp_SequenceOfNamedFunction& Other);
+  Standard_EXPORT ExprIntrp_SequenceOfNamedFunction(const ExprIntrp_SequenceOfNamedFunction& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~ExprIntrp_SequenceOfNamedFunction()
 {
   Clear();
 }
   
-  Standard_EXPORT    const ExprIntrp_SequenceOfNamedFunction& Assign(const ExprIntrp_SequenceOfNamedFunction& Other) ;
-   const ExprIntrp_SequenceOfNamedFunction& operator =(const ExprIntrp_SequenceOfNamedFunction& Other) 
+  Standard_EXPORT  const  ExprIntrp_SequenceOfNamedFunction& Assign (const ExprIntrp_SequenceOfNamedFunction& Other) ;
+ const  ExprIntrp_SequenceOfNamedFunction& operator = (const ExprIntrp_SequenceOfNamedFunction& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(Expr_NamedFunction)& T) ;
+  Standard_EXPORT   void Append (const Handle(Expr_NamedFunction)& T) ;
   
-        void Append(ExprIntrp_SequenceOfNamedFunction& S) ;
+      void Append (ExprIntrp_SequenceOfNamedFunction& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(Expr_NamedFunction)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(Expr_NamedFunction)& T) ;
   
-        void Prepend(ExprIntrp_SequenceOfNamedFunction& S) ;
+      void Prepend (ExprIntrp_SequenceOfNamedFunction& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(Expr_NamedFunction)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(Expr_NamedFunction)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,ExprIntrp_SequenceOfNamedFunction& S) ;
+      void InsertBefore (const Standard_Integer Index, ExprIntrp_SequenceOfNamedFunction& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(Expr_NamedFunction)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(Expr_NamedFunction)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,ExprIntrp_SequenceOfNamedFunction& S) ;
+      void InsertAfter (const Standard_Integer Index, ExprIntrp_SequenceOfNamedFunction& S) ;
   
-  Standard_EXPORT    const Handle_Expr_NamedFunction& First() const;
+  Standard_EXPORT  const  Handle(Expr_NamedFunction)& First()  const;
   
-  Standard_EXPORT    const Handle_Expr_NamedFunction& Last() const;
+  Standard_EXPORT  const  Handle(Expr_NamedFunction)& Last()  const;
   
-        void Split(const Standard_Integer Index,ExprIntrp_SequenceOfNamedFunction& Sub) ;
+      void Split (const Standard_Integer Index, ExprIntrp_SequenceOfNamedFunction& Sub) ;
   
-  Standard_EXPORT    const Handle_Expr_NamedFunction& Value(const Standard_Integer Index) const;
-   const Handle_Expr_NamedFunction& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(Expr_NamedFunction)& Value (const Standard_Integer Index)  const;
+ const  Handle(Expr_NamedFunction)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(Expr_NamedFunction)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(Expr_NamedFunction)& I) ;
   
-  Standard_EXPORT     Handle_Expr_NamedFunction& ChangeValue(const Standard_Integer Index) ;
-    Handle_Expr_NamedFunction& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(Expr_NamedFunction)& ChangeValue (const Standard_Integer Index) ;
+  Handle(Expr_NamedFunction)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -115,7 +101,7 @@ private:
 
 };
 
-#define SeqItem Handle_Expr_NamedFunction
+#define SeqItem Handle(Expr_NamedFunction)
 #define SeqItem_hxx <Expr_NamedFunction.hxx>
 #define TCollection_SequenceNode ExprIntrp_SequenceNodeOfSequenceOfNamedFunction
 #define TCollection_SequenceNode_hxx <ExprIntrp_SequenceNodeOfSequenceOfNamedFunction.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ExprIntrp_SequenceOfNamedFunction_HeaderFile

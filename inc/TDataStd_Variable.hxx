@@ -6,49 +6,21 @@
 #ifndef _TDataStd_Variable_HeaderFile
 #define _TDataStd_Variable_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDataStd_Variable_HeaderFile
 #include <Handle_TDataStd_Variable.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TDataStd_RealEnum_HeaderFile
 #include <TDataStd_RealEnum.hxx>
-#endif
-#ifndef _Handle_TDataStd_Real_HeaderFile
 #include <Handle_TDataStd_Real.hxx>
-#endif
-#ifndef _Handle_TDataStd_Expression_HeaderFile
 #include <Handle_TDataStd_Expression.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
-#ifndef _Handle_TDF_DataSet_HeaderFile
 #include <Handle_TDF_DataSet.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class Standard_GUID;
 class TDF_Label;
 class TCollection_ExtendedString;
@@ -60,82 +32,102 @@ class TDF_RelocationTable;
 class TDF_DataSet;
 
 
-//! Variable attribute. <br>
-//!          ================== <br>
-//! <br>
-//!           * A variable is  associated to a TDataStd_Real (which <br>
-//!          contains its    current  value) and  a   TDataStd_Name <br>
-//!          attribute (which  contains  its name).  It  contains a <br>
-//!          constant flag, and a Unit <br>
-//! <br>
-//!          * An  expression may  be assigned  to a variable.   In <br>
-//!          thatcase the expression  is handled by the  associated <br>
-//!          Expression Attribute  and the Variable returns True to <br>
-//!          the method <IsAssigned>. <br>
-class TDataStd_Variable : public TDF_Attribute {
+//! Variable attribute.
+//! ==================
+//!
+//! * A variable is  associated to a TDataStd_Real (which
+//! contains its    current  value) and  a   TDataStd_Name
+//! attribute (which  contains  its name).  It  contains a
+//! constant flag, and a Unit
+//!
+//! * An  expression may  be assigned  to a variable.   In
+//! thatcase the expression  is handled by the  associated
+//! Expression Attribute  and the Variable returns True to
+//! the method <IsAssigned>.
+class TDataStd_Variable : public TDF_Attribute
+{
 
 public:
 
-  //! class methods <br>
-//!          ============= <br>
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
-  //! Find, or create, a  Variable attribute. <br>//! Real methods <br>
-//!          ============ <br>
-  Standard_EXPORT   static  Handle_TDataStd_Variable Set(const TDF_Label& label) ;
   
-  Standard_EXPORT   TDataStd_Variable();
-  //!  set or change the name  of the variable, in myUnknown <br>
-//!           and my associated Name attribute. <br>
-  Standard_EXPORT     void Name(const TCollection_ExtendedString& string) ;
-  //! returns    string   stored  in   the  associated  Name <br>
-//!          attribute. <br>
-  Standard_EXPORT    const TCollection_ExtendedString& Name() const;
-  //! retrieve or create  the associated real attribute  and <br>
-//!          set the  value  <value>.   if creation, dimension   is <br>
-//!          written. <br>
-  Standard_EXPORT     void Set(const Standard_Real value,const TDataStd_RealEnum dimension = TDataStd_SCALAR) const;
-  //! returns True if a Real attribute is associated. <br>
-  Standard_EXPORT     Standard_Boolean IsValued() const;
-  //! returns value stored in associated Real attribute. <br>
-  Standard_EXPORT     Standard_Real Get() const;
-  //! returns associated Real attribute. <br>
-  Standard_EXPORT     Handle_TDataStd_Real Real() const;
-  //! returns True if an Expression attribute is associated. <br>//! create(if doesn't exist), set and returns the assigned <br>
-//!          expression attribute. <br>
-  Standard_EXPORT     Standard_Boolean IsAssigned() const;
-  //! create(if  doesn't exist)  and  returns  the  assigned <br>
-//!           expression  attribute. fill it after. <br>
-  Standard_EXPORT     Handle_TDataStd_Expression Assign() const;
-  //! if <me> is  assigned delete the associated  expression <br>
-//!          attribute. <br>
-  Standard_EXPORT     void Desassign() const;
-  //! if <me>  is  assigned, returns  associated  Expression <br>
-//!          attribute. <br>
-  Standard_EXPORT     Handle_TDataStd_Expression Expression() const;
-  //! shortcut for <Real()->IsCaptured()> <br>
-  Standard_EXPORT     Standard_Boolean IsCaptured() const;
-  //! A constant value is not modified by regeneration. <br>
-  Standard_EXPORT     Standard_Boolean IsConstant() const;
+  //! class methods
+  //! =============
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-  Standard_EXPORT     void Unit(const TCollection_AsciiString& unit) ;
-  //! to read/write fields <br>
-//!          =================== <br>
-  Standard_EXPORT    const TCollection_AsciiString& Unit() const;
-  //!  if  <status> is   True, this  variable  will not   be <br>
-//!          modified by the solver. <br>
-  Standard_EXPORT     void Constant(const Standard_Boolean status) ;
+  //! Find, or create, a  Variable attribute.
+  //! Real methods
+  //! ============
+  Standard_EXPORT static   Handle(TDataStd_Variable) Set (const TDF_Label& label) ;
   
-  Standard_EXPORT    const Standard_GUID& ID() const;
+  Standard_EXPORT TDataStd_Variable();
   
-  Standard_EXPORT     void Restore(const Handle(TDF_Attribute)& With) ;
+  //! set or change the name  of the variable, in myUnknown
+  //! and my associated Name attribute.
+  Standard_EXPORT   void Name (const TCollection_ExtendedString& string) ;
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  //! returns    string   stored  in   the  associated  Name
+  //! attribute.
+  Standard_EXPORT  const  TCollection_ExtendedString& Name()  const;
   
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& Into,const Handle(TDF_RelocationTable)& RT) const;
-  //! to export reference to the associated Name attribute. <br>
-  Standard_EXPORT   virtual  void References(const Handle(TDF_DataSet)& DS) const;
+  //! retrieve or create  the associated real attribute  and
+  //! set the  value  <value>.   if creation, dimension   is
+  //! written.
+  Standard_EXPORT   void Set (const Standard_Real value, const TDataStd_RealEnum dimension = TDataStd_SCALAR)  const;
   
-  Standard_EXPORT   virtual  Standard_OStream& Dump(Standard_OStream& anOS) const;
+  //! returns True if a Real attribute is associated.
+  Standard_EXPORT   Standard_Boolean IsValued()  const;
+  
+  //! returns value stored in associated Real attribute.
+  Standard_EXPORT   Standard_Real Get()  const;
+  
+  //! returns associated Real attribute.
+  Standard_EXPORT   Handle(TDataStd_Real) Real()  const;
+  
+  //! returns True if an Expression attribute is associated.
+  //! create(if doesn't exist), set and returns the assigned
+  //! expression attribute.
+  Standard_EXPORT   Standard_Boolean IsAssigned()  const;
+  
+  //! create(if  doesn't exist)  and  returns  the  assigned
+  //! expression  attribute. fill it after.
+  Standard_EXPORT   Handle(TDataStd_Expression) Assign()  const;
+  
+  //! if <me> is  assigned delete the associated  expression
+  //! attribute.
+  Standard_EXPORT   void Desassign()  const;
+  
+  //! if <me>  is  assigned, returns  associated  Expression
+  //! attribute.
+  Standard_EXPORT   Handle(TDataStd_Expression) Expression()  const;
+  
+  //! shortcut for <Real()->IsCaptured()>
+  Standard_EXPORT   Standard_Boolean IsCaptured()  const;
+  
+  //! A constant value is not modified by regeneration.
+  Standard_EXPORT   Standard_Boolean IsConstant()  const;
+  
+  Standard_EXPORT   void Unit (const TCollection_AsciiString& unit) ;
+  
+  //! to read/write fields
+  //! ===================
+  Standard_EXPORT  const  TCollection_AsciiString& Unit()  const;
+  
+  //! if  <status> is   True, this  variable  will not   be
+  //! modified by the solver.
+  Standard_EXPORT   void Constant (const Standard_Boolean status) ;
+  
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
+  
+  Standard_EXPORT   void Restore (const Handle(TDF_Attribute)& With) ;
+  
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
+  
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& Into, const Handle(TDF_RelocationTable)& RT)  const;
+  
+  //! to export reference to the associated Name attribute.
+  Standard_EXPORT virtual   void References (const Handle(TDF_DataSet)& DS)  const;
+  
+  Standard_EXPORT virtual   Standard_OStream& Dump (Standard_OStream& anOS)  const;
 
 
 
@@ -150,8 +142,8 @@ protected:
 private: 
 
 
-Standard_Boolean isConstant;
-TCollection_AsciiString myUnit;
+  Standard_Boolean isConstant;
+  TCollection_AsciiString myUnit;
 
 
 };
@@ -160,7 +152,6 @@ TCollection_AsciiString myUnit;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_Variable_HeaderFile

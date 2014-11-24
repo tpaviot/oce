@@ -2,19 +2,19 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{18BD9224-17C3-16C1-09EE-BA952194EB0A}</UniqueIdentifier>
+      <UniqueIdentifier>{49C11822-108F-05D2-0CF9-D27F389E67B4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepPrim">
-      <UniqueIdentifier>{D2F77797-0D2F-125B-0CCA-CD6CA99909B8}</UniqueIdentifier>
+      <UniqueIdentifier>{AA7C975D-1875-1119-0D33-DE849AD3A944}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepSweep">
-      <UniqueIdentifier>{4D1E365F-03CD-05ED-1094-A157A380B8B6}</UniqueIdentifier>
+      <UniqueIdentifier>{0DDADE29-159A-1070-11A5-AAFD0FCC243D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Sweep">
-      <UniqueIdentifier>{DEE532A9-1273-146D-0F0E-D0822710F0B6}</UniqueIdentifier>
+      <UniqueIdentifier>{5F547E2A-0408-0E0C-1832-D84F70475BA0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\BRepPrimAPI">
-      <UniqueIdentifier>{2B4059D8-0D7A-191A-06FD-071FB7B32764}</UniqueIdentifier>
+      <UniqueIdentifier>{D09EF6B7-06A9-0FEC-0487-1B744C704761}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

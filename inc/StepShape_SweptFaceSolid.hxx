@@ -6,44 +6,34 @@
 #ifndef _StepShape_SweptFaceSolid_HeaderFile
 #define _StepShape_SweptFaceSolid_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_SweptFaceSolid_HeaderFile
 #include <Handle_StepShape_SweptFaceSolid.hxx>
-#endif
 
-#ifndef _Handle_StepShape_FaceSurface_HeaderFile
 #include <Handle_StepShape_FaceSurface.hxx>
-#endif
-#ifndef _StepShape_SolidModel_HeaderFile
 #include <StepShape_SolidModel.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepShape_FaceSurface;
 class TCollection_HAsciiString;
 
 
 
-class StepShape_SweptFaceSolid : public StepShape_SolidModel {
+class StepShape_SweptFaceSolid : public StepShape_SolidModel
+{
 
 public:
 
-  //! Returns a SweptFaceSolid <br>
-  Standard_EXPORT   StepShape_SweptFaceSolid();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a SweptFaceSolid
+  Standard_EXPORT StepShape_SweptFaceSolid();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepShape_FaceSurface)& aSweptArea) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT   virtual  void SetSweptFace(const Handle(StepShape_FaceSurface)& aSweptArea) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepShape_FaceSurface)& aSweptArea) ;
   
-  Standard_EXPORT   virtual  Handle_StepShape_FaceSurface SweptFace() const;
+  Standard_EXPORT virtual   void SetSweptFace (const Handle(StepShape_FaceSurface)& aSweptArea) ;
+  
+  Standard_EXPORT virtual   Handle(StepShape_FaceSurface) SweptFace()  const;
 
 
 
@@ -58,7 +48,7 @@ protected:
 private: 
 
 
-Handle_StepShape_FaceSurface sweptArea;
+  Handle(StepShape_FaceSurface) sweptArea;
 
 
 };
@@ -67,7 +57,6 @@ Handle_StepShape_FaceSurface sweptArea;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_SweptFaceSolid_HeaderFile

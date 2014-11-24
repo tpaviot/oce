@@ -5,19 +5,11 @@
 
 #include <TestTopOpeDraw_ListNodeOfListOfPnt2d.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _TestTopOpeDraw_ListOfPnt2d_HeaderFile
 #include <TestTopOpeDraw_ListOfPnt2d.hxx>
-#endif
-#ifndef _TestTopOpeDraw_ListIteratorOfListOfPnt2d_HeaderFile
 #include <TestTopOpeDraw_ListIteratorOfListOfPnt2d.hxx>
-#endif
 
  
 

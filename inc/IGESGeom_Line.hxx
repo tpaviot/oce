@@ -6,62 +6,58 @@
 #ifndef _IGESGeom_Line_HeaderFile
 #define _IGESGeom_Line_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESGeom_Line_HeaderFile
 #include <Handle_IGESGeom_Line.hxx>
-#endif
 
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class gp_XYZ;
 class gp_Pnt;
 
 
-//! defines IGESLine, Type <110> Form <0> <br>
-//!          in package IGESGeom <br>
-//!          A line is a bounded, connected portion of a parent straight <br>
-//!          line which consists of more than one point. A line is <br>
-//!          defined by its end points. <br>
-//! <br>
-//!          From IGES-5.3, two other Forms are admitted (same params) : <br>
-//!          0 remains for standard limited line (the default) <br>
-//!          1 for semi-infinite line (End is just a passing point) <br>
-//!          2 for full infinite Line (both Start and End are abitrary) <br>
-class IGESGeom_Line : public IGESData_IGESEntity {
+//! defines IGESLine, Type <110> Form <0>
+//! in package IGESGeom
+//! A line is a bounded, connected portion of a parent straight
+//! line which consists of more than one point. A line is
+//! defined by its end points.
+//!
+//! From IGES-5.3, two other Forms are admitted (same params) :
+//! 0 remains for standard limited line (the default)
+//! 1 for semi-infinite line (End is just a passing point)
+//! 2 for full infinite Line (both Start and End are abitrary)
+class IGESGeom_Line : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESGeom_Line();
-  //! This method is used to set the fields of the class Line <br>
-//!       - aStart : Start point of the line <br>
-//!       - anEnd  : End point of the line <br>
-  Standard_EXPORT     void Init(const gp_XYZ& aStart,const gp_XYZ& anEnd) ;
-  //! Returns the Infinite status i.e. the Form Number : 0 1 2 <br>
-  Standard_EXPORT     Standard_Integer Infinite() const;
-  //! Sets the Infinite status <br>
-//!           Does nothing if <status> is not 0 1 or 2 <br>
-  Standard_EXPORT     void SetInfinite(const Standard_Integer status) ;
-  //! returns the start point of the line <br>
-  Standard_EXPORT     gp_Pnt StartPoint() const;
-  //! returns the start point of the line after applying Transf. Matrix <br>
-  Standard_EXPORT     gp_Pnt TransformedStartPoint() const;
-  //! returns the end point of the line <br>
-  Standard_EXPORT     gp_Pnt EndPoint() const;
-  //! returns the end point of the line after applying Transf. Matrix <br>
-  Standard_EXPORT     gp_Pnt TransformedEndPoint() const;
+  Standard_EXPORT IGESGeom_Line();
+  
+  //! This method is used to set the fields of the class Line
+  //! - aStart : Start point of the line
+  //! - anEnd  : End point of the line
+  Standard_EXPORT   void Init (const gp_XYZ& aStart, const gp_XYZ& anEnd) ;
+  
+  //! Returns the Infinite status i.e. the Form Number : 0 1 2
+  Standard_EXPORT   Standard_Integer Infinite()  const;
+  
+  //! Sets the Infinite status
+  //! Does nothing if <status> is not 0 1 or 2
+  Standard_EXPORT   void SetInfinite (const Standard_Integer status) ;
+  
+  //! returns the start point of the line
+  Standard_EXPORT   gp_Pnt StartPoint()  const;
+  
+  //! returns the start point of the line after applying Transf. Matrix
+  Standard_EXPORT   gp_Pnt TransformedStartPoint()  const;
+  
+  //! returns the end point of the line
+  Standard_EXPORT   gp_Pnt EndPoint()  const;
+  
+  //! returns the end point of the line after applying Transf. Matrix
+  Standard_EXPORT   gp_Pnt TransformedEndPoint()  const;
 
 
 
@@ -76,8 +72,8 @@ protected:
 private: 
 
 
-gp_XYZ theStart;
-gp_XYZ theEnd;
+  gp_XYZ theStart;
+  gp_XYZ theEnd;
 
 
 };
@@ -86,7 +82,6 @@ gp_XYZ theEnd;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGeom_Line_HeaderFile

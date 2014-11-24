@@ -6,46 +6,20 @@
 #ifndef _StepToTopoDS_HeaderFile
 #define _StepToTopoDS_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepToTopoDS_BuilderError_HeaderFile
 #include <StepToTopoDS_BuilderError.hxx>
-#endif
-#ifndef _StepToTopoDS_TranslateShellError_HeaderFile
 #include <StepToTopoDS_TranslateShellError.hxx>
-#endif
-#ifndef _StepToTopoDS_TranslateFaceError_HeaderFile
 #include <StepToTopoDS_TranslateFaceError.hxx>
-#endif
-#ifndef _StepToTopoDS_TranslateEdgeError_HeaderFile
 #include <StepToTopoDS_TranslateEdgeError.hxx>
-#endif
-#ifndef _StepToTopoDS_TranslateVertexError_HeaderFile
 #include <StepToTopoDS_TranslateVertexError.hxx>
-#endif
-#ifndef _StepToTopoDS_TranslateVertexLoopError_HeaderFile
 #include <StepToTopoDS_TranslateVertexLoopError.hxx>
-#endif
-#ifndef _StepToTopoDS_TranslatePolyLoopError_HeaderFile
 #include <StepToTopoDS_TranslatePolyLoopError.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _StepToTopoDS_GeometricToolError_HeaderFile
 #include <StepToTopoDS_GeometricToolError.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepToTopoDS_Root;
 class StepToTopoDS_TranslateShell;
@@ -82,31 +56,31 @@ class StepToTopoDS_DataMapNodeOfPointVertexMap;
 class StepToTopoDS_DataMapIteratorOfPointVertexMap;
 
 
-//! This package implements the mapping between AP214 <br>
-//!  Shape representation and  CAS.CAD Shape Representation. <br>
-//!  The source schema is Part42 (which is included in AP214) <br>
-class StepToTopoDS  {
+//! This package implements the mapping between AP214
+//! Shape representation and  CAS.CAD Shape Representation.
+//! The source schema is Part42 (which is included in AP214)
+class StepToTopoDS 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Handle_TCollection_HAsciiString DecodeBuilderError(const StepToTopoDS_BuilderError Error) ;
+  Standard_EXPORT static   Handle(TCollection_HAsciiString) DecodeBuilderError (const StepToTopoDS_BuilderError Error) ;
   
-  Standard_EXPORT   static  Handle_TCollection_HAsciiString DecodeShellError(const StepToTopoDS_TranslateShellError Error) ;
+  Standard_EXPORT static   Handle(TCollection_HAsciiString) DecodeShellError (const StepToTopoDS_TranslateShellError Error) ;
   
-  Standard_EXPORT   static  Handle_TCollection_HAsciiString DecodeFaceError(const StepToTopoDS_TranslateFaceError Error) ;
+  Standard_EXPORT static   Handle(TCollection_HAsciiString) DecodeFaceError (const StepToTopoDS_TranslateFaceError Error) ;
   
-  Standard_EXPORT   static  Handle_TCollection_HAsciiString DecodeEdgeError(const StepToTopoDS_TranslateEdgeError Error) ;
+  Standard_EXPORT static   Handle(TCollection_HAsciiString) DecodeEdgeError (const StepToTopoDS_TranslateEdgeError Error) ;
   
-  Standard_EXPORT   static  Handle_TCollection_HAsciiString DecodeVertexError(const StepToTopoDS_TranslateVertexError Error) ;
+  Standard_EXPORT static   Handle(TCollection_HAsciiString) DecodeVertexError (const StepToTopoDS_TranslateVertexError Error) ;
   
-  Standard_EXPORT   static  Handle_TCollection_HAsciiString DecodeVertexLoopError(const StepToTopoDS_TranslateVertexLoopError Error) ;
+  Standard_EXPORT static   Handle(TCollection_HAsciiString) DecodeVertexLoopError (const StepToTopoDS_TranslateVertexLoopError Error) ;
   
-  Standard_EXPORT   static  Handle_TCollection_HAsciiString DecodePolyLoopError(const StepToTopoDS_TranslatePolyLoopError Error) ;
+  Standard_EXPORT static   Handle(TCollection_HAsciiString) DecodePolyLoopError (const StepToTopoDS_TranslatePolyLoopError Error) ;
   
-  Standard_EXPORT   static  Standard_CString DecodeGeometricToolError(const StepToTopoDS_GeometricToolError Error) ;
-
+  Standard_EXPORT static   Standard_CString DecodeGeometricToolError (const StepToTopoDS_GeometricToolError Error) ;
 
 
 
@@ -162,7 +136,6 @@ friend class StepToTopoDS_DataMapIteratorOfPointVertexMap;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToTopoDS_HeaderFile

@@ -6,37 +6,17 @@
 #ifndef _PDataStd_HArray1OfByte_HeaderFile
 #define _PDataStd_HArray1OfByte_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PDataStd_HArray1OfByte_HeaderFile
 #include <Handle_PDataStd_HArray1OfByte.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Byte_HeaderFile
 #include <Standard_Byte.hxx>
-#endif
-#ifndef _PDataStd_FieldOfHArray1OfByte_HeaderFile
 #include <PDataStd_FieldOfHArray1OfByte.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfByte_HeaderFile
 #include <Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfByte.hxx>
-#endif
 class Standard_OutOfRange;
 class Standard_RangeError;
 class PDataStd_FieldOfHArray1OfByte;
@@ -44,26 +24,27 @@ class PDataStd_VArrayNodeOfFieldOfHArray1OfByte;
 class PDataStd_VArrayTNodeOfFieldOfHArray1OfByte;
 
 
-class PDataStd_HArray1OfByte : public Standard_Persistent {
+class PDataStd_HArray1OfByte : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PDataStd_HArray1OfByte(const Standard_Integer Low,const Standard_Integer Up);
+  Standard_EXPORT PDataStd_HArray1OfByte(const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT   PDataStd_HArray1OfByte(const Standard_Integer Low,const Standard_Integer Up,const Standard_Byte& V);
+  Standard_EXPORT PDataStd_HArray1OfByte(const Standard_Integer Low, const Standard_Integer Up, const Standard_Byte& V);
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Standard_Byte& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Standard_Byte& Value) ;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-  Standard_EXPORT     Standard_Byte Value(const Standard_Integer Index) const;
+  Standard_EXPORT   Standard_Byte Value (const Standard_Integer Index)  const;
 
-  PDataStd_HArray1OfByte( )
+PDataStd_HArray1OfByte( )
 {
   
 }
@@ -89,13 +70,13 @@ protected:
 private: 
 
   
-  Standard_EXPORT     PDataStd_FieldOfHArray1OfByte Field() const;
+  Standard_EXPORT   PDataStd_FieldOfHArray1OfByte Field()  const;
   
-  Standard_EXPORT     Standard_Address Datas() const;
+  Standard_EXPORT   Standard_Address Datas()  const;
 
-Standard_Integer LowerBound;
-Standard_Integer UpperBound;
-PDataStd_FieldOfHArray1OfByte Data;
+  Standard_Integer LowerBound;
+  Standard_Integer UpperBound;
+  PDataStd_FieldOfHArray1OfByte Data;
 
 
 };
@@ -145,7 +126,6 @@ PDataStd_FieldOfHArray1OfByte Data;
 #undef PCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDataStd_HArray1OfByte_HeaderFile

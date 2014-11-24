@@ -6,13 +6,11 @@
 #ifndef _BRepBlend_Chamfer_HeaderFile
 #define _BRepBlend_Chamfer_HeaderFile
 
-#ifndef _BlendFunc_Chamfer_HeaderFile
 #include <BlendFunc_Chamfer.hxx>
-#endif
 
 typedef BlendFunc_Chamfer BRepBlend_Chamfer;
 
 
 #define BRepBlend_Chamfer_Type_() BlendFunc_Chamfer_Type_()
 
-#endif
+#endif // _BRepBlend_Chamfer_HeaderFile

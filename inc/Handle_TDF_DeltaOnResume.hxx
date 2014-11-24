@@ -6,22 +6,15 @@
 #ifndef _Handle_TDF_DeltaOnResume_HeaderFile
 #define _Handle_TDF_DeltaOnResume_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TDF_AttributeDelta_HeaderFile
 #include <Handle_TDF_AttributeDelta.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TDF_AttributeDelta);
 class TDF_DeltaOnResume;
 
-DEFINE_STANDARD_HANDLE(TDF_DeltaOnResume,TDF_AttributeDelta)
+DEFINE_STANDARD_HANDLE(TDF_DeltaOnResume, TDF_AttributeDelta)
 
-#endif
+#endif // _Handle_TDF_DeltaOnResume_HeaderFile

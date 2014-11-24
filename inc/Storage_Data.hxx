@@ -6,55 +6,23 @@
 #ifndef _Storage_Data_HeaderFile
 #define _Storage_Data_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Storage_Data_HeaderFile
 #include <Handle_Storage_Data.hxx>
-#endif
 
-#ifndef _Handle_Storage_HeaderData_HeaderFile
 #include <Handle_Storage_HeaderData.hxx>
-#endif
-#ifndef _Handle_Storage_RootData_HeaderFile
 #include <Handle_Storage_RootData.hxx>
-#endif
-#ifndef _Handle_Storage_TypeData_HeaderFile
 #include <Handle_Storage_TypeData.hxx>
-#endif
-#ifndef _Handle_Storage_InternalData_HeaderFile
 #include <Handle_Storage_InternalData.hxx>
-#endif
-#ifndef _Storage_Error_HeaderFile
 #include <Storage_Error.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
 #include <Handle_Standard_Persistent.hxx>
-#endif
-#ifndef _Handle_Storage_HSeqOfRoot_HeaderFile
 #include <Handle_Storage_HSeqOfRoot.hxx>
-#endif
-#ifndef _Handle_Storage_Root_HeaderFile
 #include <Handle_Storage_Root.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TColStd_HSequenceOfAsciiString_HeaderFile
 #include <Handle_TColStd_HSequenceOfAsciiString.hxx>
-#endif
 class Storage_HeaderData;
 class Storage_RootData;
 class Storage_TypeData;
@@ -70,157 +38,186 @@ class Storage_Root;
 class TColStd_HSequenceOfAsciiString;
 
 
-//! A picture memorizing the data stored in a <br>
-//! container (for example, in a file). <br>
-//! A Storage_Data object represents either: <br>
-//! -   persistent data to be written into a container, <br>
-//!   or <br>
-//! -   persistent data which are read from a container. <br>
-//! A Storage_Data object is used in both the <br>
-//! storage and retrieval operations: <br>
-//! -   Storage mechanism: create an empty <br>
-//!   Storage_Data object, then add successively <br>
-//!   persistent objects (roots) to be stored using <br>
-//!   the function AddRoot. When the set of data is <br>
-//!   complete, write it to a container using the <br>
-//!   function Write in your Storage_Schema <br>
-//!   storage/retrieval algorithm. <br>
-//! -   Retrieval mechanism: a Storage_Data <br>
-//!   object is returned by the Read function from <br>
-//!   your Storage_Schema storage/retrieval <br>
-//!   algorithm. Use the functions NumberOfRoots <br>
-//!   and Roots to find the roots which were stored <br>
-//!   in the read container. <br>
-//! The roots of a Storage_Data object may share <br>
-//! references on objects. The shared internal <br>
-//! references of a Storage_Data object are <br>
-//! maintained by the storage/retrieval mechanism. <br>
-//! Note: References shared by objects which are <br>
-//! contained in two distinct Storage_Data objects <br>
-//! are not maintained by the storage/retrieval <br>
-//! mechanism: external references are not <br>
-//! supported by Storage_Schema algorithm <br>
-class Storage_Data : public MMgt_TShared {
+//! A picture memorizing the data stored in a
+//! container (for example, in a file).
+//! A Storage_Data object represents either:
+//! -   persistent data to be written into a container,
+//! or
+//! -   persistent data which are read from a container.
+//! A Storage_Data object is used in both the
+//! storage and retrieval operations:
+//! -   Storage mechanism: create an empty
+//! Storage_Data object, then add successively
+//! persistent objects (roots) to be stored using
+//! the function AddRoot. When the set of data is
+//! complete, write it to a container using the
+//! function Write in your Storage_Schema
+//! storage/retrieval algorithm.
+//! -   Retrieval mechanism: a Storage_Data
+//! object is returned by the Read function from
+//! your Storage_Schema storage/retrieval
+//! algorithm. Use the functions NumberOfRoots
+//! and Roots to find the roots which were stored
+//! in the read container.
+//! The roots of a Storage_Data object may share
+//! references on objects. The shared internal
+//! references of a Storage_Data object are
+//! maintained by the storage/retrieval mechanism.
+//! Note: References shared by objects which are
+//! contained in two distinct Storage_Data objects
+//! are not maintained by the storage/retrieval
+//! mechanism: external references are not
+//! supported by Storage_Schema algorithm
+class Storage_Data : public MMgt_TShared
+{
 
 public:
 
   
-//! Creates an empty set of data. <br>
-//! You explicitly create a Storage_Data object <br>
-//! when preparing the set of objects to be stored <br>
-//! together in a container (for example, in a file). <br>
-//! Then use the function AddRoot to add <br>
-//! persistent objects to the set of data. <br>
-//! A Storage_Data object is also returned by the <br>
-//! Read function of a Storage_Schema <br>
-//! storage/retrieval algorithm. Use the functions <br>
-//! NumberOfRoots and Roots to find the roots <br>
-//! which were stored in the read container. <br>
-  Standard_EXPORT   Storage_Data();
-  //! Returns Storage_VSOk if <br>
-//! -   the last storage operation performed with the <br>
-//!   function Read, or <br>
-//! -   the last retrieval operation performed with the function Write <br>
-//!  by a Storage_Schema algorithm, on this set of data was successful. <br>
-//! If the storage or retrieval operation was not <br>
-//! performed, the returned error status indicates the <br>
-//! reason why the operation failed. The algorithm <br>
-//! stops its analysis at the first detected error <br>
-  Standard_EXPORT     Storage_Error ErrorStatus() const;
+
+  //! Creates an empty set of data.
+  //! You explicitly create a Storage_Data object
+  //! when preparing the set of objects to be stored
+  //! together in a container (for example, in a file).
+  //! Then use the function AddRoot to add
+  //! persistent objects to the set of data.
+  //! A Storage_Data object is also returned by the
+  //! Read function of a Storage_Schema
+  //! storage/retrieval algorithm. Use the functions
+  //! NumberOfRoots and Roots to find the roots
+  //! which were stored in the read container.
+  Standard_EXPORT Storage_Data();
   
-//! Clears the error status positioned either by: <br>
-//! -   the last storage operation performed with the <br>
-//!   Read function, or <br>
-//! -   the last retrieval operation performed with the Write function <br>
-//!   by a Storage_Schema algorithm, on this set of data. <br>
-//! This error status may be read by the function ErrorStatus. <br>
-  Standard_EXPORT     void ClearErrorStatus() ;
+  //! Returns Storage_VSOk if
+  //! -   the last storage operation performed with the
+  //! function Read, or
+  //! -   the last retrieval operation performed with the function Write
+  //! by a Storage_Schema algorithm, on this set of data was successful.
+  //! If the storage or retrieval operation was not
+  //! performed, the returned error status indicates the
+  //! reason why the operation failed. The algorithm
+  //! stops its analysis at the first detected error
+  Standard_EXPORT   Storage_Error ErrorStatus()  const;
   
-  Standard_EXPORT     TCollection_AsciiString ErrorStatusExtension() const;
-  //! return the creation date <br>
-  Standard_EXPORT     TCollection_AsciiString CreationDate() const;
-  //! return the Storage package version <br>
-  Standard_EXPORT     TCollection_AsciiString StorageVersion() const;
-  //! get the version of the schema <br>
-  Standard_EXPORT     TCollection_AsciiString SchemaVersion() const;
-  //! get the schema's name <br>
-  Standard_EXPORT     TCollection_AsciiString SchemaName() const;
-  //! set the version of the application <br>
-  Standard_EXPORT     void SetApplicationVersion(const TCollection_AsciiString& aVersion) ;
-  //! get the version of the application <br>
-  Standard_EXPORT     TCollection_AsciiString ApplicationVersion() const;
-  //! set the name of the application <br>
-  Standard_EXPORT     void SetApplicationName(const TCollection_ExtendedString& aName) ;
-  //! get the name of the application <br>
-  Standard_EXPORT     TCollection_ExtendedString ApplicationName() const;
-  //! set the data type <br>
-  Standard_EXPORT     void SetDataType(const TCollection_ExtendedString& aType) ;
-  //! returns data type <br>
-  Standard_EXPORT     TCollection_ExtendedString DataType() const;
-  //! add <theUserInfo> to the user informations <br>
-  Standard_EXPORT     void AddToUserInfo(const TCollection_AsciiString& anInfo) ;
-  //! return the user informations <br>
-  Standard_EXPORT    const TColStd_SequenceOfAsciiString& UserInfo() const;
-  //! add <theUserInfo> to the user informations <br>
-  Standard_EXPORT     void AddToComments(const TCollection_ExtendedString& aComment) ;
-  //! return the user informations <br>
-  Standard_EXPORT    const TColStd_SequenceOfExtendedString& Comments() const;
-  //! the the number of persistent objects <br>
-//!  Return: <br>
-//!   the number of persistent objects readed <br>
-  Standard_EXPORT     Standard_Integer NumberOfObjects() const;
-  //! Returns the number of root objects in this set of data. <br>
-//! -   When preparing a storage operation, the <br>
-//!   result is the number of roots inserted into this <br>
-//!   set of data with the function AddRoot. <br>
-//! -   When retrieving an object, the result is the <br>
-//!   number of roots stored in the read container. <br>
-//!   Use the Roots function to get these roots in a sequence. <br>
-  Standard_EXPORT     Standard_Integer NumberOfRoots() const;
-  //! add a persistent root to write. the name of the root <br>
-//!          is a driver reference number. <br>
-  Standard_EXPORT     void AddRoot(const Handle(Standard_Persistent)& anObject) const;
-  //! Adds the root anObject to this set of data. <br>
-//! The name of the root is aName if given; if not, it <br>
-//! will be a reference number assigned by the driver <br>
-//! when writing the set of data into the container. <br>
-//! When naming the roots, it is easier to retrieve <br>
-//! objects by significant references rather than by <br>
-//! references without any semantic values. <br>
-  Standard_EXPORT     void AddRoot(const TCollection_AsciiString& aName,const Handle(Standard_Persistent)& anObject) const;
-  //! Removes from this set of data the root object named aName. <br>
-//! Warning <br>
-//! Nothing is done if there is no root object whose <br>
-//! name is aName in this set of data. <br>
-  Standard_EXPORT     void RemoveRoot(const TCollection_AsciiString& aName) ;
-  //! Returns the roots of this set of data in a sequence. <br>
-//! -   When preparing a storage operation, the <br>
-//!   sequence contains the roots inserted into this <br>
-//!   set of data with the function AddRoot. <br>
-//! -   When retrieving an object, the sequence <br>
-//!   contains the roots stored in the container read. <br>
-//! -   An empty sequence is returned if there is no root in this set of data. <br>
-  Standard_EXPORT     Handle_Storage_HSeqOfRoot Roots() const;
-  //! Gives the root object whose name is aName in <br>
-//! this set of data. The returned object is a <br>
-//! Storage_Root object, from which the object it <br>
-//! encapsulates may be extracted. <br>
-//! Warning <br>
-//! A null handle is returned if there is no root object <br>
-//! whose name is aName in this set of data. <br>
-  Standard_EXPORT     Handle_Storage_Root Find(const TCollection_AsciiString& aName) const;
-  //! returns Standard_True if <me> contains a root named <aName> <br>
-  Standard_EXPORT     Standard_Boolean IsRoot(const TCollection_AsciiString& aName) const;
-  //! Returns the number of types of objects used in this set of data. <br>
-  Standard_EXPORT     Standard_Integer NumberOfTypes() const;
-  //! Returns true if this set of data contains an object of type aName. <br>
-//! Persistent objects from this set of data must <br>
-//! have types which are recognized by the <br>
-//! Storage_Schema algorithm used to store or retrieve them. <br>
-  Standard_EXPORT     Standard_Boolean IsType(const TCollection_AsciiString& aName) const;
+
+  //! Clears the error status positioned either by:
+  //! -   the last storage operation performed with the
+  //! Read function, or
+  //! -   the last retrieval operation performed with the Write function
+  //! by a Storage_Schema algorithm, on this set of data.
+  //! This error status may be read by the function ErrorStatus.
+  Standard_EXPORT   void ClearErrorStatus() ;
   
-//! Gives the list of types of objects used in this set of data in a sequence. <br>
-  Standard_EXPORT     Handle_TColStd_HSequenceOfAsciiString Types() const;
+  Standard_EXPORT   TCollection_AsciiString ErrorStatusExtension()  const;
+  
+  //! return the creation date
+  Standard_EXPORT   TCollection_AsciiString CreationDate()  const;
+  
+  //! return the Storage package version
+  Standard_EXPORT   TCollection_AsciiString StorageVersion()  const;
+  
+  //! get the version of the schema
+  Standard_EXPORT   TCollection_AsciiString SchemaVersion()  const;
+  
+  //! get the schema's name
+  Standard_EXPORT   TCollection_AsciiString SchemaName()  const;
+  
+  //! set the version of the application
+  Standard_EXPORT   void SetApplicationVersion (const TCollection_AsciiString& aVersion) ;
+  
+  //! get the version of the application
+  Standard_EXPORT   TCollection_AsciiString ApplicationVersion()  const;
+  
+  //! set the name of the application
+  Standard_EXPORT   void SetApplicationName (const TCollection_ExtendedString& aName) ;
+  
+  //! get the name of the application
+  Standard_EXPORT   TCollection_ExtendedString ApplicationName()  const;
+  
+  //! set the data type
+  Standard_EXPORT   void SetDataType (const TCollection_ExtendedString& aType) ;
+  
+  //! returns data type
+  Standard_EXPORT   TCollection_ExtendedString DataType()  const;
+  
+  //! add <theUserInfo> to the user informations
+  Standard_EXPORT   void AddToUserInfo (const TCollection_AsciiString& anInfo) ;
+  
+  //! return the user informations
+  Standard_EXPORT  const  TColStd_SequenceOfAsciiString& UserInfo()  const;
+  
+  //! add <theUserInfo> to the user informations
+  Standard_EXPORT   void AddToComments (const TCollection_ExtendedString& aComment) ;
+  
+  //! return the user informations
+  Standard_EXPORT  const  TColStd_SequenceOfExtendedString& Comments()  const;
+  
+  //! the the number of persistent objects
+  //! Return:
+  //! the number of persistent objects readed
+  Standard_EXPORT   Standard_Integer NumberOfObjects()  const;
+  
+  //! Returns the number of root objects in this set of data.
+  //! -   When preparing a storage operation, the
+  //! result is the number of roots inserted into this
+  //! set of data with the function AddRoot.
+  //! -   When retrieving an object, the result is the
+  //! number of roots stored in the read container.
+  //! Use the Roots function to get these roots in a sequence.
+  Standard_EXPORT   Standard_Integer NumberOfRoots()  const;
+  
+  //! add a persistent root to write. the name of the root
+  //! is a driver reference number.
+  Standard_EXPORT   void AddRoot (const Handle(Standard_Persistent)& anObject)  const;
+  
+  //! Adds the root anObject to this set of data.
+  //! The name of the root is aName if given; if not, it
+  //! will be a reference number assigned by the driver
+  //! when writing the set of data into the container.
+  //! When naming the roots, it is easier to retrieve
+  //! objects by significant references rather than by
+  //! references without any semantic values.
+  Standard_EXPORT   void AddRoot (const TCollection_AsciiString& aName, const Handle(Standard_Persistent)& anObject)  const;
+  
+  //! Removes from this set of data the root object named aName.
+  //! Warning
+  //! Nothing is done if there is no root object whose
+  //! name is aName in this set of data.
+  Standard_EXPORT   void RemoveRoot (const TCollection_AsciiString& aName) ;
+  
+  //! Returns the roots of this set of data in a sequence.
+  //! -   When preparing a storage operation, the
+  //! sequence contains the roots inserted into this
+  //! set of data with the function AddRoot.
+  //! -   When retrieving an object, the sequence
+  //! contains the roots stored in the container read.
+  //! -   An empty sequence is returned if there is no root in this set of data.
+  Standard_EXPORT   Handle(Storage_HSeqOfRoot) Roots()  const;
+  
+  //! Gives the root object whose name is aName in
+  //! this set of data. The returned object is a
+  //! Storage_Root object, from which the object it
+  //! encapsulates may be extracted.
+  //! Warning
+  //! A null handle is returned if there is no root object
+  //! whose name is aName in this set of data.
+  Standard_EXPORT   Handle(Storage_Root) Find (const TCollection_AsciiString& aName)  const;
+  
+  //! returns Standard_True if <me> contains a root named <aName>
+  Standard_EXPORT   Standard_Boolean IsRoot (const TCollection_AsciiString& aName)  const;
+  
+  //! Returns the number of types of objects used in this set of data.
+  Standard_EXPORT   Standard_Integer NumberOfTypes()  const;
+  
+  //! Returns true if this set of data contains an object of type aName.
+  //! Persistent objects from this set of data must
+  //! have types which are recognized by the
+  //! Storage_Schema algorithm used to store or retrieve them.
+  Standard_EXPORT   Standard_Boolean IsType (const TCollection_AsciiString& aName)  const;
+  
+
+  //! Gives the list of types of objects used in this set of data in a sequence.
+  Standard_EXPORT   Handle(TColStd_HSequenceOfAsciiString) Types()  const;
 
 
 friend class Storage_Schema;
@@ -236,26 +233,26 @@ protected:
 private: 
 
   
-  Standard_EXPORT     Handle_Storage_HeaderData HeaderData() const;
+  Standard_EXPORT   Handle(Storage_HeaderData) HeaderData()  const;
   
-  Standard_EXPORT     Handle_Storage_RootData RootData() const;
+  Standard_EXPORT   Handle(Storage_RootData) RootData()  const;
   
-  Standard_EXPORT     Handle_Storage_TypeData TypeData() const;
+  Standard_EXPORT   Handle(Storage_TypeData) TypeData()  const;
   
-  Standard_EXPORT     Handle_Storage_InternalData InternalData() const;
+  Standard_EXPORT   Handle(Storage_InternalData) InternalData()  const;
   
-  Standard_EXPORT     void Clear() const;
+  Standard_EXPORT   void Clear()  const;
   
-  Standard_EXPORT     void SetErrorStatus(const Storage_Error anError) ;
+  Standard_EXPORT   void SetErrorStatus (const Storage_Error anError) ;
   
-  Standard_EXPORT     void SetErrorStatusExtension(const TCollection_AsciiString& anErrorExt) ;
+  Standard_EXPORT   void SetErrorStatusExtension (const TCollection_AsciiString& anErrorExt) ;
 
-Handle_Storage_HeaderData myHeaderData;
-Handle_Storage_RootData myRootData;
-Handle_Storage_TypeData myTypeData;
-Handle_Storage_InternalData myInternal;
-Storage_Error myErrorStatus;
-TCollection_AsciiString myErrorStatusExt;
+  Handle(Storage_HeaderData) myHeaderData;
+  Handle(Storage_RootData) myRootData;
+  Handle(Storage_TypeData) myTypeData;
+  Handle(Storage_InternalData) myInternal;
+  Storage_Error myErrorStatus;
+  TCollection_AsciiString myErrorStatusExt;
 
 
 };
@@ -264,7 +261,6 @@ TCollection_AsciiString myErrorStatusExt;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Storage_Data_HeaderFile

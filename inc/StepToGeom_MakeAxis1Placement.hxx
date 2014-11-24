@@ -6,39 +6,27 @@
 #ifndef _StepToGeom_MakeAxis1Placement_HeaderFile
 #define _StepToGeom_MakeAxis1Placement_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepGeom_Axis1Placement_HeaderFile
 #include <Handle_StepGeom_Axis1Placement.hxx>
-#endif
-#ifndef _Handle_Geom_Axis1Placement_HeaderFile
 #include <Handle_Geom_Axis1Placement.hxx>
-#endif
 class StepGeom_Axis1Placement;
 class Geom_Axis1Placement;
 
 
-//! This class implements the mapping between classes <br>
-//!          Axis1Placement from Step and Axis1Placement from Geom <br>
-class StepToGeom_MakeAxis1Placement  {
+//! This class implements the mapping between classes
+//! Axis1Placement from Step and Axis1Placement from Geom
+class StepToGeom_MakeAxis1Placement 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Standard_Boolean Convert(const Handle(StepGeom_Axis1Placement)& SA,Handle(Geom_Axis1Placement)& CA) ;
-
+  Standard_EXPORT static   Standard_Boolean Convert (const Handle(StepGeom_Axis1Placement)& SA, Handle(Geom_Axis1Placement)& CA) ;
 
 
 
@@ -61,7 +49,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToGeom_MakeAxis1Placement_HeaderFile

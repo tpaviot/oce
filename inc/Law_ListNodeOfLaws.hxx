@@ -6,39 +6,28 @@
 #ifndef _Law_ListNodeOfLaws_HeaderFile
 #define _Law_ListNodeOfLaws_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Law_ListNodeOfLaws_HeaderFile
 #include <Handle_Law_ListNodeOfLaws.hxx>
-#endif
 
-#ifndef _Handle_Law_Function_HeaderFile
 #include <Handle_Law_Function.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Law_Function;
 class Law_Laws;
 class Law_ListIteratorOfLaws;
 
 
 
-class Law_ListNodeOfLaws : public TCollection_MapNode {
+class Law_ListNodeOfLaws : public TCollection_MapNode
+{
 
 public:
 
   
-      Law_ListNodeOfLaws(const Handle(Law_Function)& I,const TCollection_MapNodePtr& n);
+    Law_ListNodeOfLaws(const Handle(Law_Function)& I, const TCollection_MapNodePtr& n);
   
-        Handle_Law_Function& Value() const;
+      Handle(Law_Function)& Value()  const;
 
 
 
@@ -53,12 +42,12 @@ protected:
 private: 
 
 
-Handle_Law_Function myValue;
+  Handle(Law_Function) myValue;
 
 
 };
 
-#define Item Handle_Law_Function
+#define Item Handle(Law_Function)
 #define Item_hxx <Law_Function.hxx>
 #define TCollection_ListNode Law_ListNodeOfLaws
 #define TCollection_ListNode_hxx <Law_ListNodeOfLaws.hxx>
@@ -83,7 +72,6 @@ Handle_Law_Function myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Law_ListNodeOfLaws_HeaderFile

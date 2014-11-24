@@ -5,28 +5,14 @@
 
 #include <PColgp_HArray2OfCirc2d.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _gp_Circ2d_HeaderFile
 #include <gp_Circ2d.hxx>
-#endif
-#ifndef _PColgp_FieldOfHArray2OfCirc2d_HeaderFile
 #include <PColgp_FieldOfHArray2OfCirc2d.hxx>
-#endif
-#ifndef _PColgp_VArrayNodeOfFieldOfHArray2OfCirc2d_HeaderFile
 #include <PColgp_VArrayNodeOfFieldOfHArray2OfCirc2d.hxx>
-#endif
-#ifndef _PColgp_VArrayTNodeOfFieldOfHArray2OfCirc2d_HeaderFile
 #include <PColgp_VArrayTNodeOfFieldOfHArray2OfCirc2d.hxx>
-#endif
 
  
 

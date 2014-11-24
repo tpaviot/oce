@@ -6,70 +6,58 @@
 #ifndef _Vrml_Texture2Transform_HeaderFile
 #define _Vrml_Texture2Transform_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Vec2d_HeaderFile
 #include <gp_Vec2d.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class gp_Vec2d;
 
 
-//! defines a Texture2Transform node of VRML specifying properties of geometry <br>
-//!          and its appearance. <br>
-//!  This  node  defines  a 2D  transformation  applied  to  texture  coordinates. <br>
-//!  This  affect  the  way  textures  are  applied  to  the  surfaces  of  subsequent <br>
-//!  shapes. <br>
-//!  Transformation  consisits  of(in  order)  a  non-uniform  scale  about  an <br>
-//!  arbitrary  center  point,  a  rotation  about  that  same  point,  and <br>
-//!  a  translation.  This  allows  a  user  to  change  the  size  and  position  of <br>
-//!  the  textures  on  the  shape. <br>
-//!  By  default  : <br>
-//!    myTranslation (0 0) <br>
-//!    myRotation (0) <br>
-//!    myScaleFactor (1 1) <br>
-//!    myCenter (0 0) <br>
-class Vrml_Texture2Transform  {
+//! defines a Texture2Transform node of VRML specifying properties of geometry
+//! and its appearance.
+//! This  node  defines  a 2D  transformation  applied  to  texture  coordinates.
+//! This  affect  the  way  textures  are  applied  to  the  surfaces  of  subsequent
+//! shapes.
+//! Transformation  consisits  of(in  order)  a  non-uniform  scale  about  an
+//! arbitrary  center  point,  a  rotation  about  that  same  point,  and
+//! a  translation.  This  allows  a  user  to  change  the  size  and  position  of
+//! the  textures  on  the  shape.
+//! By  default  :
+//! myTranslation (0 0)
+//! myRotation (0)
+//! myScaleFactor (1 1)
+//! myCenter (0 0)
+class Vrml_Texture2Transform 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Vrml_Texture2Transform();
+  Standard_EXPORT Vrml_Texture2Transform();
   
-  Standard_EXPORT   Vrml_Texture2Transform(const gp_Vec2d& aTranslation,const Standard_Real aRotation,const gp_Vec2d& aScaleFactor,const gp_Vec2d& aCenter);
+  Standard_EXPORT Vrml_Texture2Transform(const gp_Vec2d& aTranslation, const Standard_Real aRotation, const gp_Vec2d& aScaleFactor, const gp_Vec2d& aCenter);
   
-  Standard_EXPORT     void SetTranslation(const gp_Vec2d& aTranslation) ;
+  Standard_EXPORT   void SetTranslation (const gp_Vec2d& aTranslation) ;
   
-  Standard_EXPORT     gp_Vec2d Translation() const;
+  Standard_EXPORT   gp_Vec2d Translation()  const;
   
-  Standard_EXPORT     void SetRotation(const Standard_Real aRotation) ;
+  Standard_EXPORT   void SetRotation (const Standard_Real aRotation) ;
   
-  Standard_EXPORT     Standard_Real Rotation() const;
+  Standard_EXPORT   Standard_Real Rotation()  const;
   
-  Standard_EXPORT     void SetScaleFactor(const gp_Vec2d& aScaleFactor) ;
+  Standard_EXPORT   void SetScaleFactor (const gp_Vec2d& aScaleFactor) ;
   
-  Standard_EXPORT     gp_Vec2d ScaleFactor() const;
+  Standard_EXPORT   gp_Vec2d ScaleFactor()  const;
   
-  Standard_EXPORT     void SetCenter(const gp_Vec2d& aCenter) ;
+  Standard_EXPORT   void SetCenter (const gp_Vec2d& aCenter) ;
   
-  Standard_EXPORT     gp_Vec2d Center() const;
+  Standard_EXPORT   gp_Vec2d Center()  const;
   
-  Standard_EXPORT     Standard_OStream& Print(Standard_OStream& anOStream) const;
-
+  Standard_EXPORT   Standard_OStream& Print (Standard_OStream& anOStream)  const;
 
 
 
@@ -84,10 +72,10 @@ private:
 
 
 
-gp_Vec2d myTranslation;
-Standard_Real myRotation;
-gp_Vec2d myScaleFactor;
-gp_Vec2d myCenter;
+  gp_Vec2d myTranslation;
+  Standard_Real myRotation;
+  gp_Vec2d myScaleFactor;
+  gp_Vec2d myCenter;
 
 
 };
@@ -96,7 +84,6 @@ gp_Vec2d myCenter;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Vrml_Texture2Transform_HeaderFile

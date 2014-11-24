@@ -2478,12 +2478,12 @@ inline void bndPresentation (Draw_Interpretor&                  theDI,
     }
     case BndAction_Print:
     {
-      Graphic3d_Vec3d aMin, aMax;
-      thePrs->Presentation()->MinMaxValues (aMin.x(), aMin.y(), aMin.z(),
-                                            aMax.x(), aMax.y(), aMax.z());
+      Bnd_Box aBox = thePrs->Presentation()->MinMaxValues();
+      gp_Pnt aMin = aBox.CornerMin();
+      gp_Pnt aMax = aBox.CornerMax();
       theDI << theName  << "\n"
-            << aMin.x() << " " << aMin.y() << " " << aMin.z() << " "
-            << aMax.x() << " " << aMax.y() << " " << aMax.z() << "\n";
+            << aMin.X() << " " << aMin.Y() << " " << aMin.Z() << " "
+            << aMax.X() << " " << aMax.Y() << " " << aMax.Z() << "\n";
       break;
     }
   }
@@ -4721,14 +4721,14 @@ static Standard_Boolean IsValid(const TopTools_ListOfShape& theArgs,
   TCollection_AsciiString checkValid = check.Value();
   Standard_Boolean ToCheck = Standard_True;
   if (!checkValid.IsEmpty()) {
-#ifdef DEB
+#ifdef OCCT_DEBUG
     cout <<"DONT_SWITCH_IS_VALID positionnee a :"<<checkValid.ToCString()<<"\n";
 #endif
     if ( checkValid=="true" || checkValid=="TRUE" ) {
       ToCheck= Standard_False;
     }
   } else {
-#ifdef DEB
+#ifdef OCCT_DEBUG
     cout <<"DONT_SWITCH_IS_VALID non positionne"<<"\n";
 #endif
   }
@@ -4886,7 +4886,7 @@ void ViewerTest::Factory(Draw_Interpretor& theDI)
   ViewerTest::Commands(theDI);
   ViewerTest::AviCommands(theDI);
 
-#ifdef DEB
+#ifdef OCCT_DEBUG
       theDI << "Draw Plugin : OCC V2d & V3d commands are loaded" << "\n";
 #endif
 }

@@ -6,36 +6,31 @@
 #ifndef _Voxel_SplitData_HeaderFile
 #define _Voxel_SplitData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 
 
-//! A container of split information. <br>
-//!          An instance of this class is used as a slice <br>
-//!          in inner representation of recursive octtree voxels. <br>
-class Voxel_SplitData  {
+//! A container of split information.
+//! An instance of this class is used as a slice
+//! in inner representation of recursive octtree voxels.
+class Voxel_SplitData 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! An empty constructor. <br>
-  Standard_EXPORT   Voxel_SplitData();
-  //! Gives access to the values. <br>
-  Standard_EXPORT     Standard_Address& GetValues() ;
-  //! Gives access to the next split data. <br>
-  Standard_EXPORT     Standard_Address& GetSplitData() ;
-
+  
+  //! An empty constructor.
+  Standard_EXPORT Voxel_SplitData();
+  
+  //! Gives access to the values.
+  Standard_EXPORT   Standard_Address& GetValues() ;
+  
+  //! Gives access to the next split data.
+  Standard_EXPORT   Standard_Address& GetSplitData() ;
 
 
 
@@ -50,8 +45,8 @@ private:
 
 
 
-Standard_Address myValues;
-Standard_Address mySplitData;
+  Standard_Address myValues;
+  Standard_Address mySplitData;
 
 
 };
@@ -60,7 +55,6 @@ Standard_Address mySplitData;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Voxel_SplitData_HeaderFile

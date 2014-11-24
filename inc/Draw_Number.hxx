@@ -6,55 +6,44 @@
 #ifndef _Draw_Number_HeaderFile
 #define _Draw_Number_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Draw_Number_HeaderFile
 #include <Handle_Draw_Number.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Draw_Drawable3D_HeaderFile
 #include <Draw_Drawable3D.hxx>
-#endif
-#ifndef _Handle_Draw_Drawable3D_HeaderFile
 #include <Handle_Draw_Drawable3D.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
-#ifndef _Draw_Interpretor_HeaderFile
 #include <Draw_Interpretor.hxx>
-#endif
 class Draw_Display;
 class Draw_Drawable3D;
 
 
-//! To store nummbers in variables. <br>
-class Draw_Number : public Draw_Drawable3D {
+//! To store nummbers in variables.
+class Draw_Number : public Draw_Drawable3D
+{
 
 public:
 
   
-  Standard_EXPORT   Draw_Number(const Standard_Real V);
+  Standard_EXPORT Draw_Number(const Standard_Real V);
   
-  Standard_EXPORT     Standard_Real Value() const;
+  Standard_EXPORT   Standard_Real Value()  const;
   
-  Standard_EXPORT     void Value(const Standard_Real V) ;
-  //! Does nothhing, <br>
-  Standard_EXPORT     void DrawOn(Draw_Display& dis) const;
-  //! For variable copy. <br>
-  Standard_EXPORT   virtual  Handle_Draw_Drawable3D Copy() const;
-  //! For variable dump. <br>
-  Standard_EXPORT   virtual  void Dump(Standard_OStream& S) const;
-  //! For variable whatis command. Set  as a result  the <br>
-//!          type of the variable. <br>
-  Standard_EXPORT   virtual  void Whatis(Draw_Interpretor& I) const;
+  Standard_EXPORT   void Value (const Standard_Real V) ;
+  
+  //! Does nothhing,
+  Standard_EXPORT   void DrawOn (Draw_Display& dis)  const;
+  
+  //! For variable copy.
+  Standard_EXPORT virtual   Handle(Draw_Drawable3D) Copy()  const;
+  
+  //! For variable dump.
+  Standard_EXPORT virtual   void Dump (Standard_OStream& S)  const;
+  
+  //! For variable whatis command. Set  as a result  the
+  //! type of the variable.
+  Standard_EXPORT virtual   void Whatis (Draw_Interpretor& I)  const;
 
 
 
@@ -69,7 +58,7 @@ protected:
 private: 
 
 
-Standard_Real myValue;
+  Standard_Real myValue;
 
 
 };
@@ -78,7 +67,6 @@ Standard_Real myValue;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Draw_Number_HeaderFile

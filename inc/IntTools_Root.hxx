@@ -6,115 +6,102 @@
 #ifndef _IntTools_Root_HeaderFile
 #define _IntTools_Root_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopAbs_State_HeaderFile
 #include <TopAbs_State.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 
 
-//! The class is to describe the root of <br>
-//!          function of one variable  for  Edge/Edge <br>
-//!          and  Edge/Surface  algorithms. <br>
-class IntTools_Root  {
+//! The class is to describe the root of
+//! function of one variable  for  Edge/Edge
+//! and  Edge/Surface  algorithms.
+class IntTools_Root 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//! Empty constructor <br>
-//! <br>
-  Standard_EXPORT   IntTools_Root();
-  
-//! Initializes my by range of parameters <br>
-//! and type of root <br>
-//! <br>
-  Standard_EXPORT   IntTools_Root(const Standard_Real aRoot,const Standard_Integer aType);
-  
-//! Sets the Root's value <br>
-//! <br>
-  Standard_EXPORT     void SetRoot(const Standard_Real aRoot) ;
-  
-//! Sets the Root's Type <br>
-//! <br>
-  Standard_EXPORT     void SetType(const Standard_Integer aType) ;
-  
-//! Set  the  value of the state before the root <br>
-//! (at  t=Root-dt) <br>
-//! <br>
-  Standard_EXPORT     void SetStateBefore(const TopAbs_State aState) ;
-  
-//! Set  the  value of the state after the root <br>
-//! (at  t=Root-dt) <br>
-//! <br>
-  Standard_EXPORT     void SetStateAfter(const TopAbs_State aState) ;
-  
-//! Not  used  in  Edge/Edge  algorithm <br>
-//! <br>
-  Standard_EXPORT     void SetLayerHeight(const Standard_Real aHeight) ;
-  
-//! Sets the  interval  from which the Root was <br>
-//! found [t1,t2] and the  corresponding  values <br>
-//! of  the  function  on  the  bounds f(t1), f(t2). <br>
-//! <br>
-  Standard_EXPORT     void SetInterval(const Standard_Real t1,const Standard_Real t2,const Standard_Real f1,const Standard_Real f2) ;
-  
-//! Returns the Root  value <br>
-//! <br>
-  Standard_EXPORT     Standard_Real Root() const;
-  
-//! Returns the  type  of  the  root <br>
-//! =0  -  Simple (was  found  by  bisection  method); <br>
-//! =2  -  Smart when f1=0, f2!=0 or  vice  versa <br>
-//!        (was  found  by  Fibbonacci method); <br>
-//! =1  -  Pure   (pure  zero  for all t [t1,t2] ); <br>
-  Standard_EXPORT     Standard_Integer Type() const;
-  
-//! Returns the state before the root <br>
-//! <br>
-  Standard_EXPORT     TopAbs_State StateBefore() const;
-  
-//! Returns the state after the root <br>
-//! <br>
-  Standard_EXPORT     TopAbs_State StateAfter() const;
-  
-//! Not  used  in  Edge/Edge  algorithm <br>
-//! <br>
-  Standard_EXPORT     Standard_Real LayerHeight() const;
-  
-//! Returns the validity flag for the root, <br>
-//! True if <br>
-//! myStateBefore==TopAbs_OUT && myStateAfter==TopAbs_IN or <br>
-//! myStateBefore==TopAbs_OUT && myStateAfter==TopAbs_ON or <br>
-//! myStateBefore==TopAbs_ON  && myStateAfter==TopAbs_OUT or <br>
-//! myStateBefore==TopAbs_IN  && myStateAfter==TopAbs_OUT  . <br>
-//! For  other  cases it  returns  False. <br>
-//! <br>
-  Standard_EXPORT     Standard_Boolean IsValid() const;
-  
-//! Returns the values of interval  from which the Root was <br>
-//! found [t1,t2] and the  corresponding  values <br>
-//! of  the  function  on  the  bounds f(t1), f(t2). <br>
-//! <br>
-  Standard_EXPORT     void Interval(Standard_Real& t1,Standard_Real& t2,Standard_Real& f1,Standard_Real& f2) const;
 
+  //! Empty constructor
+  Standard_EXPORT IntTools_Root();
+  
+
+  //! Initializes my by range of parameters
+  //! and type of root
+  Standard_EXPORT IntTools_Root(const Standard_Real aRoot, const Standard_Integer aType);
+  
+
+  //! Sets the Root's value
+  Standard_EXPORT   void SetRoot (const Standard_Real aRoot) ;
+  
+
+  //! Sets the Root's Type
+  Standard_EXPORT   void SetType (const Standard_Integer aType) ;
+  
+
+  //! Set  the  value of the state before the root
+  //! (at  t=Root-dt)
+  Standard_EXPORT   void SetStateBefore (const TopAbs_State aState) ;
+  
+
+  //! Set  the  value of the state after the root
+  //! (at  t=Root-dt)
+  Standard_EXPORT   void SetStateAfter (const TopAbs_State aState) ;
+  
+
+  //! Not  used  in  Edge/Edge  algorithm
+  Standard_EXPORT   void SetLayerHeight (const Standard_Real aHeight) ;
+  
+
+  //! Sets the  interval  from which the Root was
+  //! found [t1,t2] and the  corresponding  values
+  //! of  the  function  on  the  bounds f(t1), f(t2).
+  Standard_EXPORT   void SetInterval (const Standard_Real t1, const Standard_Real t2, const Standard_Real f1, const Standard_Real f2) ;
+  
+
+  //! Returns the Root  value
+  Standard_EXPORT   Standard_Real Root()  const;
+  
+
+  //! Returns the  type  of  the  root
+  //! =0  -  Simple (was  found  by  bisection  method);
+  //! =2  -  Smart when f1=0, f2!=0 or  vice  versa
+  //! (was  found  by  Fibbonacci method);
+  //! =1  -  Pure   (pure  zero  for all t [t1,t2] );
+  Standard_EXPORT   Standard_Integer Type()  const;
+  
+
+  //! Returns the state before the root
+  Standard_EXPORT   TopAbs_State StateBefore()  const;
+  
+
+  //! Returns the state after the root
+  Standard_EXPORT   TopAbs_State StateAfter()  const;
+  
+
+  //! Not  used  in  Edge/Edge  algorithm
+  Standard_EXPORT   Standard_Real LayerHeight()  const;
+  
+
+  //! Returns the validity flag for the root,
+  //! True if
+  //! myStateBefore==TopAbs_OUT && myStateAfter==TopAbs_IN or
+  //! myStateBefore==TopAbs_OUT && myStateAfter==TopAbs_ON or
+  //! myStateBefore==TopAbs_ON  && myStateAfter==TopAbs_OUT or
+  //! myStateBefore==TopAbs_IN  && myStateAfter==TopAbs_OUT  .
+  //! For  other  cases it  returns  False.
+  Standard_EXPORT   Standard_Boolean IsValid()  const;
+  
+
+  //! Returns the values of interval  from which the Root was
+  //! found [t1,t2] and the  corresponding  values
+  //! of  the  function  on  the  bounds f(t1), f(t2).
+  Standard_EXPORT   void Interval (Standard_Real& t1, Standard_Real& t2, Standard_Real& f1, Standard_Real& f2)  const;
 
 
 
@@ -129,15 +116,15 @@ private:
 
 
 
-Standard_Real myRoot;
-Standard_Integer myType;
-Standard_Real myLayerHeight;
-TopAbs_State myStateBefore;
-TopAbs_State myStateAfter;
-Standard_Real myt1;
-Standard_Real myt2;
-Standard_Real myf1;
-Standard_Real myf2;
+  Standard_Real myRoot;
+  Standard_Integer myType;
+  Standard_Real myLayerHeight;
+  TopAbs_State myStateBefore;
+  TopAbs_State myStateAfter;
+  Standard_Real myt1;
+  Standard_Real myt2;
+  Standard_Real myf1;
+  Standard_Real myf2;
 
 
 };
@@ -146,7 +133,6 @@ Standard_Real myf2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_Root_HeaderFile

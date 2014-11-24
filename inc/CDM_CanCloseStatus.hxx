@@ -6,8 +6,11 @@
 #ifndef _CDM_CanCloseStatus_HeaderFile
 #define _CDM_CanCloseStatus_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum CDM_CanCloseStatus {
+
+enum CDM_CanCloseStatus
+{
 CDM_CCS_OK,
 CDM_CCS_NotOpen,
 CDM_CCS_UnstoredReferenced,
@@ -15,8 +18,4 @@ CDM_CCS_ModifiedReferenced,
 CDM_CCS_ReferenceRejection
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _CDM_CanCloseStatus_HeaderFile

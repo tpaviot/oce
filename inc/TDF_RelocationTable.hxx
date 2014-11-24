@@ -6,40 +6,18 @@
 #ifndef _TDF_RelocationTable_HeaderFile
 #define _TDF_RelocationTable_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TDF_LabelDataMap_HeaderFile
 #include <TDF_LabelDataMap.hxx>
-#endif
-#ifndef _TDF_AttributeDataMap_HeaderFile
 #include <TDF_AttributeDataMap.hxx>
-#endif
-#ifndef _TColStd_IndexedDataMapOfTransientTransient_HeaderFile
 #include <TColStd_IndexedDataMapOfTransientTransient.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class TDF_Label;
 class TDF_Attribute;
 class Standard_Transient;
@@ -50,98 +28,112 @@ class TDF_AttributeDataMap;
 class TColStd_IndexedDataMapOfTransientTransient;
 
 
-//! This is a relocation dictionnary between source <br>
-//!          and target labels, attributes or any <br>
-//!          transient(useful for copy or paste actions). <br>
-//!          Note that one target value may be the <br>
-//!          relocation value of more than one source object. <br>
-//! <br>
-//!          Common behaviour: it returns true and the found <br>
-//!          relocation value as target object; false <br>
-//!          otherwise. <br>
-//! <br>
-//!          Look at SelfRelocate method for more explanation <br>
-//!          about self relocation behavior of this class. <br>
-class TDF_RelocationTable : public MMgt_TShared {
+//! This is a relocation dictionnary between source
+//! and target labels, attributes or any
+//! transient(useful for copy or paste actions).
+//! Note that one target value may be the
+//! relocation value of more than one source object.
+//!
+//! Common behaviour: it returns true and the found
+//! relocation value as target object; false
+//! otherwise.
+//!
+//! Look at SelfRelocate method for more explanation
+//! about self relocation behavior of this class.
+class TDF_RelocationTable : public MMgt_TShared
+{
 
 public:
 
-  //! Creates an relocation table. <selfRelocate> says <br>
-//!          if a value without explicit relocation is its own <br>
-//!          relocation. <br>
-  Standard_EXPORT   TDF_RelocationTable(const Standard_Boolean selfRelocate = Standard_False);
-  //! Sets <mySelfRelocate> to <selfRelocate>. <br>
-//! <br>
-//!          This flag affects the HasRelocation method <br>
-//!          behavior like this: <br>
-//! <br>
-//!          <mySelfRelocate> == False: <br>
-//! <br>
-//!          If no relocation object is found in the map, a <br>
-//!          null object is returned <br>
-//! <br>
-//!          <mySelfRelocate> == True: <br>
-//! <br>
-//!          If no relocation object is found in the map, the <br>
-//!          method assumes the source object is relocation <br>
-//!          value; so the source object is returned as target <br>
-//!          object. <br>
-  Standard_EXPORT     void SelfRelocate(const Standard_Boolean selfRelocate) ;
-  //! Returns <mySelfRelocate>. <br>
-  Standard_EXPORT     Standard_Boolean SelfRelocate() const;
   
-  Standard_EXPORT     void AfterRelocate(const Standard_Boolean afterRelocate) ;
-  //! Returns <myAfterRelocate>. <br>
-  Standard_EXPORT     Standard_Boolean AfterRelocate() const;
-  //! Sets the relocation value of <aSourceLabel> to <br>
-//!          <aTargetLabel>. <br>
-  Standard_EXPORT     void SetRelocation(const TDF_Label& aSourceLabel,const TDF_Label& aTargetLabel) ;
-  //! Finds the relocation value of <aSourceLabel> <br>
-//!          and returns it into <aTargetLabel>. <br>
-//! <br>
-//!          (See above SelfRelocate method for more <br>
-//!          explanation about the method behavior) <br>
-  Standard_EXPORT     Standard_Boolean HasRelocation(const TDF_Label& aSourceLabel,TDF_Label& aTargetLabel) const;
-  //! Sets the relocation value of <aSourceAttribute> to <br>
-//!          <aTargetAttribute>. <br>
-  Standard_EXPORT     void SetRelocation(const Handle(TDF_Attribute)& aSourceAttribute,const Handle(TDF_Attribute)& aTargetAttribute) ;
-  //! Finds the relocation value of <aSourceAttribute> <br>
-//!          and returns it into <aTargetAttribute>. <br>
-//! <br>
-//!          (See above SelfRelocate method for more <br>
-//!          explanation about the method behavior) <br>
-  Standard_EXPORT     Standard_Boolean HasRelocation(const Handle(TDF_Attribute)& aSourceAttribute,Handle(TDF_Attribute)& aTargetAttribute) const;
-  //! Sets the relocation value of <aSourceTransient> to <br>
-//!          <aTargetTransient>. <br>
-  Standard_EXPORT     void SetTransientRelocation(const Handle(Standard_Transient)& aSourceTransient,const Handle(Standard_Transient)& aTargetTransient) ;
-  //! Finds the relocation value of <aSourceTransient> <br>
-//!          and returns it into <aTargetTransient>. <br>
-//! <br>
-//!          (See above SelfRelocate method for more <br>
-//!          explanation about the method behavior) <br>
-  Standard_EXPORT     Standard_Boolean HasTransientRelocation(const Handle(Standard_Transient)& aSourceTransient,Handle(Standard_Transient)& aTargetTransient) const;
-  //! Clears the relocation dictionnary, but lets the <br>
-//!          self relocation flag to its current value. <br>
-  Standard_EXPORT     void Clear() ;
-  //! Fills <aLabelMap> with target relocation <br>
-//!          labels. <aLabelMap> is not cleared before use. <br>
-  Standard_EXPORT     void TargetLabelMap(TDF_LabelMap& aLabelMap) const;
-  //! Fills <anAttributeMap> with target relocation <br>
-//!          attributes. <anAttributeMap> is not cleared before <br>
-//!          use. <br>
-  Standard_EXPORT     void TargetAttributeMap(TDF_AttributeMap& anAttributeMap) const;
-  //! Returns <myLabelTable> to be used or updated. <br>
-//! <br>
-  Standard_EXPORT     TDF_LabelDataMap& LabelTable() ;
-  //! Returns <myAttributeTable> to be used or updated. <br>
-//! <br>
-  Standard_EXPORT     TDF_AttributeDataMap& AttributeTable() ;
-  //! Returns <myTransientTable> to be used or updated. <br>
-//! <br>
-  Standard_EXPORT     TColStd_IndexedDataMapOfTransientTransient& TransientTable() ;
-  //! Dumps the relocation table. <br>
-//! <br>
-  Standard_EXPORT     Standard_OStream& Dump(const Standard_Boolean dumpLabels,const Standard_Boolean dumpAttributes,const Standard_Boolean dumpTransients,Standard_OStream& anOS) const;
+  //! Creates an relocation table. <selfRelocate> says
+  //! if a value without explicit relocation is its own
+  //! relocation.
+  Standard_EXPORT TDF_RelocationTable(const Standard_Boolean selfRelocate = Standard_False);
+  
+  //! Sets <mySelfRelocate> to <selfRelocate>.
+  //!
+  //! This flag affects the HasRelocation method
+  //! behavior like this:
+  //!
+  //! <mySelfRelocate> == False:
+  //!
+  //! If no relocation object is found in the map, a
+  //! null object is returned
+  //!
+  //! <mySelfRelocate> == True:
+  //!
+  //! If no relocation object is found in the map, the
+  //! method assumes the source object is relocation
+  //! value; so the source object is returned as target
+  //! object.
+  Standard_EXPORT   void SelfRelocate (const Standard_Boolean selfRelocate) ;
+  
+  //! Returns <mySelfRelocate>.
+  Standard_EXPORT   Standard_Boolean SelfRelocate()  const;
+  
+  Standard_EXPORT   void AfterRelocate (const Standard_Boolean afterRelocate) ;
+  
+  //! Returns <myAfterRelocate>.
+  Standard_EXPORT   Standard_Boolean AfterRelocate()  const;
+  
+  //! Sets the relocation value of <aSourceLabel> to
+  //! <aTargetLabel>.
+  Standard_EXPORT   void SetRelocation (const TDF_Label& aSourceLabel, const TDF_Label& aTargetLabel) ;
+  
+  //! Finds the relocation value of <aSourceLabel>
+  //! and returns it into <aTargetLabel>.
+  //!
+  //! (See above SelfRelocate method for more
+  //! explanation about the method behavior)
+  Standard_EXPORT   Standard_Boolean HasRelocation (const TDF_Label& aSourceLabel, TDF_Label& aTargetLabel)  const;
+  
+  //! Sets the relocation value of <aSourceAttribute> to
+  //! <aTargetAttribute>.
+  Standard_EXPORT   void SetRelocation (const Handle(TDF_Attribute)& aSourceAttribute, const Handle(TDF_Attribute)& aTargetAttribute) ;
+  
+  //! Finds the relocation value of <aSourceAttribute>
+  //! and returns it into <aTargetAttribute>.
+  //!
+  //! (See above SelfRelocate method for more
+  //! explanation about the method behavior)
+  Standard_EXPORT   Standard_Boolean HasRelocation (const Handle(TDF_Attribute)& aSourceAttribute, Handle(TDF_Attribute)& aTargetAttribute)  const;
+  
+  //! Sets the relocation value of <aSourceTransient> to
+  //! <aTargetTransient>.
+  Standard_EXPORT   void SetTransientRelocation (const Handle(Standard_Transient)& aSourceTransient, const Handle(Standard_Transient)& aTargetTransient) ;
+  
+  //! Finds the relocation value of <aSourceTransient>
+  //! and returns it into <aTargetTransient>.
+  //!
+  //! (See above SelfRelocate method for more
+  //! explanation about the method behavior)
+  Standard_EXPORT   Standard_Boolean HasTransientRelocation (const Handle(Standard_Transient)& aSourceTransient, Handle(Standard_Transient)& aTargetTransient)  const;
+  
+  //! Clears the relocation dictionnary, but lets the
+  //! self relocation flag to its current value.
+  Standard_EXPORT   void Clear() ;
+  
+  //! Fills <aLabelMap> with target relocation
+  //! labels. <aLabelMap> is not cleared before use.
+  Standard_EXPORT   void TargetLabelMap (TDF_LabelMap& aLabelMap)  const;
+  
+  //! Fills <anAttributeMap> with target relocation
+  //! attributes. <anAttributeMap> is not cleared before
+  //! use.
+  Standard_EXPORT   void TargetAttributeMap (TDF_AttributeMap& anAttributeMap)  const;
+  
+  //! Returns <myLabelTable> to be used or updated.
+  Standard_EXPORT   TDF_LabelDataMap& LabelTable() ;
+  
+  //! Returns <myAttributeTable> to be used or updated.
+  Standard_EXPORT   TDF_AttributeDataMap& AttributeTable() ;
+  
+  //! Returns <myTransientTable> to be used or updated.
+  Standard_EXPORT   TColStd_IndexedDataMapOfTransientTransient& TransientTable() ;
+  
+  //! Dumps the relocation table.
+  Standard_EXPORT   Standard_OStream& Dump (const Standard_Boolean dumpLabels, const Standard_Boolean dumpAttributes, const Standard_Boolean dumpTransients, Standard_OStream& anOS)  const;
 
 
 
@@ -156,11 +148,11 @@ protected:
 private: 
 
 
-Standard_Boolean mySelfRelocate;
-Standard_Boolean myAfterRelocate;
-TDF_LabelDataMap myLabelTable;
-TDF_AttributeDataMap myAttributeTable;
-TColStd_IndexedDataMapOfTransientTransient myTransientTable;
+  Standard_Boolean mySelfRelocate;
+  Standard_Boolean myAfterRelocate;
+  TDF_LabelDataMap myLabelTable;
+  TDF_AttributeDataMap myAttributeTable;
+  TColStd_IndexedDataMapOfTransientTransient myTransientTable;
 
 
 };
@@ -169,7 +161,6 @@ TColStd_IndexedDataMapOfTransientTransient myTransientTable;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_RelocationTable_HeaderFile

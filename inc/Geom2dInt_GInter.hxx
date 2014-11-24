@@ -6,37 +6,17 @@
 #ifndef _Geom2dInt_GInter_HeaderFile
 #define _Geom2dInt_GInter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _IntCurve_IntConicConic_HeaderFile
 #include <IntCurve_IntConicConic.hxx>
-#endif
-#ifndef _Geom2dInt_TheIntConicCurveOfGInter_HeaderFile
 #include <Geom2dInt_TheIntConicCurveOfGInter.hxx>
-#endif
-#ifndef _Geom2dInt_TheIntPCurvePCurveOfGInter_HeaderFile
 #include <Geom2dInt_TheIntPCurvePCurveOfGInter.hxx>
-#endif
-#ifndef _IntRes2d_Intersection_HeaderFile
 #include <IntRes2d_Intersection.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_ConstructionError;
 class Adaptor2d_Curve2d;
 class Geom2dInt_Geom2dCurveTool;
@@ -55,40 +35,40 @@ class TColStd_Array1OfReal;
 
 
 
-class Geom2dInt_GInter  : public IntRes2d_Intersection {
+class Geom2dInt_GInter  : public IntRes2d_Intersection
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Geom2dInt_GInter();
+    Geom2dInt_GInter();
   
-      Geom2dInt_GInter(const Adaptor2d_Curve2d& C,const Standard_Real TolConf,const Standard_Real Tol);
+    Geom2dInt_GInter(const Adaptor2d_Curve2d& C, const Standard_Real TolConf, const Standard_Real Tol);
   
-      Geom2dInt_GInter(const Adaptor2d_Curve2d& C,const IntRes2d_Domain& D,const Standard_Real TolConf,const Standard_Real Tol);
+    Geom2dInt_GInter(const Adaptor2d_Curve2d& C, const IntRes2d_Domain& D, const Standard_Real TolConf, const Standard_Real Tol);
   
-      Geom2dInt_GInter(const Adaptor2d_Curve2d& C1,const Adaptor2d_Curve2d& C2,const Standard_Real TolConf,const Standard_Real Tol);
+    Geom2dInt_GInter(const Adaptor2d_Curve2d& C1, const Adaptor2d_Curve2d& C2, const Standard_Real TolConf, const Standard_Real Tol);
   
-      Geom2dInt_GInter(const Adaptor2d_Curve2d& C1,const IntRes2d_Domain& D1,const Adaptor2d_Curve2d& C2,const Standard_Real TolConf,const Standard_Real Tol);
+    Geom2dInt_GInter(const Adaptor2d_Curve2d& C1, const IntRes2d_Domain& D1, const Adaptor2d_Curve2d& C2, const Standard_Real TolConf, const Standard_Real Tol);
   
-      Geom2dInt_GInter(const Adaptor2d_Curve2d& C1,const Adaptor2d_Curve2d& C2,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol);
+    Geom2dInt_GInter(const Adaptor2d_Curve2d& C1, const Adaptor2d_Curve2d& C2, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol);
   
-      Geom2dInt_GInter(const Adaptor2d_Curve2d& C1,const IntRes2d_Domain& D1,const Adaptor2d_Curve2d& C2,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol);
+    Geom2dInt_GInter(const Adaptor2d_Curve2d& C1, const IntRes2d_Domain& D1, const Adaptor2d_Curve2d& C2, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol);
   
-  Standard_EXPORT     void Perform(const Adaptor2d_Curve2d& C1,const IntRes2d_Domain& D1,const Adaptor2d_Curve2d& C2,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol) ;
+  Standard_EXPORT   void Perform (const Adaptor2d_Curve2d& C1, const IntRes2d_Domain& D1, const Adaptor2d_Curve2d& C2, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol) ;
   
-        void Perform(const Adaptor2d_Curve2d& C1,const Adaptor2d_Curve2d& C2,const Standard_Real TolConf,const Standard_Real Tol) ;
+      void Perform (const Adaptor2d_Curve2d& C1, const Adaptor2d_Curve2d& C2, const Standard_Real TolConf, const Standard_Real Tol) ;
   
-  Standard_EXPORT     void Perform(const Adaptor2d_Curve2d& C1,const IntRes2d_Domain& D1,const Standard_Real TolConf,const Standard_Real Tol) ;
+  Standard_EXPORT   void Perform (const Adaptor2d_Curve2d& C1, const IntRes2d_Domain& D1, const Standard_Real TolConf, const Standard_Real Tol) ;
   
-  Standard_EXPORT     void Perform(const Adaptor2d_Curve2d& C1,const Standard_Real TolConf,const Standard_Real Tol) ;
+  Standard_EXPORT   void Perform (const Adaptor2d_Curve2d& C1, const Standard_Real TolConf, const Standard_Real Tol) ;
   
-        void Perform(const Adaptor2d_Curve2d& C1,const IntRes2d_Domain& D1,const Adaptor2d_Curve2d& C2,const Standard_Real TolConf,const Standard_Real Tol) ;
+      void Perform (const Adaptor2d_Curve2d& C1, const IntRes2d_Domain& D1, const Adaptor2d_Curve2d& C2, const Standard_Real TolConf, const Standard_Real Tol) ;
   
-        void Perform(const Adaptor2d_Curve2d& C1,const Adaptor2d_Curve2d& C2,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol) ;
+      void Perform (const Adaptor2d_Curve2d& C1, const Adaptor2d_Curve2d& C2, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol) ;
   
-  Standard_EXPORT     IntRes2d_Domain ComputeDomain(const Adaptor2d_Curve2d& C1,const Standard_Real TolDomain) const;
-
+  Standard_EXPORT   IntRes2d_Domain ComputeDomain (const Adaptor2d_Curve2d& C1, const Standard_Real TolDomain)  const;
 
 
 
@@ -102,20 +82,20 @@ protected:
 private:
 
   
-  Standard_EXPORT     void InternalPerform(const Adaptor2d_Curve2d& C1,const IntRes2d_Domain& D1,const Adaptor2d_Curve2d& C2,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol,const Standard_Boolean Composite) ;
+  Standard_EXPORT   void InternalPerform (const Adaptor2d_Curve2d& C1, const IntRes2d_Domain& D1, const Adaptor2d_Curve2d& C2, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol, const Standard_Boolean Composite) ;
   
-  Standard_EXPORT     void InternalCompositePerform_noRecurs(const Standard_Integer NbInterC1,const Adaptor2d_Curve2d& C1,const Standard_Integer NumInterC1,const TColStd_Array1OfReal& Tab1,const IntRes2d_Domain& D1,const Standard_Integer NbInterC2,const Adaptor2d_Curve2d& C2,const Standard_Integer NumInterC2,const TColStd_Array1OfReal& Tab2,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol) ;
+  Standard_EXPORT   void InternalCompositePerform_noRecurs (const Standard_Integer NbInterC1, const Adaptor2d_Curve2d& C1, const Standard_Integer NumInterC1, const TColStd_Array1OfReal& Tab1, const IntRes2d_Domain& D1, const Standard_Integer NbInterC2, const Adaptor2d_Curve2d& C2, const Standard_Integer NumInterC2, const TColStd_Array1OfReal& Tab2, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol) ;
   
-  Standard_EXPORT     void InternalCompositePerform(const Adaptor2d_Curve2d& C1,const IntRes2d_Domain& D1,const Standard_Integer N1,const Standard_Integer NB1,const TColStd_Array1OfReal& Tab1,const Adaptor2d_Curve2d& C2,const IntRes2d_Domain& D2,const Standard_Integer N2,const Standard_Integer NB2,const TColStd_Array1OfReal& Tab2,const Standard_Real TolConf,const Standard_Real Tol,const Standard_Boolean Composite) ;
+  Standard_EXPORT   void InternalCompositePerform (const Adaptor2d_Curve2d& C1, const IntRes2d_Domain& D1, const Standard_Integer N1, const Standard_Integer NB1, const TColStd_Array1OfReal& Tab1, const Adaptor2d_Curve2d& C2, const IntRes2d_Domain& D2, const Standard_Integer N2, const Standard_Integer NB2, const TColStd_Array1OfReal& Tab2, const Standard_Real TolConf, const Standard_Real Tol, const Standard_Boolean Composite) ;
 
 
-Standard_Real param1inf;
-Standard_Real param1sup;
-Standard_Real param2inf;
-Standard_Real param2sup;
-IntCurve_IntConicConic intconiconi;
-Geom2dInt_TheIntConicCurveOfGInter intconicurv;
-Geom2dInt_TheIntPCurvePCurveOfGInter intcurvcurv;
+  Standard_Real param1inf;
+  Standard_Real param1sup;
+  Standard_Real param2inf;
+  Standard_Real param2sup;
+  IntCurve_IntConicConic intconiconi;
+  Geom2dInt_TheIntConicCurveOfGInter intconicurv;
+  Geom2dInt_TheIntPCurvePCurveOfGInter intcurvcurv;
 
 
 };
@@ -201,7 +181,6 @@ Geom2dInt_TheIntPCurvePCurveOfGInter intcurvcurv;
 #undef IntCurve_IntCurveCurveGen_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dInt_GInter_HeaderFile

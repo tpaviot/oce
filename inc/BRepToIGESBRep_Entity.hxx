@@ -6,52 +6,22 @@
 #ifndef _BRepToIGESBRep_Entity_HeaderFile
 #define _BRepToIGESBRep_Entity_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopTools_IndexedMapOfShape_HeaderFile
 #include <TopTools_IndexedMapOfShape.hxx>
-#endif
-#ifndef _TColStd_IndexedMapOfTransient_HeaderFile
 #include <TColStd_IndexedMapOfTransient.hxx>
-#endif
-#ifndef _Handle_IGESSolid_EdgeList_HeaderFile
 #include <Handle_IGESSolid_EdgeList.hxx>
-#endif
-#ifndef _Handle_IGESSolid_VertexList_HeaderFile
 #include <Handle_IGESSolid_VertexList.hxx>
-#endif
-#ifndef _BRepToIGES_BREntity_HeaderFile
 #include <BRepToIGES_BREntity.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_IGESSolid_Loop_HeaderFile
 #include <Handle_IGESSolid_Loop.hxx>
-#endif
-#ifndef _Handle_IGESSolid_Face_HeaderFile
 #include <Handle_IGESSolid_Face.hxx>
-#endif
-#ifndef _Handle_IGESSolid_Shell_HeaderFile
 #include <Handle_IGESSolid_Shell.hxx>
-#endif
-#ifndef _Handle_IGESSolid_ManifoldSolid_HeaderFile
 #include <Handle_IGESSolid_ManifoldSolid.hxx>
-#endif
 class IGESSolid_EdgeList;
 class IGESSolid_VertexList;
 class TopoDS_Vertex;
@@ -70,59 +40,76 @@ class TopoDS_CompSolid;
 class TopoDS_Compound;
 
 
-//! provides methods to transfer BRep entity from CASCADE to IGESBRep. <br>
-class BRepToIGESBRep_Entity  : public BRepToIGES_BREntity {
+//! provides methods to transfer BRep entity from CASCADE to IGESBRep.
+class BRepToIGESBRep_Entity  : public BRepToIGES_BREntity
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates a tool Entity <br>
-  Standard_EXPORT   BRepToIGESBRep_Entity();
-  //! Clears the contents of the fields <br>
-  Standard_EXPORT     void Clear() ;
-  //!  Create the VertexList entity <br>
-  Standard_EXPORT     void TransferVertexList() ;
-  //! Returns the index of <myvertex> in "myVertices" <br>
-  Standard_EXPORT     Standard_Integer IndexVertex(const TopoDS_Vertex& myvertex) const;
-  //! Stores <myvertex> in "myVertices" <br>
-//!          Returns the index of <myvertex>. <br>
-  Standard_EXPORT     Standard_Integer AddVertex(const TopoDS_Vertex& myvertex) ;
-  //!  Transfert an Edge entity from TopoDS to IGES <br>
-  Standard_EXPORT     void TransferEdgeList() ;
-  //! Returns the index of <myedge> in "myEdges" <br>
-  Standard_EXPORT     Standard_Integer IndexEdge(const TopoDS_Edge& myedge) const;
-  //! Stores <myedge> in "myEdges" and <mycurve3d> in "myCurves". <br>
-//!           Returns the index of <myedge>. <br>
-  Standard_EXPORT     Standard_Integer AddEdge(const TopoDS_Edge& myedge,const Handle(IGESData_IGESEntity)& mycurve3d) ;
-  //! Returns the result of the transfert of any Shape <br>
-//!           If  the transfer has  failed, this member return a NullEntity. <br>
-  Standard_EXPORT   virtual  Handle_IGESData_IGESEntity TransferShape(const TopoDS_Shape& start) ;
-  //!  Transfert an Edge entity from TopoDS to IGES <br>
-//!            If this Entity could not be converted, this member returns a NullEntity. <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity TransferEdge(const TopoDS_Edge& myedge) ;
-  //!  Transfert an Edge entity from TopoDS to IGES <br>
-//!            If this Entity could not be converted, this member returns a NullEntity. <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity TransferEdge(const TopoDS_Edge& myedge,const TopoDS_Face& myface,const Standard_Real length) ;
-  //!  Transfert a Wire entity from TopoDS to IGES. <br>
-//!            Returns the curve associated to mywire in the parametric space of myface. <br>
-//!            If this Entity could not be converted, this member returns a NullEntity. <br>
-  Standard_EXPORT     Handle_IGESSolid_Loop TransferWire(const TopoDS_Wire& mywire,const TopoDS_Face& myface,const Standard_Real length) ;
-  //!  Transfert a Face entity from TopoDS to IGES <br>
-//!            If this Entity could not be converted, this member returns a NullEntity. <br>
-  Standard_EXPORT     Handle_IGESSolid_Face TransferFace(const TopoDS_Face& start) ;
-  //!  Transfert an Shell entity from TopoDS to IGES <br>
-//!            If this Entity could not be converted, this member returns a NullEntity. <br>
-  Standard_EXPORT     Handle_IGESSolid_Shell TransferShell(const TopoDS_Shell& start) ;
-  //!  Transfert a Solid entity from TopoDS to IGES <br>
-//!            If this Entity could not be converted, this member returns a NullEntity. <br>
-  Standard_EXPORT     Handle_IGESSolid_ManifoldSolid TransferSolid(const TopoDS_Solid& start) ;
-  //!  Transfert an CompSolid entity from TopoDS to IGES <br>
-//!            If this Entity could not be converted, this member returns a NullEntity. <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity TransferCompSolid(const TopoDS_CompSolid& start) ;
-  //!  Transfert a Compound entity from TopoDS to IGES <br>
-//!            If this Entity could not be converted, this member returns a NullEntity. <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity TransferCompound(const TopoDS_Compound& start) ;
-
+  
+  //! Creates a tool Entity
+  Standard_EXPORT BRepToIGESBRep_Entity();
+  
+  //! Clears the contents of the fields
+  Standard_EXPORT   void Clear() ;
+  
+  //! Create the VertexList entity
+  Standard_EXPORT   void TransferVertexList() ;
+  
+  //! Returns the index of <myvertex> in "myVertices"
+  Standard_EXPORT   Standard_Integer IndexVertex (const TopoDS_Vertex& myvertex)  const;
+  
+  //! Stores <myvertex> in "myVertices"
+  //! Returns the index of <myvertex>.
+  Standard_EXPORT   Standard_Integer AddVertex (const TopoDS_Vertex& myvertex) ;
+  
+  //! Transfert an Edge entity from TopoDS to IGES
+  Standard_EXPORT   void TransferEdgeList() ;
+  
+  //! Returns the index of <myedge> in "myEdges"
+  Standard_EXPORT   Standard_Integer IndexEdge (const TopoDS_Edge& myedge)  const;
+  
+  //! Stores <myedge> in "myEdges" and <mycurve3d> in "myCurves".
+  //! Returns the index of <myedge>.
+  Standard_EXPORT   Standard_Integer AddEdge (const TopoDS_Edge& myedge, const Handle(IGESData_IGESEntity)& mycurve3d) ;
+  
+  //! Returns the result of the transfert of any Shape
+  //! If  the transfer has  failed, this member return a NullEntity.
+  Standard_EXPORT virtual   Handle(IGESData_IGESEntity) TransferShape (const TopoDS_Shape& start) ;
+  
+  //! Transfert an Edge entity from TopoDS to IGES
+  //! If this Entity could not be converted, this member returns a NullEntity.
+  Standard_EXPORT   Handle(IGESData_IGESEntity) TransferEdge (const TopoDS_Edge& myedge) ;
+  
+  //! Transfert an Edge entity from TopoDS to IGES
+  //! If this Entity could not be converted, this member returns a NullEntity.
+  Standard_EXPORT   Handle(IGESData_IGESEntity) TransferEdge (const TopoDS_Edge& myedge, const TopoDS_Face& myface, const Standard_Real length) ;
+  
+  //! Transfert a Wire entity from TopoDS to IGES.
+  //! Returns the curve associated to mywire in the parametric space of myface.
+  //! If this Entity could not be converted, this member returns a NullEntity.
+  Standard_EXPORT   Handle(IGESSolid_Loop) TransferWire (const TopoDS_Wire& mywire, const TopoDS_Face& myface, const Standard_Real length) ;
+  
+  //! Transfert a Face entity from TopoDS to IGES
+  //! If this Entity could not be converted, this member returns a NullEntity.
+  Standard_EXPORT   Handle(IGESSolid_Face) TransferFace (const TopoDS_Face& start) ;
+  
+  //! Transfert an Shell entity from TopoDS to IGES
+  //! If this Entity could not be converted, this member returns a NullEntity.
+  Standard_EXPORT   Handle(IGESSolid_Shell) TransferShell (const TopoDS_Shell& start) ;
+  
+  //! Transfert a Solid entity from TopoDS to IGES
+  //! If this Entity could not be converted, this member returns a NullEntity.
+  Standard_EXPORT   Handle(IGESSolid_ManifoldSolid) TransferSolid (const TopoDS_Solid& start) ;
+  
+  //! Transfert an CompSolid entity from TopoDS to IGES
+  //! If this Entity could not be converted, this member returns a NullEntity.
+  Standard_EXPORT   Handle(IGESData_IGESEntity) TransferCompSolid (const TopoDS_CompSolid& start) ;
+  
+  //! Transfert a Compound entity from TopoDS to IGES
+  //! If this Entity could not be converted, this member returns a NullEntity.
+  Standard_EXPORT   Handle(IGESData_IGESEntity) TransferCompound (const TopoDS_Compound& start) ;
 
 
 
@@ -137,11 +124,11 @@ private:
 
 
 
-TopTools_IndexedMapOfShape myVertices;
-TopTools_IndexedMapOfShape myEdges;
-TColStd_IndexedMapOfTransient myCurves;
-Handle_IGESSolid_EdgeList myEdgeList;
-Handle_IGESSolid_VertexList myVertexList;
+  TopTools_IndexedMapOfShape myVertices;
+  TopTools_IndexedMapOfShape myEdges;
+  TColStd_IndexedMapOfTransient myCurves;
+  Handle(IGESSolid_EdgeList) myEdgeList;
+  Handle(IGESSolid_VertexList) myVertexList;
 
 
 };
@@ -150,7 +137,6 @@ Handle_IGESSolid_VertexList myVertexList;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepToIGESBRep_Entity_HeaderFile

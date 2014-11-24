@@ -6,45 +6,33 @@
 #ifndef _PTopoDS_VArrayTNodeOfFieldOfHArray1OfShape1_HeaderFile
 #define _PTopoDS_VArrayTNodeOfFieldOfHArray1OfShape1_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _PTopoDS_Shape1_HeaderFile
 #include <PTopoDS_Shape1.hxx>
-#endif
-#ifndef _Handle_PTopoDS_VArrayNodeOfFieldOfHArray1OfShape1_HeaderFile
 #include <Handle_PTopoDS_VArrayNodeOfFieldOfHArray1OfShape1.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class PTopoDS_Shape1;
 class PTopoDS_FieldOfHArray1OfShape1;
 class PTopoDS_VArrayNodeOfFieldOfHArray1OfShape1;
 
 
 
-class PTopoDS_VArrayTNodeOfFieldOfHArray1OfShape1  {
+class PTopoDS_VArrayTNodeOfFieldOfHArray1OfShape1 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      PTopoDS_VArrayTNodeOfFieldOfHArray1OfShape1();
+    PTopoDS_VArrayTNodeOfFieldOfHArray1OfShape1();
   
-      PTopoDS_VArrayTNodeOfFieldOfHArray1OfShape1(const PTopoDS_Shape1& aValue);
+    PTopoDS_VArrayTNodeOfFieldOfHArray1OfShape1(const PTopoDS_Shape1& aValue);
   
-        void SetValue(const PTopoDS_Shape1& aValue) ;
+      void SetValue (const PTopoDS_Shape1& aValue) ;
   
-        Standard_Address Value() const;
-
+      Standard_Address Value()  const;
 
 
 
@@ -59,7 +47,7 @@ private:
 
 
 
-PTopoDS_Shape1 myValue;
+  PTopoDS_Shape1 myValue;
 
 
 };
@@ -89,7 +77,6 @@ PTopoDS_Shape1 myValue;
 #undef DBC_VArray_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PTopoDS_VArrayTNodeOfFieldOfHArray1OfShape1_HeaderFile

@@ -6,52 +6,38 @@
 #ifndef _BRep_PointOnCurveOnSurface_HeaderFile
 #define _BRep_PointOnCurveOnSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRep_PointOnCurveOnSurface_HeaderFile
 #include <Handle_BRep_PointOnCurveOnSurface.hxx>
-#endif
 
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _BRep_PointsOnSurface_HeaderFile
 #include <BRep_PointsOnSurface.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Geom2d_Curve;
 class Geom_Surface;
 class TopLoc_Location;
 
 
-//! Representation by   a parameter on  a curve   on a <br>
-//!          surface. <br>
-class BRep_PointOnCurveOnSurface : public BRep_PointsOnSurface {
+//! Representation by   a parameter on  a curve   on a
+//! surface.
+class BRep_PointOnCurveOnSurface : public BRep_PointsOnSurface
+{
 
 public:
 
   
-  Standard_EXPORT   BRep_PointOnCurveOnSurface(const Standard_Real P,const Handle(Geom2d_Curve)& C,const Handle(Geom_Surface)& S,const TopLoc_Location& L);
-  //! Returns True <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsPointOnCurveOnSurface() const;
+  Standard_EXPORT BRep_PointOnCurveOnSurface(const Standard_Real P, const Handle(Geom2d_Curve)& C, const Handle(Geom_Surface)& S, const TopLoc_Location& L);
   
-  Standard_EXPORT   virtual  Standard_Boolean IsPointOnCurveOnSurface(const Handle(Geom2d_Curve)& PC,const Handle(Geom_Surface)& S,const TopLoc_Location& L) const;
+  //! Returns True
+  Standard_EXPORT virtual   Standard_Boolean IsPointOnCurveOnSurface()  const;
   
-  Standard_EXPORT   virtual const Handle_Geom2d_Curve& PCurve() const;
+  Standard_EXPORT virtual   Standard_Boolean IsPointOnCurveOnSurface (const Handle(Geom2d_Curve)& PC, const Handle(Geom_Surface)& S, const TopLoc_Location& L)  const;
   
-  Standard_EXPORT   virtual  void PCurve(const Handle(Geom2d_Curve)& C) ;
+  Standard_EXPORT virtual  const  Handle(Geom2d_Curve)& PCurve()  const;
+  
+  Standard_EXPORT virtual   void PCurve (const Handle(Geom2d_Curve)& C) ;
 
 
 
@@ -66,7 +52,7 @@ protected:
 private: 
 
 
-Handle_Geom2d_Curve myPCurve;
+  Handle(Geom2d_Curve) myPCurve;
 
 
 };
@@ -75,7 +61,6 @@ Handle_Geom2d_Curve myPCurve;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRep_PointOnCurveOnSurface_HeaderFile

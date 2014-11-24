@@ -6,38 +6,27 @@
 #ifndef _BRep_PointsOnSurface_HeaderFile
 #define _BRep_PointsOnSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRep_PointsOnSurface_HeaderFile
 #include <Handle_BRep_PointsOnSurface.hxx>
-#endif
 
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _BRep_PointRepresentation_HeaderFile
 #include <BRep_PointRepresentation.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Geom_Surface;
 class TopLoc_Location;
 
 
-//! Root for points on surface. <br>
-class BRep_PointsOnSurface : public BRep_PointRepresentation {
+//! Root for points on surface.
+class BRep_PointsOnSurface : public BRep_PointRepresentation
+{
 
 public:
 
   
-  Standard_EXPORT   virtual const Handle_Geom_Surface& Surface() const;
+  Standard_EXPORT virtual  const  Handle(Geom_Surface)& Surface()  const;
   
-  Standard_EXPORT   virtual  void Surface(const Handle(Geom_Surface)& S) ;
+  Standard_EXPORT virtual   void Surface (const Handle(Geom_Surface)& S) ;
 
 
 
@@ -47,14 +36,14 @@ public:
 protected:
 
   
-  Standard_EXPORT   BRep_PointsOnSurface(const Standard_Real P,const Handle(Geom_Surface)& S,const TopLoc_Location& L);
+  Standard_EXPORT BRep_PointsOnSurface(const Standard_Real P, const Handle(Geom_Surface)& S, const TopLoc_Location& L);
 
 
 
 private: 
 
 
-Handle_Geom_Surface mySurface;
+  Handle(Geom_Surface) mySurface;
 
 
 };
@@ -63,7 +52,6 @@ Handle_Geom_Surface mySurface;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRep_PointsOnSurface_HeaderFile

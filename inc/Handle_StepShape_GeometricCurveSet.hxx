@@ -6,22 +6,15 @@
 #ifndef _Handle_StepShape_GeometricCurveSet_HeaderFile
 #define _Handle_StepShape_GeometricCurveSet_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepShape_GeometricSet_HeaderFile
 #include <Handle_StepShape_GeometricSet.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepShape_GeometricSet);
 class StepShape_GeometricCurveSet;
 
-DEFINE_STANDARD_HANDLE(StepShape_GeometricCurveSet,StepShape_GeometricSet)
+DEFINE_STANDARD_HANDLE(StepShape_GeometricCurveSet, StepShape_GeometricSet)
 
-#endif
+#endif // _Handle_StepShape_GeometricCurveSet_HeaderFile

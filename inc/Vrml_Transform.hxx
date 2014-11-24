@@ -6,72 +6,60 @@
 #ifndef _Vrml_Transform_HeaderFile
 #define _Vrml_Transform_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _Vrml_SFRotation_HeaderFile
 #include <Vrml_SFRotation.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class gp_Vec;
 class Vrml_SFRotation;
 
 
-//!  defines a Transform of VRML specifying transform <br>
-//!          properties. <br>
-//!  This  node  defines  a  geometric  3D  transformation   consisting   of  (in  order) <br>
-//!  a  (possibly)  non-uniform  scale  about  an  arbitrary  point,  a  rotation  about <br>
-//!  an arbitrary point  and  axis  and  translation. <br>
-//!  By  default  : <br>
-//!    myTranslation (0,0,0) <br>
-//!    myRotation  (0,0,1,0) <br>
-//!    myScaleFactor (1,1,1) <br>
-//!    myScaleOrientation (0,0,1,0) <br>
-//!    myCenter (0,0,0) <br>
-class Vrml_Transform  {
+//! defines a Transform of VRML specifying transform
+//! properties.
+//! This  node  defines  a  geometric  3D  transformation   consisting   of  (in  order)
+//! a  (possibly)  non-uniform  scale  about  an  arbitrary  point,  a  rotation  about
+//! an arbitrary point  and  axis  and  translation.
+//! By  default  :
+//! myTranslation (0,0,0)
+//! myRotation  (0,0,1,0)
+//! myScaleFactor (1,1,1)
+//! myScaleOrientation (0,0,1,0)
+//! myCenter (0,0,0)
+class Vrml_Transform 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Vrml_Transform();
+  Standard_EXPORT Vrml_Transform();
   
-  Standard_EXPORT   Vrml_Transform(const gp_Vec& aTranslation,const Vrml_SFRotation& aRotation,const gp_Vec& aScaleFactor,const Vrml_SFRotation& aScaleOrientation,const gp_Vec& aCenter);
+  Standard_EXPORT Vrml_Transform(const gp_Vec& aTranslation, const Vrml_SFRotation& aRotation, const gp_Vec& aScaleFactor, const Vrml_SFRotation& aScaleOrientation, const gp_Vec& aCenter);
   
-  Standard_EXPORT     void SetTranslation(const gp_Vec& aTranslation) ;
+  Standard_EXPORT   void SetTranslation (const gp_Vec& aTranslation) ;
   
-  Standard_EXPORT     gp_Vec Translation() const;
+  Standard_EXPORT   gp_Vec Translation()  const;
   
-  Standard_EXPORT     void SetRotation(const Vrml_SFRotation& aRotation) ;
+  Standard_EXPORT   void SetRotation (const Vrml_SFRotation& aRotation) ;
   
-  Standard_EXPORT     Vrml_SFRotation Rotation() const;
+  Standard_EXPORT   Vrml_SFRotation Rotation()  const;
   
-  Standard_EXPORT     void SetScaleFactor(const gp_Vec& aScaleFactor) ;
+  Standard_EXPORT   void SetScaleFactor (const gp_Vec& aScaleFactor) ;
   
-  Standard_EXPORT     gp_Vec ScaleFactor() const;
+  Standard_EXPORT   gp_Vec ScaleFactor()  const;
   
-  Standard_EXPORT     void SetScaleOrientation(const Vrml_SFRotation& aScaleOrientation) ;
+  Standard_EXPORT   void SetScaleOrientation (const Vrml_SFRotation& aScaleOrientation) ;
   
-  Standard_EXPORT     Vrml_SFRotation ScaleOrientation() const;
+  Standard_EXPORT   Vrml_SFRotation ScaleOrientation()  const;
   
-  Standard_EXPORT     void SetCenter(const gp_Vec& aCenter) ;
+  Standard_EXPORT   void SetCenter (const gp_Vec& aCenter) ;
   
-  Standard_EXPORT     gp_Vec Center() const;
+  Standard_EXPORT   gp_Vec Center()  const;
   
-  Standard_EXPORT     Standard_OStream& Print(Standard_OStream& anOStream) const;
-
+  Standard_EXPORT   Standard_OStream& Print (Standard_OStream& anOStream)  const;
 
 
 
@@ -86,11 +74,11 @@ private:
 
 
 
-gp_Vec myTranslation;
-Vrml_SFRotation myRotation;
-gp_Vec myScaleFactor;
-Vrml_SFRotation myScaleOrientation;
-gp_Vec myCenter;
+  gp_Vec myTranslation;
+  Vrml_SFRotation myRotation;
+  gp_Vec myScaleFactor;
+  Vrml_SFRotation myScaleOrientation;
+  gp_Vec myCenter;
 
 
 };
@@ -99,7 +87,6 @@ gp_Vec myCenter;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Vrml_Transform_HeaderFile

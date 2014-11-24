@@ -6,37 +6,17 @@
 #ifndef _TestTopOpeDraw_DrawableMesure_HeaderFile
 #define _TestTopOpeDraw_DrawableMesure_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TestTopOpeDraw_DrawableMesure_HeaderFile
 #include <Handle_TestTopOpeDraw_DrawableMesure.hxx>
-#endif
 
-#ifndef _Handle_TColgp_HArray1OfPnt_HeaderFile
 #include <Handle_TColgp_HArray1OfPnt.hxx>
-#endif
-#ifndef _Draw_Color_HeaderFile
 #include <Draw_Color.hxx>
-#endif
-#ifndef _Handle_TestTopOpeDraw_DrawableC3D_HeaderFile
 #include <Handle_TestTopOpeDraw_DrawableC3D.hxx>
-#endif
-#ifndef _Handle_TestTopOpeDraw_HArray1OfDrawableP3D_HeaderFile
 #include <Handle_TestTopOpeDraw_HArray1OfDrawableP3D.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TestTopOpeDraw_DrawableC3D_HeaderFile
 #include <TestTopOpeDraw_DrawableC3D.hxx>
-#endif
-#ifndef _Draw_Interpretor_HeaderFile
 #include <Draw_Interpretor.hxx>
-#endif
 class TColgp_HArray1OfPnt;
 class TestTopOpeDraw_DrawableC3D;
 class TestTopOpeDraw_HArray1OfDrawableP3D;
@@ -48,30 +28,32 @@ class Draw_Display;
 
 
 
-class TestTopOpeDraw_DrawableMesure : public TestTopOpeDraw_DrawableC3D {
+class TestTopOpeDraw_DrawableMesure : public TestTopOpeDraw_DrawableC3D
+{
 
 public:
 
   
-  Standard_EXPORT   TestTopOpeDraw_DrawableMesure(const TestTopOpeTools_Mesure& M,const Draw_Color& CurveColor,const Draw_Color& TextColor,const Standard_Real ScaleX = 1.0,const Standard_Real ScaleY = 1.0);
+  Standard_EXPORT TestTopOpeDraw_DrawableMesure(const TestTopOpeTools_Mesure& M, const Draw_Color& CurveColor, const Draw_Color& TextColor, const Standard_Real ScaleX = 1.0, const Standard_Real ScaleY = 1.0);
   
-  Standard_EXPORT     void SetScale(const Standard_Real ScaleX,const Standard_Real ScaleY) ;
+  Standard_EXPORT   void SetScale (const Standard_Real ScaleX, const Standard_Real ScaleY) ;
   
-  Standard_EXPORT     void SetScaleX(const Standard_Real ScaleX) ;
+  Standard_EXPORT   void SetScaleX (const Standard_Real ScaleX) ;
   
-  Standard_EXPORT     void SetScaleY(const Standard_Real ScaleY) ;
+  Standard_EXPORT   void SetScaleY (const Standard_Real ScaleY) ;
   
-  Standard_EXPORT     void SetName(const TCollection_AsciiString& Name) ;
+  Standard_EXPORT   void SetName (const TCollection_AsciiString& Name) ;
   
-  Standard_EXPORT   virtual  gp_Pnt Pnt() const;
+  Standard_EXPORT virtual   gp_Pnt Pnt()  const;
   
-  Standard_EXPORT    const Handle_TColgp_HArray1OfPnt& Pnts() const;
+  Standard_EXPORT  const  Handle(TColgp_HArray1OfPnt)& Pnts()  const;
   
-  Standard_EXPORT     void Clear() ;
-  //! For variable whatis command. <br>
-  Standard_EXPORT   virtual  void Whatis(Draw_Interpretor& I) const;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT   virtual  void DrawOn(Draw_Display& dis) const;
+  //! For variable whatis command.
+  Standard_EXPORT virtual   void Whatis (Draw_Interpretor& I)  const;
+  
+  Standard_EXPORT virtual   void DrawOn (Draw_Display& dis)  const;
 
 
 
@@ -86,15 +68,15 @@ protected:
 private: 
 
 
-Handle_TColgp_HArray1OfPnt myP;
-Draw_Color myCurveColor;
-Handle_TestTopOpeDraw_DrawableC3D myAXE1;
-Handle_TestTopOpeDraw_DrawableC3D myAXE2;
-Handle_TestTopOpeDraw_HArray1OfDrawableP3D myHDP;
-Handle_TestTopOpeDraw_HArray1OfDrawableP3D myHADP1;
-Handle_TestTopOpeDraw_HArray1OfDrawableP3D myHADP2;
-Standard_Real myScaleX;
-Standard_Real myScaleY;
+  Handle(TColgp_HArray1OfPnt) myP;
+  Draw_Color myCurveColor;
+  Handle(TestTopOpeDraw_DrawableC3D) myAXE1;
+  Handle(TestTopOpeDraw_DrawableC3D) myAXE2;
+  Handle(TestTopOpeDraw_HArray1OfDrawableP3D) myHDP;
+  Handle(TestTopOpeDraw_HArray1OfDrawableP3D) myHADP1;
+  Handle(TestTopOpeDraw_HArray1OfDrawableP3D) myHADP2;
+  Standard_Real myScaleX;
+  Standard_Real myScaleY;
 
 
 };
@@ -103,7 +85,6 @@ Standard_Real myScaleY;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TestTopOpeDraw_DrawableMesure_HeaderFile

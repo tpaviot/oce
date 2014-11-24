@@ -6,67 +6,51 @@
 #ifndef _MeshVS_MapOfTwoNodes_HeaderFile
 #define _MeshVS_MapOfTwoNodes_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _MeshVS_TwoNodes_HeaderFile
 #include <MeshVS_TwoNodes.hxx>
-#endif
-#ifndef _Handle_MeshVS_StdMapNodeOfMapOfTwoNodes_HeaderFile
 #include <Handle_MeshVS_StdMapNodeOfMapOfTwoNodes.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class MeshVS_TwoNodesHasher;
 class MeshVS_StdMapNodeOfMapOfTwoNodes;
 class MeshVS_MapIteratorOfMapOfTwoNodes;
 
 
 
-class MeshVS_MapOfTwoNodes  : public TCollection_BasicMap {
+class MeshVS_MapOfTwoNodes  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   MeshVS_MapOfTwoNodes(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT MeshVS_MapOfTwoNodes(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT   MeshVS_MapOfTwoNodes(const MeshVS_MapOfTwoNodes& Other);
+  Standard_EXPORT MeshVS_MapOfTwoNodes(const MeshVS_MapOfTwoNodes& Other);
   
-  Standard_EXPORT     MeshVS_MapOfTwoNodes& Assign(const MeshVS_MapOfTwoNodes& Other) ;
-    MeshVS_MapOfTwoNodes& operator =(const MeshVS_MapOfTwoNodes& Other) 
+  Standard_EXPORT   MeshVS_MapOfTwoNodes& Assign (const MeshVS_MapOfTwoNodes& Other) ;
+  MeshVS_MapOfTwoNodes& operator = (const MeshVS_MapOfTwoNodes& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~MeshVS_MapOfTwoNodes()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Add(const MeshVS_TwoNodes& aKey) ;
+  Standard_EXPORT   Standard_Boolean Add (const MeshVS_TwoNodes& aKey) ;
   
-  Standard_EXPORT     Standard_Boolean Contains(const MeshVS_TwoNodes& aKey) const;
+  Standard_EXPORT   Standard_Boolean Contains (const MeshVS_TwoNodes& aKey)  const;
   
-  Standard_EXPORT     Standard_Boolean Remove(const MeshVS_TwoNodes& aKey) ;
-
+  Standard_EXPORT   Standard_Boolean Remove (const MeshVS_TwoNodes& aKey) ;
 
 
 
@@ -89,7 +73,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MeshVS_MapOfTwoNodes_HeaderFile

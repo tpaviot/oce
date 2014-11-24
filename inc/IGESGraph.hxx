@@ -6,19 +6,11 @@
 #ifndef _IGESGraph_HeaderFile
 #define _IGESGraph_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_IGESGraph_Protocol_HeaderFile
 #include <Handle_IGESGraph_Protocol.hxx>
-#endif
 class IGESGraph_Protocol;
 class IGESGraph_LineFontDefTemplate;
 class IGESGraph_LineFontDefPattern;
@@ -60,19 +52,21 @@ class IGESGraph_HArray1OfTextDisplayTemplate;
 class IGESGraph_HArray1OfTextFontDef;
 
 
-//! This package contains the group of classes necessary <br>
-//!           to define Graphic data among Structure Entities. <br>
-//!           (e.g., Fonts, Colors, Screen management ...) <br>
-class IGESGraph  {
+//! This package contains the group of classes necessary
+//! to define Graphic data among Structure Entities.
+//! (e.g., Fonts, Colors, Screen management ...)
+class IGESGraph 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Prepares dynamic data (Protocol, Modules) for this package <br>
-  Standard_EXPORT   static  void Init() ;
-  //! Returns the Protocol for this Package <br>
-  Standard_EXPORT   static  Handle_IGESGraph_Protocol Protocol() ;
-
+  
+  //! Prepares dynamic data (Protocol, Modules) for this package
+  Standard_EXPORT static   void Init() ;
+  
+  //! Returns the Protocol for this Package
+  Standard_EXPORT static   Handle(IGESGraph_Protocol) Protocol() ;
 
 
 
@@ -133,7 +127,6 @@ friend class IGESGraph_HArray1OfTextFontDef;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGraph_HeaderFile

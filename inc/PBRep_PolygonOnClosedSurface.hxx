@@ -6,48 +6,34 @@
 #ifndef _PBRep_PolygonOnClosedSurface_HeaderFile
 #define _PBRep_PolygonOnClosedSurface_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PBRep_PolygonOnClosedSurface_HeaderFile
 #include <Handle_PBRep_PolygonOnClosedSurface.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_PPoly_Polygon2D_HeaderFile
 #include <Handle_PPoly_Polygon2D.hxx>
-#endif
-#ifndef _PBRep_PolygonOnSurface_HeaderFile
 #include <PBRep_PolygonOnSurface.hxx>
-#endif
-#ifndef _Handle_PGeom_Surface_HeaderFile
 #include <Handle_PGeom_Surface.hxx>
-#endif
 class PPoly_Polygon2D;
 class PGeom_Surface;
 class PTopLoc_Location;
 
 
-class PBRep_PolygonOnClosedSurface : public PBRep_PolygonOnSurface {
+class PBRep_PolygonOnClosedSurface : public PBRep_PolygonOnSurface
+{
 
 public:
 
   
-  Standard_EXPORT   PBRep_PolygonOnClosedSurface(const Handle(PPoly_Polygon2D)& P1,const Handle(PPoly_Polygon2D)& P2,const Handle(PGeom_Surface)& S,const PTopLoc_Location& L);
-  //! returns True. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsPolygonOnClosedSurface() const;
+  Standard_EXPORT PBRep_PolygonOnClosedSurface(const Handle(PPoly_Polygon2D)& P1, const Handle(PPoly_Polygon2D)& P2, const Handle(PGeom_Surface)& S, const PTopLoc_Location& L);
   
-  Standard_EXPORT     Handle_PPoly_Polygon2D Polygon2() const;
+  //! returns True.
+  Standard_EXPORT virtual   Standard_Boolean IsPolygonOnClosedSurface()  const;
+  
+  Standard_EXPORT   Handle(PPoly_Polygon2D) Polygon2()  const;
 
-  PBRep_PolygonOnClosedSurface( )
+PBRep_PolygonOnClosedSurface( )
 {
   
 }
@@ -70,7 +56,7 @@ protected:
 private: 
 
 
-Handle_PPoly_Polygon2D myPolygon2;
+  Handle(PPoly_Polygon2D) myPolygon2;
 
 
 };
@@ -79,7 +65,6 @@ Handle_PPoly_Polygon2D myPolygon2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PBRep_PolygonOnClosedSurface_HeaderFile

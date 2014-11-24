@@ -6,25 +6,13 @@
 #ifndef _Geom2dHatch_DataMapIteratorOfHatchings_HeaderFile
 #define _Geom2dHatch_DataMapIteratorOfHatchings_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Geom2dHatch_DataMapNodeOfHatchings_HeaderFile
 #include <Handle_Geom2dHatch_DataMapNodeOfHatchings.hxx>
-#endif
 class Standard_NoSuchObject;
 class Geom2dHatch_Hatching;
 class TColStd_MapIntegerHasher;
@@ -33,22 +21,22 @@ class Geom2dHatch_DataMapNodeOfHatchings;
 
 
 
-class Geom2dHatch_DataMapIteratorOfHatchings  : public TCollection_BasicMapIterator {
+class Geom2dHatch_DataMapIteratorOfHatchings  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Geom2dHatch_DataMapIteratorOfHatchings();
+  Standard_EXPORT Geom2dHatch_DataMapIteratorOfHatchings();
   
-  Standard_EXPORT   Geom2dHatch_DataMapIteratorOfHatchings(const Geom2dHatch_Hatchings& aMap);
+  Standard_EXPORT Geom2dHatch_DataMapIteratorOfHatchings(const Geom2dHatch_Hatchings& aMap);
   
-  Standard_EXPORT     void Initialize(const Geom2dHatch_Hatchings& aMap) ;
+  Standard_EXPORT   void Initialize (const Geom2dHatch_Hatchings& aMap) ;
   
-  Standard_EXPORT    const Standard_Integer& Key() const;
+  Standard_EXPORT  const  Standard_Integer& Key()  const;
   
-  Standard_EXPORT    const Geom2dHatch_Hatching& Value() const;
-
+  Standard_EXPORT  const  Geom2dHatch_Hatching& Value()  const;
 
 
 
@@ -71,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dHatch_DataMapIteratorOfHatchings_HeaderFile

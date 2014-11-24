@@ -6,44 +6,32 @@
 #ifndef _DBC_VArrayTNodeOfVArrayOfCharacter_HeaderFile
 #define _DBC_VArrayTNodeOfVArrayOfCharacter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Character_HeaderFile
 #include <Standard_Character.hxx>
-#endif
-#ifndef _Handle_DBC_VArrayNodeOfVArrayOfCharacter_HeaderFile
 #include <Handle_DBC_VArrayNodeOfVArrayOfCharacter.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class DBC_VArrayOfCharacter;
 class DBC_VArrayNodeOfVArrayOfCharacter;
 
 
 
-class DBC_VArrayTNodeOfVArrayOfCharacter  {
+class DBC_VArrayTNodeOfVArrayOfCharacter 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      DBC_VArrayTNodeOfVArrayOfCharacter();
+    DBC_VArrayTNodeOfVArrayOfCharacter();
   
-      DBC_VArrayTNodeOfVArrayOfCharacter(const Standard_Character& aValue);
+    DBC_VArrayTNodeOfVArrayOfCharacter(const Standard_Character& aValue);
   
-        void SetValue(const Standard_Character& aValue) ;
+      void SetValue (const Standard_Character& aValue) ;
   
-        Standard_Address Value() const;
-
+      Standard_Address Value()  const;
 
 
 
@@ -58,7 +46,7 @@ private:
 
 
 
-Standard_Character myValue;
+  Standard_Character myValue;
 
 
 };
@@ -88,7 +76,6 @@ Standard_Character myValue;
 #undef DBC_VArray_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DBC_VArrayTNodeOfVArrayOfCharacter_HeaderFile

@@ -6,57 +6,39 @@
 #ifndef _IntPatch_LineConstructor_HeaderFile
 #define _IntPatch_LineConstructor_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _IntPatch_SequenceOfLine_HeaderFile
 #include <IntPatch_SequenceOfLine.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_IntPatch_Line_HeaderFile
 #include <Handle_IntPatch_Line.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_TopolTool_HeaderFile
 #include <Handle_Adaptor3d_TopolTool.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class IntPatch_SequenceOfLine;
 class IntPatch_Line;
 class Adaptor3d_HSurface;
 class Adaptor3d_TopolTool;
 
 
-//! The intersections  algorithms compute the intersection <br>
-//!          on two surfaces and  return the intersections lines as <br>
-//!          IntPatch_Line. <br>
-class IntPatch_LineConstructor  {
+//! The intersections  algorithms compute the intersection
+//! on two surfaces and  return the intersections lines as
+//! IntPatch_Line.
+class IntPatch_LineConstructor 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntPatch_LineConstructor(const Standard_Integer mode);
+  Standard_EXPORT IntPatch_LineConstructor(const Standard_Integer mode);
   
-  Standard_EXPORT     void Perform(const IntPatch_SequenceOfLine& SL,const Handle(IntPatch_Line)& L,const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_TopolTool)& D1,const Handle(Adaptor3d_HSurface)& S2,const Handle(Adaptor3d_TopolTool)& D2,const Standard_Real Tol) ;
+  Standard_EXPORT   void Perform (const IntPatch_SequenceOfLine& SL, const Handle(IntPatch_Line)& L, const Handle(Adaptor3d_HSurface)& S1, const Handle(Adaptor3d_TopolTool)& D1, const Handle(Adaptor3d_HSurface)& S2, const Handle(Adaptor3d_TopolTool)& D2, const Standard_Real Tol) ;
   
-  Standard_EXPORT     Standard_Integer NbLines() const;
+  Standard_EXPORT   Standard_Integer NbLines()  const;
   
-  Standard_EXPORT     Handle_IntPatch_Line Line(const Standard_Integer index) const;
-
+  Standard_EXPORT   Handle(IntPatch_Line) Line (const Standard_Integer index)  const;
 
 
 
@@ -71,7 +53,7 @@ private:
 
 
 
-IntPatch_SequenceOfLine slin;
+  IntPatch_SequenceOfLine slin;
 
 
 };
@@ -80,7 +62,6 @@ IntPatch_SequenceOfLine slin;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntPatch_LineConstructor_HeaderFile

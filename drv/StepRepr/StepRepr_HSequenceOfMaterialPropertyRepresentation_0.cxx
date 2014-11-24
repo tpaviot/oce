@@ -5,22 +5,12 @@
 
 #include <StepRepr_HSequenceOfMaterialPropertyRepresentation.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StepRepr_MaterialPropertyRepresentation_HeaderFile
 #include <StepRepr_MaterialPropertyRepresentation.hxx>
-#endif
-#ifndef _StepRepr_SequenceOfMaterialPropertyRepresentation_HeaderFile
 #include <StepRepr_SequenceOfMaterialPropertyRepresentation.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(StepRepr_HSequenceOfMaterialPropertyRepresentation,Standard_T
 IMPLEMENT_STANDARD_RTTI(StepRepr_HSequenceOfMaterialPropertyRepresentation)
 
 
-#define Item Handle_StepRepr_MaterialPropertyRepresentation
+#define Item Handle(StepRepr_MaterialPropertyRepresentation)
 #define Item_hxx <StepRepr_MaterialPropertyRepresentation.hxx>
 #define TheSequence StepRepr_SequenceOfMaterialPropertyRepresentation
 #define TheSequence_hxx <StepRepr_SequenceOfMaterialPropertyRepresentation.hxx>

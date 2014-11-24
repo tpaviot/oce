@@ -6,38 +6,27 @@
 #ifndef _Convert_SequenceNodeOfSequenceOfArray1OfPoles_HeaderFile
 #define _Convert_SequenceNodeOfSequenceOfArray1OfPoles_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles_HeaderFile
 #include <Handle_Convert_SequenceNodeOfSequenceOfArray1OfPoles.hxx>
-#endif
 
-#ifndef _Handle_TColgp_HArray1OfPnt_HeaderFile
 #include <Handle_TColgp_HArray1OfPnt.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class TColgp_HArray1OfPnt;
 class Convert_SequenceOfArray1OfPoles;
 
 
 
-class Convert_SequenceNodeOfSequenceOfArray1OfPoles : public TCollection_SeqNode {
+class Convert_SequenceNodeOfSequenceOfArray1OfPoles : public TCollection_SeqNode
+{
 
 public:
 
   
-      Convert_SequenceNodeOfSequenceOfArray1OfPoles(const Handle(TColgp_HArray1OfPnt)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    Convert_SequenceNodeOfSequenceOfArray1OfPoles(const Handle(TColgp_HArray1OfPnt)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_TColgp_HArray1OfPnt& Value() const;
+      Handle(TColgp_HArray1OfPnt)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_TColgp_HArray1OfPnt myValue;
+  Handle(TColgp_HArray1OfPnt) myValue;
 
 
 };
 
-#define SeqItem Handle_TColgp_HArray1OfPnt
+#define SeqItem Handle(TColgp_HArray1OfPnt)
 #define SeqItem_hxx <TColgp_HArray1OfPnt.hxx>
 #define TCollection_SequenceNode Convert_SequenceNodeOfSequenceOfArray1OfPoles
 #define TCollection_SequenceNode_hxx <Convert_SequenceNodeOfSequenceOfArray1OfPoles.hxx>
@@ -78,7 +67,6 @@ Handle_TColgp_HArray1OfPnt myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Convert_SequenceNodeOfSequenceOfArray1OfPoles_HeaderFile

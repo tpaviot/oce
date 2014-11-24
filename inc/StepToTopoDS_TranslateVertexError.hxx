@@ -6,14 +6,13 @@
 #ifndef _StepToTopoDS_TranslateVertexError_HeaderFile
 #define _StepToTopoDS_TranslateVertexError_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepToTopoDS_TranslateVertexError {
+
+enum StepToTopoDS_TranslateVertexError
+{
 StepToTopoDS_TranslateVertexDone,
 StepToTopoDS_TranslateVertexOther
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepToTopoDS_TranslateVertexError_HeaderFile

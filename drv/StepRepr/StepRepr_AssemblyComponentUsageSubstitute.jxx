@@ -1,9 +1,3 @@
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepRepr_AssemblyComponentUsage_HeaderFile
 #include <StepRepr_AssemblyComponentUsage.hxx>
-#endif
-#ifndef _StepRepr_AssemblyComponentUsageSubstitute_HeaderFile
 #include <StepRepr_AssemblyComponentUsageSubstitute.hxx>
-#endif

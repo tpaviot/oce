@@ -1,6 +1,2 @@
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Vrml_IndexedLineSet_HeaderFile
 #include <Vrml_IndexedLineSet.hxx>
-#endif

@@ -5,19 +5,11 @@
 
 #include <NLPlate_ListNodeOfStackOfPlate.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Plate_Plate_HeaderFile
 #include <Plate_Plate.hxx>
-#endif
-#ifndef _NLPlate_StackOfPlate_HeaderFile
 #include <NLPlate_StackOfPlate.hxx>
-#endif
-#ifndef _NLPlate_ListIteratorOfStackOfPlate_HeaderFile
 #include <NLPlate_ListIteratorOfStackOfPlate.hxx>
-#endif
 
  
 

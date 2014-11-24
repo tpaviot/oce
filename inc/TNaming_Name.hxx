@@ -6,46 +6,20 @@
 #ifndef _TNaming_Name_HeaderFile
 #define _TNaming_Name_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TNaming_NameType_HeaderFile
 #include <TNaming_NameType.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _TNaming_ListOfNamedShape_HeaderFile
 #include <TNaming_ListOfNamedShape.hxx>
-#endif
-#ifndef _Handle_TNaming_NamedShape_HeaderFile
 #include <Handle_TNaming_NamedShape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
 class TNaming_NamedShape;
 class TopoDS_Shape;
 class TDF_Label;
@@ -54,51 +28,51 @@ class TDF_LabelMap;
 class TDF_RelocationTable;
 
 
-//! store the arguments of Naming. <br>
-class TNaming_Name  {
+//! store the arguments of Naming.
+class TNaming_Name 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TNaming_Name();
+  Standard_EXPORT TNaming_Name();
   
-  Standard_EXPORT     void Type(const TNaming_NameType aType) ;
+  Standard_EXPORT   void Type (const TNaming_NameType aType) ;
   
-  Standard_EXPORT     void ShapeType(const TopAbs_ShapeEnum aType) ;
+  Standard_EXPORT   void ShapeType (const TopAbs_ShapeEnum aType) ;
   
-  Standard_EXPORT     void Shape(const TopoDS_Shape& theShape) ;
+  Standard_EXPORT   void Shape (const TopoDS_Shape& theShape) ;
   
-  Standard_EXPORT     void Append(const Handle(TNaming_NamedShape)& arg) ;
+  Standard_EXPORT   void Append (const Handle(TNaming_NamedShape)& arg) ;
   
-  Standard_EXPORT     void StopNamedShape(const Handle(TNaming_NamedShape)& arg) ;
+  Standard_EXPORT   void StopNamedShape (const Handle(TNaming_NamedShape)& arg) ;
   
-  Standard_EXPORT     void Index(const Standard_Integer I) ;
+  Standard_EXPORT   void Index (const Standard_Integer I) ;
   
-  Standard_EXPORT     void ContextLabel(const TDF_Label& theLab) ;
+  Standard_EXPORT   void ContextLabel (const TDF_Label& theLab) ;
   
-  Standard_EXPORT     void Orientation(const TopAbs_Orientation theOrientation) ;
+  Standard_EXPORT   void Orientation (const TopAbs_Orientation theOrientation) ;
   
-  Standard_EXPORT     TNaming_NameType Type() const;
+  Standard_EXPORT   TNaming_NameType Type()  const;
   
-  Standard_EXPORT     TopAbs_ShapeEnum ShapeType() const;
+  Standard_EXPORT   TopAbs_ShapeEnum ShapeType()  const;
   
-  Standard_EXPORT     TopoDS_Shape Shape() const;
+  Standard_EXPORT   TopoDS_Shape Shape()  const;
   
-  Standard_EXPORT    const TNaming_ListOfNamedShape& Arguments() const;
+  Standard_EXPORT  const  TNaming_ListOfNamedShape& Arguments()  const;
   
-  Standard_EXPORT     Handle_TNaming_NamedShape StopNamedShape() const;
+  Standard_EXPORT   Handle(TNaming_NamedShape) StopNamedShape()  const;
   
-  Standard_EXPORT     Standard_Integer Index() const;
+  Standard_EXPORT   Standard_Integer Index()  const;
   
-  Standard_EXPORT    const TDF_Label& ContextLabel() const;
+  Standard_EXPORT  const  TDF_Label& ContextLabel()  const;
   
-       const TopAbs_Orientation Orientation() const;
+     const  TopAbs_Orientation Orientation()  const;
   
-  Standard_EXPORT     Standard_Boolean Solve(const TDF_Label& aLab,const TDF_LabelMap& Valid) const;
+  Standard_EXPORT   Standard_Boolean Solve (const TDF_Label& aLab, const TDF_LabelMap& Valid)  const;
   
-  Standard_EXPORT     void Paste(TNaming_Name& into,const Handle(TDF_RelocationTable)& RT) const;
-
+  Standard_EXPORT   void Paste (TNaming_Name& into, const Handle(TDF_RelocationTable)& RT)  const;
 
 
 
@@ -113,14 +87,14 @@ private:
 
 
 
-TNaming_NameType myType;
-TopAbs_ShapeEnum myShapeType;
-TNaming_ListOfNamedShape myArgs;
-Handle_TNaming_NamedShape myStop;
-Standard_Integer myIndex;
-TopoDS_Shape myShape;
-TDF_Label myContextLabel;
-TopAbs_Orientation myOrientation;
+  TNaming_NameType myType;
+  TopAbs_ShapeEnum myShapeType;
+  TNaming_ListOfNamedShape myArgs;
+  Handle(TNaming_NamedShape) myStop;
+  Standard_Integer myIndex;
+  TopoDS_Shape myShape;
+  TDF_Label myContextLabel;
+  TopAbs_Orientation myOrientation;
 
 
 };
@@ -130,7 +104,6 @@ TopAbs_Orientation myOrientation;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TNaming_Name_HeaderFile

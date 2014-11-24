@@ -5,16 +5,10 @@
 
 #include <Contap_SequenceNodeOfTheSequenceOfLine.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Contap_Line_HeaderFile
 #include <Contap_Line.hxx>
-#endif
-#ifndef _Contap_TheSequenceOfLine_HeaderFile
 #include <Contap_TheSequenceOfLine.hxx>
-#endif
 
  
 

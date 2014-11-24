@@ -5,15 +5,9 @@
 
 #include <PColgp_VArrayTNodeOfFieldOfHArray1OfVec.hxx>
 
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _PColgp_FieldOfHArray1OfVec_HeaderFile
 #include <PColgp_FieldOfHArray1OfVec.hxx>
-#endif
-#ifndef _PColgp_VArrayNodeOfFieldOfHArray1OfVec_HeaderFile
 #include <PColgp_VArrayNodeOfFieldOfHArray1OfVec.hxx>
-#endif
  
 
 #define Item gp_Vec

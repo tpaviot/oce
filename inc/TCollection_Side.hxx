@@ -6,14 +6,13 @@
 #ifndef _TCollection_Side_HeaderFile
 #define _TCollection_Side_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum TCollection_Side {
+
+enum TCollection_Side
+{
 TCollection_Left,
 TCollection_Right
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _TCollection_Side_HeaderFile

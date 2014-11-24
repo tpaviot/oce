@@ -5,24 +5,12 @@
 
 #include <MAT2d_DataMapOfIntegerPnt2d.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d_HeaderFile
 #include <MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d.hxx>
-#endif
-#ifndef _MAT2d_DataMapIteratorOfDataMapOfIntegerPnt2d_HeaderFile
 #include <MAT2d_DataMapIteratorOfDataMapOfIntegerPnt2d.hxx>
-#endif
  
 
 #define TheKey Standard_Integer

@@ -6,8 +6,11 @@
 #ifndef _Standard_KindOfType_HeaderFile
 #define _Standard_KindOfType_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Standard_KindOfType {
+
+enum Standard_KindOfType
+{
 Standard_IsUnKnown,
 Standard_IsClass,
 Standard_IsEnumeration,
@@ -16,8 +19,4 @@ Standard_IsImported,
 Standard_IsPackage
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Standard_KindOfType_HeaderFile

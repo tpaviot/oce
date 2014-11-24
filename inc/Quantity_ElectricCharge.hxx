@@ -6,13 +6,11 @@
 #ifndef _Quantity_ElectricCharge_HeaderFile
 #define _Quantity_ElectricCharge_HeaderFile
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 
 typedef Standard_Real Quantity_ElectricCharge;
 
 
 #define Quantity_ElectricCharge_Type_() Standard_Real_Type_()
 
-#endif
+#endif // _Quantity_ElectricCharge_HeaderFile

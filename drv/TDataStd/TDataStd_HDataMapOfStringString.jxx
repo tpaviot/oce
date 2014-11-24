@@ -1,6 +1,2 @@
-#ifndef _TDataStd_DataMapOfStringString_HeaderFile
 #include <TDataStd_DataMapOfStringString.hxx>
-#endif
-#ifndef _TDataStd_HDataMapOfStringString_HeaderFile
 #include <TDataStd_HDataMapOfStringString.hxx>
-#endif

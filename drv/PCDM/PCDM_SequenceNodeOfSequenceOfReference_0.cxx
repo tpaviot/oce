@@ -5,16 +5,10 @@
 
 #include <PCDM_SequenceNodeOfSequenceOfReference.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _PCDM_Reference_HeaderFile
 #include <PCDM_Reference.hxx>
-#endif
-#ifndef _PCDM_SequenceOfReference_HeaderFile
 #include <PCDM_SequenceOfReference.hxx>
-#endif
 
  
 

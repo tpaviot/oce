@@ -5,25 +5,13 @@
 
 #include <TopOpeBRepDS_DataMapNodeOfShapeSurface.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Geom_Surface_HeaderFile
 #include <Geom_Surface.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _TopOpeBRepDS_ShapeSurface_HeaderFile
 #include <TopOpeBRepDS_ShapeSurface.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapIteratorOfShapeSurface_HeaderFile
 #include <TopOpeBRepDS_DataMapIteratorOfShapeSurface.hxx>
-#endif
 
  
 
@@ -44,7 +32,7 @@ IMPLEMENT_STANDARD_RTTI(TopOpeBRepDS_DataMapNodeOfShapeSurface)
 
 #define TheKey TopoDS_Shape
 #define TheKey_hxx <TopoDS_Shape.hxx>
-#define TheItem Handle_Geom_Surface
+#define TheItem Handle(Geom_Surface)
 #define TheItem_hxx <Geom_Surface.hxx>
 #define Hasher TopTools_ShapeMapHasher
 #define Hasher_hxx <TopTools_ShapeMapHasher.hxx>

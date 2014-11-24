@@ -6,25 +6,13 @@
 #ifndef _HLRAlgo_Array1OfPISeg_HeaderFile
 #define _HLRAlgo_Array1OfPISeg_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -33,52 +21,52 @@ class HLRAlgo_PolyInternalSegment;
 
 
 
-class HLRAlgo_Array1OfPISeg  {
+class HLRAlgo_Array1OfPISeg 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      HLRAlgo_Array1OfPISeg(const Standard_Integer Low,const Standard_Integer Up);
+    HLRAlgo_Array1OfPISeg(const Standard_Integer Low, const Standard_Integer Up);
   
-      HLRAlgo_Array1OfPISeg(const HLRAlgo_PolyInternalSegment& Item,const Standard_Integer Low,const Standard_Integer Up);
+    HLRAlgo_Array1OfPISeg(const HLRAlgo_PolyInternalSegment& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const HLRAlgo_PolyInternalSegment& V) ;
+  Standard_EXPORT   void Init (const HLRAlgo_PolyInternalSegment& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~HLRAlgo_Array1OfPISeg()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const HLRAlgo_Array1OfPISeg& Assign(const HLRAlgo_Array1OfPISeg& Other) ;
-   const HLRAlgo_Array1OfPISeg& operator =(const HLRAlgo_Array1OfPISeg& Other) 
+  Standard_EXPORT  const  HLRAlgo_Array1OfPISeg& Assign (const HLRAlgo_Array1OfPISeg& Other) ;
+ const  HLRAlgo_Array1OfPISeg& operator = (const HLRAlgo_Array1OfPISeg& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const HLRAlgo_PolyInternalSegment& Value) ;
+      void SetValue (const Standard_Integer Index, const HLRAlgo_PolyInternalSegment& Value) ;
   
-       const HLRAlgo_PolyInternalSegment& Value(const Standard_Integer Index) const;
-     const HLRAlgo_PolyInternalSegment& operator ()(const Standard_Integer Index) const
+     const  HLRAlgo_PolyInternalSegment& Value (const Standard_Integer Index)  const;
+   const  HLRAlgo_PolyInternalSegment& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        HLRAlgo_PolyInternalSegment& ChangeValue(const Standard_Integer Index) ;
-      HLRAlgo_PolyInternalSegment& operator ()(const Standard_Integer Index) 
+      HLRAlgo_PolyInternalSegment& ChangeValue (const Standard_Integer Index) ;
+    HLRAlgo_PolyInternalSegment& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -92,13 +80,13 @@ protected:
 private:
 
   
-  Standard_EXPORT   HLRAlgo_Array1OfPISeg(const HLRAlgo_Array1OfPISeg& AnArray);
+  Standard_EXPORT HLRAlgo_Array1OfPISeg(const HLRAlgo_Array1OfPISeg& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
@@ -116,7 +104,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRAlgo_Array1OfPISeg_HeaderFile

@@ -6,38 +6,27 @@
 #ifndef _TDataStd_ListNodeOfListOfByte_HeaderFile
 #define _TDataStd_ListNodeOfListOfByte_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDataStd_ListNodeOfListOfByte_HeaderFile
 #include <Handle_TDataStd_ListNodeOfListOfByte.hxx>
-#endif
 
-#ifndef _Standard_Byte_HeaderFile
 #include <Standard_Byte.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TDataStd_ListOfByte;
 class TDataStd_ListIteratorOfListOfByte;
 
 
 
-class TDataStd_ListNodeOfListOfByte : public TCollection_MapNode {
+class TDataStd_ListNodeOfListOfByte : public TCollection_MapNode
+{
 
 public:
 
   
-      TDataStd_ListNodeOfListOfByte(const Standard_Byte& I,const TCollection_MapNodePtr& n);
+    TDataStd_ListNodeOfListOfByte(const Standard_Byte& I, const TCollection_MapNodePtr& n);
   
-        Standard_Byte& Value() const;
+      Standard_Byte& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-Standard_Byte myValue;
+  Standard_Byte myValue;
 
 
 };
@@ -82,7 +71,6 @@ Standard_Byte myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_ListNodeOfListOfByte_HeaderFile

@@ -1,21 +1,7 @@
-#ifndef _StepGeom_Vector_HeaderFile
 #include <StepGeom_Vector.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _gp_Vec2d_HeaderFile
 #include <gp_Vec2d.hxx>
-#endif
-#ifndef _Geom_Vector_HeaderFile
 #include <Geom_Vector.hxx>
-#endif
-#ifndef _Geom2d_Vector_HeaderFile
 #include <Geom2d_Vector.hxx>
-#endif
-#ifndef _GeomToStep_MakeVector_HeaderFile
 #include <GeomToStep_MakeVector.hxx>
-#endif

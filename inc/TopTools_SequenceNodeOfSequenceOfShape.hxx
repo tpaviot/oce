@@ -6,38 +6,27 @@
 #ifndef _TopTools_SequenceNodeOfSequenceOfShape_HeaderFile
 #define _TopTools_SequenceNodeOfSequenceOfShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopTools_SequenceNodeOfSequenceOfShape_HeaderFile
 #include <Handle_TopTools_SequenceNodeOfSequenceOfShape.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class TopoDS_Shape;
 class TopTools_SequenceOfShape;
 
 
 
-class TopTools_SequenceNodeOfSequenceOfShape : public TCollection_SeqNode {
+class TopTools_SequenceNodeOfSequenceOfShape : public TCollection_SeqNode
+{
 
 public:
 
   
-      TopTools_SequenceNodeOfSequenceOfShape(const TopoDS_Shape& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    TopTools_SequenceNodeOfSequenceOfShape(const TopoDS_Shape& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        TopoDS_Shape& Value() const;
+      TopoDS_Shape& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-TopoDS_Shape myValue;
+  TopoDS_Shape myValue;
 
 
 };
@@ -78,7 +67,6 @@ TopoDS_Shape myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopTools_SequenceNodeOfSequenceOfShape_HeaderFile

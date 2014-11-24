@@ -6,28 +6,14 @@
 #ifndef _HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData_HeaderFile
 #define _HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData_HeaderFile
 #include <Handle_HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _HLRTopoBRep_FaceData_HeaderFile
 #include <HLRTopoBRep_FaceData.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopoDS_Shape;
 class HLRTopoBRep_FaceData;
 class TopTools_ShapeMapHasher;
@@ -36,16 +22,17 @@ class HLRTopoBRep_DataMapIteratorOfDataMapOfShapeFaceData;
 
 
 
-class HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData : public TCollection_MapNode {
+class HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData : public TCollection_MapNode
+{
 
 public:
 
   
-      HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData(const TopoDS_Shape& K,const HLRTopoBRep_FaceData& I,const TCollection_MapNodePtr& n);
+    HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData(const TopoDS_Shape& K, const HLRTopoBRep_FaceData& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        HLRTopoBRep_FaceData& Value() const;
+      HLRTopoBRep_FaceData& Value()  const;
 
 
 
@@ -60,8 +47,8 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-HLRTopoBRep_FaceData myValue;
+  TopoDS_Shape myKey;
+  HLRTopoBRep_FaceData myValue;
 
 
 };
@@ -99,7 +86,6 @@ HLRTopoBRep_FaceData myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRTopoBRep_DataMapNodeOfDataMapOfShapeFaceData_HeaderFile

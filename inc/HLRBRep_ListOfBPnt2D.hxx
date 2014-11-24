@@ -6,28 +6,14 @@
 #ifndef _HLRBRep_ListOfBPnt2D_HeaderFile
 #define _HLRBRep_ListOfBPnt2D_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_HLRBRep_ListNodeOfListOfBPnt2D_HeaderFile
 #include <Handle_HLRBRep_ListNodeOfListOfBPnt2D.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class HLRBRep_ListIteratorOfListOfBPnt2D;
 class HLRBRep_BiPnt2D;
@@ -35,63 +21,63 @@ class HLRBRep_ListNodeOfListOfBPnt2D;
 
 
 
-class HLRBRep_ListOfBPnt2D  {
+class HLRBRep_ListOfBPnt2D 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   HLRBRep_ListOfBPnt2D();
+  Standard_EXPORT HLRBRep_ListOfBPnt2D();
   
-  Standard_EXPORT   HLRBRep_ListOfBPnt2D(const HLRBRep_ListOfBPnt2D& Other);
+  Standard_EXPORT HLRBRep_ListOfBPnt2D(const HLRBRep_ListOfBPnt2D& Other);
   
-  Standard_EXPORT     void Assign(const HLRBRep_ListOfBPnt2D& Other) ;
-    void operator=(const HLRBRep_ListOfBPnt2D& Other) 
+  Standard_EXPORT   void Assign (const HLRBRep_ListOfBPnt2D& Other) ;
+  void operator= (const HLRBRep_ListOfBPnt2D& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~HLRBRep_ListOfBPnt2D()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const HLRBRep_BiPnt2D& I) ;
+  Standard_EXPORT   void Prepend (const HLRBRep_BiPnt2D& I) ;
   
-  Standard_EXPORT     void Prepend(const HLRBRep_BiPnt2D& I,HLRBRep_ListIteratorOfListOfBPnt2D& theIt) ;
+  Standard_EXPORT   void Prepend (const HLRBRep_BiPnt2D& I, HLRBRep_ListIteratorOfListOfBPnt2D& theIt) ;
   
-  Standard_EXPORT     void Prepend(HLRBRep_ListOfBPnt2D& Other) ;
+  Standard_EXPORT   void Prepend (HLRBRep_ListOfBPnt2D& Other) ;
   
-  Standard_EXPORT     void Append(const HLRBRep_BiPnt2D& I) ;
+  Standard_EXPORT   void Append (const HLRBRep_BiPnt2D& I) ;
   
-  Standard_EXPORT     void Append(const HLRBRep_BiPnt2D& I,HLRBRep_ListIteratorOfListOfBPnt2D& theIt) ;
+  Standard_EXPORT   void Append (const HLRBRep_BiPnt2D& I, HLRBRep_ListIteratorOfListOfBPnt2D& theIt) ;
   
-  Standard_EXPORT     void Append(HLRBRep_ListOfBPnt2D& Other) ;
+  Standard_EXPORT   void Append (HLRBRep_ListOfBPnt2D& Other) ;
   
-  Standard_EXPORT     HLRBRep_BiPnt2D& First() const;
+  Standard_EXPORT   HLRBRep_BiPnt2D& First()  const;
   
-  Standard_EXPORT     HLRBRep_BiPnt2D& Last() const;
+  Standard_EXPORT   HLRBRep_BiPnt2D& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(HLRBRep_ListIteratorOfListOfBPnt2D& It) ;
+  Standard_EXPORT   void Remove (HLRBRep_ListIteratorOfListOfBPnt2D& It) ;
   
-  Standard_EXPORT     void InsertBefore(const HLRBRep_BiPnt2D& I,HLRBRep_ListIteratorOfListOfBPnt2D& It) ;
+  Standard_EXPORT   void InsertBefore (const HLRBRep_BiPnt2D& I, HLRBRep_ListIteratorOfListOfBPnt2D& It) ;
   
-  Standard_EXPORT     void InsertBefore(HLRBRep_ListOfBPnt2D& Other,HLRBRep_ListIteratorOfListOfBPnt2D& It) ;
+  Standard_EXPORT   void InsertBefore (HLRBRep_ListOfBPnt2D& Other, HLRBRep_ListIteratorOfListOfBPnt2D& It) ;
   
-  Standard_EXPORT     void InsertAfter(const HLRBRep_BiPnt2D& I,HLRBRep_ListIteratorOfListOfBPnt2D& It) ;
+  Standard_EXPORT   void InsertAfter (const HLRBRep_BiPnt2D& I, HLRBRep_ListIteratorOfListOfBPnt2D& It) ;
   
-  Standard_EXPORT     void InsertAfter(HLRBRep_ListOfBPnt2D& Other,HLRBRep_ListIteratorOfListOfBPnt2D& It) ;
+  Standard_EXPORT   void InsertAfter (HLRBRep_ListOfBPnt2D& Other, HLRBRep_ListIteratorOfListOfBPnt2D& It) ;
 
 
 friend class HLRBRep_ListIteratorOfListOfBPnt2D;
-
 
 
 protected:
@@ -104,8 +90,8 @@ private:
 
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
@@ -135,7 +121,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_ListOfBPnt2D_HeaderFile

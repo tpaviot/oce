@@ -6,28 +6,14 @@
 #ifndef _MAT2d_DataMapNodeOfDataMapOfIntegerBisec_HeaderFile
 #define _MAT2d_DataMapNodeOfDataMapOfIntegerBisec_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MAT2d_DataMapNodeOfDataMapOfIntegerBisec_HeaderFile
 #include <Handle_MAT2d_DataMapNodeOfDataMapOfIntegerBisec.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Bisector_Bisec_HeaderFile
 #include <Bisector_Bisec.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Bisector_Bisec;
 class TColStd_MapIntegerHasher;
 class MAT2d_DataMapOfIntegerBisec;
@@ -35,16 +21,17 @@ class MAT2d_DataMapIteratorOfDataMapOfIntegerBisec;
 
 
 
-class MAT2d_DataMapNodeOfDataMapOfIntegerBisec : public TCollection_MapNode {
+class MAT2d_DataMapNodeOfDataMapOfIntegerBisec : public TCollection_MapNode
+{
 
 public:
 
   
-      MAT2d_DataMapNodeOfDataMapOfIntegerBisec(const Standard_Integer& K,const Bisector_Bisec& I,const TCollection_MapNodePtr& n);
+    MAT2d_DataMapNodeOfDataMapOfIntegerBisec(const Standard_Integer& K, const Bisector_Bisec& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Key() const;
+      Standard_Integer& Key()  const;
   
-        Bisector_Bisec& Value() const;
+      Bisector_Bisec& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-Standard_Integer myKey;
-Bisector_Bisec myValue;
+  Standard_Integer myKey;
+  Bisector_Bisec myValue;
 
 
 };
@@ -98,7 +85,6 @@ Bisector_Bisec myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MAT2d_DataMapNodeOfDataMapOfIntegerBisec_HeaderFile

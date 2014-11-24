@@ -5,28 +5,14 @@
 
 #include <PTopoDS_HArray1OfShape1.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _PTopoDS_Shape1_HeaderFile
 #include <PTopoDS_Shape1.hxx>
-#endif
-#ifndef _PTopoDS_FieldOfHArray1OfShape1_HeaderFile
 #include <PTopoDS_FieldOfHArray1OfShape1.hxx>
-#endif
-#ifndef _PTopoDS_VArrayNodeOfFieldOfHArray1OfShape1_HeaderFile
 #include <PTopoDS_VArrayNodeOfFieldOfHArray1OfShape1.hxx>
-#endif
-#ifndef _PTopoDS_VArrayTNodeOfFieldOfHArray1OfShape1_HeaderFile
 #include <PTopoDS_VArrayTNodeOfFieldOfHArray1OfShape1.hxx>
-#endif
 
  
 

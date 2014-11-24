@@ -6,22 +6,15 @@
 #ifndef _Handle_StepVisual_BackgroundColour_HeaderFile
 #define _Handle_StepVisual_BackgroundColour_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepVisual_Colour_HeaderFile
 #include <Handle_StepVisual_Colour.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepVisual_Colour);
 class StepVisual_BackgroundColour;
 
-DEFINE_STANDARD_HANDLE(StepVisual_BackgroundColour,StepVisual_Colour)
+DEFINE_STANDARD_HANDLE(StepVisual_BackgroundColour, StepVisual_Colour)
 
-#endif
+#endif // _Handle_StepVisual_BackgroundColour_HeaderFile

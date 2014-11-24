@@ -6,39 +6,31 @@
 #ifndef _TopoDS_TWire_HeaderFile
 #define _TopoDS_TWire_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopoDS_TWire_HeaderFile
 #include <Handle_TopoDS_TWire.hxx>
-#endif
 
-#ifndef _TopoDS_TShape_HeaderFile
 #include <TopoDS_TShape.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _Handle_TopoDS_TShape_HeaderFile
 #include <Handle_TopoDS_TShape.hxx>
-#endif
 class TopoDS_TShape;
 
 
-//! A set of edges connected by their vertices. <br>
-class TopoDS_TWire : public TopoDS_TShape {
+//! A set of edges connected by their vertices.
+class TopoDS_TWire : public TopoDS_TShape
+{
 
 public:
 
-  //! Creates an empty TWire. <br>
-      TopoDS_TWire();
-  //! Returns WIRE. <br>
-  Standard_EXPORT     TopAbs_ShapeEnum ShapeType() const;
-  //! Returns an empty TWire. <br>
-  Standard_EXPORT     Handle_TopoDS_TShape EmptyCopy() const;
+  
+  //! Creates an empty TWire.
+    TopoDS_TWire();
+  
+  //! Returns WIRE.
+  Standard_EXPORT   TopAbs_ShapeEnum ShapeType()  const;
+  
+  //! Returns an empty TWire.
+  Standard_EXPORT   Handle(TopoDS_TShape) EmptyCopy()  const;
 
 
 
@@ -62,7 +54,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopoDS_TWire_HeaderFile

@@ -6,28 +6,14 @@
 #ifndef _ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg_HeaderFile
 #define _ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg_HeaderFile
 #include <Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Message_ListOfMsg_HeaderFile
 #include <Message_ListOfMsg.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopoDS_Shape;
 class Message_ListOfMsg;
 class TopTools_ShapeMapHasher;
@@ -36,16 +22,17 @@ class ShapeExtend_DataMapIteratorOfDataMapOfShapeListOfMsg;
 
 
 
-class ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg : public TCollection_MapNode {
+class ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg : public TCollection_MapNode
+{
 
 public:
 
   
-      ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg(const TopoDS_Shape& K,const Message_ListOfMsg& I,const TCollection_MapNodePtr& n);
+    ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg(const TopoDS_Shape& K, const Message_ListOfMsg& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        Message_ListOfMsg& Value() const;
+      Message_ListOfMsg& Value()  const;
 
 
 
@@ -60,8 +47,8 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-Message_ListOfMsg myValue;
+  TopoDS_Shape myKey;
+  Message_ListOfMsg myValue;
 
 
 };
@@ -99,7 +86,6 @@ Message_ListOfMsg myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg_HeaderFile

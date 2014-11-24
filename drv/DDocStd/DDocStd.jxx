@@ -1,18 +1,6 @@
-#ifndef _TDocStd_Application_HeaderFile
 #include <TDocStd_Application.hxx>
-#endif
-#ifndef _TDocStd_Document_HeaderFile
 #include <TDocStd_Document.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _DDocStd_HeaderFile
 #include <DDocStd.hxx>
-#endif

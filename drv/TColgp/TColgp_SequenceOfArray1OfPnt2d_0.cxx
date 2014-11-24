@@ -5,21 +5,13 @@
 
 #include <TColgp_SequenceOfArray1OfPnt2d.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TColgp_HArray1OfPnt2d_HeaderFile
 #include <TColgp_HArray1OfPnt2d.hxx>
-#endif
-#ifndef _TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d_HeaderFile
 #include <TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>
-#endif
  
 
-#define SeqItem Handle_TColgp_HArray1OfPnt2d
+#define SeqItem Handle(TColgp_HArray1OfPnt2d)
 #define SeqItem_hxx <TColgp_HArray1OfPnt2d.hxx>
 #define TCollection_SequenceNode TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d
 #define TCollection_SequenceNode_hxx <TColgp_SequenceNodeOfSequenceOfArray1OfPnt2d.hxx>

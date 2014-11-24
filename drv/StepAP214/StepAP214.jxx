@@ -1,6 +1,2 @@
-#ifndef _StepAP214_Protocol_HeaderFile
 #include <StepAP214_Protocol.hxx>
-#endif
-#ifndef _StepAP214_HeaderFile
 #include <StepAP214.hxx>
-#endif

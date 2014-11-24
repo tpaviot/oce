@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKIGES"
-	ProjectGUID="{FF7C9544-13A2-0BFA-11C7-6DB5649FEBBE}"
+	ProjectGUID="{5C08AE53-076A-0052-0668-7A1419BD9F19}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -248,7 +248,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\IGESData;..\..\..\src\IGESData;..\..\..\drv\IGESFile;..\..\..\src\IGESFile;..\..\..\drv\IGESBasic;..\..\..\src\IGESBasic;..\..\..\drv\IGESGraph;..\..\..\src\IGESGraph;..\..\..\drv\IGESGeom;..\..\..\src\IGESGeom;..\..\..\drv\IGESDimen;..\..\..\src\IGESDimen;..\..\..\drv\IGESDraw;..\..\..\src\IGESDraw;..\..\..\drv\IGESSolid;..\..\..\src\IGESSolid;..\..\..\drv\IGESDefs;..\..\..\src\IGESDefs;..\..\..\drv\IGESAppli;..\..\..\src\IGESAppli;..\..\..\drv\IGESConvGeom;..\..\..\src\IGESConvGeom;..\..\..\drv\IGESSelect;..\..\..\src\IGESSelect;..\..\..\drv\IGESToBRep;..\..\..\src\IGESToBRep;..\..\..\drv\GeomToIGES;..\..\..\src\GeomToIGES;..\..\..\drv\Geom2dToIGES;..\..\..\src\Geom2dToIGES;..\..\..\drv\BRepToIGES;..\..\..\src\BRepToIGES;..\..\..\drv\BRepToIGESBRep;..\..\..\src\BRepToIGESBRep;..\..\..\drv\IGESControl;..\..\..\src\IGESControl;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__IGESData_DLL;__IGESFile_DLL;__IGESBasic_DLL;__IGESGraph_DLL;__IGESGeom_DLL;__IGESDimen_DLL;__IGESDraw_DLL;__IGESSolid_DLL;__IGESDefs_DLL;__IGESAppli_DLL;__IGESConvGeom_DLL;__IGESSelect_DLL;__IGESToBRep_DLL;__GeomToIGES_DLL;__Geom2dToIGES_DLL;__BRepToIGES_DLL;__BRepToIGESBRep_DLL;__IGESControl_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__IGESData_DLL;__IGESFile_DLL;__IGESBasic_DLL;__IGESGraph_DLL;__IGESGeom_DLL;__IGESDimen_DLL;__IGESDraw_DLL;__IGESSolid_DLL;__IGESDefs_DLL;__IGESAppli_DLL;__IGESConvGeom_DLL;__IGESSelect_DLL;__IGESToBRep_DLL;__GeomToIGES_DLL;__Geom2dToIGES_DLL;__BRepToIGES_DLL;__BRepToIGESBRep_DLL;__IGESControl_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__IGESData_DLL;__IGESFile_DLL;__IGESBasic_DLL;__IGESGraph_DLL;__IGESGeom_DLL;__IGESDimen_DLL;__IGESDraw_DLL;__IGESSolid_DLL;__IGESDefs_DLL;__IGESAppli_DLL;__IGESConvGeom_DLL;__IGESSelect_DLL;__IGESToBRep_DLL;__GeomToIGES_DLL;__Geom2dToIGES_DLL;__BRepToIGES_DLL;__BRepToIGESBRep_DLL;__IGESControl_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__IGESData_DLL;__IGESFile_DLL;__IGESBasic_DLL;__IGESGraph_DLL;__IGESGeom_DLL;__IGESDimen_DLL;__IGESDraw_DLL;__IGESSolid_DLL;__IGESDefs_DLL;__IGESAppli_DLL;__IGESConvGeom_DLL;__IGESSelect_DLL;__IGESToBRep_DLL;__GeomToIGES_DLL;__Geom2dToIGES_DLL;__BRepToIGES_DLL;__BRepToIGESBRep_DLL;__IGESControl_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -343,7 +343,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\IGESData;..\..\..\src\IGESData;..\..\..\drv\IGESFile;..\..\..\src\IGESFile;..\..\..\drv\IGESBasic;..\..\..\src\IGESBasic;..\..\..\drv\IGESGraph;..\..\..\src\IGESGraph;..\..\..\drv\IGESGeom;..\..\..\src\IGESGeom;..\..\..\drv\IGESDimen;..\..\..\src\IGESDimen;..\..\..\drv\IGESDraw;..\..\..\src\IGESDraw;..\..\..\drv\IGESSolid;..\..\..\src\IGESSolid;..\..\..\drv\IGESDefs;..\..\..\src\IGESDefs;..\..\..\drv\IGESAppli;..\..\..\src\IGESAppli;..\..\..\drv\IGESConvGeom;..\..\..\src\IGESConvGeom;..\..\..\drv\IGESSelect;..\..\..\src\IGESSelect;..\..\..\drv\IGESToBRep;..\..\..\src\IGESToBRep;..\..\..\drv\GeomToIGES;..\..\..\src\GeomToIGES;..\..\..\drv\Geom2dToIGES;..\..\..\src\Geom2dToIGES;..\..\..\drv\BRepToIGES;..\..\..\src\BRepToIGES;..\..\..\drv\BRepToIGESBRep;..\..\..\src\BRepToIGESBRep;..\..\..\drv\IGESControl;..\..\..\src\IGESControl;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__IGESData_DLL;__IGESFile_DLL;__IGESBasic_DLL;__IGESGraph_DLL;__IGESGeom_DLL;__IGESDimen_DLL;__IGESDraw_DLL;__IGESSolid_DLL;__IGESDefs_DLL;__IGESAppli_DLL;__IGESConvGeom_DLL;__IGESSelect_DLL;__IGESToBRep_DLL;__GeomToIGES_DLL;__Geom2dToIGES_DLL;__BRepToIGES_DLL;__BRepToIGESBRep_DLL;__IGESControl_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__IGESData_DLL;__IGESFile_DLL;__IGESBasic_DLL;__IGESGraph_DLL;__IGESGeom_DLL;__IGESDimen_DLL;__IGESDraw_DLL;__IGESSolid_DLL;__IGESDefs_DLL;__IGESAppli_DLL;__IGESConvGeom_DLL;__IGESSelect_DLL;__IGESToBRep_DLL;__GeomToIGES_DLL;__Geom2dToIGES_DLL;__BRepToIGES_DLL;__BRepToIGESBRep_DLL;__IGESControl_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -365,7 +365,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__IGESData_DLL;__IGESFile_DLL;__IGESBasic_DLL;__IGESGraph_DLL;__IGESGeom_DLL;__IGESDimen_DLL;__IGESDraw_DLL;__IGESSolid_DLL;__IGESDefs_DLL;__IGESAppli_DLL;__IGESConvGeom_DLL;__IGESSelect_DLL;__IGESToBRep_DLL;__GeomToIGES_DLL;__Geom2dToIGES_DLL;__BRepToIGES_DLL;__BRepToIGESBRep_DLL;__IGESControl_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__IGESData_DLL;__IGESFile_DLL;__IGESBasic_DLL;__IGESGraph_DLL;__IGESGeom_DLL;__IGESDimen_DLL;__IGESDraw_DLL;__IGESSolid_DLL;__IGESDefs_DLL;__IGESAppli_DLL;__IGESConvGeom_DLL;__IGESSelect_DLL;__IGESToBRep_DLL;__GeomToIGES_DLL;__Geom2dToIGES_DLL;__BRepToIGES_DLL;__BRepToIGESBRep_DLL;__IGESControl_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"

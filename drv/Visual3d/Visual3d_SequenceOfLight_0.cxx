@@ -5,21 +5,13 @@
 
 #include <Visual3d_SequenceOfLight.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Visual3d_Light_HeaderFile
 #include <Visual3d_Light.hxx>
-#endif
-#ifndef _Visual3d_SequenceNodeOfSequenceOfLight_HeaderFile
 #include <Visual3d_SequenceNodeOfSequenceOfLight.hxx>
-#endif
  
 
-#define SeqItem Handle_Visual3d_Light
+#define SeqItem Handle(Visual3d_Light)
 #define SeqItem_hxx <Visual3d_Light.hxx>
 #define TCollection_SequenceNode Visual3d_SequenceNodeOfSequenceOfLight
 #define TCollection_SequenceNode_hxx <Visual3d_SequenceNodeOfSequenceOfLight.hxx>

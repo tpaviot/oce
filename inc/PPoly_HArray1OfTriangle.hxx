@@ -6,37 +6,17 @@
 #ifndef _PPoly_HArray1OfTriangle_HeaderFile
 #define _PPoly_HArray1OfTriangle_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PPoly_HArray1OfTriangle_HeaderFile
 #include <Handle_PPoly_HArray1OfTriangle.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _PPoly_Triangle_HeaderFile
 #include <PPoly_Triangle.hxx>
-#endif
-#ifndef _PPoly_FieldOfHArray1OfTriangle_HeaderFile
 #include <PPoly_FieldOfHArray1OfTriangle.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _Handle_PPoly_VArrayNodeOfFieldOfHArray1OfTriangle_HeaderFile
 #include <Handle_PPoly_VArrayNodeOfFieldOfHArray1OfTriangle.hxx>
-#endif
 class Standard_OutOfRange;
 class Standard_RangeError;
 class PPoly_Triangle;
@@ -45,26 +25,27 @@ class PPoly_VArrayNodeOfFieldOfHArray1OfTriangle;
 class PPoly_VArrayTNodeOfFieldOfHArray1OfTriangle;
 
 
-class PPoly_HArray1OfTriangle : public Standard_Persistent {
+class PPoly_HArray1OfTriangle : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PPoly_HArray1OfTriangle(const Standard_Integer Low,const Standard_Integer Up);
+  Standard_EXPORT PPoly_HArray1OfTriangle(const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT   PPoly_HArray1OfTriangle(const Standard_Integer Low,const Standard_Integer Up,const PPoly_Triangle& V);
+  Standard_EXPORT PPoly_HArray1OfTriangle(const Standard_Integer Low, const Standard_Integer Up, const PPoly_Triangle& V);
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const PPoly_Triangle& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const PPoly_Triangle& Value) ;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-  Standard_EXPORT     PPoly_Triangle Value(const Standard_Integer Index) const;
+  Standard_EXPORT   PPoly_Triangle Value (const Standard_Integer Index)  const;
 
-  PPoly_HArray1OfTriangle( )
+PPoly_HArray1OfTriangle( )
 {
   
 }
@@ -90,13 +71,13 @@ protected:
 private: 
 
   
-  Standard_EXPORT     PPoly_FieldOfHArray1OfTriangle Field() const;
+  Standard_EXPORT   PPoly_FieldOfHArray1OfTriangle Field()  const;
   
-  Standard_EXPORT     Standard_Address Datas() const;
+  Standard_EXPORT   Standard_Address Datas()  const;
 
-Standard_Integer LowerBound;
-Standard_Integer UpperBound;
-PPoly_FieldOfHArray1OfTriangle Data;
+  Standard_Integer LowerBound;
+  Standard_Integer UpperBound;
+  PPoly_FieldOfHArray1OfTriangle Data;
 
 
 };
@@ -146,7 +127,6 @@ PPoly_FieldOfHArray1OfTriangle Data;
 #undef PCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PPoly_HArray1OfTriangle_HeaderFile

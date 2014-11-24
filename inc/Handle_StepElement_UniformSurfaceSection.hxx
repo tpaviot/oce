@@ -6,22 +6,15 @@
 #ifndef _Handle_StepElement_UniformSurfaceSection_HeaderFile
 #define _Handle_StepElement_UniformSurfaceSection_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepElement_SurfaceSection_HeaderFile
 #include <Handle_StepElement_SurfaceSection.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepElement_SurfaceSection);
 class StepElement_UniformSurfaceSection;
 
-DEFINE_STANDARD_HANDLE(StepElement_UniformSurfaceSection,StepElement_SurfaceSection)
+DEFINE_STANDARD_HANDLE(StepElement_UniformSurfaceSection, StepElement_SurfaceSection)
 
-#endif
+#endif // _Handle_StepElement_UniformSurfaceSection_HeaderFile

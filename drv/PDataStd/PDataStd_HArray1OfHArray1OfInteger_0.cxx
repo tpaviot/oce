@@ -5,28 +5,14 @@
 
 #include <PDataStd_HArray1OfHArray1OfInteger.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _PColStd_HArray1OfInteger_HeaderFile
 #include <PColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _PDataStd_FieldOfHArray1OfHArray1OfInteger_HeaderFile
 #include <PDataStd_FieldOfHArray1OfHArray1OfInteger.hxx>
-#endif
-#ifndef _PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger_HeaderFile
 #include <PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfInteger.hxx>
-#endif
-#ifndef _PDataStd_VArrayTNodeOfFieldOfHArray1OfHArray1OfInteger_HeaderFile
 #include <PDataStd_VArrayTNodeOfFieldOfHArray1OfHArray1OfInteger.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(PDataStd_HArray1OfHArray1OfInteger,Standard_Persistent)
 IMPLEMENT_STANDARD_RTTI(PDataStd_HArray1OfHArray1OfInteger)
 
 
-#define Item Handle_PColStd_HArray1OfInteger
+#define Item Handle(PColStd_HArray1OfInteger)
 #define Item_hxx <PColStd_HArray1OfInteger.hxx>
 #define PCollection_FieldOfHArray1 PDataStd_FieldOfHArray1OfHArray1OfInteger
 #define PCollection_FieldOfHArray1_hxx <PDataStd_FieldOfHArray1OfHArray1OfInteger.hxx>

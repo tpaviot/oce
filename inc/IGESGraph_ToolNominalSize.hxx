@@ -6,34 +6,16 @@
 #ifndef _IGESGraph_ToolNominalSize_HeaderFile
 #define _IGESGraph_ToolNominalSize_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_IGESGraph_NominalSize_HeaderFile
 #include <Handle_IGESGraph_NominalSize.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESReaderData_HeaderFile
 #include <Handle_IGESData_IGESReaderData.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
-#ifndef _Handle_Message_Messenger_HeaderFile
 #include <Handle_Message_Messenger.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_DomainError;
 class IGESGraph_NominalSize;
 class IGESData_IGESReaderData;
@@ -48,35 +30,44 @@ class IGESData_IGESDumper;
 class Message_Messenger;
 
 
-//! Tool to work on a NominalSize. Called by various Modules <br>
-//!           (ReadWriteModule, GeneralModule, SpecificModule) <br>
-class IGESGraph_ToolNominalSize  {
+//! Tool to work on a NominalSize. Called by various Modules
+//! (ReadWriteModule, GeneralModule, SpecificModule)
+class IGESGraph_ToolNominalSize 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a ToolNominalSize, ready to work <br>
-  Standard_EXPORT   IGESGraph_ToolNominalSize();
-  //! Reads own parameters from file. <PR> gives access to them, <br>
-//!           <IR> detains parameter types and values <br>
-  Standard_EXPORT     void ReadOwnParams(const Handle(IGESGraph_NominalSize)& ent,const Handle(IGESData_IGESReaderData)& IR,IGESData_ParamReader& PR) const;
-  //! Writes own parameters to IGESWriter <br>
-  Standard_EXPORT     void WriteOwnParams(const Handle(IGESGraph_NominalSize)& ent,IGESData_IGESWriter& IW) const;
-  //! Lists the Entities shared by a NominalSize <ent>, from <br>
-//!           its specific (own) parameters <br>
-  Standard_EXPORT     void OwnShared(const Handle(IGESGraph_NominalSize)& ent,Interface_EntityIterator& iter) const;
-  //! Sets automatic unambiguous Correction on a NominalSize <br>
-//!           (NbPropertyValues forced to 2 or 3 according HasStandardName) <br>
-  Standard_EXPORT     Standard_Boolean OwnCorrect(const Handle(IGESGraph_NominalSize)& ent) const;
-  //! Returns specific DirChecker <br>
-  Standard_EXPORT     IGESData_DirChecker DirChecker(const Handle(IGESGraph_NominalSize)& ent) const;
-  //! Performs Specific Semantic Check <br>
-  Standard_EXPORT     void OwnCheck(const Handle(IGESGraph_NominalSize)& ent,const Interface_ShareTool& shares,Handle(Interface_Check)& ach) const;
-  //! Copies Specific Parameters <br>
-  Standard_EXPORT     void OwnCopy(const Handle(IGESGraph_NominalSize)& entfrom,const Handle(IGESGraph_NominalSize)& entto,Interface_CopyTool& TC) const;
-  //! Dump of Specific Parameters <br>
-  Standard_EXPORT     void OwnDump(const Handle(IGESGraph_NominalSize)& ent,const IGESData_IGESDumper& dumper,const Handle(Message_Messenger)& S,const Standard_Integer own) const;
-
+  
+  //! Returns a ToolNominalSize, ready to work
+  Standard_EXPORT IGESGraph_ToolNominalSize();
+  
+  //! Reads own parameters from file. <PR> gives access to them,
+  //! <IR> detains parameter types and values
+  Standard_EXPORT   void ReadOwnParams (const Handle(IGESGraph_NominalSize)& ent, const Handle(IGESData_IGESReaderData)& IR, IGESData_ParamReader& PR)  const;
+  
+  //! Writes own parameters to IGESWriter
+  Standard_EXPORT   void WriteOwnParams (const Handle(IGESGraph_NominalSize)& ent, IGESData_IGESWriter& IW)  const;
+  
+  //! Lists the Entities shared by a NominalSize <ent>, from
+  //! its specific (own) parameters
+  Standard_EXPORT   void OwnShared (const Handle(IGESGraph_NominalSize)& ent, Interface_EntityIterator& iter)  const;
+  
+  //! Sets automatic unambiguous Correction on a NominalSize
+  //! (NbPropertyValues forced to 2 or 3 according HasStandardName)
+  Standard_EXPORT   Standard_Boolean OwnCorrect (const Handle(IGESGraph_NominalSize)& ent)  const;
+  
+  //! Returns specific DirChecker
+  Standard_EXPORT   IGESData_DirChecker DirChecker (const Handle(IGESGraph_NominalSize)& ent)  const;
+  
+  //! Performs Specific Semantic Check
+  Standard_EXPORT   void OwnCheck (const Handle(IGESGraph_NominalSize)& ent, const Interface_ShareTool& shares, Handle(Interface_Check)& ach)  const;
+  
+  //! Copies Specific Parameters
+  Standard_EXPORT   void OwnCopy (const Handle(IGESGraph_NominalSize)& entfrom, const Handle(IGESGraph_NominalSize)& entto, Interface_CopyTool& TC)  const;
+  
+  //! Dump of Specific Parameters
+  Standard_EXPORT   void OwnDump (const Handle(IGESGraph_NominalSize)& ent, const IGESData_IGESDumper& dumper, const Handle(Message_Messenger)& S, const Standard_Integer own)  const;
 
 
 
@@ -99,7 +90,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGraph_ToolNominalSize_HeaderFile

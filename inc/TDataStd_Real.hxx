@@ -6,80 +6,68 @@
 #ifndef _TDataStd_Real_HeaderFile
 #define _TDataStd_Real_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDataStd_Real_HeaderFile
 #include <Handle_TDataStd_Real.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TDataStd_RealEnum_HeaderFile
 #include <TDataStd_RealEnum.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class Standard_GUID;
 class TDF_Label;
 class TDF_Attribute;
 class TDF_RelocationTable;
 
 
-//! The basis to define a real number attribute. <br>
-class TDataStd_Real : public TDF_Attribute {
+//! The basis to define a real number attribute.
+class TDataStd_Real : public TDF_Attribute
+{
 
 public:
 
-  //! class methods <br>
-//!          ============= <br>//!  Returns the GUID for real numbers. <br>
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
-  //! Finds, or creates, an Real attribute and sets <value> the <br>
-//!          Real attribute  is  returned. the  Real  dimension is <br>
-//!          Scalar by default. use SetDimension to overwrite. <br>//! Real methods <br>
-//!          ============ <br>
-  Standard_EXPORT   static  Handle_TDataStd_Real Set(const TDF_Label& label,const Standard_Real value) ;
   
-  Standard_EXPORT   TDataStd_Real();
+  //! class methods
+  //! =============
+  //! Returns the GUID for real numbers.
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-  Standard_EXPORT     void SetDimension(const TDataStd_RealEnum DIM) ;
+  //! Finds, or creates, an Real attribute and sets <value> the
+  //! Real attribute  is  returned. the  Real  dimension is
+  //! Scalar by default. use SetDimension to overwrite.
+  //! Real methods
+  //! ============
+  Standard_EXPORT static   Handle(TDataStd_Real) Set (const TDF_Label& label, const Standard_Real value) ;
   
-  Standard_EXPORT     TDataStd_RealEnum GetDimension() const;
+  Standard_EXPORT TDataStd_Real();
   
-//! Finds or creates the real number V. <br>
-  Standard_EXPORT     void Set(const Standard_Real V) ;
+  Standard_EXPORT   void SetDimension (const TDataStd_RealEnum DIM) ;
   
-//! Returns the real number value contained in the attribute. <br>
-  Standard_EXPORT     Standard_Real Get() const;
-  //! Returns True if there is a reference on the same label <br>
-  Standard_EXPORT     Standard_Boolean IsCaptured() const;
+  Standard_EXPORT   TDataStd_RealEnum GetDimension()  const;
   
-  Standard_EXPORT    const Standard_GUID& ID() const;
+
+  //! Finds or creates the real number V.
+  Standard_EXPORT   void Set (const Standard_Real V) ;
   
-  Standard_EXPORT     void Restore(const Handle(TDF_Attribute)& With) ;
+
+  //! Returns the real number value contained in the attribute.
+  Standard_EXPORT   Standard_Real Get()  const;
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  //! Returns True if there is a reference on the same label
+  Standard_EXPORT   Standard_Boolean IsCaptured()  const;
   
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& Into,const Handle(TDF_RelocationTable)& RT) const;
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
   
-  Standard_EXPORT   virtual  Standard_OStream& Dump(Standard_OStream& anOS) const;
+  Standard_EXPORT   void Restore (const Handle(TDF_Attribute)& With) ;
+  
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
+  
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& Into, const Handle(TDF_RelocationTable)& RT)  const;
+  
+  Standard_EXPORT virtual   Standard_OStream& Dump (Standard_OStream& anOS)  const;
 
 
 
@@ -94,8 +82,8 @@ protected:
 private: 
 
 
-Standard_Real myValue;
-TDataStd_RealEnum myDimension;
+  Standard_Real myValue;
+  TDataStd_RealEnum myDimension;
 
 
 };
@@ -104,7 +92,6 @@ TDataStd_RealEnum myDimension;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_Real_HeaderFile

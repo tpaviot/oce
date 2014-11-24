@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{78513C61-0BEC-0F24-02FF-8AAA0AA1948C}</ProjectGuid>
+    <ProjectGuid>{7D05134D-035D-06DE-0DD6-979536C5490D}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -173,7 +173,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ProjLib_DLL;__GeomProjLib_DLL;__GCPnts_DLL;__CPnts_DLL;__Approx_DLL;__AppParCurves_DLL;__FEmTool_DLL;__AppCont_DLL;__Extrema_DLL;__IntAna_DLL;__IntAna2d_DLL;__GeomConvert_DLL;__AdvApp2Var_DLL;__GeomLib_DLL;__Geom2dConvert_DLL;__Hermit_DLL;__BndLib_DLL;__AppDef_DLL;__GeomTools_DLL;__GC_DLL;__GCE2d_DLL;__gce_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ProjLib_DLL;__GeomProjLib_DLL;__GCPnts_DLL;__CPnts_DLL;__Approx_DLL;__AppParCurves_DLL;__FEmTool_DLL;__AppCont_DLL;__Extrema_DLL;__IntAna_DLL;__IntAna2d_DLL;__GeomConvert_DLL;__AdvApp2Var_DLL;__GeomLib_DLL;__Geom2dConvert_DLL;__Hermit_DLL;__BndLib_DLL;__AppDef_DLL;__GeomTools_DLL;__GC_DLL;__GCE2d_DLL;__gce_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -188,7 +188,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ProjLib_DLL;__GeomProjLib_DLL;__GCPnts_DLL;__CPnts_DLL;__Approx_DLL;__AppParCurves_DLL;__FEmTool_DLL;__AppCont_DLL;__Extrema_DLL;__IntAna_DLL;__IntAna2d_DLL;__GeomConvert_DLL;__AdvApp2Var_DLL;__GeomLib_DLL;__Geom2dConvert_DLL;__Hermit_DLL;__BndLib_DLL;__AppDef_DLL;__GeomTools_DLL;__GC_DLL;__GCE2d_DLL;__gce_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__ProjLib_DLL;__GeomProjLib_DLL;__GCPnts_DLL;__CPnts_DLL;__Approx_DLL;__AppParCurves_DLL;__FEmTool_DLL;__AppCont_DLL;__Extrema_DLL;__IntAna_DLL;__IntAna2d_DLL;__GeomConvert_DLL;__AdvApp2Var_DLL;__GeomLib_DLL;__Geom2dConvert_DLL;__Hermit_DLL;__BndLib_DLL;__AppDef_DLL;__GeomTools_DLL;__GC_DLL;__GCE2d_DLL;__gce_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKernel.lib;TKMath.lib;TKG2d.lib;TKG3d.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -216,7 +216,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ProjLib_DLL;__GeomProjLib_DLL;__GCPnts_DLL;__CPnts_DLL;__Approx_DLL;__AppParCurves_DLL;__FEmTool_DLL;__AppCont_DLL;__Extrema_DLL;__IntAna_DLL;__IntAna2d_DLL;__GeomConvert_DLL;__AdvApp2Var_DLL;__GeomLib_DLL;__Geom2dConvert_DLL;__Hermit_DLL;__BndLib_DLL;__AppDef_DLL;__GeomTools_DLL;__GC_DLL;__GCE2d_DLL;__gce_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ProjLib_DLL;__GeomProjLib_DLL;__GCPnts_DLL;__CPnts_DLL;__Approx_DLL;__AppParCurves_DLL;__FEmTool_DLL;__AppCont_DLL;__Extrema_DLL;__IntAna_DLL;__IntAna2d_DLL;__GeomConvert_DLL;__AdvApp2Var_DLL;__GeomLib_DLL;__Geom2dConvert_DLL;__Hermit_DLL;__BndLib_DLL;__AppDef_DLL;__GeomTools_DLL;__GC_DLL;__GCE2d_DLL;__gce_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win64\vc12\objd\TKGeomBase/</AssemblerListingLocation>
@@ -232,7 +232,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ProjLib_DLL;__GeomProjLib_DLL;__GCPnts_DLL;__CPnts_DLL;__Approx_DLL;__AppParCurves_DLL;__FEmTool_DLL;__AppCont_DLL;__Extrema_DLL;__IntAna_DLL;__IntAna2d_DLL;__GeomConvert_DLL;__AdvApp2Var_DLL;__GeomLib_DLL;__Geom2dConvert_DLL;__Hermit_DLL;__BndLib_DLL;__AppDef_DLL;__GeomTools_DLL;__GC_DLL;__GCE2d_DLL;__gce_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__ProjLib_DLL;__GeomProjLib_DLL;__GCPnts_DLL;__CPnts_DLL;__Approx_DLL;__AppParCurves_DLL;__FEmTool_DLL;__AppCont_DLL;__Extrema_DLL;__IntAna_DLL;__IntAna2d_DLL;__GeomConvert_DLL;__AdvApp2Var_DLL;__GeomLib_DLL;__Geom2dConvert_DLL;__Hermit_DLL;__BndLib_DLL;__AppDef_DLL;__GeomTools_DLL;__GC_DLL;__GCE2d_DLL;__gce_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKernel.lib;TKMath.lib;TKG2d.lib;TKG3d.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>

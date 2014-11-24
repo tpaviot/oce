@@ -6,15 +6,14 @@
 #ifndef _Transfer_StatusResult_HeaderFile
 #define _Transfer_StatusResult_HeaderFile
 
-//! result status of transferring an entity (see Transcriptor) <br>
-enum Transfer_StatusResult {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! result status of transferring an entity (see Transcriptor)
+enum Transfer_StatusResult
+{
 Transfer_StatusVoid,
 Transfer_StatusDefined,
 Transfer_StatusUsed
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Transfer_StatusResult_HeaderFile

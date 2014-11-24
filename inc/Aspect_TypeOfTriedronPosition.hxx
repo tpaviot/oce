@@ -6,15 +6,18 @@
 #ifndef _Aspect_TypeOfTriedronPosition_HeaderFile
 #define _Aspect_TypeOfTriedronPosition_HeaderFile
 
-//! Definition of the Triedron position in the views <br>
-//! <br>
-//!          TOTP_CENTER         at the center of the view <br>
-//!          TOTP_LEFT_LOWER     at the left lower corner <br>
-//!          TOTP_LEFT_UPPER     at the left upper corner <br>
-//!          TOTP_RIGHT_LOWER    at the right lower corner <br>
-//!          TOTP_RIGHT_UPPER    at the right upper corner <br>
-//!          TOTP_01 to TOTP_10  not yet implemented. <br>
-enum Aspect_TypeOfTriedronPosition {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Definition of the Triedron position in the views
+//!
+//! TOTP_CENTER         at the center of the view
+//! TOTP_LEFT_LOWER     at the left lower corner
+//! TOTP_LEFT_UPPER     at the left upper corner
+//! TOTP_RIGHT_LOWER    at the right lower corner
+//! TOTP_RIGHT_UPPER    at the right upper corner
+//! TOTP_01 to TOTP_10  not yet implemented.
+enum Aspect_TypeOfTriedronPosition
+{
 Aspect_TOTP_CENTER,
 Aspect_TOTP_LEFT_LOWER,
 Aspect_TOTP_LEFT_UPPER,
@@ -32,8 +35,4 @@ Aspect_TOTP_09,
 Aspect_TOTP_10
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_TypeOfTriedronPosition_HeaderFile

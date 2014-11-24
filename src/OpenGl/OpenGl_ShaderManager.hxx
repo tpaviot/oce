@@ -22,7 +22,7 @@
 #include <NCollection_Sequence.hxx>
 
 #include <Handle_OpenGl_ShaderManager.hxx>
-#include <OpenGl_ShaderProgram.hxx>
+#include <OpenGl_SetOfShaderPrograms.hxx>
 #include <OpenGl_ShaderStates.hxx>
 #include <OpenGl_AspectFace.hxx>
 #include <OpenGl_AspectLine.hxx>
@@ -39,17 +39,6 @@ typedef NCollection_Sequence<Handle(OpenGl_ShaderProgram)> OpenGl_ShaderProgramL
 //! Map to declare per-program states of OCCT materials.
 typedef NCollection_DataMap<Handle(OpenGl_ShaderProgram), OpenGl_MaterialState> OpenGl_MaterialStates;
 
-//! Standard GLSL program combination bits.
-enum OpenGl_ProgramOptions
-{
-  OpenGl_PO_ClipPlanes = 0x01, //!< handle clipping planes
-  OpenGl_PO_Point      = 0x02, //!< point marker
-  OpenGl_PO_VertColor  = 0x04, //!< per-vertex color
-  OpenGl_PO_TextureRGB = 0x08, //!< handle RGB   texturing
-  OpenGl_PO_TextureA   = 0x10, //!< handle Alpha texturing
-  OpenGl_PO_NB         = 0x20  //!< overall number of combinations
-};
-
 //! This class is responsible for managing shader programs.
 class OpenGl_ShaderManager : public Standard_Transient
 {
@@ -62,6 +51,9 @@ public:
 
   //! Releases resources of shader manager.
   Standard_EXPORT virtual ~OpenGl_ShaderManager();
+
+  //! Release all resources.
+  Standard_EXPORT void clear();
 
   //! Creates new shader program or re-use shared instance.
   //! @param theProxy    [IN]  program definition
@@ -170,10 +162,10 @@ public:
   Standard_EXPORT const OpenGl_ProjectionState& ProjectionState() const;
 
   //! Updates state of OCCT projection transform.
-  Standard_EXPORT void UpdateProjectionStateTo (const Tmatrix3* theProjectionMatrix);
+  Standard_EXPORT void UpdateProjectionStateTo (const OpenGl_Mat4& theProjectionMatrix);
 
   //! Reverts state of OCCT projection transform.
-  Standard_EXPORT void RevertProjectionStateTo (const Tmatrix3* theProjectionMatrix);
+  Standard_EXPORT void RevertProjectionStateTo (const OpenGl_Mat4& theProjectionMatrix);
 
   //! Pushes current state of OCCT projection transform to specified program.
   Standard_EXPORT void PushProjectionState (const Handle(OpenGl_ShaderProgram)& theProgram) const;
@@ -184,10 +176,10 @@ public:
   Standard_EXPORT const OpenGl_ModelWorldState& ModelWorldState() const;
 
   //! Updates state of OCCT model-world transform.
-  Standard_EXPORT void UpdateModelWorldStateTo (const Tmatrix3* theModelWorldMatrix);
+  Standard_EXPORT void UpdateModelWorldStateTo (const OpenGl_Mat4& theModelWorldMatrix);
 
   //! Reverts state of OCCT model-world transform.
-  Standard_EXPORT void RevertModelWorldStateTo (const Tmatrix3* theModelWorldMatrix);
+  Standard_EXPORT void RevertModelWorldStateTo (const OpenGl_Mat4& theModelWorldMatrix);
 
   //! Pushes current state of OCCT model-world transform to specified program.
   Standard_EXPORT void PushModelWorldState (const Handle(OpenGl_ShaderProgram)& theProgram) const;
@@ -198,10 +190,10 @@ public:
   Standard_EXPORT const OpenGl_WorldViewState& WorldViewState() const;
 
   //! Updates state of OCCT world-view transform.
-  Standard_EXPORT void UpdateWorldViewStateTo (const Tmatrix3* theWorldViewMatrix);
+  Standard_EXPORT void UpdateWorldViewStateTo (const OpenGl_Mat4& theWorldViewMatrix);
 
   //! Reverts state of OCCT world-view transform.
-  Standard_EXPORT void RevertWorldViewStateTo (const Tmatrix3* theWorldViewMatrix);
+  Standard_EXPORT void RevertWorldViewStateTo (const OpenGl_Mat4& theWorldViewMatrix);
 
   //! Pushes current state of OCCT world-view transform to specified program.
   Standard_EXPORT void PushWorldViewState (const Handle(OpenGl_ShaderProgram)& theProgram) const;
@@ -233,7 +225,7 @@ public:
   Standard_EXPORT const OpenGl_MaterialState* MaterialState (const Handle(OpenGl_ShaderProgram)& theProgram) const;
 
 public:
-  
+
   //! Pushes current state of OCCT graphics parameters to specified program.
   Standard_EXPORT void PushState (const Handle(OpenGl_ShaderProgram)& theProgram) const;
 
@@ -246,13 +238,7 @@ public:
   }
 
   //! Sets shading model.
-  void SetShadingModel(const Visual3d_TypeOfModel theModel)
-  {
-    myLightPrograms = theModel == Visual3d_TOM_FRAGMENT
-                    ? myLightPrograms = myPhongPrograms
-                    : myLightPrograms = myGouraudPrograms;
-    myShadingModel = theModel;
-  }
+  Standard_EXPORT void SetShadingModel(const Visual3d_TypeOfModel theModel);
 
   //! Sets last view manger used with.
   //! Helps to handle matrix states in multi-view configurations.
@@ -296,7 +282,7 @@ protected:
   {
     if (theToLightOn)
     {
-      Handle(OpenGl_ShaderProgram)& aProgram = myLightPrograms[theBits];
+      Handle(OpenGl_ShaderProgram)& aProgram = myLightPrograms->ChangeValue (theBits);
       if (aProgram.IsNull())
       {
         prepareStdProgramLight (aProgram, theBits);
@@ -304,7 +290,7 @@ protected:
       return aProgram;
     }
 
-    Handle(OpenGl_ShaderProgram)& aProgram = myFlatPrograms[theBits];
+    Handle(OpenGl_ShaderProgram)& aProgram = myFlatPrograms.ChangeValue (theBits);
     if (aProgram.IsNull())
     {
       prepareStdProgramFlat (aProgram, theBits);
@@ -336,34 +322,39 @@ protected:
   Standard_EXPORT Standard_Boolean prepareStdProgramPhong (Handle(OpenGl_ShaderProgram)& theProgram,
                                                            const Standard_Integer        theBits);
 
+  //! Define computeLighting GLSL function depending on current lights configuration
+  Standard_EXPORT TCollection_AsciiString stdComputeLighting();
+
   //! Bind specified program to current context and apply state.
   Standard_EXPORT Standard_Boolean bindProgramWithState (const Handle(OpenGl_ShaderProgram)& theProgram,
                                                          const OpenGl_Element*               theAspect);
 
-protected:
-
-  Visual3d_TypeOfModel          myShadingModel;                  //!< lighting shading model
-  OpenGl_ShaderProgramList      myProgramList;                   //!< The list of shader programs
-  Handle(OpenGl_ShaderProgram)* myLightPrograms;                 //!< pointer to active lighting programs matrix, depending on shading model and lights configuration
-  Handle(OpenGl_ShaderProgram)  myGouraudPrograms[OpenGl_PO_NB]; //!< matrix with per-vertex   lighting programs
-  Handle(OpenGl_ShaderProgram)  myPhongPrograms  [OpenGl_PO_NB]; //!< matrix with per-fragment lighting programs
-  Handle(OpenGl_ShaderProgram)  myFlatPrograms   [OpenGl_PO_NB]; //!< programs matrix without  lighting
-  Handle(OpenGl_ShaderProgram)  myFontProgram;                   //!< standard program for textured text
-
-  OpenGl_Context*               myContext;                       //!< OpenGL context
+  //! Set pointer myLightPrograms to active lighting programs set from myMapOfLightPrograms
+  Standard_EXPORT void switchLightPrograms();
 
 protected:
 
-  OpenGl_MaterialStates         myMaterialStates;                //!< Per-program state of OCCT material
-  OpenGl_ProjectionState        myProjectionState;               //!< State of OCCT projection  transformation
-  OpenGl_ModelWorldState        myModelWorldState;               //!< State of OCCT model-world transformation
-  OpenGl_WorldViewState         myWorldViewState;                //!< State of OCCT world-view  transformation
-  OpenGl_LightSourceState       myClippingState;                 //!< State of OCCT clipping planes
-  OpenGl_LightSourceState       myLightSourceState;              //!< State of OCCT light sources
+  Visual3d_TypeOfModel               myShadingModel;       //!< lighting shading model
+  OpenGl_ShaderProgramList           myProgramList;        //!< The list of shader programs
+  Handle(OpenGl_SetOfShaderPrograms) myLightPrograms;      //!< pointer to active lighting programs matrix
+  OpenGl_SetOfShaderPrograms         myFlatPrograms;       //!< programs matrix without  lighting
+  Handle(OpenGl_ShaderProgram)       myFontProgram;        //!< standard program for textured text
+  OpenGl_MapOfShaderPrograms         myMapOfLightPrograms; //!< map of lighting programs depending on shading model and lights configuration
+
+  OpenGl_Context*                    myContext;            //!< OpenGL context
+
+protected:
+
+  OpenGl_MaterialStates              myMaterialStates;     //!< Per-program state of OCCT material
+  OpenGl_ProjectionState             myProjectionState;    //!< State of OCCT projection  transformation
+  OpenGl_ModelWorldState             myModelWorldState;    //!< State of OCCT model-world transformation
+  OpenGl_WorldViewState              myWorldViewState;     //!< State of OCCT world-view  transformation
+  OpenGl_LightSourceState            myClippingState;      //!< State of OCCT clipping planes
+  OpenGl_LightSourceState            myLightSourceState;   //!< State of OCCT light sources
 
 private:
 
-  const OpenGl_View*            myLastView;                      //!< Pointer to the last view shader manager used with
+  const OpenGl_View*                 myLastView;           //!< Pointer to the last view shader manager used with
 
 public:
 

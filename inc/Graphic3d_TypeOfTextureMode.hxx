@@ -6,8 +6,11 @@
 #ifndef _Graphic3d_TypeOfTextureMode_HeaderFile
 #define _Graphic3d_TypeOfTextureMode_HeaderFile
 
-//! Type of the texture projection. <br>
-enum Graphic3d_TypeOfTextureMode {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Type of the texture projection.
+enum Graphic3d_TypeOfTextureMode
+{
 Graphic3d_TOTM_OBJECT,
 Graphic3d_TOTM_SPHERE,
 Graphic3d_TOTM_EYE,
@@ -15,8 +18,4 @@ Graphic3d_TOTM_MANUAL,
 Graphic3d_TOTM_SPRITE
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Graphic3d_TypeOfTextureMode_HeaderFile

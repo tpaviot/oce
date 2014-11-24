@@ -1,12 +1,4 @@
-#ifndef _HLRAlgo_WiresBlock_HeaderFile
 #include <HLRAlgo_WiresBlock.hxx>
-#endif
-#ifndef _HLRAlgo_EdgesBlock_HeaderFile
 #include <HLRAlgo_EdgesBlock.hxx>
-#endif
-#ifndef _HLRBRep_FaceData_HeaderFile
 #include <HLRBRep_FaceData.hxx>
-#endif
-#ifndef _HLRBRep_FaceIterator_HeaderFile
 #include <HLRBRep_FaceIterator.hxx>
-#endif

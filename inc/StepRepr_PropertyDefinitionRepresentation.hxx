@@ -6,46 +6,41 @@
 #ifndef _StepRepr_PropertyDefinitionRepresentation_HeaderFile
 #define _StepRepr_PropertyDefinitionRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepRepr_PropertyDefinitionRepresentation_HeaderFile
 #include <Handle_StepRepr_PropertyDefinitionRepresentation.hxx>
-#endif
 
-#ifndef _StepRepr_RepresentedDefinition_HeaderFile
 #include <StepRepr_RepresentedDefinition.hxx>
-#endif
-#ifndef _Handle_StepRepr_Representation_HeaderFile
 #include <Handle_StepRepr_Representation.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepRepr_Representation;
 class StepRepr_RepresentedDefinition;
 
 
-//! Representation of STEP entity PropertyDefinitionRepresentation <br>
-class StepRepr_PropertyDefinitionRepresentation : public MMgt_TShared {
+//! Representation of STEP entity PropertyDefinitionRepresentation
+class StepRepr_PropertyDefinitionRepresentation : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepRepr_PropertyDefinitionRepresentation();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const StepRepr_RepresentedDefinition& aDefinition,const Handle(StepRepr_Representation)& aUsedRepresentation) ;
-  //! Returns field Definition <br>
-  Standard_EXPORT     StepRepr_RepresentedDefinition Definition() const;
-  //! Set field Definition <br>
-  Standard_EXPORT     void SetDefinition(const StepRepr_RepresentedDefinition& Definition) ;
-  //! Returns field UsedRepresentation <br>
-  Standard_EXPORT     Handle_StepRepr_Representation UsedRepresentation() const;
-  //! Set field UsedRepresentation <br>
-  Standard_EXPORT     void SetUsedRepresentation(const Handle(StepRepr_Representation)& UsedRepresentation) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepRepr_PropertyDefinitionRepresentation();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const StepRepr_RepresentedDefinition& aDefinition, const Handle(StepRepr_Representation)& aUsedRepresentation) ;
+  
+  //! Returns field Definition
+  Standard_EXPORT   StepRepr_RepresentedDefinition Definition()  const;
+  
+  //! Set field Definition
+  Standard_EXPORT   void SetDefinition (const StepRepr_RepresentedDefinition& Definition) ;
+  
+  //! Returns field UsedRepresentation
+  Standard_EXPORT   Handle(StepRepr_Representation) UsedRepresentation()  const;
+  
+  //! Set field UsedRepresentation
+  Standard_EXPORT   void SetUsedRepresentation (const Handle(StepRepr_Representation)& UsedRepresentation) ;
 
 
 
@@ -60,8 +55,8 @@ protected:
 private: 
 
 
-StepRepr_RepresentedDefinition theDefinition;
-Handle_StepRepr_Representation theUsedRepresentation;
+  StepRepr_RepresentedDefinition theDefinition;
+  Handle(StepRepr_Representation) theUsedRepresentation;
 
 
 };
@@ -70,7 +65,6 @@ Handle_StepRepr_Representation theUsedRepresentation;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_PropertyDefinitionRepresentation_HeaderFile

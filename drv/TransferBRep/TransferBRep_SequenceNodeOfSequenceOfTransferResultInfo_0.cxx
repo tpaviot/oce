@@ -5,16 +5,10 @@
 
 #include <TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TransferBRep_TransferResultInfo_HeaderFile
 #include <TransferBRep_TransferResultInfo.hxx>
-#endif
-#ifndef _TransferBRep_SequenceOfTransferResultInfo_HeaderFile
 #include <TransferBRep_SequenceOfTransferResultInfo.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo,Stand
 IMPLEMENT_STANDARD_RTTI(TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo)
 
 
-#define SeqItem Handle_TransferBRep_TransferResultInfo
+#define SeqItem Handle(TransferBRep_TransferResultInfo)
 #define SeqItem_hxx <TransferBRep_TransferResultInfo.hxx>
 #define TCollection_SequenceNode TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo
 #define TCollection_SequenceNode_hxx <TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo.hxx>

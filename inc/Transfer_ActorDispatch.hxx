@@ -6,40 +6,18 @@
 #ifndef _Transfer_ActorDispatch_HeaderFile
 #define _Transfer_ActorDispatch_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Transfer_ActorDispatch_HeaderFile
 #include <Handle_Transfer_ActorDispatch.hxx>
-#endif
 
-#ifndef _Transfer_TransferDispatch_HeaderFile
 #include <Transfer_TransferDispatch.hxx>
-#endif
-#ifndef _Transfer_ActorOfTransientProcess_HeaderFile
 #include <Transfer_ActorOfTransientProcess.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Handle_Interface_Protocol_HeaderFile
 #include <Handle_Interface_Protocol.hxx>
-#endif
-#ifndef _Handle_Transfer_ActorOfTransientProcess_HeaderFile
 #include <Handle_Transfer_ActorOfTransientProcess.hxx>
-#endif
-#ifndef _Handle_Transfer_Binder_HeaderFile
 #include <Handle_Transfer_Binder.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Transfer_TransientProcess_HeaderFile
 #include <Handle_Transfer_TransientProcess.hxx>
-#endif
 class Interface_InterfaceError;
 class Interface_InterfaceModel;
 class Interface_GeneralLib;
@@ -51,39 +29,46 @@ class Standard_Transient;
 class Transfer_TransientProcess;
 
 
-//! This class allows to work with a TransferDispatch, i.e. to <br>
-//!          transfer entities from a data set to another one defined by <br>
-//!          the same interface norm, with the following features : <br>
-//!          - ActorDispatch itself acts as a default actor, i.e. it copies <br>
-//!            entities with the general service Copy, as CopyTool does <br>
-//!          - it allows to add other actors for specific ways of transfer, <br>
-//!            which may include data modifications, conversions ... <br>
-//!          - and other features from TransferDispatch (such as mapping <br>
-//!            other than one-one) <br>
-class Transfer_ActorDispatch : public Transfer_ActorOfTransientProcess {
+//! This class allows to work with a TransferDispatch, i.e. to
+//! transfer entities from a data set to another one defined by
+//! the same interface norm, with the following features :
+//! - ActorDispatch itself acts as a default actor, i.e. it copies
+//! entities with the general service Copy, as CopyTool does
+//! - it allows to add other actors for specific ways of transfer,
+//! which may include data modifications, conversions ...
+//! - and other features from TransferDispatch (such as mapping
+//! other than one-one)
+class Transfer_ActorDispatch : public Transfer_ActorOfTransientProcess
+{
 
 public:
 
-  //! Creates an ActorDispatch from a Model. Works with a General <br>
-//!           Service Library, given as an Argument <br>
-//!           This causes TransferDispatch and its TransientProcess to be <br>
-//!           created, with default actor <me> <br>
-  Standard_EXPORT   Transfer_ActorDispatch(const Handle(Interface_InterfaceModel)& amodel,const Interface_GeneralLib& lib);
-  //! Same as above, but Library is defined through a Protocol <br>
-  Standard_EXPORT   Transfer_ActorDispatch(const Handle(Interface_InterfaceModel)& amodel,const Handle(Interface_Protocol)& protocol);
-  //! Same as above, but works with the Active Protocol <br>
-  Standard_EXPORT   Transfer_ActorDispatch(const Handle(Interface_InterfaceModel)& amodel);
-  //! Utility which adds an actor to the default <me> (it calls <br>
-//!           SetActor from the TransientProcess) <br>
-  Standard_EXPORT     void AddActor(const Handle(Transfer_ActorOfTransientProcess)& actor) ;
-  //! Returns the TransferDispatch, which does the work, records <br>
-//!           the intermediate data, etc... <br>
-//!           See TransferDispatch & CopyTool, to see the available methods <br>
-  Standard_EXPORT     Transfer_TransferDispatch& TransferDispatch() ;
-  //! Specific action : it calls the method Transfer from CopyTool <br>
-//!           i.e. the general service Copy, then returns the Binder <br>
-//!           produced by the TransientProcess <br>
-  Standard_EXPORT   virtual  Handle_Transfer_Binder Transfer(const Handle(Standard_Transient)& start,const Handle(Transfer_TransientProcess)& TP) ;
+  
+  //! Creates an ActorDispatch from a Model. Works with a General
+  //! Service Library, given as an Argument
+  //! This causes TransferDispatch and its TransientProcess to be
+  //! created, with default actor <me>
+  Standard_EXPORT Transfer_ActorDispatch(const Handle(Interface_InterfaceModel)& amodel, const Interface_GeneralLib& lib);
+  
+  //! Same as above, but Library is defined through a Protocol
+  Standard_EXPORT Transfer_ActorDispatch(const Handle(Interface_InterfaceModel)& amodel, const Handle(Interface_Protocol)& protocol);
+  
+  //! Same as above, but works with the Active Protocol
+  Standard_EXPORT Transfer_ActorDispatch(const Handle(Interface_InterfaceModel)& amodel);
+  
+  //! Utility which adds an actor to the default <me> (it calls
+  //! SetActor from the TransientProcess)
+  Standard_EXPORT   void AddActor (const Handle(Transfer_ActorOfTransientProcess)& actor) ;
+  
+  //! Returns the TransferDispatch, which does the work, records
+  //! the intermediate data, etc...
+  //! See TransferDispatch & CopyTool, to see the available methods
+  Standard_EXPORT   Transfer_TransferDispatch& TransferDispatch() ;
+  
+  //! Specific action : it calls the method Transfer from CopyTool
+  //! i.e. the general service Copy, then returns the Binder
+  //! produced by the TransientProcess
+  Standard_EXPORT virtual   Handle(Transfer_Binder) Transfer (const Handle(Standard_Transient)& start, const Handle(Transfer_TransientProcess)& TP) ;
 
 
 
@@ -98,7 +83,7 @@ protected:
 private: 
 
 
-Transfer_TransferDispatch thetool;
+  Transfer_TransferDispatch thetool;
 
 
 };
@@ -107,7 +92,6 @@ Transfer_TransferDispatch thetool;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Transfer_ActorDispatch_HeaderFile

@@ -6,28 +6,22 @@
 #ifndef _StepGeom_Plane_HeaderFile
 #define _StepGeom_Plane_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_Plane_HeaderFile
 #include <Handle_StepGeom_Plane.hxx>
-#endif
 
-#ifndef _StepGeom_ElementarySurface_HeaderFile
 #include <StepGeom_ElementarySurface.hxx>
-#endif
 
 
 
-class StepGeom_Plane : public StepGeom_ElementarySurface {
+class StepGeom_Plane : public StepGeom_ElementarySurface
+{
 
 public:
 
-  //! Returns a Plane <br>
-  Standard_EXPORT   StepGeom_Plane();
+  
+  //! Returns a Plane
+  Standard_EXPORT StepGeom_Plane();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_Plane_HeaderFile

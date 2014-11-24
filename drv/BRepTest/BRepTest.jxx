@@ -1,3 +1,1 @@
-#ifndef _BRepTest_HeaderFile
 #include <BRepTest.hxx>
-#endif

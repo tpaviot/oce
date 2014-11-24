@@ -6,28 +6,14 @@
 #ifndef _BRepBlend_SequenceOfLine_HeaderFile
 #define _BRepBlend_SequenceOfLine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_BRepBlend_Line_HeaderFile
 #include <Handle_BRepBlend_Line.hxx>
-#endif
-#ifndef _Handle_BRepBlend_SequenceNodeOfSequenceOfLine_HeaderFile
 #include <Handle_BRepBlend_SequenceNodeOfSequenceOfLine.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class BRepBlend_Line;
@@ -35,68 +21,68 @@ class BRepBlend_SequenceNodeOfSequenceOfLine;
 
 
 
-class BRepBlend_SequenceOfLine  : public TCollection_BaseSequence {
+class BRepBlend_SequenceOfLine  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      BRepBlend_SequenceOfLine();
+    BRepBlend_SequenceOfLine();
   
-  Standard_EXPORT   BRepBlend_SequenceOfLine(const BRepBlend_SequenceOfLine& Other);
+  Standard_EXPORT BRepBlend_SequenceOfLine(const BRepBlend_SequenceOfLine& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~BRepBlend_SequenceOfLine()
 {
   Clear();
 }
   
-  Standard_EXPORT    const BRepBlend_SequenceOfLine& Assign(const BRepBlend_SequenceOfLine& Other) ;
-   const BRepBlend_SequenceOfLine& operator =(const BRepBlend_SequenceOfLine& Other) 
+  Standard_EXPORT  const  BRepBlend_SequenceOfLine& Assign (const BRepBlend_SequenceOfLine& Other) ;
+ const  BRepBlend_SequenceOfLine& operator = (const BRepBlend_SequenceOfLine& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(BRepBlend_Line)& T) ;
+  Standard_EXPORT   void Append (const Handle(BRepBlend_Line)& T) ;
   
-        void Append(BRepBlend_SequenceOfLine& S) ;
+      void Append (BRepBlend_SequenceOfLine& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(BRepBlend_Line)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(BRepBlend_Line)& T) ;
   
-        void Prepend(BRepBlend_SequenceOfLine& S) ;
+      void Prepend (BRepBlend_SequenceOfLine& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(BRepBlend_Line)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(BRepBlend_Line)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,BRepBlend_SequenceOfLine& S) ;
+      void InsertBefore (const Standard_Integer Index, BRepBlend_SequenceOfLine& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(BRepBlend_Line)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(BRepBlend_Line)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,BRepBlend_SequenceOfLine& S) ;
+      void InsertAfter (const Standard_Integer Index, BRepBlend_SequenceOfLine& S) ;
   
-  Standard_EXPORT    const Handle_BRepBlend_Line& First() const;
+  Standard_EXPORT  const  Handle(BRepBlend_Line)& First()  const;
   
-  Standard_EXPORT    const Handle_BRepBlend_Line& Last() const;
+  Standard_EXPORT  const  Handle(BRepBlend_Line)& Last()  const;
   
-        void Split(const Standard_Integer Index,BRepBlend_SequenceOfLine& Sub) ;
+      void Split (const Standard_Integer Index, BRepBlend_SequenceOfLine& Sub) ;
   
-  Standard_EXPORT    const Handle_BRepBlend_Line& Value(const Standard_Integer Index) const;
-   const Handle_BRepBlend_Line& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(BRepBlend_Line)& Value (const Standard_Integer Index)  const;
+ const  Handle(BRepBlend_Line)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(BRepBlend_Line)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(BRepBlend_Line)& I) ;
   
-  Standard_EXPORT     Handle_BRepBlend_Line& ChangeValue(const Standard_Integer Index) ;
-    Handle_BRepBlend_Line& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(BRepBlend_Line)& ChangeValue (const Standard_Integer Index) ;
+  Handle(BRepBlend_Line)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -115,7 +101,7 @@ private:
 
 };
 
-#define SeqItem Handle_BRepBlend_Line
+#define SeqItem Handle(BRepBlend_Line)
 #define SeqItem_hxx <BRepBlend_Line.hxx>
 #define TCollection_SequenceNode BRepBlend_SequenceNodeOfSequenceOfLine
 #define TCollection_SequenceNode_hxx <BRepBlend_SequenceNodeOfSequenceOfLine.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepBlend_SequenceOfLine_HeaderFile

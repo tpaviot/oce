@@ -5,26 +5,16 @@
 
 #include <Storage_DataMapIteratorOfMapOfPers.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Storage_Root_HeaderFile
 #include <Storage_Root.hxx>
-#endif
-#ifndef _Storage_MapOfPers_HeaderFile
 #include <Storage_MapOfPers.hxx>
-#endif
-#ifndef _Storage_DataMapNodeOfMapOfPers_HeaderFile
 #include <Storage_DataMapNodeOfMapOfPers.hxx>
-#endif
  
 
 #define TheKey TCollection_AsciiString
 #define TheKey_hxx <TCollection_AsciiString.hxx>
-#define TheItem Handle_Storage_Root
+#define TheItem Handle(Storage_Root)
 #define TheItem_hxx <Storage_Root.hxx>
 #define Hasher TCollection_AsciiString
 #define Hasher_hxx <TCollection_AsciiString.hxx>

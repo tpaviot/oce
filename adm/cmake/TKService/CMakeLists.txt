@@ -204,6 +204,13 @@ elseif(APPLE)
     list( APPEND TKService_USED_LIBS freeimage )
   endif()
   list( APPEND TKService_USED_LIBS freetype )
+elseif(ANDROID)
+  list( APPEND TKService_USED_LIBS EGL )
+  list( APPEND TKService_USED_LIBS GLESv2 )
+  if(USE_FREEIMAGE)
+    list( APPEND TKService_USED_LIBS freeimage )
+  endif()
+  list( APPEND TKService_USED_LIBS freetype )
 else()
   list( APPEND TKService_USED_LIBS GLU )
   list( APPEND TKService_USED_LIBS GL )
@@ -823,13 +830,13 @@ if ("${USED_TOOLKITS}" STREQUAL "" OR DEFINED TurnONtheTKService)
  set_property(TARGET TKService PROPERTY FOLDER Visualization)
 
  install( TARGETS TKService
-                                 RUNTIME DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_SUFFIX}"
-                                 ARCHIVE DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_SUFFIX}"
-                                 LIBRARY DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_SUFFIX}")
+                                 RUNTIME DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_POSTFIX}"
+                                 ARCHIVE DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_POSTFIX}"
+                                 LIBRARY DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_POSTFIX}")
 
  if (MSVC)
-  install( FILES  ${CMAKE_BINARY_DIR}/out/bin/Debug/TKService.pdb CONFIGURATIONS Debug
-                                  DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_SUFFIX}")
+  install( FILES  ${CMAKE_BINARY_DIR}/out/bind/Debug/TKService.pdb CONFIGURATIONS Debug
+                                  DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_POSTFIX}")
  endif()
 
 

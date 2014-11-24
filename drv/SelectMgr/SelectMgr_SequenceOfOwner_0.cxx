@@ -5,21 +5,13 @@
 
 #include <SelectMgr_SequenceOfOwner.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _SelectMgr_EntityOwner_HeaderFile
 #include <SelectMgr_EntityOwner.hxx>
-#endif
-#ifndef _SelectMgr_SequenceNodeOfSequenceOfOwner_HeaderFile
 #include <SelectMgr_SequenceNodeOfSequenceOfOwner.hxx>
-#endif
  
 
-#define SeqItem Handle_SelectMgr_EntityOwner
+#define SeqItem Handle(SelectMgr_EntityOwner)
 #define SeqItem_hxx <SelectMgr_EntityOwner.hxx>
 #define TCollection_SequenceNode SelectMgr_SequenceNodeOfSequenceOfOwner
 #define TCollection_SequenceNode_hxx <SelectMgr_SequenceNodeOfSequenceOfOwner.hxx>

@@ -5,24 +5,12 @@
 
 #include <StepToTopoDS_DataMapOfRINames.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _StepToTopoDS_DataMapNodeOfDataMapOfRINames_HeaderFile
 #include <StepToTopoDS_DataMapNodeOfDataMapOfRINames.hxx>
-#endif
-#ifndef _StepToTopoDS_DataMapIteratorOfDataMapOfRINames_HeaderFile
 #include <StepToTopoDS_DataMapIteratorOfDataMapOfRINames.hxx>
-#endif
  
 
 #define TheKey TCollection_AsciiString

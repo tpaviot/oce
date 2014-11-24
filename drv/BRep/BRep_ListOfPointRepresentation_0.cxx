@@ -5,21 +5,13 @@
 
 #include <BRep_ListOfPointRepresentation.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _BRep_ListIteratorOfListOfPointRepresentation_HeaderFile
 #include <BRep_ListIteratorOfListOfPointRepresentation.hxx>
-#endif
-#ifndef _BRep_PointRepresentation_HeaderFile
 #include <BRep_PointRepresentation.hxx>
-#endif
-#ifndef _BRep_ListNodeOfListOfPointRepresentation_HeaderFile
 #include <BRep_ListNodeOfListOfPointRepresentation.hxx>
-#endif
  
 
-#define Item Handle_BRep_PointRepresentation
+#define Item Handle(BRep_PointRepresentation)
 #define Item_hxx <BRep_PointRepresentation.hxx>
 #define TCollection_ListNode BRep_ListNodeOfListOfPointRepresentation
 #define TCollection_ListNode_hxx <BRep_ListNodeOfListOfPointRepresentation.hxx>

@@ -6,31 +6,15 @@
 #ifndef _MAT2d_DataMapOfBiIntSequenceOfInteger_HeaderFile
 #define _MAT2d_DataMapOfBiIntSequenceOfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger_HeaderFile
 #include <Handle_MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class MAT2d_BiInt;
@@ -41,50 +25,50 @@ class MAT2d_DataMapIteratorOfDataMapOfBiIntSequenceOfInteger;
 
 
 
-class MAT2d_DataMapOfBiIntSequenceOfInteger  : public TCollection_BasicMap {
+class MAT2d_DataMapOfBiIntSequenceOfInteger  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   MAT2d_DataMapOfBiIntSequenceOfInteger(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT MAT2d_DataMapOfBiIntSequenceOfInteger(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     MAT2d_DataMapOfBiIntSequenceOfInteger& Assign(const MAT2d_DataMapOfBiIntSequenceOfInteger& Other) ;
-    MAT2d_DataMapOfBiIntSequenceOfInteger& operator =(const MAT2d_DataMapOfBiIntSequenceOfInteger& Other) 
+  Standard_EXPORT   MAT2d_DataMapOfBiIntSequenceOfInteger& Assign (const MAT2d_DataMapOfBiIntSequenceOfInteger& Other) ;
+  MAT2d_DataMapOfBiIntSequenceOfInteger& operator = (const MAT2d_DataMapOfBiIntSequenceOfInteger& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~MAT2d_DataMapOfBiIntSequenceOfInteger()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Bind(const MAT2d_BiInt& K,const TColStd_SequenceOfInteger& I) ;
+  Standard_EXPORT   Standard_Boolean Bind (const MAT2d_BiInt& K, const TColStd_SequenceOfInteger& I) ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const MAT2d_BiInt& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound (const MAT2d_BiInt& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind(const MAT2d_BiInt& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind (const MAT2d_BiInt& K) ;
   
-  Standard_EXPORT    const TColStd_SequenceOfInteger& Find(const MAT2d_BiInt& K) const;
-   const TColStd_SequenceOfInteger& operator()(const MAT2d_BiInt& K) const
+  Standard_EXPORT  const  TColStd_SequenceOfInteger& Find (const MAT2d_BiInt& K)  const;
+ const  TColStd_SequenceOfInteger& operator() (const MAT2d_BiInt& K)  const
 {
   return Find(K);
 }
   
-  Standard_EXPORT     TColStd_SequenceOfInteger& ChangeFind(const MAT2d_BiInt& K) ;
-    TColStd_SequenceOfInteger& operator()(const MAT2d_BiInt& K) 
+  Standard_EXPORT   TColStd_SequenceOfInteger& ChangeFind (const MAT2d_BiInt& K) ;
+  TColStd_SequenceOfInteger& operator() (const MAT2d_BiInt& K) 
 {
   return ChangeFind(K);
 }
   
-  Standard_EXPORT     Standard_Address Find1(const MAT2d_BiInt& K) const;
+  Standard_EXPORT   Standard_Address Find1 (const MAT2d_BiInt& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFind1(const MAT2d_BiInt& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFind1 (const MAT2d_BiInt& K) ;
 
 
 
@@ -98,7 +82,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   MAT2d_DataMapOfBiIntSequenceOfInteger(const MAT2d_DataMapOfBiIntSequenceOfInteger& Other);
+  Standard_EXPORT MAT2d_DataMapOfBiIntSequenceOfInteger(const MAT2d_DataMapOfBiIntSequenceOfInteger& Other);
 
 
 
@@ -109,7 +93,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MAT2d_DataMapOfBiIntSequenceOfInteger_HeaderFile

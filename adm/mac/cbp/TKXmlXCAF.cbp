@@ -82,6 +82,8 @@
 			<Add library="TKLCAF" />
 			<Add library="TKXCAF" />
 			<Add library="TKXml" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />

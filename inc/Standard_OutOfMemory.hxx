@@ -6,33 +6,20 @@
 #ifndef _Standard_OutOfMemory_HeaderFile
 #define _Standard_OutOfMemory_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_DefineException_HeaderFile
 #include <Standard_DefineException.hxx>
-#endif
-#ifndef _Standard_SStream_HeaderFile
 #include <Standard_SStream.hxx>
-#endif
-
-#ifndef _Standard_ProgramError_HeaderFile
 #include <Standard_ProgramError.hxx>
-#endif
-#ifndef _Handle_Standard_OutOfMemory_HeaderFile
 #include <Handle_Standard_OutOfMemory.hxx>
-#endif
 
 #if !defined No_Exception && !defined No_Standard_OutOfMemory
-#define Standard_OutOfMemory_Raise_if(CONDITION,MESSAGE) \
+  #define Standard_OutOfMemory_Raise_if(CONDITION, MESSAGE) \
   if (CONDITION) Standard_OutOfMemory::Raise(MESSAGE);
 #else
-#define Standard_OutOfMemory_Raise_if(CONDITION,MESSAGE)
+  #define Standard_OutOfMemory_Raise_if(CONDITION, MESSAGE)
 #endif
 
-DEFINE_STANDARD_EXCEPTION(Standard_OutOfMemory,Standard_ProgramError)
+DEFINE_STANDARD_EXCEPTION(Standard_OutOfMemory, Standard_ProgramError)
 
-#endif
+#endif // _Standard_OutOfMemory_HeaderFile

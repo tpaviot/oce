@@ -1,6 +1,2 @@
-#ifndef _gp_Ax3_HeaderFile
 #include <gp_Ax3.hxx>
-#endif
-#ifndef _PGeom_ElementarySurface_HeaderFile
 #include <PGeom_ElementarySurface.hxx>
-#endif

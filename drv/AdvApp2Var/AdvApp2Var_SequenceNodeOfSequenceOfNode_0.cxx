@@ -5,16 +5,10 @@
 
 #include <AdvApp2Var_SequenceNodeOfSequenceOfNode.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _AdvApp2Var_Node_HeaderFile
 #include <AdvApp2Var_Node.hxx>
-#endif
-#ifndef _AdvApp2Var_SequenceOfNode_HeaderFile
 #include <AdvApp2Var_SequenceOfNode.hxx>
-#endif
 
  
 

@@ -6,28 +6,14 @@
 #ifndef _RWStepAP203_RWChangeRequest_HeaderFile
 #define _RWStepAP203_RWChangeRequest_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepData_StepReaderData_HeaderFile
 #include <Handle_StepData_StepReaderData.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
-#ifndef _Handle_StepAP203_ChangeRequest_HeaderFile
 #include <Handle_StepAP203_ChangeRequest.hxx>
-#endif
 class StepData_StepReaderData;
 class Interface_Check;
 class StepAP203_ChangeRequest;
@@ -35,21 +21,25 @@ class StepData_StepWriter;
 class Interface_EntityIterator;
 
 
-//! Read & Write tool for ChangeRequest <br>
-class RWStepAP203_RWChangeRequest  {
+//! Read & Write tool for ChangeRequest
+class RWStepAP203_RWChangeRequest 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor <br>
-  Standard_EXPORT   RWStepAP203_RWChangeRequest();
-  //! Reads ChangeRequest <br>
-  Standard_EXPORT     void ReadStep(const Handle(StepData_StepReaderData)& data,const Standard_Integer num,Handle(Interface_Check)& ach,const Handle(StepAP203_ChangeRequest)& ent) const;
-  //! Writes ChangeRequest <br>
-  Standard_EXPORT     void WriteStep(StepData_StepWriter& SW,const Handle(StepAP203_ChangeRequest)& ent) const;
-  //! Fills data for graph (shared items) <br>
-  Standard_EXPORT     void Share(const Handle(StepAP203_ChangeRequest)& ent,Interface_EntityIterator& iter) const;
-
+  
+  //! Empty constructor
+  Standard_EXPORT RWStepAP203_RWChangeRequest();
+  
+  //! Reads ChangeRequest
+  Standard_EXPORT   void ReadStep (const Handle(StepData_StepReaderData)& data, const Standard_Integer num, Handle(Interface_Check)& ach, const Handle(StepAP203_ChangeRequest)& ent)  const;
+  
+  //! Writes ChangeRequest
+  Standard_EXPORT   void WriteStep (StepData_StepWriter& SW, const Handle(StepAP203_ChangeRequest)& ent)  const;
+  
+  //! Fills data for graph (shared items)
+  Standard_EXPORT   void Share (const Handle(StepAP203_ChangeRequest)& ent, Interface_EntityIterator& iter)  const;
 
 
 
@@ -72,7 +62,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _RWStepAP203_RWChangeRequest_HeaderFile

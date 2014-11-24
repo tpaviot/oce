@@ -6,67 +6,63 @@
 #ifndef _IFGraph_Cumulate_HeaderFile
 #define _IFGraph_Cumulate_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Interface_Graph_HeaderFile
 #include <Interface_Graph.hxx>
-#endif
-#ifndef _Interface_GraphContent_HeaderFile
 #include <Interface_GraphContent.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Interface_Graph;
 class Standard_Transient;
 class Interface_EntityIterator;
 
 
-//! this class evaluates effect of cumulated sub-parts : <br>
-//!           overlapping, forgotten entities <br>
-//!           Results are kept in a Graph, several question can be set <br>
-//!           Basic Iteration gives entities which are part of Cumulation <br>
-class IFGraph_Cumulate  : public Interface_GraphContent {
+//! this class evaluates effect of cumulated sub-parts :
+//! overlapping, forgotten entities
+//! Results are kept in a Graph, several question can be set
+//! Basic Iteration gives entities which are part of Cumulation
+class IFGraph_Cumulate  : public Interface_GraphContent
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! creates empty Cumulate, ready to work <br>
-  Standard_EXPORT   IFGraph_Cumulate(const Interface_Graph& agraph);
-  //! adds an entity and its shared ones to the list <br>
-  Standard_EXPORT     void GetFromEntity(const Handle(Standard_Transient)& ent) ;
-  //! adds a list of entities (as an iterator) as such, that is, <br>
-//!           without their shared entities (use AllShared to have them) <br>
-  Standard_EXPORT     void GetFromIter(const Interface_EntityIterator& iter) ;
-  //! Allows to restart on a new data set <br>
-  Standard_EXPORT     void ResetData() ;
-  //! Evaluates the result of cumulation <br>
-  Standard_EXPORT   virtual  void Evaluate() ;
-  //! returns entities which are taken several times <br>
-  Standard_EXPORT     Interface_EntityIterator Overlapped() const;
-  //! returns entities which are not taken <br>
-  Standard_EXPORT     Interface_EntityIterator Forgotten() const;
-  //! Returns entities taken a given count of times <br>
-//!           (0 : same as Forgotten, 1 : same as no Overlap : default) <br>
-  Standard_EXPORT     Interface_EntityIterator PerCount(const Standard_Integer count = 1) const;
-  //! returns number of times an Entity has been counted <br>
-//!           (0 means forgotten, more than 1 means overlap, 1 is normal) <br>
-  Standard_EXPORT     Standard_Integer NbTimes(const Handle(Standard_Transient)& ent) const;
-  //! Returns the highest number of times recorded for every Entity <br>
-//!           (0 means empty, 1 means no overlap) <br>
-  Standard_EXPORT     Standard_Integer HighestNbTimes() const;
-
+  
+  //! creates empty Cumulate, ready to work
+  Standard_EXPORT IFGraph_Cumulate(const Interface_Graph& agraph);
+  
+  //! adds an entity and its shared ones to the list
+  Standard_EXPORT   void GetFromEntity (const Handle(Standard_Transient)& ent) ;
+  
+  //! adds a list of entities (as an iterator) as such, that is,
+  //! without their shared entities (use AllShared to have them)
+  Standard_EXPORT   void GetFromIter (const Interface_EntityIterator& iter) ;
+  
+  //! Allows to restart on a new data set
+  Standard_EXPORT   void ResetData() ;
+  
+  //! Evaluates the result of cumulation
+  Standard_EXPORT virtual   void Evaluate() ;
+  
+  //! returns entities which are taken several times
+  Standard_EXPORT   Interface_EntityIterator Overlapped()  const;
+  
+  //! returns entities which are not taken
+  Standard_EXPORT   Interface_EntityIterator Forgotten()  const;
+  
+  //! Returns entities taken a given count of times
+  //! (0 : same as Forgotten, 1 : same as no Overlap : default)
+  Standard_EXPORT   Interface_EntityIterator PerCount (const Standard_Integer count = 1)  const;
+  
+  //! returns number of times an Entity has been counted
+  //! (0 means forgotten, more than 1 means overlap, 1 is normal)
+  Standard_EXPORT   Standard_Integer NbTimes (const Handle(Standard_Transient)& ent)  const;
+  
+  //! Returns the highest number of times recorded for every Entity
+  //! (0 means empty, 1 means no overlap)
+  Standard_EXPORT   Standard_Integer HighestNbTimes()  const;
 
 
 
@@ -81,7 +77,7 @@ private:
 
 
 
-Interface_Graph thegraph;
+  Interface_Graph thegraph;
 
 
 };
@@ -90,7 +86,6 @@ Interface_Graph thegraph;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFGraph_Cumulate_HeaderFile

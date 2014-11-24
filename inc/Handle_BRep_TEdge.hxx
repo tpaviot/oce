@@ -6,22 +6,15 @@
 #ifndef _Handle_BRep_TEdge_HeaderFile
 #define _Handle_BRep_TEdge_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TopoDS_TEdge_HeaderFile
 #include <Handle_TopoDS_TEdge.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TopoDS_TEdge);
 class BRep_TEdge;
 
-DEFINE_STANDARD_HANDLE(BRep_TEdge,TopoDS_TEdge)
+DEFINE_STANDARD_HANDLE(BRep_TEdge, TopoDS_TEdge)
 
-#endif
+#endif // _Handle_BRep_TEdge_HeaderFile

@@ -6,48 +6,44 @@
 #ifndef _IFSelect_SelectEntityNumber_HeaderFile
 #define _IFSelect_SelectEntityNumber_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_SelectEntityNumber_HeaderFile
 #include <Handle_IFSelect_SelectEntityNumber.hxx>
-#endif
 
-#ifndef _Handle_IFSelect_IntParam_HeaderFile
 #include <Handle_IFSelect_IntParam.hxx>
-#endif
-#ifndef _IFSelect_SelectBase_HeaderFile
 #include <IFSelect_SelectBase.hxx>
-#endif
 class IFSelect_IntParam;
 class Interface_EntityIterator;
 class Interface_Graph;
 class TCollection_AsciiString;
 
 
-//! A SelectEntityNumber gets in an InterfaceModel (through a <br>
-//!           Graph), the Entity which has a specified Number (its rank of <br>
-//!           adding into the Model) : there can be zero (if none) or one. <br>
-//!           The Number is not directly defined as an Integer, but as a <br>
-//!           Parameter, which can be externally controled <br>
-class IFSelect_SelectEntityNumber : public IFSelect_SelectBase {
+//! A SelectEntityNumber gets in an InterfaceModel (through a
+//! Graph), the Entity which has a specified Number (its rank of
+//! adding into the Model) : there can be zero (if none) or one.
+//! The Number is not directly defined as an Integer, but as a
+//! Parameter, which can be externally controled
+class IFSelect_SelectEntityNumber : public IFSelect_SelectBase
+{
 
 public:
 
-  //! Creates a SelectEntityNumber, initially with no specified Number <br>
-  Standard_EXPORT   IFSelect_SelectEntityNumber();
-  //! Sets Entity Number to be taken (initially, none is set : 0) <br>
-  Standard_EXPORT     void SetNumber(const Handle(IFSelect_IntParam)& num) ;
-  //! Returns specified Number (as a Parameter) <br>
-  Standard_EXPORT     Handle_IFSelect_IntParam Number() const;
-  //! Returns the list of selected entities : the Entity having the <br>
-//!           specified Number (this result assures naturally uniqueness) <br>
-  Standard_EXPORT     Interface_EntityIterator RootResult(const Interface_Graph& G) const;
-  //! Returns a text defining the criterium : "Entity Number ..." <br>
-  Standard_EXPORT     TCollection_AsciiString Label() const;
+  
+  //! Creates a SelectEntityNumber, initially with no specified Number
+  Standard_EXPORT IFSelect_SelectEntityNumber();
+  
+  //! Sets Entity Number to be taken (initially, none is set : 0)
+  Standard_EXPORT   void SetNumber (const Handle(IFSelect_IntParam)& num) ;
+  
+  //! Returns specified Number (as a Parameter)
+  Standard_EXPORT   Handle(IFSelect_IntParam) Number()  const;
+  
+  //! Returns the list of selected entities : the Entity having the
+  //! specified Number (this result assures naturally uniqueness)
+  Standard_EXPORT   Interface_EntityIterator RootResult (const Interface_Graph& G)  const;
+  
+  //! Returns a text defining the criterium : "Entity Number ..."
+  Standard_EXPORT   TCollection_AsciiString Label()  const;
 
 
 
@@ -62,7 +58,7 @@ protected:
 private: 
 
 
-Handle_IFSelect_IntParam thenum;
+  Handle(IFSelect_IntParam) thenum;
 
 
 };
@@ -71,7 +67,6 @@ Handle_IFSelect_IntParam thenum;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_SelectEntityNumber_HeaderFile

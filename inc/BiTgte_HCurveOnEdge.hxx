@@ -6,22 +6,12 @@
 #ifndef _BiTgte_HCurveOnEdge_HeaderFile
 #define _BiTgte_HCurveOnEdge_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BiTgte_HCurveOnEdge_HeaderFile
 #include <Handle_BiTgte_HCurveOnEdge.hxx>
-#endif
 
-#ifndef _BiTgte_CurveOnEdge_HeaderFile
 #include <BiTgte_CurveOnEdge.hxx>
-#endif
-#ifndef _Adaptor3d_HCurve_HeaderFile
 #include <Adaptor3d_HCurve.hxx>
-#endif
 class Standard_OutOfRange;
 class Standard_NoSuchObject;
 class Standard_DomainError;
@@ -30,22 +20,23 @@ class Adaptor3d_Curve;
 
 
 
-class BiTgte_HCurveOnEdge : public Adaptor3d_HCurve {
+class BiTgte_HCurveOnEdge : public Adaptor3d_HCurve
+{
 
 public:
 
   
-  Standard_EXPORT   BiTgte_HCurveOnEdge();
+  Standard_EXPORT BiTgte_HCurveOnEdge();
   
-  Standard_EXPORT   BiTgte_HCurveOnEdge(const BiTgte_CurveOnEdge& C);
+  Standard_EXPORT BiTgte_HCurveOnEdge(const BiTgte_CurveOnEdge& C);
   
-  Standard_EXPORT     void Set(const BiTgte_CurveOnEdge& C) ;
+  Standard_EXPORT   void Set (const BiTgte_CurveOnEdge& C) ;
   
-  Standard_EXPORT    const Adaptor3d_Curve& Curve() const;
+  Standard_EXPORT  const  Adaptor3d_Curve& Curve()  const;
   
-  Standard_EXPORT     Adaptor3d_Curve& GetCurve() ;
+  Standard_EXPORT   Adaptor3d_Curve& GetCurve() ;
   
-        BiTgte_CurveOnEdge& ChangeCurve() ;
+      BiTgte_CurveOnEdge& ChangeCurve() ;
 
 
 
@@ -55,7 +46,7 @@ public:
 protected:
 
 
-BiTgte_CurveOnEdge myCurve;
+  BiTgte_CurveOnEdge myCurve;
 
 
 private: 
@@ -82,7 +73,6 @@ private:
 #undef Adaptor3d_GenHCurve_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BiTgte_HCurveOnEdge_HeaderFile

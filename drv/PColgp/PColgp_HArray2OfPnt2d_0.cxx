@@ -5,28 +5,14 @@
 
 #include <PColgp_HArray2OfPnt2d.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _PColgp_FieldOfHArray2OfPnt2d_HeaderFile
 #include <PColgp_FieldOfHArray2OfPnt2d.hxx>
-#endif
-#ifndef _PColgp_VArrayNodeOfFieldOfHArray2OfPnt2d_HeaderFile
 #include <PColgp_VArrayNodeOfFieldOfHArray2OfPnt2d.hxx>
-#endif
-#ifndef _PColgp_VArrayTNodeOfFieldOfHArray2OfPnt2d_HeaderFile
 #include <PColgp_VArrayTNodeOfFieldOfHArray2OfPnt2d.hxx>
-#endif
 
  
 

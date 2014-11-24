@@ -6,38 +6,27 @@
 #ifndef _Visual3d_SequenceNodeOfSequenceOfView_HeaderFile
 #define _Visual3d_SequenceNodeOfSequenceOfView_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Visual3d_SequenceNodeOfSequenceOfView_HeaderFile
 #include <Handle_Visual3d_SequenceNodeOfSequenceOfView.hxx>
-#endif
 
-#ifndef _Handle_Visual3d_View_HeaderFile
 #include <Handle_Visual3d_View.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Visual3d_View;
 class Visual3d_SequenceOfView;
 
 
 
-class Visual3d_SequenceNodeOfSequenceOfView : public TCollection_SeqNode {
+class Visual3d_SequenceNodeOfSequenceOfView : public TCollection_SeqNode
+{
 
 public:
 
   
-      Visual3d_SequenceNodeOfSequenceOfView(const Handle(Visual3d_View)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    Visual3d_SequenceNodeOfSequenceOfView(const Handle(Visual3d_View)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_Visual3d_View& Value() const;
+      Handle(Visual3d_View)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_Visual3d_View myValue;
+  Handle(Visual3d_View) myValue;
 
 
 };
 
-#define SeqItem Handle_Visual3d_View
+#define SeqItem Handle(Visual3d_View)
 #define SeqItem_hxx <Visual3d_View.hxx>
 #define TCollection_SequenceNode Visual3d_SequenceNodeOfSequenceOfView
 #define TCollection_SequenceNode_hxx <Visual3d_SequenceNodeOfSequenceOfView.hxx>
@@ -78,7 +67,6 @@ Handle_Visual3d_View myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Visual3d_SequenceNodeOfSequenceOfView_HeaderFile

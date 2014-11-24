@@ -1,18 +1,6 @@
-#ifndef _Adaptor2d_HCurve2d_HeaderFile
 #include <Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _Adaptor3d_HVertex_HeaderFile
 #include <Adaptor3d_HVertex.hxx>
-#endif
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _IntSurf_Transition_HeaderFile
 #include <IntSurf_Transition.hxx>
-#endif
-#ifndef _Contap_Point_HeaderFile
 #include <Contap_Point.hxx>
-#endif

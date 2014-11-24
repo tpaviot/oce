@@ -5,16 +5,10 @@
 
 #include <MAT2d_SequenceNodeOfSequenceOfConnexion.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _MAT2d_Connexion_HeaderFile
 #include <MAT2d_Connexion.hxx>
-#endif
-#ifndef _MAT2d_SequenceOfConnexion_HeaderFile
 #include <MAT2d_SequenceOfConnexion.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(MAT2d_SequenceNodeOfSequenceOfConnexion,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(MAT2d_SequenceNodeOfSequenceOfConnexion)
 
 
-#define SeqItem Handle_MAT2d_Connexion
+#define SeqItem Handle(MAT2d_Connexion)
 #define SeqItem_hxx <MAT2d_Connexion.hxx>
 #define TCollection_SequenceNode MAT2d_SequenceNodeOfSequenceOfConnexion
 #define TCollection_SequenceNode_hxx <MAT2d_SequenceNodeOfSequenceOfConnexion.hxx>

@@ -6,47 +6,39 @@
 #ifndef _XCAFApp_Application_HeaderFile
 #define _XCAFApp_Application_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_XCAFApp_Application_HeaderFile
 #include <Handle_XCAFApp_Application.hxx>
-#endif
 
-#ifndef _TDocStd_Application_HeaderFile
 #include <TDocStd_Application.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_TDocStd_Document_HeaderFile
 #include <Handle_TDocStd_Document.hxx>
-#endif
 class TColStd_SequenceOfExtendedString;
 class TDocStd_Document;
 
 
-//! Implements an Application for the DECAF documents <br>
-class XCAFApp_Application : public TDocStd_Application {
+//! Implements an Application for the DECAF documents
+class XCAFApp_Application : public TDocStd_Application
+{
 
 public:
 
   
-  Standard_EXPORT   virtual  void Formats(TColStd_SequenceOfExtendedString& Formats) ;
-  //! methods from TDocStd_Application <br>
-//!          ================================ <br>
-  Standard_EXPORT   virtual  Standard_CString ResourcesName() ;
-  //! Set XCAFDoc_DocumentTool attribute <br>
-  Standard_EXPORT   virtual  void InitDocument(const Handle(TDocStd_Document)& aDoc) const;
-  //! Initializes (for the first time) and returns the <br>
-//!          static object (XCAFApp_Application) <br>
-//!          This is the only valid method to get XCAFApp_Application <br>
-//!          object, and it should be called at least once before <br>
-//!          any actions with documents in order to init application <br>
-  Standard_EXPORT   static  Handle_XCAFApp_Application GetApplication() ;
+  Standard_EXPORT virtual   void Formats (TColStd_SequenceOfExtendedString& Formats) ;
+  
+  //! methods from TDocStd_Application
+  //! ================================
+  Standard_EXPORT virtual   Standard_CString ResourcesName() ;
+  
+  //! Set XCAFDoc_DocumentTool attribute
+  Standard_EXPORT virtual   void InitDocument (const Handle(TDocStd_Document)& aDoc)  const;
+  
+  //! Initializes (for the first time) and returns the
+  //! static object (XCAFApp_Application)
+  //! This is the only valid method to get XCAFApp_Application
+  //! object, and it should be called at least once before
+  //! any actions with documents in order to init application
+  Standard_EXPORT static   Handle(XCAFApp_Application) GetApplication() ;
 
 
 
@@ -55,9 +47,10 @@ public:
 
 protected:
 
-  //! methods from CDF_Application <br>
-//!          ============================ <br>
-  Standard_EXPORT   XCAFApp_Application();
+  
+  //! methods from CDF_Application
+  //! ============================
+  Standard_EXPORT XCAFApp_Application();
 
 
 
@@ -72,7 +65,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XCAFApp_Application_HeaderFile

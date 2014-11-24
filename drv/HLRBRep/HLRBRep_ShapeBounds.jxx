@@ -1,9 +1,3 @@
-#ifndef _HLRTopoBRep_OutLiner_HeaderFile
 #include <HLRTopoBRep_OutLiner.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _HLRBRep_ShapeBounds_HeaderFile
 #include <HLRBRep_ShapeBounds.hxx>
-#endif

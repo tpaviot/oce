@@ -6,53 +6,41 @@
 #ifndef _Vrml_Separator_HeaderFile
 #define _Vrml_Separator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Vrml_SeparatorRenderCulling_HeaderFile
 #include <Vrml_SeparatorRenderCulling.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 
 
-//!  defines a Separator node of VRML specifying group properties. <br>
-//!  This group node performs a push (save) of the traversal state before traversing its children <br>
-//!  and a pop (restore) after traversing them. This isolates the separator's children from the <br>
-//!  rest of the scene graph. A separator can include lights, cameras, coordinates, normals, <br>
-//!  bindings, and all other properties. <br>
-//!  Separators can also perform render culling. Render culling skips over traversal of the <br>
-//!  separator's children if they are not going to be rendered, based on the comparison of the <br>
-//!  separator's bounding box with the current view volume. Culling is controlled by the <br>
-//!  renderCulling field. These are set to AUTO by default, allowing the implementation to <br>
-//!  decide whether or not to cull. <br>
-class Vrml_Separator  {
+//! defines a Separator node of VRML specifying group properties.
+//! This group node performs a push (save) of the traversal state before traversing its children
+//! and a pop (restore) after traversing them. This isolates the separator's children from the
+//! rest of the scene graph. A separator can include lights, cameras, coordinates, normals,
+//! bindings, and all other properties.
+//! Separators can also perform render culling. Render culling skips over traversal of the
+//! separator's children if they are not going to be rendered, based on the comparison of the
+//! separator's bounding box with the current view volume. Culling is controlled by the
+//! renderCulling field. These are set to AUTO by default, allowing the implementation to
+//! decide whether or not to cull.
+class Vrml_Separator 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Vrml_Separator(const Vrml_SeparatorRenderCulling aRenderCulling);
+  Standard_EXPORT Vrml_Separator(const Vrml_SeparatorRenderCulling aRenderCulling);
   
-  Standard_EXPORT   Vrml_Separator();
+  Standard_EXPORT Vrml_Separator();
   
-  Standard_EXPORT     void SetRenderCulling(const Vrml_SeparatorRenderCulling aRenderCulling) ;
+  Standard_EXPORT   void SetRenderCulling (const Vrml_SeparatorRenderCulling aRenderCulling) ;
   
-  Standard_EXPORT     Vrml_SeparatorRenderCulling RenderCulling() const;
+  Standard_EXPORT   Vrml_SeparatorRenderCulling RenderCulling()  const;
   
-  Standard_EXPORT     Standard_OStream& Print(Standard_OStream& anOStream) ;
-
+  Standard_EXPORT   Standard_OStream& Print (Standard_OStream& anOStream) ;
 
 
 
@@ -67,8 +55,8 @@ private:
 
 
 
-Vrml_SeparatorRenderCulling myRenderCulling;
-Standard_Boolean myFlagPrint;
+  Vrml_SeparatorRenderCulling myRenderCulling;
+  Standard_Boolean myFlagPrint;
 
 
 };
@@ -77,7 +65,6 @@ Standard_Boolean myFlagPrint;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Vrml_Separator_HeaderFile

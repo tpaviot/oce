@@ -97,6 +97,8 @@
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 		</Linker>
 		<Unit filename="../../../src/ShapeBuild/ShapeBuild.cxx" />
 		<Unit filename="../../../src/ShapeBuild/ShapeBuild_Edge.cxx" />

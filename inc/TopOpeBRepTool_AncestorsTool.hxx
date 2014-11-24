@@ -6,38 +6,31 @@
 #ifndef _TopOpeBRepTool_AncestorsTool_HeaderFile
 #define _TopOpeBRepTool_AncestorsTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
 class TopoDS_Shape;
 class TopTools_IndexedDataMapOfShapeListOfShape;
 
 
-//! Describes the ancestors tool needed by <br>
-//!          the class DSFiller from TopOpeInter. <br>
-//! <br>
-//! This class has been created because it is not possible <br>
-//! to instantiate the argument TheAncestorsTool (of <br>
-//! DSFiller from TopOpeInter) with a  package (TopExp) <br>
-//! giving services as package methods. <br>
-class TopOpeBRepTool_AncestorsTool  {
+//! Describes the ancestors tool needed by
+//! the class DSFiller from TopOpeInter.
+//!
+//! This class has been created because it is not possible
+//! to instantiate the argument TheAncestorsTool (of
+//! DSFiller from TopOpeInter) with a  package (TopExp)
+//! giving services as package methods.
+class TopOpeBRepTool_AncestorsTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! same as package method TopExp::MapShapeListOfShapes() <br>
-  Standard_EXPORT   static  void MakeAncestors(const TopoDS_Shape& S,const TopAbs_ShapeEnum TS,const TopAbs_ShapeEnum TA,TopTools_IndexedDataMapOfShapeListOfShape& M) ;
-
+  
+  //! same as package method TopExp::MapShapeListOfShapes()
+  Standard_EXPORT static   void MakeAncestors (const TopoDS_Shape& S, const TopAbs_ShapeEnum TS, const TopAbs_ShapeEnum TA, TopTools_IndexedDataMapOfShapeListOfShape& M) ;
 
 
 
@@ -60,7 +53,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepTool_AncestorsTool_HeaderFile

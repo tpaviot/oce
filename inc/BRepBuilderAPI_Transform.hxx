@@ -6,81 +6,72 @@
 #ifndef _BRepBuilderAPI_Transform_HeaderFile
 #define _BRepBuilderAPI_Transform_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Trsf_HeaderFile
 #include <gp_Trsf.hxx>
-#endif
-#ifndef _TopLoc_Location_HeaderFile
 #include <TopLoc_Location.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _BRepBuilderAPI_ModifyShape_HeaderFile
 #include <BRepBuilderAPI_ModifyShape.hxx>
-#endif
 class Standard_NoSuchObject;
 class gp_Trsf;
 class TopoDS_Shape;
 class TopTools_ListOfShape;
 
 
-//! Geometric transformation on a shape. <br>
-//! The transformation to be applied is defined as a <br>
-//! gp_Trsf transformation, i.e. a transformation which does <br>
-//! not modify the underlying geometry of shapes. <br>
-//! The transformation is applied to: <br>
-//! -   all curves which support edges of a shape, and <br>
-//! -   all surfaces which support its faces. <br>
-//! A Transform object provides a framework for: <br>
-//! -   defining the geometric transformation to be applied, <br>
-//! -   implementing the transformation algorithm, and <br>
-//! -   consulting the results. <br>
-class BRepBuilderAPI_Transform  : public BRepBuilderAPI_ModifyShape {
+//! Geometric transformation on a shape.
+//! The transformation to be applied is defined as a
+//! gp_Trsf transformation, i.e. a transformation which does
+//! not modify the underlying geometry of shapes.
+//! The transformation is applied to:
+//! -   all curves which support edges of a shape, and
+//! -   all surfaces which support its faces.
+//! A Transform object provides a framework for:
+//! -   defining the geometric transformation to be applied,
+//! -   implementing the transformation algorithm, and
+//! -   consulting the results.
+class BRepBuilderAPI_Transform  : public BRepBuilderAPI_ModifyShape
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //!  Constructs a framework for applying the geometric <br>
-//! transformation T to a shape. Use the function Perform <br>
-//! to define the shape to transform. <br>
-  Standard_EXPORT   BRepBuilderAPI_Transform(const gp_Trsf& T);
-  //! Creates a transformation from the gp_Trsf <T>, and <br>
-//!          applies it to the shape <S>. If the transformation <br>
-//!          is  direct   and isometric (determinant  =  1) and <br>
-//!          <Copy> =  Standard_False,  the resulting shape  is <br>
-//!          <S> on   which  a  new  location has    been  set. <br>
-//!          Otherwise,  the   transformation is applied   on a <br>
-//!          duplication of <S>. <br>
-  Standard_EXPORT   BRepBuilderAPI_Transform(const TopoDS_Shape& S,const gp_Trsf& T,const Standard_Boolean Copy = Standard_False);
-  //! pplies the geometric transformation defined at the <br>
-//! time of construction of this framework to the shape S. <br>
-//! - If the transformation T is direct and isometric, in <br>
-//! other words, if the determinant of the vectorial part <br>
-//! of T is equal to 1., and if Copy equals false (the <br>
-//! default value), the resulting shape is the same as <br>
-//! the original but with a new location assigned to it. <br>
-//! -   In all other cases, the transformation is applied to a duplicate of S. <br>
-//! Use the function Shape to access the result. <br>
-//! Note: this framework can be reused to apply the same <br>
-//! geometric transformation to other shapes. You only <br>
-//! need to specify them by calling the function Perform again. <br>
-  Standard_EXPORT     void Perform(const TopoDS_Shape& S,const Standard_Boolean Copy = Standard_False) ;
-  //! Returns the modified shape corresponding to <S>. <br>
-  Standard_EXPORT   virtual const TopoDS_Shape& ModifiedShape(const TopoDS_Shape& S) const;
-  //! Returns the list  of shapes modified from the shape <br>
-//!          <S>. <br>
-  Standard_EXPORT   virtual const TopTools_ListOfShape& Modified(const TopoDS_Shape& S) ;
-
+  
+  //! Constructs a framework for applying the geometric
+  //! transformation T to a shape. Use the function Perform
+  //! to define the shape to transform.
+  Standard_EXPORT BRepBuilderAPI_Transform(const gp_Trsf& T);
+  
+  //! Creates a transformation from the gp_Trsf <T>, and
+  //! applies it to the shape <S>. If the transformation
+  //! is  direct   and isometric (determinant  =  1) and
+  //! <Copy> =  Standard_False,  the resulting shape  is
+  //! <S> on   which  a  new  location has    been  set.
+  //! Otherwise,  the   transformation is applied   on a
+  //! duplication of <S>.
+  Standard_EXPORT BRepBuilderAPI_Transform(const TopoDS_Shape& S, const gp_Trsf& T, const Standard_Boolean Copy = Standard_False);
+  
+  //! pplies the geometric transformation defined at the
+  //! time of construction of this framework to the shape S.
+  //! - If the transformation T is direct and isometric, in
+  //! other words, if the determinant of the vectorial part
+  //! of T is equal to 1., and if Copy equals false (the
+  //! default value), the resulting shape is the same as
+  //! the original but with a new location assigned to it.
+  //! -   In all other cases, the transformation is applied to a duplicate of S.
+  //! Use the function Shape to access the result.
+  //! Note: this framework can be reused to apply the same
+  //! geometric transformation to other shapes. You only
+  //! need to specify them by calling the function Perform again.
+  Standard_EXPORT   void Perform (const TopoDS_Shape& S, const Standard_Boolean Copy = Standard_False) ;
+  
+  //! Returns the modified shape corresponding to <S>.
+  Standard_EXPORT virtual  const  TopoDS_Shape& ModifiedShape (const TopoDS_Shape& S)  const;
+  
+  //! Returns the list  of shapes modified from the shape
+  //! <S>.
+  Standard_EXPORT virtual  const  TopTools_ListOfShape& Modified (const TopoDS_Shape& S) ;
 
 
 
@@ -95,9 +86,9 @@ private:
 
 
 
-gp_Trsf myTrsf;
-TopLoc_Location myLocation;
-Standard_Boolean myUseModif;
+  gp_Trsf myTrsf;
+  TopLoc_Location myLocation;
+  Standard_Boolean myUseModif;
 
 
 };
@@ -106,7 +97,6 @@ Standard_Boolean myUseModif;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepBuilderAPI_Transform_HeaderFile

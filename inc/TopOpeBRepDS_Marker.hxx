@@ -6,51 +6,36 @@
 #ifndef _TopOpeBRepDS_Marker_HeaderFile
 #define _TopOpeBRepDS_Marker_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_Marker_HeaderFile
 #include <Handle_TopOpeBRepDS_Marker.hxx>
-#endif
 
-#ifndef _Handle_TColStd_HArray1OfBoolean_HeaderFile
 #include <Handle_TColStd_HArray1OfBoolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class TColStd_HArray1OfBoolean;
 
 
 
-class TopOpeBRepDS_Marker : public MMgt_TShared {
+class TopOpeBRepDS_Marker : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   TopOpeBRepDS_Marker();
+  Standard_EXPORT TopOpeBRepDS_Marker();
   
-  Standard_EXPORT     void Reset() ;
+  Standard_EXPORT   void Reset() ;
   
-  Standard_EXPORT     void Set(const Standard_Integer i,const Standard_Boolean b) ;
+  Standard_EXPORT   void Set (const Standard_Integer i, const Standard_Boolean b) ;
   
-  Standard_EXPORT     void Set(const Standard_Boolean b,const Standard_Integer n,const Standard_Address a) ;
+  Standard_EXPORT   void Set (const Standard_Boolean b, const Standard_Integer n, const Standard_Address a) ;
   
-  Standard_EXPORT     Standard_Boolean GetI(const Standard_Integer i) const;
+  Standard_EXPORT   Standard_Boolean GetI (const Standard_Integer i)  const;
   
-  Standard_EXPORT     void Allocate(const Standard_Integer n) ;
+  Standard_EXPORT   void Allocate (const Standard_Integer n) ;
 
 
 
@@ -65,8 +50,8 @@ protected:
 private: 
 
 
-Handle_TColStd_HArray1OfBoolean myhe;
-Standard_Integer myne;
+  Handle(TColStd_HArray1OfBoolean) myhe;
+  Standard_Integer myne;
 
 
 };
@@ -75,7 +60,6 @@ Standard_Integer myne;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_Marker_HeaderFile

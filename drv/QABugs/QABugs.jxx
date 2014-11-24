@@ -1,3 +1,1 @@
-#ifndef _QABugs_HeaderFile
 #include <QABugs.hxx>
-#endif

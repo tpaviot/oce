@@ -6,38 +6,27 @@
 #ifndef _TDF_SequenceNodeOfLabelSequence_HeaderFile
 #define _TDF_SequenceNodeOfLabelSequence_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDF_SequenceNodeOfLabelSequence_HeaderFile
 #include <Handle_TDF_SequenceNodeOfLabelSequence.hxx>
-#endif
 
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class TDF_Label;
 class TDF_LabelSequence;
 
 
 
-class TDF_SequenceNodeOfLabelSequence : public TCollection_SeqNode {
+class TDF_SequenceNodeOfLabelSequence : public TCollection_SeqNode
+{
 
 public:
 
   
-      TDF_SequenceNodeOfLabelSequence(const TDF_Label& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    TDF_SequenceNodeOfLabelSequence(const TDF_Label& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        TDF_Label& Value() const;
+      TDF_Label& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-TDF_Label myValue;
+  TDF_Label myValue;
 
 
 };
@@ -78,7 +67,6 @@ TDF_Label myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_SequenceNodeOfLabelSequence_HeaderFile

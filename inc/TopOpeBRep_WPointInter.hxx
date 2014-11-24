@@ -6,52 +6,42 @@
 #ifndef _TopOpeBRep_WPointInter_HeaderFile
 #define _TopOpeBRep_WPointInter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopOpeBRep_PPntOn2S_HeaderFile
 #include <TopOpeBRep_PPntOn2S.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class IntSurf_PntOn2S;
 class gp_Pnt2d;
 class gp_Pnt;
 
 
 
-class TopOpeBRep_WPointInter  {
+class TopOpeBRep_WPointInter 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRep_WPointInter();
+  Standard_EXPORT TopOpeBRep_WPointInter();
   
-  Standard_EXPORT     void Set(const IntSurf_PntOn2S& P) ;
+  Standard_EXPORT   void Set (const IntSurf_PntOn2S& P) ;
   
-  Standard_EXPORT     void ParametersOnS1(Standard_Real& U,Standard_Real& V) const;
+  Standard_EXPORT   void ParametersOnS1 (Standard_Real& U, Standard_Real& V)  const;
   
-  Standard_EXPORT     void ParametersOnS2(Standard_Real& U,Standard_Real& V) const;
+  Standard_EXPORT   void ParametersOnS2 (Standard_Real& U, Standard_Real& V)  const;
   
-  Standard_EXPORT     void Parameters(Standard_Real& U1,Standard_Real& V1,Standard_Real& U2,Standard_Real& V2) const;
+  Standard_EXPORT   void Parameters (Standard_Real& U1, Standard_Real& V1, Standard_Real& U2, Standard_Real& V2)  const;
   
-  Standard_EXPORT     gp_Pnt2d ValueOnS1() const;
+  Standard_EXPORT   gp_Pnt2d ValueOnS1()  const;
   
-  Standard_EXPORT     gp_Pnt2d ValueOnS2() const;
+  Standard_EXPORT   gp_Pnt2d ValueOnS2()  const;
   
-  Standard_EXPORT    const gp_Pnt& Value() const;
+  Standard_EXPORT  const  gp_Pnt& Value()  const;
   
-  Standard_EXPORT     TopOpeBRep_PPntOn2S PPntOn2SDummy() const;
-
+  Standard_EXPORT   TopOpeBRep_PPntOn2S PPntOn2SDummy()  const;
 
 
 
@@ -66,7 +56,7 @@ private:
 
 
 
-TopOpeBRep_PPntOn2S myPP2S;
+  TopOpeBRep_PPntOn2S myPP2S;
 
 
 };
@@ -75,7 +65,6 @@ TopOpeBRep_PPntOn2S myPP2S;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRep_WPointInter_HeaderFile

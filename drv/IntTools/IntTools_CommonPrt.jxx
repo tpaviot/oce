@@ -1,15 +1,5 @@
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _IntTools_Range_HeaderFile
 #include <IntTools_Range.hxx>
-#endif
-#ifndef _IntTools_SequenceOfRanges_HeaderFile
 #include <IntTools_SequenceOfRanges.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _IntTools_CommonPrt_HeaderFile
 #include <IntTools_CommonPrt.hxx>
-#endif

@@ -1,3 +1,1 @@
-#ifndef _StepShape_Vertex_HeaderFile
 #include <StepShape_Vertex.hxx>
-#endif

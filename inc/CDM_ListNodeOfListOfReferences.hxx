@@ -6,39 +6,28 @@
 #ifndef _CDM_ListNodeOfListOfReferences_HeaderFile
 #define _CDM_ListNodeOfListOfReferences_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_CDM_ListNodeOfListOfReferences_HeaderFile
 #include <Handle_CDM_ListNodeOfListOfReferences.hxx>
-#endif
 
-#ifndef _Handle_CDM_Reference_HeaderFile
 #include <Handle_CDM_Reference.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class CDM_Reference;
 class CDM_ListOfReferences;
 class CDM_ListIteratorOfListOfReferences;
 
 
 
-class CDM_ListNodeOfListOfReferences : public TCollection_MapNode {
+class CDM_ListNodeOfListOfReferences : public TCollection_MapNode
+{
 
 public:
 
   
-      CDM_ListNodeOfListOfReferences(const Handle(CDM_Reference)& I,const TCollection_MapNodePtr& n);
+    CDM_ListNodeOfListOfReferences(const Handle(CDM_Reference)& I, const TCollection_MapNodePtr& n);
   
-        Handle_CDM_Reference& Value() const;
+      Handle(CDM_Reference)& Value()  const;
 
 
 
@@ -53,12 +42,12 @@ protected:
 private: 
 
 
-Handle_CDM_Reference myValue;
+  Handle(CDM_Reference) myValue;
 
 
 };
 
-#define Item Handle_CDM_Reference
+#define Item Handle(CDM_Reference)
 #define Item_hxx <CDM_Reference.hxx>
 #define TCollection_ListNode CDM_ListNodeOfListOfReferences
 #define TCollection_ListNode_hxx <CDM_ListNodeOfListOfReferences.hxx>
@@ -83,7 +72,6 @@ Handle_CDM_Reference myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _CDM_ListNodeOfListOfReferences_HeaderFile

@@ -5,27 +5,13 @@
 
 #include <TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_VertexInfo_HeaderFile
 #include <TopOpeBRepBuild_VertexInfo.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo_HeaderFile
 #include <TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape

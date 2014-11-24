@@ -6,48 +6,41 @@
 #ifndef _STEPCAFControl_ActorWrite_HeaderFile
 #define _STEPCAFControl_ActorWrite_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_STEPCAFControl_ActorWrite_HeaderFile
 #include <Handle_STEPCAFControl_ActorWrite.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopTools_MapOfShape_HeaderFile
 #include <TopTools_MapOfShape.hxx>
-#endif
-#ifndef _STEPControl_ActorWrite_HeaderFile
 #include <STEPControl_ActorWrite.hxx>
-#endif
 class TopoDS_Shape;
 
 
-//! Extends ActorWrite from STEPControl by analysis of <br>
-//!          whether shape is assembly (based on information from DECAF) <br>
-class STEPCAFControl_ActorWrite : public STEPControl_ActorWrite {
+//! Extends ActorWrite from STEPControl by analysis of
+//! whether shape is assembly (based on information from DECAF)
+class STEPCAFControl_ActorWrite : public STEPControl_ActorWrite
+{
 
 public:
 
   
-  Standard_EXPORT   STEPCAFControl_ActorWrite();
-  //! Check whether shape S is assembly <br>
-//!          Returns True if shape is registered in assemblies map <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsAssembly(TopoDS_Shape& S) const;
-  //! Set standard mode of work <br>
-//!          In standard mode Actor (default) behaves exactly as its <br>
-//!          ancestor, also map is cleared <br>
-  Standard_EXPORT     void SetStdMode(const Standard_Boolean stdmode = Standard_True) ;
-  //! Clears map of shapes registered as assemblies <br>
-  Standard_EXPORT     void ClearMap() ;
-  //! Registers shape to be written as assembly <br>
-//!          The shape should be TopoDS_Compound (else does nothing) <br>
-  Standard_EXPORT     void RegisterAssembly(const TopoDS_Shape& S) ;
+  Standard_EXPORT STEPCAFControl_ActorWrite();
+  
+  //! Check whether shape S is assembly
+  //! Returns True if shape is registered in assemblies map
+  Standard_EXPORT virtual   Standard_Boolean IsAssembly (TopoDS_Shape& S)  const;
+  
+  //! Set standard mode of work
+  //! In standard mode Actor (default) behaves exactly as its
+  //! ancestor, also map is cleared
+  Standard_EXPORT   void SetStdMode (const Standard_Boolean stdmode = Standard_True) ;
+  
+  //! Clears map of shapes registered as assemblies
+  Standard_EXPORT   void ClearMap() ;
+  
+  //! Registers shape to be written as assembly
+  //! The shape should be TopoDS_Compound (else does nothing)
+  Standard_EXPORT   void RegisterAssembly (const TopoDS_Shape& S) ;
 
 
 
@@ -62,8 +55,8 @@ protected:
 private: 
 
 
-Standard_Boolean myStdMode;
-TopTools_MapOfShape myMap;
+  Standard_Boolean myStdMode;
+  TopTools_MapOfShape myMap;
 
 
 };
@@ -72,7 +65,6 @@ TopTools_MapOfShape myMap;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPCAFControl_ActorWrite_HeaderFile

@@ -6,49 +6,21 @@
 #ifndef _Interface_FileReaderData_HeaderFile
 #define _Interface_FileReaderData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Interface_FileReaderData_HeaderFile
 #include <Handle_Interface_FileReaderData.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Interface_ParamSet_HeaderFile
 #include <Handle_Interface_ParamSet.hxx>
-#endif
-#ifndef _TColStd_Array1OfInteger_HeaderFile
 #include <TColStd_Array1OfInteger.hxx>
-#endif
-#ifndef _TColStd_Array1OfTransient_HeaderFile
 #include <TColStd_Array1OfTransient.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Interface_ParamType_HeaderFile
 #include <Interface_ParamType.hxx>
-#endif
-#ifndef _Handle_Interface_ParamList_HeaderFile
 #include <Handle_Interface_ParamList.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Interface_ParamSet;
 class Standard_NoSuchObject;
 class TCollection_AsciiString;
@@ -57,117 +29,144 @@ class Interface_ParamList;
 class Standard_Transient;
 
 
-//! This class defines services which permit to access Data issued <br>
-//!           from a File, in a form which does not depend of physical <br>
-//!           format : thus, each Record has an attached ParamList (to be <br>
-//!           managed) and resulting Entity. <br>
-//! <br>
-//!           Each Interface defines its own FileReaderData : on one hand by <br>
-//!           defining deferred methods given here, on the other hand by <br>
-//!           describing literal data and their accesses, with the help of <br>
-//!           basic classes such as String, Array1OfString, etc... <br>
-//! <br>
-//!           FileReaderData is used by a FileReaderTool, which is also <br>
-//!           specific of each Norm, to read an InterfaceModel of the Norm <br>
-//!           FileReaderData inherits TShared to be accessed by Handle : <br>
-//!           this allows FileReaderTool to define more easily the specific <br>
-//!           methods, and improves memory management. <br>
-class Interface_FileReaderData : public MMgt_TShared {
+//! This class defines services which permit to access Data issued
+//! from a File, in a form which does not depend of physical
+//! format : thus, each Record has an attached ParamList (to be
+//! managed) and resulting Entity.
+//!
+//! Each Interface defines its own FileReaderData : on one hand by
+//! defining deferred methods given here, on the other hand by
+//! describing literal data and their accesses, with the help of
+//! basic classes such as String, Array1OfString, etc...
+//!
+//! FileReaderData is used by a FileReaderTool, which is also
+//! specific of each Norm, to read an InterfaceModel of the Norm
+//! FileReaderData inherits TShared to be accessed by Handle :
+//! this allows FileReaderTool to define more easily the specific
+//! methods, and improves memory management.
+class Interface_FileReaderData : public MMgt_TShared
+{
 
 public:
 
-  //! Returns the count of registered records <br>
-//!           That is, value given for Initialization (can be redefined) <br>
-  Standard_EXPORT   virtual  Standard_Integer NbRecords() const;
-  //! Returns the count of entities. Depending of each norm, records <br>
-//!           can be Entities or SubParts (SubList in STEP, SubGroup in SET <br>
-//!           ...). NbEntities counts only Entities, not Subs <br>
-//!           Used for memory reservation in InterfaceModel <br>
-//!           Default implementation uses FindNextRecord <br>
-//!           Can be redefined into a more performant way <br>
-  Standard_EXPORT   virtual  Standard_Integer NbEntities() const;
-  //! Determines the record number defining an Entity following a <br>
-//!           given record number. Specific to each sub-class of <br>
-//!           FileReaderData. Returning zero means no record found <br>
-  Standard_EXPORT   virtual  Standard_Integer FindNextRecord(const Standard_Integer num) const = 0;
-  //! attaches an empty ParamList to a Record <br>
-  Standard_EXPORT     void InitParams(const Standard_Integer num) ;
-  //! Adds a parameter to record no "num" and fills its fields <br>
-//!           (EntityNumber is optional) <br>
-//!  Warning : <aval> is assumed to be memory-managed elsewhere : it is NOT <br>
-//!           copied. This gives a best speed : strings remain stored in <br>
-//!           pages of characters <br>
-  Standard_EXPORT     void AddParam(const Standard_Integer num,const Standard_CString aval,const Interface_ParamType atype,const Standard_Integer nument = 0) ;
-  //! Same as above, but gets a AsciiString from TCollection <br>
-//!           Remark that the content of the AsciiString is locally copied <br>
-//!           (because its content is most often lost after using) <br>
-  Standard_EXPORT     void AddParam(const Standard_Integer num,const TCollection_AsciiString& aval,const Interface_ParamType atype,const Standard_Integer nument = 0) ;
-  //! Same as above, but gets a complete FileParameter <br>
-//!  Warning : Content of <FP> is NOT copied : its original address and space <br>
-//!           in memory are assumed to be managed elsewhere (see ParamSet) <br>
-  Standard_EXPORT     void AddParam(const Standard_Integer num,const Interface_FileParameter& FP) ;
-  //! Sets a new value for a parameter of a record, given by : <br>
-//!           num : record number; nump : parameter number in the record <br>
-  Standard_EXPORT     void SetParam(const Standard_Integer num,const Standard_Integer nump,const Interface_FileParameter& FP) ;
-  //! Returns count of parameters attached to record "num" <br>
-//!           If <num> = 0, returns the total recorded count of parameters <br>
-  Standard_EXPORT     Standard_Integer NbParams(const Standard_Integer num) const;
-  //! Returns the complete ParamList of a record (read only) <br>
-//!           num = 0 to return the whole param list for the file <br>
-  Standard_EXPORT     Handle_Interface_ParamList Params(const Standard_Integer num) const;
-  //! Returns parameter "nump" of record "num", as a complete <br>
-//!           FileParameter <br>
-  Standard_EXPORT    const Interface_FileParameter& Param(const Standard_Integer num,const Standard_Integer nump) const;
-  //! Same as above, but in order to be modified on place <br>
-  Standard_EXPORT     Interface_FileParameter& ChangeParam(const Standard_Integer num,const Standard_Integer nump) ;
-  //! Returns type of parameter "nump" of record "num" <br>//! Returns literal value of parameter "nump" of record "num" <br>
-//!  was C++ : return const & <br>
-  Standard_EXPORT     Interface_ParamType ParamType(const Standard_Integer num,const Standard_Integer nump) const;
-  //! Same as above, but as a CString <br>
-//!  was C++ : return const <br>
-  Standard_EXPORT     Standard_CString ParamCValue(const Standard_Integer num,const Standard_Integer nump) const;
-  //! Returns True if parameter "nump" of record "num" is defined <br>
-//!           (it is not if its type is ParamVoid) <br>
-  Standard_EXPORT     Standard_Boolean IsParamDefined(const Standard_Integer num,const Standard_Integer nump) const;
-  //! Returns record number of an entity referenced by a parameter <br>
-//!           of type Ident; 0 if no EntityNumber has been determined <br>
-//!           Note that it is used to reference Entities but also Sublists <br>
-//!           (sublists are not objects, but internal descriptions) <br>
-  Standard_EXPORT     Standard_Integer ParamNumber(const Standard_Integer num,const Standard_Integer nump) const;
-  //! Returns the StepEntity referenced by a parameter <br>
-//!           Error if none <br>
-  Standard_EXPORT    const Handle_Standard_Transient& ParamEntity(const Standard_Integer num,const Standard_Integer nump) const;
-  //! Returns the absolute rank of the beginning of a record <br>
-//!           (its lsit is from ParamFirstRank+1 to ParamFirstRank+NbParams) <br>
-  Standard_EXPORT     Standard_Integer ParamFirstRank(const Standard_Integer num) const;
-  //! Returns the entity bound to a record, set by SetEntities <br>
-  Standard_EXPORT    const Handle_Standard_Transient& BoundEntity(const Standard_Integer num) const;
-  //! Binds an entity to a record <br>
-  Standard_EXPORT     void BindEntity(const Standard_Integer num,const Handle(Standard_Transient)& ent) ;
-  //! Sets the status "Error Load" on, to overside check fails <br>
-//!           <val> True  : declares unloaded <br>
-//!           <val> False : declares loaded <br>
-//!           If not called before loading (see FileReaderTool), check fails <br>
-//!             give the status <br>
-//!           IsErrorLoad says if SetErrorLoad has been called by user <br>
-//!           ResetErrorLoad resets it (called by FileReaderTool) <br>
-//!           This allows to specify that the currently loaded entity <br>
-//!           remains unloaded (because of syntactic fail) <br>
-  Standard_EXPORT     void SetErrorLoad(const Standard_Boolean val) ;
-  //! Returns True if the status "Error Load" has been set (to True <br>
-//!           or False) <br>
-  Standard_EXPORT     Standard_Boolean IsErrorLoad() const;
-  //! Returns the former value of status "Error Load" then resets it <br>
-//!           Used to read the status then ensure it is reset <br>
-  Standard_EXPORT     Standard_Boolean ResetErrorLoad() ;
-  //! Destructor (waiting for memory management) <br>
-  Standard_EXPORT     void Destroy() ;
+  
+  //! Returns the count of registered records
+  //! That is, value given for Initialization (can be redefined)
+  Standard_EXPORT virtual   Standard_Integer NbRecords()  const;
+  
+  //! Returns the count of entities. Depending of each norm, records
+  //! can be Entities or SubParts (SubList in STEP, SubGroup in SET
+  //! ...). NbEntities counts only Entities, not Subs
+  //! Used for memory reservation in InterfaceModel
+  //! Default implementation uses FindNextRecord
+  //! Can be redefined into a more performant way
+  Standard_EXPORT virtual   Standard_Integer NbEntities()  const;
+  
+  //! Determines the record number defining an Entity following a
+  //! given record number. Specific to each sub-class of
+  //! FileReaderData. Returning zero means no record found
+  Standard_EXPORT virtual   Standard_Integer FindNextRecord (const Standard_Integer num)  const = 0;
+  
+  //! attaches an empty ParamList to a Record
+  Standard_EXPORT   void InitParams (const Standard_Integer num) ;
+  
+  //! Adds a parameter to record no "num" and fills its fields
+  //! (EntityNumber is optional)
+  //! Warning : <aval> is assumed to be memory-managed elsewhere : it is NOT
+  //! copied. This gives a best speed : strings remain stored in
+  //! pages of characters
+  Standard_EXPORT   void AddParam (const Standard_Integer num, const Standard_CString aval, const Interface_ParamType atype, const Standard_Integer nument = 0) ;
+  
+  //! Same as above, but gets a AsciiString from TCollection
+  //! Remark that the content of the AsciiString is locally copied
+  //! (because its content is most often lost after using)
+  Standard_EXPORT   void AddParam (const Standard_Integer num, const TCollection_AsciiString& aval, const Interface_ParamType atype, const Standard_Integer nument = 0) ;
+  
+  //! Same as above, but gets a complete FileParameter
+  //! Warning : Content of <FP> is NOT copied : its original address and space
+  //! in memory are assumed to be managed elsewhere (see ParamSet)
+  Standard_EXPORT   void AddParam (const Standard_Integer num, const Interface_FileParameter& FP) ;
+  
+  //! Sets a new value for a parameter of a record, given by :
+  //! num : record number; nump : parameter number in the record
+  Standard_EXPORT   void SetParam (const Standard_Integer num, const Standard_Integer nump, const Interface_FileParameter& FP) ;
+  
+  //! Returns count of parameters attached to record "num"
+  //! If <num> = 0, returns the total recorded count of parameters
+  Standard_EXPORT   Standard_Integer NbParams (const Standard_Integer num)  const;
+  
+  //! Returns the complete ParamList of a record (read only)
+  //! num = 0 to return the whole param list for the file
+  Standard_EXPORT   Handle(Interface_ParamList) Params (const Standard_Integer num)  const;
+  
+  //! Returns parameter "nump" of record "num", as a complete
+  //! FileParameter
+  Standard_EXPORT  const  Interface_FileParameter& Param (const Standard_Integer num, const Standard_Integer nump)  const;
+  
+  //! Same as above, but in order to be modified on place
+  Standard_EXPORT   Interface_FileParameter& ChangeParam (const Standard_Integer num, const Standard_Integer nump) ;
+  
+  //! Returns type of parameter "nump" of record "num"
+  //! Returns literal value of parameter "nump" of record "num"
+  //! was C++ : return const &
+  Standard_EXPORT   Interface_ParamType ParamType (const Standard_Integer num, const Standard_Integer nump)  const;
+  
+  //! Same as above, but as a CString
+  //! was C++ : return const
+  Standard_EXPORT   Standard_CString ParamCValue (const Standard_Integer num, const Standard_Integer nump)  const;
+  
+  //! Returns True if parameter "nump" of record "num" is defined
+  //! (it is not if its type is ParamVoid)
+  Standard_EXPORT   Standard_Boolean IsParamDefined (const Standard_Integer num, const Standard_Integer nump)  const;
+  
+  //! Returns record number of an entity referenced by a parameter
+  //! of type Ident; 0 if no EntityNumber has been determined
+  //! Note that it is used to reference Entities but also Sublists
+  //! (sublists are not objects, but internal descriptions)
+  Standard_EXPORT   Standard_Integer ParamNumber (const Standard_Integer num, const Standard_Integer nump)  const;
+  
+  //! Returns the StepEntity referenced by a parameter
+  //! Error if none
+  Standard_EXPORT  const  Handle(Standard_Transient)& ParamEntity (const Standard_Integer num, const Standard_Integer nump)  const;
+  
+  //! Returns the absolute rank of the beginning of a record
+  //! (its lsit is from ParamFirstRank+1 to ParamFirstRank+NbParams)
+  Standard_EXPORT   Standard_Integer ParamFirstRank (const Standard_Integer num)  const;
+  
+  //! Returns the entity bound to a record, set by SetEntities
+  Standard_EXPORT  const  Handle(Standard_Transient)& BoundEntity (const Standard_Integer num)  const;
+  
+  //! Binds an entity to a record
+  Standard_EXPORT   void BindEntity (const Standard_Integer num, const Handle(Standard_Transient)& ent) ;
+  
+  //! Sets the status "Error Load" on, to overside check fails
+  //! <val> True  : declares unloaded
+  //! <val> False : declares loaded
+  //! If not called before loading (see FileReaderTool), check fails
+  //! give the status
+  //! IsErrorLoad says if SetErrorLoad has been called by user
+  //! ResetErrorLoad resets it (called by FileReaderTool)
+  //! This allows to specify that the currently loaded entity
+  //! remains unloaded (because of syntactic fail)
+  Standard_EXPORT   void SetErrorLoad (const Standard_Boolean val) ;
+  
+  //! Returns True if the status "Error Load" has been set (to True
+  //! or False)
+  Standard_EXPORT   Standard_Boolean IsErrorLoad()  const;
+  
+  //! Returns the former value of status "Error Load" then resets it
+  //! Used to read the status then ensure it is reset
+  Standard_EXPORT   Standard_Boolean ResetErrorLoad() ;
+  
+  //! Destructor (waiting for memory management)
+  Standard_EXPORT   void Destroy() ;
 ~Interface_FileReaderData()
 {
   Destroy();
 }
-  //! Same spec.s as standard <atof> but 5 times faster <br>
-  Standard_EXPORT   static  Standard_Real Fastof(const Standard_CString str) ;
+  
+  //! Same spec.s as standard <atof> but 5 times faster
+  Standard_EXPORT static   Standard_Real Fastof (const Standard_CString str) ;
 
 
 
@@ -175,35 +174,38 @@ public:
 
 protected:
 
-  //! Initializes arrays of Entities and of ParamLists attached <br>
-//!           to registered records <br>
-//!           <nbr> must be the maximum number of records to get (no way to <br>
-//!           extend it at run-time) : count entities and sub-entities ... <br>
-//!           <npar> is the total count of parameters (if it is not exact, <br>
-//!           it will be extented as necessary) <br>
-//! <br>
-//!           Hence, to each record can be bound an Entity and a list of <br>
-//!           Parameters. Each kind of FileReaderData can add other data, by <br>
-//!           having them in parallel (other arrays with same sizes) <br>
-//!           Else, it must manage binding between items and their data <br>
-  Standard_EXPORT   Interface_FileReaderData(const Standard_Integer nbr,const Standard_Integer npar);
-  //! Returns a parameter given its absolute rank in the file <br>
-//!           in order to be consulted or modified in specilaized actions <br>
-  Standard_EXPORT     Interface_FileParameter& ChangeParameter(const Standard_Integer numpar) ;
-  //! For a given absolute rank of parameter, determines the <br>
-//!           record to which its belongs, and the parameter number for it <br>
-  Standard_EXPORT     void ParamPosition(const Standard_Integer numpar,Standard_Integer& num,Standard_Integer& nump) const;
+  
+  //! Initializes arrays of Entities and of ParamLists attached
+  //! to registered records
+  //! <nbr> must be the maximum number of records to get (no way to
+  //! extend it at run-time) : count entities and sub-entities ...
+  //! <npar> is the total count of parameters (if it is not exact,
+  //! it will be extented as necessary)
+  //!
+  //! Hence, to each record can be bound an Entity and a list of
+  //! Parameters. Each kind of FileReaderData can add other data, by
+  //! having them in parallel (other arrays with same sizes)
+  //! Else, it must manage binding between items and their data
+  Standard_EXPORT Interface_FileReaderData(const Standard_Integer nbr, const Standard_Integer npar);
+  
+  //! Returns a parameter given its absolute rank in the file
+  //! in order to be consulted or modified in specilaized actions
+  Standard_EXPORT   Interface_FileParameter& ChangeParameter (const Standard_Integer numpar) ;
+  
+  //! For a given absolute rank of parameter, determines the
+  //! record to which its belongs, and the parameter number for it
+  Standard_EXPORT   void ParamPosition (const Standard_Integer numpar, Standard_Integer& num, Standard_Integer& nump)  const;
 
 
 
 private: 
 
 
-Standard_Integer thenum0;
-Standard_Integer therrload;
-Handle_Interface_ParamSet theparams;
-TColStd_Array1OfInteger thenumpar;
-TColStd_Array1OfTransient theents;
+  Standard_Integer thenum0;
+  Standard_Integer therrload;
+  Handle(Interface_ParamSet) theparams;
+  TColStd_Array1OfInteger thenumpar;
+  TColStd_Array1OfTransient theents;
 
 
 };
@@ -212,7 +214,6 @@ TColStd_Array1OfTransient theents;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Interface_FileReaderData_HeaderFile

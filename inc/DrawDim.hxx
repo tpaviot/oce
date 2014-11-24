@@ -6,28 +6,14 @@
 #ifndef _DrawDim_HeaderFile
 #define _DrawDim_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Draw_Interpretor_HeaderFile
 #include <Draw_Interpretor.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TopoDS_Shape;
 class gp_Pnt;
 class TopoDS_Edge;
@@ -46,37 +32,42 @@ class DrawDim_PlanarRadius;
 class DrawDim_PlanarDiameter;
 
 
-//! This package provides Drawable Dimensions. <br>
-//! <br>
-//!          The classes PlanarDimension and subclasses provide <br>
-//!            services  to  build  drawable dimensions between <br>
-//!          point line and circle in a given 3d plane. <br>
-//! <br>
-//!           The   classes  Dimension and   subclasses provide <br>
-//!            services  to build  drawable  dimensions between <br>
-//!          plane and cylindrical surfaces. <br>
-class DrawDim  {
+//! This package provides Drawable Dimensions.
+//!
+//! The classes PlanarDimension and subclasses provide
+//! services  to  build  drawable dimensions between
+//! point line and circle in a given 3d plane.
+//!
+//! The   classes  Dimension and   subclasses provide
+//! services  to build  drawable  dimensions between
+//! plane and cylindrical surfaces.
+class DrawDim 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Commands <br>
-//!          ======== <br>
-  Standard_EXPORT   static  void DrawShapeName(const TopoDS_Shape& ashape,const Standard_CString aname) ;
   
-  Standard_EXPORT   static  void AllCommands(Draw_Interpretor& I) ;
-  //! tools <br>
-//!          ===== <br>
-  Standard_EXPORT   static  void PlanarDimensionCommands(Draw_Interpretor& I) ;
+  //! Commands
+  //! ========
+  Standard_EXPORT static   void DrawShapeName (const TopoDS_Shape& ashape, const Standard_CString aname) ;
   
-  Standard_EXPORT   static  gp_Pnt Nearest(const TopoDS_Shape& aShape,const gp_Pnt& apoint) ;
-  //! false if <e> is not a linear edge <br>
-  Standard_EXPORT   static  Standard_Boolean Lin(const TopoDS_Edge& e,gp_Lin& l,Standard_Boolean& infinite,Standard_Real& first,Standard_Real& last) ;
-  //! false if <e> is not a circular edge <br>
-  Standard_EXPORT   static  Standard_Boolean Circ(const TopoDS_Edge& e,gp_Circ& l,Standard_Real& first,Standard_Real& last) ;
-  //! false if <f> is not a planar face <br>
-  Standard_EXPORT   static  Standard_Boolean Pln(const TopoDS_Face& f,gp_Pln& p) ;
-
+  Standard_EXPORT static   void AllCommands (Draw_Interpretor& I) ;
+  
+  //! tools
+  //! =====
+  Standard_EXPORT static   void PlanarDimensionCommands (Draw_Interpretor& I) ;
+  
+  Standard_EXPORT static   gp_Pnt Nearest (const TopoDS_Shape& aShape, const gp_Pnt& apoint) ;
+  
+  //! false if <e> is not a linear edge
+  Standard_EXPORT static   Standard_Boolean Lin (const TopoDS_Edge& e, gp_Lin& l, Standard_Boolean& infinite, Standard_Real& first, Standard_Real& last) ;
+  
+  //! false if <e> is not a circular edge
+  Standard_EXPORT static   Standard_Boolean Circ (const TopoDS_Edge& e, gp_Circ& l, Standard_Real& first, Standard_Real& last) ;
+  
+  //! false if <f> is not a planar face
+  Standard_EXPORT static   Standard_Boolean Pln (const TopoDS_Face& f, gp_Pln& p) ;
 
 
 
@@ -108,7 +99,6 @@ friend class DrawDim_PlanarDiameter;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DrawDim_HeaderFile

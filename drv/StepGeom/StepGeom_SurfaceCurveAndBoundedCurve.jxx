@@ -1,6 +1,2 @@
-#ifndef _StepGeom_BoundedCurve_HeaderFile
 #include <StepGeom_BoundedCurve.hxx>
-#endif
-#ifndef _StepGeom_SurfaceCurveAndBoundedCurve_HeaderFile
 #include <StepGeom_SurfaceCurveAndBoundedCurve.hxx>
-#endif

@@ -6,42 +6,35 @@
 #ifndef _StepShape_DimensionalSizeWithPath_HeaderFile
 #define _StepShape_DimensionalSizeWithPath_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_DimensionalSizeWithPath_HeaderFile
 #include <Handle_StepShape_DimensionalSizeWithPath.hxx>
-#endif
 
-#ifndef _Handle_StepRepr_ShapeAspect_HeaderFile
 #include <Handle_StepRepr_ShapeAspect.hxx>
-#endif
-#ifndef _StepShape_DimensionalSize_HeaderFile
 #include <StepShape_DimensionalSize.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepRepr_ShapeAspect;
 class TCollection_HAsciiString;
 
 
-//! Representation of STEP entity DimensionalSizeWithPath <br>
-class StepShape_DimensionalSizeWithPath : public StepShape_DimensionalSize {
+//! Representation of STEP entity DimensionalSizeWithPath
+class StepShape_DimensionalSizeWithPath : public StepShape_DimensionalSize
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepShape_DimensionalSizeWithPath();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(StepRepr_ShapeAspect)& aDimensionalSize_AppliesTo,const Handle(TCollection_HAsciiString)& aDimensionalSize_Name,const Handle(StepRepr_ShapeAspect)& aPath) ;
-  //! Returns field Path <br>
-  Standard_EXPORT     Handle_StepRepr_ShapeAspect Path() const;
-  //! Set field Path <br>
-  Standard_EXPORT     void SetPath(const Handle(StepRepr_ShapeAspect)& Path) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepShape_DimensionalSizeWithPath();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(StepRepr_ShapeAspect)& aDimensionalSize_AppliesTo, const Handle(TCollection_HAsciiString)& aDimensionalSize_Name, const Handle(StepRepr_ShapeAspect)& aPath) ;
+  
+  //! Returns field Path
+  Standard_EXPORT   Handle(StepRepr_ShapeAspect) Path()  const;
+  
+  //! Set field Path
+  Standard_EXPORT   void SetPath (const Handle(StepRepr_ShapeAspect)& Path) ;
 
 
 
@@ -56,7 +49,7 @@ protected:
 private: 
 
 
-Handle_StepRepr_ShapeAspect thePath;
+  Handle(StepRepr_ShapeAspect) thePath;
 
 
 };
@@ -65,7 +58,6 @@ Handle_StepRepr_ShapeAspect thePath;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_DimensionalSizeWithPath_HeaderFile

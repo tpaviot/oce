@@ -6,8 +6,11 @@
 #ifndef _BRepCheck_Status_HeaderFile
 #define _BRepCheck_Status_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum BRepCheck_Status {
+
+enum BRepCheck_Status
+{
 BRepCheck_NoError,
 BRepCheck_InvalidPointOnCurve,
 BRepCheck_InvalidPointOnCurveOnSurface,
@@ -45,8 +48,4 @@ BRepCheck_InvalidToleranceValue,
 BRepCheck_CheckFail
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BRepCheck_Status_HeaderFile

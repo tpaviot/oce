@@ -1,27 +1,9 @@
-#ifndef _ShapeBuild_ReShape_HeaderFile
 #include <ShapeBuild_ReShape.hxx>
-#endif
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _TopoDS_Vertex_HeaderFile
 #include <TopoDS_Vertex.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _ShapeExtend_WireData_HeaderFile
 #include <ShapeExtend_WireData.hxx>
-#endif
-#ifndef _ShapeFix_DataMapOfShapeBox2d_HeaderFile
 #include <ShapeFix_DataMapOfShapeBox2d.hxx>
-#endif
-#ifndef _Bnd_Box2d_HeaderFile
 #include <Bnd_Box2d.hxx>
-#endif
-#ifndef _Geom2d_Curve_HeaderFile
 #include <Geom2d_Curve.hxx>
-#endif
-#ifndef _ShapeFix_IntersectionTool_HeaderFile
 #include <ShapeFix_IntersectionTool.hxx>
-#endif

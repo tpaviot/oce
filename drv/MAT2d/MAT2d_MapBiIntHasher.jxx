@@ -1,6 +1,2 @@
-#ifndef _MAT2d_BiInt_HeaderFile
 #include <MAT2d_BiInt.hxx>
-#endif
-#ifndef _MAT2d_MapBiIntHasher_HeaderFile
 #include <MAT2d_MapBiIntHasher.hxx>
-#endif

@@ -6,25 +6,13 @@
 #ifndef _MeshVS_DataMapIteratorOfDataMapOfIntegerMaterial_HeaderFile
 #define _MeshVS_DataMapIteratorOfDataMapOfIntegerMaterial_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMaterial_HeaderFile
 #include <Handle_MeshVS_DataMapNodeOfDataMapOfIntegerMaterial.hxx>
-#endif
 class Standard_NoSuchObject;
 class Graphic3d_MaterialAspect;
 class TColStd_MapIntegerHasher;
@@ -33,22 +21,22 @@ class MeshVS_DataMapNodeOfDataMapOfIntegerMaterial;
 
 
 
-class MeshVS_DataMapIteratorOfDataMapOfIntegerMaterial  : public TCollection_BasicMapIterator {
+class MeshVS_DataMapIteratorOfDataMapOfIntegerMaterial  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   MeshVS_DataMapIteratorOfDataMapOfIntegerMaterial();
+  Standard_EXPORT MeshVS_DataMapIteratorOfDataMapOfIntegerMaterial();
   
-  Standard_EXPORT   MeshVS_DataMapIteratorOfDataMapOfIntegerMaterial(const MeshVS_DataMapOfIntegerMaterial& aMap);
+  Standard_EXPORT MeshVS_DataMapIteratorOfDataMapOfIntegerMaterial(const MeshVS_DataMapOfIntegerMaterial& aMap);
   
-  Standard_EXPORT     void Initialize(const MeshVS_DataMapOfIntegerMaterial& aMap) ;
+  Standard_EXPORT   void Initialize (const MeshVS_DataMapOfIntegerMaterial& aMap) ;
   
-  Standard_EXPORT    const Standard_Integer& Key() const;
+  Standard_EXPORT  const  Standard_Integer& Key()  const;
   
-  Standard_EXPORT    const Graphic3d_MaterialAspect& Value() const;
-
+  Standard_EXPORT  const  Graphic3d_MaterialAspect& Value()  const;
 
 
 
@@ -71,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MeshVS_DataMapIteratorOfDataMapOfIntegerMaterial_HeaderFile

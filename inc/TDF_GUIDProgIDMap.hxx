@@ -6,28 +6,14 @@
 #ifndef _TDF_GUIDProgIDMap_HeaderFile
 #define _TDF_GUIDProgIDMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_TDF_DoubleMapNodeOfGUIDProgIDMap_HeaderFile
 #include <Handle_TDF_DoubleMapNodeOfGUIDProgIDMap.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_DomainError;
 class Standard_MultiplyDefined;
 class Standard_NoSuchObject;
@@ -38,44 +24,44 @@ class TDF_DoubleMapIteratorOfGUIDProgIDMap;
 
 
 
-class TDF_GUIDProgIDMap  : public TCollection_BasicMap {
+class TDF_GUIDProgIDMap  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TDF_GUIDProgIDMap(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT TDF_GUIDProgIDMap(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     TDF_GUIDProgIDMap& Assign(const TDF_GUIDProgIDMap& Other) ;
-    TDF_GUIDProgIDMap& operator =(const TDF_GUIDProgIDMap& Other) 
+  Standard_EXPORT   TDF_GUIDProgIDMap& Assign (const TDF_GUIDProgIDMap& Other) ;
+  TDF_GUIDProgIDMap& operator = (const TDF_GUIDProgIDMap& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TDF_GUIDProgIDMap()
 {
   Clear();
 }
   
-  Standard_EXPORT     void Bind(const Standard_GUID& K1,const TCollection_ExtendedString& K2) ;
+  Standard_EXPORT   void Bind (const Standard_GUID& K1, const TCollection_ExtendedString& K2) ;
   
-  Standard_EXPORT     Standard_Boolean AreBound(const Standard_GUID& K1,const TCollection_ExtendedString& K2) const;
+  Standard_EXPORT   Standard_Boolean AreBound (const Standard_GUID& K1, const TCollection_ExtendedString& K2)  const;
   
-  Standard_EXPORT     Standard_Boolean IsBound1(const Standard_GUID& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound1 (const Standard_GUID& K)  const;
   
-  Standard_EXPORT     Standard_Boolean IsBound2(const TCollection_ExtendedString& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound2 (const TCollection_ExtendedString& K)  const;
   
-  Standard_EXPORT    const TCollection_ExtendedString& Find1(const Standard_GUID& K) const;
+  Standard_EXPORT  const  TCollection_ExtendedString& Find1 (const Standard_GUID& K)  const;
   
-  Standard_EXPORT    const Standard_GUID& Find2(const TCollection_ExtendedString& K) const;
+  Standard_EXPORT  const  Standard_GUID& Find2 (const TCollection_ExtendedString& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind1(const Standard_GUID& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind1 (const Standard_GUID& K) ;
   
-  Standard_EXPORT     Standard_Boolean UnBind2(const TCollection_ExtendedString& K) ;
-
+  Standard_EXPORT   Standard_Boolean UnBind2 (const TCollection_ExtendedString& K) ;
 
 
 
@@ -89,7 +75,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   TDF_GUIDProgIDMap(const TDF_GUIDProgIDMap& Other);
+  Standard_EXPORT TDF_GUIDProgIDMap(const TDF_GUIDProgIDMap& Other);
 
 
 
@@ -100,7 +86,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_GUIDProgIDMap_HeaderFile

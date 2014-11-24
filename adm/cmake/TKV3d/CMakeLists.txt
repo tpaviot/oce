@@ -217,6 +217,10 @@ elseif(APPLE)
     list( APPEND TKV3d_USED_LIBS ${FRAMEWORKS_OPENGL} )
   endif()
   list( APPEND TKV3d_USED_LIBS freetype )
+elseif(ANDROID)
+  list( APPEND TKV3d_USED_LIBS EGL )
+  list( APPEND TKV3d_USED_LIBS GLESv2 )
+  list( APPEND TKV3d_USED_LIBS freetype )
 else()
   list( APPEND TKV3d_USED_LIBS GLU )
   list( APPEND TKV3d_USED_LIBS GL )
@@ -3549,13 +3553,13 @@ if ("${USED_TOOLKITS}" STREQUAL "" OR DEFINED TurnONtheTKV3d)
  set_property(TARGET TKV3d PROPERTY FOLDER Visualization)
 
  install( TARGETS TKV3d
-                                 RUNTIME DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_SUFFIX}"
-                                 ARCHIVE DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_SUFFIX}"
-                                 LIBRARY DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_SUFFIX}")
+                                 RUNTIME DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_POSTFIX}"
+                                 ARCHIVE DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_POSTFIX}"
+                                 LIBRARY DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_POSTFIX}")
 
  if (MSVC)
-  install( FILES  ${CMAKE_BINARY_DIR}/out/bin/Debug/TKV3d.pdb CONFIGURATIONS Debug
-                                  DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_SUFFIX}")
+  install( FILES  ${CMAKE_BINARY_DIR}/out/bind/Debug/TKV3d.pdb CONFIGURATIONS Debug
+                                  DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_POSTFIX}")
  endif()
 
 

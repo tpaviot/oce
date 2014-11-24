@@ -6,28 +6,14 @@
 #ifndef _BRepBlend_AppFuncRst_HeaderFile
 #define _BRepBlend_AppFuncRst_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepBlend_AppFuncRst_HeaderFile
 #include <Handle_BRepBlend_AppFuncRst.hxx>
-#endif
 
-#ifndef _BRepBlend_AppFuncRoot_HeaderFile
 #include <BRepBlend_AppFuncRoot.hxx>
-#endif
-#ifndef _Handle_BRepBlend_Line_HeaderFile
 #include <Handle_BRepBlend_Line.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
 #include <math_Vector.hxx>
-#endif
 class Standard_OutOfRange;
 class BRepBlend_Line;
 class Blend_SurfRstFunction;
@@ -35,17 +21,18 @@ class Blend_AppFunction;
 class Blend_Point;
 
 
-//! Function  to approximate by AppSurface  for Curve/Surface contact. <br>
-class BRepBlend_AppFuncRst : public BRepBlend_AppFuncRoot {
+//! Function  to approximate by AppSurface  for Curve/Surface contact.
+class BRepBlend_AppFuncRst : public BRepBlend_AppFuncRoot
+{
 
 public:
 
   
-  Standard_EXPORT   BRepBlend_AppFuncRst(Handle(BRepBlend_Line)& Line,Blend_SurfRstFunction& Func,const Standard_Real Tol3d,const Standard_Real Tol2d);
+  Standard_EXPORT BRepBlend_AppFuncRst(Handle(BRepBlend_Line)& Line, Blend_SurfRstFunction& Func, const Standard_Real Tol3d, const Standard_Real Tol2d);
   
-  Standard_EXPORT     void Point(const Blend_AppFunction& Func,const Standard_Real Param,const math_Vector& Sol,Blend_Point& Pnt) const;
+  Standard_EXPORT   void Point (const Blend_AppFunction& Func, const Standard_Real Param, const math_Vector& Sol, Blend_Point& Pnt)  const;
   
-  Standard_EXPORT     void Vec(math_Vector& Sol,const Blend_Point& Pnt) const;
+  Standard_EXPORT   void Vec (math_Vector& Sol, const Blend_Point& Pnt)  const;
 
 
 
@@ -68,7 +55,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepBlend_AppFuncRst_HeaderFile

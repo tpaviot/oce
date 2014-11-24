@@ -6,28 +6,14 @@
 #ifndef _ExprIntrp_ListIteratorOfStackOfGeneralExpression_HeaderFile
 #define _ExprIntrp_ListIteratorOfStackOfGeneralExpression_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_Expr_GeneralExpression_HeaderFile
 #include <Handle_Expr_GeneralExpression.hxx>
-#endif
-#ifndef _Handle_ExprIntrp_ListNodeOfStackOfGeneralExpression_HeaderFile
 #include <Handle_ExprIntrp_ListNodeOfStackOfGeneralExpression.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class ExprIntrp_StackOfGeneralExpression;
@@ -36,27 +22,27 @@ class ExprIntrp_ListNodeOfStackOfGeneralExpression;
 
 
 
-class ExprIntrp_ListIteratorOfStackOfGeneralExpression  {
+class ExprIntrp_ListIteratorOfStackOfGeneralExpression 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   ExprIntrp_ListIteratorOfStackOfGeneralExpression();
+  Standard_EXPORT ExprIntrp_ListIteratorOfStackOfGeneralExpression();
   
-  Standard_EXPORT   ExprIntrp_ListIteratorOfStackOfGeneralExpression(const ExprIntrp_StackOfGeneralExpression& L);
+  Standard_EXPORT ExprIntrp_ListIteratorOfStackOfGeneralExpression(const ExprIntrp_StackOfGeneralExpression& L);
   
-  Standard_EXPORT     void Initialize(const ExprIntrp_StackOfGeneralExpression& L) ;
+  Standard_EXPORT   void Initialize (const ExprIntrp_StackOfGeneralExpression& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     Handle_Expr_GeneralExpression& Value() const;
+  Standard_EXPORT   Handle(Expr_GeneralExpression)& Value()  const;
 
 
 friend class ExprIntrp_StackOfGeneralExpression;
-
 
 
 protected:
@@ -69,13 +55,13 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
 
-#define Item Handle_Expr_GeneralExpression
+#define Item Handle(Expr_GeneralExpression)
 #define Item_hxx <Expr_GeneralExpression.hxx>
 #define TCollection_ListNode ExprIntrp_ListNodeOfStackOfGeneralExpression
 #define TCollection_ListNode_hxx <ExprIntrp_ListNodeOfStackOfGeneralExpression.hxx>
@@ -100,7 +86,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ExprIntrp_ListIteratorOfStackOfGeneralExpression_HeaderFile

@@ -1,12 +1,4 @@
-#ifndef _PCDM_DriverError_HeaderFile
 #include <PCDM_DriverError.hxx>
-#endif
-#ifndef _CDM_Document_HeaderFile
 #include <CDM_Document.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _PCDM_Writer_HeaderFile
 #include <PCDM_Writer.hxx>
-#endif

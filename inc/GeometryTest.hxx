@@ -6,59 +6,61 @@
 #ifndef _GeometryTest_HeaderFile
 #define _GeometryTest_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Draw_Interpretor_HeaderFile
 #include <Draw_Interpretor.hxx>
-#endif
 
 
-//! this  package  provides  commands for  curves  and <br>
-//!          surface. <br>
-class GeometryTest  {
+//! this  package  provides  commands for  curves  and
+//! surface.
+class GeometryTest 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! defines all geometric commands. <br>
-  Standard_EXPORT   static  void AllCommands(Draw_Interpretor& I) ;
-  //! defines curve commands. <br>
-  Standard_EXPORT   static  void CurveCommands(Draw_Interpretor& I) ;
-  //! defines fair curve commands. <br>
-  Standard_EXPORT   static  void FairCurveCommands(Draw_Interpretor& I) ;
-  //! defines surface commands. <br>
-  Standard_EXPORT   static  void SurfaceCommands(Draw_Interpretor& I) ;
-  //! defines cosntrained curves commands. <br>
-  Standard_EXPORT   static  void ConstraintCommands(Draw_Interpretor& I) ;
-  //! defines commands to test the Geom2dAPI <br>
-//!          - Intersection <br>
-//!          - Extrema <br>
-//!          - Projection <br>
-//!          - Approximation, interpolation <br>
-  Standard_EXPORT   static  void API2dCommands(Draw_Interpretor& I) ;
-  //! defines commands to test the Geom2dAPI <br>
-//!          - Intersection <br>
-//!          - Extrema <br>
-//!          - Projection <br>
-//!          - Approximation, interpolation <br>
-  Standard_EXPORT   static  void APICommands(Draw_Interpretor& I) ;
-  //! defines commands to check local <br>
-//!          continuity between curves or surfaces <br>
-  Standard_EXPORT   static  void ContinuityCommands(Draw_Interpretor& I) ;
-  //! defines     command  to    test  the    polyhedral <br>
-//!          triangulations and the polygons from the Poly package. <br>
-  Standard_EXPORT   static  void PolyCommands(Draw_Interpretor& I) ;
-  //! defines commands to test projection of geometric objects <br>
-  Standard_EXPORT   static  void TestProjCommands(Draw_Interpretor& I) ;
-
+  
+  //! defines all geometric commands.
+  Standard_EXPORT static   void AllCommands (Draw_Interpretor& I) ;
+  
+  //! defines curve commands.
+  Standard_EXPORT static   void CurveCommands (Draw_Interpretor& I) ;
+  
+  //! defines fair curve commands.
+  Standard_EXPORT static   void FairCurveCommands (Draw_Interpretor& I) ;
+  
+  //! defines surface commands.
+  Standard_EXPORT static   void SurfaceCommands (Draw_Interpretor& I) ;
+  
+  //! defines cosntrained curves commands.
+  Standard_EXPORT static   void ConstraintCommands (Draw_Interpretor& I) ;
+  
+  //! defines commands to test the Geom2dAPI
+  //! - Intersection
+  //! - Extrema
+  //! - Projection
+  //! - Approximation, interpolation
+  Standard_EXPORT static   void API2dCommands (Draw_Interpretor& I) ;
+  
+  //! defines commands to test the Geom2dAPI
+  //! - Intersection
+  //! - Extrema
+  //! - Projection
+  //! - Approximation, interpolation
+  Standard_EXPORT static   void APICommands (Draw_Interpretor& I) ;
+  
+  //! defines commands to check local
+  //! continuity between curves or surfaces
+  Standard_EXPORT static   void ContinuityCommands (Draw_Interpretor& I) ;
+  
+  //! defines     command  to    test  the    polyhedral
+  //! triangulations and the polygons from the Poly package.
+  Standard_EXPORT static   void PolyCommands (Draw_Interpretor& I) ;
+  
+  //! defines commands to test projection of geometric objects
+  Standard_EXPORT static   void TestProjCommands (Draw_Interpretor& I) ;
 
 
 
@@ -81,7 +83,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeometryTest_HeaderFile

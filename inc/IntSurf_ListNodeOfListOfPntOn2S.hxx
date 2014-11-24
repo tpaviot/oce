@@ -6,39 +6,28 @@
 #ifndef _IntSurf_ListNodeOfListOfPntOn2S_HeaderFile
 #define _IntSurf_ListNodeOfListOfPntOn2S_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IntSurf_ListNodeOfListOfPntOn2S_HeaderFile
 #include <Handle_IntSurf_ListNodeOfListOfPntOn2S.hxx>
-#endif
 
-#ifndef _IntSurf_PntOn2S_HeaderFile
 #include <IntSurf_PntOn2S.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class IntSurf_PntOn2S;
 class IntSurf_ListOfPntOn2S;
 class IntSurf_ListIteratorOfListOfPntOn2S;
 
 
 
-class IntSurf_ListNodeOfListOfPntOn2S : public TCollection_MapNode {
+class IntSurf_ListNodeOfListOfPntOn2S : public TCollection_MapNode
+{
 
 public:
 
   
-      IntSurf_ListNodeOfListOfPntOn2S(const IntSurf_PntOn2S& I,const TCollection_MapNodePtr& n);
+    IntSurf_ListNodeOfListOfPntOn2S(const IntSurf_PntOn2S& I, const TCollection_MapNodePtr& n);
   
-        IntSurf_PntOn2S& Value() const;
+      IntSurf_PntOn2S& Value()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-IntSurf_PntOn2S myValue;
+  IntSurf_PntOn2S myValue;
 
 
 };
@@ -83,7 +72,6 @@ IntSurf_PntOn2S myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntSurf_ListNodeOfListOfPntOn2S_HeaderFile

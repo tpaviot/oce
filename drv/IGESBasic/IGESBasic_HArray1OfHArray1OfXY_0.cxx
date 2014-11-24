@@ -5,13 +5,9 @@
 
 #include <IGESBasic_HArray1OfHArray1OfXY.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColgp_HArray1OfXY_HeaderFile
 #include <TColgp_HArray1OfXY.hxx>
-#endif
 
  
 

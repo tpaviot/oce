@@ -118,6 +118,10 @@
 			<Add library="tbbmalloc" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 			<Add library="objc" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />

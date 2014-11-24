@@ -5,18 +5,10 @@
 
 #include <Graphic3d_ListIteratorOfListOfShortReal.hxx>
 
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Graphic3d_ListOfShortReal_HeaderFile
 #include <Graphic3d_ListOfShortReal.hxx>
-#endif
-#ifndef _Graphic3d_ListNodeOfListOfShortReal_HeaderFile
 #include <Graphic3d_ListNodeOfListOfShortReal.hxx>
-#endif
  
 
 #define Item Standard_ShortReal

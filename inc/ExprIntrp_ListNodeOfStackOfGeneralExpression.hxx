@@ -6,39 +6,28 @@
 #ifndef _ExprIntrp_ListNodeOfStackOfGeneralExpression_HeaderFile
 #define _ExprIntrp_ListNodeOfStackOfGeneralExpression_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ExprIntrp_ListNodeOfStackOfGeneralExpression_HeaderFile
 #include <Handle_ExprIntrp_ListNodeOfStackOfGeneralExpression.hxx>
-#endif
 
-#ifndef _Handle_Expr_GeneralExpression_HeaderFile
 #include <Handle_Expr_GeneralExpression.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Expr_GeneralExpression;
 class ExprIntrp_StackOfGeneralExpression;
 class ExprIntrp_ListIteratorOfStackOfGeneralExpression;
 
 
 
-class ExprIntrp_ListNodeOfStackOfGeneralExpression : public TCollection_MapNode {
+class ExprIntrp_ListNodeOfStackOfGeneralExpression : public TCollection_MapNode
+{
 
 public:
 
   
-      ExprIntrp_ListNodeOfStackOfGeneralExpression(const Handle(Expr_GeneralExpression)& I,const TCollection_MapNodePtr& n);
+    ExprIntrp_ListNodeOfStackOfGeneralExpression(const Handle(Expr_GeneralExpression)& I, const TCollection_MapNodePtr& n);
   
-        Handle_Expr_GeneralExpression& Value() const;
+      Handle(Expr_GeneralExpression)& Value()  const;
 
 
 
@@ -53,12 +42,12 @@ protected:
 private: 
 
 
-Handle_Expr_GeneralExpression myValue;
+  Handle(Expr_GeneralExpression) myValue;
 
 
 };
 
-#define Item Handle_Expr_GeneralExpression
+#define Item Handle(Expr_GeneralExpression)
 #define Item_hxx <Expr_GeneralExpression.hxx>
 #define TCollection_ListNode ExprIntrp_ListNodeOfStackOfGeneralExpression
 #define TCollection_ListNode_hxx <ExprIntrp_ListNodeOfStackOfGeneralExpression.hxx>
@@ -83,7 +72,6 @@ Handle_Expr_GeneralExpression myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ExprIntrp_ListNodeOfStackOfGeneralExpression_HeaderFile

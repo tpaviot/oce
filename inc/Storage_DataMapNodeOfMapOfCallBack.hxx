@@ -6,28 +6,14 @@
 #ifndef _Storage_DataMapNodeOfMapOfCallBack_HeaderFile
 #define _Storage_DataMapNodeOfMapOfCallBack_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Storage_DataMapNodeOfMapOfCallBack_HeaderFile
 #include <Handle_Storage_DataMapNodeOfMapOfCallBack.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Handle_Storage_TypedCallBack_HeaderFile
 #include <Handle_Storage_TypedCallBack.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Storage_TypedCallBack;
 class TCollection_AsciiString;
 class Storage_MapOfCallBack;
@@ -35,16 +21,17 @@ class Storage_DataMapIteratorOfMapOfCallBack;
 
 
 
-class Storage_DataMapNodeOfMapOfCallBack : public TCollection_MapNode {
+class Storage_DataMapNodeOfMapOfCallBack : public TCollection_MapNode
+{
 
 public:
 
   
-      Storage_DataMapNodeOfMapOfCallBack(const TCollection_AsciiString& K,const Handle(Storage_TypedCallBack)& I,const TCollection_MapNodePtr& n);
+    Storage_DataMapNodeOfMapOfCallBack(const TCollection_AsciiString& K, const Handle(Storage_TypedCallBack)& I, const TCollection_MapNodePtr& n);
   
-        TCollection_AsciiString& Key() const;
+      TCollection_AsciiString& Key()  const;
   
-        Handle_Storage_TypedCallBack& Value() const;
+      Handle(Storage_TypedCallBack)& Value()  const;
 
 
 
@@ -59,15 +46,15 @@ protected:
 private: 
 
 
-TCollection_AsciiString myKey;
-Handle_Storage_TypedCallBack myValue;
+  TCollection_AsciiString myKey;
+  Handle(Storage_TypedCallBack) myValue;
 
 
 };
 
 #define TheKey TCollection_AsciiString
 #define TheKey_hxx <TCollection_AsciiString.hxx>
-#define TheItem Handle_Storage_TypedCallBack
+#define TheItem Handle(Storage_TypedCallBack)
 #define TheItem_hxx <Storage_TypedCallBack.hxx>
 #define Hasher TCollection_AsciiString
 #define Hasher_hxx <TCollection_AsciiString.hxx>
@@ -98,7 +85,6 @@ Handle_Storage_TypedCallBack myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Storage_DataMapNodeOfMapOfCallBack_HeaderFile

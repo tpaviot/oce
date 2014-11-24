@@ -6,34 +6,16 @@
 #ifndef _GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox_HeaderFile
 #define _GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _AppParCurves_MultiBSpCurve_HeaderFile
 #include <AppParCurves_MultiBSpCurve.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
 #include <math_Vector.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_AppParCurves_HArray1OfConstraintCouple_HeaderFile
 #include <Handle_AppParCurves_HArray1OfConstraintCouple.hxx>
-#endif
 class Standard_OutOfRange;
 class StdFail_NotDone;
 class GeomInt_TheMultiLineOfWLApprox;
@@ -48,28 +30,28 @@ class AppParCurves_MultiBSpCurve;
 
 
 
-class GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox  {
+class GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox(const GeomInt_TheMultiLineOfWLApprox& SSP,const Standard_Integer FirstPoint,const Standard_Integer LastPoint,const Handle(AppParCurves_HArray1OfConstraintCouple)& TheConstraints,math_Vector& Parameters,const TColStd_Array1OfReal& Knots,const TColStd_Array1OfInteger& Mults,const Standard_Integer Deg,const Standard_Real Tol3d,const Standard_Real Tol2d,const Standard_Integer NbIterations = 1);
+  Standard_EXPORT GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox(const GeomInt_TheMultiLineOfWLApprox& SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const Handle(AppParCurves_HArray1OfConstraintCouple)& TheConstraints, math_Vector& Parameters, const TColStd_Array1OfReal& Knots, const TColStd_Array1OfInteger& Mults, const Standard_Integer Deg, const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Integer NbIterations = 1);
   
-  Standard_EXPORT   GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox(const GeomInt_TheMultiLineOfWLApprox& SSP,const Standard_Integer FirstPoint,const Standard_Integer LastPoint,const Handle(AppParCurves_HArray1OfConstraintCouple)& TheConstraints,math_Vector& Parameters,const TColStd_Array1OfReal& Knots,const TColStd_Array1OfInteger& Mults,const Standard_Integer Deg,const Standard_Real Tol3d,const Standard_Real Tol2d,const Standard_Integer NbIterations,const Standard_Real lambda1,const Standard_Real lambda2);
+  Standard_EXPORT GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox(const GeomInt_TheMultiLineOfWLApprox& SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const Handle(AppParCurves_HArray1OfConstraintCouple)& TheConstraints, math_Vector& Parameters, const TColStd_Array1OfReal& Knots, const TColStd_Array1OfInteger& Mults, const Standard_Integer Deg, const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Integer NbIterations, const Standard_Real lambda1, const Standard_Real lambda2);
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
   
-  Standard_EXPORT     AppParCurves_MultiBSpCurve Value() const;
+  Standard_EXPORT   AppParCurves_MultiBSpCurve Value()  const;
   
-  Standard_EXPORT     Standard_Real Error(const Standard_Integer Index) const;
+  Standard_EXPORT   Standard_Real Error (const Standard_Integer Index)  const;
   
-  Standard_EXPORT     Standard_Real MaxError3d() const;
+  Standard_EXPORT   Standard_Real MaxError3d()  const;
   
-  Standard_EXPORT     Standard_Real MaxError2d() const;
+  Standard_EXPORT   Standard_Real MaxError2d()  const;
   
-  Standard_EXPORT     Standard_Real AverageError() const;
-
+  Standard_EXPORT   Standard_Real AverageError()  const;
 
 
 
@@ -77,7 +59,7 @@ public:
 protected:
 
   
-  Standard_EXPORT     void Perform(const GeomInt_TheMultiLineOfWLApprox& SSP,const Standard_Integer FirstPoint,const Standard_Integer LastPoint,const Handle(AppParCurves_HArray1OfConstraintCouple)& TheConstraints,math_Vector& Parameters,const TColStd_Array1OfReal& Knots,const TColStd_Array1OfInteger& Mults,const Standard_Integer Deg,const Standard_Real Tol3d,const Standard_Real Tol2d,const Standard_Integer NbIterations = 200) ;
+  Standard_EXPORT   void Perform (const GeomInt_TheMultiLineOfWLApprox& SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const Handle(AppParCurves_HArray1OfConstraintCouple)& TheConstraints, math_Vector& Parameters, const TColStd_Array1OfReal& Knots, const TColStd_Array1OfInteger& Mults, const Standard_Integer Deg, const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Integer NbIterations = 200) ;
 
 
 
@@ -86,14 +68,14 @@ private:
 
 
 
-AppParCurves_MultiBSpCurve SCU;
-math_Vector ParError;
-Standard_Real AvError;
-Standard_Real MError3d;
-Standard_Real MError2d;
-Standard_Real mylambda1;
-Standard_Real mylambda2;
-Standard_Boolean Done;
+  AppParCurves_MultiBSpCurve SCU;
+  math_Vector ParError;
+  Standard_Real AvError;
+  Standard_Real MError3d;
+  Standard_Real MError2d;
+  Standard_Real mylambda1;
+  Standard_Real mylambda2;
+  Standard_Boolean Done;
 
 
 };
@@ -102,7 +84,6 @@ Standard_Boolean Done;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox_HeaderFile

@@ -6,25 +6,13 @@
 #ifndef _GeomFill_SequenceOfAx2_HeaderFile
 #define _GeomFill_SequenceOfAx2_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_GeomFill_SequenceNodeOfSequenceOfAx2_HeaderFile
 #include <Handle_GeomFill_SequenceNodeOfSequenceOfAx2.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class gp_Ax2;
@@ -32,68 +20,68 @@ class GeomFill_SequenceNodeOfSequenceOfAx2;
 
 
 
-class GeomFill_SequenceOfAx2  : public TCollection_BaseSequence {
+class GeomFill_SequenceOfAx2  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      GeomFill_SequenceOfAx2();
+    GeomFill_SequenceOfAx2();
   
-  Standard_EXPORT   GeomFill_SequenceOfAx2(const GeomFill_SequenceOfAx2& Other);
+  Standard_EXPORT GeomFill_SequenceOfAx2(const GeomFill_SequenceOfAx2& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~GeomFill_SequenceOfAx2()
 {
   Clear();
 }
   
-  Standard_EXPORT    const GeomFill_SequenceOfAx2& Assign(const GeomFill_SequenceOfAx2& Other) ;
-   const GeomFill_SequenceOfAx2& operator =(const GeomFill_SequenceOfAx2& Other) 
+  Standard_EXPORT  const  GeomFill_SequenceOfAx2& Assign (const GeomFill_SequenceOfAx2& Other) ;
+ const  GeomFill_SequenceOfAx2& operator = (const GeomFill_SequenceOfAx2& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const gp_Ax2& T) ;
+  Standard_EXPORT   void Append (const gp_Ax2& T) ;
   
-        void Append(GeomFill_SequenceOfAx2& S) ;
+      void Append (GeomFill_SequenceOfAx2& S) ;
   
-  Standard_EXPORT     void Prepend(const gp_Ax2& T) ;
+  Standard_EXPORT   void Prepend (const gp_Ax2& T) ;
   
-        void Prepend(GeomFill_SequenceOfAx2& S) ;
+      void Prepend (GeomFill_SequenceOfAx2& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const gp_Ax2& T) ;
+      void InsertBefore (const Standard_Integer Index, const gp_Ax2& T) ;
   
-        void InsertBefore(const Standard_Integer Index,GeomFill_SequenceOfAx2& S) ;
+      void InsertBefore (const Standard_Integer Index, GeomFill_SequenceOfAx2& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const gp_Ax2& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const gp_Ax2& T) ;
   
-        void InsertAfter(const Standard_Integer Index,GeomFill_SequenceOfAx2& S) ;
+      void InsertAfter (const Standard_Integer Index, GeomFill_SequenceOfAx2& S) ;
   
-  Standard_EXPORT    const gp_Ax2& First() const;
+  Standard_EXPORT  const  gp_Ax2& First()  const;
   
-  Standard_EXPORT    const gp_Ax2& Last() const;
+  Standard_EXPORT  const  gp_Ax2& Last()  const;
   
-        void Split(const Standard_Integer Index,GeomFill_SequenceOfAx2& Sub) ;
+      void Split (const Standard_Integer Index, GeomFill_SequenceOfAx2& Sub) ;
   
-  Standard_EXPORT    const gp_Ax2& Value(const Standard_Integer Index) const;
-   const gp_Ax2& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  gp_Ax2& Value (const Standard_Integer Index)  const;
+ const  gp_Ax2& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const gp_Ax2& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const gp_Ax2& I) ;
   
-  Standard_EXPORT     gp_Ax2& ChangeValue(const Standard_Integer Index) ;
-    gp_Ax2& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   gp_Ax2& ChangeValue (const Standard_Integer Index) ;
+  gp_Ax2& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomFill_SequenceOfAx2_HeaderFile

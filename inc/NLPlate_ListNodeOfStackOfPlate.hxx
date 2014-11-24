@@ -6,39 +6,28 @@
 #ifndef _NLPlate_ListNodeOfStackOfPlate_HeaderFile
 #define _NLPlate_ListNodeOfStackOfPlate_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_NLPlate_ListNodeOfStackOfPlate_HeaderFile
 #include <Handle_NLPlate_ListNodeOfStackOfPlate.hxx>
-#endif
 
-#ifndef _Plate_Plate_HeaderFile
 #include <Plate_Plate.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Plate_Plate;
 class NLPlate_StackOfPlate;
 class NLPlate_ListIteratorOfStackOfPlate;
 
 
 
-class NLPlate_ListNodeOfStackOfPlate : public TCollection_MapNode {
+class NLPlate_ListNodeOfStackOfPlate : public TCollection_MapNode
+{
 
 public:
 
   
-      NLPlate_ListNodeOfStackOfPlate(const Plate_Plate& I,const TCollection_MapNodePtr& n);
+    NLPlate_ListNodeOfStackOfPlate(const Plate_Plate& I, const TCollection_MapNodePtr& n);
   
-        Plate_Plate& Value() const;
+      Plate_Plate& Value()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-Plate_Plate myValue;
+  Plate_Plate myValue;
 
 
 };
@@ -83,7 +72,6 @@ Plate_Plate myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _NLPlate_ListNodeOfStackOfPlate_HeaderFile

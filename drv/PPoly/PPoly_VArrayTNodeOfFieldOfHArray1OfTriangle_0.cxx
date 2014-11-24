@@ -5,15 +5,9 @@
 
 #include <PPoly_VArrayTNodeOfFieldOfHArray1OfTriangle.hxx>
 
-#ifndef _PPoly_Triangle_HeaderFile
 #include <PPoly_Triangle.hxx>
-#endif
-#ifndef _PPoly_FieldOfHArray1OfTriangle_HeaderFile
 #include <PPoly_FieldOfHArray1OfTriangle.hxx>
-#endif
-#ifndef _PPoly_VArrayNodeOfFieldOfHArray1OfTriangle_HeaderFile
 #include <PPoly_VArrayNodeOfFieldOfHArray1OfTriangle.hxx>
-#endif
  
 
 #define Item PPoly_Triangle

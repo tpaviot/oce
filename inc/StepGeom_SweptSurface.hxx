@@ -6,44 +6,34 @@
 #ifndef _StepGeom_SweptSurface_HeaderFile
 #define _StepGeom_SweptSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_SweptSurface_HeaderFile
 #include <Handle_StepGeom_SweptSurface.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Curve_HeaderFile
 #include <Handle_StepGeom_Curve.hxx>
-#endif
-#ifndef _StepGeom_Surface_HeaderFile
 #include <StepGeom_Surface.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepGeom_Curve;
 class TCollection_HAsciiString;
 
 
 
-class StepGeom_SweptSurface : public StepGeom_Surface {
+class StepGeom_SweptSurface : public StepGeom_Surface
+{
 
 public:
 
-  //! Returns a SweptSurface <br>
-  Standard_EXPORT   StepGeom_SweptSurface();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a SweptSurface
+  Standard_EXPORT StepGeom_SweptSurface();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_Curve)& aSweptCurve) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetSweptCurve(const Handle(StepGeom_Curve)& aSweptCurve) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_Curve)& aSweptCurve) ;
   
-  Standard_EXPORT     Handle_StepGeom_Curve SweptCurve() const;
+  Standard_EXPORT   void SetSweptCurve (const Handle(StepGeom_Curve)& aSweptCurve) ;
+  
+  Standard_EXPORT   Handle(StepGeom_Curve) SweptCurve()  const;
 
 
 
@@ -58,7 +48,7 @@ protected:
 private: 
 
 
-Handle_StepGeom_Curve sweptCurve;
+  Handle(StepGeom_Curve) sweptCurve;
 
 
 };
@@ -67,7 +57,6 @@ Handle_StepGeom_Curve sweptCurve;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_SweptSurface_HeaderFile

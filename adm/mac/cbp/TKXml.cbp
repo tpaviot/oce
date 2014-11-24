@@ -90,6 +90,8 @@
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
 			<Add library="freetype" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 		</Linker>
 		<Unit filename="../../../src/XmlDrivers/XmlDrivers.cxx" />
 		<Unit filename="../../../src/XmlDrivers/XmlDrivers_DocumentRetrievalDriver.cxx" />

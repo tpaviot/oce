@@ -5,21 +5,13 @@
 
 #include <TopOpeBRepBuild_ListOfPave.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_ListIteratorOfListOfPave_HeaderFile
 #include <TopOpeBRepBuild_ListIteratorOfListOfPave.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_Pave_HeaderFile
 #include <TopOpeBRepBuild_Pave.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_ListNodeOfListOfPave_HeaderFile
 #include <TopOpeBRepBuild_ListNodeOfListOfPave.hxx>
-#endif
  
 
-#define Item Handle_TopOpeBRepBuild_Pave
+#define Item Handle(TopOpeBRepBuild_Pave)
 #define Item_hxx <TopOpeBRepBuild_Pave.hxx>
 #define TCollection_ListNode TopOpeBRepBuild_ListNodeOfListOfPave
 #define TCollection_ListNode_hxx <TopOpeBRepBuild_ListNodeOfListOfPave.hxx>

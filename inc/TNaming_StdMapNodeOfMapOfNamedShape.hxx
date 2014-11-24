@@ -6,25 +6,13 @@
 #ifndef _TNaming_StdMapNodeOfMapOfNamedShape_HeaderFile
 #define _TNaming_StdMapNodeOfMapOfNamedShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TNaming_StdMapNodeOfMapOfNamedShape_HeaderFile
 #include <Handle_TNaming_StdMapNodeOfMapOfNamedShape.hxx>
-#endif
 
-#ifndef _Handle_TNaming_NamedShape_HeaderFile
 #include <Handle_TNaming_NamedShape.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TNaming_NamedShape;
 class TNaming_NamedShapeHasher;
 class TNaming_MapOfNamedShape;
@@ -32,14 +20,15 @@ class TNaming_MapIteratorOfMapOfNamedShape;
 
 
 
-class TNaming_StdMapNodeOfMapOfNamedShape : public TCollection_MapNode {
+class TNaming_StdMapNodeOfMapOfNamedShape : public TCollection_MapNode
+{
 
 public:
 
   
-      TNaming_StdMapNodeOfMapOfNamedShape(const Handle(TNaming_NamedShape)& K,const TCollection_MapNodePtr& n);
+    TNaming_StdMapNodeOfMapOfNamedShape(const Handle(TNaming_NamedShape)& K, const TCollection_MapNodePtr& n);
   
-        Handle_TNaming_NamedShape& Key() const;
+      Handle(TNaming_NamedShape)& Key()  const;
 
 
 
@@ -54,12 +43,12 @@ protected:
 private: 
 
 
-Handle_TNaming_NamedShape myKey;
+  Handle(TNaming_NamedShape) myKey;
 
 
 };
 
-#define TheKey Handle_TNaming_NamedShape
+#define TheKey Handle(TNaming_NamedShape)
 #define TheKey_hxx <TNaming_NamedShape.hxx>
 #define Hasher TNaming_NamedShapeHasher
 #define Hasher_hxx <TNaming_NamedShapeHasher.hxx>
@@ -88,7 +77,6 @@ Handle_TNaming_NamedShape myKey;
 #undef TCollection_Map_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TNaming_StdMapNodeOfMapOfNamedShape_HeaderFile

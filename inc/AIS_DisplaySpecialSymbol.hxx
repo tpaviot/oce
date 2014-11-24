@@ -6,15 +6,14 @@
 #ifndef _AIS_DisplaySpecialSymbol_HeaderFile
 #define _AIS_DisplaySpecialSymbol_HeaderFile
 
-//! Specifies dimension special symbol display options <br>
-enum AIS_DisplaySpecialSymbol {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Specifies dimension special symbol display options
+enum AIS_DisplaySpecialSymbol
+{
 AIS_DSS_No,
 AIS_DSS_Before,
 AIS_DSS_After
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _AIS_DisplaySpecialSymbol_HeaderFile

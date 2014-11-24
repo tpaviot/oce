@@ -6,44 +6,32 @@
 #ifndef _GeomToStep_MakeSurface_HeaderFile
 #define _GeomToStep_MakeSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Surface_HeaderFile
 #include <Handle_StepGeom_Surface.hxx>
-#endif
-#ifndef _GeomToStep_Root_HeaderFile
 #include <GeomToStep_Root.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
 class StepGeom_Surface;
 class StdFail_NotDone;
 class Geom_Surface;
 
 
-//! This class implements the mapping between classes <br>
-//!          Surface from Geom and the class Surface from StepGeom which <br>
-//!          describes a Surface from prostep. As Surface is an abstract <br>
-//!          Surface this class is an access to the sub-class required. <br>
-class GeomToStep_MakeSurface  : public GeomToStep_Root {
+//! This class implements the mapping between classes
+//! Surface from Geom and the class Surface from StepGeom which
+//! describes a Surface from prostep. As Surface is an abstract
+//! Surface this class is an access to the sub-class required.
+class GeomToStep_MakeSurface  : public GeomToStep_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomToStep_MakeSurface(const Handle(Geom_Surface)& C);
+  Standard_EXPORT GeomToStep_MakeSurface(const Handle(Geom_Surface)& C);
   
-  Standard_EXPORT    const Handle_StepGeom_Surface& Value() const;
-
+  Standard_EXPORT  const  Handle(StepGeom_Surface)& Value()  const;
 
 
 
@@ -58,7 +46,7 @@ private:
 
 
 
-Handle_StepGeom_Surface theSurface;
+  Handle(StepGeom_Surface) theSurface;
 
 
 };
@@ -67,7 +55,6 @@ Handle_StepGeom_Surface theSurface;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomToStep_MakeSurface_HeaderFile

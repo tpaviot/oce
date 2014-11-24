@@ -6,50 +6,41 @@
 #ifndef _ShapeUpgrade_ShapeDivideArea_HeaderFile
 #define _ShapeUpgrade_ShapeDivideArea_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _ShapeUpgrade_ShapeDivide_HeaderFile
 #include <ShapeUpgrade_ShapeDivide.hxx>
-#endif
-#ifndef _Handle_ShapeUpgrade_FaceDivide_HeaderFile
 #include <Handle_ShapeUpgrade_FaceDivide.hxx>
-#endif
 class TopoDS_Shape;
 class ShapeUpgrade_FaceDivide;
 
 
-//! Divides faces from sprcified shape  by max area criterium. <br>
-class ShapeUpgrade_ShapeDivideArea  : public ShapeUpgrade_ShapeDivide {
+//! Divides faces from sprcified shape  by max area criterium.
+class ShapeUpgrade_ShapeDivideArea  : public ShapeUpgrade_ShapeDivide
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   ShapeUpgrade_ShapeDivideArea();
-  //! Initialize by a Shape. <br>
-  Standard_EXPORT   ShapeUpgrade_ShapeDivideArea(const TopoDS_Shape& S);
-  //!Set max area allowed for faces <br>
-        Standard_Real& MaxArea() ;
-
+  Standard_EXPORT ShapeUpgrade_ShapeDivideArea();
+  
+  //! Initialize by a Shape.
+  Standard_EXPORT ShapeUpgrade_ShapeDivideArea(const TopoDS_Shape& S);
+  
+  //! Set max area allowed for faces
+      Standard_Real& MaxArea() ;
 
 
 
 
 protected:
 
-  //! Returns the tool for splitting faces. <br>
-  Standard_EXPORT   virtual  Handle_ShapeUpgrade_FaceDivide GetSplitFaceTool() const;
+  
+  //! Returns the tool for splitting faces.
+  Standard_EXPORT virtual   Handle(ShapeUpgrade_FaceDivide) GetSplitFaceTool()  const;
 
 
 
@@ -58,7 +49,7 @@ private:
 
 
 
-Standard_Real myMaxArea;
+  Standard_Real myMaxArea;
 
 
 };
@@ -68,7 +59,6 @@ Standard_Real myMaxArea;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeUpgrade_ShapeDivideArea_HeaderFile

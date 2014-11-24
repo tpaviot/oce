@@ -6,60 +6,45 @@
 #ifndef _ObjMgt_SeqNodeOfPSeqOfExtRef_HeaderFile
 #define _ObjMgt_SeqNodeOfPSeqOfExtRef_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_ObjMgt_SeqNodeOfPSeqOfExtRef_HeaderFile
 #include <Handle_ObjMgt_SeqNodeOfPSeqOfExtRef.hxx>
-#endif
 
-#ifndef _Handle_ObjMgt_ExternRef_HeaderFile
 #include <Handle_ObjMgt_ExternRef.hxx>
-#endif
-#ifndef _Handle_ObjMgt_SeqNodeOfPSeqOfExtRef_HeaderFile
 #include <Handle_ObjMgt_SeqNodeOfPSeqOfExtRef.hxx>
-#endif
-#ifndef _PMMgt_PManaged_HeaderFile
 #include <PMMgt_PManaged.hxx>
-#endif
-#ifndef _Handle_ObjMgt_PSeqOfExtRef_HeaderFile
 #include <Handle_ObjMgt_PSeqOfExtRef.hxx>
-#endif
 class ObjMgt_ExternRef;
 class ObjMgt_PSeqOfExtRef;
 class ObjMgt_SeqExplorerOfPSeqOfExtRef;
 
 
-class ObjMgt_SeqNodeOfPSeqOfExtRef : public PMMgt_PManaged {
+class ObjMgt_SeqNodeOfPSeqOfExtRef : public PMMgt_PManaged
+{
 
 public:
 
   
-  Standard_EXPORT   ObjMgt_SeqNodeOfPSeqOfExtRef(const Handle(ObjMgt_SeqNodeOfPSeqOfExtRef)& TheLast,const Handle(ObjMgt_ExternRef)& TheItem);
+  Standard_EXPORT ObjMgt_SeqNodeOfPSeqOfExtRef(const Handle(ObjMgt_SeqNodeOfPSeqOfExtRef)& TheLast, const Handle(ObjMgt_ExternRef)& TheItem);
   
-  Standard_EXPORT   ObjMgt_SeqNodeOfPSeqOfExtRef(const Handle(ObjMgt_ExternRef)& TheItem,const Handle(ObjMgt_SeqNodeOfPSeqOfExtRef)& TheFirst);
+  Standard_EXPORT ObjMgt_SeqNodeOfPSeqOfExtRef(const Handle(ObjMgt_ExternRef)& TheItem, const Handle(ObjMgt_SeqNodeOfPSeqOfExtRef)& TheFirst);
   
-  Standard_EXPORT   ObjMgt_SeqNodeOfPSeqOfExtRef(const Handle(ObjMgt_SeqNodeOfPSeqOfExtRef)& ThePrevious,const Handle(ObjMgt_SeqNodeOfPSeqOfExtRef)& TheNext,const Handle(ObjMgt_ExternRef)& TheItem);
+  Standard_EXPORT ObjMgt_SeqNodeOfPSeqOfExtRef(const Handle(ObjMgt_SeqNodeOfPSeqOfExtRef)& ThePrevious, const Handle(ObjMgt_SeqNodeOfPSeqOfExtRef)& TheNext, const Handle(ObjMgt_ExternRef)& TheItem);
   
-  Standard_EXPORT     Handle_ObjMgt_ExternRef Value() const;
+  Standard_EXPORT   Handle(ObjMgt_ExternRef) Value()  const;
   
-  Standard_EXPORT     Handle_ObjMgt_SeqNodeOfPSeqOfExtRef Next() const;
+  Standard_EXPORT   Handle(ObjMgt_SeqNodeOfPSeqOfExtRef) Next()  const;
   
-  Standard_EXPORT     Handle_ObjMgt_SeqNodeOfPSeqOfExtRef Previous() const;
+  Standard_EXPORT   Handle(ObjMgt_SeqNodeOfPSeqOfExtRef) Previous()  const;
   
-  Standard_EXPORT     void SetValue(const Handle(ObjMgt_ExternRef)& AnItem) ;
+  Standard_EXPORT   void SetValue (const Handle(ObjMgt_ExternRef)& AnItem) ;
   
-  Standard_EXPORT     void SetNext(const Handle(ObjMgt_SeqNodeOfPSeqOfExtRef)& ANode) ;
+  Standard_EXPORT   void SetNext (const Handle(ObjMgt_SeqNodeOfPSeqOfExtRef)& ANode) ;
   
-  Standard_EXPORT     void SetPrevious(const Handle(ObjMgt_SeqNodeOfPSeqOfExtRef)& ANode) ;
+  Standard_EXPORT   void SetPrevious (const Handle(ObjMgt_SeqNodeOfPSeqOfExtRef)& ANode) ;
 
-  ObjMgt_SeqNodeOfPSeqOfExtRef( )
+ObjMgt_SeqNodeOfPSeqOfExtRef( )
 {
   
 }
@@ -88,9 +73,9 @@ protected:
 private: 
 
 
-Handle_ObjMgt_SeqNodeOfPSeqOfExtRef MyPrevious;
-Handle_ObjMgt_ExternRef MyItem;
-Handle_ObjMgt_SeqNodeOfPSeqOfExtRef MyNext;
+  Handle(ObjMgt_SeqNodeOfPSeqOfExtRef) MyPrevious;
+  Handle(ObjMgt_ExternRef) MyItem;
+  Handle(ObjMgt_SeqNodeOfPSeqOfExtRef) MyNext;
 
 
 };
@@ -99,7 +84,6 @@ Handle_ObjMgt_SeqNodeOfPSeqOfExtRef MyNext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ObjMgt_SeqNodeOfPSeqOfExtRef_HeaderFile

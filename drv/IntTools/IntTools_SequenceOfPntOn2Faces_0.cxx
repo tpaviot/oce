@@ -5,18 +5,10 @@
 
 #include <IntTools_SequenceOfPntOn2Faces.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IntTools_PntOn2Faces_HeaderFile
 #include <IntTools_PntOn2Faces.hxx>
-#endif
-#ifndef _IntTools_SequenceNodeOfSequenceOfPntOn2Faces_HeaderFile
 #include <IntTools_SequenceNodeOfSequenceOfPntOn2Faces.hxx>
-#endif
  
 
 #define SeqItem IntTools_PntOn2Faces

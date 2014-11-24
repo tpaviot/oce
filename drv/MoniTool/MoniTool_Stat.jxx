@@ -1,9 +1,3 @@
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _MoniTool_Stat_HeaderFile
 #include <MoniTool_Stat.hxx>
-#endif

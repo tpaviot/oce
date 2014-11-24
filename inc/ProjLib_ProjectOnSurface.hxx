@@ -6,60 +6,48 @@
 #ifndef _ProjLib_ProjectOnSurface_HeaderFile
 #define _ProjLib_ProjectOnSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Adaptor3d_HCurve_HeaderFile
 #include <Handle_Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Geom_BSplineCurve_HeaderFile
 #include <Handle_Geom_BSplineCurve.hxx>
-#endif
 class Adaptor3d_HCurve;
 class Adaptor3d_HSurface;
 class Geom_BSplineCurve;
 
 
-//! Project a curve on a  surface.  The result ( a  3D <br>
-//!          Curve)  will be an approximation <br>
-class ProjLib_ProjectOnSurface  {
+//! Project a curve on a  surface.  The result ( a  3D
+//! Curve)  will be an approximation
+class ProjLib_ProjectOnSurface 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //!  Create an empty projector. <br>
-  Standard_EXPORT   ProjLib_ProjectOnSurface();
-  //! Create a projector normaly to the surface <S>. <br>
-  Standard_EXPORT   ProjLib_ProjectOnSurface(const Handle(Adaptor3d_HSurface)& S);
   
-  Standard_EXPORT   virtual  void Delete() ;
+  //! Create an empty projector.
+  Standard_EXPORT ProjLib_ProjectOnSurface();
+  
+  //! Create a projector normaly to the surface <S>.
+  Standard_EXPORT ProjLib_ProjectOnSurface(const Handle(Adaptor3d_HSurface)& S);
+  
+  Standard_EXPORT virtual   void Delete() ;
 Standard_EXPORT virtual ~ProjLib_ProjectOnSurface(){Delete() ; }
-  //! Set the Surface to <S>. <br>
-//!          To compute the projection, you have to Load the Curve. <br>
-  Standard_EXPORT     void Load(const Handle(Adaptor3d_HSurface)& S) ;
-  //! Compute the projection of the curve <C> on the Surface. <br>
-  Standard_EXPORT     void Load(const Handle(Adaptor3d_HCurve)& C,const Standard_Real Tolerance) ;
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
+  //! Set the Surface to <S>.
+  //! To compute the projection, you have to Load the Curve.
+  Standard_EXPORT   void Load (const Handle(Adaptor3d_HSurface)& S) ;
   
-  Standard_EXPORT     Handle_Geom_BSplineCurve BSpline() const;
-
+  //! Compute the projection of the curve <C> on the Surface.
+  Standard_EXPORT   void Load (const Handle(Adaptor3d_HCurve)& C, const Standard_Real Tolerance) ;
+  
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
+  
+  Standard_EXPORT   Handle(Geom_BSplineCurve) BSpline()  const;
 
 
 
@@ -74,11 +62,11 @@ private:
 
 
 
-Handle_Adaptor3d_HCurve myCurve;
-Handle_Adaptor3d_HSurface mySurface;
-Standard_Real myTolerance;
-Standard_Boolean myIsDone;
-Handle_Geom_BSplineCurve myResult;
+  Handle(Adaptor3d_HCurve) myCurve;
+  Handle(Adaptor3d_HSurface) mySurface;
+  Standard_Real myTolerance;
+  Standard_Boolean myIsDone;
+  Handle(Geom_BSplineCurve) myResult;
 
 
 };
@@ -87,7 +75,6 @@ Handle_Geom_BSplineCurve myResult;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ProjLib_ProjectOnSurface_HeaderFile

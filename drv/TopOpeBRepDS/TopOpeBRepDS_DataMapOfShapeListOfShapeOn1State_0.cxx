@@ -5,27 +5,13 @@
 
 #include <TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopOpeBRepDS_ListOfShapeOn1State_HeaderFile
 #include <TopOpeBRepDS_ListOfShapeOn1State.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State_HeaderFile
 #include <TopOpeBRepDS_DataMapNodeOfDataMapOfShapeListOfShapeOn1State.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapIteratorOfDataMapOfShapeListOfShapeOn1State_HeaderFile
 #include <TopOpeBRepDS_DataMapIteratorOfDataMapOfShapeListOfShapeOn1State.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape

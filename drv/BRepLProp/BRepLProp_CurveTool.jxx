@@ -1,12 +1,4 @@
-#ifndef _BRepAdaptor_Curve_HeaderFile
 #include <BRepAdaptor_Curve.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _BRepLProp_CurveTool_HeaderFile
 #include <BRepLProp_CurveTool.hxx>
-#endif

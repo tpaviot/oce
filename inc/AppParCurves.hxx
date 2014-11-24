@@ -6,28 +6,14 @@
 #ifndef _AppParCurves_HeaderFile
 #define _AppParCurves_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
 #include <math_Vector.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _math_IntegerVector_HeaderFile
 #include <math_IntegerVector.hxx>
-#endif
 class math_Matrix;
 class AppParCurves_MultiPoint;
 class AppParCurves_MultiCurve;
@@ -60,24 +46,24 @@ class AppParCurves_SequenceNodeOfSequenceOfMultiCurve;
 class AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve;
 
 
-//! Parallel Approximation in n curves. <br>
-//! This package gives all the algorithms used to approximate a MultiLine <br>
-//! described by the tool MLineTool. <br>
-//! The result of the approximation will be a MultiCurve. <br>
-class AppParCurves  {
+//! Parallel Approximation in n curves.
+//! This package gives all the algorithms used to approximate a MultiLine
+//! described by the tool MLineTool.
+//! The result of the approximation will be a MultiCurve.
+class AppParCurves 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  void BernsteinMatrix(const Standard_Integer NbPoles,const math_Vector& U,math_Matrix& A) ;
+  Standard_EXPORT static   void BernsteinMatrix (const Standard_Integer NbPoles, const math_Vector& U, math_Matrix& A) ;
   
-  Standard_EXPORT   static  void Bernstein(const Standard_Integer NbPoles,const math_Vector& U,math_Matrix& A,math_Matrix& DA) ;
+  Standard_EXPORT static   void Bernstein (const Standard_Integer NbPoles, const math_Vector& U, math_Matrix& A, math_Matrix& DA) ;
   
-  Standard_EXPORT   static  void SecondDerivativeBernstein(const Standard_Real U,math_Vector& DDA) ;
+  Standard_EXPORT static   void SecondDerivativeBernstein (const Standard_Real U, math_Vector& DDA) ;
   
-  Standard_EXPORT   static  void SplineFunction(const Standard_Integer NbPoles,const Standard_Integer Degree,const math_Vector& Parameters,const math_Vector& FlatKnots,math_Matrix& A,math_Matrix& DA,math_IntegerVector& Index) ;
-
+  Standard_EXPORT static   void SplineFunction (const Standard_Integer NbPoles, const Standard_Integer Degree, const math_Vector& Parameters, const math_Vector& FlatKnots, math_Matrix& A, math_Matrix& DA, math_IntegerVector& Index) ;
 
 
 
@@ -129,7 +115,6 @@ friend class AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AppParCurves_HeaderFile

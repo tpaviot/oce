@@ -1,24 +1,8 @@
-#ifndef _StepShape_ShapeDefinitionRepresentation_HeaderFile
 #include <StepShape_ShapeDefinitionRepresentation.hxx>
-#endif
-#ifndef _StepShape_ShapeRepresentation_HeaderFile
 #include <StepShape_ShapeRepresentation.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepGeom_Axis2Placement3d_HeaderFile
 #include <StepGeom_Axis2Placement3d.hxx>
-#endif
-#ifndef _StepRepr_NextAssemblyUsageOccurrence_HeaderFile
 #include <StepRepr_NextAssemblyUsageOccurrence.hxx>
-#endif
-#ifndef _Interface_InterfaceModel_HeaderFile
 #include <Interface_InterfaceModel.hxx>
-#endif
-#ifndef _StepShape_ContextDependentShapeRepresentation_HeaderFile
 #include <StepShape_ContextDependentShapeRepresentation.hxx>
-#endif
-#ifndef _STEPConstruct_Assembly_HeaderFile
 #include <STEPConstruct_Assembly.hxx>
-#endif

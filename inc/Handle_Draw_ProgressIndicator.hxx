@@ -6,22 +6,15 @@
 #ifndef _Handle_Draw_ProgressIndicator_HeaderFile
 #define _Handle_Draw_ProgressIndicator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Message_ProgressIndicator_HeaderFile
 #include <Handle_Message_ProgressIndicator.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Message_ProgressIndicator);
 class Draw_ProgressIndicator;
 
-DEFINE_STANDARD_HANDLE(Draw_ProgressIndicator,Message_ProgressIndicator)
+DEFINE_STANDARD_HANDLE(Draw_ProgressIndicator, Message_ProgressIndicator)
 
-#endif
+#endif // _Handle_Draw_ProgressIndicator_HeaderFile

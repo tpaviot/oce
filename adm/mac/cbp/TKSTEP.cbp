@@ -108,6 +108,8 @@
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 		</Linker>
 		<Unit filename="../../../drv/StepAP214/StepAP214_Array1OfApprovalItem_0.cxx" />
 		<Unit filename="../../../drv/StepAP214/StepAP214_Array1OfAutoDesignDateAndPersonItem_0.cxx" />

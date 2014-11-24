@@ -16,7 +16,7 @@ AM_CXXFLAGS =
 AM_CFLAGS = 
 
 
-INCLUDES = $(CSF_OPT_INCLUDES) $(STLPort_INCLUDES)  \
+INCLUDES = $(CSF_OPT_INCLUDES) $(STLPort_INCLUDES) $(CSF_TBB_INCLUDES)  \
 -I@top_srcdir@/inc \
 -I@top_srcdir@/drv/IntTools -I@top_srcdir@/src/IntTools \
 -I@top_srcdir@/drv/BRepAlgoAPI -I@top_srcdir@/src/BRepAlgoAPI \
@@ -39,7 +39,7 @@ libTKBO_la_LIBADD = $(CSF_OPT_LIBS) \
 ../TKGeomAlgo/libTKGeomAlgo.la \
 ../TKGeomBase/libTKGeomBase.la \
 ../TKPrim/libTKPrim.la \
-$(STLPort_LIB) 
+$(STLPort_LIB) $(CSF_TBB_LIB) 
 
 libTKBO_la_SOURCES = \
 @top_srcdir@/drv/IntTools/IntTools_Array1OfRange_0.cxx \
@@ -84,7 +84,6 @@ libTKBO_la_SOURCES = \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_Algo.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_ArgumentAnalyzer.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_BOP.cxx \
-@top_srcdir@/src/BOPAlgo/BOPAlgo_BOP_1.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_Builder.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_BuilderArea.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_BuilderFace.cxx \
@@ -108,6 +107,7 @@ libTKBO_la_SOURCES = \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_PaveFiller_7.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_PaveFiller_8.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_PaveFiller_9.cxx \
+@top_srcdir@/src/BOPAlgo/BOPAlgo_Section.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_SectionAttribute.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_ShellSplitter.cxx \
 @top_srcdir@/src/BOPAlgo/BOPAlgo_Tools.cxx \

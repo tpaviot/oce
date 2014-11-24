@@ -6,54 +6,42 @@
 #ifndef _StepGeom_SurfaceBoundary_HeaderFile
 #define _StepGeom_SurfaceBoundary_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepGeom_BoundaryCurve_HeaderFile
 #include <Handle_StepGeom_BoundaryCurve.hxx>
-#endif
-#ifndef _Handle_StepGeom_DegeneratePcurve_HeaderFile
 #include <Handle_StepGeom_DegeneratePcurve.hxx>
-#endif
 class Standard_Transient;
 class StepGeom_BoundaryCurve;
 class StepGeom_DegeneratePcurve;
 
 
-//! Representation of STEP SELECT type SurfaceBoundary <br>
-class StepGeom_SurfaceBoundary  : public StepData_SelectType {
+//! Representation of STEP SELECT type SurfaceBoundary
+class StepGeom_SurfaceBoundary  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepGeom_SurfaceBoundary();
-  //! Recognizes a kind of SurfaceBoundary select type <br>
-//!          1 -> BoundaryCurve from StepGeom <br>
-//!          2 -> DegeneratePcurve from StepGeom <br>
-//!          0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! Returns Value as BoundaryCurve (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepGeom_BoundaryCurve BoundaryCurve() const;
-  //! Returns Value as DegeneratePcurve (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepGeom_DegeneratePcurve DegeneratePcurve() const;
-
+  
+  //! Empty constructor
+  Standard_EXPORT StepGeom_SurfaceBoundary();
+  
+  //! Recognizes a kind of SurfaceBoundary select type
+  //! 1 -> BoundaryCurve from StepGeom
+  //! 2 -> DegeneratePcurve from StepGeom
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! Returns Value as BoundaryCurve (or Null if another type)
+  Standard_EXPORT   Handle(StepGeom_BoundaryCurve) BoundaryCurve()  const;
+  
+  //! Returns Value as DegeneratePcurve (or Null if another type)
+  Standard_EXPORT   Handle(StepGeom_DegeneratePcurve) DegeneratePcurve()  const;
 
 
 
@@ -76,7 +64,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_SurfaceBoundary_HeaderFile

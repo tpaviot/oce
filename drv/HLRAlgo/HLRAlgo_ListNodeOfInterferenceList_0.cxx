@@ -5,19 +5,11 @@
 
 #include <HLRAlgo_ListNodeOfInterferenceList.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _HLRAlgo_Interference_HeaderFile
 #include <HLRAlgo_Interference.hxx>
-#endif
-#ifndef _HLRAlgo_InterferenceList_HeaderFile
 #include <HLRAlgo_InterferenceList.hxx>
-#endif
-#ifndef _HLRAlgo_ListIteratorOfInterferenceList_HeaderFile
 #include <HLRAlgo_ListIteratorOfInterferenceList.hxx>
-#endif
 
  
 

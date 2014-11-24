@@ -5,29 +5,17 @@
 
 #include <TopOpeBRep_DataMapIteratorOfDataMapOfTopolTool.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _BRepTopAdaptor_TopolTool_HeaderFile
 #include <BRepTopAdaptor_TopolTool.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _TopOpeBRep_DataMapOfTopolTool_HeaderFile
 #include <TopOpeBRep_DataMapOfTopolTool.hxx>
-#endif
-#ifndef _TopOpeBRep_DataMapNodeOfDataMapOfTopolTool_HeaderFile
 #include <TopOpeBRep_DataMapNodeOfDataMapOfTopolTool.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape
 #define TheKey_hxx <TopoDS_Shape.hxx>
-#define TheItem Handle_BRepTopAdaptor_TopolTool
+#define TheItem Handle(BRepTopAdaptor_TopolTool)
 #define TheItem_hxx <BRepTopAdaptor_TopolTool.hxx>
 #define Hasher TopTools_ShapeMapHasher
 #define Hasher_hxx <TopTools_ShapeMapHasher.hxx>

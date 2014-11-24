@@ -5,18 +5,10 @@
 
 #include <GeomFill_SequenceOfAx2.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _gp_Ax2_HeaderFile
 #include <gp_Ax2.hxx>
-#endif
-#ifndef _GeomFill_SequenceNodeOfSequenceOfAx2_HeaderFile
 #include <GeomFill_SequenceNodeOfSequenceOfAx2.hxx>
-#endif
  
 
 #define SeqItem gp_Ax2

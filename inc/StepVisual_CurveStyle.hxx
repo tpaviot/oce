@@ -6,31 +6,15 @@
 #ifndef _StepVisual_CurveStyle_HeaderFile
 #define _StepVisual_CurveStyle_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_CurveStyle_HeaderFile
 #include <Handle_StepVisual_CurveStyle.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepVisual_CurveStyleFontSelect_HeaderFile
 #include <StepVisual_CurveStyleFontSelect.hxx>
-#endif
-#ifndef _StepBasic_SizeSelect_HeaderFile
 #include <StepBasic_SizeSelect.hxx>
-#endif
-#ifndef _Handle_StepVisual_Colour_HeaderFile
 #include <Handle_StepVisual_Colour.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepVisual_Colour;
 class StepVisual_CurveStyleFontSelect;
@@ -38,30 +22,32 @@ class StepBasic_SizeSelect;
 
 
 
-class StepVisual_CurveStyle : public MMgt_TShared {
+class StepVisual_CurveStyle : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a CurveStyle <br>
-  Standard_EXPORT   StepVisual_CurveStyle();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const StepVisual_CurveStyleFontSelect& aCurveFont,const StepBasic_SizeSelect& aCurveWidth,const Handle(StepVisual_Colour)& aCurveColour) ;
+  //! Returns a CurveStyle
+  Standard_EXPORT StepVisual_CurveStyle();
   
-  Standard_EXPORT     void SetName(const Handle(TCollection_HAsciiString)& aName) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const StepVisual_CurveStyleFontSelect& aCurveFont, const StepBasic_SizeSelect& aCurveWidth, const Handle(StepVisual_Colour)& aCurveColour) ;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString Name() const;
+  Standard_EXPORT   void SetName (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetCurveFont(const StepVisual_CurveStyleFontSelect& aCurveFont) ;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Name()  const;
   
-  Standard_EXPORT     StepVisual_CurveStyleFontSelect CurveFont() const;
+  Standard_EXPORT   void SetCurveFont (const StepVisual_CurveStyleFontSelect& aCurveFont) ;
   
-  Standard_EXPORT     void SetCurveWidth(const StepBasic_SizeSelect& aCurveWidth) ;
+  Standard_EXPORT   StepVisual_CurveStyleFontSelect CurveFont()  const;
   
-  Standard_EXPORT     StepBasic_SizeSelect CurveWidth() const;
+  Standard_EXPORT   void SetCurveWidth (const StepBasic_SizeSelect& aCurveWidth) ;
   
-  Standard_EXPORT     void SetCurveColour(const Handle(StepVisual_Colour)& aCurveColour) ;
+  Standard_EXPORT   StepBasic_SizeSelect CurveWidth()  const;
   
-  Standard_EXPORT     Handle_StepVisual_Colour CurveColour() const;
+  Standard_EXPORT   void SetCurveColour (const Handle(StepVisual_Colour)& aCurveColour) ;
+  
+  Standard_EXPORT   Handle(StepVisual_Colour) CurveColour()  const;
 
 
 
@@ -76,10 +62,10 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString name;
-StepVisual_CurveStyleFontSelect curveFont;
-StepBasic_SizeSelect curveWidth;
-Handle_StepVisual_Colour curveColour;
+  Handle(TCollection_HAsciiString) name;
+  StepVisual_CurveStyleFontSelect curveFont;
+  StepBasic_SizeSelect curveWidth;
+  Handle(StepVisual_Colour) curveColour;
 
 
 };
@@ -88,7 +74,6 @@ Handle_StepVisual_Colour curveColour;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_CurveStyle_HeaderFile

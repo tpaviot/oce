@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKOpenGl"
-	ProjectGUID="{B349B7BA-140E-0307-05ED-AFE40FA5A9A7}"
+	ProjectGUID="{5BF8008F-03ED-0CD3-0B4C-008343A9B087}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -248,7 +248,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\OpenGl;..\..\..\src\OpenGl;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__OpenGl_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__OpenGl_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__OpenGl_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__OpenGl_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -343,7 +343,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\OpenGl;..\..\..\src\OpenGl;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__OpenGl_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__OpenGl_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -365,7 +365,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__OpenGl_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__OpenGl_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -452,6 +452,12 @@
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Context.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_Cylinder.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_Disk.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Element.cxx">
 				</File>
 				<File
@@ -515,10 +521,16 @@
 					RelativePath="..\..\..\src\OpenGl\OpenGl_PriorityList.cxx">
 				</File>
 				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_Quadric.cxx">
+				</File>
+				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_RenderFilter.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_Resource.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_Sampler.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_SceneGeometry.cxx">
@@ -534,6 +546,9 @@
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_ShaderStates.cxx">
+				</File>
+				<File
+					RelativePath="..\..\..\src\OpenGl\OpenGl_Sphere.cxx">
 				</File>
 				<File
 					RelativePath="..\..\..\src\OpenGl\OpenGl_StencilTest.cxx">

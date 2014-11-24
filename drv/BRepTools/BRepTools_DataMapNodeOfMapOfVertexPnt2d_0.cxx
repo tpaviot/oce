@@ -5,25 +5,13 @@
 
 #include <BRepTools_DataMapNodeOfMapOfVertexPnt2d.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TColgp_SequenceOfPnt2d_HeaderFile
 #include <TColgp_SequenceOfPnt2d.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _BRepTools_MapOfVertexPnt2d_HeaderFile
 #include <BRepTools_MapOfVertexPnt2d.hxx>
-#endif
-#ifndef _BRepTools_DataMapIteratorOfMapOfVertexPnt2d_HeaderFile
 #include <BRepTools_DataMapIteratorOfMapOfVertexPnt2d.hxx>
-#endif
 
  
 

@@ -5,28 +5,14 @@
 
 #include <PDataStd_HArray1OfHAsciiString.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _PCollection_HAsciiString_HeaderFile
 #include <PCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _PDataStd_FieldOfHArray1OfHAsciiString_HeaderFile
 #include <PDataStd_FieldOfHArray1OfHAsciiString.hxx>
-#endif
-#ifndef _PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString_HeaderFile
 #include <PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString.hxx>
-#endif
-#ifndef _PDataStd_VArrayTNodeOfFieldOfHArray1OfHAsciiString_HeaderFile
 #include <PDataStd_VArrayTNodeOfFieldOfHArray1OfHAsciiString.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(PDataStd_HArray1OfHAsciiString,Standard_Persistent)
 IMPLEMENT_STANDARD_RTTI(PDataStd_HArray1OfHAsciiString)
 
 
-#define Item Handle_PCollection_HAsciiString
+#define Item Handle(PCollection_HAsciiString)
 #define Item_hxx <PCollection_HAsciiString.hxx>
 #define PCollection_FieldOfHArray1 PDataStd_FieldOfHArray1OfHAsciiString
 #define PCollection_FieldOfHArray1_hxx <PDataStd_FieldOfHArray1OfHAsciiString.hxx>

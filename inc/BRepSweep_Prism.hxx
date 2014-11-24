@@ -6,22 +6,12 @@
 #ifndef _BRepSweep_Prism_HeaderFile
 #define _BRepSweep_Prism_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepSweep_Translation_HeaderFile
 #include <BRepSweep_Translation.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_ConstructionError;
 class TopoDS_Shape;
 class gp_Vec;
@@ -30,44 +20,53 @@ class Sweep_NumShape;
 class TopLoc_Location;
 
 
-//! Provides natural constructors to build BRepSweep <br>
-//!          translated swept Primitives. <br>
-class BRepSweep_Prism  {
+//! Provides natural constructors to build BRepSweep
+//! translated swept Primitives.
+class BRepSweep_Prism 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Builds the prism of base S and vector V. If C is true, <br>
-//!          S is copied. If Canonize is true then generated surfaces <br>
-//!          are attempted to be canonized in simple types <br>
-  Standard_EXPORT   BRepSweep_Prism(const TopoDS_Shape& S,const gp_Vec& V,const Standard_Boolean Copy = Standard_False,const Standard_Boolean Canonize = Standard_True);
-  //! Builds a semi-infinite or an infinite prism of base S. <br>
-//!          If Copy is true S is copied.  If Inf is true the prism <br>
-//!          is infinite, if Inf is false the  prism is infinite in <br>
-//!          the direction D. If Canonize is true then generated surfaces <br>
-//!          are attempted to be canonized in simple types <br>
-  Standard_EXPORT   BRepSweep_Prism(const TopoDS_Shape& S,const gp_Dir& D,const Standard_Boolean Inf = Standard_True,const Standard_Boolean Copy = Standard_False,const Standard_Boolean Canonize = Standard_True);
-  //! Returns the TopoDS Shape attached to the prism. <br>
-  Standard_EXPORT     TopoDS_Shape Shape() ;
-  //! Returns    the  TopoDS  Shape   generated  with  aGenS <br>
-//!          (subShape  of the generating shape). <br>
-  Standard_EXPORT     TopoDS_Shape Shape(const TopoDS_Shape& aGenS) ;
-  //! Returns the  TopoDS  Shape of the bottom of the prism. <br>
-  Standard_EXPORT     TopoDS_Shape FirstShape() ;
-  //! Returns the TopoDS Shape of the bottom  of the  prism. <br>
-//!          generated  with  aGenS  (subShape  of  the  generating <br>
-//!          shape). <br>
-  Standard_EXPORT     TopoDS_Shape FirstShape(const TopoDS_Shape& aGenS) ;
-  //! Returns the TopoDS Shape of the top of the prism. <br>
-  Standard_EXPORT     TopoDS_Shape LastShape() ;
-  //! Returns the  TopoDS  Shape of the top  of  the  prism. <br>
-//!          generated  with  aGenS  (subShape  of  the  generating <br>
-//!          shape). <br>
-  Standard_EXPORT     TopoDS_Shape LastShape(const TopoDS_Shape& aGenS) ;
-  //! Returns the Vector of the Prism,  if it is an infinite <br>
-//!          prism the Vec is unitar. <br>
-  Standard_EXPORT     gp_Vec Vec() const;
-
+  
+  //! Builds the prism of base S and vector V. If C is true,
+  //! S is copied. If Canonize is true then generated surfaces
+  //! are attempted to be canonized in simple types
+  Standard_EXPORT BRepSweep_Prism(const TopoDS_Shape& S, const gp_Vec& V, const Standard_Boolean Copy = Standard_False, const Standard_Boolean Canonize = Standard_True);
+  
+  //! Builds a semi-infinite or an infinite prism of base S.
+  //! If Copy is true S is copied.  If Inf is true the prism
+  //! is infinite, if Inf is false the  prism is infinite in
+  //! the direction D. If Canonize is true then generated surfaces
+  //! are attempted to be canonized in simple types
+  Standard_EXPORT BRepSweep_Prism(const TopoDS_Shape& S, const gp_Dir& D, const Standard_Boolean Inf = Standard_True, const Standard_Boolean Copy = Standard_False, const Standard_Boolean Canonize = Standard_True);
+  
+  //! Returns the TopoDS Shape attached to the prism.
+  Standard_EXPORT   TopoDS_Shape Shape() ;
+  
+  //! Returns    the  TopoDS  Shape   generated  with  aGenS
+  //! (subShape  of the generating shape).
+  Standard_EXPORT   TopoDS_Shape Shape (const TopoDS_Shape& aGenS) ;
+  
+  //! Returns the  TopoDS  Shape of the bottom of the prism.
+  Standard_EXPORT   TopoDS_Shape FirstShape() ;
+  
+  //! Returns the TopoDS Shape of the bottom  of the  prism.
+  //! generated  with  aGenS  (subShape  of  the  generating
+  //! shape).
+  Standard_EXPORT   TopoDS_Shape FirstShape (const TopoDS_Shape& aGenS) ;
+  
+  //! Returns the TopoDS Shape of the top of the prism.
+  Standard_EXPORT   TopoDS_Shape LastShape() ;
+  
+  //! Returns the  TopoDS  Shape of the top  of  the  prism.
+  //! generated  with  aGenS  (subShape  of  the  generating
+  //! shape).
+  Standard_EXPORT   TopoDS_Shape LastShape (const TopoDS_Shape& aGenS) ;
+  
+  //! Returns the Vector of the Prism,  if it is an infinite
+  //! prism the Vec is unitar.
+  Standard_EXPORT   gp_Vec Vec()  const;
 
 
 
@@ -80,15 +79,18 @@ protected:
 
 private:
 
-  //! used to build the NumShape of a limited prism. <br>
-  Standard_EXPORT     Sweep_NumShape NumShape() const;
-  //! used to build the NumShape of an infinite prism. <br>
-  Standard_EXPORT     Sweep_NumShape NumShape(const Standard_Boolean Inf) const;
-  //! used to build the Location. <br>
-  Standard_EXPORT     TopLoc_Location Location(const gp_Vec& V) const;
+  
+  //! used to build the NumShape of a limited prism.
+  Standard_EXPORT   Sweep_NumShape NumShape()  const;
+  
+  //! used to build the NumShape of an infinite prism.
+  Standard_EXPORT   Sweep_NumShape NumShape (const Standard_Boolean Inf)  const;
+  
+  //! used to build the Location.
+  Standard_EXPORT   TopLoc_Location Location (const gp_Vec& V)  const;
 
 
-BRepSweep_Translation myTranslation;
+  BRepSweep_Translation myTranslation;
 
 
 };
@@ -97,7 +99,6 @@ BRepSweep_Translation myTranslation;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepSweep_Prism_HeaderFile

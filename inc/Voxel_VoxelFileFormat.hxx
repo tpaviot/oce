@@ -6,14 +6,13 @@
 #ifndef _Voxel_VoxelFileFormat_HeaderFile
 #define _Voxel_VoxelFileFormat_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Voxel_VoxelFileFormat {
+
+enum Voxel_VoxelFileFormat
+{
 Voxel_VFF_ASCII,
 Voxel_VFF_BINARY
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Voxel_VoxelFileFormat_HeaderFile

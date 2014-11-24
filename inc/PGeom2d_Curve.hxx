@@ -6,25 +6,16 @@
 #ifndef _PGeom2d_Curve_HeaderFile
 #define _PGeom2d_Curve_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom2d_Curve_HeaderFile
 #include <Handle_PGeom2d_Curve.hxx>
-#endif
 
-#ifndef _PGeom2d_Geometry_HeaderFile
 #include <PGeom2d_Geometry.hxx>
-#endif
 
 
-class PGeom2d_Curve : public PGeom2d_Geometry {
+class PGeom2d_Curve : public PGeom2d_Geometry
+{
 
 public:
 
@@ -33,7 +24,7 @@ PGeom2d_Curve(const Storage_stCONSTclCOM& a) : PGeom2d_Geometry(a)
 {
   
 }
-  PGeom2d_Curve( )
+PGeom2d_Curve( )
 {
   
 }
@@ -58,7 +49,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom2d_Curve_HeaderFile

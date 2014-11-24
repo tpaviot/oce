@@ -6,65 +6,46 @@
 #ifndef _XmlMXCAFDoc_LocationDriver_HeaderFile
 #define _XmlMXCAFDoc_LocationDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_XmlMXCAFDoc_LocationDriver_HeaderFile
 #include <Handle_XmlMXCAFDoc_LocationDriver.hxx>
-#endif
 
-#ifndef _TopTools_LocationSetPtr_HeaderFile
 #include <TopTools_LocationSetPtr.hxx>
-#endif
-#ifndef _XmlMDF_ADriver_HeaderFile
 #include <XmlMDF_ADriver.hxx>
-#endif
-#ifndef _Handle_CDM_MessageDriver_HeaderFile
 #include <Handle_CDM_MessageDriver.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _XmlObjMgt_RRelocationTable_HeaderFile
 #include <XmlObjMgt_RRelocationTable.hxx>
-#endif
-#ifndef _XmlObjMgt_SRelocationTable_HeaderFile
 #include <XmlObjMgt_SRelocationTable.hxx>
-#endif
-#ifndef _XmlObjMgt_Element_HeaderFile
 #include <XmlObjMgt_Element.hxx>
-#endif
 class CDM_MessageDriver;
 class TDF_Attribute;
 class XmlObjMgt_Persistent;
 class TopLoc_Location;
 
 
-//! Attribute Driver. <br>
-class XmlMXCAFDoc_LocationDriver : public XmlMDF_ADriver {
+//! Attribute Driver.
+class XmlMXCAFDoc_LocationDriver : public XmlMDF_ADriver
+{
 
 public:
 
   
-  Standard_EXPORT   XmlMXCAFDoc_LocationDriver(const Handle(CDM_MessageDriver)& theMessageDriver);
+  Standard_EXPORT XmlMXCAFDoc_LocationDriver(const Handle(CDM_MessageDriver)& theMessageDriver);
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
   
-  Standard_EXPORT     Standard_Boolean Paste(const XmlObjMgt_Persistent& Source,const Handle(TDF_Attribute)& Target,XmlObjMgt_RRelocationTable& RelocTable) const;
+  Standard_EXPORT   Standard_Boolean Paste (const XmlObjMgt_Persistent& Source, const Handle(TDF_Attribute)& Target, XmlObjMgt_RRelocationTable& RelocTable)  const;
   
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& Source,XmlObjMgt_Persistent& Target,XmlObjMgt_SRelocationTable& RelocTable) const;
-  //! Translate a non storable Location to a storable Location. <br>
-  Standard_EXPORT     void Translate(const TopLoc_Location& theLoc,XmlObjMgt_Element& theParent,XmlObjMgt_SRelocationTable& theMap) const;
-  //! Translate a storable Location to a non storable Location. <br>
-  Standard_EXPORT     Standard_Boolean Translate(const XmlObjMgt_Element& theParent,TopLoc_Location& theLoc,XmlObjMgt_RRelocationTable& theMap) const;
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& Source, XmlObjMgt_Persistent& Target, XmlObjMgt_SRelocationTable& RelocTable)  const;
   
-        void SetSharedLocations(const TopTools_LocationSetPtr& theLocations) ;
+  //! Translate a non storable Location to a storable Location.
+  Standard_EXPORT   void Translate (const TopLoc_Location& theLoc, XmlObjMgt_Element& theParent, XmlObjMgt_SRelocationTable& theMap)  const;
+  
+  //! Translate a storable Location to a non storable Location.
+  Standard_EXPORT   Standard_Boolean Translate (const XmlObjMgt_Element& theParent, TopLoc_Location& theLoc, XmlObjMgt_RRelocationTable& theMap)  const;
+  
+      void SetSharedLocations (const TopTools_LocationSetPtr& theLocations) ;
 
 
 
@@ -79,7 +60,7 @@ protected:
 private: 
 
 
-TopTools_LocationSetPtr myLocations;
+  TopTools_LocationSetPtr myLocations;
 
 
 };
@@ -89,7 +70,6 @@ TopTools_LocationSetPtr myLocations;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XmlMXCAFDoc_LocationDriver_HeaderFile

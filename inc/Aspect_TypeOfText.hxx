@@ -6,17 +6,16 @@
 #ifndef _Aspect_TypeOfText_HeaderFile
 #define _Aspect_TypeOfText_HeaderFile
 
-//! Definition of Text types <br>
-//! <br>
-//!          TOF_SOLID           Default text <br>
-//!          TOF_OUTLINE <br>
-enum Aspect_TypeOfText {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Definition of Text types
+//!
+//! TOF_SOLID           Default text
+//! TOF_OUTLINE
+enum Aspect_TypeOfText
+{
 Aspect_TOT_SOLID,
 Aspect_TOT_OUTLINE
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_TypeOfText_HeaderFile

@@ -34,6 +34,7 @@
 
 // exclude modern definitions and system-provided glext.h, should be defined before gl.h inclusion
 #define GL_GLEXT_LEGACY
+#define GLX_GLXEXT_LEGACY
 
 // include main OpenGL header provided with system
 #if defined(__APPLE__)
@@ -46,6 +47,7 @@
 
   typedef double GLdouble;
   typedef double GLclampd;
+  typedef uint64_t GLuint64;
   #define GL_NONE 0
 
   // OpenGL ES 3.0+ or GL_OES_element_index_uint extension
@@ -152,6 +154,7 @@
   #undef GL_VERSION_4_2
   #undef GL_VERSION_4_3
   #undef GL_VERSION_4_4
+  #undef GL_VERSION_4_5
 
   // include glext.h provided by Khronos group
   #include <glext.h>
@@ -1383,6 +1386,25 @@ public: //! @name GL_ARB_debug_output (optional)
 public: //! @name GL_EXT_geometry_shader4
 
   PFNGLPROGRAMPARAMETERIEXTPROC glProgramParameteriEXT;
+
+public: //! @name GL_ARB_bindless_texture
+
+  PFNGLGETTEXTUREHANDLEARBPROC             glGetTextureHandleARB;
+  PFNGLGETTEXTURESAMPLERHANDLEARBPROC      glGetTextureSamplerHandleARB;
+  PFNGLMAKETEXTUREHANDLERESIDENTARBPROC    glMakeTextureHandleResidentARB;
+  PFNGLMAKETEXTUREHANDLENONRESIDENTARBPROC glMakeTextureHandleNonResidentARB;
+  PFNGLGETIMAGEHANDLEARBPROC               glGetImageHandleARB;
+  PFNGLMAKEIMAGEHANDLERESIDENTARBPROC      glMakeImageHandleResidentARB;
+  PFNGLMAKEIMAGEHANDLENONRESIDENTARBPROC   glMakeImageHandleNonResidentARB;
+  PFNGLUNIFORMHANDLEUI64ARBPROC            glUniformHandleui64ARB;
+  PFNGLUNIFORMHANDLEUI64VARBPROC           glUniformHandleui64vARB;
+  PFNGLPROGRAMUNIFORMHANDLEUI64ARBPROC     glProgramUniformHandleui64ARB;
+  PFNGLPROGRAMUNIFORMHANDLEUI64VARBPROC    glProgramUniformHandleui64vARB;
+  PFNGLISTEXTUREHANDLERESIDENTARBPROC      glIsTextureHandleResidentARB;
+  PFNGLISIMAGEHANDLERESIDENTARBPROC        glIsImageHandleResidentARB;
+  PFNGLVERTEXATTRIBL1UI64ARBPROC           glVertexAttribL1ui64ARB;
+  PFNGLVERTEXATTRIBL1UI64VARBPROC          glVertexAttribL1ui64vARB;
+  PFNGLGETVERTEXATTRIBLUI64VARBPROC        glGetVertexAttribLui64vARB;
 
 #if defined(_WIN32)
 public: //! @name wgl extensions

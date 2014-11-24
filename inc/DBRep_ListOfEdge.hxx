@@ -6,31 +6,15 @@
 #ifndef _DBRep_ListOfEdge_HeaderFile
 #define _DBRep_ListOfEdge_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_DBRep_Edge_HeaderFile
 #include <Handle_DBRep_Edge.hxx>
-#endif
-#ifndef _Handle_DBRep_ListNodeOfListOfEdge_HeaderFile
 #include <Handle_DBRep_ListNodeOfListOfEdge.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class DBRep_ListIteratorOfListOfEdge;
 class DBRep_Edge;
@@ -38,63 +22,63 @@ class DBRep_ListNodeOfListOfEdge;
 
 
 
-class DBRep_ListOfEdge  {
+class DBRep_ListOfEdge 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   DBRep_ListOfEdge();
+  Standard_EXPORT DBRep_ListOfEdge();
   
-  Standard_EXPORT   DBRep_ListOfEdge(const DBRep_ListOfEdge& Other);
+  Standard_EXPORT DBRep_ListOfEdge(const DBRep_ListOfEdge& Other);
   
-  Standard_EXPORT     void Assign(const DBRep_ListOfEdge& Other) ;
-    void operator=(const DBRep_ListOfEdge& Other) 
+  Standard_EXPORT   void Assign (const DBRep_ListOfEdge& Other) ;
+  void operator= (const DBRep_ListOfEdge& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~DBRep_ListOfEdge()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const Handle(DBRep_Edge)& I) ;
+  Standard_EXPORT   void Prepend (const Handle(DBRep_Edge)& I) ;
   
-  Standard_EXPORT     void Prepend(const Handle(DBRep_Edge)& I,DBRep_ListIteratorOfListOfEdge& theIt) ;
+  Standard_EXPORT   void Prepend (const Handle(DBRep_Edge)& I, DBRep_ListIteratorOfListOfEdge& theIt) ;
   
-  Standard_EXPORT     void Prepend(DBRep_ListOfEdge& Other) ;
+  Standard_EXPORT   void Prepend (DBRep_ListOfEdge& Other) ;
   
-  Standard_EXPORT     void Append(const Handle(DBRep_Edge)& I) ;
+  Standard_EXPORT   void Append (const Handle(DBRep_Edge)& I) ;
   
-  Standard_EXPORT     void Append(const Handle(DBRep_Edge)& I,DBRep_ListIteratorOfListOfEdge& theIt) ;
+  Standard_EXPORT   void Append (const Handle(DBRep_Edge)& I, DBRep_ListIteratorOfListOfEdge& theIt) ;
   
-  Standard_EXPORT     void Append(DBRep_ListOfEdge& Other) ;
+  Standard_EXPORT   void Append (DBRep_ListOfEdge& Other) ;
   
-  Standard_EXPORT     Handle_DBRep_Edge& First() const;
+  Standard_EXPORT   Handle(DBRep_Edge)& First()  const;
   
-  Standard_EXPORT     Handle_DBRep_Edge& Last() const;
+  Standard_EXPORT   Handle(DBRep_Edge)& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(DBRep_ListIteratorOfListOfEdge& It) ;
+  Standard_EXPORT   void Remove (DBRep_ListIteratorOfListOfEdge& It) ;
   
-  Standard_EXPORT     void InsertBefore(const Handle(DBRep_Edge)& I,DBRep_ListIteratorOfListOfEdge& It) ;
+  Standard_EXPORT   void InsertBefore (const Handle(DBRep_Edge)& I, DBRep_ListIteratorOfListOfEdge& It) ;
   
-  Standard_EXPORT     void InsertBefore(DBRep_ListOfEdge& Other,DBRep_ListIteratorOfListOfEdge& It) ;
+  Standard_EXPORT   void InsertBefore (DBRep_ListOfEdge& Other, DBRep_ListIteratorOfListOfEdge& It) ;
   
-  Standard_EXPORT     void InsertAfter(const Handle(DBRep_Edge)& I,DBRep_ListIteratorOfListOfEdge& It) ;
+  Standard_EXPORT   void InsertAfter (const Handle(DBRep_Edge)& I, DBRep_ListIteratorOfListOfEdge& It) ;
   
-  Standard_EXPORT     void InsertAfter(DBRep_ListOfEdge& Other,DBRep_ListIteratorOfListOfEdge& It) ;
+  Standard_EXPORT   void InsertAfter (DBRep_ListOfEdge& Other, DBRep_ListIteratorOfListOfEdge& It) ;
 
 
 friend class DBRep_ListIteratorOfListOfEdge;
-
 
 
 protected:
@@ -107,13 +91,13 @@ private:
 
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
 
-#define Item Handle_DBRep_Edge
+#define Item Handle(DBRep_Edge)
 #define Item_hxx <DBRep_Edge.hxx>
 #define TCollection_ListNode DBRep_ListNodeOfListOfEdge
 #define TCollection_ListNode_hxx <DBRep_ListNodeOfListOfEdge.hxx>
@@ -138,7 +122,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DBRep_ListOfEdge_HeaderFile

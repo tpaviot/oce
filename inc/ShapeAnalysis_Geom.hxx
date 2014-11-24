@@ -6,25 +6,13 @@
 #ifndef _ShapeAnalysis_Geom_HeaderFile
 #define _ShapeAnalysis_Geom_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray2OfReal_HeaderFile
 #include <Handle_TColStd_HArray2OfReal.hxx>
-#endif
 class Standard_OutOfRange;
 class TColgp_Array1OfPnt;
 class gp_Pln;
@@ -32,21 +20,23 @@ class TColStd_HArray2OfReal;
 class gp_Trsf;
 
 
-//! Analyzing tool aimed to work on primitive geometrical objects <br>
-class ShapeAnalysis_Geom  {
+//! Analyzing tool aimed to work on primitive geometrical objects
+class ShapeAnalysis_Geom 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Builds a plane out of a set of points in array <br>
-//!           Returns in <dmax> the maximal distance between the produced <br>
-//!           plane and given points <br>
-  Standard_EXPORT   static  Standard_Boolean NearestPlane(const TColgp_Array1OfPnt& Pnts,gp_Pln& aPln,Standard_Real& Dmax) ;
-  //! Builds transfromation object out of matrix. <br>
-//!          Matrix must be 3 x 4. <br>
-//!          Unit is used as multiplier. <br>
-  Standard_EXPORT   static  Standard_Boolean PositionTrsf(const Handle(TColStd_HArray2OfReal)& coefs,gp_Trsf& trsf,const Standard_Real unit,const Standard_Real prec) ;
-
+  
+  //! Builds a plane out of a set of points in array
+  //! Returns in <dmax> the maximal distance between the produced
+  //! plane and given points
+  Standard_EXPORT static   Standard_Boolean NearestPlane (const TColgp_Array1OfPnt& Pnts, gp_Pln& aPln, Standard_Real& Dmax) ;
+  
+  //! Builds transfromation object out of matrix.
+  //! Matrix must be 3 x 4.
+  //! Unit is used as multiplier.
+  Standard_EXPORT static   Standard_Boolean PositionTrsf (const Handle(TColStd_HArray2OfReal)& coefs, gp_Trsf& trsf, const Standard_Real unit, const Standard_Real prec) ;
 
 
 
@@ -69,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeAnalysis_Geom_HeaderFile

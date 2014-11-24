@@ -5,22 +5,12 @@
 
 #include <Geom2dHatch_DataMapNodeOfHatchings.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Geom2dHatch_Hatching_HeaderFile
 #include <Geom2dHatch_Hatching.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _Geom2dHatch_Hatchings_HeaderFile
 #include <Geom2dHatch_Hatchings.hxx>
-#endif
-#ifndef _Geom2dHatch_DataMapIteratorOfHatchings_HeaderFile
 #include <Geom2dHatch_DataMapIteratorOfHatchings.hxx>
-#endif
 
  
 

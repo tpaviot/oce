@@ -6,28 +6,14 @@
 #ifndef _DBRep_ListIteratorOfListOfFace_HeaderFile
 #define _DBRep_ListIteratorOfListOfFace_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_DBRep_Face_HeaderFile
 #include <Handle_DBRep_Face.hxx>
-#endif
-#ifndef _Handle_DBRep_ListNodeOfListOfFace_HeaderFile
 #include <Handle_DBRep_ListNodeOfListOfFace.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class DBRep_ListOfFace;
@@ -36,27 +22,27 @@ class DBRep_ListNodeOfListOfFace;
 
 
 
-class DBRep_ListIteratorOfListOfFace  {
+class DBRep_ListIteratorOfListOfFace 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   DBRep_ListIteratorOfListOfFace();
+  Standard_EXPORT DBRep_ListIteratorOfListOfFace();
   
-  Standard_EXPORT   DBRep_ListIteratorOfListOfFace(const DBRep_ListOfFace& L);
+  Standard_EXPORT DBRep_ListIteratorOfListOfFace(const DBRep_ListOfFace& L);
   
-  Standard_EXPORT     void Initialize(const DBRep_ListOfFace& L) ;
+  Standard_EXPORT   void Initialize (const DBRep_ListOfFace& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     Handle_DBRep_Face& Value() const;
+  Standard_EXPORT   Handle(DBRep_Face)& Value()  const;
 
 
 friend class DBRep_ListOfFace;
-
 
 
 protected:
@@ -69,13 +55,13 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
 
-#define Item Handle_DBRep_Face
+#define Item Handle(DBRep_Face)
 #define Item_hxx <DBRep_Face.hxx>
 #define TCollection_ListNode DBRep_ListNodeOfListOfFace
 #define TCollection_ListNode_hxx <DBRep_ListNodeOfListOfFace.hxx>
@@ -100,7 +86,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DBRep_ListIteratorOfListOfFace_HeaderFile

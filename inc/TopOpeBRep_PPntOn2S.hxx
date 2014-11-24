@@ -7,7 +7,6 @@
 #define _TopOpeBRep_PPntOn2S_HeaderFile
 
 class IntSurf_PntOn2S;
-
 typedef IntSurf_PntOn2S* TopOpeBRep_PPntOn2S;
 
-#endif
+#endif // _TopOpeBRep_PPntOn2S_HeaderFile

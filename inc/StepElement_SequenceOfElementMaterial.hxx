@@ -6,28 +6,14 @@
 #ifndef _StepElement_SequenceOfElementMaterial_HeaderFile
 #define _StepElement_SequenceOfElementMaterial_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_StepElement_ElementMaterial_HeaderFile
 #include <Handle_StepElement_ElementMaterial.hxx>
-#endif
-#ifndef _Handle_StepElement_SequenceNodeOfSequenceOfElementMaterial_HeaderFile
 #include <Handle_StepElement_SequenceNodeOfSequenceOfElementMaterial.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class StepElement_ElementMaterial;
@@ -35,68 +21,68 @@ class StepElement_SequenceNodeOfSequenceOfElementMaterial;
 
 
 
-class StepElement_SequenceOfElementMaterial  : public TCollection_BaseSequence {
+class StepElement_SequenceOfElementMaterial  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      StepElement_SequenceOfElementMaterial();
+    StepElement_SequenceOfElementMaterial();
   
-  Standard_EXPORT   StepElement_SequenceOfElementMaterial(const StepElement_SequenceOfElementMaterial& Other);
+  Standard_EXPORT StepElement_SequenceOfElementMaterial(const StepElement_SequenceOfElementMaterial& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~StepElement_SequenceOfElementMaterial()
 {
   Clear();
 }
   
-  Standard_EXPORT    const StepElement_SequenceOfElementMaterial& Assign(const StepElement_SequenceOfElementMaterial& Other) ;
-   const StepElement_SequenceOfElementMaterial& operator =(const StepElement_SequenceOfElementMaterial& Other) 
+  Standard_EXPORT  const  StepElement_SequenceOfElementMaterial& Assign (const StepElement_SequenceOfElementMaterial& Other) ;
+ const  StepElement_SequenceOfElementMaterial& operator = (const StepElement_SequenceOfElementMaterial& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(StepElement_ElementMaterial)& T) ;
+  Standard_EXPORT   void Append (const Handle(StepElement_ElementMaterial)& T) ;
   
-        void Append(StepElement_SequenceOfElementMaterial& S) ;
+      void Append (StepElement_SequenceOfElementMaterial& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(StepElement_ElementMaterial)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(StepElement_ElementMaterial)& T) ;
   
-        void Prepend(StepElement_SequenceOfElementMaterial& S) ;
+      void Prepend (StepElement_SequenceOfElementMaterial& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(StepElement_ElementMaterial)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(StepElement_ElementMaterial)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,StepElement_SequenceOfElementMaterial& S) ;
+      void InsertBefore (const Standard_Integer Index, StepElement_SequenceOfElementMaterial& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(StepElement_ElementMaterial)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(StepElement_ElementMaterial)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,StepElement_SequenceOfElementMaterial& S) ;
+      void InsertAfter (const Standard_Integer Index, StepElement_SequenceOfElementMaterial& S) ;
   
-  Standard_EXPORT    const Handle_StepElement_ElementMaterial& First() const;
+  Standard_EXPORT  const  Handle(StepElement_ElementMaterial)& First()  const;
   
-  Standard_EXPORT    const Handle_StepElement_ElementMaterial& Last() const;
+  Standard_EXPORT  const  Handle(StepElement_ElementMaterial)& Last()  const;
   
-        void Split(const Standard_Integer Index,StepElement_SequenceOfElementMaterial& Sub) ;
+      void Split (const Standard_Integer Index, StepElement_SequenceOfElementMaterial& Sub) ;
   
-  Standard_EXPORT    const Handle_StepElement_ElementMaterial& Value(const Standard_Integer Index) const;
-   const Handle_StepElement_ElementMaterial& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(StepElement_ElementMaterial)& Value (const Standard_Integer Index)  const;
+ const  Handle(StepElement_ElementMaterial)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(StepElement_ElementMaterial)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(StepElement_ElementMaterial)& I) ;
   
-  Standard_EXPORT     Handle_StepElement_ElementMaterial& ChangeValue(const Standard_Integer Index) ;
-    Handle_StepElement_ElementMaterial& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(StepElement_ElementMaterial)& ChangeValue (const Standard_Integer Index) ;
+  Handle(StepElement_ElementMaterial)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -115,7 +101,7 @@ private:
 
 };
 
-#define SeqItem Handle_StepElement_ElementMaterial
+#define SeqItem Handle(StepElement_ElementMaterial)
 #define SeqItem_hxx <StepElement_ElementMaterial.hxx>
 #define TCollection_SequenceNode StepElement_SequenceNodeOfSequenceOfElementMaterial
 #define TCollection_SequenceNode_hxx <StepElement_SequenceNodeOfSequenceOfElementMaterial.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_SequenceOfElementMaterial_HeaderFile

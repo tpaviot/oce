@@ -6,25 +6,13 @@
 #ifndef _Intf_Array1OfLin_HeaderFile
 #define _Intf_Array1OfLin_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -33,52 +21,52 @@ class gp_Lin;
 
 
 
-class Intf_Array1OfLin  {
+class Intf_Array1OfLin 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Intf_Array1OfLin(const Standard_Integer Low,const Standard_Integer Up);
+    Intf_Array1OfLin(const Standard_Integer Low, const Standard_Integer Up);
   
-      Intf_Array1OfLin(const gp_Lin& Item,const Standard_Integer Low,const Standard_Integer Up);
+    Intf_Array1OfLin(const gp_Lin& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const gp_Lin& V) ;
+  Standard_EXPORT   void Init (const gp_Lin& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~Intf_Array1OfLin()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const Intf_Array1OfLin& Assign(const Intf_Array1OfLin& Other) ;
-   const Intf_Array1OfLin& operator =(const Intf_Array1OfLin& Other) 
+  Standard_EXPORT  const  Intf_Array1OfLin& Assign (const Intf_Array1OfLin& Other) ;
+ const  Intf_Array1OfLin& operator = (const Intf_Array1OfLin& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const gp_Lin& Value) ;
+      void SetValue (const Standard_Integer Index, const gp_Lin& Value) ;
   
-       const gp_Lin& Value(const Standard_Integer Index) const;
-     const gp_Lin& operator ()(const Standard_Integer Index) const
+     const  gp_Lin& Value (const Standard_Integer Index)  const;
+   const  gp_Lin& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        gp_Lin& ChangeValue(const Standard_Integer Index) ;
-      gp_Lin& operator ()(const Standard_Integer Index) 
+      gp_Lin& ChangeValue (const Standard_Integer Index) ;
+    gp_Lin& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -92,13 +80,13 @@ protected:
 private:
 
   
-  Standard_EXPORT   Intf_Array1OfLin(const Intf_Array1OfLin& AnArray);
+  Standard_EXPORT Intf_Array1OfLin(const Intf_Array1OfLin& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
@@ -116,7 +104,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Intf_Array1OfLin_HeaderFile

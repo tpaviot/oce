@@ -6,15 +6,14 @@
 #ifndef _OSD_OpenMode_HeaderFile
 #define _OSD_OpenMode_HeaderFile
 
-//! Specifies the file open mode. <br>
-enum OSD_OpenMode {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Specifies the file open mode.
+enum OSD_OpenMode
+{
 OSD_ReadOnly,
 OSD_WriteOnly,
 OSD_ReadWrite
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _OSD_OpenMode_HeaderFile

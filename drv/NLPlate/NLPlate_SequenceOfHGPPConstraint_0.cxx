@@ -5,21 +5,13 @@
 
 #include <NLPlate_SequenceOfHGPPConstraint.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _NLPlate_HGPPConstraint_HeaderFile
 #include <NLPlate_HGPPConstraint.hxx>
-#endif
-#ifndef _NLPlate_SequenceNodeOfSequenceOfHGPPConstraint_HeaderFile
 #include <NLPlate_SequenceNodeOfSequenceOfHGPPConstraint.hxx>
-#endif
  
 
-#define SeqItem Handle_NLPlate_HGPPConstraint
+#define SeqItem Handle(NLPlate_HGPPConstraint)
 #define SeqItem_hxx <NLPlate_HGPPConstraint.hxx>
 #define TCollection_SequenceNode NLPlate_SequenceNodeOfSequenceOfHGPPConstraint
 #define TCollection_SequenceNode_hxx <NLPlate_SequenceNodeOfSequenceOfHGPPConstraint.hxx>

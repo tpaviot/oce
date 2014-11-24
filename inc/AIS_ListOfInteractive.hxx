@@ -6,31 +6,15 @@
 #ifndef _AIS_ListOfInteractive_HeaderFile
 #define _AIS_ListOfInteractive_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_AIS_InteractiveObject_HeaderFile
 #include <Handle_AIS_InteractiveObject.hxx>
-#endif
-#ifndef _Handle_AIS_ListNodeOfListOfInteractive_HeaderFile
 #include <Handle_AIS_ListNodeOfListOfInteractive.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class AIS_ListIteratorOfListOfInteractive;
 class AIS_InteractiveObject;
@@ -38,63 +22,63 @@ class AIS_ListNodeOfListOfInteractive;
 
 
 
-class AIS_ListOfInteractive  {
+class AIS_ListOfInteractive 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   AIS_ListOfInteractive();
+  Standard_EXPORT AIS_ListOfInteractive();
   
-  Standard_EXPORT   AIS_ListOfInteractive(const AIS_ListOfInteractive& Other);
+  Standard_EXPORT AIS_ListOfInteractive(const AIS_ListOfInteractive& Other);
   
-  Standard_EXPORT     void Assign(const AIS_ListOfInteractive& Other) ;
-    void operator=(const AIS_ListOfInteractive& Other) 
+  Standard_EXPORT   void Assign (const AIS_ListOfInteractive& Other) ;
+  void operator= (const AIS_ListOfInteractive& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~AIS_ListOfInteractive()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const Handle(AIS_InteractiveObject)& I) ;
+  Standard_EXPORT   void Prepend (const Handle(AIS_InteractiveObject)& I) ;
   
-  Standard_EXPORT     void Prepend(const Handle(AIS_InteractiveObject)& I,AIS_ListIteratorOfListOfInteractive& theIt) ;
+  Standard_EXPORT   void Prepend (const Handle(AIS_InteractiveObject)& I, AIS_ListIteratorOfListOfInteractive& theIt) ;
   
-  Standard_EXPORT     void Prepend(AIS_ListOfInteractive& Other) ;
+  Standard_EXPORT   void Prepend (AIS_ListOfInteractive& Other) ;
   
-  Standard_EXPORT     void Append(const Handle(AIS_InteractiveObject)& I) ;
+  Standard_EXPORT   void Append (const Handle(AIS_InteractiveObject)& I) ;
   
-  Standard_EXPORT     void Append(const Handle(AIS_InteractiveObject)& I,AIS_ListIteratorOfListOfInteractive& theIt) ;
+  Standard_EXPORT   void Append (const Handle(AIS_InteractiveObject)& I, AIS_ListIteratorOfListOfInteractive& theIt) ;
   
-  Standard_EXPORT     void Append(AIS_ListOfInteractive& Other) ;
+  Standard_EXPORT   void Append (AIS_ListOfInteractive& Other) ;
   
-  Standard_EXPORT     Handle_AIS_InteractiveObject& First() const;
+  Standard_EXPORT   Handle(AIS_InteractiveObject)& First()  const;
   
-  Standard_EXPORT     Handle_AIS_InteractiveObject& Last() const;
+  Standard_EXPORT   Handle(AIS_InteractiveObject)& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(AIS_ListIteratorOfListOfInteractive& It) ;
+  Standard_EXPORT   void Remove (AIS_ListIteratorOfListOfInteractive& It) ;
   
-  Standard_EXPORT     void InsertBefore(const Handle(AIS_InteractiveObject)& I,AIS_ListIteratorOfListOfInteractive& It) ;
+  Standard_EXPORT   void InsertBefore (const Handle(AIS_InteractiveObject)& I, AIS_ListIteratorOfListOfInteractive& It) ;
   
-  Standard_EXPORT     void InsertBefore(AIS_ListOfInteractive& Other,AIS_ListIteratorOfListOfInteractive& It) ;
+  Standard_EXPORT   void InsertBefore (AIS_ListOfInteractive& Other, AIS_ListIteratorOfListOfInteractive& It) ;
   
-  Standard_EXPORT     void InsertAfter(const Handle(AIS_InteractiveObject)& I,AIS_ListIteratorOfListOfInteractive& It) ;
+  Standard_EXPORT   void InsertAfter (const Handle(AIS_InteractiveObject)& I, AIS_ListIteratorOfListOfInteractive& It) ;
   
-  Standard_EXPORT     void InsertAfter(AIS_ListOfInteractive& Other,AIS_ListIteratorOfListOfInteractive& It) ;
+  Standard_EXPORT   void InsertAfter (AIS_ListOfInteractive& Other, AIS_ListIteratorOfListOfInteractive& It) ;
 
 
 friend class AIS_ListIteratorOfListOfInteractive;
-
 
 
 protected:
@@ -107,13 +91,13 @@ private:
 
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
 
-#define Item Handle_AIS_InteractiveObject
+#define Item Handle(AIS_InteractiveObject)
 #define Item_hxx <AIS_InteractiveObject.hxx>
 #define TCollection_ListNode AIS_ListNodeOfListOfInteractive
 #define TCollection_ListNode_hxx <AIS_ListNodeOfListOfInteractive.hxx>
@@ -138,7 +122,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_ListOfInteractive_HeaderFile

@@ -6,28 +6,14 @@
 #ifndef _TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface_HeaderFile
 #define _TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface_HeaderFile
 #include <Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopOpeBRepTool_face_HeaderFile
 #include <TopOpeBRepTool_face.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopoDS_Shape;
 class TopOpeBRepTool_face;
 class TopTools_ShapeMapHasher;
@@ -36,16 +22,17 @@ class TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeface;
 
 
 
-class TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface : public TCollection_MapNode {
+class TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface : public TCollection_MapNode
+{
 
 public:
 
   
-      TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface(const TopoDS_Shape& K,const TopOpeBRepTool_face& I,const TCollection_MapNodePtr& n);
+    TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface(const TopoDS_Shape& K, const TopOpeBRepTool_face& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        TopOpeBRepTool_face& Value() const;
+      TopOpeBRepTool_face& Value()  const;
 
 
 
@@ -60,8 +47,8 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-TopOpeBRepTool_face myValue;
+  TopoDS_Shape myKey;
+  TopOpeBRepTool_face myValue;
 
 
 };
@@ -99,7 +86,6 @@ TopOpeBRepTool_face myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepTool_DataMapNodeOfDataMapOfShapeface_HeaderFile

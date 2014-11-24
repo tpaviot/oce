@@ -5,21 +5,13 @@
 
 #include <AIS_SequenceOfDimension.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _AIS_Relation_HeaderFile
 #include <AIS_Relation.hxx>
-#endif
-#ifndef _AIS_SequenceNodeOfSequenceOfDimension_HeaderFile
 #include <AIS_SequenceNodeOfSequenceOfDimension.hxx>
-#endif
  
 
-#define SeqItem Handle_AIS_Relation
+#define SeqItem Handle(AIS_Relation)
 #define SeqItem_hxx <AIS_Relation.hxx>
 #define TCollection_SequenceNode AIS_SequenceNodeOfSequenceOfDimension
 #define TCollection_SequenceNode_hxx <AIS_SequenceNodeOfSequenceOfDimension.hxx>

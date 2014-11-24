@@ -5,24 +5,14 @@
 
 #include <Expr_MapOfNamedUnknown.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Expr_NamedUnknown_HeaderFile
 #include <Expr_NamedUnknown.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _Expr_IndexedMapNodeOfMapOfNamedUnknown_HeaderFile
 #include <Expr_IndexedMapNodeOfMapOfNamedUnknown.hxx>
-#endif
  
 
-#define TheKey Handle_Expr_NamedUnknown
+#define TheKey Handle(Expr_NamedUnknown)
 #define TheKey_hxx <Expr_NamedUnknown.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>

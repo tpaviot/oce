@@ -6,8 +6,11 @@
 #ifndef _AIS_StandardDatum_HeaderFile
 #define _AIS_StandardDatum_HeaderFile
 
-//! Declares the type of standard datum of an Interactive Object. <br>
-enum AIS_StandardDatum {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Declares the type of standard datum of an Interactive Object.
+enum AIS_StandardDatum
+{
 AIS_SD_None,
 AIS_SD_Point,
 AIS_SD_Axis,
@@ -18,8 +21,4 @@ AIS_SD_Circle,
 AIS_SD_Plane
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _AIS_StandardDatum_HeaderFile

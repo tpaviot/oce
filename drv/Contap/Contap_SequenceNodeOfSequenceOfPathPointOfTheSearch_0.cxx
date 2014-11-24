@@ -5,16 +5,10 @@
 
 #include <Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Contap_ThePathPointOfTheSearch_HeaderFile
 #include <Contap_ThePathPointOfTheSearch.hxx>
-#endif
-#ifndef _Contap_SequenceOfPathPointOfTheSearch_HeaderFile
 #include <Contap_SequenceOfPathPointOfTheSearch.hxx>
-#endif
 
  
 

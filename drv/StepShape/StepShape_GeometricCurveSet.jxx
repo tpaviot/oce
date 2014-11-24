@@ -1,3 +1,1 @@
-#ifndef _StepShape_GeometricCurveSet_HeaderFile
 #include <StepShape_GeometricCurveSet.hxx>
-#endif

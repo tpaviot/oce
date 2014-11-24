@@ -6,28 +6,14 @@
 #ifndef _TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData_HeaderFile
 #define _TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData_HeaderFile
 #include <Handle_TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopOpeBRepDS_ShapeData_HeaderFile
 #include <TopOpeBRepDS_ShapeData.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopOpeBRepDS_ShapeData;
 class TColStd_MapIntegerHasher;
 class TopOpeBRepDS_MapOfIntegerShapeData;
@@ -35,16 +21,17 @@ class TopOpeBRepDS_DataMapIteratorOfMapOfIntegerShapeData;
 
 
 
-class TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData : public TCollection_MapNode {
+class TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData : public TCollection_MapNode
+{
 
 public:
 
   
-      TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData(const Standard_Integer& K,const TopOpeBRepDS_ShapeData& I,const TCollection_MapNodePtr& n);
+    TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData(const Standard_Integer& K, const TopOpeBRepDS_ShapeData& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Key() const;
+      Standard_Integer& Key()  const;
   
-        TopOpeBRepDS_ShapeData& Value() const;
+      TopOpeBRepDS_ShapeData& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-Standard_Integer myKey;
-TopOpeBRepDS_ShapeData myValue;
+  Standard_Integer myKey;
+  TopOpeBRepDS_ShapeData myValue;
 
 
 };
@@ -98,7 +85,6 @@ TopOpeBRepDS_ShapeData myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData_HeaderFile

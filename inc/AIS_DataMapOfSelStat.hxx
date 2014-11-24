@@ -6,37 +6,17 @@
 #ifndef _AIS_DataMapOfSelStat_HeaderFile
 #define _AIS_DataMapOfSelStat_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_SelectMgr_SelectableObject_HeaderFile
 #include <Handle_SelectMgr_SelectableObject.hxx>
-#endif
-#ifndef _Handle_AIS_LocalStatus_HeaderFile
 #include <Handle_AIS_LocalStatus.hxx>
-#endif
-#ifndef _Handle_AIS_DataMapNodeOfDataMapOfSelStat_HeaderFile
 #include <Handle_AIS_DataMapNodeOfDataMapOfSelStat.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class SelectMgr_SelectableObject;
@@ -47,50 +27,50 @@ class AIS_DataMapIteratorOfDataMapOfSelStat;
 
 
 
-class AIS_DataMapOfSelStat  : public TCollection_BasicMap {
+class AIS_DataMapOfSelStat  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   AIS_DataMapOfSelStat(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT AIS_DataMapOfSelStat(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     AIS_DataMapOfSelStat& Assign(const AIS_DataMapOfSelStat& Other) ;
-    AIS_DataMapOfSelStat& operator =(const AIS_DataMapOfSelStat& Other) 
+  Standard_EXPORT   AIS_DataMapOfSelStat& Assign (const AIS_DataMapOfSelStat& Other) ;
+  AIS_DataMapOfSelStat& operator = (const AIS_DataMapOfSelStat& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~AIS_DataMapOfSelStat()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Bind(const Handle(SelectMgr_SelectableObject)& K,const Handle(AIS_LocalStatus)& I) ;
+  Standard_EXPORT   Standard_Boolean Bind (const Handle(SelectMgr_SelectableObject)& K, const Handle(AIS_LocalStatus)& I) ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const Handle(SelectMgr_SelectableObject)& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound (const Handle(SelectMgr_SelectableObject)& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind(const Handle(SelectMgr_SelectableObject)& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind (const Handle(SelectMgr_SelectableObject)& K) ;
   
-  Standard_EXPORT    const Handle_AIS_LocalStatus& Find(const Handle(SelectMgr_SelectableObject)& K) const;
-   const Handle_AIS_LocalStatus& operator()(const Handle(SelectMgr_SelectableObject)& K) const
+  Standard_EXPORT  const  Handle(AIS_LocalStatus)& Find (const Handle(SelectMgr_SelectableObject)& K)  const;
+ const  Handle(AIS_LocalStatus)& operator() (const Handle(SelectMgr_SelectableObject)& K)  const
 {
   return Find(K);
 }
   
-  Standard_EXPORT     Handle_AIS_LocalStatus& ChangeFind(const Handle(SelectMgr_SelectableObject)& K) ;
-    Handle_AIS_LocalStatus& operator()(const Handle(SelectMgr_SelectableObject)& K) 
+  Standard_EXPORT   Handle(AIS_LocalStatus)& ChangeFind (const Handle(SelectMgr_SelectableObject)& K) ;
+  Handle(AIS_LocalStatus)& operator() (const Handle(SelectMgr_SelectableObject)& K) 
 {
   return ChangeFind(K);
 }
   
-  Standard_EXPORT     Standard_Address Find1(const Handle(SelectMgr_SelectableObject)& K) const;
+  Standard_EXPORT   Standard_Address Find1 (const Handle(SelectMgr_SelectableObject)& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFind1(const Handle(SelectMgr_SelectableObject)& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFind1 (const Handle(SelectMgr_SelectableObject)& K) ;
 
 
 
@@ -104,7 +84,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   AIS_DataMapOfSelStat(const AIS_DataMapOfSelStat& Other);
+  Standard_EXPORT AIS_DataMapOfSelStat(const AIS_DataMapOfSelStat& Other);
 
 
 
@@ -115,7 +95,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_DataMapOfSelStat_HeaderFile

@@ -6,25 +6,13 @@
 #ifndef _Plate_SequenceOfLinearScalarConstraint_HeaderFile
 #define _Plate_SequenceOfLinearScalarConstraint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint_HeaderFile
 #include <Handle_Plate_SequenceNodeOfSequenceOfLinearScalarConstraint.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Plate_LinearScalarConstraint;
@@ -32,68 +20,68 @@ class Plate_SequenceNodeOfSequenceOfLinearScalarConstraint;
 
 
 
-class Plate_SequenceOfLinearScalarConstraint  : public TCollection_BaseSequence {
+class Plate_SequenceOfLinearScalarConstraint  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Plate_SequenceOfLinearScalarConstraint();
+    Plate_SequenceOfLinearScalarConstraint();
   
-  Standard_EXPORT   Plate_SequenceOfLinearScalarConstraint(const Plate_SequenceOfLinearScalarConstraint& Other);
+  Standard_EXPORT Plate_SequenceOfLinearScalarConstraint(const Plate_SequenceOfLinearScalarConstraint& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~Plate_SequenceOfLinearScalarConstraint()
 {
   Clear();
 }
   
-  Standard_EXPORT    const Plate_SequenceOfLinearScalarConstraint& Assign(const Plate_SequenceOfLinearScalarConstraint& Other) ;
-   const Plate_SequenceOfLinearScalarConstraint& operator =(const Plate_SequenceOfLinearScalarConstraint& Other) 
+  Standard_EXPORT  const  Plate_SequenceOfLinearScalarConstraint& Assign (const Plate_SequenceOfLinearScalarConstraint& Other) ;
+ const  Plate_SequenceOfLinearScalarConstraint& operator = (const Plate_SequenceOfLinearScalarConstraint& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Plate_LinearScalarConstraint& T) ;
+  Standard_EXPORT   void Append (const Plate_LinearScalarConstraint& T) ;
   
-        void Append(Plate_SequenceOfLinearScalarConstraint& S) ;
+      void Append (Plate_SequenceOfLinearScalarConstraint& S) ;
   
-  Standard_EXPORT     void Prepend(const Plate_LinearScalarConstraint& T) ;
+  Standard_EXPORT   void Prepend (const Plate_LinearScalarConstraint& T) ;
   
-        void Prepend(Plate_SequenceOfLinearScalarConstraint& S) ;
+      void Prepend (Plate_SequenceOfLinearScalarConstraint& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Plate_LinearScalarConstraint& T) ;
+      void InsertBefore (const Standard_Integer Index, const Plate_LinearScalarConstraint& T) ;
   
-        void InsertBefore(const Standard_Integer Index,Plate_SequenceOfLinearScalarConstraint& S) ;
+      void InsertBefore (const Standard_Integer Index, Plate_SequenceOfLinearScalarConstraint& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Plate_LinearScalarConstraint& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Plate_LinearScalarConstraint& T) ;
   
-        void InsertAfter(const Standard_Integer Index,Plate_SequenceOfLinearScalarConstraint& S) ;
+      void InsertAfter (const Standard_Integer Index, Plate_SequenceOfLinearScalarConstraint& S) ;
   
-  Standard_EXPORT    const Plate_LinearScalarConstraint& First() const;
+  Standard_EXPORT  const  Plate_LinearScalarConstraint& First()  const;
   
-  Standard_EXPORT    const Plate_LinearScalarConstraint& Last() const;
+  Standard_EXPORT  const  Plate_LinearScalarConstraint& Last()  const;
   
-        void Split(const Standard_Integer Index,Plate_SequenceOfLinearScalarConstraint& Sub) ;
+      void Split (const Standard_Integer Index, Plate_SequenceOfLinearScalarConstraint& Sub) ;
   
-  Standard_EXPORT    const Plate_LinearScalarConstraint& Value(const Standard_Integer Index) const;
-   const Plate_LinearScalarConstraint& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Plate_LinearScalarConstraint& Value (const Standard_Integer Index)  const;
+ const  Plate_LinearScalarConstraint& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Plate_LinearScalarConstraint& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Plate_LinearScalarConstraint& I) ;
   
-  Standard_EXPORT     Plate_LinearScalarConstraint& ChangeValue(const Standard_Integer Index) ;
-    Plate_LinearScalarConstraint& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Plate_LinearScalarConstraint& ChangeValue (const Standard_Integer Index) ;
+  Plate_LinearScalarConstraint& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Plate_SequenceOfLinearScalarConstraint_HeaderFile

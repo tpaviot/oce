@@ -1,9 +1,3 @@
-#ifndef _Law_BSpline_HeaderFile
 #include <Law_BSpline.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _GeomFill_TgtField_HeaderFile
 #include <GeomFill_TgtField.hxx>
-#endif

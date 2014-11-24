@@ -6,38 +6,27 @@
 #ifndef _Hatch_SequenceNodeOfSequenceOfParameter_HeaderFile
 #define _Hatch_SequenceNodeOfSequenceOfParameter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Hatch_SequenceNodeOfSequenceOfParameter_HeaderFile
 #include <Handle_Hatch_SequenceNodeOfSequenceOfParameter.hxx>
-#endif
 
-#ifndef _Hatch_Parameter_HeaderFile
 #include <Hatch_Parameter.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Hatch_Parameter;
 class Hatch_SequenceOfParameter;
 
 
 
-class Hatch_SequenceNodeOfSequenceOfParameter : public TCollection_SeqNode {
+class Hatch_SequenceNodeOfSequenceOfParameter : public TCollection_SeqNode
+{
 
 public:
 
   
-      Hatch_SequenceNodeOfSequenceOfParameter(const Hatch_Parameter& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    Hatch_SequenceNodeOfSequenceOfParameter(const Hatch_Parameter& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Hatch_Parameter& Value() const;
+      Hatch_Parameter& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-Hatch_Parameter myValue;
+  Hatch_Parameter myValue;
 
 
 };
@@ -78,7 +67,6 @@ Hatch_Parameter myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Hatch_SequenceNodeOfSequenceOfParameter_HeaderFile

@@ -6,28 +6,14 @@
 #ifndef _TColQuantity_Array1OfLength_HeaderFile
 #define _TColQuantity_Array1OfLength_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Quantity_Length_HeaderFile
 #include <Quantity_Length.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -35,52 +21,52 @@ class Standard_OutOfMemory;
 
 
 
-class TColQuantity_Array1OfLength  {
+class TColQuantity_Array1OfLength 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      TColQuantity_Array1OfLength(const Standard_Integer Low,const Standard_Integer Up);
+    TColQuantity_Array1OfLength(const Standard_Integer Low, const Standard_Integer Up);
   
-      TColQuantity_Array1OfLength(const Quantity_Length& Item,const Standard_Integer Low,const Standard_Integer Up);
+    TColQuantity_Array1OfLength(const Quantity_Length& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const Quantity_Length& V) ;
+  Standard_EXPORT   void Init (const Quantity_Length& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~TColQuantity_Array1OfLength()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const TColQuantity_Array1OfLength& Assign(const TColQuantity_Array1OfLength& Other) ;
-   const TColQuantity_Array1OfLength& operator =(const TColQuantity_Array1OfLength& Other) 
+  Standard_EXPORT  const  TColQuantity_Array1OfLength& Assign (const TColQuantity_Array1OfLength& Other) ;
+ const  TColQuantity_Array1OfLength& operator = (const TColQuantity_Array1OfLength& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Quantity_Length& Value) ;
+      void SetValue (const Standard_Integer Index, const Quantity_Length& Value) ;
   
-       const Quantity_Length& Value(const Standard_Integer Index) const;
-     const Quantity_Length& operator ()(const Standard_Integer Index) const
+     const  Quantity_Length& Value (const Standard_Integer Index)  const;
+   const  Quantity_Length& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        Quantity_Length& ChangeValue(const Standard_Integer Index) ;
-      Quantity_Length& operator ()(const Standard_Integer Index) 
+      Quantity_Length& ChangeValue (const Standard_Integer Index) ;
+    Quantity_Length& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -94,13 +80,13 @@ protected:
 private:
 
   
-  Standard_EXPORT   TColQuantity_Array1OfLength(const TColQuantity_Array1OfLength& AnArray);
+  Standard_EXPORT TColQuantity_Array1OfLength(const TColQuantity_Array1OfLength& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
@@ -118,7 +104,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColQuantity_Array1OfLength_HeaderFile

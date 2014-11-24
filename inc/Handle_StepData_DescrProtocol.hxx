@@ -6,22 +6,15 @@
 #ifndef _Handle_StepData_DescrProtocol_HeaderFile
 #define _Handle_StepData_DescrProtocol_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepData_FileProtocol_HeaderFile
 #include <Handle_StepData_FileProtocol.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepData_FileProtocol);
 class StepData_DescrProtocol;
 
-DEFINE_STANDARD_HANDLE(StepData_DescrProtocol,StepData_FileProtocol)
+DEFINE_STANDARD_HANDLE(StepData_DescrProtocol, StepData_FileProtocol)
 
-#endif
+#endif // _Handle_StepData_DescrProtocol_HeaderFile

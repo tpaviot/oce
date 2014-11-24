@@ -2,10 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{609569DF-1489-0533-144B-B0560BE1127B}</UniqueIdentifier>
+      <UniqueIdentifier>{1EC57373-0C45-1626-06DF-BF65659A07D1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\OpenGl">
-      <UniqueIdentifier>{848A50D9-1972-1842-1078-3D358D86E108}</UniqueIdentifier>
+      <UniqueIdentifier>{775A595C-181F-089A-114F-62CA32C8CF2E}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -43,6 +43,12 @@
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Context.cxx">
+      <Filter>Source files\OpenGl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Cylinder.cxx">
+      <Filter>Source files\OpenGl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Disk.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Element.cxx">
@@ -108,10 +114,16 @@
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_PriorityList.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Quadric.cxx">
+      <Filter>Source files\OpenGl</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_RenderFilter.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Resource.cxx">
+      <Filter>Source files\OpenGl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Sampler.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_SceneGeometry.cxx">
@@ -127,6 +139,9 @@
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_ShaderStates.cxx">
+      <Filter>Source files\OpenGl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\OpenGl\OpenGl_Sphere.cxx">
       <Filter>Source files\OpenGl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\OpenGl\OpenGl_StencilTest.cxx">

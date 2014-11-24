@@ -6,109 +6,99 @@
 #ifndef _gce_MakeHypr_HeaderFile
 #define _gce_MakeHypr_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Hypr_HeaderFile
 #include <gp_Hypr.hxx>
-#endif
-#ifndef _gce_Root_HeaderFile
 #include <gce_Root.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class StdFail_NotDone;
 class gp_Ax2;
 class gp_Pnt;
 class gp_Hypr;
 
 
-//!This class implements the following algorithms used to <br>
-//!          create Hyperbola from gp. <br>
-//!          * Create an Hyperbola from its center, and two points: <br>
-//!            one on its axis of symmetry giving the major radius, the <br>
-//!            other giving the value of the small radius. <br>
-//!            The three points give the plane of the hyperbola. <br>
-//!          * Create an hyperbola from its axisplacement and its <br>
-//!            MajorRadius and its MinorRadius. <br>
-//! <br>
-//! <br>
-//!                         ^YAxis <br>
-//!                         | <br>
-//!                  FirstConjugateBranch <br>
-//!                         | <br>
-//!        Other            |                Main <br>
-//!   --------------------- C ------------------------------>XAxis <br>
-//!        Branch           |                Branch <br>
-//!                         | <br>
-//!                         | <br>
-//!                   SecondConjugateBranch <br>
-//!                         | <br>
-//! <br>
-//!  The local cartesian coordinate system of the ellipse is an <br>
-//!  axis placement (two axis). <br>
-//! <br>
-//!  The "XDirection" and the "YDirection" of the axis placement <br>
-//!  define the plane of the hyperbola. <br>
-//! <br>
-//!  The "Direction" of the axis placement defines the normal axis <br>
-//!  to the hyperbola's plane. <br>
-//! <br>
-//!  The "XAxis" of the hyperbola ("Location", "XDirection") is the <br>
-//!  major axis  and the  "YAxis" of the hyperbola ("Location", <br>
-//!  "YDirection") is the minor axis. <br>
-//! <br>
-//! Warnings : <br>
-//!  The major radius (on the major axis) can be lower than the <br>
-//!  minor radius (on the minor axis). <br>
-class gce_MakeHypr  : public gce_Root {
+//! This class implements the following algorithms used to
+//! create Hyperbola from gp.
+//! * Create an Hyperbola from its center, and two points:
+//! one on its axis of symmetry giving the major radius, the
+//! other giving the value of the small radius.
+//! The three points give the plane of the hyperbola.
+//! * Create an hyperbola from its axisplacement and its
+//! MajorRadius and its MinorRadius.
+//!
+//! ^YAxis
+//! |
+//! FirstConjugateBranch
+//! |
+//! Other            |                Main
+//! --------------------- C ------------------------------>XAxis
+//! Branch           |                Branch
+//! |
+//! |
+//! SecondConjugateBranch
+//! |
+//!
+//! The local cartesian coordinate system of the ellipse is an
+//! axis placement (two axis).
+//!
+//! The "XDirection" and the "YDirection" of the axis placement
+//! define the plane of the hyperbola.
+//!
+//! The "Direction" of the axis placement defines the normal axis
+//! to the hyperbola's plane.
+//!
+//! The "XAxis" of the hyperbola ("Location", "XDirection") is the
+//! major axis  and the  "YAxis" of the hyperbola ("Location",
+//! "YDirection") is the minor axis.
+//!
+//! Warnings :
+//! The major radius (on the major axis) can be lower than the
+//! minor radius (on the minor axis).
+class gce_MakeHypr  : public gce_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//!  A2 is the local coordinate system of the hyperbola. <br>
-//!  In the local coordinates system A2 the equation of the <br>
-//!  hyperbola is : <br>
-//!  X*X / MajorRadius*MajorRadius - Y*Y / MinorRadius*MinorRadius = 1.0 <br>
-//!  It is not forbidden to create an Hyperbola with MajorRadius = <br>
-//!  MinorRadius. <br>
-//!  For the hyperbola the MajorRadius can be lower than the <br>
-//!  MinorRadius. <br>
-//!  The status is "NegativeRadius" if MajorRadius < 0.0 and <br>
-//!  "InvertRadius" if MinorRadius > MajorRadius. <br>
-  Standard_EXPORT   gce_MakeHypr(const gp_Ax2& A2,const Standard_Real MajorRadius,const Standard_Real MinorRadius);
-  //! Constructs a hyperbola <br>
-//!   -   centered on the point Center, where: <br>
-//!  -   the plane of the hyperbola is defined by Center, S1 and S2, <br>
-//!   -   its major axis is defined by Center and S1, <br>
-//!   -   its major radius is the distance between Center and S1, and <br>
-//! -   its minor radius is the distance between S2 and the major axis. <br>
-//!	Warning <br>
-//! If an error occurs (that is, when IsDone returns <br>
-//! false), the Status function returns: <br>
-//! -   gce_NegativeRadius if MajorRadius is less than 0.0; <br>
-//! -   gce_InvertRadius if: <br>
-//!   -   the major radius (computed with Center, S1) is <br>
-//!    less than the minor radius (computed with Center, S1 and S2), or <br>
-//!   -   MajorRadius is less than MinorRadius; or <br>
-//! -   gce_ColinearPoints if S1, S2 and Center are collinear. <br>
-  Standard_EXPORT   gce_MakeHypr(const gp_Pnt& S1,const gp_Pnt& S2,const gp_Pnt& Center);
-  //! Returns the constructed hyperbola. <br>
-//! Exceptions StdFail_NotDone if no hyperbola is constructed. <br>
-  Standard_EXPORT    const gp_Hypr& Value() const;
-  
-  Standard_EXPORT    const gp_Hypr& Operator() const;
-Standard_EXPORT operator gp_Hypr() const;
 
+  //! A2 is the local coordinate system of the hyperbola.
+  //! In the local coordinates system A2 the equation of the
+  //! hyperbola is :
+  //! X*X / MajorRadius*MajorRadius - Y*Y / MinorRadius*MinorRadius = 1.0
+  //! It is not forbidden to create an Hyperbola with MajorRadius =
+  //! MinorRadius.
+  //! For the hyperbola the MajorRadius can be lower than the
+  //! MinorRadius.
+  //! The status is "NegativeRadius" if MajorRadius < 0.0 and
+  //! "InvertRadius" if MinorRadius > MajorRadius.
+  Standard_EXPORT gce_MakeHypr(const gp_Ax2& A2, const Standard_Real MajorRadius, const Standard_Real MinorRadius);
+  
+  //! Constructs a hyperbola
+  //! -   centered on the point Center, where:
+  //! -   the plane of the hyperbola is defined by Center, S1 and S2,
+  //! -   its major axis is defined by Center and S1,
+  //! -   its major radius is the distance between Center and S1, and
+  //! -   its minor radius is the distance between S2 and the major axis.
+  //! Warning
+  //! If an error occurs (that is, when IsDone returns
+  //! false), the Status function returns:
+  //! -   gce_NegativeRadius if MajorRadius is less than 0.0;
+  //! -   gce_InvertRadius if:
+  //! -   the major radius (computed with Center, S1) is
+  //! less than the minor radius (computed with Center, S1 and S2), or
+  //! -   MajorRadius is less than MinorRadius; or
+  //! -   gce_ColinearPoints if S1, S2 and Center are collinear.
+  Standard_EXPORT gce_MakeHypr(const gp_Pnt& S1, const gp_Pnt& S2, const gp_Pnt& Center);
+  
+  //! Returns the constructed hyperbola.
+  //! Exceptions StdFail_NotDone if no hyperbola is constructed.
+  Standard_EXPORT  const  gp_Hypr& Value()  const;
+  
+  Standard_EXPORT  const  gp_Hypr& Operator()  const;
+Standard_EXPORT operator gp_Hypr() const;
 
 
 
@@ -123,7 +113,7 @@ private:
 
 
 
-gp_Hypr TheHypr;
+  gp_Hypr TheHypr;
 
 
 };
@@ -132,7 +122,6 @@ gp_Hypr TheHypr;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _gce_MakeHypr_HeaderFile

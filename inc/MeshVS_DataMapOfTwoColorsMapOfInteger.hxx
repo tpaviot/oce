@@ -6,34 +6,16 @@
 #ifndef _MeshVS_DataMapOfTwoColorsMapOfInteger_HeaderFile
 #define _MeshVS_DataMapOfTwoColorsMapOfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _MeshVS_TwoColors_HeaderFile
 #include <MeshVS_TwoColors.hxx>
-#endif
-#ifndef _Handle_MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger_HeaderFile
 #include <Handle_MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class TColStd_MapOfInteger;
@@ -43,50 +25,50 @@ class MeshVS_DataMapIteratorOfDataMapOfTwoColorsMapOfInteger;
 
 
 
-class MeshVS_DataMapOfTwoColorsMapOfInteger  : public TCollection_BasicMap {
+class MeshVS_DataMapOfTwoColorsMapOfInteger  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   MeshVS_DataMapOfTwoColorsMapOfInteger(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT MeshVS_DataMapOfTwoColorsMapOfInteger(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     MeshVS_DataMapOfTwoColorsMapOfInteger& Assign(const MeshVS_DataMapOfTwoColorsMapOfInteger& Other) ;
-    MeshVS_DataMapOfTwoColorsMapOfInteger& operator =(const MeshVS_DataMapOfTwoColorsMapOfInteger& Other) 
+  Standard_EXPORT   MeshVS_DataMapOfTwoColorsMapOfInteger& Assign (const MeshVS_DataMapOfTwoColorsMapOfInteger& Other) ;
+  MeshVS_DataMapOfTwoColorsMapOfInteger& operator = (const MeshVS_DataMapOfTwoColorsMapOfInteger& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~MeshVS_DataMapOfTwoColorsMapOfInteger()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Bind(const MeshVS_TwoColors& K,const TColStd_MapOfInteger& I) ;
+  Standard_EXPORT   Standard_Boolean Bind (const MeshVS_TwoColors& K, const TColStd_MapOfInteger& I) ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const MeshVS_TwoColors& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound (const MeshVS_TwoColors& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind(const MeshVS_TwoColors& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind (const MeshVS_TwoColors& K) ;
   
-  Standard_EXPORT    const TColStd_MapOfInteger& Find(const MeshVS_TwoColors& K) const;
-   const TColStd_MapOfInteger& operator()(const MeshVS_TwoColors& K) const
+  Standard_EXPORT  const  TColStd_MapOfInteger& Find (const MeshVS_TwoColors& K)  const;
+ const  TColStd_MapOfInteger& operator() (const MeshVS_TwoColors& K)  const
 {
   return Find(K);
 }
   
-  Standard_EXPORT     TColStd_MapOfInteger& ChangeFind(const MeshVS_TwoColors& K) ;
-    TColStd_MapOfInteger& operator()(const MeshVS_TwoColors& K) 
+  Standard_EXPORT   TColStd_MapOfInteger& ChangeFind (const MeshVS_TwoColors& K) ;
+  TColStd_MapOfInteger& operator() (const MeshVS_TwoColors& K) 
 {
   return ChangeFind(K);
 }
   
-  Standard_EXPORT     Standard_Address Find1(const MeshVS_TwoColors& K) const;
+  Standard_EXPORT   Standard_Address Find1 (const MeshVS_TwoColors& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFind1(const MeshVS_TwoColors& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFind1 (const MeshVS_TwoColors& K) ;
 
 
 
@@ -100,7 +82,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   MeshVS_DataMapOfTwoColorsMapOfInteger(const MeshVS_DataMapOfTwoColorsMapOfInteger& Other);
+  Standard_EXPORT MeshVS_DataMapOfTwoColorsMapOfInteger(const MeshVS_DataMapOfTwoColorsMapOfInteger& Other);
 
 
 
@@ -111,7 +93,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MeshVS_DataMapOfTwoColorsMapOfInteger_HeaderFile

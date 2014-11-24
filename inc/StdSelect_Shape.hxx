@@ -6,64 +6,46 @@
 #ifndef _StdSelect_Shape_HeaderFile
 #define _StdSelect_Shape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StdSelect_Shape_HeaderFile
 #include <Handle_StdSelect_Shape.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _PrsMgr_PresentableObject_HeaderFile
 #include <PrsMgr_PresentableObject.hxx>
-#endif
-#ifndef _PrsMgr_PresentationManager3d_HeaderFile
 #include <PrsMgr_PresentationManager3d.hxx>
-#endif
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Prs3d_Projector_HeaderFile
 #include <Handle_Prs3d_Projector.hxx>
-#endif
-#ifndef _Handle_Geom_Transformation_HeaderFile
 #include <Handle_Geom_Transformation.hxx>
-#endif
 class TopoDS_Shape;
 class Prs3d_Presentation;
 class Prs3d_Projector;
 class Geom_Transformation;
 
 
-//! Presentable shape only for purpose of display for BRepOwner... <br>
-class StdSelect_Shape : public PrsMgr_PresentableObject {
+//! Presentable shape only for purpose of display for BRepOwner...
+class StdSelect_Shape : public PrsMgr_PresentableObject
+{
 
 public:
 
   
-  Standard_EXPORT   StdSelect_Shape(const TopoDS_Shape& Sh);
+  Standard_EXPORT StdSelect_Shape(const TopoDS_Shape& Sh);
   
-  Standard_EXPORT     void Compute(const Handle(PrsMgr_PresentationManager3d)& aPresentationManager,const Handle(Prs3d_Presentation)& aPresentation,const Standard_Integer aMode = 0) ;
-  //! computes the presentation according to a point of view <br>
-//!          given by <aProjector>. <br>
-//!          To be Used when the associated degenerated Presentations <br>
-//!          have been transformed by <aTrsf> which is not a Pure <br>
-//!          Translation. The HLR Prs can't be deducted automatically <br>
-//!          WARNING :<aTrsf> must be applied <br>
-//!           to the object to display before computation  !!! <br>
-  Standard_EXPORT   virtual  void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Geom_Transformation)& aTrsf,const Handle(Prs3d_Presentation)& aPresentation) ;
+  Standard_EXPORT   void Compute (const Handle(PrsMgr_PresentationManager3d)& aPresentationManager, const Handle(Prs3d_Presentation)& aPresentation, const Standard_Integer aMode = 0) ;
   
-       const TopoDS_Shape& Shape() const;
+  //! computes the presentation according to a point of view
+  //! given by <aProjector>.
+  //! To be Used when the associated degenerated Presentations
+  //! have been transformed by <aTrsf> which is not a Pure
+  //! Translation. The HLR Prs can't be deducted automatically
+  //! WARNING :<aTrsf> must be applied
+  //! to the object to display before computation  !!!
+  Standard_EXPORT virtual   void Compute (const Handle(Prs3d_Projector)& aProjector, const Handle(Geom_Transformation)& aTrsf, const Handle(Prs3d_Presentation)& aPresentation) ;
   
-        void Shape(const TopoDS_Shape& sh) ;
+     const  TopoDS_Shape& Shape()  const;
+  
+      void Shape (const TopoDS_Shape& sh) ;
 
 
 
@@ -78,9 +60,9 @@ protected:
 private: 
 
   
-  Standard_EXPORT     void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Prs3d_Presentation)& aPresentation) ;
+  Standard_EXPORT   void Compute (const Handle(Prs3d_Projector)& aProjector, const Handle(Prs3d_Presentation)& aPresentation) ;
 
-TopoDS_Shape mysh;
+  TopoDS_Shape mysh;
 
 
 };
@@ -90,7 +72,6 @@ TopoDS_Shape mysh;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StdSelect_Shape_HeaderFile

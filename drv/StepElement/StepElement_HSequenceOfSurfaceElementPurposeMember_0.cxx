@@ -5,22 +5,12 @@
 
 #include <StepElement_HSequenceOfSurfaceElementPurposeMember.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StepElement_SurfaceElementPurposeMember_HeaderFile
 #include <StepElement_SurfaceElementPurposeMember.hxx>
-#endif
-#ifndef _StepElement_SequenceOfSurfaceElementPurposeMember_HeaderFile
 #include <StepElement_SequenceOfSurfaceElementPurposeMember.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(StepElement_HSequenceOfSurfaceElementPurposeMember,Standard_T
 IMPLEMENT_STANDARD_RTTI(StepElement_HSequenceOfSurfaceElementPurposeMember)
 
 
-#define Item Handle_StepElement_SurfaceElementPurposeMember
+#define Item Handle(StepElement_SurfaceElementPurposeMember)
 #define Item_hxx <StepElement_SurfaceElementPurposeMember.hxx>
 #define TheSequence StepElement_SequenceOfSurfaceElementPurposeMember
 #define TheSequence_hxx <StepElement_SequenceOfSurfaceElementPurposeMember.hxx>

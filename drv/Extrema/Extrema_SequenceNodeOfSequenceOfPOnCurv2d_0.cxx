@@ -5,16 +5,10 @@
 
 #include <Extrema_SequenceNodeOfSequenceOfPOnCurv2d.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Extrema_POnCurv2d_HeaderFile
 #include <Extrema_POnCurv2d.hxx>
-#endif
-#ifndef _Extrema_SequenceOfPOnCurv2d_HeaderFile
 #include <Extrema_SequenceOfPOnCurv2d.hxx>
-#endif
 
  
 

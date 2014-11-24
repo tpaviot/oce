@@ -6,22 +6,15 @@
 #ifndef _Handle_StepRepr_ParametricRepresentationContext_HeaderFile
 #define _Handle_StepRepr_ParametricRepresentationContext_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepRepr_RepresentationContext_HeaderFile
 #include <Handle_StepRepr_RepresentationContext.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepRepr_RepresentationContext);
 class StepRepr_ParametricRepresentationContext;
 
-DEFINE_STANDARD_HANDLE(StepRepr_ParametricRepresentationContext,StepRepr_RepresentationContext)
+DEFINE_STANDARD_HANDLE(StepRepr_ParametricRepresentationContext, StepRepr_RepresentationContext)
 
-#endif
+#endif // _Handle_StepRepr_ParametricRepresentationContext_HeaderFile

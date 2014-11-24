@@ -6,43 +6,32 @@
 #ifndef _ShapeFix_SplitCommonVertex_HeaderFile
 #define _ShapeFix_SplitCommonVertex_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeFix_SplitCommonVertex_HeaderFile
 #include <Handle_ShapeFix_SplitCommonVertex.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _ShapeFix_Root_HeaderFile
 #include <ShapeFix_Root.hxx>
-#endif
 class TopoDS_Shape;
 
 
-//! Two wires have common vertex - this case is valid in BRep model <br>
-//!          and isn't valid in STEP => before writing into STEP it is necessary <br>
-//!          to split this vertex (each wire must has one vertex) <br>
-class ShapeFix_SplitCommonVertex : public ShapeFix_Root {
+//! Two wires have common vertex - this case is valid in BRep model
+//! and isn't valid in STEP => before writing into STEP it is necessary
+//! to split this vertex (each wire must has one vertex)
+class ShapeFix_SplitCommonVertex : public ShapeFix_Root
+{
 
 public:
 
   
-  Standard_EXPORT   ShapeFix_SplitCommonVertex();
+  Standard_EXPORT ShapeFix_SplitCommonVertex();
   
-  Standard_EXPORT     void Init(const TopoDS_Shape& S) ;
+  Standard_EXPORT   void Init (const TopoDS_Shape& S) ;
   
-  Standard_EXPORT     void Perform() ;
+  Standard_EXPORT   void Perform() ;
   
-  Standard_EXPORT     TopoDS_Shape Shape() ;
+  Standard_EXPORT   TopoDS_Shape Shape() ;
 
 
 
@@ -57,9 +46,9 @@ protected:
 private: 
 
 
-TopoDS_Shape myShape;
-TopoDS_Shape myResult;
-Standard_Integer myStatus;
+  TopoDS_Shape myShape;
+  TopoDS_Shape myResult;
+  Standard_Integer myStatus;
 
 
 };
@@ -68,7 +57,6 @@ Standard_Integer myStatus;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeFix_SplitCommonVertex_HeaderFile

@@ -1,18 +1,6 @@
-#ifndef _Interface_HArray1OfHAsciiString_HeaderFile
 #include <Interface_HArray1OfHAsciiString.hxx>
-#endif
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _IGESDefs_UnitsData_HeaderFile
 #include <IGESDefs_UnitsData.hxx>
-#endif

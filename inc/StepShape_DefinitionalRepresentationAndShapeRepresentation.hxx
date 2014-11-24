@@ -6,29 +6,22 @@
 #ifndef _StepShape_DefinitionalRepresentationAndShapeRepresentation_HeaderFile
 #define _StepShape_DefinitionalRepresentationAndShapeRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_DefinitionalRepresentationAndShapeRepresentation_HeaderFile
 #include <Handle_StepShape_DefinitionalRepresentationAndShapeRepresentation.hxx>
-#endif
 
-#ifndef _StepRepr_DefinitionalRepresentation_HeaderFile
 #include <StepRepr_DefinitionalRepresentation.hxx>
-#endif
 
 
-//! Implements complex type <br>
-//! (DEFINITIONAL_REPRESENTATION,REPRESENTATION,SHAPE_REPRESENTATION) <br>
-class StepShape_DefinitionalRepresentationAndShapeRepresentation : public StepRepr_DefinitionalRepresentation {
+//! Implements complex type
+//! (DEFINITIONAL_REPRESENTATION,REPRESENTATION,SHAPE_REPRESENTATION)
+class StepShape_DefinitionalRepresentationAndShapeRepresentation : public StepRepr_DefinitionalRepresentation
+{
 
 public:
 
   
-  Standard_EXPORT   StepShape_DefinitionalRepresentationAndShapeRepresentation();
+  Standard_EXPORT StepShape_DefinitionalRepresentationAndShapeRepresentation();
 
 
 
@@ -51,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_DefinitionalRepresentationAndShapeRepresentation_HeaderFile

@@ -1,6 +1,2 @@
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _HLRAlgo_EdgeStatus_HeaderFile
 #include <HLRAlgo_EdgeStatus.hxx>
-#endif

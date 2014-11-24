@@ -6,22 +6,15 @@
 #ifndef _Handle_ShapeCustom_TrsfModification_HeaderFile
 #define _Handle_ShapeCustom_TrsfModification_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_BRepTools_TrsfModification_HeaderFile
 #include <Handle_BRepTools_TrsfModification.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(BRepTools_TrsfModification);
 class ShapeCustom_TrsfModification;
 
-DEFINE_STANDARD_HANDLE(ShapeCustom_TrsfModification,BRepTools_TrsfModification)
+DEFINE_STANDARD_HANDLE(ShapeCustom_TrsfModification, BRepTools_TrsfModification)
 
-#endif
+#endif // _Handle_ShapeCustom_TrsfModification_HeaderFile

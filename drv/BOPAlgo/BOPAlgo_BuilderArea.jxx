@@ -1,6 +1,2 @@
-#ifndef _IntTools_Context_HeaderFile
 #include <IntTools_Context.hxx>
-#endif
-#ifndef _BOPAlgo_BuilderArea_HeaderFile
 #include <BOPAlgo_BuilderArea.hxx>
-#endif

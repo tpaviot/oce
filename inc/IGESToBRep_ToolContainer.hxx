@@ -6,34 +6,27 @@
 #ifndef _IGESToBRep_ToolContainer_HeaderFile
 #define _IGESToBRep_ToolContainer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESToBRep_ToolContainer_HeaderFile
 #include <Handle_IGESToBRep_ToolContainer.hxx>
-#endif
 
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_IGESToBRep_IGESBoundary_HeaderFile
 #include <Handle_IGESToBRep_IGESBoundary.hxx>
-#endif
 class IGESToBRep_IGESBoundary;
 
 
 
-class IGESToBRep_ToolContainer : public MMgt_TShared {
+class IGESToBRep_ToolContainer : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   IGESToBRep_ToolContainer();
-  //! Returns IGESToBRep_IGESBoundary <br>
-  Standard_EXPORT   virtual  Handle_IGESToBRep_IGESBoundary IGESBoundary() const;
+  
+  //! Empty constructor
+  Standard_EXPORT IGESToBRep_ToolContainer();
+  
+  //! Returns IGESToBRep_IGESBoundary
+  Standard_EXPORT virtual   Handle(IGESToBRep_IGESBoundary) IGESBoundary()  const;
 
 
 
@@ -56,7 +49,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESToBRep_ToolContainer_HeaderFile

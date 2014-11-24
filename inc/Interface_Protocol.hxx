@@ -6,37 +6,17 @@
 #ifndef _Interface_Protocol_HeaderFile
 #define _Interface_Protocol_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Interface_Protocol_HeaderFile
 #include <Handle_Interface_Protocol.hxx>
-#endif
 
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
 class Interface_InterfaceError;
 class Standard_Transient;
 class Standard_Type;
@@ -45,69 +25,85 @@ class Interface_Check;
 class Interface_InterfaceModel;
 
 
-//! General description of Interface Protocols. A Protocol defines <br>
-//!           a set of Entity types. This class provides also the notion of <br>
-//!           Active Protocol, as a working context, defined once then <br>
-//!           exploited by various Tools and Libraries. <br>
-//! <br>
-//!           It also gives control of type definitions. By default, types <br>
-//!           are provided by CDL, but specific implementations, or topics <br>
-//!           like multi-typing, may involve another way <br>
-class Interface_Protocol : public MMgt_TShared {
+//! General description of Interface Protocols. A Protocol defines
+//! a set of Entity types. This class provides also the notion of
+//! Active Protocol, as a working context, defined once then
+//! exploited by various Tools and Libraries.
+//!
+//! It also gives control of type definitions. By default, types
+//! are provided by CDL, but specific implementations, or topics
+//! like multi-typing, may involve another way
+class Interface_Protocol : public MMgt_TShared
+{
 
 public:
 
-  //! Returns the Active Protocol, if defined (else, returns a <br>
-//!           Null Handle, which means "no defined active protocol") <br>
-  Standard_EXPORT   static  Handle_Interface_Protocol Active() ;
-  //! Sets a given Protocol to be the Active one (for the users of <br>
-//!           Active, see just above). Applies to every sub-type of Protocol <br>
-  Standard_EXPORT   static  void SetActive(const Handle(Interface_Protocol)& aprotocol) ;
-  //! Erases the Active Protocol (hence it becomes undefined) <br>
-  Standard_EXPORT   static  void ClearActive() ;
-  //! Returns count of Protocol used as Resources (level one) <br>
-  Standard_EXPORT   virtual  Standard_Integer NbResources() const = 0;
-  //! Returns a Resource, given its rank (between 1 and NbResources) <br>
-  Standard_EXPORT   virtual  Handle_Interface_Protocol Resource(const Standard_Integer num) const = 0;
-  //! Returns a unique positive CaseNumber for each Recognized <br>
-//!           Object. By default, recognition is based on Type(1) <br>
-//!           By default, calls the following one which is deferred. <br>
-  Standard_EXPORT   virtual  Standard_Integer CaseNumber(const Handle(Standard_Transient)& obj) const;
-  //! Returns True if type of <obj> is that defined from CDL <br>
-//!           This is the default but it may change according implementation <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsDynamicType(const Handle(Standard_Transient)& obj) const;
-  //! Returns the count of DISTINCT types under which an entity may <br>
-//!           be processed. Each one is candidate to be recognized by <br>
-//!           TypeNumber, <obj> is then processed according it <br>
-//!           By default, returns 1 (the DynamicType) <br>
-  Standard_EXPORT   virtual  Standard_Integer NbTypes(const Handle(Standard_Transient)& obj) const;
-  //! Returns a type under which <obj> can be recognized and <br>
-//!           processed, according its rank in its definition list (see <br>
-//!           NbTypes). <br>
-//!           By default, returns DynamicType <br>
-  Standard_EXPORT     Handle_Standard_Type Type(const Handle(Standard_Transient)& obj,const Standard_Integer nt = 1) const;
-  //! Returns a unique positive CaseNumber for each Recognized Type, <br>
-//!           Returns Zero for "<type> not recognized" <br>
-  Standard_EXPORT   virtual  Standard_Integer TypeNumber(const Handle(Standard_Type)& atype) const = 0;
-  //! Evaluates a Global Check for a model (with its Graph) <br>
-//!           Returns True when done, False if data in model do not apply <br>
-//! <br>
-//!           Very specific of each norm, i.e. of each protocol : the <br>
-//!           uppest level Protocol assumes it, it can call GlobalCheck of <br>
-//!           its ressources only if it is necessary <br>
-//! <br>
-//!           Default does nothing, can be redefined <br>
-  Standard_EXPORT   virtual  Standard_Boolean GlobalCheck(const Interface_Graph& G,Handle(Interface_Check)& ach) const;
-  //! Creates an empty Model of the considered Norm <br>
-  Standard_EXPORT   virtual  Handle_Interface_InterfaceModel NewModel() const = 0;
-  //! Returns True if <model> is a Model of the considered Norm <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsSuitableModel(const Handle(Interface_InterfaceModel)& model) const = 0;
-  //! Creates a new Unknown Entity for the considered Norm <br>
-  Standard_EXPORT   virtual  Handle_Standard_Transient UnknownEntity() const = 0;
-  //! Returns True if <ent> is an Unknown Entity for the Norm, i.e. <br>
-//!           same Type as them created by method UnknownEntity <br>
-//!           (for an Entity out of the Norm, answer can be unpredicable) <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsUnknownEntity(const Handle(Standard_Transient)& ent) const = 0;
+  
+  //! Returns the Active Protocol, if defined (else, returns a
+  //! Null Handle, which means "no defined active protocol")
+  Standard_EXPORT static   Handle(Interface_Protocol) Active() ;
+  
+  //! Sets a given Protocol to be the Active one (for the users of
+  //! Active, see just above). Applies to every sub-type of Protocol
+  Standard_EXPORT static   void SetActive (const Handle(Interface_Protocol)& aprotocol) ;
+  
+  //! Erases the Active Protocol (hence it becomes undefined)
+  Standard_EXPORT static   void ClearActive() ;
+  
+  //! Returns count of Protocol used as Resources (level one)
+  Standard_EXPORT virtual   Standard_Integer NbResources()  const = 0;
+  
+  //! Returns a Resource, given its rank (between 1 and NbResources)
+  Standard_EXPORT virtual   Handle(Interface_Protocol) Resource (const Standard_Integer num)  const = 0;
+  
+  //! Returns a unique positive CaseNumber for each Recognized
+  //! Object. By default, recognition is based on Type(1)
+  //! By default, calls the following one which is deferred.
+  Standard_EXPORT virtual   Standard_Integer CaseNumber (const Handle(Standard_Transient)& obj)  const;
+  
+  //! Returns True if type of <obj> is that defined from CDL
+  //! This is the default but it may change according implementation
+  Standard_EXPORT virtual   Standard_Boolean IsDynamicType (const Handle(Standard_Transient)& obj)  const;
+  
+  //! Returns the count of DISTINCT types under which an entity may
+  //! be processed. Each one is candidate to be recognized by
+  //! TypeNumber, <obj> is then processed according it
+  //! By default, returns 1 (the DynamicType)
+  Standard_EXPORT virtual   Standard_Integer NbTypes (const Handle(Standard_Transient)& obj)  const;
+  
+  //! Returns a type under which <obj> can be recognized and
+  //! processed, according its rank in its definition list (see
+  //! NbTypes).
+  //! By default, returns DynamicType
+  Standard_EXPORT   Handle(Standard_Type) Type (const Handle(Standard_Transient)& obj, const Standard_Integer nt = 1)  const;
+  
+  //! Returns a unique positive CaseNumber for each Recognized Type,
+  //! Returns Zero for "<type> not recognized"
+  Standard_EXPORT virtual   Standard_Integer TypeNumber (const Handle(Standard_Type)& atype)  const = 0;
+  
+  //! Evaluates a Global Check for a model (with its Graph)
+  //! Returns True when done, False if data in model do not apply
+  //!
+  //! Very specific of each norm, i.e. of each protocol : the
+  //! uppest level Protocol assumes it, it can call GlobalCheck of
+  //! its ressources only if it is necessary
+  //!
+  //! Default does nothing, can be redefined
+  Standard_EXPORT virtual   Standard_Boolean GlobalCheck (const Interface_Graph& G, Handle(Interface_Check)& ach)  const;
+  
+  //! Creates an empty Model of the considered Norm
+  Standard_EXPORT virtual   Handle(Interface_InterfaceModel) NewModel()  const = 0;
+  
+  //! Returns True if <model> is a Model of the considered Norm
+  Standard_EXPORT virtual   Standard_Boolean IsSuitableModel (const Handle(Interface_InterfaceModel)& model)  const = 0;
+  
+  //! Creates a new Unknown Entity for the considered Norm
+  Standard_EXPORT virtual   Handle(Standard_Transient) UnknownEntity()  const = 0;
+  
+  //! Returns True if <ent> is an Unknown Entity for the Norm, i.e.
+  //! same Type as them created by method UnknownEntity
+  //! (for an Entity out of the Norm, answer can be unpredicable)
+  Standard_EXPORT virtual   Standard_Boolean IsUnknownEntity (const Handle(Standard_Transient)& ent)  const = 0;
 
 
 
@@ -130,7 +126,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Interface_Protocol_HeaderFile

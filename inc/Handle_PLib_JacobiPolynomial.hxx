@@ -6,22 +6,15 @@
 #ifndef _Handle_PLib_JacobiPolynomial_HeaderFile
 #define _Handle_PLib_JacobiPolynomial_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_PLib_Base_HeaderFile
 #include <Handle_PLib_Base.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(PLib_Base);
 class PLib_JacobiPolynomial;
 
-DEFINE_STANDARD_HANDLE(PLib_JacobiPolynomial,PLib_Base)
+DEFINE_STANDARD_HANDLE(PLib_JacobiPolynomial, PLib_Base)
 
-#endif
+#endif // _Handle_PLib_JacobiPolynomial_HeaderFile

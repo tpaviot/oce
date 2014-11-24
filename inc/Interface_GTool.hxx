@@ -6,52 +6,22 @@
 #ifndef _Interface_GTool_HeaderFile
 #define _Interface_GTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Interface_GTool_HeaderFile
 #include <Handle_Interface_GTool.hxx>
-#endif
 
-#ifndef _Handle_Interface_Protocol_HeaderFile
 #include <Handle_Interface_Protocol.hxx>
-#endif
-#ifndef _Handle_Interface_SignType_HeaderFile
 #include <Handle_Interface_SignType.hxx>
-#endif
-#ifndef _Interface_GeneralLib_HeaderFile
 #include <Interface_GeneralLib.hxx>
-#endif
-#ifndef _Interface_DataMapOfTransientInteger_HeaderFile
 #include <Interface_DataMapOfTransientInteger.hxx>
-#endif
-#ifndef _TColStd_IndexedDataMapOfTransientTransient_HeaderFile
 #include <TColStd_IndexedDataMapOfTransientTransient.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Interface_GeneralModule_HeaderFile
 #include <Handle_Interface_GeneralModule.hxx>
-#endif
 class Interface_Protocol;
 class Interface_SignType;
 class Standard_Transient;
@@ -60,52 +30,65 @@ class Interface_GeneralLib;
 class Interface_GeneralModule;
 
 
-//! GTool - General Tool for a Model <br>
-//!           Provides the functions performed by Protocol/GeneralModule for <br>
-//!           entities of a Model, and recorded in a GeneralLib <br>
-//!           Optimized : once an entity has been queried, the GeneralLib is <br>
-//!           not longer queried <br>
-//!           Shareable between several users : as a Handle <br>
-class Interface_GTool : public MMgt_TShared {
+//! GTool - General Tool for a Model
+//! Provides the functions performed by Protocol/GeneralModule for
+//! entities of a Model, and recorded in a GeneralLib
+//! Optimized : once an entity has been queried, the GeneralLib is
+//! not longer queried
+//! Shareable between several users : as a Handle
+class Interface_GTool : public MMgt_TShared
+{
 
 public:
 
-  //! Creates an empty, not set, GTool <br>
-  Standard_EXPORT   Interface_GTool();
-  //! Creates a GTool from a Protocol <br>
-//!           Optional starting count of entities <br>
-  Standard_EXPORT   Interface_GTool(const Handle(Interface_Protocol)& proto,const Standard_Integer nbent = 0);
-  //! Sets a new SignType <br>
-  Standard_EXPORT     void SetSignType(const Handle(Interface_SignType)& sign) ;
-  //! Returns the SignType. Can be null <br>
-  Standard_EXPORT     Handle_Interface_SignType SignType() const;
-  //! Returns the Signature for a Transient Object in a Model <br>
-//!           It calls SignType to do that <br>
-//!           If SignType is not defined, return ClassName of <ent> <br>
-  Standard_EXPORT     Standard_CString SignValue(const Handle(Standard_Transient)& ent,const Handle(Interface_InterfaceModel)& model) const;
-  //! Returns the Name of the SignType, or "Class Name" <br>
-  Standard_EXPORT     Standard_CString SignName() const;
-  //! Sets a new Protocol <br>
-//!           if <enforce> is False and the new Protocol equates the old one <br>
-//!           then nothing is done <br>
-  Standard_EXPORT     void SetProtocol(const Handle(Interface_Protocol)& proto,const Standard_Boolean enforce = Standard_False) ;
-  //! Returns the Protocol.  Warning : it can be Null <br>
-  Standard_EXPORT     Handle_Interface_Protocol Protocol() const;
-  //! Returns the GeneralLib itself <br>
-  Standard_EXPORT     Interface_GeneralLib& Lib() ;
-  //! Reservates maps for a count of entities <br>
-//!           <enforce> False : minimum count <br>
-//!           <enforce> True  : clears former reservations <br>
-//!           Does not clear the maps <br>
-  Standard_EXPORT     void Reservate(const Standard_Integer nb,const Standard_Boolean enforce = Standard_False) ;
-  //! Clears the maps which record, for each already recorded entity <br>
-//!           its Module and Case Number <br>
-  Standard_EXPORT     void ClearEntities() ;
-  //! Selects for an entity, its Module and Case Number <br>
-//!           It is optimised : once done for each entity, the result is <br>
-//!           mapped and the GeneralLib is not longer queried <br>
-//!           <enforce> True overpasses this optimisation <br>
-  Standard_EXPORT     Standard_Boolean Select(const Handle(Standard_Transient)& ent,Handle(Interface_GeneralModule)& gmod,Standard_Integer& CN,const Standard_Boolean enforce = Standard_False) ;
+  
+  //! Creates an empty, not set, GTool
+  Standard_EXPORT Interface_GTool();
+  
+  //! Creates a GTool from a Protocol
+  //! Optional starting count of entities
+  Standard_EXPORT Interface_GTool(const Handle(Interface_Protocol)& proto, const Standard_Integer nbent = 0);
+  
+  //! Sets a new SignType
+  Standard_EXPORT   void SetSignType (const Handle(Interface_SignType)& sign) ;
+  
+  //! Returns the SignType. Can be null
+  Standard_EXPORT   Handle(Interface_SignType) SignType()  const;
+  
+  //! Returns the Signature for a Transient Object in a Model
+  //! It calls SignType to do that
+  //! If SignType is not defined, return ClassName of <ent>
+  Standard_EXPORT   Standard_CString SignValue (const Handle(Standard_Transient)& ent, const Handle(Interface_InterfaceModel)& model)  const;
+  
+  //! Returns the Name of the SignType, or "Class Name"
+  Standard_EXPORT   Standard_CString SignName()  const;
+  
+  //! Sets a new Protocol
+  //! if <enforce> is False and the new Protocol equates the old one
+  //! then nothing is done
+  Standard_EXPORT   void SetProtocol (const Handle(Interface_Protocol)& proto, const Standard_Boolean enforce = Standard_False) ;
+  
+  //! Returns the Protocol.  Warning : it can be Null
+  Standard_EXPORT   Handle(Interface_Protocol) Protocol()  const;
+  
+  //! Returns the GeneralLib itself
+  Standard_EXPORT   Interface_GeneralLib& Lib() ;
+  
+  //! Reservates maps for a count of entities
+  //! <enforce> False : minimum count
+  //! <enforce> True  : clears former reservations
+  //! Does not clear the maps
+  Standard_EXPORT   void Reservate (const Standard_Integer nb, const Standard_Boolean enforce = Standard_False) ;
+  
+  //! Clears the maps which record, for each already recorded entity
+  //! its Module and Case Number
+  Standard_EXPORT   void ClearEntities() ;
+  
+  //! Selects for an entity, its Module and Case Number
+  //! It is optimised : once done for each entity, the result is
+  //! mapped and the GeneralLib is not longer queried
+  //! <enforce> True overpasses this optimisation
+  Standard_EXPORT   Standard_Boolean Select (const Handle(Standard_Transient)& ent, Handle(Interface_GeneralModule)& gmod, Standard_Integer& CN, const Standard_Boolean enforce = Standard_False) ;
 
 
 
@@ -120,11 +103,11 @@ protected:
 private: 
 
 
-Handle_Interface_Protocol theproto;
-Handle_Interface_SignType thesign;
-Interface_GeneralLib thelib;
-Interface_DataMapOfTransientInteger thentnum;
-TColStd_IndexedDataMapOfTransientTransient thentmod;
+  Handle(Interface_Protocol) theproto;
+  Handle(Interface_SignType) thesign;
+  Interface_GeneralLib thelib;
+  Interface_DataMapOfTransientInteger thentnum;
+  TColStd_IndexedDataMapOfTransientTransient thentmod;
 
 
 };
@@ -133,7 +116,6 @@ TColStd_IndexedDataMapOfTransientTransient thentmod;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Interface_GTool_HeaderFile

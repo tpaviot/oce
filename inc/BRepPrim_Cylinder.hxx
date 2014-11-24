@@ -6,61 +6,58 @@
 #ifndef _BRepPrim_Cylinder_HeaderFile
 #define _BRepPrim_Cylinder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _BRepPrim_Revolution_HeaderFile
 #include <BRepPrim_Revolution.hxx>
-#endif
 class Standard_DomainError;
 class gp_Ax2;
 class gp_Pnt;
 class TopoDS_Face;
 
 
-//! Cylinder primitive. <br>
-class BRepPrim_Cylinder  : public BRepPrim_Revolution {
+//! Cylinder primitive.
+class BRepPrim_Cylinder  : public BRepPrim_Revolution
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! the STEP definition <br>
-//!          Position : center of a Face and Axis <br>
-//!          Radius : radius of cylinder <br>
-//!          Height : distance between faces <br>
-//!                   on positive side <br>
-//! <br>
-//!          Errors : Height < Resolution <br>
-//!                   Radius < Resolution <br>
-  Standard_EXPORT   BRepPrim_Cylinder(const gp_Ax2& Position,const Standard_Real Radius,const Standard_Real Height);
-  //! infinite Cylinder at origin on Z negative <br>
-  Standard_EXPORT   BRepPrim_Cylinder(const Standard_Real Radius);
-  //! infinite Cylinder at Center on Z negative <br>
-  Standard_EXPORT   BRepPrim_Cylinder(const gp_Pnt& Center,const Standard_Real Radius);
-  //! infinite Cylinder at Axes on Z negative <br>
-  Standard_EXPORT   BRepPrim_Cylinder(const gp_Ax2& Axes,const Standard_Real Radius);
-  //! create a Cylinder  at origin on Z  axis, of <br>
-//!          height H and radius R <br>
-//!          Error  : Radius  < Resolution <br>
-//!                   H < Resolution <br>
-//!                   H negative <br>
-  Standard_EXPORT   BRepPrim_Cylinder(const Standard_Real R,const Standard_Real H);
-  //! same as above but at a given point <br>
-  Standard_EXPORT   BRepPrim_Cylinder(const gp_Pnt& Center,const Standard_Real R,const Standard_Real H);
-  //! The surface normal should be directed  towards the <br>
-//!          outside. <br>
-  Standard_EXPORT   virtual  TopoDS_Face MakeEmptyLateralFace() const;
-
+  
+  //! the STEP definition
+  //! Position : center of a Face and Axis
+  //! Radius : radius of cylinder
+  //! Height : distance between faces
+  //! on positive side
+  //!
+  //! Errors : Height < Resolution
+  //! Radius < Resolution
+  Standard_EXPORT BRepPrim_Cylinder(const gp_Ax2& Position, const Standard_Real Radius, const Standard_Real Height);
+  
+  //! infinite Cylinder at origin on Z negative
+  Standard_EXPORT BRepPrim_Cylinder(const Standard_Real Radius);
+  
+  //! infinite Cylinder at Center on Z negative
+  Standard_EXPORT BRepPrim_Cylinder(const gp_Pnt& Center, const Standard_Real Radius);
+  
+  //! infinite Cylinder at Axes on Z negative
+  Standard_EXPORT BRepPrim_Cylinder(const gp_Ax2& Axes, const Standard_Real Radius);
+  
+  //! create a Cylinder  at origin on Z  axis, of
+  //! height H and radius R
+  //! Error  : Radius  < Resolution
+  //! H < Resolution
+  //! H negative
+  Standard_EXPORT BRepPrim_Cylinder(const Standard_Real R, const Standard_Real H);
+  
+  //! same as above but at a given point
+  Standard_EXPORT BRepPrim_Cylinder(const gp_Pnt& Center, const Standard_Real R, const Standard_Real H);
+  
+  //! The surface normal should be directed  towards the
+  //! outside.
+  Standard_EXPORT virtual   TopoDS_Face MakeEmptyLateralFace()  const;
 
 
 
@@ -74,10 +71,10 @@ protected:
 private:
 
   
-  Standard_EXPORT     void SetMeridian() ;
+  Standard_EXPORT   void SetMeridian() ;
 
 
-Standard_Real myRadius;
+  Standard_Real myRadius;
 
 
 };
@@ -86,7 +83,6 @@ Standard_Real myRadius;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepPrim_Cylinder_HeaderFile

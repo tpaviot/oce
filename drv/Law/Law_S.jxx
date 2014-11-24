@@ -1,3 +1,1 @@
-#ifndef _Law_S_HeaderFile
 #include <Law_S.hxx>
-#endif

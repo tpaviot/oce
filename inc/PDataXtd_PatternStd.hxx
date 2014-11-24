@@ -6,88 +6,69 @@
 #ifndef _PDataXtd_PatternStd_HeaderFile
 #define _PDataXtd_PatternStd_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PDataXtd_PatternStd_HeaderFile
 #include <Handle_PDataXtd_PatternStd.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_PNaming_NamedShape_HeaderFile
 #include <Handle_PNaming_NamedShape.hxx>
-#endif
-#ifndef _Handle_PDataStd_Real_HeaderFile
 #include <Handle_PDataStd_Real.hxx>
-#endif
-#ifndef _Handle_PDataStd_Integer_HeaderFile
 #include <Handle_PDataStd_Integer.hxx>
-#endif
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
 class PNaming_NamedShape;
 class PDataStd_Real;
 class PDataStd_Integer;
 
 
-class PDataXtd_PatternStd : public PDF_Attribute {
+class PDataXtd_PatternStd : public PDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   PDataXtd_PatternStd();
+  Standard_EXPORT PDataXtd_PatternStd();
   
-        void Signature(const Standard_Integer signature) ;
+      void Signature (const Standard_Integer signature) ;
   
-        void Axis1Reversed(const Standard_Boolean Axis1Reversed) ;
+      void Axis1Reversed (const Standard_Boolean Axis1Reversed) ;
   
-        void Axis2Reversed(const Standard_Boolean Axis2Reversed) ;
+      void Axis2Reversed (const Standard_Boolean Axis2Reversed) ;
   
-        void Axis1(const Handle(PNaming_NamedShape)& Axis1) ;
+      void Axis1 (const Handle(PNaming_NamedShape)& Axis1) ;
   
-        void Axis2(const Handle(PNaming_NamedShape)& Axis2) ;
+      void Axis2 (const Handle(PNaming_NamedShape)& Axis2) ;
   
-        void Value1(const Handle(PDataStd_Real)& Value1) ;
+      void Value1 (const Handle(PDataStd_Real)& Value1) ;
   
-        void Value2(const Handle(PDataStd_Real)& Value2) ;
+      void Value2 (const Handle(PDataStd_Real)& Value2) ;
   
-        void NbInstances1(const Handle(PDataStd_Integer)& NbInstances1) ;
+      void NbInstances1 (const Handle(PDataStd_Integer)& NbInstances1) ;
   
-        void NbInstances2(const Handle(PDataStd_Integer)& NbInstances2) ;
+      void NbInstances2 (const Handle(PDataStd_Integer)& NbInstances2) ;
   
-        void Mirror(const Handle(PNaming_NamedShape)& plane) ;
+      void Mirror (const Handle(PNaming_NamedShape)& plane) ;
   
-        Standard_Integer Signature() const;
+      Standard_Integer Signature()  const;
   
-        Standard_Boolean Axis1Reversed() const;
+      Standard_Boolean Axis1Reversed()  const;
   
-        Standard_Boolean Axis2Reversed() const;
+      Standard_Boolean Axis2Reversed()  const;
   
-        Handle_PNaming_NamedShape Axis1() const;
+      Handle(PNaming_NamedShape) Axis1()  const;
   
-        Handle_PNaming_NamedShape Axis2() const;
+      Handle(PNaming_NamedShape) Axis2()  const;
   
-        Handle_PDataStd_Real Value1() const;
+      Handle(PDataStd_Real) Value1()  const;
   
-        Handle_PDataStd_Real Value2() const;
+      Handle(PDataStd_Real) Value2()  const;
   
-        Handle_PDataStd_Integer NbInstances1() const;
+      Handle(PDataStd_Integer) NbInstances1()  const;
   
-        Handle_PDataStd_Integer NbInstances2() const;
+      Handle(PDataStd_Integer) NbInstances2()  const;
   
-        Handle_PNaming_NamedShape Mirror() const;
+      Handle(PNaming_NamedShape) Mirror()  const;
 
 PDataXtd_PatternStd(const Storage_stCONSTclCOM& a) : PDF_Attribute(a)
 {
@@ -126,16 +107,16 @@ protected:
 private: 
 
 
-Standard_Integer mySignature;
-Standard_Boolean myAxis1Reversed;
-Standard_Boolean myAxis2Reversed;
-Handle_PNaming_NamedShape myAxis1;
-Handle_PNaming_NamedShape myAxis2;
-Handle_PDataStd_Real myValue1;
-Handle_PDataStd_Real myValue2;
-Handle_PDataStd_Integer myNb1;
-Handle_PDataStd_Integer myNb2;
-Handle_PNaming_NamedShape myMirror;
+  Standard_Integer mySignature;
+  Standard_Boolean myAxis1Reversed;
+  Standard_Boolean myAxis2Reversed;
+  Handle(PNaming_NamedShape) myAxis1;
+  Handle(PNaming_NamedShape) myAxis2;
+  Handle(PDataStd_Real) myValue1;
+  Handle(PDataStd_Real) myValue2;
+  Handle(PDataStd_Integer) myNb1;
+  Handle(PDataStd_Integer) myNb2;
+  Handle(PNaming_NamedShape) myMirror;
 
 
 };
@@ -145,7 +126,6 @@ Handle_PNaming_NamedShape myMirror;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDataXtd_PatternStd_HeaderFile

@@ -5,21 +5,13 @@
 
 #include <IFSelect_SequenceOfInterfaceModel.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Interface_InterfaceModel_HeaderFile
 #include <Interface_InterfaceModel.hxx>
-#endif
-#ifndef _IFSelect_SequenceNodeOfSequenceOfInterfaceModel_HeaderFile
 #include <IFSelect_SequenceNodeOfSequenceOfInterfaceModel.hxx>
-#endif
  
 
-#define SeqItem Handle_Interface_InterfaceModel
+#define SeqItem Handle(Interface_InterfaceModel)
 #define SeqItem_hxx <Interface_InterfaceModel.hxx>
 #define TCollection_SequenceNode IFSelect_SequenceNodeOfSequenceOfInterfaceModel
 #define TCollection_SequenceNode_hxx <IFSelect_SequenceNodeOfSequenceOfInterfaceModel.hxx>

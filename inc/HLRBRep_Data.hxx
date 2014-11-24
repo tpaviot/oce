@@ -6,79 +6,31 @@
 #ifndef _HLRBRep_Data_HeaderFile
 #define _HLRBRep_Data_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_HLRBRep_Data_HeaderFile
 #include <Handle_HLRBRep_Data.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopTools_IndexedMapOfShape_HeaderFile
 #include <TopTools_IndexedMapOfShape.hxx>
-#endif
-#ifndef _HLRBRep_Array1OfEData_HeaderFile
 #include <HLRBRep_Array1OfEData.hxx>
-#endif
-#ifndef _HLRBRep_Array1OfFData_HeaderFile
 #include <HLRBRep_Array1OfFData.hxx>
-#endif
-#ifndef _TColStd_Array1OfInteger_HeaderFile
 #include <TColStd_Array1OfInteger.hxx>
-#endif
-#ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
-#endif
-#ifndef _HLRAlgo_Projector_HeaderFile
 #include <HLRAlgo_Projector.hxx>
-#endif
-#ifndef _HLRBRep_CLProps_HeaderFile
 #include <HLRBRep_CLProps.hxx>
-#endif
-#ifndef _HLRBRep_SLProps_HeaderFile
 #include <HLRBRep_SLProps.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _HLRBRep_FaceIterator_HeaderFile
 #include <HLRBRep_FaceIterator.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _GeomAbs_SurfaceType_HeaderFile
 #include <GeomAbs_SurfaceType.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _GeomAbs_CurveType_HeaderFile
 #include <GeomAbs_CurveType.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
-#ifndef _HLRBRep_Intersector_HeaderFile
 #include <HLRBRep_Intersector.hxx>
-#endif
-#ifndef _Handle_BRepTopAdaptor_TopolTool_HeaderFile
 #include <Handle_BRepTopAdaptor_TopolTool.hxx>
-#endif
-#ifndef _HLRAlgo_Interference_HeaderFile
 #include <HLRAlgo_Interference.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _TopAbs_State_HeaderFile
 #include <TopAbs_State.hxx>
-#endif
 class BRepTopAdaptor_TopolTool;
 class StdFail_UndefinedDerivative;
 class HLRBRep_Array1OfEData;
@@ -95,103 +47,125 @@ class IntRes2d_IntersectionPoint;
 
 
 
-class HLRBRep_Data : public MMgt_TShared {
+class HLRBRep_Data : public MMgt_TShared
+{
 
 public:
 
-  //! Create an  empty data structure  of <NV> vertices, <br>
-//!          <NE> edges and <NF> faces. <br>
-  Standard_EXPORT   HLRBRep_Data(const Standard_Integer NV,const Standard_Integer NE,const Standard_Integer NF);
-  //! Write <DS>    in   me  with   a     translation of <br>
-//!          <dv>,<de>,<df>. <br>
-  Standard_EXPORT     void Write(const Handle(HLRBRep_Data)& DS,const Standard_Integer dv,const Standard_Integer de,const Standard_Integer df) ;
   
-        HLRBRep_Array1OfEData& EDataArray() ;
+  //! Create an  empty data structure  of <NV> vertices,
+  //! <NE> edges and <NF> faces.
+  Standard_EXPORT HLRBRep_Data(const Standard_Integer NV, const Standard_Integer NE, const Standard_Integer NF);
   
-        HLRBRep_Array1OfFData& FDataArray() ;
-  //! Set the  tolerance for the  rejections  during the <br>
-//!          exploration <br>
-        void Tolerance(const Standard_ShortReal tol) ;
-  //! returns  the tolerance for the  rejections  during <br>
-//!          the exploration <br>
-        Standard_ShortReal Tolerance() const;
-  //! end of building  of the Data and updating <br>
-//!          all the informations linked to the projection. <br>
-  Standard_EXPORT     void Update(const HLRAlgo_Projector& P) ;
+  //! Write <DS>    in   me  with   a     translation of
+  //! <dv>,<de>,<df>.
+  Standard_EXPORT   void Write (const Handle(HLRBRep_Data)& DS, const Standard_Integer dv, const Standard_Integer de, const Standard_Integer df) ;
   
-        HLRAlgo_Projector& Projector() ;
+      HLRBRep_Array1OfEData& EDataArray() ;
   
-        Standard_Integer NbVertices() const;
+      HLRBRep_Array1OfFData& FDataArray() ;
   
-        Standard_Integer NbEdges() const;
+  //! Set the  tolerance for the  rejections  during the
+  //! exploration
+      void Tolerance (const Standard_ShortReal tol) ;
   
-        Standard_Integer NbFaces() const;
+  //! returns  the tolerance for the  rejections  during
+  //! the exploration
+      Standard_ShortReal Tolerance()  const;
   
-        TopTools_IndexedMapOfShape& EdgeMap() ;
+  //! end of building  of the Data and updating
+  //! all the informations linked to the projection.
+  Standard_EXPORT   void Update (const HLRAlgo_Projector& P) ;
   
-        TopTools_IndexedMapOfShape& FaceMap() ;
-  //! to compare with only non rejected edges. <br>
-  Standard_EXPORT     void InitBoundSort(const Standard_Address MinMaxTot,const Standard_Integer e1,const Standard_Integer e2) ;
-  //! Begin an iteration only  on visible Edges <br>
-//!          crossing the face number <FI>. <br>
-  Standard_EXPORT     void InitEdge(const Standard_Integer FI,BRepTopAdaptor_MapOfShapeTool& MST) ;
+      HLRAlgo_Projector& Projector() ;
   
-  Standard_EXPORT     Standard_Boolean MoreEdge() ;
+      Standard_Integer NbVertices()  const;
   
-  Standard_EXPORT     void NextEdge(const Standard_Boolean skip = Standard_True) ;
-  //! Returns the  current Edge <br>
-  Standard_EXPORT     Standard_Integer Edge() const;
-  //! Returns true if   the  current edge to   be hidden <br>
-//!          belongs to the hiding face. <br>
-        Standard_Boolean HidingTheFace() const;
-  //! Returns true if the current hiding face is not  an <br>
-//!          auto-intersected one. <br>
-        Standard_Boolean SimpleHidingFace() const;
-  //! Intersect  the current  Edge  with the boundary of <br>
-//!          the hiding  face.   The interferences are given by <br>
-//!          the More, Next, and Value methods. <br>
-  Standard_EXPORT     void InitInterference() ;
+      Standard_Integer NbEdges()  const;
   
-        Standard_Boolean MoreInterference() const;
+      Standard_Integer NbFaces()  const;
   
-  Standard_EXPORT     void NextInterference() ;
-  //! Returns  True if the  interference is rejected. <br>
-  Standard_EXPORT     Standard_Boolean RejectedInterference() ;
-  //! Returns True if the rejected interference is above <br>
-//!          the face. <br>
-  Standard_EXPORT     Standard_Boolean AboveInterference() ;
+      TopTools_IndexedMapOfShape& EdgeMap() ;
   
-        HLRAlgo_Interference& Interference() ;
-  //! Returns the local description of the projection of <br>
-//!          the current LEdge  at parameter  <Param>. <br>
-  Standard_EXPORT     void LocalLEGeometry2D(const Standard_Real Param,gp_Dir2d& Tg,gp_Dir2d& Nm,Standard_Real& Cu) ;
-  //! Returns the local description of the projection of <br>
-//!          the current FEdge  at parameter  <Param>. <br>
-  Standard_EXPORT     void LocalFEGeometry2D(const Standard_Integer FE,const Standard_Real Param,gp_Dir2d& Tg,gp_Dir2d& Nm,Standard_Real& Cu) ;
-  //! Returns the local  3D   state of the  intersection <br>
-//!          between the current edge and the current face at the <br>
-//!          <p1> and <p2> parameters. <br>
-  Standard_EXPORT     void EdgeState(const Standard_Real p1,const Standard_Real p2,TopAbs_State& stbef,TopAbs_State& staf) ;
-  //! Returns the  true if the  Edge <ED> belongs to the <br>
-//!          Hiding Face. <br>
-        Standard_Boolean EdgeOfTheHidingFace(const Standard_Integer E,const HLRBRep_EdgeData& ED) const;
-  //! Returns the number of  levels of hiding face above <br>
-//!          the   first  point  of   the    edge <ED>.     The <br>
-//!          InterferenceList is  given to  compute far away of <br>
-//!          the Interferences and then come back. <br>
-  Standard_EXPORT     Standard_Integer HidingStartLevel(const Standard_Integer E,const HLRBRep_EdgeData& ED,const HLRAlgo_InterferenceList& IL) ;
-  //! Returns   the  state   of  the   Edge  <ED>  after <br>
-//!          classification. <br>
-  Standard_EXPORT     TopAbs_State Compare(const Standard_Integer E,const HLRBRep_EdgeData& ED) ;
-  //! Simple classification of part of edge  [p1,  p2] <br>
-//!  returns  OUT  if  at  least  1 of  Nbp  points  of  edge  is  out <br>
-//!  othewise  returns  IN <br>
-//!  It  is  used  to  check  "suspision"  hided  part  of  edge. <br>
-  Standard_EXPORT     TopAbs_State SimplClassify(const Standard_Integer E,const HLRBRep_EdgeData& ED,const Standard_Integer Nbp,const Standard_Real p1,const Standard_Real p2) ;
-  //! Classification of an edge. <br>
-  Standard_EXPORT     TopAbs_State Classify(const Standard_Integer E,const HLRBRep_EdgeData& ED,const Standard_Boolean LevelFlag,Standard_Integer& Level,const Standard_Real param) ;
+      TopTools_IndexedMapOfShape& FaceMap() ;
   
-  Standard_EXPORT     void Destroy() ;
+  //! to compare with only non rejected edges.
+  Standard_EXPORT   void InitBoundSort (const Standard_Address MinMaxTot, const Standard_Integer e1, const Standard_Integer e2) ;
+  
+  //! Begin an iteration only  on visible Edges
+  //! crossing the face number <FI>.
+  Standard_EXPORT   void InitEdge (const Standard_Integer FI, BRepTopAdaptor_MapOfShapeTool& MST) ;
+  
+  Standard_EXPORT   Standard_Boolean MoreEdge() ;
+  
+  Standard_EXPORT   void NextEdge (const Standard_Boolean skip = Standard_True) ;
+  
+  //! Returns the  current Edge
+  Standard_EXPORT   Standard_Integer Edge()  const;
+  
+  //! Returns true if   the  current edge to   be hidden
+  //! belongs to the hiding face.
+      Standard_Boolean HidingTheFace()  const;
+  
+  //! Returns true if the current hiding face is not  an
+  //! auto-intersected one.
+      Standard_Boolean SimpleHidingFace()  const;
+  
+  //! Intersect  the current  Edge  with the boundary of
+  //! the hiding  face.   The interferences are given by
+  //! the More, Next, and Value methods.
+  Standard_EXPORT   void InitInterference() ;
+  
+      Standard_Boolean MoreInterference()  const;
+  
+  Standard_EXPORT   void NextInterference() ;
+  
+  //! Returns  True if the  interference is rejected.
+  Standard_EXPORT   Standard_Boolean RejectedInterference() ;
+  
+  //! Returns True if the rejected interference is above
+  //! the face.
+  Standard_EXPORT   Standard_Boolean AboveInterference() ;
+  
+      HLRAlgo_Interference& Interference() ;
+  
+  //! Returns the local description of the projection of
+  //! the current LEdge  at parameter  <Param>.
+  Standard_EXPORT   void LocalLEGeometry2D (const Standard_Real Param, gp_Dir2d& Tg, gp_Dir2d& Nm, Standard_Real& Cu) ;
+  
+  //! Returns the local description of the projection of
+  //! the current FEdge  at parameter  <Param>.
+  Standard_EXPORT   void LocalFEGeometry2D (const Standard_Integer FE, const Standard_Real Param, gp_Dir2d& Tg, gp_Dir2d& Nm, Standard_Real& Cu) ;
+  
+  //! Returns the local  3D   state of the  intersection
+  //! between the current edge and the current face at the
+  //! <p1> and <p2> parameters.
+  Standard_EXPORT   void EdgeState (const Standard_Real p1, const Standard_Real p2, TopAbs_State& stbef, TopAbs_State& staf) ;
+  
+  //! Returns the  true if the  Edge <ED> belongs to the
+  //! Hiding Face.
+      Standard_Boolean EdgeOfTheHidingFace (const Standard_Integer E, const HLRBRep_EdgeData& ED)  const;
+  
+  //! Returns the number of  levels of hiding face above
+  //! the   first  point  of   the    edge <ED>.     The
+  //! InterferenceList is  given to  compute far away of
+  //! the Interferences and then come back.
+  Standard_EXPORT   Standard_Integer HidingStartLevel (const Standard_Integer E, const HLRBRep_EdgeData& ED, const HLRAlgo_InterferenceList& IL) ;
+  
+  //! Returns   the  state   of  the   Edge  <ED>  after
+  //! classification.
+  Standard_EXPORT   TopAbs_State Compare (const Standard_Integer E, const HLRBRep_EdgeData& ED) ;
+  
+  //! Simple classification of part of edge  [p1,  p2]
+  //! returns  OUT  if  at  least  1 of  Nbp  points  of  edge  is  out
+  //! othewise  returns  IN
+  //! It  is  used  to  check  "suspision"  hided  part  of  edge.
+  Standard_EXPORT   TopAbs_State SimplClassify (const Standard_Integer E, const HLRBRep_EdgeData& ED, const Standard_Integer Nbp, const Standard_Real p1, const Standard_Real p2) ;
+  
+  //! Classification of an edge.
+  Standard_EXPORT   TopAbs_State Classify (const Standard_Integer E, const HLRBRep_EdgeData& ED, const Standard_Boolean LevelFlag, Standard_Integer& Level, const Standard_Real param) ;
+  
+  Standard_EXPORT   void Destroy() ;
 ~HLRBRep_Data()
 {
   Destroy();
@@ -208,78 +182,82 @@ protected:
 
 private: 
 
-  //! Orient the   OutLines  ( left  must  be  inside in <br>
-//!          projection ). Returns True if the face of a closed <br>
-//!          shell has been inverted; <br>
-  Standard_EXPORT     Standard_Boolean OrientOutLine(const Standard_Integer I,HLRBRep_FaceData& FD) ;
-  //! Orient the Edges which  are not  Internal OutLine, <br>
-//!          not Double and not IsoLine. <br>
-  Standard_EXPORT     void OrientOthEdge(const Standard_Integer I,HLRBRep_FaceData& FD) ;
-  //! Returns  True  if the  intersection is  rejected. <br>
-  Standard_EXPORT     Standard_Boolean RejectedPoint(const IntRes2d_IntersectionPoint& PInter,const TopAbs_Orientation BoundOri,const Standard_Integer NumSeg) ;
-  //! returns True  if there is a common  vertex between <br>
-//!          myLE and myFE  dependig  on  <head1> and  <head2>. <br>
-  Standard_EXPORT     Standard_Boolean SameVertex(const Standard_Boolean head1,const Standard_Boolean head2) ;
+  
+  //! Orient the   OutLines  ( left  must  be  inside in
+  //! projection ). Returns True if the face of a closed
+  //! shell has been inverted;
+  Standard_EXPORT   Standard_Boolean OrientOutLine (const Standard_Integer I, HLRBRep_FaceData& FD) ;
+  
+  //! Orient the Edges which  are not  Internal OutLine,
+  //! not Double and not IsoLine.
+  Standard_EXPORT   void OrientOthEdge (const Standard_Integer I, HLRBRep_FaceData& FD) ;
+  
+  //! Returns  True  if the  intersection is  rejected.
+  Standard_EXPORT   Standard_Boolean RejectedPoint (const IntRes2d_IntersectionPoint& PInter, const TopAbs_Orientation BoundOri, const Standard_Integer NumSeg) ;
+  
+  //! returns True  if there is a common  vertex between
+  //! myLE and myFE  dependig  on  <head1> and  <head2>.
+  Standard_EXPORT   Standard_Boolean SameVertex (const Standard_Boolean head1, const Standard_Boolean head2) ;
 
-Standard_Integer myNbVertices;
-Standard_Integer myNbEdges;
-Standard_Integer myNbFaces;
-TopTools_IndexedMapOfShape myEMap;
-TopTools_IndexedMapOfShape myFMap;
-HLRBRep_Array1OfEData myEData;
-HLRBRep_Array1OfFData myFData;
-TColStd_Array1OfInteger myEdgeIndices;
-Standard_ShortReal myToler;
-HLRAlgo_Projector myProj;
-HLRBRep_CLProps myLLProps;
-HLRBRep_CLProps myFLProps;
-HLRBRep_SLProps mySLProps;
-Standard_Real myBigSize;
-HLRBRep_FaceIterator myFaceItr1;
-HLRBRep_FaceIterator myFaceItr2;
-Standard_Integer iFace;
-Standard_Address iFaceData;
-Standard_Address iFaceGeom;
-Standard_Address iFaceMinMax;
-GeomAbs_SurfaceType iFaceType;
-Standard_Boolean iFaceBack;
-Standard_Boolean iFaceSimp;
-Standard_Boolean iFaceSmpl;
-Standard_Boolean iFaceTest;
-Standard_Integer myHideCount;
-Standard_Real myDeca[16];
-Standard_Real mySurD[16];
-Standard_Integer myCurSortEd;
-Standard_Integer myNbrSortEd;
-Standard_Integer myLE;
-Standard_Boolean myLEOutLine;
-Standard_Boolean myLEInternal;
-Standard_Boolean myLEDouble;
-Standard_Boolean myLEIsoLine;
-Standard_Address myLEData;
-Standard_Address myLEGeom;
-Standard_Address myLEMinMax;
-GeomAbs_CurveType myLEType;
-Standard_ShortReal myLETol;
-Standard_Integer myFE;
-TopAbs_Orientation myFEOri;
-Standard_Boolean myFEOutLine;
-Standard_Boolean myFEInternal;
-Standard_Boolean myFEDouble;
-Standard_Address myFEData;
-Standard_Address myFEGeom;
-GeomAbs_CurveType myFEType;
-Standard_ShortReal myFETol;
-HLRBRep_Intersector myIntersector;
-Handle_BRepTopAdaptor_TopolTool myClassifier;
-Standard_Boolean mySameVertex;
-Standard_Boolean myIntersected;
-Standard_Integer myNbPoints;
-Standard_Integer myNbSegments;
-Standard_Integer iInterf;
-HLRAlgo_Interference myIntf;
-Standard_Boolean myAboveIntf;
-Standard_Address myReject;
+  Standard_Integer myNbVertices;
+  Standard_Integer myNbEdges;
+  Standard_Integer myNbFaces;
+  TopTools_IndexedMapOfShape myEMap;
+  TopTools_IndexedMapOfShape myFMap;
+  HLRBRep_Array1OfEData myEData;
+  HLRBRep_Array1OfFData myFData;
+  TColStd_Array1OfInteger myEdgeIndices;
+  Standard_ShortReal myToler;
+  HLRAlgo_Projector myProj;
+  HLRBRep_CLProps myLLProps;
+  HLRBRep_CLProps myFLProps;
+  HLRBRep_SLProps mySLProps;
+  Standard_Real myBigSize;
+  HLRBRep_FaceIterator myFaceItr1;
+  HLRBRep_FaceIterator myFaceItr2;
+  Standard_Integer iFace;
+  Standard_Address iFaceData;
+  Standard_Address iFaceGeom;
+  Standard_Address iFaceMinMax;
+  GeomAbs_SurfaceType iFaceType;
+  Standard_Boolean iFaceBack;
+  Standard_Boolean iFaceSimp;
+  Standard_Boolean iFaceSmpl;
+  Standard_Boolean iFaceTest;
+  Standard_Integer myHideCount;
+  Standard_Real myDeca[16];
+  Standard_Real mySurD[16];
+  Standard_Integer myCurSortEd;
+  Standard_Integer myNbrSortEd;
+  Standard_Integer myLE;
+  Standard_Boolean myLEOutLine;
+  Standard_Boolean myLEInternal;
+  Standard_Boolean myLEDouble;
+  Standard_Boolean myLEIsoLine;
+  Standard_Address myLEData;
+  Standard_Address myLEGeom;
+  Standard_Address myLEMinMax;
+  GeomAbs_CurveType myLEType;
+  Standard_ShortReal myLETol;
+  Standard_Integer myFE;
+  TopAbs_Orientation myFEOri;
+  Standard_Boolean myFEOutLine;
+  Standard_Boolean myFEInternal;
+  Standard_Boolean myFEDouble;
+  Standard_Address myFEData;
+  Standard_Address myFEGeom;
+  GeomAbs_CurveType myFEType;
+  Standard_ShortReal myFETol;
+  HLRBRep_Intersector myIntersector;
+  Handle(BRepTopAdaptor_TopolTool) myClassifier;
+  Standard_Boolean mySameVertex;
+  Standard_Boolean myIntersected;
+  Standard_Integer myNbPoints;
+  Standard_Integer myNbSegments;
+  Standard_Integer iInterf;
+  HLRAlgo_Interference myIntf;
+  Standard_Boolean myAboveIntf;
+  Standard_Address myReject;
 
 
 };
@@ -289,7 +267,6 @@ Standard_Address myReject;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_Data_HeaderFile

@@ -6,50 +6,37 @@
 #ifndef _IGESControl_ActorWrite_HeaderFile
 #define _IGESControl_ActorWrite_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESControl_ActorWrite_HeaderFile
 #include <Handle_IGESControl_ActorWrite.hxx>
-#endif
 
-#ifndef _Transfer_ActorOfFinderProcess_HeaderFile
 #include <Transfer_ActorOfFinderProcess.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Transfer_Finder_HeaderFile
 #include <Handle_Transfer_Finder.hxx>
-#endif
-#ifndef _Handle_Transfer_Binder_HeaderFile
 #include <Handle_Transfer_Binder.hxx>
-#endif
-#ifndef _Handle_Transfer_FinderProcess_HeaderFile
 #include <Handle_Transfer_FinderProcess.hxx>
-#endif
 class Transfer_Finder;
 class Transfer_Binder;
 class Transfer_FinderProcess;
 
 
-//! Actor to write Shape to IGES <br>
-class IGESControl_ActorWrite : public Transfer_ActorOfFinderProcess {
+//! Actor to write Shape to IGES
+class IGESControl_ActorWrite : public Transfer_ActorOfFinderProcess
+{
 
 public:
 
   
-  Standard_EXPORT   IGESControl_ActorWrite();
-  //! Recognizes a ShapeMapper <br>
-  Standard_EXPORT   virtual  Standard_Boolean Recognize(const Handle(Transfer_Finder)& start) ;
-  //! Transfers Shape to IGES Entities <br>
-//! <br>
-//!           ModeTrans may be : 0 -> groups of Faces <br>
-//!           or 1 -> BRep <br>
-  Standard_EXPORT   virtual  Handle_Transfer_Binder Transfer(const Handle(Transfer_Finder)& start,const Handle(Transfer_FinderProcess)& FP) ;
+  Standard_EXPORT IGESControl_ActorWrite();
+  
+  //! Recognizes a ShapeMapper
+  Standard_EXPORT virtual   Standard_Boolean Recognize (const Handle(Transfer_Finder)& start) ;
+  
+  //! Transfers Shape to IGES Entities
+  //!
+  //! ModeTrans may be : 0 -> groups of Faces
+  //! or 1 -> BRep
+  Standard_EXPORT virtual   Handle(Transfer_Binder) Transfer (const Handle(Transfer_Finder)& start, const Handle(Transfer_FinderProcess)& FP) ;
 
 
 
@@ -72,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESControl_ActorWrite_HeaderFile

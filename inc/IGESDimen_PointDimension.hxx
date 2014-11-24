@@ -6,37 +6,17 @@
 #ifndef _IGESDimen_PointDimension_HeaderFile
 #define _IGESDimen_PointDimension_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESDimen_PointDimension_HeaderFile
 #include <Handle_IGESDimen_PointDimension.hxx>
-#endif
 
-#ifndef _Handle_IGESDimen_GeneralNote_HeaderFile
 #include <Handle_IGESDimen_GeneralNote.hxx>
-#endif
-#ifndef _Handle_IGESDimen_LeaderArrow_HeaderFile
 #include <Handle_IGESDimen_LeaderArrow.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_IGESGeom_CircularArc_HeaderFile
 #include <Handle_IGESGeom_CircularArc.hxx>
-#endif
-#ifndef _Handle_IGESGeom_CompositeCurve_HeaderFile
 #include <Handle_IGESGeom_CompositeCurve.hxx>
-#endif
 class IGESDimen_GeneralNote;
 class IGESDimen_LeaderArrow;
 class IGESData_IGESEntity;
@@ -44,38 +24,43 @@ class IGESGeom_CircularArc;
 class IGESGeom_CompositeCurve;
 
 
-//! defines IGES Point Dimension, Type <220> Form <0>, <br>
-//!          in package IGESDimen <br>
-//!          A Point Dimension Entity consists of a leader, text, and <br>
-//!          an optional circle or hexagon enclosing the text <br>
-//!          IGES specs for this entity mention SimpleClosedPlanarCurve <br>
-//!          Entity(106/63)which is not listed in LIST.Text In the sequel <br>
-//!          we have ignored this & considered only the other two entity <br>
-//!          for representing the hexagon or circle enclosing the text. <br>
-class IGESDimen_PointDimension : public IGESData_IGESEntity {
+//! defines IGES Point Dimension, Type <220> Form <0>,
+//! in package IGESDimen
+//! A Point Dimension Entity consists of a leader, text, and
+//! an optional circle or hexagon enclosing the text
+//! IGES specs for this entity mention SimpleClosedPlanarCurve
+//! Entity(106/63)which is not listed in LIST.Text In the sequel
+//! we have ignored this & considered only the other two entity
+//! for representing the hexagon or circle enclosing the text.
+class IGESDimen_PointDimension : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESDimen_PointDimension();
+  Standard_EXPORT IGESDimen_PointDimension();
   
-  Standard_EXPORT     void Init(const Handle(IGESDimen_GeneralNote)& aNote,const Handle(IGESDimen_LeaderArrow)& anArrow,const Handle(IGESData_IGESEntity)& aGeom) ;
+  Standard_EXPORT   void Init (const Handle(IGESDimen_GeneralNote)& aNote, const Handle(IGESDimen_LeaderArrow)& anArrow, const Handle(IGESData_IGESEntity)& aGeom) ;
   
-  Standard_EXPORT     Handle_IGESDimen_GeneralNote Note() const;
+  Standard_EXPORT   Handle(IGESDimen_GeneralNote) Note()  const;
   
-  Standard_EXPORT     Handle_IGESDimen_LeaderArrow LeaderArrow() const;
-  //! returns the type of geometric entity. <br>
-//! 0 if no hexagon or circle encloses the text <br>
-//! 1 if CircularArc <br>
-//! 2 if CompositeCurve <br>
-//! 3 otherwise <br>
-  Standard_EXPORT     Standard_Integer GeomCase() const;
-  //! returns the Geometry Entity, Null handle if GeomCase(me) .eq. 0 <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity Geom() const;
-  //! returns Null handle if GeomCase(me) .ne. 1 <br>
-  Standard_EXPORT     Handle_IGESGeom_CircularArc CircularArc() const;
-  //! returns Null handle if GeomCase(me) .ne. 2 <br>
-  Standard_EXPORT     Handle_IGESGeom_CompositeCurve CompositeCurve() const;
+  Standard_EXPORT   Handle(IGESDimen_LeaderArrow) LeaderArrow()  const;
+  
+  //! returns the type of geometric entity.
+  //! 0 if no hexagon or circle encloses the text
+  //! 1 if CircularArc
+  //! 2 if CompositeCurve
+  //! 3 otherwise
+  Standard_EXPORT   Standard_Integer GeomCase()  const;
+  
+  //! returns the Geometry Entity, Null handle if GeomCase(me) .eq. 0
+  Standard_EXPORT   Handle(IGESData_IGESEntity) Geom()  const;
+  
+  //! returns Null handle if GeomCase(me) .ne. 1
+  Standard_EXPORT   Handle(IGESGeom_CircularArc) CircularArc()  const;
+  
+  //! returns Null handle if GeomCase(me) .ne. 2
+  Standard_EXPORT   Handle(IGESGeom_CompositeCurve) CompositeCurve()  const;
 
 
 
@@ -90,9 +75,9 @@ protected:
 private: 
 
 
-Handle_IGESDimen_GeneralNote theNote;
-Handle_IGESDimen_LeaderArrow theLeader;
-Handle_IGESData_IGESEntity theGeom;
+  Handle(IGESDimen_GeneralNote) theNote;
+  Handle(IGESDimen_LeaderArrow) theLeader;
+  Handle(IGESData_IGESEntity) theGeom;
 
 
 };
@@ -101,7 +86,6 @@ Handle_IGESData_IGESEntity theGeom;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESDimen_PointDimension_HeaderFile

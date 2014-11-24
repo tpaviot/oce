@@ -6,22 +6,15 @@
 #ifndef _Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger_HeaderFile
 #define _Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TCollection_MapNode_HeaderFile
 #include <Handle_TCollection_MapNode.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TCollection_MapNode);
 class TColStd_DataMapNodeOfDataMapOfIntegerInteger;
 
-DEFINE_STANDARD_HANDLE(TColStd_DataMapNodeOfDataMapOfIntegerInteger,TCollection_MapNode)
+DEFINE_STANDARD_HANDLE(TColStd_DataMapNodeOfDataMapOfIntegerInteger, TCollection_MapNode)
 
-#endif
+#endif // _Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger_HeaderFile

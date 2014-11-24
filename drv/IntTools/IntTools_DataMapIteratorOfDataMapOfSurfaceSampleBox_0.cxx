@@ -5,24 +5,12 @@
 
 #include <IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _IntTools_SurfaceRangeSample_HeaderFile
 #include <IntTools_SurfaceRangeSample.hxx>
-#endif
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
-#ifndef _IntTools_SurfaceRangeSampleMapHasher_HeaderFile
 #include <IntTools_SurfaceRangeSampleMapHasher.hxx>
-#endif
-#ifndef _IntTools_DataMapOfSurfaceSampleBox_HeaderFile
 #include <IntTools_DataMapOfSurfaceSampleBox.hxx>
-#endif
-#ifndef _IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox_HeaderFile
 #include <IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox.hxx>
-#endif
  
 
 #define TheKey IntTools_SurfaceRangeSample

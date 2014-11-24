@@ -6,22 +6,15 @@
 #ifndef _Handle_Expr_Different_HeaderFile
 #define _Handle_Expr_Different_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Expr_SingleRelation_HeaderFile
 #include <Handle_Expr_SingleRelation.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Expr_SingleRelation);
 class Expr_Different;
 
-DEFINE_STANDARD_HANDLE(Expr_Different,Expr_SingleRelation)
+DEFINE_STANDARD_HANDLE(Expr_Different, Expr_SingleRelation)
 
-#endif
+#endif // _Handle_Expr_Different_HeaderFile

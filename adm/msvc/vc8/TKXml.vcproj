@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="TKXml"
-	ProjectGUID="{E4A0F0A0-05B4-0333-1365-3EF1BC708F1B}"
+	ProjectGUID="{6541B73B-016A-0046-0E57-1565BFCAE655}"
 	>
 	<Platforms>
 		<Platform
@@ -63,6 +63,7 @@
 				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DisableSpecificWarnings="4996"
+				EnableEnhancedInstructionSet="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -163,6 +164,7 @@
 				DebugInformationFormat="3"
 				CompileAs="0"
 				DisableSpecificWarnings="4996"
+				EnableEnhancedInstructionSet="2"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -187,6 +189,7 @@
 				ProgramDatabaseFile="..\..\..\win32\vc8\bind\TKXml.pdb"
 				SubSystem="2"
 				ImportLibrary="..\..\..\win32\vc8\libd\TKXml.lib"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -248,7 +251,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\XmlDrivers;..\..\..\src\XmlDrivers;..\..\..\drv\XmlMDataXtd;..\..\..\src\XmlMDataXtd;..\..\..\drv\XmlMNaming;..\..\..\src\XmlMNaming;..\..\..\drv\XmlMPrsStd;..\..\..\src\XmlMPrsStd;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__XmlDrivers_DLL;__XmlMDataXtd_DLL;__XmlMNaming_DLL;__XmlMPrsStd_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__XmlDrivers_DLL;__XmlMDataXtd_DLL;__XmlMNaming_DLL;__XmlMPrsStd_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +271,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__XmlDrivers_DLL;__XmlMDataXtd_DLL;__XmlMNaming_DLL;__XmlMPrsStd_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__XmlDrivers_DLL;__XmlMDataXtd_DLL;__XmlMNaming_DLL;__XmlMPrsStd_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -276,7 +279,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKCDF.lib TKernel.lib TKV3d.lib TKMath.lib TKBRep.lib TKG2d.lib TKGeomBase.lib TKG3d.lib TKLCAF.lib TKCAF.lib TKXmlL.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKCDF.lib TKernel.lib TKV3d.lib TKMath.lib TKBRep.lib TKG2d.lib TKGeomBase.lib TKG3d.lib TKLCAF.lib TKCAF.lib TKXmlL.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bin\TKXml.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -284,7 +287,7 @@
 				ProgramDatabaseFile=".\..\..\..\win64\vc8\bin\TKXml.pdb"
 				SubSystem="2"
 				ImportLibrary="..\..\..\win64\vc8\lib\TKXml.lib"
-				TargetMachine="X64"
+				TargetMachine="17"
 			/>
 			<Tool
  				Name="VCALinkTool"
@@ -347,7 +350,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\XmlDrivers;..\..\..\src\XmlDrivers;..\..\..\drv\XmlMDataXtd;..\..\..\src\XmlMDataXtd;..\..\..\drv\XmlMNaming;..\..\..\src\XmlMNaming;..\..\..\drv\XmlMPrsStd;..\..\..\src\XmlMPrsStd;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__XmlDrivers_DLL;__XmlMDataXtd_DLL;__XmlMNaming_DLL;__XmlMPrsStd_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__XmlDrivers_DLL;__XmlMDataXtd_DLL;__XmlMNaming_DLL;__XmlMPrsStd_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -369,7 +372,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__XmlDrivers_DLL;__XmlMDataXtd_DLL;__XmlMNaming_DLL;__XmlMPrsStd_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__XmlDrivers_DLL;__XmlMDataXtd_DLL;__XmlMNaming_DLL;__XmlMPrsStd_DLL"
 				Culture="1036"
 			/>
 			<Tool
@@ -377,7 +380,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="/DLL TKCDF.lib TKernel.lib TKV3d.lib TKMath.lib TKBRep.lib TKG2d.lib TKGeomBase.lib TKG3d.lib TKLCAF.lib TKCAF.lib TKXmlL.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
+				AdditionalDependencies="TKCDF.lib TKernel.lib TKV3d.lib TKMath.lib TKBRep.lib TKG2d.lib TKGeomBase.lib TKG3d.lib TKLCAF.lib TKCAF.lib TKXmlL.lib opengl32.lib glu32.lib ws2_32.lib vfw32.lib odbc32.lib odbccp32.lib"
 				OutputFile=".\..\..\..\win64\vc8\bind\TKXml.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -386,7 +389,7 @@
 				ProgramDatabaseFile="..\..\..\win64\vc8\bind\TKXml.pdb"
 				SubSystem="2"
 				ImportLibrary="..\..\..\win64\vc8\libd\TKXml.lib"
-				TargetMachine="X64"
+				TargetMachine="17"
 			/>
 			<Tool
 				Name="VCALinkTool"

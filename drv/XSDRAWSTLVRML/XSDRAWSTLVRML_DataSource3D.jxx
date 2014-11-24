@@ -1,21 +1,7 @@
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _TColStd_HArray2OfReal_HeaderFile
 #include <TColStd_HArray2OfReal.hxx>
-#endif
-#ifndef _TColStd_HArray2OfInteger_HeaderFile
 #include <TColStd_HArray2OfInteger.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _MeshVS_HArray1OfSequenceOfInteger_HeaderFile
 #include <MeshVS_HArray1OfSequenceOfInteger.hxx>
-#endif
-#ifndef _TColStd_Array1OfInteger_HeaderFile
 #include <TColStd_Array1OfInteger.hxx>
-#endif
-#ifndef _XSDRAWSTLVRML_DataSource3D_HeaderFile
 #include <XSDRAWSTLVRML_DataSource3D.hxx>
-#endif

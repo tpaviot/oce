@@ -5,16 +5,10 @@
 
 #include <Graphic3d_ListNodeOfListOfShortReal.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Graphic3d_ListOfShortReal_HeaderFile
 #include <Graphic3d_ListOfShortReal.hxx>
-#endif
-#ifndef _Graphic3d_ListIteratorOfListOfShortReal_HeaderFile
 #include <Graphic3d_ListIteratorOfListOfShortReal.hxx>
-#endif
 
  
 

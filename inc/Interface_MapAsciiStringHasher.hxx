@@ -6,36 +6,26 @@
 #ifndef _Interface_MapAsciiStringHasher_HeaderFile
 #define _Interface_MapAsciiStringHasher_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TCollection_AsciiString;
 
 
 
-class Interface_MapAsciiStringHasher  {
+class Interface_MapAsciiStringHasher 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Standard_Integer HashCode(const TCollection_AsciiString& K,const Standard_Integer Upper) ;
+  Standard_EXPORT static   Standard_Integer HashCode (const TCollection_AsciiString& K, const Standard_Integer Upper) ;
   
-  Standard_EXPORT   static  Standard_Boolean IsEqual(const TCollection_AsciiString& K1,const TCollection_AsciiString& K2) ;
-
+  Standard_EXPORT static   Standard_Boolean IsEqual (const TCollection_AsciiString& K1, const TCollection_AsciiString& K2) ;
 
 
 
@@ -58,7 +48,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Interface_MapAsciiStringHasher_HeaderFile

@@ -5,24 +5,14 @@
 
 #include <Select3D_ListIteratorOfListOfSensitiveTriangle.hxx>
 
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Select3D_ListOfSensitiveTriangle_HeaderFile
 #include <Select3D_ListOfSensitiveTriangle.hxx>
-#endif
-#ifndef _Select3D_SensitiveTriangle_HeaderFile
 #include <Select3D_SensitiveTriangle.hxx>
-#endif
-#ifndef _Select3D_ListNodeOfListOfSensitiveTriangle_HeaderFile
 #include <Select3D_ListNodeOfListOfSensitiveTriangle.hxx>
-#endif
  
 
-#define Item Handle_Select3D_SensitiveTriangle
+#define Item Handle(Select3D_SensitiveTriangle)
 #define Item_hxx <Select3D_SensitiveTriangle.hxx>
 #define TCollection_ListNode Select3D_ListNodeOfListOfSensitiveTriangle
 #define TCollection_ListNode_hxx <Select3D_ListNodeOfListOfSensitiveTriangle.hxx>

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKIVtk"
-	ProjectGUID="{C09F1EC0-04D8-12C8-1085-D92836DF2CA5}"
+	ProjectGUID="{A3156B4D-1077-1470-0582-203BAB2D7C8B}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -248,7 +248,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\IVtk;..\..\..\src\IVtk;..\..\..\drv\IVtkOCC;..\..\..\src\IVtkOCC;..\..\..\drv\IVtkVTK;..\..\..\src\IVtkVTK;..\..\..\drv\IVtkTools;..\..\..\src\IVtkTools;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__IVtk_DLL;__IVtkOCC_DLL;__IVtkVTK_DLL;__IVtkTools_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__IVtk_DLL;__IVtkOCC_DLL;__IVtkVTK_DLL;__IVtkTools_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__IVtk_DLL;__IVtkOCC_DLL;__IVtkVTK_DLL;__IVtkTools_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__IVtk_DLL;__IVtkOCC_DLL;__IVtkVTK_DLL;__IVtkTools_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -343,7 +343,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\IVtk;..\..\..\src\IVtk;..\..\..\drv\IVtkOCC;..\..\..\src\IVtkOCC;..\..\..\drv\IVtkVTK;..\..\..\src\IVtkVTK;..\..\..\drv\IVtkTools;..\..\..\src\IVtkTools;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__IVtk_DLL;__IVtkOCC_DLL;__IVtkVTK_DLL;__IVtkTools_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__IVtk_DLL;__IVtkOCC_DLL;__IVtkVTK_DLL;__IVtkTools_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -365,7 +365,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__IVtk_DLL;__IVtkOCC_DLL;__IVtkVTK_DLL;__IVtkTools_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__IVtk_DLL;__IVtkOCC_DLL;__IVtkVTK_DLL;__IVtkTools_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"

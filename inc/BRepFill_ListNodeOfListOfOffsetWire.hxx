@@ -6,39 +6,28 @@
 #ifndef _BRepFill_ListNodeOfListOfOffsetWire_HeaderFile
 #define _BRepFill_ListNodeOfListOfOffsetWire_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepFill_ListNodeOfListOfOffsetWire_HeaderFile
 #include <Handle_BRepFill_ListNodeOfListOfOffsetWire.hxx>
-#endif
 
-#ifndef _BRepFill_OffsetWire_HeaderFile
 #include <BRepFill_OffsetWire.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class BRepFill_OffsetWire;
 class BRepFill_ListOfOffsetWire;
 class BRepFill_ListIteratorOfListOfOffsetWire;
 
 
 
-class BRepFill_ListNodeOfListOfOffsetWire : public TCollection_MapNode {
+class BRepFill_ListNodeOfListOfOffsetWire : public TCollection_MapNode
+{
 
 public:
 
   
-      BRepFill_ListNodeOfListOfOffsetWire(const BRepFill_OffsetWire& I,const TCollection_MapNodePtr& n);
+    BRepFill_ListNodeOfListOfOffsetWire(const BRepFill_OffsetWire& I, const TCollection_MapNodePtr& n);
   
-        BRepFill_OffsetWire& Value() const;
+      BRepFill_OffsetWire& Value()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-BRepFill_OffsetWire myValue;
+  BRepFill_OffsetWire myValue;
 
 
 };
@@ -83,7 +72,6 @@ BRepFill_OffsetWire myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepFill_ListNodeOfListOfOffsetWire_HeaderFile

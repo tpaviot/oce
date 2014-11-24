@@ -6,46 +6,40 @@
 #ifndef _IGESBasic_ExternalRefLibName_HeaderFile
 #define _IGESBasic_ExternalRefLibName_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESBasic_ExternalRefLibName_HeaderFile
 #include <Handle_IGESBasic_ExternalRefLibName.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
 class TCollection_HAsciiString;
 
 
-//! defines ExternalRefLibName, Type <416> Form <4> <br>
-//!          in package IGESBasic <br>
-//!          Used when it is assumed that a copy of the subfigure <br>
-//!          exists in native form in a library on the receiving <br>
-//!          system <br>
-class IGESBasic_ExternalRefLibName : public IGESData_IGESEntity {
+//! defines ExternalRefLibName, Type <416> Form <4>
+//! in package IGESBasic
+//! Used when it is assumed that a copy of the subfigure
+//! exists in native form in a library on the receiving
+//! system
+class IGESBasic_ExternalRefLibName : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESBasic_ExternalRefLibName();
-  //! This method is used to set the fields of the class <br>
-//!           ExternalRefLibName <br>
-//!       - aLibName  : Name of library in which ExtName resides <br>
-//!       - anExtName : External Reference Entity Symbolic Name <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aLibName,const Handle(TCollection_HAsciiString)& anExtName) ;
-  //! returns name of library in which External Reference Entity <br>
-//! Symbolic Name resides <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString LibraryName() const;
-  //! returns External Reference Entity Symbolic Name <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString ReferenceName() const;
+  Standard_EXPORT IGESBasic_ExternalRefLibName();
+  
+  //! This method is used to set the fields of the class
+  //! ExternalRefLibName
+  //! - aLibName  : Name of library in which ExtName resides
+  //! - anExtName : External Reference Entity Symbolic Name
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aLibName, const Handle(TCollection_HAsciiString)& anExtName) ;
+  
+  //! returns name of library in which External Reference Entity
+  //! Symbolic Name resides
+  Standard_EXPORT   Handle(TCollection_HAsciiString) LibraryName()  const;
+  
+  //! returns External Reference Entity Symbolic Name
+  Standard_EXPORT   Handle(TCollection_HAsciiString) ReferenceName()  const;
 
 
 
@@ -60,8 +54,8 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString theLibName;
-Handle_TCollection_HAsciiString theExtRefEntitySymbName;
+  Handle(TCollection_HAsciiString) theLibName;
+  Handle(TCollection_HAsciiString) theExtRefEntitySymbName;
 
 
 };
@@ -70,7 +64,6 @@ Handle_TCollection_HAsciiString theExtRefEntitySymbName;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESBasic_ExternalRefLibName_HeaderFile

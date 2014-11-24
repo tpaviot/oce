@@ -1,15 +1,5 @@
-#ifndef _StepGeom_Conic_HeaderFile
 #include <StepGeom_Conic.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Geom_Conic_HeaderFile
 #include <Geom_Conic.hxx>
-#endif
-#ifndef _Geom2d_Conic_HeaderFile
 #include <Geom2d_Conic.hxx>
-#endif
-#ifndef _GeomToStep_MakeConic_HeaderFile
 #include <GeomToStep_MakeConic.hxx>
-#endif

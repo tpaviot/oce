@@ -6,28 +6,14 @@
 #ifndef _STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile_HeaderFile
 #define _STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile_HeaderFile
 #include <Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile.hxx>
-#endif
 
-#ifndef _Handle_StepShape_ShapeDefinitionRepresentation_HeaderFile
 #include <Handle_StepShape_ShapeDefinitionRepresentation.hxx>
-#endif
-#ifndef _Handle_STEPCAFControl_ExternFile_HeaderFile
 #include <Handle_STEPCAFControl_ExternFile.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class StepShape_ShapeDefinitionRepresentation;
 class STEPCAFControl_ExternFile;
 class TColStd_MapTransientHasher;
@@ -36,16 +22,17 @@ class STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile;
 
 
 
-class STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile : public TCollection_MapNode {
+class STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile : public TCollection_MapNode
+{
 
 public:
 
   
-      STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile(const Handle(StepShape_ShapeDefinitionRepresentation)& K,const Handle(STEPCAFControl_ExternFile)& I,const TCollection_MapNodePtr& n);
+    STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile(const Handle(StepShape_ShapeDefinitionRepresentation)& K, const Handle(STEPCAFControl_ExternFile)& I, const TCollection_MapNodePtr& n);
   
-        Handle_StepShape_ShapeDefinitionRepresentation& Key() const;
+      Handle(StepShape_ShapeDefinitionRepresentation)& Key()  const;
   
-        Handle_STEPCAFControl_ExternFile& Value() const;
+      Handle(STEPCAFControl_ExternFile)& Value()  const;
 
 
 
@@ -60,15 +47,15 @@ protected:
 private: 
 
 
-Handle_StepShape_ShapeDefinitionRepresentation myKey;
-Handle_STEPCAFControl_ExternFile myValue;
+  Handle(StepShape_ShapeDefinitionRepresentation) myKey;
+  Handle(STEPCAFControl_ExternFile) myValue;
 
 
 };
 
-#define TheKey Handle_StepShape_ShapeDefinitionRepresentation
+#define TheKey Handle(StepShape_ShapeDefinitionRepresentation)
 #define TheKey_hxx <StepShape_ShapeDefinitionRepresentation.hxx>
-#define TheItem Handle_STEPCAFControl_ExternFile
+#define TheItem Handle(STEPCAFControl_ExternFile)
 #define TheItem_hxx <STEPCAFControl_ExternFile.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>
@@ -99,7 +86,6 @@ Handle_STEPCAFControl_ExternFile myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile_HeaderFile

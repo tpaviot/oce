@@ -6,76 +6,64 @@
 #ifndef _IGESGraph_LineFontDefPattern_HeaderFile
 #define _IGESGraph_LineFontDefPattern_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESGraph_LineFontDefPattern_HeaderFile
 #include <Handle_IGESGraph_LineFontDefPattern.hxx>
-#endif
 
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _IGESData_LineFontEntity_HeaderFile
 #include <IGESData_LineFontEntity.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TColStd_HArray1OfReal;
 class TCollection_HAsciiString;
 class Standard_OutOfRange;
 
 
-//! defines IGESLineFontDefPattern, Type <304> Form <2> <br>
-//!           in package IGESGraph <br>
-//! <br>
-//!           Line Font may be defined by repetition of a basic pattern <br>
-//!           of visible-blank(or, on-off) segments superimposed on <br>
-//!           a line or a curve. The line or curve is then displayed <br>
-//!           according to the basic pattern. <br>
-class IGESGraph_LineFontDefPattern : public IGESData_LineFontEntity {
+//! defines IGESLineFontDefPattern, Type <304> Form <2>
+//! in package IGESGraph
+//!
+//! Line Font may be defined by repetition of a basic pattern
+//! of visible-blank(or, on-off) segments superimposed on
+//! a line or a curve. The line or curve is then displayed
+//! according to the basic pattern.
+class IGESGraph_LineFontDefPattern : public IGESData_LineFontEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESGraph_LineFontDefPattern();
-  //! This method is used to set the fields of the class <br>
-//!           LineFontDefPattern <br>
-//!       - allSegLength : Containing lengths of respective segments <br>
-//!       - aPattern     : HAsciiString indicating visible-blank segments <br>
-  Standard_EXPORT     void Init(const Handle(TColStd_HArray1OfReal)& allSegLength,const Handle(TCollection_HAsciiString)& aPattern) ;
-  //! returns the number of segments in the visible-blank pattern <br>
-  Standard_EXPORT     Standard_Integer NbSegments() const;
-  //! returns the Length of Index'th segment of the basic pattern <br>
-//! raises exception if Index <= 0 or Index > NbSegments <br>
-  Standard_EXPORT     Standard_Real Length(const Standard_Integer Index) const;
-  //! returns the string indicating which segments of the basic <br>
-//! pattern are visible and which are blanked. <br>
-//! e.g: <br>
-//! theNbSegments = 5 and if Bit Pattern = 10110, which means that <br>
-//! segments 2, 3 and 5 are visible, whereas segments 1 and 4 are <br>
-//! blank. The method returns "2H16" as the HAsciiString. <br>
-//! Note: The bits are right justified. (16h = 10110) <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString DisplayPattern() const;
-  //! The Display Pattern is decrypted to <br>
-//! return True if the Index'th basic pattern is Visible, <br>
-//!        False otherwise. <br>
-//! If Index > NbSegments or Index <= 0 then return value is <br>
-//! False. <br>
-  Standard_EXPORT     Standard_Boolean IsVisible(const Standard_Integer Index) const;
+  Standard_EXPORT IGESGraph_LineFontDefPattern();
+  
+  //! This method is used to set the fields of the class
+  //! LineFontDefPattern
+  //! - allSegLength : Containing lengths of respective segments
+  //! - aPattern     : HAsciiString indicating visible-blank segments
+  Standard_EXPORT   void Init (const Handle(TColStd_HArray1OfReal)& allSegLength, const Handle(TCollection_HAsciiString)& aPattern) ;
+  
+  //! returns the number of segments in the visible-blank pattern
+  Standard_EXPORT   Standard_Integer NbSegments()  const;
+  
+  //! returns the Length of Index'th segment of the basic pattern
+  //! raises exception if Index <= 0 or Index > NbSegments
+  Standard_EXPORT   Standard_Real Length (const Standard_Integer Index)  const;
+  
+  //! returns the string indicating which segments of the basic
+  //! pattern are visible and which are blanked.
+  //! e.g:
+  //! theNbSegments = 5 and if Bit Pattern = 10110, which means that
+  //! segments 2, 3 and 5 are visible, whereas segments 1 and 4 are
+  //! blank. The method returns "2H16" as the HAsciiString.
+  //! Note: The bits are right justified. (16h = 10110)
+  Standard_EXPORT   Handle(TCollection_HAsciiString) DisplayPattern()  const;
+  
+  //! The Display Pattern is decrypted to
+  //! return True if the Index'th basic pattern is Visible,
+  //! False otherwise.
+  //! If Index > NbSegments or Index <= 0 then return value is
+  //! False.
+  Standard_EXPORT   Standard_Boolean IsVisible (const Standard_Integer Index)  const;
 
 
 
@@ -90,8 +78,8 @@ protected:
 private: 
 
 
-Handle_TColStd_HArray1OfReal theSegmentLengths;
-Handle_TCollection_HAsciiString theDisplayPattern;
+  Handle(TColStd_HArray1OfReal) theSegmentLengths;
+  Handle(TCollection_HAsciiString) theDisplayPattern;
 
 
 };
@@ -100,7 +88,6 @@ Handle_TCollection_HAsciiString theDisplayPattern;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGraph_LineFontDefPattern_HeaderFile

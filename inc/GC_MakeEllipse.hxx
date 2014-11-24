@@ -6,25 +6,13 @@
 #ifndef _GC_MakeEllipse_HeaderFile
 #define _GC_MakeEllipse_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom_Ellipse_HeaderFile
 #include <Handle_Geom_Ellipse.hxx>
-#endif
-#ifndef _GC_Root_HeaderFile
 #include <GC_Root.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Geom_Ellipse;
 class StdFail_NotDone;
 class gp_Elips;
@@ -32,52 +20,56 @@ class gp_Ax2;
 class gp_Pnt;
 
 
-//!This class implements construction algorithms for an ellipse in <br>
-//! 3D space. The result is a Geom_Ellipse ellipse. <br>
-//! A MakeEllipse object provides a framework for: <br>
-//! -   defining the construction of the ellipse, <br>
-//! -   implementing the construction algorithm, and <br>
-//! -   consulting the results. In particular, the Value <br>
-//!   function returns the constructed ellipse. <br>
-class GC_MakeEllipse  : public GC_Root {
+//! This class implements construction algorithms for an ellipse in
+//! 3D space. The result is a Geom_Ellipse ellipse.
+//! A MakeEllipse object provides a framework for:
+//! -   defining the construction of the ellipse,
+//! -   implementing the construction algorithm, and
+//! -   consulting the results. In particular, the Value
+//! function returns the constructed ellipse.
+class GC_MakeEllipse  : public GC_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//!  Creates an ellipse from a non persistent ellipse E from package gp by its conversion. <br>
-  Standard_EXPORT   GC_MakeEllipse(const gp_Elips& E);
-  //! Constructs an ellipse with major and minor radii MajorRadius and <br>
-//!   MinorRadius, and located in the plane defined by <br>
-//!   the "X Axis" and "Y Axis" of the coordinate system A2, where: <br>
-//!   -   its center is the origin of A2, and <br>
-//!   -   its major axis is the "X Axis" of A2; <br>
-//!  Warnings : <br>
-//!  The MakeEllipse class does not prevent the <br>
-//! construction of an ellipse where MajorRadius is equal to MinorRadius. <br>
-//! If an error occurs (that is, when IsDone returns <br>
-//! false), the Status function returns: <br>
-//! -   gce_InvertRadius if MajorRadius is less than MinorRadius; <br>
-//! -   gce_NegativeRadius if MinorRadius is less than 0.0; <br>
-//! -   gce_NullAxis if the points S1 and Center are coincident; or <br>
-//! -   gce_InvertAxis if: <br>
-//!   -   the major radius computed with Center and S1 <br>
-//!    is less than the minor radius computed with Center, S1 and S2, or <br>
-//!   -   Center, S1 and S2 are collinear. <br>
-  Standard_EXPORT   GC_MakeEllipse(const gp_Ax2& A2,const Standard_Real MajorRadius,const Standard_Real MinorRadius);
-  //! Constructs an ellipse centered on the point Center, where <br>
-//!   -   the plane of the ellipse is defined by Center, S1 and S2, <br>
-//!   -   its major axis is defined by Center and S1, <br>
-//!   -   its major radius is the distance between Center and S1, and <br>
-//!   -   its minor radius is the distance between S2 and the major axis. <br>
-  Standard_EXPORT   GC_MakeEllipse(const gp_Pnt& S1,const gp_Pnt& S2,const gp_Pnt& Center);
-  //! Returns the constructed ellipse. <br>
-//! Exceptions StdFail_NotDone if no ellipse is constructed. <br>
-  Standard_EXPORT    const Handle_Geom_Ellipse& Value() const;
-  
-  Standard_EXPORT    const Handle_Geom_Ellipse& Operator() const;
-Standard_EXPORT operator Handle_Geom_Ellipse() const;
 
+  //! Creates an ellipse from a non persistent ellipse E from package gp by its conversion.
+  Standard_EXPORT GC_MakeEllipse(const gp_Elips& E);
+  
+  //! Constructs an ellipse with major and minor radii MajorRadius and
+  //! MinorRadius, and located in the plane defined by
+  //! the "X Axis" and "Y Axis" of the coordinate system A2, where:
+  //! -   its center is the origin of A2, and
+  //! -   its major axis is the "X Axis" of A2;
+  //! Warnings :
+  //! The MakeEllipse class does not prevent the
+  //! construction of an ellipse where MajorRadius is equal to MinorRadius.
+  //! If an error occurs (that is, when IsDone returns
+  //! false), the Status function returns:
+  //! -   gce_InvertRadius if MajorRadius is less than MinorRadius;
+  //! -   gce_NegativeRadius if MinorRadius is less than 0.0;
+  //! -   gce_NullAxis if the points S1 and Center are coincident; or
+  //! -   gce_InvertAxis if:
+  //! -   the major radius computed with Center and S1
+  //! is less than the minor radius computed with Center, S1 and S2, or
+  //! -   Center, S1 and S2 are collinear.
+  Standard_EXPORT GC_MakeEllipse(const gp_Ax2& A2, const Standard_Real MajorRadius, const Standard_Real MinorRadius);
+  
+  //! Constructs an ellipse centered on the point Center, where
+  //! -   the plane of the ellipse is defined by Center, S1 and S2,
+  //! -   its major axis is defined by Center and S1,
+  //! -   its major radius is the distance between Center and S1, and
+  //! -   its minor radius is the distance between S2 and the major axis.
+  Standard_EXPORT GC_MakeEllipse(const gp_Pnt& S1, const gp_Pnt& S2, const gp_Pnt& Center);
+  
+  //! Returns the constructed ellipse.
+  //! Exceptions StdFail_NotDone if no ellipse is constructed.
+  Standard_EXPORT  const  Handle(Geom_Ellipse)& Value()  const;
+  
+  Standard_EXPORT  const  Handle(Geom_Ellipse)& Operator()  const;
+Standard_EXPORT operator Handle_Geom_Ellipse() const;
 
 
 
@@ -92,7 +84,7 @@ private:
 
 
 
-Handle_Geom_Ellipse TheEllipse;
+  Handle(Geom_Ellipse) TheEllipse;
 
 
 };
@@ -101,7 +93,6 @@ Handle_Geom_Ellipse TheEllipse;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GC_MakeEllipse_HeaderFile

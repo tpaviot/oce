@@ -6,37 +6,17 @@
 #ifndef _BRep_CurveOnClosedSurface_HeaderFile
 #define _BRep_CurveOnClosedSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRep_CurveOnClosedSurface_HeaderFile
 #include <Handle_BRep_CurveOnClosedSurface.hxx>
-#endif
 
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _BRep_CurveOnSurface_HeaderFile
 #include <BRep_CurveOnSurface.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_BRep_CurveRepresentation_HeaderFile
 #include <Handle_BRep_CurveRepresentation.hxx>
-#endif
 class Geom2d_Curve;
 class Geom_Surface;
 class TopLoc_Location;
@@ -44,43 +24,49 @@ class gp_Pnt2d;
 class BRep_CurveRepresentation;
 
 
-//! Representation  of a    curve by two  pcurves   on <br>
-//!          a closed surface. <br>
-class BRep_CurveOnClosedSurface : public BRep_CurveOnSurface {
+//! Representation  of a    curve by two  pcurves   on
+//! a closed surface.
+class BRep_CurveOnClosedSurface : public BRep_CurveOnSurface
+{
 
 public:
 
   
-  Standard_EXPORT   BRep_CurveOnClosedSurface(const Handle(Geom2d_Curve)& PC1,const Handle(Geom2d_Curve)& PC2,const Handle(Geom_Surface)& S,const TopLoc_Location& L,const GeomAbs_Shape C);
+  Standard_EXPORT BRep_CurveOnClosedSurface(const Handle(Geom2d_Curve)& PC1, const Handle(Geom2d_Curve)& PC2, const Handle(Geom_Surface)& S, const TopLoc_Location& L, const GeomAbs_Shape C);
   
-        void SetUVPoints2(const gp_Pnt2d& P1,const gp_Pnt2d& P2) ;
+      void SetUVPoints2 (const gp_Pnt2d& P1, const gp_Pnt2d& P2) ;
   
-        void UVPoints2(gp_Pnt2d& P1,gp_Pnt2d& P2) const;
-  //! Returns True. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsCurveOnClosedSurface() const;
-  //! Returns True <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsRegularity() const;
-  //! A curve on two surfaces (continuity). <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsRegularity(const Handle(Geom_Surface)& S1,const Handle(Geom_Surface)& S2,const TopLoc_Location& L1,const TopLoc_Location& L2) const;
+      void UVPoints2 (gp_Pnt2d& P1, gp_Pnt2d& P2)  const;
   
-  Standard_EXPORT   virtual const Handle_Geom2d_Curve& PCurve2() const;
-  //! Returns Surface() <br>
-//! <br>
-  Standard_EXPORT   virtual const Handle_Geom_Surface& Surface2() const;
-  //! Returns Location() <br>
-//! <br>
-  Standard_EXPORT   virtual const TopLoc_Location& Location2() const;
+  //! Returns True.
+  Standard_EXPORT virtual   Standard_Boolean IsCurveOnClosedSurface()  const;
   
-  Standard_EXPORT   virtual const GeomAbs_Shape& Continuity() const;
+  //! Returns True
+  Standard_EXPORT virtual   Standard_Boolean IsRegularity()  const;
   
-  Standard_EXPORT   virtual  void Continuity(const GeomAbs_Shape C) ;
+  //! A curve on two surfaces (continuity).
+  Standard_EXPORT virtual   Standard_Boolean IsRegularity (const Handle(Geom_Surface)& S1, const Handle(Geom_Surface)& S2, const TopLoc_Location& L1, const TopLoc_Location& L2)  const;
   
-  Standard_EXPORT   virtual  void PCurve2(const Handle(Geom2d_Curve)& C) ;
-  //! Return a copy of this representation. <br>
-  Standard_EXPORT   virtual  Handle_BRep_CurveRepresentation Copy() const;
-  //! Recomputes any derived data after a modification. <br>
-//!          This is called when the range is modified. <br>
-  Standard_EXPORT   virtual  void Update() ;
+  Standard_EXPORT virtual  const  Handle(Geom2d_Curve)& PCurve2()  const;
+  
+  //! Returns Surface()
+  Standard_EXPORT virtual  const  Handle(Geom_Surface)& Surface2()  const;
+  
+  //! Returns Location()
+  Standard_EXPORT virtual  const  TopLoc_Location& Location2()  const;
+  
+  Standard_EXPORT virtual  const  GeomAbs_Shape& Continuity()  const;
+  
+  Standard_EXPORT virtual   void Continuity (const GeomAbs_Shape C) ;
+  
+  Standard_EXPORT virtual   void PCurve2 (const Handle(Geom2d_Curve)& C) ;
+  
+  //! Return a copy of this representation.
+  Standard_EXPORT virtual   Handle(BRep_CurveRepresentation) Copy()  const;
+  
+  //! Recomputes any derived data after a modification.
+  //! This is called when the range is modified.
+  Standard_EXPORT virtual   void Update() ;
 
 
 
@@ -95,10 +81,10 @@ protected:
 private: 
 
 
-Handle_Geom2d_Curve myPCurve2;
-GeomAbs_Shape myContinuity;
-gp_Pnt2d myUV21;
-gp_Pnt2d myUV22;
+  Handle(Geom2d_Curve) myPCurve2;
+  GeomAbs_Shape myContinuity;
+  gp_Pnt2d myUV21;
+  gp_Pnt2d myUV22;
 
 
 };
@@ -108,7 +94,6 @@ gp_Pnt2d myUV22;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRep_CurveOnClosedSurface_HeaderFile

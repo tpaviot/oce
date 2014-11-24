@@ -1,30 +1,10 @@
-#ifndef _TColgp_HArray1OfPnt_HeaderFile
 #include <TColgp_HArray1OfPnt.hxx>
-#endif
-#ifndef _Geom_BSplineCurve_HeaderFile
 #include <Geom_BSplineCurve.hxx>
-#endif
-#ifndef _TColgp_HArray1OfVec_HeaderFile
 #include <TColgp_HArray1OfVec.hxx>
-#endif
-#ifndef _TColStd_HArray1OfBoolean_HeaderFile
 #include <TColStd_HArray1OfBoolean.hxx>
-#endif
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Standard_ConstructionError_HeaderFile
 #include <Standard_ConstructionError.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _TColgp_Array1OfVec_HeaderFile
 #include <TColgp_Array1OfVec.hxx>
-#endif
-#ifndef _GeomAPI_Interpolate_HeaderFile
 #include <GeomAPI_Interpolate.hxx>
-#endif

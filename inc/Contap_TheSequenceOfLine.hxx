@@ -6,25 +6,13 @@
 #ifndef _Contap_TheSequenceOfLine_HeaderFile
 #define _Contap_TheSequenceOfLine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_Contap_SequenceNodeOfTheSequenceOfLine_HeaderFile
 #include <Handle_Contap_SequenceNodeOfTheSequenceOfLine.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Contap_Line;
@@ -32,68 +20,68 @@ class Contap_SequenceNodeOfTheSequenceOfLine;
 
 
 
-class Contap_TheSequenceOfLine  : public TCollection_BaseSequence {
+class Contap_TheSequenceOfLine  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Contap_TheSequenceOfLine();
+    Contap_TheSequenceOfLine();
   
-  Standard_EXPORT   Contap_TheSequenceOfLine(const Contap_TheSequenceOfLine& Other);
+  Standard_EXPORT Contap_TheSequenceOfLine(const Contap_TheSequenceOfLine& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~Contap_TheSequenceOfLine()
 {
   Clear();
 }
   
-  Standard_EXPORT    const Contap_TheSequenceOfLine& Assign(const Contap_TheSequenceOfLine& Other) ;
-   const Contap_TheSequenceOfLine& operator =(const Contap_TheSequenceOfLine& Other) 
+  Standard_EXPORT  const  Contap_TheSequenceOfLine& Assign (const Contap_TheSequenceOfLine& Other) ;
+ const  Contap_TheSequenceOfLine& operator = (const Contap_TheSequenceOfLine& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Contap_Line& T) ;
+  Standard_EXPORT   void Append (const Contap_Line& T) ;
   
-        void Append(Contap_TheSequenceOfLine& S) ;
+      void Append (Contap_TheSequenceOfLine& S) ;
   
-  Standard_EXPORT     void Prepend(const Contap_Line& T) ;
+  Standard_EXPORT   void Prepend (const Contap_Line& T) ;
   
-        void Prepend(Contap_TheSequenceOfLine& S) ;
+      void Prepend (Contap_TheSequenceOfLine& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Contap_Line& T) ;
+      void InsertBefore (const Standard_Integer Index, const Contap_Line& T) ;
   
-        void InsertBefore(const Standard_Integer Index,Contap_TheSequenceOfLine& S) ;
+      void InsertBefore (const Standard_Integer Index, Contap_TheSequenceOfLine& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Contap_Line& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Contap_Line& T) ;
   
-        void InsertAfter(const Standard_Integer Index,Contap_TheSequenceOfLine& S) ;
+      void InsertAfter (const Standard_Integer Index, Contap_TheSequenceOfLine& S) ;
   
-  Standard_EXPORT    const Contap_Line& First() const;
+  Standard_EXPORT  const  Contap_Line& First()  const;
   
-  Standard_EXPORT    const Contap_Line& Last() const;
+  Standard_EXPORT  const  Contap_Line& Last()  const;
   
-        void Split(const Standard_Integer Index,Contap_TheSequenceOfLine& Sub) ;
+      void Split (const Standard_Integer Index, Contap_TheSequenceOfLine& Sub) ;
   
-  Standard_EXPORT    const Contap_Line& Value(const Standard_Integer Index) const;
-   const Contap_Line& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Contap_Line& Value (const Standard_Integer Index)  const;
+ const  Contap_Line& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Contap_Line& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Contap_Line& I) ;
   
-  Standard_EXPORT     Contap_Line& ChangeValue(const Standard_Integer Index) ;
-    Contap_Line& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Contap_Line& ChangeValue (const Standard_Integer Index) ;
+  Contap_Line& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Contap_TheSequenceOfLine_HeaderFile

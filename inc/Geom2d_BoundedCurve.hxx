@@ -6,52 +6,47 @@
 #ifndef _Geom2d_BoundedCurve_HeaderFile
 #define _Geom2d_BoundedCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Geom2d_BoundedCurve_HeaderFile
 #include <Handle_Geom2d_BoundedCurve.hxx>
-#endif
 
-#ifndef _Geom2d_Curve_HeaderFile
 #include <Geom2d_Curve.hxx>
-#endif
 class gp_Pnt2d;
 
 
-//! The abstract class BoundedCurve describes the <br>
-//! common behavior of bounded curves in 2D space. A <br>
-//! bounded curve is limited by two finite values of the <br>
-//! parameter, termed respectively "first parameter" and <br>
-//! "last parameter". The "first parameter" gives the "start <br>
-//! point" of the bounded curve, and the "last parameter" <br>
-//! gives the "end point" of the bounded curve. <br>
-//! The length of a bounded curve is finite. <br>
-//! The Geom2d package provides three concrete <br>
-//! classes of bounded curves: <br>
-//! - two frequently used mathematical formulations of complex curves: <br>
-//!   - Geom2d_BezierCurve, <br>
-//!   - Geom2d_BSplineCurve, and <br>
-//! - Geom2d_TrimmedCurve to trim a curve, i.e. to <br>
-//!   only take part of the curve limited by two values of <br>
-//!   the parameter of the basis curve. <br>
-class Geom2d_BoundedCurve : public Geom2d_Curve {
+//! The abstract class BoundedCurve describes the
+//! common behavior of bounded curves in 2D space. A
+//! bounded curve is limited by two finite values of the
+//! parameter, termed respectively "first parameter" and
+//! "last parameter". The "first parameter" gives the "start
+//! point" of the bounded curve, and the "last parameter"
+//! gives the "end point" of the bounded curve.
+//! The length of a bounded curve is finite.
+//! The Geom2d package provides three concrete
+//! classes of bounded curves:
+//! - two frequently used mathematical formulations of complex curves:
+//! - Geom2d_BezierCurve,
+//! - Geom2d_BSplineCurve, and
+//! - Geom2d_TrimmedCurve to trim a curve, i.e. to
+//! only take part of the curve limited by two values of
+//! the parameter of the basis curve.
+class Geom2d_BoundedCurve : public Geom2d_Curve
+{
 
 public:
 
   
-//!  Returns the end point of the curve. <br>
-//!  The end point is the value of the curve for the <br>
-//!  "LastParameter" of the curve. <br>
-  Standard_EXPORT   virtual  gp_Pnt2d EndPoint() const = 0;
+
+  //! Returns the end point of the curve.
+  //! The end point is the value of the curve for the
+  //! "LastParameter" of the curve.
+  Standard_EXPORT virtual   gp_Pnt2d EndPoint()  const = 0;
   
-//!  Returns the start point of the curve. <br>
-//!  The start point is the value of the curve for the <br>
-//!  "FirstParameter" of the curve. <br>
-  Standard_EXPORT   virtual  gp_Pnt2d StartPoint() const = 0;
+
+  //! Returns the start point of the curve.
+  //! The start point is the value of the curve for the
+  //! "FirstParameter" of the curve.
+  Standard_EXPORT virtual   gp_Pnt2d StartPoint()  const = 0;
 
 
 
@@ -74,7 +69,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2d_BoundedCurve_HeaderFile

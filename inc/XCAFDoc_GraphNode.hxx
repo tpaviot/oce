@@ -6,43 +6,19 @@
 #ifndef _XCAFDoc_GraphNode_HeaderFile
 #define _XCAFDoc_GraphNode_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_XCAFDoc_GraphNode_HeaderFile
 #include <Handle_XCAFDoc_GraphNode.hxx>
-#endif
 
-#ifndef _XCAFDoc_GraphNodeSequence_HeaderFile
 #include <XCAFDoc_GraphNodeSequence.hxx>
-#endif
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
-#ifndef _Handle_TDF_DataSet_HeaderFile
 #include <Handle_TDF_DataSet.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class TDF_Label;
 class Standard_GUID;
 class TDF_Attribute;
@@ -50,88 +26,111 @@ class TDF_RelocationTable;
 class TDF_DataSet;
 
 
-//! This attribute allow user multirelation tree of labels. <br>
-//! This GraphNode is experimental Graph that not control looping and redundance. <br>
-//! Attribute containg sequence of father's and child's labels. <br>
-//! Provide create and work with Graph in XCAFDocument. <br>
-class XCAFDoc_GraphNode : public TDF_Attribute {
+//! This attribute allow user multirelation tree of labels.
+//! This GraphNode is experimental Graph that not control looping and redundance.
+//! Attribute containg sequence of father's and child's labels.
+//! Provide create and work with Graph in XCAFDocument.
+class XCAFDoc_GraphNode : public TDF_Attribute
+{
 
 public:
 
-  //! class  methods working on the node <br>
-//!          =================================== <br>//! Shortcut to search  a Graph node attribute with default <br>
-//!          GraphID.  Returns true if found. <br>
-  Standard_EXPORT   static  Standard_Boolean Find(const TDF_Label& L,Handle(XCAFDoc_GraphNode)& G) ;
-  //! Finds or Creates a GraphNode attribute on the label <L> <br>
-//!           with  the  default Graph  ID,   returned by the method <br>
-//!          <GetDefaultGraphID>.  Returns the created/found     GraphNode <br>
-//!          attribute. <br>
-  Standard_EXPORT   static  Handle_XCAFDoc_GraphNode Set(const TDF_Label& L) ;
-  //! Finds  or Creates a   GraphNode attribute on  the label <br>
-//!          <L>, with an   explicit tree ID.  <ExplicitGraphID>  is <br>
-//!          the  ID   returned by    <TDF_Attribute::ID>   method. <br>
-//!          Returns the found/created GraphNode attribute. <br>
-  Standard_EXPORT   static  Handle_XCAFDoc_GraphNode Set(const TDF_Label& L,const Standard_GUID& ExplicitGraphID) ;
-  //!  returns a default  Graph ID.  this  ID is  used by the <br>
-//!          <Set> method without explicit tree ID. <br>//! Instance methods: <br>
-//!          ================ <br>
-  Standard_EXPORT   static const Standard_GUID& GetDefaultGraphID() ;
   
-  Standard_EXPORT   XCAFDoc_GraphNode();
+  //! class  methods working on the node
+  //! ===================================
+  //! Shortcut to search  a Graph node attribute with default
+  //! GraphID.  Returns true if found.
+  Standard_EXPORT static   Standard_Boolean Find (const TDF_Label& L, Handle(XCAFDoc_GraphNode)& G) ;
   
-  Standard_EXPORT     void SetGraphID(const Standard_GUID& explicitID) ;
-  //! Set GraphNode <F> as father of me and returns index of <F> <br>
-//!          in Sequence that containing Fathers GraphNodes. <br>
-//!          return index of <F> from GraphNodeSequnece <br>
-  Standard_EXPORT     Standard_Integer SetFather(const Handle(XCAFDoc_GraphNode)& F) ;
-  //! Set GraphNode <Ch> as child of me and returns index of <Ch> <br>
-//!          in Sequence that containing Children GraphNodes. <br>
-//!          return index of <Ch> from GraphNodeSequnece <br>
-  Standard_EXPORT     Standard_Integer SetChild(const Handle(XCAFDoc_GraphNode)& Ch) ;
-  //! Remove <F> from Fathers GraphNodeSequence. <br>
-//!          and remove link between father and child. <br>
-  Standard_EXPORT     void UnSetFather(const Handle(XCAFDoc_GraphNode)& F) ;
-  //! Remove Father GraphNode by index from Fathers GraphNodeSequence. <br>
-//!          and remove link between father and child. <br>
-  Standard_EXPORT     void UnSetFather(const Standard_Integer Findex) ;
-  //! Remove <Ch> from GraphNodeSequence. <br>
-//!          and remove link between father and child. <br>
-  Standard_EXPORT     void UnSetChild(const Handle(XCAFDoc_GraphNode)& Ch) ;
-  //! Remove Child GraphNode by index from Children GraphNodeSequence. <br>
-//!          and remove link between father and child. <br>
-  Standard_EXPORT     void UnSetChild(const Standard_Integer Chindex) ;
-  //! Return GraphNode by index from GraphNodeSequence. <br>
-  Standard_EXPORT     Handle_XCAFDoc_GraphNode GetFather(const Standard_Integer Findex) const;
-  //! Return GraphNode by index from GraphNodeSequence. <br>
-  Standard_EXPORT     Handle_XCAFDoc_GraphNode GetChild(const Standard_Integer Chindex) const;
-  //! Return index of <F>, or zero if there is no such Graphnode. <br>
-  Standard_EXPORT     Standard_Integer FatherIndex(const Handle(XCAFDoc_GraphNode)& F) const;
-  //! Return index of <Ch>, or zero if there is no such Graphnode. <br>
-  Standard_EXPORT     Standard_Integer ChildIndex(const Handle(XCAFDoc_GraphNode)& Ch) const;
-  //! returns TRUE if <me> is father of <Ch>. <br>
-  Standard_EXPORT     Standard_Boolean IsFather(const Handle(XCAFDoc_GraphNode)& Ch) const;
-  //! returns TRUE if <me> is child of <F>. <br>
-  Standard_EXPORT     Standard_Boolean IsChild(const Handle(XCAFDoc_GraphNode)& F) const;
-  //! return Number of Fathers GraphNodes. <br>
-  Standard_EXPORT     Standard_Integer NbFathers() const;
-  //! return Number of Childrens GraphNodes. <br>//! Implementation of Attribute methods: <br>
-//!          =================================== <br>
-  Standard_EXPORT     Standard_Integer NbChildren() const;
-  //! Returns the Graph ID (default or explicit one depending <br>
-//!          onthe Set method used). <br>
-  Standard_EXPORT    const Standard_GUID& ID() const;
+  //! Finds or Creates a GraphNode attribute on the label <L>
+  //! with  the  default Graph  ID,   returned by the method
+  //! <GetDefaultGraphID>.  Returns the created/found     GraphNode
+  //! attribute.
+  Standard_EXPORT static   Handle(XCAFDoc_GraphNode) Set (const TDF_Label& L) ;
   
-  Standard_EXPORT   virtual  void Restore(const Handle(TDF_Attribute)& with) ;
+  //! Finds  or Creates a   GraphNode attribute on  the label
+  //! <L>, with an   explicit tree ID.  <ExplicitGraphID>  is
+  //! the  ID   returned by    <TDF_Attribute::ID>   method.
+  //! Returns the found/created GraphNode attribute.
+  Standard_EXPORT static   Handle(XCAFDoc_GraphNode) Set (const TDF_Label& L, const Standard_GUID& ExplicitGraphID) ;
   
-  Standard_EXPORT   virtual  void Paste(const Handle(TDF_Attribute)& into,const Handle(TDF_RelocationTable)& RT) const;
+  //! returns a default  Graph ID.  this  ID is  used by the
+  //! <Set> method without explicit tree ID.
+  //! Instance methods:
+  //! ================
+  Standard_EXPORT static  const  Standard_GUID& GetDefaultGraphID() ;
   
-  Standard_EXPORT   virtual  Handle_TDF_Attribute NewEmpty() const;
+  Standard_EXPORT XCAFDoc_GraphNode();
   
-  Standard_EXPORT   virtual  void References(const Handle(TDF_DataSet)& aDataSet) const;
+  Standard_EXPORT   void SetGraphID (const Standard_GUID& explicitID) ;
   
-  Standard_EXPORT   virtual  Standard_OStream& Dump(Standard_OStream& anOS) const;
+  //! Set GraphNode <F> as father of me and returns index of <F>
+  //! in Sequence that containing Fathers GraphNodes.
+  //! return index of <F> from GraphNodeSequnece
+  Standard_EXPORT   Standard_Integer SetFather (const Handle(XCAFDoc_GraphNode)& F) ;
   
-  Standard_EXPORT   virtual  void BeforeForget() ;
+  //! Set GraphNode <Ch> as child of me and returns index of <Ch>
+  //! in Sequence that containing Children GraphNodes.
+  //! return index of <Ch> from GraphNodeSequnece
+  Standard_EXPORT   Standard_Integer SetChild (const Handle(XCAFDoc_GraphNode)& Ch) ;
+  
+  //! Remove <F> from Fathers GraphNodeSequence.
+  //! and remove link between father and child.
+  Standard_EXPORT   void UnSetFather (const Handle(XCAFDoc_GraphNode)& F) ;
+  
+  //! Remove Father GraphNode by index from Fathers GraphNodeSequence.
+  //! and remove link between father and child.
+  Standard_EXPORT   void UnSetFather (const Standard_Integer Findex) ;
+  
+  //! Remove <Ch> from GraphNodeSequence.
+  //! and remove link between father and child.
+  Standard_EXPORT   void UnSetChild (const Handle(XCAFDoc_GraphNode)& Ch) ;
+  
+  //! Remove Child GraphNode by index from Children GraphNodeSequence.
+  //! and remove link between father and child.
+  Standard_EXPORT   void UnSetChild (const Standard_Integer Chindex) ;
+  
+  //! Return GraphNode by index from GraphNodeSequence.
+  Standard_EXPORT   Handle(XCAFDoc_GraphNode) GetFather (const Standard_Integer Findex)  const;
+  
+  //! Return GraphNode by index from GraphNodeSequence.
+  Standard_EXPORT   Handle(XCAFDoc_GraphNode) GetChild (const Standard_Integer Chindex)  const;
+  
+  //! Return index of <F>, or zero if there is no such Graphnode.
+  Standard_EXPORT   Standard_Integer FatherIndex (const Handle(XCAFDoc_GraphNode)& F)  const;
+  
+  //! Return index of <Ch>, or zero if there is no such Graphnode.
+  Standard_EXPORT   Standard_Integer ChildIndex (const Handle(XCAFDoc_GraphNode)& Ch)  const;
+  
+  //! returns TRUE if <me> is father of <Ch>.
+  Standard_EXPORT   Standard_Boolean IsFather (const Handle(XCAFDoc_GraphNode)& Ch)  const;
+  
+  //! returns TRUE if <me> is child of <F>.
+  Standard_EXPORT   Standard_Boolean IsChild (const Handle(XCAFDoc_GraphNode)& F)  const;
+  
+  //! return Number of Fathers GraphNodes.
+  Standard_EXPORT   Standard_Integer NbFathers()  const;
+  
+  //! return Number of Childrens GraphNodes.
+  //! Implementation of Attribute methods:
+  //! ===================================
+  Standard_EXPORT   Standard_Integer NbChildren()  const;
+  
+  //! Returns the Graph ID (default or explicit one depending
+  //! onthe Set method used).
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
+  
+  Standard_EXPORT virtual   void Restore (const Handle(TDF_Attribute)& with) ;
+  
+  Standard_EXPORT virtual   void Paste (const Handle(TDF_Attribute)& into, const Handle(TDF_RelocationTable)& RT)  const;
+  
+  Standard_EXPORT virtual   Handle(TDF_Attribute) NewEmpty()  const;
+  
+  Standard_EXPORT virtual   void References (const Handle(TDF_DataSet)& aDataSet)  const;
+  
+  Standard_EXPORT virtual   Standard_OStream& Dump (Standard_OStream& anOS)  const;
+  
+  Standard_EXPORT virtual   void BeforeForget() ;
 
 
 
@@ -145,14 +144,16 @@ protected:
 
 private: 
 
-  //! remove link between father and child. <br>
-  Standard_EXPORT     void UnSetFatherlink(const Handle(XCAFDoc_GraphNode)& F) ;
-  //! remove link between father and child. <br>
-  Standard_EXPORT     void UnSetChildlink(const Handle(XCAFDoc_GraphNode)& C) ;
+  
+  //! remove link between father and child.
+  Standard_EXPORT   void UnSetFatherlink (const Handle(XCAFDoc_GraphNode)& F) ;
+  
+  //! remove link between father and child.
+  Standard_EXPORT   void UnSetChildlink (const Handle(XCAFDoc_GraphNode)& C) ;
 
-XCAFDoc_GraphNodeSequence myFathers;
-XCAFDoc_GraphNodeSequence myChildren;
-Standard_GUID myGraphID;
+  XCAFDoc_GraphNodeSequence myFathers;
+  XCAFDoc_GraphNodeSequence myChildren;
+  Standard_GUID myGraphID;
 
 
 };
@@ -161,7 +162,6 @@ Standard_GUID myGraphID;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XCAFDoc_GraphNode_HeaderFile

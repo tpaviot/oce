@@ -6,8 +6,11 @@
 #ifndef _Blend_Status_HeaderFile
 #define _Blend_Status_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Blend_Status {
+
+enum Blend_Status
+{
 Blend_StepTooLarge,
 Blend_StepTooSmall,
 Blend_Backward,
@@ -18,8 +21,4 @@ Blend_OnRst12,
 Blend_OK
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Blend_Status_HeaderFile

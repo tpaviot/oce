@@ -5,21 +5,11 @@
 
 #include <HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx>
 
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _HLRBRep_CurveTool_HeaderFile
 #include <HLRBRep_CurveTool.hxx>
-#endif
-#ifndef _IntRes2d_Domain_HeaderFile
 #include <IntRes2d_Domain.hxx>
-#endif
-#ifndef _Bnd_Box2d_HeaderFile
 #include <Bnd_Box2d.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
  
 
 #define TheCurve Standard_Address

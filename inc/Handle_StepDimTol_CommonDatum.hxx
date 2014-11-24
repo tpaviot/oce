@@ -6,22 +6,15 @@
 #ifndef _Handle_StepDimTol_CommonDatum_HeaderFile
 #define _Handle_StepDimTol_CommonDatum_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepRepr_CompositeShapeAspect_HeaderFile
 #include <Handle_StepRepr_CompositeShapeAspect.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepRepr_CompositeShapeAspect);
 class StepDimTol_CommonDatum;
 
-DEFINE_STANDARD_HANDLE(StepDimTol_CommonDatum,StepRepr_CompositeShapeAspect)
+DEFINE_STANDARD_HANDLE(StepDimTol_CommonDatum, StepRepr_CompositeShapeAspect)
 
-#endif
+#endif // _Handle_StepDimTol_CommonDatum_HeaderFile

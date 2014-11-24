@@ -1,12 +1,4 @@
-#ifndef _StepFEA_HArray1OfNodeRepresentation_HeaderFile
 #include <StepFEA_HArray1OfNodeRepresentation.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepFEA_FeaModel_HeaderFile
 #include <StepFEA_FeaModel.hxx>
-#endif
-#ifndef _StepFEA_NodeGroup_HeaderFile
 #include <StepFEA_NodeGroup.hxx>
-#endif

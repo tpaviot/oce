@@ -1,6 +1,2 @@
-#ifndef _StepBasic_VersionedActionRequest_HeaderFile
 #include <StepBasic_VersionedActionRequest.hxx>
-#endif
-#ifndef _StepBasic_ActionRequestAssignment_HeaderFile
 #include <StepBasic_ActionRequestAssignment.hxx>
-#endif

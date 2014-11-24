@@ -6,46 +6,35 @@
 #ifndef _StepVisual_PresentedItemRepresentation_HeaderFile
 #define _StepVisual_PresentedItemRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_PresentedItemRepresentation_HeaderFile
 #include <Handle_StepVisual_PresentedItemRepresentation.hxx>
-#endif
 
-#ifndef _StepVisual_PresentationRepresentationSelect_HeaderFile
 #include <StepVisual_PresentationRepresentationSelect.hxx>
-#endif
-#ifndef _Handle_StepVisual_PresentedItem_HeaderFile
 #include <Handle_StepVisual_PresentedItem.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepVisual_PresentedItem;
 class StepVisual_PresentationRepresentationSelect;
 
 
-//! Added from StepVisual Rev2 to Rev4 <br>
-class StepVisual_PresentedItemRepresentation : public MMgt_TShared {
+//! Added from StepVisual Rev2 to Rev4
+class StepVisual_PresentedItemRepresentation : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   StepVisual_PresentedItemRepresentation();
+  Standard_EXPORT StepVisual_PresentedItemRepresentation();
   
-  Standard_EXPORT     void Init(const StepVisual_PresentationRepresentationSelect& aPresentation,const Handle(StepVisual_PresentedItem)& aItem) ;
+  Standard_EXPORT   void Init (const StepVisual_PresentationRepresentationSelect& aPresentation, const Handle(StepVisual_PresentedItem)& aItem) ;
   
-  Standard_EXPORT     void SetPresentation(const StepVisual_PresentationRepresentationSelect& aPresentation) ;
+  Standard_EXPORT   void SetPresentation (const StepVisual_PresentationRepresentationSelect& aPresentation) ;
   
-  Standard_EXPORT     StepVisual_PresentationRepresentationSelect Presentation() const;
+  Standard_EXPORT   StepVisual_PresentationRepresentationSelect Presentation()  const;
   
-  Standard_EXPORT     void SetItem(const Handle(StepVisual_PresentedItem)& aItem) ;
+  Standard_EXPORT   void SetItem (const Handle(StepVisual_PresentedItem)& aItem) ;
   
-  Standard_EXPORT     Handle_StepVisual_PresentedItem Item() const;
+  Standard_EXPORT   Handle(StepVisual_PresentedItem) Item()  const;
 
 
 
@@ -60,8 +49,8 @@ protected:
 private: 
 
 
-StepVisual_PresentationRepresentationSelect thePresentation;
-Handle_StepVisual_PresentedItem theItem;
+  StepVisual_PresentationRepresentationSelect thePresentation;
+  Handle(StepVisual_PresentedItem) theItem;
 
 
 };
@@ -70,7 +59,6 @@ Handle_StepVisual_PresentedItem theItem;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_PresentedItemRepresentation_HeaderFile

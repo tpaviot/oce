@@ -1,9 +1,3 @@
-#ifndef _Interface_Graph_HeaderFile
 #include <Interface_Graph.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _IFGraph_AllConnected_HeaderFile
 #include <IFGraph_AllConnected.hxx>
-#endif

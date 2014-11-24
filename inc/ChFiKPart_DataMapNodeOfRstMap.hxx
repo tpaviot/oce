@@ -6,28 +6,14 @@
 #ifndef _ChFiKPart_DataMapNodeOfRstMap_HeaderFile
 #define _ChFiKPart_DataMapNodeOfRstMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ChFiKPart_DataMapNodeOfRstMap_HeaderFile
 #include <Handle_ChFiKPart_DataMapNodeOfRstMap.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Adaptor2d_HCurve2d_HeaderFile
 #include <Handle_Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Adaptor2d_HCurve2d;
 class TColStd_MapIntegerHasher;
 class ChFiKPart_RstMap;
@@ -35,16 +21,17 @@ class ChFiKPart_DataMapIteratorOfRstMap;
 
 
 
-class ChFiKPart_DataMapNodeOfRstMap : public TCollection_MapNode {
+class ChFiKPart_DataMapNodeOfRstMap : public TCollection_MapNode
+{
 
 public:
 
   
-      ChFiKPart_DataMapNodeOfRstMap(const Standard_Integer& K,const Handle(Adaptor2d_HCurve2d)& I,const TCollection_MapNodePtr& n);
+    ChFiKPart_DataMapNodeOfRstMap(const Standard_Integer& K, const Handle(Adaptor2d_HCurve2d)& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Key() const;
+      Standard_Integer& Key()  const;
   
-        Handle_Adaptor2d_HCurve2d& Value() const;
+      Handle(Adaptor2d_HCurve2d)& Value()  const;
 
 
 
@@ -59,15 +46,15 @@ protected:
 private: 
 
 
-Standard_Integer myKey;
-Handle_Adaptor2d_HCurve2d myValue;
+  Standard_Integer myKey;
+  Handle(Adaptor2d_HCurve2d) myValue;
 
 
 };
 
 #define TheKey Standard_Integer
 #define TheKey_hxx <Standard_Integer.hxx>
-#define TheItem Handle_Adaptor2d_HCurve2d
+#define TheItem Handle(Adaptor2d_HCurve2d)
 #define TheItem_hxx <Adaptor2d_HCurve2d.hxx>
 #define Hasher TColStd_MapIntegerHasher
 #define Hasher_hxx <TColStd_MapIntegerHasher.hxx>
@@ -98,7 +85,6 @@ Handle_Adaptor2d_HCurve2d myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ChFiKPart_DataMapNodeOfRstMap_HeaderFile

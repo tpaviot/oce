@@ -5,24 +5,12 @@
 
 #include <BRepFill_MyLeastSquareOfComputeCLine.hxx>
 
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_DimensionError_HeaderFile
 #include <Standard_DimensionError.hxx>
-#endif
-#ifndef _BRepFill_MultiLine_HeaderFile
 #include <BRepFill_MultiLine.hxx>
-#endif
-#ifndef _BRepFill_MultiLineTool_HeaderFile
 #include <BRepFill_MultiLineTool.hxx>
-#endif
-#ifndef _AppParCurves_MultiCurve_HeaderFile
 #include <AppParCurves_MultiCurve.hxx>
-#endif
  
 
 #define MultiLine BRepFill_MultiLine

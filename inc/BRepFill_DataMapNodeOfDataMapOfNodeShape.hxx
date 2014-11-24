@@ -6,28 +6,14 @@
 #ifndef _BRepFill_DataMapNodeOfDataMapOfNodeShape_HeaderFile
 #define _BRepFill_DataMapNodeOfDataMapOfNodeShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepFill_DataMapNodeOfDataMapOfNodeShape_HeaderFile
 #include <Handle_BRepFill_DataMapNodeOfDataMapOfNodeShape.hxx>
-#endif
 
-#ifndef _Handle_MAT_Node_HeaderFile
 #include <Handle_MAT_Node.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class MAT_Node;
 class TopoDS_Shape;
 class TColStd_MapTransientHasher;
@@ -36,16 +22,17 @@ class BRepFill_DataMapIteratorOfDataMapOfNodeShape;
 
 
 
-class BRepFill_DataMapNodeOfDataMapOfNodeShape : public TCollection_MapNode {
+class BRepFill_DataMapNodeOfDataMapOfNodeShape : public TCollection_MapNode
+{
 
 public:
 
   
-      BRepFill_DataMapNodeOfDataMapOfNodeShape(const Handle(MAT_Node)& K,const TopoDS_Shape& I,const TCollection_MapNodePtr& n);
+    BRepFill_DataMapNodeOfDataMapOfNodeShape(const Handle(MAT_Node)& K, const TopoDS_Shape& I, const TCollection_MapNodePtr& n);
   
-        Handle_MAT_Node& Key() const;
+      Handle(MAT_Node)& Key()  const;
   
-        TopoDS_Shape& Value() const;
+      TopoDS_Shape& Value()  const;
 
 
 
@@ -60,13 +47,13 @@ protected:
 private: 
 
 
-Handle_MAT_Node myKey;
-TopoDS_Shape myValue;
+  Handle(MAT_Node) myKey;
+  TopoDS_Shape myValue;
 
 
 };
 
-#define TheKey Handle_MAT_Node
+#define TheKey Handle(MAT_Node)
 #define TheKey_hxx <MAT_Node.hxx>
 #define TheItem TopoDS_Shape
 #define TheItem_hxx <TopoDS_Shape.hxx>
@@ -99,7 +86,6 @@ TopoDS_Shape myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepFill_DataMapNodeOfDataMapOfNodeShape_HeaderFile

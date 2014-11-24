@@ -6,54 +6,42 @@
 #ifndef _StepVisual_AreaOrView_HeaderFile
 #define _StepVisual_AreaOrView_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepVisual_PresentationArea_HeaderFile
 #include <Handle_StepVisual_PresentationArea.hxx>
-#endif
-#ifndef _Handle_StepVisual_PresentationView_HeaderFile
 #include <Handle_StepVisual_PresentationView.hxx>
-#endif
 class Standard_Transient;
 class StepVisual_PresentationArea;
 class StepVisual_PresentationView;
 
 
 
-class StepVisual_AreaOrView  : public StepData_SelectType {
+class StepVisual_AreaOrView  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a AreaOrView SelectType <br>
-  Standard_EXPORT   StepVisual_AreaOrView();
-  //! Recognizes a AreaOrView Kind Entity that is : <br>
-//!        1 -> PresentationArea <br>
-//!        2 -> PresentationView <br>
-//!        0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! returns Value as a PresentationArea (Null if another type) <br>
-  Standard_EXPORT     Handle_StepVisual_PresentationArea PresentationArea() const;
-  //! returns Value as a PresentationView (Null if another type) <br>
-  Standard_EXPORT     Handle_StepVisual_PresentationView PresentationView() const;
-
+  
+  //! Returns a AreaOrView SelectType
+  Standard_EXPORT StepVisual_AreaOrView();
+  
+  //! Recognizes a AreaOrView Kind Entity that is :
+  //! 1 -> PresentationArea
+  //! 2 -> PresentationView
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! returns Value as a PresentationArea (Null if another type)
+  Standard_EXPORT   Handle(StepVisual_PresentationArea) PresentationArea()  const;
+  
+  //! returns Value as a PresentationView (Null if another type)
+  Standard_EXPORT   Handle(StepVisual_PresentationView) PresentationView()  const;
 
 
 
@@ -76,7 +64,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_AreaOrView_HeaderFile

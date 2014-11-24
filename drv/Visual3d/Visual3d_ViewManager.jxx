@@ -1,33 +1,11 @@
-#ifndef _Visual3d_Layer_HeaderFile
 #include <Visual3d_Layer.hxx>
-#endif
-#ifndef _Graphic3d_GraphicDriver_HeaderFile
 #include <Graphic3d_GraphicDriver.hxx>
-#endif
-#ifndef _Visual3d_View_HeaderFile
 #include <Visual3d_View.hxx>
-#endif
-#ifndef _Visual3d_HSequenceOfView_HeaderFile
 #include <Visual3d_HSequenceOfView.hxx>
-#endif
-#ifndef _Graphic3d_Structure_HeaderFile
 #include <Graphic3d_Structure.hxx>
-#endif
-#ifndef _TColStd_SequenceOfInteger_HeaderFile
 #include <TColStd_SequenceOfInteger.hxx>
-#endif
-#ifndef _Aspect_GenId_HeaderFile
 #include <Aspect_GenId.hxx>
-#endif
-#ifndef _TColStd_Array2OfReal_HeaderFile
 #include <TColStd_Array2OfReal.hxx>
-#endif
-#ifndef _Aspect_Window_HeaderFile
 #include <Aspect_Window.hxx>
-#endif
-#ifndef _Graphic3d_DataStructureManager_HeaderFile
 #include <Graphic3d_DataStructureManager.hxx>
-#endif
-#ifndef _Visual3d_ViewManager_HeaderFile
 #include <Visual3d_ViewManager.hxx>
-#endif

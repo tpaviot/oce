@@ -6,40 +6,34 @@
 #ifndef _IFSelect_SelectDiff_HeaderFile
 #define _IFSelect_SelectDiff_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_SelectDiff_HeaderFile
 #include <Handle_IFSelect_SelectDiff.hxx>
-#endif
 
-#ifndef _IFSelect_SelectControl_HeaderFile
 #include <IFSelect_SelectControl.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Interface_EntityIterator;
 class Interface_Graph;
 class TCollection_AsciiString;
 
 
-//! A SelectDiff keeps the entities from a Selection, the Main <br>
-//!           Input, which are not listed by the Second Input <br>
-class IFSelect_SelectDiff : public IFSelect_SelectControl {
+//! A SelectDiff keeps the entities from a Selection, the Main
+//! Input, which are not listed by the Second Input
+class IFSelect_SelectDiff : public IFSelect_SelectControl
+{
 
 public:
 
-  //! Creates an empty SelectDiff <br>
-  Standard_EXPORT   IFSelect_SelectDiff();
-  //! Returns the list of selected entities : they are the Entities <br>
-//!           gotten from the Main Input but not from the Diff Input <br>
-  Standard_EXPORT     Interface_EntityIterator RootResult(const Interface_Graph& G) const;
-  //! Returns a text defining the criterium : "Difference" <br>
-  Standard_EXPORT     TCollection_AsciiString Label() const;
+  
+  //! Creates an empty SelectDiff
+  Standard_EXPORT IFSelect_SelectDiff();
+  
+  //! Returns the list of selected entities : they are the Entities
+  //! gotten from the Main Input but not from the Diff Input
+  Standard_EXPORT   Interface_EntityIterator RootResult (const Interface_Graph& G)  const;
+  
+  //! Returns a text defining the criterium : "Difference"
+  Standard_EXPORT   TCollection_AsciiString Label()  const;
 
 
 
@@ -48,8 +42,9 @@ public:
 
 protected:
 
-  //! Returns always True, because RootResult gives a Unique list <br>
-  Standard_EXPORT   virtual  Standard_Boolean HasUniqueResult() const;
+  
+  //! Returns always True, because RootResult gives a Unique list
+  Standard_EXPORT virtual   Standard_Boolean HasUniqueResult()  const;
 
 
 
@@ -64,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_SelectDiff_HeaderFile

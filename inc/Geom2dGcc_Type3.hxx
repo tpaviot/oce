@@ -6,14 +6,13 @@
 #ifndef _Geom2dGcc_Type3_HeaderFile
 #define _Geom2dGcc_Type3_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Geom2dGcc_Type3 {
+
+enum Geom2dGcc_Type3
+{
 Geom2dGcc_CuCu,
 Geom2dGcc_CiCu
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Geom2dGcc_Type3_HeaderFile

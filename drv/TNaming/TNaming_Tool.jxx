@@ -1,33 +1,11 @@
-#ifndef _TNaming_Localizer_HeaderFile
 #include <TNaming_Localizer.hxx>
-#endif
-#ifndef _TNaming_NamedShape_HeaderFile
 #include <TNaming_NamedShape.hxx>
-#endif
-#ifndef _TNaming_OldShapeIterator_HeaderFile
 #include <TNaming_OldShapeIterator.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TDF_LabelMap_HeaderFile
 #include <TDF_LabelMap.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TNaming_MapOfNamedShape_HeaderFile
 #include <TNaming_MapOfNamedShape.hxx>
-#endif
-#ifndef _TDF_LabelList_HeaderFile
 #include <TDF_LabelList.hxx>
-#endif
-#ifndef _TNaming_UsedShapes_HeaderFile
 #include <TNaming_UsedShapes.hxx>
-#endif
-#ifndef _TopTools_MapOfShape_HeaderFile
 #include <TopTools_MapOfShape.hxx>
-#endif
-#ifndef _TNaming_Tool_HeaderFile
 #include <TNaming_Tool.hxx>
-#endif

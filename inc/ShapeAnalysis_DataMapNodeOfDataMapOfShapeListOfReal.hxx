@@ -6,28 +6,14 @@
 #ifndef _ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal_HeaderFile
 #define _ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal_HeaderFile
 #include <Handle_ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TColStd_ListOfReal_HeaderFile
 #include <TColStd_ListOfReal.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopoDS_Shape;
 class TColStd_ListOfReal;
 class TopTools_ShapeMapHasher;
@@ -36,16 +22,17 @@ class ShapeAnalysis_DataMapIteratorOfDataMapOfShapeListOfReal;
 
 
 
-class ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal : public TCollection_MapNode {
+class ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal : public TCollection_MapNode
+{
 
 public:
 
   
-      ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal(const TopoDS_Shape& K,const TColStd_ListOfReal& I,const TCollection_MapNodePtr& n);
+    ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal(const TopoDS_Shape& K, const TColStd_ListOfReal& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        TColStd_ListOfReal& Value() const;
+      TColStd_ListOfReal& Value()  const;
 
 
 
@@ -60,8 +47,8 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-TColStd_ListOfReal myValue;
+  TopoDS_Shape myKey;
+  TColStd_ListOfReal myValue;
 
 
 };
@@ -99,7 +86,6 @@ TColStd_ListOfReal myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal_HeaderFile

@@ -5,18 +5,10 @@
 
 #include <TDataStd_ListOfExtendedString.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TDataStd_ListIteratorOfListOfExtendedString_HeaderFile
 #include <TDataStd_ListIteratorOfListOfExtendedString.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _TDataStd_ListNodeOfListOfExtendedString_HeaderFile
 #include <TDataStd_ListNodeOfListOfExtendedString.hxx>
-#endif
  
 
 #define Item TCollection_ExtendedString

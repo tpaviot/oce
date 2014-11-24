@@ -6,18 +6,17 @@
 #ifndef _V3d_TypeOfSurfaceDetail_HeaderFile
 #define _V3d_TypeOfSurfaceDetail_HeaderFile
 
-//! Modes of visualization for objects in a view <br>
-//! -   V3d_TEX_NONE: no texture mapping, <br>
-//! -   V3d_TEX_ENVIRONMENT: environment mapping only, <br>
-//! -   V3d_TEX_ALL: environment and texture mapping. <br>
-enum V3d_TypeOfSurfaceDetail {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Modes of visualization for objects in a view
+//! -   V3d_TEX_NONE: no texture mapping,
+//! -   V3d_TEX_ENVIRONMENT: environment mapping only,
+//! -   V3d_TEX_ALL: environment and texture mapping.
+enum V3d_TypeOfSurfaceDetail
+{
 V3d_TEX_NONE,
 V3d_TEX_ENVIRONMENT,
 V3d_TEX_ALL
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _V3d_TypeOfSurfaceDetail_HeaderFile

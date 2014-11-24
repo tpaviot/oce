@@ -6,31 +6,15 @@
 #ifndef _Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient_HeaderFile
 #define _Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient_HeaderFile
 #include <Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient.hxx>
-#endif
 
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Transfer_Binder_HeaderFile
 #include <Handle_Transfer_Binder.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
 class Standard_Transient;
 class Transfer_Binder;
 class TColStd_MapTransientHasher;
@@ -38,20 +22,21 @@ class Transfer_TransferMapOfProcessForTransient;
 
 
 
-class Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient : public TCollection_MapNode {
+class Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient : public TCollection_MapNode
+{
 
 public:
 
   
-      Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient(const Handle(Standard_Transient)& K1,const Standard_Integer K2,const Handle(Transfer_Binder)& I,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+    Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient(const Handle(Standard_Transient)& K1, const Standard_Integer K2, const Handle(Transfer_Binder)& I, const TCollection_MapNodePtr& n1, const TCollection_MapNodePtr& n2);
   
-        Handle_Standard_Transient& Key1() const;
+      Handle(Standard_Transient)& Key1()  const;
   
-        Standard_Integer& Key2() const;
+      Standard_Integer& Key2()  const;
   
-        TCollection_MapNodePtr& Next2() const;
+      TCollection_MapNodePtr& Next2()  const;
   
-        Handle_Transfer_Binder& Value() const;
+      Handle(Transfer_Binder)& Value()  const;
 
 
 
@@ -66,17 +51,17 @@ protected:
 private: 
 
 
-Handle_Standard_Transient myKey1;
-Standard_Integer myKey2;
-Handle_Transfer_Binder myValue;
-TCollection_MapNodePtr myNext2;
+  Handle(Standard_Transient) myKey1;
+  Standard_Integer myKey2;
+  Handle(Transfer_Binder) myValue;
+  TCollection_MapNodePtr myNext2;
 
 
 };
 
-#define TheKey Handle_Standard_Transient
+#define TheKey Handle(Standard_Transient)
 #define TheKey_hxx <Standard_Transient.hxx>
-#define TheItem Handle_Transfer_Binder
+#define TheItem Handle(Transfer_Binder)
 #define TheItem_hxx <Transfer_Binder.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>
@@ -103,7 +88,6 @@ TCollection_MapNodePtr myNext2;
 #undef TCollection_IndexedDataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient_HeaderFile

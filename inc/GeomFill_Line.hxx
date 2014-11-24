@@ -6,37 +6,28 @@
 #ifndef _GeomFill_Line_HeaderFile
 #define _GeomFill_Line_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_GeomFill_Line_HeaderFile
 #include <Handle_GeomFill_Line.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 
 
-//! class for instantiation of AppBlend <br>
-class GeomFill_Line : public MMgt_TShared {
+//! class for instantiation of AppBlend
+class GeomFill_Line : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   GeomFill_Line();
+  Standard_EXPORT GeomFill_Line();
   
-  Standard_EXPORT   GeomFill_Line(const Standard_Integer NbPoints);
+  Standard_EXPORT GeomFill_Line(const Standard_Integer NbPoints);
   
-        Standard_Integer NbPoints() const;
+      Standard_Integer NbPoints()  const;
   
-        Standard_Integer Point(const Standard_Integer Index) const;
+      Standard_Integer Point (const Standard_Integer Index)  const;
 
 
 
@@ -51,7 +42,7 @@ protected:
 private: 
 
 
-Standard_Integer myNbPoints;
+  Standard_Integer myNbPoints;
 
 
 };
@@ -61,7 +52,6 @@ Standard_Integer myNbPoints;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomFill_Line_HeaderFile

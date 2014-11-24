@@ -6,25 +6,13 @@
 #ifndef _AppParCurves_SequenceOfMultiCurve_HeaderFile
 #define _AppParCurves_SequenceOfMultiCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_AppParCurves_SequenceNodeOfSequenceOfMultiCurve_HeaderFile
 #include <Handle_AppParCurves_SequenceNodeOfSequenceOfMultiCurve.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class AppParCurves_MultiCurve;
@@ -32,68 +20,68 @@ class AppParCurves_SequenceNodeOfSequenceOfMultiCurve;
 
 
 
-class AppParCurves_SequenceOfMultiCurve  : public TCollection_BaseSequence {
+class AppParCurves_SequenceOfMultiCurve  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      AppParCurves_SequenceOfMultiCurve();
+    AppParCurves_SequenceOfMultiCurve();
   
-  Standard_EXPORT   AppParCurves_SequenceOfMultiCurve(const AppParCurves_SequenceOfMultiCurve& Other);
+  Standard_EXPORT AppParCurves_SequenceOfMultiCurve(const AppParCurves_SequenceOfMultiCurve& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~AppParCurves_SequenceOfMultiCurve()
 {
   Clear();
 }
   
-  Standard_EXPORT    const AppParCurves_SequenceOfMultiCurve& Assign(const AppParCurves_SequenceOfMultiCurve& Other) ;
-   const AppParCurves_SequenceOfMultiCurve& operator =(const AppParCurves_SequenceOfMultiCurve& Other) 
+  Standard_EXPORT  const  AppParCurves_SequenceOfMultiCurve& Assign (const AppParCurves_SequenceOfMultiCurve& Other) ;
+ const  AppParCurves_SequenceOfMultiCurve& operator = (const AppParCurves_SequenceOfMultiCurve& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const AppParCurves_MultiCurve& T) ;
+  Standard_EXPORT   void Append (const AppParCurves_MultiCurve& T) ;
   
-        void Append(AppParCurves_SequenceOfMultiCurve& S) ;
+      void Append (AppParCurves_SequenceOfMultiCurve& S) ;
   
-  Standard_EXPORT     void Prepend(const AppParCurves_MultiCurve& T) ;
+  Standard_EXPORT   void Prepend (const AppParCurves_MultiCurve& T) ;
   
-        void Prepend(AppParCurves_SequenceOfMultiCurve& S) ;
+      void Prepend (AppParCurves_SequenceOfMultiCurve& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const AppParCurves_MultiCurve& T) ;
+      void InsertBefore (const Standard_Integer Index, const AppParCurves_MultiCurve& T) ;
   
-        void InsertBefore(const Standard_Integer Index,AppParCurves_SequenceOfMultiCurve& S) ;
+      void InsertBefore (const Standard_Integer Index, AppParCurves_SequenceOfMultiCurve& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const AppParCurves_MultiCurve& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const AppParCurves_MultiCurve& T) ;
   
-        void InsertAfter(const Standard_Integer Index,AppParCurves_SequenceOfMultiCurve& S) ;
+      void InsertAfter (const Standard_Integer Index, AppParCurves_SequenceOfMultiCurve& S) ;
   
-  Standard_EXPORT    const AppParCurves_MultiCurve& First() const;
+  Standard_EXPORT  const  AppParCurves_MultiCurve& First()  const;
   
-  Standard_EXPORT    const AppParCurves_MultiCurve& Last() const;
+  Standard_EXPORT  const  AppParCurves_MultiCurve& Last()  const;
   
-        void Split(const Standard_Integer Index,AppParCurves_SequenceOfMultiCurve& Sub) ;
+      void Split (const Standard_Integer Index, AppParCurves_SequenceOfMultiCurve& Sub) ;
   
-  Standard_EXPORT    const AppParCurves_MultiCurve& Value(const Standard_Integer Index) const;
-   const AppParCurves_MultiCurve& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  AppParCurves_MultiCurve& Value (const Standard_Integer Index)  const;
+ const  AppParCurves_MultiCurve& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const AppParCurves_MultiCurve& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const AppParCurves_MultiCurve& I) ;
   
-  Standard_EXPORT     AppParCurves_MultiCurve& ChangeValue(const Standard_Integer Index) ;
-    AppParCurves_MultiCurve& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   AppParCurves_MultiCurve& ChangeValue (const Standard_Integer Index) ;
+  AppParCurves_MultiCurve& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AppParCurves_SequenceOfMultiCurve_HeaderFile

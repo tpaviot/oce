@@ -6,59 +6,47 @@
 #ifndef _BOPAlgo_Algo_HeaderFile
 #define _BOPAlgo_Algo_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BOPCol_BaseAllocator_HeaderFile
 #include <BOPCol_BaseAllocator.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Message_ProgressIndicator_HeaderFile
 #include <Handle_Message_ProgressIndicator.hxx>
-#endif
 class Message_ProgressIndicator;
 
 
-//! provides the root interface for algorithms <br>
-class BOPAlgo_Algo  {
+//! provides the root interface for algorithms
+class BOPAlgo_Algo 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Standard_Boolean GetParallelMode() ;
+  Standard_EXPORT static   Standard_Boolean GetParallelMode() ;
   
-  Standard_EXPORT   static  void SetParallelMode(const Standard_Boolean theNewMode) ;
+  Standard_EXPORT static   void SetParallelMode (const Standard_Boolean theNewMode) ;
   
-  Standard_EXPORT   virtual  void Perform()  = 0;
+  Standard_EXPORT virtual   void Perform()  = 0;
   
-  Standard_EXPORT     Standard_Integer ErrorStatus() const;
+  Standard_EXPORT   Standard_Integer ErrorStatus()  const;
   
-  Standard_EXPORT     Standard_Integer WarningStatus() const;
+  Standard_EXPORT   Standard_Integer WarningStatus()  const;
   
-  Standard_EXPORT    const BOPCol_BaseAllocator& Allocator() const;
-  //! Set the flag of parallel processing <br>
-//! if <theFlag> is true  the parallel processing is switched on <br>
-//! if <theFlag> is false the parallel processing is switched off <br>
-//! <br>
-  Standard_EXPORT     void SetRunParallel(const Standard_Boolean theFlag) ;
-  //! Returns the flag of parallel processing <br>
-  Standard_EXPORT     Standard_Boolean RunParallel() const;
-  //! Set the Progress Indicator object. <br>
-  Standard_EXPORT     void SetProgressIndicator(const Handle(Message_ProgressIndicator)& theObj) ;
-
+  Standard_EXPORT  const  BOPCol_BaseAllocator& Allocator()  const;
+  
+  //! Set the flag of parallel processing
+  //! if <theFlag> is true  the parallel processing is switched on
+  //! if <theFlag> is false the parallel processing is switched off
+  Standard_EXPORT   void SetRunParallel (const Standard_Boolean theFlag) ;
+  
+  //! Returns the flag of parallel processing
+  Standard_EXPORT   Standard_Boolean RunParallel()  const;
+  
+  //! Set the Progress Indicator object.
+  Standard_EXPORT   void SetProgressIndicator (const Handle(Message_ProgressIndicator)& theObj) ;
 
 
 
@@ -66,24 +54,25 @@ public:
 protected:
 
   
-  Standard_EXPORT   BOPAlgo_Algo();
+  Standard_EXPORT BOPAlgo_Algo();
 Standard_EXPORT virtual ~BOPAlgo_Algo();
   
-  Standard_EXPORT   BOPAlgo_Algo(const BOPCol_BaseAllocator& theAllocator);
+  Standard_EXPORT BOPAlgo_Algo(const BOPCol_BaseAllocator& theAllocator);
   
-  Standard_EXPORT   virtual  void CheckData() ;
+  Standard_EXPORT virtual   void CheckData() ;
   
-  Standard_EXPORT   virtual  void CheckResult() ;
-  //! Breaks the execution if the break signal <br>
-//! is indicated by myProgressIndicator. <br>
-  Standard_EXPORT     void UserBreak() const;
+  Standard_EXPORT virtual   void CheckResult() ;
+  
+  //! Breaks the execution if the break signal
+  //! is indicated by myProgressIndicator.
+  Standard_EXPORT   void UserBreak()  const;
 
 
-BOPCol_BaseAllocator myAllocator;
-Standard_Integer myErrorStatus;
-Standard_Integer myWarningStatus;
-Standard_Boolean myRunParallel;
-Handle_Message_ProgressIndicator myProgressIndicator;
+  BOPCol_BaseAllocator myAllocator;
+  Standard_Integer myErrorStatus;
+  Standard_Integer myWarningStatus;
+  Standard_Boolean myRunParallel;
+  Handle(Message_ProgressIndicator) myProgressIndicator;
 
 
 private:
@@ -98,7 +87,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BOPAlgo_Algo_HeaderFile

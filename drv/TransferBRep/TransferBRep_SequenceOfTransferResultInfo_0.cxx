@@ -5,21 +5,13 @@
 
 #include <TransferBRep_SequenceOfTransferResultInfo.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TransferBRep_TransferResultInfo_HeaderFile
 #include <TransferBRep_TransferResultInfo.hxx>
-#endif
-#ifndef _TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo_HeaderFile
 #include <TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo.hxx>
-#endif
  
 
-#define SeqItem Handle_TransferBRep_TransferResultInfo
+#define SeqItem Handle(TransferBRep_TransferResultInfo)
 #define SeqItem_hxx <TransferBRep_TransferResultInfo.hxx>
 #define TCollection_SequenceNode TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo
 #define TCollection_SequenceNode_hxx <TransferBRep_SequenceNodeOfSequenceOfTransferResultInfo.hxx>

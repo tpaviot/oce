@@ -6,45 +6,35 @@
 #ifndef _Geom2dAdaptor_HCurve_HeaderFile
 #define _Geom2dAdaptor_HCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Geom2dAdaptor_HCurve_HeaderFile
 #include <Handle_Geom2dAdaptor_HCurve.hxx>
-#endif
 
-#ifndef _Geom2dAdaptor_GHCurve_HeaderFile
 #include <Geom2dAdaptor_GHCurve.hxx>
-#endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Standard_ConstructionError;
 class Geom2dAdaptor_Curve;
 class Geom2d_Curve;
 
 
-//! Provides an interface between the services provided by any <br>
-//! curve from the package Geom2d and those required <br>
-//! of the curve by algorithms, which use it. <br>
-class Geom2dAdaptor_HCurve : public Geom2dAdaptor_GHCurve {
+//! Provides an interface between the services provided by any
+//! curve from the package Geom2d and those required
+//! of the curve by algorithms, which use it.
+class Geom2dAdaptor_HCurve : public Geom2dAdaptor_GHCurve
+{
 
 public:
 
   
-  Standard_EXPORT   Geom2dAdaptor_HCurve();
+  Standard_EXPORT Geom2dAdaptor_HCurve();
   
-  Standard_EXPORT   Geom2dAdaptor_HCurve(const Geom2dAdaptor_Curve& AS);
+  Standard_EXPORT Geom2dAdaptor_HCurve(const Geom2dAdaptor_Curve& AS);
   
-  Standard_EXPORT   Geom2dAdaptor_HCurve(const Handle(Geom2d_Curve)& S);
-  //! ConstructionError is raised if UFirst>ULast or VFirst>VLast <br>
-  Standard_EXPORT   Geom2dAdaptor_HCurve(const Handle(Geom2d_Curve)& S,const Standard_Real UFirst,const Standard_Real ULast);
+  Standard_EXPORT Geom2dAdaptor_HCurve(const Handle(Geom2d_Curve)& S);
+  
+  //! ConstructionError is raised if UFirst>ULast or VFirst>VLast
+  Standard_EXPORT Geom2dAdaptor_HCurve(const Handle(Geom2d_Curve)& S, const Standard_Real UFirst, const Standard_Real ULast);
 
 
 
@@ -67,7 +57,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dAdaptor_HCurve_HeaderFile

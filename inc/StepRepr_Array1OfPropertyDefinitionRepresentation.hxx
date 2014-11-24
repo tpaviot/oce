@@ -6,28 +6,14 @@
 #ifndef _StepRepr_Array1OfPropertyDefinitionRepresentation_HeaderFile
 #define _StepRepr_Array1OfPropertyDefinitionRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepRepr_PropertyDefinitionRepresentation_HeaderFile
 #include <Handle_StepRepr_PropertyDefinitionRepresentation.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -36,52 +22,52 @@ class StepRepr_PropertyDefinitionRepresentation;
 
 
 
-class StepRepr_Array1OfPropertyDefinitionRepresentation  {
+class StepRepr_Array1OfPropertyDefinitionRepresentation 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      StepRepr_Array1OfPropertyDefinitionRepresentation(const Standard_Integer Low,const Standard_Integer Up);
+    StepRepr_Array1OfPropertyDefinitionRepresentation(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepRepr_Array1OfPropertyDefinitionRepresentation(const Handle(StepRepr_PropertyDefinitionRepresentation)& Item,const Standard_Integer Low,const Standard_Integer Up);
+    StepRepr_Array1OfPropertyDefinitionRepresentation(const Handle(StepRepr_PropertyDefinitionRepresentation)& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const Handle(StepRepr_PropertyDefinitionRepresentation)& V) ;
+  Standard_EXPORT   void Init (const Handle(StepRepr_PropertyDefinitionRepresentation)& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~StepRepr_Array1OfPropertyDefinitionRepresentation()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const StepRepr_Array1OfPropertyDefinitionRepresentation& Assign(const StepRepr_Array1OfPropertyDefinitionRepresentation& Other) ;
-   const StepRepr_Array1OfPropertyDefinitionRepresentation& operator =(const StepRepr_Array1OfPropertyDefinitionRepresentation& Other) 
+  Standard_EXPORT  const  StepRepr_Array1OfPropertyDefinitionRepresentation& Assign (const StepRepr_Array1OfPropertyDefinitionRepresentation& Other) ;
+ const  StepRepr_Array1OfPropertyDefinitionRepresentation& operator = (const StepRepr_Array1OfPropertyDefinitionRepresentation& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(StepRepr_PropertyDefinitionRepresentation)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(StepRepr_PropertyDefinitionRepresentation)& Value) ;
   
-       const Handle_StepRepr_PropertyDefinitionRepresentation& Value(const Standard_Integer Index) const;
-     const Handle_StepRepr_PropertyDefinitionRepresentation& operator ()(const Standard_Integer Index) const
+     const  Handle(StepRepr_PropertyDefinitionRepresentation)& Value (const Standard_Integer Index)  const;
+   const  Handle(StepRepr_PropertyDefinitionRepresentation)& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        Handle_StepRepr_PropertyDefinitionRepresentation& ChangeValue(const Standard_Integer Index) ;
-      Handle_StepRepr_PropertyDefinitionRepresentation& operator ()(const Standard_Integer Index) 
+      Handle(StepRepr_PropertyDefinitionRepresentation)& ChangeValue (const Standard_Integer Index) ;
+    Handle(StepRepr_PropertyDefinitionRepresentation)& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -95,18 +81,18 @@ protected:
 private:
 
   
-  Standard_EXPORT   StepRepr_Array1OfPropertyDefinitionRepresentation(const StepRepr_Array1OfPropertyDefinitionRepresentation& AnArray);
+  Standard_EXPORT StepRepr_Array1OfPropertyDefinitionRepresentation(const StepRepr_Array1OfPropertyDefinitionRepresentation& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
 
-#define Array1Item Handle_StepRepr_PropertyDefinitionRepresentation
+#define Array1Item Handle(StepRepr_PropertyDefinitionRepresentation)
 #define Array1Item_hxx <StepRepr_PropertyDefinitionRepresentation.hxx>
 #define TCollection_Array1 StepRepr_Array1OfPropertyDefinitionRepresentation
 #define TCollection_Array1_hxx <StepRepr_Array1OfPropertyDefinitionRepresentation.hxx>
@@ -119,7 +105,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_Array1OfPropertyDefinitionRepresentation_HeaderFile

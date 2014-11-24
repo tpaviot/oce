@@ -5,12 +5,8 @@
 
 #include <PColStd_VArrayTNodeOfFieldOfHArray1OfReal.hxx>
 
-#ifndef _PColStd_FieldOfHArray1OfReal_HeaderFile
 #include <PColStd_FieldOfHArray1OfReal.hxx>
-#endif
-#ifndef _PColStd_VArrayNodeOfFieldOfHArray1OfReal_HeaderFile
 #include <PColStd_VArrayNodeOfFieldOfHArray1OfReal.hxx>
-#endif
  
 
 #define Item Standard_Real

@@ -6,59 +6,47 @@
 #ifndef _StepShape_RightCircularCone_HeaderFile
 #define _StepShape_RightCircularCone_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_RightCircularCone_HeaderFile
 #include <Handle_StepShape_RightCircularCone.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Axis1Placement_HeaderFile
 #include <Handle_StepGeom_Axis1Placement.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _StepGeom_GeometricRepresentationItem_HeaderFile
 #include <StepGeom_GeometricRepresentationItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepGeom_Axis1Placement;
 class TCollection_HAsciiString;
 
 
 
-class StepShape_RightCircularCone : public StepGeom_GeometricRepresentationItem {
+class StepShape_RightCircularCone : public StepGeom_GeometricRepresentationItem
+{
 
 public:
 
-  //! Returns a RightCircularCone <br>
-  Standard_EXPORT   StepShape_RightCircularCone();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a RightCircularCone
+  Standard_EXPORT StepShape_RightCircularCone();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_Axis1Placement)& aPosition,const Standard_Real aHeight,const Standard_Real aRadius,const Standard_Real aSemiAngle) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetPosition(const Handle(StepGeom_Axis1Placement)& aPosition) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_Axis1Placement)& aPosition, const Standard_Real aHeight, const Standard_Real aRadius, const Standard_Real aSemiAngle) ;
   
-  Standard_EXPORT     Handle_StepGeom_Axis1Placement Position() const;
+  Standard_EXPORT   void SetPosition (const Handle(StepGeom_Axis1Placement)& aPosition) ;
   
-  Standard_EXPORT     void SetHeight(const Standard_Real aHeight) ;
+  Standard_EXPORT   Handle(StepGeom_Axis1Placement) Position()  const;
   
-  Standard_EXPORT     Standard_Real Height() const;
+  Standard_EXPORT   void SetHeight (const Standard_Real aHeight) ;
   
-  Standard_EXPORT     void SetRadius(const Standard_Real aRadius) ;
+  Standard_EXPORT   Standard_Real Height()  const;
   
-  Standard_EXPORT     Standard_Real Radius() const;
+  Standard_EXPORT   void SetRadius (const Standard_Real aRadius) ;
   
-  Standard_EXPORT     void SetSemiAngle(const Standard_Real aSemiAngle) ;
+  Standard_EXPORT   Standard_Real Radius()  const;
   
-  Standard_EXPORT     Standard_Real SemiAngle() const;
+  Standard_EXPORT   void SetSemiAngle (const Standard_Real aSemiAngle) ;
+  
+  Standard_EXPORT   Standard_Real SemiAngle()  const;
 
 
 
@@ -73,10 +61,10 @@ protected:
 private: 
 
 
-Handle_StepGeom_Axis1Placement position;
-Standard_Real height;
-Standard_Real radius;
-Standard_Real semiAngle;
+  Handle(StepGeom_Axis1Placement) position;
+  Standard_Real height;
+  Standard_Real radius;
+  Standard_Real semiAngle;
 
 
 };
@@ -85,7 +73,6 @@ Standard_Real semiAngle;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_RightCircularCone_HeaderFile

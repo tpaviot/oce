@@ -6,22 +6,15 @@
 #ifndef _Handle_StepAP214_ExternallyDefinedClass_HeaderFile
 #define _Handle_StepAP214_ExternallyDefinedClass_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepAP214_Class_HeaderFile
 #include <Handle_StepAP214_Class.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepAP214_Class);
 class StepAP214_ExternallyDefinedClass;
 
-DEFINE_STANDARD_HANDLE(StepAP214_ExternallyDefinedClass,StepAP214_Class)
+DEFINE_STANDARD_HANDLE(StepAP214_ExternallyDefinedClass, StepAP214_Class)
 
-#endif
+#endif // _Handle_StepAP214_ExternallyDefinedClass_HeaderFile

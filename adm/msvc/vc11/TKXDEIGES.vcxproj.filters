@@ -2,10 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{CECF7B49-05E1-118D-011D-F51030F9FE60}</UniqueIdentifier>
+      <UniqueIdentifier>{D3A85DBD-0C5F-1732-0A55-9FDD36740DC7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\IGESCAFControl">
-      <UniqueIdentifier>{AB898BBD-0790-1232-075A-791C0C206A89}</UniqueIdentifier>
+      <UniqueIdentifier>{34A3561C-0823-0E92-0FA2-84E6F5571DAA}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

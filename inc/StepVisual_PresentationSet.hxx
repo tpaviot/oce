@@ -6,28 +6,22 @@
 #ifndef _StepVisual_PresentationSet_HeaderFile
 #define _StepVisual_PresentationSet_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_PresentationSet_HeaderFile
 #include <Handle_StepVisual_PresentationSet.hxx>
-#endif
 
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 
 
 
-class StepVisual_PresentationSet : public MMgt_TShared {
+class StepVisual_PresentationSet : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a PresentationSet <br>
-  Standard_EXPORT   StepVisual_PresentationSet();
+  
+  //! Returns a PresentationSet
+  Standard_EXPORT StepVisual_PresentationSet();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_PresentationSet_HeaderFile

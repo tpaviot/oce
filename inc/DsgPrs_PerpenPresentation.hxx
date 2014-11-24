@@ -6,47 +6,36 @@
 #ifndef _DsgPrs_PerpenPresentation_HeaderFile
 #define _DsgPrs_PerpenPresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Handle_Prs3d_Drawer_HeaderFile
 #include <Handle_Prs3d_Drawer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Prs3d_Presentation;
 class Prs3d_Drawer;
 class gp_Pnt;
 
 
-//! A framework to define display of perpendicular <br>
-//! constraints between shapes. <br>
-class DsgPrs_PerpenPresentation  {
+//! A framework to define display of perpendicular
+//! constraints between shapes.
+class DsgPrs_PerpenPresentation 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Defines the display of elements showing <br>
-//! perpendicular constraints between shapes. <br>
-//! These include the two axis points pAx1 and pAx2, <br>
-//! the two points pnt1 and pnt2, the offset point <br>
-//! OffsetPoint and the two Booleans intOut1} and intOut2{. <br>
-//! These arguments are added to the presentation <br>
-//! object aPresentation. Their display attributes are <br>
-//! defined by the attribute manager aDrawer. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Prs3d_Drawer)& aDrawer,const gp_Pnt& pAx1,const gp_Pnt& pAx2,const gp_Pnt& pnt1,const gp_Pnt& pnt2,const gp_Pnt& OffsetPoint,const Standard_Boolean intOut1,const Standard_Boolean intOut2) ;
-
+  
+  //! Defines the display of elements showing
+  //! perpendicular constraints between shapes.
+  //! These include the two axis points pAx1 and pAx2,
+  //! the two points pnt1 and pnt2, the offset point
+  //! OffsetPoint and the two Booleans intOut1} and intOut2{.
+  //! These arguments are added to the presentation
+  //! object aPresentation. Their display attributes are
+  //! defined by the attribute manager aDrawer.
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Prs3d_Drawer)& aDrawer, const gp_Pnt& pAx1, const gp_Pnt& pAx2, const gp_Pnt& pnt1, const gp_Pnt& pnt2, const gp_Pnt& OffsetPoint, const Standard_Boolean intOut1, const Standard_Boolean intOut2) ;
 
 
 
@@ -69,7 +58,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DsgPrs_PerpenPresentation_HeaderFile

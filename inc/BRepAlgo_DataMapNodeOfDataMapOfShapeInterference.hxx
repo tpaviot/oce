@@ -6,28 +6,14 @@
 #ifndef _BRepAlgo_DataMapNodeOfDataMapOfShapeInterference_HeaderFile
 #define _BRepAlgo_DataMapNodeOfDataMapOfShapeInterference_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference_HeaderFile
 #include <Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_Interference_HeaderFile
 #include <Handle_TopOpeBRepDS_Interference.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopOpeBRepDS_Interference;
 class TopoDS_Shape;
 class TopTools_ShapeMapHasher;
@@ -36,16 +22,17 @@ class BRepAlgo_DataMapIteratorOfDataMapOfShapeInterference;
 
 
 
-class BRepAlgo_DataMapNodeOfDataMapOfShapeInterference : public TCollection_MapNode {
+class BRepAlgo_DataMapNodeOfDataMapOfShapeInterference : public TCollection_MapNode
+{
 
 public:
 
   
-      BRepAlgo_DataMapNodeOfDataMapOfShapeInterference(const TopoDS_Shape& K,const Handle(TopOpeBRepDS_Interference)& I,const TCollection_MapNodePtr& n);
+    BRepAlgo_DataMapNodeOfDataMapOfShapeInterference(const TopoDS_Shape& K, const Handle(TopOpeBRepDS_Interference)& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        Handle_TopOpeBRepDS_Interference& Value() const;
+      Handle(TopOpeBRepDS_Interference)& Value()  const;
 
 
 
@@ -60,15 +47,15 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-Handle_TopOpeBRepDS_Interference myValue;
+  TopoDS_Shape myKey;
+  Handle(TopOpeBRepDS_Interference) myValue;
 
 
 };
 
 #define TheKey TopoDS_Shape
 #define TheKey_hxx <TopoDS_Shape.hxx>
-#define TheItem Handle_TopOpeBRepDS_Interference
+#define TheItem Handle(TopOpeBRepDS_Interference)
 #define TheItem_hxx <TopOpeBRepDS_Interference.hxx>
 #define Hasher TopTools_ShapeMapHasher
 #define Hasher_hxx <TopTools_ShapeMapHasher.hxx>
@@ -99,7 +86,6 @@ Handle_TopOpeBRepDS_Interference myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepAlgo_DataMapNodeOfDataMapOfShapeInterference_HeaderFile

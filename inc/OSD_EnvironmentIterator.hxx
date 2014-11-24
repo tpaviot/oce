@@ -6,64 +6,58 @@
 #ifndef _OSD_EnvironmentIterator_HeaderFile
 #define _OSD_EnvironmentIterator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _OSD_Error_HeaderFile
 #include <OSD_Error.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class OSD_OSDError;
 class OSD_Environment;
 
 
-//! This allows consultation of every environment variable. <br>
-//!          There is no specific order of results. <br>
-class OSD_EnvironmentIterator  {
+//! This allows consultation of every environment variable.
+//! There is no specific order of results.
+class OSD_EnvironmentIterator 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Instantiates Object as Iterator; <br>
-  Standard_EXPORT   OSD_EnvironmentIterator();
   
-  Standard_EXPORT     void Destroy() ;
+  //! Instantiates Object as Iterator;
+  Standard_EXPORT OSD_EnvironmentIterator();
+  
+  Standard_EXPORT   void Destroy() ;
 ~OSD_EnvironmentIterator()
 {
   Destroy();
 }
-  //! Returns TRUE if there are other environment variables. <br>
-  Standard_EXPORT     Standard_Boolean More() ;
-  //! Sets the iterator to the next item. <br>
-//!          Returns the item value corresponding to the current <br>
-//!          position of the iterator. <br>
-  Standard_EXPORT     void Next() ;
-  //! Returns the next environment variable found. <br>
-  Standard_EXPORT     OSD_Environment Values() ;
-  //! Returns TRUE if an error occurs <br>
-  Standard_EXPORT     Standard_Boolean Failed() const;
-  //! Resets error counter to zero <br>
-  Standard_EXPORT     void Reset() ;
-  //! Raises OSD_Error <br>
-  Standard_EXPORT     void Perror() ;
-  //! Returns error number if 'Failed' is TRUE. <br>
-  Standard_EXPORT     Standard_Integer Error() const;
-
+  
+  //! Returns TRUE if there are other environment variables.
+  Standard_EXPORT   Standard_Boolean More() ;
+  
+  //! Sets the iterator to the next item.
+  //! Returns the item value corresponding to the current
+  //! position of the iterator.
+  Standard_EXPORT   void Next() ;
+  
+  //! Returns the next environment variable found.
+  Standard_EXPORT   OSD_Environment Values() ;
+  
+  //! Returns TRUE if an error occurs
+  Standard_EXPORT   Standard_Boolean Failed()  const;
+  
+  //! Resets error counter to zero
+  Standard_EXPORT   void Reset() ;
+  
+  //! Raises OSD_Error
+  Standard_EXPORT   void Perror() ;
+  
+  //! Returns error number if 'Failed' is TRUE.
+  Standard_EXPORT   Standard_Integer Error()  const;
 
 
 
@@ -78,9 +72,9 @@ private:
 
 
 
-Standard_Address myEnv;
-Standard_Integer myCount;
-OSD_Error myError;
+  Standard_Address myEnv;
+  Standard_Integer myCount;
+  OSD_Error myError;
 
 
 };
@@ -89,7 +83,6 @@ OSD_Error myError;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _OSD_EnvironmentIterator_HeaderFile

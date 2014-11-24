@@ -6,28 +6,14 @@
 #ifndef _IntAna_IntConicQuad_HeaderFile
 #define _IntAna_IntConicQuad_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class StdFail_NotDone;
 class Standard_OutOfRange;
 class Standard_DomainError;
@@ -41,119 +27,140 @@ class gp_Pln;
 class gp_Pnt;
 
 
-//! This class provides the analytic intersection between <br>
-//!          a conic defined as an element of gp (Lin,Circ,Elips, <br>
-//!          Parab,Hypr) and a quadric as defined in the class <br>
-//!          Quadric from IntAna. <br>
-//!          The intersection between a conic and a plane is treated <br>
-//!          as a special case. <br>
-//! <br>
-//!          The result of the intersection are points (Pnt from <br>
-//!          gp), associated with the parameter on the conic. <br>
-//! <br>
-//!          A call to an Intersection  L:Lin from gp and <br>
-//!          SPH: Sphere from gp can be written either : <br>
-//!               IntAna_IntConicQuad Inter(L,IntAna_Quadric(SPH)) <br>
-//!           or : <br>
-//!               IntAna_IntConicQuad Inter(L,SPH) (it is necessary <br>
-//!                  to include IntAna_Quadric.hxx in this case) <br>
-class IntAna_IntConicQuad  {
+//! This class provides the analytic intersection between
+//! a conic defined as an element of gp (Lin,Circ,Elips,
+//! Parab,Hypr) and a quadric as defined in the class
+//! Quadric from IntAna.
+//! The intersection between a conic and a plane is treated
+//! as a special case.
+//!
+//! The result of the intersection are points (Pnt from
+//! gp), associated with the parameter on the conic.
+//!
+//! A call to an Intersection  L:Lin from gp and
+//! SPH: Sphere from gp can be written either :
+//! IntAna_IntConicQuad Inter(L,IntAna_Quadric(SPH))
+//! or :
+//! IntAna_IntConicQuad Inter(L,SPH) (it is necessary
+//! to include IntAna_Quadric.hxx in this case)
+class IntAna_IntConicQuad 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor. <br>
-//! <br>
-  Standard_EXPORT   IntAna_IntConicQuad();
-  //! Creates the intersection between a line and a quadric. <br>
-  Standard_EXPORT   IntAna_IntConicQuad(const gp_Lin& L,const IntAna_Quadric& Q);
-  //! Intersects a line and a quadric. <br>
-  Standard_EXPORT     void Perform(const gp_Lin& L,const IntAna_Quadric& Q) ;
-  //! Creates the intersection between a circle and a quadric. <br>
-  Standard_EXPORT   IntAna_IntConicQuad(const gp_Circ& C,const IntAna_Quadric& Q);
-  //! Intersects a circle and a quadric. <br>
-  Standard_EXPORT     void Perform(const gp_Circ& C,const IntAna_Quadric& Q) ;
-  //! Creates the intersection between an ellipse and a quadric. <br>
-  Standard_EXPORT   IntAna_IntConicQuad(const gp_Elips& E,const IntAna_Quadric& Q);
-  //! Intersects an ellipse and a quadric. <br>
-  Standard_EXPORT     void Perform(const gp_Elips& E,const IntAna_Quadric& Q) ;
-  //! Creates the intersection between a parabola and a quadric. <br>
-  Standard_EXPORT   IntAna_IntConicQuad(const gp_Parab& P,const IntAna_Quadric& Q);
-  //! Intersects a parabola and a quadric. <br>
-  Standard_EXPORT     void Perform(const gp_Parab& P,const IntAna_Quadric& Q) ;
-  //! Creates the intersection between an hyperbola and <br>
-//!          a quadric. <br>
-  Standard_EXPORT   IntAna_IntConicQuad(const gp_Hypr& H,const IntAna_Quadric& Q);
-  //! Intersects an hyperbola and a quadric. <br>
-  Standard_EXPORT     void Perform(const gp_Hypr& H,const IntAna_Quadric& Q) ;
-  //! Intersection between a line and a plane. <br>
-//!          Tolang is used to determine if the angle between two <br>
-//!          vectors is null. <br>
-//!          Tol is used to check the distance between line and plane <br>
-//!          on the distance <Len> from the origin of the line. <br>
-  Standard_EXPORT   IntAna_IntConicQuad(const gp_Lin& L,const gp_Pln& P,const Standard_Real Tolang,const Standard_Real Tol = 0,const Standard_Real Len = 0);
-  //! Intersects a line and a plane. <br>
-//!          Tolang is used to determine if the angle between two <br>
-//!          vectors is null. <br>
-//!          Tol is used to check the distance between line and plane <br>
-//!          on the distance <Len> from the origin of the line. <br>
-  Standard_EXPORT     void Perform(const gp_Lin& L,const gp_Pln& P,const Standard_Real Tolang,const Standard_Real Tol = 0,const Standard_Real Len = 0) ;
-  //! Intersection between a circle and a plane. <br>
-//!          Tolang is used to determine if the angle between two <br>
-//!          vectors is null. <br>
-//!          Tol is used to determine if a distance is null. <br>
-  Standard_EXPORT   IntAna_IntConicQuad(const gp_Circ& C,const gp_Pln& P,const Standard_Real Tolang,const Standard_Real Tol);
-  //! Intersects a circle and a plane. <br>
-//!          Tolang is used to determine if the angle between two <br>
-//!          vectors is null. <br>
-//!          Tol is used to determine if a distance is null. <br>
-  Standard_EXPORT     void Perform(const gp_Circ& C,const gp_Pln& P,const Standard_Real Tolang,const Standard_Real Tol) ;
-  //! Intersection between an ellipse and a plane. <br>
-//!          Tolang is used to determine if the angle between two <br>
-//!          vectors is null. <br>
-//!          Tol is used to determine if a distance is null. <br>
-  Standard_EXPORT   IntAna_IntConicQuad(const gp_Elips& E,const gp_Pln& P,const Standard_Real Tolang,const Standard_Real Tol);
-  //! Intersects an ellipse and a plane. <br>
-//!          Tolang is used to determine if the angle between two <br>
-//!          vectors is null. <br>
-//!          Tol is used to determine if a distance is null. <br>
-  Standard_EXPORT     void Perform(const gp_Elips& E,const gp_Pln& P,const Standard_Real Tolang,const Standard_Real Tol) ;
-  //! Intersection between a parabola and a plane. <br>
-//!          Tolang is used to determine if the angle between two <br>
-//!          vectors is null. <br>
-  Standard_EXPORT   IntAna_IntConicQuad(const gp_Parab& Pb,const gp_Pln& P,const Standard_Real Tolang);
-  //! Intersects a parabola and a plane. <br>
-//!          Tolang is used to determine if the angle between two <br>
-//!          vectors is null. <br>
-  Standard_EXPORT     void Perform(const gp_Parab& Pb,const gp_Pln& P,const Standard_Real Tolang) ;
-  //! Intersection between an hyperbola and a plane. <br>
-//!          Tolang is used to determine if the angle between two <br>
-//!          vectors is null. <br>
-  Standard_EXPORT   IntAna_IntConicQuad(const gp_Hypr& H,const gp_Pln& P,const Standard_Real Tolang);
-  //! Intersects an hyperbola and a plane. <br>
-//!          Tolang is used to determine if the angle between two <br>
-//!          vectors is null. <br>
-  Standard_EXPORT     void Perform(const gp_Hypr& H,const gp_Pln& P,const Standard_Real Tolang) ;
-  //! Returns TRUE if the creation completed. <br>
-//! <br>
-        Standard_Boolean IsDone() const;
-  //! Returns TRUE if the conic is in the quadric. <br>
-//! <br>
-        Standard_Boolean IsInQuadric() const;
-  //! Returns TRUE if the line is in a quadric which <br>
-//!          is parallel to the quadric. <br>
-        Standard_Boolean IsParallel() const;
-  //! Returns the number of intersection point. <br>
-//! <br>
-        Standard_Integer NbPoints() const;
-  //! Returns the point of range N. <br>
-//! <br>
-       const gp_Pnt& Point(const Standard_Integer N) const;
-  //! Returns the parameter on the line of the intersection <br>
-//!          point of range N. <br>
-//! <br>
-        Standard_Real ParamOnConic(const Standard_Integer N) const;
-
+  
+  //! Empty constructor.
+  Standard_EXPORT IntAna_IntConicQuad();
+  
+  //! Creates the intersection between a line and a quadric.
+  Standard_EXPORT IntAna_IntConicQuad(const gp_Lin& L, const IntAna_Quadric& Q);
+  
+  //! Intersects a line and a quadric.
+  Standard_EXPORT   void Perform (const gp_Lin& L, const IntAna_Quadric& Q) ;
+  
+  //! Creates the intersection between a circle and a quadric.
+  Standard_EXPORT IntAna_IntConicQuad(const gp_Circ& C, const IntAna_Quadric& Q);
+  
+  //! Intersects a circle and a quadric.
+  Standard_EXPORT   void Perform (const gp_Circ& C, const IntAna_Quadric& Q) ;
+  
+  //! Creates the intersection between an ellipse and a quadric.
+  Standard_EXPORT IntAna_IntConicQuad(const gp_Elips& E, const IntAna_Quadric& Q);
+  
+  //! Intersects an ellipse and a quadric.
+  Standard_EXPORT   void Perform (const gp_Elips& E, const IntAna_Quadric& Q) ;
+  
+  //! Creates the intersection between a parabola and a quadric.
+  Standard_EXPORT IntAna_IntConicQuad(const gp_Parab& P, const IntAna_Quadric& Q);
+  
+  //! Intersects a parabola and a quadric.
+  Standard_EXPORT   void Perform (const gp_Parab& P, const IntAna_Quadric& Q) ;
+  
+  //! Creates the intersection between an hyperbola and
+  //! a quadric.
+  Standard_EXPORT IntAna_IntConicQuad(const gp_Hypr& H, const IntAna_Quadric& Q);
+  
+  //! Intersects an hyperbola and a quadric.
+  Standard_EXPORT   void Perform (const gp_Hypr& H, const IntAna_Quadric& Q) ;
+  
+  //! Intersection between a line and a plane.
+  //! Tolang is used to determine if the angle between two
+  //! vectors is null.
+  //! Tol is used to check the distance between line and plane
+  //! on the distance <Len> from the origin of the line.
+  Standard_EXPORT IntAna_IntConicQuad(const gp_Lin& L, const gp_Pln& P, const Standard_Real Tolang, const Standard_Real Tol = 0, const Standard_Real Len = 0);
+  
+  //! Intersects a line and a plane.
+  //! Tolang is used to determine if the angle between two
+  //! vectors is null.
+  //! Tol is used to check the distance between line and plane
+  //! on the distance <Len> from the origin of the line.
+  Standard_EXPORT   void Perform (const gp_Lin& L, const gp_Pln& P, const Standard_Real Tolang, const Standard_Real Tol = 0, const Standard_Real Len = 0) ;
+  
+  //! Intersection between a circle and a plane.
+  //! Tolang is used to determine if the angle between two
+  //! vectors is null.
+  //! Tol is used to determine if a distance is null.
+  Standard_EXPORT IntAna_IntConicQuad(const gp_Circ& C, const gp_Pln& P, const Standard_Real Tolang, const Standard_Real Tol);
+  
+  //! Intersects a circle and a plane.
+  //! Tolang is used to determine if the angle between two
+  //! vectors is null.
+  //! Tol is used to determine if a distance is null.
+  Standard_EXPORT   void Perform (const gp_Circ& C, const gp_Pln& P, const Standard_Real Tolang, const Standard_Real Tol) ;
+  
+  //! Intersection between an ellipse and a plane.
+  //! Tolang is used to determine if the angle between two
+  //! vectors is null.
+  //! Tol is used to determine if a distance is null.
+  Standard_EXPORT IntAna_IntConicQuad(const gp_Elips& E, const gp_Pln& P, const Standard_Real Tolang, const Standard_Real Tol);
+  
+  //! Intersects an ellipse and a plane.
+  //! Tolang is used to determine if the angle between two
+  //! vectors is null.
+  //! Tol is used to determine if a distance is null.
+  Standard_EXPORT   void Perform (const gp_Elips& E, const gp_Pln& P, const Standard_Real Tolang, const Standard_Real Tol) ;
+  
+  //! Intersection between a parabola and a plane.
+  //! Tolang is used to determine if the angle between two
+  //! vectors is null.
+  Standard_EXPORT IntAna_IntConicQuad(const gp_Parab& Pb, const gp_Pln& P, const Standard_Real Tolang);
+  
+  //! Intersects a parabola and a plane.
+  //! Tolang is used to determine if the angle between two
+  //! vectors is null.
+  Standard_EXPORT   void Perform (const gp_Parab& Pb, const gp_Pln& P, const Standard_Real Tolang) ;
+  
+  //! Intersection between an hyperbola and a plane.
+  //! Tolang is used to determine if the angle between two
+  //! vectors is null.
+  Standard_EXPORT IntAna_IntConicQuad(const gp_Hypr& H, const gp_Pln& P, const Standard_Real Tolang);
+  
+  //! Intersects an hyperbola and a plane.
+  //! Tolang is used to determine if the angle between two
+  //! vectors is null.
+  Standard_EXPORT   void Perform (const gp_Hypr& H, const gp_Pln& P, const Standard_Real Tolang) ;
+  
+  //! Returns TRUE if the creation completed.
+      Standard_Boolean IsDone()  const;
+  
+  //! Returns TRUE if the conic is in the quadric.
+      Standard_Boolean IsInQuadric()  const;
+  
+  //! Returns TRUE if the line is in a quadric which
+  //! is parallel to the quadric.
+      Standard_Boolean IsParallel()  const;
+  
+  //! Returns the number of intersection point.
+      Standard_Integer NbPoints()  const;
+  
+  //! Returns the point of range N.
+     const  gp_Pnt& Point (const Standard_Integer N)  const;
+  
+  //! Returns the parameter on the line of the intersection
+  //! point of range N.
+      Standard_Real ParamOnConic (const Standard_Integer N)  const;
 
 
 
@@ -168,12 +175,12 @@ private:
 
 
 
-Standard_Boolean done;
-Standard_Boolean parallel;
-Standard_Boolean inquadric;
-Standard_Integer nbpts;
-gp_Pnt pnts[4];
-Standard_Real paramonc[4];
+  Standard_Boolean done;
+  Standard_Boolean parallel;
+  Standard_Boolean inquadric;
+  Standard_Integer nbpts;
+  gp_Pnt pnts[4];
+  Standard_Real paramonc[4];
 
 
 };
@@ -183,7 +190,6 @@ Standard_Real paramonc[4];
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntAna_IntConicQuad_HeaderFile

@@ -6,15 +6,14 @@
 #ifndef _FilletSurf_StatusType_HeaderFile
 #define _FilletSurf_StatusType_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum FilletSurf_StatusType {
+
+enum FilletSurf_StatusType
+{
 FilletSurf_TwoExtremityOnEdge,
 FilletSurf_OneExtremityOnEdge,
 FilletSurf_NoExtremityOnEdge
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _FilletSurf_StatusType_HeaderFile

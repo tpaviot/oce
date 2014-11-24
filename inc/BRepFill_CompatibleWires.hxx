@@ -6,28 +6,14 @@
 #ifndef _BRepFill_CompatibleWires_HeaderFile
 #define _BRepFill_CompatibleWires_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopTools_SequenceOfShape_HeaderFile
 #include <TopTools_SequenceOfShape.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
-#endif
 class Standard_ConstructionError;
 class Standard_NoSuchObject;
 class TopTools_SequenceOfShape;
@@ -36,36 +22,38 @@ class TopoDS_Edge;
 class TopTools_DataMapOfShapeListOfShape;
 
 
-//! Constructs a sequence of Wires (with good orientation <br>
-//!          and origin) agreed each other so that the surface passing <br>
-//!          through these sections is not twisted <br>
-class BRepFill_CompatibleWires  {
+//! Constructs a sequence of Wires (with good orientation
+//! and origin) agreed each other so that the surface passing
+//! through these sections is not twisted
+class BRepFill_CompatibleWires 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepFill_CompatibleWires();
+  Standard_EXPORT BRepFill_CompatibleWires();
   
-  Standard_EXPORT   BRepFill_CompatibleWires(const TopTools_SequenceOfShape& Sections);
+  Standard_EXPORT BRepFill_CompatibleWires(const TopTools_SequenceOfShape& Sections);
   
-  Standard_EXPORT     void Init(const TopTools_SequenceOfShape& Sections) ;
+  Standard_EXPORT   void Init (const TopTools_SequenceOfShape& Sections) ;
   
-  Standard_EXPORT     void SetPercent(const Standard_Real percent = 0.01) ;
-  //! Performs  CompatibleWires According  to  the orientation <br>
-//!          and the origin of  each other <br>
-  Standard_EXPORT     void Perform(const Standard_Boolean WithRotation = Standard_True) ;
+  Standard_EXPORT   void SetPercent (const Standard_Real percent = 0.01) ;
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-  //! returns the generated sequence. <br>
-  Standard_EXPORT    const TopTools_SequenceOfShape& Shape() const;
-  //! Returns   the  shapes  created  from   a  subshape <br>
-//!          <SubSection> of a section. <br>
-//! <br>
-  Standard_EXPORT    const TopTools_ListOfShape& GeneratedShapes(const TopoDS_Edge& SubSection) const;
+  //! Performs  CompatibleWires According  to  the orientation
+  //! and the origin of  each other
+  Standard_EXPORT   void Perform (const Standard_Boolean WithRotation = Standard_True) ;
   
-  Standard_EXPORT    const TopTools_DataMapOfShapeListOfShape& Generated() const;
-
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
+  
+  //! returns the generated sequence.
+  Standard_EXPORT  const  TopTools_SequenceOfShape& Shape()  const;
+  
+  //! Returns   the  shapes  created  from   a  subshape
+  //! <SubSection> of a section.
+  Standard_EXPORT  const  TopTools_ListOfShape& GeneratedShapes (const TopoDS_Edge& SubSection)  const;
+  
+  Standard_EXPORT  const  TopTools_DataMapOfShapeListOfShape& Generated()  const;
 
 
 
@@ -78,32 +66,36 @@ protected:
 
 private:
 
-  //!  Insert cutting  points  on  closed wires to  have same <br>
-//!          number of edges. The sequence of shapes must <br>
-//!          be a sequence of wires. <br>
-  Standard_EXPORT     void SameNumberByPolarMethod(const Standard_Boolean WithRotation = Standard_True) ;
-  //!  Insert cutting  points  on  open wires to  have same <br>
-//!          number of edges. The sequence of shapes must <br>
-//!          be a sequence of wires. <br>
-  Standard_EXPORT     void SameNumberByACR(const Standard_Boolean report) ;
-  //!  Computes  origins and orientation  on closed wires to <br>
-//!          avoid twisted results. The sequence of shapes must <br>
-//!          be a sequence of wires. <polar> must be true <br>
-//!          if SameNumberByPolarMethod was used before. <br>
-  Standard_EXPORT     void ComputeOrigin(const Standard_Boolean polar) ;
-  //!  Computes  origins and orientation  on open wires to <br>
-//!          avoid twisted results. The sequence of shapes must <br>
-//!          be a sequence of wires. <br>
-  Standard_EXPORT     void SearchOrigin() ;
+  
+  //! Insert cutting  points  on  closed wires to  have same
+  //! number of edges. The sequence of shapes must
+  //! be a sequence of wires.
+  Standard_EXPORT   void SameNumberByPolarMethod (const Standard_Boolean WithRotation = Standard_True) ;
+  
+  //! Insert cutting  points  on  open wires to  have same
+  //! number of edges. The sequence of shapes must
+  //! be a sequence of wires.
+  Standard_EXPORT   void SameNumberByACR (const Standard_Boolean report) ;
+  
+  //! Computes  origins and orientation  on closed wires to
+  //! avoid twisted results. The sequence of shapes must
+  //! be a sequence of wires. <polar> must be true
+  //! if SameNumberByPolarMethod was used before.
+  Standard_EXPORT   void ComputeOrigin (const Standard_Boolean polar) ;
+  
+  //! Computes  origins and orientation  on open wires to
+  //! avoid twisted results. The sequence of shapes must
+  //! be a sequence of wires.
+  Standard_EXPORT   void SearchOrigin() ;
 
 
-TopTools_SequenceOfShape myInit;
-TopTools_SequenceOfShape myWork;
-Standard_Real myPercent;
-Standard_Boolean myDegen1;
-Standard_Boolean myDegen2;
-Standard_Boolean myIsDone;
-TopTools_DataMapOfShapeListOfShape myMap;
+  TopTools_SequenceOfShape myInit;
+  TopTools_SequenceOfShape myWork;
+  Standard_Real myPercent;
+  Standard_Boolean myDegen1;
+  Standard_Boolean myDegen2;
+  Standard_Boolean myIsDone;
+  TopTools_DataMapOfShapeListOfShape myMap;
 
 
 };
@@ -112,7 +104,6 @@ TopTools_DataMapOfShapeListOfShape myMap;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepFill_CompatibleWires_HeaderFile

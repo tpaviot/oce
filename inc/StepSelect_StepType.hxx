@@ -6,37 +6,17 @@
 #ifndef _StepSelect_StepType_HeaderFile
 #define _StepSelect_StepType_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepSelect_StepType_HeaderFile
 #include <Handle_StepSelect_StepType.hxx>
-#endif
 
-#ifndef _Handle_StepData_Protocol_HeaderFile
 #include <Handle_StepData_Protocol.hxx>
-#endif
-#ifndef _StepData_WriterLib_HeaderFile
 #include <StepData_WriterLib.hxx>
-#endif
-#ifndef _IFSelect_Signature_HeaderFile
 #include <IFSelect_Signature.hxx>
-#endif
-#ifndef _Handle_Interface_Protocol_HeaderFile
 #include <Handle_Interface_Protocol.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
 class StepData_Protocol;
 class Interface_InterfaceError;
 class Interface_Protocol;
@@ -44,29 +24,33 @@ class Standard_Transient;
 class Interface_InterfaceModel;
 
 
-//! StepType is a Signature specific to Step definitions : it <br>
-//!           considers the type as defined in STEP Schemas, the same which <br>
-//!           is used in files. <br>
-//!           For a Complex Type, if its definition is known, StepType <br>
-//!           produces the list of basic types, separated by commas, the <br>
-//!           whole between brackets : "(TYPE1,TYPE2..)". <br>
-//!           If its precise definition is not known (simply it is known as <br>
-//!           Complex, it can be recognised, but the list is produced at <br>
-//!           Write time only), StepType produces : "(..COMPLEX TYPE..)" <br>
-class StepSelect_StepType : public IFSelect_Signature {
+//! StepType is a Signature specific to Step definitions : it
+//! considers the type as defined in STEP Schemas, the same which
+//! is used in files.
+//! For a Complex Type, if its definition is known, StepType
+//! produces the list of basic types, separated by commas, the
+//! whole between brackets : "(TYPE1,TYPE2..)".
+//! If its precise definition is not known (simply it is known as
+//! Complex, it can be recognised, but the list is produced at
+//! Write time only), StepType produces : "(..COMPLEX TYPE..)"
+class StepSelect_StepType : public IFSelect_Signature
+{
 
 public:
 
-  //! Creates a Signature for Step Type. Protocol is undefined here, <br>
-//!           hence no Signature may yet be produced. The StepType signature <br>
-//!           requires a Protocol before working <br>
-  Standard_EXPORT   StepSelect_StepType();
-  //! Sets the StepType signature to work with a Protocol : this <br>
-//!           initialises the library <br>
-  Standard_EXPORT     void SetProtocol(const Handle(Interface_Protocol)& proto) ;
-  //! Returns the Step Type defined from the Protocol (see above). <br>
-//!           If <ent> is not recognised, produces "..NOT FROM SCHEMA <name>.." <br>
-  Standard_EXPORT     Standard_CString Value(const Handle(Standard_Transient)& ent,const Handle(Interface_InterfaceModel)& model) const;
+  
+  //! Creates a Signature for Step Type. Protocol is undefined here,
+  //! hence no Signature may yet be produced. The StepType signature
+  //! requires a Protocol before working
+  Standard_EXPORT StepSelect_StepType();
+  
+  //! Sets the StepType signature to work with a Protocol : this
+  //! initialises the library
+  Standard_EXPORT   void SetProtocol (const Handle(Interface_Protocol)& proto) ;
+  
+  //! Returns the Step Type defined from the Protocol (see above).
+  //! If <ent> is not recognised, produces "..NOT FROM SCHEMA <name>.."
+  Standard_EXPORT   Standard_CString Value (const Handle(Standard_Transient)& ent, const Handle(Interface_InterfaceModel)& model)  const;
 
 
 
@@ -76,13 +60,13 @@ public:
 protected:
 
 
-StepData_WriterLib thelib;
+  StepData_WriterLib thelib;
 
 
 private: 
 
 
-Handle_StepData_Protocol theproto;
+  Handle(StepData_Protocol) theproto;
 
 
 };
@@ -91,7 +75,6 @@ Handle_StepData_Protocol theproto;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepSelect_StepType_HeaderFile

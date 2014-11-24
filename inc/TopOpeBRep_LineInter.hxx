@@ -6,70 +6,28 @@
 #ifndef _TopOpeBRep_LineInter_HeaderFile
 #define _TopOpeBRep_LineInter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopOpeBRep_TypeLineCurve_HeaderFile
 #include <TopOpeBRep_TypeLineCurve.hxx>
-#endif
-#ifndef _Handle_IntPatch_Line_HeaderFile
 #include <Handle_IntPatch_Line.hxx>
-#endif
-#ifndef _Handle_IntPatch_ALine_HeaderFile
 #include <Handle_IntPatch_ALine.hxx>
-#endif
-#ifndef _Handle_IntPatch_RLine_HeaderFile
 #include <Handle_IntPatch_RLine.hxx>
-#endif
-#ifndef _Handle_IntPatch_WLine_HeaderFile
 #include <Handle_IntPatch_WLine.hxx>
-#endif
-#ifndef _Handle_IntPatch_GLine_HeaderFile
 #include <Handle_IntPatch_GLine.hxx>
-#endif
-#ifndef _TopOpeBRep_WPointInter_HeaderFile
 #include <TopOpeBRep_WPointInter.hxx>
-#endif
-#ifndef _Handle_TopOpeBRep_HArray1OfVPointInter_HeaderFile
 #include <Handle_TopOpeBRep_HArray1OfVPointInter.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Transition_HeaderFile
 #include <TopOpeBRepDS_Transition.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _IntSurf_TypeTrans_HeaderFile
 #include <IntSurf_TypeTrans.hxx>
-#endif
-#ifndef _IntSurf_Situation_HeaderFile
 #include <IntSurf_Situation.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class IntPatch_Line;
 class IntPatch_ALine;
 class IntPatch_RLine;
@@ -88,105 +46,107 @@ class TopOpeBRep_Bipoint;
 
 
 
-class TopOpeBRep_LineInter  {
+class TopOpeBRep_LineInter 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      TopOpeBRep_LineInter();
+    TopOpeBRep_LineInter();
   
-  Standard_EXPORT     void SetLine(const Handle(IntPatch_Line)& L,const BRepAdaptor_Surface& S1,const BRepAdaptor_Surface& S2) ;
+  Standard_EXPORT   void SetLine (const Handle(IntPatch_Line)& L, const BRepAdaptor_Surface& S1, const BRepAdaptor_Surface& S2) ;
   
-        void SetFaces(const TopoDS_Face& F1,const TopoDS_Face& F2) ;
+      void SetFaces (const TopoDS_Face& F1, const TopoDS_Face& F2) ;
   
-        TopOpeBRep_TypeLineCurve TypeLineCurve() const;
+      TopOpeBRep_TypeLineCurve TypeLineCurve()  const;
   
-        Standard_Integer NbVPoint() const;
+      Standard_Integer NbVPoint()  const;
   
-  Standard_EXPORT    const TopOpeBRep_VPointInter& VPoint(const Standard_Integer I) const;
+  Standard_EXPORT  const  TopOpeBRep_VPointInter& VPoint (const Standard_Integer I)  const;
   
-  Standard_EXPORT     TopOpeBRep_VPointInter& ChangeVPoint(const Standard_Integer I) ;
+  Standard_EXPORT   TopOpeBRep_VPointInter& ChangeVPoint (const Standard_Integer I) ;
   
-  Standard_EXPORT     void SetINL() ;
+  Standard_EXPORT   void SetINL() ;
   
-        Standard_Boolean INL() const;
+      Standard_Boolean INL()  const;
   
-  Standard_EXPORT     void SetIsVClosed() ;
+  Standard_EXPORT   void SetIsVClosed() ;
   
-        Standard_Boolean IsVClosed() const;
+      Standard_Boolean IsVClosed()  const;
   
-  Standard_EXPORT     void SetOK(const Standard_Boolean B) ;
+  Standard_EXPORT   void SetOK (const Standard_Boolean B) ;
   
-        Standard_Boolean OK() const;
+      Standard_Boolean OK()  const;
   
-  Standard_EXPORT     void SetHasVPonR() ;
+  Standard_EXPORT   void SetHasVPonR() ;
   
-        Standard_Boolean HasVPonR() const;
+      Standard_Boolean HasVPonR()  const;
   
-  Standard_EXPORT     void SetVPBounds() ;
+  Standard_EXPORT   void SetVPBounds() ;
   
-  Standard_EXPORT     void VPBounds(Standard_Integer& f,Standard_Integer& l,Standard_Integer& n) const;
+  Standard_EXPORT   void VPBounds (Standard_Integer& f, Standard_Integer& l, Standard_Integer& n)  const;
   
-  Standard_EXPORT     Standard_Boolean IsPeriodic() const;
+  Standard_EXPORT   Standard_Boolean IsPeriodic()  const;
   
-  Standard_EXPORT     Standard_Real Period() const;
+  Standard_EXPORT   Standard_Real Period()  const;
   
-  Standard_EXPORT     void Bounds(Standard_Real& f,Standard_Real& l) const;
+  Standard_EXPORT   void Bounds (Standard_Real& f, Standard_Real& l)  const;
   
-  Standard_EXPORT     Standard_Boolean HasVInternal() ;
+  Standard_EXPORT   Standard_Boolean HasVInternal() ;
   
-  Standard_EXPORT     Standard_Integer NbWPoint() const;
+  Standard_EXPORT   Standard_Integer NbWPoint()  const;
   
-  Standard_EXPORT    const TopOpeBRep_WPointInter& WPoint(const Standard_Integer I) ;
+  Standard_EXPORT  const  TopOpeBRep_WPointInter& WPoint (const Standard_Integer I) ;
   
-        IntSurf_TypeTrans TransitionOnS1() const;
+      IntSurf_TypeTrans TransitionOnS1()  const;
   
-        IntSurf_TypeTrans TransitionOnS2() const;
+      IntSurf_TypeTrans TransitionOnS2()  const;
   
-        IntSurf_Situation SituationS1() const;
+      IntSurf_Situation SituationS1()  const;
   
-        IntSurf_Situation SituationS2() const;
+      IntSurf_Situation SituationS2()  const;
   
-  Standard_EXPORT     Handle_Geom_Curve Curve() const;
+  Standard_EXPORT   Handle(Geom_Curve) Curve()  const;
   
-  Standard_EXPORT     Handle_Geom_Curve Curve(const Standard_Real parmin,const Standard_Real parmax) const;
-  //! returns the edge of a RESTRICTION line (or a null edge). <br>
-  Standard_EXPORT    const TopoDS_Shape& Arc() const;
-  //! returns true if Arc() edge (of a RESTRICTION line) is <br>
-//!          an edge of the original face <Index> (1 or 2). <br>
-  Standard_EXPORT     Standard_Boolean ArcIsEdge(const Standard_Integer I) const;
+  Standard_EXPORT   Handle(Geom_Curve) Curve (const Standard_Real parmin, const Standard_Real parmax)  const;
   
-       const Handle_IntPatch_WLine& LineW() const;
+  //! returns the edge of a RESTRICTION line (or a null edge).
+  Standard_EXPORT  const  TopoDS_Shape& Arc()  const;
   
-       const Handle_IntPatch_GLine& LineG() const;
+  //! returns true if Arc() edge (of a RESTRICTION line) is
+  //! an edge of the original face <Index> (1 or 2).
+  Standard_EXPORT   Standard_Boolean ArcIsEdge (const Standard_Integer I)  const;
   
-       const Handle_IntPatch_RLine& LineR() const;
+     const  Handle(IntPatch_WLine)& LineW()  const;
   
-  Standard_EXPORT     Standard_Boolean HasFirstPoint() const;
+     const  Handle(IntPatch_GLine)& LineG()  const;
   
-  Standard_EXPORT     Standard_Boolean HasLastPoint() const;
+     const  Handle(IntPatch_RLine)& LineR()  const;
   
-  Standard_EXPORT     void ComputeFaceFaceTransition() ;
+  Standard_EXPORT   Standard_Boolean HasFirstPoint()  const;
   
-  Standard_EXPORT    const TopOpeBRepDS_Transition& FaceFaceTransition(const Standard_Integer I) const;
+  Standard_EXPORT   Standard_Boolean HasLastPoint()  const;
   
-        void Index(const Standard_Integer I) ;
+  Standard_EXPORT   void ComputeFaceFaceTransition() ;
   
-        Standard_Integer Index() const;
+  Standard_EXPORT  const  TopOpeBRepDS_Transition& FaceFaceTransition (const Standard_Integer I)  const;
   
-  Standard_EXPORT     void DumpType() const;
+      void Index (const Standard_Integer I) ;
   
-  Standard_EXPORT     void DumpVPoint(const Standard_Integer I,const TCollection_AsciiString& s1,const TCollection_AsciiString& s2) const;
+      Standard_Integer Index()  const;
   
-  Standard_EXPORT     void DumpBipoint(const TopOpeBRep_Bipoint& B,const TCollection_AsciiString& s1,const TCollection_AsciiString& s2) const;
+  Standard_EXPORT   void DumpType()  const;
   
-  Standard_EXPORT     void SetTraceIndex(const Standard_Integer exF1,const Standard_Integer exF2) ;
+  Standard_EXPORT   void DumpVPoint (const Standard_Integer I, const TCollection_AsciiString& s1, const TCollection_AsciiString& s2)  const;
   
-  Standard_EXPORT     void GetTraceIndex(Standard_Integer& exF1,Standard_Integer& exF2) const;
+  Standard_EXPORT   void DumpBipoint (const TopOpeBRep_Bipoint& B, const TCollection_AsciiString& s1, const TCollection_AsciiString& s2)  const;
   
-  Standard_EXPORT     Standard_OStream& DumpLineTransitions(Standard_OStream& OS) const;
-
+  Standard_EXPORT   void SetTraceIndex (const Standard_Integer exF1, const Standard_Integer exF2) ;
+  
+  Standard_EXPORT   void GetTraceIndex (Standard_Integer& exF1, Standard_Integer& exF2)  const;
+  
+  Standard_EXPORT   Standard_OStream& DumpLineTransitions (Standard_OStream& OS)  const;
 
 
 
@@ -201,31 +161,31 @@ private:
 
 
 
-Standard_Boolean myOK;
-Standard_Integer myIndex;
-Standard_Integer myNbVPoint;
-Standard_Boolean myIsVClosed;
-Standard_Boolean myHasVPonR;
-Standard_Boolean myINL;
-Standard_Boolean myVPBDefined;
-Standard_Integer myVPF;
-Standard_Integer myVPL;
-Standard_Integer myVPN;
-TopOpeBRep_TypeLineCurve myTypeLineCurve;
-Handle_IntPatch_Line myIL;
-Handle_IntPatch_ALine myILA;
-Handle_IntPatch_RLine myILR;
-Handle_IntPatch_WLine myILW;
-Handle_IntPatch_GLine myILG;
-TopOpeBRep_WPointInter myCurrentWP;
-Handle_TopOpeBRep_HArray1OfVPointInter myHAVP;
-TopoDS_Face myF1;
-TopoDS_Face myF2;
-TopOpeBRepDS_Transition myLineTonF1;
-TopOpeBRepDS_Transition myLineTonF2;
-TopoDS_Shape myNullShape;
-Standard_Integer myexF1;
-Standard_Integer myexF2;
+  Standard_Boolean myOK;
+  Standard_Integer myIndex;
+  Standard_Integer myNbVPoint;
+  Standard_Boolean myIsVClosed;
+  Standard_Boolean myHasVPonR;
+  Standard_Boolean myINL;
+  Standard_Boolean myVPBDefined;
+  Standard_Integer myVPF;
+  Standard_Integer myVPL;
+  Standard_Integer myVPN;
+  TopOpeBRep_TypeLineCurve myTypeLineCurve;
+  Handle(IntPatch_Line) myIL;
+  Handle(IntPatch_ALine) myILA;
+  Handle(IntPatch_RLine) myILR;
+  Handle(IntPatch_WLine) myILW;
+  Handle(IntPatch_GLine) myILG;
+  TopOpeBRep_WPointInter myCurrentWP;
+  Handle(TopOpeBRep_HArray1OfVPointInter) myHAVP;
+  TopoDS_Face myF1;
+  TopoDS_Face myF2;
+  TopOpeBRepDS_Transition myLineTonF1;
+  TopOpeBRepDS_Transition myLineTonF2;
+  TopoDS_Shape myNullShape;
+  Standard_Integer myexF1;
+  Standard_Integer myexF2;
 
 
 };
@@ -235,7 +195,6 @@ Standard_Integer myexF2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRep_LineInter_HeaderFile

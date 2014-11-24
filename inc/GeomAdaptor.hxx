@@ -6,22 +6,12 @@
 #ifndef _GeomAdaptor_HeaderFile
 #define _GeomAdaptor_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
 class Geom_Curve;
 class Adaptor3d_Curve;
 class Geom_Surface;
@@ -34,21 +24,24 @@ class GeomAdaptor_GHCurve;
 class GeomAdaptor_HCurve;
 
 
-//! this package contains the  geometric definition of <br>
-//!          curve and surface necessary to use algorithmes. <br>
-class GeomAdaptor  {
+//! this package contains the  geometric definition of
+//! curve and surface necessary to use algorithmes.
+class GeomAdaptor 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Inherited  from    GHCurve.   Provides a  curve <br>
-//!          handled by reference. <br>//! Build a Geom_Curve using the informations from the <br>
-//!          Curve from Adaptor3d <br>
-  Standard_EXPORT   static  Handle_Geom_Curve MakeCurve(const Adaptor3d_Curve& C) ;
-  //! Build a Geom_Surface using the informations from the <br>
-//!          Surface from Adaptor3d <br>
-  Standard_EXPORT   static  Handle_Geom_Surface MakeSurface(const Adaptor3d_Surface& S) ;
-
+  
+  //! Inherited  from    GHCurve.   Provides a  curve
+  //! handled by reference.
+  //! Build a Geom_Curve using the informations from the
+  //! Curve from Adaptor3d
+  Standard_EXPORT static   Handle(Geom_Curve) MakeCurve (const Adaptor3d_Curve& C) ;
+  
+  //! Build a Geom_Surface using the informations from the
+  //! Surface from Adaptor3d
+  Standard_EXPORT static   Handle(Geom_Surface) MakeSurface (const Adaptor3d_Surface& S) ;
 
 
 
@@ -77,7 +70,6 @@ friend class GeomAdaptor_HCurve;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomAdaptor_HeaderFile

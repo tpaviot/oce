@@ -6,22 +6,15 @@
 #ifndef _Handle_IGESSelect_FloatFormat_HeaderFile
 #define _Handle_IGESSelect_FloatFormat_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IGESSelect_FileModifier_HeaderFile
 #include <Handle_IGESSelect_FileModifier.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IGESSelect_FileModifier);
 class IGESSelect_FloatFormat;
 
-DEFINE_STANDARD_HANDLE(IGESSelect_FloatFormat,IGESSelect_FileModifier)
+DEFINE_STANDARD_HANDLE(IGESSelect_FloatFormat, IGESSelect_FileModifier)
 
-#endif
+#endif // _Handle_IGESSelect_FloatFormat_HeaderFile

@@ -6,28 +6,14 @@
 #ifndef _GeomLProp_HeaderFile
 #define _GeomLProp_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Geom_Curve;
 class GeomLProp_CurveTool;
 class GeomLProp_SurfaceTool;
@@ -35,25 +21,27 @@ class GeomLProp_CLProps;
 class GeomLProp_SLProps;
 
 
-//! These global functions compute the degree of <br>
-//!          continuity of a 3D curve built by concatenation of two <br>
-//!          other curves (or portions of curves) at their junction point. <br>
-class GeomLProp  {
+//! These global functions compute the degree of
+//! continuity of a 3D curve built by concatenation of two
+//! other curves (or portions of curves) at their junction point.
+class GeomLProp 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Computes the regularity at the junction between C1 and <br>
-//!          C2. The booleans r1 and r2 are true if the curves must <br>
-//!          be taken reversed.  The point u1 on C1 and the point <br>
-//!          u2 on C2 must be confused. <br>
-//!          tl and ta are the linear and angular tolerance used two <br>
-//!          compare the derivative. <br>
-  Standard_EXPORT   static  GeomAbs_Shape Continuity(const Handle(Geom_Curve)& C1,const Handle(Geom_Curve)& C2,const Standard_Real u1,const Standard_Real u2,const Standard_Boolean r1,const Standard_Boolean r2,const Standard_Real tl,const Standard_Real ta) ;
-  //! The  same  as  preciding   but   using  the   standard <br>
-//!          tolerances from package Precision. <br>
-  Standard_EXPORT   static  GeomAbs_Shape Continuity(const Handle(Geom_Curve)& C1,const Handle(Geom_Curve)& C2,const Standard_Real u1,const Standard_Real u2,const Standard_Boolean r1,const Standard_Boolean r2) ;
-
+  
+  //! Computes the regularity at the junction between C1 and
+  //! C2. The booleans r1 and r2 are true if the curves must
+  //! be taken reversed.  The point u1 on C1 and the point
+  //! u2 on C2 must be confused.
+  //! tl and ta are the linear and angular tolerance used two
+  //! compare the derivative.
+  Standard_EXPORT static   GeomAbs_Shape Continuity (const Handle(Geom_Curve)& C1, const Handle(Geom_Curve)& C2, const Standard_Real u1, const Standard_Real u2, const Standard_Boolean r1, const Standard_Boolean r2, const Standard_Real tl, const Standard_Real ta) ;
+  
+  //! The  same  as  preciding   but   using  the   standard
+  //! tolerances from package Precision.
+  Standard_EXPORT static   GeomAbs_Shape Continuity (const Handle(Geom_Curve)& C1, const Handle(Geom_Curve)& C2, const Standard_Real u1, const Standard_Real u2, const Standard_Boolean r1, const Standard_Boolean r2) ;
 
 
 
@@ -80,7 +68,6 @@ friend class GeomLProp_SLProps;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomLProp_HeaderFile

@@ -6,62 +6,46 @@
 #ifndef _StepGeom_CompositeCurve_HeaderFile
 #define _StepGeom_CompositeCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_CompositeCurve_HeaderFile
 #include <Handle_StepGeom_CompositeCurve.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_HArray1OfCompositeCurveSegment_HeaderFile
 #include <Handle_StepGeom_HArray1OfCompositeCurveSegment.hxx>
-#endif
-#ifndef _StepData_Logical_HeaderFile
 #include <StepData_Logical.hxx>
-#endif
-#ifndef _StepGeom_BoundedCurve_HeaderFile
 #include <StepGeom_BoundedCurve.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepGeom_CompositeCurveSegment_HeaderFile
 #include <Handle_StepGeom_CompositeCurveSegment.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StepGeom_HArray1OfCompositeCurveSegment;
 class TCollection_HAsciiString;
 class StepGeom_CompositeCurveSegment;
 
 
 
-class StepGeom_CompositeCurve : public StepGeom_BoundedCurve {
+class StepGeom_CompositeCurve : public StepGeom_BoundedCurve
+{
 
 public:
 
-  //! Returns a CompositeCurve <br>
-  Standard_EXPORT   StepGeom_CompositeCurve();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a CompositeCurve
+  Standard_EXPORT StepGeom_CompositeCurve();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_HArray1OfCompositeCurveSegment)& aSegments,const StepData_Logical aSelfIntersect) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetSegments(const Handle(StepGeom_HArray1OfCompositeCurveSegment)& aSegments) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_HArray1OfCompositeCurveSegment)& aSegments, const StepData_Logical aSelfIntersect) ;
   
-  Standard_EXPORT     Handle_StepGeom_HArray1OfCompositeCurveSegment Segments() const;
+  Standard_EXPORT   void SetSegments (const Handle(StepGeom_HArray1OfCompositeCurveSegment)& aSegments) ;
   
-  Standard_EXPORT     Handle_StepGeom_CompositeCurveSegment SegmentsValue(const Standard_Integer num) const;
+  Standard_EXPORT   Handle(StepGeom_HArray1OfCompositeCurveSegment) Segments()  const;
   
-  Standard_EXPORT     Standard_Integer NbSegments() const;
+  Standard_EXPORT   Handle(StepGeom_CompositeCurveSegment) SegmentsValue (const Standard_Integer num)  const;
   
-  Standard_EXPORT     void SetSelfIntersect(const StepData_Logical aSelfIntersect) ;
+  Standard_EXPORT   Standard_Integer NbSegments()  const;
   
-  Standard_EXPORT     StepData_Logical SelfIntersect() const;
+  Standard_EXPORT   void SetSelfIntersect (const StepData_Logical aSelfIntersect) ;
+  
+  Standard_EXPORT   StepData_Logical SelfIntersect()  const;
 
 
 
@@ -76,8 +60,8 @@ protected:
 private: 
 
 
-Handle_StepGeom_HArray1OfCompositeCurveSegment segments;
-StepData_Logical selfIntersect;
+  Handle(StepGeom_HArray1OfCompositeCurveSegment) segments;
+  StepData_Logical selfIntersect;
 
 
 };
@@ -86,7 +70,6 @@ StepData_Logical selfIntersect;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_CompositeCurve_HeaderFile

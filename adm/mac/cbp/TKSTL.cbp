@@ -86,6 +86,8 @@
 			<Add library="tbbmalloc" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 		</Linker>
 		<Unit filename="../../../drv/StlMesh/StlMesh_SequenceNodeOfSequenceOfMeshDomain_0.cxx" />
 		<Unit filename="../../../drv/StlMesh/StlMesh_SequenceNodeOfSequenceOfMeshTriangle_0.cxx" />

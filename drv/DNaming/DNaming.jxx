@@ -1,51 +1,17 @@
-#ifndef _TDataStd_Real_HeaderFile
 #include <TDataStd_Real.hxx>
-#endif
-#ifndef _TFunction_Function_HeaderFile
 #include <TFunction_Function.hxx>
-#endif
-#ifndef _TDataStd_Integer_HeaderFile
 #include <TDataStd_Integer.hxx>
-#endif
-#ifndef _TDataStd_Name_HeaderFile
 #include <TDataStd_Name.hxx>
-#endif
-#ifndef _TNaming_NamedShape_HeaderFile
 #include <TNaming_NamedShape.hxx>
-#endif
-#ifndef _gp_Ax1_HeaderFile
 #include <gp_Ax1.hxx>
-#endif
-#ifndef _TDataStd_UAttribute_HeaderFile
 #include <TDataStd_UAttribute.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _BRepBuilderAPI_MakeShape_HeaderFile
 #include <BRepBuilderAPI_MakeShape.hxx>
-#endif
-#ifndef _TNaming_Builder_HeaderFile
 #include <TNaming_Builder.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeShape_HeaderFile
 #include <TopTools_DataMapOfShapeShape.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _BRepAlgoAPI_BooleanOperation_HeaderFile
 #include <BRepAlgoAPI_BooleanOperation.hxx>
-#endif
-#ifndef _TDF_Data_HeaderFile
 #include <TDF_Data.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _DNaming_HeaderFile
 #include <DNaming.hxx>
-#endif

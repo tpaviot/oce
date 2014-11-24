@@ -6,42 +6,35 @@
 #ifndef _StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion_HeaderFile
 #define _StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion_HeaderFile
 #include <Handle_StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion.hxx>
-#endif
 
-#ifndef _StepFEA_SymmetricTensor23d_HeaderFile
 #include <StepFEA_SymmetricTensor23d.hxx>
-#endif
-#ifndef _StepFEA_FeaMaterialPropertyRepresentationItem_HeaderFile
 #include <StepFEA_FeaMaterialPropertyRepresentationItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepFEA_SymmetricTensor23d;
 
 
-//! Representation of STEP entity FeaTangentialCoefficientOfLinearThermalExpansion <br>
-class StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion : public StepFEA_FeaMaterialPropertyRepresentationItem {
+//! Representation of STEP entity FeaTangentialCoefficientOfLinearThermalExpansion
+class StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion : public StepFEA_FeaMaterialPropertyRepresentationItem
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aRepresentationItem_Name,const StepFEA_SymmetricTensor23d& aFeaConstants) ;
-  //! Returns field FeaConstants <br>
-  Standard_EXPORT     StepFEA_SymmetricTensor23d FeaConstants() const;
-  //! Set field FeaConstants <br>
-  Standard_EXPORT     void SetFeaConstants(const StepFEA_SymmetricTensor23d& FeaConstants) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aRepresentationItem_Name, const StepFEA_SymmetricTensor23d& aFeaConstants) ;
+  
+  //! Returns field FeaConstants
+  Standard_EXPORT   StepFEA_SymmetricTensor23d FeaConstants()  const;
+  
+  //! Set field FeaConstants
+  Standard_EXPORT   void SetFeaConstants (const StepFEA_SymmetricTensor23d& FeaConstants) ;
 
 
 
@@ -56,7 +49,7 @@ protected:
 private: 
 
 
-StepFEA_SymmetricTensor23d theFeaConstants;
+  StepFEA_SymmetricTensor23d theFeaConstants;
 
 
 };
@@ -65,7 +58,6 @@ StepFEA_SymmetricTensor23d theFeaConstants;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion_HeaderFile

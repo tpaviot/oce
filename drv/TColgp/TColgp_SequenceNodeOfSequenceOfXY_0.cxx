@@ -5,16 +5,10 @@
 
 #include <TColgp_SequenceNodeOfSequenceOfXY.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _gp_XY_HeaderFile
 #include <gp_XY.hxx>
-#endif
-#ifndef _TColgp_SequenceOfXY_HeaderFile
 #include <TColgp_SequenceOfXY.hxx>
-#endif
 
  
 

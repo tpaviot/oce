@@ -5,18 +5,10 @@
 
 #include <Plugin_DataMapIteratorOfMapOfFunctions.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Plugin_MapOfFunctions_HeaderFile
 #include <Plugin_MapOfFunctions.hxx>
-#endif
-#ifndef _Plugin_DataMapNodeOfMapOfFunctions_HeaderFile
 #include <Plugin_DataMapNodeOfMapOfFunctions.hxx>
-#endif
  
 
 #define TheKey TCollection_AsciiString

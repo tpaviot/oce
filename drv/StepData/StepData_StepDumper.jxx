@@ -1,21 +1,7 @@
-#ifndef _StepData_StepModel_HeaderFile
 #include <StepData_StepModel.hxx>
-#endif
-#ifndef _Interface_InterfaceMismatch_HeaderFile
 #include <Interface_InterfaceMismatch.hxx>
-#endif
-#ifndef _StepData_Protocol_HeaderFile
 #include <StepData_Protocol.hxx>
-#endif
-#ifndef _StepData_StepWriter_HeaderFile
 #include <StepData_StepWriter.hxx>
-#endif
-#ifndef _Message_Messenger_HeaderFile
 #include <Message_Messenger.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepData_StepDumper_HeaderFile
 #include <StepData_StepDumper.hxx>
-#endif

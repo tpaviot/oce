@@ -6,48 +6,35 @@
 #ifndef _IGESDefs_HArray1OfHArray1OfTextDisplayTemplate_HeaderFile
 #define _IGESDefs_HArray1OfHArray1OfTextDisplayTemplate_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESDefs_HArray1OfHArray1OfTextDisplayTemplate_HeaderFile
 #include <Handle_IGESDefs_HArray1OfHArray1OfTextDisplayTemplate.hxx>
-#endif
 
-#ifndef _TColStd_Array1OfTransient_HeaderFile
 #include <TColStd_Array1OfTransient.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_IGESGraph_HArray1OfTextDisplayTemplate_HeaderFile
 #include <Handle_IGESGraph_HArray1OfTextDisplayTemplate.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class IGESGraph_HArray1OfTextDisplayTemplate;
 
 
 
-class IGESDefs_HArray1OfHArray1OfTextDisplayTemplate : public MMgt_TShared {
+class IGESDefs_HArray1OfHArray1OfTextDisplayTemplate : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   IGESDefs_HArray1OfHArray1OfTextDisplayTemplate(const Standard_Integer low,const Standard_Integer up);
+  Standard_EXPORT IGESDefs_HArray1OfHArray1OfTextDisplayTemplate(const Standard_Integer low, const Standard_Integer up);
   
-  Standard_EXPORT     Standard_Integer Lower() const;
+  Standard_EXPORT   Standard_Integer Lower()  const;
   
-  Standard_EXPORT     Standard_Integer Upper() const;
+  Standard_EXPORT   Standard_Integer Upper()  const;
   
-  Standard_EXPORT     Standard_Integer Length() const;
+  Standard_EXPORT   Standard_Integer Length()  const;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer num,const Handle(IGESGraph_HArray1OfTextDisplayTemplate)& val) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer num, const Handle(IGESGraph_HArray1OfTextDisplayTemplate)& val) ;
   
-  Standard_EXPORT     Handle_IGESGraph_HArray1OfTextDisplayTemplate Value(const Standard_Integer num) const;
+  Standard_EXPORT   Handle(IGESGraph_HArray1OfTextDisplayTemplate) Value (const Standard_Integer num)  const;
 
 
 
@@ -62,7 +49,7 @@ protected:
 private: 
 
 
-TColStd_Array1OfTransient thelist;
+  TColStd_Array1OfTransient thelist;
 
 
 };
@@ -71,7 +58,6 @@ TColStd_Array1OfTransient thelist;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESDefs_HArray1OfHArray1OfTextDisplayTemplate_HeaderFile

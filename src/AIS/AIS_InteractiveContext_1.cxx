@@ -55,73 +55,6 @@
 #include <AIS_MapIteratorOfMapOfInteractive.hxx>
 #endif
 
-//unused
-/*#ifdef DEB
-static void InfoOnLight(const Handle(V3d_View) aView)
-{
-  Standard_Real V1=0.,V2=0.,V3=0.;
-  Standard_Integer IndexOfLit(0);
-  
-  static Standard_Boolean FirstTime (Standard_True);
-  if(FirstTime)
-    {
-      FirstTime = Standard_False;
-      for (aView->InitActiveLights();aView->MoreActiveLights();aView->NextActiveLights()){
-	IndexOfLit++;
-	cout<<"lumiere no "<<IndexOfLit<<"\n************\n\t";
-	Handle(V3d_Light) Li = aView->ActiveLight();
-	Quantity_NameOfColor Col;
-	Li->Color(Col);
-	cout<<"Color :"<<Standard_Integer(Col)<<"\n\t"<<endl;
-	cout<<"type :";
-	switch(Li->Type()){
-	case V3d_AMBIENT:
-	  {
-	    cout<<" AMBIENT\n\t";
-//POP K4L
-//	    Handle(V3d_AmbientLight)::DownCast(Li)->DisplayPosition(V1,V2,V3);
-	    cout<<"Position : X1 = "<<V1<<"  X2 = "<<V2<<"  X3 = "<<V3<<endl; 
-	    break;
-	  }
-	case V3d_DIRECTIONAL:
-	  {
-	    cout<<" DIRECTIONAL\n\t";
-	    Handle(V3d_DirectionalLight)::DownCast(Li)->DisplayPosition(V1,V2,V3);
-	    cout<<"Position : X1 = "<<V1<<"  X2 = "<<V2<<"  X3 = "<<V3<<endl; 
-	    Handle(V3d_DirectionalLight)::DownCast(Li)->Direction(V1,V2,V3);
-	    cout<<"Direction : V1 = "<<V1<<"  V2 = "<<V2<<"  V3 = "<<V3<<endl; 
-
-	    break;
-	  }
-	case V3d_POSITIONAL:
-	  {
-	    cout<<" POSITIONAL\n\t";
-	    Handle(V3d_PositionalLight)::DownCast(Li)->Position(V1,V2,V3);
-	    cout<<"Position : X1 = "<<V1<<"  X2 = "<<V2<<"  X3 = "<<V3<<endl; 
-	    Handle(V3d_PositionalLight)::DownCast(Li)->Target(V1,V2,V3);
-	    cout<<"Target    : x1 = "<<V1<<"  x2 = "<<V2<<"  x3 = "<<V3<<endl; 
-	    break;
-	  }
-	case V3d_SPOT:
-	  {
-	    cout<<" SPOT\n\t";
-	    cout<<" DIRECTIONAL\n\t";
-	    Handle(V3d_SpotLight)::DownCast(Li)->Position(V1,V2,V3);
-	    cout<<"Position : X1 = "<<V1<<"  X2 = "<<V2<<"  X3 = "<<V3<<endl; 
-	    Handle(V3d_SpotLight)::DownCast(Li)->Direction(V1,V2,V3);
-	    cout<<"Direction : V1 = "<<V1<<"  V2 = "<<V2<<"  V3 = "<<V3<<endl; 
-	    Handle(V3d_PositionalLight)::DownCast(Li)->Target(V1,V2,V3);
-	    cout<<"Target    : x1 = "<<V1<<"  x2 = "<<V2<<"  x3 = "<<V3<<endl; 
-	    cout<<"\tAngle :"<<Handle(V3d_SpotLight)::DownCast(Li)->Angle()<<endl;
-	    break;
-	  }
-	}
-      }
-    }
-}
-#endif
-*/
-
 //=======================================================================
 //function : MoveTo
 //purpose  :
@@ -157,6 +90,7 @@ AIS_StatusOfDetection AIS_InteractiveContext::MoveTo (const Standard_Integer  th
   // filling of myAISDetectedSeq sequence storing information about detected AIS objects
   // (the objects must be AIS_Shapes)
   const Standard_Integer aDetectedNb = myMainSel->NbPicked();
+  Standard_Integer aNewDetected = 0;
   for (Standard_Integer aDetIter = 1; aDetIter <= aDetectedNb; ++aDetIter)
   {
     Handle(SelectMgr_EntityOwner) anOwner = myMainSel->Picked (aDetIter);
@@ -166,6 +100,10 @@ AIS_StatusOfDetection AIS_InteractiveContext::MoveTo (const Standard_Integer  th
       continue;
     }
 
+    if (aNewDetected < 1)
+    {
+      aNewDetected = aDetIter;
+    }
     Handle(AIS_InteractiveObject) anObj = Handle(AIS_InteractiveObject)::DownCast (anOwner->Selectable());
     if (!anObj.IsNull())
     {
@@ -173,11 +111,11 @@ AIS_StatusOfDetection AIS_InteractiveContext::MoveTo (const Standard_Integer  th
     }
   }
 
-  myMainSel->Init();
-  if (myMainSel->More())
+  if (aNewDetected >= 1)
   {
     // does nothing if previously detected object is equal to the current one
-    if (myMainSel->OnePicked()->Selectable() == myLastPicked)
+    Handle(SelectMgr_EntityOwner) aNewPickedOwner = myMainSel->Picked (aNewDetected);
+    if (aNewPickedOwner->Selectable() == myLastPicked)
     {
       return myLastPicked->State() == 1
            ? AIS_SOD_Selected
@@ -205,7 +143,7 @@ AIS_StatusOfDetection AIS_InteractiveContext::MoveTo (const Standard_Integer  th
     }
 
     // initialize myLastPicked field with currently detected object
-    myLastPicked = Handle(AIS_InteractiveObject)::DownCast (myMainSel->OnePicked()->Selectable());
+    myLastPicked = Handle(AIS_InteractiveObject)::DownCast (aNewPickedOwner->Selectable());
     myLastinMain = myLastPicked;
 
     // highlight detected object if it is not selected or myToHilightSelected flag is true
@@ -648,7 +586,7 @@ void AIS_InteractiveContext::SetCurrentObject(const Handle(AIS_InteractiveObject
       UpdateCurrentViewer();
   }
   else{
-#ifdef DEB
+#ifdef OCCT_DEBUG
     cout<<"Nothing Done : Opened Local Context"<<endl;
 #endif
   }
@@ -688,7 +626,7 @@ AddOrRemoveCurrentObject(const Handle(AIS_InteractiveObject)& anIObj,
       UpdateCurrentViewer();
   }
   else{
-#ifdef DEB
+#ifdef OCCT_DEBUG
     cout<<"Nothing Done : Opened Local Context"<<endl;
 #endif
   }
@@ -949,7 +887,7 @@ void AIS_InteractiveContext::SetSelectedCurrent()
 {
 
 
-#ifdef DEB
+#ifdef OCCT_DEBUG
   cout<<"Not Yet Implemented"<<endl;
 #endif
 }
@@ -1006,7 +944,7 @@ void AIS_InteractiveContext::AddOrRemoveSelected(const TopoDS_Shape& aShap,
 				            const Standard_Boolean updateviewer)
 { 
   if(!HasOpenedContext()) {
-#ifdef DEB
+#ifdef OCCT_DEBUG
     cout<<" Attempt to remove a selected shape with no opened local context"<<endl;
 #endif
     return;
@@ -1025,7 +963,7 @@ void AIS_InteractiveContext::AddOrRemoveSelected(const Handle(SelectMgr_EntityOw
 						 const Standard_Boolean updateviewer)
 { 
   if(!HasOpenedContext()) {
-#ifdef DEB
+#ifdef OCCT_DEBUG
     cout<<" Attempt to remove a selected ownr with no opened local context"<<endl;
 #endif
     return;

@@ -5,82 +5,36 @@
 
 #include <IntCurveSurface_HInter.hxx>
 
-#ifndef _Adaptor3d_HCurve_HeaderFile
 #include <Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _IntCurveSurface_TheHCurveTool_HeaderFile
 #include <IntCurveSurface_TheHCurveTool.hxx>
-#endif
-#ifndef _Adaptor3d_HSurface_HeaderFile
 #include <Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Adaptor3d_HSurfaceTool_HeaderFile
 #include <Adaptor3d_HSurfaceTool.hxx>
-#endif
-#ifndef _IntCurveSurface_ThePolygonOfHInter_HeaderFile
 #include <IntCurveSurface_ThePolygonOfHInter.hxx>
-#endif
-#ifndef _IntCurveSurface_ThePolygonToolOfHInter_HeaderFile
 #include <IntCurveSurface_ThePolygonToolOfHInter.hxx>
-#endif
-#ifndef _IntCurveSurface_ThePolyhedronOfHInter_HeaderFile
 #include <IntCurveSurface_ThePolyhedronOfHInter.hxx>
-#endif
-#ifndef _IntCurveSurface_ThePolyhedronToolOfHInter_HeaderFile
 #include <IntCurveSurface_ThePolyhedronToolOfHInter.hxx>
-#endif
-#ifndef _IntCurveSurface_TheInterferenceOfHInter_HeaderFile
 #include <IntCurveSurface_TheInterferenceOfHInter.hxx>
-#endif
-#ifndef _IntCurveSurface_TheCSFunctionOfHInter_HeaderFile
 #include <IntCurveSurface_TheCSFunctionOfHInter.hxx>
-#endif
-#ifndef _IntCurveSurface_TheExactHInter_HeaderFile
 #include <IntCurveSurface_TheExactHInter.hxx>
-#endif
-#ifndef _IntCurveSurface_TheQuadCurvExactHInter_HeaderFile
 #include <IntCurveSurface_TheQuadCurvExactHInter.hxx>
-#endif
-#ifndef _IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_HeaderFile
 #include <IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter.hxx>
-#endif
-#ifndef _Bnd_BoundSortBox_HeaderFile
 #include <Bnd_BoundSortBox.hxx>
-#endif
-#ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
-#endif
-#ifndef _gp_Circ_HeaderFile
 #include <gp_Circ.hxx>
-#endif
-#ifndef _gp_Elips_HeaderFile
 #include <gp_Elips.hxx>
-#endif
-#ifndef _gp_Parab_HeaderFile
 #include <gp_Parab.hxx>
-#endif
-#ifndef _gp_Hypr_HeaderFile
 #include <gp_Hypr.hxx>
-#endif
-#ifndef _IntAna_IntConicQuad_HeaderFile
 #include <IntAna_IntConicQuad.hxx>
-#endif
-#ifndef _TColgp_Array2OfPnt_HeaderFile
 #include <TColgp_Array2OfPnt.hxx>
-#endif
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
  
 
-#define TheCurve Handle_Adaptor3d_HCurve
+#define TheCurve Handle(Adaptor3d_HCurve)
 #define TheCurve_hxx <Adaptor3d_HCurve.hxx>
 #define TheCurveTool IntCurveSurface_TheHCurveTool
 #define TheCurveTool_hxx <IntCurveSurface_TheHCurveTool.hxx>
-#define TheSurface Handle_Adaptor3d_HSurface
+#define TheSurface Handle(Adaptor3d_HSurface)
 #define TheSurface_hxx <Adaptor3d_HSurface.hxx>
 #define TheSurfaceTool Adaptor3d_HSurfaceTool
 #define TheSurfaceTool_hxx <Adaptor3d_HSurfaceTool.hxx>

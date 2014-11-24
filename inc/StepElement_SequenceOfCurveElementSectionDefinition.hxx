@@ -6,28 +6,14 @@
 #ifndef _StepElement_SequenceOfCurveElementSectionDefinition_HeaderFile
 #define _StepElement_SequenceOfCurveElementSectionDefinition_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_StepElement_CurveElementSectionDefinition_HeaderFile
 #include <Handle_StepElement_CurveElementSectionDefinition.hxx>
-#endif
-#ifndef _Handle_StepElement_SequenceNodeOfSequenceOfCurveElementSectionDefinition_HeaderFile
 #include <Handle_StepElement_SequenceNodeOfSequenceOfCurveElementSectionDefinition.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class StepElement_CurveElementSectionDefinition;
@@ -35,68 +21,68 @@ class StepElement_SequenceNodeOfSequenceOfCurveElementSectionDefinition;
 
 
 
-class StepElement_SequenceOfCurveElementSectionDefinition  : public TCollection_BaseSequence {
+class StepElement_SequenceOfCurveElementSectionDefinition  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      StepElement_SequenceOfCurveElementSectionDefinition();
+    StepElement_SequenceOfCurveElementSectionDefinition();
   
-  Standard_EXPORT   StepElement_SequenceOfCurveElementSectionDefinition(const StepElement_SequenceOfCurveElementSectionDefinition& Other);
+  Standard_EXPORT StepElement_SequenceOfCurveElementSectionDefinition(const StepElement_SequenceOfCurveElementSectionDefinition& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~StepElement_SequenceOfCurveElementSectionDefinition()
 {
   Clear();
 }
   
-  Standard_EXPORT    const StepElement_SequenceOfCurveElementSectionDefinition& Assign(const StepElement_SequenceOfCurveElementSectionDefinition& Other) ;
-   const StepElement_SequenceOfCurveElementSectionDefinition& operator =(const StepElement_SequenceOfCurveElementSectionDefinition& Other) 
+  Standard_EXPORT  const  StepElement_SequenceOfCurveElementSectionDefinition& Assign (const StepElement_SequenceOfCurveElementSectionDefinition& Other) ;
+ const  StepElement_SequenceOfCurveElementSectionDefinition& operator = (const StepElement_SequenceOfCurveElementSectionDefinition& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(StepElement_CurveElementSectionDefinition)& T) ;
+  Standard_EXPORT   void Append (const Handle(StepElement_CurveElementSectionDefinition)& T) ;
   
-        void Append(StepElement_SequenceOfCurveElementSectionDefinition& S) ;
+      void Append (StepElement_SequenceOfCurveElementSectionDefinition& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(StepElement_CurveElementSectionDefinition)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(StepElement_CurveElementSectionDefinition)& T) ;
   
-        void Prepend(StepElement_SequenceOfCurveElementSectionDefinition& S) ;
+      void Prepend (StepElement_SequenceOfCurveElementSectionDefinition& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(StepElement_CurveElementSectionDefinition)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(StepElement_CurveElementSectionDefinition)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,StepElement_SequenceOfCurveElementSectionDefinition& S) ;
+      void InsertBefore (const Standard_Integer Index, StepElement_SequenceOfCurveElementSectionDefinition& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(StepElement_CurveElementSectionDefinition)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(StepElement_CurveElementSectionDefinition)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,StepElement_SequenceOfCurveElementSectionDefinition& S) ;
+      void InsertAfter (const Standard_Integer Index, StepElement_SequenceOfCurveElementSectionDefinition& S) ;
   
-  Standard_EXPORT    const Handle_StepElement_CurveElementSectionDefinition& First() const;
+  Standard_EXPORT  const  Handle(StepElement_CurveElementSectionDefinition)& First()  const;
   
-  Standard_EXPORT    const Handle_StepElement_CurveElementSectionDefinition& Last() const;
+  Standard_EXPORT  const  Handle(StepElement_CurveElementSectionDefinition)& Last()  const;
   
-        void Split(const Standard_Integer Index,StepElement_SequenceOfCurveElementSectionDefinition& Sub) ;
+      void Split (const Standard_Integer Index, StepElement_SequenceOfCurveElementSectionDefinition& Sub) ;
   
-  Standard_EXPORT    const Handle_StepElement_CurveElementSectionDefinition& Value(const Standard_Integer Index) const;
-   const Handle_StepElement_CurveElementSectionDefinition& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(StepElement_CurveElementSectionDefinition)& Value (const Standard_Integer Index)  const;
+ const  Handle(StepElement_CurveElementSectionDefinition)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(StepElement_CurveElementSectionDefinition)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(StepElement_CurveElementSectionDefinition)& I) ;
   
-  Standard_EXPORT     Handle_StepElement_CurveElementSectionDefinition& ChangeValue(const Standard_Integer Index) ;
-    Handle_StepElement_CurveElementSectionDefinition& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(StepElement_CurveElementSectionDefinition)& ChangeValue (const Standard_Integer Index) ;
+  Handle(StepElement_CurveElementSectionDefinition)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -115,7 +101,7 @@ private:
 
 };
 
-#define SeqItem Handle_StepElement_CurveElementSectionDefinition
+#define SeqItem Handle(StepElement_CurveElementSectionDefinition)
 #define SeqItem_hxx <StepElement_CurveElementSectionDefinition.hxx>
 #define TCollection_SequenceNode StepElement_SequenceNodeOfSequenceOfCurveElementSectionDefinition
 #define TCollection_SequenceNode_hxx <StepElement_SequenceNodeOfSequenceOfCurveElementSectionDefinition.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_SequenceOfCurveElementSectionDefinition_HeaderFile

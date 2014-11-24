@@ -1,15 +1,5 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepVisual_SurfaceStyleFillArea_HeaderFile
 #include <StepVisual_SurfaceStyleFillArea.hxx>
-#endif
-#ifndef _StepVisual_SurfaceStyleBoundary_HeaderFile
 #include <StepVisual_SurfaceStyleBoundary.hxx>
-#endif
-#ifndef _StepVisual_SurfaceStyleParameterLine_HeaderFile
 #include <StepVisual_SurfaceStyleParameterLine.hxx>
-#endif
-#ifndef _StepVisual_SurfaceStyleElementSelect_HeaderFile
 #include <StepVisual_SurfaceStyleElementSelect.hxx>
-#endif

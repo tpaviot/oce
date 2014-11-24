@@ -1,6 +1,2 @@
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _TopCnx_EdgeFaceTransition_HeaderFile
 #include <TopCnx_EdgeFaceTransition.hxx>
-#endif

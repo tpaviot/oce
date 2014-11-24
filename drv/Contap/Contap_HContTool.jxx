@@ -1,18 +1,6 @@
-#ifndef _Adaptor3d_HSurface_HeaderFile
 #include <Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Adaptor2d_HCurve2d_HeaderFile
 #include <Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _Adaptor3d_HVertex_HeaderFile
 #include <Adaptor3d_HVertex.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Contap_HContTool_HeaderFile
 #include <Contap_HContTool.hxx>
-#endif

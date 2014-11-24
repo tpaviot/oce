@@ -1,15 +1,5 @@
-#ifndef _TFunction_Logbook_HeaderFile
 #include <TFunction_Logbook.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TopoDS_Wire_HeaderFile
 #include <TopoDS_Wire.hxx>
-#endif
-#ifndef _TopTools_Array1OfShape_HeaderFile
 #include <TopTools_Array1OfShape.hxx>
-#endif
-#ifndef _DNaming_Line3DDriver_HeaderFile
 #include <DNaming_Line3DDriver.hxx>
-#endif

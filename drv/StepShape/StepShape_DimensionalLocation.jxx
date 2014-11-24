@@ -1,3 +1,1 @@
-#ifndef _StepShape_DimensionalLocation_HeaderFile
 #include <StepShape_DimensionalLocation.hxx>
-#endif

@@ -5,36 +5,16 @@
 
 #include <BRepApprox_MyGradientOfTheComputeLineBezierOfApprox.hxx>
 
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _BRepApprox_TheMultiLineOfApprox_HeaderFile
 #include <BRepApprox_TheMultiLineOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_TheMultiLineToolOfApprox_HeaderFile
 #include <BRepApprox_TheMultiLineToolOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_HeaderFile
 #include <BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_HeaderFile
 #include <BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_HeaderFile
 #include <BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_HeaderFile
 #include <BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox.hxx>
-#endif
-#ifndef _AppParCurves_HArray1OfConstraintCouple_HeaderFile
 #include <AppParCurves_HArray1OfConstraintCouple.hxx>
-#endif
-#ifndef _AppParCurves_MultiCurve_HeaderFile
 #include <AppParCurves_MultiCurve.hxx>
-#endif
  
 
 #define MultiLine BRepApprox_TheMultiLineOfApprox

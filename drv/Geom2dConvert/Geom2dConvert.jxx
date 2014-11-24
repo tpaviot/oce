@@ -1,21 +1,7 @@
-#ifndef _Geom2d_BSplineCurve_HeaderFile
 #include <Geom2d_BSplineCurve.hxx>
-#endif
-#ifndef _Geom2d_Curve_HeaderFile
 #include <Geom2d_Curve.hxx>
-#endif
-#ifndef _TColGeom2d_Array1OfBSplineCurve_HeaderFile
 #include <TColGeom2d_Array1OfBSplineCurve.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _TColGeom2d_HArray1OfBSplineCurve_HeaderFile
 #include <TColGeom2d_HArray1OfBSplineCurve.hxx>
-#endif
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Geom2dConvert_HeaderFile
 #include <Geom2dConvert.hxx>
-#endif

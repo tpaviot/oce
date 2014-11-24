@@ -5,42 +5,18 @@
 
 #include <GeomInt_TheComputeLineBezierOfWLApprox.hxx>
 
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _AppParCurves_HArray1OfConstraintCouple_HeaderFile
 #include <AppParCurves_HArray1OfConstraintCouple.hxx>
-#endif
-#ifndef _GeomInt_TheMultiLineOfWLApprox_HeaderFile
 #include <GeomInt_TheMultiLineOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_TheMultiLineToolOfWLApprox_HeaderFile
 #include <GeomInt_TheMultiLineToolOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox_HeaderFile
 #include <GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox_HeaderFile
 #include <GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox_HeaderFile
 #include <GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox_HeaderFile
 #include <GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox_HeaderFile
 #include <GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox.hxx>
-#endif
-#ifndef _AppParCurves_MultiCurve_HeaderFile
 #include <AppParCurves_MultiCurve.hxx>
-#endif
-#ifndef _AppParCurves_MultiBSpCurve_HeaderFile
 #include <AppParCurves_MultiBSpCurve.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
  
 
 #define MultiLine GeomInt_TheMultiLineOfWLApprox

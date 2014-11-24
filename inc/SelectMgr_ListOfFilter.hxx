@@ -6,31 +6,15 @@
 #ifndef _SelectMgr_ListOfFilter_HeaderFile
 #define _SelectMgr_ListOfFilter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_SelectMgr_Filter_HeaderFile
 #include <Handle_SelectMgr_Filter.hxx>
-#endif
-#ifndef _Handle_SelectMgr_ListNodeOfListOfFilter_HeaderFile
 #include <Handle_SelectMgr_ListNodeOfListOfFilter.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class SelectMgr_ListIteratorOfListOfFilter;
 class SelectMgr_Filter;
@@ -38,63 +22,63 @@ class SelectMgr_ListNodeOfListOfFilter;
 
 
 
-class SelectMgr_ListOfFilter  {
+class SelectMgr_ListOfFilter 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   SelectMgr_ListOfFilter();
+  Standard_EXPORT SelectMgr_ListOfFilter();
   
-  Standard_EXPORT   SelectMgr_ListOfFilter(const SelectMgr_ListOfFilter& Other);
+  Standard_EXPORT SelectMgr_ListOfFilter(const SelectMgr_ListOfFilter& Other);
   
-  Standard_EXPORT     void Assign(const SelectMgr_ListOfFilter& Other) ;
-    void operator=(const SelectMgr_ListOfFilter& Other) 
+  Standard_EXPORT   void Assign (const SelectMgr_ListOfFilter& Other) ;
+  void operator= (const SelectMgr_ListOfFilter& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~SelectMgr_ListOfFilter()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const Handle(SelectMgr_Filter)& I) ;
+  Standard_EXPORT   void Prepend (const Handle(SelectMgr_Filter)& I) ;
   
-  Standard_EXPORT     void Prepend(const Handle(SelectMgr_Filter)& I,SelectMgr_ListIteratorOfListOfFilter& theIt) ;
+  Standard_EXPORT   void Prepend (const Handle(SelectMgr_Filter)& I, SelectMgr_ListIteratorOfListOfFilter& theIt) ;
   
-  Standard_EXPORT     void Prepend(SelectMgr_ListOfFilter& Other) ;
+  Standard_EXPORT   void Prepend (SelectMgr_ListOfFilter& Other) ;
   
-  Standard_EXPORT     void Append(const Handle(SelectMgr_Filter)& I) ;
+  Standard_EXPORT   void Append (const Handle(SelectMgr_Filter)& I) ;
   
-  Standard_EXPORT     void Append(const Handle(SelectMgr_Filter)& I,SelectMgr_ListIteratorOfListOfFilter& theIt) ;
+  Standard_EXPORT   void Append (const Handle(SelectMgr_Filter)& I, SelectMgr_ListIteratorOfListOfFilter& theIt) ;
   
-  Standard_EXPORT     void Append(SelectMgr_ListOfFilter& Other) ;
+  Standard_EXPORT   void Append (SelectMgr_ListOfFilter& Other) ;
   
-  Standard_EXPORT     Handle_SelectMgr_Filter& First() const;
+  Standard_EXPORT   Handle(SelectMgr_Filter)& First()  const;
   
-  Standard_EXPORT     Handle_SelectMgr_Filter& Last() const;
+  Standard_EXPORT   Handle(SelectMgr_Filter)& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(SelectMgr_ListIteratorOfListOfFilter& It) ;
+  Standard_EXPORT   void Remove (SelectMgr_ListIteratorOfListOfFilter& It) ;
   
-  Standard_EXPORT     void InsertBefore(const Handle(SelectMgr_Filter)& I,SelectMgr_ListIteratorOfListOfFilter& It) ;
+  Standard_EXPORT   void InsertBefore (const Handle(SelectMgr_Filter)& I, SelectMgr_ListIteratorOfListOfFilter& It) ;
   
-  Standard_EXPORT     void InsertBefore(SelectMgr_ListOfFilter& Other,SelectMgr_ListIteratorOfListOfFilter& It) ;
+  Standard_EXPORT   void InsertBefore (SelectMgr_ListOfFilter& Other, SelectMgr_ListIteratorOfListOfFilter& It) ;
   
-  Standard_EXPORT     void InsertAfter(const Handle(SelectMgr_Filter)& I,SelectMgr_ListIteratorOfListOfFilter& It) ;
+  Standard_EXPORT   void InsertAfter (const Handle(SelectMgr_Filter)& I, SelectMgr_ListIteratorOfListOfFilter& It) ;
   
-  Standard_EXPORT     void InsertAfter(SelectMgr_ListOfFilter& Other,SelectMgr_ListIteratorOfListOfFilter& It) ;
+  Standard_EXPORT   void InsertAfter (SelectMgr_ListOfFilter& Other, SelectMgr_ListIteratorOfListOfFilter& It) ;
 
 
 friend class SelectMgr_ListIteratorOfListOfFilter;
-
 
 
 protected:
@@ -107,13 +91,13 @@ private:
 
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
 
-#define Item Handle_SelectMgr_Filter
+#define Item Handle(SelectMgr_Filter)
 #define Item_hxx <SelectMgr_Filter.hxx>
 #define TCollection_ListNode SelectMgr_ListNodeOfListOfFilter
 #define TCollection_ListNode_hxx <SelectMgr_ListNodeOfListOfFilter.hxx>
@@ -138,7 +122,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SelectMgr_ListOfFilter_HeaderFile

@@ -6,31 +6,15 @@
 #ifndef _MoniTool_HSequenceOfElement_HeaderFile
 #define _MoniTool_HSequenceOfElement_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MoniTool_HSequenceOfElement_HeaderFile
 #include <Handle_MoniTool_HSequenceOfElement.hxx>
-#endif
 
-#ifndef _MoniTool_SequenceOfElement_HeaderFile
 #include <MoniTool_SequenceOfElement.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_MoniTool_Element_HeaderFile
 #include <Handle_MoniTool_Element.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class MoniTool_Element;
@@ -38,56 +22,57 @@ class MoniTool_SequenceOfElement;
 
 
 
-class MoniTool_HSequenceOfElement : public MMgt_TShared {
+class MoniTool_HSequenceOfElement : public MMgt_TShared
+{
 
 public:
 
   
-      MoniTool_HSequenceOfElement();
+    MoniTool_HSequenceOfElement();
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void Append(const Handle(MoniTool_Element)& anItem) ;
+  Standard_EXPORT   void Append (const Handle(MoniTool_Element)& anItem) ;
   
-  Standard_EXPORT     void Append(const Handle(MoniTool_HSequenceOfElement)& aSequence) ;
+  Standard_EXPORT   void Append (const Handle(MoniTool_HSequenceOfElement)& aSequence) ;
   
-  Standard_EXPORT     void Prepend(const Handle(MoniTool_Element)& anItem) ;
+  Standard_EXPORT   void Prepend (const Handle(MoniTool_Element)& anItem) ;
   
-  Standard_EXPORT     void Prepend(const Handle(MoniTool_HSequenceOfElement)& aSequence) ;
+  Standard_EXPORT   void Prepend (const Handle(MoniTool_HSequenceOfElement)& aSequence) ;
   
-  Standard_EXPORT     void Reverse() ;
+  Standard_EXPORT   void Reverse() ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(MoniTool_Element)& anItem) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(MoniTool_Element)& anItem) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(MoniTool_HSequenceOfElement)& aSequence) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(MoniTool_HSequenceOfElement)& aSequence) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(MoniTool_Element)& anItem) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(MoniTool_Element)& anItem) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(MoniTool_HSequenceOfElement)& aSequence) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(MoniTool_HSequenceOfElement)& aSequence) ;
   
-  Standard_EXPORT     void Exchange(const Standard_Integer anIndex,const Standard_Integer anOtherIndex) ;
+  Standard_EXPORT   void Exchange (const Standard_Integer anIndex, const Standard_Integer anOtherIndex) ;
   
-  Standard_EXPORT     Handle_MoniTool_HSequenceOfElement Split(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(MoniTool_HSequenceOfElement) Split (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer anIndex,const Handle(MoniTool_Element)& anItem) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer anIndex, const Handle(MoniTool_Element)& anItem) ;
   
-  Standard_EXPORT    const Handle_MoniTool_Element& Value(const Standard_Integer anIndex) const;
+  Standard_EXPORT  const  Handle(MoniTool_Element)& Value (const Standard_Integer anIndex)  const;
   
-  Standard_EXPORT     Handle_MoniTool_Element& ChangeValue(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(MoniTool_Element)& ChangeValue (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer anIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer fromIndex,const Standard_Integer toIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer fromIndex, const Standard_Integer toIndex) ;
   
-       const MoniTool_SequenceOfElement& Sequence() const;
+     const  MoniTool_SequenceOfElement& Sequence()  const;
   
-        MoniTool_SequenceOfElement& ChangeSequence() ;
+      MoniTool_SequenceOfElement& ChangeSequence() ;
   
-  Standard_EXPORT     Handle_MoniTool_HSequenceOfElement ShallowCopy() const;
+  Standard_EXPORT   Handle(MoniTool_HSequenceOfElement) ShallowCopy()  const;
 
 
 
@@ -102,12 +87,12 @@ protected:
 private: 
 
 
-MoniTool_SequenceOfElement mySequence;
+  MoniTool_SequenceOfElement mySequence;
 
 
 };
 
-#define Item Handle_MoniTool_Element
+#define Item Handle(MoniTool_Element)
 #define Item_hxx <MoniTool_Element.hxx>
 #define TheSequence MoniTool_SequenceOfElement
 #define TheSequence_hxx <MoniTool_SequenceOfElement.hxx>
@@ -128,11 +113,10 @@ MoniTool_SequenceOfElement mySequence;
 #undef TCollection_HSequence_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline Handle_MoniTool_HSequenceOfElement ShallowCopy(const Handle_MoniTool_HSequenceOfElement& me) {
+inline Handle(MoniTool_HSequenceOfElement) ShallowCopy(const Handle(MoniTool_HSequenceOfElement)& me) {
  return me->ShallowCopy();
 }
 
 
 
-#endif
+#endif // _MoniTool_HSequenceOfElement_HeaderFile

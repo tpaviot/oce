@@ -6,38 +6,30 @@
 #ifndef _ShapeUpgrade_ShapeDivideClosed_HeaderFile
 #define _ShapeUpgrade_ShapeDivideClosed_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _ShapeUpgrade_ShapeDivide_HeaderFile
 #include <ShapeUpgrade_ShapeDivide.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TopoDS_Shape;
 
 
-//! Divides all closed faces in the shape. Class <br>
-//!          ShapeUpgrade_ClosedFaceDivide is used as divide tool. <br>
-class ShapeUpgrade_ShapeDivideClosed  : public ShapeUpgrade_ShapeDivide {
+//! Divides all closed faces in the shape. Class
+//! ShapeUpgrade_ClosedFaceDivide is used as divide tool.
+class ShapeUpgrade_ShapeDivideClosed  : public ShapeUpgrade_ShapeDivide
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Initialises tool with shape and default parameter. <br>
-  Standard_EXPORT   ShapeUpgrade_ShapeDivideClosed(const TopoDS_Shape& S);
-  //! Sets the number of cuts applied to divide closed faces. <br>
-//!          The number of resulting faces will be num+1. <br>
-  Standard_EXPORT     void SetNbSplitPoints(const Standard_Integer num) ;
-
+  
+  //! Initialises tool with shape and default parameter.
+  Standard_EXPORT ShapeUpgrade_ShapeDivideClosed(const TopoDS_Shape& S);
+  
+  //! Sets the number of cuts applied to divide closed faces.
+  //! The number of resulting faces will be num+1.
+  Standard_EXPORT   void SetNbSplitPoints (const Standard_Integer num) ;
 
 
 
@@ -60,7 +52,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeUpgrade_ShapeDivideClosed_HeaderFile

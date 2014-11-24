@@ -6,19 +6,11 @@
 #ifndef _IGESGeom_HeaderFile
 #define _IGESGeom_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_IGESGeom_Protocol_HeaderFile
 #include <Handle_IGESGeom_Protocol.hxx>
-#endif
 class IGESGeom_Protocol;
 class IGESGeom_CircularArc;
 class IGESGeom_CompositeCurve;
@@ -78,17 +70,19 @@ class IGESGeom_HArray1OfCurveOnSurface;
 class IGESGeom_HArray1OfTransformationMatrix;
 
 
-//! This package consists of B-Rep and CSG Solid entities <br>
-class IGESGeom  {
+//! This package consists of B-Rep and CSG Solid entities
+class IGESGeom 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Prepares dymanic data (Protocol, Modules) for this package <br>
-  Standard_EXPORT   static  void Init() ;
-  //! Returns the Protocol for this Package <br>
-  Standard_EXPORT   static  Handle_IGESGeom_Protocol Protocol() ;
-
+  
+  //! Prepares dymanic data (Protocol, Modules) for this package
+  Standard_EXPORT static   void Init() ;
+  
+  //! Returns the Protocol for this Package
+  Standard_EXPORT static   Handle(IGESGeom_Protocol) Protocol() ;
 
 
 
@@ -167,7 +161,6 @@ friend class IGESGeom_HArray1OfTransformationMatrix;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGeom_HeaderFile

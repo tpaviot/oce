@@ -6,16 +6,15 @@
 #ifndef _CDF_TryStoreStatus_HeaderFile
 #define _CDF_TryStoreStatus_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum CDF_TryStoreStatus {
+
+enum CDF_TryStoreStatus
+{
 CDF_TS_OK,
 CDF_TS_NoCurrentDocument,
 CDF_TS_NoDriver,
 CDF_TS_NoSubComponentDriver
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _CDF_TryStoreStatus_HeaderFile

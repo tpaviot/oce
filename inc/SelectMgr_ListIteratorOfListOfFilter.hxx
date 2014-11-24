@@ -6,28 +6,14 @@
 #ifndef _SelectMgr_ListIteratorOfListOfFilter_HeaderFile
 #define _SelectMgr_ListIteratorOfListOfFilter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_SelectMgr_Filter_HeaderFile
 #include <Handle_SelectMgr_Filter.hxx>
-#endif
-#ifndef _Handle_SelectMgr_ListNodeOfListOfFilter_HeaderFile
 #include <Handle_SelectMgr_ListNodeOfListOfFilter.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class SelectMgr_ListOfFilter;
@@ -36,27 +22,27 @@ class SelectMgr_ListNodeOfListOfFilter;
 
 
 
-class SelectMgr_ListIteratorOfListOfFilter  {
+class SelectMgr_ListIteratorOfListOfFilter 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   SelectMgr_ListIteratorOfListOfFilter();
+  Standard_EXPORT SelectMgr_ListIteratorOfListOfFilter();
   
-  Standard_EXPORT   SelectMgr_ListIteratorOfListOfFilter(const SelectMgr_ListOfFilter& L);
+  Standard_EXPORT SelectMgr_ListIteratorOfListOfFilter(const SelectMgr_ListOfFilter& L);
   
-  Standard_EXPORT     void Initialize(const SelectMgr_ListOfFilter& L) ;
+  Standard_EXPORT   void Initialize (const SelectMgr_ListOfFilter& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     Handle_SelectMgr_Filter& Value() const;
+  Standard_EXPORT   Handle(SelectMgr_Filter)& Value()  const;
 
 
 friend class SelectMgr_ListOfFilter;
-
 
 
 protected:
@@ -69,13 +55,13 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
 
-#define Item Handle_SelectMgr_Filter
+#define Item Handle(SelectMgr_Filter)
 #define Item_hxx <SelectMgr_Filter.hxx>
 #define TCollection_ListNode SelectMgr_ListNodeOfListOfFilter
 #define TCollection_ListNode_hxx <SelectMgr_ListNodeOfListOfFilter.hxx>
@@ -100,7 +86,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SelectMgr_ListIteratorOfListOfFilter_HeaderFile

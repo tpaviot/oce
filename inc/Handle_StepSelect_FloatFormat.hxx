@@ -6,22 +6,15 @@
 #ifndef _Handle_StepSelect_FloatFormat_HeaderFile
 #define _Handle_StepSelect_FloatFormat_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepSelect_FileModifier_HeaderFile
 #include <Handle_StepSelect_FileModifier.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepSelect_FileModifier);
 class StepSelect_FloatFormat;
 
-DEFINE_STANDARD_HANDLE(StepSelect_FloatFormat,StepSelect_FileModifier)
+DEFINE_STANDARD_HANDLE(StepSelect_FloatFormat, StepSelect_FileModifier)
 
-#endif
+#endif // _Handle_StepSelect_FloatFormat_HeaderFile

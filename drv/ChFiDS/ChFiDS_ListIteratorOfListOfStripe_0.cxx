@@ -5,24 +5,14 @@
 
 #include <ChFiDS_ListIteratorOfListOfStripe.hxx>
 
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _ChFiDS_ListOfStripe_HeaderFile
 #include <ChFiDS_ListOfStripe.hxx>
-#endif
-#ifndef _ChFiDS_Stripe_HeaderFile
 #include <ChFiDS_Stripe.hxx>
-#endif
-#ifndef _ChFiDS_ListNodeOfListOfStripe_HeaderFile
 #include <ChFiDS_ListNodeOfListOfStripe.hxx>
-#endif
  
 
-#define Item Handle_ChFiDS_Stripe
+#define Item Handle(ChFiDS_Stripe)
 #define Item_hxx <ChFiDS_Stripe.hxx>
 #define TCollection_ListNode ChFiDS_ListNodeOfListOfStripe
 #define TCollection_ListNode_hxx <ChFiDS_ListNodeOfListOfStripe.hxx>

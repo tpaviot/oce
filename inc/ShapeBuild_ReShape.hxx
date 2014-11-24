@@ -6,96 +6,86 @@
 #ifndef _ShapeBuild_ReShape_HeaderFile
 #define _ShapeBuild_ReShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeBuild_ReShape_HeaderFile
 #include <Handle_ShapeBuild_ReShape.hxx>
-#endif
 
-#ifndef _BRepTools_ReShape_HeaderFile
 #include <BRepTools_ReShape.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _ShapeExtend_Status_HeaderFile
 #include <ShapeExtend_Status.hxx>
-#endif
 class TopoDS_Shape;
 
 
-//! Rebuilds a Shape by making pre-defined substitutions on some <br>
-//!          of its components <br>
-//! <br>
-//!          In a first phase, it records requests to replace or remove <br>
-//!          some individual shapes <br>
-//!          For each shape, the last given request is recorded <br>
-//!          Requests may be applied "Oriented" (i.e. only to an item with <br>
-//!          the SAME orientation) or not (the orientation of replacing <br>
-//!          shape is respectful of that of the original one) <br>
-//! <br>
-//!          Then, these requests may be applied to any shape which may <br>
-//!          contain one or more of these individual shapes <br>
-class ShapeBuild_ReShape : public BRepTools_ReShape {
+//! Rebuilds a Shape by making pre-defined substitutions on some
+//! of its components
+//!
+//! In a first phase, it records requests to replace or remove
+//! some individual shapes
+//! For each shape, the last given request is recorded
+//! Requests may be applied "Oriented" (i.e. only to an item with
+//! the SAME orientation) or not (the orientation of replacing
+//! shape is respectful of that of the original one)
+//!
+//! Then, these requests may be applied to any shape which may
+//! contain one or more of these individual shapes
+class ShapeBuild_ReShape : public BRepTools_ReShape
+{
 
 public:
 
-  //! Returns an empty Reshape <br>
-  Standard_EXPORT   ShapeBuild_ReShape();
-  //! Applies the substitutions requests to a shape <br>
-//! <br>
-//!          <until> gives the level of type until which requests are taken <br>
-//!          into account. For subshapes of the type <until> no rebuild <br>
-//!          and futher exploring are done. <br>
-//!          ACTUALLY, NOT IMPLEMENTED BELOW  TopAbs_FACE <br>
-//! <br>
-//!          <buildmode> says how to do on a SOLID,SHELL ... if one of its <br>
-//!          sub-shapes has been changed: <br>
-//!          0: at least one Replace or Remove -> COMPOUND, else as such <br>
-//!          1: at least one Remove (Replace are ignored) -> COMPOUND <br>
-//!          2: Replace and Remove are both ignored <br>
-//!          If Replace/Remove are ignored or absent, the result as same <br>
-//!          type as the starting shape <br>
-  Standard_EXPORT   virtual  TopoDS_Shape Apply(const TopoDS_Shape& shape,const TopAbs_ShapeEnum until,const Standard_Integer buildmode) ;
-  //! Applies the substitutions requests to a shape. <br>
-//! <br>
-//!          <until> gives the level of type until which requests are taken <br>
-//!          into account. For subshapes of the type <until> no rebuild <br>
-//!          and futher exploring are done. <br>
-//! <br>
-//!          NOTE: each subshape can be replaced by shape of the same type <br>
-//!          or by shape containing only shapes of that type (for <br>
-//!          example, TopoDS_Edge can be replaced by TopoDS_Edge, <br>
-//!          TopoDS_Wire or TopoDS_Compound containing TopoDS_Edges). <br>
-//!          If incompatible shape type is encountered, it is ignored <br>
-//!          and flag FAIL1 is set in Status. <br>
-  Standard_EXPORT   virtual  TopoDS_Shape Apply(const TopoDS_Shape& shape,const TopAbs_ShapeEnum until = TopAbs_SHAPE) ;
-  //! Returns a complete substitution status for a shape <br>
-//!          0  : not recorded,   <newsh> = original <shape> <br>
-//!          < 0: to be removed,  <newsh> is NULL <br>
-//!          > 0: to be replaced, <newsh> is a new item <br>
-//!          If <last> is False, returns status and new shape recorded in <br>
-//!          the map directly for the shape, if True and status > 0 then <br>
-//!          recursively searches for the last status and new shape. <br>
-  Standard_EXPORT   virtual  Standard_Integer Status(const TopoDS_Shape& shape,TopoDS_Shape& newsh,const Standard_Boolean last = Standard_False) ;
-  //! Queries the status of last call to Apply(shape,enum) <br>
-//!          OK   : no (sub)shapes replaced or removed <br>
-//!          DONE1: source (starting) shape replaced <br>
-//!          DONE2: source (starting) shape removed <br>
-//!          DONE3: some subshapes replaced <br>
-//!          DONE4: some subshapes removed <br>
-//!          FAIL1: some replacements not done because of bad type of subshape <br>
-  Standard_EXPORT     Standard_Boolean Status(const ShapeExtend_Status status) const;
+  
+  //! Returns an empty Reshape
+  Standard_EXPORT ShapeBuild_ReShape();
+  
+  //! Applies the substitutions requests to a shape
+  //!
+  //! <until> gives the level of type until which requests are taken
+  //! into account. For subshapes of the type <until> no rebuild
+  //! and futher exploring are done.
+  //! ACTUALLY, NOT IMPLEMENTED BELOW  TopAbs_FACE
+  //!
+  //! <buildmode> says how to do on a SOLID,SHELL ... if one of its
+  //! sub-shapes has been changed:
+  //! 0: at least one Replace or Remove -> COMPOUND, else as such
+  //! 1: at least one Remove (Replace are ignored) -> COMPOUND
+  //! 2: Replace and Remove are both ignored
+  //! If Replace/Remove are ignored or absent, the result as same
+  //! type as the starting shape
+  Standard_EXPORT virtual   TopoDS_Shape Apply (const TopoDS_Shape& shape, const TopAbs_ShapeEnum until, const Standard_Integer buildmode) ;
+  
+  //! Applies the substitutions requests to a shape.
+  //!
+  //! <until> gives the level of type until which requests are taken
+  //! into account. For subshapes of the type <until> no rebuild
+  //! and futher exploring are done.
+  //!
+  //! NOTE: each subshape can be replaced by shape of the same type
+  //! or by shape containing only shapes of that type (for
+  //! example, TopoDS_Edge can be replaced by TopoDS_Edge,
+  //! TopoDS_Wire or TopoDS_Compound containing TopoDS_Edges).
+  //! If incompatible shape type is encountered, it is ignored
+  //! and flag FAIL1 is set in Status.
+  Standard_EXPORT virtual   TopoDS_Shape Apply (const TopoDS_Shape& shape, const TopAbs_ShapeEnum until = TopAbs_SHAPE) ;
+  
+  //! Returns a complete substitution status for a shape
+  //! 0  : not recorded,   <newsh> = original <shape>
+  //! < 0: to be removed,  <newsh> is NULL
+  //! > 0: to be replaced, <newsh> is a new item
+  //! If <last> is False, returns status and new shape recorded in
+  //! the map directly for the shape, if True and status > 0 then
+  //! recursively searches for the last status and new shape.
+  Standard_EXPORT virtual   Standard_Integer Status (const TopoDS_Shape& shape, TopoDS_Shape& newsh, const Standard_Boolean last = Standard_False) ;
+  
+  //! Queries the status of last call to Apply(shape,enum)
+  //! OK   : no (sub)shapes replaced or removed
+  //! DONE1: source (starting) shape replaced
+  //! DONE2: source (starting) shape removed
+  //! DONE3: some subshapes replaced
+  //! DONE4: some subshapes removed
+  //! FAIL1: some replacements not done because of bad type of subshape
+  Standard_EXPORT   Standard_Boolean Status (const ShapeExtend_Status status)  const;
 
 
 
@@ -118,7 +108,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeBuild_ReShape_HeaderFile

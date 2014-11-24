@@ -6,34 +6,16 @@
 #ifndef _StepData_Described_HeaderFile
 #define _StepData_Described_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepData_Described_HeaderFile
 #include <Handle_StepData_Described.hxx>
-#endif
 
-#ifndef _Handle_StepData_EDescr_HeaderFile
 #include <Handle_StepData_EDescr.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_StepData_Simple_HeaderFile
 #include <Handle_StepData_Simple.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
 class StepData_EDescr;
 class Interface_InterfaceMismatch;
 class StepData_Simple;
@@ -42,34 +24,44 @@ class Interface_Check;
 class Interface_EntityIterator;
 
 
-//! General frame to describe entities with Description (Simple or <br>
-//!           Complex) <br>
-class StepData_Described : public MMgt_TShared {
+//! General frame to describe entities with Description (Simple or
+//! Complex)
+class StepData_Described : public MMgt_TShared
+{
 
 public:
 
-  //! Returns the Description used to define this entity <br>
-  Standard_EXPORT     Handle_StepData_EDescr Description() const;
-  //! Tells if a described entity is complex <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsComplex() const = 0;
-  //! Tells if a step type is matched by <me> <br>
-//!           For a Simple Entity : own type or super type <br>
-//!           For a Complex Entity : one of the members <br>
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const Standard_CString steptype) const = 0;
-  //! Returns a Simple Entity which matches with a Type in <me> : <br>
-//!           For a Simple Entity : me if it matches, else a null handle <br>
-//!           For a Complex Entity : the member which matches, else null <br>
-  Standard_EXPORT   virtual  Handle_StepData_Simple As(const Standard_CString steptype) const = 0;
-  //! Tells if a Field brings a given name <br>
-  Standard_EXPORT   virtual  Standard_Boolean HasField(const Standard_CString name) const = 0;
-  //! Returns a Field from its name; read-only <br>
-  Standard_EXPORT   virtual const StepData_Field& Field(const Standard_CString name) const = 0;
-  //! Returns a Field from its name; read or write <br>
-  Standard_EXPORT   virtual  StepData_Field& CField(const Standard_CString name)  = 0;
-  //! Fills a Check by using its Description <br>
-  Standard_EXPORT   virtual  void Check(Handle(Interface_Check)& ach) const = 0;
-  //! Fills an EntityIterator with entities shared by <me> <br>
-  Standard_EXPORT   virtual  void Shared(Interface_EntityIterator& list) const = 0;
+  
+  //! Returns the Description used to define this entity
+  Standard_EXPORT   Handle(StepData_EDescr) Description()  const;
+  
+  //! Tells if a described entity is complex
+  Standard_EXPORT virtual   Standard_Boolean IsComplex()  const = 0;
+  
+  //! Tells if a step type is matched by <me>
+  //! For a Simple Entity : own type or super type
+  //! For a Complex Entity : one of the members
+  Standard_EXPORT virtual   Standard_Boolean Matches (const Standard_CString steptype)  const = 0;
+  
+  //! Returns a Simple Entity which matches with a Type in <me> :
+  //! For a Simple Entity : me if it matches, else a null handle
+  //! For a Complex Entity : the member which matches, else null
+  Standard_EXPORT virtual   Handle(StepData_Simple) As (const Standard_CString steptype)  const = 0;
+  
+  //! Tells if a Field brings a given name
+  Standard_EXPORT virtual   Standard_Boolean HasField (const Standard_CString name)  const = 0;
+  
+  //! Returns a Field from its name; read-only
+  Standard_EXPORT virtual  const  StepData_Field& Field (const Standard_CString name)  const = 0;
+  
+  //! Returns a Field from its name; read or write
+  Standard_EXPORT virtual   StepData_Field& CField (const Standard_CString name)  = 0;
+  
+  //! Fills a Check by using its Description
+  Standard_EXPORT virtual   void Check (Handle(Interface_Check)& ach)  const = 0;
+  
+  //! Fills an EntityIterator with entities shared by <me>
+  Standard_EXPORT virtual   void Shared (Interface_EntityIterator& list)  const = 0;
 
 
 
@@ -78,16 +70,17 @@ public:
 
 protected:
 
-  //! Initializes a Described Entity from a Description <br>
-//!           (i.e. puts it in a field ...) <br>
-  Standard_EXPORT   StepData_Described(const Handle(StepData_EDescr)& descr);
+  
+  //! Initializes a Described Entity from a Description
+  //! (i.e. puts it in a field ...)
+  Standard_EXPORT StepData_Described(const Handle(StepData_EDescr)& descr);
 
 
 
 private: 
 
 
-Handle_StepData_EDescr thedescr;
+  Handle(StepData_EDescr) thedescr;
 
 
 };
@@ -96,7 +89,6 @@ Handle_StepData_EDescr thedescr;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepData_Described_HeaderFile

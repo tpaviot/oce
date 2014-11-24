@@ -6,28 +6,14 @@
 #ifndef _Message_ListOfMsg_HeaderFile
 #define _Message_ListOfMsg_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_Message_ListNodeOfListOfMsg_HeaderFile
 #include <Handle_Message_ListNodeOfListOfMsg.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class Message_ListIteratorOfListOfMsg;
 class Message_Msg;
@@ -35,63 +21,63 @@ class Message_ListNodeOfListOfMsg;
 
 
 
-class Message_ListOfMsg  {
+class Message_ListOfMsg 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Message_ListOfMsg();
+  Standard_EXPORT Message_ListOfMsg();
   
-  Standard_EXPORT   Message_ListOfMsg(const Message_ListOfMsg& Other);
+  Standard_EXPORT Message_ListOfMsg(const Message_ListOfMsg& Other);
   
-  Standard_EXPORT     void Assign(const Message_ListOfMsg& Other) ;
-    void operator=(const Message_ListOfMsg& Other) 
+  Standard_EXPORT   void Assign (const Message_ListOfMsg& Other) ;
+  void operator= (const Message_ListOfMsg& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~Message_ListOfMsg()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const Message_Msg& I) ;
+  Standard_EXPORT   void Prepend (const Message_Msg& I) ;
   
-  Standard_EXPORT     void Prepend(const Message_Msg& I,Message_ListIteratorOfListOfMsg& theIt) ;
+  Standard_EXPORT   void Prepend (const Message_Msg& I, Message_ListIteratorOfListOfMsg& theIt) ;
   
-  Standard_EXPORT     void Prepend(Message_ListOfMsg& Other) ;
+  Standard_EXPORT   void Prepend (Message_ListOfMsg& Other) ;
   
-  Standard_EXPORT     void Append(const Message_Msg& I) ;
+  Standard_EXPORT   void Append (const Message_Msg& I) ;
   
-  Standard_EXPORT     void Append(const Message_Msg& I,Message_ListIteratorOfListOfMsg& theIt) ;
+  Standard_EXPORT   void Append (const Message_Msg& I, Message_ListIteratorOfListOfMsg& theIt) ;
   
-  Standard_EXPORT     void Append(Message_ListOfMsg& Other) ;
+  Standard_EXPORT   void Append (Message_ListOfMsg& Other) ;
   
-  Standard_EXPORT     Message_Msg& First() const;
+  Standard_EXPORT   Message_Msg& First()  const;
   
-  Standard_EXPORT     Message_Msg& Last() const;
+  Standard_EXPORT   Message_Msg& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(Message_ListIteratorOfListOfMsg& It) ;
+  Standard_EXPORT   void Remove (Message_ListIteratorOfListOfMsg& It) ;
   
-  Standard_EXPORT     void InsertBefore(const Message_Msg& I,Message_ListIteratorOfListOfMsg& It) ;
+  Standard_EXPORT   void InsertBefore (const Message_Msg& I, Message_ListIteratorOfListOfMsg& It) ;
   
-  Standard_EXPORT     void InsertBefore(Message_ListOfMsg& Other,Message_ListIteratorOfListOfMsg& It) ;
+  Standard_EXPORT   void InsertBefore (Message_ListOfMsg& Other, Message_ListIteratorOfListOfMsg& It) ;
   
-  Standard_EXPORT     void InsertAfter(const Message_Msg& I,Message_ListIteratorOfListOfMsg& It) ;
+  Standard_EXPORT   void InsertAfter (const Message_Msg& I, Message_ListIteratorOfListOfMsg& It) ;
   
-  Standard_EXPORT     void InsertAfter(Message_ListOfMsg& Other,Message_ListIteratorOfListOfMsg& It) ;
+  Standard_EXPORT   void InsertAfter (Message_ListOfMsg& Other, Message_ListIteratorOfListOfMsg& It) ;
 
 
 friend class Message_ListIteratorOfListOfMsg;
-
 
 
 protected:
@@ -104,8 +90,8 @@ private:
 
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
@@ -135,7 +121,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Message_ListOfMsg_HeaderFile

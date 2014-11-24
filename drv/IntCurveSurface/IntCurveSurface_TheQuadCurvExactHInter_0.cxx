@@ -5,28 +5,18 @@
 
 #include <IntCurveSurface_TheQuadCurvExactHInter.hxx>
 
-#ifndef _Adaptor3d_HSurface_HeaderFile
 #include <Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Adaptor3d_HSurfaceTool_HeaderFile
 #include <Adaptor3d_HSurfaceTool.hxx>
-#endif
-#ifndef _Adaptor3d_HCurve_HeaderFile
 #include <Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _IntCurveSurface_TheHCurveTool_HeaderFile
 #include <IntCurveSurface_TheHCurveTool.hxx>
-#endif
-#ifndef _IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter_HeaderFile
 #include <IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter.hxx>
-#endif
  
 
-#define TheSurface Handle_Adaptor3d_HSurface
+#define TheSurface Handle(Adaptor3d_HSurface)
 #define TheSurface_hxx <Adaptor3d_HSurface.hxx>
 #define TheSurfaceTool Adaptor3d_HSurfaceTool
 #define TheSurfaceTool_hxx <Adaptor3d_HSurfaceTool.hxx>
-#define TheCurve Handle_Adaptor3d_HCurve
+#define TheCurve Handle(Adaptor3d_HCurve)
 #define TheCurve_hxx <Adaptor3d_HCurve.hxx>
 #define TheCurveTool IntCurveSurface_TheHCurveTool
 #define TheCurveTool_hxx <IntCurveSurface_TheHCurveTool.hxx>

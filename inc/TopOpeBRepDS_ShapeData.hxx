@@ -6,58 +6,40 @@
 #ifndef _TopOpeBRepDS_ShapeData_HeaderFile
 #define _TopOpeBRepDS_ShapeData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopOpeBRepDS_ListOfInterference_HeaderFile
 #include <TopOpeBRepDS_ListOfInterference.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Config_HeaderFile
 #include <TopOpeBRepDS_Config.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopOpeBRepDS_DataStructure;
 class TopOpeBRepDS_ListOfInterference;
 
 
 
-class TopOpeBRepDS_ShapeData  {
+class TopOpeBRepDS_ShapeData 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepDS_ShapeData();
+  Standard_EXPORT TopOpeBRepDS_ShapeData();
   
-  Standard_EXPORT    const TopOpeBRepDS_ListOfInterference& Interferences() const;
+  Standard_EXPORT  const  TopOpeBRepDS_ListOfInterference& Interferences()  const;
   
-  Standard_EXPORT     TopOpeBRepDS_ListOfInterference& ChangeInterferences() ;
+  Standard_EXPORT   TopOpeBRepDS_ListOfInterference& ChangeInterferences() ;
   
-  Standard_EXPORT     Standard_Boolean Keep() const;
+  Standard_EXPORT   Standard_Boolean Keep()  const;
   
-  Standard_EXPORT     void ChangeKeep(const Standard_Boolean B) ;
+  Standard_EXPORT   void ChangeKeep (const Standard_Boolean B) ;
 
 
 friend class TopOpeBRepDS_DataStructure;
-
 
 
 protected:
@@ -70,15 +52,15 @@ private:
 
 
 
-TopOpeBRepDS_ListOfInterference myInterferences;
-TopTools_ListOfShape mySameDomain;
-Standard_Integer mySameDomainRef;
-TopOpeBRepDS_Config mySameDomainOri;
-Standard_Integer mySameDomainInd;
-TopAbs_Orientation myOrientation;
-Standard_Boolean myOrientationDef;
-Standard_Integer myAncestorRank;
-Standard_Boolean myKeep;
+  TopOpeBRepDS_ListOfInterference myInterferences;
+  TopTools_ListOfShape mySameDomain;
+  Standard_Integer mySameDomainRef;
+  TopOpeBRepDS_Config mySameDomainOri;
+  Standard_Integer mySameDomainInd;
+  TopAbs_Orientation myOrientation;
+  Standard_Boolean myOrientationDef;
+  Standard_Integer myAncestorRank;
+  Standard_Boolean myKeep;
 
 
 };
@@ -87,7 +69,6 @@ Standard_Boolean myKeep;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_ShapeData_HeaderFile

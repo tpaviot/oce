@@ -5,56 +5,26 @@
 
 #include <Contap_TheSearch.hxx>
 
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_ConstructionError_HeaderFile
 #include <Standard_ConstructionError.hxx>
-#endif
-#ifndef _Adaptor3d_HVertex_HeaderFile
 #include <Adaptor3d_HVertex.hxx>
-#endif
-#ifndef _Adaptor2d_HCurve2d_HeaderFile
 #include <Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _Contap_HCurve2dTool_HeaderFile
 #include <Contap_HCurve2dTool.hxx>
-#endif
-#ifndef _Contap_HContTool_HeaderFile
 #include <Contap_HContTool.hxx>
-#endif
-#ifndef _Adaptor3d_TopolTool_HeaderFile
 #include <Adaptor3d_TopolTool.hxx>
-#endif
-#ifndef _Contap_ArcFunction_HeaderFile
 #include <Contap_ArcFunction.hxx>
-#endif
-#ifndef _Contap_ThePathPointOfTheSearch_HeaderFile
 #include <Contap_ThePathPointOfTheSearch.hxx>
-#endif
-#ifndef _Contap_SequenceOfPathPointOfTheSearch_HeaderFile
 #include <Contap_SequenceOfPathPointOfTheSearch.hxx>
-#endif
-#ifndef _Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch_HeaderFile
 #include <Contap_SequenceNodeOfSequenceOfPathPointOfTheSearch.hxx>
-#endif
-#ifndef _Contap_TheSegmentOfTheSearch_HeaderFile
 #include <Contap_TheSegmentOfTheSearch.hxx>
-#endif
-#ifndef _Contap_SequenceOfSegmentOfTheSearch_HeaderFile
 #include <Contap_SequenceOfSegmentOfTheSearch.hxx>
-#endif
-#ifndef _Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch_HeaderFile
 #include <Contap_SequenceNodeOfSequenceOfSegmentOfTheSearch.hxx>
-#endif
  
 
-#define TheVertex Handle_Adaptor3d_HVertex
+#define TheVertex Handle(Adaptor3d_HVertex)
 #define TheVertex_hxx <Adaptor3d_HVertex.hxx>
-#define TheArc Handle_Adaptor2d_HCurve2d
+#define TheArc Handle(Adaptor2d_HCurve2d)
 #define TheArc_hxx <Adaptor2d_HCurve2d.hxx>
 #define TheArcTool Contap_HCurve2dTool
 #define TheArcTool_hxx <Contap_HCurve2dTool.hxx>

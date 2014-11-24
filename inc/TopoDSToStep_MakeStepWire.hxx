@@ -6,28 +6,14 @@
 #ifndef _TopoDSToStep_MakeStepWire_HeaderFile
 #define _TopoDSToStep_MakeStepWire_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepShape_TopologicalRepresentationItem_HeaderFile
 #include <Handle_StepShape_TopologicalRepresentationItem.hxx>
-#endif
-#ifndef _TopoDSToStep_MakeWireError_HeaderFile
 #include <TopoDSToStep_MakeWireError.hxx>
-#endif
-#ifndef _TopoDSToStep_Root_HeaderFile
 #include <TopoDSToStep_Root.hxx>
-#endif
-#ifndef _Handle_Transfer_FinderProcess_HeaderFile
 #include <Handle_Transfer_FinderProcess.hxx>
-#endif
 class StepShape_TopologicalRepresentationItem;
 class StdFail_NotDone;
 class TopoDS_Wire;
@@ -35,25 +21,25 @@ class TopoDSToStep_Tool;
 class Transfer_FinderProcess;
 
 
-//! This class implements the mapping between classes <br>
-//!          Wire from TopoDS and TopologicalRepresentationItem from <br>
-//!          StepShape. <br>
-class TopoDSToStep_MakeStepWire  : public TopoDSToStep_Root {
+//! This class implements the mapping between classes
+//! Wire from TopoDS and TopologicalRepresentationItem from
+//! StepShape.
+class TopoDSToStep_MakeStepWire  : public TopoDSToStep_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopoDSToStep_MakeStepWire();
+  Standard_EXPORT TopoDSToStep_MakeStepWire();
   
-  Standard_EXPORT   TopoDSToStep_MakeStepWire(const TopoDS_Wire& W,TopoDSToStep_Tool& T,const Handle(Transfer_FinderProcess)& FP);
+  Standard_EXPORT TopoDSToStep_MakeStepWire(const TopoDS_Wire& W, TopoDSToStep_Tool& T, const Handle(Transfer_FinderProcess)& FP);
   
-  Standard_EXPORT     void Init(const TopoDS_Wire& W,TopoDSToStep_Tool& T,const Handle(Transfer_FinderProcess)& FP) ;
+  Standard_EXPORT   void Init (const TopoDS_Wire& W, TopoDSToStep_Tool& T, const Handle(Transfer_FinderProcess)& FP) ;
   
-  Standard_EXPORT    const Handle_StepShape_TopologicalRepresentationItem& Value() const;
+  Standard_EXPORT  const  Handle(StepShape_TopologicalRepresentationItem)& Value()  const;
   
-  Standard_EXPORT     TopoDSToStep_MakeWireError Error() const;
-
+  Standard_EXPORT   TopoDSToStep_MakeWireError Error()  const;
 
 
 
@@ -68,8 +54,8 @@ private:
 
 
 
-Handle_StepShape_TopologicalRepresentationItem myResult;
-TopoDSToStep_MakeWireError myError;
+  Handle(StepShape_TopologicalRepresentationItem) myResult;
+  TopoDSToStep_MakeWireError myError;
 
 
 };
@@ -78,7 +64,6 @@ TopoDSToStep_MakeWireError myError;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopoDSToStep_MakeStepWire_HeaderFile

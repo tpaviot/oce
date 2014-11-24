@@ -86,6 +86,8 @@
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 		</Linker>
 		<Unit filename="../../../drv/StdSchema/StdSchema.cxx" />
 		<Unit filename="../../../drv/StdSchema/StdSchema_DBC_VArrayOfCharacter.cxx" />

@@ -122,6 +122,8 @@
 			<Add library="TKVoxel" />
 			<Add library="TKShapeSchema" />
 			<Add library="TKPShape" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
@@ -134,6 +136,8 @@
 			<Add library="freetype" />
 			<Add library="objc" />
 			<Add library="freetype" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
 			<Add library="tbb" />

@@ -6,8 +6,11 @@
 #ifndef _AIS_KindOfSurface_HeaderFile
 #define _AIS_KindOfSurface_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum AIS_KindOfSurface {
+
+enum AIS_KindOfSurface
+{
 AIS_KOS_Plane,
 AIS_KOS_Cylinder,
 AIS_KOS_Cone,
@@ -18,8 +21,4 @@ AIS_KOS_Extrusion,
 AIS_KOS_OtherSurface
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _AIS_KindOfSurface_HeaderFile

@@ -6,36 +6,29 @@
 #ifndef _BRepAlgo_Common_HeaderFile
 #define _BRepAlgo_Common_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepAlgo_BooleanOperation_HeaderFile
 #include <BRepAlgo_BooleanOperation.hxx>
-#endif
 class TopoDS_Shape;
 
 
-//! Describes functions for performing a topological <br>
-//! common operation (Boolean intersection). <br>
-//! A Common object provides the framework for: <br>
-//! - defining the construction of a common shape, <br>
-//! - implementing the construction algorithm, and <br>
-//! - consulting the result. <br>
-class BRepAlgo_Common  : public BRepAlgo_BooleanOperation {
+//! Describes functions for performing a topological
+//! common operation (Boolean intersection).
+//! A Common object provides the framework for:
+//! - defining the construction of a common shape,
+//! - implementing the construction algorithm, and
+//! - consulting the result.
+class BRepAlgo_Common  : public BRepAlgo_BooleanOperation
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Constructs the common part of shapes S1 and S2. <br>
-  Standard_EXPORT   BRepAlgo_Common(const TopoDS_Shape& S1,const TopoDS_Shape& S2);
-
+  
+  //! Constructs the common part of shapes S1 and S2.
+  Standard_EXPORT BRepAlgo_Common(const TopoDS_Shape& S1, const TopoDS_Shape& S2);
 
 
 
@@ -58,7 +51,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepAlgo_Common_HeaderFile

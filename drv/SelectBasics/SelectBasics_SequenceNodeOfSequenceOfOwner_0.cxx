@@ -5,16 +5,10 @@
 
 #include <SelectBasics_SequenceNodeOfSequenceOfOwner.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _SelectBasics_EntityOwner_HeaderFile
 #include <SelectBasics_EntityOwner.hxx>
-#endif
-#ifndef _SelectBasics_SequenceOfOwner_HeaderFile
 #include <SelectBasics_SequenceOfOwner.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(SelectBasics_SequenceNodeOfSequenceOfOwner,Standard_Transient
 IMPLEMENT_STANDARD_RTTI(SelectBasics_SequenceNodeOfSequenceOfOwner)
 
 
-#define SeqItem Handle_SelectBasics_EntityOwner
+#define SeqItem Handle(SelectBasics_EntityOwner)
 #define SeqItem_hxx <SelectBasics_EntityOwner.hxx>
 #define TCollection_SequenceNode SelectBasics_SequenceNodeOfSequenceOfOwner
 #define TCollection_SequenceNode_hxx <SelectBasics_SequenceNodeOfSequenceOfOwner.hxx>

@@ -5,22 +5,12 @@
 
 #include <MAT2d_DataMapNodeOfDataMapOfIntegerPnt2d.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _MAT2d_DataMapOfIntegerPnt2d_HeaderFile
 #include <MAT2d_DataMapOfIntegerPnt2d.hxx>
-#endif
-#ifndef _MAT2d_DataMapIteratorOfDataMapOfIntegerPnt2d_HeaderFile
 #include <MAT2d_DataMapIteratorOfDataMapOfIntegerPnt2d.hxx>
-#endif
 
  
 

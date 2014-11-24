@@ -5,30 +5,16 @@
 
 #include <BRepFill_DataMapOfNodeDataMapOfShapeShape.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _MAT_Node_HeaderFile
 #include <MAT_Node.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeShape_HeaderFile
 #include <TopTools_DataMapOfShapeShape.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape_HeaderFile
 #include <BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape.hxx>
-#endif
-#ifndef _BRepFill_DataMapIteratorOfDataMapOfNodeDataMapOfShapeShape_HeaderFile
 #include <BRepFill_DataMapIteratorOfDataMapOfNodeDataMapOfShapeShape.hxx>
-#endif
  
 
-#define TheKey Handle_MAT_Node
+#define TheKey Handle(MAT_Node)
 #define TheKey_hxx <MAT_Node.hxx>
 #define TheItem TopTools_DataMapOfShapeShape
 #define TheItem_hxx <TopTools_DataMapOfShapeShape.hxx>

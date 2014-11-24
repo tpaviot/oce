@@ -5,24 +5,12 @@
 
 #include <Approx_MyLeastSquareOfFitAndDivide2d.hxx>
 
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_DimensionError_HeaderFile
 #include <Standard_DimensionError.hxx>
-#endif
-#ifndef _AppCont_Function2d_HeaderFile
 #include <AppCont_Function2d.hxx>
-#endif
-#ifndef _AppCont_FunctionTool2d_HeaderFile
 #include <AppCont_FunctionTool2d.hxx>
-#endif
-#ifndef _AppParCurves_MultiCurve_HeaderFile
 #include <AppParCurves_MultiCurve.hxx>
-#endif
  
 
 #define MultiLine AppCont_Function2d

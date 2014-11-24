@@ -6,40 +6,18 @@
 #ifndef _IntCurveSurface_TheCSFunctionOfHInter_HeaderFile
 #define _IntCurveSurface_TheCSFunctionOfHInter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HCurve_HeaderFile
 #include <Handle_Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _math_FunctionSetWithDerivatives_HeaderFile
 #include <math_FunctionSetWithDerivatives.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
 #include <math_Vector.hxx>
-#endif
 class Adaptor3d_HSurface;
 class Adaptor3d_HCurve;
 class Adaptor3d_HSurfaceTool;
@@ -49,32 +27,32 @@ class gp_Pnt;
 
 
 
-class IntCurveSurface_TheCSFunctionOfHInter  : public math_FunctionSetWithDerivatives {
+class IntCurveSurface_TheCSFunctionOfHInter  : public math_FunctionSetWithDerivatives
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntCurveSurface_TheCSFunctionOfHInter(const Handle(Adaptor3d_HSurface)& S,const Handle(Adaptor3d_HCurve)& C);
+  Standard_EXPORT IntCurveSurface_TheCSFunctionOfHInter(const Handle(Adaptor3d_HSurface)& S, const Handle(Adaptor3d_HCurve)& C);
   
-  Standard_EXPORT     Standard_Integer NbVariables() const;
+  Standard_EXPORT   Standard_Integer NbVariables()  const;
   
-  Standard_EXPORT     Standard_Integer NbEquations() const;
+  Standard_EXPORT   Standard_Integer NbEquations()  const;
   
-  Standard_EXPORT     Standard_Boolean Value(const math_Vector& X,math_Vector& F) ;
+  Standard_EXPORT   Standard_Boolean Value (const math_Vector& X, math_Vector& F) ;
   
-  Standard_EXPORT     Standard_Boolean Derivatives(const math_Vector& X,math_Matrix& D) ;
+  Standard_EXPORT   Standard_Boolean Derivatives (const math_Vector& X, math_Matrix& D) ;
   
-  Standard_EXPORT     Standard_Boolean Values(const math_Vector& X,math_Vector& F,math_Matrix& D) ;
+  Standard_EXPORT   Standard_Boolean Values (const math_Vector& X, math_Vector& F, math_Matrix& D) ;
   
-  Standard_EXPORT    const gp_Pnt& Point() const;
+  Standard_EXPORT  const  gp_Pnt& Point()  const;
   
-  Standard_EXPORT     Standard_Real Root() const;
+  Standard_EXPORT   Standard_Real Root()  const;
   
-  Standard_EXPORT    const Handle_Adaptor3d_HSurface& AuxillarSurface() const;
+  Standard_EXPORT  const  Handle(Adaptor3d_HSurface)& AuxillarSurface()  const;
   
-  Standard_EXPORT    const Handle_Adaptor3d_HCurve& AuxillarCurve() const;
-
+  Standard_EXPORT  const  Handle(Adaptor3d_HCurve)& AuxillarCurve()  const;
 
 
 
@@ -89,10 +67,10 @@ private:
 
 
 
-Handle_Adaptor3d_HSurface surface;
-Handle_Adaptor3d_HCurve curve;
-gp_Pnt p;
-Standard_Real f;
+  Handle(Adaptor3d_HSurface) surface;
+  Handle(Adaptor3d_HCurve) curve;
+  gp_Pnt p;
+  Standard_Real f;
 
 
 };
@@ -101,7 +79,6 @@ Standard_Real f;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntCurveSurface_TheCSFunctionOfHInter_HeaderFile

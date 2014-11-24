@@ -89,6 +89,8 @@
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 		</Linker>
 		<Unit filename="../../../src/MXCAFDoc/MXCAFDoc.cxx" />
 		<Unit filename="../../../src/MXCAFDoc/MXCAFDoc_AreaRetrievalDriver.cxx" />

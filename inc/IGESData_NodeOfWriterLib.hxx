@@ -6,34 +6,16 @@
 #ifndef _IGESData_NodeOfWriterLib_HeaderFile
 #define _IGESData_NodeOfWriterLib_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESData_NodeOfWriterLib_HeaderFile
 #include <Handle_IGESData_NodeOfWriterLib.hxx>
-#endif
 
-#ifndef _Handle_IGESData_GlobalNodeOfWriterLib_HeaderFile
 #include <Handle_IGESData_GlobalNodeOfWriterLib.hxx>
-#endif
-#ifndef _Handle_IGESData_NodeOfWriterLib_HeaderFile
 #include <Handle_IGESData_NodeOfWriterLib.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Handle_IGESData_ReadWriteModule_HeaderFile
 #include <Handle_IGESData_ReadWriteModule.hxx>
-#endif
-#ifndef _Handle_IGESData_Protocol_HeaderFile
 #include <Handle_IGESData_Protocol.hxx>
-#endif
 class IGESData_GlobalNodeOfWriterLib;
 class IGESData_IGESEntity;
 class IGESData_ReadWriteModule;
@@ -42,20 +24,21 @@ class IGESData_WriterLib;
 
 
 
-class IGESData_NodeOfWriterLib : public MMgt_TShared {
+class IGESData_NodeOfWriterLib : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   IGESData_NodeOfWriterLib();
+  Standard_EXPORT IGESData_NodeOfWriterLib();
   
-  Standard_EXPORT     void AddNode(const Handle(IGESData_GlobalNodeOfWriterLib)& anode) ;
+  Standard_EXPORT   void AddNode (const Handle(IGESData_GlobalNodeOfWriterLib)& anode) ;
   
-  Standard_EXPORT    const Handle_IGESData_ReadWriteModule& Module() const;
+  Standard_EXPORT  const  Handle(IGESData_ReadWriteModule)& Module()  const;
   
-  Standard_EXPORT    const Handle_IGESData_Protocol& Protocol() const;
+  Standard_EXPORT  const  Handle(IGESData_Protocol)& Protocol()  const;
   
-  Standard_EXPORT    const Handle_IGESData_NodeOfWriterLib& Next() const;
+  Standard_EXPORT  const  Handle(IGESData_NodeOfWriterLib)& Next()  const;
 
 
 
@@ -70,8 +53,8 @@ protected:
 private: 
 
 
-Handle_IGESData_GlobalNodeOfWriterLib thenode;
-Handle_IGESData_NodeOfWriterLib thenext;
+  Handle(IGESData_GlobalNodeOfWriterLib) thenode;
+  Handle(IGESData_NodeOfWriterLib) thenext;
 
 
 };
@@ -80,7 +63,6 @@ Handle_IGESData_NodeOfWriterLib thenext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESData_NodeOfWriterLib_HeaderFile

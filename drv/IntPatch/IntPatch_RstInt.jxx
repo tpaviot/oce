@@ -1,15 +1,5 @@
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _IntPatch_Line_HeaderFile
 #include <IntPatch_Line.hxx>
-#endif
-#ifndef _Adaptor3d_HSurface_HeaderFile
 #include <Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Adaptor3d_TopolTool_HeaderFile
 #include <Adaptor3d_TopolTool.hxx>
-#endif
-#ifndef _IntPatch_RstInt_HeaderFile
 #include <IntPatch_RstInt.hxx>
-#endif

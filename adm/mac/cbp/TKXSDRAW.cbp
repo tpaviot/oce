@@ -101,6 +101,8 @@
 			<Add library="TKSTL" />
 			<Add library="TKVRML" />
 			<Add library="freetype" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />

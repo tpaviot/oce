@@ -6,41 +6,30 @@
 #ifndef _TColStd_DataMapNodeOfDataMapOfIntegerInteger_HeaderFile
 #define _TColStd_DataMapNodeOfDataMapOfIntegerInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger_HeaderFile
 #include <Handle_TColStd_DataMapNodeOfDataMapOfIntegerInteger.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TColStd_MapIntegerHasher;
 class TColStd_DataMapOfIntegerInteger;
 class TColStd_DataMapIteratorOfDataMapOfIntegerInteger;
 
 
 
-class TColStd_DataMapNodeOfDataMapOfIntegerInteger : public TCollection_MapNode {
+class TColStd_DataMapNodeOfDataMapOfIntegerInteger : public TCollection_MapNode
+{
 
 public:
 
   
-      TColStd_DataMapNodeOfDataMapOfIntegerInteger(const Standard_Integer& K,const Standard_Integer& I,const TCollection_MapNodePtr& n);
+    TColStd_DataMapNodeOfDataMapOfIntegerInteger(const Standard_Integer& K, const Standard_Integer& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Key() const;
+      Standard_Integer& Key()  const;
   
-        Standard_Integer& Value() const;
+      Standard_Integer& Value()  const;
 
 
 
@@ -55,8 +44,8 @@ protected:
 private: 
 
 
-Standard_Integer myKey;
-Standard_Integer myValue;
+  Standard_Integer myKey;
+  Standard_Integer myValue;
 
 
 };
@@ -94,7 +83,6 @@ Standard_Integer myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_DataMapNodeOfDataMapOfIntegerInteger_HeaderFile

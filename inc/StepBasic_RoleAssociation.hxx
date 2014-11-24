@@ -6,46 +6,41 @@
 #ifndef _StepBasic_RoleAssociation_HeaderFile
 #define _StepBasic_RoleAssociation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_RoleAssociation_HeaderFile
 #include <Handle_StepBasic_RoleAssociation.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_ObjectRole_HeaderFile
 #include <Handle_StepBasic_ObjectRole.hxx>
-#endif
-#ifndef _StepBasic_RoleSelect_HeaderFile
 #include <StepBasic_RoleSelect.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepBasic_ObjectRole;
 class StepBasic_RoleSelect;
 
 
-//! Representation of STEP entity RoleAssociation <br>
-class StepBasic_RoleAssociation : public MMgt_TShared {
+//! Representation of STEP entity RoleAssociation
+class StepBasic_RoleAssociation : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepBasic_RoleAssociation();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(StepBasic_ObjectRole)& aRole,const StepBasic_RoleSelect& aItemWithRole) ;
-  //! Returns field Role <br>
-  Standard_EXPORT     Handle_StepBasic_ObjectRole Role() const;
-  //! Set field Role <br>
-  Standard_EXPORT     void SetRole(const Handle(StepBasic_ObjectRole)& Role) ;
-  //! Returns field ItemWithRole <br>
-  Standard_EXPORT     StepBasic_RoleSelect ItemWithRole() const;
-  //! Set field ItemWithRole <br>
-  Standard_EXPORT     void SetItemWithRole(const StepBasic_RoleSelect& ItemWithRole) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepBasic_RoleAssociation();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(StepBasic_ObjectRole)& aRole, const StepBasic_RoleSelect& aItemWithRole) ;
+  
+  //! Returns field Role
+  Standard_EXPORT   Handle(StepBasic_ObjectRole) Role()  const;
+  
+  //! Set field Role
+  Standard_EXPORT   void SetRole (const Handle(StepBasic_ObjectRole)& Role) ;
+  
+  //! Returns field ItemWithRole
+  Standard_EXPORT   StepBasic_RoleSelect ItemWithRole()  const;
+  
+  //! Set field ItemWithRole
+  Standard_EXPORT   void SetItemWithRole (const StepBasic_RoleSelect& ItemWithRole) ;
 
 
 
@@ -60,8 +55,8 @@ protected:
 private: 
 
 
-Handle_StepBasic_ObjectRole theRole;
-StepBasic_RoleSelect theItemWithRole;
+  Handle(StepBasic_ObjectRole) theRole;
+  StepBasic_RoleSelect theItemWithRole;
 
 
 };
@@ -70,7 +65,6 @@ StepBasic_RoleSelect theItemWithRole;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_RoleAssociation_HeaderFile

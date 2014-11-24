@@ -6,64 +6,54 @@
 #ifndef _IntTools_PntOn2Faces_HeaderFile
 #define _IntTools_PntOn2Faces_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _IntTools_PntOnFace_HeaderFile
 #include <IntTools_PntOnFace.hxx>
-#endif
 class IntTools_PntOnFace;
 
 
-//! Contains two points PntOnFace from IntTools and a flag <br>
-class IntTools_PntOn2Faces  {
+//! Contains two points PntOnFace from IntTools and a flag
+class IntTools_PntOn2Faces 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//! Empty constructor <br>
-//! <br>
-  Standard_EXPORT   IntTools_PntOn2Faces();
-  
-//! Initializes me by two points aP1 and aP2 <br>
-//! <br>
-  Standard_EXPORT   IntTools_PntOn2Faces(const IntTools_PntOnFace& aP1,const IntTools_PntOnFace& aP2);
-  
-//! Modifier <br>
-//! <br>
-  Standard_EXPORT     void SetP1(const IntTools_PntOnFace& aP1) ;
-  
-//! Modifier <br>
-//! <br>
-  Standard_EXPORT     void SetP2(const IntTools_PntOnFace& aP2) ;
-  
-//! Modifier <br>
-//! <br>
-  Standard_EXPORT     void SetValid(const Standard_Boolean bF) ;
-  
-//! Selector <br>
-//! <br>
-  Standard_EXPORT    const IntTools_PntOnFace& P1() const;
-  
-//! Selector <br>
-//! <br>
-  Standard_EXPORT    const IntTools_PntOnFace& P2() const;
-  
-//! Selector <br>
-//! <br>
-  Standard_EXPORT     Standard_Boolean IsValid() const;
 
+  //! Empty constructor
+  Standard_EXPORT IntTools_PntOn2Faces();
+  
+
+  //! Initializes me by two points aP1 and aP2
+  Standard_EXPORT IntTools_PntOn2Faces(const IntTools_PntOnFace& aP1, const IntTools_PntOnFace& aP2);
+  
+
+  //! Modifier
+  Standard_EXPORT   void SetP1 (const IntTools_PntOnFace& aP1) ;
+  
+
+  //! Modifier
+  Standard_EXPORT   void SetP2 (const IntTools_PntOnFace& aP2) ;
+  
+
+  //! Modifier
+  Standard_EXPORT   void SetValid (const Standard_Boolean bF) ;
+  
+
+  //! Selector
+  Standard_EXPORT  const  IntTools_PntOnFace& P1()  const;
+  
+
+  //! Selector
+  Standard_EXPORT  const  IntTools_PntOnFace& P2()  const;
+  
+
+  //! Selector
+  Standard_EXPORT   Standard_Boolean IsValid()  const;
 
 
 
@@ -78,9 +68,9 @@ private:
 
 
 
-Standard_Boolean myIsValid;
-IntTools_PntOnFace myPnt1;
-IntTools_PntOnFace myPnt2;
+  Standard_Boolean myIsValid;
+  IntTools_PntOnFace myPnt1;
+  IntTools_PntOnFace myPnt2;
 
 
 };
@@ -89,7 +79,6 @@ IntTools_PntOnFace myPnt2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_PntOn2Faces_HeaderFile

@@ -6,37 +6,17 @@
 #ifndef _ShapeProcess_IteratorOfDictionaryOfOperator_HeaderFile
 #define _ShapeProcess_IteratorOfDictionaryOfOperator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_ShapeProcess_DictionaryOfOperator_HeaderFile
 #include <Handle_ShapeProcess_DictionaryOfOperator.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Handle_ShapeProcess_StackItemOfDictionaryOfOperator_HeaderFile
 #include <Handle_ShapeProcess_StackItemOfDictionaryOfOperator.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_ShapeProcess_Operator_HeaderFile
 #include <Handle_ShapeProcess_Operator.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
 class ShapeProcess_DictionaryOfOperator;
 class ShapeProcess_StackItemOfDictionaryOfOperator;
 class Standard_NoSuchObject;
@@ -45,28 +25,28 @@ class TCollection_AsciiString;
 
 
 
-class ShapeProcess_IteratorOfDictionaryOfOperator  {
+class ShapeProcess_IteratorOfDictionaryOfOperator 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   ShapeProcess_IteratorOfDictionaryOfOperator(const Handle(ShapeProcess_DictionaryOfOperator)& acell);
+  Standard_EXPORT ShapeProcess_IteratorOfDictionaryOfOperator(const Handle(ShapeProcess_DictionaryOfOperator)& acell);
   
-  Standard_EXPORT   ShapeProcess_IteratorOfDictionaryOfOperator(const Handle(ShapeProcess_DictionaryOfOperator)& acell,const Standard_CString basename);
+  Standard_EXPORT ShapeProcess_IteratorOfDictionaryOfOperator(const Handle(ShapeProcess_DictionaryOfOperator)& acell, const Standard_CString basename);
   
-  Standard_EXPORT   ShapeProcess_IteratorOfDictionaryOfOperator(const Handle(ShapeProcess_DictionaryOfOperator)& acell,const TCollection_AsciiString& basename);
+  Standard_EXPORT ShapeProcess_IteratorOfDictionaryOfOperator(const Handle(ShapeProcess_DictionaryOfOperator)& acell, const TCollection_AsciiString& basename);
   
-  Standard_EXPORT     void Start() ;
+  Standard_EXPORT   void Start() ;
   
-  Standard_EXPORT     Standard_Boolean More() ;
+  Standard_EXPORT   Standard_Boolean More() ;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT    const Handle_ShapeProcess_Operator& Value() const;
+  Standard_EXPORT  const  Handle(ShapeProcess_Operator)& Value()  const;
   
-  Standard_EXPORT     TCollection_AsciiString Name() const;
-
+  Standard_EXPORT   TCollection_AsciiString Name()  const;
 
 
 
@@ -80,16 +60,16 @@ protected:
 private:
 
   
-  Standard_EXPORT     void AppendStack(const Handle(ShapeProcess_DictionaryOfOperator)& val) ;
+  Standard_EXPORT   void AppendStack (const Handle(ShapeProcess_DictionaryOfOperator)& val) ;
 
 
-Handle_ShapeProcess_DictionaryOfOperator thebase;
-TCollection_AsciiString thename;
-Handle_ShapeProcess_StackItemOfDictionaryOfOperator thelast;
-Standard_Integer thenb;
-Standard_Boolean themore;
-Standard_Boolean theinit;
-Standard_Boolean thenext;
+  Handle(ShapeProcess_DictionaryOfOperator) thebase;
+  TCollection_AsciiString thename;
+  Handle(ShapeProcess_StackItemOfDictionaryOfOperator) thelast;
+  Standard_Integer thenb;
+  Standard_Boolean themore;
+  Standard_Boolean theinit;
+  Standard_Boolean thenext;
 
 
 };
@@ -98,7 +78,6 @@ Standard_Boolean thenext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeProcess_IteratorOfDictionaryOfOperator_HeaderFile

@@ -5,21 +5,13 @@
 
 #include <CDM_MapOfDocument.hxx>
 
-#ifndef _CDM_Document_HeaderFile
 #include <CDM_Document.hxx>
-#endif
-#ifndef _CDM_DocumentHasher_HeaderFile
 #include <CDM_DocumentHasher.hxx>
-#endif
-#ifndef _CDM_StdMapNodeOfMapOfDocument_HeaderFile
 #include <CDM_StdMapNodeOfMapOfDocument.hxx>
-#endif
-#ifndef _CDM_MapIteratorOfMapOfDocument_HeaderFile
 #include <CDM_MapIteratorOfMapOfDocument.hxx>
-#endif
  
 
-#define TheKey Handle_CDM_Document
+#define TheKey Handle(CDM_Document)
 #define TheKey_hxx <CDM_Document.hxx>
 #define Hasher CDM_DocumentHasher
 #define Hasher_hxx <CDM_DocumentHasher.hxx>

@@ -6,63 +6,44 @@
 #ifndef _HLRAlgo_PolyShellData_HeaderFile
 #define _HLRAlgo_PolyShellData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_HLRAlgo_PolyShellData_HeaderFile
 #include <Handle_HLRAlgo_PolyShellData.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TColStd_Array1OfTransient_HeaderFile
 #include <TColStd_Array1OfTransient.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfTransient_HeaderFile
 #include <Handle_TColStd_HArray1OfTransient.hxx>
-#endif
-#ifndef _HLRAlgo_ListOfBPoint_HeaderFile
 #include <HLRAlgo_ListOfBPoint.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TColStd_HArray1OfTransient;
 class TColStd_Array1OfTransient;
 class HLRAlgo_ListOfBPoint;
 
 
-//! All the PolyData of a Shell <br>
-class HLRAlgo_PolyShellData : public MMgt_TShared {
+//! All the PolyData of a Shell
+class HLRAlgo_PolyShellData : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   HLRAlgo_PolyShellData(const Standard_Integer nbFace);
+  Standard_EXPORT HLRAlgo_PolyShellData(const Standard_Integer nbFace);
   
-  Standard_EXPORT     void UpdateGlobalMinMax(const Standard_Address TotMinMax) ;
+  Standard_EXPORT   void UpdateGlobalMinMax (const Standard_Address TotMinMax) ;
   
-  Standard_EXPORT     void UpdateHiding(const Standard_Integer nbHiding) ;
+  Standard_EXPORT   void UpdateHiding (const Standard_Integer nbHiding) ;
   
-        Standard_Boolean Hiding() const;
+      Standard_Boolean Hiding()  const;
   
-        TColStd_Array1OfTransient& PolyData() ;
+      TColStd_Array1OfTransient& PolyData() ;
   
-        TColStd_Array1OfTransient& HidingPolyData() ;
+      TColStd_Array1OfTransient& HidingPolyData() ;
   
-        HLRAlgo_ListOfBPoint& Edges() ;
+      HLRAlgo_ListOfBPoint& Edges() ;
   
-        Standard_Address Indices() ;
+      Standard_Address Indices() ;
 
 
 
@@ -77,10 +58,10 @@ protected:
 private: 
 
 
-Standard_Integer myMinMax[2];
-TColStd_Array1OfTransient myPolyg;
-Handle_TColStd_HArray1OfTransient myHPolHi;
-HLRAlgo_ListOfBPoint mySegList;
+  Standard_Integer myMinMax[2];
+  TColStd_Array1OfTransient myPolyg;
+  Handle(TColStd_HArray1OfTransient) myHPolHi;
+  HLRAlgo_ListOfBPoint mySegList;
 
 
 };
@@ -90,7 +71,6 @@ HLRAlgo_ListOfBPoint mySegList;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRAlgo_PolyShellData_HeaderFile

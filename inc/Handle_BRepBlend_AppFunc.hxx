@@ -6,22 +6,15 @@
 #ifndef _Handle_BRepBlend_AppFunc_HeaderFile
 #define _Handle_BRepBlend_AppFunc_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_BRepBlend_AppFuncRoot_HeaderFile
 #include <Handle_BRepBlend_AppFuncRoot.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(BRepBlend_AppFuncRoot);
 class BRepBlend_AppFunc;
 
-DEFINE_STANDARD_HANDLE(BRepBlend_AppFunc,BRepBlend_AppFuncRoot)
+DEFINE_STANDARD_HANDLE(BRepBlend_AppFunc, BRepBlend_AppFuncRoot)
 
-#endif
+#endif // _Handle_BRepBlend_AppFunc_HeaderFile

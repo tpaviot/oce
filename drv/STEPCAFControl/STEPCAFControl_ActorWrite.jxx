@@ -1,6 +1,2 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _STEPCAFControl_ActorWrite_HeaderFile
 #include <STEPCAFControl_ActorWrite.hxx>
-#endif

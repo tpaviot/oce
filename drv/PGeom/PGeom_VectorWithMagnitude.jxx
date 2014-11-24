@@ -1,6 +1,2 @@
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _PGeom_VectorWithMagnitude_HeaderFile
 #include <PGeom_VectorWithMagnitude.hxx>
-#endif

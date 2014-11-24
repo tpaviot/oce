@@ -5,24 +5,14 @@
 
 #include <CDM_ListIteratorOfListOfReferences.hxx>
 
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _CDM_ListOfReferences_HeaderFile
 #include <CDM_ListOfReferences.hxx>
-#endif
-#ifndef _CDM_Reference_HeaderFile
 #include <CDM_Reference.hxx>
-#endif
-#ifndef _CDM_ListNodeOfListOfReferences_HeaderFile
 #include <CDM_ListNodeOfListOfReferences.hxx>
-#endif
  
 
-#define Item Handle_CDM_Reference
+#define Item Handle(CDM_Reference)
 #define Item_hxx <CDM_Reference.hxx>
 #define TCollection_ListNode CDM_ListNodeOfListOfReferences
 #define TCollection_ListNode_hxx <CDM_ListNodeOfListOfReferences.hxx>

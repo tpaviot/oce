@@ -5,21 +5,11 @@
 
 #include <TopLoc_IndexedMapOfLocation.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TopLoc_Location_HeaderFile
 #include <TopLoc_Location.hxx>
-#endif
-#ifndef _TopLoc_MapLocationHasher_HeaderFile
 #include <TopLoc_MapLocationHasher.hxx>
-#endif
-#ifndef _TopLoc_IndexedMapNodeOfIndexedMapOfLocation_HeaderFile
 #include <TopLoc_IndexedMapNodeOfIndexedMapOfLocation.hxx>
-#endif
  
 
 #define TheKey TopLoc_Location

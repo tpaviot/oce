@@ -5,22 +5,12 @@
 
 #include <MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _MeshVS_HArray1OfSequenceOfInteger_HeaderFile
 #include <MeshVS_HArray1OfSequenceOfInteger.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _MeshVS_DataMapOfHArray1OfSequenceOfInteger_HeaderFile
 #include <MeshVS_DataMapOfHArray1OfSequenceOfInteger.hxx>
-#endif
-#ifndef _MeshVS_DataMapIteratorOfDataMapOfHArray1OfSequenceOfInteger_HeaderFile
 #include <MeshVS_DataMapIteratorOfDataMapOfHArray1OfSequenceOfInteger.hxx>
-#endif
 
  
 
@@ -41,7 +31,7 @@ IMPLEMENT_STANDARD_RTTI(MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger)
 
 #define TheKey Standard_Integer
 #define TheKey_hxx <Standard_Integer.hxx>
-#define TheItem Handle_MeshVS_HArray1OfSequenceOfInteger
+#define TheItem Handle(MeshVS_HArray1OfSequenceOfInteger)
 #define TheItem_hxx <MeshVS_HArray1OfSequenceOfInteger.hxx>
 #define Hasher TColStd_MapIntegerHasher
 #define Hasher_hxx <TColStd_MapIntegerHasher.hxx>

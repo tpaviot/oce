@@ -6,38 +6,27 @@
 #ifndef _PCDM_SequenceNodeOfSequenceOfDocument_HeaderFile
 #define _PCDM_SequenceNodeOfSequenceOfDocument_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_PCDM_SequenceNodeOfSequenceOfDocument_HeaderFile
 #include <Handle_PCDM_SequenceNodeOfSequenceOfDocument.hxx>
-#endif
 
-#ifndef _Handle_PCDM_Document_HeaderFile
 #include <Handle_PCDM_Document.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class PCDM_Document;
 class PCDM_SequenceOfDocument;
 
 
 
-class PCDM_SequenceNodeOfSequenceOfDocument : public TCollection_SeqNode {
+class PCDM_SequenceNodeOfSequenceOfDocument : public TCollection_SeqNode
+{
 
 public:
 
   
-      PCDM_SequenceNodeOfSequenceOfDocument(const Handle(PCDM_Document)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    PCDM_SequenceNodeOfSequenceOfDocument(const Handle(PCDM_Document)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_PCDM_Document& Value() const;
+      Handle(PCDM_Document)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_PCDM_Document myValue;
+  Handle(PCDM_Document) myValue;
 
 
 };
 
-#define SeqItem Handle_PCDM_Document
+#define SeqItem Handle(PCDM_Document)
 #define SeqItem_hxx <PCDM_Document.hxx>
 #define TCollection_SequenceNode PCDM_SequenceNodeOfSequenceOfDocument
 #define TCollection_SequenceNode_hxx <PCDM_SequenceNodeOfSequenceOfDocument.hxx>
@@ -78,7 +67,6 @@ Handle_PCDM_Document myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PCDM_SequenceNodeOfSequenceOfDocument_HeaderFile

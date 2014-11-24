@@ -92,10 +92,14 @@
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 			<Add library="objc" />
 			<Add library="freeimage" />
 			<Add library="freetype" />
 			<Add library="freetype" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 		</Linker>
 		<Unit filename="../../../drv/TDataXtd/TDataXtd_Array1OfTrsf_0.cxx" />
 		<Unit filename="../../../drv/TDataXtd/TDataXtd_HArray1OfTrsf_0.cxx" />

@@ -6,40 +6,27 @@
 #ifndef _TopOpeBRepDS_SolidSurfaceInterference_HeaderFile
 #define _TopOpeBRepDS_SolidSurfaceInterference_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_SolidSurfaceInterference_HeaderFile
 #include <Handle_TopOpeBRepDS_SolidSurfaceInterference.hxx>
-#endif
 
-#ifndef _TopOpeBRepDS_Interference_HeaderFile
 #include <TopOpeBRepDS_Interference.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Kind_HeaderFile
 #include <TopOpeBRepDS_Kind.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class TopOpeBRepDS_Transition;
 
 
-//! Interference <br>
-class TopOpeBRepDS_SolidSurfaceInterference : public TopOpeBRepDS_Interference {
+//! Interference
+class TopOpeBRepDS_SolidSurfaceInterference : public TopOpeBRepDS_Interference
+{
 
 public:
 
   
-  Standard_EXPORT   TopOpeBRepDS_SolidSurfaceInterference(const TopOpeBRepDS_Transition& Transition,const TopOpeBRepDS_Kind SupportType,const Standard_Integer Support,const TopOpeBRepDS_Kind GeometryType,const Standard_Integer Geometry);
+  Standard_EXPORT TopOpeBRepDS_SolidSurfaceInterference(const TopOpeBRepDS_Transition& Transition, const TopOpeBRepDS_Kind SupportType, const Standard_Integer Support, const TopOpeBRepDS_Kind GeometryType, const Standard_Integer Geometry);
   
-  Standard_EXPORT   virtual  Standard_OStream& Dump(Standard_OStream& OS) const;
+  Standard_EXPORT virtual   Standard_OStream& Dump (Standard_OStream& OS)  const;
 
 
 
@@ -62,7 +49,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_SolidSurfaceInterference_HeaderFile

@@ -1,18 +1,6 @@
-#ifndef _Expr_NamedFunction_HeaderFile
 #include <Expr_NamedFunction.hxx>
-#endif
-#ifndef _Expr_NamedExpression_HeaderFile
 #include <Expr_NamedExpression.hxx>
-#endif
-#ifndef _ExprIntrp_SequenceOfNamedExpression_HeaderFile
 #include <ExprIntrp_SequenceOfNamedExpression.hxx>
-#endif
-#ifndef _ExprIntrp_SequenceOfNamedFunction_HeaderFile
 #include <ExprIntrp_SequenceOfNamedFunction.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _ExprIntrp_Generator_HeaderFile
 #include <ExprIntrp_Generator.hxx>
-#endif

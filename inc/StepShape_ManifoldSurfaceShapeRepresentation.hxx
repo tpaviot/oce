@@ -6,28 +6,22 @@
 #ifndef _StepShape_ManifoldSurfaceShapeRepresentation_HeaderFile
 #define _StepShape_ManifoldSurfaceShapeRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_ManifoldSurfaceShapeRepresentation_HeaderFile
 #include <Handle_StepShape_ManifoldSurfaceShapeRepresentation.hxx>
-#endif
 
-#ifndef _StepShape_ShapeRepresentation_HeaderFile
 #include <StepShape_ShapeRepresentation.hxx>
-#endif
 
 
 
-class StepShape_ManifoldSurfaceShapeRepresentation : public StepShape_ShapeRepresentation {
+class StepShape_ManifoldSurfaceShapeRepresentation : public StepShape_ShapeRepresentation
+{
 
 public:
 
-  //! Returns a ManifoldSurfaceShapeRepresentation <br>
-  Standard_EXPORT   StepShape_ManifoldSurfaceShapeRepresentation();
+  
+  //! Returns a ManifoldSurfaceShapeRepresentation
+  Standard_EXPORT StepShape_ManifoldSurfaceShapeRepresentation();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_ManifoldSurfaceShapeRepresentation_HeaderFile

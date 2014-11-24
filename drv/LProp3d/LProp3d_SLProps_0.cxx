@@ -5,36 +5,18 @@
 
 #include <LProp3d_SLProps.hxx>
 
-#ifndef _Adaptor3d_HSurface_HeaderFile
 #include <Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _LProp_BadContinuity_HeaderFile
 #include <LProp_BadContinuity.hxx>
-#endif
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _LProp_NotDefined_HeaderFile
 #include <LProp_NotDefined.hxx>
-#endif
-#ifndef _LProp3d_SurfaceTool_HeaderFile
 #include <LProp3d_SurfaceTool.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
  
 
-#define Surface Handle_Adaptor3d_HSurface
+#define Surface Handle(Adaptor3d_HSurface)
 #define Surface_hxx <Adaptor3d_HSurface.hxx>
 #define Tool LProp3d_SurfaceTool
 #define Tool_hxx <LProp3d_SurfaceTool.hxx>

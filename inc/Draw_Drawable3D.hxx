@@ -6,71 +6,59 @@
 #ifndef _Draw_Drawable3D_HeaderFile
 #define _Draw_Drawable3D_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Draw_Drawable3D_HeaderFile
 #include <Handle_Draw_Drawable3D.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
-#ifndef _Draw_Interpretor_HeaderFile
 #include <Draw_Interpretor.hxx>
-#endif
 class Draw_Display;
 
 
 
-class Draw_Drawable3D : public MMgt_TShared {
+class Draw_Drawable3D : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   virtual  void DrawOn(Draw_Display& dis) const = 0;
-  //! Returs True if the pick is outside the box <br>
-  Standard_EXPORT   virtual  Standard_Boolean PickReject(const Standard_Real X,const Standard_Real Y,const Standard_Real Prec) const;
-  //! For variable copy. <br>
-  Standard_EXPORT   virtual  Handle_Draw_Drawable3D Copy() const;
-  //! For variable dump. <br>
-  Standard_EXPORT   virtual  void Dump(Standard_OStream& S) const;
-  //! For variable whatis command. Set  as a result  the <br>
-//!          type of the variable. <br>
-  Standard_EXPORT   virtual  void Whatis(Draw_Interpretor& I) const;
-  //! Is a 3D object. (Default True). <br>
-  Standard_EXPORT   virtual  Standard_Boolean Is3D() const;
+  Standard_EXPORT virtual   void DrawOn (Draw_Display& dis)  const = 0;
   
-  Standard_EXPORT     void SetBounds(const Standard_Real xmin,const Standard_Real xmax,const Standard_Real ymin,const Standard_Real ymax) ;
+  //! Returs True if the pick is outside the box
+  Standard_EXPORT virtual   Standard_Boolean PickReject (const Standard_Real X, const Standard_Real Y, const Standard_Real Prec)  const;
   
-  Standard_EXPORT     void Bounds(Standard_Real& xmin,Standard_Real& xmax,Standard_Real& ymin,Standard_Real& ymax) const;
+  //! For variable copy.
+  Standard_EXPORT virtual   Handle(Draw_Drawable3D) Copy()  const;
   
-        Standard_Boolean Visible() const;
+  //! For variable dump.
+  Standard_EXPORT virtual   void Dump (Standard_OStream& S)  const;
   
-        void Visible(const Standard_Boolean V) ;
+  //! For variable whatis command. Set  as a result  the
+  //! type of the variable.
+  Standard_EXPORT virtual   void Whatis (Draw_Interpretor& I)  const;
   
-        Standard_Boolean Protected() const;
+  //! Is a 3D object. (Default True).
+  Standard_EXPORT virtual   Standard_Boolean Is3D()  const;
   
-        void Protected(const Standard_Boolean P) ;
+  Standard_EXPORT   void SetBounds (const Standard_Real xmin, const Standard_Real xmax, const Standard_Real ymin, const Standard_Real ymax) ;
   
-        Standard_CString Name() const;
+  Standard_EXPORT   void Bounds (Standard_Real& xmin, Standard_Real& xmax, Standard_Real& ymin, Standard_Real& ymax)  const;
   
-      virtual  void Name(const Standard_CString N) ;
+      Standard_Boolean Visible()  const;
+  
+      void Visible (const Standard_Boolean V) ;
+  
+      Standard_Boolean Protected()  const;
+  
+      void Protected (const Standard_Boolean P) ;
+  
+      Standard_CString Name()  const;
+  
+    virtual   void Name (const Standard_CString N) ;
 
 
 
@@ -80,20 +68,20 @@ public:
 protected:
 
   
-  Standard_EXPORT   Draw_Drawable3D();
+  Standard_EXPORT Draw_Drawable3D();
 
 
 
 private: 
 
 
-Standard_Real myXmin;
-Standard_Real myXmax;
-Standard_Real myYmin;
-Standard_Real myYmax;
-Standard_Boolean isVisible;
-Standard_Boolean isProtected;
-Standard_CString myName;
+  Standard_Real myXmin;
+  Standard_Real myXmax;
+  Standard_Real myYmin;
+  Standard_Real myYmax;
+  Standard_Boolean isVisible;
+  Standard_Boolean isProtected;
+  Standard_CString myName;
 
 
 };
@@ -103,7 +91,6 @@ Standard_CString myName;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Draw_Drawable3D_HeaderFile

@@ -5,21 +5,11 @@
 
 #include <TestTopOpeDraw_ListIteratorOfListOfPnt2d.hxx>
 
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TestTopOpeDraw_ListOfPnt2d_HeaderFile
 #include <TestTopOpeDraw_ListOfPnt2d.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _TestTopOpeDraw_ListNodeOfListOfPnt2d_HeaderFile
 #include <TestTopOpeDraw_ListNodeOfListOfPnt2d.hxx>
-#endif
  
 
 #define Item gp_Pnt2d

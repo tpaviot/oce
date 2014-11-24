@@ -6,58 +6,48 @@
 #ifndef _Graphic3d_ArrayOfTriangleFans_HeaderFile
 #define _Graphic3d_ArrayOfTriangleFans_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Graphic3d_ArrayOfTriangleFans_HeaderFile
 #include <Handle_Graphic3d_ArrayOfTriangleFans.hxx>
-#endif
 
-#ifndef _Graphic3d_ArrayOfPrimitives_HeaderFile
 #include <Graphic3d_ArrayOfPrimitives.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 
 
-//! Contains triangles fan array definition <br>
-class Graphic3d_ArrayOfTriangleFans : public Graphic3d_ArrayOfPrimitives {
+//! Contains triangles fan array definition
+class Graphic3d_ArrayOfTriangleFans : public Graphic3d_ArrayOfPrimitives
+{
 
 public:
 
-  //! Creates an array of triangle fans, <br>
-//! a polygon can be filled as: <br>
-//! 1) creating a single fan defined with his vertexs. <br>
-//!    i.e: <br>
-//!    myArray = Graphic3d_ArrayOfTriangleFans(7) <br>
-//!    myArray->AddVertex(x1,y1,z1) <br>
-//!      .... <br>
-//!    myArray->AddVertex(x7,y7,z7) <br>
-//! 2) creating separate fans defined with a predefined <br>
-//!    number of fans and the number of vertex per fan. <br>
-//!    i.e: <br>
-//!    myArray = Graphic3d_ArrayOfTriangleFans(8,2) <br>
-//!    myArray->AddBound(4) <br>
-//!    myArray->AddVertex(x1,y1,z1) <br>
-//!      .... <br>
-//!    myArray->AddVertex(x4,y4,z4) <br>
-//!    myArray->AddBound(4) <br>
-//!    myArray->AddVertex(x5,y5,z5) <br>
-//!      .... <br>
-//!    myArray->AddVertex(x8,y8,z8) <br>
-//! <br>
-//! <maxVertexs> defined the maximun allowed vertex number in the array. <br>
-//! <maxFans> defined the maximun allowed fan number in the array. <br>
-//! The number of triangle really drawn is : <br>
-//! VertexNumber()-2*Min(1,BoundNumber()) <br>
-  Standard_EXPORT   Graphic3d_ArrayOfTriangleFans(const Standard_Integer maxVertexs,const Standard_Integer maxFans = 0,const Standard_Boolean hasVNormals = Standard_False,const Standard_Boolean hasVColors = Standard_False,const Standard_Boolean hasFColors = Standard_False,const Standard_Boolean hasTexels = Standard_False);
+  
+  //! Creates an array of triangle fans,
+  //! a polygon can be filled as:
+  //! 1) creating a single fan defined with his vertexs.
+  //! i.e:
+  //! myArray = Graphic3d_ArrayOfTriangleFans(7)
+  //! myArray->AddVertex(x1,y1,z1)
+  //! ....
+  //! myArray->AddVertex(x7,y7,z7)
+  //! 2) creating separate fans defined with a predefined
+  //! number of fans and the number of vertex per fan.
+  //! i.e:
+  //! myArray = Graphic3d_ArrayOfTriangleFans(8,2)
+  //! myArray->AddBound(4)
+  //! myArray->AddVertex(x1,y1,z1)
+  //! ....
+  //! myArray->AddVertex(x4,y4,z4)
+  //! myArray->AddBound(4)
+  //! myArray->AddVertex(x5,y5,z5)
+  //! ....
+  //! myArray->AddVertex(x8,y8,z8)
+  //!
+  //! <maxVertexs> defined the maximun allowed vertex number in the array.
+  //! <maxFans> defined the maximun allowed fan number in the array.
+  //! The number of triangle really drawn is :
+  //! VertexNumber()-2*Min(1,BoundNumber())
+  Standard_EXPORT Graphic3d_ArrayOfTriangleFans(const Standard_Integer maxVertexs, const Standard_Integer maxFans = 0, const Standard_Boolean hasVNormals = Standard_False, const Standard_Boolean hasVColors = Standard_False, const Standard_Boolean hasFColors = Standard_False, const Standard_Boolean hasTexels = Standard_False);
 
 
 
@@ -80,7 +70,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Graphic3d_ArrayOfTriangleFans_HeaderFile

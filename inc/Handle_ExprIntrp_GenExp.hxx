@@ -6,22 +6,15 @@
 #ifndef _Handle_ExprIntrp_GenExp_HeaderFile
 #define _Handle_ExprIntrp_GenExp_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_ExprIntrp_Generator_HeaderFile
 #include <Handle_ExprIntrp_Generator.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(ExprIntrp_Generator);
 class ExprIntrp_GenExp;
 
-DEFINE_STANDARD_HANDLE(ExprIntrp_GenExp,ExprIntrp_Generator)
+DEFINE_STANDARD_HANDLE(ExprIntrp_GenExp, ExprIntrp_Generator)
 
-#endif
+#endif // _Handle_ExprIntrp_GenExp_HeaderFile

@@ -6,15 +6,14 @@
 #ifndef _Vrml_FontStyleStyle_HeaderFile
 #define _Vrml_FontStyleStyle_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Vrml_FontStyleStyle {
+
+enum Vrml_FontStyleStyle
+{
 Vrml_NONE,
 Vrml_BOLD,
 Vrml_ITALIC
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Vrml_FontStyleStyle_HeaderFile

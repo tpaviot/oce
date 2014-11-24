@@ -6,43 +6,31 @@
 #ifndef _HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_HeaderFile
 #define _HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class HLRBRep_CurveTool;
 class Extrema_POnCurv2d;
 class gp_Pnt2d;
 
 
 
-class HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter  {
+class HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  void Locate(const gp_Pnt2d& P,const Standard_Address& C,const Standard_Integer NbU,Extrema_POnCurv2d& Papp) ;
+  Standard_EXPORT static   void Locate (const gp_Pnt2d& P, const Standard_Address& C, const Standard_Integer NbU, Extrema_POnCurv2d& Papp) ;
   
-  Standard_EXPORT   static  void Locate(const gp_Pnt2d& P,const Standard_Address& C,const Standard_Integer NbU,const Standard_Real Umin,const Standard_Real Usup,Extrema_POnCurv2d& Papp) ;
+  Standard_EXPORT static   void Locate (const gp_Pnt2d& P, const Standard_Address& C, const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, Extrema_POnCurv2d& Papp) ;
   
-  Standard_EXPORT   static  void Locate(const Standard_Address& C1,const Standard_Address& C2,const Standard_Integer NbU,const Standard_Integer NbV,Extrema_POnCurv2d& Papp1,Extrema_POnCurv2d& Papp2) ;
-
+  Standard_EXPORT static   void Locate (const Standard_Address& C1, const Standard_Address& C2, const Standard_Integer NbU, const Standard_Integer NbV, Extrema_POnCurv2d& Papp1, Extrema_POnCurv2d& Papp2) ;
 
 
 
@@ -65,7 +53,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_HeaderFile

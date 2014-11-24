@@ -6,49 +6,41 @@
 #ifndef _IGESAppli_PinNumber_HeaderFile
 #define _IGESAppli_PinNumber_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESAppli_PinNumber_HeaderFile
 #include <Handle_IGESAppli_PinNumber.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
 class TCollection_HAsciiString;
 
 
-//! defines PinNumber, Type <406> Form <8> <br>
-//!          in package IGESAppli <br>
-//!          Used to attach a text string representing a component <br>
-//!          pin number to an entity being used to represent an <br>
-//!          electrical component's pin <br>
-class IGESAppli_PinNumber : public IGESData_IGESEntity {
+//! defines PinNumber, Type <406> Form <8>
+//! in package IGESAppli
+//! Used to attach a text string representing a component
+//! pin number to an entity being used to represent an
+//! electrical component's pin
+class IGESAppli_PinNumber : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESAppli_PinNumber();
-  //! This method is used to set the fields of the class <br>
-//!           PinNumber <br>
-//!       - nbPropVal : Number of property values (always = 1) <br>
-//!       - aValue    : Pin Number value <br>
-  Standard_EXPORT     void Init(const Standard_Integer nbPropVal,const Handle(TCollection_HAsciiString)& aValue) ;
-  //! returns the number of property values <br>
-//! is always 1 <br>
-  Standard_EXPORT     Standard_Integer NbPropertyValues() const;
-  //! returns the pin number value <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString PinNumberVal() const;
+  Standard_EXPORT IGESAppli_PinNumber();
+  
+  //! This method is used to set the fields of the class
+  //! PinNumber
+  //! - nbPropVal : Number of property values (always = 1)
+  //! - aValue    : Pin Number value
+  Standard_EXPORT   void Init (const Standard_Integer nbPropVal, const Handle(TCollection_HAsciiString)& aValue) ;
+  
+  //! returns the number of property values
+  //! is always 1
+  Standard_EXPORT   Standard_Integer NbPropertyValues()  const;
+  
+  //! returns the pin number value
+  Standard_EXPORT   Handle(TCollection_HAsciiString) PinNumberVal()  const;
 
 
 
@@ -63,8 +55,8 @@ protected:
 private: 
 
 
-Standard_Integer theNbPropertyValues;
-Handle_TCollection_HAsciiString thePinNumber;
+  Standard_Integer theNbPropertyValues;
+  Handle(TCollection_HAsciiString) thePinNumber;
 
 
 };
@@ -73,7 +65,6 @@ Handle_TCollection_HAsciiString thePinNumber;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESAppli_PinNumber_HeaderFile

@@ -6,28 +6,22 @@
 #ifndef _StepGeom_BoundaryCurve_HeaderFile
 #define _StepGeom_BoundaryCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_BoundaryCurve_HeaderFile
 #include <Handle_StepGeom_BoundaryCurve.hxx>
-#endif
 
-#ifndef _StepGeom_CompositeCurveOnSurface_HeaderFile
 #include <StepGeom_CompositeCurveOnSurface.hxx>
-#endif
 
 
 
-class StepGeom_BoundaryCurve : public StepGeom_CompositeCurveOnSurface {
+class StepGeom_BoundaryCurve : public StepGeom_CompositeCurveOnSurface
+{
 
 public:
 
-  //! Returns a BoundaryCurve <br>
-  Standard_EXPORT   StepGeom_BoundaryCurve();
+  
+  //! Returns a BoundaryCurve
+  Standard_EXPORT StepGeom_BoundaryCurve();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_BoundaryCurve_HeaderFile

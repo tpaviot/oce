@@ -6,69 +6,64 @@
 #ifndef _BinLDrivers_DocumentSection_HeaderFile
 #define _BinLDrivers_DocumentSection_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Standard_Size_HeaderFile
 #include <Standard_Size.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
-#ifndef _Standard_IStream_HeaderFile
 #include <Standard_IStream.hxx>
-#endif
 class TCollection_AsciiString;
 
 
-//! More or less independent part of the saved/restored document <br>
-//!          that is distinct from OCAF data themselves but may be referred <br>
-//!          by them. <br>
-class BinLDrivers_DocumentSection  {
+//! More or less independent part of the saved/restored document
+//! that is distinct from OCAF data themselves but may be referred
+//! by them.
+class BinLDrivers_DocumentSection 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor <br>
-  Standard_EXPORT   BinLDrivers_DocumentSection();
-  //! Constructor <br>
-  Standard_EXPORT   BinLDrivers_DocumentSection(const TCollection_AsciiString& theName,const Standard_Boolean isPostRead);
-  //! Query the name of the section. <br>
-  Standard_EXPORT    const TCollection_AsciiString& Name() const;
-  //! Query the status: if the Section should be read after OCAF; <br>
-//!          False means that the Section is read before starting to <br>
-//!          read OCAF data. <br>
-  Standard_EXPORT     Standard_Boolean IsPostRead() const;
-  //! Query the offset of the section in the persistent file <br>
-  Standard_EXPORT     Standard_Size Offset() const;
-  //! Set the offset of the section in the persistent file <br>
-  Standard_EXPORT     void SetOffset(const Standard_Size theOffset) ;
-  //! Query the length of the section in the persistent file <br>
-  Standard_EXPORT     Standard_Size Length() const;
-  //! Set the length of the section in the persistent file <br>
-  Standard_EXPORT     void SetLength(const Standard_Size theLength) ;
-  //! Create a Section entry in the Document TOC (list of sections) <br>
-  Standard_EXPORT     void WriteTOC(Standard_OStream& theOS) ;
-  //! Save Offset and Length data into the Section entry <br>
-//!          in the Document TOC (list of sections) <br>
-  Standard_EXPORT     void Write(Standard_OStream& theOS,const Standard_Size theOffset) ;
-  //! Fill a DocumentSection instance from the data that are read <br>
-//!          from TOC. <br>
-  Standard_EXPORT   static  void ReadTOC(BinLDrivers_DocumentSection& theSection,Standard_IStream& theIS) ;
-
+  
+  //! Empty constructor
+  Standard_EXPORT BinLDrivers_DocumentSection();
+  
+  //! Constructor
+  Standard_EXPORT BinLDrivers_DocumentSection(const TCollection_AsciiString& theName, const Standard_Boolean isPostRead);
+  
+  //! Query the name of the section.
+  Standard_EXPORT  const  TCollection_AsciiString& Name()  const;
+  
+  //! Query the status: if the Section should be read after OCAF;
+  //! False means that the Section is read before starting to
+  //! read OCAF data.
+  Standard_EXPORT   Standard_Boolean IsPostRead()  const;
+  
+  //! Query the offset of the section in the persistent file
+  Standard_EXPORT   Standard_Size Offset()  const;
+  
+  //! Set the offset of the section in the persistent file
+  Standard_EXPORT   void SetOffset (const Standard_Size theOffset) ;
+  
+  //! Query the length of the section in the persistent file
+  Standard_EXPORT   Standard_Size Length()  const;
+  
+  //! Set the length of the section in the persistent file
+  Standard_EXPORT   void SetLength (const Standard_Size theLength) ;
+  
+  //! Create a Section entry in the Document TOC (list of sections)
+  Standard_EXPORT   void WriteTOC (Standard_OStream& theOS) ;
+  
+  //! Save Offset and Length data into the Section entry
+  //! in the Document TOC (list of sections)
+  Standard_EXPORT   void Write (Standard_OStream& theOS, const Standard_Size theOffset) ;
+  
+  //! Fill a DocumentSection instance from the data that are read
+  //! from TOC.
+  Standard_EXPORT static   void ReadTOC (BinLDrivers_DocumentSection& theSection, Standard_IStream& theIS) ;
 
 
 
@@ -83,9 +78,9 @@ private:
 
 
 
-TCollection_AsciiString myName;
-Standard_Size myValue[2];
-Standard_Boolean myIsPostRead;
+  TCollection_AsciiString myName;
+  Standard_Size myValue[2];
+  Standard_Boolean myIsPostRead;
 
 
 };
@@ -94,7 +89,6 @@ Standard_Boolean myIsPostRead;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BinLDrivers_DocumentSection_HeaderFile

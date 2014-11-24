@@ -541,7 +541,9 @@ void ShapeAnalysis_WireOrder::SetChains(const Standard_Real gap)
 
  void ShapeAnalysis_WireOrder::SetCouples(const Standard_Real /*gap*/) 
 {
+#ifdef OCCT_DEBUG
   cout<<"ShapeAnalysis_WireOrder:SetCouple not yet implemented"<<endl;
+#endif
 }
 
 //=======================================================================

@@ -85,6 +85,8 @@
 			<Add library="TKMath" />
 			<Add library="TKernel" />
 			<Add library="TKG2d" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />

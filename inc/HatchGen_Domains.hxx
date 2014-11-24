@@ -6,25 +6,13 @@
 #ifndef _HatchGen_Domains_HeaderFile
 #define _HatchGen_Domains_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_HatchGen_SequenceNodeOfDomains_HeaderFile
 #include <Handle_HatchGen_SequenceNodeOfDomains.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class HatchGen_Domain;
@@ -32,68 +20,68 @@ class HatchGen_SequenceNodeOfDomains;
 
 
 
-class HatchGen_Domains  : public TCollection_BaseSequence {
+class HatchGen_Domains  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      HatchGen_Domains();
+    HatchGen_Domains();
   
-  Standard_EXPORT   HatchGen_Domains(const HatchGen_Domains& Other);
+  Standard_EXPORT HatchGen_Domains(const HatchGen_Domains& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~HatchGen_Domains()
 {
   Clear();
 }
   
-  Standard_EXPORT    const HatchGen_Domains& Assign(const HatchGen_Domains& Other) ;
-   const HatchGen_Domains& operator =(const HatchGen_Domains& Other) 
+  Standard_EXPORT  const  HatchGen_Domains& Assign (const HatchGen_Domains& Other) ;
+ const  HatchGen_Domains& operator = (const HatchGen_Domains& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const HatchGen_Domain& T) ;
+  Standard_EXPORT   void Append (const HatchGen_Domain& T) ;
   
-        void Append(HatchGen_Domains& S) ;
+      void Append (HatchGen_Domains& S) ;
   
-  Standard_EXPORT     void Prepend(const HatchGen_Domain& T) ;
+  Standard_EXPORT   void Prepend (const HatchGen_Domain& T) ;
   
-        void Prepend(HatchGen_Domains& S) ;
+      void Prepend (HatchGen_Domains& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const HatchGen_Domain& T) ;
+      void InsertBefore (const Standard_Integer Index, const HatchGen_Domain& T) ;
   
-        void InsertBefore(const Standard_Integer Index,HatchGen_Domains& S) ;
+      void InsertBefore (const Standard_Integer Index, HatchGen_Domains& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const HatchGen_Domain& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const HatchGen_Domain& T) ;
   
-        void InsertAfter(const Standard_Integer Index,HatchGen_Domains& S) ;
+      void InsertAfter (const Standard_Integer Index, HatchGen_Domains& S) ;
   
-  Standard_EXPORT    const HatchGen_Domain& First() const;
+  Standard_EXPORT  const  HatchGen_Domain& First()  const;
   
-  Standard_EXPORT    const HatchGen_Domain& Last() const;
+  Standard_EXPORT  const  HatchGen_Domain& Last()  const;
   
-        void Split(const Standard_Integer Index,HatchGen_Domains& Sub) ;
+      void Split (const Standard_Integer Index, HatchGen_Domains& Sub) ;
   
-  Standard_EXPORT    const HatchGen_Domain& Value(const Standard_Integer Index) const;
-   const HatchGen_Domain& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  HatchGen_Domain& Value (const Standard_Integer Index)  const;
+ const  HatchGen_Domain& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const HatchGen_Domain& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const HatchGen_Domain& I) ;
   
-  Standard_EXPORT     HatchGen_Domain& ChangeValue(const Standard_Integer Index) ;
-    HatchGen_Domain& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   HatchGen_Domain& ChangeValue (const Standard_Integer Index) ;
+  HatchGen_Domain& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HatchGen_Domains_HeaderFile

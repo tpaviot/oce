@@ -5,16 +5,10 @@
 
 #include <Plate_SequenceNodeOfSequenceOfLinearScalarConstraint.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Plate_LinearScalarConstraint_HeaderFile
 #include <Plate_LinearScalarConstraint.hxx>
-#endif
-#ifndef _Plate_SequenceOfLinearScalarConstraint_HeaderFile
 #include <Plate_SequenceOfLinearScalarConstraint.hxx>
-#endif
 
  
 

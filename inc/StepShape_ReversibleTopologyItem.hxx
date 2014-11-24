@@ -6,43 +6,19 @@
 #ifndef _StepShape_ReversibleTopologyItem_HeaderFile
 #define _StepShape_ReversibleTopologyItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepShape_Edge_HeaderFile
 #include <Handle_StepShape_Edge.hxx>
-#endif
-#ifndef _Handle_StepShape_Path_HeaderFile
 #include <Handle_StepShape_Path.hxx>
-#endif
-#ifndef _Handle_StepShape_Face_HeaderFile
 #include <Handle_StepShape_Face.hxx>
-#endif
-#ifndef _Handle_StepShape_FaceBound_HeaderFile
 #include <Handle_StepShape_FaceBound.hxx>
-#endif
-#ifndef _Handle_StepShape_ClosedShell_HeaderFile
 #include <Handle_StepShape_ClosedShell.hxx>
-#endif
-#ifndef _Handle_StepShape_OpenShell_HeaderFile
 #include <Handle_StepShape_OpenShell.hxx>
-#endif
 class Standard_Transient;
 class StepShape_Edge;
 class StepShape_Path;
@@ -53,35 +29,43 @@ class StepShape_OpenShell;
 
 
 
-class StepShape_ReversibleTopologyItem  : public StepData_SelectType {
+class StepShape_ReversibleTopologyItem  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a ReversibleTopologyItem SelectType <br>
-  Standard_EXPORT   StepShape_ReversibleTopologyItem();
-  //! Recognizes a ReversibleTopologyItem Kind Entity that is : <br>
-//!        1 -> Edge <br>
-//!        2 -> Path <br>
-//!        3 -> Face <br>
-//!        4 -> FaceBound <br>
-//!        5 -> ClosedShell <br>
-//!        6 -> OpenShell <br>
-//!        0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! returns Value as a Edge (Null if another type) <br>
-  Standard_EXPORT     Handle_StepShape_Edge Edge() const;
-  //! returns Value as a Path (Null if another type) <br>
-  Standard_EXPORT     Handle_StepShape_Path Path() const;
-  //! returns Value as a Face (Null if another type) <br>
-  Standard_EXPORT     Handle_StepShape_Face Face() const;
-  //! returns Value as a FaceBound (Null if another type) <br>
-  Standard_EXPORT     Handle_StepShape_FaceBound FaceBound() const;
-  //! returns Value as a ClosedShell (Null if another type) <br>
-  Standard_EXPORT     Handle_StepShape_ClosedShell ClosedShell() const;
-  //! returns Value as a OpenShell (Null if another type) <br>
-  Standard_EXPORT     Handle_StepShape_OpenShell OpenShell() const;
-
+  
+  //! Returns a ReversibleTopologyItem SelectType
+  Standard_EXPORT StepShape_ReversibleTopologyItem();
+  
+  //! Recognizes a ReversibleTopologyItem Kind Entity that is :
+  //! 1 -> Edge
+  //! 2 -> Path
+  //! 3 -> Face
+  //! 4 -> FaceBound
+  //! 5 -> ClosedShell
+  //! 6 -> OpenShell
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! returns Value as a Edge (Null if another type)
+  Standard_EXPORT   Handle(StepShape_Edge) Edge()  const;
+  
+  //! returns Value as a Path (Null if another type)
+  Standard_EXPORT   Handle(StepShape_Path) Path()  const;
+  
+  //! returns Value as a Face (Null if another type)
+  Standard_EXPORT   Handle(StepShape_Face) Face()  const;
+  
+  //! returns Value as a FaceBound (Null if another type)
+  Standard_EXPORT   Handle(StepShape_FaceBound) FaceBound()  const;
+  
+  //! returns Value as a ClosedShell (Null if another type)
+  Standard_EXPORT   Handle(StepShape_ClosedShell) ClosedShell()  const;
+  
+  //! returns Value as a OpenShell (Null if another type)
+  Standard_EXPORT   Handle(StepShape_OpenShell) OpenShell()  const;
 
 
 
@@ -104,7 +88,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_ReversibleTopologyItem_HeaderFile

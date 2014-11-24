@@ -6,28 +6,14 @@
 #ifndef _NLPlate_StackOfPlate_HeaderFile
 #define _NLPlate_StackOfPlate_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_NLPlate_ListNodeOfStackOfPlate_HeaderFile
 #include <Handle_NLPlate_ListNodeOfStackOfPlate.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class NLPlate_ListIteratorOfStackOfPlate;
 class Plate_Plate;
@@ -35,63 +21,63 @@ class NLPlate_ListNodeOfStackOfPlate;
 
 
 
-class NLPlate_StackOfPlate  {
+class NLPlate_StackOfPlate 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   NLPlate_StackOfPlate();
+  Standard_EXPORT NLPlate_StackOfPlate();
   
-  Standard_EXPORT   NLPlate_StackOfPlate(const NLPlate_StackOfPlate& Other);
+  Standard_EXPORT NLPlate_StackOfPlate(const NLPlate_StackOfPlate& Other);
   
-  Standard_EXPORT     void Assign(const NLPlate_StackOfPlate& Other) ;
-    void operator=(const NLPlate_StackOfPlate& Other) 
+  Standard_EXPORT   void Assign (const NLPlate_StackOfPlate& Other) ;
+  void operator= (const NLPlate_StackOfPlate& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~NLPlate_StackOfPlate()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const Plate_Plate& I) ;
+  Standard_EXPORT   void Prepend (const Plate_Plate& I) ;
   
-  Standard_EXPORT     void Prepend(const Plate_Plate& I,NLPlate_ListIteratorOfStackOfPlate& theIt) ;
+  Standard_EXPORT   void Prepend (const Plate_Plate& I, NLPlate_ListIteratorOfStackOfPlate& theIt) ;
   
-  Standard_EXPORT     void Prepend(NLPlate_StackOfPlate& Other) ;
+  Standard_EXPORT   void Prepend (NLPlate_StackOfPlate& Other) ;
   
-  Standard_EXPORT     void Append(const Plate_Plate& I) ;
+  Standard_EXPORT   void Append (const Plate_Plate& I) ;
   
-  Standard_EXPORT     void Append(const Plate_Plate& I,NLPlate_ListIteratorOfStackOfPlate& theIt) ;
+  Standard_EXPORT   void Append (const Plate_Plate& I, NLPlate_ListIteratorOfStackOfPlate& theIt) ;
   
-  Standard_EXPORT     void Append(NLPlate_StackOfPlate& Other) ;
+  Standard_EXPORT   void Append (NLPlate_StackOfPlate& Other) ;
   
-  Standard_EXPORT     Plate_Plate& First() const;
+  Standard_EXPORT   Plate_Plate& First()  const;
   
-  Standard_EXPORT     Plate_Plate& Last() const;
+  Standard_EXPORT   Plate_Plate& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(NLPlate_ListIteratorOfStackOfPlate& It) ;
+  Standard_EXPORT   void Remove (NLPlate_ListIteratorOfStackOfPlate& It) ;
   
-  Standard_EXPORT     void InsertBefore(const Plate_Plate& I,NLPlate_ListIteratorOfStackOfPlate& It) ;
+  Standard_EXPORT   void InsertBefore (const Plate_Plate& I, NLPlate_ListIteratorOfStackOfPlate& It) ;
   
-  Standard_EXPORT     void InsertBefore(NLPlate_StackOfPlate& Other,NLPlate_ListIteratorOfStackOfPlate& It) ;
+  Standard_EXPORT   void InsertBefore (NLPlate_StackOfPlate& Other, NLPlate_ListIteratorOfStackOfPlate& It) ;
   
-  Standard_EXPORT     void InsertAfter(const Plate_Plate& I,NLPlate_ListIteratorOfStackOfPlate& It) ;
+  Standard_EXPORT   void InsertAfter (const Plate_Plate& I, NLPlate_ListIteratorOfStackOfPlate& It) ;
   
-  Standard_EXPORT     void InsertAfter(NLPlate_StackOfPlate& Other,NLPlate_ListIteratorOfStackOfPlate& It) ;
+  Standard_EXPORT   void InsertAfter (NLPlate_StackOfPlate& Other, NLPlate_ListIteratorOfStackOfPlate& It) ;
 
 
 friend class NLPlate_ListIteratorOfStackOfPlate;
-
 
 
 protected:
@@ -104,8 +90,8 @@ private:
 
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
@@ -135,7 +121,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _NLPlate_StackOfPlate_HeaderFile

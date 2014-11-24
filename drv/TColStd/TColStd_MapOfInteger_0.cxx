@@ -5,15 +5,9 @@
 
 #include <TColStd_MapOfInteger.hxx>
 
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _TColStd_StdMapNodeOfMapOfInteger_HeaderFile
 #include <TColStd_StdMapNodeOfMapOfInteger.hxx>
-#endif
-#ifndef _TColStd_MapIteratorOfMapOfInteger_HeaderFile
 #include <TColStd_MapIteratorOfMapOfInteger.hxx>
-#endif
  
 
 #define TheKey Standard_Integer

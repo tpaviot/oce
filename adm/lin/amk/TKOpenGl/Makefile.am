@@ -39,6 +39,8 @@ libTKOpenGl_la_SOURCES = \
 @top_srcdir@/src/OpenGl/OpenGl_Caps.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_Clipping.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_Context.cxx \
+@top_srcdir@/src/OpenGl/OpenGl_Cylinder.cxx \
+@top_srcdir@/src/OpenGl/OpenGl_Disk.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_Element.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_Flipper.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_Font.cxx \
@@ -60,13 +62,16 @@ libTKOpenGl_la_SOURCES = \
 @top_srcdir@/src/OpenGl/OpenGl_PrimitiveArray.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_PrinterContext.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_PriorityList.cxx \
+@top_srcdir@/src/OpenGl/OpenGl_Quadric.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_RenderFilter.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_Resource.cxx \
+@top_srcdir@/src/OpenGl/OpenGl_Sampler.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_SceneGeometry.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_ShaderManager.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_ShaderObject.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_ShaderProgram.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_ShaderStates.cxx \
+@top_srcdir@/src/OpenGl/OpenGl_Sphere.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_StencilTest.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_Structure.cxx \
 @top_srcdir@/src/OpenGl/OpenGl_StructureShadow.cxx \

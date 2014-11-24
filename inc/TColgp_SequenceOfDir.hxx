@@ -6,25 +6,13 @@
 #ifndef _TColgp_SequenceOfDir_HeaderFile
 #define _TColgp_SequenceOfDir_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_TColgp_SequenceNodeOfSequenceOfDir_HeaderFile
 #include <Handle_TColgp_SequenceNodeOfSequenceOfDir.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class gp_Dir;
@@ -32,68 +20,68 @@ class TColgp_SequenceNodeOfSequenceOfDir;
 
 
 
-class TColgp_SequenceOfDir  : public TCollection_BaseSequence {
+class TColgp_SequenceOfDir  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      TColgp_SequenceOfDir();
+    TColgp_SequenceOfDir();
   
-  Standard_EXPORT   TColgp_SequenceOfDir(const TColgp_SequenceOfDir& Other);
+  Standard_EXPORT TColgp_SequenceOfDir(const TColgp_SequenceOfDir& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TColgp_SequenceOfDir()
 {
   Clear();
 }
   
-  Standard_EXPORT    const TColgp_SequenceOfDir& Assign(const TColgp_SequenceOfDir& Other) ;
-   const TColgp_SequenceOfDir& operator =(const TColgp_SequenceOfDir& Other) 
+  Standard_EXPORT  const  TColgp_SequenceOfDir& Assign (const TColgp_SequenceOfDir& Other) ;
+ const  TColgp_SequenceOfDir& operator = (const TColgp_SequenceOfDir& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const gp_Dir& T) ;
+  Standard_EXPORT   void Append (const gp_Dir& T) ;
   
-        void Append(TColgp_SequenceOfDir& S) ;
+      void Append (TColgp_SequenceOfDir& S) ;
   
-  Standard_EXPORT     void Prepend(const gp_Dir& T) ;
+  Standard_EXPORT   void Prepend (const gp_Dir& T) ;
   
-        void Prepend(TColgp_SequenceOfDir& S) ;
+      void Prepend (TColgp_SequenceOfDir& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const gp_Dir& T) ;
+      void InsertBefore (const Standard_Integer Index, const gp_Dir& T) ;
   
-        void InsertBefore(const Standard_Integer Index,TColgp_SequenceOfDir& S) ;
+      void InsertBefore (const Standard_Integer Index, TColgp_SequenceOfDir& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const gp_Dir& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const gp_Dir& T) ;
   
-        void InsertAfter(const Standard_Integer Index,TColgp_SequenceOfDir& S) ;
+      void InsertAfter (const Standard_Integer Index, TColgp_SequenceOfDir& S) ;
   
-  Standard_EXPORT    const gp_Dir& First() const;
+  Standard_EXPORT  const  gp_Dir& First()  const;
   
-  Standard_EXPORT    const gp_Dir& Last() const;
+  Standard_EXPORT  const  gp_Dir& Last()  const;
   
-        void Split(const Standard_Integer Index,TColgp_SequenceOfDir& Sub) ;
+      void Split (const Standard_Integer Index, TColgp_SequenceOfDir& Sub) ;
   
-  Standard_EXPORT    const gp_Dir& Value(const Standard_Integer Index) const;
-   const gp_Dir& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  gp_Dir& Value (const Standard_Integer Index)  const;
+ const  gp_Dir& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const gp_Dir& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const gp_Dir& I) ;
   
-  Standard_EXPORT     gp_Dir& ChangeValue(const Standard_Integer Index) ;
-    gp_Dir& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   gp_Dir& ChangeValue (const Standard_Integer Index) ;
+  gp_Dir& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColgp_SequenceOfDir_HeaderFile

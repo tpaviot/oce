@@ -29,6 +29,36 @@
 #include <gp.hxx>
 #include <stdio.h>
 #include <gp_Vec.hxx>
+#include <OSD_OpenFile.hxx>
+
+#include <BRepBuilderAPI_CellFilter.hxx>
+#include <BRepBuilderAPI_VertexInspector.hxx>
+
+// A static method adding nodes to a mesh and keeping coincident (sharing) nodes.
+static Standard_Integer AddVertex(Handle(StlMesh_Mesh)& mesh,
+                                  BRepBuilderAPI_CellFilter& filter, 
+                                  BRepBuilderAPI_VertexInspector& inspector,
+                                  const gp_XYZ& p)
+{
+  Standard_Integer index;
+  inspector.SetCurrent(p);
+  gp_XYZ minp = inspector.Shift(p, -Precision::Confusion());
+  gp_XYZ maxp = inspector.Shift(p, +Precision::Confusion());
+  filter.Inspect(minp, maxp, inspector);
+  const TColStd_ListOfInteger& indices = inspector.ResInd();
+  if (indices.IsEmpty() == Standard_False)
+  {
+    index = indices.First(); // it should be only one
+    inspector.ClearResList();
+  }
+  else
+  {
+    index = mesh->AddVertex(p.X(), p.Y(), p.Z());
+    filter.Add(index, p);
+    inspector.Add(p);
+  }
+  return index;
+}
 
 // constants
 static const size_t HEADER_SIZE           =  84;
@@ -305,7 +335,7 @@ Handle(StlMesh_Mesh) RWStl::ReadFile (const OSD_Path& thePath,
       IsAscii = Standard_False;
     }
   }
-#ifdef DEB
+#ifdef OCCT_DEBUG
   cout << (IsAscii ? "ascii\n" : "binary\n");
 #endif
   file.Close();
@@ -357,6 +387,10 @@ Handle(StlMesh_Mesh) RWStl::ReadBinary (const OSD_Path& thePath,
   Handle(StlMesh_Mesh) ReadMesh = new StlMesh_Mesh ();
   ReadMesh->AddDomain ();
 
+  // Filter unique vertices to share the nodes of the mesh.
+  BRepBuilderAPI_CellFilter uniqueVertices(Precision::Confusion());
+  BRepBuilderAPI_VertexInspector inspector(Precision::Confusion());
+  
   for (ifacet=1; ifacet<=NBFACET; ++ifacet) {
     // read normal coordinates
     fx = ReadFloat2Double(theFile);
@@ -378,9 +412,12 @@ Handle(StlMesh_Mesh) RWStl::ReadBinary (const OSD_Path& thePath,
     fy3 = ReadFloat2Double(theFile);
     fz3 = ReadFloat2Double(theFile);
 
-    i1 = ReadMesh->AddOnlyNewVertex (fx1,fy1,fz1);
-    i2 = ReadMesh->AddOnlyNewVertex (fx2,fy2,fz2);
-    i3 = ReadMesh->AddOnlyNewVertex (fx3,fy3,fz3);
+    // Add vertices.
+    i1 = AddVertex(ReadMesh, uniqueVertices, inspector, gp_XYZ(fx1, fy1, fz1));
+    i2 = AddVertex(ReadMesh, uniqueVertices, inspector, gp_XYZ(fx2, fy2, fz2));
+    i3 = AddVertex(ReadMesh, uniqueVertices, inspector, gp_XYZ(fx3, fy3, fz3));
+
+    // Add triangle.
     ReadMesh->AddTriangle (i1,i2,i3,fx,fy,fz);
 
     // skip extra bytes
@@ -389,8 +426,8 @@ Handle(StlMesh_Mesh) RWStl::ReadBinary (const OSD_Path& thePath,
 
   theFile.Close ();
   return ReadMesh;
-
 }
+
 //=======================================================================
 //function : ReadAscii
 //Design   :
@@ -411,14 +448,13 @@ Handle(StlMesh_Mesh) RWStl::ReadAscii (const OSD_Path& thePath,
   thePath.SystemName (filename);
 
   // Open the file
-  FILE* file = fopen(filename.ToCString(),"r");
+  FILE* file = OSD_OpenFile(filename.ToCString(),"r");
 
   fseek(file,0L,SEEK_END);
 
   long filesize = ftell(file);
 
-  fclose(file);
-  file = fopen(filename.ToCString(),"r");
+  rewind(file);
 
   // count the number of lines
   for (ipos = 0; ipos < filesize; ++ipos) {
@@ -430,18 +466,20 @@ Handle(StlMesh_Mesh) RWStl::ReadAscii (const OSD_Path& thePath,
   nbTris = (nbLines / ASCII_LINES_PER_FACET);
 
   // go back to the beginning of the file
-//  fclose(file);
-//  file = fopen(filename.ToCString(),"r");
   rewind(file);
 
   // skip header
   while (getc(file) != '\n');
-#ifdef DEB
+#ifdef OCCT_DEBUG
   cout << "start mesh\n";
 #endif
   ReadMesh = new StlMesh_Mesh();
   ReadMesh->AddDomain();
 
+  // Filter unique vertices to share the nodes of the mesh.
+  BRepBuilderAPI_CellFilter uniqueVertices(Precision::Confusion());
+  BRepBuilderAPI_VertexInspector inspector(Precision::Confusion());
+  
   // main reading
   Message_ProgressSentry aPS (theProgInd, "Triangles", 0, (nbTris - 1) * 1.0 / IND_THRESHOLD, 1);
   for (iTri = 0; iTri < nbTris && aPS.More();)
@@ -469,9 +507,9 @@ Handle(StlMesh_Mesh) RWStl::ReadAscii (const OSD_Path& thePath,
 
     // here the facet must be built and put in the mesh datastructure
 
-    i1 = ReadMesh->AddOnlyNewVertex (aV1.X(), aV1.Y(), aV1.Z());
-    i2 = ReadMesh->AddOnlyNewVertex (aV2.X(), aV2.Y(), aV2.Z());
-    i3 = ReadMesh->AddOnlyNewVertex (aV3.X(), aV3.Y(), aV3.Z());
+    i1 = AddVertex(ReadMesh, uniqueVertices, inspector, aV1);
+    i2 = AddVertex(ReadMesh, uniqueVertices, inspector, aV2);
+    i3 = AddVertex(ReadMesh, uniqueVertices, inspector, aV3);
     ReadMesh->AddTriangle (i1, i2, i3, aN.X(), aN.Y(), aN.Z());
 
     // skip the keywords "endloop"
@@ -484,7 +522,7 @@ Handle(StlMesh_Mesh) RWStl::ReadAscii (const OSD_Path& thePath,
     if (++iTri % IND_THRESHOLD == 0)
       aPS.Next();
   }
-#ifdef DEB
+#ifdef OCCT_DEBUG
   cout << "end mesh\n";
 #endif
   fclose(file);

@@ -6,55 +6,43 @@
 #ifndef _StepShape_BooleanResult_HeaderFile
 #define _StepShape_BooleanResult_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_BooleanResult_HeaderFile
 #include <Handle_StepShape_BooleanResult.hxx>
-#endif
 
-#ifndef _StepShape_BooleanOperator_HeaderFile
 #include <StepShape_BooleanOperator.hxx>
-#endif
-#ifndef _StepShape_BooleanOperand_HeaderFile
 #include <StepShape_BooleanOperand.hxx>
-#endif
-#ifndef _StepGeom_GeometricRepresentationItem_HeaderFile
 #include <StepGeom_GeometricRepresentationItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepShape_BooleanOperand;
 
 
 
-class StepShape_BooleanResult : public StepGeom_GeometricRepresentationItem {
+class StepShape_BooleanResult : public StepGeom_GeometricRepresentationItem
+{
 
 public:
 
-  //! Returns a BooleanResult <br>
-  Standard_EXPORT   StepShape_BooleanResult();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a BooleanResult
+  Standard_EXPORT StepShape_BooleanResult();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const StepShape_BooleanOperator aOperator,const StepShape_BooleanOperand& aFirstOperand,const StepShape_BooleanOperand& aSecondOperand) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetOperator(const StepShape_BooleanOperator aOperator) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const StepShape_BooleanOperator aOperator, const StepShape_BooleanOperand& aFirstOperand, const StepShape_BooleanOperand& aSecondOperand) ;
   
-  Standard_EXPORT     StepShape_BooleanOperator Operator() const;
+  Standard_EXPORT   void SetOperator (const StepShape_BooleanOperator aOperator) ;
   
-  Standard_EXPORT     void SetFirstOperand(const StepShape_BooleanOperand& aFirstOperand) ;
+  Standard_EXPORT   StepShape_BooleanOperator Operator()  const;
   
-  Standard_EXPORT     StepShape_BooleanOperand FirstOperand() const;
+  Standard_EXPORT   void SetFirstOperand (const StepShape_BooleanOperand& aFirstOperand) ;
   
-  Standard_EXPORT     void SetSecondOperand(const StepShape_BooleanOperand& aSecondOperand) ;
+  Standard_EXPORT   StepShape_BooleanOperand FirstOperand()  const;
   
-  Standard_EXPORT     StepShape_BooleanOperand SecondOperand() const;
+  Standard_EXPORT   void SetSecondOperand (const StepShape_BooleanOperand& aSecondOperand) ;
+  
+  Standard_EXPORT   StepShape_BooleanOperand SecondOperand()  const;
 
 
 
@@ -69,9 +57,9 @@ protected:
 private: 
 
 
-StepShape_BooleanOperator anOperator;
-StepShape_BooleanOperand firstOperand;
-StepShape_BooleanOperand secondOperand;
+  StepShape_BooleanOperator anOperator;
+  StepShape_BooleanOperand firstOperand;
+  StepShape_BooleanOperand secondOperand;
 
 
 };
@@ -80,7 +68,6 @@ StepShape_BooleanOperand secondOperand;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_BooleanResult_HeaderFile

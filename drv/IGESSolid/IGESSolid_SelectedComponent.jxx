@@ -1,12 +1,4 @@
-#ifndef _IGESSolid_BooleanTree_HeaderFile
 #include <IGESSolid_BooleanTree.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _IGESSolid_SelectedComponent_HeaderFile
 #include <IGESSolid_SelectedComponent.hxx>
-#endif

@@ -6,44 +6,33 @@
 #ifndef _StepBasic_PersonAndOrganizationAssignment_HeaderFile
 #define _StepBasic_PersonAndOrganizationAssignment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_PersonAndOrganizationAssignment_HeaderFile
 #include <Handle_StepBasic_PersonAndOrganizationAssignment.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_PersonAndOrganization_HeaderFile
 #include <Handle_StepBasic_PersonAndOrganization.hxx>
-#endif
-#ifndef _Handle_StepBasic_PersonAndOrganizationRole_HeaderFile
 #include <Handle_StepBasic_PersonAndOrganizationRole.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepBasic_PersonAndOrganization;
 class StepBasic_PersonAndOrganizationRole;
 
 
 
-class StepBasic_PersonAndOrganizationAssignment : public MMgt_TShared {
+class StepBasic_PersonAndOrganizationAssignment : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepBasic_PersonAndOrganization)& aAssignedPersonAndOrganization,const Handle(StepBasic_PersonAndOrganizationRole)& aRole) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepBasic_PersonAndOrganization)& aAssignedPersonAndOrganization, const Handle(StepBasic_PersonAndOrganizationRole)& aRole) ;
   
-  Standard_EXPORT     void SetAssignedPersonAndOrganization(const Handle(StepBasic_PersonAndOrganization)& aAssignedPersonAndOrganization) ;
+  Standard_EXPORT   void SetAssignedPersonAndOrganization (const Handle(StepBasic_PersonAndOrganization)& aAssignedPersonAndOrganization) ;
   
-  Standard_EXPORT     Handle_StepBasic_PersonAndOrganization AssignedPersonAndOrganization() const;
+  Standard_EXPORT   Handle(StepBasic_PersonAndOrganization) AssignedPersonAndOrganization()  const;
   
-  Standard_EXPORT     void SetRole(const Handle(StepBasic_PersonAndOrganizationRole)& aRole) ;
+  Standard_EXPORT   void SetRole (const Handle(StepBasic_PersonAndOrganizationRole)& aRole) ;
   
-  Standard_EXPORT     Handle_StepBasic_PersonAndOrganizationRole Role() const;
+  Standard_EXPORT   Handle(StepBasic_PersonAndOrganizationRole) Role()  const;
 
 
 
@@ -58,8 +47,8 @@ protected:
 private: 
 
 
-Handle_StepBasic_PersonAndOrganization assignedPersonAndOrganization;
-Handle_StepBasic_PersonAndOrganizationRole role;
+  Handle(StepBasic_PersonAndOrganization) assignedPersonAndOrganization;
+  Handle(StepBasic_PersonAndOrganizationRole) role;
 
 
 };
@@ -68,7 +57,6 @@ Handle_StepBasic_PersonAndOrganizationRole role;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_PersonAndOrganizationAssignment_HeaderFile

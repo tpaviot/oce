@@ -6,28 +6,14 @@
 #ifndef _PColStd_FieldOfHArray2OfInteger_HeaderFile
 #define _PColStd_FieldOfHArray2OfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _DBC_BaseArray_HeaderFile
 #include <DBC_BaseArray.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_PColStd_VArrayNodeOfFieldOfHArray2OfInteger_HeaderFile
 #include <Handle_PColStd_VArrayNodeOfFieldOfHArray2OfInteger.hxx>
-#endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
 #include <Standard_PrimitiveTypes.hxx>
-#endif
 class Standard_NegativeValue;
 class Standard_OutOfRange;
 class Standard_DimensionMismatch;
@@ -40,36 +26,37 @@ class PColStd_VArrayTNodeOfFieldOfHArray2OfInteger;
 Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(PColStd_FieldOfHArray2OfInteger);
 
 
-class PColStd_FieldOfHArray2OfInteger  : public DBC_BaseArray {
+class PColStd_FieldOfHArray2OfInteger  : public DBC_BaseArray
+{
 
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   PColStd_FieldOfHArray2OfInteger();
+  Standard_EXPORT PColStd_FieldOfHArray2OfInteger();
   
-  Standard_EXPORT   PColStd_FieldOfHArray2OfInteger(const Standard_Integer Size);
+  Standard_EXPORT PColStd_FieldOfHArray2OfInteger(const Standard_Integer Size);
   
-  Standard_EXPORT   PColStd_FieldOfHArray2OfInteger(const PColStd_FieldOfHArray2OfInteger& Varray);
+  Standard_EXPORT PColStd_FieldOfHArray2OfInteger(const PColStd_FieldOfHArray2OfInteger& Varray);
   
-  Standard_EXPORT     void Resize(const Standard_Integer Size) ;
+  Standard_EXPORT   void Resize (const Standard_Integer Size) ;
   
-  Standard_EXPORT     void Assign(const PColStd_FieldOfHArray2OfInteger& Other) ;
-    void operator =(const PColStd_FieldOfHArray2OfInteger& Other) 
+  Standard_EXPORT   void Assign (const PColStd_FieldOfHArray2OfInteger& Other) ;
+  void operator = (const PColStd_FieldOfHArray2OfInteger& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Standard_Integer& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Standard_Integer& Value) ;
   
-  Standard_EXPORT     Standard_Integer& Value(const Standard_Integer Index) const;
-    Standard_Integer& operator ()(const Standard_Integer Index) const
+  Standard_EXPORT   Standard_Integer& Value (const Standard_Integer Index)  const;
+  Standard_Integer& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void Destroy() ;
+  Standard_EXPORT   void Destroy() ;
 ~PColStd_FieldOfHArray2OfInteger()
 {
   Destroy();
@@ -97,7 +84,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PColStd_FieldOfHArray2OfInteger_HeaderFile

@@ -6,83 +6,70 @@
 #ifndef _IntTools_PntOnFace_HeaderFile
 #define _IntTools_PntOnFace_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
 class TopoDS_Face;
 class gp_Pnt;
 
 
-//! Contains a Face, a 3d point, corresponded UV parameters and a flag <br>
-class IntTools_PntOnFace  {
+//! Contains a Face, a 3d point, corresponded UV parameters and a flag
+class IntTools_PntOnFace 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//! Empty constructor <br>
-//! <br>
-  Standard_EXPORT   IntTools_PntOnFace();
-  
-//! Initializes me by aFace, a 3d point <br>
-//! and it's UV parameters on face <br>
-//! <br>
-  Standard_EXPORT     void Init(const TopoDS_Face& aF,const gp_Pnt& aP,const Standard_Real U,const Standard_Real V) ;
-  
-//! Modifier <br>
-//! <br>
-  Standard_EXPORT     void SetFace(const TopoDS_Face& aF) ;
-  
-//! Modifier <br>
-//! <br>
-  Standard_EXPORT     void SetPnt(const gp_Pnt& aP) ;
-  
-//! Modifier <br>
-//! <br>
-  Standard_EXPORT     void SetParameters(const Standard_Real U,const Standard_Real V) ;
-  
-//! Modifier <br>
-//! <br>
-  Standard_EXPORT     void SetValid(const Standard_Boolean bF) ;
-  
-//! Selector <br>
-//! <br>
-  Standard_EXPORT     Standard_Boolean Valid() const;
-  
-//! Selector <br>
-//! <br>
-  Standard_EXPORT    const TopoDS_Face& Face() const;
-  
-//! Selector <br>
-//! <br>
-  Standard_EXPORT    const gp_Pnt& Pnt() const;
-  
-//! Selector <br>
-//! <br>
-  Standard_EXPORT     void Parameters(Standard_Real& U,Standard_Real& V) const;
-  
-//! Selector <br>
-  Standard_EXPORT     Standard_Boolean IsValid() const;
 
+  //! Empty constructor
+  Standard_EXPORT IntTools_PntOnFace();
+  
+
+  //! Initializes me by aFace, a 3d point
+  //! and it's UV parameters on face
+  Standard_EXPORT   void Init (const TopoDS_Face& aF, const gp_Pnt& aP, const Standard_Real U, const Standard_Real V) ;
+  
+
+  //! Modifier
+  Standard_EXPORT   void SetFace (const TopoDS_Face& aF) ;
+  
+
+  //! Modifier
+  Standard_EXPORT   void SetPnt (const gp_Pnt& aP) ;
+  
+
+  //! Modifier
+  Standard_EXPORT   void SetParameters (const Standard_Real U, const Standard_Real V) ;
+  
+
+  //! Modifier
+  Standard_EXPORT   void SetValid (const Standard_Boolean bF) ;
+  
+
+  //! Selector
+  Standard_EXPORT   Standard_Boolean Valid()  const;
+  
+
+  //! Selector
+  Standard_EXPORT  const  TopoDS_Face& Face()  const;
+  
+
+  //! Selector
+  Standard_EXPORT  const  gp_Pnt& Pnt()  const;
+  
+
+  //! Selector
+  Standard_EXPORT   void Parameters (Standard_Real& U, Standard_Real& V)  const;
+  
+
+  //! Selector
+  Standard_EXPORT   Standard_Boolean IsValid()  const;
 
 
 
@@ -97,11 +84,11 @@ private:
 
 
 
-Standard_Boolean myIsValid;
-gp_Pnt myPnt;
-Standard_Real myU;
-Standard_Real myV;
-TopoDS_Face myFace;
+  Standard_Boolean myIsValid;
+  gp_Pnt myPnt;
+  Standard_Real myU;
+  Standard_Real myV;
+  TopoDS_Face myFace;
 
 
 };
@@ -110,7 +97,6 @@ TopoDS_Face myFace;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_PntOnFace_HeaderFile

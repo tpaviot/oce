@@ -6,18 +6,16 @@
 #ifndef _Aspect_TypeOfEdge_HeaderFile
 #define _Aspect_TypeOfEdge_HeaderFile
 
-//! Definition of edge visibility <br>
-//! <br>
-//!          TOE_VISIBLE         Edge is displayed <br>
-//!          TOE_INVISIBLE       Edge is not displayed <br>
-//! <br>
-enum Aspect_TypeOfEdge {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Definition of edge visibility
+//!
+//! TOE_VISIBLE         Edge is displayed
+//! TOE_INVISIBLE       Edge is not displayed
+enum Aspect_TypeOfEdge
+{
 Aspect_TOE_VISIBLE,
 Aspect_TOE_INVISIBLE
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_TypeOfEdge_HeaderFile

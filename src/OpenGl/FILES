@@ -136,6 +136,7 @@ OpenGl_ShaderObject.hxx
 OpenGl_ShaderObject.cxx
 OpenGl_ShaderProgram.hxx
 OpenGl_ShaderProgram.cxx
+OpenGl_SetOfShaderPrograms.hxx
 OpenGl_ShaderManager.hxx
 OpenGl_ShaderManager.cxx
 OpenGl_ShaderStates.hxx
@@ -152,3 +153,16 @@ OpenGl_BVHTreeSelector.hxx
 OpenGl_BVHTreeSelector.cxx
 OpenGl_BVHClipPrimitiveSet.cxx
 OpenGl_BVHClipPrimitiveSet.hxx
+OpenGl_ArbTexBindless.hxx
+Handle_OpenGl_Sampler.hxx
+OpenGl_Sampler.hxx
+OpenGl_Sampler.cxx
+OpenGl_Utils.hxx
+OpenGl_Quadric.hxx
+OpenGl_Quadric.cxx
+OpenGl_Cylinder.hxx
+OpenGl_Cylinder.cxx
+OpenGl_Disk.hxx
+OpenGl_Disk.cxx
+OpenGl_Sphere.hxx
+OpenGl_Sphere.cxx

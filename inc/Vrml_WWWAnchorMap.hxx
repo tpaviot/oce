@@ -6,14 +6,13 @@
 #ifndef _Vrml_WWWAnchorMap_HeaderFile
 #define _Vrml_WWWAnchorMap_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Vrml_WWWAnchorMap {
+
+enum Vrml_WWWAnchorMap
+{
 Vrml_MAP_NONE,
 Vrml_POINT
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Vrml_WWWAnchorMap_HeaderFile

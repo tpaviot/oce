@@ -6,16 +6,15 @@
 #ifndef _IGESData_Status_HeaderFile
 #define _IGESData_Status_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum IGESData_Status {
+
+enum IGESData_Status
+{
 IGESData_EntityOK,
 IGESData_EntityError,
 IGESData_ReferenceError,
 IGESData_TypeError
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _IGESData_Status_HeaderFile

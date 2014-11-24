@@ -6,42 +6,35 @@
 #ifndef _StepFEA_AlignedSurface3dElementCoordinateSystem_HeaderFile
 #define _StepFEA_AlignedSurface3dElementCoordinateSystem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepFEA_AlignedSurface3dElementCoordinateSystem_HeaderFile
 #include <Handle_StepFEA_AlignedSurface3dElementCoordinateSystem.hxx>
-#endif
 
-#ifndef _Handle_StepFEA_FeaAxis2Placement3d_HeaderFile
 #include <Handle_StepFEA_FeaAxis2Placement3d.hxx>
-#endif
-#ifndef _StepFEA_FeaRepresentationItem_HeaderFile
 #include <StepFEA_FeaRepresentationItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepFEA_FeaAxis2Placement3d;
 class TCollection_HAsciiString;
 
 
-//! Representation of STEP entity AlignedSurface3dElementCoordinateSystem <br>
-class StepFEA_AlignedSurface3dElementCoordinateSystem : public StepFEA_FeaRepresentationItem {
+//! Representation of STEP entity AlignedSurface3dElementCoordinateSystem
+class StepFEA_AlignedSurface3dElementCoordinateSystem : public StepFEA_FeaRepresentationItem
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepFEA_AlignedSurface3dElementCoordinateSystem();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aRepresentationItem_Name,const Handle(StepFEA_FeaAxis2Placement3d)& aCoordinateSystem) ;
-  //! Returns field CoordinateSystem <br>
-  Standard_EXPORT     Handle_StepFEA_FeaAxis2Placement3d CoordinateSystem() const;
-  //! Set field CoordinateSystem <br>
-  Standard_EXPORT     void SetCoordinateSystem(const Handle(StepFEA_FeaAxis2Placement3d)& CoordinateSystem) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepFEA_AlignedSurface3dElementCoordinateSystem();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aRepresentationItem_Name, const Handle(StepFEA_FeaAxis2Placement3d)& aCoordinateSystem) ;
+  
+  //! Returns field CoordinateSystem
+  Standard_EXPORT   Handle(StepFEA_FeaAxis2Placement3d) CoordinateSystem()  const;
+  
+  //! Set field CoordinateSystem
+  Standard_EXPORT   void SetCoordinateSystem (const Handle(StepFEA_FeaAxis2Placement3d)& CoordinateSystem) ;
 
 
 
@@ -56,7 +49,7 @@ protected:
 private: 
 
 
-Handle_StepFEA_FeaAxis2Placement3d theCoordinateSystem;
+  Handle(StepFEA_FeaAxis2Placement3d) theCoordinateSystem;
 
 
 };
@@ -65,7 +58,6 @@ Handle_StepFEA_FeaAxis2Placement3d theCoordinateSystem;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_AlignedSurface3dElementCoordinateSystem_HeaderFile

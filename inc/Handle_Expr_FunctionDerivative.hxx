@@ -6,22 +6,15 @@
 #ifndef _Handle_Expr_FunctionDerivative_HeaderFile
 #define _Handle_Expr_FunctionDerivative_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Expr_GeneralFunction_HeaderFile
 #include <Handle_Expr_GeneralFunction.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Expr_GeneralFunction);
 class Expr_FunctionDerivative;
 
-DEFINE_STANDARD_HANDLE(Expr_FunctionDerivative,Expr_GeneralFunction)
+DEFINE_STANDARD_HANDLE(Expr_FunctionDerivative, Expr_GeneralFunction)
 
-#endif
+#endif // _Handle_Expr_FunctionDerivative_HeaderFile

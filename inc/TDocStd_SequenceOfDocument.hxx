@@ -6,28 +6,14 @@
 #ifndef _TDocStd_SequenceOfDocument_HeaderFile
 #define _TDocStd_SequenceOfDocument_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_TDocStd_Document_HeaderFile
 #include <Handle_TDocStd_Document.hxx>
-#endif
-#ifndef _Handle_TDocStd_SequenceNodeOfSequenceOfDocument_HeaderFile
 #include <Handle_TDocStd_SequenceNodeOfSequenceOfDocument.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class TDocStd_Document;
@@ -35,68 +21,68 @@ class TDocStd_SequenceNodeOfSequenceOfDocument;
 
 
 
-class TDocStd_SequenceOfDocument  : public TCollection_BaseSequence {
+class TDocStd_SequenceOfDocument  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      TDocStd_SequenceOfDocument();
+    TDocStd_SequenceOfDocument();
   
-  Standard_EXPORT   TDocStd_SequenceOfDocument(const TDocStd_SequenceOfDocument& Other);
+  Standard_EXPORT TDocStd_SequenceOfDocument(const TDocStd_SequenceOfDocument& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TDocStd_SequenceOfDocument()
 {
   Clear();
 }
   
-  Standard_EXPORT    const TDocStd_SequenceOfDocument& Assign(const TDocStd_SequenceOfDocument& Other) ;
-   const TDocStd_SequenceOfDocument& operator =(const TDocStd_SequenceOfDocument& Other) 
+  Standard_EXPORT  const  TDocStd_SequenceOfDocument& Assign (const TDocStd_SequenceOfDocument& Other) ;
+ const  TDocStd_SequenceOfDocument& operator = (const TDocStd_SequenceOfDocument& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(TDocStd_Document)& T) ;
+  Standard_EXPORT   void Append (const Handle(TDocStd_Document)& T) ;
   
-        void Append(TDocStd_SequenceOfDocument& S) ;
+      void Append (TDocStd_SequenceOfDocument& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(TDocStd_Document)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(TDocStd_Document)& T) ;
   
-        void Prepend(TDocStd_SequenceOfDocument& S) ;
+      void Prepend (TDocStd_SequenceOfDocument& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(TDocStd_Document)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(TDocStd_Document)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,TDocStd_SequenceOfDocument& S) ;
+      void InsertBefore (const Standard_Integer Index, TDocStd_SequenceOfDocument& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(TDocStd_Document)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(TDocStd_Document)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,TDocStd_SequenceOfDocument& S) ;
+      void InsertAfter (const Standard_Integer Index, TDocStd_SequenceOfDocument& S) ;
   
-  Standard_EXPORT    const Handle_TDocStd_Document& First() const;
+  Standard_EXPORT  const  Handle(TDocStd_Document)& First()  const;
   
-  Standard_EXPORT    const Handle_TDocStd_Document& Last() const;
+  Standard_EXPORT  const  Handle(TDocStd_Document)& Last()  const;
   
-        void Split(const Standard_Integer Index,TDocStd_SequenceOfDocument& Sub) ;
+      void Split (const Standard_Integer Index, TDocStd_SequenceOfDocument& Sub) ;
   
-  Standard_EXPORT    const Handle_TDocStd_Document& Value(const Standard_Integer Index) const;
-   const Handle_TDocStd_Document& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(TDocStd_Document)& Value (const Standard_Integer Index)  const;
+ const  Handle(TDocStd_Document)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(TDocStd_Document)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(TDocStd_Document)& I) ;
   
-  Standard_EXPORT     Handle_TDocStd_Document& ChangeValue(const Standard_Integer Index) ;
-    Handle_TDocStd_Document& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(TDocStd_Document)& ChangeValue (const Standard_Integer Index) ;
+  Handle(TDocStd_Document)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -115,7 +101,7 @@ private:
 
 };
 
-#define SeqItem Handle_TDocStd_Document
+#define SeqItem Handle(TDocStd_Document)
 #define SeqItem_hxx <TDocStd_Document.hxx>
 #define TCollection_SequenceNode TDocStd_SequenceNodeOfSequenceOfDocument
 #define TCollection_SequenceNode_hxx <TDocStd_SequenceNodeOfSequenceOfDocument.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDocStd_SequenceOfDocument_HeaderFile

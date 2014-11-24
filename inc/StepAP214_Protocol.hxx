@@ -6,51 +6,39 @@
 #ifndef _StepAP214_Protocol_HeaderFile
 #define _StepAP214_Protocol_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepAP214_Protocol_HeaderFile
 #include <Handle_StepAP214_Protocol.hxx>
-#endif
 
-#ifndef _StepData_Protocol_HeaderFile
 #include <StepData_Protocol.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_Interface_Protocol_HeaderFile
 #include <Handle_Interface_Protocol.hxx>
-#endif
 class Standard_Type;
 class Interface_Protocol;
 
 
-//! Protocol for StepAP214 Entities <br>
-//!           It requires StepAP214 as a Resource <br>
-class StepAP214_Protocol : public StepData_Protocol {
+//! Protocol for StepAP214 Entities
+//! It requires StepAP214 as a Resource
+class StepAP214_Protocol : public StepData_Protocol
+{
 
 public:
 
   
-  Standard_EXPORT   StepAP214_Protocol();
-  //!Returns a Case Number for each of the StepAP214 Entities <br>
-  Standard_EXPORT   virtual  Standard_Integer TypeNumber(const Handle(Standard_Type)& atype) const;
+  Standard_EXPORT StepAP214_Protocol();
   
-  Standard_EXPORT   virtual  Standard_CString SchemaName() const;
-  //! Returns count of Protocol used as Resources (level one) <br>
-  Standard_EXPORT   virtual  Standard_Integer NbResources() const;
-  //! Returns a Resource, given its rank (between 1 and NbResources) <br>
-  Standard_EXPORT   virtual  Handle_Interface_Protocol Resource(const Standard_Integer num) const;
+  //! Returns a Case Number for each of the StepAP214 Entities
+  Standard_EXPORT virtual   Standard_Integer TypeNumber (const Handle(Standard_Type)& atype)  const;
+  
+  Standard_EXPORT virtual   Standard_CString SchemaName()  const;
+  
+  //! Returns count of Protocol used as Resources (level one)
+  Standard_EXPORT virtual   Standard_Integer NbResources()  const;
+  
+  //! Returns a Resource, given its rank (between 1 and NbResources)
+  Standard_EXPORT virtual   Handle(Interface_Protocol) Resource (const Standard_Integer num)  const;
 
 
 
@@ -73,7 +61,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP214_Protocol_HeaderFile

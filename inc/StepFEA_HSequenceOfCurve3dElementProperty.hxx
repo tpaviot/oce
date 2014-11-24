@@ -6,31 +6,15 @@
 #ifndef _StepFEA_HSequenceOfCurve3dElementProperty_HeaderFile
 #define _StepFEA_HSequenceOfCurve3dElementProperty_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepFEA_HSequenceOfCurve3dElementProperty_HeaderFile
 #include <Handle_StepFEA_HSequenceOfCurve3dElementProperty.hxx>
-#endif
 
-#ifndef _StepFEA_SequenceOfCurve3dElementProperty_HeaderFile
 #include <StepFEA_SequenceOfCurve3dElementProperty.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_StepFEA_Curve3dElementProperty_HeaderFile
 #include <Handle_StepFEA_Curve3dElementProperty.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class StepFEA_Curve3dElementProperty;
@@ -38,56 +22,57 @@ class StepFEA_SequenceOfCurve3dElementProperty;
 
 
 
-class StepFEA_HSequenceOfCurve3dElementProperty : public MMgt_TShared {
+class StepFEA_HSequenceOfCurve3dElementProperty : public MMgt_TShared
+{
 
 public:
 
   
-      StepFEA_HSequenceOfCurve3dElementProperty();
+    StepFEA_HSequenceOfCurve3dElementProperty();
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void Append(const Handle(StepFEA_Curve3dElementProperty)& anItem) ;
+  Standard_EXPORT   void Append (const Handle(StepFEA_Curve3dElementProperty)& anItem) ;
   
-  Standard_EXPORT     void Append(const Handle(StepFEA_HSequenceOfCurve3dElementProperty)& aSequence) ;
+  Standard_EXPORT   void Append (const Handle(StepFEA_HSequenceOfCurve3dElementProperty)& aSequence) ;
   
-  Standard_EXPORT     void Prepend(const Handle(StepFEA_Curve3dElementProperty)& anItem) ;
+  Standard_EXPORT   void Prepend (const Handle(StepFEA_Curve3dElementProperty)& anItem) ;
   
-  Standard_EXPORT     void Prepend(const Handle(StepFEA_HSequenceOfCurve3dElementProperty)& aSequence) ;
+  Standard_EXPORT   void Prepend (const Handle(StepFEA_HSequenceOfCurve3dElementProperty)& aSequence) ;
   
-  Standard_EXPORT     void Reverse() ;
+  Standard_EXPORT   void Reverse() ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(StepFEA_Curve3dElementProperty)& anItem) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(StepFEA_Curve3dElementProperty)& anItem) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(StepFEA_HSequenceOfCurve3dElementProperty)& aSequence) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(StepFEA_HSequenceOfCurve3dElementProperty)& aSequence) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(StepFEA_Curve3dElementProperty)& anItem) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(StepFEA_Curve3dElementProperty)& anItem) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(StepFEA_HSequenceOfCurve3dElementProperty)& aSequence) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(StepFEA_HSequenceOfCurve3dElementProperty)& aSequence) ;
   
-  Standard_EXPORT     void Exchange(const Standard_Integer anIndex,const Standard_Integer anOtherIndex) ;
+  Standard_EXPORT   void Exchange (const Standard_Integer anIndex, const Standard_Integer anOtherIndex) ;
   
-  Standard_EXPORT     Handle_StepFEA_HSequenceOfCurve3dElementProperty Split(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(StepFEA_HSequenceOfCurve3dElementProperty) Split (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer anIndex,const Handle(StepFEA_Curve3dElementProperty)& anItem) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer anIndex, const Handle(StepFEA_Curve3dElementProperty)& anItem) ;
   
-  Standard_EXPORT    const Handle_StepFEA_Curve3dElementProperty& Value(const Standard_Integer anIndex) const;
+  Standard_EXPORT  const  Handle(StepFEA_Curve3dElementProperty)& Value (const Standard_Integer anIndex)  const;
   
-  Standard_EXPORT     Handle_StepFEA_Curve3dElementProperty& ChangeValue(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(StepFEA_Curve3dElementProperty)& ChangeValue (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer anIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer fromIndex,const Standard_Integer toIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer fromIndex, const Standard_Integer toIndex) ;
   
-       const StepFEA_SequenceOfCurve3dElementProperty& Sequence() const;
+     const  StepFEA_SequenceOfCurve3dElementProperty& Sequence()  const;
   
-        StepFEA_SequenceOfCurve3dElementProperty& ChangeSequence() ;
+      StepFEA_SequenceOfCurve3dElementProperty& ChangeSequence() ;
   
-  Standard_EXPORT     Handle_StepFEA_HSequenceOfCurve3dElementProperty ShallowCopy() const;
+  Standard_EXPORT   Handle(StepFEA_HSequenceOfCurve3dElementProperty) ShallowCopy()  const;
 
 
 
@@ -102,12 +87,12 @@ protected:
 private: 
 
 
-StepFEA_SequenceOfCurve3dElementProperty mySequence;
+  StepFEA_SequenceOfCurve3dElementProperty mySequence;
 
 
 };
 
-#define Item Handle_StepFEA_Curve3dElementProperty
+#define Item Handle(StepFEA_Curve3dElementProperty)
 #define Item_hxx <StepFEA_Curve3dElementProperty.hxx>
 #define TheSequence StepFEA_SequenceOfCurve3dElementProperty
 #define TheSequence_hxx <StepFEA_SequenceOfCurve3dElementProperty.hxx>
@@ -128,11 +113,10 @@ StepFEA_SequenceOfCurve3dElementProperty mySequence;
 #undef TCollection_HSequence_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline Handle_StepFEA_HSequenceOfCurve3dElementProperty ShallowCopy(const Handle_StepFEA_HSequenceOfCurve3dElementProperty& me) {
+inline Handle(StepFEA_HSequenceOfCurve3dElementProperty) ShallowCopy(const Handle(StepFEA_HSequenceOfCurve3dElementProperty)& me) {
  return me->ShallowCopy();
 }
 
 
 
-#endif
+#endif // _StepFEA_HSequenceOfCurve3dElementProperty_HeaderFile

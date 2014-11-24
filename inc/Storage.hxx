@@ -6,15 +6,9 @@
 #ifndef _Storage_HeaderFile
 #define _Storage_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
 class TCollection_AsciiString;
 class Storage_BaseDriver;
@@ -48,33 +42,34 @@ class Storage_DataMapNodeOfMapOfCallBack;
 class Storage_DataMapIteratorOfMapOfCallBack;
 
 
-//! Storage package is used to write and read persistent objects. <br>
-//!     These objects are read and written by a retrieval or storage <br>
-//!  algorithm (Storage_Schema object) in a container (disk, memory, <br>
-//! network ...). Drivers (FSD_File objects) assign a physical <br>
-//! container for data to be stored or retrieved. <br>
-//! The standard procedure for an application in <br>
-//! reading a container is the following: <br>
-//! -   open the driver in reading mode, <br>
-//! -   call the Read function from the schema, <br>
-//!   setting the driver as a parameter. This   function returns <br>
-//! an instance of the   Storage_Data class which contains the   data being read, <br>
-//! -   close the driver. <br>
-//! The standard procedure for an application in writing a container is the following: <br>
-//! -   open the driver in writing mode, <br>
-//! -   create an instance of the Storage_Data   class, then <br>
-//!    add the persistent data to write   with the function AddRoot, <br>
-//! -   call the function Write from the schema, <br>
-//!   setting the driver and the Storage_Data   instance as parameters, <br>
-//! -      close the driver. <br>
-class Storage  {
+//! Storage package is used to write and read persistent objects.
+//! These objects are read and written by a retrieval or storage
+//! algorithm (Storage_Schema object) in a container (disk, memory,
+//! network ...). Drivers (FSD_File objects) assign a physical
+//! container for data to be stored or retrieved.
+//! The standard procedure for an application in
+//! reading a container is the following:
+//! -   open the driver in reading mode,
+//! -   call the Read function from the schema,
+//! setting the driver as a parameter. This   function returns
+//! an instance of the   Storage_Data class which contains the   data being read,
+//! -   close the driver.
+//! The standard procedure for an application in writing a container is the following:
+//! -   open the driver in writing mode,
+//! -   create an instance of the Storage_Data   class, then
+//! add the persistent data to write   with the function AddRoot,
+//! -   call the function Write from the schema,
+//! setting the driver and the Storage_Data   instance as parameters,
+//! -      close the driver.
+class Storage 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! returns the version of Storage's read/write routines <br>
-  Standard_EXPORT   static  TCollection_AsciiString Version() ;
-
+  
+  //! returns the version of Storage's read/write routines
+  Standard_EXPORT static   TCollection_AsciiString Version() ;
 
 
 
@@ -126,7 +121,6 @@ friend class Storage_DataMapIteratorOfMapOfCallBack;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Storage_HeaderFile

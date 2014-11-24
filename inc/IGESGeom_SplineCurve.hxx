@@ -6,112 +6,109 @@
 #ifndef _IGESGeom_SplineCurve_HeaderFile
 #define _IGESGeom_SplineCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESGeom_SplineCurve_HeaderFile
 #include <Handle_IGESGeom_SplineCurve.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray2OfReal_HeaderFile
 #include <Handle_TColStd_HArray2OfReal.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TColStd_HArray1OfReal;
 class TColStd_HArray2OfReal;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
 
 
-//! Defines IGESSplineCurve, Type <112> Form <0> <br>
-//!          in package IGESGeom <br>
-//!          The parametric spline is a sequence of parametric <br>
-//!          polynomial segments. The curve could be of the type <br>
-//!          Linear, Quadratic, Cubic, Wilson-Fowler, Modified <br>
-//!          Wilson-Fowler, B-Spline. The N polynomial segments <br>
-//!          are delimited by the break points  T(1), T(2), T(3), <br>
-//!          ..., T(N+1). <br>
-class IGESGeom_SplineCurve : public IGESData_IGESEntity {
+//! Defines IGESSplineCurve, Type <112> Form <0>
+//! in package IGESGeom
+//! The parametric spline is a sequence of parametric
+//! polynomial segments. The curve could be of the type
+//! Linear, Quadratic, Cubic, Wilson-Fowler, Modified
+//! Wilson-Fowler, B-Spline. The N polynomial segments
+//! are delimited by the break points  T(1), T(2), T(3),
+//! ..., T(N+1).
+class IGESGeom_SplineCurve : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESGeom_SplineCurve();
-  //! This method is used to set the fields of the class <br>
-//!           SplineCurve <br>
-//!       - aType           : Spline Type <br>
-//!                           1 = Linear <br>
-//!                           2 = Quadratic <br>
-//!                           3 = Cubic <br>
-//!                           4 = Wilson-Fowler <br>
-//!                           5 = Modified Wilson-Fowler <br>
-//!                           6 = B Spline <br>
-//!       - aDegree         : Degree of continuity w.r.t. arc length <br>
-//!       - nbDimensions    : Number of dimensions <br>
-//!                           2 = Planar <br>
-//!                           3 = Non-planar <br>
-//!       - allBreakPoints  : Array of break points <br>
-//!       - allXPolynomials : X coordinate polynomials of segments <br>
-//!       - allYPolynomials : Y coordinate polynomials of segments <br>
-//!       - allZPolynomials : Z coordinate polynomials of segments <br>
-//!       - allXValues      : Values of 1st, 2nd, 3rd derivatives of <br>
-//!                           X polynomials at the terminate point <br>
-//!                           and values of X at terminate point <br>
-//!       - allYValues      : Values of 1st, 2nd, 3rd derivatives of <br>
-//!                           Y polynomials at the terminate point <br>
-//!                           and values of Y at terminate point <br>
-//!       - allZvalues      : Values of 1st, 2nd, 3rd derivatives of <br>
-//!                           Z polynomials at the terminate point <br>
-//!                           and values of Z at terminate point <br>
-//! raises exception if allXPolynomials, allYPolynomials <br>
-//! & allZPolynomials are not of same size OR allXValues, allYValues <br>
-//! & allZValues are not of size 4 <br>
-  Standard_EXPORT     void Init(const Standard_Integer aType,const Standard_Integer aDegree,const Standard_Integer nbDimensions,const Handle(TColStd_HArray1OfReal)& allBreakPoints,const Handle(TColStd_HArray2OfReal)& allXPolynomials,const Handle(TColStd_HArray2OfReal)& allYPolynomials,const Handle(TColStd_HArray2OfReal)& allZPolynomials,const Handle(TColStd_HArray1OfReal)& allXvalues,const Handle(TColStd_HArray1OfReal)& allYvalues,const Handle(TColStd_HArray1OfReal)& allZvalues) ;
-  //! returns the type of Spline curve <br>
-  Standard_EXPORT     Standard_Integer SplineType() const;
-  //! returns the degree of the curve <br>
-  Standard_EXPORT     Standard_Integer Degree() const;
-  //! returns the number of dimensions <br>
-//! 2 = Planar <br>
-//! 3 = Non-planar <br>
-  Standard_EXPORT     Standard_Integer NbDimensions() const;
-  //! returns the number of segments <br>
-  Standard_EXPORT     Standard_Integer NbSegments() const;
-  //! returns breakpoint of piecewise polynomial <br>
-//! raises exception if Index <= 0 or Index > NbSegments() + 1 <br>
-  Standard_EXPORT     Standard_Real BreakPoint(const Standard_Integer Index) const;
-  //!  returns X coordinate polynomial for segment referred to by Index <br>
-//! raises exception if Index <= 0 or Index > NbSegments() <br>
-  Standard_EXPORT     void XCoordPolynomial(const Standard_Integer Index,Standard_Real& AX,Standard_Real& BX,Standard_Real& CX,Standard_Real& DX) const;
-  //! returns Y coordinate polynomial for segment referred to by Index <br>
-//! raises exception if Index <= 0 or Index > NbSegments() <br>
-  Standard_EXPORT     void YCoordPolynomial(const Standard_Integer Index,Standard_Real& AY,Standard_Real& BY,Standard_Real& CY,Standard_Real& DY) const;
-  //! returns Z coordinate polynomial for segment referred to by Index <br>
-//! raises exception if Index <= 0 or Index > NbSegments() <br>
-  Standard_EXPORT     void ZCoordPolynomial(const Standard_Integer Index,Standard_Real& AZ,Standard_Real& BZ,Standard_Real& CZ,Standard_Real& DZ) const;
-  //! returns the value of X polynomial, the values of 1st, 2nd and <br>
-//! 3rd derivatives of the X polynomial at the terminate point <br>
-  Standard_EXPORT     void XValues(Standard_Real& TPX0,Standard_Real& TPX1,Standard_Real& TPX2,Standard_Real& TPX3) const;
-  //! returns the value of Y polynomial, the values of 1st, 2nd and <br>
-//! 3rd derivatives of the Y polynomial at the termminate point <br>
-  Standard_EXPORT     void YValues(Standard_Real& TPY0,Standard_Real& TPY1,Standard_Real& TPY2,Standard_Real& TPY3) const;
-  //! returns the value of Z polynomial, the values of 1st, 2nd and <br>
-//! 3rd derivatives of the Z polynomial at the termminate point <br>
-  Standard_EXPORT     void ZValues(Standard_Real& TPZ0,Standard_Real& TPZ1,Standard_Real& TPZ2,Standard_Real& TPZ3) const;
+  Standard_EXPORT IGESGeom_SplineCurve();
+  
+  //! This method is used to set the fields of the class
+  //! SplineCurve
+  //! - aType           : Spline Type
+  //! 1 = Linear
+  //! 2 = Quadratic
+  //! 3 = Cubic
+  //! 4 = Wilson-Fowler
+  //! 5 = Modified Wilson-Fowler
+  //! 6 = B Spline
+  //! - aDegree         : Degree of continuity w.r.t. arc length
+  //! - nbDimensions    : Number of dimensions
+  //! 2 = Planar
+  //! 3 = Non-planar
+  //! - allBreakPoints  : Array of break points
+  //! - allXPolynomials : X coordinate polynomials of segments
+  //! - allYPolynomials : Y coordinate polynomials of segments
+  //! - allZPolynomials : Z coordinate polynomials of segments
+  //! - allXValues      : Values of 1st, 2nd, 3rd derivatives of
+  //! X polynomials at the terminate point
+  //! and values of X at terminate point
+  //! - allYValues      : Values of 1st, 2nd, 3rd derivatives of
+  //! Y polynomials at the terminate point
+  //! and values of Y at terminate point
+  //! - allZvalues      : Values of 1st, 2nd, 3rd derivatives of
+  //! Z polynomials at the terminate point
+  //! and values of Z at terminate point
+  //! raises exception if allXPolynomials, allYPolynomials
+  //! & allZPolynomials are not of same size OR allXValues, allYValues
+  //! & allZValues are not of size 4
+  Standard_EXPORT   void Init (const Standard_Integer aType, const Standard_Integer aDegree, const Standard_Integer nbDimensions, const Handle(TColStd_HArray1OfReal)& allBreakPoints, const Handle(TColStd_HArray2OfReal)& allXPolynomials, const Handle(TColStd_HArray2OfReal)& allYPolynomials, const Handle(TColStd_HArray2OfReal)& allZPolynomials, const Handle(TColStd_HArray1OfReal)& allXvalues, const Handle(TColStd_HArray1OfReal)& allYvalues, const Handle(TColStd_HArray1OfReal)& allZvalues) ;
+  
+  //! returns the type of Spline curve
+  Standard_EXPORT   Standard_Integer SplineType()  const;
+  
+  //! returns the degree of the curve
+  Standard_EXPORT   Standard_Integer Degree()  const;
+  
+  //! returns the number of dimensions
+  //! 2 = Planar
+  //! 3 = Non-planar
+  Standard_EXPORT   Standard_Integer NbDimensions()  const;
+  
+  //! returns the number of segments
+  Standard_EXPORT   Standard_Integer NbSegments()  const;
+  
+  //! returns breakpoint of piecewise polynomial
+  //! raises exception if Index <= 0 or Index > NbSegments() + 1
+  Standard_EXPORT   Standard_Real BreakPoint (const Standard_Integer Index)  const;
+  
+  //! returns X coordinate polynomial for segment referred to by Index
+  //! raises exception if Index <= 0 or Index > NbSegments()
+  Standard_EXPORT   void XCoordPolynomial (const Standard_Integer Index, Standard_Real& AX, Standard_Real& BX, Standard_Real& CX, Standard_Real& DX)  const;
+  
+  //! returns Y coordinate polynomial for segment referred to by Index
+  //! raises exception if Index <= 0 or Index > NbSegments()
+  Standard_EXPORT   void YCoordPolynomial (const Standard_Integer Index, Standard_Real& AY, Standard_Real& BY, Standard_Real& CY, Standard_Real& DY)  const;
+  
+  //! returns Z coordinate polynomial for segment referred to by Index
+  //! raises exception if Index <= 0 or Index > NbSegments()
+  Standard_EXPORT   void ZCoordPolynomial (const Standard_Integer Index, Standard_Real& AZ, Standard_Real& BZ, Standard_Real& CZ, Standard_Real& DZ)  const;
+  
+  //! returns the value of X polynomial, the values of 1st, 2nd and
+  //! 3rd derivatives of the X polynomial at the terminate point
+  Standard_EXPORT   void XValues (Standard_Real& TPX0, Standard_Real& TPX1, Standard_Real& TPX2, Standard_Real& TPX3)  const;
+  
+  //! returns the value of Y polynomial, the values of 1st, 2nd and
+  //! 3rd derivatives of the Y polynomial at the termminate point
+  Standard_EXPORT   void YValues (Standard_Real& TPY0, Standard_Real& TPY1, Standard_Real& TPY2, Standard_Real& TPY3)  const;
+  
+  //! returns the value of Z polynomial, the values of 1st, 2nd and
+  //! 3rd derivatives of the Z polynomial at the termminate point
+  Standard_EXPORT   void ZValues (Standard_Real& TPZ0, Standard_Real& TPZ1, Standard_Real& TPZ2, Standard_Real& TPZ3)  const;
 
 
 
@@ -126,16 +123,16 @@ protected:
 private: 
 
 
-Standard_Integer theType;
-Standard_Integer theDegree;
-Standard_Integer theNbDimensions;
-Handle_TColStd_HArray1OfReal theBreakPoints;
-Handle_TColStd_HArray2OfReal theXCoordsPolynomial;
-Handle_TColStd_HArray2OfReal theYCoordsPolynomial;
-Handle_TColStd_HArray2OfReal theZCoordsPolynomial;
-Handle_TColStd_HArray1OfReal theXvalues;
-Handle_TColStd_HArray1OfReal theYvalues;
-Handle_TColStd_HArray1OfReal theZvalues;
+  Standard_Integer theType;
+  Standard_Integer theDegree;
+  Standard_Integer theNbDimensions;
+  Handle(TColStd_HArray1OfReal) theBreakPoints;
+  Handle(TColStd_HArray2OfReal) theXCoordsPolynomial;
+  Handle(TColStd_HArray2OfReal) theYCoordsPolynomial;
+  Handle(TColStd_HArray2OfReal) theZCoordsPolynomial;
+  Handle(TColStd_HArray1OfReal) theXvalues;
+  Handle(TColStd_HArray1OfReal) theYvalues;
+  Handle(TColStd_HArray1OfReal) theZvalues;
 
 
 };
@@ -144,7 +141,6 @@ Handle_TColStd_HArray1OfReal theZvalues;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGeom_SplineCurve_HeaderFile

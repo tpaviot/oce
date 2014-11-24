@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKService"
-	ProjectGUID="{64AB0431-01B9-0D61-0DFF-21A864B656F2}"
+	ProjectGUID="{3D9A2BE5-16D1-15E9-035F-95201A6EA778}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -248,7 +248,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Aspect;..\..\..\src\Aspect;..\..\..\drv\InterfaceGraphic;..\..\..\src\InterfaceGraphic;..\..\..\drv\SelectBasics;..\..\..\src\SelectBasics;..\..\..\drv\Image;..\..\..\src\Image;..\..\..\drv\WNT;..\..\..\src\WNT;..\..\..\drv\Cocoa;..\..\..\src\Cocoa;..\..\..\drv\TColQuantity;..\..\..\src\TColQuantity;..\..\..\drv\Font;..\..\..\src\Font;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Image_DLL;__WNT_DLL;__Cocoa_DLL;__TColQuantity_DLL;__Font_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Image_DLL;__WNT_DLL;__Cocoa_DLL;__TColQuantity_DLL;__Font_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Image_DLL;__WNT_DLL;__Cocoa_DLL;__TColQuantity_DLL;__Font_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Image_DLL;__WNT_DLL;__Cocoa_DLL;__TColQuantity_DLL;__Font_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -343,7 +343,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\Aspect;..\..\..\src\Aspect;..\..\..\drv\InterfaceGraphic;..\..\..\src\InterfaceGraphic;..\..\..\drv\SelectBasics;..\..\..\src\SelectBasics;..\..\..\drv\Image;..\..\..\src\Image;..\..\..\drv\WNT;..\..\..\src\WNT;..\..\..\drv\Cocoa;..\..\..\src\Cocoa;..\..\..\drv\TColQuantity;..\..\..\src\TColQuantity;..\..\..\drv\Font;..\..\..\src\Font;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Image_DLL;__WNT_DLL;__Cocoa_DLL;__TColQuantity_DLL;__Font_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Image_DLL;__WNT_DLL;__Cocoa_DLL;__TColQuantity_DLL;__Font_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -365,7 +365,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Image_DLL;__WNT_DLL;__Cocoa_DLL;__TColQuantity_DLL;__Font_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__Aspect_DLL;__InterfaceGraphic_DLL;__SelectBasics_DLL;__Image_DLL;__WNT_DLL;__Cocoa_DLL;__TColQuantity_DLL;__Font_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"

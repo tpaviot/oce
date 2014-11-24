@@ -6,70 +6,28 @@
 #ifndef _Approx_SweepApproximation_HeaderFile
 #define _Approx_SweepApproximation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Approx_SweepFunction_HeaderFile
 #include <Handle_Approx_SweepFunction.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray2OfPnt_HeaderFile
 #include <Handle_TColgp_HArray2OfPnt.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray2OfReal_HeaderFile
 #include <Handle_TColStd_HArray2OfReal.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfInteger_HeaderFile
 #include <Handle_TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _TColgp_SequenceOfArray1OfPnt2d_HeaderFile
 #include <TColgp_SequenceOfArray1OfPnt2d.hxx>
-#endif
-#ifndef _Handle_Approx_HArray1OfGTrsf2d_HeaderFile
 #include <Handle_Approx_HArray1OfGTrsf2d.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray1OfPnt_HeaderFile
 #include <Handle_TColgp_HArray1OfPnt.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray1OfPnt2d_HeaderFile
 #include <Handle_TColgp_HArray1OfPnt2d.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray1OfVec_HeaderFile
 #include <Handle_TColgp_HArray1OfVec.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray1OfVec2d_HeaderFile
 #include <Handle_TColgp_HArray1OfVec2d.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _AdvApprox_EvaluatorFunction_HeaderFile
 #include <AdvApprox_EvaluatorFunction.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class Approx_SweepFunction;
 class TColgp_HArray2OfPnt;
 class TColStd_HArray2OfReal;
@@ -91,92 +49,101 @@ class TColStd_Array1OfInteger;
 class TColgp_Array1OfPnt2d;
 
 
-//!  Approximation  of  an  Surface   S(u,v) <br>
-//!          (and eventually associate  2d Curves) defined <br>
-//!           by section's law. <br>
-//! <br>
-//!            This surface is defined by a function F(u, v) <br>
-//!            where Ft(u) = F(u, t) is a bspline curve. <br>
-//!            To use this algorithme, you  have to implement Ft(u) <br>
-//!            as a derivative class  of Approx_SweepFunction. <br>
-//!            This algorithm can be used by blending, sweeping... <br>
-class Approx_SweepApproximation  {
+//! Approximation  of  an  Surface   S(u,v)
+//! (and eventually associate  2d Curves) defined
+//! by section's law.
+//!
+//! This surface is defined by a function F(u, v)
+//! where Ft(u) = F(u, t) is a bspline curve.
+//! To use this algorithme, you  have to implement Ft(u)
+//! as a derivative class  of Approx_SweepFunction.
+//! This algorithm can be used by blending, sweeping...
+class Approx_SweepApproximation 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Approx_SweepApproximation(const Handle(Approx_SweepFunction)& Func);
-  //! Perform the Approximation <br>
-//!    [First, Last] : Approx_SweepApproximation.cdl <br>
-//!    Tol3d : Tolerance to surface approximation <br>
-//!    Tol2d : Tolerance used to perform curve approximation <br>
-//!            Normaly the 2d curve are approximated with a <br>
-//!            tolerance given by the resolution on support surfaces, <br>
-//!            but if this tolerance is too large Tol2d is used. <br>
-//!    TolAngular : Tolerance (in radian) to control the angle <br>
-//!                 beetween tangents on the section law and <br>
-//!                 tangent of iso-v on approximed surface <br>
-//!    Continuity : The continuity in v waiting on the surface <br>
-//!    Degmax     : The maximum degree in v requiered on the surface <br>
-//!    Segmax     : The maximum number of span in v requiered on <br>
-//!                 the surface <br>
-//!   Warning : The continuity ci can be obtained only if Ft is Ci <br>
-  Standard_EXPORT     void Perform(const Standard_Real First,const Standard_Real Last,const Standard_Real Tol3d,const Standard_Real BoundTol,const Standard_Real Tol2d,const Standard_Real TolAngular,const GeomAbs_Shape Continuity = GeomAbs_C0,const Standard_Integer Degmax = 11,const Standard_Integer Segmax = 50) ;
-  //! The EvaluatorFunction from AdvApprox; <br>
-  Standard_EXPORT     Standard_Integer Eval(const Standard_Real Parameter,const Standard_Integer DerivativeRequest,const Standard_Real First,const Standard_Real Last,Standard_Real& Result) ;
-  //! returns if we have an result <br>
-        Standard_Boolean IsDone() const;
+  Standard_EXPORT Approx_SweepApproximation(const Handle(Approx_SweepFunction)& Func);
   
-  Standard_EXPORT     void SurfShape(Standard_Integer& UDegree,Standard_Integer& VDegree,Standard_Integer& NbUPoles,Standard_Integer& NbVPoles,Standard_Integer& NbUKnots,Standard_Integer& NbVKnots) const;
+  //! Perform the Approximation
+  //! [First, Last] : Approx_SweepApproximation.cdl
+  //! Tol3d : Tolerance to surface approximation
+  //! Tol2d : Tolerance used to perform curve approximation
+  //! Normaly the 2d curve are approximated with a
+  //! tolerance given by the resolution on support surfaces,
+  //! but if this tolerance is too large Tol2d is used.
+  //! TolAngular : Tolerance (in radian) to control the angle
+  //! beetween tangents on the section law and
+  //! tangent of iso-v on approximed surface
+  //! Continuity : The continuity in v waiting on the surface
+  //! Degmax     : The maximum degree in v requiered on the surface
+  //! Segmax     : The maximum number of span in v requiered on
+  //! the surface
+  //! Warning : The continuity ci can be obtained only if Ft is Ci
+  Standard_EXPORT   void Perform (const Standard_Real First, const Standard_Real Last, const Standard_Real Tol3d, const Standard_Real BoundTol, const Standard_Real Tol2d, const Standard_Real TolAngular, const GeomAbs_Shape Continuity = GeomAbs_C0, const Standard_Integer Degmax = 11, const Standard_Integer Segmax = 50) ;
   
-  Standard_EXPORT     void Surface(TColgp_Array2OfPnt& TPoles,TColStd_Array2OfReal& TWeights,TColStd_Array1OfReal& TUKnots,TColStd_Array1OfReal& TVKnots,TColStd_Array1OfInteger& TUMults,TColStd_Array1OfInteger& TVMults) const;
+  //! The EvaluatorFunction from AdvApprox;
+  Standard_EXPORT   Standard_Integer Eval (const Standard_Real Parameter, const Standard_Integer DerivativeRequest, const Standard_Real First, const Standard_Real Last, Standard_Real& Result) ;
   
-        Standard_Integer UDegree() const;
+  //! returns if we have an result
+      Standard_Boolean IsDone()  const;
   
-        Standard_Integer VDegree() const;
+  Standard_EXPORT   void SurfShape (Standard_Integer& UDegree, Standard_Integer& VDegree, Standard_Integer& NbUPoles, Standard_Integer& NbVPoles, Standard_Integer& NbUKnots, Standard_Integer& NbVKnots)  const;
   
-       const TColgp_Array2OfPnt& SurfPoles() const;
+  Standard_EXPORT   void Surface (TColgp_Array2OfPnt& TPoles, TColStd_Array2OfReal& TWeights, TColStd_Array1OfReal& TUKnots, TColStd_Array1OfReal& TVKnots, TColStd_Array1OfInteger& TUMults, TColStd_Array1OfInteger& TVMults)  const;
   
-       const TColStd_Array2OfReal& SurfWeights() const;
+      Standard_Integer UDegree()  const;
   
-       const TColStd_Array1OfReal& SurfUKnots() const;
+      Standard_Integer VDegree()  const;
   
-       const TColStd_Array1OfReal& SurfVKnots() const;
+     const  TColgp_Array2OfPnt& SurfPoles()  const;
   
-       const TColStd_Array1OfInteger& SurfUMults() const;
+     const  TColStd_Array2OfReal& SurfWeights()  const;
   
-       const TColStd_Array1OfInteger& SurfVMults() const;
-  //! returns the maximum error in the suface approximation. <br>
-  Standard_EXPORT     Standard_Real MaxErrorOnSurf() const;
-  //! returns the average error in the suface approximation. <br>
-  Standard_EXPORT     Standard_Real AverageErrorOnSurf() const;
+     const  TColStd_Array1OfReal& SurfUKnots()  const;
   
-        Standard_Integer NbCurves2d() const;
+     const  TColStd_Array1OfReal& SurfVKnots()  const;
   
-  Standard_EXPORT     void Curves2dShape(Standard_Integer& Degree,Standard_Integer& NbPoles,Standard_Integer& NbKnots) const;
+     const  TColStd_Array1OfInteger& SurfUMults()  const;
   
-  Standard_EXPORT     void Curve2d(const Standard_Integer Index,TColgp_Array1OfPnt2d& TPoles,TColStd_Array1OfReal& TKnots,TColStd_Array1OfInteger& TMults) const;
+     const  TColStd_Array1OfInteger& SurfVMults()  const;
   
-        Standard_Integer Curves2dDegree() const;
+  //! returns the maximum error in the suface approximation.
+  Standard_EXPORT   Standard_Real MaxErrorOnSurf()  const;
   
-       const TColgp_Array1OfPnt2d& Curve2dPoles(const Standard_Integer Index) const;
+  //! returns the average error in the suface approximation.
+  Standard_EXPORT   Standard_Real AverageErrorOnSurf()  const;
   
-       const TColStd_Array1OfReal& Curves2dKnots() const;
+      Standard_Integer NbCurves2d()  const;
   
-       const TColStd_Array1OfInteger& Curves2dMults() const;
-  //! returns the maximum error of the <Index> <br>
-//!          2d curve approximation. <br>
-  Standard_EXPORT     Standard_Real Max2dError(const Standard_Integer Index) const;
-  //! returns the average error of the <Index> <br>
-//!          2d curve approximation. <br>
-  Standard_EXPORT     Standard_Real Average2dError(const Standard_Integer Index) const;
-  //!  returns the  maximum 3d  error  of the  <Index> <br>
-//!           2d curve approximation on the Surface. <br>
-  Standard_EXPORT     Standard_Real TolCurveOnSurf(const Standard_Integer Index) const;
-  //! display information on approximation. <br>
-  Standard_EXPORT     void Dump(Standard_OStream& o) const;
-
+  Standard_EXPORT   void Curves2dShape (Standard_Integer& Degree, Standard_Integer& NbPoles, Standard_Integer& NbKnots)  const;
+  
+  Standard_EXPORT   void Curve2d (const Standard_Integer Index, TColgp_Array1OfPnt2d& TPoles, TColStd_Array1OfReal& TKnots, TColStd_Array1OfInteger& TMults)  const;
+  
+      Standard_Integer Curves2dDegree()  const;
+  
+     const  TColgp_Array1OfPnt2d& Curve2dPoles (const Standard_Integer Index)  const;
+  
+     const  TColStd_Array1OfReal& Curves2dKnots()  const;
+  
+     const  TColStd_Array1OfInteger& Curves2dMults()  const;
+  
+  //! returns the maximum error of the <Index>
+  //! 2d curve approximation.
+  Standard_EXPORT   Standard_Real Max2dError (const Standard_Integer Index)  const;
+  
+  //! returns the average error of the <Index>
+  //! 2d curve approximation.
+  Standard_EXPORT   Standard_Real Average2dError (const Standard_Integer Index)  const;
+  
+  //! returns the  maximum 3d  error  of the  <Index>
+  //! 2d curve approximation on the Surface.
+  Standard_EXPORT   Standard_Real TolCurveOnSurf (const Standard_Integer Index)  const;
+  
+  //! display information on approximation.
+  Standard_EXPORT   void Dump (Standard_OStream& o)  const;
 
 
 
@@ -190,54 +157,54 @@ protected:
 private:
 
   
-  Standard_EXPORT     void Approximation(const Handle(TColStd_HArray1OfReal)& OneDTol,const Handle(TColStd_HArray1OfReal)& TwoDTol,const Handle(TColStd_HArray1OfReal)& ThreeDTol,const Standard_Real BounTol,const Standard_Real First,const Standard_Real Last,const GeomAbs_Shape Continuity,const Standard_Integer Degmax,const Standard_Integer Segmax,const AdvApprox_EvaluatorFunction& TheApproxFunction,const AdvApprox_Cutting& TheCuttingTool) ;
+  Standard_EXPORT   void Approximation (const Handle(TColStd_HArray1OfReal)& OneDTol, const Handle(TColStd_HArray1OfReal)& TwoDTol, const Handle(TColStd_HArray1OfReal)& ThreeDTol, const Standard_Real BounTol, const Standard_Real First, const Standard_Real Last, const GeomAbs_Shape Continuity, const Standard_Integer Degmax, const Standard_Integer Segmax, const AdvApprox_EvaluatorFunction& TheApproxFunction, const AdvApprox_Cutting& TheCuttingTool) ;
   
-  Standard_EXPORT     Standard_Boolean D0(const Standard_Real Param,const Standard_Real First,const Standard_Real Last,Standard_Real& Result) ;
+  Standard_EXPORT   Standard_Boolean D0 (const Standard_Real Param, const Standard_Real First, const Standard_Real Last, Standard_Real& Result) ;
   
-  Standard_EXPORT     Standard_Boolean D1(const Standard_Real Param,const Standard_Real First,const Standard_Real Last,Standard_Real& Result) ;
+  Standard_EXPORT   Standard_Boolean D1 (const Standard_Real Param, const Standard_Real First, const Standard_Real Last, Standard_Real& Result) ;
   
-  Standard_EXPORT     Standard_Boolean D2(const Standard_Real Param,const Standard_Real First,const Standard_Real Last,Standard_Real& Result) ;
+  Standard_EXPORT   Standard_Boolean D2 (const Standard_Real Param, const Standard_Real First, const Standard_Real Last, Standard_Real& Result) ;
 
 
-Handle_Approx_SweepFunction myFunc;
-Standard_Boolean done;
-Standard_Integer Num1DSS;
-Standard_Integer Num2DSS;
-Standard_Integer Num3DSS;
-Standard_Integer udeg;
-Standard_Integer vdeg;
-Standard_Integer deg2d;
-Handle_TColgp_HArray2OfPnt tabPoles;
-Handle_TColStd_HArray2OfReal tabWeights;
-Handle_TColStd_HArray1OfReal tabUKnots;
-Handle_TColStd_HArray1OfReal tabVKnots;
-Handle_TColStd_HArray1OfReal tab2dKnots;
-Handle_TColStd_HArray1OfInteger tabUMults;
-Handle_TColStd_HArray1OfInteger tabVMults;
-Handle_TColStd_HArray1OfInteger tab2dMults;
-TColgp_SequenceOfArray1OfPnt2d seqPoles2d;
-Handle_TColStd_HArray1OfReal MError1d;
-Handle_TColStd_HArray1OfReal tab2dError;
-Handle_TColStd_HArray1OfReal MError3d;
-Handle_TColStd_HArray1OfReal AError1d;
-Handle_TColStd_HArray1OfReal Ave2dError;
-Handle_TColStd_HArray1OfReal AError3d;
-Handle_Approx_HArray1OfGTrsf2d AAffin;
-Handle_TColStd_HArray1OfReal COnSurfErr;
-gp_Vec Translation;
-Handle_TColgp_HArray1OfPnt myPoles;
-Handle_TColgp_HArray1OfPnt2d myPoles2d;
-Handle_TColStd_HArray1OfReal myWeigths;
-Handle_TColgp_HArray1OfVec myDPoles;
-Handle_TColgp_HArray1OfVec myD2Poles;
-Handle_TColgp_HArray1OfVec2d myDPoles2d;
-Handle_TColgp_HArray1OfVec2d myD2Poles2d;
-Handle_TColStd_HArray1OfReal myDWeigths;
-Handle_TColStd_HArray1OfReal myD2Weigths;
-Standard_Integer myOrder;
-Standard_Real myParam;
-Standard_Real first;
-Standard_Real last;
+  Handle(Approx_SweepFunction) myFunc;
+  Standard_Boolean done;
+  Standard_Integer Num1DSS;
+  Standard_Integer Num2DSS;
+  Standard_Integer Num3DSS;
+  Standard_Integer udeg;
+  Standard_Integer vdeg;
+  Standard_Integer deg2d;
+  Handle(TColgp_HArray2OfPnt) tabPoles;
+  Handle(TColStd_HArray2OfReal) tabWeights;
+  Handle(TColStd_HArray1OfReal) tabUKnots;
+  Handle(TColStd_HArray1OfReal) tabVKnots;
+  Handle(TColStd_HArray1OfReal) tab2dKnots;
+  Handle(TColStd_HArray1OfInteger) tabUMults;
+  Handle(TColStd_HArray1OfInteger) tabVMults;
+  Handle(TColStd_HArray1OfInteger) tab2dMults;
+  TColgp_SequenceOfArray1OfPnt2d seqPoles2d;
+  Handle(TColStd_HArray1OfReal) MError1d;
+  Handle(TColStd_HArray1OfReal) tab2dError;
+  Handle(TColStd_HArray1OfReal) MError3d;
+  Handle(TColStd_HArray1OfReal) AError1d;
+  Handle(TColStd_HArray1OfReal) Ave2dError;
+  Handle(TColStd_HArray1OfReal) AError3d;
+  Handle(Approx_HArray1OfGTrsf2d) AAffin;
+  Handle(TColStd_HArray1OfReal) COnSurfErr;
+  gp_Vec Translation;
+  Handle(TColgp_HArray1OfPnt) myPoles;
+  Handle(TColgp_HArray1OfPnt2d) myPoles2d;
+  Handle(TColStd_HArray1OfReal) myWeigths;
+  Handle(TColgp_HArray1OfVec) myDPoles;
+  Handle(TColgp_HArray1OfVec) myD2Poles;
+  Handle(TColgp_HArray1OfVec2d) myDPoles2d;
+  Handle(TColgp_HArray1OfVec2d) myD2Poles2d;
+  Handle(TColStd_HArray1OfReal) myDWeigths;
+  Handle(TColStd_HArray1OfReal) myD2Weigths;
+  Standard_Integer myOrder;
+  Standard_Real myParam;
+  Standard_Real first;
+  Standard_Real last;
 
 
 };
@@ -247,7 +214,6 @@ Standard_Real last;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Approx_SweepApproximation_HeaderFile

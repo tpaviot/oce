@@ -6,39 +6,28 @@
 #ifndef _HLRBRep_ListNodeOfListOfBPoint_HeaderFile
 #define _HLRBRep_ListNodeOfListOfBPoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_HLRBRep_ListNodeOfListOfBPoint_HeaderFile
 #include <Handle_HLRBRep_ListNodeOfListOfBPoint.hxx>
-#endif
 
-#ifndef _HLRBRep_BiPoint_HeaderFile
 #include <HLRBRep_BiPoint.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class HLRBRep_BiPoint;
 class HLRBRep_ListOfBPoint;
 class HLRBRep_ListIteratorOfListOfBPoint;
 
 
 
-class HLRBRep_ListNodeOfListOfBPoint : public TCollection_MapNode {
+class HLRBRep_ListNodeOfListOfBPoint : public TCollection_MapNode
+{
 
 public:
 
   
-      HLRBRep_ListNodeOfListOfBPoint(const HLRBRep_BiPoint& I,const TCollection_MapNodePtr& n);
+    HLRBRep_ListNodeOfListOfBPoint(const HLRBRep_BiPoint& I, const TCollection_MapNodePtr& n);
   
-        HLRBRep_BiPoint& Value() const;
+      HLRBRep_BiPoint& Value()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-HLRBRep_BiPoint myValue;
+  HLRBRep_BiPoint myValue;
 
 
 };
@@ -83,7 +72,6 @@ HLRBRep_BiPoint myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_ListNodeOfListOfBPoint_HeaderFile

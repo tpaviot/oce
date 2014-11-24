@@ -6,49 +6,21 @@
 #ifndef _SelectMgr_SelectableObject_HeaderFile
 #define _SelectMgr_SelectableObject_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_SelectMgr_SelectableObject_HeaderFile
 #include <Handle_SelectMgr_SelectableObject.hxx>
-#endif
 
-#ifndef _SelectMgr_SequenceOfSelection_HeaderFile
 #include <SelectMgr_SequenceOfSelection.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _PrsMgr_PresentableObject_HeaderFile
 #include <PrsMgr_PresentableObject.hxx>
-#endif
-#ifndef _PrsMgr_TypeOfPresentation3d_HeaderFile
 #include <PrsMgr_TypeOfPresentation3d.hxx>
-#endif
-#ifndef _Handle_SelectMgr_Selection_HeaderFile
 #include <Handle_SelectMgr_Selection.hxx>
-#endif
-#ifndef _PrsMgr_PresentationManager3d_HeaderFile
 #include <PrsMgr_PresentationManager3d.hxx>
-#endif
-#ifndef _Quantity_NameOfColor_HeaderFile
 #include <Quantity_NameOfColor.hxx>
-#endif
-#ifndef _Handle_SelectMgr_EntityOwner_HeaderFile
 #include <Handle_SelectMgr_EntityOwner.hxx>
-#endif
-#ifndef _Handle_PrsMgr_PresentationManager_HeaderFile
 #include <Handle_PrsMgr_PresentationManager.hxx>
-#endif
 class Prs3d_Presentation;
 class Standard_NotImplemented;
 class SelectMgr_Selection;
@@ -57,92 +29,114 @@ class SelectMgr_EntityOwner;
 class PrsMgr_PresentationManager;
 
 
-//! A framework to supply the structure of the object to be <br>
-//! selected. At the first pick, this structure is created by <br>
-//! calling the appropriate algorithm and retaining this <br>
-//! framework for further picking. <br>
-//! This abstract framework is inherited in Application <br>
-//! Interactive Services (AIS), notably in AIS_InteractiveObject. <br>
-//! Consequently, 3D selection should be handled by the <br>
-//! relevant daughter classes and their member functions <br>
-//! in AIS. This is particularly true in the creation of new interactive objects. <br>
-class SelectMgr_SelectableObject : public PrsMgr_PresentableObject {
+//! A framework to supply the structure of the object to be
+//! selected. At the first pick, this structure is created by
+//! calling the appropriate algorithm and retaining this
+//! framework for further picking.
+//! This abstract framework is inherited in Application
+//! Interactive Services (AIS), notably in AIS_InteractiveObject.
+//! Consequently, 3D selection should be handled by the
+//! relevant daughter classes and their member functions
+//! in AIS. This is particularly true in the creation of new interactive objects.
+class SelectMgr_SelectableObject : public PrsMgr_PresentableObject
+{
 
 public:
 
-  //! Recovers and calculates any sensitive primitive, <br>
-//! aSelection, available in Shape mode, specified by <br>
-//! aMode. As a rule, these are sensitive faces. <br>
-//! This method is defined as virtual. This enables you to <br>
-//! implement it in the creation of a new class of AIS <br>
-//! Interactive Object. You need to do this and in so <br>
-//! doing, redefine this method, if you create a class <br>
-//! which enriches the list of signatures and types. <br>
-  Standard_EXPORT   virtual  void ComputeSelection(const Handle(SelectMgr_Selection)& aSelection,const Standard_Integer aMode)  = 0;
-  //! defines the number of different modes of selection <br>
-//!          (or decomposition) for an Object. <br>
-  Standard_EXPORT   virtual  Standard_Integer NbPossibleSelection() const;
-  //! re-computes the sensitive primitives for all modes <br>
-  Standard_EXPORT     void UpdateSelection() ;
-  //! re-computes the sensitive primitives which correspond to <br>
-//!          the <amode>th selection mode. <br>
-  Standard_EXPORT     void UpdateSelection(const Standard_Integer aMode) ;
-  //! Adds the selection aSelection with the selection mode <br>
-//! index aMode to this framework. <br>
-  Standard_EXPORT     void AddSelection(const Handle(SelectMgr_Selection)& aSelection,const Standard_Integer aMode) ;
-  //! Empties all the selections in the SelectableObject <br>
-//!          <update> parameter defines whether all object's <br>
-//! selections should be flagged for further update or not. <br>
-//! This improved method can be used to recompute an <br>
-//! object's selection (without redisplaying the object <br>
-//! completely) when some selection mode is activated not for the first time. <br>
-  Standard_EXPORT     void ClearSelections(const Standard_Boolean update = Standard_False) ;
-  //! Returns the selection Selection having the selection mode aMode. <br>
-  Standard_EXPORT    const Handle_SelectMgr_Selection& Selection(const Standard_Integer aMode) const;
-  //! Returns true if a selection corresponding to the <br>
-//! selection mode aMode is present in this framework. <br>
-  Standard_EXPORT     Standard_Boolean HasSelection(const Standard_Integer aMode) const;
-  //! Begins the iteration scanning for sensitive primitives. <br>
-        void Init() ;
-  //! Continues the iteration scanning for sensitive primitives. <br>
-        Standard_Boolean More() const;
-  //! Continues the iteration scanning for sensitive primitives. <br>
-        void Next() ;
-  //! Returns the current selection in this framework. <br>
-       const Handle_SelectMgr_Selection& CurrentSelection() const;
   
-  Standard_EXPORT     void ResetTransformation() ;
-  //! Recomputes the location of the selection aSelection. <br>
-  Standard_EXPORT   virtual  void UpdateTransformation() ;
-  //! Updates locations in all sensitive entities from <aSelection> <br>
-//!          and in corresponding entity owners. <br>
-  Standard_EXPORT   virtual  void UpdateTransformations(const Handle(SelectMgr_Selection)& aSelection) ;
-  //! Method which draws selected owners ( for fast presentation draw ) <br>
-  Standard_EXPORT   virtual  void HilightSelected(const Handle(PrsMgr_PresentationManager3d)& PM,const SelectMgr_SequenceOfOwner& Seq) ;
-  //! Method which clear all selected owners belonging <br>
-//! to this selectable object ( for fast presentation draw ) <br>
-  Standard_EXPORT   virtual  void ClearSelected() ;
-  //! Method which hilight an owner belonging to <br>
-//! this selectable object  ( for fast presentation draw ) <br>
-  Standard_EXPORT   virtual  void HilightOwnerWithColor(const Handle(PrsMgr_PresentationManager3d)& thePM,const Quantity_NameOfColor theColor,const Handle(SelectMgr_EntityOwner)& theOwner) ;
-  //! If returns True, the old mechanism for highlighting <br>
-//! selected objects is used (HilightSelected Method may be empty). <br>
-//! If returns False, the HilightSelected method will be <br>
-//! fully responsible for highlighting selected entity <br>
-//! owners belonging to this selectable object. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsAutoHilight() const;
-  //! Set AutoHilight property to true or false <br>//!  Sets  up  Transform  Persistence Mode  for  this  object <br>
-  Standard_EXPORT   virtual  void SetAutoHilight(const Standard_Boolean newAutoHilight) ;
+  //! Recovers and calculates any sensitive primitive,
+  //! aSelection, available in Shape mode, specified by
+  //! aMode. As a rule, these are sensitive faces.
+  //! This method is defined as virtual. This enables you to
+  //! implement it in the creation of a new class of AIS
+  //! Interactive Object. You need to do this and in so
+  //! doing, redefine this method, if you create a class
+  //! which enriches the list of signatures and types.
+  Standard_EXPORT virtual   void ComputeSelection (const Handle(SelectMgr_Selection)& aSelection, const Standard_Integer aMode)  = 0;
   
-  Standard_EXPORT     Handle_Prs3d_Presentation GetHilightPresentation(const Handle(PrsMgr_PresentationManager3d)& TheMgr) ;
+  //! defines the number of different modes of selection
+  //! (or decomposition) for an Object.
+  Standard_EXPORT virtual   Standard_Integer NbPossibleSelection()  const;
   
-  Standard_EXPORT     Handle_Prs3d_Presentation GetSelectPresentation(const Handle(PrsMgr_PresentationManager3d)& TheMgr) ;
-  //! Set Z layer ID and update all presentations of <br>
-//! the selectable object. The layer can be set only for displayed object. <br>
-//! If all object presentations are removed, the layer ID will be set to <br>
-//! default value when computing presentation. The layers mechanism allows <br>
-//! drawing objects in higher layers in overlay of objects in lower layers. <br>
-  Standard_EXPORT   virtual  void SetZLayer(const Handle(PrsMgr_PresentationManager)& thePrsMgr,const Standard_Integer theLayerId) ;
+  //! re-computes the sensitive primitives for all modes
+  Standard_EXPORT   void UpdateSelection() ;
+  
+  //! re-computes the sensitive primitives which correspond to
+  //! the <amode>th selection mode.
+  Standard_EXPORT   void UpdateSelection (const Standard_Integer aMode) ;
+  
+  //! Adds the selection aSelection with the selection mode
+  //! index aMode to this framework.
+  Standard_EXPORT   void AddSelection (const Handle(SelectMgr_Selection)& aSelection, const Standard_Integer aMode) ;
+  
+  //! Empties all the selections in the SelectableObject
+  //! <update> parameter defines whether all object's
+  //! selections should be flagged for further update or not.
+  //! This improved method can be used to recompute an
+  //! object's selection (without redisplaying the object
+  //! completely) when some selection mode is activated not for the first time.
+  Standard_EXPORT   void ClearSelections (const Standard_Boolean update = Standard_False) ;
+  
+  //! Returns the selection Selection having the selection mode aMode.
+  Standard_EXPORT  const  Handle(SelectMgr_Selection)& Selection (const Standard_Integer aMode)  const;
+  
+  //! Returns true if a selection corresponding to the
+  //! selection mode aMode is present in this framework.
+  Standard_EXPORT   Standard_Boolean HasSelection (const Standard_Integer aMode)  const;
+  
+  //! Begins the iteration scanning for sensitive primitives.
+      void Init() ;
+  
+  //! Continues the iteration scanning for sensitive primitives.
+      Standard_Boolean More()  const;
+  
+  //! Continues the iteration scanning for sensitive primitives.
+      void Next() ;
+  
+  //! Returns the current selection in this framework.
+     const  Handle(SelectMgr_Selection)& CurrentSelection()  const;
+  
+  Standard_EXPORT   void ResetTransformation() ;
+  
+  //! Recomputes the location of the selection aSelection.
+  Standard_EXPORT virtual   void UpdateTransformation() ;
+  
+  //! Updates locations in all sensitive entities from <aSelection>
+  //! and in corresponding entity owners.
+  Standard_EXPORT virtual   void UpdateTransformations (const Handle(SelectMgr_Selection)& aSelection) ;
+  
+  //! Method which draws selected owners ( for fast presentation draw )
+  Standard_EXPORT virtual   void HilightSelected (const Handle(PrsMgr_PresentationManager3d)& PM, const SelectMgr_SequenceOfOwner& Seq) ;
+  
+  //! Method which clear all selected owners belonging
+  //! to this selectable object ( for fast presentation draw )
+  Standard_EXPORT virtual   void ClearSelected() ;
+  
+  //! Method which hilight an owner belonging to
+  //! this selectable object  ( for fast presentation draw )
+  Standard_EXPORT virtual   void HilightOwnerWithColor (const Handle(PrsMgr_PresentationManager3d)& thePM, const Quantity_NameOfColor theColor, const Handle(SelectMgr_EntityOwner)& theOwner) ;
+  
+  //! If returns True, the old mechanism for highlighting
+  //! selected objects is used (HilightSelected Method may be empty).
+  //! If returns False, the HilightSelected method will be
+  //! fully responsible for highlighting selected entity
+  //! owners belonging to this selectable object.
+  Standard_EXPORT virtual   Standard_Boolean IsAutoHilight()  const;
+  
+  //! Set AutoHilight property to true or false
+  //! Sets  up  Transform  Persistence Mode  for  this  object
+  Standard_EXPORT virtual   void SetAutoHilight (const Standard_Boolean newAutoHilight) ;
+  
+  Standard_EXPORT   Handle(Prs3d_Presentation) GetHilightPresentation (const Handle(PrsMgr_PresentationManager3d)& TheMgr) ;
+  
+  Standard_EXPORT   Handle(Prs3d_Presentation) GetSelectPresentation (const Handle(PrsMgr_PresentationManager3d)& TheMgr) ;
+  
+  //! Set Z layer ID and update all presentations of
+  //! the selectable object. The layer can be set only for displayed object.
+  //! If all object presentations are removed, the layer ID will be set to
+  //! default value when computing presentation. The layers mechanism allows
+  //! drawing objects in higher layers in overlay of objects in lower layers.
+  Standard_EXPORT virtual   void SetZLayer (const Handle(PrsMgr_PresentationManager)& thePrsMgr, const Standard_Integer theLayerId) ;
 
 
 
@@ -152,18 +146,18 @@ public:
 protected:
 
   
-  Standard_EXPORT   SelectMgr_SelectableObject(const PrsMgr_TypeOfPresentation3d aTypeOfPresentation3d = PrsMgr_TOP_AllView);
+  Standard_EXPORT SelectMgr_SelectableObject(const PrsMgr_TypeOfPresentation3d aTypeOfPresentation3d = PrsMgr_TOP_AllView);
 
-SelectMgr_SequenceOfSelection myselections;
+  SelectMgr_SequenceOfSelection myselections;
 
 
 private: 
 
 
-Standard_Integer mycurrent;
-Standard_Boolean myAutoHilight;
-Handle_Prs3d_Presentation mySelectionPrs;
-Handle_Prs3d_Presentation myHilightPrs;
+  Standard_Integer mycurrent;
+  Standard_Boolean myAutoHilight;
+  Handle(Prs3d_Presentation) mySelectionPrs;
+  Handle(Prs3d_Presentation) myHilightPrs;
 
 
 };
@@ -173,7 +167,6 @@ Handle_Prs3d_Presentation myHilightPrs;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SelectMgr_SelectableObject_HeaderFile

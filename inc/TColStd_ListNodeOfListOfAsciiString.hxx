@@ -6,39 +6,28 @@
 #ifndef _TColStd_ListNodeOfListOfAsciiString_HeaderFile
 #define _TColStd_ListNodeOfListOfAsciiString_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColStd_ListNodeOfListOfAsciiString_HeaderFile
 #include <Handle_TColStd_ListNodeOfListOfAsciiString.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TCollection_AsciiString;
 class TColStd_ListOfAsciiString;
 class TColStd_ListIteratorOfListOfAsciiString;
 
 
 
-class TColStd_ListNodeOfListOfAsciiString : public TCollection_MapNode {
+class TColStd_ListNodeOfListOfAsciiString : public TCollection_MapNode
+{
 
 public:
 
   
-      TColStd_ListNodeOfListOfAsciiString(const TCollection_AsciiString& I,const TCollection_MapNodePtr& n);
+    TColStd_ListNodeOfListOfAsciiString(const TCollection_AsciiString& I, const TCollection_MapNodePtr& n);
   
-        TCollection_AsciiString& Value() const;
+      TCollection_AsciiString& Value()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-TCollection_AsciiString myValue;
+  TCollection_AsciiString myValue;
 
 
 };
@@ -83,7 +72,6 @@ TCollection_AsciiString myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_ListNodeOfListOfAsciiString_HeaderFile

@@ -1,3 +1,1 @@
-#ifndef _StepGeom_IntersectionCurve_HeaderFile
 #include <StepGeom_IntersectionCurve.hxx>
-#endif

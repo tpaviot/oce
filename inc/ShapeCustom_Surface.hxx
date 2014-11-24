@@ -6,65 +6,56 @@
 #ifndef _ShapeCustom_Surface_HeaderFile
 #define _ShapeCustom_Surface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Geom_Surface;
 
 
-//! Converts a surface to the analitical form with given <br>
-//!          precision. Conversion is done only the surface is bspline <br>
-//!          of bezier and this can be approximed by some analytical <br>
-//!          surface with that precision. <br>
-class ShapeCustom_Surface  {
+//! Converts a surface to the analitical form with given
+//! precision. Conversion is done only the surface is bspline
+//! of bezier and this can be approximed by some analytical
+//! surface with that precision.
+class ShapeCustom_Surface 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   ShapeCustom_Surface();
+  Standard_EXPORT ShapeCustom_Surface();
   
-  Standard_EXPORT   ShapeCustom_Surface(const Handle(Geom_Surface)& S);
+  Standard_EXPORT ShapeCustom_Surface(const Handle(Geom_Surface)& S);
   
-  Standard_EXPORT     void Init(const Handle(Geom_Surface)& S) ;
-  //! Returns maximal deviation of converted surface from the original <br>
-//!          one computed by last call to ConvertToAnalytical <br>
-        Standard_Real Gap() const;
-  //! Tries to convert the Surface to an Analytic form <br>
-//!          Returns the result <br>
-//!          Works only if the Surface is BSpline or Bezier. <br>
-//!          Else, or in case of failure, returns a Null Handle <br>
-//! <br>
-//!          If <substitute> is True, the new surface replaces the actual <br>
-//!          one in <me> <br>
-//! <br>
-//!          It works by analysing the case which can apply, creating the <br>
-//!          corresponding analytic surface, then checking coincidence <br>
-//!  Warning: Parameter laws are not kept, hence PCurves should be redone <br>
-  Standard_EXPORT     Handle_Geom_Surface ConvertToAnalytical(const Standard_Real tol,const Standard_Boolean substitute) ;
-  //! Tries to convert the Surface to the Periodic form <br>
-//!          Returns the resulting surface <br>
-//!          Works only if the Surface is BSpline and is closed with <br>
-//!          Precision::Confusion() <br>
-//!          Else, or in case of failure, returns a Null Handle <br>
-  Standard_EXPORT     Handle_Geom_Surface ConvertToPeriodic(const Standard_Boolean substitute,const Standard_Real preci = -1) ;
-
+  Standard_EXPORT   void Init (const Handle(Geom_Surface)& S) ;
+  
+  //! Returns maximal deviation of converted surface from the original
+  //! one computed by last call to ConvertToAnalytical
+      Standard_Real Gap()  const;
+  
+  //! Tries to convert the Surface to an Analytic form
+  //! Returns the result
+  //! Works only if the Surface is BSpline or Bezier.
+  //! Else, or in case of failure, returns a Null Handle
+  //!
+  //! If <substitute> is True, the new surface replaces the actual
+  //! one in <me>
+  //!
+  //! It works by analysing the case which can apply, creating the
+  //! corresponding analytic surface, then checking coincidence
+  //! Warning: Parameter laws are not kept, hence PCurves should be redone
+  Standard_EXPORT   Handle(Geom_Surface) ConvertToAnalytical (const Standard_Real tol, const Standard_Boolean substitute) ;
+  
+  //! Tries to convert the Surface to the Periodic form
+  //! Returns the resulting surface
+  //! Works only if the Surface is BSpline and is closed with
+  //! Precision::Confusion()
+  //! Else, or in case of failure, returns a Null Handle
+  Standard_EXPORT   Handle(Geom_Surface) ConvertToPeriodic (const Standard_Boolean substitute, const Standard_Real preci = -1) ;
 
 
 
@@ -79,8 +70,8 @@ private:
 
 
 
-Handle_Geom_Surface mySurf;
-Standard_Real myGap;
+  Handle(Geom_Surface) mySurf;
+  Standard_Real myGap;
 
 
 };
@@ -90,7 +81,6 @@ Standard_Real myGap;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeCustom_Surface_HeaderFile

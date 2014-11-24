@@ -25,7 +25,9 @@
 #include <OpenGl_Element.hxx>
 #include <OpenGl_FrameBuffer.hxx>
 #include <OpenGl_Structure.hxx>
+#include <OpenGl_Sampler.hxx>
 #include <OpenGl_Texture.hxx>
+#include <OpenGl_Utils.hxx>
 #include <OpenGl_View.hxx>
 #include <OpenGl_Workspace.hxx>
 
@@ -144,6 +146,7 @@ OpenGl_Workspace::OpenGl_Workspace (const Handle(OpenGl_GraphicDriver)& theDrive
   //
   myComputeInitStatus (OpenGl_RT_NONE),
   myIsRaytraceDataValid (Standard_False),
+  myIsRaytraceWarnTextures (Standard_False),
   myViewModificationStatus (0),
   myLayersModificationStatus (0),
   //
@@ -335,8 +338,8 @@ Handle(OpenGl_Texture) OpenGl_Workspace::DisableTexture()
           glDisable (GL_POINT_SPRITE);
         }
       }
-    #endif
       glDisable (GL_TEXTURE_2D);
+    #endif
       break;
     }
     default: break;
@@ -366,12 +369,13 @@ void OpenGl_Workspace::setTextureParams (Handle(OpenGl_Texture)&                
 
   // setup texture matrix
   glMatrixMode (GL_TEXTURE);
-  glLoadIdentity();
+  OpenGl_Mat4 aTextureMat;
   const Graphic3d_Vec2& aScale = aParams->Scale();
   const Graphic3d_Vec2& aTrans = aParams->Translation();
-  glScalef     ( aScale.x(),  aScale.y(), 1.0f);
-  glTranslatef (-aTrans.x(), -aTrans.y(), 0.0f);
-  glRotatef (-aParams->Rotation(), 0.0f, 0.0f, 1.0f);
+  OpenGl_Utils::Scale     (aTextureMat,  aScale.x(),  aScale.y(), 1.0f);
+  OpenGl_Utils::Translate (aTextureMat, -aTrans.x(), -aTrans.y(), 0.0f);
+  OpenGl_Utils::Rotate    (aTextureMat, -aParams->Rotation(), 0.0f, 0.0f, 1.0f);
+  glLoadMatrixf (aTextureMat);
 
   // setup generation of texture coordinates
   switch (aParams->GenMode())
@@ -398,9 +402,10 @@ void OpenGl_Workspace::setTextureParams (Handle(OpenGl_Texture)&                
     }
     case Graphic3d_TOTM_EYE:
     {
-      glMatrixMode (GL_MODELVIEW);
-      glPushMatrix();
-      glLoadIdentity();
+      myGlContext->WorldViewState.Push();
+
+      myGlContext->WorldViewState.SetIdentity();
+      myGlContext->ApplyWorldViewMatrix();
 
       glTexGeni  (GL_S, GL_TEXTURE_GEN_MODE, GL_EYE_LINEAR);
       glTexGenfv (GL_S, GL_EYE_PLANE,        aParams->GenPlaneS().GetData());
@@ -410,7 +415,9 @@ void OpenGl_Workspace::setTextureParams (Handle(OpenGl_Texture)&                
         glTexGeni  (GL_T, GL_TEXTURE_GEN_MODE, GL_EYE_LINEAR);
         glTexGenfv (GL_T, GL_EYE_PLANE,        aParams->GenPlaneT().GetData());
       }
-      glPopMatrix();
+
+      myGlContext->WorldViewState.Pop();
+
       break;
     }
     case Graphic3d_TOTM_SPRITE:
@@ -435,6 +442,9 @@ void OpenGl_Workspace::setTextureParams (Handle(OpenGl_Texture)&                
   }
 #endif
 
+  // get active sampler object to override default texture parameters
+  const Handle(OpenGl_Sampler)& aSampler = myGlContext->TextureSampler();
+
   // setup texture filtering and wrapping
   //if (theTexture->GetParams() != theParams)
   const GLenum aFilter   = (aParams->Filter() == Graphic3d_TOTF_NEAREST) ? GL_NEAREST : GL_LINEAR;
@@ -444,9 +454,19 @@ void OpenGl_Workspace::setTextureParams (Handle(OpenGl_Texture)&                
   #if !defined(GL_ES_VERSION_2_0)
     case GL_TEXTURE_1D:
     {
-      glTexParameteri (GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, aFilter);
-      glTexParameteri (GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, aFilter);
-      glTexParameteri (GL_TEXTURE_1D, GL_TEXTURE_WRAP_S,     aWrapMode);
+      if (aSampler.IsNull() || !aSampler->IsValid())
+      {
+        glTexParameteri (GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, aFilter);
+        glTexParameteri (GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, aFilter);
+        glTexParameteri (GL_TEXTURE_1D, GL_TEXTURE_WRAP_S,     aWrapMode);
+      }
+      else
+      {
+        aSampler->SetParameter (*myGlContext, GL_TEXTURE_MAG_FILTER, aFilter);
+        aSampler->SetParameter (*myGlContext, GL_TEXTURE_MIN_FILTER, aFilter);
+        aSampler->SetParameter (*myGlContext, GL_TEXTURE_WRAP_S,     aWrapMode);
+      }
+
       break;
     }
   #endif
@@ -469,37 +489,58 @@ void OpenGl_Workspace::setTextureParams (Handle(OpenGl_Texture)&                
         {
           // setup degree of anisotropy filter
           const GLint aMaxDegree = myGlContext->MaxDegreeOfAnisotropy();
+          GLint aDegree;
           switch (aParams->AnisoFilter())
           {
             case Graphic3d_LOTA_QUALITY:
             {
-              glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY_EXT, aMaxDegree);
+              aDegree = aMaxDegree;
               break;
             }
             case Graphic3d_LOTA_MIDDLE:
             {
-
-              glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY_EXT, (aMaxDegree <= 4) ? 2 : (aMaxDegree / 2));
+              aDegree = (aMaxDegree <= 4) ? 2 : (aMaxDegree / 2);
               break;
             }
             case Graphic3d_LOTA_FAST:
             {
-              glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY_EXT, 2);
+              aDegree = 2;
               break;
             }
             case Graphic3d_LOTA_OFF:
             default:
             {
-              glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY_EXT, 1);
+              aDegree = 1;
               break;
             }
           }
+
+          if (aSampler.IsNull() || !aSampler->IsValid())
+          {
+            glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY_EXT, aDegree);
+          }
+          else
+          {
+            aSampler->SetParameter (*myGlContext, GL_TEXTURE_MAX_ANISOTROPY_EXT, aDegree);
+          }
         }
       }
-      glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, aFilterMin);
-      glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, aFilter);
-      glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,     aWrapMode);
-      glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,     aWrapMode);
+
+      if (aSampler.IsNull() || !aSampler->IsValid())
+      {
+        glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, aFilterMin);
+        glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, aFilter);
+        glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,     aWrapMode);
+        glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,     aWrapMode);
+      }
+      else
+      {
+        aSampler->SetParameter (*myGlContext, GL_TEXTURE_MIN_FILTER, aFilterMin);
+        aSampler->SetParameter (*myGlContext, GL_TEXTURE_MAG_FILTER, aFilter);
+        aSampler->SetParameter (*myGlContext, GL_TEXTURE_WRAP_S,     aWrapMode);
+        aSampler->SetParameter (*myGlContext, GL_TEXTURE_WRAP_T,     aWrapMode);
+      }
+
       break;
     }
     default: break;
@@ -526,8 +567,8 @@ void OpenGl_Workspace::setTextureParams (Handle(OpenGl_Texture)&                
         glEnable (GL_TEXTURE_GEN_S);
         glEnable (GL_TEXTURE_GEN_T);
       }
-    #endif
       glEnable (GL_TEXTURE_2D);
+    #endif
       break;
     }
     default: break;
@@ -563,6 +604,15 @@ Handle(OpenGl_Texture) OpenGl_Workspace::EnableTexture (const Handle(OpenGl_Text
   myTextureBound->Bind (myGlContext);
   setTextureParams (myTextureBound, theParams);
 
+  // If custom sampler object is available it will be
+  // used for overriding default texture parameters
+  const Handle(OpenGl_Sampler)& aSampler = myGlContext->TextureSampler();
+
+  if (!aSampler.IsNull() && aSampler->IsValid())
+  {
+    aSampler->Bind (*myGlContext);
+  }
+
   return aPrevTexture;
 }
 
@@ -590,13 +640,15 @@ void OpenGl_Workspace::Redraw (const Graphic3d_CView& theCView,
   aGlCtx->FetchState();
 
   Tint toSwap = (aGlCtx->IsRender() && !aGlCtx->caps->buffersNoSwap) ? 1 : 0; // swap buffers
-  GLint aViewPortBack[4];
   OpenGl_FrameBuffer* aFrameBuffer = (OpenGl_FrameBuffer* )theCView.ptrFBO;
   if (aFrameBuffer != NULL)
   {
-    glGetIntegerv (GL_VIEWPORT, aViewPortBack);
     aFrameBuffer->SetupViewport (aGlCtx);
     toSwap = 0; // no need to swap buffers
+  }
+  else
+  {
+    aGlCtx->core11fwd->glViewport (0, 0, myWidth, myHeight);
   }
 
   myToRedrawGL = Standard_True;
@@ -671,7 +723,7 @@ void OpenGl_Workspace::Redraw (const Graphic3d_CView& theCView,
   {
     aFrameBuffer->UnbindBuffer (aGlCtx);
     // move back original viewport
-    glViewport (aViewPortBack[0], aViewPortBack[1], aViewPortBack[2], aViewPortBack[3]);
+    aGlCtx->core11fwd->glViewport (0, 0, myWidth, myHeight);
   }
 
 #if defined(_WIN32) && defined(HAVE_VIDEOCAPTURE)
@@ -785,14 +837,19 @@ void OpenGl_Workspace::redraw1 (const Graphic3d_CView& theCView,
 void OpenGl_Workspace::copyBackToFront()
 {
 #if !defined(GL_ES_VERSION_2_0)
-  glMatrixMode (GL_PROJECTION);
-  glPushMatrix();
-  glLoadIdentity();
-  gluOrtho2D (0.0, (GLdouble )myWidth, 0.0, (GLdouble )myHeight);
 
-  glMatrixMode (GL_MODELVIEW);
-  glPushMatrix();
-  glLoadIdentity();
+  OpenGl_Mat4 aProjectMat;
+  OpenGl_Utils::Ortho2D<Standard_ShortReal> (aProjectMat,
+    0.f, static_cast<GLfloat> (myWidth), 0.f, static_cast<GLfloat> (myHeight));
+
+  myGlContext->WorldViewState.Push();
+  myGlContext->ProjectionState.Push();
+
+  myGlContext->WorldViewState.SetIdentity();
+  myGlContext->ProjectionState.SetCurrent (aProjectMat);
+
+  myGlContext->ApplyProjectionMatrix();
+  myGlContext->ApplyWorldViewMatrix();
 
   DisableFeatures();
 
@@ -804,11 +861,9 @@ void OpenGl_Workspace::copyBackToFront()
 
   EnableFeatures();
 
-  glMatrixMode (GL_PROJECTION);
-  glPopMatrix();
-  glMatrixMode (GL_MODELVIEW);
-  glPopMatrix();
-
+  myGlContext->WorldViewState.Pop();
+  myGlContext->ProjectionState.Pop();
+  myGlContext->ApplyProjectionMatrix();
   glDrawBuffer (GL_BACK);
 
 #endif

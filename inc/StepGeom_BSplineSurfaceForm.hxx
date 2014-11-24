@@ -6,8 +6,11 @@
 #ifndef _StepGeom_BSplineSurfaceForm_HeaderFile
 #define _StepGeom_BSplineSurfaceForm_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepGeom_BSplineSurfaceForm {
+
+enum StepGeom_BSplineSurfaceForm
+{
 StepGeom_bssfPlaneSurf,
 StepGeom_bssfCylindricalSurf,
 StepGeom_bssfConicalSurf,
@@ -21,8 +24,4 @@ StepGeom_bssfSurfOfLinearExtrusion,
 StepGeom_bssfUnspecified
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepGeom_BSplineSurfaceForm_HeaderFile

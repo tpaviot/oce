@@ -6,64 +6,26 @@
 #ifndef _MeshVS_MeshPrsBuilder_HeaderFile
 #define _MeshVS_MeshPrsBuilder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MeshVS_MeshPrsBuilder_HeaderFile
 #include <Handle_MeshVS_MeshPrsBuilder.hxx>
-#endif
 
-#ifndef _MeshVS_PrsBuilder_HeaderFile
 #include <MeshVS_PrsBuilder.hxx>
-#endif
-#ifndef _Handle_MeshVS_Mesh_HeaderFile
 #include <Handle_MeshVS_Mesh.hxx>
-#endif
-#ifndef _MeshVS_DisplayModeFlags_HeaderFile
 #include <MeshVS_DisplayModeFlags.hxx>
-#endif
-#ifndef _Handle_MeshVS_DataSource_HeaderFile
 #include <Handle_MeshVS_DataSource.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _MeshVS_BuilderPriority_HeaderFile
 #include <MeshVS_BuilderPriority.hxx>
-#endif
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _TColStd_PackedMapOfInteger_HeaderFile
 #include <TColStd_PackedMapOfInteger.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Graphic3d_ArrayOfSegments_HeaderFile
 #include <Handle_Graphic3d_ArrayOfSegments.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Graphic3d_ArrayOfTriangles_HeaderFile
 #include <Handle_Graphic3d_ArrayOfTriangles.hxx>
-#endif
-#ifndef _Handle_MeshVS_HArray1OfSequenceOfInteger_HeaderFile
 #include <Handle_MeshVS_HArray1OfSequenceOfInteger.hxx>
-#endif
-#ifndef _Handle_Graphic3d_ArrayOfPrimitives_HeaderFile
 #include <Handle_Graphic3d_ArrayOfPrimitives.hxx>
-#endif
-#ifndef _Handle_Graphic3d_AspectFillArea3d_HeaderFile
 #include <Handle_Graphic3d_AspectFillArea3d.hxx>
-#endif
-#ifndef _Handle_Graphic3d_AspectLine3d_HeaderFile
 #include <Handle_Graphic3d_AspectLine3d.hxx>
-#endif
 class MeshVS_Mesh;
 class MeshVS_DataSource;
 class Prs3d_Presentation;
@@ -76,25 +38,33 @@ class Graphic3d_AspectFillArea3d;
 class Graphic3d_AspectLine3d;
 
 
-//! This class provides methods to compute base mesh presentation <br>
-class MeshVS_MeshPrsBuilder : public MeshVS_PrsBuilder {
+//! This class provides methods to compute base mesh presentation
+class MeshVS_MeshPrsBuilder : public MeshVS_PrsBuilder
+{
 
 public:
 
-  //! Creates builder with certain display mode flags, data source, ID and priority <br>
-  Standard_EXPORT   MeshVS_MeshPrsBuilder(const Handle(MeshVS_Mesh)& Parent,const MeshVS_DisplayModeFlags& Flags = MeshVS_DMF_OCCMask,const Handle(MeshVS_DataSource)& DS = 0,const Standard_Integer Id = -1,const MeshVS_BuilderPriority& Priority = MeshVS_BP_Mesh);
-  //! Builds base mesh presentation by calling the methods below <br>
-  Standard_EXPORT   virtual  void Build(const Handle(Prs3d_Presentation)& Prs,const TColStd_PackedMapOfInteger& IDs,TColStd_PackedMapOfInteger& IDsToExclude,const Standard_Boolean IsElement,const Standard_Integer DisplayMode) const;
-  //! Builds nodes presentation <br>
-  Standard_EXPORT   virtual  void BuildNodes(const Handle(Prs3d_Presentation)& Prs,const TColStd_PackedMapOfInteger& IDs,TColStd_PackedMapOfInteger& IDsToExclude,const Standard_Integer DisplayMode) const;
-  //! Builds elements presentation <br>
-  Standard_EXPORT   virtual  void BuildElements(const Handle(Prs3d_Presentation)& Prs,const TColStd_PackedMapOfInteger& IDs,TColStd_PackedMapOfInteger& IDsToExclude,const Standard_Integer DisplayMode) const;
-  //! Builds presentation of hilighted entity <br>
-  Standard_EXPORT   virtual  void BuildHilightPrs(const Handle(Prs3d_Presentation)& Prs,const TColStd_PackedMapOfInteger& IDs,const Standard_Boolean IsElement) const;
-  //! Add to array polygons or polylines representing volume <br>
-  Standard_EXPORT   static  void AddVolumePrs(const Handle(MeshVS_HArray1OfSequenceOfInteger)& Topo,const TColStd_Array1OfReal& Nodes,const Standard_Integer NbNodes,const Handle(Graphic3d_ArrayOfPrimitives)& Array,const Standard_Boolean IsReflected,const Standard_Boolean IsShrinked,const Standard_Boolean IsSelect,const Standard_Real ShrinkCoef) ;
-  //! Calculate how many polygons or polylines are necessary to draw passed topology <br>
-  Standard_EXPORT   static  void HowManyPrimitives(const Handle(MeshVS_HArray1OfSequenceOfInteger)& Topo,const Standard_Boolean AsPolygons,const Standard_Boolean IsSelect,const Standard_Integer NbNodes,Standard_Integer& Vertices,Standard_Integer& Bounds) ;
+  
+  //! Creates builder with certain display mode flags, data source, ID and priority
+  Standard_EXPORT MeshVS_MeshPrsBuilder(const Handle(MeshVS_Mesh)& Parent, const MeshVS_DisplayModeFlags& Flags = MeshVS_DMF_OCCMask, const Handle(MeshVS_DataSource)& DS = 0, const Standard_Integer Id = -1, const MeshVS_BuilderPriority& Priority = MeshVS_BP_Mesh);
+  
+  //! Builds base mesh presentation by calling the methods below
+  Standard_EXPORT virtual   void Build (const Handle(Prs3d_Presentation)& Prs, const TColStd_PackedMapOfInteger& IDs, TColStd_PackedMapOfInteger& IDsToExclude, const Standard_Boolean IsElement, const Standard_Integer DisplayMode)  const;
+  
+  //! Builds nodes presentation
+  Standard_EXPORT virtual   void BuildNodes (const Handle(Prs3d_Presentation)& Prs, const TColStd_PackedMapOfInteger& IDs, TColStd_PackedMapOfInteger& IDsToExclude, const Standard_Integer DisplayMode)  const;
+  
+  //! Builds elements presentation
+  Standard_EXPORT virtual   void BuildElements (const Handle(Prs3d_Presentation)& Prs, const TColStd_PackedMapOfInteger& IDs, TColStd_PackedMapOfInteger& IDsToExclude, const Standard_Integer DisplayMode)  const;
+  
+  //! Builds presentation of hilighted entity
+  Standard_EXPORT virtual   void BuildHilightPrs (const Handle(Prs3d_Presentation)& Prs, const TColStd_PackedMapOfInteger& IDs, const Standard_Boolean IsElement)  const;
+  
+  //! Add to array polygons or polylines representing volume
+  Standard_EXPORT static   void AddVolumePrs (const Handle(MeshVS_HArray1OfSequenceOfInteger)& Topo, const TColStd_Array1OfReal& Nodes, const Standard_Integer NbNodes, const Handle(Graphic3d_ArrayOfPrimitives)& Array, const Standard_Boolean IsReflected, const Standard_Boolean IsShrinked, const Standard_Boolean IsSelect, const Standard_Real ShrinkCoef) ;
+  
+  //! Calculate how many polygons or polylines are necessary to draw passed topology
+  Standard_EXPORT static   void HowManyPrimitives (const Handle(MeshVS_HArray1OfSequenceOfInteger)& Topo, const Standard_Boolean AsPolygons, const Standard_Boolean IsSelect, const Standard_Integer NbNodes, Standard_Integer& Vertices, Standard_Integer& Bounds) ;
 
 
 
@@ -103,19 +73,24 @@ public:
 
 protected:
 
-  //! Add to array of polylines some lines representing link <br>
-  Standard_EXPORT     void AddLinkPrs(const TColStd_Array1OfReal& theCoords,const Handle(Graphic3d_ArrayOfSegments)& theLines,const Standard_Boolean IsShrinked,const Standard_Real ShrinkCoef) const;
-  //! Add to array of segments representing face's wire <br>
-  Standard_EXPORT     void AddFaceWirePrs(const TColStd_Array1OfReal& theCoords,const Standard_Integer theNbNodes,const Handle(Graphic3d_ArrayOfSegments)& theLines,const Standard_Boolean theIsShrinked,const Standard_Real theShrinkingCoef) const;
-  //! Add to array of polygons a polygon representing face <br>
-  Standard_EXPORT     void AddFaceSolidPrs(const Standard_Integer ID,const TColStd_Array1OfReal& theCoords,const Standard_Integer theNbNodes,const Standard_Integer theMaxNodes,const Handle(Graphic3d_ArrayOfTriangles)& theTriangles,const Standard_Boolean theIsReflected,const Standard_Boolean theIsShrinked,const Standard_Real theShrinkCoef,const Standard_Boolean theIsMeshSmoothShading) const;
-  //! Draw array of polygons and polylines in the certain order according to transparency <br>
-  Standard_EXPORT     void DrawArrays(const Handle(Prs3d_Presentation)& Prs,const Handle(Graphic3d_ArrayOfPrimitives)& thePolygons,const Handle(Graphic3d_ArrayOfPrimitives)& theLines,const Handle(Graphic3d_ArrayOfPrimitives)& theLinkLines,const Handle(Graphic3d_ArrayOfPrimitives)& theVolumesInShad,const Standard_Boolean IsPolygonsEdgesOff,const Standard_Boolean IsSelected,const Handle(Graphic3d_AspectFillArea3d)& theFillAsp,const Handle(Graphic3d_AspectLine3d)& theLineAsp) const;
-  //! Default calculation of center of face or link. This method if useful for shrink mode presentation <br>
-//! theCoords is array of nodes co-ordinates in the strict order X1, Y1, Z1, X2... <br>
-//! NbNodes is number of nodes an element consist of <br>
-//! xG, yG, zG are co-ordinates of center whose will be returned <br>
-  Standard_EXPORT   static  void CalculateCenter(const TColStd_Array1OfReal& theCoords,const Standard_Integer NbNodes,Standard_Real& xG,Standard_Real& yG,Standard_Real& zG) ;
+  
+  //! Add to array of polylines some lines representing link
+  Standard_EXPORT   void AddLinkPrs (const TColStd_Array1OfReal& theCoords, const Handle(Graphic3d_ArrayOfSegments)& theLines, const Standard_Boolean IsShrinked, const Standard_Real ShrinkCoef)  const;
+  
+  //! Add to array of segments representing face's wire
+  Standard_EXPORT   void AddFaceWirePrs (const TColStd_Array1OfReal& theCoords, const Standard_Integer theNbNodes, const Handle(Graphic3d_ArrayOfSegments)& theLines, const Standard_Boolean theIsShrinked, const Standard_Real theShrinkingCoef)  const;
+  
+  //! Add to array of polygons a polygon representing face
+  Standard_EXPORT   void AddFaceSolidPrs (const Standard_Integer ID, const TColStd_Array1OfReal& theCoords, const Standard_Integer theNbNodes, const Standard_Integer theMaxNodes, const Handle(Graphic3d_ArrayOfTriangles)& theTriangles, const Standard_Boolean theIsReflected, const Standard_Boolean theIsShrinked, const Standard_Real theShrinkCoef, const Standard_Boolean theIsMeshSmoothShading)  const;
+  
+  //! Draw array of polygons and polylines in the certain order according to transparency
+  Standard_EXPORT   void DrawArrays (const Handle(Prs3d_Presentation)& Prs, const Handle(Graphic3d_ArrayOfPrimitives)& thePolygons, const Handle(Graphic3d_ArrayOfPrimitives)& theLines, const Handle(Graphic3d_ArrayOfPrimitives)& theLinkLines, const Handle(Graphic3d_ArrayOfPrimitives)& theVolumesInShad, const Standard_Boolean IsPolygonsEdgesOff, const Standard_Boolean IsSelected, const Handle(Graphic3d_AspectFillArea3d)& theFillAsp, const Handle(Graphic3d_AspectLine3d)& theLineAsp)  const;
+  
+  //! Default calculation of center of face or link. This method if useful for shrink mode presentation
+  //! theCoords is array of nodes co-ordinates in the strict order X1, Y1, Z1, X2...
+  //! NbNodes is number of nodes an element consist of
+  //! xG, yG, zG are co-ordinates of center whose will be returned
+  Standard_EXPORT static   void CalculateCenter (const TColStd_Array1OfReal& theCoords, const Standard_Integer NbNodes, Standard_Real& xG, Standard_Real& yG, Standard_Real& zG) ;
 
 
 
@@ -130,7 +105,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MeshVS_MeshPrsBuilder_HeaderFile

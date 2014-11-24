@@ -6,28 +6,14 @@
 #ifndef _FEmTool_HAssemblyTable_HeaderFile
 #define _FEmTool_HAssemblyTable_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_FEmTool_HAssemblyTable_HeaderFile
 #include <Handle_FEmTool_HAssemblyTable.hxx>
-#endif
 
-#ifndef _FEmTool_AssemblyTable_HeaderFile
 #include <FEmTool_AssemblyTable.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfInteger_HeaderFile
 #include <Handle_TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_OutOfRange;
 class Standard_OutOfMemory;
@@ -37,38 +23,39 @@ class FEmTool_AssemblyTable;
 
 
 
-class FEmTool_HAssemblyTable : public MMgt_TShared {
+class FEmTool_HAssemblyTable : public MMgt_TShared
+{
 
 public:
 
   
-      FEmTool_HAssemblyTable(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+    FEmTool_HAssemblyTable(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2);
   
-      FEmTool_HAssemblyTable(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Handle(TColStd_HArray1OfInteger)& V);
+    FEmTool_HAssemblyTable(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2, const Handle(TColStd_HArray1OfInteger)& V);
   
-        void Init(const Handle(TColStd_HArray1OfInteger)& V) ;
+      void Init (const Handle(TColStd_HArray1OfInteger)& V) ;
   
-        Standard_Integer ColLength() const;
+      Standard_Integer ColLength()  const;
   
-        Standard_Integer RowLength() const;
+      Standard_Integer RowLength()  const;
   
-        Standard_Integer LowerCol() const;
+      Standard_Integer LowerCol()  const;
   
-        Standard_Integer LowerRow() const;
+      Standard_Integer LowerRow()  const;
   
-        Standard_Integer UpperCol() const;
+      Standard_Integer UpperCol()  const;
   
-        Standard_Integer UpperRow() const;
+      Standard_Integer UpperRow()  const;
   
-        void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Handle(TColStd_HArray1OfInteger)& Value) ;
+      void SetValue (const Standard_Integer Row, const Standard_Integer Col, const Handle(TColStd_HArray1OfInteger)& Value) ;
   
-       const Handle_TColStd_HArray1OfInteger& Value(const Standard_Integer Row,const Standard_Integer Col) const;
+     const  Handle(TColStd_HArray1OfInteger)& Value (const Standard_Integer Row, const Standard_Integer Col)  const;
   
-        Handle_TColStd_HArray1OfInteger& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
+      Handle(TColStd_HArray1OfInteger)& ChangeValue (const Standard_Integer Row, const Standard_Integer Col) ;
   
-       const FEmTool_AssemblyTable& Array2() const;
+     const  FEmTool_AssemblyTable& Array2()  const;
   
-        FEmTool_AssemblyTable& ChangeArray2() ;
+      FEmTool_AssemblyTable& ChangeArray2() ;
 
 
 
@@ -83,12 +70,12 @@ protected:
 private: 
 
 
-FEmTool_AssemblyTable myArray;
+  FEmTool_AssemblyTable myArray;
 
 
 };
 
-#define ItemHArray2 Handle_TColStd_HArray1OfInteger
+#define ItemHArray2 Handle(TColStd_HArray1OfInteger)
 #define ItemHArray2_hxx <TColStd_HArray1OfInteger.hxx>
 #define TheArray2 FEmTool_AssemblyTable
 #define TheArray2_hxx <FEmTool_AssemblyTable.hxx>
@@ -109,7 +96,6 @@ FEmTool_AssemblyTable myArray;
 #undef TCollection_HArray2_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _FEmTool_HAssemblyTable_HeaderFile

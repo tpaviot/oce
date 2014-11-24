@@ -5,22 +5,12 @@
 
 #include <Visual3d_HSequenceOfView.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Visual3d_View_HeaderFile
 #include <Visual3d_View.hxx>
-#endif
-#ifndef _Visual3d_SequenceOfView_HeaderFile
 #include <Visual3d_SequenceOfView.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(Visual3d_HSequenceOfView,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Visual3d_HSequenceOfView)
 
 
-#define Item Handle_Visual3d_View
+#define Item Handle(Visual3d_View)
 #define Item_hxx <Visual3d_View.hxx>
 #define TheSequence Visual3d_SequenceOfView
 #define TheSequence_hxx <Visual3d_SequenceOfView.hxx>

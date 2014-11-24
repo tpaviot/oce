@@ -6,53 +6,45 @@
 #ifndef _Geom2dGcc_QCurve_HeaderFile
 #define _Geom2dGcc_QCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _GccEnt_Position_HeaderFile
 #include <GccEnt_Position.hxx>
-#endif
-#ifndef _Geom2dAdaptor_Curve_HeaderFile
 #include <Geom2dAdaptor_Curve.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Geom2dAdaptor_Curve;
 
 
-//! Creates a qualified 2d line. <br>
-class Geom2dGcc_QCurve  {
+//! Creates a qualified 2d line.
+class Geom2dGcc_QCurve 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Geom2dGcc_QCurve(const Geom2dAdaptor_Curve& Curve,const GccEnt_Position Qualifier);
+  Standard_EXPORT Geom2dGcc_QCurve(const Geom2dAdaptor_Curve& Curve, const GccEnt_Position Qualifier);
   
-  Standard_EXPORT     Geom2dAdaptor_Curve Qualified() const;
+  Standard_EXPORT   Geom2dAdaptor_Curve Qualified()  const;
   
-  Standard_EXPORT     GccEnt_Position Qualifier() const;
-  //! Returns true if the solution is unqualified and false in the <br>
-//!          other cases. <br>
-  Standard_EXPORT     Standard_Boolean IsUnqualified() const;
-  //! Returns true if the solution is Enclosing the Curv and false in <br>
-//!          the other cases. <br>
-  Standard_EXPORT     Standard_Boolean IsEnclosing() const;
-  //! Returns true if the solution is Enclosed in the Curv and false in <br>
-//!          the other cases. <br>
-  Standard_EXPORT     Standard_Boolean IsEnclosed() const;
-  //! Returns true if the solution is Outside the Curv and false in <br>
-//!          the other cases. <br>
-  Standard_EXPORT     Standard_Boolean IsOutside() const;
-
+  Standard_EXPORT   GccEnt_Position Qualifier()  const;
+  
+  //! Returns true if the solution is unqualified and false in the
+  //! other cases.
+  Standard_EXPORT   Standard_Boolean IsUnqualified()  const;
+  
+  //! Returns true if the solution is Enclosing the Curv and false in
+  //! the other cases.
+  Standard_EXPORT   Standard_Boolean IsEnclosing()  const;
+  
+  //! Returns true if the solution is Enclosed in the Curv and false in
+  //! the other cases.
+  Standard_EXPORT   Standard_Boolean IsEnclosed()  const;
+  
+  //! Returns true if the solution is Outside the Curv and false in
+  //! the other cases.
+  Standard_EXPORT   Standard_Boolean IsOutside()  const;
 
 
 
@@ -67,8 +59,8 @@ private:
 
 
 
-GccEnt_Position TheQualifier;
-Geom2dAdaptor_Curve TheQualified;
+  GccEnt_Position TheQualifier;
+  Geom2dAdaptor_Curve TheQualified;
 
 
 };
@@ -77,7 +69,6 @@ Geom2dAdaptor_Curve TheQualified;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dGcc_QCurve_HeaderFile

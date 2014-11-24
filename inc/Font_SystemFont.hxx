@@ -6,64 +6,57 @@
 #ifndef _Font_SystemFont_HeaderFile
 #define _Font_SystemFont_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Font_SystemFont_HeaderFile
 #include <Handle_Font_SystemFont.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Font_FontAspect_HeaderFile
 #include <Font_FontAspect.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class TCollection_HAsciiString;
 
 
-//! Structure for store of Font System Information <br>
-class Font_SystemFont : public MMgt_TShared {
+//! Structure for store of Font System Information
+class Font_SystemFont : public MMgt_TShared
+{
 
 public:
 
-  //! Creates empty font object <br>
-  Standard_EXPORT   Font_SystemFont();
-  //! Creates Font object initialized with <FontName> as name <br>
-//!         <FontAspect>.... TODO <br>
-  Standard_EXPORT   Font_SystemFont(const Handle(TCollection_HAsciiString)& theFontName,const Font_FontAspect theFontAspect,const Handle(TCollection_HAsciiString)& theFilePath);
-  //! Creates Font object and initialize class fields with <br>
-//!         values taken from XLFD (X Logical Font Description) <br>
-  Standard_EXPORT   Font_SystemFont(const Handle(TCollection_HAsciiString)& theXLFD,const Handle(TCollection_HAsciiString)& theFilePath);
-  //! Returns font family name <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString FontName() const;
-  //! Returns font file path <br>
-//! Level: Public <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString FontPath() const;
-  //! Returns font aspect <br>
-//! Level: Public <br>
-  Standard_EXPORT     Font_FontAspect FontAspect() const;
-  //! Returns font height <br>
-//! If returned value is equal -1 it means that font is resizable <br>
-//! Level: Public <br>
-  Standard_EXPORT     Standard_Integer FontHeight() const;
   
-  Standard_EXPORT     Standard_Boolean IsValid() const;
-  //! Return true if the FontName, FontAspect and FontSize are the same. <br>
-//! Level: Public <br>
-  Standard_EXPORT     Standard_Boolean IsEqual(const Handle(Font_SystemFont)& theOtherFont) const;
+  //! Creates empty font object
+  Standard_EXPORT Font_SystemFont();
+  
+  //! Creates Font object initialized with <FontName> as name
+  //! <FontAspect>.... TODO
+  Standard_EXPORT Font_SystemFont(const Handle(TCollection_HAsciiString)& theFontName, const Font_FontAspect theFontAspect, const Handle(TCollection_HAsciiString)& theFilePath);
+  
+  //! Creates Font object and initialize class fields with
+  //! values taken from XLFD (X Logical Font Description)
+  Standard_EXPORT Font_SystemFont(const Handle(TCollection_HAsciiString)& theXLFD, const Handle(TCollection_HAsciiString)& theFilePath);
+  
+  //! Returns font family name
+  Standard_EXPORT   Handle(TCollection_HAsciiString) FontName()  const;
+  
+  //! Returns font file path
+  //! Level: Public
+  Standard_EXPORT   Handle(TCollection_HAsciiString) FontPath()  const;
+  
+  //! Returns font aspect
+  //! Level: Public
+  Standard_EXPORT   Font_FontAspect FontAspect()  const;
+  
+  //! Returns font height
+  //! If returned value is equal -1 it means that font is resizable
+  //! Level: Public
+  Standard_EXPORT   Standard_Integer FontHeight()  const;
+  
+  Standard_EXPORT   Standard_Boolean IsValid()  const;
+  
+  //! Return true if the FontName, FontAspect and FontSize are the same.
+  //! Level: Public
+  Standard_EXPORT   Standard_Boolean IsEqual (const Handle(Font_SystemFont)& theOtherFont)  const;
 
 
 
@@ -78,11 +71,11 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString MyFontName;
-Font_FontAspect MyFontAspect;
-Standard_Integer MyFaceSize;
-Handle_TCollection_HAsciiString MyFilePath;
-Standard_Boolean MyVerification;
+  Handle(TCollection_HAsciiString) MyFontName;
+  Font_FontAspect MyFontAspect;
+  Standard_Integer MyFaceSize;
+  Handle(TCollection_HAsciiString) MyFilePath;
+  Standard_Boolean MyVerification;
 
 
 };
@@ -91,7 +84,6 @@ Standard_Boolean MyVerification;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Font_SystemFont_HeaderFile

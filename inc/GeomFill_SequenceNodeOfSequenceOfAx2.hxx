@@ -6,38 +6,27 @@
 #ifndef _GeomFill_SequenceNodeOfSequenceOfAx2_HeaderFile
 #define _GeomFill_SequenceNodeOfSequenceOfAx2_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_GeomFill_SequenceNodeOfSequenceOfAx2_HeaderFile
 #include <Handle_GeomFill_SequenceNodeOfSequenceOfAx2.hxx>
-#endif
 
-#ifndef _gp_Ax2_HeaderFile
 #include <gp_Ax2.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class gp_Ax2;
 class GeomFill_SequenceOfAx2;
 
 
 
-class GeomFill_SequenceNodeOfSequenceOfAx2 : public TCollection_SeqNode {
+class GeomFill_SequenceNodeOfSequenceOfAx2 : public TCollection_SeqNode
+{
 
 public:
 
   
-      GeomFill_SequenceNodeOfSequenceOfAx2(const gp_Ax2& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    GeomFill_SequenceNodeOfSequenceOfAx2(const gp_Ax2& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        gp_Ax2& Value() const;
+      gp_Ax2& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-gp_Ax2 myValue;
+  gp_Ax2 myValue;
 
 
 };
@@ -78,7 +67,6 @@ gp_Ax2 myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomFill_SequenceNodeOfSequenceOfAx2_HeaderFile

@@ -6,53 +6,37 @@
 #ifndef _StepBasic_SiUnitAndThermodynamicTemperatureUnit_HeaderFile
 #define _StepBasic_SiUnitAndThermodynamicTemperatureUnit_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_SiUnitAndThermodynamicTemperatureUnit_HeaderFile
 #include <Handle_StepBasic_SiUnitAndThermodynamicTemperatureUnit.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_ThermodynamicTemperatureUnit_HeaderFile
 #include <Handle_StepBasic_ThermodynamicTemperatureUnit.hxx>
-#endif
-#ifndef _StepBasic_SiUnit_HeaderFile
 #include <StepBasic_SiUnit.hxx>
-#endif
-#ifndef _Handle_StepBasic_DimensionalExponents_HeaderFile
 #include <Handle_StepBasic_DimensionalExponents.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _StepBasic_SiPrefix_HeaderFile
 #include <StepBasic_SiPrefix.hxx>
-#endif
-#ifndef _StepBasic_SiUnitName_HeaderFile
 #include <StepBasic_SiUnitName.hxx>
-#endif
 class StepBasic_ThermodynamicTemperatureUnit;
 class StepBasic_DimensionalExponents;
 
 
 
-class StepBasic_SiUnitAndThermodynamicTemperatureUnit : public StepBasic_SiUnit {
+class StepBasic_SiUnitAndThermodynamicTemperatureUnit : public StepBasic_SiUnit
+{
 
 public:
 
-  //! Returns a SiUnitAndThermodynamicTemperatureUnit <br>
-  Standard_EXPORT   StepBasic_SiUnitAndThermodynamicTemperatureUnit();
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepBasic_DimensionalExponents)& aDimensions) ;
+  //! Returns a SiUnitAndThermodynamicTemperatureUnit
+  Standard_EXPORT StepBasic_SiUnitAndThermodynamicTemperatureUnit();
   
-  Standard_EXPORT   virtual  void Init(const Standard_Boolean hasAprefix,const StepBasic_SiPrefix aPrefix,const StepBasic_SiUnitName aName) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepBasic_DimensionalExponents)& aDimensions) ;
   
-  Standard_EXPORT     void SetThermodynamicTemperatureUnit(const Handle(StepBasic_ThermodynamicTemperatureUnit)& aThermodynamicTemperatureUnit) ;
+  Standard_EXPORT virtual   void Init (const Standard_Boolean hasAprefix, const StepBasic_SiPrefix aPrefix, const StepBasic_SiUnitName aName) ;
   
-  Standard_EXPORT     Handle_StepBasic_ThermodynamicTemperatureUnit ThermodynamicTemperatureUnit() const;
+  Standard_EXPORT   void SetThermodynamicTemperatureUnit (const Handle(StepBasic_ThermodynamicTemperatureUnit)& aThermodynamicTemperatureUnit) ;
+  
+  Standard_EXPORT   Handle(StepBasic_ThermodynamicTemperatureUnit) ThermodynamicTemperatureUnit()  const;
 
 
 
@@ -67,7 +51,7 @@ protected:
 private: 
 
 
-Handle_StepBasic_ThermodynamicTemperatureUnit thermodynamicTemperatureUnit;
+  Handle(StepBasic_ThermodynamicTemperatureUnit) thermodynamicTemperatureUnit;
 
 
 };
@@ -76,7 +60,6 @@ Handle_StepBasic_ThermodynamicTemperatureUnit thermodynamicTemperatureUnit;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_SiUnitAndThermodynamicTemperatureUnit_HeaderFile

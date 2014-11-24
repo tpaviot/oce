@@ -14,13 +14,12 @@
 // commercial license or contractual agreement.
 
 #include <OpenGl_GlCore12.hxx>
-
 #include <InterfaceGraphic.hxx>
-
-#include <OpenGl_Window.hxx>
 
 #include <OpenGl_Context.hxx>
 #include <OpenGl_GraphicDriver.hxx>
+#include <OpenGl_Window.hxx>
+#include <OpenGl_Utils.hxx>
 
 #include <Aspect_GraphicDeviceDefinitionError.hxx>
 #include <TCollection_AsciiString.hxx>
@@ -140,8 +139,8 @@ OpenGl_Window::OpenGl_Window (const Handle(OpenGl_GraphicDriver)& theDriver,
                               const Handle(OpenGl_Context)& theShareCtx)
 : myGlContext (new OpenGl_Context (theCaps)),
   myOwnGContext (theGContext == 0),
-  myWidth ((Standard_Integer )theCWindow.dx),
-  myHeight ((Standard_Integer )theCWindow.dy),
+  myWidth   (theCWindow.dx),
+  myHeight  (theCWindow.dy),
   myBgColor (THE_DEFAULT_BG_COLOR)
 {
   myBgColor.rgb[0] = theCWindow.Background.r;
@@ -666,8 +665,8 @@ void OpenGl_Window::Resize (const CALL_DEF_WINDOW& theCWindow)
   if ((myWidth == theCWindow.dx) && (myHeight == theCWindow.dy))
     return;
 
-  myWidth  = (Standard_Integer )theCWindow.dx;
-  myHeight = (Standard_Integer )theCWindow.dy;
+  myWidth  = theCWindow.dx;
+  myHeight = theCWindow.dy;
 
 #if !defined(_WIN32) && !defined(HAVE_EGL) && !defined(__ANDROID__)
   XResizeWindow (aDisp, myGlContext->myWindow, (unsigned int )myWidth, (unsigned int )myHeight);
@@ -690,18 +689,30 @@ void OpenGl_Window::ReadDepths (const Standard_Integer theX,     const Standard_
   if (theDepths == NULL || !Activate())
     return;
 
-#if !defined(GL_ES_VERSION_2_0)
-  glMatrixMode (GL_PROJECTION);
-  glLoadIdentity();
-  gluOrtho2D (0.0, (GLdouble )myWidth, 0.0, (GLdouble )myHeight);
-  glMatrixMode (GL_MODELVIEW);
-  glLoadIdentity();
+  OpenGl_Mat4 aProjectMat;
+  OpenGl_Utils::Ortho2D<Standard_ShortReal> (aProjectMat,
+    0.f, static_cast<GLfloat> (myWidth), 0.f, static_cast<GLfloat> (myHeight));
 
+  myGlContext->WorldViewState.Push();
+  myGlContext->ProjectionState.Push();
+
+  myGlContext->WorldViewState.SetIdentity();
+  myGlContext->ProjectionState.SetCurrent (aProjectMat);
+
+  myGlContext->ApplyProjectionMatrix();
+  myGlContext->ApplyWorldViewMatrix();
+
+#if !defined(GL_ES_VERSION_2_0)
   glRasterPos2i (theX, theY);
   DisableFeatures();
   glReadPixels (theX, theY, theWidth, theHeight, GL_DEPTH_COMPONENT, GL_FLOAT, theDepths);
   EnableFeatures();
 #endif
+
+  myGlContext->WorldViewState.Pop();
+  myGlContext->ProjectionState.Pop();
+
+  myGlContext->ApplyProjectionMatrix();
 }
 
 // =======================================================================
@@ -729,8 +740,8 @@ void OpenGl_Window::Init()
     return;
 
 #if defined(HAVE_EGL) || defined(__ANDROID__)
- eglQuerySurface ((EGLDisplay )myGlContext->myDisplay, (EGLSurface )myGlContext->myWindow, EGL_WIDTH,  &myWidth);
- eglQuerySurface ((EGLDisplay )myGlContext->myDisplay, (EGLSurface )myGlContext->myWindow, EGL_HEIGHT, &myHeight);
+  eglQuerySurface ((EGLDisplay )myGlContext->myDisplay, (EGLSurface )myGlContext->myWindow, EGL_WIDTH,  &myWidth);
+  eglQuerySurface ((EGLDisplay )myGlContext->myDisplay, (EGLSurface )myGlContext->myWindow, EGL_HEIGHT, &myHeight);
 #elif defined(_WIN32)
   RECT cr;
   GetClientRect ((HWND )myGlContext->myWindow, &cr);
@@ -749,9 +760,9 @@ void OpenGl_Window::Init()
 #endif
 
   glDisable (GL_SCISSOR_TEST);
+  glViewport (0, 0, myWidth, myHeight);
 #if !defined(GL_ES_VERSION_2_0)
   glMatrixMode (GL_MODELVIEW);
-  glViewport (0, 0, myWidth, myHeight);
   glDrawBuffer (GL_BACK);
 #endif
 }

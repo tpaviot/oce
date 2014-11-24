@@ -6,58 +6,52 @@
 #ifndef _PLib_Base_HeaderFile
 #define _PLib_Base_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_PLib_Base_HeaderFile
 #include <Handle_PLib_Base.hxx>
-#endif
 
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TColStd_Array1OfReal;
 
 
-//! To work with different polynomial's Bases <br>
-class PLib_Base : public MMgt_TShared {
+//! To work with different polynomial's Bases
+class PLib_Base : public MMgt_TShared
+{
 
 public:
 
   
-//!   Convert the polynomial P(t) in the canonical base. <br>
-  Standard_EXPORT   virtual  void ToCoefficients(const Standard_Integer Dimension,const Standard_Integer Degree,const TColStd_Array1OfReal& CoeffinBase,TColStd_Array1OfReal& Coefficients) const = 0;
-  //! Compute the values of the basis functions in u <br>
-//! <br>
-  Standard_EXPORT   virtual  void D0(const Standard_Real U,TColStd_Array1OfReal& BasisValue)  = 0;
-  //! Compute the values and the derivatives values of <br>
-//!          the basis functions in u <br>
-  Standard_EXPORT   virtual  void D1(const Standard_Real U,TColStd_Array1OfReal& BasisValue,TColStd_Array1OfReal& BasisD1)  = 0;
-  //! Compute the values and the derivatives values of <br>
-//!          the basis functions in u <br>
-  Standard_EXPORT   virtual  void D2(const Standard_Real U,TColStd_Array1OfReal& BasisValue,TColStd_Array1OfReal& BasisD1,TColStd_Array1OfReal& BasisD2)  = 0;
-  //! Compute the values and the derivatives values of <br>
-//!          the basis functions in u <br>
-  Standard_EXPORT   virtual  void D3(const Standard_Real U,TColStd_Array1OfReal& BasisValue,TColStd_Array1OfReal& BasisD1,TColStd_Array1OfReal& BasisD2,TColStd_Array1OfReal& BasisD3)  = 0;
-  //! returns WorkDegree <br>
-  Standard_EXPORT   virtual  Standard_Integer WorkDegree() const = 0;
+
+  //! Convert the polynomial P(t) in the canonical base.
+  Standard_EXPORT virtual   void ToCoefficients (const Standard_Integer Dimension, const Standard_Integer Degree, const TColStd_Array1OfReal& CoeffinBase, TColStd_Array1OfReal& Coefficients)  const = 0;
   
-//!   Compute NewDegree <= MaxDegree so that MaxError is lower <br>
-//!   than Tol. <br>
-//!   MaxError can be greater than Tol if it is not possible <br>
-//!   to find a NewDegree <= MaxDegree. <br>
-//!   In this case NewDegree = MaxDegree <br>
-//! <br>
-  Standard_EXPORT   virtual  void ReduceDegree(const Standard_Integer Dimension,const Standard_Integer MaxDegree,const Standard_Real Tol,Standard_Real& BaseCoeff,Standard_Integer& NewDegree,Standard_Real& MaxError) const = 0;
+  //! Compute the values of the basis functions in u
+  Standard_EXPORT virtual   void D0 (const Standard_Real U, TColStd_Array1OfReal& BasisValue)  = 0;
+  
+  //! Compute the values and the derivatives values of
+  //! the basis functions in u
+  Standard_EXPORT virtual   void D1 (const Standard_Real U, TColStd_Array1OfReal& BasisValue, TColStd_Array1OfReal& BasisD1)  = 0;
+  
+  //! Compute the values and the derivatives values of
+  //! the basis functions in u
+  Standard_EXPORT virtual   void D2 (const Standard_Real U, TColStd_Array1OfReal& BasisValue, TColStd_Array1OfReal& BasisD1, TColStd_Array1OfReal& BasisD2)  = 0;
+  
+  //! Compute the values and the derivatives values of
+  //! the basis functions in u
+  Standard_EXPORT virtual   void D3 (const Standard_Real U, TColStd_Array1OfReal& BasisValue, TColStd_Array1OfReal& BasisD1, TColStd_Array1OfReal& BasisD2, TColStd_Array1OfReal& BasisD3)  = 0;
+  
+  //! returns WorkDegree
+  Standard_EXPORT virtual   Standard_Integer WorkDegree()  const = 0;
+  
+
+  //! Compute NewDegree <= MaxDegree so that MaxError is lower
+  //! than Tol.
+  //! MaxError can be greater than Tol if it is not possible
+  //! to find a NewDegree <= MaxDegree.
+  //! In this case NewDegree = MaxDegree
+  Standard_EXPORT virtual   void ReduceDegree (const Standard_Integer Dimension, const Standard_Integer MaxDegree, const Standard_Real Tol, Standard_Real& BaseCoeff, Standard_Integer& NewDegree, Standard_Real& MaxError)  const = 0;
 
 
 
@@ -80,7 +74,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PLib_Base_HeaderFile

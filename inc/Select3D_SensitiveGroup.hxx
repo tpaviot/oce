@@ -6,43 +6,19 @@
 #ifndef _Select3D_SensitiveGroup_HeaderFile
 #define _Select3D_SensitiveGroup_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Select3D_SensitiveGroup_HeaderFile
 #include <Handle_Select3D_SensitiveGroup.hxx>
-#endif
 
-#ifndef _Select3D_ListOfSensitive_HeaderFile
 #include <Select3D_ListOfSensitive.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Select3D_SensitiveEntity_HeaderFile
 #include <Select3D_SensitiveEntity.hxx>
-#endif
-#ifndef _Handle_SelectBasics_EntityOwner_HeaderFile
 #include <Handle_SelectBasics_EntityOwner.hxx>
-#endif
-#ifndef _Handle_Select3D_SensitiveEntity_HeaderFile
 #include <Handle_Select3D_SensitiveEntity.hxx>
-#endif
-#ifndef _Handle_Select3D_Projector_HeaderFile
 #include <Handle_Select3D_Projector.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _SelectBasics_PickArgs_HeaderFile
 #include <SelectBasics_PickArgs.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class SelectBasics_EntityOwner;
 class Select3D_ListOfSensitive;
 class Select3D_SensitiveEntity;
@@ -53,72 +29,88 @@ class TColgp_Array1OfPnt2d;
 class Bnd_Box2d;
 
 
-//! A framework to define selection of a sensitive group <br>
-//!          by a sensitive entity which is a set of 3D sensitive entities. <br>
-//!          Remark: 2 modes are possible for rectangle selection <br>
-//!          the group is considered selected <br>
-//!          1) when all the entities inside are selected in the rectangle <br>
-//!          2) only one entity inside is selected by the rectangle <br>
-//!          By default the "Match All entities" mode is set. <br>
-class Select3D_SensitiveGroup : public Select3D_SensitiveEntity {
+//! A framework to define selection of a sensitive group
+//! by a sensitive entity which is a set of 3D sensitive entities.
+//! Remark: 2 modes are possible for rectangle selection
+//! the group is considered selected
+//! 1) when all the entities inside are selected in the rectangle
+//! 2) only one entity inside is selected by the rectangle
+//! By default the "Match All entities" mode is set.
+class Select3D_SensitiveGroup : public Select3D_SensitiveEntity
+{
 
 public:
 
-  //! Constructs an empty sensitive group object. <br>
-//! This is a set of sensitive 3D entities. The sensitive <br>
-//! entities will be defined using the function Add to fill <br>
-//! the entity owner OwnerId. If MatchAll is false, nothing can be added. <br>
-  Standard_EXPORT   Select3D_SensitiveGroup(const Handle(SelectBasics_EntityOwner)& OwnerId,const Standard_Boolean MatchAll = Standard_True);
-  //! Constructs a sensitive group object defined by the list <br>
-//! TheList and the entity owner OwnerId. If MatchAll is false, nothing is done. <br>
-  Standard_EXPORT   Select3D_SensitiveGroup(const Handle(SelectBasics_EntityOwner)& OwnerId,Select3D_ListOfSensitive& TheList,const Standard_Boolean MatchAll = Standard_True);
-  //! Adds the list of sensitive entities LL to the empty <br>
-//! sensitive group object created at construction time. <br>
-  Standard_EXPORT     void Add(Select3D_ListOfSensitive& LL) ;
-  //! Adds the sensitive entity aSensitive to the non-empty <br>
-//! sensitive group object created at construction time. <br>
-  Standard_EXPORT     void Add(const Handle(Select3D_SensitiveEntity)& aSensitive) ;
   
-  Standard_EXPORT     void Remove(const Handle(Select3D_SensitiveEntity)& aSensitive) ;
-  //! Removes all sensitive entities from the list used at the <br>
-//! time of construction, or added using the function Add. <br>
-  Standard_EXPORT     void Clear() ;
-  //! Returns true if the sensitive entity aSensitive is in <br>
-//! the list used at the time of construction, or added using the function Add. <br>
-  Standard_EXPORT     Standard_Boolean IsIn(const Handle(Select3D_SensitiveEntity)& aSensitive) const;
-  //! Sets the requirement that all sensitive entities in the <br>
-//! list used at the time of construction, or added using <br>
-//! the function Add must be matched. <br>
-        void Set(const Standard_Boolean MustMatchAllEntities) ;
-  //! Returns true if all sensitive entities in the list used <br>
-//! at the time of construction, or added using the function Add must be matched. <br>
-        Standard_Boolean MustMatchAll() const;
-  //! projection of the sensitive primitive in order to <br>
-//!          get 2D boxes for the Sort Algorithm <br>
-  Standard_EXPORT     void Project(const Handle(Select3D_Projector)& aProjector) ;
-  //! gives the 2D boxes which represent the segment in the <br>
-//!          selection process... <br>
-  Standard_EXPORT     void Areas(SelectBasics_ListOfBox2d& boxes) ;
+  //! Constructs an empty sensitive group object.
+  //! This is a set of sensitive 3D entities. The sensitive
+  //! entities will be defined using the function Add to fill
+  //! the entity owner OwnerId. If MatchAll is false, nothing can be added.
+  Standard_EXPORT Select3D_SensitiveGroup(const Handle(SelectBasics_EntityOwner)& OwnerId, const Standard_Boolean MatchAll = Standard_True);
   
-  Standard_EXPORT     Standard_Integer MaxBoxes() const;
+  //! Constructs a sensitive group object defined by the list
+  //! TheList and the entity owner OwnerId. If MatchAll is false, nothing is done.
+  Standard_EXPORT Select3D_SensitiveGroup(const Handle(SelectBasics_EntityOwner)& OwnerId, Select3D_ListOfSensitive& TheList, const Standard_Boolean MatchAll = Standard_True);
   
-  Standard_EXPORT     Handle_Select3D_SensitiveEntity GetConnected(const TopLoc_Location& aLocation) ;
-  //!  propagation of location on all the sensitive inside... <br>
-  Standard_EXPORT     void SetLocation(const TopLoc_Location& aLoc) ;
-  //!  propagation of location on all the sensitive inside... <br>
-  Standard_EXPORT     void ResetLocation() ;
-  //! Checks whether the sensitive entity matches the picking <br>
-//! detection area (close to the picking line). <br>
-//! For details please refer to base class declaration. <br>
-  Standard_EXPORT     Standard_Boolean Matches(const SelectBasics_PickArgs& thePickArgs,Standard_Real& theMatchDMin,Standard_Real& theMatchDepth) ;
+  //! Adds the list of sensitive entities LL to the empty
+  //! sensitive group object created at construction time.
+  Standard_EXPORT   void Add (Select3D_ListOfSensitive& LL) ;
   
-  Standard_EXPORT     Standard_Boolean Matches(const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol) ;
+  //! Adds the sensitive entity aSensitive to the non-empty
+  //! sensitive group object created at construction time.
+  Standard_EXPORT   void Add (const Handle(Select3D_SensitiveEntity)& aSensitive) ;
   
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const TColgp_Array1OfPnt2d& Polyline,const Bnd_Box2d& aBox,const Standard_Real aTol) ;
-  //! Sets the owner for all entities in group <br>
-  Standard_EXPORT     void Set(const Handle(SelectBasics_EntityOwner)& TheOwnerId) ;
-  //! Gets group content <br>
-       const Select3D_ListOfSensitive& GetEntities() const;
+  Standard_EXPORT   void Remove (const Handle(Select3D_SensitiveEntity)& aSensitive) ;
+  
+  //! Removes all sensitive entities from the list used at the
+  //! time of construction, or added using the function Add.
+  Standard_EXPORT   void Clear() ;
+  
+  //! Returns true if the sensitive entity aSensitive is in
+  //! the list used at the time of construction, or added using the function Add.
+  Standard_EXPORT   Standard_Boolean IsIn (const Handle(Select3D_SensitiveEntity)& aSensitive)  const;
+  
+  //! Sets the requirement that all sensitive entities in the
+  //! list used at the time of construction, or added using
+  //! the function Add must be matched.
+      void Set (const Standard_Boolean MustMatchAllEntities) ;
+  
+  //! Returns true if all sensitive entities in the list used
+  //! at the time of construction, or added using the function Add must be matched.
+      Standard_Boolean MustMatchAll()  const;
+  
+  //! projection of the sensitive primitive in order to
+  //! get 2D boxes for the Sort Algorithm
+  Standard_EXPORT   void Project (const Handle(Select3D_Projector)& aProjector) ;
+  
+  //! gives the 2D boxes which represent the segment in the
+  //! selection process...
+  Standard_EXPORT   void Areas (SelectBasics_ListOfBox2d& boxes) ;
+  
+  Standard_EXPORT   Standard_Integer MaxBoxes()  const;
+  
+  Standard_EXPORT   Handle(Select3D_SensitiveEntity) GetConnected (const TopLoc_Location& aLocation) ;
+  
+  //! propagation of location on all the sensitive inside...
+  Standard_EXPORT   void SetLocation (const TopLoc_Location& aLoc) ;
+  
+  //! propagation of location on all the sensitive inside...
+  Standard_EXPORT   void ResetLocation() ;
+  
+  //! Checks whether the sensitive entity matches the picking
+  //! detection area (close to the picking line).
+  //! For details please refer to base class declaration.
+  Standard_EXPORT   Standard_Boolean Matches (const SelectBasics_PickArgs& thePickArgs, Standard_Real& theMatchDMin, Standard_Real& theMatchDepth) ;
+  
+  Standard_EXPORT   Standard_Boolean Matches (const Standard_Real XMin, const Standard_Real YMin, const Standard_Real XMax, const Standard_Real YMax, const Standard_Real aTol) ;
+  
+  Standard_EXPORT virtual   Standard_Boolean Matches (const TColgp_Array1OfPnt2d& Polyline, const Bnd_Box2d& aBox, const Standard_Real aTol) ;
+  
+  //! Sets the owner for all entities in group
+  Standard_EXPORT   void Set (const Handle(SelectBasics_EntityOwner)& TheOwnerId) ;
+  
+  //! Gets group content
+     const  Select3D_ListOfSensitive& GetEntities()  const;
 
 
 
@@ -133,8 +125,8 @@ protected:
 private: 
 
 
-Select3D_ListOfSensitive myList;
-Standard_Boolean myMustMatchAll;
+  Select3D_ListOfSensitive myList;
+  Standard_Boolean myMustMatchAll;
 
 
 };
@@ -144,7 +136,6 @@ Standard_Boolean myMustMatchAll;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Select3D_SensitiveGroup_HeaderFile

@@ -1,9 +1,3 @@
-#ifndef _TopoDS_Wire_HeaderFile
 #include <TopoDS_Wire.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _BRepFill_EdgeOnSurfLaw_HeaderFile
 #include <BRepFill_EdgeOnSurfLaw.hxx>
-#endif

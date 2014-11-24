@@ -6,51 +6,39 @@
 #ifndef _StepGeom_ToroidalSurface_HeaderFile
 #define _StepGeom_ToroidalSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_ToroidalSurface_HeaderFile
 #include <Handle_StepGeom_ToroidalSurface.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _StepGeom_ElementarySurface_HeaderFile
 #include <StepGeom_ElementarySurface.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepGeom_Axis2Placement3d_HeaderFile
 #include <Handle_StepGeom_Axis2Placement3d.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepGeom_Axis2Placement3d;
 
 
 
-class StepGeom_ToroidalSurface : public StepGeom_ElementarySurface {
+class StepGeom_ToroidalSurface : public StepGeom_ElementarySurface
+{
 
 public:
 
-  //! Returns a ToroidalSurface <br>
-  Standard_EXPORT   StepGeom_ToroidalSurface();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_Axis2Placement3d)& aPosition) ;
+  //! Returns a ToroidalSurface
+  Standard_EXPORT StepGeom_ToroidalSurface();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_Axis2Placement3d)& aPosition,const Standard_Real aMajorRadius,const Standard_Real aMinorRadius) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_Axis2Placement3d)& aPosition) ;
   
-  Standard_EXPORT     void SetMajorRadius(const Standard_Real aMajorRadius) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_Axis2Placement3d)& aPosition, const Standard_Real aMajorRadius, const Standard_Real aMinorRadius) ;
   
-  Standard_EXPORT     Standard_Real MajorRadius() const;
+  Standard_EXPORT   void SetMajorRadius (const Standard_Real aMajorRadius) ;
   
-  Standard_EXPORT     void SetMinorRadius(const Standard_Real aMinorRadius) ;
+  Standard_EXPORT   Standard_Real MajorRadius()  const;
   
-  Standard_EXPORT     Standard_Real MinorRadius() const;
+  Standard_EXPORT   void SetMinorRadius (const Standard_Real aMinorRadius) ;
+  
+  Standard_EXPORT   Standard_Real MinorRadius()  const;
 
 
 
@@ -65,8 +53,8 @@ protected:
 private: 
 
 
-Standard_Real majorRadius;
-Standard_Real minorRadius;
+  Standard_Real majorRadius;
+  Standard_Real minorRadius;
 
 
 };
@@ -75,7 +63,6 @@ Standard_Real minorRadius;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_ToroidalSurface_HeaderFile

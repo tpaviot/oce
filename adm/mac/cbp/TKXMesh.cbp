@@ -73,6 +73,8 @@
 			<Add library="TKernel" />
 			<Add library="TKG2d" />
 			<Add library="TKMesh" />
+			<Add library="tbb" />
+			<Add library="tbbmalloc" />
 			<Add library="dl" />
 			<Add library="tbb" />
 			<Add library="tbbmalloc" />

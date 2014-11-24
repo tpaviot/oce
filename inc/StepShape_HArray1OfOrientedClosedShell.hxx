@@ -6,28 +6,14 @@
 #ifndef _StepShape_HArray1OfOrientedClosedShell_HeaderFile
 #define _StepShape_HArray1OfOrientedClosedShell_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_HArray1OfOrientedClosedShell_HeaderFile
 #include <Handle_StepShape_HArray1OfOrientedClosedShell.hxx>
-#endif
 
-#ifndef _StepShape_Array1OfOrientedClosedShell_HeaderFile
 #include <StepShape_Array1OfOrientedClosedShell.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_StepShape_OrientedClosedShell_HeaderFile
 #include <Handle_StepShape_OrientedClosedShell.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class StepShape_Array1OfOrientedClosedShell;
 
 
 
-class StepShape_HArray1OfOrientedClosedShell : public MMgt_TShared {
+class StepShape_HArray1OfOrientedClosedShell : public MMgt_TShared
+{
 
 public:
 
   
-      StepShape_HArray1OfOrientedClosedShell(const Standard_Integer Low,const Standard_Integer Up);
+    StepShape_HArray1OfOrientedClosedShell(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepShape_HArray1OfOrientedClosedShell(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepShape_OrientedClosedShell)& V);
+    StepShape_HArray1OfOrientedClosedShell(const Standard_Integer Low, const Standard_Integer Up, const Handle(StepShape_OrientedClosedShell)& V);
   
-        void Init(const Handle(StepShape_OrientedClosedShell)& V) ;
+      void Init (const Handle(StepShape_OrientedClosedShell)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(StepShape_OrientedClosedShell)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(StepShape_OrientedClosedShell)& Value) ;
   
-       const Handle_StepShape_OrientedClosedShell& Value(const Standard_Integer Index) const;
+     const  Handle(StepShape_OrientedClosedShell)& Value (const Standard_Integer Index)  const;
   
-        Handle_StepShape_OrientedClosedShell& ChangeValue(const Standard_Integer Index) ;
+      Handle(StepShape_OrientedClosedShell)& ChangeValue (const Standard_Integer Index) ;
   
-       const StepShape_Array1OfOrientedClosedShell& Array1() const;
+     const  StepShape_Array1OfOrientedClosedShell& Array1()  const;
   
-        StepShape_Array1OfOrientedClosedShell& ChangeArray1() ;
+      StepShape_Array1OfOrientedClosedShell& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-StepShape_Array1OfOrientedClosedShell myArray;
+  StepShape_Array1OfOrientedClosedShell myArray;
 
 
 };
 
-#define ItemHArray1 Handle_StepShape_OrientedClosedShell
+#define ItemHArray1 Handle(StepShape_OrientedClosedShell)
 #define ItemHArray1_hxx <StepShape_OrientedClosedShell.hxx>
 #define TheArray1 StepShape_Array1OfOrientedClosedShell
 #define TheArray1_hxx <StepShape_Array1OfOrientedClosedShell.hxx>
@@ -103,7 +90,6 @@ StepShape_Array1OfOrientedClosedShell myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_HArray1OfOrientedClosedShell_HeaderFile

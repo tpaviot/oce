@@ -1,6 +1,2 @@
-#ifndef _MoniTool_Timer_HeaderFile
 #include <MoniTool_Timer.hxx>
-#endif
-#ifndef _MoniTool_TimerSentry_HeaderFile
 #include <MoniTool_TimerSentry.hxx>
-#endif

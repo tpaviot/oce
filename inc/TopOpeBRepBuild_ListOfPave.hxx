@@ -6,31 +6,15 @@
 #ifndef _TopOpeBRepBuild_ListOfPave_HeaderFile
 #define _TopOpeBRepBuild_ListOfPave_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepBuild_Pave_HeaderFile
 #include <Handle_TopOpeBRepBuild_Pave.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepBuild_ListNodeOfListOfPave_HeaderFile
 #include <Handle_TopOpeBRepBuild_ListNodeOfListOfPave.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class TopOpeBRepBuild_ListIteratorOfListOfPave;
 class TopOpeBRepBuild_Pave;
@@ -38,63 +22,63 @@ class TopOpeBRepBuild_ListNodeOfListOfPave;
 
 
 
-class TopOpeBRepBuild_ListOfPave  {
+class TopOpeBRepBuild_ListOfPave 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepBuild_ListOfPave();
+  Standard_EXPORT TopOpeBRepBuild_ListOfPave();
   
-  Standard_EXPORT   TopOpeBRepBuild_ListOfPave(const TopOpeBRepBuild_ListOfPave& Other);
+  Standard_EXPORT TopOpeBRepBuild_ListOfPave(const TopOpeBRepBuild_ListOfPave& Other);
   
-  Standard_EXPORT     void Assign(const TopOpeBRepBuild_ListOfPave& Other) ;
-    void operator=(const TopOpeBRepBuild_ListOfPave& Other) 
+  Standard_EXPORT   void Assign (const TopOpeBRepBuild_ListOfPave& Other) ;
+  void operator= (const TopOpeBRepBuild_ListOfPave& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TopOpeBRepBuild_ListOfPave()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const Handle(TopOpeBRepBuild_Pave)& I) ;
+  Standard_EXPORT   void Prepend (const Handle(TopOpeBRepBuild_Pave)& I) ;
   
-  Standard_EXPORT     void Prepend(const Handle(TopOpeBRepBuild_Pave)& I,TopOpeBRepBuild_ListIteratorOfListOfPave& theIt) ;
+  Standard_EXPORT   void Prepend (const Handle(TopOpeBRepBuild_Pave)& I, TopOpeBRepBuild_ListIteratorOfListOfPave& theIt) ;
   
-  Standard_EXPORT     void Prepend(TopOpeBRepBuild_ListOfPave& Other) ;
+  Standard_EXPORT   void Prepend (TopOpeBRepBuild_ListOfPave& Other) ;
   
-  Standard_EXPORT     void Append(const Handle(TopOpeBRepBuild_Pave)& I) ;
+  Standard_EXPORT   void Append (const Handle(TopOpeBRepBuild_Pave)& I) ;
   
-  Standard_EXPORT     void Append(const Handle(TopOpeBRepBuild_Pave)& I,TopOpeBRepBuild_ListIteratorOfListOfPave& theIt) ;
+  Standard_EXPORT   void Append (const Handle(TopOpeBRepBuild_Pave)& I, TopOpeBRepBuild_ListIteratorOfListOfPave& theIt) ;
   
-  Standard_EXPORT     void Append(TopOpeBRepBuild_ListOfPave& Other) ;
+  Standard_EXPORT   void Append (TopOpeBRepBuild_ListOfPave& Other) ;
   
-  Standard_EXPORT     Handle_TopOpeBRepBuild_Pave& First() const;
+  Standard_EXPORT   Handle(TopOpeBRepBuild_Pave)& First()  const;
   
-  Standard_EXPORT     Handle_TopOpeBRepBuild_Pave& Last() const;
+  Standard_EXPORT   Handle(TopOpeBRepBuild_Pave)& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(TopOpeBRepBuild_ListIteratorOfListOfPave& It) ;
+  Standard_EXPORT   void Remove (TopOpeBRepBuild_ListIteratorOfListOfPave& It) ;
   
-  Standard_EXPORT     void InsertBefore(const Handle(TopOpeBRepBuild_Pave)& I,TopOpeBRepBuild_ListIteratorOfListOfPave& It) ;
+  Standard_EXPORT   void InsertBefore (const Handle(TopOpeBRepBuild_Pave)& I, TopOpeBRepBuild_ListIteratorOfListOfPave& It) ;
   
-  Standard_EXPORT     void InsertBefore(TopOpeBRepBuild_ListOfPave& Other,TopOpeBRepBuild_ListIteratorOfListOfPave& It) ;
+  Standard_EXPORT   void InsertBefore (TopOpeBRepBuild_ListOfPave& Other, TopOpeBRepBuild_ListIteratorOfListOfPave& It) ;
   
-  Standard_EXPORT     void InsertAfter(const Handle(TopOpeBRepBuild_Pave)& I,TopOpeBRepBuild_ListIteratorOfListOfPave& It) ;
+  Standard_EXPORT   void InsertAfter (const Handle(TopOpeBRepBuild_Pave)& I, TopOpeBRepBuild_ListIteratorOfListOfPave& It) ;
   
-  Standard_EXPORT     void InsertAfter(TopOpeBRepBuild_ListOfPave& Other,TopOpeBRepBuild_ListIteratorOfListOfPave& It) ;
+  Standard_EXPORT   void InsertAfter (TopOpeBRepBuild_ListOfPave& Other, TopOpeBRepBuild_ListIteratorOfListOfPave& It) ;
 
 
 friend class TopOpeBRepBuild_ListIteratorOfListOfPave;
-
 
 
 protected:
@@ -107,13 +91,13 @@ private:
 
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
 
-#define Item Handle_TopOpeBRepBuild_Pave
+#define Item Handle(TopOpeBRepBuild_Pave)
 #define Item_hxx <TopOpeBRepBuild_Pave.hxx>
 #define TCollection_ListNode TopOpeBRepBuild_ListNodeOfListOfPave
 #define TCollection_ListNode_hxx <TopOpeBRepBuild_ListNodeOfListOfPave.hxx>
@@ -138,7 +122,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepBuild_ListOfPave_HeaderFile

@@ -5,18 +5,10 @@
 
 #include <Contap_TheSequenceOfPoint.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Contap_Point_HeaderFile
 #include <Contap_Point.hxx>
-#endif
-#ifndef _Contap_SequenceNodeOfTheSequenceOfPoint_HeaderFile
 #include <Contap_SequenceNodeOfTheSequenceOfPoint.hxx>
-#endif
  
 
 #define SeqItem Contap_Point

@@ -6,97 +6,88 @@
 #ifndef _TDocStd_XLinkTool_HeaderFile
 #define _TDocStd_XLinkTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TDF_DataSet_HeaderFile
 #include <Handle_TDF_DataSet.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
 class TDF_DataSet;
 class TDF_RelocationTable;
 class TDF_Label;
 
 
-//! This  tool class  is  used to copy  the content of <br>
-//!            source label   under  target label.   Only child <br>
-//!           labels and  attributes   of  source are   copied. <br>
-//!          attributes located   out of source  scope are  not <br>
-//!          copied by this algorithm. <br>
-//!           Depending  of   the called  method  an   external <br>
-//!          reference is set  in  the the target  document  to <br>
-//!          registred the externallink. <br>
-//!          Provide services to set, update and perform <br>
-//!          external references. <br>
-//!  Warning1: Nothing is provided in this class  about the <br>
-//!          opportunity to copy, set a link or  update  it. <br>
-//!          Such decisions must be under application control. <br>
-//!  Warning2: If the document manages shapes, use after copy <br>
-//!            TNaming::ChangeShapes(target,M) to make copy of <br>
-//!            shapes. <br>
-class TDocStd_XLinkTool  {
+//! This  tool class  is  used to copy  the content of
+//! source label   under  target label.   Only child
+//! labels and  attributes   of  source are   copied.
+//! attributes located   out of source  scope are  not
+//! copied by this algorithm.
+//! Depending  of   the called  method  an   external
+//! reference is set  in  the the target  document  to
+//! registred the externallink.
+//! Provide services to set, update and perform
+//! external references.
+//! Warning1: Nothing is provided in this class  about the
+//! opportunity to copy, set a link or  update  it.
+//! Such decisions must be under application control.
+//! Warning2: If the document manages shapes, use after copy
+//! TNaming::ChangeShapes(target,M) to make copy of
+//! shapes.
+class TDocStd_XLinkTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TDocStd_XLinkTool();
-  //! Copies the content of the label <fromsource> to the label <intarget>. <br>
-//!  The link is registred with an XLink attribute by <intarget> <br>
-//!           label.  if  the    content  of <fromsource>   is  not <br>
-//!          self-contained,  and/or <intarget> has already an XLink <br>
-//!          attribute, an exception is raised. <br>
-  Standard_EXPORT     void CopyWithLink(const TDF_Label& intarget,const TDF_Label& fromsource) ;
-  //! Update the external reference set   at <L>. <br>
-//!    Example <br>
-//! Handle(TDocStd_Document) aDoc; <br>
-//! if <br>
-//! (!OCAFTest::GetDocument(1,aDoc)) return 1; <br>
-//! Handle(TDataStd_Reference) aRef; <br>
-//! TDocStd_XLinkTool xlinktool; <br>
-//! if <br>
-//! (!OCAFTest::Find(aDoc,2),TDataStd_Reference::GetID(),aRef) return 1; <br>
-//! xlinktool.UpdateLink(aRef->Label()); <br>
-//! Exceptions <br>
-//! Standard_DomainError if <L> has no XLink attribute. <br>
-  Standard_EXPORT     void UpdateLink(const TDF_Label& L) ;
-  //!   Copy    the   content     of    <fromsource>   under <br>
-//!          <intarget>. Noone link is registred. noone check is done. <br>
-//! Example <br>
-//!  Handle(TDocStd_Document) DOC, XDOC; <br>
-//!  TDF_Label L, XL; <br>
-//! TDocStd_XLinkTool xlinktool; <br>
-//!  xlinktool.Copy(L,XL); <br>
-//! Exceptions: <br>
-//! Standard_DomainError if the contents of <br>
-//! fromsource are not entirely in the scope of this <br>
-//! label, in other words, are not self-contained. <br>
-//! !!! ==> Warning: <br>
-//! If the document manages shapes use the next way: <br>
-//! TDocStd_XLinkTool xlinktool; <br>
-//! xlinktool.Copy(L,XL); <br>
-//! TopTools_DataMapOfShapeShape M; <br>
-//! TNaming::ChangeShapes(target,M); <br>
-  Standard_EXPORT   virtual  void Copy(const TDF_Label& intarget,const TDF_Label& fromsource) ;
+  Standard_EXPORT TDocStd_XLinkTool();
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
+  //! Copies the content of the label <fromsource> to the label <intarget>.
+  //! The link is registred with an XLink attribute by <intarget>
+  //! label.  if  the    content  of <fromsource>   is  not
+  //! self-contained,  and/or <intarget> has already an XLink
+  //! attribute, an exception is raised.
+  Standard_EXPORT   void CopyWithLink (const TDF_Label& intarget, const TDF_Label& fromsource) ;
   
-  Standard_EXPORT     Handle_TDF_DataSet DataSet() const;
+  //! Update the external reference set   at <L>.
+  //! Example
+  //! Handle(TDocStd_Document) aDoc;
+  //! if
+  //! (!OCAFTest::GetDocument(1,aDoc)) return 1;
+  //! Handle(TDataStd_Reference) aRef;
+  //! TDocStd_XLinkTool xlinktool;
+  //! if
+  //! (!OCAFTest::Find(aDoc,2),TDataStd_Reference::GetID(),aRef) return 1;
+  //! xlinktool.UpdateLink(aRef->Label());
+  //! Exceptions
+  //! Standard_DomainError if <L> has no XLink attribute.
+  Standard_EXPORT   void UpdateLink (const TDF_Label& L) ;
   
-  Standard_EXPORT     Handle_TDF_RelocationTable RelocationTable() const;
-
+  //! Copy    the   content     of    <fromsource>   under
+  //! <intarget>. Noone link is registred. noone check is done.
+  //! Example
+  //! Handle(TDocStd_Document) DOC, XDOC;
+  //! TDF_Label L, XL;
+  //! TDocStd_XLinkTool xlinktool;
+  //! xlinktool.Copy(L,XL);
+  //! Exceptions:
+  //! Standard_DomainError if the contents of
+  //! fromsource are not entirely in the scope of this
+  //! label, in other words, are not self-contained.
+  //! !!! ==> Warning:
+  //! If the document manages shapes use the next way:
+  //! TDocStd_XLinkTool xlinktool;
+  //! xlinktool.Copy(L,XL);
+  //! TopTools_DataMapOfShapeShape M;
+  //! TNaming::ChangeShapes(target,M);
+  Standard_EXPORT virtual   void Copy (const TDF_Label& intarget, const TDF_Label& fromsource) ;
+  
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
+  
+  Standard_EXPORT   Handle(TDF_DataSet) DataSet()  const;
+  
+  Standard_EXPORT   Handle(TDF_RelocationTable) RelocationTable()  const;
 
 
 
@@ -105,15 +96,15 @@ protected:
 
 
 
-Standard_Boolean isDone;
+  Standard_Boolean isDone;
 
 
 private:
 
 
 
-Handle_TDF_DataSet myDS;
-Handle_TDF_RelocationTable myRT;
+  Handle(TDF_DataSet) myDS;
+  Handle(TDF_RelocationTable) myRT;
 
 
 };
@@ -122,7 +113,6 @@ Handle_TDF_RelocationTable myRT;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDocStd_XLinkTool_HeaderFile

@@ -6,30 +6,23 @@
 #ifndef _StepSelect_FileModifier_HeaderFile
 #define _StepSelect_FileModifier_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepSelect_FileModifier_HeaderFile
 #include <Handle_StepSelect_FileModifier.hxx>
-#endif
 
-#ifndef _IFSelect_GeneralModifier_HeaderFile
 #include <IFSelect_GeneralModifier.hxx>
-#endif
 class StepData_StepWriter;
 class IFSelect_ContextWrite;
 
 
 
-class StepSelect_FileModifier : public IFSelect_GeneralModifier {
+class StepSelect_FileModifier : public IFSelect_GeneralModifier
+{
 
 public:
 
   
-  Standard_EXPORT   virtual  void Perform(IFSelect_ContextWrite& ctx,StepData_StepWriter& writer) const = 0;
+  Standard_EXPORT virtual   void Perform (IFSelect_ContextWrite& ctx, StepData_StepWriter& writer)  const = 0;
 
 
 
@@ -39,7 +32,7 @@ public:
 protected:
 
   
-  Standard_EXPORT   StepSelect_FileModifier();
+  Standard_EXPORT StepSelect_FileModifier();
 
 
 
@@ -54,7 +47,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepSelect_FileModifier_HeaderFile

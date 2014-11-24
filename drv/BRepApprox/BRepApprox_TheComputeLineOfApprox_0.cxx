@@ -5,60 +5,24 @@
 
 #include <BRepApprox_TheComputeLineOfApprox.hxx>
 
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _AppParCurves_HArray1OfConstraintCouple_HeaderFile
 #include <AppParCurves_HArray1OfConstraintCouple.hxx>
-#endif
-#ifndef _BRepApprox_TheMultiLineOfApprox_HeaderFile
 #include <BRepApprox_TheMultiLineOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_TheMultiLineToolOfApprox_HeaderFile
 #include <BRepApprox_TheMultiLineToolOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_HeaderFile
 #include <BRepApprox_MyBSplGradientOfTheComputeLineOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_HeaderFile
 #include <BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_HeaderFile
 #include <BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_HeaderFile
 #include <BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_MyGradientbisOfTheComputeLineOfApprox_HeaderFile
 #include <BRepApprox_MyGradientbisOfTheComputeLineOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_HeaderFile
 #include <BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_HeaderFile
 #include <BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_HeaderFile
 #include <BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_HeaderFile
 #include <BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _TColStd_Array1OfInteger_HeaderFile
 #include <TColStd_Array1OfInteger.hxx>
-#endif
-#ifndef _AppParCurves_MultiBSpCurve_HeaderFile
 #include <AppParCurves_MultiBSpCurve.hxx>
-#endif
-#ifndef _AppParCurves_MultiCurve_HeaderFile
 #include <AppParCurves_MultiCurve.hxx>
-#endif
  
 
 #define MultiLine BRepApprox_TheMultiLineOfApprox

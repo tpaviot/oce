@@ -6,28 +6,14 @@
 #ifndef _RWStepGeom_RWBSplineSurfaceWithKnots_HeaderFile
 #define _RWStepGeom_RWBSplineSurfaceWithKnots_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepData_StepReaderData_HeaderFile
 #include <Handle_StepData_StepReaderData.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
-#ifndef _Handle_StepGeom_BSplineSurfaceWithKnots_HeaderFile
 #include <Handle_StepGeom_BSplineSurfaceWithKnots.hxx>
-#endif
 class StepData_StepReaderData;
 class Interface_Check;
 class StepGeom_BSplineSurfaceWithKnots;
@@ -36,24 +22,24 @@ class Interface_EntityIterator;
 class Interface_ShareTool;
 
 
-//! Read & Write Module for BSplineSurfaceWithKnots <br>
-//!           Check added by CKY , 7-OCT-1996 <br>
-class RWStepGeom_RWBSplineSurfaceWithKnots  {
+//! Read & Write Module for BSplineSurfaceWithKnots
+//! Check added by CKY , 7-OCT-1996
+class RWStepGeom_RWBSplineSurfaceWithKnots 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   RWStepGeom_RWBSplineSurfaceWithKnots();
+  Standard_EXPORT RWStepGeom_RWBSplineSurfaceWithKnots();
   
-  Standard_EXPORT     void ReadStep(const Handle(StepData_StepReaderData)& data,const Standard_Integer num,Handle(Interface_Check)& ach,const Handle(StepGeom_BSplineSurfaceWithKnots)& ent) const;
+  Standard_EXPORT   void ReadStep (const Handle(StepData_StepReaderData)& data, const Standard_Integer num, Handle(Interface_Check)& ach, const Handle(StepGeom_BSplineSurfaceWithKnots)& ent)  const;
   
-  Standard_EXPORT     void WriteStep(StepData_StepWriter& SW,const Handle(StepGeom_BSplineSurfaceWithKnots)& ent) const;
+  Standard_EXPORT   void WriteStep (StepData_StepWriter& SW, const Handle(StepGeom_BSplineSurfaceWithKnots)& ent)  const;
   
-  Standard_EXPORT     void Share(const Handle(StepGeom_BSplineSurfaceWithKnots)& ent,Interface_EntityIterator& iter) const;
+  Standard_EXPORT   void Share (const Handle(StepGeom_BSplineSurfaceWithKnots)& ent, Interface_EntityIterator& iter)  const;
   
-  Standard_EXPORT     void Check(const Handle(StepGeom_BSplineSurfaceWithKnots)& ent,const Interface_ShareTool& shares,Handle(Interface_Check)& ach) const;
-
+  Standard_EXPORT   void Check (const Handle(StepGeom_BSplineSurfaceWithKnots)& ent, const Interface_ShareTool& shares, Handle(Interface_Check)& ach)  const;
 
 
 
@@ -76,7 +62,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _RWStepGeom_RWBSplineSurfaceWithKnots_HeaderFile

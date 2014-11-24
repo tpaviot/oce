@@ -5,16 +5,10 @@
 
 #include <Interface_SequenceNodeOfSequenceOfCheck.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Interface_Check_HeaderFile
 #include <Interface_Check.hxx>
-#endif
-#ifndef _Interface_SequenceOfCheck_HeaderFile
 #include <Interface_SequenceOfCheck.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(Interface_SequenceNodeOfSequenceOfCheck,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Interface_SequenceNodeOfSequenceOfCheck)
 
 
-#define SeqItem Handle_Interface_Check
+#define SeqItem Handle(Interface_Check)
 #define SeqItem_hxx <Interface_Check.hxx>
 #define TCollection_SequenceNode Interface_SequenceNodeOfSequenceOfCheck
 #define TCollection_SequenceNode_hxx <Interface_SequenceNodeOfSequenceOfCheck.hxx>

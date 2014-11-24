@@ -6,46 +6,45 @@
 #ifndef _StepElement_SurfaceSection_HeaderFile
 #define _StepElement_SurfaceSection_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepElement_SurfaceSection_HeaderFile
 #include <Handle_StepElement_SurfaceSection.hxx>
-#endif
 
-#ifndef _StepElement_MeasureOrUnspecifiedValue_HeaderFile
 #include <StepElement_MeasureOrUnspecifiedValue.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepElement_MeasureOrUnspecifiedValue;
 
 
-//! Representation of STEP entity SurfaceSection <br>
-class StepElement_SurfaceSection : public MMgt_TShared {
+//! Representation of STEP entity SurfaceSection
+class StepElement_SurfaceSection : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepElement_SurfaceSection();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const StepElement_MeasureOrUnspecifiedValue& aOffset,const StepElement_MeasureOrUnspecifiedValue& aNonStructuralMass,const StepElement_MeasureOrUnspecifiedValue& aNonStructuralMassOffset) ;
-  //! Returns field Offset <br>
-  Standard_EXPORT     StepElement_MeasureOrUnspecifiedValue Offset() const;
-  //! Set field Offset <br>
-  Standard_EXPORT     void SetOffset(const StepElement_MeasureOrUnspecifiedValue& Offset) ;
-  //! Returns field NonStructuralMass <br>
-  Standard_EXPORT     StepElement_MeasureOrUnspecifiedValue NonStructuralMass() const;
-  //! Set field NonStructuralMass <br>
-  Standard_EXPORT     void SetNonStructuralMass(const StepElement_MeasureOrUnspecifiedValue& NonStructuralMass) ;
-  //! Returns field NonStructuralMassOffset <br>
-  Standard_EXPORT     StepElement_MeasureOrUnspecifiedValue NonStructuralMassOffset() const;
-  //! Set field NonStructuralMassOffset <br>
-  Standard_EXPORT     void SetNonStructuralMassOffset(const StepElement_MeasureOrUnspecifiedValue& NonStructuralMassOffset) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepElement_SurfaceSection();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const StepElement_MeasureOrUnspecifiedValue& aOffset, const StepElement_MeasureOrUnspecifiedValue& aNonStructuralMass, const StepElement_MeasureOrUnspecifiedValue& aNonStructuralMassOffset) ;
+  
+  //! Returns field Offset
+  Standard_EXPORT   StepElement_MeasureOrUnspecifiedValue Offset()  const;
+  
+  //! Set field Offset
+  Standard_EXPORT   void SetOffset (const StepElement_MeasureOrUnspecifiedValue& Offset) ;
+  
+  //! Returns field NonStructuralMass
+  Standard_EXPORT   StepElement_MeasureOrUnspecifiedValue NonStructuralMass()  const;
+  
+  //! Set field NonStructuralMass
+  Standard_EXPORT   void SetNonStructuralMass (const StepElement_MeasureOrUnspecifiedValue& NonStructuralMass) ;
+  
+  //! Returns field NonStructuralMassOffset
+  Standard_EXPORT   StepElement_MeasureOrUnspecifiedValue NonStructuralMassOffset()  const;
+  
+  //! Set field NonStructuralMassOffset
+  Standard_EXPORT   void SetNonStructuralMassOffset (const StepElement_MeasureOrUnspecifiedValue& NonStructuralMassOffset) ;
 
 
 
@@ -60,9 +59,9 @@ protected:
 private: 
 
 
-StepElement_MeasureOrUnspecifiedValue theOffset;
-StepElement_MeasureOrUnspecifiedValue theNonStructuralMass;
-StepElement_MeasureOrUnspecifiedValue theNonStructuralMassOffset;
+  StepElement_MeasureOrUnspecifiedValue theOffset;
+  StepElement_MeasureOrUnspecifiedValue theNonStructuralMass;
+  StepElement_MeasureOrUnspecifiedValue theNonStructuralMassOffset;
 
 
 };
@@ -71,7 +70,6 @@ StepElement_MeasureOrUnspecifiedValue theNonStructuralMassOffset;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_SurfaceSection_HeaderFile

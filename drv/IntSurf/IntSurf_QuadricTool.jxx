@@ -1,9 +1,3 @@
-#ifndef _IntSurf_Quadric_HeaderFile
 #include <IntSurf_Quadric.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _IntSurf_QuadricTool_HeaderFile
 #include <IntSurf_QuadricTool.hxx>
-#endif

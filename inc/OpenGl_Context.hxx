@@ -21,6 +21,7 @@
 #include <Aspect_Display.hxx>
 #include <Aspect_RenderingContext.hxx>
 #include <Handle_OpenGl_Context.hxx>
+#include <Handle_OpenGl_Sampler.hxx>
 #include <Handle_OpenGl_ShaderManager.hxx>
 #include <Handle_OpenGl_ShaderProgram.hxx>
 #include <NCollection_DataMap.hxx>
@@ -36,6 +37,7 @@
 #include <Handle_OpenGl_Context.hxx>
 #include <OpenGl_Clipping.hxx>
 #include <OpenGl_GlCore11.hxx>
+#include <OpenGl_Utils.hxx>
 
 //! Forward declarations
 struct OpenGl_GlFunctions;
@@ -44,6 +46,7 @@ struct OpenGl_ArbIns;
 struct OpenGl_ArbDbg;
 struct OpenGl_ArbFBO;
 struct OpenGl_ExtGS;
+struct OpenGl_ArbTexBindless;
 
 template<typename theBaseClass_t> struct OpenGl_TmplCore12;
 typedef OpenGl_TmplCore12<OpenGl_GlCore11>     OpenGl_GlCore12;
@@ -165,6 +168,9 @@ public:
 
   //! Destructor.
   Standard_EXPORT virtual ~OpenGl_Context();
+
+  //! Release all resources, including shared ones
+  Standard_EXPORT void forcedRelease();
 
   //! Share GL context resources.
   //! theShareCtx - handle to context to retrieve handles to shared resources.
@@ -372,6 +378,25 @@ public:
        && !caps->vboDisable;
   }
 
+  //! @return cached state of GL_NORMALIZE.
+  Standard_Boolean IsGlNormalizeEnabled() const { return myIsGlNormalizeEnabled; }
+
+  //! Sets GL_NORMALIZE enabled or disabled.
+  //! @return old value of the flag
+  Standard_EXPORT Standard_Boolean SetGlNormalizeEnabled (Standard_Boolean isEnabled);
+
+  //! Applies matrix stored in ModelWorldState to OpenGl.
+  void ApplyModelWorldMatrix();
+
+  //! Applies matrix stored in WorldViewState to OpenGl.
+  void ApplyWorldViewMatrix();
+
+  //! Applies combination of matrices stored in ModelWorldState and WorldViewState to OpenGl.
+  void ApplyModelViewMatrix();
+
+  //! Applies matrix stored in ProjectionState to OpenGl.
+  void ApplyProjectionMatrix();
+
 public:
 
   //! @return messenger instance
@@ -434,6 +459,12 @@ public: //! @name methods to alter or retrieve current state
     return myActiveProgram;
   }
 
+  //! @return OpenGL sampler object used to override default texture parameters
+  const Handle(OpenGl_Sampler)& TextureSampler()
+  {
+    return myTexSampler;
+  }
+
   //! Bind specified program to current context,
   //! or unbind previous one when NULL specified.
   //! @return true if some program is bound to context
@@ -466,6 +497,8 @@ public: //! @name core profiles
   OpenGl_GlCore20Fwd*  core20fwd;  //!< OpenGL 2.0 without deprecated entry points
   OpenGl_GlCore32*     core32;     //!< OpenGL 3.2 core profile
   OpenGl_GlCore32Back* core32back; //!< OpenGL 3.2 backward compatibility profile
+  OpenGl_GlCore33*     core33;     //!< OpenGL 3.3 core profile
+  OpenGl_GlCore33Back* core33back; //!< OpenGL 3.3 backward compatibility profile
   OpenGl_GlCore41*     core41;     //!< OpenGL 4.1 core profile
   OpenGl_GlCore41Back* core41back; //!< OpenGL 4.1 backward compatibility profile
   OpenGl_GlCore42*     core42;     //!< OpenGL 4.2 core profile
@@ -479,20 +512,22 @@ public: //! @name core profiles
 
 public: //! @name extensions
 
-  Standard_Boolean hasHighp;    //!< highp in GLSL ES fragment shader is supported
-  Standard_Boolean hasTexRGBA8; //!< always available on desktop; on OpenGL ES - since 3.0 or as extension GL_OES_rgb8_rgba8
-  Standard_Boolean arbNPTW;     //!< GL_ARB_texture_non_power_of_two
-  Standard_Boolean arbTexRG;    //!< GL_ARB_texture_rg
-  OpenGl_ArbTBO*   arbTBO;      //!< GL_ARB_texture_buffer_object
-  OpenGl_ArbIns*   arbIns;      //!< GL_ARB_draw_instanced
-  OpenGl_ArbDbg*   arbDbg;      //!< GL_ARB_debug_output
-  OpenGl_ArbFBO*   arbFBO;      //!< GL_ARB_framebuffer_object
-  OpenGl_ExtGS*    extGS;       //!< GL_EXT_geometry_shader4
-  Standard_Boolean extBgra;     //!< GL_EXT_bgra or GL_EXT_texture_format_BGRA8888 on OpenGL ES
-  Standard_Boolean extAnis;     //!< GL_EXT_texture_filter_anisotropic
-  Standard_Boolean extPDS;      //!< GL_EXT_packed_depth_stencil
-  Standard_Boolean atiMem;      //!< GL_ATI_meminfo
-  Standard_Boolean nvxMem;      //!< GL_NVX_gpu_memory_info
+  Standard_Boolean       hasHighp;       //!< highp in GLSL ES fragment shader is supported
+  Standard_Boolean       hasTexRGBA8;    //!< always available on desktop; on OpenGL ES - since 3.0 or as extension GL_OES_rgb8_rgba8
+  Standard_Boolean       arbNPTW;        //!< GL_ARB_texture_non_power_of_two
+  Standard_Boolean       arbTexRG;       //!< GL_ARB_texture_rg
+  OpenGl_ArbTexBindless* arbTexBindless; //!< GL_ARB_bindless_texture
+  OpenGl_ArbTBO*         arbTBO;         //!< GL_ARB_texture_buffer_object
+  Standard_Boolean       arbTboRGB32;    //!< GL_ARB_texture_buffer_object_rgb32 (3-component TBO), in core since 4.0
+  OpenGl_ArbIns*         arbIns;         //!< GL_ARB_draw_instanced
+  OpenGl_ArbDbg*         arbDbg;         //!< GL_ARB_debug_output
+  OpenGl_ArbFBO*         arbFBO;         //!< GL_ARB_framebuffer_object
+  OpenGl_ExtGS*          extGS;          //!< GL_EXT_geometry_shader4
+  Standard_Boolean       extBgra;        //!< GL_EXT_bgra or GL_EXT_texture_format_BGRA8888 on OpenGL ES
+  Standard_Boolean       extAnis;        //!< GL_EXT_texture_filter_anisotropic
+  Standard_Boolean       extPDS;         //!< GL_EXT_packed_depth_stencil
+  Standard_Boolean       atiMem;         //!< GL_ATI_meminfo
+  Standard_Boolean       nvxMem;         //!< GL_NVX_gpu_memory_info
 
 private: // system-dependent fields
 
@@ -527,25 +562,34 @@ private: // context info
 
   OpenGl_Clipping myClippingState; //!< state of clip planes
 
-  void*            myGlLibHandle;     //!< optional handle to GL library
+  void*            myGlLibHandle;          //!< optional handle to GL library
   NCollection_Handle<OpenGl_GlFunctions>
-                   myFuncs;           //!< mega structure for all GL functions
-  Standard_Integer myAnisoMax;        //!< maximum level of anisotropy texture filter
-  Standard_Integer myTexClamp;        //!< either GL_CLAMP_TO_EDGE (1.2+) or GL_CLAMP (1.1)
-  Standard_Integer myMaxTexDim;       //!< value for GL_MAX_TEXTURE_SIZE
-  Standard_Integer myMaxClipPlanes;   //!< value for GL_MAX_CLIP_PLANES
-  Standard_Integer myGlVerMajor;      //!< cached GL version major number
-  Standard_Integer myGlVerMinor;      //!< cached GL version minor number
-  Standard_Boolean myIsInitialized;   //!< flag indicates initialization state
-  Standard_Boolean myIsStereoBuffers; //!< context supports stereo buffering
+                   myFuncs;                //!< mega structure for all GL functions
+  Standard_Integer myAnisoMax;             //!< maximum level of anisotropy texture filter
+  Standard_Integer myTexClamp;             //!< either GL_CLAMP_TO_EDGE (1.2+) or GL_CLAMP (1.1)
+  Standard_Integer myMaxTexDim;            //!< value for GL_MAX_TEXTURE_SIZE
+  Standard_Integer myMaxClipPlanes;        //!< value for GL_MAX_CLIP_PLANES
+  Standard_Integer myGlVerMajor;           //!< cached GL version major number
+  Standard_Integer myGlVerMinor;           //!< cached GL version minor number
+  Standard_Boolean myIsInitialized;        //!< flag indicates initialization state
+  Standard_Boolean myIsStereoBuffers;      //!< context supports stereo buffering
+  Standard_Boolean myIsGlNormalizeEnabled; //!< GL_NORMALIZE flag
+                                           //!< Used to tell OpenGl that normals should be normalized
 
   Handle(OpenGl_ShaderManager) myShaderManager; //! support object for managing shader programs
 
 private: //! @name fields tracking current state
 
   Handle(OpenGl_ShaderProgram) myActiveProgram; //!< currently active GLSL program
+  Handle(OpenGl_Sampler)       myTexSampler;    //!< currently active sampler object
   Standard_Integer             myRenderMode;    //!< value for active rendering mode
   Standard_Integer             myDrawBuffer;    //!< current draw buffer
+
+public:
+
+  OpenGl_Utils::MatrixState<Standard_ShortReal> ModelWorldState; //!< state of orientation matrix
+  OpenGl_Utils::MatrixState<Standard_ShortReal> WorldViewState;  //!< state of orientation matrix
+  OpenGl_Utils::MatrixState<Standard_ShortReal> ProjectionState; //!< state of projection  matrix
 
 private:
 

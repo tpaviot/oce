@@ -6,25 +6,13 @@
 #ifndef _IntRes2d_SequenceOfIntersectionSegment_HeaderFile
 #define _IntRes2d_SequenceOfIntersectionSegment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment_HeaderFile
 #include <Handle_IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class IntRes2d_IntersectionSegment;
@@ -32,68 +20,68 @@ class IntRes2d_SequenceNodeOfSequenceOfIntersectionSegment;
 
 
 
-class IntRes2d_SequenceOfIntersectionSegment  : public TCollection_BaseSequence {
+class IntRes2d_SequenceOfIntersectionSegment  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      IntRes2d_SequenceOfIntersectionSegment();
+    IntRes2d_SequenceOfIntersectionSegment();
   
-  Standard_EXPORT   IntRes2d_SequenceOfIntersectionSegment(const IntRes2d_SequenceOfIntersectionSegment& Other);
+  Standard_EXPORT IntRes2d_SequenceOfIntersectionSegment(const IntRes2d_SequenceOfIntersectionSegment& Other);
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~IntRes2d_SequenceOfIntersectionSegment()
 {
   Clear();
 }
   
-  Standard_EXPORT    const IntRes2d_SequenceOfIntersectionSegment& Assign(const IntRes2d_SequenceOfIntersectionSegment& Other) ;
-   const IntRes2d_SequenceOfIntersectionSegment& operator =(const IntRes2d_SequenceOfIntersectionSegment& Other) 
+  Standard_EXPORT  const  IntRes2d_SequenceOfIntersectionSegment& Assign (const IntRes2d_SequenceOfIntersectionSegment& Other) ;
+ const  IntRes2d_SequenceOfIntersectionSegment& operator = (const IntRes2d_SequenceOfIntersectionSegment& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const IntRes2d_IntersectionSegment& T) ;
+  Standard_EXPORT   void Append (const IntRes2d_IntersectionSegment& T) ;
   
-        void Append(IntRes2d_SequenceOfIntersectionSegment& S) ;
+      void Append (IntRes2d_SequenceOfIntersectionSegment& S) ;
   
-  Standard_EXPORT     void Prepend(const IntRes2d_IntersectionSegment& T) ;
+  Standard_EXPORT   void Prepend (const IntRes2d_IntersectionSegment& T) ;
   
-        void Prepend(IntRes2d_SequenceOfIntersectionSegment& S) ;
+      void Prepend (IntRes2d_SequenceOfIntersectionSegment& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const IntRes2d_IntersectionSegment& T) ;
+      void InsertBefore (const Standard_Integer Index, const IntRes2d_IntersectionSegment& T) ;
   
-        void InsertBefore(const Standard_Integer Index,IntRes2d_SequenceOfIntersectionSegment& S) ;
+      void InsertBefore (const Standard_Integer Index, IntRes2d_SequenceOfIntersectionSegment& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const IntRes2d_IntersectionSegment& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const IntRes2d_IntersectionSegment& T) ;
   
-        void InsertAfter(const Standard_Integer Index,IntRes2d_SequenceOfIntersectionSegment& S) ;
+      void InsertAfter (const Standard_Integer Index, IntRes2d_SequenceOfIntersectionSegment& S) ;
   
-  Standard_EXPORT    const IntRes2d_IntersectionSegment& First() const;
+  Standard_EXPORT  const  IntRes2d_IntersectionSegment& First()  const;
   
-  Standard_EXPORT    const IntRes2d_IntersectionSegment& Last() const;
+  Standard_EXPORT  const  IntRes2d_IntersectionSegment& Last()  const;
   
-        void Split(const Standard_Integer Index,IntRes2d_SequenceOfIntersectionSegment& Sub) ;
+      void Split (const Standard_Integer Index, IntRes2d_SequenceOfIntersectionSegment& Sub) ;
   
-  Standard_EXPORT    const IntRes2d_IntersectionSegment& Value(const Standard_Integer Index) const;
-   const IntRes2d_IntersectionSegment& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  IntRes2d_IntersectionSegment& Value (const Standard_Integer Index)  const;
+ const  IntRes2d_IntersectionSegment& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const IntRes2d_IntersectionSegment& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const IntRes2d_IntersectionSegment& I) ;
   
-  Standard_EXPORT     IntRes2d_IntersectionSegment& ChangeValue(const Standard_Integer Index) ;
-    IntRes2d_IntersectionSegment& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   IntRes2d_IntersectionSegment& ChangeValue (const Standard_Integer Index) ;
+  IntRes2d_IntersectionSegment& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntRes2d_SequenceOfIntersectionSegment_HeaderFile

@@ -6,25 +6,13 @@
 #ifndef _GeomToStep_MakeAxis2Placement3d_HeaderFile
 #define _GeomToStep_MakeAxis2Placement3d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Axis2Placement3d_HeaderFile
 #include <Handle_StepGeom_Axis2Placement3d.hxx>
-#endif
-#ifndef _GeomToStep_Root_HeaderFile
 #include <GeomToStep_Root.hxx>
-#endif
-#ifndef _Handle_Geom_Axis2Placement_HeaderFile
 #include <Handle_Geom_Axis2Placement.hxx>
-#endif
 class StepGeom_Axis2Placement3d;
 class StdFail_NotDone;
 class gp_Ax2;
@@ -33,28 +21,28 @@ class gp_Trsf;
 class Geom_Axis2Placement;
 
 
-//! This class implements the mapping between classes <br>
-//!          Axis2Placement from Geom and Ax2, Ax3 from gp, and the class <br>
-//!          Axis2Placement3d from StepGeom which describes an <br>
-//!          axis2_placement_3d from Prostep. <br>
-class GeomToStep_MakeAxis2Placement3d  : public GeomToStep_Root {
+//! This class implements the mapping between classes
+//! Axis2Placement from Geom and Ax2, Ax3 from gp, and the class
+//! Axis2Placement3d from StepGeom which describes an
+//! axis2_placement_3d from Prostep.
+class GeomToStep_MakeAxis2Placement3d  : public GeomToStep_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomToStep_MakeAxis2Placement3d();
+  Standard_EXPORT GeomToStep_MakeAxis2Placement3d();
   
-  Standard_EXPORT   GeomToStep_MakeAxis2Placement3d(const gp_Ax2& A);
+  Standard_EXPORT GeomToStep_MakeAxis2Placement3d(const gp_Ax2& A);
   
-  Standard_EXPORT   GeomToStep_MakeAxis2Placement3d(const gp_Ax3& A);
+  Standard_EXPORT GeomToStep_MakeAxis2Placement3d(const gp_Ax3& A);
   
-  Standard_EXPORT   GeomToStep_MakeAxis2Placement3d(const gp_Trsf& T);
+  Standard_EXPORT GeomToStep_MakeAxis2Placement3d(const gp_Trsf& T);
   
-  Standard_EXPORT   GeomToStep_MakeAxis2Placement3d(const Handle(Geom_Axis2Placement)& A);
+  Standard_EXPORT GeomToStep_MakeAxis2Placement3d(const Handle(Geom_Axis2Placement)& A);
   
-  Standard_EXPORT    const Handle_StepGeom_Axis2Placement3d& Value() const;
-
+  Standard_EXPORT  const  Handle(StepGeom_Axis2Placement3d)& Value()  const;
 
 
 
@@ -69,7 +57,7 @@ private:
 
 
 
-Handle_StepGeom_Axis2Placement3d theAxis2Placement3d;
+  Handle(StepGeom_Axis2Placement3d) theAxis2Placement3d;
 
 
 };
@@ -78,7 +66,6 @@ Handle_StepGeom_Axis2Placement3d theAxis2Placement3d;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomToStep_MakeAxis2Placement3d_HeaderFile

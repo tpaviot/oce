@@ -6,46 +6,33 @@
 #ifndef _TDF_IndexedMapNodeOfLabelIndexedMap_HeaderFile
 #define _TDF_IndexedMapNodeOfLabelIndexedMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDF_IndexedMapNodeOfLabelIndexedMap_HeaderFile
 #include <Handle_TDF_IndexedMapNodeOfLabelIndexedMap.hxx>
-#endif
 
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
 class TDF_Label;
 class TDF_LabelMapHasher;
 class TDF_LabelIndexedMap;
 
 
 
-class TDF_IndexedMapNodeOfLabelIndexedMap : public TCollection_MapNode {
+class TDF_IndexedMapNodeOfLabelIndexedMap : public TCollection_MapNode
+{
 
 public:
 
   
-      TDF_IndexedMapNodeOfLabelIndexedMap(const TDF_Label& K1,const Standard_Integer K2,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+    TDF_IndexedMapNodeOfLabelIndexedMap(const TDF_Label& K1, const Standard_Integer K2, const TCollection_MapNodePtr& n1, const TCollection_MapNodePtr& n2);
   
-        TDF_Label& Key1() const;
+      TDF_Label& Key1()  const;
   
-        Standard_Integer& Key2() const;
+      Standard_Integer& Key2()  const;
   
-        TCollection_MapNodePtr& Next2() const;
+      TCollection_MapNodePtr& Next2()  const;
 
 
 
@@ -60,9 +47,9 @@ protected:
 private: 
 
 
-TDF_Label myKey1;
-Standard_Integer myKey2;
-TCollection_MapNodePtr myNext2;
+  TDF_Label myKey1;
+  Standard_Integer myKey2;
+  TCollection_MapNodePtr myNext2;
 
 
 };
@@ -92,7 +79,6 @@ TCollection_MapNodePtr myNext2;
 #undef TCollection_IndexedMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_IndexedMapNodeOfLabelIndexedMap_HeaderFile

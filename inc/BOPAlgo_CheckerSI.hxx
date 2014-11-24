@@ -6,61 +6,50 @@
 #ifndef _BOPAlgo_CheckerSI_HeaderFile
 #define _BOPAlgo_CheckerSI_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _BOPCol_DataMapOfShapeShape_HeaderFile
 #include <BOPCol_DataMapOfShapeShape.hxx>
-#endif
-#ifndef _BOPAlgo_PaveFiller_HeaderFile
 #include <BOPAlgo_PaveFiller.hxx>
-#endif
 
 
-//! Checks shape on self-interference. <br>
-class BOPAlgo_CheckerSI  : public BOPAlgo_PaveFiller {
+//! Checks shape on self-interference.
+class BOPAlgo_CheckerSI  : public BOPAlgo_PaveFiller
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BOPAlgo_CheckerSI();
+  Standard_EXPORT BOPAlgo_CheckerSI();
 Standard_EXPORT virtual ~BOPAlgo_CheckerSI();
   
-  Standard_EXPORT   virtual  void Perform() ;
-  //!  Sets the level of checking shape on self-interference. <br>
-//!           It defines which interferferences will be checked: <br>
-//!           0 - only V/V; <br>
-//!           1 - V/V and V/E; <br>
-//!           2 - V/V, V/E and E/E; <br>
-//!           3 - V/V, V/E, E/E and V/F; <br>
-//!           4 - V/V, V/E, E/E, V/F and E/F; <br>
-//!           5 - all interferences, default value. <br>
-  Standard_EXPORT     void SetLevelOfCheck(const Standard_Integer theLevel) ;
-  //! Sets the flag <theFlag> that defines <br>
-//!  the mode of the treatment: <br>
-//!  the copy of the argument when theFlag is true <br>
-//!  the argument itself  when theFlag is false <br>
-  Standard_EXPORT     void SetNonDestructive(const Standard_Boolean theFlag) ;
-  //! Returns the flag that defines the <br>
-//!  mode of the treatment: <br>
-//!  true when the copy of the argument is used <br>
-//!  false when the argument itself  is used <br>
-  Standard_EXPORT     Standard_Boolean NonDestructive() const;
-
+  Standard_EXPORT virtual   void Perform() ;
+  
+  //! Sets the level of checking shape on self-interference.
+  //! It defines which interferferences will be checked:
+  //! 0 - only V/V;
+  //! 1 - V/V and V/E;
+  //! 2 - V/V, V/E and E/E;
+  //! 3 - V/V, V/E, E/E and V/F;
+  //! 4 - V/V, V/E, E/E, V/F and E/F;
+  //! 5 - all interferences, default value.
+  Standard_EXPORT   void SetLevelOfCheck (const Standard_Integer theLevel) ;
+  
+  //! Sets the flag <theFlag> that defines
+  //! the mode of the treatment:
+  //! the copy of the argument when theFlag is true
+  //! the argument itself  when theFlag is false
+  Standard_EXPORT   void SetNonDestructive (const Standard_Boolean theFlag) ;
+  
+  //! Returns the flag that defines the
+  //! mode of the treatment:
+  //! true when the copy of the argument is used
+  //! false when the argument itself  is used
+  Standard_EXPORT   Standard_Boolean NonDestructive()  const;
 
 
 
@@ -68,18 +57,20 @@ Standard_EXPORT virtual ~BOPAlgo_CheckerSI();
 protected:
 
   
-  Standard_EXPORT   virtual  void Init() ;
-  //! Provides post-treatment actions <br>
-  Standard_EXPORT     void PostTreat() ;
+  Standard_EXPORT virtual   void Init() ;
   
-  Standard_EXPORT   virtual  void PrepareCopy() ;
-  //! Provides post-treatment actions for the copy <br>
-  Standard_EXPORT     void PostTreatCopy() ;
+  //! Provides post-treatment actions
+  Standard_EXPORT   void PostTreat() ;
+  
+  Standard_EXPORT virtual   void PrepareCopy() ;
+  
+  //! Provides post-treatment actions for the copy
+  Standard_EXPORT   void PostTreatCopy() ;
 
 
-Standard_Integer myLevelOfCheck;
-Standard_Boolean myNonDestructive;
-BOPCol_DataMapOfShapeShape myNewOldMap;
+  Standard_Integer myLevelOfCheck;
+  Standard_Boolean myNonDestructive;
+  BOPCol_DataMapOfShapeShape myNewOldMap;
 
 
 private:
@@ -94,7 +85,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BOPAlgo_CheckerSI_HeaderFile

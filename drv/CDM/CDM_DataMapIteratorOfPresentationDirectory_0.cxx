@@ -5,26 +5,16 @@
 
 #include <CDM_DataMapIteratorOfPresentationDirectory.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _CDM_Document_HeaderFile
 #include <CDM_Document.hxx>
-#endif
-#ifndef _CDM_PresentationDirectory_HeaderFile
 #include <CDM_PresentationDirectory.hxx>
-#endif
-#ifndef _CDM_DataMapNodeOfPresentationDirectory_HeaderFile
 #include <CDM_DataMapNodeOfPresentationDirectory.hxx>
-#endif
  
 
 #define TheKey TCollection_ExtendedString
 #define TheKey_hxx <TCollection_ExtendedString.hxx>
-#define TheItem Handle_CDM_Document
+#define TheItem Handle(CDM_Document)
 #define TheItem_hxx <CDM_Document.hxx>
 #define Hasher TCollection_ExtendedString
 #define Hasher_hxx <TCollection_ExtendedString.hxx>

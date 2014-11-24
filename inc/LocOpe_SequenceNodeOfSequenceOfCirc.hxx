@@ -6,38 +6,27 @@
 #ifndef _LocOpe_SequenceNodeOfSequenceOfCirc_HeaderFile
 #define _LocOpe_SequenceNodeOfSequenceOfCirc_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_LocOpe_SequenceNodeOfSequenceOfCirc_HeaderFile
 #include <Handle_LocOpe_SequenceNodeOfSequenceOfCirc.hxx>
-#endif
 
-#ifndef _gp_Circ_HeaderFile
 #include <gp_Circ.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class gp_Circ;
 class LocOpe_SequenceOfCirc;
 
 
 
-class LocOpe_SequenceNodeOfSequenceOfCirc : public TCollection_SeqNode {
+class LocOpe_SequenceNodeOfSequenceOfCirc : public TCollection_SeqNode
+{
 
 public:
 
   
-      LocOpe_SequenceNodeOfSequenceOfCirc(const gp_Circ& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    LocOpe_SequenceNodeOfSequenceOfCirc(const gp_Circ& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        gp_Circ& Value() const;
+      gp_Circ& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-gp_Circ myValue;
+  gp_Circ myValue;
 
 
 };
@@ -78,7 +67,6 @@ gp_Circ myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _LocOpe_SequenceNodeOfSequenceOfCirc_HeaderFile

@@ -6,39 +6,35 @@
 #ifndef _IFSelect_SelectSharing_HeaderFile
 #define _IFSelect_SelectSharing_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_SelectSharing_HeaderFile
 #include <Handle_IFSelect_SelectSharing.hxx>
-#endif
 
-#ifndef _IFSelect_SelectDeduct_HeaderFile
 #include <IFSelect_SelectDeduct.hxx>
-#endif
 class Interface_EntityIterator;
 class Interface_Graph;
 class TCollection_AsciiString;
 
 
-//! A SelectSharing selects Entities which directly Share (Level <br>
-//!           One) the Entities of the Input list <br>
-//!           Remark : if an Entity of the Input List directly shares <br>
-//!           another one, it is of course present in the Result List <br>
-class IFSelect_SelectSharing : public IFSelect_SelectDeduct {
+//! A SelectSharing selects Entities which directly Share (Level
+//! One) the Entities of the Input list
+//! Remark : if an Entity of the Input List directly shares
+//! another one, it is of course present in the Result List
+class IFSelect_SelectSharing : public IFSelect_SelectDeduct
+{
 
 public:
 
-  //! Creates a SelectSharing; <br>
-  Standard_EXPORT   IFSelect_SelectSharing();
-  //! Returns the list of selected entities (list of entities <br>
-//!           which share (level one) those of input list) <br>
-  Standard_EXPORT     Interface_EntityIterator RootResult(const Interface_Graph& G) const;
-  //! Returns a text defining the criterium : "Sharing (one level)" <br>
-  Standard_EXPORT     TCollection_AsciiString Label() const;
+  
+  //! Creates a SelectSharing;
+  Standard_EXPORT IFSelect_SelectSharing();
+  
+  //! Returns the list of selected entities (list of entities
+  //! which share (level one) those of input list)
+  Standard_EXPORT   Interface_EntityIterator RootResult (const Interface_Graph& G)  const;
+  
+  //! Returns a text defining the criterium : "Sharing (one level)"
+  Standard_EXPORT   TCollection_AsciiString Label()  const;
 
 
 
@@ -61,7 +57,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_SelectSharing_HeaderFile

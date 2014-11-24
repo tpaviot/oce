@@ -1,9 +1,3 @@
-#ifndef _Interface_HArray1OfHAsciiString_HeaderFile
 #include <Interface_HArray1OfHAsciiString.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _HeaderSection_FileDescription_HeaderFile
 #include <HeaderSection_FileDescription.hxx>
-#endif

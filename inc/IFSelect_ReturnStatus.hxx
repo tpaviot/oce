@@ -6,14 +6,17 @@
 #ifndef _IFSelect_ReturnStatus_HeaderFile
 #define _IFSelect_ReturnStatus_HeaderFile
 
-//! Qualifies an execution status : <br>
-//!           RetVoid  : normal execution which created nothing, or <br>
-//!               no data to process <br>
-//!           RetDone  : normal execution with a result <br>
-//!           RetError : error in command or input data, no execution <br>
-//!           RetFail  : execution was run and has failed <br>
-//!           RetStop  : indicates end or stop (such as Raise) <br>
-enum IFSelect_ReturnStatus {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Qualifies an execution status :
+//! RetVoid  : normal execution which created nothing, or
+//! no data to process
+//! RetDone  : normal execution with a result
+//! RetError : error in command or input data, no execution
+//! RetFail  : execution was run and has failed
+//! RetStop  : indicates end or stop (such as Raise)
+enum IFSelect_ReturnStatus
+{
 IFSelect_RetVoid,
 IFSelect_RetDone,
 IFSelect_RetError,
@@ -21,8 +24,4 @@ IFSelect_RetFail,
 IFSelect_RetStop
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _IFSelect_ReturnStatus_HeaderFile

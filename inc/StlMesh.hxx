@@ -6,19 +6,11 @@
 #ifndef _StlMesh_HeaderFile
 #define _StlMesh_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StlMesh_Mesh_HeaderFile
 #include <Handle_StlMesh_Mesh.hxx>
-#endif
 class StlMesh_Mesh;
 class StlMesh_Mesh;
 class StlMesh_MeshExplorer;
@@ -32,19 +24,20 @@ class StlMesh_SequenceNodeOfSequenceOfMeshTriangle;
 class StlMesh_SequenceNodeOfSequenceOfMesh;
 
 
-//! Implements a  basic  mesh data-structure  for  the <br>
-//!          needs of the application fast prototyping. <br>
-//! <br>
-class StlMesh  {
+//! Implements a  basic  mesh data-structure  for  the
+//! needs of the application fast prototyping.
+class StlMesh 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Sequence of meshes <br>//! Make a merge of two Mesh and returns a new Mesh. <br>
-//!          Very useful if you want to merge partMesh and CheckSurfaceMesh <br>
-//!          for example <br>
-  Standard_EXPORT   static  Handle_StlMesh_Mesh Merge(const Handle(StlMesh_Mesh)& mesh1,const Handle(StlMesh_Mesh)& mesh2) ;
-
+  
+  //! Sequence of meshes
+  //! Make a merge of two Mesh and returns a new Mesh.
+  //! Very useful if you want to merge partMesh and CheckSurfaceMesh
+  //! for example
+  Standard_EXPORT static   Handle(StlMesh_Mesh) Merge (const Handle(StlMesh_Mesh)& mesh1, const Handle(StlMesh_Mesh)& mesh2) ;
 
 
 
@@ -77,7 +70,6 @@ friend class StlMesh_SequenceNodeOfSequenceOfMesh;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StlMesh_HeaderFile

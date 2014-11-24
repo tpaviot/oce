@@ -6,79 +6,75 @@
 #ifndef _Bnd_Sphere_HeaderFile
 #define _Bnd_Sphere_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class gp_XYZ;
 
 
-//! This class represents a bounding sphere of a geometric entity <br>
-//!          (triangle, segment of line or whatever else). <br>
-class Bnd_Sphere  {
+//! This class represents a bounding sphere of a geometric entity
+//! (triangle, segment of line or whatever else).
+class Bnd_Sphere 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor <br>
-  Standard_EXPORT   Bnd_Sphere();
-  //! Constructor of a definite sphere <br>
-  Standard_EXPORT   Bnd_Sphere(const gp_XYZ& theCntr,const Standard_Real theRad,const Standard_Integer theU,const Standard_Integer theV);
-  //! Returns the U parameter on shape <br>
-        Standard_Integer U() const;
-  //! Returns the V parameter on shape <br>
-        Standard_Integer V() const;
-  //! Returns validity status, indicating that this <br>
-//!		sphere corresponds to a real entity <br>
-        Standard_Boolean IsValid() const;
   
-        void SetValid(const Standard_Boolean isValid) ;
-  //! Returns center of sphere object <br>
-       const gp_XYZ& Center() const;
-  //! Returns the radius value <br>
-        Standard_Real Radius() const;
-  //! Calculate and return minimal and maximal distance to sphere. <br>
-//!		NOTE: This function is tightly optimized; any modifications <br>
-//!		may affect performance! <br>
-  Standard_EXPORT     void Distances(const gp_XYZ& theXYZ,Standard_Real& theMin,Standard_Real& theMax) const;
-  //! Calculate and return minimal and maximal distance to sphere. <br>
-//!		NOTE: This function is tightly optimized; any modifications <br>
-//!		may affect performance! <br>
-  Standard_EXPORT     void SquareDistances(const gp_XYZ& theXYZ,Standard_Real& theMin,Standard_Real& theMax) const;
-  //! Projects a point on entity. <br>
-//!		   Returns true if success <br>
-  Standard_EXPORT     Standard_Boolean Project(const gp_XYZ& theNode,gp_XYZ& theProjNode,Standard_Real& theDist,Standard_Boolean& theInside) const;
+  //! Empty constructor
+  Standard_EXPORT Bnd_Sphere();
   
-  Standard_EXPORT     Standard_Real Distance(const gp_XYZ& theNode) const;
+  //! Constructor of a definite sphere
+  Standard_EXPORT Bnd_Sphere(const gp_XYZ& theCntr, const Standard_Real theRad, const Standard_Integer theU, const Standard_Integer theV);
   
-  Standard_EXPORT     Standard_Real SquareDistance(const gp_XYZ& theNode) const;
+  //! Returns the U parameter on shape
+      Standard_Integer U()  const;
   
-  Standard_EXPORT     void Add(const Bnd_Sphere& theOther) ;
+  //! Returns the V parameter on shape
+      Standard_Integer V()  const;
   
-  Standard_EXPORT     Standard_Boolean IsOut(const Bnd_Sphere& theOther) const;
+  //! Returns validity status, indicating that this
+  //! sphere corresponds to a real entity
+      Standard_Boolean IsValid()  const;
   
-  Standard_EXPORT     Standard_Boolean IsOut(const gp_XYZ& thePnt,Standard_Real& theMaxDist) const;
+      void SetValid (const Standard_Boolean isValid) ;
   
-  Standard_EXPORT     Standard_Real SquareExtent() const;
-
+  //! Returns center of sphere object
+     const  gp_XYZ& Center()  const;
+  
+  //! Returns the radius value
+      Standard_Real Radius()  const;
+  
+  //! Calculate and return minimal and maximal distance to sphere.
+  //! NOTE: This function is tightly optimized; any modifications
+  //! may affect performance!
+  Standard_EXPORT   void Distances (const gp_XYZ& theXYZ, Standard_Real& theMin, Standard_Real& theMax)  const;
+  
+  //! Calculate and return minimal and maximal distance to sphere.
+  //! NOTE: This function is tightly optimized; any modifications
+  //! may affect performance!
+  Standard_EXPORT   void SquareDistances (const gp_XYZ& theXYZ, Standard_Real& theMin, Standard_Real& theMax)  const;
+  
+  //! Projects a point on entity.
+  //! Returns true if success
+  Standard_EXPORT   Standard_Boolean Project (const gp_XYZ& theNode, gp_XYZ& theProjNode, Standard_Real& theDist, Standard_Boolean& theInside)  const;
+  
+  Standard_EXPORT   Standard_Real Distance (const gp_XYZ& theNode)  const;
+  
+  Standard_EXPORT   Standard_Real SquareDistance (const gp_XYZ& theNode)  const;
+  
+  Standard_EXPORT   void Add (const Bnd_Sphere& theOther) ;
+  
+  Standard_EXPORT   Standard_Boolean IsOut (const Bnd_Sphere& theOther)  const;
+  
+  Standard_EXPORT   Standard_Boolean IsOut (const gp_XYZ& thePnt, Standard_Real& theMaxDist)  const;
+  
+  Standard_EXPORT   Standard_Real SquareExtent()  const;
 
 
 
@@ -93,11 +89,11 @@ private:
 
 
 
-gp_XYZ myCenter;
-Standard_Real myRadius;
-Standard_Boolean myIsValid;
-Standard_Integer myU;
-Standard_Integer myV;
+  gp_XYZ myCenter;
+  Standard_Real myRadius;
+  Standard_Boolean myIsValid;
+  Standard_Integer myU;
+  Standard_Integer myV;
 
 
 };
@@ -107,7 +103,6 @@ Standard_Integer myV;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Bnd_Sphere_HeaderFile

@@ -6,40 +6,18 @@
 #ifndef _Transfer_IteratorOfProcessForFinder_HeaderFile
 #define _Transfer_IteratorOfProcessForFinder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Transfer_HSequenceOfFinder_HeaderFile
 #include <Handle_Transfer_HSequenceOfFinder.hxx>
-#endif
-#ifndef _Transfer_TransferIterator_HeaderFile
 #include <Transfer_TransferIterator.hxx>
-#endif
-#ifndef _Handle_Transfer_Finder_HeaderFile
 #include <Handle_Transfer_Finder.hxx>
-#endif
-#ifndef _Handle_Transfer_ProcessForFinder_HeaderFile
 #include <Handle_Transfer_ProcessForFinder.hxx>
-#endif
-#ifndef _Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder_HeaderFile
 #include <Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder.hxx>
-#endif
-#ifndef _Handle_Transfer_ActorOfProcessForFinder_HeaderFile
 #include <Handle_Transfer_ActorOfProcessForFinder.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Transfer_Binder_HeaderFile
 #include <Handle_Transfer_Binder.hxx>
-#endif
 class Transfer_HSequenceOfFinder;
 class Standard_NoSuchObject;
 class Transfer_Finder;
@@ -52,24 +30,24 @@ class Transfer_Binder;
 
 
 
-class Transfer_IteratorOfProcessForFinder  : public Transfer_TransferIterator {
+class Transfer_IteratorOfProcessForFinder  : public Transfer_TransferIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Transfer_IteratorOfProcessForFinder(const Standard_Boolean withstarts);
+  Standard_EXPORT Transfer_IteratorOfProcessForFinder(const Standard_Boolean withstarts);
   
-  Standard_EXPORT     void Add(const Handle(Transfer_Binder)& binder) ;
+  Standard_EXPORT   void Add (const Handle(Transfer_Binder)& binder) ;
   
-  Standard_EXPORT     void Add(const Handle(Transfer_Binder)& binder,const Handle(Transfer_Finder)& start) ;
+  Standard_EXPORT   void Add (const Handle(Transfer_Binder)& binder, const Handle(Transfer_Finder)& start) ;
   
-  Standard_EXPORT     void Filter(const Handle(Transfer_HSequenceOfFinder)& list,const Standard_Boolean keep = Standard_True) ;
+  Standard_EXPORT   void Filter (const Handle(Transfer_HSequenceOfFinder)& list, const Standard_Boolean keep = Standard_True) ;
   
-  Standard_EXPORT     Standard_Boolean HasStarting() const;
+  Standard_EXPORT   Standard_Boolean HasStarting()  const;
   
-  Standard_EXPORT    const Handle_Transfer_Finder& Starting() const;
-
+  Standard_EXPORT  const  Handle(Transfer_Finder)& Starting()  const;
 
 
 
@@ -84,7 +62,7 @@ private:
 
 
 
-Handle_Transfer_HSequenceOfFinder thestarts;
+  Handle(Transfer_HSequenceOfFinder) thestarts;
 
 
 };
@@ -93,7 +71,6 @@ Handle_Transfer_HSequenceOfFinder thestarts;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Transfer_IteratorOfProcessForFinder_HeaderFile

@@ -6,40 +6,32 @@
 #ifndef _TopOpeBRepBuild_ShellToSolid_HeaderFile
 #define _TopOpeBRepBuild_ShellToSolid_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
 class TopoDS_Shell;
 class TopoDS_Solid;
 class TopTools_ListOfShape;
 
 
 
-//! This class builds solids from a set of shells SSh and a solid F. <br>
-class TopOpeBRepBuild_ShellToSolid  {
+//! This class builds solids from a set of shells SSh and a solid F.
+class TopOpeBRepBuild_ShellToSolid 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepBuild_ShellToSolid();
+  Standard_EXPORT TopOpeBRepBuild_ShellToSolid();
   
-  Standard_EXPORT     void Init() ;
+  Standard_EXPORT   void Init() ;
   
-  Standard_EXPORT     void AddShell(const TopoDS_Shell& Sh) ;
+  Standard_EXPORT   void AddShell (const TopoDS_Shell& Sh) ;
   
-  Standard_EXPORT     void MakeSolids(const TopoDS_Solid& So,TopTools_ListOfShape& LSo) ;
-
+  Standard_EXPORT   void MakeSolids (const TopoDS_Solid& So, TopTools_ListOfShape& LSo) ;
 
 
 
@@ -54,7 +46,7 @@ private:
 
 
 
-TopTools_ListOfShape myLSh;
+  TopTools_ListOfShape myLSh;
 
 
 };
@@ -63,7 +55,6 @@ TopTools_ListOfShape myLSh;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepBuild_ShellToSolid_HeaderFile

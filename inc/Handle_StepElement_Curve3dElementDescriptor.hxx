@@ -6,22 +6,15 @@
 #ifndef _Handle_StepElement_Curve3dElementDescriptor_HeaderFile
 #define _Handle_StepElement_Curve3dElementDescriptor_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepElement_ElementDescriptor_HeaderFile
 #include <Handle_StepElement_ElementDescriptor.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepElement_ElementDescriptor);
 class StepElement_Curve3dElementDescriptor;
 
-DEFINE_STANDARD_HANDLE(StepElement_Curve3dElementDescriptor,StepElement_ElementDescriptor)
+DEFINE_STANDARD_HANDLE(StepElement_Curve3dElementDescriptor, StepElement_ElementDescriptor)
 
-#endif
+#endif // _Handle_StepElement_Curve3dElementDescriptor_HeaderFile

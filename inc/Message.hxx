@@ -6,25 +6,13 @@
 #ifndef _Message_HeaderFile
 #define _Message_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Message_Messenger_HeaderFile
 #include <Handle_Message_Messenger.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Message_Messenger;
 class TCollection_AsciiString;
 class Message_Msg;
@@ -45,26 +33,28 @@ class Message_SequenceNodeOfSequenceOfPrinters;
 class Message_SequenceNodeOfSequenceOfProgressScale;
 
 
-//! Defines <br>
-//!          - tools to work with messages <br>
-//!          - basic tools intended for progress indication <br>
-class Message  {
+//! Defines
+//! - tools to work with messages
+//! - basic tools intended for progress indication
+class Message 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Defines default messenger for OCCT applications. <br>
-//!          This is global static instance of the messenger. <br>
-//!          By default, it contains single printer directed to cout. <br>
-//!          It can be customized according to the application needs. <br>
-  Standard_EXPORT   static const Handle_Message_Messenger& DefaultMessenger() ;
-  //! Returns the string filled with values of hours, minutes and seconds. <br>
-//! Example: <br>
-//!          1. (5, 12, 26.3345) returns "05h:12m:26.33s", <br>
-//!          2. (0,  6, 34.496 ) returns "06m:34.50s", <br>
-//!          3. (0,  0,  4.5   ) returns "4.50s" <br>
-  Standard_EXPORT   static  TCollection_AsciiString FillTime(const Standard_Integer Hour,const Standard_Integer Minute,const Standard_Real Second) ;
-
+  
+  //! Defines default messenger for OCCT applications.
+  //! This is global static instance of the messenger.
+  //! By default, it contains single printer directed to cout.
+  //! It can be customized according to the application needs.
+  Standard_EXPORT static  const  Handle(Message_Messenger)& DefaultMessenger() ;
+  
+  //! Returns the string filled with values of hours, minutes and seconds.
+  //! Example:
+  //! 1. (5, 12, 26.3345) returns "05h:12m:26.33s",
+  //! 2. (0,  6, 34.496 ) returns "06m:34.50s",
+  //! 3. (0,  0,  4.5   ) returns "4.50s"
+  Standard_EXPORT static   TCollection_AsciiString FillTime (const Standard_Integer Hour, const Standard_Integer Minute, const Standard_Real Second) ;
 
 
 
@@ -103,7 +93,6 @@ friend class Message_SequenceNodeOfSequenceOfProgressScale;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Message_HeaderFile

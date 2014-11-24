@@ -6,37 +6,17 @@
 #ifndef _StepShape_OrientedFace_HeaderFile
 #define _StepShape_OrientedFace_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_OrientedFace_HeaderFile
 #include <Handle_StepShape_OrientedFace.hxx>
-#endif
 
-#ifndef _Handle_StepShape_Face_HeaderFile
 #include <Handle_StepShape_Face.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _StepShape_Face_HeaderFile
 #include <StepShape_Face.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepShape_HArray1OfFaceBound_HeaderFile
 #include <Handle_StepShape_HArray1OfFaceBound.hxx>
-#endif
-#ifndef _Handle_StepShape_FaceBound_HeaderFile
 #include <Handle_StepShape_FaceBound.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StepShape_Face;
 class TCollection_HAsciiString;
 class StepShape_HArray1OfFaceBound;
@@ -44,32 +24,34 @@ class StepShape_FaceBound;
 
 
 
-class StepShape_OrientedFace : public StepShape_Face {
+class StepShape_OrientedFace : public StepShape_Face
+{
 
 public:
 
-  //! Returns a OrientedFace <br>
-  Standard_EXPORT   StepShape_OrientedFace();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepShape_HArray1OfFaceBound)& aBounds) ;
+  //! Returns a OrientedFace
+  Standard_EXPORT StepShape_OrientedFace();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepShape_Face)& aFaceElement,const Standard_Boolean aOrientation) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepShape_HArray1OfFaceBound)& aBounds) ;
   
-  Standard_EXPORT     void SetFaceElement(const Handle(StepShape_Face)& aFaceElement) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepShape_Face)& aFaceElement, const Standard_Boolean aOrientation) ;
   
-  Standard_EXPORT     Handle_StepShape_Face FaceElement() const;
+  Standard_EXPORT   void SetFaceElement (const Handle(StepShape_Face)& aFaceElement) ;
   
-  Standard_EXPORT     void SetOrientation(const Standard_Boolean aOrientation) ;
+  Standard_EXPORT   Handle(StepShape_Face) FaceElement()  const;
   
-  Standard_EXPORT     Standard_Boolean Orientation() const;
+  Standard_EXPORT   void SetOrientation (const Standard_Boolean aOrientation) ;
   
-  Standard_EXPORT   virtual  void SetBounds(const Handle(StepShape_HArray1OfFaceBound)& aBounds) ;
+  Standard_EXPORT   Standard_Boolean Orientation()  const;
   
-  Standard_EXPORT   virtual  Handle_StepShape_HArray1OfFaceBound Bounds() const;
+  Standard_EXPORT virtual   void SetBounds (const Handle(StepShape_HArray1OfFaceBound)& aBounds) ;
   
-  Standard_EXPORT   virtual  Handle_StepShape_FaceBound BoundsValue(const Standard_Integer num) const;
+  Standard_EXPORT virtual   Handle(StepShape_HArray1OfFaceBound) Bounds()  const;
   
-  Standard_EXPORT   virtual  Standard_Integer NbBounds() const;
+  Standard_EXPORT virtual   Handle(StepShape_FaceBound) BoundsValue (const Standard_Integer num)  const;
+  
+  Standard_EXPORT virtual   Standard_Integer NbBounds()  const;
 
 
 
@@ -84,8 +66,8 @@ protected:
 private: 
 
 
-Handle_StepShape_Face faceElement;
-Standard_Boolean orientation;
+  Handle(StepShape_Face) faceElement;
+  Standard_Boolean orientation;
 
 
 };
@@ -94,7 +76,6 @@ Standard_Boolean orientation;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_OrientedFace_HeaderFile

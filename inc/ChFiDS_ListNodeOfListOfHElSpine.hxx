@@ -6,39 +6,28 @@
 #ifndef _ChFiDS_ListNodeOfListOfHElSpine_HeaderFile
 #define _ChFiDS_ListNodeOfListOfHElSpine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ChFiDS_ListNodeOfListOfHElSpine_HeaderFile
 #include <Handle_ChFiDS_ListNodeOfListOfHElSpine.hxx>
-#endif
 
-#ifndef _Handle_ChFiDS_HElSpine_HeaderFile
 #include <Handle_ChFiDS_HElSpine.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class ChFiDS_HElSpine;
 class ChFiDS_ListOfHElSpine;
 class ChFiDS_ListIteratorOfListOfHElSpine;
 
 
 
-class ChFiDS_ListNodeOfListOfHElSpine : public TCollection_MapNode {
+class ChFiDS_ListNodeOfListOfHElSpine : public TCollection_MapNode
+{
 
 public:
 
   
-      ChFiDS_ListNodeOfListOfHElSpine(const Handle(ChFiDS_HElSpine)& I,const TCollection_MapNodePtr& n);
+    ChFiDS_ListNodeOfListOfHElSpine(const Handle(ChFiDS_HElSpine)& I, const TCollection_MapNodePtr& n);
   
-        Handle_ChFiDS_HElSpine& Value() const;
+      Handle(ChFiDS_HElSpine)& Value()  const;
 
 
 
@@ -53,12 +42,12 @@ protected:
 private: 
 
 
-Handle_ChFiDS_HElSpine myValue;
+  Handle(ChFiDS_HElSpine) myValue;
 
 
 };
 
-#define Item Handle_ChFiDS_HElSpine
+#define Item Handle(ChFiDS_HElSpine)
 #define Item_hxx <ChFiDS_HElSpine.hxx>
 #define TCollection_ListNode ChFiDS_ListNodeOfListOfHElSpine
 #define TCollection_ListNode_hxx <ChFiDS_ListNodeOfListOfHElSpine.hxx>
@@ -83,7 +72,6 @@ Handle_ChFiDS_HElSpine myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ChFiDS_ListNodeOfListOfHElSpine_HeaderFile

@@ -6,25 +6,18 @@
 #ifndef _Prs3d_BasicAspect_HeaderFile
 #define _Prs3d_BasicAspect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Prs3d_BasicAspect_HeaderFile
 #include <Handle_Prs3d_BasicAspect.hxx>
-#endif
 
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 
 
-//! All basic Prs3d_xxxAspect must inherits from this class <br>
-//!           The aspect classes qualifies how to represent <br>
-//!           a given kind of object. <br>
-class Prs3d_BasicAspect : public MMgt_TShared {
+//! All basic Prs3d_xxxAspect must inherits from this class
+//! The aspect classes qualifies how to represent
+//! a given kind of object.
+class Prs3d_BasicAspect : public MMgt_TShared
+{
 
 public:
 
@@ -50,7 +43,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Prs3d_BasicAspect_HeaderFile

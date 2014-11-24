@@ -6,22 +6,15 @@
 #ifndef _Handle_Law_S_HeaderFile
 #define _Handle_Law_S_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Law_BSpFunc_HeaderFile
 #include <Handle_Law_BSpFunc.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Law_BSpFunc);
 class Law_S;
 
-DEFINE_STANDARD_HANDLE(Law_S,Law_BSpFunc)
+DEFINE_STANDARD_HANDLE(Law_S, Law_BSpFunc)
 
-#endif
+#endif // _Handle_Law_S_HeaderFile

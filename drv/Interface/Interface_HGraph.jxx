@@ -1,21 +1,7 @@
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Interface_Graph_HeaderFile
 #include <Interface_Graph.hxx>
-#endif
-#ifndef _Interface_InterfaceModel_HeaderFile
 #include <Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Interface_GeneralLib_HeaderFile
 #include <Interface_GeneralLib.hxx>
-#endif
-#ifndef _Interface_Protocol_HeaderFile
 #include <Interface_Protocol.hxx>
-#endif
-#ifndef _Interface_GTool_HeaderFile
 #include <Interface_GTool.hxx>
-#endif
-#ifndef _Interface_HGraph_HeaderFile
 #include <Interface_HGraph.hxx>
-#endif

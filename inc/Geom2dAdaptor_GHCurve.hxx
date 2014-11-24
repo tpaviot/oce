@@ -6,22 +6,12 @@
 #ifndef _Geom2dAdaptor_GHCurve_HeaderFile
 #define _Geom2dAdaptor_GHCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Geom2dAdaptor_GHCurve_HeaderFile
 #include <Handle_Geom2dAdaptor_GHCurve.hxx>
-#endif
 
-#ifndef _Geom2dAdaptor_Curve_HeaderFile
 #include <Geom2dAdaptor_Curve.hxx>
-#endif
-#ifndef _Adaptor2d_HCurve2d_HeaderFile
 #include <Adaptor2d_HCurve2d.hxx>
-#endif
 class Standard_OutOfRange;
 class Standard_NoSuchObject;
 class Standard_DomainError;
@@ -30,20 +20,21 @@ class Adaptor2d_Curve2d;
 
 
 
-class Geom2dAdaptor_GHCurve : public Adaptor2d_HCurve2d {
+class Geom2dAdaptor_GHCurve : public Adaptor2d_HCurve2d
+{
 
 public:
 
   
-  Standard_EXPORT   Geom2dAdaptor_GHCurve();
+  Standard_EXPORT Geom2dAdaptor_GHCurve();
   
-  Standard_EXPORT   Geom2dAdaptor_GHCurve(const Geom2dAdaptor_Curve& C);
+  Standard_EXPORT Geom2dAdaptor_GHCurve(const Geom2dAdaptor_Curve& C);
   
-  Standard_EXPORT     void Set(const Geom2dAdaptor_Curve& C) ;
+  Standard_EXPORT   void Set (const Geom2dAdaptor_Curve& C) ;
   
-  Standard_EXPORT    const Adaptor2d_Curve2d& Curve2d() const;
+  Standard_EXPORT  const  Adaptor2d_Curve2d& Curve2d()  const;
   
-        Geom2dAdaptor_Curve& ChangeCurve2d() ;
+      Geom2dAdaptor_Curve& ChangeCurve2d() ;
 
 
 
@@ -53,7 +44,7 @@ public:
 protected:
 
 
-Geom2dAdaptor_Curve myCurve;
+  Geom2dAdaptor_Curve myCurve;
 
 
 private: 
@@ -80,7 +71,6 @@ private:
 #undef Adaptor2d_GenHCurve2d_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dAdaptor_GHCurve_HeaderFile

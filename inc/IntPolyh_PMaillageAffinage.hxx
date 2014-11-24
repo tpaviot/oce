@@ -7,7 +7,6 @@
 #define _IntPolyh_PMaillageAffinage_HeaderFile
 
 class IntPolyh_MaillageAffinage;
-
 typedef IntPolyh_MaillageAffinage* IntPolyh_PMaillageAffinage;
 
-#endif
+#endif // _IntPolyh_PMaillageAffinage_HeaderFile

@@ -6,28 +6,14 @@
 #ifndef _StepToTopoDS_DataMapNodeOfPointEdgeMap_HeaderFile
 #define _StepToTopoDS_DataMapNodeOfPointEdgeMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepToTopoDS_DataMapNodeOfPointEdgeMap_HeaderFile
 #include <Handle_StepToTopoDS_DataMapNodeOfPointEdgeMap.hxx>
-#endif
 
-#ifndef _StepToTopoDS_PointPair_HeaderFile
 #include <StepToTopoDS_PointPair.hxx>
-#endif
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class StepToTopoDS_PointPair;
 class TopoDS_Edge;
 class StepToTopoDS_PointPairHasher;
@@ -36,16 +22,17 @@ class StepToTopoDS_DataMapIteratorOfPointEdgeMap;
 
 
 
-class StepToTopoDS_DataMapNodeOfPointEdgeMap : public TCollection_MapNode {
+class StepToTopoDS_DataMapNodeOfPointEdgeMap : public TCollection_MapNode
+{
 
 public:
 
   
-      StepToTopoDS_DataMapNodeOfPointEdgeMap(const StepToTopoDS_PointPair& K,const TopoDS_Edge& I,const TCollection_MapNodePtr& n);
+    StepToTopoDS_DataMapNodeOfPointEdgeMap(const StepToTopoDS_PointPair& K, const TopoDS_Edge& I, const TCollection_MapNodePtr& n);
   
-        StepToTopoDS_PointPair& Key() const;
+      StepToTopoDS_PointPair& Key()  const;
   
-        TopoDS_Edge& Value() const;
+      TopoDS_Edge& Value()  const;
 
 
 
@@ -60,8 +47,8 @@ protected:
 private: 
 
 
-StepToTopoDS_PointPair myKey;
-TopoDS_Edge myValue;
+  StepToTopoDS_PointPair myKey;
+  TopoDS_Edge myValue;
 
 
 };
@@ -99,7 +86,6 @@ TopoDS_Edge myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToTopoDS_DataMapNodeOfPointEdgeMap_HeaderFile

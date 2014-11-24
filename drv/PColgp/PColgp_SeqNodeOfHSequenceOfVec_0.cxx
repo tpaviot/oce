@@ -5,22 +5,12 @@
 
 #include <PColgp_SeqNodeOfHSequenceOfVec.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _PColgp_SeqNodeOfHSequenceOfVec_HeaderFile
 #include <PColgp_SeqNodeOfHSequenceOfVec.hxx>
-#endif
-#ifndef _PColgp_HSequenceOfVec_HeaderFile
 #include <PColgp_HSequenceOfVec.hxx>
-#endif
-#ifndef _PColgp_SeqExplorerOfHSequenceOfVec_HeaderFile
 #include <PColgp_SeqExplorerOfHSequenceOfVec.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
 
  
 

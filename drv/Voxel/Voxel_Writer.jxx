@@ -1,15 +1,5 @@
-#ifndef _Voxel_BoolDS_HeaderFile
 #include <Voxel_BoolDS.hxx>
-#endif
-#ifndef _Voxel_ColorDS_HeaderFile
 #include <Voxel_ColorDS.hxx>
-#endif
-#ifndef _Voxel_FloatDS_HeaderFile
 #include <Voxel_FloatDS.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _Voxel_Writer_HeaderFile
 #include <Voxel_Writer.hxx>
-#endif

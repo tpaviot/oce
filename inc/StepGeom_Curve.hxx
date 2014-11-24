@@ -6,28 +6,22 @@
 #ifndef _StepGeom_Curve_HeaderFile
 #define _StepGeom_Curve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_Curve_HeaderFile
 #include <Handle_StepGeom_Curve.hxx>
-#endif
 
-#ifndef _StepGeom_GeometricRepresentationItem_HeaderFile
 #include <StepGeom_GeometricRepresentationItem.hxx>
-#endif
 
 
 
-class StepGeom_Curve : public StepGeom_GeometricRepresentationItem {
+class StepGeom_Curve : public StepGeom_GeometricRepresentationItem
+{
 
 public:
 
-  //! Returns a Curve <br>
-  Standard_EXPORT   StepGeom_Curve();
+  
+  //! Returns a Curve
+  Standard_EXPORT StepGeom_Curve();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_Curve_HeaderFile

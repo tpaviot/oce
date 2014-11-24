@@ -6,43 +6,19 @@
 #ifndef _StepData_SelectType_HeaderFile
 #define _StepData_SelectType_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
-#ifndef _Handle_StepData_PDescr_HeaderFile
 #include <Handle_StepData_PDescr.hxx>
-#endif
-#ifndef _Handle_StepData_SelectMember_HeaderFile
 #include <Handle_StepData_SelectMember.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _StepData_Logical_HeaderFile
 #include <StepData_Logical.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Standard_Transient;
 class Standard_TypeMismatch;
 class Standard_Type;
@@ -50,114 +26,132 @@ class StepData_PDescr;
 class StepData_SelectMember;
 
 
-//! SelectType is the basis used for SELECT_TYPE definitions from <br>
-//!           the EXPRESS form. A SELECT_TYPE in EXPRESS is an enumeration <br>
-//!           of Types, it corresponds in a way to a Super-Type, but with <br>
-//!           no specific Methods, and no exclusivity (a given Type can be <br>
-//!           member of several SELECT_TYPES, plus be itself a SUB_TYPE). <br>
-//! <br>
-//!           A SelectType can be field of a Transient Entity (it is itself <br>
-//!           Storable) or only used to control an input Argument <br>
-//! <br>
-//!           This class implies to designate each member Type by a Case <br>
-//!           Number which is a positive Integer value (this allows a faster <br>
-//!           treatement). <br>
-//! <br>
-//!           With this class, a specific SelectType can : <br>
-//!           - recognize an Entity as complying or not with its definition, <br>
-//!           - storing it, with the garanty that the stored Entity complies <br>
-//!             with the definition of the SelectType <br>
-//!           - and (if judged useful) give the stored Entity under the good <br>
-//!             Type rather than simply "Transient". <br>
-class StepData_SelectType  {
+//! SelectType is the basis used for SELECT_TYPE definitions from
+//! the EXPRESS form. A SELECT_TYPE in EXPRESS is an enumeration
+//! of Types, it corresponds in a way to a Super-Type, but with
+//! no specific Methods, and no exclusivity (a given Type can be
+//! member of several SELECT_TYPES, plus be itself a SUB_TYPE).
+//!
+//! A SelectType can be field of a Transient Entity (it is itself
+//! Storable) or only used to control an input Argument
+//!
+//! This class implies to designate each member Type by a Case
+//! Number which is a positive Integer value (this allows a faster
+//! treatement).
+//!
+//! With this class, a specific SelectType can :
+//! - recognize an Entity as complying or not with its definition,
+//! - storing it, with the garanty that the stored Entity complies
+//! with the definition of the SelectType
+//! - and (if judged useful) give the stored Entity under the good
+//! Type rather than simply "Transient".
+class StepData_SelectType 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Recognizes the Type of an Entity. Returns a positive Number <br>
-//!           which identifies the Type in the definition List of the <br>
-//!           SelectType. Returns Zero if its Type in not in this List. <br>
-  Standard_EXPORT   virtual  Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const = 0;
-  //! Returns True if the Type of an Entity complies with the <br>
-//!           definition list of the SelectType. <br>
-//!           Also checks for a SelectMember <br>
-//!           Default Implementation looks for CaseNum  or CaseMem positive <br>
-  Standard_EXPORT     Standard_Boolean Matches(const Handle(Standard_Transient)& ent) const;
-  //! Stores an Entity. This allows to define a specific SelectType <br>
-//!           class with one read method per member Type, which returns the <br>
-//!           Value casted with the good Type. <br>
-  Standard_EXPORT     void SetValue(const Handle(Standard_Transient)& ent) ;
-  //! Nullifies the Stored Entity <br>
-  Standard_EXPORT     void Nullify() ;
-  //! Returns the Stored Entity. Can be used to define specific <br>
-//!           read methods (see above) <br>
-  Standard_EXPORT    const Handle_Standard_Transient& Value() const;
-  //! Returns True if there is no Stored Entity (i.e. it is Null) <br>
-  Standard_EXPORT     Standard_Boolean IsNull() const;
-  //! Returns the Effective (Dynamic) Type of the Stored Entity <br>
-//!           If it is Null, returns TYPE(Transient) <br>
-  Standard_EXPORT     Handle_Standard_Type Type() const;
-  //! Recognizes the Type of the stored Entity, or zero if it is <br>
-//!           Null or SelectMember. Calls the first method CaseNum on Value <br>
-  Standard_EXPORT     Standard_Integer CaseNumber() const;
-  //! Returns the Description which corresponds to <me> <br>
-//!           Null if no specific description to give. This description is <br>
-//!           used to control reading an check validity. <br>
-//!           Default returns a Null Handle, i.e. undefined description <br>
-//!           It can suffice if CaseNum and CaseMem give enough control <br>
-  Standard_EXPORT   virtual  Handle_StepData_PDescr Description() const;
-  //! Returns a preferred SelectMember. Default returns a Null <br>
-//!           By default, a SelectMember can be set according to data type <br>
-//!           and Name : it is a SelectNamed if Name is defined <br>
-//! <br>
-//!           This method allows to define, for a specific SelectType, a <br>
-//!           specific SelectMember than SelectNamed. For instance for a <br>
-//!           Real plus a Name, a SelectReal plus a case number is a good <br>
-//!           solution, lighter than SelectNamed which is very multipurpose <br>
-  Standard_EXPORT   virtual  Handle_StepData_SelectMember NewMember() const;
-  //! Recognize a SelectMember (kind, name). Returns a positive <br>
-//!           value which identifies the case in the List of immediate cases <br>
-//!           (distinct from the List of Entity Types). Zero if not <br>
-//!           recognizes <br>
-//!           Default returns 0, saying that no immediate value is allowed <br>
-  Standard_EXPORT   virtual  Standard_Integer CaseMem(const Handle(StepData_SelectMember)& ent) const;
-  //! Returns the Type of the stored SelectMember, or zero if it is <br>
-//!            Null or Entity. Calls the method CaseMem on Value <br>
-  Standard_EXPORT     Standard_Integer CaseMember() const;
-  //! Returns Value as a SelectMember. Null if not a SelectMember <br>
-  Standard_EXPORT     Handle_StepData_SelectMember Member() const;
-  //! Returns the type name of SelectMember. If no SelectMember or <br>
-//!           with no type name, returns an empty string <br>
-//!           To change it, pass through the SelectMember itself <br>
-  Standard_EXPORT     Standard_CString SelectName() const;
-  //! This internal method gives access to a value implemented by an <br>
-//!           Integer (to read it) <br>
-  Standard_EXPORT     Standard_Integer Int() const;
-  //! This internal method gives access to a value implemented by an <br>
-//!           Integer (to set it) : a SelectMember MUST ALREADY BE THERE ! <br>
-  Standard_EXPORT     void SetInt(const Standard_Integer val) ;
-  //! Gets the value as an Integer <br>
-  Standard_EXPORT     Standard_Integer Integer() const;
-  //! Sets a new Integer value, with an optional type name <br>
-//!  Warning : If a SelectMember is already set, works on it : value and <br>
-//!           name must then be accepted by this SelectMember <br>
-  Standard_EXPORT     void SetInteger(const Standard_Integer val,const Standard_CString name = "") ;
   
-  Standard_EXPORT     Standard_Boolean Boolean() const;
+  //! Recognizes the Type of an Entity. Returns a positive Number
+  //! which identifies the Type in the definition List of the
+  //! SelectType. Returns Zero if its Type in not in this List.
+  Standard_EXPORT virtual   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const = 0;
   
-  Standard_EXPORT     void SetBoolean(const Standard_Boolean val,const Standard_CString name = "") ;
+  //! Returns True if the Type of an Entity complies with the
+  //! definition list of the SelectType.
+  //! Also checks for a SelectMember
+  //! Default Implementation looks for CaseNum  or CaseMem positive
+  Standard_EXPORT   Standard_Boolean Matches (const Handle(Standard_Transient)& ent)  const;
   
-  Standard_EXPORT     StepData_Logical Logical() const;
+  //! Stores an Entity. This allows to define a specific SelectType
+  //! class with one read method per member Type, which returns the
+  //! Value casted with the good Type.
+  Standard_EXPORT   void SetValue (const Handle(Standard_Transient)& ent) ;
   
-  Standard_EXPORT     void SetLogical(const StepData_Logical val,const Standard_CString name = "") ;
+  //! Nullifies the Stored Entity
+  Standard_EXPORT   void Nullify() ;
   
-  Standard_EXPORT     Standard_Real Real() const;
+  //! Returns the Stored Entity. Can be used to define specific
+  //! read methods (see above)
+  Standard_EXPORT  const  Handle(Standard_Transient)& Value()  const;
   
-  Standard_EXPORT     void SetReal(const Standard_Real val,const Standard_CString name = "") ;
+  //! Returns True if there is no Stored Entity (i.e. it is Null)
+  Standard_EXPORT   Standard_Boolean IsNull()  const;
   
-  Standard_EXPORT   virtual  void Destroy() ;
+  //! Returns the Effective (Dynamic) Type of the Stored Entity
+  //! If it is Null, returns TYPE(Transient)
+  Standard_EXPORT   Handle(Standard_Type) Type()  const;
+  
+  //! Recognizes the Type of the stored Entity, or zero if it is
+  //! Null or SelectMember. Calls the first method CaseNum on Value
+  Standard_EXPORT   Standard_Integer CaseNumber()  const;
+  
+  //! Returns the Description which corresponds to <me>
+  //! Null if no specific description to give. This description is
+  //! used to control reading an check validity.
+  //! Default returns a Null Handle, i.e. undefined description
+  //! It can suffice if CaseNum and CaseMem give enough control
+  Standard_EXPORT virtual   Handle(StepData_PDescr) Description()  const;
+  
+  //! Returns a preferred SelectMember. Default returns a Null
+  //! By default, a SelectMember can be set according to data type
+  //! and Name : it is a SelectNamed if Name is defined
+  //!
+  //! This method allows to define, for a specific SelectType, a
+  //! specific SelectMember than SelectNamed. For instance for a
+  //! Real plus a Name, a SelectReal plus a case number is a good
+  //! solution, lighter than SelectNamed which is very multipurpose
+  Standard_EXPORT virtual   Handle(StepData_SelectMember) NewMember()  const;
+  
+  //! Recognize a SelectMember (kind, name). Returns a positive
+  //! value which identifies the case in the List of immediate cases
+  //! (distinct from the List of Entity Types). Zero if not
+  //! recognizes
+  //! Default returns 0, saying that no immediate value is allowed
+  Standard_EXPORT virtual   Standard_Integer CaseMem (const Handle(StepData_SelectMember)& ent)  const;
+  
+  //! Returns the Type of the stored SelectMember, or zero if it is
+  //! Null or Entity. Calls the method CaseMem on Value
+  Standard_EXPORT   Standard_Integer CaseMember()  const;
+  
+  //! Returns Value as a SelectMember. Null if not a SelectMember
+  Standard_EXPORT   Handle(StepData_SelectMember) Member()  const;
+  
+  //! Returns the type name of SelectMember. If no SelectMember or
+  //! with no type name, returns an empty string
+  //! To change it, pass through the SelectMember itself
+  Standard_EXPORT   Standard_CString SelectName()  const;
+  
+  //! This internal method gives access to a value implemented by an
+  //! Integer (to read it)
+  Standard_EXPORT   Standard_Integer Int()  const;
+  
+  //! This internal method gives access to a value implemented by an
+  //! Integer (to set it) : a SelectMember MUST ALREADY BE THERE !
+  Standard_EXPORT   void SetInt (const Standard_Integer val) ;
+  
+  //! Gets the value as an Integer
+  Standard_EXPORT   Standard_Integer Integer()  const;
+  
+  //! Sets a new Integer value, with an optional type name
+  //! Warning : If a SelectMember is already set, works on it : value and
+  //! name must then be accepted by this SelectMember
+  Standard_EXPORT   void SetInteger (const Standard_Integer val, const Standard_CString name = "") ;
+  
+  Standard_EXPORT   Standard_Boolean Boolean()  const;
+  
+  Standard_EXPORT   void SetBoolean (const Standard_Boolean val, const Standard_CString name = "") ;
+  
+  Standard_EXPORT   StepData_Logical Logical()  const;
+  
+  Standard_EXPORT   void SetLogical (const StepData_Logical val, const Standard_CString name = "") ;
+  
+  Standard_EXPORT   Standard_Real Real()  const;
+  
+  Standard_EXPORT   void SetReal (const Standard_Real val, const Standard_CString name = "") ;
+  
+  Standard_EXPORT virtual   void Destroy() ;
 Standard_EXPORT virtual ~StepData_SelectType() { Destroy(); }
-
 
 
 
@@ -172,7 +166,7 @@ private:
 
 
 
-Handle_Standard_Transient thevalue;
+  Handle(Standard_Transient) thevalue;
 
 
 };
@@ -181,7 +175,6 @@ Handle_Standard_Transient thevalue;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepData_SelectType_HeaderFile

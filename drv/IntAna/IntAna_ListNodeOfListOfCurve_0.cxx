@@ -5,19 +5,11 @@
 
 #include <IntAna_ListNodeOfListOfCurve.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IntAna_Curve_HeaderFile
 #include <IntAna_Curve.hxx>
-#endif
-#ifndef _IntAna_ListOfCurve_HeaderFile
 #include <IntAna_ListOfCurve.hxx>
-#endif
-#ifndef _IntAna_ListIteratorOfListOfCurve_HeaderFile
 #include <IntAna_ListIteratorOfListOfCurve.hxx>
-#endif
 
  
 

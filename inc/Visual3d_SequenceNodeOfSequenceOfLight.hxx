@@ -6,38 +6,27 @@
 #ifndef _Visual3d_SequenceNodeOfSequenceOfLight_HeaderFile
 #define _Visual3d_SequenceNodeOfSequenceOfLight_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Visual3d_SequenceNodeOfSequenceOfLight_HeaderFile
 #include <Handle_Visual3d_SequenceNodeOfSequenceOfLight.hxx>
-#endif
 
-#ifndef _Handle_Visual3d_Light_HeaderFile
 #include <Handle_Visual3d_Light.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Visual3d_Light;
 class Visual3d_SequenceOfLight;
 
 
 
-class Visual3d_SequenceNodeOfSequenceOfLight : public TCollection_SeqNode {
+class Visual3d_SequenceNodeOfSequenceOfLight : public TCollection_SeqNode
+{
 
 public:
 
   
-      Visual3d_SequenceNodeOfSequenceOfLight(const Handle(Visual3d_Light)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    Visual3d_SequenceNodeOfSequenceOfLight(const Handle(Visual3d_Light)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_Visual3d_Light& Value() const;
+      Handle(Visual3d_Light)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_Visual3d_Light myValue;
+  Handle(Visual3d_Light) myValue;
 
 
 };
 
-#define SeqItem Handle_Visual3d_Light
+#define SeqItem Handle(Visual3d_Light)
 #define SeqItem_hxx <Visual3d_Light.hxx>
 #define TCollection_SequenceNode Visual3d_SequenceNodeOfSequenceOfLight
 #define TCollection_SequenceNode_hxx <Visual3d_SequenceNodeOfSequenceOfLight.hxx>
@@ -78,7 +67,6 @@ Handle_Visual3d_Light myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Visual3d_SequenceNodeOfSequenceOfLight_HeaderFile

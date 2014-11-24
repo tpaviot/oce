@@ -6,49 +6,21 @@
 #ifndef _MoniTool_CaseData_HeaderFile
 #define _MoniTool_CaseData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MoniTool_CaseData_HeaderFile
 #include <Handle_MoniTool_CaseData.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TColStd_SequenceOfTransient_HeaderFile
 #include <TColStd_SequenceOfTransient.hxx>
-#endif
-#ifndef _TColStd_SequenceOfInteger_HeaderFile
 #include <TColStd_SequenceOfInteger.hxx>
-#endif
-#ifndef _TColStd_SequenceOfAsciiString_HeaderFile
 #include <TColStd_SequenceOfAsciiString.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
 class Standard_Transient;
 class TopoDS_Shape;
 class gp_XYZ;
@@ -58,198 +30,247 @@ class TCollection_AsciiString;
 class Message_Msg;
 
 
-//! This class is intended to record data attached to a case to be <br>
-//!           exploited. <br>
-//!           Cases can be : <br>
-//!           * internal, i.e. for immediate debug <br>
-//!             for instance, on an abnormal exception, fill a CaseData <br>
-//!             in a DB (see class DB) then look at its content by XSDRAW <br>
-//!           * to record abnormal situation, which cause a warning or fail <br>
-//!             message, for instance during a transfer <br>
-//!             This will allow, firstly to build a more comprehensive <br>
-//!             message (with associated data), secondly to help seeing <br>
-//!             "what happened" <br>
-//!           * to record data in order to fix a problem <br>
-//!             If a CASE is well defined and its fix is well known too, <br>
-//!             recording a CaseData which identifies the CASE will allow <br>
-//!             to furstherly call the appropriate fix routine <br>
-//! <br>
-//!           A CaseData is defined by <br>
-//!           * an optional CASE identifier <br>
-//!             If it is defined, this will allow systematic exploitation <br>
-//!             such as calling a fix routine <br>
-//!           * an optional Check Status, Warning or Fail, else it is Info <br>
-//!           * a NAME : it just allows to identify where this CaseData was <br>
-//!             created (help to debug) <br>
-//!           * a LIST OF DATA <br>
-//! <br>
-//!           Each Data has a type (integer, real etc...) and can have a name <br>
-//!           Hence, each data may be identified by : <br>
-//!           * its absolute rank (from 1 to NbData) <br>
-//!           * its name if it has one (exact matching) <br>
-//!           * else, an interpreted identifier, which gives the type and <br>
-//!             the rank in the type (for instance, first integer; etc) <br>
-//!             (See NameRank) <br>
-class MoniTool_CaseData : public MMgt_TShared {
+//! This class is intended to record data attached to a case to be
+//! exploited.
+//! Cases can be :
+//! * internal, i.e. for immediate debug
+//! for instance, on an abnormal exception, fill a CaseData
+//! in a DB (see class DB) then look at its content by XSDRAW
+//! * to record abnormal situation, which cause a warning or fail
+//! message, for instance during a transfer
+//! This will allow, firstly to build a more comprehensive
+//! message (with associated data), secondly to help seeing
+//! "what happened"
+//! * to record data in order to fix a problem
+//! If a CASE is well defined and its fix is well known too,
+//! recording a CaseData which identifies the CASE will allow
+//! to furstherly call the appropriate fix routine
+//!
+//! A CaseData is defined by
+//! * an optional CASE identifier
+//! If it is defined, this will allow systematic exploitation
+//! such as calling a fix routine
+//! * an optional Check Status, Warning or Fail, else it is Info
+//! * a NAME : it just allows to identify where this CaseData was
+//! created (help to debug)
+//! * a LIST OF DATA
+//!
+//! Each Data has a type (integer, real etc...) and can have a name
+//! Hence, each data may be identified by :
+//! * its absolute rank (from 1 to NbData)
+//! * its name if it has one (exact matching)
+//! * else, an interpreted identifier, which gives the type and
+//! the rank in the type (for instance, first integer; etc)
+//! (See NameRank)
+class MoniTool_CaseData : public MMgt_TShared
+{
 
 public:
 
-  //! Creates a CaseData with a CaseId and a Name <br>
-//!           (by default not defined) <br>
-  Standard_EXPORT   MoniTool_CaseData(const Standard_CString caseid = "",const Standard_CString name = "");
-  //! Sets a CaseId <br>
-  Standard_EXPORT     void SetCaseId(const Standard_CString caseid) ;
-  //! Sets a Name <br>
-  Standard_EXPORT     void SetName(const Standard_CString name) ;
-  //! Returns the CaseId <br>
-  Standard_EXPORT     Standard_CString CaseId() const;
-  //! Returns the Name <br>
-  Standard_EXPORT     Standard_CString Name() const;
-  //! Tells if <me> is Check (Warning or Fail), else it is Info <br>
-  Standard_EXPORT     Standard_Boolean IsCheck() const;
-  //! Tells if <me> is Warning <br>
-  Standard_EXPORT     Standard_Boolean IsWarning() const;
-  //! Tells if <me> is Fail <br>
-  Standard_EXPORT     Standard_Boolean IsFail() const;
-  //! Resets Check Status, i.e. sets <me> as Info <br>
-  Standard_EXPORT     void ResetCheck() ;
-  //! Sets <me> as Warning <br>
-  Standard_EXPORT     void SetWarning() ;
-  //! Sets <me> as Fail <br>
-  Standard_EXPORT     void SetFail() ;
-  //! Sets the next Add... not to add but to change the data item <br>
-//!           designated by its name. <br>
-//!           If next Add... is not called with a name, SetChange is ignored <br>
-//!           Reset by next Add... , whatever <num> is correct or not <br>
-  Standard_EXPORT     void SetChange() ;
-  //! Sets the next Add... not to add but to replace the data item <br>
-//!           <num>, if <num> is between 1 and NbData. <br>
-//!           Reset by next Add... , whatever <num> is correct or not <br>
-  Standard_EXPORT     void SetReplace(const Standard_Integer num) ;
-  //! Unitary adding a data; rather internal <br>
-  Standard_EXPORT     void AddData(const Handle(Standard_Transient)& val,const Standard_Integer kind,const Standard_CString name = "") ;
-  //! Adds the currently caught exception <br>
-  Standard_EXPORT     void AddRaised(const Standard_CString name = "") ;
-  //! Adds a Shape (recorded as a HShape) <br>
-  Standard_EXPORT     void AddShape(const TopoDS_Shape& sh,const Standard_CString name = "") ;
-  //! Adds a XYZ <br>
-  Standard_EXPORT     void AddXYZ(const gp_XYZ& aXYZ,const Standard_CString name = "") ;
-  //! Adds a XY <br>
-  Standard_EXPORT     void AddXY(const gp_XY& aXY,const Standard_CString name = "") ;
-  //! Adds a Real <br>
-  Standard_EXPORT     void AddReal(const Standard_Real val,const Standard_CString name = "") ;
-  //! Adds two reals (for instance, two parameters) <br>
-  Standard_EXPORT     void AddReals(const Standard_Real v1,const Standard_Real v2,const Standard_CString name = "") ;
-  //! Adds the CPU time between lastCPU and now <br>
-//!           if <curCPU> is given, the CPU amount is  curCPU-lastCPU <br>
-//!           else it is currently measured CPU - lastCPU <br>
-//!           lastCPU has been read by call to GetCPU <br>
-//!           See GetCPU to get amount, and LargeCPU to test large amount <br>
-  Standard_EXPORT     void AddCPU(const Standard_Real lastCPU,const Standard_Real curCPU = 0,const Standard_CString name = "") ;
-  //! Returns the current amount of CPU <br>
-//!           This allows to laterly test and record CPU amount <br>
-//!           Its value has to be given to LargeCPU and AddCPU <br>
-  Standard_EXPORT     Standard_Real GetCPU() const;
-  //! Tells if a CPU time amount is large <br>
-//!           <maxCPU>  gives the amount over which an amount is large <br>
-//!           <lastCPU> gives the start CPU amount <br>
-//!           if <curCPU> is given, the tested CPU amount is curCPU-lastCPU <br>
-//!           else it is currently measured CPU - lastCPU <br>
-  Standard_EXPORT     Standard_Boolean LargeCPU(const Standard_Real maxCPU,const Standard_Real lastCPU,const Standard_Real curCPU = 0) const;
-  //! Adds a Geometric as a Transient (Curve, Surface ...) <br>
-  Standard_EXPORT     void AddGeom(const Handle(Standard_Transient)& geom,const Standard_CString name = "") ;
-  //! Adds a Transient, as an Entity from an InterfaceModel for <br>
-//!           instance : it will then be printed with the help of a DBPE <br>
-  Standard_EXPORT     void AddEntity(const Handle(Standard_Transient)& ent,const Standard_CString name = "") ;
-  //! Adds a Text (as HAsciiString) <br>
-  Standard_EXPORT     void AddText(const Standard_CString text,const Standard_CString name = "") ;
-  //! Adds an Integer <br>
-  Standard_EXPORT     void AddInteger(const Standard_Integer val,const Standard_CString name = "") ;
-  //! Adds a Transient, with no more meaning <br>
-  Standard_EXPORT     void AddAny(const Handle(Standard_Transient)& val,const Standard_CString name = "") ;
-  //! Removes a Data from its rank. Does nothing if out of range <br>
-  Standard_EXPORT     void RemoveData(const Standard_Integer num) ;
-  //! Returns the count of data recorded to a set <br>
-  Standard_EXPORT     Standard_Integer NbData() const;
-  //! Returns a data item (n0 <nd> in the set <num>) <br>
-  Standard_EXPORT     Handle_Standard_Transient Data(const Standard_Integer nd) const;
-  //! Returns a data item, under control of a Type <br>
-//!           If the data item is kind of this type, it is returned in <val> <br>
-//!           and the returned value is True <br>
-//!           Else, <val> is unchanged and the returned value is False <br>
-  Standard_EXPORT     Standard_Boolean GetData(const Standard_Integer nd,const Handle(Standard_Type)& type,Handle(Standard_Transient)& val) const;
-  //! Returns the kind of a data : <br>
-//!         KIND TYPE      MEANING <br>
-//!           0  ANY       any (not one of the followings) <br>
-//!           1  EX        raised exception <br>
-//!           2  EN        entity <br>
-//!           3  G         geom <br>
-//!           4  SH        shape <br>
-//!           5  XYZ       XYZ <br>
-//!           6  XY or UV  XY <br>
-//!           7  RR        2 reals <br>
-//!           8  R         1 real <br>
-//!           9  CPU       CPU (1 real) <br>
-//!           10 T         text <br>
-//!           11 I         integer <br>
-//! <br>
-//!           For NameNum, these codes for TYPE must be given exact <br>
-//!           i.e. SH for a Shape, not S nor SHAPE nor SOLID etc <br>
-  Standard_EXPORT     Standard_Integer Kind(const Standard_Integer nd) const;
-  //! Returns the name of a data. If it has no name, the string is <br>
-//!           empty (length = 0) <br>
-  Standard_EXPORT    const TCollection_AsciiString& Name(const Standard_Integer nd) const;
-  //! Returns the first suitable data rank for a given name <br>
-//!           Exact maching (exact case, no completion) is required <br>
-//!           Firstly checks the recorded names <br>
-//!           If not found, considers the name as follows : <br>
-//!           Name = "TYPE" : search for the first item with this TYPE <br>
-//!           Name = "TYPE:nn" : search for the nn.th item with this TYPE <br>
-//!           See allowed values in method Kind <br>
-  Standard_EXPORT     Standard_Integer NameNum(const Standard_CString name) const;
-  //! Returns a data as a shape, Null if not a shape <br>
-  Standard_EXPORT     TopoDS_Shape Shape(const Standard_Integer nd) const;
-  //! Returns a data as a XYZ (i.e. Geom_CartesianPoint) <br>
-//!           Returns False if not the good type <br>
-  Standard_EXPORT     Standard_Boolean XYZ(const Standard_Integer nd,gp_XYZ& val) const;
-  //! Returns a data as a XY  (i.e. Geom2d_CartesianPoint) <br>
-//!           Returns False if not the good type <br>
-  Standard_EXPORT     Standard_Boolean XY(const Standard_Integer nd,gp_XY& val) const;
-  //! Returns a couple of reals  (stored in Geom2d_CartesianPoint) <br>
-  Standard_EXPORT     Standard_Boolean Reals(const Standard_Integer nd,Standard_Real& v1,Standard_Real& v2) const;
-  //! Returns a real or CPU amount (stored in Geom2d_CartesianPoint) <br>
-//!           (allows an Integer converted to a Real) <br>
-  Standard_EXPORT     Standard_Boolean Real(const Standard_Integer nd,Standard_Real& val) const;
-  //! Returns a text (stored in TCollection_HAsciiString) <br>
-  Standard_EXPORT     Standard_Boolean Text(const Standard_Integer nd,Standard_CString& text) const;
-  //! Returns an Integer <br>
-  Standard_EXPORT     Standard_Boolean Integer(const Standard_Integer nd,Standard_Integer& val) const;
-  //! Returns a Msg from a CaseData : it is build from DefMsg, which <br>
-//!           gives the message code plus the designation of items of the <br>
-//!           CaseData to be added to the Msg <br>
-//!           Empty if no message attached <br>
-//! <br>
-//!           Remains to be implemented <br>
-  Standard_EXPORT     Message_Msg Msg() const;
-  //! Sets a Code to give a Warning <br>
-  Standard_EXPORT   static  void SetDefWarning(const Standard_CString acode) ;
-  //! Sets a Code to give a Fail <br>
-  Standard_EXPORT   static  void SetDefFail(const Standard_CString acode) ;
-  //! Returns Check Status for a Code : 0 non/info (default), <br>
-//!           1 warning, 2 fail <br>
-//! <br>
-//!           Remark : DefCheck is used to set the check status of a <br>
-//!           CaseData when it is attached to a case code, it can be changed <br>
-//!           later (by SetFail, SetWarning, ResetCheck) <br>
-  Standard_EXPORT   static  Standard_Integer DefCheck(const Standard_CString acode) ;
-  //! Attaches a message definition to a case code <br>
-//!           This definition includes the message code plus designation of <br>
-//!           items of the CaseData to be added to the message (this part <br>
-//!           not yet implemented) <br>
-  Standard_EXPORT   static  void SetDefMsg(const Standard_CString casecode,const Standard_CString mesdef) ;
-  //! Returns the message definition for a case code <br>
-//!           Empty if no message attached <br>
-  Standard_EXPORT   static  Standard_CString DefMsg(const Standard_CString casecode) ;
+  
+  //! Creates a CaseData with a CaseId and a Name
+  //! (by default not defined)
+  Standard_EXPORT MoniTool_CaseData(const Standard_CString caseid = "", const Standard_CString name = "");
+  
+  //! Sets a CaseId
+  Standard_EXPORT   void SetCaseId (const Standard_CString caseid) ;
+  
+  //! Sets a Name
+  Standard_EXPORT   void SetName (const Standard_CString name) ;
+  
+  //! Returns the CaseId
+  Standard_EXPORT   Standard_CString CaseId()  const;
+  
+  //! Returns the Name
+  Standard_EXPORT   Standard_CString Name()  const;
+  
+  //! Tells if <me> is Check (Warning or Fail), else it is Info
+  Standard_EXPORT   Standard_Boolean IsCheck()  const;
+  
+  //! Tells if <me> is Warning
+  Standard_EXPORT   Standard_Boolean IsWarning()  const;
+  
+  //! Tells if <me> is Fail
+  Standard_EXPORT   Standard_Boolean IsFail()  const;
+  
+  //! Resets Check Status, i.e. sets <me> as Info
+  Standard_EXPORT   void ResetCheck() ;
+  
+  //! Sets <me> as Warning
+  Standard_EXPORT   void SetWarning() ;
+  
+  //! Sets <me> as Fail
+  Standard_EXPORT   void SetFail() ;
+  
+  //! Sets the next Add... not to add but to change the data item
+  //! designated by its name.
+  //! If next Add... is not called with a name, SetChange is ignored
+  //! Reset by next Add... , whatever <num> is correct or not
+  Standard_EXPORT   void SetChange() ;
+  
+  //! Sets the next Add... not to add but to replace the data item
+  //! <num>, if <num> is between 1 and NbData.
+  //! Reset by next Add... , whatever <num> is correct or not
+  Standard_EXPORT   void SetReplace (const Standard_Integer num) ;
+  
+  //! Unitary adding a data; rather internal
+  Standard_EXPORT   void AddData (const Handle(Standard_Transient)& val, const Standard_Integer kind, const Standard_CString name = "") ;
+  
+  //! Adds the currently caught exception
+  Standard_EXPORT   void AddRaised (const Standard_CString name = "") ;
+  
+  //! Adds a Shape (recorded as a HShape)
+  Standard_EXPORT   void AddShape (const TopoDS_Shape& sh, const Standard_CString name = "") ;
+  
+  //! Adds a XYZ
+  Standard_EXPORT   void AddXYZ (const gp_XYZ& aXYZ, const Standard_CString name = "") ;
+  
+  //! Adds a XY
+  Standard_EXPORT   void AddXY (const gp_XY& aXY, const Standard_CString name = "") ;
+  
+  //! Adds a Real
+  Standard_EXPORT   void AddReal (const Standard_Real val, const Standard_CString name = "") ;
+  
+  //! Adds two reals (for instance, two parameters)
+  Standard_EXPORT   void AddReals (const Standard_Real v1, const Standard_Real v2, const Standard_CString name = "") ;
+  
+  //! Adds the CPU time between lastCPU and now
+  //! if <curCPU> is given, the CPU amount is  curCPU-lastCPU
+  //! else it is currently measured CPU - lastCPU
+  //! lastCPU has been read by call to GetCPU
+  //! See GetCPU to get amount, and LargeCPU to test large amount
+  Standard_EXPORT   void AddCPU (const Standard_Real lastCPU, const Standard_Real curCPU = 0, const Standard_CString name = "") ;
+  
+  //! Returns the current amount of CPU
+  //! This allows to laterly test and record CPU amount
+  //! Its value has to be given to LargeCPU and AddCPU
+  Standard_EXPORT   Standard_Real GetCPU()  const;
+  
+  //! Tells if a CPU time amount is large
+  //! <maxCPU>  gives the amount over which an amount is large
+  //! <lastCPU> gives the start CPU amount
+  //! if <curCPU> is given, the tested CPU amount is curCPU-lastCPU
+  //! else it is currently measured CPU - lastCPU
+  Standard_EXPORT   Standard_Boolean LargeCPU (const Standard_Real maxCPU, const Standard_Real lastCPU, const Standard_Real curCPU = 0)  const;
+  
+  //! Adds a Geometric as a Transient (Curve, Surface ...)
+  Standard_EXPORT   void AddGeom (const Handle(Standard_Transient)& geom, const Standard_CString name = "") ;
+  
+  //! Adds a Transient, as an Entity from an InterfaceModel for
+  //! instance : it will then be printed with the help of a DBPE
+  Standard_EXPORT   void AddEntity (const Handle(Standard_Transient)& ent, const Standard_CString name = "") ;
+  
+  //! Adds a Text (as HAsciiString)
+  Standard_EXPORT   void AddText (const Standard_CString text, const Standard_CString name = "") ;
+  
+  //! Adds an Integer
+  Standard_EXPORT   void AddInteger (const Standard_Integer val, const Standard_CString name = "") ;
+  
+  //! Adds a Transient, with no more meaning
+  Standard_EXPORT   void AddAny (const Handle(Standard_Transient)& val, const Standard_CString name = "") ;
+  
+  //! Removes a Data from its rank. Does nothing if out of range
+  Standard_EXPORT   void RemoveData (const Standard_Integer num) ;
+  
+  //! Returns the count of data recorded to a set
+  Standard_EXPORT   Standard_Integer NbData()  const;
+  
+  //! Returns a data item (n0 <nd> in the set <num>)
+  Standard_EXPORT   Handle(Standard_Transient) Data (const Standard_Integer nd)  const;
+  
+  //! Returns a data item, under control of a Type
+  //! If the data item is kind of this type, it is returned in <val>
+  //! and the returned value is True
+  //! Else, <val> is unchanged and the returned value is False
+  Standard_EXPORT   Standard_Boolean GetData (const Standard_Integer nd, const Handle(Standard_Type)& type, Handle(Standard_Transient)& val)  const;
+  
+  //! Returns the kind of a data :
+  //! KIND TYPE      MEANING
+  //! 0  ANY       any (not one of the followings)
+  //! 1  EX        raised exception
+  //! 2  EN        entity
+  //! 3  G         geom
+  //! 4  SH        shape
+  //! 5  XYZ       XYZ
+  //! 6  XY or UV  XY
+  //! 7  RR        2 reals
+  //! 8  R         1 real
+  //! 9  CPU       CPU (1 real)
+  //! 10 T         text
+  //! 11 I         integer
+  //!
+  //! For NameNum, these codes for TYPE must be given exact
+  //! i.e. SH for a Shape, not S nor SHAPE nor SOLID etc
+  Standard_EXPORT   Standard_Integer Kind (const Standard_Integer nd)  const;
+  
+  //! Returns the name of a data. If it has no name, the string is
+  //! empty (length = 0)
+  Standard_EXPORT  const  TCollection_AsciiString& Name (const Standard_Integer nd)  const;
+  
+  //! Returns the first suitable data rank for a given name
+  //! Exact maching (exact case, no completion) is required
+  //! Firstly checks the recorded names
+  //! If not found, considers the name as follows :
+  //! Name = "TYPE" : search for the first item with this TYPE
+  //! Name = "TYPE:nn" : search for the nn.th item with this TYPE
+  //! See allowed values in method Kind
+  Standard_EXPORT   Standard_Integer NameNum (const Standard_CString name)  const;
+  
+  //! Returns a data as a shape, Null if not a shape
+  Standard_EXPORT   TopoDS_Shape Shape (const Standard_Integer nd)  const;
+  
+  //! Returns a data as a XYZ (i.e. Geom_CartesianPoint)
+  //! Returns False if not the good type
+  Standard_EXPORT   Standard_Boolean XYZ (const Standard_Integer nd, gp_XYZ& val)  const;
+  
+  //! Returns a data as a XY  (i.e. Geom2d_CartesianPoint)
+  //! Returns False if not the good type
+  Standard_EXPORT   Standard_Boolean XY (const Standard_Integer nd, gp_XY& val)  const;
+  
+  //! Returns a couple of reals  (stored in Geom2d_CartesianPoint)
+  Standard_EXPORT   Standard_Boolean Reals (const Standard_Integer nd, Standard_Real& v1, Standard_Real& v2)  const;
+  
+  //! Returns a real or CPU amount (stored in Geom2d_CartesianPoint)
+  //! (allows an Integer converted to a Real)
+  Standard_EXPORT   Standard_Boolean Real (const Standard_Integer nd, Standard_Real& val)  const;
+  
+  //! Returns a text (stored in TCollection_HAsciiString)
+  Standard_EXPORT   Standard_Boolean Text (const Standard_Integer nd, Standard_CString& text)  const;
+  
+  //! Returns an Integer
+  Standard_EXPORT   Standard_Boolean Integer (const Standard_Integer nd, Standard_Integer& val)  const;
+  
+  //! Returns a Msg from a CaseData : it is build from DefMsg, which
+  //! gives the message code plus the designation of items of the
+  //! CaseData to be added to the Msg
+  //! Empty if no message attached
+  //!
+  //! Remains to be implemented
+  Standard_EXPORT   Message_Msg Msg()  const;
+  
+  //! Sets a Code to give a Warning
+  Standard_EXPORT static   void SetDefWarning (const Standard_CString acode) ;
+  
+  //! Sets a Code to give a Fail
+  Standard_EXPORT static   void SetDefFail (const Standard_CString acode) ;
+  
+  //! Returns Check Status for a Code : 0 non/info (default),
+  //! 1 warning, 2 fail
+  //!
+  //! Remark : DefCheck is used to set the check status of a
+  //! CaseData when it is attached to a case code, it can be changed
+  //! later (by SetFail, SetWarning, ResetCheck)
+  Standard_EXPORT static   Standard_Integer DefCheck (const Standard_CString acode) ;
+  
+  //! Attaches a message definition to a case code
+  //! This definition includes the message code plus designation of
+  //! items of the CaseData to be added to the message (this part
+  //! not yet implemented)
+  Standard_EXPORT static   void SetDefMsg (const Standard_CString casecode, const Standard_CString mesdef) ;
+  
+  //! Returns the message definition for a case code
+  //! Empty if no message attached
+  Standard_EXPORT static   Standard_CString DefMsg (const Standard_CString casecode) ;
 
 
 
@@ -264,13 +285,13 @@ protected:
 private: 
 
 
-Standard_Integer thecheck;
-Standard_Integer thesubst;
-TCollection_AsciiString thecase;
-TCollection_AsciiString thename;
-TColStd_SequenceOfTransient thedata;
-TColStd_SequenceOfInteger thekind;
-TColStd_SequenceOfAsciiString thednam;
+  Standard_Integer thecheck;
+  Standard_Integer thesubst;
+  TCollection_AsciiString thecase;
+  TCollection_AsciiString thename;
+  TColStd_SequenceOfTransient thedata;
+  TColStd_SequenceOfInteger thekind;
+  TColStd_SequenceOfAsciiString thednam;
 
 
 };
@@ -279,7 +300,6 @@ TColStd_SequenceOfAsciiString thednam;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MoniTool_CaseData_HeaderFile

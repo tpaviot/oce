@@ -6,31 +6,15 @@
 #ifndef _Expr_BinaryExpression_HeaderFile
 #define _Expr_BinaryExpression_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Expr_BinaryExpression_HeaderFile
 #include <Handle_Expr_BinaryExpression.hxx>
-#endif
 
-#ifndef _Handle_Expr_GeneralExpression_HeaderFile
 #include <Handle_Expr_GeneralExpression.hxx>
-#endif
-#ifndef _Expr_GeneralExpression_HeaderFile
 #include <Expr_GeneralExpression.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Expr_NamedUnknown_HeaderFile
 #include <Handle_Expr_NamedUnknown.hxx>
-#endif
 class Expr_GeneralExpression;
 class Standard_OutOfRange;
 class Standard_NumericError;
@@ -38,39 +22,48 @@ class Expr_InvalidOperand;
 class Expr_NamedUnknown;
 
 
-//! Defines all binary expressions. The order of the two <br>
-//!          operands is significant. <br>
-class Expr_BinaryExpression : public Expr_GeneralExpression {
+//! Defines all binary expressions. The order of the two
+//! operands is significant.
+class Expr_BinaryExpression : public Expr_GeneralExpression
+{
 
 public:
 
   
-       const Handle_Expr_GeneralExpression& FirstOperand() const;
+     const  Handle(Expr_GeneralExpression)& FirstOperand()  const;
   
-       const Handle_Expr_GeneralExpression& SecondOperand() const;
-  //! Sets first operand of <me> <br>
-//!          Raises InvalidOperand if exp = me <br>
-  Standard_EXPORT     void SetFirstOperand(const Handle(Expr_GeneralExpression)& exp) ;
-  //! Sets second operand of <me> <br>
-//!          Raises InvalidOperand if <exp> contains <me>. <br>
-  Standard_EXPORT     void SetSecondOperand(const Handle(Expr_GeneralExpression)& exp) ;
-  //! returns the number of sub-expressions contained <br>
-//!          in <me> ( >= 0) <br>
-  Standard_EXPORT     Standard_Integer NbSubExpressions() const;
-  //! returns the <I>-th sub-expression of <me> <br>
-//!          raises OutOfRange if <I> > NbSubExpressions(me) <br>
-  Standard_EXPORT    const Handle_Expr_GeneralExpression& SubExpression(const Standard_Integer I) const;
-  //! Does <me> contain NamedUnknown ? <br>
-  Standard_EXPORT     Standard_Boolean ContainsUnknowns() const;
-  //! Tests if <me> contains <exp>. <br>
-  Standard_EXPORT     Standard_Boolean Contains(const Handle(Expr_GeneralExpression)& exp) const;
-  //! Replaces all occurences of <var> with <with> in <me>. <br>
-//!          Raises InvalidOperand if <with> contains <me>. <br>
-  Standard_EXPORT     void Replace(const Handle(Expr_NamedUnknown)& var,const Handle(Expr_GeneralExpression)& with) ;
-  //! Returns a GeneralExpression after replacement of <br>
-//!          NamedUnknowns by an associated expression and after <br>
-//!          values computation. <br>
-  Standard_EXPORT     Handle_Expr_GeneralExpression Simplified() const;
+     const  Handle(Expr_GeneralExpression)& SecondOperand()  const;
+  
+  //! Sets first operand of <me>
+  //! Raises InvalidOperand if exp = me
+  Standard_EXPORT   void SetFirstOperand (const Handle(Expr_GeneralExpression)& exp) ;
+  
+  //! Sets second operand of <me>
+  //! Raises InvalidOperand if <exp> contains <me>.
+  Standard_EXPORT   void SetSecondOperand (const Handle(Expr_GeneralExpression)& exp) ;
+  
+  //! returns the number of sub-expressions contained
+  //! in <me> ( >= 0)
+  Standard_EXPORT   Standard_Integer NbSubExpressions()  const;
+  
+  //! returns the <I>-th sub-expression of <me>
+  //! raises OutOfRange if <I> > NbSubExpressions(me)
+  Standard_EXPORT  const  Handle(Expr_GeneralExpression)& SubExpression (const Standard_Integer I)  const;
+  
+  //! Does <me> contain NamedUnknown ?
+  Standard_EXPORT   Standard_Boolean ContainsUnknowns()  const;
+  
+  //! Tests if <me> contains <exp>.
+  Standard_EXPORT   Standard_Boolean Contains (const Handle(Expr_GeneralExpression)& exp)  const;
+  
+  //! Replaces all occurences of <var> with <with> in <me>.
+  //! Raises InvalidOperand if <with> contains <me>.
+  Standard_EXPORT   void Replace (const Handle(Expr_NamedUnknown)& var, const Handle(Expr_GeneralExpression)& with) ;
+  
+  //! Returns a GeneralExpression after replacement of
+  //! NamedUnknowns by an associated expression and after
+  //! values computation.
+  Standard_EXPORT   Handle(Expr_GeneralExpression) Simplified()  const;
 
 
 
@@ -79,19 +72,21 @@ public:
 
 protected:
 
-  //! Sets first operand of <me> <br>
-  Standard_EXPORT     void CreateFirstOperand(const Handle(Expr_GeneralExpression)& exp) ;
-  //! Sets second operand of <me> <br>
-//!          Raises InvalidOperand if <exp> contains <me>. <br>
-  Standard_EXPORT     void CreateSecondOperand(const Handle(Expr_GeneralExpression)& exp) ;
+  
+  //! Sets first operand of <me>
+  Standard_EXPORT   void CreateFirstOperand (const Handle(Expr_GeneralExpression)& exp) ;
+  
+  //! Sets second operand of <me>
+  //! Raises InvalidOperand if <exp> contains <me>.
+  Standard_EXPORT   void CreateSecondOperand (const Handle(Expr_GeneralExpression)& exp) ;
 
 
 
 private: 
 
 
-Handle_Expr_GeneralExpression myFirstOperand;
-Handle_Expr_GeneralExpression mySecondOperand;
+  Handle(Expr_GeneralExpression) myFirstOperand;
+  Handle(Expr_GeneralExpression) mySecondOperand;
 
 
 };
@@ -101,7 +96,6 @@ Handle_Expr_GeneralExpression mySecondOperand;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Expr_BinaryExpression_HeaderFile

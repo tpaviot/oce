@@ -5,28 +5,14 @@
 
 #include <TColGeom_HArray2OfSurface.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Geom_Surface_HeaderFile
 #include <Geom_Surface.hxx>
-#endif
-#ifndef _TColGeom_Array2OfSurface_HeaderFile
 #include <TColGeom_Array2OfSurface.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(TColGeom_HArray2OfSurface,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(TColGeom_HArray2OfSurface)
 
 
-#define ItemHArray2 Handle_Geom_Surface
+#define ItemHArray2 Handle(Geom_Surface)
 #define ItemHArray2_hxx <Geom_Surface.hxx>
 #define TheArray2 TColGeom_Array2OfSurface
 #define TheArray2_hxx <TColGeom_Array2OfSurface.hxx>

@@ -6,58 +6,24 @@
 #ifndef _AIS_IdenticRelation_HeaderFile
 #define _AIS_IdenticRelation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_AIS_IdenticRelation_HeaderFile
 #include <Handle_AIS_IdenticRelation.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _AIS_Relation_HeaderFile
 #include <AIS_Relation.hxx>
-#endif
-#ifndef _Handle_Geom_Plane_HeaderFile
 #include <Handle_Geom_Plane.hxx>
-#endif
-#ifndef _PrsMgr_PresentationManager3d_HeaderFile
 #include <PrsMgr_PresentationManager3d.hxx>
-#endif
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Prs3d_Projector_HeaderFile
 #include <Handle_Prs3d_Projector.hxx>
-#endif
-#ifndef _Handle_Geom_Transformation_HeaderFile
 #include <Handle_Geom_Transformation.hxx>
-#endif
-#ifndef _Handle_SelectMgr_Selection_HeaderFile
 #include <Handle_SelectMgr_Selection.hxx>
-#endif
-#ifndef _Handle_Geom_Line_HeaderFile
 #include <Handle_Geom_Line.hxx>
-#endif
-#ifndef _Handle_Geom_Circle_HeaderFile
 #include <Handle_Geom_Circle.hxx>
-#endif
-#ifndef _Handle_Geom_Ellipse_HeaderFile
 #include <Handle_Geom_Ellipse.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TopoDS_Shape;
 class Geom_Plane;
 class Prs3d_Presentation;
@@ -73,30 +39,34 @@ class TopoDS_Vertex;
 class gp_Dir;
 
 
-//! Constructs a constraint by a relation of identity <br>
-//! between two or more datums figuring in shape <br>
-//! Interactive Objects. <br>
-class AIS_IdenticRelation : public AIS_Relation {
+//! Constructs a constraint by a relation of identity
+//! between two or more datums figuring in shape
+//! Interactive Objects.
+class AIS_IdenticRelation : public AIS_Relation
+{
 
 public:
 
   
-//!   Initializes the relation of identity between the two <br>
-//! entities, FirstShape and SecondShape. The plane <br>
-//! aPlane is initialized in case a visual reference is <br>
-//! needed to show identity. <br>
-  Standard_EXPORT   AIS_IdenticRelation(const TopoDS_Shape& FirstShape,const TopoDS_Shape& SecondShape,const Handle(Geom_Plane)& aPlane);
+
+  //! Initializes the relation of identity between the two
+  //! entities, FirstShape and SecondShape. The plane
+  //! aPlane is initialized in case a visual reference is
+  //! needed to show identity.
+  Standard_EXPORT AIS_IdenticRelation(const TopoDS_Shape& FirstShape, const TopoDS_Shape& SecondShape, const Handle(Geom_Plane)& aPlane);
   
-//! Returns true if the interactive object is movable. <br>
-      virtual  Standard_Boolean IsMovable() const;
-  //! computes the presentation according to a point of view <br>
-//!          given by <aProjector>. <br>
-//!          To be Used when the associated degenerated Presentations <br>
-//!          have been transformed by <aTrsf> which is not a Pure <br>
-//!          Translation. The HLR Prs can't be deducted automatically <br>
-//!          WARNING :<aTrsf> must be applied <br>
-//!           to the object to display before computation  !!! <br>
-  Standard_EXPORT   virtual  void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Geom_Transformation)& aTrsf,const Handle(Prs3d_Presentation)& aPresentation) ;
+
+  //! Returns true if the interactive object is movable.
+    virtual   Standard_Boolean IsMovable()  const;
+  
+  //! computes the presentation according to a point of view
+  //! given by <aProjector>.
+  //! To be Used when the associated degenerated Presentations
+  //! have been transformed by <aTrsf> which is not a Pure
+  //! Translation. The HLR Prs can't be deducted automatically
+  //! WARNING :<aTrsf> must be applied
+  //! to the object to display before computation  !!!
+  Standard_EXPORT virtual   void Compute (const Handle(Prs3d_Projector)& aProjector, const Handle(Geom_Transformation)& aTrsf, const Handle(Prs3d_Presentation)& aPresentation) ;
 
 
 
@@ -111,54 +81,60 @@ protected:
 private: 
 
   
-  Standard_EXPORT   virtual  void Compute(const Handle(PrsMgr_PresentationManager3d)& aPresentationManager,const Handle(Prs3d_Presentation)& aPresentation,const Standard_Integer aMode = 0) ;
+  Standard_EXPORT virtual   void Compute (const Handle(PrsMgr_PresentationManager3d)& aPresentationManager, const Handle(Prs3d_Presentation)& aPresentation, const Standard_Integer aMode = 0) ;
   
-  Standard_EXPORT     void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Prs3d_Presentation)& aPresentation) ;
+  Standard_EXPORT   void Compute (const Handle(Prs3d_Projector)& aProjector, const Handle(Prs3d_Presentation)& aPresentation) ;
   
-  Standard_EXPORT   virtual  void ComputeSelection(const Handle(SelectMgr_Selection)& aSelection,const Standard_Integer aMode) ;
+  Standard_EXPORT virtual   void ComputeSelection (const Handle(SelectMgr_Selection)& aSelection, const Standard_Integer aMode) ;
   
-  Standard_EXPORT     void ComputeOneEdgeOVertexPresentation(const Handle(Prs3d_Presentation)& aPresentation) ;
+  Standard_EXPORT   void ComputeOneEdgeOVertexPresentation (const Handle(Prs3d_Presentation)& aPresentation) ;
   
-  Standard_EXPORT     void ComputeTwoEdgesPresentation(const Handle(Prs3d_Presentation)& aPresentation) ;
+  Standard_EXPORT   void ComputeTwoEdgesPresentation (const Handle(Prs3d_Presentation)& aPresentation) ;
   
-  Standard_EXPORT     void ComputeTwoLinesPresentation(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Geom_Line)& aLin,gp_Pnt& Pnt1On1,gp_Pnt& Pnt2On1,gp_Pnt& Pnt1On2,gp_Pnt& Pnt2On2,const Standard_Boolean isInf1,const Standard_Boolean isInf2) ;
+  Standard_EXPORT   void ComputeTwoLinesPresentation (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Geom_Line)& aLin, gp_Pnt& Pnt1On1, gp_Pnt& Pnt2On1, gp_Pnt& Pnt1On2, gp_Pnt& Pnt2On2, const Standard_Boolean isInf1, const Standard_Boolean isInf2) ;
   
-  Standard_EXPORT     void ComputeTwoCirclesPresentation(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Geom_Circle)& aCircle,const gp_Pnt& Pnt1On1,const gp_Pnt& Pnt2On1,const gp_Pnt& Pnt1On2,const gp_Pnt& Pnt2On2) ;
-  //! Computes the presentation of the identic constraint <br>
-//!          between 2 arcs in the case of automatic presentation <br>
-  Standard_EXPORT     void ComputeAutoArcPresentation(const Handle(Geom_Circle)& aCircle,const gp_Pnt& firstp,const gp_Pnt& lastp,const Standard_Boolean isstatic = Standard_False) ;
-  //! Computes the presentation of the identic constraint <br>
-//!          between 2 circles in the case of non automatic presentation <br>
-  Standard_EXPORT     void ComputeNotAutoCircPresentation(const Handle(Geom_Circle)& aCircle) ;
-  //! Computes the presentation of the identic constraint <br>
-//!          between 2 arcs in the case of non automatic presentation <br>
-  Standard_EXPORT     void ComputeNotAutoArcPresentation(const Handle(Geom_Circle)& aCircle,const gp_Pnt& pntfirst,const gp_Pnt& pntlast) ;
+  Standard_EXPORT   void ComputeTwoCirclesPresentation (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Geom_Circle)& aCircle, const gp_Pnt& Pnt1On1, const gp_Pnt& Pnt2On1, const gp_Pnt& Pnt1On2, const gp_Pnt& Pnt2On2) ;
   
-  Standard_EXPORT     void ComputeTwoEllipsesPresentation(const Handle(Prs3d_Presentation)& aPrs,const Handle(Geom_Ellipse)& anEll,const gp_Pnt& Pnt1On1,const gp_Pnt& Pnt2On1,const gp_Pnt& Pnt1On2,const gp_Pnt& Pnt2On2) ;
-  //! Computes the presentation of the identic constraint <br>
-//!          between 2 arcs in the case of automatic presentation <br>
-  Standard_EXPORT     void ComputeAutoArcPresentation(const Handle(Geom_Ellipse)& theEll,const gp_Pnt& firstp,const gp_Pnt& lastp,const Standard_Boolean isstatic = Standard_False) ;
-  //! Computes the presentation of the identic constraint <br>
-//!          between 2 ellipses in the case of non automatic presentation <br>
-  Standard_EXPORT     void ComputeNotAutoElipsPresentation(const Handle(Geom_Ellipse)& theEll) ;
-  //! Computes the presentation of the identic constraint <br>
-//!          between 2 arcs in the case of non automatic presentation <br>
-  Standard_EXPORT     void ComputeNotAutoArcPresentation(const Handle(Geom_Ellipse)& theEll,const gp_Pnt& pntfirst,const gp_Pnt& pntlast) ;
+  //! Computes the presentation of the identic constraint
+  //! between 2 arcs in the case of automatic presentation
+  Standard_EXPORT   void ComputeAutoArcPresentation (const Handle(Geom_Circle)& aCircle, const gp_Pnt& firstp, const gp_Pnt& lastp, const Standard_Boolean isstatic = Standard_False) ;
   
-  Standard_EXPORT     void ComputeTwoVerticesPresentation(const Handle(Prs3d_Presentation)& aPresentation) ;
+  //! Computes the presentation of the identic constraint
+  //! between 2 circles in the case of non automatic presentation
+  Standard_EXPORT   void ComputeNotAutoCircPresentation (const Handle(Geom_Circle)& aCircle) ;
   
-  Standard_EXPORT     Standard_Real ComputeSegSize() const;
+  //! Computes the presentation of the identic constraint
+  //! between 2 arcs in the case of non automatic presentation
+  Standard_EXPORT   void ComputeNotAutoArcPresentation (const Handle(Geom_Circle)& aCircle, const gp_Pnt& pntfirst, const gp_Pnt& pntlast) ;
   
-  Standard_EXPORT     Standard_Boolean ComputeDirection(const TopoDS_Wire& aWire,const TopoDS_Vertex& aVertex,gp_Dir& aDir) const;
+  Standard_EXPORT   void ComputeTwoEllipsesPresentation (const Handle(Prs3d_Presentation)& aPrs, const Handle(Geom_Ellipse)& anEll, const gp_Pnt& Pnt1On1, const gp_Pnt& Pnt2On1, const gp_Pnt& Pnt1On2, const gp_Pnt& Pnt2On2) ;
   
-  Standard_EXPORT     gp_Dir ComputeLineDirection(const Handle(Geom_Line)& aLin,const gp_Pnt& anExtremity) const;
+  //! Computes the presentation of the identic constraint
+  //! between 2 arcs in the case of automatic presentation
+  Standard_EXPORT   void ComputeAutoArcPresentation (const Handle(Geom_Ellipse)& theEll, const gp_Pnt& firstp, const gp_Pnt& lastp, const Standard_Boolean isstatic = Standard_False) ;
   
-  Standard_EXPORT     gp_Dir ComputeCircleDirection(const Handle(Geom_Circle)& aCirc,const TopoDS_Vertex& ConnectedVertex) const;
+  //! Computes the presentation of the identic constraint
+  //! between 2 ellipses in the case of non automatic presentation
+  Standard_EXPORT   void ComputeNotAutoElipsPresentation (const Handle(Geom_Ellipse)& theEll) ;
+  
+  //! Computes the presentation of the identic constraint
+  //! between 2 arcs in the case of non automatic presentation
+  Standard_EXPORT   void ComputeNotAutoArcPresentation (const Handle(Geom_Ellipse)& theEll, const gp_Pnt& pntfirst, const gp_Pnt& pntlast) ;
+  
+  Standard_EXPORT   void ComputeTwoVerticesPresentation (const Handle(Prs3d_Presentation)& aPresentation) ;
+  
+  Standard_EXPORT   Standard_Real ComputeSegSize()  const;
+  
+  Standard_EXPORT   Standard_Boolean ComputeDirection (const TopoDS_Wire& aWire, const TopoDS_Vertex& aVertex, gp_Dir& aDir)  const;
+  
+  Standard_EXPORT   gp_Dir ComputeLineDirection (const Handle(Geom_Line)& aLin, const gp_Pnt& anExtremity)  const;
+  
+  Standard_EXPORT   gp_Dir ComputeCircleDirection (const Handle(Geom_Circle)& aCirc, const TopoDS_Vertex& ConnectedVertex)  const;
 
-Standard_Boolean isCircle;
-gp_Pnt myFAttach;
-gp_Pnt mySAttach;
-gp_Pnt myCenter;
+  Standard_Boolean isCircle;
+  gp_Pnt myFAttach;
+  gp_Pnt mySAttach;
+  gp_Pnt myCenter;
 
 
 };
@@ -168,7 +144,6 @@ gp_Pnt myCenter;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_IdenticRelation_HeaderFile

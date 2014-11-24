@@ -5,16 +5,10 @@
 
 #include <Intf_SequenceNodeOfSeqOfTangentZone.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Intf_TangentZone_HeaderFile
 #include <Intf_TangentZone.hxx>
-#endif
-#ifndef _Intf_SeqOfTangentZone_HeaderFile
 #include <Intf_SeqOfTangentZone.hxx>
-#endif
 
  
 

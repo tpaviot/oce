@@ -6,40 +6,18 @@
 #ifndef _HLRBRep_CInter_HeaderFile
 #define _HLRBRep_CInter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _IntCurve_IntConicConic_HeaderFile
 #include <IntCurve_IntConicConic.hxx>
-#endif
-#ifndef _HLRBRep_TheIntConicCurveOfCInter_HeaderFile
 #include <HLRBRep_TheIntConicCurveOfCInter.hxx>
-#endif
-#ifndef _HLRBRep_TheIntPCurvePCurveOfCInter_HeaderFile
 #include <HLRBRep_TheIntPCurvePCurveOfCInter.hxx>
-#endif
-#ifndef _IntRes2d_Intersection_HeaderFile
 #include <IntRes2d_Intersection.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_ConstructionError;
 class HLRBRep_CurveTool;
 class HLRBRep_TheProjPCurOfCInter;
@@ -57,40 +35,40 @@ class TColStd_Array1OfReal;
 
 
 
-class HLRBRep_CInter  : public IntRes2d_Intersection {
+class HLRBRep_CInter  : public IntRes2d_Intersection
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      HLRBRep_CInter();
+    HLRBRep_CInter();
   
-      HLRBRep_CInter(const Standard_Address& C,const Standard_Real TolConf,const Standard_Real Tol);
+    HLRBRep_CInter(const Standard_Address& C, const Standard_Real TolConf, const Standard_Real Tol);
   
-      HLRBRep_CInter(const Standard_Address& C,const IntRes2d_Domain& D,const Standard_Real TolConf,const Standard_Real Tol);
+    HLRBRep_CInter(const Standard_Address& C, const IntRes2d_Domain& D, const Standard_Real TolConf, const Standard_Real Tol);
   
-      HLRBRep_CInter(const Standard_Address& C1,const Standard_Address& C2,const Standard_Real TolConf,const Standard_Real Tol);
+    HLRBRep_CInter(const Standard_Address& C1, const Standard_Address& C2, const Standard_Real TolConf, const Standard_Real Tol);
   
-      HLRBRep_CInter(const Standard_Address& C1,const IntRes2d_Domain& D1,const Standard_Address& C2,const Standard_Real TolConf,const Standard_Real Tol);
+    HLRBRep_CInter(const Standard_Address& C1, const IntRes2d_Domain& D1, const Standard_Address& C2, const Standard_Real TolConf, const Standard_Real Tol);
   
-      HLRBRep_CInter(const Standard_Address& C1,const Standard_Address& C2,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol);
+    HLRBRep_CInter(const Standard_Address& C1, const Standard_Address& C2, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol);
   
-      HLRBRep_CInter(const Standard_Address& C1,const IntRes2d_Domain& D1,const Standard_Address& C2,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol);
+    HLRBRep_CInter(const Standard_Address& C1, const IntRes2d_Domain& D1, const Standard_Address& C2, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol);
   
-  Standard_EXPORT     void Perform(const Standard_Address& C1,const IntRes2d_Domain& D1,const Standard_Address& C2,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol) ;
+  Standard_EXPORT   void Perform (const Standard_Address& C1, const IntRes2d_Domain& D1, const Standard_Address& C2, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol) ;
   
-        void Perform(const Standard_Address& C1,const Standard_Address& C2,const Standard_Real TolConf,const Standard_Real Tol) ;
+      void Perform (const Standard_Address& C1, const Standard_Address& C2, const Standard_Real TolConf, const Standard_Real Tol) ;
   
-  Standard_EXPORT     void Perform(const Standard_Address& C1,const IntRes2d_Domain& D1,const Standard_Real TolConf,const Standard_Real Tol) ;
+  Standard_EXPORT   void Perform (const Standard_Address& C1, const IntRes2d_Domain& D1, const Standard_Real TolConf, const Standard_Real Tol) ;
   
-  Standard_EXPORT     void Perform(const Standard_Address& C1,const Standard_Real TolConf,const Standard_Real Tol) ;
+  Standard_EXPORT   void Perform (const Standard_Address& C1, const Standard_Real TolConf, const Standard_Real Tol) ;
   
-        void Perform(const Standard_Address& C1,const IntRes2d_Domain& D1,const Standard_Address& C2,const Standard_Real TolConf,const Standard_Real Tol) ;
+      void Perform (const Standard_Address& C1, const IntRes2d_Domain& D1, const Standard_Address& C2, const Standard_Real TolConf, const Standard_Real Tol) ;
   
-        void Perform(const Standard_Address& C1,const Standard_Address& C2,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol) ;
+      void Perform (const Standard_Address& C1, const Standard_Address& C2, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol) ;
   
-  Standard_EXPORT     IntRes2d_Domain ComputeDomain(const Standard_Address& C1,const Standard_Real TolDomain) const;
-
+  Standard_EXPORT   IntRes2d_Domain ComputeDomain (const Standard_Address& C1, const Standard_Real TolDomain)  const;
 
 
 
@@ -104,20 +82,20 @@ protected:
 private:
 
   
-  Standard_EXPORT     void InternalPerform(const Standard_Address& C1,const IntRes2d_Domain& D1,const Standard_Address& C2,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol,const Standard_Boolean Composite) ;
+  Standard_EXPORT   void InternalPerform (const Standard_Address& C1, const IntRes2d_Domain& D1, const Standard_Address& C2, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol, const Standard_Boolean Composite) ;
   
-  Standard_EXPORT     void InternalCompositePerform_noRecurs(const Standard_Integer NbInterC1,const Standard_Address& C1,const Standard_Integer NumInterC1,const TColStd_Array1OfReal& Tab1,const IntRes2d_Domain& D1,const Standard_Integer NbInterC2,const Standard_Address& C2,const Standard_Integer NumInterC2,const TColStd_Array1OfReal& Tab2,const IntRes2d_Domain& D2,const Standard_Real TolConf,const Standard_Real Tol) ;
+  Standard_EXPORT   void InternalCompositePerform_noRecurs (const Standard_Integer NbInterC1, const Standard_Address& C1, const Standard_Integer NumInterC1, const TColStd_Array1OfReal& Tab1, const IntRes2d_Domain& D1, const Standard_Integer NbInterC2, const Standard_Address& C2, const Standard_Integer NumInterC2, const TColStd_Array1OfReal& Tab2, const IntRes2d_Domain& D2, const Standard_Real TolConf, const Standard_Real Tol) ;
   
-  Standard_EXPORT     void InternalCompositePerform(const Standard_Address& C1,const IntRes2d_Domain& D1,const Standard_Integer N1,const Standard_Integer NB1,const TColStd_Array1OfReal& Tab1,const Standard_Address& C2,const IntRes2d_Domain& D2,const Standard_Integer N2,const Standard_Integer NB2,const TColStd_Array1OfReal& Tab2,const Standard_Real TolConf,const Standard_Real Tol,const Standard_Boolean Composite) ;
+  Standard_EXPORT   void InternalCompositePerform (const Standard_Address& C1, const IntRes2d_Domain& D1, const Standard_Integer N1, const Standard_Integer NB1, const TColStd_Array1OfReal& Tab1, const Standard_Address& C2, const IntRes2d_Domain& D2, const Standard_Integer N2, const Standard_Integer NB2, const TColStd_Array1OfReal& Tab2, const Standard_Real TolConf, const Standard_Real Tol, const Standard_Boolean Composite) ;
 
 
-Standard_Real param1inf;
-Standard_Real param1sup;
-Standard_Real param2inf;
-Standard_Real param2sup;
-IntCurve_IntConicConic intconiconi;
-HLRBRep_TheIntConicCurveOfCInter intconicurv;
-HLRBRep_TheIntPCurvePCurveOfCInter intcurvcurv;
+  Standard_Real param1inf;
+  Standard_Real param1sup;
+  Standard_Real param2inf;
+  Standard_Real param2sup;
+  IntCurve_IntConicConic intconiconi;
+  HLRBRep_TheIntConicCurveOfCInter intconicurv;
+  HLRBRep_TheIntPCurvePCurveOfCInter intcurvcurv;
 
 
 };
@@ -203,7 +181,6 @@ HLRBRep_TheIntPCurvePCurveOfCInter intcurvcurv;
 #undef IntCurve_IntCurveCurveGen_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_CInter_HeaderFile

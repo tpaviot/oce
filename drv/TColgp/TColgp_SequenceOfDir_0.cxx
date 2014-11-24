@@ -5,18 +5,10 @@
 
 #include <TColgp_SequenceOfDir.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _TColgp_SequenceNodeOfSequenceOfDir_HeaderFile
 #include <TColgp_SequenceNodeOfSequenceOfDir.hxx>
-#endif
  
 
 #define SeqItem gp_Dir

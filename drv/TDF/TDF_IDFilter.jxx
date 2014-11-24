@@ -1,12 +1,4 @@
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _TDF_IDList_HeaderFile
 #include <TDF_IDList.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _TDF_IDFilter_HeaderFile
 #include <TDF_IDFilter.hxx>
-#endif

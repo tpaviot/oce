@@ -6,28 +6,22 @@
 #ifndef _StepGeom_Point_HeaderFile
 #define _StepGeom_Point_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_Point_HeaderFile
 #include <Handle_StepGeom_Point.hxx>
-#endif
 
-#ifndef _StepGeom_GeometricRepresentationItem_HeaderFile
 #include <StepGeom_GeometricRepresentationItem.hxx>
-#endif
 
 
 
-class StepGeom_Point : public StepGeom_GeometricRepresentationItem {
+class StepGeom_Point : public StepGeom_GeometricRepresentationItem
+{
 
 public:
 
-  //! Returns a Point <br>
-  Standard_EXPORT   StepGeom_Point();
+  
+  //! Returns a Point
+  Standard_EXPORT StepGeom_Point();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_Point_HeaderFile

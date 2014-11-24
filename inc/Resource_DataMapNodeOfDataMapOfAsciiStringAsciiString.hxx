@@ -6,41 +6,30 @@
 #ifndef _Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString_HeaderFile
 #define _Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString_HeaderFile
 #include <Handle_Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TCollection_AsciiString;
 class Resource_DataMapOfAsciiStringAsciiString;
 class Resource_DataMapIteratorOfDataMapOfAsciiStringAsciiString;
 
 
 
-class Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString : public TCollection_MapNode {
+class Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString : public TCollection_MapNode
+{
 
 public:
 
   
-      Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString(const TCollection_AsciiString& K,const TCollection_AsciiString& I,const TCollection_MapNodePtr& n);
+    Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString(const TCollection_AsciiString& K, const TCollection_AsciiString& I, const TCollection_MapNodePtr& n);
   
-        TCollection_AsciiString& Key() const;
+      TCollection_AsciiString& Key()  const;
   
-        TCollection_AsciiString& Value() const;
+      TCollection_AsciiString& Value()  const;
 
 
 
@@ -55,8 +44,8 @@ protected:
 private: 
 
 
-TCollection_AsciiString myKey;
-TCollection_AsciiString myValue;
+  TCollection_AsciiString myKey;
+  TCollection_AsciiString myValue;
 
 
 };
@@ -94,7 +83,6 @@ TCollection_AsciiString myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString_HeaderFile

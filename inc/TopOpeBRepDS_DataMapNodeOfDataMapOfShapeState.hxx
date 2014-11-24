@@ -6,28 +6,14 @@
 #ifndef _TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState_HeaderFile
 #define _TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState_HeaderFile
 #include <Handle_TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopAbs_State_HeaderFile
 #include <TopAbs_State.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopoDS_Shape;
 class TopTools_ShapeMapHasher;
 class TopOpeBRepDS_DataMapOfShapeState;
@@ -35,16 +21,17 @@ class TopOpeBRepDS_DataMapIteratorOfDataMapOfShapeState;
 
 
 
-class TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState : public TCollection_MapNode {
+class TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState : public TCollection_MapNode
+{
 
 public:
 
   
-      TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState(const TopoDS_Shape& K,const TopAbs_State& I,const TCollection_MapNodePtr& n);
+    TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState(const TopoDS_Shape& K, const TopAbs_State& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        TopAbs_State& Value() const;
+      TopAbs_State& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-TopAbs_State myValue;
+  TopoDS_Shape myKey;
+  TopAbs_State myValue;
 
 
 };
@@ -98,7 +85,6 @@ TopAbs_State myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_DataMapNodeOfDataMapOfShapeState_HeaderFile

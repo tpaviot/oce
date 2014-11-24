@@ -5,15 +5,9 @@
 
 #include <TColStd_MapOfAsciiString.hxx>
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TColStd_StdMapNodeOfMapOfAsciiString_HeaderFile
 #include <TColStd_StdMapNodeOfMapOfAsciiString.hxx>
-#endif
-#ifndef _TColStd_MapIteratorOfMapOfAsciiString_HeaderFile
 #include <TColStd_MapIteratorOfMapOfAsciiString.hxx>
-#endif
  
 
 #define TheKey TCollection_AsciiString

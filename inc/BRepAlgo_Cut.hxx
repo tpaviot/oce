@@ -6,36 +6,29 @@
 #ifndef _BRepAlgo_Cut_HeaderFile
 #define _BRepAlgo_Cut_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepAlgo_BooleanOperation_HeaderFile
 #include <BRepAlgo_BooleanOperation.hxx>
-#endif
 class TopoDS_Shape;
 
 
-//! Describes functions for performing a topological cut <br>
-//! operation (Boolean subtraction). <br>
-//! A Cut object provides the framework for: <br>
-//! - defining the construction of a cut shape, <br>
-//! - implementing the construction algorithm, and <br>
-//! - consulting the result. <br>
-class BRepAlgo_Cut  : public BRepAlgo_BooleanOperation {
+//! Describes functions for performing a topological cut
+//! operation (Boolean subtraction).
+//! A Cut object provides the framework for:
+//! - defining the construction of a cut shape,
+//! - implementing the construction algorithm, and
+//! - consulting the result.
+class BRepAlgo_Cut  : public BRepAlgo_BooleanOperation
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Cuts the shape S2 from the shape S1. <br>
-  Standard_EXPORT   BRepAlgo_Cut(const TopoDS_Shape& S1,const TopoDS_Shape& S2);
-
+  
+  //! Cuts the shape S2 from the shape S1.
+  Standard_EXPORT BRepAlgo_Cut(const TopoDS_Shape& S1, const TopoDS_Shape& S2);
 
 
 
@@ -58,7 +51,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepAlgo_Cut_HeaderFile

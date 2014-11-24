@@ -1,18 +1,6 @@
-#ifndef _Interface_InterfaceError_HeaderFile
 #include <Interface_InterfaceError.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Interface_Graph_HeaderFile
 #include <Interface_Graph.hxx>
-#endif
-#ifndef _Interface_EntityIterator_HeaderFile
 #include <Interface_EntityIterator.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _IGESSelect_SelectBypassSubfigure_HeaderFile
 #include <IGESSelect_SelectBypassSubfigure.hxx>
-#endif

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKV3d"
-	ProjectGUID="{064A8BB0-02D6-0803-0046-1D4D87CCE87C}"
+	ProjectGUID="{B4C76738-159C-06C0-0FD6-C0E94B146A7F}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -248,7 +248,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\V3d;..\..\..\src\V3d;..\..\..\drv\Graphic3d;..\..\..\src\Graphic3d;..\..\..\drv\Visual3d;..\..\..\src\Visual3d;..\..\..\drv\Select3D;..\..\..\src\Select3D;..\..\..\drv\Prs3d;..\..\..\src\Prs3d;..\..\..\drv\StdPrs;..\..\..\src\StdPrs;..\..\..\drv\SelectMgr;..\..\..\src\SelectMgr;..\..\..\drv\PrsMgr;..\..\..\src\PrsMgr;..\..\..\drv\AIS;..\..\..\src\AIS;..\..\..\drv\DsgPrs;..\..\..\src\DsgPrs;..\..\..\drv\StdSelect;..\..\..\src\StdSelect;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Visual3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Visual3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Visual3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Visual3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -343,7 +343,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\V3d;..\..\..\src\V3d;..\..\..\drv\Graphic3d;..\..\..\src\Graphic3d;..\..\..\drv\Visual3d;..\..\..\src\Visual3d;..\..\..\drv\Select3D;..\..\..\src\Select3D;..\..\..\drv\Prs3d;..\..\..\src\Prs3d;..\..\..\drv\StdPrs;..\..\..\src\StdPrs;..\..\..\drv\SelectMgr;..\..\..\src\SelectMgr;..\..\..\drv\PrsMgr;..\..\..\src\PrsMgr;..\..\..\drv\AIS;..\..\..\src\AIS;..\..\..\drv\DsgPrs;..\..\..\src\DsgPrs;..\..\..\drv\StdSelect;..\..\..\src\StdSelect;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Visual3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Visual3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -365,7 +365,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Visual3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__V3d_DLL;__Graphic3d_DLL;__Visual3d_DLL;__Select3D_DLL;__Prs3d_DLL;__StdPrs_DLL;__SelectMgr_DLL;__PrsMgr_DLL;__AIS_DLL;__DsgPrs_DLL;__StdSelect_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"

@@ -5,22 +5,12 @@
 
 #include <PXCAFDoc_SeqNodeOfGraphNodeSequence.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _PXCAFDoc_GraphNode_HeaderFile
 #include <PXCAFDoc_GraphNode.hxx>
-#endif
-#ifndef _PXCAFDoc_SeqNodeOfGraphNodeSequence_HeaderFile
 #include <PXCAFDoc_SeqNodeOfGraphNodeSequence.hxx>
-#endif
-#ifndef _PXCAFDoc_GraphNodeSequence_HeaderFile
 #include <PXCAFDoc_GraphNodeSequence.hxx>
-#endif
-#ifndef _PXCAFDoc_SeqExplorerOfGraphNodeSequence_HeaderFile
 #include <PXCAFDoc_SeqExplorerOfGraphNodeSequence.hxx>
-#endif
 
  
 
@@ -39,7 +29,7 @@ IMPLEMENT_DOWNCAST(PXCAFDoc_SeqNodeOfGraphNodeSequence,Standard_Persistent)
 IMPLEMENT_STANDARD_RTTI(PXCAFDoc_SeqNodeOfGraphNodeSequence)
 
 
-#define Item Handle_PXCAFDoc_GraphNode
+#define Item Handle(PXCAFDoc_GraphNode)
 #define Item_hxx <PXCAFDoc_GraphNode.hxx>
 #define PCollection_SeqNode PXCAFDoc_SeqNodeOfGraphNodeSequence
 #define PCollection_SeqNode_hxx <PXCAFDoc_SeqNodeOfGraphNodeSequence.hxx>

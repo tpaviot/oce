@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{356180E9-16C4-0EB0-0122-4848B49D2DE0}</ProjectGuid>
+    <ProjectGuid>{1D3EE980-09DF-0863-06D2-2D1C28938DE0}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -171,7 +171,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -186,7 +186,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKernel.lib;TKSTEPAttr.lib;TKSTEP209.lib;TKSTEPBase.lib;TKBRep.lib;TKMath.lib;TKG2d.lib;TKShHealing.lib;TKTopAlgo.lib;TKG3d.lib;TKGeomBase.lib;TKGeomAlgo.lib;TKXSBase.lib;wsock32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -214,7 +214,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <AssemblerListingLocation>.\..\..\..\win64\vc10\objd\TKSTEP/</AssemblerListingLocation>
@@ -230,7 +230,7 @@
     </ClCompile>
     <ResourceCompile>
       <AdditionalIncludeDirectories>..\..\..\inc;$(CSF_OPT_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL;_OCC64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__StepAP214_DLL;__RWStepAP214_DLL;__StepAP203_DLL;__RWStepAP203_DLL;__STEPConstruct_DLL;__STEPEdit_DLL;__GeomToStep_DLL;__StepToGeom_DLL;__StepToTopoDS_DLL;__TopoDSToStep_DLL;__STEPControl_DLL;__STEPSelections_DLL;__StepAP209_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>TKernel.lib;TKSTEPAttr.lib;TKSTEP209.lib;TKSTEPBase.lib;TKBRep.lib;TKMath.lib;TKG2d.lib;TKShHealing.lib;TKTopAlgo.lib;TKG3d.lib;TKGeomBase.lib;TKGeomAlgo.lib;TKXSBase.lib;wsock32.lib;ws2_32.lib;vfw32.lib;%(AdditionalDependencies)</AdditionalDependencies>

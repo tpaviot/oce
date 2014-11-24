@@ -6,32 +6,26 @@
 #ifndef _TObjDRAW_HeaderFile
 #define _TObjDRAW_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Draw_Interpretor_HeaderFile
 #include <Draw_Interpretor.hxx>
-#endif
 
 
-//! Provides DRAW commands for work with TObj data structures <br>
-class TObjDRAW  {
+//! Provides DRAW commands for work with TObj data structures
+class TObjDRAW 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Initializes all the functions <br>
-  Standard_EXPORT   static  void Init(Draw_Interpretor& di) ;
-  //! Loads all Draw commands of  TKTObjDRAW. Used for plugin. <br>
-  Standard_EXPORT   static  void Factory(Draw_Interpretor& theDI) ;
-
+  
+  //! Initializes all the functions
+  Standard_EXPORT static   void Init (Draw_Interpretor& di) ;
+  
+  //! Loads all Draw commands of  TKTObjDRAW. Used for plugin.
+  Standard_EXPORT static   void Factory (Draw_Interpretor& theDI) ;
 
 
 
@@ -54,7 +48,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TObjDRAW_HeaderFile

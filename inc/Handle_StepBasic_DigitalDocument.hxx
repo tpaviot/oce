@@ -6,22 +6,15 @@
 #ifndef _Handle_StepBasic_DigitalDocument_HeaderFile
 #define _Handle_StepBasic_DigitalDocument_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepBasic_Document_HeaderFile
 #include <Handle_StepBasic_Document.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepBasic_Document);
 class StepBasic_DigitalDocument;
 
-DEFINE_STANDARD_HANDLE(StepBasic_DigitalDocument,StepBasic_Document)
+DEFINE_STANDARD_HANDLE(StepBasic_DigitalDocument, StepBasic_Document)
 
-#endif
+#endif // _Handle_StepBasic_DigitalDocument_HeaderFile

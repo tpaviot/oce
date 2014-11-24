@@ -6,28 +6,22 @@
 #ifndef _StepFEA_NodeWithSolutionCoordinateSystem_HeaderFile
 #define _StepFEA_NodeWithSolutionCoordinateSystem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepFEA_NodeWithSolutionCoordinateSystem_HeaderFile
 #include <Handle_StepFEA_NodeWithSolutionCoordinateSystem.hxx>
-#endif
 
-#ifndef _StepFEA_Node_HeaderFile
 #include <StepFEA_Node.hxx>
-#endif
 
 
-//! Representation of STEP entity NodeWithSolutionCoordinateSystem <br>
-class StepFEA_NodeWithSolutionCoordinateSystem : public StepFEA_Node {
+//! Representation of STEP entity NodeWithSolutionCoordinateSystem
+class StepFEA_NodeWithSolutionCoordinateSystem : public StepFEA_Node
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepFEA_NodeWithSolutionCoordinateSystem();
+  
+  //! Empty constructor
+  Standard_EXPORT StepFEA_NodeWithSolutionCoordinateSystem();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_NodeWithSolutionCoordinateSystem_HeaderFile

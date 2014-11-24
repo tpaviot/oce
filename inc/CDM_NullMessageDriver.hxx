@@ -6,33 +6,24 @@
 #ifndef _CDM_NullMessageDriver_HeaderFile
 #define _CDM_NullMessageDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_CDM_NullMessageDriver_HeaderFile
 #include <Handle_CDM_NullMessageDriver.hxx>
-#endif
 
-#ifndef _CDM_MessageDriver_HeaderFile
 #include <CDM_MessageDriver.hxx>
-#endif
-#ifndef _Standard_ExtString_HeaderFile
 #include <Standard_ExtString.hxx>
-#endif
 
 
-//! a MessageDriver that writes nowhere. <br>
-class CDM_NullMessageDriver : public CDM_MessageDriver {
+//! a MessageDriver that writes nowhere.
+class CDM_NullMessageDriver : public CDM_MessageDriver
+{
 
 public:
 
   
-  Standard_EXPORT   CDM_NullMessageDriver();
+  Standard_EXPORT CDM_NullMessageDriver();
   
-  Standard_EXPORT     void Write(const Standard_ExtString aString) ;
+  Standard_EXPORT   void Write (const Standard_ExtString aString) ;
 
 
 
@@ -55,7 +46,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _CDM_NullMessageDriver_HeaderFile

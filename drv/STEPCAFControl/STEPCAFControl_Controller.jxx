@@ -1,3 +1,1 @@
-#ifndef _STEPCAFControl_Controller_HeaderFile
 #include <STEPCAFControl_Controller.hxx>
-#endif

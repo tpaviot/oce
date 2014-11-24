@@ -6,37 +6,17 @@
 #ifndef _PColgp_HArray2OfDir2d_HeaderFile
 #define _PColgp_HArray2OfDir2d_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PColgp_HArray2OfDir2d_HeaderFile
 #include <Handle_PColgp_HArray2OfDir2d.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _gp_Dir2d_HeaderFile
 #include <gp_Dir2d.hxx>
-#endif
-#ifndef _PColgp_FieldOfHArray2OfDir2d_HeaderFile
 #include <PColgp_FieldOfHArray2OfDir2d.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _Handle_PColgp_VArrayNodeOfFieldOfHArray2OfDir2d_HeaderFile
 #include <Handle_PColgp_VArrayNodeOfFieldOfHArray2OfDir2d.hxx>
-#endif
 class Standard_RangeError;
 class Standard_OutOfRange;
 class gp_Dir2d;
@@ -45,32 +25,33 @@ class PColgp_VArrayNodeOfFieldOfHArray2OfDir2d;
 class PColgp_VArrayTNodeOfFieldOfHArray2OfDir2d;
 
 
-class PColgp_HArray2OfDir2d : public Standard_Persistent {
+class PColgp_HArray2OfDir2d : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PColgp_HArray2OfDir2d(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+  Standard_EXPORT PColgp_HArray2OfDir2d(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2);
   
-  Standard_EXPORT   PColgp_HArray2OfDir2d(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const gp_Dir2d& V);
+  Standard_EXPORT PColgp_HArray2OfDir2d(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2, const gp_Dir2d& V);
   
-  Standard_EXPORT     Standard_Integer ColLength() const;
+  Standard_EXPORT   Standard_Integer ColLength()  const;
   
-        Standard_Integer LowerCol() const;
+      Standard_Integer LowerCol()  const;
   
-        Standard_Integer LowerRow() const;
+      Standard_Integer LowerRow()  const;
   
-  Standard_EXPORT     Standard_Integer RowLength() const;
+  Standard_EXPORT   Standard_Integer RowLength()  const;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Row,const Standard_Integer Col,const gp_Dir2d& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Row, const Standard_Integer Col, const gp_Dir2d& Value) ;
   
-        Standard_Integer UpperCol() const;
+      Standard_Integer UpperCol()  const;
   
-        Standard_Integer UpperRow() const;
+      Standard_Integer UpperRow()  const;
   
-  Standard_EXPORT     gp_Dir2d Value(const Standard_Integer Row,const Standard_Integer Col) const;
+  Standard_EXPORT   gp_Dir2d Value (const Standard_Integer Row, const Standard_Integer Col)  const;
 
-  PColgp_HArray2OfDir2d( )
+PColgp_HArray2OfDir2d( )
 {
   
 }
@@ -100,15 +81,15 @@ protected:
 private: 
 
   
-  Standard_EXPORT     PColgp_FieldOfHArray2OfDir2d Field() const;
+  Standard_EXPORT   PColgp_FieldOfHArray2OfDir2d Field()  const;
   
-  Standard_EXPORT     Standard_Address Datas() const;
+  Standard_EXPORT   Standard_Address Datas()  const;
 
-Standard_Integer myLowerRow;
-Standard_Integer myLowerCol;
-Standard_Integer myUpperRow;
-Standard_Integer myUpperCol;
-PColgp_FieldOfHArray2OfDir2d Data;
+  Standard_Integer myLowerRow;
+  Standard_Integer myLowerCol;
+  Standard_Integer myUpperRow;
+  Standard_Integer myUpperCol;
+  PColgp_FieldOfHArray2OfDir2d Data;
 
 
 };
@@ -158,7 +139,6 @@ PColgp_FieldOfHArray2OfDir2d Data;
 #undef PCollection_HArray2_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PColgp_HArray2OfDir2d_HeaderFile

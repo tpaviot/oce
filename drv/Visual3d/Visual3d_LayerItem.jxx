@@ -1,3 +1,1 @@
-#ifndef _Visual3d_LayerItem_HeaderFile
 #include <Visual3d_LayerItem.hxx>
-#endif

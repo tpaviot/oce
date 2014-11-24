@@ -1,21 +1,7 @@
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _TDataStd_ListOfExtendedString_HeaderFile
 #include <TDataStd_ListOfExtendedString.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _TDF_RelocationTable_HeaderFile
 #include <TDF_RelocationTable.hxx>
-#endif
-#ifndef _TDataStd_ExtStringList_HeaderFile
 #include <TDataStd_ExtStringList.hxx>
-#endif

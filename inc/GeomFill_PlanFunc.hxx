@@ -6,68 +6,53 @@
 #ifndef _GeomFill_PlanFunc_HeaderFile
 #define _GeomFill_PlanFunc_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HCurve_HeaderFile
 #include <Handle_Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _math_FunctionWithDerivative_HeaderFile
 #include <math_FunctionWithDerivative.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Adaptor3d_HCurve;
 class gp_Pnt;
 class gp_Vec;
 
 
 
-class GeomFill_PlanFunc  : public math_FunctionWithDerivative {
+class GeomFill_PlanFunc  : public math_FunctionWithDerivative
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomFill_PlanFunc(const gp_Pnt& P,const gp_Vec& V,const Handle(Adaptor3d_HCurve)& C);
-  //! computes the value <F>of the function for the variable <X>. <br>
-//!          Returns True if the calculation were successfully done, <br>
-//!          False otherwise. <br>
-  Standard_EXPORT   virtual  Standard_Boolean Value(const Standard_Real X,Standard_Real& F) ;
-  //! computes the derivative <D> of the function <br>
-//!          for the variable <X>. <br>
-//!           Returns True if the calculation were successfully done, <br>
-//!           False otherwise. <br>
-  Standard_EXPORT   virtual  Standard_Boolean Derivative(const Standard_Real X,Standard_Real& D) ;
-  //! computes the value <F> and the derivative <D> of the <br>
-//!          function for the variable <X>. <br>
-//!          Returns True if the calculation were successfully done, <br>
-//!          False otherwise. <br>
-  Standard_EXPORT   virtual  Standard_Boolean Values(const Standard_Real X,Standard_Real& F,Standard_Real& D) ;
+  Standard_EXPORT GeomFill_PlanFunc(const gp_Pnt& P, const gp_Vec& V, const Handle(Adaptor3d_HCurve)& C);
   
-  Standard_EXPORT     void D2(const Standard_Real X,Standard_Real& F,Standard_Real& D1,Standard_Real& D2) ;
+  //! computes the value <F>of the function for the variable <X>.
+  //! Returns True if the calculation were successfully done,
+  //! False otherwise.
+  Standard_EXPORT virtual   Standard_Boolean Value (const Standard_Real X, Standard_Real& F) ;
   
-  Standard_EXPORT     void DEDT(const Standard_Real X,const gp_Vec& DP,const gp_Vec& DV,Standard_Real& DF) ;
+  //! computes the derivative <D> of the function
+  //! for the variable <X>.
+  //! Returns True if the calculation were successfully done,
+  //! False otherwise.
+  Standard_EXPORT virtual   Standard_Boolean Derivative (const Standard_Real X, Standard_Real& D) ;
   
-  Standard_EXPORT     void D2E(const Standard_Real X,const gp_Vec& DP,const gp_Vec& D2P,const gp_Vec& DV,const gp_Vec& D2V,Standard_Real& DFDT,Standard_Real& D2FDT2,Standard_Real& D2FDTDX) ;
-
+  //! computes the value <F> and the derivative <D> of the
+  //! function for the variable <X>.
+  //! Returns True if the calculation were successfully done,
+  //! False otherwise.
+  Standard_EXPORT virtual   Standard_Boolean Values (const Standard_Real X, Standard_Real& F, Standard_Real& D) ;
+  
+  Standard_EXPORT   void D2 (const Standard_Real X, Standard_Real& F, Standard_Real& D1, Standard_Real& D2) ;
+  
+  Standard_EXPORT   void DEDT (const Standard_Real X, const gp_Vec& DP, const gp_Vec& DV, Standard_Real& DF) ;
+  
+  Standard_EXPORT   void D2E (const Standard_Real X, const gp_Vec& DP, const gp_Vec& D2P, const gp_Vec& DV, const gp_Vec& D2V, Standard_Real& DFDT, Standard_Real& D2FDT2, Standard_Real& D2FDTDX) ;
 
 
 
@@ -82,11 +67,11 @@ private:
 
 
 
-gp_XYZ myPnt;
-gp_XYZ myVec;
-gp_XYZ V;
-gp_Pnt G;
-Handle_Adaptor3d_HCurve myCurve;
+  gp_XYZ myPnt;
+  gp_XYZ myVec;
+  gp_XYZ V;
+  gp_Pnt G;
+  Handle(Adaptor3d_HCurve) myCurve;
 
 
 };
@@ -95,7 +80,6 @@ Handle_Adaptor3d_HCurve myCurve;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomFill_PlanFunc_HeaderFile

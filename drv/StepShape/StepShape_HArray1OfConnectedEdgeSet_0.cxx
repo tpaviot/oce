@@ -5,28 +5,14 @@
 
 #include <StepShape_HArray1OfConnectedEdgeSet.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _StepShape_ConnectedEdgeSet_HeaderFile
 #include <StepShape_ConnectedEdgeSet.hxx>
-#endif
-#ifndef _StepShape_Array1OfConnectedEdgeSet_HeaderFile
 #include <StepShape_Array1OfConnectedEdgeSet.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(StepShape_HArray1OfConnectedEdgeSet,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(StepShape_HArray1OfConnectedEdgeSet)
 
 
-#define ItemHArray1 Handle_StepShape_ConnectedEdgeSet
+#define ItemHArray1 Handle(StepShape_ConnectedEdgeSet)
 #define ItemHArray1_hxx <StepShape_ConnectedEdgeSet.hxx>
 #define TheArray1 StepShape_Array1OfConnectedEdgeSet
 #define TheArray1_hxx <StepShape_Array1OfConnectedEdgeSet.hxx>

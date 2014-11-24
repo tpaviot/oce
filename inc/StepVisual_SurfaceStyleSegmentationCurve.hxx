@@ -6,38 +6,30 @@
 #ifndef _StepVisual_SurfaceStyleSegmentationCurve_HeaderFile
 #define _StepVisual_SurfaceStyleSegmentationCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_SurfaceStyleSegmentationCurve_HeaderFile
 #include <Handle_StepVisual_SurfaceStyleSegmentationCurve.hxx>
-#endif
 
-#ifndef _Handle_StepVisual_CurveStyle_HeaderFile
 #include <Handle_StepVisual_CurveStyle.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepVisual_CurveStyle;
 
 
 
-class StepVisual_SurfaceStyleSegmentationCurve : public MMgt_TShared {
+class StepVisual_SurfaceStyleSegmentationCurve : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a SurfaceStyleSegmentationCurve <br>
-  Standard_EXPORT   StepVisual_SurfaceStyleSegmentationCurve();
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepVisual_CurveStyle)& aStyleOfSegmentationCurve) ;
+  //! Returns a SurfaceStyleSegmentationCurve
+  Standard_EXPORT StepVisual_SurfaceStyleSegmentationCurve();
   
-  Standard_EXPORT     void SetStyleOfSegmentationCurve(const Handle(StepVisual_CurveStyle)& aStyleOfSegmentationCurve) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepVisual_CurveStyle)& aStyleOfSegmentationCurve) ;
   
-  Standard_EXPORT     Handle_StepVisual_CurveStyle StyleOfSegmentationCurve() const;
+  Standard_EXPORT   void SetStyleOfSegmentationCurve (const Handle(StepVisual_CurveStyle)& aStyleOfSegmentationCurve) ;
+  
+  Standard_EXPORT   Handle(StepVisual_CurveStyle) StyleOfSegmentationCurve()  const;
 
 
 
@@ -52,7 +44,7 @@ protected:
 private: 
 
 
-Handle_StepVisual_CurveStyle styleOfSegmentationCurve;
+  Handle(StepVisual_CurveStyle) styleOfSegmentationCurve;
 
 
 };
@@ -61,7 +53,6 @@ Handle_StepVisual_CurveStyle styleOfSegmentationCurve;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_SurfaceStyleSegmentationCurve_HeaderFile

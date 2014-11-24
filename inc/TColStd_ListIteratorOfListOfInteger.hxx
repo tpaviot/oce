@@ -6,28 +6,14 @@
 #ifndef _TColStd_ListIteratorOfListOfInteger_HeaderFile
 #define _TColStd_ListIteratorOfListOfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TColStd_ListNodeOfListOfInteger_HeaderFile
 #include <Handle_TColStd_ListNodeOfListOfInteger.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class TColStd_ListOfInteger;
@@ -35,27 +21,27 @@ class TColStd_ListNodeOfListOfInteger;
 
 
 
-class TColStd_ListIteratorOfListOfInteger  {
+class TColStd_ListIteratorOfListOfInteger 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TColStd_ListIteratorOfListOfInteger();
+  Standard_EXPORT TColStd_ListIteratorOfListOfInteger();
   
-  Standard_EXPORT   TColStd_ListIteratorOfListOfInteger(const TColStd_ListOfInteger& L);
+  Standard_EXPORT TColStd_ListIteratorOfListOfInteger(const TColStd_ListOfInteger& L);
   
-  Standard_EXPORT     void Initialize(const TColStd_ListOfInteger& L) ;
+  Standard_EXPORT   void Initialize (const TColStd_ListOfInteger& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     Standard_Integer& Value() const;
+  Standard_EXPORT   Standard_Integer& Value()  const;
 
 
 friend class TColStd_ListOfInteger;
-
 
 
 protected:
@@ -68,8 +54,8 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
@@ -99,7 +85,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_ListIteratorOfListOfInteger_HeaderFile

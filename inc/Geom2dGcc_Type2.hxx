@@ -6,8 +6,11 @@
 #ifndef _Geom2dGcc_Type2_HeaderFile
 #define _Geom2dGcc_Type2_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Geom2dGcc_Type2 {
+
+enum Geom2dGcc_Type2
+{
 Geom2dGcc_CuCuOnCu,
 Geom2dGcc_CiCuOnCu,
 Geom2dGcc_LiCuOnCu,
@@ -22,8 +25,4 @@ Geom2dGcc_LiCuOnCi,
 Geom2dGcc_CuPtOnCi
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Geom2dGcc_Type2_HeaderFile

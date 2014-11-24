@@ -5,21 +5,13 @@
 
 #include <TColGeom2d_SequenceOfGeometry.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Geom2d_Geometry_HeaderFile
 #include <Geom2d_Geometry.hxx>
-#endif
-#ifndef _TColGeom2d_SequenceNodeOfSequenceOfGeometry_HeaderFile
 #include <TColGeom2d_SequenceNodeOfSequenceOfGeometry.hxx>
-#endif
  
 
-#define SeqItem Handle_Geom2d_Geometry
+#define SeqItem Handle(Geom2d_Geometry)
 #define SeqItem_hxx <Geom2d_Geometry.hxx>
 #define TCollection_SequenceNode TColGeom2d_SequenceNodeOfSequenceOfGeometry
 #define TCollection_SequenceNode_hxx <TColGeom2d_SequenceNodeOfSequenceOfGeometry.hxx>

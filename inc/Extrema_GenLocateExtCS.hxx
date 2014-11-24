@@ -6,28 +6,14 @@
 #ifndef _Extrema_GenLocateExtCS_HeaderFile
 #define _Extrema_GenLocateExtCS_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Extrema_POnCurv_HeaderFile
 #include <Extrema_POnCurv.hxx>
-#endif
-#ifndef _Extrema_POnSurf_HeaderFile
 #include <Extrema_POnSurf.hxx>
-#endif
 class Standard_DomainError;
 class StdFail_NotDone;
 class Adaptor3d_Curve;
@@ -36,34 +22,39 @@ class Extrema_POnCurv;
 class Extrema_POnSurf;
 
 
-//! With two close points it calculates the distance <br>
-//!          between two surfaces. <br>
-//!          This distance can be a minimum or a maximum. <br>
-class Extrema_GenLocateExtCS  {
+//! With two close points it calculates the distance
+//! between two surfaces.
+//! This distance can be a minimum or a maximum.
+class Extrema_GenLocateExtCS 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Extrema_GenLocateExtCS();
-  //! Calculates the distance with two close points. <br>
-//!          The close points are defined by the parameter values <br>
-//!          T for C and (U,V) for S. <br>
-//!          The function F(t,u,v)=distance(C(t),S(u,v)) <br>
-//!          has an extremun when gradient(F)=0. The algorithm searchs <br>
-//!          a zero near the close points. <br>
-  Standard_EXPORT   Extrema_GenLocateExtCS(const Adaptor3d_Curve& C,const Adaptor3d_Surface& S,const Standard_Real T,const Standard_Real U,const Standard_Real V,const Standard_Real Tol1,const Standard_Real Tol2);
+  Standard_EXPORT Extrema_GenLocateExtCS();
   
-  Standard_EXPORT     void Perform(const Adaptor3d_Curve& C,const Adaptor3d_Surface& S,const Standard_Real T,const Standard_Real U,const Standard_Real V,const Standard_Real Tol1,const Standard_Real Tol2) ;
-  //! Returns True if the distance is found. <br>
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-  //! Returns the value of the extremum square distance. <br>
-  Standard_EXPORT     Standard_Real SquareDistance() const;
-  //! Returns the point of the extremum distance on C. <br>
-  Standard_EXPORT    const Extrema_POnCurv& PointOnCurve() const;
-  //! Returns the point of the extremum distance on S. <br>
-  Standard_EXPORT    const Extrema_POnSurf& PointOnSurface() const;
-
+  //! Calculates the distance with two close points.
+  //! The close points are defined by the parameter values
+  //! T for C and (U,V) for S.
+  //! The function F(t,u,v)=distance(C(t),S(u,v))
+  //! has an extremun when gradient(F)=0. The algorithm searchs
+  //! a zero near the close points.
+  Standard_EXPORT Extrema_GenLocateExtCS(const Adaptor3d_Curve& C, const Adaptor3d_Surface& S, const Standard_Real T, const Standard_Real U, const Standard_Real V, const Standard_Real Tol1, const Standard_Real Tol2);
+  
+  Standard_EXPORT   void Perform (const Adaptor3d_Curve& C, const Adaptor3d_Surface& S, const Standard_Real T, const Standard_Real U, const Standard_Real V, const Standard_Real Tol1, const Standard_Real Tol2) ;
+  
+  //! Returns True if the distance is found.
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
+  
+  //! Returns the value of the extremum square distance.
+  Standard_EXPORT   Standard_Real SquareDistance()  const;
+  
+  //! Returns the point of the extremum distance on C.
+  Standard_EXPORT  const  Extrema_POnCurv& PointOnCurve()  const;
+  
+  //! Returns the point of the extremum distance on S.
+  Standard_EXPORT  const  Extrema_POnSurf& PointOnSurface()  const;
 
 
 
@@ -78,10 +69,10 @@ private:
 
 
 
-Standard_Boolean myDone;
-Standard_Real mySqDist;
-Extrema_POnCurv myPoint1;
-Extrema_POnSurf myPoint2;
+  Standard_Boolean myDone;
+  Standard_Real mySqDist;
+  Extrema_POnCurv myPoint1;
+  Extrema_POnSurf myPoint2;
 
 
 };
@@ -90,7 +81,6 @@ Extrema_POnSurf myPoint2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Extrema_GenLocateExtCS_HeaderFile

@@ -1,24 +1,8 @@
-#ifndef _Adaptor3d_HCurve_HeaderFile
 #include <Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _Adaptor3d_HSurfaceOfLinearExtrusion_HeaderFile
 #include <Adaptor3d_HSurfaceOfLinearExtrusion.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Extrema_POnSurf_HeaderFile
 #include <Extrema_POnSurf.hxx>
-#endif
-#ifndef _gp_Ax2_HeaderFile
 #include <gp_Ax2.hxx>
-#endif
-#ifndef _Extrema_ExtPExtS_HeaderFile
 #include <Extrema_ExtPExtS.hxx>
-#endif

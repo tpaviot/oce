@@ -127,7 +127,26 @@ ENDIF()
 
 if (WIN32)
 elseif(APPLE)
+  if(USE_TBB)
+    list( APPEND TKBO_USED_LIBS tbb )
+  endif()
+  if(USE_TBB)
+    list( APPEND TKBO_USED_LIBS tbbmalloc )
+  endif()
+elseif(ANDROID)
+  if(USE_TBB)
+    list( APPEND TKBO_USED_LIBS tbb )
+  endif()
+  if(USE_TBB)
+    list( APPEND TKBO_USED_LIBS tbbmalloc )
+  endif()
 else()
+  if(USE_TBB)
+    list( APPEND TKBO_USED_LIBS tbb )
+  endif()
+  if(USE_TBB)
+    list( APPEND TKBO_USED_LIBS tbbmalloc )
+  endif()
 endif()
 
   IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "" AND EXISTS "${BUILD_PATCH_DIR}//drv/IntTools/IntTools_Array1OfRange_0.cxx")
@@ -1070,16 +1089,6 @@ endif()
     ENDIF()
   ENDIF()
 
-  IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "" AND EXISTS "${BUILD_PATCH_DIR}//src/BOPAlgo/BOPAlgo_BOP_1.cxx")
-    list( APPEND TKBO_USED_SRCFILES "${BUILD_PATCH_DIR}//src/BOPAlgo/BOPAlgo_BOP_1.cxx" )
-    SOURCE_GROUP (BOPAlgo FILES "${BUILD_PATCH_DIR}//src/BOPAlgo/BOPAlgo_BOP_1.cxx")
-  ELSE()
-    IF(EXISTS "${CMAKE_SOURCE_DIR}//src/BOPAlgo/BOPAlgo_BOP_1.cxx")
-      list( APPEND TKBO_USED_SRCFILES "${CMAKE_SOURCE_DIR}//src/BOPAlgo/BOPAlgo_BOP_1.cxx" )
-      SOURCE_GROUP (BOPAlgo FILES "${CMAKE_SOURCE_DIR}//src/BOPAlgo/BOPAlgo_BOP_1.cxx")
-    ENDIF()
-  ENDIF()
-
   IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "" AND EXISTS "${BUILD_PATCH_DIR}//src/BOPAlgo/BOPAlgo_Builder.cxx")
     list( APPEND TKBO_USED_SRCFILES "${BUILD_PATCH_DIR}//src/BOPAlgo/BOPAlgo_Builder.cxx" )
     SOURCE_GROUP (BOPAlgo FILES "${BUILD_PATCH_DIR}//src/BOPAlgo/BOPAlgo_Builder.cxx")
@@ -1310,6 +1319,16 @@ endif()
     ENDIF()
   ENDIF()
 
+  IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "" AND EXISTS "${BUILD_PATCH_DIR}//src/BOPAlgo/BOPAlgo_Section.cxx")
+    list( APPEND TKBO_USED_SRCFILES "${BUILD_PATCH_DIR}//src/BOPAlgo/BOPAlgo_Section.cxx" )
+    SOURCE_GROUP (BOPAlgo FILES "${BUILD_PATCH_DIR}//src/BOPAlgo/BOPAlgo_Section.cxx")
+  ELSE()
+    IF(EXISTS "${CMAKE_SOURCE_DIR}//src/BOPAlgo/BOPAlgo_Section.cxx")
+      list( APPEND TKBO_USED_SRCFILES "${CMAKE_SOURCE_DIR}//src/BOPAlgo/BOPAlgo_Section.cxx" )
+      SOURCE_GROUP (BOPAlgo FILES "${CMAKE_SOURCE_DIR}//src/BOPAlgo/BOPAlgo_Section.cxx")
+    ENDIF()
+  ENDIF()
+
   IF(NOT "${BUILD_PATCH_DIR}" STREQUAL "" AND EXISTS "${BUILD_PATCH_DIR}//src/BOPAlgo/BOPAlgo_SectionAttribute.cxx")
     list( APPEND TKBO_USED_SRCFILES "${BUILD_PATCH_DIR}//src/BOPAlgo/BOPAlgo_SectionAttribute.cxx" )
     SOURCE_GROUP (BOPAlgo FILES "${BUILD_PATCH_DIR}//src/BOPAlgo/BOPAlgo_SectionAttribute.cxx")
@@ -1486,13 +1505,13 @@ if ("${USED_TOOLKITS}" STREQUAL "" OR DEFINED TurnONtheTKBO)
  set_property(TARGET TKBO PROPERTY FOLDER ModelingAlgorithms)
 
  install( TARGETS TKBO
-                                 RUNTIME DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_SUFFIX}"
-                                 ARCHIVE DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_SUFFIX}"
-                                 LIBRARY DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_SUFFIX}")
+                                 RUNTIME DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_POSTFIX}"
+                                 ARCHIVE DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_POSTFIX}"
+                                 LIBRARY DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/lib${BUILD_POSTFIX}")
 
  if (MSVC)
-  install( FILES  ${CMAKE_BINARY_DIR}/out/bin/Debug/TKBO.pdb CONFIGURATIONS Debug
-                                  DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_SUFFIX}")
+  install( FILES  ${CMAKE_BINARY_DIR}/out/bind/Debug/TKBO.pdb CONFIGURATIONS Debug
+                                  DESTINATION "${INSTALL_DIR}/${OS_WITH_BIT}/${COMPILER}/bin${BUILD_POSTFIX}")
  endif()
 
 

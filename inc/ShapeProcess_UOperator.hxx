@@ -6,43 +6,32 @@
 #ifndef _ShapeProcess_UOperator_HeaderFile
 #define _ShapeProcess_UOperator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeProcess_UOperator_HeaderFile
 #include <Handle_ShapeProcess_UOperator.hxx>
-#endif
 
-#ifndef _ShapeProcess_OperFunc_HeaderFile
 #include <ShapeProcess_OperFunc.hxx>
-#endif
-#ifndef _ShapeProcess_Operator_HeaderFile
 #include <ShapeProcess_Operator.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_ShapeProcess_Context_HeaderFile
 #include <Handle_ShapeProcess_Context.hxx>
-#endif
 class ShapeProcess_Context;
 
 
-//! Defines operator as container for static function <br>
-//!          OperFunc. This allows user to create new operators <br>
-//!          without creation of new classes <br>
-class ShapeProcess_UOperator : public ShapeProcess_Operator {
+//! Defines operator as container for static function
+//! OperFunc. This allows user to create new operators
+//! without creation of new classes
+class ShapeProcess_UOperator : public ShapeProcess_Operator
+{
 
 public:
 
-  //! Creates operator with implementation defined as <br>
-//!          OperFunc (static function) <br>
-  Standard_EXPORT   ShapeProcess_UOperator(const ShapeProcess_OperFunc func);
-  //! Performs operation and records changes in the context <br>
-  Standard_EXPORT   virtual  Standard_Boolean Perform(const Handle(ShapeProcess_Context)& context) ;
+  
+  //! Creates operator with implementation defined as
+  //! OperFunc (static function)
+  Standard_EXPORT ShapeProcess_UOperator(const ShapeProcess_OperFunc func);
+  
+  //! Performs operation and records changes in the context
+  Standard_EXPORT virtual   Standard_Boolean Perform (const Handle(ShapeProcess_Context)& context) ;
 
 
 
@@ -57,7 +46,7 @@ protected:
 private: 
 
 
-ShapeProcess_OperFunc myFunc;
+  ShapeProcess_OperFunc myFunc;
 
 
 };
@@ -66,7 +55,6 @@ ShapeProcess_OperFunc myFunc;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeProcess_UOperator_HeaderFile

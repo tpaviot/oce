@@ -1,3 +1,1 @@
-#ifndef _BOPDS_Pave_HeaderFile
 #include <BOPDS_Pave.hxx>
-#endif

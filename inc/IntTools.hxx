@@ -6,25 +6,13 @@
 #ifndef _IntTools_HeaderFile
 #define _IntTools_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
 class TopoDS_Edge;
 class IntTools_SequenceOfRoots;
 class gp_Pnt;
@@ -98,31 +86,35 @@ class IntTools_DataMapNodeOfDataMapOfSurfaceSampleBox;
 class IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox;
 
 
-//! Contains classes for intersection and classification <br>
-//!         purposes and accompanying classes <br>
-class IntTools  {
+//! Contains classes for intersection and classification
+//! purposes and accompanying classes
+class IntTools 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //!  returns the length of the edge; <br>
-  Standard_EXPORT   static  Standard_Real Length(const TopoDS_Edge& E) ;
-  //! Remove from  the  sequence aSeq the Roots  that  have <br>
-//!          values ti and tj such as  |ti-tj]  <  anEpsT. <br>
-  Standard_EXPORT   static  void RemoveIdenticalRoots(IntTools_SequenceOfRoots& aSeq,const Standard_Real anEpsT) ;
-  //! Sort the sequence aSeq of the Roots to arrange the <br>
-//!          Roons  in  increasing  order <br>
-  Standard_EXPORT   static  void SortRoots(IntTools_SequenceOfRoots& aSeq,const Standard_Real anEpsT) ;
-  //! Find the states (before  and  after) for  each  Root <br>
-//!          from  the sequence aSeq <br>
-  Standard_EXPORT   static  void FindRootStates(IntTools_SequenceOfRoots& aSeq,const Standard_Real anEpsNull) ;
   
-  Standard_EXPORT   static  Standard_Integer Parameter(const gp_Pnt& P,const Handle(Geom_Curve)& Curve,Standard_Real& aParm) ;
+  //! returns the length of the edge;
+  Standard_EXPORT static   Standard_Real Length (const TopoDS_Edge& E) ;
   
-  Standard_EXPORT   static  Standard_Integer GetRadius(const BRepAdaptor_Curve& C,const Standard_Real t1,const Standard_Real t3,Standard_Real& R) ;
+  //! Remove from  the  sequence aSeq the Roots  that  have
+  //! values ti and tj such as  |ti-tj]  <  anEpsT.
+  Standard_EXPORT static   void RemoveIdenticalRoots (IntTools_SequenceOfRoots& aSeq, const Standard_Real anEpsT) ;
   
-  Standard_EXPORT   static  Standard_Integer PrepareArgs(BRepAdaptor_Curve& C,const Standard_Real tMax,const Standard_Real tMin,const Standard_Integer Discret,const Standard_Real Deflect,IntTools_CArray1OfReal& anArgs) ;
-
+  //! Sort the sequence aSeq of the Roots to arrange the
+  //! Roons  in  increasing  order
+  Standard_EXPORT static   void SortRoots (IntTools_SequenceOfRoots& aSeq, const Standard_Real anEpsT) ;
+  
+  //! Find the states (before  and  after) for  each  Root
+  //! from  the sequence aSeq
+  Standard_EXPORT static   void FindRootStates (IntTools_SequenceOfRoots& aSeq, const Standard_Real anEpsNull) ;
+  
+  Standard_EXPORT static   Standard_Integer Parameter (const gp_Pnt& P, const Handle(Geom_Curve)& Curve, Standard_Real& aParm) ;
+  
+  Standard_EXPORT static   Standard_Integer GetRadius (const BRepAdaptor_Curve& C, const Standard_Real t1, const Standard_Real t3, Standard_Real& R) ;
+  
+  Standard_EXPORT static   Standard_Integer PrepareArgs (BRepAdaptor_Curve& C, const Standard_Real tMax, const Standard_Real tMin, const Standard_Integer Discret, const Standard_Real Deflect, IntTools_CArray1OfReal& anArgs) ;
 
 
 
@@ -210,7 +202,6 @@ friend class IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_HeaderFile

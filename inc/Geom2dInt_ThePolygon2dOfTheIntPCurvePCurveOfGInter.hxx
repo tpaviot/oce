@@ -6,37 +6,17 @@
 #ifndef _Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_HeaderFile
 #define _Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TColgp_Array1OfPnt2d_HeaderFile
 #include <TColgp_Array1OfPnt2d.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _TColStd_Array1OfInteger_HeaderFile
 #include <TColStd_Array1OfInteger.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Intf_Polygon2d_HeaderFile
 #include <Intf_Polygon2d.hxx>
-#endif
 class Standard_OutOfRange;
 class Adaptor2d_Curve2d;
 class Geom2dInt_Geom2dCurveTool;
@@ -46,40 +26,40 @@ class gp_Pnt2d;
 
 
 
-class Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter  : public Intf_Polygon2d {
+class Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter  : public Intf_Polygon2d
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter(const Adaptor2d_Curve2d& Curve,const Standard_Integer NbPnt,const IntRes2d_Domain& Domain,const Standard_Real Tol);
+  Standard_EXPORT Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter(const Adaptor2d_Curve2d& Curve, const Standard_Integer NbPnt, const IntRes2d_Domain& Domain, const Standard_Real Tol);
   
-  Standard_EXPORT   Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter(const Adaptor2d_Curve2d& Curve,const Standard_Integer NbPnt,const IntRes2d_Domain& Domain,const Standard_Real Tol,const Bnd_Box2d& OtherBox);
+  Standard_EXPORT Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter(const Adaptor2d_Curve2d& Curve, const Standard_Integer NbPnt, const IntRes2d_Domain& Domain, const Standard_Real Tol, const Bnd_Box2d& OtherBox);
   
-  Standard_EXPORT     void ComputeWithBox(const Adaptor2d_Curve2d& Curve,const Bnd_Box2d& OtherBox) ;
+  Standard_EXPORT   void ComputeWithBox (const Adaptor2d_Curve2d& Curve, const Bnd_Box2d& OtherBox) ;
   
-      virtual  Standard_Real DeflectionOverEstimation() const;
+    virtual   Standard_Real DeflectionOverEstimation()  const;
   
-        void SetDeflectionOverEstimation(const Standard_Real x) ;
+      void SetDeflectionOverEstimation (const Standard_Real x) ;
   
-        void Closed(const Standard_Boolean clos) ;
+      void Closed (const Standard_Boolean clos) ;
   
-      virtual  Standard_Integer NbSegments() const;
+    virtual   Standard_Integer NbSegments()  const;
   
-  Standard_EXPORT   virtual  void Segment(const Standard_Integer theIndex,gp_Pnt2d& theBegin,gp_Pnt2d& theEnd) const;
+  Standard_EXPORT virtual   void Segment (const Standard_Integer theIndex, gp_Pnt2d& theBegin, gp_Pnt2d& theEnd)  const;
   
-        Standard_Real InfParameter() const;
+      Standard_Real InfParameter()  const;
   
-        Standard_Real SupParameter() const;
+      Standard_Real SupParameter()  const;
   
-  Standard_EXPORT     Standard_Boolean AutoIntersectionIsPossible() const;
+  Standard_EXPORT   Standard_Boolean AutoIntersectionIsPossible()  const;
   
-  Standard_EXPORT     Standard_Real ApproxParamOnCurve(const Standard_Integer Index,const Standard_Real ParamOnLine) const;
+  Standard_EXPORT   Standard_Real ApproxParamOnCurve (const Standard_Integer Index, const Standard_Real ParamOnLine)  const;
   
-        Standard_Integer CalculRegion(const Standard_Real x,const Standard_Real y,const Standard_Real x1,const Standard_Real x2,const Standard_Real y1,const Standard_Real y2) const;
+      Standard_Integer CalculRegion (const Standard_Real x, const Standard_Real y, const Standard_Real x1, const Standard_Real x2, const Standard_Real y1, const Standard_Real y2)  const;
   
-  Standard_EXPORT     void Dump() const;
-
+  Standard_EXPORT   void Dump()  const;
 
 
 
@@ -94,15 +74,15 @@ private:
 
 
 
-Standard_Real TheDeflection;
-Standard_Integer NbPntIn;
-Standard_Integer TheMaxNbPoints;
-TColgp_Array1OfPnt2d ThePnts;
-TColStd_Array1OfReal TheParams;
-TColStd_Array1OfInteger TheIndex;
-Standard_Boolean ClosedPolygon;
-Standard_Real Binf;
-Standard_Real Bsup;
+  Standard_Real TheDeflection;
+  Standard_Integer NbPntIn;
+  Standard_Integer TheMaxNbPoints;
+  TColgp_Array1OfPnt2d ThePnts;
+  TColStd_Array1OfReal TheParams;
+  TColStd_Array1OfInteger TheIndex;
+  Standard_Boolean ClosedPolygon;
+  Standard_Real Binf;
+  Standard_Real Bsup;
 
 
 };
@@ -124,7 +104,6 @@ Standard_Real Bsup;
 #undef IntCurve_Polygon2dGen_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter_HeaderFile

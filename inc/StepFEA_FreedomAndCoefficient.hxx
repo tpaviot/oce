@@ -6,46 +6,41 @@
 #ifndef _StepFEA_FreedomAndCoefficient_HeaderFile
 #define _StepFEA_FreedomAndCoefficient_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepFEA_FreedomAndCoefficient_HeaderFile
 #include <Handle_StepFEA_FreedomAndCoefficient.hxx>
-#endif
 
-#ifndef _StepFEA_DegreeOfFreedom_HeaderFile
 #include <StepFEA_DegreeOfFreedom.hxx>
-#endif
-#ifndef _StepElement_MeasureOrUnspecifiedValue_HeaderFile
 #include <StepElement_MeasureOrUnspecifiedValue.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepFEA_DegreeOfFreedom;
 class StepElement_MeasureOrUnspecifiedValue;
 
 
-//! Representation of STEP entity FreedomAndCoefficient <br>
-class StepFEA_FreedomAndCoefficient : public MMgt_TShared {
+//! Representation of STEP entity FreedomAndCoefficient
+class StepFEA_FreedomAndCoefficient : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepFEA_FreedomAndCoefficient();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const StepFEA_DegreeOfFreedom& aFreedom,const StepElement_MeasureOrUnspecifiedValue& aA) ;
-  //! Returns field Freedom <br>
-  Standard_EXPORT     StepFEA_DegreeOfFreedom Freedom() const;
-  //! Set field Freedom <br>
-  Standard_EXPORT     void SetFreedom(const StepFEA_DegreeOfFreedom& Freedom) ;
-  //! Returns field A <br>
-  Standard_EXPORT     StepElement_MeasureOrUnspecifiedValue A() const;
-  //! Set field A <br>
-  Standard_EXPORT     void SetA(const StepElement_MeasureOrUnspecifiedValue& A) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepFEA_FreedomAndCoefficient();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const StepFEA_DegreeOfFreedom& aFreedom, const StepElement_MeasureOrUnspecifiedValue& aA) ;
+  
+  //! Returns field Freedom
+  Standard_EXPORT   StepFEA_DegreeOfFreedom Freedom()  const;
+  
+  //! Set field Freedom
+  Standard_EXPORT   void SetFreedom (const StepFEA_DegreeOfFreedom& Freedom) ;
+  
+  //! Returns field A
+  Standard_EXPORT   StepElement_MeasureOrUnspecifiedValue A()  const;
+  
+  //! Set field A
+  Standard_EXPORT   void SetA (const StepElement_MeasureOrUnspecifiedValue& A) ;
 
 
 
@@ -60,8 +55,8 @@ protected:
 private: 
 
 
-StepFEA_DegreeOfFreedom theFreedom;
-StepElement_MeasureOrUnspecifiedValue theA;
+  StepFEA_DegreeOfFreedom theFreedom;
+  StepElement_MeasureOrUnspecifiedValue theA;
 
 
 };
@@ -70,7 +65,6 @@ StepElement_MeasureOrUnspecifiedValue theA;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_FreedomAndCoefficient_HeaderFile

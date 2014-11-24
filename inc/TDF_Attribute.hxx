@@ -6,58 +6,24 @@
 #ifndef _TDF_Attribute_HeaderFile
 #define _TDF_Attribute_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
 
-#ifndef _TDF_LabelNodePtr_HeaderFile
 #include <TDF_LabelNodePtr.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TDF_AttributeDelta_HeaderFile
 #include <Handle_TDF_AttributeDelta.hxx>
-#endif
-#ifndef _Handle_TDF_DeltaOnAddition_HeaderFile
 #include <Handle_TDF_DeltaOnAddition.hxx>
-#endif
-#ifndef _Handle_TDF_DeltaOnForget_HeaderFile
 #include <Handle_TDF_DeltaOnForget.hxx>
-#endif
-#ifndef _Handle_TDF_DeltaOnResume_HeaderFile
 #include <Handle_TDF_DeltaOnResume.hxx>
-#endif
-#ifndef _Handle_TDF_DeltaOnModification_HeaderFile
 #include <Handle_TDF_DeltaOnModification.hxx>
-#endif
-#ifndef _Handle_TDF_DeltaOnRemoval_HeaderFile
 #include <Handle_TDF_DeltaOnRemoval.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
-#ifndef _Handle_TDF_DataSet_HeaderFile
 #include <Handle_TDF_DataSet.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class Standard_DomainError;
 class TDF_Data;
 class TDF_Label;
@@ -76,285 +42,317 @@ class TDF_IDFilter;
 class TDF_AttributeIndexedMap;
 
 
-//! A class each application has to implement. It is <br>
-//!      used to contain the application data. <br>
-//! This abstract class, alongwith Label, <br>
-//! is one of the cornerstones of Model Editor. <br>
-//! The groundwork is to define the root of <br>
-//! information. This information is to be <br>
-//! attached to a Label, and could be of any of <br>
-//! the following types: <br>
-//! -   a feature <br>
-//! -   a constraint <br>
-//! -   a comment <br>
-//! <br>
-//!          Contents: <br>
-//!          --------- <br>
-//! <br>
-//!          Each software component who'd like to attach its <br>
-//!          own information to a label has to inherit from <br>
-//!          this class and has to add its own information as <br>
-//!          fields of this new class. <br>
-//! <br>
-//!          Identification: <br>
-//!          --------------- <br>
-//! <br>
-//!          An attribute can be identified by its ID. Every <br>
-//!          attributes used with the same meaning (for <br>
-//!          exemple: Integer, String, Topology...) have the <br>
-//!          same worldwide unique ID. <br>
-//! <br>
-//!          Addition: <br>
-//!          --------- <br>
-//! <br>
-//!          An attribute can be added to a label only if there <br>
-//!          is no attribute yet with the same ID. Call-back <br>
-//!          methods are offered, called automatically before <br>
-//!          and after the addition action. <br>
-//! <br>
-//!          Removal: <br>
-//!          -------- <br>
-//! <br>
-//!          An attribute can be removed from a label only if <br>
-//!          there is an attribute yet with the same <br>
-//!          ID. Call-back methods are offered, called <br>
-//!          automatically before and after the removal <br>
-//!          action. A removed attribute cannot be found <br>
-//!          again. After a removal, only an addition of an <br>
-//!          attribute with the sane ID is possible (no <br>
-//!          backup...). <br>
-//! <br>
-//!          Modification & Transaction: <br>
-//!          --------------------------- <br>
-//! <br>
-//!          An attribute can be backuped before a <br>
-//!          modification. Only one backup attribute by <br>
-//!          transaction is possible. The modification can be <br>
-//!          forgotten (abort transaction) or validated (commit <br>
-//!          transaction). <br>
-//! <br>
-//!          BackupCopy and restore are methods used by the backup or <br>
-//!          abort transaction actions. BackupCopy is called by <br>
-//!          Backup to generate an attribute with the same <br>
-//!          contents as the current one. Restore is called <br>
-//!          when aborting a transaction to transfer the <br>
-//!          backuped contents into the current <br>
-//!          attribute. These methods must be implemented by <br>
-//!          end use inheriting classes. <br>
-//! <br>
-//!          A standard implementation of BackupCopy is provided, but <br>
-//!          it is not necessary a good one for any use. <br>
-//! <br>
-//!          Copy use methods: <br>
-//!          ----------------- <br>
-//! <br>
-//!          Paste and NewEmpty methods are used by the copy <br>
-//!          algorithms. The goal of "Paste" is to transfer an <br>
-//!          attribute new contents into another attribute. The <br>
-//!          goal of "NewEmpty" is to create an attribute <br>
-//!          whithout contents, to be further filled with the <br>
-//!          new contents of another one. These 2 methods must <br>
-//!          be implemented by end use inheriting classes. <br>
-//! <br>
-//!          AttributeDelta: <br>
-//!          --------------- <br>
-//! <br>
-//!          An AttributeDelta is the difference between to <br>
-//!          attribute values states.  These methods must be <br>
-//!          implemented by end use inheriting classes, to <br>
-//!          profit from the delta services. <br>
-class TDF_Attribute : public MMgt_TShared {
+//! A class each application has to implement. It is
+//! used to contain the application data.
+//! This abstract class, alongwith Label,
+//! is one of the cornerstones of Model Editor.
+//! The groundwork is to define the root of
+//! information. This information is to be
+//! attached to a Label, and could be of any of
+//! the following types:
+//! -   a feature
+//! -   a constraint
+//! -   a comment
+//!
+//! Contents:
+//! ---------
+//!
+//! Each software component who'd like to attach its
+//! own information to a label has to inherit from
+//! this class and has to add its own information as
+//! fields of this new class.
+//!
+//! Identification:
+//! ---------------
+//!
+//! An attribute can be identified by its ID. Every
+//! attributes used with the same meaning (for
+//! exemple: Integer, String, Topology...) have the
+//! same worldwide unique ID.
+//!
+//! Addition:
+//! ---------
+//!
+//! An attribute can be added to a label only if there
+//! is no attribute yet with the same ID. Call-back
+//! methods are offered, called automatically before
+//! and after the addition action.
+//!
+//! Removal:
+//! --------
+//!
+//! An attribute can be removed from a label only if
+//! there is an attribute yet with the same
+//! ID. Call-back methods are offered, called
+//! automatically before and after the removal
+//! action. A removed attribute cannot be found
+//! again. After a removal, only an addition of an
+//! attribute with the sane ID is possible (no
+//! backup...).
+//!
+//! Modification & Transaction:
+//! ---------------------------
+//!
+//! An attribute can be backuped before a
+//! modification. Only one backup attribute by
+//! transaction is possible. The modification can be
+//! forgotten (abort transaction) or validated (commit
+//! transaction).
+//!
+//! BackupCopy and restore are methods used by the backup or
+//! abort transaction actions. BackupCopy is called by
+//! Backup to generate an attribute with the same
+//! contents as the current one. Restore is called
+//! when aborting a transaction to transfer the
+//! backuped contents into the current
+//! attribute. These methods must be implemented by
+//! end use inheriting classes.
+//!
+//! A standard implementation of BackupCopy is provided, but
+//! it is not necessary a good one for any use.
+//!
+//! Copy use methods:
+//! -----------------
+//!
+//! Paste and NewEmpty methods are used by the copy
+//! algorithms. The goal of "Paste" is to transfer an
+//! attribute new contents into another attribute. The
+//! goal of "NewEmpty" is to create an attribute
+//! whithout contents, to be further filled with the
+//! new contents of another one. These 2 methods must
+//! be implemented by end use inheriting classes.
+//!
+//! AttributeDelta:
+//! ---------------
+//!
+//! An AttributeDelta is the difference between to
+//! attribute values states.  These methods must be
+//! implemented by end use inheriting classes, to
+//! profit from the delta services.
+class TDF_Attribute : public MMgt_TShared
+{
 
 public:
 
-  //! Returns the ID of the attribute. <br>
-//! <br>
-  Standard_EXPORT   virtual const Standard_GUID& ID() const = 0;
-  //! Returns   the   label to which  the   attribute is <br>
-//!          attached. If the  label is not  included in a  DF, <br>
-//!          the label is null. See Label. <br>
-//!  Warning <br>
-//!  If the label is not included in a data <br>
-//!  framework, it is null. <br>
-//!  This function should not be redefined inline. <br>
-  Standard_EXPORT    const TDF_Label Label() const;
-  //! Returns the transaction index in which the <br>
-//!          attribute has been created or modified. <br>
-//! <br>
-        Standard_Integer Transaction() const;
-  //! Returns the upper transaction index until which <br>
-//!          the attribute is/was valid. This number may <br>
-//!          vary. A removed attribute validity range is <br>
-//!          reduced to its transaction index. <br>
-  Standard_EXPORT     Standard_Integer UntilTransaction() const;
-  //! Returns true if the attribute is valid; i.e. not a <br>
-//!          backuped or removed one. <br>
-//! <br>
-        Standard_Boolean IsValid() const;
-  //! Returns true if the attribute has no backup <br>
-//! <br>
-        Standard_Boolean IsNew() const;
-  //! Returns true if the attribute forgotten status is <br>
-//!          set. <br>
-//! <br>//! ShortCut Methods concerning associated attributes <br>
-//!          ================================================= <br>
-        Standard_Boolean IsForgotten() const;
-  //! Returns true if it  exists an associated attribute <br>
-//!          of <me> with <anID> as ID. <br>
-  Standard_EXPORT     Standard_Boolean IsAttribute(const Standard_GUID& anID) const;
-  //! Finds an associated  attribute of  <me>, according <br>
-//!          to <anID>.  the returned <anAttribute> is a  valid <br>
-//!          one. The  method  returns  True if   found,  False <br>
-//!          otherwise.   A removed attribute  cannot be found using <br>
-//! this  method. <br>
-  Standard_EXPORT     Standard_Boolean FindAttribute(const Standard_GUID& anID,Handle(TDF_Attribute)& anAttribute) const;
-  //! Adds   an   Attribute <other>  to  the   label  of <br>
-//!           <me>.Raises if there is  already  one of the same <br>
-//!          GUID fhan <other>. <br>
-  Standard_EXPORT     void AddAttribute(const Handle(TDF_Attribute)& other) const;
-  //! Forgets  the Attribute of  GUID <aguid> associated <br>
-//!          to the label of <me>. Be  carefull that if <me> is <br>
-//!          the attribute of <guid>, <me> will have a null label <br>
-//!          after this call.  If  the attribute doesn't  exist <br>
-//!          returns False. Otherwise returns True. <br>
-  Standard_EXPORT     Standard_Boolean ForgetAttribute(const Standard_GUID& aguid) const;
-  //! Forgets all the  attributes attached to  the label <br>
-//!            of <me>.    Does   it   on  the  sub-labels   if <br>
-//!          <clearChildren> is set  to true.  Of  course, this <br>
-//!           method  is  compatible with Transaction  &  Delta <br>
-//!           mecanisms. Be carefull  that  if <me> will have a <br>
-//!          null label after this call <br>
-  Standard_EXPORT     void ForgetAllAttributes(const Standard_Boolean clearChildren = Standard_True) const;
-  //! Something to do after adding an Attribute to a label. <br>
-  Standard_EXPORT   virtual  void AfterAddition() ;
-  //! Something to do before removing an Attribute from <br>
-//!          a label. <br>
-  Standard_EXPORT   virtual  void BeforeRemoval() ;
-  //! Something to do before forgetting an Attribute to a <br>
-//!          label. <br>
-  Standard_EXPORT   virtual  void BeforeForget() ;
-  //! Something to do after resuming an Attribute from <br>
-//!          a label. <br>
-  Standard_EXPORT   virtual  void AfterResume() ;
-  //! Something to do AFTER creation of an attribute by <br>
-//!          persistent-transient translation. The returned <br>
-//!          status says if AfterUndo has been performed (true) <br>
-//!          or if this callback must be called once again <br>
-//!          further (false). If <forceIt> is set to true, the <br>
-//!          method MUST perform and return true. Does nothing <br>
-//!          by default and returns true. <br>
-  Standard_EXPORT   virtual  Standard_Boolean AfterRetrieval(const Standard_Boolean forceIt = Standard_False) ;
-  //! Something to do before applying <anAttDelta>. The <br>
-//!          returned status says if AfterUndo has been <br>
-//!          performed (true) or if this callback must be <br>
-//!          called once again further (false). If <forceIt> is <br>
-//!          set to true, the method MUST perform and return <br>
-//!          true. Does nothing by default and returns true. <br>
-  Standard_EXPORT   virtual  Standard_Boolean BeforeUndo(const Handle(TDF_AttributeDelta)& anAttDelta,const Standard_Boolean forceIt = Standard_False) ;
-  //! Something to do after applying <anAttDelta>. The <br>
-//!          returned status says if AfterUndo has been <br>
-//!          performed (true) or if this callback must be <br>
-//!          called once again further (false). If <forceIt> is <br>
-//!          set to true, the method MUST perform and return <br>
-//!          true. Does nothing by default and returns true. <br>
-  Standard_EXPORT   virtual  Standard_Boolean AfterUndo(const Handle(TDF_AttributeDelta)& anAttDelta,const Standard_Boolean forceIt = Standard_False) ;
-  //! A callback. <br>
-//!          By default does nothing. <br>
-//!          It is called by TDF_Data::CommitTransaction() method. <br>
-  Standard_EXPORT   virtual  void BeforeCommitTransaction() ;
-  //! Backups the attribute. The backuped attribute is <br>
-//!          flagged "Backuped" and not "Valid". <br>
-//! <br>
-//!          The method does nothing: <br>
-//! <br>
-//!          1) If the attribute transaction number is equal to <br>
-//!          the current transaction number (the attribute has <br>
-//!          already been backuped). <br>
-//! <br>
-//!          2) If the attribute is not attached to a label. <br>
-  Standard_EXPORT     void Backup() ;
-  //! Returns true if the attribute backup status is <br>
-//!          set. This status is set/unset by the <br>
-//!          Backup() method. <br>
-//! <br>
-        Standard_Boolean IsBackuped() const;
-  //! Copies  the attribute  contents into  a  new other <br>
-//!          attribute. It is used by Backup(). <br>
-  Standard_EXPORT   virtual  Handle_TDF_Attribute BackupCopy() const;
-  //! Restores the backuped contents from <anAttribute> <br>
-//!          into this one. It is used when aborting a <br>
-//!          transaction. <br>
-  Standard_EXPORT   virtual  void Restore(const Handle(TDF_Attribute)& anAttribute)  = 0;
-  //! Makes an AttributeDelta because <me> <br>
-//!         appeared. The only known use of a redefinition of <br>
-//!         this method is to return a null handle (no delta). <br>
-  Standard_EXPORT   virtual  Handle_TDF_DeltaOnAddition DeltaOnAddition() const;
-  //! Makes an AttributeDelta because <me> has been <br>
-//!         forgotten. <br>
-  Standard_EXPORT   virtual  Handle_TDF_DeltaOnForget DeltaOnForget() const;
-  //! Makes an AttributeDelta because <me> has been <br>
-//!         resumed. <br>
-  Standard_EXPORT   virtual  Handle_TDF_DeltaOnResume DeltaOnResume() const;
-  //! Makes a DeltaOnModification between <me> and <br>
-//!         <anOldAttribute. <br>
-  Standard_EXPORT   virtual  Handle_TDF_DeltaOnModification DeltaOnModification(const Handle(TDF_Attribute)& anOldAttribute) const;
-  //! Applies a DeltaOnModification to <me>. <br>
-  Standard_EXPORT   virtual  void DeltaOnModification(const Handle(TDF_DeltaOnModification)& aDelta) ;
-  //! Makes a DeltaOnRemoval on <me> because <me> has <br>
-//!         disappeared from the DS. <br>
-  Standard_EXPORT   virtual  Handle_TDF_DeltaOnRemoval DeltaOnRemoval() const;
-  //! Returns an new empty attribute from the good end <br>
-//!          type. It is used by the copy algorithm. <br>
-  Standard_EXPORT   virtual  Handle_TDF_Attribute NewEmpty() const = 0;
-  //! This method is different from the "Copy" one, <br>
-//!          because it is used when copying an attribute from <br>
-//!          a source structure into a target structure. This <br>
-//!          method may paste the contents of <me> into <br>
-//!          <intoAttribute>. <br>
-//! <br>
-//!          The given pasted attribute can be full or empty of <br>
-//!          its contents. But don't make a NEW! Just set the <br>
-//!          contents! <br>
-//! <br>
-//!          It is possible to use <aRelocationTable> to <br>
-//!          get/set the relocation value of a source <br>
-//!          attribute. <br>
-  Standard_EXPORT   virtual  void Paste(const Handle(TDF_Attribute)& intoAttribute,const Handle(TDF_RelocationTable)& aRelocationTable) const = 0;
-  //! Adds the first level referenced attributes and labels <br>
-//!          to <aDataSet>. <br>
-//! <br>
-//!          For this, use the AddLabel or AddAttribute of <br>
-//!          DataSet. <br>
-//! <br>
-//!          If there is none, do not implement the method. <br>
-  Standard_EXPORT   virtual  void References(const Handle(TDF_DataSet)& aDataSet) const;
-  //! Dumps the minimum information about <me> on <br>
-//!          <aStream>. <br>
-//! <br>
-  Standard_EXPORT   virtual  Standard_OStream& Dump(Standard_OStream& anOS) const;
-    Standard_OStream& operator<<(Standard_OStream& anOS) const
+  
+  //! Returns the ID of the attribute.
+  Standard_EXPORT virtual  const  Standard_GUID& ID()  const = 0;
+  
+  //! Returns   the   label to which  the   attribute is
+  //! attached. If the  label is not  included in a  DF,
+  //! the label is null. See Label.
+  //! Warning
+  //! If the label is not included in a data
+  //! framework, it is null.
+  //! This function should not be redefined inline.
+  Standard_EXPORT  const  TDF_Label Label()  const;
+  
+  //! Returns the transaction index in which the
+  //! attribute has been created or modified.
+      Standard_Integer Transaction()  const;
+  
+  //! Returns the upper transaction index until which
+  //! the attribute is/was valid. This number may
+  //! vary. A removed attribute validity range is
+  //! reduced to its transaction index.
+  Standard_EXPORT   Standard_Integer UntilTransaction()  const;
+  
+  //! Returns true if the attribute is valid; i.e. not a
+  //! backuped or removed one.
+      Standard_Boolean IsValid()  const;
+  
+  //! Returns true if the attribute has no backup
+      Standard_Boolean IsNew()  const;
+  
+  //! Returns true if the attribute forgotten status is
+  //! set.
+  //!
+  //! ShortCut Methods concerning associated attributes
+  //! =================================================
+      Standard_Boolean IsForgotten()  const;
+  
+  //! Returns true if it  exists an associated attribute
+  //! of <me> with <anID> as ID.
+  Standard_EXPORT   Standard_Boolean IsAttribute (const Standard_GUID& anID)  const;
+  
+  //! Finds an associated  attribute of  <me>, according
+  //! to <anID>.  the returned <anAttribute> is a  valid
+  //! one. The  method  returns  True if   found,  False
+  //! otherwise.   A removed attribute  cannot be found using
+  //! this  method.
+  Standard_EXPORT   Standard_Boolean FindAttribute (const Standard_GUID& anID, Handle(TDF_Attribute)& anAttribute)  const;
+  
+  //! Adds   an   Attribute <other>  to  the   label  of
+  //! <me>.Raises if there is  already  one of the same
+  //! GUID fhan <other>.
+  Standard_EXPORT   void AddAttribute (const Handle(TDF_Attribute)& other)  const;
+  
+  //! Forgets  the Attribute of  GUID <aguid> associated
+  //! to the label of <me>. Be  carefull that if <me> is
+  //! the attribute of <guid>, <me> will have a null label
+  //! after this call.  If  the attribute doesn't  exist
+  //! returns False. Otherwise returns True.
+  Standard_EXPORT   Standard_Boolean ForgetAttribute (const Standard_GUID& aguid)  const;
+  
+  //! Forgets all the  attributes attached to  the label
+  //! of <me>.    Does   it   on  the  sub-labels   if
+  //! <clearChildren> is set  to true.  Of  course, this
+  //! method  is  compatible with Transaction  &  Delta
+  //! mecanisms. Be carefull  that  if <me> will have a
+  //! null label after this call
+  Standard_EXPORT   void ForgetAllAttributes (const Standard_Boolean clearChildren = Standard_True)  const;
+  
+  //! Something to do after adding an Attribute to a label.
+  Standard_EXPORT virtual   void AfterAddition() ;
+  
+  //! Something to do before removing an Attribute from
+  //! a label.
+  Standard_EXPORT virtual   void BeforeRemoval() ;
+  
+  //! Something to do before forgetting an Attribute to a
+  //! label.
+  Standard_EXPORT virtual   void BeforeForget() ;
+  
+  //! Something to do after resuming an Attribute from
+  //! a label.
+  Standard_EXPORT virtual   void AfterResume() ;
+  
+  //! Something to do AFTER creation of an attribute by
+  //! persistent-transient translation. The returned
+  //! status says if AfterUndo has been performed (true)
+  //! or if this callback must be called once again
+  //! further (false). If <forceIt> is set to true, the
+  //! method MUST perform and return true. Does nothing
+  //! by default and returns true.
+  Standard_EXPORT virtual   Standard_Boolean AfterRetrieval (const Standard_Boolean forceIt = Standard_False) ;
+  
+  //! Something to do before applying <anAttDelta>. The
+  //! returned status says if AfterUndo has been
+  //! performed (true) or if this callback must be
+  //! called once again further (false). If <forceIt> is
+  //! set to true, the method MUST perform and return
+  //! true. Does nothing by default and returns true.
+  Standard_EXPORT virtual   Standard_Boolean BeforeUndo (const Handle(TDF_AttributeDelta)& anAttDelta, const Standard_Boolean forceIt = Standard_False) ;
+  
+  //! Something to do after applying <anAttDelta>. The
+  //! returned status says if AfterUndo has been
+  //! performed (true) or if this callback must be
+  //! called once again further (false). If <forceIt> is
+  //! set to true, the method MUST perform and return
+  //! true. Does nothing by default and returns true.
+  Standard_EXPORT virtual   Standard_Boolean AfterUndo (const Handle(TDF_AttributeDelta)& anAttDelta, const Standard_Boolean forceIt = Standard_False) ;
+  
+  //! A callback.
+  //! By default does nothing.
+  //! It is called by TDF_Data::CommitTransaction() method.
+  Standard_EXPORT virtual   void BeforeCommitTransaction() ;
+  
+  //! Backups the attribute. The backuped attribute is
+  //! flagged "Backuped" and not "Valid".
+  //!
+  //! The method does nothing:
+  //!
+  //! 1) If the attribute transaction number is equal to
+  //! the current transaction number (the attribute has
+  //! already been backuped).
+  //!
+  //! 2) If the attribute is not attached to a label.
+  Standard_EXPORT   void Backup() ;
+  
+  //! Returns true if the attribute backup status is
+  //! set. This status is set/unset by the
+  //! Backup() method.
+      Standard_Boolean IsBackuped()  const;
+  
+  //! Copies  the attribute  contents into  a  new other
+  //! attribute. It is used by Backup().
+  Standard_EXPORT virtual   Handle(TDF_Attribute) BackupCopy()  const;
+  
+  //! Restores the backuped contents from <anAttribute>
+  //! into this one. It is used when aborting a
+  //! transaction.
+  Standard_EXPORT virtual   void Restore (const Handle(TDF_Attribute)& anAttribute)  = 0;
+  
+  //! Makes an AttributeDelta because <me>
+  //! appeared. The only known use of a redefinition of
+  //! this method is to return a null handle (no delta).
+  Standard_EXPORT virtual   Handle(TDF_DeltaOnAddition) DeltaOnAddition()  const;
+  
+  //! Makes an AttributeDelta because <me> has been
+  //! forgotten.
+  Standard_EXPORT virtual   Handle(TDF_DeltaOnForget) DeltaOnForget()  const;
+  
+  //! Makes an AttributeDelta because <me> has been
+  //! resumed.
+  Standard_EXPORT virtual   Handle(TDF_DeltaOnResume) DeltaOnResume()  const;
+  
+  //! Makes a DeltaOnModification between <me> and
+  //! <anOldAttribute.
+  Standard_EXPORT virtual   Handle(TDF_DeltaOnModification) DeltaOnModification (const Handle(TDF_Attribute)& anOldAttribute)  const;
+  
+  //! Applies a DeltaOnModification to <me>.
+  Standard_EXPORT virtual   void DeltaOnModification (const Handle(TDF_DeltaOnModification)& aDelta) ;
+  
+  //! Makes a DeltaOnRemoval on <me> because <me> has
+  //! disappeared from the DS.
+  Standard_EXPORT virtual   Handle(TDF_DeltaOnRemoval) DeltaOnRemoval()  const;
+  
+  //! Returns an new empty attribute from the good end
+  //! type. It is used by the copy algorithm.
+  Standard_EXPORT virtual   Handle(TDF_Attribute) NewEmpty()  const = 0;
+  
+  //! This method is different from the "Copy" one,
+  //! because it is used when copying an attribute from
+  //! a source structure into a target structure. This
+  //! method may paste the contents of <me> into
+  //! <intoAttribute>.
+  //!
+  //! The given pasted attribute can be full or empty of
+  //! its contents. But don't make a NEW! Just set the
+  //! contents!
+  //!
+  //! It is possible to use <aRelocationTable> to
+  //! get/set the relocation value of a source
+  //! attribute.
+  Standard_EXPORT virtual   void Paste (const Handle(TDF_Attribute)& intoAttribute, const Handle(TDF_RelocationTable)& aRelocationTable)  const = 0;
+  
+  //! Adds the first level referenced attributes and labels
+  //! to <aDataSet>.
+  //!
+  //! For this, use the AddLabel or AddAttribute of
+  //! DataSet.
+  //!
+  //! If there is none, do not implement the method.
+  Standard_EXPORT virtual   void References (const Handle(TDF_DataSet)& aDataSet)  const;
+  
+  //! Dumps the minimum information about <me> on
+  //! <aStream>.
+  Standard_EXPORT virtual   Standard_OStream& Dump (Standard_OStream& anOS)  const;
+  Standard_OStream& operator<< (Standard_OStream& anOS)  const
 {
   return Dump(anOS);
 }
-  //! Dumps the attribute content on <aStream>, using <br>
-//!          <aMap> like this: if an attribute is not in the <br>
-//!          map, first put add it to the map and then dump it. <br>
-//!          Use the map rank instead of dumping each attribute <br>
-//!          field. <br>
-  Standard_EXPORT   virtual  void ExtendedDump(Standard_OStream& anOS,const TDF_IDFilter& aFilter,TDF_AttributeIndexedMap& aMap) const;
-  //! Forgets the attribute. <aTransaction> is the <br>
-//!          current transaction in which the forget is done. A <br>
-//!          forgotten attribute is also flagged not "Valid". <br>
-//! <br>
-//!          A forgotten attribute is invisible. Set also the <br>
-//!          "Valid" status to False. Obvioulsy, DF cannot <br>
-//!          empty an attribute (this has a semantic <br>
-//!          signification), but can remove it from the <br>
-//!          structure. So, a forgotten attribute is NOT an empty <br>
-//!          one, but a soon DEAD one. <br>
-//! <br>
-//!          Should be private. <br>
-  Standard_EXPORT     void Forget(const Standard_Integer aTransaction) ;
+  
+  //! Dumps the attribute content on <aStream>, using
+  //! <aMap> like this: if an attribute is not in the
+  //! map, first put add it to the map and then dump it.
+  //! Use the map rank instead of dumping each attribute
+  //! field.
+  Standard_EXPORT virtual   void ExtendedDump (Standard_OStream& anOS, const TDF_IDFilter& aFilter, TDF_AttributeIndexedMap& aMap)  const;
+  
+  //! Forgets the attribute. <aTransaction> is the
+  //! current transaction in which the forget is done. A
+  //! forgotten attribute is also flagged not "Valid".
+  //!
+  //! A forgotten attribute is invisible. Set also the
+  //! "Valid" status to False. Obvioulsy, DF cannot
+  //! empty an attribute (this has a semantic
+  //! signification), but can remove it from the
+  //! structure. So, a forgotten attribute is NOT an empty
+  //! one, but a soon DEAD one.
+  //!
+  //! Should be private.
+  Standard_EXPORT   void Forget (const Standard_Integer aTransaction) ;
 
 
 friend class TDF_Data;
@@ -368,30 +366,33 @@ friend class TDF_DeltaOnForget;
 
 protected:
 
-  //! Initializes fields. <br>
-  Standard_EXPORT   TDF_Attribute();
+  
+  //! Initializes fields.
+  Standard_EXPORT TDF_Attribute();
 
 
 
 private: 
 
-  //! Set the "Valid" status with <aStatus>. <br>
-//! <br>
-        void Validate(const Standard_Boolean aStatus) ;
-  //! Resumes the attribute (undos Forget action). <br>
-  Standard_EXPORT     void Resume() ;
-  //! Set the "backuped" status with <aStatus>. <br>
-//! <br>
-        void Backup(const Standard_Boolean aStatus) ;
-  //! Removes the last backup attribute, if it exists. <br>
-  Standard_EXPORT     void RemoveBackup() ;
+  
+  //! Set the "Valid" status with <aStatus>.
+      void Validate (const Standard_Boolean aStatus) ;
+  
+  //! Resumes the attribute (undos Forget action).
+  Standard_EXPORT   void Resume() ;
+  
+  //! Set the "backuped" status with <aStatus>.
+      void Backup (const Standard_Boolean aStatus) ;
+  
+  //! Removes the last backup attribute, if it exists.
+  Standard_EXPORT   void RemoveBackup() ;
 
-TDF_LabelNodePtr myLabelNode;
-Standard_Integer myTransaction;
-Standard_Integer mySavedTransaction;
-Standard_Integer myFlags;
-Handle_TDF_Attribute myNext;
-Handle_TDF_Attribute myBackup;
+  TDF_LabelNodePtr myLabelNode;
+  Standard_Integer myTransaction;
+  Standard_Integer mySavedTransaction;
+  Standard_Integer myFlags;
+  Handle(TDF_Attribute) myNext;
+  Handle(TDF_Attribute) myBackup;
 
 
 };
@@ -401,7 +402,6 @@ Handle_TDF_Attribute myBackup;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_Attribute_HeaderFile

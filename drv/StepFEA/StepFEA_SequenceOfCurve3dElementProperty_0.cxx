@@ -5,21 +5,13 @@
 
 #include <StepFEA_SequenceOfCurve3dElementProperty.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StepFEA_Curve3dElementProperty_HeaderFile
 #include <StepFEA_Curve3dElementProperty.hxx>
-#endif
-#ifndef _StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty_HeaderFile
 #include <StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty.hxx>
-#endif
  
 
-#define SeqItem Handle_StepFEA_Curve3dElementProperty
+#define SeqItem Handle(StepFEA_Curve3dElementProperty)
 #define SeqItem_hxx <StepFEA_Curve3dElementProperty.hxx>
 #define TCollection_SequenceNode StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty
 #define TCollection_SequenceNode_hxx <StepFEA_SequenceNodeOfSequenceOfCurve3dElementProperty.hxx>

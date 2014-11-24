@@ -6,22 +6,15 @@
 #ifndef _Handle_STEPControl_ActorRead_HeaderFile
 #define _Handle_STEPControl_ActorRead_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Transfer_ActorOfTransientProcess_HeaderFile
 #include <Handle_Transfer_ActorOfTransientProcess.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Transfer_ActorOfTransientProcess);
 class STEPControl_ActorRead;
 
-DEFINE_STANDARD_HANDLE(STEPControl_ActorRead,Transfer_ActorOfTransientProcess)
+DEFINE_STANDARD_HANDLE(STEPControl_ActorRead, Transfer_ActorOfTransientProcess)
 
-#endif
+#endif // _Handle_STEPControl_ActorRead_HeaderFile

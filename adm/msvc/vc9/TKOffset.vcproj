@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TKOffset"
-	ProjectGUID="{AA8A3775-0E2B-01B7-066F-2FE3BF114378}"
+	ProjectGUID="{F7C748B3-0B04-097F-0426-FE3E44AA053B}"
 	TargetFrameworkVersion="0"
 	>
 	<Platforms>
@@ -248,7 +248,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BRepOffsetAPI;..\..\..\src\BRepOffsetAPI;..\..\..\drv\Draft;..\..\..\src\Draft;..\..\..\drv\BRepOffset;..\..\..\src\BRepOffset;..\..\..\drv\BiTgte;..\..\..\src\BiTgte;$(CSF_OPT_INC)"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BRepOffsetAPI_DLL;__Draft_DLL;__BRepOffset_DLL;__BiTgte_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BRepOffsetAPI_DLL;__Draft_DLL;__BRepOffset_DLL;__BiTgte_DLL"
 				StringPooling="true"
 				ExceptionHandling="2"
 				RuntimeLibrary="2"
@@ -268,7 +268,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BRepOffsetAPI_DLL;__Draft_DLL;__BRepOffset_DLL;__BiTgte_DLL;_OCC64"
+				PreprocessorDefinitions="NDEBUG;WIN64;_WINDOWS;WNT;No_Exception;CSFDB;$(CSF_DEFINES);__BRepOffsetAPI_DLL;__Draft_DLL;__BRepOffset_DLL;__BiTgte_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -343,7 +343,7 @@
 				AdditionalIncludeDirectories="..\..\..\inc;..\..\..\drv\BRepOffsetAPI;..\..\..\src\BRepOffsetAPI;..\..\..\drv\Draft;..\..\..\src\Draft;..\..\..\drv\BRepOffset;..\..\..\src\BRepOffset;..\..\..\drv\BiTgte;..\..\..\src\BiTgte;$(CSF_OPT_INC)"
 				Optimization="0"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BRepOffsetAPI_DLL;__Draft_DLL;__BRepOffset_DLL;__BiTgte_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BRepOffsetAPI_DLL;__Draft_DLL;__BRepOffset_DLL;__BiTgte_DLL"
 				ExceptionHandling="2"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -365,7 +365,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				AdditionalIncludeDirectories="..\..\..\inc;$(CSF_OPT_INC)"
-				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BRepOffsetAPI_DLL;__Draft_DLL;__BRepOffset_DLL;__BiTgte_DLL;_OCC64"
+				PreprocessorDefinitions="DEB;_DEBUG;WIN64;_WINDOWS;WNT;CSFDB;$(CSF_DEFINES);__BRepOffsetAPI_DLL;__Draft_DLL;__BRepOffset_DLL;__BiTgte_DLL"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"

@@ -6,31 +6,15 @@
 #ifndef _AIS_MapOfInteractive_HeaderFile
 #define _AIS_MapOfInteractive_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_AIS_InteractiveObject_HeaderFile
 #include <Handle_AIS_InteractiveObject.hxx>
-#endif
-#ifndef _Handle_AIS_StdMapNodeOfMapOfInteractive_HeaderFile
 #include <Handle_AIS_StdMapNodeOfMapOfInteractive.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class AIS_InteractiveObject;
 class TColStd_MapTransientHasher;
 class AIS_StdMapNodeOfMapOfInteractive;
@@ -38,36 +22,36 @@ class AIS_MapIteratorOfMapOfInteractive;
 
 
 
-class AIS_MapOfInteractive  : public TCollection_BasicMap {
+class AIS_MapOfInteractive  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   AIS_MapOfInteractive(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT AIS_MapOfInteractive(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT   AIS_MapOfInteractive(const AIS_MapOfInteractive& Other);
+  Standard_EXPORT AIS_MapOfInteractive(const AIS_MapOfInteractive& Other);
   
-  Standard_EXPORT     AIS_MapOfInteractive& Assign(const AIS_MapOfInteractive& Other) ;
-    AIS_MapOfInteractive& operator =(const AIS_MapOfInteractive& Other) 
+  Standard_EXPORT   AIS_MapOfInteractive& Assign (const AIS_MapOfInteractive& Other) ;
+  AIS_MapOfInteractive& operator = (const AIS_MapOfInteractive& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~AIS_MapOfInteractive()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Add(const Handle(AIS_InteractiveObject)& aKey) ;
+  Standard_EXPORT   Standard_Boolean Add (const Handle(AIS_InteractiveObject)& aKey) ;
   
-  Standard_EXPORT     Standard_Boolean Contains(const Handle(AIS_InteractiveObject)& aKey) const;
+  Standard_EXPORT   Standard_Boolean Contains (const Handle(AIS_InteractiveObject)& aKey)  const;
   
-  Standard_EXPORT     Standard_Boolean Remove(const Handle(AIS_InteractiveObject)& aKey) ;
-
+  Standard_EXPORT   Standard_Boolean Remove (const Handle(AIS_InteractiveObject)& aKey) ;
 
 
 
@@ -90,7 +74,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_MapOfInteractive_HeaderFile

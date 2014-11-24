@@ -6,61 +6,54 @@
 #ifndef _IGESDimen_WitnessLine_HeaderFile
 #define _IGESDimen_WitnessLine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESDimen_WitnessLine_HeaderFile
 #include <Handle_IGESDimen_WitnessLine.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray1OfXY_HeaderFile
 #include <Handle_TColgp_HArray1OfXY.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
 class TColgp_HArray1OfXY;
 class Standard_OutOfRange;
 class gp_Pnt;
 
 
-//! defines WitnessLine, Type <106> Form <40> <br>
-//!          in package IGESDimen <br>
-//!          Contains one or more straight line segments associated <br>
-//!          with drafting entities of various types <br>
-class IGESDimen_WitnessLine : public IGESData_IGESEntity {
+//! defines WitnessLine, Type <106> Form <40>
+//! in package IGESDimen
+//! Contains one or more straight line segments associated
+//! with drafting entities of various types
+class IGESDimen_WitnessLine : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESDimen_WitnessLine();
-  //! This method is used to set the fields of the class <br>
-//!           WitnessLine <br>
-//!       - dataType   : Interpretation Flag, always = 1 <br>
-//!       - aDispl     : Common z displacement <br>
-//!       - dataPoints : Data points <br>
-  Standard_EXPORT     void Init(const Standard_Integer dataType,const Standard_Real aDisp,const Handle(TColgp_HArray1OfXY)& dataPoints) ;
-  //! returns Interpretation Flag, always = 1 <br>
-  Standard_EXPORT     Standard_Integer Datatype() const;
-  //! returns number of Data Points <br>
-  Standard_EXPORT     Standard_Integer NbPoints() const;
-  //! returns common Z displacement <br>
-  Standard_EXPORT     Standard_Real ZDisplacement() const;
-  //! returns Index'th. data point <br>
-//! raises exception if Index <= 0 or Index > NbPoints <br>
-  Standard_EXPORT     gp_Pnt Point(const Standard_Integer Index) const;
-  //! returns data point after Transformation. <br>
-//! raises exception if Index <= 0 or Index > NbPoints <br>
-  Standard_EXPORT     gp_Pnt TransformedPoint(const Standard_Integer Index) const;
+  Standard_EXPORT IGESDimen_WitnessLine();
+  
+  //! This method is used to set the fields of the class
+  //! WitnessLine
+  //! - dataType   : Interpretation Flag, always = 1
+  //! - aDispl     : Common z displacement
+  //! - dataPoints : Data points
+  Standard_EXPORT   void Init (const Standard_Integer dataType, const Standard_Real aDisp, const Handle(TColgp_HArray1OfXY)& dataPoints) ;
+  
+  //! returns Interpretation Flag, always = 1
+  Standard_EXPORT   Standard_Integer Datatype()  const;
+  
+  //! returns number of Data Points
+  Standard_EXPORT   Standard_Integer NbPoints()  const;
+  
+  //! returns common Z displacement
+  Standard_EXPORT   Standard_Real ZDisplacement()  const;
+  
+  //! returns Index'th. data point
+  //! raises exception if Index <= 0 or Index > NbPoints
+  Standard_EXPORT   gp_Pnt Point (const Standard_Integer Index)  const;
+  
+  //! returns data point after Transformation.
+  //! raises exception if Index <= 0 or Index > NbPoints
+  Standard_EXPORT   gp_Pnt TransformedPoint (const Standard_Integer Index)  const;
 
 
 
@@ -75,9 +68,9 @@ protected:
 private: 
 
 
-Standard_Integer theDatatype;
-Standard_Real theZDisplacement;
-Handle_TColgp_HArray1OfXY theDataPoints;
+  Standard_Integer theDatatype;
+  Standard_Real theZDisplacement;
+  Handle(TColgp_HArray1OfXY) theDataPoints;
 
 
 };
@@ -86,7 +79,6 @@ Handle_TColgp_HArray1OfXY theDataPoints;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESDimen_WitnessLine_HeaderFile

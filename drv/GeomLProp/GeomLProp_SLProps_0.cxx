@@ -5,36 +5,18 @@
 
 #include <GeomLProp_SLProps.hxx>
 
-#ifndef _Geom_Surface_HeaderFile
 #include <Geom_Surface.hxx>
-#endif
-#ifndef _LProp_BadContinuity_HeaderFile
 #include <LProp_BadContinuity.hxx>
-#endif
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _LProp_NotDefined_HeaderFile
 #include <LProp_NotDefined.hxx>
-#endif
-#ifndef _GeomLProp_SurfaceTool_HeaderFile
 #include <GeomLProp_SurfaceTool.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
  
 
-#define Surface Handle_Geom_Surface
+#define Surface Handle(Geom_Surface)
 #define Surface_hxx <Geom_Surface.hxx>
 #define Tool GeomLProp_SurfaceTool
 #define Tool_hxx <GeomLProp_SurfaceTool.hxx>

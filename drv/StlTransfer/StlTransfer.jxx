@@ -1,9 +1,3 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _StlMesh_Mesh_HeaderFile
 #include <StlMesh_Mesh.hxx>
-#endif
-#ifndef _StlTransfer_HeaderFile
 #include <StlTransfer.hxx>
-#endif

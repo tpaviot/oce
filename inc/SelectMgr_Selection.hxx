@@ -6,119 +6,110 @@
 #ifndef _SelectMgr_Selection_HeaderFile
 #define _SelectMgr_Selection_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_SelectMgr_Selection_HeaderFile
 #include <Handle_SelectMgr_Selection.hxx>
-#endif
 
-#ifndef _SelectBasics_ListOfSensitive_HeaderFile
 #include <SelectBasics_ListOfSensitive.hxx>
-#endif
-#ifndef _SelectBasics_ListIteratorOfListOfSensitive_HeaderFile
 #include <SelectBasics_ListIteratorOfListOfSensitive.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _SelectMgr_TypeOfUpdate_HeaderFile
 #include <SelectMgr_TypeOfUpdate.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_SelectBasics_SensitiveEntity_HeaderFile
 #include <Handle_SelectBasics_SensitiveEntity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NullObject;
 class SelectBasics_SensitiveEntity;
 
 
-//!  Represents the state of a given selection mode for a <br>
-//! Selectable Object. Contains all the sensitive entities available for this mode. <br>
-//! An interactive object can have an indefinite number of <br>
-//! modes of selection, each representing a <br>
-//! "decomposition" into sensitive primitives; each <br>
-//! primitive has an Owner (SelectMgr_EntityOwner) <br>
-//! which allows us to identify the exact entity which has <br>
-//! been detected. Each Selection mode is identified by <br>
-//! an index. The set of sensitive primitives which <br>
-//! correspond to a given mode is stocked in a <br>
-//! SelectMgr_Selection object. By Convention, the <br>
-//! default selection mode which allows us to grasp the <br>
-//! Interactive object in its entirety will be mode 0. <br>
-//! AIS_Trihedron : 4 selection modes <br>
-//! -   mode 0 : selection of a trihedron <br>
-//! -   mode 1 : selection of the origin of the trihedron <br>
-//! -   mode 2 : selection of the axes <br>
-//! -   mode 3 : selection of the planes XOY, YOZ, XOZ <br>
-//! when you activate one of modes 1 2 3 4 , you pick AIS objects of type: <br>
-//! -   AIS_Point <br>
-//! -   AIS_Axis (and information on the type of axis) <br>
-//! -   AIS_Plane (and information on the type of plane). <br>
-//!   AIS_PlaneTrihedron offers 3 selection modes: <br>
-//! -   mode 0 : selection of the whole trihedron <br>
-//! -   mode 1 : selection of the origin of the trihedron <br>
-//! -   mode 2 : selection of the axes - same remarks as for the Trihedron. <br>
-//! AIS_Shape : 7 maximum selection modes, depending <br>
-//! on the complexity of the shape : <br>
-//! -   mode 0 : selection of the AIS_Shape <br>
-//! -   mode 1 : selection of the vertices <br>
-//! -   mode 2 : selection of the edges <br>
-//! -   mode 3 : selection of the wires <br>
-//! -   mode 4 : selection of the faces <br>
-//! -   mode 5 : selection of the shells <br>
-//! -   mode 6 :   selection of the constituent solids. <br>
-class SelectMgr_Selection : public MMgt_TShared {
+//! Represents the state of a given selection mode for a
+//! Selectable Object. Contains all the sensitive entities available for this mode.
+//! An interactive object can have an indefinite number of
+//! modes of selection, each representing a
+//! "decomposition" into sensitive primitives; each
+//! primitive has an Owner (SelectMgr_EntityOwner)
+//! which allows us to identify the exact entity which has
+//! been detected. Each Selection mode is identified by
+//! an index. The set of sensitive primitives which
+//! correspond to a given mode is stocked in a
+//! SelectMgr_Selection object. By Convention, the
+//! default selection mode which allows us to grasp the
+//! Interactive object in its entirety will be mode 0.
+//! AIS_Trihedron : 4 selection modes
+//! -   mode 0 : selection of a trihedron
+//! -   mode 1 : selection of the origin of the trihedron
+//! -   mode 2 : selection of the axes
+//! -   mode 3 : selection of the planes XOY, YOZ, XOZ
+//! when you activate one of modes 1 2 3 4 , you pick AIS objects of type:
+//! -   AIS_Point
+//! -   AIS_Axis (and information on the type of axis)
+//! -   AIS_Plane (and information on the type of plane).
+//! AIS_PlaneTrihedron offers 3 selection modes:
+//! -   mode 0 : selection of the whole trihedron
+//! -   mode 1 : selection of the origin of the trihedron
+//! -   mode 2 : selection of the axes - same remarks as for the Trihedron.
+//! AIS_Shape : 7 maximum selection modes, depending
+//! on the complexity of the shape :
+//! -   mode 0 : selection of the AIS_Shape
+//! -   mode 1 : selection of the vertices
+//! -   mode 2 : selection of the edges
+//! -   mode 3 : selection of the wires
+//! -   mode 4 : selection of the faces
+//! -   mode 5 : selection of the shells
+//! -   mode 6 :   selection of the constituent solids.
+class SelectMgr_Selection : public MMgt_TShared
+{
 
 public:
 
-  //! Constructs a selection object defined by the selection mode IdMode. <br>
-//! The default setting 0 is the selection mode for a shape in its entirety. <br>
-  Standard_EXPORT   SelectMgr_Selection(const Standard_Integer IdMode = 0);
   
-  Standard_EXPORT     void Destroy() ;
+  //! Constructs a selection object defined by the selection mode IdMode.
+  //! The default setting 0 is the selection mode for a shape in its entirety.
+  Standard_EXPORT SelectMgr_Selection(const Standard_Integer IdMode = 0);
+  
+  Standard_EXPORT   void Destroy() ;
 ~SelectMgr_Selection()
 {
   Destroy();
 }
-  //! Adds the sensitive primitive aprimitive to the list of <br>
-//! stored entities in this object. <br>
-//! Raises NullObject if the primitive is a null handle. <br>
-  Standard_EXPORT     void Add(const Handle(SelectBasics_SensitiveEntity)& aprimitive) ;
-  //! empties the selection from all the stored entities <br>
-  Standard_EXPORT     void Clear() ;
-  //! returns true if no sensitive entity is stored. <br>
-  Standard_EXPORT     Standard_Boolean IsEmpty() const;
-  //! returns the selection mode represented by this selection <br>
-        Standard_Integer Mode() const;
-  //! Begins an iteration scanning for sensitive primitives. <br>
-        void Init() ;
-  //! Continues the iteration scanning for sensitive <br>
-//! primitives with the mode defined in this framework. <br>
-        Standard_Boolean More() const;
-  //! Returns the next sensitive primitive found in the <br>
-//! iteration. This is a scan for entities with the mode <br>
-//! defined in this framework. <br>
-        void Next() ;
-  //! Returns any sensitive primitive in this framework. <br>
-       const Handle_SelectBasics_SensitiveEntity& Sensitive() const;
-  //! Returns the flag UpdateFlag. <br>
-//! This flage gives the update status of this framework <br>
-//! in a ViewerSelector object: <br>
-//! -   full <br>
-//! -   partial, or <br>
-//! -   none. <br>
-        SelectMgr_TypeOfUpdate UpdateStatus() const;
   
-        void UpdateStatus(const SelectMgr_TypeOfUpdate UpdateFlag) ;
+  //! Adds the sensitive primitive aprimitive to the list of
+  //! stored entities in this object.
+  //! Raises NullObject if the primitive is a null handle.
+  Standard_EXPORT   void Add (const Handle(SelectBasics_SensitiveEntity)& aprimitive) ;
+  
+  //! empties the selection from all the stored entities
+  Standard_EXPORT   void Clear() ;
+  
+  //! returns true if no sensitive entity is stored.
+  Standard_EXPORT   Standard_Boolean IsEmpty()  const;
+  
+  //! returns the selection mode represented by this selection
+      Standard_Integer Mode()  const;
+  
+  //! Begins an iteration scanning for sensitive primitives.
+      void Init() ;
+  
+  //! Continues the iteration scanning for sensitive
+  //! primitives with the mode defined in this framework.
+      Standard_Boolean More()  const;
+  
+  //! Returns the next sensitive primitive found in the
+  //! iteration. This is a scan for entities with the mode
+  //! defined in this framework.
+      void Next() ;
+  
+  //! Returns any sensitive primitive in this framework.
+     const  Handle(SelectBasics_SensitiveEntity)& Sensitive()  const;
+  
+  //! Returns the flag UpdateFlag.
+  //! This flage gives the update status of this framework
+  //! in a ViewerSelector object:
+  //! -   full
+  //! -   partial, or
+  //! -   none.
+      SelectMgr_TypeOfUpdate UpdateStatus()  const;
+  
+      void UpdateStatus (const SelectMgr_TypeOfUpdate UpdateFlag) ;
 
 
 
@@ -132,10 +123,10 @@ protected:
 private: 
 
 
-SelectBasics_ListOfSensitive myentities;
-SelectBasics_ListIteratorOfListOfSensitive myit;
-Standard_Integer myMode;
-SelectMgr_TypeOfUpdate myUpdateStatus;
+  SelectBasics_ListOfSensitive myentities;
+  SelectBasics_ListIteratorOfListOfSensitive myit;
+  Standard_Integer myMode;
+  SelectMgr_TypeOfUpdate myUpdateStatus;
 
 
 };
@@ -145,7 +136,6 @@ SelectMgr_TypeOfUpdate myUpdateStatus;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SelectMgr_Selection_HeaderFile

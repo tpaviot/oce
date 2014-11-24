@@ -5,25 +5,13 @@
 
 #include <ShapeFix_DataMapNodeOfDataMapOfShapeBox2d.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Bnd_Box2d_HeaderFile
 #include <Bnd_Box2d.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _ShapeFix_DataMapOfShapeBox2d_HeaderFile
 #include <ShapeFix_DataMapOfShapeBox2d.hxx>
-#endif
-#ifndef _ShapeFix_DataMapIteratorOfDataMapOfShapeBox2d_HeaderFile
 #include <ShapeFix_DataMapIteratorOfDataMapOfShapeBox2d.hxx>
-#endif
 
  
 

@@ -5,19 +5,11 @@
 
 #include <TDataStd_ListNodeOfListOfExtendedString.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _TDataStd_ListOfExtendedString_HeaderFile
 #include <TDataStd_ListOfExtendedString.hxx>
-#endif
-#ifndef _TDataStd_ListIteratorOfListOfExtendedString_HeaderFile
 #include <TDataStd_ListIteratorOfListOfExtendedString.hxx>
-#endif
 
  
 

@@ -6,37 +6,17 @@
 #ifndef _PColgp_HSequenceOfXYZ_HeaderFile
 #define _PColgp_HSequenceOfXYZ_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PColgp_HSequenceOfXYZ_HeaderFile
 #include <Handle_PColgp_HSequenceOfXYZ.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _Handle_PColgp_HSequenceOfXYZ_HeaderFile
 #include <Handle_PColgp_HSequenceOfXYZ.hxx>
-#endif
-#ifndef _Handle_PColgp_SeqNodeOfHSequenceOfXYZ_HeaderFile
 #include <Handle_PColgp_SeqNodeOfHSequenceOfXYZ.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
 class PColgp_SeqNodeOfHSequenceOfXYZ;
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
@@ -44,62 +24,63 @@ class PColgp_SeqExplorerOfHSequenceOfXYZ;
 class gp_XYZ;
 
 
-class PColgp_HSequenceOfXYZ : public Standard_Persistent {
+class PColgp_HSequenceOfXYZ : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PColgp_HSequenceOfXYZ();
+  Standard_EXPORT PColgp_HSequenceOfXYZ();
   
-  Standard_EXPORT     Standard_Boolean IsEmpty() const;
+  Standard_EXPORT   Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     Standard_Integer Length() const;
+  Standard_EXPORT   Standard_Integer Length()  const;
   
-  Standard_EXPORT     gp_XYZ First() const;
+  Standard_EXPORT   gp_XYZ First()  const;
   
-  Standard_EXPORT     gp_XYZ Last() const;
+  Standard_EXPORT   gp_XYZ Last()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void Append(const gp_XYZ& T) ;
+  Standard_EXPORT   void Append (const gp_XYZ& T) ;
   
-  Standard_EXPORT     void Append(const Handle(PColgp_HSequenceOfXYZ)& S) ;
+  Standard_EXPORT   void Append (const Handle(PColgp_HSequenceOfXYZ)& S) ;
   
-  Standard_EXPORT     void Prepend(const gp_XYZ& T) ;
+  Standard_EXPORT   void Prepend (const gp_XYZ& T) ;
   
-  Standard_EXPORT     void Prepend(const Handle(PColgp_HSequenceOfXYZ)& S) ;
+  Standard_EXPORT   void Prepend (const Handle(PColgp_HSequenceOfXYZ)& S) ;
   
-  Standard_EXPORT     void Reverse() ;
+  Standard_EXPORT   void Reverse() ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer Index,const gp_XYZ& T) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer Index, const gp_XYZ& T) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer Index,const Handle(PColgp_HSequenceOfXYZ)& S) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer Index, const Handle(PColgp_HSequenceOfXYZ)& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const gp_XYZ& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const gp_XYZ& T) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(PColgp_HSequenceOfXYZ)& S) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(PColgp_HSequenceOfXYZ)& S) ;
   
-  Standard_EXPORT     void Exchange(const Standard_Integer I,const Standard_Integer J) ;
+  Standard_EXPORT   void Exchange (const Standard_Integer I, const Standard_Integer J) ;
   
-  Standard_EXPORT     Handle_PColgp_HSequenceOfXYZ SubSequence(const Standard_Integer FromIndex,const Standard_Integer ToIndex) const;
+  Standard_EXPORT   Handle(PColgp_HSequenceOfXYZ) SubSequence (const Standard_Integer FromIndex, const Standard_Integer ToIndex)  const;
   
-  Standard_EXPORT     Handle_PColgp_HSequenceOfXYZ Split(const Standard_Integer Index) ;
+  Standard_EXPORT   Handle(PColgp_HSequenceOfXYZ) Split (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const gp_XYZ& T) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const gp_XYZ& T) ;
   
-  Standard_EXPORT     gp_XYZ Value(const Standard_Integer Index) const;
+  Standard_EXPORT   gp_XYZ Value (const Standard_Integer Index)  const;
   
-  Standard_EXPORT     Standard_Boolean Contains(const gp_XYZ& T) const;
+  Standard_EXPORT   Standard_Boolean Contains (const gp_XYZ& T)  const;
   
-  Standard_EXPORT     Standard_Integer Location(const Standard_Integer N,const gp_XYZ& T,const Standard_Integer FromIndex,const Standard_Integer ToIndex) const;
+  Standard_EXPORT   Standard_Integer Location (const Standard_Integer N, const gp_XYZ& T, const Standard_Integer FromIndex, const Standard_Integer ToIndex)  const;
   
-  Standard_EXPORT     Standard_Integer Location(const Standard_Integer N,const gp_XYZ& T) const;
+  Standard_EXPORT   Standard_Integer Location (const Standard_Integer N, const gp_XYZ& T)  const;
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
   
-  Standard_EXPORT     void Destroy() ;
+  Standard_EXPORT   void Destroy() ;
 ~PColgp_HSequenceOfXYZ()
 {
   Destroy();
@@ -128,13 +109,13 @@ protected:
 private: 
 
   
-  Standard_EXPORT     Handle_PColgp_SeqNodeOfHSequenceOfXYZ GetFirst() const;
+  Standard_EXPORT   Handle(PColgp_SeqNodeOfHSequenceOfXYZ) GetFirst()  const;
   
-  Standard_EXPORT     Handle_PColgp_SeqNodeOfHSequenceOfXYZ GetLast() const;
+  Standard_EXPORT   Handle(PColgp_SeqNodeOfHSequenceOfXYZ) GetLast()  const;
 
-Handle_PColgp_SeqNodeOfHSequenceOfXYZ FirstItem;
-Handle_PColgp_SeqNodeOfHSequenceOfXYZ LastItem;
-Standard_Integer Size;
+  Handle(PColgp_SeqNodeOfHSequenceOfXYZ) FirstItem;
+  Handle(PColgp_SeqNodeOfHSequenceOfXYZ) LastItem;
+  Standard_Integer Size;
 
 
 };
@@ -143,7 +124,6 @@ Standard_Integer Size;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PColgp_HSequenceOfXYZ_HeaderFile

@@ -6,39 +6,31 @@
 #ifndef _IFGraph_StrongComponants_HeaderFile
 #define _IFGraph_StrongComponants_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _IFGraph_SubPartsIterator_HeaderFile
 #include <IFGraph_SubPartsIterator.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Interface_Graph;
 
 
-//! determines strong componants of a graph, that is <br>
-//!           isolated entities (single componants) or loops <br>
-class IFGraph_StrongComponants  : public IFGraph_SubPartsIterator {
+//! determines strong componants of a graph, that is
+//! isolated entities (single componants) or loops
+class IFGraph_StrongComponants  : public IFGraph_SubPartsIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! creates with a Graph, and will analyse : <br>
-//!           whole True  : all the contents of the Model <br>
-//!           whole False : sub-parts which will be given later <br>
-  Standard_EXPORT   IFGraph_StrongComponants(const Interface_Graph& agraph,const Standard_Boolean whole);
-  //! does the computation <br>
-  Standard_EXPORT   virtual  void Evaluate() ;
-
+  
+  //! creates with a Graph, and will analyse :
+  //! whole True  : all the contents of the Model
+  //! whole False : sub-parts which will be given later
+  Standard_EXPORT IFGraph_StrongComponants(const Interface_Graph& agraph, const Standard_Boolean whole);
+  
+  //! does the computation
+  Standard_EXPORT virtual   void Evaluate() ;
 
 
 
@@ -61,7 +53,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFGraph_StrongComponants_HeaderFile

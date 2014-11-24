@@ -5,24 +5,14 @@
 
 #include <StepShape_Array1OfOrientedEdge.hxx>
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _StepShape_OrientedEdge_HeaderFile
 #include <StepShape_OrientedEdge.hxx>
-#endif
  
 
-#define Array1Item Handle_StepShape_OrientedEdge
+#define Array1Item Handle(StepShape_OrientedEdge)
 #define Array1Item_hxx <StepShape_OrientedEdge.hxx>
 #define TCollection_Array1 StepShape_Array1OfOrientedEdge
 #define TCollection_Array1_hxx <StepShape_Array1OfOrientedEdge.hxx>

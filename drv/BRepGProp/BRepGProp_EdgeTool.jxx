@@ -1,18 +1,6 @@
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _BRepAdaptor_Curve_HeaderFile
 #include <BRepAdaptor_Curve.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _BRepGProp_EdgeTool_HeaderFile
 #include <BRepGProp_EdgeTool.hxx>
-#endif

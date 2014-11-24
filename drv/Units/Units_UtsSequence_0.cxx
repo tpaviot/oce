@@ -5,21 +5,13 @@
 
 #include <Units_UtsSequence.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Units_Unit_HeaderFile
 #include <Units_Unit.hxx>
-#endif
-#ifndef _Units_SequenceNodeOfUtsSequence_HeaderFile
 #include <Units_SequenceNodeOfUtsSequence.hxx>
-#endif
  
 
-#define SeqItem Handle_Units_Unit
+#define SeqItem Handle(Units_Unit)
 #define SeqItem_hxx <Units_Unit.hxx>
 #define TCollection_SequenceNode Units_SequenceNodeOfUtsSequence
 #define TCollection_SequenceNode_hxx <Units_SequenceNodeOfUtsSequence.hxx>

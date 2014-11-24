@@ -350,6 +350,7 @@ libTKernel_la_SOURCES = \
 @top_srcdir@/src/OSD/OSD_Host.cxx \
 @top_srcdir@/src/OSD/OSD_MAllocHook.cxx \
 @top_srcdir@/src/OSD/OSD_MemInfo.cxx \
+@top_srcdir@/src/OSD/OSD_OpenFile.cxx \
 @top_srcdir@/src/OSD/OSD_Path.cxx \
 @top_srcdir@/src/OSD/OSD_PerfMeter.cxx \
 @top_srcdir@/src/OSD/OSD_Printer.cxx \

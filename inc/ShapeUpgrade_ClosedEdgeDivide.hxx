@@ -6,34 +6,26 @@
 #ifndef _ShapeUpgrade_ClosedEdgeDivide_HeaderFile
 #define _ShapeUpgrade_ClosedEdgeDivide_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeUpgrade_ClosedEdgeDivide_HeaderFile
 #include <Handle_ShapeUpgrade_ClosedEdgeDivide.hxx>
-#endif
 
-#ifndef _ShapeUpgrade_EdgeDivide_HeaderFile
 #include <ShapeUpgrade_EdgeDivide.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopoDS_Edge;
 
 
 
-class ShapeUpgrade_ClosedEdgeDivide : public ShapeUpgrade_EdgeDivide {
+class ShapeUpgrade_ClosedEdgeDivide : public ShapeUpgrade_EdgeDivide
+{
 
 public:
 
-  //! Empty constructor. <br>
-  Standard_EXPORT   ShapeUpgrade_ClosedEdgeDivide();
   
-  Standard_EXPORT   virtual  Standard_Boolean Compute(const TopoDS_Edge& anEdge) ;
+  //! Empty constructor.
+  Standard_EXPORT ShapeUpgrade_ClosedEdgeDivide();
+  
+  Standard_EXPORT virtual   Standard_Boolean Compute (const TopoDS_Edge& anEdge) ;
 
 
 
@@ -56,7 +48,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeUpgrade_ClosedEdgeDivide_HeaderFile

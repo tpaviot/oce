@@ -6,28 +6,21 @@
 #ifndef _StepBasic_PhysicallyModeledProductDefinition_HeaderFile
 #define _StepBasic_PhysicallyModeledProductDefinition_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_PhysicallyModeledProductDefinition_HeaderFile
 #include <Handle_StepBasic_PhysicallyModeledProductDefinition.hxx>
-#endif
 
-#ifndef _StepBasic_ProductDefinition_HeaderFile
 #include <StepBasic_ProductDefinition.hxx>
-#endif
 
 
 
-class StepBasic_PhysicallyModeledProductDefinition : public StepBasic_ProductDefinition {
+class StepBasic_PhysicallyModeledProductDefinition : public StepBasic_ProductDefinition
+{
 
 public:
 
   
-  Standard_EXPORT   StepBasic_PhysicallyModeledProductDefinition();
+  Standard_EXPORT StepBasic_PhysicallyModeledProductDefinition();
 
 
 
@@ -50,7 +43,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_PhysicallyModeledProductDefinition_HeaderFile

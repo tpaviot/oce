@@ -6,28 +6,14 @@
 #ifndef _TDF_DataMapNodeOfLabelIntegerMap_HeaderFile
 #define _TDF_DataMapNodeOfLabelIntegerMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDF_DataMapNodeOfLabelIntegerMap_HeaderFile
 #include <Handle_TDF_DataMapNodeOfLabelIntegerMap.hxx>
-#endif
 
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TDF_Label;
 class TDF_LabelMapHasher;
 class TDF_LabelIntegerMap;
@@ -35,16 +21,17 @@ class TDF_DataMapIteratorOfLabelIntegerMap;
 
 
 
-class TDF_DataMapNodeOfLabelIntegerMap : public TCollection_MapNode {
+class TDF_DataMapNodeOfLabelIntegerMap : public TCollection_MapNode
+{
 
 public:
 
   
-      TDF_DataMapNodeOfLabelIntegerMap(const TDF_Label& K,const Standard_Integer& I,const TCollection_MapNodePtr& n);
+    TDF_DataMapNodeOfLabelIntegerMap(const TDF_Label& K, const Standard_Integer& I, const TCollection_MapNodePtr& n);
   
-        TDF_Label& Key() const;
+      TDF_Label& Key()  const;
   
-        Standard_Integer& Value() const;
+      Standard_Integer& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-TDF_Label myKey;
-Standard_Integer myValue;
+  TDF_Label myKey;
+  Standard_Integer myValue;
 
 
 };
@@ -98,7 +85,6 @@ Standard_Integer myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_DataMapNodeOfLabelIntegerMap_HeaderFile

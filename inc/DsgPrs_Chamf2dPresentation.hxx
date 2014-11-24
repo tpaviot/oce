@@ -6,55 +6,45 @@
 #ifndef _DsgPrs_Chamf2dPresentation_HeaderFile
 #define _DsgPrs_Chamf2dPresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Handle_Prs3d_Drawer_HeaderFile
 #include <Handle_Prs3d_Drawer.hxx>
-#endif
-#ifndef _DsgPrs_ArrowSide_HeaderFile
 #include <DsgPrs_ArrowSide.hxx>
-#endif
 class Prs3d_Presentation;
 class Prs3d_Drawer;
 class gp_Pnt;
 class TCollection_ExtendedString;
 
 
-//! Framework for display of 2D chamfers. <br>
-class DsgPrs_Chamf2dPresentation  {
+//! Framework for display of 2D chamfers.
+class DsgPrs_Chamf2dPresentation 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Defines the display of elements showing 2D chamfers on shapes. <br>
-//! These include the text aText, the point of attachment, <br>
-//! aPntAttach and the end point aPntEnd. <br>
-//! These arguments are added to the presentation <br>
-//! object aPresentation. Their display attributes are <br>
-//! defined by the attribute manager aDrawer. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Prs3d_Drawer)& aDrawer,const gp_Pnt& aPntAttach,const gp_Pnt& aPntEnd,const TCollection_ExtendedString& aText) ;
-  //! Defines the display of texts, symbols and icons used <br>
-//! to present 2D chamfers. <br>
-//! These include the text aText, the point of attachment, <br>
-//! aPntAttach and the end point aPntEnd. <br>
-//! These arguments are added to the presentation <br>
-//! object aPresentation. Their display attributes are <br>
-//! defined by the attribute manager aDrawer. The arrow <br>
-//! at the point of attachment has a display defined by a <br>
-//! value of the enumeration DsgPrs_Arrowside. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Prs3d_Drawer)& aDrawer,const gp_Pnt& aPntAttach,const gp_Pnt& aPntEnd,const TCollection_ExtendedString& aText,const DsgPrs_ArrowSide ArrowSide) ;
-
+  
+  //! Defines the display of elements showing 2D chamfers on shapes.
+  //! These include the text aText, the point of attachment,
+  //! aPntAttach and the end point aPntEnd.
+  //! These arguments are added to the presentation
+  //! object aPresentation. Their display attributes are
+  //! defined by the attribute manager aDrawer.
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Prs3d_Drawer)& aDrawer, const gp_Pnt& aPntAttach, const gp_Pnt& aPntEnd, const TCollection_ExtendedString& aText) ;
+  
+  //! Defines the display of texts, symbols and icons used
+  //! to present 2D chamfers.
+  //! These include the text aText, the point of attachment,
+  //! aPntAttach and the end point aPntEnd.
+  //! These arguments are added to the presentation
+  //! object aPresentation. Their display attributes are
+  //! defined by the attribute manager aDrawer. The arrow
+  //! at the point of attachment has a display defined by a
+  //! value of the enumeration DsgPrs_Arrowside.
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Prs3d_Drawer)& aDrawer, const gp_Pnt& aPntAttach, const gp_Pnt& aPntEnd, const TCollection_ExtendedString& aText, const DsgPrs_ArrowSide ArrowSide) ;
 
 
 
@@ -77,7 +67,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DsgPrs_Chamf2dPresentation_HeaderFile

@@ -1,6 +1,2 @@
-#ifndef _HLRAlgo_EdgesBlock_HeaderFile
 #include <HLRAlgo_EdgesBlock.hxx>
-#endif
-#ifndef _HLRAlgo_WiresBlock_HeaderFile
 #include <HLRAlgo_WiresBlock.hxx>
-#endif

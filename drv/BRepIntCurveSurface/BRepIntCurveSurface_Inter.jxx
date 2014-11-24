@@ -1,33 +1,11 @@
-#ifndef _GeomAdaptor_HCurve_HeaderFile
 #include <GeomAdaptor_HCurve.hxx>
-#endif
-#ifndef _BRepTopAdaptor_TopolTool_HeaderFile
 #include <BRepTopAdaptor_TopolTool.hxx>
-#endif
-#ifndef _Bnd_HArray1OfBox_HeaderFile
 #include <Bnd_HArray1OfBox.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _GeomAdaptor_Curve_HeaderFile
 #include <GeomAdaptor_Curve.hxx>
-#endif
-#ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
-#endif
-#ifndef _IntCurveSurface_IntersectionPoint_HeaderFile
 #include <IntCurveSurface_IntersectionPoint.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _BRepIntCurveSurface_Inter_HeaderFile
 #include <BRepIntCurveSurface_Inter.hxx>
-#endif

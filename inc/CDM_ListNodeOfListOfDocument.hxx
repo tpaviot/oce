@@ -6,39 +6,28 @@
 #ifndef _CDM_ListNodeOfListOfDocument_HeaderFile
 #define _CDM_ListNodeOfListOfDocument_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_CDM_ListNodeOfListOfDocument_HeaderFile
 #include <Handle_CDM_ListNodeOfListOfDocument.hxx>
-#endif
 
-#ifndef _Handle_CDM_Document_HeaderFile
 #include <Handle_CDM_Document.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class CDM_Document;
 class CDM_ListOfDocument;
 class CDM_ListIteratorOfListOfDocument;
 
 
 
-class CDM_ListNodeOfListOfDocument : public TCollection_MapNode {
+class CDM_ListNodeOfListOfDocument : public TCollection_MapNode
+{
 
 public:
 
   
-      CDM_ListNodeOfListOfDocument(const Handle(CDM_Document)& I,const TCollection_MapNodePtr& n);
+    CDM_ListNodeOfListOfDocument(const Handle(CDM_Document)& I, const TCollection_MapNodePtr& n);
   
-        Handle_CDM_Document& Value() const;
+      Handle(CDM_Document)& Value()  const;
 
 
 
@@ -53,12 +42,12 @@ protected:
 private: 
 
 
-Handle_CDM_Document myValue;
+  Handle(CDM_Document) myValue;
 
 
 };
 
-#define Item Handle_CDM_Document
+#define Item Handle(CDM_Document)
 #define Item_hxx <CDM_Document.hxx>
 #define TCollection_ListNode CDM_ListNodeOfListOfDocument
 #define TCollection_ListNode_hxx <CDM_ListNodeOfListOfDocument.hxx>
@@ -83,7 +72,6 @@ Handle_CDM_Document myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _CDM_ListNodeOfListOfDocument_HeaderFile

@@ -6,104 +6,106 @@
 #ifndef _TopoDS_TShape_HeaderFile
 #define _TopoDS_TShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopoDS_TShape_HeaderFile
 #include <Handle_TopoDS_TShape.hxx>
-#endif
 
-#ifndef _TopoDS_ListOfShape_HeaderFile
 #include <TopoDS_ListOfShape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
 class Standard_ConstructionError;
 class TopoDS_Iterator;
 class TopoDS_Builder;
 class TopoDS_ListOfShape;
 
 
-//! A TShape  is a topological  structure describing a <br>
-//!          set of points in a 2D or 3D space. <br>
-//! <br>
-//!          A topological shape is a structure made from other <br>
-//!          shapes.  This is a deferred class  used to support <br>
-//!          topological objects. <br>
-//! <br>
-//!          TShapes are   defined   by  their  optional domain <br>
-//!          (geometry)  and  their  components  (other TShapes <br>
-//!          with  Locations and Orientations).  The components <br>
-//!          are stored in a List of Shapes. <br>
-//! <br>
-//!          A   TShape contains  the   following boolean flags : <br>
-//! <br>
-//!           - Free       : Free or Frozen. <br>
-//!           - Modified   : Has been modified. <br>
-//!           - Checked    : Has been checked. <br>
-//!           - Orientable : Can be oriented. <br>
-//!           - Closed     : Is closed. <br>
-//!           - Infinite   : Is infinite. <br>
-//!           - Convex     : Is convex. <br>
-//! <br>
-//! <br>
-//!          Users have no direct access to the classes derived <br>
-//!          from TShape.  They  handle them with   the classes <br>
-//!          derived from Shape. <br>
-class TopoDS_TShape : public MMgt_TShared {
+//! A TShape  is a topological  structure describing a
+//! set of points in a 2D or 3D space.
+//!
+//! A topological shape is a structure made from other
+//! shapes.  This is a deferred class  used to support
+//! topological objects.
+//!
+//! TShapes are   defined   by  their  optional domain
+//! (geometry)  and  their  components  (other TShapes
+//! with  Locations and Orientations).  The components
+//! are stored in a List of Shapes.
+//!
+//! A   TShape contains  the   following boolean flags :
+//!
+//! - Free       : Free or Frozen.
+//! - Modified   : Has been modified.
+//! - Checked    : Has been checked.
+//! - Orientable : Can be oriented.
+//! - Closed     : Is closed.
+//! - Infinite   : Is infinite.
+//! - Convex     : Is convex.
+//!
+//! Users have no direct access to the classes derived
+//! from TShape.  They  handle them with   the classes
+//! derived from Shape.
+class TopoDS_TShape : public MMgt_TShared
+{
 
 public:
 
-  //! Returns the free flag. <br>
-        Standard_Boolean Free() const;
-  //! Sets the free flag. <br>
-        void Free(const Standard_Boolean F) ;
-  //! Returns the locked flag. <br>
-        Standard_Boolean Locked() const;
-  //! Sets the locked flag. <br>
-        void Locked(const Standard_Boolean F) ;
-  //! Returns the modification flag. <br>
-        Standard_Boolean Modified() const;
-  //! Sets the modification flag. <br>
-        void Modified(const Standard_Boolean M) ;
-  //! Returns the checked flag. <br>
-        Standard_Boolean Checked() const;
-  //! Sets the checked flag. <br>
-        void Checked(const Standard_Boolean C) ;
-  //! Returns the orientability flag. <br>
-        Standard_Boolean Orientable() const;
-  //! Sets the orientability flag. <br>
-        void Orientable(const Standard_Boolean C) ;
-  //! Returns the closedness flag. <br>
-        Standard_Boolean Closed() const;
-  //! Sets the closedness flag. <br>
-        void Closed(const Standard_Boolean C) ;
-  //! Returns the infinity flag. <br>
-        Standard_Boolean Infinite() const;
-  //! Sets the infinity flag. <br>
-        void Infinite(const Standard_Boolean C) ;
-  //! Returns the convexness flag. <br>
-        Standard_Boolean Convex() const;
-  //! Sets the convexness flag. <br>
-        void Convex(const Standard_Boolean C) ;
-  //! Returns the type as a term of the ShapeEnum enum : <br>
-//!          VERTEX, EDGE, WIRE, FACE, .... <br>
-  Standard_EXPORT   virtual  TopAbs_ShapeEnum ShapeType() const = 0;
-  //! Returns a copy  of the  TShape  with no sub-shapes. <br>
-  Standard_EXPORT   virtual  Handle_TopoDS_TShape EmptyCopy() const = 0;
+  
+  //! Returns the free flag.
+      Standard_Boolean Free()  const;
+  
+  //! Sets the free flag.
+      void Free (const Standard_Boolean F) ;
+  
+  //! Returns the locked flag.
+      Standard_Boolean Locked()  const;
+  
+  //! Sets the locked flag.
+      void Locked (const Standard_Boolean F) ;
+  
+  //! Returns the modification flag.
+      Standard_Boolean Modified()  const;
+  
+  //! Sets the modification flag.
+      void Modified (const Standard_Boolean M) ;
+  
+  //! Returns the checked flag.
+      Standard_Boolean Checked()  const;
+  
+  //! Sets the checked flag.
+      void Checked (const Standard_Boolean C) ;
+  
+  //! Returns the orientability flag.
+      Standard_Boolean Orientable()  const;
+  
+  //! Sets the orientability flag.
+      void Orientable (const Standard_Boolean C) ;
+  
+  //! Returns the closedness flag.
+      Standard_Boolean Closed()  const;
+  
+  //! Sets the closedness flag.
+      void Closed (const Standard_Boolean C) ;
+  
+  //! Returns the infinity flag.
+      Standard_Boolean Infinite()  const;
+  
+  //! Sets the infinity flag.
+      void Infinite (const Standard_Boolean C) ;
+  
+  //! Returns the convexness flag.
+      Standard_Boolean Convex()  const;
+  
+  //! Sets the convexness flag.
+      void Convex (const Standard_Boolean C) ;
+  
+  //! Returns the type as a term of the ShapeEnum enum :
+  //! VERTEX, EDGE, WIRE, FACE, ....
+  Standard_EXPORT virtual   TopAbs_ShapeEnum ShapeType()  const = 0;
+  
+  //! Returns a copy  of the  TShape  with no sub-shapes.
+  Standard_EXPORT virtual   Handle(TopoDS_TShape) EmptyCopy()  const = 0;
 
 
 friend class TopoDS_Iterator;
@@ -114,27 +116,28 @@ friend class TopoDS_Builder;
 
 protected:
 
-  //! Constructs an empty TShape. <br>
-//!          Free       : True <br>
-//!          Modified   : True <br>
-//!          Checked    : False <br>
-//!          Orientable : True <br>
-//!          Closed     : False <br>
-//!          Infinite   : False <br>
-//!          Convex     : False <br>
-      TopoDS_TShape();
+  
+  //! Constructs an empty TShape.
+  //! Free       : True
+  //! Modified   : True
+  //! Checked    : False
+  //! Orientable : True
+  //! Closed     : False
+  //! Infinite   : False
+  //! Convex     : False
+    TopoDS_TShape();
 
 
 
 private: 
 
   
-       const TopoDS_ListOfShape& Shapes() const;
+     const  TopoDS_ListOfShape& Shapes()  const;
   
-        TopoDS_ListOfShape& ChangeShapes() ;
+      TopoDS_ListOfShape& ChangeShapes() ;
 
-TopoDS_ListOfShape myShapes;
-Standard_Integer myFlags;
+  TopoDS_ListOfShape myShapes;
+  Standard_Integer myFlags;
 
 
 };
@@ -144,7 +147,6 @@ Standard_Integer myFlags;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopoDS_TShape_HeaderFile

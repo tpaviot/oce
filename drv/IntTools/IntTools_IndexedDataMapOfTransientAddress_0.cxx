@@ -5,27 +5,15 @@
 
 #include <IntTools_IndexedDataMapOfTransientAddress.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress_HeaderFile
 #include <IntTools_IndexedDataMapNodeOfIndexedDataMapOfTransientAddress.hxx>
-#endif
  
 
-#define TheKey Handle_Standard_Transient
+#define TheKey Handle(Standard_Transient)
 #define TheKey_hxx <Standard_Transient.hxx>
 #define TheItem Standard_Address
 #define TheItem_hxx <Standard_Address.hxx>

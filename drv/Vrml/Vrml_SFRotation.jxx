@@ -1,3 +1,1 @@
-#ifndef _Vrml_SFRotation_HeaderFile
 #include <Vrml_SFRotation.hxx>
-#endif

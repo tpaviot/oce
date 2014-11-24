@@ -5,33 +5,15 @@
 
 #include <Extrema_CCLocFOfLocECC2d.hxx>
 
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Adaptor2d_Curve2d_HeaderFile
 #include <Adaptor2d_Curve2d.hxx>
-#endif
-#ifndef _Extrema_Curve2dTool_HeaderFile
 #include <Extrema_Curve2dTool.hxx>
-#endif
-#ifndef _Extrema_POnCurv2d_HeaderFile
 #include <Extrema_POnCurv2d.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _gp_Vec2d_HeaderFile
 #include <gp_Vec2d.hxx>
-#endif
-#ifndef _Extrema_SeqPOnCOfCCLocFOfLocECC2d_HeaderFile
 #include <Extrema_SeqPOnCOfCCLocFOfLocECC2d.hxx>
-#endif
-#ifndef _Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC2d_HeaderFile
 #include <Extrema_SequenceNodeOfSeqPOnCOfCCLocFOfLocECC2d.hxx>
-#endif
-#ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
-#endif
  
 
 #define Curve1 Adaptor2d_Curve2d
