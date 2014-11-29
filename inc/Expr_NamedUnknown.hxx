@@ -6,31 +6,15 @@
 #ifndef _Expr_NamedUnknown_HeaderFile
 #define _Expr_NamedUnknown_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Expr_NamedUnknown_HeaderFile
 #include <Handle_Expr_NamedUnknown.hxx>
-#endif
 
-#ifndef _Handle_Expr_GeneralExpression_HeaderFile
 #include <Handle_Expr_GeneralExpression.hxx>
-#endif
-#ifndef _Expr_NamedExpression_HeaderFile
 #include <Expr_NamedExpression.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Expr_GeneralExpression;
 class Expr_NotAssigned;
 class Standard_OutOfRange;
@@ -43,55 +27,70 @@ class Expr_Array1OfNamedUnknown;
 class TColStd_Array1OfReal;
 
 
-//! This class describes any variable of an expression. <br>
-//!          Assignment is treated directly in this class. <br>
-class Expr_NamedUnknown : public Expr_NamedExpression {
+//! This class describes any variable of an expression.
+//! Assignment is treated directly in this class.
+class Expr_NamedUnknown : public Expr_NamedExpression
+{
 
 public:
 
   
-  Standard_EXPORT   Expr_NamedUnknown(const TCollection_AsciiString& name);
-  //! Tests if an expression is assigned to <me>. <br>
-        Standard_Boolean IsAssigned() const;
-  //! If exists, returns the assigned expression. <br>
-//!          An exception is raised if the expression does not exist. <br>
-  Standard_EXPORT    const Handle_Expr_GeneralExpression& AssignedExpression() const;
-  //! Assigns <me> to <exp> expression. <br>
-//!          Raises exception if <exp> refers to <me>. <br>
-  Standard_EXPORT     void Assign(const Handle(Expr_GeneralExpression)& exp) ;
-  //! Supresses the assigned expression <br>
-        void Deassign() ;
-  //! Returns the number of sub-expressions contained <br>
-//!          in <me> ( >= 0) <br>
-  Standard_EXPORT     Standard_Integer NbSubExpressions() const;
-  //! Returns the <I>-th sub-expression of <me> <br>
-//!          raises OutOfRange if <I> > NbSubExpressions(me) <br>
-  Standard_EXPORT    const Handle_Expr_GeneralExpression& SubExpression(const Standard_Integer I) const;
-  //! Returns a GeneralExpression after replacement of <br>
-//!          NamedUnknowns by an associated expression and after <br>
-//!          values computation. <br>
-  Standard_EXPORT     Handle_Expr_GeneralExpression Simplified() const;
-  //! Returns a GeneralExpression after a simplification <br>
-//!          of the arguments of <me>. <br>
-  Standard_EXPORT     Handle_Expr_GeneralExpression ShallowSimplified() const;
-  //! Returns a copy of <me> having the same unknowns and functions. <br>
-  Standard_EXPORT     Handle_Expr_GeneralExpression Copy() const;
-  //! Tests if <me> contains NamedUnknown. <br>
-  Standard_EXPORT     Standard_Boolean ContainsUnknowns() const;
-  //! Tests if <exp> is contained in <me>. <br>
-  Standard_EXPORT     Standard_Boolean Contains(const Handle(Expr_GeneralExpression)& exp) const;
+  Standard_EXPORT Expr_NamedUnknown(const TCollection_AsciiString& name);
   
-  Standard_EXPORT     Standard_Boolean IsLinear() const;
-  //! Returns the derivative on <X> unknown of <me> <br>
-  Standard_EXPORT     Handle_Expr_GeneralExpression Derivative(const Handle(Expr_NamedUnknown)& X) const;
-  //! Replaces all occurences of <var> with <with> in <me> <br>
-//!          Raises InvalidOperand if <with> contains <me>. <br>
-  Standard_EXPORT     void Replace(const Handle(Expr_NamedUnknown)& var,const Handle(Expr_GeneralExpression)& with) ;
-  //! Returns the value of <me> (as a Real) by <br>
-//!          replacement of <vars> by <vals>. <br>
-//!          Raises NotEvaluable if <me> contains NamedUnknown not <br>
-//!          in <vars> or NumericError if result cannot be computed. <br>
-  Standard_EXPORT     Standard_Real Evaluate(const Expr_Array1OfNamedUnknown& vars,const TColStd_Array1OfReal& vals) const;
+  //! Tests if an expression is assigned to <me>.
+      Standard_Boolean IsAssigned()  const;
+  
+  //! If exists, returns the assigned expression.
+  //! An exception is raised if the expression does not exist.
+  Standard_EXPORT  const  Handle(Expr_GeneralExpression)& AssignedExpression()  const;
+  
+  //! Assigns <me> to <exp> expression.
+  //! Raises exception if <exp> refers to <me>.
+  Standard_EXPORT   void Assign (const Handle(Expr_GeneralExpression)& exp) ;
+  
+  //! Supresses the assigned expression
+      void Deassign() ;
+  
+  //! Returns the number of sub-expressions contained
+  //! in <me> ( >= 0)
+  Standard_EXPORT   Standard_Integer NbSubExpressions()  const;
+  
+  //! Returns the <I>-th sub-expression of <me>
+  //! raises OutOfRange if <I> > NbSubExpressions(me)
+  Standard_EXPORT  const  Handle(Expr_GeneralExpression)& SubExpression (const Standard_Integer I)  const;
+  
+  //! Returns a GeneralExpression after replacement of
+  //! NamedUnknowns by an associated expression and after
+  //! values computation.
+  Standard_EXPORT   Handle(Expr_GeneralExpression) Simplified()  const;
+  
+  //! Returns a GeneralExpression after a simplification
+  //! of the arguments of <me>.
+  Standard_EXPORT   Handle(Expr_GeneralExpression) ShallowSimplified()  const;
+  
+  //! Returns a copy of <me> having the same unknowns and functions.
+  Standard_EXPORT   Handle(Expr_GeneralExpression) Copy()  const;
+  
+  //! Tests if <me> contains NamedUnknown.
+  Standard_EXPORT   Standard_Boolean ContainsUnknowns()  const;
+  
+  //! Tests if <exp> is contained in <me>.
+  Standard_EXPORT   Standard_Boolean Contains (const Handle(Expr_GeneralExpression)& exp)  const;
+  
+  Standard_EXPORT   Standard_Boolean IsLinear()  const;
+  
+  //! Returns the derivative on <X> unknown of <me>
+  Standard_EXPORT   Handle(Expr_GeneralExpression) Derivative (const Handle(Expr_NamedUnknown)& X)  const;
+  
+  //! Replaces all occurences of <var> with <with> in <me>
+  //! Raises InvalidOperand if <with> contains <me>.
+  Standard_EXPORT   void Replace (const Handle(Expr_NamedUnknown)& var, const Handle(Expr_GeneralExpression)& with) ;
+  
+  //! Returns the value of <me> (as a Real) by
+  //! replacement of <vars> by <vals>.
+  //! Raises NotEvaluable if <me> contains NamedUnknown not
+  //! in <vars> or NumericError if result cannot be computed.
+  Standard_EXPORT   Standard_Real Evaluate (const Expr_Array1OfNamedUnknown& vars, const TColStd_Array1OfReal& vals)  const;
 
 
 
@@ -106,7 +105,7 @@ protected:
 private: 
 
 
-Handle_Expr_GeneralExpression myExpression;
+  Handle(Expr_GeneralExpression) myExpression;
 
 
 };
@@ -116,7 +115,6 @@ Handle_Expr_GeneralExpression myExpression;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Expr_NamedUnknown_HeaderFile

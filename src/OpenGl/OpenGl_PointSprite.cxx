@@ -49,13 +49,18 @@ OpenGl_PointSprite::~OpenGl_PointSprite()
 // function : Release
 // purpose  :
 // =======================================================================
-void OpenGl_PointSprite::Release (const OpenGl_Context* theGlCtx)
+void OpenGl_PointSprite::Release (OpenGl_Context* theGlCtx)
 {
   if (myBitmapList != 0)
   {
+    Standard_ASSERT_RETURN (theGlCtx != NULL,
+        "OpenGl_PointSprite destroyed without GL context! Possible GPU memory leakage...",);
+
     if (theGlCtx->IsValid())
     {
+    #if !defined(GL_ES_VERSION_2_0)
       glDeleteLists (myBitmapList, 1);
+    #endif
     }
     myBitmapList = 0;
   }
@@ -83,6 +88,8 @@ void OpenGl_PointSprite::DrawBitmap (const Handle(OpenGl_Context)& ) const
 {
   if (myBitmapList != 0)
   {
+  #if !defined(GL_ES_VERSION_2_0)
     glCallList (myBitmapList);
+  #endif
   }
 }

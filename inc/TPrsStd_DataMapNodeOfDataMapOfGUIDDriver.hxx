@@ -6,28 +6,14 @@
 #ifndef _TPrsStd_DataMapNodeOfDataMapOfGUIDDriver_HeaderFile
 #define _TPrsStd_DataMapNodeOfDataMapOfGUIDDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TPrsStd_DataMapNodeOfDataMapOfGUIDDriver_HeaderFile
 #include <Handle_TPrsStd_DataMapNodeOfDataMapOfGUIDDriver.hxx>
-#endif
 
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _Handle_TPrsStd_Driver_HeaderFile
 #include <Handle_TPrsStd_Driver.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TPrsStd_Driver;
 class Standard_GUID;
 class TPrsStd_DataMapOfGUIDDriver;
@@ -35,16 +21,17 @@ class TPrsStd_DataMapIteratorOfDataMapOfGUIDDriver;
 
 
 
-class TPrsStd_DataMapNodeOfDataMapOfGUIDDriver : public TCollection_MapNode {
+class TPrsStd_DataMapNodeOfDataMapOfGUIDDriver : public TCollection_MapNode
+{
 
 public:
 
   
-      TPrsStd_DataMapNodeOfDataMapOfGUIDDriver(const Standard_GUID& K,const Handle(TPrsStd_Driver)& I,const TCollection_MapNodePtr& n);
+    TPrsStd_DataMapNodeOfDataMapOfGUIDDriver(const Standard_GUID& K, const Handle(TPrsStd_Driver)& I, const TCollection_MapNodePtr& n);
   
-        Standard_GUID& Key() const;
+      Standard_GUID& Key()  const;
   
-        Handle_TPrsStd_Driver& Value() const;
+      Handle(TPrsStd_Driver)& Value()  const;
 
 
 
@@ -59,15 +46,15 @@ protected:
 private: 
 
 
-Standard_GUID myKey;
-Handle_TPrsStd_Driver myValue;
+  Standard_GUID myKey;
+  Handle(TPrsStd_Driver) myValue;
 
 
 };
 
 #define TheKey Standard_GUID
 #define TheKey_hxx <Standard_GUID.hxx>
-#define TheItem Handle_TPrsStd_Driver
+#define TheItem Handle(TPrsStd_Driver)
 #define TheItem_hxx <TPrsStd_Driver.hxx>
 #define Hasher Standard_GUID
 #define Hasher_hxx <Standard_GUID.hxx>
@@ -98,7 +85,6 @@ Handle_TPrsStd_Driver myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TPrsStd_DataMapNodeOfDataMapOfGUIDDriver_HeaderFile

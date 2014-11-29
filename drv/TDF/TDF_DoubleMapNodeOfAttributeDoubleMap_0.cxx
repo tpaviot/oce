@@ -5,22 +5,12 @@
 
 #include <TDF_DoubleMapNodeOfAttributeDoubleMap.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _TDF_AttributeDoubleMap_HeaderFile
 #include <TDF_AttributeDoubleMap.hxx>
-#endif
-#ifndef _TDF_DoubleMapIteratorOfAttributeDoubleMap_HeaderFile
 #include <TDF_DoubleMapIteratorOfAttributeDoubleMap.hxx>
-#endif
 
  
 
@@ -39,9 +29,9 @@ IMPLEMENT_DOWNCAST(TDF_DoubleMapNodeOfAttributeDoubleMap,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(TDF_DoubleMapNodeOfAttributeDoubleMap)
 
 
-#define TheKey1 Handle_TDF_Attribute
+#define TheKey1 Handle(TDF_Attribute)
 #define TheKey1_hxx <TDF_Attribute.hxx>
-#define TheKey2 Handle_TDF_Attribute
+#define TheKey2 Handle(TDF_Attribute)
 #define TheKey2_hxx <TDF_Attribute.hxx>
 #define Hasher1 TColStd_MapTransientHasher
 #define Hasher1_hxx <TColStd_MapTransientHasher.hxx>

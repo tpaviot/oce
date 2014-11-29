@@ -5,21 +5,11 @@
 
 #include <TopOpeBRepDS_DataMapIteratorOfMapOfSurface.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopOpeBRepDS_SurfaceData_HeaderFile
 #include <TopOpeBRepDS_SurfaceData.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _TopOpeBRepDS_MapOfSurface_HeaderFile
 #include <TopOpeBRepDS_MapOfSurface.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapNodeOfMapOfSurface_HeaderFile
 #include <TopOpeBRepDS_DataMapNodeOfMapOfSurface.hxx>
-#endif
  
 
 #define TheKey Standard_Integer

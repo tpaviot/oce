@@ -1,9 +1,3 @@
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Expr_GeneralExpression_HeaderFile
 #include <Expr_GeneralExpression.hxx>
-#endif
-#ifndef _Expr_NamedExpression_HeaderFile
 #include <Expr_NamedExpression.hxx>
-#endif

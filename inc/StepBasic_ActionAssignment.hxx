@@ -6,38 +6,33 @@
 #ifndef _StepBasic_ActionAssignment_HeaderFile
 #define _StepBasic_ActionAssignment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_ActionAssignment_HeaderFile
 #include <Handle_StepBasic_ActionAssignment.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_Action_HeaderFile
 #include <Handle_StepBasic_Action.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepBasic_Action;
 
 
-//! Representation of STEP entity ActionAssignment <br>
-class StepBasic_ActionAssignment : public MMgt_TShared {
+//! Representation of STEP entity ActionAssignment
+class StepBasic_ActionAssignment : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepBasic_ActionAssignment();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(StepBasic_Action)& aAssignedAction) ;
-  //! Returns field AssignedAction <br>
-  Standard_EXPORT     Handle_StepBasic_Action AssignedAction() const;
-  //! Set field AssignedAction <br>
-  Standard_EXPORT     void SetAssignedAction(const Handle(StepBasic_Action)& AssignedAction) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepBasic_ActionAssignment();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(StepBasic_Action)& aAssignedAction) ;
+  
+  //! Returns field AssignedAction
+  Standard_EXPORT   Handle(StepBasic_Action) AssignedAction()  const;
+  
+  //! Set field AssignedAction
+  Standard_EXPORT   void SetAssignedAction (const Handle(StepBasic_Action)& AssignedAction) ;
 
 
 
@@ -52,7 +47,7 @@ protected:
 private: 
 
 
-Handle_StepBasic_Action theAssignedAction;
+  Handle(StepBasic_Action) theAssignedAction;
 
 
 };
@@ -61,7 +56,6 @@ Handle_StepBasic_Action theAssignedAction;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_ActionAssignment_HeaderFile

@@ -5,18 +5,10 @@
 
 #include <IntSurf_SequenceOfInteriorPoint.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IntSurf_InteriorPoint_HeaderFile
 #include <IntSurf_InteriorPoint.hxx>
-#endif
-#ifndef _IntSurf_SequenceNodeOfSequenceOfInteriorPoint_HeaderFile
 #include <IntSurf_SequenceNodeOfSequenceOfInteriorPoint.hxx>
-#endif
  
 
 #define SeqItem IntSurf_InteriorPoint

@@ -6,20 +6,19 @@
 #ifndef _Visual3d_TypeOfProjection_HeaderFile
 #define _Visual3d_TypeOfProjection_HeaderFile
 
-//! Definition of the type of 3D projection <br>
-//! <br>
-//!      TOP_PERSPECTIVE perspective projection (centre of <br>
-//!              projection at a  distance finite from <br>
-//!              plane of projection) <br>
-//!      TOP_PARALLEL    parallel projection (point of <br>
-//!              projection at infinity) <br>
-enum Visual3d_TypeOfProjection {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Definition of the type of 3D projection
+//!
+//! TOP_PERSPECTIVE perspective projection (centre of
+//! projection at a  distance finite from
+//! plane of projection)
+//! TOP_PARALLEL    parallel projection (point of
+//! projection at infinity)
+enum Visual3d_TypeOfProjection
+{
 Visual3d_TOP_PERSPECTIVE,
 Visual3d_TOP_PARALLEL
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Visual3d_TypeOfProjection_HeaderFile

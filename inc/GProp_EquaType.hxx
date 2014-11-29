@@ -6,8 +6,11 @@
 #ifndef _GProp_EquaType_HeaderFile
 #define _GProp_EquaType_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum GProp_EquaType {
+
+enum GProp_EquaType
+{
 GProp_Plane,
 GProp_Line,
 GProp_Point,
@@ -15,8 +18,4 @@ GProp_Space,
 GProp_None
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _GProp_EquaType_HeaderFile

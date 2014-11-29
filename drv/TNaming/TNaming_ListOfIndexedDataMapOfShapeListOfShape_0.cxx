@@ -5,18 +5,10 @@
 
 #include <TNaming_ListOfIndexedDataMapOfShapeListOfShape.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape_HeaderFile
 #include <TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _TopTools_IndexedDataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape_HeaderFile
 #include <TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape.hxx>
-#endif
  
 
 #define Item TopTools_IndexedDataMapOfShapeListOfShape

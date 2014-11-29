@@ -226,6 +226,9 @@ BRepFill_PipeShell::BRepFill_PipeShell(const TopoDS_Wire& Spine)
   myLaw.Nullify();
   SetTolerance();
 
+  myMaxDegree = 11;
+  myMaxSegments = 30;
+
   // Attention to closed non-declared wire !
   if (!mySpine.Closed()) {
     TopoDS_Vertex Vf, Vl;
@@ -412,6 +415,25 @@ BRepFill_PipeShell::BRepFill_PipeShell(const TopoDS_Wire& Spine)
     myLocation = new (BRepFill_Edge3DLaw) (mySpine, Loc);  
   }    
   mySection.Nullify(); //It is required to relocalize the sections.
+}
+
+
+//=======================================================================
+//function : SetMaxDegree
+//purpose  : 
+//=======================================================================
+void BRepFill_PipeShell::SetMaxDegree(const Standard_Integer NewMaxDegree)
+{
+  myMaxDegree = NewMaxDegree;
+}
+
+//=======================================================================
+//function : SetMaxSegments
+//purpose  : 
+//=======================================================================
+void BRepFill_PipeShell::SetMaxSegments(const Standard_Integer NewMaxSegments)
+{
+  myMaxSegments = NewMaxSegments;
 }
 
 //=======================================================================
@@ -742,13 +764,16 @@ void BRepFill_PipeShell::SetForceApproxC1(const Standard_Boolean ForceApproxC1)
     theContinuity = GeomAbs_C0;
   TopTools_MapOfShape Dummy;
   BRepFill_DataMapOfShapeHArray2OfShape Dummy2;
-  MkSw.Build(Dummy, Dummy2, myTransition, theContinuity);
+  BRepFill_DataMapOfShapeHArray2OfShape Dummy3;
+  MkSw.Build(Dummy, Dummy2, Dummy3, myTransition, theContinuity,
+             GeomFill_Location, myMaxDegree, myMaxSegments);
 
   myStatus = myLocation->GetStatus();
   Ok =  (MkSw.IsDone() && (myStatus == GeomFill_PipeOk));
 
   if (Ok) {
     myShape = MkSw.Shape();
+    myErrorOnSurf = MkSw.ErrorOnSurface();
 
     TopoDS_Shape aBottomWire = myFirst;
     TopoDS_Shape aTopWire    = myLast;
@@ -853,6 +878,16 @@ void BRepFill_PipeShell::SetForceApproxC1(const Standard_Boolean ForceApproxC1)
 const TopoDS_Shape& BRepFill_PipeShell::Shape() const
 {
   return myShape;
+}
+
+//=======================================================================
+//function : ErrorOnSurface
+//purpose  : 
+//=======================================================================
+
+Standard_Real BRepFill_PipeShell::ErrorOnSurface() const 
+{
+  return myErrorOnSurf;
 }
 
 //=======================================================================

@@ -6,28 +6,14 @@
 #ifndef _StepShape_HArray1OfEdge_HeaderFile
 #define _StepShape_HArray1OfEdge_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_HArray1OfEdge_HeaderFile
 #include <Handle_StepShape_HArray1OfEdge.hxx>
-#endif
 
-#ifndef _StepShape_Array1OfEdge_HeaderFile
 #include <StepShape_Array1OfEdge.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_StepShape_Edge_HeaderFile
 #include <Handle_StepShape_Edge.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class StepShape_Array1OfEdge;
 
 
 
-class StepShape_HArray1OfEdge : public MMgt_TShared {
+class StepShape_HArray1OfEdge : public MMgt_TShared
+{
 
 public:
 
   
-      StepShape_HArray1OfEdge(const Standard_Integer Low,const Standard_Integer Up);
+    StepShape_HArray1OfEdge(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepShape_HArray1OfEdge(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepShape_Edge)& V);
+    StepShape_HArray1OfEdge(const Standard_Integer Low, const Standard_Integer Up, const Handle(StepShape_Edge)& V);
   
-        void Init(const Handle(StepShape_Edge)& V) ;
+      void Init (const Handle(StepShape_Edge)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(StepShape_Edge)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(StepShape_Edge)& Value) ;
   
-       const Handle_StepShape_Edge& Value(const Standard_Integer Index) const;
+     const  Handle(StepShape_Edge)& Value (const Standard_Integer Index)  const;
   
-        Handle_StepShape_Edge& ChangeValue(const Standard_Integer Index) ;
+      Handle(StepShape_Edge)& ChangeValue (const Standard_Integer Index) ;
   
-       const StepShape_Array1OfEdge& Array1() const;
+     const  StepShape_Array1OfEdge& Array1()  const;
   
-        StepShape_Array1OfEdge& ChangeArray1() ;
+      StepShape_Array1OfEdge& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-StepShape_Array1OfEdge myArray;
+  StepShape_Array1OfEdge myArray;
 
 
 };
 
-#define ItemHArray1 Handle_StepShape_Edge
+#define ItemHArray1 Handle(StepShape_Edge)
 #define ItemHArray1_hxx <StepShape_Edge.hxx>
 #define TheArray1 StepShape_Array1OfEdge
 #define TheArray1_hxx <StepShape_Array1OfEdge.hxx>
@@ -103,7 +90,6 @@ StepShape_Array1OfEdge myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_HArray1OfEdge_HeaderFile

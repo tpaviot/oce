@@ -5,16 +5,10 @@
 
 #include <Message_SequenceNodeOfSequenceOfPrinters.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Message_Printer_HeaderFile
 #include <Message_Printer.hxx>
-#endif
-#ifndef _Message_SequenceOfPrinters_HeaderFile
 #include <Message_SequenceOfPrinters.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(Message_SequenceNodeOfSequenceOfPrinters,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Message_SequenceNodeOfSequenceOfPrinters)
 
 
-#define SeqItem Handle_Message_Printer
+#define SeqItem Handle(Message_Printer)
 #define SeqItem_hxx <Message_Printer.hxx>
 #define TCollection_SequenceNode Message_SequenceNodeOfSequenceOfPrinters
 #define TCollection_SequenceNode_hxx <Message_SequenceNodeOfSequenceOfPrinters.hxx>

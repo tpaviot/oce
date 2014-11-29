@@ -19,7 +19,7 @@ deferred class GraphicDriver from Graphic3d inherits TShared
     ---Version:
 
     ---Purpose: This class allows the definition of a graphic driver
-    --      (currently only OpenGl driver is used).
+    --      for 3d interface (currently only OpenGl driver is used).
 
     ---Keywords: OpenGl
 
@@ -27,8 +27,6 @@ deferred class GraphicDriver from Graphic3d inherits TShared
     ---References:
 
 uses
-
-    SharedLibrary       from OSD,
 
     Array1OfInteger     from TColStd,
     Array1OfReal        from TColStd,
@@ -61,14 +59,16 @@ uses
     AspectFillArea3d    from Graphic3d,
     HorizontalTextAlignment from Graphic3d,
     CBitFields20        from Graphic3d,
-    CGroup              from Graphic3d,
+    Group               from Graphic3d,
     CLight              from Graphic3d,
     CPick               from Graphic3d,
     CPlane              from Graphic3d,
     CStructure          from Graphic3d,
+    CStructure_Handle   from Graphic3d,
     CView               from Graphic3d,
     BufferType          from Graphic3d,
     Structure           from Graphic3d,
+    StructureManager    from Graphic3d,
     TextPath            from Graphic3d,
     TypeOfComposition   from Graphic3d,
     TypeOfPrimitive     from Graphic3d,
@@ -77,7 +77,6 @@ uses
     Array2OfVertex      from Graphic3d,
     Vertex              from Graphic3d,
     VerticalTextAlignment   from Graphic3d,
-    PrimitiveArray      from Graphic3d,
     PtrFrameBuffer      from Graphic3d,
     HArray1OfByte       from TColStd,
     FillMethod          from Aspect,
@@ -97,24 +96,10 @@ raises
     TransformError      from Graphic3d
 
 is
-        Initialize ( AShrName       : CString from Standard )
-                returns mutable GraphicDriver from Graphic3d;
-        ---Level: Public
-        ---Purpose: Initialises the Driver
-
-    -------------------------
-    -- Category: Init methods
-    -------------------------
-
-    Begin (me: mutable;
-           theDisplayConnection: DisplayConnection_Handle from Aspect)
-       returns Boolean from Standard
-       is deferred;
-    ---Purpose: Starts graphic driver with given connection
-
-    End ( me    : mutable )
-        is deferred;
-    ---Purpose: call_togl_end
+    Initialize (theDisp : DisplayConnection_Handle from Aspect)
+    returns GraphicDriver from Graphic3d;
+    ---Level: Public
+    ---Purpose: Initialises the Driver
 
     ----------------------------
     -- Category: Inquire methods
@@ -124,13 +109,6 @@ is
         returns Integer from Standard
         is deferred;
     ---Purpose: call_togl_inquirelight
-
-    InquireMat ( me     : mutable;
-                 ACView : CView from Graphic3d;
-                 AMatO  : out Array2OfReal from TColStd;
-                 AMatM  : out Array2OfReal from TColStd )
-        is deferred;
-    ---Purpose: call_togl_inquiremat
 
     InquirePlaneLimit ( me  : mutable )
         returns Integer from Standard
@@ -142,127 +120,33 @@ is
         is deferred;
     ---Purpose: call_togl_inquireview
 
-    ------------------------------
-    -- Category: Highlight methods
-    ------------------------------
-
-    Blink ( me          : mutable;
-            ACStructure : CStructure from Graphic3d;
-            Create      : Boolean from Standard )
-        is deferred;
-    ---Purpose: call_togl_blink
-
-    BoundaryBox ( me            : mutable;
-                  ACStructure   : CStructure from Graphic3d;
-                  Create        : Boolean from Standard )
-        is deferred;
-    ---Purpose: call_togl_boundarybox
-
-    HighlightColor ( me             : mutable;
-                     ACStructure    : CStructure from Graphic3d;
-                     R              : ShortReal from Standard;
-                     G              : ShortReal from Standard;
-                     B              : ShortReal from Standard;
-                     Create         : Boolean from Standard )
-        is deferred;
-    ---Purpose: call_togl_highlightcolor
-
-    NameSetStructure ( me       : mutable;
-               ACStructure  : CStructure from Graphic3d )
-        is deferred;
-    ---Purpose: call_togl_namesetstructure
-
-    -------------------------------------
-    -- Category: Group management methods
-    -------------------------------------
-
-    ClearGroup ( me     : mutable;
-             ACGroup    : CGroup from Graphic3d )
-        is deferred;
-    ---Purpose: call_togl_cleargroup
-
-    FaceContextGroup ( me       : mutable;
-                       ACGroup  : CGroup from Graphic3d;
-                       NoInsert : Integer from Standard )
-        is deferred;
-    ---Purpose: call_togl_facecontextgroup
-
-    Group ( me  : mutable;
-        ACGroup : in out CGroup from Graphic3d )
-        is deferred;
-    ---Purpose: call_togl_group
-
-    LineContextGroup ( me       : mutable;
-                       ACGroup  : CGroup from Graphic3d;
-                       NoInsert : Integer from Standard )
-        is deferred;
-    ---Purpose: call_togl_linecontextgroup
-
-    MarkerContextGroup ( me         : mutable;
-                         ACGroup    : CGroup from Graphic3d;
-                         NoInsert   : Integer from Standard )
-        is deferred;
-    ---Purpose: call_togl_markercontextgroup
-
-    RemoveGroup ( me        : mutable;
-                  ACGroup   : CGroup from Graphic3d )
-        is deferred;
-    ---Purpose: call_togl_removegroup
-
-    TextContextGroup ( me       : mutable;
-                       ACGroup  : CGroup from Graphic3d;
-                       NoInsert : Integer from Standard )
-        is deferred;
-    ---Purpose: call_togl_textcontextgroup
-
     -----------------------------------------
     -- Category: Structure management methods
     -----------------------------------------
 
-    ClearStructure ( me             : mutable;
-                     ACStructure    : CStructure from Graphic3d )
-        is deferred;
-    ---Purpose: call_togl_clearstructure
-
-    Connect ( me        : mutable;
-              AFather   : CStructure from Graphic3d;
-              ASon      : CStructure from Graphic3d )
-        is deferred;
-    ---Purpose: call_togl_connect
-
-    ContextStructure ( me           : mutable;
-                       ACStructure  : CStructure from Graphic3d )
-        is deferred;
-    ---Purpose: call_togl_contextstructure
-
-    Disconnect ( me         : mutable;
-                 AFather    : CStructure from Graphic3d;
-                 ASon       : CStructure from Graphic3d )
-        is deferred;
-    ---Purpose: call_togl_disconnect
-
-    DisplayStructure ( me           : mutable;
-                       ACView       : CView from Graphic3d;
-                       ACStructure  : CStructure from Graphic3d;
-                       APriority    : Integer from Standard )
+    DisplayStructure ( me            : mutable;
+                       theCView      : CView from Graphic3d;
+                       theCStructure : in out CStructure from Graphic3d;
+                       thePriority   : Integer from Standard )
         is deferred;
     ---Purpose: call_togl_displaystructure
 
-    EraseStructure ( me             : mutable;
-                     ACView         : CView from Graphic3d;
-                     ACStructure    : CStructure from Graphic3d )
+    EraseStructure ( me            : mutable;
+                     theCView      : CView from Graphic3d;
+                     theCStructure : in out CStructure from Graphic3d )
         is deferred;
     ---Purpose: call_togl_erasestructure
 
     RemoveStructure ( me            : mutable;
-                      ACStructure   : CStructure from Graphic3d )
+                      theCStructure : in out CStructure_Handle from Graphic3d )
         is deferred;
     ---Purpose: call_togl_removestructure
 
-    Structure ( me          : mutable;
-                ACStructure : in out CStructure from Graphic3d )
+    Structure (me : mutable;
+               theManager : StructureManager from Graphic3d)
+        returns CStructure_Handle from Graphic3d
         is deferred;
-    ---Purpose: call_togl_structure
+    ---Purpose: Creates new empty graphic structure
 
     ------------------------------------
     -- Category: Structured mode methods
@@ -327,66 +211,33 @@ is
         is deferred;
     ---Purpose: call_togl_cliplimit
 
-    ProjectRaster ( me      : mutable;
-                    ACView  : CView from Graphic3d;
-                    AX      : ShortReal from Standard;
-                    AY      : ShortReal from Standard;
-                    AZ      : ShortReal from Standard;
-                    AU      : out Integer from Standard;
-                    AV      : out Integer from Standard )
-        returns Boolean from Standard
-        is deferred;
-    ---Purpose: call_togl_unproject_raster
-
-    UnProjectRaster ( me        : mutable;
-                      ACView    : CView from Graphic3d;
-                      Axm       : Integer from Standard;
-                      Aym       : Integer from Standard;
-                      AXM       : Integer from Standard;
-                      AYM       : Integer from Standard;
-                      AU        : Integer from Standard;
-                      AV        : Integer from Standard;
-                      AX        : out ShortReal from Standard;
-                      AY        : out ShortReal from Standard;
-                      AZ        : out ShortReal from Standard )
-        returns Boolean from Standard
-        is deferred;
-    ---Purpose: call_togl_unproject_raster
-
-    UnProjectRasterWithRay ( me        : mutable;
-                             ACView    : CView from Graphic3d;
-                             Axm       : Integer from Standard;
-                             Aym       : Integer from Standard;
-                             AXM       : Integer from Standard;
-                             AYM       : Integer from Standard;
-                             AU        : Integer from Standard;
-                             AV        : Integer from Standard;
-                             AX        : out ShortReal from Standard;
-                             AY        : out ShortReal from Standard;
-                             AZ        : out ShortReal from Standard;
-                             DX        : out ShortReal from Standard;
-                             DY        : out ShortReal from Standard;
-                             DZ        : out ShortReal from Standard )
-        returns Boolean from Standard
-        is deferred;
-    ---Purpose: call_togl_unproject_raster_with_ray
-
     RatioWindow ( me        : mutable;
                   ACView    : CView from Graphic3d )
         is deferred;
     ---Purpose: call_togl_ratio_window
 
     Redraw ( me             : mutable;
-             ACView         : CView from Graphic3d;
-             ACUnderLayer   : CLayer2d from Aspect;
-             ACOverLayer    : CLayer2d from Aspect;
-             x              : Integer = 0;
-             y              : Integer = 0;
-             width              : Integer = 0;
-             height     : Integer = 0 )
-        is deferred;
-    ---Purpose: call_togl_redraw
-    --  Warning: when the redraw area has a null size, the full view is redrawn
+             theCView       : CView from Graphic3d;
+             theCUnderLayer : CLayer2d from Aspect;
+             theCOverLayer  : CLayer2d from Aspect;
+             theX           : Integer = 0;
+             theY           : Integer = 0;
+             theWidth       : Integer = 0;
+             theHeight      : Integer = 0 )
+    is deferred;
+    ---Purpose: Redraw content of the view
+
+    RedrawImmediate ( me               : mutable;
+                      theCView         : CView from Graphic3d;
+                      theCUnderLayer   : CLayer2d from Aspect;
+                      theCOverLayer    : CLayer2d from Aspect )
+    is deferred;
+    ---Purpose: Redraw layer of immediate presentations
+
+    Invalidate ( me       : mutable;
+                 theCView : CView from Graphic3d )
+    is deferred;
+    ---Purpose: Invalidates content of the view but does not redraw it
 
     RemoveView ( me     : mutable;
                 ACView  : CView from Graphic3d )
@@ -401,18 +252,14 @@ is
     SetClipPlanes (me : mutable; theCView : CView from Graphic3d) is deferred;
     ---Purpose: Pass clip planes to the associated graphic driver view.
 
-    SetClipPlanes (me : mutable; theCStructure : CStructure from Graphic3d) is deferred;
-    ---Purpose: Pass clip planes to the associated graphic driver structure.
+    SetCamera (me : mutable; theCView : CView from Graphic3d)
+         is deferred;
+    ---Purpose: Inform graphic driver if camera assigned to view changes.
 
     SetVisualisation ( me       : mutable;
                        ACView   : CView from Graphic3d )
         is deferred;
     ---Purpose: call_togl_setvisualisation
-
-    TransformStructure ( me             : mutable;
-                         ACStructure    : CStructure from Graphic3d )
-        is deferred;
-    ---Purpose: call_togl_transformstructure
 
     Transparency ( me       : mutable;
                    ACView   : CView from Graphic3d;
@@ -420,115 +267,21 @@ is
         is deferred;
     ---Purpose: call_togl_transparency
 
-    Update ( me             : mutable;
-             ACView         : CView from Graphic3d;
-             ACUnderLayer   : CLayer2d from Aspect;
-             ACOverLayer    : CLayer2d from Aspect )
-            is deferred;
-    ---Purpose: call_togl_update
-
     View ( me   : mutable;
            ACView   : in out CView from Graphic3d )
         returns Boolean from Standard
         is deferred;
     ---Purpose: call_togl_view
 
-    ViewMapping ( me        : mutable;
-                  ACView    : CView from Graphic3d;
-                  AWait : Boolean from Standard )
-        is deferred;
-    ---Purpose: call_togl_viewmapping
-
-    ViewOrientation ( me        : mutable;
-                      ACView    : CView from Graphic3d;
-                      AWait     : Boolean from Standard )
-        is deferred;
-    ---Purpose: call_togl_vieworientation
-
         Environment ( me        : mutable;
                       ACView    : CView from Graphic3d )
         is deferred;
     ---Purpose:
 
-    SetStencilTestOptions ( me          : mutable;
-                            theCGroup   : CGroup from Graphic3d;
-                            theIsEnabled: Boolean from Standard)
-    is deferred;
-    ---Purpose: sets the stencil test to theIsEnabled state;
-    
-    SetFlippingOptions (me          : mutable;
-                        theCGroup   : CGroup from Graphic3d;
-                        theIsEnabled: Boolean from Standard;
-                        theRefPlane : Ax2 from gp)
-    is deferred;
-    ---Purpose: sets the flipping to theIsEnabled state for the given graphic group.
-
-    ----------------------------------------
-    -- Category: Methods to create Text
-    -- for Purpose : see Graphic3d_Group.cdl
-    ----------------------------------------
-
-    Text ( me   : mutable;
-           ACGroup  : CGroup from Graphic3d;
-           AText    : CString from Standard;
-           APoint   : Vertex from Graphic3d;
-           AHeight  : Real from Standard;
-           AAngle   : PlaneAngle from Quantity;
-           ATp  : TextPath from Graphic3d;
-           AHta : HorizontalTextAlignment from Graphic3d;
-           AVta : VerticalTextAlignment from Graphic3d;
-           EvalMinMax   : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_text
-
-    Text ( me   : mutable;
-           ACGroup  : CGroup from Graphic3d;
-           AText    : CString from Standard;
-           APoint   : Vertex from Graphic3d;
-           AHeight  : Real from Standard;
-           EvalMinMax   : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_text
-
-    Text ( me   : mutable;
-           ACGroup  : CGroup from Graphic3d;
-           AText    : ExtendedString from TCollection;
-           APoint   : Vertex from Graphic3d;
-           AHeight  : Real from Standard;
-           AAngle   : PlaneAngle from Quantity;
-           ATp  : TextPath from Graphic3d;
-           AHta : HorizontalTextAlignment from Graphic3d;
-           AVta : VerticalTextAlignment from Graphic3d;
-           EvalMinMax   : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_text
-
-    Text ( me   : mutable;
-           ACGroup  : CGroup from Graphic3d;
-           AText    : ExtendedString from TCollection;
-           APoint   : Vertex from Graphic3d;
-           AHeight  : Real from Standard;
-           EvalMinMax   : Boolean from Standard = Standard_True )
-        is deferred;
-    ---Purpose: call_togl_text
-
     ----------------------------------------
     ---Category: Methods to create Triangle
     -- for Purpose : see Graphic3d_Group.cdl
     ----------------------------------------
-
-    PrimitiveArray( me          : mutable;
-                    ACGroup     : CGroup from Graphic3d;
-                    parray      : PrimitiveArray from Graphic3d;
-                    EvalMinMax  : Boolean from Standard = Standard_True )
-        is deferred;
-        ---Purpose: call_togl_parray
-
-    UserDraw( me          : mutable;
-              ACGroup     : CGroup from Graphic3d;
-              AUserDraw   : CUserDraw from Graphic3d )
-        is deferred;
-        ---Purpose: call_togl_userdraw
 
     EnableVBO( me       : mutable;
                status   : Boolean from Standard )
@@ -603,21 +356,7 @@ is
     is deferred;
 
     ----------------------------------
-    -- Category: Ajout mode methods
-    ----------------------------------
-
-    BeginAddMode ( me   : mutable;
-                ACView      : CView from Graphic3d)
-        returns Boolean from Standard
-        is deferred;
-    ---Purpose: call_togl_begin_ajout_mode
-
-    EndAddMode ( me     : mutable)
-        is deferred;
-    ---Purpose: call_togl_end_ajout_mode
-
-    ----------------------------------
-    -- Category: Immediat mode methods
+    -- Category: Immediate mode methods
     ----------------------------------
 
     SetImmediateModeDrawToFront (me                   : mutable;
@@ -637,30 +376,17 @@ is
     --    But it works in any case and is especially useful for view dump because the dump image is read from the back buffer.
     -- @return previous mode.
 
-    BeginImmediatMode ( me              : mutable;
-                        ACView          : CView from Graphic3d;
-                        ACUnderLayer    : CLayer2d from Aspect;
-                        ACOverLayer     : CLayer2d from Aspect;
-                        DoubleBuffer    : Boolean from Standard;
-                        RetainMode      : Boolean from Standard)
-        returns Boolean from Standard
-        is deferred;
-    ---Purpose: call_togl_begin_immediat_mode
+    DisplayImmediateStructure ( me            : mutable;
+                                theCView      : CView      from Graphic3d;
+                                theCStructure : CStructure from Graphic3d )
+    is deferred;
+    ---Purpose: Display structure in immediate mode on top of general presentation
 
-    ClearImmediatMode ( me  : mutable; ACView       : CView from Graphic3d;
-                  aFlush        : Boolean from Standard = Standard_True)
-        is deferred;
-    ---Purpose: call_togl_clear_immediat_mode
-
-    DrawStructure ( me          : mutable;
-                    ACStructure : CStructure from Graphic3d )
-        is deferred;
-    ---Purpose: call_togl_draw_structure
-
-    EndImmediatMode ( me            : mutable;
-                      Synchronize   : Integer from Standard )
-        is deferred;
-    ---Purpose: call_togl_end_immediat_mode
+    EraseImmediateStructure ( me            : mutable;
+                              theCView      : CView      from Graphic3d;
+                              theCStructure : CStructure from Graphic3d )
+    is deferred;
+    ---Purpose: Erases immediate structure
 
     -------------------------------
     -- Category: Layer mode methods
@@ -901,6 +627,13 @@ is
     -- In contrast to Bitmaps, Vector graphics is scalable (so you may got quality benefits on printing to laser printer).
     -- Notice however that results may differ a lot and do not contain some elements.
 
+    InvalidateBVHData( me         : mutable;
+                       theCView   : out CView from Graphic3d;
+                       theLayerId : Integer from Standard )
+    is deferred;
+    ---Purpose:
+    -- Marks BVH tree and the set of BVH primitives of correspondent priority list with id theLayerId as outdated.
+
     AddZLayer( me         : mutable;
                theCView   : CView from Graphic3d;
                theLayerId : Integer from Standard )
@@ -954,6 +687,14 @@ is
         is deferred;
         ---Purpose:  Sets the settings for a single Z layer of specified view.
 
+    ChangePriority( me             : mutable;
+                    theCStructure  : CStructure from Graphic3d;
+                    theCView       : CView from Graphic3d;
+                    theNewPriority : Integer from Standard )
+        is deferred;
+        ---Purpose: Changes the priority of a structure within its Z layer
+        -- in the specified view.
+
     -----------------------------
     -- Category: Internal methods
     -----------------------------
@@ -961,10 +702,6 @@ is
     PrintBoolean ( me;
                    AComment : CString from Standard;
                    AValue   : Boolean from Standard );
-
-    PrintCGroup ( me;
-                  ACGroup   : CGroup from Graphic3d;
-                  AField    : Integer from Standard );
 
     PrintCLight ( me;
                   ACLight   : CLight from Graphic3d;
@@ -1014,14 +751,6 @@ is
         returns Integer from Standard
         is static;
 
-    --ListOfAvalableFontNames( me;
-    --           lst: out NListOfHAsciiString from Graphic3d )
-    --           returns Boolean from Standard
-    --           is deferred;
-    --  Purpose:  Initialize list of names of avalable system fonts
-    --            returns Standard_False if fails
-    --  ABD Integration support of system fonts (using FTGL and FreeType)
-
     GetDisplayConnection (me)
        returns DisplayConnection_Handle from Aspect;
     ---C++: return const &
@@ -1038,7 +767,6 @@ is
 fields
 
     MyTraceLevel       : Integer from Standard is protected;
-    MySharedLibrary    : SharedLibrary from OSD is protected;
     myDisplayConnection: DisplayConnection_Handle from Aspect is protected;
     myDeviceLostFlag   : Boolean from Standard is protected;
 

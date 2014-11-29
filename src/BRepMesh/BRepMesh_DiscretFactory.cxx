@@ -13,12 +13,12 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#include <BRepMesh_DiscretFactory.ixx>
+#include <BRepMesh_DiscretFactory.hxx>
 
 #include <OSD_SharedLibrary.hxx>
 #include <OSD_Function.hxx>
 #include <BRepMesh_IncrementalMesh.hxx>
-#include <BRepMesh_PDiscretRoot.hxx>
+#include <BRepMesh_DiscretRoot.hxx>
 
 #ifdef HAVE_OCE_PATHS_H
 # include "oce-paths.h"
@@ -65,13 +65,13 @@ namespace
 //purpose  :
 //=======================================================================
 BRepMesh_DiscretFactory::BRepMesh_DiscretFactory()
-: myPluginEntry (NULL),
-  myErrorStatus (BRepMesh_FE_NOERROR),
-  myDefaultName (THE_FAST_DISCRET_MESH),
+: myPluginEntry  (NULL),
+  myErrorStatus  (BRepMesh_FE_NOERROR),
+  myDefaultName  (THE_FAST_DISCRET_MESH),
   myFunctionName ("DISCRETALGO")
 {
   // register built-in meshing algorithms
-  myNames.Add (THE_FAST_DISCRET_MESH);
+  myNames.Add(THE_FAST_DISCRET_MESH);
 }
 
 //=======================================================================
@@ -80,14 +80,14 @@ BRepMesh_DiscretFactory::BRepMesh_DiscretFactory()
 //=======================================================================
 BRepMesh_DiscretFactory::~BRepMesh_DiscretFactory()
 {
-  Clear();
+  clear();
 }
 
 //=======================================================================
-//function : ~
+//function : clear
 //purpose  :
 //=======================================================================
-void BRepMesh_DiscretFactory::Clear()
+void BRepMesh_DiscretFactory::clear()
 {
   // what should we do here? Unload dynamic libraries and reset plugins list?
 }
@@ -109,65 +109,12 @@ BRepMesh_DiscretFactory& BRepMesh_DiscretFactory::Get()
 }
 
 //=======================================================================
-//function : ErrorStatus
-//purpose  :
-//=======================================================================
-BRepMesh_FactoryError BRepMesh_DiscretFactory::ErrorStatus() const
-{
-  return myErrorStatus;
-}
-
-//=======================================================================
-//function : Names
-//purpose  :
-//=======================================================================
-const TColStd_MapOfAsciiString& BRepMesh_DiscretFactory::Names() const
-{
-  return myNames;
-}
-
-//=======================================================================
-//function : SetDefaultName
-//purpose  :
-//=======================================================================
-Standard_Boolean BRepMesh_DiscretFactory::SetDefaultName (const TCollection_AsciiString& theName)
-{
-  return SetDefault (theName, myFunctionName);
-}
-
-//=======================================================================
-//function : DefaultName
-//purpose  :
-//=======================================================================
-const TCollection_AsciiString& BRepMesh_DiscretFactory::DefaultName() const
-{
-  return myDefaultName;
-}
-
-//=======================================================================
-//function : SetFunctionName
-//purpose  :
-//=======================================================================
-Standard_Boolean BRepMesh_DiscretFactory::SetFunctionName (const TCollection_AsciiString& theFuncName)
-{
-  return SetDefault (myDefaultName, theFuncName);
-}
-
-//=======================================================================
-//function : FunctionName
-//purpose  :
-//=======================================================================
-const TCollection_AsciiString& BRepMesh_DiscretFactory::FunctionName() const
-{
-  return myFunctionName;
-}
-
-//=======================================================================
 //function : SetDefault
 //purpose  :
 //=======================================================================
-Standard_Boolean BRepMesh_DiscretFactory::SetDefault (const TCollection_AsciiString& theName,
-                                                      const TCollection_AsciiString& theFuncName)
+Standard_Boolean BRepMesh_DiscretFactory::SetDefault(
+  const TCollection_AsciiString& theName,
+  const TCollection_AsciiString& theFuncName)
 {
   myErrorStatus = BRepMesh_FE_NOERROR;
   if (theName == THE_FAST_DISCRET_MESH)
@@ -216,7 +163,7 @@ Standard_Boolean BRepMesh_DiscretFactory::SetDefault (const TCollection_AsciiStr
   }
 
   // try to create dummy tool
-  BRepMesh_PDiscretRoot anInstancePtr = NULL;
+  BRepMesh_DiscretRoot* anInstancePtr = NULL;
   Standard_Integer anErr = aFunc (TopoDS_Shape(), 0.001, 0.1, anInstancePtr);
   if (anErr != 0 || anInstancePtr == NULL)
   {
@@ -239,17 +186,19 @@ Standard_Boolean BRepMesh_DiscretFactory::SetDefault (const TCollection_AsciiStr
 //function : Discret
 //purpose  :
 //=======================================================================
-Handle(BRepMesh_DiscretRoot) BRepMesh_DiscretFactory
-  ::Discret (const TopoDS_Shape& theShape,
-             const Standard_Real theDeflection,
-             const Standard_Real theAngle)
+Handle(BRepMesh_DiscretRoot) BRepMesh_DiscretFactory::Discret(
+  const TopoDS_Shape& theShape,
+  const Standard_Real theDeflection,
+  const Standard_Real theAngle)
 {
   Handle(BRepMesh_DiscretRoot) aDiscretRoot;
-  BRepMesh_PDiscretRoot anInstancePtr = NULL;
+  BRepMesh_DiscretRoot* anInstancePtr = NULL;
   if (myPluginEntry != NULL)
   {
     // use plugin
-    Standard_Integer anErr = myPluginEntry (theShape, theDeflection, theAngle, anInstancePtr);
+    Standard_Integer anErr = myPluginEntry (theShape, 
+      theDeflection, theAngle, anInstancePtr);
+      
     if (anErr != 0 || anInstancePtr == NULL)
     {
       // can not create the algo specified - should never happens here
@@ -260,7 +209,8 @@ Handle(BRepMesh_DiscretRoot) BRepMesh_DiscretFactory
   else //if (myDefaultName == THE_FAST_DISCRET_MESH)
   {
     // use built-in
-    BRepMesh_IncrementalMesh::Discret (theShape, theDeflection, theAngle, anInstancePtr);
+    BRepMesh_IncrementalMesh::Discret (theShape, 
+      theDeflection, theAngle, anInstancePtr);
   }
 
   // cover with handle

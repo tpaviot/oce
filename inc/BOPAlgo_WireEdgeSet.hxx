@@ -6,55 +6,43 @@
 #ifndef _BOPAlgo_WireEdgeSet_HeaderFile
 #define _BOPAlgo_WireEdgeSet_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _BOPCol_ListOfShape_HeaderFile
 #include <BOPCol_ListOfShape.hxx>
-#endif
-#ifndef _BOPCol_BaseAllocator_HeaderFile
 #include <BOPCol_BaseAllocator.hxx>
-#endif
 class TopoDS_Face;
 class TopoDS_Shape;
 
 
 
-class BOPAlgo_WireEdgeSet  {
+class BOPAlgo_WireEdgeSet 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      BOPAlgo_WireEdgeSet();
+    BOPAlgo_WireEdgeSet();
  virtual ~BOPAlgo_WireEdgeSet();
   
-      BOPAlgo_WireEdgeSet(const BOPCol_BaseAllocator& theAllocator);
+    BOPAlgo_WireEdgeSet(const BOPCol_BaseAllocator& theAllocator);
   
-        void Clear() ;
+      void Clear() ;
   
-        void SetFace(const TopoDS_Face& aF) ;
+      void SetFace (const TopoDS_Face& aF) ;
   
-       const TopoDS_Face& Face() const;
+     const  TopoDS_Face& Face()  const;
   
-        void AddStartElement(const TopoDS_Shape& sS) ;
+      void AddStartElement (const TopoDS_Shape& sS) ;
   
-       const BOPCol_ListOfShape& StartElements() const;
+     const  BOPCol_ListOfShape& StartElements()  const;
   
-        void AddShape(const TopoDS_Shape& sS) ;
+      void AddShape (const TopoDS_Shape& sS) ;
   
-       const BOPCol_ListOfShape& Shapes() const;
-
+     const  BOPCol_ListOfShape& Shapes()  const;
 
 
 
@@ -63,9 +51,9 @@ protected:
 
 
 
-TopoDS_Face myFace;
-BOPCol_ListOfShape myStartShapes;
-BOPCol_ListOfShape myShapes;
+  TopoDS_Face myFace;
+  BOPCol_ListOfShape myStartShapes;
+  BOPCol_ListOfShape myShapes;
 
 
 private:
@@ -81,7 +69,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BOPAlgo_WireEdgeSet_HeaderFile

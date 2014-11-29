@@ -6,38 +6,27 @@
 #ifndef _TopOpeBRep_SequenceNodeOfSequenceOfPoint2d_HeaderFile
 #define _TopOpeBRep_SequenceNodeOfSequenceOfPoint2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d_HeaderFile
 #include <Handle_TopOpeBRep_SequenceNodeOfSequenceOfPoint2d.hxx>
-#endif
 
-#ifndef _TopOpeBRep_Point2d_HeaderFile
 #include <TopOpeBRep_Point2d.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class TopOpeBRep_Point2d;
 class TopOpeBRep_SequenceOfPoint2d;
 
 
 
-class TopOpeBRep_SequenceNodeOfSequenceOfPoint2d : public TCollection_SeqNode {
+class TopOpeBRep_SequenceNodeOfSequenceOfPoint2d : public TCollection_SeqNode
+{
 
 public:
 
   
-      TopOpeBRep_SequenceNodeOfSequenceOfPoint2d(const TopOpeBRep_Point2d& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    TopOpeBRep_SequenceNodeOfSequenceOfPoint2d(const TopOpeBRep_Point2d& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        TopOpeBRep_Point2d& Value() const;
+      TopOpeBRep_Point2d& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-TopOpeBRep_Point2d myValue;
+  TopOpeBRep_Point2d myValue;
 
 
 };
@@ -78,7 +67,6 @@ TopOpeBRep_Point2d myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRep_SequenceNodeOfSequenceOfPoint2d_HeaderFile

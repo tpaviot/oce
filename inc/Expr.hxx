@@ -6,28 +6,14 @@
 #ifndef _Expr_HeaderFile
 #define _Expr_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Expr_GeneralExpression_HeaderFile
 #include <Handle_Expr_GeneralExpression.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Expr_GeneralRelation_HeaderFile
 #include <Handle_Expr_GeneralRelation.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Expr_GeneralExpression;
 class Expr_GeneralRelation;
 class Expr_GeneralExpression;
@@ -92,25 +78,25 @@ class Expr_IndexedMapNodeOfMapOfNamedUnknown;
 class Expr_SequenceNodeOfSequenceOfGeneralRelation;
 
 
-//! This package describes  the data structure  of any <br>
-//!          expression, relation or function used in mathematics. <br>
-//!          It also describes the assignment of variables. Standard <br>
-//!          mathematical functions are implemented such as <br>
-//!          trigonometrics, hyperbolics, and log functions. <br>
-class Expr  {
+//! This package describes  the data structure  of any
+//! expression, relation or function used in mathematics.
+//! It also describes the assignment of variables. Standard
+//! mathematical functions are implemented such as
+//! trigonometrics, hyperbolics, and log functions.
+class Expr 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Handle_Expr_GeneralExpression CopyShare(const Handle(Expr_GeneralExpression)& exp) ;
+  Standard_EXPORT static   Handle(Expr_GeneralExpression) CopyShare (const Handle(Expr_GeneralExpression)& exp) ;
   
-  Standard_EXPORT   static  Standard_Integer NbOfFreeVariables(const Handle(Expr_GeneralExpression)& exp) ;
+  Standard_EXPORT static   Standard_Integer NbOfFreeVariables (const Handle(Expr_GeneralExpression)& exp) ;
   
-  Standard_EXPORT   static  Standard_Integer NbOfFreeVariables(const Handle(Expr_GeneralRelation)& exp) ;
+  Standard_EXPORT static   Standard_Integer NbOfFreeVariables (const Handle(Expr_GeneralRelation)& exp) ;
   
-  Standard_EXPORT   static  Standard_Real Sign(const Standard_Real val) ;
-
+  Standard_EXPORT static   Standard_Real Sign (const Standard_Real val) ;
 
 
 
@@ -193,7 +179,6 @@ friend class Expr_SequenceNodeOfSequenceOfGeneralRelation;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Expr_HeaderFile

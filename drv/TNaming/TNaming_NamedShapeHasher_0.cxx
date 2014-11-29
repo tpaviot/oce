@@ -5,12 +5,10 @@
 
 #include <TNaming_NamedShapeHasher.hxx>
 
-#ifndef _TNaming_NamedShape_HeaderFile
 #include <TNaming_NamedShape.hxx>
-#endif
  
 
-#define Key Handle_TNaming_NamedShape
+#define Key Handle(TNaming_NamedShape)
 #define Key_hxx <TNaming_NamedShape.hxx>
 #define TCollection_MapHasher TNaming_NamedShapeHasher
 #define TCollection_MapHasher_hxx <TNaming_NamedShapeHasher.hxx>

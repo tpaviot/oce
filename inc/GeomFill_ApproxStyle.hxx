@@ -6,14 +6,13 @@
 #ifndef _GeomFill_ApproxStyle_HeaderFile
 #define _GeomFill_ApproxStyle_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum GeomFill_ApproxStyle {
+
+enum GeomFill_ApproxStyle
+{
 GeomFill_Section,
 GeomFill_Location
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _GeomFill_ApproxStyle_HeaderFile

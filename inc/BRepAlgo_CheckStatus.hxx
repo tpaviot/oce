@@ -6,14 +6,13 @@
 #ifndef _BRepAlgo_CheckStatus_HeaderFile
 #define _BRepAlgo_CheckStatus_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum BRepAlgo_CheckStatus {
+
+enum BRepAlgo_CheckStatus
+{
 BRepAlgo_OK,
 BRepAlgo_NOK
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BRepAlgo_CheckStatus_HeaderFile

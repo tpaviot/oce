@@ -6,37 +6,16 @@
 #ifndef _BRepApprox_ApproxLine_HeaderFile
 #define _BRepApprox_ApproxLine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepApprox_ApproxLine_HeaderFile
 #include <Handle_BRepApprox_ApproxLine.hxx>
-#endif
 
-#ifndef _Handle_Geom_BSplineCurve_HeaderFile
 #include <Handle_Geom_BSplineCurve.hxx>
-#endif
-#ifndef _Handle_Geom2d_BSplineCurve_HeaderFile
 #include <Handle_Geom2d_BSplineCurve.hxx>
-#endif
-#ifndef _IntSurf_PntOn2S_HeaderFile
-#include <IntSurf_PntOn2S.hxx>
-#endif
-#ifndef _Handle_IntSurf_LineOn2S_HeaderFile
 #include <Handle_IntSurf_LineOn2S.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Geom_BSplineCurve;
 class Geom2d_BSplineCurve;
 class IntSurf_LineOn2S;
@@ -44,18 +23,19 @@ class IntSurf_PntOn2S;
 
 
 
-class BRepApprox_ApproxLine : public MMgt_TShared {
+class BRepApprox_ApproxLine : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   BRepApprox_ApproxLine(const Handle(Geom_BSplineCurve)& CurveXYZ,const Handle(Geom2d_BSplineCurve)& CurveUV1,const Handle(Geom2d_BSplineCurve)& CurveUV2);
+  Standard_EXPORT BRepApprox_ApproxLine(const Handle(Geom_BSplineCurve)& CurveXYZ, const Handle(Geom2d_BSplineCurve)& CurveUV1, const Handle(Geom2d_BSplineCurve)& CurveUV2);
   
-  Standard_EXPORT   BRepApprox_ApproxLine(const Handle(IntSurf_LineOn2S)& lin,const Standard_Boolean Tang);
+  Standard_EXPORT BRepApprox_ApproxLine(const Handle(IntSurf_LineOn2S)& lin, const Standard_Boolean Tang);
   
-  Standard_EXPORT     Standard_Integer NbPnts() const;
+  Standard_EXPORT   Standard_Integer NbPnts()  const;
   
-  Standard_EXPORT     IntSurf_PntOn2S Point(const Standard_Integer Index) ;
+  Standard_EXPORT   IntSurf_PntOn2S Point (const Standard_Integer Index) ;
 
 
 
@@ -70,11 +50,10 @@ protected:
 private: 
 
 
-Handle_Geom_BSplineCurve curvxyz;
-Handle_Geom2d_BSplineCurve curvuv1;
-Handle_Geom2d_BSplineCurve curvuv2;
-IntSurf_PntOn2S pnton2s;
-Handle_IntSurf_LineOn2S linon2s;
+  Handle(Geom_BSplineCurve) myCurveXYZ;
+  Handle(Geom2d_BSplineCurve) myCurveUV1;
+  Handle(Geom2d_BSplineCurve) myCurveUV2;
+  Handle(IntSurf_LineOn2S) myLineOn2S;
 
 
 };
@@ -83,7 +62,6 @@ Handle_IntSurf_LineOn2S linon2s;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepApprox_ApproxLine_HeaderFile

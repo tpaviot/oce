@@ -6,44 +6,38 @@
 #ifndef _StepShape_ManifoldSolidBrep_HeaderFile
 #define _StepShape_ManifoldSolidBrep_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_ManifoldSolidBrep_HeaderFile
 #include <Handle_StepShape_ManifoldSolidBrep.hxx>
-#endif
 
-#ifndef _Handle_StepShape_ClosedShell_HeaderFile
-#include <Handle_StepShape_ClosedShell.hxx>
-#endif
-#ifndef _StepShape_SolidModel_HeaderFile
+#include <Handle_StepShape_ConnectedFaceSet.hxx>
 #include <StepShape_SolidModel.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-class StepShape_ClosedShell;
+#include <Handle_StepShape_ClosedShell.hxx>
+class StepShape_ConnectedFaceSet;
 class TCollection_HAsciiString;
+class StepShape_ClosedShell;
 
 
 
-class StepShape_ManifoldSolidBrep : public StepShape_SolidModel {
+class StepShape_ManifoldSolidBrep : public StepShape_SolidModel
+{
 
 public:
 
-  //! Returns a ManifoldSolidBrep <br>
-  Standard_EXPORT   StepShape_ManifoldSolidBrep();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a ManifoldSolidBrep
+  Standard_EXPORT StepShape_ManifoldSolidBrep();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepShape_ClosedShell)& aOuter) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetOuter(const Handle(StepShape_ClosedShell)& aOuter) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepShape_ClosedShell)& aOuter) ;
   
-  Standard_EXPORT     Handle_StepShape_ClosedShell Outer() const;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepShape_ConnectedFaceSet)& aOuter) ;
+  
+  Standard_EXPORT   void SetOuter (const Handle(StepShape_ConnectedFaceSet)& aOuter) ;
+  
+  Standard_EXPORT   Handle(StepShape_ConnectedFaceSet) Outer()  const;
 
 
 
@@ -58,7 +52,7 @@ protected:
 private: 
 
 
-Handle_StepShape_ClosedShell outer;
+  Handle(StepShape_ConnectedFaceSet) outer;
 
 
 };
@@ -67,7 +61,6 @@ Handle_StepShape_ClosedShell outer;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_ManifoldSolidBrep_HeaderFile

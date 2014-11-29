@@ -6,46 +6,33 @@
 #ifndef _PDataStd_Real_HeaderFile
 #define _PDataStd_Real_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PDataStd_Real_HeaderFile
 #include <Handle_PDataStd_Real.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
 
 
-class PDataStd_Real : public PDF_Attribute {
+class PDataStd_Real : public PDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   PDataStd_Real();
+  Standard_EXPORT PDataStd_Real();
   
-  Standard_EXPORT   PDataStd_Real(const Standard_Real Value,const Standard_Integer Dimension);
+  Standard_EXPORT PDataStd_Real(const Standard_Real Value, const Standard_Integer Dimension);
   
-  Standard_EXPORT     Standard_Real Get() const;
+  Standard_EXPORT   Standard_Real Get()  const;
   
-  Standard_EXPORT     void Set(const Standard_Real V) ;
+  Standard_EXPORT   void Set (const Standard_Real V) ;
   
-  Standard_EXPORT     void SetDimension(const Standard_Integer DIM) ;
+  Standard_EXPORT   void SetDimension (const Standard_Integer DIM) ;
   
-  Standard_EXPORT     Standard_Integer GetDimension() const;
+  Standard_EXPORT   Standard_Integer GetDimension()  const;
 
 PDataStd_Real(const Storage_stCONSTclCOM& a) : PDF_Attribute(a)
 {
@@ -68,8 +55,8 @@ protected:
 private: 
 
 
-Standard_Real myValue;
-Standard_Integer myDimension;
+  Standard_Real myValue;
+  Standard_Integer myDimension;
 
 
 };
@@ -78,7 +65,6 @@ Standard_Integer myDimension;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDataStd_Real_HeaderFile

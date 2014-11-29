@@ -6,31 +6,15 @@
 #ifndef _Geom_Hyperbola_HeaderFile
 #define _Geom_Hyperbola_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Geom_Hyperbola_HeaderFile
 #include <Handle_Geom_Hyperbola.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Geom_Conic_HeaderFile
 #include <Geom_Conic.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Geom_Geometry_HeaderFile
 #include <Handle_Geom_Geometry.hxx>
-#endif
 class Standard_ConstructionError;
 class Standard_DomainError;
 class Standard_RangeError;
@@ -43,206 +27,242 @@ class gp_Trsf;
 class Geom_Geometry;
 
 
-//! Describes a branch of a hyperbola in 3D space. <br>
-//! A hyperbola is defined by its major and minor radii <br>
-//! and, as with any conic curve, is positioned in space <br>
-//! with a right-handed coordinate system (gp_Ax2 object) where: <br>
-//! - the origin is the center of the hyperbola, <br>
-//! - the "X Direction" defines the major axis, and <br>
-//! - the "Y Direction" defines the minor axis. <br>
-//! The origin, "X Direction" and "Y Direction" of this <br>
-//! coordinate system define the plane of the hyperbola. <br>
-//! The coordinate system is the local coordinate <br>
-//! system of the hyperbola. <br>
-//! The branch of the hyperbola described is the one <br>
-//! located on the positive side of the major axis. <br>
-//! The "main Direction" of the local coordinate system is <br>
-//! a vector normal to the plane of the hyperbola. The <br>
-//! axis, of which the origin and unit vector are <br>
-//! respectively the origin and "main Direction" of the <br>
-//! local coordinate system, is termed the "Axis" or "main <br>
-//! Axis" of the hyperbola. <br>
-//! The "main Direction" of the local coordinate system <br>
-//! gives an explicit orientation to the hyperbola, <br>
-//! determining the direction in which the parameter <br>
-//! increases along the hyperbola. <br>
-//! The Geom_Hyperbola hyperbola is parameterized as follows: <br>
-//! P(U) = O + MajRad*Cosh(U)*XDir + MinRad*Sinh(U)*YDir, where: <br>
-//! - P is the point of parameter U, <br>
-//! - O, XDir and YDir are respectively the origin, "X <br>
-//!   Direction" and "Y Direction" of its local coordinate system, <br>
-//! - MajRad and MinRad are the major and minor radii of the hyperbola. <br>
-//! The "X Axis" of the local coordinate system therefore <br>
-//! defines the origin of the parameter of the hyperbola. <br>
-//! The parameter range is ] -infinite, +infinite [. <br>
-//! The following diagram illustrates the respective <br>
-//! positions, in the plane of the hyperbola, of the three <br>
-//! branches of hyperbolas constructed using the <br>
-//! functions OtherBranch, ConjugateBranch1 and <br>
-//! ConjugateBranch2: Defines the main branch of an hyperbola. <br>
-//!                      ^YAxis <br>
-//!                         | <br>
-//!                  FirstConjugateBranch <br>
-//!                         | <br>
-//!        Other            |                Main <br>
-//!   --------------------- C ------------------------------>XAxis <br>
-//!        Branch           |                Branch <br>
-//!                         | <br>
-//!                   SecondConjugateBranch <br>
-//!                         | <br>
-//! Warning <br>
-//! The value of the major radius (on the major axis) can <br>
-//! be less than the value of the minor radius (on the minor axis). <br>
-class Geom_Hyperbola : public Geom_Conic {
+//! Describes a branch of a hyperbola in 3D space.
+//! A hyperbola is defined by its major and minor radii
+//! and, as with any conic curve, is positioned in space
+//! with a right-handed coordinate system (gp_Ax2 object) where:
+//! - the origin is the center of the hyperbola,
+//! - the "X Direction" defines the major axis, and
+//! - the "Y Direction" defines the minor axis.
+//! The origin, "X Direction" and "Y Direction" of this
+//! coordinate system define the plane of the hyperbola.
+//! The coordinate system is the local coordinate
+//! system of the hyperbola.
+//! The branch of the hyperbola described is the one
+//! located on the positive side of the major axis.
+//! The "main Direction" of the local coordinate system is
+//! a vector normal to the plane of the hyperbola. The
+//! axis, of which the origin and unit vector are
+//! respectively the origin and "main Direction" of the
+//! local coordinate system, is termed the "Axis" or "main
+//! Axis" of the hyperbola.
+//! The "main Direction" of the local coordinate system
+//! gives an explicit orientation to the hyperbola,
+//! determining the direction in which the parameter
+//! increases along the hyperbola.
+//! The Geom_Hyperbola hyperbola is parameterized as follows:
+//! P(U) = O + MajRad*Cosh(U)*XDir + MinRad*Sinh(U)*YDir, where:
+//! - P is the point of parameter U,
+//! - O, XDir and YDir are respectively the origin, "X
+//! Direction" and "Y Direction" of its local coordinate system,
+//! - MajRad and MinRad are the major and minor radii of the hyperbola.
+//! The "X Axis" of the local coordinate system therefore
+//! defines the origin of the parameter of the hyperbola.
+//! The parameter range is ] -infinite, +infinite [.
+//! The following diagram illustrates the respective
+//! positions, in the plane of the hyperbola, of the three
+//! branches of hyperbolas constructed using the
+//! functions OtherBranch, ConjugateBranch1 and
+//! ConjugateBranch2: Defines the main branch of an hyperbola.
+//! ^YAxis
+//! |
+//! FirstConjugateBranch
+//! |
+//! Other            |                Main
+//! --------------------- C ------------------------------>XAxis
+//! Branch           |                Branch
+//! |
+//! SecondConjugateBranch
+//! |
+//! Warning
+//! The value of the major radius (on the major axis) can
+//! be less than the value of the minor radius (on the minor axis).
+class Geom_Hyperbola : public Geom_Conic
+{
 
 public:
 
-  //! Constructs a hyperbola by conversion of the gp_Hypr hyperbola H. <br>
-  Standard_EXPORT   Geom_Hyperbola(const gp_Hypr& H);
-  //! Constructs a hyperbola defined by its major and <br>
-//! minor radii, MajorRadius and MinorRadius, where A2 locates the <br>
-//!   hyperbola and defines its orientation in 3D space such that: <br>
-//!   - the center of the hyperbola is the origin of A2, <br>
-//!   - the "X Direction" of A2 defines the major axis <br>
-//!    of the hyperbola, i.e. the major radius <br>
-//!    MajorRadius is measured along this axis, <br>
-//!   - the "Y Direction" of A2 defines the minor axis <br>
-//!    of the hyperbola, i.e. the minor radius <br>
-//!    MinorRadius is measured along this axis, <br>
-//!   - A2 is the local coordinate system of the   hyperbola. <br>
-//! Exceptions <br>
-//! Standard_ConstructionError if: <br>
-//! - MajorRadius is less than 0.0, <br>
-//! - MinorRadius is less than 0.0. <br>
-  Standard_EXPORT   Geom_Hyperbola(const gp_Ax2& A2,const Standard_Real MajorRadius,const Standard_Real MinorRadius);
-  //! Converts the gp_Hypr hyperbola H into this hyperbola. <br>
-  Standard_EXPORT     void SetHypr(const gp_Hypr& H) ;
-  //! Assigns a value to the major radius of this hyperbola. <br>
-//! Exceptions <br>
-//! Standard_ConstructionError if: <br>
-//! - MajorRadius is less than 0.0, or <br>
-//! - MinorRadius is less than 0.0.Raised if MajorRadius < 0.0 <br>
-  Standard_EXPORT     void SetMajorRadius(const Standard_Real MajorRadius) ;
-  //! Assigns a value to the minor radius of this hyperbola. <br>
-//! Exceptions <br>
-//! Standard_ConstructionError if: <br>
-//! - MajorRadius is less than 0.0, or <br>
-//! - MinorRadius is less than 0.0.Raised if MajorRadius < 0.0 <br>
-  Standard_EXPORT     void SetMinorRadius(const Standard_Real MinorRadius) ;
   
-//!  returns the non transient parabola from gp with the same <br>
-//!  geometric properties as <me>. <br>
-  Standard_EXPORT     gp_Hypr Hypr() const;
-  //! Computes the parameter on the reversed hyperbola, <br>
-//! for the point of parameter U on this hyperbola. <br>
-//! For a hyperbola, the returned value is: -U. <br>
-  Standard_EXPORT     Standard_Real ReversedParameter(const Standard_Real U) const;
-  //! Returns RealFirst from Standard. <br>
-  Standard_EXPORT     Standard_Real FirstParameter() const;
-  //! returns RealLast from Standard. <br>
-  Standard_EXPORT     Standard_Real LastParameter() const;
-  //! Returns False. <br>
-  Standard_EXPORT     Standard_Boolean IsClosed() const;
-  //! return False for an hyperbola. <br>
-  Standard_EXPORT     Standard_Boolean IsPeriodic() const;
+  //! Constructs a hyperbola by conversion of the gp_Hypr hyperbola H.
+  Standard_EXPORT Geom_Hyperbola(const gp_Hypr& H);
   
-//!  In the local coordinate system of the hyperbola the equation of <br>
-//!  the hyperbola is (X*X)/(A*A) - (Y*Y)/(B*B) = 1.0 and the <br>
-//!  equation of the first asymptote is Y = (B/A)*X. <br>
-//!  Raises ConstructionError if MajorRadius = 0.0 <br>
-  Standard_EXPORT     gp_Ax1 Asymptote1() const;
+  //! Constructs a hyperbola defined by its major and
+  //! minor radii, MajorRadius and MinorRadius, where A2 locates the
+  //! hyperbola and defines its orientation in 3D space such that:
+  //! - the center of the hyperbola is the origin of A2,
+  //! - the "X Direction" of A2 defines the major axis
+  //! of the hyperbola, i.e. the major radius
+  //! MajorRadius is measured along this axis,
+  //! - the "Y Direction" of A2 defines the minor axis
+  //! of the hyperbola, i.e. the minor radius
+  //! MinorRadius is measured along this axis,
+  //! - A2 is the local coordinate system of the   hyperbola.
+  //! Exceptions
+  //! Standard_ConstructionError if:
+  //! - MajorRadius is less than 0.0,
+  //! - MinorRadius is less than 0.0.
+  Standard_EXPORT Geom_Hyperbola(const gp_Ax2& A2, const Standard_Real MajorRadius, const Standard_Real MinorRadius);
   
-//!  In the local coordinate system of the hyperbola the equation of <br>
-//!  the hyperbola is (X*X)/(A*A) - (Y*Y)/(B*B) = 1.0 and the <br>
-//!  equation of the first asymptote is Y = -(B/A)*X. <br>
-//! Raises ConstructionError if MajorRadius = 0.0 <br>
-  Standard_EXPORT     gp_Ax1 Asymptote2() const;
+  //! Converts the gp_Hypr hyperbola H into this hyperbola.
+  Standard_EXPORT   void SetHypr (const gp_Hypr& H) ;
   
-//!  This branch of hyperbola is on the positive side of the <br>
-//!  YAxis of <me>. <br>
-  Standard_EXPORT     gp_Hypr ConjugateBranch1() const;
+  //! Assigns a value to the major radius of this hyperbola.
+  //! Exceptions
+  //! Standard_ConstructionError if:
+  //! - MajorRadius is less than 0.0, or
+  //! - MinorRadius is less than 0.0.Raised if MajorRadius < 0.0
+  Standard_EXPORT   void SetMajorRadius (const Standard_Real MajorRadius) ;
   
-//!  This branch of hyperbola is on the negative side of the <br>
-//!  YAxis of <me>. <br>
-//! Note: The diagram given under the class purpose <br>
-//! indicates where these two branches of hyperbola are <br>
-//! positioned in relation to this branch of hyperbola. <br>
-  Standard_EXPORT     gp_Hypr ConjugateBranch2() const;
+  //! Assigns a value to the minor radius of this hyperbola.
+  //! Exceptions
+  //! Standard_ConstructionError if:
+  //! - MajorRadius is less than 0.0, or
+  //! - MinorRadius is less than 0.0.Raised if MajorRadius < 0.0
+  Standard_EXPORT   void SetMinorRadius (const Standard_Real MinorRadius) ;
   
-//!  This directrix is the line normal to the XAxis of the hyperbola <br>
-//!  in the local plane (Z = 0) at a distance d = MajorRadius / e <br>
-//!  from the center of the hyperbola, where e is the eccentricity of <br>
-//!  the hyperbola. <br>
-//!  This line is parallel to the YAxis. The intersection point between <br>
-//!  directrix1 and the XAxis is the location point of the directrix1. <br>
-//!  This point is on the positive side of the XAxis. <br>
-  Standard_EXPORT     gp_Ax1 Directrix1() const;
+
+  //! returns the non transient parabola from gp with the same
+  //! geometric properties as <me>.
+  Standard_EXPORT   gp_Hypr Hypr()  const;
   
-//!  This line is obtained by the symmetrical transformation <br>
-//!  of "directrix1" with respect to the YAxis of the hyperbola. <br>
-  Standard_EXPORT     gp_Ax1 Directrix2() const;
+  //! Computes the parameter on the reversed hyperbola,
+  //! for the point of parameter U on this hyperbola.
+  //! For a hyperbola, the returned value is: -U.
+  Standard_EXPORT   Standard_Real ReversedParameter (const Standard_Real U)  const;
   
-//!  Returns the excentricity of the hyperbola (e > 1). <br>
-//!  If f is the distance between the location of the hyperbola <br>
-//!  and the Focus1 then the eccentricity e = f / MajorRadius. <br>//! raised if MajorRadius = 0.0 <br>
-  Standard_EXPORT     Standard_Real Eccentricity() const;
+  //! Returns RealFirst from Standard.
+  Standard_EXPORT   Standard_Real FirstParameter()  const;
   
-//!  Computes the focal distance. It is the distance between the <br>
-//!  two focus of the hyperbola. <br>
-  Standard_EXPORT     Standard_Real Focal() const;
+  //! returns RealLast from Standard.
+  Standard_EXPORT   Standard_Real LastParameter()  const;
   
-//!  Returns the first focus of the hyperbola. This focus is on the <br>
-//!  positive side of the XAxis of the hyperbola. <br>
-  Standard_EXPORT     gp_Pnt Focus1() const;
+  //! Returns False.
+  Standard_EXPORT   Standard_Boolean IsClosed()  const;
   
-//!  Returns the second focus of the hyperbola. This focus is on the <br>
-//!  negative side of the XAxis of the hyperbola. <br>
-  Standard_EXPORT     gp_Pnt Focus2() const;
-  //! Returns the major or minor radius of this hyperbola. <br>
-//! The major radius is also the distance between the <br>
-//! center of the hyperbola and the apex of the main <br>
-//! branch (located on the "X Axis" of the hyperbola). <br>
-  Standard_EXPORT     Standard_Real MajorRadius() const;
-  //! Returns the major or minor radius of this hyperbola. <br>
-//! The minor radius is also the distance between the <br>
-//! center of the hyperbola and the apex of a conjugate <br>
-//! branch (located on the "Y Axis" of the hyperbola). <br>
-  Standard_EXPORT     Standard_Real MinorRadius() const;
-  //! Computes the "other" branch of this hyperbola. This <br>
-//! is the symmetrical branch with respect to the center of this hyperbola. <br>
-//! Note: The diagram given under the class purpose <br>
-//! indicates where the "other" branch is positioned in <br>
-//! relation to this branch of the hyperbola. <br>
-  Standard_EXPORT     gp_Hypr OtherBranch() const;
+  //! return False for an hyperbola.
+  Standard_EXPORT   Standard_Boolean IsPeriodic()  const;
   
-//!  Returns p = (e * e - 1) * MajorRadius where e is the <br>
-//!  eccentricity of the hyperbola. <br>//! raised if MajorRadius = 0.0 <br>
-  Standard_EXPORT     Standard_Real Parameter() const;
-  //! Returns in P the point of parameter U. <br>
-//!  P = C + MajorRadius * Cosh (U) * XDir + <br>
-//!          MinorRadius * Sinh (U) * YDir <br>
-//!  where C is the center of the hyperbola , XDir the XDirection and <br>
-//!  YDir the YDirection of the hyperbola's local coordinate system. <br>
-  Standard_EXPORT     void D0(const Standard_Real U,gp_Pnt& P) const;
+
+  //! In the local coordinate system of the hyperbola the equation of
+  //! the hyperbola is (X*X)/(A*A) - (Y*Y)/(B*B) = 1.0 and the
+  //! equation of the first asymptote is Y = (B/A)*X.
+  //! Raises ConstructionError if MajorRadius = 0.0
+  Standard_EXPORT   gp_Ax1 Asymptote1()  const;
   
-//!  Returns the point P of parameter U and the first derivative V1. <br>
-  Standard_EXPORT     void D1(const Standard_Real U,gp_Pnt& P,gp_Vec& V1) const;
+
+  //! In the local coordinate system of the hyperbola the equation of
+  //! the hyperbola is (X*X)/(A*A) - (Y*Y)/(B*B) = 1.0 and the
+  //! equation of the first asymptote is Y = -(B/A)*X.
+  //! Raises ConstructionError if MajorRadius = 0.0
+  Standard_EXPORT   gp_Ax1 Asymptote2()  const;
   
-//!  Returns the point P of parameter U, the first and second <br>
-//!  derivatives V1 and V2. <br>
-  Standard_EXPORT     void D2(const Standard_Real U,gp_Pnt& P,gp_Vec& V1,gp_Vec& V2) const;
+
+  //! This branch of hyperbola is on the positive side of the
+  //! YAxis of <me>.
+  Standard_EXPORT   gp_Hypr ConjugateBranch1()  const;
   
-//!  Returns the point P of parameter U, the first second and <br>
-//!  third derivatives V1 V2 and V3. <br>
-  Standard_EXPORT     void D3(const Standard_Real U,gp_Pnt& P,gp_Vec& V1,gp_Vec& V2,gp_Vec& V3) const;
+
+  //! This branch of hyperbola is on the negative side of the
+  //! YAxis of <me>.
+  //! Note: The diagram given under the class purpose
+  //! indicates where these two branches of hyperbola are
+  //! positioned in relation to this branch of hyperbola.
+  Standard_EXPORT   gp_Hypr ConjugateBranch2()  const;
   
-//!  The returned vector gives the value of the derivative for the <br>
-//!  order of derivation N. <br>//! Raised if N < 1. <br>
-  Standard_EXPORT     gp_Vec DN(const Standard_Real U,const Standard_Integer N) const;
-  //! Applies the transformation T to this hyperbola. <br>
-  Standard_EXPORT     void Transform(const gp_Trsf& T) ;
-  //! Creates a new object which is a copy of this hyperbola. <br>
-  Standard_EXPORT     Handle_Geom_Geometry Copy() const;
+
+  //! This directrix is the line normal to the XAxis of the hyperbola
+  //! in the local plane (Z = 0) at a distance d = MajorRadius / e
+  //! from the center of the hyperbola, where e is the eccentricity of
+  //! the hyperbola.
+  //! This line is parallel to the YAxis. The intersection point between
+  //! directrix1 and the XAxis is the location point of the directrix1.
+  //! This point is on the positive side of the XAxis.
+  Standard_EXPORT   gp_Ax1 Directrix1()  const;
+  
+
+  //! This line is obtained by the symmetrical transformation
+  //! of "directrix1" with respect to the YAxis of the hyperbola.
+  Standard_EXPORT   gp_Ax1 Directrix2()  const;
+  
+
+  //! Returns the excentricity of the hyperbola (e > 1).
+  //! If f is the distance between the location of the hyperbola
+  //! and the Focus1 then the eccentricity e = f / MajorRadius.
+  //! raised if MajorRadius = 0.0
+  Standard_EXPORT   Standard_Real Eccentricity()  const;
+  
+
+  //! Computes the focal distance. It is the distance between the
+  //! two focus of the hyperbola.
+  Standard_EXPORT   Standard_Real Focal()  const;
+  
+
+  //! Returns the first focus of the hyperbola. This focus is on the
+  //! positive side of the XAxis of the hyperbola.
+  Standard_EXPORT   gp_Pnt Focus1()  const;
+  
+
+  //! Returns the second focus of the hyperbola. This focus is on the
+  //! negative side of the XAxis of the hyperbola.
+  Standard_EXPORT   gp_Pnt Focus2()  const;
+  
+  //! Returns the major or minor radius of this hyperbola.
+  //! The major radius is also the distance between the
+  //! center of the hyperbola and the apex of the main
+  //! branch (located on the "X Axis" of the hyperbola).
+  Standard_EXPORT   Standard_Real MajorRadius()  const;
+  
+  //! Returns the major or minor radius of this hyperbola.
+  //! The minor radius is also the distance between the
+  //! center of the hyperbola and the apex of a conjugate
+  //! branch (located on the "Y Axis" of the hyperbola).
+  Standard_EXPORT   Standard_Real MinorRadius()  const;
+  
+  //! Computes the "other" branch of this hyperbola. This
+  //! is the symmetrical branch with respect to the center of this hyperbola.
+  //! Note: The diagram given under the class purpose
+  //! indicates where the "other" branch is positioned in
+  //! relation to this branch of the hyperbola.
+  Standard_EXPORT   gp_Hypr OtherBranch()  const;
+  
+
+  //! Returns p = (e * e - 1) * MajorRadius where e is the
+  //! eccentricity of the hyperbola.
+  //! raised if MajorRadius = 0.0
+  Standard_EXPORT   Standard_Real Parameter()  const;
+  
+  //! Returns in P the point of parameter U.
+  //! P = C + MajorRadius * Cosh (U) * XDir +
+  //! MinorRadius * Sinh (U) * YDir
+  //! where C is the center of the hyperbola , XDir the XDirection and
+  //! YDir the YDirection of the hyperbola's local coordinate system.
+  Standard_EXPORT   void D0 (const Standard_Real U, gp_Pnt& P)  const;
+  
+
+  //! Returns the point P of parameter U and the first derivative V1.
+  Standard_EXPORT   void D1 (const Standard_Real U, gp_Pnt& P, gp_Vec& V1)  const;
+  
+
+  //! Returns the point P of parameter U, the first and second
+  //! derivatives V1 and V2.
+  Standard_EXPORT   void D2 (const Standard_Real U, gp_Pnt& P, gp_Vec& V1, gp_Vec& V2)  const;
+  
+
+  //! Returns the point P of parameter U, the first second and
+  //! third derivatives V1 V2 and V3.
+  Standard_EXPORT   void D3 (const Standard_Real U, gp_Pnt& P, gp_Vec& V1, gp_Vec& V2, gp_Vec& V3)  const;
+  
+
+  //! The returned vector gives the value of the derivative for the
+  //! order of derivation N.
+  //! Raised if N < 1.
+  Standard_EXPORT   gp_Vec DN (const Standard_Real U, const Standard_Integer N)  const;
+  
+  //! Applies the transformation T to this hyperbola.
+  Standard_EXPORT   void Transform (const gp_Trsf& T) ;
+  
+  //! Creates a new object which is a copy of this hyperbola.
+  Standard_EXPORT   Handle(Geom_Geometry) Copy()  const;
 
 
 
@@ -257,8 +277,8 @@ protected:
 private: 
 
 
-Standard_Real majorRadius;
-Standard_Real minorRadius;
+  Standard_Real majorRadius;
+  Standard_Real minorRadius;
 
 
 };
@@ -267,7 +287,6 @@ Standard_Real minorRadius;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom_Hyperbola_HeaderFile

@@ -1,18 +1,6 @@
-#ifndef _StepGeom_BezierSurface_HeaderFile
 #include <StepGeom_BezierSurface.hxx>
-#endif
-#ifndef _StepGeom_RationalBSplineSurface_HeaderFile
 #include <StepGeom_RationalBSplineSurface.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepGeom_HArray2OfCartesianPoint_HeaderFile
 #include <StepGeom_HArray2OfCartesianPoint.hxx>
-#endif
-#ifndef _TColStd_HArray2OfReal_HeaderFile
 #include <TColStd_HArray2OfReal.hxx>
-#endif
-#ifndef _StepGeom_BezierSurfaceAndRationalBSplineSurface_HeaderFile
 #include <StepGeom_BezierSurfaceAndRationalBSplineSurface.hxx>
-#endif

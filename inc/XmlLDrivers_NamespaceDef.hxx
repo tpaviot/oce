@@ -6,37 +6,29 @@
 #ifndef _XmlLDrivers_NamespaceDef_HeaderFile
 #define _XmlLDrivers_NamespaceDef_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
 class TCollection_AsciiString;
 
 
 
-class XmlLDrivers_NamespaceDef  {
+class XmlLDrivers_NamespaceDef 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   XmlLDrivers_NamespaceDef();
+  Standard_EXPORT XmlLDrivers_NamespaceDef();
   
-  Standard_EXPORT   XmlLDrivers_NamespaceDef(const TCollection_AsciiString& thePrefix,const TCollection_AsciiString& theURI);
+  Standard_EXPORT XmlLDrivers_NamespaceDef(const TCollection_AsciiString& thePrefix, const TCollection_AsciiString& theURI);
   
-  Standard_EXPORT    const TCollection_AsciiString& Prefix() const;
+  Standard_EXPORT  const  TCollection_AsciiString& Prefix()  const;
   
-  Standard_EXPORT    const TCollection_AsciiString& URI() const;
-
+  Standard_EXPORT  const  TCollection_AsciiString& URI()  const;
 
 
 
@@ -51,8 +43,8 @@ private:
 
 
 
-TCollection_AsciiString myPrefix;
-TCollection_AsciiString myURI;
+  TCollection_AsciiString myPrefix;
+  TCollection_AsciiString myURI;
 
 
 };
@@ -61,7 +53,6 @@ TCollection_AsciiString myURI;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XmlLDrivers_NamespaceDef_HeaderFile

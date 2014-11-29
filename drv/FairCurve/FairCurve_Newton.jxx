@@ -1,9 +1,2 @@
-#ifndef _math_MultipleVarFunctionWithHessian_HeaderFile
 #include <math_MultipleVarFunctionWithHessian.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
-#ifndef _FairCurve_Newton_HeaderFile
 #include <FairCurve_Newton.hxx>
-#endif

@@ -6,28 +6,14 @@
 #ifndef _MAT_DataMapNodeOfDataMapOfIntegerNode_HeaderFile
 #define _MAT_DataMapNodeOfDataMapOfIntegerNode_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MAT_DataMapNodeOfDataMapOfIntegerNode_HeaderFile
 #include <Handle_MAT_DataMapNodeOfDataMapOfIntegerNode.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_MAT_Node_HeaderFile
 #include <Handle_MAT_Node.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class MAT_Node;
 class TColStd_MapIntegerHasher;
 class MAT_DataMapOfIntegerNode;
@@ -35,16 +21,17 @@ class MAT_DataMapIteratorOfDataMapOfIntegerNode;
 
 
 
-class MAT_DataMapNodeOfDataMapOfIntegerNode : public TCollection_MapNode {
+class MAT_DataMapNodeOfDataMapOfIntegerNode : public TCollection_MapNode
+{
 
 public:
 
   
-      MAT_DataMapNodeOfDataMapOfIntegerNode(const Standard_Integer& K,const Handle(MAT_Node)& I,const TCollection_MapNodePtr& n);
+    MAT_DataMapNodeOfDataMapOfIntegerNode(const Standard_Integer& K, const Handle(MAT_Node)& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Key() const;
+      Standard_Integer& Key()  const;
   
-        Handle_MAT_Node& Value() const;
+      Handle(MAT_Node)& Value()  const;
 
 
 
@@ -59,15 +46,15 @@ protected:
 private: 
 
 
-Standard_Integer myKey;
-Handle_MAT_Node myValue;
+  Standard_Integer myKey;
+  Handle(MAT_Node) myValue;
 
 
 };
 
 #define TheKey Standard_Integer
 #define TheKey_hxx <Standard_Integer.hxx>
-#define TheItem Handle_MAT_Node
+#define TheItem Handle(MAT_Node)
 #define TheItem_hxx <MAT_Node.hxx>
 #define Hasher TColStd_MapIntegerHasher
 #define Hasher_hxx <TColStd_MapIntegerHasher.hxx>
@@ -98,7 +85,6 @@ Handle_MAT_Node myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MAT_DataMapNodeOfDataMapOfIntegerNode_HeaderFile

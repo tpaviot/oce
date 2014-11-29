@@ -6,61 +6,48 @@
 #ifndef _V3d_ColorScale_HeaderFile
 #define _V3d_ColorScale_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_V3d_ColorScale_HeaderFile
 #include <Handle_V3d_ColorScale.hxx>
-#endif
 
-#ifndef _V3d_LayerMgrPointer_HeaderFile
 #include <V3d_LayerMgrPointer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Aspect_ColorScale_HeaderFile
 #include <Aspect_ColorScale.hxx>
-#endif
-#ifndef _Handle_V3d_LayerMgr_HeaderFile
 #include <Handle_V3d_LayerMgr.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class V3d_LayerMgr;
 class Quantity_Color;
 class TCollection_ExtendedString;
 
 
-//! A colorscale class <br>
-class V3d_ColorScale : public Aspect_ColorScale {
+//! A colorscale class
+class V3d_ColorScale : public Aspect_ColorScale
+{
 
 public:
 
-  //! Returns returns ColorScale from V3d. <br>//! Returns View from V3d. <br>
-  Standard_EXPORT   V3d_ColorScale(const Handle(V3d_LayerMgr)& aMgr);
   
-  Standard_EXPORT     void Display() ;
+  //! Returns returns ColorScale from V3d.
+  //! Returns View from V3d.
+  Standard_EXPORT V3d_ColorScale(const Handle(V3d_LayerMgr)& aMgr);
   
-  Standard_EXPORT     void Erase() ;
+  Standard_EXPORT   void Display() ;
   
-  Standard_EXPORT     Standard_Boolean IsDisplayed() const;
+  Standard_EXPORT   void Erase() ;
   
-  Standard_EXPORT   virtual  void PaintRect(const Standard_Integer X,const Standard_Integer Y,const Standard_Integer W,const Standard_Integer H,const Quantity_Color& aColor,const Standard_Boolean aFilled = Standard_False) ;
+  Standard_EXPORT   Standard_Boolean IsDisplayed()  const;
   
-  Standard_EXPORT   virtual  void PaintText(const TCollection_ExtendedString& aText,const Standard_Integer X,const Standard_Integer Y,const Quantity_Color& aColor) ;
+  Standard_EXPORT virtual   void PaintRect (const Standard_Integer X, const Standard_Integer Y, const Standard_Integer W, const Standard_Integer H, const Quantity_Color& aColor, const Standard_Boolean aFilled = Standard_False) ;
   
-  Standard_EXPORT   virtual  Standard_Integer TextWidth(const TCollection_ExtendedString& aText) const;
+  Standard_EXPORT virtual   void PaintText (const TCollection_ExtendedString& aText, const Standard_Integer X, const Standard_Integer Y, const Quantity_Color& aColor) ;
   
-  Standard_EXPORT   virtual  Standard_Integer TextHeight(const TCollection_ExtendedString& aText) const;
+  Standard_EXPORT virtual   Standard_Integer TextWidth (const TCollection_ExtendedString& aText)  const;
   
-  Standard_EXPORT     void TextSize(const TCollection_ExtendedString& AText,const Standard_Integer AHeight,Standard_Integer& AWidth,Standard_Integer& AnAscent,Standard_Integer& ADescent) const;
+  Standard_EXPORT virtual   Standard_Integer TextHeight (const TCollection_ExtendedString& aText)  const;
   
-  Standard_EXPORT     void DrawScale() ;
+  Standard_EXPORT   void TextSize (const TCollection_ExtendedString& AText, const Standard_Integer AHeight, Standard_Integer& AWidth, Standard_Integer& AnAscent, Standard_Integer& ADescent)  const;
+  
+  Standard_EXPORT   void DrawScale() ;
 
 
 
@@ -70,15 +57,15 @@ public:
 protected:
 
   
-  Standard_EXPORT   virtual  void UpdateColorScale() ;
+  Standard_EXPORT virtual   void UpdateColorScale() ;
 
 
 
 private: 
 
 
-V3d_LayerMgrPointer myLayerMgr;
-Standard_Boolean myDisplay;
+  V3d_LayerMgrPointer myLayerMgr;
+  Standard_Boolean myDisplay;
 
 
 };
@@ -87,7 +74,6 @@ Standard_Boolean myDisplay;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _V3d_ColorScale_HeaderFile

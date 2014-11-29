@@ -6,22 +6,15 @@
 #ifndef _Handle_GeomFill_LocationGuide_HeaderFile
 #define _Handle_GeomFill_LocationGuide_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_GeomFill_LocationLaw_HeaderFile
 #include <Handle_GeomFill_LocationLaw.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(GeomFill_LocationLaw);
 class GeomFill_LocationGuide;
 
-DEFINE_STANDARD_HANDLE(GeomFill_LocationGuide,GeomFill_LocationLaw)
+DEFINE_STANDARD_HANDLE(GeomFill_LocationGuide, GeomFill_LocationLaw)
 
-#endif
+#endif // _Handle_GeomFill_LocationGuide_HeaderFile

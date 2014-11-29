@@ -7,7 +7,6 @@
 #define _QANewModTopOpe_CommonPtr_HeaderFile
 
 class BRepAlgoAPI_Common;
-
 typedef BRepAlgoAPI_Common* QANewModTopOpe_CommonPtr;
 
-#endif
+#endif // _QANewModTopOpe_CommonPtr_HeaderFile

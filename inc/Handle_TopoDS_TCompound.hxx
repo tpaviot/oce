@@ -6,22 +6,15 @@
 #ifndef _Handle_TopoDS_TCompound_HeaderFile
 #define _Handle_TopoDS_TCompound_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TopoDS_TShape_HeaderFile
 #include <Handle_TopoDS_TShape.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TopoDS_TShape);
 class TopoDS_TCompound;
 
-DEFINE_STANDARD_HANDLE(TopoDS_TCompound,TopoDS_TShape)
+DEFINE_STANDARD_HANDLE(TopoDS_TCompound, TopoDS_TShape)
 
-#endif
+#endif // _Handle_TopoDS_TCompound_HeaderFile

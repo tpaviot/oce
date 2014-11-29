@@ -5,16 +5,10 @@
 
 #include <IFSelect_SequenceNodeOfSequenceOfAppliedModifiers.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IFSelect_AppliedModifiers_HeaderFile
 #include <IFSelect_AppliedModifiers.hxx>
-#endif
-#ifndef _IFSelect_SequenceOfAppliedModifiers_HeaderFile
 #include <IFSelect_SequenceOfAppliedModifiers.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(IFSelect_SequenceNodeOfSequenceOfAppliedModifiers,Standard_Tr
 IMPLEMENT_STANDARD_RTTI(IFSelect_SequenceNodeOfSequenceOfAppliedModifiers)
 
 
-#define SeqItem Handle_IFSelect_AppliedModifiers
+#define SeqItem Handle(IFSelect_AppliedModifiers)
 #define SeqItem_hxx <IFSelect_AppliedModifiers.hxx>
 #define TCollection_SequenceNode IFSelect_SequenceNodeOfSequenceOfAppliedModifiers
 #define TCollection_SequenceNode_hxx <IFSelect_SequenceNodeOfSequenceOfAppliedModifiers.hxx>

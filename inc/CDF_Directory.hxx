@@ -6,59 +6,51 @@
 #ifndef _CDF_Directory_HeaderFile
 #define _CDF_Directory_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_CDF_Directory_HeaderFile
 #include <Handle_CDF_Directory.hxx>
-#endif
 
-#ifndef _CDM_ListOfDocument_HeaderFile
 #include <CDM_ListOfDocument.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Handle_CDM_Document_HeaderFile
 #include <Handle_CDM_Document.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class CDF_DirectoryIterator;
 class CDM_Document;
 class CDM_ListOfDocument;
 
 
-//! A directory is a collection of documents. There is only one instance <br>
-//!          of a given document in a directory. <br>
-//!          put. <br>
-class CDF_Directory : public Standard_Transient {
+//! A directory is a collection of documents. There is only one instance
+//! of a given document in a directory.
+//! put.
+class CDF_Directory : public Standard_Transient
+{
 
 public:
 
-  //! Creates an empty directory. <br>
-  Standard_EXPORT   CDF_Directory();
-  //! adds a document into the directory. <br>
-  Standard_EXPORT     void Add(const Handle(CDM_Document)& aDocument) ;
-  //! removes the document. <br>
-  Standard_EXPORT     void Remove(const Handle(CDM_Document)& aDocument) ;
-  //! Returns true if the document aDocument is in the directory <br>
-  Standard_EXPORT     Standard_Boolean Contains(const Handle(CDM_Document)& aDocument) const;
-  //! returns the last document (if any) which has been added <br>
-//!          in the directory. <br>
-  Standard_EXPORT     Handle_CDM_Document Last() ;
-  //! returns the number of documents of the directory. <br>
-  Standard_EXPORT     Standard_Integer Length() const;
-  //! returns true if the directory is empty. <br>
-  Standard_EXPORT     Standard_Boolean IsEmpty() const;
+  
+  //! Creates an empty directory.
+  Standard_EXPORT CDF_Directory();
+  
+  //! adds a document into the directory.
+  Standard_EXPORT   void Add (const Handle(CDM_Document)& aDocument) ;
+  
+  //! removes the document.
+  Standard_EXPORT   void Remove (const Handle(CDM_Document)& aDocument) ;
+  
+  //! Returns true if the document aDocument is in the directory
+  Standard_EXPORT   Standard_Boolean Contains (const Handle(CDM_Document)& aDocument)  const;
+  
+  //! returns the last document (if any) which has been added
+  //! in the directory.
+  Standard_EXPORT   Handle(CDM_Document) Last() ;
+  
+  //! returns the number of documents of the directory.
+  Standard_EXPORT   Standard_Integer Length()  const;
+  
+  //! returns true if the directory is empty.
+  Standard_EXPORT   Standard_Boolean IsEmpty()  const;
 
 
 friend class CDF_DirectoryIterator;
@@ -74,9 +66,9 @@ protected:
 private: 
 
   
-  Standard_EXPORT    const CDM_ListOfDocument& List() const;
+  Standard_EXPORT  const  CDM_ListOfDocument& List()  const;
 
-CDM_ListOfDocument myDocuments;
+  CDM_ListOfDocument myDocuments;
 
 
 };
@@ -85,7 +77,6 @@ CDM_ListOfDocument myDocuments;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _CDF_Directory_HeaderFile

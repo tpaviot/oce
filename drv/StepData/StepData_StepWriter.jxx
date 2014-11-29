@@ -1,54 +1,18 @@
-#ifndef _StepData_StepModel_HeaderFile
 #include <StepData_StepModel.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfHAsciiString_HeaderFile
 #include <TColStd_HSequenceOfHAsciiString.hxx>
-#endif
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Interface_InterfaceMismatch_HeaderFile
 #include <Interface_InterfaceMismatch.hxx>
-#endif
-#ifndef _Interface_FloatWriter_HeaderFile
 #include <Interface_FloatWriter.hxx>
-#endif
-#ifndef _StepData_Protocol_HeaderFile
 #include <StepData_Protocol.hxx>
-#endif
-#ifndef _StepData_WriterLib_HeaderFile
 #include <StepData_WriterLib.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepData_Field_HeaderFile
 #include <StepData_Field.hxx>
-#endif
-#ifndef _StepData_PDescr_HeaderFile
 #include <StepData_PDescr.hxx>
-#endif
-#ifndef _StepData_SelectMember_HeaderFile
 #include <StepData_SelectMember.hxx>
-#endif
-#ifndef _StepData_FieldList_HeaderFile
 #include <StepData_FieldList.hxx>
-#endif
-#ifndef _StepData_ESDescr_HeaderFile
 #include <StepData_ESDescr.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Interface_CheckIterator_HeaderFile
 #include <Interface_CheckIterator.hxx>
-#endif
-#ifndef _StepData_StepWriter_HeaderFile
 #include <StepData_StepWriter.hxx>
-#endif

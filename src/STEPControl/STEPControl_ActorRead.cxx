@@ -128,10 +128,10 @@
 
 // ============================================================================
 // Function: DumpWhatIs   
-// Purpose: Use it in DEB mode to dump your shapes
+// Purpose: Use it in debug mode to dump your shapes
 // ============================================================================
 
-#ifdef DEB
+#ifdef OCCT_DEBUG
 static void DumpWhatIs(const TopoDS_Shape& S) {
 
   TopTools_MapOfShape aMapOfShape;
@@ -287,12 +287,12 @@ Handle(Transfer_Binder)  STEPControl_ActorRead::Transfer
       Handle(TCollection_HAsciiString) aPPVersion = aFileNameEntity->PreprocessorVersion();
       if(aPPVersion.IsNull())
         continue;
-      #ifdef DEB
+      #ifdef OCCT_DEBUG
       cout << "Preprocessor version detected: " << aPPVersion->ToCString() << endl;
       #endif
       Standard_Integer anIDeasResult = aPPVersion->Search("I-DEAS");
       if (anIDeasResult != -1) {
-        #ifdef DEB
+        #ifdef OCCT_DEBUG
         cout << "Recognized as I-DEAS STP" << endl;
         #endif
         myNMTool.SetIDEASCase(Standard_True);
@@ -399,6 +399,7 @@ static void getListSDR(const Handle(StepRepr_ShapeAspect)& sa,
 
 static void getSDR(const Handle(StepRepr_ProductDefinitionShape)& PDS,
                    Handle(TColStd_HSequenceOfTransient)& listSDR,
+                   Handle(TColStd_HSequenceOfTransient)& listNAUO,
                    Handle(TColStd_HSequenceOfTransient)& listSDRAspect,
                    const Handle(Transfer_TransientProcess)& TP)
 {
@@ -448,6 +449,15 @@ static void getSDR(const Handle(StepRepr_ProductDefinitionShape)& PDS,
       getListSDR(sa,listSDRAspect,TP);
       continue;
     }
+
+    // NAUO is used to find sub-assemblies
+    Handle(StepRepr_NextAssemblyUsageOccurrence) NAUO = 
+      Handle(StepRepr_NextAssemblyUsageOccurrence)::DownCast(subs4.Value());
+    if ( ! NAUO.IsNull() ) {
+      if ( PDS->Definition().ProductDefinition() == NAUO->RelatingProductDefinition() )
+        listNAUO->Append(NAUO);
+      continue;
+    }
   }
 }
 
@@ -480,7 +490,7 @@ static void getSDR(const Handle(StepRepr_ProductDefinitionShape)& PDS,
     Handle(StepRepr_ProductDefinitionShape) PDS = 
       Handle(StepRepr_ProductDefinitionShape)::DownCast(subs3.Value());
     if ( ! PDS.IsNull() ) {
-      getSDR(PDS,listSDR,listSDRAspect,TP);
+      getSDR(PDS,listSDR,listNAUO,listSDRAspect,TP);
       continue;
     }
     // NAUO is used to find sub-assemblies
@@ -773,7 +783,7 @@ Handle(TransferBRep_ShapeBinder) STEPControl_ActorRead::TransferEntity(const Han
   if ( isNMMode && sr->IsKind(STANDARD_TYPE(StepShape_NonManifoldSurfaceShapeRepresentation)) ) {
     isManifold = Standard_False;
     NM_DETECTED = Standard_True;
-    #ifdef DEB
+    #ifdef OCCT_DEBUG
     Standard_Integer NMSSRItemsLen = sr->Items()->Length();
     cout << "NMSSR with " << NMSSRItemsLen << " items detected" << endl;
     #endif
@@ -784,11 +794,11 @@ Handle(TransferBRep_ShapeBinder) STEPControl_ActorRead::TransferEntity(const Han
     if (isNMMode && myNMTool.IsIDEASCase() && isIDeasMode) {
       isManifold = Standard_False;
       NM_DETECTED = Standard_True;
-      #ifdef DEB
+      #ifdef OCCT_DEBUG
       cout << "I-DEAS post processing for non-manifold topology ENABLED" << endl;
       #endif
     }
-    #ifdef DEB
+    #ifdef OCCT_DEBUG
     else if ( myNMTool.IsIDEASCase() )
       cout << "I-DEAS post processing for non-manifold topology DISABLED" << endl;
     #endif
@@ -900,7 +910,7 @@ Handle(TransferBRep_ShapeBinder) STEPControl_ActorRead::TransferEntity(const Han
   TP->Bind(sr, shbinder);
 
   
-  #ifdef DEB
+  #ifdef OCCT_DEBUG
   DumpWhatIs(comp);
   #endif
   
@@ -1231,7 +1241,7 @@ Handle(TransferBRep_ShapeBinder) STEPControl_ActorRead::TransferEntity(const Han
     found = Standard_True;
   } 
   else if (start->IsKind(STANDARD_TYPE(StepShape_GeometricSet))) {
-    myShapeBuilder.Init(GetCasted(StepShape_GeometricSet, start), TP);
+    myShapeBuilder.Init(GetCasted(StepShape_GeometricSet, start), TP, this, isManifold);
     found = Standard_True;
   }
   else if (start->IsKind(STANDARD_TYPE(StepShape_EdgeBasedWireframeModel))) {
@@ -1765,7 +1775,7 @@ TopoDS_Shell STEPControl_ActorRead::closeIDEASShell(const TopoDS_Shell& shell,
     if (subCheckStatus != BRepCheck_NoError)
       brepBuilder.Add(result, currentFace);
     else {
-      #ifdef DEB
+      #ifdef OCCT_DEBUG
       cout << "Redundant closing face detected: REMOVED from shell";
       #endif
     }

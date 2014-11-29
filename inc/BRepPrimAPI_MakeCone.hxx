@@ -6,90 +6,82 @@
 #ifndef _BRepPrimAPI_MakeCone_HeaderFile
 #define _BRepPrimAPI_MakeCone_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepPrim_Cone_HeaderFile
 #include <BRepPrim_Cone.hxx>
-#endif
-#ifndef _BRepPrimAPI_MakeOneAxis_HeaderFile
 #include <BRepPrimAPI_MakeOneAxis.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class gp_Ax2;
 class BRepPrim_Cone;
 
 
-//! Describes functions to build cones or portions of cones. <br>
-//! A MakeCone object provides a framework for: <br>
-//! -   defining the construction of a cone, <br>
-//! -   implementing the construction algorithm, and <br>
-//! -   consulting the result. <br>
-class BRepPrimAPI_MakeCone  : public BRepPrimAPI_MakeOneAxis {
+//! Describes functions to build cones or portions of cones.
+//! A MakeCone object provides a framework for:
+//! -   defining the construction of a cone,
+//! -   implementing the construction algorithm, and
+//! -   consulting the result.
+class BRepPrimAPI_MakeCone  : public BRepPrimAPI_MakeOneAxis
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Make a cone of height H radius R1 in the plane z = <br>
-//!          0, R2 in the plane Z = H. R1 and R2 may be null. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeCone(const Standard_Real R1,const Standard_Real R2,const Standard_Real H);
-  //! Make a cone of height H radius R1 in the plane z = <br>
-//!          0, R2 in the plane Z = H. R1 and R2 may be null. <br>
-//!          Take a section of <angle> <br>
-  Standard_EXPORT   BRepPrimAPI_MakeCone(const Standard_Real R1,const Standard_Real R2,const Standard_Real H,const Standard_Real angle);
-  //! Make a cone of height H radius R1 in the plane z = <br>
-//!          0, R2 in the plane Z = H. R1 and R2 may be null. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeCone(const gp_Ax2& Axes,const Standard_Real R1,const Standard_Real R2,const Standard_Real H);
-  //! Make a cone of height H radius R1 in the plane z = <br>
-//!          0, R2 in the plane Z = H. R1 and R2 may be null. <br>
-//!          Take a section of <angle> <br>//! Constructs a cone, or a portion of a cone, of height H, <br>
-//! and radius R1 in the plane z = 0 and R2 in the plane <br>
-//! z = H. The result is a sharp cone if R1 or R2 is equal to 0. <br>
-//! The cone is constructed about the "Z Axis" of either: <br>
-//! -   the global coordinate system, or <br>
-//! -   the local coordinate system Axes. <br>
-//! It is limited in these coordinate systems as follows: <br>
-//! -   in the v parametric direction (the Z coordinate), by <br>
-//!   the two parameter values 0 and H, <br>
-//! -   and in the u parametric direction (defined by the <br>
-//!   angle of rotation around the Z axis), in the case of a <br>
-//!   portion of a cone, by the two parameter values 0 and <br>
-//!   angle. Angle is given in radians. <br>
-//! The resulting shape is composed of: <br>
-//! -   a lateral conical face <br>
-//! -   two planar faces in the planes z = 0 and z = H, <br>
-//!   or only one planar face in one of these two planes if a <br>
-//!   radius value is null (in the case of a complete cone, <br>
-//!   these faces are circles), and <br>
-//! -   and in the case of a portion of a cone, two planar <br>
-//!   faces to close the shape. (either two parallelograms or <br>
-//!   two triangles, in the planes u = 0 and u = angle). <br>
-//! Exceptions <br>
-//! Standard_DomainError if: <br>
-//! -   H is less than or equal to Precision::Confusion(), or <br>
-//! -   the half-angle at the apex of the cone, defined by <br>
-//!   R1, R2 and H, is less than Precision::Confusion()/H, or greater than <br>
-//!   (Pi/2)-Precision::Confusion()/H.f <br>
-  Standard_EXPORT   BRepPrimAPI_MakeCone(const gp_Ax2& Axes,const Standard_Real R1,const Standard_Real R2,const Standard_Real H,const Standard_Real angle);
-  //! Returns the algorithm. <br>
-  Standard_EXPORT     Standard_Address OneAxis() ;
-  //! Returns the algorithm. <br>
-//! <br>
-  Standard_EXPORT     BRepPrim_Cone& Cone() ;
-
+  
+  //! Make a cone of height H radius R1 in the plane z =
+  //! 0, R2 in the plane Z = H. R1 and R2 may be null.
+  Standard_EXPORT BRepPrimAPI_MakeCone(const Standard_Real R1, const Standard_Real R2, const Standard_Real H);
+  
+  //! Make a cone of height H radius R1 in the plane z =
+  //! 0, R2 in the plane Z = H. R1 and R2 may be null.
+  //! Take a section of <angle>
+  Standard_EXPORT BRepPrimAPI_MakeCone(const Standard_Real R1, const Standard_Real R2, const Standard_Real H, const Standard_Real angle);
+  
+  //! Make a cone of height H radius R1 in the plane z =
+  //! 0, R2 in the plane Z = H. R1 and R2 may be null.
+  Standard_EXPORT BRepPrimAPI_MakeCone(const gp_Ax2& Axes, const Standard_Real R1, const Standard_Real R2, const Standard_Real H);
+  
+  //! Make a cone of height H radius R1 in the plane z =
+  //! 0, R2 in the plane Z = H. R1 and R2 may be null.
+  //! Take a section of <angle>
+  //! Constructs a cone, or a portion of a cone, of height H,
+  //! and radius R1 in the plane z = 0 and R2 in the plane
+  //! z = H. The result is a sharp cone if R1 or R2 is equal to 0.
+  //! The cone is constructed about the "Z Axis" of either:
+  //! -   the global coordinate system, or
+  //! -   the local coordinate system Axes.
+  //! It is limited in these coordinate systems as follows:
+  //! -   in the v parametric direction (the Z coordinate), by
+  //! the two parameter values 0 and H,
+  //! -   and in the u parametric direction (defined by the
+  //! angle of rotation around the Z axis), in the case of a
+  //! portion of a cone, by the two parameter values 0 and
+  //! angle. Angle is given in radians.
+  //! The resulting shape is composed of:
+  //! -   a lateral conical face
+  //! -   two planar faces in the planes z = 0 and z = H,
+  //! or only one planar face in one of these two planes if a
+  //! radius value is null (in the case of a complete cone,
+  //! these faces are circles), and
+  //! -   and in the case of a portion of a cone, two planar
+  //! faces to close the shape. (either two parallelograms or
+  //! two triangles, in the planes u = 0 and u = angle).
+  //! Exceptions
+  //! Standard_DomainError if:
+  //! -   H is less than or equal to Precision::Confusion(), or
+  //! -   the half-angle at the apex of the cone, defined by
+  //! R1, R2 and H, is less than Precision::Confusion()/H, or greater than
+  //! (Pi/2)-Precision::Confusion()/H.f
+  Standard_EXPORT BRepPrimAPI_MakeCone(const gp_Ax2& Axes, const Standard_Real R1, const Standard_Real R2, const Standard_Real H, const Standard_Real angle);
+  
+  //! Returns the algorithm.
+  Standard_EXPORT   Standard_Address OneAxis() ;
+  
+  //! Returns the algorithm.
+  Standard_EXPORT   BRepPrim_Cone& Cone() ;
 
 
 
@@ -104,7 +96,7 @@ private:
 
 
 
-BRepPrim_Cone myCone;
+  BRepPrim_Cone myCone;
 
 
 };
@@ -113,7 +105,6 @@ BRepPrim_Cone myCone;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepPrimAPI_MakeCone_HeaderFile

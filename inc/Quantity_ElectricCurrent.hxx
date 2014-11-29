@@ -6,13 +6,11 @@
 #ifndef _Quantity_ElectricCurrent_HeaderFile
 #define _Quantity_ElectricCurrent_HeaderFile
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 
 typedef Standard_Real Quantity_ElectricCurrent;
 
 
 #define Quantity_ElectricCurrent_Type_() Standard_Real_Type_()
 
-#endif
+#endif // _Quantity_ElectricCurrent_HeaderFile

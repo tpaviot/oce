@@ -1,9 +1,3 @@
-#ifndef _OSD_OSDError_HeaderFile
 #include <OSD_OSDError.hxx>
-#endif
-#ifndef _OSD_Environment_HeaderFile
 #include <OSD_Environment.hxx>
-#endif
-#ifndef _OSD_EnvironmentIterator_HeaderFile
 #include <OSD_EnvironmentIterator.hxx>
-#endif

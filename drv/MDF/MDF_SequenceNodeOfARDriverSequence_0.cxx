@@ -5,16 +5,10 @@
 
 #include <MDF_SequenceNodeOfARDriverSequence.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _MDF_ARDriver_HeaderFile
 #include <MDF_ARDriver.hxx>
-#endif
-#ifndef _MDF_ARDriverSequence_HeaderFile
 #include <MDF_ARDriverSequence.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(MDF_SequenceNodeOfARDriverSequence,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(MDF_SequenceNodeOfARDriverSequence)
 
 
-#define SeqItem Handle_MDF_ARDriver
+#define SeqItem Handle(MDF_ARDriver)
 #define SeqItem_hxx <MDF_ARDriver.hxx>
 #define TCollection_SequenceNode MDF_SequenceNodeOfARDriverSequence
 #define TCollection_SequenceNode_hxx <MDF_SequenceNodeOfARDriverSequence.hxx>

@@ -16,7 +16,9 @@
 
 class EventManager from ViewerTest inherits TShared from MMgt
 
-	---Purpose: 
+	---Purpose: used to manage mouse event (move,select,shiftselect)
+  --          By default the events are transmitted to interactive context.
+
 
 uses
     View                from V3d,
@@ -26,7 +28,7 @@ is
 
     Create (aView: View from V3d;
             aCtx :InteractiveContext from AIS)
-    returns mutable EventManager from ViewerTest;
+    returns EventManager from ViewerTest;
     
     MoveTo (me:mutable;
             xpix, ypix  : Integer from Standard) is virtual;
@@ -47,6 +49,9 @@ is
     ---C++: inline
     ---C++: return const&
 
+    GetCurrentPosition (me; theXPix, theYPix: out Integer from Standard);
+    ---Purpose: Gets current mouse position. It tracks change of mouse position
+    -- with mouse drugging or with DRAW command call (vmoveto).
 fields
 
     myCtx : InteractiveContext  from AIS;

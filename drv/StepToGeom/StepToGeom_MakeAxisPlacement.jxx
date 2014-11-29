@@ -1,9 +1,3 @@
-#ifndef _StepGeom_Axis2Placement2d_HeaderFile
 #include <StepGeom_Axis2Placement2d.hxx>
-#endif
-#ifndef _Geom2d_AxisPlacement_HeaderFile
 #include <Geom2d_AxisPlacement.hxx>
-#endif
-#ifndef _StepToGeom_MakeAxisPlacement_HeaderFile
 #include <StepToGeom_MakeAxisPlacement.hxx>
-#endif

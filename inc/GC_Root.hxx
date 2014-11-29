@@ -6,40 +6,32 @@
 #ifndef _GC_Root_HeaderFile
 #define _GC_Root_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gce_ErrorType_HeaderFile
 #include <gce_ErrorType.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 
 
-//! This class implements the common services for <br>
-//!           all classes of gce which report error. <br>
-class GC_Root  {
+//! This class implements the common services for
+//! all classes of gce which report error.
+class GC_Root 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns true if the construction is successful. <br>
-        Standard_Boolean IsDone() const;
   
-//! Returns the status of the construction: <br>
-//! -   gce_Done, if the construction is successful, or <br>
-//! -   another value of the gce_ErrorType enumeration <br>
-//!   indicating why the construction failed. <br>
-        gce_ErrorType Status() const;
+  //! Returns true if the construction is successful.
+      Standard_Boolean IsDone()  const;
+  
 
+  //! Returns the status of the construction:
+  //! -   gce_Done, if the construction is successful, or
+  //! -   another value of the gce_ErrorType enumeration
+  //! indicating why the construction failed.
+      gce_ErrorType Status()  const;
 
 
 
@@ -48,7 +40,7 @@ protected:
 
 
 
-gce_ErrorType TheError;
+  gce_ErrorType TheError;
 
 
 private:
@@ -64,7 +56,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GC_Root_HeaderFile

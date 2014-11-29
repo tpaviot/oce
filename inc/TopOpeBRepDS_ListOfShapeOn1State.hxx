@@ -6,47 +6,35 @@
 #ifndef _TopOpeBRepDS_ListOfShapeOn1State_HeaderFile
 #define _TopOpeBRepDS_ListOfShapeOn1State_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopTools_ListOfShape;
 
 
-//! represent a list of shape <br>
-class TopOpeBRepDS_ListOfShapeOn1State  {
+//! represent a list of shape
+class TopOpeBRepDS_ListOfShapeOn1State 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepDS_ListOfShapeOn1State();
+  Standard_EXPORT TopOpeBRepDS_ListOfShapeOn1State();
   
-  Standard_EXPORT    const TopTools_ListOfShape& ListOnState() const;
+  Standard_EXPORT  const  TopTools_ListOfShape& ListOnState()  const;
   
-  Standard_EXPORT     TopTools_ListOfShape& ChangeListOnState() ;
+  Standard_EXPORT   TopTools_ListOfShape& ChangeListOnState() ;
   
-  Standard_EXPORT     Standard_Boolean IsSplit() const;
+  Standard_EXPORT   Standard_Boolean IsSplit()  const;
   
-  Standard_EXPORT     void Split(const Standard_Boolean B = Standard_True) ;
+  Standard_EXPORT   void Split (const Standard_Boolean B = Standard_True) ;
   
-  Standard_EXPORT     void Clear() ;
-
+  Standard_EXPORT   void Clear() ;
 
 
 
@@ -61,8 +49,8 @@ private:
 
 
 
-TopTools_ListOfShape myList;
-Standard_Integer mySplits;
+  TopTools_ListOfShape myList;
+  Standard_Integer mySplits;
 
 
 };
@@ -71,7 +59,6 @@ Standard_Integer mySplits;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_ListOfShapeOn1State_HeaderFile

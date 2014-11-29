@@ -6,59 +6,54 @@
 #ifndef _PGeom_BezierSurface_HeaderFile
 #define _PGeom_BezierSurface_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom_BezierSurface_HeaderFile
 #include <Handle_PGeom_BezierSurface.hxx>
-#endif
 
-#ifndef _Handle_PColgp_HArray2OfPnt_HeaderFile
 #include <Handle_PColgp_HArray2OfPnt.hxx>
-#endif
-#ifndef _Handle_PColStd_HArray2OfReal_HeaderFile
 #include <Handle_PColStd_HArray2OfReal.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _PGeom_BoundedSurface_HeaderFile
 #include <PGeom_BoundedSurface.hxx>
-#endif
 class PColgp_HArray2OfPnt;
 class PColStd_HArray2OfReal;
 
 
-class PGeom_BezierSurface : public PGeom_BoundedSurface {
+class PGeom_BezierSurface : public PGeom_BoundedSurface
+{
 
 public:
 
-  //! Creates a BezierSurface with default values. <br>
-  Standard_EXPORT   PGeom_BezierSurface();
-  //! Creates a BezierSurface with these values. <br>
-  Standard_EXPORT   PGeom_BezierSurface(const Standard_Boolean aURational,const Standard_Boolean aVRational,const Handle(PColgp_HArray2OfPnt)& aPoles,const Handle(PColStd_HArray2OfReal)& aWeights);
-  //! Set the field poles with <aPoles>. <br>
-  Standard_EXPORT     void Poles(const Handle(PColgp_HArray2OfPnt)& aPoles) ;
-  //! Returns the value of the field poles. <br>
-  Standard_EXPORT     Handle_PColgp_HArray2OfPnt Poles() const;
-  //! Set the value of the field weights with <aWeights>. <br>
-  Standard_EXPORT     void Weights(const Handle(PColStd_HArray2OfReal)& aWeights) ;
-  //! Returns the value of the field weights. <br>
-  Standard_EXPORT     Handle_PColStd_HArray2OfReal Weights() const;
-  //! Set the value of the field uRational with <aURational>. <br>
-  Standard_EXPORT     void URational(const Standard_Boolean aURational) ;
-  //! Returns the value of the field uRational. <br>
-  Standard_EXPORT     Standard_Boolean URational() const;
-  //! Set the value of the field vRational with <aVRational>. <br>
-  Standard_EXPORT     void VRational(const Standard_Boolean aVRational) ;
-  //! Returns the value of the field vRational. <br>
-  Standard_EXPORT     Standard_Boolean VRational() const;
+  
+  //! Creates a BezierSurface with default values.
+  Standard_EXPORT PGeom_BezierSurface();
+  
+  //! Creates a BezierSurface with these values.
+  Standard_EXPORT PGeom_BezierSurface(const Standard_Boolean aURational, const Standard_Boolean aVRational, const Handle(PColgp_HArray2OfPnt)& aPoles, const Handle(PColStd_HArray2OfReal)& aWeights);
+  
+  //! Set the field poles with <aPoles>.
+  Standard_EXPORT   void Poles (const Handle(PColgp_HArray2OfPnt)& aPoles) ;
+  
+  //! Returns the value of the field poles.
+  Standard_EXPORT   Handle(PColgp_HArray2OfPnt) Poles()  const;
+  
+  //! Set the value of the field weights with <aWeights>.
+  Standard_EXPORT   void Weights (const Handle(PColStd_HArray2OfReal)& aWeights) ;
+  
+  //! Returns the value of the field weights.
+  Standard_EXPORT   Handle(PColStd_HArray2OfReal) Weights()  const;
+  
+  //! Set the value of the field uRational with <aURational>.
+  Standard_EXPORT   void URational (const Standard_Boolean aURational) ;
+  
+  //! Returns the value of the field uRational.
+  Standard_EXPORT   Standard_Boolean URational()  const;
+  
+  //! Set the value of the field vRational with <aVRational>.
+  Standard_EXPORT   void VRational (const Standard_Boolean aVRational) ;
+  
+  //! Returns the value of the field vRational.
+  Standard_EXPORT   Standard_Boolean VRational()  const;
 
 PGeom_BezierSurface(const Storage_stCONSTclCOM& a) : PGeom_BoundedSurface(a)
 {
@@ -85,10 +80,10 @@ protected:
 private: 
 
 
-Standard_Boolean uRational;
-Standard_Boolean vRational;
-Handle_PColgp_HArray2OfPnt poles;
-Handle_PColStd_HArray2OfReal weights;
+  Standard_Boolean uRational;
+  Standard_Boolean vRational;
+  Handle(PColgp_HArray2OfPnt) poles;
+  Handle(PColStd_HArray2OfReal) weights;
 
 
 };
@@ -97,7 +92,6 @@ Handle_PColStd_HArray2OfReal weights;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom_BezierSurface_HeaderFile

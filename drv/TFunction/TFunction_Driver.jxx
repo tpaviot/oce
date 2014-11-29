@@ -1,12 +1,4 @@
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TFunction_Logbook_HeaderFile
 #include <TFunction_Logbook.hxx>
-#endif
-#ifndef _TDF_LabelList_HeaderFile
 #include <TDF_LabelList.hxx>
-#endif
-#ifndef _TFunction_Driver_HeaderFile
 #include <TFunction_Driver.hxx>
-#endif

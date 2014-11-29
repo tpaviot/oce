@@ -6,22 +6,15 @@
 #ifndef _Handle_WNT_WClass_HeaderFile
 #define _Handle_WNT_WClass_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_MMgt_TShared_HeaderFile
 #include <Handle_MMgt_TShared.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(MMgt_TShared);
 class WNT_WClass;
 
-DEFINE_STANDARD_HANDLE(WNT_WClass,MMgt_TShared)
+DEFINE_STANDARD_HANDLE(WNT_WClass, MMgt_TShared)
 
-#endif
+#endif // _Handle_WNT_WClass_HeaderFile

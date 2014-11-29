@@ -1,18 +1,6 @@
-#ifndef _TColgp_HArray2OfPnt_HeaderFile
 #include <TColgp_HArray2OfPnt.hxx>
-#endif
-#ifndef _TColStd_HArray2OfReal_HeaderFile
 #include <TColStd_HArray2OfReal.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TColgp_Array2OfPnt_HeaderFile
 #include <TColgp_Array2OfPnt.hxx>
-#endif
-#ifndef _TColStd_Array2OfReal_HeaderFile
 #include <TColStd_Array2OfReal.hxx>
-#endif
-#ifndef _GeomFill_Filling_HeaderFile
 #include <GeomFill_Filling.hxx>
-#endif

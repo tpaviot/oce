@@ -5,19 +5,11 @@
 
 #include <BRepFill_ListNodeOfListOfOffsetWire.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _BRepFill_OffsetWire_HeaderFile
 #include <BRepFill_OffsetWire.hxx>
-#endif
-#ifndef _BRepFill_ListOfOffsetWire_HeaderFile
 #include <BRepFill_ListOfOffsetWire.hxx>
-#endif
-#ifndef _BRepFill_ListIteratorOfListOfOffsetWire_HeaderFile
 #include <BRepFill_ListIteratorOfListOfOffsetWire.hxx>
-#endif
 
  
 

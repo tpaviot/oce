@@ -6,43 +6,19 @@
 #ifndef _GeomInt_WLApprox_HeaderFile
 #define _GeomInt_WLApprox_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _GeomInt_TheComputeLineOfWLApprox_HeaderFile
 #include <GeomInt_TheComputeLineOfWLApprox.hxx>
-#endif
-#ifndef _GeomInt_TheComputeLineBezierOfWLApprox_HeaderFile
 #include <GeomInt_TheComputeLineBezierOfWLApprox.hxx>
-#endif
-#ifndef _Approx_MCurvesToBSpCurve_HeaderFile
 #include <Approx_MCurvesToBSpCurve.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Handle_IntPatch_WLine_HeaderFile
 #include <Handle_IntPatch_WLine.hxx>
-#endif
-#ifndef _Approx_ParametrizationType_HeaderFile
 #include <Approx_ParametrizationType.hxx>
-#endif
 class Standard_OutOfRange;
 class StdFail_NotDone;
 class Adaptor3d_HSurface;
@@ -65,34 +41,34 @@ class AppParCurves_MultiBSpCurve;
 
 
 
-class GeomInt_WLApprox  {
+class GeomInt_WLApprox 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomInt_WLApprox();
+  Standard_EXPORT GeomInt_WLApprox();
   
-  Standard_EXPORT     void Perform(const Handle(Adaptor3d_HSurface)& Surf1,const Handle(Adaptor3d_HSurface)& Surf2,const Handle(IntPatch_WLine)& aLine,const Standard_Boolean ApproxXYZ = Standard_True,const Standard_Boolean ApproxU1V1 = Standard_True,const Standard_Boolean ApproxU2V2 = Standard_True,const Standard_Integer indicemin = 0,const Standard_Integer indicemax = 0) ;
+  Standard_EXPORT   void Perform (const Handle(Adaptor3d_HSurface)& Surf1, const Handle(Adaptor3d_HSurface)& Surf2, const Handle(IntPatch_WLine)& aLine, const Standard_Boolean ApproxXYZ = Standard_True, const Standard_Boolean ApproxU1V1 = Standard_True, const Standard_Boolean ApproxU2V2 = Standard_True, const Standard_Integer indicemin = 0, const Standard_Integer indicemax = 0) ;
   
-  Standard_EXPORT     void Perform(const Handle(IntPatch_WLine)& aLine,const Standard_Boolean ApproxXYZ = Standard_True,const Standard_Boolean ApproxU1V1 = Standard_True,const Standard_Boolean ApproxU2V2 = Standard_True,const Standard_Integer indicemin = 0,const Standard_Integer indicemax = 0) ;
+  Standard_EXPORT   void Perform (const Handle(IntPatch_WLine)& aLine, const Standard_Boolean ApproxXYZ = Standard_True, const Standard_Boolean ApproxU1V1 = Standard_True, const Standard_Boolean ApproxU2V2 = Standard_True, const Standard_Integer indicemin = 0, const Standard_Integer indicemax = 0) ;
   
-  Standard_EXPORT     void SetParameters(const Standard_Real Tol3d,const Standard_Real Tol2d,const Standard_Integer DegMin,const Standard_Integer DegMax,const Standard_Integer NbIterMax,const Standard_Boolean ApproxWithTangency = Standard_True,const Approx_ParametrizationType Parametrization = Approx_ChordLength) ;
+  Standard_EXPORT   void SetParameters (const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Integer DegMin, const Standard_Integer DegMax, const Standard_Integer NbIterMax, const Standard_Boolean ApproxWithTangency = Standard_True, const Approx_ParametrizationType Parametrization = Approx_ChordLength) ;
   
-  Standard_EXPORT     void SetParameters(const Standard_Real Tol3d,const Standard_Real Tol2d,const Standard_Boolean RelativeTol,const Standard_Integer DegMin,const Standard_Integer DegMax,const Standard_Integer NbIterMax,const Standard_Integer NbPntMax,const Standard_Boolean ApproxWithTangency = Standard_True,const Approx_ParametrizationType Parametrization = Approx_ChordLength) ;
+  Standard_EXPORT   void SetParameters (const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Boolean RelativeTol, const Standard_Integer DegMin, const Standard_Integer DegMax, const Standard_Integer NbIterMax, const Standard_Integer NbPntMax, const Standard_Boolean ApproxWithTangency = Standard_True, const Approx_ParametrizationType Parametrization = Approx_ChordLength) ;
   
-  Standard_EXPORT     void Perform() ;
+  Standard_EXPORT   void Perform() ;
   
-  Standard_EXPORT     Standard_Real TolReached3d() const;
+  Standard_EXPORT   Standard_Real TolReached3d()  const;
   
-  Standard_EXPORT     Standard_Real TolReached2d() const;
+  Standard_EXPORT   Standard_Real TolReached2d()  const;
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
   
-  Standard_EXPORT     Standard_Integer NbMultiCurves() const;
+  Standard_EXPORT   Standard_Integer NbMultiCurves()  const;
   
-  Standard_EXPORT    const AppParCurves_MultiBSpCurve& Value(const Standard_Integer Index) const;
-
+  Standard_EXPORT  const  AppParCurves_MultiBSpCurve& Value (const Standard_Integer Index)  const;
 
 
 
@@ -106,30 +82,30 @@ protected:
 private:
 
   
-  Standard_EXPORT     void Perform(const Handle(Adaptor3d_HSurface)& Surf1,const IntSurf_Quadric& Surf2,const Handle(IntPatch_WLine)& aLine,const Standard_Boolean ApproxXYZ,const Standard_Boolean ApproxU1V1,const Standard_Boolean ApproxU2V2,const Standard_Integer indicemin,const Standard_Integer indicemax) ;
+  Standard_EXPORT   void Perform (const Handle(Adaptor3d_HSurface)& Surf1, const IntSurf_Quadric& Surf2, const Handle(IntPatch_WLine)& aLine, const Standard_Boolean ApproxXYZ, const Standard_Boolean ApproxU1V1, const Standard_Boolean ApproxU2V2, const Standard_Integer indicemin, const Standard_Integer indicemax) ;
   
-  Standard_EXPORT     void Perform(const IntSurf_Quadric& Surf1,const Handle(Adaptor3d_HSurface)& Surf2,const Handle(IntPatch_WLine)& aLine,const Standard_Boolean ApproxXYZ,const Standard_Boolean ApproxU1V1,const Standard_Boolean ApproxU2V2,const Standard_Integer indicemin,const Standard_Integer indicemax) ;
+  Standard_EXPORT   void Perform (const IntSurf_Quadric& Surf1, const Handle(Adaptor3d_HSurface)& Surf2, const Handle(IntPatch_WLine)& aLine, const Standard_Boolean ApproxXYZ, const Standard_Boolean ApproxU1V1, const Standard_Boolean ApproxU2V2, const Standard_Integer indicemin, const Standard_Integer indicemax) ;
   
-  Standard_EXPORT     void UpdateTolReached() ;
+  Standard_EXPORT   void UpdateTolReached() ;
 
 
-GeomInt_TheComputeLineOfWLApprox myComputeLine;
-GeomInt_TheComputeLineBezierOfWLApprox myComputeLineBezier;
-Approx_MCurvesToBSpCurve myBezToBSpl;
-Standard_Boolean myTolReached;
-Standard_Boolean myApproxBez;
-Standard_Boolean myWithTangency;
-Standard_Real myTol3d;
-Standard_Real myTol2d;
-Standard_Boolean myRelativeTol;
-Standard_Integer myDegMin;
-Standard_Integer myDegMax;
-Standard_Integer myNbPntMax;
-Standard_Integer myNbIterMax;
-Standard_Real myMinFactorXYZ;
-Standard_Real myMinFactorUV;
-Standard_Real myTolReached3d;
-Standard_Real myTolReached2d;
+  GeomInt_TheComputeLineOfWLApprox myComputeLine;
+  GeomInt_TheComputeLineBezierOfWLApprox myComputeLineBezier;
+  Approx_MCurvesToBSpCurve myBezToBSpl;
+  Standard_Boolean myTolReached;
+  Standard_Boolean myApproxBez;
+  Standard_Boolean myWithTangency;
+  Standard_Real myTol3d;
+  Standard_Real myTol2d;
+  Standard_Boolean myRelativeTol;
+  Standard_Integer myDegMin;
+  Standard_Integer myDegMax;
+  Standard_Integer myNbPntMax;
+  Standard_Integer myNbIterMax;
+  Standard_Real myMinFactorXYZ;
+  Standard_Real myMinFactorUV;
+  Standard_Real myTolReached3d;
+  Standard_Real myTolReached2d;
 
 
 };
@@ -138,7 +114,6 @@ Standard_Real myTolReached2d;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomInt_WLApprox_HeaderFile

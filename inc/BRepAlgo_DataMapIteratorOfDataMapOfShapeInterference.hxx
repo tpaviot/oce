@@ -6,25 +6,13 @@
 #ifndef _BRepAlgo_DataMapIteratorOfDataMapOfShapeInterference_HeaderFile
 #define _BRepAlgo_DataMapIteratorOfDataMapOfShapeInterference_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_Interference_HeaderFile
 #include <Handle_TopOpeBRepDS_Interference.hxx>
-#endif
-#ifndef _Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference_HeaderFile
 #include <Handle_BRepAlgo_DataMapNodeOfDataMapOfShapeInterference.hxx>
-#endif
 class Standard_NoSuchObject;
 class TopoDS_Shape;
 class TopOpeBRepDS_Interference;
@@ -34,22 +22,22 @@ class BRepAlgo_DataMapNodeOfDataMapOfShapeInterference;
 
 
 
-class BRepAlgo_DataMapIteratorOfDataMapOfShapeInterference  : public TCollection_BasicMapIterator {
+class BRepAlgo_DataMapIteratorOfDataMapOfShapeInterference  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepAlgo_DataMapIteratorOfDataMapOfShapeInterference();
+  Standard_EXPORT BRepAlgo_DataMapIteratorOfDataMapOfShapeInterference();
   
-  Standard_EXPORT   BRepAlgo_DataMapIteratorOfDataMapOfShapeInterference(const BRepAlgo_DataMapOfShapeInterference& aMap);
+  Standard_EXPORT BRepAlgo_DataMapIteratorOfDataMapOfShapeInterference(const BRepAlgo_DataMapOfShapeInterference& aMap);
   
-  Standard_EXPORT     void Initialize(const BRepAlgo_DataMapOfShapeInterference& aMap) ;
+  Standard_EXPORT   void Initialize (const BRepAlgo_DataMapOfShapeInterference& aMap) ;
   
-  Standard_EXPORT    const TopoDS_Shape& Key() const;
+  Standard_EXPORT  const  TopoDS_Shape& Key()  const;
   
-  Standard_EXPORT    const Handle_TopOpeBRepDS_Interference& Value() const;
-
+  Standard_EXPORT  const  Handle(TopOpeBRepDS_Interference)& Value()  const;
 
 
 
@@ -72,7 +60,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepAlgo_DataMapIteratorOfDataMapOfShapeInterference_HeaderFile

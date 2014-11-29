@@ -1,9 +1,3 @@
-#ifndef _TopLoc_Datum3D_HeaderFile
 #include <TopLoc_Datum3D.hxx>
-#endif
-#ifndef _TopLoc_Location_HeaderFile
 #include <TopLoc_Location.hxx>
-#endif
-#ifndef _TopLoc_ItemLocation_HeaderFile
 #include <TopLoc_ItemLocation.hxx>
-#endif

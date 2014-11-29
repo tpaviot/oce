@@ -6,42 +6,31 @@
 #ifndef _TDataStd_HDataMapOfStringInteger_HeaderFile
 #define _TDataStd_HDataMapOfStringInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDataStd_HDataMapOfStringInteger_HeaderFile
 #include <Handle_TDataStd_HDataMapOfStringInteger.hxx>
-#endif
 
-#ifndef _TColStd_DataMapOfStringInteger_HeaderFile
 #include <TColStd_DataMapOfStringInteger.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TColStd_DataMapOfStringInteger;
 
 
-//! Extension of TColStd_DataMapOfStringInteger class <br>
-//!    	    to be manipulated by handle. <br>
-class TDataStd_HDataMapOfStringInteger : public MMgt_TShared {
+//! Extension of TColStd_DataMapOfStringInteger class
+//! to be manipulated by handle.
+class TDataStd_HDataMapOfStringInteger : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   TDataStd_HDataMapOfStringInteger(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT TDataStd_HDataMapOfStringInteger(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT   TDataStd_HDataMapOfStringInteger(const TColStd_DataMapOfStringInteger& theOther);
+  Standard_EXPORT TDataStd_HDataMapOfStringInteger(const TColStd_DataMapOfStringInteger& theOther);
   
-       const TColStd_DataMapOfStringInteger& Map() const;
+     const  TColStd_DataMapOfStringInteger& Map()  const;
   
-        TColStd_DataMapOfStringInteger& ChangeMap() ;
+      TColStd_DataMapOfStringInteger& ChangeMap() ;
 
 
 
@@ -56,7 +45,7 @@ protected:
 private: 
 
 
-TColStd_DataMapOfStringInteger myMap;
+  TColStd_DataMapOfStringInteger myMap;
 
 
 };
@@ -66,7 +55,6 @@ TColStd_DataMapOfStringInteger myMap;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_HDataMapOfStringInteger_HeaderFile

@@ -6,28 +6,14 @@
 #ifndef _TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape_HeaderFile
 #define _TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape_HeaderFile
 #include <Handle_TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
 class TopoDS_Shape;
 class TColStd_MapIntegerHasher;
 class TopTools_ShapeMapHasher;
@@ -36,18 +22,19 @@ class TopOpeBRepDS_DoubleMapIteratorOfDoubleMapOfIntegerShape;
 
 
 
-class TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape : public TCollection_MapNode {
+class TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape : public TCollection_MapNode
+{
 
 public:
 
   
-      TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape(const Standard_Integer& K1,const TopoDS_Shape& K2,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+    TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape(const Standard_Integer& K1, const TopoDS_Shape& K2, const TCollection_MapNodePtr& n1, const TCollection_MapNodePtr& n2);
   
-        Standard_Integer& Key1() const;
+      Standard_Integer& Key1()  const;
   
-        TopoDS_Shape& Key2() const;
+      TopoDS_Shape& Key2()  const;
   
-        TCollection_MapNodePtr& Next2() const;
+      TCollection_MapNodePtr& Next2()  const;
 
 
 
@@ -62,9 +49,9 @@ protected:
 private: 
 
 
-Standard_Integer myKey1;
-TopoDS_Shape myKey2;
-TCollection_MapNodePtr myNext2;
+  Standard_Integer myKey1;
+  TopoDS_Shape myKey2;
+  TCollection_MapNodePtr myNext2;
 
 
 };
@@ -106,7 +93,6 @@ TCollection_MapNodePtr myNext2;
 #undef TCollection_DoubleMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape_HeaderFile

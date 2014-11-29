@@ -6,44 +6,33 @@
 #ifndef _ShapeFix_FaceConnect_HeaderFile
 #define _ShapeFix_FaceConnect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopTools_DataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TopoDS_Face;
 class TopoDS_Shell;
 
 
-
-class ShapeFix_FaceConnect  {
+//! Rebuilds connectivity between faces in shell
+class ShapeFix_FaceConnect 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   ShapeFix_FaceConnect();
+  Standard_EXPORT ShapeFix_FaceConnect();
   
-  Standard_EXPORT     Standard_Boolean Add(const TopoDS_Face& aFirst,const TopoDS_Face& aSecond) ;
+  Standard_EXPORT   Standard_Boolean Add (const TopoDS_Face& aFirst, const TopoDS_Face& aSecond) ;
   
-  Standard_EXPORT     TopoDS_Shell Build(const TopoDS_Shell& shell,const Standard_Real sewtoler,const Standard_Real fixtoler) ;
-  //! Clears internal data structure <br>
-  Standard_EXPORT     void Clear() ;
-
+  Standard_EXPORT   TopoDS_Shell Build (const TopoDS_Shell& shell, const Standard_Real sewtoler, const Standard_Real fixtoler) ;
+  
+  //! Clears internal data structure
+  Standard_EXPORT   void Clear() ;
 
 
 
@@ -58,10 +47,10 @@ private:
 
 
 
-TopTools_DataMapOfShapeListOfShape myConnected;
-TopTools_DataMapOfShapeListOfShape myOriFreeEdges;
-TopTools_DataMapOfShapeListOfShape myResFreeEdges;
-TopTools_DataMapOfShapeListOfShape myResSharEdges;
+  TopTools_DataMapOfShapeListOfShape myConnected;
+  TopTools_DataMapOfShapeListOfShape myOriFreeEdges;
+  TopTools_DataMapOfShapeListOfShape myResFreeEdges;
+  TopTools_DataMapOfShapeListOfShape myResSharEdges;
 
 
 };
@@ -70,7 +59,6 @@ TopTools_DataMapOfShapeListOfShape myResSharEdges;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeFix_FaceConnect_HeaderFile

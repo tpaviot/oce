@@ -14,7 +14,7 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#include <StdPrs_ToolShadedShape.ixx>
+#include <StdPrs_ToolShadedShape.hxx>
 
 #include <BRep_Tool.hxx>
 #include <BRepAdaptor_Surface.hxx>
@@ -31,6 +31,28 @@
 #include <TopLoc_Location.hxx>
 #include <TShort_HArray1OfShortReal.hxx>
 #include <TShort_Array1OfShortReal.hxx>
+#include <TColgp_Array1OfDir.hxx>
+#include <TopExp_Explorer.hxx>
+#include <TopoDS.hxx>
+
+//=======================================================================
+//function : isTriangulated
+//purpose  :
+//=======================================================================
+Standard_Boolean StdPrs_ToolShadedShape::IsTriangulated (const TopoDS_Shape& theShape)
+{
+  TopLoc_Location aLocDummy;
+  for (TopExp_Explorer aFaceIter (theShape, TopAbs_FACE); aFaceIter.More(); aFaceIter.Next())
+  {
+    const TopoDS_Face&                aFace = TopoDS::Face (aFaceIter.Current());
+    const Handle(Poly_Triangulation)& aTri  = BRep_Tool::Triangulation (aFace, aLocDummy);
+    if (aTri.IsNull())
+    {
+      return Standard_False;
+    }
+  }
+  return Standard_True;
+}
 
 //=======================================================================
 //function : IsClosed
@@ -38,7 +60,71 @@
 //=======================================================================
 Standard_Boolean StdPrs_ToolShadedShape::IsClosed (const TopoDS_Shape& theShape)
 {
-  return theShape.Closed();
+  if (theShape.IsNull())
+  {
+    return Standard_True;
+  }
+
+  switch (theShape.ShapeType())
+  {
+    case TopAbs_COMPOUND:
+    case TopAbs_COMPSOLID:
+    default:
+    {
+      // check that compound consists of closed solids
+      for (TopoDS_Iterator anIter (theShape); anIter.More(); anIter.Next())
+      {
+        const TopoDS_Shape& aShape = anIter.Value();
+        if (!IsClosed (aShape))
+        {
+          return Standard_False;
+        }
+      }
+      return Standard_True;
+    }
+    case TopAbs_SOLID:
+    {
+      // Check for non-manifold topology first of all:
+      // have to use BRep_Tool::IsClosed() because it checks the face connectivity
+      // inside the shape
+      if (!BRep_Tool::IsClosed (theShape))
+        return Standard_False;
+
+      for (TopoDS_Iterator anIter (theShape); anIter.More(); anIter.Next())
+      {
+        const TopoDS_Shape& aShape = anIter.Value();
+        if (aShape.IsNull())
+        {
+          continue;
+        }
+
+        if (aShape.ShapeType() == TopAbs_FACE)
+        {
+          // invalid solid
+          return Standard_False;
+        }
+        else if (!IsTriangulated (aShape))
+        {
+          // mesh contains holes
+          return Standard_False;
+        }
+      }
+      return Standard_True;
+    }
+    case TopAbs_SHELL:
+    case TopAbs_FACE:
+    {
+      // free faces / shell are not allowed
+      return Standard_False;
+    }
+    case TopAbs_WIRE:
+    case TopAbs_EDGE:
+    case TopAbs_VERTEX:
+    {
+      // ignore
+      return Standard_True;
+    }
+  }
 }
 
 //=======================================================================

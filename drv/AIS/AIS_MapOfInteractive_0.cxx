@@ -5,24 +5,13 @@
 
 #include <AIS_MapOfInteractive.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
-#include <Standard_DomainError.hxx>
-#endif
-#ifndef _AIS_InteractiveObject_HeaderFile
 #include <AIS_InteractiveObject.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _AIS_StdMapNodeOfMapOfInteractive_HeaderFile
 #include <AIS_StdMapNodeOfMapOfInteractive.hxx>
-#endif
-#ifndef _AIS_MapIteratorOfMapOfInteractive_HeaderFile
 #include <AIS_MapIteratorOfMapOfInteractive.hxx>
-#endif
  
 
-#define TheKey Handle_AIS_InteractiveObject
+#define TheKey Handle(AIS_InteractiveObject)
 #define TheKey_hxx <AIS_InteractiveObject.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>

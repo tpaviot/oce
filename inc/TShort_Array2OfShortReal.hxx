@@ -6,28 +6,14 @@
 #ifndef _TShort_Array2OfShortReal_HeaderFile
 #define _TShort_Array2OfShortReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
-#endif
 class Standard_RangeError;
 class Standard_OutOfRange;
 class Standard_OutOfMemory;
@@ -35,56 +21,56 @@ class Standard_DimensionMismatch;
 
 
 
-class TShort_Array2OfShortReal  {
+class TShort_Array2OfShortReal 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TShort_Array2OfShortReal(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+  Standard_EXPORT TShort_Array2OfShortReal(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2);
   
-  Standard_EXPORT   TShort_Array2OfShortReal(const Standard_ShortReal& Item,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+  Standard_EXPORT TShort_Array2OfShortReal(const Standard_ShortReal& Item, const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2);
   
-  Standard_EXPORT     void Init(const Standard_ShortReal& V) ;
+  Standard_EXPORT   void Init (const Standard_ShortReal& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+  Standard_EXPORT   void Destroy() ;
 ~TShort_Array2OfShortReal()
 {
   Destroy();
 }
   
-  Standard_EXPORT    const TShort_Array2OfShortReal& Assign(const TShort_Array2OfShortReal& Other) ;
-   const TShort_Array2OfShortReal& operator =(const TShort_Array2OfShortReal& Other) 
+  Standard_EXPORT  const  TShort_Array2OfShortReal& Assign (const TShort_Array2OfShortReal& Other) ;
+ const  TShort_Array2OfShortReal& operator = (const TShort_Array2OfShortReal& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer ColLength() const;
+      Standard_Integer ColLength()  const;
   
-        Standard_Integer RowLength() const;
+      Standard_Integer RowLength()  const;
   
-        Standard_Integer LowerCol() const;
+      Standard_Integer LowerCol()  const;
   
-        Standard_Integer LowerRow() const;
+      Standard_Integer LowerRow()  const;
   
-        Standard_Integer UpperCol() const;
+      Standard_Integer UpperCol()  const;
   
-        Standard_Integer UpperRow() const;
+      Standard_Integer UpperRow()  const;
   
-        void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Standard_ShortReal& Value) ;
+      void SetValue (const Standard_Integer Row, const Standard_Integer Col, const Standard_ShortReal& Value) ;
   
-       const Standard_ShortReal& Value(const Standard_Integer Row,const Standard_Integer Col) const;
-     const Standard_ShortReal& operator()(const Standard_Integer Row,const Standard_Integer Col) const
+     const  Standard_ShortReal& Value (const Standard_Integer Row, const Standard_Integer Col)  const;
+   const  Standard_ShortReal& operator() (const Standard_Integer Row, const Standard_Integer Col)  const
 {
   return Value(Row,Col);
 }
   
-        Standard_ShortReal& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
-      Standard_ShortReal& operator()(const Standard_Integer Row,const Standard_Integer Col) 
+      Standard_ShortReal& ChangeValue (const Standard_Integer Row, const Standard_Integer Col) ;
+    Standard_ShortReal& operator() (const Standard_Integer Row, const Standard_Integer Col) 
 {
   return ChangeValue(Row,Col);
 }
-
 
 
 
@@ -98,17 +84,17 @@ protected:
 private:
 
   
-  Standard_EXPORT   TShort_Array2OfShortReal(const TShort_Array2OfShortReal& AnArray);
+  Standard_EXPORT TShort_Array2OfShortReal(const TShort_Array2OfShortReal& AnArray);
   
-  Standard_EXPORT     void Allocate() ;
+  Standard_EXPORT   void Allocate() ;
 
 
-Standard_Integer myLowerRow;
-Standard_Integer myLowerColumn;
-Standard_Integer myUpperRow;
-Standard_Integer myUpperColumn;
-Standard_Boolean myDeletable;
-Standard_Address myData;
+  Standard_Integer myLowerRow;
+  Standard_Integer myLowerColumn;
+  Standard_Integer myUpperRow;
+  Standard_Integer myUpperColumn;
+  Standard_Boolean myDeletable;
+  Standard_Address myData;
 
 
 };
@@ -126,7 +112,6 @@ Standard_Address myData;
 #undef TCollection_Array2_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TShort_Array2OfShortReal_HeaderFile

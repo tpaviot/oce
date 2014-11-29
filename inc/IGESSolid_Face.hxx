@@ -6,63 +6,51 @@
 #ifndef _IGESSolid_Face_HeaderFile
 #define _IGESSolid_Face_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSolid_Face_HeaderFile
 #include <Handle_IGESSolid_Face.hxx>
-#endif
 
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_IGESSolid_HArray1OfLoop_HeaderFile
 #include <Handle_IGESSolid_HArray1OfLoop.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_IGESSolid_Loop_HeaderFile
 #include <Handle_IGESSolid_Loop.hxx>
-#endif
 class IGESData_IGESEntity;
 class IGESSolid_HArray1OfLoop;
 class Standard_OutOfRange;
 class IGESSolid_Loop;
 
 
-//! defines Face, Type <510> Form Number <1> <br>
-//!          in package IGESSolid <br>
-//!          Face entity is a bound (partial) which has finite area <br>
-class IGESSolid_Face : public IGESData_IGESEntity {
+//! defines Face, Type <510> Form Number <1>
+//! in package IGESSolid
+//! Face entity is a bound (partial) which has finite area
+class IGESSolid_Face : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESSolid_Face();
-  //! This method is used to set the fields of the class Face <br>
-//!       - aSurface      : Pointer to the underlying surface <br>
-//!       - outerLoopFlag : True means the first loop is the outer loop <br>
-//!       - loops         : Array of loops bounding the face <br>
-  Standard_EXPORT     void Init(const Handle(IGESData_IGESEntity)& aSurface,const Standard_Boolean outerLoopFlag,const Handle(IGESSolid_HArray1OfLoop)& loops) ;
-  //! returns the underlying surface of the face <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity Surface() const;
-  //! returns the number of the loops bounding the face <br>
-  Standard_EXPORT     Standard_Integer NbLoops() const;
-  //! checks whether there is an outer loop or not <br>
-  Standard_EXPORT     Standard_Boolean HasOuterLoop() const;
-  //! returns the Index'th loop that bounds the face <br>
-//! raises exception if Index < 0 or Index >= NbLoops <br>
-  Standard_EXPORT     Handle_IGESSolid_Loop Loop(const Standard_Integer Index) const;
+  Standard_EXPORT IGESSolid_Face();
+  
+  //! This method is used to set the fields of the class Face
+  //! - aSurface      : Pointer to the underlying surface
+  //! - outerLoopFlag : True means the first loop is the outer loop
+  //! - loops         : Array of loops bounding the face
+  Standard_EXPORT   void Init (const Handle(IGESData_IGESEntity)& aSurface, const Standard_Boolean outerLoopFlag, const Handle(IGESSolid_HArray1OfLoop)& loops) ;
+  
+  //! returns the underlying surface of the face
+  Standard_EXPORT   Handle(IGESData_IGESEntity) Surface()  const;
+  
+  //! returns the number of the loops bounding the face
+  Standard_EXPORT   Standard_Integer NbLoops()  const;
+  
+  //! checks whether there is an outer loop or not
+  Standard_EXPORT   Standard_Boolean HasOuterLoop()  const;
+  
+  //! returns the Index'th loop that bounds the face
+  //! raises exception if Index < 0 or Index >= NbLoops
+  Standard_EXPORT   Handle(IGESSolid_Loop) Loop (const Standard_Integer Index)  const;
 
 
 
@@ -77,9 +65,9 @@ protected:
 private: 
 
 
-Handle_IGESData_IGESEntity theSurface;
-Standard_Boolean hasOuterLoop;
-Handle_IGESSolid_HArray1OfLoop theLoops;
+  Handle(IGESData_IGESEntity) theSurface;
+  Standard_Boolean hasOuterLoop;
+  Handle(IGESSolid_HArray1OfLoop) theLoops;
 
 
 };
@@ -88,7 +76,6 @@ Handle_IGESSolid_HArray1OfLoop theLoops;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSolid_Face_HeaderFile

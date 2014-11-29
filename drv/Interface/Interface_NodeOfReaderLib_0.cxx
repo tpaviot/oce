@@ -5,28 +5,14 @@
 
 #include <Interface_NodeOfReaderLib.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Interface_GlobalNodeOfReaderLib_HeaderFile
 #include <Interface_GlobalNodeOfReaderLib.hxx>
-#endif
-#ifndef _Interface_NodeOfReaderLib_HeaderFile
 #include <Interface_NodeOfReaderLib.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Interface_ReaderModule_HeaderFile
 #include <Interface_ReaderModule.hxx>
-#endif
-#ifndef _Interface_Protocol_HeaderFile
 #include <Interface_Protocol.hxx>
-#endif
-#ifndef _Interface_ReaderLib_HeaderFile
 #include <Interface_ReaderLib.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(Interface_NodeOfReaderLib,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Interface_NodeOfReaderLib)
 
 
-#define TheObject Handle_Standard_Transient
+#define TheObject Handle(Standard_Transient)
 #define TheObject_hxx <Standard_Transient.hxx>
 #define Handle_TheModule Handle_Interface_ReaderModule
 #define TheModule Interface_ReaderModule

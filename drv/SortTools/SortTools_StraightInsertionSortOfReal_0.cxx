@@ -5,12 +5,8 @@
 
 #include <SortTools_StraightInsertionSortOfReal.hxx>
 
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _TCollection_CompareOfReal_HeaderFile
 #include <TCollection_CompareOfReal.hxx>
-#endif
  
 
 #define Item Standard_Real

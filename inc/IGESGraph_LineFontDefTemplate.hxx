@@ -6,71 +6,63 @@
 #ifndef _IGESGraph_LineFontDefTemplate_HeaderFile
 #define _IGESGraph_LineFontDefTemplate_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESGraph_LineFontDefTemplate_HeaderFile
 #include <Handle_IGESGraph_LineFontDefTemplate.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_IGESBasic_SubfigureDef_HeaderFile
 #include <Handle_IGESBasic_SubfigureDef.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _IGESData_LineFontEntity_HeaderFile
 #include <IGESData_LineFontEntity.hxx>
-#endif
 class IGESBasic_SubfigureDef;
 
 
-//! defines IGESLineFontDefTemplate, Type <304> Form <1> <br>
-//!           in package IGESGraph <br>
-//! <br>
-//!           Line Font can be defined as a repetition od Template figure <br>
-//!           that is displayed at regularly spaced locations along a <br>
-//!           planer anchoring curve. The anchoring curve itself has <br>
-//!           no visual purpose. <br>
-class IGESGraph_LineFontDefTemplate : public IGESData_LineFontEntity {
+//! defines IGESLineFontDefTemplate, Type <304> Form <1>
+//! in package IGESGraph
+//!
+//! Line Font can be defined as a repetition od Template figure
+//! that is displayed at regularly spaced locations along a
+//! planer anchoring curve. The anchoring curve itself has
+//! no visual purpose.
+class IGESGraph_LineFontDefTemplate : public IGESData_LineFontEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESGraph_LineFontDefTemplate();
-  //! This method is used to set the fields of the class <br>
-//!           LineFontDefTemplate <br>
-//!       - anOrientation : Orientation of Template figure on <br>
-//!                         anchoring curve <br>
-//!       - aTemplate     : SubfigureDef entity used as Template figure <br>
-//!       - aDistance     : Distance between the neighbouring Template <br>
-//!                         figures <br>
-//!       - aScale        : Scale factor applied to the Template figure <br>
-  Standard_EXPORT     void Init(const Standard_Integer anOrientation,const Handle(IGESBasic_SubfigureDef)& aTemplate,const Standard_Real aDistance,const Standard_Real aScale) ;
-  //! if return value = 0, Each Template display is oriented by aligning <br>
-//!                      the axis of the SubfigureDef with the axis of <br>
-//!                      the definition space of the anchoring curve. <br>
-//!                 = 1, Each Template display is oriented by aligning <br>
-//!                      X-axis of the SubfigureDef with the tangent <br>
-//!                      vector of the anchoring curve at the point of <br>
-//!                      incidence of the curve and the origin of <br>
-//!                      subfigure. <br>
-//!                      Similarly Z-axis is aligned. <br>
-  Standard_EXPORT     Standard_Integer Orientation() const;
-  //! returns SubfigureDef as the Entity used as Template figure. <br>
-  Standard_EXPORT     Handle_IGESBasic_SubfigureDef TemplateEntity() const;
-  //! returns the Distance between any two Template figures on the <br>
-//! anchoring curve. <br>
-  Standard_EXPORT     Standard_Real Distance() const;
-  //! returns the Scaling factor applied to SubfigureDef to form <br>
-//! Template figure. <br>
-  Standard_EXPORT     Standard_Real Scale() const;
+  Standard_EXPORT IGESGraph_LineFontDefTemplate();
+  
+  //! This method is used to set the fields of the class
+  //! LineFontDefTemplate
+  //! - anOrientation : Orientation of Template figure on
+  //! anchoring curve
+  //! - aTemplate     : SubfigureDef entity used as Template figure
+  //! - aDistance     : Distance between the neighbouring Template
+  //! figures
+  //! - aScale        : Scale factor applied to the Template figure
+  Standard_EXPORT   void Init (const Standard_Integer anOrientation, const Handle(IGESBasic_SubfigureDef)& aTemplate, const Standard_Real aDistance, const Standard_Real aScale) ;
+  
+  //! if return value = 0, Each Template display is oriented by aligning
+  //! the axis of the SubfigureDef with the axis of
+  //! the definition space of the anchoring curve.
+  //! = 1, Each Template display is oriented by aligning
+  //! X-axis of the SubfigureDef with the tangent
+  //! vector of the anchoring curve at the point of
+  //! incidence of the curve and the origin of
+  //! subfigure.
+  //! Similarly Z-axis is aligned.
+  Standard_EXPORT   Standard_Integer Orientation()  const;
+  
+  //! returns SubfigureDef as the Entity used as Template figure.
+  Standard_EXPORT   Handle(IGESBasic_SubfigureDef) TemplateEntity()  const;
+  
+  //! returns the Distance between any two Template figures on the
+  //! anchoring curve.
+  Standard_EXPORT   Standard_Real Distance()  const;
+  
+  //! returns the Scaling factor applied to SubfigureDef to form
+  //! Template figure.
+  Standard_EXPORT   Standard_Real Scale()  const;
 
 
 
@@ -85,10 +77,10 @@ protected:
 private: 
 
 
-Standard_Integer theOrientation;
-Handle_IGESBasic_SubfigureDef theTemplateEntity;
-Standard_Real theDistance;
-Standard_Real theScale;
+  Standard_Integer theOrientation;
+  Handle(IGESBasic_SubfigureDef) theTemplateEntity;
+  Standard_Real theDistance;
+  Standard_Real theScale;
 
 
 };
@@ -97,7 +89,6 @@ Standard_Real theScale;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGraph_LineFontDefTemplate_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_StepShape_DimensionalSizeWithPath_HeaderFile
 #define _Handle_StepShape_DimensionalSizeWithPath_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepShape_DimensionalSize_HeaderFile
 #include <Handle_StepShape_DimensionalSize.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepShape_DimensionalSize);
 class StepShape_DimensionalSizeWithPath;
 
-DEFINE_STANDARD_HANDLE(StepShape_DimensionalSizeWithPath,StepShape_DimensionalSize)
+DEFINE_STANDARD_HANDLE(StepShape_DimensionalSizeWithPath, StepShape_DimensionalSize)
 
-#endif
+#endif // _Handle_StepShape_DimensionalSizeWithPath_HeaderFile

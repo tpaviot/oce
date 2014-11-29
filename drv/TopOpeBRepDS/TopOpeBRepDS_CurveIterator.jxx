@@ -1,12 +1,4 @@
-#ifndef _TopOpeBRepDS_ListOfInterference_HeaderFile
 #include <TopOpeBRepDS_ListOfInterference.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Interference_HeaderFile
 #include <TopOpeBRepDS_Interference.hxx>
-#endif
-#ifndef _Geom2d_Curve_HeaderFile
 #include <Geom2d_Curve.hxx>
-#endif
-#ifndef _TopOpeBRepDS_CurveIterator_HeaderFile
 #include <TopOpeBRepDS_CurveIterator.hxx>
-#endif

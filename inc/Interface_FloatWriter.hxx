@@ -6,95 +6,89 @@
 #ifndef _Interface_FloatWriter_HeaderFile
 #define _Interface_FloatWriter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Character_HeaderFile
 #include <Standard_Character.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
 
 
-//! This class converts a floting number (Real) to a string <br>
-//!           It can be used if the standard C-C++ output functions <br>
-//!           (sprintf or cout<<) are not convenient. That is to say : <br>
-//!           - to suppress trailing '0' and 'E+00' (if desired) <br>
-//!           - to control exponant output and floating point output <br>
-//! <br>
-//!           Formats are given in the form used by printf-sprintf <br>
-class Interface_FloatWriter  {
+//! This class converts a floting number (Real) to a string
+//! It can be used if the standard C-C++ output functions
+//! (sprintf or cout<<) are not convenient. That is to say :
+//! - to suppress trailing '0' and 'E+00' (if desired)
+//! - to control exponant output and floating point output
+//!
+//! Formats are given in the form used by printf-sprintf
+class Interface_FloatWriter 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates a FloatWriter ready to work, with default options  - <br>
-//!           - zero suppress option is set <br>
-//!           - main format is set to "%E" <br>
-//!           - secondary format is set to "%f" for values between 0.1 and <br>
-//!             1000. in absolute values <br>
-//!           If <chars> is given (and positive), it will produce options <br>
-//!           to produce this count of characters : "%<chars>f","%<chars>%E" <br>
-  Standard_EXPORT   Interface_FloatWriter(const Standard_Integer chars = 0);
-  //! Sets a specific Format for Sending Reals (main format) <br>
-//!           (Default from Creation is "%E") <br>
-//!           If <reset> is given True (default), this call clears effects <br>
-//!           of former calls to SetFormatForRange and SetZeroSuppress <br>
-  Standard_EXPORT     void SetFormat(const Standard_CString form,const Standard_Boolean reset = Standard_True) ;
-  //! Sets a secondary Format for Real, to be applied between R1 and <br>
-//!           R2 (in absolute values). A Call to SetRealForm cancels this <br>
-//!           secondary form if <reset> is True. <br>
-//!           (Default from Creation is "%f" between 0.1 and 1000.) <br>
-//!  Warning : if the condition (0. <= R1 < R2) is not fulfilled, this <br>
-//!           secondary form is canceled. <br>
-  Standard_EXPORT     void SetFormatForRange(const Standard_CString form,const Standard_Real R1,const Standard_Real R2) ;
-  //! Sets Sending Real Parameters to suppress trailing Zeros and <br>
-//!           Null Exponant ("E+00"), if <mode> is given True, Resets this <br>
-//!           mode if <mode> is False (in addition to Real Forms) <br>
-//!           A call to SetRealFrom resets this mode to False ig <reset> is <br>
-//!           given True (Default from Creation is True) <br>
-  Standard_EXPORT     void SetZeroSuppress(const Standard_Boolean mode) ;
-  //! Sets again options to the defaults given by Create <br>
-  Standard_EXPORT     void SetDefaults(const Standard_Integer chars = 0) ;
-  //! Returns active options : <zerosup> is the option ZeroSuppress, <br>
-//!           <range> is True if a range is set, False else <br>
-//!           R1,R2 give the range (if it is set) <br>
-  Standard_EXPORT     void Options(Standard_Boolean& zerosup,Standard_Boolean& range,Standard_Real& R1,Standard_Real& R2) const;
-  //! Returns the main format <br>
-//! was C++ : return const <br>
-  Standard_EXPORT     Standard_CString MainFormat() const;
-  //! Returns the format for range, if set <br>
-//!           Meaningful only if <range> from Options is True <br>
-//! was C++ : return const <br>
-  Standard_EXPORT     Standard_CString FormatForRange() const;
-  //! Writes a Real value <val> to a string <text> by using the <br>
-//!           options. Returns the useful Length of produced string. <br>
-//!           It calls the class method Convert. <br>
-//!  Warning : <text> is assumed to be wide enough (20-30 is correct) <br>
-//!           And, even if declared in, its content will be modified <br>
-  Standard_EXPORT     Standard_Integer Write(const Standard_Real val,const Standard_CString text) const;
-  //! This class method converts a Real Value to a string, given <br>
-//!           options given as arguments. It can be called independantly. <br>
-//!  Warning : even if declared in, content of <text> will be modified <br>
-  Standard_EXPORT   static  Standard_Integer Convert(const Standard_Real val,const Standard_CString text,const Standard_Boolean zerosup,const Standard_Real Range1,const Standard_Real Range2,const Standard_CString mainform,const Standard_CString rangeform) ;
-
+  
+  //! Creates a FloatWriter ready to work, with default options  -
+  //! - zero suppress option is set
+  //! - main format is set to "%E"
+  //! - secondary format is set to "%f" for values between 0.1 and
+  //! 1000. in absolute values
+  //! If <chars> is given (and positive), it will produce options
+  //! to produce this count of characters : "%<chars>f","%<chars>%E"
+  Standard_EXPORT Interface_FloatWriter(const Standard_Integer chars = 0);
+  
+  //! Sets a specific Format for Sending Reals (main format)
+  //! (Default from Creation is "%E")
+  //! If <reset> is given True (default), this call clears effects
+  //! of former calls to SetFormatForRange and SetZeroSuppress
+  Standard_EXPORT   void SetFormat (const Standard_CString form, const Standard_Boolean reset = Standard_True) ;
+  
+  //! Sets a secondary Format for Real, to be applied between R1 and
+  //! R2 (in absolute values). A Call to SetRealForm cancels this
+  //! secondary form if <reset> is True.
+  //! (Default from Creation is "%f" between 0.1 and 1000.)
+  //! Warning : if the condition (0. <= R1 < R2) is not fulfilled, this
+  //! secondary form is canceled.
+  Standard_EXPORT   void SetFormatForRange (const Standard_CString form, const Standard_Real R1, const Standard_Real R2) ;
+  
+  //! Sets Sending Real Parameters to suppress trailing Zeros and
+  //! Null Exponant ("E+00"), if <mode> is given True, Resets this
+  //! mode if <mode> is False (in addition to Real Forms)
+  //! A call to SetRealFrom resets this mode to False ig <reset> is
+  //! given True (Default from Creation is True)
+  Standard_EXPORT   void SetZeroSuppress (const Standard_Boolean mode) ;
+  
+  //! Sets again options to the defaults given by Create
+  Standard_EXPORT   void SetDefaults (const Standard_Integer chars = 0) ;
+  
+  //! Returns active options : <zerosup> is the option ZeroSuppress,
+  //! <range> is True if a range is set, False else
+  //! R1,R2 give the range (if it is set)
+  Standard_EXPORT   void Options (Standard_Boolean& zerosup, Standard_Boolean& range, Standard_Real& R1, Standard_Real& R2)  const;
+  
+  //! Returns the main format
+  //! was C++ : return const
+  Standard_EXPORT   Standard_CString MainFormat()  const;
+  
+  //! Returns the format for range, if set
+  //! Meaningful only if <range> from Options is True
+  //! was C++ : return const
+  Standard_EXPORT   Standard_CString FormatForRange()  const;
+  
+  //! Writes a Real value <val> to a string <text> by using the
+  //! options. Returns the useful Length of produced string.
+  //! It calls the class method Convert.
+  //! Warning : <text> is assumed to be wide enough (20-30 is correct)
+  //! And, even if declared in, its content will be modified
+  Standard_EXPORT   Standard_Integer Write (const Standard_Real val, const Standard_CString text)  const;
+  
+  //! This class method converts a Real Value to a string, given
+  //! options given as arguments. It can be called independantly.
+  //! Warning : even if declared in, content of <text> will be modified
+  Standard_EXPORT static   Standard_Integer Convert (const Standard_Real val, const Standard_CString text, const Standard_Boolean zerosup, const Standard_Real Range1, const Standard_Real Range2, const Standard_CString mainform, const Standard_CString rangeform) ;
 
 
 
@@ -109,11 +103,11 @@ private:
 
 
 
-Standard_Character themainform[12];
-Standard_Real therange1;
-Standard_Real therange2;
-Standard_Character therangeform[12];
-Standard_Boolean thezerosup;
+  Standard_Character themainform[12];
+  Standard_Real therange1;
+  Standard_Real therange2;
+  Standard_Character therangeform[12];
+  Standard_Boolean thezerosup;
 
 
 };
@@ -122,7 +116,6 @@ Standard_Boolean thezerosup;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Interface_FloatWriter_HeaderFile

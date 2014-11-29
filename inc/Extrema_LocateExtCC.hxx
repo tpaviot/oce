@@ -6,55 +6,46 @@
 #ifndef _Extrema_LocateExtCC_HeaderFile
 #define _Extrema_LocateExtCC_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Extrema_POnCurv_HeaderFile
 #include <Extrema_POnCurv.hxx>
-#endif
-#ifndef _Handle_Extrema_LCCacheOfLocateExtCC_HeaderFile
-#include <Handle_Extrema_LCCacheOfLocateExtCC.hxx>
-#endif
 class Standard_DomainError;
 class StdFail_NotDone;
 class Adaptor3d_Curve;
-class Extrema_CurveTool;
-class Extrema_LCCacheOfLocateExtCC;
-class Extrema_ELCCOfLocateExtCC;
-class Extrema_CCFOfELCCOfLocateExtCC;
-class Extrema_LocECCOfLocateExtCC;
-class Extrema_CCLocFOfLocECCOfLocateExtCC;
 class Extrema_POnCurv;
 
 
-
-class Extrema_LocateExtCC  {
+//! It calculates the distance between two curves with
+//! a close point; these distances can be maximum or
+//! minimum.
+class Extrema_LocateExtCC 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Extrema_LocateExtCC(const Adaptor3d_Curve& C1,const Adaptor3d_Curve& C2,const Standard_Real U0,const Standard_Real V0);
+  //! Calculates the distance with a close point. The
+  //! close point is defined by a parameter value on each
+  //! curve.
+  //! The function F(u,v)=distance(C1(u),C2(v)) has an
+  //! extremun when gradient(f)=0. The algorithm searchs
+  //! the zero near the close point.
+  Standard_EXPORT Extrema_LocateExtCC(const Adaptor3d_Curve& C1, const Adaptor3d_Curve& C2, const Standard_Real U0, const Standard_Real V0);
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
+  //! Returns True if the distance is found.
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
   
-  Standard_EXPORT     Standard_Real SquareDistance() const;
+  //! Returns the value of the extremum square distance.
+  Standard_EXPORT   Standard_Real SquareDistance()  const;
   
-  Standard_EXPORT     void Point(Extrema_POnCurv& P1,Extrema_POnCurv& P2) const;
-
+  //! Returns the points of the extremum distance.
+  //! P1 is on the first curve, P2 on the second one.
+  Standard_EXPORT   void Point (Extrema_POnCurv& P1, Extrema_POnCurv& P2)  const;
 
 
 
@@ -69,10 +60,10 @@ private:
 
 
 
-Standard_Boolean myDone;
-Standard_Real mySqDist;
-Extrema_POnCurv myPoint1;
-Extrema_POnCurv myPoint2;
+  Standard_Boolean myDone;
+  Standard_Real mySqDist;
+  Extrema_POnCurv myPoint1;
+  Extrema_POnCurv myPoint2;
 
 
 };
@@ -81,7 +72,6 @@ Extrema_POnCurv myPoint2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Extrema_LocateExtCC_HeaderFile

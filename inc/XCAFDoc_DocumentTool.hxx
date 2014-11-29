@@ -6,46 +6,20 @@
 #ifndef _XCAFDoc_DocumentTool_HeaderFile
 #define _XCAFDoc_DocumentTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_XCAFDoc_DocumentTool_HeaderFile
 #include <Handle_XCAFDoc_DocumentTool.hxx>
-#endif
 
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TDocStd_Document_HeaderFile
 #include <Handle_TDocStd_Document.hxx>
-#endif
-#ifndef _Handle_XCAFDoc_ShapeTool_HeaderFile
 #include <Handle_XCAFDoc_ShapeTool.hxx>
-#endif
-#ifndef _Handle_XCAFDoc_ColorTool_HeaderFile
 #include <Handle_XCAFDoc_ColorTool.hxx>
-#endif
-#ifndef _Handle_XCAFDoc_LayerTool_HeaderFile
 #include <Handle_XCAFDoc_LayerTool.hxx>
-#endif
-#ifndef _Handle_XCAFDoc_DimTolTool_HeaderFile
 #include <Handle_XCAFDoc_DimTolTool.hxx>
-#endif
-#ifndef _Handle_XCAFDoc_MaterialTool_HeaderFile
 #include <Handle_XCAFDoc_MaterialTool.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
 class Standard_GUID;
 class TDF_Label;
 class TDocStd_Document;
@@ -58,61 +32,78 @@ class TDF_Attribute;
 class TDF_RelocationTable;
 
 
-//! Defines sections structure of an XDE document. <br>
-class XCAFDoc_DocumentTool : public TDF_Attribute {
+//! Defines sections structure of an XDE document.
+//! attribute marking CAF document as being DECAF document.
+//! Creates the sections structure of the document.
+class XCAFDoc_DocumentTool : public TDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
-  //! Create (if not exist) DocumentTool attribute <br>
-//!          on 0.1 label if <IsAcces> is true, else <br>
-//!          on <L> label. <br>
-//!          This label will be returned by DocLabel(); <br>
-//!          If the attribute is already set it won't be reset on <br>
-//!          <L> even if <IsAcces> is false. <br>
-//!          ColorTool and ShapeTool attributes are also set by this method. <br>
-  Standard_EXPORT   static  Handle_XCAFDoc_DocumentTool Set(const TDF_Label& L,const Standard_Boolean IsAcces = Standard_True) ;
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-  Standard_EXPORT   static  Standard_Boolean IsXCAFDocument(const Handle(TDocStd_Document)& Doc) ;
-  //! Returns label where the DocumentTool attribute is or <br>
-//!          0.1 if DocumentTool is not yet set. <br>
-  Standard_EXPORT   static  TDF_Label DocLabel(const TDF_Label& acces) ;
-  //! Returns sub-label of DocLabel() with tag 1. <br>
-  Standard_EXPORT   static  TDF_Label ShapesLabel(const TDF_Label& acces) ;
-  //! Returns sub-label of DocLabel() with tag 2. <br>
-  Standard_EXPORT   static  TDF_Label ColorsLabel(const TDF_Label& acces) ;
-  //! Returns sub-label of DocLabel() with tag 3. <br>
-  Standard_EXPORT   static  TDF_Label LayersLabel(const TDF_Label& acces) ;
-  //! Returns sub-label of DocLabel() with tag 4. <br>
-  Standard_EXPORT   static  TDF_Label DGTsLabel(const TDF_Label& acces) ;
-  //! Returns sub-label of DocLabel() with tag 5. <br>
-  Standard_EXPORT   static  TDF_Label MaterialsLabel(const TDF_Label& acces) ;
-  //! Creates (if it does not exist) ShapeTool attribute on ShapesLabel(). <br>
-  Standard_EXPORT   static  Handle_XCAFDoc_ShapeTool ShapeTool(const TDF_Label& acces) ;
-  //! Creates (if it does not exist) ColorTool attribute on ColorsLabel(). <br>
-  Standard_EXPORT   static  Handle_XCAFDoc_ColorTool ColorTool(const TDF_Label& acces) ;
-  //! Creates (if it does not exist) LayerTool attribute on LayersLabel(). <br>
-  Standard_EXPORT   static  Handle_XCAFDoc_LayerTool LayerTool(const TDF_Label& acces) ;
-  //! Creates (if it does not exist) DimTolTool attribute on DGTsLabel(). <br>
-  Standard_EXPORT   static  Handle_XCAFDoc_DimTolTool DimTolTool(const TDF_Label& acces) ;
-  //! Creates (if it does not exist) DimTolTool attribute on DGTsLabel(). <br>
-  Standard_EXPORT   static  Handle_XCAFDoc_MaterialTool MaterialTool(const TDF_Label& acces) ;
+  //! Create (if not exist) DocumentTool attribute
+  //! on 0.1 label if <IsAcces> is true, else
+  //! on <L> label.
+  //! This label will be returned by DocLabel();
+  //! If the attribute is already set it won't be reset on
+  //! <L> even if <IsAcces> is false.
+  //! ColorTool and ShapeTool attributes are also set by this method.
+  Standard_EXPORT static   Handle(XCAFDoc_DocumentTool) Set (const TDF_Label& L, const Standard_Boolean IsAcces = Standard_True) ;
   
-  Standard_EXPORT   XCAFDoc_DocumentTool();
-  //! to be called when reading this attribute from file <br>
-  Standard_EXPORT     void Init() const;
+  Standard_EXPORT static   Standard_Boolean IsXCAFDocument (const Handle(TDocStd_Document)& Doc) ;
   
-  Standard_EXPORT    const Standard_GUID& ID() const;
+  //! Returns label where the DocumentTool attribute is or
+  //! 0.1 if DocumentTool is not yet set.
+  Standard_EXPORT static   TDF_Label DocLabel (const TDF_Label& acces) ;
   
-  Standard_EXPORT     void Restore(const Handle(TDF_Attribute)& with) ;
+  //! Returns sub-label of DocLabel() with tag 1.
+  Standard_EXPORT static   TDF_Label ShapesLabel (const TDF_Label& acces) ;
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  //! Returns sub-label of DocLabel() with tag 2.
+  Standard_EXPORT static   TDF_Label ColorsLabel (const TDF_Label& acces) ;
   
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& into,const Handle(TDF_RelocationTable)& RT) const;
-  //! Unregisters the document holding this attribute from an <br>
-//!          internal global map of XDE documents. <br>
-  Standard_EXPORT   virtual  void Destroy() ;
+  //! Returns sub-label of DocLabel() with tag 3.
+  Standard_EXPORT static   TDF_Label LayersLabel (const TDF_Label& acces) ;
+  
+  //! Returns sub-label of DocLabel() with tag 4.
+  Standard_EXPORT static   TDF_Label DGTsLabel (const TDF_Label& acces) ;
+  
+  //! Returns sub-label of DocLabel() with tag 5.
+  Standard_EXPORT static   TDF_Label MaterialsLabel (const TDF_Label& acces) ;
+  
+  //! Creates (if it does not exist) ShapeTool attribute on ShapesLabel().
+  Standard_EXPORT static   Handle(XCAFDoc_ShapeTool) ShapeTool (const TDF_Label& acces) ;
+  
+  //! Creates (if it does not exist) ColorTool attribute on ColorsLabel().
+  Standard_EXPORT static   Handle(XCAFDoc_ColorTool) ColorTool (const TDF_Label& acces) ;
+  
+  //! Creates (if it does not exist) LayerTool attribute on LayersLabel().
+  Standard_EXPORT static   Handle(XCAFDoc_LayerTool) LayerTool (const TDF_Label& acces) ;
+  
+  //! Creates (if it does not exist) DimTolTool attribute on DGTsLabel().
+  Standard_EXPORT static   Handle(XCAFDoc_DimTolTool) DimTolTool (const TDF_Label& acces) ;
+  
+  //! Creates (if it does not exist) DimTolTool attribute on DGTsLabel().
+  Standard_EXPORT static   Handle(XCAFDoc_MaterialTool) MaterialTool (const TDF_Label& acces) ;
+  
+  Standard_EXPORT XCAFDoc_DocumentTool();
+  
+  //! to be called when reading this attribute from file
+  Standard_EXPORT   void Init()  const;
+  
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
+  
+  Standard_EXPORT   void Restore (const Handle(TDF_Attribute)& with) ;
+  
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
+  
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& into, const Handle(TDF_RelocationTable)& RT)  const;
+  
+  //! Unregisters the document holding this attribute from an
+  //! internal global map of XDE documents.
+  Standard_EXPORT virtual   void Destroy() ;
 ~XCAFDoc_DocumentTool()
 {
   Destroy();
@@ -138,7 +129,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XCAFDoc_DocumentTool_HeaderFile

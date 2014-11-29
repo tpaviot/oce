@@ -6,51 +6,41 @@
 #ifndef _StepVisual_ColourRgb_HeaderFile
 #define _StepVisual_ColourRgb_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_ColourRgb_HeaderFile
 #include <Handle_StepVisual_ColourRgb.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _StepVisual_ColourSpecification_HeaderFile
 #include <StepVisual_ColourSpecification.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class TCollection_HAsciiString;
 
 
 
-class StepVisual_ColourRgb : public StepVisual_ColourSpecification {
+class StepVisual_ColourRgb : public StepVisual_ColourSpecification
+{
 
 public:
 
-  //! Returns a ColourRgb <br>
-  Standard_EXPORT   StepVisual_ColourRgb();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a ColourRgb
+  Standard_EXPORT StepVisual_ColourRgb();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Standard_Real aRed,const Standard_Real aGreen,const Standard_Real aBlue) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetRed(const Standard_Real aRed) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Standard_Real aRed, const Standard_Real aGreen, const Standard_Real aBlue) ;
   
-  Standard_EXPORT     Standard_Real Red() const;
+  Standard_EXPORT   void SetRed (const Standard_Real aRed) ;
   
-  Standard_EXPORT     void SetGreen(const Standard_Real aGreen) ;
+  Standard_EXPORT   Standard_Real Red()  const;
   
-  Standard_EXPORT     Standard_Real Green() const;
+  Standard_EXPORT   void SetGreen (const Standard_Real aGreen) ;
   
-  Standard_EXPORT     void SetBlue(const Standard_Real aBlue) ;
+  Standard_EXPORT   Standard_Real Green()  const;
   
-  Standard_EXPORT     Standard_Real Blue() const;
+  Standard_EXPORT   void SetBlue (const Standard_Real aBlue) ;
+  
+  Standard_EXPORT   Standard_Real Blue()  const;
 
 
 
@@ -65,9 +55,9 @@ protected:
 private: 
 
 
-Standard_Real red;
-Standard_Real green;
-Standard_Real blue;
+  Standard_Real red;
+  Standard_Real green;
+  Standard_Real blue;
 
 
 };
@@ -76,7 +66,6 @@ Standard_Real blue;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_ColourRgb_HeaderFile

@@ -6,28 +6,14 @@
 #ifndef _StepToTopoDS_TranslateVertexLoop_HeaderFile
 #define _StepToTopoDS_TranslateVertexLoop_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepToTopoDS_TranslateVertexLoopError_HeaderFile
 #include <StepToTopoDS_TranslateVertexLoopError.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _StepToTopoDS_Root_HeaderFile
 #include <StepToTopoDS_Root.hxx>
-#endif
-#ifndef _Handle_StepShape_VertexLoop_HeaderFile
 #include <Handle_StepShape_VertexLoop.hxx>
-#endif
 class StdFail_NotDone;
 class StepShape_VertexLoop;
 class StepToTopoDS_Tool;
@@ -36,23 +22,22 @@ class TopoDS_Shape;
 
 
 
-//! <br>
-class StepToTopoDS_TranslateVertexLoop  : public StepToTopoDS_Root {
+class StepToTopoDS_TranslateVertexLoop  : public StepToTopoDS_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepToTopoDS_TranslateVertexLoop();
+  Standard_EXPORT StepToTopoDS_TranslateVertexLoop();
   
-  Standard_EXPORT   StepToTopoDS_TranslateVertexLoop(const Handle(StepShape_VertexLoop)& VL,StepToTopoDS_Tool& T,StepToTopoDS_NMTool& NMTool);
+  Standard_EXPORT StepToTopoDS_TranslateVertexLoop(const Handle(StepShape_VertexLoop)& VL, StepToTopoDS_Tool& T, StepToTopoDS_NMTool& NMTool);
   
-  Standard_EXPORT     void Init(const Handle(StepShape_VertexLoop)& VL,StepToTopoDS_Tool& T,StepToTopoDS_NMTool& NMTool) ;
+  Standard_EXPORT   void Init (const Handle(StepShape_VertexLoop)& VL, StepToTopoDS_Tool& T, StepToTopoDS_NMTool& NMTool) ;
   
-  Standard_EXPORT    const TopoDS_Shape& Value() const;
+  Standard_EXPORT  const  TopoDS_Shape& Value()  const;
   
-  Standard_EXPORT     StepToTopoDS_TranslateVertexLoopError Error() const;
-
+  Standard_EXPORT   StepToTopoDS_TranslateVertexLoopError Error()  const;
 
 
 
@@ -67,8 +52,8 @@ private:
 
 
 
-StepToTopoDS_TranslateVertexLoopError myError;
-TopoDS_Shape myResult;
+  StepToTopoDS_TranslateVertexLoopError myError;
+  TopoDS_Shape myResult;
 
 
 };
@@ -77,7 +62,6 @@ TopoDS_Shape myResult;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToTopoDS_TranslateVertexLoop_HeaderFile

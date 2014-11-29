@@ -1,6 +1,2 @@
-#ifndef _TColgp_HArray1OfVec_HeaderFile
 #include <TColgp_HArray1OfVec.hxx>
-#endif
-#ifndef _Vrml_Normal_HeaderFile
 #include <Vrml_Normal.hxx>
-#endif

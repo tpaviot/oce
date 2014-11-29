@@ -6,31 +6,15 @@
 #ifndef _BRepLib_MakeWire_HeaderFile
 #define _BRepLib_MakeWire_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepLib_WireError_HeaderFile
 #include <BRepLib_WireError.hxx>
-#endif
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _TopoDS_Vertex_HeaderFile
 #include <TopoDS_Vertex.hxx>
-#endif
-#ifndef _TopTools_MapOfShape_HeaderFile
 #include <TopTools_MapOfShape.hxx>
-#endif
-#ifndef _BRepLib_MakeShape_HeaderFile
 #include <BRepLib_MakeShape.hxx>
-#endif
 class StdFail_NotDone;
 class TopoDS_Edge;
 class TopoDS_Wire;
@@ -38,89 +22,98 @@ class TopTools_ListOfShape;
 class TopoDS_Vertex;
 
 
-//! Provides methods to build wires. <br>
-//! <br>
-//!          A wire may be built : <br>
-//! <br>
-//!          * From a single edge. <br>
-//! <br>
-//!          * From a wire and an edge. <br>
-//! <br>
-//!            - A new wire  is created with the edges  of  the <br>
-//!            wire + the edge. <br>
-//! <br>
-//!            - If the edge is not connnected  to the wire the <br>
-//!            flag NotDone   is set and  the  method Wire will <br>
-//!            raise an error. <br>
-//! <br>
-//!            - The connection may be : <br>
-//! <br>
-//!              . Through an existing vertex. The edge is shared. <br>
-//! <br>
-//!              . Through a geometric coincidence of vertices. <br>
-//!              The edge is  copied  and the vertices from the <br>
-//!              edge are  replaced  by  the vertices from  the <br>
-//!              wire. <br>
-//! <br>
-//!              . The new edge and the connection vertices are <br>
-//!              kept by the algorithm. <br>
-//! <br>
-//! <br>
-//!          * From 2, 3, 4 edges. <br>
-//! <br>
-//!              - A wire is  created from  the first edge, the <br>
-//!              following edges are added. <br>
-//! <br>
-//!          * From many edges. <br>
-//! <br>
-//!              - The following syntax may be used : <br>
-//! <br>
-//!                BRepLib_MakeWire MW; <br>
-//! <br>
-//!                  // for all the edges ... <br>
-//!                  MW.Add(anEdge); <br>
-//! <br>
-//!                TopoDS_Wire W = MW; <br>
-class BRepLib_MakeWire  : public BRepLib_MakeShape {
+//! Provides methods to build wires.
+//!
+//! A wire may be built :
+//!
+//! * From a single edge.
+//!
+//! * From a wire and an edge.
+//!
+//! - A new wire  is created with the edges  of  the
+//! wire + the edge.
+//!
+//! - If the edge is not connnected  to the wire the
+//! flag NotDone   is set and  the  method Wire will
+//! raise an error.
+//!
+//! - The connection may be :
+//!
+//! . Through an existing vertex. The edge is shared.
+//!
+//! . Through a geometric coincidence of vertices.
+//! The edge is  copied  and the vertices from the
+//! edge are  replaced  by  the vertices from  the
+//! wire.
+//!
+//! . The new edge and the connection vertices are
+//! kept by the algorithm.
+//!
+//! * From 2, 3, 4 edges.
+//!
+//! - A wire is  created from  the first edge, the
+//! following edges are added.
+//!
+//! * From many edges.
+//!
+//! - The following syntax may be used :
+//!
+//! BRepLib_MakeWire MW;
+//!
+//! // for all the edges ...
+//! MW.Add(anEdge);
+//!
+//! TopoDS_Wire W = MW;
+class BRepLib_MakeWire  : public BRepLib_MakeShape
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! NotDone MakeWire. <br>
-  Standard_EXPORT   BRepLib_MakeWire();
-  //! Make a Wire from an edge. <br>
-  Standard_EXPORT   BRepLib_MakeWire(const TopoDS_Edge& E);
-  //! Make a Wire from two edges. <br>
-  Standard_EXPORT   BRepLib_MakeWire(const TopoDS_Edge& E1,const TopoDS_Edge& E2);
-  //! Make a Wire from three edges. <br>
-  Standard_EXPORT   BRepLib_MakeWire(const TopoDS_Edge& E1,const TopoDS_Edge& E2,const TopoDS_Edge& E3);
-  //! Make a Wire from four edges. <br>
-  Standard_EXPORT   BRepLib_MakeWire(const TopoDS_Edge& E1,const TopoDS_Edge& E2,const TopoDS_Edge& E3,const TopoDS_Edge& E4);
-  //! Make a Wire from a Wire. Usefull for adding later. <br>
-  Standard_EXPORT   BRepLib_MakeWire(const TopoDS_Wire& W);
-  //! Add an edge to a wire. <br>
-  Standard_EXPORT   BRepLib_MakeWire(const TopoDS_Wire& W,const TopoDS_Edge& E);
-  //! Add the edge <E> to the current wire. <br>
-  Standard_EXPORT     void Add(const TopoDS_Edge& E) ;
-  //! Add the edges of <W> to the current wire. <br>
-  Standard_EXPORT     void Add(const TopoDS_Wire& W) ;
-  //! Add the edges of <L> to the current wire. <br>
-//!          The edges are not to be consecutive.  But they are <br>
-//!          to be all connected geometrically or topologically. <br>
-  Standard_EXPORT     void Add(const TopTools_ListOfShape& L) ;
   
-  Standard_EXPORT     BRepLib_WireError Error() const;
-  //! Returns the new wire. <br>
-//! <br>
-  Standard_EXPORT    const TopoDS_Wire& Wire() const;
+  //! NotDone MakeWire.
+  Standard_EXPORT BRepLib_MakeWire();
+  
+  //! Make a Wire from an edge.
+  Standard_EXPORT BRepLib_MakeWire(const TopoDS_Edge& E);
+  
+  //! Make a Wire from two edges.
+  Standard_EXPORT BRepLib_MakeWire(const TopoDS_Edge& E1, const TopoDS_Edge& E2);
+  
+  //! Make a Wire from three edges.
+  Standard_EXPORT BRepLib_MakeWire(const TopoDS_Edge& E1, const TopoDS_Edge& E2, const TopoDS_Edge& E3);
+  
+  //! Make a Wire from four edges.
+  Standard_EXPORT BRepLib_MakeWire(const TopoDS_Edge& E1, const TopoDS_Edge& E2, const TopoDS_Edge& E3, const TopoDS_Edge& E4);
+  
+  //! Make a Wire from a Wire. Usefull for adding later.
+  Standard_EXPORT BRepLib_MakeWire(const TopoDS_Wire& W);
+  
+  //! Add an edge to a wire.
+  Standard_EXPORT BRepLib_MakeWire(const TopoDS_Wire& W, const TopoDS_Edge& E);
+  
+  //! Add the edge <E> to the current wire.
+  Standard_EXPORT   void Add (const TopoDS_Edge& E) ;
+  
+  //! Add the edges of <W> to the current wire.
+  Standard_EXPORT   void Add (const TopoDS_Wire& W) ;
+  
+  //! Add the edges of <L> to the current wire.
+  //! The edges are not to be consecutive.  But they are
+  //! to be all connected geometrically or topologically.
+  Standard_EXPORT   void Add (const TopTools_ListOfShape& L) ;
+  
+  Standard_EXPORT   BRepLib_WireError Error()  const;
+  
+  //! Returns the new wire.
+  Standard_EXPORT  const  TopoDS_Wire& Wire()  const;
 Standard_EXPORT operator TopoDS_Wire() const;
-  //! Returns the last edge added to the wire. <br>
-//! <br>
-  Standard_EXPORT    const TopoDS_Edge& Edge() const;
-  //! Returns the last connecting vertex. <br>
-//! <br>
-  Standard_EXPORT    const TopoDS_Vertex& Vertex() const;
-
+  
+  //! Returns the last edge added to the wire.
+  Standard_EXPORT  const  TopoDS_Edge& Edge()  const;
+  
+  //! Returns the last connecting vertex.
+  Standard_EXPORT  const  TopoDS_Vertex& Vertex()  const;
 
 
 
@@ -135,13 +128,13 @@ private:
 
 
 
-BRepLib_WireError myError;
-TopoDS_Edge myEdge;
-TopoDS_Vertex myVertex;
-TopTools_MapOfShape myVertices;
-TopoDS_Vertex FirstVertex;
-TopoDS_Vertex VF;
-TopoDS_Vertex VL;
+  BRepLib_WireError myError;
+  TopoDS_Edge myEdge;
+  TopoDS_Vertex myVertex;
+  TopTools_MapOfShape myVertices;
+  TopoDS_Vertex FirstVertex;
+  TopoDS_Vertex VF;
+  TopoDS_Vertex VL;
 
 
 };
@@ -150,7 +143,6 @@ TopoDS_Vertex VL;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepLib_MakeWire_HeaderFile

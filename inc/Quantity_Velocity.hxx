@@ -6,13 +6,11 @@
 #ifndef _Quantity_Velocity_HeaderFile
 #define _Quantity_Velocity_HeaderFile
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 
 typedef Standard_Real Quantity_Velocity;
 
 
 #define Quantity_Velocity_Type_() Standard_Real_Type_()
 
-#endif
+#endif // _Quantity_Velocity_HeaderFile

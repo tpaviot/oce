@@ -6,22 +6,15 @@
 #ifndef _Handle_StepRepr_AssemblyComponentUsage_HeaderFile
 #define _Handle_StepRepr_AssemblyComponentUsage_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepRepr_ProductDefinitionUsage_HeaderFile
 #include <Handle_StepRepr_ProductDefinitionUsage.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepRepr_ProductDefinitionUsage);
 class StepRepr_AssemblyComponentUsage;
 
-DEFINE_STANDARD_HANDLE(StepRepr_AssemblyComponentUsage,StepRepr_ProductDefinitionUsage)
+DEFINE_STANDARD_HANDLE(StepRepr_AssemblyComponentUsage, StepRepr_ProductDefinitionUsage)
 
-#endif
+#endif // _Handle_StepRepr_AssemblyComponentUsage_HeaderFile

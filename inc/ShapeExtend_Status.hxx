@@ -6,46 +6,49 @@
 #ifndef _ShapeExtend_Status_HeaderFile
 #define _ShapeExtend_Status_HeaderFile
 
-//! This enumeration is used in <br>
-//! ShapeHealing toolkit for representing flags in the <br>
-//! return statuses of class methods. <br>
-//! The status is a field of the class which is set by one or <br>
-//! several methods of that class. <br>
-//! It is used for reporting about errors and other situations <br>
-//! encountered during execution of the method. <br>
-//! There are defined 8 values for DONE and 8 for FAIL flags: <br>
-//!      ShapeExtend_DONE1 ...      ShapeExtend_DONE8, <br>
-//!      ShapeExtend_FAIL1 ...      ShapeExtend_FAIL8 <br>
-//! and also enumerations for representing combinations of flags: <br>
-//!      ShapeExtend_OK - no flags at all, <br>
-//!      ShapeExtend_DONE - any of flags DONEi, <br>
-//!      ShapeExtend_FAIL - any of flags FAILi. <br>
-//! The class that uses statuses provides a method(s) which <br>
-//! answers whether the flag corresponding to a given <br>
-//! enumerative value is (are) set: <br>
-//! Standard_Boolean Status(const ShapeExtend_Status test); <br>
-//! Note that status can have several flags set simultaneously. <br>
-//! Status(ShapeExtend_OK) gives True when no flags are set. <br>
-//!  Nothing done, everything OK <br>
-//!  Something was done, case 1 <br>
-//!  Something was done, case 2 <br>
-//!  Something was done, case 3 <br>
-//!  Something was done, case 4 <br>
-//!  Something was done, case 5 <br>
-//!  Something was done, case 6 <br>
-//!  Something was done, case 7 <br>
-//!  Something was done, case 8 <br>
-//!  Something was done (any of DONE#) <br>
-//!  The method failed, case 1 <br>
-//!  The method failed, case 2 <br>
-//!  The method failed, case 3 <br>
-//!  The method failed, case 4 <br>
-//!  The method failed, case 5 <br>
-//!  The method failed, case 6 <br>
-//!  The method failed, case 7 <br>
-//!  The method failed, case 8 <br>
-//!  The mathod failed (any of FAIL# occured) <br>
-enum ShapeExtend_Status {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! This enumeration is used in
+//! ShapeHealing toolkit for representing flags in the
+//! return statuses of class methods.
+//! The status is a field of the class which is set by one or
+//! several methods of that class.
+//! It is used for reporting about errors and other situations
+//! encountered during execution of the method.
+//! There are defined 8 values for DONE and 8 for FAIL flags:
+//! ShapeExtend_DONE1 ...      ShapeExtend_DONE8,
+//! ShapeExtend_FAIL1 ...      ShapeExtend_FAIL8
+//! and also enumerations for representing combinations of flags:
+//! ShapeExtend_OK - no flags at all,
+//! ShapeExtend_DONE - any of flags DONEi,
+//! ShapeExtend_FAIL - any of flags FAILi.
+//! The class that uses statuses provides a method(s) which
+//! answers whether the flag corresponding to a given
+//! enumerative value is (are) set:
+//! Standard_Boolean Status(const ShapeExtend_Status test);
+//! Note that status can have several flags set simultaneously.
+//! Status(ShapeExtend_OK) gives True when no flags are set.
+//! Nothing done, everything OK
+//! Something was done, case 1
+//! Something was done, case 2
+//! Something was done, case 3
+//! Something was done, case 4
+//! Something was done, case 5
+//! Something was done, case 6
+//! Something was done, case 7
+//! Something was done, case 8
+//! Something was done (any of DONE#)
+//! The method failed, case 1
+//! The method failed, case 2
+//! The method failed, case 3
+//! The method failed, case 4
+//! The method failed, case 5
+//! The method failed, case 6
+//! The method failed, case 7
+//! The method failed, case 8
+//! The mathod failed (any of FAIL# occured)
+enum ShapeExtend_Status
+{
 ShapeExtend_OK,
 ShapeExtend_DONE1,
 ShapeExtend_DONE2,
@@ -67,8 +70,4 @@ ShapeExtend_FAIL8,
 ShapeExtend_FAIL
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _ShapeExtend_Status_HeaderFile

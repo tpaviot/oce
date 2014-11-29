@@ -6,22 +6,15 @@
 #ifndef _Handle_ShapeProcess_ShapeContext_HeaderFile
 #define _Handle_ShapeProcess_ShapeContext_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_ShapeProcess_Context_HeaderFile
 #include <Handle_ShapeProcess_Context.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(ShapeProcess_Context);
 class ShapeProcess_ShapeContext;
 
-DEFINE_STANDARD_HANDLE(ShapeProcess_ShapeContext,ShapeProcess_Context)
+DEFINE_STANDARD_HANDLE(ShapeProcess_ShapeContext, ShapeProcess_Context)
 
-#endif
+#endif // _Handle_ShapeProcess_ShapeContext_HeaderFile

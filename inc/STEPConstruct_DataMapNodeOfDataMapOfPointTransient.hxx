@@ -6,28 +6,14 @@
 #ifndef _STEPConstruct_DataMapNodeOfDataMapOfPointTransient_HeaderFile
 #define _STEPConstruct_DataMapNodeOfDataMapOfPointTransient_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_STEPConstruct_DataMapNodeOfDataMapOfPointTransient_HeaderFile
 #include <Handle_STEPConstruct_DataMapNodeOfDataMapOfPointTransient.hxx>
-#endif
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Standard_Transient;
 class gp_Pnt;
 class STEPConstruct_PointHasher;
@@ -36,16 +22,17 @@ class STEPConstruct_DataMapIteratorOfDataMapOfPointTransient;
 
 
 
-class STEPConstruct_DataMapNodeOfDataMapOfPointTransient : public TCollection_MapNode {
+class STEPConstruct_DataMapNodeOfDataMapOfPointTransient : public TCollection_MapNode
+{
 
 public:
 
   
-      STEPConstruct_DataMapNodeOfDataMapOfPointTransient(const gp_Pnt& K,const Handle(Standard_Transient)& I,const TCollection_MapNodePtr& n);
+    STEPConstruct_DataMapNodeOfDataMapOfPointTransient(const gp_Pnt& K, const Handle(Standard_Transient)& I, const TCollection_MapNodePtr& n);
   
-        gp_Pnt& Key() const;
+      gp_Pnt& Key()  const;
   
-        Handle_Standard_Transient& Value() const;
+      Handle(Standard_Transient)& Value()  const;
 
 
 
@@ -60,15 +47,15 @@ protected:
 private: 
 
 
-gp_Pnt myKey;
-Handle_Standard_Transient myValue;
+  gp_Pnt myKey;
+  Handle(Standard_Transient) myValue;
 
 
 };
 
 #define TheKey gp_Pnt
 #define TheKey_hxx <gp_Pnt.hxx>
-#define TheItem Handle_Standard_Transient
+#define TheItem Handle(Standard_Transient)
 #define TheItem_hxx <Standard_Transient.hxx>
 #define Hasher STEPConstruct_PointHasher
 #define Hasher_hxx <STEPConstruct_PointHasher.hxx>
@@ -99,7 +86,6 @@ Handle_Standard_Transient myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPConstruct_DataMapNodeOfDataMapOfPointTransient_HeaderFile

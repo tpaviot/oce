@@ -6,55 +6,23 @@
 #ifndef _IntCurvesFace_Intersector_HeaderFile
 #define _IntCurvesFace_Intersector_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_BRepTopAdaptor_TopolTool_HeaderFile
 #include <Handle_BRepTopAdaptor_TopolTool.hxx>
-#endif
-#ifndef _Handle_BRepAdaptor_HSurface_HeaderFile
 #include <Handle_BRepAdaptor_HSurface.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _IntCurveSurface_SequenceOfPnt_HeaderFile
 #include <IntCurveSurface_SequenceOfPnt.hxx>
-#endif
-#ifndef _TColStd_SequenceOfInteger_HeaderFile
 #include <TColStd_SequenceOfInteger.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HCurve_HeaderFile
 #include <Handle_Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _GeomAbs_SurfaceType_HeaderFile
 #include <GeomAbs_SurfaceType.hxx>
-#endif
-#ifndef _IntCurveSurface_TransitionOnCurve_HeaderFile
 #include <IntCurveSurface_TransitionOnCurve.hxx>
-#endif
-#ifndef _TopAbs_State_HeaderFile
 #include <TopAbs_State.hxx>
-#endif
 class BRepTopAdaptor_TopolTool;
 class BRepAdaptor_HSurface;
 class TopoDS_Face;
@@ -67,71 +35,82 @@ class Bnd_Box;
 
 
 
-class IntCurvesFace_Intersector  {
+class IntCurvesFace_Intersector 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Load a Face. <br>
-//! <br>
-//!          The Tolerance <Tol> is used to determine if the <br>
-//!          first point of the segment is near the face. In <br>
-//!          that case, the parameter of the intersection point <br>
-//!          on the line can be a negative value (greater than -Tol). <br>
-  Standard_EXPORT   IntCurvesFace_Intersector(const TopoDS_Face& F,const Standard_Real aTol);
-  //! Perform the intersection between the <br>
-//!          segment L and the loaded face. <br>
-//! <br>
-//!          PInf is the smallest parameter on the line <br>
-//!          PSup is the highest  parmaeter on the line <br>
-//! <br>
-//!          For an infinite line PInf and PSup can be <br>
-//!          +/- RealLast. <br>
-  Standard_EXPORT     void Perform(const gp_Lin& L,const Standard_Real PInf,const Standard_Real PSup) ;
-  //! same method for a HCurve from Adaptor3d. <br>
-//!           PInf an PSup can also be - and + INF. <br>
-  Standard_EXPORT     void Perform(const Handle(Adaptor3d_HCurve)& HCu,const Standard_Real PInf,const Standard_Real PSup) ;
-  //! Return the surface type <br>
-  Standard_EXPORT     GeomAbs_SurfaceType SurfaceType() const;
-  //! True is returned when the intersection have been computed. <br>
-        Standard_Boolean IsDone() const;
   
-        Standard_Integer NbPnt() const;
-  //! Returns the U parameter of the ith intersection point <br>
-//!          on the surface. <br>
-        Standard_Real UParameter(const Standard_Integer I) const;
-  //! Returns the V parameter of the ith intersection point <br>
-//!          on the surface. <br>
-        Standard_Real VParameter(const Standard_Integer I) const;
-  //! Returns the parameter of the ith intersection point <br>
-//!          on the line. <br>
-        Standard_Real WParameter(const Standard_Integer I) const;
-  //! Returns the geometric point of the ith intersection <br>
-//!          between the line and the surface. <br>
-       const gp_Pnt& Pnt(const Standard_Integer I) const;
-  //! Returns the ith transition of the line on the surface. <br>
-        IntCurveSurface_TransitionOnCurve Transition(const Standard_Integer I) const;
-  //! Returns the ith state of the point on the face. <br>
-//!          The values can be either TopAbs_IN <br>
-//!             ( the point is in the face) <br>
-//!           or TopAbs_ON <br>
-//!             ( the point is on a boudary of the face). <br>
-        TopAbs_State State(const Standard_Integer I) const;
-  //! Returns the significant face used to determine <br>
-//!          the intersection. <br>
-//! <br>
-       const TopoDS_Face& Face() const;
+  //! Load a Face.
+  //!
+  //! The Tolerance <Tol> is used to determine if the
+  //! first point of the segment is near the face. In
+  //! that case, the parameter of the intersection point
+  //! on the line can be a negative value (greater than -Tol).
+  Standard_EXPORT IntCurvesFace_Intersector(const TopoDS_Face& F, const Standard_Real aTol);
   
-  Standard_EXPORT     TopAbs_State ClassifyUVPoint(const gp_Pnt2d& Puv) const;
+  //! Perform the intersection between the
+  //! segment L and the loaded face.
+  //!
+  //! PInf is the smallest parameter on the line
+  //! PSup is the highest  parmaeter on the line
+  //!
+  //! For an infinite line PInf and PSup can be
+  //! +/- RealLast.
+  Standard_EXPORT   void Perform (const gp_Lin& L, const Standard_Real PInf, const Standard_Real PSup) ;
   
-  Standard_EXPORT     Bnd_Box Bounding() const;
+  //! same method for a HCurve from Adaptor3d.
+  //! PInf an PSup can also be - and + INF.
+  Standard_EXPORT   void Perform (const Handle(Adaptor3d_HCurve)& HCu, const Standard_Real PInf, const Standard_Real PSup) ;
   
-  Standard_EXPORT     void Destroy() ;
+  //! Return the surface type
+  Standard_EXPORT   GeomAbs_SurfaceType SurfaceType()  const;
+  
+  //! True is returned when the intersection have been computed.
+      Standard_Boolean IsDone()  const;
+  
+      Standard_Integer NbPnt()  const;
+  
+  //! Returns the U parameter of the ith intersection point
+  //! on the surface.
+      Standard_Real UParameter (const Standard_Integer I)  const;
+  
+  //! Returns the V parameter of the ith intersection point
+  //! on the surface.
+      Standard_Real VParameter (const Standard_Integer I)  const;
+  
+  //! Returns the parameter of the ith intersection point
+  //! on the line.
+      Standard_Real WParameter (const Standard_Integer I)  const;
+  
+  //! Returns the geometric point of the ith intersection
+  //! between the line and the surface.
+     const  gp_Pnt& Pnt (const Standard_Integer I)  const;
+  
+  //! Returns the ith transition of the line on the surface.
+      IntCurveSurface_TransitionOnCurve Transition (const Standard_Integer I)  const;
+  
+  //! Returns the ith state of the point on the face.
+  //! The values can be either TopAbs_IN
+  //! ( the point is in the face)
+  //! or TopAbs_ON
+  //! ( the point is on a boudary of the face).
+      TopAbs_State State (const Standard_Integer I)  const;
+  
+  //! Returns the significant face used to determine
+  //! the intersection.
+     const  TopoDS_Face& Face()  const;
+  
+  Standard_EXPORT   TopAbs_State ClassifyUVPoint (const gp_Pnt2d& Puv)  const;
+  
+  Standard_EXPORT   Bnd_Box Bounding()  const;
+  
+  Standard_EXPORT   void Destroy() ;
 ~IntCurvesFace_Intersector()
 {
   Destroy();
 }
-
 
 
 
@@ -145,19 +124,19 @@ protected:
 private:
 
   
-  Standard_EXPORT     void InternalCall(const IntCurveSurface_HInter& HICS,const Standard_Real pinf,const Standard_Real psup) ;
+  Standard_EXPORT   void InternalCall (const IntCurveSurface_HInter& HICS, const Standard_Real pinf, const Standard_Real psup) ;
 
 
-Handle_BRepTopAdaptor_TopolTool myTopolTool;
-Handle_BRepAdaptor_HSurface Hsurface;
-Standard_Real Tol;
-IntCurveSurface_SequenceOfPnt SeqPnt;
-TColStd_SequenceOfInteger mySeqState;
-Standard_Boolean done;
-Standard_Integer nbpnt;
-TopoDS_Face face;
-Standard_Address PtrOnPolyhedron;
-Standard_Address PtrOnBndBounding;
+  Handle(BRepTopAdaptor_TopolTool) myTopolTool;
+  Handle(BRepAdaptor_HSurface) Hsurface;
+  Standard_Real Tol;
+  IntCurveSurface_SequenceOfPnt SeqPnt;
+  TColStd_SequenceOfInteger mySeqState;
+  Standard_Boolean done;
+  Standard_Integer nbpnt;
+  TopoDS_Face face;
+  Standard_Address PtrOnPolyhedron;
+  Standard_Address PtrOnBndBounding;
 
 
 };
@@ -167,7 +146,6 @@ Standard_Address PtrOnBndBounding;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntCurvesFace_Intersector_HeaderFile

@@ -5,16 +5,10 @@
 
 #include <ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _ShapeAnalysis_FreeBoundData_HeaderFile
 #include <ShapeAnalysis_FreeBoundData.hxx>
-#endif
-#ifndef _ShapeAnalysis_SequenceOfFreeBounds_HeaderFile
 #include <ShapeAnalysis_SequenceOfFreeBounds.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds,Standard_Tra
 IMPLEMENT_STANDARD_RTTI(ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds)
 
 
-#define SeqItem Handle_ShapeAnalysis_FreeBoundData
+#define SeqItem Handle(ShapeAnalysis_FreeBoundData)
 #define SeqItem_hxx <ShapeAnalysis_FreeBoundData.hxx>
 #define TCollection_SequenceNode ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds
 #define TCollection_SequenceNode_hxx <ShapeAnalysis_SequenceNodeOfSequenceOfFreeBounds.hxx>

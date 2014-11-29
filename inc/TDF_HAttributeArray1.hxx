@@ -6,28 +6,14 @@
 #ifndef _TDF_HAttributeArray1_HeaderFile
 #define _TDF_HAttributeArray1_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDF_HAttributeArray1_HeaderFile
 #include <Handle_TDF_HAttributeArray1.hxx>
-#endif
 
-#ifndef _TDF_AttributeArray1_HeaderFile
 #include <TDF_AttributeArray1.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class TDF_AttributeArray1;
 
 
 
-class TDF_HAttributeArray1 : public MMgt_TShared {
+class TDF_HAttributeArray1 : public MMgt_TShared
+{
 
 public:
 
   
-      TDF_HAttributeArray1(const Standard_Integer Low,const Standard_Integer Up);
+    TDF_HAttributeArray1(const Standard_Integer Low, const Standard_Integer Up);
   
-      TDF_HAttributeArray1(const Standard_Integer Low,const Standard_Integer Up,const Handle(TDF_Attribute)& V);
+    TDF_HAttributeArray1(const Standard_Integer Low, const Standard_Integer Up, const Handle(TDF_Attribute)& V);
   
-        void Init(const Handle(TDF_Attribute)& V) ;
+      void Init (const Handle(TDF_Attribute)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(TDF_Attribute)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(TDF_Attribute)& Value) ;
   
-       const Handle_TDF_Attribute& Value(const Standard_Integer Index) const;
+     const  Handle(TDF_Attribute)& Value (const Standard_Integer Index)  const;
   
-        Handle_TDF_Attribute& ChangeValue(const Standard_Integer Index) ;
+      Handle(TDF_Attribute)& ChangeValue (const Standard_Integer Index) ;
   
-       const TDF_AttributeArray1& Array1() const;
+     const  TDF_AttributeArray1& Array1()  const;
   
-        TDF_AttributeArray1& ChangeArray1() ;
+      TDF_AttributeArray1& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-TDF_AttributeArray1 myArray;
+  TDF_AttributeArray1 myArray;
 
 
 };
 
-#define ItemHArray1 Handle_TDF_Attribute
+#define ItemHArray1 Handle(TDF_Attribute)
 #define ItemHArray1_hxx <TDF_Attribute.hxx>
 #define TheArray1 TDF_AttributeArray1
 #define TheArray1_hxx <TDF_AttributeArray1.hxx>
@@ -103,7 +90,6 @@ TDF_AttributeArray1 myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_HAttributeArray1_HeaderFile

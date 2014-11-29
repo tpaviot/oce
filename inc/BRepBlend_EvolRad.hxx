@@ -6,13 +6,11 @@
 #ifndef _BRepBlend_EvolRad_HeaderFile
 #define _BRepBlend_EvolRad_HeaderFile
 
-#ifndef _BlendFunc_EvolRad_HeaderFile
 #include <BlendFunc_EvolRad.hxx>
-#endif
 
 typedef BlendFunc_EvolRad BRepBlend_EvolRad;
 
 
 #define BRepBlend_EvolRad_Type_() BlendFunc_EvolRad_Type_()
 
-#endif
+#endif // _BRepBlend_EvolRad_HeaderFile

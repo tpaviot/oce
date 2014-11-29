@@ -5,21 +5,11 @@
 
 #include <HLRAlgo_ListIteratorOfListOfBPoint.hxx>
 
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _HLRAlgo_ListOfBPoint_HeaderFile
 #include <HLRAlgo_ListOfBPoint.hxx>
-#endif
-#ifndef _HLRAlgo_BiPoint_HeaderFile
 #include <HLRAlgo_BiPoint.hxx>
-#endif
-#ifndef _HLRAlgo_ListNodeOfListOfBPoint_HeaderFile
 #include <HLRAlgo_ListNodeOfListOfBPoint.hxx>
-#endif
  
 
 #define Item HLRAlgo_BiPoint

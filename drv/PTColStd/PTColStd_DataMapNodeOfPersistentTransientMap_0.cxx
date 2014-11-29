@@ -5,25 +5,13 @@
 
 #include <PTColStd_DataMapNodeOfPersistentTransientMap.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _PTColStd_MapPersistentHasher_HeaderFile
 #include <PTColStd_MapPersistentHasher.hxx>
-#endif
-#ifndef _PTColStd_PersistentTransientMap_HeaderFile
 #include <PTColStd_PersistentTransientMap.hxx>
-#endif
-#ifndef _PTColStd_DataMapIteratorOfPersistentTransientMap_HeaderFile
 #include <PTColStd_DataMapIteratorOfPersistentTransientMap.hxx>
-#endif
 
  
 
@@ -42,9 +30,9 @@ IMPLEMENT_DOWNCAST(PTColStd_DataMapNodeOfPersistentTransientMap,Standard_Transie
 IMPLEMENT_STANDARD_RTTI(PTColStd_DataMapNodeOfPersistentTransientMap)
 
 
-#define TheKey Handle_Standard_Persistent
+#define TheKey Handle(Standard_Persistent)
 #define TheKey_hxx <Standard_Persistent.hxx>
-#define TheItem Handle_Standard_Transient
+#define TheItem Handle(Standard_Transient)
 #define TheItem_hxx <Standard_Transient.hxx>
 #define Hasher PTColStd_MapPersistentHasher
 #define Hasher_hxx <PTColStd_MapPersistentHasher.hxx>

@@ -1,9 +1,3 @@
-#ifndef _OSD_Path_HeaderFile
 #include <OSD_Path.hxx>
-#endif
-#ifndef _OSD_Protection_HeaderFile
 #include <OSD_Protection.hxx>
-#endif
-#ifndef _OSD_Directory_HeaderFile
 #include <OSD_Directory.hxx>
-#endif

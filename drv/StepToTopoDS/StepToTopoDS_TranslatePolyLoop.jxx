@@ -1,21 +1,7 @@
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _StepShape_PolyLoop_HeaderFile
 #include <StepShape_PolyLoop.hxx>
-#endif
-#ifndef _StepToTopoDS_Tool_HeaderFile
 #include <StepToTopoDS_Tool.hxx>
-#endif
-#ifndef _Geom_Surface_HeaderFile
 #include <Geom_Surface.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _StepToTopoDS_TranslatePolyLoop_HeaderFile
 #include <StepToTopoDS_TranslatePolyLoop.hxx>
-#endif

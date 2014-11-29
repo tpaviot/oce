@@ -1,15 +1,5 @@
-#ifndef _TColgp_HArray1OfPnt_HeaderFile
 #include <TColgp_HArray1OfPnt.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TColgp_Array1OfPnt_HeaderFile
 #include <TColgp_Array1OfPnt.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _TestTopOpeTools_Mesure_HeaderFile
 #include <TestTopOpeTools_Mesure.hxx>
-#endif

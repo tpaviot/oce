@@ -6,19 +6,11 @@
 #ifndef _IGESSolid_HeaderFile
 #define _IGESSolid_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_IGESSolid_Protocol_HeaderFile
 #include <Handle_IGESSolid_Protocol.hxx>
-#endif
 class IGESSolid_Protocol;
 class IGESSolid_Block;
 class IGESSolid_RightAngularWedge;
@@ -83,17 +75,19 @@ class IGESSolid_HArray1OfShell;
 class IGESSolid_HArray1OfVertexList;
 
 
-//! This package consists of B-Rep and CSG Solid entities <br>
-class IGESSolid  {
+//! This package consists of B-Rep and CSG Solid entities
+class IGESSolid 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Prepares dynamic data (Protocol, Modules) for this package <br>
-  Standard_EXPORT   static  void Init() ;
-  //! Returns the Protocol for this Package <br>
-  Standard_EXPORT   static  Handle_IGESSolid_Protocol Protocol() ;
-
+  
+  //! Prepares dynamic data (Protocol, Modules) for this package
+  Standard_EXPORT static   void Init() ;
+  
+  //! Returns the Protocol for this Package
+  Standard_EXPORT static   Handle(IGESSolid_Protocol) Protocol() ;
 
 
 
@@ -177,7 +171,6 @@ friend class IGESSolid_HArray1OfVertexList;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSolid_HeaderFile

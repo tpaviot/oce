@@ -1,9 +1,3 @@
-#ifndef _SelectMgr_Filter_HeaderFile
 #include <SelectMgr_Filter.hxx>
-#endif
-#ifndef _SelectMgr_ListOfFilter_HeaderFile
 #include <SelectMgr_ListOfFilter.hxx>
-#endif
-#ifndef _SelectMgr_CompositionFilter_HeaderFile
 #include <SelectMgr_CompositionFilter.hxx>
-#endif

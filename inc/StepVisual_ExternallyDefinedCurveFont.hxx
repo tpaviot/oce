@@ -6,28 +6,22 @@
 #ifndef _StepVisual_ExternallyDefinedCurveFont_HeaderFile
 #define _StepVisual_ExternallyDefinedCurveFont_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_ExternallyDefinedCurveFont_HeaderFile
 #include <Handle_StepVisual_ExternallyDefinedCurveFont.hxx>
-#endif
 
-#ifndef _StepBasic_ExternallyDefinedItem_HeaderFile
 #include <StepBasic_ExternallyDefinedItem.hxx>
-#endif
 
 
-//! Representation of STEP entity ExternallyDefinedCurveFont <br>
-class StepVisual_ExternallyDefinedCurveFont : public StepBasic_ExternallyDefinedItem {
+//! Representation of STEP entity ExternallyDefinedCurveFont
+class StepVisual_ExternallyDefinedCurveFont : public StepBasic_ExternallyDefinedItem
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepVisual_ExternallyDefinedCurveFont();
+  
+  //! Empty constructor
+  Standard_EXPORT StepVisual_ExternallyDefinedCurveFont();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_ExternallyDefinedCurveFont_HeaderFile

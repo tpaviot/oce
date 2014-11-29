@@ -5,21 +5,13 @@
 
 #include <Select3D_ListOfSensitive.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Select3D_ListIteratorOfListOfSensitive_HeaderFile
 #include <Select3D_ListIteratorOfListOfSensitive.hxx>
-#endif
-#ifndef _Select3D_SensitiveEntity_HeaderFile
 #include <Select3D_SensitiveEntity.hxx>
-#endif
-#ifndef _Select3D_ListNodeOfListOfSensitive_HeaderFile
 #include <Select3D_ListNodeOfListOfSensitive.hxx>
-#endif
  
 
-#define Item Handle_Select3D_SensitiveEntity
+#define Item Handle(Select3D_SensitiveEntity)
 #define Item_hxx <Select3D_SensitiveEntity.hxx>
 #define TCollection_ListNode Select3D_ListNodeOfListOfSensitive
 #define TCollection_ListNode_hxx <Select3D_ListNodeOfListOfSensitive.hxx>

@@ -6,28 +6,22 @@
 #ifndef _StepShape_CompoundShapeRepresentation_HeaderFile
 #define _StepShape_CompoundShapeRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_CompoundShapeRepresentation_HeaderFile
 #include <Handle_StepShape_CompoundShapeRepresentation.hxx>
-#endif
 
-#ifndef _StepShape_ShapeRepresentation_HeaderFile
 #include <StepShape_ShapeRepresentation.hxx>
-#endif
 
 
-//! Representation of STEP entity CompoundShapeRepresentation <br>
-class StepShape_CompoundShapeRepresentation : public StepShape_ShapeRepresentation {
+//! Representation of STEP entity CompoundShapeRepresentation
+class StepShape_CompoundShapeRepresentation : public StepShape_ShapeRepresentation
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepShape_CompoundShapeRepresentation();
+  
+  //! Empty constructor
+  Standard_EXPORT StepShape_CompoundShapeRepresentation();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_CompoundShapeRepresentation_HeaderFile

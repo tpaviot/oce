@@ -5,16 +5,10 @@
 
 #include <MeshVS_SequenceNodeOfSequenceOfPrsBuilder.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _MeshVS_PrsBuilder_HeaderFile
 #include <MeshVS_PrsBuilder.hxx>
-#endif
-#ifndef _MeshVS_SequenceOfPrsBuilder_HeaderFile
 #include <MeshVS_SequenceOfPrsBuilder.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(MeshVS_SequenceNodeOfSequenceOfPrsBuilder,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(MeshVS_SequenceNodeOfSequenceOfPrsBuilder)
 
 
-#define SeqItem Handle_MeshVS_PrsBuilder
+#define SeqItem Handle(MeshVS_PrsBuilder)
 #define SeqItem_hxx <MeshVS_PrsBuilder.hxx>
 #define TCollection_SequenceNode MeshVS_SequenceNodeOfSequenceOfPrsBuilder
 #define TCollection_SequenceNode_hxx <MeshVS_SequenceNodeOfSequenceOfPrsBuilder.hxx>

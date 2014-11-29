@@ -497,3 +497,73 @@ void gp_Trsf2d::PreMultiply (const gp_Trsf2d& T)
   }
 }
 
+//=======================================================================
+//function : SetValues
+//purpose  : 
+//=======================================================================
+void gp_Trsf2d::SetValues(const Standard_Real a11,
+                          const Standard_Real a12,
+                          const Standard_Real a13,
+                          const Standard_Real a21,
+                          const Standard_Real a22,
+                          const Standard_Real a23)
+{
+  gp_XY col1(a11,a21);
+  gp_XY col2(a12,a22);
+  gp_XY col3(a13,a23);
+  // compute the determinant
+  gp_Mat2d M(col1,col2);
+  Standard_Real s = M.Determinant();
+  Standard_Real As = s;
+  if (As < 0)
+    As = - As;
+  Standard_ConstructionError_Raise_if
+    (As < gp::Resolution(),"gp_Trsf2d::SetValues, null determinant");
+
+  if (s > 0)
+    s = sqrt(s);
+  else
+    s = sqrt(-s);
+  
+  M.Divide(s);
+
+  scale = s;
+  shape = gp_CompoundTrsf;
+
+  matrix = M;
+  Orthogonalize();
+  
+  loc = col3;
+}
+
+
+//=======================================================================
+//function : Orthogonalize
+//purpose  : 
+//=======================================================================
+void gp_Trsf2d::Orthogonalize()
+{
+  gp_Mat2d aTM(matrix);
+
+  gp_XY aV1 = aTM.Column(1);
+  gp_XY aV2 = aTM.Column(2);
+
+  aV1.Normalize();
+
+  aV2 -= aV1*(aV2.Dot(aV1));
+  aV2.Normalize();
+
+  aTM.SetCols(aV1, aV2);
+
+  aV1 = aTM.Row(1);
+  aV2 = aTM.Row(2);
+
+  aV1.Normalize();
+
+  aV2 -= aV1*(aV2.Dot(aV1));
+  aV2.Normalize();
+
+  aTM.SetRows(aV1, aV2);
+
+  matrix = aTM;
+}

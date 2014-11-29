@@ -6,102 +6,98 @@
 #ifndef _BOPDS_PassKey_HeaderFile
 #define _BOPDS_PassKey_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BOPCol_BaseAllocator_HeaderFile
 #include <BOPCol_BaseAllocator.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _BOPCol_PInteger_HeaderFile
 #include <BOPCol_PInteger.hxx>
-#endif
-#ifndef _BOPCol_ListOfInteger_HeaderFile
 #include <BOPCol_ListOfInteger.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 
 
 
-//!  The class BOPDS_PassKey is to provide <br>
-//!  possibility to map objects that <br>
-//!  have a set of integer IDs as a base <br>
-class BOPDS_PassKey  {
+//! The class BOPDS_PassKey is to provide
+//! possibility to map objects that
+//! have a set of integer IDs as a base
+class BOPDS_PassKey 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//! Empty contructor <br>
-//! <br>
-      BOPDS_PassKey();
+
+  //! Empty contructor
+    BOPDS_PassKey();
 virtual ~BOPDS_PassKey();
   
-//!  Contructor <br>
-//!  theAllocator - the allocator to manage the memory <br>
-//! <br>
-      BOPDS_PassKey(const BOPCol_BaseAllocator& theAllocator);
+
+  //! Contructor
+  //! theAllocator - the allocator to manage the memory
+    BOPDS_PassKey(const BOPCol_BaseAllocator& theAllocator);
   
-//!  Copy Contructor <br>
-      BOPDS_PassKey(const BOPDS_PassKey& Other);
+
+  //! Copy Contructor
+    BOPDS_PassKey(const BOPDS_PassKey& Other);
 BOPDS_PassKey& operator =(const BOPDS_PassKey& Other);
   
-//!  Clear the contents <br>
-        void Clear() ;
-  
-//! Modifier <br>
-//! Sets one Id <theI1> <br>
-        void SetIds(const Standard_Integer theI1) ;
-  
-//! Modifier <br>
-//! Sets two Id <theI1>,<theI2> <br>
-        void SetIds(const Standard_Integer theI1,const Standard_Integer theI2) ;
-  
-//! Modifier <br>
-//! Sets three Id <theI1>,<theI2>,<theI3> <br>
-        void SetIds(const Standard_Integer theI1,const Standard_Integer theI2,const Standard_Integer theI3) ;
-  
-//! Modifier <br>
-//! Sets four Id <theI1>,<theI2>,<theI3>,<theI4> <br>
-        void SetIds(const Standard_Integer theI1,const Standard_Integer theI2,const Standard_Integer theI3,const Standard_Integer theI4) ;
-  
-//! Modifier <br>
-//! Sets the list of Id <theLI> <br>
-  Standard_EXPORT     void SetIds(const BOPCol_ListOfInteger& theLI) ;
-  
-//! Selector <br>
-//! Returns the number of Ids> <br>
-        Standard_Integer NbIds() const;
-  
-//! Query <br>
-//! Returns true if the PassKey is equal to <the theOther> <br>
-        Standard_Boolean IsEqual(const BOPDS_PassKey& theOther) const;
-  
-//! Query <br>
-//! Returns hash  code <br>
-        Standard_Integer HashCode(const Standard_Integer theUpper) const;
-  
-//! Selector <br>
-//! Returns Id of index <theIndex> <br>
-        Standard_Integer Id(const Standard_Integer theIndex) const;
-  
-//! Selector <br>
-//! Returns the first two Ids <theI1>,<theI2> <br>
-        void Ids(Standard_Integer& theI1,Standard_Integer& theI2) const;
-  
-  Standard_EXPORT     void Dump(const Standard_Integer aHex = 0) const;
 
+  //! Clear the contents
+      void Clear() ;
+  
+
+  //! Modifier
+  //! Sets one Id <theI1>
+      void SetIds (const Standard_Integer theI1) ;
+  
+
+  //! Modifier
+  //! Sets two Id <theI1>,<theI2>
+      void SetIds (const Standard_Integer theI1, const Standard_Integer theI2) ;
+  
+
+  //! Modifier
+  //! Sets three Id <theI1>,<theI2>,<theI3>
+      void SetIds (const Standard_Integer theI1, const Standard_Integer theI2, const Standard_Integer theI3) ;
+  
+
+  //! Modifier
+  //! Sets four Id <theI1>,<theI2>,<theI3>,<theI4>
+      void SetIds (const Standard_Integer theI1, const Standard_Integer theI2, const Standard_Integer theI3, const Standard_Integer theI4) ;
+  
+
+  //! Modifier
+  //! Sets the list of Id <theLI>
+  Standard_EXPORT   void SetIds (const BOPCol_ListOfInteger& theLI) ;
+  
+
+  //! Selector
+  //! Returns the number of Ids>
+      Standard_Integer NbIds()  const;
+  
+
+  //! Query
+  //! Returns true if the PassKey is equal to <the theOther>
+      Standard_Boolean IsEqual (const BOPDS_PassKey& theOther)  const;
+  
+
+  //! Query
+  //! Returns hash  code
+      Standard_Integer HashCode (const Standard_Integer theUpper)  const;
+  
+
+  //! Selector
+  //! Returns Id of index <theIndex>
+      Standard_Integer Id (const Standard_Integer theIndex)  const;
+  
+
+  //! Selector
+  //! Returns the first two Ids <theI1>,<theI2>
+      void Ids (Standard_Integer& theI1, Standard_Integer& theI2)  const;
+  
+  Standard_EXPORT   void Dump (const Standard_Integer aHex = 0)  const;
 
 
 
@@ -109,13 +105,13 @@ BOPDS_PassKey& operator =(const BOPDS_PassKey& Other);
 protected:
 
   
-        BOPCol_PInteger Allocate(const Standard_Integer theSize) ;
+      BOPCol_PInteger Allocate (const Standard_Integer theSize) ;
 
 
-BOPCol_BaseAllocator myAllocator;
-Standard_Integer myNbIds;
-Standard_Integer mySum;
-BOPCol_PInteger myPtr;
+  BOPCol_BaseAllocator myAllocator;
+  Standard_Integer myNbIds;
+  Standard_Integer mySum;
+  BOPCol_PInteger myPtr;
 
 
 private:
@@ -131,7 +127,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BOPDS_PassKey_HeaderFile

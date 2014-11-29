@@ -6,28 +6,14 @@
 #ifndef _STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile_HeaderFile
 #define _STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile_HeaderFile
 #include <Handle_STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile.hxx>
-#endif
 
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _Handle_STEPCAFControl_ExternFile_HeaderFile
 #include <Handle_STEPCAFControl_ExternFile.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class STEPCAFControl_ExternFile;
 class TDF_Label;
 class TDF_LabelMapHasher;
@@ -36,16 +22,17 @@ class STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile;
 
 
 
-class STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile : public TCollection_MapNode {
+class STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile : public TCollection_MapNode
+{
 
 public:
 
   
-      STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile(const TDF_Label& K,const Handle(STEPCAFControl_ExternFile)& I,const TCollection_MapNodePtr& n);
+    STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile(const TDF_Label& K, const Handle(STEPCAFControl_ExternFile)& I, const TCollection_MapNodePtr& n);
   
-        TDF_Label& Key() const;
+      TDF_Label& Key()  const;
   
-        Handle_STEPCAFControl_ExternFile& Value() const;
+      Handle(STEPCAFControl_ExternFile)& Value()  const;
 
 
 
@@ -60,15 +47,15 @@ protected:
 private: 
 
 
-TDF_Label myKey;
-Handle_STEPCAFControl_ExternFile myValue;
+  TDF_Label myKey;
+  Handle(STEPCAFControl_ExternFile) myValue;
 
 
 };
 
 #define TheKey TDF_Label
 #define TheKey_hxx <TDF_Label.hxx>
-#define TheItem Handle_STEPCAFControl_ExternFile
+#define TheItem Handle(STEPCAFControl_ExternFile)
 #define TheItem_hxx <STEPCAFControl_ExternFile.hxx>
 #define Hasher TDF_LabelMapHasher
 #define Hasher_hxx <TDF_LabelMapHasher.hxx>
@@ -99,7 +86,6 @@ Handle_STEPCAFControl_ExternFile myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPCAFControl_DataMapNodeOfDataMapOfLabelExternFile_HeaderFile

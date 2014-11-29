@@ -6,43 +6,19 @@
 #ifndef _Interface_FileReaderTool_HeaderFile
 #define _Interface_FileReaderTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Interface_Protocol_HeaderFile
 #include <Handle_Interface_Protocol.hxx>
-#endif
-#ifndef _Handle_Interface_FileReaderData_HeaderFile
 #include <Handle_Interface_FileReaderData.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Handle_Message_Messenger_HeaderFile
 #include <Handle_Message_Messenger.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfTransient_HeaderFile
 #include <Handle_TColStd_HArray1OfTransient.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
 class Interface_Protocol;
 class Interface_FileReaderData;
 class Interface_InterfaceModel;
@@ -56,140 +32,163 @@ class Interface_GeneralLib;
 class Interface_ReaderLib;
 
 
-//! Defines services which are required to load an InterfaceModel <br>
-//!           from a File. Typically, it may firstly transform a system <br>
-//!           file into a FileReaderData object, then work on it, not longer <br>
-//!           considering file contents, to load an Interface Model. <br>
-//!           It may also work on a FileReaderData already loaded. <br>
-//! <br>
-//!           FileReaderTool provides, on one hand, some general services <br>
-//!           which are common to all read operations but can be redefined, <br>
-//!           plus general actions to be performed specifically for each <br>
-//!           Norm, as deferred methods to define. <br>
-//! <br>
-//!           In particular, FileReaderTool defines the Interface's Unknown <br>
-//!           and Error entities <br>
-class Interface_FileReaderTool  {
+//! Defines services which are required to load an InterfaceModel
+//! from a File. Typically, it may firstly transform a system
+//! file into a FileReaderData object, then work on it, not longer
+//! considering file contents, to load an Interface Model.
+//! It may also work on a FileReaderData already loaded.
+//!
+//! FileReaderTool provides, on one hand, some general services
+//! which are common to all read operations but can be redefined,
+//! plus general actions to be performed specifically for each
+//! Norm, as deferred methods to define.
+//!
+//! In particular, FileReaderTool defines the Interface's Unknown
+//! and Error entities
+class Interface_FileReaderTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Sets Data to a FileReaderData. Works with a Protocol <br>
-  Standard_EXPORT     void SetData(const Handle(Interface_FileReaderData)& reader,const Handle(Interface_Protocol)& protocol) ;
-  //! Returns the Protocol given at creation time <br>
-  Standard_EXPORT     Handle_Interface_Protocol Protocol() const;
-  //! Returns the FileReaderData which is used to work <br>
-  Standard_EXPORT     Handle_Interface_FileReaderData Data() const;
-  //! Stores a Model. Used when the Model has been loaded <br>
-  Standard_EXPORT     void SetModel(const Handle(Interface_InterfaceModel)& amodel) ;
-  //! Returns the stored Model <br>
-  Standard_EXPORT     Handle_Interface_InterfaceModel Model() const;
-  //! Sets Messenger used for outputting messages <br>
-  Standard_EXPORT     void SetMessenger(const Handle(Message_Messenger)& messenger) ;
-  //! Returns Messenger used for outputting messages. <br>
-//!           The returned object is guaranteed to be non-null; <br>
-//!           default is Message::Messenger(). <br>
-  Standard_EXPORT     Handle_Message_Messenger Messenger() const;
-  //! Sets trace level used for outputting messages <br>
-//!           - 0: no trace at all <br>
-//!           - 1: errors <br>
-//!           - 2: errors and warnings <br>
-//!           - 3: all messages <br>
-//!           Default is 1 : Errors traced <br>
-  Standard_EXPORT     void SetTraceLevel(const Standard_Integer tracelev) ;
-  //! Returns trace level used for outputting messages. <br>
-  Standard_EXPORT     Standard_Integer TraceLevel() const;
-  //! Allows controlling whether exception raisings are handled <br>
-//!           If err is False, they are not (hence, dbx can take control) <br>
-//!           If err is True, they are, and they are traced <br>
-//!           (by putting on messenger Entity's Number and file record num) <br>
-//!           Default given at Model's creation time is True <br>
-  Standard_EXPORT     void SetErrorHandle(const Standard_Boolean err) ;
-  //! Returns ErrorHandle flag <br>
-  Standard_EXPORT     Standard_Boolean ErrorHandle() const;
-  //! Fills records with empty entities; once done, each entity can <br>
-//!           ask the FileReaderTool for any entity referenced through an <br>
-//!           identifier. Calls Recognize which is specific to each specific <br>
-//!           type of FileReaderTool <br>
-  Standard_EXPORT     void SetEntities() ;
-  //! Recognizes a record, given its number. Specific to each <br>
-//!           Interface; called by SetEntities. It can call the basic method <br>
-//!           RecognizeByLib. <br>
-//!           Returns False if recognition has failed, True else. <br>
-//!           <ach> has not to be filled if simply Recognition has failed : <br>
-//!           it must record true error messages : RecognizeByLib can <br>
-//!           generate error messages if NewRead is called <br>
-//! <br>
-//!           Note that it works thru a Recognizer (method Evaluate) which <br>
-//!           has to be memorized before starting <br>
-  Standard_EXPORT   virtual  Standard_Boolean Recognize(const Standard_Integer num,Handle(Interface_Check)& ach,Handle(Standard_Transient)& ent)  = 0;
-  //! Recognizes a record with the help of Libraries. Can be used <br>
-//!           to implement the method Recognize. <br>
-//!           <rlib> is used to find Protocol and CaseNumber to apply <br>
-//!           <glib> performs the creation (by service NewVoid, or NewRead <br>
-//!             if NewVoid gave no result) <br>
-//!           <ach> is a check, which is transmitted to NewRead if it is <br>
-//!             called, gives a result but which is false <br>
-//!           <ent> is the result <br>
-//!           Returns False if recognition has failed, True else <br>
-  Standard_EXPORT     Standard_Boolean RecognizeByLib(const Standard_Integer num,Interface_GeneralLib& glib,Interface_ReaderLib& rlib,Handle(Interface_Check)& ach,Handle(Standard_Transient)& ent) const;
-  //! Provides an unknown entity, specific to the Interface <br>
-//!           called by SetEntities when Recognize has failed (Unknown alone) <br>
-//!           or by LoadModel when an Entity has caused a Fail on reading <br>
-//!           (to keep at least its literal description) <br>
-//!           Uses Protocol to do it <br>
-  Standard_EXPORT     Handle_Standard_Transient UnknownEntity() const;
-  //! Creates an empty Model of the norm. Uses Protocol to do it <br>
-  Standard_EXPORT     Handle_Interface_InterfaceModel NewModel() const;
-  //! Reads and fills Entities from the FileReaderData set by <br>
-//!           SetData to an InterfaceModel. <br>
-//!           It enchains required operations, the specific ones correspond <br>
-//!           to deferred methods (below) to be defined for each Norm. <br>
-//!           It manages also error recovery and trace. <br>
-//!           Remark : it calls SetModel. <br>
-//!           It Can raise any error which can occur during a load <br>
-//!           operation, unless Error Handling is set. <br>
-//!           This method can also be redefined if judged necessary. <br>
-  Standard_EXPORT     void LoadModel(const Handle(Interface_InterfaceModel)& amodel) ;
-  //! Reads, Fills and Returns one Entity read from a Record of the <br>
-//!           FileReaderData. This Method manages also case of Fail or <br>
-//!           Warning, by producing a ReportEntyty plus , for a Fail, a <br>
-//!           literal Content (as an UnknownEntity). Performs also Trace <br>
-  Standard_EXPORT     Handle_Standard_Transient LoadedEntity(const Standard_Integer num) ;
-  //! Fills model's header; each Interface defines for its Model its <br>
-//!           own file header; this method fills it from FileReaderTool.+ <br>
-//!           It is called by AnalyseFile from InterfaceModel <br>
-  Standard_EXPORT   virtual  void BeginRead(const Handle(Interface_InterfaceModel)& amodel)  = 0;
-  //! Fills an Entity, given record no; specific to each Interface, <br>
-//!           called by AnalyseFile from InterfaceModel (which manages its <br>
-//!           calling arguments) <br>
-//!           To work, each Interface can define a method in its proper <br>
-//!           Transient class, like this (given as an example) : <br>
-//!           AnalyseRecord (me  : mutable; FR     : in out FileReaderTool; <br>
-//!                          num : Integer; acheck : in out Check) <br>
-//!                              returns Boolean; <br>
-//!           and call it from AnalyseRecord <br>
-//! <br>
-//!           Returned Value : True if the entity could be loaded, False <br>
-//!             else (in case of syntactic fail) <br>
-  Standard_EXPORT   virtual  Standard_Boolean AnalyseRecord(const Standard_Integer num,const Handle(Standard_Transient)& anent,Handle(Interface_Check)& acheck)  = 0;
   
-  Standard_EXPORT   virtual  void Destroy() ;
+  //! Sets Data to a FileReaderData. Works with a Protocol
+  Standard_EXPORT   void SetData (const Handle(Interface_FileReaderData)& reader, const Handle(Interface_Protocol)& protocol) ;
+  
+  //! Returns the Protocol given at creation time
+  Standard_EXPORT   Handle(Interface_Protocol) Protocol()  const;
+  
+  //! Returns the FileReaderData which is used to work
+  Standard_EXPORT   Handle(Interface_FileReaderData) Data()  const;
+  
+  //! Stores a Model. Used when the Model has been loaded
+  Standard_EXPORT   void SetModel (const Handle(Interface_InterfaceModel)& amodel) ;
+  
+  //! Returns the stored Model
+  Standard_EXPORT   Handle(Interface_InterfaceModel) Model()  const;
+  
+  //! Sets Messenger used for outputting messages
+  Standard_EXPORT   void SetMessenger (const Handle(Message_Messenger)& messenger) ;
+  
+  //! Returns Messenger used for outputting messages.
+  //! The returned object is guaranteed to be non-null;
+  //! default is Message::Messenger().
+  Standard_EXPORT   Handle(Message_Messenger) Messenger()  const;
+  
+  //! Sets trace level used for outputting messages
+  //! - 0: no trace at all
+  //! - 1: errors
+  //! - 2: errors and warnings
+  //! - 3: all messages
+  //! Default is 1 : Errors traced
+  Standard_EXPORT   void SetTraceLevel (const Standard_Integer tracelev) ;
+  
+  //! Returns trace level used for outputting messages.
+  Standard_EXPORT   Standard_Integer TraceLevel()  const;
+  
+  //! Allows controlling whether exception raisings are handled
+  //! If err is False, they are not (hence, dbx can take control)
+  //! If err is True, they are, and they are traced
+  //! (by putting on messenger Entity's Number and file record num)
+  //! Default given at Model's creation time is True
+  Standard_EXPORT   void SetErrorHandle (const Standard_Boolean err) ;
+  
+  //! Returns ErrorHandle flag
+  Standard_EXPORT   Standard_Boolean ErrorHandle()  const;
+  
+  //! Fills records with empty entities; once done, each entity can
+  //! ask the FileReaderTool for any entity referenced through an
+  //! identifier. Calls Recognize which is specific to each specific
+  //! type of FileReaderTool
+  Standard_EXPORT   void SetEntities() ;
+  
+  //! Recognizes a record, given its number. Specific to each
+  //! Interface; called by SetEntities. It can call the basic method
+  //! RecognizeByLib.
+  //! Returns False if recognition has failed, True else.
+  //! <ach> has not to be filled if simply Recognition has failed :
+  //! it must record true error messages : RecognizeByLib can
+  //! generate error messages if NewRead is called
+  //!
+  //! Note that it works thru a Recognizer (method Evaluate) which
+  //! has to be memorized before starting
+  Standard_EXPORT virtual   Standard_Boolean Recognize (const Standard_Integer num, Handle(Interface_Check)& ach, Handle(Standard_Transient)& ent)  = 0;
+  
+  //! Recognizes a record with the help of Libraries. Can be used
+  //! to implement the method Recognize.
+  //! <rlib> is used to find Protocol and CaseNumber to apply
+  //! <glib> performs the creation (by service NewVoid, or NewRead
+  //! if NewVoid gave no result)
+  //! <ach> is a check, which is transmitted to NewRead if it is
+  //! called, gives a result but which is false
+  //! <ent> is the result
+  //! Returns False if recognition has failed, True else
+  Standard_EXPORT   Standard_Boolean RecognizeByLib (const Standard_Integer num, Interface_GeneralLib& glib, Interface_ReaderLib& rlib, Handle(Interface_Check)& ach, Handle(Standard_Transient)& ent)  const;
+  
+  //! Provides an unknown entity, specific to the Interface
+  //! called by SetEntities when Recognize has failed (Unknown alone)
+  //! or by LoadModel when an Entity has caused a Fail on reading
+  //! (to keep at least its literal description)
+  //! Uses Protocol to do it
+  Standard_EXPORT   Handle(Standard_Transient) UnknownEntity()  const;
+  
+  //! Creates an empty Model of the norm. Uses Protocol to do it
+  Standard_EXPORT   Handle(Interface_InterfaceModel) NewModel()  const;
+  
+  //! Reads and fills Entities from the FileReaderData set by
+  //! SetData to an InterfaceModel.
+  //! It enchains required operations, the specific ones correspond
+  //! to deferred methods (below) to be defined for each Norm.
+  //! It manages also error recovery and trace.
+  //! Remark : it calls SetModel.
+  //! It Can raise any error which can occur during a load
+  //! operation, unless Error Handling is set.
+  //! This method can also be redefined if judged necessary.
+  Standard_EXPORT   void LoadModel (const Handle(Interface_InterfaceModel)& amodel) ;
+  
+  //! Reads, Fills and Returns one Entity read from a Record of the
+  //! FileReaderData. This Method manages also case of Fail or
+  //! Warning, by producing a ReportEntyty plus , for a Fail, a
+  //! literal Content (as an UnknownEntity). Performs also Trace
+  Standard_EXPORT   Handle(Standard_Transient) LoadedEntity (const Standard_Integer num) ;
+  
+  //! Fills model's header; each Interface defines for its Model its
+  //! own file header; this method fills it from FileReaderTool.+
+  //! It is called by AnalyseFile from InterfaceModel
+  Standard_EXPORT virtual   void BeginRead (const Handle(Interface_InterfaceModel)& amodel)  = 0;
+  
+  //! Fills an Entity, given record no; specific to each Interface,
+  //! called by AnalyseFile from InterfaceModel (which manages its
+  //! calling arguments)
+  //! To work, each Interface can define a method in its proper
+  //! Transient class, like this (given as an example) :
+  //! AnalyseRecord (me  : mutable; FR     : in out FileReaderTool;
+  //! num : Integer; acheck : in out Check)
+  //! returns Boolean;
+  //! and call it from AnalyseRecord
+  //!
+  //! Returned Value : True if the entity could be loaded, False
+  //! else (in case of syntactic fail)
+  Standard_EXPORT virtual   Standard_Boolean AnalyseRecord (const Standard_Integer num, const Handle(Standard_Transient)& anent, Handle(Interface_Check)& acheck)  = 0;
+  
+  Standard_EXPORT virtual   void Destroy() ;
 Standard_EXPORT virtual ~Interface_FileReaderTool() { Destroy(); }
-  //! Ends file reading after reading all the entities <br>
-//!           default is doing nothing; redefinable as necessary <br>
-  Standard_EXPORT   virtual  void EndRead(const Handle(Interface_InterfaceModel)& amodel) ;
-  //! Clear filelds <br>
-  Standard_EXPORT     void Clear() ;
-
+  
+  //! Ends file reading after reading all the entities
+  //! default is doing nothing; redefinable as necessary
+  Standard_EXPORT virtual   void EndRead (const Handle(Interface_InterfaceModel)& amodel) ;
+  
+  //! Clear filelds
+  Standard_EXPORT   void Clear() ;
 
 
 
 
 protected:
 
-  //! Constructor; sets default fields <br>
-  Standard_EXPORT   Interface_FileReaderTool();
+  
+  //! Constructor; sets default fields
+  Standard_EXPORT Interface_FileReaderTool();
 
 
 
@@ -198,15 +197,15 @@ private:
 
 
 
-Handle_Interface_Protocol theproto;
-Handle_Interface_FileReaderData thereader;
-Handle_Interface_InterfaceModel themodel;
-Handle_Message_Messenger themessenger;
-Standard_Integer thetrace;
-Standard_Boolean theerrhand;
-Standard_Integer thenbrep0;
-Standard_Integer thenbreps;
-Handle_TColStd_HArray1OfTransient thereports;
+  Handle(Interface_Protocol) theproto;
+  Handle(Interface_FileReaderData) thereader;
+  Handle(Interface_InterfaceModel) themodel;
+  Handle(Message_Messenger) themessenger;
+  Standard_Integer thetrace;
+  Standard_Boolean theerrhand;
+  Standard_Integer thenbrep0;
+  Standard_Integer thenbreps;
+  Handle(TColStd_HArray1OfTransient) thereports;
 
 
 };
@@ -215,7 +214,6 @@ Handle_TColStd_HArray1OfTransient thereports;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Interface_FileReaderTool_HeaderFile

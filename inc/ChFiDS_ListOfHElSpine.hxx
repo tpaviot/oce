@@ -6,31 +6,15 @@
 #ifndef _ChFiDS_ListOfHElSpine_HeaderFile
 #define _ChFiDS_ListOfHElSpine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_ChFiDS_HElSpine_HeaderFile
 #include <Handle_ChFiDS_HElSpine.hxx>
-#endif
-#ifndef _Handle_ChFiDS_ListNodeOfListOfHElSpine_HeaderFile
 #include <Handle_ChFiDS_ListNodeOfListOfHElSpine.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class ChFiDS_ListIteratorOfListOfHElSpine;
 class ChFiDS_HElSpine;
@@ -38,61 +22,63 @@ class ChFiDS_ListNodeOfListOfHElSpine;
 
 
 
-class ChFiDS_ListOfHElSpine  {
+class ChFiDS_ListOfHElSpine 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   ChFiDS_ListOfHElSpine();
+  Standard_EXPORT ChFiDS_ListOfHElSpine();
   
-  Standard_EXPORT     void Assign(const ChFiDS_ListOfHElSpine& Other) ;
-    void operator=(const ChFiDS_ListOfHElSpine& Other) 
+  Standard_EXPORT ChFiDS_ListOfHElSpine(const ChFiDS_ListOfHElSpine& Other);
+  
+  Standard_EXPORT   void Assign (const ChFiDS_ListOfHElSpine& Other) ;
+  void operator= (const ChFiDS_ListOfHElSpine& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~ChFiDS_ListOfHElSpine()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const Handle(ChFiDS_HElSpine)& I) ;
+  Standard_EXPORT   void Prepend (const Handle(ChFiDS_HElSpine)& I) ;
   
-  Standard_EXPORT     void Prepend(const Handle(ChFiDS_HElSpine)& I,ChFiDS_ListIteratorOfListOfHElSpine& theIt) ;
+  Standard_EXPORT   void Prepend (const Handle(ChFiDS_HElSpine)& I, ChFiDS_ListIteratorOfListOfHElSpine& theIt) ;
   
-  Standard_EXPORT     void Prepend(ChFiDS_ListOfHElSpine& Other) ;
+  Standard_EXPORT   void Prepend (ChFiDS_ListOfHElSpine& Other) ;
   
-  Standard_EXPORT     void Append(const Handle(ChFiDS_HElSpine)& I) ;
+  Standard_EXPORT   void Append (const Handle(ChFiDS_HElSpine)& I) ;
   
-  Standard_EXPORT     void Append(const Handle(ChFiDS_HElSpine)& I,ChFiDS_ListIteratorOfListOfHElSpine& theIt) ;
+  Standard_EXPORT   void Append (const Handle(ChFiDS_HElSpine)& I, ChFiDS_ListIteratorOfListOfHElSpine& theIt) ;
   
-  Standard_EXPORT     void Append(ChFiDS_ListOfHElSpine& Other) ;
+  Standard_EXPORT   void Append (ChFiDS_ListOfHElSpine& Other) ;
   
-  Standard_EXPORT     Handle_ChFiDS_HElSpine& First() const;
+  Standard_EXPORT   Handle(ChFiDS_HElSpine)& First()  const;
   
-  Standard_EXPORT     Handle_ChFiDS_HElSpine& Last() const;
+  Standard_EXPORT   Handle(ChFiDS_HElSpine)& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(ChFiDS_ListIteratorOfListOfHElSpine& It) ;
+  Standard_EXPORT   void Remove (ChFiDS_ListIteratorOfListOfHElSpine& It) ;
   
-  Standard_EXPORT     void InsertBefore(const Handle(ChFiDS_HElSpine)& I,ChFiDS_ListIteratorOfListOfHElSpine& It) ;
+  Standard_EXPORT   void InsertBefore (const Handle(ChFiDS_HElSpine)& I, ChFiDS_ListIteratorOfListOfHElSpine& It) ;
   
-  Standard_EXPORT     void InsertBefore(ChFiDS_ListOfHElSpine& Other,ChFiDS_ListIteratorOfListOfHElSpine& It) ;
+  Standard_EXPORT   void InsertBefore (ChFiDS_ListOfHElSpine& Other, ChFiDS_ListIteratorOfListOfHElSpine& It) ;
   
-  Standard_EXPORT     void InsertAfter(const Handle(ChFiDS_HElSpine)& I,ChFiDS_ListIteratorOfListOfHElSpine& It) ;
+  Standard_EXPORT   void InsertAfter (const Handle(ChFiDS_HElSpine)& I, ChFiDS_ListIteratorOfListOfHElSpine& It) ;
   
-  Standard_EXPORT     void InsertAfter(ChFiDS_ListOfHElSpine& Other,ChFiDS_ListIteratorOfListOfHElSpine& It) ;
+  Standard_EXPORT   void InsertAfter (ChFiDS_ListOfHElSpine& Other, ChFiDS_ListIteratorOfListOfHElSpine& It) ;
 
 
 friend class ChFiDS_ListIteratorOfListOfHElSpine;
-
 
 
 protected:
@@ -103,17 +89,15 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   ChFiDS_ListOfHElSpine(const ChFiDS_ListOfHElSpine& Other);
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
 
-#define Item Handle_ChFiDS_HElSpine
+#define Item Handle(ChFiDS_HElSpine)
 #define Item_hxx <ChFiDS_HElSpine.hxx>
 #define TCollection_ListNode ChFiDS_ListNodeOfListOfHElSpine
 #define TCollection_ListNode_hxx <ChFiDS_ListNodeOfListOfHElSpine.hxx>
@@ -138,7 +122,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ChFiDS_ListOfHElSpine_HeaderFile

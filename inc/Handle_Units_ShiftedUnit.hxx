@@ -6,22 +6,15 @@
 #ifndef _Handle_Units_ShiftedUnit_HeaderFile
 #define _Handle_Units_ShiftedUnit_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Units_Unit_HeaderFile
 #include <Handle_Units_Unit.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Units_Unit);
 class Units_ShiftedUnit;
 
-DEFINE_STANDARD_HANDLE(Units_ShiftedUnit,Units_Unit)
+DEFINE_STANDARD_HANDLE(Units_ShiftedUnit, Units_Unit)
 
-#endif
+#endif // _Handle_Units_ShiftedUnit_HeaderFile

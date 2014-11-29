@@ -6,25 +6,13 @@
 #ifndef _TopOpeBRepDS_DataMapIteratorOfShapeSurface_HeaderFile
 #define _TopOpeBRepDS_DataMapIteratorOfShapeSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_DataMapNodeOfShapeSurface_HeaderFile
 #include <Handle_TopOpeBRepDS_DataMapNodeOfShapeSurface.hxx>
-#endif
 class Standard_NoSuchObject;
 class TopoDS_Shape;
 class Geom_Surface;
@@ -34,22 +22,22 @@ class TopOpeBRepDS_DataMapNodeOfShapeSurface;
 
 
 
-class TopOpeBRepDS_DataMapIteratorOfShapeSurface  : public TCollection_BasicMapIterator {
+class TopOpeBRepDS_DataMapIteratorOfShapeSurface  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepDS_DataMapIteratorOfShapeSurface();
+  Standard_EXPORT TopOpeBRepDS_DataMapIteratorOfShapeSurface();
   
-  Standard_EXPORT   TopOpeBRepDS_DataMapIteratorOfShapeSurface(const TopOpeBRepDS_ShapeSurface& aMap);
+  Standard_EXPORT TopOpeBRepDS_DataMapIteratorOfShapeSurface(const TopOpeBRepDS_ShapeSurface& aMap);
   
-  Standard_EXPORT     void Initialize(const TopOpeBRepDS_ShapeSurface& aMap) ;
+  Standard_EXPORT   void Initialize (const TopOpeBRepDS_ShapeSurface& aMap) ;
   
-  Standard_EXPORT    const TopoDS_Shape& Key() const;
+  Standard_EXPORT  const  TopoDS_Shape& Key()  const;
   
-  Standard_EXPORT    const Handle_Geom_Surface& Value() const;
-
+  Standard_EXPORT  const  Handle(Geom_Surface)& Value()  const;
 
 
 
@@ -72,7 +60,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_DataMapIteratorOfShapeSurface_HeaderFile

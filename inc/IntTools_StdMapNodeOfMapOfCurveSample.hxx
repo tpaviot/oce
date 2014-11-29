@@ -6,25 +6,13 @@
 #ifndef _IntTools_StdMapNodeOfMapOfCurveSample_HeaderFile
 #define _IntTools_StdMapNodeOfMapOfCurveSample_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IntTools_StdMapNodeOfMapOfCurveSample_HeaderFile
 #include <Handle_IntTools_StdMapNodeOfMapOfCurveSample.hxx>
-#endif
 
-#ifndef _IntTools_CurveRangeSample_HeaderFile
 #include <IntTools_CurveRangeSample.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class IntTools_CurveRangeSample;
 class IntTools_CurveRangeSampleMapHasher;
 class IntTools_MapOfCurveSample;
@@ -32,14 +20,15 @@ class IntTools_MapIteratorOfMapOfCurveSample;
 
 
 
-class IntTools_StdMapNodeOfMapOfCurveSample : public TCollection_MapNode {
+class IntTools_StdMapNodeOfMapOfCurveSample : public TCollection_MapNode
+{
 
 public:
 
   
-      IntTools_StdMapNodeOfMapOfCurveSample(const IntTools_CurveRangeSample& K,const TCollection_MapNodePtr& n);
+    IntTools_StdMapNodeOfMapOfCurveSample(const IntTools_CurveRangeSample& K, const TCollection_MapNodePtr& n);
   
-        IntTools_CurveRangeSample& Key() const;
+      IntTools_CurveRangeSample& Key()  const;
 
 
 
@@ -54,7 +43,7 @@ protected:
 private: 
 
 
-IntTools_CurveRangeSample myKey;
+  IntTools_CurveRangeSample myKey;
 
 
 };
@@ -88,7 +77,6 @@ IntTools_CurveRangeSample myKey;
 #undef TCollection_Map_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_StdMapNodeOfMapOfCurveSample_HeaderFile

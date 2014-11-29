@@ -6,37 +6,17 @@
 #ifndef _StepAP214_ExternalIdentificationItem_HeaderFile
 #define _StepAP214_ExternalIdentificationItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepBasic_DocumentFile_HeaderFile
 #include <Handle_StepBasic_DocumentFile.hxx>
-#endif
-#ifndef _Handle_StepAP214_ExternallyDefinedClass_HeaderFile
 #include <Handle_StepAP214_ExternallyDefinedClass.hxx>
-#endif
-#ifndef _Handle_StepAP214_ExternallyDefinedGeneralProperty_HeaderFile
 #include <Handle_StepAP214_ExternallyDefinedGeneralProperty.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinition_HeaderFile
 #include <Handle_StepBasic_ProductDefinition.hxx>
-#endif
 class Standard_Transient;
 class StepBasic_DocumentFile;
 class StepAP214_ExternallyDefinedClass;
@@ -44,30 +24,36 @@ class StepAP214_ExternallyDefinedGeneralProperty;
 class StepBasic_ProductDefinition;
 
 
-//! Representation of STEP SELECT type ExternalIdentificationItem <br>
-class StepAP214_ExternalIdentificationItem  : public StepData_SelectType {
+//! Representation of STEP SELECT type ExternalIdentificationItem
+class StepAP214_ExternalIdentificationItem  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepAP214_ExternalIdentificationItem();
-  //! Recognizes a kind of ExternalIdentificationItem select type <br>
-//!          1 -> DocumentFile from StepBasic <br>
-//!          2 -> ExternallyDefinedClass from StepAP214 <br>
-//!          3 -> ExternallyDefinedGeneralProperty from StepAP214 <br>
-//!          4 -> ProductDefinition from StepBasic <br>
-//!          0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! Returns Value as DocumentFile (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_DocumentFile DocumentFile() const;
-  //! Returns Value as ExternallyDefinedClass (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepAP214_ExternallyDefinedClass ExternallyDefinedClass() const;
-  //! Returns Value as ExternallyDefinedGeneralProperty (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepAP214_ExternallyDefinedGeneralProperty ExternallyDefinedGeneralProperty() const;
-  //! Returns Value as ProductDefinition (or Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_ProductDefinition ProductDefinition() const;
-
+  
+  //! Empty constructor
+  Standard_EXPORT StepAP214_ExternalIdentificationItem();
+  
+  //! Recognizes a kind of ExternalIdentificationItem select type
+  //! 1 -> DocumentFile from StepBasic
+  //! 2 -> ExternallyDefinedClass from StepAP214
+  //! 3 -> ExternallyDefinedGeneralProperty from StepAP214
+  //! 4 -> ProductDefinition from StepBasic
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! Returns Value as DocumentFile (or Null if another type)
+  Standard_EXPORT   Handle(StepBasic_DocumentFile) DocumentFile()  const;
+  
+  //! Returns Value as ExternallyDefinedClass (or Null if another type)
+  Standard_EXPORT   Handle(StepAP214_ExternallyDefinedClass) ExternallyDefinedClass()  const;
+  
+  //! Returns Value as ExternallyDefinedGeneralProperty (or Null if another type)
+  Standard_EXPORT   Handle(StepAP214_ExternallyDefinedGeneralProperty) ExternallyDefinedGeneralProperty()  const;
+  
+  //! Returns Value as ProductDefinition (or Null if another type)
+  Standard_EXPORT   Handle(StepBasic_ProductDefinition) ProductDefinition()  const;
 
 
 
@@ -90,7 +76,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP214_ExternalIdentificationItem_HeaderFile

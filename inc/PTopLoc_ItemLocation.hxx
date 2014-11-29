@@ -6,49 +6,34 @@
 #ifndef _PTopLoc_ItemLocation_HeaderFile
 #define _PTopLoc_ItemLocation_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PTopLoc_ItemLocation_HeaderFile
 #include <Handle_PTopLoc_ItemLocation.hxx>
-#endif
 
-#ifndef _Handle_PTopLoc_Datum3D_HeaderFile
 #include <Handle_PTopLoc_Datum3D.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _PTopLoc_Location_HeaderFile
 #include <PTopLoc_Location.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
 class PTopLoc_Datum3D;
 class PTopLoc_Location;
 
 
-class PTopLoc_ItemLocation : public Standard_Persistent {
+class PTopLoc_ItemLocation : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PTopLoc_ItemLocation(const Handle(PTopLoc_Datum3D)& D,const Standard_Integer P,const PTopLoc_Location& N);
+  Standard_EXPORT PTopLoc_ItemLocation(const Handle(PTopLoc_Datum3D)& D, const Standard_Integer P, const PTopLoc_Location& N);
   
-  Standard_EXPORT     Handle_PTopLoc_Datum3D Datum3D() const;
+  Standard_EXPORT   Handle(PTopLoc_Datum3D) Datum3D()  const;
   
-  Standard_EXPORT     Standard_Integer Power() const;
+  Standard_EXPORT   Standard_Integer Power()  const;
   
-  Standard_EXPORT     PTopLoc_Location Next() const;
+  Standard_EXPORT   PTopLoc_Location Next()  const;
 
-  PTopLoc_ItemLocation( )
+PTopLoc_ItemLocation( )
 {
   
 }
@@ -74,9 +59,9 @@ protected:
 private: 
 
 
-Handle_PTopLoc_Datum3D myDatum;
-Standard_Integer myPower;
-PTopLoc_Location myNext;
+  Handle(PTopLoc_Datum3D) myDatum;
+  Standard_Integer myPower;
+  PTopLoc_Location myNext;
 
 
 };
@@ -85,7 +70,6 @@ PTopLoc_Location myNext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PTopLoc_ItemLocation_HeaderFile

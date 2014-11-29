@@ -6,36 +6,28 @@
 #ifndef _StepBasic_ConversionBasedUnitAndVolumeUnit_HeaderFile
 #define _StepBasic_ConversionBasedUnitAndVolumeUnit_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_ConversionBasedUnitAndVolumeUnit_HeaderFile
 #include <Handle_StepBasic_ConversionBasedUnitAndVolumeUnit.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_VolumeUnit_HeaderFile
 #include <Handle_StepBasic_VolumeUnit.hxx>
-#endif
-#ifndef _StepBasic_ConversionBasedUnit_HeaderFile
 #include <StepBasic_ConversionBasedUnit.hxx>
-#endif
 class StepBasic_VolumeUnit;
 
 
 
-class StepBasic_ConversionBasedUnitAndVolumeUnit : public StepBasic_ConversionBasedUnit {
+class StepBasic_ConversionBasedUnitAndVolumeUnit : public StepBasic_ConversionBasedUnit
+{
 
 public:
 
-  //! Returns a ConversionBasedUnitAndVolumeUnit <br>
-  Standard_EXPORT   StepBasic_ConversionBasedUnitAndVolumeUnit();
   
-  Standard_EXPORT     void SetVolumeUnit(const Handle(StepBasic_VolumeUnit)& aVolumeUnit) ;
+  //! Returns a ConversionBasedUnitAndVolumeUnit
+  Standard_EXPORT StepBasic_ConversionBasedUnitAndVolumeUnit();
   
-  Standard_EXPORT     Handle_StepBasic_VolumeUnit VolumeUnit() const;
+  Standard_EXPORT   void SetVolumeUnit (const Handle(StepBasic_VolumeUnit)& aVolumeUnit) ;
+  
+  Standard_EXPORT   Handle(StepBasic_VolumeUnit) VolumeUnit()  const;
 
 
 
@@ -50,7 +42,7 @@ protected:
 private: 
 
 
-Handle_StepBasic_VolumeUnit volumeUnit;
+  Handle(StepBasic_VolumeUnit) volumeUnit;
 
 
 };
@@ -59,7 +51,6 @@ Handle_StepBasic_VolumeUnit volumeUnit;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_ConversionBasedUnitAndVolumeUnit_HeaderFile

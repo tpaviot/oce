@@ -6,42 +6,35 @@
 #ifndef _StepShape_FaceBasedSurfaceModel_HeaderFile
 #define _StepShape_FaceBasedSurfaceModel_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_FaceBasedSurfaceModel_HeaderFile
 #include <Handle_StepShape_FaceBasedSurfaceModel.hxx>
-#endif
 
-#ifndef _Handle_StepShape_HArray1OfConnectedFaceSet_HeaderFile
 #include <Handle_StepShape_HArray1OfConnectedFaceSet.hxx>
-#endif
-#ifndef _StepGeom_GeometricRepresentationItem_HeaderFile
 #include <StepGeom_GeometricRepresentationItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepShape_HArray1OfConnectedFaceSet;
 class TCollection_HAsciiString;
 
 
-//! Representation of STEP entity FaceBasedSurfaceModel <br>
-class StepShape_FaceBasedSurfaceModel : public StepGeom_GeometricRepresentationItem {
+//! Representation of STEP entity FaceBasedSurfaceModel
+class StepShape_FaceBasedSurfaceModel : public StepGeom_GeometricRepresentationItem
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepShape_FaceBasedSurfaceModel();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aRepresentationItem_Name,const Handle(StepShape_HArray1OfConnectedFaceSet)& aFbsmFaces) ;
-  //! Returns field FbsmFaces <br>
-  Standard_EXPORT     Handle_StepShape_HArray1OfConnectedFaceSet FbsmFaces() const;
-  //! Set field FbsmFaces <br>
-  Standard_EXPORT     void SetFbsmFaces(const Handle(StepShape_HArray1OfConnectedFaceSet)& FbsmFaces) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepShape_FaceBasedSurfaceModel();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aRepresentationItem_Name, const Handle(StepShape_HArray1OfConnectedFaceSet)& aFbsmFaces) ;
+  
+  //! Returns field FbsmFaces
+  Standard_EXPORT   Handle(StepShape_HArray1OfConnectedFaceSet) FbsmFaces()  const;
+  
+  //! Set field FbsmFaces
+  Standard_EXPORT   void SetFbsmFaces (const Handle(StepShape_HArray1OfConnectedFaceSet)& FbsmFaces) ;
 
 
 
@@ -56,7 +49,7 @@ protected:
 private: 
 
 
-Handle_StepShape_HArray1OfConnectedFaceSet theFbsmFaces;
+  Handle(StepShape_HArray1OfConnectedFaceSet) theFbsmFaces;
 
 
 };
@@ -65,7 +58,6 @@ Handle_StepShape_HArray1OfConnectedFaceSet theFbsmFaces;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_FaceBasedSurfaceModel_HeaderFile

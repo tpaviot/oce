@@ -15,7 +15,9 @@
 
 class PatternStd from TDataXtd inherits Pattern from TDataXtd
 
-	---Purpose: to create a PatternStd 
+	---Purpose: to create a PatternStd
+  -- (LinearPattern, CircularPattern, RectangularPattern,
+  --  RadialCircularPattern, MirrorPattern)
 
 uses
 
@@ -49,7 +51,7 @@ is
     --           ===========      
 
     Create
-    returns mutable PatternStd from TDataXtd;
+    returns PatternStd from TDataXtd;
 
     --- Category: Set and Get methods
 
@@ -129,10 +131,10 @@ is
 
     Restore (me: mutable; With : Attribute from TDF);
 
-    NewEmpty (me) returns mutable Attribute from TDF;
+    NewEmpty (me) returns Attribute from TDF;
 
-    Paste (me; Into : mutable Attribute from TDF;
-	       RT   : mutable RelocationTable from TDF);    
+    Paste (me; Into : Attribute from TDF;
+	       RT   : RelocationTable from TDF);    
 
     References(me; aDataSet : DataSet from TDF)
     is redefined;

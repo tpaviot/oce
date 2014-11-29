@@ -5,28 +5,14 @@
 
 #include <StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _StepElement_HSequenceOfSurfaceElementPurposeMember_HeaderFile
 #include <StepElement_HSequenceOfSurfaceElementPurposeMember.hxx>
-#endif
-#ifndef _StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember_HeaderFile
 #include <StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember,S
 IMPLEMENT_STANDARD_RTTI(StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember)
 
 
-#define ItemHArray1 Handle_StepElement_HSequenceOfSurfaceElementPurposeMember
+#define ItemHArray1 Handle(StepElement_HSequenceOfSurfaceElementPurposeMember)
 #define ItemHArray1_hxx <StepElement_HSequenceOfSurfaceElementPurposeMember.hxx>
 #define TheArray1 StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember
 #define TheArray1_hxx <StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember.hxx>

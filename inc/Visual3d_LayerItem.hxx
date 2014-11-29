@@ -6,41 +6,35 @@
 #ifndef _Visual3d_LayerItem_HeaderFile
 #define _Visual3d_LayerItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Visual3d_LayerItem_HeaderFile
 #include <Handle_Visual3d_LayerItem.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 
 
-//! This class is drawable unit of 2d scene <br>
-class Visual3d_LayerItem : public MMgt_TShared {
+//! This class is drawable unit of 2d scene
+class Visual3d_LayerItem : public MMgt_TShared
+{
 
 public:
 
-  //! Creates a layer item <br>
-  Standard_EXPORT   Visual3d_LayerItem();
-  //! virtual function for recompute 2D <br>
-//!        presentation (empty by default) <br>
-  Standard_EXPORT   virtual  void ComputeLayerPrs() ;
-  //! virtual function for recompute 2D <br>
-//!        presentation (empty by default) <br>
-  Standard_EXPORT   virtual  void RedrawLayerPrs() ;
   
-  Standard_EXPORT     Standard_Boolean IsNeedToRecompute() const;
+  //! Creates a layer item
+  Standard_EXPORT Visual3d_LayerItem();
   
-  Standard_EXPORT     void SetNeedToRecompute(const Standard_Boolean NeedToRecompute = Standard_True) ;
+  //! virtual function for recompute 2D
+  //! presentation (empty by default)
+  Standard_EXPORT virtual   void ComputeLayerPrs() ;
+  
+  //! virtual function for recompute 2D
+  //! presentation (empty by default)
+  Standard_EXPORT virtual   void RedrawLayerPrs() ;
+  
+  Standard_EXPORT   Standard_Boolean IsNeedToRecompute()  const;
+  
+  Standard_EXPORT   void SetNeedToRecompute (const Standard_Boolean NeedToRecompute = Standard_True) ;
 
 
 
@@ -55,7 +49,7 @@ protected:
 private: 
 
 
-Standard_Boolean MyIsNeedToRecompute;
+  Standard_Boolean MyIsNeedToRecompute;
 
 
 };
@@ -64,7 +58,6 @@ Standard_Boolean MyIsNeedToRecompute;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Visual3d_LayerItem_HeaderFile

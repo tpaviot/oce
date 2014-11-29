@@ -1,9 +1,3 @@
-#ifndef _CDM_MessageDriver_HeaderFile
 #include <CDM_MessageDriver.hxx>
-#endif
-#ifndef _TColStd_SequenceOfExtendedString_HeaderFile
 #include <TColStd_SequenceOfExtendedString.hxx>
-#endif
-#ifndef _AppStd_Application_HeaderFile
 #include <AppStd_Application.hxx>
-#endif

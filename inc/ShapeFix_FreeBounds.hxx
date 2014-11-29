@@ -6,80 +6,72 @@
 #ifndef _ShapeFix_FreeBounds_HeaderFile
 #define _ShapeFix_FreeBounds_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Compound_HeaderFile
 #include <TopoDS_Compound.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TopoDS_Shape;
 class TopoDS_Compound;
 
 
-//! This class is intended to output free bounds of the shape <br>
-//!          (free bounds are the wires consisting of edges referenced by the <br>
-//!          only face). <br>
-//!          For building free bounds it uses ShapeAnalysis_FreeBounds class. <br>
-//!          This class complements it with the feature to reduce the number <br>
-//!          of open wires. <br>
-//!          This reduction is performed with help of connecting several <br>
-//!          adjacent open wires one to another what can lead to: <br>
-//!          1. making an open wire with greater length out of several <br>
-//!             open wires <br>
-//!          2. making closed wire out of several open wires <br>
-//! <br>
-//!          The connecting open wires is performed with a user-given <br>
-//!          tolerance. <br>
-//! <br>
-//!          When connecting several open wires into one wire their previous <br>
-//!          end vertices are replaced with new connecting vertices. After <br>
-//!          that all the edges in the shape sharing previous vertices inside <br>
-//!          the shape are updated with new vertices. Thus source shape can <br>
-//!          be modified. <br>
-//! <br>
-//!          Since interface of this class is the same as one of <br>
-//!          ShapeAnalysis_FreeBounds refer to its CDL for details. <br>
-class ShapeFix_FreeBounds  {
+//! This class is intended to output free bounds of the shape
+//! (free bounds are the wires consisting of edges referenced by the
+//! only face).
+//! For building free bounds it uses ShapeAnalysis_FreeBounds class.
+//! This class complements it with the feature to reduce the number
+//! of open wires.
+//! This reduction is performed with help of connecting several
+//! adjacent open wires one to another what can lead to:
+//! 1. making an open wire with greater length out of several
+//! open wires
+//! 2. making closed wire out of several open wires
+//!
+//! The connecting open wires is performed with a user-given
+//! tolerance.
+//!
+//! When connecting several open wires into one wire their previous
+//! end vertices are replaced with new connecting vertices. After
+//! that all the edges in the shape sharing previous vertices inside
+//! the shape are updated with new vertices. Thus source shape can
+//! be modified.
+//!
+//! Since interface of this class is the same as one of
+//! ShapeAnalysis_FreeBounds refer to its CDL for details.
+class ShapeFix_FreeBounds 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor <br>
-  Standard_EXPORT   ShapeFix_FreeBounds();
-  //! Builds forecasting free bounds of the <shape> and connects <br>
-//!          open wires with tolerance <closetoler>. <br>
-//!          <shape> should be a compound of faces. <br>
-//!          Tolerance <closetoler> should be greater than tolerance <br>
-//!          <sewtoler> used for initializing sewing analyzer, otherwise <br>
-//!          connection of open wires is not performed. <br>
-  Standard_EXPORT   ShapeFix_FreeBounds(const TopoDS_Shape& shape,const Standard_Real sewtoler,const Standard_Real closetoler,const Standard_Boolean splitclosed,const Standard_Boolean splitopen);
-  //! Builds actual free bounds of the <shape> and connects <br>
-//!          open wires with tolerance <closetoler>. <br>
-//!          <shape> should be a compound of shells. <br>
-  Standard_EXPORT   ShapeFix_FreeBounds(const TopoDS_Shape& shape,const Standard_Real closetoler,const Standard_Boolean splitclosed,const Standard_Boolean splitopen);
-  //! Returns compound of closed wires out of free edges. <br>
-       const TopoDS_Compound& GetClosedWires() const;
-  //! Returns compound of open wires out of free edges. <br>
-       const TopoDS_Compound& GetOpenWires() const;
-  //! Returns modified source shape. <br>
-       const TopoDS_Shape& GetShape() const;
-
+  
+  //! Empty constructor
+  Standard_EXPORT ShapeFix_FreeBounds();
+  
+  //! Builds forecasting free bounds of the <shape> and connects
+  //! open wires with tolerance <closetoler>.
+  //! <shape> should be a compound of faces.
+  //! Tolerance <closetoler> should be greater than tolerance
+  //! <sewtoler> used for initializing sewing analyzer, otherwise
+  //! connection of open wires is not performed.
+  Standard_EXPORT ShapeFix_FreeBounds(const TopoDS_Shape& shape, const Standard_Real sewtoler, const Standard_Real closetoler, const Standard_Boolean splitclosed, const Standard_Boolean splitopen);
+  
+  //! Builds actual free bounds of the <shape> and connects
+  //! open wires with tolerance <closetoler>.
+  //! <shape> should be a compound of shells.
+  Standard_EXPORT ShapeFix_FreeBounds(const TopoDS_Shape& shape, const Standard_Real closetoler, const Standard_Boolean splitclosed, const Standard_Boolean splitopen);
+  
+  //! Returns compound of closed wires out of free edges.
+     const  TopoDS_Compound& GetClosedWires()  const;
+  
+  //! Returns compound of open wires out of free edges.
+     const  TopoDS_Compound& GetOpenWires()  const;
+  
+  //! Returns modified source shape.
+     const  TopoDS_Shape& GetShape()  const;
 
 
 
@@ -93,17 +85,17 @@ protected:
 private:
 
   
-  Standard_EXPORT     Standard_Boolean Perform() ;
+  Standard_EXPORT   Standard_Boolean Perform() ;
 
 
-TopoDS_Compound myWires;
-TopoDS_Compound myEdges;
-TopoDS_Shape myShape;
-Standard_Boolean myShared;
-Standard_Real mySewToler;
-Standard_Real myCloseToler;
-Standard_Boolean mySplitClosed;
-Standard_Boolean mySplitOpen;
+  TopoDS_Compound myWires;
+  TopoDS_Compound myEdges;
+  TopoDS_Shape myShape;
+  Standard_Boolean myShared;
+  Standard_Real mySewToler;
+  Standard_Real myCloseToler;
+  Standard_Boolean mySplitClosed;
+  Standard_Boolean mySplitOpen;
 
 
 };
@@ -113,7 +105,6 @@ Standard_Boolean mySplitOpen;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeFix_FreeBounds_HeaderFile

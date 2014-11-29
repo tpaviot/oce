@@ -1,6 +1,2 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopOpeBRepTool_ShapeExplorer_HeaderFile
 #include <TopOpeBRepTool_ShapeExplorer.hxx>
-#endif

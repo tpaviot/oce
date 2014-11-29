@@ -6,154 +6,152 @@
 #ifndef _GProp_PrincipalProps_HeaderFile
 #define _GProp_PrincipalProps_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _GProp_GProps_HeaderFile
 #include <GProp_GProps.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class GProp_UndefinedAxis;
 class gp_Vec;
 class gp_Pnt;
 
 
 
-//! A framework to present the principal properties of <br>
-//! inertia of a system of which global properties are <br>
-//! computed by a GProp_GProps object. <br>
-//! There is always a set of axes for which the <br>
-//! products of inertia of a geometric system are equal <br>
-//! to 0; i.e. the matrix of inertia of the system is <br>
-//! diagonal. These axes are the principal axes of <br>
-//! inertia. Their origin is coincident with the center of <br>
-//! mass of the system. The associated moments are <br>
-//! called the principal moments of inertia. <br>
-//! This sort of presentation object is created, filled and <br>
-//! returned by the function PrincipalProperties for <br>
-//! any GProp_GProps object, and can be queried to access the result. <br>
-//! Note: The system whose principal properties of <br>
-//! inertia are returned by this framework is referred to <br>
-//! as the current system. The current system, <br>
-//! however, is retained neither by this presentation <br>
-//! framework nor by the GProp_GProps object which activates it. <br>
-class GProp_PrincipalProps  {
+//! A framework to present the principal properties of
+//! inertia of a system of which global properties are
+//! computed by a GProp_GProps object.
+//! There is always a set of axes for which the
+//! products of inertia of a geometric system are equal
+//! to 0; i.e. the matrix of inertia of the system is
+//! diagonal. These axes are the principal axes of
+//! inertia. Their origin is coincident with the center of
+//! mass of the system. The associated moments are
+//! called the principal moments of inertia.
+//! This sort of presentation object is created, filled and
+//! returned by the function PrincipalProperties for
+//! any GProp_GProps object, and can be queried to access the result.
+//! Note: The system whose principal properties of
+//! inertia are returned by this framework is referred to
+//! as the current system. The current system,
+//! however, is retained neither by this presentation
+//! framework nor by the GProp_GProps object which activates it.
+class GProp_PrincipalProps 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! creates an undefined PrincipalProps. <br>
-  Standard_EXPORT   GProp_PrincipalProps();
   
-//!  returns true if the geometric system has an axis of symmetry. <br>
-//!  For  comparing  moments  relative  tolerance  1.e-10  is  used. <br>
-//!  Usually  it  is  enough  for  objects,  restricted  by  faces  with <br>
-//!  analitycal  geometry. <br>
-  Standard_EXPORT     Standard_Boolean HasSymmetryAxis() const;
+  //! creates an undefined PrincipalProps.
+  Standard_EXPORT GProp_PrincipalProps();
   
-//!  returns true if the geometric system has an axis of symmetry. <br>
-//!  aTol  is  relative  tolerance for  cheking  equality  of  moments <br>
-//!  If  aTol  ==  0,  relative  tolerance  is  ~  1.e-16  (Epsilon(I)) <br>
-  Standard_EXPORT     Standard_Boolean HasSymmetryAxis(const Standard_Real aTol) const;
+
+  //! returns true if the geometric system has an axis of symmetry.
+  //! For  comparing  moments  relative  tolerance  1.e-10  is  used.
+  //! Usually  it  is  enough  for  objects,  restricted  by  faces  with
+  //! analitycal  geometry.
+  Standard_EXPORT   Standard_Boolean HasSymmetryAxis()  const;
   
-//!  returns true if the geometric system has a point of symmetry. <br>
-//!  For  comparing  moments  relative  tolerance  1.e-10  is  used. <br>
-//!  Usually  it  is  enough  for  objects,  restricted  by  faces  with <br>
-//!  analitycal  geometry. <br>
-  Standard_EXPORT     Standard_Boolean HasSymmetryPoint() const;
+
+  //! returns true if the geometric system has an axis of symmetry.
+  //! aTol  is  relative  tolerance for  cheking  equality  of  moments
+  //! If  aTol  ==  0,  relative  tolerance  is  ~  1.e-16  (Epsilon(I))
+  Standard_EXPORT   Standard_Boolean HasSymmetryAxis (const Standard_Real aTol)  const;
   
-//!  returns true if the geometric system has a point of symmetry. <br>
-//!  aTol  is  relative  tolerance for  cheking  equality  of  moments <br>
-//!  If  aTol  ==  0,  relative  tolerance  is  ~  1.e-16  (Epsilon(I)) <br>
-  Standard_EXPORT     Standard_Boolean HasSymmetryPoint(const Standard_Real aTol) const;
-  //! Ixx, Iyy and Izz return the principal moments of inertia <br>
-//! in the current system. <br>
-//! Notes : <br>
-//! - If the current system has an axis of symmetry, two <br>
-//!   of the three values Ixx, Iyy and Izz are equal. They <br>
-//!   indicate which eigen vectors define an infinity of <br>
-//!   axes of principal inertia. <br>
-//! - If the current system has a center of symmetry, Ixx, <br>
-//!   Iyy and Izz are equal. <br>
-  Standard_EXPORT     void Moments(Standard_Real& Ixx,Standard_Real& Iyy,Standard_Real& Izz) const;
-  //!  returns the first axis of inertia. <br>
-//!  if the system has a point of symmetry there is an infinity of <br>
-//!  solutions. It is not possible to defines the three axis of <br>
-//!  inertia. <br>
-  Standard_EXPORT    const gp_Vec& FirstAxisOfInertia() const;
-  //!  returns the second axis of inertia. <br>
-//!  if the system has a point of symmetry or an axis of symmetry the <br>
-//!  second and the third axis of symmetry are undefined. <br>
-  Standard_EXPORT    const gp_Vec& SecondAxisOfInertia() const;
-  //!  returns the third axis of inertia. <br>
-//!     This and the above functions return the first, second or third eigen vector of the <br>
-//! matrix of inertia of the current system. <br>
-//! The first, second and third principal axis of inertia <br>
-//! pass through the center of mass of the current <br>
-//! system. They are respectively parallel to these three eigen vectors. <br>
-//! Note that: <br>
-//! - If the current system has an axis of symmetry, any <br>
-//!   axis is an axis of principal inertia if it passes <br>
-//!   through the center of mass of the system, and runs <br>
-//!   parallel to a linear combination of the two eigen <br>
-//!   vectors of the matrix of inertia, corresponding to the <br>
-//!  two eigen values which are equal. If the current <br>
-//!  system has a center of symmetry, any axis passing <br>
-//!  through the center of mass of the system is an axis <br>
-//!  of principal inertia. Use the functions <br>
-//!  HasSymmetryAxis and HasSymmetryPoint to <br>
-//!  check these particular cases, where the returned <br>
-//!  eigen vectors define an infinity of principal axis of inertia. <br>
-//! - The Moments function can be used to know which <br>
-//!   of the three eigen vectors corresponds to the two <br>
-//!   eigen values which are equal. <br>
-//!  if the system has a point of symmetry or an axis of symmetry the <br>
-//!  second and the third axis of symmetry are undefined. <br>
-  Standard_EXPORT    const gp_Vec& ThirdAxisOfInertia() const;
-  //!  Returns the principal radii of gyration  Rxx, Ryy <br>
-//! and Rzz are the radii of gyration of the current <br>
-//! system about its three principal axes of inertia. <br>
-//! Note that: <br>
-//! - If the current system has an axis of symmetry, <br>
-//!   two of the three values Rxx, Ryy and Rzz are equal. <br>
-//! - If the current system has a center of symmetry, <br>
-//!   Rxx, Ryy and Rzz are equal. <br>
-  Standard_EXPORT     void RadiusOfGyration(Standard_Real& Rxx,Standard_Real& Ryy,Standard_Real& Rzz) const;
+
+  //! returns true if the geometric system has a point of symmetry.
+  //! For  comparing  moments  relative  tolerance  1.e-10  is  used.
+  //! Usually  it  is  enough  for  objects,  restricted  by  faces  with
+  //! analitycal  geometry.
+  Standard_EXPORT   Standard_Boolean HasSymmetryPoint()  const;
+  
+
+  //! returns true if the geometric system has a point of symmetry.
+  //! aTol  is  relative  tolerance for  cheking  equality  of  moments
+  //! If  aTol  ==  0,  relative  tolerance  is  ~  1.e-16  (Epsilon(I))
+  Standard_EXPORT   Standard_Boolean HasSymmetryPoint (const Standard_Real aTol)  const;
+  
+  //! Ixx, Iyy and Izz return the principal moments of inertia
+  //! in the current system.
+  //! Notes :
+  //! - If the current system has an axis of symmetry, two
+  //! of the three values Ixx, Iyy and Izz are equal. They
+  //! indicate which eigen vectors define an infinity of
+  //! axes of principal inertia.
+  //! - If the current system has a center of symmetry, Ixx,
+  //! Iyy and Izz are equal.
+  Standard_EXPORT   void Moments (Standard_Real& Ixx, Standard_Real& Iyy, Standard_Real& Izz)  const;
+  
+  //! returns the first axis of inertia.
+  //!
+  //! if the system has a point of symmetry there is an infinity of
+  //! solutions. It is not possible to defines the three axis of
+  //! inertia.
+  Standard_EXPORT  const  gp_Vec& FirstAxisOfInertia()  const;
+  
+  //! returns the second axis of inertia.
+  //!
+  //! if the system has a point of symmetry or an axis of symmetry the
+  //! second and the third axis of symmetry are undefined.
+  Standard_EXPORT  const  gp_Vec& SecondAxisOfInertia()  const;
+  
+  //! returns the third axis of inertia.
+  //! This and the above functions return the first, second or third eigen vector of the
+  //! matrix of inertia of the current system.
+  //! The first, second and third principal axis of inertia
+  //! pass through the center of mass of the current
+  //! system. They are respectively parallel to these three eigen vectors.
+  //! Note that:
+  //! - If the current system has an axis of symmetry, any
+  //! axis is an axis of principal inertia if it passes
+  //! through the center of mass of the system, and runs
+  //! parallel to a linear combination of the two eigen
+  //! vectors of the matrix of inertia, corresponding to the
+  //! two eigen values which are equal. If the current
+  //! system has a center of symmetry, any axis passing
+  //! through the center of mass of the system is an axis
+  //! of principal inertia. Use the functions
+  //! HasSymmetryAxis and HasSymmetryPoint to
+  //! check these particular cases, where the returned
+  //! eigen vectors define an infinity of principal axis of inertia.
+  //! - The Moments function can be used to know which
+  //! of the three eigen vectors corresponds to the two
+  //! eigen values which are equal.
+  //!
+  //! if the system has a point of symmetry or an axis of symmetry the
+  //! second and the third axis of symmetry are undefined.
+  Standard_EXPORT  const  gp_Vec& ThirdAxisOfInertia()  const;
+  
+  //! Returns the principal radii of gyration  Rxx, Ryy
+  //! and Rzz are the radii of gyration of the current
+  //! system about its three principal axes of inertia.
+  //! Note that:
+  //! - If the current system has an axis of symmetry,
+  //! two of the three values Rxx, Ryy and Rzz are equal.
+  //! - If the current system has a center of symmetry,
+  //! Rxx, Ryy and Rzz are equal.
+  Standard_EXPORT   void RadiusOfGyration (Standard_Real& Rxx, Standard_Real& Ryy, Standard_Real& Rzz)  const;
 
 
-friend   //! Computes the principal properties of inertia of the current system. <br>
-//! There is always a set of axes for which the products <br>
-//! of inertia of a geometric system are equal to 0; i.e. the <br>
-//! matrix of inertia of the system is diagonal. These axes <br>
-//! are the principal axes of inertia. Their origin is <br>
-//! coincident with the center of mass of the system. The <br>
-//! associated moments are called the principal moments of inertia. <br>
-//! This function computes the eigen values and the <br>
-//! eigen vectors of the matrix of inertia of the system. <br>
-//! Results are stored by using a presentation framework <br>
-//! of principal properties of inertia <br>
-//! (GProp_PrincipalProps object) which may be <br>
-//! queried to access the value sought. <br>
-  Standard_EXPORT   GProp_PrincipalProps GProp_GProps::PrincipalProperties() const;
-
+friend   
+  //! Computes the principal properties of inertia of the current system.
+  //! There is always a set of axes for which the products
+  //! of inertia of a geometric system are equal to 0; i.e. the
+  //! matrix of inertia of the system is diagonal. These axes
+  //! are the principal axes of inertia. Their origin is
+  //! coincident with the center of mass of the system. The
+  //! associated moments are called the principal moments of inertia.
+  //! This function computes the eigen values and the
+  //! eigen vectors of the matrix of inertia of the system.
+  //! Results are stored by using a presentation framework
+  //! of principal properties of inertia
+  //! (GProp_PrincipalProps object) which may be
+  //! queried to access the value sought.
+  Standard_EXPORT   GProp_PrincipalProps GProp_GProps::PrincipalProperties()  const;
 
 
 protected:
@@ -165,19 +163,19 @@ protected:
 private:
 
   
-  Standard_EXPORT   GProp_PrincipalProps(const Standard_Real Ixx,const Standard_Real Iyy,const Standard_Real Izz,const Standard_Real Rxx,const Standard_Real Ryy,const Standard_Real Rzz,const gp_Vec& Vxx,const gp_Vec& Vyy,const gp_Vec& Vzz,const gp_Pnt& G);
+  Standard_EXPORT GProp_PrincipalProps(const Standard_Real Ixx, const Standard_Real Iyy, const Standard_Real Izz, const Standard_Real Rxx, const Standard_Real Ryy, const Standard_Real Rzz, const gp_Vec& Vxx, const gp_Vec& Vyy, const gp_Vec& Vzz, const gp_Pnt& G);
 
 
-Standard_Real i1;
-Standard_Real i2;
-Standard_Real i3;
-Standard_Real r1;
-Standard_Real r2;
-Standard_Real r3;
-gp_Vec v1;
-gp_Vec v2;
-gp_Vec v3;
-gp_Pnt g;
+  Standard_Real i1;
+  Standard_Real i2;
+  Standard_Real i3;
+  Standard_Real r1;
+  Standard_Real r2;
+  Standard_Real r3;
+  gp_Vec v1;
+  gp_Vec v2;
+  gp_Vec v3;
+  gp_Pnt g;
 
 
 };
@@ -186,7 +184,6 @@ gp_Pnt g;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GProp_PrincipalProps_HeaderFile

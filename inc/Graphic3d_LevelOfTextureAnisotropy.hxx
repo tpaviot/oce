@@ -6,17 +6,16 @@
 #ifndef _Graphic3d_LevelOfTextureAnisotropy_HeaderFile
 #define _Graphic3d_LevelOfTextureAnisotropy_HeaderFile
 
-//! Level of anisotropy filter. <br>
-//! Notice that actual quality depends on hardware capabilities! <br>
-enum Graphic3d_LevelOfTextureAnisotropy {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Level of anisotropy filter.
+//! Notice that actual quality depends on hardware capabilities!
+enum Graphic3d_LevelOfTextureAnisotropy
+{
 Graphic3d_LOTA_OFF,
 Graphic3d_LOTA_FAST,
 Graphic3d_LOTA_MIDDLE,
 Graphic3d_LOTA_QUALITY
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Graphic3d_LevelOfTextureAnisotropy_HeaderFile

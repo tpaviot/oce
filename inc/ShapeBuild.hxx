@@ -6,37 +6,31 @@
 #ifndef _ShapeBuild_HeaderFile
 #define _ShapeBuild_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom_Plane_HeaderFile
 #include <Handle_Geom_Plane.hxx>
-#endif
 class Geom_Plane;
 class ShapeBuild_Vertex;
 class ShapeBuild_Edge;
 class ShapeBuild_ReShape;
 
 
-//! This package provides basic building tools for other packages in ShapeHealing. <br>
-//! These tools are rather internal for ShapeHealing . <br>
-class ShapeBuild  {
+//! This package provides basic building tools for other packages in ShapeHealing.
+//! These tools are rather internal for ShapeHealing .
+class ShapeBuild 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Rebuilds a shape with substitution of some components <br>//! Returns a Geom_Surface which is the Plane XOY (Z positive) <br>
-//!          This allows to consider an UV space homologous to a 3D space, <br>
-//!          with this support surface <br>
-  Standard_EXPORT   static  Handle_Geom_Plane PlaneXOY() ;
-
+  
+  //! Rebuilds a shape with substitution of some components
+  //! Returns a Geom_Surface which is the Plane XOY (Z positive)
+  //! This allows to consider an UV space homologous to a 3D space,
+  //! with this support surface
+  Standard_EXPORT static   Handle(Geom_Plane) PlaneXOY() ;
 
 
 
@@ -62,7 +56,6 @@ friend class ShapeBuild_ReShape;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeBuild_HeaderFile

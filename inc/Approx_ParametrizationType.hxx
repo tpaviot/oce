@@ -6,15 +6,14 @@
 #ifndef _Approx_ParametrizationType_HeaderFile
 #define _Approx_ParametrizationType_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Approx_ParametrizationType {
+
+enum Approx_ParametrizationType
+{
 Approx_ChordLength,
 Approx_Centripetal,
 Approx_IsoParametric
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Approx_ParametrizationType_HeaderFile

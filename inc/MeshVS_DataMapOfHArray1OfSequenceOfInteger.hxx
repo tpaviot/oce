@@ -6,34 +6,16 @@
 #ifndef _MeshVS_DataMapOfHArray1OfSequenceOfInteger_HeaderFile
 #define _MeshVS_DataMapOfHArray1OfSequenceOfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_MeshVS_HArray1OfSequenceOfInteger_HeaderFile
 #include <Handle_MeshVS_HArray1OfSequenceOfInteger.hxx>
-#endif
-#ifndef _Handle_MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger_HeaderFile
 #include <Handle_MeshVS_DataMapNodeOfDataMapOfHArray1OfSequenceOfInteger.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class MeshVS_HArray1OfSequenceOfInteger;
@@ -43,50 +25,50 @@ class MeshVS_DataMapIteratorOfDataMapOfHArray1OfSequenceOfInteger;
 
 
 
-class MeshVS_DataMapOfHArray1OfSequenceOfInteger  : public TCollection_BasicMap {
+class MeshVS_DataMapOfHArray1OfSequenceOfInteger  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   MeshVS_DataMapOfHArray1OfSequenceOfInteger(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT MeshVS_DataMapOfHArray1OfSequenceOfInteger(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     MeshVS_DataMapOfHArray1OfSequenceOfInteger& Assign(const MeshVS_DataMapOfHArray1OfSequenceOfInteger& Other) ;
-    MeshVS_DataMapOfHArray1OfSequenceOfInteger& operator =(const MeshVS_DataMapOfHArray1OfSequenceOfInteger& Other) 
+  Standard_EXPORT   MeshVS_DataMapOfHArray1OfSequenceOfInteger& Assign (const MeshVS_DataMapOfHArray1OfSequenceOfInteger& Other) ;
+  MeshVS_DataMapOfHArray1OfSequenceOfInteger& operator = (const MeshVS_DataMapOfHArray1OfSequenceOfInteger& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~MeshVS_DataMapOfHArray1OfSequenceOfInteger()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Bind(const Standard_Integer& K,const Handle(MeshVS_HArray1OfSequenceOfInteger)& I) ;
+  Standard_EXPORT   Standard_Boolean Bind (const Standard_Integer& K, const Handle(MeshVS_HArray1OfSequenceOfInteger)& I) ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const Standard_Integer& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound (const Standard_Integer& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind(const Standard_Integer& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind (const Standard_Integer& K) ;
   
-  Standard_EXPORT    const Handle_MeshVS_HArray1OfSequenceOfInteger& Find(const Standard_Integer& K) const;
-   const Handle_MeshVS_HArray1OfSequenceOfInteger& operator()(const Standard_Integer& K) const
+  Standard_EXPORT  const  Handle(MeshVS_HArray1OfSequenceOfInteger)& Find (const Standard_Integer& K)  const;
+ const  Handle(MeshVS_HArray1OfSequenceOfInteger)& operator() (const Standard_Integer& K)  const
 {
   return Find(K);
 }
   
-  Standard_EXPORT     Handle_MeshVS_HArray1OfSequenceOfInteger& ChangeFind(const Standard_Integer& K) ;
-    Handle_MeshVS_HArray1OfSequenceOfInteger& operator()(const Standard_Integer& K) 
+  Standard_EXPORT   Handle(MeshVS_HArray1OfSequenceOfInteger)& ChangeFind (const Standard_Integer& K) ;
+  Handle(MeshVS_HArray1OfSequenceOfInteger)& operator() (const Standard_Integer& K) 
 {
   return ChangeFind(K);
 }
   
-  Standard_EXPORT     Standard_Address Find1(const Standard_Integer& K) const;
+  Standard_EXPORT   Standard_Address Find1 (const Standard_Integer& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFind1(const Standard_Integer& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFind1 (const Standard_Integer& K) ;
 
 
 
@@ -100,7 +82,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   MeshVS_DataMapOfHArray1OfSequenceOfInteger(const MeshVS_DataMapOfHArray1OfSequenceOfInteger& Other);
+  Standard_EXPORT MeshVS_DataMapOfHArray1OfSequenceOfInteger(const MeshVS_DataMapOfHArray1OfSequenceOfInteger& Other);
 
 
 
@@ -111,7 +93,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MeshVS_DataMapOfHArray1OfSequenceOfInteger_HeaderFile

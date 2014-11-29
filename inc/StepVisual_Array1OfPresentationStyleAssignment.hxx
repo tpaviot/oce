@@ -6,28 +6,14 @@
 #ifndef _StepVisual_Array1OfPresentationStyleAssignment_HeaderFile
 #define _StepVisual_Array1OfPresentationStyleAssignment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepVisual_PresentationStyleAssignment_HeaderFile
 #include <Handle_StepVisual_PresentationStyleAssignment.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -36,52 +22,52 @@ class StepVisual_PresentationStyleAssignment;
 
 
 
-class StepVisual_Array1OfPresentationStyleAssignment  {
+class StepVisual_Array1OfPresentationStyleAssignment 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      StepVisual_Array1OfPresentationStyleAssignment(const Standard_Integer Low,const Standard_Integer Up);
+    StepVisual_Array1OfPresentationStyleAssignment(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepVisual_Array1OfPresentationStyleAssignment(const Handle(StepVisual_PresentationStyleAssignment)& Item,const Standard_Integer Low,const Standard_Integer Up);
+    StepVisual_Array1OfPresentationStyleAssignment(const Handle(StepVisual_PresentationStyleAssignment)& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const Handle(StepVisual_PresentationStyleAssignment)& V) ;
+  Standard_EXPORT   void Init (const Handle(StepVisual_PresentationStyleAssignment)& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~StepVisual_Array1OfPresentationStyleAssignment()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const StepVisual_Array1OfPresentationStyleAssignment& Assign(const StepVisual_Array1OfPresentationStyleAssignment& Other) ;
-   const StepVisual_Array1OfPresentationStyleAssignment& operator =(const StepVisual_Array1OfPresentationStyleAssignment& Other) 
+  Standard_EXPORT  const  StepVisual_Array1OfPresentationStyleAssignment& Assign (const StepVisual_Array1OfPresentationStyleAssignment& Other) ;
+ const  StepVisual_Array1OfPresentationStyleAssignment& operator = (const StepVisual_Array1OfPresentationStyleAssignment& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(StepVisual_PresentationStyleAssignment)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(StepVisual_PresentationStyleAssignment)& Value) ;
   
-       const Handle_StepVisual_PresentationStyleAssignment& Value(const Standard_Integer Index) const;
-     const Handle_StepVisual_PresentationStyleAssignment& operator ()(const Standard_Integer Index) const
+     const  Handle(StepVisual_PresentationStyleAssignment)& Value (const Standard_Integer Index)  const;
+   const  Handle(StepVisual_PresentationStyleAssignment)& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        Handle_StepVisual_PresentationStyleAssignment& ChangeValue(const Standard_Integer Index) ;
-      Handle_StepVisual_PresentationStyleAssignment& operator ()(const Standard_Integer Index) 
+      Handle(StepVisual_PresentationStyleAssignment)& ChangeValue (const Standard_Integer Index) ;
+    Handle(StepVisual_PresentationStyleAssignment)& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -95,18 +81,18 @@ protected:
 private:
 
   
-  Standard_EXPORT   StepVisual_Array1OfPresentationStyleAssignment(const StepVisual_Array1OfPresentationStyleAssignment& AnArray);
+  Standard_EXPORT StepVisual_Array1OfPresentationStyleAssignment(const StepVisual_Array1OfPresentationStyleAssignment& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
 
-#define Array1Item Handle_StepVisual_PresentationStyleAssignment
+#define Array1Item Handle(StepVisual_PresentationStyleAssignment)
 #define Array1Item_hxx <StepVisual_PresentationStyleAssignment.hxx>
 #define TCollection_Array1 StepVisual_Array1OfPresentationStyleAssignment
 #define TCollection_Array1_hxx <StepVisual_Array1OfPresentationStyleAssignment.hxx>
@@ -119,7 +105,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_Array1OfPresentationStyleAssignment_HeaderFile

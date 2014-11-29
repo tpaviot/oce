@@ -6,37 +6,17 @@
 #ifndef _GeomFill_SnglrFunc_HeaderFile
 #define _GeomFill_SnglrFunc_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Adaptor3d_HCurve_HeaderFile
 #include <Handle_Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Adaptor3d_Curve_HeaderFile
 #include <Adaptor3d_Curve.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _GeomAbs_CurveType_HeaderFile
 #include <GeomAbs_CurveType.hxx>
-#endif
 class Adaptor3d_HCurve;
 class Standard_OutOfRange;
 class Standard_DomainError;
@@ -45,63 +25,77 @@ class gp_Pnt;
 class gp_Vec;
 
 
-//! to  represent  function  C'(t)^C''(t) <br>
-class GeomFill_SnglrFunc  : public Adaptor3d_Curve {
+//! to  represent  function  C'(t)^C''(t)
+class GeomFill_SnglrFunc  : public Adaptor3d_Curve
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomFill_SnglrFunc(const Handle(Adaptor3d_HCurve)& HC);
+  Standard_EXPORT GeomFill_SnglrFunc(const Handle(Adaptor3d_HCurve)& HC);
   
-  Standard_EXPORT     void SetRatio(const Standard_Real Ratio) ;
+  Standard_EXPORT   void SetRatio (const Standard_Real Ratio) ;
   
-  Standard_EXPORT     Standard_Real FirstParameter() const;
+  Standard_EXPORT   Standard_Real FirstParameter()  const;
   
-  Standard_EXPORT     Standard_Real LastParameter() const;
-  //! Returns  the number  of  intervals for  continuity <br>
-//!          <S>. May be one if Continuity(me) >= <S> <br>
-  Standard_EXPORT     Standard_Integer NbIntervals(const GeomAbs_Shape S) ;
-  //! Stores in <T> the  parameters bounding the intervals <br>
-//!          of continuity <S>. <br>
-//! <br>
-//!          The array must provide  enough room to  accomodate <br>
-//!          for the parameters. i.e. T.Length() > NbIntervals() <br>
-  Standard_EXPORT     void Intervals(TColStd_Array1OfReal& T,const GeomAbs_Shape S) ;
-  //! Computes the point of parameter U on the curve. <br>
-  Standard_EXPORT     gp_Pnt Value(const Standard_Real U) const;
+  Standard_EXPORT   Standard_Real LastParameter()  const;
   
-  Standard_EXPORT     Standard_Boolean IsPeriodic() const;
+  //! Returns  the number  of  intervals for  continuity
+  //! <S>. May be one if Continuity(me) >= <S>
+  Standard_EXPORT   Standard_Integer NbIntervals (const GeomAbs_Shape S) ;
   
-  Standard_EXPORT     Standard_Real Period() const;
-  //! Computes the point of parameter U on the curve. <br>
-  Standard_EXPORT     void D0(const Standard_Real U,gp_Pnt& P) const;
-  //! Computes the point of parameter U on the curve with its <br>
-//!  first derivative. <br>//! Raised if the continuity of the current interval <br>
-//!  is not C1. <br>
-  Standard_EXPORT     void D1(const Standard_Real U,gp_Pnt& P,gp_Vec& V) const;
+  //! Stores in <T> the  parameters bounding the intervals
+  //! of continuity <S>.
+  //!
+  //! The array must provide  enough room to  accomodate
+  //! for the parameters. i.e. T.Length() > NbIntervals()
+  Standard_EXPORT   void Intervals (TColStd_Array1OfReal& T, const GeomAbs_Shape S) ;
   
-//!  Returns the point P of parameter U, the first and second <br>
-//!  derivatives V1 and V2. <br>//! Raised if the continuity of the current interval <br>
-//!  is not C2. <br>
-  Standard_EXPORT     void D2(const Standard_Real U,gp_Pnt& P,gp_Vec& V1,gp_Vec& V2) const;
+  //! Computes the point of parameter U on the curve.
+  Standard_EXPORT   gp_Pnt Value (const Standard_Real U)  const;
   
-//!  Returns the point P of parameter U, the first, the second <br>
-//!  and the third derivative. <br>//! Raised if the continuity of the current interval <br>
-//!  is not C1. <br>
-  Standard_EXPORT     void D3(const Standard_Real U,gp_Pnt& P,gp_Vec& V1,gp_Vec& V2,gp_Vec& V3) const;
+  Standard_EXPORT   Standard_Boolean IsPeriodic()  const;
   
-//!  The returned vector gives the value of the derivative for the <br>
-//!  order of derivation N. <br>//! Raised if N < 1. <br>
-  Standard_EXPORT     gp_Vec DN(const Standard_Real U,const Standard_Integer N) const;
-  //!  Returns the parametric  resolution corresponding <br>
-//!         to the real space resolution <R3d>. <br>
-  Standard_EXPORT     Standard_Real Resolution(const Standard_Real R3d) const;
-  //! Returns  the  type of the   curve  in the  current <br>
-//!          interval :   Line,   Circle,   Ellipse, Hyperbola, <br>
-//!          Parabola, BezierCurve, BSplineCurve, OtherCurve. <br>
-  Standard_EXPORT     GeomAbs_CurveType GetType() const;
+  Standard_EXPORT   Standard_Real Period()  const;
+  
+  //! Computes the point of parameter U on the curve.
+  Standard_EXPORT   void D0 (const Standard_Real U, gp_Pnt& P)  const;
+  
+  //! Computes the point of parameter U on the curve with its
+  //! first derivative.
+  //! Raised if the continuity of the current interval
+  //! is not C1.
+  Standard_EXPORT   void D1 (const Standard_Real U, gp_Pnt& P, gp_Vec& V)  const;
+  
 
+  //! Returns the point P of parameter U, the first and second
+  //! derivatives V1 and V2.
+  //! Raised if the continuity of the current interval
+  //! is not C2.
+  Standard_EXPORT   void D2 (const Standard_Real U, gp_Pnt& P, gp_Vec& V1, gp_Vec& V2)  const;
+  
+
+  //! Returns the point P of parameter U, the first, the second
+  //! and the third derivative.
+  //! Raised if the continuity of the current interval
+  //! is not C1.
+  Standard_EXPORT   void D3 (const Standard_Real U, gp_Pnt& P, gp_Vec& V1, gp_Vec& V2, gp_Vec& V3)  const;
+  
+
+  //! The returned vector gives the value of the derivative for the
+  //! order of derivation N.
+  //! Raised if N < 1.
+  Standard_EXPORT   gp_Vec DN (const Standard_Real U, const Standard_Integer N)  const;
+  
+  //! Returns the parametric  resolution corresponding
+  //! to the real space resolution <R3d>.
+  Standard_EXPORT   Standard_Real Resolution (const Standard_Real R3d)  const;
+  
+  //! Returns  the  type of the   curve  in the  current
+  //! interval :   Line,   Circle,   Ellipse, Hyperbola,
+  //! Parabola, BezierCurve, BSplineCurve, OtherCurve.
+  Standard_EXPORT   GeomAbs_CurveType GetType()  const;
 
 
 
@@ -116,8 +110,8 @@ private:
 
 
 
-Handle_Adaptor3d_HCurve myHCurve;
-Standard_Real ratio;
+  Handle(Adaptor3d_HCurve) myHCurve;
+  Standard_Real ratio;
 
 
 };
@@ -126,7 +120,6 @@ Standard_Real ratio;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomFill_SnglrFunc_HeaderFile

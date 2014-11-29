@@ -1,21 +1,7 @@
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _TColgp_HArray2OfPnt_HeaderFile
 #include <TColgp_HArray2OfPnt.hxx>
-#endif
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _TColStd_HArray2OfInteger_HeaderFile
 #include <TColStd_HArray2OfInteger.hxx>
-#endif
-#ifndef _Convert_GridPolynomialToPoles_HeaderFile
 #include <Convert_GridPolynomialToPoles.hxx>
-#endif

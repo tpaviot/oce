@@ -6,19 +6,11 @@
 #ifndef _SelectBasics_HeaderFile
 #define _SelectBasics_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class SelectBasics_EntityOwner;
 class SelectBasics_SortAlgo;
 class SelectBasics_BasicTool;
@@ -33,23 +25,24 @@ class SelectBasics_ListNodeOfListOfSensitive;
 class SelectBasics_ListIteratorOfListOfSensitive;
 
 
-//!  kernel of dynamic selection: <br>
-//!           - contains the algorithm to sort the sensitive areas <br>
-//!           before the selection action;->quick selection of <br>
-//!           an item in a set of items... <br>
-//!           - contains the entities able to give the algorithm <br>
-//!             sensitive areas . <br>
-class SelectBasics  {
+//! kernel of dynamic selection:
+//! - contains the algorithm to sort the sensitive areas
+//! before the selection action;->quick selection of
+//! an item in a set of items...
+//! - contains the entities able to give the algorithm
+//! sensitive areas .
+class SelectBasics 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Structure to provide all-in-one information on picking arguments <br>
-//! for "Matches" method of SelectBasics_SensitiveEntity. <br>
-  Standard_EXPORT   static  Standard_Integer MaxOwnerPriority() ;
   
-  Standard_EXPORT   static  Standard_Integer MinOwnerPriority() ;
-
+  //! Structure to provide all-in-one information on picking arguments
+  //! for "Matches" method of SelectBasics_SensitiveEntity.
+  Standard_EXPORT static   Standard_Integer MaxOwnerPriority() ;
+  
+  Standard_EXPORT static   Standard_Integer MinOwnerPriority() ;
 
 
 
@@ -84,7 +77,6 @@ friend class SelectBasics_ListIteratorOfListOfSensitive;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SelectBasics_HeaderFile

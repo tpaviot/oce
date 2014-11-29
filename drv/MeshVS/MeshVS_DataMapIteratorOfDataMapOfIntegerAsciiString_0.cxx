@@ -5,21 +5,11 @@
 
 #include <MeshVS_DataMapIteratorOfDataMapOfIntegerAsciiString.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _MeshVS_DataMapOfIntegerAsciiString_HeaderFile
 #include <MeshVS_DataMapOfIntegerAsciiString.hxx>
-#endif
-#ifndef _MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString_HeaderFile
 #include <MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString.hxx>
-#endif
  
 
 #define TheKey Standard_Integer

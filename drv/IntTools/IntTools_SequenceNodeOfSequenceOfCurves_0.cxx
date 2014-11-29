@@ -5,16 +5,10 @@
 
 #include <IntTools_SequenceNodeOfSequenceOfCurves.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IntTools_Curve_HeaderFile
 #include <IntTools_Curve.hxx>
-#endif
-#ifndef _IntTools_SequenceOfCurves_HeaderFile
 #include <IntTools_SequenceOfCurves.hxx>
-#endif
 
  
 

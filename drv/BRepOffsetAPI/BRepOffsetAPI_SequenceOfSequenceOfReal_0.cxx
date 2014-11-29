@@ -5,18 +5,10 @@
 
 #include <BRepOffsetAPI_SequenceOfSequenceOfReal.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TColStd_SequenceOfReal_HeaderFile
 #include <TColStd_SequenceOfReal.hxx>
-#endif
-#ifndef _BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal_HeaderFile
 #include <BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal.hxx>
-#endif
  
 
 #define SeqItem TColStd_SequenceOfReal

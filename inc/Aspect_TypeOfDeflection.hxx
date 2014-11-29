@@ -6,16 +6,15 @@
 #ifndef _Aspect_TypeOfDeflection_HeaderFile
 #define _Aspect_TypeOfDeflection_HeaderFile
 
-//! Defines if the maximal chordial deflection used when <br>
-//!          drawing an object is absolute  or relative to the size <br>
-//!          of the object. <br>
-enum Aspect_TypeOfDeflection {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Defines if the maximal chordial deflection used when
+//! drawing an object is absolute  or relative to the size
+//! of the object.
+enum Aspect_TypeOfDeflection
+{
 Aspect_TOD_RELATIVE,
 Aspect_TOD_ABSOLUTE
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_TypeOfDeflection_HeaderFile

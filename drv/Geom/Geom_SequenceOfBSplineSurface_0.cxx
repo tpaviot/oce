@@ -5,21 +5,13 @@
 
 #include <Geom_SequenceOfBSplineSurface.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Geom_BSplineSurface_HeaderFile
 #include <Geom_BSplineSurface.hxx>
-#endif
-#ifndef _Geom_SequenceNodeOfSequenceOfBSplineSurface_HeaderFile
 #include <Geom_SequenceNodeOfSequenceOfBSplineSurface.hxx>
-#endif
  
 
-#define SeqItem Handle_Geom_BSplineSurface
+#define SeqItem Handle(Geom_BSplineSurface)
 #define SeqItem_hxx <Geom_BSplineSurface.hxx>
 #define TCollection_SequenceNode Geom_SequenceNodeOfSequenceOfBSplineSurface
 #define TCollection_SequenceNode_hxx <Geom_SequenceNodeOfSequenceOfBSplineSurface.hxx>

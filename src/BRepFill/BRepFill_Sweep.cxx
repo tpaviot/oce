@@ -352,7 +352,7 @@ static Standard_Boolean SameParameter(TopoDS_Edge&    E,
   Approx_SameParameter sp( HC3d, Pcurv, S, tol3d );
   if(sp.IsDone() && !sp.IsSameParameter()) Pcurv = sp.Curve2d();
   else if(!sp.IsDone() && !sp.IsSameParameter()){
-#ifdef DEB
+#ifdef OCCT_DEBUG
     cout<<"echec SameParameter"<<endl;
 #endif  
     return Standard_False;
@@ -360,7 +360,7 @@ static Standard_Boolean SameParameter(TopoDS_Edge&    E,
 
   ResTol = sp.TolReached();
   if(ResTol > tolreached ){
-#ifdef DEB
+#ifdef OCCT_DEBUG
     cout<<"SameParameter : Tolerance not reached!"<<endl;
     cout<<"tol visee : "<<tol3d<<" tol obtained : "<<ResTol<<endl;
 #endif  
@@ -601,7 +601,7 @@ static void BuildFace(const Handle(Geom_Surface)& S,
       thePlane->UReverse();
     BRepLib_MakeFace MkF( thePlane, WW );
     if (MkF.Error() != BRepLib_FaceDone) {
-#if DEB
+#ifdef OCCT_DEBUG
       BRepLib_FaceError Err = MkF.Error();
       cout << "Planar Face Error :" <<   Err << endl;
 #endif
@@ -1034,12 +1034,12 @@ static Standard_Boolean Filling(const TopoDS_Shape& EF,
 				  GeomAbs_C1, GeomAbs_C1,
 				  8, 8, 2*NbInt, 0);
     if (!App.HasResult()) {
-#if DEB
+#ifdef OCCT_DEBUG
       cout << "Filling_Approx : Pas de resultat" << endl;
 #endif      
       return Standard_False;
     }
-#if DEB
+#ifdef OCCT_DEBUG
     cout <<  "Filling_Approx Error 3d = " << 
       App.MaxError() << endl;
 #endif
@@ -1234,7 +1234,7 @@ static void SetCommonEdgeInFace(BRepTools_Substitution& aSubstitute,
       Substitute( aSubstitute, OldEdge, NewEdge );
     }
   }
-#if DEB
+#ifdef OCCT_DEBUG
   if (!done) cout << "Substitution of Edge failed" << endl;
 #endif  
 }
@@ -1705,7 +1705,7 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
   LastShape  = Last; 
 
   // It is necessary to check the SameRange on its (PRO13551)
-#ifdef DEB
+#ifdef OCCT_DEBUG
   Standard_Boolean issame = Standard_True;
 #endif
   BRep_Builder B;
@@ -1715,7 +1715,7 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
       if (!BRepLib::CheckSameRange(wexp.Current())) {
 	B.SameRange(wexp.Current(), Standard_False);
 	B.SameParameter(wexp.Current(), Standard_False);
-#ifdef DEB
+#ifdef OCCT_DEBUG
 	issame = Standard_False;
 #endif
       }
@@ -1727,14 +1727,14 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
       if (!BRepLib::CheckSameRange(wexp.Current())) {
 	B.SameRange(wexp.Current(), Standard_False); 
 	B.SameParameter(wexp.Current(), Standard_False);
-#ifdef DEB
+#ifdef OCCT_DEBUG
 	issame = Standard_False;
 #endif
       }
     }
   }
 
-#if DEB
+#ifdef OCCT_DEBUG
   if (!issame) 
     cout<<"Sweep Warning : Edge not SameRange in the limits"<<endl;
 #endif
@@ -1943,6 +1943,7 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
 	    const Standard_Integer ILast,
             TopTools_MapOfShape& ReversedEdges,
             BRepFill_DataMapOfShapeHArray2OfShape& Tapes,
+            BRepFill_DataMapOfShapeHArray2OfShape& Rails,
 	    const Standard_Real ExtendFirst,
 	    const Standard_Real ExtendLast) 
 {
@@ -2079,11 +2080,13 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
     mySec->Init(FirstShape);
     for (isec=1; isec<=NbLaw; isec++) {
       E = mySec->CurrentEdge();
+      TopoDS_Vertex Vfirst, Vlast;
+      TopExp::Vertices(E, Vfirst, Vlast);
       VEdge(isec, 1) = E;
       if (E.Orientation() == TopAbs_REVERSED)
-        Vertex(isec+1, 1) = TopExp::FirstVertex(E);
+        Vertex(isec+1, 1) = Vfirst; //TopExp::FirstVertex(E);
       else 
-        Vertex(isec+1, 1) =  TopExp::LastVertex(E);
+        Vertex(isec+1, 1) = Vlast; //TopExp::LastVertex(E);
       UpdateVertex(IFirst-1, isec+1, 
                    TabErr(isec, 1), Vi(1),  Vertex(isec+1, 1));
 
@@ -2130,6 +2133,23 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
       {
         Handle(TopTools_HArray2OfShape) EmptyArray = new TopTools_HArray2OfShape(1, 6, 1, NbPath+1);
         Tapes.Bind(E, EmptyArray);
+        Standard_Integer j;
+        if (Rails.IsBound(Vfirst))
+        {
+          Standard_Integer ind = (E.Orientation() == TopAbs_REVERSED)? isec+1 : isec;
+          for (j = 1; j <= NbPath; j++)
+            UEdge(ind, j) = Rails(Vfirst)->Value(1, j);
+          for (j = 1; j <= NbPath+1; j++)
+            Vertex(ind, j) = Rails(Vfirst)->Value(2, j);
+        }
+        if (Rails.IsBound(Vlast))
+        {
+          Standard_Integer ind = (E.Orientation() == TopAbs_FORWARD)? isec+1 : isec;
+          for (j = 1; j <= NbPath; j++)
+            UEdge(ind, j) = Rails(Vlast)->Value(1, j);
+          for (j = 1; j <= NbPath+1; j++)
+            Vertex(ind, j) = Rails(Vlast)->Value(2, j);
+        }
       }
     }
     
@@ -2173,7 +2193,7 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
     else {
       if (exuv) {
         u = UFirst;
-          v = VLast;
+        v = VLast;
       }
       else {
         u = ULast;
@@ -2392,7 +2412,7 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
 					   Max(myTol3d, TabErr(isec,ipath)));
       }
       if (Degenerated(isec, ipath)) { 
-#if DEB
+#ifdef OCCT_DEBUG
 	cout << "Sweep : Degenerated case" << endl;
 #endif
 	hasdegen = Standard_True;
@@ -2436,8 +2456,13 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
 				      Vertex(1,ipath+1),
 				      myTol3d);
 	}
- 	else UpdateEdge(TopoDS::Edge(UEdge(isec, ipath)), 
-			S, !exuv, UFirst);
+ 	else
+        {
+          if (UEdge(isec, ipath).IsNull()) //sweep failed
+            return Standard_False;
+          UpdateEdge(TopoDS::Edge(UEdge(isec, ipath)), 
+                     S, !exuv, UFirst);
+        }
      
 	if (uclose && (isec==NbLaw)) {
 	  UpdateEdge(TopoDS::Edge(UEdge(1, ipath)), 
@@ -2464,9 +2489,13 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
           if (VEdge(isec, ipath).IsNull())
             VEdge(isec, ipath) = aNewFirstEdge;
           else //rebuild first edge
+          {
             RebuildTopOrBottomEdge(aNewFirstEdge,
                                    TopoDS::Edge(VEdge(isec, ipath)),
                                    ReversedEdges);
+            if (ReversedEdges.Contains(VEdge(isec, ipath)))
+              StartEdges(isec).Reverse();
+          }
         }
 	
 	else UpdateEdge(TopoDS::Edge(VEdge(isec, ipath)), 
@@ -2616,7 +2645,7 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
     }
   }
 
-  // (5) Update Tapes
+  // (5) Update Tapes and Rails
   Standard_Integer j;
   if (IFirst == 1 && !Tapes.IsEmpty()) //works only in case of single shell
   {
@@ -2634,6 +2663,26 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
         Tapes(StartEdges(isec))->SetValue(5, j, Vertex(isec+1, j));
       for (j = 1; j <= NbPath; j++)
         Tapes(StartEdges(isec))->SetValue(6, j, myFaces->Value(isec, j));
+      TopoDS_Vertex Vfirst, Vlast;
+      TopExp::Vertices(TopoDS::Edge(StartEdges(isec)), Vfirst, Vlast, Standard_True); //with orientation
+      if (!Rails.IsBound(Vfirst))
+      {
+        Handle(TopTools_HArray2OfShape) anArray = new TopTools_HArray2OfShape(1, 2, 1, NbPath+1);
+        for (j = 1; j <= NbPath; j++)
+          anArray->SetValue(1, j, myUEdges->Value(isec, j));
+        for (j = 1; j <= NbPath+1; j++)
+          anArray->SetValue(2, j, Vertex(isec, j));
+        Rails.Bind(Vfirst, anArray);
+      }
+      if (!Rails.IsBound(Vlast))
+      {
+        Handle(TopTools_HArray2OfShape) anArray = new TopTools_HArray2OfShape(1, 2, 1, NbPath+1);
+        for (j = 1; j <= NbPath; j++)
+          anArray->SetValue(1, j, myUEdges->Value(isec+1, j));
+        for (j = 1; j <= NbPath+1; j++)
+          anArray->SetValue(2, j, Vertex(isec+1, j));
+        Rails.Bind(Vlast, anArray);
+      }
     }
   }
   
@@ -2646,6 +2695,7 @@ BRepFill_Sweep::BRepFill_Sweep(const Handle(BRepFill_SectionLaw)& Section,
 //======================================================================
 void BRepFill_Sweep::Build(TopTools_MapOfShape& ReversedEdges,
                            BRepFill_DataMapOfShapeHArray2OfShape& Tapes,
+                           BRepFill_DataMapOfShapeHArray2OfShape& Rails,
                            const BRepFill_TransitionStyle Transition,
                            const GeomAbs_Shape Continuity,
                            const GeomFill_ApproxStyle Approx,
@@ -2688,7 +2738,7 @@ void BRepFill_Sweep::Build(TopTools_MapOfShape& ReversedEdges,
       isDone = BuildShell(Transition, 
 			  1, NbPath+1,
                           ReversedEdges,
-                          Tapes,
+                          Tapes, Rails,
 			  Extend, Extend);
     }
     else { //  This is done piece by piece
@@ -2700,7 +2750,7 @@ void BRepFill_Sweep::Build(TopTools_MapOfShape& ReversedEdges,
 	isDone = BuildShell(Transition, 
 			    IFirst, ILast,
                             ReversedEdges,
-                            Tapes,
+                            Tapes, Rails,
 			    EvalExtrapol(IFirst, Transition),
 			    EvalExtrapol(ILast,  Transition));
 	if (IFirst>1) {
@@ -2934,7 +2984,7 @@ void BRepFill_Sweep::Build(TopTools_MapOfShape& ReversedEdges,
     t2 = M.Column(3);
 
     if (t1.Angle(t2) < myAngMin) {
-#if DEB
+#ifdef OCCT_DEBUG
       cout << "BRepFill_Sweep::PerformCorner : This is not a corner !" << endl;
 #endif
       return;
@@ -3027,7 +3077,7 @@ void BRepFill_Sweep::Build(TopTools_MapOfShape& ReversedEdges,
   }
   else if ((TheTransition == BRepFill_Right) ||
 	   aTrim.HasSection() ) { 
-#if DEB
+#ifdef OCCT_DEBUG
     cout << "Fail of TrimCorner" << endl;
 #endif
     return; // Nothing is touched
@@ -3095,7 +3145,7 @@ void BRepFill_Sweep::Build(TopTools_MapOfShape& ReversedEdges,
 	  if (ii==1) BordFirst = Bord1;
 	}
       }
-#if DEB
+#ifdef OCCT_DEBUG
       else cout << "PerformCorner : Unsymmetry of free border" << endl;
 #endif
     }

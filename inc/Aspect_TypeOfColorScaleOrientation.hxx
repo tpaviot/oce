@@ -6,16 +6,15 @@
 #ifndef _Aspect_TypeOfColorScaleOrientation_HeaderFile
 #define _Aspect_TypeOfColorScaleOrientation_HeaderFile
 
-//! Defines the type of color scale orientation <br>
-enum Aspect_TypeOfColorScaleOrientation {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Defines the type of color scale orientation
+enum Aspect_TypeOfColorScaleOrientation
+{
 Aspect_TOCSO_NONE,
 Aspect_TOCSO_LEFT,
 Aspect_TOCSO_RIGHT,
 Aspect_TOCSO_CENTER
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_TypeOfColorScaleOrientation_HeaderFile

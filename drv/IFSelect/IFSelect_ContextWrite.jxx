@@ -1,33 +1,11 @@
-#ifndef _Interface_InterfaceModel_HeaderFile
 #include <Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Interface_Protocol_HeaderFile
 #include <Interface_Protocol.hxx>
-#endif
-#ifndef _IFSelect_AppliedModifiers_HeaderFile
 #include <IFSelect_AppliedModifiers.hxx>
-#endif
-#ifndef _Interface_HGraph_HeaderFile
 #include <Interface_HGraph.hxx>
-#endif
-#ifndef _IFSelect_GeneralModifier_HeaderFile
 #include <IFSelect_GeneralModifier.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Interface_Graph_HeaderFile
 #include <Interface_Graph.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Interface_Check_HeaderFile
 #include <Interface_Check.hxx>
-#endif
-#ifndef _Interface_CheckIterator_HeaderFile
 #include <Interface_CheckIterator.hxx>
-#endif
-#ifndef _IFSelect_ContextWrite_HeaderFile
 #include <IFSelect_ContextWrite.hxx>
-#endif

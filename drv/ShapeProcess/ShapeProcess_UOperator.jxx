@@ -1,6 +1,2 @@
-#ifndef _ShapeProcess_Context_HeaderFile
 #include <ShapeProcess_Context.hxx>
-#endif
-#ifndef _ShapeProcess_UOperator_HeaderFile
 #include <ShapeProcess_UOperator.hxx>
-#endif

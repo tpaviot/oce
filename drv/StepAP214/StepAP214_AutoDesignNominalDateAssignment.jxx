@@ -1,15 +1,5 @@
-#ifndef _StepAP214_HArray1OfAutoDesignDatedItem_HeaderFile
 #include <StepAP214_HArray1OfAutoDesignDatedItem.hxx>
-#endif
-#ifndef _StepBasic_Date_HeaderFile
 #include <StepBasic_Date.hxx>
-#endif
-#ifndef _StepBasic_DateRole_HeaderFile
 #include <StepBasic_DateRole.hxx>
-#endif
-#ifndef _StepAP214_AutoDesignDatedItem_HeaderFile
 #include <StepAP214_AutoDesignDatedItem.hxx>
-#endif
-#ifndef _StepAP214_AutoDesignNominalDateAssignment_HeaderFile
 #include <StepAP214_AutoDesignNominalDateAssignment.hxx>
-#endif

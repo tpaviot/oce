@@ -6,28 +6,22 @@
 #ifndef _StepVisual_Template_HeaderFile
 #define _StepVisual_Template_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_Template_HeaderFile
 #include <Handle_StepVisual_Template.hxx>
-#endif
 
-#ifndef _StepRepr_Representation_HeaderFile
 #include <StepRepr_Representation.hxx>
-#endif
 
 
 
-class StepVisual_Template : public StepRepr_Representation {
+class StepVisual_Template : public StepRepr_Representation
+{
 
 public:
 
-  //! Returns a Template <br>
-  Standard_EXPORT   StepVisual_Template();
+  
+  //! Returns a Template
+  Standard_EXPORT StepVisual_Template();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_Template_HeaderFile

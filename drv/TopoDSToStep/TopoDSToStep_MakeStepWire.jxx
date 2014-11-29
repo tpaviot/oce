@@ -1,18 +1,6 @@
-#ifndef _StepShape_TopologicalRepresentationItem_HeaderFile
 #include <StepShape_TopologicalRepresentationItem.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _TopoDS_Wire_HeaderFile
 #include <TopoDS_Wire.hxx>
-#endif
-#ifndef _TopoDSToStep_Tool_HeaderFile
 #include <TopoDSToStep_Tool.hxx>
-#endif
-#ifndef _Transfer_FinderProcess_HeaderFile
 #include <Transfer_FinderProcess.hxx>
-#endif
-#ifndef _TopoDSToStep_MakeStepWire_HeaderFile
 #include <TopoDSToStep_MakeStepWire.hxx>
-#endif

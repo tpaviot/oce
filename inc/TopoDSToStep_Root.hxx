@@ -6,37 +6,28 @@
 #ifndef _TopoDSToStep_Root_HeaderFile
 #define _TopoDSToStep_Root_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 
 
-//! This class implements the common services for <br>
-//!           all classes of TopoDSToStep which report error. <br>
-class TopoDSToStep_Root  {
+//! This class implements the common services for
+//! all classes of TopoDSToStep which report error.
+class TopoDSToStep_Root 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns (modifiable) the tolerance to be used for writing <br>
-//!           If not set, starts at 0.0001 <br>
-  Standard_EXPORT     Standard_Real& Tolerance() ;
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-
+  //! Returns (modifiable) the tolerance to be used for writing
+  //! If not set, starts at 0.0001
+  Standard_EXPORT   Standard_Real& Tolerance() ;
+  
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
 
 
 
@@ -44,11 +35,11 @@ public:
 protected:
 
   
-  Standard_EXPORT   TopoDSToStep_Root();
+  Standard_EXPORT TopoDSToStep_Root();
 
 
-Standard_Real toler;
-Standard_Boolean done;
+  Standard_Real toler;
+  Standard_Boolean done;
 
 
 private:
@@ -63,7 +54,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopoDSToStep_Root_HeaderFile

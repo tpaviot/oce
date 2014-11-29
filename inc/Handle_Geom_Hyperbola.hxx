@@ -6,22 +6,15 @@
 #ifndef _Handle_Geom_Hyperbola_HeaderFile
 #define _Handle_Geom_Hyperbola_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Geom_Conic_HeaderFile
 #include <Handle_Geom_Conic.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Geom_Conic);
 class Geom_Hyperbola;
 
-DEFINE_STANDARD_HANDLE(Geom_Hyperbola,Geom_Conic)
+DEFINE_STANDARD_HANDLE(Geom_Hyperbola, Geom_Conic)
 
-#endif
+#endif // _Handle_Geom_Hyperbola_HeaderFile

@@ -5,28 +5,14 @@
 
 #include <StepFEA_HArray1OfCurveElementEndRelease.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _StepFEA_CurveElementEndRelease_HeaderFile
 #include <StepFEA_CurveElementEndRelease.hxx>
-#endif
-#ifndef _StepFEA_Array1OfCurveElementEndRelease_HeaderFile
 #include <StepFEA_Array1OfCurveElementEndRelease.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(StepFEA_HArray1OfCurveElementEndRelease,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(StepFEA_HArray1OfCurveElementEndRelease)
 
 
-#define ItemHArray1 Handle_StepFEA_CurveElementEndRelease
+#define ItemHArray1 Handle(StepFEA_CurveElementEndRelease)
 #define ItemHArray1_hxx <StepFEA_CurveElementEndRelease.hxx>
 #define TheArray1 StepFEA_Array1OfCurveElementEndRelease
 #define TheArray1_hxx <StepFEA_Array1OfCurveElementEndRelease.hxx>

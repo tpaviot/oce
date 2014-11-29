@@ -6,61 +6,47 @@
 #ifndef _StepGeom_GeometricRepresentationContextAndParametricRepresentationContext_HeaderFile
 #define _StepGeom_GeometricRepresentationContextAndParametricRepresentationContext_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_GeometricRepresentationContextAndParametricRepresentationContext_HeaderFile
 #include <Handle_StepGeom_GeometricRepresentationContextAndParametricRepresentationContext.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_GeometricRepresentationContext_HeaderFile
 #include <Handle_StepGeom_GeometricRepresentationContext.hxx>
-#endif
-#ifndef _Handle_StepRepr_ParametricRepresentationContext_HeaderFile
 #include <Handle_StepRepr_ParametricRepresentationContext.hxx>
-#endif
-#ifndef _StepRepr_RepresentationContext_HeaderFile
 #include <StepRepr_RepresentationContext.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StepGeom_GeometricRepresentationContext;
 class StepRepr_ParametricRepresentationContext;
 class TCollection_HAsciiString;
 
 
 
-class StepGeom_GeometricRepresentationContextAndParametricRepresentationContext : public StepRepr_RepresentationContext {
+class StepGeom_GeometricRepresentationContextAndParametricRepresentationContext : public StepRepr_RepresentationContext
+{
 
 public:
 
-  //! empty constructor <br>
-  Standard_EXPORT   StepGeom_GeometricRepresentationContextAndParametricRepresentationContext();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aContextIdentifier,const Handle(TCollection_HAsciiString)& aContextType) ;
+  //! empty constructor
+  Standard_EXPORT StepGeom_GeometricRepresentationContextAndParametricRepresentationContext();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aContextIdentifier,const Handle(TCollection_HAsciiString)& aContextType,const Handle(StepGeom_GeometricRepresentationContext)& aGeometricRepresentationContext,const Handle(StepRepr_ParametricRepresentationContext)& aParametricRepresentationContext) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aContextIdentifier, const Handle(TCollection_HAsciiString)& aContextType) ;
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aContextIdentifier,const Handle(TCollection_HAsciiString)& aContextType,const Standard_Integer aCoordinateSpaceDimension) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aContextIdentifier, const Handle(TCollection_HAsciiString)& aContextType, const Handle(StepGeom_GeometricRepresentationContext)& aGeometricRepresentationContext, const Handle(StepRepr_ParametricRepresentationContext)& aParametricRepresentationContext) ;
   
-  Standard_EXPORT     void SetGeometricRepresentationContext(const Handle(StepGeom_GeometricRepresentationContext)& aGeometricRepresentationContext) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aContextIdentifier, const Handle(TCollection_HAsciiString)& aContextType, const Standard_Integer aCoordinateSpaceDimension) ;
   
-  Standard_EXPORT     Handle_StepGeom_GeometricRepresentationContext GeometricRepresentationContext() const;
+  Standard_EXPORT   void SetGeometricRepresentationContext (const Handle(StepGeom_GeometricRepresentationContext)& aGeometricRepresentationContext) ;
   
-  Standard_EXPORT     void SetParametricRepresentationContext(const Handle(StepRepr_ParametricRepresentationContext)& aParametricRepresentationContext) ;
+  Standard_EXPORT   Handle(StepGeom_GeometricRepresentationContext) GeometricRepresentationContext()  const;
   
-  Standard_EXPORT     Handle_StepRepr_ParametricRepresentationContext ParametricRepresentationContext() const;
+  Standard_EXPORT   void SetParametricRepresentationContext (const Handle(StepRepr_ParametricRepresentationContext)& aParametricRepresentationContext) ;
   
-  Standard_EXPORT     void SetCoordinateSpaceDimension(const Standard_Integer aCoordinateSpaceDimension) ;
+  Standard_EXPORT   Handle(StepRepr_ParametricRepresentationContext) ParametricRepresentationContext()  const;
   
-  Standard_EXPORT     Standard_Integer CoordinateSpaceDimension() const;
+  Standard_EXPORT   void SetCoordinateSpaceDimension (const Standard_Integer aCoordinateSpaceDimension) ;
+  
+  Standard_EXPORT   Standard_Integer CoordinateSpaceDimension()  const;
 
 
 
@@ -75,8 +61,8 @@ protected:
 private: 
 
 
-Handle_StepGeom_GeometricRepresentationContext geometricRepresentationContext;
-Handle_StepRepr_ParametricRepresentationContext parametricRepresentationContext;
+  Handle(StepGeom_GeometricRepresentationContext) geometricRepresentationContext;
+  Handle(StepRepr_ParametricRepresentationContext) parametricRepresentationContext;
 
 
 };
@@ -85,7 +71,6 @@ Handle_StepRepr_ParametricRepresentationContext parametricRepresentationContext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_GeometricRepresentationContextAndParametricRepresentationContext_HeaderFile

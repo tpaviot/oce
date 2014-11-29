@@ -6,22 +6,12 @@
 #ifndef _GC_MakeLine_HeaderFile
 #define _GC_MakeLine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom_Line_HeaderFile
 #include <Handle_Geom_Line.hxx>
-#endif
-#ifndef _GC_Root_HeaderFile
 #include <GC_Root.hxx>
-#endif
 class Geom_Line;
 class StdFail_NotDone;
 class gp_Ax1;
@@ -30,48 +20,54 @@ class gp_Pnt;
 class gp_Dir;
 
 
-//! This class implements the following algorithms used <br>
-//!           to create a Line from Geom. <br>
-//!           * Create a Line parallel to another and passing <br>
-//!             through a point. <br>
-//!           * Create a Line passing through 2 points. <br>
-//! A MakeLine object provides a framework for: <br>
-//! -   defining the construction of the line, <br>
-//! -   implementing the construction algorithm, and <br>
-//! -   consulting the results. In particular, the Value <br>
-//!   function returns the constructed line. <br>
-class GC_MakeLine  : public GC_Root {
+//! This class implements the following algorithms used
+//! to create a Line from Geom.
+//! * Create a Line parallel to another and passing
+//! through a point.
+//! * Create a Line passing through 2 points.
+//! A MakeLine object provides a framework for:
+//! -   defining the construction of the line,
+//! -   implementing the construction algorithm, and
+//! -   consulting the results. In particular, the Value
+//! function returns the constructed line.
+class GC_MakeLine  : public GC_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//!  Creates a line located in 3D space with the axis placement A1. <br>
-//!  The Location of A1 is the origin of the line. <br>
-  Standard_EXPORT   GC_MakeLine(const gp_Ax1& A1);
-  
-//!  Creates a line from a non persistent line from package gp. <br>
-  Standard_EXPORT   GC_MakeLine(const gp_Lin& L);
-  
-//!  P is the origin and V is the direction of the line. <br>
-  Standard_EXPORT   GC_MakeLine(const gp_Pnt& P,const gp_Dir& V);
-  //! Make a Line from Geom <TheLin> parallel to another <br>
-//!           Lin <Lin> and passing through a Pnt <Point>. <br>
-  Standard_EXPORT   GC_MakeLine(const gp_Lin& Lin,const gp_Pnt& Point);
-  //! Make a Line from Geom <TheLin> passing through 2 <br>
-//!           Pnt <P1>,<P2>. <br>
-//!           It returns false if <p1> and <P2> are confused. <br>
-//! Warning <br>
-//! If the points P1 and P2 are coincident (that is, when <br>
-//! IsDone returns false), the Status function returns gce_ConfusedPoints. <br>
-  Standard_EXPORT   GC_MakeLine(const gp_Pnt& P1,const gp_Pnt& P2);
-  //!  Returns the constructed line. <br>
-//! Exceptions StdFail_NotDone if no line is constructed. <br>
-  Standard_EXPORT    const Handle_Geom_Line& Value() const;
-  
-  Standard_EXPORT    const Handle_Geom_Line& Operator() const;
-Standard_EXPORT operator Handle_Geom_Line() const;
 
+  //! Creates a line located in 3D space with the axis placement A1.
+  //! The Location of A1 is the origin of the line.
+  Standard_EXPORT GC_MakeLine(const gp_Ax1& A1);
+  
+
+  //! Creates a line from a non persistent line from package gp.
+  Standard_EXPORT GC_MakeLine(const gp_Lin& L);
+  
+
+  //! P is the origin and V is the direction of the line.
+  Standard_EXPORT GC_MakeLine(const gp_Pnt& P, const gp_Dir& V);
+  
+  //! Make a Line from Geom <TheLin> parallel to another
+  //! Lin <Lin> and passing through a Pnt <Point>.
+  Standard_EXPORT GC_MakeLine(const gp_Lin& Lin, const gp_Pnt& Point);
+  
+  //! Make a Line from Geom <TheLin> passing through 2
+  //! Pnt <P1>,<P2>.
+  //! It returns false if <p1> and <P2> are confused.
+  //! Warning
+  //! If the points P1 and P2 are coincident (that is, when
+  //! IsDone returns false), the Status function returns gce_ConfusedPoints.
+  Standard_EXPORT GC_MakeLine(const gp_Pnt& P1, const gp_Pnt& P2);
+  
+  //! Returns the constructed line.
+  //! Exceptions StdFail_NotDone if no line is constructed.
+  Standard_EXPORT  const  Handle(Geom_Line)& Value()  const;
+  
+  Standard_EXPORT  const  Handle(Geom_Line)& Operator()  const;
+Standard_EXPORT operator Handle_Geom_Line() const;
 
 
 
@@ -86,7 +82,7 @@ private:
 
 
 
-Handle_Geom_Line TheLine;
+  Handle(Geom_Line) TheLine;
 
 
 };
@@ -95,7 +91,6 @@ Handle_Geom_Line TheLine;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GC_MakeLine_HeaderFile

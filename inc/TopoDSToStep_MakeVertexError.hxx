@@ -6,14 +6,13 @@
 #ifndef _TopoDSToStep_MakeVertexError_HeaderFile
 #define _TopoDSToStep_MakeVertexError_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum TopoDSToStep_MakeVertexError {
+
+enum TopoDSToStep_MakeVertexError
+{
 TopoDSToStep_VertexDone,
 TopoDSToStep_VertexOther
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _TopoDSToStep_MakeVertexError_HeaderFile

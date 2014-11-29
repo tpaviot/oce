@@ -6,53 +6,37 @@
 #ifndef _StepBasic_SiUnitAndSolidAngleUnit_HeaderFile
 #define _StepBasic_SiUnitAndSolidAngleUnit_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_SiUnitAndSolidAngleUnit_HeaderFile
 #include <Handle_StepBasic_SiUnitAndSolidAngleUnit.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_SolidAngleUnit_HeaderFile
 #include <Handle_StepBasic_SolidAngleUnit.hxx>
-#endif
-#ifndef _StepBasic_SiUnit_HeaderFile
 #include <StepBasic_SiUnit.hxx>
-#endif
-#ifndef _Handle_StepBasic_DimensionalExponents_HeaderFile
 #include <Handle_StepBasic_DimensionalExponents.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _StepBasic_SiPrefix_HeaderFile
 #include <StepBasic_SiPrefix.hxx>
-#endif
-#ifndef _StepBasic_SiUnitName_HeaderFile
 #include <StepBasic_SiUnitName.hxx>
-#endif
 class StepBasic_SolidAngleUnit;
 class StepBasic_DimensionalExponents;
 
 
 
-class StepBasic_SiUnitAndSolidAngleUnit : public StepBasic_SiUnit {
+class StepBasic_SiUnitAndSolidAngleUnit : public StepBasic_SiUnit
+{
 
 public:
 
-  //! Returns a SiUnitAndSolidAngleUnit <br>
-  Standard_EXPORT   StepBasic_SiUnitAndSolidAngleUnit();
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepBasic_DimensionalExponents)& aDimensions) ;
+  //! Returns a SiUnitAndSolidAngleUnit
+  Standard_EXPORT StepBasic_SiUnitAndSolidAngleUnit();
   
-  Standard_EXPORT   virtual  void Init(const Standard_Boolean hasAprefix,const StepBasic_SiPrefix aPrefix,const StepBasic_SiUnitName aName) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepBasic_DimensionalExponents)& aDimensions) ;
   
-  Standard_EXPORT     void SetSolidAngleUnit(const Handle(StepBasic_SolidAngleUnit)& aSolidAngleUnit) ;
+  Standard_EXPORT virtual   void Init (const Standard_Boolean hasAprefix, const StepBasic_SiPrefix aPrefix, const StepBasic_SiUnitName aName) ;
   
-  Standard_EXPORT     Handle_StepBasic_SolidAngleUnit SolidAngleUnit() const;
+  Standard_EXPORT   void SetSolidAngleUnit (const Handle(StepBasic_SolidAngleUnit)& aSolidAngleUnit) ;
+  
+  Standard_EXPORT   Handle(StepBasic_SolidAngleUnit) SolidAngleUnit()  const;
 
 
 
@@ -67,7 +51,7 @@ protected:
 private: 
 
 
-Handle_StepBasic_SolidAngleUnit solidAngleUnit;
+  Handle(StepBasic_SolidAngleUnit) solidAngleUnit;
 
 
 };
@@ -76,7 +60,6 @@ Handle_StepBasic_SolidAngleUnit solidAngleUnit;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_SiUnitAndSolidAngleUnit_HeaderFile

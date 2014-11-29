@@ -6,25 +6,13 @@
 #ifndef _IntCurveSurface_SequenceOfSeg_HeaderFile
 #define _IntCurveSurface_SequenceOfSeg_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_IntCurveSurface_SequenceNodeOfSequenceOfSeg_HeaderFile
 #include <Handle_IntCurveSurface_SequenceNodeOfSequenceOfSeg.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class IntCurveSurface_IntersectionSegment;
@@ -32,66 +20,68 @@ class IntCurveSurface_SequenceNodeOfSequenceOfSeg;
 
 
 
-class IntCurveSurface_SequenceOfSeg  : public TCollection_BaseSequence {
+class IntCurveSurface_SequenceOfSeg  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      IntCurveSurface_SequenceOfSeg();
+    IntCurveSurface_SequenceOfSeg();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT IntCurveSurface_SequenceOfSeg(const IntCurveSurface_SequenceOfSeg& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~IntCurveSurface_SequenceOfSeg()
 {
   Clear();
 }
   
-  Standard_EXPORT    const IntCurveSurface_SequenceOfSeg& Assign(const IntCurveSurface_SequenceOfSeg& Other) ;
-   const IntCurveSurface_SequenceOfSeg& operator =(const IntCurveSurface_SequenceOfSeg& Other) 
+  Standard_EXPORT  const  IntCurveSurface_SequenceOfSeg& Assign (const IntCurveSurface_SequenceOfSeg& Other) ;
+ const  IntCurveSurface_SequenceOfSeg& operator = (const IntCurveSurface_SequenceOfSeg& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const IntCurveSurface_IntersectionSegment& T) ;
+  Standard_EXPORT   void Append (const IntCurveSurface_IntersectionSegment& T) ;
   
-        void Append(IntCurveSurface_SequenceOfSeg& S) ;
+      void Append (IntCurveSurface_SequenceOfSeg& S) ;
   
-  Standard_EXPORT     void Prepend(const IntCurveSurface_IntersectionSegment& T) ;
+  Standard_EXPORT   void Prepend (const IntCurveSurface_IntersectionSegment& T) ;
   
-        void Prepend(IntCurveSurface_SequenceOfSeg& S) ;
+      void Prepend (IntCurveSurface_SequenceOfSeg& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const IntCurveSurface_IntersectionSegment& T) ;
+      void InsertBefore (const Standard_Integer Index, const IntCurveSurface_IntersectionSegment& T) ;
   
-        void InsertBefore(const Standard_Integer Index,IntCurveSurface_SequenceOfSeg& S) ;
+      void InsertBefore (const Standard_Integer Index, IntCurveSurface_SequenceOfSeg& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const IntCurveSurface_IntersectionSegment& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const IntCurveSurface_IntersectionSegment& T) ;
   
-        void InsertAfter(const Standard_Integer Index,IntCurveSurface_SequenceOfSeg& S) ;
+      void InsertAfter (const Standard_Integer Index, IntCurveSurface_SequenceOfSeg& S) ;
   
-  Standard_EXPORT    const IntCurveSurface_IntersectionSegment& First() const;
+  Standard_EXPORT  const  IntCurveSurface_IntersectionSegment& First()  const;
   
-  Standard_EXPORT    const IntCurveSurface_IntersectionSegment& Last() const;
+  Standard_EXPORT  const  IntCurveSurface_IntersectionSegment& Last()  const;
   
-        void Split(const Standard_Integer Index,IntCurveSurface_SequenceOfSeg& Sub) ;
+      void Split (const Standard_Integer Index, IntCurveSurface_SequenceOfSeg& Sub) ;
   
-  Standard_EXPORT    const IntCurveSurface_IntersectionSegment& Value(const Standard_Integer Index) const;
-   const IntCurveSurface_IntersectionSegment& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  IntCurveSurface_IntersectionSegment& Value (const Standard_Integer Index)  const;
+ const  IntCurveSurface_IntersectionSegment& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const IntCurveSurface_IntersectionSegment& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const IntCurveSurface_IntersectionSegment& I) ;
   
-  Standard_EXPORT     IntCurveSurface_IntersectionSegment& ChangeValue(const Standard_Integer Index) ;
-    IntCurveSurface_IntersectionSegment& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   IntCurveSurface_IntersectionSegment& ChangeValue (const Standard_Integer Index) ;
+  IntCurveSurface_IntersectionSegment& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -104,8 +94,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntCurveSurface_SequenceOfSeg(const IntCurveSurface_SequenceOfSeg& Other);
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntCurveSurface_SequenceOfSeg_HeaderFile

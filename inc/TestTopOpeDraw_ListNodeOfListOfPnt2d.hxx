@@ -6,39 +6,28 @@
 #ifndef _TestTopOpeDraw_ListNodeOfListOfPnt2d_HeaderFile
 #define _TestTopOpeDraw_ListNodeOfListOfPnt2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TestTopOpeDraw_ListNodeOfListOfPnt2d_HeaderFile
 #include <Handle_TestTopOpeDraw_ListNodeOfListOfPnt2d.hxx>
-#endif
 
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class gp_Pnt2d;
 class TestTopOpeDraw_ListOfPnt2d;
 class TestTopOpeDraw_ListIteratorOfListOfPnt2d;
 
 
 
-class TestTopOpeDraw_ListNodeOfListOfPnt2d : public TCollection_MapNode {
+class TestTopOpeDraw_ListNodeOfListOfPnt2d : public TCollection_MapNode
+{
 
 public:
 
   
-      TestTopOpeDraw_ListNodeOfListOfPnt2d(const gp_Pnt2d& I,const TCollection_MapNodePtr& n);
+    TestTopOpeDraw_ListNodeOfListOfPnt2d(const gp_Pnt2d& I, const TCollection_MapNodePtr& n);
   
-        gp_Pnt2d& Value() const;
+      gp_Pnt2d& Value()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-gp_Pnt2d myValue;
+  gp_Pnt2d myValue;
 
 
 };
@@ -83,7 +72,6 @@ gp_Pnt2d myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TestTopOpeDraw_ListNodeOfListOfPnt2d_HeaderFile

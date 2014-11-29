@@ -6,33 +6,20 @@
 #ifndef _BRepExtrema_UnCompatibleShape_HeaderFile
 #define _BRepExtrema_UnCompatibleShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_DefineException_HeaderFile
 #include <Standard_DefineException.hxx>
-#endif
-#ifndef _Standard_SStream_HeaderFile
 #include <Standard_SStream.hxx>
-#endif
-
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Handle_BRepExtrema_UnCompatibleShape_HeaderFile
 #include <Handle_BRepExtrema_UnCompatibleShape.hxx>
-#endif
 
 #if !defined No_Exception && !defined No_BRepExtrema_UnCompatibleShape
-#define BRepExtrema_UnCompatibleShape_Raise_if(CONDITION,MESSAGE) \
+  #define BRepExtrema_UnCompatibleShape_Raise_if(CONDITION, MESSAGE) \
   if (CONDITION) BRepExtrema_UnCompatibleShape::Raise(MESSAGE);
 #else
-#define BRepExtrema_UnCompatibleShape_Raise_if(CONDITION,MESSAGE)
+  #define BRepExtrema_UnCompatibleShape_Raise_if(CONDITION, MESSAGE)
 #endif
 
-DEFINE_STANDARD_EXCEPTION(BRepExtrema_UnCompatibleShape,Standard_DomainError)
+DEFINE_STANDARD_EXCEPTION(BRepExtrema_UnCompatibleShape, Standard_DomainError)
 
-#endif
+#endif // _BRepExtrema_UnCompatibleShape_HeaderFile

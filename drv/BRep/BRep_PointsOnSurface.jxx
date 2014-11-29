@@ -1,9 +1,3 @@
-#ifndef _Geom_Surface_HeaderFile
 #include <Geom_Surface.hxx>
-#endif
-#ifndef _TopLoc_Location_HeaderFile
 #include <TopLoc_Location.hxx>
-#endif
-#ifndef _BRep_PointsOnSurface_HeaderFile
 #include <BRep_PointsOnSurface.hxx>
-#endif

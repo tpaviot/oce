@@ -5,22 +5,12 @@
 
 #include <MoniTool_IndexedDataMapNodeOfIndexedDataMapOfShapeTransient.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _MoniTool_IndexedDataMapOfShapeTransient_HeaderFile
 #include <MoniTool_IndexedDataMapOfShapeTransient.hxx>
-#endif
 
  
 
@@ -41,7 +31,7 @@ IMPLEMENT_STANDARD_RTTI(MoniTool_IndexedDataMapNodeOfIndexedDataMapOfShapeTransi
 
 #define TheKey TopoDS_Shape
 #define TheKey_hxx <TopoDS_Shape.hxx>
-#define TheItem Handle_Standard_Transient
+#define TheItem Handle(Standard_Transient)
 #define TheItem_hxx <Standard_Transient.hxx>
 #define Hasher TopTools_ShapeMapHasher
 #define Hasher_hxx <TopTools_ShapeMapHasher.hxx>

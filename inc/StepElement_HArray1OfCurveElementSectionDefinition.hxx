@@ -6,28 +6,14 @@
 #ifndef _StepElement_HArray1OfCurveElementSectionDefinition_HeaderFile
 #define _StepElement_HArray1OfCurveElementSectionDefinition_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepElement_HArray1OfCurveElementSectionDefinition_HeaderFile
 #include <Handle_StepElement_HArray1OfCurveElementSectionDefinition.hxx>
-#endif
 
-#ifndef _StepElement_Array1OfCurveElementSectionDefinition_HeaderFile
 #include <StepElement_Array1OfCurveElementSectionDefinition.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_StepElement_CurveElementSectionDefinition_HeaderFile
 #include <Handle_StepElement_CurveElementSectionDefinition.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class StepElement_Array1OfCurveElementSectionDefinition;
 
 
 
-class StepElement_HArray1OfCurveElementSectionDefinition : public MMgt_TShared {
+class StepElement_HArray1OfCurveElementSectionDefinition : public MMgt_TShared
+{
 
 public:
 
   
-      StepElement_HArray1OfCurveElementSectionDefinition(const Standard_Integer Low,const Standard_Integer Up);
+    StepElement_HArray1OfCurveElementSectionDefinition(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepElement_HArray1OfCurveElementSectionDefinition(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepElement_CurveElementSectionDefinition)& V);
+    StepElement_HArray1OfCurveElementSectionDefinition(const Standard_Integer Low, const Standard_Integer Up, const Handle(StepElement_CurveElementSectionDefinition)& V);
   
-        void Init(const Handle(StepElement_CurveElementSectionDefinition)& V) ;
+      void Init (const Handle(StepElement_CurveElementSectionDefinition)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(StepElement_CurveElementSectionDefinition)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(StepElement_CurveElementSectionDefinition)& Value) ;
   
-       const Handle_StepElement_CurveElementSectionDefinition& Value(const Standard_Integer Index) const;
+     const  Handle(StepElement_CurveElementSectionDefinition)& Value (const Standard_Integer Index)  const;
   
-        Handle_StepElement_CurveElementSectionDefinition& ChangeValue(const Standard_Integer Index) ;
+      Handle(StepElement_CurveElementSectionDefinition)& ChangeValue (const Standard_Integer Index) ;
   
-       const StepElement_Array1OfCurveElementSectionDefinition& Array1() const;
+     const  StepElement_Array1OfCurveElementSectionDefinition& Array1()  const;
   
-        StepElement_Array1OfCurveElementSectionDefinition& ChangeArray1() ;
+      StepElement_Array1OfCurveElementSectionDefinition& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-StepElement_Array1OfCurveElementSectionDefinition myArray;
+  StepElement_Array1OfCurveElementSectionDefinition myArray;
 
 
 };
 
-#define ItemHArray1 Handle_StepElement_CurveElementSectionDefinition
+#define ItemHArray1 Handle(StepElement_CurveElementSectionDefinition)
 #define ItemHArray1_hxx <StepElement_CurveElementSectionDefinition.hxx>
 #define TheArray1 StepElement_Array1OfCurveElementSectionDefinition
 #define TheArray1_hxx <StepElement_Array1OfCurveElementSectionDefinition.hxx>
@@ -103,7 +90,6 @@ StepElement_Array1OfCurveElementSectionDefinition myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_HArray1OfCurveElementSectionDefinition_HeaderFile

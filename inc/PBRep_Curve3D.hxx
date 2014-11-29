@@ -6,50 +6,37 @@
 #ifndef _PBRep_Curve3D_HeaderFile
 #define _PBRep_Curve3D_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PBRep_Curve3D_HeaderFile
 #include <Handle_PBRep_Curve3D.hxx>
-#endif
 
-#ifndef _Handle_PGeom_Curve_HeaderFile
 #include <Handle_PGeom_Curve.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _PBRep_GCurve_HeaderFile
 #include <PBRep_GCurve.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class PGeom_Curve;
 class PTopLoc_Location;
 
 
-class PBRep_Curve3D : public PBRep_GCurve {
+class PBRep_Curve3D : public PBRep_GCurve
+{
 
 public:
 
-  //! CF is curve first param <br>
-//!           CL is curve last param <br>
-//!           As far as they can't be computed from a Persistent Curve <br>
-//!          they are given in the Curve3D constructor <br>
-  Standard_EXPORT   PBRep_Curve3D(const Handle(PGeom_Curve)& C,const Standard_Real CF,const Standard_Real CL,const PTopLoc_Location& L);
   
-  Standard_EXPORT     Handle_PGeom_Curve Curve3D() const;
-  //! Returns True. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsCurve3D() const;
+  //! CF is curve first param
+  //! CL is curve last param
+  //! As far as they can't be computed from a Persistent Curve
+  //! they are given in the Curve3D constructor
+  Standard_EXPORT PBRep_Curve3D(const Handle(PGeom_Curve)& C, const Standard_Real CF, const Standard_Real CL, const PTopLoc_Location& L);
+  
+  Standard_EXPORT   Handle(PGeom_Curve) Curve3D()  const;
+  
+  //! Returns True.
+  Standard_EXPORT virtual   Standard_Boolean IsCurve3D()  const;
 
-  PBRep_Curve3D( )
+PBRep_Curve3D( )
 {
   
 }
@@ -72,7 +59,7 @@ protected:
 private: 
 
 
-Handle_PGeom_Curve myCurve3D;
+  Handle(PGeom_Curve) myCurve3D;
 
 
 };
@@ -81,7 +68,6 @@ Handle_PGeom_Curve myCurve3D;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PBRep_Curve3D_HeaderFile

@@ -6,49 +6,38 @@
 #ifndef _StepDimTol_ModifiedGeometricTolerance_HeaderFile
 #define _StepDimTol_ModifiedGeometricTolerance_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepDimTol_ModifiedGeometricTolerance_HeaderFile
 #include <Handle_StepDimTol_ModifiedGeometricTolerance.hxx>
-#endif
 
-#ifndef _StepDimTol_LimitCondition_HeaderFile
 #include <StepDimTol_LimitCondition.hxx>
-#endif
-#ifndef _StepDimTol_GeometricTolerance_HeaderFile
 #include <StepDimTol_GeometricTolerance.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepBasic_MeasureWithUnit_HeaderFile
 #include <Handle_StepBasic_MeasureWithUnit.hxx>
-#endif
-#ifndef _Handle_StepRepr_ShapeAspect_HeaderFile
 #include <Handle_StepRepr_ShapeAspect.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepBasic_MeasureWithUnit;
 class StepRepr_ShapeAspect;
 
 
-//! Representation of STEP entity ModifiedGeometricTolerance <br>
-class StepDimTol_ModifiedGeometricTolerance : public StepDimTol_GeometricTolerance {
+//! Representation of STEP entity ModifiedGeometricTolerance
+class StepDimTol_ModifiedGeometricTolerance : public StepDimTol_GeometricTolerance
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepDimTol_ModifiedGeometricTolerance();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aGeometricTolerance_Name,const Handle(TCollection_HAsciiString)& aGeometricTolerance_Description,const Handle(StepBasic_MeasureWithUnit)& aGeometricTolerance_Magnitude,const Handle(StepRepr_ShapeAspect)& aGeometricTolerance_TolerancedShapeAspect,const StepDimTol_LimitCondition aModifier) ;
-  //! Returns field Modifier <br>
-  Standard_EXPORT     StepDimTol_LimitCondition Modifier() const;
-  //! Set field Modifier <br>
-  Standard_EXPORT     void SetModifier(const StepDimTol_LimitCondition Modifier) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepDimTol_ModifiedGeometricTolerance();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aGeometricTolerance_Name, const Handle(TCollection_HAsciiString)& aGeometricTolerance_Description, const Handle(StepBasic_MeasureWithUnit)& aGeometricTolerance_Magnitude, const Handle(StepRepr_ShapeAspect)& aGeometricTolerance_TolerancedShapeAspect, const StepDimTol_LimitCondition aModifier) ;
+  
+  //! Returns field Modifier
+  Standard_EXPORT   StepDimTol_LimitCondition Modifier()  const;
+  
+  //! Set field Modifier
+  Standard_EXPORT   void SetModifier (const StepDimTol_LimitCondition Modifier) ;
 
 
 
@@ -63,7 +52,7 @@ protected:
 private: 
 
 
-StepDimTol_LimitCondition theModifier;
+  StepDimTol_LimitCondition theModifier;
 
 
 };
@@ -72,7 +61,6 @@ StepDimTol_LimitCondition theModifier;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepDimTol_ModifiedGeometricTolerance_HeaderFile

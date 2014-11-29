@@ -6,31 +6,15 @@
 #ifndef _DsgPrs_RadiusPresentation_HeaderFile
 #define _DsgPrs_RadiusPresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Handle_Prs3d_Drawer_HeaderFile
 #include <Handle_Prs3d_Drawer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _DsgPrs_ArrowSide_HeaderFile
 #include <DsgPrs_ArrowSide.hxx>
-#endif
 class Prs3d_Presentation;
 class Prs3d_Drawer;
 class TCollection_ExtendedString;
@@ -38,49 +22,52 @@ class gp_Pnt;
 class gp_Circ;
 
 
-//! A framework to define display of radii. <br>
-class DsgPrs_RadiusPresentation  {
+//! A framework to define display of radii.
+class DsgPrs_RadiusPresentation 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Adds the point AttachmentPoint, the circle aCircle, <br>
-//! the text aText, and the parameters firstparam and <br>
-//! lastparam to the presentation object aPresentation. <br>
-//! The display attributes of these elements is defined by <br>
-//! the attribute manager aDrawer. <br>
-//! If the Boolean drawFromCenter is false, the <br>
-//! arrowhead will point towards the center of aCircle. <br>
-//! If the Boolean reverseArrow is true, the arrowhead <br>
-//! will point away from the attachment point. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Prs3d_Drawer)& aDrawer,const TCollection_ExtendedString& aText,const gp_Pnt& AttachmentPoint,const gp_Circ& aCircle,const Standard_Real firstparam,const Standard_Real lastparam,const Standard_Boolean drawFromCenter = Standard_True,const Standard_Boolean reverseArrow = Standard_False) ;
-  //!  Adds the point AttachmentPoint, the circle aCircle, <br>
-//! the text aText, and the parameters firstparam and <br>
-//! lastparam to the presentation object aPresentation. <br>
-//! The display attributes of these elements is defined by <br>
-//! the attribute manager aDrawer. <br>
-//! The value of the enumeration Arrowside determines <br>
-//! the type of arrow displayed: whether there will be <br>
-//! arrowheads at both ends or only one, for example. <br>
-//! If the Boolean drawFromCenter is false, the <br>
-//! arrowhead will point towards the center of aCircle. <br>
-//! If the Boolean reverseArrow is true, the arrowhead <br>
-//! will point away from the attachment point. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Prs3d_Drawer)& aDrawer,const TCollection_ExtendedString& aText,const gp_Pnt& AttachmentPoint,const gp_Circ& aCircle,const Standard_Real firstparam,const Standard_Real lastparam,const DsgPrs_ArrowSide ArrowSide,const Standard_Boolean drawFromCenter = Standard_True,const Standard_Boolean reverseArrow = Standard_False) ;
-  //!  Adds the circle aCircle, the text aText, the points <br>
-//! AttachmentPoint, Center and EndOfArrow to the <br>
-//! presentation object aPresentation. <br>
-//! The display attributes of these elements is defined by <br>
-//! the attribute manager aDrawer. <br>
-//! The value of the enumeration Arrowside determines <br>
-//! the type of arrow displayed: whether there will be <br>
-//! arrowheads at both ends or only one, for example. <br>
-//! If the Boolean drawFromCenter is false, the <br>
-//! arrowhead will point towards the center of aCircle. <br>
-//! If the Boolean reverseArrow is true, the arrowhead <br>
-//! will point away from the attachment point. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Prs3d_Drawer)& aDrawer,const TCollection_ExtendedString& aText,const gp_Pnt& AttachmentPoint,const gp_Pnt& Center,const gp_Pnt& EndOfArrow,const DsgPrs_ArrowSide ArrowSide,const Standard_Boolean drawFromCenter = Standard_True,const Standard_Boolean reverseArrow = Standard_False) ;
-
+  
+  //! Adds the point AttachmentPoint, the circle aCircle,
+  //! the text aText, and the parameters firstparam and
+  //! lastparam to the presentation object aPresentation.
+  //! The display attributes of these elements is defined by
+  //! the attribute manager aDrawer.
+  //! If the Boolean drawFromCenter is false, the
+  //! arrowhead will point towards the center of aCircle.
+  //! If the Boolean reverseArrow is true, the arrowhead
+  //! will point away from the attachment point.
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Prs3d_Drawer)& aDrawer, const TCollection_ExtendedString& aText, const gp_Pnt& AttachmentPoint, const gp_Circ& aCircle, const Standard_Real firstparam, const Standard_Real lastparam, const Standard_Boolean drawFromCenter = Standard_True, const Standard_Boolean reverseArrow = Standard_False) ;
+  
+  //! Adds the point AttachmentPoint, the circle aCircle,
+  //! the text aText, and the parameters firstparam and
+  //! lastparam to the presentation object aPresentation.
+  //! The display attributes of these elements is defined by
+  //! the attribute manager aDrawer.
+  //! The value of the enumeration Arrowside determines
+  //! the type of arrow displayed: whether there will be
+  //! arrowheads at both ends or only one, for example.
+  //! If the Boolean drawFromCenter is false, the
+  //! arrowhead will point towards the center of aCircle.
+  //! If the Boolean reverseArrow is true, the arrowhead
+  //! will point away from the attachment point.
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Prs3d_Drawer)& aDrawer, const TCollection_ExtendedString& aText, const gp_Pnt& AttachmentPoint, const gp_Circ& aCircle, const Standard_Real firstparam, const Standard_Real lastparam, const DsgPrs_ArrowSide ArrowSide, const Standard_Boolean drawFromCenter = Standard_True, const Standard_Boolean reverseArrow = Standard_False) ;
+  
+  //! Adds the circle aCircle, the text aText, the points
+  //! AttachmentPoint, Center and EndOfArrow to the
+  //! presentation object aPresentation.
+  //! The display attributes of these elements is defined by
+  //! the attribute manager aDrawer.
+  //! The value of the enumeration Arrowside determines
+  //! the type of arrow displayed: whether there will be
+  //! arrowheads at both ends or only one, for example.
+  //! If the Boolean drawFromCenter is false, the
+  //! arrowhead will point towards the center of aCircle.
+  //! If the Boolean reverseArrow is true, the arrowhead
+  //! will point away from the attachment point.
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Prs3d_Drawer)& aDrawer, const TCollection_ExtendedString& aText, const gp_Pnt& AttachmentPoint, const gp_Pnt& Center, const gp_Pnt& EndOfArrow, const DsgPrs_ArrowSide ArrowSide, const Standard_Boolean drawFromCenter = Standard_True, const Standard_Boolean reverseArrow = Standard_False) ;
 
 
 
@@ -103,7 +90,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DsgPrs_RadiusPresentation_HeaderFile

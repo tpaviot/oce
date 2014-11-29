@@ -5,21 +5,13 @@
 
 #include <TNaming_ListOfNamedShape.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TNaming_ListIteratorOfListOfNamedShape_HeaderFile
 #include <TNaming_ListIteratorOfListOfNamedShape.hxx>
-#endif
-#ifndef _TNaming_NamedShape_HeaderFile
 #include <TNaming_NamedShape.hxx>
-#endif
-#ifndef _TNaming_ListNodeOfListOfNamedShape_HeaderFile
 #include <TNaming_ListNodeOfListOfNamedShape.hxx>
-#endif
  
 
-#define Item Handle_TNaming_NamedShape
+#define Item Handle(TNaming_NamedShape)
 #define Item_hxx <TNaming_NamedShape.hxx>
 #define TCollection_ListNode TNaming_ListNodeOfListOfNamedShape
 #define TCollection_ListNode_hxx <TNaming_ListNodeOfListOfNamedShape.hxx>

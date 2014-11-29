@@ -16,19 +16,19 @@
 
 package Prs3d
 
-    	---Purpose: The Prs3d package provides the following services
-	-- -   a presentation object (the context for all
-	--   modifications to the display, its presentation will be
-	--   displayed in every view of an active viewer)
-	-- -   an attribute manager governing how objects such
-	--   as color, width, and type of line are displayed;
-	--   these are generic objects, whereas those in
-	--   StdPrs are specific geometries and topologies.
-	-- -   generic   algorithms providing default settings for
-	--   objects such as points, curves, surfaces and shapes
-	-- -   a root object which provides the abstract
-	--   framework for the DsgPrs definitions at work in
-	--   display of dimensions, relations and trihedra.
+      ---Purpose: The Prs3d package provides the following services
+  -- -   a presentation object (the context for all
+  --   modifications to the display, its presentation will be
+  --   displayed in every view of an active viewer)
+  -- -   an attribute manager governing how objects such
+  --   as color, width, and type of line are displayed;
+  --   these are generic objects, whereas those in
+  --   StdPrs are specific geometries and topologies.
+  -- -   generic   algorithms providing default settings for
+  --   objects such as points, curves, surfaces and shapes
+  -- -   a root object which provides the abstract
+  --   framework for the DsgPrs definitions at work in
+  --   display of dimensions, relations and trihedra.
     
 uses
   Graphic3d,
@@ -92,63 +92,47 @@ is
   -- DAO_Fit      - arrows oriented inside if value label with arrowtips fit the dimension line,
   --                otherwise - externally
 
-  class Presentation;
-  ---Purpose: defines the presentation object. This object can be
-  --          displayed, highlighted, erased, etc... The output
-  --          of the presentation algorithms are sent in a
-  --          presentation object. A presentation object is attached
-  --          to a given Viewer.
+  enumeration VertexDrawMode is VDM_Isolated, VDM_All, VDM_Inherited;
+  ---Purpose: Describes supported modes of visualization of the shape's vertices:
+  -- VDM_Isolated  - only isolated vertices (not belonging to a face) are displayed.
+  -- VDM_All       - all vertices of the shape are displayed.
+  -- VDM_Inherited - the global settings are inherited and applied to the shape's presentation.
 
-	---Category: Aspect classes.
-	---Purpose: The aspect classes qualifies how to represent
-	--          a given kind of object.
-	--          
+  class Presentation;
+
+  ---Category: Aspect classes.
 
   deferred class BasicAspect;	
   class PointAspect;
   class LineAspect;
-	class ShadingAspect;
-	class TextAspect;
+  class ShadingAspect;
+  class TextAspect;
   class IsoAspect;
   class ArrowAspect;
-	class PlaneAspect;
+  class PlaneAspect;
   class DimensionAspect;
-	class DatumAspect;
+  class DatumAspect;
   imported DimensionUnits;
 
   class Drawer;
-	---Purpose: qualifies how the presentation algorithms compute
-	--          the presentation of a specific kind of object. 
-	--          This includes for example color, width and type
-	--          of lines, maximal chordial deviation, etc...
-	--          A drawer includes an instance of the Aspect classes
-	--          with particular default values.
-	
+
   class Projector;
-	---Purpose: defines the projection parameters for the hidden
-	--          lines removal algorithm.
-	
+
   class PlaneSet;
-	---Purpose: defines a set of planes used for a presentation
-	--          by sections.
-	-- 
 
   deferred class Root;
-	---Purpose: defines the root of the presentation algorithms.
 
   ---Category: Basis construction elements.
 
-	class Text;
+  class Text;
 
         ---Category: Class signatures.
 
-	class ShapeTool;
-	---Purpose: describes the behaviour requested for a wireframe
-	--          shape presentation.
+  class ShapeTool;
 
   class Arrow;
-	---Purpose: draws an arrow at a given location, with respect
-	--          to a given direction. 
+  ---Purpose: draws an arrow at a given location, with respect
+  --          to a given direction.
 
   imported NListOfSequenceOfPnt; 
   imported NListIteratorListOfSequenceOfPnt;
@@ -156,8 +140,22 @@ is
   imported WFShape;
   
   MatchSegment(X,Y,Z: Length from Quantity;
-	            aDistance: Length from Quantity;
-		          p1,p2: Pnt from gp;
+              aDistance: Length from Quantity;
+              p1,p2: Pnt from gp;
               dist: out Length from Quantity)
-	returns Boolean from Standard;
+  returns Boolean from Standard;
+
+  GetDeflection (theShape  : Shape from TopoDS;
+                 theDrawer : Drawer from Prs3d)
+  returns Real from Standard;
+  ---Purpose: Computes the absolute deflection value depending on
+  -- the type of deflection in theDrawer:
+  -- <ul>
+  -- <li><b>Aspect_TOD_RELATIVE</b>: the absolute deflection is computed using the relative
+  --   deviation coefficient from theDrawer and the shape's bounding box;</li>
+  -- <li><b>Aspect_TOD_ABSOLUTE</b>: the maximal chordial deviation from theDrawer is returned.</li>
+  -- </ul>
+  -- This function should always be used to compute the deflection value for building
+  -- discrete representations of the shape (triangualtion, wireframe) to avoid incosistencies
+  -- between different representations of the shape and undesirable visual artifacts.
 end Prs3d;

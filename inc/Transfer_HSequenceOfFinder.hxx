@@ -6,31 +6,15 @@
 #ifndef _Transfer_HSequenceOfFinder_HeaderFile
 #define _Transfer_HSequenceOfFinder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Transfer_HSequenceOfFinder_HeaderFile
 #include <Handle_Transfer_HSequenceOfFinder.hxx>
-#endif
 
-#ifndef _Transfer_SequenceOfFinder_HeaderFile
 #include <Transfer_SequenceOfFinder.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_Transfer_Finder_HeaderFile
 #include <Handle_Transfer_Finder.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Transfer_Finder;
@@ -38,56 +22,57 @@ class Transfer_SequenceOfFinder;
 
 
 
-class Transfer_HSequenceOfFinder : public MMgt_TShared {
+class Transfer_HSequenceOfFinder : public MMgt_TShared
+{
 
 public:
 
   
-      Transfer_HSequenceOfFinder();
+    Transfer_HSequenceOfFinder();
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void Append(const Handle(Transfer_Finder)& anItem) ;
+  Standard_EXPORT   void Append (const Handle(Transfer_Finder)& anItem) ;
   
-  Standard_EXPORT     void Append(const Handle(Transfer_HSequenceOfFinder)& aSequence) ;
+  Standard_EXPORT   void Append (const Handle(Transfer_HSequenceOfFinder)& aSequence) ;
   
-  Standard_EXPORT     void Prepend(const Handle(Transfer_Finder)& anItem) ;
+  Standard_EXPORT   void Prepend (const Handle(Transfer_Finder)& anItem) ;
   
-  Standard_EXPORT     void Prepend(const Handle(Transfer_HSequenceOfFinder)& aSequence) ;
+  Standard_EXPORT   void Prepend (const Handle(Transfer_HSequenceOfFinder)& aSequence) ;
   
-  Standard_EXPORT     void Reverse() ;
+  Standard_EXPORT   void Reverse() ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(Transfer_Finder)& anItem) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(Transfer_Finder)& anItem) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(Transfer_HSequenceOfFinder)& aSequence) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(Transfer_HSequenceOfFinder)& aSequence) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(Transfer_Finder)& anItem) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(Transfer_Finder)& anItem) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(Transfer_HSequenceOfFinder)& aSequence) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(Transfer_HSequenceOfFinder)& aSequence) ;
   
-  Standard_EXPORT     void Exchange(const Standard_Integer anIndex,const Standard_Integer anOtherIndex) ;
+  Standard_EXPORT   void Exchange (const Standard_Integer anIndex, const Standard_Integer anOtherIndex) ;
   
-  Standard_EXPORT     Handle_Transfer_HSequenceOfFinder Split(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(Transfer_HSequenceOfFinder) Split (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer anIndex,const Handle(Transfer_Finder)& anItem) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer anIndex, const Handle(Transfer_Finder)& anItem) ;
   
-  Standard_EXPORT    const Handle_Transfer_Finder& Value(const Standard_Integer anIndex) const;
+  Standard_EXPORT  const  Handle(Transfer_Finder)& Value (const Standard_Integer anIndex)  const;
   
-  Standard_EXPORT     Handle_Transfer_Finder& ChangeValue(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(Transfer_Finder)& ChangeValue (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer anIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer fromIndex,const Standard_Integer toIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer fromIndex, const Standard_Integer toIndex) ;
   
-       const Transfer_SequenceOfFinder& Sequence() const;
+     const  Transfer_SequenceOfFinder& Sequence()  const;
   
-        Transfer_SequenceOfFinder& ChangeSequence() ;
+      Transfer_SequenceOfFinder& ChangeSequence() ;
   
-  Standard_EXPORT     Handle_Transfer_HSequenceOfFinder ShallowCopy() const;
+  Standard_EXPORT   Handle(Transfer_HSequenceOfFinder) ShallowCopy()  const;
 
 
 
@@ -102,12 +87,12 @@ protected:
 private: 
 
 
-Transfer_SequenceOfFinder mySequence;
+  Transfer_SequenceOfFinder mySequence;
 
 
 };
 
-#define Item Handle_Transfer_Finder
+#define Item Handle(Transfer_Finder)
 #define Item_hxx <Transfer_Finder.hxx>
 #define TheSequence Transfer_SequenceOfFinder
 #define TheSequence_hxx <Transfer_SequenceOfFinder.hxx>
@@ -128,11 +113,10 @@ Transfer_SequenceOfFinder mySequence;
 #undef TCollection_HSequence_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline Handle_Transfer_HSequenceOfFinder ShallowCopy(const Handle_Transfer_HSequenceOfFinder& me) {
+inline Handle(Transfer_HSequenceOfFinder) ShallowCopy(const Handle(Transfer_HSequenceOfFinder)& me) {
  return me->ShallowCopy();
 }
 
 
 
-#endif
+#endif // _Transfer_HSequenceOfFinder_HeaderFile

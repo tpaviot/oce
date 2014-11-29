@@ -5,28 +5,14 @@
 
 #include <StepGeom_HArray2OfCartesianPoint.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _StepGeom_CartesianPoint_HeaderFile
 #include <StepGeom_CartesianPoint.hxx>
-#endif
-#ifndef _StepGeom_Array2OfCartesianPoint_HeaderFile
 #include <StepGeom_Array2OfCartesianPoint.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(StepGeom_HArray2OfCartesianPoint,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(StepGeom_HArray2OfCartesianPoint)
 
 
-#define ItemHArray2 Handle_StepGeom_CartesianPoint
+#define ItemHArray2 Handle(StepGeom_CartesianPoint)
 #define ItemHArray2_hxx <StepGeom_CartesianPoint.hxx>
 #define TheArray2 StepGeom_Array2OfCartesianPoint
 #define TheArray2_hxx <StepGeom_Array2OfCartesianPoint.hxx>

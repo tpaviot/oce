@@ -6,22 +6,15 @@
 #ifndef _Handle_StepFEA_SymmetricTensor23dMember_HeaderFile
 #define _Handle_StepFEA_SymmetricTensor23dMember_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepData_SelectArrReal_HeaderFile
 #include <Handle_StepData_SelectArrReal.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepData_SelectArrReal);
 class StepFEA_SymmetricTensor23dMember;
 
-DEFINE_STANDARD_HANDLE(StepFEA_SymmetricTensor23dMember,StepData_SelectArrReal)
+DEFINE_STANDARD_HANDLE(StepFEA_SymmetricTensor23dMember, StepData_SelectArrReal)
 
-#endif
+#endif // _Handle_StepFEA_SymmetricTensor23dMember_HeaderFile

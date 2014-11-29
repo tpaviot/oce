@@ -1,12 +1,4 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepData_SelectMember_HeaderFile
 #include <StepData_SelectMember.hxx>
-#endif
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _StepFEA_SymmetricTensor23d_HeaderFile
 #include <StepFEA_SymmetricTensor23d.hxx>
-#endif

@@ -6,22 +6,12 @@
 #ifndef _BRepTools_DataMapIteratorOfMapOfVertexPnt2d_HeaderFile
 #define _BRepTools_DataMapIteratorOfMapOfVertexPnt2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d_HeaderFile
 #include <Handle_BRepTools_DataMapNodeOfMapOfVertexPnt2d.hxx>
-#endif
 class Standard_NoSuchObject;
 class TopoDS_Shape;
 class TColgp_SequenceOfPnt2d;
@@ -31,22 +21,22 @@ class BRepTools_DataMapNodeOfMapOfVertexPnt2d;
 
 
 
-class BRepTools_DataMapIteratorOfMapOfVertexPnt2d  : public TCollection_BasicMapIterator {
+class BRepTools_DataMapIteratorOfMapOfVertexPnt2d  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepTools_DataMapIteratorOfMapOfVertexPnt2d();
+  Standard_EXPORT BRepTools_DataMapIteratorOfMapOfVertexPnt2d();
   
-  Standard_EXPORT   BRepTools_DataMapIteratorOfMapOfVertexPnt2d(const BRepTools_MapOfVertexPnt2d& aMap);
+  Standard_EXPORT BRepTools_DataMapIteratorOfMapOfVertexPnt2d(const BRepTools_MapOfVertexPnt2d& aMap);
   
-  Standard_EXPORT     void Initialize(const BRepTools_MapOfVertexPnt2d& aMap) ;
+  Standard_EXPORT   void Initialize (const BRepTools_MapOfVertexPnt2d& aMap) ;
   
-  Standard_EXPORT    const TopoDS_Shape& Key() const;
+  Standard_EXPORT  const  TopoDS_Shape& Key()  const;
   
-  Standard_EXPORT    const TColgp_SequenceOfPnt2d& Value() const;
-
+  Standard_EXPORT  const  TColgp_SequenceOfPnt2d& Value()  const;
 
 
 
@@ -69,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepTools_DataMapIteratorOfMapOfVertexPnt2d_HeaderFile

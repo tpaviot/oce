@@ -1,15 +1,5 @@
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Interface_FileReaderData_HeaderFile
 #include <Interface_FileReaderData.hxx>
-#endif
-#ifndef _Interface_Check_HeaderFile
 #include <Interface_Check.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Interface_ReaderModule_HeaderFile
 #include <Interface_ReaderModule.hxx>
-#endif

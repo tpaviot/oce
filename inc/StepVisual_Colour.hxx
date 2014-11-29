@@ -6,28 +6,22 @@
 #ifndef _StepVisual_Colour_HeaderFile
 #define _StepVisual_Colour_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_Colour_HeaderFile
 #include <Handle_StepVisual_Colour.hxx>
-#endif
 
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 
 
 
-class StepVisual_Colour : public MMgt_TShared {
+class StepVisual_Colour : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a Colour <br>
-  Standard_EXPORT   StepVisual_Colour();
+  
+  //! Returns a Colour
+  Standard_EXPORT StepVisual_Colour();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_Colour_HeaderFile

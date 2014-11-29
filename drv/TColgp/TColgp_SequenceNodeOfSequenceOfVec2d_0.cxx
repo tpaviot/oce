@@ -5,16 +5,10 @@
 
 #include <TColgp_SequenceNodeOfSequenceOfVec2d.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _gp_Vec2d_HeaderFile
 #include <gp_Vec2d.hxx>
-#endif
-#ifndef _TColgp_SequenceOfVec2d_HeaderFile
 #include <TColgp_SequenceOfVec2d.hxx>
-#endif
 
  
 

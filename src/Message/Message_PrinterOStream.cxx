@@ -26,10 +26,12 @@
 //purpose  : Empty constructor, defaulting to cerr
 //=======================================================================
 
-Message_PrinterOStream::Message_PrinterOStream (const Message_Gravity theTraceLevel) 
-: myTraceLevel(theTraceLevel), myStream(&cout), 
-  myIsFile(Standard_False), myUseUtf8(Standard_False)
+Message_PrinterOStream::Message_PrinterOStream (const Message_Gravity theTraceLevel)
+: myStream  (&std::cout),
+  myIsFile  (Standard_False),
+  myUseUtf8 (Standard_False)
 {
+  myTraceLevel = theTraceLevel;
 }
 
 //=======================================================================
@@ -38,35 +40,42 @@ Message_PrinterOStream::Message_PrinterOStream (const Message_Gravity theTraceLe
 //           for specific file names standard streams are created
 //=======================================================================
 Message_PrinterOStream::Message_PrinterOStream (const Standard_CString theFileName,
-						const Standard_Boolean doAppend,
-						const Message_Gravity theTraceLevel)
-: myTraceLevel(theTraceLevel), myStream(&cout), myIsFile(Standard_False)
+                                                const Standard_Boolean theToAppend,
+                                                const Message_Gravity  theTraceLevel)
+: myStream (&std::cout),
+  myIsFile (Standard_False)
 {
-  if ( strcasecmp(theFileName, "cout") == 0 ) 
-    myStream = &cerr;
-  else if ( strcasecmp(theFileName, "cerr") == 0 ) 
-    myStream = &cout;
-  else 
+  myTraceLevel = theTraceLevel;
+  if (strcasecmp(theFileName, "cout") == 0)
   {
-    TCollection_AsciiString aFileName (theFileName);
-#ifdef WNT
-    aFileName.ChangeAll ('/', '\\');
+    myStream = &std::cerr;
+    return;
+  }
+  else if (strcasecmp(theFileName, "cerr") == 0)
+  {
+    myStream = &std::cout;
+    return;
+  }
+
+  TCollection_AsciiString aFileName (theFileName);
+#ifdef _WIN32
+  aFileName.ChangeAll ('/', '\\');
 #endif
 
-    ofstream *ofile = new ofstream (aFileName.ToCString(),
-#ifdef USE_STL_STREAMS
-				 (doAppend ? (std::ios_base::app | std::ios_base::out) : std::ios_base::out ) );
-#else
-				 (doAppend ? ios::app : ios::out ) );
+  std::ofstream* aFile = new std::ofstream (aFileName.ToCString(),
+                                            (theToAppend ? (std::ios_base::app | std::ios_base::out) : std::ios_base::out));
+  if (aFile->is_open())
+  {
+    myStream = (Standard_OStream* )aFile;
+    myIsFile = Standard_True;
+  }
+  else
+  {
+    delete aFile;
+    myStream = &std::cout;
+#ifdef OCCT_DEBUG
+    std::cerr << "Error opening " << theFileName << std::endl << std::flush;
 #endif
-    if ( ofile ) {
-      myStream = (Standard_OStream*)ofile;
-      myIsFile = Standard_True;
-    }
-    else {
-      myStream = &cout;
-      cerr << "Error opening " << theFileName << endl << flush;
-    }
   }
 }
 
@@ -84,7 +93,7 @@ void Message_PrinterOStream::Close ()
   ostr->flush();
   if ( myIsFile )
   {
-    ofstream* ofile = (ofstream*)ostr;
+    std::ofstream* ofile = (std::ofstream* )ostr;
     ofile->close();
     delete ofile;
     myIsFile = Standard_False;

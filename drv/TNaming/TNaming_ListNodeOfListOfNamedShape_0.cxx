@@ -5,19 +5,11 @@
 
 #include <TNaming_ListNodeOfListOfNamedShape.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TNaming_NamedShape_HeaderFile
 #include <TNaming_NamedShape.hxx>
-#endif
-#ifndef _TNaming_ListOfNamedShape_HeaderFile
 #include <TNaming_ListOfNamedShape.hxx>
-#endif
-#ifndef _TNaming_ListIteratorOfListOfNamedShape_HeaderFile
 #include <TNaming_ListIteratorOfListOfNamedShape.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(TNaming_ListNodeOfListOfNamedShape,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(TNaming_ListNodeOfListOfNamedShape)
 
 
-#define Item Handle_TNaming_NamedShape
+#define Item Handle(TNaming_NamedShape)
 #define Item_hxx <TNaming_NamedShape.hxx>
 #define TCollection_ListNode TNaming_ListNodeOfListOfNamedShape
 #define TCollection_ListNode_hxx <TNaming_ListNodeOfListOfNamedShape.hxx>

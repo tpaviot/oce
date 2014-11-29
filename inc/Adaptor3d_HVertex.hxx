@@ -6,57 +6,41 @@
 #ifndef _Adaptor3d_HVertex_HeaderFile
 #define _Adaptor3d_HVertex_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HVertex_HeaderFile
 #include <Handle_Adaptor3d_HVertex.hxx>
-#endif
 
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_Adaptor2d_HCurve2d_HeaderFile
 #include <Handle_Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class gp_Pnt2d;
 class Adaptor2d_HCurve2d;
 
 
 
-class Adaptor3d_HVertex : public MMgt_TShared {
+class Adaptor3d_HVertex : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   Adaptor3d_HVertex();
+  Standard_EXPORT Adaptor3d_HVertex();
   
-  Standard_EXPORT   Adaptor3d_HVertex(const gp_Pnt2d& P,const TopAbs_Orientation Ori,const Standard_Real Resolution);
+  Standard_EXPORT Adaptor3d_HVertex(const gp_Pnt2d& P, const TopAbs_Orientation Ori, const Standard_Real Resolution);
   
-  Standard_EXPORT   virtual  gp_Pnt2d Value() ;
+  Standard_EXPORT virtual   gp_Pnt2d Value() ;
   
-  Standard_EXPORT   virtual  Standard_Real Parameter(const Handle(Adaptor2d_HCurve2d)& C) ;
-  //! Parametric resolution (2d). <br>
-  Standard_EXPORT   virtual  Standard_Real Resolution(const Handle(Adaptor2d_HCurve2d)& C) ;
+  Standard_EXPORT virtual   Standard_Real Parameter (const Handle(Adaptor2d_HCurve2d)& C) ;
   
-  Standard_EXPORT   virtual  TopAbs_Orientation Orientation() ;
+  //! Parametric resolution (2d).
+  Standard_EXPORT virtual   Standard_Real Resolution (const Handle(Adaptor2d_HCurve2d)& C) ;
   
-  Standard_EXPORT   virtual  Standard_Boolean IsSame(const Handle(Adaptor3d_HVertex)& Other) ;
+  Standard_EXPORT virtual   TopAbs_Orientation Orientation() ;
+  
+  Standard_EXPORT virtual   Standard_Boolean IsSame (const Handle(Adaptor3d_HVertex)& Other) ;
 
 
 
@@ -71,9 +55,9 @@ protected:
 private: 
 
 
-gp_Pnt2d myPnt;
-Standard_Real myTol;
-TopAbs_Orientation myOri;
+  gp_Pnt2d myPnt;
+  Standard_Real myTol;
+  TopAbs_Orientation myOri;
 
 
 };
@@ -82,7 +66,6 @@ TopAbs_Orientation myOri;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Adaptor3d_HVertex_HeaderFile

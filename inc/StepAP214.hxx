@@ -6,19 +6,11 @@
 #ifndef _StepAP214_HeaderFile
 #define _StepAP214_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepAP214_Protocol_HeaderFile
 #include <Handle_StepAP214_Protocol.hxx>
-#endif
 class StepAP214_Protocol;
 class StepAP214_AutoDesignDateAndPersonItem;
 class StepAP214_AutoDesignDateAndTimeItem;
@@ -101,17 +93,18 @@ class StepAP214_Array1OfExternalIdentificationItem;
 class StepAP214_HArray1OfExternalIdentificationItem;
 
 
-//! Complete AP214 CC1 , Revision 4 <br>
-//!           Upgrading from Revision 2 to Revision 4 : 26 Mar 1997 <br>
-//!           Splitting in sub-schemas : 5 Nov 1997 <br>
-class StepAP214  {
+//! Complete AP214 CC1 , Revision 4
+//! Upgrading from Revision 2 to Revision 4 : 26 Mar 1997
+//! Splitting in sub-schemas : 5 Nov 1997
+class StepAP214 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! creates a Protocol <br>
-  Standard_EXPORT   static  Handle_StepAP214_Protocol Protocol() ;
-
+  
+  //! creates a Protocol
+  Standard_EXPORT static   Handle(StepAP214_Protocol) Protocol() ;
 
 
 
@@ -213,7 +206,6 @@ friend class StepAP214_HArray1OfExternalIdentificationItem;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP214_HeaderFile

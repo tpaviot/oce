@@ -6,28 +6,14 @@
 #ifndef _Quantity_Array1OfCoefficient_HeaderFile
 #define _Quantity_Array1OfCoefficient_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Quantity_Coefficient_HeaderFile
 #include <Quantity_Coefficient.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -35,52 +21,52 @@ class Standard_OutOfMemory;
 
 
 
-class Quantity_Array1OfCoefficient  {
+class Quantity_Array1OfCoefficient 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Quantity_Array1OfCoefficient(const Standard_Integer Low,const Standard_Integer Up);
+    Quantity_Array1OfCoefficient(const Standard_Integer Low, const Standard_Integer Up);
   
-      Quantity_Array1OfCoefficient(const Quantity_Coefficient& Item,const Standard_Integer Low,const Standard_Integer Up);
+    Quantity_Array1OfCoefficient(const Quantity_Coefficient& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const Quantity_Coefficient& V) ;
+  Standard_EXPORT   void Init (const Quantity_Coefficient& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~Quantity_Array1OfCoefficient()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const Quantity_Array1OfCoefficient& Assign(const Quantity_Array1OfCoefficient& Other) ;
-   const Quantity_Array1OfCoefficient& operator =(const Quantity_Array1OfCoefficient& Other) 
+  Standard_EXPORT  const  Quantity_Array1OfCoefficient& Assign (const Quantity_Array1OfCoefficient& Other) ;
+ const  Quantity_Array1OfCoefficient& operator = (const Quantity_Array1OfCoefficient& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Quantity_Coefficient& Value) ;
+      void SetValue (const Standard_Integer Index, const Quantity_Coefficient& Value) ;
   
-       const Quantity_Coefficient& Value(const Standard_Integer Index) const;
-     const Quantity_Coefficient& operator ()(const Standard_Integer Index) const
+     const  Quantity_Coefficient& Value (const Standard_Integer Index)  const;
+   const  Quantity_Coefficient& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        Quantity_Coefficient& ChangeValue(const Standard_Integer Index) ;
-      Quantity_Coefficient& operator ()(const Standard_Integer Index) 
+      Quantity_Coefficient& ChangeValue (const Standard_Integer Index) ;
+    Quantity_Coefficient& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -94,13 +80,13 @@ protected:
 private:
 
   
-  Standard_EXPORT   Quantity_Array1OfCoefficient(const Quantity_Array1OfCoefficient& AnArray);
+  Standard_EXPORT Quantity_Array1OfCoefficient(const Quantity_Array1OfCoefficient& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
@@ -118,7 +104,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Quantity_Array1OfCoefficient_HeaderFile

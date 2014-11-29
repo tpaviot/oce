@@ -6,28 +6,22 @@
 #ifndef _StepBasic_MechanicalContext_HeaderFile
 #define _StepBasic_MechanicalContext_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_MechanicalContext_HeaderFile
 #include <Handle_StepBasic_MechanicalContext.hxx>
-#endif
 
-#ifndef _StepBasic_ProductContext_HeaderFile
 #include <StepBasic_ProductContext.hxx>
-#endif
 
 
 
-class StepBasic_MechanicalContext : public StepBasic_ProductContext {
+class StepBasic_MechanicalContext : public StepBasic_ProductContext
+{
 
 public:
 
-  //! Returns a MechanicalContext <br>
-  Standard_EXPORT   StepBasic_MechanicalContext();
+  
+  //! Returns a MechanicalContext
+  Standard_EXPORT StepBasic_MechanicalContext();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_MechanicalContext_HeaderFile

@@ -1,12 +1,4 @@
-#ifndef _IntTools_Curve_HeaderFile
 #include <IntTools_Curve.hxx>
-#endif
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
-#ifndef _BOPDS_PaveBlock_HeaderFile
 #include <BOPDS_PaveBlock.hxx>
-#endif
-#ifndef _BOPDS_Curve_HeaderFile
 #include <BOPDS_Curve.hxx>
-#endif

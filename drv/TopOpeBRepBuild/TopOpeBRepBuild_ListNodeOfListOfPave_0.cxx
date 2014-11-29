@@ -5,19 +5,11 @@
 
 #include <TopOpeBRepBuild_ListNodeOfListOfPave.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopOpeBRepBuild_Pave_HeaderFile
 #include <TopOpeBRepBuild_Pave.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_ListOfPave_HeaderFile
 #include <TopOpeBRepBuild_ListOfPave.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_ListIteratorOfListOfPave_HeaderFile
 #include <TopOpeBRepBuild_ListIteratorOfListOfPave.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(TopOpeBRepBuild_ListNodeOfListOfPave,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(TopOpeBRepBuild_ListNodeOfListOfPave)
 
 
-#define Item Handle_TopOpeBRepBuild_Pave
+#define Item Handle(TopOpeBRepBuild_Pave)
 #define Item_hxx <TopOpeBRepBuild_Pave.hxx>
 #define TCollection_ListNode TopOpeBRepBuild_ListNodeOfListOfPave
 #define TCollection_ListNode_hxx <TopOpeBRepBuild_ListNodeOfListOfPave.hxx>

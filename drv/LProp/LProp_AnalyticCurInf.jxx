@@ -1,6 +1,2 @@
-#ifndef _LProp_CurAndInf_HeaderFile
 #include <LProp_CurAndInf.hxx>
-#endif
-#ifndef _LProp_AnalyticCurInf_HeaderFile
 #include <LProp_AnalyticCurInf.hxx>
-#endif

@@ -5,28 +5,14 @@
 
 #include <StepAP214_HArray1OfAutoDesignDateAndPersonItem.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _StepAP214_AutoDesignDateAndPersonItem_HeaderFile
 #include <StepAP214_AutoDesignDateAndPersonItem.hxx>
-#endif
-#ifndef _StepAP214_Array1OfAutoDesignDateAndPersonItem_HeaderFile
 #include <StepAP214_Array1OfAutoDesignDateAndPersonItem.hxx>
-#endif
 
  
 

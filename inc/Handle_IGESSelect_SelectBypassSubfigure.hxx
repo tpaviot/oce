@@ -6,22 +6,15 @@
 #ifndef _Handle_IGESSelect_SelectBypassSubfigure_HeaderFile
 #define _Handle_IGESSelect_SelectBypassSubfigure_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IFSelect_SelectExplore_HeaderFile
 #include <Handle_IFSelect_SelectExplore.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IFSelect_SelectExplore);
 class IGESSelect_SelectBypassSubfigure;
 
-DEFINE_STANDARD_HANDLE(IGESSelect_SelectBypassSubfigure,IFSelect_SelectExplore)
+DEFINE_STANDARD_HANDLE(IGESSelect_SelectBypassSubfigure, IFSelect_SelectExplore)
 
-#endif
+#endif // _Handle_IGESSelect_SelectBypassSubfigure_HeaderFile

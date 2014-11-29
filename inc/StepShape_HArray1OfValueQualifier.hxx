@@ -6,25 +6,13 @@
 #ifndef _StepShape_HArray1OfValueQualifier_HeaderFile
 #define _StepShape_HArray1OfValueQualifier_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_HArray1OfValueQualifier_HeaderFile
 #include <Handle_StepShape_HArray1OfValueQualifier.hxx>
-#endif
 
-#ifndef _StepShape_Array1OfValueQualifier_HeaderFile
 #include <StepShape_Array1OfValueQualifier.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class StepShape_Array1OfValueQualifier;
 
 
 
-class StepShape_HArray1OfValueQualifier : public MMgt_TShared {
+class StepShape_HArray1OfValueQualifier : public MMgt_TShared
+{
 
 public:
 
   
-      StepShape_HArray1OfValueQualifier(const Standard_Integer Low,const Standard_Integer Up);
+    StepShape_HArray1OfValueQualifier(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepShape_HArray1OfValueQualifier(const Standard_Integer Low,const Standard_Integer Up,const StepShape_ValueQualifier& V);
+    StepShape_HArray1OfValueQualifier(const Standard_Integer Low, const Standard_Integer Up, const StepShape_ValueQualifier& V);
   
-        void Init(const StepShape_ValueQualifier& V) ;
+      void Init (const StepShape_ValueQualifier& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const StepShape_ValueQualifier& Value) ;
+      void SetValue (const Standard_Integer Index, const StepShape_ValueQualifier& Value) ;
   
-       const StepShape_ValueQualifier& Value(const Standard_Integer Index) const;
+     const  StepShape_ValueQualifier& Value (const Standard_Integer Index)  const;
   
-        StepShape_ValueQualifier& ChangeValue(const Standard_Integer Index) ;
+      StepShape_ValueQualifier& ChangeValue (const Standard_Integer Index) ;
   
-       const StepShape_Array1OfValueQualifier& Array1() const;
+     const  StepShape_Array1OfValueQualifier& Array1()  const;
   
-        StepShape_Array1OfValueQualifier& ChangeArray1() ;
+      StepShape_Array1OfValueQualifier& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-StepShape_Array1OfValueQualifier myArray;
+  StepShape_Array1OfValueQualifier myArray;
 
 
 };
@@ -100,7 +89,6 @@ StepShape_Array1OfValueQualifier myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_HArray1OfValueQualifier_HeaderFile

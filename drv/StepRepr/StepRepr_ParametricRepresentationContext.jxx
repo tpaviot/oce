@@ -1,3 +1,1 @@
-#ifndef _StepRepr_ParametricRepresentationContext_HeaderFile
 #include <StepRepr_ParametricRepresentationContext.hxx>
-#endif

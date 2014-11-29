@@ -16,7 +16,10 @@
 
 private class Owner from TDocStd inherits Attribute from TDF
 
-	---Purpose: 
+	---Purpose: This  attribute located  at  the  root label  of the
+    --        framework contains  a   back reference to   the  owner
+    --        TDocStd_Document, providing acces to the document from
+    --        any label.  private class Owner;
 
 uses Attribute from TDF,
      GUID      from Standard, 
@@ -43,7 +46,7 @@ is
     --          ===============
     
     Create
-    returns mutable Owner from TDocStd;  
+    returns Owner from TDocStd;  
     
     SetDocument (me : mutable; document : Document from TDocStd);    
 
@@ -60,10 +63,10 @@ is
     Restore (me: mutable; With : Attribute from TDF);
 
     NewEmpty (me)
-    returns mutable Attribute from TDF;
+    returns Attribute from TDF;
 
-    Paste (me; Into : mutable Attribute from TDF;
-	       RT   : mutable RelocationTable from TDF);    
+    Paste (me; Into : Attribute from TDF;
+	       RT   : RelocationTable from TDF);    
 
     Dump(me; anOS : in out OStream from Standard)
     	returns OStream from Standard

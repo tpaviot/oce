@@ -6,49 +6,39 @@
 #ifndef _TopOpeBRepDS_GeometryData_HeaderFile
 #define _TopOpeBRepDS_GeometryData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopOpeBRepDS_ListOfInterference_HeaderFile
 #include <TopOpeBRepDS_ListOfInterference.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_Interference_HeaderFile
 #include <Handle_TopOpeBRepDS_Interference.hxx>
-#endif
 class TopOpeBRepDS_ListOfInterference;
 class TopOpeBRepDS_Interference;
 
 
-//! mother-class of SurfaceData, CurveData, PointData <br>
-class TopOpeBRepDS_GeometryData  {
+//! mother-class of SurfaceData, CurveData, PointData
+class TopOpeBRepDS_GeometryData 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepDS_GeometryData();
+  Standard_EXPORT TopOpeBRepDS_GeometryData();
   
-  Standard_EXPORT   TopOpeBRepDS_GeometryData(const TopOpeBRepDS_GeometryData& Other);
+  Standard_EXPORT TopOpeBRepDS_GeometryData(const TopOpeBRepDS_GeometryData& Other);
   
-  Standard_EXPORT     void Assign(const TopOpeBRepDS_GeometryData& Other) ;
-    void operator=(const TopOpeBRepDS_GeometryData& Other) 
+  Standard_EXPORT   void Assign (const TopOpeBRepDS_GeometryData& Other) ;
+  void operator= (const TopOpeBRepDS_GeometryData& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT    const TopOpeBRepDS_ListOfInterference& Interferences() const;
+  Standard_EXPORT  const  TopOpeBRepDS_ListOfInterference& Interferences()  const;
   
-  Standard_EXPORT     TopOpeBRepDS_ListOfInterference& ChangeInterferences() ;
+  Standard_EXPORT   TopOpeBRepDS_ListOfInterference& ChangeInterferences() ;
   
-  Standard_EXPORT     void AddInterference(const Handle(TopOpeBRepDS_Interference)& I) ;
-
+  Standard_EXPORT   void AddInterference (const Handle(TopOpeBRepDS_Interference)& I) ;
 
 
 
@@ -63,7 +53,7 @@ private:
 
 
 
-TopOpeBRepDS_ListOfInterference myInterferences;
+  TopOpeBRepDS_ListOfInterference myInterferences;
 
 
 };
@@ -72,7 +62,6 @@ TopOpeBRepDS_ListOfInterference myInterferences;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_GeometryData_HeaderFile

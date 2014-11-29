@@ -5,25 +5,13 @@
 
 #include <MDF_SRelocationTable.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _PTColStd_TransientPersistentMap_HeaderFile
 #include <PTColStd_TransientPersistentMap.hxx>
-#endif
 
  
 
@@ -41,13 +29,13 @@ IMPLEMENT_DOWNCAST(MDF_SRelocationTable,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(MDF_SRelocationTable)
 
 
-#define TheSourceType Handle_TDF_Attribute
+#define TheSourceType Handle(TDF_Attribute)
 #define TheSourceType_hxx <TDF_Attribute.hxx>
-#define TheTargetType Handle_PDF_Attribute
+#define TheTargetType Handle(PDF_Attribute)
 #define TheTargetType_hxx <PDF_Attribute.hxx>
-#define TheOtherSourceType Handle_Standard_Transient
+#define TheOtherSourceType Handle(Standard_Transient)
 #define TheOtherSourceType_hxx <Standard_Transient.hxx>
-#define TheOtherTargetType Handle_Standard_Persistent
+#define TheOtherTargetType Handle(Standard_Persistent)
 #define TheOtherTargetType_hxx <Standard_Persistent.hxx>
 #define TheMapType PTColStd_TransientPersistentMap
 #define TheMapType_hxx <PTColStd_TransientPersistentMap.hxx>

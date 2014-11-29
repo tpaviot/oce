@@ -1,27 +1,9 @@
-#ifndef _XSControl_TransferReader_HeaderFile
 #include <XSControl_TransferReader.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Interface_Graph_HeaderFile
 #include <Interface_Graph.hxx>
-#endif
-#ifndef _Interface_EntityIterator_HeaderFile
 #include <Interface_EntityIterator.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfTransient_HeaderFile
 #include <TColStd_HSequenceOfTransient.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Transfer_TransientProcess_HeaderFile
 #include <Transfer_TransientProcess.hxx>
-#endif
-#ifndef _XSControl_ConnectedShapes_HeaderFile
 #include <XSControl_ConnectedShapes.hxx>
-#endif

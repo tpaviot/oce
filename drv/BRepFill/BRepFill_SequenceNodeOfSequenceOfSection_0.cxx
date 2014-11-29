@@ -5,16 +5,10 @@
 
 #include <BRepFill_SequenceNodeOfSequenceOfSection.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _BRepFill_Section_HeaderFile
 #include <BRepFill_Section.hxx>
-#endif
-#ifndef _BRepFill_SequenceOfSection_HeaderFile
 #include <BRepFill_SequenceOfSection.hxx>
-#endif
 
  
 

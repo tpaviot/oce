@@ -6,28 +6,14 @@
 #ifndef _ChFiDS_SequenceOfSpine_HeaderFile
 #define _ChFiDS_SequenceOfSpine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_ChFiDS_Spine_HeaderFile
 #include <Handle_ChFiDS_Spine.hxx>
-#endif
-#ifndef _Handle_ChFiDS_SequenceNodeOfSequenceOfSpine_HeaderFile
 #include <Handle_ChFiDS_SequenceNodeOfSequenceOfSpine.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class ChFiDS_Spine;
@@ -35,66 +21,68 @@ class ChFiDS_SequenceNodeOfSequenceOfSpine;
 
 
 
-class ChFiDS_SequenceOfSpine  : public TCollection_BaseSequence {
+class ChFiDS_SequenceOfSpine  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      ChFiDS_SequenceOfSpine();
+    ChFiDS_SequenceOfSpine();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT ChFiDS_SequenceOfSpine(const ChFiDS_SequenceOfSpine& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~ChFiDS_SequenceOfSpine()
 {
   Clear();
 }
   
-  Standard_EXPORT    const ChFiDS_SequenceOfSpine& Assign(const ChFiDS_SequenceOfSpine& Other) ;
-   const ChFiDS_SequenceOfSpine& operator =(const ChFiDS_SequenceOfSpine& Other) 
+  Standard_EXPORT  const  ChFiDS_SequenceOfSpine& Assign (const ChFiDS_SequenceOfSpine& Other) ;
+ const  ChFiDS_SequenceOfSpine& operator = (const ChFiDS_SequenceOfSpine& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(ChFiDS_Spine)& T) ;
+  Standard_EXPORT   void Append (const Handle(ChFiDS_Spine)& T) ;
   
-        void Append(ChFiDS_SequenceOfSpine& S) ;
+      void Append (ChFiDS_SequenceOfSpine& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(ChFiDS_Spine)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(ChFiDS_Spine)& T) ;
   
-        void Prepend(ChFiDS_SequenceOfSpine& S) ;
+      void Prepend (ChFiDS_SequenceOfSpine& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(ChFiDS_Spine)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(ChFiDS_Spine)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,ChFiDS_SequenceOfSpine& S) ;
+      void InsertBefore (const Standard_Integer Index, ChFiDS_SequenceOfSpine& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(ChFiDS_Spine)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(ChFiDS_Spine)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,ChFiDS_SequenceOfSpine& S) ;
+      void InsertAfter (const Standard_Integer Index, ChFiDS_SequenceOfSpine& S) ;
   
-  Standard_EXPORT    const Handle_ChFiDS_Spine& First() const;
+  Standard_EXPORT  const  Handle(ChFiDS_Spine)& First()  const;
   
-  Standard_EXPORT    const Handle_ChFiDS_Spine& Last() const;
+  Standard_EXPORT  const  Handle(ChFiDS_Spine)& Last()  const;
   
-        void Split(const Standard_Integer Index,ChFiDS_SequenceOfSpine& Sub) ;
+      void Split (const Standard_Integer Index, ChFiDS_SequenceOfSpine& Sub) ;
   
-  Standard_EXPORT    const Handle_ChFiDS_Spine& Value(const Standard_Integer Index) const;
-   const Handle_ChFiDS_Spine& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(ChFiDS_Spine)& Value (const Standard_Integer Index)  const;
+ const  Handle(ChFiDS_Spine)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(ChFiDS_Spine)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(ChFiDS_Spine)& I) ;
   
-  Standard_EXPORT     Handle_ChFiDS_Spine& ChangeValue(const Standard_Integer Index) ;
-    Handle_ChFiDS_Spine& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(ChFiDS_Spine)& ChangeValue (const Standard_Integer Index) ;
+  Handle(ChFiDS_Spine)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -107,15 +95,13 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   ChFiDS_SequenceOfSpine(const ChFiDS_SequenceOfSpine& Other);
 
 
 
 
 };
 
-#define SeqItem Handle_ChFiDS_Spine
+#define SeqItem Handle(ChFiDS_Spine)
 #define SeqItem_hxx <ChFiDS_Spine.hxx>
 #define TCollection_SequenceNode ChFiDS_SequenceNodeOfSequenceOfSpine
 #define TCollection_SequenceNode_hxx <ChFiDS_SequenceNodeOfSequenceOfSpine.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ChFiDS_SequenceOfSpine_HeaderFile

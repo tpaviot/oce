@@ -5,18 +5,10 @@
 
 #include <Aspect_SequenceOfColor.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Quantity_Color_HeaderFile
 #include <Quantity_Color.hxx>
-#endif
-#ifndef _Aspect_SequenceNodeOfSequenceOfColor_HeaderFile
 #include <Aspect_SequenceNodeOfSequenceOfColor.hxx>
-#endif
  
 
 #define SeqItem Quantity_Color

@@ -6,94 +6,79 @@
 #ifndef _MAT_ListOfEdge_HeaderFile
 #define _MAT_ListOfEdge_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MAT_ListOfEdge_HeaderFile
 #include <Handle_MAT_ListOfEdge.hxx>
-#endif
 
-#ifndef _Handle_MAT_TListNodeOfListOfEdge_HeaderFile
 #include <Handle_MAT_TListNodeOfListOfEdge.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_MAT_Edge_HeaderFile
 #include <Handle_MAT_Edge.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class MAT_TListNodeOfListOfEdge;
 class MAT_Edge;
 
 
 
-class MAT_ListOfEdge : public MMgt_TShared {
+class MAT_ListOfEdge : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   MAT_ListOfEdge();
+  Standard_EXPORT MAT_ListOfEdge();
   
-  Standard_EXPORT     void First() ;
+  Standard_EXPORT   void First() ;
   
-  Standard_EXPORT     void Last() ;
+  Standard_EXPORT   void Last() ;
   
-  Standard_EXPORT     void Init(const Handle(MAT_Edge)& aniten) ;
+  Standard_EXPORT   void Init (const Handle(MAT_Edge)& aniten) ;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     void Previous() ;
+  Standard_EXPORT   void Previous() ;
   
-  Standard_EXPORT     Standard_Boolean More() const;
+  Standard_EXPORT   Standard_Boolean More()  const;
   
-  Standard_EXPORT     Handle_MAT_Edge Current() const;
+  Standard_EXPORT   Handle(MAT_Edge) Current()  const;
   
-  Standard_EXPORT     void Current(const Handle(MAT_Edge)& anitem) const;
+  Standard_EXPORT   void Current (const Handle(MAT_Edge)& anitem)  const;
   
-  Standard_EXPORT     Handle_MAT_Edge FirstItem() const;
+  Standard_EXPORT   Handle(MAT_Edge) FirstItem()  const;
   
-  Standard_EXPORT     Handle_MAT_Edge LastItem() const;
+  Standard_EXPORT   Handle(MAT_Edge) LastItem()  const;
   
-  Standard_EXPORT     Handle_MAT_Edge PreviousItem() const;
+  Standard_EXPORT   Handle(MAT_Edge) PreviousItem()  const;
   
-  Standard_EXPORT     Handle_MAT_Edge NextItem() const;
+  Standard_EXPORT   Handle(MAT_Edge) NextItem()  const;
   
-        Standard_Integer Number() const;
+      Standard_Integer Number()  const;
   
-        Standard_Integer Index() const;
+      Standard_Integer Index()  const;
   
-  Standard_EXPORT     Handle_MAT_Edge Brackets(const Standard_Integer anindex) ;
-    Handle_MAT_Edge operator()(const Standard_Integer anindex) 
+  Standard_EXPORT   Handle(MAT_Edge) Brackets (const Standard_Integer anindex) ;
+  Handle(MAT_Edge) operator() (const Standard_Integer anindex) 
 {
   return Brackets(anindex);
 }
   
-  Standard_EXPORT     void Unlink() ;
+  Standard_EXPORT   void Unlink() ;
   
-  Standard_EXPORT     void LinkBefore(const Handle(MAT_Edge)& anitem) ;
+  Standard_EXPORT   void LinkBefore (const Handle(MAT_Edge)& anitem) ;
   
-  Standard_EXPORT     void LinkAfter(const Handle(MAT_Edge)& anitem) ;
+  Standard_EXPORT   void LinkAfter (const Handle(MAT_Edge)& anitem) ;
   
-  Standard_EXPORT     void FrontAdd(const Handle(MAT_Edge)& anitem) ;
+  Standard_EXPORT   void FrontAdd (const Handle(MAT_Edge)& anitem) ;
   
-  Standard_EXPORT     void BackAdd(const Handle(MAT_Edge)& anitem) ;
+  Standard_EXPORT   void BackAdd (const Handle(MAT_Edge)& anitem) ;
   
-  Standard_EXPORT     void Permute() ;
+  Standard_EXPORT   void Permute() ;
   
-  Standard_EXPORT     void Loop() const;
+  Standard_EXPORT   void Loop()  const;
   
-  Standard_EXPORT     Standard_Boolean IsEmpty() const;
+  Standard_EXPORT   Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Dump(const Standard_Integer ashift,const Standard_Integer alevel) ;
+  Standard_EXPORT   void Dump (const Standard_Integer ashift, const Standard_Integer alevel) ;
 
 
 
@@ -108,16 +93,16 @@ protected:
 private: 
 
 
-Handle_MAT_TListNodeOfListOfEdge thefirstnode;
-Handle_MAT_TListNodeOfListOfEdge thelastnode;
-Handle_MAT_TListNodeOfListOfEdge thecurrentnode;
-Standard_Integer thecurrentindex;
-Standard_Integer thenumberofitems;
+  Handle(MAT_TListNodeOfListOfEdge) thefirstnode;
+  Handle(MAT_TListNodeOfListOfEdge) thelastnode;
+  Handle(MAT_TListNodeOfListOfEdge) thecurrentnode;
+  Standard_Integer thecurrentindex;
+  Standard_Integer thenumberofitems;
 
 
 };
 
-#define Item Handle_MAT_Edge
+#define Item Handle(MAT_Edge)
 #define Item_hxx <MAT_Edge.hxx>
 #define MAT_TListNode MAT_TListNodeOfListOfEdge
 #define MAT_TListNode_hxx <MAT_TListNodeOfListOfEdge.hxx>
@@ -142,7 +127,6 @@ Standard_Integer thenumberofitems;
 #undef MAT_TList_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MAT_ListOfEdge_HeaderFile

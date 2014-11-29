@@ -19,7 +19,7 @@ package Blend
 uses IntSurf, 
     TColgp, 
     TColStd, 
-    Adaptor2d, 
+    Adaptor2d,
     gp, 
     TopAbs, 
     math, 
@@ -31,8 +31,7 @@ uses IntSurf,
 is
 
 --    deferred generic class SurfaceTool;
-    
-    generic class Iterator;          -- template class
+
 
     deferred class AppFunction;      -- inherits FunctionSetWithDerivatives from math
 
@@ -55,12 +54,6 @@ is
 
 
     class Point;
-    
-    generic class Extremity;
-    
-    generic class PointOnRst;
-    
-    generic class Line;
 
     generic class Walking;
 

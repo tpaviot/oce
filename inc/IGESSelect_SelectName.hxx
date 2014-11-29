@@ -6,62 +6,50 @@
 #ifndef _IGESSelect_SelectName_HeaderFile
 #define _IGESSelect_SelectName_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSelect_SelectName_HeaderFile
 #include <Handle_IGESSelect_SelectName.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _IFSelect_SelectExtract_HeaderFile
 #include <IFSelect_SelectExtract.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
 class TCollection_HAsciiString;
 class Standard_Transient;
 class Interface_InterfaceModel;
 class TCollection_AsciiString;
 
 
-//! Selects Entities which have a given name. <br>
-//!           Consider Property Name if present, else Short Label, but <br>
-//!           not the Subscript Number <br>
-//!           First version : keeps exact name <br>
-//!           Later : regular expression <br>
-class IGESSelect_SelectName : public IFSelect_SelectExtract {
+//! Selects Entities which have a given name.
+//! Consider Property Name if present, else Short Label, but
+//! not the Subscript Number
+//! First version : keeps exact name
+//! Later : regular expression
+class IGESSelect_SelectName : public IFSelect_SelectExtract
+{
 
 public:
 
-  //! Creates an empty SelectName : every entity is considered <br>
-//!           good (no filter active) <br>
-  Standard_EXPORT   IGESSelect_SelectName();
-  //! Returns True if Name of Entity complies with Name Filter <br>
-  Standard_EXPORT     Standard_Boolean Sort(const Standard_Integer rank,const Handle(Standard_Transient)& ent,const Handle(Interface_InterfaceModel)& model) const;
-  //! Sets a Name as a criterium : IGES Entities which have this name <br>
-//!           are kept (without regular expression, there should be at most <br>
-//!           one). <name> can be regarded as a Text Parameter <br>
-  Standard_EXPORT     void SetName(const Handle(TCollection_HAsciiString)& name) ;
-  //! Returns the Name used as Filter <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Name() const;
-  //! Returns the Selection criterium : "IGES Entity, Name : <name>" <br>
-  Standard_EXPORT     TCollection_AsciiString ExtractLabel() const;
+  
+  //! Creates an empty SelectName : every entity is considered
+  //! good (no filter active)
+  Standard_EXPORT IGESSelect_SelectName();
+  
+  //! Returns True if Name of Entity complies with Name Filter
+  Standard_EXPORT   Standard_Boolean Sort (const Standard_Integer rank, const Handle(Standard_Transient)& ent, const Handle(Interface_InterfaceModel)& model)  const;
+  
+  //! Sets a Name as a criterium : IGES Entities which have this name
+  //! are kept (without regular expression, there should be at most
+  //! one). <name> can be regarded as a Text Parameter
+  Standard_EXPORT   void SetName (const Handle(TCollection_HAsciiString)& name) ;
+  
+  //! Returns the Name used as Filter
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Name()  const;
+  
+  //! Returns the Selection criterium : "IGES Entity, Name : <name>"
+  Standard_EXPORT   TCollection_AsciiString ExtractLabel()  const;
 
 
 
@@ -76,7 +64,7 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString thename;
+  Handle(TCollection_HAsciiString) thename;
 
 
 };
@@ -85,7 +73,6 @@ Handle_TCollection_HAsciiString thename;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSelect_SelectName_HeaderFile

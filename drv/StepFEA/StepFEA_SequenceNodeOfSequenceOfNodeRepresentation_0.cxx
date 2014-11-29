@@ -5,16 +5,10 @@
 
 #include <StepFEA_SequenceNodeOfSequenceOfNodeRepresentation.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _StepFEA_NodeRepresentation_HeaderFile
 #include <StepFEA_NodeRepresentation.hxx>
-#endif
-#ifndef _StepFEA_SequenceOfNodeRepresentation_HeaderFile
 #include <StepFEA_SequenceOfNodeRepresentation.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(StepFEA_SequenceNodeOfSequenceOfNodeRepresentation,Standard_T
 IMPLEMENT_STANDARD_RTTI(StepFEA_SequenceNodeOfSequenceOfNodeRepresentation)
 
 
-#define SeqItem Handle_StepFEA_NodeRepresentation
+#define SeqItem Handle(StepFEA_NodeRepresentation)
 #define SeqItem_hxx <StepFEA_NodeRepresentation.hxx>
 #define TCollection_SequenceNode StepFEA_SequenceNodeOfSequenceOfNodeRepresentation
 #define TCollection_SequenceNode_hxx <StepFEA_SequenceNodeOfSequenceOfNodeRepresentation.hxx>

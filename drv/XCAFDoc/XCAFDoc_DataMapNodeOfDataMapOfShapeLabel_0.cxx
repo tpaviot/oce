@@ -5,25 +5,13 @@
 
 #include <XCAFDoc_DataMapNodeOfDataMapOfShapeLabel.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _XCAFDoc_DataMapOfShapeLabel_HeaderFile
 #include <XCAFDoc_DataMapOfShapeLabel.hxx>
-#endif
-#ifndef _XCAFDoc_DataMapIteratorOfDataMapOfShapeLabel_HeaderFile
 #include <XCAFDoc_DataMapIteratorOfDataMapOfShapeLabel.hxx>
-#endif
 
  
 

@@ -6,59 +6,48 @@
 #ifndef _StepAP214_PersonAndOrganizationItem_HeaderFile
 #define _StepAP214_PersonAndOrganizationItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepAP214_ApprovalItem_HeaderFile
 #include <StepAP214_ApprovalItem.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepAP214_AppliedOrganizationAssignment_HeaderFile
 #include <Handle_StepAP214_AppliedOrganizationAssignment.hxx>
-#endif
 class Standard_Transient;
 class StepAP214_AppliedOrganizationAssignment;
 
 
 
-class StepAP214_PersonAndOrganizationItem  : public StepAP214_ApprovalItem {
+class StepAP214_PersonAndOrganizationItem  : public StepAP214_ApprovalItem
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a PersonAndOrganizationItem SelectType <br>
-  Standard_EXPORT   StepAP214_PersonAndOrganizationItem();
-  //! Recognizes a APersonAndOrganizationItem Kind Entity that is : <br>
-//!        1 -> AppliedOrganizationAssignment <br>
-//!        2 -> AssemblyComponentUsageSubstitute <br>
-//!        3 -> DocumentFile <br>
-//!        4 -> MaterialDesignation <br>
-//!        5 -> MechanicalDesignGeometricPresentationRepresentation <br>
-//!        6 -> PresentationArea <br>
-//!        7 -> Product <br>
-//!        8 -> ProductDefinition <br>
-//!        9 -> ProductDefinitionFormation <br>
-//!    	  10 -> ProductDefinitionRelationship <br>
-//!        11 -> PropertyDefinition <br>
-//!        12 -> ShapeRepresentation <br>
-//!        13 -> SecurityClassification <br>
-//!        0 else <br>
-  Standard_EXPORT   virtual  Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! returns Value as a AppliedOrganizationAssignment (Null if another type) <br>
-  Standard_EXPORT     Handle_StepAP214_AppliedOrganizationAssignment AppliedOrganizationAssignment() const;
-
+  
+  //! Returns a PersonAndOrganizationItem SelectType
+  Standard_EXPORT StepAP214_PersonAndOrganizationItem();
+  
+  //! Recognizes a APersonAndOrganizationItem Kind Entity that is :
+  //! 1 -> AppliedOrganizationAssignment
+  //! 2 -> AssemblyComponentUsageSubstitute
+  //! 3 -> DocumentFile
+  //! 4 -> MaterialDesignation
+  //! 5 -> MechanicalDesignGeometricPresentationRepresentation
+  //! 6 -> PresentationArea
+  //! 7 -> Product
+  //! 8 -> ProductDefinition
+  //! 9 -> ProductDefinitionFormation
+  //! 10 -> ProductDefinitionRelationship
+  //! 11 -> PropertyDefinition
+  //! 12 -> ShapeRepresentation
+  //! 13 -> SecurityClassification
+  //! 0 else
+  Standard_EXPORT virtual   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! returns Value as a AppliedOrganizationAssignment (Null if another type)
+  Standard_EXPORT   Handle(StepAP214_AppliedOrganizationAssignment) AppliedOrganizationAssignment()  const;
 
 
 
@@ -81,7 +70,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP214_PersonAndOrganizationItem_HeaderFile

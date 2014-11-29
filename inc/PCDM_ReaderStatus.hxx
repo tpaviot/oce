@@ -6,8 +6,11 @@
 #ifndef _PCDM_ReaderStatus_HeaderFile
 #define _PCDM_ReaderStatus_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum PCDM_ReaderStatus {
+
+enum PCDM_ReaderStatus
+{
 PCDM_RS_OK,
 PCDM_RS_NoDriver,
 PCDM_RS_UnknownFileDriver,
@@ -32,8 +35,4 @@ PCDM_RS_ReaderException,
 PCDM_RS_NoModel
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _PCDM_ReaderStatus_HeaderFile

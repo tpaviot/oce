@@ -6,72 +6,58 @@
 #ifndef _Interface_ReaderModule_HeaderFile
 #define _Interface_ReaderModule_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Interface_ReaderModule_HeaderFile
 #include <Handle_Interface_ReaderModule.hxx>
-#endif
 
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Interface_FileReaderData_HeaderFile
 #include <Handle_Interface_FileReaderData.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_DomainError;
 class Interface_FileReaderData;
 class Interface_Check;
 class Standard_Transient;
 
 
-//! Defines unitary operations required to read an Entity from a <br>
-//!           File (see FileReaderData, FileReaderTool), under control of <br>
-//!           a FileReaderTool. The initial creation is performed by a <br>
-//!           GeneralModule (set in GeneralLib). Then, which remains is <br>
-//!           Loading data from the FileReaderData to the Entity <br>
-//! <br>
-//!           To work, a GeneralModule has formerly recognized the Type read <br>
-//!           from FileReaderData as a positive Case Number, then the <br>
-//!           ReaderModule reads it according to this Case Number <br>
-class Interface_ReaderModule : public MMgt_TShared {
+//! Defines unitary operations required to read an Entity from a
+//! File (see FileReaderData, FileReaderTool), under control of
+//! a FileReaderTool. The initial creation is performed by a
+//! GeneralModule (set in GeneralLib). Then, which remains is
+//! Loading data from the FileReaderData to the Entity
+//!
+//! To work, a GeneralModule has formerly recognized the Type read
+//! from FileReaderData as a positive Case Number, then the
+//! ReaderModule reads it according to this Case Number
+class Interface_ReaderModule : public MMgt_TShared
+{
 
 public:
 
-  //! Translates the type of record <num> in <data> to a positive <br>
-//!           Case Number. If Recognition fails, must return 0 <br>
-  Standard_EXPORT   virtual  Standard_Integer CaseNum(const Handle(Interface_FileReaderData)& data,const Standard_Integer num) const = 0;
-  //! Performs the effective loading from <data>, record <num>, <br>
-//!           to the Entity <ent> formerly created <br>
-//!           In case of Error or Warning, fills <ach> with messages <br>
-//!           Remark that the Case Number comes from translating a record <br>
-  Standard_EXPORT   virtual  void Read(const Standard_Integer casenum,const Handle(Interface_FileReaderData)& data,const Standard_Integer num,Handle(Interface_Check)& ach,const Handle(Standard_Transient)& ent) const = 0;
-  //! Specific operator (create+read) defaulted to do nothing. <br>
-//!           It can be redefined when it is not possible to work in two <br>
-//!           steps (NewVoid then Read). This occurs when no default <br>
-//!           constructor is defined : hence the result <ent> must be <br>
-//!           created with an effective definition from the reader. <br>
-//!           Remark : if NewRead is defined, Copy has nothing to do. <br>
-//! <br>
-//!           Returns True if it has produced something, false else. <br>
-//!           If nothing was produced, <ach> should be filled : it will be <br>
-//!           treated as "Unrecognized case" by reader tool. <br>
-  Standard_EXPORT   virtual  Standard_Boolean NewRead(const Standard_Integer casenum,const Handle(Interface_FileReaderData)& data,const Standard_Integer num,Handle(Interface_Check)& ach,Handle(Standard_Transient)& ent) const;
+  
+  //! Translates the type of record <num> in <data> to a positive
+  //! Case Number. If Recognition fails, must return 0
+  Standard_EXPORT virtual   Standard_Integer CaseNum (const Handle(Interface_FileReaderData)& data, const Standard_Integer num)  const = 0;
+  
+  //! Performs the effective loading from <data>, record <num>,
+  //! to the Entity <ent> formerly created
+  //! In case of Error or Warning, fills <ach> with messages
+  //! Remark that the Case Number comes from translating a record
+  Standard_EXPORT virtual   void Read (const Standard_Integer casenum, const Handle(Interface_FileReaderData)& data, const Standard_Integer num, Handle(Interface_Check)& ach, const Handle(Standard_Transient)& ent)  const = 0;
+  
+  //! Specific operator (create+read) defaulted to do nothing.
+  //! It can be redefined when it is not possible to work in two
+  //! steps (NewVoid then Read). This occurs when no default
+  //! constructor is defined : hence the result <ent> must be
+  //! created with an effective definition from the reader.
+  //! Remark : if NewRead is defined, Copy has nothing to do.
+  //!
+  //! Returns True if it has produced something, false else.
+  //! If nothing was produced, <ach> should be filled : it will be
+  //! treated as "Unrecognized case" by reader tool.
+  Standard_EXPORT virtual   Standard_Boolean NewRead (const Standard_Integer casenum, const Handle(Interface_FileReaderData)& data, const Standard_Integer num, Handle(Interface_Check)& ach, Handle(Standard_Transient)& ent)  const;
 
 
 
@@ -94,7 +80,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Interface_ReaderModule_HeaderFile

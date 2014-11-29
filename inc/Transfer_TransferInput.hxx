@@ -6,31 +6,15 @@
 #ifndef _Transfer_TransferInput_HeaderFile
 #define _Transfer_TransferInput_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Transfer_TransientProcess_HeaderFile
 #include <Handle_Transfer_TransientProcess.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Handle_Interface_Protocol_HeaderFile
 #include <Handle_Interface_Protocol.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Transfer_FinderProcess_HeaderFile
 #include <Handle_Transfer_FinderProcess.hxx>
-#endif
 class Transfer_TransferFailure;
 class Interface_EntityIterator;
 class Transfer_TransferIterator;
@@ -40,41 +24,47 @@ class Interface_Protocol;
 class Transfer_FinderProcess;
 
 
-//! A TransferInput is a Tool which fills an InterfaceModel with <br>
-//!           the result of the Transfer of CasCade Objects, once determined <br>
-//!           The Result comes from a TransferProcess, either from <br>
-//!           Transient (the Complete Result is considered, it must contain <br>
-//!           only Transient Objects) <br>
-class Transfer_TransferInput  {
+//! A TransferInput is a Tool which fills an InterfaceModel with
+//! the result of the Transfer of CasCade Objects, once determined
+//! The Result comes from a TransferProcess, either from
+//! Transient (the Complete Result is considered, it must contain
+//! only Transient Objects)
+class Transfer_TransferInput 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates a TransferInput ready to use <br>
-  Standard_EXPORT   Transfer_TransferInput();
-  //! Takes the transient items stored in a TransferIterator <br>
-  Standard_EXPORT     Interface_EntityIterator Entities(Transfer_TransferIterator& list) const;
-  //! Fills an InterfaceModel with the Complete Result of a Transfer <br>
-//!           stored in a TransientProcess (Starting Objects are Transient) <br>
-//!           The complete result is exactly added to the model <br>
-  Standard_EXPORT     void FillModel(const Handle(Transfer_TransientProcess)& proc,const Handle(Interface_InterfaceModel)& amodel) const;
-  //! Fills an InterfaceModel with results of the Transfer recorded <br>
-//!           in a TransientProcess (Starting Objects are Transient) : <br>
-//!           Root Result if <roots> is True (Default), Complete Result else <br>
-//!           The entities added to the model are determined from the result <br>
-//!           by by adding the referenced entities <br>
-  Standard_EXPORT     void FillModel(const Handle(Transfer_TransientProcess)& proc,const Handle(Interface_InterfaceModel)& amodel,const Handle(Interface_Protocol)& proto,const Standard_Boolean roots = Standard_True) const;
-  //! Fills an InterfaceModel with the Complete Result of a Transfer <br>
-//!           stored in a TransientProcess (Starting Objects are Transient) <br>
-//!           The complete result is exactly added to the model <br>
-  Standard_EXPORT     void FillModel(const Handle(Transfer_FinderProcess)& proc,const Handle(Interface_InterfaceModel)& amodel) const;
-  //! Fills an InterfaceModel with results of the Transfer recorded <br>
-//!           in a TransientProcess (Starting Objects are Transient) : <br>
-//!           Root Result if <roots> is True (Default), Complete Result else <br>
-//!           The entities added to the model are determined from the result <br>
-//!           by by adding the referenced entities <br>
-  Standard_EXPORT     void FillModel(const Handle(Transfer_FinderProcess)& proc,const Handle(Interface_InterfaceModel)& amodel,const Handle(Interface_Protocol)& proto,const Standard_Boolean roots = Standard_True) const;
-
+  
+  //! Creates a TransferInput ready to use
+  Standard_EXPORT Transfer_TransferInput();
+  
+  //! Takes the transient items stored in a TransferIterator
+  Standard_EXPORT   Interface_EntityIterator Entities (Transfer_TransferIterator& list)  const;
+  
+  //! Fills an InterfaceModel with the Complete Result of a Transfer
+  //! stored in a TransientProcess (Starting Objects are Transient)
+  //! The complete result is exactly added to the model
+  Standard_EXPORT   void FillModel (const Handle(Transfer_TransientProcess)& proc, const Handle(Interface_InterfaceModel)& amodel)  const;
+  
+  //! Fills an InterfaceModel with results of the Transfer recorded
+  //! in a TransientProcess (Starting Objects are Transient) :
+  //! Root Result if <roots> is True (Default), Complete Result else
+  //! The entities added to the model are determined from the result
+  //! by by adding the referenced entities
+  Standard_EXPORT   void FillModel (const Handle(Transfer_TransientProcess)& proc, const Handle(Interface_InterfaceModel)& amodel, const Handle(Interface_Protocol)& proto, const Standard_Boolean roots = Standard_True)  const;
+  
+  //! Fills an InterfaceModel with the Complete Result of a Transfer
+  //! stored in a TransientProcess (Starting Objects are Transient)
+  //! The complete result is exactly added to the model
+  Standard_EXPORT   void FillModel (const Handle(Transfer_FinderProcess)& proc, const Handle(Interface_InterfaceModel)& amodel)  const;
+  
+  //! Fills an InterfaceModel with results of the Transfer recorded
+  //! in a TransientProcess (Starting Objects are Transient) :
+  //! Root Result if <roots> is True (Default), Complete Result else
+  //! The entities added to the model are determined from the result
+  //! by by adding the referenced entities
+  Standard_EXPORT   void FillModel (const Handle(Transfer_FinderProcess)& proc, const Handle(Interface_InterfaceModel)& amodel, const Handle(Interface_Protocol)& proto, const Standard_Boolean roots = Standard_True)  const;
 
 
 
@@ -97,7 +87,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Transfer_TransferInput_HeaderFile

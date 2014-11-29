@@ -6,47 +6,35 @@
 #ifndef _PBRep_GCurve_HeaderFile
 #define _PBRep_GCurve_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PBRep_GCurve_HeaderFile
 #include <Handle_PBRep_GCurve.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _PBRep_CurveRepresentation_HeaderFile
 #include <PBRep_CurveRepresentation.hxx>
-#endif
 class PTopLoc_Location;
 
 
-class PBRep_GCurve : public PBRep_CurveRepresentation {
+class PBRep_GCurve : public PBRep_CurveRepresentation
+{
 
 public:
 
   
-  Standard_EXPORT     Standard_Real First() const;
+  Standard_EXPORT   Standard_Real First()  const;
   
-  Standard_EXPORT     Standard_Real Last() const;
+  Standard_EXPORT   Standard_Real Last()  const;
   
-  Standard_EXPORT     void First(const Standard_Real F) ;
+  Standard_EXPORT   void First (const Standard_Real F) ;
   
-  Standard_EXPORT     void Last(const Standard_Real L) ;
-  //! returns TRUE <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsGCurve() const;
+  Standard_EXPORT   void Last (const Standard_Real L) ;
+  
+  //! returns TRUE
+  Standard_EXPORT virtual   Standard_Boolean IsGCurve()  const;
 
-  PBRep_GCurve( )
+PBRep_GCurve( )
 {
   
 }
@@ -66,15 +54,15 @@ PBRep_GCurve(const Storage_stCONSTclCOM& a) : PBRep_CurveRepresentation(a)
 protected:
 
   
-  Standard_EXPORT   PBRep_GCurve(const PTopLoc_Location& L,const Standard_Real First,const Standard_Real Last);
+  Standard_EXPORT PBRep_GCurve(const PTopLoc_Location& L, const Standard_Real First, const Standard_Real Last);
 
 
 
 private: 
 
 
-Standard_Real myFirst;
-Standard_Real myLast;
+  Standard_Real myFirst;
+  Standard_Real myLast;
 
 
 };
@@ -83,7 +71,6 @@ Standard_Real myLast;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PBRep_GCurve_HeaderFile

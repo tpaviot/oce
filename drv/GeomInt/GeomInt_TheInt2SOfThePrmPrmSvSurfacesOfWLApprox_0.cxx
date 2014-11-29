@@ -5,45 +5,21 @@
 
 #include <GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx>
 
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_ConstructionError_HeaderFile
 #include <Standard_ConstructionError.hxx>
-#endif
-#ifndef _StdFail_UndefinedDerivative_HeaderFile
 #include <StdFail_UndefinedDerivative.hxx>
-#endif
-#ifndef _Adaptor3d_HSurface_HeaderFile
 #include <Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Adaptor3d_HSurfaceTool_HeaderFile
 #include <Adaptor3d_HSurfaceTool.hxx>
-#endif
-#ifndef _GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox_HeaderFile
 #include <GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _math_FunctionSetRoot_HeaderFile
 #include <math_FunctionSetRoot.hxx>
-#endif
-#ifndef _IntSurf_PntOn2S_HeaderFile
 #include <IntSurf_PntOn2S.hxx>
-#endif
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _gp_Dir2d_HeaderFile
 #include <gp_Dir2d.hxx>
-#endif
  
 
-#define ThePSurface Handle_Adaptor3d_HSurface
+#define ThePSurface Handle(Adaptor3d_HSurface)
 #define ThePSurface_hxx <Adaptor3d_HSurface.hxx>
 #define ThePSurfaceTool Adaptor3d_HSurfaceTool
 #define ThePSurfaceTool_hxx <Adaptor3d_HSurfaceTool.hxx>

@@ -5,19 +5,11 @@
 
 #include <TopOpeBRepDS_ListNodeOfListOfInterference.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopOpeBRepDS_Interference_HeaderFile
 #include <TopOpeBRepDS_Interference.hxx>
-#endif
-#ifndef _TopOpeBRepDS_ListOfInterference_HeaderFile
 #include <TopOpeBRepDS_ListOfInterference.hxx>
-#endif
-#ifndef _TopOpeBRepDS_ListIteratorOfListOfInterference_HeaderFile
 #include <TopOpeBRepDS_ListIteratorOfListOfInterference.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(TopOpeBRepDS_ListNodeOfListOfInterference,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(TopOpeBRepDS_ListNodeOfListOfInterference)
 
 
-#define Item Handle_TopOpeBRepDS_Interference
+#define Item Handle(TopOpeBRepDS_Interference)
 #define Item_hxx <TopOpeBRepDS_Interference.hxx>
 #define TCollection_ListNode TopOpeBRepDS_ListNodeOfListOfInterference
 #define TCollection_ListNode_hxx <TopOpeBRepDS_ListNodeOfListOfInterference.hxx>

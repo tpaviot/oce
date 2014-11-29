@@ -6,28 +6,14 @@
 #ifndef _Storage_HArrayOfSchema_HeaderFile
 #define _Storage_HArrayOfSchema_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Storage_HArrayOfSchema_HeaderFile
 #include <Handle_Storage_HArrayOfSchema.hxx>
-#endif
 
-#ifndef _Storage_ArrayOfSchema_HeaderFile
 #include <Storage_ArrayOfSchema.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_Storage_Schema_HeaderFile
 #include <Handle_Storage_Schema.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class Storage_ArrayOfSchema;
 
 
 
-class Storage_HArrayOfSchema : public MMgt_TShared {
+class Storage_HArrayOfSchema : public MMgt_TShared
+{
 
 public:
 
   
-      Storage_HArrayOfSchema(const Standard_Integer Low,const Standard_Integer Up);
+    Storage_HArrayOfSchema(const Standard_Integer Low, const Standard_Integer Up);
   
-      Storage_HArrayOfSchema(const Standard_Integer Low,const Standard_Integer Up,const Handle(Storage_Schema)& V);
+    Storage_HArrayOfSchema(const Standard_Integer Low, const Standard_Integer Up, const Handle(Storage_Schema)& V);
   
-        void Init(const Handle(Storage_Schema)& V) ;
+      void Init (const Handle(Storage_Schema)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(Storage_Schema)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(Storage_Schema)& Value) ;
   
-       const Handle_Storage_Schema& Value(const Standard_Integer Index) const;
+     const  Handle(Storage_Schema)& Value (const Standard_Integer Index)  const;
   
-        Handle_Storage_Schema& ChangeValue(const Standard_Integer Index) ;
+      Handle(Storage_Schema)& ChangeValue (const Standard_Integer Index) ;
   
-       const Storage_ArrayOfSchema& Array1() const;
+     const  Storage_ArrayOfSchema& Array1()  const;
   
-        Storage_ArrayOfSchema& ChangeArray1() ;
+      Storage_ArrayOfSchema& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-Storage_ArrayOfSchema myArray;
+  Storage_ArrayOfSchema myArray;
 
 
 };
 
-#define ItemHArray1 Handle_Storage_Schema
+#define ItemHArray1 Handle(Storage_Schema)
 #define ItemHArray1_hxx <Storage_Schema.hxx>
 #define TheArray1 Storage_ArrayOfSchema
 #define TheArray1_hxx <Storage_ArrayOfSchema.hxx>
@@ -103,7 +90,6 @@ Storage_ArrayOfSchema myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Storage_HArrayOfSchema_HeaderFile

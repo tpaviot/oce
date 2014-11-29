@@ -6,59 +6,52 @@
 #ifndef _PGeom_OffsetCurve_HeaderFile
 #define _PGeom_OffsetCurve_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom_OffsetCurve_HeaderFile
 #include <Handle_PGeom_OffsetCurve.hxx>
-#endif
 
-#ifndef _Handle_PGeom_Curve_HeaderFile
 #include <Handle_PGeom_Curve.hxx>
-#endif
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _PGeom_Curve_HeaderFile
 #include <PGeom_Curve.hxx>
-#endif
 class PGeom_Curve;
 class gp_Dir;
 
 
-class PGeom_OffsetCurve : public PGeom_Curve {
+class PGeom_OffsetCurve : public PGeom_Curve
+{
 
 public:
 
-  //! Creates an OffsetCurve with default values. <br>
-  Standard_EXPORT   PGeom_OffsetCurve();
-  //! <aBasisCurve> is  the basis curve, <aOffsetValue> <br>
-//!         is the distance between <me> and the basis curve at <br>
-//!         any point.    <aOffsetDirection>  defines the fixed <br>
-//!         reference direction (offset direction). <br>
-  Standard_EXPORT   PGeom_OffsetCurve(const Handle(PGeom_Curve)& aBasisCurve,const Standard_Real aOffsetValue,const gp_Dir& aOffsetDirection);
-  //! Set the field basisCurve with <aBasisCurve>. <br>
-  Standard_EXPORT     void BasisCurve(const Handle(PGeom_Curve)& aBasisCurve) ;
-  //! The basis curve can be an offset curve. <br>
-  Standard_EXPORT     Handle_PGeom_Curve BasisCurve() const;
-  //! Set the value of  the field offsetDirection with <br>
-//!  <aOffsetDirection>. <br>
-  Standard_EXPORT     void OffsetDirection(const gp_Dir& aOffsetDirection) ;
-  //! Returns the direction of offset. <br>
-  Standard_EXPORT     gp_Dir OffsetDirection() const;
-  //! Set the field offsetValue with <aOffsetValue>. <br>
-  Standard_EXPORT     void OffsetValue(const Standard_Real aOffsetValue) ;
-  //! Returns the value of the field offsetValue. <br>
-  Standard_EXPORT     Standard_Real OffsetValue() const;
+  
+  //! Creates an OffsetCurve with default values.
+  Standard_EXPORT PGeom_OffsetCurve();
+  
+  //! <aBasisCurve> is  the basis curve, <aOffsetValue>
+  //! is the distance between <me> and the basis curve at
+  //! any point.    <aOffsetDirection>  defines the fixed
+  //! reference direction (offset direction).
+  Standard_EXPORT PGeom_OffsetCurve(const Handle(PGeom_Curve)& aBasisCurve, const Standard_Real aOffsetValue, const gp_Dir& aOffsetDirection);
+  
+  //! Set the field basisCurve with <aBasisCurve>.
+  Standard_EXPORT   void BasisCurve (const Handle(PGeom_Curve)& aBasisCurve) ;
+  
+  //! The basis curve can be an offset curve.
+  Standard_EXPORT   Handle(PGeom_Curve) BasisCurve()  const;
+  
+  //! Set the value of  the field offsetDirection with
+  //! <aOffsetDirection>.
+  Standard_EXPORT   void OffsetDirection (const gp_Dir& aOffsetDirection) ;
+  
+  //! Returns the direction of offset.
+  Standard_EXPORT   gp_Dir OffsetDirection()  const;
+  
+  //! Set the field offsetValue with <aOffsetValue>.
+  Standard_EXPORT   void OffsetValue (const Standard_Real aOffsetValue) ;
+  
+  //! Returns the value of the field offsetValue.
+  Standard_EXPORT   Standard_Real OffsetValue()  const;
 
 PGeom_OffsetCurve(const Storage_stCONSTclCOM& a) : PGeom_Curve(a)
 {
@@ -82,9 +75,9 @@ protected:
 private: 
 
 
-Handle_PGeom_Curve basisCurve;
-gp_Dir offsetDirection;
-Standard_Real offsetValue;
+  Handle(PGeom_Curve) basisCurve;
+  gp_Dir offsetDirection;
+  Standard_Real offsetValue;
 
 
 };
@@ -93,7 +86,6 @@ Standard_Real offsetValue;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom_OffsetCurve_HeaderFile

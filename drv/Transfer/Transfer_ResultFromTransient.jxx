@@ -1,21 +1,7 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Transfer_Binder_HeaderFile
 #include <Transfer_Binder.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfTransient_HeaderFile
 #include <TColStd_HSequenceOfTransient.hxx>
-#endif
-#ifndef _Interface_Check_HeaderFile
 #include <Interface_Check.hxx>
-#endif
-#ifndef _TColStd_IndexedMapOfTransient_HeaderFile
 #include <TColStd_IndexedMapOfTransient.hxx>
-#endif
-#ifndef _Transfer_TransientProcess_HeaderFile
 #include <Transfer_TransientProcess.hxx>
-#endif
-#ifndef _Transfer_ResultFromTransient_HeaderFile
 #include <Transfer_ResultFromTransient.hxx>
-#endif

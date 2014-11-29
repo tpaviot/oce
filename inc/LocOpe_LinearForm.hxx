@@ -6,31 +6,15 @@
 #ifndef _LocOpe_LinearForm_HeaderFile
 #define _LocOpe_LinearForm_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
 class Standard_NoSuchObject;
 class StdFail_NotDone;
 class TopoDS_Shape;
@@ -39,32 +23,32 @@ class gp_Pnt;
 class TopTools_ListOfShape;
 
 
-//! Defines a linear form (using Prism from BRepSweep) <br>
-//!          with modifications provided for the LinearForm feature. <br>
-class LocOpe_LinearForm  {
+//! Defines a linear form (using Prism from BRepSweep)
+//! with modifications provided for the LinearForm feature.
+class LocOpe_LinearForm 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      LocOpe_LinearForm();
+    LocOpe_LinearForm();
   
-      LocOpe_LinearForm(const TopoDS_Shape& Base,const gp_Vec& V,const gp_Pnt& Pnt1,const gp_Pnt& Pnt2);
+    LocOpe_LinearForm(const TopoDS_Shape& Base, const gp_Vec& V, const gp_Pnt& Pnt1, const gp_Pnt& Pnt2);
   
-      LocOpe_LinearForm(const TopoDS_Shape& Base,const gp_Vec& V,const gp_Vec& Vectra,const gp_Pnt& Pnt1,const gp_Pnt& Pnt2);
+    LocOpe_LinearForm(const TopoDS_Shape& Base, const gp_Vec& V, const gp_Vec& Vectra, const gp_Pnt& Pnt1, const gp_Pnt& Pnt2);
   
-  Standard_EXPORT     void Perform(const TopoDS_Shape& Base,const gp_Vec& V,const gp_Pnt& Pnt1,const gp_Pnt& Pnt2) ;
+  Standard_EXPORT   void Perform (const TopoDS_Shape& Base, const gp_Vec& V, const gp_Pnt& Pnt1, const gp_Pnt& Pnt2) ;
   
-  Standard_EXPORT     void Perform(const TopoDS_Shape& Base,const gp_Vec& V,const gp_Vec& Vectra,const gp_Pnt& Pnt1,const gp_Pnt& Pnt2) ;
+  Standard_EXPORT   void Perform (const TopoDS_Shape& Base, const gp_Vec& V, const gp_Vec& Vectra, const gp_Pnt& Pnt1, const gp_Pnt& Pnt2) ;
   
-  Standard_EXPORT    const TopoDS_Shape& FirstShape() const;
+  Standard_EXPORT  const  TopoDS_Shape& FirstShape()  const;
   
-  Standard_EXPORT    const TopoDS_Shape& LastShape() const;
+  Standard_EXPORT  const  TopoDS_Shape& LastShape()  const;
   
-  Standard_EXPORT    const TopoDS_Shape& Shape() const;
+  Standard_EXPORT  const  TopoDS_Shape& Shape()  const;
   
-  Standard_EXPORT    const TopTools_ListOfShape& Shapes(const TopoDS_Shape& S) const;
-
+  Standard_EXPORT  const  TopTools_ListOfShape& Shapes (const TopoDS_Shape& S)  const;
 
 
 
@@ -78,20 +62,20 @@ protected:
 private:
 
   
-  Standard_EXPORT     void IntPerf() ;
+  Standard_EXPORT   void IntPerf() ;
 
 
-TopoDS_Shape myBase;
-gp_Vec myVec;
-gp_Vec myTra;
-Standard_Boolean myDone;
-Standard_Boolean myIsTrans;
-TopoDS_Shape myRes;
-TopoDS_Shape myFirstShape;
-TopoDS_Shape myLastShape;
-TopTools_DataMapOfShapeListOfShape myMap;
-gp_Pnt myPnt1;
-gp_Pnt myPnt2;
+  TopoDS_Shape myBase;
+  gp_Vec myVec;
+  gp_Vec myTra;
+  Standard_Boolean myDone;
+  Standard_Boolean myIsTrans;
+  TopoDS_Shape myRes;
+  TopoDS_Shape myFirstShape;
+  TopoDS_Shape myLastShape;
+  TopTools_DataMapOfShapeListOfShape myMap;
+  gp_Pnt myPnt1;
+  gp_Pnt myPnt2;
 
 
 };
@@ -101,7 +85,6 @@ gp_Pnt myPnt2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _LocOpe_LinearForm_HeaderFile

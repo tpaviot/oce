@@ -6,28 +6,22 @@
 #ifndef _StepShape_AdvancedFace_HeaderFile
 #define _StepShape_AdvancedFace_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_AdvancedFace_HeaderFile
 #include <Handle_StepShape_AdvancedFace.hxx>
-#endif
 
-#ifndef _StepShape_FaceSurface_HeaderFile
 #include <StepShape_FaceSurface.hxx>
-#endif
 
 
 
-class StepShape_AdvancedFace : public StepShape_FaceSurface {
+class StepShape_AdvancedFace : public StepShape_FaceSurface
+{
 
 public:
 
-  //! Returns a AdvancedFace <br>
-  Standard_EXPORT   StepShape_AdvancedFace();
+  
+  //! Returns a AdvancedFace
+  Standard_EXPORT StepShape_AdvancedFace();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_AdvancedFace_HeaderFile

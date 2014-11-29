@@ -6,56 +6,52 @@
 #ifndef _BRepLib_Command_HeaderFile
 #define _BRepLib_Command_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class StdFail_NotDone;
 
 
-//! Root class for all commands in BRepLib. <br>
-//! <br>
-//!          Provides : <br>
-//! <br>
-//!          * Managements of the notDone flag. <br>
-//! <br>
-//!          * Catching of exceptions (not implemented). <br>
-//! <br>
-//!          * Logging (not implemented). <br>
-class BRepLib_Command  {
+//! Root class for all commands in BRepLib.
+//!
+//! Provides :
+//!
+//! * Managements of the notDone flag.
+//!
+//! * Catching of exceptions (not implemented).
+//!
+//! * Logging (not implemented).
+class BRepLib_Command 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   virtual  void Delete() ;
+  Standard_EXPORT virtual   void Delete() ;
 Standard_EXPORT virtual ~BRepLib_Command(){Delete() ; }
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-  //! Raises NotDone if done is false. <br>
-  Standard_EXPORT     void Check() const;
-
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
+  
+  //! Raises NotDone if done is false.
+  Standard_EXPORT   void Check()  const;
 
 
 
 
 protected:
 
-  //! Set done to False. <br>
-  Standard_EXPORT   BRepLib_Command();
-  //! Set done to true. <br>
-  Standard_EXPORT     void Done() ;
-  //! Set done to false. <br>
-  Standard_EXPORT     void NotDone() ;
+  
+  //! Set done to False.
+  Standard_EXPORT BRepLib_Command();
+  
+  //! Set done to true.
+  Standard_EXPORT   void Done() ;
+  
+  //! Set done to false.
+  Standard_EXPORT   void NotDone() ;
 
 
 
@@ -64,7 +60,7 @@ private:
 
 
 
-Standard_Boolean myDone;
+  Standard_Boolean myDone;
 
 
 };
@@ -73,7 +69,6 @@ Standard_Boolean myDone;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepLib_Command_HeaderFile

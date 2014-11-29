@@ -1,6 +1,2 @@
-#ifndef _MoniTool_Element_HeaderFile
 #include <MoniTool_Element.hxx>
-#endif
-#ifndef _MoniTool_ElemHasher_HeaderFile
 #include <MoniTool_ElemHasher.hxx>
-#endif

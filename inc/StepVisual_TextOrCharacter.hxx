@@ -6,34 +6,16 @@
 #ifndef _StepVisual_TextOrCharacter_HeaderFile
 #define _StepVisual_TextOrCharacter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepVisual_AnnotationText_HeaderFile
 #include <Handle_StepVisual_AnnotationText.hxx>
-#endif
-#ifndef _Handle_StepVisual_CompositeText_HeaderFile
 #include <Handle_StepVisual_CompositeText.hxx>
-#endif
-#ifndef _Handle_StepVisual_TextLiteral_HeaderFile
 #include <Handle_StepVisual_TextLiteral.hxx>
-#endif
 class Standard_Transient;
 class StepVisual_AnnotationText;
 class StepVisual_CompositeText;
@@ -41,26 +23,31 @@ class StepVisual_TextLiteral;
 
 
 
-class StepVisual_TextOrCharacter  : public StepData_SelectType {
+class StepVisual_TextOrCharacter  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a TextOrCharacter SelectType <br>
-  Standard_EXPORT   StepVisual_TextOrCharacter();
-  //! Recognizes a TextOrCharacter Kind Entity that is : <br>
-//!        1 -> AnnotationText <br>
-//!        2 -> CompositeText <br>
-//!        3 -> TextLiteral <br>
-//!        0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! returns Value as a AnnotationText (Null if another type) <br>
-  Standard_EXPORT     Handle_StepVisual_AnnotationText AnnotationText() const;
-  //! returns Value as a CompositeText (Null if another type) <br>
-  Standard_EXPORT     Handle_StepVisual_CompositeText CompositeText() const;
-  //! returns Value as a TextLiteral (Null if another type) <br>
-  Standard_EXPORT     Handle_StepVisual_TextLiteral TextLiteral() const;
-
+  
+  //! Returns a TextOrCharacter SelectType
+  Standard_EXPORT StepVisual_TextOrCharacter();
+  
+  //! Recognizes a TextOrCharacter Kind Entity that is :
+  //! 1 -> AnnotationText
+  //! 2 -> CompositeText
+  //! 3 -> TextLiteral
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! returns Value as a AnnotationText (Null if another type)
+  Standard_EXPORT   Handle(StepVisual_AnnotationText) AnnotationText()  const;
+  
+  //! returns Value as a CompositeText (Null if another type)
+  Standard_EXPORT   Handle(StepVisual_CompositeText) CompositeText()  const;
+  
+  //! returns Value as a TextLiteral (Null if another type)
+  Standard_EXPORT   Handle(StepVisual_TextLiteral) TextLiteral()  const;
 
 
 
@@ -83,7 +70,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_TextOrCharacter_HeaderFile

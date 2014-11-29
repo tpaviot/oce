@@ -1,102 +1,34 @@
-#ifndef _IFSelect_ShareOut_HeaderFile
 #include <IFSelect_ShareOut.hxx>
-#endif
-#ifndef _IFSelect_WorkLibrary_HeaderFile
 #include <IFSelect_WorkLibrary.hxx>
-#endif
-#ifndef _Interface_Protocol_HeaderFile
 #include <Interface_Protocol.hxx>
-#endif
-#ifndef _Interface_InterfaceModel_HeaderFile
 #include <Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Interface_HGraph_HeaderFile
 #include <Interface_HGraph.hxx>
-#endif
-#ifndef _Interface_GTool_HeaderFile
 #include <Interface_GTool.hxx>
-#endif
-#ifndef _Dico_DictionaryOfTransient_HeaderFile
 #include <Dico_DictionaryOfTransient.hxx>
-#endif
-#ifndef _IFSelect_ModelCopier_HeaderFile
 #include <IFSelect_ModelCopier.hxx>
-#endif
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _IFSelect_Signature_HeaderFile
 #include <IFSelect_Signature.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Interface_Graph_HeaderFile
 #include <Interface_Graph.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfTransient_HeaderFile
 #include <TColStd_HSequenceOfTransient.hxx>
-#endif
-#ifndef _Interface_CheckIterator_HeaderFile
 #include <Interface_CheckIterator.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfInteger_HeaderFile
 #include <TColStd_HSequenceOfInteger.hxx>
-#endif
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfHAsciiString_HeaderFile
 #include <TColStd_HSequenceOfHAsciiString.hxx>
-#endif
-#ifndef _IFSelect_IntParam_HeaderFile
 #include <IFSelect_IntParam.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _IFSelect_Selection_HeaderFile
 #include <IFSelect_Selection.hxx>
-#endif
-#ifndef _Interface_EntityIterator_HeaderFile
 #include <Interface_EntityIterator.hxx>
-#endif
-#ifndef _IFSelect_SelectionIterator_HeaderFile
 #include <IFSelect_SelectionIterator.hxx>
-#endif
-#ifndef _IFSelect_SignCounter_HeaderFile
 #include <IFSelect_SignCounter.hxx>
-#endif
-#ifndef _IFSelect_Dispatch_HeaderFile
 #include <IFSelect_Dispatch.hxx>
-#endif
-#ifndef _IFSelect_GeneralModifier_HeaderFile
 #include <IFSelect_GeneralModifier.hxx>
-#endif
-#ifndef _IFSelect_Modifier_HeaderFile
 #include <IFSelect_Modifier.hxx>
-#endif
-#ifndef _IFSelect_Transformer_HeaderFile
 #include <IFSelect_Transformer.hxx>
-#endif
-#ifndef _IFSelect_PacketList_HeaderFile
 #include <IFSelect_PacketList.hxx>
-#endif
-#ifndef _TColStd_SequenceOfTransient_HeaderFile
 #include <TColStd_SequenceOfTransient.hxx>
-#endif
-#ifndef _TColStd_SequenceOfInteger_HeaderFile
 #include <TColStd_SequenceOfInteger.hxx>
-#endif
-#ifndef _Message_Messenger_HeaderFile
 #include <Message_Messenger.hxx>
-#endif
-#ifndef _IFSelect_SignatureList_HeaderFile
 #include <IFSelect_SignatureList.hxx>
-#endif
-#ifndef _IFSelect_WorkSession_HeaderFile
 #include <IFSelect_WorkSession.hxx>
-#endif

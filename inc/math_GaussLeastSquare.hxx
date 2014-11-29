@@ -6,72 +6,60 @@
 #ifndef _math_GaussLeastSquare_HeaderFile
 #define _math_GaussLeastSquare_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
-#endif
-#ifndef _math_IntegerVector_HeaderFile
 #include <math_IntegerVector.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
+#include <math_Vector.hxx>
 #include <Standard_OStream.hxx>
-#endif
 class StdFail_NotDone;
 class Standard_DimensionError;
 class math_Matrix;
-class math_Vector;
 
 
 
-//! This class implements the least square solution of a set of <br>
-//! n linear equations of m unknowns (n >= m) using the gauss LU <br>
-//! decomposition algorithm. <br>
-//! This algorithm is more likely subject to numerical instability <br>
-//!  than math_SVD. <br>
-class math_GaussLeastSquare  {
+//! This class implements the least square solution of a set of
+//! n linear equations of m unknowns (n >= m) using the gauss LU
+//! decomposition algorithm.
+//! This algorithm is more likely subject to numerical instability
+//! than math_SVD.
+class math_GaussLeastSquare 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Given an input n X m matrix A with n >= m this constructor <br>
-//!          performs the LU decomposition with partial pivoting <br>
-//!          (interchange of rows) of the matrix AA = A.Transposed() * A; <br>
-//! 	        This LU decomposition is stored internally and may be used <br>
-//! 	        to do subsequent calculation. <br>
-//!          If the largest pivot found is less than MinPivot the matrix <A> <br>
-//!          is considered as singular. <br>
-  Standard_EXPORT   math_GaussLeastSquare(const math_Matrix& A,const Standard_Real MinPivot = 1.0e-20);
-  //! Returns true if the computations are successful, otherwise returns false.e <br>
-        Standard_Boolean IsDone() const;
-  //! Given the input Vector <B> this routine solves the set <br>
-//!          of linear equations A . X = B. <br>
-//!          Exception NotDone is raised if the decomposition of A was <br>
-//!          not done successfully. <br>
-//!          Exception DimensionError is raised if the range of B Inv is <br>
-//!          not equal to the rowrange of A. <br>
-//!          Exception DimensionError is raised if the range of X Inv is <br>
-//!          not equal to the colrange of A. <br>
-  Standard_EXPORT     void Solve(const math_Vector& B,math_Vector& X) const;
-  //! Prints on the stream o information on the current state <br>
-//!          of the object. <br>
-//!          Is used to redefine the operator <<. <br>
-  Standard_EXPORT     void Dump(Standard_OStream& o) const;
-
+  
+  //! Given an input n X m matrix A with n >= m this constructor
+  //! performs the LU decomposition with partial pivoting
+  //! (interchange of rows) of the matrix AA = A.Transposed() * A;
+  //! This LU decomposition is stored internally and may be used
+  //! to do subsequent calculation.
+  //! If the largest pivot found is less than MinPivot the matrix <A>
+  //! is considered as singular.
+  Standard_EXPORT math_GaussLeastSquare(const math_Matrix& A, const Standard_Real MinPivot = 1.0e-20);
+  
+  //! Returns true if the computations are successful, otherwise returns false.e
+      Standard_Boolean IsDone()  const;
+  
+  //! Given the input Vector <B> this routine solves the set
+  //! of linear equations A . X = B.
+  //! Exception NotDone is raised if the decomposition of A was
+  //! not done successfully.
+  //! Exception DimensionError is raised if the range of B Inv is
+  //! not equal to the rowrange of A.
+  //! Exception DimensionError is raised if the range of X Inv is
+  //! not equal to the colrange of A.
+  Standard_EXPORT   void Solve (const math_Vector& B, math_Vector& X)  const;
+  
+  //! Prints on the stream o information on the current state
+  //! of the object.
+  //! Is used to redefine the operator <<.
+  Standard_EXPORT   void Dump (Standard_OStream& o)  const;
 
 
 
@@ -80,18 +68,18 @@ protected:
 
 
 
-Standard_Boolean Singular;
-math_Matrix LU;
-math_Matrix A2;
-math_IntegerVector Index;
-Standard_Real D;
+  Standard_Boolean Singular;
+  math_Matrix LU;
+  math_Matrix A2;
+  math_IntegerVector Index;
+  Standard_Real D;
 
 
 private:
 
 
 
-Standard_Boolean Done;
+  Standard_Boolean Done;
 
 
 };
@@ -101,7 +89,6 @@ Standard_Boolean Done;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _math_GaussLeastSquare_HeaderFile

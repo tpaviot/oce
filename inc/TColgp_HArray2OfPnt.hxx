@@ -6,25 +6,13 @@
 #ifndef _TColgp_HArray2OfPnt_HeaderFile
 #define _TColgp_HArray2OfPnt_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray2OfPnt_HeaderFile
 #include <Handle_TColgp_HArray2OfPnt.hxx>
-#endif
 
-#ifndef _TColgp_Array2OfPnt_HeaderFile
 #include <TColgp_Array2OfPnt.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_OutOfRange;
 class Standard_OutOfMemory;
@@ -34,38 +22,39 @@ class TColgp_Array2OfPnt;
 
 
 
-class TColgp_HArray2OfPnt : public MMgt_TShared {
+class TColgp_HArray2OfPnt : public MMgt_TShared
+{
 
 public:
 
   
-      TColgp_HArray2OfPnt(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+    TColgp_HArray2OfPnt(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2);
   
-      TColgp_HArray2OfPnt(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const gp_Pnt& V);
+    TColgp_HArray2OfPnt(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2, const gp_Pnt& V);
   
-        void Init(const gp_Pnt& V) ;
+      void Init (const gp_Pnt& V) ;
   
-        Standard_Integer ColLength() const;
+      Standard_Integer ColLength()  const;
   
-        Standard_Integer RowLength() const;
+      Standard_Integer RowLength()  const;
   
-        Standard_Integer LowerCol() const;
+      Standard_Integer LowerCol()  const;
   
-        Standard_Integer LowerRow() const;
+      Standard_Integer LowerRow()  const;
   
-        Standard_Integer UpperCol() const;
+      Standard_Integer UpperCol()  const;
   
-        Standard_Integer UpperRow() const;
+      Standard_Integer UpperRow()  const;
   
-        void SetValue(const Standard_Integer Row,const Standard_Integer Col,const gp_Pnt& Value) ;
+      void SetValue (const Standard_Integer Row, const Standard_Integer Col, const gp_Pnt& Value) ;
   
-       const gp_Pnt& Value(const Standard_Integer Row,const Standard_Integer Col) const;
+     const  gp_Pnt& Value (const Standard_Integer Row, const Standard_Integer Col)  const;
   
-        gp_Pnt& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
+      gp_Pnt& ChangeValue (const Standard_Integer Row, const Standard_Integer Col) ;
   
-       const TColgp_Array2OfPnt& Array2() const;
+     const  TColgp_Array2OfPnt& Array2()  const;
   
-        TColgp_Array2OfPnt& ChangeArray2() ;
+      TColgp_Array2OfPnt& ChangeArray2() ;
 
 
 
@@ -80,7 +69,7 @@ protected:
 private: 
 
 
-TColgp_Array2OfPnt myArray;
+  TColgp_Array2OfPnt myArray;
 
 
 };
@@ -106,7 +95,6 @@ TColgp_Array2OfPnt myArray;
 #undef TCollection_HArray2_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColgp_HArray2OfPnt_HeaderFile

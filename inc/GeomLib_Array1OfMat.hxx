@@ -6,25 +6,13 @@
 #ifndef _GeomLib_Array1OfMat_HeaderFile
 #define _GeomLib_Array1OfMat_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -33,52 +21,52 @@ class gp_Mat;
 
 
 
-class GeomLib_Array1OfMat  {
+class GeomLib_Array1OfMat 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      GeomLib_Array1OfMat(const Standard_Integer Low,const Standard_Integer Up);
+    GeomLib_Array1OfMat(const Standard_Integer Low, const Standard_Integer Up);
   
-      GeomLib_Array1OfMat(const gp_Mat& Item,const Standard_Integer Low,const Standard_Integer Up);
+    GeomLib_Array1OfMat(const gp_Mat& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const gp_Mat& V) ;
+  Standard_EXPORT   void Init (const gp_Mat& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~GeomLib_Array1OfMat()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const GeomLib_Array1OfMat& Assign(const GeomLib_Array1OfMat& Other) ;
-   const GeomLib_Array1OfMat& operator =(const GeomLib_Array1OfMat& Other) 
+  Standard_EXPORT  const  GeomLib_Array1OfMat& Assign (const GeomLib_Array1OfMat& Other) ;
+ const  GeomLib_Array1OfMat& operator = (const GeomLib_Array1OfMat& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const gp_Mat& Value) ;
+      void SetValue (const Standard_Integer Index, const gp_Mat& Value) ;
   
-       const gp_Mat& Value(const Standard_Integer Index) const;
-     const gp_Mat& operator ()(const Standard_Integer Index) const
+     const  gp_Mat& Value (const Standard_Integer Index)  const;
+   const  gp_Mat& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        gp_Mat& ChangeValue(const Standard_Integer Index) ;
-      gp_Mat& operator ()(const Standard_Integer Index) 
+      gp_Mat& ChangeValue (const Standard_Integer Index) ;
+    gp_Mat& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -92,13 +80,13 @@ protected:
 private:
 
   
-  Standard_EXPORT   GeomLib_Array1OfMat(const GeomLib_Array1OfMat& AnArray);
+  Standard_EXPORT GeomLib_Array1OfMat(const GeomLib_Array1OfMat& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
@@ -116,7 +104,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomLib_Array1OfMat_HeaderFile

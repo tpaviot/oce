@@ -6,13 +6,11 @@
 #ifndef _Convert_SequenceOfArray1OfPoles2d_HeaderFile
 #define _Convert_SequenceOfArray1OfPoles2d_HeaderFile
 
-#ifndef _TColgp_SequenceOfArray1OfPnt2d_HeaderFile
 #include <TColgp_SequenceOfArray1OfPnt2d.hxx>
-#endif
 
 typedef TColgp_SequenceOfArray1OfPnt2d Convert_SequenceOfArray1OfPoles2d;
 
 
 #define Convert_SequenceOfArray1OfPoles2d_Type_() TColgp_SequenceOfArray1OfPnt2d_Type_()
 
-#endif
+#endif // _Convert_SequenceOfArray1OfPoles2d_HeaderFile

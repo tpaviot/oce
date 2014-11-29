@@ -6,22 +6,15 @@
 #ifndef _Handle_IGESSelect_AutoCorrect_HeaderFile
 #define _Handle_IGESSelect_AutoCorrect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IGESSelect_ModelModifier_HeaderFile
 #include <Handle_IGESSelect_ModelModifier.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IGESSelect_ModelModifier);
 class IGESSelect_AutoCorrect;
 
-DEFINE_STANDARD_HANDLE(IGESSelect_AutoCorrect,IGESSelect_ModelModifier)
+DEFINE_STANDARD_HANDLE(IGESSelect_AutoCorrect, IGESSelect_ModelModifier)
 
-#endif
+#endif // _Handle_IGESSelect_AutoCorrect_HeaderFile

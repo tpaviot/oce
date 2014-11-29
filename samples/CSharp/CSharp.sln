@@ -1,10 +1,10 @@
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IE_WPF", "WPF\IE_WPF.csproj", "{D12A8897-5BF8-4345-BBB0-8ADE4B9FB9A7}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IE_WPF_WinForms", "WPF_WinForms\IE_WPF_WinForms.csproj", "{D12A8897-5BF8-4345-BBB0-8ADE4B9FB9A7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IE_WinForms", "WinForms\IE_WinForms.csproj", "{B9914BB3-B886-4B41-B48D-350EBEBEFD1F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OCCTProxy", "OCCTProxy\OCCTProxy.vcproj", "{969912D9-78E7-4AB8-B4FF-6B52B4F03991}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OCCTProxy", "OCCTProxy\OCCTProxy.vcxproj", "{969912D9-78E7-4AB8-B4FF-6B52B4F03991}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

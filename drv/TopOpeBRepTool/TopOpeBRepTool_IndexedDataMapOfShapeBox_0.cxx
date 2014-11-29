@@ -5,27 +5,13 @@
 
 #include <TopOpeBRepTool_IndexedDataMapOfShapeBox.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
-#ifndef _TopTools_OrientedShapeMapHasher_HeaderFile
 #include <TopTools_OrientedShapeMapHasher.hxx>
-#endif
-#ifndef _TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox_HeaderFile
 #include <TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape

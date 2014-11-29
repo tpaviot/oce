@@ -6,79 +6,68 @@
 #ifndef _math_FunctionRoots_HeaderFile
 #define _math_FunctionRoots_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TColStd_SequenceOfReal_HeaderFile
 #include <TColStd_SequenceOfReal.hxx>
-#endif
-#ifndef _TColStd_SequenceOfInteger_HeaderFile
 #include <TColStd_SequenceOfInteger.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class Standard_RangeError;
 class StdFail_NotDone;
 class math_FunctionWithDerivative;
 
 
 
-//! This class implements an algorithm which finds all the real roots of <br>
-//! a function with derivative within a given range. <br>
-//! Knowledge of the derivative is required. <br>
-class math_FunctionRoots  {
+//! This class implements an algorithm which finds all the real roots of
+//! a function with derivative within a given range.
+//! Knowledge of the derivative is required.
+class math_FunctionRoots 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Calculates all the real roots of a function F-K within the range <br>
-//! A..B. whithout conditions on A and B <br>
-//! A solution X is found when <br>
-//!   abs(Xi - Xi-1) <= Epsx and abs(F(Xi)-K) <= EpsF. <br>
-//! The function is considered as null between A and B if <br>
-//! abs(F-K) <= EpsNull within this range. <br>
-  Standard_EXPORT   math_FunctionRoots(math_FunctionWithDerivative& F,const Standard_Real A,const Standard_Real B,const Standard_Integer NbSample,const Standard_Real EpsX = 0.0,const Standard_Real EpsF = 0.0,const Standard_Real EpsNull = 0.0,const Standard_Real K = 0.0);
-  //! Returns true if the computations are successful, otherwise returns false. <br>
-        Standard_Boolean IsDone() const;
   
-//! returns true if the function is considered as null between A and B. <br>
-//! Exceptions <br>
-//! StdFail_NotDone if the algorithm fails (and IsDone returns false). <br>
-        Standard_Boolean IsAllNull() const;
-  //! Returns the number of solutions found. <br>
-//! Exceptions <br>
-//! StdFail_NotDone if the algorithm fails (and IsDone returns false). <br>
-        Standard_Integer NbSolutions() const;
-  //! Returns the Nth value of the root of function F. <br>
-//! Exceptions <br>
-//! StdFail_NotDone if the algorithm fails (and IsDone returns false). <br>
-        Standard_Real Value(const Standard_Integer Nieme) const;
+  //! Calculates all the real roots of a function F-K within the range
+  //! A..B. whithout conditions on A and B
+  //! A solution X is found when
+  //! abs(Xi - Xi-1) <= Epsx and abs(F(Xi)-K) <= EpsF.
+  //! The function is considered as null between A and B if
+  //! abs(F-K) <= EpsNull within this range.
+  Standard_EXPORT math_FunctionRoots(math_FunctionWithDerivative& F, const Standard_Real A, const Standard_Real B, const Standard_Integer NbSample, const Standard_Real EpsX = 0.0, const Standard_Real EpsF = 0.0, const Standard_Real EpsNull = 0.0, const Standard_Real K = 0.0);
   
-//! returns the StateNumber  of the Nieme root. <br>
-//! Exception RangeError is raised if Nieme is < 1 <br>
-//!  or Nieme > NbSolutions. <br>
-        Standard_Integer StateNumber(const Standard_Integer Nieme) const;
-  //! Prints on the stream o information on the current state <br>
-//!          of the object. <br>
-  Standard_EXPORT     void Dump(Standard_OStream& o) const;
+  //! Returns true if the computations are successful, otherwise returns false.
+      Standard_Boolean IsDone()  const;
+  
 
+  //! returns true if the function is considered as null between A and B.
+  //! Exceptions
+  //! StdFail_NotDone if the algorithm fails (and IsDone returns false).
+      Standard_Boolean IsAllNull()  const;
+  
+  //! Returns the number of solutions found.
+  //! Exceptions
+  //! StdFail_NotDone if the algorithm fails (and IsDone returns false).
+      Standard_Integer NbSolutions()  const;
+  
+  //! Returns the Nth value of the root of function F.
+  //! Exceptions
+  //! StdFail_NotDone if the algorithm fails (and IsDone returns false).
+      Standard_Real Value (const Standard_Integer Nieme)  const;
+  
+
+  //! returns the StateNumber  of the Nieme root.
+  //! Exception RangeError is raised if Nieme is < 1
+  //! or Nieme > NbSolutions.
+      Standard_Integer StateNumber (const Standard_Integer Nieme)  const;
+  
+  //! Prints on the stream o information on the current state
+  //! of the object.
+  Standard_EXPORT   void Dump (Standard_OStream& o)  const;
 
 
 
@@ -93,10 +82,10 @@ private:
 
 
 
-Standard_Boolean Done;
-Standard_Boolean AllNull;
-TColStd_SequenceOfReal Sol;
-TColStd_SequenceOfInteger NbStateSol;
+  Standard_Boolean Done;
+  Standard_Boolean AllNull;
+  TColStd_SequenceOfReal Sol;
+  TColStd_SequenceOfInteger NbStateSol;
 
 
 };
@@ -106,7 +95,6 @@ TColStd_SequenceOfInteger NbStateSol;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _math_FunctionRoots_HeaderFile

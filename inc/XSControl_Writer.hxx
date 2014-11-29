@@ -6,74 +6,66 @@
 #ifndef _XSControl_Writer_HeaderFile
 #define _XSControl_Writer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_XSControl_WorkSession_HeaderFile
 #include <Handle_XSControl_WorkSession.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
-#ifndef _IFSelect_ReturnStatus_HeaderFile
 #include <IFSelect_ReturnStatus.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class XSControl_WorkSession;
 class Interface_InterfaceModel;
 class TopoDS_Shape;
 
 
-//! This class gives a simple way to create then write a <br>
-//!           Model compliant to a given norm, from a Shape <br>
-//!           The model can then be edited by tools by other appropriate tools <br>
-class XSControl_Writer  {
+//! This class gives a simple way to create then write a
+//! Model compliant to a given norm, from a Shape
+//! The model can then be edited by tools by other appropriate tools
+class XSControl_Writer 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates a Writer from scratch <br>
-  Standard_EXPORT   XSControl_Writer();
-  //! Creates a Writer from scratch, with a norm name which <br>
-//!           identifie a Controller <br>
-  Standard_EXPORT   XSControl_Writer(const Standard_CString norm);
-  //! Creates a Writer from an already existing Session <br>
-//!           If <scratch> is True (D), clears already recorded data <br>
-  Standard_EXPORT   XSControl_Writer(const Handle(XSControl_WorkSession)& WS,const Standard_Boolean scratch = Standard_True);
-  //! Sets a specific norm to <me> <br>
-//!           Returns True if done, False if <norm> is not available <br>
-  Standard_EXPORT     Standard_Boolean SetNorm(const Standard_CString norm) ;
-  //! Sets a specific session to <me> <br>
-  Standard_EXPORT     void SetWS(const Handle(XSControl_WorkSession)& WS,const Standard_Boolean scratch = Standard_True) ;
-  //! Returns the session used in <me> <br>
-  Standard_EXPORT     Handle_XSControl_WorkSession WS() const;
-  //! Returns the produced model. Produces a new one if not yet done <br>
-//!           or if <newone> is True <br>
-//!           This method allows for instance to edit product or header <br>
-//!           data before writing <br>
-  Standard_EXPORT     Handle_Interface_InterfaceModel Model(const Standard_Boolean newone = Standard_False) ;
-  //! Transfers a Shape according to the mode <br>
-  Standard_EXPORT     IFSelect_ReturnStatus TransferShape(const TopoDS_Shape& sh,const Standard_Integer mode = 0) ;
-  //! Writes the produced model <br>
-  Standard_EXPORT     IFSelect_ReturnStatus WriteFile(const Standard_CString filename) ;
-  //! Prints Statistics about Transfer <br>
-  Standard_EXPORT     void PrintStatsTransfer(const Standard_Integer what,const Standard_Integer mode = 0) const;
-
+  
+  //! Creates a Writer from scratch
+  Standard_EXPORT XSControl_Writer();
+  
+  //! Creates a Writer from scratch, with a norm name which
+  //! identifie a Controller
+  Standard_EXPORT XSControl_Writer(const Standard_CString norm);
+  
+  //! Creates a Writer from an already existing Session
+  //! If <scratch> is True (D), clears already recorded data
+  Standard_EXPORT XSControl_Writer(const Handle(XSControl_WorkSession)& WS, const Standard_Boolean scratch = Standard_True);
+  
+  //! Sets a specific norm to <me>
+  //! Returns True if done, False if <norm> is not available
+  Standard_EXPORT   Standard_Boolean SetNorm (const Standard_CString norm) ;
+  
+  //! Sets a specific session to <me>
+  Standard_EXPORT   void SetWS (const Handle(XSControl_WorkSession)& WS, const Standard_Boolean scratch = Standard_True) ;
+  
+  //! Returns the session used in <me>
+  Standard_EXPORT   Handle(XSControl_WorkSession) WS()  const;
+  
+  //! Returns the produced model. Produces a new one if not yet done
+  //! or if <newone> is True
+  //! This method allows for instance to edit product or header
+  //! data before writing
+  Standard_EXPORT   Handle(Interface_InterfaceModel) Model (const Standard_Boolean newone = Standard_False) ;
+  
+  //! Transfers a Shape according to the mode
+  Standard_EXPORT   IFSelect_ReturnStatus TransferShape (const TopoDS_Shape& sh, const Standard_Integer mode = 0) ;
+  
+  //! Writes the produced model
+  Standard_EXPORT   IFSelect_ReturnStatus WriteFile (const Standard_CString filename) ;
+  
+  //! Prints Statistics about Transfer
+  Standard_EXPORT   void PrintStatsTransfer (const Standard_Integer what, const Standard_Integer mode = 0)  const;
 
 
 
@@ -88,7 +80,7 @@ private:
 
 
 
-Handle_XSControl_WorkSession thesession;
+  Handle(XSControl_WorkSession) thesession;
 
 
 };
@@ -97,7 +89,6 @@ Handle_XSControl_WorkSession thesession;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XSControl_Writer_HeaderFile

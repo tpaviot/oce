@@ -6,28 +6,14 @@
 #ifndef _MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger_HeaderFile
 #define _MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger_HeaderFile
 #include <Handle_MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger.hxx>
-#endif
 
-#ifndef _Quantity_Color_HeaderFile
 #include <Quantity_Color.hxx>
-#endif
-#ifndef _TColStd_MapOfInteger_HeaderFile
 #include <TColStd_MapOfInteger.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Quantity_Color;
 class TColStd_MapOfInteger;
 class MeshVS_ColorHasher;
@@ -36,16 +22,17 @@ class MeshVS_DataMapIteratorOfDataMapOfColorMapOfInteger;
 
 
 
-class MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger : public TCollection_MapNode {
+class MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger : public TCollection_MapNode
+{
 
 public:
 
   
-      MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger(const Quantity_Color& K,const TColStd_MapOfInteger& I,const TCollection_MapNodePtr& n);
+    MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger(const Quantity_Color& K, const TColStd_MapOfInteger& I, const TCollection_MapNodePtr& n);
   
-        Quantity_Color& Key() const;
+      Quantity_Color& Key()  const;
   
-        TColStd_MapOfInteger& Value() const;
+      TColStd_MapOfInteger& Value()  const;
 
 
 
@@ -60,8 +47,8 @@ protected:
 private: 
 
 
-Quantity_Color myKey;
-TColStd_MapOfInteger myValue;
+  Quantity_Color myKey;
+  TColStd_MapOfInteger myValue;
 
 
 };
@@ -99,7 +86,6 @@ TColStd_MapOfInteger myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MeshVS_DataMapNodeOfDataMapOfColorMapOfInteger_HeaderFile

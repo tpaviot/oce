@@ -6,22 +6,12 @@
 #ifndef _TDataStd_DataMapIteratorOfDataMapOfStringString_HeaderFile
 #define _TDataStd_DataMapIteratorOfDataMapOfStringString_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_TDataStd_DataMapNodeOfDataMapOfStringString_HeaderFile
 #include <Handle_TDataStd_DataMapNodeOfDataMapOfStringString.hxx>
-#endif
 class Standard_NoSuchObject;
 class TCollection_ExtendedString;
 class TDataStd_DataMapOfStringString;
@@ -29,22 +19,22 @@ class TDataStd_DataMapNodeOfDataMapOfStringString;
 
 
 
-class TDataStd_DataMapIteratorOfDataMapOfStringString  : public TCollection_BasicMapIterator {
+class TDataStd_DataMapIteratorOfDataMapOfStringString  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TDataStd_DataMapIteratorOfDataMapOfStringString();
+  Standard_EXPORT TDataStd_DataMapIteratorOfDataMapOfStringString();
   
-  Standard_EXPORT   TDataStd_DataMapIteratorOfDataMapOfStringString(const TDataStd_DataMapOfStringString& aMap);
+  Standard_EXPORT TDataStd_DataMapIteratorOfDataMapOfStringString(const TDataStd_DataMapOfStringString& aMap);
   
-  Standard_EXPORT     void Initialize(const TDataStd_DataMapOfStringString& aMap) ;
+  Standard_EXPORT   void Initialize (const TDataStd_DataMapOfStringString& aMap) ;
   
-  Standard_EXPORT    const TCollection_ExtendedString& Key() const;
+  Standard_EXPORT  const  TCollection_ExtendedString& Key()  const;
   
-  Standard_EXPORT    const TCollection_ExtendedString& Value() const;
-
+  Standard_EXPORT  const  TCollection_ExtendedString& Value()  const;
 
 
 
@@ -67,7 +57,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_DataMapIteratorOfDataMapOfStringString_HeaderFile

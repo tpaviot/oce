@@ -5,22 +5,12 @@
 
 #include <Resource_DataMapNodeOfDataMapOfAsciiStringExtendedString.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _Resource_DataMapOfAsciiStringExtendedString_HeaderFile
 #include <Resource_DataMapOfAsciiStringExtendedString.hxx>
-#endif
-#ifndef _Resource_DataMapIteratorOfDataMapOfAsciiStringExtendedString_HeaderFile
 #include <Resource_DataMapIteratorOfDataMapOfAsciiStringExtendedString.hxx>
-#endif
 
  
 

@@ -1,3 +1,1 @@
-#ifndef _StepGeom_UniformCurve_HeaderFile
 #include <StepGeom_UniformCurve.hxx>
-#endif

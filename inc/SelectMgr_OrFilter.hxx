@@ -6,38 +6,28 @@
 #ifndef _SelectMgr_OrFilter_HeaderFile
 #define _SelectMgr_OrFilter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_SelectMgr_OrFilter_HeaderFile
 #include <Handle_SelectMgr_OrFilter.hxx>
-#endif
 
-#ifndef _SelectMgr_CompositionFilter_HeaderFile
 #include <SelectMgr_CompositionFilter.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_SelectMgr_EntityOwner_HeaderFile
 #include <Handle_SelectMgr_EntityOwner.hxx>
-#endif
 class SelectMgr_EntityOwner;
 
 
-//! A framework to define an or selection filter. <br>
-//! This selects one or another type of sensitive entity. <br>
-class SelectMgr_OrFilter : public SelectMgr_CompositionFilter {
+//! A framework to define an or selection filter.
+//! This selects one or another type of sensitive entity.
+class SelectMgr_OrFilter : public SelectMgr_CompositionFilter
+{
 
 public:
 
-  //! Constructs an empty or selection filter. <br>
-  Standard_EXPORT   SelectMgr_OrFilter();
   
-  Standard_EXPORT     Standard_Boolean IsOk(const Handle(SelectMgr_EntityOwner)& anobj) const;
+  //! Constructs an empty or selection filter.
+  Standard_EXPORT SelectMgr_OrFilter();
+  
+  Standard_EXPORT   Standard_Boolean IsOk (const Handle(SelectMgr_EntityOwner)& anobj)  const;
 
 
 
@@ -60,7 +50,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SelectMgr_OrFilter_HeaderFile

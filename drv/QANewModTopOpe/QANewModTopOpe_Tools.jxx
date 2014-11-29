@@ -1,15 +1,5 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _TopTools_IndexedDataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _QANewModTopOpe_Tools_HeaderFile
 #include <QANewModTopOpe_Tools.hxx>
-#endif

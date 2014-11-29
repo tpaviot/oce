@@ -6,31 +6,24 @@
 #ifndef _QANewBRepNaming_TopNaming_HeaderFile
 #define _QANewBRepNaming_TopNaming_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
 class TDF_Label;
 
 
-//! The root class for all the primitives, features, ... <br>
-class QANewBRepNaming_TopNaming  {
+//! The root class for all the primitives, features, ...
+class QANewBRepNaming_TopNaming 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns the result label. <br>
-       const TDF_Label& ResultLabel() const;
-
+  
+  //! Returns the result label.
+     const  TDF_Label& ResultLabel()  const;
 
 
 
@@ -38,12 +31,12 @@ public:
 protected:
 
   
-  Standard_EXPORT   QANewBRepNaming_TopNaming();
+  Standard_EXPORT QANewBRepNaming_TopNaming();
   
-  Standard_EXPORT   QANewBRepNaming_TopNaming(const TDF_Label& Label);
+  Standard_EXPORT QANewBRepNaming_TopNaming(const TDF_Label& Label);
 
 
-TDF_Label myResultLabel;
+  TDF_Label myResultLabel;
 
 
 private:
@@ -59,7 +52,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QANewBRepNaming_TopNaming_HeaderFile

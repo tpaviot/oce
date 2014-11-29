@@ -6,17 +6,16 @@
 #ifndef _Visual3d_TypeOfVisualization_HeaderFile
 #define _Visual3d_TypeOfVisualization_HeaderFile
 
-//! Modes of visualisation of objects in a view <br>
-//! <br>
-//!      TOV_WIREFRAME   wireframe visualisation <br>
-//!      TOV_SHADING     shaded visualisation <br>
-enum Visual3d_TypeOfVisualization {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Modes of visualisation of objects in a view
+//!
+//! TOV_WIREFRAME   wireframe visualisation
+//! TOV_SHADING     shaded visualisation
+enum Visual3d_TypeOfVisualization
+{
 Visual3d_TOV_WIREFRAME,
 Visual3d_TOV_SHADING
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Visual3d_TypeOfVisualization_HeaderFile

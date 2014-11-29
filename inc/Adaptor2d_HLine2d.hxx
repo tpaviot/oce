@@ -6,22 +6,12 @@
 #ifndef _Adaptor2d_HLine2d_HeaderFile
 #define _Adaptor2d_HLine2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Adaptor2d_HLine2d_HeaderFile
 #include <Handle_Adaptor2d_HLine2d.hxx>
-#endif
 
-#ifndef _Adaptor2d_Line2d_HeaderFile
 #include <Adaptor2d_Line2d.hxx>
-#endif
-#ifndef _Adaptor2d_HCurve2d_HeaderFile
 #include <Adaptor2d_HCurve2d.hxx>
-#endif
 class Standard_OutOfRange;
 class Standard_NoSuchObject;
 class Standard_DomainError;
@@ -30,20 +20,21 @@ class Adaptor2d_Curve2d;
 
 
 
-class Adaptor2d_HLine2d : public Adaptor2d_HCurve2d {
+class Adaptor2d_HLine2d : public Adaptor2d_HCurve2d
+{
 
 public:
 
   
-  Standard_EXPORT   Adaptor2d_HLine2d();
+  Standard_EXPORT Adaptor2d_HLine2d();
   
-  Standard_EXPORT   Adaptor2d_HLine2d(const Adaptor2d_Line2d& C);
+  Standard_EXPORT Adaptor2d_HLine2d(const Adaptor2d_Line2d& C);
   
-  Standard_EXPORT     void Set(const Adaptor2d_Line2d& C) ;
+  Standard_EXPORT   void Set (const Adaptor2d_Line2d& C) ;
   
-  Standard_EXPORT    const Adaptor2d_Curve2d& Curve2d() const;
+  Standard_EXPORT  const  Adaptor2d_Curve2d& Curve2d()  const;
   
-        Adaptor2d_Line2d& ChangeCurve2d() ;
+      Adaptor2d_Line2d& ChangeCurve2d() ;
 
 
 
@@ -53,7 +44,7 @@ public:
 protected:
 
 
-Adaptor2d_Line2d myCurve;
+  Adaptor2d_Line2d myCurve;
 
 
 private: 
@@ -80,7 +71,6 @@ private:
 #undef Adaptor2d_GenHCurve2d_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Adaptor2d_HLine2d_HeaderFile

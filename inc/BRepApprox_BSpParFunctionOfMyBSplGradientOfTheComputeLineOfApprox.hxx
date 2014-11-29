@@ -6,106 +6,75 @@
 #ifndef _BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_HeaderFile
 #define _BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _BRepApprox_TheMultiLineOfApprox_HeaderFile
 #include <BRepApprox_TheMultiLineOfApprox.hxx>
-#endif
-#ifndef _AppParCurves_MultiBSpCurve_HeaderFile
 #include <AppParCurves_MultiBSpCurve.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
 #include <math_Vector.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
-#endif
-#ifndef _BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_HeaderFile
 #include <BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfInteger_HeaderFile
 #include <Handle_TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Handle_AppParCurves_HArray1OfConstraintCouple_HeaderFile
 #include <Handle_AppParCurves_HArray1OfConstraintCouple.hxx>
-#endif
-#ifndef _math_MultipleVarFunctionWithGradient_HeaderFile
 #include <math_MultipleVarFunctionWithGradient.hxx>
-#endif
-#ifndef _AppParCurves_Constraint_HeaderFile
+#include <math_IntegerVector.hxx>
 #include <AppParCurves_Constraint.hxx>
-#endif
 class TColStd_HArray1OfInteger;
 class AppParCurves_HArray1OfConstraintCouple;
 class BRepApprox_TheMultiLineOfApprox;
 class BRepApprox_TheMultiLineToolOfApprox;
 class BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox;
-class math_Vector;
 class TColStd_Array1OfReal;
 class TColStd_Array1OfInteger;
 class AppParCurves_MultiBSpCurve;
 class math_Matrix;
-class math_IntegerVector;
 
 
 
-class BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox  : public math_MultipleVarFunctionWithGradient {
+class BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox  : public math_MultipleVarFunctionWithGradient
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox& SSP,const Standard_Integer FirstPoint,const Standard_Integer LastPoint,const Handle(AppParCurves_HArray1OfConstraintCouple)& TheConstraints,const math_Vector& Parameters,const TColStd_Array1OfReal& Knots,const TColStd_Array1OfInteger& Mults,const Standard_Integer NbPol);
+  Standard_EXPORT BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox& SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const Handle(AppParCurves_HArray1OfConstraintCouple)& TheConstraints, const math_Vector& Parameters, const TColStd_Array1OfReal& Knots, const TColStd_Array1OfInteger& Mults, const Standard_Integer NbPol);
   
-  Standard_EXPORT     Standard_Integer NbVariables() const;
+  Standard_EXPORT   Standard_Integer NbVariables()  const;
   
-  Standard_EXPORT     Standard_Boolean Value(const math_Vector& X,Standard_Real& F) ;
+  Standard_EXPORT   Standard_Boolean Value (const math_Vector& X, Standard_Real& F) ;
   
-  Standard_EXPORT     Standard_Boolean Gradient(const math_Vector& X,math_Vector& G) ;
+  Standard_EXPORT   Standard_Boolean Gradient (const math_Vector& X, math_Vector& G) ;
   
-  Standard_EXPORT     Standard_Boolean Values(const math_Vector& X,Standard_Real& F,math_Vector& G) ;
+  Standard_EXPORT   Standard_Boolean Values (const math_Vector& X, Standard_Real& F, math_Vector& G) ;
   
-  Standard_EXPORT    const math_Vector& NewParameters() const;
+  Standard_EXPORT  const  math_Vector& NewParameters()  const;
   
-  Standard_EXPORT     AppParCurves_MultiBSpCurve CurveValue() ;
+  Standard_EXPORT   AppParCurves_MultiBSpCurve CurveValue() ;
   
-  Standard_EXPORT     Standard_Real Error(const Standard_Integer IPoint,const Standard_Integer CurveIndex) ;
+  Standard_EXPORT   Standard_Real Error (const Standard_Integer IPoint, const Standard_Integer CurveIndex) ;
   
-  Standard_EXPORT     Standard_Real MaxError3d() const;
+  Standard_EXPORT   Standard_Real MaxError3d()  const;
   
-  Standard_EXPORT     Standard_Real MaxError2d() const;
+  Standard_EXPORT   Standard_Real MaxError2d()  const;
   
-  Standard_EXPORT    const math_Matrix& FunctionMatrix() const;
+  Standard_EXPORT  const  math_Matrix& FunctionMatrix()  const;
   
-  Standard_EXPORT    const math_Matrix& DerivativeFunctionMatrix() const;
+  Standard_EXPORT  const  math_Matrix& DerivativeFunctionMatrix()  const;
   
-  Standard_EXPORT    const math_IntegerVector& Index() const;
+  Standard_EXPORT  const  math_IntegerVector& Index()  const;
   
-  Standard_EXPORT     AppParCurves_Constraint FirstConstraint(const Handle(AppParCurves_HArray1OfConstraintCouple)& TheConstraints,const Standard_Integer FirstPoint) const;
+  Standard_EXPORT   AppParCurves_Constraint FirstConstraint (const Handle(AppParCurves_HArray1OfConstraintCouple)& TheConstraints, const Standard_Integer FirstPoint)  const;
   
-  Standard_EXPORT     AppParCurves_Constraint LastConstraint(const Handle(AppParCurves_HArray1OfConstraintCouple)& TheConstraints,const Standard_Integer LastPoint) const;
+  Standard_EXPORT   AppParCurves_Constraint LastConstraint (const Handle(AppParCurves_HArray1OfConstraintCouple)& TheConstraints, const Standard_Integer LastPoint)  const;
   
-  Standard_EXPORT     void SetFirstLambda(const Standard_Real l1) ;
+  Standard_EXPORT   void SetFirstLambda (const Standard_Real l1) ;
   
-  Standard_EXPORT     void SetLastLambda(const Standard_Real l2) ;
-
+  Standard_EXPORT   void SetLastLambda (const Standard_Real l2) ;
 
 
 
@@ -113,7 +82,7 @@ public:
 protected:
 
   
-  Standard_EXPORT     void Perform(const math_Vector& X) ;
+  Standard_EXPORT   void Perform (const math_Vector& X) ;
 
 
 
@@ -122,33 +91,33 @@ private:
 
 
 
-Standard_Boolean Done;
-BRepApprox_TheMultiLineOfApprox MyMultiLine;
-AppParCurves_MultiBSpCurve MyMultiBSpCurve;
-Standard_Integer nbpoles;
-math_Vector myParameters;
-Standard_Real FVal;
-math_Vector ValGrad_F;
-math_Matrix MyF;
-math_Matrix PTLX;
-math_Matrix PTLY;
-math_Matrix PTLZ;
-math_Matrix A;
-math_Matrix DA;
-BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox MyLeastSquare;
-Standard_Boolean Contraintes;
-Standard_Integer NbP;
-Standard_Integer NbCu;
-Standard_Integer Adeb;
-Standard_Integer Afin;
-Handle_TColStd_HArray1OfInteger tabdim;
-Standard_Real ERR3d;
-Standard_Real ERR2d;
-Standard_Integer FirstP;
-Standard_Integer LastP;
-Handle_AppParCurves_HArray1OfConstraintCouple myConstraints;
-Standard_Real mylambda1;
-Standard_Real mylambda2;
+  Standard_Boolean Done;
+  BRepApprox_TheMultiLineOfApprox MyMultiLine;
+  AppParCurves_MultiBSpCurve MyMultiBSpCurve;
+  Standard_Integer nbpoles;
+  math_Vector myParameters;
+  Standard_Real FVal;
+  math_Vector ValGrad_F;
+  math_Matrix MyF;
+  math_Matrix PTLX;
+  math_Matrix PTLY;
+  math_Matrix PTLZ;
+  math_Matrix A;
+  math_Matrix DA;
+  BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox MyLeastSquare;
+  Standard_Boolean Contraintes;
+  Standard_Integer NbP;
+  Standard_Integer NbCu;
+  Standard_Integer Adeb;
+  Standard_Integer Afin;
+  Handle(TColStd_HArray1OfInteger) tabdim;
+  Standard_Real ERR3d;
+  Standard_Real ERR2d;
+  Standard_Integer FirstP;
+  Standard_Integer LastP;
+  Handle(AppParCurves_HArray1OfConstraintCouple) myConstraints;
+  Standard_Real mylambda1;
+  Standard_Real mylambda2;
 
 
 };
@@ -157,7 +126,6 @@ Standard_Real mylambda2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_HeaderFile

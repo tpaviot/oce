@@ -5,28 +5,14 @@
 
 #include <IGESDraw_HArray1OfViewKindEntity.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _IGESData_ViewKindEntity_HeaderFile
 #include <IGESData_ViewKindEntity.hxx>
-#endif
-#ifndef _IGESDraw_Array1OfViewKindEntity_HeaderFile
 #include <IGESDraw_Array1OfViewKindEntity.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(IGESDraw_HArray1OfViewKindEntity,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(IGESDraw_HArray1OfViewKindEntity)
 
 
-#define ItemHArray1 Handle_IGESData_ViewKindEntity
+#define ItemHArray1 Handle(IGESData_ViewKindEntity)
 #define ItemHArray1_hxx <IGESData_ViewKindEntity.hxx>
 #define TheArray1 IGESDraw_Array1OfViewKindEntity
 #define TheArray1_hxx <IGESDraw_Array1OfViewKindEntity.hxx>

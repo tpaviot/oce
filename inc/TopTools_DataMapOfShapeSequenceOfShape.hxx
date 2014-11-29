@@ -6,31 +6,15 @@
 #ifndef _TopTools_DataMapOfShapeSequenceOfShape_HeaderFile
 #define _TopTools_DataMapOfShapeSequenceOfShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape_HeaderFile
 #include <Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class TopoDS_Shape;
@@ -41,50 +25,50 @@ class TopTools_DataMapIteratorOfDataMapOfShapeSequenceOfShape;
 
 
 
-class TopTools_DataMapOfShapeSequenceOfShape  : public TCollection_BasicMap {
+class TopTools_DataMapOfShapeSequenceOfShape  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopTools_DataMapOfShapeSequenceOfShape(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT TopTools_DataMapOfShapeSequenceOfShape(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     TopTools_DataMapOfShapeSequenceOfShape& Assign(const TopTools_DataMapOfShapeSequenceOfShape& Other) ;
-    TopTools_DataMapOfShapeSequenceOfShape& operator =(const TopTools_DataMapOfShapeSequenceOfShape& Other) 
+  Standard_EXPORT   TopTools_DataMapOfShapeSequenceOfShape& Assign (const TopTools_DataMapOfShapeSequenceOfShape& Other) ;
+  TopTools_DataMapOfShapeSequenceOfShape& operator = (const TopTools_DataMapOfShapeSequenceOfShape& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TopTools_DataMapOfShapeSequenceOfShape()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Bind(const TopoDS_Shape& K,const TopTools_SequenceOfShape& I) ;
+  Standard_EXPORT   Standard_Boolean Bind (const TopoDS_Shape& K, const TopTools_SequenceOfShape& I) ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const TopoDS_Shape& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound (const TopoDS_Shape& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind(const TopoDS_Shape& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind (const TopoDS_Shape& K) ;
   
-  Standard_EXPORT    const TopTools_SequenceOfShape& Find(const TopoDS_Shape& K) const;
-   const TopTools_SequenceOfShape& operator()(const TopoDS_Shape& K) const
+  Standard_EXPORT  const  TopTools_SequenceOfShape& Find (const TopoDS_Shape& K)  const;
+ const  TopTools_SequenceOfShape& operator() (const TopoDS_Shape& K)  const
 {
   return Find(K);
 }
   
-  Standard_EXPORT     TopTools_SequenceOfShape& ChangeFind(const TopoDS_Shape& K) ;
-    TopTools_SequenceOfShape& operator()(const TopoDS_Shape& K) 
+  Standard_EXPORT   TopTools_SequenceOfShape& ChangeFind (const TopoDS_Shape& K) ;
+  TopTools_SequenceOfShape& operator() (const TopoDS_Shape& K) 
 {
   return ChangeFind(K);
 }
   
-  Standard_EXPORT     Standard_Address Find1(const TopoDS_Shape& K) const;
+  Standard_EXPORT   Standard_Address Find1 (const TopoDS_Shape& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFind1(const TopoDS_Shape& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFind1 (const TopoDS_Shape& K) ;
 
 
 
@@ -98,7 +82,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   TopTools_DataMapOfShapeSequenceOfShape(const TopTools_DataMapOfShapeSequenceOfShape& Other);
+  Standard_EXPORT TopTools_DataMapOfShapeSequenceOfShape(const TopTools_DataMapOfShapeSequenceOfShape& Other);
 
 
 
@@ -109,7 +93,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopTools_DataMapOfShapeSequenceOfShape_HeaderFile

@@ -1,12 +1,4 @@
-#ifndef _PDataStd_Real_HeaderFile
 #include <PDataStd_Real.hxx>
-#endif
-#ifndef _PDF_HAttributeArray1_HeaderFile
 #include <PDF_HAttributeArray1.hxx>
-#endif
-#ifndef _PNaming_NamedShape_HeaderFile
 #include <PNaming_NamedShape.hxx>
-#endif
-#ifndef _PDataXtd_Constraint_HeaderFile
 #include <PDataXtd_Constraint.hxx>
-#endif

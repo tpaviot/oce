@@ -6,25 +6,16 @@
 #ifndef _PGeom_Point_HeaderFile
 #define _PGeom_Point_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom_Point_HeaderFile
 #include <Handle_PGeom_Point.hxx>
-#endif
 
-#ifndef _PGeom_Geometry_HeaderFile
 #include <PGeom_Geometry.hxx>
-#endif
 
 
-class PGeom_Point : public PGeom_Geometry {
+class PGeom_Point : public PGeom_Geometry
+{
 
 public:
 
@@ -33,7 +24,7 @@ PGeom_Point(const Storage_stCONSTclCOM& a) : PGeom_Geometry(a)
 {
   
 }
-  PGeom_Point( )
+PGeom_Point( )
 {
   
 }
@@ -58,7 +49,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom_Point_HeaderFile

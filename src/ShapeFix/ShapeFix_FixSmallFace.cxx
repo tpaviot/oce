@@ -449,7 +449,7 @@ ShapeFix_FixSmallFace::ShapeFix_FixSmallFace()
 	  
 	} 
       else {
-#ifdef DEB
+#ifdef OCCT_DEBUG
 	cout << "The face is not strip face"  << endl;
 #endif
 	return theNewEdge;

@@ -1,6 +1,2 @@
-#ifndef _V3d_ColorScale_HeaderFile
 #include <V3d_ColorScale.hxx>
-#endif
-#ifndef _V3d_ColorScaleLayerItem_HeaderFile
 #include <V3d_ColorScaleLayerItem.hxx>
-#endif

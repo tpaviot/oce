@@ -1,9 +1,3 @@
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _TDataXtd_Array1OfTrsf_HeaderFile
 #include <TDataXtd_Array1OfTrsf.hxx>
-#endif
-#ifndef _TDataXtd_Pattern_HeaderFile
 #include <TDataXtd_Pattern.hxx>
-#endif

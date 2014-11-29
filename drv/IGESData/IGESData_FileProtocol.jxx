@@ -1,12 +1,4 @@
-#ifndef _IGESData_Protocol_HeaderFile
 #include <IGESData_Protocol.hxx>
-#endif
-#ifndef _IGESData_FileProtocol_HeaderFile
 #include <IGESData_FileProtocol.hxx>
-#endif
-#ifndef _Interface_Protocol_HeaderFile
 #include <Interface_Protocol.hxx>
-#endif
-#ifndef _IGESData_FileProtocol_HeaderFile
 #include <IGESData_FileProtocol.hxx>
-#endif

@@ -6,51 +6,39 @@
 #ifndef _StepShape_FaceBound_HeaderFile
 #define _StepShape_FaceBound_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_FaceBound_HeaderFile
 #include <Handle_StepShape_FaceBound.hxx>
-#endif
 
-#ifndef _Handle_StepShape_Loop_HeaderFile
 #include <Handle_StepShape_Loop.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _StepShape_TopologicalRepresentationItem_HeaderFile
 #include <StepShape_TopologicalRepresentationItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepShape_Loop;
 class TCollection_HAsciiString;
 
 
 
-class StepShape_FaceBound : public StepShape_TopologicalRepresentationItem {
+class StepShape_FaceBound : public StepShape_TopologicalRepresentationItem
+{
 
 public:
 
-  //! Returns a FaceBound <br>
-  Standard_EXPORT   StepShape_FaceBound();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a FaceBound
+  Standard_EXPORT StepShape_FaceBound();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepShape_Loop)& aBound,const Standard_Boolean aOrientation) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetBound(const Handle(StepShape_Loop)& aBound) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepShape_Loop)& aBound, const Standard_Boolean aOrientation) ;
   
-  Standard_EXPORT     Handle_StepShape_Loop Bound() const;
+  Standard_EXPORT   void SetBound (const Handle(StepShape_Loop)& aBound) ;
   
-  Standard_EXPORT     void SetOrientation(const Standard_Boolean aOrientation) ;
+  Standard_EXPORT   Handle(StepShape_Loop) Bound()  const;
   
-  Standard_EXPORT     Standard_Boolean Orientation() const;
+  Standard_EXPORT   void SetOrientation (const Standard_Boolean aOrientation) ;
+  
+  Standard_EXPORT   Standard_Boolean Orientation()  const;
 
 
 
@@ -65,8 +53,8 @@ protected:
 private: 
 
 
-Handle_StepShape_Loop bound;
-Standard_Boolean orientation;
+  Handle(StepShape_Loop) bound;
+  Standard_Boolean orientation;
 
 
 };
@@ -75,7 +63,6 @@ Standard_Boolean orientation;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_FaceBound_HeaderFile

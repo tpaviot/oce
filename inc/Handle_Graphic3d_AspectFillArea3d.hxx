@@ -6,22 +6,15 @@
 #ifndef _Handle_Graphic3d_AspectFillArea3d_HeaderFile
 #define _Handle_Graphic3d_AspectFillArea3d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Aspect_AspectFillArea_HeaderFile
 #include <Handle_Aspect_AspectFillArea.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Aspect_AspectFillArea);
 class Graphic3d_AspectFillArea3d;
 
-DEFINE_STANDARD_HANDLE(Graphic3d_AspectFillArea3d,Aspect_AspectFillArea)
+DEFINE_STANDARD_HANDLE(Graphic3d_AspectFillArea3d, Aspect_AspectFillArea)
 
-#endif
+#endif // _Handle_Graphic3d_AspectFillArea3d_HeaderFile

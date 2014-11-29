@@ -5,21 +5,11 @@
 
 #include <TDF_DoubleMapIteratorOfGUIDProgIDMap.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _TDF_GUIDProgIDMap_HeaderFile
 #include <TDF_GUIDProgIDMap.hxx>
-#endif
-#ifndef _TDF_DoubleMapNodeOfGUIDProgIDMap_HeaderFile
 #include <TDF_DoubleMapNodeOfGUIDProgIDMap.hxx>
-#endif
  
 
 #define TheKey1 Standard_GUID

@@ -6,49 +6,36 @@
 #ifndef _PDataStd_BooleanArray_HeaderFile
 #define _PDataStd_BooleanArray_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PDataStd_BooleanArray_HeaderFile
 #include <Handle_PDataStd_BooleanArray.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_PColStd_HArray1OfInteger_HeaderFile
 #include <Handle_PColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
 class PColStd_HArray1OfInteger;
 
 
-class PDataStd_BooleanArray : public PDF_Attribute {
+class PDataStd_BooleanArray : public PDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   PDataStd_BooleanArray();
+  Standard_EXPORT PDataStd_BooleanArray();
   
-  Standard_EXPORT     void SetLower(const Standard_Integer lower) ;
+  Standard_EXPORT   void SetLower (const Standard_Integer lower) ;
   
-  Standard_EXPORT     void SetUpper(const Standard_Integer upper) ;
+  Standard_EXPORT   void SetUpper (const Standard_Integer upper) ;
   
-  Standard_EXPORT     Standard_Integer Lower() const;
+  Standard_EXPORT   Standard_Integer Lower()  const;
   
-  Standard_EXPORT     Standard_Integer Upper() const;
+  Standard_EXPORT   Standard_Integer Upper()  const;
   
-  Standard_EXPORT     void Set(const Handle(PColStd_HArray1OfInteger)& values) ;
+  Standard_EXPORT   void Set (const Handle(PColStd_HArray1OfInteger)& values) ;
   
-  Standard_EXPORT    const Handle_PColStd_HArray1OfInteger& Get() const;
+  Standard_EXPORT  const  Handle(PColStd_HArray1OfInteger)& Get()  const;
 
 PDataStd_BooleanArray(const Storage_stCONSTclCOM& a) : PDF_Attribute(a)
 {
@@ -73,9 +60,9 @@ protected:
 private: 
 
 
-Handle_PColStd_HArray1OfInteger myValues;
-Standard_Integer myLower;
-Standard_Integer myUpper;
+  Handle(PColStd_HArray1OfInteger) myValues;
+  Standard_Integer myLower;
+  Standard_Integer myUpper;
 
 
 };
@@ -84,7 +71,6 @@ Standard_Integer myUpper;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDataStd_BooleanArray_HeaderFile

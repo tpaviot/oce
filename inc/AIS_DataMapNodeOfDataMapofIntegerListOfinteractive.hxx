@@ -6,28 +6,14 @@
 #ifndef _AIS_DataMapNodeOfDataMapofIntegerListOfinteractive_HeaderFile
 #define _AIS_DataMapNodeOfDataMapofIntegerListOfinteractive_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive_HeaderFile
 #include <Handle_AIS_DataMapNodeOfDataMapofIntegerListOfinteractive.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _AIS_ListOfInteractive_HeaderFile
 #include <AIS_ListOfInteractive.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class AIS_ListOfInteractive;
 class TColStd_MapIntegerHasher;
 class AIS_DataMapofIntegerListOfinteractive;
@@ -35,16 +21,17 @@ class AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive;
 
 
 
-class AIS_DataMapNodeOfDataMapofIntegerListOfinteractive : public TCollection_MapNode {
+class AIS_DataMapNodeOfDataMapofIntegerListOfinteractive : public TCollection_MapNode
+{
 
 public:
 
   
-      AIS_DataMapNodeOfDataMapofIntegerListOfinteractive(const Standard_Integer& K,const AIS_ListOfInteractive& I,const TCollection_MapNodePtr& n);
+    AIS_DataMapNodeOfDataMapofIntegerListOfinteractive(const Standard_Integer& K, const AIS_ListOfInteractive& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Key() const;
+      Standard_Integer& Key()  const;
   
-        AIS_ListOfInteractive& Value() const;
+      AIS_ListOfInteractive& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-Standard_Integer myKey;
-AIS_ListOfInteractive myValue;
+  Standard_Integer myKey;
+  AIS_ListOfInteractive myValue;
 
 
 };
@@ -98,7 +85,6 @@ AIS_ListOfInteractive myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_DataMapNodeOfDataMapofIntegerListOfinteractive_HeaderFile

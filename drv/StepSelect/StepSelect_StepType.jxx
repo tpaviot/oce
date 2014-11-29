@@ -1,18 +1,6 @@
-#ifndef _StepData_Protocol_HeaderFile
 #include <StepData_Protocol.hxx>
-#endif
-#ifndef _Interface_InterfaceError_HeaderFile
 #include <Interface_InterfaceError.hxx>
-#endif
-#ifndef _Interface_Protocol_HeaderFile
 #include <Interface_Protocol.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Interface_InterfaceModel_HeaderFile
 #include <Interface_InterfaceModel.hxx>
-#endif
-#ifndef _StepSelect_StepType_HeaderFile
 #include <StepSelect_StepType.hxx>
-#endif

@@ -6,38 +6,29 @@
 #ifndef _STEPSelections_SelectForTransfer_HeaderFile
 #define _STEPSelections_SelectForTransfer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_STEPSelections_SelectForTransfer_HeaderFile
 #include <Handle_STEPSelections_SelectForTransfer.hxx>
-#endif
 
-#ifndef _XSControl_SelectForTransfer_HeaderFile
 #include <XSControl_SelectForTransfer.hxx>
-#endif
-#ifndef _Handle_XSControl_TransferReader_HeaderFile
 #include <Handle_XSControl_TransferReader.hxx>
-#endif
 class XSControl_TransferReader;
 class Interface_EntityIterator;
 class Interface_Graph;
 
 
 
-class STEPSelections_SelectForTransfer : public XSControl_SelectForTransfer {
+class STEPSelections_SelectForTransfer : public XSControl_SelectForTransfer
+{
 
 public:
 
   
-  Standard_EXPORT   STEPSelections_SelectForTransfer();
+  Standard_EXPORT STEPSelections_SelectForTransfer();
   
-  Standard_EXPORT   STEPSelections_SelectForTransfer(const Handle(XSControl_TransferReader)& TR);
+  Standard_EXPORT STEPSelections_SelectForTransfer(const Handle(XSControl_TransferReader)& TR);
   
-  Standard_EXPORT   virtual  Interface_EntityIterator RootResult(const Interface_Graph& G) const;
+  Standard_EXPORT virtual   Interface_EntityIterator RootResult (const Interface_Graph& G)  const;
 
 
 
@@ -60,7 +51,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPSelections_SelectForTransfer_HeaderFile

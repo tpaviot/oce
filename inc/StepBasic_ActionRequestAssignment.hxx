@@ -6,38 +6,33 @@
 #ifndef _StepBasic_ActionRequestAssignment_HeaderFile
 #define _StepBasic_ActionRequestAssignment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_ActionRequestAssignment_HeaderFile
 #include <Handle_StepBasic_ActionRequestAssignment.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_VersionedActionRequest_HeaderFile
 #include <Handle_StepBasic_VersionedActionRequest.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepBasic_VersionedActionRequest;
 
 
-//! Representation of STEP entity ActionRequestAssignment <br>
-class StepBasic_ActionRequestAssignment : public MMgt_TShared {
+//! Representation of STEP entity ActionRequestAssignment
+class StepBasic_ActionRequestAssignment : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepBasic_ActionRequestAssignment();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(StepBasic_VersionedActionRequest)& aAssignedActionRequest) ;
-  //! Returns field AssignedActionRequest <br>
-  Standard_EXPORT     Handle_StepBasic_VersionedActionRequest AssignedActionRequest() const;
-  //! Set field AssignedActionRequest <br>
-  Standard_EXPORT     void SetAssignedActionRequest(const Handle(StepBasic_VersionedActionRequest)& AssignedActionRequest) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepBasic_ActionRequestAssignment();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(StepBasic_VersionedActionRequest)& aAssignedActionRequest) ;
+  
+  //! Returns field AssignedActionRequest
+  Standard_EXPORT   Handle(StepBasic_VersionedActionRequest) AssignedActionRequest()  const;
+  
+  //! Set field AssignedActionRequest
+  Standard_EXPORT   void SetAssignedActionRequest (const Handle(StepBasic_VersionedActionRequest)& AssignedActionRequest) ;
 
 
 
@@ -52,7 +47,7 @@ protected:
 private: 
 
 
-Handle_StepBasic_VersionedActionRequest theAssignedActionRequest;
+  Handle(StepBasic_VersionedActionRequest) theAssignedActionRequest;
 
 
 };
@@ -61,7 +56,6 @@ Handle_StepBasic_VersionedActionRequest theAssignedActionRequest;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_ActionRequestAssignment_HeaderFile

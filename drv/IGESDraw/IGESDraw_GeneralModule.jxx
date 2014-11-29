@@ -1,24 +1,8 @@
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Interface_EntityIterator_HeaderFile
 #include <Interface_EntityIterator.hxx>
-#endif
-#ifndef _IGESData_DirChecker_HeaderFile
 #include <IGESData_DirChecker.hxx>
-#endif
-#ifndef _Interface_ShareTool_HeaderFile
 #include <Interface_ShareTool.hxx>
-#endif
-#ifndef _Interface_Check_HeaderFile
 #include <Interface_Check.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Interface_CopyTool_HeaderFile
 #include <Interface_CopyTool.hxx>
-#endif
-#ifndef _IGESDraw_GeneralModule_HeaderFile
 #include <IGESDraw_GeneralModule.hxx>
-#endif

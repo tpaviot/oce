@@ -6,38 +6,27 @@
 #ifndef _MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry_HeaderFile
 #define _MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry_HeaderFile
 #include <Handle_MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry.hxx>
-#endif
 
-#ifndef _TColGeom2d_SequenceOfGeometry_HeaderFile
 #include <TColGeom2d_SequenceOfGeometry.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class TColGeom2d_SequenceOfGeometry;
 class MAT2d_SequenceOfSequenceOfGeometry;
 
 
 
-class MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry : public TCollection_SeqNode {
+class MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry : public TCollection_SeqNode
+{
 
 public:
 
   
-      MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry(const TColGeom2d_SequenceOfGeometry& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry(const TColGeom2d_SequenceOfGeometry& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        TColGeom2d_SequenceOfGeometry& Value() const;
+      TColGeom2d_SequenceOfGeometry& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-TColGeom2d_SequenceOfGeometry myValue;
+  TColGeom2d_SequenceOfGeometry myValue;
 
 
 };
@@ -78,7 +67,6 @@ TColGeom2d_SequenceOfGeometry myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MAT2d_SequenceNodeOfSequenceOfSequenceOfGeometry_HeaderFile

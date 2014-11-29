@@ -1,0 +1,3 @@
+#include <BRepGProp_Face.hxx>
+#include <gp_Pnt.hxx>
+#include <BRepGProp_TFunction.hxx>

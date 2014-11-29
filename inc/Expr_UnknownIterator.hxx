@@ -6,53 +6,37 @@
 #ifndef _Expr_UnknownIterator_HeaderFile
 #define _Expr_UnknownIterator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Expr_MapOfNamedUnknown_HeaderFile
 #include <Expr_MapOfNamedUnknown.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Expr_GeneralExpression_HeaderFile
 #include <Handle_Expr_GeneralExpression.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Expr_NamedUnknown_HeaderFile
 #include <Handle_Expr_NamedUnknown.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class Expr_GeneralExpression;
 class Expr_NamedUnknown;
 
 
-//! Describes an iterator on NamedUnknowns contained <br>
-//!          in any GeneralExpression. <br>
-class Expr_UnknownIterator  {
+//! Describes an iterator on NamedUnknowns contained
+//! in any GeneralExpression.
+class Expr_UnknownIterator 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Expr_UnknownIterator(const Handle(Expr_GeneralExpression)& exp);
+  Standard_EXPORT Expr_UnknownIterator(const Handle(Expr_GeneralExpression)& exp);
   
-  Standard_EXPORT     Standard_Boolean More() const;
+  Standard_EXPORT   Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     Handle_Expr_NamedUnknown Value() const;
-
+  Standard_EXPORT   Handle(Expr_NamedUnknown) Value()  const;
 
 
 
@@ -66,11 +50,11 @@ protected:
 private:
 
   
-  Standard_EXPORT     void Perform(const Handle(Expr_GeneralExpression)& exp) ;
+  Standard_EXPORT   void Perform (const Handle(Expr_GeneralExpression)& exp) ;
 
 
-Expr_MapOfNamedUnknown myMap;
-Standard_Integer myCurrent;
+  Expr_MapOfNamedUnknown myMap;
+  Standard_Integer myCurrent;
 
 
 };
@@ -79,7 +63,6 @@ Standard_Integer myCurrent;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Expr_UnknownIterator_HeaderFile

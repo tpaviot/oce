@@ -1,6 +1,2 @@
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _AdvApprox_PrefCutting_HeaderFile
 #include <AdvApprox_PrefCutting.hxx>
-#endif

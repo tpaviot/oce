@@ -6,43 +6,32 @@
 #ifndef _PPoly_Triangle_HeaderFile
 #define _PPoly_Triangle_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Storable_HeaderFile
 #include <Standard_Storable.hxx>
-#endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
 #include <Standard_PrimitiveTypes.hxx>
-#endif
 
 
 Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(PPoly_Triangle);
 
-//! A Triangle is a triplet of node indices. <br>
-class PPoly_Triangle  {
+//! A Triangle is a triplet of node indices.
+class PPoly_Triangle 
+{
 
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   PPoly_Triangle(const Standard_Integer N1,const Standard_Integer N2,const Standard_Integer N3);
+  Standard_EXPORT PPoly_Triangle(const Standard_Integer N1, const Standard_Integer N2, const Standard_Integer N3);
   
-  Standard_EXPORT     void Set(const Standard_Integer N1,const Standard_Integer N2,const Standard_Integer N3) ;
+  Standard_EXPORT   void Set (const Standard_Integer N1, const Standard_Integer N2, const Standard_Integer N3) ;
   
-  Standard_EXPORT     void Get(Standard_Integer& N1,Standard_Integer& N2,Standard_Integer& N3) const;
-  PPoly_Triangle( )
+  Standard_EXPORT   void Get (Standard_Integer& N1, Standard_Integer& N2, Standard_Integer& N3)  const;
+PPoly_Triangle( )
 {
   
 }
@@ -58,7 +47,7 @@ protected:
 private: 
 
 
-Standard_Integer myNodes[3];
+  Standard_Integer myNodes[3];
 
 
 };
@@ -67,7 +56,6 @@ Standard_Integer myNodes[3];
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PPoly_Triangle_HeaderFile

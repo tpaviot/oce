@@ -5,19 +5,11 @@
 
 #include <PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _PCollection_HExtendedString_HeaderFile
 #include <PCollection_HExtendedString.hxx>
-#endif
-#ifndef _PColStd_FieldOfHArray1OfExtendedString_HeaderFile
 #include <PColStd_FieldOfHArray1OfExtendedString.hxx>
-#endif
-#ifndef _PColStd_VArrayTNodeOfFieldOfHArray1OfExtendedString_HeaderFile
 #include <PColStd_VArrayTNodeOfFieldOfHArray1OfExtendedString.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString,Standard_P
 IMPLEMENT_STANDARD_RTTI(PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString)
 
 
-#define Item Handle_PCollection_HExtendedString
+#define Item Handle(PCollection_HExtendedString)
 #define Item_hxx <PCollection_HExtendedString.hxx>
 #define DBC_VArrayNode PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString
 #define DBC_VArrayNode_hxx <PColStd_VArrayNodeOfFieldOfHArray1OfExtendedString.hxx>

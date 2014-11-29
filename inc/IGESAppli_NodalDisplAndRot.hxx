@@ -6,40 +6,18 @@
 #ifndef _IGESAppli_NodalDisplAndRot_HeaderFile
 #define _IGESAppli_NodalDisplAndRot_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESAppli_NodalDisplAndRot_HeaderFile
 #include <Handle_IGESAppli_NodalDisplAndRot.hxx>
-#endif
 
-#ifndef _Handle_IGESDimen_HArray1OfGeneralNote_HeaderFile
 #include <Handle_IGESDimen_HArray1OfGeneralNote.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfInteger_HeaderFile
 #include <Handle_TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Handle_IGESAppli_HArray1OfNode_HeaderFile
 #include <Handle_IGESAppli_HArray1OfNode.hxx>
-#endif
-#ifndef _Handle_IGESBasic_HArray1OfHArray1OfXYZ_HeaderFile
 #include <Handle_IGESBasic_HArray1OfHArray1OfXYZ.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_IGESDimen_GeneralNote_HeaderFile
 #include <Handle_IGESDimen_GeneralNote.hxx>
-#endif
-#ifndef _Handle_IGESAppli_Node_HeaderFile
 #include <Handle_IGESAppli_Node.hxx>
-#endif
 class IGESDimen_HArray1OfGeneralNote;
 class TColStd_HArray1OfInteger;
 class IGESAppli_HArray1OfNode;
@@ -51,52 +29,61 @@ class IGESAppli_Node;
 class gp_XYZ;
 
 
-//! defines NodalDisplAndRot, Type <138> Form <0> <br>
-//!          in package IGESAppli <br>
-//!          Used to communicate finite element post processing <br>
-//!          data. <br>
-class IGESAppli_NodalDisplAndRot : public IGESData_IGESEntity {
+//! defines NodalDisplAndRot, Type <138> Form <0>
+//! in package IGESAppli
+//! Used to communicate finite element post processing
+//! data.
+class IGESAppli_NodalDisplAndRot : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESAppli_NodalDisplAndRot();
-  //! This method is used to set the fields of the class <br>
-//!           NodalDisplAndRot <br>
-//!       - allNotes       : Used to store the general note describing <br>
-//!                          the analysis cases <br>
-//!       - allIdentifiers : Used to store the node number <br>
-//!                          identifier for the nodes <br>
-//!       - allNodes       : Used to store the nodes <br>
-//!       - allRotParams   : Used to store the rotation for the nodes <br>
-//!       - allTransParams : Used to store the incremental <br>
-//!                          displacements for the nodes <br>
-//! raises exception if Lengths of allIdentifiers, allNodes, <br>
-//! allRotParams, and allTransParams are not same <br>
-//! or if length of allNotes and size of each element of allRotParams <br>
-//! and allTransParam are not same <br>
-  Standard_EXPORT     void Init(const Handle(IGESDimen_HArray1OfGeneralNote)& allNotes,const Handle(TColStd_HArray1OfInteger)& allIdentifiers,const Handle(IGESAppli_HArray1OfNode)& allNodes,const Handle(IGESBasic_HArray1OfHArray1OfXYZ)& allRotParams,const Handle(IGESBasic_HArray1OfHArray1OfXYZ)& allTransParams) ;
-  //! returns the number of analysis cases <br>
-  Standard_EXPORT     Standard_Integer NbCases() const;
-  //! returns the number of nodes <br>
-  Standard_EXPORT     Standard_Integer NbNodes() const;
-  //! returns the General Note that describes the Index analysis case <br>
-//! raises exception if Index <= 0 or Index > NbCases <br>
-  Standard_EXPORT     Handle_IGESDimen_GeneralNote Note(const Standard_Integer Index) const;
-  //! returns the node identifier as specified by the Index <br>
-//! raises exception if Index <= 0 or Index > NbNodes <br>
-  Standard_EXPORT     Standard_Integer NodeIdentifier(const Standard_Integer Index) const;
-  //! returns the node as specified by the Index <br>
-//! raises exception if Index <= 0 or Index > NbNodes <br>
-  Standard_EXPORT     Handle_IGESAppli_Node Node(const Standard_Integer Index) const;
-  //! returns the Translational Parameters for the particular Index <br>
-//! Exception raised if NodeNum <= 0 or NodeNum > NbNodes() <br>
-//! or CaseNum <= 0 or CaseNum > NbCases() <br>
-  Standard_EXPORT     gp_XYZ TranslationParameter(const Standard_Integer NodeNum,const Standard_Integer CaseNum) const;
-  //! returns the Rotational Parameters for Index <br>
-//! Exception raised if NodeNum <= 0 or NodeNum > NbNodes() <br>
-//! or CaseNum <= 0 or CaseNum > NbCases() <br>
-  Standard_EXPORT     gp_XYZ RotationalParameter(const Standard_Integer NodeNum,const Standard_Integer CaseNum) const;
+  Standard_EXPORT IGESAppli_NodalDisplAndRot();
+  
+  //! This method is used to set the fields of the class
+  //! NodalDisplAndRot
+  //! - allNotes       : Used to store the general note describing
+  //! the analysis cases
+  //! - allIdentifiers : Used to store the node number
+  //! identifier for the nodes
+  //! - allNodes       : Used to store the nodes
+  //! - allRotParams   : Used to store the rotation for the nodes
+  //! - allTransParams : Used to store the incremental
+  //! displacements for the nodes
+  //! raises exception if Lengths of allIdentifiers, allNodes,
+  //! allRotParams, and allTransParams are not same
+  //! or if length of allNotes and size of each element of allRotParams
+  //! and allTransParam are not same
+  Standard_EXPORT   void Init (const Handle(IGESDimen_HArray1OfGeneralNote)& allNotes, const Handle(TColStd_HArray1OfInteger)& allIdentifiers, const Handle(IGESAppli_HArray1OfNode)& allNodes, const Handle(IGESBasic_HArray1OfHArray1OfXYZ)& allRotParams, const Handle(IGESBasic_HArray1OfHArray1OfXYZ)& allTransParams) ;
+  
+  //! returns the number of analysis cases
+  Standard_EXPORT   Standard_Integer NbCases()  const;
+  
+  //! returns the number of nodes
+  Standard_EXPORT   Standard_Integer NbNodes()  const;
+  
+  //! returns the General Note that describes the Index analysis case
+  //! raises exception if Index <= 0 or Index > NbCases
+  Standard_EXPORT   Handle(IGESDimen_GeneralNote) Note (const Standard_Integer Index)  const;
+  
+  //! returns the node identifier as specified by the Index
+  //! raises exception if Index <= 0 or Index > NbNodes
+  Standard_EXPORT   Standard_Integer NodeIdentifier (const Standard_Integer Index)  const;
+  
+  //! returns the node as specified by the Index
+  //! raises exception if Index <= 0 or Index > NbNodes
+  Standard_EXPORT   Handle(IGESAppli_Node) Node (const Standard_Integer Index)  const;
+  
+  //! returns the Translational Parameters for the particular Index
+  //! Exception raised if NodeNum <= 0 or NodeNum > NbNodes()
+  //! or CaseNum <= 0 or CaseNum > NbCases()
+  Standard_EXPORT   gp_XYZ TranslationParameter (const Standard_Integer NodeNum, const Standard_Integer CaseNum)  const;
+  
+  //! returns the Rotational Parameters for Index
+  //! Exception raised if NodeNum <= 0 or NodeNum > NbNodes()
+  //! or CaseNum <= 0 or CaseNum > NbCases()
+  Standard_EXPORT   gp_XYZ RotationalParameter (const Standard_Integer NodeNum, const Standard_Integer CaseNum)  const;
 
 
 
@@ -111,11 +98,11 @@ protected:
 private: 
 
 
-Handle_IGESDimen_HArray1OfGeneralNote theNotes;
-Handle_TColStd_HArray1OfInteger theNodeIdentifiers;
-Handle_IGESAppli_HArray1OfNode theNodes;
-Handle_IGESBasic_HArray1OfHArray1OfXYZ theTransParam;
-Handle_IGESBasic_HArray1OfHArray1OfXYZ theRotParam;
+  Handle(IGESDimen_HArray1OfGeneralNote) theNotes;
+  Handle(TColStd_HArray1OfInteger) theNodeIdentifiers;
+  Handle(IGESAppli_HArray1OfNode) theNodes;
+  Handle(IGESBasic_HArray1OfHArray1OfXYZ) theTransParam;
+  Handle(IGESBasic_HArray1OfHArray1OfXYZ) theRotParam;
 
 
 };
@@ -124,7 +111,6 @@ Handle_IGESBasic_HArray1OfHArray1OfXYZ theRotParam;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESAppli_NodalDisplAndRot_HeaderFile

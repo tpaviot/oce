@@ -1,15 +1,5 @@
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IntCurveSurface_IntersectionPoint_HeaderFile
 #include <IntCurveSurface_IntersectionPoint.hxx>
-#endif
-#ifndef _IntCurveSurface_IntersectionSegment_HeaderFile
 #include <IntCurveSurface_IntersectionSegment.hxx>
-#endif
-#ifndef _IntCurveSurface_Intersection_HeaderFile
 #include <IntCurveSurface_Intersection.hxx>
-#endif

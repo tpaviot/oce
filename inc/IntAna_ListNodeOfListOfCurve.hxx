@@ -6,39 +6,28 @@
 #ifndef _IntAna_ListNodeOfListOfCurve_HeaderFile
 #define _IntAna_ListNodeOfListOfCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IntAna_ListNodeOfListOfCurve_HeaderFile
 #include <Handle_IntAna_ListNodeOfListOfCurve.hxx>
-#endif
 
-#ifndef _IntAna_Curve_HeaderFile
 #include <IntAna_Curve.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class IntAna_Curve;
 class IntAna_ListOfCurve;
 class IntAna_ListIteratorOfListOfCurve;
 
 
 
-class IntAna_ListNodeOfListOfCurve : public TCollection_MapNode {
+class IntAna_ListNodeOfListOfCurve : public TCollection_MapNode
+{
 
 public:
 
   
-      IntAna_ListNodeOfListOfCurve(const IntAna_Curve& I,const TCollection_MapNodePtr& n);
+    IntAna_ListNodeOfListOfCurve(const IntAna_Curve& I, const TCollection_MapNodePtr& n);
   
-        IntAna_Curve& Value() const;
+      IntAna_Curve& Value()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-IntAna_Curve myValue;
+  IntAna_Curve myValue;
 
 
 };
@@ -83,7 +72,6 @@ IntAna_Curve myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntAna_ListNodeOfListOfCurve_HeaderFile

@@ -5,16 +5,10 @@
 
 #include <DBC_VArrayNodeOfVArrayOfExtCharacter.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _DBC_VArrayOfExtCharacter_HeaderFile
 #include <DBC_VArrayOfExtCharacter.hxx>
-#endif
-#ifndef _DBC_VArrayTNodeOfVArrayOfExtCharacter_HeaderFile
 #include <DBC_VArrayTNodeOfVArrayOfExtCharacter.hxx>
-#endif
 
  
 

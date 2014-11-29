@@ -6,53 +6,41 @@
 #ifndef _HeaderSection_FileDescription_HeaderFile
 #define _HeaderSection_FileDescription_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_HeaderSection_FileDescription_HeaderFile
 #include <Handle_HeaderSection_FileDescription.hxx>
-#endif
 
-#ifndef _Handle_Interface_HArray1OfHAsciiString_HeaderFile
 #include <Handle_Interface_HArray1OfHAsciiString.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Interface_HArray1OfHAsciiString;
 class TCollection_HAsciiString;
 
 
 
-class HeaderSection_FileDescription : public MMgt_TShared {
+class HeaderSection_FileDescription : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a FileDescription <br>
-  Standard_EXPORT   HeaderSection_FileDescription();
   
-  Standard_EXPORT     void Init(const Handle(Interface_HArray1OfHAsciiString)& aDescription,const Handle(TCollection_HAsciiString)& aImplementationLevel) ;
+  //! Returns a FileDescription
+  Standard_EXPORT HeaderSection_FileDescription();
   
-  Standard_EXPORT     void SetDescription(const Handle(Interface_HArray1OfHAsciiString)& aDescription) ;
+  Standard_EXPORT   void Init (const Handle(Interface_HArray1OfHAsciiString)& aDescription, const Handle(TCollection_HAsciiString)& aImplementationLevel) ;
   
-  Standard_EXPORT     Handle_Interface_HArray1OfHAsciiString Description() const;
+  Standard_EXPORT   void SetDescription (const Handle(Interface_HArray1OfHAsciiString)& aDescription) ;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString DescriptionValue(const Standard_Integer num) const;
+  Standard_EXPORT   Handle(Interface_HArray1OfHAsciiString) Description()  const;
   
-  Standard_EXPORT     Standard_Integer NbDescription() const;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) DescriptionValue (const Standard_Integer num)  const;
   
-  Standard_EXPORT     void SetImplementationLevel(const Handle(TCollection_HAsciiString)& aImplementationLevel) ;
+  Standard_EXPORT   Standard_Integer NbDescription()  const;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString ImplementationLevel() const;
+  Standard_EXPORT   void SetImplementationLevel (const Handle(TCollection_HAsciiString)& aImplementationLevel) ;
+  
+  Standard_EXPORT   Handle(TCollection_HAsciiString) ImplementationLevel()  const;
 
 
 
@@ -67,8 +55,8 @@ protected:
 private: 
 
 
-Handle_Interface_HArray1OfHAsciiString description;
-Handle_TCollection_HAsciiString implementationLevel;
+  Handle(Interface_HArray1OfHAsciiString) description;
+  Handle(TCollection_HAsciiString) implementationLevel;
 
 
 };
@@ -77,7 +65,6 @@ Handle_TCollection_HAsciiString implementationLevel;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HeaderSection_FileDescription_HeaderFile

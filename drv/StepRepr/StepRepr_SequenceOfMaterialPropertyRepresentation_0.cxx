@@ -5,21 +5,13 @@
 
 #include <StepRepr_SequenceOfMaterialPropertyRepresentation.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StepRepr_MaterialPropertyRepresentation_HeaderFile
 #include <StepRepr_MaterialPropertyRepresentation.hxx>
-#endif
-#ifndef _StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation_HeaderFile
 #include <StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation.hxx>
-#endif
  
 
-#define SeqItem Handle_StepRepr_MaterialPropertyRepresentation
+#define SeqItem Handle(StepRepr_MaterialPropertyRepresentation)
 #define SeqItem_hxx <StepRepr_MaterialPropertyRepresentation.hxx>
 #define TCollection_SequenceNode StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation
 #define TCollection_SequenceNode_hxx <StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation.hxx>

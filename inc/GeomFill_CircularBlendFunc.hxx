@@ -6,40 +6,18 @@
 #ifndef _GeomFill_CircularBlendFunc_HeaderFile
 #define _GeomFill_CircularBlendFunc_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_GeomFill_CircularBlendFunc_HeaderFile
 #include <Handle_GeomFill_CircularBlendFunc.hxx>
-#endif
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HCurve_HeaderFile
 #include <Handle_Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Convert_ParameterisationType_HeaderFile
 #include <Convert_ParameterisationType.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Approx_SweepFunction_HeaderFile
 #include <Approx_SweepFunction.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
 class Adaptor3d_HCurve;
 class Standard_OutOfRange;
 class TColgp_Array1OfPnt;
@@ -51,75 +29,93 @@ class TColStd_Array1OfInteger;
 class gp_Pnt;
 
 
-//!   Circular     Blend Function  to    approximate by <br>
-//!            SweepApproximation from Approx <br>
-class GeomFill_CircularBlendFunc : public Approx_SweepFunction {
+//! Circular     Blend Function  to    approximate by
+//! SweepApproximation from Approx
+class GeomFill_CircularBlendFunc : public Approx_SweepFunction
+{
 
 public:
 
-  //!   Create a Blend  with a  constant  radius with 2 <br>
-//!          guide-line.   <FShape>  sets the type of  fillet <br>
-//!           surface. The --  default value is  Convert_TgtThetaOver2 (classical -- <br>
-//!              nurbs    --   representation  of   circles). <br>
-//!          ChFi3d_QuasiAngular  --  corresponds  to a nurbs <br>
-//!             representation   of  circles     --     which <br>
-//!          parameterisation  matches  the  circle  one.  -- <br>
-//!          ChFi3d_Polynomial corresponds to a polynomial -- <br>
-//!          representation of circles. <br>
-  Standard_EXPORT   GeomFill_CircularBlendFunc(const Handle(Adaptor3d_HCurve)& Path,const Handle(Adaptor3d_HCurve)& Curve1,const Handle(Adaptor3d_HCurve)& Curve2,const Standard_Real Radius,const Standard_Boolean Polynomial = Standard_False);
-  //! compute the section for v = param <br>
-  Standard_EXPORT   virtual  Standard_Boolean D0(const Standard_Real Param,const Standard_Real First,const Standard_Real Last,TColgp_Array1OfPnt& Poles,TColgp_Array1OfPnt2d& Poles2d,TColStd_Array1OfReal& Weigths) ;
-  //! compute the first  derivative in v direction  of the <br>
-//!           section for v =  param <br>
-  Standard_EXPORT   virtual  Standard_Boolean D1(const Standard_Real Param,const Standard_Real First,const Standard_Real Last,TColgp_Array1OfPnt& Poles,TColgp_Array1OfVec& DPoles,TColgp_Array1OfPnt2d& Poles2d,TColgp_Array1OfVec2d& DPoles2d,TColStd_Array1OfReal& Weigths,TColStd_Array1OfReal& DWeigths) ;
-  //! compute the second derivative  in v direction of the <br>
-//!          section  for v = param <br>
-  Standard_EXPORT   virtual  Standard_Boolean D2(const Standard_Real Param,const Standard_Real First,const Standard_Real Last,TColgp_Array1OfPnt& Poles,TColgp_Array1OfVec& DPoles,TColgp_Array1OfVec& D2Poles,TColgp_Array1OfPnt2d& Poles2d,TColgp_Array1OfVec2d& DPoles2d,TColgp_Array1OfVec2d& D2Poles2d,TColStd_Array1OfReal& Weigths,TColStd_Array1OfReal& DWeigths,TColStd_Array1OfReal& D2Weigths) ;
-  //! get the number of 2d curves to  approximate. <br>
-  Standard_EXPORT   virtual  Standard_Integer Nb2dCurves() const;
-  //! get the format of an  section <br>
-  Standard_EXPORT   virtual  void SectionShape(Standard_Integer& NbPoles,Standard_Integer& NbKnots,Standard_Integer& Degree) const;
-  //! get the Knots of the section <br>
-  Standard_EXPORT   virtual  void Knots(TColStd_Array1OfReal& TKnots) const;
-  //! get the Multplicities of the section <br>
-  Standard_EXPORT   virtual  void Mults(TColStd_Array1OfInteger& TMults) const;
-  //! Returns if the section is rationnal or not <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsRational() const;
-  //! Returns  the number  of  intervals for  continuity <br>
-//!          <S>. May be one if Continuity(me) >= <S> <br>
-  Standard_EXPORT   virtual  Standard_Integer NbIntervals(const GeomAbs_Shape S) const;
-  //! Stores in <T> the  parameters bounding the intervals <br>
-//!          of continuity <S>. <br>
-//! <br>
-//!          The array must provide  enough room to  accomodate <br>
-//!          for the parameters. i.e. T.Length() > NbIntervals() <br>
-  Standard_EXPORT   virtual  void Intervals(TColStd_Array1OfReal& T,const GeomAbs_Shape S) const;
-  //! Sets the bounds of the parametric interval on <br>
-//!          the fonction <br>
-//!          This determines the derivatives in these values if the <br>
-//!          function is not Cn. <br>
-  Standard_EXPORT   virtual  void SetInterval(const Standard_Real First,const Standard_Real Last) ;
-  //! Returns the tolerance to reach in approximation <br>
-//!          to respecte <br>
-//!          BoundTol error at the Boundary <br>
-//!          AngleTol tangent error at the Boundary (in radian) <br>
-//!          SurfTol error inside the surface. <br>
-  Standard_EXPORT   virtual  void GetTolerance(const Standard_Real BoundTol,const Standard_Real SurfTol,const Standard_Real AngleTol,TColStd_Array1OfReal& Tol3d) const;
-  //! Is usfull, if (me) have to  be run numerical <br>
-//!           algorithme to perform D0, D1 or D2 <br>
-  Standard_EXPORT   virtual  void SetTolerance(const Standard_Real Tol3d,const Standard_Real Tol2d) ;
-  //!  Get    the   barycentre of   Surface.   An   very  poor <br>
-//!          estimation is sufficent. This information is usefull <br>
-//!          to perform well conditionned rational approximation. <br>
-  Standard_EXPORT   virtual  gp_Pnt BarycentreOfSurf() const;
-  //! Returns the   length of the maximum section. This <br>
-//!          information is usefull to perform well conditionned rational <br>
-//!           approximation. <br>
-  Standard_EXPORT   virtual  Standard_Real MaximalSection() const;
-  //! Compute the minimal value of weight for each poles <br>
-//!          of all  sections.  This information is  usefull to <br>
-//!          perform well conditionned rational approximation. <br>
-  Standard_EXPORT   virtual  void GetMinimalWeight(TColStd_Array1OfReal& Weigths) const;
+  
+  //! Create a Blend  with a  constant  radius with 2
+  //! guide-line.   <FShape>  sets the type of  fillet
+  //! surface. The --  default value is  Convert_TgtThetaOver2 (classical --
+  //! nurbs    --   representation  of   circles).
+  //! ChFi3d_QuasiAngular  --  corresponds  to a nurbs
+  //! representation   of  circles     --     which
+  //! parameterisation  matches  the  circle  one.  --
+  //! ChFi3d_Polynomial corresponds to a polynomial --
+  //! representation of circles.
+  Standard_EXPORT GeomFill_CircularBlendFunc(const Handle(Adaptor3d_HCurve)& Path, const Handle(Adaptor3d_HCurve)& Curve1, const Handle(Adaptor3d_HCurve)& Curve2, const Standard_Real Radius, const Standard_Boolean Polynomial = Standard_False);
+  
+  //! compute the section for v = param
+  Standard_EXPORT virtual   Standard_Boolean D0 (const Standard_Real Param, const Standard_Real First, const Standard_Real Last, TColgp_Array1OfPnt& Poles, TColgp_Array1OfPnt2d& Poles2d, TColStd_Array1OfReal& Weigths) ;
+  
+  //! compute the first  derivative in v direction  of the
+  //! section for v =  param
+  Standard_EXPORT virtual   Standard_Boolean D1 (const Standard_Real Param, const Standard_Real First, const Standard_Real Last, TColgp_Array1OfPnt& Poles, TColgp_Array1OfVec& DPoles, TColgp_Array1OfPnt2d& Poles2d, TColgp_Array1OfVec2d& DPoles2d, TColStd_Array1OfReal& Weigths, TColStd_Array1OfReal& DWeigths) ;
+  
+  //! compute the second derivative  in v direction of the
+  //! section  for v = param
+  Standard_EXPORT virtual   Standard_Boolean D2 (const Standard_Real Param, const Standard_Real First, const Standard_Real Last, TColgp_Array1OfPnt& Poles, TColgp_Array1OfVec& DPoles, TColgp_Array1OfVec& D2Poles, TColgp_Array1OfPnt2d& Poles2d, TColgp_Array1OfVec2d& DPoles2d, TColgp_Array1OfVec2d& D2Poles2d, TColStd_Array1OfReal& Weigths, TColStd_Array1OfReal& DWeigths, TColStd_Array1OfReal& D2Weigths) ;
+  
+  //! get the number of 2d curves to  approximate.
+  Standard_EXPORT virtual   Standard_Integer Nb2dCurves()  const;
+  
+  //! get the format of an  section
+  Standard_EXPORT virtual   void SectionShape (Standard_Integer& NbPoles, Standard_Integer& NbKnots, Standard_Integer& Degree)  const;
+  
+  //! get the Knots of the section
+  Standard_EXPORT virtual   void Knots (TColStd_Array1OfReal& TKnots)  const;
+  
+  //! get the Multplicities of the section
+  Standard_EXPORT virtual   void Mults (TColStd_Array1OfInteger& TMults)  const;
+  
+  //! Returns if the section is rationnal or not
+  Standard_EXPORT virtual   Standard_Boolean IsRational()  const;
+  
+  //! Returns  the number  of  intervals for  continuity
+  //! <S>. May be one if Continuity(me) >= <S>
+  Standard_EXPORT virtual   Standard_Integer NbIntervals (const GeomAbs_Shape S)  const;
+  
+  //! Stores in <T> the  parameters bounding the intervals
+  //! of continuity <S>.
+  //!
+  //! The array must provide  enough room to  accomodate
+  //! for the parameters. i.e. T.Length() > NbIntervals()
+  Standard_EXPORT virtual   void Intervals (TColStd_Array1OfReal& T, const GeomAbs_Shape S)  const;
+  
+  //! Sets the bounds of the parametric interval on
+  //! the fonction
+  //! This determines the derivatives in these values if the
+  //! function is not Cn.
+  Standard_EXPORT virtual   void SetInterval (const Standard_Real First, const Standard_Real Last) ;
+  
+  //! Returns the tolerance to reach in approximation
+  //! to respecte
+  //! BoundTol error at the Boundary
+  //! AngleTol tangent error at the Boundary (in radian)
+  //! SurfTol error inside the surface.
+  Standard_EXPORT virtual   void GetTolerance (const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, TColStd_Array1OfReal& Tol3d)  const;
+  
+  //! Is usfull, if (me) have to  be run numerical
+  //! algorithme to perform D0, D1 or D2
+  Standard_EXPORT virtual   void SetTolerance (const Standard_Real Tol3d, const Standard_Real Tol2d) ;
+  
+  //! Get    the   barycentre of   Surface.   An   very  poor
+  //! estimation is sufficent. This information is usefull
+  //! to perform well conditionned rational approximation.
+  Standard_EXPORT virtual   gp_Pnt BarycentreOfSurf()  const;
+  
+  //! Returns the   length of the maximum section. This
+  //! information is usefull to perform well conditionned rational
+  //! approximation.
+  Standard_EXPORT virtual   Standard_Real MaximalSection()  const;
+  
+  //! Compute the minimal value of weight for each poles
+  //! of all  sections.  This information is  usefull to
+  //! perform well conditionned rational approximation.
+  Standard_EXPORT virtual   void GetMinimalWeight (TColStd_Array1OfReal& Weigths)  const;
 
 
 
@@ -134,24 +130,24 @@ protected:
 private: 
 
   
-  Standard_EXPORT     void Discret() ;
+  Standard_EXPORT   void Discret() ;
 
-gp_Pnt myBary;
-Standard_Real myRadius;
-Standard_Real maxang;
-Standard_Real minang;
-Standard_Real distmin;
-Handle_Adaptor3d_HCurve myPath;
-Handle_Adaptor3d_HCurve myCurve1;
-Handle_Adaptor3d_HCurve myCurve2;
-Handle_Adaptor3d_HCurve myTPath;
-Handle_Adaptor3d_HCurve myTCurve1;
-Handle_Adaptor3d_HCurve myTCurve2;
-Standard_Integer myDegree;
-Standard_Integer myNbKnots;
-Standard_Integer myNbPoles;
-Convert_ParameterisationType myTConv;
-Standard_Boolean myreverse;
+  gp_Pnt myBary;
+  Standard_Real myRadius;
+  Standard_Real maxang;
+  Standard_Real minang;
+  Standard_Real distmin;
+  Handle(Adaptor3d_HCurve) myPath;
+  Handle(Adaptor3d_HCurve) myCurve1;
+  Handle(Adaptor3d_HCurve) myCurve2;
+  Handle(Adaptor3d_HCurve) myTPath;
+  Handle(Adaptor3d_HCurve) myTCurve1;
+  Handle(Adaptor3d_HCurve) myTCurve2;
+  Standard_Integer myDegree;
+  Standard_Integer myNbKnots;
+  Standard_Integer myNbPoles;
+  Convert_ParameterisationType myTConv;
+  Standard_Boolean myreverse;
 
 
 };
@@ -160,7 +156,6 @@ Standard_Boolean myreverse;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomFill_CircularBlendFunc_HeaderFile

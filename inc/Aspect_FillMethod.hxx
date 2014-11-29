@@ -6,17 +6,16 @@
 #ifndef _Aspect_FillMethod_HeaderFile
 #define _Aspect_FillMethod_HeaderFile
 
-//! Defines the fill methods to <br>
-//!      write bitmaps in a window. <br>
-enum Aspect_FillMethod {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Defines the fill methods to
+//! write bitmaps in a window.
+enum Aspect_FillMethod
+{
 Aspect_FM_NONE,
 Aspect_FM_CENTERED,
 Aspect_FM_TILED,
 Aspect_FM_STRETCH
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_FillMethod_HeaderFile

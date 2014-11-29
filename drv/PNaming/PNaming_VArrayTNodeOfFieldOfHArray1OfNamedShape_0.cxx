@@ -5,18 +5,12 @@
 
 #include <PNaming_VArrayTNodeOfFieldOfHArray1OfNamedShape.hxx>
 
-#ifndef _PNaming_NamedShape_HeaderFile
 #include <PNaming_NamedShape.hxx>
-#endif
-#ifndef _PNaming_FieldOfHArray1OfNamedShape_HeaderFile
 #include <PNaming_FieldOfHArray1OfNamedShape.hxx>
-#endif
-#ifndef _PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape_HeaderFile
 #include <PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape.hxx>
-#endif
  
 
-#define Item Handle_PNaming_NamedShape
+#define Item Handle(PNaming_NamedShape)
 #define Item_hxx <PNaming_NamedShape.hxx>
 #define DBC_VArrayNode PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape
 #define DBC_VArrayNode_hxx <PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape.hxx>

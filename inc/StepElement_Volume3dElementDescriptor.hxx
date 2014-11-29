@@ -6,52 +6,43 @@
 #ifndef _StepElement_Volume3dElementDescriptor_HeaderFile
 #define _StepElement_Volume3dElementDescriptor_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepElement_Volume3dElementDescriptor_HeaderFile
 #include <Handle_StepElement_Volume3dElementDescriptor.hxx>
-#endif
 
-#ifndef _Handle_StepElement_HArray1OfVolumeElementPurposeMember_HeaderFile
 #include <Handle_StepElement_HArray1OfVolumeElementPurposeMember.hxx>
-#endif
-#ifndef _StepElement_Volume3dElementShape_HeaderFile
 #include <StepElement_Volume3dElementShape.hxx>
-#endif
-#ifndef _StepElement_ElementDescriptor_HeaderFile
 #include <StepElement_ElementDescriptor.hxx>
-#endif
-#ifndef _StepElement_ElementOrder_HeaderFile
 #include <StepElement_ElementOrder.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepElement_HArray1OfVolumeElementPurposeMember;
 class TCollection_HAsciiString;
 
 
-//! Representation of STEP entity Volume3dElementDescriptor <br>
-class StepElement_Volume3dElementDescriptor : public StepElement_ElementDescriptor {
+//! Representation of STEP entity Volume3dElementDescriptor
+class StepElement_Volume3dElementDescriptor : public StepElement_ElementDescriptor
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepElement_Volume3dElementDescriptor();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const StepElement_ElementOrder aElementDescriptor_TopologyOrder,const Handle(TCollection_HAsciiString)& aElementDescriptor_Description,const Handle(StepElement_HArray1OfVolumeElementPurposeMember)& aPurpose,const StepElement_Volume3dElementShape aShape) ;
-  //! Returns field Purpose <br>
-  Standard_EXPORT     Handle_StepElement_HArray1OfVolumeElementPurposeMember Purpose() const;
-  //! Set field Purpose <br>
-  Standard_EXPORT     void SetPurpose(const Handle(StepElement_HArray1OfVolumeElementPurposeMember)& Purpose) ;
-  //! Returns field Shape <br>
-  Standard_EXPORT     StepElement_Volume3dElementShape Shape() const;
-  //! Set field Shape <br>
-  Standard_EXPORT     void SetShape(const StepElement_Volume3dElementShape Shape) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepElement_Volume3dElementDescriptor();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const StepElement_ElementOrder aElementDescriptor_TopologyOrder, const Handle(TCollection_HAsciiString)& aElementDescriptor_Description, const Handle(StepElement_HArray1OfVolumeElementPurposeMember)& aPurpose, const StepElement_Volume3dElementShape aShape) ;
+  
+  //! Returns field Purpose
+  Standard_EXPORT   Handle(StepElement_HArray1OfVolumeElementPurposeMember) Purpose()  const;
+  
+  //! Set field Purpose
+  Standard_EXPORT   void SetPurpose (const Handle(StepElement_HArray1OfVolumeElementPurposeMember)& Purpose) ;
+  
+  //! Returns field Shape
+  Standard_EXPORT   StepElement_Volume3dElementShape Shape()  const;
+  
+  //! Set field Shape
+  Standard_EXPORT   void SetShape (const StepElement_Volume3dElementShape Shape) ;
 
 
 
@@ -66,8 +57,8 @@ protected:
 private: 
 
 
-Handle_StepElement_HArray1OfVolumeElementPurposeMember thePurpose;
-StepElement_Volume3dElementShape theShape;
+  Handle(StepElement_HArray1OfVolumeElementPurposeMember) thePurpose;
+  StepElement_Volume3dElementShape theShape;
 
 
 };
@@ -76,7 +67,6 @@ StepElement_Volume3dElementShape theShape;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_Volume3dElementDescriptor_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_BiTgte_HCurveOnVertex_HeaderFile
 #define _Handle_BiTgte_HCurveOnVertex_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Adaptor3d_HCurve_HeaderFile
 #include <Handle_Adaptor3d_HCurve.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Adaptor3d_HCurve);
 class BiTgte_HCurveOnVertex;
 
-DEFINE_STANDARD_HANDLE(BiTgte_HCurveOnVertex,Adaptor3d_HCurve)
+DEFINE_STANDARD_HANDLE(BiTgte_HCurveOnVertex, Adaptor3d_HCurve)
 
-#endif
+#endif // _Handle_BiTgte_HCurveOnVertex_HeaderFile

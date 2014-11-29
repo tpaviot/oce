@@ -6,34 +6,16 @@
 #ifndef _SelectMgr_IndexedDataMapOfOwnerCriterion_HeaderFile
 #define _SelectMgr_IndexedDataMapOfOwnerCriterion_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_SelectBasics_EntityOwner_HeaderFile
 #include <Handle_SelectBasics_EntityOwner.hxx>
-#endif
-#ifndef _Handle_SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion_HeaderFile
 #include <Handle_SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_OutOfRange;
 class Standard_NoSuchObject;
@@ -44,60 +26,60 @@ class SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion;
 
 
 
-class SelectMgr_IndexedDataMapOfOwnerCriterion  : public TCollection_BasicMap {
+class SelectMgr_IndexedDataMapOfOwnerCriterion  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   SelectMgr_IndexedDataMapOfOwnerCriterion(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT SelectMgr_IndexedDataMapOfOwnerCriterion(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     SelectMgr_IndexedDataMapOfOwnerCriterion& Assign(const SelectMgr_IndexedDataMapOfOwnerCriterion& Other) ;
-    SelectMgr_IndexedDataMapOfOwnerCriterion& operator =(const SelectMgr_IndexedDataMapOfOwnerCriterion& Other) 
+  Standard_EXPORT   SelectMgr_IndexedDataMapOfOwnerCriterion& Assign (const SelectMgr_IndexedDataMapOfOwnerCriterion& Other) ;
+  SelectMgr_IndexedDataMapOfOwnerCriterion& operator = (const SelectMgr_IndexedDataMapOfOwnerCriterion& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~SelectMgr_IndexedDataMapOfOwnerCriterion()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Integer Add(const Handle(SelectBasics_EntityOwner)& K,const SelectMgr_SortCriterion& I) ;
+  Standard_EXPORT   Standard_Integer Add (const Handle(SelectBasics_EntityOwner)& K, const SelectMgr_SortCriterion& I) ;
   
-  Standard_EXPORT     void Substitute(const Standard_Integer I,const Handle(SelectBasics_EntityOwner)& K,const SelectMgr_SortCriterion& T) ;
+  Standard_EXPORT   void Substitute (const Standard_Integer I, const Handle(SelectBasics_EntityOwner)& K, const SelectMgr_SortCriterion& T) ;
   
-  Standard_EXPORT     void RemoveLast() ;
+  Standard_EXPORT   void RemoveLast() ;
   
-  Standard_EXPORT     Standard_Boolean Contains(const Handle(SelectBasics_EntityOwner)& K) const;
+  Standard_EXPORT   Standard_Boolean Contains (const Handle(SelectBasics_EntityOwner)& K)  const;
   
-  Standard_EXPORT    const Handle_SelectBasics_EntityOwner& FindKey(const Standard_Integer I) const;
+  Standard_EXPORT  const  Handle(SelectBasics_EntityOwner)& FindKey (const Standard_Integer I)  const;
   
-  Standard_EXPORT    const SelectMgr_SortCriterion& FindFromIndex(const Standard_Integer I) const;
-   const SelectMgr_SortCriterion& operator ()(const Standard_Integer I) const
+  Standard_EXPORT  const  SelectMgr_SortCriterion& FindFromIndex (const Standard_Integer I)  const;
+ const  SelectMgr_SortCriterion& operator () (const Standard_Integer I)  const
 {
   return FindFromIndex(I);
 }
   
-  Standard_EXPORT     SelectMgr_SortCriterion& ChangeFromIndex(const Standard_Integer I) ;
-    SelectMgr_SortCriterion& operator ()(const Standard_Integer I) 
+  Standard_EXPORT   SelectMgr_SortCriterion& ChangeFromIndex (const Standard_Integer I) ;
+  SelectMgr_SortCriterion& operator () (const Standard_Integer I) 
 {
   return ChangeFromIndex(I);
 }
   
-  Standard_EXPORT     Standard_Integer FindIndex(const Handle(SelectBasics_EntityOwner)& K) const;
+  Standard_EXPORT   Standard_Integer FindIndex (const Handle(SelectBasics_EntityOwner)& K)  const;
   
-  Standard_EXPORT    const SelectMgr_SortCriterion& FindFromKey(const Handle(SelectBasics_EntityOwner)& K) const;
+  Standard_EXPORT  const  SelectMgr_SortCriterion& FindFromKey (const Handle(SelectBasics_EntityOwner)& K)  const;
   
-  Standard_EXPORT     SelectMgr_SortCriterion& ChangeFromKey(const Handle(SelectBasics_EntityOwner)& K) ;
+  Standard_EXPORT   SelectMgr_SortCriterion& ChangeFromKey (const Handle(SelectBasics_EntityOwner)& K) ;
   
-  Standard_EXPORT     Standard_Address FindFromKey1(const Handle(SelectBasics_EntityOwner)& K) const;
+  Standard_EXPORT   Standard_Address FindFromKey1 (const Handle(SelectBasics_EntityOwner)& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFromKey1(const Handle(SelectBasics_EntityOwner)& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFromKey1 (const Handle(SelectBasics_EntityOwner)& K) ;
 
 
 
@@ -111,7 +93,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   SelectMgr_IndexedDataMapOfOwnerCriterion(const SelectMgr_IndexedDataMapOfOwnerCriterion& Other);
+  Standard_EXPORT SelectMgr_IndexedDataMapOfOwnerCriterion(const SelectMgr_IndexedDataMapOfOwnerCriterion& Other);
 
 
 
@@ -122,7 +104,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SelectMgr_IndexedDataMapOfOwnerCriterion_HeaderFile

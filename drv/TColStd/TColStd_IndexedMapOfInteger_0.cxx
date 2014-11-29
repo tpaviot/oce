@@ -5,18 +5,10 @@
 
 #include <TColStd_IndexedMapOfInteger.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _TColStd_IndexedMapNodeOfIndexedMapOfInteger_HeaderFile
 #include <TColStd_IndexedMapNodeOfIndexedMapOfInteger.hxx>
-#endif
  
 
 #define TheKey Standard_Integer

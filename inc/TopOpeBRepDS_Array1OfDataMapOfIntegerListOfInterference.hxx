@@ -6,25 +6,13 @@
 #ifndef _TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference_HeaderFile
 #define _TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -33,52 +21,52 @@ class TopOpeBRepDS_DataMapOfIntegerListOfInterference;
 
 
 
-class TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference  {
+class TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference(const Standard_Integer Low,const Standard_Integer Up);
+    TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference(const Standard_Integer Low, const Standard_Integer Up);
   
-      TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference(const TopOpeBRepDS_DataMapOfIntegerListOfInterference& Item,const Standard_Integer Low,const Standard_Integer Up);
+    TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference(const TopOpeBRepDS_DataMapOfIntegerListOfInterference& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const TopOpeBRepDS_DataMapOfIntegerListOfInterference& V) ;
+  Standard_EXPORT   void Init (const TopOpeBRepDS_DataMapOfIntegerListOfInterference& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference& Assign(const TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference& Other) ;
-   const TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference& operator =(const TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference& Other) 
+  Standard_EXPORT  const  TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference& Assign (const TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference& Other) ;
+ const  TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference& operator = (const TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const TopOpeBRepDS_DataMapOfIntegerListOfInterference& Value) ;
+      void SetValue (const Standard_Integer Index, const TopOpeBRepDS_DataMapOfIntegerListOfInterference& Value) ;
   
-       const TopOpeBRepDS_DataMapOfIntegerListOfInterference& Value(const Standard_Integer Index) const;
-     const TopOpeBRepDS_DataMapOfIntegerListOfInterference& operator ()(const Standard_Integer Index) const
+     const  TopOpeBRepDS_DataMapOfIntegerListOfInterference& Value (const Standard_Integer Index)  const;
+   const  TopOpeBRepDS_DataMapOfIntegerListOfInterference& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        TopOpeBRepDS_DataMapOfIntegerListOfInterference& ChangeValue(const Standard_Integer Index) ;
-      TopOpeBRepDS_DataMapOfIntegerListOfInterference& operator ()(const Standard_Integer Index) 
+      TopOpeBRepDS_DataMapOfIntegerListOfInterference& ChangeValue (const Standard_Integer Index) ;
+    TopOpeBRepDS_DataMapOfIntegerListOfInterference& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -92,13 +80,13 @@ protected:
 private:
 
   
-  Standard_EXPORT   TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference(const TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference& AnArray);
+  Standard_EXPORT TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference(const TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
@@ -116,7 +104,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference_HeaderFile

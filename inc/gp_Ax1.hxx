@@ -6,34 +6,16 @@
 #ifndef _gp_Ax1_HeaderFile
 #define _gp_Ax1_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _Standard_Storable_HeaderFile
 #include <Standard_Storable.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
 #include <Standard_PrimitiveTypes.hxx>
-#endif
 class gp_Pnt;
 class gp_Dir;
 class gp_Ax2;
@@ -43,149 +25,180 @@ class gp_Vec;
 
 Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(gp_Ax1);
 
-//! Describes an axis in 3D space. <br>
-//! An axis is defined by: <br>
-//! -   its origin (also referred to as its "Location point"), and <br>
-//! -   its unit vector (referred to as its "Direction" or "main   Direction"). <br>
-//! An axis is used: <br>
-//! -   to describe 3D geometric entities (for example, the <br>
-//! axis of a revolution entity). It serves the same purpose <br>
-//! as the STEP function "axis placement one axis", or <br>
-//! -   to define geometric transformations (axis of <br>
-//!   symmetry, axis of rotation, and so on). <br>
-//! For example, this entity can be used to locate a geometric entity <br>
-//!  or to define a symmetry axis. <br>
-class gp_Ax1  {
+//! Describes an axis in 3D space.
+//! An axis is defined by:
+//! -   its origin (also referred to as its "Location point"), and
+//! -   its unit vector (referred to as its "Direction" or "main   Direction").
+//! An axis is used:
+//! -   to describe 3D geometric entities (for example, the
+//! axis of a revolution entity). It serves the same purpose
+//! as the STEP function "axis placement one axis", or
+//! -   to define geometric transformations (axis of
+//! symmetry, axis of rotation, and so on).
+//! For example, this entity can be used to locate a geometric entity
+//! or to define a symmetry axis.
+class gp_Ax1 
+{
 
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an axis object representing Z axis of <br>
-//!            the reference co-ordinate system. <br>
-      gp_Ax1();
   
-//!  P is the location point and V is the direction of <me>. <br>
-      gp_Ax1(const gp_Pnt& P,const gp_Dir& V);
-  //! Assigns V as the "Direction"  of this axis. <br>
-        void SetDirection(const gp_Dir& V) ;
-  //! Assigns  P as the origin of this axis. <br>
-        void SetLocation(const gp_Pnt& P) ;
-  //! Returns the direction of <me>. <br>
-       const gp_Dir& Direction() const;
-  //! Returns the location point of <me>. <br>
-       const gp_Pnt& Location() const;
+  //! Creates an axis object representing Z axis of
+  //! the reference co-ordinate system.
+    gp_Ax1();
   
-//!  Returns True if  : <br>
-//!  . the angle between <me> and <Other> is lower or equal <br>
-//!    to <AngularTolerance> and <br>
-//!  . the distance between <me>.Location() and <Other> is lower <br>
-//!    or equal to <LinearTolerance> and <br>
-//!  . the distance between <Other>.Location() and <me> is lower <br>
-//!    or equal to LinearTolerance. <br>
-  Standard_EXPORT     Standard_Boolean IsCoaxial(const gp_Ax1& Other,const Standard_Real AngularTolerance,const Standard_Real LinearTolerance) const;
+
+  //! P is the location point and V is the direction of <me>.
+    gp_Ax1(const gp_Pnt& P, const gp_Dir& V);
   
-//!  Returns True if the direction of the <me> and <Other> <br>
-//!  are normal to each other. <br>
-//! That is, if the angle between the two axes is equal to Pi/2. <br>
-//! Note: the tolerance criterion is given by AngularTolerance.. <br>
-        Standard_Boolean IsNormal(const gp_Ax1& Other,const Standard_Real AngularTolerance) const;
+  //! Assigns V as the "Direction"  of this axis.
+      void SetDirection (const gp_Dir& V) ;
   
-//!  Returns True if the direction of <me> and <Other> are <br>
-//!  parallel with opposite orientation. That is, if the angle <br>
-//! between the two axes is equal to Pi. <br>
-//! Note: the tolerance criterion is given by AngularTolerance. <br>
-        Standard_Boolean IsOpposite(const gp_Ax1& Other,const Standard_Real AngularTolerance) const;
+  //! Assigns  P as the origin of this axis.
+      void SetLocation (const gp_Pnt& P) ;
   
-//!  Returns True if the direction of <me> and <Other> are <br>
-//!  parallel with same orientation or opposite orientation. That <br>
-//! is, if the angle between the two axes is equal to 0 or Pi. <br>
-//! Note: the tolerance criterion is given by <br>
-//! AngularTolerance. <br>
-        Standard_Boolean IsParallel(const gp_Ax1& Other,const Standard_Real AngularTolerance) const;
+  //! Returns the direction of <me>.
+     const  gp_Dir& Direction()  const;
   
-//!  Computes the angular value, in radians, between <me>.Direction() and <br>
-//!  <Other>.Direction(). Returns the angle between 0 and 2*PI <br>
-//!  radians. <br>
-        Standard_Real Angle(const gp_Ax1& Other) const;
-  //!  Reverses the unit vector of this axis. <br>
-//! and  assigns the result to this axis. <br>
-        void Reverse() ;
-  //! Reverses the unit vector of this axis and creates a new one. <br>
-        gp_Ax1 Reversed() const;
+  //! Returns the location point of <me>.
+     const  gp_Pnt& Location()  const;
   
-//!  Performs the symmetrical transformation of an axis <br>
-//!  placement with respect to the point P which is the <br>
-//!  center of the symmetry and assigns the result to this axis. <br>
-  Standard_EXPORT     void Mirror(const gp_Pnt& P) ;
-  //! Performs the symmetrical transformation of an axis <br>
-//!  placement with respect to the point P which is the <br>
-//!  center of the symmetry and creates a new axis. <br>
-  Standard_EXPORT     gp_Ax1 Mirrored(const gp_Pnt& P) const;
+
+  //! Returns True if  :
+  //! . the angle between <me> and <Other> is lower or equal
+  //! to <AngularTolerance> and
+  //! . the distance between <me>.Location() and <Other> is lower
+  //! or equal to <LinearTolerance> and
+  //! . the distance between <Other>.Location() and <me> is lower
+  //! or equal to LinearTolerance.
+  Standard_EXPORT   Standard_Boolean IsCoaxial (const gp_Ax1& Other, const Standard_Real AngularTolerance, const Standard_Real LinearTolerance)  const;
   
-//!  Performs the symmetrical transformation of an axis <br>
-//!  placement with respect to an axis placement which <br>
-//!  is the axis of the symmetry and assigns the result to this axis. <br>
-  Standard_EXPORT     void Mirror(const gp_Ax1& A1) ;
+
+  //! Returns True if the direction of the <me> and <Other>
+  //! are normal to each other.
+  //! That is, if the angle between the two axes is equal to Pi/2.
+  //! Note: the tolerance criterion is given by AngularTolerance..
+      Standard_Boolean IsNormal (const gp_Ax1& Other, const Standard_Real AngularTolerance)  const;
   
-//!  Performs the symmetrical transformation of an axis <br>
-//!  placement with respect to an axis placement which <br>
-//!  is the axis of the symmetry and creates a new axis. <br>
-  Standard_EXPORT     gp_Ax1 Mirrored(const gp_Ax1& A1) const;
+
+  //! Returns True if the direction of <me> and <Other> are
+  //! parallel with opposite orientation. That is, if the angle
+  //! between the two axes is equal to Pi.
+  //! Note: the tolerance criterion is given by AngularTolerance.
+      Standard_Boolean IsOpposite (const gp_Ax1& Other, const Standard_Real AngularTolerance)  const;
   
-//!  Performs the symmetrical transformation of an axis <br>
-//!  placement with respect to a plane. The axis placement <br>
-//!  <A2> locates the plane of the symmetry : <br>
-//!  (Location, XDirection, YDirection) and assigns the result to this axis. <br>
-  Standard_EXPORT     void Mirror(const gp_Ax2& A2) ;
+
+  //! Returns True if the direction of <me> and <Other> are
+  //! parallel with same orientation or opposite orientation. That
+  //! is, if the angle between the two axes is equal to 0 or Pi.
+  //! Note: the tolerance criterion is given by
+  //! AngularTolerance.
+      Standard_Boolean IsParallel (const gp_Ax1& Other, const Standard_Real AngularTolerance)  const;
   
-//!  Performs the symmetrical transformation of an axis <br>
-//!  placement with respect to a plane. The axis placement <br>
-//!  <A2> locates the plane of the symmetry : <br>
-//!  (Location, XDirection, YDirection) and creates a new axis. <br>
-  Standard_EXPORT     gp_Ax1 Mirrored(const gp_Ax2& A2) const;
-  //! Rotates this axis at an angle Ang (in radians) about the axis A1 <br>
-//! and assigns the result to this axis. <br>
-        void Rotate(const gp_Ax1& A1,const Standard_Real Ang) ;
-  //! Rotates this axis at an angle Ang (in radians) about the axis A1 <br>
-//! and creates a new one. <br>
-        gp_Ax1 Rotated(const gp_Ax1& A1,const Standard_Real Ang) const;
+
+  //! Computes the angular value, in radians, between <me>.Direction() and
+  //! <Other>.Direction(). Returns the angle between 0 and 2*PI
+  //! radians.
+      Standard_Real Angle (const gp_Ax1& Other)  const;
   
-//! Applies a scaling transformation to this axis with: <br>
-//! -   scale factor S, and <br>
-//! -   center P and assigns the result to this axis. <br>
-        void Scale(const gp_Pnt& P,const Standard_Real S) ;
+  //! Reverses the unit vector of this axis.
+  //! and  assigns the result to this axis.
+      void Reverse() ;
   
-//! Applies a scaling transformation to this axis with: <br>
-//! -   scale factor S, and <br>
-//! -   center P and creates a new axis. <br>
-        gp_Ax1 Scaled(const gp_Pnt& P,const Standard_Real S) const;
-  //! Applies the transformation T to this axis. <br>
-//! and assigns the result to this axis. <br>
-        void Transform(const gp_Trsf& T) ;
+  //! Reverses the unit vector of this axis and creates a new one.
+      gp_Ax1 Reversed()  const;
   
-//! Applies the transformation T to this axis and creates a new one. <br>
-//!  Translates an axis plaxement in the direction of the vector <br>
-//!  <V>. The magnitude of the translation is the vector's magnitude. <br>
-        gp_Ax1 Transformed(const gp_Trsf& T) const;
+
+  //! Performs the symmetrical transformation of an axis
+  //! placement with respect to the point P which is the
+  //! center of the symmetry and assigns the result to this axis.
+  Standard_EXPORT   void Mirror (const gp_Pnt& P) ;
   
-//! Translates this axis by the vector V, <br>
-//! and assigns the result to this axis. <br>
-        void Translate(const gp_Vec& V) ;
+  //! Performs the symmetrical transformation of an axis
+  //! placement with respect to the point P which is the
+  //! center of the symmetry and creates a new axis.
+  Standard_EXPORT   gp_Ax1 Mirrored (const gp_Pnt& P)  const;
   
-//! Translates this axis by the vector V, <br>
-//! and creates a new one. <br>
-        gp_Ax1 Translated(const gp_Vec& V) const;
+
+  //! Performs the symmetrical transformation of an axis
+  //! placement with respect to an axis placement which
+  //! is the axis of the symmetry and assigns the result to this axis.
+  Standard_EXPORT   void Mirror (const gp_Ax1& A1) ;
   
-//! Translates this axis by: <br>
-//! the vector (P1, P2) defined from point P1 to point P2. <br>
-//! and assigns the result to this axis. <br>
-        void Translate(const gp_Pnt& P1,const gp_Pnt& P2) ;
+
+  //! Performs the symmetrical transformation of an axis
+  //! placement with respect to an axis placement which
+  //! is the axis of the symmetry and creates a new axis.
+  Standard_EXPORT   gp_Ax1 Mirrored (const gp_Ax1& A1)  const;
   
-//! Translates this axis by: <br>
-//! the vector (P1, P2) defined from point P1 to point P2. <br>
-//! and creates a new one. <br>
-        gp_Ax1 Translated(const gp_Pnt& P1,const gp_Pnt& P2) const;
+
+  //! Performs the symmetrical transformation of an axis
+  //! placement with respect to a plane. The axis placement
+  //! <A2> locates the plane of the symmetry :
+  //! (Location, XDirection, YDirection) and assigns the result to this axis.
+  Standard_EXPORT   void Mirror (const gp_Ax2& A2) ;
+  
+
+  //! Performs the symmetrical transformation of an axis
+  //! placement with respect to a plane. The axis placement
+  //! <A2> locates the plane of the symmetry :
+  //! (Location, XDirection, YDirection) and creates a new axis.
+  Standard_EXPORT   gp_Ax1 Mirrored (const gp_Ax2& A2)  const;
+  
+  //! Rotates this axis at an angle Ang (in radians) about the axis A1
+  //! and assigns the result to this axis.
+      void Rotate (const gp_Ax1& A1, const Standard_Real Ang) ;
+  
+  //! Rotates this axis at an angle Ang (in radians) about the axis A1
+  //! and creates a new one.
+      gp_Ax1 Rotated (const gp_Ax1& A1, const Standard_Real Ang)  const;
+  
+
+  //! Applies a scaling transformation to this axis with:
+  //! -   scale factor S, and
+  //! -   center P and assigns the result to this axis.
+      void Scale (const gp_Pnt& P, const Standard_Real S) ;
+  
+
+  //! Applies a scaling transformation to this axis with:
+  //! -   scale factor S, and
+  //! -   center P and creates a new axis.
+      gp_Ax1 Scaled (const gp_Pnt& P, const Standard_Real S)  const;
+  
+  //! Applies the transformation T to this axis.
+  //! and assigns the result to this axis.
+      void Transform (const gp_Trsf& T) ;
+  
+
+  //! Applies the transformation T to this axis and creates a new one.
+  //!
+  //! Translates an axis plaxement in the direction of the vector
+  //! <V>. The magnitude of the translation is the vector's magnitude.
+      gp_Ax1 Transformed (const gp_Trsf& T)  const;
+  
+
+  //! Translates this axis by the vector V,
+  //! and assigns the result to this axis.
+      void Translate (const gp_Vec& V) ;
+  
+
+  //! Translates this axis by the vector V,
+  //! and creates a new one.
+      gp_Ax1 Translated (const gp_Vec& V)  const;
+  
+
+  //! Translates this axis by:
+  //! the vector (P1, P2) defined from point P1 to point P2.
+  //! and assigns the result to this axis.
+      void Translate (const gp_Pnt& P1, const gp_Pnt& P2) ;
+  
+
+  //! Translates this axis by:
+  //! the vector (P1, P2) defined from point P1 to point P2.
+  //! and creates a new one.
+      gp_Ax1 Translated (const gp_Pnt& P1, const gp_Pnt& P2)  const;
     const gp_Pnt& _CSFDB_Getgp_Ax1loc() const { return loc; }
     const gp_Dir& _CSFDB_Getgp_Ax1vdir() const { return vdir; }
 
@@ -199,8 +212,8 @@ protected:
 private: 
 
 
-gp_Pnt loc;
-gp_Dir vdir;
+  gp_Pnt loc;
+  gp_Dir vdir;
 
 
 };
@@ -210,7 +223,6 @@ gp_Dir vdir;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _gp_Ax1_HeaderFile

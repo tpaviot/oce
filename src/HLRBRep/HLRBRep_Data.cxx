@@ -186,7 +186,7 @@ public:
   long unsigned **TabBit;
   Standard_Integer nTabBit;
 
-#ifdef DEB  
+#ifdef OCCT_DEBUG
   Standard_Integer StNbLect,StNbEcr,StNbMax,StNbMoy,StNbMoyNonNul; //-- STAT
 #endif
 
@@ -194,18 +194,18 @@ public:
   //-- ============================================================
   TableauRejection() { 
     N=0; nTabBit=0;  UV=NULL;  nbUV=NULL;  IndUV=NULL; TabBit=NULL;
-#ifdef DEB
+#ifdef OCCT_DEBUG
     StNbLect=StNbEcr=StNbMax=StNbMoy=StNbMoyNonNul=0;
 #endif
   }
   //-- ============================================================
   void SetDim(const Standard_Integer n) {
-#ifdef DEB
+#ifdef OCCT_DEBUG
     cout<<"\n@#@#@#@#@# SetDim "<<n<<endl;
 #endif
     if(UV) 
       Destroy();
-#ifdef DEB
+#ifdef OCCT_DEBUG
     StNbLect=StNbEcr=StNbMax=StNbMoy=0;
 #endif
     N=n;
@@ -233,7 +233,7 @@ public:
   } 
   //-- ============================================================
   void Destroy() {
-#ifdef DEB
+#ifdef OCCT_DEBUG
     if(N) { 
       Standard_Integer nnn=0;
       StNbMoy=StNbMoyNonNul=0;
@@ -267,27 +267,31 @@ public:
 	  free(IndUV[i]);
 	  IndUV[i]=NULL;
 	}
-	else { cout<<" IndUV ~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<<endl; } 
-	       
+#ifdef OCCT_DEBUG
+	else
+          cout<<" IndUV ~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<<endl;
+#endif
       }
       for(i=0;i<N;i++) { 
 	if(UV[i]) { 
 	  free(UV[i]);
 	  UV[i]=NULL;
 	}
+#ifdef OCCT_DEBUG
 	else { cout<<" UV ~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<<endl; } 
+#endif
       }
       
-      if(nbUV)  { free(nbUV);  nbUV=NULL; } else { cout<<" nbUV ~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<<endl; } 
-      if(IndUV) { free(IndUV); IndUV=NULL;} else { cout<<" IndUV ~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<<endl; } 
-      if(UV)    { free(UV);    UV=NULL; }  else { cout<<" UV ~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<<endl; } 
+      if(nbUV)  { free(nbUV);  nbUV=NULL; } 
+      if(IndUV) { free(IndUV); IndUV=NULL;}
+      if(UV) { free(UV);    UV=NULL; }
       N=0;
     }
   }
   //-- ============================================================
   void Set(Standard_Integer i0,Standard_Integer j0,const Standard_Real u) { 
     i0--; j0--;
-#ifdef DEB
+#ifdef OCCT_DEBUG
     StNbEcr++;
 #endif
     Standard_Integer k=-1;
@@ -347,7 +351,7 @@ public:
   //-- ============================================================
   Standard_Real Get(Standard_Integer i0,Standard_Integer j0) { 
     i0--; j0--;
-#ifdef DEB
+#ifdef OCCT_DEBUG
     StNbLect++;
 #endif
 
@@ -1353,7 +1357,7 @@ void HLRBRep_Data::NextInterference ()
 		  }
 		  else {
 		    myNbPoints = myNbSegments = 0;
-#ifdef DEB
+#ifdef OCCT_DEBUG
 		    cout << "HLRBRep_Data::NextInterference : "; 
 		    if (myLE == myFE) 
 		      cout << "Edge " << myLE 
@@ -1519,7 +1523,7 @@ void HLRBRep_Data::EdgeState (const Standard_Real p1,
     else {
       stbef = TopAbs_OUT;
       staft = TopAbs_OUT;
-#ifdef DEB
+#ifdef OCCT_DEBUG
     cout << "HLRBRep_Data::EdgeState : undefined" << endl;
 #endif
     }
@@ -1527,7 +1531,7 @@ void HLRBRep_Data::EdgeState (const Standard_Real p1,
   else {
     stbef = TopAbs_OUT;
     staft = TopAbs_OUT; 
-#ifdef DEB
+#ifdef OCCT_DEBUG
     cout << "HLRBRep_Data::EdgeState : undefined" << endl;
 #endif
   }
@@ -1592,7 +1596,7 @@ HLRBRep_Data::HidingStartLevel (const Standard_Integer E,
     else if (p > param + tolpar)
       Loop = Standard_False;
     else {
-#ifdef DEB  
+#ifdef OCCT_DEBUG
       cout << "HLRBRep_Data::HidingStartLevel : ";
       cout << "Bad Parameter." << endl;
 #endif
@@ -1621,12 +1625,10 @@ TopAbs_State HLRBRep_Data::Compare (const Standard_Integer E,
 //=======================================================================
 
 
-#ifdef DEB
 Standard_Boolean HLRBRep_Data::OrientOutLine (const Standard_Integer I, HLRBRep_FaceData& FD)
-#else
-Standard_Boolean HLRBRep_Data::OrientOutLine (const Standard_Integer, HLRBRep_FaceData& FD)
-#endif
 {
+  (void)I; // avoid compiler warning
+
   const Handle(HLRAlgo_WiresBlock)& wb = FD.Wires();
   Standard_Integer nw = wb->NbWires();
   Standard_Integer iw1,ie1,ne1;
@@ -1678,7 +1680,7 @@ Standard_Boolean HLRBRep_Data::OrientOutLine (const Standard_Integer, HLRBRep_Fa
 	    (iFaceGeom,pu,pv,V);
 	  gp_Vec Nm = mySLProps.Normal();
 	  if (curv == 0) {
-#ifdef DEB  
+#ifdef OCCT_DEBUG
 	    cout << "HLRBRep_Data::OrientOutLine " << I;
 	    cout << " Edge " << myFE << " : ";
 	    cout << "CurvatureValue == 0." << endl;
@@ -1691,7 +1693,7 @@ Standard_Boolean HLRBRep_Data::OrientOutLine (const Standard_Integer, HLRBRep_Fa
 	  Nm.Transform(T);
 	  Nm.Cross(Tg);
 	  if (Tg.Magnitude() < gp::Resolution()) {
-#ifdef DEB  
+#ifdef OCCT_DEBUG
 	    cout << "HLRBRep_Data::OrientOutLine " << I;
 	    cout << " Edge " << myFE << " : ";
 	    cout << "Tg.Magnitude() == 0." << endl;
@@ -1713,7 +1715,7 @@ Standard_Boolean HLRBRep_Data::OrientOutLine (const Standard_Integer, HLRBRep_Fa
 	  eb1->Orientation(ie1,myFEOri);
 	}
 	else {
-#ifdef DEB  
+#ifdef OCCT_DEBUG
 	  cout << "HLRBRep_Data::OrientOutLine " << I;
 	  cout << " Edge " << myFE << " : ";
 	  cout << "UVPoint not found, OutLine not Oriented" << endl;
@@ -1773,11 +1775,15 @@ void HLRBRep_Data::OrientOthEdge (const Standard_Integer I,
 	    eb1->Orientation(ie1,myFEOri);
 	  }
 	}
+#ifdef OCCT_DEBUG
 	else {
 	  cout << "HLRBRep_Data::OrientOthEdge " << I;
 	  cout << " Edge " << myFE << " : ";
 	  cout << "UVPoint not found, Edge not Oriented" << endl;
 	}
+#else
+        (void)I; // avoid compiler warning
+#endif
       }
     }
   }
@@ -1823,12 +1829,14 @@ void HLRBRep_Data::OrientOthEdge (const Standard_Integer I,
     VertMax[15] = (Standard_Integer)((myDeca[15]+TotMax[15])*mySurD[15]); 
 
 TopAbs_State 
-HLRBRep_Data::Classify (const Standard_Integer /*E*/,
+HLRBRep_Data::Classify (const Standard_Integer E,
 			const HLRBRep_EdgeData& EData,
 			const Standard_Boolean LevelFlag,
 			Standard_Integer& Level,
 			const Standard_Real param)
 {
+  (void)E; // avoid compiler warning
+
   nbClassification++;
   Standard_Integer VertMin[16],VertMax[16],MinMaxVert[16];
   Standard_Real TotMin[16],TotMax[16];
@@ -1972,9 +1980,7 @@ HLRBRep_Data::Classify (const Standard_Integer /*E*/,
 			  (Standard_Address)VertMax,
 			  (Standard_Address)MinMaxVert);
 
-
-
-#if 0 
+#ifdef OCCT_DEBUG
 	{
 	  Standard_Integer qwe,qwep8,q,q1,q2;
 	  printf("\n E:%d -------\n",E);
@@ -2013,9 +2019,6 @@ HLRBRep_Data::Classify (const Standard_Integer /*E*/,
 	  cout<<endl;
 	}
  #endif
-
-
-
 
     if (((MaxFace1 - MinVert1) & 0x80008000) != 0 ||
 	((MaxVert1 - MinFace1) & 0x80008000) != 0 ||

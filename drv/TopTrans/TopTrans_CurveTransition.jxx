@@ -1,6 +1,2 @@
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _TopTrans_CurveTransition_HeaderFile
 #include <TopTrans_CurveTransition.hxx>
-#endif

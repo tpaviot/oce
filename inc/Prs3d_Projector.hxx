@@ -6,53 +6,42 @@
 #ifndef _Prs3d_Projector_HeaderFile
 #define _Prs3d_Projector_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Prs3d_Projector_HeaderFile
 #include <Handle_Prs3d_Projector.hxx>
-#endif
 
-#ifndef _HLRAlgo_Projector_HeaderFile
 #include <HLRAlgo_Projector.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Quantity_Length_HeaderFile
 #include <Quantity_Length.hxx>
-#endif
 class HLRAlgo_Projector;
 
 
-//! A projector object. <br>
-//! This object defines the parameters of a view for a <br>
-//! visualization algorithm. It is, for example, used by the <br>
-//! hidden line removal algorithms. <br>
-class Prs3d_Projector : public MMgt_TShared {
+//! A projector object.
+//! This object defines the parameters of a view for a
+//! visualization algorithm. It is, for example, used by the
+//! hidden line removal algorithms.
+class Prs3d_Projector : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   Prs3d_Projector(const HLRAlgo_Projector& Pr);
-  //! Constructs a projector framework from the following parameters <br>
-//! -   Pers is true if the view is a perspective view and <br>
-//!   false if it is an axonometric one; <br>
-//! -   Focus is the focal length if a perspective view is defined; <br>
-//! -   DX, DY and DZ are the coordinates of the <br>
-//!   projection vector; <br>
-//! -   XAt, YAt and ZAt are the coordinates of the view point; <br>
-//! -   XUp, YUp and ZUp are the coordinates of the <br>
-//!   vertical direction vector. <br>
-  Standard_EXPORT   Prs3d_Projector(const Standard_Boolean Pers,const Quantity_Length Focus,const Quantity_Length DX,const Quantity_Length DY,const Quantity_Length DZ,const Quantity_Length XAt,const Quantity_Length YAt,const Quantity_Length ZAt,const Quantity_Length XUp,const Quantity_Length YUp,const Quantity_Length ZUp);
-  //! Returns a projector object for use in a hidden line removal algorithm. <br>
-  Standard_EXPORT     HLRAlgo_Projector Projector() const;
+  Standard_EXPORT Prs3d_Projector(const HLRAlgo_Projector& Pr);
+  
+  //! Constructs a projector framework from the following parameters
+  //! -   Pers is true if the view is a perspective view and
+  //! false if it is an axonometric one;
+  //! -   Focus is the focal length if a perspective view is defined;
+  //! -   DX, DY and DZ are the coordinates of the
+  //! projection vector;
+  //! -   XAt, YAt and ZAt are the coordinates of the view point;
+  //! -   XUp, YUp and ZUp are the coordinates of the
+  //! vertical direction vector.
+  Standard_EXPORT Prs3d_Projector(const Standard_Boolean Pers, const Quantity_Length Focus, const Quantity_Length DX, const Quantity_Length DY, const Quantity_Length DZ, const Quantity_Length XAt, const Quantity_Length YAt, const Quantity_Length ZAt, const Quantity_Length XUp, const Quantity_Length YUp, const Quantity_Length ZUp);
+  
+  //! Returns a projector object for use in a hidden line removal algorithm.
+  Standard_EXPORT   HLRAlgo_Projector Projector()  const;
 
 
 
@@ -67,7 +56,7 @@ protected:
 private: 
 
 
-HLRAlgo_Projector MyProjector;
+  HLRAlgo_Projector MyProjector;
 
 
 };
@@ -76,7 +65,6 @@ HLRAlgo_Projector MyProjector;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Prs3d_Projector_HeaderFile

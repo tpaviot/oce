@@ -1,33 +1,11 @@
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _BRepAdaptor_Surface_HeaderFile
 #include <BRepAdaptor_Surface.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _Adaptor3d_HSurface_HeaderFile
 #include <Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _Geom_BezierSurface_HeaderFile
 #include <Geom_BezierSurface.hxx>
-#endif
-#ifndef _Geom_BSplineSurface_HeaderFile
 #include <Geom_BSplineSurface.hxx>
-#endif
-#ifndef _Adaptor3d_HCurve_HeaderFile
 #include <Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _HLRBRep_BSurfaceTool_HeaderFile
 #include <HLRBRep_BSurfaceTool.hxx>
-#endif

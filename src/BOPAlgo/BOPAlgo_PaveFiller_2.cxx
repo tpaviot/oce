@@ -24,7 +24,7 @@
 #include <BOPCol_NCVector.hxx>
 #include <BOPCol_TBB.hxx>
 
-#include <BOPInt_Context.hxx>
+#include <IntTools_Context.hxx>
 
 #include <BOPDS_Iterator.hxx>
 #include <BOPDS_VectorOfInterfVE.hxx>
@@ -38,13 +38,17 @@
 //class    : BOPAlgo_VertexEdgeEdge
 //purpose  : 
 //=======================================================================
-class BOPAlgo_VertexEdge {
+class BOPAlgo_VertexEdge : public BOPAlgo_Algo {
+
  public:
-  BOPAlgo_VertexEdge()
-    : myIV(-1), myIE(-1), myIVx(-1), myFlag(-1), myT(-1.) {
+  DEFINE_STANDARD_ALLOC
+
+  BOPAlgo_VertexEdge() : 
+    BOPAlgo_Algo(),
+    myIV(-1), myIE(-1), myIVx(-1), myFlag(-1), myT(-1.) {
   };
   //
-  ~BOPAlgo_VertexEdge(){
+  virtual ~BOPAlgo_VertexEdge(){
   };
   //
   void SetIndices(const Standard_Integer nV,
@@ -87,15 +91,16 @@ class BOPAlgo_VertexEdge {
     return myT;
   }
   //
-  void SetContext(const Handle(BOPInt_Context)& aContext) {
+  void SetContext(const Handle(IntTools_Context)& aContext) {
     myContext=aContext;
   }
   //
-  const Handle(BOPInt_Context)& Context()const {
+  const Handle(IntTools_Context)& Context()const {
     return myContext;
   }
   //
-  void Perform() {
+  virtual void Perform() {
+    BOPAlgo_Algo::UserBreak();
     myFlag=myContext->ComputeVE (myV, myE, myT);
   };
   //
@@ -107,7 +112,7 @@ class BOPAlgo_VertexEdge {
   Standard_Real myT;
   TopoDS_Vertex myV;
   TopoDS_Edge myE;
-  Handle(BOPInt_Context) myContext;
+  Handle(IntTools_Context) myContext;
 };
 //=======================================================================
 typedef BOPCol_NCVector
@@ -116,13 +121,13 @@ typedef BOPCol_NCVector
 typedef BOPCol_TBBContextFunctor 
   <BOPAlgo_VertexEdge,
   BOPAlgo_VectorOfVertexEdge,
-  Handle_BOPInt_Context, 
-  BOPInt_Context> BOPAlgo_VertexEdgeFunctor;
+  Handle(IntTools_Context), 
+  IntTools_Context> BOPAlgo_VertexEdgeFunctor;
 //
 typedef BOPCol_TBBContextCnt 
   <BOPAlgo_VertexEdgeFunctor,
   BOPAlgo_VectorOfVertexEdge,
-  Handle_BOPInt_Context> BOPAlgo_VertexEdgeCnt;
+  Handle(IntTools_Context)> BOPAlgo_VertexEdgeCnt;
 //
 //=======================================================================
 // function: PerformVE
@@ -190,8 +195,9 @@ void BOPAlgo_PaveFiller::PerformVE()
     aVESolver.SetIndices(nV, nE, nVx);
     aVESolver.SetVertex(aV);
     aVESolver.SetEdge(aE);
+    aVESolver.SetProgressIndicator(myProgressIndicator);
     //
-  }// myIterator->Initialize(TopAbs_VERTEX, TopAbs_EDGE);
+  }// for (; myIterator->More(); myIterator->Next()) {
   //
   aNbVE=aVVE.Extent();
   //=============================================================
@@ -215,7 +221,7 @@ void BOPAlgo_PaveFiller::PerformVE()
       myDS->AddInterf(nV, nE);
       // 3
       BOPDS_ListOfPaveBlock& aLPB=myDS->ChangePaveBlocks(nE);
-      Handle(BOPDS_PaveBlock)& aPB=*((Handle_BOPDS_PaveBlock*)&aLPB.First());
+      Handle(BOPDS_PaveBlock)& aPB=*((Handle(BOPDS_PaveBlock)*)&aLPB.First());
       // 
       aPave.SetIndex(nVx);
       aPave.SetParameter(aT);

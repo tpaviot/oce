@@ -6,28 +6,14 @@
 #ifndef _SelectMgr_DataMapNodeOfDataMapOfIntegerSensitive_HeaderFile
 #define _SelectMgr_DataMapNodeOfDataMapOfIntegerSensitive_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_SelectMgr_DataMapNodeOfDataMapOfIntegerSensitive_HeaderFile
 #include <Handle_SelectMgr_DataMapNodeOfDataMapOfIntegerSensitive.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_SelectBasics_SensitiveEntity_HeaderFile
 #include <Handle_SelectBasics_SensitiveEntity.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class SelectBasics_SensitiveEntity;
 class TColStd_MapIntegerHasher;
 class SelectMgr_DataMapOfIntegerSensitive;
@@ -35,16 +21,17 @@ class SelectMgr_DataMapIteratorOfDataMapOfIntegerSensitive;
 
 
 
-class SelectMgr_DataMapNodeOfDataMapOfIntegerSensitive : public TCollection_MapNode {
+class SelectMgr_DataMapNodeOfDataMapOfIntegerSensitive : public TCollection_MapNode
+{
 
 public:
 
   
-      SelectMgr_DataMapNodeOfDataMapOfIntegerSensitive(const Standard_Integer& K,const Handle(SelectBasics_SensitiveEntity)& I,const TCollection_MapNodePtr& n);
+    SelectMgr_DataMapNodeOfDataMapOfIntegerSensitive(const Standard_Integer& K, const Handle(SelectBasics_SensitiveEntity)& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Key() const;
+      Standard_Integer& Key()  const;
   
-        Handle_SelectBasics_SensitiveEntity& Value() const;
+      Handle(SelectBasics_SensitiveEntity)& Value()  const;
 
 
 
@@ -59,15 +46,15 @@ protected:
 private: 
 
 
-Standard_Integer myKey;
-Handle_SelectBasics_SensitiveEntity myValue;
+  Standard_Integer myKey;
+  Handle(SelectBasics_SensitiveEntity) myValue;
 
 
 };
 
 #define TheKey Standard_Integer
 #define TheKey_hxx <Standard_Integer.hxx>
-#define TheItem Handle_SelectBasics_SensitiveEntity
+#define TheItem Handle(SelectBasics_SensitiveEntity)
 #define TheItem_hxx <SelectBasics_SensitiveEntity.hxx>
 #define Hasher TColStd_MapIntegerHasher
 #define Hasher_hxx <TColStd_MapIntegerHasher.hxx>
@@ -98,7 +85,6 @@ Handle_SelectBasics_SensitiveEntity myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SelectMgr_DataMapNodeOfDataMapOfIntegerSensitive_HeaderFile

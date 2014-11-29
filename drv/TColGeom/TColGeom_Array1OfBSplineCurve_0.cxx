@@ -5,24 +5,14 @@
 
 #include <TColGeom_Array1OfBSplineCurve.hxx>
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _Geom_BSplineCurve_HeaderFile
 #include <Geom_BSplineCurve.hxx>
-#endif
  
 
-#define Array1Item Handle_Geom_BSplineCurve
+#define Array1Item Handle(Geom_BSplineCurve)
 #define Array1Item_hxx <Geom_BSplineCurve.hxx>
 #define TCollection_Array1 TColGeom_Array1OfBSplineCurve
 #define TCollection_Array1_hxx <TColGeom_Array1OfBSplineCurve.hxx>

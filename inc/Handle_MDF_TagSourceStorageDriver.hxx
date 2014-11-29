@@ -6,22 +6,15 @@
 #ifndef _Handle_MDF_TagSourceStorageDriver_HeaderFile
 #define _Handle_MDF_TagSourceStorageDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_MDF_ASDriver_HeaderFile
 #include <Handle_MDF_ASDriver.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(MDF_ASDriver);
 class MDF_TagSourceStorageDriver;
 
-DEFINE_STANDARD_HANDLE(MDF_TagSourceStorageDriver,MDF_ASDriver)
+DEFINE_STANDARD_HANDLE(MDF_TagSourceStorageDriver, MDF_ASDriver)
 
-#endif
+#endif // _Handle_MDF_TagSourceStorageDriver_HeaderFile

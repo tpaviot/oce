@@ -6,45 +6,40 @@
 #ifndef _StepElement_CurveElementEndReleasePacket_HeaderFile
 #define _StepElement_CurveElementEndReleasePacket_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepElement_CurveElementEndReleasePacket_HeaderFile
 #include <Handle_StepElement_CurveElementEndReleasePacket.hxx>
-#endif
 
-#ifndef _StepElement_CurveElementFreedom_HeaderFile
 #include <StepElement_CurveElementFreedom.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepElement_CurveElementFreedom;
 
 
-//! Representation of STEP entity CurveElementEndReleasePacket <br>
-class StepElement_CurveElementEndReleasePacket : public MMgt_TShared {
+//! Representation of STEP entity CurveElementEndReleasePacket
+class StepElement_CurveElementEndReleasePacket : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepElement_CurveElementEndReleasePacket();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const StepElement_CurveElementFreedom& aReleaseFreedom,const Standard_Real aReleaseStiffness) ;
-  //! Returns field ReleaseFreedom <br>
-  Standard_EXPORT     StepElement_CurveElementFreedom ReleaseFreedom() const;
-  //! Set field ReleaseFreedom <br>
-  Standard_EXPORT     void SetReleaseFreedom(const StepElement_CurveElementFreedom& ReleaseFreedom) ;
-  //! Returns field ReleaseStiffness <br>
-  Standard_EXPORT     Standard_Real ReleaseStiffness() const;
-  //! Set field ReleaseStiffness <br>
-  Standard_EXPORT     void SetReleaseStiffness(const Standard_Real ReleaseStiffness) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepElement_CurveElementEndReleasePacket();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const StepElement_CurveElementFreedom& aReleaseFreedom, const Standard_Real aReleaseStiffness) ;
+  
+  //! Returns field ReleaseFreedom
+  Standard_EXPORT   StepElement_CurveElementFreedom ReleaseFreedom()  const;
+  
+  //! Set field ReleaseFreedom
+  Standard_EXPORT   void SetReleaseFreedom (const StepElement_CurveElementFreedom& ReleaseFreedom) ;
+  
+  //! Returns field ReleaseStiffness
+  Standard_EXPORT   Standard_Real ReleaseStiffness()  const;
+  
+  //! Set field ReleaseStiffness
+  Standard_EXPORT   void SetReleaseStiffness (const Standard_Real ReleaseStiffness) ;
 
 
 
@@ -59,8 +54,8 @@ protected:
 private: 
 
 
-StepElement_CurveElementFreedom theReleaseFreedom;
-Standard_Real theReleaseStiffness;
+  StepElement_CurveElementFreedom theReleaseFreedom;
+  Standard_Real theReleaseStiffness;
 
 
 };
@@ -69,7 +64,6 @@ Standard_Real theReleaseStiffness;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_CurveElementEndReleasePacket_HeaderFile

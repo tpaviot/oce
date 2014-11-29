@@ -5,13 +5,9 @@
 
 #include <IGESBasic_HArray1OfHArray1OfReal.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
 
  
 

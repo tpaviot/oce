@@ -6,77 +6,71 @@
 #ifndef _BRepOffsetAPI_MakePipe_HeaderFile
 #define _BRepOffsetAPI_MakePipe_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepFill_Pipe_HeaderFile
 #include <BRepFill_Pipe.hxx>
-#endif
-#ifndef _BRepPrimAPI_MakeSweep_HeaderFile
 #include <BRepPrimAPI_MakeSweep.hxx>
-#endif
-#ifndef _GeomFill_Trihedron_HeaderFile
 #include <GeomFill_Trihedron.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
+#include <Standard_Real.hxx>
 class TopoDS_Wire;
 class TopoDS_Shape;
 class BRepFill_Pipe;
 
 
-//! Describes functions to build pipes. <br>
-//! A pipe is built a basis shape (called the profile) along <br>
-//! a wire (called the spine) by sweeping. <br>
-//! The profile must not contain solids. <br>
-//! A MakePipe object provides a framework for: <br>
-//! - defining the construction of a pipe, <br>
-//! - implementing the construction algorithm, and <br>
-//! - consulting the result. <br>
-//! Warning <br>
-//! The MakePipe class implements pipe constructions <br>
-//! with G1 continuous spines only. <br>
-class BRepOffsetAPI_MakePipe  : public BRepPrimAPI_MakeSweep {
+//! Describes functions to build pipes.
+//! A pipe is built a basis shape (called the profile) along
+//! a wire (called the spine) by sweeping.
+//! The profile must not contain solids.
+//! A MakePipe object provides a framework for:
+//! - defining the construction of a pipe,
+//! - implementing the construction algorithm, and
+//! - consulting the result.
+//! Warning
+//! The MakePipe class implements pipe constructions
+//! with G1 continuous spines only.
+class BRepOffsetAPI_MakePipe  : public BRepPrimAPI_MakeSweep
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Constructs a pipe by sweeping the shape Profile along <br>
-//! the wire Spine.The angle made by the spine with the profile is <br>
-//! maintained along the length of the pipe. <br>
-//! Warning <br>
-//! Spine must be G1 continuous; that is, on the connection <br>
-//! vertex of two edges of the wire, the tangent vectors on <br>
-//! the left and on the right must have the same direction, <br>
-//! though not necessarily the same magnitude. <br>
-//! Exceptions <br>
-//! Standard_DomainError if the profile is a solid or a <br>
-//! composite solid. <br>
-  Standard_EXPORT   BRepOffsetAPI_MakePipe(const TopoDS_Wire& Spine,const TopoDS_Shape& Profile);
-  //! the same as previous but with setting of <br>
-//!          mode of sweep and the flag that indicates attempt <br>
-//!          to approximate a C1-continuous surface if a swept <br>
-//!          surface proved to be C0. <br>
-  Standard_EXPORT   BRepOffsetAPI_MakePipe(const TopoDS_Wire& Spine,const TopoDS_Shape& Profile,const GeomFill_Trihedron aMode,const Standard_Boolean ForceApproxC1 = Standard_False);
   
-  Standard_EXPORT    const BRepFill_Pipe& Pipe() const;
-  //! Builds the resulting shape (redefined from MakeShape). <br>
-  Standard_EXPORT   virtual  void Build() ;
-  //! Returns the  TopoDS  Shape of the bottom of the prism. <br>
-  Standard_EXPORT     TopoDS_Shape FirstShape() ;
-  //! Returns the TopoDS Shape of the top of the prism. <br>
-  Standard_EXPORT     TopoDS_Shape LastShape() ;
+  //! Constructs a pipe by sweeping the shape Profile along
+  //! the wire Spine.The angle made by the spine with the profile is
+  //! maintained along the length of the pipe.
+  //! Warning
+  //! Spine must be G1 continuous; that is, on the connection
+  //! vertex of two edges of the wire, the tangent vectors on
+  //! the left and on the right must have the same direction,
+  //! though not necessarily the same magnitude.
+  //! Exceptions
+  //! Standard_DomainError if the profile is a solid or a
+  //! composite solid.
+  Standard_EXPORT BRepOffsetAPI_MakePipe(const TopoDS_Wire& Spine, const TopoDS_Shape& Profile);
   
-  Standard_EXPORT     TopoDS_Shape Generated(const TopoDS_Shape& SSpine,const TopoDS_Shape& SProfile) ;
-
+  //! the same as previous but with setting of
+  //! mode of sweep and the flag that indicates attempt
+  //! to approximate a C1-continuous surface if a swept
+  //! surface proved to be C0.
+  Standard_EXPORT BRepOffsetAPI_MakePipe(const TopoDS_Wire& Spine, const TopoDS_Shape& Profile, const GeomFill_Trihedron aMode, const Standard_Boolean ForceApproxC1 = Standard_False);
+  
+  Standard_EXPORT  const  BRepFill_Pipe& Pipe()  const;
+  
+  //! Builds the resulting shape (redefined from MakeShape).
+  Standard_EXPORT virtual   void Build() ;
+  
+  //! Returns the  TopoDS  Shape of the bottom of the prism.
+  Standard_EXPORT   TopoDS_Shape FirstShape() ;
+  
+  //! Returns the TopoDS Shape of the top of the prism.
+  Standard_EXPORT   TopoDS_Shape LastShape() ;
+  
+  Standard_EXPORT   TopoDS_Shape Generated (const TopoDS_Shape& SSpine, const TopoDS_Shape& SProfile) ;
+  
+  Standard_EXPORT   Standard_Real ErrorOnSurface()  const;
 
 
 
@@ -91,7 +85,7 @@ private:
 
 
 
-BRepFill_Pipe myPipe;
+  BRepFill_Pipe myPipe;
 
 
 };
@@ -100,7 +94,6 @@ BRepFill_Pipe myPipe;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepOffsetAPI_MakePipe_HeaderFile

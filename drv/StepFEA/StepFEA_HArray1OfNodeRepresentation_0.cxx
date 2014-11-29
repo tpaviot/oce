@@ -5,28 +5,14 @@
 
 #include <StepFEA_HArray1OfNodeRepresentation.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _StepFEA_NodeRepresentation_HeaderFile
 #include <StepFEA_NodeRepresentation.hxx>
-#endif
-#ifndef _StepFEA_Array1OfNodeRepresentation_HeaderFile
 #include <StepFEA_Array1OfNodeRepresentation.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(StepFEA_HArray1OfNodeRepresentation,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(StepFEA_HArray1OfNodeRepresentation)
 
 
-#define ItemHArray1 Handle_StepFEA_NodeRepresentation
+#define ItemHArray1 Handle(StepFEA_NodeRepresentation)
 #define ItemHArray1_hxx <StepFEA_NodeRepresentation.hxx>
 #define TheArray1 StepFEA_Array1OfNodeRepresentation
 #define TheArray1_hxx <StepFEA_Array1OfNodeRepresentation.hxx>

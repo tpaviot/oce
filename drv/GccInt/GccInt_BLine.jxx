@@ -1,6 +1,2 @@
-#ifndef _gp_Lin2d_HeaderFile
 #include <gp_Lin2d.hxx>
-#endif
-#ifndef _GccInt_BLine_HeaderFile
 #include <GccInt_BLine.hxx>
-#endif

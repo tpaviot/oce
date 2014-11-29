@@ -6,79 +6,61 @@
 #ifndef _BOPTools_ShapeSet_HeaderFile
 #define _BOPTools_ShapeSet_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _BOPCol_MapOfOrientedShape_HeaderFile
 #include <BOPCol_MapOfOrientedShape.hxx>
-#endif
-#ifndef _BOPCol_BaseAllocator_HeaderFile
 #include <BOPCol_BaseAllocator.hxx>
-#endif
-#ifndef _BOPCol_ListOfShape_HeaderFile
 #include <BOPCol_ListOfShape.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopoDS_Shape;
 class TopoDS_Edge;
 
 
-//! Implementation of some formal <br>
-//!          opereations with a set of shapes <br>
-class BOPTools_ShapeSet  {
+//! Implementation of some formal
+//! opereations with a set of shapes
+class BOPTools_ShapeSet 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      BOPTools_ShapeSet();
+    BOPTools_ShapeSet();
 virtual ~BOPTools_ShapeSet();
   
-      BOPTools_ShapeSet(const BOPCol_BaseAllocator& theAllocator);
+    BOPTools_ShapeSet(const BOPCol_BaseAllocator& theAllocator);
   
-        void SetShape(const TopoDS_Shape& theS) ;
+      void SetShape (const TopoDS_Shape& theS) ;
   
-       const TopoDS_Shape& Shape() const;
+     const  TopoDS_Shape& Shape()  const;
   
-  Standard_EXPORT     void Add(const BOPCol_ListOfShape& theLS) ;
+  Standard_EXPORT   void Add (const BOPCol_ListOfShape& theLS) ;
   
-        void Add(const TopoDS_Shape& theShape) ;
+      void Add (const TopoDS_Shape& theShape) ;
   
-  Standard_EXPORT     void Add(const TopoDS_Shape& theShape,const TopAbs_ShapeEnum theType) ;
+  Standard_EXPORT   void Add (const TopoDS_Shape& theShape, const TopAbs_ShapeEnum theType) ;
   
-        void AddEdge(const TopoDS_Edge& theEdge) ;
+      void AddEdge (const TopoDS_Edge& theEdge) ;
   
-  Standard_EXPORT     void AddEdges(const BOPCol_ListOfShape& theLS) ;
+  Standard_EXPORT   void AddEdges (const BOPCol_ListOfShape& theLS) ;
   
-        void AddEdges(const TopoDS_Shape& theFace) ;
+      void AddEdges (const TopoDS_Shape& theFace) ;
   
-        void Subtract(const BOPTools_ShapeSet& theSet) ;
-      void operator -=(const BOPTools_ShapeSet& theSet) 
+      void Subtract (const BOPTools_ShapeSet& theSet) ;
+    void operator -= (const BOPTools_ShapeSet& theSet) 
 {
   Subtract(theSet);
 }
   
-        void Clear() ;
+      void Clear() ;
   
-        void Get(BOPCol_ListOfShape& theLS) const;
+      void Get (BOPCol_ListOfShape& theLS)  const;
   
-        Standard_Boolean Contains(const BOPTools_ShapeSet& theSet) const;
-
+      Standard_Boolean Contains (const BOPTools_ShapeSet& theSet)  const;
 
 
 
@@ -87,8 +69,8 @@ protected:
 
 
 
-TopoDS_Shape myShape;
-BOPCol_MapOfOrientedShape myMap;
+  TopoDS_Shape myShape;
+  BOPCol_MapOfOrientedShape myMap;
 
 
 private:
@@ -104,7 +86,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BOPTools_ShapeSet_HeaderFile

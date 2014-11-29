@@ -6,35 +6,27 @@
 #ifndef _BRepLib_MakeVertex_HeaderFile
 #define _BRepLib_MakeVertex_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepLib_MakeShape_HeaderFile
 #include <BRepLib_MakeShape.hxx>
-#endif
 class gp_Pnt;
 class TopoDS_Vertex;
 
 
-//! Provides methods to build vertices. <br>
-class BRepLib_MakeVertex  : public BRepLib_MakeShape {
+//! Provides methods to build vertices.
+class BRepLib_MakeVertex  : public BRepLib_MakeShape
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepLib_MakeVertex(const gp_Pnt& P);
+  Standard_EXPORT BRepLib_MakeVertex(const gp_Pnt& P);
   
-  Standard_EXPORT    const TopoDS_Vertex& Vertex() const;
+  Standard_EXPORT  const  TopoDS_Vertex& Vertex()  const;
 Standard_EXPORT operator TopoDS_Vertex() const;
-
 
 
 
@@ -57,7 +49,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepLib_MakeVertex_HeaderFile

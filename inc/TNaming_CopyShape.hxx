@@ -6,19 +6,11 @@
 #ifndef _TNaming_CopyShape_HeaderFile
 #define _TNaming_CopyShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_TNaming_TranslateTool_HeaderFile
 #include <Handle_TNaming_TranslateTool.hxx>
-#endif
 class TopoDS_Shape;
 class TColStd_IndexedDataMapOfTransientTransient;
 class TNaming_TranslateTool;
@@ -26,19 +18,22 @@ class TopLoc_Location;
 
 
 
-class TNaming_CopyShape  {
+class TNaming_CopyShape 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //!      Makes  copy  a  set  of  shape(s),  using the  aMap <br>
-  Standard_EXPORT   static  void CopyTool(const TopoDS_Shape& aShape,TColStd_IndexedDataMapOfTransientTransient& aMap,TopoDS_Shape& aResult) ;
-  //! Translates  a  Transient  shape(s)  to  Transient <br>
-  Standard_EXPORT   static  void Translate(const TopoDS_Shape& aShape,TColStd_IndexedDataMapOfTransientTransient& aMap,TopoDS_Shape& aResult,const Handle(TNaming_TranslateTool)& TrTool) ;
-  //! Translates a Topological  Location  to an  other  Top. <br>
-//!          Location <br>
-  Standard_EXPORT   static  TopLoc_Location Translate(const TopLoc_Location& L,TColStd_IndexedDataMapOfTransientTransient& aMap) ;
-
+  
+  //! Makes  copy  a  set  of  shape(s),  using the  aMap
+  Standard_EXPORT static   void CopyTool (const TopoDS_Shape& aShape, TColStd_IndexedDataMapOfTransientTransient& aMap, TopoDS_Shape& aResult) ;
+  
+  //! Translates  a  Transient  shape(s)  to  Transient
+  Standard_EXPORT static   void Translate (const TopoDS_Shape& aShape, TColStd_IndexedDataMapOfTransientTransient& aMap, TopoDS_Shape& aResult, const Handle(TNaming_TranslateTool)& TrTool) ;
+  
+  //! Translates a Topological  Location  to an  other  Top.
+  //! Location
+  Standard_EXPORT static   TopLoc_Location Translate (const TopLoc_Location& L, TColStd_IndexedDataMapOfTransientTransient& aMap) ;
 
 
 
@@ -61,7 +56,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TNaming_CopyShape_HeaderFile

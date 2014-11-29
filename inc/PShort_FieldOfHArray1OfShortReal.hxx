@@ -6,31 +6,15 @@
 #ifndef _PShort_FieldOfHArray1OfShortReal_HeaderFile
 #define _PShort_FieldOfHArray1OfShortReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _DBC_BaseArray_HeaderFile
 #include <DBC_BaseArray.hxx>
-#endif
-#ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
-#endif
-#ifndef _Handle_PShort_VArrayNodeOfFieldOfHArray1OfShortReal_HeaderFile
 #include <Handle_PShort_VArrayNodeOfFieldOfHArray1OfShortReal.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
 #include <Standard_PrimitiveTypes.hxx>
-#endif
 class Standard_NegativeValue;
 class Standard_OutOfRange;
 class Standard_DimensionMismatch;
@@ -43,36 +27,37 @@ class PShort_VArrayTNodeOfFieldOfHArray1OfShortReal;
 Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(PShort_FieldOfHArray1OfShortReal);
 
 
-class PShort_FieldOfHArray1OfShortReal  : public DBC_BaseArray {
+class PShort_FieldOfHArray1OfShortReal  : public DBC_BaseArray
+{
 
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   PShort_FieldOfHArray1OfShortReal();
+  Standard_EXPORT PShort_FieldOfHArray1OfShortReal();
   
-  Standard_EXPORT   PShort_FieldOfHArray1OfShortReal(const Standard_Integer Size);
+  Standard_EXPORT PShort_FieldOfHArray1OfShortReal(const Standard_Integer Size);
   
-  Standard_EXPORT   PShort_FieldOfHArray1OfShortReal(const PShort_FieldOfHArray1OfShortReal& Varray);
+  Standard_EXPORT PShort_FieldOfHArray1OfShortReal(const PShort_FieldOfHArray1OfShortReal& Varray);
   
-  Standard_EXPORT     void Resize(const Standard_Integer Size) ;
+  Standard_EXPORT   void Resize (const Standard_Integer Size) ;
   
-  Standard_EXPORT     void Assign(const PShort_FieldOfHArray1OfShortReal& Other) ;
-    void operator =(const PShort_FieldOfHArray1OfShortReal& Other) 
+  Standard_EXPORT   void Assign (const PShort_FieldOfHArray1OfShortReal& Other) ;
+  void operator = (const PShort_FieldOfHArray1OfShortReal& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Standard_ShortReal& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Standard_ShortReal& Value) ;
   
-  Standard_EXPORT     Standard_ShortReal& Value(const Standard_Integer Index) const;
-    Standard_ShortReal& operator ()(const Standard_Integer Index) const
+  Standard_EXPORT   Standard_ShortReal& Value (const Standard_Integer Index)  const;
+  Standard_ShortReal& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void Destroy() ;
+  Standard_EXPORT   void Destroy() ;
 ~PShort_FieldOfHArray1OfShortReal()
 {
   Destroy();
@@ -100,7 +85,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PShort_FieldOfHArray1OfShortReal_HeaderFile

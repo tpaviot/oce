@@ -1356,7 +1356,7 @@ QANewModTopOpe_Glue::SectionInsideFace(const TopoDS_Face& theFace,
     // check if vertices of aSEdge contacts edges of aFace
     TopoDS_Iterator aIter (aSEdge, Standard_False);
     for (; aIter.More(); aIter.Next()) {
-      const TopoDS_Vertex& aSVer = TopoDS::Vertex (aIter.Value());
+      TopoDS_Vertex aSVer = TopoDS::Vertex (aIter.Value());
       if (aSVer.Orientation() != TopAbs_FORWARD &&
 	  aSVer.Orientation() != TopAbs_REVERSED) continue;
 
@@ -1494,7 +1494,7 @@ QANewModTopOpe_Glue::SectionInsideFace(const TopoDS_Face& theFace,
       myMapGener(theFace).Append (aListGener);
     }
   }
-#ifdef DEB
+#ifdef OCCT_DEBUG
   else if (!aListW.IsEmpty()) {
     cout<<"QANewModTopOpe_Glue::SectionInsideFace : can't connect edges"<<endl;
   }

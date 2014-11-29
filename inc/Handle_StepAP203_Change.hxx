@@ -6,22 +6,15 @@
 #ifndef _Handle_StepAP203_Change_HeaderFile
 #define _Handle_StepAP203_Change_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepBasic_ActionAssignment_HeaderFile
 #include <Handle_StepBasic_ActionAssignment.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepBasic_ActionAssignment);
 class StepAP203_Change;
 
-DEFINE_STANDARD_HANDLE(StepAP203_Change,StepBasic_ActionAssignment)
+DEFINE_STANDARD_HANDLE(StepAP203_Change, StepBasic_ActionAssignment)
 
-#endif
+#endif // _Handle_StepAP203_Change_HeaderFile

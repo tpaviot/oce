@@ -5,16 +5,10 @@
 
 #include <IntPatch_SequenceNodeOfSequenceOfLine.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IntPatch_Line_HeaderFile
 #include <IntPatch_Line.hxx>
-#endif
-#ifndef _IntPatch_SequenceOfLine_HeaderFile
 #include <IntPatch_SequenceOfLine.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(IntPatch_SequenceNodeOfSequenceOfLine,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(IntPatch_SequenceNodeOfSequenceOfLine)
 
 
-#define SeqItem Handle_IntPatch_Line
+#define SeqItem Handle(IntPatch_Line)
 #define SeqItem_hxx <IntPatch_Line.hxx>
 #define TCollection_SequenceNode IntPatch_SequenceNodeOfSequenceOfLine
 #define TCollection_SequenceNode_hxx <IntPatch_SequenceNodeOfSequenceOfLine.hxx>

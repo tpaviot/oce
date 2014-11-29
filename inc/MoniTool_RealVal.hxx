@@ -6,35 +6,26 @@
 #ifndef _MoniTool_RealVal_HeaderFile
 #define _MoniTool_RealVal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MoniTool_RealVal_HeaderFile
 #include <Handle_MoniTool_RealVal.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 
 
-//! A Real through a Handle (i.e. managed as TShared) <br>
-class MoniTool_RealVal : public MMgt_TShared {
+//! A Real through a Handle (i.e. managed as TShared)
+class MoniTool_RealVal : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   MoniTool_RealVal(const Standard_Real val = 0.0);
+  Standard_EXPORT MoniTool_RealVal(const Standard_Real val = 0.0);
   
-  Standard_EXPORT     Standard_Real Value() const;
+  Standard_EXPORT   Standard_Real Value()  const;
   
-  Standard_EXPORT     Standard_Real& CValue() ;
+  Standard_EXPORT   Standard_Real& CValue() ;
 
 
 
@@ -49,7 +40,7 @@ protected:
 private: 
 
 
-Standard_Real theval;
+  Standard_Real theval;
 
 
 };
@@ -58,7 +49,6 @@ Standard_Real theval;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MoniTool_RealVal_HeaderFile

@@ -5,22 +5,12 @@
 
 #include <TColGeom_HSequenceOfBoundedCurve.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Geom_BoundedCurve_HeaderFile
 #include <Geom_BoundedCurve.hxx>
-#endif
-#ifndef _TColGeom_SequenceOfBoundedCurve_HeaderFile
 #include <TColGeom_SequenceOfBoundedCurve.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(TColGeom_HSequenceOfBoundedCurve,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(TColGeom_HSequenceOfBoundedCurve)
 
 
-#define Item Handle_Geom_BoundedCurve
+#define Item Handle(Geom_BoundedCurve)
 #define Item_hxx <Geom_BoundedCurve.hxx>
 #define TheSequence TColGeom_SequenceOfBoundedCurve
 #define TheSequence_hxx <TColGeom_SequenceOfBoundedCurve.hxx>

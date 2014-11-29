@@ -5,27 +5,13 @@
 
 #include <StepToTopoDS_PointEdgeMap.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _StepToTopoDS_PointPair_HeaderFile
 #include <StepToTopoDS_PointPair.hxx>
-#endif
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _StepToTopoDS_PointPairHasher_HeaderFile
 #include <StepToTopoDS_PointPairHasher.hxx>
-#endif
-#ifndef _StepToTopoDS_DataMapNodeOfPointEdgeMap_HeaderFile
 #include <StepToTopoDS_DataMapNodeOfPointEdgeMap.hxx>
-#endif
-#ifndef _StepToTopoDS_DataMapIteratorOfPointEdgeMap_HeaderFile
 #include <StepToTopoDS_DataMapIteratorOfPointEdgeMap.hxx>
-#endif
  
 
 #define TheKey StepToTopoDS_PointPair

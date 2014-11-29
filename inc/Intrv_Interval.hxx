@@ -6,166 +6,171 @@
 #ifndef _Intrv_Interval_HeaderFile
 #define _Intrv_Interval_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Intrv_Position_HeaderFile
 #include <Intrv_Position.hxx>
-#endif
 
 
 
-//!               **-----------****             Other <br>
-//!   ***---*                                   IsBefore <br>
-//!   ***----------*                            IsJustBefore <br>
-//!   ***---------------*                       IsOverlappingAtStart <br>
-//!   ***------------------------*              IsJustEnclosingAtEnd <br>
-//!   ***-----------------------------------*   IsEnclosing <br>
-//!              ***----*                       IsJustOverlappingAtStart <br>
-//!              ***-------------*              IsSimilar <br>
-//!              ***------------------------*   IsJustEnclosingAtStart <br>
-//!                     ***-*                   IsInside <br>
-//!                     ***------*              IsJustOverlappingAtEnd <br>
-//!                     ***-----------------*   IsOverlappingAtEnd <br>
-//!                              ***--------*   IsJustAfter <br>
-//!                                   ***---*   IsAfter <br>
-class Intrv_Interval  {
+//! **-----------****             Other
+//! ***---*                                   IsBefore
+//! ***----------*                            IsJustBefore
+//! ***---------------*                       IsOverlappingAtStart
+//! ***------------------------*              IsJustEnclosingAtEnd
+//! ***-----------------------------------*   IsEnclosing
+//! ***----*                       IsJustOverlappingAtStart
+//! ***-------------*              IsSimilar
+//! ***------------------------*   IsJustEnclosingAtStart
+//! ***-*                   IsInside
+//! ***------*              IsJustOverlappingAtEnd
+//! ***-----------------*   IsOverlappingAtEnd
+//! ***--------*   IsJustAfter
+//! ***---*   IsAfter
+class Intrv_Interval 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Intrv_Interval();
+  Standard_EXPORT Intrv_Interval();
   
-  Standard_EXPORT   Intrv_Interval(const Standard_Real Start,const Standard_Real End);
+  Standard_EXPORT Intrv_Interval(const Standard_Real Start, const Standard_Real End);
   
-  Standard_EXPORT   Intrv_Interval(const Standard_Real Start,const Standard_ShortReal TolStart,const Standard_Real End,const Standard_ShortReal TolEnd);
+  Standard_EXPORT Intrv_Interval(const Standard_Real Start, const Standard_ShortReal TolStart, const Standard_Real End, const Standard_ShortReal TolEnd);
   
-        Standard_Real Start() const;
+      Standard_Real Start()  const;
   
-        Standard_Real End() const;
+      Standard_Real End()  const;
   
-        Standard_ShortReal TolStart() const;
+      Standard_ShortReal TolStart()  const;
   
-        Standard_ShortReal TolEnd() const;
+      Standard_ShortReal TolEnd()  const;
   
-        void Bounds(Standard_Real& Start,Standard_ShortReal& TolStart,Standard_Real& End,Standard_ShortReal& TolEnd) const;
+      void Bounds (Standard_Real& Start, Standard_ShortReal& TolStart, Standard_Real& End, Standard_ShortReal& TolEnd)  const;
   
-        void SetStart(const Standard_Real Start,const Standard_ShortReal TolStart) ;
+      void SetStart (const Standard_Real Start, const Standard_ShortReal TolStart) ;
   
-//!             ****+****-------------------->      Old one <br>
-//!         ****+****------------------------>      New one to fuse <br>
-//!         <<<     <<< <br>
-//!         ****+****------------------------>      result <br>
-        void FuseAtStart(const Standard_Real Start,const Standard_ShortReal TolStart) ;
-  
-//!                      ****+****----------->      Old one <br>
-//!         <----------**+**                        Tool for cutting <br>
-//!                    >>>     >>> <br>
-//!                      ****+****----------->      result <br>
-        void CutAtStart(const Standard_Real Start,const Standard_ShortReal TolStart) ;
-  
-        void SetEnd(const Standard_Real End,const Standard_ShortReal TolEnd) ;
-  
-//!         <---------------------****+****      Old one <br>
-//!         <-----------------**+**              New one to fuse <br>
-//!                             >>>     >>> <br>
-//!         <---------------------****+****      result <br>
-        void FuseAtEnd(const Standard_Real End,const Standard_ShortReal TolEnd) ;
-  
-//!         <-----****+****                      Old one <br>
-//!                     **+**------>             Tool for cutting <br>
-//!               <<<     <<< <br>
-//!         <-----****+****                      result <br>
-        void CutAtEnd(const Standard_Real End,const Standard_ShortReal TolEnd) ;
-  //! True if myStart+myTolStart > myEnd-myTolEnd <br>
-//!            or if myEnd+myTolEnd > myStart-myTolStart <br>
-        Standard_Boolean IsProbablyEmpty() const;
-  //! True if me is Before Other <br>
-//!                 **-----------****             Other <br>
-//!   ***-----*                                   Before <br>
-//!   ***------------*                            JustBefore <br>
-//!   ***-----------------*                       OverlappingAtStart <br>
-//!   ***--------------------------*              JustEnclosingAtEnd <br>
-//!   ***-------------------------------------*   Enclosing <br>
-//!                ***----*                       JustOverlappingAtStart <br>
-//!                ***-------------*              Similar <br>
-//!                ***------------------------*   JustEnclosingAtStart <br>
-//!                       ***-*                   Inside <br>
-//!                       ***------*              JustOverlappingAtEnd <br>
-//!                       ***-----------------*   OverlappingAtEnd <br>
-//!                                ***--------*   JustAfter <br>
-//!                                     ***---*   After <br>
-  Standard_EXPORT     Intrv_Position Position(const Intrv_Interval& Other) const;
-  //! True if me is Before Other <br>
-//!          ***----------------**                              me <br>
-//!                                  **-----------****          Other <br>
-        Standard_Boolean IsBefore(const Intrv_Interval& Other) const;
-  //! True if me is After Other <br>
-//!                                  **-----------****          me <br>
-//!          ***----------------**                              Other <br>
-        Standard_Boolean IsAfter(const Intrv_Interval& Other) const;
-  //! True if me is Inside Other <br>
-//!                  **-----------****                          me <br>
-//!          ***--------------------------**                    Other <br>
-        Standard_Boolean IsInside(const Intrv_Interval& Other) const;
-  //! True if me is Enclosing Other <br>
-//!        ***----------------------------****                  me <br>
-//!              ***------------------**                        Other <br>
-        Standard_Boolean IsEnclosing(const Intrv_Interval& Other) const;
-  //! True if me is just Enclosing Other at start <br>
-//!               ***---------------------------****            me <br>
-//!              ***------------------**                        Other <br>
-        Standard_Boolean IsJustEnclosingAtStart(const Intrv_Interval& Other) const;
-  //! True if me is just Enclosing Other at End <br>
-//!        ***----------------------------****                  me <br>
-//!                  ***-----------------****                   Other <br>
-        Standard_Boolean IsJustEnclosingAtEnd(const Intrv_Interval& Other) const;
-  //! True if me is just before Other <br>
-//!        ***--------****                                      me <br>
-//!                     ***-----------**                        Other <br>
-        Standard_Boolean IsJustBefore(const Intrv_Interval& Other) const;
-  //! True if me is just after Other <br>
-//!                     ****-------****                         me <br>
-//!        ***-----------**                                     Other <br>
-        Standard_Boolean IsJustAfter(const Intrv_Interval& Other) const;
-  //! True if me is overlapping Other at start <br>
-//!        ***---------------***                                me <br>
-//!                     ***-----------**                        Other <br>
-        Standard_Boolean IsOverlappingAtStart(const Intrv_Interval& Other) const;
-  //! True if me is overlapping Other at end <br>
-//!                     ***-----------**                        me <br>
-//!        ***---------------***                                Other <br>
-        Standard_Boolean IsOverlappingAtEnd(const Intrv_Interval& Other) const;
-  //! True if me is just overlapping Other at start <br>
-//!        ***-----------***                                    me <br>
-//!        ***------------------------**                        Other <br>
-        Standard_Boolean IsJustOverlappingAtStart(const Intrv_Interval& Other) const;
-  //! True if me is just overlapping Other at end <br>
-//!                     ***-----------*                         me <br>
-//!        ***------------------------**                        Other <br>
-        Standard_Boolean IsJustOverlappingAtEnd(const Intrv_Interval& Other) const;
-  //! True if me and Other have the same bounds <br>
-//!         *----------------***                                me <br>
-//!        ***-----------------**                               Other <br>
-        Standard_Boolean IsSimilar(const Intrv_Interval& Other) const;
 
+  //! ****+****-------------------->      Old one
+  //! ****+****------------------------>      New one to fuse
+  //! <<<     <<<
+  //! ****+****------------------------>      result
+      void FuseAtStart (const Standard_Real Start, const Standard_ShortReal TolStart) ;
+  
+
+  //! ****+****----------->      Old one
+  //! <----------**+**                        Tool for cutting
+  //! >>>     >>>
+  //! ****+****----------->      result
+      void CutAtStart (const Standard_Real Start, const Standard_ShortReal TolStart) ;
+  
+      void SetEnd (const Standard_Real End, const Standard_ShortReal TolEnd) ;
+  
+
+  //! <---------------------****+****      Old one
+  //! <-----------------**+**              New one to fuse
+  //! >>>     >>>
+  //! <---------------------****+****      result
+      void FuseAtEnd (const Standard_Real End, const Standard_ShortReal TolEnd) ;
+  
+
+  //! <-----****+****                      Old one
+  //! **+**------>             Tool for cutting
+  //! <<<     <<<
+  //! <-----****+****                      result
+      void CutAtEnd (const Standard_Real End, const Standard_ShortReal TolEnd) ;
+  
+  //! True if myStart+myTolStart > myEnd-myTolEnd
+  //! or if myEnd+myTolEnd > myStart-myTolStart
+      Standard_Boolean IsProbablyEmpty()  const;
+  
+  //! True if me is Before Other
+  //! **-----------****             Other
+  //! ***-----*                                   Before
+  //! ***------------*                            JustBefore
+  //! ***-----------------*                       OverlappingAtStart
+  //! ***--------------------------*              JustEnclosingAtEnd
+  //! ***-------------------------------------*   Enclosing
+  //! ***----*                       JustOverlappingAtStart
+  //! ***-------------*              Similar
+  //! ***------------------------*   JustEnclosingAtStart
+  //! ***-*                   Inside
+  //! ***------*              JustOverlappingAtEnd
+  //! ***-----------------*   OverlappingAtEnd
+  //! ***--------*   JustAfter
+  //! ***---*   After
+  Standard_EXPORT   Intrv_Position Position (const Intrv_Interval& Other)  const;
+  
+  //! True if me is Before Other
+  //! ***----------------**                              me
+  //! **-----------****          Other
+      Standard_Boolean IsBefore (const Intrv_Interval& Other)  const;
+  
+  //! True if me is After Other
+  //! **-----------****          me
+  //! ***----------------**                              Other
+      Standard_Boolean IsAfter (const Intrv_Interval& Other)  const;
+  
+  //! True if me is Inside Other
+  //! **-----------****                          me
+  //! ***--------------------------**                    Other
+      Standard_Boolean IsInside (const Intrv_Interval& Other)  const;
+  
+  //! True if me is Enclosing Other
+  //! ***----------------------------****                  me
+  //! ***------------------**                        Other
+      Standard_Boolean IsEnclosing (const Intrv_Interval& Other)  const;
+  
+  //! True if me is just Enclosing Other at start
+  //! ***---------------------------****            me
+  //! ***------------------**                        Other
+      Standard_Boolean IsJustEnclosingAtStart (const Intrv_Interval& Other)  const;
+  
+  //! True if me is just Enclosing Other at End
+  //! ***----------------------------****                  me
+  //! ***-----------------****                   Other
+      Standard_Boolean IsJustEnclosingAtEnd (const Intrv_Interval& Other)  const;
+  
+  //! True if me is just before Other
+  //! ***--------****                                      me
+  //! ***-----------**                        Other
+      Standard_Boolean IsJustBefore (const Intrv_Interval& Other)  const;
+  
+  //! True if me is just after Other
+  //! ****-------****                         me
+  //! ***-----------**                                     Other
+      Standard_Boolean IsJustAfter (const Intrv_Interval& Other)  const;
+  
+  //! True if me is overlapping Other at start
+  //! ***---------------***                                me
+  //! ***-----------**                        Other
+      Standard_Boolean IsOverlappingAtStart (const Intrv_Interval& Other)  const;
+  
+  //! True if me is overlapping Other at end
+  //! ***-----------**                        me
+  //! ***---------------***                                Other
+      Standard_Boolean IsOverlappingAtEnd (const Intrv_Interval& Other)  const;
+  
+  //! True if me is just overlapping Other at start
+  //! ***-----------***                                    me
+  //! ***------------------------**                        Other
+      Standard_Boolean IsJustOverlappingAtStart (const Intrv_Interval& Other)  const;
+  
+  //! True if me is just overlapping Other at end
+  //! ***-----------*                         me
+  //! ***------------------------**                        Other
+      Standard_Boolean IsJustOverlappingAtEnd (const Intrv_Interval& Other)  const;
+  
+  //! True if me and Other have the same bounds
+  //! *----------------***                                me
+  //! ***-----------------**                               Other
+      Standard_Boolean IsSimilar (const Intrv_Interval& Other)  const;
 
 
 
@@ -180,10 +185,10 @@ private:
 
 
 
-Standard_Real myStart;
-Standard_Real myEnd;
-Standard_ShortReal myTolStart;
-Standard_ShortReal myTolEnd;
+  Standard_Real myStart;
+  Standard_Real myEnd;
+  Standard_ShortReal myTolStart;
+  Standard_ShortReal myTolEnd;
 
 
 };
@@ -193,7 +198,6 @@ Standard_ShortReal myTolEnd;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Intrv_Interval_HeaderFile

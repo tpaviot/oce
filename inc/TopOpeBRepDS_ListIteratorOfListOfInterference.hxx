@@ -6,28 +6,14 @@
 #ifndef _TopOpeBRepDS_ListIteratorOfListOfInterference_HeaderFile
 #define _TopOpeBRepDS_ListIteratorOfListOfInterference_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_Interference_HeaderFile
 #include <Handle_TopOpeBRepDS_Interference.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_ListNodeOfListOfInterference_HeaderFile
 #include <Handle_TopOpeBRepDS_ListNodeOfListOfInterference.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class TopOpeBRepDS_ListOfInterference;
@@ -36,27 +22,27 @@ class TopOpeBRepDS_ListNodeOfListOfInterference;
 
 
 
-class TopOpeBRepDS_ListIteratorOfListOfInterference  {
+class TopOpeBRepDS_ListIteratorOfListOfInterference 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepDS_ListIteratorOfListOfInterference();
+  Standard_EXPORT TopOpeBRepDS_ListIteratorOfListOfInterference();
   
-  Standard_EXPORT   TopOpeBRepDS_ListIteratorOfListOfInterference(const TopOpeBRepDS_ListOfInterference& L);
+  Standard_EXPORT TopOpeBRepDS_ListIteratorOfListOfInterference(const TopOpeBRepDS_ListOfInterference& L);
   
-  Standard_EXPORT     void Initialize(const TopOpeBRepDS_ListOfInterference& L) ;
+  Standard_EXPORT   void Initialize (const TopOpeBRepDS_ListOfInterference& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     Handle_TopOpeBRepDS_Interference& Value() const;
+  Standard_EXPORT   Handle(TopOpeBRepDS_Interference)& Value()  const;
 
 
 friend class TopOpeBRepDS_ListOfInterference;
-
 
 
 protected:
@@ -69,13 +55,13 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
 
-#define Item Handle_TopOpeBRepDS_Interference
+#define Item Handle(TopOpeBRepDS_Interference)
 #define Item_hxx <TopOpeBRepDS_Interference.hxx>
 #define TCollection_ListNode TopOpeBRepDS_ListNodeOfListOfInterference
 #define TCollection_ListNode_hxx <TopOpeBRepDS_ListNodeOfListOfInterference.hxx>
@@ -100,7 +86,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_ListIteratorOfListOfInterference_HeaderFile

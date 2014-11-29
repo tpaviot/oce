@@ -12,7 +12,6 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#include <Handle_Standard_Persistent.hxx>
 #include <Standard_Persistent.hxx>
 
 #include <Standard_Failure.hxx>
@@ -24,10 +23,10 @@
 #include <Standard_Type.hxx>
 
 // The Initialization of the Standard_Persistent variables
-const Handle_Standard_Type& Standard_Persistent_Type_() 
+const Handle(Standard_Type)& Standard_Persistent_Type_() 
 {
-  static const Handle_Standard_Type _Ancestors[]={NULL};
-  static Handle_Standard_Type _aType 
+  static const Handle(Standard_Type) _Ancestors[]={NULL};
+  static Handle(Standard_Type) _aType 
     = new Standard_Type("Standard_Persistent",
 			sizeof(Standard_Persistent),
 			0,
@@ -43,39 +42,18 @@ const Handle_Standard_Type& Standard_Persistent_Type_()
 
 // The Method This 
 //
-Handle_Standard_Persistent Standard_Persistent::This() const
+Handle(Standard_Persistent) Standard_Persistent::This() const
 {
-  Handle_Standard_Persistent aHand(this);
+  Handle(Standard_Persistent) aHand(this);
 
   return aHand;
 }
-
-// The Method ShallowCopy 
-//
-Handle_Standard_Persistent Standard_Persistent::ShallowCopy() const
-{
-  //the method must be redefined in the every subclass that is expected to use it
-  Standard_NotImplemented::Raise ("The ShallowCopy() method must be redefined in the subclass");
-  return This(); // for compilation only
-}
-
-// Empty Constructor
-//
-// Standard_Persistent::Standard_Persistent()
-// {
-// }
 
 // Empty Destructor
 //
 Standard_Persistent::~Standard_Persistent()
 {
 }
-
-// Constructor from a Standard_Persistent
-//
-// Standard_Persistent::Standard_Persistent(const Standard_Persistent& )
-// { 
-// }
 
 // Operator= with a Standard_Persistent
 //
@@ -107,13 +85,6 @@ Standard_Boolean Standard_Persistent::IsKind (const Handle(Standard_Type)& aType
 //  return  (aType == STANDARD_TYPE(Standard_Persistent));
 }
 
-void Standard_Persistent::ShallowDump(Standard_OStream& AStream) const
-{
-  Handle(Standard_Persistent) me = this;
-  ::ShallowDump(me, AStream);
-}
-
-
 void Standard_Persistent::Delete() const
  { 
    delete((Standard_Persistent *)this); 
@@ -137,7 +108,7 @@ Handle(Standard_Persistent)::~Handle(Standard_Persistent)()
  EndScope();
 }
 
-void Handle_Standard_Persistent::RaiseNullObject(const Standard_CString S) const
+void Handle(Standard_Persistent)::RaiseNullObject(const Standard_CString S) const
 { 
   Standard_NullObject::Raise(S);
 }

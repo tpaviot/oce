@@ -6,28 +6,14 @@
 #ifndef _TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF_HeaderFile
 #define _TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF_HeaderFile
 #include <Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopOpeBRepTool_ListOfC2DF_HeaderFile
 #include <TopOpeBRepTool_ListOfC2DF.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopoDS_Shape;
 class TopOpeBRepTool_ListOfC2DF;
 class TopTools_ShapeMapHasher;
@@ -36,16 +22,17 @@ class TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeListOfC2DF;
 
 
 
-class TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF : public TCollection_MapNode {
+class TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF : public TCollection_MapNode
+{
 
 public:
 
   
-      TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF(const TopoDS_Shape& K,const TopOpeBRepTool_ListOfC2DF& I,const TCollection_MapNodePtr& n);
+    TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF(const TopoDS_Shape& K, const TopOpeBRepTool_ListOfC2DF& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        TopOpeBRepTool_ListOfC2DF& Value() const;
+      TopOpeBRepTool_ListOfC2DF& Value()  const;
 
 
 
@@ -60,8 +47,8 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-TopOpeBRepTool_ListOfC2DF myValue;
+  TopoDS_Shape myKey;
+  TopOpeBRepTool_ListOfC2DF myValue;
 
 
 };
@@ -99,7 +86,6 @@ TopOpeBRepTool_ListOfC2DF myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF_HeaderFile

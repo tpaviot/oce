@@ -5,16 +5,10 @@
 
 #include <TColStd_SequenceNodeOfSequenceOfHExtendedString.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TCollection_HExtendedString_HeaderFile
 #include <TCollection_HExtendedString.hxx>
-#endif
-#ifndef _TColStd_SequenceOfHExtendedString_HeaderFile
 #include <TColStd_SequenceOfHExtendedString.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(TColStd_SequenceNodeOfSequenceOfHExtendedString,Standard_Tran
 IMPLEMENT_STANDARD_RTTI(TColStd_SequenceNodeOfSequenceOfHExtendedString)
 
 
-#define SeqItem Handle_TCollection_HExtendedString
+#define SeqItem Handle(TCollection_HExtendedString)
 #define SeqItem_hxx <TCollection_HExtendedString.hxx>
 #define TCollection_SequenceNode TColStd_SequenceNodeOfSequenceOfHExtendedString
 #define TCollection_SequenceNode_hxx <TColStd_SequenceNodeOfSequenceOfHExtendedString.hxx>

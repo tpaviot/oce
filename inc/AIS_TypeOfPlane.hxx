@@ -6,16 +6,15 @@
 #ifndef _AIS_TypeOfPlane_HeaderFile
 #define _AIS_TypeOfPlane_HeaderFile
 
-//! Declares the type of plane. <br>
-enum AIS_TypeOfPlane {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Declares the type of plane.
+enum AIS_TypeOfPlane
+{
 AIS_TOPL_Unknown,
 AIS_TOPL_XYPlane,
 AIS_TOPL_XZPlane,
 AIS_TOPL_YZPlane
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _AIS_TypeOfPlane_HeaderFile

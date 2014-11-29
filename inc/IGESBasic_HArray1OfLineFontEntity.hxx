@@ -6,28 +6,14 @@
 #ifndef _IGESBasic_HArray1OfLineFontEntity_HeaderFile
 #define _IGESBasic_HArray1OfLineFontEntity_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESBasic_HArray1OfLineFontEntity_HeaderFile
 #include <Handle_IGESBasic_HArray1OfLineFontEntity.hxx>
-#endif
 
-#ifndef _IGESBasic_Array1OfLineFontEntity_HeaderFile
 #include <IGESBasic_Array1OfLineFontEntity.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_IGESData_LineFontEntity_HeaderFile
 #include <Handle_IGESData_LineFontEntity.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class IGESBasic_Array1OfLineFontEntity;
 
 
 
-class IGESBasic_HArray1OfLineFontEntity : public MMgt_TShared {
+class IGESBasic_HArray1OfLineFontEntity : public MMgt_TShared
+{
 
 public:
 
   
-      IGESBasic_HArray1OfLineFontEntity(const Standard_Integer Low,const Standard_Integer Up);
+    IGESBasic_HArray1OfLineFontEntity(const Standard_Integer Low, const Standard_Integer Up);
   
-      IGESBasic_HArray1OfLineFontEntity(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESData_LineFontEntity)& V);
+    IGESBasic_HArray1OfLineFontEntity(const Standard_Integer Low, const Standard_Integer Up, const Handle(IGESData_LineFontEntity)& V);
   
-        void Init(const Handle(IGESData_LineFontEntity)& V) ;
+      void Init (const Handle(IGESData_LineFontEntity)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(IGESData_LineFontEntity)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(IGESData_LineFontEntity)& Value) ;
   
-       const Handle_IGESData_LineFontEntity& Value(const Standard_Integer Index) const;
+     const  Handle(IGESData_LineFontEntity)& Value (const Standard_Integer Index)  const;
   
-        Handle_IGESData_LineFontEntity& ChangeValue(const Standard_Integer Index) ;
+      Handle(IGESData_LineFontEntity)& ChangeValue (const Standard_Integer Index) ;
   
-       const IGESBasic_Array1OfLineFontEntity& Array1() const;
+     const  IGESBasic_Array1OfLineFontEntity& Array1()  const;
   
-        IGESBasic_Array1OfLineFontEntity& ChangeArray1() ;
+      IGESBasic_Array1OfLineFontEntity& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-IGESBasic_Array1OfLineFontEntity myArray;
+  IGESBasic_Array1OfLineFontEntity myArray;
 
 
 };
 
-#define ItemHArray1 Handle_IGESData_LineFontEntity
+#define ItemHArray1 Handle(IGESData_LineFontEntity)
 #define ItemHArray1_hxx <IGESData_LineFontEntity.hxx>
 #define TheArray1 IGESBasic_Array1OfLineFontEntity
 #define TheArray1_hxx <IGESBasic_Array1OfLineFontEntity.hxx>
@@ -103,7 +90,6 @@ IGESBasic_Array1OfLineFontEntity myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESBasic_HArray1OfLineFontEntity_HeaderFile

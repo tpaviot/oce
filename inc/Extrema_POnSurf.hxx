@@ -6,41 +6,35 @@
 #ifndef _Extrema_POnSurf_HeaderFile
 #define _Extrema_POnSurf_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
 class gp_Pnt;
 
 
-//! Definition of a point on surface. <br>
-class Extrema_POnSurf  {
+//! Definition of a point on surface.
+class Extrema_POnSurf 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creation of an indefinite point on surface. <br>
-      Extrema_POnSurf();
-  //! Creation of a point on surface with parameter <br>
-//!          values on the surface and a Pnt from gp. <br>
-      Extrema_POnSurf(const Standard_Real U,const Standard_Real V,const gp_Pnt& P);
-  //! Returns the 3d point. <br>
-       const gp_Pnt& Value() const;
-  //! Returns the parameter values on the surface. <br>
-        void Parameter(Standard_Real& U,Standard_Real& V) const;
-
+  
+  //! Creation of an indefinite point on surface.
+    Extrema_POnSurf();
+  
+  //! Creation of a point on surface with parameter
+  //! values on the surface and a Pnt from gp.
+    Extrema_POnSurf(const Standard_Real U, const Standard_Real V, const gp_Pnt& P);
+  
+  //! Returns the 3d point.
+     const  gp_Pnt& Value()  const;
+  
+  //! Returns the parameter values on the surface.
+      void Parameter (Standard_Real& U, Standard_Real& V)  const;
 
 
 
@@ -55,9 +49,9 @@ private:
 
 
 
-Standard_Real myU;
-Standard_Real myV;
-gp_Pnt myP;
+  Standard_Real myU;
+  Standard_Real myV;
+  gp_Pnt myP;
 
 
 };
@@ -67,7 +61,6 @@ gp_Pnt myP;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Extrema_POnSurf_HeaderFile

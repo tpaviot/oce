@@ -6,22 +6,15 @@
 #ifndef _Handle_IGESDraw_ReadWriteModule_HeaderFile
 #define _Handle_IGESDraw_ReadWriteModule_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IGESData_ReadWriteModule_HeaderFile
 #include <Handle_IGESData_ReadWriteModule.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IGESData_ReadWriteModule);
 class IGESDraw_ReadWriteModule;
 
-DEFINE_STANDARD_HANDLE(IGESDraw_ReadWriteModule,IGESData_ReadWriteModule)
+DEFINE_STANDARD_HANDLE(IGESDraw_ReadWriteModule, IGESData_ReadWriteModule)
 
-#endif
+#endif // _Handle_IGESDraw_ReadWriteModule_HeaderFile

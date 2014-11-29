@@ -6,47 +6,36 @@
 #ifndef _VrmlConverter_IsoAspect_HeaderFile
 #define _VrmlConverter_IsoAspect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_VrmlConverter_IsoAspect_HeaderFile
 #include <Handle_VrmlConverter_IsoAspect.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _VrmlConverter_LineAspect_HeaderFile
 #include <VrmlConverter_LineAspect.hxx>
-#endif
-#ifndef _Handle_Vrml_Material_HeaderFile
 #include <Handle_Vrml_Material.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Vrml_Material;
 
 
-//! qualifies the aspect properties for <br>
-//!          the VRML conversation of iso curves . <br>
-class VrmlConverter_IsoAspect : public VrmlConverter_LineAspect {
+//! qualifies the aspect properties for
+//! the VRML conversation of iso curves .
+class VrmlConverter_IsoAspect : public VrmlConverter_LineAspect
+{
 
 public:
 
-  //! create a default IsoAspect. <br>
-//!  Default value: myNumber  - 10. <br>
-  Standard_EXPORT   VrmlConverter_IsoAspect();
   
-  Standard_EXPORT   VrmlConverter_IsoAspect(const Handle(Vrml_Material)& aMaterial,const Standard_Boolean OnOff,const Standard_Integer aNumber);
+  //! create a default IsoAspect.
+  //! Default value: myNumber  - 10.
+  Standard_EXPORT VrmlConverter_IsoAspect();
   
-  Standard_EXPORT     void SetNumber(const Standard_Integer aNumber) ;
-  //! returns the number of U or V isoparametric curves drawn for a <br>
-//!          single face. <br>
-  Standard_EXPORT     Standard_Integer Number() const;
+  Standard_EXPORT VrmlConverter_IsoAspect(const Handle(Vrml_Material)& aMaterial, const Standard_Boolean OnOff, const Standard_Integer aNumber);
+  
+  Standard_EXPORT   void SetNumber (const Standard_Integer aNumber) ;
+  
+  //! returns the number of U or V isoparametric curves drawn for a
+  //! single face.
+  Standard_EXPORT   Standard_Integer Number()  const;
 
 
 
@@ -61,7 +50,7 @@ protected:
 private: 
 
 
-Standard_Integer myNumber;
+  Standard_Integer myNumber;
 
 
 };
@@ -70,7 +59,6 @@ Standard_Integer myNumber;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _VrmlConverter_IsoAspect_HeaderFile

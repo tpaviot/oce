@@ -6,22 +6,15 @@
 #ifndef _Handle_IGESControl_AlgoContainer_HeaderFile
 #define _Handle_IGESControl_AlgoContainer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IGESToBRep_AlgoContainer_HeaderFile
 #include <Handle_IGESToBRep_AlgoContainer.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IGESToBRep_AlgoContainer);
 class IGESControl_AlgoContainer;
 
-DEFINE_STANDARD_HANDLE(IGESControl_AlgoContainer,IGESToBRep_AlgoContainer)
+DEFINE_STANDARD_HANDLE(IGESControl_AlgoContainer, IGESToBRep_AlgoContainer)
 
-#endif
+#endif // _Handle_IGESControl_AlgoContainer_HeaderFile

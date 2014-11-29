@@ -6,67 +6,56 @@
 #ifndef _PBRep_CurveRepresentation_HeaderFile
 #define _PBRep_CurveRepresentation_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PBRep_CurveRepresentation_HeaderFile
 #include <Handle_PBRep_CurveRepresentation.hxx>
-#endif
 
-#ifndef _PTopLoc_Location_HeaderFile
 #include <PTopLoc_Location.hxx>
-#endif
-#ifndef _Handle_PBRep_CurveRepresentation_HeaderFile
 #include <Handle_PBRep_CurveRepresentation.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
 class PTopLoc_Location;
 
 
-class PBRep_CurveRepresentation : public Standard_Persistent {
+class PBRep_CurveRepresentation : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT     PTopLoc_Location Location() const;
+  Standard_EXPORT   PTopLoc_Location Location()  const;
   
-  Standard_EXPORT     Handle_PBRep_CurveRepresentation Next() const;
+  Standard_EXPORT   Handle(PBRep_CurveRepresentation) Next()  const;
   
-  Standard_EXPORT     void Next(const Handle(PBRep_CurveRepresentation)& N) ;
-  //! A 3D curve representation. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsCurve3D() const;
-  //! A curve in the parametric space of a surface. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsCurveOnSurface() const;
-  //! A continuity between two surfaces. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsRegularity() const;
-  //! A curve with two parametric   curves  on the  same <br>
-//!          surface. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsCurveOnClosedSurface() const;
+  Standard_EXPORT   void Next (const Handle(PBRep_CurveRepresentation)& N) ;
   
-  Standard_EXPORT   virtual  Standard_Boolean IsGCurve() const;
+  //! A 3D curve representation.
+  Standard_EXPORT virtual   Standard_Boolean IsCurve3D()  const;
   
-  Standard_EXPORT   virtual  Standard_Boolean IsPolygon3D() const;
+  //! A curve in the parametric space of a surface.
+  Standard_EXPORT virtual   Standard_Boolean IsCurveOnSurface()  const;
   
-  Standard_EXPORT   virtual  Standard_Boolean IsPolygonOnTriangulation() const;
+  //! A continuity between two surfaces.
+  Standard_EXPORT virtual   Standard_Boolean IsRegularity()  const;
   
-  Standard_EXPORT   virtual  Standard_Boolean IsPolygonOnClosedTriangulation() const;
+  //! A curve with two parametric   curves  on the  same
+  //! surface.
+  Standard_EXPORT virtual   Standard_Boolean IsCurveOnClosedSurface()  const;
   
-  Standard_EXPORT   virtual  Standard_Boolean IsPolygonOnSurface() const;
+  Standard_EXPORT virtual   Standard_Boolean IsGCurve()  const;
   
-  Standard_EXPORT   virtual  Standard_Boolean IsPolygonOnClosedSurface() const;
+  Standard_EXPORT virtual   Standard_Boolean IsPolygon3D()  const;
+  
+  Standard_EXPORT virtual   Standard_Boolean IsPolygonOnTriangulation()  const;
+  
+  Standard_EXPORT virtual   Standard_Boolean IsPolygonOnClosedTriangulation()  const;
+  
+  Standard_EXPORT virtual   Standard_Boolean IsPolygonOnSurface()  const;
+  
+  Standard_EXPORT virtual   Standard_Boolean IsPolygonOnClosedSurface()  const;
 
-  PBRep_CurveRepresentation( )
+PBRep_CurveRepresentation( )
 {
   
 }
@@ -85,15 +74,15 @@ PBRep_CurveRepresentation(const Storage_stCONSTclCOM& a) : Standard_Persistent(a
 protected:
 
   
-  Standard_EXPORT   PBRep_CurveRepresentation(const PTopLoc_Location& L);
+  Standard_EXPORT PBRep_CurveRepresentation(const PTopLoc_Location& L);
 
 
 
 private: 
 
 
-PTopLoc_Location myLocation;
-Handle_PBRep_CurveRepresentation myNext;
+  PTopLoc_Location myLocation;
+  Handle(PBRep_CurveRepresentation) myNext;
 
 
 };
@@ -102,7 +91,6 @@ Handle_PBRep_CurveRepresentation myNext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PBRep_CurveRepresentation_HeaderFile

@@ -5,31 +5,14 @@
 
 #include <PPoly_HArray1OfTriangle.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_Persistent_HeaderFile
-#include <Standard_Persistent.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _PPoly_Triangle_HeaderFile
 #include <PPoly_Triangle.hxx>
-#endif
-#ifndef _PPoly_FieldOfHArray1OfTriangle_HeaderFile
 #include <PPoly_FieldOfHArray1OfTriangle.hxx>
-#endif
-#ifndef _PPoly_VArrayNodeOfFieldOfHArray1OfTriangle_HeaderFile
 #include <PPoly_VArrayNodeOfFieldOfHArray1OfTriangle.hxx>
-#endif
-#ifndef _PPoly_VArrayTNodeOfFieldOfHArray1OfTriangle_HeaderFile
 #include <PPoly_VArrayTNodeOfFieldOfHArray1OfTriangle.hxx>
-#endif
 
  
 

@@ -15,13 +15,14 @@
 -- commercial license or contractual agreement.
 
 class PolyInternalNode from HLRAlgo inherits TShared from MMgt
+	---Purpose: to Update OutLines.
 
 uses
     Address from Standard,
     Integer from Standard
     
 is
-    Create returns mutable PolyInternalNode from HLRAlgo; 
+    Create returns PolyInternalNode from HLRAlgo; 
     	---C++: inline
     
     Indices(me) returns Address from Standard

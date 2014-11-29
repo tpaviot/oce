@@ -15,20 +15,6 @@
 #ifndef STRUCTURE_PXX_INCLUDED
 #define STRUCTURE_PXX_INCLUDED
 
-#ifdef HAVE_CONFIG_H
-# include <oce-config.h>
-#endif
-
-#ifdef OCE_HAVE_LIMITS
-# include <limits>
-#elif defined (OCE_HAVE_LIMITS_H)
-# include <limits.h>
-#endif
-
-#ifdef WNT
-# include <limits>
-#endif
-
 // structure priority : range (do not change this range !)
 // call_togl_displaystructure, CALL_DEF_VIEW, MajView ...
 #define Structure_MAX_PRIORITY 10
@@ -41,10 +27,5 @@
 #define Structure_IDMIN 10001
 // /2 pour eviter les problemes d'overflow
 #define Structure_IDMAX INT_MAX/2
-
-#include <Graphic3d_Group.pxx>
-
-#define MyStructureManager ((Graphic3d_StructureManager*) MyPtrStructureManager)
-#define MyFirstStructureManager ((Graphic3d_StructureManager*) MyFirstPtrStructureManager)
 
 #endif

@@ -5,21 +5,13 @@
 
 #include <CDM_ListOfDocument.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _CDM_ListIteratorOfListOfDocument_HeaderFile
 #include <CDM_ListIteratorOfListOfDocument.hxx>
-#endif
-#ifndef _CDM_Document_HeaderFile
 #include <CDM_Document.hxx>
-#endif
-#ifndef _CDM_ListNodeOfListOfDocument_HeaderFile
 #include <CDM_ListNodeOfListOfDocument.hxx>
-#endif
  
 
-#define Item Handle_CDM_Document
+#define Item Handle(CDM_Document)
 #define Item_hxx <CDM_Document.hxx>
 #define TCollection_ListNode CDM_ListNodeOfListOfDocument
 #define TCollection_ListNode_hxx <CDM_ListNodeOfListOfDocument.hxx>

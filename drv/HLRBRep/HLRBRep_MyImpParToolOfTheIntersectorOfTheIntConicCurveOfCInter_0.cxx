@@ -5,12 +5,8 @@
 
 #include <HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter.hxx>
 
-#ifndef _IntCurve_IConicTool_HeaderFile
 #include <IntCurve_IConicTool.hxx>
-#endif
-#ifndef _HLRBRep_CurveTool_HeaderFile
 #include <HLRBRep_CurveTool.hxx>
-#endif
  
 
 #define ImpTool IntCurve_IConicTool

@@ -6,8 +6,11 @@
 #ifndef _StepElement_EnumeratedSurfaceElementPurpose_HeaderFile
 #define _StepElement_EnumeratedSurfaceElementPurpose_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepElement_EnumeratedSurfaceElementPurpose {
+
+enum StepElement_EnumeratedSurfaceElementPurpose
+{
 StepElement_MembraneDirect,
 StepElement_MembraneShear,
 StepElement_BendingDirect,
@@ -15,8 +18,4 @@ StepElement_BendingTorsion,
 StepElement_NormalToPlaneShear
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepElement_EnumeratedSurfaceElementPurpose_HeaderFile

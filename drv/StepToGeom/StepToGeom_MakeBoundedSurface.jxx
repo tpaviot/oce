@@ -1,9 +1,3 @@
-#ifndef _StepGeom_BoundedSurface_HeaderFile
 #include <StepGeom_BoundedSurface.hxx>
-#endif
-#ifndef _Geom_BoundedSurface_HeaderFile
 #include <Geom_BoundedSurface.hxx>
-#endif
-#ifndef _StepToGeom_MakeBoundedSurface_HeaderFile
 #include <StepToGeom_MakeBoundedSurface.hxx>
-#endif

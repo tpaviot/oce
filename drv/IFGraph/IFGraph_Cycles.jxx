@@ -1,9 +1,3 @@
-#ifndef _Interface_Graph_HeaderFile
 #include <Interface_Graph.hxx>
-#endif
-#ifndef _IFGraph_StrongComponants_HeaderFile
 #include <IFGraph_StrongComponants.hxx>
-#endif
-#ifndef _IFGraph_Cycles_HeaderFile
 #include <IFGraph_Cycles.hxx>
-#endif

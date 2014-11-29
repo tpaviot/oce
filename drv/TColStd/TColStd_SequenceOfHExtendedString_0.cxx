@@ -5,21 +5,13 @@
 
 #include <TColStd_SequenceOfHExtendedString.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TCollection_HExtendedString_HeaderFile
 #include <TCollection_HExtendedString.hxx>
-#endif
-#ifndef _TColStd_SequenceNodeOfSequenceOfHExtendedString_HeaderFile
 #include <TColStd_SequenceNodeOfSequenceOfHExtendedString.hxx>
-#endif
  
 
-#define SeqItem Handle_TCollection_HExtendedString
+#define SeqItem Handle(TCollection_HExtendedString)
 #define SeqItem_hxx <TCollection_HExtendedString.hxx>
 #define TCollection_SequenceNode TColStd_SequenceNodeOfSequenceOfHExtendedString
 #define TCollection_SequenceNode_hxx <TColStd_SequenceNodeOfSequenceOfHExtendedString.hxx>

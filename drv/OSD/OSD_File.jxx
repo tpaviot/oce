@@ -1,18 +1,6 @@
-#ifndef _Standard_ProgramError_HeaderFile
 #include <Standard_ProgramError.hxx>
-#endif
-#ifndef _OSD_Path_HeaderFile
 #include <OSD_Path.hxx>
-#endif
-#ifndef _OSD_Protection_HeaderFile
 #include <OSD_Protection.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _OSD_Printer_HeaderFile
 #include <OSD_Printer.hxx>
-#endif
-#ifndef _OSD_File_HeaderFile
 #include <OSD_File.hxx>
-#endif

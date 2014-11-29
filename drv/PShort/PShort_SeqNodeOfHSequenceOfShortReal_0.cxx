@@ -5,19 +5,11 @@
 
 #include <PShort_SeqNodeOfHSequenceOfShortReal.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _PShort_SeqNodeOfHSequenceOfShortReal_HeaderFile
 #include <PShort_SeqNodeOfHSequenceOfShortReal.hxx>
-#endif
-#ifndef _PShort_HSequenceOfShortReal_HeaderFile
 #include <PShort_HSequenceOfShortReal.hxx>
-#endif
-#ifndef _PShort_SeqExplorerOfHSequenceOfShortReal_HeaderFile
 #include <PShort_SeqExplorerOfHSequenceOfShortReal.hxx>
-#endif
 
  
 

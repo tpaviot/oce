@@ -1,3 +1,1 @@
-#ifndef _StepShape_GeometricallyBoundedSurfaceShapeRepresentation_HeaderFile
 #include <StepShape_GeometricallyBoundedSurfaceShapeRepresentation.hxx>
-#endif

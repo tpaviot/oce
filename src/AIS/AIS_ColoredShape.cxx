@@ -312,7 +312,19 @@ void AIS_ColoredShape::Compute (const Handle(PrsMgr_PresentationManager3d)& ,
     {
       const TopoDS_Shape&    aShapeKey  = aMapIter.Key();   // key shape with detailed color or a base shape
       const TopoDS_Compound& aShapeDraw = aMapIter.Value(); // compound of subshapes with <aShType> type
-      Handle(AIS_Drawer)     aDrawer    = !myShapeColors.Find (aShapeKey, aCustomDrawer) ? myDrawer : aCustomDrawer;
+      Handle(AIS_Drawer)     aDrawer;
+      if (myShapeColors.Find (aShapeKey, aCustomDrawer))
+      {
+        aDrawer = aCustomDrawer;
+        if (aCustomDrawer->IsHidden())
+        {
+          continue;
+        }
+      }
+      else
+      {
+        aDrawer = myDrawer;
+      }
 
       // Draw each kind of subshapes and personal-colored shapes in a separate group
       // since it's necessary to set transparency/material for all subshapes
@@ -369,6 +381,7 @@ Standard_Boolean AIS_ColoredShape::dispatchColors (const TopoDS_Shape&        th
   // iterate on sub-shapes
   BRep_Builder aBBuilder;
   TopoDS_Shape aShapeCopy = theSubshapeToParse.EmptyCopied();
+  aShapeCopy.Closed (theSubshapeToParse.Closed());
   Standard_Boolean isSubOverride = Standard_False;
   Standard_Integer nbDef = 0;
   for (TopoDS_Iterator it (theSubshapeToParse); it.More(); it.Next())

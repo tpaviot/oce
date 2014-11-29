@@ -6,75 +6,71 @@
 #ifndef _IGESAppli_LineWidening_HeaderFile
 #define _IGESAppli_LineWidening_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESAppli_LineWidening_HeaderFile
 #include <Handle_IGESAppli_LineWidening.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
 
 
-//! defines LineWidening, Type <406> Form <5> <br>
-//!          in package IGESAppli <br>
-//!          Defines the characteristics of entities when they are <br>
-//!          used to define locations of items. <br>
-class IGESAppli_LineWidening : public IGESData_IGESEntity {
+//! defines LineWidening, Type <406> Form <5>
+//! in package IGESAppli
+//! Defines the characteristics of entities when they are
+//! used to define locations of items.
+class IGESAppli_LineWidening : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESAppli_LineWidening();
-  //! This method is used to set the fields of the class <br>
-//!           LineWidening <br>
-//!       - nbPropVal   : Number of property values = 5 <br>
-//!       - aWidth      : Width of metalization <br>
-//!       - aCornering  : Cornering codes <br>
-//!                       0 = rounded <br>
-//!                       1 = squared <br>
-//!       - aExtnFlag   : Extension Flag <br>
-//!                       0 = No Extension <br>
-//!                       1 = One-half width extension <br>
-//!                       2 = Extn set by ExtnVal <br>
-//!       - aJustifFlag : Justification flag <br>
-//!                       0 = Center justified <br>
-//!                       1 = left justified <br>
-//!                       2 = right justified <br>
-//!       - aExtnVal    : Extension value if aExtnFlag = 2 <br>
-  Standard_EXPORT     void Init(const Standard_Integer nbPropVal,const Standard_Real aWidth,const Standard_Integer aCornering,const Standard_Integer aExtnFlag,const Standard_Integer aJustifFlag,const Standard_Real aExtnVal) ;
-  //! returns the number of property values <br>
-//! is always 5 <br>
-  Standard_EXPORT     Standard_Integer NbPropertyValues() const;
-  //! returns the width of metallization <br>
-  Standard_EXPORT     Standard_Real WidthOfMetalization() const;
-  //! returns the cornering code <br>
-//!           0 = Rounded  /   1 = Squared <br>
-  Standard_EXPORT     Standard_Integer CorneringCode() const;
-  //! returns the extension flag <br>
-//! 0 = No extension <br>
-//! 1 = One-half width extension <br>
-//! 2 = Extension set by theExtnVal <br>
-  Standard_EXPORT     Standard_Integer ExtensionFlag() const;
-  //! returns the justification flag <br>
-//! 0 = Centre justified <br>
-//! 1 = Left justified <br>
-//! 2 = Right justified <br>
-  Standard_EXPORT     Standard_Integer JustificationFlag() const;
-  //! returns the Extension Value <br>
-//! Present only if theExtnFlag = 2 <br>
-  Standard_EXPORT     Standard_Real ExtensionValue() const;
+  Standard_EXPORT IGESAppli_LineWidening();
+  
+  //! This method is used to set the fields of the class
+  //! LineWidening
+  //! - nbPropVal   : Number of property values = 5
+  //! - aWidth      : Width of metalization
+  //! - aCornering  : Cornering codes
+  //! 0 = rounded
+  //! 1 = squared
+  //! - aExtnFlag   : Extension Flag
+  //! 0 = No Extension
+  //! 1 = One-half width extension
+  //! 2 = Extn set by ExtnVal
+  //! - aJustifFlag : Justification flag
+  //! 0 = Center justified
+  //! 1 = left justified
+  //! 2 = right justified
+  //! - aExtnVal    : Extension value if aExtnFlag = 2
+  Standard_EXPORT   void Init (const Standard_Integer nbPropVal, const Standard_Real aWidth, const Standard_Integer aCornering, const Standard_Integer aExtnFlag, const Standard_Integer aJustifFlag, const Standard_Real aExtnVal) ;
+  
+  //! returns the number of property values
+  //! is always 5
+  Standard_EXPORT   Standard_Integer NbPropertyValues()  const;
+  
+  //! returns the width of metallization
+  Standard_EXPORT   Standard_Real WidthOfMetalization()  const;
+  
+  //! returns the cornering code
+  //! 0 = Rounded  /   1 = Squared
+  Standard_EXPORT   Standard_Integer CorneringCode()  const;
+  
+  //! returns the extension flag
+  //! 0 = No extension
+  //! 1 = One-half width extension
+  //! 2 = Extension set by theExtnVal
+  Standard_EXPORT   Standard_Integer ExtensionFlag()  const;
+  
+  //! returns the justification flag
+  //! 0 = Centre justified
+  //! 1 = Left justified
+  //! 2 = Right justified
+  Standard_EXPORT   Standard_Integer JustificationFlag()  const;
+  
+  //! returns the Extension Value
+  //! Present only if theExtnFlag = 2
+  Standard_EXPORT   Standard_Real ExtensionValue()  const;
 
 
 
@@ -89,12 +85,12 @@ protected:
 private: 
 
 
-Standard_Integer theNbPropertyValues;
-Standard_Real theWidth;
-Standard_Integer theCorneringCode;
-Standard_Integer theExtensionFlag;
-Standard_Integer theJustificationFlag;
-Standard_Real theExtensionValue;
+  Standard_Integer theNbPropertyValues;
+  Standard_Real theWidth;
+  Standard_Integer theCorneringCode;
+  Standard_Integer theExtensionFlag;
+  Standard_Integer theJustificationFlag;
+  Standard_Real theExtensionValue;
 
 
 };
@@ -103,7 +99,6 @@ Standard_Real theExtensionValue;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESAppli_LineWidening_HeaderFile

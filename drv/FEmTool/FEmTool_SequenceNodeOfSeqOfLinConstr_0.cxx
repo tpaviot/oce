@@ -5,16 +5,10 @@
 
 #include <FEmTool_SequenceNodeOfSeqOfLinConstr.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _FEmTool_ListOfVectors_HeaderFile
 #include <FEmTool_ListOfVectors.hxx>
-#endif
-#ifndef _FEmTool_SeqOfLinConstr_HeaderFile
 #include <FEmTool_SeqOfLinConstr.hxx>
-#endif
 
  
 

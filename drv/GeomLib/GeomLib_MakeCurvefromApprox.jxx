@@ -1,18 +1,6 @@
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _AdvApprox_ApproxAFunction_HeaderFile
 #include <AdvApprox_ApproxAFunction.hxx>
-#endif
-#ifndef _Geom2d_BSplineCurve_HeaderFile
 #include <Geom2d_BSplineCurve.hxx>
-#endif
-#ifndef _Geom_BSplineCurve_HeaderFile
 #include <Geom_BSplineCurve.hxx>
-#endif
-#ifndef _GeomLib_MakeCurvefromApprox_HeaderFile
 #include <GeomLib_MakeCurvefromApprox.hxx>
-#endif

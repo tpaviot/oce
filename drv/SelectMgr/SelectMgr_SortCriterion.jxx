@@ -1,3 +1,1 @@
-#ifndef _SelectMgr_SortCriterion_HeaderFile
 #include <SelectMgr_SortCriterion.hxx>
-#endif

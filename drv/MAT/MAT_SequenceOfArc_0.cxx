@@ -5,21 +5,13 @@
 
 #include <MAT_SequenceOfArc.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _MAT_Arc_HeaderFile
 #include <MAT_Arc.hxx>
-#endif
-#ifndef _MAT_SequenceNodeOfSequenceOfArc_HeaderFile
 #include <MAT_SequenceNodeOfSequenceOfArc.hxx>
-#endif
  
 
-#define SeqItem Handle_MAT_Arc
+#define SeqItem Handle(MAT_Arc)
 #define SeqItem_hxx <MAT_Arc.hxx>
 #define TCollection_SequenceNode MAT_SequenceNodeOfSequenceOfArc
 #define TCollection_SequenceNode_hxx <MAT_SequenceNodeOfSequenceOfArc.hxx>

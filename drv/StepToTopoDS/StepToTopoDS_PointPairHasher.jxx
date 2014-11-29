@@ -1,6 +1,2 @@
-#ifndef _StepToTopoDS_PointPair_HeaderFile
 #include <StepToTopoDS_PointPair.hxx>
-#endif
-#ifndef _StepToTopoDS_PointPairHasher_HeaderFile
 #include <StepToTopoDS_PointPairHasher.hxx>
-#endif

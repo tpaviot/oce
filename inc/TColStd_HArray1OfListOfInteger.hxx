@@ -6,25 +6,13 @@
 #ifndef _TColStd_HArray1OfListOfInteger_HeaderFile
 #define _TColStd_HArray1OfListOfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfListOfInteger_HeaderFile
 #include <Handle_TColStd_HArray1OfListOfInteger.hxx>
-#endif
 
-#ifndef _TColStd_Array1OfListOfInteger_HeaderFile
 #include <TColStd_Array1OfListOfInteger.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class TColStd_Array1OfListOfInteger;
 
 
 
-class TColStd_HArray1OfListOfInteger : public MMgt_TShared {
+class TColStd_HArray1OfListOfInteger : public MMgt_TShared
+{
 
 public:
 
   
-      TColStd_HArray1OfListOfInteger(const Standard_Integer Low,const Standard_Integer Up);
+    TColStd_HArray1OfListOfInteger(const Standard_Integer Low, const Standard_Integer Up);
   
-      TColStd_HArray1OfListOfInteger(const Standard_Integer Low,const Standard_Integer Up,const TColStd_ListOfInteger& V);
+    TColStd_HArray1OfListOfInteger(const Standard_Integer Low, const Standard_Integer Up, const TColStd_ListOfInteger& V);
   
-        void Init(const TColStd_ListOfInteger& V) ;
+      void Init (const TColStd_ListOfInteger& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const TColStd_ListOfInteger& Value) ;
+      void SetValue (const Standard_Integer Index, const TColStd_ListOfInteger& Value) ;
   
-       const TColStd_ListOfInteger& Value(const Standard_Integer Index) const;
+     const  TColStd_ListOfInteger& Value (const Standard_Integer Index)  const;
   
-        TColStd_ListOfInteger& ChangeValue(const Standard_Integer Index) ;
+      TColStd_ListOfInteger& ChangeValue (const Standard_Integer Index) ;
   
-       const TColStd_Array1OfListOfInteger& Array1() const;
+     const  TColStd_Array1OfListOfInteger& Array1()  const;
   
-        TColStd_Array1OfListOfInteger& ChangeArray1() ;
+      TColStd_Array1OfListOfInteger& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-TColStd_Array1OfListOfInteger myArray;
+  TColStd_Array1OfListOfInteger myArray;
 
 
 };
@@ -100,7 +89,6 @@ TColStd_Array1OfListOfInteger myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_HArray1OfListOfInteger_HeaderFile

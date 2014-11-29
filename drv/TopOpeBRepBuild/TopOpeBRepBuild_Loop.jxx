@@ -1,9 +1,3 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_BlockIterator_HeaderFile
 #include <TopOpeBRepBuild_BlockIterator.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_Loop_HeaderFile
 #include <TopOpeBRepBuild_Loop.hxx>
-#endif

@@ -6,46 +6,37 @@
 #ifndef _StepAP203_CcDesignDateAndTimeAssignment_HeaderFile
 #define _StepAP203_CcDesignDateAndTimeAssignment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepAP203_CcDesignDateAndTimeAssignment_HeaderFile
 #include <Handle_StepAP203_CcDesignDateAndTimeAssignment.hxx>
-#endif
 
-#ifndef _Handle_StepAP203_HArray1OfDateTimeItem_HeaderFile
 #include <Handle_StepAP203_HArray1OfDateTimeItem.hxx>
-#endif
-#ifndef _StepBasic_DateAndTimeAssignment_HeaderFile
 #include <StepBasic_DateAndTimeAssignment.hxx>
-#endif
-#ifndef _Handle_StepBasic_DateAndTime_HeaderFile
 #include <Handle_StepBasic_DateAndTime.hxx>
-#endif
-#ifndef _Handle_StepBasic_DateTimeRole_HeaderFile
 #include <Handle_StepBasic_DateTimeRole.hxx>
-#endif
 class StepAP203_HArray1OfDateTimeItem;
 class StepBasic_DateAndTime;
 class StepBasic_DateTimeRole;
 
 
-//! Representation of STEP entity CcDesignDateAndTimeAssignment <br>
-class StepAP203_CcDesignDateAndTimeAssignment : public StepBasic_DateAndTimeAssignment {
+//! Representation of STEP entity CcDesignDateAndTimeAssignment
+class StepAP203_CcDesignDateAndTimeAssignment : public StepBasic_DateAndTimeAssignment
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepAP203_CcDesignDateAndTimeAssignment();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(StepBasic_DateAndTime)& aDateAndTimeAssignment_AssignedDateAndTime,const Handle(StepBasic_DateTimeRole)& aDateAndTimeAssignment_Role,const Handle(StepAP203_HArray1OfDateTimeItem)& aItems) ;
-  //! Returns field Items <br>
-  Standard_EXPORT     Handle_StepAP203_HArray1OfDateTimeItem Items() const;
-  //! Set field Items <br>
-  Standard_EXPORT     void SetItems(const Handle(StepAP203_HArray1OfDateTimeItem)& Items) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepAP203_CcDesignDateAndTimeAssignment();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(StepBasic_DateAndTime)& aDateAndTimeAssignment_AssignedDateAndTime, const Handle(StepBasic_DateTimeRole)& aDateAndTimeAssignment_Role, const Handle(StepAP203_HArray1OfDateTimeItem)& aItems) ;
+  
+  //! Returns field Items
+  Standard_EXPORT   Handle(StepAP203_HArray1OfDateTimeItem) Items()  const;
+  
+  //! Set field Items
+  Standard_EXPORT   void SetItems (const Handle(StepAP203_HArray1OfDateTimeItem)& Items) ;
 
 
 
@@ -60,7 +51,7 @@ protected:
 private: 
 
 
-Handle_StepAP203_HArray1OfDateTimeItem theItems;
+  Handle(StepAP203_HArray1OfDateTimeItem) theItems;
 
 
 };
@@ -69,7 +60,6 @@ Handle_StepAP203_HArray1OfDateTimeItem theItems;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP203_CcDesignDateAndTimeAssignment_HeaderFile

@@ -6,57 +6,45 @@
 #ifndef _StdPrs_HLRPolyShape_HeaderFile
 #define _StdPrs_HLRPolyShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Prs3d_Root_HeaderFile
 #include <Prs3d_Root.hxx>
-#endif
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Handle_Prs3d_Drawer_HeaderFile
 #include <Handle_Prs3d_Drawer.hxx>
-#endif
-#ifndef _Handle_Prs3d_Projector_HeaderFile
 #include <Handle_Prs3d_Projector.hxx>
-#endif
 class Prs3d_Presentation;
 class TopoDS_Shape;
 class Prs3d_Drawer;
 class Prs3d_Projector;
 
 
-//! Instantiates Prs3d_PolyHLRShape to define a <br>
-//! display of a shape where hidden and visible lines are <br>
-//! identified with respect to a given projection. <br>
-//! StdPrs_HLRPolyShape works with a polyhedral <br>
-//! simplification of the shape whereas <br>
-//! StdPrs_HLRShape takes the shape itself into <br>
-//! account. When you use StdPrs_HLRShape, you <br>
-//! obtain an exact result, whereas, when you use <br>
-//! StdPrs_HLRPolyShape, you reduce computation <br>
-//! time but obtain polygonal segments. <br>
-class StdPrs_HLRPolyShape  : public Prs3d_Root {
+//! Instantiates Prs3d_PolyHLRShape to define a
+//! display of a shape where hidden and visible lines are
+//! identified with respect to a given projection.
+//! StdPrs_HLRPolyShape works with a polyhedral
+//! simplification of the shape whereas
+//! StdPrs_HLRShape takes the shape itself into
+//! account. When you use StdPrs_HLRShape, you
+//! obtain an exact result, whereas, when you use
+//! StdPrs_HLRPolyShape, you reduce computation
+//! time but obtain polygonal segments.
+//! The polygonal algorithm is used.
+class StdPrs_HLRPolyShape  : public Prs3d_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Defines the hidden line removal display of the <br>
-//! topology aShape in the projection defined by <br>
-//! aProjector. The shape and the projection are added <br>
-//! to the display aPresentation, and the attributes of the <br>
-//! elements present in the aPresentation are defined by <br>
-//! the attribute manager aDrawer. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const TopoDS_Shape& aShape,const Handle(Prs3d_Drawer)& aDrawer,const Handle(Prs3d_Projector)& aProjector) ;
-
+  
+  //! Defines the hidden line removal display of the
+  //! topology aShape in the projection defined by
+  //! aProjector. The shape and the projection are added
+  //! to the display aPresentation, and the attributes of the
+  //! elements present in the aPresentation are defined by
+  //! the attribute manager aDrawer.
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const TopoDS_Shape& aShape, const Handle(Prs3d_Drawer)& aDrawer, const Handle(Prs3d_Projector)& aProjector) ;
 
 
 
@@ -79,7 +67,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StdPrs_HLRPolyShape_HeaderFile

@@ -6,69 +6,30 @@
 #ifndef _AIS_PlaneTrihedron_HeaderFile
 #define _AIS_PlaneTrihedron_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_AIS_PlaneTrihedron_HeaderFile
 #include <Handle_AIS_PlaneTrihedron.hxx>
-#endif
 
-#ifndef _Handle_Geom_Plane_HeaderFile
 #include <Handle_Geom_Plane.hxx>
-#endif
-#ifndef _Handle_AIS_InteractiveObject_HeaderFile
 #include <Handle_AIS_InteractiveObject.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _AIS_InteractiveObject_HeaderFile
 #include <AIS_InteractiveObject.hxx>
-#endif
-#ifndef _Handle_AIS_Line_HeaderFile
 #include <Handle_AIS_Line.hxx>
-#endif
-#ifndef _Handle_AIS_Point_HeaderFile
 #include <Handle_AIS_Point.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager3d.hxx>
-#endif
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
+#include <PrsMgr_PresentationManager3d.hxx>
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Handle_Prs3d_Projector_HeaderFile
 #include <Handle_Prs3d_Projector.hxx>
-#endif
-#ifndef _Handle_Geom_Transformation_HeaderFile
 #include <Handle_Geom_Transformation.hxx>
-#endif
-#ifndef _Handle_SelectMgr_Selection_HeaderFile
 #include <Handle_SelectMgr_Selection.hxx>
-#endif
-#ifndef _AIS_KindOfInteractive_HeaderFile
 #include <AIS_KindOfInteractive.hxx>
-#endif
-#ifndef _Quantity_NameOfColor_HeaderFile
 #include <Quantity_NameOfColor.hxx>
-#endif
 class Geom_Plane;
 class AIS_InteractiveObject;
 class AIS_Line;
 class AIS_Point;
-class PrsMgr_PresentationManager3d;
 class Prs3d_Presentation;
 class Prs3d_Projector;
 class Geom_Transformation;
@@ -77,66 +38,79 @@ class Quantity_Color;
 class TCollection_AsciiString;
 
 
-//! To construct a selectable 2d axis system in a 3d <br>
-//! drawing. This can be placed anywhere in the 3d <br>
-//! system, and provides a coordinate system for <br>
-//! drawing curves and shapes in a plane. <br>
-//! There are 3 selection modes: <br>
-//! -   mode 0   selection of the whole plane "trihedron" <br>
-//! -   mode 1   selection of the origin of the plane "trihedron" <br>
-//! -   mode 2   selection of the axes. <br>
-//!  Warning <br>
-//! For the presentation of planes and trihedra, the <br>
-//! millimetre is default unit of length, and 100 the default <br>
-//! value for the representation of the axes. If you modify <br>
-//! these dimensions, you must temporarily recover the <br>
-//! Drawer object. From inside it, take the Aspects in <br>
-//! which   the values for length are stocked, for example, <br>
-//! PlaneAspect for planes and FirstAxisAspect for <br>
-//! trihedra. Change these values and recalculate the presentation. <br>
-class AIS_PlaneTrihedron : public AIS_InteractiveObject {
+//! To construct a selectable 2d axis system in a 3d
+//! drawing. This can be placed anywhere in the 3d
+//! system, and provides a coordinate system for
+//! drawing curves and shapes in a plane.
+//! There are 3 selection modes:
+//! -   mode 0   selection of the whole plane "trihedron"
+//! -   mode 1   selection of the origin of the plane "trihedron"
+//! -   mode 2   selection of the axes.
+//! Warning
+//! For the presentation of planes and trihedra, the
+//! millimetre is default unit of length, and 100 the default
+//! value for the representation of the axes. If you modify
+//! these dimensions, you must temporarily recover the
+//! Drawer object. From inside it, take the Aspects in
+//! which   the values for length are stocked, for example,
+//! PlaneAspect for planes and FirstAxisAspect for
+//! trihedra. Change these values and recalculate the presentation.
+class AIS_PlaneTrihedron : public AIS_InteractiveObject
+{
 
 public:
 
-  //! Initializes the plane aPlane. The plane trihedron is <br>
-//!  constructed from this and an axis. <br>
-  Standard_EXPORT   AIS_PlaneTrihedron(const Handle(Geom_Plane)& aPlane);
-  //! Returns the component specified in SetComponent. <br>
-  Standard_EXPORT     Handle_Geom_Plane Component() ;
-  //! Creates an instance of the component object aPlane. <br>
-  Standard_EXPORT     void SetComponent(const Handle(Geom_Plane)& aPlane) ;
-  //! Returns the "XAxis". <br>
-  Standard_EXPORT     Handle_AIS_Line XAxis() const;
-  //! Returns the "YAxis". <br>
-  Standard_EXPORT     Handle_AIS_Line YAxis() const;
-  //! Returns the point of origin of the plane trihedron. <br>
-  Standard_EXPORT     Handle_AIS_Point Position() const;
-  //! Sets the length of the X and Y axes. <br>
-  Standard_EXPORT     void SetLength(const Standard_Real theLength) ;
-  //! Returns the length of X and Y axes. <br>
-  Standard_EXPORT     Standard_Real GetLength() const;
-  //! Returns true if the display mode selected, aMode, is valid. <br>
-  Standard_EXPORT     Standard_Boolean AcceptDisplayMode(const Standard_Integer aMode) const;
-  //! computes the presentation according to a point of view <br>
-//!          given by <aProjector>. <br>
-//!          To be Used when the associated degenerated Presentations <br>
-//!          have been transformed by <aTrsf> which is not a Pure <br>
-//!          Translation. The HLR Prs can't be deducted automatically <br>
-//!          WARNING :<aTrsf> must be applied <br>
-//!           to the object to display before computation  !!! <br>
-  Standard_EXPORT   virtual  void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Geom_Transformation)& aTrsf,const Handle(Prs3d_Presentation)& aPresentation) ;
   
-      virtual  Standard_Integer Signature() const;
-  //! Returns datum as the type of Interactive Object. <br>
-      virtual  AIS_KindOfInteractive Type() const;
-  //! Allows you to provide settings for the color aColor. <br>
-  Standard_EXPORT     void SetColor(const Quantity_NameOfColor aColor) ;
+  //! Initializes the plane aPlane. The plane trihedron is
+  //! constructed from this and an axis.
+  Standard_EXPORT AIS_PlaneTrihedron(const Handle(Geom_Plane)& aPlane);
   
-  Standard_EXPORT     void SetColor(const Quantity_Color& aColor) ;
+  //! Returns the component specified in SetComponent.
+  Standard_EXPORT   Handle(Geom_Plane) Component() ;
   
-        void SetXLabel(const TCollection_AsciiString& aLabel) ;
+  //! Creates an instance of the component object aPlane.
+  Standard_EXPORT   void SetComponent (const Handle(Geom_Plane)& aPlane) ;
   
-        void SetYLabel(const TCollection_AsciiString& aLabel) ;
+  //! Returns the "XAxis".
+  Standard_EXPORT   Handle(AIS_Line) XAxis()  const;
+  
+  //! Returns the "YAxis".
+  Standard_EXPORT   Handle(AIS_Line) YAxis()  const;
+  
+  //! Returns the point of origin of the plane trihedron.
+  Standard_EXPORT   Handle(AIS_Point) Position()  const;
+  
+  //! Sets the length of the X and Y axes.
+  Standard_EXPORT   void SetLength (const Standard_Real theLength) ;
+  
+  //! Returns the length of X and Y axes.
+  Standard_EXPORT   Standard_Real GetLength()  const;
+  
+  //! Returns true if the display mode selected, aMode, is valid.
+  Standard_EXPORT   Standard_Boolean AcceptDisplayMode (const Standard_Integer aMode)  const;
+  
+  //! computes the presentation according to a point of view
+  //! given by <aProjector>.
+  //! To be Used when the associated degenerated Presentations
+  //! have been transformed by <aTrsf> which is not a Pure
+  //! Translation. The HLR Prs can't be deducted automatically
+  //! WARNING :<aTrsf> must be applied
+  //! to the object to display before computation  !!!
+  Standard_EXPORT virtual   void Compute (const Handle(Prs3d_Projector)& aProjector, const Handle(Geom_Transformation)& aTrsf, const Handle(Prs3d_Presentation)& aPresentation) ;
+  
+    virtual   Standard_Integer Signature()  const;
+  
+  //! Returns datum as the type of Interactive Object.
+    virtual   AIS_KindOfInteractive Type()  const;
+  
+  //! Allows you to provide settings for the color aColor.
+  Standard_EXPORT   void SetColor (const Quantity_NameOfColor aColor) ;
+  
+  Standard_EXPORT   void SetColor (const Quantity_Color& aColor) ;
+  
+      void SetXLabel (const TCollection_AsciiString& aLabel) ;
+  
+      void SetYLabel (const TCollection_AsciiString& aLabel) ;
 
 
 
@@ -146,21 +120,21 @@ public:
 protected:
 
   
-  Standard_EXPORT   virtual  void Compute(const Handle(PrsMgr_PresentationManager3d)& aPresentationManager,const Handle(Prs3d_Presentation)& aPresentation,const Standard_Integer aMode = 0) ;
+  Standard_EXPORT virtual   void Compute (const Handle(PrsMgr_PresentationManager3d)& aPresentationManager, const Handle(Prs3d_Presentation)& aPresentation, const Standard_Integer aMode = 0) ;
 
 
 
 private: 
 
   
-  Standard_EXPORT     void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Prs3d_Presentation)& aPresentation) ;
+  Standard_EXPORT   void Compute (const Handle(Prs3d_Projector)& aProjector, const Handle(Prs3d_Presentation)& aPresentation) ;
   
-  Standard_EXPORT     void ComputeSelection(const Handle(SelectMgr_Selection)& aSelection,const Standard_Integer aMode) ;
+  Standard_EXPORT   void ComputeSelection (const Handle(SelectMgr_Selection)& aSelection, const Standard_Integer aMode) ;
 
-Handle_Geom_Plane myPlane;
-Handle_AIS_InteractiveObject myShapes[3];
-TCollection_AsciiString myXLabel;
-TCollection_AsciiString myYLabel;
+  Handle(Geom_Plane) myPlane;
+  Handle(AIS_InteractiveObject) myShapes[3];
+  TCollection_AsciiString myXLabel;
+  TCollection_AsciiString myYLabel;
 
 
 };
@@ -170,7 +144,6 @@ TCollection_AsciiString myYLabel;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_PlaneTrihedron_HeaderFile

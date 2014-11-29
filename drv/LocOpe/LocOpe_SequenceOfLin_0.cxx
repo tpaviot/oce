@@ -5,18 +5,10 @@
 
 #include <LocOpe_SequenceOfLin.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
-#endif
-#ifndef _LocOpe_SequenceNodeOfSequenceOfLin_HeaderFile
 #include <LocOpe_SequenceNodeOfSequenceOfLin.hxx>
-#endif
  
 
 #define SeqItem gp_Lin

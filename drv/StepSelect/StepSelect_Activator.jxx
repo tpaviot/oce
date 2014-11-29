@@ -1,6 +1,2 @@
-#ifndef _IFSelect_SessionPilot_HeaderFile
 #include <IFSelect_SessionPilot.hxx>
-#endif
-#ifndef _StepSelect_Activator_HeaderFile
 #include <StepSelect_Activator.hxx>
-#endif

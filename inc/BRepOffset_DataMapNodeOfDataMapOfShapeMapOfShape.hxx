@@ -6,28 +6,14 @@
 #ifndef _BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape_HeaderFile
 #define _BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape_HeaderFile
 #include <Handle_BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_MapOfShape_HeaderFile
 #include <TopTools_MapOfShape.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopoDS_Shape;
 class TopTools_MapOfShape;
 class TopTools_ShapeMapHasher;
@@ -36,16 +22,17 @@ class BRepOffset_DataMapIteratorOfDataMapOfShapeMapOfShape;
 
 
 
-class BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape : public TCollection_MapNode {
+class BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape : public TCollection_MapNode
+{
 
 public:
 
   
-      BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape(const TopoDS_Shape& K,const TopTools_MapOfShape& I,const TCollection_MapNodePtr& n);
+    BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape(const TopoDS_Shape& K, const TopTools_MapOfShape& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        TopTools_MapOfShape& Value() const;
+      TopTools_MapOfShape& Value()  const;
 
 
 
@@ -60,8 +47,8 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-TopTools_MapOfShape myValue;
+  TopoDS_Shape myKey;
+  TopTools_MapOfShape myValue;
 
 
 };
@@ -99,7 +86,6 @@ TopTools_MapOfShape myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepOffset_DataMapNodeOfDataMapOfShapeMapOfShape_HeaderFile

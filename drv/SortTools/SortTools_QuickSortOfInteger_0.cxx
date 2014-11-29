@@ -5,12 +5,8 @@
 
 #include <SortTools_QuickSortOfInteger.hxx>
 
-#ifndef _TColStd_Array1OfInteger_HeaderFile
 #include <TColStd_Array1OfInteger.hxx>
-#endif
-#ifndef _TCollection_CompareOfInteger_HeaderFile
 #include <TCollection_CompareOfInteger.hxx>
-#endif
  
 
 #define Item Standard_Integer

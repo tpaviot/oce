@@ -7,7 +7,6 @@
 #define _TNaming_PtrAttribute_HeaderFile
 
 class TNaming_NamedShape;
-
 typedef TNaming_NamedShape* TNaming_PtrAttribute;
 
-#endif
+#endif // _TNaming_PtrAttribute_HeaderFile

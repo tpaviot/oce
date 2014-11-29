@@ -6,15 +6,9 @@
 #ifndef _TopOpeBRepBuild_Tools2d_HeaderFile
 #define _TopOpeBRepBuild_Tools2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
 class TopoDS_Wire;
 class TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo;
@@ -22,18 +16,18 @@ class TopTools_ListOfShape;
 
 
 
-class TopOpeBRepBuild_Tools2d  {
+class TopOpeBRepBuild_Tools2d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  void MakeMapOfShapeVertexInfo(const TopoDS_Wire& aWire,TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo& aMap) ;
+  Standard_EXPORT static   void MakeMapOfShapeVertexInfo (const TopoDS_Wire& aWire, TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo& aMap) ;
   
-  Standard_EXPORT   static  void DumpMapOfShapeVertexInfo(const TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo& aMap) ;
+  Standard_EXPORT static   void DumpMapOfShapeVertexInfo (const TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo& aMap) ;
   
-  Standard_EXPORT   static  void Path(const TopoDS_Wire& aWire,TopTools_ListOfShape& aResList) ;
-
+  Standard_EXPORT static   void Path (const TopoDS_Wire& aWire, TopTools_ListOfShape& aResList) ;
 
 
 
@@ -56,7 +50,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepBuild_Tools2d_HeaderFile

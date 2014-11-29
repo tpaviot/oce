@@ -6,52 +6,45 @@
 #ifndef _ShapeExtend_BasicMsgRegistrator_HeaderFile
 #define _ShapeExtend_BasicMsgRegistrator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeExtend_BasicMsgRegistrator_HeaderFile
 #include <Handle_ShapeExtend_BasicMsgRegistrator.hxx>
-#endif
 
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Message_Gravity_HeaderFile
 #include <Message_Gravity.hxx>
-#endif
 class Standard_Transient;
 class Message_Msg;
 class TopoDS_Shape;
 
 
-//! Abstract class that can be used for attaching messages <br>
-//!          to the objects (e.g. shapes). <br>
-//!          It is used by ShapeHealing algorithms to attach a message <br>
-//!          describing encountered case (e.g. removing small edge from <br>
-//!          a wire). <br>
-//! <br>
-//!          The methods of this class are empty and redefined, for instance, <br>
-//!          in the classes for Data Exchange processors for attaching <br>
-//!          messages to interface file entities or CAS.CADE shapes. <br>
-class ShapeExtend_BasicMsgRegistrator : public MMgt_TShared {
+//! Abstract class that can be used for attaching messages
+//! to the objects (e.g. shapes).
+//! It is used by ShapeHealing algorithms to attach a message
+//! describing encountered case (e.g. removing small edge from
+//! a wire).
+//!
+//! The methods of this class are empty and redefined, for instance,
+//! in the classes for Data Exchange processors for attaching
+//! messages to interface file entities or CAS.CADE shapes.
+class ShapeExtend_BasicMsgRegistrator : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor. <br>
-  Standard_EXPORT   ShapeExtend_BasicMsgRegistrator();
-  //! Sends a message to be attached to the object. <br>
-//!          Object can be of any type interpreted by redefined MsgRegistrator. <br>
-  Standard_EXPORT   virtual  void Send(const Handle(Standard_Transient)& object,const Message_Msg& message,const Message_Gravity gravity) ;
-  //! Sends a message to be attached to the shape. <br>
-  Standard_EXPORT   virtual  void Send(const TopoDS_Shape& shape,const Message_Msg& message,const Message_Gravity gravity) ;
-  //! Calls Send method with Null Transient. <br>
-  Standard_EXPORT   virtual  void Send(const Message_Msg& message,const Message_Gravity gravity) ;
+  
+  //! Empty constructor.
+  Standard_EXPORT ShapeExtend_BasicMsgRegistrator();
+  
+  //! Sends a message to be attached to the object.
+  //! Object can be of any type interpreted by redefined MsgRegistrator.
+  Standard_EXPORT virtual   void Send (const Handle(Standard_Transient)& object, const Message_Msg& message, const Message_Gravity gravity) ;
+  
+  //! Sends a message to be attached to the shape.
+  Standard_EXPORT virtual   void Send (const TopoDS_Shape& shape, const Message_Msg& message, const Message_Gravity gravity) ;
+  
+  //! Calls Send method with Null Transient.
+  Standard_EXPORT virtual   void Send (const Message_Msg& message, const Message_Gravity gravity) ;
 
 
 
@@ -74,7 +67,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeExtend_BasicMsgRegistrator_HeaderFile

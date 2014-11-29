@@ -5,24 +5,12 @@
 
 #include <BRepApprox_TheMultiLineOfApprox.hxx>
 
-#ifndef _BRepApprox_ApproxLine_HeaderFile
 #include <BRepApprox_ApproxLine.hxx>
-#endif
-#ifndef _ApproxInt_SvSurfaces_HeaderFile
 #include <ApproxInt_SvSurfaces.hxx>
-#endif
-#ifndef _TColgp_Array1OfPnt_HeaderFile
 #include <TColgp_Array1OfPnt.hxx>
-#endif
-#ifndef _TColgp_Array1OfPnt2d_HeaderFile
 #include <TColgp_Array1OfPnt2d.hxx>
-#endif
-#ifndef _TColgp_Array1OfVec_HeaderFile
 #include <TColgp_Array1OfVec.hxx>
-#endif
-#ifndef _TColgp_Array1OfVec2d_HeaderFile
 #include <TColgp_Array1OfVec2d.hxx>
-#endif
  
 
 #define Handle_TheLine Handle_BRepApprox_ApproxLine

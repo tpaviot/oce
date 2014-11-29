@@ -42,7 +42,7 @@ set chwi_Second 0; set chfa_Second 0; set chsh_Second 0; set chso_Second 0
 set ref_Compare 0
 set todo_msg ""
 set todo_mask "puts \"TODO CR23096 ALL: "
-set Mandriva_todo_mask "puts \"TODO CR23096 Mandriva2010:"
+set Mandriva_todo_mask "puts \"TODO CR23096 ALL:"
 set end_line "\" \n"
 ##################################################################
 
@@ -697,11 +697,15 @@ puts ""
 clear
 smallview
 if { $mist < 1 } {
-    if { [info exists res_2] && [isdraw res_2] } {
-	donly res_2
-    }
+  if { [info exists res_2] && [isdraw res_2] } {
+    donly res_2
+    isos res_2 0
+	fit
+	isos res_2 2
+  }
+} else {
+    fit
 }
-fit
 xwd $imagedir/${test_image}.png
 if { $mist < 1 } {
    if { [catch { Close D_Second } catch_result] } {

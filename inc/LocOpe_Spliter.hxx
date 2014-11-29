@@ -6,69 +6,61 @@
 #ifndef _LocOpe_Spliter_HeaderFile
 #define _LocOpe_Spliter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _Handle_LocOpe_ProjectedWires_HeaderFile
-#include <Handle_LocOpe_ProjectedWires.hxx>
-#endif
+#include <Handle_LocOpe_WiresOnShape.hxx>
 class StdFail_NotDone;
 class Standard_NullObject;
 class Standard_NoSuchObject;
 class TopoDS_Shape;
-class LocOpe_ProjectedWires;
+class LocOpe_WiresOnShape;
 class TopTools_ListOfShape;
 
 
 
-class LocOpe_Spliter  {
+class LocOpe_Spliter 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor. <br>
-      LocOpe_Spliter();
-  //! Creates the algorithm on the shape <S>. <br>
-      LocOpe_Spliter(const TopoDS_Shape& S);
-  //! Initializes the algorithm on the shape <S>. <br>
-        void Init(const TopoDS_Shape& S) ;
   
-  Standard_EXPORT     void Perform(const Handle(LocOpe_ProjectedWires)& PW) ;
+  //! Empty constructor.
+    LocOpe_Spliter();
   
-        Standard_Boolean IsDone() const;
-  //! Returns the new shape <br>
-       const TopoDS_Shape& ResultingShape() const;
-  //! Returns the initial shape <br>
-       const TopoDS_Shape& Shape() const;
-  //! Returns  the faces   which  are the  left of   the <br>
-//!          projected wires and which are <br>
-  Standard_EXPORT    const TopTools_ListOfShape& DirectLeft() const;
-  //! Returns the faces of the "left" part on the shape. <br>
-//!          (It  is build   from  DirectLeft,  with  the faces <br>
-//!          connected to this set, and so on...). <br>
-  Standard_EXPORT    const TopTools_ListOfShape& Left() const;
-  //! Returns the list of descendant shapes of <S>. <br>
-  Standard_EXPORT    const TopTools_ListOfShape& DescendantShapes(const TopoDS_Shape& S) ;
-
+  //! Creates the algorithm on the shape <S>.
+    LocOpe_Spliter(const TopoDS_Shape& S);
+  
+  //! Initializes the algorithm on the shape <S>.
+      void Init (const TopoDS_Shape& S) ;
+  
+  Standard_EXPORT   void Perform (const Handle(LocOpe_WiresOnShape)& PW) ;
+  
+      Standard_Boolean IsDone()  const;
+  
+  //! Returns the new shape
+     const  TopoDS_Shape& ResultingShape()  const;
+  
+  //! Returns the initial shape
+     const  TopoDS_Shape& Shape()  const;
+  
+  //! Returns  the faces   which  are the  left of   the
+  //! projected wires and which are
+  Standard_EXPORT  const  TopTools_ListOfShape& DirectLeft()  const;
+  
+  //! Returns the faces of the "left" part on the shape.
+  //! (It  is build   from  DirectLeft,  with  the faces
+  //! connected to this set, and so on...).
+  Standard_EXPORT  const  TopTools_ListOfShape& Left()  const;
+  
+  //! Returns the list of descendant shapes of <S>.
+  Standard_EXPORT  const  TopTools_ListOfShape& DescendantShapes (const TopoDS_Shape& S) ;
 
 
 
@@ -83,12 +75,12 @@ private:
 
 
 
-TopoDS_Shape myShape;
-Standard_Boolean myDone;
-TopoDS_Shape myRes;
-TopTools_DataMapOfShapeListOfShape myMap;
-TopTools_ListOfShape myDLeft;
-TopTools_ListOfShape myLeft;
+  TopoDS_Shape myShape;
+  Standard_Boolean myDone;
+  TopoDS_Shape myRes;
+  TopTools_DataMapOfShapeListOfShape myMap;
+  TopTools_ListOfShape myDLeft;
+  TopTools_ListOfShape myLeft;
 
 
 };
@@ -98,7 +90,6 @@ TopTools_ListOfShape myLeft;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _LocOpe_Spliter_HeaderFile

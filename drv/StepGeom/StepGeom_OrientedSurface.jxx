@@ -1,6 +1,2 @@
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepGeom_OrientedSurface_HeaderFile
 #include <StepGeom_OrientedSurface.hxx>
-#endif

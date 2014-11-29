@@ -6,41 +6,31 @@
 #ifndef _Vrml_Sphere_HeaderFile
 #define _Vrml_Sphere_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 
 
-//! defines a Sphere node of VRML specifying geometry shapes. <br>
-//! This  node  represents  a  sphere. <br>
-//! By  default ,  the  sphere  is  centred  at  (0,0,0) and  has  a  radius  of  1. <br>
-class Vrml_Sphere  {
+//! defines a Sphere node of VRML specifying geometry shapes.
+//! This  node  represents  a  sphere.
+//! By  default ,  the  sphere  is  centred  at  (0,0,0) and  has  a  radius  of  1.
+class Vrml_Sphere 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Vrml_Sphere(const Standard_Real aRadius = 1);
+  Standard_EXPORT Vrml_Sphere(const Standard_Real aRadius = 1);
   
-  Standard_EXPORT     void SetRadius(const Standard_Real aRadius) ;
+  Standard_EXPORT   void SetRadius (const Standard_Real aRadius) ;
   
-  Standard_EXPORT     Standard_Real Radius() const;
+  Standard_EXPORT   Standard_Real Radius()  const;
   
-  Standard_EXPORT     Standard_OStream& Print(Standard_OStream& anOStream) const;
-
+  Standard_EXPORT   Standard_OStream& Print (Standard_OStream& anOStream)  const;
 
 
 
@@ -55,7 +45,7 @@ private:
 
 
 
-Standard_Real myRadius;
+  Standard_Real myRadius;
 
 
 };
@@ -64,7 +54,6 @@ Standard_Real myRadius;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Vrml_Sphere_HeaderFile

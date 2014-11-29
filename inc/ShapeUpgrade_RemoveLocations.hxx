@@ -6,55 +6,46 @@
 #ifndef _ShapeUpgrade_RemoveLocations_HeaderFile
 #define _ShapeUpgrade_RemoveLocations_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeUpgrade_RemoveLocations_HeaderFile
 #include <Handle_ShapeUpgrade_RemoveLocations.hxx>
-#endif
 
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeShape_HeaderFile
 #include <TopTools_DataMapOfShapeShape.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopoDS_Shape;
 
 
-//! Removes all locations sub-shapes of specified shape <br>
-class ShapeUpgrade_RemoveLocations : public MMgt_TShared {
+//! Removes all locations sub-shapes of specified shape
+class ShapeUpgrade_RemoveLocations : public MMgt_TShared
+{
 
 public:
 
-  //!Empy constructor <br>
-  Standard_EXPORT   ShapeUpgrade_RemoveLocations();
-  //!Removes all location correspodingly to RemoveLevel. <br>
-  Standard_EXPORT     Standard_Boolean Remove(const TopoDS_Shape& theShape) ;
-  //!Returns shape with removed locatins. <br>
-        TopoDS_Shape GetResult() const;
-  //!sets level starting with that location will be removed, <br>
-//!         by default TopAbs_SHAPE. In this case locations will be kept for specified shape <br>
-//!         and if specified shape is TopAbs_COMPOUND for sub-shapes of first level. <br>
-        void SetRemoveLevel(const TopAbs_ShapeEnum theLevel) ;
-  //!sets level starting with that location will be removed.Value of level can be set to <br>
-//!         TopAbs_SHAPE,TopAbs_COMPOUND,TopAbs_SOLID,TopAbs_SHELL,TopAbs_FACE.By default TopAbs_SHAPE. <br>
-//!         In this case location will be removed for all shape types for exception of compound. <br>
-        TopAbs_ShapeEnum RemoveLevel() const;
-  //! Returns modified shape obtained from initial shape. <br>
-        TopoDS_Shape ModifiedShape(const TopoDS_Shape& theInitShape) const;
+  
+  //! Empy constructor
+  Standard_EXPORT ShapeUpgrade_RemoveLocations();
+  
+  //! Removes all location correspodingly to RemoveLevel.
+  Standard_EXPORT   Standard_Boolean Remove (const TopoDS_Shape& theShape) ;
+  
+  //! Returns shape with removed locatins.
+      TopoDS_Shape GetResult()  const;
+  
+  //! sets level starting with that location will be removed,
+  //! by default TopAbs_SHAPE. In this case locations will be kept for specified shape
+  //! and if specified shape is TopAbs_COMPOUND for sub-shapes of first level.
+      void SetRemoveLevel (const TopAbs_ShapeEnum theLevel) ;
+  
+  //! sets level starting with that location will be removed.Value of level can be set to
+  //! TopAbs_SHAPE,TopAbs_COMPOUND,TopAbs_SOLID,TopAbs_SHELL,TopAbs_FACE.By default TopAbs_SHAPE.
+  //! In this case location will be removed for all shape types for exception of compound.
+      TopAbs_ShapeEnum RemoveLevel()  const;
+  
+  //! Returns modified shape obtained from initial shape.
+      TopoDS_Shape ModifiedShape (const TopoDS_Shape& theInitShape)  const;
 
 
 
@@ -69,11 +60,11 @@ protected:
 private: 
 
   
-  Standard_EXPORT     Standard_Boolean MakeNewShape(const TopoDS_Shape& theShape,const TopoDS_Shape& theAncShape,TopoDS_Shape& theNewShape,const Standard_Boolean theRemoveLoc) ;
+  Standard_EXPORT   Standard_Boolean MakeNewShape (const TopoDS_Shape& theShape, const TopoDS_Shape& theAncShape, TopoDS_Shape& theNewShape, const Standard_Boolean theRemoveLoc) ;
 
-TopAbs_ShapeEnum myLevelRemoving;
-TopoDS_Shape myShape;
-TopTools_DataMapOfShapeShape myMapNewShapes;
+  TopAbs_ShapeEnum myLevelRemoving;
+  TopoDS_Shape myShape;
+  TopTools_DataMapOfShapeShape myMapNewShapes;
 
 
 };
@@ -83,7 +74,6 @@ TopTools_DataMapOfShapeShape myMapNewShapes;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeUpgrade_RemoveLocations_HeaderFile

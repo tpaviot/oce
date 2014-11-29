@@ -6,25 +6,13 @@
 #ifndef _TopoDS_ListIteratorOfListOfShape_HeaderFile
 #define _TopoDS_ListIteratorOfListOfShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_TopoDS_ListNodeOfListOfShape_HeaderFile
 #include <Handle_TopoDS_ListNodeOfListOfShape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class TopoDS_ListOfShape;
@@ -33,27 +21,27 @@ class TopoDS_ListNodeOfListOfShape;
 
 
 
-class TopoDS_ListIteratorOfListOfShape  {
+class TopoDS_ListIteratorOfListOfShape 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopoDS_ListIteratorOfListOfShape();
+  Standard_EXPORT TopoDS_ListIteratorOfListOfShape();
   
-  Standard_EXPORT   TopoDS_ListIteratorOfListOfShape(const TopoDS_ListOfShape& L);
+  Standard_EXPORT TopoDS_ListIteratorOfListOfShape(const TopoDS_ListOfShape& L);
   
-  Standard_EXPORT     void Initialize(const TopoDS_ListOfShape& L) ;
+  Standard_EXPORT   void Initialize (const TopoDS_ListOfShape& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     TopoDS_Shape& Value() const;
+  Standard_EXPORT   TopoDS_Shape& Value()  const;
 
 
 friend class TopoDS_ListOfShape;
-
 
 
 protected:
@@ -66,8 +54,8 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
@@ -97,7 +85,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopoDS_ListIteratorOfListOfShape_HeaderFile

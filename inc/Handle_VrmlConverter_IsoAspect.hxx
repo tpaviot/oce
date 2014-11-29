@@ -6,22 +6,15 @@
 #ifndef _Handle_VrmlConverter_IsoAspect_HeaderFile
 #define _Handle_VrmlConverter_IsoAspect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_VrmlConverter_LineAspect_HeaderFile
 #include <Handle_VrmlConverter_LineAspect.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(VrmlConverter_LineAspect);
 class VrmlConverter_IsoAspect;
 
-DEFINE_STANDARD_HANDLE(VrmlConverter_IsoAspect,VrmlConverter_LineAspect)
+DEFINE_STANDARD_HANDLE(VrmlConverter_IsoAspect, VrmlConverter_LineAspect)
 
-#endif
+#endif // _Handle_VrmlConverter_IsoAspect_HeaderFile

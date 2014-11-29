@@ -6,44 +6,35 @@
 #ifndef _PGeom_SweptSurface_HeaderFile
 #define _PGeom_SweptSurface_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom_SweptSurface_HeaderFile
 #include <Handle_PGeom_SweptSurface.hxx>
-#endif
 
-#ifndef _Handle_PGeom_Curve_HeaderFile
 #include <Handle_PGeom_Curve.hxx>
-#endif
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _PGeom_Surface_HeaderFile
 #include <PGeom_Surface.hxx>
-#endif
 class PGeom_Curve;
 class gp_Dir;
 
 
-class PGeom_SweptSurface : public PGeom_Surface {
+class PGeom_SweptSurface : public PGeom_Surface
+{
 
 public:
 
-  //! Set the value of the field basisCurve with <aBasisCurve>. <br>
-  Standard_EXPORT     void BasisCurve(const Handle(PGeom_Curve)& aBasisCurve) ;
-  //! Returns the value of the field basisCurve. <br>
-  Standard_EXPORT     Handle_PGeom_Curve BasisCurve() const;
-  //! Set the value of the field direction with <aDirection>. <br>
-  Standard_EXPORT     void Direction(const gp_Dir& aDirection) ;
-  //! Returns the value of the field direction. <br>
-  Standard_EXPORT     gp_Dir Direction() const;
+  
+  //! Set the value of the field basisCurve with <aBasisCurve>.
+  Standard_EXPORT   void BasisCurve (const Handle(PGeom_Curve)& aBasisCurve) ;
+  
+  //! Returns the value of the field basisCurve.
+  Standard_EXPORT   Handle(PGeom_Curve) BasisCurve()  const;
+  
+  //! Set the value of the field direction with <aDirection>.
+  Standard_EXPORT   void Direction (const gp_Dir& aDirection) ;
+  
+  //! Returns the value of the field direction.
+  Standard_EXPORT   gp_Dir Direction()  const;
 
 PGeom_SweptSurface(const Storage_stCONSTclCOM& a) : PGeom_Surface(a)
 {
@@ -59,13 +50,15 @@ PGeom_SweptSurface(const Storage_stCONSTclCOM& a) : PGeom_Surface(a)
 
 protected:
 
-  //! Initializes the field(s) with default value(s). <br>
-  Standard_EXPORT   PGeom_SweptSurface();
-  //! Initialize the fields with these values. <br>
-  Standard_EXPORT   PGeom_SweptSurface(const Handle(PGeom_Curve)& aBasisCurve,const gp_Dir& aDirection);
+  
+  //! Initializes the field(s) with default value(s).
+  Standard_EXPORT PGeom_SweptSurface();
+  
+  //! Initialize the fields with these values.
+  Standard_EXPORT PGeom_SweptSurface(const Handle(PGeom_Curve)& aBasisCurve, const gp_Dir& aDirection);
 
-Handle_PGeom_Curve basisCurve;
-gp_Dir direction;
+  Handle(PGeom_Curve) basisCurve;
+  gp_Dir direction;
 
 
 private: 
@@ -79,7 +72,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom_SweptSurface_HeaderFile

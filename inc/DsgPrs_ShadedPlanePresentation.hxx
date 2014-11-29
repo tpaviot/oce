@@ -6,39 +6,30 @@
 #ifndef _DsgPrs_ShadedPlanePresentation_HeaderFile
 #define _DsgPrs_ShadedPlanePresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Handle_Prs3d_Drawer_HeaderFile
 #include <Handle_Prs3d_Drawer.hxx>
-#endif
 class Prs3d_Presentation;
 class Prs3d_Drawer;
 class gp_Pnt;
 
 
-//! A framework to define display of shaded planes. <br>
-class DsgPrs_ShadedPlanePresentation  {
+//! A framework to define display of shaded planes.
+class DsgPrs_ShadedPlanePresentation 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Adds the points aPt1, aPt2 and aPt3 to the <br>
-//! presentation object, aPresentation. <br>
-//! The display attributes of the shaded plane are <br>
-//! defined by the attribute manager aDrawer. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Prs3d_Drawer)& aDrawer,const gp_Pnt& aPt1,const gp_Pnt& aPt2,const gp_Pnt& aPt3) ;
-
+  
+  //! Adds the points aPt1, aPt2 and aPt3 to the
+  //! presentation object, aPresentation.
+  //! The display attributes of the shaded plane are
+  //! defined by the attribute manager aDrawer.
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Prs3d_Drawer)& aDrawer, const gp_Pnt& aPt1, const gp_Pnt& aPt2, const gp_Pnt& aPt3) ;
 
 
 
@@ -61,7 +52,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DsgPrs_ShadedPlanePresentation_HeaderFile

@@ -1,6 +1,2 @@
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _IGESAppli_PinNumber_HeaderFile
 #include <IGESAppli_PinNumber.hxx>
-#endif

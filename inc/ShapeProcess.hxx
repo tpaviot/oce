@@ -6,28 +6,14 @@
 #ifndef _ShapeProcess_HeaderFile
 #define _ShapeProcess_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_ShapeProcess_Operator_HeaderFile
 #include <Handle_ShapeProcess_Operator.hxx>
-#endif
-#ifndef _Handle_ShapeProcess_Context_HeaderFile
 #include <Handle_ShapeProcess_Context.hxx>
-#endif
 class ShapeProcess_Operator;
 class ShapeProcess_Context;
 class ShapeProcess_Context;
@@ -40,26 +26,29 @@ class ShapeProcess_IteratorOfDictionaryOfOperator;
 class ShapeProcess_StackItemOfDictionaryOfOperator;
 
 
-//! Shape Processing module <br>
-//! allows to define and apply general Shape Processing as a <br>
-//! customizable sequence of Shape Healing operators. The <br>
-//! customization is implemented via user-editable resource <br>
-//! file which defines sequence of operators to be executed <br>
-//! and their parameters. <br>
-class ShapeProcess  {
+//! Shape Processing module
+//! allows to define and apply general Shape Processing as a
+//! customizable sequence of Shape Healing operators. The
+//! customization is implemented via user-editable resource
+//! file which defines sequence of operators to be executed
+//! and their parameters.
+class ShapeProcess 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Registers operator to make it visible for Performer <br>
-  Standard_EXPORT   static  Standard_Boolean RegisterOperator(const Standard_CString name,const Handle(ShapeProcess_Operator)& op) ;
-  //! Finds operator by its name <br>
-  Standard_EXPORT   static  Standard_Boolean FindOperator(const Standard_CString name,Handle(ShapeProcess_Operator)& op) ;
-  //! Performs a specified sequence of operators on Context <br>
-//!          Resource file and other data should be already loaded <br>
-//!          to Context (including description of sequence seq) <br>
-  Standard_EXPORT   static  Standard_Boolean Perform(const Handle(ShapeProcess_Context)& context,const Standard_CString seq) ;
-
+  
+  //! Registers operator to make it visible for Performer
+  Standard_EXPORT static   Standard_Boolean RegisterOperator (const Standard_CString name, const Handle(ShapeProcess_Operator)& op) ;
+  
+  //! Finds operator by its name
+  Standard_EXPORT static   Standard_Boolean FindOperator (const Standard_CString name, Handle(ShapeProcess_Operator)& op) ;
+  
+  //! Performs a specified sequence of operators on Context
+  //! Resource file and other data should be already loaded
+  //! to Context (including description of sequence seq)
+  Standard_EXPORT static   Standard_Boolean Perform (const Handle(ShapeProcess_Context)& context, const Standard_CString seq) ;
 
 
 
@@ -90,7 +79,6 @@ friend class ShapeProcess_StackItemOfDictionaryOfOperator;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeProcess_HeaderFile

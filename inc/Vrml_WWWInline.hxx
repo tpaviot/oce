@@ -6,66 +6,54 @@
 #ifndef _Vrml_WWWInline_HeaderFile
 #define _Vrml_WWWInline_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class TCollection_AsciiString;
 class gp_Vec;
 
 
-//! defines a WWWInline node of VRML specifying group properties. <br>
-//!  The  WWWInline  group  node  reads  its  children  from  anywhere  in  the <br>
-//!  World  Wide  Web. <br>
-//!  Exactly  when  its  children  are  read  is  not  defined; <br>
-//!  reading  the  children  may  be  delayed  until  the  WWWInline  is  actually <br>
-//!  displayed. <br>
-//!  WWWInline  with  an  empty  ("")  name  does  nothing. <br>
-//!  WWWInline  behaves  like  a  Separator,  pushing  the  traversal  state <br>
-//!  before  traversing  its  children  and  popping  it  afterwards. <br>
-//!  By  defaults: <br>
-//!    myName  ("") <br>
-//!    myBboxSize (0,0,0) <br>
-//!    myBboxCenter  (0,0,0) <br>
-class Vrml_WWWInline  {
+//! defines a WWWInline node of VRML specifying group properties.
+//! The  WWWInline  group  node  reads  its  children  from  anywhere  in  the
+//! World  Wide  Web.
+//! Exactly  when  its  children  are  read  is  not  defined;
+//! reading  the  children  may  be  delayed  until  the  WWWInline  is  actually
+//! displayed.
+//! WWWInline  with  an  empty  ("")  name  does  nothing.
+//! WWWInline  behaves  like  a  Separator,  pushing  the  traversal  state
+//! before  traversing  its  children  and  popping  it  afterwards.
+//! By  defaults:
+//! myName  ("")
+//! myBboxSize (0,0,0)
+//! myBboxCenter  (0,0,0)
+class Vrml_WWWInline 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Vrml_WWWInline();
+  Standard_EXPORT Vrml_WWWInline();
   
-  Standard_EXPORT   Vrml_WWWInline(const TCollection_AsciiString& aName,const gp_Vec& aBboxSize,const gp_Vec& aBboxCenter);
+  Standard_EXPORT Vrml_WWWInline(const TCollection_AsciiString& aName, const gp_Vec& aBboxSize, const gp_Vec& aBboxCenter);
   
-  Standard_EXPORT     void SetName(const TCollection_AsciiString& aName) ;
+  Standard_EXPORT   void SetName (const TCollection_AsciiString& aName) ;
   
-  Standard_EXPORT     TCollection_AsciiString Name() const;
+  Standard_EXPORT   TCollection_AsciiString Name()  const;
   
-  Standard_EXPORT     void SetBboxSize(const gp_Vec& aBboxSize) ;
+  Standard_EXPORT   void SetBboxSize (const gp_Vec& aBboxSize) ;
   
-  Standard_EXPORT     gp_Vec BboxSize() const;
+  Standard_EXPORT   gp_Vec BboxSize()  const;
   
-  Standard_EXPORT     void SetBboxCenter(const gp_Vec& aBboxCenter) ;
+  Standard_EXPORT   void SetBboxCenter (const gp_Vec& aBboxCenter) ;
   
-  Standard_EXPORT     gp_Vec BboxCenter() const;
+  Standard_EXPORT   gp_Vec BboxCenter()  const;
   
-  Standard_EXPORT     Standard_OStream& Print(Standard_OStream& anOStream) const;
-
+  Standard_EXPORT   Standard_OStream& Print (Standard_OStream& anOStream)  const;
 
 
 
@@ -80,9 +68,9 @@ private:
 
 
 
-TCollection_AsciiString myName;
-gp_Vec myBboxSize;
-gp_Vec myBboxCenter;
+  TCollection_AsciiString myName;
+  gp_Vec myBboxSize;
+  gp_Vec myBboxCenter;
 
 
 };
@@ -91,7 +79,6 @@ gp_Vec myBboxCenter;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Vrml_WWWInline_HeaderFile

@@ -6,28 +6,14 @@
 #ifndef _TestTopOpeTools_Mesure_HeaderFile
 #define _TestTopOpeTools_Mesure_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray1OfPnt_HeaderFile
 #include <Handle_TColgp_HArray1OfPnt.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TColgp_HArray1OfPnt;
 class TCollection_AsciiString;
 class TColgp_Array1OfPnt;
@@ -35,32 +21,32 @@ class gp_Pnt;
 
 
 
-class TestTopOpeTools_Mesure  {
+class TestTopOpeTools_Mesure 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TestTopOpeTools_Mesure();
+  Standard_EXPORT TestTopOpeTools_Mesure();
   
-  Standard_EXPORT   TestTopOpeTools_Mesure(const TCollection_AsciiString& name);
+  Standard_EXPORT TestTopOpeTools_Mesure(const TCollection_AsciiString& name);
   
-  Standard_EXPORT   TestTopOpeTools_Mesure(const Handle(TColgp_HArray1OfPnt)& Pnts);
+  Standard_EXPORT TestTopOpeTools_Mesure(const Handle(TColgp_HArray1OfPnt)& Pnts);
   
-  Standard_EXPORT     void Add(const Standard_Integer n,const Standard_Real t) ;
+  Standard_EXPORT   void Add (const Standard_Integer n, const Standard_Real t) ;
   
-  Standard_EXPORT     void SetName(const TCollection_AsciiString& Name) ;
+  Standard_EXPORT   void SetName (const TCollection_AsciiString& Name) ;
   
-  Standard_EXPORT    const TCollection_AsciiString& Name() const;
+  Standard_EXPORT  const  TCollection_AsciiString& Name()  const;
   
-  Standard_EXPORT    const TColgp_Array1OfPnt& Pnts() const;
+  Standard_EXPORT  const  TColgp_Array1OfPnt& Pnts()  const;
   
-  Standard_EXPORT    const gp_Pnt& Pnt(const Standard_Integer I) const;
+  Standard_EXPORT  const  gp_Pnt& Pnt (const Standard_Integer I)  const;
   
-  Standard_EXPORT     Standard_Integer NPnts() const;
+  Standard_EXPORT   Standard_Integer NPnts()  const;
   
-  Standard_EXPORT     void Clear() ;
-
+  Standard_EXPORT   void Clear() ;
 
 
 
@@ -75,9 +61,9 @@ private:
 
 
 
-TCollection_AsciiString myName;
-Handle_TColgp_HArray1OfPnt myPnts;
-Standard_Integer myNPnts;
+  TCollection_AsciiString myName;
+  Handle(TColgp_HArray1OfPnt) myPnts;
+  Standard_Integer myNPnts;
 
 
 };
@@ -86,7 +72,6 @@ Standard_Integer myNPnts;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TestTopOpeTools_Mesure_HeaderFile

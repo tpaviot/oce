@@ -1,3 +1,1 @@
-#ifndef _StepDimTol_StraightnessTolerance_HeaderFile
 #include <StepDimTol_StraightnessTolerance.hxx>
-#endif

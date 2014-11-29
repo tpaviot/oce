@@ -6,31 +6,15 @@
 #ifndef _TopOpeBRepDS_MapOfIntegerShapeData_HeaderFile
 #define _TopOpeBRepDS_MapOfIntegerShapeData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData_HeaderFile
 #include <Handle_TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class TopOpeBRepDS_ShapeData;
@@ -40,50 +24,50 @@ class TopOpeBRepDS_DataMapIteratorOfMapOfIntegerShapeData;
 
 
 
-class TopOpeBRepDS_MapOfIntegerShapeData  : public TCollection_BasicMap {
+class TopOpeBRepDS_MapOfIntegerShapeData  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepDS_MapOfIntegerShapeData(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT TopOpeBRepDS_MapOfIntegerShapeData(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     TopOpeBRepDS_MapOfIntegerShapeData& Assign(const TopOpeBRepDS_MapOfIntegerShapeData& Other) ;
-    TopOpeBRepDS_MapOfIntegerShapeData& operator =(const TopOpeBRepDS_MapOfIntegerShapeData& Other) 
+  Standard_EXPORT   TopOpeBRepDS_MapOfIntegerShapeData& Assign (const TopOpeBRepDS_MapOfIntegerShapeData& Other) ;
+  TopOpeBRepDS_MapOfIntegerShapeData& operator = (const TopOpeBRepDS_MapOfIntegerShapeData& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TopOpeBRepDS_MapOfIntegerShapeData()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Bind(const Standard_Integer& K,const TopOpeBRepDS_ShapeData& I) ;
+  Standard_EXPORT   Standard_Boolean Bind (const Standard_Integer& K, const TopOpeBRepDS_ShapeData& I) ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const Standard_Integer& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound (const Standard_Integer& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind(const Standard_Integer& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind (const Standard_Integer& K) ;
   
-  Standard_EXPORT    const TopOpeBRepDS_ShapeData& Find(const Standard_Integer& K) const;
-   const TopOpeBRepDS_ShapeData& operator()(const Standard_Integer& K) const
+  Standard_EXPORT  const  TopOpeBRepDS_ShapeData& Find (const Standard_Integer& K)  const;
+ const  TopOpeBRepDS_ShapeData& operator() (const Standard_Integer& K)  const
 {
   return Find(K);
 }
   
-  Standard_EXPORT     TopOpeBRepDS_ShapeData& ChangeFind(const Standard_Integer& K) ;
-    TopOpeBRepDS_ShapeData& operator()(const Standard_Integer& K) 
+  Standard_EXPORT   TopOpeBRepDS_ShapeData& ChangeFind (const Standard_Integer& K) ;
+  TopOpeBRepDS_ShapeData& operator() (const Standard_Integer& K) 
 {
   return ChangeFind(K);
 }
   
-  Standard_EXPORT     Standard_Address Find1(const Standard_Integer& K) const;
+  Standard_EXPORT   Standard_Address Find1 (const Standard_Integer& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFind1(const Standard_Integer& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFind1 (const Standard_Integer& K) ;
 
 
 
@@ -97,7 +81,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   TopOpeBRepDS_MapOfIntegerShapeData(const TopOpeBRepDS_MapOfIntegerShapeData& Other);
+  Standard_EXPORT TopOpeBRepDS_MapOfIntegerShapeData(const TopOpeBRepDS_MapOfIntegerShapeData& Other);
 
 
 
@@ -108,7 +92,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_MapOfIntegerShapeData_HeaderFile

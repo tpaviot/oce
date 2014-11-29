@@ -5,12 +5,8 @@
 
 #include <DBC_VArrayTNodeOfVArrayOfReal.hxx>
 
-#ifndef _DBC_VArrayOfReal_HeaderFile
 #include <DBC_VArrayOfReal.hxx>
-#endif
-#ifndef _DBC_VArrayNodeOfVArrayOfReal_HeaderFile
 #include <DBC_VArrayNodeOfVArrayOfReal.hxx>
-#endif
  
 
 #define Item Standard_Real

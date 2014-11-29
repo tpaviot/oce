@@ -1,3 +1,1 @@
-#ifndef _StepFEA_NodeWithVector_HeaderFile
 #include <StepFEA_NodeWithVector.hxx>
-#endif

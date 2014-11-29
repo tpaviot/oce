@@ -521,14 +521,9 @@ void  GeomTools_CurveSet::Write(Standard_OStream& OS)const
     //OCC19559
   Handle(Message_ProgressIndicator) progress = GetProgress();
   Message_ProgressSentry PS(progress, "3D Curves", 0, nbcurve, 1);
-
   for (i = 1; i <= nbcurve && PS.More(); i++, PS.Next()) {
-    if ( !progress.IsNull() ) 
-      progress->Show();
-
     PrintCurve(Handle(Geom_Curve)::DownCast(myMap(i)),OS,Standard_True);
   }
-
   OS.precision(prec);
 }
 
@@ -541,7 +536,9 @@ void  GeomTools_CurveSet::Write(Standard_OStream& OS)const
 static Standard_IStream& operator>>(Standard_IStream& IS, gp_Pnt& P)
 {
   Standard_Real X=0.,Y=0.,Z=0.;
-  IS >> X >> Y >> Z;
+  GeomTools::GetReal(IS, X);
+  GeomTools::GetReal(IS, Y);
+  GeomTools::GetReal(IS, Z);
   P.SetCoord(X,Y,Z);
   return IS;
 }
@@ -554,7 +551,9 @@ static Standard_IStream& operator>>(Standard_IStream& IS, gp_Pnt& P)
 static Standard_IStream& operator>>(Standard_IStream& IS, gp_Dir& D)
 {
   Standard_Real X=0.,Y=0.,Z=0.;
-  IS >> X >> Y >> Z;
+  GeomTools::GetReal(IS, X);
+  GeomTools::GetReal(IS, Y);
+  GeomTools::GetReal(IS, Z);
   D.SetCoord(X,Y,Z);
   return IS;
 }
@@ -586,7 +585,8 @@ static Standard_IStream& operator>>(Standard_IStream& IS,
   gp_Pnt P(0.,0.,0.);
   gp_Dir A(1.,0.,0.),AX(1.,0.,0.),AY(1.,0.,0.);
   Standard_Real R=0.;
-  IS >> P >> A >> AX >> AY >> R;
+  IS >> P >> A >> AX >> AY;
+  GeomTools::GetReal(IS, R);
   C = new Geom_Circle(gp_Ax2(P,A,AX),R);
   return IS;
 }
@@ -602,7 +602,9 @@ static Standard_IStream& operator>>(Standard_IStream& IS,
   gp_Pnt P(0.,0.,0.);
   gp_Dir A(1.,0.,0.),AX(1.,0.,0.),AY(1.,0.,0.);
   Standard_Real R1=0.,R2=0.;
-  IS >> P >> A >> AX >> AY >> R1 >> R2;
+  IS >> P >> A >> AX >> AY;
+  GeomTools::GetReal(IS, R1);
+  GeomTools::GetReal(IS, R2);
   E = new Geom_Ellipse(gp_Ax2(P,A,AX),R1,R2);
   return IS;
 }
@@ -618,7 +620,8 @@ static Standard_IStream& operator>>(Standard_IStream& IS,
   gp_Pnt P(0.,0.,0.);
   gp_Dir A(1.,0.,0.),AX(1.,0.,0.),AY(1.,0.,0.);
   Standard_Real R1=0.;
-  IS >> P >> A >> AX >> AY >> R1;
+  IS >> P >> A >> AX >> AY;
+  GeomTools::GetReal(IS, R1);
   C = new Geom_Parabola(gp_Ax2(P,A,AX),R1);
   return IS;
 }
@@ -634,7 +637,9 @@ static Standard_IStream& operator>>(Standard_IStream& IS,
   gp_Pnt P(0.,0.,0.);
   gp_Dir A(1.,0.,0.),AX(1.,0.,0.),AY(1.,0.,0.);
   Standard_Real R1=0.,R2=0.;
-  IS >> P >> A >> AX >> AY >> R1 >> R2;
+  IS >> P >> A >> AX >> AY;
+  GeomTools::GetReal(IS, R1);
+  GeomTools::GetReal(IS, R2);
   H = new Geom_Hyperbola(gp_Ax2(P,A,AX),R1,R2);
   return IS;
 }
@@ -660,7 +665,7 @@ static Standard_IStream& operator>>(Standard_IStream& IS,
   for (i = 1; i <= degree+1; i++) {
     IS >> poles(i);
     if (rational)
-      IS >> weights(i);
+      GeomTools::GetReal(IS, weights(i));
   }
 
   if (rational)
@@ -693,14 +698,15 @@ static Standard_IStream& operator>>(Standard_IStream& IS,
   for (i = 1; i <= nbpoles; i++) {
     IS >> poles(i);
     if (rational)
-      IS >> weights(i);
+      GeomTools::GetReal(IS, weights(i));
   }
 
   TColStd_Array1OfReal knots(1,nbknots);
   TColStd_Array1OfInteger mults(1,nbknots);
 
   for (i = 1; i <= nbknots; i++) {
-    IS >> knots(i) >> mults(i);
+    GeomTools::GetReal(IS, knots(i)); 
+    IS >> mults(i);
   }
 
   if (rational)
@@ -720,7 +726,8 @@ static Standard_IStream& operator>>(Standard_IStream& IS,
 				    Handle(Geom_TrimmedCurve)& C)
 {
   Standard_Real p1=0.,p2=0.;
-  IS >> p1 >> p2;
+  GeomTools::GetReal(IS, p1);
+  GeomTools::GetReal(IS, p2);
   Handle(Geom_Curve) BC;
   GeomTools_CurveSet::ReadCurve(IS,BC);
   C = new Geom_TrimmedCurve(BC,p1,p2);
@@ -736,7 +743,7 @@ static Standard_IStream& operator>>(Standard_IStream& IS,
 				    Handle(Geom_OffsetCurve)& C)
 {
   Standard_Real p=0.;
-  IS >> p;
+  GeomTools::GetReal(IS, p);
   gp_Dir D(1.,0.,0.);
   IS >> D;
   Handle(Geom_Curve) BC;
@@ -841,7 +848,7 @@ Standard_IStream& GeomTools_CurveSet::ReadCurve(Standard_IStream& IS,
     }
   }
   catch(Standard_Failure) {
-#ifdef DEB
+#ifdef OCCT_DEBUG
     Handle(Standard_Failure) anExc = Standard_Failure::Caught();
     cout <<"EXCEPTION in GeomTools_CurveSet::ReadCurve(..)!!!" << endl;
     cout << anExc << endl;
@@ -872,9 +879,6 @@ void  GeomTools_CurveSet::Read(Standard_IStream& IS)
   Handle(Message_ProgressIndicator) progress = GetProgress();
   Message_ProgressSentry PS(progress, "3D Curves", 0, nbcurve, 1);
   for (i = 1; i <= nbcurve && PS.More(); i++, PS.Next()) {
-    if ( !progress.IsNull() ) 
-      progress->Show();
-
     GeomTools_CurveSet::ReadCurve(IS,C);
     myMap.Add(C);
   }

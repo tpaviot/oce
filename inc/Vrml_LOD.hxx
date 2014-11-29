@@ -6,74 +6,59 @@
 #ifndef _Vrml_LOD_HeaderFile
 #define _Vrml_LOD_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Vrml_LOD_HeaderFile
 #include <Handle_Vrml_LOD.hxx>
-#endif
 
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class TColStd_HArray1OfReal;
 class gp_Vec;
 
 
-//! defines a LOD (level of detailization) node of VRML specifying properties <br>
-//!          of geometry  and its appearance. <br>
-//!  This  group  node  is  used  to  allow  applications  to  switch  between <br>
-//!  various  representations  of  objects  automatically. The  children  of  this <br>
-//!  node  typically  represent  the  same  object  or  objects  at  the  varying <br>
-//!  of  Levels  Of  Detail  (LOD),  from  highest  detail  to  lowest. <br>
-//! <br>
-//!  The  specified  center  point  of  the  LOD  is  transformed  by  current <br>
-//!  transformation  into  world  space,  and  yhe  distancefrom  the  transformed <br>
-//!  center  to  the  world-space  eye  point  is  calculated. <br>
-//!  If  thedistance  is  less  than  the  first  value  in  the  ranges  array, <br>
-//!  than  the  first  child  of  the  LOD  group  is  drawn.  If  between <br>
-//!  the  first  and  second  values  in  the  range  array,  the  second  child <br>
-//!  is  drawn,  etc. <br>
-//!  If  there  are  N  values  in  the  range  array,  the  LOD  group  should <br>
-//!  have  N+1  children. <br>
-//!  Specifying  too  few  children  will  result  in  the  last  child  being <br>
-//!  used  repeatedly  for  the  lowest  lewels  of  detail;  if  too  many  children <br>
-//!  are  specified,  the  extra  children  w ll  be  ignored. <br>
-//!  Each  value  in  the  ranges  array  should  be  greater  than  the previous <br>
-//!  value,  otherwise  results  are  undefined. <br>
-class Vrml_LOD : public MMgt_TShared {
+//! defines a LOD (level of detailization) node of VRML specifying properties
+//! of geometry  and its appearance.
+//! This  group  node  is  used  to  allow  applications  to  switch  between
+//! various  representations  of  objects  automatically. The  children  of  this
+//! node  typically  represent  the  same  object  or  objects  at  the  varying
+//! of  Levels  Of  Detail  (LOD),  from  highest  detail  to  lowest.
+//!
+//! The  specified  center  point  of  the  LOD  is  transformed  by  current
+//! transformation  into  world  space,  and  yhe  distancefrom  the  transformed
+//! center  to  the  world-space  eye  point  is  calculated.
+//! If  thedistance  is  less  than  the  first  value  in  the  ranges  array,
+//! than  the  first  child  of  the  LOD  group  is  drawn.  If  between
+//! the  first  and  second  values  in  the  range  array,  the  second  child
+//! is  drawn,  etc.
+//! If  there  are  N  values  in  the  range  array,  the  LOD  group  should
+//! have  N+1  children.
+//! Specifying  too  few  children  will  result  in  the  last  child  being
+//! used  repeatedly  for  the  lowest  lewels  of  detail;  if  too  many  children
+//! are  specified,  the  extra  children  w ll  be  ignored.
+//! Each  value  in  the  ranges  array  should  be  greater  than  the previous
+//! value,  otherwise  results  are  undefined.
+class Vrml_LOD : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   Vrml_LOD();
+  Standard_EXPORT Vrml_LOD();
   
-  Standard_EXPORT   Vrml_LOD(const Handle(TColStd_HArray1OfReal)& aRange,const gp_Vec& aCenter);
+  Standard_EXPORT Vrml_LOD(const Handle(TColStd_HArray1OfReal)& aRange, const gp_Vec& aCenter);
   
-  Standard_EXPORT     void SetRange(const Handle(TColStd_HArray1OfReal)& aRange) ;
+  Standard_EXPORT   void SetRange (const Handle(TColStd_HArray1OfReal)& aRange) ;
   
-  Standard_EXPORT     Handle_TColStd_HArray1OfReal Range() const;
+  Standard_EXPORT   Handle(TColStd_HArray1OfReal) Range()  const;
   
-  Standard_EXPORT     void SetCenter(const gp_Vec& aCenter) ;
+  Standard_EXPORT   void SetCenter (const gp_Vec& aCenter) ;
   
-  Standard_EXPORT     gp_Vec Center() const;
+  Standard_EXPORT   gp_Vec Center()  const;
   
-  Standard_EXPORT     Standard_OStream& Print(Standard_OStream& anOStream) const;
+  Standard_EXPORT   Standard_OStream& Print (Standard_OStream& anOStream)  const;
 
 
 
@@ -88,9 +73,9 @@ protected:
 private: 
 
 
-Handle_TColStd_HArray1OfReal myRange;
-gp_Vec myCenter;
-Standard_Boolean myRangeFlag;
+  Handle(TColStd_HArray1OfReal) myRange;
+  gp_Vec myCenter;
+  Standard_Boolean myRangeFlag;
 
 
 };
@@ -99,7 +84,6 @@ Standard_Boolean myRangeFlag;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Vrml_LOD_HeaderFile

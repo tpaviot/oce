@@ -6,28 +6,14 @@
 #ifndef _TopoDSToStep_MakeStepEdge_HeaderFile
 #define _TopoDSToStep_MakeStepEdge_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepShape_TopologicalRepresentationItem_HeaderFile
 #include <Handle_StepShape_TopologicalRepresentationItem.hxx>
-#endif
-#ifndef _TopoDSToStep_MakeEdgeError_HeaderFile
 #include <TopoDSToStep_MakeEdgeError.hxx>
-#endif
-#ifndef _TopoDSToStep_Root_HeaderFile
 #include <TopoDSToStep_Root.hxx>
-#endif
-#ifndef _Handle_Transfer_FinderProcess_HeaderFile
 #include <Handle_Transfer_FinderProcess.hxx>
-#endif
 class StepShape_TopologicalRepresentationItem;
 class StdFail_NotDone;
 class TopoDS_Edge;
@@ -35,25 +21,25 @@ class TopoDSToStep_Tool;
 class Transfer_FinderProcess;
 
 
-//! This class implements the mapping between classes <br>
-//!          Edge from TopoDS and TopologicalRepresentationItem from <br>
-//!          StepShape. <br>
-class TopoDSToStep_MakeStepEdge  : public TopoDSToStep_Root {
+//! This class implements the mapping between classes
+//! Edge from TopoDS and TopologicalRepresentationItem from
+//! StepShape.
+class TopoDSToStep_MakeStepEdge  : public TopoDSToStep_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopoDSToStep_MakeStepEdge();
+  Standard_EXPORT TopoDSToStep_MakeStepEdge();
   
-  Standard_EXPORT   TopoDSToStep_MakeStepEdge(const TopoDS_Edge& E,TopoDSToStep_Tool& T,const Handle(Transfer_FinderProcess)& FP);
+  Standard_EXPORT TopoDSToStep_MakeStepEdge(const TopoDS_Edge& E, TopoDSToStep_Tool& T, const Handle(Transfer_FinderProcess)& FP);
   
-  Standard_EXPORT     void Init(const TopoDS_Edge& E,TopoDSToStep_Tool& T,const Handle(Transfer_FinderProcess)& FP) ;
+  Standard_EXPORT   void Init (const TopoDS_Edge& E, TopoDSToStep_Tool& T, const Handle(Transfer_FinderProcess)& FP) ;
   
-  Standard_EXPORT    const Handle_StepShape_TopologicalRepresentationItem& Value() const;
+  Standard_EXPORT  const  Handle(StepShape_TopologicalRepresentationItem)& Value()  const;
   
-  Standard_EXPORT     TopoDSToStep_MakeEdgeError Error() const;
-
+  Standard_EXPORT   TopoDSToStep_MakeEdgeError Error()  const;
 
 
 
@@ -68,8 +54,8 @@ private:
 
 
 
-Handle_StepShape_TopologicalRepresentationItem myResult;
-TopoDSToStep_MakeEdgeError myError;
+  Handle(StepShape_TopologicalRepresentationItem) myResult;
+  TopoDSToStep_MakeEdgeError myError;
 
 
 };
@@ -78,7 +64,6 @@ TopoDSToStep_MakeEdgeError myError;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopoDSToStep_MakeStepEdge_HeaderFile

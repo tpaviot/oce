@@ -5,16 +5,10 @@
 
 #include <AdvApp2Var_SequenceNodeOfSequenceOfPatch.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _AdvApp2Var_Patch_HeaderFile
 #include <AdvApp2Var_Patch.hxx>
-#endif
-#ifndef _AdvApp2Var_SequenceOfPatch_HeaderFile
 #include <AdvApp2Var_SequenceOfPatch.hxx>
-#endif
 
  
 

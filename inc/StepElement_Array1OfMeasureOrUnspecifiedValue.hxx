@@ -6,25 +6,13 @@
 #ifndef _StepElement_Array1OfMeasureOrUnspecifiedValue_HeaderFile
 #define _StepElement_Array1OfMeasureOrUnspecifiedValue_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -33,52 +21,52 @@ class StepElement_MeasureOrUnspecifiedValue;
 
 
 
-class StepElement_Array1OfMeasureOrUnspecifiedValue  {
+class StepElement_Array1OfMeasureOrUnspecifiedValue 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      StepElement_Array1OfMeasureOrUnspecifiedValue(const Standard_Integer Low,const Standard_Integer Up);
+    StepElement_Array1OfMeasureOrUnspecifiedValue(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepElement_Array1OfMeasureOrUnspecifiedValue(const StepElement_MeasureOrUnspecifiedValue& Item,const Standard_Integer Low,const Standard_Integer Up);
+    StepElement_Array1OfMeasureOrUnspecifiedValue(const StepElement_MeasureOrUnspecifiedValue& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const StepElement_MeasureOrUnspecifiedValue& V) ;
+  Standard_EXPORT   void Init (const StepElement_MeasureOrUnspecifiedValue& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~StepElement_Array1OfMeasureOrUnspecifiedValue()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const StepElement_Array1OfMeasureOrUnspecifiedValue& Assign(const StepElement_Array1OfMeasureOrUnspecifiedValue& Other) ;
-   const StepElement_Array1OfMeasureOrUnspecifiedValue& operator =(const StepElement_Array1OfMeasureOrUnspecifiedValue& Other) 
+  Standard_EXPORT  const  StepElement_Array1OfMeasureOrUnspecifiedValue& Assign (const StepElement_Array1OfMeasureOrUnspecifiedValue& Other) ;
+ const  StepElement_Array1OfMeasureOrUnspecifiedValue& operator = (const StepElement_Array1OfMeasureOrUnspecifiedValue& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const StepElement_MeasureOrUnspecifiedValue& Value) ;
+      void SetValue (const Standard_Integer Index, const StepElement_MeasureOrUnspecifiedValue& Value) ;
   
-       const StepElement_MeasureOrUnspecifiedValue& Value(const Standard_Integer Index) const;
-     const StepElement_MeasureOrUnspecifiedValue& operator ()(const Standard_Integer Index) const
+     const  StepElement_MeasureOrUnspecifiedValue& Value (const Standard_Integer Index)  const;
+   const  StepElement_MeasureOrUnspecifiedValue& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        StepElement_MeasureOrUnspecifiedValue& ChangeValue(const Standard_Integer Index) ;
-      StepElement_MeasureOrUnspecifiedValue& operator ()(const Standard_Integer Index) 
+      StepElement_MeasureOrUnspecifiedValue& ChangeValue (const Standard_Integer Index) ;
+    StepElement_MeasureOrUnspecifiedValue& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -92,13 +80,13 @@ protected:
 private:
 
   
-  Standard_EXPORT   StepElement_Array1OfMeasureOrUnspecifiedValue(const StepElement_Array1OfMeasureOrUnspecifiedValue& AnArray);
+  Standard_EXPORT StepElement_Array1OfMeasureOrUnspecifiedValue(const StepElement_Array1OfMeasureOrUnspecifiedValue& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
@@ -116,7 +104,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_Array1OfMeasureOrUnspecifiedValue_HeaderFile

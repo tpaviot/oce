@@ -1,21 +1,7 @@
-#ifndef _StepGeom_BSplineCurveWithKnots_HeaderFile
 #include <StepGeom_BSplineCurveWithKnots.hxx>
-#endif
-#ifndef _StepGeom_RationalBSplineCurve_HeaderFile
 #include <StepGeom_RationalBSplineCurve.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepGeom_HArray1OfCartesianPoint_HeaderFile
 #include <StepGeom_HArray1OfCartesianPoint.hxx>
-#endif
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_HeaderFile
 #include <StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve.hxx>
-#endif

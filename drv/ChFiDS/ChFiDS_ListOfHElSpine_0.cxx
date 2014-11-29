@@ -5,21 +5,13 @@
 
 #include <ChFiDS_ListOfHElSpine.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _ChFiDS_ListIteratorOfListOfHElSpine_HeaderFile
 #include <ChFiDS_ListIteratorOfListOfHElSpine.hxx>
-#endif
-#ifndef _ChFiDS_HElSpine_HeaderFile
 #include <ChFiDS_HElSpine.hxx>
-#endif
-#ifndef _ChFiDS_ListNodeOfListOfHElSpine_HeaderFile
 #include <ChFiDS_ListNodeOfListOfHElSpine.hxx>
-#endif
  
 
-#define Item Handle_ChFiDS_HElSpine
+#define Item Handle(ChFiDS_HElSpine)
 #define Item_hxx <ChFiDS_HElSpine.hxx>
 #define TCollection_ListNode ChFiDS_ListNodeOfListOfHElSpine
 #define TCollection_ListNode_hxx <ChFiDS_ListNodeOfListOfHElSpine.hxx>

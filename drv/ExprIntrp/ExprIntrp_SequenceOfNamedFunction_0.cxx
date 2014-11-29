@@ -5,21 +5,13 @@
 
 #include <ExprIntrp_SequenceOfNamedFunction.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Expr_NamedFunction_HeaderFile
 #include <Expr_NamedFunction.hxx>
-#endif
-#ifndef _ExprIntrp_SequenceNodeOfSequenceOfNamedFunction_HeaderFile
 #include <ExprIntrp_SequenceNodeOfSequenceOfNamedFunction.hxx>
-#endif
  
 
-#define SeqItem Handle_Expr_NamedFunction
+#define SeqItem Handle(Expr_NamedFunction)
 #define SeqItem_hxx <Expr_NamedFunction.hxx>
 #define TCollection_SequenceNode ExprIntrp_SequenceNodeOfSequenceOfNamedFunction
 #define TCollection_SequenceNode_hxx <ExprIntrp_SequenceNodeOfSequenceOfNamedFunction.hxx>

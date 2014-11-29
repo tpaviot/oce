@@ -5,16 +5,10 @@
 
 #include <AdvApp2Var_SequenceNodeOfStrip.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _AdvApp2Var_Iso_HeaderFile
 #include <AdvApp2Var_Iso.hxx>
-#endif
-#ifndef _AdvApp2Var_Strip_HeaderFile
 #include <AdvApp2Var_Strip.hxx>
-#endif
 
  
 

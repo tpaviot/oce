@@ -5,19 +5,11 @@
 
 #include <TopOpeBRep_ListNodeOfListOfBipoint.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopOpeBRep_Bipoint_HeaderFile
 #include <TopOpeBRep_Bipoint.hxx>
-#endif
-#ifndef _TopOpeBRep_ListOfBipoint_HeaderFile
 #include <TopOpeBRep_ListOfBipoint.hxx>
-#endif
-#ifndef _TopOpeBRep_ListIteratorOfListOfBipoint_HeaderFile
 #include <TopOpeBRep_ListIteratorOfListOfBipoint.hxx>
-#endif
 
  
 

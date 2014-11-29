@@ -6,15 +6,9 @@
 #ifndef _Resource_QuickSortOfArray1_HeaderFile
 #define _Resource_QuickSortOfArray1_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
 class TCollection_AsciiString;
 class TColStd_Array1OfAsciiString;
@@ -22,14 +16,14 @@ class Resource_LexicalCompare;
 
 
 
-class Resource_QuickSortOfArray1  {
+class Resource_QuickSortOfArray1 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  void Sort(TColStd_Array1OfAsciiString& TheArray,const Resource_LexicalCompare& Comp) ;
-
+  Standard_EXPORT static   void Sort (TColStd_Array1OfAsciiString& TheArray, const Resource_LexicalCompare& Comp) ;
 
 
 
@@ -52,7 +46,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Resource_QuickSortOfArray1_HeaderFile

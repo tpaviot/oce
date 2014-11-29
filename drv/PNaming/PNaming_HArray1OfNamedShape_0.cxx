@@ -5,31 +5,14 @@
 
 #include <PNaming_HArray1OfNamedShape.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _PNaming_NamedShape_HeaderFile
 #include <PNaming_NamedShape.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
-#include <Standard_Persistent.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _PNaming_FieldOfHArray1OfNamedShape_HeaderFile
 #include <PNaming_FieldOfHArray1OfNamedShape.hxx>
-#endif
-#ifndef _PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape_HeaderFile
 #include <PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape.hxx>
-#endif
-#ifndef _PNaming_VArrayTNodeOfFieldOfHArray1OfNamedShape_HeaderFile
 #include <PNaming_VArrayTNodeOfFieldOfHArray1OfNamedShape.hxx>
-#endif
 
  
 
@@ -47,7 +30,7 @@ IMPLEMENT_DOWNCAST(PNaming_HArray1OfNamedShape,Standard_Persistent)
 IMPLEMENT_STANDARD_RTTI(PNaming_HArray1OfNamedShape)
 
 
-#define Item Handle_PNaming_NamedShape
+#define Item Handle(PNaming_NamedShape)
 #define Item_hxx <PNaming_NamedShape.hxx>
 #define PCollection_FieldOfHArray1 PNaming_FieldOfHArray1OfNamedShape
 #define PCollection_FieldOfHArray1_hxx <PNaming_FieldOfHArray1OfNamedShape.hxx>

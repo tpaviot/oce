@@ -1,6 +1,2 @@
-#ifndef _StepElement_SurfaceSection_HeaderFile
 #include <StepElement_SurfaceSection.hxx>
-#endif
-#ifndef _StepElement_SurfaceSectionFieldConstant_HeaderFile
 #include <StepElement_SurfaceSectionFieldConstant.hxx>
-#endif

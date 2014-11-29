@@ -6,22 +6,15 @@
 #ifndef _Handle_FWOSDriver_DriverFactory_HeaderFile
 #define _Handle_FWOSDriver_DriverFactory_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_CDF_MetaDataDriverFactory_HeaderFile
 #include <Handle_CDF_MetaDataDriverFactory.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(CDF_MetaDataDriverFactory);
 class FWOSDriver_DriverFactory;
 
-DEFINE_STANDARD_HANDLE(FWOSDriver_DriverFactory,CDF_MetaDataDriverFactory)
+DEFINE_STANDARD_HANDLE(FWOSDriver_DriverFactory, CDF_MetaDataDriverFactory)
 
-#endif
+#endif // _Handle_FWOSDriver_DriverFactory_HeaderFile

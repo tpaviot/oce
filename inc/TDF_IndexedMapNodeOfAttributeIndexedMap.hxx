@@ -6,46 +6,33 @@
 #ifndef _TDF_IndexedMapNodeOfAttributeIndexedMap_HeaderFile
 #define _TDF_IndexedMapNodeOfAttributeIndexedMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDF_IndexedMapNodeOfAttributeIndexedMap_HeaderFile
 #include <Handle_TDF_IndexedMapNodeOfAttributeIndexedMap.hxx>
-#endif
 
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
 class TDF_Attribute;
 class TColStd_MapTransientHasher;
 class TDF_AttributeIndexedMap;
 
 
 
-class TDF_IndexedMapNodeOfAttributeIndexedMap : public TCollection_MapNode {
+class TDF_IndexedMapNodeOfAttributeIndexedMap : public TCollection_MapNode
+{
 
 public:
 
   
-      TDF_IndexedMapNodeOfAttributeIndexedMap(const Handle(TDF_Attribute)& K1,const Standard_Integer K2,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+    TDF_IndexedMapNodeOfAttributeIndexedMap(const Handle(TDF_Attribute)& K1, const Standard_Integer K2, const TCollection_MapNodePtr& n1, const TCollection_MapNodePtr& n2);
   
-        Handle_TDF_Attribute& Key1() const;
+      Handle(TDF_Attribute)& Key1()  const;
   
-        Standard_Integer& Key2() const;
+      Standard_Integer& Key2()  const;
   
-        TCollection_MapNodePtr& Next2() const;
+      TCollection_MapNodePtr& Next2()  const;
 
 
 
@@ -60,14 +47,14 @@ protected:
 private: 
 
 
-Handle_TDF_Attribute myKey1;
-Standard_Integer myKey2;
-TCollection_MapNodePtr myNext2;
+  Handle(TDF_Attribute) myKey1;
+  Standard_Integer myKey2;
+  TCollection_MapNodePtr myNext2;
 
 
 };
 
-#define TheKey Handle_TDF_Attribute
+#define TheKey Handle(TDF_Attribute)
 #define TheKey_hxx <TDF_Attribute.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>
@@ -92,7 +79,6 @@ TCollection_MapNodePtr myNext2;
 #undef TCollection_IndexedMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_IndexedMapNodeOfAttributeIndexedMap_HeaderFile

@@ -5,21 +5,13 @@
 
 #include <IFSelect_TSeqOfDispatch.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IFSelect_Dispatch_HeaderFile
 #include <IFSelect_Dispatch.hxx>
-#endif
-#ifndef _IFSelect_SequenceNodeOfTSeqOfDispatch_HeaderFile
 #include <IFSelect_SequenceNodeOfTSeqOfDispatch.hxx>
-#endif
  
 
-#define SeqItem Handle_IFSelect_Dispatch
+#define SeqItem Handle(IFSelect_Dispatch)
 #define SeqItem_hxx <IFSelect_Dispatch.hxx>
 #define TCollection_SequenceNode IFSelect_SequenceNodeOfTSeqOfDispatch
 #define TCollection_SequenceNode_hxx <IFSelect_SequenceNodeOfTSeqOfDispatch.hxx>

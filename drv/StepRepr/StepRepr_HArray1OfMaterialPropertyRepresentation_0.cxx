@@ -5,28 +5,14 @@
 
 #include <StepRepr_HArray1OfMaterialPropertyRepresentation.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _StepRepr_MaterialPropertyRepresentation_HeaderFile
 #include <StepRepr_MaterialPropertyRepresentation.hxx>
-#endif
-#ifndef _StepRepr_Array1OfMaterialPropertyRepresentation_HeaderFile
 #include <StepRepr_Array1OfMaterialPropertyRepresentation.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(StepRepr_HArray1OfMaterialPropertyRepresentation,Standard_Tra
 IMPLEMENT_STANDARD_RTTI(StepRepr_HArray1OfMaterialPropertyRepresentation)
 
 
-#define ItemHArray1 Handle_StepRepr_MaterialPropertyRepresentation
+#define ItemHArray1 Handle(StepRepr_MaterialPropertyRepresentation)
 #define ItemHArray1_hxx <StepRepr_MaterialPropertyRepresentation.hxx>
 #define TheArray1 StepRepr_Array1OfMaterialPropertyRepresentation
 #define TheArray1_hxx <StepRepr_Array1OfMaterialPropertyRepresentation.hxx>

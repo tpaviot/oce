@@ -6,73 +6,57 @@
 #ifndef _IntPatch_ALineToWLine_HeaderFile
 #define _IntPatch_ALineToWLine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _IntSurf_Quadric_HeaderFile
 #include <IntSurf_Quadric.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_IntPatch_WLine_HeaderFile
 #include <Handle_IntPatch_WLine.hxx>
-#endif
-#ifndef _Handle_IntPatch_ALine_HeaderFile
 #include <Handle_IntPatch_ALine.hxx>
-#endif
 class IntSurf_Quadric;
 class IntPatch_WLine;
 class IntPatch_ALine;
 
 
 
-class IntPatch_ALineToWLine  {
+class IntPatch_ALineToWLine 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntPatch_ALineToWLine(const IntSurf_Quadric& Quad1,const IntSurf_Quadric& Quad2);
+  Standard_EXPORT IntPatch_ALineToWLine(const IntSurf_Quadric& Quad1, const IntSurf_Quadric& Quad2);
   
-  Standard_EXPORT   IntPatch_ALineToWLine(const IntSurf_Quadric& Quad1,const IntSurf_Quadric& Quad2,const Standard_Real Deflection,const Standard_Real PasMaxUV,const Standard_Integer NbMaxPoints);
+  Standard_EXPORT IntPatch_ALineToWLine(const IntSurf_Quadric& Quad1, const IntSurf_Quadric& Quad2, const Standard_Real Deflection, const Standard_Real PasMaxUV, const Standard_Integer NbMaxPoints);
   
-  Standard_EXPORT     void SetTolParam(const Standard_Real aT) ;
+  Standard_EXPORT   void SetTolParam (const Standard_Real aT) ;
   
-  Standard_EXPORT     Standard_Real TolParam() const;
+  Standard_EXPORT   Standard_Real TolParam()  const;
   
-  Standard_EXPORT     void SetTolOpenDomain(const Standard_Real aT) ;
+  Standard_EXPORT   void SetTolOpenDomain (const Standard_Real aT) ;
   
-  Standard_EXPORT     Standard_Real TolOpenDomain() const;
+  Standard_EXPORT   Standard_Real TolOpenDomain()  const;
   
-  Standard_EXPORT     void SetTolTransition(const Standard_Real aT) ;
+  Standard_EXPORT   void SetTolTransition (const Standard_Real aT) ;
   
-  Standard_EXPORT     Standard_Real TolTransition() const;
+  Standard_EXPORT   Standard_Real TolTransition()  const;
   
-  Standard_EXPORT     void SetTol3D(const Standard_Real aT) ;
+  Standard_EXPORT   void SetTol3D (const Standard_Real aT) ;
   
-  Standard_EXPORT     Standard_Real Tol3D() const;
+  Standard_EXPORT   Standard_Real Tol3D()  const;
   
-  Standard_EXPORT     void SetConstantParameter() const;
+  Standard_EXPORT   void SetConstantParameter()  const;
   
-  Standard_EXPORT     void SetUniformAbscissa() const;
+  Standard_EXPORT   void SetUniformAbscissa()  const;
   
-  Standard_EXPORT     void SetUniformDeflection() const;
+  Standard_EXPORT   void SetUniformDeflection()  const;
   
-  Standard_EXPORT     Handle_IntPatch_WLine MakeWLine(const Handle(IntPatch_ALine)& aline) const;
+  Standard_EXPORT   Handle(IntPatch_WLine) MakeWLine (const Handle(IntPatch_ALine)& aline)  const;
   
-  Standard_EXPORT     Handle_IntPatch_WLine MakeWLine(const Handle(IntPatch_ALine)& aline,const Standard_Real paraminf,const Standard_Real paramsup) const;
-
+  Standard_EXPORT   Handle(IntPatch_WLine) MakeWLine (const Handle(IntPatch_ALine)& aline, const Standard_Real paraminf, const Standard_Real paramsup)  const;
 
 
 
@@ -87,15 +71,15 @@ private:
 
 
 
-IntSurf_Quadric quad1;
-IntSurf_Quadric quad2;
-Standard_Real deflectionmax;
-Standard_Integer nbpointsmax;
-Standard_Integer type;
-Standard_Real myTolParam;
-Standard_Real myTolOpenDomain;
-Standard_Real myTolTransition;
-Standard_Real myTol3D;
+  IntSurf_Quadric quad1;
+  IntSurf_Quadric quad2;
+  Standard_Real deflectionmax;
+  Standard_Integer nbpointsmax;
+  Standard_Integer type;
+  Standard_Real myTolParam;
+  Standard_Real myTolOpenDomain;
+  Standard_Real myTolTransition;
+  Standard_Real myTol3D;
 
 
 };
@@ -104,7 +88,6 @@ Standard_Real myTol3D;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntPatch_ALineToWLine_HeaderFile

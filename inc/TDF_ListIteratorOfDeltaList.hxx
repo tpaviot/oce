@@ -6,28 +6,14 @@
 #ifndef _TDF_ListIteratorOfDeltaList_HeaderFile
 #define _TDF_ListIteratorOfDeltaList_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_TDF_Delta_HeaderFile
 #include <Handle_TDF_Delta.hxx>
-#endif
-#ifndef _Handle_TDF_ListNodeOfDeltaList_HeaderFile
 #include <Handle_TDF_ListNodeOfDeltaList.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class TDF_DeltaList;
@@ -36,27 +22,27 @@ class TDF_ListNodeOfDeltaList;
 
 
 
-class TDF_ListIteratorOfDeltaList  {
+class TDF_ListIteratorOfDeltaList 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TDF_ListIteratorOfDeltaList();
+  Standard_EXPORT TDF_ListIteratorOfDeltaList();
   
-  Standard_EXPORT   TDF_ListIteratorOfDeltaList(const TDF_DeltaList& L);
+  Standard_EXPORT TDF_ListIteratorOfDeltaList(const TDF_DeltaList& L);
   
-  Standard_EXPORT     void Initialize(const TDF_DeltaList& L) ;
+  Standard_EXPORT   void Initialize (const TDF_DeltaList& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     Handle_TDF_Delta& Value() const;
+  Standard_EXPORT   Handle(TDF_Delta)& Value()  const;
 
 
 friend class TDF_DeltaList;
-
 
 
 protected:
@@ -69,13 +55,13 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
 
-#define Item Handle_TDF_Delta
+#define Item Handle(TDF_Delta)
 #define Item_hxx <TDF_Delta.hxx>
 #define TCollection_ListNode TDF_ListNodeOfDeltaList
 #define TCollection_ListNode_hxx <TDF_ListNodeOfDeltaList.hxx>
@@ -100,7 +86,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_ListIteratorOfDeltaList_HeaderFile

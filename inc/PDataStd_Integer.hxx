@@ -6,39 +6,28 @@
 #ifndef _PDataStd_Integer_HeaderFile
 #define _PDataStd_Integer_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PDataStd_Integer_HeaderFile
 #include <Handle_PDataStd_Integer.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
 
 
-class PDataStd_Integer : public PDF_Attribute {
+class PDataStd_Integer : public PDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   PDataStd_Integer();
+  Standard_EXPORT PDataStd_Integer();
   
-  Standard_EXPORT   PDataStd_Integer(const Standard_Integer V);
+  Standard_EXPORT PDataStd_Integer(const Standard_Integer V);
   
-  Standard_EXPORT     Standard_Integer Get() const;
+  Standard_EXPORT   Standard_Integer Get()  const;
   
-  Standard_EXPORT     void Set(const Standard_Integer V) ;
+  Standard_EXPORT   void Set (const Standard_Integer V) ;
 
 PDataStd_Integer(const Storage_stCONSTclCOM& a) : PDF_Attribute(a)
 {
@@ -59,7 +48,7 @@ protected:
 private: 
 
 
-Standard_Integer myValue;
+  Standard_Integer myValue;
 
 
 };
@@ -68,7 +57,6 @@ Standard_Integer myValue;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDataStd_Integer_HeaderFile

@@ -6,65 +6,55 @@
 #ifndef _QANewBRepNaming_ImportShape_HeaderFile
 #define _QANewBRepNaming_ImportShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _QANewBRepNaming_TopNaming_HeaderFile
 #include <QANewBRepNaming_TopNaming.hxx>
-#endif
-#ifndef _Handle_TDF_TagSource_HeaderFile
 #include <Handle_TDF_TagSource.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TDF_Label;
 class TopoDS_Shape;
 class TDF_TagSource;
 class TDF_LabelMap;
 
 
-//! This class provides a topological naming <br>
-//!          of a Shape <br>
-class QANewBRepNaming_ImportShape  : public QANewBRepNaming_TopNaming {
+//! This class provides a topological naming
+//! of a Shape
+class QANewBRepNaming_ImportShape  : public QANewBRepNaming_TopNaming
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   QANewBRepNaming_ImportShape();
+  Standard_EXPORT QANewBRepNaming_ImportShape();
   
-  Standard_EXPORT   QANewBRepNaming_ImportShape(const TDF_Label& ResultLabel);
+  Standard_EXPORT QANewBRepNaming_ImportShape(const TDF_Label& ResultLabel);
   
-  Standard_EXPORT     void Init(const TDF_Label& ResultLabel) ;
-  //! Use this method for a topological naming of a Shape <br>
-  Standard_EXPORT     void Load(const TopoDS_Shape& S) const;
+  Standard_EXPORT   void Init (const TDF_Label& ResultLabel) ;
   
-  Standard_EXPORT     void LoadPrime(const TopoDS_Shape& S) const;
+  //! Use this method for a topological naming of a Shape
+  Standard_EXPORT   void Load (const TopoDS_Shape& S)  const;
   
-  Standard_EXPORT     void LoadFirstLevel(const TopoDS_Shape& S,const Handle(TDF_TagSource)& Tagger) const;
+  Standard_EXPORT   void LoadPrime (const TopoDS_Shape& S)  const;
   
-  Standard_EXPORT     void LoadNextLevels(const TopoDS_Shape& S,const Handle(TDF_TagSource)& Tagger) const;
-  //! Method for internal use. It is used by Load(). <br>
-//!          It loads the edges which couldn't be uniquely identified as <br>
-//!          an intersection of two faces. <br>
-  Standard_EXPORT     void LoadC0Edges(const TopoDS_Shape& S,const Handle(TDF_TagSource)& Tagger) const;
+  Standard_EXPORT   void LoadFirstLevel (const TopoDS_Shape& S, const Handle(TDF_TagSource)& Tagger)  const;
   
-  Standard_EXPORT     void LoadC0Vertices(const TopoDS_Shape& S,const Handle(TDF_TagSource)& Tagger) const;
+  Standard_EXPORT   void LoadNextLevels (const TopoDS_Shape& S, const Handle(TDF_TagSource)& Tagger)  const;
   
-  Standard_EXPORT     Standard_Integer NamedFaces(TDF_LabelMap& theNamedFaces) const;
+  //! Method for internal use. It is used by Load().
+  //! It loads the edges which couldn't be uniquely identified as
+  //! an intersection of two faces.
+  Standard_EXPORT   void LoadC0Edges (const TopoDS_Shape& S, const Handle(TDF_TagSource)& Tagger)  const;
   
-  Standard_EXPORT     Standard_Integer NamedEdges(TDF_LabelMap& theNamedEdges) const;
+  Standard_EXPORT   void LoadC0Vertices (const TopoDS_Shape& S, const Handle(TDF_TagSource)& Tagger)  const;
   
-  Standard_EXPORT     Standard_Integer NamedVertices(TDF_LabelMap& theNamedVertices) const;
-
+  Standard_EXPORT   Standard_Integer NamedFaces (TDF_LabelMap& theNamedFaces)  const;
+  
+  Standard_EXPORT   Standard_Integer NamedEdges (TDF_LabelMap& theNamedEdges)  const;
+  
+  Standard_EXPORT   Standard_Integer NamedVertices (TDF_LabelMap& theNamedVertices)  const;
 
 
 
@@ -87,7 +77,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QANewBRepNaming_ImportShape_HeaderFile

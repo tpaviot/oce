@@ -6,34 +6,16 @@
 #ifndef _Dico_IteratorOfDictionaryOfInteger_HeaderFile
 #define _Dico_IteratorOfDictionaryOfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Dico_DictionaryOfInteger_HeaderFile
 #include <Handle_Dico_DictionaryOfInteger.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Handle_Dico_StackItemOfDictionaryOfInteger_HeaderFile
 #include <Handle_Dico_StackItemOfDictionaryOfInteger.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
 class Dico_DictionaryOfInteger;
 class Dico_StackItemOfDictionaryOfInteger;
 class Standard_NoSuchObject;
@@ -41,28 +23,28 @@ class TCollection_AsciiString;
 
 
 
-class Dico_IteratorOfDictionaryOfInteger  {
+class Dico_IteratorOfDictionaryOfInteger 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Dico_IteratorOfDictionaryOfInteger(const Handle(Dico_DictionaryOfInteger)& acell);
+  Standard_EXPORT Dico_IteratorOfDictionaryOfInteger(const Handle(Dico_DictionaryOfInteger)& acell);
   
-  Standard_EXPORT   Dico_IteratorOfDictionaryOfInteger(const Handle(Dico_DictionaryOfInteger)& acell,const Standard_CString basename);
+  Standard_EXPORT Dico_IteratorOfDictionaryOfInteger(const Handle(Dico_DictionaryOfInteger)& acell, const Standard_CString basename);
   
-  Standard_EXPORT   Dico_IteratorOfDictionaryOfInteger(const Handle(Dico_DictionaryOfInteger)& acell,const TCollection_AsciiString& basename);
+  Standard_EXPORT Dico_IteratorOfDictionaryOfInteger(const Handle(Dico_DictionaryOfInteger)& acell, const TCollection_AsciiString& basename);
   
-  Standard_EXPORT     void Start() ;
+  Standard_EXPORT   void Start() ;
   
-  Standard_EXPORT     Standard_Boolean More() ;
+  Standard_EXPORT   Standard_Boolean More() ;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT    const Standard_Integer& Value() const;
+  Standard_EXPORT  const  Standard_Integer& Value()  const;
   
-  Standard_EXPORT     TCollection_AsciiString Name() const;
-
+  Standard_EXPORT   TCollection_AsciiString Name()  const;
 
 
 
@@ -76,16 +58,16 @@ protected:
 private:
 
   
-  Standard_EXPORT     void AppendStack(const Handle(Dico_DictionaryOfInteger)& val) ;
+  Standard_EXPORT   void AppendStack (const Handle(Dico_DictionaryOfInteger)& val) ;
 
 
-Handle_Dico_DictionaryOfInteger thebase;
-TCollection_AsciiString thename;
-Handle_Dico_StackItemOfDictionaryOfInteger thelast;
-Standard_Integer thenb;
-Standard_Boolean themore;
-Standard_Boolean theinit;
-Standard_Boolean thenext;
+  Handle(Dico_DictionaryOfInteger) thebase;
+  TCollection_AsciiString thename;
+  Handle(Dico_StackItemOfDictionaryOfInteger) thelast;
+  Standard_Integer thenb;
+  Standard_Boolean themore;
+  Standard_Boolean theinit;
+  Standard_Boolean thenext;
 
 
 };
@@ -94,7 +76,6 @@ Standard_Boolean thenext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Dico_IteratorOfDictionaryOfInteger_HeaderFile

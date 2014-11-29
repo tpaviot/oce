@@ -6,40 +6,18 @@
 #ifndef _MgtPoly_HeaderFile
 #define _MgtPoly_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Poly_Triangulation_HeaderFile
 #include <Handle_Poly_Triangulation.hxx>
-#endif
-#ifndef _Handle_PPoly_Triangulation_HeaderFile
 #include <Handle_PPoly_Triangulation.hxx>
-#endif
-#ifndef _Handle_Poly_Polygon3D_HeaderFile
 #include <Handle_Poly_Polygon3D.hxx>
-#endif
-#ifndef _Handle_PPoly_Polygon3D_HeaderFile
 #include <Handle_PPoly_Polygon3D.hxx>
-#endif
-#ifndef _Handle_Poly_Polygon2D_HeaderFile
 #include <Handle_Poly_Polygon2D.hxx>
-#endif
-#ifndef _Handle_PPoly_Polygon2D_HeaderFile
 #include <Handle_PPoly_Polygon2D.hxx>
-#endif
-#ifndef _Handle_Poly_PolygonOnTriangulation_HeaderFile
 #include <Handle_Poly_PolygonOnTriangulation.hxx>
-#endif
-#ifndef _Handle_PPoly_PolygonOnTriangulation_HeaderFile
 #include <Handle_PPoly_PolygonOnTriangulation.hxx>
-#endif
 class Poly_Triangle;
 class PPoly_Triangle;
 class Poly_Triangulation;
@@ -54,37 +32,47 @@ class Poly_PolygonOnTriangulation;
 class PPoly_PolygonOnTriangulation;
 
 
-//! This  package   provides   methods  to   translate <br>
-//!          transient objects from Poly to  persistent objects <br>
-//!          from PPoly and vice-versa. <br>
-//!          As far as objects can be shared (just as Geometry), <br>
-//!          a map is given as translate argument. <br>
-class MgtPoly  {
+//! This  package   provides   methods  to   translate
+//! transient objects from Poly to  persistent objects
+//! from PPoly and vice-versa.
+//! As far as objects can be shared (just as Geometry),
+//! a map is given as translate argument.
+class MgtPoly 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! translates Transient -> Persistent <br>
-  Standard_EXPORT   static  Poly_Triangle Translate(const PPoly_Triangle& POjb) ;
-  //! translates Persistent -> Transient <br>
-  Standard_EXPORT   static  PPoly_Triangle Translate(const Poly_Triangle& TObj) ;
-  //! translates Persistent -> Transient <br>
-  Standard_EXPORT   static  Handle_Poly_Triangulation Translate(const Handle(PPoly_Triangulation)& PObj,PTColStd_PersistentTransientMap& aMap) ;
-  //! translates Transient -> Persistent <br>
-  Standard_EXPORT   static  Handle_PPoly_Triangulation Translate(const Handle(Poly_Triangulation)& TObj,PTColStd_TransientPersistentMap& aMap) ;
-  //! translates Persistent -> Transient <br>
-  Standard_EXPORT   static  Handle_Poly_Polygon3D Translate(const Handle(PPoly_Polygon3D)& PObj,PTColStd_PersistentTransientMap& aMap) ;
-  //! translates Transient -> Persistent <br>
-  Standard_EXPORT   static  Handle_PPoly_Polygon3D Translate(const Handle(Poly_Polygon3D)& TObj,PTColStd_TransientPersistentMap& aMap) ;
-  //! translates Persistent -> Transient <br>
-  Standard_EXPORT   static  Handle_Poly_Polygon2D Translate(const Handle(PPoly_Polygon2D)& PObj,PTColStd_PersistentTransientMap& aMap) ;
-  //! translates Transient -> Persistent <br>
-  Standard_EXPORT   static  Handle_PPoly_Polygon2D Translate(const Handle(Poly_Polygon2D)& TObj,PTColStd_TransientPersistentMap& aMap) ;
-  //! translates Persistent -> Transient <br>
-  Standard_EXPORT   static  Handle_Poly_PolygonOnTriangulation Translate(const Handle(PPoly_PolygonOnTriangulation)& PObj,PTColStd_PersistentTransientMap& aMap) ;
-  //! translates Transient -> Persistent <br>
-  Standard_EXPORT   static  Handle_PPoly_PolygonOnTriangulation Translate(const Handle(Poly_PolygonOnTriangulation)& TObj,PTColStd_TransientPersistentMap& aMap) ;
-
+  
+  //! translates Transient -> Persistent
+  Standard_EXPORT static   Poly_Triangle Translate (const PPoly_Triangle& POjb) ;
+  
+  //! translates Persistent -> Transient
+  Standard_EXPORT static   PPoly_Triangle Translate (const Poly_Triangle& TObj) ;
+  
+  //! translates Persistent -> Transient
+  Standard_EXPORT static   Handle(Poly_Triangulation) Translate (const Handle(PPoly_Triangulation)& PObj, PTColStd_PersistentTransientMap& aMap) ;
+  
+  //! translates Transient -> Persistent
+  Standard_EXPORT static   Handle(PPoly_Triangulation) Translate (const Handle(Poly_Triangulation)& TObj, PTColStd_TransientPersistentMap& aMap) ;
+  
+  //! translates Persistent -> Transient
+  Standard_EXPORT static   Handle(Poly_Polygon3D) Translate (const Handle(PPoly_Polygon3D)& PObj, PTColStd_PersistentTransientMap& aMap) ;
+  
+  //! translates Transient -> Persistent
+  Standard_EXPORT static   Handle(PPoly_Polygon3D) Translate (const Handle(Poly_Polygon3D)& TObj, PTColStd_TransientPersistentMap& aMap) ;
+  
+  //! translates Persistent -> Transient
+  Standard_EXPORT static   Handle(Poly_Polygon2D) Translate (const Handle(PPoly_Polygon2D)& PObj, PTColStd_PersistentTransientMap& aMap) ;
+  
+  //! translates Transient -> Persistent
+  Standard_EXPORT static   Handle(PPoly_Polygon2D) Translate (const Handle(Poly_Polygon2D)& TObj, PTColStd_TransientPersistentMap& aMap) ;
+  
+  //! translates Persistent -> Transient
+  Standard_EXPORT static   Handle(Poly_PolygonOnTriangulation) Translate (const Handle(PPoly_PolygonOnTriangulation)& PObj, PTColStd_PersistentTransientMap& aMap) ;
+  
+  //! translates Transient -> Persistent
+  Standard_EXPORT static   Handle(PPoly_PolygonOnTriangulation) Translate (const Handle(Poly_PolygonOnTriangulation)& TObj, PTColStd_TransientPersistentMap& aMap) ;
 
 
 
@@ -107,7 +95,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MgtPoly_HeaderFile

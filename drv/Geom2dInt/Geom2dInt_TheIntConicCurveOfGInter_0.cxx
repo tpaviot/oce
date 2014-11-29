@@ -5,42 +5,18 @@
 
 #include <Geom2dInt_TheIntConicCurveOfGInter.hxx>
 
-#ifndef _IntCurve_IConicTool_HeaderFile
 #include <IntCurve_IConicTool.hxx>
-#endif
-#ifndef _Adaptor2d_Curve2d_HeaderFile
 #include <Adaptor2d_Curve2d.hxx>
-#endif
-#ifndef _Geom2dInt_Geom2dCurveTool_HeaderFile
 #include <Geom2dInt_Geom2dCurveTool.hxx>
-#endif
-#ifndef _Geom2dInt_TheProjPCurOfGInter_HeaderFile
 #include <Geom2dInt_TheProjPCurOfGInter.hxx>
-#endif
-#ifndef _Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_HeaderFile
 #include <Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter.hxx>
-#endif
-#ifndef _Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter_HeaderFile
 #include <Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter.hxx>
-#endif
-#ifndef _gp_Lin2d_HeaderFile
 #include <gp_Lin2d.hxx>
-#endif
-#ifndef _IntRes2d_Domain_HeaderFile
 #include <IntRes2d_Domain.hxx>
-#endif
-#ifndef _gp_Circ2d_HeaderFile
 #include <gp_Circ2d.hxx>
-#endif
-#ifndef _gp_Elips2d_HeaderFile
 #include <gp_Elips2d.hxx>
-#endif
-#ifndef _gp_Parab2d_HeaderFile
 #include <gp_Parab2d.hxx>
-#endif
-#ifndef _gp_Hypr2d_HeaderFile
 #include <gp_Hypr2d.hxx>
-#endif
  
 
 #define TheImpTool IntCurve_IConicTool

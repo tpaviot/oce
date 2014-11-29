@@ -6,97 +6,83 @@
 #ifndef _IntTools_SurfaceRangeSample_HeaderFile
 #define _IntTools_SurfaceRangeSample_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _IntTools_CurveRangeSample_HeaderFile
 #include <IntTools_CurveRangeSample.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class IntTools_CurveRangeSample;
 class IntTools_Range;
 
 
-
-class IntTools_SurfaceRangeSample  {
+//! class for range index management of surface
+class IntTools_SurfaceRangeSample 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntTools_SurfaceRangeSample();
+  Standard_EXPORT IntTools_SurfaceRangeSample();
   
-  Standard_EXPORT   IntTools_SurfaceRangeSample(const Standard_Integer theIndexU,const Standard_Integer theDepthU,const Standard_Integer theIndexV,const Standard_Integer theDepthV);
+  Standard_EXPORT IntTools_SurfaceRangeSample(const Standard_Integer theIndexU, const Standard_Integer theDepthU, const Standard_Integer theIndexV, const Standard_Integer theDepthV);
   
-  Standard_EXPORT   IntTools_SurfaceRangeSample(const IntTools_CurveRangeSample& theRangeU,const IntTools_CurveRangeSample& theRangeV);
+  Standard_EXPORT IntTools_SurfaceRangeSample(const IntTools_CurveRangeSample& theRangeU, const IntTools_CurveRangeSample& theRangeV);
   
-  Standard_EXPORT   IntTools_SurfaceRangeSample(const IntTools_SurfaceRangeSample& Other);
+  Standard_EXPORT IntTools_SurfaceRangeSample(const IntTools_SurfaceRangeSample& Other);
   
-  Standard_EXPORT     IntTools_SurfaceRangeSample& Assign(const IntTools_SurfaceRangeSample& Other) ;
-    IntTools_SurfaceRangeSample& operator =(const IntTools_SurfaceRangeSample& Other) 
+  Standard_EXPORT   IntTools_SurfaceRangeSample& Assign (const IntTools_SurfaceRangeSample& Other) ;
+  IntTools_SurfaceRangeSample& operator = (const IntTools_SurfaceRangeSample& Other) 
 {
   return Assign(Other);
 }
   
-        void SetRanges(const IntTools_CurveRangeSample& theRangeU,const IntTools_CurveRangeSample& theRangeV) ;
+      void SetRanges (const IntTools_CurveRangeSample& theRangeU, const IntTools_CurveRangeSample& theRangeV) ;
   
-        void GetRanges(IntTools_CurveRangeSample& theRangeU,IntTools_CurveRangeSample& theRangeV) const;
+      void GetRanges (IntTools_CurveRangeSample& theRangeU, IntTools_CurveRangeSample& theRangeV)  const;
   
-        void SetIndexes(const Standard_Integer theIndexU,const Standard_Integer theIndexV) ;
+      void SetIndexes (const Standard_Integer theIndexU, const Standard_Integer theIndexV) ;
   
-        void GetIndexes(Standard_Integer& theIndexU,Standard_Integer& theIndexV) const;
+      void GetIndexes (Standard_Integer& theIndexU, Standard_Integer& theIndexV)  const;
   
-        void GetDepths(Standard_Integer& theDepthU,Standard_Integer& theDepthV) const;
+      void GetDepths (Standard_Integer& theDepthU, Standard_Integer& theDepthV)  const;
   
-        void SetSampleRangeU(const IntTools_CurveRangeSample& theRangeSampleU) ;
+      void SetSampleRangeU (const IntTools_CurveRangeSample& theRangeSampleU) ;
   
-       const IntTools_CurveRangeSample& GetSampleRangeU() const;
+     const  IntTools_CurveRangeSample& GetSampleRangeU()  const;
   
-        void SetSampleRangeV(const IntTools_CurveRangeSample& theRangeSampleV) ;
+      void SetSampleRangeV (const IntTools_CurveRangeSample& theRangeSampleV) ;
   
-       const IntTools_CurveRangeSample& GetSampleRangeV() const;
+     const  IntTools_CurveRangeSample& GetSampleRangeV()  const;
   
-        void SetIndexU(const Standard_Integer theIndexU) ;
+      void SetIndexU (const Standard_Integer theIndexU) ;
   
-        Standard_Integer GetIndexU() const;
+      Standard_Integer GetIndexU()  const;
   
-        void SetIndexV(const Standard_Integer theIndexV) ;
+      void SetIndexV (const Standard_Integer theIndexV) ;
   
-        Standard_Integer GetIndexV() const;
+      Standard_Integer GetIndexV()  const;
   
-        void SetDepthU(const Standard_Integer theDepthU) ;
+      void SetDepthU (const Standard_Integer theDepthU) ;
   
-        Standard_Integer GetDepthU() const;
+      Standard_Integer GetDepthU()  const;
   
-        void SetDepthV(const Standard_Integer theDepthV) ;
+      void SetDepthV (const Standard_Integer theDepthV) ;
   
-        Standard_Integer GetDepthV() const;
+      Standard_Integer GetDepthV()  const;
   
-  Standard_EXPORT     IntTools_Range GetRangeU(const Standard_Real theFirstU,const Standard_Real theLastU,const Standard_Integer theNbSampleU) const;
+  Standard_EXPORT   IntTools_Range GetRangeU (const Standard_Real theFirstU, const Standard_Real theLastU, const Standard_Integer theNbSampleU)  const;
   
-  Standard_EXPORT     IntTools_Range GetRangeV(const Standard_Real theFirstV,const Standard_Real theLastV,const Standard_Integer theNbSampleV) const;
+  Standard_EXPORT   IntTools_Range GetRangeV (const Standard_Real theFirstV, const Standard_Real theLastV, const Standard_Integer theNbSampleV)  const;
   
-        Standard_Boolean IsEqual(const IntTools_SurfaceRangeSample& Other) const;
+      Standard_Boolean IsEqual (const IntTools_SurfaceRangeSample& Other)  const;
   
-        Standard_Integer GetRangeIndexUDeeper(const Standard_Integer theNbSampleU) const;
+      Standard_Integer GetRangeIndexUDeeper (const Standard_Integer theNbSampleU)  const;
   
-        Standard_Integer GetRangeIndexVDeeper(const Standard_Integer theNbSampleV) const;
-
+      Standard_Integer GetRangeIndexVDeeper (const Standard_Integer theNbSampleV)  const;
 
 
 
@@ -111,8 +97,8 @@ private:
 
 
 
-IntTools_CurveRangeSample myRangeU;
-IntTools_CurveRangeSample myRangeV;
+  IntTools_CurveRangeSample myRangeU;
+  IntTools_CurveRangeSample myRangeV;
 
 
 };
@@ -122,7 +108,6 @@ IntTools_CurveRangeSample myRangeV;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_SurfaceRangeSample_HeaderFile

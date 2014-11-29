@@ -19,11 +19,19 @@
 #ifndef _Standard_Macro_HeaderFile
 # define _Standard_Macro_HeaderFile
 
-# include <oce-config.h>
-
 // Standard OCC macros: Handle(), STANDARD_TYPE()
 # define   Handle(ClassName)      Handle_##ClassName
 # define   STANDARD_TYPE(aType)   aType##_Type_()
+
+#if defined(__cplusplus) && (__cplusplus >= 201100L)
+  // part of C++11 standard
+  #define Standard_OVERRIDE override
+#elif defined(_MSC_VER) && (_MSC_VER >= 1700)
+  // MSVC extension since VS2005
+  #define Standard_OVERRIDE override
+#else
+  #define Standard_OVERRIDE
+#endif
 
 //======================================================
 // Windows-specific definitions
@@ -33,7 +41,7 @@
 #define WNT
 #endif
 
-# if defined(WNT) && !defined(HAVE_NO_DLL)
+# if defined(_WIN32) && !defined(HAVE_NO_DLL)
 
 #  ifndef Standard_EXPORT
 #   define Standard_EXPORT __declspec( dllexport )
@@ -126,7 +134,7 @@
 
 # ifndef __Standard_API
 //#  ifdef WNT
-#   if !defined(WNT) || defined(__Standard_DLL) || defined(__FSD_DLL) || defined(__MMgt_DLL) || defined(__OSD_DLL) || defined(__Plugin_DLL) || defined(__Quantity_DLL) || defined(__Resource_DLL) || defined(__SortTools_DLL) || defined(__StdFail_DLL) || defined(__Storage_DLL) || defined(__TColStd_DLL) || defined(__TCollection_DLL) || defined(__TShort_DLL) || defined(__Units_DLL) || defined(__UnitsAPI_DLL) || defined(__Dico_DLL) || defined(__Message_DLL)
+#   if !defined(_WIN32) || defined(__Standard_DLL) || defined(__FSD_DLL) || defined(__MMgt_DLL) || defined(__OSD_DLL) || defined(__Plugin_DLL) || defined(__Quantity_DLL) || defined(__Resource_DLL) || defined(__SortTools_DLL) || defined(__StdFail_DLL) || defined(__Storage_DLL) || defined(__TColStd_DLL) || defined(__TCollection_DLL) || defined(__TShort_DLL) || defined(__Units_DLL) || defined(__UnitsAPI_DLL) || defined(__Dico_DLL) || defined(__Message_DLL)
 #    define __Standard_API Standard_EXPORT
 #    define __Standard_APIEXTERN Standard_EXPORTEXTERN
 #      ifdef __BORLANDC__
@@ -143,12 +151,5 @@
 //#   define __Standard_API
 //#  endif  // WNT
 # endif  // __Standard_API
-
-// Define _OCC64 variable (unless already defined) if platform is known to be 64-bit
-#ifndef _OCC64
-#if defined (__alpha) || defined(DECOSF1) || defined(_WIN64) || defined(__amd64) || defined(__x86_64)
-#define _OCC64 1
-#endif
-#endif
 
 #endif  

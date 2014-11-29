@@ -6,28 +6,22 @@
 #ifndef _StepVisual_CameraModel_HeaderFile
 #define _StepVisual_CameraModel_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_CameraModel_HeaderFile
 #include <Handle_StepVisual_CameraModel.hxx>
-#endif
 
-#ifndef _StepGeom_GeometricRepresentationItem_HeaderFile
 #include <StepGeom_GeometricRepresentationItem.hxx>
-#endif
 
 
 
-class StepVisual_CameraModel : public StepGeom_GeometricRepresentationItem {
+class StepVisual_CameraModel : public StepGeom_GeometricRepresentationItem
+{
 
 public:
 
-  //! Returns a CameraModel <br>
-  Standard_EXPORT   StepVisual_CameraModel();
+  
+  //! Returns a CameraModel
+  Standard_EXPORT StepVisual_CameraModel();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_CameraModel_HeaderFile

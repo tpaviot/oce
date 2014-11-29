@@ -1,9 +1,3 @@
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StepData_Field_HeaderFile
 #include <StepData_Field.hxx>
-#endif
-#ifndef _StepData_FieldListN_HeaderFile
 #include <StepData_FieldListN.hxx>
-#endif

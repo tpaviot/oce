@@ -6,22 +6,15 @@
 #ifndef _Handle_StepData_SelectReal_HeaderFile
 #define _Handle_StepData_SelectReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepData_SelectMember_HeaderFile
 #include <Handle_StepData_SelectMember.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepData_SelectMember);
 class StepData_SelectReal;
 
-DEFINE_STANDARD_HANDLE(StepData_SelectReal,StepData_SelectMember)
+DEFINE_STANDARD_HANDLE(StepData_SelectReal, StepData_SelectMember)
 
-#endif
+#endif // _Handle_StepData_SelectReal_HeaderFile

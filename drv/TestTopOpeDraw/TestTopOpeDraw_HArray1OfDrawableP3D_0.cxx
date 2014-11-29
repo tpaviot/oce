@@ -5,28 +5,14 @@
 
 #include <TestTopOpeDraw_HArray1OfDrawableP3D.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _TestTopOpeDraw_DrawableP3D_HeaderFile
 #include <TestTopOpeDraw_DrawableP3D.hxx>
-#endif
-#ifndef _TestTopOpeDraw_Array1OfDrawableP3D_HeaderFile
 #include <TestTopOpeDraw_Array1OfDrawableP3D.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(TestTopOpeDraw_HArray1OfDrawableP3D,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(TestTopOpeDraw_HArray1OfDrawableP3D)
 
 
-#define ItemHArray1 Handle_TestTopOpeDraw_DrawableP3D
+#define ItemHArray1 Handle(TestTopOpeDraw_DrawableP3D)
 #define ItemHArray1_hxx <TestTopOpeDraw_DrawableP3D.hxx>
 #define TheArray1 TestTopOpeDraw_Array1OfDrawableP3D
 #define TheArray1_hxx <TestTopOpeDraw_Array1OfDrawableP3D.hxx>

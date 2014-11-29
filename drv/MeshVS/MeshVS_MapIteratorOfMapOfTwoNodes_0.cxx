@@ -5,18 +5,10 @@
 
 #include <MeshVS_MapIteratorOfMapOfTwoNodes.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _MeshVS_TwoNodesHasher_HeaderFile
 #include <MeshVS_TwoNodesHasher.hxx>
-#endif
-#ifndef _MeshVS_MapOfTwoNodes_HeaderFile
 #include <MeshVS_MapOfTwoNodes.hxx>
-#endif
-#ifndef _MeshVS_StdMapNodeOfMapOfTwoNodes_HeaderFile
 #include <MeshVS_StdMapNodeOfMapOfTwoNodes.hxx>
-#endif
  
 
 #define TheKey MeshVS_TwoNodes

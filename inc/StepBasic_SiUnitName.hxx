@@ -6,8 +6,11 @@
 #ifndef _StepBasic_SiUnitName_HeaderFile
 #define _StepBasic_SiUnitName_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepBasic_SiUnitName {
+
+enum StepBasic_SiUnitName
+{
 StepBasic_sunMetre,
 StepBasic_sunGram,
 StepBasic_sunSecond,
@@ -38,8 +41,4 @@ StepBasic_sunGray,
 StepBasic_sunSievert
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepBasic_SiUnitName_HeaderFile

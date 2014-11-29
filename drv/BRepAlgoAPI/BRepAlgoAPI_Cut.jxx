@@ -1,9 +1,3 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _BOPAlgo_PaveFiller_HeaderFile
 #include <BOPAlgo_PaveFiller.hxx>
-#endif
-#ifndef _BRepAlgoAPI_Cut_HeaderFile
 #include <BRepAlgoAPI_Cut.hxx>
-#endif

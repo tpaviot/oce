@@ -6,37 +6,17 @@
 #ifndef _StepShape_OrientedPath_HeaderFile
 #define _StepShape_OrientedPath_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_OrientedPath_HeaderFile
 #include <Handle_StepShape_OrientedPath.hxx>
-#endif
 
-#ifndef _Handle_StepShape_EdgeLoop_HeaderFile
 #include <Handle_StepShape_EdgeLoop.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _StepShape_Path_HeaderFile
 #include <StepShape_Path.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepShape_HArray1OfOrientedEdge_HeaderFile
 #include <Handle_StepShape_HArray1OfOrientedEdge.hxx>
-#endif
-#ifndef _Handle_StepShape_OrientedEdge_HeaderFile
 #include <Handle_StepShape_OrientedEdge.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StepShape_EdgeLoop;
 class TCollection_HAsciiString;
 class StepShape_HArray1OfOrientedEdge;
@@ -44,32 +24,34 @@ class StepShape_OrientedEdge;
 
 
 
-class StepShape_OrientedPath : public StepShape_Path {
+class StepShape_OrientedPath : public StepShape_Path
+{
 
 public:
 
-  //! Returns a OrientedPath <br>
-  Standard_EXPORT   StepShape_OrientedPath();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepShape_HArray1OfOrientedEdge)& aEdgeList) ;
+  //! Returns a OrientedPath
+  Standard_EXPORT StepShape_OrientedPath();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepShape_EdgeLoop)& aPathElement,const Standard_Boolean aOrientation) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepShape_HArray1OfOrientedEdge)& aEdgeList) ;
   
-  Standard_EXPORT     void SetPathElement(const Handle(StepShape_EdgeLoop)& aPathElement) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepShape_EdgeLoop)& aPathElement, const Standard_Boolean aOrientation) ;
   
-  Standard_EXPORT     Handle_StepShape_EdgeLoop PathElement() const;
+  Standard_EXPORT   void SetPathElement (const Handle(StepShape_EdgeLoop)& aPathElement) ;
   
-  Standard_EXPORT     void SetOrientation(const Standard_Boolean aOrientation) ;
+  Standard_EXPORT   Handle(StepShape_EdgeLoop) PathElement()  const;
   
-  Standard_EXPORT     Standard_Boolean Orientation() const;
+  Standard_EXPORT   void SetOrientation (const Standard_Boolean aOrientation) ;
   
-  Standard_EXPORT   virtual  void SetEdgeList(const Handle(StepShape_HArray1OfOrientedEdge)& aEdgeList) ;
+  Standard_EXPORT   Standard_Boolean Orientation()  const;
   
-  Standard_EXPORT   virtual  Handle_StepShape_HArray1OfOrientedEdge EdgeList() const;
+  Standard_EXPORT virtual   void SetEdgeList (const Handle(StepShape_HArray1OfOrientedEdge)& aEdgeList) ;
   
-  Standard_EXPORT   virtual  Handle_StepShape_OrientedEdge EdgeListValue(const Standard_Integer num) const;
+  Standard_EXPORT virtual   Handle(StepShape_HArray1OfOrientedEdge) EdgeList()  const;
   
-  Standard_EXPORT   virtual  Standard_Integer NbEdgeList() const;
+  Standard_EXPORT virtual   Handle(StepShape_OrientedEdge) EdgeListValue (const Standard_Integer num)  const;
+  
+  Standard_EXPORT virtual   Standard_Integer NbEdgeList()  const;
 
 
 
@@ -84,8 +66,8 @@ protected:
 private: 
 
 
-Handle_StepShape_EdgeLoop pathElement;
-Standard_Boolean orientation;
+  Handle(StepShape_EdgeLoop) pathElement;
+  Standard_Boolean orientation;
 
 
 };
@@ -94,7 +76,6 @@ Standard_Boolean orientation;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_OrientedPath_HeaderFile

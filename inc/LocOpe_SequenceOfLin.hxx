@@ -6,25 +6,13 @@
 #ifndef _LocOpe_SequenceOfLin_HeaderFile
 #define _LocOpe_SequenceOfLin_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_LocOpe_SequenceNodeOfSequenceOfLin_HeaderFile
 #include <Handle_LocOpe_SequenceNodeOfSequenceOfLin.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class gp_Lin;
@@ -32,66 +20,68 @@ class LocOpe_SequenceNodeOfSequenceOfLin;
 
 
 
-class LocOpe_SequenceOfLin  : public TCollection_BaseSequence {
+class LocOpe_SequenceOfLin  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      LocOpe_SequenceOfLin();
+    LocOpe_SequenceOfLin();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT LocOpe_SequenceOfLin(const LocOpe_SequenceOfLin& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~LocOpe_SequenceOfLin()
 {
   Clear();
 }
   
-  Standard_EXPORT    const LocOpe_SequenceOfLin& Assign(const LocOpe_SequenceOfLin& Other) ;
-   const LocOpe_SequenceOfLin& operator =(const LocOpe_SequenceOfLin& Other) 
+  Standard_EXPORT  const  LocOpe_SequenceOfLin& Assign (const LocOpe_SequenceOfLin& Other) ;
+ const  LocOpe_SequenceOfLin& operator = (const LocOpe_SequenceOfLin& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const gp_Lin& T) ;
+  Standard_EXPORT   void Append (const gp_Lin& T) ;
   
-        void Append(LocOpe_SequenceOfLin& S) ;
+      void Append (LocOpe_SequenceOfLin& S) ;
   
-  Standard_EXPORT     void Prepend(const gp_Lin& T) ;
+  Standard_EXPORT   void Prepend (const gp_Lin& T) ;
   
-        void Prepend(LocOpe_SequenceOfLin& S) ;
+      void Prepend (LocOpe_SequenceOfLin& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const gp_Lin& T) ;
+      void InsertBefore (const Standard_Integer Index, const gp_Lin& T) ;
   
-        void InsertBefore(const Standard_Integer Index,LocOpe_SequenceOfLin& S) ;
+      void InsertBefore (const Standard_Integer Index, LocOpe_SequenceOfLin& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const gp_Lin& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const gp_Lin& T) ;
   
-        void InsertAfter(const Standard_Integer Index,LocOpe_SequenceOfLin& S) ;
+      void InsertAfter (const Standard_Integer Index, LocOpe_SequenceOfLin& S) ;
   
-  Standard_EXPORT    const gp_Lin& First() const;
+  Standard_EXPORT  const  gp_Lin& First()  const;
   
-  Standard_EXPORT    const gp_Lin& Last() const;
+  Standard_EXPORT  const  gp_Lin& Last()  const;
   
-        void Split(const Standard_Integer Index,LocOpe_SequenceOfLin& Sub) ;
+      void Split (const Standard_Integer Index, LocOpe_SequenceOfLin& Sub) ;
   
-  Standard_EXPORT    const gp_Lin& Value(const Standard_Integer Index) const;
-   const gp_Lin& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  gp_Lin& Value (const Standard_Integer Index)  const;
+ const  gp_Lin& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const gp_Lin& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const gp_Lin& I) ;
   
-  Standard_EXPORT     gp_Lin& ChangeValue(const Standard_Integer Index) ;
-    gp_Lin& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   gp_Lin& ChangeValue (const Standard_Integer Index) ;
+  gp_Lin& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -104,8 +94,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   LocOpe_SequenceOfLin(const LocOpe_SequenceOfLin& Other);
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _LocOpe_SequenceOfLin_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_V3d_AmbientLight_HeaderFile
 #define _Handle_V3d_AmbientLight_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_V3d_Light_HeaderFile
 #include <Handle_V3d_Light.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(V3d_Light);
 class V3d_AmbientLight;
 
-DEFINE_STANDARD_HANDLE(V3d_AmbientLight,V3d_Light)
+DEFINE_STANDARD_HANDLE(V3d_AmbientLight, V3d_Light)
 
-#endif
+#endif // _Handle_V3d_AmbientLight_HeaderFile

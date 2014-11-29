@@ -6,8 +6,11 @@
 #ifndef _math_Status_HeaderFile
 #define _math_Status_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum math_Status {
+
+enum math_Status
+{
 math_OK,
 math_TooManyIterations,
 math_FunctionError,
@@ -15,8 +18,4 @@ math_DirectionSearchError,
 math_NotBracketed
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _math_Status_HeaderFile

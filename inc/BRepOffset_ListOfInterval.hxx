@@ -6,28 +6,14 @@
 #ifndef _BRepOffset_ListOfInterval_HeaderFile
 #define _BRepOffset_ListOfInterval_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_BRepOffset_ListNodeOfListOfInterval_HeaderFile
 #include <Handle_BRepOffset_ListNodeOfListOfInterval.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class BRepOffset_ListIteratorOfListOfInterval;
 class BRepOffset_Interval;
@@ -35,61 +21,63 @@ class BRepOffset_ListNodeOfListOfInterval;
 
 
 
-class BRepOffset_ListOfInterval  {
+class BRepOffset_ListOfInterval 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepOffset_ListOfInterval();
+  Standard_EXPORT BRepOffset_ListOfInterval();
   
-  Standard_EXPORT     void Assign(const BRepOffset_ListOfInterval& Other) ;
-    void operator=(const BRepOffset_ListOfInterval& Other) 
+  Standard_EXPORT BRepOffset_ListOfInterval(const BRepOffset_ListOfInterval& Other);
+  
+  Standard_EXPORT   void Assign (const BRepOffset_ListOfInterval& Other) ;
+  void operator= (const BRepOffset_ListOfInterval& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~BRepOffset_ListOfInterval()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const BRepOffset_Interval& I) ;
+  Standard_EXPORT   void Prepend (const BRepOffset_Interval& I) ;
   
-  Standard_EXPORT     void Prepend(const BRepOffset_Interval& I,BRepOffset_ListIteratorOfListOfInterval& theIt) ;
+  Standard_EXPORT   void Prepend (const BRepOffset_Interval& I, BRepOffset_ListIteratorOfListOfInterval& theIt) ;
   
-  Standard_EXPORT     void Prepend(BRepOffset_ListOfInterval& Other) ;
+  Standard_EXPORT   void Prepend (BRepOffset_ListOfInterval& Other) ;
   
-  Standard_EXPORT     void Append(const BRepOffset_Interval& I) ;
+  Standard_EXPORT   void Append (const BRepOffset_Interval& I) ;
   
-  Standard_EXPORT     void Append(const BRepOffset_Interval& I,BRepOffset_ListIteratorOfListOfInterval& theIt) ;
+  Standard_EXPORT   void Append (const BRepOffset_Interval& I, BRepOffset_ListIteratorOfListOfInterval& theIt) ;
   
-  Standard_EXPORT     void Append(BRepOffset_ListOfInterval& Other) ;
+  Standard_EXPORT   void Append (BRepOffset_ListOfInterval& Other) ;
   
-  Standard_EXPORT     BRepOffset_Interval& First() const;
+  Standard_EXPORT   BRepOffset_Interval& First()  const;
   
-  Standard_EXPORT     BRepOffset_Interval& Last() const;
+  Standard_EXPORT   BRepOffset_Interval& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(BRepOffset_ListIteratorOfListOfInterval& It) ;
+  Standard_EXPORT   void Remove (BRepOffset_ListIteratorOfListOfInterval& It) ;
   
-  Standard_EXPORT     void InsertBefore(const BRepOffset_Interval& I,BRepOffset_ListIteratorOfListOfInterval& It) ;
+  Standard_EXPORT   void InsertBefore (const BRepOffset_Interval& I, BRepOffset_ListIteratorOfListOfInterval& It) ;
   
-  Standard_EXPORT     void InsertBefore(BRepOffset_ListOfInterval& Other,BRepOffset_ListIteratorOfListOfInterval& It) ;
+  Standard_EXPORT   void InsertBefore (BRepOffset_ListOfInterval& Other, BRepOffset_ListIteratorOfListOfInterval& It) ;
   
-  Standard_EXPORT     void InsertAfter(const BRepOffset_Interval& I,BRepOffset_ListIteratorOfListOfInterval& It) ;
+  Standard_EXPORT   void InsertAfter (const BRepOffset_Interval& I, BRepOffset_ListIteratorOfListOfInterval& It) ;
   
-  Standard_EXPORT     void InsertAfter(BRepOffset_ListOfInterval& Other,BRepOffset_ListIteratorOfListOfInterval& It) ;
+  Standard_EXPORT   void InsertAfter (BRepOffset_ListOfInterval& Other, BRepOffset_ListIteratorOfListOfInterval& It) ;
 
 
 friend class BRepOffset_ListIteratorOfListOfInterval;
-
 
 
 protected:
@@ -100,12 +88,10 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   BRepOffset_ListOfInterval(const BRepOffset_ListOfInterval& Other);
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
@@ -135,7 +121,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepOffset_ListOfInterval_HeaderFile

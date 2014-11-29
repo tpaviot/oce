@@ -6,44 +6,34 @@
 #ifndef _StepBasic_SiUnitAndAreaUnit_HeaderFile
 #define _StepBasic_SiUnitAndAreaUnit_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_SiUnitAndAreaUnit_HeaderFile
 #include <Handle_StepBasic_SiUnitAndAreaUnit.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_AreaUnit_HeaderFile
 #include <Handle_StepBasic_AreaUnit.hxx>
-#endif
-#ifndef _StepBasic_SiUnit_HeaderFile
 #include <StepBasic_SiUnit.hxx>
-#endif
-#ifndef _Handle_StepBasic_DimensionalExponents_HeaderFile
 #include <Handle_StepBasic_DimensionalExponents.hxx>
-#endif
 class StepBasic_AreaUnit;
 class StepBasic_DimensionalExponents;
 
 
 
-class StepBasic_SiUnitAndAreaUnit : public StepBasic_SiUnit {
+class StepBasic_SiUnitAndAreaUnit : public StepBasic_SiUnit
+{
 
 public:
 
-  //! Returns a SiUnitAndAreaUnit <br>
-  Standard_EXPORT   StepBasic_SiUnitAndAreaUnit();
   
-  Standard_EXPORT     void SetAreaUnit(const Handle(StepBasic_AreaUnit)& anAreaUnit) ;
+  //! Returns a SiUnitAndAreaUnit
+  Standard_EXPORT StepBasic_SiUnitAndAreaUnit();
   
-  Standard_EXPORT     Handle_StepBasic_AreaUnit AreaUnit() const;
+  Standard_EXPORT   void SetAreaUnit (const Handle(StepBasic_AreaUnit)& anAreaUnit) ;
   
-  Standard_EXPORT   virtual  void SetDimensions(const Handle(StepBasic_DimensionalExponents)& aDimensions) ;
+  Standard_EXPORT   Handle(StepBasic_AreaUnit) AreaUnit()  const;
   
-  Standard_EXPORT   virtual  Handle_StepBasic_DimensionalExponents Dimensions() const;
+  Standard_EXPORT virtual   void SetDimensions (const Handle(StepBasic_DimensionalExponents)& aDimensions) ;
+  
+  Standard_EXPORT virtual   Handle(StepBasic_DimensionalExponents) Dimensions()  const;
 
 
 
@@ -58,7 +48,7 @@ protected:
 private: 
 
 
-Handle_StepBasic_AreaUnit areaUnit;
+  Handle(StepBasic_AreaUnit) areaUnit;
 
 
 };
@@ -67,7 +57,6 @@ Handle_StepBasic_AreaUnit areaUnit;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_SiUnitAndAreaUnit_HeaderFile

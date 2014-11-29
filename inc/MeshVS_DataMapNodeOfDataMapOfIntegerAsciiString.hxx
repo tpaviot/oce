@@ -6,28 +6,14 @@
 #ifndef _MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString_HeaderFile
 #define _MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString_HeaderFile
 #include <Handle_MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TCollection_AsciiString;
 class TColStd_MapIntegerHasher;
 class MeshVS_DataMapOfIntegerAsciiString;
@@ -35,16 +21,17 @@ class MeshVS_DataMapIteratorOfDataMapOfIntegerAsciiString;
 
 
 
-class MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString : public TCollection_MapNode {
+class MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString : public TCollection_MapNode
+{
 
 public:
 
   
-      MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString(const Standard_Integer& K,const TCollection_AsciiString& I,const TCollection_MapNodePtr& n);
+    MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString(const Standard_Integer& K, const TCollection_AsciiString& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Key() const;
+      Standard_Integer& Key()  const;
   
-        TCollection_AsciiString& Value() const;
+      TCollection_AsciiString& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-Standard_Integer myKey;
-TCollection_AsciiString myValue;
+  Standard_Integer myKey;
+  TCollection_AsciiString myValue;
 
 
 };
@@ -98,7 +85,6 @@ TCollection_AsciiString myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MeshVS_DataMapNodeOfDataMapOfIntegerAsciiString_HeaderFile

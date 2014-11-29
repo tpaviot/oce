@@ -6,37 +6,26 @@
 #ifndef _TColStd_SequenceNodeOfSequenceOfInteger_HeaderFile
 #define _TColStd_SequenceNodeOfSequenceOfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColStd_SequenceNodeOfSequenceOfInteger_HeaderFile
 #include <Handle_TColStd_SequenceNodeOfSequenceOfInteger.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class TColStd_SequenceOfInteger;
 
 
 
-class TColStd_SequenceNodeOfSequenceOfInteger : public TCollection_SeqNode {
+class TColStd_SequenceNodeOfSequenceOfInteger : public TCollection_SeqNode
+{
 
 public:
 
   
-      TColStd_SequenceNodeOfSequenceOfInteger(const Standard_Integer& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    TColStd_SequenceNodeOfSequenceOfInteger(const Standard_Integer& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Standard_Integer& Value() const;
+      Standard_Integer& Value()  const;
 
 
 
@@ -51,7 +40,7 @@ protected:
 private: 
 
 
-Standard_Integer myValue;
+  Standard_Integer myValue;
 
 
 };
@@ -77,7 +66,6 @@ Standard_Integer myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_SequenceNodeOfSequenceOfInteger_HeaderFile

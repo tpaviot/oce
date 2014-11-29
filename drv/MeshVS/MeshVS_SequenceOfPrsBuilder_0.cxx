@@ -5,21 +5,13 @@
 
 #include <MeshVS_SequenceOfPrsBuilder.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _MeshVS_PrsBuilder_HeaderFile
 #include <MeshVS_PrsBuilder.hxx>
-#endif
-#ifndef _MeshVS_SequenceNodeOfSequenceOfPrsBuilder_HeaderFile
 #include <MeshVS_SequenceNodeOfSequenceOfPrsBuilder.hxx>
-#endif
  
 
-#define SeqItem Handle_MeshVS_PrsBuilder
+#define SeqItem Handle(MeshVS_PrsBuilder)
 #define SeqItem_hxx <MeshVS_PrsBuilder.hxx>
 #define TCollection_SequenceNode MeshVS_SequenceNodeOfSequenceOfPrsBuilder
 #define TCollection_SequenceNode_hxx <MeshVS_SequenceNodeOfSequenceOfPrsBuilder.hxx>

@@ -6,39 +6,28 @@
 #ifndef _Message_ListNodeOfListOfMsg_HeaderFile
 #define _Message_ListNodeOfListOfMsg_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Message_ListNodeOfListOfMsg_HeaderFile
 #include <Handle_Message_ListNodeOfListOfMsg.hxx>
-#endif
 
-#ifndef _Message_Msg_HeaderFile
 #include <Message_Msg.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Message_Msg;
 class Message_ListOfMsg;
 class Message_ListIteratorOfListOfMsg;
 
 
 
-class Message_ListNodeOfListOfMsg : public TCollection_MapNode {
+class Message_ListNodeOfListOfMsg : public TCollection_MapNode
+{
 
 public:
 
   
-      Message_ListNodeOfListOfMsg(const Message_Msg& I,const TCollection_MapNodePtr& n);
+    Message_ListNodeOfListOfMsg(const Message_Msg& I, const TCollection_MapNodePtr& n);
   
-        Message_Msg& Value() const;
+      Message_Msg& Value()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-Message_Msg myValue;
+  Message_Msg myValue;
 
 
 };
@@ -83,7 +72,6 @@ Message_Msg myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Message_ListNodeOfListOfMsg_HeaderFile

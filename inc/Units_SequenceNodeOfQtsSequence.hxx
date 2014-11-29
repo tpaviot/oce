@@ -6,38 +6,27 @@
 #ifndef _Units_SequenceNodeOfQtsSequence_HeaderFile
 #define _Units_SequenceNodeOfQtsSequence_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Units_SequenceNodeOfQtsSequence_HeaderFile
 #include <Handle_Units_SequenceNodeOfQtsSequence.hxx>
-#endif
 
-#ifndef _Handle_Units_Quantity_HeaderFile
 #include <Handle_Units_Quantity.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Units_Quantity;
 class Units_QtsSequence;
 
 
 
-class Units_SequenceNodeOfQtsSequence : public TCollection_SeqNode {
+class Units_SequenceNodeOfQtsSequence : public TCollection_SeqNode
+{
 
 public:
 
   
-      Units_SequenceNodeOfQtsSequence(const Handle(Units_Quantity)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    Units_SequenceNodeOfQtsSequence(const Handle(Units_Quantity)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_Units_Quantity& Value() const;
+      Handle(Units_Quantity)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_Units_Quantity myValue;
+  Handle(Units_Quantity) myValue;
 
 
 };
 
-#define SeqItem Handle_Units_Quantity
+#define SeqItem Handle(Units_Quantity)
 #define SeqItem_hxx <Units_Quantity.hxx>
 #define TCollection_SequenceNode Units_SequenceNodeOfQtsSequence
 #define TCollection_SequenceNode_hxx <Units_SequenceNodeOfQtsSequence.hxx>
@@ -78,7 +67,6 @@ Handle_Units_Quantity myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Units_SequenceNodeOfQtsSequence_HeaderFile

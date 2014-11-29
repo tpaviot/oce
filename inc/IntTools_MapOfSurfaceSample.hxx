@@ -6,29 +6,14 @@
 #ifndef _IntTools_MapOfSurfaceSample_HeaderFile
 #define _IntTools_MapOfSurfaceSample_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_IntTools_StdMapNodeOfMapOfSurfaceSample_HeaderFile
 #include <Handle_IntTools_StdMapNodeOfMapOfSurfaceSample.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-class Standard_DomainError;
 class IntTools_SurfaceRangeSample;
 class IntTools_SurfaceRangeSampleMapHasher;
 class IntTools_StdMapNodeOfMapOfSurfaceSample;
@@ -36,34 +21,36 @@ class IntTools_MapIteratorOfMapOfSurfaceSample;
 
 
 
-class IntTools_MapOfSurfaceSample  : public TCollection_BasicMap {
+class IntTools_MapOfSurfaceSample  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntTools_MapOfSurfaceSample(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT IntTools_MapOfSurfaceSample(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     IntTools_MapOfSurfaceSample& Assign(const IntTools_MapOfSurfaceSample& Other) ;
-    IntTools_MapOfSurfaceSample& operator =(const IntTools_MapOfSurfaceSample& Other) 
+  Standard_EXPORT IntTools_MapOfSurfaceSample(const IntTools_MapOfSurfaceSample& Other);
+  
+  Standard_EXPORT   IntTools_MapOfSurfaceSample& Assign (const IntTools_MapOfSurfaceSample& Other) ;
+  IntTools_MapOfSurfaceSample& operator = (const IntTools_MapOfSurfaceSample& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~IntTools_MapOfSurfaceSample()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Add(const IntTools_SurfaceRangeSample& aKey) ;
+  Standard_EXPORT   Standard_Boolean Add (const IntTools_SurfaceRangeSample& aKey) ;
   
-  Standard_EXPORT     Standard_Boolean Contains(const IntTools_SurfaceRangeSample& aKey) const;
+  Standard_EXPORT   Standard_Boolean Contains (const IntTools_SurfaceRangeSample& aKey)  const;
   
-  Standard_EXPORT     Standard_Boolean Remove(const IntTools_SurfaceRangeSample& aKey) ;
-
+  Standard_EXPORT   Standard_Boolean Remove (const IntTools_SurfaceRangeSample& aKey) ;
 
 
 
@@ -76,8 +63,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntTools_MapOfSurfaceSample(const IntTools_MapOfSurfaceSample& Other);
 
 
 
@@ -88,7 +73,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_MapOfSurfaceSample_HeaderFile

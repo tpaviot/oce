@@ -6,39 +6,30 @@
 #ifndef _TDataStd_DeltaOnModificationOfIntPackedMap_HeaderFile
 #define _TDataStd_DeltaOnModificationOfIntPackedMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDataStd_DeltaOnModificationOfIntPackedMap_HeaderFile
 #include <Handle_TDataStd_DeltaOnModificationOfIntPackedMap.hxx>
-#endif
 
-#ifndef _Handle_TColStd_HPackedMapOfInteger_HeaderFile
 #include <Handle_TColStd_HPackedMapOfInteger.hxx>
-#endif
-#ifndef _TDF_DeltaOnModification_HeaderFile
 #include <TDF_DeltaOnModification.hxx>
-#endif
-#ifndef _Handle_TDataStd_IntPackedMap_HeaderFile
 #include <Handle_TDataStd_IntPackedMap.hxx>
-#endif
 class TColStd_HPackedMapOfInteger;
 class TDataStd_IntPackedMap;
 
 
-//! This class provides default services for an <br>
-//!          AttributeDelta on a MODIFICATION action. <br>
-class TDataStd_DeltaOnModificationOfIntPackedMap : public TDF_DeltaOnModification {
+//! This class provides default services for an
+//! AttributeDelta on a MODIFICATION action.
+class TDataStd_DeltaOnModificationOfIntPackedMap : public TDF_DeltaOnModification
+{
 
 public:
 
-  //! Initializes a TDF_DeltaOnModification. <br>
-  Standard_EXPORT   TDataStd_DeltaOnModificationOfIntPackedMap(const Handle(TDataStd_IntPackedMap)& Arr);
-  //! Applies the delta to the attribute. <br>
-  Standard_EXPORT   virtual  void Apply() ;
+  
+  //! Initializes a TDF_DeltaOnModification.
+  Standard_EXPORT TDataStd_DeltaOnModificationOfIntPackedMap(const Handle(TDataStd_IntPackedMap)& Arr);
+  
+  //! Applies the delta to the attribute.
+  Standard_EXPORT virtual   void Apply() ;
 
 
 
@@ -53,8 +44,8 @@ protected:
 private: 
 
 
-Handle_TColStd_HPackedMapOfInteger myAddition;
-Handle_TColStd_HPackedMapOfInteger myDeletion;
+  Handle(TColStd_HPackedMapOfInteger) myAddition;
+  Handle(TColStd_HPackedMapOfInteger) myDeletion;
 
 
 };
@@ -63,7 +54,6 @@ Handle_TColStd_HPackedMapOfInteger myDeletion;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_DeltaOnModificationOfIntPackedMap_HeaderFile

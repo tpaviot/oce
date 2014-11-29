@@ -5,16 +5,10 @@
 
 #include <TColStd_SequenceNodeOfSequenceOfHAsciiString.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _TColStd_SequenceOfHAsciiString_HeaderFile
 #include <TColStd_SequenceOfHAsciiString.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(TColStd_SequenceNodeOfSequenceOfHAsciiString,Standard_Transie
 IMPLEMENT_STANDARD_RTTI(TColStd_SequenceNodeOfSequenceOfHAsciiString)
 
 
-#define SeqItem Handle_TCollection_HAsciiString
+#define SeqItem Handle(TCollection_HAsciiString)
 #define SeqItem_hxx <TCollection_HAsciiString.hxx>
 #define TCollection_SequenceNode TColStd_SequenceNodeOfSequenceOfHAsciiString
 #define TCollection_SequenceNode_hxx <TColStd_SequenceNodeOfSequenceOfHAsciiString.hxx>

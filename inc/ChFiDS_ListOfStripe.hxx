@@ -6,31 +6,15 @@
 #ifndef _ChFiDS_ListOfStripe_HeaderFile
 #define _ChFiDS_ListOfStripe_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_ChFiDS_Stripe_HeaderFile
 #include <Handle_ChFiDS_Stripe.hxx>
-#endif
-#ifndef _Handle_ChFiDS_ListNodeOfListOfStripe_HeaderFile
 #include <Handle_ChFiDS_ListNodeOfListOfStripe.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class ChFiDS_ListIteratorOfListOfStripe;
 class ChFiDS_Stripe;
@@ -38,61 +22,63 @@ class ChFiDS_ListNodeOfListOfStripe;
 
 
 
-class ChFiDS_ListOfStripe  {
+class ChFiDS_ListOfStripe 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   ChFiDS_ListOfStripe();
+  Standard_EXPORT ChFiDS_ListOfStripe();
   
-  Standard_EXPORT     void Assign(const ChFiDS_ListOfStripe& Other) ;
-    void operator=(const ChFiDS_ListOfStripe& Other) 
+  Standard_EXPORT ChFiDS_ListOfStripe(const ChFiDS_ListOfStripe& Other);
+  
+  Standard_EXPORT   void Assign (const ChFiDS_ListOfStripe& Other) ;
+  void operator= (const ChFiDS_ListOfStripe& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~ChFiDS_ListOfStripe()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const Handle(ChFiDS_Stripe)& I) ;
+  Standard_EXPORT   void Prepend (const Handle(ChFiDS_Stripe)& I) ;
   
-  Standard_EXPORT     void Prepend(const Handle(ChFiDS_Stripe)& I,ChFiDS_ListIteratorOfListOfStripe& theIt) ;
+  Standard_EXPORT   void Prepend (const Handle(ChFiDS_Stripe)& I, ChFiDS_ListIteratorOfListOfStripe& theIt) ;
   
-  Standard_EXPORT     void Prepend(ChFiDS_ListOfStripe& Other) ;
+  Standard_EXPORT   void Prepend (ChFiDS_ListOfStripe& Other) ;
   
-  Standard_EXPORT     void Append(const Handle(ChFiDS_Stripe)& I) ;
+  Standard_EXPORT   void Append (const Handle(ChFiDS_Stripe)& I) ;
   
-  Standard_EXPORT     void Append(const Handle(ChFiDS_Stripe)& I,ChFiDS_ListIteratorOfListOfStripe& theIt) ;
+  Standard_EXPORT   void Append (const Handle(ChFiDS_Stripe)& I, ChFiDS_ListIteratorOfListOfStripe& theIt) ;
   
-  Standard_EXPORT     void Append(ChFiDS_ListOfStripe& Other) ;
+  Standard_EXPORT   void Append (ChFiDS_ListOfStripe& Other) ;
   
-  Standard_EXPORT     Handle_ChFiDS_Stripe& First() const;
+  Standard_EXPORT   Handle(ChFiDS_Stripe)& First()  const;
   
-  Standard_EXPORT     Handle_ChFiDS_Stripe& Last() const;
+  Standard_EXPORT   Handle(ChFiDS_Stripe)& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(ChFiDS_ListIteratorOfListOfStripe& It) ;
+  Standard_EXPORT   void Remove (ChFiDS_ListIteratorOfListOfStripe& It) ;
   
-  Standard_EXPORT     void InsertBefore(const Handle(ChFiDS_Stripe)& I,ChFiDS_ListIteratorOfListOfStripe& It) ;
+  Standard_EXPORT   void InsertBefore (const Handle(ChFiDS_Stripe)& I, ChFiDS_ListIteratorOfListOfStripe& It) ;
   
-  Standard_EXPORT     void InsertBefore(ChFiDS_ListOfStripe& Other,ChFiDS_ListIteratorOfListOfStripe& It) ;
+  Standard_EXPORT   void InsertBefore (ChFiDS_ListOfStripe& Other, ChFiDS_ListIteratorOfListOfStripe& It) ;
   
-  Standard_EXPORT     void InsertAfter(const Handle(ChFiDS_Stripe)& I,ChFiDS_ListIteratorOfListOfStripe& It) ;
+  Standard_EXPORT   void InsertAfter (const Handle(ChFiDS_Stripe)& I, ChFiDS_ListIteratorOfListOfStripe& It) ;
   
-  Standard_EXPORT     void InsertAfter(ChFiDS_ListOfStripe& Other,ChFiDS_ListIteratorOfListOfStripe& It) ;
+  Standard_EXPORT   void InsertAfter (ChFiDS_ListOfStripe& Other, ChFiDS_ListIteratorOfListOfStripe& It) ;
 
 
 friend class ChFiDS_ListIteratorOfListOfStripe;
-
 
 
 protected:
@@ -103,17 +89,15 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   ChFiDS_ListOfStripe(const ChFiDS_ListOfStripe& Other);
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
 
-#define Item Handle_ChFiDS_Stripe
+#define Item Handle(ChFiDS_Stripe)
 #define Item_hxx <ChFiDS_Stripe.hxx>
 #define TCollection_ListNode ChFiDS_ListNodeOfListOfStripe
 #define TCollection_ListNode_hxx <ChFiDS_ListNodeOfListOfStripe.hxx>
@@ -138,7 +122,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ChFiDS_ListOfStripe_HeaderFile

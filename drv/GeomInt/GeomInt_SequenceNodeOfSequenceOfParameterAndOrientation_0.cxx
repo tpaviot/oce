@@ -5,16 +5,10 @@
 
 #include <GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _GeomInt_ParameterAndOrientation_HeaderFile
 #include <GeomInt_ParameterAndOrientation.hxx>
-#endif
-#ifndef _GeomInt_SequenceOfParameterAndOrientation_HeaderFile
 #include <GeomInt_SequenceOfParameterAndOrientation.hxx>
-#endif
 
  
 

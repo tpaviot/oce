@@ -1,15 +1,5 @@
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepVisual_Colour_HeaderFile
 #include <StepVisual_Colour.hxx>
-#endif
-#ifndef _StepVisual_MarkerSelect_HeaderFile
 #include <StepVisual_MarkerSelect.hxx>
-#endif
-#ifndef _StepBasic_SizeSelect_HeaderFile
 #include <StepBasic_SizeSelect.hxx>
-#endif
-#ifndef _StepVisual_PointStyle_HeaderFile
 #include <StepVisual_PointStyle.hxx>
-#endif

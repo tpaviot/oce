@@ -1,12 +1,4 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepBasic_NamedUnit_HeaderFile
 #include <StepBasic_NamedUnit.hxx>
-#endif
-#ifndef _StepBasic_DerivedUnit_HeaderFile
 #include <StepBasic_DerivedUnit.hxx>
-#endif
-#ifndef _StepBasic_Unit_HeaderFile
 #include <StepBasic_Unit.hxx>
-#endif

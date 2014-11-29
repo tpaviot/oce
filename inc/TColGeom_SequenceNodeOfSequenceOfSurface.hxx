@@ -6,38 +6,27 @@
 #ifndef _TColGeom_SequenceNodeOfSequenceOfSurface_HeaderFile
 #define _TColGeom_SequenceNodeOfSequenceOfSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColGeom_SequenceNodeOfSequenceOfSurface_HeaderFile
 #include <Handle_TColGeom_SequenceNodeOfSequenceOfSurface.hxx>
-#endif
 
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Geom_Surface;
 class TColGeom_SequenceOfSurface;
 
 
 
-class TColGeom_SequenceNodeOfSequenceOfSurface : public TCollection_SeqNode {
+class TColGeom_SequenceNodeOfSequenceOfSurface : public TCollection_SeqNode
+{
 
 public:
 
   
-      TColGeom_SequenceNodeOfSequenceOfSurface(const Handle(Geom_Surface)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    TColGeom_SequenceNodeOfSequenceOfSurface(const Handle(Geom_Surface)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_Geom_Surface& Value() const;
+      Handle(Geom_Surface)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_Geom_Surface myValue;
+  Handle(Geom_Surface) myValue;
 
 
 };
 
-#define SeqItem Handle_Geom_Surface
+#define SeqItem Handle(Geom_Surface)
 #define SeqItem_hxx <Geom_Surface.hxx>
 #define TCollection_SequenceNode TColGeom_SequenceNodeOfSequenceOfSurface
 #define TCollection_SequenceNode_hxx <TColGeom_SequenceNodeOfSequenceOfSurface.hxx>
@@ -78,7 +67,6 @@ Handle_Geom_Surface myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColGeom_SequenceNodeOfSequenceOfSurface_HeaderFile

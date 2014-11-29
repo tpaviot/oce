@@ -6,67 +6,27 @@
 #ifndef _IFSelect_Editor_HeaderFile
 #define _IFSelect_Editor_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_Editor_HeaderFile
 #include <Handle_IFSelect_Editor.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Dico_DictionaryOfInteger_HeaderFile
 #include <Handle_Dico_DictionaryOfInteger.hxx>
-#endif
-#ifndef _TColStd_Array1OfTransient_HeaderFile
 #include <TColStd_Array1OfTransient.hxx>
-#endif
-#ifndef _TColStd_Array1OfAsciiString_HeaderFile
 #include <TColStd_Array1OfAsciiString.hxx>
-#endif
-#ifndef _TColStd_Array1OfInteger_HeaderFile
 #include <TColStd_Array1OfInteger.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_Interface_TypedValue_HeaderFile
 #include <Handle_Interface_TypedValue.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _IFSelect_EditValue_HeaderFile
 #include <IFSelect_EditValue.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Message_Messenger_HeaderFile
 #include <Handle_Message_Messenger.hxx>
-#endif
-#ifndef _Handle_IFSelect_EditForm_HeaderFile
 #include <Handle_IFSelect_EditForm.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_IFSelect_ListEditor_HeaderFile
 #include <Handle_IFSelect_ListEditor.hxx>
-#endif
-#ifndef _Handle_TColStd_HSequenceOfHAsciiString_HeaderFile
 #include <Handle_TColStd_HSequenceOfHAsciiString.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
 class Dico_DictionaryOfInteger;
 class Standard_OutOfRange;
 class Interface_TypedValue;
@@ -80,95 +40,116 @@ class Standard_Transient;
 class Interface_InterfaceModel;
 
 
-//! An Editor defines a set of values and a way to edit them, on <br>
-//!           an entity or on the model (e.g. on its header) <br>
-//! <br>
-//!           Each Value is controlled by a TypedValue, with a number (it is <br>
-//!           an Integer) and a name under two forms (complete and short) <br>
-//!           and an edit mode <br>
-class IFSelect_Editor : public MMgt_TShared {
+//! An Editor defines a set of values and a way to edit them, on
+//! an entity or on the model (e.g. on its header)
+//!
+//! Each Value is controlled by a TypedValue, with a number (it is
+//! an Integer) and a name under two forms (complete and short)
+//! and an edit mode
+class IFSelect_Editor : public MMgt_TShared
+{
 
 public:
 
-  //! Sets a Typed Value for a given ident and short name, with an <br>
-//!           Edit Mode <br>
-  Standard_EXPORT     void SetValue(const Standard_Integer num,const Handle(Interface_TypedValue)& typval,const Standard_CString shortname = "",const IFSelect_EditValue accessmode = IFSelect_Editable) ;
-  //! Sets a parameter to be a List <br>
-//!           max < 0 : not for a list (set when starting) <br>
-//!           max = 0 : list with no length limit (default for SetList) <br>
-//!           max > 0 : list limited to <max> items <br>
-  Standard_EXPORT     void SetList(const Standard_Integer num,const Standard_Integer max = 0) ;
-  //! Returns the count of Typed Values <br>
-  Standard_EXPORT     Standard_Integer NbValues() const;
-  //! Returns a Typed Value from its ident <br>
-  Standard_EXPORT     Handle_Interface_TypedValue TypedValue(const Standard_Integer num) const;
-  //! Tells if a parameter is a list <br>
-  Standard_EXPORT     Standard_Boolean IsList(const Standard_Integer num) const;
-  //! Returns max length allowed for a list <br>
-//!           = 0 means : list with no limit <br>
-//!           < 0 means : not a list <br>
-  Standard_EXPORT     Standard_Integer MaxList(const Standard_Integer num) const;
-  //! Returns the name of a Value (complete or short) from its ident <br>
-//!           Short Name can be empty <br>
-  Standard_EXPORT     Standard_CString Name(const Standard_Integer num,const Standard_Boolean isshort = Standard_False) const;
-  //! Returns the edit mode of a Value <br>
-  Standard_EXPORT     IFSelect_EditValue EditMode(const Standard_Integer num) const;
-  //! Returns the number (ident) of a Value, from its name, short or <br>
-//!           complete. If not found, returns 0 <br>
-  Standard_EXPORT     Standard_Integer NameNumber(const Standard_CString name) const;
   
-  Standard_EXPORT     void PrintNames(const Handle(Message_Messenger)& S) const;
+  //! Sets a Typed Value for a given ident and short name, with an
+  //! Edit Mode
+  Standard_EXPORT   void SetValue (const Standard_Integer num, const Handle(Interface_TypedValue)& typval, const Standard_CString shortname = "", const IFSelect_EditValue accessmode = IFSelect_Editable) ;
   
-  Standard_EXPORT     void PrintDefs(const Handle(Message_Messenger)& S,const Standard_Boolean labels = Standard_False) const;
-  //! Returns the MaxLength of, according to what : <br>
-//!           <what> = -1 : length of short names <br>
-//!           <what> =  0 : length of complete names <br>
-//!           <what> =  1 : length of values labels <br>
-  Standard_EXPORT     Standard_Integer MaxNameLength(const Standard_Integer what) const;
-  //! Returns the specific label <br>
-  Standard_EXPORT   virtual  TCollection_AsciiString Label() const = 0;
-  //! Builds and Returns an EditForm, empty (no data yet) <br>
-//!           Can be redefined to return a specific type of EditForm <br>
-  Standard_EXPORT   virtual  Handle_IFSelect_EditForm Form(const Standard_Boolean readonly,const Standard_Boolean undoable = Standard_True) const;
-  //! Tells if this Editor can work on this EditForm and its content <br>
-//!           (model, entity ?) <br>
-  Standard_EXPORT   virtual  Standard_Boolean Recognize(const Handle(IFSelect_EditForm)& form) const = 0;
-  //! Returns the value of an EditForm, for a given item <br>
-//!           (if not a list. for a list, a Null String may be returned) <br>
-  Standard_EXPORT   virtual  Handle_TCollection_HAsciiString StringValue(const Handle(IFSelect_EditForm)& form,const Standard_Integer num) const = 0;
-  //! Returns a ListEditor for a parameter which is a List <br>
-//!           Default returns a basic ListEditor for a List, a Null Handle <br>
-//!           if <num> is not for a List. Can be redefined <br>
-  Standard_EXPORT   virtual  Handle_IFSelect_ListEditor ListEditor(const Standard_Integer num) const;
-  //! Returns the value of an EditForm as a List, for a given item <br>
-//!           If not a list, a Null Handle should be returned <br>
-//!           Default returns a Null Handle, because many Editors have <br>
-//!           no list to edit. To be redefined as required <br>
-  Standard_EXPORT   virtual  Handle_TColStd_HSequenceOfHAsciiString ListValue(const Handle(IFSelect_EditForm)& form,const Standard_Integer num) const;
-  //! Loads original values from some data, to an EditForm <br>
-//!           Remark: <ent> may be Null, this means all <model> is concerned <br>
-//!           Also <model> may be Null, if no context applies for <ent> <br>
-//!           And both <ent> and <model> may be Null, for a full static <br>
-//!           editor <br>
-  Standard_EXPORT   virtual  Standard_Boolean Load(const Handle(IFSelect_EditForm)& form,const Handle(Standard_Transient)& ent,const Handle(Interface_InterfaceModel)& model) const = 0;
-  //! Updates the EditForm when a parameter is modified <br>
-//!           I.E.  default does nothing, can be redefined, as follows : <br>
-//!           Returns True when done (even if does nothing), False in case <br>
-//!           of refuse (for instance, if the new value is not suitable) <br>
-//!           <num> is the rank of the parameter for the EDITOR itself <br>
-//!           <enforce> True means that protected parameters can be touched <br>
-//! <br>
-//!           If a parameter commands the value of other ones, when it is <br>
-//!           modified, it is necessary to touch them by Touch from EditForm <br>
-  Standard_EXPORT   virtual  Standard_Boolean Update(const Handle(IFSelect_EditForm)& form,const Standard_Integer num,const Handle(TCollection_HAsciiString)& newval,const Standard_Boolean enforce) const;
-  //! Acts as Update, but when the value is a list <br>
-  Standard_EXPORT   virtual  Standard_Boolean UpdateList(const Handle(IFSelect_EditForm)& form,const Standard_Integer num,const Handle(TColStd_HSequenceOfHAsciiString)& newlist,const Standard_Boolean enforce) const;
-  //! Applies modified values of the EditForm with some data <br>
-//!           Remark: <ent> may be Null, this means all <model> is concerned <br>
-//!           Also <model> may be Null, if no context applies for <ent> <br>
-//!           And both <ent> and <model> may be Null, for a full static <br>
-//!           editor <br>
-  Standard_EXPORT   virtual  Standard_Boolean Apply(const Handle(IFSelect_EditForm)& form,const Handle(Standard_Transient)& ent,const Handle(Interface_InterfaceModel)& model) const = 0;
+  //! Sets a parameter to be a List
+  //! max < 0 : not for a list (set when starting)
+  //! max = 0 : list with no length limit (default for SetList)
+  //! max > 0 : list limited to <max> items
+  Standard_EXPORT   void SetList (const Standard_Integer num, const Standard_Integer max = 0) ;
+  
+  //! Returns the count of Typed Values
+  Standard_EXPORT   Standard_Integer NbValues()  const;
+  
+  //! Returns a Typed Value from its ident
+  Standard_EXPORT   Handle(Interface_TypedValue) TypedValue (const Standard_Integer num)  const;
+  
+  //! Tells if a parameter is a list
+  Standard_EXPORT   Standard_Boolean IsList (const Standard_Integer num)  const;
+  
+  //! Returns max length allowed for a list
+  //! = 0 means : list with no limit
+  //! < 0 means : not a list
+  Standard_EXPORT   Standard_Integer MaxList (const Standard_Integer num)  const;
+  
+  //! Returns the name of a Value (complete or short) from its ident
+  //! Short Name can be empty
+  Standard_EXPORT   Standard_CString Name (const Standard_Integer num, const Standard_Boolean isshort = Standard_False)  const;
+  
+  //! Returns the edit mode of a Value
+  Standard_EXPORT   IFSelect_EditValue EditMode (const Standard_Integer num)  const;
+  
+  //! Returns the number (ident) of a Value, from its name, short or
+  //! complete. If not found, returns 0
+  Standard_EXPORT   Standard_Integer NameNumber (const Standard_CString name)  const;
+  
+  Standard_EXPORT   void PrintNames (const Handle(Message_Messenger)& S)  const;
+  
+  Standard_EXPORT   void PrintDefs (const Handle(Message_Messenger)& S, const Standard_Boolean labels = Standard_False)  const;
+  
+  //! Returns the MaxLength of, according to what :
+  //! <what> = -1 : length of short names
+  //! <what> =  0 : length of complete names
+  //! <what> =  1 : length of values labels
+  Standard_EXPORT   Standard_Integer MaxNameLength (const Standard_Integer what)  const;
+  
+  //! Returns the specific label
+  Standard_EXPORT virtual   TCollection_AsciiString Label()  const = 0;
+  
+  //! Builds and Returns an EditForm, empty (no data yet)
+  //! Can be redefined to return a specific type of EditForm
+  Standard_EXPORT virtual   Handle(IFSelect_EditForm) Form (const Standard_Boolean readonly, const Standard_Boolean undoable = Standard_True)  const;
+  
+  //! Tells if this Editor can work on this EditForm and its content
+  //! (model, entity ?)
+  Standard_EXPORT virtual   Standard_Boolean Recognize (const Handle(IFSelect_EditForm)& form)  const = 0;
+  
+  //! Returns the value of an EditForm, for a given item
+  //! (if not a list. for a list, a Null String may be returned)
+  Standard_EXPORT virtual   Handle(TCollection_HAsciiString) StringValue (const Handle(IFSelect_EditForm)& form, const Standard_Integer num)  const = 0;
+  
+  //! Returns a ListEditor for a parameter which is a List
+  //! Default returns a basic ListEditor for a List, a Null Handle
+  //! if <num> is not for a List. Can be redefined
+  Standard_EXPORT virtual   Handle(IFSelect_ListEditor) ListEditor (const Standard_Integer num)  const;
+  
+  //! Returns the value of an EditForm as a List, for a given item
+  //! If not a list, a Null Handle should be returned
+  //! Default returns a Null Handle, because many Editors have
+  //! no list to edit. To be redefined as required
+  Standard_EXPORT virtual   Handle(TColStd_HSequenceOfHAsciiString) ListValue (const Handle(IFSelect_EditForm)& form, const Standard_Integer num)  const;
+  
+  //! Loads original values from some data, to an EditForm
+  //! Remark: <ent> may be Null, this means all <model> is concerned
+  //! Also <model> may be Null, if no context applies for <ent>
+  //! And both <ent> and <model> may be Null, for a full static
+  //! editor
+  Standard_EXPORT virtual   Standard_Boolean Load (const Handle(IFSelect_EditForm)& form, const Handle(Standard_Transient)& ent, const Handle(Interface_InterfaceModel)& model)  const = 0;
+  
+  //! Updates the EditForm when a parameter is modified
+  //! I.E.  default does nothing, can be redefined, as follows :
+  //! Returns True when done (even if does nothing), False in case
+  //! of refuse (for instance, if the new value is not suitable)
+  //! <num> is the rank of the parameter for the EDITOR itself
+  //! <enforce> True means that protected parameters can be touched
+  //!
+  //! If a parameter commands the value of other ones, when it is
+  //! modified, it is necessary to touch them by Touch from EditForm
+  Standard_EXPORT virtual   Standard_Boolean Update (const Handle(IFSelect_EditForm)& form, const Standard_Integer num, const Handle(TCollection_HAsciiString)& newval, const Standard_Boolean enforce)  const;
+  
+  //! Acts as Update, but when the value is a list
+  Standard_EXPORT virtual   Standard_Boolean UpdateList (const Handle(IFSelect_EditForm)& form, const Standard_Integer num, const Handle(TColStd_HSequenceOfHAsciiString)& newlist, const Standard_Boolean enforce)  const;
+  
+  //! Applies modified values of the EditForm with some data
+  //! Remark: <ent> may be Null, this means all <model> is concerned
+  //! Also <model> may be Null, if no context applies for <ent>
+  //! And both <ent> and <model> may be Null, for a full static
+  //! editor
+  Standard_EXPORT virtual   Standard_Boolean Apply (const Handle(IFSelect_EditForm)& form, const Handle(Standard_Transient)& ent, const Handle(Interface_InterfaceModel)& model)  const = 0;
 
 
 
@@ -177,29 +158,31 @@ public:
 
 protected:
 
-  //! Prepares the list of Typed Values (gives its count) <br>
-//!           This count can be tuned later, to a LOWER value, this allows <br>
-//!           to initialize with a "maximum reservation" then cut the extra <br>
-  Standard_EXPORT   IFSelect_Editor(const Standard_Integer nbval);
-  //! Adjusts the true count of values. It can be LOWER or equal to <br>
-//!           the initial size (which then acts as a reservation), but never <br>
-//!           greater <br>
-  Standard_EXPORT     void SetNbValues(const Standard_Integer nbval) ;
+  
+  //! Prepares the list of Typed Values (gives its count)
+  //! This count can be tuned later, to a LOWER value, this allows
+  //! to initialize with a "maximum reservation" then cut the extra
+  Standard_EXPORT IFSelect_Editor(const Standard_Integer nbval);
+  
+  //! Adjusts the true count of values. It can be LOWER or equal to
+  //! the initial size (which then acts as a reservation), but never
+  //! greater
+  Standard_EXPORT   void SetNbValues (const Standard_Integer nbval) ;
 
 
 
 private: 
 
 
-Standard_Integer thenbval;
-Standard_Integer themaxsh;
-Standard_Integer themaxco;
-Standard_Integer themaxla;
-Handle_Dico_DictionaryOfInteger thenames;
-TColStd_Array1OfTransient thevalues;
-TColStd_Array1OfAsciiString theshorts;
-TColStd_Array1OfInteger themodes;
-TColStd_Array1OfInteger thelists;
+  Standard_Integer thenbval;
+  Standard_Integer themaxsh;
+  Standard_Integer themaxco;
+  Standard_Integer themaxla;
+  Handle(Dico_DictionaryOfInteger) thenames;
+  TColStd_Array1OfTransient thevalues;
+  TColStd_Array1OfAsciiString theshorts;
+  TColStd_Array1OfInteger themodes;
+  TColStd_Array1OfInteger thelists;
 
 
 };
@@ -208,7 +191,6 @@ TColStd_Array1OfInteger thelists;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_Editor_HeaderFile

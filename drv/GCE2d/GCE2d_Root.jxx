@@ -1,3 +1,1 @@
-#ifndef _GCE2d_Root_HeaderFile
 #include <GCE2d_Root.hxx>
-#endif

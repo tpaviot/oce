@@ -6,38 +6,27 @@
 #ifndef _Intf_SequenceNodeOfSeqOfTangentZone_HeaderFile
 #define _Intf_SequenceNodeOfSeqOfTangentZone_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Intf_SequenceNodeOfSeqOfTangentZone_HeaderFile
 #include <Handle_Intf_SequenceNodeOfSeqOfTangentZone.hxx>
-#endif
 
-#ifndef _Intf_TangentZone_HeaderFile
 #include <Intf_TangentZone.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Intf_TangentZone;
 class Intf_SeqOfTangentZone;
 
 
 
-class Intf_SequenceNodeOfSeqOfTangentZone : public TCollection_SeqNode {
+class Intf_SequenceNodeOfSeqOfTangentZone : public TCollection_SeqNode
+{
 
 public:
 
   
-      Intf_SequenceNodeOfSeqOfTangentZone(const Intf_TangentZone& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    Intf_SequenceNodeOfSeqOfTangentZone(const Intf_TangentZone& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Intf_TangentZone& Value() const;
+      Intf_TangentZone& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-Intf_TangentZone myValue;
+  Intf_TangentZone myValue;
 
 
 };
@@ -78,7 +67,6 @@ Intf_TangentZone myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Intf_SequenceNodeOfSeqOfTangentZone_HeaderFile

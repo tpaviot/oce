@@ -6,25 +6,13 @@
 #ifndef _StepGeom_HArray1OfSurfaceBoundary_HeaderFile
 #define _StepGeom_HArray1OfSurfaceBoundary_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_HArray1OfSurfaceBoundary_HeaderFile
 #include <Handle_StepGeom_HArray1OfSurfaceBoundary.hxx>
-#endif
 
-#ifndef _StepGeom_Array1OfSurfaceBoundary_HeaderFile
 #include <StepGeom_Array1OfSurfaceBoundary.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class StepGeom_Array1OfSurfaceBoundary;
 
 
 
-class StepGeom_HArray1OfSurfaceBoundary : public MMgt_TShared {
+class StepGeom_HArray1OfSurfaceBoundary : public MMgt_TShared
+{
 
 public:
 
   
-      StepGeom_HArray1OfSurfaceBoundary(const Standard_Integer Low,const Standard_Integer Up);
+    StepGeom_HArray1OfSurfaceBoundary(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepGeom_HArray1OfSurfaceBoundary(const Standard_Integer Low,const Standard_Integer Up,const StepGeom_SurfaceBoundary& V);
+    StepGeom_HArray1OfSurfaceBoundary(const Standard_Integer Low, const Standard_Integer Up, const StepGeom_SurfaceBoundary& V);
   
-        void Init(const StepGeom_SurfaceBoundary& V) ;
+      void Init (const StepGeom_SurfaceBoundary& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const StepGeom_SurfaceBoundary& Value) ;
+      void SetValue (const Standard_Integer Index, const StepGeom_SurfaceBoundary& Value) ;
   
-       const StepGeom_SurfaceBoundary& Value(const Standard_Integer Index) const;
+     const  StepGeom_SurfaceBoundary& Value (const Standard_Integer Index)  const;
   
-        StepGeom_SurfaceBoundary& ChangeValue(const Standard_Integer Index) ;
+      StepGeom_SurfaceBoundary& ChangeValue (const Standard_Integer Index) ;
   
-       const StepGeom_Array1OfSurfaceBoundary& Array1() const;
+     const  StepGeom_Array1OfSurfaceBoundary& Array1()  const;
   
-        StepGeom_Array1OfSurfaceBoundary& ChangeArray1() ;
+      StepGeom_Array1OfSurfaceBoundary& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-StepGeom_Array1OfSurfaceBoundary myArray;
+  StepGeom_Array1OfSurfaceBoundary myArray;
 
 
 };
@@ -100,7 +89,6 @@ StepGeom_Array1OfSurfaceBoundary myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_HArray1OfSurfaceBoundary_HeaderFile

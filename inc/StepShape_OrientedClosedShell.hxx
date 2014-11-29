@@ -6,37 +6,17 @@
 #ifndef _StepShape_OrientedClosedShell_HeaderFile
 #define _StepShape_OrientedClosedShell_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_OrientedClosedShell_HeaderFile
 #include <Handle_StepShape_OrientedClosedShell.hxx>
-#endif
 
-#ifndef _Handle_StepShape_ClosedShell_HeaderFile
 #include <Handle_StepShape_ClosedShell.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _StepShape_ClosedShell_HeaderFile
 #include <StepShape_ClosedShell.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepShape_HArray1OfFace_HeaderFile
 #include <Handle_StepShape_HArray1OfFace.hxx>
-#endif
-#ifndef _Handle_StepShape_Face_HeaderFile
 #include <Handle_StepShape_Face.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StepShape_ClosedShell;
 class TCollection_HAsciiString;
 class StepShape_HArray1OfFace;
@@ -44,32 +24,34 @@ class StepShape_Face;
 
 
 
-class StepShape_OrientedClosedShell : public StepShape_ClosedShell {
+class StepShape_OrientedClosedShell : public StepShape_ClosedShell
+{
 
 public:
 
-  //! Returns a OrientedClosedShell <br>
-  Standard_EXPORT   StepShape_OrientedClosedShell();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepShape_HArray1OfFace)& aCfsFaces) ;
+  //! Returns a OrientedClosedShell
+  Standard_EXPORT StepShape_OrientedClosedShell();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepShape_ClosedShell)& aClosedShellElement,const Standard_Boolean aOrientation) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepShape_HArray1OfFace)& aCfsFaces) ;
   
-  Standard_EXPORT     void SetClosedShellElement(const Handle(StepShape_ClosedShell)& aClosedShellElement) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepShape_ClosedShell)& aClosedShellElement, const Standard_Boolean aOrientation) ;
   
-  Standard_EXPORT     Handle_StepShape_ClosedShell ClosedShellElement() const;
+  Standard_EXPORT   void SetClosedShellElement (const Handle(StepShape_ClosedShell)& aClosedShellElement) ;
   
-  Standard_EXPORT     void SetOrientation(const Standard_Boolean aOrientation) ;
+  Standard_EXPORT   Handle(StepShape_ClosedShell) ClosedShellElement()  const;
   
-  Standard_EXPORT     Standard_Boolean Orientation() const;
+  Standard_EXPORT   void SetOrientation (const Standard_Boolean aOrientation) ;
   
-  Standard_EXPORT   virtual  void SetCfsFaces(const Handle(StepShape_HArray1OfFace)& aCfsFaces) ;
+  Standard_EXPORT   Standard_Boolean Orientation()  const;
   
-  Standard_EXPORT   virtual  Handle_StepShape_HArray1OfFace CfsFaces() const;
+  Standard_EXPORT virtual   void SetCfsFaces (const Handle(StepShape_HArray1OfFace)& aCfsFaces) ;
   
-  Standard_EXPORT   virtual  Handle_StepShape_Face CfsFacesValue(const Standard_Integer num) const;
+  Standard_EXPORT virtual   Handle(StepShape_HArray1OfFace) CfsFaces()  const;
   
-  Standard_EXPORT   virtual  Standard_Integer NbCfsFaces() const;
+  Standard_EXPORT virtual   Handle(StepShape_Face) CfsFacesValue (const Standard_Integer num)  const;
+  
+  Standard_EXPORT virtual   Standard_Integer NbCfsFaces()  const;
 
 
 
@@ -84,8 +66,8 @@ protected:
 private: 
 
 
-Handle_StepShape_ClosedShell closedShellElement;
-Standard_Boolean orientation;
+  Handle(StepShape_ClosedShell) closedShellElement;
+  Standard_Boolean orientation;
 
 
 };
@@ -94,7 +76,6 @@ Standard_Boolean orientation;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_OrientedClosedShell_HeaderFile

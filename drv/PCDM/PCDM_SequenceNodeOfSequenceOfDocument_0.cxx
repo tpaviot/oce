@@ -5,16 +5,10 @@
 
 #include <PCDM_SequenceNodeOfSequenceOfDocument.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _PCDM_Document_HeaderFile
 #include <PCDM_Document.hxx>
-#endif
-#ifndef _PCDM_SequenceOfDocument_HeaderFile
 #include <PCDM_SequenceOfDocument.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(PCDM_SequenceNodeOfSequenceOfDocument,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(PCDM_SequenceNodeOfSequenceOfDocument)
 
 
-#define SeqItem Handle_PCDM_Document
+#define SeqItem Handle(PCDM_Document)
 #define SeqItem_hxx <PCDM_Document.hxx>
 #define TCollection_SequenceNode PCDM_SequenceNodeOfSequenceOfDocument
 #define TCollection_SequenceNode_hxx <PCDM_SequenceNodeOfSequenceOfDocument.hxx>

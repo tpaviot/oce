@@ -6,52 +6,22 @@
 #ifndef _MeshVS_VectorPrsBuilder_HeaderFile
 #define _MeshVS_VectorPrsBuilder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MeshVS_VectorPrsBuilder_HeaderFile
 #include <Handle_MeshVS_VectorPrsBuilder.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _MeshVS_DataMapOfIntegerVector_HeaderFile
 #include <MeshVS_DataMapOfIntegerVector.hxx>
-#endif
-#ifndef _MeshVS_PrsBuilder_HeaderFile
 #include <MeshVS_PrsBuilder.hxx>
-#endif
-#ifndef _Handle_MeshVS_Mesh_HeaderFile
 #include <Handle_MeshVS_Mesh.hxx>
-#endif
-#ifndef _MeshVS_DisplayModeFlags_HeaderFile
 #include <MeshVS_DisplayModeFlags.hxx>
-#endif
-#ifndef _Handle_MeshVS_DataSource_HeaderFile
 #include <Handle_MeshVS_DataSource.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _MeshVS_BuilderPriority_HeaderFile
 #include <MeshVS_BuilderPriority.hxx>
-#endif
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _TColStd_PackedMapOfInteger_HeaderFile
 #include <TColStd_PackedMapOfInteger.hxx>
-#endif
-#ifndef _Handle_Graphic3d_ArrayOfPrimitives_HeaderFile
 #include <Handle_Graphic3d_ArrayOfPrimitives.hxx>
-#endif
 class MeshVS_Mesh;
 class Quantity_Color;
 class MeshVS_DataSource;
@@ -63,46 +33,58 @@ class MeshVS_DataMapOfIntegerVector;
 class gp_Vec;
 
 
-//! This class provides methods to create vector data presentation. <br>
-//! It store map of vectors assigned with nodes or elements. <br>
-//! In simplified mode vectors draws with thickened ends instead of arrows <br>
-class MeshVS_VectorPrsBuilder : public MeshVS_PrsBuilder {
+//! This class provides methods to create vector data presentation.
+//! It store map of vectors assigned with nodes or elements.
+//! In simplified mode vectors draws with thickened ends instead of arrows
+class MeshVS_VectorPrsBuilder : public MeshVS_PrsBuilder
+{
 
 public:
 
   
-  Standard_EXPORT   MeshVS_VectorPrsBuilder(const Handle(MeshVS_Mesh)& Parent,const Standard_Real MaxLength,const Quantity_Color& VectorColor,const MeshVS_DisplayModeFlags& Flags = MeshVS_DMF_VectorDataPrs,const Handle(MeshVS_DataSource)& DS = 0,const Standard_Integer Id = -1,const MeshVS_BuilderPriority& Priority = MeshVS_BP_Vector,const Standard_Boolean IsSimplePrs = Standard_False);
-  //! Builds vector data presentation <br>
-  Standard_EXPORT   virtual  void Build(const Handle(Prs3d_Presentation)& Prs,const TColStd_PackedMapOfInteger& IDs,TColStd_PackedMapOfInteger& IDsToExclude,const Standard_Boolean IsElement,const Standard_Integer theDisplayMode) const;
-  //! Adds to array of polygons and polylines some primitive representing single vector <br>
-  Standard_EXPORT     void DrawVector(const gp_Trsf& theTrsf,const Standard_Real Length,const Standard_Real MaxLength,const TColgp_Array1OfPnt& ArrowPoints,const Handle(Graphic3d_ArrayOfPrimitives)& Lines,const Handle(Graphic3d_ArrayOfPrimitives)& ArrowLines,const Handle(Graphic3d_ArrayOfPrimitives)& Triangles) const;
-  //! Calculates points of arrow presentation <br>
-  Standard_EXPORT   static  Standard_Real calculateArrow(TColgp_Array1OfPnt& Points,const Standard_Real Length,const Standard_Real ArrowPart) ;
-  //! Returns map of vectors assigned with nodes or elements <br>
-  Standard_EXPORT    const MeshVS_DataMapOfIntegerVector& GetVectors(const Standard_Boolean IsElement) const;
-  //! Sets map of vectors assigned with nodes or elements <br>
-  Standard_EXPORT     void SetVectors(const Standard_Boolean IsElement,const MeshVS_DataMapOfIntegerVector& Map) ;
-  //! Returns true, if map isn't empty <br>
-  Standard_EXPORT     Standard_Boolean HasVectors(const Standard_Boolean IsElement) const;
-  //! Returns vector assigned with certain node or element <br>
-  Standard_EXPORT     Standard_Boolean GetVector(const Standard_Boolean IsElement,const Standard_Integer ID,gp_Vec& Vect) const;
-  //! Sets vector assigned with certain node or element <br>
-  Standard_EXPORT     void SetVector(const Standard_Boolean IsElement,const Standard_Integer ID,const gp_Vec& Vect) ;
-  //! Calculates minimal and maximal length of vectors in map <br>
-//! ( nodal, if IsElement = False or elemental, if IsElement = True ) <br>
-  Standard_EXPORT     void GetMinMaxVectorValue(const Standard_Boolean IsElement,Standard_Real& MinValue,Standard_Real& MaxValue) const;
-  //! Sets flag that indicates is simple vector arrow mode uses or not <br>
-//! default value is False <br>
-  Standard_EXPORT     void SetSimplePrsMode(const Standard_Boolean IsSimpleArrow) ;
-  //! Sets parameters of simple vector arrwo presentation <br>
-//! theLineWidthParam - coefficient of vector line width (to draw line instead of arrow) <br>
-//! theStartParam and theEndParam parameters of start and end of thickened ends <br>
-//! position of thickening calculates according to parameters and maximum vector length <br>
-//! default values are: <br>
-//!   theLineWidthParam = 2.5 <br>
-//!   theStartParam     = 0.85 <br>
-//!   theEndParam       = 0.95 <br>
-  Standard_EXPORT     void SetSimplePrsParams(const Standard_Real theLineWidthParam,const Standard_Real theStartParam,const Standard_Real theEndParam) ;
+  Standard_EXPORT MeshVS_VectorPrsBuilder(const Handle(MeshVS_Mesh)& Parent, const Standard_Real MaxLength, const Quantity_Color& VectorColor, const MeshVS_DisplayModeFlags& Flags = MeshVS_DMF_VectorDataPrs, const Handle(MeshVS_DataSource)& DS = 0, const Standard_Integer Id = -1, const MeshVS_BuilderPriority& Priority = MeshVS_BP_Vector, const Standard_Boolean IsSimplePrs = Standard_False);
+  
+  //! Builds vector data presentation
+  Standard_EXPORT virtual   void Build (const Handle(Prs3d_Presentation)& Prs, const TColStd_PackedMapOfInteger& IDs, TColStd_PackedMapOfInteger& IDsToExclude, const Standard_Boolean IsElement, const Standard_Integer theDisplayMode)  const;
+  
+  //! Adds to array of polygons and polylines some primitive representing single vector
+  Standard_EXPORT   void DrawVector (const gp_Trsf& theTrsf, const Standard_Real Length, const Standard_Real MaxLength, const TColgp_Array1OfPnt& ArrowPoints, const Handle(Graphic3d_ArrayOfPrimitives)& Lines, const Handle(Graphic3d_ArrayOfPrimitives)& ArrowLines, const Handle(Graphic3d_ArrayOfPrimitives)& Triangles)  const;
+  
+  //! Calculates points of arrow presentation
+  Standard_EXPORT static   Standard_Real calculateArrow (TColgp_Array1OfPnt& Points, const Standard_Real Length, const Standard_Real ArrowPart) ;
+  
+  //! Returns map of vectors assigned with nodes or elements
+  Standard_EXPORT  const  MeshVS_DataMapOfIntegerVector& GetVectors (const Standard_Boolean IsElement)  const;
+  
+  //! Sets map of vectors assigned with nodes or elements
+  Standard_EXPORT   void SetVectors (const Standard_Boolean IsElement, const MeshVS_DataMapOfIntegerVector& Map) ;
+  
+  //! Returns true, if map isn't empty
+  Standard_EXPORT   Standard_Boolean HasVectors (const Standard_Boolean IsElement)  const;
+  
+  //! Returns vector assigned with certain node or element
+  Standard_EXPORT   Standard_Boolean GetVector (const Standard_Boolean IsElement, const Standard_Integer ID, gp_Vec& Vect)  const;
+  
+  //! Sets vector assigned with certain node or element
+  Standard_EXPORT   void SetVector (const Standard_Boolean IsElement, const Standard_Integer ID, const gp_Vec& Vect) ;
+  
+  //! Calculates minimal and maximal length of vectors in map
+  //! ( nodal, if IsElement = False or elemental, if IsElement = True )
+  Standard_EXPORT   void GetMinMaxVectorValue (const Standard_Boolean IsElement, Standard_Real& MinValue, Standard_Real& MaxValue)  const;
+  
+  //! Sets flag that indicates is simple vector arrow mode uses or not
+  //! default value is False
+  Standard_EXPORT   void SetSimplePrsMode (const Standard_Boolean IsSimpleArrow) ;
+  
+  //! Sets parameters of simple vector arrwo presentation
+  //! theLineWidthParam - coefficient of vector line width (to draw line instead of arrow)
+  //! theStartParam and theEndParam parameters of start and end of thickened ends
+  //! position of thickening calculates according to parameters and maximum vector length
+  //! default values are:
+  //! theLineWidthParam = 2.5
+  //! theStartParam     = 0.85
+  //! theEndParam       = 0.95
+  Standard_EXPORT   void SetSimplePrsParams (const Standard_Real theLineWidthParam, const Standard_Real theStartParam, const Standard_Real theEndParam) ;
 
 
 
@@ -117,12 +99,12 @@ protected:
 private: 
 
 
-Standard_Boolean myIsSimplePrs;
-Standard_Real mySimpleWidthPrm;
-Standard_Real mySimpleStartPrm;
-Standard_Real mySimpleEndPrm;
-MeshVS_DataMapOfIntegerVector myNodeVectorMap;
-MeshVS_DataMapOfIntegerVector myElemVectorMap;
+  Standard_Boolean myIsSimplePrs;
+  Standard_Real mySimpleWidthPrm;
+  Standard_Real mySimpleStartPrm;
+  Standard_Real mySimpleEndPrm;
+  MeshVS_DataMapOfIntegerVector myNodeVectorMap;
+  MeshVS_DataMapOfIntegerVector myElemVectorMap;
 
 
 };
@@ -131,7 +113,6 @@ MeshVS_DataMapOfIntegerVector myElemVectorMap;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MeshVS_VectorPrsBuilder_HeaderFile

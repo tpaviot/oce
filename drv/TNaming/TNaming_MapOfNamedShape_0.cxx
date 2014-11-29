@@ -5,24 +5,13 @@
 
 #include <TNaming_MapOfNamedShape.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
-#include <Standard_DomainError.hxx>
-#endif
-#ifndef _TNaming_NamedShape_HeaderFile
 #include <TNaming_NamedShape.hxx>
-#endif
-#ifndef _TNaming_NamedShapeHasher_HeaderFile
 #include <TNaming_NamedShapeHasher.hxx>
-#endif
-#ifndef _TNaming_StdMapNodeOfMapOfNamedShape_HeaderFile
 #include <TNaming_StdMapNodeOfMapOfNamedShape.hxx>
-#endif
-#ifndef _TNaming_MapIteratorOfMapOfNamedShape_HeaderFile
 #include <TNaming_MapIteratorOfMapOfNamedShape.hxx>
-#endif
  
 
-#define TheKey Handle_TNaming_NamedShape
+#define TheKey Handle(TNaming_NamedShape)
 #define TheKey_hxx <TNaming_NamedShape.hxx>
 #define Hasher TNaming_NamedShapeHasher
 #define Hasher_hxx <TNaming_NamedShapeHasher.hxx>

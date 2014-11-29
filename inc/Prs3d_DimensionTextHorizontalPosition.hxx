@@ -6,21 +6,20 @@
 #ifndef _Prs3d_DimensionTextHorizontalPosition_HeaderFile
 #define _Prs3d_DimensionTextHorizontalPosition_HeaderFile
 
-//! Specifies options for positioning dimension value label in horizontal direction. <br>
-//! DTHP_Left   - value label located at left side on dimension extension. <br>
-//! DTHP_Right  - value label located at right side on dimension extension. <br>
-//! DTHP_Center - value label located at center of dimension line. <br>
-//! DTHP_Fit    - value label located automatically at left side if does not fits <br>
-//!               the dimension space, otherwise the value label is placed at center. <br>
-enum Prs3d_DimensionTextHorizontalPosition {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Specifies options for positioning dimension value label in horizontal direction.
+//! DTHP_Left   - value label located at left side on dimension extension.
+//! DTHP_Right  - value label located at right side on dimension extension.
+//! DTHP_Center - value label located at center of dimension line.
+//! DTHP_Fit    - value label located automatically at left side if does not fits
+//! the dimension space, otherwise the value label is placed at center.
+enum Prs3d_DimensionTextHorizontalPosition
+{
 Prs3d_DTHP_Left,
 Prs3d_DTHP_Right,
 Prs3d_DTHP_Center,
 Prs3d_DTHP_Fit
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Prs3d_DimensionTextHorizontalPosition_HeaderFile

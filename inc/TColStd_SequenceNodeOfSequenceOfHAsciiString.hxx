@@ -6,38 +6,27 @@
 #ifndef _TColStd_SequenceNodeOfSequenceOfHAsciiString_HeaderFile
 #define _TColStd_SequenceNodeOfSequenceOfHAsciiString_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString_HeaderFile
 #include <Handle_TColStd_SequenceNodeOfSequenceOfHAsciiString.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class TCollection_HAsciiString;
 class TColStd_SequenceOfHAsciiString;
 
 
 
-class TColStd_SequenceNodeOfSequenceOfHAsciiString : public TCollection_SeqNode {
+class TColStd_SequenceNodeOfSequenceOfHAsciiString : public TCollection_SeqNode
+{
 
 public:
 
   
-      TColStd_SequenceNodeOfSequenceOfHAsciiString(const Handle(TCollection_HAsciiString)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    TColStd_SequenceNodeOfSequenceOfHAsciiString(const Handle(TCollection_HAsciiString)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_TCollection_HAsciiString& Value() const;
+      Handle(TCollection_HAsciiString)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString myValue;
+  Handle(TCollection_HAsciiString) myValue;
 
 
 };
 
-#define SeqItem Handle_TCollection_HAsciiString
+#define SeqItem Handle(TCollection_HAsciiString)
 #define SeqItem_hxx <TCollection_HAsciiString.hxx>
 #define TCollection_SequenceNode TColStd_SequenceNodeOfSequenceOfHAsciiString
 #define TCollection_SequenceNode_hxx <TColStd_SequenceNodeOfSequenceOfHAsciiString.hxx>
@@ -78,7 +67,6 @@ Handle_TCollection_HAsciiString myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_SequenceNodeOfSequenceOfHAsciiString_HeaderFile

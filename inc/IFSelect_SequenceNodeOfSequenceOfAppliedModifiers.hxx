@@ -6,38 +6,27 @@
 #ifndef _IFSelect_SequenceNodeOfSequenceOfAppliedModifiers_HeaderFile
 #define _IFSelect_SequenceNodeOfSequenceOfAppliedModifiers_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_SequenceNodeOfSequenceOfAppliedModifiers_HeaderFile
 #include <Handle_IFSelect_SequenceNodeOfSequenceOfAppliedModifiers.hxx>
-#endif
 
-#ifndef _Handle_IFSelect_AppliedModifiers_HeaderFile
 #include <Handle_IFSelect_AppliedModifiers.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class IFSelect_AppliedModifiers;
 class IFSelect_SequenceOfAppliedModifiers;
 
 
 
-class IFSelect_SequenceNodeOfSequenceOfAppliedModifiers : public TCollection_SeqNode {
+class IFSelect_SequenceNodeOfSequenceOfAppliedModifiers : public TCollection_SeqNode
+{
 
 public:
 
   
-      IFSelect_SequenceNodeOfSequenceOfAppliedModifiers(const Handle(IFSelect_AppliedModifiers)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    IFSelect_SequenceNodeOfSequenceOfAppliedModifiers(const Handle(IFSelect_AppliedModifiers)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_IFSelect_AppliedModifiers& Value() const;
+      Handle(IFSelect_AppliedModifiers)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_IFSelect_AppliedModifiers myValue;
+  Handle(IFSelect_AppliedModifiers) myValue;
 
 
 };
 
-#define SeqItem Handle_IFSelect_AppliedModifiers
+#define SeqItem Handle(IFSelect_AppliedModifiers)
 #define SeqItem_hxx <IFSelect_AppliedModifiers.hxx>
 #define TCollection_SequenceNode IFSelect_SequenceNodeOfSequenceOfAppliedModifiers
 #define TCollection_SequenceNode_hxx <IFSelect_SequenceNodeOfSequenceOfAppliedModifiers.hxx>
@@ -78,7 +67,6 @@ Handle_IFSelect_AppliedModifiers myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_SequenceNodeOfSequenceOfAppliedModifiers_HeaderFile

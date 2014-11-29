@@ -6,182 +6,181 @@
 #ifndef _BOPDS_PaveBlock_HeaderFile
 #define _BOPDS_PaveBlock_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BOPDS_PaveBlock_HeaderFile
 #include <Handle_BOPDS_PaveBlock.hxx>
-#endif
 
-#ifndef _BOPCol_BaseAllocator_HeaderFile
 #include <BOPCol_BaseAllocator.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _BOPDS_Pave_HeaderFile
 #include <BOPDS_Pave.hxx>
-#endif
-#ifndef _BOPDS_ListOfPave_HeaderFile
 #include <BOPDS_ListOfPave.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
-#ifndef _BOPCol_MapOfInteger_HeaderFile
 #include <BOPCol_MapOfInteger.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _BOPDS_ListOfPaveBlock_HeaderFile
 #include <BOPDS_ListOfPaveBlock.hxx>
-#endif
 class BOPDS_Pave;
 class Bnd_Box;
 
 
 
-//! The class BOPDS_PaveBlock is to store <br>
-//! the information about pave block on an edge. <br>
-//! Two adjacent paves on edge make up pave block. <br>
-class BOPDS_PaveBlock : public MMgt_TShared {
+//! The class BOPDS_PaveBlock is to store
+//! the information about pave block on an edge.
+//! Two adjacent paves on edge make up pave block.
+class BOPDS_PaveBlock : public MMgt_TShared
+{
 
 public:
 
   
-//! Empty contructor <br>
-//! <br>
-  Standard_EXPORT   BOPDS_PaveBlock();
+
+  //! Empty contructor
+  Standard_EXPORT BOPDS_PaveBlock();
   
-//!  Contructor <br>
-//!  <theAllocator> - the allocator to manage the memory <br>
-//! <br>
-  Standard_EXPORT   BOPDS_PaveBlock(const BOPCol_BaseAllocator& theAllocator);
+
+  //! Contructor
+  //! <theAllocator> - the allocator to manage the memory
+  Standard_EXPORT BOPDS_PaveBlock(const BOPCol_BaseAllocator& theAllocator);
   
-//! Modifier <br>
-//! Sets the first pave <thePave> <br>
-  Standard_EXPORT     void SetPave1(const BOPDS_Pave& thePave) ;
+
+  //! Modifier
+  //! Sets the first pave <thePave>
+  Standard_EXPORT   void SetPave1 (const BOPDS_Pave& thePave) ;
   
-//! Selector <br>
-//! Returns the first pave <br>
-  Standard_EXPORT    const BOPDS_Pave& Pave1() const;
+
+  //! Selector
+  //! Returns the first pave
+  Standard_EXPORT  const  BOPDS_Pave& Pave1()  const;
   
-//! Modifier <br>
-//! Sets the second pave <thePave> <br>
-  Standard_EXPORT     void SetPave2(const BOPDS_Pave& thePave) ;
+
+  //! Modifier
+  //! Sets the second pave <thePave>
+  Standard_EXPORT   void SetPave2 (const BOPDS_Pave& thePave) ;
   
-//! Selector <br>
-//! Returns the second pave <br>
-  Standard_EXPORT    const BOPDS_Pave& Pave2() const;
+
+  //! Selector
+  //! Returns the second pave
+  Standard_EXPORT  const  BOPDS_Pave& Pave2()  const;
   
-//! Modifier <br>
-//! Sets the index of edge of pave block <theEdge> <br>
-  Standard_EXPORT     void SetEdge(const Standard_Integer theEdge) ;
+
+  //! Modifier
+  //! Sets the index of edge of pave block <theEdge>
+  Standard_EXPORT   void SetEdge (const Standard_Integer theEdge) ;
   
-//! Selector <br>
-//! Returns the index of edge of pave block <br>
-  Standard_EXPORT     Standard_Integer Edge() const;
+
+  //! Selector
+  //! Returns the index of edge of pave block
+  Standard_EXPORT   Standard_Integer Edge()  const;
   
-//! Query <br>
-//! Returns true if the pave block has edge <br>
-  Standard_EXPORT     Standard_Boolean HasEdge() const;
+
+  //! Query
+  //! Returns true if the pave block has edge
+  Standard_EXPORT   Standard_Boolean HasEdge()  const;
   
-//! Query <br>
-//! Returns true if the pave block has edge <br>
-//! Returns the index of edge <theEdge> <br>
-  Standard_EXPORT     Standard_Boolean HasEdge(Standard_Integer& theEdge) const;
+
+  //! Query
+  //! Returns true if the pave block has edge
+  //! Returns the index of edge <theEdge>
+  Standard_EXPORT   Standard_Boolean HasEdge (Standard_Integer& theEdge)  const;
   
-//! Modifier <br>
-//! Sets the index of original edge <br>
-//! of the pave block <theEdge> <br>
-  Standard_EXPORT     void SetOriginalEdge(const Standard_Integer theEdge) ;
+
+  //! Modifier
+  //! Sets the index of original edge
+  //! of the pave block <theEdge>
+  Standard_EXPORT   void SetOriginalEdge (const Standard_Integer theEdge) ;
   
-//! Selector <br>
-//! Returns the index of original edge of pave block <br>
-  Standard_EXPORT     Standard_Integer OriginalEdge() const;
+
+  //! Selector
+  //! Returns the index of original edge of pave block
+  Standard_EXPORT   Standard_Integer OriginalEdge()  const;
   
-//! Query <br>
-//! Returns true if the edge is equal to the original edge <br>
-//! of the pave block <br>
-  Standard_EXPORT     Standard_Boolean IsSplitEdge() const;
+
+  //! Query
+  //! Returns true if the edge is equal to the original edge
+  //! of the pave block
+  Standard_EXPORT   Standard_Boolean IsSplitEdge()  const;
   
-//! Selector <br>
-//! Returns the parametric range <theT1,theT2> <br>
-//! of the pave block <br>
-  Standard_EXPORT     void Range(Standard_Real& theT1,Standard_Real& theT2) const;
+
+  //! Selector
+  //! Returns the parametric range <theT1,theT2>
+  //! of the pave block
+  Standard_EXPORT   void Range (Standard_Real& theT1, Standard_Real& theT2)  const;
   
-//! Query <br>
-//! Returns true if the pave block has pave indices <br>
-//! that equal to the  pave indices of the pave block <br>
-//! <theOther> <br>
-  Standard_EXPORT     Standard_Boolean HasSameBounds(const Handle(BOPDS_PaveBlock)& theOther) const;
+
+  //! Query
+  //! Returns true if the pave block has pave indices
+  //! that equal to the  pave indices of the pave block
+  //! <theOther>
+  Standard_EXPORT   Standard_Boolean HasSameBounds (const Handle(BOPDS_PaveBlock)& theOther)  const;
   
-//! Selector <br>
-//! Returns the pave indices  <theIndex1,theIndex2> <br>
-//! of the pave block <br>
-  Standard_EXPORT     void Indices(Standard_Integer& theIndex1,Standard_Integer& theIndex2) const;
+
+  //! Selector
+  //! Returns the pave indices  <theIndex1,theIndex2>
+  //! of the pave block
+  Standard_EXPORT   void Indices (Standard_Integer& theIndex1, Standard_Integer& theIndex2)  const;
   
-//! Query <br>
-//! Returns true if the pave block contains extra paves <br>
-  Standard_EXPORT     Standard_Boolean IsToUpdate() const;
+
+  //! Query
+  //! Returns true if the pave block contains extra paves
+  Standard_EXPORT   Standard_Boolean IsToUpdate()  const;
   
-//! Modifier <br>
-//! Appends extra paves <theLP> <br>
-  Standard_EXPORT     void AppendExtPave(const BOPDS_Pave& theLP) ;
+
+  //! Modifier
+  //! Appends extra paves <theLP>
+  Standard_EXPORT   void AppendExtPave (const BOPDS_Pave& theLP) ;
   
-//! Modifier <br>
-//! Appends extra pave <thePave> <br>
-  Standard_EXPORT     void AppendExtPave1(const BOPDS_Pave& thePave) ;
+
+  //! Modifier
+  //! Appends extra pave <thePave>
+  Standard_EXPORT   void AppendExtPave1 (const BOPDS_Pave& thePave) ;
   
-//! Selector <br>
-//! Returns the  extra paves <br>
-  Standard_EXPORT    const BOPDS_ListOfPave& ExtPaves() const;
+
+  //! Selector
+  //! Returns the  extra paves
+  Standard_EXPORT  const  BOPDS_ListOfPave& ExtPaves()  const;
   
-//! Selector / Modifier <br>
-//! Returns the extra paves <br>
-  Standard_EXPORT     BOPDS_ListOfPave& ChangeExtPaves() ;
+
+  //! Selector / Modifier
+  //! Returns the extra paves
+  Standard_EXPORT   BOPDS_ListOfPave& ChangeExtPaves() ;
   
-//! Modifier <br>
-//! Updates the pave block. The extra paves are used <br>
-//! to create new pave blocks <theLPB>. <br>
-//! <theFlag> - if true, the first pave and the second <br>
-//! pave are used to produce new pave blocks. <br>
-  Standard_EXPORT     void Update(BOPDS_ListOfPaveBlock& theLPB,const Standard_Boolean theFlag = Standard_True) ;
+
+  //! Modifier
+  //! Updates the pave block. The extra paves are used
+  //! to create new pave blocks <theLPB>.
+  //! <theFlag> - if true, the first pave and the second
+  //! pave are used to produce new pave blocks.
+  Standard_EXPORT   void Update (BOPDS_ListOfPaveBlock& theLPB, const Standard_Boolean theFlag = Standard_True) ;
   
-//! Query <br>
-//! Returns true if the extra paves contain the pave <br>
-//! with given value of the parameter <thePrm> <br>
-//!  <theTol>  - the value of the tolerance to compare <br>
-  Standard_EXPORT     Standard_Boolean ContainsParameter(const Standard_Real thePrm,const Standard_Real theTol) const;
+
+  //! Query
+  //! Returns true if the extra paves contain the pave
+  //! with given value of the parameter <thePrm>
+  //! <theTol>  - the value of the tolerance to compare
+  Standard_EXPORT   Standard_Boolean ContainsParameter (const Standard_Real thePrm, const Standard_Real theTol)  const;
   
-//! Modifier <br>
-//! Sets the shrunk data for the pave block <br>
-//! <theTS1>,  <theTS2> - shrunk range <br>
-//! <theBox> - the bounding box <br>
-  Standard_EXPORT     void SetShrunkData(const Standard_Real theTS1,const Standard_Real theTS2,const Bnd_Box& theBox) ;
+
+  //! Modifier
+  //! Sets the shrunk data for the pave block
+  //! <theTS1>,  <theTS2> - shrunk range
+  //! <theBox> - the bounding box
+  Standard_EXPORT   void SetShrunkData (const Standard_Real theTS1, const Standard_Real theTS2, const Bnd_Box& theBox) ;
   
-//! Selector <br>
-//! Returns  the shrunk data for the pave block <br>
-//! <theTS1>,  <theTS2> - shrunk range <br>
-//! <theBox> - the bounding box <br>
-  Standard_EXPORT     void ShrunkData(Standard_Real& theTS1,Standard_Real& theTS2,Bnd_Box& theBox) const;
+
+  //! Selector
+  //! Returns  the shrunk data for the pave block
+  //! <theTS1>,  <theTS2> - shrunk range
+  //! <theBox> - the bounding box
+  Standard_EXPORT   void ShrunkData (Standard_Real& theTS1, Standard_Real& theTS2, Bnd_Box& theBox)  const;
   
-//! Query <br>
-//! Returns true if the pave block contains <br>
-//! the shrunk data <br>
-  Standard_EXPORT     Standard_Boolean HasShrunkData() const;
+
+  //! Query
+  //! Returns true if the pave block contains
+  //! the shrunk data
+  Standard_EXPORT   Standard_Boolean HasShrunkData()  const;
   
-  Standard_EXPORT     void Dump() const;
+  Standard_EXPORT   void Dump()  const;
 
 
 
@@ -191,16 +190,16 @@ public:
 protected:
 
 
-BOPCol_BaseAllocator myAllocator;
-Standard_Integer myEdge;
-Standard_Integer myOriginalEdge;
-BOPDS_Pave myPave1;
-BOPDS_Pave myPave2;
-BOPDS_ListOfPave myExtPaves;
-Standard_Real myTS1;
-Standard_Real myTS2;
-Bnd_Box myShrunkBox;
-BOPCol_MapOfInteger myMFence;
+  BOPCol_BaseAllocator myAllocator;
+  Standard_Integer myEdge;
+  Standard_Integer myOriginalEdge;
+  BOPDS_Pave myPave1;
+  BOPDS_Pave myPave2;
+  BOPDS_ListOfPave myExtPaves;
+  Standard_Real myTS1;
+  Standard_Real myTS2;
+  Bnd_Box myShrunkBox;
+  BOPCol_MapOfInteger myMFence;
 
 
 private: 
@@ -214,7 +213,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BOPDS_PaveBlock_HeaderFile

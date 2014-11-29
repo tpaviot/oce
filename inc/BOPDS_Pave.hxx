@@ -6,82 +6,77 @@
 #ifndef _BOPDS_Pave_HeaderFile
 #define _BOPDS_Pave_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 
 
 
-//! The class BOPDS_Pave is to store <br>
-//! information about vertex on an edge <br>
-class BOPDS_Pave  {
+//! The class BOPDS_Pave is to store
+//! information about vertex on an edge
+class BOPDS_Pave 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//! Empty contructor <br>
-//! <br>
-      BOPDS_Pave();
+
+  //! Empty contructor
+    BOPDS_Pave();
 Standard_EXPORT virtual ~BOPDS_Pave();
   
-//! Modifier <br>
-//! Sets the index of vertex <theIndex> <br>
-        void SetIndex(const Standard_Integer theIndex) ;
+
+  //! Modifier
+  //! Sets the index of vertex <theIndex>
+      void SetIndex (const Standard_Integer theIndex) ;
   
-//! Selector <br>
-//! Returns the index of vertex <br>
-        Standard_Integer Index() const;
+
+  //! Selector
+  //! Returns the index of vertex
+      Standard_Integer Index()  const;
   
-//! Modifier <br>
-//! Sets the parameter of vertex <theParameter> <br>
-        void SetParameter(const Standard_Real theParameter) ;
+
+  //! Modifier
+  //! Sets the parameter of vertex <theParameter>
+      void SetParameter (const Standard_Real theParameter) ;
   
-//! Selector <br>
-//! Returns the parameter of vertex <br>
-        Standard_Real Parameter() const;
+
+  //! Selector
+  //! Returns the parameter of vertex
+      Standard_Real Parameter()  const;
   
-//! Selector <br>
-//! Returns the index of vertex <theIndex> <br>
-//! Returns the parameter of vertex <theParameter> <br>
-        void Contents(Standard_Integer& theIndex,Standard_Real& theParameter) const;
+
+  //! Selector
+  //! Returns the index of vertex <theIndex>
+  //! Returns the parameter of vertex <theParameter>
+      void Contents (Standard_Integer& theIndex, Standard_Real& theParameter)  const;
   
-//! Query <br>
-//! Returns true if thr parameter od this is less <br>
-//!  than the parameter of  <theOther> <br>
-        Standard_Boolean IsLess(const BOPDS_Pave& theOther) const;
-      Standard_Boolean operator <(const BOPDS_Pave& theOther) const
+
+  //! Query
+  //! Returns true if thr parameter od this is less
+  //! than the parameter of  <theOther>
+      Standard_Boolean IsLess (const BOPDS_Pave& theOther)  const;
+    Standard_Boolean operator < (const BOPDS_Pave& theOther)  const
 {
   return IsLess(theOther);
 }
   
-//! Query <br>
-//! Returns true if thr parameter od this is equal <br>
-//!  to the parameter of  <theOther> <br>
-        Standard_Boolean IsEqual(const BOPDS_Pave& theOther) const;
-      Standard_Boolean operator ==(const BOPDS_Pave& theOther) const
+
+  //! Query
+  //! Returns true if thr parameter od this is equal
+  //! to the parameter of  <theOther>
+      Standard_Boolean IsEqual (const BOPDS_Pave& theOther)  const;
+    Standard_Boolean operator == (const BOPDS_Pave& theOther)  const
 {
   return IsEqual(theOther);
 }
   
-  Standard_EXPORT     void Dump() const;
-
+  Standard_EXPORT   void Dump()  const;
 
 
 
@@ -90,8 +85,8 @@ protected:
 
 
 
-Standard_Integer myIndex;
-Standard_Real myParameter;
+  Standard_Integer myIndex;
+  Standard_Real myParameter;
 
 
 private:
@@ -107,7 +102,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BOPDS_Pave_HeaderFile

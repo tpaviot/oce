@@ -6,34 +6,16 @@
 #ifndef _IGESBasic_ExternalRefFileIndex_HeaderFile
 #define _IGESBasic_ExternalRefFileIndex_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESBasic_ExternalRefFileIndex_HeaderFile
 #include <Handle_IGESBasic_ExternalRefFileIndex.hxx>
-#endif
 
-#ifndef _Handle_Interface_HArray1OfHAsciiString_HeaderFile
 #include <Handle_Interface_HArray1OfHAsciiString.hxx>
-#endif
-#ifndef _Handle_IGESData_HArray1OfIGESEntity_HeaderFile
 #include <Handle_IGESData_HArray1OfIGESEntity.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
 class Interface_HArray1OfHAsciiString;
 class IGESData_HArray1OfIGESEntity;
 class Standard_DimensionMismatch;
@@ -42,32 +24,37 @@ class TCollection_HAsciiString;
 class IGESData_IGESEntity;
 
 
-//! defines ExternalRefFileIndex, Type <402> Form <12> <br>
-//!          in package IGESBasic <br>
-//!          Contains a list of the symbolic names used by the <br>
-//!          referencing files and the DE pointers to the <br>
-//!          corresponding definitions within the referenced file <br>
-class IGESBasic_ExternalRefFileIndex : public IGESData_IGESEntity {
+//! defines ExternalRefFileIndex, Type <402> Form <12>
+//! in package IGESBasic
+//! Contains a list of the symbolic names used by the
+//! referencing files and the DE pointers to the
+//! corresponding definitions within the referenced file
+class IGESBasic_ExternalRefFileIndex : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESBasic_ExternalRefFileIndex();
-  //! This method is used to set the fields of the class <br>
-//!           ExternalRefFileIndex <br>
-//!       - aNameArray  : External Reference Entity symbolic names <br>
-//!       - allEntities : External Reference Entities <br>
-//! raises exception if array lengths are not equal <br>
-//! if size of aNameArray is not equal to size of allEntities <br>
-  Standard_EXPORT     void Init(const Handle(Interface_HArray1OfHAsciiString)& aNameArray,const Handle(IGESData_HArray1OfIGESEntity)& allEntities) ;
-  //! returns number of index entries <br>
-  Standard_EXPORT     Standard_Integer NbEntries() const;
-  //! returns the External Reference Entity symbolic name <br>
-//! raises exception if Index <= 0 or Index > NbEntries() <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Name(const Standard_Integer Index) const;
-  //! returns the internal entity <br>
-//! raises exception if Index <= 0 or Index > NbEntries() <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity Entity(const Standard_Integer Index) const;
+  Standard_EXPORT IGESBasic_ExternalRefFileIndex();
+  
+  //! This method is used to set the fields of the class
+  //! ExternalRefFileIndex
+  //! - aNameArray  : External Reference Entity symbolic names
+  //! - allEntities : External Reference Entities
+  //! raises exception if array lengths are not equal
+  //! if size of aNameArray is not equal to size of allEntities
+  Standard_EXPORT   void Init (const Handle(Interface_HArray1OfHAsciiString)& aNameArray, const Handle(IGESData_HArray1OfIGESEntity)& allEntities) ;
+  
+  //! returns number of index entries
+  Standard_EXPORT   Standard_Integer NbEntries()  const;
+  
+  //! returns the External Reference Entity symbolic name
+  //! raises exception if Index <= 0 or Index > NbEntries()
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Name (const Standard_Integer Index)  const;
+  
+  //! returns the internal entity
+  //! raises exception if Index <= 0 or Index > NbEntries()
+  Standard_EXPORT   Handle(IGESData_IGESEntity) Entity (const Standard_Integer Index)  const;
 
 
 
@@ -82,8 +69,8 @@ protected:
 private: 
 
 
-Handle_Interface_HArray1OfHAsciiString theNames;
-Handle_IGESData_HArray1OfIGESEntity theEntities;
+  Handle(Interface_HArray1OfHAsciiString) theNames;
+  Handle(IGESData_HArray1OfIGESEntity) theEntities;
 
 
 };
@@ -92,7 +79,6 @@ Handle_IGESData_HArray1OfIGESEntity theEntities;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESBasic_ExternalRefFileIndex_HeaderFile

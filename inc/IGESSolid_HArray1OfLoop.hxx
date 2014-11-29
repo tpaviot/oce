@@ -6,28 +6,14 @@
 #ifndef _IGESSolid_HArray1OfLoop_HeaderFile
 #define _IGESSolid_HArray1OfLoop_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSolid_HArray1OfLoop_HeaderFile
 #include <Handle_IGESSolid_HArray1OfLoop.hxx>
-#endif
 
-#ifndef _IGESSolid_Array1OfLoop_HeaderFile
 #include <IGESSolid_Array1OfLoop.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_IGESSolid_Loop_HeaderFile
 #include <Handle_IGESSolid_Loop.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class IGESSolid_Array1OfLoop;
 
 
 
-class IGESSolid_HArray1OfLoop : public MMgt_TShared {
+class IGESSolid_HArray1OfLoop : public MMgt_TShared
+{
 
 public:
 
   
-      IGESSolid_HArray1OfLoop(const Standard_Integer Low,const Standard_Integer Up);
+    IGESSolid_HArray1OfLoop(const Standard_Integer Low, const Standard_Integer Up);
   
-      IGESSolid_HArray1OfLoop(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESSolid_Loop)& V);
+    IGESSolid_HArray1OfLoop(const Standard_Integer Low, const Standard_Integer Up, const Handle(IGESSolid_Loop)& V);
   
-        void Init(const Handle(IGESSolid_Loop)& V) ;
+      void Init (const Handle(IGESSolid_Loop)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(IGESSolid_Loop)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(IGESSolid_Loop)& Value) ;
   
-       const Handle_IGESSolid_Loop& Value(const Standard_Integer Index) const;
+     const  Handle(IGESSolid_Loop)& Value (const Standard_Integer Index)  const;
   
-        Handle_IGESSolid_Loop& ChangeValue(const Standard_Integer Index) ;
+      Handle(IGESSolid_Loop)& ChangeValue (const Standard_Integer Index) ;
   
-       const IGESSolid_Array1OfLoop& Array1() const;
+     const  IGESSolid_Array1OfLoop& Array1()  const;
   
-        IGESSolid_Array1OfLoop& ChangeArray1() ;
+      IGESSolid_Array1OfLoop& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-IGESSolid_Array1OfLoop myArray;
+  IGESSolid_Array1OfLoop myArray;
 
 
 };
 
-#define ItemHArray1 Handle_IGESSolid_Loop
+#define ItemHArray1 Handle(IGESSolid_Loop)
 #define ItemHArray1_hxx <IGESSolid_Loop.hxx>
 #define TheArray1 IGESSolid_Array1OfLoop
 #define TheArray1_hxx <IGESSolid_Array1OfLoop.hxx>
@@ -103,7 +90,6 @@ IGESSolid_Array1OfLoop myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSolid_HArray1OfLoop_HeaderFile

@@ -23,15 +23,8 @@
 //			instead a restricted object NameOfColor. 
 //			Add SetCurrentFacingModel() method
 
-#define IMP020200	//GG Add SetTransformation() method
-
-#define IMP140200	//GG Add HasPresentation() and Presentation() methods
-//			     Add SetAspect() method.
-
 #define BUC60632	//GG 15/03/00 Add protection on SetDisplayMode()
 //			method, compute only authorized presentation.
-
-#define IMP220501	//GG CADPAK_V2 Update selection properly
 
 #define OCC708          //SAV unsetting transformation correctly
 
@@ -79,8 +72,7 @@ myCTXPtr(NULL),
 mySelPriority(-1),
 myDisplayMode (-1),
 mySelectionMode(0),
-mystate(0),
-myHasTransformation(Standard_False)
+mystate(0)
 {
   Handle (AIS_InteractiveContext) Bid;
   myCTXPtr = Bid.operator->();
@@ -154,7 +146,7 @@ void AIS_InteractiveObject::SetContext(const Handle(AIS_InteractiveContext)& aCt
     return;
   if (myDrawer.IsNull()) {
     myDrawer = new AIS_Drawer;
-#ifdef DEB
+#ifdef OCCT_DEBUG
     cout << "AIS_InteractiveObject::SetContext DRAWER NUL!" << endl;
 #endif
   }
@@ -544,115 +536,33 @@ void AIS_InteractiveObject::SetInfiniteState(const Standard_Boolean aFlag)
   myInfiniteState = aFlag;
   Handle(Prs3d_Presentation) P;
 
-  for(Standard_Integer i =1; i<=myPresentations.Length();i++){
-    P = Handle(Prs3d_Presentation)::DownCast(myPresentations(i).Presentation());
+  for(Standard_Integer i =1; i<=myPresentations.Length();i++)
+  {
+    P = myPresentations(i).Presentation()->Presentation();
     if(!P.IsNull())
-      P->SetInfiniteState(myInfiniteState);}
-}
-
-#ifdef IMP020200
-//=======================================================================
-//function : SetTransformation
-//purpose  : 
-//=======================================================================
-void AIS_InteractiveObject::SetTransformation(const Handle(Geom_Transformation)& aTrsf, const Standard_Boolean postConcatenate, const Standard_Boolean updateSelection) {
-
-  if(!GetContext().IsNull()){
-    const PrsMgr_Presentations& prs = Presentations(); 
-    Handle(Prs3d_Presentation) P;
-    Standard_Integer mode;
-    myHasTransformation = Standard_True;
-    for( Standard_Integer i=1 ; i<=prs.Length() ; i++ ) {
-      mode = prs(i).Mode();
-      P = GetContext()->MainPrsMgr()->CastPresentation(this,mode)->Presentation();
-      if( postConcatenate ) P->Multiply(aTrsf);
-      else     	            P->Transform(aTrsf);
-      if( updateSelection ) {
-#ifdef IMP220501
-        myCTXPtr->ClearSelected(Standard_True);
-	myCTXPtr->RecomputeSelectionOnly(this);
-#else
-        if( HasSelection(mode) ) {
-          UpdateSelection(mode);      
-        }
-#endif
-      }
-    }
+      P->SetInfiniteState(myInfiniteState);
   }
 }
 
-//=======================================================================
-//function : SetTransformation
-//purpose  : 
-//=======================================================================
-void AIS_InteractiveObject::UnsetTransformation() {
-#ifdef OCC708
-  static Handle(Geom_Transformation) trsf = new Geom_Transformation( gp_Trsf() );
-#else
-Handle(Geom_Transformation) trsf;
-#endif
-
-    SetTransformation(trsf);	// Set identity transformation
-    myHasTransformation = Standard_False;
-}
-
-//=======================================================================
-//function : Transformation
-//purpose  : 
-//=======================================================================
-Handle(Geom_Transformation) AIS_InteractiveObject::Transformation() {
-Handle(Geom_Transformation) trsf; 
-
-  if(!GetContext().IsNull() ) {
-    const PrsMgr_Presentations& prs = Presentations(); 
-    if( prs.Length() > 0 ) {
-      Handle(Prs3d_Presentation) P = 
-	  GetContext()->MainPrsMgr()->CastPresentation(this,1)->Presentation();
-      trsf = P->Transformation();
-    }
-  }
-
-  return trsf;
-}
-
-//=======================================================================
-//function : HasTransformation
-//purpose  : 
-//=======================================================================
-Standard_Boolean AIS_InteractiveObject::HasTransformation() const {
-
-  return myHasTransformation;
-}
-#endif
-
-#ifdef IMP140200
 //=======================================================================
 //function : HasPresentation
-//purpose  : 
+//purpose  :
 //=======================================================================
-Standard_Boolean AIS_InteractiveObject::HasPresentation() const {
-
-  if( !GetContext().IsNull() && 
-	GetContext()->MainPrsMgr()->HasPresentation(this,myDisplayMode) ) {
-    return Standard_True;
-  }
-
-  return Standard_False;
+Standard_Boolean AIS_InteractiveObject::HasPresentation() const
+{
+  return !GetContext().IsNull()
+       && GetContext()->MainPrsMgr()->HasPresentation (this, myDisplayMode);
 }
 
 //=======================================================================
 //function : Presentation
-//purpose  : 
+//purpose  :
 //=======================================================================
-Handle(Prs3d_Presentation) AIS_InteractiveObject::Presentation() const {
-Handle(Prs3d_Presentation) prs;
-
-  if( HasPresentation() ) {
-    prs = GetContext()->MainPrsMgr()->
-		CastPresentation(this,myDisplayMode)->Presentation();
-  }
-
-  return prs;
+Handle(Prs3d_Presentation) AIS_InteractiveObject::Presentation() const
+{
+  return HasPresentation()
+       ? GetContext()->MainPrsMgr()->Presentation (this, myDisplayMode)->Presentation()
+       : Handle(Prs3d_Presentation)();
 }
 
 //=======================================================================
@@ -698,9 +608,6 @@ void AIS_InteractiveObject::SetAspect(const Handle(Prs3d_BasicAspect)& anAspect,
     }
   }
 }
-#endif
-
-// OCC4895 SAN 22/03/04 High-level interface for controlling polygon offsets
 
 //=======================================================================
 //function : SetPolygonOffsets 
@@ -716,37 +623,38 @@ void AIS_InteractiveObject::SetPolygonOffsets(const Standard_Integer    aMode,
   myDrawer->ShadingAspect()->Aspect()->SetPolygonOffsets( aMode, aFactor, aUnits );
 
   // Modify existing presentations 
-  Handle(Graphic3d_Structure) aStruct;
-  for( Standard_Integer i = 1, n = myPresentations.Length(); i <= n; i++ ) {
-    Handle(PrsMgr_Presentation3d) aPrs3d =
-      Handle(PrsMgr_Presentation3d)::DownCast( myPresentations(i).Presentation() );
+  for (Standard_Integer aPrsIter = 1, n = myPresentations.Length(); aPrsIter <= n; ++aPrsIter)
+  {
+    const Handle(PrsMgr_Presentation)& aPrs3d = myPresentations (aPrsIter).Presentation();
     if ( !aPrs3d.IsNull() ) {
-      aStruct = Handle(Graphic3d_Structure)::DownCast( aPrs3d->Presentation() );
+      const Handle(Graphic3d_Structure)& aStruct = aPrs3d->Presentation();
       if( !aStruct.IsNull() ) {
         aStruct->SetPrimitivesAspect( myDrawer->ShadingAspect()->Aspect() );
         // Workaround for issue 23115: Need to update also groups, because their
         // face aspect ALWAYS overrides the structure's.
         const Graphic3d_SequenceOfGroup& aGroups = aStruct->Groups();
-        Standard_Integer aGroupIndex = 1, aGroupNb = aGroups.Length();
-        for ( ; aGroupIndex <= aGroupNb; aGroupIndex++ ) {
-          Handle(Graphic3d_Group) aGrp = aGroups.Value(aGroupIndex);
-          if ( !aGrp.IsNull() && aGrp->IsGroupPrimitivesAspectSet(Graphic3d_ASPECT_FILL_AREA) ) {
-            Handle(Graphic3d_AspectFillArea3d) aFaceAsp = new Graphic3d_AspectFillArea3d();
-            Handle(Graphic3d_AspectLine3d) aLineAsp = new Graphic3d_AspectLine3d();
-            Handle(Graphic3d_AspectMarker3d) aPntAsp = new Graphic3d_AspectMarker3d();
-            Handle(Graphic3d_AspectText3d) aTextAsp = new Graphic3d_AspectText3d();
-            // TODO: Add methods for retrieving individual aspects from Graphic3d_Group
-            aGrp->GroupPrimitivesAspect(aLineAsp, aTextAsp, aPntAsp, aFaceAsp);
-            aFaceAsp->SetPolygonOffsets(aMode, aFactor, aUnits);
-            // TODO: Issue 23118 - This line kills texture data in the group...
-            aGrp->SetGroupPrimitivesAspect(aFaceAsp);
+        for (Graphic3d_SequenceOfGroup::Iterator aGroupIter (aGroups); aGroupIter.More(); aGroupIter.Next())
+        {
+          Handle(Graphic3d_Group)& aGrp = aGroupIter.ChangeValue();
+          if (aGrp.IsNull()
+          || !aGrp->IsGroupPrimitivesAspectSet (Graphic3d_ASPECT_FILL_AREA))
+          {
+            continue;
           }
+
+          Handle(Graphic3d_AspectFillArea3d) aFaceAsp = new Graphic3d_AspectFillArea3d();
+          Handle(Graphic3d_AspectLine3d)     aLineAsp = new Graphic3d_AspectLine3d();
+          Handle(Graphic3d_AspectMarker3d)   aPntAsp  = new Graphic3d_AspectMarker3d();
+          Handle(Graphic3d_AspectText3d)     aTextAsp = new Graphic3d_AspectText3d();
+          // TODO: Add methods for retrieving individual aspects from Graphic3d_Group
+          aGrp->GroupPrimitivesAspect(aLineAsp, aTextAsp, aPntAsp, aFaceAsp);
+          aFaceAsp->SetPolygonOffsets(aMode, aFactor, aUnits);
+          aGrp->SetGroupPrimitivesAspect(aFaceAsp);
         }
       }
     }
   }
 }
-
 
 //=======================================================================
 //function : HasPolygonOffsets 
@@ -770,4 +678,3 @@ void AIS_InteractiveObject::PolygonOffsets(Standard_Integer&    aMode,
   if( HasPolygonOffsets() )
     myDrawer->ShadingAspect()->Aspect()->PolygonOffsets( aMode, aFactor, aUnits );
 }
-// OCC4895 SAN 22/03/04 High-level interface for controlling polygon offsets 

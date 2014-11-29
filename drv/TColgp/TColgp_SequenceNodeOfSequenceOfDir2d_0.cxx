@@ -5,16 +5,10 @@
 
 #include <TColgp_SequenceNodeOfSequenceOfDir2d.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _gp_Dir2d_HeaderFile
 #include <gp_Dir2d.hxx>
-#endif
-#ifndef _TColgp_SequenceOfDir2d_HeaderFile
 #include <TColgp_SequenceOfDir2d.hxx>
-#endif
 
  
 

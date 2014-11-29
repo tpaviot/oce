@@ -1,18 +1,6 @@
-#ifndef _gp_Pln_HeaderFile
 #include <gp_Pln.hxx>
-#endif
-#ifndef _gp_Sphere_HeaderFile
 #include <gp_Sphere.hxx>
-#endif
-#ifndef _gp_Cylinder_HeaderFile
 #include <gp_Cylinder.hxx>
-#endif
-#ifndef _gp_Cone_HeaderFile
 #include <gp_Cone.hxx>
-#endif
-#ifndef _gp_Ax3_HeaderFile
 #include <gp_Ax3.hxx>
-#endif
-#ifndef _IntAna_Quadric_HeaderFile
 #include <IntAna_Quadric.hxx>
-#endif

@@ -6,13 +6,16 @@
 #ifndef _Message_Gravity_HeaderFile
 #define _Message_Gravity_HeaderFile
 
-//! Defines gravity level of messages <br>
-//! - Trace: low-level details on algorithm execution (usually for debug purposes) <br>
-//! - Info: informative message <br>
-//! - Warning: warning message <br>
-//! - Alarm: non-critical error <br>
-//! - Fail: fatal error <br>
-enum Message_Gravity {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Defines gravity level of messages
+//! - Trace: low-level details on algorithm execution (usually for debug purposes)
+//! - Info: informative message
+//! - Warning: warning message
+//! - Alarm: non-critical error
+//! - Fail: fatal error
+enum Message_Gravity
+{
 Message_Trace,
 Message_Info,
 Message_Warning,
@@ -20,8 +23,4 @@ Message_Alarm,
 Message_Fail
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Message_Gravity_HeaderFile

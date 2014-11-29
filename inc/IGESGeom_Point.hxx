@@ -6,54 +6,46 @@
 #ifndef _IGESGeom_Point_HeaderFile
 #define _IGESGeom_Point_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESGeom_Point_HeaderFile
 #include <Handle_IGESGeom_Point.hxx>
-#endif
 
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _Handle_IGESBasic_SubfigureDef_HeaderFile
 #include <Handle_IGESBasic_SubfigureDef.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class IGESBasic_SubfigureDef;
 class gp_XYZ;
 class gp_Pnt;
 
 
-//! defines IGESPoint, Type <116> Form <0> <br>
-//!          in package IGESGeom <br>
-class IGESGeom_Point : public IGESData_IGESEntity {
+//! defines IGESPoint, Type <116> Form <0>
+//! in package IGESGeom
+class IGESGeom_Point : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESGeom_Point();
-  //! This method is used to set the fields of the class Point <br>
-//!       - aPoint  : Coordinates of point <br>
-//!       - aSymbol : SubfigureDefinition entity specifying the <br>
-//!                   display symbol if there exists one, or zero <br>
-  Standard_EXPORT     void Init(const gp_XYZ& aPoint,const Handle(IGESBasic_SubfigureDef)& aSymbol) ;
-  //! returns co-ordinates of the point <br>
-  Standard_EXPORT     gp_Pnt Value() const;
-  //! returns co-ordinates of the point after applying Transf. Matrix <br>
-  Standard_EXPORT     gp_Pnt TransformedValue() const;
-  //! returns True if symbol exists <br>
-  Standard_EXPORT     Standard_Boolean HasDisplaySymbol() const;
-  //! returns display symbol entity if it exists <br>
-  Standard_EXPORT     Handle_IGESBasic_SubfigureDef DisplaySymbol() const;
+  Standard_EXPORT IGESGeom_Point();
+  
+  //! This method is used to set the fields of the class Point
+  //! - aPoint  : Coordinates of point
+  //! - aSymbol : SubfigureDefinition entity specifying the
+  //! display symbol if there exists one, or zero
+  Standard_EXPORT   void Init (const gp_XYZ& aPoint, const Handle(IGESBasic_SubfigureDef)& aSymbol) ;
+  
+  //! returns co-ordinates of the point
+  Standard_EXPORT   gp_Pnt Value()  const;
+  
+  //! returns co-ordinates of the point after applying Transf. Matrix
+  Standard_EXPORT   gp_Pnt TransformedValue()  const;
+  
+  //! returns True if symbol exists
+  Standard_EXPORT   Standard_Boolean HasDisplaySymbol()  const;
+  
+  //! returns display symbol entity if it exists
+  Standard_EXPORT   Handle(IGESBasic_SubfigureDef) DisplaySymbol()  const;
 
 
 
@@ -68,8 +60,8 @@ protected:
 private: 
 
 
-gp_XYZ thePoint;
-Handle_IGESBasic_SubfigureDef theSymbol;
+  gp_XYZ thePoint;
+  Handle(IGESBasic_SubfigureDef) theSymbol;
 
 
 };
@@ -78,7 +70,6 @@ Handle_IGESBasic_SubfigureDef theSymbol;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGeom_Point_HeaderFile

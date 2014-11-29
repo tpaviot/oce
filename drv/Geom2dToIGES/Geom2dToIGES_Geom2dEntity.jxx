@@ -1,6 +1,2 @@
-#ifndef _IGESData_IGESModel_HeaderFile
 #include <IGESData_IGESModel.hxx>
-#endif
-#ifndef _Geom2dToIGES_Geom2dEntity_HeaderFile
 #include <Geom2dToIGES_Geom2dEntity.hxx>
-#endif

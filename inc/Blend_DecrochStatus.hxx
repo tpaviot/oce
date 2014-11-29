@@ -6,16 +6,15 @@
 #ifndef _Blend_DecrochStatus_HeaderFile
 #define _Blend_DecrochStatus_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Blend_DecrochStatus {
+
+enum Blend_DecrochStatus
+{
 Blend_NoDecroch,
 Blend_DecrochRst1,
 Blend_DecrochRst2,
 Blend_DecrochBoth
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Blend_DecrochStatus_HeaderFile

@@ -6,43 +6,32 @@
 #ifndef _Storage_CallBack_HeaderFile
 #define _Storage_CallBack_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Storage_CallBack_HeaderFile
 #include <Handle_Storage_CallBack.hxx>
-#endif
 
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
 #include <Handle_Standard_Persistent.hxx>
-#endif
-#ifndef _Handle_Storage_Schema_HeaderFile
 #include <Handle_Storage_Schema.hxx>
-#endif
 class Standard_Persistent;
 class Storage_Schema;
 class Storage_BaseDriver;
 
 
 
-class Storage_CallBack : public MMgt_TShared {
+class Storage_CallBack : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   virtual  Handle_Standard_Persistent New() const = 0;
+  Standard_EXPORT virtual   Handle(Standard_Persistent) New()  const = 0;
   
-  Standard_EXPORT   virtual  void Add(const Handle(Standard_Persistent)& aPers,const Handle(Storage_Schema)& aSchema) const = 0;
+  Standard_EXPORT virtual   void Add (const Handle(Standard_Persistent)& aPers, const Handle(Storage_Schema)& aSchema)  const = 0;
   
-  Standard_EXPORT   virtual  void Write(const Handle(Standard_Persistent)& aPers,Storage_BaseDriver& aDriver,const Handle(Storage_Schema)& aSchema) const = 0;
+  Standard_EXPORT virtual   void Write (const Handle(Standard_Persistent)& aPers, Storage_BaseDriver& aDriver, const Handle(Storage_Schema)& aSchema)  const = 0;
   
-  Standard_EXPORT   virtual  void Read(const Handle(Standard_Persistent)& aPers,Storage_BaseDriver& aDriver,const Handle(Storage_Schema)& aSchema) const = 0;
+  Standard_EXPORT virtual   void Read (const Handle(Standard_Persistent)& aPers, Storage_BaseDriver& aDriver, const Handle(Storage_Schema)& aSchema)  const = 0;
 
 
 
@@ -65,7 +54,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Storage_CallBack_HeaderFile

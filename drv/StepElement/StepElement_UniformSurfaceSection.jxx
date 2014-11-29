@@ -1,6 +1,2 @@
-#ifndef _StepElement_MeasureOrUnspecifiedValue_HeaderFile
 #include <StepElement_MeasureOrUnspecifiedValue.hxx>
-#endif
-#ifndef _StepElement_UniformSurfaceSection_HeaderFile
 #include <StepElement_UniformSurfaceSection.hxx>
-#endif

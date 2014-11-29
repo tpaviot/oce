@@ -6,28 +6,14 @@
 #ifndef _XSDRAWSTLVRML_DataMapNodeOfCoordsMap_HeaderFile
 #define _XSDRAWSTLVRML_DataMapNodeOfCoordsMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_XSDRAWSTLVRML_DataMapNodeOfCoordsMap_HeaderFile
 #include <Handle_XSDRAWSTLVRML_DataMapNodeOfCoordsMap.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TColStd_DataMapOfIntegerReal_HeaderFile
 #include <TColStd_DataMapOfIntegerReal.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TColStd_DataMapOfIntegerReal;
 class TColStd_MapIntegerHasher;
 class XSDRAWSTLVRML_CoordsMap;
@@ -35,16 +21,17 @@ class XSDRAWSTLVRML_DataMapIteratorOfCoordsMap;
 
 
 
-class XSDRAWSTLVRML_DataMapNodeOfCoordsMap : public TCollection_MapNode {
+class XSDRAWSTLVRML_DataMapNodeOfCoordsMap : public TCollection_MapNode
+{
 
 public:
 
   
-      XSDRAWSTLVRML_DataMapNodeOfCoordsMap(const Standard_Integer& K,const TColStd_DataMapOfIntegerReal& I,const TCollection_MapNodePtr& n);
+    XSDRAWSTLVRML_DataMapNodeOfCoordsMap(const Standard_Integer& K, const TColStd_DataMapOfIntegerReal& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Key() const;
+      Standard_Integer& Key()  const;
   
-        TColStd_DataMapOfIntegerReal& Value() const;
+      TColStd_DataMapOfIntegerReal& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-Standard_Integer myKey;
-TColStd_DataMapOfIntegerReal myValue;
+  Standard_Integer myKey;
+  TColStd_DataMapOfIntegerReal myValue;
 
 
 };
@@ -98,7 +85,6 @@ TColStd_DataMapOfIntegerReal myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XSDRAWSTLVRML_DataMapNodeOfCoordsMap_HeaderFile

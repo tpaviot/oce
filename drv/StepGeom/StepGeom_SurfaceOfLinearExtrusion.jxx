@@ -1,12 +1,4 @@
-#ifndef _StepGeom_Vector_HeaderFile
 #include <StepGeom_Vector.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepGeom_Curve_HeaderFile
 #include <StepGeom_Curve.hxx>
-#endif
-#ifndef _StepGeom_SurfaceOfLinearExtrusion_HeaderFile
 #include <StepGeom_SurfaceOfLinearExtrusion.hxx>
-#endif

@@ -6,31 +6,15 @@
 #ifndef _BRep_ListOfPointRepresentation_HeaderFile
 #define _BRep_ListOfPointRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_BRep_PointRepresentation_HeaderFile
 #include <Handle_BRep_PointRepresentation.hxx>
-#endif
-#ifndef _Handle_BRep_ListNodeOfListOfPointRepresentation_HeaderFile
 #include <Handle_BRep_ListNodeOfListOfPointRepresentation.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class BRep_ListIteratorOfListOfPointRepresentation;
 class BRep_PointRepresentation;
@@ -38,61 +22,63 @@ class BRep_ListNodeOfListOfPointRepresentation;
 
 
 
-class BRep_ListOfPointRepresentation  {
+class BRep_ListOfPointRepresentation 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRep_ListOfPointRepresentation();
+  Standard_EXPORT BRep_ListOfPointRepresentation();
   
-  Standard_EXPORT     void Assign(const BRep_ListOfPointRepresentation& Other) ;
-    void operator=(const BRep_ListOfPointRepresentation& Other) 
+  Standard_EXPORT BRep_ListOfPointRepresentation(const BRep_ListOfPointRepresentation& Other);
+  
+  Standard_EXPORT   void Assign (const BRep_ListOfPointRepresentation& Other) ;
+  void operator= (const BRep_ListOfPointRepresentation& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~BRep_ListOfPointRepresentation()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const Handle(BRep_PointRepresentation)& I) ;
+  Standard_EXPORT   void Prepend (const Handle(BRep_PointRepresentation)& I) ;
   
-  Standard_EXPORT     void Prepend(const Handle(BRep_PointRepresentation)& I,BRep_ListIteratorOfListOfPointRepresentation& theIt) ;
+  Standard_EXPORT   void Prepend (const Handle(BRep_PointRepresentation)& I, BRep_ListIteratorOfListOfPointRepresentation& theIt) ;
   
-  Standard_EXPORT     void Prepend(BRep_ListOfPointRepresentation& Other) ;
+  Standard_EXPORT   void Prepend (BRep_ListOfPointRepresentation& Other) ;
   
-  Standard_EXPORT     void Append(const Handle(BRep_PointRepresentation)& I) ;
+  Standard_EXPORT   void Append (const Handle(BRep_PointRepresentation)& I) ;
   
-  Standard_EXPORT     void Append(const Handle(BRep_PointRepresentation)& I,BRep_ListIteratorOfListOfPointRepresentation& theIt) ;
+  Standard_EXPORT   void Append (const Handle(BRep_PointRepresentation)& I, BRep_ListIteratorOfListOfPointRepresentation& theIt) ;
   
-  Standard_EXPORT     void Append(BRep_ListOfPointRepresentation& Other) ;
+  Standard_EXPORT   void Append (BRep_ListOfPointRepresentation& Other) ;
   
-  Standard_EXPORT     Handle_BRep_PointRepresentation& First() const;
+  Standard_EXPORT   Handle(BRep_PointRepresentation)& First()  const;
   
-  Standard_EXPORT     Handle_BRep_PointRepresentation& Last() const;
+  Standard_EXPORT   Handle(BRep_PointRepresentation)& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(BRep_ListIteratorOfListOfPointRepresentation& It) ;
+  Standard_EXPORT   void Remove (BRep_ListIteratorOfListOfPointRepresentation& It) ;
   
-  Standard_EXPORT     void InsertBefore(const Handle(BRep_PointRepresentation)& I,BRep_ListIteratorOfListOfPointRepresentation& It) ;
+  Standard_EXPORT   void InsertBefore (const Handle(BRep_PointRepresentation)& I, BRep_ListIteratorOfListOfPointRepresentation& It) ;
   
-  Standard_EXPORT     void InsertBefore(BRep_ListOfPointRepresentation& Other,BRep_ListIteratorOfListOfPointRepresentation& It) ;
+  Standard_EXPORT   void InsertBefore (BRep_ListOfPointRepresentation& Other, BRep_ListIteratorOfListOfPointRepresentation& It) ;
   
-  Standard_EXPORT     void InsertAfter(const Handle(BRep_PointRepresentation)& I,BRep_ListIteratorOfListOfPointRepresentation& It) ;
+  Standard_EXPORT   void InsertAfter (const Handle(BRep_PointRepresentation)& I, BRep_ListIteratorOfListOfPointRepresentation& It) ;
   
-  Standard_EXPORT     void InsertAfter(BRep_ListOfPointRepresentation& Other,BRep_ListIteratorOfListOfPointRepresentation& It) ;
+  Standard_EXPORT   void InsertAfter (BRep_ListOfPointRepresentation& Other, BRep_ListIteratorOfListOfPointRepresentation& It) ;
 
 
 friend class BRep_ListIteratorOfListOfPointRepresentation;
-
 
 
 protected:
@@ -103,17 +89,15 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   BRep_ListOfPointRepresentation(const BRep_ListOfPointRepresentation& Other);
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
 
-#define Item Handle_BRep_PointRepresentation
+#define Item Handle(BRep_PointRepresentation)
 #define Item_hxx <BRep_PointRepresentation.hxx>
 #define TCollection_ListNode BRep_ListNodeOfListOfPointRepresentation
 #define TCollection_ListNode_hxx <BRep_ListNodeOfListOfPointRepresentation.hxx>
@@ -138,7 +122,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRep_ListOfPointRepresentation_HeaderFile

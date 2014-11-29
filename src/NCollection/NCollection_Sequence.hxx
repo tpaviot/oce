@@ -16,24 +16,24 @@
 #ifndef NCollection_Sequence_HeaderFile
 #define NCollection_Sequence_HeaderFile
 
-#include <NCollection_BaseCollection.hxx>
 #include <NCollection_BaseSequence.hxx>
+#include <NCollection_StlIterator.hxx>
 
-#ifndef No_Exception
 #include <Standard_OutOfRange.hxx>
 #include <Standard_NoSuchObject.hxx>
-#endif
 
 /**
  * Purpose:     Definition of a sequence of elements indexed by
  *              an Integer in range of 1..n
  */              
-template <class TheItemType> class NCollection_Sequence
-  : public NCollection_BaseCollection<TheItemType>,
-    public NCollection_BaseSequence
+template <class TheItemType>
+class NCollection_Sequence : public NCollection_BaseSequence
 {
+public:
+  //! STL-compliant typedef for value type
+  typedef TheItemType value_type;
 
- public:
+public:
   //!   Class defining sequence node - for internal use by Sequence
   class Node : public NCollection_SeqNode
   {
@@ -46,9 +46,6 @@ template <class TheItemType> class NCollection_Sequence
     const TheItemType& Value () const { return myValue; }
     //! Variable value access
     TheItemType&       ChangeValue () { return myValue; }
-    //! Memory allocation
-    DEFINE_STANDARD_ALLOC
-    DEFINE_NCOLLECTION_ALLOC
 
   private:
     TheItemType    myValue;
@@ -56,8 +53,7 @@ template <class TheItemType> class NCollection_Sequence
 
  public:
   //!   Implementation of the Iterator interface.
-  class Iterator : public NCollection_BaseCollection<TheItemType>::Iterator,
-                   public NCollection_BaseSequence::Iterator
+  class Iterator : public NCollection_BaseSequence::Iterator
   {
   public:
     //! Empty constructor - for later Init
@@ -66,43 +62,65 @@ template <class TheItemType> class NCollection_Sequence
     Iterator  (const NCollection_Sequence& theSeq,
                const Standard_Boolean      isStart = Standard_True)
       : NCollection_BaseSequence::Iterator (theSeq, isStart) {}
-    //! Assignment
-    Iterator& operator= (const Iterator& theIt)
-    {
-      NCollection_BaseSequence::Iterator& me = * this;
-      me.operator= (theIt);
-      return * this;
-    }
     //! Check end
-    virtual Standard_Boolean More (void) const
+    Standard_Boolean More (void) const
     { return (myCurrent!=NULL); }
     //! Make step
-    virtual void Next (void)         
-    { if (myCurrent) myCurrent = (NCollection_SeqNode *) myCurrent->Next(); }
+    void Next (void)
+    {
+      if (myCurrent)
+      {
+        myPrevious = myCurrent;
+        myCurrent = myCurrent->Next();
+      }
+    }
     //! Constant value access
-    virtual const TheItemType& Value (void) const
+    const TheItemType& Value (void) const
     { return ((const Node *)myCurrent)->Value(); }
     //! Variable value access
-    virtual TheItemType& ChangeValue (void) const
+    TheItemType& ChangeValue (void) const
     { return ((Node *)myCurrent)->ChangeValue(); }
+    //! Performs comparison of two iterators.
+    Standard_Boolean IsEqual (const Iterator& theOther) const
+    {
+      return myCurrent == theOther.myCurrent;
+    }
   }; // End of nested class Iterator
+
+  //! Shorthand for a regular iterator type.
+  typedef NCollection_StlIterator<std::bidirectional_iterator_tag, Iterator, TheItemType, false> iterator;
+
+  //! Shorthand for a constant iterator type.
+  typedef NCollection_StlIterator<std::bidirectional_iterator_tag, Iterator, TheItemType, true> const_iterator;
+
+  //! Returns an iterator pointing to the first element in the sequence.
+  iterator begin() const { return Iterator (*this, true); }
+
+  //! Returns an iterator referring to the past-the-end element in the sequence.
+  iterator end() const { Iterator anIter (*this, false); anIter.Next(); return anIter; }
+  
+  //! Returns a const iterator pointing to the first element in the sequence.
+  const_iterator cbegin() const { return Iterator (*this, true); }
+
+  //! Returns a const iterator referring to the past-the-end element in the sequence.
+  const_iterator cend() const { Iterator anIter (*this, false); anIter.Next(); return anIter; }
 
  public:
   // ---------- PUBLIC METHODS ------------
 
   //! Constructor
-  NCollection_Sequence(const Handle(NCollection_BaseAllocator)& theAllocator=0L)
-    : NCollection_BaseCollection<TheItemType>(theAllocator),
-      NCollection_BaseSequence() {}
+  NCollection_Sequence(const Handle(NCollection_BaseAllocator)& theAllocator=0L) :
+    NCollection_BaseSequence(theAllocator) {}
 
   //! Copy constructor
   NCollection_Sequence (const NCollection_Sequence& theOther) :
-    NCollection_BaseCollection<TheItemType>(theOther.myAllocator),
-    NCollection_BaseSequence()
-  { *this = theOther; }
+    NCollection_BaseSequence(theOther.myAllocator)
+  {
+    Assign (theOther);
+  }
 
   //! Number of items
-  virtual Standard_Integer Size (void) const
+  Standard_Integer Size (void) const
   { return mySize; }
 
   //! Number of items
@@ -147,17 +165,18 @@ template <class TheItemType> class NCollection_Sequence
   //! Clear the items out, take a new allocator if non null
   void Clear (const Handle(NCollection_BaseAllocator)& theAllocator=0L)
   {
-    ClearSeq (delNode, this->myAllocator);
+    ClearSeq (delNode);
     if (!theAllocator.IsNull())
       this->myAllocator = theAllocator;
   }
   
-  //! Replace this sequence by the items of theOther
-  NCollection_Sequence& operator= (const NCollection_Sequence& theOther)
+  //! Replace this sequence by the items of theOther.
+  //! This method does not change the internal allocator.
+  NCollection_Sequence& Assign (const NCollection_Sequence& theOther)
   { 
     if (this == &theOther) 
       return *this;
-    Clear (theOther.myAllocator);
+    Clear ();
     Node * pCur = (Node *) theOther.myFirstItem;
     while (pCur) {
       Node* pNew = new (this->myAllocator) Node (pCur->Value());
@@ -167,30 +186,24 @@ template <class TheItemType> class NCollection_Sequence
     return * this;
   }
 
-  //! Replace this sequence by the items of theOther collection
-  virtual void Assign (const NCollection_BaseCollection<TheItemType>& theOther)
+  //! Replacement operator
+  NCollection_Sequence& operator= (const NCollection_Sequence& theOther)
   {
-    if (this == &theOther)
-      return;
-    Clear ();
-    TYPENAME NCollection_BaseCollection<TheItemType>::Iterator& anIter = 
-      theOther.CreateIterator();
-    for (; anIter.More(); anIter.Next())
-      Append(anIter.Value());
+    return Assign (theOther);
   }
 
   //! Remove one item
   void Remove (Iterator& thePosition)
-  { RemoveSeq (thePosition, delNode, this->myAllocator); }
+  { RemoveSeq (thePosition, delNode); }
 
   //! Remove one item
   void Remove (const Standard_Integer theIndex)
-  { RemoveSeq (theIndex, delNode, this->myAllocator); }
+  { RemoveSeq (theIndex, delNode); }
 
   //! Remove range of items
   void Remove (const Standard_Integer theFromIndex,
                const Standard_Integer theToIndex)
-  { RemoveSeq (theFromIndex, theToIndex, delNode, this->myAllocator); }
+  { RemoveSeq (theFromIndex, theToIndex, delNode); }
 
   //! Append one item
   void Append (const TheItemType& theItem)
@@ -238,10 +251,7 @@ template <class TheItemType> class NCollection_Sequence
   void InsertAfter (const Standard_Integer  theIndex, 
                     const TheItemType&      theItem)
   {
-#if !defined No_Exception && !defined No_Standard_OutOfRange
-    if (theIndex < 0 || theIndex > mySize)
-      Standard_OutOfRange::Raise ("NCollection_Sequence::InsertAfter");
-#endif
+    Standard_OutOfRange_Raise_if (theIndex < 0 || theIndex > mySize, "NCollection_Sequence::InsertAfter");
     PInsertAfter (theIndex, new (this->myAllocator) Node (theItem));
   }
 
@@ -255,50 +265,36 @@ template <class TheItemType> class NCollection_Sequence
   //! First item access
   const TheItemType& First () const
   {
-#if !defined No_Exception && !defined No_Standard_NoSuchObject
-    if (mySize == 0)
-      Standard_NoSuchObject::Raise ("NCollection_Sequence::First");
-#endif
+    Standard_NoSuchObject_Raise_if (mySize == 0, "NCollection_Sequence::First");
     return ((const Node *) myFirstItem) -> Value();
   }
 
   //! First item access
   TheItemType& ChangeFirst()
   {
-#if !defined No_Exception && !defined No_Standard_NoSuchObject
-    if (mySize == 0)
-      Standard_NoSuchObject::Raise ("NCollection_Sequence::ChangeFirst");
-#endif
+    Standard_NoSuchObject_Raise_if (mySize == 0, "NCollection_Sequence::ChangeFirst");
     return ((Node* )myFirstItem)->ChangeValue();
   }
 
   //! Last item access
   const TheItemType& Last () const
   {
-#if !defined No_Exception && !defined No_Standard_NoSuchObject
-    if (mySize == 0)
-      Standard_NoSuchObject::Raise ("NCollection_Sequence::Last");
-#endif
+    Standard_NoSuchObject_Raise_if (mySize == 0, "NCollection_Sequence::Last");
     return ((const Node *) myLastItem) -> Value();
   }
 
   //! Last item access
   TheItemType& ChangeLast()
   {
-#if !defined No_Exception && !defined No_Standard_NoSuchObject
-    if (mySize == 0)
-      Standard_NoSuchObject::Raise ("NCollection_Sequence::ChangeLast");
-#endif
+    Standard_NoSuchObject_Raise_if (mySize == 0, "NCollection_Sequence::ChangeLast");
     return ((Node* )myLastItem)->ChangeValue();
   }
 
   //! Constant item access by theIndex
   const TheItemType& Value (const Standard_Integer theIndex) const
   {
-#if !defined No_Exception && !defined No_Standard_OutOfRange
-    if (theIndex <= 0 || theIndex > mySize)
-      Standard_OutOfRange::Raise ("NCollection_Sequence::Value");
-#endif
+    Standard_OutOfRange_Raise_if (theIndex <= 0 || theIndex > mySize, "NCollection_Sequence::Value");
+
     NCollection_Sequence * const aLocalTHIS = (NCollection_Sequence *) this;
     aLocalTHIS -> myCurrentItem  = Find (theIndex);
     aLocalTHIS -> myCurrentIndex = theIndex;
@@ -312,10 +308,8 @@ template <class TheItemType> class NCollection_Sequence
   //! Variable item access by theIndex
   TheItemType& ChangeValue (const Standard_Integer theIndex)
   {
-#if !defined No_Exception && !defined No_Standard_OutOfRange
-    if (theIndex <= 0 || theIndex > mySize)
-      Standard_OutOfRange::Raise ("NCollection_Sequence::ChangeValue");
-#endif
+    Standard_OutOfRange_Raise_if (theIndex <= 0 || theIndex > mySize, "NCollection_Sequence::ChangeValue");
+
     myCurrentItem  = Find (theIndex);
     myCurrentIndex = theIndex;
     return ((Node *) myCurrentItem) -> ChangeValue();
@@ -334,14 +328,7 @@ template <class TheItemType> class NCollection_Sequence
   ~NCollection_Sequence (void)
   { Clear(); }
 
-
  private:
-  // ----------- PRIVATE METHODS -----------
-
-  //! Creates Iterator for use on BaseCollection
-  virtual TYPENAME NCollection_BaseCollection<TheItemType>::Iterator& 
-    CreateIterator(void) const
-  { return *(new (this->IterAllocator()) Iterator(*this)); }
 
   // ---------- FRIEND CLASSES ------------
   friend class Iterator;

@@ -5,19 +5,11 @@
 
 #include <HLRBRep_ListNodeOfListOfBPnt2D.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _HLRBRep_BiPnt2D_HeaderFile
 #include <HLRBRep_BiPnt2D.hxx>
-#endif
-#ifndef _HLRBRep_ListOfBPnt2D_HeaderFile
 #include <HLRBRep_ListOfBPnt2D.hxx>
-#endif
-#ifndef _HLRBRep_ListIteratorOfListOfBPnt2D_HeaderFile
 #include <HLRBRep_ListIteratorOfListOfBPnt2D.hxx>
-#endif
 
  
 

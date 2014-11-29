@@ -6,107 +6,104 @@
 #ifndef _IGESGraph_TextDisplayTemplate_HeaderFile
 #define _IGESGraph_TextDisplayTemplate_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESGraph_TextDisplayTemplate_HeaderFile
 #include <Handle_IGESGraph_TextDisplayTemplate.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_IGESGraph_TextFontDef_HeaderFile
 #include <Handle_IGESGraph_TextFontDef.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class IGESGraph_TextFontDef;
 class gp_XYZ;
 class gp_Pnt;
 
 
-//! defines IGES TextDisplayTemplate Entity, <br>
-//!          Type <312>, form <0, 1> in package IGESGraph <br>
-//! <br>
-//!          Used to set parameters for display of information <br>
-//!          which has been logically included in another entity <br>
-//!          as a parameter value <br>
-class IGESGraph_TextDisplayTemplate : public IGESData_IGESEntity {
+//! defines IGES TextDisplayTemplate Entity,
+//! Type <312>, form <0, 1> in package IGESGraph
+//!
+//! Used to set parameters for display of information
+//! which has been logically included in another entity
+//! as a parameter value
+class IGESGraph_TextDisplayTemplate : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESGraph_TextDisplayTemplate();
-  //! This method is used to set the fields of the class <br>
-//!           TextDisplayTemplate <br>
-//!      - aWidth         : Character box width <br>
-//!      - aHeight        : Character box height <br>
-//!      - afontCode      : Font code <br>
-//!      - aFontEntity    : Text Font Definition Entity <br>
-//!      - aSlantAngle    : Slant angle <br>
-//!      - aRotationAngle : Rotation angle <br>
-//!      - aMirrorFlag    : Mirror Flag <br>
-//!      - aRotationFlag  : Rotate internal text flag <br>
-//!      - aCorner        : Lower left corner coordinates(Form No. 0), <br>
-//!                         Increments from coordinates  (Form No. 1) <br>
-  Standard_EXPORT     void Init(const Standard_Real aWidth,const Standard_Real aHeight,const Standard_Integer aFontCode,const Handle(IGESGraph_TextFontDef)& aFontEntity,const Standard_Real aSlantAngle,const Standard_Real aRotationAngle,const Standard_Integer aMirrorFlag,const Standard_Integer aRotationFlag,const gp_XYZ& aCorner) ;
-  //! Sets <me> to be Incremental (Form 1) if <mode> is True, <br>
-//!           or Basolute (Form 0) else <br>
-  Standard_EXPORT     void SetIncremental(const Standard_Boolean mode) ;
-  //! returns True  if entity is Incremental (Form 1). <br>
-//!         False if entity is Absolute    (Form 0). <br>
-  Standard_EXPORT     Standard_Boolean IsIncremental() const;
-  //! returns Character Box Width. <br>
-  Standard_EXPORT     Standard_Real BoxWidth() const;
-  //! returns Character Box Height. <br>
-  Standard_EXPORT     Standard_Real BoxHeight() const;
-  //! returns False if theFontEntity is Null, True otherwise. <br>
-  Standard_EXPORT     Standard_Boolean IsFontEntity() const;
-  //! returns the font code. <br>
-  Standard_EXPORT     Standard_Integer FontCode() const;
-  //! returns Text Font Definition Entity used to define the font. <br>
-  Standard_EXPORT     Handle_IGESGraph_TextFontDef FontEntity() const;
-  //! returns slant angle of character in radians. <br>
-  Standard_EXPORT     Standard_Real SlantAngle() const;
-  //! returns Rotation angle of text block in radians. <br>
-  Standard_EXPORT     Standard_Real RotationAngle() const;
-  //! returns Mirror flag <br>
-//! Mirror flag : 0 = no mirroring. <br>
-//!               1 = mirror axis perpendicular to text base line. <br>
-//!               2 = mirror axis is text base line. <br>
-  Standard_EXPORT     Standard_Integer MirrorFlag() const;
-  //! returns Rotate internal text flag. <br>
-//!  Rotate internal text flag : 0 = text horizontal. <br>
-//!                              1 = text vertical. <br>
-  Standard_EXPORT     Standard_Integer RotateFlag() const;
-  //! If IsIncremental() returns False, <br>
-//!                  gets coordinates of lower left corner <br>
-//!                  of first character box. <br>
-//! If IsIncremental() returns True, <br>
-//!                  gets increments from X, Y, Z coordinates <br>
-//!                  found in parent entity. <br>
-  Standard_EXPORT     gp_Pnt StartingCorner() const;
-  //! If IsIncremental() returns False, <br>
-//!                  gets coordinates of lower left corner <br>
-//!                  of first character box. <br>
-//! If IsIncremental() returns True, <br>
-//!                  gets increments from X, Y, Z coordinates <br>
-//!                  found in parent entity. <br>
-  Standard_EXPORT     gp_Pnt TransformedStartingCorner() const;
+  Standard_EXPORT IGESGraph_TextDisplayTemplate();
+  
+  //! This method is used to set the fields of the class
+  //! TextDisplayTemplate
+  //! - aWidth         : Character box width
+  //! - aHeight        : Character box height
+  //! - afontCode      : Font code
+  //! - aFontEntity    : Text Font Definition Entity
+  //! - aSlantAngle    : Slant angle
+  //! - aRotationAngle : Rotation angle
+  //! - aMirrorFlag    : Mirror Flag
+  //! - aRotationFlag  : Rotate internal text flag
+  //! - aCorner        : Lower left corner coordinates(Form No. 0),
+  //! Increments from coordinates  (Form No. 1)
+  Standard_EXPORT   void Init (const Standard_Real aWidth, const Standard_Real aHeight, const Standard_Integer aFontCode, const Handle(IGESGraph_TextFontDef)& aFontEntity, const Standard_Real aSlantAngle, const Standard_Real aRotationAngle, const Standard_Integer aMirrorFlag, const Standard_Integer aRotationFlag, const gp_XYZ& aCorner) ;
+  
+  //! Sets <me> to be Incremental (Form 1) if <mode> is True,
+  //! or Basolute (Form 0) else
+  Standard_EXPORT   void SetIncremental (const Standard_Boolean mode) ;
+  
+  //! returns True  if entity is Incremental (Form 1).
+  //! False if entity is Absolute    (Form 0).
+  Standard_EXPORT   Standard_Boolean IsIncremental()  const;
+  
+  //! returns Character Box Width.
+  Standard_EXPORT   Standard_Real BoxWidth()  const;
+  
+  //! returns Character Box Height.
+  Standard_EXPORT   Standard_Real BoxHeight()  const;
+  
+  //! returns False if theFontEntity is Null, True otherwise.
+  Standard_EXPORT   Standard_Boolean IsFontEntity()  const;
+  
+  //! returns the font code.
+  Standard_EXPORT   Standard_Integer FontCode()  const;
+  
+  //! returns Text Font Definition Entity used to define the font.
+  Standard_EXPORT   Handle(IGESGraph_TextFontDef) FontEntity()  const;
+  
+  //! returns slant angle of character in radians.
+  Standard_EXPORT   Standard_Real SlantAngle()  const;
+  
+  //! returns Rotation angle of text block in radians.
+  Standard_EXPORT   Standard_Real RotationAngle()  const;
+  
+  //! returns Mirror flag
+  //! Mirror flag : 0 = no mirroring.
+  //! 1 = mirror axis perpendicular to text base line.
+  //! 2 = mirror axis is text base line.
+  Standard_EXPORT   Standard_Integer MirrorFlag()  const;
+  
+  //! returns Rotate internal text flag.
+  //! Rotate internal text flag : 0 = text horizontal.
+  //! 1 = text vertical.
+  Standard_EXPORT   Standard_Integer RotateFlag()  const;
+  
+  //! If IsIncremental() returns False,
+  //! gets coordinates of lower left corner
+  //! of first character box.
+  //! If IsIncremental() returns True,
+  //! gets increments from X, Y, Z coordinates
+  //! found in parent entity.
+  Standard_EXPORT   gp_Pnt StartingCorner()  const;
+  
+  //! If IsIncremental() returns False,
+  //! gets coordinates of lower left corner
+  //! of first character box.
+  //! If IsIncremental() returns True,
+  //! gets increments from X, Y, Z coordinates
+  //! found in parent entity.
+  Standard_EXPORT   gp_Pnt TransformedStartingCorner()  const;
 
 
 
@@ -121,15 +118,15 @@ protected:
 private: 
 
 
-Standard_Real theBoxWidth;
-Standard_Real theBoxHeight;
-Standard_Integer theFontCode;
-Handle_IGESGraph_TextFontDef theFontEntity;
-Standard_Real theSlantAngle;
-Standard_Real theRotationAngle;
-Standard_Integer theMirrorFlag;
-Standard_Integer theRotateFlag;
-gp_XYZ theCorner;
+  Standard_Real theBoxWidth;
+  Standard_Real theBoxHeight;
+  Standard_Integer theFontCode;
+  Handle(IGESGraph_TextFontDef) theFontEntity;
+  Standard_Real theSlantAngle;
+  Standard_Real theRotationAngle;
+  Standard_Integer theMirrorFlag;
+  Standard_Integer theRotateFlag;
+  gp_XYZ theCorner;
 
 
 };
@@ -138,7 +135,6 @@ gp_XYZ theCorner;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGraph_TextDisplayTemplate_HeaderFile

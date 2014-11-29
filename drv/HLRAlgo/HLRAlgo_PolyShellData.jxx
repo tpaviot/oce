@@ -1,12 +1,4 @@
-#ifndef _TColStd_HArray1OfTransient_HeaderFile
 #include <TColStd_HArray1OfTransient.hxx>
-#endif
-#ifndef _TColStd_Array1OfTransient_HeaderFile
 #include <TColStd_Array1OfTransient.hxx>
-#endif
-#ifndef _HLRAlgo_ListOfBPoint_HeaderFile
 #include <HLRAlgo_ListOfBPoint.hxx>
-#endif
-#ifndef _HLRAlgo_PolyShellData_HeaderFile
 #include <HLRAlgo_PolyShellData.hxx>
-#endif

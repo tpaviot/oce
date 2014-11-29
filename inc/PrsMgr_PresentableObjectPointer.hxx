@@ -7,7 +7,6 @@
 #define _PrsMgr_PresentableObjectPointer_HeaderFile
 
 class PrsMgr_PresentableObject;
-
 typedef PrsMgr_PresentableObject* PrsMgr_PresentableObjectPointer;
 
-#endif
+#endif // _PrsMgr_PresentableObjectPointer_HeaderFile

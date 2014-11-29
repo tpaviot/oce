@@ -17,6 +17,8 @@ class ShapeTool from XCAFDoc inherits Attribute from TDF
 
     ---Purpose:  A tool to store shapes in an XDE
 -- document in the form of assembly structure, and to maintain this structure.
+-- Attribute containing Shapes section of DECAF document.
+-- Provide tools for management of Shapes section.
 -- The API provided by this class allows to work with this
 -- structure regardless of its low-level implementation.
 -- All the shapes are stored on child labels of a main label which is
@@ -89,8 +91,8 @@ uses
     SequenceOfHAsciiString from TColStd,
     GraphNode from XCAFDoc,
     AttributeSequence from TDF,
-    DataMapOfShapeLabel from XCAFDoc
-    
+    DataMapOfShapeLabel from XCAFDoc,
+    OStream from Standard
 is
     GetID (myclass)   
     ---C++: return const &  
@@ -367,12 +369,13 @@ is
     BaseLabel(me) returns Label from TDF;
     	---Purpose: returns the label under which shapes are stored
     
-    Dump(me; deep : Boolean from Standard = Standard_False);
+    Dump(me; theDumpLog: out OStream from Standard; deep : Boolean from Standard = Standard_False);
     
-    DumpShape(myclass; L:  Label from TDF;
+    DumpShape(myclass; theDumpLog: out OStream from Standard;
+		       L:  Label from TDF;
 		       level :Integer from Standard = 0;
 		       deep : Boolean from Standard = Standard_False);
-    ---Purpose: Print in cout type of shape found on <L> label
+    ---Purpose: Print to ostream <theDumpLog> type of shape found on <L> label
     --          and the entry of <L>, with <level> tabs before.
     --          If <deep>, print also TShape and Location addresses
         
@@ -394,10 +397,10 @@ is
     Restore (me: mutable; with : Attribute from TDF);
 
     NewEmpty (me)
-    returns mutable Attribute from TDF;
+    returns Attribute from TDF;
 
-    Paste (me; into : mutable Attribute from TDF;
-	       RT   : mutable RelocationTable from TDF);    
+    Paste (me; into : Attribute from TDF;
+	       RT   : RelocationTable from TDF);    
 
     IsExternRef (myclass; L: Label from TDF) returns Boolean;
     	---Purpose: Returns True if the label is a label of external references, i.e.

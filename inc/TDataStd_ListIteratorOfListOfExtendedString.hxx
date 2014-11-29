@@ -6,25 +6,13 @@
 #ifndef _TDataStd_ListIteratorOfListOfExtendedString_HeaderFile
 #define _TDataStd_ListIteratorOfListOfExtendedString_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_TDataStd_ListNodeOfListOfExtendedString_HeaderFile
 #include <Handle_TDataStd_ListNodeOfListOfExtendedString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class TDataStd_ListOfExtendedString;
@@ -33,27 +21,27 @@ class TDataStd_ListNodeOfListOfExtendedString;
 
 
 
-class TDataStd_ListIteratorOfListOfExtendedString  {
+class TDataStd_ListIteratorOfListOfExtendedString 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TDataStd_ListIteratorOfListOfExtendedString();
+  Standard_EXPORT TDataStd_ListIteratorOfListOfExtendedString();
   
-  Standard_EXPORT   TDataStd_ListIteratorOfListOfExtendedString(const TDataStd_ListOfExtendedString& L);
+  Standard_EXPORT TDataStd_ListIteratorOfListOfExtendedString(const TDataStd_ListOfExtendedString& L);
   
-  Standard_EXPORT     void Initialize(const TDataStd_ListOfExtendedString& L) ;
+  Standard_EXPORT   void Initialize (const TDataStd_ListOfExtendedString& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     TCollection_ExtendedString& Value() const;
+  Standard_EXPORT   TCollection_ExtendedString& Value()  const;
 
 
 friend class TDataStd_ListOfExtendedString;
-
 
 
 protected:
@@ -66,8 +54,8 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
@@ -97,7 +85,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_ListIteratorOfListOfExtendedString_HeaderFile

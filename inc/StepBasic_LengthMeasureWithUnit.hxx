@@ -6,28 +6,22 @@
 #ifndef _StepBasic_LengthMeasureWithUnit_HeaderFile
 #define _StepBasic_LengthMeasureWithUnit_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_LengthMeasureWithUnit_HeaderFile
 #include <Handle_StepBasic_LengthMeasureWithUnit.hxx>
-#endif
 
-#ifndef _StepBasic_MeasureWithUnit_HeaderFile
 #include <StepBasic_MeasureWithUnit.hxx>
-#endif
 
 
 
-class StepBasic_LengthMeasureWithUnit : public StepBasic_MeasureWithUnit {
+class StepBasic_LengthMeasureWithUnit : public StepBasic_MeasureWithUnit
+{
 
 public:
 
-  //! Returns a LengthMeasureWithUnit <br>
-  Standard_EXPORT   StepBasic_LengthMeasureWithUnit();
+  
+  //! Returns a LengthMeasureWithUnit
+  Standard_EXPORT StepBasic_LengthMeasureWithUnit();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_LengthMeasureWithUnit_HeaderFile

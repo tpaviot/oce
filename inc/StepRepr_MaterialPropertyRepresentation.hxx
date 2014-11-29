@@ -6,43 +6,36 @@
 #ifndef _StepRepr_MaterialPropertyRepresentation_HeaderFile
 #define _StepRepr_MaterialPropertyRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepRepr_MaterialPropertyRepresentation_HeaderFile
 #include <Handle_StepRepr_MaterialPropertyRepresentation.hxx>
-#endif
 
-#ifndef _Handle_StepRepr_DataEnvironment_HeaderFile
 #include <Handle_StepRepr_DataEnvironment.hxx>
-#endif
-#ifndef _StepRepr_PropertyDefinitionRepresentation_HeaderFile
 #include <StepRepr_PropertyDefinitionRepresentation.hxx>
-#endif
-#ifndef _Handle_StepRepr_Representation_HeaderFile
 #include <Handle_StepRepr_Representation.hxx>
-#endif
 class StepRepr_DataEnvironment;
 class StepRepr_RepresentedDefinition;
 class StepRepr_Representation;
 
 
-//! Representation of STEP entity MaterialPropertyRepresentation <br>
-class StepRepr_MaterialPropertyRepresentation : public StepRepr_PropertyDefinitionRepresentation {
+//! Representation of STEP entity MaterialPropertyRepresentation
+class StepRepr_MaterialPropertyRepresentation : public StepRepr_PropertyDefinitionRepresentation
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepRepr_MaterialPropertyRepresentation();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const StepRepr_RepresentedDefinition& aPropertyDefinitionRepresentation_Definition,const Handle(StepRepr_Representation)& aPropertyDefinitionRepresentation_UsedRepresentation,const Handle(StepRepr_DataEnvironment)& aDependentEnvironment) ;
-  //! Returns field DependentEnvironment <br>
-  Standard_EXPORT     Handle_StepRepr_DataEnvironment DependentEnvironment() const;
-  //! Set field DependentEnvironment <br>
-  Standard_EXPORT     void SetDependentEnvironment(const Handle(StepRepr_DataEnvironment)& DependentEnvironment) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepRepr_MaterialPropertyRepresentation();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const StepRepr_RepresentedDefinition& aPropertyDefinitionRepresentation_Definition, const Handle(StepRepr_Representation)& aPropertyDefinitionRepresentation_UsedRepresentation, const Handle(StepRepr_DataEnvironment)& aDependentEnvironment) ;
+  
+  //! Returns field DependentEnvironment
+  Standard_EXPORT   Handle(StepRepr_DataEnvironment) DependentEnvironment()  const;
+  
+  //! Set field DependentEnvironment
+  Standard_EXPORT   void SetDependentEnvironment (const Handle(StepRepr_DataEnvironment)& DependentEnvironment) ;
 
 
 
@@ -57,7 +50,7 @@ protected:
 private: 
 
 
-Handle_StepRepr_DataEnvironment theDependentEnvironment;
+  Handle(StepRepr_DataEnvironment) theDependentEnvironment;
 
 
 };
@@ -66,7 +59,6 @@ Handle_StepRepr_DataEnvironment theDependentEnvironment;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_MaterialPropertyRepresentation_HeaderFile

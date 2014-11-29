@@ -6,16 +6,15 @@
 #ifndef _CDF_SubComponentStatus_HeaderFile
 #define _CDF_SubComponentStatus_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum CDF_SubComponentStatus {
+
+enum CDF_SubComponentStatus
+{
 CDF_SCS_Consistent,
 CDF_SCS_Unconsistent,
 CDF_SCS_Stored,
 CDF_SCS_Modified
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _CDF_SubComponentStatus_HeaderFile

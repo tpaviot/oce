@@ -1,12 +1,4 @@
-#ifndef _gp_XY_HeaderFile
 #include <gp_XY.hxx>
-#endif
-#ifndef _gp_Pln_HeaderFile
 #include <gp_Pln.hxx>
-#endif
-#ifndef _Plate_LinearScalarConstraint_HeaderFile
 #include <Plate_LinearScalarConstraint.hxx>
-#endif
-#ifndef _Plate_PlaneConstraint_HeaderFile
 #include <Plate_PlaneConstraint.hxx>
-#endif

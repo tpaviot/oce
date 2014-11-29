@@ -1,18 +1,6 @@
-#ifndef _Resource_Manager_HeaderFile
 #include <Resource_Manager.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfHAsciiString_HeaderFile
 #include <TColStd_HSequenceOfHAsciiString.hxx>
-#endif
-#ifndef _Message_Messenger_HeaderFile
 #include <Message_Messenger.hxx>
-#endif
-#ifndef _Message_ProgressIndicator_HeaderFile
 #include <Message_ProgressIndicator.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _ShapeProcess_Context_HeaderFile
 #include <ShapeProcess_Context.hxx>
-#endif

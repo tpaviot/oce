@@ -6,40 +6,18 @@
 #ifndef _TestTopOpeDraw_DrawableSHA_HeaderFile
 #define _TestTopOpeDraw_DrawableSHA_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TestTopOpeDraw_DrawableSHA_HeaderFile
 #include <Handle_TestTopOpeDraw_DrawableSHA.hxx>
-#endif
 
-#ifndef _Handle_Draw_Text3D_HeaderFile
 #include <Handle_Draw_Text3D.hxx>
-#endif
-#ifndef _Draw_Color_HeaderFile
 #include <Draw_Color.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Draw_Marker3D_HeaderFile
 #include <Handle_Draw_Marker3D.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _DBRep_DrawableShape_HeaderFile
 #include <DBRep_DrawableShape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
 class Draw_Text3D;
 class Draw_Marker3D;
 class TopoDS_Shape;
@@ -49,22 +27,23 @@ class Draw_Display;
 
 
 
-class TestTopOpeDraw_DrawableSHA : public DBRep_DrawableShape {
+class TestTopOpeDraw_DrawableSHA : public DBRep_DrawableShape
+{
 
 public:
 
   
-  Standard_EXPORT   TestTopOpeDraw_DrawableSHA(const TopoDS_Shape& S,const Draw_Color& FreeCol,const Draw_Color& ConnCol,const Draw_Color& EdgeCol,const Draw_Color& IsosCol,const Standard_Real size,const Standard_Integer nbisos,const Standard_Integer discret,const Standard_CString Text,const Draw_Color& TextColor,const Standard_Boolean DisplayGeometry = Standard_False);
+  Standard_EXPORT TestTopOpeDraw_DrawableSHA(const TopoDS_Shape& S, const Draw_Color& FreeCol, const Draw_Color& ConnCol, const Draw_Color& EdgeCol, const Draw_Color& IsosCol, const Standard_Real size, const Standard_Integer nbisos, const Standard_Integer discret, const Standard_CString Text, const Draw_Color& TextColor, const Standard_Boolean DisplayGeometry = Standard_False);
   
-  Standard_EXPORT     void SetDisplayGeometry(const Standard_Boolean b) ;
+  Standard_EXPORT   void SetDisplayGeometry (const Standard_Boolean b) ;
   
-  Standard_EXPORT     void SetTol(const Standard_Real t) ;
+  Standard_EXPORT   void SetTol (const Standard_Real t) ;
   
-  Standard_EXPORT     void SetPar(const Standard_Real p) ;
+  Standard_EXPORT   void SetPar (const Standard_Real p) ;
   
-  Standard_EXPORT     void DisplayGeometry(Draw_Display& dis) const;
+  Standard_EXPORT   void DisplayGeometry (Draw_Display& dis)  const;
   
-  Standard_EXPORT   virtual  void DrawOn(Draw_Display& dis) const;
+  Standard_EXPORT virtual   void DrawOn (Draw_Display& dis)  const;
 
 
 
@@ -79,14 +58,14 @@ protected:
 private: 
 
   
-  Standard_EXPORT     gp_Pnt Pnt() const;
+  Standard_EXPORT   gp_Pnt Pnt()  const;
 
-Handle_Draw_Text3D myText;
-Draw_Color myTextColor;
-Standard_Boolean myDisplayGeometry;
-Handle_Draw_Marker3D myDM3d;
-Standard_Real myTol;
-Standard_Real myPar;
+  Handle(Draw_Text3D) myText;
+  Draw_Color myTextColor;
+  Standard_Boolean myDisplayGeometry;
+  Handle(Draw_Marker3D) myDM3d;
+  Standard_Real myTol;
+  Standard_Real myPar;
 
 
 };
@@ -95,7 +74,6 @@ Standard_Real myPar;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TestTopOpeDraw_DrawableSHA_HeaderFile

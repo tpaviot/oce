@@ -6,57 +6,50 @@
 #ifndef _PGeom2d_BezierCurve_HeaderFile
 #define _PGeom2d_BezierCurve_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom2d_BezierCurve_HeaderFile
 #include <Handle_PGeom2d_BezierCurve.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_PColgp_HArray1OfPnt2d_HeaderFile
 #include <Handle_PColgp_HArray1OfPnt2d.hxx>
-#endif
-#ifndef _Handle_PColStd_HArray1OfReal_HeaderFile
 #include <Handle_PColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _PGeom2d_BoundedCurve_HeaderFile
 #include <PGeom2d_BoundedCurve.hxx>
-#endif
 class PColgp_HArray1OfPnt2d;
 class PColStd_HArray1OfReal;
 
 
-class PGeom2d_BezierCurve : public PGeom2d_BoundedCurve {
+class PGeom2d_BezierCurve : public PGeom2d_BoundedCurve
+{
 
 public:
 
-  //! Creates a non rational  Bezier curve with default <br>
-//!         values. <br>
-  Standard_EXPORT   PGeom2d_BezierCurve();
-  //! Creates a non rational Bezier curve with a set of <br>
-//!         poles aCurvePoles and a set of weights aPoleWeight. <br>
-  Standard_EXPORT   PGeom2d_BezierCurve(const Handle(PColgp_HArray1OfPnt2d)& aPoles,const Handle(PColStd_HArray1OfReal)& aWeights,const Standard_Boolean aRational);
-  //! Set the value of the field rational with <aRational>. <br>
-  Standard_EXPORT     void Rational(const Standard_Boolean aRational) ;
-  //! Returns the value of the field rational. <br>
-  Standard_EXPORT     Standard_Boolean Rational() const;
-  //! Set the value of the field poles with <aPoles>. <br>
-  Standard_EXPORT     void Poles(const Handle(PColgp_HArray1OfPnt2d)& aPoles) ;
-  //! Returns the value of the field poles. <br>
-  Standard_EXPORT     Handle_PColgp_HArray1OfPnt2d Poles() const;
-  //! Set the value of the field weights. <br>
-  Standard_EXPORT     void Weights(const Handle(PColStd_HArray1OfReal)& aWeights) ;
-  //! Returns the value of the field weights. <br>
-  Standard_EXPORT     Handle_PColStd_HArray1OfReal Weights() const;
+  
+  //! Creates a non rational  Bezier curve with default
+  //! values.
+  Standard_EXPORT PGeom2d_BezierCurve();
+  
+  //! Creates a non rational Bezier curve with a set of
+  //! poles aCurvePoles and a set of weights aPoleWeight.
+  Standard_EXPORT PGeom2d_BezierCurve(const Handle(PColgp_HArray1OfPnt2d)& aPoles, const Handle(PColStd_HArray1OfReal)& aWeights, const Standard_Boolean aRational);
+  
+  //! Set the value of the field rational with <aRational>.
+  Standard_EXPORT   void Rational (const Standard_Boolean aRational) ;
+  
+  //! Returns the value of the field rational.
+  Standard_EXPORT   Standard_Boolean Rational()  const;
+  
+  //! Set the value of the field poles with <aPoles>.
+  Standard_EXPORT   void Poles (const Handle(PColgp_HArray1OfPnt2d)& aPoles) ;
+  
+  //! Returns the value of the field poles.
+  Standard_EXPORT   Handle(PColgp_HArray1OfPnt2d) Poles()  const;
+  
+  //! Set the value of the field weights.
+  Standard_EXPORT   void Weights (const Handle(PColStd_HArray1OfReal)& aWeights) ;
+  
+  //! Returns the value of the field weights.
+  Standard_EXPORT   Handle(PColStd_HArray1OfReal) Weights()  const;
 
 PGeom2d_BezierCurve(const Storage_stCONSTclCOM& a) : PGeom2d_BoundedCurve(a)
 {
@@ -81,9 +74,9 @@ protected:
 private: 
 
 
-Standard_Boolean rational;
-Handle_PColgp_HArray1OfPnt2d poles;
-Handle_PColStd_HArray1OfReal weights;
+  Standard_Boolean rational;
+  Handle(PColgp_HArray1OfPnt2d) poles;
+  Handle(PColStd_HArray1OfReal) weights;
 
 
 };
@@ -92,7 +85,6 @@ Handle_PColStd_HArray1OfReal weights;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom2d_BezierCurve_HeaderFile

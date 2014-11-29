@@ -6,52 +6,40 @@
 #ifndef _ShapeUpgrade_ShellSewing_HeaderFile
 #define _ShapeUpgrade_ShellSewing_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopTools_IndexedMapOfShape_HeaderFile
 #include <TopTools_IndexedMapOfShape.hxx>
-#endif
-#ifndef _Handle_ShapeBuild_ReShape_HeaderFile
 #include <Handle_ShapeBuild_ReShape.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class ShapeBuild_ReShape;
 class TopoDS_Shape;
 
 
-//! This class provides a tool for applying sewing algorithm from <br>
-//!          BRepAlgo: it takes a shape, calls sewing for each shell, <br>
-//!          and then replaces sewed shells with use of ShapeBuild_ReShape <br>
-class ShapeUpgrade_ShellSewing  {
+//! This class provides a tool for applying sewing algorithm from
+//! BRepAlgo: it takes a shape, calls sewing for each shell,
+//! and then replaces sewed shells with use of ShapeBuild_ReShape
+class ShapeUpgrade_ShellSewing 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates a ShellSewing, empty <br>
-  Standard_EXPORT   ShapeUpgrade_ShellSewing();
-  //! Builds a new shape from a former one, by calling Sewing from <br>
-//!          BRepOffsetAPI. Rebuilt solids are oriented to be "not infinite" <br>
-//! <br>
-//!          If <tol> is not given (i.e. value 0. by default), it is <br>
-//!          computed as the mean tolerance recorded in <shape> <br>
-//! <br>
-//!          If no shell has been sewed, this method returns the input <br>
-//!          shape <br>
-  Standard_EXPORT     TopoDS_Shape ApplySewing(const TopoDS_Shape& shape,const Standard_Real tol = 0.0) ;
-
+  
+  //! Creates a ShellSewing, empty
+  Standard_EXPORT ShapeUpgrade_ShellSewing();
+  
+  //! Builds a new shape from a former one, by calling Sewing from
+  //! BRepOffsetAPI. Rebuilt solids are oriented to be "not infinite"
+  //!
+  //! If <tol> is not given (i.e. value 0. by default), it is
+  //! computed as the mean tolerance recorded in <shape>
+  //!
+  //! If no shell has been sewed, this method returns the input
+  //! shape
+  Standard_EXPORT   TopoDS_Shape ApplySewing (const TopoDS_Shape& shape, const Standard_Real tol = 0.0) ;
 
 
 
@@ -65,15 +53,15 @@ protected:
 private:
 
   
-  Standard_EXPORT     void Init(const TopoDS_Shape& shape) ;
+  Standard_EXPORT   void Init (const TopoDS_Shape& shape) ;
   
-  Standard_EXPORT     Standard_Integer Prepare(const Standard_Real tol) ;
+  Standard_EXPORT   Standard_Integer Prepare (const Standard_Real tol) ;
   
-  Standard_EXPORT     TopoDS_Shape Apply(const TopoDS_Shape& shape,const Standard_Real tol) ;
+  Standard_EXPORT   TopoDS_Shape Apply (const TopoDS_Shape& shape, const Standard_Real tol) ;
 
 
-TopTools_IndexedMapOfShape myShells;
-Handle_ShapeBuild_ReShape myReShape;
+  TopTools_IndexedMapOfShape myShells;
+  Handle(ShapeBuild_ReShape) myReShape;
 
 
 };
@@ -82,7 +70,6 @@ Handle_ShapeBuild_ReShape myReShape;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeUpgrade_ShellSewing_HeaderFile

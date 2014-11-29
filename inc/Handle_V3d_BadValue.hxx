@@ -6,22 +6,15 @@
 #ifndef _Handle_V3d_BadValue_HeaderFile
 #define _Handle_V3d_BadValue_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Standard_OutOfRange_HeaderFile
 #include <Handle_Standard_OutOfRange.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Standard_OutOfRange);
 class V3d_BadValue;
 
-DEFINE_STANDARD_HANDLE(V3d_BadValue,Standard_OutOfRange)
+DEFINE_STANDARD_HANDLE(V3d_BadValue, Standard_OutOfRange)
 
-#endif
+#endif // _Handle_V3d_BadValue_HeaderFile

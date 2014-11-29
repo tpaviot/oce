@@ -6,25 +6,13 @@
 #ifndef _IntTools_SequenceOfCommonPrts_HeaderFile
 #define _IntTools_SequenceOfCommonPrts_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts_HeaderFile
 #include <Handle_IntTools_SequenceNodeOfSequenceOfCommonPrts.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class IntTools_CommonPrt;
@@ -32,66 +20,68 @@ class IntTools_SequenceNodeOfSequenceOfCommonPrts;
 
 
 
-class IntTools_SequenceOfCommonPrts  : public TCollection_BaseSequence {
+class IntTools_SequenceOfCommonPrts  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      IntTools_SequenceOfCommonPrts();
+    IntTools_SequenceOfCommonPrts();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT IntTools_SequenceOfCommonPrts(const IntTools_SequenceOfCommonPrts& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~IntTools_SequenceOfCommonPrts()
 {
   Clear();
 }
   
-  Standard_EXPORT    const IntTools_SequenceOfCommonPrts& Assign(const IntTools_SequenceOfCommonPrts& Other) ;
-   const IntTools_SequenceOfCommonPrts& operator =(const IntTools_SequenceOfCommonPrts& Other) 
+  Standard_EXPORT  const  IntTools_SequenceOfCommonPrts& Assign (const IntTools_SequenceOfCommonPrts& Other) ;
+ const  IntTools_SequenceOfCommonPrts& operator = (const IntTools_SequenceOfCommonPrts& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const IntTools_CommonPrt& T) ;
+  Standard_EXPORT   void Append (const IntTools_CommonPrt& T) ;
   
-        void Append(IntTools_SequenceOfCommonPrts& S) ;
+      void Append (IntTools_SequenceOfCommonPrts& S) ;
   
-  Standard_EXPORT     void Prepend(const IntTools_CommonPrt& T) ;
+  Standard_EXPORT   void Prepend (const IntTools_CommonPrt& T) ;
   
-        void Prepend(IntTools_SequenceOfCommonPrts& S) ;
+      void Prepend (IntTools_SequenceOfCommonPrts& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const IntTools_CommonPrt& T) ;
+      void InsertBefore (const Standard_Integer Index, const IntTools_CommonPrt& T) ;
   
-        void InsertBefore(const Standard_Integer Index,IntTools_SequenceOfCommonPrts& S) ;
+      void InsertBefore (const Standard_Integer Index, IntTools_SequenceOfCommonPrts& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const IntTools_CommonPrt& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const IntTools_CommonPrt& T) ;
   
-        void InsertAfter(const Standard_Integer Index,IntTools_SequenceOfCommonPrts& S) ;
+      void InsertAfter (const Standard_Integer Index, IntTools_SequenceOfCommonPrts& S) ;
   
-  Standard_EXPORT    const IntTools_CommonPrt& First() const;
+  Standard_EXPORT  const  IntTools_CommonPrt& First()  const;
   
-  Standard_EXPORT    const IntTools_CommonPrt& Last() const;
+  Standard_EXPORT  const  IntTools_CommonPrt& Last()  const;
   
-        void Split(const Standard_Integer Index,IntTools_SequenceOfCommonPrts& Sub) ;
+      void Split (const Standard_Integer Index, IntTools_SequenceOfCommonPrts& Sub) ;
   
-  Standard_EXPORT    const IntTools_CommonPrt& Value(const Standard_Integer Index) const;
-   const IntTools_CommonPrt& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  IntTools_CommonPrt& Value (const Standard_Integer Index)  const;
+ const  IntTools_CommonPrt& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const IntTools_CommonPrt& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const IntTools_CommonPrt& I) ;
   
-  Standard_EXPORT     IntTools_CommonPrt& ChangeValue(const Standard_Integer Index) ;
-    IntTools_CommonPrt& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   IntTools_CommonPrt& ChangeValue (const Standard_Integer Index) ;
+  IntTools_CommonPrt& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -104,8 +94,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntTools_SequenceOfCommonPrts(const IntTools_SequenceOfCommonPrts& Other);
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_SequenceOfCommonPrts_HeaderFile

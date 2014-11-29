@@ -5,12 +5,8 @@
 
 #include <DBC_VArrayTNodeOfVArrayOfExtCharacter.hxx>
 
-#ifndef _DBC_VArrayOfExtCharacter_HeaderFile
 #include <DBC_VArrayOfExtCharacter.hxx>
-#endif
-#ifndef _DBC_VArrayNodeOfVArrayOfExtCharacter_HeaderFile
 #include <DBC_VArrayNodeOfVArrayOfExtCharacter.hxx>
-#endif
  
 
 #define Item Standard_ExtCharacter

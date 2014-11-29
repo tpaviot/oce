@@ -6,45 +6,35 @@
 #ifndef _GeomInt_ParameterAndOrientation_HeaderFile
 #define _GeomInt_ParameterAndOrientation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
 
 
 
-class GeomInt_ParameterAndOrientation  {
+class GeomInt_ParameterAndOrientation 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomInt_ParameterAndOrientation();
+  Standard_EXPORT GeomInt_ParameterAndOrientation();
   
-  Standard_EXPORT   GeomInt_ParameterAndOrientation(const Standard_Real P,const TopAbs_Orientation Or1,const TopAbs_Orientation Or2);
+  Standard_EXPORT GeomInt_ParameterAndOrientation(const Standard_Real P, const TopAbs_Orientation Or1, const TopAbs_Orientation Or2);
   
-  Standard_EXPORT     void SetOrientation1(const TopAbs_Orientation Or) ;
+  Standard_EXPORT   void SetOrientation1 (const TopAbs_Orientation Or) ;
   
-  Standard_EXPORT     void SetOrientation2(const TopAbs_Orientation Or) ;
+  Standard_EXPORT   void SetOrientation2 (const TopAbs_Orientation Or) ;
   
-  Standard_EXPORT     Standard_Real Parameter() const;
+  Standard_EXPORT   Standard_Real Parameter()  const;
   
-  Standard_EXPORT     TopAbs_Orientation Orientation1() const;
+  Standard_EXPORT   TopAbs_Orientation Orientation1()  const;
   
-  Standard_EXPORT     TopAbs_Orientation Orientation2() const;
-
+  Standard_EXPORT   TopAbs_Orientation Orientation2()  const;
 
 
 
@@ -59,9 +49,9 @@ private:
 
 
 
-Standard_Real prm;
-TopAbs_Orientation or1;
-TopAbs_Orientation or2;
+  Standard_Real prm;
+  TopAbs_Orientation or1;
+  TopAbs_Orientation or2;
 
 
 };
@@ -70,7 +60,6 @@ TopAbs_Orientation or2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomInt_ParameterAndOrientation_HeaderFile

@@ -5,18 +5,10 @@
 
 #include <TColStd_MapIteratorOfMapOfAsciiString.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TColStd_MapOfAsciiString_HeaderFile
 #include <TColStd_MapOfAsciiString.hxx>
-#endif
-#ifndef _TColStd_StdMapNodeOfMapOfAsciiString_HeaderFile
 #include <TColStd_StdMapNodeOfMapOfAsciiString.hxx>
-#endif
  
 
 #define TheKey TCollection_AsciiString

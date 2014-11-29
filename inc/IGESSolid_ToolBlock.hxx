@@ -6,31 +6,15 @@
 #ifndef _IGESSolid_ToolBlock_HeaderFile
 #define _IGESSolid_ToolBlock_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_IGESSolid_Block_HeaderFile
 #include <Handle_IGESSolid_Block.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESReaderData_HeaderFile
 #include <Handle_IGESData_IGESReaderData.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
-#ifndef _Handle_Message_Messenger_HeaderFile
 #include <Handle_Message_Messenger.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_DomainError;
 class IGESSolid_Block;
 class IGESData_IGESReaderData;
@@ -45,32 +29,40 @@ class IGESData_IGESDumper;
 class Message_Messenger;
 
 
-//! Tool to work on a Block. Called by various Modules <br>
-//!           (ReadWriteModule, GeneralModule, SpecificModule) <br>
-class IGESSolid_ToolBlock  {
+//! Tool to work on a Block. Called by various Modules
+//! (ReadWriteModule, GeneralModule, SpecificModule)
+class IGESSolid_ToolBlock 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a ToolBlock, ready to work <br>
-  Standard_EXPORT   IGESSolid_ToolBlock();
-  //! Reads own parameters from file. <PR> gives access to them, <br>
-//!           <IR> detains parameter types and values <br>
-  Standard_EXPORT     void ReadOwnParams(const Handle(IGESSolid_Block)& ent,const Handle(IGESData_IGESReaderData)& IR,IGESData_ParamReader& PR) const;
-  //! Writes own parameters to IGESWriter <br>
-  Standard_EXPORT     void WriteOwnParams(const Handle(IGESSolid_Block)& ent,IGESData_IGESWriter& IW) const;
-  //! Lists the Entities shared by a Block <ent>, from <br>
-//!           its specific (own) parameters <br>
-  Standard_EXPORT     void OwnShared(const Handle(IGESSolid_Block)& ent,Interface_EntityIterator& iter) const;
-  //! Returns specific DirChecker <br>
-  Standard_EXPORT     IGESData_DirChecker DirChecker(const Handle(IGESSolid_Block)& ent) const;
-  //! Performs Specific Semantic Check <br>
-  Standard_EXPORT     void OwnCheck(const Handle(IGESSolid_Block)& ent,const Interface_ShareTool& shares,Handle(Interface_Check)& ach) const;
-  //! Copies Specific Parameters <br>
-  Standard_EXPORT     void OwnCopy(const Handle(IGESSolid_Block)& entfrom,const Handle(IGESSolid_Block)& entto,Interface_CopyTool& TC) const;
-  //! Dump of Specific Parameters <br>
-  Standard_EXPORT     void OwnDump(const Handle(IGESSolid_Block)& ent,const IGESData_IGESDumper& dumper,const Handle(Message_Messenger)& S,const Standard_Integer own) const;
-
+  
+  //! Returns a ToolBlock, ready to work
+  Standard_EXPORT IGESSolid_ToolBlock();
+  
+  //! Reads own parameters from file. <PR> gives access to them,
+  //! <IR> detains parameter types and values
+  Standard_EXPORT   void ReadOwnParams (const Handle(IGESSolid_Block)& ent, const Handle(IGESData_IGESReaderData)& IR, IGESData_ParamReader& PR)  const;
+  
+  //! Writes own parameters to IGESWriter
+  Standard_EXPORT   void WriteOwnParams (const Handle(IGESSolid_Block)& ent, IGESData_IGESWriter& IW)  const;
+  
+  //! Lists the Entities shared by a Block <ent>, from
+  //! its specific (own) parameters
+  Standard_EXPORT   void OwnShared (const Handle(IGESSolid_Block)& ent, Interface_EntityIterator& iter)  const;
+  
+  //! Returns specific DirChecker
+  Standard_EXPORT   IGESData_DirChecker DirChecker (const Handle(IGESSolid_Block)& ent)  const;
+  
+  //! Performs Specific Semantic Check
+  Standard_EXPORT   void OwnCheck (const Handle(IGESSolid_Block)& ent, const Interface_ShareTool& shares, Handle(Interface_Check)& ach)  const;
+  
+  //! Copies Specific Parameters
+  Standard_EXPORT   void OwnCopy (const Handle(IGESSolid_Block)& entfrom, const Handle(IGESSolid_Block)& entto, Interface_CopyTool& TC)  const;
+  
+  //! Dump of Specific Parameters
+  Standard_EXPORT   void OwnDump (const Handle(IGESSolid_Block)& ent, const IGESData_IGESDumper& dumper, const Handle(Message_Messenger)& S, const Standard_Integer own)  const;
 
 
 
@@ -93,7 +85,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSolid_ToolBlock_HeaderFile

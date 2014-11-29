@@ -6,22 +6,15 @@
 #ifndef _Handle_StepVisual_OverRidingStyledItem_HeaderFile
 #define _Handle_StepVisual_OverRidingStyledItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepVisual_StyledItem_HeaderFile
 #include <Handle_StepVisual_StyledItem.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepVisual_StyledItem);
 class StepVisual_OverRidingStyledItem;
 
-DEFINE_STANDARD_HANDLE(StepVisual_OverRidingStyledItem,StepVisual_StyledItem)
+DEFINE_STANDARD_HANDLE(StepVisual_OverRidingStyledItem, StepVisual_StyledItem)
 
-#endif
+#endif // _Handle_StepVisual_OverRidingStyledItem_HeaderFile

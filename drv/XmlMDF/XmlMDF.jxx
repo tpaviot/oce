@@ -1,18 +1,6 @@
-#ifndef _TDF_Data_HeaderFile
 #include <TDF_Data.hxx>
-#endif
-#ifndef _XmlMDF_ADriverTable_HeaderFile
 #include <XmlMDF_ADriverTable.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _XmlMDF_MapOfDriver_HeaderFile
 #include <XmlMDF_MapOfDriver.hxx>
-#endif
-#ifndef _CDM_MessageDriver_HeaderFile
 #include <CDM_MessageDriver.hxx>
-#endif
-#ifndef _XmlMDF_HeaderFile
 #include <XmlMDF.hxx>
-#endif

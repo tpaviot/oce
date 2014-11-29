@@ -6,22 +6,15 @@
 #ifndef _Handle_Geom_BezierCurve_HeaderFile
 #define _Handle_Geom_BezierCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Geom_BoundedCurve_HeaderFile
 #include <Handle_Geom_BoundedCurve.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Geom_BoundedCurve);
 class Geom_BezierCurve;
 
-DEFINE_STANDARD_HANDLE(Geom_BezierCurve,Geom_BoundedCurve)
+DEFINE_STANDARD_HANDLE(Geom_BezierCurve, Geom_BoundedCurve)
 
-#endif
+#endif // _Handle_Geom_BezierCurve_HeaderFile

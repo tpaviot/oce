@@ -6,25 +6,13 @@
 #ifndef _AIS_StdMapNodeOfMapOfInteractive_HeaderFile
 #define _AIS_StdMapNodeOfMapOfInteractive_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_AIS_StdMapNodeOfMapOfInteractive_HeaderFile
 #include <Handle_AIS_StdMapNodeOfMapOfInteractive.hxx>
-#endif
 
-#ifndef _Handle_AIS_InteractiveObject_HeaderFile
 #include <Handle_AIS_InteractiveObject.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class AIS_InteractiveObject;
 class TColStd_MapTransientHasher;
 class AIS_MapOfInteractive;
@@ -32,14 +20,15 @@ class AIS_MapIteratorOfMapOfInteractive;
 
 
 
-class AIS_StdMapNodeOfMapOfInteractive : public TCollection_MapNode {
+class AIS_StdMapNodeOfMapOfInteractive : public TCollection_MapNode
+{
 
 public:
 
   
-      AIS_StdMapNodeOfMapOfInteractive(const Handle(AIS_InteractiveObject)& K,const TCollection_MapNodePtr& n);
+    AIS_StdMapNodeOfMapOfInteractive(const Handle(AIS_InteractiveObject)& K, const TCollection_MapNodePtr& n);
   
-        Handle_AIS_InteractiveObject& Key() const;
+      Handle(AIS_InteractiveObject)& Key()  const;
 
 
 
@@ -54,12 +43,12 @@ protected:
 private: 
 
 
-Handle_AIS_InteractiveObject myKey;
+  Handle(AIS_InteractiveObject) myKey;
 
 
 };
 
-#define TheKey Handle_AIS_InteractiveObject
+#define TheKey Handle(AIS_InteractiveObject)
 #define TheKey_hxx <AIS_InteractiveObject.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>
@@ -88,7 +77,6 @@ Handle_AIS_InteractiveObject myKey;
 #undef TCollection_Map_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_StdMapNodeOfMapOfInteractive_HeaderFile

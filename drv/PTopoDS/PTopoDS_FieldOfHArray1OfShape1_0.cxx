@@ -5,31 +5,15 @@
 
 #include <PTopoDS_FieldOfHArray1OfShape1.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NegativeValue_HeaderFile
 #include <Standard_NegativeValue.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_NullObject_HeaderFile
 #include <Standard_NullObject.hxx>
-#endif
-#ifndef _PTopoDS_Shape1_HeaderFile
 #include <PTopoDS_Shape1.hxx>
-#endif
-#ifndef _PTopoDS_VArrayNodeOfFieldOfHArray1OfShape1_HeaderFile
 #include <PTopoDS_VArrayNodeOfFieldOfHArray1OfShape1.hxx>
-#endif
-#ifndef _PTopoDS_VArrayTNodeOfFieldOfHArray1OfShape1_HeaderFile
 #include <PTopoDS_VArrayTNodeOfFieldOfHArray1OfShape1.hxx>
-#endif
 
 IMPLEMENT_STANDARD_TYPE(PTopoDS_FieldOfHArray1OfShape1)
 IMPLEMENT_STANDARD_SUPERTYPE_ARRAY()

@@ -6,22 +6,15 @@
 #ifndef _Handle_IFSelect_GraphCounter_HeaderFile
 #define _Handle_IFSelect_GraphCounter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IFSelect_SignCounter_HeaderFile
 #include <Handle_IFSelect_SignCounter.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IFSelect_SignCounter);
 class IFSelect_GraphCounter;
 
-DEFINE_STANDARD_HANDLE(IFSelect_GraphCounter,IFSelect_SignCounter)
+DEFINE_STANDARD_HANDLE(IFSelect_GraphCounter, IFSelect_SignCounter)
 
-#endif
+#endif // _Handle_IFSelect_GraphCounter_HeaderFile

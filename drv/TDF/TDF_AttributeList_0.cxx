@@ -5,21 +5,13 @@
 
 #include <TDF_AttributeList.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TDF_ListIteratorOfAttributeList_HeaderFile
 #include <TDF_ListIteratorOfAttributeList.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _TDF_ListNodeOfAttributeList_HeaderFile
 #include <TDF_ListNodeOfAttributeList.hxx>
-#endif
  
 
-#define Item Handle_TDF_Attribute
+#define Item Handle(TDF_Attribute)
 #define Item_hxx <TDF_Attribute.hxx>
 #define TCollection_ListNode TDF_ListNodeOfAttributeList
 #define TCollection_ListNode_hxx <TDF_ListNodeOfAttributeList.hxx>

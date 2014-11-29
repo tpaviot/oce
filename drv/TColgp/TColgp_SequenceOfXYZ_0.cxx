@@ -5,18 +5,10 @@
 
 #include <TColgp_SequenceOfXYZ.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _TColgp_SequenceNodeOfSequenceOfXYZ_HeaderFile
 #include <TColgp_SequenceNodeOfSequenceOfXYZ.hxx>
-#endif
  
 
 #define SeqItem gp_XYZ

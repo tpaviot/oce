@@ -6,41 +6,30 @@
 #ifndef _StepGeom_TrimmingMember_HeaderFile
 #define _StepGeom_TrimmingMember_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_TrimmingMember_HeaderFile
 #include <Handle_StepGeom_TrimmingMember.hxx>
-#endif
 
-#ifndef _StepData_SelectReal_HeaderFile
 #include <StepData_SelectReal.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
 
 
-//! For immediate members of TrimmingSelect, i.e. : <br>
-//!           ParameterValue (a Real) <br>
-class StepGeom_TrimmingMember : public StepData_SelectReal {
+//! For immediate members of TrimmingSelect, i.e. :
+//! ParameterValue (a Real)
+class StepGeom_TrimmingMember : public StepData_SelectReal
+{
 
 public:
 
   
-  Standard_EXPORT   StepGeom_TrimmingMember();
+  Standard_EXPORT StepGeom_TrimmingMember();
   
-  Standard_EXPORT   virtual  Standard_Boolean HasName() const;
+  Standard_EXPORT virtual   Standard_Boolean HasName()  const;
   
-  Standard_EXPORT   virtual  Standard_CString Name() const;
+  Standard_EXPORT virtual   Standard_CString Name()  const;
   
-  Standard_EXPORT   virtual  Standard_Boolean SetName(const Standard_CString name) ;
+  Standard_EXPORT virtual   Standard_Boolean SetName (const Standard_CString name) ;
 
 
 
@@ -63,7 +52,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_TrimmingMember_HeaderFile

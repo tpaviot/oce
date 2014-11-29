@@ -5,16 +5,10 @@
 
 #include <IntPatch_SequenceNodeOfSequenceOfPoint.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IntPatch_Point_HeaderFile
 #include <IntPatch_Point.hxx>
-#endif
-#ifndef _IntPatch_SequenceOfPoint_HeaderFile
 #include <IntPatch_SequenceOfPoint.hxx>
-#endif
 
  
 

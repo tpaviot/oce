@@ -5,30 +5,16 @@
 
 #include <SelectMgr_IndexedDataMapOfOwnerCriterion.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _SelectBasics_EntityOwner_HeaderFile
 #include <SelectBasics_EntityOwner.hxx>
-#endif
-#ifndef _SelectMgr_SortCriterion_HeaderFile
 #include <SelectMgr_SortCriterion.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion_HeaderFile
 #include <SelectMgr_IndexedDataMapNodeOfIndexedDataMapOfOwnerCriterion.hxx>
-#endif
  
 
-#define TheKey Handle_SelectBasics_EntityOwner
+#define TheKey Handle(SelectBasics_EntityOwner)
 #define TheKey_hxx <SelectBasics_EntityOwner.hxx>
 #define TheItem SelectMgr_SortCriterion
 #define TheItem_hxx <SelectMgr_SortCriterion.hxx>

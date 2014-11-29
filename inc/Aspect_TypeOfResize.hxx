@@ -6,9 +6,12 @@
 #ifndef _Aspect_TypeOfResize_HeaderFile
 #define _Aspect_TypeOfResize_HeaderFile
 
-//! Defines the type of Resize Window method applied <br>
-//!          by the user. <br>
-enum Aspect_TypeOfResize {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Defines the type of Resize Window method applied
+//! by the user.
+enum Aspect_TypeOfResize
+{
 Aspect_TOR_UNKNOWN,
 Aspect_TOR_NO_BORDER,
 Aspect_TOR_TOP_BORDER,
@@ -21,8 +24,4 @@ Aspect_TOR_BOTTOM_AND_LEFT_BORDER,
 Aspect_TOR_LEFT_AND_TOP_BORDER
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_TypeOfResize_HeaderFile

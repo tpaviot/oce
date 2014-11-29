@@ -6,25 +6,13 @@
 #ifndef _math_Array1OfValueAndWeight_HeaderFile
 #define _math_Array1OfValueAndWeight_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -33,52 +21,52 @@ class math_ValueAndWeight;
 
 
 
-class math_Array1OfValueAndWeight  {
+class math_Array1OfValueAndWeight 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      math_Array1OfValueAndWeight(const Standard_Integer Low,const Standard_Integer Up);
+    math_Array1OfValueAndWeight(const Standard_Integer Low, const Standard_Integer Up);
   
-      math_Array1OfValueAndWeight(const math_ValueAndWeight& Item,const Standard_Integer Low,const Standard_Integer Up);
+    math_Array1OfValueAndWeight(const math_ValueAndWeight& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const math_ValueAndWeight& V) ;
+  Standard_EXPORT   void Init (const math_ValueAndWeight& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~math_Array1OfValueAndWeight()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const math_Array1OfValueAndWeight& Assign(const math_Array1OfValueAndWeight& Other) ;
-   const math_Array1OfValueAndWeight& operator =(const math_Array1OfValueAndWeight& Other) 
+  Standard_EXPORT  const  math_Array1OfValueAndWeight& Assign (const math_Array1OfValueAndWeight& Other) ;
+ const  math_Array1OfValueAndWeight& operator = (const math_Array1OfValueAndWeight& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const math_ValueAndWeight& Value) ;
+      void SetValue (const Standard_Integer Index, const math_ValueAndWeight& Value) ;
   
-       const math_ValueAndWeight& Value(const Standard_Integer Index) const;
-     const math_ValueAndWeight& operator ()(const Standard_Integer Index) const
+     const  math_ValueAndWeight& Value (const Standard_Integer Index)  const;
+   const  math_ValueAndWeight& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        math_ValueAndWeight& ChangeValue(const Standard_Integer Index) ;
-      math_ValueAndWeight& operator ()(const Standard_Integer Index) 
+      math_ValueAndWeight& ChangeValue (const Standard_Integer Index) ;
+    math_ValueAndWeight& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -92,13 +80,13 @@ protected:
 private:
 
   
-  Standard_EXPORT   math_Array1OfValueAndWeight(const math_Array1OfValueAndWeight& AnArray);
+  Standard_EXPORT math_Array1OfValueAndWeight(const math_Array1OfValueAndWeight& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
@@ -116,7 +104,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _math_Array1OfValueAndWeight_HeaderFile

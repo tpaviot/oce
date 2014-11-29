@@ -1,6 +1,2 @@
-#ifndef _TColStd_DataMapOfTransientTransient_HeaderFile
 #include <TColStd_DataMapOfTransientTransient.hxx>
-#endif
-#ifndef _Transfer_MapContainer_HeaderFile
 #include <Transfer_MapContainer.hxx>
-#endif

@@ -5,39 +5,17 @@
 
 #include <HLRBRep_TheIntConicCurveOfCInter.hxx>
 
-#ifndef _IntCurve_IConicTool_HeaderFile
 #include <IntCurve_IConicTool.hxx>
-#endif
-#ifndef _HLRBRep_CurveTool_HeaderFile
 #include <HLRBRep_CurveTool.hxx>
-#endif
-#ifndef _HLRBRep_TheProjPCurOfCInter_HeaderFile
 #include <HLRBRep_TheProjPCurOfCInter.hxx>
-#endif
-#ifndef _HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_HeaderFile
 #include <HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx>
-#endif
-#ifndef _HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_HeaderFile
 #include <HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter.hxx>
-#endif
-#ifndef _gp_Lin2d_HeaderFile
 #include <gp_Lin2d.hxx>
-#endif
-#ifndef _IntRes2d_Domain_HeaderFile
 #include <IntRes2d_Domain.hxx>
-#endif
-#ifndef _gp_Circ2d_HeaderFile
 #include <gp_Circ2d.hxx>
-#endif
-#ifndef _gp_Elips2d_HeaderFile
 #include <gp_Elips2d.hxx>
-#endif
-#ifndef _gp_Parab2d_HeaderFile
 #include <gp_Parab2d.hxx>
-#endif
-#ifndef _gp_Hypr2d_HeaderFile
 #include <gp_Hypr2d.hxx>
-#endif
  
 
 #define TheImpTool IntCurve_IConicTool

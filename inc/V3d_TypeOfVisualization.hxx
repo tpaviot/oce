@@ -6,15 +6,14 @@
 #ifndef _V3d_TypeOfVisualization_HeaderFile
 #define _V3d_TypeOfVisualization_HeaderFile
 
-//! Determines the type of visualization in the view, either <br>
-//! WIREFRAME or ZBUFFER (shading). <br>
-enum V3d_TypeOfVisualization {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Determines the type of visualization in the view, either
+//! WIREFRAME or ZBUFFER (shading).
+enum V3d_TypeOfVisualization
+{
 V3d_WIREFRAME,
 V3d_ZBUFFER
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _V3d_TypeOfVisualization_HeaderFile

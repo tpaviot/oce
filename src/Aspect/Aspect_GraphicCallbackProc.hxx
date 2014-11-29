@@ -14,10 +14,12 @@
 #ifndef _Aspect_GraphicCallbackProc_HeaderFile
 #define _Aspect_GraphicCallbackProc_HeaderFile
 
+// To manage client post display
+
 #include <Aspect_Display.hxx>
 #include <Aspect_Drawable.hxx>
 #include <Aspect_RenderingContext.hxx>
-#include <Handle_Standard_Transient.hxx>
+#include <Standard_Transient.hxx>
 
 // The flags below provide additional information to define the moment when
 // callback was invoked in redraw procedure. These flags are bitwise OR'ed
@@ -45,8 +47,5 @@ typedef struct
 typedef int (*Aspect_GraphicCallbackProc) (Aspect_Drawable               theWindowID,
                                            void*                         theUserData,
                                            Aspect_GraphicCallbackStruct* theCallData);
-
-class Handle(Standard_Type);
-const Handle(Standard_Type)& STANDARD_TYPE(Aspect_GraphicCallbackProc);
 
 #endif /* _Aspect_GraphicCallbackProc_HeaderFile */

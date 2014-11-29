@@ -6,28 +6,22 @@
 #ifndef _StepBasic_ProductType_HeaderFile
 #define _StepBasic_ProductType_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductType_HeaderFile
 #include <Handle_StepBasic_ProductType.hxx>
-#endif
 
-#ifndef _StepBasic_ProductRelatedProductCategory_HeaderFile
 #include <StepBasic_ProductRelatedProductCategory.hxx>
-#endif
 
 
 
-class StepBasic_ProductType : public StepBasic_ProductRelatedProductCategory {
+class StepBasic_ProductType : public StepBasic_ProductRelatedProductCategory
+{
 
 public:
 
-  //! Returns a ProductType <br>
-  Standard_EXPORT   StepBasic_ProductType();
+  
+  //! Returns a ProductType
+  Standard_EXPORT StepBasic_ProductType();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_ProductType_HeaderFile

@@ -5,16 +5,10 @@
 
 #include <Units_SequenceNodeOfTksSequence.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Units_Token_HeaderFile
 #include <Units_Token.hxx>
-#endif
-#ifndef _Units_TksSequence_HeaderFile
 #include <Units_TksSequence.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(Units_SequenceNodeOfTksSequence,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Units_SequenceNodeOfTksSequence)
 
 
-#define SeqItem Handle_Units_Token
+#define SeqItem Handle(Units_Token)
 #define SeqItem_hxx <Units_Token.hxx>
 #define TCollection_SequenceNode Units_SequenceNodeOfTksSequence
 #define TCollection_SequenceNode_hxx <Units_SequenceNodeOfTksSequence.hxx>

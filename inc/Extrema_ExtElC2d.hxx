@@ -6,28 +6,14 @@
 #ifndef _Extrema_ExtElC2d_HeaderFile
 #define _Extrema_ExtElC2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Extrema_POnCurv2d_HeaderFile
 #include <Extrema_POnCurv2d.hxx>
-#endif
 class StdFail_InfiniteSolutions;
 class StdFail_NotDone;
 class Standard_OutOfRange;
@@ -39,74 +25,94 @@ class gp_Parab2d;
 class Extrema_POnCurv2d;
 
 
-//! It calculates all the distance between two elementary <br>
-//!          curves. <br>
-//!          These distances can be maximum or minimum. <br>
-class Extrema_ExtElC2d  {
+//! It calculates all the distance between two elementary
+//! curves.
+//! These distances can be maximum or minimum.
+class Extrema_ExtElC2d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Extrema_ExtElC2d();
-  //! Calculates the distance between two lines. <br>
-//!          AngTol is used to test if the lines are parallel: <br>
-//!          Angle(C1,C2) < AngTol. <br>
-  Standard_EXPORT   Extrema_ExtElC2d(const gp_Lin2d& C1,const gp_Lin2d& C2,const Standard_Real AngTol);
-  //! Calculates the distance between a line and a <br>
-//!          circle. <br>
-  Standard_EXPORT   Extrema_ExtElC2d(const gp_Lin2d& C1,const gp_Circ2d& C2,const Standard_Real Tol);
-  //! Calculates the distance between a line and an <br>
-//!          elipse. <br>
-  Standard_EXPORT   Extrema_ExtElC2d(const gp_Lin2d& C1,const gp_Elips2d& C2);
-  //! Calculates the distance between a line and a <br>
-//!          hyperbola. <br>
-  Standard_EXPORT   Extrema_ExtElC2d(const gp_Lin2d& C1,const gp_Hypr2d& C2);
-  //! Calculates the distance between a line and a <br>
-//!          parabola. <br>
-  Standard_EXPORT   Extrema_ExtElC2d(const gp_Lin2d& C1,const gp_Parab2d& C2);
-  //! Calculates the distance between two circles. <br>
-//!          The circles can be parallel or identical. <br>
-  Standard_EXPORT   Extrema_ExtElC2d(const gp_Circ2d& C1,const gp_Circ2d& C2);
-  //! Calculates the distance between a circle and an <br>
-//!          elipse. <br>
-  Standard_EXPORT   Extrema_ExtElC2d(const gp_Circ2d& C1,const gp_Elips2d& C2);
-  //! Calculates the distance between a circle and a <br>
-//!          hyperbola. <br>
-  Standard_EXPORT   Extrema_ExtElC2d(const gp_Circ2d& C1,const gp_Hypr2d& C2);
-  //! Calculates the distance between a circle and a <br>
-//!          parabola. <br>
-  Standard_EXPORT   Extrema_ExtElC2d(const gp_Circ2d& C1,const gp_Parab2d& C2);
-  //! Calculates the distance between two elipses. <br>
-//!          The elipses can be parallel or identical. <br>
-  Standard_EXPORT   Extrema_ExtElC2d(const gp_Elips2d& C1,const gp_Elips2d& C2);
-  //! Calculates the distance between an elipse and a <br>
-//!          hyperbola. <br>
-  Standard_EXPORT   Extrema_ExtElC2d(const gp_Elips2d& C1,const gp_Hypr2d& C2);
-  //! Calculates the distance between an elipse and a <br>
-//!          parabola. <br>
-  Standard_EXPORT   Extrema_ExtElC2d(const gp_Elips2d& C1,const gp_Parab2d& C2);
-  //! Calculates the distance between two hyperbolas. <br>
-//!          The hyperbolas can be parallel or identical. <br>
-  Standard_EXPORT   Extrema_ExtElC2d(const gp_Hypr2d& C1,const gp_Hypr2d& C2);
-  //! Calculates the distance between a hyperbola and a <br>
-//!          parabola. <br>
-  Standard_EXPORT   Extrema_ExtElC2d(const gp_Hypr2d& C1,const gp_Parab2d& C2);
-  //! Calculates the distance between two parabolas <br>
-//!          The parabolas can be parallel or identical. <br>
-  Standard_EXPORT   Extrema_ExtElC2d(const gp_Parab2d& C1,const gp_Parab2d& C2);
-  //! Returns True if the distances are found. <br>
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-  //! Returns True if the two curves are parallel. <br>
-  Standard_EXPORT     Standard_Boolean IsParallel() const;
-  //! Returns the number of extremum distances. <br>
-  Standard_EXPORT     Standard_Integer NbExt() const;
-  //! Returns the value of the Nth extremum square distance. <br>
-  Standard_EXPORT     Standard_Real SquareDistance(const Standard_Integer N = 1) const;
-  //! Returns the points of the Nth extremum distance. <br>
-//!          P1 is on the first curve, P2 on the second one. <br>
-  Standard_EXPORT     void Points(const Standard_Integer N,Extrema_POnCurv2d& P1,Extrema_POnCurv2d& P2) const;
-
+  Standard_EXPORT Extrema_ExtElC2d();
+  
+  //! Calculates the distance between two lines.
+  //! AngTol is used to test if the lines are parallel:
+  //! Angle(C1,C2) < AngTol.
+  Standard_EXPORT Extrema_ExtElC2d(const gp_Lin2d& C1, const gp_Lin2d& C2, const Standard_Real AngTol);
+  
+  //! Calculates the distance between a line and a
+  //! circle.
+  Standard_EXPORT Extrema_ExtElC2d(const gp_Lin2d& C1, const gp_Circ2d& C2, const Standard_Real Tol);
+  
+  //! Calculates the distance between a line and an
+  //! elipse.
+  Standard_EXPORT Extrema_ExtElC2d(const gp_Lin2d& C1, const gp_Elips2d& C2);
+  
+  //! Calculates the distance between a line and a
+  //! hyperbola.
+  Standard_EXPORT Extrema_ExtElC2d(const gp_Lin2d& C1, const gp_Hypr2d& C2);
+  
+  //! Calculates the distance between a line and a
+  //! parabola.
+  Standard_EXPORT Extrema_ExtElC2d(const gp_Lin2d& C1, const gp_Parab2d& C2);
+  
+  //! Calculates the distance between two circles.
+  //! The circles can be parallel or identical.
+  Standard_EXPORT Extrema_ExtElC2d(const gp_Circ2d& C1, const gp_Circ2d& C2);
+  
+  //! Calculates the distance between a circle and an
+  //! elipse.
+  Standard_EXPORT Extrema_ExtElC2d(const gp_Circ2d& C1, const gp_Elips2d& C2);
+  
+  //! Calculates the distance between a circle and a
+  //! hyperbola.
+  Standard_EXPORT Extrema_ExtElC2d(const gp_Circ2d& C1, const gp_Hypr2d& C2);
+  
+  //! Calculates the distance between a circle and a
+  //! parabola.
+  Standard_EXPORT Extrema_ExtElC2d(const gp_Circ2d& C1, const gp_Parab2d& C2);
+  
+  //! Calculates the distance between two elipses.
+  //! The elipses can be parallel or identical.
+  Standard_EXPORT Extrema_ExtElC2d(const gp_Elips2d& C1, const gp_Elips2d& C2);
+  
+  //! Calculates the distance between an elipse and a
+  //! hyperbola.
+  Standard_EXPORT Extrema_ExtElC2d(const gp_Elips2d& C1, const gp_Hypr2d& C2);
+  
+  //! Calculates the distance between an elipse and a
+  //! parabola.
+  Standard_EXPORT Extrema_ExtElC2d(const gp_Elips2d& C1, const gp_Parab2d& C2);
+  
+  //! Calculates the distance between two hyperbolas.
+  //! The hyperbolas can be parallel or identical.
+  Standard_EXPORT Extrema_ExtElC2d(const gp_Hypr2d& C1, const gp_Hypr2d& C2);
+  
+  //! Calculates the distance between a hyperbola and a
+  //! parabola.
+  Standard_EXPORT Extrema_ExtElC2d(const gp_Hypr2d& C1, const gp_Parab2d& C2);
+  
+  //! Calculates the distance between two parabolas
+  //! The parabolas can be parallel or identical.
+  Standard_EXPORT Extrema_ExtElC2d(const gp_Parab2d& C1, const gp_Parab2d& C2);
+  
+  //! Returns True if the distances are found.
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
+  
+  //! Returns True if the two curves are parallel.
+  Standard_EXPORT   Standard_Boolean IsParallel()  const;
+  
+  //! Returns the number of extremum distances.
+  Standard_EXPORT   Standard_Integer NbExt()  const;
+  
+  //! Returns the value of the Nth extremum square distance.
+  Standard_EXPORT   Standard_Real SquareDistance (const Standard_Integer N = 1)  const;
+  
+  //! Returns the points of the Nth extremum distance.
+  //! P1 is on the first curve, P2 on the second one.
+  Standard_EXPORT   void Points (const Standard_Integer N, Extrema_POnCurv2d& P1, Extrema_POnCurv2d& P2)  const;
 
 
 
@@ -121,11 +127,11 @@ private:
 
 
 
-Standard_Boolean myDone;
-Standard_Boolean myIsPar;
-Standard_Integer myNbExt;
-Standard_Real mySqDist[8];
-Extrema_POnCurv2d myPoint[8][2];
+  Standard_Boolean myDone;
+  Standard_Boolean myIsPar;
+  Standard_Integer myNbExt;
+  Standard_Real mySqDist[8];
+  Extrema_POnCurv2d myPoint[8][2];
 
 
 };
@@ -134,7 +140,6 @@ Extrema_POnCurv2d myPoint[8][2];
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Extrema_ExtElC2d_HeaderFile

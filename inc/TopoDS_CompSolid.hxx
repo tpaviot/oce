@@ -6,37 +6,31 @@
 #ifndef _TopoDS_CompSolid_HeaderFile
 #define _TopoDS_CompSolid_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
 
 
-//! Describes a composite solid which <br>
-//! - references an underlying composite solid with the <br>
-//!   potential to be given a location and an orientation <br>
-//! - has a location for the underlying composite solid, <br>
-//!   giving its placement in the local coordinate system <br>
-//! - has an orientation for the underlying composite <br>
-//!   solid, in terms of its geometry (as opposed to <br>
-//!   orientation in relation to other shapes). <br>
-class TopoDS_CompSolid  : public TopoDS_Shape {
+//! Describes a composite solid which
+//! - references an underlying composite solid with the
+//! potential to be given a location and an orientation
+//! - has a location for the underlying composite solid,
+//! giving its placement in the local coordinate system
+//! - has an orientation for the underlying composite
+//! solid, in terms of its geometry (as opposed to
+//! orientation in relation to other shapes).
+//! Casts shape S to the more specialized return type, CompSolid.
+class TopoDS_CompSolid  : public TopoDS_Shape
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Constructs an Undefined CompSolid. <br>
-      TopoDS_CompSolid();
-
+  
+  //! Constructs an Undefined CompSolid.
+    TopoDS_CompSolid();
 
 
 
@@ -60,7 +54,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopoDS_CompSolid_HeaderFile

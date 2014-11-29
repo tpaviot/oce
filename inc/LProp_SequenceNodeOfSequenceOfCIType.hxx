@@ -6,37 +6,26 @@
 #ifndef _LProp_SequenceNodeOfSequenceOfCIType_HeaderFile
 #define _LProp_SequenceNodeOfSequenceOfCIType_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_LProp_SequenceNodeOfSequenceOfCIType_HeaderFile
 #include <Handle_LProp_SequenceNodeOfSequenceOfCIType.hxx>
-#endif
 
-#ifndef _LProp_CIType_HeaderFile
 #include <LProp_CIType.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class LProp_SequenceOfCIType;
 
 
 
-class LProp_SequenceNodeOfSequenceOfCIType : public TCollection_SeqNode {
+class LProp_SequenceNodeOfSequenceOfCIType : public TCollection_SeqNode
+{
 
 public:
 
   
-      LProp_SequenceNodeOfSequenceOfCIType(const LProp_CIType& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    LProp_SequenceNodeOfSequenceOfCIType(const LProp_CIType& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        LProp_CIType& Value() const;
+      LProp_CIType& Value()  const;
 
 
 
@@ -51,7 +40,7 @@ protected:
 private: 
 
 
-LProp_CIType myValue;
+  LProp_CIType myValue;
 
 
 };
@@ -77,7 +66,6 @@ LProp_CIType myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _LProp_SequenceNodeOfSequenceOfCIType_HeaderFile

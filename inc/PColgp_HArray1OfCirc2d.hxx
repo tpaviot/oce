@@ -6,44 +6,17 @@
 #ifndef _PColgp_HArray1OfCirc2d_HeaderFile
 #define _PColgp_HArray1OfCirc2d_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PColgp_HArray1OfCirc2d_HeaderFile
 #include <Handle_PColgp_HArray1OfCirc2d.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _gp_Circ2d_HeaderFile
 #include <gp_Circ2d.hxx>
-#endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
-#ifndef _PColgp_FieldOfHArray1OfCirc2d_HeaderFile
 #include <PColgp_FieldOfHArray1OfCirc2d.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _Handle_PColgp_VArrayNodeOfFieldOfHArray1OfCirc2d_HeaderFile
 #include <Handle_PColgp_VArrayNodeOfFieldOfHArray1OfCirc2d.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
-class Standard_Persistent;
 class Standard_OutOfRange;
 class Standard_RangeError;
 class gp_Circ2d;
@@ -52,30 +25,27 @@ class PColgp_VArrayNodeOfFieldOfHArray1OfCirc2d;
 class PColgp_VArrayTNodeOfFieldOfHArray1OfCirc2d;
 
 
-class PColgp_HArray1OfCirc2d : public Standard_Persistent {
+class PColgp_HArray1OfCirc2d : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PColgp_HArray1OfCirc2d(const Standard_Integer Low,const Standard_Integer Up);
+  Standard_EXPORT PColgp_HArray1OfCirc2d(const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT   PColgp_HArray1OfCirc2d(const Standard_Integer Low,const Standard_Integer Up,const gp_Circ2d& V);
+  Standard_EXPORT PColgp_HArray1OfCirc2d(const Standard_Integer Low, const Standard_Integer Up, const gp_Circ2d& V);
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const gp_Circ2d& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const gp_Circ2d& Value) ;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-  Standard_EXPORT     gp_Circ2d Value(const Standard_Integer Index) const;
-  
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
+  Standard_EXPORT   gp_Circ2d Value (const Standard_Integer Index)  const;
 
-  PColgp_HArray1OfCirc2d( )
+PColgp_HArray1OfCirc2d( )
 {
   
 }
@@ -101,13 +71,13 @@ protected:
 private: 
 
   
-  Standard_EXPORT     PColgp_FieldOfHArray1OfCirc2d Field() const;
+  Standard_EXPORT   PColgp_FieldOfHArray1OfCirc2d Field()  const;
   
-  Standard_EXPORT     Standard_Address Datas() const;
+  Standard_EXPORT   Standard_Address Datas()  const;
 
-Standard_Integer LowerBound;
-Standard_Integer UpperBound;
-PColgp_FieldOfHArray1OfCirc2d Data;
+  Standard_Integer LowerBound;
+  Standard_Integer UpperBound;
+  PColgp_FieldOfHArray1OfCirc2d Data;
 
 
 };
@@ -157,11 +127,6 @@ PColgp_FieldOfHArray1OfCirc2d Data;
 #undef PCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline void ShallowDump(const Handle_PColgp_HArray1OfCirc2d& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
 
 
-
-#endif
+#endif // _PColgp_HArray1OfCirc2d_HeaderFile

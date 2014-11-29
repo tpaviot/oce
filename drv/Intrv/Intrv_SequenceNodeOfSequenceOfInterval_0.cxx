@@ -5,16 +5,10 @@
 
 #include <Intrv_SequenceNodeOfSequenceOfInterval.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Intrv_Interval_HeaderFile
 #include <Intrv_Interval.hxx>
-#endif
-#ifndef _Intrv_SequenceOfInterval_HeaderFile
 #include <Intrv_SequenceOfInterval.hxx>
-#endif
 
  
 

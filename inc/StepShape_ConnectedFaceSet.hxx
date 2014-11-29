@@ -6,55 +6,41 @@
 #ifndef _StepShape_ConnectedFaceSet_HeaderFile
 #define _StepShape_ConnectedFaceSet_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_ConnectedFaceSet_HeaderFile
 #include <Handle_StepShape_ConnectedFaceSet.hxx>
-#endif
 
-#ifndef _Handle_StepShape_HArray1OfFace_HeaderFile
 #include <Handle_StepShape_HArray1OfFace.hxx>
-#endif
-#ifndef _StepShape_TopologicalRepresentationItem_HeaderFile
 #include <StepShape_TopologicalRepresentationItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepShape_Face_HeaderFile
 #include <Handle_StepShape_Face.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StepShape_HArray1OfFace;
 class TCollection_HAsciiString;
 class StepShape_Face;
 
 
 
-class StepShape_ConnectedFaceSet : public StepShape_TopologicalRepresentationItem {
+class StepShape_ConnectedFaceSet : public StepShape_TopologicalRepresentationItem
+{
 
 public:
 
-  //! Returns a ConnectedFaceSet <br>
-  Standard_EXPORT   StepShape_ConnectedFaceSet();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a ConnectedFaceSet
+  Standard_EXPORT StepShape_ConnectedFaceSet();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepShape_HArray1OfFace)& aCfsFaces) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT   virtual  void SetCfsFaces(const Handle(StepShape_HArray1OfFace)& aCfsFaces) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepShape_HArray1OfFace)& aCfsFaces) ;
   
-  Standard_EXPORT   virtual  Handle_StepShape_HArray1OfFace CfsFaces() const;
+  Standard_EXPORT virtual   void SetCfsFaces (const Handle(StepShape_HArray1OfFace)& aCfsFaces) ;
   
-  Standard_EXPORT   virtual  Handle_StepShape_Face CfsFacesValue(const Standard_Integer num) const;
+  Standard_EXPORT virtual   Handle(StepShape_HArray1OfFace) CfsFaces()  const;
   
-  Standard_EXPORT   virtual  Standard_Integer NbCfsFaces() const;
+  Standard_EXPORT virtual   Handle(StepShape_Face) CfsFacesValue (const Standard_Integer num)  const;
+  
+  Standard_EXPORT virtual   Standard_Integer NbCfsFaces()  const;
 
 
 
@@ -69,7 +55,7 @@ protected:
 private: 
 
 
-Handle_StepShape_HArray1OfFace cfsFaces;
+  Handle(StepShape_HArray1OfFace) cfsFaces;
 
 
 };
@@ -78,7 +64,6 @@ Handle_StepShape_HArray1OfFace cfsFaces;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_ConnectedFaceSet_HeaderFile

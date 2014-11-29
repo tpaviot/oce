@@ -6,25 +6,13 @@
 #ifndef _Approx_HArray1OfGTrsf2d_HeaderFile
 #define _Approx_HArray1OfGTrsf2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Approx_HArray1OfGTrsf2d_HeaderFile
 #include <Handle_Approx_HArray1OfGTrsf2d.hxx>
-#endif
 
-#ifndef _Approx_Array1OfGTrsf2d_HeaderFile
 #include <Approx_Array1OfGTrsf2d.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class Approx_Array1OfGTrsf2d;
 
 
 
-class Approx_HArray1OfGTrsf2d : public MMgt_TShared {
+class Approx_HArray1OfGTrsf2d : public MMgt_TShared
+{
 
 public:
 
   
-      Approx_HArray1OfGTrsf2d(const Standard_Integer Low,const Standard_Integer Up);
+    Approx_HArray1OfGTrsf2d(const Standard_Integer Low, const Standard_Integer Up);
   
-      Approx_HArray1OfGTrsf2d(const Standard_Integer Low,const Standard_Integer Up,const gp_GTrsf2d& V);
+    Approx_HArray1OfGTrsf2d(const Standard_Integer Low, const Standard_Integer Up, const gp_GTrsf2d& V);
   
-        void Init(const gp_GTrsf2d& V) ;
+      void Init (const gp_GTrsf2d& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const gp_GTrsf2d& Value) ;
+      void SetValue (const Standard_Integer Index, const gp_GTrsf2d& Value) ;
   
-       const gp_GTrsf2d& Value(const Standard_Integer Index) const;
+     const  gp_GTrsf2d& Value (const Standard_Integer Index)  const;
   
-        gp_GTrsf2d& ChangeValue(const Standard_Integer Index) ;
+      gp_GTrsf2d& ChangeValue (const Standard_Integer Index) ;
   
-       const Approx_Array1OfGTrsf2d& Array1() const;
+     const  Approx_Array1OfGTrsf2d& Array1()  const;
   
-        Approx_Array1OfGTrsf2d& ChangeArray1() ;
+      Approx_Array1OfGTrsf2d& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-Approx_Array1OfGTrsf2d myArray;
+  Approx_Array1OfGTrsf2d myArray;
 
 
 };
@@ -100,7 +89,6 @@ Approx_Array1OfGTrsf2d myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Approx_HArray1OfGTrsf2d_HeaderFile

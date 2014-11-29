@@ -6,46 +6,20 @@
 #ifndef _Select3D_SensitiveCurve_HeaderFile
 #define _Select3D_SensitiveCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Select3D_SensitiveCurve_HeaderFile
 #include <Handle_Select3D_SensitiveCurve.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _Select3D_SensitivePoly_HeaderFile
 #include <Select3D_SensitivePoly.hxx>
-#endif
-#ifndef _Handle_SelectBasics_EntityOwner_HeaderFile
 #include <Handle_SelectBasics_EntityOwner.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray1OfPnt_HeaderFile
 #include <Handle_TColgp_HArray1OfPnt.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _SelectBasics_PickArgs_HeaderFile
 #include <SelectBasics_PickArgs.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
-#ifndef _Handle_Select3D_SensitiveEntity_HeaderFile
 #include <Handle_Select3D_SensitiveEntity.hxx>
-#endif
 class Geom_Curve;
 class Standard_ConstructionError;
 class Standard_OutOfRange;
@@ -57,44 +31,53 @@ class Bnd_Box2d;
 class gp_Lin;
 class Select3D_SensitiveEntity;
 class TopLoc_Location;
+class gp_XYZ;
 
 
-//! A framework to define a sensitive 3D curve. <br>
-//! In some cases this class can raise Standard_ConstructionError and <br>
-//! Standard_OutOfRange exceptions. For more details see Select3D_SensitivePoly. <br>
-class Select3D_SensitiveCurve : public Select3D_SensitivePoly {
+//! A framework to define a sensitive 3D curve.
+//! In some cases this class can raise Standard_ConstructionError and
+//! Standard_OutOfRange exceptions. For more details see Select3D_SensitivePoly.
+class Select3D_SensitiveCurve : public Select3D_SensitivePoly
+{
 
 public:
 
-  //! Constructs a sensitive curve object defined by the <br>
-//! owner OwnerId, the curve TheCurve, and the <br>
-//! maximum number of points on the curve: MaxPoints. <br>
-  Standard_EXPORT   Select3D_SensitiveCurve(const Handle(SelectBasics_EntityOwner)& OwnerId,const Handle(Geom_Curve)& TheCurve,const Standard_Integer MaxPoints = 17);
-  //! Constructs a sensitive curve object defined by the <br>
-//! owner OwnerId and the set of points ThePoints. <br>
-  Standard_EXPORT   Select3D_SensitiveCurve(const Handle(SelectBasics_EntityOwner)& OwnerId,const Handle(TColgp_HArray1OfPnt)& ThePoints);
-  //! Creation of Sensitive Curve from Points. <br>
-//!          Warning : This Method should disappear in the next version... <br>
-  Standard_EXPORT   Select3D_SensitiveCurve(const Handle(SelectBasics_EntityOwner)& OwnerId,const TColgp_Array1OfPnt& ThePoints);
-  //! Checks whether the sensitive entity matches the picking <br>
-//! detection area (close to the picking line). <br>
-//! For details please refer to base class declaration. <br>
-  Standard_EXPORT     Standard_Boolean Matches(const SelectBasics_PickArgs& thePickArgs,Standard_Real& theMatchDMin,Standard_Real& theMatchDepth) ;
   
-  Standard_EXPORT     Standard_Boolean Matches(const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol) ;
+  //! Constructs a sensitive curve object defined by the
+  //! owner OwnerId, the curve TheCurve, and the
+  //! maximum number of points on the curve: MaxPoints.
+  Standard_EXPORT Select3D_SensitiveCurve(const Handle(SelectBasics_EntityOwner)& OwnerId, const Handle(Geom_Curve)& TheCurve, const Standard_Integer MaxPoints = 17);
   
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const TColgp_Array1OfPnt2d& Polyline,const Bnd_Box2d& aBox,const Standard_Real aTol) ;
-  //! Compute depth of sensitive circle for the detected sub-part. <br>
-//! @param thePickLine [in] the picking line. <br>
-//! @param theDetectedIndex [in] index of the detected sub-part. <br>
-//! @return depth on the picking line. <br>
-  Standard_EXPORT     Standard_Real ComputeDepth(const gp_Lin& thePickLine,const Standard_Integer theDetectedIndex) const;
-  //! Gets index of last detected segment <br>
-        Standard_Integer GetLastDetected() const;
+  //! Constructs a sensitive curve object defined by the
+  //! owner OwnerId and the set of points ThePoints.
+  Standard_EXPORT Select3D_SensitiveCurve(const Handle(SelectBasics_EntityOwner)& OwnerId, const Handle(TColgp_HArray1OfPnt)& ThePoints);
   
-  Standard_EXPORT   virtual  void Dump(Standard_OStream& S,const Standard_Boolean FullDump = Standard_True) const;
-  //! Returns the copy of this <br>
-  Standard_EXPORT   virtual  Handle_Select3D_SensitiveEntity GetConnected(const TopLoc_Location& theLocation) ;
+  //! Creation of Sensitive Curve from Points.
+  //! Warning : This Method should disappear in the next version...
+  Standard_EXPORT Select3D_SensitiveCurve(const Handle(SelectBasics_EntityOwner)& OwnerId, const TColgp_Array1OfPnt& ThePoints);
+  
+  //! Checks whether the sensitive entity matches the picking
+  //! detection area (close to the picking line).
+  //! For details please refer to base class declaration.
+  Standard_EXPORT   Standard_Boolean Matches (const SelectBasics_PickArgs& thePickArgs, Standard_Real& theMatchDMin, Standard_Real& theMatchDepth) ;
+  
+  Standard_EXPORT   Standard_Boolean Matches (const Standard_Real XMin, const Standard_Real YMin, const Standard_Real XMax, const Standard_Real YMax, const Standard_Real aTol) ;
+  
+  Standard_EXPORT virtual   Standard_Boolean Matches (const TColgp_Array1OfPnt2d& Polyline, const Bnd_Box2d& aBox, const Standard_Real aTol) ;
+  
+  //! Compute depth of sensitive circle for the detected sub-part.
+  //! @param thePickLine [in] the picking line.
+  //! @param theDetectedIndex [in] index of the detected sub-part.
+  //! @return depth on the picking line.
+  Standard_EXPORT   Standard_Real ComputeDepth (const gp_Lin& thePickLine, const Standard_Integer theDetectedIndex)  const;
+  
+  //! Gets index of last detected segment
+      Standard_Integer GetLastDetected()  const;
+  
+  Standard_EXPORT virtual   void Dump (Standard_OStream& S, const Standard_Boolean FullDump = Standard_True)  const;
+  
+  //! Returns the copy of this
+  Standard_EXPORT virtual   Handle(Select3D_SensitiveEntity) GetConnected (const TopLoc_Location& theLocation) ;
 
 
 
@@ -103,16 +86,21 @@ public:
 
 protected:
 
+  
+  //! Computes the depth by means of intersection of
+  //! a segment of the curve defined by <theP1, theP2> and
+  //! the eye-line <thePickLine>.
+  Standard_EXPORT   Standard_Boolean ComputeDepth (const gp_Lin& thePickLine, const gp_XYZ& theP1, const gp_XYZ& theP2, Standard_Real& theDepth)  const;
 
 
 
 private: 
 
   
-  Standard_EXPORT     void LoadPoints(const Handle(Geom_Curve)& aCurve,const Standard_Integer NbPoints) ;
+  Standard_EXPORT   void LoadPoints (const Handle(Geom_Curve)& aCurve, const Standard_Integer NbPoints) ;
 
-Standard_Integer mylastseg;
-Handle_Geom_Curve myCurve;
+  Standard_Integer mylastseg;
+  Handle(Geom_Curve) myCurve;
 
 
 };
@@ -122,7 +110,6 @@ Handle_Geom_Curve myCurve;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Select3D_SensitiveCurve_HeaderFile

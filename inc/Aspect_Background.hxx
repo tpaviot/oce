@@ -6,39 +6,35 @@
 #ifndef _Aspect_Background_HeaderFile
 #define _Aspect_Background_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Quantity_Color_HeaderFile
 #include <Quantity_Color.hxx>
-#endif
 class Quantity_Color;
 
 
-//! This class allows the definition of <br>
-//!	    a window background. <br>
-class Aspect_Background  {
+//! This class allows the definition of
+//! a window background.
+class Aspect_Background 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates a window background. <br>
-//!	    Default color : NOC_MATRAGRAY. <br>
-  Standard_EXPORT   Aspect_Background();
-  //! Creates a window background with the colour <AColor>. <br>
-  Standard_EXPORT   Aspect_Background(const Quantity_Color& AColor);
-  //! Modifies the colour of the window background <me>. <br>
-  Standard_EXPORT     void SetColor(const Quantity_Color& AColor) ;
-  //! Returns the colour of the window background <me>. <br>
-  Standard_EXPORT     Quantity_Color Color() const;
-
+  
+  //! Creates a window background.
+  //! Default color : NOC_MATRAGRAY.
+  Standard_EXPORT Aspect_Background();
+  
+  //! Creates a window background with the colour <AColor>.
+  Standard_EXPORT Aspect_Background(const Quantity_Color& AColor);
+  
+  //! Modifies the colour of the window background <me>.
+  Standard_EXPORT   void SetColor (const Quantity_Color& AColor) ;
+  
+  //! Returns the colour of the window background <me>.
+  Standard_EXPORT   Quantity_Color Color()  const;
 
 
 
@@ -53,7 +49,7 @@ private:
 
 
 
-Quantity_Color MyColor;
+  Quantity_Color MyColor;
 
 
 };
@@ -62,7 +58,6 @@ Quantity_Color MyColor;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Aspect_Background_HeaderFile

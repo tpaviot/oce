@@ -1,9 +1,3 @@
-#ifndef _IFSelect_GeneralModifier_HeaderFile
 #include <IFSelect_GeneralModifier.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfInteger_HeaderFile
 #include <TColStd_HSequenceOfInteger.hxx>
-#endif
-#ifndef _IFSelect_AppliedModifiers_HeaderFile
 #include <IFSelect_AppliedModifiers.hxx>
-#endif

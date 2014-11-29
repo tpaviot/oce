@@ -6,31 +6,15 @@
 #ifndef _DBC_VArrayOfExtCharacter_HeaderFile
 #define _DBC_VArrayOfExtCharacter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _DBC_BaseArray_HeaderFile
 #include <DBC_BaseArray.hxx>
-#endif
-#ifndef _Standard_ExtCharacter_HeaderFile
 #include <Standard_ExtCharacter.hxx>
-#endif
-#ifndef _Handle_DBC_VArrayNodeOfVArrayOfExtCharacter_HeaderFile
 #include <Handle_DBC_VArrayNodeOfVArrayOfExtCharacter.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
 #include <Standard_PrimitiveTypes.hxx>
-#endif
 class Standard_NegativeValue;
 class Standard_OutOfRange;
 class Standard_DimensionMismatch;
@@ -43,36 +27,37 @@ class DBC_VArrayTNodeOfVArrayOfExtCharacter;
 Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(DBC_VArrayOfExtCharacter);
 
 
-class DBC_VArrayOfExtCharacter  : public DBC_BaseArray {
+class DBC_VArrayOfExtCharacter  : public DBC_BaseArray
+{
 
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   DBC_VArrayOfExtCharacter();
+  Standard_EXPORT DBC_VArrayOfExtCharacter();
   
-  Standard_EXPORT   DBC_VArrayOfExtCharacter(const Standard_Integer Size);
+  Standard_EXPORT DBC_VArrayOfExtCharacter(const Standard_Integer Size);
   
-  Standard_EXPORT   DBC_VArrayOfExtCharacter(const DBC_VArrayOfExtCharacter& Varray);
+  Standard_EXPORT DBC_VArrayOfExtCharacter(const DBC_VArrayOfExtCharacter& Varray);
   
-  Standard_EXPORT     void Resize(const Standard_Integer Size) ;
+  Standard_EXPORT   void Resize (const Standard_Integer Size) ;
   
-  Standard_EXPORT     void Assign(const DBC_VArrayOfExtCharacter& Other) ;
-    void operator =(const DBC_VArrayOfExtCharacter& Other) 
+  Standard_EXPORT   void Assign (const DBC_VArrayOfExtCharacter& Other) ;
+  void operator = (const DBC_VArrayOfExtCharacter& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Standard_ExtCharacter& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Standard_ExtCharacter& Value) ;
   
-  Standard_EXPORT     Standard_ExtCharacter& Value(const Standard_Integer Index) const;
-    Standard_ExtCharacter& operator ()(const Standard_Integer Index) const
+  Standard_EXPORT   Standard_ExtCharacter& Value (const Standard_Integer Index)  const;
+  Standard_ExtCharacter& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void Destroy() ;
+  Standard_EXPORT   void Destroy() ;
 ~DBC_VArrayOfExtCharacter()
 {
   Destroy();
@@ -100,7 +85,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DBC_VArrayOfExtCharacter_HeaderFile

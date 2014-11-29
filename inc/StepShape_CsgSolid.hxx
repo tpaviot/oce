@@ -6,44 +6,34 @@
 #ifndef _StepShape_CsgSolid_HeaderFile
 #define _StepShape_CsgSolid_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_CsgSolid_HeaderFile
 #include <Handle_StepShape_CsgSolid.hxx>
-#endif
 
-#ifndef _StepShape_CsgSelect_HeaderFile
 #include <StepShape_CsgSelect.hxx>
-#endif
-#ifndef _StepShape_SolidModel_HeaderFile
 #include <StepShape_SolidModel.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepShape_CsgSelect;
 
 
 
-class StepShape_CsgSolid : public StepShape_SolidModel {
+class StepShape_CsgSolid : public StepShape_SolidModel
+{
 
 public:
 
-  //! Returns a CsgSolid <br>
-  Standard_EXPORT   StepShape_CsgSolid();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a CsgSolid
+  Standard_EXPORT StepShape_CsgSolid();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const StepShape_CsgSelect& aTreeRootExpression) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetTreeRootExpression(const StepShape_CsgSelect& aTreeRootExpression) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const StepShape_CsgSelect& aTreeRootExpression) ;
   
-  Standard_EXPORT     StepShape_CsgSelect TreeRootExpression() const;
+  Standard_EXPORT   void SetTreeRootExpression (const StepShape_CsgSelect& aTreeRootExpression) ;
+  
+  Standard_EXPORT   StepShape_CsgSelect TreeRootExpression()  const;
 
 
 
@@ -58,7 +48,7 @@ protected:
 private: 
 
 
-StepShape_CsgSelect treeRootExpression;
+  StepShape_CsgSelect treeRootExpression;
 
 
 };
@@ -67,7 +57,6 @@ StepShape_CsgSelect treeRootExpression;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_CsgSolid_HeaderFile

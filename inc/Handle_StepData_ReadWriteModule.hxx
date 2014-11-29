@@ -6,22 +6,15 @@
 #ifndef _Handle_StepData_ReadWriteModule_HeaderFile
 #define _Handle_StepData_ReadWriteModule_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Interface_ReaderModule_HeaderFile
 #include <Handle_Interface_ReaderModule.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Interface_ReaderModule);
 class StepData_ReadWriteModule;
 
-DEFINE_STANDARD_HANDLE(StepData_ReadWriteModule,Interface_ReaderModule)
+DEFINE_STANDARD_HANDLE(StepData_ReadWriteModule, Interface_ReaderModule)
 
-#endif
+#endif // _Handle_StepData_ReadWriteModule_HeaderFile

@@ -1,3 +1,0 @@
-#ifndef _TCollection_AVLBaseNode_HeaderFile
-#include <TCollection_AVLBaseNode.hxx>
-#endif

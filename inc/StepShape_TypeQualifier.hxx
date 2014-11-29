@@ -6,38 +6,29 @@
 #ifndef _StepShape_TypeQualifier_HeaderFile
 #define _StepShape_TypeQualifier_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_TypeQualifier_HeaderFile
 #include <Handle_StepShape_TypeQualifier.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class TCollection_HAsciiString;
 
 
-//! Added for Dimensional Tolerances <br>
-class StepShape_TypeQualifier : public MMgt_TShared {
+//! Added for Dimensional Tolerances
+class StepShape_TypeQualifier : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   StepShape_TypeQualifier();
+  Standard_EXPORT StepShape_TypeQualifier();
   
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& name) ;
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& name) ;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString Name() const;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Name()  const;
   
-  Standard_EXPORT     void SetName(const Handle(TCollection_HAsciiString)& name) ;
+  Standard_EXPORT   void SetName (const Handle(TCollection_HAsciiString)& name) ;
 
 
 
@@ -52,7 +43,7 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString theName;
+  Handle(TCollection_HAsciiString) theName;
 
 
 };
@@ -61,7 +52,6 @@ Handle_TCollection_HAsciiString theName;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_TypeQualifier_HeaderFile

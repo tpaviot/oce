@@ -6,15 +6,9 @@
 #ifndef _Geom2dGcc_HeaderFile
 #define _Geom2dGcc_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
 class Geom2dGcc_QualifiedCurve;
 class Geom2dAdaptor_Curve;
@@ -27,108 +21,112 @@ class Geom2dGcc_Circ2dTanOnRad;
 class Geom2dGcc_Circ2dTanCen;
 class Geom2dGcc_Lin2d2Tan;
 class Geom2dGcc_Lin2dTanObl;
-class Geom2dGcc_MyQCurve;
-class Geom2dGcc_MyCurveTool;
-class Geom2dGcc_MyCirc2d2TanOn;
-class Geom2dGcc_MyCirc2d2TanRad;
-class Geom2dGcc_MyCirc2dTanOnRad;
-class Geom2dGcc_MyC2d3Tan;
-class Geom2dGcc_MyCirc2dTanCen;
-class Geom2dGcc_MyC2d2TanOn;
-class Geom2dGcc_MyL2dTanObl;
-class Geom2dGcc_MyL2d2Tan;
-class Geom2dGcc_FuncTCuCuCuOfMyC2d3Tan;
-class Geom2dGcc_FuncTCuCuOnCuOfMyC2d2TanOn;
-class Geom2dGcc_FuncTOblOfMyL2dTanObl;
-class Geom2dGcc_FuncTCuCuOfMyL2d2Tan;
-class Geom2dGcc_FuncTCuPtOfMyL2d2Tan;
-class Geom2dGcc_FuncTCirCuOfMyL2d2Tan;
+class Geom2dGcc_QCurve;
+class Geom2dGcc_CurveToolGeo;
+class Geom2dGcc_Circ2d2TanOnGeo;
+class Geom2dGcc_Circ2d2TanRadGeo;
+class Geom2dGcc_Circ2dTanCenGeo;
+class Geom2dGcc_Circ2dTanOnRadGeo;
+class Geom2dGcc_Circ2d3TanIter;
+class Geom2dGcc_FunctionTanCuCuCu;
+class Geom2dGcc_Circ2d2TanOnIter;
+class Geom2dGcc_FunctionTanCuCuOnCu;
+class Geom2dGcc_Lin2dTanOblIter;
+class Geom2dGcc_FunctionTanObl;
+class Geom2dGcc_Lin2d2TanIter;
+class Geom2dGcc_FunctionTanCuCu;
+class Geom2dGcc_FunctionTanCuPnt;
+class Geom2dGcc_FunctionTanCirCu;
 
 
-//! The Geom2dGcc package describes qualified 2D <br>
-//! curves used in the construction of constrained geometric <br>
-//! objects by an algorithm provided by the Geom2dGcc package. <br>
-//! A qualified 2D curve is a curve with a qualifier which <br>
-//! specifies whether the solution of a construction <br>
-//! algorithm using the qualified curve (as an argument): <br>
-//! -   encloses the curve, or <br>
-//! -   is enclosed by the curve, or <br>
-//! -   is built so that both the curve and this solution are external to one another, or <br>
-//! -   is undefined (all solutions apply). <br>
-//! These package methods provide simpler functions to construct a qualified curve. <br>
-//! Note: the interior of a curve is defined as the left-hand <br>
-//! side of the curve in relation to its orientation. <br>
-class Geom2dGcc  {
+//! The Geom2dGcc package describes qualified 2D
+//! curves used in the construction of constrained geometric
+//! objects by an algorithm provided by the Geom2dGcc package.
+//! A qualified 2D curve is a curve with a qualifier which
+//! specifies whether the solution of a construction
+//! algorithm using the qualified curve (as an argument):
+//! -   encloses the curve, or
+//! -   is enclosed by the curve, or
+//! -   is built so that both the curve and this solution are external to one another, or
+//! -   is undefined (all solutions apply).
+//! These package methods provide simpler functions to construct a qualified curve.
+//! Note: the interior of a curve is defined as the left-hand
+//! side of the curve in relation to its orientation.
+class Geom2dGcc 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Constructs such a qualified curve that the relative <br>
-//! position of the solution computed by a construction <br>
-//! algorithm using the qualified curve to the circle or line is <br>
-//! not qualified, i.e. all solutions apply. <br>
-//! Warning <br>
-//! Obj is an adapted curve, i.e. an object which is an interface between: <br>
-//! -   the services provided by a 2D curve from the package Geom2d, <br>
-//! -   and those required on the curve by a computation algorithm. <br>
-//!  The adapted curve is created in the following way: <br>
-//! Handle(Geom2d_Curve) mycurve = ... <br>
-//! ; <br>
-//! Geom2dAdaptor_Curve Obj ( mycurve ) <br>
-//! ; <br>
-//! The qualified curve is then constructed with this object: <br>
-//! Geom2dGcc_QualifiedCurve <br>
-//! myQCurve = Geom2dGcc::Unqualified(Obj); <br>
-  Standard_EXPORT   static  Geom2dGcc_QualifiedCurve Unqualified(const Geom2dAdaptor_Curve& Obj) ;
-  //! Constructs such a qualified curve that the solution <br>
-//! computed by a construction algorithm using the qualified <br>
-//! curve encloses the curve. <br>
-//! Warning <br>
-//! Obj is an adapted curve, i.e. an object which is an interface between: <br>
-//! -   the services provided by a 2D curve from the package Geom2d, <br>
-//! -   and those required on the curve by a computation algorithm. <br>
-//! The adapted curve is created in the following way: <br>
-//! Handle(Geom2d_Curve) mycurve = ... <br>
-//! ; <br>
-//! Geom2dAdaptor_Curve Obj ( mycurve ) <br>
-//! ; <br>
-//! The qualified curve is then constructed with this object: <br>
-//! Geom2dGcc_QualifiedCurve <br>
-//!              myQCurve = Geom2dGcc::Enclosing(Obj); <br>
-  Standard_EXPORT   static  Geom2dGcc_QualifiedCurve Enclosing(const Geom2dAdaptor_Curve& Obj) ;
-  //! Constructs such a qualified curve that the solution <br>
-//! computed by a construction algorithm using the qualified <br>
-//! curve is enclosed by the curve. <br>
-//! Warning <br>
-//! Obj is an adapted curve, i.e. an object which is an interface between: <br>
-//! -   the services provided by a 2D curve from the package Geom2d, <br>
-//! -   and those required on the curve by a computation algorithm. <br>
-//! The adapted curve is created in the following way: <br>
-//! Handle(Geom2d_Curve) mycurve = ... <br>
-//! ; <br>
-//! Geom2dAdaptor_Curve Obj ( mycurve ) <br>
-//! ; <br>
-//! The qualified curve is then constructed with this object: <br>
-//! Geom2dGcc_QualifiedCurve <br>
-//!              myQCurve = Geom2dGcc::Enclosed(Obj); <br>
-  Standard_EXPORT   static  Geom2dGcc_QualifiedCurve Enclosed(const Geom2dAdaptor_Curve& Obj) ;
-  //! Constructs such a qualified curve that the solution <br>
-//! computed by a construction algorithm using the qualified <br>
-//! curve and the curve are external to one another. <br>
-//! Warning <br>
-//! Obj is an adapted curve, i.e. an object which is an interface between: <br>
-//! -   the services provided by a 2D curve from the package Geom2d, <br>
-//! -   and those required on the curve by a computation algorithm. <br>
-//! The adapted curve is created in the following way: <br>
-//! Handle(Geom2d_Curve) mycurve = ... <br>
-//! ; <br>
-//! Geom2dAdaptor_Curve Obj ( mycurve ) <br>
-//! ; <br>
-//! The qualified curve is then constructed with this object: <br>
-//! Geom2dGcc_QualifiedCurve <br>
-//!              myQCurve = Geom2dGcc::Outside(Obj); <br>
-  Standard_EXPORT   static  Geom2dGcc_QualifiedCurve Outside(const Geom2dAdaptor_Curve& Obj) ;
-
+  
+  //! Constructs such a qualified curve that the relative
+  //! position of the solution computed by a construction
+  //! algorithm using the qualified curve to the circle or line is
+  //! not qualified, i.e. all solutions apply.
+  //! Warning
+  //! Obj is an adapted curve, i.e. an object which is an interface between:
+  //! -   the services provided by a 2D curve from the package Geom2d,
+  //! -   and those required on the curve by a computation algorithm.
+  //! The adapted curve is created in the following way:
+  //! Handle(Geom2d_Curve) mycurve = ...
+  //! ;
+  //! Geom2dAdaptor_Curve Obj ( mycurve )
+  //! ;
+  //! The qualified curve is then constructed with this object:
+  //! Geom2dGcc_QualifiedCurve
+  //! myQCurve = Geom2dGcc::Unqualified(Obj);
+  Standard_EXPORT static   Geom2dGcc_QualifiedCurve Unqualified (const Geom2dAdaptor_Curve& Obj) ;
+  
+  //! Constructs such a qualified curve that the solution
+  //! computed by a construction algorithm using the qualified
+  //! curve encloses the curve.
+  //! Warning
+  //! Obj is an adapted curve, i.e. an object which is an interface between:
+  //! -   the services provided by a 2D curve from the package Geom2d,
+  //! -   and those required on the curve by a computation algorithm.
+  //! The adapted curve is created in the following way:
+  //! Handle(Geom2d_Curve) mycurve = ...
+  //! ;
+  //! Geom2dAdaptor_Curve Obj ( mycurve )
+  //! ;
+  //! The qualified curve is then constructed with this object:
+  //! Geom2dGcc_QualifiedCurve
+  //! myQCurve = Geom2dGcc::Enclosing(Obj);
+  Standard_EXPORT static   Geom2dGcc_QualifiedCurve Enclosing (const Geom2dAdaptor_Curve& Obj) ;
+  
+  //! Constructs such a qualified curve that the solution
+  //! computed by a construction algorithm using the qualified
+  //! curve is enclosed by the curve.
+  //! Warning
+  //! Obj is an adapted curve, i.e. an object which is an interface between:
+  //! -   the services provided by a 2D curve from the package Geom2d,
+  //! -   and those required on the curve by a computation algorithm.
+  //! The adapted curve is created in the following way:
+  //! Handle(Geom2d_Curve) mycurve = ...
+  //! ;
+  //! Geom2dAdaptor_Curve Obj ( mycurve )
+  //! ;
+  //! The qualified curve is then constructed with this object:
+  //! Geom2dGcc_QualifiedCurve
+  //! myQCurve = Geom2dGcc::Enclosed(Obj);
+  Standard_EXPORT static   Geom2dGcc_QualifiedCurve Enclosed (const Geom2dAdaptor_Curve& Obj) ;
+  
+  //! Constructs such a qualified curve that the solution
+  //! computed by a construction algorithm using the qualified
+  //! curve and the curve are external to one another.
+  //! Warning
+  //! Obj is an adapted curve, i.e. an object which is an interface between:
+  //! -   the services provided by a 2D curve from the package Geom2d,
+  //! -   and those required on the curve by a computation algorithm.
+  //! The adapted curve is created in the following way:
+  //! Handle(Geom2d_Curve) mycurve = ...
+  //! ;
+  //! Geom2dAdaptor_Curve Obj ( mycurve )
+  //! ;
+  //! The qualified curve is then constructed with this object:
+  //! Geom2dGcc_QualifiedCurve
+  //! myQCurve = Geom2dGcc::Outside(Obj);
+  Standard_EXPORT static   Geom2dGcc_QualifiedCurve Outside (const Geom2dAdaptor_Curve& Obj) ;
 
 
 
@@ -153,22 +151,22 @@ friend class Geom2dGcc_Circ2dTanOnRad;
 friend class Geom2dGcc_Circ2dTanCen;
 friend class Geom2dGcc_Lin2d2Tan;
 friend class Geom2dGcc_Lin2dTanObl;
-friend class Geom2dGcc_MyQCurve;
-friend class Geom2dGcc_MyCurveTool;
-friend class Geom2dGcc_MyCirc2d2TanOn;
-friend class Geom2dGcc_MyCirc2d2TanRad;
-friend class Geom2dGcc_MyCirc2dTanOnRad;
-friend class Geom2dGcc_MyC2d3Tan;
-friend class Geom2dGcc_MyCirc2dTanCen;
-friend class Geom2dGcc_MyC2d2TanOn;
-friend class Geom2dGcc_MyL2dTanObl;
-friend class Geom2dGcc_MyL2d2Tan;
-friend class Geom2dGcc_FuncTCuCuCuOfMyC2d3Tan;
-friend class Geom2dGcc_FuncTCuCuOnCuOfMyC2d2TanOn;
-friend class Geom2dGcc_FuncTOblOfMyL2dTanObl;
-friend class Geom2dGcc_FuncTCuCuOfMyL2d2Tan;
-friend class Geom2dGcc_FuncTCuPtOfMyL2d2Tan;
-friend class Geom2dGcc_FuncTCirCuOfMyL2d2Tan;
+friend class Geom2dGcc_QCurve;
+friend class Geom2dGcc_CurveToolGeo;
+friend class Geom2dGcc_Circ2d2TanOnGeo;
+friend class Geom2dGcc_Circ2d2TanRadGeo;
+friend class Geom2dGcc_Circ2dTanCenGeo;
+friend class Geom2dGcc_Circ2dTanOnRadGeo;
+friend class Geom2dGcc_Circ2d3TanIter;
+friend class Geom2dGcc_FunctionTanCuCuCu;
+friend class Geom2dGcc_Circ2d2TanOnIter;
+friend class Geom2dGcc_FunctionTanCuCuOnCu;
+friend class Geom2dGcc_Lin2dTanOblIter;
+friend class Geom2dGcc_FunctionTanObl;
+friend class Geom2dGcc_Lin2d2TanIter;
+friend class Geom2dGcc_FunctionTanCuCu;
+friend class Geom2dGcc_FunctionTanCuPnt;
+friend class Geom2dGcc_FunctionTanCirCu;
 
 };
 
@@ -176,7 +174,6 @@ friend class Geom2dGcc_FuncTCirCuOfMyL2d2Tan;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dGcc_HeaderFile

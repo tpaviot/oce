@@ -6,63 +6,53 @@
 #ifndef _GC_MakeArcOfParabola_HeaderFile
 #define _GC_MakeArcOfParabola_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom_TrimmedCurve_HeaderFile
 #include <Handle_Geom_TrimmedCurve.hxx>
-#endif
-#ifndef _GC_Root_HeaderFile
 #include <GC_Root.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Geom_TrimmedCurve;
 class StdFail_NotDone;
 class gp_Parab;
 class gp_Pnt;
 
 
-//! Implements construction algorithms for an arc <br>
-//! of parabola in 3D space. The result is a Geom_TrimmedCurve curve. <br>
-//! A MakeArcOfParabola object provides a framework for: <br>
-//! -   defining the construction of the arc of parabola, <br>
-//! -   implementing the construction algorithm, and <br>
-//! -   consulting the results. In particular, the <br>
-//!   Value function returns the constructed arc of parabola. <br>
-class GC_MakeArcOfParabola  : public GC_Root {
+//! Implements construction algorithms for an arc
+//! of parabola in 3D space. The result is a Geom_TrimmedCurve curve.
+//! A MakeArcOfParabola object provides a framework for:
+//! -   defining the construction of the arc of parabola,
+//! -   implementing the construction algorithm, and
+//! -   consulting the results. In particular, the
+//! Value function returns the constructed arc of parabola.
+class GC_MakeArcOfParabola  : public GC_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an arc of Parabola (TrimmedCurve from Geom) from <br>
-//!          a Parabola between two parameters Alpha1 and Alpha2 <br>
-//!          (given in radians). <br>
-  Standard_EXPORT   GC_MakeArcOfParabola(const gp_Parab& Parab,const Standard_Real Alpha1,const Standard_Real Alpha2,const Standard_Boolean Sense);
-  //! Creates an arc of Parabola (TrimmedCurve from Geom) from <br>
-//!          a Parabola between point <P> and the parameter <br>
-//!          Alpha (given in radians). <br>
-  Standard_EXPORT   GC_MakeArcOfParabola(const gp_Parab& Parab,const gp_Pnt& P,const Standard_Real Alpha,const Standard_Boolean Sense);
-  //! Creates an arc of Parabola (TrimmedCurve from Geom) from <br>
-//!          a Parabola between two points P1 and P2. <br>
-  Standard_EXPORT   GC_MakeArcOfParabola(const gp_Parab& Parab,const gp_Pnt& P1,const gp_Pnt& P2,const Standard_Boolean Sense);
-  //! Returns the constructed arc of parabola. <br>
-  Standard_EXPORT    const Handle_Geom_TrimmedCurve& Value() const;
   
-  Standard_EXPORT    const Handle_Geom_TrimmedCurve& Operator() const;
+  //! Creates an arc of Parabola (TrimmedCurve from Geom) from
+  //! a Parabola between two parameters Alpha1 and Alpha2
+  //! (given in radians).
+  Standard_EXPORT GC_MakeArcOfParabola(const gp_Parab& Parab, const Standard_Real Alpha1, const Standard_Real Alpha2, const Standard_Boolean Sense);
+  
+  //! Creates an arc of Parabola (TrimmedCurve from Geom) from
+  //! a Parabola between point <P> and the parameter
+  //! Alpha (given in radians).
+  Standard_EXPORT GC_MakeArcOfParabola(const gp_Parab& Parab, const gp_Pnt& P, const Standard_Real Alpha, const Standard_Boolean Sense);
+  
+  //! Creates an arc of Parabola (TrimmedCurve from Geom) from
+  //! a Parabola between two points P1 and P2.
+  Standard_EXPORT GC_MakeArcOfParabola(const gp_Parab& Parab, const gp_Pnt& P1, const gp_Pnt& P2, const Standard_Boolean Sense);
+  
+  //! Returns the constructed arc of parabola.
+  Standard_EXPORT  const  Handle(Geom_TrimmedCurve)& Value()  const;
+  
+  Standard_EXPORT  const  Handle(Geom_TrimmedCurve)& Operator()  const;
 Standard_EXPORT operator Handle_Geom_TrimmedCurve() const;
-
 
 
 
@@ -77,7 +67,7 @@ private:
 
 
 
-Handle_Geom_TrimmedCurve TheArc;
+  Handle(Geom_TrimmedCurve) TheArc;
 
 
 };
@@ -86,7 +76,6 @@ Handle_Geom_TrimmedCurve TheArc;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GC_MakeArcOfParabola_HeaderFile

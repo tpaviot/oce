@@ -6,22 +6,15 @@
 #ifndef _Handle_StepVisual_DraughtingPreDefinedCurveFont_HeaderFile
 #define _Handle_StepVisual_DraughtingPreDefinedCurveFont_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepVisual_PreDefinedCurveFont_HeaderFile
 #include <Handle_StepVisual_PreDefinedCurveFont.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepVisual_PreDefinedCurveFont);
 class StepVisual_DraughtingPreDefinedCurveFont;
 
-DEFINE_STANDARD_HANDLE(StepVisual_DraughtingPreDefinedCurveFont,StepVisual_PreDefinedCurveFont)
+DEFINE_STANDARD_HANDLE(StepVisual_DraughtingPreDefinedCurveFont, StepVisual_PreDefinedCurveFont)
 
-#endif
+#endif // _Handle_StepVisual_DraughtingPreDefinedCurveFont_HeaderFile

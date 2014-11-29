@@ -1,24 +1,7 @@
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Adaptor3d_Curve_HeaderFile
 #include <Adaptor3d_Curve.hxx>
-#endif
-#ifndef _Adaptor3d_Surface_HeaderFile
 #include <Adaptor3d_Surface.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
-#ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
-#endif
-#ifndef _Extrema_POnCurv_HeaderFile
 #include <Extrema_POnCurv.hxx>
-#endif
-#ifndef _Extrema_POnSurf_HeaderFile
 #include <Extrema_POnSurf.hxx>
-#endif
-#ifndef _Extrema_FuncExtCS_HeaderFile
 #include <Extrema_FuncExtCS.hxx>
-#endif

@@ -6,22 +6,15 @@
 #ifndef _Handle_StepBasic_TimeMeasureWithUnit_HeaderFile
 #define _Handle_StepBasic_TimeMeasureWithUnit_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepBasic_MeasureWithUnit_HeaderFile
 #include <Handle_StepBasic_MeasureWithUnit.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepBasic_MeasureWithUnit);
 class StepBasic_TimeMeasureWithUnit;
 
-DEFINE_STANDARD_HANDLE(StepBasic_TimeMeasureWithUnit,StepBasic_MeasureWithUnit)
+DEFINE_STANDARD_HANDLE(StepBasic_TimeMeasureWithUnit, StepBasic_MeasureWithUnit)
 
-#endif
+#endif // _Handle_StepBasic_TimeMeasureWithUnit_HeaderFile

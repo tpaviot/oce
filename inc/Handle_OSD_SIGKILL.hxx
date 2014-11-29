@@ -6,22 +6,15 @@
 #ifndef _Handle_OSD_SIGKILL_HeaderFile
 #define _Handle_OSD_SIGKILL_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_OSD_Signal_HeaderFile
 #include <Handle_OSD_Signal.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(OSD_Signal);
 class OSD_SIGKILL;
 
-DEFINE_STANDARD_HANDLE(OSD_SIGKILL,OSD_Signal)
+DEFINE_STANDARD_HANDLE(OSD_SIGKILL, OSD_Signal)
 
-#endif
+#endif // _Handle_OSD_SIGKILL_HeaderFile

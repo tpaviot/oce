@@ -1,6 +1,2 @@
-#ifndef _StepFEA_FeaParametricPoint_HeaderFile
 #include <StepFEA_FeaParametricPoint.hxx>
-#endif
-#ifndef _StepFEA_CurveElementLocation_HeaderFile
 #include <StepFEA_CurveElementLocation.hxx>
-#endif

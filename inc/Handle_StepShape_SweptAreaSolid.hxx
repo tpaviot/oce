@@ -6,22 +6,15 @@
 #ifndef _Handle_StepShape_SweptAreaSolid_HeaderFile
 #define _Handle_StepShape_SweptAreaSolid_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepShape_SolidModel_HeaderFile
 #include <Handle_StepShape_SolidModel.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepShape_SolidModel);
 class StepShape_SweptAreaSolid;
 
-DEFINE_STANDARD_HANDLE(StepShape_SweptAreaSolid,StepShape_SolidModel)
+DEFINE_STANDARD_HANDLE(StepShape_SweptAreaSolid, StepShape_SolidModel)
 
-#endif
+#endif // _Handle_StepShape_SweptAreaSolid_HeaderFile

@@ -6,28 +6,14 @@
 #ifndef _StepRepr_Array1OfRepresentationItem_HeaderFile
 #define _StepRepr_Array1OfRepresentationItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepRepr_RepresentationItem_HeaderFile
 #include <Handle_StepRepr_RepresentationItem.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -36,52 +22,52 @@ class StepRepr_RepresentationItem;
 
 
 
-class StepRepr_Array1OfRepresentationItem  {
+class StepRepr_Array1OfRepresentationItem 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      StepRepr_Array1OfRepresentationItem(const Standard_Integer Low,const Standard_Integer Up);
+    StepRepr_Array1OfRepresentationItem(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepRepr_Array1OfRepresentationItem(const Handle(StepRepr_RepresentationItem)& Item,const Standard_Integer Low,const Standard_Integer Up);
+    StepRepr_Array1OfRepresentationItem(const Handle(StepRepr_RepresentationItem)& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const Handle(StepRepr_RepresentationItem)& V) ;
+  Standard_EXPORT   void Init (const Handle(StepRepr_RepresentationItem)& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~StepRepr_Array1OfRepresentationItem()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const StepRepr_Array1OfRepresentationItem& Assign(const StepRepr_Array1OfRepresentationItem& Other) ;
-   const StepRepr_Array1OfRepresentationItem& operator =(const StepRepr_Array1OfRepresentationItem& Other) 
+  Standard_EXPORT  const  StepRepr_Array1OfRepresentationItem& Assign (const StepRepr_Array1OfRepresentationItem& Other) ;
+ const  StepRepr_Array1OfRepresentationItem& operator = (const StepRepr_Array1OfRepresentationItem& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(StepRepr_RepresentationItem)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(StepRepr_RepresentationItem)& Value) ;
   
-       const Handle_StepRepr_RepresentationItem& Value(const Standard_Integer Index) const;
-     const Handle_StepRepr_RepresentationItem& operator ()(const Standard_Integer Index) const
+     const  Handle(StepRepr_RepresentationItem)& Value (const Standard_Integer Index)  const;
+   const  Handle(StepRepr_RepresentationItem)& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        Handle_StepRepr_RepresentationItem& ChangeValue(const Standard_Integer Index) ;
-      Handle_StepRepr_RepresentationItem& operator ()(const Standard_Integer Index) 
+      Handle(StepRepr_RepresentationItem)& ChangeValue (const Standard_Integer Index) ;
+    Handle(StepRepr_RepresentationItem)& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -95,18 +81,18 @@ protected:
 private:
 
   
-  Standard_EXPORT   StepRepr_Array1OfRepresentationItem(const StepRepr_Array1OfRepresentationItem& AnArray);
+  Standard_EXPORT StepRepr_Array1OfRepresentationItem(const StepRepr_Array1OfRepresentationItem& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
 
-#define Array1Item Handle_StepRepr_RepresentationItem
+#define Array1Item Handle(StepRepr_RepresentationItem)
 #define Array1Item_hxx <StepRepr_RepresentationItem.hxx>
 #define TCollection_Array1 StepRepr_Array1OfRepresentationItem
 #define TCollection_Array1_hxx <StepRepr_Array1OfRepresentationItem.hxx>
@@ -119,7 +105,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_Array1OfRepresentationItem_HeaderFile

@@ -6,49 +6,47 @@
 #ifndef _QANewBRepNaming_Revol_HeaderFile
 #define _QANewBRepNaming_Revol_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _QANewBRepNaming_TopNaming_HeaderFile
 #include <QANewBRepNaming_TopNaming.hxx>
-#endif
 class TDF_Label;
 class BRepPrimAPI_MakeRevol;
 class TopoDS_Shape;
 
 
-//! To load the Revol results <br>
-class QANewBRepNaming_Revol  : public QANewBRepNaming_TopNaming {
+//! To load the Revol results
+class QANewBRepNaming_Revol  : public QANewBRepNaming_TopNaming
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   QANewBRepNaming_Revol();
+  Standard_EXPORT QANewBRepNaming_Revol();
   
-  Standard_EXPORT   QANewBRepNaming_Revol(const TDF_Label& ResultLabel);
+  Standard_EXPORT QANewBRepNaming_Revol(const TDF_Label& ResultLabel);
   
-  Standard_EXPORT     void Init(const TDF_Label& ResultLabel) ;
-  //! Loads the revol in the data framework <br>
-  Standard_EXPORT     void Load(BRepPrimAPI_MakeRevol& mkRevol,const TopoDS_Shape& basis) const;
-  //! Returns the insertion label of the start face of the Revol. <br>
-  Standard_EXPORT     TDF_Label Start() const;
-  //! Returns the insertion label of the end face of the Revol. <br>
-  Standard_EXPORT     TDF_Label End() const;
-  //! Returns the insertion label of the lateral faces of the Revol. <br>
-  Standard_EXPORT     TDF_Label Lateral() const;
-  //! Returns the label of degenerated edges. <br>
-  Standard_EXPORT     TDF_Label Degenerated() const;
-  //! Returns the label of the content of the result. <br>
-  Standard_EXPORT     TDF_Label Content() const;
-
+  Standard_EXPORT   void Init (const TDF_Label& ResultLabel) ;
+  
+  //! Loads the revol in the data framework
+  Standard_EXPORT   void Load (BRepPrimAPI_MakeRevol& mkRevol, const TopoDS_Shape& basis)  const;
+  
+  //! Returns the insertion label of the start face of the Revol.
+  Standard_EXPORT   TDF_Label Start()  const;
+  
+  //! Returns the insertion label of the end face of the Revol.
+  Standard_EXPORT   TDF_Label End()  const;
+  
+  //! Returns the insertion label of the lateral faces of the Revol.
+  Standard_EXPORT   TDF_Label Lateral()  const;
+  
+  //! Returns the label of degenerated edges.
+  Standard_EXPORT   TDF_Label Degenerated()  const;
+  
+  //! Returns the label of the content of the result.
+  Standard_EXPORT   TDF_Label Content()  const;
 
 
 
@@ -71,7 +69,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QANewBRepNaming_Revol_HeaderFile

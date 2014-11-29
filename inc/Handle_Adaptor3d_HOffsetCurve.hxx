@@ -6,22 +6,15 @@
 #ifndef _Handle_Adaptor3d_HOffsetCurve_HeaderFile
 #define _Handle_Adaptor3d_HOffsetCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Adaptor2d_HCurve2d_HeaderFile
 #include <Handle_Adaptor2d_HCurve2d.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Adaptor2d_HCurve2d);
 class Adaptor3d_HOffsetCurve;
 
-DEFINE_STANDARD_HANDLE(Adaptor3d_HOffsetCurve,Adaptor2d_HCurve2d)
+DEFINE_STANDARD_HANDLE(Adaptor3d_HOffsetCurve, Adaptor2d_HCurve2d)
 
-#endif
+#endif // _Handle_Adaptor3d_HOffsetCurve_HeaderFile

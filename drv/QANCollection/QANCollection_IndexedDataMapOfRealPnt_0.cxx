@@ -5,24 +5,12 @@
 
 #include <QANCollection_IndexedDataMapOfRealPnt.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _TColStd_MapRealHasher_HeaderFile
 #include <TColStd_MapRealHasher.hxx>
-#endif
-#ifndef _QANCollection_IndexedDataMapNodeOfIndexedDataMapOfRealPnt_HeaderFile
 #include <QANCollection_IndexedDataMapNodeOfIndexedDataMapOfRealPnt.hxx>
-#endif
  
 
 #define TheKey Standard_Real

@@ -6,39 +6,28 @@
 #ifndef _FEmTool_ListNodeOfListOfVectors_HeaderFile
 #define _FEmTool_ListNodeOfListOfVectors_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_FEmTool_ListNodeOfListOfVectors_HeaderFile
 #include <Handle_FEmTool_ListNodeOfListOfVectors.hxx>
-#endif
 
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TColStd_HArray1OfReal;
 class FEmTool_ListOfVectors;
 class FEmTool_ListIteratorOfListOfVectors;
 
 
 
-class FEmTool_ListNodeOfListOfVectors : public TCollection_MapNode {
+class FEmTool_ListNodeOfListOfVectors : public TCollection_MapNode
+{
 
 public:
 
   
-      FEmTool_ListNodeOfListOfVectors(const Handle(TColStd_HArray1OfReal)& I,const TCollection_MapNodePtr& n);
+    FEmTool_ListNodeOfListOfVectors(const Handle(TColStd_HArray1OfReal)& I, const TCollection_MapNodePtr& n);
   
-        Handle_TColStd_HArray1OfReal& Value() const;
+      Handle(TColStd_HArray1OfReal)& Value()  const;
 
 
 
@@ -53,12 +42,12 @@ protected:
 private: 
 
 
-Handle_TColStd_HArray1OfReal myValue;
+  Handle(TColStd_HArray1OfReal) myValue;
 
 
 };
 
-#define Item Handle_TColStd_HArray1OfReal
+#define Item Handle(TColStd_HArray1OfReal)
 #define Item_hxx <TColStd_HArray1OfReal.hxx>
 #define TCollection_ListNode FEmTool_ListNodeOfListOfVectors
 #define TCollection_ListNode_hxx <FEmTool_ListNodeOfListOfVectors.hxx>
@@ -83,7 +72,6 @@ Handle_TColStd_HArray1OfReal myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _FEmTool_ListNodeOfListOfVectors_HeaderFile

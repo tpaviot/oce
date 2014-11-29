@@ -6,87 +6,59 @@
 #ifndef _VrmlConverter_Projector_HeaderFile
 #define _VrmlConverter_Projector_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_VrmlConverter_Projector_HeaderFile
 #include <Handle_VrmlConverter_Projector.hxx>
-#endif
 
-#ifndef _HLRAlgo_Projector_HeaderFile
 #include <HLRAlgo_Projector.hxx>
-#endif
-#ifndef _Vrml_PerspectiveCamera_HeaderFile
 #include <Vrml_PerspectiveCamera.hxx>
-#endif
-#ifndef _Vrml_OrthographicCamera_HeaderFile
 #include <Vrml_OrthographicCamera.hxx>
-#endif
-#ifndef _Vrml_DirectionalLight_HeaderFile
 #include <Vrml_DirectionalLight.hxx>
-#endif
-#ifndef _Vrml_PointLight_HeaderFile
 #include <Vrml_PointLight.hxx>
-#endif
-#ifndef _Vrml_SpotLight_HeaderFile
 #include <Vrml_SpotLight.hxx>
-#endif
-#ifndef _VrmlConverter_TypeOfCamera_HeaderFile
 #include <VrmlConverter_TypeOfCamera.hxx>
-#endif
-#ifndef _VrmlConverter_TypeOfLight_HeaderFile
 #include <VrmlConverter_TypeOfLight.hxx>
-#endif
-#ifndef _Vrml_MatrixTransform_HeaderFile
 #include <Vrml_MatrixTransform.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Quantity_Length_HeaderFile
 #include <Quantity_Length.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class TopTools_Array1OfShape;
 class HLRAlgo_Projector;
 
 
 
-//!     defines projector  and calculates properties of cameras and lights from Vrml <br>
-//!     ( OrthograpicCamera, PerspectiveCamera, DirectionalLight, PointLight, SpotLight <br>
-//!     and  MatrixTransform  )  to display all scene  shapes  with  arbitrary locations <br>
-//!     for requested the Projection Vector,  High Point Direction and the Focus <br>
-//!     and adds them ( method Add ) to anOSream. <br>
-class VrmlConverter_Projector : public MMgt_TShared {
+//! defines projector  and calculates properties of cameras and lights from Vrml
+//! ( OrthograpicCamera, PerspectiveCamera, DirectionalLight, PointLight, SpotLight
+//! and  MatrixTransform  )  to display all scene  shapes  with  arbitrary locations
+//! for requested the Projection Vector,  High Point Direction and the Focus
+//! and adds them ( method Add ) to anOSream.
+class VrmlConverter_Projector : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   VrmlConverter_Projector(const TopTools_Array1OfShape& Shapes,const Quantity_Length Focus,const Quantity_Length DX,const Quantity_Length DY,const Quantity_Length DZ,const Quantity_Length XUp,const Quantity_Length YUp,const Quantity_Length ZUp,const VrmlConverter_TypeOfCamera Camera = VrmlConverter_NoCamera,const VrmlConverter_TypeOfLight Light = VrmlConverter_NoLight);
+  Standard_EXPORT VrmlConverter_Projector(const TopTools_Array1OfShape& Shapes, const Quantity_Length Focus, const Quantity_Length DX, const Quantity_Length DY, const Quantity_Length DZ, const Quantity_Length XUp, const Quantity_Length YUp, const Quantity_Length ZUp, const VrmlConverter_TypeOfCamera Camera = VrmlConverter_NoCamera, const VrmlConverter_TypeOfLight Light = VrmlConverter_NoLight);
   
-  Standard_EXPORT     void SetCamera(const VrmlConverter_TypeOfCamera aCamera) ;
+  Standard_EXPORT   void SetCamera (const VrmlConverter_TypeOfCamera aCamera) ;
   
-  Standard_EXPORT     VrmlConverter_TypeOfCamera Camera() const;
+  Standard_EXPORT   VrmlConverter_TypeOfCamera Camera()  const;
   
-  Standard_EXPORT     void SetLight(const VrmlConverter_TypeOfLight aLight) ;
+  Standard_EXPORT   void SetLight (const VrmlConverter_TypeOfLight aLight) ;
   
-  Standard_EXPORT     VrmlConverter_TypeOfLight Light() const;
+  Standard_EXPORT   VrmlConverter_TypeOfLight Light()  const;
   
-//!    Adds  into anOStream  if  they  are  defined in  Create. <br>
-//!      PerspectiveCamera, <br>
-//!      OrthographicCamera, <br>
-//!      DirectionLight, <br>
-//!      PointLight, <br>
-//!      SpotLight <br>
-//!   with  MatrixTransform  from VrmlConverter; <br>
-  Standard_EXPORT     void Add(Standard_OStream& anOStream) const;
+
+  //! Adds  into anOStream  if  they  are  defined in  Create.
+  //! PerspectiveCamera,
+  //! OrthographicCamera,
+  //! DirectionLight,
+  //! PointLight,
+  //! SpotLight
+  //! with  MatrixTransform  from VrmlConverter;
+  Standard_EXPORT   void Add (Standard_OStream& anOStream)  const;
   
-  Standard_EXPORT     HLRAlgo_Projector Projector() const;
+  Standard_EXPORT   HLRAlgo_Projector Projector()  const;
 
 
 
@@ -101,15 +73,15 @@ protected:
 private: 
 
 
-HLRAlgo_Projector myProjector;
-Vrml_PerspectiveCamera myPerspectiveCamera;
-Vrml_OrthographicCamera myOrthographicCamera;
-Vrml_DirectionalLight myDirectionalLight;
-Vrml_PointLight myPointLight;
-Vrml_SpotLight mySpotLight;
-VrmlConverter_TypeOfCamera myTypeOfCamera;
-VrmlConverter_TypeOfLight myTypeOfLight;
-Vrml_MatrixTransform myMatrixTransform;
+  HLRAlgo_Projector myProjector;
+  Vrml_PerspectiveCamera myPerspectiveCamera;
+  Vrml_OrthographicCamera myOrthographicCamera;
+  Vrml_DirectionalLight myDirectionalLight;
+  Vrml_PointLight myPointLight;
+  Vrml_SpotLight mySpotLight;
+  VrmlConverter_TypeOfCamera myTypeOfCamera;
+  VrmlConverter_TypeOfLight myTypeOfLight;
+  Vrml_MatrixTransform myMatrixTransform;
 
 
 };
@@ -118,7 +90,6 @@ Vrml_MatrixTransform myMatrixTransform;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _VrmlConverter_Projector_HeaderFile

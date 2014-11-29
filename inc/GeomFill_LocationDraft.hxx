@@ -6,52 +6,22 @@
 #ifndef _GeomFill_LocationDraft_HeaderFile
 #define _GeomFill_LocationDraft_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_GeomFill_LocationDraft_HeaderFile
 #include <Handle_GeomFill_LocationDraft.hxx>
-#endif
 
-#ifndef _gp_Mat_HeaderFile
 #include <gp_Mat.hxx>
-#endif
-#ifndef _Handle_GeomFill_DraftTrihedron_HeaderFile
 #include <Handle_GeomFill_DraftTrihedron.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HCurve_HeaderFile
 #include <Handle_Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray1OfPnt2d_HeaderFile
 #include <Handle_TColgp_HArray1OfPnt2d.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _GeomFill_LocationLaw_HeaderFile
 #include <GeomFill_LocationLaw.hxx>
-#endif
-#ifndef _Handle_GeomFill_LocationLaw_HeaderFile
 #include <Handle_GeomFill_LocationLaw.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
 class GeomFill_DraftTrihedron;
 class Adaptor3d_HSurface;
 class Adaptor3d_HCurve;
@@ -69,94 +39,113 @@ class gp_Pnt;
 
 
 
-class GeomFill_LocationDraft : public GeomFill_LocationLaw {
+class GeomFill_LocationDraft : public GeomFill_LocationLaw
+{
 
 public:
 
   
-  Standard_EXPORT   GeomFill_LocationDraft(const gp_Dir& Direction,const Standard_Real Angle);
+  Standard_EXPORT GeomFill_LocationDraft(const gp_Dir& Direction, const Standard_Real Angle);
   
-  Standard_EXPORT     void SetStopSurf(const Handle(Adaptor3d_HSurface)& Surf) ;
+  Standard_EXPORT   void SetStopSurf (const Handle(Adaptor3d_HSurface)& Surf) ;
   
-  Standard_EXPORT     void SetAngle(const Standard_Real Angle) ;
+  Standard_EXPORT   void SetAngle (const Standard_Real Angle) ;
   
-  Standard_EXPORT   virtual  void SetCurve(const Handle(Adaptor3d_HCurve)& C) ;
+  Standard_EXPORT virtual   void SetCurve (const Handle(Adaptor3d_HCurve)& C) ;
   
-  Standard_EXPORT   virtual const Handle_Adaptor3d_HCurve& GetCurve() const;
+  Standard_EXPORT virtual  const  Handle(Adaptor3d_HCurve)& GetCurve()  const;
   
-  Standard_EXPORT   virtual  void SetTrsf(const gp_Mat& Transfo) ;
+  Standard_EXPORT virtual   void SetTrsf (const gp_Mat& Transfo) ;
   
-  Standard_EXPORT   virtual  Handle_GeomFill_LocationLaw Copy() const;
-  //! compute Location <br>
-  Standard_EXPORT   virtual  Standard_Boolean D0(const Standard_Real Param,gp_Mat& M,gp_Vec& V) ;
-  //! compute Location and 2d points <br>
-  Standard_EXPORT   virtual  Standard_Boolean D0(const Standard_Real Param,gp_Mat& M,gp_Vec& V,TColgp_Array1OfPnt2d& Poles2d) ;
-  //! compute location 2d  points and  associated <br>
-//!          first derivatives. <br>
-//!  Warning : It used only for C1 or C2 aproximation <br>
-  Standard_EXPORT   virtual  Standard_Boolean D1(const Standard_Real Param,gp_Mat& M,gp_Vec& V,gp_Mat& DM,gp_Vec& DV,TColgp_Array1OfPnt2d& Poles2d,TColgp_Array1OfVec2d& DPoles2d) ;
-  //! compute location 2d  points and associated <br>
-//!          first and seconde  derivatives. <br>
-//!  Warning : It used only for C2 aproximation <br>
-  Standard_EXPORT   virtual  Standard_Boolean D2(const Standard_Real Param,gp_Mat& M,gp_Vec& V,gp_Mat& DM,gp_Vec& DV,gp_Mat& D2M,gp_Vec& D2V,TColgp_Array1OfPnt2d& Poles2d,TColgp_Array1OfVec2d& DPoles2d,TColgp_Array1OfVec2d& D2Poles2d) ;
-  //! Say if the first restriction is defined in this class. <br>
-//!           If it  is true the  first element  of poles array   in <br>
-//!          D0,D1,D2... Correspond to this restriction. <br>
-//!  Returns Standard_False (default implementation) <br>
-  Standard_EXPORT   virtual  Standard_Boolean HasFirstRestriction() const;
-  //! Say if the last restriction is defined in this class. <br>
-//!           If it is  true the  last element  of poles array in <br>
-//!          D0,D1,D2... Correspond to this restriction. <br>
-//!          Returns Standard_False (default implementation) <br>
-  Standard_EXPORT   virtual  Standard_Boolean HasLastRestriction() const;
-  //! Give the number of trace (Curves 2d wich are not restriction) <br>
-//!          Returns 1 (default implementation) <br>
-  Standard_EXPORT   virtual  Standard_Integer TraceNumber() const;
-  //! Returns  the number  of  intervals for  continuity <br>
-//!          <S>. <br>
-//!          May be one if Continuity(me) >= <S> <br>
-  Standard_EXPORT   virtual  Standard_Integer NbIntervals(const GeomAbs_Shape S) const;
-  //! Stores in <T> the  parameters bounding the intervals <br>
-//!          of continuity <S>. <br>
-//! <br>
-//!          The array must provide  enough room to  accomodate <br>
-//!          for the parameters. i.e. T.Length() > NbIntervals() <br>
-  Standard_EXPORT   virtual  void Intervals(TColStd_Array1OfReal& T,const GeomAbs_Shape S) const;
-  //! Sets the bounds of the parametric interval on <br>
-//!          the function <br>
-//!          This determines the derivatives in these values if the <br>
-//!          function is not Cn. <br>
-  Standard_EXPORT   virtual  void SetInterval(const Standard_Real First,const Standard_Real Last) ;
-  //! Gets the bounds of the parametric interval on <br>
-//!          the function <br>
-  Standard_EXPORT   virtual  void GetInterval(Standard_Real& First,Standard_Real& Last) const;
-  //! Gets the bounds of the function parametric domain. <br>
-//!  Warning: This domain it is  not modified by the <br>
-//!          SetValue method <br>
-  Standard_EXPORT   virtual  void GetDomain(Standard_Real& First,Standard_Real& Last) const;
-  //! Returns the resolutions in the  sub-space 2d <Index> <br>
-//!          This information is usfull to find an good tolerance in <br>
-//!          2d approximation. <br>
-//!  Warning: Used only if Nb2dCurve > 0 <br>
-  Standard_EXPORT   virtual  void Resolution(const Standard_Integer Index,const Standard_Real Tol,Standard_Real& TolU,Standard_Real& TolV) const;
-  //!  Get the maximum Norm  of the matrix-location part.  It <br>
-//!           is usful to find an good Tolerance to approx M(t). <br>
-  Standard_EXPORT   virtual  Standard_Real GetMaximalNorm() ;
-  //! Get average value of M(t) and V(t) it is usfull to <br>
-//!          make fast approximation of rational  surfaces. <br>
-  Standard_EXPORT   virtual  void GetAverageLaw(gp_Mat& AM,gp_Vec& AV) ;
-  //! Say if the Location  Law, is an translation of  Location <br>
-//! The default implementation is " returns False ". <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsTranslation(Standard_Real& Error) const;
-  //! Say if the Location  Law, is a rotation of Location <br>
-//! The default implementation is " returns False ". <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsRotation(Standard_Real& Error) const;
+  Standard_EXPORT virtual   Handle(GeomFill_LocationLaw) Copy()  const;
   
-  Standard_EXPORT   virtual  void Rotation(gp_Pnt& Center) const;
-  //! Say if the generatrice interset the surface <br>
-  Standard_EXPORT     Standard_Boolean IsIntersec() const;
+  //! compute Location
+  Standard_EXPORT virtual   Standard_Boolean D0 (const Standard_Real Param, gp_Mat& M, gp_Vec& V) ;
   
-  Standard_EXPORT     gp_Dir Direction() const;
+  //! compute Location and 2d points
+  Standard_EXPORT virtual   Standard_Boolean D0 (const Standard_Real Param, gp_Mat& M, gp_Vec& V, TColgp_Array1OfPnt2d& Poles2d) ;
+  
+  //! compute location 2d  points and  associated
+  //! first derivatives.
+  //! Warning : It used only for C1 or C2 aproximation
+  Standard_EXPORT virtual   Standard_Boolean D1 (const Standard_Real Param, gp_Mat& M, gp_Vec& V, gp_Mat& DM, gp_Vec& DV, TColgp_Array1OfPnt2d& Poles2d, TColgp_Array1OfVec2d& DPoles2d) ;
+  
+  //! compute location 2d  points and associated
+  //! first and seconde  derivatives.
+  //! Warning : It used only for C2 aproximation
+  Standard_EXPORT virtual   Standard_Boolean D2 (const Standard_Real Param, gp_Mat& M, gp_Vec& V, gp_Mat& DM, gp_Vec& DV, gp_Mat& D2M, gp_Vec& D2V, TColgp_Array1OfPnt2d& Poles2d, TColgp_Array1OfVec2d& DPoles2d, TColgp_Array1OfVec2d& D2Poles2d) ;
+  
+  //! Say if the first restriction is defined in this class.
+  //! If it  is true the  first element  of poles array   in
+  //! D0,D1,D2... Correspond to this restriction.
+  //! Returns Standard_False (default implementation)
+  Standard_EXPORT virtual   Standard_Boolean HasFirstRestriction()  const;
+  
+  //! Say if the last restriction is defined in this class.
+  //! If it is  true the  last element  of poles array in
+  //! D0,D1,D2... Correspond to this restriction.
+  //! Returns Standard_False (default implementation)
+  Standard_EXPORT virtual   Standard_Boolean HasLastRestriction()  const;
+  
+  //! Give the number of trace (Curves 2d wich are not restriction)
+  //! Returns 1 (default implementation)
+  Standard_EXPORT virtual   Standard_Integer TraceNumber()  const;
+  
+  //! Returns  the number  of  intervals for  continuity
+  //! <S>.
+  //! May be one if Continuity(me) >= <S>
+  Standard_EXPORT virtual   Standard_Integer NbIntervals (const GeomAbs_Shape S)  const;
+  
+  //! Stores in <T> the  parameters bounding the intervals
+  //! of continuity <S>.
+  //!
+  //! The array must provide  enough room to  accomodate
+  //! for the parameters. i.e. T.Length() > NbIntervals()
+  Standard_EXPORT virtual   void Intervals (TColStd_Array1OfReal& T, const GeomAbs_Shape S)  const;
+  
+  //! Sets the bounds of the parametric interval on
+  //! the function
+  //! This determines the derivatives in these values if the
+  //! function is not Cn.
+  Standard_EXPORT virtual   void SetInterval (const Standard_Real First, const Standard_Real Last) ;
+  
+  //! Gets the bounds of the parametric interval on
+  //! the function
+  Standard_EXPORT virtual   void GetInterval (Standard_Real& First, Standard_Real& Last)  const;
+  
+  //! Gets the bounds of the function parametric domain.
+  //! Warning: This domain it is  not modified by the
+  //! SetValue method
+  Standard_EXPORT virtual   void GetDomain (Standard_Real& First, Standard_Real& Last)  const;
+  
+  //! Returns the resolutions in the  sub-space 2d <Index>
+  //! This information is usfull to find an good tolerance in
+  //! 2d approximation.
+  //! Warning: Used only if Nb2dCurve > 0
+  Standard_EXPORT virtual   void Resolution (const Standard_Integer Index, const Standard_Real Tol, Standard_Real& TolU, Standard_Real& TolV)  const;
+  
+  //! Get the maximum Norm  of the matrix-location part.  It
+  //! is usful to find an good Tolerance to approx M(t).
+  Standard_EXPORT virtual   Standard_Real GetMaximalNorm() ;
+  
+  //! Get average value of M(t) and V(t) it is usfull to
+  //! make fast approximation of rational  surfaces.
+  Standard_EXPORT virtual   void GetAverageLaw (gp_Mat& AM, gp_Vec& AV) ;
+  
+  //! Say if the Location  Law, is an translation of  Location
+  //! The default implementation is " returns False ".
+  Standard_EXPORT virtual   Standard_Boolean IsTranslation (Standard_Real& Error)  const;
+  
+  //! Say if the Location  Law, is a rotation of Location
+  //! The default implementation is " returns False ".
+  Standard_EXPORT virtual   Standard_Boolean IsRotation (Standard_Real& Error)  const;
+  
+  Standard_EXPORT virtual   void Rotation (gp_Pnt& Center)  const;
+  
+  //! Say if the generatrice interset the surface
+  Standard_EXPORT   Standard_Boolean IsIntersec()  const;
+  
+  Standard_EXPORT   gp_Dir Direction()  const;
 
 
 
@@ -166,24 +155,24 @@ public:
 protected:
 
 
-Handle_TColgp_HArray1OfPnt2d myPoles2d;
+  Handle(TColgp_HArray1OfPnt2d) myPoles2d;
 
 
 private: 
 
   
-  Standard_EXPORT     void Prepare() ;
+  Standard_EXPORT   void Prepare() ;
 
-gp_Mat Trans;
-Handle_GeomFill_DraftTrihedron myLaw;
-Handle_Adaptor3d_HSurface mySurf;
-Handle_Adaptor3d_HCurve myCurve;
-Handle_Adaptor3d_HCurve myTrimmed;
-gp_Dir myDir;
-Standard_Real myAngle;
-Standard_Integer myNbPts;
-Standard_Boolean Intersec;
-Standard_Boolean WithTrans;
+  gp_Mat Trans;
+  Handle(GeomFill_DraftTrihedron) myLaw;
+  Handle(Adaptor3d_HSurface) mySurf;
+  Handle(Adaptor3d_HCurve) myCurve;
+  Handle(Adaptor3d_HCurve) myTrimmed;
+  gp_Dir myDir;
+  Standard_Real myAngle;
+  Standard_Integer myNbPts;
+  Standard_Boolean Intersec;
+  Standard_Boolean WithTrans;
 
 
 };
@@ -192,7 +181,6 @@ Standard_Boolean WithTrans;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomFill_LocationDraft_HeaderFile

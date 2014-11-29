@@ -5,25 +5,13 @@
 
 #include <STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _StepBasic_ProductDefinition_HeaderFile
 #include <StepBasic_ProductDefinition.hxx>
-#endif
-#ifndef _STEPCAFControl_ExternFile_HeaderFile
 #include <STEPCAFControl_ExternFile.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _STEPCAFControl_DataMapOfPDExternFile_HeaderFile
 #include <STEPCAFControl_DataMapOfPDExternFile.hxx>
-#endif
-#ifndef _STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile_HeaderFile
 #include <STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile.hxx>
-#endif
 
  
 
@@ -42,9 +30,9 @@ IMPLEMENT_DOWNCAST(STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile,Standard_Tr
 IMPLEMENT_STANDARD_RTTI(STEPCAFControl_DataMapNodeOfDataMapOfPDExternFile)
 
 
-#define TheKey Handle_StepBasic_ProductDefinition
+#define TheKey Handle(StepBasic_ProductDefinition)
 #define TheKey_hxx <StepBasic_ProductDefinition.hxx>
-#define TheItem Handle_STEPCAFControl_ExternFile
+#define TheItem Handle(STEPCAFControl_ExternFile)
 #define TheItem_hxx <STEPCAFControl_ExternFile.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>

@@ -1,9 +1,3 @@
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Intrv_Interval_HeaderFile
 #include <Intrv_Interval.hxx>
-#endif
-#ifndef _Intrv_Intervals_HeaderFile
 #include <Intrv_Intervals.hxx>
-#endif

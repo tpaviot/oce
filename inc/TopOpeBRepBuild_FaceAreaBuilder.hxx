@@ -6,48 +6,39 @@
 #ifndef _TopOpeBRepBuild_FaceAreaBuilder_HeaderFile
 #define _TopOpeBRepBuild_FaceAreaBuilder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopOpeBRepBuild_Area2dBuilder_HeaderFile
 #include <TopOpeBRepBuild_Area2dBuilder.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopOpeBRepBuild_LoopSet;
 class TopOpeBRepBuild_LoopClassifier;
 
 
 
-//! The FaceAreaBuilder algorithm is used to construct Faces from a LoopSet, <br>
-//! where the Loop is the composite topological object of the boundary, <br>
-//! here wire or block of edges. <br>
-//! The LoopSet gives an iteration on Loops. <br>
-//! For each Loop  it indicates if it is on the boundary (wire) or if it <br>
-//! results from  an interference (block of edges). <br>
-//! The result of the FaceAreaBuilder is an iteration on areas. <br>
-//! An area is described by a set of Loops. <br>
-class TopOpeBRepBuild_FaceAreaBuilder  : public TopOpeBRepBuild_Area2dBuilder {
+//! The FaceAreaBuilder algorithm is used to construct Faces from a LoopSet,
+//! where the Loop is the composite topological object of the boundary,
+//! here wire or block of edges.
+//! The LoopSet gives an iteration on Loops.
+//! For each Loop  it indicates if it is on the boundary (wire) or if it
+//! results from  an interference (block of edges).
+//! The result of the FaceAreaBuilder is an iteration on areas.
+//! An area is described by a set of Loops.
+class TopOpeBRepBuild_FaceAreaBuilder  : public TopOpeBRepBuild_Area2dBuilder
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepBuild_FaceAreaBuilder();
-  //! Creates a FaceAreaBuilder to build faces on <br>
-//! the (wires,blocks of edge) of <LS>, using the classifier <LC>. <br>
-  Standard_EXPORT   TopOpeBRepBuild_FaceAreaBuilder(TopOpeBRepBuild_LoopSet& LS,TopOpeBRepBuild_LoopClassifier& LC,const Standard_Boolean ForceClass = Standard_False);
+  Standard_EXPORT TopOpeBRepBuild_FaceAreaBuilder();
   
-  Standard_EXPORT     void InitFaceAreaBuilder(TopOpeBRepBuild_LoopSet& LS,TopOpeBRepBuild_LoopClassifier& LC,const Standard_Boolean ForceClass = Standard_False) ;
-
+  //! Creates a FaceAreaBuilder to build faces on
+  //! the (wires,blocks of edge) of <LS>, using the classifier <LC>.
+  Standard_EXPORT TopOpeBRepBuild_FaceAreaBuilder(TopOpeBRepBuild_LoopSet& LS, TopOpeBRepBuild_LoopClassifier& LC, const Standard_Boolean ForceClass = Standard_False);
+  
+  Standard_EXPORT   void InitFaceAreaBuilder (TopOpeBRepBuild_LoopSet& LS, TopOpeBRepBuild_LoopClassifier& LC, const Standard_Boolean ForceClass = Standard_False) ;
 
 
 
@@ -70,7 +61,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepBuild_FaceAreaBuilder_HeaderFile

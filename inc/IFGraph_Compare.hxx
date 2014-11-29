@@ -6,72 +6,69 @@
 #ifndef _IFGraph_Compare_HeaderFile
 #define _IFGraph_Compare_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Interface_Graph_HeaderFile
 #include <Interface_Graph.hxx>
-#endif
-#ifndef _Interface_GraphContent_HeaderFile
 #include <Interface_GraphContent.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Interface_Graph;
 class Standard_Transient;
 class Interface_EntityIterator;
 
 
-//! this class evaluates effect of two compared sub-parts : <br>
-//!           cumulation (union), common part (intersection-overlapping) <br>
-//!           part specific to first sub-part or to the second one <br>
-//!           Results are kept in a Graph, several question can be set <br>
-//!           Basic Iteration gives Cumulation (union) <br>
-class IFGraph_Compare  : public Interface_GraphContent {
+//! this class evaluates effect of two compared sub-parts :
+//! cumulation (union), common part (intersection-overlapping)
+//! part specific to first sub-part or to the second one
+//! Results are kept in a Graph, several question can be set
+//! Basic Iteration gives Cumulation (union)
+class IFGraph_Compare  : public Interface_GraphContent
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! creates empty Compare, ready to work <br>
-  Standard_EXPORT   IFGraph_Compare(const Interface_Graph& agraph);
-  //! adds an entity and its shared ones to the list : <br>
-//!           first True means adds to the first sub-list, else to the 2nd <br>
-  Standard_EXPORT     void GetFromEntity(const Handle(Standard_Transient)& ent,const Standard_Boolean first) ;
-  //! adds a list of entities (as an iterator) as such, that is, <br>
-//!           their shared entities are not considered (use AllShared to <br>
-//!           have them) <br>
-//!           first True means adds to the first sub-list, else to the 2nd <br>
-  Standard_EXPORT     void GetFromIter(const Interface_EntityIterator& iter,const Standard_Boolean first) ;
-  //! merges the second list into the first one, hence the second <br>
-//!           list is empty <br>
-  Standard_EXPORT     void Merge() ;
-  //! Removes the contents of second list <br>
-  Standard_EXPORT     void RemoveSecond() ;
-  //! Keeps only Common part, sets it as First list and clears <br>
-//!           second list <br>
-  Standard_EXPORT     void KeepCommon() ;
-  //! Allows to restart on a new data set <br>
-  Standard_EXPORT     void ResetData() ;
-  //! Recomputes result of comparing to sub-parts <br>
-  Standard_EXPORT   virtual  void Evaluate() ;
-  //! returns entities common to the both parts <br>
-  Standard_EXPORT     Interface_EntityIterator Common() const;
-  //! returns entities which are exclusively in the first list <br>
-  Standard_EXPORT     Interface_EntityIterator FirstOnly() const;
-  //! returns entities which are exclusively in the second part <br>
-  Standard_EXPORT     Interface_EntityIterator SecondOnly() const;
-
+  
+  //! creates empty Compare, ready to work
+  Standard_EXPORT IFGraph_Compare(const Interface_Graph& agraph);
+  
+  //! adds an entity and its shared ones to the list :
+  //! first True means adds to the first sub-list, else to the 2nd
+  Standard_EXPORT   void GetFromEntity (const Handle(Standard_Transient)& ent, const Standard_Boolean first) ;
+  
+  //! adds a list of entities (as an iterator) as such, that is,
+  //! their shared entities are not considered (use AllShared to
+  //! have them)
+  //! first True means adds to the first sub-list, else to the 2nd
+  Standard_EXPORT   void GetFromIter (const Interface_EntityIterator& iter, const Standard_Boolean first) ;
+  
+  //! merges the second list into the first one, hence the second
+  //! list is empty
+  Standard_EXPORT   void Merge() ;
+  
+  //! Removes the contents of second list
+  Standard_EXPORT   void RemoveSecond() ;
+  
+  //! Keeps only Common part, sets it as First list and clears
+  //! second list
+  Standard_EXPORT   void KeepCommon() ;
+  
+  //! Allows to restart on a new data set
+  Standard_EXPORT   void ResetData() ;
+  
+  //! Recomputes result of comparing to sub-parts
+  Standard_EXPORT virtual   void Evaluate() ;
+  
+  //! returns entities common to the both parts
+  Standard_EXPORT   Interface_EntityIterator Common()  const;
+  
+  //! returns entities which are exclusively in the first list
+  Standard_EXPORT   Interface_EntityIterator FirstOnly()  const;
+  
+  //! returns entities which are exclusively in the second part
+  Standard_EXPORT   Interface_EntityIterator SecondOnly()  const;
 
 
 
@@ -86,7 +83,7 @@ private:
 
 
 
-Interface_Graph thegraph;
+  Interface_Graph thegraph;
 
 
 };
@@ -95,7 +92,6 @@ Interface_Graph thegraph;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFGraph_Compare_HeaderFile

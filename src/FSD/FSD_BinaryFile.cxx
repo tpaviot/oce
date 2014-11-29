@@ -14,6 +14,7 @@
 
 #include <FSD_BinaryFile.ixx>
 #include <OSD.hxx>
+#include <OSD_OpenFile.hxx>
 
 const Standard_CString MAGICNUMBER = "BINFILE";
 
@@ -82,13 +83,13 @@ Storage_Error FSD_BinaryFile::Open(const TCollection_AsciiString& aName,const St
 
   if (OpenMode() == Storage_VSNone) {
     if (aMode == Storage_VSRead) {
-      myStream = fopen(aName.ToCString(),"rb");
+      myStream = OSD_OpenFile(aName.ToCString(),"rb");
     }
     else if (aMode == Storage_VSWrite) {
-      myStream = fopen(aName.ToCString(),"wb");
+      myStream = OSD_OpenFile(aName.ToCString(),"wb");
     }
     else if (aMode == Storage_VSReadWrite) {
-      myStream = fopen(aName.ToCString(),"w+b");
+      myStream = OSD_OpenFile(aName.ToCString(),"w+b");
     }
     
     if (myStream == 0L) {

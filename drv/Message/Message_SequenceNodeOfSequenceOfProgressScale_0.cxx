@@ -5,16 +5,10 @@
 
 #include <Message_SequenceNodeOfSequenceOfProgressScale.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Message_ProgressScale_HeaderFile
 #include <Message_ProgressScale.hxx>
-#endif
-#ifndef _Message_SequenceOfProgressScale_HeaderFile
 #include <Message_SequenceOfProgressScale.hxx>
-#endif
 
  
 

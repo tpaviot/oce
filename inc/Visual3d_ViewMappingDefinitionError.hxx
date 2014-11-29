@@ -6,33 +6,20 @@
 #ifndef _Visual3d_ViewMappingDefinitionError_HeaderFile
 #define _Visual3d_ViewMappingDefinitionError_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_DefineException_HeaderFile
 #include <Standard_DefineException.hxx>
-#endif
-#ifndef _Standard_SStream_HeaderFile
 #include <Standard_SStream.hxx>
-#endif
-
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Handle_Visual3d_ViewMappingDefinitionError_HeaderFile
 #include <Handle_Visual3d_ViewMappingDefinitionError.hxx>
-#endif
 
 #if !defined No_Exception && !defined No_Visual3d_ViewMappingDefinitionError
-#define Visual3d_ViewMappingDefinitionError_Raise_if(CONDITION,MESSAGE) \
+  #define Visual3d_ViewMappingDefinitionError_Raise_if(CONDITION, MESSAGE) \
   if (CONDITION) Visual3d_ViewMappingDefinitionError::Raise(MESSAGE);
 #else
-#define Visual3d_ViewMappingDefinitionError_Raise_if(CONDITION,MESSAGE)
+  #define Visual3d_ViewMappingDefinitionError_Raise_if(CONDITION, MESSAGE)
 #endif
 
-DEFINE_STANDARD_EXCEPTION(Visual3d_ViewMappingDefinitionError,Standard_OutOfRange)
+DEFINE_STANDARD_EXCEPTION(Visual3d_ViewMappingDefinitionError, Standard_OutOfRange)
 
-#endif
+#endif // _Visual3d_ViewMappingDefinitionError_HeaderFile

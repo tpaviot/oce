@@ -6,54 +6,40 @@
 #ifndef _StepGeom_Direction_HeaderFile
 #define _StepGeom_Direction_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_Direction_HeaderFile
 #include <Handle_StepGeom_Direction.hxx>
-#endif
 
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _StepGeom_GeometricRepresentationItem_HeaderFile
 #include <StepGeom_GeometricRepresentationItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TColStd_HArray1OfReal;
 class TCollection_HAsciiString;
 
 
 
-class StepGeom_Direction : public StepGeom_GeometricRepresentationItem {
+class StepGeom_Direction : public StepGeom_GeometricRepresentationItem
+{
 
 public:
 
-  //! Returns a Direction <br>
-  Standard_EXPORT   StepGeom_Direction();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a Direction
+  Standard_EXPORT StepGeom_Direction();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(TColStd_HArray1OfReal)& aDirectionRatios) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetDirectionRatios(const Handle(TColStd_HArray1OfReal)& aDirectionRatios) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(TColStd_HArray1OfReal)& aDirectionRatios) ;
   
-  Standard_EXPORT     Handle_TColStd_HArray1OfReal DirectionRatios() const;
+  Standard_EXPORT   void SetDirectionRatios (const Handle(TColStd_HArray1OfReal)& aDirectionRatios) ;
   
-  Standard_EXPORT     Standard_Real DirectionRatiosValue(const Standard_Integer num) const;
+  Standard_EXPORT   Handle(TColStd_HArray1OfReal) DirectionRatios()  const;
   
-  Standard_EXPORT     Standard_Integer NbDirectionRatios() const;
+  Standard_EXPORT   Standard_Real DirectionRatiosValue (const Standard_Integer num)  const;
+  
+  Standard_EXPORT   Standard_Integer NbDirectionRatios()  const;
 
 
 
@@ -68,7 +54,7 @@ protected:
 private: 
 
 
-Handle_TColStd_HArray1OfReal directionRatios;
+  Handle(TColStd_HArray1OfReal) directionRatios;
 
 
 };
@@ -77,7 +63,6 @@ Handle_TColStd_HArray1OfReal directionRatios;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_Direction_HeaderFile

@@ -6,31 +6,15 @@
 #ifndef _CDF_Session_HeaderFile
 #define _CDF_Session_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_CDF_Session_HeaderFile
 #include <Handle_CDF_Session.hxx>
-#endif
 
-#ifndef _Handle_CDF_Directory_HeaderFile
 #include <Handle_CDF_Directory.hxx>
-#endif
-#ifndef _Handle_CDF_Application_HeaderFile
 #include <Handle_CDF_Application.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_CDF_MetaDataDriver_HeaderFile
 #include <Handle_CDF_MetaDataDriver.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
 class CDF_Directory;
 class CDF_Application;
 class CDF_MetaDataDriver;
@@ -39,31 +23,35 @@ class Standard_MultiplyDefined;
 
 
 
-class CDF_Session : public Standard_Transient {
+class CDF_Session : public Standard_Transient
+{
 
 public:
 
   
-  Standard_EXPORT   CDF_Session();
-  //! returns true if a session has been created. <br>
-  Standard_EXPORT   static  Standard_Boolean Exists() ;
-  //! returns the only one instance of Session <br>
-//!          that has been created. <br>
-  Standard_EXPORT   static  Handle_CDF_Session CurrentSession() ;
-  //! returns the directory of the session; <br>
-  Standard_EXPORT     Handle_CDF_Directory Directory() const;
+  Standard_EXPORT CDF_Session();
   
-  Standard_EXPORT     Standard_Boolean HasCurrentApplication() const;
+  //! returns true if a session has been created.
+  Standard_EXPORT static   Standard_Boolean Exists() ;
   
-  Standard_EXPORT     Handle_CDF_Application CurrentApplication() const;
+  //! returns the only one instance of Session
+  //! that has been created.
+  Standard_EXPORT static   Handle(CDF_Session) CurrentSession() ;
   
-  Standard_EXPORT     void SetCurrentApplication(const Handle(CDF_Application)& anApplication) ;
+  //! returns the directory of the session;
+  Standard_EXPORT   Handle(CDF_Directory) Directory()  const;
   
-  Standard_EXPORT     void UnsetCurrentApplication() ;
+  Standard_EXPORT   Standard_Boolean HasCurrentApplication()  const;
   
-  Standard_EXPORT     Handle_CDF_MetaDataDriver MetaDataDriver() const;
+  Standard_EXPORT   Handle(CDF_Application) CurrentApplication()  const;
   
-  Standard_EXPORT     void LoadDriver() ;
+  Standard_EXPORT   void SetCurrentApplication (const Handle(CDF_Application)& anApplication) ;
+  
+  Standard_EXPORT   void UnsetCurrentApplication() ;
+  
+  Standard_EXPORT   Handle(CDF_MetaDataDriver) MetaDataDriver()  const;
+  
+  Standard_EXPORT   void LoadDriver() ;
 
 
 friend class CDF_Application;
@@ -79,10 +67,10 @@ protected:
 private: 
 
 
-Handle_CDF_Directory myDirectory;
-Handle_CDF_Application myCurrentApplication;
-Standard_Boolean myHasCurrentApplication;
-Handle_CDF_MetaDataDriver myMetaDataDriver;
+  Handle(CDF_Directory) myDirectory;
+  Handle(CDF_Application) myCurrentApplication;
+  Standard_Boolean myHasCurrentApplication;
+  Handle(CDF_MetaDataDriver) myMetaDataDriver;
 
 
 };
@@ -91,7 +79,6 @@ Handle_CDF_MetaDataDriver myMetaDataDriver;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _CDF_Session_HeaderFile

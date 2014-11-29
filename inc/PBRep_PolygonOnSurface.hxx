@@ -6,51 +6,37 @@
 #ifndef _PBRep_PolygonOnSurface_HeaderFile
 #define _PBRep_PolygonOnSurface_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PBRep_PolygonOnSurface_HeaderFile
 #include <Handle_PBRep_PolygonOnSurface.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_PGeom_Surface_HeaderFile
 #include <Handle_PGeom_Surface.hxx>
-#endif
-#ifndef _Handle_PPoly_Polygon2D_HeaderFile
 #include <Handle_PPoly_Polygon2D.hxx>
-#endif
-#ifndef _PBRep_CurveRepresentation_HeaderFile
 #include <PBRep_CurveRepresentation.hxx>
-#endif
 class PGeom_Surface;
 class PPoly_Polygon2D;
 class PTopLoc_Location;
 
 
-class PBRep_PolygonOnSurface : public PBRep_CurveRepresentation {
+class PBRep_PolygonOnSurface : public PBRep_CurveRepresentation
+{
 
 public:
 
   
-  Standard_EXPORT   PBRep_PolygonOnSurface(const Handle(PPoly_Polygon2D)& P,const Handle(PGeom_Surface)& S,const PTopLoc_Location& L);
-  //! A   2D polygon  representation  in the  parametric <br>
-//!          space of a surface. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsPolygonOnSurface() const;
+  Standard_EXPORT PBRep_PolygonOnSurface(const Handle(PPoly_Polygon2D)& P, const Handle(PGeom_Surface)& S, const PTopLoc_Location& L);
   
-  Standard_EXPORT     Handle_PGeom_Surface Surface() const;
+  //! A   2D polygon  representation  in the  parametric
+  //! space of a surface.
+  Standard_EXPORT virtual   Standard_Boolean IsPolygonOnSurface()  const;
   
-  Standard_EXPORT     Handle_PPoly_Polygon2D Polygon() const;
+  Standard_EXPORT   Handle(PGeom_Surface) Surface()  const;
+  
+  Standard_EXPORT   Handle(PPoly_Polygon2D) Polygon()  const;
 
-  PBRep_PolygonOnSurface( )
+PBRep_PolygonOnSurface( )
 {
   
 }
@@ -75,8 +61,8 @@ protected:
 private: 
 
 
-Handle_PPoly_Polygon2D myPolygon2D;
-Handle_PGeom_Surface mySurface;
+  Handle(PPoly_Polygon2D) myPolygon2D;
+  Handle(PGeom_Surface) mySurface;
 
 
 };
@@ -85,7 +71,6 @@ Handle_PGeom_Surface mySurface;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PBRep_PolygonOnSurface_HeaderFile

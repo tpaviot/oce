@@ -6,14 +6,13 @@
 #ifndef _Graphic3d_SortType_HeaderFile
 #define _Graphic3d_SortType_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Graphic3d_SortType {
+
+enum Graphic3d_SortType
+{
 Graphic3d_ST_Simple,
 Graphic3d_ST_BSP_Tree
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Graphic3d_SortType_HeaderFile

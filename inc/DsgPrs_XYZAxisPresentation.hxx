@@ -6,34 +6,16 @@
 #ifndef _DsgPrs_XYZAxisPresentation_HeaderFile
 #define _DsgPrs_XYZAxisPresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Handle_Prs3d_LineAspect_HeaderFile
 #include <Handle_Prs3d_LineAspect.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_Prs3d_ArrowAspect_HeaderFile
 #include <Handle_Prs3d_ArrowAspect.hxx>
-#endif
-#ifndef _Handle_Prs3d_TextAspect_HeaderFile
 #include <Handle_Prs3d_TextAspect.hxx>
-#endif
 class Prs3d_Presentation;
 class Prs3d_LineAspect;
 class gp_Dir;
@@ -42,25 +24,27 @@ class Prs3d_ArrowAspect;
 class Prs3d_TextAspect;
 
 
-//! A framework for displaying the axes of an XYZ trihedron. <br>
-class DsgPrs_XYZAxisPresentation  {
+//! A framework for displaying the axes of an XYZ trihedron.
+class DsgPrs_XYZAxisPresentation 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Draws each axis of a trihedron displayed in the <br>
-//! presentation aPresentation and with lines shown by <br>
-//! the values of aLineAspect. Each axis is defined by: <br>
-//! -   the first and last points aPfirst and aPlast <br>
-//! -   the direction aDir and <br>
-//! -   the value aVal which provides a value for length. <br>
-//!  The value for length is provided so that the trihedron <br>
-//! can vary in length relative to the scale of shape display. <br>
-//! Each axis will be identified as X, Y, or Z by the text aText. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Prs3d_LineAspect)& anLineAspect,const gp_Dir& aDir,const Standard_Real aVal,const Standard_CString aText,const gp_Pnt& aPfirst,const gp_Pnt& aPlast) ;
-  //! draws the presentation X ,Y ,Z axis <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Prs3d_LineAspect)& aLineAspect,const Handle(Prs3d_ArrowAspect)& anArrowAspect,const Handle(Prs3d_TextAspect)& aTextAspect,const gp_Dir& aDir,const Standard_Real aVal,const Standard_CString aText,const gp_Pnt& aPfirst,const gp_Pnt& aPlast) ;
-
+  
+  //! Draws each axis of a trihedron displayed in the
+  //! presentation aPresentation and with lines shown by
+  //! the values of aLineAspect. Each axis is defined by:
+  //! -   the first and last points aPfirst and aPlast
+  //! -   the direction aDir and
+  //! -   the value aVal which provides a value for length.
+  //! The value for length is provided so that the trihedron
+  //! can vary in length relative to the scale of shape display.
+  //! Each axis will be identified as X, Y, or Z by the text aText.
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Prs3d_LineAspect)& anLineAspect, const gp_Dir& aDir, const Standard_Real aVal, const Standard_CString aText, const gp_Pnt& aPfirst, const gp_Pnt& aPlast) ;
+  
+  //! draws the presentation X ,Y ,Z axis
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Prs3d_LineAspect)& aLineAspect, const Handle(Prs3d_ArrowAspect)& anArrowAspect, const Handle(Prs3d_TextAspect)& aTextAspect, const gp_Dir& aDir, const Standard_Real aVal, const Standard_CString aText, const gp_Pnt& aPfirst, const gp_Pnt& aPlast) ;
 
 
 
@@ -83,7 +67,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DsgPrs_XYZAxisPresentation_HeaderFile

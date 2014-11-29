@@ -41,8 +41,6 @@
 #include <Graphic3d_Structure.hxx>
 #include <Graphic3d_AspectLine3d.hxx>
 #include <Graphic3d_AspectText3d.hxx>
-#include <Visual3d_HSetOfView.hxx>
-#include <Visual3d_SetIteratorOfSetOfView.hxx>
 #include <Visual3d_View.hxx>
 #include <Visual3d_ViewManager.hxx>
 
@@ -247,7 +245,7 @@ void V3d::DrawSphere(const Handle(V3d_Viewer)& aViewer,const Quantity_Length ray
   const Standard_Boolean inf = ray < 0;
   const Standard_Real aRadius = Standard_ShortReal(Abs(ray));
   Handle(Graphic3d_Structure) Struct = new Graphic3d_Structure(aViewer->Viewer()) ;
-  Handle(Graphic3d_Group) Group = new Graphic3d_Group(Struct) ;
+  Handle(Graphic3d_Group)     Group  = Struct->NewGroup();
 
   Handle(Graphic3d_AspectLine3d) LineAttrib = new Graphic3d_AspectLine3d() ;
   LineAttrib->SetColor(Quantity_Color(Quantity_NOC_YELLOW));

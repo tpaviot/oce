@@ -6,55 +6,40 @@
 #ifndef _StepVisual_MarkerMember_HeaderFile
 #define _StepVisual_MarkerMember_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_MarkerMember_HeaderFile
 #include <Handle_StepVisual_MarkerMember.hxx>
-#endif
 
-#ifndef _StepData_SelectInt_HeaderFile
 #include <StepData_SelectInt.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _StepVisual_MarkerType_HeaderFile
 #include <StepVisual_MarkerType.hxx>
-#endif
 
 
-//! Defines MarkerType as unique member of MarkerSelect <br>
-//!           Works with an EnumTool <br>
-class StepVisual_MarkerMember : public StepData_SelectInt {
+//! Defines MarkerType as unique member of MarkerSelect
+//! Works with an EnumTool
+class StepVisual_MarkerMember : public StepData_SelectInt
+{
 
 public:
 
   
-  Standard_EXPORT   StepVisual_MarkerMember();
+  Standard_EXPORT StepVisual_MarkerMember();
   
-  Standard_EXPORT   virtual  Standard_Boolean HasName() const;
+  Standard_EXPORT virtual   Standard_Boolean HasName()  const;
   
-  Standard_EXPORT   virtual  Standard_CString Name() const;
+  Standard_EXPORT virtual   Standard_CString Name()  const;
   
-  Standard_EXPORT   virtual  Standard_Boolean SetName(const Standard_CString name) ;
+  Standard_EXPORT virtual   Standard_Boolean SetName (const Standard_CString name) ;
   
-  Standard_EXPORT   virtual  Standard_CString EnumText() const;
+  Standard_EXPORT virtual   Standard_CString EnumText()  const;
   
-  Standard_EXPORT   virtual  void SetEnumText(const Standard_Integer val,const Standard_CString text) ;
+  Standard_EXPORT virtual   void SetEnumText (const Standard_Integer val, const Standard_CString text) ;
   
-  Standard_EXPORT     void SetValue(const StepVisual_MarkerType val) ;
+  Standard_EXPORT   void SetValue (const StepVisual_MarkerType val) ;
   
-  Standard_EXPORT     StepVisual_MarkerType Value() const;
+  Standard_EXPORT   StepVisual_MarkerType Value()  const;
 
 
 
@@ -77,7 +62,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_MarkerMember_HeaderFile

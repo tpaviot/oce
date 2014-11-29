@@ -5,25 +5,13 @@
 
 #include <TDocStd_DataMapNodeOfLabelIDMapDataMap.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TDF_IDMap_HeaderFile
 #include <TDF_IDMap.hxx>
-#endif
-#ifndef _TDF_LabelMapHasher_HeaderFile
 #include <TDF_LabelMapHasher.hxx>
-#endif
-#ifndef _TDocStd_LabelIDMapDataMap_HeaderFile
 #include <TDocStd_LabelIDMapDataMap.hxx>
-#endif
-#ifndef _TDocStd_DataMapIteratorOfLabelIDMapDataMap_HeaderFile
 #include <TDocStd_DataMapIteratorOfLabelIDMapDataMap.hxx>
-#endif
 
  
 

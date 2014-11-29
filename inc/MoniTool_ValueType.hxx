@@ -6,8 +6,11 @@
 #ifndef _MoniTool_ValueType_HeaderFile
 #define _MoniTool_ValueType_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum MoniTool_ValueType {
+
+enum MoniTool_ValueType
+{
 MoniTool_ValueMisc,
 MoniTool_ValueInteger,
 MoniTool_ValueReal,
@@ -21,8 +24,4 @@ MoniTool_ValueHexa,
 MoniTool_ValueBinary
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _MoniTool_ValueType_HeaderFile

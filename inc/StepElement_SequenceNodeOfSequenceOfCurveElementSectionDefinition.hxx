@@ -6,38 +6,27 @@
 #ifndef _StepElement_SequenceNodeOfSequenceOfCurveElementSectionDefinition_HeaderFile
 #define _StepElement_SequenceNodeOfSequenceOfCurveElementSectionDefinition_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepElement_SequenceNodeOfSequenceOfCurveElementSectionDefinition_HeaderFile
 #include <Handle_StepElement_SequenceNodeOfSequenceOfCurveElementSectionDefinition.hxx>
-#endif
 
-#ifndef _Handle_StepElement_CurveElementSectionDefinition_HeaderFile
 #include <Handle_StepElement_CurveElementSectionDefinition.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class StepElement_CurveElementSectionDefinition;
 class StepElement_SequenceOfCurveElementSectionDefinition;
 
 
 
-class StepElement_SequenceNodeOfSequenceOfCurveElementSectionDefinition : public TCollection_SeqNode {
+class StepElement_SequenceNodeOfSequenceOfCurveElementSectionDefinition : public TCollection_SeqNode
+{
 
 public:
 
   
-      StepElement_SequenceNodeOfSequenceOfCurveElementSectionDefinition(const Handle(StepElement_CurveElementSectionDefinition)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    StepElement_SequenceNodeOfSequenceOfCurveElementSectionDefinition(const Handle(StepElement_CurveElementSectionDefinition)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_StepElement_CurveElementSectionDefinition& Value() const;
+      Handle(StepElement_CurveElementSectionDefinition)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_StepElement_CurveElementSectionDefinition myValue;
+  Handle(StepElement_CurveElementSectionDefinition) myValue;
 
 
 };
 
-#define SeqItem Handle_StepElement_CurveElementSectionDefinition
+#define SeqItem Handle(StepElement_CurveElementSectionDefinition)
 #define SeqItem_hxx <StepElement_CurveElementSectionDefinition.hxx>
 #define TCollection_SequenceNode StepElement_SequenceNodeOfSequenceOfCurveElementSectionDefinition
 #define TCollection_SequenceNode_hxx <StepElement_SequenceNodeOfSequenceOfCurveElementSectionDefinition.hxx>
@@ -78,7 +67,6 @@ Handle_StepElement_CurveElementSectionDefinition myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_SequenceNodeOfSequenceOfCurveElementSectionDefinition_HeaderFile

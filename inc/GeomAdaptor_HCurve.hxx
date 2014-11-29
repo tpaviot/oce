@@ -6,45 +6,35 @@
 #ifndef _GeomAdaptor_HCurve_HeaderFile
 #define _GeomAdaptor_HCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_GeomAdaptor_HCurve_HeaderFile
 #include <Handle_GeomAdaptor_HCurve.hxx>
-#endif
 
-#ifndef _GeomAdaptor_GHCurve_HeaderFile
 #include <GeomAdaptor_GHCurve.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Standard_ConstructionError;
 class GeomAdaptor_Curve;
 class Geom_Curve;
 
 
-//! An interface between the services provided by any <br>
-//! curve from the package Geom and those required of <br>
-//! the curve by algorithms which use it. <br>
-class GeomAdaptor_HCurve : public GeomAdaptor_GHCurve {
+//! An interface between the services provided by any
+//! curve from the package Geom and those required of
+//! the curve by algorithms which use it.
+class GeomAdaptor_HCurve : public GeomAdaptor_GHCurve
+{
 
 public:
 
   
-      GeomAdaptor_HCurve();
+    GeomAdaptor_HCurve();
   
-      GeomAdaptor_HCurve(const GeomAdaptor_Curve& AS);
+    GeomAdaptor_HCurve(const GeomAdaptor_Curve& AS);
   
-      GeomAdaptor_HCurve(const Handle(Geom_Curve)& S);
-  //! ConstructionError is raised if UFirst>ULast or VFirst>VLast <br>
-      GeomAdaptor_HCurve(const Handle(Geom_Curve)& S,const Standard_Real UFirst,const Standard_Real ULast);
+    GeomAdaptor_HCurve(const Handle(Geom_Curve)& S);
+  
+  //! ConstructionError is raised if UFirst>ULast or VFirst>VLast
+    GeomAdaptor_HCurve(const Handle(Geom_Curve)& S, const Standard_Real UFirst, const Standard_Real ULast);
 
 
 
@@ -68,7 +58,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomAdaptor_HCurve_HeaderFile

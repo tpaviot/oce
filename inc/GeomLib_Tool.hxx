@@ -6,31 +6,15 @@
 #ifndef _GeomLib_Tool_HeaderFile
 #define _GeomLib_Tool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
 class Geom_Curve;
 class gp_Pnt;
 class Geom_Surface;
@@ -38,31 +22,35 @@ class Geom2d_Curve;
 class gp_Pnt2d;
 
 
-//!   The methods of this class compute the parameter(s) of a given point on a <br>
-//! curve or a surface. The point must be located either <br>
-//! on the curve (surface) itself or relatively to the latter at <br>
-//! a distance less than the tolerance value. <br>
-//! Return FALSE if the point is beyond the tolerance <br>
-//! limit or if computation fails. <br>
-//! Max Tolerance value is currently limited to 1.e-4 for <br>
-//! geometrical curves and 1.e-3 for BSpline, Bezier and <br>
-//! other parametrical curves. <br>
-class GeomLib_Tool  {
+//! Provides various methods with Geom2d and Geom curves and surfaces.
+//! The methods of this class compute the parameter(s) of a given point on a
+//! curve or a surface. The point must be located either
+//! on the curve (surface) itself or relatively to the latter at
+//! a distance less than the tolerance value.
+//! Return FALSE if the point is beyond the tolerance
+//! limit or if computation fails.
+//! Max Tolerance value is currently limited to 1.e-4 for
+//! geometrical curves and 1.e-3 for BSpline, Bezier and
+//! other parametrical curves.
+class GeomLib_Tool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//! Extracts the parameter of a 3D point lying on a 3D curve <br>
-//! or at a distance less than the tolerance value. <br>
-  Standard_EXPORT   static  Standard_Boolean Parameter(const Handle(Geom_Curve)& Curve,const gp_Pnt& Point,const Standard_Real Tolerance,Standard_Real& U) ;
-  //! Extracts the parameter of a 3D point lying on a surface <br>
-//! or at a distance less than the tolerance value. <br>
-  Standard_EXPORT   static  Standard_Boolean Parameters(const Handle(Geom_Surface)& Surface,const gp_Pnt& Point,const Standard_Real Tolerance,Standard_Real& U,Standard_Real& V) ;
-  //! Extracts the parameter of a 2D point lying on a 2D curve <br>
-//! or at a distance less than the tolerance value. <br>
-  Standard_EXPORT   static  Standard_Boolean Parameter(const Handle(Geom2d_Curve)& Curve,const gp_Pnt2d& Point,const Standard_Real Tolerance,Standard_Real& U) ;
 
+  //! Extracts the parameter of a 3D point lying on a 3D curve
+  //! or at a distance less than the tolerance value.
+  Standard_EXPORT static   Standard_Boolean Parameter (const Handle(Geom_Curve)& Curve, const gp_Pnt& Point, const Standard_Real Tolerance, Standard_Real& U) ;
+  
+  //! Extracts the parameter of a 3D point lying on a surface
+  //! or at a distance less than the tolerance value.
+  Standard_EXPORT static   Standard_Boolean Parameters (const Handle(Geom_Surface)& Surface, const gp_Pnt& Point, const Standard_Real Tolerance, Standard_Real& U, Standard_Real& V) ;
+  
+  //! Extracts the parameter of a 2D point lying on a 2D curve
+  //! or at a distance less than the tolerance value.
+  Standard_EXPORT static   Standard_Boolean Parameter (const Handle(Geom2d_Curve)& Curve, const gp_Pnt2d& Point, const Standard_Real Tolerance, Standard_Real& U) ;
 
 
 
@@ -85,7 +73,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomLib_Tool_HeaderFile

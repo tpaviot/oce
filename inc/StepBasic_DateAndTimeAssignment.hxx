@@ -6,44 +6,33 @@
 #ifndef _StepBasic_DateAndTimeAssignment_HeaderFile
 #define _StepBasic_DateAndTimeAssignment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_DateAndTimeAssignment_HeaderFile
 #include <Handle_StepBasic_DateAndTimeAssignment.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_DateAndTime_HeaderFile
 #include <Handle_StepBasic_DateAndTime.hxx>
-#endif
-#ifndef _Handle_StepBasic_DateTimeRole_HeaderFile
 #include <Handle_StepBasic_DateTimeRole.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepBasic_DateAndTime;
 class StepBasic_DateTimeRole;
 
 
 
-class StepBasic_DateAndTimeAssignment : public MMgt_TShared {
+class StepBasic_DateAndTimeAssignment : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepBasic_DateAndTime)& aAssignedDateAndTime,const Handle(StepBasic_DateTimeRole)& aRole) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepBasic_DateAndTime)& aAssignedDateAndTime, const Handle(StepBasic_DateTimeRole)& aRole) ;
   
-  Standard_EXPORT     void SetAssignedDateAndTime(const Handle(StepBasic_DateAndTime)& aAssignedDateAndTime) ;
+  Standard_EXPORT   void SetAssignedDateAndTime (const Handle(StepBasic_DateAndTime)& aAssignedDateAndTime) ;
   
-  Standard_EXPORT     Handle_StepBasic_DateAndTime AssignedDateAndTime() const;
+  Standard_EXPORT   Handle(StepBasic_DateAndTime) AssignedDateAndTime()  const;
   
-  Standard_EXPORT     void SetRole(const Handle(StepBasic_DateTimeRole)& aRole) ;
+  Standard_EXPORT   void SetRole (const Handle(StepBasic_DateTimeRole)& aRole) ;
   
-  Standard_EXPORT     Handle_StepBasic_DateTimeRole Role() const;
+  Standard_EXPORT   Handle(StepBasic_DateTimeRole) Role()  const;
 
 
 
@@ -58,8 +47,8 @@ protected:
 private: 
 
 
-Handle_StepBasic_DateAndTime assignedDateAndTime;
-Handle_StepBasic_DateTimeRole role;
+  Handle(StepBasic_DateAndTime) assignedDateAndTime;
+  Handle(StepBasic_DateTimeRole) role;
 
 
 };
@@ -68,7 +57,6 @@ Handle_StepBasic_DateTimeRole role;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_DateAndTimeAssignment_HeaderFile

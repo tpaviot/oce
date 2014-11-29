@@ -6,25 +6,13 @@
 #ifndef _BRepOffsetAPI_SequenceOfSequenceOfReal_HeaderFile
 #define _BRepOffsetAPI_SequenceOfSequenceOfReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal_HeaderFile
 #include <Handle_BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class TColStd_SequenceOfReal;
@@ -32,66 +20,68 @@ class BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal;
 
 
 
-class BRepOffsetAPI_SequenceOfSequenceOfReal  : public TCollection_BaseSequence {
+class BRepOffsetAPI_SequenceOfSequenceOfReal  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      BRepOffsetAPI_SequenceOfSequenceOfReal();
+    BRepOffsetAPI_SequenceOfSequenceOfReal();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT BRepOffsetAPI_SequenceOfSequenceOfReal(const BRepOffsetAPI_SequenceOfSequenceOfReal& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~BRepOffsetAPI_SequenceOfSequenceOfReal()
 {
   Clear();
 }
   
-  Standard_EXPORT    const BRepOffsetAPI_SequenceOfSequenceOfReal& Assign(const BRepOffsetAPI_SequenceOfSequenceOfReal& Other) ;
-   const BRepOffsetAPI_SequenceOfSequenceOfReal& operator =(const BRepOffsetAPI_SequenceOfSequenceOfReal& Other) 
+  Standard_EXPORT  const  BRepOffsetAPI_SequenceOfSequenceOfReal& Assign (const BRepOffsetAPI_SequenceOfSequenceOfReal& Other) ;
+ const  BRepOffsetAPI_SequenceOfSequenceOfReal& operator = (const BRepOffsetAPI_SequenceOfSequenceOfReal& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const TColStd_SequenceOfReal& T) ;
+  Standard_EXPORT   void Append (const TColStd_SequenceOfReal& T) ;
   
-        void Append(BRepOffsetAPI_SequenceOfSequenceOfReal& S) ;
+      void Append (BRepOffsetAPI_SequenceOfSequenceOfReal& S) ;
   
-  Standard_EXPORT     void Prepend(const TColStd_SequenceOfReal& T) ;
+  Standard_EXPORT   void Prepend (const TColStd_SequenceOfReal& T) ;
   
-        void Prepend(BRepOffsetAPI_SequenceOfSequenceOfReal& S) ;
+      void Prepend (BRepOffsetAPI_SequenceOfSequenceOfReal& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const TColStd_SequenceOfReal& T) ;
+      void InsertBefore (const Standard_Integer Index, const TColStd_SequenceOfReal& T) ;
   
-        void InsertBefore(const Standard_Integer Index,BRepOffsetAPI_SequenceOfSequenceOfReal& S) ;
+      void InsertBefore (const Standard_Integer Index, BRepOffsetAPI_SequenceOfSequenceOfReal& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const TColStd_SequenceOfReal& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const TColStd_SequenceOfReal& T) ;
   
-        void InsertAfter(const Standard_Integer Index,BRepOffsetAPI_SequenceOfSequenceOfReal& S) ;
+      void InsertAfter (const Standard_Integer Index, BRepOffsetAPI_SequenceOfSequenceOfReal& S) ;
   
-  Standard_EXPORT    const TColStd_SequenceOfReal& First() const;
+  Standard_EXPORT  const  TColStd_SequenceOfReal& First()  const;
   
-  Standard_EXPORT    const TColStd_SequenceOfReal& Last() const;
+  Standard_EXPORT  const  TColStd_SequenceOfReal& Last()  const;
   
-        void Split(const Standard_Integer Index,BRepOffsetAPI_SequenceOfSequenceOfReal& Sub) ;
+      void Split (const Standard_Integer Index, BRepOffsetAPI_SequenceOfSequenceOfReal& Sub) ;
   
-  Standard_EXPORT    const TColStd_SequenceOfReal& Value(const Standard_Integer Index) const;
-   const TColStd_SequenceOfReal& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  TColStd_SequenceOfReal& Value (const Standard_Integer Index)  const;
+ const  TColStd_SequenceOfReal& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const TColStd_SequenceOfReal& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const TColStd_SequenceOfReal& I) ;
   
-  Standard_EXPORT     TColStd_SequenceOfReal& ChangeValue(const Standard_Integer Index) ;
-    TColStd_SequenceOfReal& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   TColStd_SequenceOfReal& ChangeValue (const Standard_Integer Index) ;
+  TColStd_SequenceOfReal& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -104,8 +94,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   BRepOffsetAPI_SequenceOfSequenceOfReal(const BRepOffsetAPI_SequenceOfSequenceOfReal& Other);
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepOffsetAPI_SequenceOfSequenceOfReal_HeaderFile

@@ -1,15 +1,5 @@
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _AdvApp2Var_SequenceOfPatch_HeaderFile
 #include <AdvApp2Var_SequenceOfPatch.hxx>
-#endif
-#ifndef _TColStd_SequenceOfReal_HeaderFile
 #include <TColStd_SequenceOfReal.hxx>
-#endif
-#ifndef _AdvApp2Var_Patch_HeaderFile
 #include <AdvApp2Var_Patch.hxx>
-#endif
-#ifndef _AdvApp2Var_Network_HeaderFile
 #include <AdvApp2Var_Network.hxx>
-#endif

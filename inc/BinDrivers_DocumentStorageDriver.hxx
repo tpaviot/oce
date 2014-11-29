@@ -6,44 +6,33 @@
 #ifndef _BinDrivers_DocumentStorageDriver_HeaderFile
 #define _BinDrivers_DocumentStorageDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BinDrivers_DocumentStorageDriver_HeaderFile
 #include <Handle_BinDrivers_DocumentStorageDriver.hxx>
-#endif
 
-#ifndef _BinLDrivers_DocumentStorageDriver_HeaderFile
 #include <BinLDrivers_DocumentStorageDriver.hxx>
-#endif
-#ifndef _Handle_BinMDF_ADriverTable_HeaderFile
 #include <Handle_BinMDF_ADriverTable.hxx>
-#endif
-#ifndef _Handle_CDM_MessageDriver_HeaderFile
 #include <Handle_CDM_MessageDriver.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class BinMDF_ADriverTable;
 class CDM_MessageDriver;
 class BinLDrivers_DocumentSection;
 
 
-//! persistent implemention of storage a document in a binary file <br>
-class BinDrivers_DocumentStorageDriver : public BinLDrivers_DocumentStorageDriver {
+//! persistent implemention of storage a document in a binary file
+class BinDrivers_DocumentStorageDriver : public BinLDrivers_DocumentStorageDriver
+{
 
 public:
 
-  //! Constructor <br>
-  Standard_EXPORT   BinDrivers_DocumentStorageDriver();
   
-  Standard_EXPORT   virtual  Handle_BinMDF_ADriverTable AttributeDrivers(const Handle(CDM_MessageDriver)& theMsgDriver) ;
-  //! implements the procedure of writing a shape section to file <br>
-  Standard_EXPORT   virtual  void WriteShapeSection(BinLDrivers_DocumentSection& theDocSection,Standard_OStream& theOS) ;
+  //! Constructor
+  Standard_EXPORT BinDrivers_DocumentStorageDriver();
+  
+  Standard_EXPORT virtual   Handle(BinMDF_ADriverTable) AttributeDrivers (const Handle(CDM_MessageDriver)& theMsgDriver) ;
+  
+  //! implements the procedure of writing a shape section to file
+  Standard_EXPORT virtual   void WriteShapeSection (BinLDrivers_DocumentSection& theDocSection, Standard_OStream& theOS) ;
 
 
 
@@ -66,7 +55,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BinDrivers_DocumentStorageDriver_HeaderFile

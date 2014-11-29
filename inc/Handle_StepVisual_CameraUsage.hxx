@@ -6,22 +6,15 @@
 #ifndef _Handle_StepVisual_CameraUsage_HeaderFile
 #define _Handle_StepVisual_CameraUsage_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepRepr_RepresentationMap_HeaderFile
 #include <Handle_StepRepr_RepresentationMap.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepRepr_RepresentationMap);
 class StepVisual_CameraUsage;
 
-DEFINE_STANDARD_HANDLE(StepVisual_CameraUsage,StepRepr_RepresentationMap)
+DEFINE_STANDARD_HANDLE(StepVisual_CameraUsage, StepRepr_RepresentationMap)
 
-#endif
+#endif // _Handle_StepVisual_CameraUsage_HeaderFile

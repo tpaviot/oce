@@ -5,16 +5,10 @@
 
 #include <IntCurveSurface_SequenceNodeOfSequenceOfSeg.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IntCurveSurface_IntersectionSegment_HeaderFile
 #include <IntCurveSurface_IntersectionSegment.hxx>
-#endif
-#ifndef _IntCurveSurface_SequenceOfSeg_HeaderFile
 #include <IntCurveSurface_SequenceOfSeg.hxx>
-#endif
 
  
 

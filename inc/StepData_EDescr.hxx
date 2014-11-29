@@ -6,43 +6,33 @@
 #ifndef _StepData_EDescr_HeaderFile
 #define _StepData_EDescr_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepData_EDescr_HeaderFile
 #include <Handle_StepData_EDescr.hxx>
-#endif
 
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_StepData_Described_HeaderFile
 #include <Handle_StepData_Described.hxx>
-#endif
 class StepData_Described;
 
 
-//! This class is intended to describe the authorized form for an <br>
-//!           entity, either Simple or Plex <br>
-class StepData_EDescr : public MMgt_TShared {
+//! This class is intended to describe the authorized form for an
+//! entity, either Simple or Plex
+class StepData_EDescr : public MMgt_TShared
+{
 
 public:
 
-  //! Tells if a ESDescr matches a step type : exact or super type <br>
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const Standard_CString steptype) const = 0;
-  //! Tells if a EDescr is complex (ECDescr) or simple (ESDescr) <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsComplex() const = 0;
-  //! Creates a described entity (i.e. a simple one) <br>
-  Standard_EXPORT   virtual  Handle_StepData_Described NewEntity() const = 0;
+  
+  //! Tells if a ESDescr matches a step type : exact or super type
+  Standard_EXPORT virtual   Standard_Boolean Matches (const Standard_CString steptype)  const = 0;
+  
+  //! Tells if a EDescr is complex (ECDescr) or simple (ESDescr)
+  Standard_EXPORT virtual   Standard_Boolean IsComplex()  const = 0;
+  
+  //! Creates a described entity (i.e. a simple one)
+  Standard_EXPORT virtual   Handle(StepData_Described) NewEntity()  const = 0;
 
 
 
@@ -65,7 +55,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepData_EDescr_HeaderFile

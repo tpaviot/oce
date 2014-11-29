@@ -6,28 +6,14 @@
 #ifndef _StepRepr_HArray1OfRepresentationItem_HeaderFile
 #define _StepRepr_HArray1OfRepresentationItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepRepr_HArray1OfRepresentationItem_HeaderFile
 #include <Handle_StepRepr_HArray1OfRepresentationItem.hxx>
-#endif
 
-#ifndef _StepRepr_Array1OfRepresentationItem_HeaderFile
 #include <StepRepr_Array1OfRepresentationItem.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_StepRepr_RepresentationItem_HeaderFile
 #include <Handle_StepRepr_RepresentationItem.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class StepRepr_Array1OfRepresentationItem;
 
 
 
-class StepRepr_HArray1OfRepresentationItem : public MMgt_TShared {
+class StepRepr_HArray1OfRepresentationItem : public MMgt_TShared
+{
 
 public:
 
   
-      StepRepr_HArray1OfRepresentationItem(const Standard_Integer Low,const Standard_Integer Up);
+    StepRepr_HArray1OfRepresentationItem(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepRepr_HArray1OfRepresentationItem(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepRepr_RepresentationItem)& V);
+    StepRepr_HArray1OfRepresentationItem(const Standard_Integer Low, const Standard_Integer Up, const Handle(StepRepr_RepresentationItem)& V);
   
-        void Init(const Handle(StepRepr_RepresentationItem)& V) ;
+      void Init (const Handle(StepRepr_RepresentationItem)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(StepRepr_RepresentationItem)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(StepRepr_RepresentationItem)& Value) ;
   
-       const Handle_StepRepr_RepresentationItem& Value(const Standard_Integer Index) const;
+     const  Handle(StepRepr_RepresentationItem)& Value (const Standard_Integer Index)  const;
   
-        Handle_StepRepr_RepresentationItem& ChangeValue(const Standard_Integer Index) ;
+      Handle(StepRepr_RepresentationItem)& ChangeValue (const Standard_Integer Index) ;
   
-       const StepRepr_Array1OfRepresentationItem& Array1() const;
+     const  StepRepr_Array1OfRepresentationItem& Array1()  const;
   
-        StepRepr_Array1OfRepresentationItem& ChangeArray1() ;
+      StepRepr_Array1OfRepresentationItem& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-StepRepr_Array1OfRepresentationItem myArray;
+  StepRepr_Array1OfRepresentationItem myArray;
 
 
 };
 
-#define ItemHArray1 Handle_StepRepr_RepresentationItem
+#define ItemHArray1 Handle(StepRepr_RepresentationItem)
 #define ItemHArray1_hxx <StepRepr_RepresentationItem.hxx>
 #define TheArray1 StepRepr_Array1OfRepresentationItem
 #define TheArray1_hxx <StepRepr_Array1OfRepresentationItem.hxx>
@@ -103,7 +90,6 @@ StepRepr_Array1OfRepresentationItem myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_HArray1OfRepresentationItem_HeaderFile

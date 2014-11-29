@@ -6,37 +6,17 @@
 #ifndef _IGESData_ReadWriteModule_HeaderFile
 #define _IGESData_ReadWriteModule_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESData_ReadWriteModule_HeaderFile
 #include <Handle_IGESData_ReadWriteModule.hxx>
-#endif
 
-#ifndef _Interface_ReaderModule_HeaderFile
 #include <Interface_ReaderModule.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Interface_FileReaderData_HeaderFile
 #include <Handle_Interface_FileReaderData.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESReaderData_HeaderFile
 #include <Handle_IGESData_IGESReaderData.hxx>
-#endif
 class Standard_DomainError;
 class Interface_FileReaderData;
 class Interface_Check;
@@ -47,54 +27,60 @@ class IGESData_ParamReader;
 class IGESData_IGESWriter;
 
 
-//! Defines basic File Access Module, under the control of <br>
-//!           IGESReaderTool for Reading and IGESWriter for Writing : <br>
-//!           Specific actions concern : Read and Write Own Parameters of <br>
-//!           an IGESEntity. <br>
-//!           The common parts (Directory Entry, Lists of Associativities <br>
-//!           and Properties) are processed by IGESReaderTool & IGESWriter <br>
-//! <br>
-//!           Each sub-class of ReadWriteModule is used in conjunction with <br>
-//!           a sub-class of Protocol from IGESData and processes several <br>
-//!           types of IGESEntity (typically, them of a package) : <br>
-//!           The Protocol gives a unique positive integer Case Number for <br>
-//!           each type of IGESEntity it recognizes, the corresponding <br>
-//!           ReadWriteModule processes an Entity by using the Case Number <br>
-//!           to known what is to do <br>
-//!           On Reading, the general service NewVoid is used to create an <br>
-//!           IGES Entity the first time <br>
-//! <br>
-//!  Warning : Works with an IGESReaderData which stores "DE parts" of Items <br>
-class IGESData_ReadWriteModule : public Interface_ReaderModule {
+//! Defines basic File Access Module, under the control of
+//! IGESReaderTool for Reading and IGESWriter for Writing :
+//! Specific actions concern : Read and Write Own Parameters of
+//! an IGESEntity.
+//! The common parts (Directory Entry, Lists of Associativities
+//! and Properties) are processed by IGESReaderTool & IGESWriter
+//!
+//! Each sub-class of ReadWriteModule is used in conjunction with
+//! a sub-class of Protocol from IGESData and processes several
+//! types of IGESEntity (typically, them of a package) :
+//! The Protocol gives a unique positive integer Case Number for
+//! each type of IGESEntity it recognizes, the corresponding
+//! ReadWriteModule processes an Entity by using the Case Number
+//! to known what is to do
+//! On Reading, the general service NewVoid is used to create an
+//! IGES Entity the first time
+//!
+//! Warning : Works with an IGESReaderData which stores "DE parts" of Items
+class IGESData_ReadWriteModule : public Interface_ReaderModule
+{
 
 public:
 
-  //! Translates the Type of record <num> in <data> to a positive <br>
-//!           Case Number, or 0 if failed. <br>
-//!           Works with IGESReaderData which provides Type & Form Numbers, <br>
-//!           and calls CaseIGES (see below) <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Interface_FileReaderData)& data,const Standard_Integer num) const;
-  //! Defines Case Numbers corresponding to the Entity Types taken <br>
-//!           into account by a sub-class of ReadWriteModule (hence, each <br>
-//!           sub-class of ReadWriteModule has to redefine this method) <br>
-//!           Called by CaseNum. Its result will then be used to call <br>
-//!           Read, etc ... <br>
-  Standard_EXPORT   virtual  Standard_Integer CaseIGES(const Standard_Integer typenum,const Standard_Integer formnum) const = 0;
-  //! General Read Function. See IGESReaderTool for more info <br>
-  Standard_EXPORT     void Read(const Standard_Integer CN,const Handle(Interface_FileReaderData)& data,const Standard_Integer num,Handle(Interface_Check)& ach,const Handle(Standard_Transient)& ent) const;
-  //! Reads own parameters from file for an Entity; <PR> gives <br>
-//!           access to them, <IR> detains parameter types and values <br>
-//!           For each class, there must be a specific action provided <br>
-//!           Note that Properties and Associativities Lists are Read by <br>
-//!           specific methods (see below), they are called under control <br>
-//!           of reading process (only one call) according Stage recorded <br>
-//!           in ParamReader <br>
-  Standard_EXPORT   virtual  void ReadOwnParams(const Standard_Integer CN,const Handle(IGESData_IGESEntity)& ent,const Handle(IGESData_IGESReaderData)& IR,IGESData_ParamReader& PR) const = 0;
-  //! Writes own parameters to IGESWriter; defined for each class <br>
-//!           (to be redefined for other IGES ReadWriteModules) <br>
-//!  Warning : Properties and Associativities are directly managed by <br>
-//!           WriteIGES, must not be sent by this method <br>
-  Standard_EXPORT   virtual  void WriteOwnParams(const Standard_Integer CN,const Handle(IGESData_IGESEntity)& ent,IGESData_IGESWriter& IW) const = 0;
+  
+  //! Translates the Type of record <num> in <data> to a positive
+  //! Case Number, or 0 if failed.
+  //! Works with IGESReaderData which provides Type & Form Numbers,
+  //! and calls CaseIGES (see below)
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Interface_FileReaderData)& data, const Standard_Integer num)  const;
+  
+  //! Defines Case Numbers corresponding to the Entity Types taken
+  //! into account by a sub-class of ReadWriteModule (hence, each
+  //! sub-class of ReadWriteModule has to redefine this method)
+  //! Called by CaseNum. Its result will then be used to call
+  //! Read, etc ...
+  Standard_EXPORT virtual   Standard_Integer CaseIGES (const Standard_Integer typenum, const Standard_Integer formnum)  const = 0;
+  
+  //! General Read Function. See IGESReaderTool for more info
+  Standard_EXPORT   void Read (const Standard_Integer CN, const Handle(Interface_FileReaderData)& data, const Standard_Integer num, Handle(Interface_Check)& ach, const Handle(Standard_Transient)& ent)  const;
+  
+  //! Reads own parameters from file for an Entity; <PR> gives
+  //! access to them, <IR> detains parameter types and values
+  //! For each class, there must be a specific action provided
+  //! Note that Properties and Associativities Lists are Read by
+  //! specific methods (see below), they are called under control
+  //! of reading process (only one call) according Stage recorded
+  //! in ParamReader
+  Standard_EXPORT virtual   void ReadOwnParams (const Standard_Integer CN, const Handle(IGESData_IGESEntity)& ent, const Handle(IGESData_IGESReaderData)& IR, IGESData_ParamReader& PR)  const = 0;
+  
+  //! Writes own parameters to IGESWriter; defined for each class
+  //! (to be redefined for other IGES ReadWriteModules)
+  //! Warning : Properties and Associativities are directly managed by
+  //! WriteIGES, must not be sent by this method
+  Standard_EXPORT virtual   void WriteOwnParams (const Standard_Integer CN, const Handle(IGESData_IGESEntity)& ent, IGESData_IGESWriter& IW)  const = 0;
 
 
 
@@ -117,7 +103,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESData_ReadWriteModule_HeaderFile

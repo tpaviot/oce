@@ -1,9 +1,3 @@
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _IntRes2d_IntersectionPoint_HeaderFile
 #include <IntRes2d_IntersectionPoint.hxx>
-#endif
-#ifndef _IntRes2d_IntersectionSegment_HeaderFile
 #include <IntRes2d_IntersectionSegment.hxx>
-#endif

@@ -1,3 +1,1 @@
-#ifndef _StepGeom_QuasiUniformCurve_HeaderFile
 #include <StepGeom_QuasiUniformCurve.hxx>
-#endif

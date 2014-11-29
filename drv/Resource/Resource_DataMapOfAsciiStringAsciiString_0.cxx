@@ -5,21 +5,11 @@
 
 #include <Resource_DataMapOfAsciiStringAsciiString.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString_HeaderFile
 #include <Resource_DataMapNodeOfDataMapOfAsciiStringAsciiString.hxx>
-#endif
-#ifndef _Resource_DataMapIteratorOfDataMapOfAsciiStringAsciiString_HeaderFile
 #include <Resource_DataMapIteratorOfDataMapOfAsciiStringAsciiString.hxx>
-#endif
  
 
 #define TheKey TCollection_AsciiString

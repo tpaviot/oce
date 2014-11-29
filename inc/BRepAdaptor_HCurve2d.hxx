@@ -6,22 +6,12 @@
 #ifndef _BRepAdaptor_HCurve2d_HeaderFile
 #define _BRepAdaptor_HCurve2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepAdaptor_HCurve2d_HeaderFile
 #include <Handle_BRepAdaptor_HCurve2d.hxx>
-#endif
 
-#ifndef _BRepAdaptor_Curve2d_HeaderFile
 #include <BRepAdaptor_Curve2d.hxx>
-#endif
-#ifndef _Adaptor2d_HCurve2d_HeaderFile
 #include <Adaptor2d_HCurve2d.hxx>
-#endif
 class Standard_OutOfRange;
 class Standard_NoSuchObject;
 class Standard_DomainError;
@@ -30,20 +20,21 @@ class Adaptor2d_Curve2d;
 
 
 
-class BRepAdaptor_HCurve2d : public Adaptor2d_HCurve2d {
+class BRepAdaptor_HCurve2d : public Adaptor2d_HCurve2d
+{
 
 public:
 
   
-  Standard_EXPORT   BRepAdaptor_HCurve2d();
+  Standard_EXPORT BRepAdaptor_HCurve2d();
   
-  Standard_EXPORT   BRepAdaptor_HCurve2d(const BRepAdaptor_Curve2d& C);
+  Standard_EXPORT BRepAdaptor_HCurve2d(const BRepAdaptor_Curve2d& C);
   
-  Standard_EXPORT     void Set(const BRepAdaptor_Curve2d& C) ;
+  Standard_EXPORT   void Set (const BRepAdaptor_Curve2d& C) ;
   
-  Standard_EXPORT    const Adaptor2d_Curve2d& Curve2d() const;
+  Standard_EXPORT  const  Adaptor2d_Curve2d& Curve2d()  const;
   
-        BRepAdaptor_Curve2d& ChangeCurve2d() ;
+      BRepAdaptor_Curve2d& ChangeCurve2d() ;
 
 
 
@@ -53,7 +44,7 @@ public:
 protected:
 
 
-BRepAdaptor_Curve2d myCurve;
+  BRepAdaptor_Curve2d myCurve;
 
 
 private: 
@@ -80,7 +71,6 @@ private:
 #undef Adaptor2d_GenHCurve2d_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepAdaptor_HCurve2d_HeaderFile

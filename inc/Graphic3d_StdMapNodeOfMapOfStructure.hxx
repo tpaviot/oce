@@ -6,25 +6,13 @@
 #ifndef _Graphic3d_StdMapNodeOfMapOfStructure_HeaderFile
 #define _Graphic3d_StdMapNodeOfMapOfStructure_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Graphic3d_StdMapNodeOfMapOfStructure_HeaderFile
 #include <Handle_Graphic3d_StdMapNodeOfMapOfStructure.hxx>
-#endif
 
-#ifndef _Handle_Graphic3d_Structure_HeaderFile
 #include <Handle_Graphic3d_Structure.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class Graphic3d_Structure;
 class TColStd_MapTransientHasher;
 class Graphic3d_MapOfStructure;
@@ -32,14 +20,15 @@ class Graphic3d_MapIteratorOfMapOfStructure;
 
 
 
-class Graphic3d_StdMapNodeOfMapOfStructure : public TCollection_MapNode {
+class Graphic3d_StdMapNodeOfMapOfStructure : public TCollection_MapNode
+{
 
 public:
 
   
-      Graphic3d_StdMapNodeOfMapOfStructure(const Handle(Graphic3d_Structure)& K,const TCollection_MapNodePtr& n);
+    Graphic3d_StdMapNodeOfMapOfStructure(const Handle(Graphic3d_Structure)& K, const TCollection_MapNodePtr& n);
   
-        Handle_Graphic3d_Structure& Key() const;
+      Handle(Graphic3d_Structure)& Key()  const;
 
 
 
@@ -54,12 +43,12 @@ protected:
 private: 
 
 
-Handle_Graphic3d_Structure myKey;
+  Handle(Graphic3d_Structure) myKey;
 
 
 };
 
-#define TheKey Handle_Graphic3d_Structure
+#define TheKey Handle(Graphic3d_Structure)
 #define TheKey_hxx <Graphic3d_Structure.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>
@@ -88,7 +77,6 @@ Handle_Graphic3d_Structure myKey;
 #undef TCollection_Map_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Graphic3d_StdMapNodeOfMapOfStructure_HeaderFile

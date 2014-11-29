@@ -6,43 +6,19 @@
 #ifndef _Interface_Check_HeaderFile
 #define _Interface_Check_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
 
-#ifndef _Handle_TColStd_HSequenceOfHAsciiString_HeaderFile
 #include <Handle_TColStd_HSequenceOfHAsciiString.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Interface_CheckStatus_HeaderFile
 #include <Interface_CheckStatus.hxx>
-#endif
-#ifndef _Handle_Message_Messenger_HeaderFile
 #include <Handle_Message_Messenger.hxx>
-#endif
 class TColStd_HSequenceOfHAsciiString;
 class Standard_Transient;
 class Standard_OutOfRange;
@@ -51,165 +27,210 @@ class TCollection_HAsciiString;
 class Message_Messenger;
 
 
-//! Defines a Check, as a list of Fail or Warning Messages under <br>
-//!           a literal form, which can be empty. A Check can also bring an <br>
-//!           Entity, which is the Entity to which the messages apply <br>
-//!           (this Entity may be any Transient Object). <br>
-//! <br>
-//!           Messages can be stored in two forms : the definitive form <br>
-//!           (the only one by default), and another form, the original <br>
-//!           form, which can be different if it contains values to be <br>
-//!           inserted (integers, reals, strings) <br>
-//!           The original form can be more suitable for some operations <br>
-//!           such as counting messages <br>
-class Interface_Check : public MMgt_TShared {
+//! Defines a Check, as a list of Fail or Warning Messages under
+//! a literal form, which can be empty. A Check can also bring an
+//! Entity, which is the Entity to which the messages apply
+//! (this Entity may be any Transient Object).
+//!
+//! Messages can be stored in two forms : the definitive form
+//! (the only one by default), and another form, the original
+//! form, which can be different if it contains values to be
+//! inserted (integers, reals, strings)
+//! The original form can be more suitable for some operations
+//! such as counting messages
+class Interface_Check : public MMgt_TShared
+{
 
 public:
 
-  //! Allows definition of a Sequence. Used also for Global Check <br>
-//!           of an InterfaceModel (which stores global messages for file) <br>
-  Standard_EXPORT   Interface_Check();
-  //! Defines a Check on an Entity <br>
-  Standard_EXPORT   Interface_Check(const Handle(Standard_Transient)& anentity);
-  //! New name for AddFail (Msg) <br>
-  Standard_EXPORT     void SendFail(const Message_Msg& amsg) ;
-  //! Records a new Fail message <br>
-  Standard_EXPORT     void AddFail(const Handle(TCollection_HAsciiString)& amess) ;
-  //! Records a new Fail message under two forms : final,original <br>
-  Standard_EXPORT     void AddFail(const Handle(TCollection_HAsciiString)& amess,const Handle(TCollection_HAsciiString)& orig) ;
-  //! Records a new Fail message given as "error text" directly <br>
-//!           If <orig> is given, a distinct original form is recorded <br>
-//!           else (D), the original form equates <amess> <br>
-  Standard_EXPORT     void AddFail(const Standard_CString amess,const Standard_CString orig = "") ;
-  //! Records a new Fail from the definition of a Msg (Original+Value) <br>
-  Standard_EXPORT     void AddFail(const Message_Msg& amsg) ;
-  //! Returns True if Check brings at least one Fail Message <br>
-  Standard_EXPORT     Standard_Boolean HasFailed() const;
-  //! Returns count of recorded Fails <br>
-  Standard_EXPORT     Standard_Integer NbFails() const;
-  //! Returns Fail Message as a String <br>
-//!           Final form by default, Original form if <final> is False <br>
-  Standard_EXPORT    const Handle_TCollection_HAsciiString& Fail(const Standard_Integer num,const Standard_Boolean final = Standard_True) const;
-  //! Same as above, but returns a CString (to be printed ...) <br>
-//!           Final form by default, Original form if <final> is False <br>
-  Standard_EXPORT     Standard_CString CFail(const Standard_Integer num,const Standard_Boolean final = Standard_True) const;
-  //! Returns the list of Fails, for a frontal-engine logic <br>
-//!           Final forms by default, Original forms if <final> is False <br>
-//!           Can be empty <br>
-  Standard_EXPORT     Handle_TColStd_HSequenceOfHAsciiString Fails(const Standard_Boolean final = Standard_True) const;
-  //! New name for AddWarning <br>
-  Standard_EXPORT     void SendWarning(const Message_Msg& amsg) ;
-  //! Records a new Warning message <br>
-  Standard_EXPORT     void AddWarning(const Handle(TCollection_HAsciiString)& amess) ;
-  //! Records a new Warning message under two forms : final,original <br>
-  Standard_EXPORT     void AddWarning(const Handle(TCollection_HAsciiString)& amess,const Handle(TCollection_HAsciiString)& orig) ;
-  //! Records a Warning message given as "warning message" directly <br>
-//!           If <orig> is given, a distinct original form is recorded <br>
-//!           else (D), the original form equates <amess> <br>
-  Standard_EXPORT     void AddWarning(const Standard_CString amess,const Standard_CString orig = "") ;
-  //! Records a new Warning from the definition of a Msg (Original+Value) <br>
-  Standard_EXPORT     void AddWarning(const Message_Msg& amsg) ;
-  //! Returns True if Check brings at least one Warning Message <br>
-  Standard_EXPORT     Standard_Boolean HasWarnings() const;
-  //! Returns count of recorded Warning messages <br>
-  Standard_EXPORT     Standard_Integer NbWarnings() const;
-  //! Returns Warning message as a String <br>
-//!           Final form by default, Original form if <final> is False <br>
-  Standard_EXPORT    const Handle_TCollection_HAsciiString& Warning(const Standard_Integer num,const Standard_Boolean final = Standard_True) const;
-  //! Same as above, but returns a CString (to be printed ...) <br>
-//!           Final form by default, Original form if <final> is False <br>
-  Standard_EXPORT     Standard_CString CWarning(const Standard_Integer num,const Standard_Boolean final = Standard_True) const;
-  //! Returns the list of Warnings, for a frontal-engine logic <br>
-//!           Final forms by default, Original forms if <final> is False <br>
-//!           Can be empty <br>
-  Standard_EXPORT     Handle_TColStd_HSequenceOfHAsciiString Warnings(const Standard_Boolean final = Standard_True) const;
-  //! Records an information message <br>
-//!           This does not change the status of the Check <br>
-  Standard_EXPORT     void SendMsg(const Message_Msg& amsg) ;
-  //! Returns the count of recorded information messages <br>
-  Standard_EXPORT     Standard_Integer NbInfoMsgs() const;
-  //! Returns information message as a String <br>
-  Standard_EXPORT    const Handle_TCollection_HAsciiString& InfoMsg(const Standard_Integer num,const Standard_Boolean final = Standard_True) const;
-  //! Same as above, but returns a CString (to be printed ...) <br>
-//!           Final form by default, Original form if <final> is False <br>
-  Standard_EXPORT     Standard_CString CInfoMsg(const Standard_Integer num,const Standard_Boolean final = Standard_True) const;
-  //! Returns the list of Info Msg, for a frontal-engine logic <br>
-//!           Final forms by default, Original forms if <final> is False <br>
-//!           Can be empty <br>
-  Standard_EXPORT     Handle_TColStd_HSequenceOfHAsciiString InfoMsgs(const Standard_Boolean final = Standard_True) const;
-  //! Returns the Check Status : OK, Warning or Fail <br>
-  Standard_EXPORT     Interface_CheckStatus Status() const;
-  //! Tells if Check Status complies with a given one <br>
-//!           (i.e. also status for query) <br>
-  Standard_EXPORT     Standard_Boolean Complies(const Interface_CheckStatus status) const;
-  //! Tells if a message is brought by a Check, as follows : <br>
-//!           <incl> = 0 : <mess> exactly matches one of the messages <br>
-//!           <incl> < 0 : <mess> is contained by one of the messages <br>
-//!           <incl> > 0 : <mess> contains one of the messages <br>
-//!           For <status> : for CheckWarning and CheckFail, considers only <br>
-//!             resp. Warning or Check messages. for CheckAny, considers all <br>
-//!             other values are ignored (answer will be false) <br>
-  Standard_EXPORT     Standard_Boolean Complies(const Handle(TCollection_HAsciiString)& mess,const Standard_Integer incl,const Interface_CheckStatus status) const;
-  //! Returns True if a Check is devoted to an entity; else, it is <br>
-//!           global (for InterfaceModel's storing of global error messages) <br>
-  Standard_EXPORT     Standard_Boolean HasEntity() const;
-  //! Returns the entity on which the Check has been defined <br>
-  Standard_EXPORT    const Handle_Standard_Transient& Entity() const;
-  //! Clears a check, in order to receive informations from transfer <br>
-//!           (Messages and Entity) <br>
-  Standard_EXPORT     void Clear() ;
-  //! Clears the Fail Messages (for instance to keep only Warnings) <br>
-  Standard_EXPORT     void ClearFails() ;
-  //! Clears the Warning Messages (for instance to keep only Fails) <br>
-  Standard_EXPORT     void ClearWarnings() ;
-  //! Clears the Info Messages <br>
-  Standard_EXPORT     void ClearInfoMsgs() ;
-  //! Removes the messages which comply with <mess>, as follows : <br>
-//!           <incl> = 0 : <mess> exactly matches one of the messages <br>
-//!           <incl> < 0 : <mess> is contained by one of the messages <br>
-//!           <incl> > 0 : <mess> contains one of the messages <br>
-//!           For <status> : for CheckWarning and CheckFail, considers only <br>
-//!             resp. Warning or Check messages. for CheckAny, considers all <br>
-//!             other values are ignored (nothing is done) <br>
-//!           Returns True if at least one message has been removed, False else <br>
-  Standard_EXPORT     Standard_Boolean Remove(const Handle(TCollection_HAsciiString)& mess,const Standard_Integer incl,const Interface_CheckStatus status) ;
-  //! Mends messages, according <pref> and <num> <br>
-//!           According to <num>, works on the whole list of Fails if = 0(D) <br>
-//!             or only one Fail message, given its rank <br>
-//!           If <pref> is empty, converts Fail(s) to Warning(s) <br>
-//!           Else, does the conversion but prefixes the new Warning(s) but <br>
-//!           <pref> followed by a semi-column <br>
-//!           Some reserved values of <pref> are : <br>
-//!           "FM" : standard prefix "Mended" (can be translated) <br>
-//!           "CF" : clears Fail(s) <br>
-//!           "CW" : clears Warning(s) : here, <num> refers to Warning list <br>
-//!           "CA" : clears all messages : here, <num> is ignored <br>
-  Standard_EXPORT     Standard_Boolean Mend(const Standard_CString pref,const Standard_Integer num = 0) ;
-  //! Receives an entity result of a Transfer <br>
-  Standard_EXPORT     void SetEntity(const Handle(Standard_Transient)& anentity) ;
-  //! same as SetEntity (old form kept for compatibility) <br>
-//! Warning : Does nothing if Entity field is not yet clear <br>
-  Standard_EXPORT     void GetEntity(const Handle(Standard_Transient)& anentity) ;
-  //! Copies messages stored in another Check, cumulating <br>
-//!           Does not regard other's Entity. Used to cumulate messages <br>
-  Standard_EXPORT     void GetMessages(const Handle(Interface_Check)& other) ;
-  //! Copies messages converted into Warning messages <br>
-//!           If failsonly is true, only Fails are taken, and converted <br>
-//!           else, Warnings are taken too. Does not regard Entity <br>
-//!           Used to keep Fail messages as Warning, after a recovery <br>
-  Standard_EXPORT     void GetAsWarning(const Handle(Interface_Check)& other,const Standard_Boolean failsonly) ;
-  //! Prints the messages of the check to an Messenger <br>
-//!           <level> = 1 : only fails <br>
-//!           <level> = 2 : fails and warnings <br>
-//!           <level> = 3 : all (fails, warnings, info msg) <br>
-//!           <final> : if positive (D) prints final values of messages <br>
-//!           if negative, prints originals <br>
-//!           if null, prints both forms <br>
-  Standard_EXPORT     void Print(const Handle(Message_Messenger)& S,const Standard_Integer level,const Standard_Integer final = 1) const;
-  //! Prints the messages of the check to the default trace file <br>
-//!           By default, according to the default standard level <br>
-//!           Else, according level (see method Print) <br>
-  Standard_EXPORT     void Trace(const Standard_Integer level = -1,const Standard_Integer final = 1) const;
+  
+  //! Allows definition of a Sequence. Used also for Global Check
+  //! of an InterfaceModel (which stores global messages for file)
+  Standard_EXPORT Interface_Check();
+  
+  //! Defines a Check on an Entity
+  Standard_EXPORT Interface_Check(const Handle(Standard_Transient)& anentity);
+  
+  //! New name for AddFail (Msg)
+  Standard_EXPORT   void SendFail (const Message_Msg& amsg) ;
+  
+  //! Records a new Fail message
+  Standard_EXPORT   void AddFail (const Handle(TCollection_HAsciiString)& amess) ;
+  
+  //! Records a new Fail message under two forms : final,original
+  Standard_EXPORT   void AddFail (const Handle(TCollection_HAsciiString)& amess, const Handle(TCollection_HAsciiString)& orig) ;
+  
+  //! Records a new Fail message given as "error text" directly
+  //! If <orig> is given, a distinct original form is recorded
+  //! else (D), the original form equates <amess>
+  Standard_EXPORT   void AddFail (const Standard_CString amess, const Standard_CString orig = "") ;
+  
+  //! Records a new Fail from the definition of a Msg (Original+Value)
+  Standard_EXPORT   void AddFail (const Message_Msg& amsg) ;
+  
+  //! Returns True if Check brings at least one Fail Message
+  Standard_EXPORT   Standard_Boolean HasFailed()  const;
+  
+  //! Returns count of recorded Fails
+  Standard_EXPORT   Standard_Integer NbFails()  const;
+  
+  //! Returns Fail Message as a String
+  //! Final form by default, Original form if <final> is False
+  Standard_EXPORT  const  Handle(TCollection_HAsciiString)& Fail (const Standard_Integer num, const Standard_Boolean final = Standard_True)  const;
+  
+  //! Same as above, but returns a CString (to be printed ...)
+  //! Final form by default, Original form if <final> is False
+  Standard_EXPORT   Standard_CString CFail (const Standard_Integer num, const Standard_Boolean final = Standard_True)  const;
+  
+  //! Returns the list of Fails, for a frontal-engine logic
+  //! Final forms by default, Original forms if <final> is False
+  //! Can be empty
+  Standard_EXPORT   Handle(TColStd_HSequenceOfHAsciiString) Fails (const Standard_Boolean final = Standard_True)  const;
+  
+  //! New name for AddWarning
+  Standard_EXPORT   void SendWarning (const Message_Msg& amsg) ;
+  
+  //! Records a new Warning message
+  Standard_EXPORT   void AddWarning (const Handle(TCollection_HAsciiString)& amess) ;
+  
+  //! Records a new Warning message under two forms : final,original
+  Standard_EXPORT   void AddWarning (const Handle(TCollection_HAsciiString)& amess, const Handle(TCollection_HAsciiString)& orig) ;
+  
+  //! Records a Warning message given as "warning message" directly
+  //! If <orig> is given, a distinct original form is recorded
+  //! else (D), the original form equates <amess>
+  Standard_EXPORT   void AddWarning (const Standard_CString amess, const Standard_CString orig = "") ;
+  
+  //! Records a new Warning from the definition of a Msg (Original+Value)
+  Standard_EXPORT   void AddWarning (const Message_Msg& amsg) ;
+  
+  //! Returns True if Check brings at least one Warning Message
+  Standard_EXPORT   Standard_Boolean HasWarnings()  const;
+  
+  //! Returns count of recorded Warning messages
+  Standard_EXPORT   Standard_Integer NbWarnings()  const;
+  
+  //! Returns Warning message as a String
+  //! Final form by default, Original form if <final> is False
+  Standard_EXPORT  const  Handle(TCollection_HAsciiString)& Warning (const Standard_Integer num, const Standard_Boolean final = Standard_True)  const;
+  
+  //! Same as above, but returns a CString (to be printed ...)
+  //! Final form by default, Original form if <final> is False
+  Standard_EXPORT   Standard_CString CWarning (const Standard_Integer num, const Standard_Boolean final = Standard_True)  const;
+  
+  //! Returns the list of Warnings, for a frontal-engine logic
+  //! Final forms by default, Original forms if <final> is False
+  //! Can be empty
+  Standard_EXPORT   Handle(TColStd_HSequenceOfHAsciiString) Warnings (const Standard_Boolean final = Standard_True)  const;
+  
+  //! Records an information message
+  //! This does not change the status of the Check
+  Standard_EXPORT   void SendMsg (const Message_Msg& amsg) ;
+  
+  //! Returns the count of recorded information messages
+  Standard_EXPORT   Standard_Integer NbInfoMsgs()  const;
+  
+  //! Returns information message as a String
+  Standard_EXPORT  const  Handle(TCollection_HAsciiString)& InfoMsg (const Standard_Integer num, const Standard_Boolean final = Standard_True)  const;
+  
+  //! Same as above, but returns a CString (to be printed ...)
+  //! Final form by default, Original form if <final> is False
+  Standard_EXPORT   Standard_CString CInfoMsg (const Standard_Integer num, const Standard_Boolean final = Standard_True)  const;
+  
+  //! Returns the list of Info Msg, for a frontal-engine logic
+  //! Final forms by default, Original forms if <final> is False
+  //! Can be empty
+  Standard_EXPORT   Handle(TColStd_HSequenceOfHAsciiString) InfoMsgs (const Standard_Boolean final = Standard_True)  const;
+  
+  //! Returns the Check Status : OK, Warning or Fail
+  Standard_EXPORT   Interface_CheckStatus Status()  const;
+  
+  //! Tells if Check Status complies with a given one
+  //! (i.e. also status for query)
+  Standard_EXPORT   Standard_Boolean Complies (const Interface_CheckStatus status)  const;
+  
+  //! Tells if a message is brought by a Check, as follows :
+  //! <incl> = 0 : <mess> exactly matches one of the messages
+  //! <incl> < 0 : <mess> is contained by one of the messages
+  //! <incl> > 0 : <mess> contains one of the messages
+  //! For <status> : for CheckWarning and CheckFail, considers only
+  //! resp. Warning or Check messages. for CheckAny, considers all
+  //! other values are ignored (answer will be false)
+  Standard_EXPORT   Standard_Boolean Complies (const Handle(TCollection_HAsciiString)& mess, const Standard_Integer incl, const Interface_CheckStatus status)  const;
+  
+  //! Returns True if a Check is devoted to an entity; else, it is
+  //! global (for InterfaceModel's storing of global error messages)
+  Standard_EXPORT   Standard_Boolean HasEntity()  const;
+  
+  //! Returns the entity on which the Check has been defined
+  Standard_EXPORT  const  Handle(Standard_Transient)& Entity()  const;
+  
+  //! Clears a check, in order to receive informations from transfer
+  //! (Messages and Entity)
+  Standard_EXPORT   void Clear() ;
+  
+  //! Clears the Fail Messages (for instance to keep only Warnings)
+  Standard_EXPORT   void ClearFails() ;
+  
+  //! Clears the Warning Messages (for instance to keep only Fails)
+  Standard_EXPORT   void ClearWarnings() ;
+  
+  //! Clears the Info Messages
+  Standard_EXPORT   void ClearInfoMsgs() ;
+  
+  //! Removes the messages which comply with <mess>, as follows :
+  //! <incl> = 0 : <mess> exactly matches one of the messages
+  //! <incl> < 0 : <mess> is contained by one of the messages
+  //! <incl> > 0 : <mess> contains one of the messages
+  //! For <status> : for CheckWarning and CheckFail, considers only
+  //! resp. Warning or Check messages. for CheckAny, considers all
+  //! other values are ignored (nothing is done)
+  //! Returns True if at least one message has been removed, False else
+  Standard_EXPORT   Standard_Boolean Remove (const Handle(TCollection_HAsciiString)& mess, const Standard_Integer incl, const Interface_CheckStatus status) ;
+  
+  //! Mends messages, according <pref> and <num>
+  //! According to <num>, works on the whole list of Fails if = 0(D)
+  //! or only one Fail message, given its rank
+  //! If <pref> is empty, converts Fail(s) to Warning(s)
+  //! Else, does the conversion but prefixes the new Warning(s) but
+  //! <pref> followed by a semi-column
+  //! Some reserved values of <pref> are :
+  //! "FM" : standard prefix "Mended" (can be translated)
+  //! "CF" : clears Fail(s)
+  //! "CW" : clears Warning(s) : here, <num> refers to Warning list
+  //! "CA" : clears all messages : here, <num> is ignored
+  Standard_EXPORT   Standard_Boolean Mend (const Standard_CString pref, const Standard_Integer num = 0) ;
+  
+  //! Receives an entity result of a Transfer
+  Standard_EXPORT   void SetEntity (const Handle(Standard_Transient)& anentity) ;
+  
+  //! same as SetEntity (old form kept for compatibility)
+  //! Warning : Does nothing if Entity field is not yet clear
+  Standard_EXPORT   void GetEntity (const Handle(Standard_Transient)& anentity) ;
+  
+  //! Copies messages stored in another Check, cumulating
+  //! Does not regard other's Entity. Used to cumulate messages
+  Standard_EXPORT   void GetMessages (const Handle(Interface_Check)& other) ;
+  
+  //! Copies messages converted into Warning messages
+  //! If failsonly is true, only Fails are taken, and converted
+  //! else, Warnings are taken too. Does not regard Entity
+  //! Used to keep Fail messages as Warning, after a recovery
+  Standard_EXPORT   void GetAsWarning (const Handle(Interface_Check)& other, const Standard_Boolean failsonly) ;
+  
+  //! Prints the messages of the check to an Messenger
+  //! <level> = 1 : only fails
+  //! <level> = 2 : fails and warnings
+  //! <level> = 3 : all (fails, warnings, info msg)
+  //! <final> : if positive (D) prints final values of messages
+  //! if negative, prints originals
+  //! if null, prints both forms
+  Standard_EXPORT   void Print (const Handle(Message_Messenger)& S, const Standard_Integer level, const Standard_Integer final = 1)  const;
+  
+  //! Prints the messages of the check to the default trace file
+  //! By default, according to the default standard level
+  //! Else, according level (see method Print)
+  Standard_EXPORT   void Trace (const Standard_Integer level = -1, const Standard_Integer final = 1)  const;
 
 
 
@@ -224,13 +245,13 @@ protected:
 private: 
 
 
-Handle_TColStd_HSequenceOfHAsciiString thefails;
-Handle_TColStd_HSequenceOfHAsciiString thefailo;
-Handle_TColStd_HSequenceOfHAsciiString thewarns;
-Handle_TColStd_HSequenceOfHAsciiString thewarno;
-Handle_TColStd_HSequenceOfHAsciiString theinfos;
-Handle_TColStd_HSequenceOfHAsciiString theinfoo;
-Handle_Standard_Transient theent;
+  Handle(TColStd_HSequenceOfHAsciiString) thefails;
+  Handle(TColStd_HSequenceOfHAsciiString) thefailo;
+  Handle(TColStd_HSequenceOfHAsciiString) thewarns;
+  Handle(TColStd_HSequenceOfHAsciiString) thewarno;
+  Handle(TColStd_HSequenceOfHAsciiString) theinfos;
+  Handle(TColStd_HSequenceOfHAsciiString) theinfoo;
+  Handle(Standard_Transient) theent;
 
 
 };
@@ -239,7 +260,6 @@ Handle_Standard_Transient theent;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Interface_Check_HeaderFile

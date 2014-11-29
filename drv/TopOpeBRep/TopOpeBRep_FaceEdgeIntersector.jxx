@@ -1,18 +1,6 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Transition_HeaderFile
 #include <TopOpeBRepDS_Transition.hxx>
-#endif
-#ifndef _TopoDS_Vertex_HeaderFile
 #include <TopoDS_Vertex.hxx>
-#endif
-#ifndef _TopOpeBRep_FaceEdgeIntersector_HeaderFile
 #include <TopOpeBRep_FaceEdgeIntersector.hxx>
-#endif

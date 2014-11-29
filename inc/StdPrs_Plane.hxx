@@ -6,51 +6,37 @@
 #ifndef _StdPrs_Plane_HeaderFile
 #define _StdPrs_Plane_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Prs3d_Root_HeaderFile
 #include <Prs3d_Root.hxx>
-#endif
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Handle_Prs3d_Drawer_HeaderFile
 #include <Handle_Prs3d_Drawer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Quantity_Length_HeaderFile
 #include <Quantity_Length.hxx>
-#endif
 class Prs3d_Presentation;
 class Adaptor3d_Surface;
 class Prs3d_Drawer;
 
 
-//! A framework to display infinite planes. <br>
-class StdPrs_Plane  : public Prs3d_Root {
+//! A framework to display infinite planes.
+class StdPrs_Plane  : public Prs3d_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Defines display of infinite planes. <br>
-//! The infinite plane aPlane is added to the display <br>
-//! aPresentation, and the attributes of the display are <br>
-//! defined by the attribute manager aDrawer. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Adaptor3d_Surface& aPlane,const Handle(Prs3d_Drawer)& aDrawer) ;
-  //! returns true if the distance between the point (X,Y,Z) and the <br>
-//!          plane is less than aDistance. <br>
-  Standard_EXPORT   static  Standard_Boolean Match(const Quantity_Length X,const Quantity_Length Y,const Quantity_Length Z,const Quantity_Length aDistance,const Adaptor3d_Surface& aPlane,const Handle(Prs3d_Drawer)& aDrawer) ;
-
+  
+  //! Defines display of infinite planes.
+  //! The infinite plane aPlane is added to the display
+  //! aPresentation, and the attributes of the display are
+  //! defined by the attribute manager aDrawer.
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const Adaptor3d_Surface& aPlane, const Handle(Prs3d_Drawer)& aDrawer) ;
+  
+  //! returns true if the distance between the point (X,Y,Z) and the
+  //! plane is less than aDistance.
+  Standard_EXPORT static   Standard_Boolean Match (const Quantity_Length X, const Quantity_Length Y, const Quantity_Length Z, const Quantity_Length aDistance, const Adaptor3d_Surface& aPlane, const Handle(Prs3d_Drawer)& aDrawer) ;
 
 
 
@@ -73,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StdPrs_Plane_HeaderFile

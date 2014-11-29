@@ -6,16 +6,15 @@
 #ifndef _BlendFunc_SectionShape_HeaderFile
 #define _BlendFunc_SectionShape_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum BlendFunc_SectionShape {
+
+enum BlendFunc_SectionShape
+{
 BlendFunc_Rational,
 BlendFunc_QuasiAngular,
 BlendFunc_Polynomial,
 BlendFunc_Linear
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BlendFunc_SectionShape_HeaderFile

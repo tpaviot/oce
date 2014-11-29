@@ -1,3 +1,0 @@
-#ifndef _TCollection_Array2Descriptor_HeaderFile
-#include <TCollection_Array2Descriptor.hxx>
-#endif

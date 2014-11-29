@@ -269,7 +269,9 @@ TCollection_AsciiString Units_UnitsSystem::ActiveUnit(const Standard_CString aqu
       if(index2)
         return unitssequence->Value(index2)->SymbolsSequence()->Value(1)->String();
       else {
+#ifdef OCCT_DEBUG
         cout<<" Pas d'unite active pour "<<aquantity<<endl;
+#endif
         return TCollection_AsciiString() ;
       }
     }
@@ -408,7 +410,7 @@ Standard_Real Units_UnitsSystem::ConvertUserSystemValueToSI
 void Units_UnitsSystem::Dump() const
 {
   Handle(Standard_Transient) transient = This();
-  Handle(Units_UnitsSystem) unitssystem = *(Handle_Units_UnitsSystem*)&transient;
+  Handle(Units_UnitsSystem) unitssystem = *(Handle(Units_UnitsSystem)*)&transient;
   Units_Explorer explorer(unitssystem);
   cout<<" UNITSSYSTEM : "<<endl;
   for(; explorer.MoreQuantity(); explorer.NextQuantity()) {

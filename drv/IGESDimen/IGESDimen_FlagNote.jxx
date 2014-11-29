@@ -1,21 +1,7 @@
-#ifndef _IGESDimen_GeneralNote_HeaderFile
 #include <IGESDimen_GeneralNote.hxx>
-#endif
-#ifndef _IGESDimen_HArray1OfLeaderArrow_HeaderFile
 #include <IGESDimen_HArray1OfLeaderArrow.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _IGESDimen_LeaderArrow_HeaderFile
 #include <IGESDimen_LeaderArrow.hxx>
-#endif
-#ifndef _IGESDimen_FlagNote_HeaderFile
 #include <IGESDimen_FlagNote.hxx>
-#endif

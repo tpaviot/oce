@@ -6,76 +6,127 @@
 #ifndef _BRepGProp_VinertGK_HeaderFile
 #define _BRepGProp_VinertGK_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _GProp_GProps_HeaderFile
 #include <GProp_GProps.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-class TopoDS_Edge;
 class BRepGProp_Face;
-class BRepGProp_Domain;
-class BRepGProp_UFunctionOfVinertGK;
-class BRepGProp_TFunctionOfVinertGK;
 class gp_Pnt;
+class BRepGProp_Domain;
 class gp_Pln;
 
 
-
-class BRepGProp_VinertGK  : public GProp_GProps {
+//! Computes the global properties of a geometric solid
+//! (3D closed region of space) delimited with :
+//! -  a point and a surface
+//! -  a plane and a surface
+//!
+//! The surface can be :
+//! -  a surface limited with its parametric values U-V,
+//! (naturally restricted)
+//! -  a surface limited in U-V space with its boundary
+//! curves.
+//!
+//! The surface's requirements to evaluate the global
+//! properties are defined in the template FaceTool class from
+//! the package GProp.
+//!
+//! The adaptive 2D algorithm of Gauss-Kronrod integration of
+//! double integral is used.
+//!
+//! The inner integral is computed along U parameter of
+//! surface. The integrand function is encapsulated in the
+//! support class UFunction that is defined below.
+//!
+//! The outer integral is computed along T parameter of a
+//! bounding curve. The integrand function is encapsulated in
+//! the support class TFunction that is defined below.
+class BRepGProp_VinertGK  : public GProp_GProps
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepGProp_VinertGK();
+  //! Empty constructor.
+  Standard_EXPORT BRepGProp_VinertGK();
   
-  Standard_EXPORT   BRepGProp_VinertGK(BRepGProp_Face& theSurface,const gp_Pnt& theLocation,const Standard_Real theTolerance = 0.001,const Standard_Boolean theCGFlag = Standard_False,const Standard_Boolean theIFlag = Standard_False);
+  //! Constructor. Computes the global properties of a region of
+  //! 3D space delimited with the naturally restricted surface
+  //! and the point VLocation.
+  Standard_EXPORT BRepGProp_VinertGK(BRepGProp_Face& theSurface, const gp_Pnt& theLocation, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
   
-  Standard_EXPORT   BRepGProp_VinertGK(BRepGProp_Face& theSurface,const gp_Pnt& thePoint,const gp_Pnt& theLocation,const Standard_Real theTolerance = 0.001,const Standard_Boolean theCGFlag = Standard_False,const Standard_Boolean theIFlag = Standard_False);
+  //! Constructor. Computes the global properties of a region of
+  //! 3D space delimited with the naturally restricted surface
+  //! and the point VLocation. The inertia is computed with
+  //! respect to thePoint.
+  Standard_EXPORT BRepGProp_VinertGK(BRepGProp_Face& theSurface, const gp_Pnt& thePoint, const gp_Pnt& theLocation, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
   
-  Standard_EXPORT   BRepGProp_VinertGK(BRepGProp_Face& theSurface,BRepGProp_Domain& theDomain,const gp_Pnt& theLocation,const Standard_Real theTolerance = 0.001,const Standard_Boolean theCGFlag = Standard_False,const Standard_Boolean theIFlag = Standard_False);
+  //! Constructor. Computes the global properties of a region of
+  //! 3D space delimited with the surface bounded by the domain
+  //! and the point VLocation.
+  Standard_EXPORT BRepGProp_VinertGK(BRepGProp_Face& theSurface, BRepGProp_Domain& theDomain, const gp_Pnt& theLocation, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
   
-  Standard_EXPORT   BRepGProp_VinertGK(BRepGProp_Face& theSurface,BRepGProp_Domain& theDomain,const gp_Pnt& thePoint,const gp_Pnt& theLocation,const Standard_Real theTolerance = 0.001,const Standard_Boolean theCGFlag = Standard_False,const Standard_Boolean theIFlag = Standard_False);
+  //! Constructor. Computes the global properties of a region of
+  //! 3D space delimited with the surface bounded by the domain
+  //! and the point VLocation. The inertia is computed with
+  //! respect to thePoint.
+  Standard_EXPORT BRepGProp_VinertGK(BRepGProp_Face& theSurface, BRepGProp_Domain& theDomain, const gp_Pnt& thePoint, const gp_Pnt& theLocation, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
   
-  Standard_EXPORT   BRepGProp_VinertGK(BRepGProp_Face& theSurface,const gp_Pln& thePlane,const gp_Pnt& theLocation,const Standard_Real theTolerance = 0.001,const Standard_Boolean theCGFlag = Standard_False,const Standard_Boolean theIFlag = Standard_False);
+  //! Constructor. Computes the global properties of a region of
+  //! 3D space delimited with the naturally restricted surface
+  //! and the plane.
+  Standard_EXPORT BRepGProp_VinertGK(BRepGProp_Face& theSurface, const gp_Pln& thePlane, const gp_Pnt& theLocation, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
   
-  Standard_EXPORT   BRepGProp_VinertGK(BRepGProp_Face& theSurface,BRepGProp_Domain& theDomain,const gp_Pln& thePlane,const gp_Pnt& theLocation,const Standard_Real theTolerance = 0.001,const Standard_Boolean theCGFlag = Standard_False,const Standard_Boolean theIFlag = Standard_False);
+  //! Constructor. Computes the global properties of a region of
+  //! 3D space delimited with the surface bounded by the domain
+  //! and the plane.
+  Standard_EXPORT BRepGProp_VinertGK(BRepGProp_Face& theSurface, BRepGProp_Domain& theDomain, const gp_Pln& thePlane, const gp_Pnt& theLocation, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
   
-        void SetLocation(const gp_Pnt& theLocation) ;
+  //! Sets the vertex that delimit 3D closed region of space.
+      void SetLocation (const gp_Pnt& theLocation) ;
   
-  Standard_EXPORT     Standard_Real Perform(BRepGProp_Face& theSurface,const Standard_Real theTolerance = 0.001,const Standard_Boolean theCGFlag = Standard_False,const Standard_Boolean theIFlag = Standard_False) ;
+  //! Computes the global properties of a region of 3D space
+  //! delimited with the naturally restricted surface and the
+  //! point VLocation.
+  Standard_EXPORT   Standard_Real Perform (BRepGProp_Face& theSurface, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False) ;
   
-  Standard_EXPORT     Standard_Real Perform(BRepGProp_Face& theSurface,const gp_Pnt& thePoint,const Standard_Real theTolerance = 0.001,const Standard_Boolean theCGFlag = Standard_False,const Standard_Boolean theIFlag = Standard_False) ;
+  //! Computes the global properties of a region of 3D space
+  //! delimited with the naturally restricted surface and the
+  //! point VLocation. The inertia is computed with respect to
+  //! thePoint.
+  Standard_EXPORT   Standard_Real Perform (BRepGProp_Face& theSurface, const gp_Pnt& thePoint, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False) ;
   
-  Standard_EXPORT     Standard_Real Perform(BRepGProp_Face& theSurface,BRepGProp_Domain& theDomain,const Standard_Real theTolerance = 0.001,const Standard_Boolean theCGFlag = Standard_False,const Standard_Boolean theIFlag = Standard_False) ;
+  //! Computes the global properties of a region of 3D space
+  //! delimited with the surface bounded by the domain and the
+  //! point VLocation.
+  Standard_EXPORT   Standard_Real Perform (BRepGProp_Face& theSurface, BRepGProp_Domain& theDomain, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False) ;
   
-  Standard_EXPORT     Standard_Real Perform(BRepGProp_Face& theSurface,BRepGProp_Domain& theDomain,const gp_Pnt& thePoint,const Standard_Real theTolerance = 0.001,const Standard_Boolean theCGFlag = Standard_False,const Standard_Boolean theIFlag = Standard_False) ;
+  //! Computes the global properties of a region of 3D space
+  //! delimited with the surface bounded by the domain and the
+  //! point VLocation. The inertia is computed with respect to
+  //! thePoint.
+  Standard_EXPORT   Standard_Real Perform (BRepGProp_Face& theSurface, BRepGProp_Domain& theDomain, const gp_Pnt& thePoint, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False) ;
   
-  Standard_EXPORT     Standard_Real Perform(BRepGProp_Face& theSurface,const gp_Pln& thePlane,const Standard_Real theTolerance = 0.001,const Standard_Boolean theCGFlag = Standard_False,const Standard_Boolean theIFlag = Standard_False) ;
+  //! Computes the global properties of a region of 3D space
+  //! delimited with the naturally restricted surface and the
+  //! plane.
+  Standard_EXPORT   Standard_Real Perform (BRepGProp_Face& theSurface, const gp_Pln& thePlane, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False) ;
   
-  Standard_EXPORT     Standard_Real Perform(BRepGProp_Face& theSurface,BRepGProp_Domain& theDomain,const gp_Pln& thePlane,const Standard_Real theTolerance = 0.001,const Standard_Boolean theCGFlag = Standard_False,const Standard_Boolean theIFlag = Standard_False) ;
+  //! Computes the global properties of a region of 3D space
+  //! delimited with the surface bounded by the domain and the
+  //! plane.
+  Standard_EXPORT   Standard_Real Perform (BRepGProp_Face& theSurface, BRepGProp_Domain& theDomain, const gp_Pln& thePlane, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False) ;
   
-        Standard_Real GetErrorReached() const;
+  //! Returns the relative reached computation error.
+      Standard_Real GetErrorReached()  const;
   
-        Standard_Real GetAbsolutError() const;
-
+  //! Returns the absolut reached computation error.
+      Standard_Real GetAbsolutError()  const;
 
 
 
@@ -89,45 +140,22 @@ protected:
 private:
 
   
-  Standard_EXPORT     Standard_Real PrivatePerform(BRepGProp_Face& theSurface,const Standard_Address thePtrDomain,const Standard_Boolean IsByPoint,const Standard_Address theCoeffs,const Standard_Real theTolerance,const Standard_Boolean theCGFlag,const Standard_Boolean theIFlag) ;
+  //! Main method for computation of the global properties that
+  //! is invoked by each Perform method.
+  Standard_EXPORT   Standard_Real PrivatePerform (BRepGProp_Face& theSurface, const Standard_Address thePtrDomain, const Standard_Boolean IsByPoint, const Standard_Address theCoeffs, const Standard_Real theTolerance, const Standard_Boolean theCGFlag, const Standard_Boolean theIFlag) ;
 
 
-Standard_Real myErrorReached;
-Standard_Real myAbsolutError;
+  Standard_Real myErrorReached;
+  Standard_Real myAbsolutError;
 
 
 };
 
-#define Arc TopoDS_Edge
-#define Arc_hxx <TopoDS_Edge.hxx>
-#define Face BRepGProp_Face
-#define Face_hxx <BRepGProp_Face.hxx>
-#define Domain BRepGProp_Domain
-#define Domain_hxx <BRepGProp_Domain.hxx>
-#define GProp_UFunction BRepGProp_UFunctionOfVinertGK
-#define GProp_UFunction_hxx <BRepGProp_UFunctionOfVinertGK.hxx>
-#define GProp_TFunction BRepGProp_TFunctionOfVinertGK
-#define GProp_TFunction_hxx <BRepGProp_TFunctionOfVinertGK.hxx>
-#define GProp_VGPropsGK BRepGProp_VinertGK
-#define GProp_VGPropsGK_hxx <BRepGProp_VinertGK.hxx>
 
-#include <GProp_VGPropsGK.lxx>
-
-#undef Arc
-#undef Arc_hxx
-#undef Face
-#undef Face_hxx
-#undef Domain
-#undef Domain_hxx
-#undef GProp_UFunction
-#undef GProp_UFunction_hxx
-#undef GProp_TFunction
-#undef GProp_TFunction_hxx
-#undef GProp_VGPropsGK
-#undef GProp_VGPropsGK_hxx
+#include <BRepGProp_VinertGK.lxx>
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+
+#endif // _BRepGProp_VinertGK_HeaderFile

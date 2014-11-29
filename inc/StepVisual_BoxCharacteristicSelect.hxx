@@ -6,41 +6,31 @@
 #ifndef _StepVisual_BoxCharacteristicSelect_HeaderFile
 #define _StepVisual_BoxCharacteristicSelect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 
 
 
-class StepVisual_BoxCharacteristicSelect  {
+class StepVisual_BoxCharacteristicSelect 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StepVisual_BoxCharacteristicSelect();
+  Standard_EXPORT StepVisual_BoxCharacteristicSelect();
   
-  Standard_EXPORT     Standard_Integer TypeOfContent() const;
+  Standard_EXPORT   Standard_Integer TypeOfContent()  const;
   
-  Standard_EXPORT     void SetTypeOfContent(const Standard_Integer aType) ;
+  Standard_EXPORT   void SetTypeOfContent (const Standard_Integer aType) ;
   
-  Standard_EXPORT     Standard_Real RealValue() const;
+  Standard_EXPORT   Standard_Real RealValue()  const;
   
-  Standard_EXPORT     void SetRealValue(const Standard_Real aValue) ;
-
+  Standard_EXPORT   void SetRealValue (const Standard_Real aValue) ;
 
 
 
@@ -55,8 +45,8 @@ private:
 
 
 
-Standard_Real theRealValue;
-Standard_Integer theTypeOfContent;
+  Standard_Real theRealValue;
+  Standard_Integer theTypeOfContent;
 
 
 };
@@ -65,7 +55,6 @@ Standard_Integer theTypeOfContent;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_BoxCharacteristicSelect_HeaderFile

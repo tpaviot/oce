@@ -6,25 +6,13 @@
 #ifndef _TopoDSToStep_MakeShellBasedSurfaceModel_HeaderFile
 #define _TopoDSToStep_MakeShellBasedSurfaceModel_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepShape_ShellBasedSurfaceModel_HeaderFile
 #include <Handle_StepShape_ShellBasedSurfaceModel.hxx>
-#endif
-#ifndef _TopoDSToStep_Root_HeaderFile
 #include <TopoDSToStep_Root.hxx>
-#endif
-#ifndef _Handle_Transfer_FinderProcess_HeaderFile
 #include <Handle_Transfer_FinderProcess.hxx>
-#endif
 class StepShape_ShellBasedSurfaceModel;
 class StdFail_NotDone;
 class TopoDS_Face;
@@ -33,24 +21,24 @@ class TopoDS_Shell;
 class TopoDS_Solid;
 
 
-//! This class implements the mapping between classes <br>
-//!          Face, Shell or Solid from TopoDS and ShellBasedSurfaceModel <br>
-//!          from StepShape. All the topology and geometry comprised <br>
-//!          into the shape are taken into account and translated. <br>
-class TopoDSToStep_MakeShellBasedSurfaceModel  : public TopoDSToStep_Root {
+//! This class implements the mapping between classes
+//! Face, Shell or Solid from TopoDS and ShellBasedSurfaceModel
+//! from StepShape. All the topology and geometry comprised
+//! into the shape are taken into account and translated.
+class TopoDSToStep_MakeShellBasedSurfaceModel  : public TopoDSToStep_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopoDSToStep_MakeShellBasedSurfaceModel(const TopoDS_Face& F,const Handle(Transfer_FinderProcess)& FP);
+  Standard_EXPORT TopoDSToStep_MakeShellBasedSurfaceModel(const TopoDS_Face& F, const Handle(Transfer_FinderProcess)& FP);
   
-  Standard_EXPORT   TopoDSToStep_MakeShellBasedSurfaceModel(const TopoDS_Shell& S,const Handle(Transfer_FinderProcess)& FP);
+  Standard_EXPORT TopoDSToStep_MakeShellBasedSurfaceModel(const TopoDS_Shell& S, const Handle(Transfer_FinderProcess)& FP);
   
-  Standard_EXPORT   TopoDSToStep_MakeShellBasedSurfaceModel(const TopoDS_Solid& S,const Handle(Transfer_FinderProcess)& FP);
+  Standard_EXPORT TopoDSToStep_MakeShellBasedSurfaceModel(const TopoDS_Solid& S, const Handle(Transfer_FinderProcess)& FP);
   
-  Standard_EXPORT    const Handle_StepShape_ShellBasedSurfaceModel& Value() const;
-
+  Standard_EXPORT  const  Handle(StepShape_ShellBasedSurfaceModel)& Value()  const;
 
 
 
@@ -65,7 +53,7 @@ private:
 
 
 
-Handle_StepShape_ShellBasedSurfaceModel theShellBasedSurfaceModel;
+  Handle(StepShape_ShellBasedSurfaceModel) theShellBasedSurfaceModel;
 
 
 };
@@ -74,7 +62,6 @@ Handle_StepShape_ShellBasedSurfaceModel theShellBasedSurfaceModel;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopoDSToStep_MakeShellBasedSurfaceModel_HeaderFile

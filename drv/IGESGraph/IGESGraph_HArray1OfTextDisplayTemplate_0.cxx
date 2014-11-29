@@ -5,28 +5,14 @@
 
 #include <IGESGraph_HArray1OfTextDisplayTemplate.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _IGESGraph_TextDisplayTemplate_HeaderFile
 #include <IGESGraph_TextDisplayTemplate.hxx>
-#endif
-#ifndef _IGESGraph_Array1OfTextDisplayTemplate_HeaderFile
 #include <IGESGraph_Array1OfTextDisplayTemplate.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(IGESGraph_HArray1OfTextDisplayTemplate,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(IGESGraph_HArray1OfTextDisplayTemplate)
 
 
-#define ItemHArray1 Handle_IGESGraph_TextDisplayTemplate
+#define ItemHArray1 Handle(IGESGraph_TextDisplayTemplate)
 #define ItemHArray1_hxx <IGESGraph_TextDisplayTemplate.hxx>
 #define TheArray1 IGESGraph_Array1OfTextDisplayTemplate
 #define TheArray1_hxx <IGESGraph_Array1OfTextDisplayTemplate.hxx>

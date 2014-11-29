@@ -5,15 +5,9 @@
 
 #include <Resource_QuickSortOfArray1.hxx>
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TColStd_Array1OfAsciiString_HeaderFile
 #include <TColStd_Array1OfAsciiString.hxx>
-#endif
-#ifndef _Resource_LexicalCompare_HeaderFile
 #include <Resource_LexicalCompare.hxx>
-#endif
  
 
 #define Item TCollection_AsciiString

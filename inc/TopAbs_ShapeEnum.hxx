@@ -6,32 +6,35 @@
 #ifndef _TopAbs_ShapeEnum_HeaderFile
 #define _TopAbs_ShapeEnum_HeaderFile
 
-//! Identifies various topological shapes. This <br>
-//! enumeration allows you to use dynamic typing of shapes. <br>
-//! The values are listed in order of complexity, from the <br>
-//! most complex to the most simple i.e. <br>
-//! COMPOUND > COMPSOLID > SOLID > .... > VERTEX > SHAPE. <br>
-//!  Any shape can contain simpler shapes in its definition. <br>
-//! Abstract topological data structure describes a basic <br>
-//! entity, the shape (present in this enumeration as the <br>
-//! SHAPE value), which can be divided into the following <br>
-//! component topologies: <br>
-//! - COMPOUND: A group of any of the shapes below. <br>
-//! - COMPSOLID: A set of solids connected by their <br>
-//!   faces. This expands the notions of WIRE and SHELL to solids. <br>
-//! - SOLID: A part of 3D space bounded by shells. <br>
-//! - SHELL: A set of faces connected by some of the <br>
-//!   edges of their wire boundaries. A shell can be open or closed. <br>
-//! - FACE: Part of a plane (in 2D geometry) or a surface <br>
-//!   (in 3D geometry) bounded by a closed wire. Its <br>
-//!   geometry is constrained (trimmed) by contours. <br>
-//! - WIRE: A sequence of edges connected by their <br>
-//!  vertices. It can be open or closed depending on <br>
-//!  whether the edges are linked or not. <br>
-//! - EDGE: A single dimensional shape corresponding <br>
-//!   to a curve, and bound by a vertex at each extremity. <br>
-//! - VERTEX: A zero-dimensional shape corresponding to a point in geometry. <br>
-enum TopAbs_ShapeEnum {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Identifies various topological shapes. This
+//! enumeration allows you to use dynamic typing of shapes.
+//! The values are listed in order of complexity, from the
+//! most complex to the most simple i.e.
+//! COMPOUND > COMPSOLID > SOLID > .... > VERTEX > SHAPE.
+//! Any shape can contain simpler shapes in its definition.
+//! Abstract topological data structure describes a basic
+//! entity, the shape (present in this enumeration as the
+//! SHAPE value), which can be divided into the following
+//! component topologies:
+//! - COMPOUND: A group of any of the shapes below.
+//! - COMPSOLID: A set of solids connected by their
+//! faces. This expands the notions of WIRE and SHELL to solids.
+//! - SOLID: A part of 3D space bounded by shells.
+//! - SHELL: A set of faces connected by some of the
+//! edges of their wire boundaries. A shell can be open or closed.
+//! - FACE: Part of a plane (in 2D geometry) or a surface
+//! (in 3D geometry) bounded by a closed wire. Its
+//! geometry is constrained (trimmed) by contours.
+//! - WIRE: A sequence of edges connected by their
+//! vertices. It can be open or closed depending on
+//! whether the edges are linked or not.
+//! - EDGE: A single dimensional shape corresponding
+//! to a curve, and bound by a vertex at each extremity.
+//! - VERTEX: A zero-dimensional shape corresponding to a point in geometry.
+enum TopAbs_ShapeEnum
+{
 TopAbs_COMPOUND,
 TopAbs_COMPSOLID,
 TopAbs_SOLID,
@@ -43,8 +46,4 @@ TopAbs_VERTEX,
 TopAbs_SHAPE
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _TopAbs_ShapeEnum_HeaderFile

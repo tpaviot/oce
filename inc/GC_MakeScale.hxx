@@ -6,48 +6,41 @@
 #ifndef _GC_MakeScale_HeaderFile
 #define _GC_MakeScale_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom_Transformation_HeaderFile
 #include <Handle_Geom_Transformation.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Geom_Transformation;
 class gp_Pnt;
 
 
-//! This class implements an elementary construction algorithm for <br>
-//! a scaling transformation in 3D space. The result is a <br>
-//! Geom_Transformation transformation. <br>
-//! A MakeScale object provides a framework for: <br>
-//! -   defining the construction of the transformation, <br>
-//! -   implementing the construction algorithm, and <br>
-//! -   consulting the result. <br>
-class GC_MakeScale  {
+//! This class implements an elementary construction algorithm for
+//! a scaling transformation in 3D space. The result is a
+//! Geom_Transformation transformation (a scaling transformation with
+//! the center point <Point> and the scaling value <Scale>).
+//! A MakeScale object provides a framework for:
+//! -   defining the construction of the transformation,
+//! -   implementing the construction algorithm, and
+//! -   consulting the result.
+class GC_MakeScale 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Constructs a scaling transformation with <br>
-//! -   Point as the center of the transformation, and <br>
-//! -   Scale as the scale factor. <br>
-  Standard_EXPORT   GC_MakeScale(const gp_Pnt& Point,const Standard_Real Scale);
-  //! Returns the constructed transformation. <br>
-  Standard_EXPORT    const Handle_Geom_Transformation& Value() const;
   
-  Standard_EXPORT    const Handle_Geom_Transformation& Operator() const;
+  //! Constructs a scaling transformation with
+  //! -   Point as the center of the transformation, and
+  //! -   Scale as the scale factor.
+  Standard_EXPORT GC_MakeScale(const gp_Pnt& Point, const Standard_Real Scale);
+  
+  //! Returns the constructed transformation.
+  Standard_EXPORT  const  Handle(Geom_Transformation)& Value()  const;
+  
+  Standard_EXPORT  const  Handle(Geom_Transformation)& Operator()  const;
 Standard_EXPORT operator Handle_Geom_Transformation() const;
-
 
 
 
@@ -62,7 +55,7 @@ private:
 
 
 
-Handle_Geom_Transformation TheScale;
+  Handle(Geom_Transformation) TheScale;
 
 
 };
@@ -71,7 +64,6 @@ Handle_Geom_Transformation TheScale;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GC_MakeScale_HeaderFile

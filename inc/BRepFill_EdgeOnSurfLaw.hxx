@@ -6,37 +6,29 @@
 #ifndef _BRepFill_EdgeOnSurfLaw_HeaderFile
 #define _BRepFill_EdgeOnSurfLaw_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepFill_EdgeOnSurfLaw_HeaderFile
 #include <Handle_BRepFill_EdgeOnSurfLaw.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _BRepFill_LocationLaw_HeaderFile
 #include <BRepFill_LocationLaw.hxx>
-#endif
 class TopoDS_Wire;
 class TopoDS_Shape;
 
 
-//! Build Location Law, with a Wire and a  Surface. <br>
-class BRepFill_EdgeOnSurfLaw : public BRepFill_LocationLaw {
+//! Build Location Law, with a Wire and a  Surface.
+class BRepFill_EdgeOnSurfLaw : public BRepFill_LocationLaw
+{
 
 public:
 
   
-  Standard_EXPORT   BRepFill_EdgeOnSurfLaw(const TopoDS_Wire& Path,const TopoDS_Shape& Surf);
-  //! returns <False> if one  Edge of <Path> do not have <br>
-//!           representation on  <Surf>.   In this  case  it is <br>
-//!          impossible to use this object. <br>
-  Standard_EXPORT     Standard_Boolean HasResult() const;
+  Standard_EXPORT BRepFill_EdgeOnSurfLaw(const TopoDS_Wire& Path, const TopoDS_Shape& Surf);
+  
+  //! returns <False> if one  Edge of <Path> do not have
+  //! representation on  <Surf>.   In this  case  it is
+  //! impossible to use this object.
+  Standard_EXPORT   Standard_Boolean HasResult()  const;
 
 
 
@@ -51,7 +43,7 @@ protected:
 private: 
 
 
-Standard_Boolean hasresult;
+  Standard_Boolean hasresult;
 
 
 };
@@ -60,7 +52,6 @@ Standard_Boolean hasresult;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepFill_EdgeOnSurfLaw_HeaderFile

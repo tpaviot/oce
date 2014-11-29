@@ -5,9 +5,7 @@
 
 #include <LocOpe_WiresOnShape.jxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
 
  
@@ -15,7 +13,6 @@
 
 IMPLEMENT_STANDARD_TYPE(LocOpe_WiresOnShape)
 IMPLEMENT_STANDARD_SUPERTYPE_ARRAY()
-  STANDARD_TYPE(LocOpe_ProjectedWires),
   STANDARD_TYPE(MMgt_TShared),
   STANDARD_TYPE(Standard_Transient),
 

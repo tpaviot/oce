@@ -6,39 +6,28 @@
 #ifndef _TopBas_ListNodeOfListOfTestInterference_HeaderFile
 #define _TopBas_ListNodeOfListOfTestInterference_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopBas_ListNodeOfListOfTestInterference_HeaderFile
 #include <Handle_TopBas_ListNodeOfListOfTestInterference.hxx>
-#endif
 
-#ifndef _TopBas_TestInterference_HeaderFile
 #include <TopBas_TestInterference.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopBas_TestInterference;
 class TopBas_ListOfTestInterference;
 class TopBas_ListIteratorOfListOfTestInterference;
 
 
 
-class TopBas_ListNodeOfListOfTestInterference : public TCollection_MapNode {
+class TopBas_ListNodeOfListOfTestInterference : public TCollection_MapNode
+{
 
 public:
 
   
-      TopBas_ListNodeOfListOfTestInterference(const TopBas_TestInterference& I,const TCollection_MapNodePtr& n);
+    TopBas_ListNodeOfListOfTestInterference(const TopBas_TestInterference& I, const TCollection_MapNodePtr& n);
   
-        TopBas_TestInterference& Value() const;
+      TopBas_TestInterference& Value()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-TopBas_TestInterference myValue;
+  TopBas_TestInterference myValue;
 
 
 };
@@ -83,7 +72,6 @@ TopBas_TestInterference myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopBas_ListNodeOfListOfTestInterference_HeaderFile

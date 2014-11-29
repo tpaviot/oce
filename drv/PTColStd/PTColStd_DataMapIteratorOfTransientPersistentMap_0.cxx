@@ -5,29 +5,17 @@
 
 #include <PTColStd_DataMapIteratorOfTransientPersistentMap.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _PTColStd_TransientPersistentMap_HeaderFile
 #include <PTColStd_TransientPersistentMap.hxx>
-#endif
-#ifndef _PTColStd_DataMapNodeOfTransientPersistentMap_HeaderFile
 #include <PTColStd_DataMapNodeOfTransientPersistentMap.hxx>
-#endif
  
 
-#define TheKey Handle_Standard_Transient
+#define TheKey Handle(Standard_Transient)
 #define TheKey_hxx <Standard_Transient.hxx>
-#define TheItem Handle_Standard_Persistent
+#define TheItem Handle(Standard_Persistent)
 #define TheItem_hxx <Standard_Persistent.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>

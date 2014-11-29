@@ -6,25 +6,13 @@
 #ifndef _StepElement_HArray1OfVolumeElementPurpose_HeaderFile
 #define _StepElement_HArray1OfVolumeElementPurpose_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepElement_HArray1OfVolumeElementPurpose_HeaderFile
 #include <Handle_StepElement_HArray1OfVolumeElementPurpose.hxx>
-#endif
 
-#ifndef _StepElement_Array1OfVolumeElementPurpose_HeaderFile
 #include <StepElement_Array1OfVolumeElementPurpose.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class StepElement_Array1OfVolumeElementPurpose;
 
 
 
-class StepElement_HArray1OfVolumeElementPurpose : public MMgt_TShared {
+class StepElement_HArray1OfVolumeElementPurpose : public MMgt_TShared
+{
 
 public:
 
   
-      StepElement_HArray1OfVolumeElementPurpose(const Standard_Integer Low,const Standard_Integer Up);
+    StepElement_HArray1OfVolumeElementPurpose(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepElement_HArray1OfVolumeElementPurpose(const Standard_Integer Low,const Standard_Integer Up,const StepElement_VolumeElementPurpose& V);
+    StepElement_HArray1OfVolumeElementPurpose(const Standard_Integer Low, const Standard_Integer Up, const StepElement_VolumeElementPurpose& V);
   
-        void Init(const StepElement_VolumeElementPurpose& V) ;
+      void Init (const StepElement_VolumeElementPurpose& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const StepElement_VolumeElementPurpose& Value) ;
+      void SetValue (const Standard_Integer Index, const StepElement_VolumeElementPurpose& Value) ;
   
-       const StepElement_VolumeElementPurpose& Value(const Standard_Integer Index) const;
+     const  StepElement_VolumeElementPurpose& Value (const Standard_Integer Index)  const;
   
-        StepElement_VolumeElementPurpose& ChangeValue(const Standard_Integer Index) ;
+      StepElement_VolumeElementPurpose& ChangeValue (const Standard_Integer Index) ;
   
-       const StepElement_Array1OfVolumeElementPurpose& Array1() const;
+     const  StepElement_Array1OfVolumeElementPurpose& Array1()  const;
   
-        StepElement_Array1OfVolumeElementPurpose& ChangeArray1() ;
+      StepElement_Array1OfVolumeElementPurpose& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-StepElement_Array1OfVolumeElementPurpose myArray;
+  StepElement_Array1OfVolumeElementPurpose myArray;
 
 
 };
@@ -100,7 +89,6 @@ StepElement_Array1OfVolumeElementPurpose myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_HArray1OfVolumeElementPurpose_HeaderFile

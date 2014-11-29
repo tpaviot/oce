@@ -1,3 +1,1 @@
-#ifndef _StepData_SelectMember_HeaderFile
 #include <StepData_SelectMember.hxx>
-#endif

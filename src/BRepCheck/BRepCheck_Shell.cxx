@@ -529,7 +529,7 @@ BRepCheck_Status BRepCheck_Shell::Orientation(const Standard_Boolean Update)
     }
   }
 
-#ifdef DEB
+#ifdef OCCT_DEBUG
   if (BRepCheck_Trace(0) > 1) {
     TopTools_DataMapIteratorOfDataMapOfShapeInteger itt(MapOfShapeOrientation);
     Standard_Integer upper = MapOfShapeOrientation.NbBuckets();
@@ -720,7 +720,7 @@ BRepCheck_Status BRepCheck_Shell::Orientation(const Standard_Boolean Update)
 //	  orf = (TopAbs_Orientation)MapOfShapeOrientation.Find(Fref);
 	  Fref.Orientation(orf);
 
-#ifdef DEB
+#ifdef OCCT_DEBUG
   if (BRepCheck_Trace(0) > 3) {
     cout << "Fref : " ;
     PrintShape(Fref, MapOfShapeOrientation.NbBuckets());
@@ -763,7 +763,7 @@ BRepCheck_Status BRepCheck_Shell::Orientation(const Standard_Boolean Update)
 //	    orf = (TopAbs_Orientation)MapOfShapeOrientation.Find(Fcur);
 	    Fcur.Orientation(orf);
 
-#ifdef DEB
+#ifdef OCCT_DEBUG
   if (BRepCheck_Trace(0) > 3) {
     cout << "    Fcur : " ;
     PrintShape(Fcur, MapOfShapeOrientation.NbBuckets());
@@ -783,7 +783,7 @@ BRepCheck_Status BRepCheck_Shell::Orientation(const Standard_Boolean Update)
 		  BRepCheck::Add(myMap(myShape), myOstat);
 		}
 		// quit, otherwise there is a risk of taking too much time.
-#ifdef DEB
+#ifdef OCCT_DEBUG
   if (BRepCheck_Trace(0) > 3) {
     orf = (TopAbs_Orientation)MapOfShapeOrientation.Find(Fcur);
     Fcur.Orientation(orf);
@@ -798,7 +798,7 @@ BRepCheck_Status BRepCheck_Shell::Orientation(const Standard_Boolean Update)
 	      MapOfShapeOrientation(Fcur)=orf;
 
 
-#ifdef DEB
+#ifdef OCCT_DEBUG
   if (BRepCheck_Trace(0) > 3) {
     orf = (TopAbs_Orientation)MapOfShapeOrientation.Find(Fcur);
     Fcur.Orientation(orf);
@@ -919,10 +919,11 @@ Standard_Integer BRepCheck_Shell::NbConnectedSet(TopTools_ListOfShape& theSets)
 	    }
 	  }
 	  if (!newCur) {
-	   theSets.Append(CurShell);
-	   CurShell.Nullify();
-	   newCur=Standard_True;
-	   BRB.MakeShell(CurShell);
+            CurShell.Closed (BRep_Tool::IsClosed (CurShell));
+            theSets.Append(CurShell);
+            CurShell.Nullify();
+            newCur=Standard_True;
+            BRB.MakeShell(CurShell);
 	  }
 	}
 	if (theFaces.IsEmpty()) break;

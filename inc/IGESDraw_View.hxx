@@ -6,37 +6,17 @@
 #ifndef _IGESDraw_View_HeaderFile
 #define _IGESDraw_View_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESDraw_View_HeaderFile
 #include <Handle_IGESDraw_View.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_IGESGeom_Plane_HeaderFile
 #include <Handle_IGESGeom_Plane.hxx>
-#endif
-#ifndef _IGESData_ViewKindEntity_HeaderFile
 #include <IGESData_ViewKindEntity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_IGESData_ViewKindEntity_HeaderFile
 #include <Handle_IGESData_ViewKindEntity.hxx>
-#endif
-#ifndef _Handle_IGESData_TransfEntity_HeaderFile
 #include <Handle_IGESData_TransfEntity.hxx>
-#endif
 class IGESGeom_Plane;
 class Standard_OutOfRange;
 class IGESData_ViewKindEntity;
@@ -44,69 +24,90 @@ class IGESData_TransfEntity;
 class gp_XYZ;
 
 
-//! defines IGES View Entity, Type <410> Form <0> <br>
-//!           in package IGESDraw <br>
-//! <br>
-//!           Used to define a framework for specifying a viewing <br>
-//!           orientation of an object in three dimensional model <br>
-//!           space (X,Y,Z). The framework is also used to support <br>
-//!           the projection of all or part of model space onto a <br>
-//!           view volume. <br>
-class IGESDraw_View : public IGESData_ViewKindEntity {
+//! defines IGES View Entity, Type <410> Form <0>
+//! in package IGESDraw
+//!
+//! Used to define a framework for specifying a viewing
+//! orientation of an object in three dimensional model
+//! space (X,Y,Z). The framework is also used to support
+//! the projection of all or part of model space onto a
+//! view volume.
+class IGESDraw_View : public IGESData_ViewKindEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESDraw_View();
-  //! This method is used to set fields of the class View <br>
-//!       - aViewNum     : View number <br>
-//!       - aScale       : Scale factor <br>
-//!       - aLeftPlane   : Left   plane of view volume <br>
-//!       - aTopPlane    : Top    plane of view volume <br>
-//!       - aRightPlane  : Right  plane of view volume <br>
-//!       - aBottomPlane : Bottom plane of view volume <br>
-//!       - aBackPlane   : Back   plane of view volume <br>
-//!       - aFrontPlane  : Front  plane of view volume <br>
-  Standard_EXPORT     void Init(const Standard_Integer aViewNum,const Standard_Real aScale,const Handle(IGESGeom_Plane)& aLeftPlane,const Handle(IGESGeom_Plane)& aTopPlane,const Handle(IGESGeom_Plane)& aRightPlane,const Handle(IGESGeom_Plane)& aBottomPlane,const Handle(IGESGeom_Plane)& aBackPlane,const Handle(IGESGeom_Plane)& aFrontPlane) ;
-  //! Returns True (for a single view) <br>
-  Standard_EXPORT     Standard_Boolean IsSingle() const;
-  //! Returns 1 (single view) <br>
-  Standard_EXPORT     Standard_Integer NbViews() const;
-  //! For a single view, returns <me> whatever <num> <br>
-  Standard_EXPORT     Handle_IGESData_ViewKindEntity ViewItem(const Standard_Integer num) const;
-  //! returns integer number identifying view orientation <br>
-  Standard_EXPORT     Standard_Integer ViewNumber() const;
-  //! returns the scale factor(Default = 1.0) <br>
-  Standard_EXPORT     Standard_Real ScaleFactor() const;
-  //! returns False if left side of view volume is not present <br>
-  Standard_EXPORT     Standard_Boolean HasLeftPlane() const;
-  //! returns the left side of view volume, or null handle <br>
-  Standard_EXPORT     Handle_IGESGeom_Plane LeftPlane() const;
-  //! returns False if top of view volume is not present <br>
-  Standard_EXPORT     Standard_Boolean HasTopPlane() const;
-  //! returns the top of view volume, or null handle <br>
-  Standard_EXPORT     Handle_IGESGeom_Plane TopPlane() const;
-  //! returns False if right side of view volume is not present <br>
-  Standard_EXPORT     Standard_Boolean HasRightPlane() const;
-  //! returns the right side of view volume, or null handle <br>
-  Standard_EXPORT     Handle_IGESGeom_Plane RightPlane() const;
-  //! returns False if bottom of view volume is not present <br>
-  Standard_EXPORT     Standard_Boolean HasBottomPlane() const;
-  //! returns the bottom of view volume, or null handle <br>
-  Standard_EXPORT     Handle_IGESGeom_Plane BottomPlane() const;
-  //! returns False if back of view volume is not present <br>
-  Standard_EXPORT     Standard_Boolean HasBackPlane() const;
-  //! returns the back of view volume, or null handle <br>
-  Standard_EXPORT     Handle_IGESGeom_Plane BackPlane() const;
-  //! returns False if front of view volume is not present <br>
-  Standard_EXPORT     Standard_Boolean HasFrontPlane() const;
-  //! returns the front of view volume, or null handle <br>
-  Standard_EXPORT     Handle_IGESGeom_Plane FrontPlane() const;
-  //! returns the Transformation Matrix <br>
-  Standard_EXPORT     Handle_IGESData_TransfEntity ViewMatrix() const;
-  //! returns XYZ from the Model space to the View space by <br>
-//! applying the View Matrix <br>
-  Standard_EXPORT     gp_XYZ ModelToView(const gp_XYZ& coords) const;
+  Standard_EXPORT IGESDraw_View();
+  
+  //! This method is used to set fields of the class View
+  //! - aViewNum     : View number
+  //! - aScale       : Scale factor
+  //! - aLeftPlane   : Left   plane of view volume
+  //! - aTopPlane    : Top    plane of view volume
+  //! - aRightPlane  : Right  plane of view volume
+  //! - aBottomPlane : Bottom plane of view volume
+  //! - aBackPlane   : Back   plane of view volume
+  //! - aFrontPlane  : Front  plane of view volume
+  Standard_EXPORT   void Init (const Standard_Integer aViewNum, const Standard_Real aScale, const Handle(IGESGeom_Plane)& aLeftPlane, const Handle(IGESGeom_Plane)& aTopPlane, const Handle(IGESGeom_Plane)& aRightPlane, const Handle(IGESGeom_Plane)& aBottomPlane, const Handle(IGESGeom_Plane)& aBackPlane, const Handle(IGESGeom_Plane)& aFrontPlane) ;
+  
+  //! Returns True (for a single view)
+  Standard_EXPORT   Standard_Boolean IsSingle()  const;
+  
+  //! Returns 1 (single view)
+  Standard_EXPORT   Standard_Integer NbViews()  const;
+  
+  //! For a single view, returns <me> whatever <num>
+  Standard_EXPORT   Handle(IGESData_ViewKindEntity) ViewItem (const Standard_Integer num)  const;
+  
+  //! returns integer number identifying view orientation
+  Standard_EXPORT   Standard_Integer ViewNumber()  const;
+  
+  //! returns the scale factor(Default = 1.0)
+  Standard_EXPORT   Standard_Real ScaleFactor()  const;
+  
+  //! returns False if left side of view volume is not present
+  Standard_EXPORT   Standard_Boolean HasLeftPlane()  const;
+  
+  //! returns the left side of view volume, or null handle
+  Standard_EXPORT   Handle(IGESGeom_Plane) LeftPlane()  const;
+  
+  //! returns False if top of view volume is not present
+  Standard_EXPORT   Standard_Boolean HasTopPlane()  const;
+  
+  //! returns the top of view volume, or null handle
+  Standard_EXPORT   Handle(IGESGeom_Plane) TopPlane()  const;
+  
+  //! returns False if right side of view volume is not present
+  Standard_EXPORT   Standard_Boolean HasRightPlane()  const;
+  
+  //! returns the right side of view volume, or null handle
+  Standard_EXPORT   Handle(IGESGeom_Plane) RightPlane()  const;
+  
+  //! returns False if bottom of view volume is not present
+  Standard_EXPORT   Standard_Boolean HasBottomPlane()  const;
+  
+  //! returns the bottom of view volume, or null handle
+  Standard_EXPORT   Handle(IGESGeom_Plane) BottomPlane()  const;
+  
+  //! returns False if back of view volume is not present
+  Standard_EXPORT   Standard_Boolean HasBackPlane()  const;
+  
+  //! returns the back of view volume, or null handle
+  Standard_EXPORT   Handle(IGESGeom_Plane) BackPlane()  const;
+  
+  //! returns False if front of view volume is not present
+  Standard_EXPORT   Standard_Boolean HasFrontPlane()  const;
+  
+  //! returns the front of view volume, or null handle
+  Standard_EXPORT   Handle(IGESGeom_Plane) FrontPlane()  const;
+  
+  //! returns the Transformation Matrix
+  Standard_EXPORT   Handle(IGESData_TransfEntity) ViewMatrix()  const;
+  
+  //! returns XYZ from the Model space to the View space by
+  //! applying the View Matrix
+  Standard_EXPORT   gp_XYZ ModelToView (const gp_XYZ& coords)  const;
 
 
 
@@ -121,14 +122,14 @@ protected:
 private: 
 
 
-Standard_Integer theViewNumber;
-Standard_Real theScaleFactor;
-Handle_IGESGeom_Plane theLeftPlane;
-Handle_IGESGeom_Plane theTopPlane;
-Handle_IGESGeom_Plane theRightPlane;
-Handle_IGESGeom_Plane theBottomPlane;
-Handle_IGESGeom_Plane theBackPlane;
-Handle_IGESGeom_Plane theFrontPlane;
+  Standard_Integer theViewNumber;
+  Standard_Real theScaleFactor;
+  Handle(IGESGeom_Plane) theLeftPlane;
+  Handle(IGESGeom_Plane) theTopPlane;
+  Handle(IGESGeom_Plane) theRightPlane;
+  Handle(IGESGeom_Plane) theBottomPlane;
+  Handle(IGESGeom_Plane) theBackPlane;
+  Handle(IGESGeom_Plane) theFrontPlane;
 
 
 };
@@ -137,7 +138,6 @@ Handle_IGESGeom_Plane theFrontPlane;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESDraw_View_HeaderFile

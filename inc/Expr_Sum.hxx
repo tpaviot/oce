@@ -6,34 +6,16 @@
 #ifndef _Expr_Sum_HeaderFile
 #define _Expr_Sum_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Expr_Sum_HeaderFile
 #include <Handle_Expr_Sum.hxx>
-#endif
 
-#ifndef _Expr_PolyExpression_HeaderFile
 #include <Expr_PolyExpression.hxx>
-#endif
-#ifndef _Handle_Expr_GeneralExpression_HeaderFile
 #include <Handle_Expr_GeneralExpression.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Expr_NamedUnknown_HeaderFile
 #include <Handle_Expr_NamedUnknown.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Standard_OutOfRange;
 class Standard_NumericError;
 class Expr_NotEvaluable;
@@ -46,37 +28,47 @@ class TCollection_AsciiString;
 
 
 
-class Expr_Sum : public Expr_PolyExpression {
+class Expr_Sum : public Expr_PolyExpression
+{
 
 public:
 
-  //! Creates the sum of all the members of sequence <exps>. <br>
-  Standard_EXPORT   Expr_Sum(const Expr_SequenceOfGeneralExpression& exps);
-  //! Creates the sum of <exp1> and <exp2>. <br>
-  Standard_EXPORT   Expr_Sum(const Handle(Expr_GeneralExpression)& exp1,const Handle(Expr_GeneralExpression)& exp2);
-  //! Returns a GeneralExpression after a simplification <br>
-//!          of the arguments of <me>. <br>
-  Standard_EXPORT     Handle_Expr_GeneralExpression ShallowSimplified() const;
-  //! Returns a copy of <me> having the same unknowns and functions. <br>
-  Standard_EXPORT     Handle_Expr_GeneralExpression Copy() const;
-  //! Tests if <me> and <Other> define the same expression. <br>
-//!          This method does not include any simplification before <br>
-//!          testing. <br>
-  Standard_EXPORT     Standard_Boolean IsIdentical(const Handle(Expr_GeneralExpression)& Other) const;
   
-  Standard_EXPORT     Standard_Boolean IsLinear() const;
-  //! Returns the derivative on <X> unknown of <me>. <br>
-  Standard_EXPORT     Handle_Expr_GeneralExpression Derivative(const Handle(Expr_NamedUnknown)& X) const;
-  //! Returns the <N>-th derivative on <X> unknown of <me>. <br>
-//!          Raises OutOfRange if <N> <= 0 <br>
-  Standard_EXPORT   virtual  Handle_Expr_GeneralExpression NDerivative(const Handle(Expr_NamedUnknown)& X,const Standard_Integer N) const;
-  //! Returns the value of <me> (as a Real) by <br>
-//!          replacement of <vars> by <vals>. <br>
-//!          Raises NotEvaluable if <me> contains NamedUnknown not <br>
-//!          in <vars> or NumericError if result cannot be computed. <br>
-  Standard_EXPORT     Standard_Real Evaluate(const Expr_Array1OfNamedUnknown& vars,const TColStd_Array1OfReal& vals) const;
-  //! returns a string representing <me> in a readable way. <br>
-  Standard_EXPORT     TCollection_AsciiString String() const;
+  //! Creates the sum of all the members of sequence <exps>.
+  Standard_EXPORT Expr_Sum(const Expr_SequenceOfGeneralExpression& exps);
+  
+  //! Creates the sum of <exp1> and <exp2>.
+  Standard_EXPORT Expr_Sum(const Handle(Expr_GeneralExpression)& exp1, const Handle(Expr_GeneralExpression)& exp2);
+  
+  //! Returns a GeneralExpression after a simplification
+  //! of the arguments of <me>.
+  Standard_EXPORT   Handle(Expr_GeneralExpression) ShallowSimplified()  const;
+  
+  //! Returns a copy of <me> having the same unknowns and functions.
+  Standard_EXPORT   Handle(Expr_GeneralExpression) Copy()  const;
+  
+  //! Tests if <me> and <Other> define the same expression.
+  //! This method does not include any simplification before
+  //! testing.
+  Standard_EXPORT   Standard_Boolean IsIdentical (const Handle(Expr_GeneralExpression)& Other)  const;
+  
+  Standard_EXPORT   Standard_Boolean IsLinear()  const;
+  
+  //! Returns the derivative on <X> unknown of <me>.
+  Standard_EXPORT   Handle(Expr_GeneralExpression) Derivative (const Handle(Expr_NamedUnknown)& X)  const;
+  
+  //! Returns the <N>-th derivative on <X> unknown of <me>.
+  //! Raises OutOfRange if <N> <= 0
+  Standard_EXPORT virtual   Handle(Expr_GeneralExpression) NDerivative (const Handle(Expr_NamedUnknown)& X, const Standard_Integer N)  const;
+  
+  //! Returns the value of <me> (as a Real) by
+  //! replacement of <vars> by <vals>.
+  //! Raises NotEvaluable if <me> contains NamedUnknown not
+  //! in <vars> or NumericError if result cannot be computed.
+  Standard_EXPORT   Standard_Real Evaluate (const Expr_Array1OfNamedUnknown& vars, const TColStd_Array1OfReal& vals)  const;
+  
+  //! returns a string representing <me> in a readable way.
+  Standard_EXPORT   TCollection_AsciiString String()  const;
 
 
 
@@ -99,7 +91,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Expr_Sum_HeaderFile

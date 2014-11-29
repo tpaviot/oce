@@ -6,28 +6,22 @@
 #ifndef _StepFEA_FeaModel3d_HeaderFile
 #define _StepFEA_FeaModel3d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepFEA_FeaModel3d_HeaderFile
 #include <Handle_StepFEA_FeaModel3d.hxx>
-#endif
 
-#ifndef _StepFEA_FeaModel_HeaderFile
 #include <StepFEA_FeaModel.hxx>
-#endif
 
 
-//! Representation of STEP entity FeaModel3d <br>
-class StepFEA_FeaModel3d : public StepFEA_FeaModel {
+//! Representation of STEP entity FeaModel3d
+class StepFEA_FeaModel3d : public StepFEA_FeaModel
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepFEA_FeaModel3d();
+  
+  //! Empty constructor
+  Standard_EXPORT StepFEA_FeaModel3d();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_FeaModel3d_HeaderFile

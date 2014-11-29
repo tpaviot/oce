@@ -6,61 +6,25 @@
 #ifndef _BinLDrivers_DocumentRetrievalDriver_HeaderFile
 #define _BinLDrivers_DocumentRetrievalDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BinLDrivers_DocumentRetrievalDriver_HeaderFile
 #include <Handle_BinLDrivers_DocumentRetrievalDriver.hxx>
-#endif
 
-#ifndef _BinObjMgt_Persistent_HeaderFile
 #include <BinObjMgt_Persistent.hxx>
-#endif
-#ifndef _Handle_BinMDF_ADriverTable_HeaderFile
 #include <Handle_BinMDF_ADriverTable.hxx>
-#endif
-#ifndef _BinObjMgt_RRelocationTable_HeaderFile
 #include <BinObjMgt_RRelocationTable.hxx>
-#endif
-#ifndef _Handle_CDM_MessageDriver_HeaderFile
 #include <Handle_CDM_MessageDriver.hxx>
-#endif
-#ifndef _TColStd_MapOfInteger_HeaderFile
 #include <TColStd_MapOfInteger.hxx>
-#endif
-#ifndef _BinLDrivers_VectorOfDocumentSection_HeaderFile
 #include <BinLDrivers_VectorOfDocumentSection.hxx>
-#endif
-#ifndef _PCDM_RetrievalDriver_HeaderFile
 #include <PCDM_RetrievalDriver.hxx>
-#endif
-#ifndef _Handle_PCDM_Document_HeaderFile
 #include <Handle_PCDM_Document.hxx>
-#endif
-#ifndef _Handle_CDM_Document_HeaderFile
 #include <Handle_CDM_Document.hxx>
-#endif
-#ifndef _Handle_CDM_Application_HeaderFile
 #include <Handle_CDM_Application.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_IStream_HeaderFile
 #include <Standard_IStream.hxx>
-#endif
-#ifndef _Storage_Position_HeaderFile
 #include <Storage_Position.hxx>
-#endif
-#ifndef _Handle_Storage_HeaderData_HeaderFile
 #include <Handle_Storage_HeaderData.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class BinMDF_ADriverTable;
 class CDM_MessageDriver;
 class TCollection_ExtendedString;
@@ -74,22 +38,28 @@ class BinLDrivers_DocumentSection;
 
 
 
-class BinLDrivers_DocumentRetrievalDriver : public PCDM_RetrievalDriver {
+class BinLDrivers_DocumentRetrievalDriver : public PCDM_RetrievalDriver
+{
 
 public:
 
-  //! Constructor <br>
-  Standard_EXPORT   BinLDrivers_DocumentRetrievalDriver();
-  //! pure virtual method definition <br>
-  Standard_EXPORT   virtual  TCollection_ExtendedString SchemaName() const;
-  //! pure virtual method definition <br>
-  Standard_EXPORT   virtual  void Make(const Handle(PCDM_Document)& PD,const Handle(CDM_Document)& TD) ;
-  //! pure virtual method definition <br>
-  Standard_EXPORT   virtual  Handle_CDM_Document CreateDocument() ;
-  //! retrieves the content of the file into a new Document. <br>
-  Standard_EXPORT   virtual  void Read(const TCollection_ExtendedString& theFileName,const Handle(CDM_Document)& theNewDocument,const Handle(CDM_Application)& theApplication) ;
   
-  Standard_EXPORT   virtual  Handle_BinMDF_ADriverTable AttributeDrivers(const Handle(CDM_MessageDriver)& theMsgDriver) ;
+  //! Constructor
+  Standard_EXPORT BinLDrivers_DocumentRetrievalDriver();
+  
+  //! pure virtual method definition
+  Standard_EXPORT virtual   TCollection_ExtendedString SchemaName()  const;
+  
+  //! pure virtual method definition
+  Standard_EXPORT virtual   void Make (const Handle(PCDM_Document)& PD, const Handle(CDM_Document)& TD) ;
+  
+  //! pure virtual method definition
+  Standard_EXPORT virtual   Handle(CDM_Document) CreateDocument() ;
+  
+  //! retrieves the content of the file into a new Document.
+  Standard_EXPORT virtual   void Read (const TCollection_ExtendedString& theFileName, const Handle(CDM_Document)& theNewDocument, const Handle(CDM_Application)& theApplication) ;
+  
+  Standard_EXPORT virtual   Handle(BinMDF_ADriverTable) AttributeDrivers (const Handle(CDM_MessageDriver)& theMsgDriver) ;
 
 
 
@@ -98,35 +68,46 @@ public:
 
 protected:
 
-  //! Read the tree from the stream <theIS> to <theLabel> <br>
-  Standard_EXPORT   virtual  Standard_Integer ReadSubTree(Standard_IStream& theIS,const TDF_Label& theData) ;
-  //! Read the  info  section  of  theFile into theData, <br>
-//!          return a file  position  corresponding to the info <br>
-//!          section end <br>
-  Standard_EXPORT     Storage_Position ReadInfoSection(const TCollection_AsciiString& theFile,Handle(Storage_HeaderData)& theData) ;
-  //! define the procedure of reading a section to file. <br>
-  Standard_EXPORT   virtual  void ReadSection(BinLDrivers_DocumentSection& theSection,const Handle(CDM_Document)& theDoc,Standard_IStream& theIS) ;
   
-  Standard_EXPORT   virtual  void ReadShapeSection(BinLDrivers_DocumentSection& theSection,Standard_IStream& theIS,const Standard_Boolean isMess = Standard_False) ;
+  //! Read the tree from the stream <theIS> to <theLabel>
+  Standard_EXPORT virtual   Standard_Integer ReadSubTree (Standard_IStream& theIS, const TDF_Label& theData) ;
   
-  Standard_EXPORT   virtual  void CheckShapeSection(const Storage_Position& thePos,Standard_IStream& theIS) ;
+  //! Read the  info  section  of  theFile into theData,
+  //! return a file  position  corresponding to the info
+  //! section end
+  Standard_EXPORT   Storage_Position ReadInfoSection (const TCollection_AsciiString& theFile, Handle(Storage_HeaderData)& theData) ;
   
-  Standard_EXPORT   virtual  void PropagateDocumentVersion(const Standard_Integer theVersion) ;
-  //! write  theMessage  to  the  MessageDriver  of  the <br>
-//!          Application <br>
-  Standard_EXPORT     void WriteMessage(const TCollection_ExtendedString& theMessage) ;
+  //! define the procedure of reading a section to file.
+  Standard_EXPORT virtual   void ReadSection (BinLDrivers_DocumentSection& theSection, const Handle(CDM_Document)& theDoc, Standard_IStream& theIS) ;
+  
+  Standard_EXPORT virtual   void ReadShapeSection (BinLDrivers_DocumentSection& theSection, Standard_IStream& theIS, const Standard_Boolean isMess = Standard_False) ;
+  
+  Standard_EXPORT virtual   void CheckShapeSection (const Storage_Position& thePos, Standard_IStream& theIS) ;
+  
+  Standard_EXPORT virtual   void PropagateDocumentVersion (const Standard_Integer theVersion) ;
+  
+  //! Check a file version(in which file was written) with a current version.
+  //! Redefining this method is a chance for application to read files
+  //! written by newer applications.
+  //! The default implementation: if the version of the file is greater than the
+  //! current or lesser than 2, then return false, else true
+  Standard_EXPORT virtual   Standard_Boolean CheckDocumentVersion (const Standard_Integer theFileVersion, const Standard_Integer theCurVersion) ;
+  
+  //! write  theMessage  to  the  MessageDriver  of  the
+  //! Application
+  Standard_EXPORT   void WriteMessage (const TCollection_ExtendedString& theMessage) ;
 
-Handle_BinMDF_ADriverTable myDrivers;
-BinObjMgt_RRelocationTable myRelocTable;
+  Handle(BinMDF_ADriverTable) myDrivers;
+  BinObjMgt_RRelocationTable myRelocTable;
 
 
 private: 
 
 
-BinObjMgt_Persistent myPAtt;
-Handle_CDM_MessageDriver myMsgDriver;
-TColStd_MapOfInteger myMapUnsupported;
-BinLDrivers_VectorOfDocumentSection mySections;
+  BinObjMgt_Persistent myPAtt;
+  Handle(CDM_MessageDriver) myMsgDriver;
+  TColStd_MapOfInteger myMapUnsupported;
+  BinLDrivers_VectorOfDocumentSection mySections;
 
 
 };
@@ -135,7 +116,6 @@ BinLDrivers_VectorOfDocumentSection mySections;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BinLDrivers_DocumentRetrievalDriver_HeaderFile

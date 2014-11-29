@@ -6,28 +6,14 @@
 #ifndef _IGESGeom_Array1OfTransformationMatrix_HeaderFile
 #define _IGESGeom_Array1OfTransformationMatrix_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_IGESGeom_TransformationMatrix_HeaderFile
 #include <Handle_IGESGeom_TransformationMatrix.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -36,52 +22,52 @@ class IGESGeom_TransformationMatrix;
 
 
 
-class IGESGeom_Array1OfTransformationMatrix  {
+class IGESGeom_Array1OfTransformationMatrix 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      IGESGeom_Array1OfTransformationMatrix(const Standard_Integer Low,const Standard_Integer Up);
+    IGESGeom_Array1OfTransformationMatrix(const Standard_Integer Low, const Standard_Integer Up);
   
-      IGESGeom_Array1OfTransformationMatrix(const Handle(IGESGeom_TransformationMatrix)& Item,const Standard_Integer Low,const Standard_Integer Up);
+    IGESGeom_Array1OfTransformationMatrix(const Handle(IGESGeom_TransformationMatrix)& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const Handle(IGESGeom_TransformationMatrix)& V) ;
+  Standard_EXPORT   void Init (const Handle(IGESGeom_TransformationMatrix)& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~IGESGeom_Array1OfTransformationMatrix()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const IGESGeom_Array1OfTransformationMatrix& Assign(const IGESGeom_Array1OfTransformationMatrix& Other) ;
-   const IGESGeom_Array1OfTransformationMatrix& operator =(const IGESGeom_Array1OfTransformationMatrix& Other) 
+  Standard_EXPORT  const  IGESGeom_Array1OfTransformationMatrix& Assign (const IGESGeom_Array1OfTransformationMatrix& Other) ;
+ const  IGESGeom_Array1OfTransformationMatrix& operator = (const IGESGeom_Array1OfTransformationMatrix& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(IGESGeom_TransformationMatrix)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(IGESGeom_TransformationMatrix)& Value) ;
   
-       const Handle_IGESGeom_TransformationMatrix& Value(const Standard_Integer Index) const;
-     const Handle_IGESGeom_TransformationMatrix& operator ()(const Standard_Integer Index) const
+     const  Handle(IGESGeom_TransformationMatrix)& Value (const Standard_Integer Index)  const;
+   const  Handle(IGESGeom_TransformationMatrix)& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        Handle_IGESGeom_TransformationMatrix& ChangeValue(const Standard_Integer Index) ;
-      Handle_IGESGeom_TransformationMatrix& operator ()(const Standard_Integer Index) 
+      Handle(IGESGeom_TransformationMatrix)& ChangeValue (const Standard_Integer Index) ;
+    Handle(IGESGeom_TransformationMatrix)& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -95,18 +81,18 @@ protected:
 private:
 
   
-  Standard_EXPORT   IGESGeom_Array1OfTransformationMatrix(const IGESGeom_Array1OfTransformationMatrix& AnArray);
+  Standard_EXPORT IGESGeom_Array1OfTransformationMatrix(const IGESGeom_Array1OfTransformationMatrix& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
 
-#define Array1Item Handle_IGESGeom_TransformationMatrix
+#define Array1Item Handle(IGESGeom_TransformationMatrix)
 #define Array1Item_hxx <IGESGeom_TransformationMatrix.hxx>
 #define TCollection_Array1 IGESGeom_Array1OfTransformationMatrix
 #define TCollection_Array1_hxx <IGESGeom_Array1OfTransformationMatrix.hxx>
@@ -119,7 +105,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGeom_Array1OfTransformationMatrix_HeaderFile

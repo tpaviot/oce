@@ -6,14 +6,13 @@
 #ifndef _MgtBRep_TriangleMode_HeaderFile
 #define _MgtBRep_TriangleMode_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum MgtBRep_TriangleMode {
+
+enum MgtBRep_TriangleMode
+{
 MgtBRep_WithTriangle,
 MgtBRep_WithoutTriangle
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _MgtBRep_TriangleMode_HeaderFile

@@ -5,32 +5,18 @@
 
 #include <BRepCheck_DataMapOfShapeResult.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _BRepCheck_Result_HeaderFile
 #include <BRepCheck_Result.hxx>
-#endif
-#ifndef _TopTools_OrientedShapeMapHasher_HeaderFile
 #include <TopTools_OrientedShapeMapHasher.hxx>
-#endif
-#ifndef _BRepCheck_DataMapNodeOfDataMapOfShapeResult_HeaderFile
 #include <BRepCheck_DataMapNodeOfDataMapOfShapeResult.hxx>
-#endif
-#ifndef _BRepCheck_DataMapIteratorOfDataMapOfShapeResult_HeaderFile
 #include <BRepCheck_DataMapIteratorOfDataMapOfShapeResult.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape
 #define TheKey_hxx <TopoDS_Shape.hxx>
-#define TheItem Handle_BRepCheck_Result
+#define TheItem Handle(BRepCheck_Result)
 #define TheItem_hxx <BRepCheck_Result.hxx>
 #define Hasher TopTools_OrientedShapeMapHasher
 #define Hasher_hxx <TopTools_OrientedShapeMapHasher.hxx>

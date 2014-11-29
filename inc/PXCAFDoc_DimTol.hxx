@@ -6,53 +6,38 @@
 #ifndef _PXCAFDoc_DimTol_HeaderFile
 #define _PXCAFDoc_DimTol_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PXCAFDoc_DimTol_HeaderFile
 #include <Handle_PXCAFDoc_DimTol.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_PColStd_HArray1OfReal_HeaderFile
 #include <Handle_PColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Handle_PCollection_HAsciiString_HeaderFile
 #include <Handle_PCollection_HAsciiString.hxx>
-#endif
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
 class PColStd_HArray1OfReal;
 class PCollection_HAsciiString;
 
 
-class PXCAFDoc_DimTol : public PDF_Attribute {
+class PXCAFDoc_DimTol : public PDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   PXCAFDoc_DimTol();
+  Standard_EXPORT PXCAFDoc_DimTol();
   
-  Standard_EXPORT   PXCAFDoc_DimTol(const Standard_Integer theKind,const Handle(PColStd_HArray1OfReal)& theVal,const Handle(PCollection_HAsciiString)& theName,const Handle(PCollection_HAsciiString)& theDescr);
+  Standard_EXPORT PXCAFDoc_DimTol(const Standard_Integer theKind, const Handle(PColStd_HArray1OfReal)& theVal, const Handle(PCollection_HAsciiString)& theName, const Handle(PCollection_HAsciiString)& theDescr);
   
-  Standard_EXPORT     Standard_Integer GetKind() const;
+  Standard_EXPORT   Standard_Integer GetKind()  const;
   
-  Standard_EXPORT     Handle_PColStd_HArray1OfReal GetVal() const;
+  Standard_EXPORT   Handle(PColStd_HArray1OfReal) GetVal()  const;
   
-  Standard_EXPORT     Handle_PCollection_HAsciiString GetName() const;
+  Standard_EXPORT   Handle(PCollection_HAsciiString) GetName()  const;
   
-  Standard_EXPORT     Handle_PCollection_HAsciiString GetDescription() const;
+  Standard_EXPORT   Handle(PCollection_HAsciiString) GetDescription()  const;
   
-  Standard_EXPORT     void Set(const Standard_Integer theKind,const Handle(PColStd_HArray1OfReal)& theVal,const Handle(PCollection_HAsciiString)& theName,const Handle(PCollection_HAsciiString)& theDescr) ;
+  Standard_EXPORT   void Set (const Standard_Integer theKind, const Handle(PColStd_HArray1OfReal)& theVal, const Handle(PCollection_HAsciiString)& theName, const Handle(PCollection_HAsciiString)& theDescr) ;
 
 PXCAFDoc_DimTol(const Storage_stCONSTclCOM& a) : PDF_Attribute(a)
 {
@@ -79,10 +64,10 @@ protected:
 private: 
 
 
-Standard_Integer myKind;
-Handle_PColStd_HArray1OfReal myVal;
-Handle_PCollection_HAsciiString myName;
-Handle_PCollection_HAsciiString myDescr;
+  Standard_Integer myKind;
+  Handle(PColStd_HArray1OfReal) myVal;
+  Handle(PCollection_HAsciiString) myName;
+  Handle(PCollection_HAsciiString) myDescr;
 
 
 };
@@ -91,7 +76,6 @@ Handle_PCollection_HAsciiString myDescr;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PXCAFDoc_DimTol_HeaderFile

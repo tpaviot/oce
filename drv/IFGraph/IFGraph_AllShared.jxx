@@ -1,12 +1,4 @@
-#ifndef _Interface_Graph_HeaderFile
 #include <Interface_Graph.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Interface_EntityIterator_HeaderFile
 #include <Interface_EntityIterator.hxx>
-#endif
-#ifndef _IFGraph_AllShared_HeaderFile
 #include <IFGraph_AllShared.hxx>
-#endif

@@ -6,22 +6,15 @@
 #ifndef _Handle_StepShape_DirectedDimensionalLocation_HeaderFile
 #define _Handle_StepShape_DirectedDimensionalLocation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepShape_DimensionalLocation_HeaderFile
 #include <Handle_StepShape_DimensionalLocation.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepShape_DimensionalLocation);
 class StepShape_DirectedDimensionalLocation;
 
-DEFINE_STANDARD_HANDLE(StepShape_DirectedDimensionalLocation,StepShape_DimensionalLocation)
+DEFINE_STANDARD_HANDLE(StepShape_DirectedDimensionalLocation, StepShape_DimensionalLocation)
 
-#endif
+#endif // _Handle_StepShape_DirectedDimensionalLocation_HeaderFile

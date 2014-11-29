@@ -1,12 +1,4 @@
-#ifndef _Prs3d_Presentation_HeaderFile
 #include <Prs3d_Presentation.hxx>
-#endif
-#ifndef _Prs3d_Drawer_HeaderFile
 #include <Prs3d_Drawer.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _DsgPrs_PerpenPresentation_HeaderFile
 #include <DsgPrs_PerpenPresentation.hxx>
-#endif

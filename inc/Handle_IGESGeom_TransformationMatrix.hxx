@@ -6,22 +6,15 @@
 #ifndef _Handle_IGESGeom_TransformationMatrix_HeaderFile
 #define _Handle_IGESGeom_TransformationMatrix_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IGESData_TransfEntity_HeaderFile
 #include <Handle_IGESData_TransfEntity.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IGESData_TransfEntity);
 class IGESGeom_TransformationMatrix;
 
-DEFINE_STANDARD_HANDLE(IGESGeom_TransformationMatrix,IGESData_TransfEntity)
+DEFINE_STANDARD_HANDLE(IGESGeom_TransformationMatrix, IGESData_TransfEntity)
 
-#endif
+#endif // _Handle_IGESGeom_TransformationMatrix_HeaderFile

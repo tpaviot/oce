@@ -6,209 +6,206 @@
 #ifndef _Visual3d_ContextView_HeaderFile
 #define _Visual3d_ContextView_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
-#endif
-#ifndef _Visual3d_TypeOfModel_HeaderFile
 #include <Visual3d_TypeOfModel.hxx>
-#endif
-#ifndef _Visual3d_TypeOfVisualization_HeaderFile
 #include <Visual3d_TypeOfVisualization.hxx>
-#endif
-#ifndef _TColStd_SequenceOfAddress_HeaderFile
 #include <TColStd_SequenceOfAddress.hxx>
-#endif
-#ifndef _Handle_Graphic3d_TextureEnv_HeaderFile
 #include <Handle_Graphic3d_TextureEnv.hxx>
-#endif
-#ifndef _Visual3d_TypeOfSurfaceDetail_HeaderFile
 #include <Visual3d_TypeOfSurfaceDetail.hxx>
-#endif
-#ifndef _Graphic3d_SequenceOfHClipPlane_HeaderFile
 #include <Graphic3d_SequenceOfHClipPlane.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Visual3d_Light_HeaderFile
 #include <Handle_Visual3d_Light.hxx>
-#endif
-#ifndef _Handle_Visual3d_HSetOfLight_HeaderFile
-#include <Handle_Visual3d_HSetOfLight.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
+#include <Handle_Visual3d_HSequenceOfLight.hxx>
 #include <Standard_Integer.hxx>
-#endif
 class Graphic3d_TextureEnv;
 class Visual3d_ClipDefinitionError;
 class Visual3d_DepthCueingDefinitionError;
 class Visual3d_LightDefinitionError;
 class Visual3d_ZClippingDefinitionError;
 class Visual3d_Light;
-class Visual3d_HSetOfLight;
+class Visual3d_HSequenceOfLight;
 
 
-//! This class manages the creation and update of <br>
-//!	    a visualization context for one view in the viewer. <br>
-//!	    A context is defined by : <br>
-//!	    Antialiasing. <br>
-//!	    ZClipping. <br>
-//!	    Depth-cueing. <br>
-//!	    The type of visualization. <br>
-//!	    The light sources. <br>
-class Visual3d_ContextView  {
+//! This class manages the creation and update of
+//! a visualization context for one view in the viewer.
+//! A context is defined by :
+//! Antialiasing.
+//! ZClipping.
+//! Depth-cueing.
+//! The type of visualization.
+//! The light sources.
+class Visual3d_ContextView 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates a context from default values <br>
-//! <br>
-//!	    Aliasing		  : OFF <br>
-//!	    BackZClipping	  : OFF <br>
-//!	    FrontZClipping	  : OFF <br>
-//!	    Depth-cueing	  : OFF <br>
-//!	    Light source	  : 0 <br>
-//!	    Clipping plane	  : 0 <br>
-//!	    Type Of Visualization : TOV_WIREFRAME <br>
-//!	    Type Of Model	  : TOM_NONE <br>
-//!          Type Of SurfaceDetail : TOSD_NONE <br>
-  Standard_EXPORT   Visual3d_ContextView();
-  //! Selects the kind of rendering <br>
-//!          default to: TOSD_NONE <br>
-  Standard_EXPORT     void SetSurfaceDetail(const Visual3d_TypeOfSurfaceDetail TOSD) ;
-  //! Sets the environment texture to use <br>
-//!          no environment texture by default <br>
-  Standard_EXPORT     void SetTextureEnv(const Handle(Graphic3d_TextureEnv)& ATexture) ;
-  //! Activates antialiasing. <br>
-//!	Antialiasing can be activated on all the structures <br>
-//!	in the view <br>
-  Standard_EXPORT     void SetAliasingOn() ;
-  //! Deactivates the antialiasing. <br>
-  Standard_EXPORT     void SetAliasingOff() ;
-  //! Modifies the back depth-cueing plane. <br>
-//!  Category: Methods to modify the class definition <br>
-//!  Warning: Raises DepthCueingDefinitionError if <BackPlane> <br>
-//!	    is front of <FrontPlane> and DepthCueing is ON. <br>
-  Standard_EXPORT     void SetDepthCueingBackPlane(const Standard_Real ABack) ;
-  //! Modifies the front depth-cueing plane. <br>
-//!  Category: Methods to modify the class definition <br>
-//!  Warning: Raises DepthCueingDefinitionError if <BackPlane> is <br>
-//!	    front of <FrontPlane> and DepthCueing is ON. <br>
-  Standard_EXPORT     void SetDepthCueingFrontPlane(const Standard_Real ABack) ;
-  //! Activates the depth-cueing. <br>
-//!	Depth-cueing can be activated on all structures <br>
-//!	present in the view. <br>
-//!  Category: Methods to modify the class definition <br>
-//!  Warning: Raises DepthCueingDefinitionError if <BackPlane> is <br>
-//!	    front of <FrontPlane>. <br>
-  Standard_EXPORT     void SetDepthCueingOn() ;
-  //! Deactivates the depth-cueing. <br>
-  Standard_EXPORT     void SetDepthCueingOff() ;
-  //! Returns sequence of clip planes. <br>
-//! @return sequence of clip planes. <br>
-  Standard_EXPORT    const Graphic3d_SequenceOfHClipPlane& ClipPlanes() const;
-  //! Change clip planes. <br>
-//! @return sequence of clip planes. <br>
-  Standard_EXPORT     Graphic3d_SequenceOfHClipPlane& ChangeClipPlanes() ;
-  //! Activates the light source <ALight> <br>
-  Standard_EXPORT     void SetLightOn(const Handle(Visual3d_Light)& ALight) ;
-  //! Deactivates the light source <ALight> <br>
-  Standard_EXPORT     void SetLightOff(const Handle(Visual3d_Light)& ALight) ;
-  //! Modifies the shading model when the type of <br>
-//!	    visualization is TOV_SHADING <br>
-//! <br>
-//!	    TypeOfModel	: TOM_NONE <br>
-//!			  TOM_INTERP_COLOR <br>
-//!			  TOM_FACET <br>
-//!			  TOM_VERTEX <br>
-//! <br>
-  Standard_EXPORT     void SetModel(const Visual3d_TypeOfModel AModel) ;
-  //! Modifies the mode of visualization. <br>
-//! <br>
-//!	    TypeOfVisualization	: TOV_WIREFRAME <br>
-//!				  TOV_SHADING <br>
-//! <br>
-  Standard_EXPORT     void SetVisualization(const Visual3d_TypeOfVisualization AVisual) ;
-  //! Modifies the back Z-clipping plane. <br>
-//!  Category: Methods to modify the class definition <br>
-//!  Warning: Raises ZClippingDefinitionError if <BackPlane> is <br>
-//!	    front of <FrontPlane> and ZClipping is ON. <br>
-  Standard_EXPORT     void SetZClippingBackPlane(const Standard_Real ABack) ;
-  //! Modifies the front Z-clipping plane. <br>
-//!  Category: Methods to modify the class definition <br>
-//!  Warning: Raises ZClippingDefinitionError if <BackPlane> is <br>
-//!	    front of <FrontPlane> and ZClipping is ON. <br>
-  Standard_EXPORT     void SetZClippingFrontPlane(const Standard_Real AFront) ;
-  //! Activates the Z-clipping planes defined by <br>
-//!	    SetZClippingFrontPlane and SetZClippingBackPlane. <br>
-//!  Category: Methods to modify the class definition <br>
-//!  Warning: Raises ZClippingDefinitionError if <BackPlane> is <br>
-//!	    front of <FrontPlane>. <br>
-  Standard_EXPORT     void SetZClippingOn() ;
-  //! Deactivates the Z-clipping planes defined by <br>
-//!	    SetFrontPlane and SetBackPlane. <br>
-  Standard_EXPORT     void SetZClippingOff() ;
-  //! Activates the front Z-clipping plane defined by <br>
-//!	    SetFrontPlane method. <br>
-  Standard_EXPORT     void SetFrontZClippingOn() ;
-  //! Deactivates the front Z-clipping plane defined by <br>
-//!	    SetFrontPlane method. <br>
-  Standard_EXPORT     void SetFrontZClippingOff() ;
-  //! Activates the back Z-clipping plane defined by <br>
-//!	    SetBackPlane method. <br>
-//!  Category: Methods to modify the class definition <br>
-//!  Warning: Raises ZClippingDefinitionError if <BackPlane> is <br>
-//!	    front of <FrontPlane>. <br>
-  Standard_EXPORT     void SetBackZClippingOn() ;
-  //! Deactivates the back Z-clipping plane defined by <br>
-//!	    SetBackPlane method. <br>
-  Standard_EXPORT     void SetBackZClippingOff() ;
-  //! Returns the group of active light sources <br>
-//!	    in the view of context <me>. <br>
-  Standard_EXPORT     Handle_Visual3d_HSetOfLight ActivatedLights() const;
-  //! Returns the number of active light sources <br>
-//!	    in the view of context <me>. <br>
-  Standard_EXPORT     Standard_Integer NumberOfActivatedLights() const;
   
-  Standard_EXPORT     Handle_Visual3d_Light ActivatedLight(const Standard_Integer AnIndex) const;
-  //! Returns the activity of the aliasing. <br>
-  Standard_EXPORT     Standard_Boolean AliasingIsOn() const;
-  //! Returns the activity of the ZClipping. <br>
-  Standard_EXPORT     Standard_Boolean BackZClippingIsOn() const;
-  //! Returns the definition of the back depth-cueing plane. <br>
-  Standard_EXPORT     Standard_Real DepthCueingBackPlane() const;
-  //! Returns the definition of the front depth-cueing plane. <br>
-  Standard_EXPORT     Standard_Real DepthCueingFrontPlane() const;
-  //! Returns the activity of the depth-cueing. <br>
-  Standard_EXPORT     Standard_Boolean DepthCueingIsOn() const;
-  //! Returns the activity of the ZClipping. <br>
-  Standard_EXPORT     Standard_Boolean FrontZClippingIsOn() const;
-  //! Returns the shading model. <br>
-  Standard_EXPORT     Visual3d_TypeOfModel Model() const;
-  //! Returns the mode of visualization. <br>
-  Standard_EXPORT     Visual3d_TypeOfVisualization Visualization() const;
-  //! Returns the definition of the back Z-clipping plane. <br>
-  Standard_EXPORT     Standard_Real ZClippingBackPlane() const;
-  //! Returns the definition of the front Z-clipping plane. <br>
-  Standard_EXPORT     Standard_Real ZClippingFrontPlane() const;
+  //! Creates a context from default values
+  //!
+  //! Aliasing		  : OFF
+  //! BackZClipping	  : OFF
+  //! FrontZClipping	  : OFF
+  //! Depth-cueing	  : OFF
+  //! Light source	  : 0
+  //! Clipping plane	  : 0
+  //! Type Of Visualization : TOV_WIREFRAME
+  //! Type Of Model	  : TOM_NONE
+  //! Type Of SurfaceDetail : TOSD_NONE
+  Standard_EXPORT Visual3d_ContextView();
   
-  Standard_EXPORT     Visual3d_TypeOfSurfaceDetail SurfaceDetail() const;
+  //! Selects the kind of rendering
+  //! default to: TOSD_NONE
+  Standard_EXPORT   void SetSurfaceDetail (const Visual3d_TypeOfSurfaceDetail TOSD) ;
   
-  Standard_EXPORT     Handle_Graphic3d_TextureEnv TextureEnv() const;
-
+  //! Sets the environment texture to use
+  //! no environment texture by default
+  Standard_EXPORT   void SetTextureEnv (const Handle(Graphic3d_TextureEnv)& ATexture) ;
+  
+  //! Activates antialiasing.
+  //! Antialiasing can be activated on all the structures
+  //! in the view
+  Standard_EXPORT   void SetAliasingOn() ;
+  
+  //! Deactivates the antialiasing.
+  Standard_EXPORT   void SetAliasingOff() ;
+  
+  //! Modifies the back depth-cueing plane.
+  //! Category: Methods to modify the class definition
+  //! Warning: Raises DepthCueingDefinitionError if <BackPlane>
+  //! is front of <FrontPlane> and DepthCueing is ON.
+  Standard_EXPORT   void SetDepthCueingBackPlane (const Standard_Real ABack) ;
+  
+  //! Modifies the front depth-cueing plane.
+  //! Category: Methods to modify the class definition
+  //! Warning: Raises DepthCueingDefinitionError if <BackPlane> is
+  //! front of <FrontPlane> and DepthCueing is ON.
+  Standard_EXPORT   void SetDepthCueingFrontPlane (const Standard_Real ABack) ;
+  
+  //! Activates the depth-cueing.
+  //! Depth-cueing can be activated on all structures
+  //! present in the view.
+  //! Category: Methods to modify the class definition
+  //! Warning: Raises DepthCueingDefinitionError if <BackPlane> is
+  //! front of <FrontPlane>.
+  Standard_EXPORT   void SetDepthCueingOn() ;
+  
+  //! Deactivates the depth-cueing.
+  Standard_EXPORT   void SetDepthCueingOff() ;
+  
+  //! Returns sequence of clip planes.
+  //! @return sequence of clip planes.
+  Standard_EXPORT  const  Graphic3d_SequenceOfHClipPlane& ClipPlanes()  const;
+  
+  //! Change clip planes.
+  //! @return sequence of clip planes.
+  Standard_EXPORT   Graphic3d_SequenceOfHClipPlane& ChangeClipPlanes() ;
+  
+  //! Activates the light source <ALight>
+  Standard_EXPORT   void SetLightOn (const Handle(Visual3d_Light)& ALight) ;
+  
+  //! Deactivates the light source <ALight>
+  Standard_EXPORT   void SetLightOff (const Handle(Visual3d_Light)& ALight) ;
+  
+  //! Modifies the shading model when the type of visualization is TOV_SHADING
+  Standard_EXPORT   void SetModel (const Visual3d_TypeOfModel AModel) ;
+  
+  //! Modifies the mode of visualization.
+  //!
+  //! TypeOfVisualization	: TOV_WIREFRAME
+  //! TOV_SHADING
+  Standard_EXPORT   void SetVisualization (const Visual3d_TypeOfVisualization AVisual) ;
+  
+  //! Modifies the back Z-clipping plane.
+  //! Category: Methods to modify the class definition
+  //! Warning: Raises ZClippingDefinitionError if <BackPlane> is
+  //! front of <FrontPlane> and ZClipping is ON.
+  Standard_EXPORT   void SetZClippingBackPlane (const Standard_Real ABack) ;
+  
+  //! Modifies the front Z-clipping plane.
+  //! Category: Methods to modify the class definition
+  //! Warning: Raises ZClippingDefinitionError if <BackPlane> is
+  //! front of <FrontPlane> and ZClipping is ON.
+  Standard_EXPORT   void SetZClippingFrontPlane (const Standard_Real AFront) ;
+  
+  //! Activates the Z-clipping planes defined by
+  //! SetZClippingFrontPlane and SetZClippingBackPlane.
+  //! Category: Methods to modify the class definition
+  //! Warning: Raises ZClippingDefinitionError if <BackPlane> is
+  //! front of <FrontPlane>.
+  Standard_EXPORT   void SetZClippingOn() ;
+  
+  //! Deactivates the Z-clipping planes defined by
+  //! SetFrontPlane and SetBackPlane.
+  Standard_EXPORT   void SetZClippingOff() ;
+  
+  //! Activates the front Z-clipping plane defined by
+  //! SetFrontPlane method.
+  Standard_EXPORT   void SetFrontZClippingOn() ;
+  
+  //! Deactivates the front Z-clipping plane defined by
+  //! SetFrontPlane method.
+  Standard_EXPORT   void SetFrontZClippingOff() ;
+  
+  //! Activates the back Z-clipping plane defined by
+  //! SetBackPlane method.
+  //! Category: Methods to modify the class definition
+  //! Warning: Raises ZClippingDefinitionError if <BackPlane> is
+  //! front of <FrontPlane>.
+  Standard_EXPORT   void SetBackZClippingOn() ;
+  
+  //! Deactivates the back Z-clipping plane defined by
+  //! SetBackPlane method.
+  Standard_EXPORT   void SetBackZClippingOff() ;
+  
+  //! Returns the group of active light sources
+  //! in the view of context <me>.
+  Standard_EXPORT   Handle(Visual3d_HSequenceOfLight) ActivatedLights()  const;
+  
+  //! Returns the number of active light sources
+  //! in the view of context <me>.
+  Standard_EXPORT   Standard_Integer NumberOfActivatedLights()  const;
+  
+  Standard_EXPORT   Handle(Visual3d_Light) ActivatedLight (const Standard_Integer AnIndex)  const;
+  
+  //! Returns the activity of the aliasing.
+  Standard_EXPORT   Standard_Boolean AliasingIsOn()  const;
+  
+  //! Returns the activity of the ZClipping.
+  Standard_EXPORT   Standard_Boolean BackZClippingIsOn()  const;
+  
+  //! Returns the definition of the back depth-cueing plane.
+  Standard_EXPORT   Standard_Real DepthCueingBackPlane()  const;
+  
+  //! Returns the definition of the front depth-cueing plane.
+  Standard_EXPORT   Standard_Real DepthCueingFrontPlane()  const;
+  
+  //! Returns the activity of the depth-cueing.
+  Standard_EXPORT   Standard_Boolean DepthCueingIsOn()  const;
+  
+  //! Returns the activity of the ZClipping.
+  Standard_EXPORT   Standard_Boolean FrontZClippingIsOn()  const;
+  
+  //! Returns the shading model.
+  Standard_EXPORT   Visual3d_TypeOfModel Model()  const;
+  
+  //! Returns the mode of visualization.
+  Standard_EXPORT   Visual3d_TypeOfVisualization Visualization()  const;
+  
+  //! Returns the definition of the back Z-clipping plane.
+  Standard_EXPORT   Standard_Real ZClippingBackPlane()  const;
+  
+  //! Returns the definition of the front Z-clipping plane.
+  Standard_EXPORT   Standard_Real ZClippingFrontPlane()  const;
+  
+  Standard_EXPORT   Visual3d_TypeOfSurfaceDetail SurfaceDetail()  const;
+  
+  Standard_EXPORT   Handle(Graphic3d_TextureEnv) TextureEnv()  const;
 
 
 
@@ -223,20 +220,20 @@ private:
 
 
 
-Standard_Boolean AliasingIsActive;
-Standard_Boolean ZcueingIsActive;
-Standard_Boolean FrontZclippingIsActive;
-Standard_Boolean BackZclippingIsActive;
-Standard_ShortReal MyZclippingFrontPlane;
-Standard_ShortReal MyZclippingBackPlane;
-Standard_ShortReal MyDepthCueingFrontPlane;
-Standard_ShortReal MyDepthCueingBackPlane;
-Visual3d_TypeOfModel MyModel;
-Visual3d_TypeOfVisualization MyVisual;
-TColStd_SequenceOfAddress MyLights;
-Handle_Graphic3d_TextureEnv MyTextureEnv;
-Visual3d_TypeOfSurfaceDetail MySurfaceDetail;
-Graphic3d_SequenceOfHClipPlane myClipPlanes;
+  Standard_Boolean AliasingIsActive;
+  Standard_Boolean ZcueingIsActive;
+  Standard_Boolean FrontZclippingIsActive;
+  Standard_Boolean BackZclippingIsActive;
+  Standard_ShortReal MyZclippingFrontPlane;
+  Standard_ShortReal MyZclippingBackPlane;
+  Standard_ShortReal MyDepthCueingFrontPlane;
+  Standard_ShortReal MyDepthCueingBackPlane;
+  Visual3d_TypeOfModel MyModel;
+  Visual3d_TypeOfVisualization MyVisual;
+  TColStd_SequenceOfAddress MyLights;
+  Handle(Graphic3d_TextureEnv) MyTextureEnv;
+  Visual3d_TypeOfSurfaceDetail MySurfaceDetail;
+  Graphic3d_SequenceOfHClipPlane myClipPlanes;
 
 
 };
@@ -245,7 +242,6 @@ Graphic3d_SequenceOfHClipPlane myClipPlanes;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Visual3d_ContextView_HeaderFile

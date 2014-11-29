@@ -5,16 +5,10 @@
 
 #include <TColgp_SequenceNodeOfSequenceOfDir.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _TColgp_SequenceOfDir_HeaderFile
 #include <TColgp_SequenceOfDir.hxx>
-#endif
 
  
 

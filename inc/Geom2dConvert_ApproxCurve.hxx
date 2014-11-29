@@ -6,74 +6,60 @@
 #ifndef _Geom2dConvert_ApproxCurve_HeaderFile
 #define _Geom2dConvert_ApproxCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Geom2d_BSplineCurve_HeaderFile
 #include <Handle_Geom2d_BSplineCurve.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class Geom2d_Curve;
 class Geom2d_BSplineCurve;
 class Standard_OutOfRange;
 
 
-//! A framework to convert a 2D curve to a BSpline. <br>
-//!  This is done by approximation within a given tolerance. <br>
-class Geom2dConvert_ApproxCurve  {
+//! A framework to convert a 2D curve to a BSpline.
+//! This is done by approximation within a given tolerance.
+class Geom2dConvert_ApproxCurve 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Constructs an approximation framework defined by <br>
-//! -   the 2D conic Curve <br>
-//! -   the tolerance value Tol2d <br>
-//! -   the degree of continuity Order <br>
-//! -   the maximum number of segments allowed MaxSegments <br>
-//! -   the highest degree MaxDegree which the <br>
-//!   polynomial defining the BSpline is allowed to have. <br>
-  Standard_EXPORT   Geom2dConvert_ApproxCurve(const Handle(Geom2d_Curve)& Curve,const Standard_Real Tol2d,const GeomAbs_Shape Order,const Standard_Integer MaxSegments,const Standard_Integer MaxDegree);
-  //! Returns the 2D BSpline curve resulting from the <br>
-//!  approximation algorithm. <br>
-  Standard_EXPORT     Handle_Geom2d_BSplineCurve Curve() const;
-  //!  returns  Standard_True  if  the  approximation  has <br>
-//! been  done  with  within  requiered tolerance <br>
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-  //! returns  Standard_True if the approximation did come out <br>
-//! with a result that  is not NECESSARELY within the required tolerance <br>
-  Standard_EXPORT     Standard_Boolean HasResult() const;
-  //! Returns the greatest distance between a point on the <br>
-//! source conic and the BSpline curve resulting from the <br>
-//! approximation. (>0 when an approximation <br>
-//!  has  been  done, 0  if  no  approximation) <br>
-  Standard_EXPORT     Standard_Real MaxError() const;
-  //!  Print on the stream  o  information about the object <br>
-  Standard_EXPORT     void Dump(Standard_OStream& o) const;
-
+  
+  //! Constructs an approximation framework defined by
+  //! -   the 2D conic Curve
+  //! -   the tolerance value Tol2d
+  //! -   the degree of continuity Order
+  //! -   the maximum number of segments allowed MaxSegments
+  //! -   the highest degree MaxDegree which the
+  //! polynomial defining the BSpline is allowed to have.
+  Standard_EXPORT Geom2dConvert_ApproxCurve(const Handle(Geom2d_Curve)& Curve, const Standard_Real Tol2d, const GeomAbs_Shape Order, const Standard_Integer MaxSegments, const Standard_Integer MaxDegree);
+  
+  //! Returns the 2D BSpline curve resulting from the
+  //! approximation algorithm.
+  Standard_EXPORT   Handle(Geom2d_BSplineCurve) Curve()  const;
+  
+  //! returns  Standard_True  if  the  approximation  has
+  //! been  done  with  within  requiered tolerance
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
+  
+  //! returns  Standard_True if the approximation did come out
+  //! with a result that  is not NECESSARELY within the required tolerance
+  Standard_EXPORT   Standard_Boolean HasResult()  const;
+  
+  //! Returns the greatest distance between a point on the
+  //! source conic and the BSpline curve resulting from the
+  //! approximation. (>0 when an approximation
+  //! has  been  done, 0  if  no  approximation)
+  Standard_EXPORT   Standard_Real MaxError()  const;
+  
+  //! Print on the stream  o  information about the object
+  Standard_EXPORT   void Dump (Standard_OStream& o)  const;
 
 
 
@@ -88,11 +74,11 @@ private:
 
 
 
-Handle_Geom2d_Curve myCurve;
-Standard_Boolean myIsDone;
-Standard_Boolean myHasResult;
-Handle_Geom2d_BSplineCurve myBSplCurve;
-Standard_Real myMaxError;
+  Handle(Geom2d_Curve) myCurve;
+  Standard_Boolean myIsDone;
+  Standard_Boolean myHasResult;
+  Handle(Geom2d_BSplineCurve) myBSplCurve;
+  Standard_Real myMaxError;
 
 
 };
@@ -101,7 +87,6 @@ Standard_Real myMaxError;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dConvert_ApproxCurve_HeaderFile

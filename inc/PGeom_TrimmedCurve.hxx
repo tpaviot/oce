@@ -6,53 +6,48 @@
 #ifndef _PGeom_TrimmedCurve_HeaderFile
 #define _PGeom_TrimmedCurve_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom_TrimmedCurve_HeaderFile
 #include <Handle_PGeom_TrimmedCurve.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_PGeom_Curve_HeaderFile
 #include <Handle_PGeom_Curve.hxx>
-#endif
-#ifndef _PGeom_BoundedCurve_HeaderFile
 #include <PGeom_BoundedCurve.hxx>
-#endif
 class PGeom_Curve;
 
 
-class PGeom_TrimmedCurve : public PGeom_BoundedCurve {
+class PGeom_TrimmedCurve : public PGeom_BoundedCurve
+{
 
 public:
 
-  //! Creates a TrimmedCurve with default values. <br>
-  Standard_EXPORT   PGeom_TrimmedCurve();
-  //! Creates a TrimmedCurve with these field values. <br>
-  Standard_EXPORT   PGeom_TrimmedCurve(const Handle(PGeom_Curve)& aBasisCurve,const Standard_Real aFirstU,const Standard_Real aLastU);
-  //! Set the value of the field firstU with <aFirstU>. <br>
-  Standard_EXPORT     void FirstU(const Standard_Real aFirstU) ;
-  //! Returns the value of the field firstU. <br>
-  Standard_EXPORT     Standard_Real FirstU() const;
-  //! Set the value of the field lastU with <aLastU>. <br>
-  Standard_EXPORT     void LastU(const Standard_Real aLastU) ;
-  //! Returns the value of the field lastU. <br>
-  Standard_EXPORT     Standard_Real LastU() const;
-  //! Set the value of the field basisCurve with <aBasisCurve>. <br>
-//!  This curve can be a trimmed curve. <br>
-  Standard_EXPORT     void BasisCurve(const Handle(PGeom_Curve)& aBasisCurve) ;
-  //! Returns the value of the field basisCurve. <br>
-//!  This curve can be a trimmed curve. <br>
-  Standard_EXPORT     Handle_PGeom_Curve BasisCurve() const;
+  
+  //! Creates a TrimmedCurve with default values.
+  Standard_EXPORT PGeom_TrimmedCurve();
+  
+  //! Creates a TrimmedCurve with these field values.
+  Standard_EXPORT PGeom_TrimmedCurve(const Handle(PGeom_Curve)& aBasisCurve, const Standard_Real aFirstU, const Standard_Real aLastU);
+  
+  //! Set the value of the field firstU with <aFirstU>.
+  Standard_EXPORT   void FirstU (const Standard_Real aFirstU) ;
+  
+  //! Returns the value of the field firstU.
+  Standard_EXPORT   Standard_Real FirstU()  const;
+  
+  //! Set the value of the field lastU with <aLastU>.
+  Standard_EXPORT   void LastU (const Standard_Real aLastU) ;
+  
+  //! Returns the value of the field lastU.
+  Standard_EXPORT   Standard_Real LastU()  const;
+  
+  //! Set the value of the field basisCurve with <aBasisCurve>.
+  //! This curve can be a trimmed curve.
+  Standard_EXPORT   void BasisCurve (const Handle(PGeom_Curve)& aBasisCurve) ;
+  
+  //! Returns the value of the field basisCurve.
+  //! This curve can be a trimmed curve.
+  Standard_EXPORT   Handle(PGeom_Curve) BasisCurve()  const;
 
 PGeom_TrimmedCurve(const Storage_stCONSTclCOM& a) : PGeom_BoundedCurve(a)
 {
@@ -77,9 +72,9 @@ protected:
 private: 
 
 
-Handle_PGeom_Curve basisCurve;
-Standard_Real firstU;
-Standard_Real lastU;
+  Handle(PGeom_Curve) basisCurve;
+  Standard_Real firstU;
+  Standard_Real lastU;
 
 
 };
@@ -88,7 +83,6 @@ Standard_Real lastU;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom_TrimmedCurve_HeaderFile

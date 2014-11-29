@@ -14,8 +14,8 @@
 
 #include <Graphic3d_ArrayOfSegments.ixx>
 
-Graphic3d_ArrayOfSegments :: Graphic3d_ArrayOfSegments (
-                        const Standard_Integer maxVertexs,
-                        const Standard_Integer maxEdges,
-                        const Standard_Boolean hasVColors)
-	: Graphic3d_ArrayOfPrimitives(Graphic3d_TOPA_SEGMENTS,maxVertexs,0,maxEdges,Standard_False,hasVColors,Standard_False,Standard_False,Standard_False) {}
+Graphic3d_ArrayOfSegments::Graphic3d_ArrayOfSegments (const Standard_Integer theMaxVertexs,
+                                                      const Standard_Integer theMaxEdges,
+                                                      const Standard_Boolean theHasVColors)
+: Graphic3d_ArrayOfPrimitives (Graphic3d_TOPA_SEGMENTS, theMaxVertexs, 0, theMaxEdges, Standard_False, theHasVColors, Standard_False, Standard_False)
+{}

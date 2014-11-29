@@ -6,83 +6,73 @@
 #ifndef _IGESGeom_TrimmedSurface_HeaderFile
 #define _IGESGeom_TrimmedSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESGeom_TrimmedSurface_HeaderFile
 #include <Handle_IGESGeom_TrimmedSurface.hxx>
-#endif
 
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_IGESGeom_CurveOnSurface_HeaderFile
 #include <Handle_IGESGeom_CurveOnSurface.hxx>
-#endif
-#ifndef _Handle_IGESGeom_HArray1OfCurveOnSurface_HeaderFile
 #include <Handle_IGESGeom_HArray1OfCurveOnSurface.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class IGESData_IGESEntity;
 class IGESGeom_CurveOnSurface;
 class IGESGeom_HArray1OfCurveOnSurface;
 class Standard_OutOfRange;
 
 
-//! defines IGESTrimmedSurface, Type <144> Form <0> <br>
-//!          in package IGESGeom <br>
-//!          A simple closed curve  in Euclidean plane  divides the <br>
-//!          plane in to two disjoint, open connected components; one <br>
-//!          bounded, one unbounded. The bounded one is called the <br>
-//!          interior region to the curve. Unbounded component is called <br>
-//!          exterior region to the curve. The domain of the trimmed <br>
-//!          surface is defined as the interior of the outer boundaries <br>
-//!          and exterior of the inner boundaries and includes the <br>
-//!          boundary curves. <br>
-class IGESGeom_TrimmedSurface : public IGESData_IGESEntity {
+//! defines IGESTrimmedSurface, Type <144> Form <0>
+//! in package IGESGeom
+//! A simple closed curve  in Euclidean plane  divides the
+//! plane in to two disjoint, open connected components; one
+//! bounded, one unbounded. The bounded one is called the
+//! interior region to the curve. Unbounded component is called
+//! exterior region to the curve. The domain of the trimmed
+//! surface is defined as the interior of the outer boundaries
+//! and exterior of the inner boundaries and includes the
+//! boundary curves.
+class IGESGeom_TrimmedSurface : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESGeom_TrimmedSurface();
-  //! This method is used to set the fields of the class <br>
-//!           TrimmedSurface <br>
-//!       - aSurface  : Surface to be trimmed <br>
-//!       - aFlag     : Outer boundary type <br>
-//!                     False = The outer boundary is the boundary of <br>
-//!                             rectangle D which is the domain of the <br>
-//!                             surface to be trimmed <br>
-//!                     True  = otherwise <br>
-//!       - anOuter   : Closed curve which constitutes outer boundary <br>
-//!       - allInners : Array of closed curves which constitute the <br>
-//!                     inner boundary <br>
-  Standard_EXPORT     void Init(const Handle(IGESData_IGESEntity)& aSurface,const Standard_Integer aFlag,const Handle(IGESGeom_CurveOnSurface)& anOuter,const Handle(IGESGeom_HArray1OfCurveOnSurface)& allInners) ;
-  //! returns the surface to be trimmed <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity Surface() const;
-  //! returns True if outer contour exists <br>
-  Standard_EXPORT     Standard_Boolean HasOuterContour() const;
-  //! returns the outer contour of the trimmed surface <br>
-  Standard_EXPORT     Handle_IGESGeom_CurveOnSurface OuterContour() const;
-  //! returns the outer contour type of the trimmed surface <br>
-//! 0  : The outer boundary is the boundary of D <br>
-//! 1  : otherwise <br>
-  Standard_EXPORT     Standard_Integer OuterBoundaryType() const;
-  //! returns the number of inner boundaries <br>
-  Standard_EXPORT     Standard_Integer NbInnerContours() const;
-  //! returns the Index'th inner contour <br>
-//! raises exception if Index <= 0 or Index > NbInnerContours() <br>
-  Standard_EXPORT     Handle_IGESGeom_CurveOnSurface InnerContour(const Standard_Integer Index) const;
+  Standard_EXPORT IGESGeom_TrimmedSurface();
+  
+  //! This method is used to set the fields of the class
+  //! TrimmedSurface
+  //! - aSurface  : Surface to be trimmed
+  //! - aFlag     : Outer boundary type
+  //! False = The outer boundary is the boundary of
+  //! rectangle D which is the domain of the
+  //! surface to be trimmed
+  //! True  = otherwise
+  //! - anOuter   : Closed curve which constitutes outer boundary
+  //! - allInners : Array of closed curves which constitute the
+  //! inner boundary
+  Standard_EXPORT   void Init (const Handle(IGESData_IGESEntity)& aSurface, const Standard_Integer aFlag, const Handle(IGESGeom_CurveOnSurface)& anOuter, const Handle(IGESGeom_HArray1OfCurveOnSurface)& allInners) ;
+  
+  //! returns the surface to be trimmed
+  Standard_EXPORT   Handle(IGESData_IGESEntity) Surface()  const;
+  
+  //! returns True if outer contour exists
+  Standard_EXPORT   Standard_Boolean HasOuterContour()  const;
+  
+  //! returns the outer contour of the trimmed surface
+  Standard_EXPORT   Handle(IGESGeom_CurveOnSurface) OuterContour()  const;
+  
+  //! returns the outer contour type of the trimmed surface
+  //! 0  : The outer boundary is the boundary of D
+  //! 1  : otherwise
+  Standard_EXPORT   Standard_Integer OuterBoundaryType()  const;
+  
+  //! returns the number of inner boundaries
+  Standard_EXPORT   Standard_Integer NbInnerContours()  const;
+  
+  //! returns the Index'th inner contour
+  //! raises exception if Index <= 0 or Index > NbInnerContours()
+  Standard_EXPORT   Handle(IGESGeom_CurveOnSurface) InnerContour (const Standard_Integer Index)  const;
 
 
 
@@ -97,10 +87,10 @@ protected:
 private: 
 
 
-Handle_IGESData_IGESEntity theSurface;
-Standard_Integer theFlag;
-Handle_IGESGeom_CurveOnSurface theOuterCurve;
-Handle_IGESGeom_HArray1OfCurveOnSurface theInnerCurves;
+  Handle(IGESData_IGESEntity) theSurface;
+  Standard_Integer theFlag;
+  Handle(IGESGeom_CurveOnSurface) theOuterCurve;
+  Handle(IGESGeom_HArray1OfCurveOnSurface) theInnerCurves;
 
 
 };
@@ -109,7 +99,6 @@ Handle_IGESGeom_HArray1OfCurveOnSurface theInnerCurves;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGeom_TrimmedSurface_HeaderFile

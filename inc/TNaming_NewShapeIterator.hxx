@@ -6,31 +6,15 @@
 #ifndef _TNaming_NewShapeIterator_HeaderFile
 #define _TNaming_NewShapeIterator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TNaming_PtrNode_HeaderFile
 #include <TNaming_PtrNode.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TNaming_UsedShapes_HeaderFile
 #include <Handle_TNaming_UsedShapes.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TNaming_NamedShape_HeaderFile
 #include <Handle_TNaming_NamedShape.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class TNaming_Tool;
@@ -43,39 +27,43 @@ class TNaming_Iterator;
 class TNaming_NamedShape;
 
 
-//! Iterates on all the descendants of a shape <br>
-class TNaming_NewShapeIterator  {
+//! Iterates on all the descendants of a shape
+class TNaming_NewShapeIterator 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TNaming_NewShapeIterator(const TopoDS_Shape& aShape,const Standard_Integer Transaction,const TDF_Label& access);
+  Standard_EXPORT TNaming_NewShapeIterator(const TopoDS_Shape& aShape, const Standard_Integer Transaction, const TDF_Label& access);
   
-  Standard_EXPORT   TNaming_NewShapeIterator(const TopoDS_Shape& aShape,const TDF_Label& access);
-  //! Iterates from the current Shape in <anIterator> <br>
-  Standard_EXPORT   TNaming_NewShapeIterator(const TNaming_NewShapeIterator& anIterator);
-  //! Iterates from the current Shape in <anIterator> <br>
-  Standard_EXPORT   TNaming_NewShapeIterator(const TNaming_Iterator& anIterator);
+  Standard_EXPORT TNaming_NewShapeIterator(const TopoDS_Shape& aShape, const TDF_Label& access);
   
-        Standard_Boolean More() const;
+  //! Iterates from the current Shape in <anIterator>
+  Standard_EXPORT TNaming_NewShapeIterator(const TNaming_NewShapeIterator& anIterator);
   
-  Standard_EXPORT     void Next() ;
+  //! Iterates from the current Shape in <anIterator>
+  Standard_EXPORT TNaming_NewShapeIterator(const TNaming_Iterator& anIterator);
   
-  Standard_EXPORT     TDF_Label Label() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     Handle_TNaming_NamedShape NamedShape() const;
-  //!  Warning! Can be a Null Shape if a descendant is deleted. <br>
-  Standard_EXPORT    const TopoDS_Shape& Shape() const;
-  //! True if the new  shape is a modification  (split, <br>
-//!          fuse,etc...) of the old shape. <br>
-  Standard_EXPORT     Standard_Boolean IsModification() const;
+  Standard_EXPORT   void Next() ;
+  
+  Standard_EXPORT   TDF_Label Label()  const;
+  
+  Standard_EXPORT   Handle(TNaming_NamedShape) NamedShape()  const;
+  
+  //! Warning! Can be a Null Shape if a descendant is deleted.
+  Standard_EXPORT  const  TopoDS_Shape& Shape()  const;
+  
+  //! True if the new  shape is a modification  (split,
+  //! fuse,etc...) of the old shape.
+  Standard_EXPORT   Standard_Boolean IsModification()  const;
 
 
 friend class TNaming_Tool;
 friend class TNaming_Name;
 friend class TNaming_Naming;
-
 
 
 protected:
@@ -87,13 +75,13 @@ protected:
 private:
 
   
-  Standard_EXPORT   TNaming_NewShapeIterator(const TopoDS_Shape& aShape,const Standard_Integer Transaction,const Handle(TNaming_UsedShapes)& Shapes);
+  Standard_EXPORT TNaming_NewShapeIterator(const TopoDS_Shape& aShape, const Standard_Integer Transaction, const Handle(TNaming_UsedShapes)& Shapes);
   
-  Standard_EXPORT   TNaming_NewShapeIterator(const TopoDS_Shape& aShape,const Handle(TNaming_UsedShapes)& Shapes);
+  Standard_EXPORT TNaming_NewShapeIterator(const TopoDS_Shape& aShape, const Handle(TNaming_UsedShapes)& Shapes);
 
 
-TNaming_PtrNode myNode;
-Standard_Integer myTrans;
+  TNaming_PtrNode myNode;
+  Standard_Integer myTrans;
 
 
 };
@@ -103,7 +91,6 @@ Standard_Integer myTrans;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TNaming_NewShapeIterator_HeaderFile

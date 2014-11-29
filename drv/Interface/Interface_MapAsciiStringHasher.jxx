@@ -1,6 +1,2 @@
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Interface_MapAsciiStringHasher_HeaderFile
 #include <Interface_MapAsciiStringHasher.hxx>
-#endif

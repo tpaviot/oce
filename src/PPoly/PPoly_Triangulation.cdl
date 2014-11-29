@@ -36,7 +36,8 @@ class Triangulation from PPoly inherits Persistent from Standard
 	--          triplet of  node indices.  A  triangle is oriented
 	--          and the  whole triangulation  must have a coherent
 	--          orientation.
-
+	--
+	--          This is a Transient class.
 uses
    HArray1OfPnt2d    from PColgp,
    HArray1OfPnt      from PColgp,
@@ -47,14 +48,14 @@ is
     Create(Defl:       Real              from Standard;
     	   Nodes:      HArray1OfPnt      from PColgp;
     	   Triangles:  HArray1OfTriangle from PPoly)
-    returns mutable Triangulation from PPoly;
+    returns Triangulation from PPoly;
     	---Purpose: Defaults with allocation of Nodes and Triangles.
 
     Create(Defl:       Real              from Standard;
     	   Nodes:      HArray1OfPnt      from PColgp;
     	   UVNodes:    HArray1OfPnt2d    from PColgp;
     	   Triangles:  HArray1OfTriangle from PPoly)
-    returns mutable Triangulation from PPoly;
+    returns Triangulation from PPoly;
     	---Purpose: Defaults with allocation of Nodes and Triangles.
 
     Deflection(me) returns Real;

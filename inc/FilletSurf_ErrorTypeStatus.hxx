@@ -6,8 +6,11 @@
 #ifndef _FilletSurf_ErrorTypeStatus_HeaderFile
 #define _FilletSurf_ErrorTypeStatus_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum FilletSurf_ErrorTypeStatus {
+
+enum FilletSurf_ErrorTypeStatus
+{
 FilletSurf_EmptyList,
 FilletSurf_EdgeNotG1,
 FilletSurf_FacesNotG1,
@@ -16,8 +19,4 @@ FilletSurf_NotSharpEdge,
 FilletSurf_PbFilletCompute
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _FilletSurf_ErrorTypeStatus_HeaderFile

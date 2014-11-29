@@ -6,77 +6,71 @@
 #ifndef _IntRes2d_IntersectionSegment_HeaderFile
 #define _IntRes2d_IntersectionSegment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _IntRes2d_IntersectionPoint_HeaderFile
 #include <IntRes2d_IntersectionPoint.hxx>
-#endif
-#ifndef _Standard_Storable_HeaderFile
 #include <Standard_Storable.hxx>
-#endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
 #include <Standard_PrimitiveTypes.hxx>
-#endif
 class Standard_DomainError;
 class IntRes2d_IntersectionPoint;
 
 
 Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(IntRes2d_IntersectionSegment);
 
-//! Definition of an intersection curve between <br>
-//!          two 2D curves. <br>
-class IntRes2d_IntersectionSegment  {
+//! Definition of an intersection curve between
+//! two 2D curves.
+class IntRes2d_IntersectionSegment 
+{
 
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor. <br>
-  Standard_EXPORT   IntRes2d_IntersectionSegment();
   
-      IntRes2d_IntersectionSegment(const IntRes2d_IntersectionPoint& P1,const IntRes2d_IntersectionPoint& P2,const Standard_Boolean Oppos,const Standard_Boolean ReverseFlag);
+  //! Empty constructor.
+  Standard_EXPORT IntRes2d_IntersectionSegment();
   
-      IntRes2d_IntersectionSegment(const IntRes2d_IntersectionPoint& P,const Standard_Boolean First,const Standard_Boolean Oppos,const Standard_Boolean ReverseFlag);
-  //! Creates an infinite segment of intersection. <br>
-      IntRes2d_IntersectionSegment(const Standard_Boolean Oppos);
-  //! Returns TRUE if the intersection segment has got <br>
-//!          the same orientation on both curves. <br>
-        Standard_Boolean IsOpposite() const;
-  //! Returns True if the segment is  limited by a first <br>
-//!          point.   This  point defines  the lowest parameter <br>
-//!          admitted on the first  curve for the  segment.  If <br>
-//!          IsOpposite  returns  False, it  defines the lowest <br>
-//!          parameter on the  second curve, otherwise,  it  is <br>
-//!          the highest parameter on the second curve. <br>
-        Standard_Boolean HasFirstPoint() const;
-  //! Returns the  first point   of the segment    as an <br>
-//!          IntersectionPoint (with    a    transition).   The <br>
-//!          exception  DomainError  is raised if HasFirstPoint <br>
-//!          returns False. <br>
-       const IntRes2d_IntersectionPoint& FirstPoint() const;
-  //! Returns True if the segment  is  limited by a last <br>
-//!          point.  This point  defines  the highest parameter <br>
-//!          admitted on the  first curve for  the segment.  If <br>
-//!          IsOpposite returns  False, it  defines the highest <br>
-//!          parameter on  the  second curve, otherwise, it  is <br>
-//!          the lowest parameter on the second curve. <br>
-        Standard_Boolean HasLastPoint() const;
-  //! Returns   the  last point  of the    segment as an <br>
-//!          IntersectionPoint   (with  a    transition).   The <br>
-//!          exception        DomainError     is   raised    if <br>
-//!          HasLastExtremity returns False. <br>
-       const IntRes2d_IntersectionPoint& LastPoint() const;
+    IntRes2d_IntersectionSegment(const IntRes2d_IntersectionPoint& P1, const IntRes2d_IntersectionPoint& P2, const Standard_Boolean Oppos, const Standard_Boolean ReverseFlag);
+  
+    IntRes2d_IntersectionSegment(const IntRes2d_IntersectionPoint& P, const Standard_Boolean First, const Standard_Boolean Oppos, const Standard_Boolean ReverseFlag);
+  
+  //! Creates an infinite segment of intersection.
+    IntRes2d_IntersectionSegment(const Standard_Boolean Oppos);
+  
+  //! Returns TRUE if the intersection segment has got
+  //! the same orientation on both curves.
+      Standard_Boolean IsOpposite()  const;
+  
+  //! Returns True if the segment is  limited by a first
+  //! point.   This  point defines  the lowest parameter
+  //! admitted on the first  curve for the  segment.  If
+  //! IsOpposite  returns  False, it  defines the lowest
+  //! parameter on the  second curve, otherwise,  it  is
+  //! the highest parameter on the second curve.
+      Standard_Boolean HasFirstPoint()  const;
+  
+  //! Returns the  first point   of the segment    as an
+  //! IntersectionPoint (with    a    transition).   The
+  //! exception  DomainError  is raised if HasFirstPoint
+  //! returns False.
+     const  IntRes2d_IntersectionPoint& FirstPoint()  const;
+  
+  //! Returns True if the segment  is  limited by a last
+  //! point.  This point  defines  the highest parameter
+  //! admitted on the  first curve for  the segment.  If
+  //! IsOpposite returns  False, it  defines the highest
+  //! parameter on  the  second curve, otherwise, it  is
+  //! the lowest parameter on the second curve.
+      Standard_Boolean HasLastPoint()  const;
+  
+  //! Returns   the  last point  of the    segment as an
+  //! IntersectionPoint   (with  a    transition).   The
+  //! exception        DomainError     is   raised    if
+  //! HasLastExtremity returns False.
+     const  IntRes2d_IntersectionPoint& LastPoint()  const;
     Standard_Boolean _CSFDB_GetIntRes2d_IntersectionSegmentoppos() const { return oppos; }
     void _CSFDB_SetIntRes2d_IntersectionSegmentoppos(const Standard_Boolean p) { oppos = p; }
     Standard_Boolean _CSFDB_GetIntRes2d_IntersectionSegmentfirst() const { return first; }
@@ -96,11 +90,11 @@ protected:
 private: 
 
 
-Standard_Boolean oppos;
-Standard_Boolean first;
-Standard_Boolean last;
-IntRes2d_IntersectionPoint ptfirst;
-IntRes2d_IntersectionPoint ptlast;
+  Standard_Boolean oppos;
+  Standard_Boolean first;
+  Standard_Boolean last;
+  IntRes2d_IntersectionPoint ptfirst;
+  IntRes2d_IntersectionPoint ptlast;
 
 
 };
@@ -110,7 +104,6 @@ IntRes2d_IntersectionPoint ptlast;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntRes2d_IntersectionSegment_HeaderFile

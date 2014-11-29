@@ -1,36 +1,12 @@
-#ifndef _Standard_TypeMismatch_HeaderFile
 #include <Standard_TypeMismatch.hxx>
-#endif
-#ifndef _PGeom_Curve_HeaderFile
 #include <PGeom_Curve.hxx>
-#endif
-#ifndef _Geom_Curve_HeaderFile
 #include <Geom_Curve.hxx>
-#endif
-#ifndef _PTColStd_TransientPersistentMap_HeaderFile
 #include <PTColStd_TransientPersistentMap.hxx>
-#endif
-#ifndef _PTColStd_PersistentTransientMap_HeaderFile
 #include <PTColStd_PersistentTransientMap.hxx>
-#endif
-#ifndef _PGeom2d_Curve_HeaderFile
 #include <PGeom2d_Curve.hxx>
-#endif
-#ifndef _Geom2d_Curve_HeaderFile
 #include <Geom2d_Curve.hxx>
-#endif
-#ifndef _PGeom_Surface_HeaderFile
 #include <PGeom_Surface.hxx>
-#endif
-#ifndef _Geom_Surface_HeaderFile
 #include <Geom_Surface.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _PTopoDS_HShape_HeaderFile
 #include <PTopoDS_HShape.hxx>
-#endif
-#ifndef _MgtBRep_TranslateTool_HeaderFile
 #include <MgtBRep_TranslateTool.hxx>
-#endif

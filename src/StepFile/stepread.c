@@ -19,10 +19,12 @@
 */ 
 /**
 */ 
-# include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
-# include "recfile.ph"
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include "recfile.ph"
+#include <OSD_OpenFile.hxx>
 
 /*    StepFile_Error.c
 
@@ -83,7 +85,8 @@ FILE* stepread_setinput (char* nomfic)
 {
   FILE* newin ;
   if (strlen(nomfic) == 0) return stepin ;
-  newin = fopen(nomfic,"r") ;
+  newin = OSD_OpenFile(nomfic,"r");
+
   if (newin == NULL) {
     return NULL ;
   } else {

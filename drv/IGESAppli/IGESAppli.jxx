@@ -1,6 +1,2 @@
-#ifndef _IGESAppli_Protocol_HeaderFile
 #include <IGESAppli_Protocol.hxx>
-#endif
-#ifndef _IGESAppli_HeaderFile
 #include <IGESAppli.hxx>
-#endif

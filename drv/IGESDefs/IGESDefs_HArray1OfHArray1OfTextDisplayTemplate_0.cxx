@@ -5,13 +5,9 @@
 
 #include <IGESDefs_HArray1OfHArray1OfTextDisplayTemplate.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IGESGraph_HArray1OfTextDisplayTemplate_HeaderFile
 #include <IGESGraph_HArray1OfTextDisplayTemplate.hxx>
-#endif
 
  
 

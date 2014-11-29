@@ -6,8 +6,11 @@
 #ifndef _Quantity_NameOfColor_HeaderFile
 #define _Quantity_NameOfColor_HeaderFile
 
-//! Definition of names of known colours. <br>
-enum Quantity_NameOfColor {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Definition of names of known colours.
+enum Quantity_NameOfColor
+{
 Quantity_NOC_BLACK,
 Quantity_NOC_MATRABLUE,
 Quantity_NOC_MATRAGRAY,
@@ -527,8 +530,4 @@ Quantity_NOC_YELLOWGREEN,
 Quantity_NOC_WHITE
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Quantity_NameOfColor_HeaderFile

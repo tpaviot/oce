@@ -6,52 +6,22 @@
 #ifndef _StepAP214_AutoDesignDateAndPersonItem_HeaderFile
 #define _StepAP214_AutoDesignDateAndPersonItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepAP214_AutoDesignOrganizationAssignment_HeaderFile
 #include <Handle_StepAP214_AutoDesignOrganizationAssignment.hxx>
-#endif
-#ifndef _Handle_StepBasic_Product_HeaderFile
 #include <Handle_StepBasic_Product.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinition_HeaderFile
 #include <Handle_StepBasic_ProductDefinition.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinitionFormation_HeaderFile
 #include <Handle_StepBasic_ProductDefinitionFormation.hxx>
-#endif
-#ifndef _Handle_StepRepr_Representation_HeaderFile
 #include <Handle_StepRepr_Representation.hxx>
-#endif
-#ifndef _Handle_StepAP214_AutoDesignDocumentReference_HeaderFile
 #include <Handle_StepAP214_AutoDesignDocumentReference.hxx>
-#endif
-#ifndef _Handle_StepRepr_ExternallyDefinedRepresentation_HeaderFile
 #include <Handle_StepRepr_ExternallyDefinedRepresentation.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinitionRelationship_HeaderFile
 #include <Handle_StepBasic_ProductDefinitionRelationship.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinitionWithAssociatedDocuments_HeaderFile
 #include <Handle_StepBasic_ProductDefinitionWithAssociatedDocuments.hxx>
-#endif
 class Standard_Transient;
 class StepAP214_AutoDesignOrganizationAssignment;
 class StepBasic_Product;
@@ -65,44 +35,46 @@ class StepBasic_ProductDefinitionWithAssociatedDocuments;
 
 
 
-class StepAP214_AutoDesignDateAndPersonItem  : public StepData_SelectType {
+class StepAP214_AutoDesignDateAndPersonItem  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a AutoDesignDateAndPersonItem SelectType <br>
-  Standard_EXPORT   StepAP214_AutoDesignDateAndPersonItem();
-  //! Recognizes a AutoDesignDateAndPersonItem Kind Entity that is : <br>
-//! 1     AutoDesignOrganizationAssignment from StepAP214, <br>
-//! 2     Product from StepBasic, <br>
-//! 3     ProductDefinition from StepBasic, <br>
-//! 4     ProductDefinitionFormation from StepBasic, <br>
-//! 5     Representation from StepRepr, <br>
-//! 6     AutoDesignDocumentReference from StepAP214, <br>
-//! 7     ExternallyDefinedRepresentation from StepRepr, <br>
-//! 8     ProductDefinitionRelationship from StepBasic, <br>
-//! 9     ProductDefinitionWithAssociatedDocuments from StepBasic <br>
-//!        0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
   
-  Standard_EXPORT     Handle_StepAP214_AutoDesignOrganizationAssignment AutoDesignOrganizationAssignment() const;
+  //! Returns a AutoDesignDateAndPersonItem SelectType
+  Standard_EXPORT StepAP214_AutoDesignDateAndPersonItem();
   
-  Standard_EXPORT     Handle_StepBasic_Product Product() const;
+  //! Recognizes a AutoDesignDateAndPersonItem Kind Entity that is :
+  //! 1     AutoDesignOrganizationAssignment from StepAP214,
+  //! 2     Product from StepBasic,
+  //! 3     ProductDefinition from StepBasic,
+  //! 4     ProductDefinitionFormation from StepBasic,
+  //! 5     Representation from StepRepr,
+  //! 6     AutoDesignDocumentReference from StepAP214,
+  //! 7     ExternallyDefinedRepresentation from StepRepr,
+  //! 8     ProductDefinitionRelationship from StepBasic,
+  //! 9     ProductDefinitionWithAssociatedDocuments from StepBasic
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
   
-  Standard_EXPORT     Handle_StepBasic_ProductDefinition ProductDefinition() const;
+  Standard_EXPORT   Handle(StepAP214_AutoDesignOrganizationAssignment) AutoDesignOrganizationAssignment()  const;
   
-  Standard_EXPORT     Handle_StepBasic_ProductDefinitionFormation ProductDefinitionFormation() const;
+  Standard_EXPORT   Handle(StepBasic_Product) Product()  const;
   
-  Standard_EXPORT     Handle_StepRepr_Representation Representation() const;
+  Standard_EXPORT   Handle(StepBasic_ProductDefinition) ProductDefinition()  const;
   
-  Standard_EXPORT     Handle_StepAP214_AutoDesignDocumentReference AutoDesignDocumentReference() const;
+  Standard_EXPORT   Handle(StepBasic_ProductDefinitionFormation) ProductDefinitionFormation()  const;
   
-  Standard_EXPORT     Handle_StepRepr_ExternallyDefinedRepresentation ExternallyDefinedRepresentation() const;
+  Standard_EXPORT   Handle(StepRepr_Representation) Representation()  const;
   
-  Standard_EXPORT     Handle_StepBasic_ProductDefinitionRelationship ProductDefinitionRelationship() const;
+  Standard_EXPORT   Handle(StepAP214_AutoDesignDocumentReference) AutoDesignDocumentReference()  const;
   
-  Standard_EXPORT     Handle_StepBasic_ProductDefinitionWithAssociatedDocuments ProductDefinitionWithAssociatedDocuments() const;
-
+  Standard_EXPORT   Handle(StepRepr_ExternallyDefinedRepresentation) ExternallyDefinedRepresentation()  const;
+  
+  Standard_EXPORT   Handle(StepBasic_ProductDefinitionRelationship) ProductDefinitionRelationship()  const;
+  
+  Standard_EXPORT   Handle(StepBasic_ProductDefinitionWithAssociatedDocuments) ProductDefinitionWithAssociatedDocuments()  const;
 
 
 
@@ -125,7 +97,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP214_AutoDesignDateAndPersonItem_HeaderFile

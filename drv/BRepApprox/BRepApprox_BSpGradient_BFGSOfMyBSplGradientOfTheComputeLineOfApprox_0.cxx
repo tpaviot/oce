@@ -5,27 +5,12 @@
 
 #include <BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox.hxx>
 
-#ifndef _BRepApprox_TheMultiLineOfApprox_HeaderFile
 #include <BRepApprox_TheMultiLineOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_TheMultiLineToolOfApprox_HeaderFile
 #include <BRepApprox_TheMultiLineToolOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_HeaderFile
 #include <BRepApprox_MyBSplGradientOfTheComputeLineOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_HeaderFile
 #include <BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_HeaderFile
 #include <BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx>
-#endif
-#ifndef _math_MultipleVarFunctionWithGradient_HeaderFile
 #include <math_MultipleVarFunctionWithGradient.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
  
 
 #define MultiLine BRepApprox_TheMultiLineOfApprox

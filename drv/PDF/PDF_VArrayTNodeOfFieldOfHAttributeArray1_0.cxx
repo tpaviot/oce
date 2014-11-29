@@ -5,18 +5,12 @@
 
 #include <PDF_VArrayTNodeOfFieldOfHAttributeArray1.hxx>
 
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
-#ifndef _PDF_FieldOfHAttributeArray1_HeaderFile
 #include <PDF_FieldOfHAttributeArray1.hxx>
-#endif
-#ifndef _PDF_VArrayNodeOfFieldOfHAttributeArray1_HeaderFile
 #include <PDF_VArrayNodeOfFieldOfHAttributeArray1.hxx>
-#endif
  
 
-#define Item Handle_PDF_Attribute
+#define Item Handle(PDF_Attribute)
 #define Item_hxx <PDF_Attribute.hxx>
 #define DBC_VArrayNode PDF_VArrayNodeOfFieldOfHAttributeArray1
 #define DBC_VArrayNode_hxx <PDF_VArrayNodeOfFieldOfHAttributeArray1.hxx>

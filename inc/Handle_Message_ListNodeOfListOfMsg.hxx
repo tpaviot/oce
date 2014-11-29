@@ -6,22 +6,15 @@
 #ifndef _Handle_Message_ListNodeOfListOfMsg_HeaderFile
 #define _Handle_Message_ListNodeOfListOfMsg_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TCollection_MapNode_HeaderFile
 #include <Handle_TCollection_MapNode.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TCollection_MapNode);
 class Message_ListNodeOfListOfMsg;
 
-DEFINE_STANDARD_HANDLE(Message_ListNodeOfListOfMsg,TCollection_MapNode)
+DEFINE_STANDARD_HANDLE(Message_ListNodeOfListOfMsg, TCollection_MapNode)
 
-#endif
+#endif // _Handle_Message_ListNodeOfListOfMsg_HeaderFile

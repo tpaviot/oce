@@ -186,7 +186,7 @@ static Standard_Boolean GoodOrientation(const Bnd_Box& B,
   r = V.Magnitude()/l;
  
   Standard_Integer ii, Ind;
-//#ifndef DEB
+//#ifndef OCCT_DEBUG
   Standard_Integer Nb = (Standard_Integer) (4+(10*r));
 //#else
 //  Standard_Integer Nb = 4+(10*r);
@@ -269,14 +269,14 @@ static Standard_Boolean GoodOrientation(const Bnd_Box& B,
 	  myWire = MW.Wire();
 	}
 	else {
-#if DEB
+#ifdef OCCT_DEBUG
 	  cout << "Error in MakeWire" << endl;
 #endif 
 	  Standard_ConstructionError::Raise("BRepFill_Draft");
 	}
       }
       else {
-#if DEB
+#ifdef OCCT_DEBUG
 	  cout << "No Free Borders !" << endl;
 #endif 
 	  Standard_ConstructionError::Raise("BRepFill_Draft");
@@ -523,7 +523,8 @@ static Standard_Boolean GoodOrientation(const Bnd_Box& B,
   Sweep.SetAngularControl(angmin, angmax);
   TopTools_MapOfShape Dummy;
   BRepFill_DataMapOfShapeHArray2OfShape Dummy2;
-  Sweep.Build(Dummy, Dummy2, myStyle, myCont);
+  BRepFill_DataMapOfShapeHArray2OfShape Dummy3;
+  Sweep.Build(Dummy, Dummy2, Dummy3, myStyle, myCont);
   if (Sweep.IsDone()) {
     myShape = Sweep.Shape();
     myShell = TopoDS::Shell(myShape);
@@ -615,6 +616,7 @@ static Standard_Boolean GoodOrientation(const Bnd_Box& B,
       TopoDS_Shell S;
       B.MakeShell(S);
       B.Add(S, StopShape);
+      S.Closed (BRep_Tool::IsClosed (S));
       B.MakeSolid(Sol2);
       B.Add(Sol2, S); // shell => solid (for fusion)
       break;
@@ -826,7 +828,7 @@ static Standard_Boolean GoodOrientation(const Bnd_Box& B,
       myShape = solid;
     }    
   }
-#if DEB
+#ifdef OCCT_DEBUG
   else cout << "Draft : No assembly !" << endl;
 #endif
   return Ok;

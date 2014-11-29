@@ -1,3 +1,1 @@
-#ifndef _TopOpeBRep_HeaderFile
 #include <TopOpeBRep.hxx>
-#endif

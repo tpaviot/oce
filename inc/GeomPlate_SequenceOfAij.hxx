@@ -6,25 +6,13 @@
 #ifndef _GeomPlate_SequenceOfAij_HeaderFile
 #define _GeomPlate_SequenceOfAij_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_GeomPlate_SequenceNodeOfSequenceOfAij_HeaderFile
 #include <Handle_GeomPlate_SequenceNodeOfSequenceOfAij.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class GeomPlate_Aij;
@@ -32,66 +20,68 @@ class GeomPlate_SequenceNodeOfSequenceOfAij;
 
 
 
-class GeomPlate_SequenceOfAij  : public TCollection_BaseSequence {
+class GeomPlate_SequenceOfAij  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      GeomPlate_SequenceOfAij();
+    GeomPlate_SequenceOfAij();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT GeomPlate_SequenceOfAij(const GeomPlate_SequenceOfAij& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~GeomPlate_SequenceOfAij()
 {
   Clear();
 }
   
-  Standard_EXPORT    const GeomPlate_SequenceOfAij& Assign(const GeomPlate_SequenceOfAij& Other) ;
-   const GeomPlate_SequenceOfAij& operator =(const GeomPlate_SequenceOfAij& Other) 
+  Standard_EXPORT  const  GeomPlate_SequenceOfAij& Assign (const GeomPlate_SequenceOfAij& Other) ;
+ const  GeomPlate_SequenceOfAij& operator = (const GeomPlate_SequenceOfAij& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const GeomPlate_Aij& T) ;
+  Standard_EXPORT   void Append (const GeomPlate_Aij& T) ;
   
-        void Append(GeomPlate_SequenceOfAij& S) ;
+      void Append (GeomPlate_SequenceOfAij& S) ;
   
-  Standard_EXPORT     void Prepend(const GeomPlate_Aij& T) ;
+  Standard_EXPORT   void Prepend (const GeomPlate_Aij& T) ;
   
-        void Prepend(GeomPlate_SequenceOfAij& S) ;
+      void Prepend (GeomPlate_SequenceOfAij& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const GeomPlate_Aij& T) ;
+      void InsertBefore (const Standard_Integer Index, const GeomPlate_Aij& T) ;
   
-        void InsertBefore(const Standard_Integer Index,GeomPlate_SequenceOfAij& S) ;
+      void InsertBefore (const Standard_Integer Index, GeomPlate_SequenceOfAij& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const GeomPlate_Aij& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const GeomPlate_Aij& T) ;
   
-        void InsertAfter(const Standard_Integer Index,GeomPlate_SequenceOfAij& S) ;
+      void InsertAfter (const Standard_Integer Index, GeomPlate_SequenceOfAij& S) ;
   
-  Standard_EXPORT    const GeomPlate_Aij& First() const;
+  Standard_EXPORT  const  GeomPlate_Aij& First()  const;
   
-  Standard_EXPORT    const GeomPlate_Aij& Last() const;
+  Standard_EXPORT  const  GeomPlate_Aij& Last()  const;
   
-        void Split(const Standard_Integer Index,GeomPlate_SequenceOfAij& Sub) ;
+      void Split (const Standard_Integer Index, GeomPlate_SequenceOfAij& Sub) ;
   
-  Standard_EXPORT    const GeomPlate_Aij& Value(const Standard_Integer Index) const;
-   const GeomPlate_Aij& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  GeomPlate_Aij& Value (const Standard_Integer Index)  const;
+ const  GeomPlate_Aij& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const GeomPlate_Aij& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const GeomPlate_Aij& I) ;
   
-  Standard_EXPORT     GeomPlate_Aij& ChangeValue(const Standard_Integer Index) ;
-    GeomPlate_Aij& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   GeomPlate_Aij& ChangeValue (const Standard_Integer Index) ;
+  GeomPlate_Aij& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -104,8 +94,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   GeomPlate_SequenceOfAij(const GeomPlate_SequenceOfAij& Other);
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomPlate_SequenceOfAij_HeaderFile

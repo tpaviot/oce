@@ -5,25 +5,13 @@
 
 #include <StepToTopoDS_DataMapNodeOfPointEdgeMap.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _StepToTopoDS_PointPair_HeaderFile
 #include <StepToTopoDS_PointPair.hxx>
-#endif
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _StepToTopoDS_PointPairHasher_HeaderFile
 #include <StepToTopoDS_PointPairHasher.hxx>
-#endif
-#ifndef _StepToTopoDS_PointEdgeMap_HeaderFile
 #include <StepToTopoDS_PointEdgeMap.hxx>
-#endif
-#ifndef _StepToTopoDS_DataMapIteratorOfPointEdgeMap_HeaderFile
 #include <StepToTopoDS_DataMapIteratorOfPointEdgeMap.hxx>
-#endif
 
  
 

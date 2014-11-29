@@ -6,25 +6,13 @@
 #ifndef _Extrema_HArray1OfPOnCurv2d_HeaderFile
 #define _Extrema_HArray1OfPOnCurv2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Extrema_HArray1OfPOnCurv2d_HeaderFile
 #include <Handle_Extrema_HArray1OfPOnCurv2d.hxx>
-#endif
 
-#ifndef _Extrema_Array1OfPOnCurv2d_HeaderFile
 #include <Extrema_Array1OfPOnCurv2d.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class Extrema_Array1OfPOnCurv2d;
 
 
 
-class Extrema_HArray1OfPOnCurv2d : public MMgt_TShared {
+class Extrema_HArray1OfPOnCurv2d : public MMgt_TShared
+{
 
 public:
 
   
-      Extrema_HArray1OfPOnCurv2d(const Standard_Integer Low,const Standard_Integer Up);
+    Extrema_HArray1OfPOnCurv2d(const Standard_Integer Low, const Standard_Integer Up);
   
-      Extrema_HArray1OfPOnCurv2d(const Standard_Integer Low,const Standard_Integer Up,const Extrema_POnCurv2d& V);
+    Extrema_HArray1OfPOnCurv2d(const Standard_Integer Low, const Standard_Integer Up, const Extrema_POnCurv2d& V);
   
-        void Init(const Extrema_POnCurv2d& V) ;
+      void Init (const Extrema_POnCurv2d& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Extrema_POnCurv2d& Value) ;
+      void SetValue (const Standard_Integer Index, const Extrema_POnCurv2d& Value) ;
   
-       const Extrema_POnCurv2d& Value(const Standard_Integer Index) const;
+     const  Extrema_POnCurv2d& Value (const Standard_Integer Index)  const;
   
-        Extrema_POnCurv2d& ChangeValue(const Standard_Integer Index) ;
+      Extrema_POnCurv2d& ChangeValue (const Standard_Integer Index) ;
   
-       const Extrema_Array1OfPOnCurv2d& Array1() const;
+     const  Extrema_Array1OfPOnCurv2d& Array1()  const;
   
-        Extrema_Array1OfPOnCurv2d& ChangeArray1() ;
+      Extrema_Array1OfPOnCurv2d& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-Extrema_Array1OfPOnCurv2d myArray;
+  Extrema_Array1OfPOnCurv2d myArray;
 
 
 };
@@ -100,7 +89,6 @@ Extrema_Array1OfPOnCurv2d myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Extrema_HArray1OfPOnCurv2d_HeaderFile

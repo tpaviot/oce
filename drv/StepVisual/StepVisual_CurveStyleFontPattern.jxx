@@ -1,3 +1,1 @@
-#ifndef _StepVisual_CurveStyleFontPattern_HeaderFile
 #include <StepVisual_CurveStyleFontPattern.hxx>
-#endif

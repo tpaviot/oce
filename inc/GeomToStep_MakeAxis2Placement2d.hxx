@@ -6,44 +6,34 @@
 #ifndef _GeomToStep_MakeAxis2Placement2d_HeaderFile
 #define _GeomToStep_MakeAxis2Placement2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Axis2Placement2d_HeaderFile
 #include <Handle_StepGeom_Axis2Placement2d.hxx>
-#endif
-#ifndef _GeomToStep_Root_HeaderFile
 #include <GeomToStep_Root.hxx>
-#endif
 class StepGeom_Axis2Placement2d;
 class StdFail_NotDone;
 class gp_Ax2;
 class gp_Ax22d;
 
 
-//! This class implements the mapping between classes <br>
-//!          Axis2Placement from Geom and Ax2, Ax22d from gp, and the class <br>
-//!          Axis2Placement2d from StepGeom which describes an <br>
-//!          axis2_placement_2d from Prostep. <br>
-class GeomToStep_MakeAxis2Placement2d  : public GeomToStep_Root {
+//! This class implements the mapping between classes
+//! Axis2Placement from Geom and Ax2, Ax22d from gp, and the class
+//! Axis2Placement2d from StepGeom which describes an
+//! axis2_placement_2d from Prostep.
+class GeomToStep_MakeAxis2Placement2d  : public GeomToStep_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomToStep_MakeAxis2Placement2d(const gp_Ax2& A);
+  Standard_EXPORT GeomToStep_MakeAxis2Placement2d(const gp_Ax2& A);
   
-  Standard_EXPORT   GeomToStep_MakeAxis2Placement2d(const gp_Ax22d& A);
+  Standard_EXPORT GeomToStep_MakeAxis2Placement2d(const gp_Ax22d& A);
   
-  Standard_EXPORT    const Handle_StepGeom_Axis2Placement2d& Value() const;
-
+  Standard_EXPORT  const  Handle(StepGeom_Axis2Placement2d)& Value()  const;
 
 
 
@@ -58,7 +48,7 @@ private:
 
 
 
-Handle_StepGeom_Axis2Placement2d theAxis2Placement2d;
+  Handle(StepGeom_Axis2Placement2d) theAxis2Placement2d;
 
 
 };
@@ -67,7 +57,6 @@ Handle_StepGeom_Axis2Placement2d theAxis2Placement2d;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomToStep_MakeAxis2Placement2d_HeaderFile

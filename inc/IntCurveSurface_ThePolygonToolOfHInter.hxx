@@ -6,25 +6,13 @@
 #ifndef _IntCurveSurface_ThePolygonToolOfHInter_HeaderFile
 #define _IntCurveSurface_ThePolygonToolOfHInter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_OutOfRange;
 class gp_Pnt;
 class IntCurveSurface_ThePolygonOfHInter;
@@ -32,26 +20,26 @@ class Bnd_Box;
 
 
 
-class IntCurveSurface_ThePolygonToolOfHInter  {
+class IntCurveSurface_ThePolygonToolOfHInter 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      static const Bnd_Box& Bounding(const IntCurveSurface_ThePolygonOfHInter& thePolygon) ;
+    static  const  Bnd_Box& Bounding (const IntCurveSurface_ThePolygonOfHInter& thePolygon) ;
   
-      static  Standard_Real DeflectionOverEstimation(const IntCurveSurface_ThePolygonOfHInter& thePolygon) ;
+    static   Standard_Real DeflectionOverEstimation (const IntCurveSurface_ThePolygonOfHInter& thePolygon) ;
   
-      static  Standard_Boolean Closed(const IntCurveSurface_ThePolygonOfHInter& thePolygon) ;
+    static   Standard_Boolean Closed (const IntCurveSurface_ThePolygonOfHInter& thePolygon) ;
   
-      static  Standard_Integer NbSegments(const IntCurveSurface_ThePolygonOfHInter& thePolygon) ;
+    static   Standard_Integer NbSegments (const IntCurveSurface_ThePolygonOfHInter& thePolygon) ;
   
-      static const gp_Pnt& BeginOfSeg(const IntCurveSurface_ThePolygonOfHInter& thePolygon,const Standard_Integer Index) ;
+    static  const  gp_Pnt& BeginOfSeg (const IntCurveSurface_ThePolygonOfHInter& thePolygon, const Standard_Integer Index) ;
   
-      static const gp_Pnt& EndOfSeg(const IntCurveSurface_ThePolygonOfHInter& thePolygon,const Standard_Integer Index) ;
+    static  const  gp_Pnt& EndOfSeg (const IntCurveSurface_ThePolygonOfHInter& thePolygon, const Standard_Integer Index) ;
   
-  Standard_EXPORT   static  void Dump(const IntCurveSurface_ThePolygonOfHInter& thePolygon) ;
-
+  Standard_EXPORT static   void Dump (const IntCurveSurface_ThePolygonOfHInter& thePolygon) ;
 
 
 
@@ -91,7 +79,6 @@ private:
 #undef IntCurveSurface_PolygonTool_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntCurveSurface_ThePolygonToolOfHInter_HeaderFile

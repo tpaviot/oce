@@ -6,51 +6,39 @@
 #ifndef _StepGeom_Vector_HeaderFile
 #define _StepGeom_Vector_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_Vector_HeaderFile
 #include <Handle_StepGeom_Vector.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Direction_HeaderFile
 #include <Handle_StepGeom_Direction.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _StepGeom_GeometricRepresentationItem_HeaderFile
 #include <StepGeom_GeometricRepresentationItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepGeom_Direction;
 class TCollection_HAsciiString;
 
 
 
-class StepGeom_Vector : public StepGeom_GeometricRepresentationItem {
+class StepGeom_Vector : public StepGeom_GeometricRepresentationItem
+{
 
 public:
 
-  //! Returns a Vector <br>
-  Standard_EXPORT   StepGeom_Vector();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a Vector
+  Standard_EXPORT StepGeom_Vector();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_Direction)& aOrientation,const Standard_Real aMagnitude) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetOrientation(const Handle(StepGeom_Direction)& aOrientation) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_Direction)& aOrientation, const Standard_Real aMagnitude) ;
   
-  Standard_EXPORT     Handle_StepGeom_Direction Orientation() const;
+  Standard_EXPORT   void SetOrientation (const Handle(StepGeom_Direction)& aOrientation) ;
   
-  Standard_EXPORT     void SetMagnitude(const Standard_Real aMagnitude) ;
+  Standard_EXPORT   Handle(StepGeom_Direction) Orientation()  const;
   
-  Standard_EXPORT     Standard_Real Magnitude() const;
+  Standard_EXPORT   void SetMagnitude (const Standard_Real aMagnitude) ;
+  
+  Standard_EXPORT   Standard_Real Magnitude()  const;
 
 
 
@@ -65,8 +53,8 @@ protected:
 private: 
 
 
-Handle_StepGeom_Direction orientation;
-Standard_Real magnitude;
+  Handle(StepGeom_Direction) orientation;
+  Standard_Real magnitude;
 
 
 };
@@ -75,7 +63,6 @@ Standard_Real magnitude;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_Vector_HeaderFile

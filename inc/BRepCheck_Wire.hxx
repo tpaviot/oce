@@ -6,28 +6,14 @@
 #ifndef _BRepCheck_Wire_HeaderFile
 #define _BRepCheck_Wire_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepCheck_Wire_HeaderFile
 #include <Handle_BRepCheck_Wire.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _BRepCheck_Status_HeaderFile
 #include <BRepCheck_Status.hxx>
-#endif
-#ifndef _TopTools_IndexedDataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _BRepCheck_Result_HeaderFile
 #include <BRepCheck_Result.hxx>
-#endif
 class TopoDS_Wire;
 class TopoDS_Shape;
 class TopoDS_Face;
@@ -35,69 +21,82 @@ class TopoDS_Edge;
 
 
 
-class BRepCheck_Wire : public BRepCheck_Result {
+class BRepCheck_Wire : public BRepCheck_Result
+{
 
 public:
 
   
-  Standard_EXPORT   BRepCheck_Wire(const TopoDS_Wire& W);
-  //! if <ContextShape> is  a  face, consequently checks <br>
-//!          SelfIntersect(),   Closed(),   Orientation()   and <br>
-//!          Closed2d until faulty is found <br>
-  Standard_EXPORT     void InContext(const TopoDS_Shape& ContextShape) ;
-  //! checks that the  wire  is  not empty and "connex". <br>
-//!          Called by constructor <br>
-  Standard_EXPORT     void Minimum() ;
-  //! Does nothing <br>
-  Standard_EXPORT     void Blind() ;
-  //! Checks if the  oriented  edges of the wire  give a <br>
-//!          closed  wire.   If the  wire   is closed,  returns <br>
-//!          BRepCheck_NoError.    Warning :  if the first  and <br>
-//!          last  edge   are  infinite,   the  wire   will  be <br>
-//!          considered as a closed one.  If <Update> is set to <br>
-//!          Standard_True, registers the status in the list. <br>
-//!          May return (and registers): <br>
-//!          **BRepCheck_NotConnected,   if    wire    is   not <br>
-//!          topologically closed <br>
-//!          **BRepCheck_RedundantEdge, if an  edge  is in wire <br>
-//!          more than 3 times  or  in  case of 2 occurences if <br>
-//!          not with FORWARD and REVERSED orientation. <br>
-//!          **BRepCheck_NoError <br>
-  Standard_EXPORT     BRepCheck_Status Closed(const Standard_Boolean Update = Standard_False) ;
-  //! Checks if edges of the  wire give a wire closed in <br>
-//!          2d space. <br>
-//!          Returns BRepCheck_NoError,  or BRepCheck_NotClosed <br>
-//!          If <Update> is set to Standard_True, registers the <br>
-//!          status in the list. <br>
-  Standard_EXPORT     BRepCheck_Status Closed2d(const TopoDS_Face& F,const Standard_Boolean Update = Standard_False) ;
-  //! Checks   if  the oriented edges   of  the wire are <br>
-//!          correctly oriented.  An  internal call is made  to <br>
-//!          the  method Closed.   If no face  exists, call the <br>
-//!          method with   a  null  face  (TopoDS_face()).   If <br>
-//!          <Update> is  set  to Standard_True,  registers the <br>
-//!          status in the list. <br>
-//!          May return (and registers): <br>
-//!          BRepCheck_InvalidDegeneratedFlag, <br>
-//!          BRepCheck_BadOrientationOfSubshape, <br>
-//!          BRepCheck_NotClosed, <br>
-//!          BRepCheck_NoError <br>
-  Standard_EXPORT     BRepCheck_Status Orientation(const TopoDS_Face& F,const Standard_Boolean Update = Standard_False) ;
-  //! Checks if  the wire intersect   itself on the face <br>
-//!          <F>.  <E1>  and <E2>   are the first  intersecting <br>
-//!          edges  found.  <E2>  may  be a  null  edge when  a <br>
-//!          self-intersecting edge is found.If <Update> is set <br>
-//!          to Standard_True,   registers  the  status in  the <br>
-//!          list. <br>
-//!          May return (and register): <br>
-//!          BRepCheck_EmptyWire, <br>
-//!          BRepCheck_SelfIntersectingWire, <br>
-//!          BRepCheck_NoCurveOnSurface, <br>
-//!          BRepCheck_NoError <br>
-  Standard_EXPORT     BRepCheck_Status SelfIntersect(const TopoDS_Face& F,TopoDS_Edge& E1,TopoDS_Edge& E2,const Standard_Boolean Update = Standard_False) ;
-  //! report SelfIntersect() check would be (is) done <br>
-  Standard_EXPORT     Standard_Boolean GeometricControls() const;
-  //! set SelfIntersect() to be checked <br>
-  Standard_EXPORT     void GeometricControls(const Standard_Boolean B) ;
+  Standard_EXPORT BRepCheck_Wire(const TopoDS_Wire& W);
+  
+  //! if <ContextShape> is  a  face, consequently checks
+  //! SelfIntersect(),   Closed(),   Orientation()   and
+  //! Closed2d until faulty is found
+  Standard_EXPORT   void InContext (const TopoDS_Shape& ContextShape) ;
+  
+  //! checks that the  wire  is  not empty and "connex".
+  //! Called by constructor
+  Standard_EXPORT   void Minimum() ;
+  
+  //! Does nothing
+  Standard_EXPORT   void Blind() ;
+  
+  //! Checks if the  oriented  edges of the wire  give a
+  //! closed  wire.   If the  wire   is closed,  returns
+  //! BRepCheck_NoError.    Warning :  if the first  and
+  //! last  edge   are  infinite,   the  wire   will  be
+  //! considered as a closed one.  If <Update> is set to
+  //! Standard_True, registers the status in the list.
+  //! May return (and registers):
+  //! **BRepCheck_NotConnected,   if    wire    is   not
+  //! topologically closed
+  //! **BRepCheck_RedundantEdge, if an  edge  is in wire
+  //! more than 3 times  or  in  case of 2 occurences if
+  //! not with FORWARD and REVERSED orientation.
+  //! **BRepCheck_NoError
+  Standard_EXPORT   BRepCheck_Status Closed (const Standard_Boolean Update = Standard_False) ;
+  
+  //! Checks if edges of the  wire give a wire closed in
+  //! 2d space.
+  //! Returns BRepCheck_NoError,  or BRepCheck_NotClosed
+  //! If <Update> is set to Standard_True, registers the
+  //! status in the list.
+  Standard_EXPORT   BRepCheck_Status Closed2d (const TopoDS_Face& F, const Standard_Boolean Update = Standard_False) ;
+  
+  //! Checks   if  the oriented edges   of  the wire are
+  //! correctly oriented.  An  internal call is made  to
+  //! the  method Closed.   If no face  exists, call the
+  //! method with   a  null  face  (TopoDS_face()).   If
+  //! <Update> is  set  to Standard_True,  registers the
+  //! status in the list.
+  //! May return (and registers):
+  //! BRepCheck_InvalidDegeneratedFlag,
+  //! BRepCheck_BadOrientationOfSubshape,
+  //! BRepCheck_NotClosed,
+  //! BRepCheck_NoError
+  Standard_EXPORT   BRepCheck_Status Orientation (const TopoDS_Face& F, const Standard_Boolean Update = Standard_False) ;
+  
+  //! Checks if  the wire intersect   itself on the face
+  //! <F>.  <E1>  and <E2>   are the first  intersecting
+  //! edges  found.  <E2>  may  be a  null  edge when  a
+  //! self-intersecting edge is found.If <Update> is set
+  //! to Standard_True,   registers  the  status in  the
+  //! list.
+  //! May return (and register):
+  //! BRepCheck_EmptyWire,
+  //! BRepCheck_SelfIntersectingWire,
+  //! BRepCheck_NoCurveOnSurface,
+  //! BRepCheck_NoError
+  Standard_EXPORT   BRepCheck_Status SelfIntersect (const TopoDS_Face& F, TopoDS_Edge& E1, TopoDS_Edge& E2, const Standard_Boolean Update = Standard_False) ;
+  
+  //! report SelfIntersect() check would be (is) done
+  Standard_EXPORT   Standard_Boolean GeometricControls()  const;
+  
+  //! set SelfIntersect() to be checked
+  Standard_EXPORT   void GeometricControls (const Standard_Boolean B) ;
+  
+  //! Sets status of Wire;
+  Standard_EXPORT   void SetStatus (const BRepCheck_Status theStatus) ;
 
 
 
@@ -112,10 +111,10 @@ protected:
 private: 
 
 
-Standard_Boolean myCdone;
-BRepCheck_Status myCstat;
-TopTools_IndexedDataMapOfShapeListOfShape myMapVE;
-Standard_Boolean myGctrl;
+  Standard_Boolean myCdone;
+  BRepCheck_Status myCstat;
+  TopTools_IndexedDataMapOfShapeListOfShape myMapVE;
+  Standard_Boolean myGctrl;
 
 
 };
@@ -124,7 +123,6 @@ Standard_Boolean myGctrl;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepCheck_Wire_HeaderFile

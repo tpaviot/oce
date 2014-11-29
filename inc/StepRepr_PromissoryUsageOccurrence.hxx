@@ -6,28 +6,21 @@
 #ifndef _StepRepr_PromissoryUsageOccurrence_HeaderFile
 #define _StepRepr_PromissoryUsageOccurrence_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepRepr_PromissoryUsageOccurrence_HeaderFile
 #include <Handle_StepRepr_PromissoryUsageOccurrence.hxx>
-#endif
 
-#ifndef _StepRepr_AssemblyComponentUsage_HeaderFile
 #include <StepRepr_AssemblyComponentUsage.hxx>
-#endif
 
 
 
-class StepRepr_PromissoryUsageOccurrence : public StepRepr_AssemblyComponentUsage {
+class StepRepr_PromissoryUsageOccurrence : public StepRepr_AssemblyComponentUsage
+{
 
 public:
 
   
-  Standard_EXPORT   StepRepr_PromissoryUsageOccurrence();
+  Standard_EXPORT StepRepr_PromissoryUsageOccurrence();
 
 
 
@@ -50,7 +43,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_PromissoryUsageOccurrence_HeaderFile

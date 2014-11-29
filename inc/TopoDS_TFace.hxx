@@ -6,39 +6,33 @@
 #ifndef _TopoDS_TFace_HeaderFile
 #define _TopoDS_TFace_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopoDS_TFace_HeaderFile
 #include <Handle_TopoDS_TFace.hxx>
-#endif
 
-#ifndef _TopoDS_TShape_HeaderFile
 #include <TopoDS_TShape.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _Handle_TopoDS_TShape_HeaderFile
 #include <Handle_TopoDS_TShape.hxx>
-#endif
 class TopoDS_TShape;
 
 
-
-class TopoDS_TFace : public TopoDS_TShape {
+//! A  topological part  of a surface   or  of the  2D
+//! space.  The  boundary  is  a   set of  wires   and
+//! vertices.
+class TopoDS_TFace : public TopoDS_TShape
+{
 
 public:
 
-  //! Creates an empty TFace. <br>
-      TopoDS_TFace();
-  //! returns FACE. <br>
-  Standard_EXPORT     TopAbs_ShapeEnum ShapeType() const;
-  //! Returns an empty TFace. <br>
-  Standard_EXPORT   virtual  Handle_TopoDS_TShape EmptyCopy() const;
+  
+  //! Creates an empty TFace.
+    TopoDS_TFace();
+  
+  //! returns FACE.
+  Standard_EXPORT   TopAbs_ShapeEnum ShapeType()  const;
+  
+  //! Returns an empty TFace.
+  Standard_EXPORT virtual   Handle(TopoDS_TShape) EmptyCopy()  const;
 
 
 
@@ -62,7 +56,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopoDS_TFace_HeaderFile

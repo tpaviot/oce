@@ -6,37 +6,17 @@
 #ifndef _StepAP214_DateAndTimeItem_HeaderFile
 #define _StepAP214_DateAndTimeItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepAP214_ApprovalItem_HeaderFile
 #include <StepAP214_ApprovalItem.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepBasic_ApprovalPersonOrganization_HeaderFile
 #include <Handle_StepBasic_ApprovalPersonOrganization.hxx>
-#endif
-#ifndef _Handle_StepAP214_AppliedPersonAndOrganizationAssignment_HeaderFile
 #include <Handle_StepAP214_AppliedPersonAndOrganizationAssignment.hxx>
-#endif
-#ifndef _Handle_StepAP214_AppliedOrganizationAssignment_HeaderFile
 #include <Handle_StepAP214_AppliedOrganizationAssignment.hxx>
-#endif
-#ifndef _Handle_StepBasic_Effectivity_HeaderFile
 #include <Handle_StepBasic_Effectivity.hxx>
-#endif
 class Standard_Transient;
 class StepBasic_ApprovalPersonOrganization;
 class StepAP214_AppliedPersonAndOrganizationAssignment;
@@ -45,41 +25,47 @@ class StepBasic_Effectivity;
 
 
 
-class StepAP214_DateAndTimeItem  : public StepAP214_ApprovalItem {
+class StepAP214_DateAndTimeItem  : public StepAP214_ApprovalItem
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a DateAndTimeItem SelectType <br>
-  Standard_EXPORT   StepAP214_DateAndTimeItem();
-  //! Recognizes a DateAndTimeItem Kind Entity that is : <br>
-//!        1 -> ApprovalPersonOrganization <br>
-//!        2 -> AppliedDateAndPersonAssignment <br>
-//!        3 -> AppliedOrganizationAssignment <br>
-//!        4 -> AssemblyComponentUsageSubstitute <br>
-//!        5 -> DocumentFile <br>
-//!        6 -> Effectivity <br>
-//!        7 -> MaterialDesignation <br>
-//!        8 -> MechanicalDesignGeometricPresentationRepresentation <br>
-//!        9 -> PresentationArea <br>
-//!        10 -> Product <br>
-//!        11 -> ProductDefinition <br>
-//!        12 -> ProductDefinitionFormation <br>
-//!        13 -> ProductDefinitionRelationship <br>
-//!    	  14 -> PropertyDefinition <br>
-//!        15 -> ShapeRepresentation <br>
-//!        16 -> SecurityClassification <br>
-//!        0 else <br>
-  Standard_EXPORT   virtual  Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! returns Value as a ApprovalPersonOrganization (Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_ApprovalPersonOrganization ApprovalPersonOrganization() const;
-  //! returns Value as a AppliedDateAndPersonAssignment (Null if another type) <br>
-  Standard_EXPORT     Handle_StepAP214_AppliedPersonAndOrganizationAssignment AppliedPersonAndOrganizationAssignment() const;
-  //! returns Value as a AppliedOrganizationAssignment (Null if another type) <br>
-  Standard_EXPORT     Handle_StepAP214_AppliedOrganizationAssignment AppliedOrganizationAssignment() const;
-  //! returns Value as a Effectivity (Null if another type) <br>
-  Standard_EXPORT     Handle_StepBasic_Effectivity Effectivity() const;
-
+  
+  //! Returns a DateAndTimeItem SelectType
+  Standard_EXPORT StepAP214_DateAndTimeItem();
+  
+  //! Recognizes a DateAndTimeItem Kind Entity that is :
+  //! 1 -> ApprovalPersonOrganization
+  //! 2 -> AppliedDateAndPersonAssignment
+  //! 3 -> AppliedOrganizationAssignment
+  //! 4 -> AssemblyComponentUsageSubstitute
+  //! 5 -> DocumentFile
+  //! 6 -> Effectivity
+  //! 7 -> MaterialDesignation
+  //! 8 -> MechanicalDesignGeometricPresentationRepresentation
+  //! 9 -> PresentationArea
+  //! 10 -> Product
+  //! 11 -> ProductDefinition
+  //! 12 -> ProductDefinitionFormation
+  //! 13 -> ProductDefinitionRelationship
+  //! 14 -> PropertyDefinition
+  //! 15 -> ShapeRepresentation
+  //! 16 -> SecurityClassification
+  //! 0 else
+  Standard_EXPORT virtual   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! returns Value as a ApprovalPersonOrganization (Null if another type)
+  Standard_EXPORT   Handle(StepBasic_ApprovalPersonOrganization) ApprovalPersonOrganization()  const;
+  
+  //! returns Value as a AppliedDateAndPersonAssignment (Null if another type)
+  Standard_EXPORT   Handle(StepAP214_AppliedPersonAndOrganizationAssignment) AppliedPersonAndOrganizationAssignment()  const;
+  
+  //! returns Value as a AppliedOrganizationAssignment (Null if another type)
+  Standard_EXPORT   Handle(StepAP214_AppliedOrganizationAssignment) AppliedOrganizationAssignment()  const;
+  
+  //! returns Value as a Effectivity (Null if another type)
+  Standard_EXPORT   Handle(StepBasic_Effectivity) Effectivity()  const;
 
 
 
@@ -102,7 +88,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP214_DateAndTimeItem_HeaderFile

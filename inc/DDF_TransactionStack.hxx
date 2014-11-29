@@ -6,73 +6,79 @@
 #ifndef _DDF_TransactionStack_HeaderFile
 #define _DDF_TransactionStack_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_DDF_Transaction_HeaderFile
 #include <Handle_DDF_Transaction.hxx>
-#endif
-#ifndef _Handle_DDF_StackNodeOfTransactionStack_HeaderFile
-#include <Handle_DDF_StackNodeOfTransactionStack.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
+#include <Handle_DDF_ListNodeOfTransactionStack.hxx>
+#include <Standard_Integer.hxx>
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
-class DDF_StackIteratorOfTransactionStack;
+class DDF_ListIteratorOfTransactionStack;
 class DDF_Transaction;
-class DDF_StackNodeOfTransactionStack;
+class DDF_ListNodeOfTransactionStack;
 
 
 
-class DDF_TransactionStack  {
+class DDF_TransactionStack 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   DDF_TransactionStack();
+  Standard_EXPORT DDF_TransactionStack();
   
-  Standard_EXPORT    const DDF_TransactionStack& Assign(const DDF_TransactionStack& Other) ;
-   const DDF_TransactionStack& operator =(const DDF_TransactionStack& Other) 
+  Standard_EXPORT DDF_TransactionStack(const DDF_TransactionStack& Other);
+  
+  Standard_EXPORT   void Assign (const DDF_TransactionStack& Other) ;
+  void operator= (const DDF_TransactionStack& Other) 
 {
-  return Assign(Other);
+  Assign(Other);
 }
   
-        Standard_Boolean IsEmpty() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-        Standard_Integer Depth() const;
-  
-  Standard_EXPORT    const Handle_DDF_Transaction& Top() const;
-  
-  Standard_EXPORT     void Push(const Handle(DDF_Transaction)& I) ;
-  
-  Standard_EXPORT     void Pop() ;
-  
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~DDF_TransactionStack()
 {
   Clear();
 }
   
-  Standard_EXPORT     Handle_DDF_Transaction& ChangeTop() ;
+      Standard_Boolean IsEmpty()  const;
+  
+  Standard_EXPORT   void Prepend (const Handle(DDF_Transaction)& I) ;
+  
+  Standard_EXPORT   void Prepend (const Handle(DDF_Transaction)& I, DDF_ListIteratorOfTransactionStack& theIt) ;
+  
+  Standard_EXPORT   void Prepend (DDF_TransactionStack& Other) ;
+  
+  Standard_EXPORT   void Append (const Handle(DDF_Transaction)& I) ;
+  
+  Standard_EXPORT   void Append (const Handle(DDF_Transaction)& I, DDF_ListIteratorOfTransactionStack& theIt) ;
+  
+  Standard_EXPORT   void Append (DDF_TransactionStack& Other) ;
+  
+  Standard_EXPORT   Handle(DDF_Transaction)& First()  const;
+  
+  Standard_EXPORT   Handle(DDF_Transaction)& Last()  const;
+  
+  Standard_EXPORT   void RemoveFirst() ;
+  
+  Standard_EXPORT   void Remove (DDF_ListIteratorOfTransactionStack& It) ;
+  
+  Standard_EXPORT   void InsertBefore (const Handle(DDF_Transaction)& I, DDF_ListIteratorOfTransactionStack& It) ;
+  
+  Standard_EXPORT   void InsertBefore (DDF_TransactionStack& Other, DDF_ListIteratorOfTransactionStack& It) ;
+  
+  Standard_EXPORT   void InsertAfter (const Handle(DDF_Transaction)& I, DDF_ListIteratorOfTransactionStack& It) ;
+  
+  Standard_EXPORT   void InsertAfter (DDF_TransactionStack& Other, DDF_ListIteratorOfTransactionStack& It) ;
 
 
-friend class DDF_StackIteratorOfTransactionStack;
-
+friend class DDF_ListIteratorOfTransactionStack;
 
 
 protected:
@@ -83,42 +89,39 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   DDF_TransactionStack(const DDF_TransactionStack& Other);
 
 
-Standard_Address myTop;
-Standard_Integer myDepth;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
 
-#define Item Handle_DDF_Transaction
+#define Item Handle(DDF_Transaction)
 #define Item_hxx <DDF_Transaction.hxx>
-#define TCollection_StackNode DDF_StackNodeOfTransactionStack
-#define TCollection_StackNode_hxx <DDF_StackNodeOfTransactionStack.hxx>
-#define TCollection_StackIterator DDF_StackIteratorOfTransactionStack
-#define TCollection_StackIterator_hxx <DDF_StackIteratorOfTransactionStack.hxx>
-#define Handle_TCollection_StackNode Handle_DDF_StackNodeOfTransactionStack
-#define TCollection_StackNode_Type_() DDF_StackNodeOfTransactionStack_Type_()
-#define TCollection_Stack DDF_TransactionStack
-#define TCollection_Stack_hxx <DDF_TransactionStack.hxx>
+#define TCollection_ListNode DDF_ListNodeOfTransactionStack
+#define TCollection_ListNode_hxx <DDF_ListNodeOfTransactionStack.hxx>
+#define TCollection_ListIterator DDF_ListIteratorOfTransactionStack
+#define TCollection_ListIterator_hxx <DDF_ListIteratorOfTransactionStack.hxx>
+#define Handle_TCollection_ListNode Handle_DDF_ListNodeOfTransactionStack
+#define TCollection_ListNode_Type_() DDF_ListNodeOfTransactionStack_Type_()
+#define TCollection_List DDF_TransactionStack
+#define TCollection_List_hxx <DDF_TransactionStack.hxx>
 
-#include <TCollection_Stack.lxx>
+#include <TCollection_List.lxx>
 
 #undef Item
 #undef Item_hxx
-#undef TCollection_StackNode
-#undef TCollection_StackNode_hxx
-#undef TCollection_StackIterator
-#undef TCollection_StackIterator_hxx
-#undef Handle_TCollection_StackNode
-#undef TCollection_StackNode_Type_
-#undef TCollection_Stack
-#undef TCollection_Stack_hxx
+#undef TCollection_ListNode
+#undef TCollection_ListNode_hxx
+#undef TCollection_ListIterator
+#undef TCollection_ListIterator_hxx
+#undef Handle_TCollection_ListNode
+#undef TCollection_ListNode_Type_
+#undef TCollection_List
+#undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DDF_TransactionStack_HeaderFile

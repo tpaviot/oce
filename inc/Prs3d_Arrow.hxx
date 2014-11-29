@@ -6,57 +6,45 @@
 #ifndef _Prs3d_Arrow_HeaderFile
 #define _Prs3d_Arrow_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Prs3d_Root_HeaderFile
 #include <Prs3d_Root.hxx>
-#endif
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Quantity_PlaneAngle_HeaderFile
 #include <Quantity_PlaneAngle.hxx>
-#endif
-#ifndef _Quantity_Length_HeaderFile
 #include <Quantity_Length.hxx>
-#endif
 class Prs3d_Presentation;
 class gp_Pnt;
 class gp_Dir;
 
 
-//! provides class methods to draw an arrow at a given <br>
-//!          location, along a given direction and using a given <br>
-//!          angle. <br>
-class Prs3d_Arrow  : public Prs3d_Root {
+//! provides class methods to draw an arrow at a given
+//! location, along a given direction and using a given
+//! angle.
+class Prs3d_Arrow  : public Prs3d_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Defines the representation of the arrow defined by <br>
-//! the location point aLocation, the direction <br>
-//! aDirection and the length aLength. <br>
-//! The angle anAngle defines the angle of opening of the arrow head. <br>
-//! The presentation object aPresentation stores the <br>
-//! information defined in this framework. <br>
-  Standard_EXPORT   static  void Draw(const Handle(Prs3d_Presentation)& aPresentation,const gp_Pnt& aLocation,const gp_Dir& aDirection,const Quantity_PlaneAngle anAngle,const Quantity_Length aLength) ;
-  //! Defines the representation of the arrow defined by <br>
-//! the location point aLocation, the direction vector <br>
-//! aDirection and the length aLength. <br>
-//! The angle anAngle defines the angle of opening of <br>
-//! the arrow head, and the drawer aDrawer specifies <br>
-//! the display attributes which arrows will have. <br>
-//!  With this syntax, no presentation object is created. <br>
-  Standard_EXPORT   static  void Fill(const Handle(Prs3d_Presentation)& aPresentation,const gp_Pnt& aLocation,const gp_Dir& aDirection,const Quantity_PlaneAngle anAngle,const Quantity_Length aLength) ;
-
+  
+  //! Defines the representation of the arrow defined by
+  //! the location point aLocation, the direction
+  //! aDirection and the length aLength.
+  //! The angle anAngle defines the angle of opening of the arrow head.
+  //! The presentation object aPresentation stores the
+  //! information defined in this framework.
+  Standard_EXPORT static   void Draw (const Handle(Prs3d_Presentation)& aPresentation, const gp_Pnt& aLocation, const gp_Dir& aDirection, const Quantity_PlaneAngle anAngle, const Quantity_Length aLength) ;
+  
+  //! Defines the representation of the arrow defined by
+  //! the location point aLocation, the direction vector
+  //! aDirection and the length aLength.
+  //! The angle anAngle defines the angle of opening of
+  //! the arrow head, and the drawer aDrawer specifies
+  //! the display attributes which arrows will have.
+  //! With this syntax, no presentation object is created.
+  Standard_EXPORT static   void Fill (const Handle(Prs3d_Presentation)& aPresentation, const gp_Pnt& aLocation, const gp_Dir& aDirection, const Quantity_PlaneAngle anAngle, const Quantity_Length aLength) ;
 
 
 
@@ -79,7 +67,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Prs3d_Arrow_HeaderFile

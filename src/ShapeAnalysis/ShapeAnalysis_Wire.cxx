@@ -671,6 +671,11 @@ Standard_Boolean ShapeAnalysis_Wire::CheckSmall (const Standard_Integer num,
   
   TopoDS_Vertex V1 = sae.FirstVertex (E);
   TopoDS_Vertex V2 = sae.LastVertex (E);
+  if (V1.IsNull() || V2.IsNull())
+  {
+    myStatus = ShapeExtend::EncodeStatus (ShapeExtend_FAIL2);
+    return Standard_False;
+  }
   gp_Pnt p1 = BRep_Tool::Pnt (V1);
   gp_Pnt p2 = BRep_Tool::Pnt (V2);
   Standard_Real dist = p1.Distance(p2);
@@ -807,6 +812,10 @@ Standard_Boolean ShapeAnalysis_Wire::CheckDegenerated (const Standard_Integer nu
   TopoDS_Vertex V0 = sae.LastVertex  (E1);
   TopoDS_Vertex V1 = sae.FirstVertex (E2);
   TopoDS_Vertex V2 = sae.LastVertex  (E2);
+
+  if (Vp.IsNull() || V0.IsNull() || V1.IsNull() || V2.IsNull())
+    return Standard_False;
+
   gp_Pnt pp = BRep_Tool::Pnt (Vp); //:i9
   gp_Pnt p0 = BRep_Tool::Pnt (V0);
   gp_Pnt p1 = BRep_Tool::Pnt (V1);
@@ -1403,15 +1412,22 @@ Standard_Boolean ShapeAnalysis_Wire::CheckIntersectingEdges(const Standard_Integ
     Standard_Real param2 = IP.ParamOnSecond();
     gp_Pnt pi1 = GetPointOnEdge ( edge1, mySurf, Crv1, param1 ); //:h0: thesurf.Value ( Crv1->Value ( param1 ) );
     gp_Pnt pi2 = GetPointOnEdge ( edge2, mySurf, Crv2, param2 );
-    Standard_Boolean OK = Standard_False;
-    for(Standard_Integer j=1; (j<=4)&&!OK; j++) {
+    Standard_Boolean OK1 = Standard_False;
+    Standard_Boolean OK2 = Standard_False;
+
+    for(Standard_Integer j=1; (j<=2)&&!OK1; j++) {
       Standard_Real di1 = pi1.SquareDistance (vertexPoints(j));
-      Standard_Real di2 = pi2.SquareDistance (vertexPoints(j));
-      Standard_Real dist2 = Max ( di1, di2 );
-      if(dist2 < vertexTolers(j) * vertexTolers(j))
-	OK = Standard_True;
+      if(di1 < vertexTolers(j) * vertexTolers(j))
+        OK1 = Standard_True;
     }
-    if(!OK) {
+
+    for(Standard_Integer j=3; (j<=4)&&!OK2; j++) {
+      Standard_Real di2 = pi2.SquareDistance (vertexPoints(j));
+      if(di2 < vertexTolers(j) * vertexTolers(j))
+        OK2 = Standard_True;
+    }
+
+    if(!OK1 || !OK2) {
       gp_Pnt pint = 0.5 * ( pi1.XYZ() + pi2.XYZ() );
       points2d.Append ( IP );
       points3d.Append ( pint );
@@ -1836,6 +1852,11 @@ Standard_Boolean isMultiVertex(const TopTools_ListOfShape& alshape,
     TopoDS_Edge aedge = myWire->Edge(i);
     TopoDS_Vertex aV1,aV2;
     TopExp::Vertices(aedge,aV1,aV2);
+    if (aV1.IsNull() || aV2.IsNull())
+    {
+      myStatus = ShapeExtend::EncodeStatus (ShapeExtend_FAIL2);
+      return Standard_False;
+    }
     Standard_Boolean isSame = aV1.IsSame(aV2);
     if(myWire->IsSeam(i))
       aMapSeemEdges.Add(aedge); ///continue;

@@ -6,31 +6,15 @@
 #ifndef _StepElement_HSequenceOfSurfaceElementPurposeMember_HeaderFile
 #define _StepElement_HSequenceOfSurfaceElementPurposeMember_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepElement_HSequenceOfSurfaceElementPurposeMember_HeaderFile
 #include <Handle_StepElement_HSequenceOfSurfaceElementPurposeMember.hxx>
-#endif
 
-#ifndef _StepElement_SequenceOfSurfaceElementPurposeMember_HeaderFile
 #include <StepElement_SequenceOfSurfaceElementPurposeMember.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_StepElement_SurfaceElementPurposeMember_HeaderFile
 #include <Handle_StepElement_SurfaceElementPurposeMember.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class StepElement_SurfaceElementPurposeMember;
@@ -38,56 +22,57 @@ class StepElement_SequenceOfSurfaceElementPurposeMember;
 
 
 
-class StepElement_HSequenceOfSurfaceElementPurposeMember : public MMgt_TShared {
+class StepElement_HSequenceOfSurfaceElementPurposeMember : public MMgt_TShared
+{
 
 public:
 
   
-      StepElement_HSequenceOfSurfaceElementPurposeMember();
+    StepElement_HSequenceOfSurfaceElementPurposeMember();
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void Append(const Handle(StepElement_SurfaceElementPurposeMember)& anItem) ;
+  Standard_EXPORT   void Append (const Handle(StepElement_SurfaceElementPurposeMember)& anItem) ;
   
-  Standard_EXPORT     void Append(const Handle(StepElement_HSequenceOfSurfaceElementPurposeMember)& aSequence) ;
+  Standard_EXPORT   void Append (const Handle(StepElement_HSequenceOfSurfaceElementPurposeMember)& aSequence) ;
   
-  Standard_EXPORT     void Prepend(const Handle(StepElement_SurfaceElementPurposeMember)& anItem) ;
+  Standard_EXPORT   void Prepend (const Handle(StepElement_SurfaceElementPurposeMember)& anItem) ;
   
-  Standard_EXPORT     void Prepend(const Handle(StepElement_HSequenceOfSurfaceElementPurposeMember)& aSequence) ;
+  Standard_EXPORT   void Prepend (const Handle(StepElement_HSequenceOfSurfaceElementPurposeMember)& aSequence) ;
   
-  Standard_EXPORT     void Reverse() ;
+  Standard_EXPORT   void Reverse() ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(StepElement_SurfaceElementPurposeMember)& anItem) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(StepElement_SurfaceElementPurposeMember)& anItem) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(StepElement_HSequenceOfSurfaceElementPurposeMember)& aSequence) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(StepElement_HSequenceOfSurfaceElementPurposeMember)& aSequence) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(StepElement_SurfaceElementPurposeMember)& anItem) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(StepElement_SurfaceElementPurposeMember)& anItem) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(StepElement_HSequenceOfSurfaceElementPurposeMember)& aSequence) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(StepElement_HSequenceOfSurfaceElementPurposeMember)& aSequence) ;
   
-  Standard_EXPORT     void Exchange(const Standard_Integer anIndex,const Standard_Integer anOtherIndex) ;
+  Standard_EXPORT   void Exchange (const Standard_Integer anIndex, const Standard_Integer anOtherIndex) ;
   
-  Standard_EXPORT     Handle_StepElement_HSequenceOfSurfaceElementPurposeMember Split(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(StepElement_HSequenceOfSurfaceElementPurposeMember) Split (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer anIndex,const Handle(StepElement_SurfaceElementPurposeMember)& anItem) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer anIndex, const Handle(StepElement_SurfaceElementPurposeMember)& anItem) ;
   
-  Standard_EXPORT    const Handle_StepElement_SurfaceElementPurposeMember& Value(const Standard_Integer anIndex) const;
+  Standard_EXPORT  const  Handle(StepElement_SurfaceElementPurposeMember)& Value (const Standard_Integer anIndex)  const;
   
-  Standard_EXPORT     Handle_StepElement_SurfaceElementPurposeMember& ChangeValue(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(StepElement_SurfaceElementPurposeMember)& ChangeValue (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer anIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer fromIndex,const Standard_Integer toIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer fromIndex, const Standard_Integer toIndex) ;
   
-       const StepElement_SequenceOfSurfaceElementPurposeMember& Sequence() const;
+     const  StepElement_SequenceOfSurfaceElementPurposeMember& Sequence()  const;
   
-        StepElement_SequenceOfSurfaceElementPurposeMember& ChangeSequence() ;
+      StepElement_SequenceOfSurfaceElementPurposeMember& ChangeSequence() ;
   
-  Standard_EXPORT     Handle_StepElement_HSequenceOfSurfaceElementPurposeMember ShallowCopy() const;
+  Standard_EXPORT   Handle(StepElement_HSequenceOfSurfaceElementPurposeMember) ShallowCopy()  const;
 
 
 
@@ -102,12 +87,12 @@ protected:
 private: 
 
 
-StepElement_SequenceOfSurfaceElementPurposeMember mySequence;
+  StepElement_SequenceOfSurfaceElementPurposeMember mySequence;
 
 
 };
 
-#define Item Handle_StepElement_SurfaceElementPurposeMember
+#define Item Handle(StepElement_SurfaceElementPurposeMember)
 #define Item_hxx <StepElement_SurfaceElementPurposeMember.hxx>
 #define TheSequence StepElement_SequenceOfSurfaceElementPurposeMember
 #define TheSequence_hxx <StepElement_SequenceOfSurfaceElementPurposeMember.hxx>
@@ -128,11 +113,10 @@ StepElement_SequenceOfSurfaceElementPurposeMember mySequence;
 #undef TCollection_HSequence_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline Handle_StepElement_HSequenceOfSurfaceElementPurposeMember ShallowCopy(const Handle_StepElement_HSequenceOfSurfaceElementPurposeMember& me) {
+inline Handle(StepElement_HSequenceOfSurfaceElementPurposeMember) ShallowCopy(const Handle(StepElement_HSequenceOfSurfaceElementPurposeMember)& me) {
  return me->ShallowCopy();
 }
 
 
 
-#endif
+#endif // _StepElement_HSequenceOfSurfaceElementPurposeMember_HeaderFile

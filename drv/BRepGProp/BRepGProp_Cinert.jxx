@@ -1,0 +1,3 @@
+#include <BRepAdaptor_Curve.hxx>
+#include <gp_Pnt.hxx>
+#include <BRepGProp_Cinert.hxx>

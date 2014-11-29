@@ -6,84 +6,69 @@
 #ifndef _BRep_TEdge_HeaderFile
 #define _BRep_TEdge_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRep_TEdge_HeaderFile
 #include <Handle_BRep_TEdge.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _BRep_ListOfCurveRepresentation_HeaderFile
 #include <BRep_ListOfCurveRepresentation.hxx>
-#endif
-#ifndef _TopoDS_TEdge_HeaderFile
 #include <TopoDS_TEdge.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TopoDS_TShape_HeaderFile
 #include <Handle_TopoDS_TShape.hxx>
-#endif
 class BRep_ListOfCurveRepresentation;
 class TopoDS_TShape;
 
 
-//! The TEdge from BRep is  inherited from  the  TEdge <br>
-//!          from TopoDS. It contains the geometric data. <br>
-//! <br>
-//!          The TEdge contains : <br>
-//! <br>
-//!           * A tolerance. <br>
-//! <br>
-//!           * A same parameter flag. <br>
-//! <br>
-//!           * A same range flag. <br>
-//! <br>
-//!           * A Degenerated flag. <br>
-//! <br>
-//!           *  A  list   of curve representation. <br>
-class BRep_TEdge : public TopoDS_TEdge {
+//! The TEdge from BRep is  inherited from  the  TEdge
+//! from TopoDS. It contains the geometric data.
+//!
+//! The TEdge contains :
+//!
+//! * A tolerance.
+//!
+//! * A same parameter flag.
+//!
+//! * A same range flag.
+//!
+//! * A Degenerated flag.
+//!
+//! *  A  list   of curve representation.
+class BRep_TEdge : public TopoDS_TEdge
+{
 
 public:
 
-  //! Creates an empty TEdge. <br>
-  Standard_EXPORT   BRep_TEdge();
   
-        Standard_Real Tolerance() const;
+  //! Creates an empty TEdge.
+  Standard_EXPORT BRep_TEdge();
   
-        void Tolerance(const Standard_Real T) ;
-  //! Sets the tolerance  to the   max  of <T>  and  the <br>
-//!          current  tolerance. <br>
-//! <br>
-        void UpdateTolerance(const Standard_Real T) ;
+      Standard_Real Tolerance()  const;
   
-  Standard_EXPORT     Standard_Boolean SameParameter() const;
+      void Tolerance (const Standard_Real T) ;
   
-  Standard_EXPORT     void SameParameter(const Standard_Boolean S) ;
+  //! Sets the tolerance  to the   max  of <T>  and  the
+  //! current  tolerance.
+      void UpdateTolerance (const Standard_Real T) ;
   
-  Standard_EXPORT     Standard_Boolean SameRange() const;
+  Standard_EXPORT   Standard_Boolean SameParameter()  const;
   
-  Standard_EXPORT     void SameRange(const Standard_Boolean S) ;
+  Standard_EXPORT   void SameParameter (const Standard_Boolean S) ;
   
-  Standard_EXPORT     Standard_Boolean Degenerated() const;
+  Standard_EXPORT   Standard_Boolean SameRange()  const;
   
-  Standard_EXPORT     void Degenerated(const Standard_Boolean S) ;
+  Standard_EXPORT   void SameRange (const Standard_Boolean S) ;
   
-       const BRep_ListOfCurveRepresentation& Curves() const;
+  Standard_EXPORT   Standard_Boolean Degenerated()  const;
   
-        BRep_ListOfCurveRepresentation& ChangeCurves() ;
-  //! Returns a copy  of the  TShape  with no sub-shapes. <br>
-  Standard_EXPORT     Handle_TopoDS_TShape EmptyCopy() const;
+  Standard_EXPORT   void Degenerated (const Standard_Boolean S) ;
+  
+     const  BRep_ListOfCurveRepresentation& Curves()  const;
+  
+      BRep_ListOfCurveRepresentation& ChangeCurves() ;
+  
+  //! Returns a copy  of the  TShape  with no sub-shapes.
+  Standard_EXPORT   Handle(TopoDS_TShape) EmptyCopy()  const;
 
 
 
@@ -98,9 +83,9 @@ protected:
 private: 
 
 
-Standard_Real myTolerance;
-Standard_Integer myFlags;
-BRep_ListOfCurveRepresentation myCurves;
+  Standard_Real myTolerance;
+  Standard_Integer myFlags;
+  BRep_ListOfCurveRepresentation myCurves;
 
 
 };
@@ -110,7 +95,6 @@ BRep_ListOfCurveRepresentation myCurves;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRep_TEdge_HeaderFile

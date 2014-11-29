@@ -6,14 +6,13 @@
 #ifndef _QANewBRepNaming_TypeOfPrimitive3D_HeaderFile
 #define _QANewBRepNaming_TypeOfPrimitive3D_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum QANewBRepNaming_TypeOfPrimitive3D {
+
+enum QANewBRepNaming_TypeOfPrimitive3D
+{
 QANewBRepNaming_SHELL,
 QANewBRepNaming_SOLID
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _QANewBRepNaming_TypeOfPrimitive3D_HeaderFile

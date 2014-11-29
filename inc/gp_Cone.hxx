@@ -6,37 +6,17 @@
 #ifndef _gp_Cone_HeaderFile
 #define _gp_Cone_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Ax3_HeaderFile
 #include <gp_Ax3.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Storable_HeaderFile
 #include <Standard_Storable.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _gp_Ax1_HeaderFile
 #include <gp_Ax1.hxx>
-#endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
 #include <Standard_PrimitiveTypes.hxx>
-#endif
 class Standard_ConstructionError;
 class gp_Ax3;
 class gp_Ax1;
@@ -49,154 +29,183 @@ class gp_Vec;
 Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(gp_Cone);
 
 
-//!  Defines an infinite conical surface. <br>
-//! A cone is defined by its half-angle at the apex and <br>
-//! positioned in space with a coordinate system (a gp_Ax3 <br>
-//! object) and a "reference radius" where: <br>
-//! -   the "main Axis" of the coordinate system is the axis of   revolution of the cone, <br>
-//! -   the plane defined by the origin, the "X Direction" and <br>
-//!   the "Y Direction" of the coordinate system is the <br>
-//!   reference plane of the cone; the intersection of the <br>
-//!   cone with this reference plane is a circle of radius <br>
-//!   equal to the reference radius, <br>
-//!   if the half-angle is positive, the apex of the cone is on <br>
-//!   the negative side of the "main Axis" of the coordinate <br>
-//!   system. If the half-angle is negative, the apex is on the   positive side. <br>
-//!   This coordinate system is the "local coordinate system" of the cone. <br>
-//! Note: when a gp_Cone cone is converted into a <br>
-//! Geom_ConicalSurface cone, some implicit properties of <br>
-//! its local coordinate system are used explicitly: <br>
-//! -   its origin, "X Direction", "Y Direction" and "main <br>
-//!   Direction" are used directly to define the parametric <br>
-//! directions on the cone and the origin of the parameters, <br>
-//! -   its implicit orientation (right-handed or left-handed) <br>
-//!   gives the orientation (direct or indirect) of the <br>
-//!   Geom_ConicalSurface cone. <br>
-//! See Also <br>
-//! gce_MakeCone which provides functions for more <br>
-//! complex cone constructions <br>
-//! Geom_ConicalSurface which provides additional <br>
-//! functions for constructing cones and works, in particular, <br>
-//! with the parametric equations of cones gp_Ax3 <br>
-class gp_Cone  {
+//! Defines an infinite conical surface.
+//! A cone is defined by its half-angle at the apex and
+//! positioned in space with a coordinate system (a gp_Ax3
+//! object) and a "reference radius" where:
+//! -   the "main Axis" of the coordinate system is the axis of   revolution of the cone,
+//! -   the plane defined by the origin, the "X Direction" and
+//! the "Y Direction" of the coordinate system is the
+//! reference plane of the cone; the intersection of the
+//! cone with this reference plane is a circle of radius
+//! equal to the reference radius,
+//! if the half-angle is positive, the apex of the cone is on
+//! the negative side of the "main Axis" of the coordinate
+//! system. If the half-angle is negative, the apex is on the   positive side.
+//! This coordinate system is the "local coordinate system" of the cone.
+//! Note: when a gp_Cone cone is converted into a
+//! Geom_ConicalSurface cone, some implicit properties of
+//! its local coordinate system are used explicitly:
+//! -   its origin, "X Direction", "Y Direction" and "main
+//! Direction" are used directly to define the parametric
+//! directions on the cone and the origin of the parameters,
+//! -   its implicit orientation (right-handed or left-handed)
+//! gives the orientation (direct or indirect) of the
+//! Geom_ConicalSurface cone.
+//! See Also
+//! gce_MakeCone which provides functions for more
+//! complex cone constructions
+//! Geom_ConicalSurface which provides additional
+//! functions for constructing cones and works, in particular,
+//! with the parametric equations of cones gp_Ax3
+class gp_Cone 
+{
 
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an indefinite Cone. <br>
-      gp_Cone();
   
-//!  Creates an infinite conical surface. A3 locates the cone <br>
-//!  in the space and defines the reference plane of the surface. <br>
-//!  Ang is the conical surface semi-angle between 0 and PI/2 radians. <br>
-//!  Radius is the radius of the circle in the reference plane of <br>
-//!  the cone. <br>
-//! Raises ConstructionError <br>
-//!  . if Radius is lower than 0.0 <br>
-//!  . Ang < Resolution from gp  or Ang >= (PI/2) - Resolution. <br>
-      gp_Cone(const gp_Ax3& A3,const Standard_Real Ang,const Standard_Real Radius);
-  //!  Changes the symmetry axis of the cone.  Raises ConstructionError <br>
-//!  the direction of A1 is parallel to the "XDirection" <br>
-//!  of the coordinate system of the cone. <br>
-        void SetAxis(const gp_Ax1& A1) ;
-  //! Changes the location of the cone. <br>
-        void SetLocation(const gp_Pnt& Loc) ;
+  //! Creates an indefinite Cone.
+    gp_Cone();
   
-//!  Changes the local coordinate system of the cone. <br>
-//!  This coordinate system defines the reference plane of the cone. <br>
-        void SetPosition(const gp_Ax3& A3) ;
+
+  //! Creates an infinite conical surface. A3 locates the cone
+  //! in the space and defines the reference plane of the surface.
+  //! Ang is the conical surface semi-angle between 0 and PI/2 radians.
+  //! Radius is the radius of the circle in the reference plane of
+  //! the cone.
+  //! Raises ConstructionError
+  //! . if Radius is lower than 0.0
+  //! . Ang < Resolution from gp  or Ang >= (PI/2) - Resolution.
+    gp_Cone(const gp_Ax3& A3, const Standard_Real Ang, const Standard_Real Radius);
   
-//!  Changes the radius of the cone in the reference plane of <br>
-//!  the cone. <br>//! Raised if R < 0.0 <br>
-        void SetRadius(const Standard_Real R) ;
+  //! Changes the symmetry axis of the cone.  Raises ConstructionError
+  //! the direction of A1 is parallel to the "XDirection"
+  //! of the coordinate system of the cone.
+      void SetAxis (const gp_Ax1& A1) ;
   
-//!  Changes the semi-angle of the cone. <br>
-//!  Ang is the conical surface semi-angle  ]0,PI/2[. <br>
-//!    Raises ConstructionError if Ang < Resolution from gp or Ang >= PI/2 - Resolution <br>
-        void SetSemiAngle(const Standard_Real Ang) ;
+  //! Changes the location of the cone.
+      void SetLocation (const gp_Pnt& Loc) ;
   
-//!  Computes the cone's top. The Apex of the cone is on the <br>
-//!  negative side of the symmetry axis of the cone. <br>
-        gp_Pnt Apex() const;
-  //! Reverses the   U   parametrization of   the  cone <br>
-//!          reversing the YAxis. <br>
-        void UReverse() ;
-  //! Reverses the   V   parametrization of   the  cone  reversing the ZAxis. <br>
-        void VReverse() ;
-  //! Returns true if the local coordinate system of this cone is right-handed. <br>
-        Standard_Boolean Direct() const;
-  //! returns the symmetry axis of the cone. <br>
-       const gp_Ax1& Axis() const;
+
+  //! Changes the local coordinate system of the cone.
+  //! This coordinate system defines the reference plane of the cone.
+      void SetPosition (const gp_Ax3& A3) ;
   
-//!  Computes the coefficients of the implicit equation of the quadric <br>
-//!  in the absolute cartesian coordinates system : <br>
-//! A1.X**2 + A2.Y**2 + A3.Z**2 + 2.(B1.X.Y + B2.X.Z + B3.Y.Z) + <br>
-//! 2.(C1.X + C2.Y + C3.Z) + D = 0.0 <br>
-  Standard_EXPORT     void Coefficients(Standard_Real& A1,Standard_Real& A2,Standard_Real& A3,Standard_Real& B1,Standard_Real& B2,Standard_Real& B3,Standard_Real& C1,Standard_Real& C2,Standard_Real& C3,Standard_Real& D) const;
-  //! returns the "Location" point of the cone. <br>
-       const gp_Pnt& Location() const;
+
+  //! Changes the radius of the cone in the reference plane of
+  //! the cone.
+  //! Raised if R < 0.0
+      void SetRadius (const Standard_Real R) ;
   
-//!  Returns the local coordinates system of the cone. <br>
-       const gp_Ax3& Position() const;
+
+  //! Changes the semi-angle of the cone.
+  //! Ang is the conical surface semi-angle  ]0,PI/2[.
+  //! Raises ConstructionError if Ang < Resolution from gp or Ang >= PI/2 - Resolution
+      void SetSemiAngle (const Standard_Real Ang) ;
   
-//!  Returns the radius of the cone in the reference plane. <br>
-        Standard_Real RefRadius() const;
-  //! Returns the half-angle at the apex of this cone. <br>
-        Standard_Real SemiAngle() const;
-  //! Returns the XAxis of the reference plane. <br>
-        gp_Ax1 XAxis() const;
-  //! Returns the YAxis of the reference plane. <br>
-        gp_Ax1 YAxis() const;
+
+  //! Computes the cone's top. The Apex of the cone is on the
+  //! negative side of the symmetry axis of the cone.
+      gp_Pnt Apex()  const;
   
-  Standard_EXPORT     void Mirror(const gp_Pnt& P) ;
+  //! Reverses the   U   parametrization of   the  cone
+  //! reversing the YAxis.
+      void UReverse() ;
   
-//!  Performs the symmetrical transformation of a cone <br>
-//!  with respect to the point P which is the center of the <br>
-//!  symmetry. <br>
-  Standard_EXPORT     gp_Cone Mirrored(const gp_Pnt& P) const;
+  //! Reverses the   V   parametrization of   the  cone  reversing the ZAxis.
+      void VReverse() ;
   
-  Standard_EXPORT     void Mirror(const gp_Ax1& A1) ;
+  //! Returns true if the local coordinate system of this cone is right-handed.
+      Standard_Boolean Direct()  const;
   
-//!  Performs the symmetrical transformation of a cone with <br>
-//!  respect to an axis placement which is the axis of the <br>
-//!  symmetry. <br>
-  Standard_EXPORT     gp_Cone Mirrored(const gp_Ax1& A1) const;
+  //! returns the symmetry axis of the cone.
+     const  gp_Ax1& Axis()  const;
   
-  Standard_EXPORT     void Mirror(const gp_Ax2& A2) ;
+
+  //! Computes the coefficients of the implicit equation of the quadric
+  //! in the absolute cartesian coordinates system :
+  //! A1.X**2 + A2.Y**2 + A3.Z**2 + 2.(B1.X.Y + B2.X.Z + B3.Y.Z) +
+  //! 2.(C1.X + C2.Y + C3.Z) + D = 0.0
+  Standard_EXPORT   void Coefficients (Standard_Real& A1, Standard_Real& A2, Standard_Real& A3, Standard_Real& B1, Standard_Real& B2, Standard_Real& B3, Standard_Real& C1, Standard_Real& C2, Standard_Real& C3, Standard_Real& D)  const;
   
-//!  Performs the symmetrical transformation of a cone with respect <br>
-//!  to a plane. The axis placement A2 locates the plane of the <br>
-//!  of the symmetry : (Location, XDirection, YDirection). <br>
-  Standard_EXPORT     gp_Cone Mirrored(const gp_Ax2& A2) const;
+  //! returns the "Location" point of the cone.
+     const  gp_Pnt& Location()  const;
   
-        void Rotate(const gp_Ax1& A1,const Standard_Real Ang) ;
+
+  //! Returns the local coordinates system of the cone.
+     const  gp_Ax3& Position()  const;
   
-//!  Rotates a cone. A1 is the axis of the rotation. <br>
-//!  Ang is the angular value of the rotation in radians. <br>
-        gp_Cone Rotated(const gp_Ax1& A1,const Standard_Real Ang) const;
+
+  //! Returns the radius of the cone in the reference plane.
+      Standard_Real RefRadius()  const;
   
-        void Scale(const gp_Pnt& P,const Standard_Real S) ;
+  //! Returns the half-angle at the apex of this cone.
+      Standard_Real SemiAngle()  const;
   
-//!  Scales a cone. S is the scaling value. <br>
-//!  The absolute value of S is used to scale the cone <br>
-        gp_Cone Scaled(const gp_Pnt& P,const Standard_Real S) const;
+  //! Returns the XAxis of the reference plane.
+      gp_Ax1 XAxis()  const;
   
-        void Transform(const gp_Trsf& T) ;
+  //! Returns the YAxis of the reference plane.
+      gp_Ax1 YAxis()  const;
   
-//!  Transforms a cone with the transformation T from class Trsf. <br>
-        gp_Cone Transformed(const gp_Trsf& T) const;
+  Standard_EXPORT   void Mirror (const gp_Pnt& P) ;
   
-        void Translate(const gp_Vec& V) ;
+
+  //! Performs the symmetrical transformation of a cone
+  //! with respect to the point P which is the center of the
+  //! symmetry.
+  Standard_EXPORT   gp_Cone Mirrored (const gp_Pnt& P)  const;
   
-//!  Translates a cone in the direction of the vector V. <br>
-//!  The magnitude of the translation is the vector's magnitude. <br>
-        gp_Cone Translated(const gp_Vec& V) const;
+  Standard_EXPORT   void Mirror (const gp_Ax1& A1) ;
   
-        void Translate(const gp_Pnt& P1,const gp_Pnt& P2) ;
+
+  //! Performs the symmetrical transformation of a cone with
+  //! respect to an axis placement which is the axis of the
+  //! symmetry.
+  Standard_EXPORT   gp_Cone Mirrored (const gp_Ax1& A1)  const;
   
-//!  Translates a cone from the point P1 to the point P2. <br>
-        gp_Cone Translated(const gp_Pnt& P1,const gp_Pnt& P2) const;
+  Standard_EXPORT   void Mirror (const gp_Ax2& A2) ;
+  
+
+  //! Performs the symmetrical transformation of a cone with respect
+  //! to a plane. The axis placement A2 locates the plane of the
+  //! of the symmetry : (Location, XDirection, YDirection).
+  Standard_EXPORT   gp_Cone Mirrored (const gp_Ax2& A2)  const;
+  
+      void Rotate (const gp_Ax1& A1, const Standard_Real Ang) ;
+  
+
+  //! Rotates a cone. A1 is the axis of the rotation.
+  //! Ang is the angular value of the rotation in radians.
+      gp_Cone Rotated (const gp_Ax1& A1, const Standard_Real Ang)  const;
+  
+      void Scale (const gp_Pnt& P, const Standard_Real S) ;
+  
+
+  //! Scales a cone. S is the scaling value.
+  //! The absolute value of S is used to scale the cone
+      gp_Cone Scaled (const gp_Pnt& P, const Standard_Real S)  const;
+  
+      void Transform (const gp_Trsf& T) ;
+  
+
+  //! Transforms a cone with the transformation T from class Trsf.
+      gp_Cone Transformed (const gp_Trsf& T)  const;
+  
+      void Translate (const gp_Vec& V) ;
+  
+
+  //! Translates a cone in the direction of the vector V.
+  //! The magnitude of the translation is the vector's magnitude.
+      gp_Cone Translated (const gp_Vec& V)  const;
+  
+      void Translate (const gp_Pnt& P1, const gp_Pnt& P2) ;
+  
+
+  //! Translates a cone from the point P1 to the point P2.
+      gp_Cone Translated (const gp_Pnt& P1, const gp_Pnt& P2)  const;
     const gp_Ax3& _CSFDB_Getgp_Conepos() const { return pos; }
     Standard_Real _CSFDB_Getgp_Coneradius() const { return radius; }
     void _CSFDB_Setgp_Coneradius(const Standard_Real p) { radius = p; }
@@ -213,9 +222,9 @@ protected:
 private: 
 
 
-gp_Ax3 pos;
-Standard_Real radius;
-Standard_Real semiAngle;
+  gp_Ax3 pos;
+  Standard_Real radius;
+  Standard_Real semiAngle;
 
 
 };
@@ -225,7 +234,6 @@ Standard_Real semiAngle;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _gp_Cone_HeaderFile

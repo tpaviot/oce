@@ -5,19 +5,11 @@
 
 #include <TColStd_StdMapNodeOfMapOfInteger.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _TColStd_MapOfInteger_HeaderFile
 #include <TColStd_MapOfInteger.hxx>
-#endif
-#ifndef _TColStd_MapIteratorOfMapOfInteger_HeaderFile
 #include <TColStd_MapIteratorOfMapOfInteger.hxx>
-#endif
 
  
 

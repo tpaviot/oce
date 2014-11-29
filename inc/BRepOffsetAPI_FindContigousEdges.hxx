@@ -6,28 +6,14 @@
 #ifndef _BRepOffsetAPI_FindContigousEdges_HeaderFile
 #define _BRepOffsetAPI_FindContigousEdges_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_BRepBuilderAPI_Sewing_HeaderFile
 #include <Handle_BRepBuilderAPI_Sewing.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class BRepBuilderAPI_Sewing;
 class Standard_OutOfRange;
 class Standard_NoSuchObject;
@@ -36,115 +22,130 @@ class TopoDS_Edge;
 class TopTools_ListOfShape;
 
 
-//! Provides methods to identify contigous boundaries <br>
-//!          for continuity control (C0, C1, ...) <br>
-//! <br>
-//!          Use this function as following: <br>
-//!            - create an object <br>
-//!                - default tolerance 1.E-06 <br>
-//!                - with analysis of degenerated faces on <br>
-//!                - define if necessary a new tolerance <br>
-//!                - set if necessary analysis of degenerated shapes off <br>
-//!            - add shapes to be controlled -> Add <br>
-//!            - compute -> Perfom <br>
-//!            - output couples of connected edges for control <br>
-//!            - output the problems if any <br>
-class BRepOffsetAPI_FindContigousEdges  {
+//! Provides methods to identify contigous boundaries
+//! for continuity control (C0, C1, ...)
+//!
+//! Use this function as following:
+//! - create an object
+//! - default tolerance 1.E-06
+//! - with analysis of degenerated faces on
+//! - define if necessary a new tolerance
+//! - set if necessary analysis of degenerated shapes off
+//! - add shapes to be controlled -> Add
+//! - compute -> Perfom
+//! - output couples of connected edges for control
+//! - output the problems if any
+class BRepOffsetAPI_FindContigousEdges 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Initializes an algorithm for identifying contiguous edges <br>
-//! on shapes with tolerance as the tolerance of contiguity <br>
-//! (defaulted to 1.0e-6). This tolerance value is used to <br>
-//! determine whether two edges or sections of edges are coincident. <br>
-//! Use the function Add to define the shapes to be checked. <br>
-//! Set option to false. This argument (defaulted to true) will <br>
-//! serve in subsequent software releases for performing an <br>
-//! analysis of degenerated shapes. <br>
-  Standard_EXPORT   BRepOffsetAPI_FindContigousEdges(const Standard_Real tolerance = 1.0e-06,const Standard_Boolean option = Standard_True);
-  //! Initializes this algorithm for identifying contiguous edges <br>
-//! on shapes using the tolerance of contiguity tolerance. <br>
-//! This tolerance value is used to determine whether two <br>
-//! edges or sections of edges are coincident. <br>
-//! Use the function Add to define the shapes to be checked. <br>
-//! Sets <option> to false. <br>
-  Standard_EXPORT     void Init(const Standard_Real tolerance,const Standard_Boolean option) ;
-  //! Adds the shape shape to the list of shapes to be <br>
-//! checked by this algorithm. <br>
-//! Once all the shapes to be checked have been added, <br>
-//! use the function Perform to find the contiguous edges <br>
-//! and the function ContigousEdge to return these edges. <br>
-  Standard_EXPORT     void Add(const TopoDS_Shape& shape) ;
-  //! Finds coincident parts of edges of two or more shapes <br>
-//! added to this algorithm and breaks down these edges <br>
-//! into contiguous and non-contiguous sections on copies <br>
-//! of the initial shapes. <br>
-//!        The function ContigousEdge returns contiguous <br>
-//! edges. The function Modified can be used to return <br>
-//! modified copies of the initial shapes where one or more <br>
-//! edges were broken down into contiguous and non-contiguous sections. <br>
-//! Warning <br>
-//! This function must be used once all the shapes to be <br>
-//! checked have been added. It is not possible to add <br>
-//! further shapes subsequently and then to repeat the call to Perform. <br>
-  Standard_EXPORT     void Perform() ;
-  //! Gives  the number  of edges (free  edges + contigous <br>
-//!          edges  +  multiple edge) <br>
-  Standard_EXPORT     Standard_Integer NbEdges() const;
-  //! Returns the number of contiguous edges found by the <br>
-//! function Perform on the shapes added to this algorithm. <br>
-  Standard_EXPORT     Standard_Integer NbContigousEdges() const;
-  //! Returns the contiguous edge of index index found by <br>
-//! the function Perform on the shapes added to this algorithm. <br>
-//! Exceptions <br>
-//! Standard_OutOfRange if: <br>
-//! - index is less than 1, or <br>
-//! - index is greater than the number of contiguous <br>
-//!   edges found by the function Perform on the shapes added to this algorithm. <br>
-  Standard_EXPORT    const TopoDS_Edge& ContigousEdge(const Standard_Integer index) const;
-  //! Returns a list of edges coincident with the contiguous <br>
-//! edge of index index found by the function Perform. <br>
-//! There are as many edges in the list as there are faces <br>
-//! adjacent to this contiguous edge. <br>
-//! Exceptions <br>
-//! Standard_OutOfRange if: <br>
-//! - index is less than 1, or <br>
-//! - index is greater than the number of contiguous edges <br>
-//!   found by the function Perform on the shapes added to this algorithm. <br>
-  Standard_EXPORT    const TopTools_ListOfShape& ContigousEdgeCouple(const Standard_Integer index) const;
-  //! Returns the edge on the initial shape, of which the <br>
-//! modified copy contains the edge section. <br>
-//! section is coincident with a contiguous edge found by <br>
-//! the function Perform. Use the function <br>
-//! ContigousEdgeCouple to obtain a valid section. <br>
-//! This information is useful for verification purposes, since <br>
-//! it provides a means of determining the surface to which <br>
-//! the contiguous edge belongs. <br>
-//! Exceptions <br>
-//! Standard_NoSuchObject if section is not coincident <br>
-//! with a contiguous edge. Use the function <br>
-//! ContigousEdgeCouple to obtain a valid section. <br>
-  Standard_EXPORT    const TopoDS_Edge& SectionToBoundary(const TopoDS_Edge& section) const;
-  //! Gives the number of degenerated shapes <br>
-  Standard_EXPORT     Standard_Integer NbDegeneratedShapes() const;
-  //! Gives a degenerated shape <br>
-  Standard_EXPORT    const TopoDS_Shape& DegeneratedShape(const Standard_Integer index) const;
-  //! Indicates if a input shape is degenerated <br>
-  Standard_EXPORT     Standard_Boolean IsDegenerated(const TopoDS_Shape& shape) const;
-  //! Returns true if the copy of the initial shape shape was <br>
-//! modified by the function Perform (i.e. if one or more of <br>
-//! its edges was broken down into contiguous and non-contiguous sections). <br>
-//! Warning <br>
-//! Returns false if shape is not one of the initial shapes <br>
-//! added to this algorithm. <br>
-  Standard_EXPORT     Standard_Boolean IsModified(const TopoDS_Shape& shape) const;
-  //! Gives a modifieded shape <br>
-//! Raises   NoSuchObject if shape has not been modified <br>
-  Standard_EXPORT    const TopoDS_Shape& Modified(const TopoDS_Shape& shape) const;
-  //! Dump properties of resulting shape. <br>
-  Standard_EXPORT     void Dump() const;
-
+  
+  //! Initializes an algorithm for identifying contiguous edges
+  //! on shapes with tolerance as the tolerance of contiguity
+  //! (defaulted to 1.0e-6). This tolerance value is used to
+  //! determine whether two edges or sections of edges are coincident.
+  //! Use the function Add to define the shapes to be checked.
+  //! Set option to false. This argument (defaulted to true) will
+  //! serve in subsequent software releases for performing an
+  //! analysis of degenerated shapes.
+  Standard_EXPORT BRepOffsetAPI_FindContigousEdges(const Standard_Real tolerance = 1.0e-06, const Standard_Boolean option = Standard_True);
+  
+  //! Initializes this algorithm for identifying contiguous edges
+  //! on shapes using the tolerance of contiguity tolerance.
+  //! This tolerance value is used to determine whether two
+  //! edges or sections of edges are coincident.
+  //! Use the function Add to define the shapes to be checked.
+  //! Sets <option> to false.
+  Standard_EXPORT   void Init (const Standard_Real tolerance, const Standard_Boolean option) ;
+  
+  //! Adds the shape shape to the list of shapes to be
+  //! checked by this algorithm.
+  //! Once all the shapes to be checked have been added,
+  //! use the function Perform to find the contiguous edges
+  //! and the function ContigousEdge to return these edges.
+  Standard_EXPORT   void Add (const TopoDS_Shape& shape) ;
+  
+  //! Finds coincident parts of edges of two or more shapes
+  //! added to this algorithm and breaks down these edges
+  //! into contiguous and non-contiguous sections on copies
+  //! of the initial shapes.
+  //! The function ContigousEdge returns contiguous
+  //! edges. The function Modified can be used to return
+  //! modified copies of the initial shapes where one or more
+  //! edges were broken down into contiguous and non-contiguous sections.
+  //! Warning
+  //! This function must be used once all the shapes to be
+  //! checked have been added. It is not possible to add
+  //! further shapes subsequently and then to repeat the call to Perform.
+  Standard_EXPORT   void Perform() ;
+  
+  //! Gives  the number  of edges (free  edges + contigous
+  //! edges  +  multiple edge)
+  Standard_EXPORT   Standard_Integer NbEdges()  const;
+  
+  //! Returns the number of contiguous edges found by the
+  //! function Perform on the shapes added to this algorithm.
+  Standard_EXPORT   Standard_Integer NbContigousEdges()  const;
+  
+  //! Returns the contiguous edge of index index found by
+  //! the function Perform on the shapes added to this algorithm.
+  //! Exceptions
+  //! Standard_OutOfRange if:
+  //! - index is less than 1, or
+  //! - index is greater than the number of contiguous
+  //! edges found by the function Perform on the shapes added to this algorithm.
+  Standard_EXPORT  const  TopoDS_Edge& ContigousEdge (const Standard_Integer index)  const;
+  
+  //! Returns a list of edges coincident with the contiguous
+  //! edge of index index found by the function Perform.
+  //! There are as many edges in the list as there are faces
+  //! adjacent to this contiguous edge.
+  //! Exceptions
+  //! Standard_OutOfRange if:
+  //! - index is less than 1, or
+  //! - index is greater than the number of contiguous edges
+  //! found by the function Perform on the shapes added to this algorithm.
+  Standard_EXPORT  const  TopTools_ListOfShape& ContigousEdgeCouple (const Standard_Integer index)  const;
+  
+  //! Returns the edge on the initial shape, of which the
+  //! modified copy contains the edge section.
+  //! section is coincident with a contiguous edge found by
+  //! the function Perform. Use the function
+  //! ContigousEdgeCouple to obtain a valid section.
+  //! This information is useful for verification purposes, since
+  //! it provides a means of determining the surface to which
+  //! the contiguous edge belongs.
+  //! Exceptions
+  //! Standard_NoSuchObject if section is not coincident
+  //! with a contiguous edge. Use the function
+  //! ContigousEdgeCouple to obtain a valid section.
+  Standard_EXPORT  const  TopoDS_Edge& SectionToBoundary (const TopoDS_Edge& section)  const;
+  
+  //! Gives the number of degenerated shapes
+  Standard_EXPORT   Standard_Integer NbDegeneratedShapes()  const;
+  
+  //! Gives a degenerated shape
+  Standard_EXPORT  const  TopoDS_Shape& DegeneratedShape (const Standard_Integer index)  const;
+  
+  //! Indicates if a input shape is degenerated
+  Standard_EXPORT   Standard_Boolean IsDegenerated (const TopoDS_Shape& shape)  const;
+  
+  //! Returns true if the copy of the initial shape shape was
+  //! modified by the function Perform (i.e. if one or more of
+  //! its edges was broken down into contiguous and non-contiguous sections).
+  //! Warning
+  //! Returns false if shape is not one of the initial shapes
+  //! added to this algorithm.
+  Standard_EXPORT   Standard_Boolean IsModified (const TopoDS_Shape& shape)  const;
+  
+  //! Gives a modifieded shape
+  //! Raises   NoSuchObject if shape has not been modified
+  Standard_EXPORT  const  TopoDS_Shape& Modified (const TopoDS_Shape& shape)  const;
+  
+  //! Dump properties of resulting shape.
+  Standard_EXPORT   void Dump()  const;
 
 
 
@@ -159,7 +160,7 @@ private:
 
 
 
-Handle_BRepBuilderAPI_Sewing mySewing;
+  Handle(BRepBuilderAPI_Sewing) mySewing;
 
 
 };
@@ -168,7 +169,6 @@ Handle_BRepBuilderAPI_Sewing mySewing;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepOffsetAPI_FindContigousEdges_HeaderFile

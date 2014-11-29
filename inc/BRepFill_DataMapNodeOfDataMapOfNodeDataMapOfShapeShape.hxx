@@ -6,28 +6,14 @@
 #ifndef _BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape_HeaderFile
 #define _BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape_HeaderFile
 #include <Handle_BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape.hxx>
-#endif
 
-#ifndef _Handle_MAT_Node_HeaderFile
 #include <Handle_MAT_Node.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeShape_HeaderFile
 #include <TopTools_DataMapOfShapeShape.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class MAT_Node;
 class TopTools_DataMapOfShapeShape;
 class TColStd_MapTransientHasher;
@@ -36,16 +22,17 @@ class BRepFill_DataMapIteratorOfDataMapOfNodeDataMapOfShapeShape;
 
 
 
-class BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape : public TCollection_MapNode {
+class BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape : public TCollection_MapNode
+{
 
 public:
 
   
-      BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape(const Handle(MAT_Node)& K,const TopTools_DataMapOfShapeShape& I,const TCollection_MapNodePtr& n);
+    BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape(const Handle(MAT_Node)& K, const TopTools_DataMapOfShapeShape& I, const TCollection_MapNodePtr& n);
   
-        Handle_MAT_Node& Key() const;
+      Handle(MAT_Node)& Key()  const;
   
-        TopTools_DataMapOfShapeShape& Value() const;
+      TopTools_DataMapOfShapeShape& Value()  const;
 
 
 
@@ -60,13 +47,13 @@ protected:
 private: 
 
 
-Handle_MAT_Node myKey;
-TopTools_DataMapOfShapeShape myValue;
+  Handle(MAT_Node) myKey;
+  TopTools_DataMapOfShapeShape myValue;
 
 
 };
 
-#define TheKey Handle_MAT_Node
+#define TheKey Handle(MAT_Node)
 #define TheKey_hxx <MAT_Node.hxx>
 #define TheItem TopTools_DataMapOfShapeShape
 #define TheItem_hxx <TopTools_DataMapOfShapeShape.hxx>
@@ -99,7 +86,6 @@ TopTools_DataMapOfShapeShape myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepFill_DataMapNodeOfDataMapOfNodeDataMapOfShapeShape_HeaderFile

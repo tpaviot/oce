@@ -1,48 +1,16 @@
-#ifndef _IGESToBRep_CurveAndSurface_HeaderFile
 #include <IGESToBRep_CurveAndSurface.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _gp_Trsf2d_HeaderFile
 #include <gp_Trsf2d.hxx>
-#endif
-#ifndef _TopoDS_Vertex_HeaderFile
 #include <TopoDS_Vertex.hxx>
-#endif
-#ifndef _IGESGeom_Point_HeaderFile
 #include <IGESGeom_Point.hxx>
-#endif
-#ifndef _IGESGeom_CompositeCurve_HeaderFile
 #include <IGESGeom_CompositeCurve.hxx>
-#endif
-#ifndef _IGESGeom_OffsetCurve_HeaderFile
 #include <IGESGeom_OffsetCurve.hxx>
-#endif
-#ifndef _IGESGeom_CurveOnSurface_HeaderFile
 #include <IGESGeom_CurveOnSurface.hxx>
-#endif
-#ifndef _IGESGeom_Boundary_HeaderFile
 #include <IGESGeom_Boundary.hxx>
-#endif
-#ifndef _Geom_BSplineCurve_HeaderFile
 #include <Geom_BSplineCurve.hxx>
-#endif
-#ifndef _Geom_Curve_HeaderFile
 #include <Geom_Curve.hxx>
-#endif
-#ifndef _Geom2d_BSplineCurve_HeaderFile
 #include <Geom2d_BSplineCurve.hxx>
-#endif
-#ifndef _Geom2d_Curve_HeaderFile
 #include <Geom2d_Curve.hxx>
-#endif
-#ifndef _IGESToBRep_TopoCurve_HeaderFile
 #include <IGESToBRep_TopoCurve.hxx>
-#endif

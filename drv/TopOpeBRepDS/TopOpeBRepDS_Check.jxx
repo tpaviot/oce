@@ -1,15 +1,5 @@
-#ifndef _TopOpeBRepDS_HDataStructure_HeaderFile
 #include <TopOpeBRepDS_HDataStructure.hxx>
-#endif
-#ifndef _TopOpeBRepDS_ListOfInterference_HeaderFile
 #include <TopOpeBRepDS_ListOfInterference.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapOfCheckStatus_HeaderFile
 #include <TopOpeBRepDS_DataMapOfCheckStatus.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Check_HeaderFile
 #include <TopOpeBRepDS_Check.hxx>
-#endif

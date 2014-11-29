@@ -6,94 +6,82 @@
 #ifndef _LProp_SequenceOfCIType_HeaderFile
 #define _LProp_SequenceOfCIType_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _LProp_CIType_HeaderFile
 #include <LProp_CIType.hxx>
-#endif
-#ifndef _Handle_LProp_SequenceNodeOfSequenceOfCIType_HeaderFile
 #include <Handle_LProp_SequenceNodeOfSequenceOfCIType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class LProp_SequenceNodeOfSequenceOfCIType;
 
 
 
-class LProp_SequenceOfCIType  : public TCollection_BaseSequence {
+class LProp_SequenceOfCIType  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      LProp_SequenceOfCIType();
+    LProp_SequenceOfCIType();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT LProp_SequenceOfCIType(const LProp_SequenceOfCIType& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~LProp_SequenceOfCIType()
 {
   Clear();
 }
   
-  Standard_EXPORT    const LProp_SequenceOfCIType& Assign(const LProp_SequenceOfCIType& Other) ;
-   const LProp_SequenceOfCIType& operator =(const LProp_SequenceOfCIType& Other) 
+  Standard_EXPORT  const  LProp_SequenceOfCIType& Assign (const LProp_SequenceOfCIType& Other) ;
+ const  LProp_SequenceOfCIType& operator = (const LProp_SequenceOfCIType& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const LProp_CIType& T) ;
+  Standard_EXPORT   void Append (const LProp_CIType& T) ;
   
-        void Append(LProp_SequenceOfCIType& S) ;
+      void Append (LProp_SequenceOfCIType& S) ;
   
-  Standard_EXPORT     void Prepend(const LProp_CIType& T) ;
+  Standard_EXPORT   void Prepend (const LProp_CIType& T) ;
   
-        void Prepend(LProp_SequenceOfCIType& S) ;
+      void Prepend (LProp_SequenceOfCIType& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const LProp_CIType& T) ;
+      void InsertBefore (const Standard_Integer Index, const LProp_CIType& T) ;
   
-        void InsertBefore(const Standard_Integer Index,LProp_SequenceOfCIType& S) ;
+      void InsertBefore (const Standard_Integer Index, LProp_SequenceOfCIType& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const LProp_CIType& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const LProp_CIType& T) ;
   
-        void InsertAfter(const Standard_Integer Index,LProp_SequenceOfCIType& S) ;
+      void InsertAfter (const Standard_Integer Index, LProp_SequenceOfCIType& S) ;
   
-  Standard_EXPORT    const LProp_CIType& First() const;
+  Standard_EXPORT  const  LProp_CIType& First()  const;
   
-  Standard_EXPORT    const LProp_CIType& Last() const;
+  Standard_EXPORT  const  LProp_CIType& Last()  const;
   
-        void Split(const Standard_Integer Index,LProp_SequenceOfCIType& Sub) ;
+      void Split (const Standard_Integer Index, LProp_SequenceOfCIType& Sub) ;
   
-  Standard_EXPORT    const LProp_CIType& Value(const Standard_Integer Index) const;
-   const LProp_CIType& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  LProp_CIType& Value (const Standard_Integer Index)  const;
+ const  LProp_CIType& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const LProp_CIType& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const LProp_CIType& I) ;
   
-  Standard_EXPORT     LProp_CIType& ChangeValue(const Standard_Integer Index) ;
-    LProp_CIType& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   LProp_CIType& ChangeValue (const Standard_Integer Index) ;
+  LProp_CIType& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -106,8 +94,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   LProp_SequenceOfCIType(const LProp_SequenceOfCIType& Other);
 
 
 
@@ -135,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _LProp_SequenceOfCIType_HeaderFile

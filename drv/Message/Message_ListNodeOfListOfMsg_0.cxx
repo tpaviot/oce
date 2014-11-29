@@ -5,19 +5,11 @@
 
 #include <Message_ListNodeOfListOfMsg.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Message_Msg_HeaderFile
 #include <Message_Msg.hxx>
-#endif
-#ifndef _Message_ListOfMsg_HeaderFile
 #include <Message_ListOfMsg.hxx>
-#endif
-#ifndef _Message_ListIteratorOfListOfMsg_HeaderFile
 #include <Message_ListIteratorOfListOfMsg.hxx>
-#endif
 
  
 

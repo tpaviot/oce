@@ -6,36 +6,27 @@
 #ifndef _Units_MathSentence_HeaderFile
 #define _Units_MathSentence_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Units_Sentence_HeaderFile
 #include <Units_Sentence.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
 
 
-//! This class  defines all the methods to  create and <br>
-//!          compute an algebraic formula. <br>
-class Units_MathSentence  : public Units_Sentence {
+//! This class  defines all the methods to  create and
+//! compute an algebraic formula.
+class Units_MathSentence  : public Units_Sentence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates and returns a  MathSentence object. The string <br>
-//!          <astring>  describes  an algebraic  formula in natural <br>
-//!          language. <br>
-  Standard_EXPORT   Units_MathSentence(const Standard_CString astring);
-
+  
+  //! Creates and returns a  MathSentence object. The string
+  //! <astring>  describes  an algebraic  formula in natural
+  //! language.
+  Standard_EXPORT Units_MathSentence(const Standard_CString astring);
 
 
 
@@ -58,7 +49,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Units_MathSentence_HeaderFile

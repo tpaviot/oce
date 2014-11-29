@@ -5,21 +5,11 @@
 
 #include <StepAP203_Array1OfCertifiedItem.hxx>
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _StepAP203_CertifiedItem_HeaderFile
 #include <StepAP203_CertifiedItem.hxx>
-#endif
  
 
 #define Array1Item StepAP203_CertifiedItem

@@ -36,9 +36,9 @@ class OpenGl_Text : public OpenGl_Element
 public:
 
   //! Main constructor
-  Standard_EXPORT OpenGl_Text (const TCollection_ExtendedString& theText,
-                               const OpenGl_Vec3&                thePoint,
-                               const OpenGl_TextParam&           theParams);
+  Standard_EXPORT OpenGl_Text (const Standard_Utf8Char* theText,
+                               const OpenGl_Vec3&       thePoint,
+                               const OpenGl_TextParam&  theParams);
 
   //! Setup new string and position
   Standard_EXPORT void Init (const Handle(OpenGl_Context)& theCtx,
@@ -59,7 +59,7 @@ public:
                                     const Standard_Integer        theFontSize);
 
   Standard_EXPORT virtual void Render  (const Handle(OpenGl_Workspace)& theWorkspace) const;
-  Standard_EXPORT virtual void Release (const Handle(OpenGl_Context)&   theContext);
+  Standard_EXPORT virtual void Release (OpenGl_Context* theContext);
 
 public: //! @name methods for compatibility with layers
 
@@ -107,7 +107,7 @@ protected:
 private:
 
   //! Release cached VBO resources
-  void releaseVbos (const Handle(OpenGl_Context)& theCtx);
+  void releaseVbos (OpenGl_Context* theCtx);
 
   //! Setup matrix.
   void setupMatrix (const Handle(OpenGl_PrinterContext)& thePrintCtx,
@@ -133,14 +133,12 @@ protected:
   mutable NCollection_Vector<GLuint>                      myTextures;   //!< textures' IDs
   mutable NCollection_Vector<Handle(OpenGl_VertexBuffer)> myVertsVbo;   //!< VBOs of vertices
   mutable NCollection_Vector<Handle(OpenGl_VertexBuffer)> myTCrdsVbo;   //!< VBOs of texture coordinates
-  mutable NCollection_Vector<Handle(OpenGl_Vec2Array)>    myVertsArray; //!< arrays of vertices (for compatibility mode)
-  mutable NCollection_Vector<Handle(OpenGl_Vec2Array)>    myTCrdsArray; //!< arrays of vertices (for compatibility mode)
   mutable Font_FTFont::Rect                               myBndBox;
 
 protected:
 
-  mutable GLdouble myProjMatrix[16];
-  mutable GLdouble myModelMatrix[16];
+  mutable OpenGl_Mat4d myProjMatrix;
+  mutable OpenGl_Mat4d myModelMatrix;
   mutable GLint    myViewport[4];
   mutable GLdouble myWinX;
   mutable GLdouble myWinY;

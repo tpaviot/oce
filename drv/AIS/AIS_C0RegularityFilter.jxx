@@ -1,9 +1,3 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _SelectMgr_EntityOwner_HeaderFile
 #include <SelectMgr_EntityOwner.hxx>
-#endif
-#ifndef _AIS_C0RegularityFilter_HeaderFile
 #include <AIS_C0RegularityFilter.hxx>
-#endif

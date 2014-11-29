@@ -6,25 +6,13 @@
 #ifndef _AppParCurves_Array1OfMultiCurve_HeaderFile
 #define _AppParCurves_Array1OfMultiCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -33,52 +21,52 @@ class AppParCurves_MultiCurve;
 
 
 
-class AppParCurves_Array1OfMultiCurve  {
+class AppParCurves_Array1OfMultiCurve 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      AppParCurves_Array1OfMultiCurve(const Standard_Integer Low,const Standard_Integer Up);
+    AppParCurves_Array1OfMultiCurve(const Standard_Integer Low, const Standard_Integer Up);
   
-      AppParCurves_Array1OfMultiCurve(const AppParCurves_MultiCurve& Item,const Standard_Integer Low,const Standard_Integer Up);
+    AppParCurves_Array1OfMultiCurve(const AppParCurves_MultiCurve& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const AppParCurves_MultiCurve& V) ;
+  Standard_EXPORT   void Init (const AppParCurves_MultiCurve& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~AppParCurves_Array1OfMultiCurve()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const AppParCurves_Array1OfMultiCurve& Assign(const AppParCurves_Array1OfMultiCurve& Other) ;
-   const AppParCurves_Array1OfMultiCurve& operator =(const AppParCurves_Array1OfMultiCurve& Other) 
+  Standard_EXPORT  const  AppParCurves_Array1OfMultiCurve& Assign (const AppParCurves_Array1OfMultiCurve& Other) ;
+ const  AppParCurves_Array1OfMultiCurve& operator = (const AppParCurves_Array1OfMultiCurve& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const AppParCurves_MultiCurve& Value) ;
+      void SetValue (const Standard_Integer Index, const AppParCurves_MultiCurve& Value) ;
   
-       const AppParCurves_MultiCurve& Value(const Standard_Integer Index) const;
-     const AppParCurves_MultiCurve& operator ()(const Standard_Integer Index) const
+     const  AppParCurves_MultiCurve& Value (const Standard_Integer Index)  const;
+   const  AppParCurves_MultiCurve& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        AppParCurves_MultiCurve& ChangeValue(const Standard_Integer Index) ;
-      AppParCurves_MultiCurve& operator ()(const Standard_Integer Index) 
+      AppParCurves_MultiCurve& ChangeValue (const Standard_Integer Index) ;
+    AppParCurves_MultiCurve& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -92,13 +80,13 @@ protected:
 private:
 
   
-  Standard_EXPORT   AppParCurves_Array1OfMultiCurve(const AppParCurves_Array1OfMultiCurve& AnArray);
+  Standard_EXPORT AppParCurves_Array1OfMultiCurve(const AppParCurves_Array1OfMultiCurve& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
@@ -116,7 +104,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AppParCurves_Array1OfMultiCurve_HeaderFile

@@ -1,3 +1,1 @@
-#ifndef _StepRepr_DerivedShapeAspect_HeaderFile
 #include <StepRepr_DerivedShapeAspect.hxx>
-#endif

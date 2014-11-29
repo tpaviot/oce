@@ -5,36 +5,16 @@
 
 #include <Extrema_EPCOfExtPC2d.hxx>
 
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_TypeMismatch_HeaderFile
 #include <Standard_TypeMismatch.hxx>
-#endif
-#ifndef _Adaptor2d_Curve2d_HeaderFile
 #include <Adaptor2d_Curve2d.hxx>
-#endif
-#ifndef _Extrema_Curve2dTool_HeaderFile
 #include <Extrema_Curve2dTool.hxx>
-#endif
-#ifndef _Extrema_POnCurv2d_HeaderFile
 #include <Extrema_POnCurv2d.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _gp_Vec2d_HeaderFile
 #include <gp_Vec2d.hxx>
-#endif
-#ifndef _Extrema_PCFOfEPCOfExtPC2d_HeaderFile
 #include <Extrema_PCFOfEPCOfExtPC2d.hxx>
-#endif
-#ifndef _Extrema_SeqPCOfPCFOfEPCOfExtPC2d_HeaderFile
 #include <Extrema_SeqPCOfPCFOfEPCOfExtPC2d.hxx>
-#endif
  
 
 #define Curve Adaptor2d_Curve2d

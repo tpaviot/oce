@@ -6,46 +6,20 @@
 #ifndef _Select3D_SensitivePoint_HeaderFile
 #define _Select3D_SensitivePoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Select3D_SensitivePoint_HeaderFile
 #include <Handle_Select3D_SensitivePoint.hxx>
-#endif
 
-#ifndef _Select3D_Pnt_HeaderFile
 #include <Select3D_Pnt.hxx>
-#endif
-#ifndef _Select3D_Pnt2d_HeaderFile
 #include <Select3D_Pnt2d.hxx>
-#endif
-#ifndef _Select3D_SensitiveEntity_HeaderFile
 #include <Select3D_SensitiveEntity.hxx>
-#endif
-#ifndef _Handle_SelectBasics_EntityOwner_HeaderFile
 #include <Handle_SelectBasics_EntityOwner.hxx>
-#endif
-#ifndef _Handle_Select3D_Projector_HeaderFile
 #include <Handle_Select3D_Projector.hxx>
-#endif
-#ifndef _Handle_Select3D_SensitiveEntity_HeaderFile
 #include <Handle_Select3D_SensitiveEntity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _SelectBasics_PickArgs_HeaderFile
 #include <SelectBasics_PickArgs.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class SelectBasics_EntityOwner;
 class gp_Pnt;
 class Select3D_Projector;
@@ -57,36 +31,42 @@ class Bnd_Box2d;
 class gp_Lin;
 
 
-//! A framework to define sensitive 3D points. <br>
-class Select3D_SensitivePoint : public Select3D_SensitiveEntity {
+//! A framework to define sensitive 3D points.
+class Select3D_SensitivePoint : public Select3D_SensitiveEntity
+{
 
 public:
 
-  //! Constructs a sensitive point object defined by the <br>
-//! owner OwnerId and the point Point. <br>
-  Standard_EXPORT   Select3D_SensitivePoint(const Handle(SelectBasics_EntityOwner)& OwnerId,const gp_Pnt& Point);
-  //!Converts the stored 3D point into a 2D point according <br>
-//!         to <aProjector> ; this method is called by the selection Manager. <br>
-  Standard_EXPORT     void Project(const Handle(Select3D_Projector)& aProjector) ;
-  //! stores in <aresult> the 2D sensitive box which represents <br>
-//!          the point area in the selection process. <br>
-  Standard_EXPORT     void Areas(SelectBasics_ListOfBox2d& aresult) ;
   
-  Standard_EXPORT     Handle_Select3D_SensitiveEntity GetConnected(const TopLoc_Location& aLocation) ;
-  //! Checks whether the sensitive entity matches the picking <br>
-//! detection area (close to the picking line). <br>
-//! For details please refer to base class declaration. <br>
-  Standard_EXPORT     Standard_Boolean Matches(const SelectBasics_PickArgs& thePickArgs,Standard_Real& theMatchDMin,Standard_Real& theMatchDepth) ;
+  //! Constructs a sensitive point object defined by the
+  //! owner OwnerId and the point Point.
+  Standard_EXPORT Select3D_SensitivePoint(const Handle(SelectBasics_EntityOwner)& OwnerId, const gp_Pnt& Point);
   
-  Standard_EXPORT     Standard_Boolean Matches(const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol) ;
+  //! Converts the stored 3D point into a 2D point according
+  //! to <aProjector> ; this method is called by the selection Manager.
+  Standard_EXPORT   void Project (const Handle(Select3D_Projector)& aProjector) ;
   
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const TColgp_Array1OfPnt2d& Polyline,const Bnd_Box2d& aBox,const Standard_Real aTol) ;
+  //! stores in <aresult> the 2D sensitive box which represents
+  //! the point area in the selection process.
+  Standard_EXPORT   void Areas (SelectBasics_ListOfBox2d& aresult) ;
   
-  Standard_EXPORT     Standard_Real ComputeDepth(const gp_Lin& EyeLine) const;
-  //! Returns the point used at the time of construction. <br>
-  Standard_EXPORT     gp_Pnt Point() const;
+  Standard_EXPORT   Handle(Select3D_SensitiveEntity) GetConnected (const TopLoc_Location& aLocation) ;
   
-  Standard_EXPORT   virtual  void Dump(Standard_OStream& S,const Standard_Boolean FullDump = Standard_True) const;
+  //! Checks whether the sensitive entity matches the picking
+  //! detection area (close to the picking line).
+  //! For details please refer to base class declaration.
+  Standard_EXPORT   Standard_Boolean Matches (const SelectBasics_PickArgs& thePickArgs, Standard_Real& theMatchDMin, Standard_Real& theMatchDepth) ;
+  
+  Standard_EXPORT   Standard_Boolean Matches (const Standard_Real XMin, const Standard_Real YMin, const Standard_Real XMax, const Standard_Real YMax, const Standard_Real aTol) ;
+  
+  Standard_EXPORT virtual   Standard_Boolean Matches (const TColgp_Array1OfPnt2d& Polyline, const Bnd_Box2d& aBox, const Standard_Real aTol) ;
+  
+  Standard_EXPORT   Standard_Real ComputeDepth (const gp_Lin& EyeLine)  const;
+  
+  //! Returns the point used at the time of construction.
+  Standard_EXPORT   gp_Pnt Point()  const;
+  
+  Standard_EXPORT virtual   void Dump (Standard_OStream& S, const Standard_Boolean FullDump = Standard_True)  const;
 
 
 
@@ -101,8 +81,8 @@ protected:
 private: 
 
 
-Select3D_Pnt mypoint;
-Select3D_Pnt2d myprojpt;
+  Select3D_Pnt mypoint;
+  Select3D_Pnt2d myprojpt;
 
 
 };
@@ -111,7 +91,6 @@ Select3D_Pnt2d myprojpt;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Select3D_SensitivePoint_HeaderFile

@@ -117,10 +117,10 @@
 
 // ============================================================================
 // Function: DumpWhatIs   
-// Purpose: Use it in DEB mode to dump your shapes
+// Purpose: Use it in debug mode to dump your shapes
 // ============================================================================
 
-#ifdef DEB
+#ifdef OCCT_DEBUG
 static void DumpWhatIs(const TopoDS_Shape& S) {
 
   TopTools_MapOfShape aMapOfShape;
@@ -194,7 +194,7 @@ static Standard_Boolean IsManifoldShape(const TopoDS_Shape& theShape) {
       aBrepBuilder.Add(aDirectShapes, aDirectChild);
   }  
 
-  #ifdef DEB
+  #ifdef OCCT_DEBUG
   DumpWhatIs(aDirectShapes);
   #endif
 
@@ -202,7 +202,7 @@ static Standard_Boolean IsManifoldShape(const TopoDS_Shape& theShape) {
   TopExp::MapShapesAndAncestors(aDirectShapes, TopAbs_EDGE, TopAbs_FACE, aMapEdgeFaces);
 
   Standard_Integer aNbEdges = aMapEdgeFaces.Extent();
-  #ifdef DEB
+  #ifdef OCCT_DEBUG
   cout << "Checking whether the topology passed is manifold..." << endl;
   #endif
 
@@ -218,33 +218,13 @@ static Standard_Boolean IsManifoldShape(const TopoDS_Shape& theShape) {
     }
   }
 
-  #ifdef DEB
+  #ifdef OCCT_DEBUG
   cout << "Check result: "
        << (aResult ? "TRUE" : "FALSE") << endl;
   #endif
 
   return aResult;
 }
-
-/* this is a start of a comment! */ 
-#ifdef DEB
-void DumpBinder (const Handle(Transfer_Binder) &binder)
-{
-  Handle(Transfer_Binder) bbb = binder;
-  while ( ! bbb.IsNull() ) {
-    Handle(Transfer_SimpleBinderOfTransient) bx = 
-      Handle(Transfer_SimpleBinderOfTransient)::DownCast ( bbb );
-    cout << (void*)&bx;
-    if ( ! bx.IsNull() ) {
-      cout << "--> " << bx->ResultTypeName() << " " << *(void**)&bx->Result() << endl;
-    }
-    else cout << "--> ???" << endl;
-    bbb = bbb->NextResult();
-  }
-  cout << endl;
-}
-#endif
-/* this is a end of a comment */
   
 //=======================================================================
 //function : STEPControl_ActorWrite
@@ -279,13 +259,13 @@ Handle(StepShape_NonManifoldSurfaceShapeRepresentation) STEPControl_ActorWrite::
   }
 
   if ( aResult.IsNull() ) {
-    #ifdef DEB
+    #ifdef OCCT_DEBUG
     cout << "\nNew NMSSR created" << endl;
     #endif
     aResult = new StepShape_NonManifoldSurfaceShapeRepresentation;
     isNMSSRCreated = Standard_True;
   } else {
-    #ifdef DEB
+    #ifdef OCCT_DEBUG
     cout << "\nExisting NMSSR is used" << endl;
     #endif
     isNMSSRCreated = Standard_False;
@@ -524,17 +504,19 @@ Standard_Boolean STEPControl_ActorWrite::IsAssembly (TopoDS_Shape &S) const
 {
   if ( ! GroupMode() || S.ShapeType() != TopAbs_COMPOUND ) return Standard_False;
   // PTV 16.09.2002  OCC725 for storing compound of vertices
-  if (S.ShapeType() == TopAbs_COMPOUND ) {
-    Standard_Boolean IsOnlyVertices = Standard_True;
-    TopoDS_Iterator anItr( S );
-    for ( ; anItr.More(); anItr.Next() ) {
-      if ( anItr.Value().ShapeType() != TopAbs_VERTEX ) {
-        IsOnlyVertices = Standard_False;
-        break;
+  if (Interface_Static::IVal("write.step.vertex.mode") == 0) {//bug 23950
+    if (S.ShapeType() == TopAbs_COMPOUND ) {
+      Standard_Boolean IsOnlyVertices = Standard_True;
+      TopoDS_Iterator anItr( S );
+      for ( ; anItr.More(); anItr.Next() ) {
+        if ( anItr.Value().ShapeType() != TopAbs_VERTEX ) {
+          IsOnlyVertices = Standard_False;
+          break;
+        }
       }
+      if ( IsOnlyVertices )
+        return Standard_False;
     }
-    if ( IsOnlyVertices )
-      return Standard_False;
   }
   if ( GroupMode() ==1 ) return Standard_True;
   TopoDS_Iterator it ( S );
@@ -626,7 +608,7 @@ Handle(Transfer_Binder) STEPControl_ActorWrite::TransferShape (const Handle(Tran
     //:abv 20.05.02: writing box & face from it (shared) in one compound 
     // as assembly - while face already translated, it should be 
     // re-translated to break sharing
-#ifdef DEB
+#ifdef OCCT_DEBUG
     cout << "Warning: STEPControl_ActorWrite::TransferShape(): shape already translated" << endl;
 #endif
 //    return binder;
@@ -756,6 +738,8 @@ Handle(Transfer_Binder) STEPControl_ActorWrite::TransferShape (const Handle(Tran
   // create a list of items to translate
   Handle(TopTools_HSequenceOfShape) RepItemSeq = new TopTools_HSequenceOfShape();
   
+  Standard_Boolean isSeparateVertices = 
+    Interface_Static::IVal("write.step.vertex.mode") == 0;//bug 23950
   // PTV 16.09.2002 OCC725 separate shape from solo vertices.
   Standard_Boolean isOnlyVertices = Standard_False;
   if (theShape.ShapeType() == TopAbs_COMPOUND) {
@@ -766,24 +750,26 @@ Handle(Transfer_Binder) STEPControl_ActorWrite::TransferShape (const Handle(Tran
     aB.MakeCompound(aNewShape);
     aB.MakeCompound(aCompOfVrtx);
     TopoDS_Iterator anCompIt(theShape);
-    for (; anCompIt.More(); anCompIt.Next()) {
-      TopoDS_Shape aCurSh = anCompIt.Value();
-      if (aCurSh.ShapeType() != TopAbs_VERTEX) {
-        aB.Add(aNewShape, aCurSh);
-        countSh++;
+    if (isSeparateVertices) {
+      for (; anCompIt.More(); anCompIt.Next()) {
+        TopoDS_Shape aCurSh = anCompIt.Value();
+        if (aCurSh.ShapeType() != TopAbs_VERTEX) {
+          aB.Add(aNewShape, aCurSh);
+          countSh++;
+        }
+        else {
+          aB.Add(aCompOfVrtx, aCurSh);
+          countVrtx++;
+        }
       }
-      else {
-        aB.Add(aCompOfVrtx, aCurSh);
-        countVrtx++;
-      }
+      // replace the shapes
+      if (countSh)
+        theShape = aNewShape;
+      if (countVrtx)
+        RepItemSeq->Append(aCompOfVrtx);
+      if (countSh == 0) 
+        isOnlyVertices = Standard_True;
     }
-    // replace the shapes
-    if (countSh)
-      theShape = aNewShape;
-    if (countVrtx)
-      RepItemSeq->Append(aCompOfVrtx);
-    if (countSh == 0) 
-      isOnlyVertices = Standard_True;
   } 
   
   if (theShape.ShapeType() == TopAbs_COMPOUND) {
@@ -827,6 +813,19 @@ Handle(Transfer_Binder) STEPControl_ActorWrite::TransferShape (const Handle(Tran
   else if (theShape.ShapeType() == TopAbs_FACE) {
     RepItemSeq->Append(TopoDS::Face(theShape));
   }
+  else if (theShape.ShapeType() == TopAbs_COMPSOLID) {
+    FP->AddWarning(start,"NonManifold COMPSOLID was translated like a set of SOLIDs");
+    if ( GroupMode() > 0)
+      return TransferCompound(start, SDR0, FP);
+    else {
+      TopExp_Explorer SolidExp;
+      for (SolidExp.Init(theShape, TopAbs_SOLID);
+           SolidExp.More();SolidExp.Next()) {
+        RepItemSeq->Append(TopoDS::Solid(SolidExp.Current()));
+      }
+    }
+  }
+
   else if (mymode != STEPControl_GeometricCurveSet && mymode != STEPControl_AsIs) {
     FP->AddFail(start,"The Shape is not a SOLID, nor a SHELL, nor a FACE");
     return binder;
@@ -1267,20 +1266,22 @@ Handle(Transfer_Binder) STEPControl_ActorWrite::TransferCompound (const Handle(T
   Handle(TopTools_HSequenceOfShape) RepItemSeq = new TopTools_HSequenceOfShape();
   // Prepare a collection for non-manifold group of shapes
   Handle(TopTools_HSequenceOfShape) NonManifoldGroup = new TopTools_HSequenceOfShape();
+  Standard_Boolean isSeparateVertices = 
+    (Interface_Static::IVal("write.step.vertex.mode") == 0);//bug 23950
   // PTV OCC725 17.09.2002 -- begin --
   Standard_Integer nbFreeVrtx = 0;
   TopoDS_Compound aCompOfVrtx;
   BRep_Builder aB;
   aB.MakeCompound(aCompOfVrtx);
  
-  #ifdef DEB
+  #ifdef OCCT_DEBUG
   if (!isManifold)
     cout << "Exploding Solids to Shells if any..." << endl;
   #endif
 
   for (TopoDS_Iterator iter(theShape); iter.More(); iter.Next()) {
     TopoDS_Shape aSubShape = iter.Value();
-    if (aSubShape.ShapeType() != TopAbs_VERTEX) {
+    if (aSubShape.ShapeType() != TopAbs_VERTEX || !isSeparateVertices) {
 
       // Store non-manifold topology as shells (ssv; 10.11.2010)
       if (!isManifold && aSubShape.ShapeType() == TopAbs_SOLID) {
@@ -1424,6 +1425,8 @@ Handle(Transfer_Binder)  STEPControl_ActorWrite::TransferSubShape (const Handle(
     FP->Bind (mapper,resbind);
     resprod=resbind; //KA - OCC7141(skl 10.11.2004)
   }
+  if (resprod.IsNull())
+    return resprod;
 
   // A new resbind may have been produced
 //  DeclareAndCast(Transfer_SimpleBinderOfTransient,restrans,resbind);

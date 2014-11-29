@@ -6,66 +6,59 @@
 #ifndef _TNaming_ShapesSet_HeaderFile
 #define _TNaming_ShapesSet_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopTools_MapOfShape_HeaderFile
 #include <TopTools_MapOfShape.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TopoDS_Shape;
 class TopTools_MapOfShape;
 
 
 
-class TNaming_ShapesSet  {
+class TNaming_ShapesSet 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      TNaming_ShapesSet();
+    TNaming_ShapesSet();
   
-  Standard_EXPORT   TNaming_ShapesSet(const TopoDS_Shape& S,const TopAbs_ShapeEnum Type = TopAbs_SHAPE);
-  //! Removes all Shapes <br>
-        void Clear() ;
-  //! Adds the Shape <S> <br>
-        Standard_Boolean Add(const TopoDS_Shape& S) ;
-  //! Returns True  if <S> is in <me> <br>
-        Standard_Boolean Contains(const TopoDS_Shape& S) const;
-  //! Removes <S> in <me>. <br>
-        Standard_Boolean Remove(const TopoDS_Shape& S) ;
-  //! Adds the shapes contained in <Shapes>. <br>
-  Standard_EXPORT     void Add(const TNaming_ShapesSet& Shapes) ;
-  //! Erases in <me> the shapes not <br>
-//!          contained in <Shapes> <br>
-  Standard_EXPORT     void Filter(const TNaming_ShapesSet& Shapes) ;
-  //! Removes in <me> the shapes contained in <Shapes> <br>
-  Standard_EXPORT     void Remove(const TNaming_ShapesSet& Shapes) ;
+  Standard_EXPORT TNaming_ShapesSet(const TopoDS_Shape& S, const TopAbs_ShapeEnum Type = TopAbs_SHAPE);
   
-        Standard_Boolean IsEmpty() const;
+  //! Removes all Shapes
+      void Clear() ;
   
-        Standard_Integer NbShapes() const;
+  //! Adds the Shape <S>
+      Standard_Boolean Add (const TopoDS_Shape& S) ;
   
-        TopTools_MapOfShape& ChangeMap() ;
+  //! Returns True  if <S> is in <me>
+      Standard_Boolean Contains (const TopoDS_Shape& S)  const;
   
-       const TopTools_MapOfShape& Map() const;
-
+  //! Removes <S> in <me>.
+      Standard_Boolean Remove (const TopoDS_Shape& S) ;
+  
+  //! Adds the shapes contained in <Shapes>.
+  Standard_EXPORT   void Add (const TNaming_ShapesSet& Shapes) ;
+  
+  //! Erases in <me> the shapes not
+  //! contained in <Shapes>
+  Standard_EXPORT   void Filter (const TNaming_ShapesSet& Shapes) ;
+  
+  //! Removes in <me> the shapes contained in <Shapes>
+  Standard_EXPORT   void Remove (const TNaming_ShapesSet& Shapes) ;
+  
+      Standard_Boolean IsEmpty()  const;
+  
+      Standard_Integer NbShapes()  const;
+  
+      TopTools_MapOfShape& ChangeMap() ;
+  
+     const  TopTools_MapOfShape& Map()  const;
 
 
 
@@ -80,7 +73,7 @@ private:
 
 
 
-TopTools_MapOfShape myMap;
+  TopTools_MapOfShape myMap;
 
 
 };
@@ -90,7 +83,6 @@ TopTools_MapOfShape myMap;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TNaming_ShapesSet_HeaderFile

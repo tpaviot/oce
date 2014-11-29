@@ -1,6 +1,2 @@
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _PMMgt_PManaged_HeaderFile
 #include <PMMgt_PManaged.hxx>
-#endif

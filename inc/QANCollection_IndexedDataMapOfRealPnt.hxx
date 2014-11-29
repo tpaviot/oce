@@ -6,34 +6,16 @@
 #ifndef _QANCollection_IndexedDataMapOfRealPnt_HeaderFile
 #define _QANCollection_IndexedDataMapOfRealPnt_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_QANCollection_IndexedDataMapNodeOfIndexedDataMapOfRealPnt_HeaderFile
 #include <Handle_QANCollection_IndexedDataMapNodeOfIndexedDataMapOfRealPnt.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_OutOfRange;
 class Standard_NoSuchObject;
@@ -43,60 +25,60 @@ class QANCollection_IndexedDataMapNodeOfIndexedDataMapOfRealPnt;
 
 
 
-class QANCollection_IndexedDataMapOfRealPnt  : public TCollection_BasicMap {
+class QANCollection_IndexedDataMapOfRealPnt  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   QANCollection_IndexedDataMapOfRealPnt(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT QANCollection_IndexedDataMapOfRealPnt(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     QANCollection_IndexedDataMapOfRealPnt& Assign(const QANCollection_IndexedDataMapOfRealPnt& Other) ;
-    QANCollection_IndexedDataMapOfRealPnt& operator =(const QANCollection_IndexedDataMapOfRealPnt& Other) 
+  Standard_EXPORT   QANCollection_IndexedDataMapOfRealPnt& Assign (const QANCollection_IndexedDataMapOfRealPnt& Other) ;
+  QANCollection_IndexedDataMapOfRealPnt& operator = (const QANCollection_IndexedDataMapOfRealPnt& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~QANCollection_IndexedDataMapOfRealPnt()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Integer Add(const Standard_Real& K,const gp_Pnt& I) ;
+  Standard_EXPORT   Standard_Integer Add (const Standard_Real& K, const gp_Pnt& I) ;
   
-  Standard_EXPORT     void Substitute(const Standard_Integer I,const Standard_Real& K,const gp_Pnt& T) ;
+  Standard_EXPORT   void Substitute (const Standard_Integer I, const Standard_Real& K, const gp_Pnt& T) ;
   
-  Standard_EXPORT     void RemoveLast() ;
+  Standard_EXPORT   void RemoveLast() ;
   
-  Standard_EXPORT     Standard_Boolean Contains(const Standard_Real& K) const;
+  Standard_EXPORT   Standard_Boolean Contains (const Standard_Real& K)  const;
   
-  Standard_EXPORT    const Standard_Real& FindKey(const Standard_Integer I) const;
+  Standard_EXPORT  const  Standard_Real& FindKey (const Standard_Integer I)  const;
   
-  Standard_EXPORT    const gp_Pnt& FindFromIndex(const Standard_Integer I) const;
-   const gp_Pnt& operator ()(const Standard_Integer I) const
+  Standard_EXPORT  const  gp_Pnt& FindFromIndex (const Standard_Integer I)  const;
+ const  gp_Pnt& operator () (const Standard_Integer I)  const
 {
   return FindFromIndex(I);
 }
   
-  Standard_EXPORT     gp_Pnt& ChangeFromIndex(const Standard_Integer I) ;
-    gp_Pnt& operator ()(const Standard_Integer I) 
+  Standard_EXPORT   gp_Pnt& ChangeFromIndex (const Standard_Integer I) ;
+  gp_Pnt& operator () (const Standard_Integer I) 
 {
   return ChangeFromIndex(I);
 }
   
-  Standard_EXPORT     Standard_Integer FindIndex(const Standard_Real& K) const;
+  Standard_EXPORT   Standard_Integer FindIndex (const Standard_Real& K)  const;
   
-  Standard_EXPORT    const gp_Pnt& FindFromKey(const Standard_Real& K) const;
+  Standard_EXPORT  const  gp_Pnt& FindFromKey (const Standard_Real& K)  const;
   
-  Standard_EXPORT     gp_Pnt& ChangeFromKey(const Standard_Real& K) ;
+  Standard_EXPORT   gp_Pnt& ChangeFromKey (const Standard_Real& K) ;
   
-  Standard_EXPORT     Standard_Address FindFromKey1(const Standard_Real& K) const;
+  Standard_EXPORT   Standard_Address FindFromKey1 (const Standard_Real& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFromKey1(const Standard_Real& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFromKey1 (const Standard_Real& K) ;
 
 
 
@@ -110,7 +92,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   QANCollection_IndexedDataMapOfRealPnt(const QANCollection_IndexedDataMapOfRealPnt& Other);
+  Standard_EXPORT QANCollection_IndexedDataMapOfRealPnt(const QANCollection_IndexedDataMapOfRealPnt& Other);
 
 
 
@@ -121,7 +103,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QANCollection_IndexedDataMapOfRealPnt_HeaderFile

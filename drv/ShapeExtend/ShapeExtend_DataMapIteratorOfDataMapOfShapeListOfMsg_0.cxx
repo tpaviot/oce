@@ -5,24 +5,12 @@
 
 #include <ShapeExtend_DataMapIteratorOfDataMapOfShapeListOfMsg.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Message_ListOfMsg_HeaderFile
 #include <Message_ListOfMsg.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _ShapeExtend_DataMapOfShapeListOfMsg_HeaderFile
 #include <ShapeExtend_DataMapOfShapeListOfMsg.hxx>
-#endif
-#ifndef _ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg_HeaderFile
 #include <ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape

@@ -6,64 +6,47 @@
 #ifndef _PXCAFDoc_GraphNode_HeaderFile
 #define _PXCAFDoc_GraphNode_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PXCAFDoc_GraphNode_HeaderFile
 #include <Handle_PXCAFDoc_GraphNode.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_PXCAFDoc_GraphNode_HeaderFile
 #include <Handle_PXCAFDoc_GraphNode.hxx>
-#endif
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _Handle_PXCAFDoc_GraphNodeSequence_HeaderFile
 #include <Handle_PXCAFDoc_GraphNodeSequence.hxx>
-#endif
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
 class PXCAFDoc_GraphNodeSequence;
 class Standard_GUID;
 
 
-class PXCAFDoc_GraphNode : public PDF_Attribute {
+class PXCAFDoc_GraphNode : public PDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   PXCAFDoc_GraphNode();
+  Standard_EXPORT PXCAFDoc_GraphNode();
   
-  Standard_EXPORT     Standard_Integer SetFather(const Handle(PXCAFDoc_GraphNode)& F) ;
+  Standard_EXPORT   Standard_Integer SetFather (const Handle(PXCAFDoc_GraphNode)& F) ;
   
-  Standard_EXPORT     Standard_Integer SetChild(const Handle(PXCAFDoc_GraphNode)& Ch) ;
+  Standard_EXPORT   Standard_Integer SetChild (const Handle(PXCAFDoc_GraphNode)& Ch) ;
   
-  Standard_EXPORT     Handle_PXCAFDoc_GraphNode GetFather(const Standard_Integer Findex) const;
+  Standard_EXPORT   Handle(PXCAFDoc_GraphNode) GetFather (const Standard_Integer Findex)  const;
   
-  Standard_EXPORT     Handle_PXCAFDoc_GraphNode GetChild(const Standard_Integer Chindex) const;
+  Standard_EXPORT   Handle(PXCAFDoc_GraphNode) GetChild (const Standard_Integer Chindex)  const;
   
-  Standard_EXPORT     Standard_Integer FatherIndex(const Handle(PXCAFDoc_GraphNode)& F) const;
+  Standard_EXPORT   Standard_Integer FatherIndex (const Handle(PXCAFDoc_GraphNode)& F)  const;
   
-  Standard_EXPORT     Standard_Integer ChildIndex(const Handle(PXCAFDoc_GraphNode)& Ch) const;
+  Standard_EXPORT   Standard_Integer ChildIndex (const Handle(PXCAFDoc_GraphNode)& Ch)  const;
   
-  Standard_EXPORT     Standard_Integer NbFathers() const;
+  Standard_EXPORT   Standard_Integer NbFathers()  const;
   
-  Standard_EXPORT     Standard_Integer NbChildren() const;
+  Standard_EXPORT   Standard_Integer NbChildren()  const;
   
-  Standard_EXPORT     void SetGraphID(const Standard_GUID& GUID) ;
+  Standard_EXPORT   void SetGraphID (const Standard_GUID& GUID) ;
   
-  Standard_EXPORT     Standard_GUID GetGraphID() const;
+  Standard_EXPORT   Standard_GUID GetGraphID()  const;
 
 PXCAFDoc_GraphNode(const Storage_stCONSTclCOM& a) : PDF_Attribute(a)
 {
@@ -87,9 +70,9 @@ protected:
 private: 
 
 
-Handle_PXCAFDoc_GraphNodeSequence myFathers;
-Handle_PXCAFDoc_GraphNodeSequence myChildren;
-Standard_GUID myGraphID;
+  Handle(PXCAFDoc_GraphNodeSequence) myFathers;
+  Handle(PXCAFDoc_GraphNodeSequence) myChildren;
+  Standard_GUID myGraphID;
 
 
 };
@@ -98,7 +81,6 @@ Standard_GUID myGraphID;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PXCAFDoc_GraphNode_HeaderFile

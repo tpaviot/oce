@@ -15,40 +15,14 @@
 #ifndef _Standard_Integer_HeaderFile
 #define _Standard_Integer_HeaderFile
 
-#ifndef _Standard_TypeDef_HeaderFile
 #include <Standard_TypeDef.hxx>
-#endif
-
-#ifndef _Standard_values_HeaderFile
-# include <Standard_values.h>
-#endif
+#include <Standard_values.h>
 
 #include <oce-config.h>
 
 #ifdef __BORLANDC__
 #define OCE_IS_DUPLICATE_UINT32_T
 #endif
-
-class Handle_Standard_Type;
-
-__Standard_API const Handle_Standard_Type& Standard_Integer_Type_();
-// ===============================================
-// Methods from Standard_Entity class which are redefined:  
-//    - Hascode
-//    - IsEqual
-//    - IsSimilar
-//    - Shallowcopy
-//    - ShallowDump
-// ===============================================
-
-// ==================================
-// Methods implemeted in Standard_Integer.cxx
-// ==================================
-__Standard_API Standard_Integer NextPrimeForMap(const Standard_Integer anInt ) ;
-__Standard_API long             NextPrime   (const long               me);
-__Standard_API Standard_Integer CharToInt   (const Standard_Character me); 
-__Standard_API Standard_Integer CharToInt   (const Standard_CString   me); 
-__Standard_API Standard_Integer ShallowCopy (const Standard_Integer   me);   
 
 // ===============
 // Inline methods

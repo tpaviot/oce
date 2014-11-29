@@ -1,27 +1,9 @@
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _TDF_LabelMap_HeaderFile
 #include <TDF_LabelMap.hxx>
-#endif
-#ifndef _TDF_AttributeMap_HeaderFile
 #include <TDF_AttributeMap.hxx>
-#endif
-#ifndef _TDF_LabelDataMap_HeaderFile
 #include <TDF_LabelDataMap.hxx>
-#endif
-#ifndef _TDF_AttributeDataMap_HeaderFile
 #include <TDF_AttributeDataMap.hxx>
-#endif
-#ifndef _TColStd_IndexedDataMapOfTransientTransient_HeaderFile
 #include <TColStd_IndexedDataMapOfTransientTransient.hxx>
-#endif
-#ifndef _TDF_RelocationTable_HeaderFile
 #include <TDF_RelocationTable.hxx>
-#endif

@@ -5,24 +5,12 @@
 
 #include <MAT2d_DataMapIteratorOfDataMapOfBiIntSequenceOfInteger.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _MAT2d_BiInt_HeaderFile
 #include <MAT2d_BiInt.hxx>
-#endif
-#ifndef _TColStd_SequenceOfInteger_HeaderFile
 #include <TColStd_SequenceOfInteger.hxx>
-#endif
-#ifndef _MAT2d_MapBiIntHasher_HeaderFile
 #include <MAT2d_MapBiIntHasher.hxx>
-#endif
-#ifndef _MAT2d_DataMapOfBiIntSequenceOfInteger_HeaderFile
 #include <MAT2d_DataMapOfBiIntSequenceOfInteger.hxx>
-#endif
-#ifndef _MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger_HeaderFile
 #include <MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger.hxx>
-#endif
  
 
 #define TheKey MAT2d_BiInt

@@ -6,43 +6,19 @@
 #ifndef _ShapeProcess_Context_HeaderFile
 #define _ShapeProcess_Context_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeProcess_Context_HeaderFile
 #include <Handle_ShapeProcess_Context.hxx>
-#endif
 
-#ifndef _Handle_Resource_Manager_HeaderFile
 #include <Handle_Resource_Manager.hxx>
-#endif
-#ifndef _Handle_TColStd_HSequenceOfHAsciiString_HeaderFile
 #include <Handle_TColStd_HSequenceOfHAsciiString.hxx>
-#endif
-#ifndef _Handle_Message_Messenger_HeaderFile
 #include <Handle_Message_Messenger.hxx>
-#endif
-#ifndef _Handle_Message_ProgressIndicator_HeaderFile
 #include <Handle_Message_ProgressIndicator.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Resource_Manager;
 class TColStd_HSequenceOfHAsciiString;
 class Message_Messenger;
@@ -50,74 +26,91 @@ class Message_ProgressIndicator;
 class TCollection_AsciiString;
 
 
-//! Provides convenient interface to resource file <br>
-//!          Allows to load resource file and get values of <br>
-//!          attributes starting from some scope, for example <br>
-//!          if scope is defined as "ToV4" and requested parameter <br>
-//!          is "exec.op", value of "ToV4.exec.op" parameter from <br>
-//!          the resource file will be returned <br>
-class ShapeProcess_Context : public MMgt_TShared {
+//! Provides convenient interface to resource file
+//! Allows to load resource file and get values of
+//! attributes starting from some scope, for example
+//! if scope is defined as "ToV4" and requested parameter
+//! is "exec.op", value of "ToV4.exec.op" parameter from
+//! the resource file will be returned
+class ShapeProcess_Context : public MMgt_TShared
+{
 
 public:
 
-  //! Creates an empty tool <br>
-  Standard_EXPORT   ShapeProcess_Context();
-  //! Creates a new tool and initialises by name of <br>
-//!          resource file and (if specified) starting scope <br>
-//!          Calls method Init() <br>
-  Standard_EXPORT   ShapeProcess_Context(const Standard_CString file,const Standard_CString scope = "");
-  //! Initialises a tool by loading resource file and <br>
-//!          (if specified) sets starting scope <br>
-//!          Returns False if resource file not found <br>
-  Standard_EXPORT     Standard_Boolean Init(const Standard_CString file,const Standard_CString scope = "") ;
-  //! Loading Resource_Manager object if this object not <br>
-//!          equal internal static Resource_Manager object or <br>
-//!          internal static Resource_Manager object is null <br>
-  Standard_EXPORT     Handle_Resource_Manager LoadResourceManager(const Standard_CString file) ;
-  //! Returns internal Resource_Manager object <br>
-  Standard_EXPORT    const Handle_Resource_Manager& ResourceManager() const;
-  //! Set a new (sub)scope <br>
-  Standard_EXPORT     void SetScope(const Standard_CString scope) ;
-  //! Go out of current scope <br>
-  Standard_EXPORT     void UnSetScope() ;
-  //! Returns True if parameter is defined in the resource file <br>
-  Standard_EXPORT     Standard_Boolean IsParamSet(const Standard_CString param) const;
   
-  Standard_EXPORT     Standard_Boolean GetReal(const Standard_CString param,Standard_Real& val) const;
+  //! Creates an empty tool
+  Standard_EXPORT ShapeProcess_Context();
   
-  Standard_EXPORT     Standard_Boolean GetInteger(const Standard_CString param,Standard_Integer& val) const;
+  //! Creates a new tool and initialises by name of
+  //! resource file and (if specified) starting scope
+  //! Calls method Init()
+  Standard_EXPORT ShapeProcess_Context(const Standard_CString file, const Standard_CString scope = "");
   
-  Standard_EXPORT     Standard_Boolean GetBoolean(const Standard_CString param,Standard_Boolean& val) const;
-  //! Get value of parameter as being of specific type <br>
-//!          Returns False if parameter is not defined or has a wrong type <br>
-  Standard_EXPORT     Standard_Boolean GetString(const Standard_CString param,TCollection_AsciiString& val) const;
+  //! Initialises a tool by loading resource file and
+  //! (if specified) sets starting scope
+  //! Returns False if resource file not found
+  Standard_EXPORT   Standard_Boolean Init (const Standard_CString file, const Standard_CString scope = "") ;
   
-  Standard_EXPORT     Standard_Real RealVal(const Standard_CString param,const Standard_Real def) const;
+  //! Loading Resource_Manager object if this object not
+  //! equal internal static Resource_Manager object or
+  //! internal static Resource_Manager object is null
+  Standard_EXPORT   Handle(Resource_Manager) LoadResourceManager (const Standard_CString file) ;
   
-  Standard_EXPORT     Standard_Integer IntegerVal(const Standard_CString param,const Standard_Integer def) const;
+  //! Returns internal Resource_Manager object
+  Standard_EXPORT  const  Handle(Resource_Manager)& ResourceManager()  const;
   
-  Standard_EXPORT     Standard_Boolean BooleanVal(const Standard_CString param,const Standard_Boolean def) const;
-  //! Get value of parameter as being of specific type <br>
-//!          If parameter is not defined or does not have expected <br>
-//!          type, returns default value as specified <br>
-  Standard_EXPORT     Standard_CString StringVal(const Standard_CString param,const Standard_CString def) const;
-  //! Sets Messenger used for outputting messages. <br>
-  Standard_EXPORT     void SetMessenger(const Handle(Message_Messenger)& messenger) ;
-  //! Returns Messenger used for outputting messages. <br>
-  Standard_EXPORT     Handle_Message_Messenger Messenger() const;
-  //! Sets Progress Indicator. <br>
-  Standard_EXPORT     void SetProgress(const Handle(Message_ProgressIndicator)& theProgress) ;
-  //! Returns Progress Indicator. <br>
-  Standard_EXPORT     Handle_Message_ProgressIndicator Progress() const;
-  //! Sets trace level used for outputting messages <br>
-//!           - 0: no trace at all <br>
-//!           - 1: errors <br>
-//!           - 2: errors and warnings <br>
-//!           - 3: all messages <br>
-//!           Default is 1 : Errors traced <br>
-  Standard_EXPORT     void SetTraceLevel(const Standard_Integer tracelev) ;
-  //! Returns trace level used for outputting messages. <br>
-  Standard_EXPORT     Standard_Integer TraceLevel() const;
+  //! Set a new (sub)scope
+  Standard_EXPORT   void SetScope (const Standard_CString scope) ;
+  
+  //! Go out of current scope
+  Standard_EXPORT   void UnSetScope() ;
+  
+  //! Returns True if parameter is defined in the resource file
+  Standard_EXPORT   Standard_Boolean IsParamSet (const Standard_CString param)  const;
+  
+  Standard_EXPORT   Standard_Boolean GetReal (const Standard_CString param, Standard_Real& val)  const;
+  
+  Standard_EXPORT   Standard_Boolean GetInteger (const Standard_CString param, Standard_Integer& val)  const;
+  
+  Standard_EXPORT   Standard_Boolean GetBoolean (const Standard_CString param, Standard_Boolean& val)  const;
+  
+  //! Get value of parameter as being of specific type
+  //! Returns False if parameter is not defined or has a wrong type
+  Standard_EXPORT   Standard_Boolean GetString (const Standard_CString param, TCollection_AsciiString& val)  const;
+  
+  Standard_EXPORT   Standard_Real RealVal (const Standard_CString param, const Standard_Real def)  const;
+  
+  Standard_EXPORT   Standard_Integer IntegerVal (const Standard_CString param, const Standard_Integer def)  const;
+  
+  Standard_EXPORT   Standard_Boolean BooleanVal (const Standard_CString param, const Standard_Boolean def)  const;
+  
+  //! Get value of parameter as being of specific type
+  //! If parameter is not defined or does not have expected
+  //! type, returns default value as specified
+  Standard_EXPORT   Standard_CString StringVal (const Standard_CString param, const Standard_CString def)  const;
+  
+  //! Sets Messenger used for outputting messages.
+  Standard_EXPORT   void SetMessenger (const Handle(Message_Messenger)& messenger) ;
+  
+  //! Returns Messenger used for outputting messages.
+  Standard_EXPORT   Handle(Message_Messenger) Messenger()  const;
+  
+  //! Sets Progress Indicator.
+  Standard_EXPORT   void SetProgress (const Handle(Message_ProgressIndicator)& theProgress) ;
+  
+  //! Returns Progress Indicator.
+  Standard_EXPORT   Handle(Message_ProgressIndicator) Progress()  const;
+  
+  //! Sets trace level used for outputting messages
+  //! - 0: no trace at all
+  //! - 1: errors
+  //! - 2: errors and warnings
+  //! - 3: all messages
+  //! Default is 1 : Errors traced
+  Standard_EXPORT   void SetTraceLevel (const Standard_Integer tracelev) ;
+  
+  //! Returns trace level used for outputting messages.
+  Standard_EXPORT   Standard_Integer TraceLevel()  const;
 
 
 
@@ -132,11 +125,11 @@ protected:
 private: 
 
 
-Handle_Resource_Manager myRC;
-Handle_TColStd_HSequenceOfHAsciiString myScope;
-Handle_Message_Messenger myMessenger;
-Handle_Message_ProgressIndicator myProgress;
-Standard_Integer myTraceLev;
+  Handle(Resource_Manager) myRC;
+  Handle(TColStd_HSequenceOfHAsciiString) myScope;
+  Handle(Message_Messenger) myMessenger;
+  Handle(Message_ProgressIndicator) myProgress;
+  Standard_Integer myTraceLev;
 
 
 };
@@ -145,7 +138,6 @@ Standard_Integer myTraceLev;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeProcess_Context_HeaderFile

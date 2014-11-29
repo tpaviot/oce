@@ -6,39 +6,28 @@
 #ifndef _SelectMgr_ListNodeOfListOfFilter_HeaderFile
 #define _SelectMgr_ListNodeOfListOfFilter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_SelectMgr_ListNodeOfListOfFilter_HeaderFile
 #include <Handle_SelectMgr_ListNodeOfListOfFilter.hxx>
-#endif
 
-#ifndef _Handle_SelectMgr_Filter_HeaderFile
 #include <Handle_SelectMgr_Filter.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class SelectMgr_Filter;
 class SelectMgr_ListOfFilter;
 class SelectMgr_ListIteratorOfListOfFilter;
 
 
 
-class SelectMgr_ListNodeOfListOfFilter : public TCollection_MapNode {
+class SelectMgr_ListNodeOfListOfFilter : public TCollection_MapNode
+{
 
 public:
 
   
-      SelectMgr_ListNodeOfListOfFilter(const Handle(SelectMgr_Filter)& I,const TCollection_MapNodePtr& n);
+    SelectMgr_ListNodeOfListOfFilter(const Handle(SelectMgr_Filter)& I, const TCollection_MapNodePtr& n);
   
-        Handle_SelectMgr_Filter& Value() const;
+      Handle(SelectMgr_Filter)& Value()  const;
 
 
 
@@ -53,12 +42,12 @@ protected:
 private: 
 
 
-Handle_SelectMgr_Filter myValue;
+  Handle(SelectMgr_Filter) myValue;
 
 
 };
 
-#define Item Handle_SelectMgr_Filter
+#define Item Handle(SelectMgr_Filter)
 #define Item_hxx <SelectMgr_Filter.hxx>
 #define TCollection_ListNode SelectMgr_ListNodeOfListOfFilter
 #define TCollection_ListNode_hxx <SelectMgr_ListNodeOfListOfFilter.hxx>
@@ -83,7 +72,6 @@ Handle_SelectMgr_Filter myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SelectMgr_ListNodeOfListOfFilter_HeaderFile

@@ -6,31 +6,15 @@
 #ifndef _BRepToIGES_BRWire_HeaderFile
 #define _BRepToIGES_BRWire_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepToIGES_BREntity_HeaderFile
 #include <BRepToIGES_BREntity.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class BRepToIGES_BREntity;
 class IGESData_IGESEntity;
 class TopoDS_Shape;
@@ -43,80 +27,90 @@ class gp_Pnt2d;
 class TopoDS_Wire;
 
 
-//! This class implements the transfer of Shape Entities <br>
-//!          from Geom To IGES. These can be : <br>
-//!            . Vertex <br>
-//!            . Edge <br>
-//!            . Wire <br>
-class BRepToIGES_BRWire  : public BRepToIGES_BREntity {
+//! This class implements the transfer of Shape Entities
+//! from Geom To IGES. These can be :
+//! . Vertex
+//! . Edge
+//! . Wire
+class BRepToIGES_BRWire  : public BRepToIGES_BREntity
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepToIGES_BRWire();
+  Standard_EXPORT BRepToIGES_BRWire();
   
-  Standard_EXPORT   BRepToIGES_BRWire(const BRepToIGES_BREntity& BR);
-  //!  Transfert a Shape entity from TopoDS to IGES <br>
-//!            this entity must be a Vertex or an Edge or a Wire. <br>
-//!            If this Entity could not be converted, <br>
-//!            this member returns a NullEntity. <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity TransferWire(const TopoDS_Shape& start) ;
-  //!  Transfert a Vertex entity from TopoDS to IGES <br>
-//!            If this Entity could not be converted, <br>
-//!            this member returns a NullEntity. <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity TransferVertex(const TopoDS_Vertex& myvertex) ;
-  //!  Transfert a Vertex entity on an Edge from TopoDS to IGES <br>
-//!            Returns the parameter of myvertex on myedge. <br>
-//!            If this Entity could not be converted, <br>
-//!            this member returns a NullEntity. <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity TransferVertex(const TopoDS_Vertex& myvertex,const TopoDS_Edge& myedge,Standard_Real& parameter) ;
-  //!  Transfert a Vertex entity of an edge on a Face <br>
-//!            from TopoDS to IGES <br>
-//!            Returns the parameter of myvertex on the pcurve <br>
-//!            of myedge on myface <br>
-//!            If this Entity could not be converted, <br>
-//!            this member returns a NullEntity. <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity TransferVertex(const TopoDS_Vertex& myvertex,const TopoDS_Edge& myedge,const TopoDS_Face& myface,Standard_Real& parameter) ;
-  //!  Transfert a Vertex entity of an edge on a Surface <br>
-//!            from TopoDS to IGES <br>
-//!            Returns the parameter of myvertex on the pcurve <br>
-//!            of myedge on mysurface <br>
-//!            If this Entity could not be converted, <br>
-//!            this member returns a NullEntity. <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity TransferVertex(const TopoDS_Vertex& myvertex,const TopoDS_Edge& myedge,const Handle(Geom_Surface)& mysurface,const TopLoc_Location& myloc,Standard_Real& parameter) ;
-  //!  Transfert a Vertex entity on a Face from TopoDS to IGES <br>
-//!            Returns the parameters of myvertex on myface <br>
-//!            If this Entity could not be converted, <br>
-//!            this member returns a NullEntity. <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity TransferVertex(const TopoDS_Vertex& myvertex,const TopoDS_Face& myface,gp_Pnt2d& mypoint) ;
-  //!  Transfert an Edge entity from TopoDS to IGES <br>
-//!            If this Entity could not be converted, <br>
-//!            this member returns a NullEntity. <br>
-//!            isBRepMode indicates if write mode is BRep <br>
-//!            (True when called from BRepToIGESBRep and False when from BRepToIGES) <br>
-//!            If edge is REVERSED and isBRepMode is False 3D edge curve is reversed, <br>
-//!            otherwise, not. <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity TransferEdge(const TopoDS_Edge& myedge,const Standard_Boolean isBRepMode) ;
-  //!  Transfert an Edge entity on a Face from TopoDS to IGES <br>
-//!            If this Entity could not be converted, <br>
-//!            this member returns a NullEntity. <br>
-//!            isBRepMode indicates if write mode is BRep <br>
-//!            (True when called from BRepToIGESBRep and False when from BRepToIGES) <br>
-//!            passing into Transform2dCurve() <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity TransferEdge(const TopoDS_Edge& myedge,const TopoDS_Face& myface,const Standard_Real length,const Standard_Boolean isBRepMode) ;
-  //!  Transfert a Wire entity from TopoDS to IGES <br>
-//!            If this Entity could not be converted, <br>
-//!            this member returns a NullEntity. <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity TransferWire(const TopoDS_Wire& mywire) ;
-  //!  Transfert a Wire entity from TopoDS to IGES. <br>
-//!            Returns the curve associated to mywire in <br>
-//!            the parametric space of myface. <br>
-//!            If this Entity could not be converted, <br>
-//!            this member returns a NullEntity. <br>
-//!            Parameter IsRevol is not used anymore <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity TransferWire(const TopoDS_Wire& mywire,const TopoDS_Face& myface,Handle(IGESData_IGESEntity)& mycurve2d,const Standard_Real length) ;
-
+  Standard_EXPORT BRepToIGES_BRWire(const BRepToIGES_BREntity& BR);
+  
+  //! Transfert a Shape entity from TopoDS to IGES
+  //! this entity must be a Vertex or an Edge or a Wire.
+  //! If this Entity could not be converted,
+  //! this member returns a NullEntity.
+  Standard_EXPORT   Handle(IGESData_IGESEntity) TransferWire (const TopoDS_Shape& start) ;
+  
+  //! Transfert a Vertex entity from TopoDS to IGES
+  //! If this Entity could not be converted,
+  //! this member returns a NullEntity.
+  Standard_EXPORT   Handle(IGESData_IGESEntity) TransferVertex (const TopoDS_Vertex& myvertex) ;
+  
+  //! Transfert a Vertex entity on an Edge from TopoDS to IGES
+  //! Returns the parameter of myvertex on myedge.
+  //! If this Entity could not be converted,
+  //! this member returns a NullEntity.
+  Standard_EXPORT   Handle(IGESData_IGESEntity) TransferVertex (const TopoDS_Vertex& myvertex, const TopoDS_Edge& myedge, Standard_Real& parameter) ;
+  
+  //! Transfert a Vertex entity of an edge on a Face
+  //! from TopoDS to IGES
+  //! Returns the parameter of myvertex on the pcurve
+  //! of myedge on myface
+  //! If this Entity could not be converted,
+  //! this member returns a NullEntity.
+  Standard_EXPORT   Handle(IGESData_IGESEntity) TransferVertex (const TopoDS_Vertex& myvertex, const TopoDS_Edge& myedge, const TopoDS_Face& myface, Standard_Real& parameter) ;
+  
+  //! Transfert a Vertex entity of an edge on a Surface
+  //! from TopoDS to IGES
+  //! Returns the parameter of myvertex on the pcurve
+  //! of myedge on mysurface
+  //! If this Entity could not be converted,
+  //! this member returns a NullEntity.
+  Standard_EXPORT   Handle(IGESData_IGESEntity) TransferVertex (const TopoDS_Vertex& myvertex, const TopoDS_Edge& myedge, const Handle(Geom_Surface)& mysurface, const TopLoc_Location& myloc, Standard_Real& parameter) ;
+  
+  //! Transfert a Vertex entity on a Face from TopoDS to IGES
+  //! Returns the parameters of myvertex on myface
+  //! If this Entity could not be converted,
+  //! this member returns a NullEntity.
+  Standard_EXPORT   Handle(IGESData_IGESEntity) TransferVertex (const TopoDS_Vertex& myvertex, const TopoDS_Face& myface, gp_Pnt2d& mypoint) ;
+  
+  //! Transfert an Edge entity from TopoDS to IGES
+  //! If this Entity could not be converted,
+  //! this member returns a NullEntity.
+  //! isBRepMode indicates if write mode is BRep
+  //! (True when called from BRepToIGESBRep and False when from BRepToIGES)
+  //! If edge is REVERSED and isBRepMode is False 3D edge curve is reversed,
+  //! otherwise, not.
+  Standard_EXPORT   Handle(IGESData_IGESEntity) TransferEdge (const TopoDS_Edge& myedge, const Standard_Boolean isBRepMode) ;
+  
+  //! Transfert an Edge entity on a Face from TopoDS to IGES
+  //! If this Entity could not be converted,
+  //! this member returns a NullEntity.
+  //! isBRepMode indicates if write mode is BRep
+  //! (True when called from BRepToIGESBRep and False when from BRepToIGES)
+  //! passing into Transform2dCurve()
+  Standard_EXPORT   Handle(IGESData_IGESEntity) TransferEdge (const TopoDS_Edge& myedge, const TopoDS_Face& myface, const Standard_Real length, const Standard_Boolean isBRepMode) ;
+  
+  //! Transfert a Wire entity from TopoDS to IGES
+  //! If this Entity could not be converted,
+  //! this member returns a NullEntity.
+  Standard_EXPORT   Handle(IGESData_IGESEntity) TransferWire (const TopoDS_Wire& mywire) ;
+  
+  //! Transfert a Wire entity from TopoDS to IGES.
+  //! Returns the curve associated to mywire in
+  //! the parametric space of myface.
+  //! If this Entity could not be converted,
+  //! this member returns a NullEntity.
+  //! Parameter IsRevol is not used anymore
+  Standard_EXPORT   Handle(IGESData_IGESEntity) TransferWire (const TopoDS_Wire& mywire, const TopoDS_Face& myface, Handle(IGESData_IGESEntity)& mycurve2d, const Standard_Real length) ;
 
 
 
@@ -139,7 +133,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepToIGES_BRWire_HeaderFile

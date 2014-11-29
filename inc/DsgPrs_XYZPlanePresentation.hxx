@@ -6,39 +6,30 @@
 #ifndef _DsgPrs_XYZPlanePresentation_HeaderFile
 #define _DsgPrs_XYZPlanePresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Handle_Prs3d_Drawer_HeaderFile
 #include <Handle_Prs3d_Drawer.hxx>
-#endif
 class Prs3d_Presentation;
 class Prs3d_Drawer;
 class gp_Pnt;
 
 
-//! A framework for displaying the planes of an XYZ trihedron. <br>
-class DsgPrs_XYZPlanePresentation  {
+//! A framework for displaying the planes of an XYZ trihedron.
+class DsgPrs_XYZPlanePresentation 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Draws each plane of a trihedron displayed in the <br>
-//! presentation aPresentation and with attributes <br>
-//! defined by the attribute manager aDrawer. Each <br>
-//! triangular plane is defined by the points aPt1 aPt2 and aPt3. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Prs3d_Drawer)& aDrawer,const gp_Pnt& aPt1,const gp_Pnt& aPt2,const gp_Pnt& aPt3) ;
-
+  
+  //! Draws each plane of a trihedron displayed in the
+  //! presentation aPresentation and with attributes
+  //! defined by the attribute manager aDrawer. Each
+  //! triangular plane is defined by the points aPt1 aPt2 and aPt3.
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Prs3d_Drawer)& aDrawer, const gp_Pnt& aPt1, const gp_Pnt& aPt2, const gp_Pnt& aPt3) ;
 
 
 
@@ -61,7 +52,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DsgPrs_XYZPlanePresentation_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_V3d_ColorScale_HeaderFile
 #define _Handle_V3d_ColorScale_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Aspect_ColorScale_HeaderFile
 #include <Handle_Aspect_ColorScale.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Aspect_ColorScale);
 class V3d_ColorScale;
 
-DEFINE_STANDARD_HANDLE(V3d_ColorScale,Aspect_ColorScale)
+DEFINE_STANDARD_HANDLE(V3d_ColorScale, Aspect_ColorScale)
 
-#endif
+#endif // _Handle_V3d_ColorScale_HeaderFile

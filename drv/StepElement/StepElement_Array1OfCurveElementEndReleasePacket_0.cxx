@@ -5,24 +5,14 @@
 
 #include <StepElement_Array1OfCurveElementEndReleasePacket.hxx>
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _StepElement_CurveElementEndReleasePacket_HeaderFile
 #include <StepElement_CurveElementEndReleasePacket.hxx>
-#endif
  
 
-#define Array1Item Handle_StepElement_CurveElementEndReleasePacket
+#define Array1Item Handle(StepElement_CurveElementEndReleasePacket)
 #define Array1Item_hxx <StepElement_CurveElementEndReleasePacket.hxx>
 #define TCollection_Array1 StepElement_Array1OfCurveElementEndReleasePacket
 #define TCollection_Array1_hxx <StepElement_Array1OfCurveElementEndReleasePacket.hxx>

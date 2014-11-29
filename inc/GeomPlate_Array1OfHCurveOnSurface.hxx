@@ -6,28 +6,14 @@
 #ifndef _GeomPlate_Array1OfHCurveOnSurface_HeaderFile
 #define _GeomPlate_Array1OfHCurveOnSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HCurveOnSurface_HeaderFile
 #include <Handle_Adaptor3d_HCurveOnSurface.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -36,52 +22,52 @@ class Adaptor3d_HCurveOnSurface;
 
 
 
-class GeomPlate_Array1OfHCurveOnSurface  {
+class GeomPlate_Array1OfHCurveOnSurface 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      GeomPlate_Array1OfHCurveOnSurface(const Standard_Integer Low,const Standard_Integer Up);
+    GeomPlate_Array1OfHCurveOnSurface(const Standard_Integer Low, const Standard_Integer Up);
   
-      GeomPlate_Array1OfHCurveOnSurface(const Handle(Adaptor3d_HCurveOnSurface)& Item,const Standard_Integer Low,const Standard_Integer Up);
+    GeomPlate_Array1OfHCurveOnSurface(const Handle(Adaptor3d_HCurveOnSurface)& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const Handle(Adaptor3d_HCurveOnSurface)& V) ;
+  Standard_EXPORT   void Init (const Handle(Adaptor3d_HCurveOnSurface)& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~GeomPlate_Array1OfHCurveOnSurface()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const GeomPlate_Array1OfHCurveOnSurface& Assign(const GeomPlate_Array1OfHCurveOnSurface& Other) ;
-   const GeomPlate_Array1OfHCurveOnSurface& operator =(const GeomPlate_Array1OfHCurveOnSurface& Other) 
+  Standard_EXPORT  const  GeomPlate_Array1OfHCurveOnSurface& Assign (const GeomPlate_Array1OfHCurveOnSurface& Other) ;
+ const  GeomPlate_Array1OfHCurveOnSurface& operator = (const GeomPlate_Array1OfHCurveOnSurface& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(Adaptor3d_HCurveOnSurface)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(Adaptor3d_HCurveOnSurface)& Value) ;
   
-       const Handle_Adaptor3d_HCurveOnSurface& Value(const Standard_Integer Index) const;
-     const Handle_Adaptor3d_HCurveOnSurface& operator ()(const Standard_Integer Index) const
+     const  Handle(Adaptor3d_HCurveOnSurface)& Value (const Standard_Integer Index)  const;
+   const  Handle(Adaptor3d_HCurveOnSurface)& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        Handle_Adaptor3d_HCurveOnSurface& ChangeValue(const Standard_Integer Index) ;
-      Handle_Adaptor3d_HCurveOnSurface& operator ()(const Standard_Integer Index) 
+      Handle(Adaptor3d_HCurveOnSurface)& ChangeValue (const Standard_Integer Index) ;
+    Handle(Adaptor3d_HCurveOnSurface)& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -95,18 +81,18 @@ protected:
 private:
 
   
-  Standard_EXPORT   GeomPlate_Array1OfHCurveOnSurface(const GeomPlate_Array1OfHCurveOnSurface& AnArray);
+  Standard_EXPORT GeomPlate_Array1OfHCurveOnSurface(const GeomPlate_Array1OfHCurveOnSurface& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
 
-#define Array1Item Handle_Adaptor3d_HCurveOnSurface
+#define Array1Item Handle(Adaptor3d_HCurveOnSurface)
 #define Array1Item_hxx <Adaptor3d_HCurveOnSurface.hxx>
 #define TCollection_Array1 GeomPlate_Array1OfHCurveOnSurface
 #define TCollection_Array1_hxx <GeomPlate_Array1OfHCurveOnSurface.hxx>
@@ -119,7 +105,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomPlate_Array1OfHCurveOnSurface_HeaderFile

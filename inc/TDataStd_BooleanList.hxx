@@ -6,37 +6,17 @@
 #ifndef _TDataStd_BooleanList_HeaderFile
 #define _TDataStd_BooleanList_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDataStd_BooleanList_HeaderFile
 #include <Handle_TDataStd_BooleanList.hxx>
-#endif
 
-#ifndef _TDataStd_ListOfByte_HeaderFile
 #include <TDataStd_ListOfByte.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class Standard_GUID;
 class TDF_Label;
 class TDataStd_ListOfByte;
@@ -44,45 +24,50 @@ class TDF_Attribute;
 class TDF_RelocationTable;
 
 
-//! Contains a list of bolleans. <br>
-class TDataStd_BooleanList : public TDF_Attribute {
+//! Contains a list of bolleans.
+class TDataStd_BooleanList : public TDF_Attribute
+{
 
 public:
 
-  //! Static methods <br>
-//!          ============== <br>//! Returns the ID of the list of booleans attribute. <br>
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
-  //! Finds or creates a list of boolean values attribute. <br>
-  Standard_EXPORT   static  Handle_TDataStd_BooleanList Set(const TDF_Label& label) ;
   
-  Standard_EXPORT   TDataStd_BooleanList();
+  //! Static methods
+  //! ==============
+  //! Returns the ID of the list of booleans attribute.
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-  Standard_EXPORT     Standard_Boolean IsEmpty() const;
+  //! Finds or creates a list of boolean values attribute.
+  Standard_EXPORT static   Handle(TDataStd_BooleanList) Set (const TDF_Label& label) ;
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT TDataStd_BooleanList();
   
-  Standard_EXPORT     void Prepend(const Standard_Boolean value) ;
+  Standard_EXPORT   Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Append(const Standard_Boolean value) ;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Prepend (const Standard_Boolean value) ;
   
-  Standard_EXPORT     Standard_Boolean First() const;
+  Standard_EXPORT   void Append (const Standard_Boolean value) ;
   
-  Standard_EXPORT     Standard_Boolean Last() const;
-  //! 1 - means TRUE, <br>
-//!          0 - means FALSE. <br>
-  Standard_EXPORT    const TDataStd_ListOfByte& List() const;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT    const Standard_GUID& ID() const;
+  Standard_EXPORT   Standard_Boolean First()  const;
   
-  Standard_EXPORT     void Restore(const Handle(TDF_Attribute)& With) ;
+  Standard_EXPORT   Standard_Boolean Last()  const;
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  //! 1 - means TRUE,
+  //! 0 - means FALSE.
+  Standard_EXPORT  const  TDataStd_ListOfByte& List()  const;
   
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& Into,const Handle(TDF_RelocationTable)& RT) const;
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
   
-  Standard_EXPORT   virtual  Standard_OStream& Dump(Standard_OStream& anOS) const;
+  Standard_EXPORT   void Restore (const Handle(TDF_Attribute)& With) ;
+  
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
+  
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& Into, const Handle(TDF_RelocationTable)& RT)  const;
+  
+  Standard_EXPORT virtual   Standard_OStream& Dump (Standard_OStream& anOS)  const;
 
 
 
@@ -97,7 +82,7 @@ protected:
 private: 
 
 
-TDataStd_ListOfByte myList;
+  TDataStd_ListOfByte myList;
 
 
 };
@@ -106,7 +91,6 @@ TDataStd_ListOfByte myList;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_BooleanList_HeaderFile

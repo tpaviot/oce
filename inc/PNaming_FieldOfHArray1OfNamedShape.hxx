@@ -6,31 +6,15 @@
 #ifndef _PNaming_FieldOfHArray1OfNamedShape_HeaderFile
 #define _PNaming_FieldOfHArray1OfNamedShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _DBC_BaseArray_HeaderFile
 #include <DBC_BaseArray.hxx>
-#endif
-#ifndef _Handle_PNaming_NamedShape_HeaderFile
 #include <Handle_PNaming_NamedShape.hxx>
-#endif
-#ifndef _Handle_PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape_HeaderFile
 #include <Handle_PNaming_VArrayNodeOfFieldOfHArray1OfNamedShape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
 #include <Standard_PrimitiveTypes.hxx>
-#endif
 class Standard_NegativeValue;
 class Standard_OutOfRange;
 class Standard_DimensionMismatch;
@@ -44,36 +28,37 @@ class PNaming_VArrayTNodeOfFieldOfHArray1OfNamedShape;
 Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(PNaming_FieldOfHArray1OfNamedShape);
 
 
-class PNaming_FieldOfHArray1OfNamedShape  : public DBC_BaseArray {
+class PNaming_FieldOfHArray1OfNamedShape  : public DBC_BaseArray
+{
 
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   PNaming_FieldOfHArray1OfNamedShape();
+  Standard_EXPORT PNaming_FieldOfHArray1OfNamedShape();
   
-  Standard_EXPORT   PNaming_FieldOfHArray1OfNamedShape(const Standard_Integer Size);
+  Standard_EXPORT PNaming_FieldOfHArray1OfNamedShape(const Standard_Integer Size);
   
-  Standard_EXPORT   PNaming_FieldOfHArray1OfNamedShape(const PNaming_FieldOfHArray1OfNamedShape& Varray);
+  Standard_EXPORT PNaming_FieldOfHArray1OfNamedShape(const PNaming_FieldOfHArray1OfNamedShape& Varray);
   
-  Standard_EXPORT     void Resize(const Standard_Integer Size) ;
+  Standard_EXPORT   void Resize (const Standard_Integer Size) ;
   
-  Standard_EXPORT     void Assign(const PNaming_FieldOfHArray1OfNamedShape& Other) ;
-    void operator =(const PNaming_FieldOfHArray1OfNamedShape& Other) 
+  Standard_EXPORT   void Assign (const PNaming_FieldOfHArray1OfNamedShape& Other) ;
+  void operator = (const PNaming_FieldOfHArray1OfNamedShape& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(PNaming_NamedShape)& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(PNaming_NamedShape)& Value) ;
   
-  Standard_EXPORT     Handle_PNaming_NamedShape& Value(const Standard_Integer Index) const;
-    Handle_PNaming_NamedShape& operator ()(const Standard_Integer Index) const
+  Standard_EXPORT   Handle(PNaming_NamedShape)& Value (const Standard_Integer Index)  const;
+  Handle(PNaming_NamedShape)& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void Destroy() ;
+  Standard_EXPORT   void Destroy() ;
 ~PNaming_FieldOfHArray1OfNamedShape()
 {
   Destroy();
@@ -101,7 +86,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PNaming_FieldOfHArray1OfNamedShape_HeaderFile

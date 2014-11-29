@@ -5,16 +5,10 @@
 
 #include <TColStd_ListNodeOfListOfInteger.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColStd_ListOfInteger_HeaderFile
 #include <TColStd_ListOfInteger.hxx>
-#endif
-#ifndef _TColStd_ListIteratorOfListOfInteger_HeaderFile
 #include <TColStd_ListIteratorOfListOfInteger.hxx>
-#endif
 
  
 

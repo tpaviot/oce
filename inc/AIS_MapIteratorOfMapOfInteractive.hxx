@@ -6,25 +6,13 @@
 #ifndef _AIS_MapIteratorOfMapOfInteractive_HeaderFile
 #define _AIS_MapIteratorOfMapOfInteractive_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_AIS_InteractiveObject_HeaderFile
 #include <Handle_AIS_InteractiveObject.hxx>
-#endif
-#ifndef _Handle_AIS_StdMapNodeOfMapOfInteractive_HeaderFile
 #include <Handle_AIS_StdMapNodeOfMapOfInteractive.hxx>
-#endif
 class Standard_NoSuchObject;
 class AIS_InteractiveObject;
 class TColStd_MapTransientHasher;
@@ -33,20 +21,20 @@ class AIS_StdMapNodeOfMapOfInteractive;
 
 
 
-class AIS_MapIteratorOfMapOfInteractive  : public TCollection_BasicMapIterator {
+class AIS_MapIteratorOfMapOfInteractive  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   AIS_MapIteratorOfMapOfInteractive();
+  Standard_EXPORT AIS_MapIteratorOfMapOfInteractive();
   
-  Standard_EXPORT   AIS_MapIteratorOfMapOfInteractive(const AIS_MapOfInteractive& aMap);
+  Standard_EXPORT AIS_MapIteratorOfMapOfInteractive(const AIS_MapOfInteractive& aMap);
   
-  Standard_EXPORT     void Initialize(const AIS_MapOfInteractive& aMap) ;
+  Standard_EXPORT   void Initialize (const AIS_MapOfInteractive& aMap) ;
   
-  Standard_EXPORT    const Handle_AIS_InteractiveObject& Key() const;
-
+  Standard_EXPORT  const  Handle(AIS_InteractiveObject)& Key()  const;
 
 
 
@@ -69,7 +57,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_MapIteratorOfMapOfInteractive_HeaderFile

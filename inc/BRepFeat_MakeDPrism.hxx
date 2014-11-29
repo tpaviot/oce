@@ -6,46 +6,20 @@
 #ifndef _BRepFeat_MakeDPrism_HeaderFile
 #define _BRepFeat_MakeDPrism_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TColGeom_SequenceOfCurve_HeaderFile
 #include <TColGeom_SequenceOfCurve.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _BRepFeat_StatusError_HeaderFile
 #include <BRepFeat_StatusError.hxx>
-#endif
-#ifndef _BRepFeat_Form_HeaderFile
 #include <BRepFeat_Form.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Geom_Curve;
 class Standard_ConstructionError;
 class TopoDS_Shape;
@@ -55,86 +29,98 @@ class TColGeom_SequenceOfCurve;
 class TopTools_ListOfShape;
 
 
-//! Describes functions to build draft <br>
-//! prism topologies from basis shape surfaces. These can be depressions or protrusions. <br>
-//! The semantics of draft prism feature creation is based on the <br>
-//! construction of shapes: <br>
-//! -          along a length <br>
-//! -          up to a limiting face <br>
-//! -          from a limiting face to a height. <br>
-//! The shape defining construction of the draft prism feature can be <br>
-//! either the supporting edge or the concerned area of a face. <br>
-//! In case of the supporting edge, this contour can be attached to a <br>
-//! face of the basis shape by binding. When the contour is bound to this <br>
-//! face, the information that the contour will slide on the face <br>
-//! becomes available to the relevant class methods. <br>
-//! In case of the concerned area of a face, you could, for example, cut <br>
-//! it out and move it to a different height which will define the <br>
-//! limiting face of a protrusion or depression. <br>
-class BRepFeat_MakeDPrism  : public BRepFeat_Form {
+//! Describes functions to build draft
+//! prism topologies from basis shape surfaces. These can be depressions or protrusions.
+//! The semantics of draft prism feature creation is based on the
+//! construction of shapes:
+//! -          along a length
+//! -          up to a limiting face
+//! -          from a limiting face to a height.
+//! The shape defining construction of the draft prism feature can be
+//! either the supporting edge or the concerned area of a face.
+//! In case of the supporting edge, this contour can be attached to a
+//! face of the basis shape by binding. When the contour is bound to this
+//! face, the information that the contour will slide on the face
+//! becomes available to the relevant class methods.
+//! In case of the concerned area of a face, you could, for example, cut
+//! it out and move it to a different height which will define the
+//! limiting face of a protrusion or depression.
+class BRepFeat_MakeDPrism  : public BRepFeat_Form
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! A face Pbase is selected in the shape <br>
-//!   Sbase to serve as the basis for the draft prism. The <br>
-//!   draft will be defined by the angle Angle and Fuse offers a choice between: <br>
-//! - removing matter with a Boolean cut using the setting 0 <br>
-//! - adding matter with Boolean fusion using the setting 1. <br>
-//!    The sketch face Skface serves to determine the type of <br>
-//! operation. If it is inside the basis shape, a local <br>
-//! operation such as glueing can be performed. <br>//! Initializes the draft prism class <br>
-      BRepFeat_MakeDPrism(const TopoDS_Shape& Sbase,const TopoDS_Face& Pbase,const TopoDS_Face& Skface,const Standard_Real Angle,const Standard_Integer Fuse,const Standard_Boolean Modify);
   
-  Standard_EXPORT   BRepFeat_MakeDPrism();
-  //! Initializes this algorithm for building draft prisms along surfaces. <br>
-//! A face Pbase is selected in the basis shape Sbase to <br>
-//! serve as the basis from the draft prism. The draft will be <br>
-//! defined by the angle Angle and Fuse offers a choice between: <br>
-//! -   removing matter with a Boolean cut using the setting 0 <br>
-//! -   adding matter with Boolean fusion using the setting  1. <br>
-//!   The sketch face Skface serves to determine the type of <br>
-//! operation. If it is inside the basis shape, a local <br>
-//! operation such as glueing can be performed. <br>
-  Standard_EXPORT     void Init(const TopoDS_Shape& Sbase,const TopoDS_Face& Pbase,const TopoDS_Face& Skface,const Standard_Real Angle,const Standard_Integer Fuse,const Standard_Boolean Modify) ;
-  //! Indicates that the edge <E> will slide on the face <br>
-//!          <OnFace>. <br>
-//! Raises ConstructionError if the  face does not belong to the <br>
-//! basis shape, or the edge to the prismed shape. <br>
-  Standard_EXPORT     void Add(const TopoDS_Edge& E,const TopoDS_Face& OnFace) ;
+  //! A face Pbase is selected in the shape
+  //! Sbase to serve as the basis for the draft prism. The
+  //! draft will be defined by the angle Angle and Fuse offers a choice between:
+  //! - removing matter with a Boolean cut using the setting 0
+  //! - adding matter with Boolean fusion using the setting 1.
+  //! The sketch face Skface serves to determine the type of
+  //! operation. If it is inside the basis shape, a local
+  //! operation such as glueing can be performed.
+  //! Initializes the draft prism class
+    BRepFeat_MakeDPrism(const TopoDS_Shape& Sbase, const TopoDS_Face& Pbase, const TopoDS_Face& Skface, const Standard_Real Angle, const Standard_Integer Fuse, const Standard_Boolean Modify);
   
-  Standard_EXPORT     void Perform(const Standard_Real Height) ;
+  Standard_EXPORT BRepFeat_MakeDPrism();
   
-  Standard_EXPORT     void Perform(const TopoDS_Shape& Until) ;
-  //! Assigns one of the following semantics <br>
-//! -   to a height Height <br>
-//! -   to a face Until <br>
-//! -   from a face From to a height Until. <br>
-//! Reconstructs the feature topologically according to the semantic option chosen. <br>
-  Standard_EXPORT     void Perform(const TopoDS_Shape& From,const TopoDS_Shape& Until) ;
-  //! Realizes a semi-infinite prism, limited by the position of the prism base. <br>
-  Standard_EXPORT     void PerformUntilEnd() ;
-  //! Realizes a semi-infinite prism, limited by the face Funtil. <br>
-  Standard_EXPORT     void PerformFromEnd(const TopoDS_Shape& FUntil) ;
-  //! Builds an infinite prism. The infinite descendants will not be kept in the result. <br>
-  Standard_EXPORT     void PerformThruAll() ;
-  //! Assigns both a limiting shape, Until from <br>
-//! TopoDS_Shape, and a height, Height at which to stop <br>
-//! generation of the prism feature. <br>
-  Standard_EXPORT     void PerformUntilHeight(const TopoDS_Shape& Until,const Standard_Real Height) ;
+  //! Initializes this algorithm for building draft prisms along surfaces.
+  //! A face Pbase is selected in the basis shape Sbase to
+  //! serve as the basis from the draft prism. The draft will be
+  //! defined by the angle Angle and Fuse offers a choice between:
+  //! -   removing matter with a Boolean cut using the setting 0
+  //! -   adding matter with Boolean fusion using the setting  1.
+  //! The sketch face Skface serves to determine the type of
+  //! operation. If it is inside the basis shape, a local
+  //! operation such as glueing can be performed.
+  Standard_EXPORT   void Init (const TopoDS_Shape& Sbase, const TopoDS_Face& Pbase, const TopoDS_Face& Skface, const Standard_Real Angle, const Standard_Integer Fuse, const Standard_Boolean Modify) ;
   
-  Standard_EXPORT     void Curves(TColGeom_SequenceOfCurve& S) ;
+  //! Indicates that the edge <E> will slide on the face
+  //! <OnFace>.
+  //! Raises ConstructionError if the  face does not belong to the
+  //! basis shape, or the edge to the prismed shape.
+  Standard_EXPORT   void Add (const TopoDS_Edge& E, const TopoDS_Face& OnFace) ;
   
-  Standard_EXPORT     Handle_Geom_Curve BarycCurve() ;
-  //! Determination of TopEdges and LatEdges. <br>
-//!          sig = 1 -> TopEdges = FirstShape of the DPrism <br>
-//!          sig = 2 -> TOpEdges = LastShape of the DPrism <br>
-  Standard_EXPORT     void BossEdges(const Standard_Integer sig) ;
-  //! Returns the list of TopoDS Edges of the top of the boss. <br>
-  Standard_EXPORT    const TopTools_ListOfShape& TopEdges() ;
-  //! Returns the list of TopoDS Edges of the bottom of the boss. <br>
-  Standard_EXPORT    const TopTools_ListOfShape& LatEdges() ;
-
+  Standard_EXPORT   void Perform (const Standard_Real Height) ;
+  
+  Standard_EXPORT   void Perform (const TopoDS_Shape& Until) ;
+  
+  //! Assigns one of the following semantics
+  //! -   to a height Height
+  //! -   to a face Until
+  //! -   from a face From to a height Until.
+  //! Reconstructs the feature topologically according to the semantic option chosen.
+  Standard_EXPORT   void Perform (const TopoDS_Shape& From, const TopoDS_Shape& Until) ;
+  
+  //! Realizes a semi-infinite prism, limited by the position of the prism base.
+  Standard_EXPORT   void PerformUntilEnd() ;
+  
+  //! Realizes a semi-infinite prism, limited by the face Funtil.
+  Standard_EXPORT   void PerformFromEnd (const TopoDS_Shape& FUntil) ;
+  
+  //! Builds an infinite prism. The infinite descendants will not be kept in the result.
+  Standard_EXPORT   void PerformThruAll() ;
+  
+  //! Assigns both a limiting shape, Until from
+  //! TopoDS_Shape, and a height, Height at which to stop
+  //! generation of the prism feature.
+  Standard_EXPORT   void PerformUntilHeight (const TopoDS_Shape& Until, const Standard_Real Height) ;
+  
+  Standard_EXPORT   void Curves (TColGeom_SequenceOfCurve& S) ;
+  
+  Standard_EXPORT   Handle(Geom_Curve) BarycCurve() ;
+  
+  //! Determination of TopEdges and LatEdges.
+  //! sig = 1 -> TopEdges = FirstShape of the DPrism
+  //! sig = 2 -> TOpEdges = LastShape of the DPrism
+  Standard_EXPORT   void BossEdges (const Standard_Integer sig) ;
+  
+  //! Returns the list of TopoDS Edges of the top of the boss.
+  Standard_EXPORT  const  TopTools_ListOfShape& TopEdges() ;
+  
+  //! Returns the list of TopoDS Edges of the bottom of the boss.
+  Standard_EXPORT  const  TopTools_ListOfShape& LatEdges() ;
 
 
 
@@ -149,14 +135,14 @@ private:
 
 
 
-TopoDS_Face myPbase;
-TopTools_DataMapOfShapeListOfShape mySlface;
-Standard_Real myAngle;
-TColGeom_SequenceOfCurve myCurves;
-Handle_Geom_Curve myBCurve;
-TopTools_ListOfShape myTopEdges;
-TopTools_ListOfShape myLatEdges;
-BRepFeat_StatusError myStatusError;
+  TopoDS_Face myPbase;
+  TopTools_DataMapOfShapeListOfShape mySlface;
+  Standard_Real myAngle;
+  TColGeom_SequenceOfCurve myCurves;
+  Handle(Geom_Curve) myBCurve;
+  TopTools_ListOfShape myTopEdges;
+  TopTools_ListOfShape myLatEdges;
+  BRepFeat_StatusError myStatusError;
 
 
 };
@@ -166,7 +152,6 @@ BRepFeat_StatusError myStatusError;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepFeat_MakeDPrism_HeaderFile

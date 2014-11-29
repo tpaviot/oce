@@ -6,47 +6,34 @@
 #ifndef _TDocStd_ApplicationDelta_HeaderFile
 #define _TDocStd_ApplicationDelta_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDocStd_ApplicationDelta_HeaderFile
 #include <Handle_TDocStd_ApplicationDelta.hxx>
-#endif
 
-#ifndef _TDocStd_SequenceOfDocument_HeaderFile
 #include <TDocStd_SequenceOfDocument.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class TDocStd_SequenceOfDocument;
 class TCollection_ExtendedString;
 
 
 
-class TDocStd_ApplicationDelta : public MMgt_TShared {
+class TDocStd_ApplicationDelta : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   TDocStd_ApplicationDelta();
+  Standard_EXPORT TDocStd_ApplicationDelta();
   
-        TDocStd_SequenceOfDocument& GetDocuments() ;
+      TDocStd_SequenceOfDocument& GetDocuments() ;
   
-       const TCollection_ExtendedString& GetName() const;
+     const  TCollection_ExtendedString& GetName()  const;
   
-        void SetName(const TCollection_ExtendedString& theName) ;
+      void SetName (const TCollection_ExtendedString& theName) ;
   
-  Standard_EXPORT     void Dump(Standard_OStream& anOS) const;
+  Standard_EXPORT   void Dump (Standard_OStream& anOS)  const;
 
 
 
@@ -61,8 +48,8 @@ protected:
 private: 
 
 
-TDocStd_SequenceOfDocument myDocuments;
-TCollection_ExtendedString myName;
+  TDocStd_SequenceOfDocument myDocuments;
+  TCollection_ExtendedString myName;
 
 
 };
@@ -72,7 +59,6 @@ TCollection_ExtendedString myName;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDocStd_ApplicationDelta_HeaderFile

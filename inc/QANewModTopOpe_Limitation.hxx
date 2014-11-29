@@ -6,82 +6,73 @@
 #ifndef _QANewModTopOpe_Limitation_HeaderFile
 #define _QANewModTopOpe_Limitation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _QANewModTopOpe_CutPtr_HeaderFile
 #include <QANewModTopOpe_CutPtr.hxx>
-#endif
-#ifndef _QANewModTopOpe_CommonPtr_HeaderFile
 #include <QANewModTopOpe_CommonPtr.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _QANewModTopOpe_ModeOfLimitation_HeaderFile
 #include <QANewModTopOpe_ModeOfLimitation.hxx>
-#endif
-#ifndef _BRepBuilderAPI_MakeShape_HeaderFile
 #include <BRepBuilderAPI_MakeShape.hxx>
-#endif
 class TopoDS_Shape;
 class TopTools_ListOfShape;
 
 
-//! provides  cutting  shape  by  face  or  shell; <br>
-class QANewModTopOpe_Limitation  : public BRepBuilderAPI_MakeShape {
+//! provides  cutting  shape  by  face  or  shell;
+class QANewModTopOpe_Limitation  : public BRepBuilderAPI_MakeShape
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! initializes and  fills data structure for  cutting and <br>
-//!          makes  cutting according to orientation theCutTool and <br>
-//!          theMode. <br>
-//!          if theCutTool is not face or shell does nothing. <br>
-  Standard_EXPORT   QANewModTopOpe_Limitation(const TopoDS_Shape& theObjectToCut,const TopoDS_Shape& theCutTool,const QANewModTopOpe_ModeOfLimitation theMode = QANewModTopOpe_Forward);
-  //! makes cutting  according to  orientation theCutTool <br>
-//!          and  current value   of  myMode.  Does nothing  if <br>
-//!          result already  exists. <br>
-  Standard_EXPORT     void Cut() ;
   
-  Standard_EXPORT     void SetMode(const QANewModTopOpe_ModeOfLimitation theMode) ;
+  //! initializes and  fills data structure for  cutting and
+  //! makes  cutting according to orientation theCutTool and
+  //! theMode.
+  //! if theCutTool is not face or shell does nothing.
+  Standard_EXPORT QANewModTopOpe_Limitation(const TopoDS_Shape& theObjectToCut, const TopoDS_Shape& theCutTool, const QANewModTopOpe_ModeOfLimitation theMode = QANewModTopOpe_Forward);
   
-  Standard_EXPORT     QANewModTopOpe_ModeOfLimitation GetMode() const;
-  //! Returns the first shape. <br>
-  Standard_EXPORT    const TopoDS_Shape& Shape1() const;
-  //! Returns the second shape. <br>
-  Standard_EXPORT    const TopoDS_Shape& Shape2() const;
-  //! Returns the list  of shapes modified from the shape <br>
-//!          <S>. <br>
-  Standard_EXPORT   virtual const TopTools_ListOfShape& Modified(const TopoDS_Shape& S) ;
-  //! Returns the list  of shapes generated from the shape <S>. <br>
-//!         For use in BRepNaming. <br>
-  Standard_EXPORT   virtual const TopTools_ListOfShape& Generated(const TopoDS_Shape& S) ;
-  //! Returns true if there is at least one modified shape. <br>
-//!         For use in BRepNaming. <br>
-  Standard_EXPORT   virtual  Standard_Boolean HasModified() const;
-  //! Returns true if there is at least one generated shape. <br>
-//!         For use in BRepNaming. <br>
-  Standard_EXPORT   virtual  Standard_Boolean HasGenerated() const;
-  //! Returns true if there is at least one deleted shape. <br>
-//!         For use in BRepNaming. <br>
-  Standard_EXPORT   virtual  Standard_Boolean HasDeleted() const;
+  //! makes cutting  according to  orientation theCutTool
+  //! and  current value   of  myMode.  Does nothing  if
+  //! result already  exists.
+  Standard_EXPORT   void Cut() ;
   
-  Standard_EXPORT   virtual  Standard_Boolean IsDeleted(const TopoDS_Shape& S) ;
+  Standard_EXPORT   void SetMode (const QANewModTopOpe_ModeOfLimitation theMode) ;
   
-  Standard_EXPORT   virtual  void Delete() ;
+  Standard_EXPORT   QANewModTopOpe_ModeOfLimitation GetMode()  const;
+  
+  //! Returns the first shape.
+  Standard_EXPORT  const  TopoDS_Shape& Shape1()  const;
+  
+  //! Returns the second shape.
+  Standard_EXPORT  const  TopoDS_Shape& Shape2()  const;
+  
+  //! Returns the list  of shapes modified from the shape
+  //! <S>.
+  Standard_EXPORT virtual  const  TopTools_ListOfShape& Modified (const TopoDS_Shape& S) ;
+  
+  //! Returns the list  of shapes generated from the shape <S>.
+  //! For use in BRepNaming.
+  Standard_EXPORT virtual  const  TopTools_ListOfShape& Generated (const TopoDS_Shape& S) ;
+  
+  //! Returns true if there is at least one modified shape.
+  //! For use in BRepNaming.
+  Standard_EXPORT virtual   Standard_Boolean HasModified()  const;
+  
+  //! Returns true if there is at least one generated shape.
+  //! For use in BRepNaming.
+  Standard_EXPORT virtual   Standard_Boolean HasGenerated()  const;
+  
+  //! Returns true if there is at least one deleted shape.
+  //! For use in BRepNaming.
+  Standard_EXPORT virtual   Standard_Boolean HasDeleted()  const;
+  
+  Standard_EXPORT virtual   Standard_Boolean IsDeleted (const TopoDS_Shape& S) ;
+  
+  Standard_EXPORT virtual   void Delete() ;
 Standard_EXPORT  ~QANewModTopOpe_Limitation()  {Delete();}
-
 
 
 
@@ -96,15 +87,15 @@ private:
 
 
 
-TopoDS_Shape myResultFwd;
-TopoDS_Shape myResultRvs;
-TopoDS_Shape myObjectToCut;
-TopoDS_Shape myCutTool;
-QANewModTopOpe_CutPtr myCut;
-QANewModTopOpe_CommonPtr myCommon;
-Standard_Boolean myFwdIsDone;
-Standard_Boolean myRevIsDone;
-QANewModTopOpe_ModeOfLimitation myMode;
+  TopoDS_Shape myResultFwd;
+  TopoDS_Shape myResultRvs;
+  TopoDS_Shape myObjectToCut;
+  TopoDS_Shape myCutTool;
+  QANewModTopOpe_CutPtr myCut;
+  QANewModTopOpe_CommonPtr myCommon;
+  Standard_Boolean myFwdIsDone;
+  Standard_Boolean myRevIsDone;
+  QANewModTopOpe_ModeOfLimitation myMode;
 
 
 };
@@ -113,7 +104,6 @@ QANewModTopOpe_ModeOfLimitation myMode;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QANewModTopOpe_Limitation_HeaderFile

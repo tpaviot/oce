@@ -5,25 +5,13 @@
 
 #include <STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _StepShape_ShapeDefinitionRepresentation_HeaderFile
 #include <StepShape_ShapeDefinitionRepresentation.hxx>
-#endif
-#ifndef _STEPCAFControl_ExternFile_HeaderFile
 #include <STEPCAFControl_ExternFile.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _STEPCAFControl_DataMapOfSDRExternFile_HeaderFile
 #include <STEPCAFControl_DataMapOfSDRExternFile.hxx>
-#endif
-#ifndef _STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile_HeaderFile
 #include <STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile.hxx>
-#endif
 
  
 
@@ -42,9 +30,9 @@ IMPLEMENT_DOWNCAST(STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile,Standard_T
 IMPLEMENT_STANDARD_RTTI(STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile)
 
 
-#define TheKey Handle_StepShape_ShapeDefinitionRepresentation
+#define TheKey Handle(StepShape_ShapeDefinitionRepresentation)
 #define TheKey_hxx <StepShape_ShapeDefinitionRepresentation.hxx>
-#define TheItem Handle_STEPCAFControl_ExternFile
+#define TheItem Handle(STEPCAFControl_ExternFile)
 #define TheItem_hxx <STEPCAFControl_ExternFile.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>

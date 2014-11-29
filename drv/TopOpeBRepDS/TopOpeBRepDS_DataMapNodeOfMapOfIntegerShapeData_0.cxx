@@ -5,22 +5,12 @@
 
 #include <TopOpeBRepDS_DataMapNodeOfMapOfIntegerShapeData.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopOpeBRepDS_ShapeData_HeaderFile
 #include <TopOpeBRepDS_ShapeData.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _TopOpeBRepDS_MapOfIntegerShapeData_HeaderFile
 #include <TopOpeBRepDS_MapOfIntegerShapeData.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapIteratorOfMapOfIntegerShapeData_HeaderFile
 #include <TopOpeBRepDS_DataMapIteratorOfMapOfIntegerShapeData.hxx>
-#endif
 
  
 

@@ -6,16 +6,15 @@
 #ifndef _StepGeom_KnotType_HeaderFile
 #define _StepGeom_KnotType_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepGeom_KnotType {
+
+enum StepGeom_KnotType
+{
 StepGeom_ktUniformKnots,
 StepGeom_ktUnspecified,
 StepGeom_ktQuasiUniformKnots,
 StepGeom_ktPiecewiseBezierKnots
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepGeom_KnotType_HeaderFile

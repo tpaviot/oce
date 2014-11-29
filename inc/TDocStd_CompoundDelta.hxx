@@ -6,33 +6,28 @@
 #ifndef _TDocStd_CompoundDelta_HeaderFile
 #define _TDocStd_CompoundDelta_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDocStd_CompoundDelta_HeaderFile
 #include <Handle_TDocStd_CompoundDelta.hxx>
-#endif
 
-#ifndef _TDF_Delta_HeaderFile
 #include <TDF_Delta.hxx>
-#endif
 class TDocStd_Document;
 
 
-//! A delta set is available at <aSourceTime>. If <br>
-//!          applied, it restores the TDF_Data in the state it <br>
-//!          was at <aTargetTime>. <br>
-class TDocStd_CompoundDelta : public TDF_Delta {
+//! A delta set is available at <aSourceTime>. If
+//! applied, it restores the TDF_Data in the state it
+//! was at <aTargetTime>.
+class TDocStd_CompoundDelta : public TDF_Delta
+{
 
 public:
 
-  //! Creates a compound delta. <br>//! Validates <me> at <aBeginTime>. If applied, it <br>
-//!          restores the TDF_Data in the state it was at <br>
-//!          <anEndTime>. Reserved to TDF_Data. <br>
-  Standard_EXPORT   TDocStd_CompoundDelta();
+  
+  //! Creates a compound delta.
+  //! Validates <me> at <aBeginTime>. If applied, it
+  //! restores the TDF_Data in the state it was at
+  //! <anEndTime>. Reserved to TDF_Data.
+  Standard_EXPORT TDocStd_CompoundDelta();
 
 
 friend class TDocStd_Document;
@@ -56,7 +51,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDocStd_CompoundDelta_HeaderFile

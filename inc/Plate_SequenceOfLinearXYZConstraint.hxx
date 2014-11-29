@@ -6,25 +6,13 @@
 #ifndef _Plate_SequenceOfLinearXYZConstraint_HeaderFile
 #define _Plate_SequenceOfLinearXYZConstraint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint_HeaderFile
 #include <Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Plate_LinearXYZConstraint;
@@ -32,66 +20,68 @@ class Plate_SequenceNodeOfSequenceOfLinearXYZConstraint;
 
 
 
-class Plate_SequenceOfLinearXYZConstraint  : public TCollection_BaseSequence {
+class Plate_SequenceOfLinearXYZConstraint  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Plate_SequenceOfLinearXYZConstraint();
+    Plate_SequenceOfLinearXYZConstraint();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT Plate_SequenceOfLinearXYZConstraint(const Plate_SequenceOfLinearXYZConstraint& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~Plate_SequenceOfLinearXYZConstraint()
 {
   Clear();
 }
   
-  Standard_EXPORT    const Plate_SequenceOfLinearXYZConstraint& Assign(const Plate_SequenceOfLinearXYZConstraint& Other) ;
-   const Plate_SequenceOfLinearXYZConstraint& operator =(const Plate_SequenceOfLinearXYZConstraint& Other) 
+  Standard_EXPORT  const  Plate_SequenceOfLinearXYZConstraint& Assign (const Plate_SequenceOfLinearXYZConstraint& Other) ;
+ const  Plate_SequenceOfLinearXYZConstraint& operator = (const Plate_SequenceOfLinearXYZConstraint& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Plate_LinearXYZConstraint& T) ;
+  Standard_EXPORT   void Append (const Plate_LinearXYZConstraint& T) ;
   
-        void Append(Plate_SequenceOfLinearXYZConstraint& S) ;
+      void Append (Plate_SequenceOfLinearXYZConstraint& S) ;
   
-  Standard_EXPORT     void Prepend(const Plate_LinearXYZConstraint& T) ;
+  Standard_EXPORT   void Prepend (const Plate_LinearXYZConstraint& T) ;
   
-        void Prepend(Plate_SequenceOfLinearXYZConstraint& S) ;
+      void Prepend (Plate_SequenceOfLinearXYZConstraint& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Plate_LinearXYZConstraint& T) ;
+      void InsertBefore (const Standard_Integer Index, const Plate_LinearXYZConstraint& T) ;
   
-        void InsertBefore(const Standard_Integer Index,Plate_SequenceOfLinearXYZConstraint& S) ;
+      void InsertBefore (const Standard_Integer Index, Plate_SequenceOfLinearXYZConstraint& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Plate_LinearXYZConstraint& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Plate_LinearXYZConstraint& T) ;
   
-        void InsertAfter(const Standard_Integer Index,Plate_SequenceOfLinearXYZConstraint& S) ;
+      void InsertAfter (const Standard_Integer Index, Plate_SequenceOfLinearXYZConstraint& S) ;
   
-  Standard_EXPORT    const Plate_LinearXYZConstraint& First() const;
+  Standard_EXPORT  const  Plate_LinearXYZConstraint& First()  const;
   
-  Standard_EXPORT    const Plate_LinearXYZConstraint& Last() const;
+  Standard_EXPORT  const  Plate_LinearXYZConstraint& Last()  const;
   
-        void Split(const Standard_Integer Index,Plate_SequenceOfLinearXYZConstraint& Sub) ;
+      void Split (const Standard_Integer Index, Plate_SequenceOfLinearXYZConstraint& Sub) ;
   
-  Standard_EXPORT    const Plate_LinearXYZConstraint& Value(const Standard_Integer Index) const;
-   const Plate_LinearXYZConstraint& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Plate_LinearXYZConstraint& Value (const Standard_Integer Index)  const;
+ const  Plate_LinearXYZConstraint& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Plate_LinearXYZConstraint& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Plate_LinearXYZConstraint& I) ;
   
-  Standard_EXPORT     Plate_LinearXYZConstraint& ChangeValue(const Standard_Integer Index) ;
-    Plate_LinearXYZConstraint& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Plate_LinearXYZConstraint& ChangeValue (const Standard_Integer Index) ;
+  Plate_LinearXYZConstraint& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -104,8 +94,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Plate_SequenceOfLinearXYZConstraint(const Plate_SequenceOfLinearXYZConstraint& Other);
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Plate_SequenceOfLinearXYZConstraint_HeaderFile

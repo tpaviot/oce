@@ -6,33 +6,20 @@
 #ifndef _StdFail_NotDone_HeaderFile
 #define _StdFail_NotDone_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_DefineException_HeaderFile
 #include <Standard_DefineException.hxx>
-#endif
-#ifndef _Standard_SStream_HeaderFile
 #include <Standard_SStream.hxx>
-#endif
-
-#ifndef _Standard_Failure_HeaderFile
 #include <Standard_Failure.hxx>
-#endif
-#ifndef _Handle_StdFail_NotDone_HeaderFile
 #include <Handle_StdFail_NotDone.hxx>
-#endif
 
 #if !defined No_Exception && !defined No_StdFail_NotDone
-#define StdFail_NotDone_Raise_if(CONDITION,MESSAGE) \
+  #define StdFail_NotDone_Raise_if(CONDITION, MESSAGE) \
   if (CONDITION) StdFail_NotDone::Raise(MESSAGE);
 #else
-#define StdFail_NotDone_Raise_if(CONDITION,MESSAGE)
+  #define StdFail_NotDone_Raise_if(CONDITION, MESSAGE)
 #endif
 
-DEFINE_STANDARD_EXCEPTION(StdFail_NotDone,Standard_Failure)
+DEFINE_STANDARD_EXCEPTION(StdFail_NotDone, Standard_Failure)
 
-#endif
+#endif // _StdFail_NotDone_HeaderFile

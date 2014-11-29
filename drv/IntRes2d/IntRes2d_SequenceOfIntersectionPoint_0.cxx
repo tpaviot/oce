@@ -5,18 +5,10 @@
 
 #include <IntRes2d_SequenceOfIntersectionPoint.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IntRes2d_IntersectionPoint_HeaderFile
 #include <IntRes2d_IntersectionPoint.hxx>
-#endif
-#ifndef _IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint_HeaderFile
 #include <IntRes2d_SequenceNodeOfSequenceOfIntersectionPoint.hxx>
-#endif
  
 
 #define SeqItem IntRes2d_IntersectionPoint

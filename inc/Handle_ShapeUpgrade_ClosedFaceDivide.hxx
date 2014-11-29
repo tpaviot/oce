@@ -6,22 +6,15 @@
 #ifndef _Handle_ShapeUpgrade_ClosedFaceDivide_HeaderFile
 #define _Handle_ShapeUpgrade_ClosedFaceDivide_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_ShapeUpgrade_FaceDivide_HeaderFile
 #include <Handle_ShapeUpgrade_FaceDivide.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(ShapeUpgrade_FaceDivide);
 class ShapeUpgrade_ClosedFaceDivide;
 
-DEFINE_STANDARD_HANDLE(ShapeUpgrade_ClosedFaceDivide,ShapeUpgrade_FaceDivide)
+DEFINE_STANDARD_HANDLE(ShapeUpgrade_ClosedFaceDivide, ShapeUpgrade_FaceDivide)
 
-#endif
+#endif // _Handle_ShapeUpgrade_ClosedFaceDivide_HeaderFile

@@ -5,21 +5,11 @@
 
 #include <QANCollection_DataMapIteratorOfDataMapOfRealPnt.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _TColStd_MapRealHasher_HeaderFile
 #include <TColStd_MapRealHasher.hxx>
-#endif
-#ifndef _QANCollection_DataMapOfRealPnt_HeaderFile
 #include <QANCollection_DataMapOfRealPnt.hxx>
-#endif
-#ifndef _QANCollection_DataMapNodeOfDataMapOfRealPnt_HeaderFile
 #include <QANCollection_DataMapNodeOfDataMapOfRealPnt.hxx>
-#endif
  
 
 #define TheKey Standard_Real

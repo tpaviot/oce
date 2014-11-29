@@ -6,25 +6,13 @@
 #ifndef _IntTools_SequenceOfRoots_HeaderFile
 #define _IntTools_SequenceOfRoots_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_IntTools_SequenceNodeOfSequenceOfRoots_HeaderFile
 #include <Handle_IntTools_SequenceNodeOfSequenceOfRoots.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class IntTools_Root;
@@ -32,66 +20,68 @@ class IntTools_SequenceNodeOfSequenceOfRoots;
 
 
 
-class IntTools_SequenceOfRoots  : public TCollection_BaseSequence {
+class IntTools_SequenceOfRoots  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      IntTools_SequenceOfRoots();
+    IntTools_SequenceOfRoots();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT IntTools_SequenceOfRoots(const IntTools_SequenceOfRoots& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~IntTools_SequenceOfRoots()
 {
   Clear();
 }
   
-  Standard_EXPORT    const IntTools_SequenceOfRoots& Assign(const IntTools_SequenceOfRoots& Other) ;
-   const IntTools_SequenceOfRoots& operator =(const IntTools_SequenceOfRoots& Other) 
+  Standard_EXPORT  const  IntTools_SequenceOfRoots& Assign (const IntTools_SequenceOfRoots& Other) ;
+ const  IntTools_SequenceOfRoots& operator = (const IntTools_SequenceOfRoots& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const IntTools_Root& T) ;
+  Standard_EXPORT   void Append (const IntTools_Root& T) ;
   
-        void Append(IntTools_SequenceOfRoots& S) ;
+      void Append (IntTools_SequenceOfRoots& S) ;
   
-  Standard_EXPORT     void Prepend(const IntTools_Root& T) ;
+  Standard_EXPORT   void Prepend (const IntTools_Root& T) ;
   
-        void Prepend(IntTools_SequenceOfRoots& S) ;
+      void Prepend (IntTools_SequenceOfRoots& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const IntTools_Root& T) ;
+      void InsertBefore (const Standard_Integer Index, const IntTools_Root& T) ;
   
-        void InsertBefore(const Standard_Integer Index,IntTools_SequenceOfRoots& S) ;
+      void InsertBefore (const Standard_Integer Index, IntTools_SequenceOfRoots& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const IntTools_Root& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const IntTools_Root& T) ;
   
-        void InsertAfter(const Standard_Integer Index,IntTools_SequenceOfRoots& S) ;
+      void InsertAfter (const Standard_Integer Index, IntTools_SequenceOfRoots& S) ;
   
-  Standard_EXPORT    const IntTools_Root& First() const;
+  Standard_EXPORT  const  IntTools_Root& First()  const;
   
-  Standard_EXPORT    const IntTools_Root& Last() const;
+  Standard_EXPORT  const  IntTools_Root& Last()  const;
   
-        void Split(const Standard_Integer Index,IntTools_SequenceOfRoots& Sub) ;
+      void Split (const Standard_Integer Index, IntTools_SequenceOfRoots& Sub) ;
   
-  Standard_EXPORT    const IntTools_Root& Value(const Standard_Integer Index) const;
-   const IntTools_Root& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  IntTools_Root& Value (const Standard_Integer Index)  const;
+ const  IntTools_Root& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const IntTools_Root& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const IntTools_Root& I) ;
   
-  Standard_EXPORT     IntTools_Root& ChangeValue(const Standard_Integer Index) ;
-    IntTools_Root& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   IntTools_Root& ChangeValue (const Standard_Integer Index) ;
+  IntTools_Root& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -104,8 +94,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntTools_SequenceOfRoots(const IntTools_SequenceOfRoots& Other);
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_SequenceOfRoots_HeaderFile

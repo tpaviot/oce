@@ -5,22 +5,12 @@
 
 #include <TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfShapeBox2d.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Bnd_Box2d_HeaderFile
 #include <Bnd_Box2d.hxx>
-#endif
-#ifndef _TopTools_OrientedShapeMapHasher_HeaderFile
 #include <TopTools_OrientedShapeMapHasher.hxx>
-#endif
-#ifndef _TopOpeBRepTool_IndexedDataMapOfShapeBox2d_HeaderFile
 #include <TopOpeBRepTool_IndexedDataMapOfShapeBox2d.hxx>
-#endif
 
  
 

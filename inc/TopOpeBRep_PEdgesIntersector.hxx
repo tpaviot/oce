@@ -7,7 +7,6 @@
 #define _TopOpeBRep_PEdgesIntersector_HeaderFile
 
 class TopOpeBRep_EdgesIntersector;
-
 typedef TopOpeBRep_EdgesIntersector* TopOpeBRep_PEdgesIntersector;
 
-#endif
+#endif // _TopOpeBRep_PEdgesIntersector_HeaderFile

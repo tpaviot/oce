@@ -5,38 +5,20 @@
 
 #include <PTColStd_DoubleMapOfTransientPersistent.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_MultiplyDefined_HeaderFile
 #include <Standard_MultiplyDefined.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _PTColStd_MapPersistentHasher_HeaderFile
 #include <PTColStd_MapPersistentHasher.hxx>
-#endif
-#ifndef _PTColStd_DoubleMapNodeOfDoubleMapOfTransientPersistent_HeaderFile
 #include <PTColStd_DoubleMapNodeOfDoubleMapOfTransientPersistent.hxx>
-#endif
-#ifndef _PTColStd_DoubleMapIteratorOfDoubleMapOfTransientPersistent_HeaderFile
 #include <PTColStd_DoubleMapIteratorOfDoubleMapOfTransientPersistent.hxx>
-#endif
  
 
-#define TheKey1 Handle_Standard_Transient
+#define TheKey1 Handle(Standard_Transient)
 #define TheKey1_hxx <Standard_Transient.hxx>
-#define TheKey2 Handle_Standard_Persistent
+#define TheKey2 Handle(Standard_Persistent)
 #define TheKey2_hxx <Standard_Persistent.hxx>
 #define Hasher1 TColStd_MapTransientHasher
 #define Hasher1_hxx <TColStd_MapTransientHasher.hxx>

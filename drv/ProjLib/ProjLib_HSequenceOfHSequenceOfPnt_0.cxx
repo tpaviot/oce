@@ -5,22 +5,12 @@
 
 #include <ProjLib_HSequenceOfHSequenceOfPnt.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TColgp_HSequenceOfPnt_HeaderFile
 #include <TColgp_HSequenceOfPnt.hxx>
-#endif
-#ifndef _ProjLib_SequenceOfHSequenceOfPnt_HeaderFile
 #include <ProjLib_SequenceOfHSequenceOfPnt.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(ProjLib_HSequenceOfHSequenceOfPnt,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(ProjLib_HSequenceOfHSequenceOfPnt)
 
 
-#define Item Handle_TColgp_HSequenceOfPnt
+#define Item Handle(TColgp_HSequenceOfPnt)
 #define Item_hxx <TColgp_HSequenceOfPnt.hxx>
 #define TheSequence ProjLib_SequenceOfHSequenceOfPnt
 #define TheSequence_hxx <ProjLib_SequenceOfHSequenceOfPnt.hxx>

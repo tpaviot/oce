@@ -6,14 +6,13 @@
 #ifndef _StepToTopoDS_BuilderError_HeaderFile
 #define _StepToTopoDS_BuilderError_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepToTopoDS_BuilderError {
+
+enum StepToTopoDS_BuilderError
+{
 StepToTopoDS_BuilderDone,
 StepToTopoDS_BuilderOther
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepToTopoDS_BuilderError_HeaderFile

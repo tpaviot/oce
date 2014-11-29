@@ -143,25 +143,6 @@ class HSequenceOfTransient instantiates
     HSequence from TCollection             (Transient,
     	    	    	    	    	    SequenceOfTransient from TColStd);
 
-
-class SetOfInteger   instantiates 
-    Set from TCollection               (Integer);
-class SetOfReal      instantiates 
-    Set from TCollection               (Real); 
-class SetOfTransient instantiates 
-    Set from TCollection               (Transient);
-
-
-class HSetOfInteger   instantiates 
-    HSet from TCollection               (Integer,
-    	    	    	    	    	 SetOfInteger   from TColStd);
-class HSetOfReal      instantiates 
-    HSet from TCollection               (Real,
-    	    	    	    	    	 SetOfReal      from TColStd);
-class HSetOfTransient instantiates 
-    HSet from TCollection               (Transient,
-    	    	    	    	    	 SetOfTransient from TColStd);
-
 --                    
 --       Instantiations List (Integer,Real,Transient)
 --       ********************************************
@@ -170,22 +151,6 @@ class ListOfInteger     instantiates List from TCollection(Integer  );
 class ListOfReal        instantiates List from TCollection(Real     );
 class ListOfTransient   instantiates List from TCollection(Transient);
 class ListOfAsciiString instantiates List from TCollection(AsciiString from TCollection);
-
---                    
---       Instantiations Stack (Integer,Real,Transient)
---       *********************************************
---       
-class StackOfInteger   instantiates Stack from TCollection(Integer  );
-class StackOfReal      instantiates Stack from TCollection(Real     );
-class StackOfTransient instantiates Stack from TCollection(Transient);
-
---                    
---       Instantiations Queue (Integer,Real,Transient)
---       *********************************************
---       
-class QueueOfInteger   instantiates Queue from TCollection(Integer  );
-class QueueOfReal      instantiates Queue from TCollection(Real     );
-class QueueOfTransient instantiates Queue from TCollection(Transient);
 
 --                    
 --       Instantiations MapHasher (Integer,Real, Transient, Persistent)

@@ -5,22 +5,12 @@
 
 #include <AIS_DataMapNodeOfDataMapOfILC.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _AIS_LocalContext_HeaderFile
 #include <AIS_LocalContext.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _AIS_DataMapOfILC_HeaderFile
 #include <AIS_DataMapOfILC.hxx>
-#endif
-#ifndef _AIS_DataMapIteratorOfDataMapOfILC_HeaderFile
 #include <AIS_DataMapIteratorOfDataMapOfILC.hxx>
-#endif
 
  
 
@@ -41,7 +31,7 @@ IMPLEMENT_STANDARD_RTTI(AIS_DataMapNodeOfDataMapOfILC)
 
 #define TheKey Standard_Integer
 #define TheKey_hxx <Standard_Integer.hxx>
-#define TheItem Handle_AIS_LocalContext
+#define TheItem Handle(AIS_LocalContext)
 #define TheItem_hxx <AIS_LocalContext.hxx>
 #define Hasher TColStd_MapIntegerHasher
 #define Hasher_hxx <TColStd_MapIntegerHasher.hxx>

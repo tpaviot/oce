@@ -6,22 +6,12 @@
 #ifndef _BinMDF_HeaderFile
 #define _BinMDF_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_BinMDF_ADriverTable_HeaderFile
 #include <Handle_BinMDF_ADriverTable.hxx>
-#endif
-#ifndef _Handle_CDM_MessageDriver_HeaderFile
 #include <Handle_CDM_MessageDriver.hxx>
-#endif
 class BinMDF_ADriverTable;
 class CDM_MessageDriver;
 class BinMDF_ADriver;
@@ -36,30 +26,31 @@ class BinMDF_DoubleMapNodeOfTypeIdMap;
 class BinMDF_DoubleMapIteratorOfTypeIdMap;
 
 
-//! This package provides classes and methods to <br>
-//!          translate a transient DF into a persistent one and <br>
-//!          vice versa. <br>
-//! <br>
-//!          Driver <br>
-//! <br>
-//!          A driver is a tool used to translate a transient <br>
-//!          attribute into a persistent one and vice versa. <br>
-//! <br>
-//!          Driver Table <br>
-//! <br>
-//!          A driver table is an object building links between <br>
-//!          object types and object drivers. In the <br>
-//!          translation process, a driver table is asked to <br>
-//!          give a translation driver for each current object <br>
-//!          to be translated. <br>
-class BinMDF  {
+//! This package provides classes and methods to
+//! translate a transient DF into a persistent one and
+//! vice versa.
+//!
+//! Driver
+//!
+//! A driver is a tool used to translate a transient
+//! attribute into a persistent one and vice versa.
+//!
+//! Driver Table
+//!
+//! A driver table is an object building links between
+//! object types and object drivers. In the
+//! translation process, a driver table is asked to
+//! give a translation driver for each current object
+//! to be translated.
+class BinMDF 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Adds the attribute storage drivers to <aDriverTable>. <br>
-  Standard_EXPORT   static  void AddDrivers(const Handle(BinMDF_ADriverTable)& aDriverTable,const Handle(CDM_MessageDriver)& aMsgDrv) ;
-
+  
+  //! Adds the attribute storage drivers to <aDriverTable>.
+  Standard_EXPORT static   void AddDrivers (const Handle(BinMDF_ADriverTable)& aDriverTable, const Handle(CDM_MessageDriver)& aMsgDrv) ;
 
 
 
@@ -92,7 +83,6 @@ friend class BinMDF_DoubleMapIteratorOfTypeIdMap;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BinMDF_HeaderFile

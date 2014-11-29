@@ -5,9 +5,7 @@
 
 #include <PGeom2d_Line.jxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
 
  

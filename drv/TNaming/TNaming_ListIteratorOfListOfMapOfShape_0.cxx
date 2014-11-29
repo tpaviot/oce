@@ -5,21 +5,11 @@
 
 #include <TNaming_ListIteratorOfListOfMapOfShape.hxx>
 
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TNaming_ListOfMapOfShape_HeaderFile
 #include <TNaming_ListOfMapOfShape.hxx>
-#endif
-#ifndef _TopTools_MapOfShape_HeaderFile
 #include <TopTools_MapOfShape.hxx>
-#endif
-#ifndef _TNaming_ListNodeOfListOfMapOfShape_HeaderFile
 #include <TNaming_ListNodeOfListOfMapOfShape.hxx>
-#endif
  
 
 #define Item TopTools_MapOfShape

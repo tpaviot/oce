@@ -87,7 +87,7 @@ class gp_Dir2d;
 
 DEFINE_STANDARD_HANDLE(XCAFSchema,Storage_Schema)
 
-//! Schema <br>
+//! Schema
 class XCAFSchema : public Storage_Schema {
 public:
 

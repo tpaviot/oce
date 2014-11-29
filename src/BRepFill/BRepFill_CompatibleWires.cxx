@@ -63,7 +63,7 @@
 #include <TColStd_Array1OfReal.hxx>
 #include <TColStd_SequenceOfReal.hxx>
 
-#ifdef DEB_EFV
+#ifdef OCCT_DEBUG_EFV
 static void EdgesFromVertex (const TopoDS_Wire&   W,
 			     const TopoDS_Vertex& V, 
 			     TopoDS_Edge& E1, 
@@ -138,42 +138,61 @@ static Standard_Boolean PlaneOfWire (const TopoDS_Wire& W, gp_Pln& P)
   BRepLib_FindSurface findPlanarSurf;
   Handle(Geom_Surface) S;
   TopLoc_Location      L;
-  
+
   GProp_GProps GP;
-  BRepGProp::LinearProperties(W,GP);
-  gp_Pnt Bary = GP.CentreOfMass();
+  gp_Pnt Bary;
+  Standard_Boolean isBaryDefined = Standard_False;
 
 // shielding for particular cases : only one edge circle or ellipse
 // on a closed wire !
-  Standard_Integer nbEdges = 0;
-  BRepTools_WireExplorer anExp;
-  anExp.Init(W);
+
   Standard_Boolean wClosed = W.Closed();
-  if (!wClosed) {
+  if (!wClosed)
+  {
     // it is checked if the vertices are the same.
     TopoDS_Vertex V1, V2;
     TopExp::Vertices(W,V1,V2);
     if ( V1.IsSame(V2)) wClosed = Standard_True;
   }
-  TopoDS_Edge Edge = TopoDS::Edge(anExp.Current());
-  Standard_Real first, last;
-  Handle(Geom_Curve) curv = BRep_Tool::Curve(Edge, first, last);
-  if (wClosed) {
-    GeomAdaptor_Curve AdC;
-    AdC.Load(curv);
-    for(; anExp.More(); anExp.Next()) {
+
+  if (wClosed)
+  {
+    Standard_Integer nbEdges = 0;
+    TopoDS_Iterator anIter;
+    anIter.Initialize(W);
+    for(; anIter.More(); anIter.Next())
       nbEdges ++;
-    }
-    if ( nbEdges==1 && AdC.GetType() == GeomAbs_Circle ) {
-      Bary = AdC.Circle().Location();
-    }
-    if ( nbEdges==1 && AdC.GetType() == GeomAbs_Ellipse ) {
-      Bary = AdC.Ellipse().Location();
+
+    if(nbEdges == 1)
+    {
+      GeomAdaptor_Curve AdC;
+      Standard_Real first, last;
+      anIter.Initialize(W);
+      AdC.Load(BRep_Tool::Curve(TopoDS::Edge(anIter.Value()), first, last));
+
+      if (AdC.GetType() == GeomAbs_Circle)
+      {
+        Bary = AdC.Circle().Location();
+        isBaryDefined = Standard_True;
+      }
+
+      if (AdC.GetType() == GeomAbs_Ellipse)
+      {
+        Bary = AdC.Ellipse().Location();
+        isBaryDefined = Standard_True;
+      }
     }
   }
 
+  if (!isBaryDefined)
+  {
+    BRepGProp::LinearProperties(W,GP);
+    Bary = GP.CentreOfMass();
+  }
+
   findPlanarSurf.Init(W, -1, Standard_True);
-  if ( findPlanarSurf.Found()) {
+  if ( findPlanarSurf.Found())
+  {
     S = findPlanarSurf.Surface();
     L = findPlanarSurf.Location();
     if (!L.IsIdentity()) S = Handle(Geom_Surface)::
@@ -181,7 +200,8 @@ static Standard_Boolean PlaneOfWire (const TopoDS_Wire& W, gp_Pln& P)
     P = (Handle(Geom_Plane)::DownCast(S))->Pln();
     P.SetLocation(Bary);
   }
-  else {
+  else
+  {
     // wire not plane !
     GProp_PrincipalProps Pp  = GP.PrincipalProperties();
     gp_Vec Vec;
@@ -189,28 +209,35 @@ static Standard_Boolean PlaneOfWire (const TopoDS_Wire& W, gp_Pln& P)
     Pp.RadiusOfGyration(R1,R2,R3);
     Standard_Real RMax = Max(Max(R1,R2),R3);
     if ( ( Abs(RMax-R1)<Tol && Abs(RMax-R2)<Tol )
-	|| ( Abs(RMax-R1)<Tol && Abs(RMax-R3)<Tol ) 
-	|| ( Abs(RMax-R2)<Tol && Abs(RMax-R3)<Tol ) )
+      || ( Abs(RMax-R1)<Tol && Abs(RMax-R3)<Tol ) 
+      || ( Abs(RMax-R2)<Tol && Abs(RMax-R3)<Tol ) )
       isplane = Standard_False;
-    else {
-      if (R1>=R2 && R1>=R3) {
-	Vec = Pp.FirstAxisOfInertia();
+    else
+    {
+      if (R1>=R2 && R1>=R3)
+      {
+        Vec = Pp.FirstAxisOfInertia();
       }
-      else if (R2>=R1 && R2>=R3) {
-	Vec = Pp.SecondAxisOfInertia();
+      else if (R2>=R1 && R2>=R3)
+      {
+        Vec = Pp.SecondAxisOfInertia();
       }
-      else if (R3>=R1 && R3>=R2) {
-	Vec = Pp.ThirdAxisOfInertia();
+      else if (R3>=R1 && R3>=R2)
+      {
+        Vec = Pp.ThirdAxisOfInertia();
       }
       gp_Dir NDir(Vec);
-      if (R3<=R2 && R3<=R1) {
-	Vec = Pp.ThirdAxisOfInertia();
+      if (R3<=R2 && R3<=R1)
+      {
+        Vec = Pp.ThirdAxisOfInertia();
       }
-      else if (R2<=R1 && R2<=R3) {
-	Vec = Pp.SecondAxisOfInertia();
+      else if (R2<=R1 && R2<=R3)
+      {
+        Vec = Pp.SecondAxisOfInertia();
       }
-      else if (R1<=R2 && R1<=R3) {
-	Vec = Pp.FirstAxisOfInertia();
+      else if (R1<=R2 && R1<=R3)
+      {
+        Vec = Pp.FirstAxisOfInertia();
       }
       gp_Dir XDir(Vec);
       gp_Ax3 repere(Bary,NDir,XDir);
@@ -441,7 +468,7 @@ static Standard_Boolean EdgeIntersectOnWire (const gp_Pnt& P1,
 	isol = iss;
       }
     }
-#ifdef DEB
+#ifdef OCCT_DEBUG
     gp_Pnt Psol = 
 #endif
       DSS.PointOnShape2(isol);
@@ -1673,7 +1700,7 @@ void BRepFill_CompatibleWires::ComputeOrigin(const  Standard_Boolean /*polar*/ )
       newwire.Orientation( TopAbs_FORWARD );
       myWork(i) = newwire;
     }
-#ifdef DEB_EFV
+#ifdef OCCT_DEBUG_EFV
 
   for ( i=ideb; i<=myWork.Length(); i++) {
     
@@ -1825,7 +1852,7 @@ void BRepFill_CompatibleWires::ComputeOrigin(const  Standard_Boolean /*polar*/ )
 	EdgesFromVertex(wire,Vmini,E1,E2);
 	
 	TopExp::Vertices(E1,V1,V2,Standard_True);
-#ifndef DEB
+#ifndef OCCT_DEBUG
 	Standard_Real U1=0, U2=0;
 #else
 	Standard_Real U1, U2;

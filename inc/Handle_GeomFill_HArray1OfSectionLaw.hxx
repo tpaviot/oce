@@ -6,22 +6,15 @@
 #ifndef _Handle_GeomFill_HArray1OfSectionLaw_HeaderFile
 #define _Handle_GeomFill_HArray1OfSectionLaw_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_MMgt_TShared_HeaderFile
 #include <Handle_MMgt_TShared.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(MMgt_TShared);
 class GeomFill_HArray1OfSectionLaw;
 
-DEFINE_STANDARD_HANDLE(GeomFill_HArray1OfSectionLaw,MMgt_TShared)
+DEFINE_STANDARD_HANDLE(GeomFill_HArray1OfSectionLaw, MMgt_TShared)
 
-#endif
+#endif // _Handle_GeomFill_HArray1OfSectionLaw_HeaderFile

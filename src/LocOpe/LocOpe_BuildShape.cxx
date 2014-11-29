@@ -150,6 +150,7 @@ void LocOpe_BuildShape::Perform(const TopTools_ListOfShape& L)
 	B.Add(newSh,FaceRef);
 	Propagate(FaceRef,newSh,mapF,mapIf);
       }
+      newSh.Closed (BRep_Tool::IsClosed (newSh));
       if (!Manifold) {
 	lshell.Append(newSh.Oriented(TopAbs_INTERNAL));
       }
@@ -412,7 +413,7 @@ static Standard_Boolean IsInside(const TopoDS_Shape& S1,
       return Standard_False;
     }
   }
-#ifdef DEB
+#ifdef OCCT_DEBUG
   cout << "Classification impossible sur vertex " << endl;
 #endif
   

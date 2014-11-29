@@ -15,19 +15,20 @@
 -- commercial license or contractual agreement.
 
 class TCompound from TopoDS inherits TShape from TopoDS
+	---Purpose: A TCompound is an all-purpose set of Shapes.
 
 uses
     ShapeEnum from TopAbs
 
 is
-    Create returns mutable TCompound from TopoDS;
+    Create returns TCompound from TopoDS;
     ---C++: inline
     ---Purpose: Creates an empty TCompound.
 
     ShapeType(me) returns ShapeEnum from TopAbs;
     ---Purpose: Returns COMPOUND.
 
-    EmptyCopy(me) returns mutable TShape from TopoDS;
+    EmptyCopy(me) returns TShape from TopoDS;
     ---Purpose: Returns an empty TCompound.
 
 end TCompound;

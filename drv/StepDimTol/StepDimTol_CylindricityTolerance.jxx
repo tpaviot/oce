@@ -1,3 +1,1 @@
-#ifndef _StepDimTol_CylindricityTolerance_HeaderFile
 #include <StepDimTol_CylindricityTolerance.hxx>
-#endif

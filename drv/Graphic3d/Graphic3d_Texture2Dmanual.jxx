@@ -1,6 +1,2 @@
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Graphic3d_Texture2Dmanual_HeaderFile
 #include <Graphic3d_Texture2Dmanual.hxx>
-#endif

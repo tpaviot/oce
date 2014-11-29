@@ -6,39 +6,28 @@
 #ifndef _TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape_HeaderFile
 #define _TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape_HeaderFile
 #include <Handle_TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape.hxx>
-#endif
 
-#ifndef _TopOpeBRepBuild_ShapeListOfShape_HeaderFile
 #include <TopOpeBRepBuild_ShapeListOfShape.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopOpeBRepBuild_ShapeListOfShape;
 class TopOpeBRepBuild_ListOfShapeListOfShape;
 class TopOpeBRepBuild_ListIteratorOfListOfShapeListOfShape;
 
 
 
-class TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape : public TCollection_MapNode {
+class TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape : public TCollection_MapNode
+{
 
 public:
 
   
-      TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape(const TopOpeBRepBuild_ShapeListOfShape& I,const TCollection_MapNodePtr& n);
+    TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape(const TopOpeBRepBuild_ShapeListOfShape& I, const TCollection_MapNodePtr& n);
   
-        TopOpeBRepBuild_ShapeListOfShape& Value() const;
+      TopOpeBRepBuild_ShapeListOfShape& Value()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-TopOpeBRepBuild_ShapeListOfShape myValue;
+  TopOpeBRepBuild_ShapeListOfShape myValue;
 
 
 };
@@ -83,7 +72,6 @@ TopOpeBRepBuild_ShapeListOfShape myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape_HeaderFile

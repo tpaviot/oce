@@ -6,39 +6,28 @@
 #ifndef _TColStd_StdMapNodeOfMapOfAsciiString_HeaderFile
 #define _TColStd_StdMapNodeOfMapOfAsciiString_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColStd_StdMapNodeOfMapOfAsciiString_HeaderFile
 #include <Handle_TColStd_StdMapNodeOfMapOfAsciiString.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TCollection_AsciiString;
 class TColStd_MapOfAsciiString;
 class TColStd_MapIteratorOfMapOfAsciiString;
 
 
 
-class TColStd_StdMapNodeOfMapOfAsciiString : public TCollection_MapNode {
+class TColStd_StdMapNodeOfMapOfAsciiString : public TCollection_MapNode
+{
 
 public:
 
   
-      TColStd_StdMapNodeOfMapOfAsciiString(const TCollection_AsciiString& K,const TCollection_MapNodePtr& n);
+    TColStd_StdMapNodeOfMapOfAsciiString(const TCollection_AsciiString& K, const TCollection_MapNodePtr& n);
   
-        TCollection_AsciiString& Key() const;
+      TCollection_AsciiString& Key()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-TCollection_AsciiString myKey;
+  TCollection_AsciiString myKey;
 
 
 };
@@ -87,7 +76,6 @@ TCollection_AsciiString myKey;
 #undef TCollection_Map_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_StdMapNodeOfMapOfAsciiString_HeaderFile

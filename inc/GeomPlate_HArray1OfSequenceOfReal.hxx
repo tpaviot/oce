@@ -6,25 +6,13 @@
 #ifndef _GeomPlate_HArray1OfSequenceOfReal_HeaderFile
 #define _GeomPlate_HArray1OfSequenceOfReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_GeomPlate_HArray1OfSequenceOfReal_HeaderFile
 #include <Handle_GeomPlate_HArray1OfSequenceOfReal.hxx>
-#endif
 
-#ifndef _GeomPlate_Array1OfSequenceOfReal_HeaderFile
 #include <GeomPlate_Array1OfSequenceOfReal.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class GeomPlate_Array1OfSequenceOfReal;
 
 
 
-class GeomPlate_HArray1OfSequenceOfReal : public MMgt_TShared {
+class GeomPlate_HArray1OfSequenceOfReal : public MMgt_TShared
+{
 
 public:
 
   
-      GeomPlate_HArray1OfSequenceOfReal(const Standard_Integer Low,const Standard_Integer Up);
+    GeomPlate_HArray1OfSequenceOfReal(const Standard_Integer Low, const Standard_Integer Up);
   
-      GeomPlate_HArray1OfSequenceOfReal(const Standard_Integer Low,const Standard_Integer Up,const TColStd_SequenceOfReal& V);
+    GeomPlate_HArray1OfSequenceOfReal(const Standard_Integer Low, const Standard_Integer Up, const TColStd_SequenceOfReal& V);
   
-        void Init(const TColStd_SequenceOfReal& V) ;
+      void Init (const TColStd_SequenceOfReal& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const TColStd_SequenceOfReal& Value) ;
+      void SetValue (const Standard_Integer Index, const TColStd_SequenceOfReal& Value) ;
   
-       const TColStd_SequenceOfReal& Value(const Standard_Integer Index) const;
+     const  TColStd_SequenceOfReal& Value (const Standard_Integer Index)  const;
   
-        TColStd_SequenceOfReal& ChangeValue(const Standard_Integer Index) ;
+      TColStd_SequenceOfReal& ChangeValue (const Standard_Integer Index) ;
   
-       const GeomPlate_Array1OfSequenceOfReal& Array1() const;
+     const  GeomPlate_Array1OfSequenceOfReal& Array1()  const;
   
-        GeomPlate_Array1OfSequenceOfReal& ChangeArray1() ;
+      GeomPlate_Array1OfSequenceOfReal& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-GeomPlate_Array1OfSequenceOfReal myArray;
+  GeomPlate_Array1OfSequenceOfReal myArray;
 
 
 };
@@ -100,7 +89,6 @@ GeomPlate_Array1OfSequenceOfReal myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomPlate_HArray1OfSequenceOfReal_HeaderFile

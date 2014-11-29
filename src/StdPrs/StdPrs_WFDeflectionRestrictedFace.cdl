@@ -22,15 +22,20 @@ inherits Root from Prs3d
 	---Purpose: A framework to provide display of U and V
     	-- isoparameters of faces, while allowing you to impose
     	-- a deflection on them.
+      -- Computes the wireframe presentation of faces with
+      -- restrictions by displaying a given number of U and/or
+      -- V isoparametric curves. The isoparametric curves are
+      -- drawn with respect to a maximal chordial deviation.
+      -- The presentation includes the restriction curves.
 
 uses
+    Box                  from Bnd,
     HSurface             from BRepAdaptor,
     Presentation         from Prs3d,
     Drawer               from Prs3d,
     Length               from Quantity, 
     NListOfSequenceOfPnt from Prs3d
 
-    
 is
     Add(myclass; aPresentation: Presentation from Prs3d; 
         	 aFace        : HSurface     from BRepAdaptor;
@@ -108,7 +113,13 @@ is
     	-- as a geometric surface.  
 	-- Curves give a sequence of face curves, it is used if the PrimitiveArray  
         -- visualization approach is activated (it is activated by default).
-        
+
+    AddBox (myclass;
+            thePrs    : Presentation from Prs3d;
+            theBndBox : Box          from Bnd;
+            theDrawer : Drawer       from Prs3d);
+    ---Purpose: Adds box as polyline to the presentation object
+
     Match(myclass; X,Y,Z    : Length   from Quantity;
                    aDistance: Length   from Quantity;
         	   aFace    : HSurface from BRepAdaptor;

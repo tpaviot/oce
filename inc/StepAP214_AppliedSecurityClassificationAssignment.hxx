@@ -6,52 +6,40 @@
 #ifndef _StepAP214_AppliedSecurityClassificationAssignment_HeaderFile
 #define _StepAP214_AppliedSecurityClassificationAssignment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepAP214_AppliedSecurityClassificationAssignment_HeaderFile
 #include <Handle_StepAP214_AppliedSecurityClassificationAssignment.hxx>
-#endif
 
-#ifndef _Handle_StepAP214_HArray1OfSecurityClassificationItem_HeaderFile
 #include <Handle_StepAP214_HArray1OfSecurityClassificationItem.hxx>
-#endif
-#ifndef _StepBasic_SecurityClassificationAssignment_HeaderFile
 #include <StepBasic_SecurityClassificationAssignment.hxx>
-#endif
-#ifndef _Handle_StepBasic_SecurityClassification_HeaderFile
 #include <Handle_StepBasic_SecurityClassification.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StepAP214_HArray1OfSecurityClassificationItem;
 class StepBasic_SecurityClassification;
 class StepAP214_SecurityClassificationItem;
 
 
 
-class StepAP214_AppliedSecurityClassificationAssignment : public StepBasic_SecurityClassificationAssignment {
+class StepAP214_AppliedSecurityClassificationAssignment : public StepBasic_SecurityClassificationAssignment
+{
 
 public:
 
-  //! Returns a AppliedSecurityClassificationAssignment <br>
-  Standard_EXPORT   StepAP214_AppliedSecurityClassificationAssignment();
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepBasic_SecurityClassification)& aAssignedSecurityClassification) ;
+  //! Returns a AppliedSecurityClassificationAssignment
+  Standard_EXPORT StepAP214_AppliedSecurityClassificationAssignment();
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepBasic_SecurityClassification)& aAssignedSecurityClassification,const Handle(StepAP214_HArray1OfSecurityClassificationItem)& aItems) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepBasic_SecurityClassification)& aAssignedSecurityClassification) ;
   
-  Standard_EXPORT     void SetItems(const Handle(StepAP214_HArray1OfSecurityClassificationItem)& aItems) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepBasic_SecurityClassification)& aAssignedSecurityClassification, const Handle(StepAP214_HArray1OfSecurityClassificationItem)& aItems) ;
   
-  Standard_EXPORT     Handle_StepAP214_HArray1OfSecurityClassificationItem Items() const;
+  Standard_EXPORT   void SetItems (const Handle(StepAP214_HArray1OfSecurityClassificationItem)& aItems) ;
   
-  Standard_EXPORT    const StepAP214_SecurityClassificationItem& ItemsValue(const Standard_Integer num) const;
+  Standard_EXPORT   Handle(StepAP214_HArray1OfSecurityClassificationItem) Items()  const;
   
-  Standard_EXPORT     Standard_Integer NbItems() const;
+  Standard_EXPORT  const  StepAP214_SecurityClassificationItem& ItemsValue (const Standard_Integer num)  const;
+  
+  Standard_EXPORT   Standard_Integer NbItems()  const;
 
 
 
@@ -66,7 +54,7 @@ protected:
 private: 
 
 
-Handle_StepAP214_HArray1OfSecurityClassificationItem items;
+  Handle(StepAP214_HArray1OfSecurityClassificationItem) items;
 
 
 };
@@ -75,7 +63,6 @@ Handle_StepAP214_HArray1OfSecurityClassificationItem items;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP214_AppliedSecurityClassificationAssignment_HeaderFile

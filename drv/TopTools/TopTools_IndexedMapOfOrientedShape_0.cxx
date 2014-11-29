@@ -5,21 +5,11 @@
 
 #include <TopTools_IndexedMapOfOrientedShape.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_OrientedShapeMapHasher_HeaderFile
 #include <TopTools_OrientedShapeMapHasher.hxx>
-#endif
-#ifndef _TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape_HeaderFile
 #include <TopTools_IndexedMapNodeOfIndexedMapOfOrientedShape.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape

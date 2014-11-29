@@ -6,117 +6,104 @@
 #ifndef _SelectBasics_SensitiveEntity_HeaderFile
 #define _SelectBasics_SensitiveEntity_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_SelectBasics_SensitiveEntity_HeaderFile
 #include <Handle_SelectBasics_SensitiveEntity.hxx>
-#endif
 
-#ifndef _Handle_SelectBasics_EntityOwner_HeaderFile
 #include <Handle_SelectBasics_EntityOwner.hxx>
-#endif
-#ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _SelectBasics_PickArgs_HeaderFile
 #include <SelectBasics_PickArgs.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class SelectBasics_EntityOwner;
 class SelectBasics_ListOfBox2d;
 class TColgp_Array1OfPnt2d;
 class Bnd_Box2d;
 
 
-//! root class ; the inheriting classes will be able to give <br>
-//!          sensitive Areas for the dynamic selection algorithms <br>
-class SelectBasics_SensitiveEntity : public MMgt_TShared {
+//! root class ; the inheriting classes will be able to give
+//! sensitive Areas for the dynamic selection algorithms
+class SelectBasics_SensitiveEntity : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   virtual  void Set(const Handle(SelectBasics_EntityOwner)& TheOwnerId) ;
+  Standard_EXPORT virtual   void Set (const Handle(SelectBasics_EntityOwner)& TheOwnerId) ;
   
-  Standard_EXPORT    const Handle_SelectBasics_EntityOwner& OwnerId() const;
-  //! to be implemented specifically by each type of <br>
-//!          sensitive  primitive . <br>
-//! <br>
-  Standard_EXPORT   virtual  void Areas(SelectBasics_ListOfBox2d& aresult)  = 0;
-  //! Checks whether the sensitive entity matches the picking detection <br>
-//! area (close to the picking line). This method takes into account depth <br>
-//! limits produced by abstract view: far/near planes, clippings. <br>
-//! Please port existing implementations of your picking detection, which <br>
-//! were done at Matches (X, Y, Tol, DMin) method to this one, introducing <br>
-//! the depth checks. Please note that the previous method is suppressed <br>
-//! and the virtual implementations are not used by OCC selection framework. <br>
-//! The porting procedure for simple sensitives (or if you are not interested <br>
-//! in implementing full scale depth checks) can be simplified to writing the <br>
-//! following code snippet: <br>
-//! @code <br>
-//! { // example code for porting descendants of Select3D_SensitiveEntity <br>
-//! <br>
-//!   // invoke implementation of obsolete matches method (if implemented)... <br>
-//!   if (!Matches (thePickArgs.X(), thePickArgs.Y(), thePickArgs.Tolerance(), theMatchDMin)) <br>
-//!     return Standard_False; <br>
-//! <br>
-//!   // invoke your implementation of computing depth (if implemented)... <br>
-//!   Standard_Real aDetectDepth = ComputeDepth (thePickArgs.PickLine()); <br>
-//! <br>
-//!   return !thePickArgs.IsClipped(aDetectDepth); <br>
-//! } <br>
-//! @endcode <br>
-//! @param thePickArgs [in] the picking arguments. <br>
-//! @param theMatchDMin [out] the minimum distance on xy plane from point <br>
-//! of picking to center of gravity of the detected sub-part of sensitive <br>
-//! entity or the whole sensitive (e.g. used for resolving selection of <br>
-//! coinciding circles, selection will be set to the one whose center is <br>
-//! closest to the picking point). <br>
-//! @param theMatchDepth [out] the minimum detected depth: depth of the <br>
-//! closest detected sub-part of sensitive entity (or the whole sensitive). <br>
-//! @return True if the sensitive matches the detection area. <br>
-//! This method is an entry point for picking detection framework. <br>
-//! The method is triggered when it is required to compose list of <br>
-//! detected sensitive entities. The sensitives are filtered out from <br>
-//! detection result if returned value is False. The passed entities are <br>
-//! then can be sorted by "theDetectDist", "theDetectDepth" parameters. <br>
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const SelectBasics_PickArgs& thePickArgs,Standard_Real& theMatchDMin,Standard_Real& theMatchDepth)  = 0;
-  //! returns True if the box (Xmin,YMin)------(Xmax,Ymax) <br>
-//!          contains the SensitiveEntity. <br>
-//!          Necessary for selection using elastic boxes,or segments. <br>
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol)  = 0;
-  //! returns True if the polyline xi,yi <br>
-//!          contains the SensitiveEntity. <br>
-//!          Necessary for selection using polyline selection <br>
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const TColgp_Array1OfPnt2d& Polyline,const Bnd_Box2d& aBox,const Standard_Real aTol)  = 0;
+  Standard_EXPORT  const  Handle(SelectBasics_EntityOwner)& OwnerId()  const;
   
-  Standard_EXPORT   virtual  Standard_Boolean NeedsConversion() const = 0;
-  //! returns True if able to give 3D information <br>
-//!          (Depth,...). See Select3D <br>
-  Standard_EXPORT   virtual  Standard_Boolean Is3D() const = 0;
-  //! returns the max number of boxes the entity is able to give <br>
-//!          at a time <br>
-  Standard_EXPORT   virtual  Standard_Integer MaxBoxes() const = 0;
+  //! to be implemented specifically by each type of
+  //! sensitive  primitive .
+  Standard_EXPORT virtual   void Areas (SelectBasics_ListOfBox2d& aresult)  = 0;
   
-        void SetSensitivityFactor(const Standard_ShortReal aFactor) ;
-  //! allows a better sensitivity for <br>
-//!          a specific entity in selection algorithms <br>
-//!          useful for small sized entities. <br>
-        Standard_ShortReal SensitivityFactor() const;
+  //! Checks whether the sensitive entity matches the picking detection
+  //! area (close to the picking line). This method takes into account depth
+  //! limits produced by abstract view: far/near planes, clippings.
+  //! Please port existing implementations of your picking detection, which
+  //! were done at Matches (X, Y, Tol, DMin) method to this one, introducing
+  //! the depth checks. Please note that the previous method is suppressed
+  //! and the virtual implementations are not used by OCC selection framework.
+  //! The porting procedure for simple sensitives (or if you are not interested
+  //! in implementing full scale depth checks) can be simplified to writing the
+  //! following code snippet:
+  //! @code
+  //! { // example code for porting descendants of Select3D_SensitiveEntity
+  //!
+  //! // invoke implementation of obsolete matches method (if implemented)...
+  //! if (!Matches (thePickArgs.X(), thePickArgs.Y(), thePickArgs.Tolerance(), theMatchDMin))
+  //! return Standard_False;
+  //!
+  //! // invoke your implementation of computing depth (if implemented)...
+  //! Standard_Real aDetectDepth = ComputeDepth (thePickArgs.PickLine());
+  //!
+  //! return !thePickArgs.IsClipped(aDetectDepth);
+  //! }
+  //! @endcode
+  //! @param thePickArgs [in] the picking arguments.
+  //! @param theMatchDMin [out] the minimum distance on xy plane from point
+  //! of picking to center of gravity of the detected sub-part of sensitive
+  //! entity or the whole sensitive (e.g. used for resolving selection of
+  //! coinciding circles, selection will be set to the one whose center is
+  //! closest to the picking point).
+  //! @param theMatchDepth [out] the minimum detected depth: depth of the
+  //! closest detected sub-part of sensitive entity (or the whole sensitive).
+  //! @return True if the sensitive matches the detection area.
+  //! This method is an entry point for picking detection framework.
+  //! The method is triggered when it is required to compose list of
+  //! detected sensitive entities. The sensitives are filtered out from
+  //! detection result if returned value is False. The passed entities are
+  //! then can be sorted by "theDetectDist", "theDetectDepth" parameters.
+  Standard_EXPORT virtual   Standard_Boolean Matches (const SelectBasics_PickArgs& thePickArgs, Standard_Real& theMatchDMin, Standard_Real& theMatchDepth)  = 0;
+  
+  //! returns True if the box (Xmin,YMin)------(Xmax,Ymax)
+  //! contains the SensitiveEntity.
+  //! Necessary for selection using elastic boxes,or segments.
+  Standard_EXPORT virtual   Standard_Boolean Matches (const Standard_Real XMin, const Standard_Real YMin, const Standard_Real XMax, const Standard_Real YMax, const Standard_Real aTol)  = 0;
+  
+  //! returns True if the polyline xi,yi
+  //! contains the SensitiveEntity.
+  //! Necessary for selection using polyline selection
+  Standard_EXPORT virtual   Standard_Boolean Matches (const TColgp_Array1OfPnt2d& Polyline, const Bnd_Box2d& aBox, const Standard_Real aTol)  = 0;
+  
+  Standard_EXPORT virtual   Standard_Boolean NeedsConversion()  const = 0;
+  
+  //! returns True if able to give 3D information
+  //! (Depth,...). See Select3D
+  Standard_EXPORT virtual   Standard_Boolean Is3D()  const = 0;
+  
+  //! returns the max number of boxes the entity is able to give
+  //! at a time
+  Standard_EXPORT virtual   Standard_Integer MaxBoxes()  const = 0;
+  
+      void SetSensitivityFactor (const Standard_ShortReal aFactor) ;
+  
+  //! allows a better sensitivity for
+  //! a specific entity in selection algorithms
+  //! useful for small sized entities.
+      Standard_ShortReal SensitivityFactor()  const;
 
 
 
@@ -126,15 +113,15 @@ public:
 protected:
 
   
-  Standard_EXPORT   SelectBasics_SensitiveEntity(const Handle(SelectBasics_EntityOwner)& OwnerId,const Standard_ShortReal aSensitivityFactor = 1);
+  Standard_EXPORT SelectBasics_SensitiveEntity(const Handle(SelectBasics_EntityOwner)& OwnerId, const Standard_ShortReal aSensitivityFactor = 1);
 
-Handle_SelectBasics_EntityOwner myOwnerId;
+  Handle(SelectBasics_EntityOwner) myOwnerId;
 
 
 private: 
 
 
-Standard_ShortReal mySFactor;
+  Standard_ShortReal mySFactor;
 
 
 };
@@ -144,7 +131,6 @@ Standard_ShortReal mySFactor;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SelectBasics_SensitiveEntity_HeaderFile

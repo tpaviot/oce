@@ -7,7 +7,6 @@
 #define _TopOpeBRep_PFacesIntersector_HeaderFile
 
 class TopOpeBRep_FacesIntersector;
-
 typedef TopOpeBRep_FacesIntersector* TopOpeBRep_PFacesIntersector;
 
-#endif
+#endif // _TopOpeBRep_PFacesIntersector_HeaderFile

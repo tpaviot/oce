@@ -6,54 +6,42 @@
 #ifndef _StepShape_Shell_HeaderFile
 #define _StepShape_Shell_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepShape_OpenShell_HeaderFile
 #include <Handle_StepShape_OpenShell.hxx>
-#endif
-#ifndef _Handle_StepShape_ClosedShell_HeaderFile
 #include <Handle_StepShape_ClosedShell.hxx>
-#endif
 class Standard_Transient;
 class StepShape_OpenShell;
 class StepShape_ClosedShell;
 
 
 
-class StepShape_Shell  : public StepData_SelectType {
+class StepShape_Shell  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a Shell SelectType <br>
-  Standard_EXPORT   StepShape_Shell();
-  //! Recognizes a Shell Kind Entity that is : <br>
-//!        1 -> OpenShell <br>
-//!        2 -> ClosedShell <br>
-//!        0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! returns Value as a OpenShell (Null if another type) <br>
-  Standard_EXPORT     Handle_StepShape_OpenShell OpenShell() const;
-  //! returns Value as a ClosedShell (Null if another type) <br>
-  Standard_EXPORT     Handle_StepShape_ClosedShell ClosedShell() const;
-
+  
+  //! Returns a Shell SelectType
+  Standard_EXPORT StepShape_Shell();
+  
+  //! Recognizes a Shell Kind Entity that is :
+  //! 1 -> OpenShell
+  //! 2 -> ClosedShell
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! returns Value as a OpenShell (Null if another type)
+  Standard_EXPORT   Handle(StepShape_OpenShell) OpenShell()  const;
+  
+  //! returns Value as a ClosedShell (Null if another type)
+  Standard_EXPORT   Handle(StepShape_ClosedShell) ClosedShell()  const;
 
 
 
@@ -76,7 +64,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_Shell_HeaderFile

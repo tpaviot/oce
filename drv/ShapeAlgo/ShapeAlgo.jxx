@@ -1,6 +1,2 @@
-#ifndef _ShapeAlgo_AlgoContainer_HeaderFile
 #include <ShapeAlgo_AlgoContainer.hxx>
-#endif
-#ifndef _ShapeAlgo_HeaderFile
 #include <ShapeAlgo.hxx>
-#endif

@@ -6,28 +6,14 @@
 #ifndef _Extrema_ExtPElC2d_HeaderFile
 #define _Extrema_ExtPElC2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Extrema_POnCurv2d_HeaderFile
 #include <Extrema_POnCurv2d.hxx>
-#endif
 class StdFail_NotDone;
 class Standard_OutOfRange;
 class gp_Pnt2d;
@@ -39,80 +25,90 @@ class gp_Parab2d;
 class Extrema_POnCurv2d;
 
 
-//! It calculates all the distances between a point <br>
-//!          and an elementary curve. <br>
-//!          These distances can be minimum or maximum. <br>
-class Extrema_ExtPElC2d  {
+//! It calculates all the distances between a point
+//! and an elementary curve.
+//! These distances can be minimum or maximum.
+class Extrema_ExtPElC2d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Extrema_ExtPElC2d();
-  //! Calculates the extremum distance between the <br>
-//!          point P and the segment [Uinf,Usup] of the line L. <br>
-  Standard_EXPORT   Extrema_ExtPElC2d(const gp_Pnt2d& P,const gp_Lin2d& C,const Standard_Real Tol,const Standard_Real Uinf,const Standard_Real Usup);
+  Standard_EXPORT Extrema_ExtPElC2d();
   
-  Standard_EXPORT     void Perform(const gp_Pnt2d& P,const gp_Lin2d& L,const Standard_Real Tol,const Standard_Real Uinf,const Standard_Real Usup) ;
-  //! Calculates the 2 extremum distances between the <br>
-//!          point P and the segment [Uinf,Usup] of the circle C. <br>
-//!          Tol is used to determine <br>
-//!          if P is on the axis of the circle or <br>
-//!          if an extremum is on an endpoint of the segment. <br>
-//!          If P is on the axis of the circle, <br>
-//!          there are infinite solution then IsDone(me)=False. <br>
-//!          The conditions on the Uinf and Usup are: <br>
-//!            0. <= Uinf <= 2.*PI and Usup > Uinf. <br>
-//!          If Usup > Uinf + 2.*PI, then only the solutions in <br>
-//!          the range [Uinf,Uinf+2.*PI[ are computed. <br>
-  Standard_EXPORT   Extrema_ExtPElC2d(const gp_Pnt2d& P,const gp_Circ2d& C,const Standard_Real Tol,const Standard_Real Uinf,const Standard_Real Usup);
+  //! Calculates the extremum distance between the
+  //! point P and the segment [Uinf,Usup] of the line L.
+  Standard_EXPORT Extrema_ExtPElC2d(const gp_Pnt2d& P, const gp_Lin2d& C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
   
-  Standard_EXPORT     void Perform(const gp_Pnt2d& P,const gp_Circ2d& C,const Standard_Real Tol,const Standard_Real Uinf,const Standard_Real Usup) ;
-  //! Calculates the 4 extremum distances between the <br>
-//!          point P and the segment [Uinf,Usup] of the elipse C. <br>
-//!          Tol is used to determine <br>
-//!          if the point is on the axis of the elipse and <br>
-//!          if the major radius is equal to the minor radius or <br>
-//!          if an extremum is on an endpoint of the segment. <br>
-//!          If P is on the axis of the elipse, <br>
-//!          there are infinite solution then IsDone(me)=False. <br>
-//!          The conditions on the Uinf and Usup are: <br>
-//!            0. <= Uinf <= 2.*PI and Usup > Uinf. <br>
-//!          If Usup > Uinf + 2.*PI, then only the solutions in <br>
-//!          the range [Uinf,Uinf+2.*PI[ are computed. <br>
-  Standard_EXPORT   Extrema_ExtPElC2d(const gp_Pnt2d& P,const gp_Elips2d& C,const Standard_Real Tol,const Standard_Real Uinf,const Standard_Real Usup);
+  Standard_EXPORT   void Perform (const gp_Pnt2d& P, const gp_Lin2d& L, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup) ;
   
-  Standard_EXPORT     void Perform(const gp_Pnt2d& P,const gp_Elips2d& C,const Standard_Real Tol,const Standard_Real Uinf,const Standard_Real Usup) ;
-  //! Calculates the extremum distances between the <br>
-//!          point P and the segment [Uinf,Usup] of the hyperbola <br>
-//!          C. <br>
-//!          Tol is used to determine if two solutions u and v <br>
-//!          are identical; the condition is: <br>
-//!          dist(C(u),C(v)) < Tol. <br>
-  Standard_EXPORT   Extrema_ExtPElC2d(const gp_Pnt2d& P,const gp_Hypr2d& C,const Standard_Real Tol,const Standard_Real Uinf,const Standard_Real Usup);
+  //! Calculates the 2 extremum distances between the
+  //! point P and the segment [Uinf,Usup] of the circle C.
+  //! Tol is used to determine
+  //! if P is on the axis of the circle or
+  //! if an extremum is on an endpoint of the segment.
+  //! If P is on the axis of the circle,
+  //! there are infinite solution then IsDone(me)=False.
+  //! The conditions on the Uinf and Usup are:
+  //! 0. <= Uinf <= 2.*PI and Usup > Uinf.
+  //! If Usup > Uinf + 2.*PI, then only the solutions in
+  //! the range [Uinf,Uinf+2.*PI[ are computed.
+  Standard_EXPORT Extrema_ExtPElC2d(const gp_Pnt2d& P, const gp_Circ2d& C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
   
-  Standard_EXPORT     void Perform(const gp_Pnt2d& P,const gp_Hypr2d& C,const Standard_Real Tol,const Standard_Real Uinf,const Standard_Real Usup) ;
-  //! Calculates the 4 extremum distances between the <br>
-//!          point P and the segment [Uinf,Usup] of the parabola <br>
-//!          C. <br>
-//!          Tol is used to determine if two solutions u and v <br>
-//!          are identical; the condition is: <br>
-//!          dist(C(u),C(v)) < Tol. <br>
-  Standard_EXPORT   Extrema_ExtPElC2d(const gp_Pnt2d& P,const gp_Parab2d& C,const Standard_Real Tol,const Standard_Real Uinf,const Standard_Real Usup);
+  Standard_EXPORT   void Perform (const gp_Pnt2d& P, const gp_Circ2d& C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup) ;
   
-  Standard_EXPORT     void Perform(const gp_Pnt2d& P,const gp_Parab2d& C,const Standard_Real Tol,const Standard_Real Uinf,const Standard_Real Usup) ;
-  //! True if the distances are found. <br>
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-  //! Returns the number of extremum distances. <br>
-  Standard_EXPORT     Standard_Integer NbExt() const;
-  //! Returns the value of the Nth extremum square distance. <br>
-  Standard_EXPORT     Standard_Real SquareDistance(const Standard_Integer N) const;
-  //! Returns True if the Nth extremum distance is a <br>
-//!          minimum. <br>
-  Standard_EXPORT     Standard_Boolean IsMin(const Standard_Integer N) const;
-  //! Returns the point of the Nth extremum distance. <br>
-  Standard_EXPORT    const Extrema_POnCurv2d& Point(const Standard_Integer N) const;
-
+  //! Calculates the 4 extremum distances between the
+  //! point P and the segment [Uinf,Usup] of the elipse C.
+  //! Tol is used to determine
+  //! if the point is on the axis of the elipse and
+  //! if the major radius is equal to the minor radius or
+  //! if an extremum is on an endpoint of the segment.
+  //! If P is on the axis of the elipse,
+  //! there are infinite solution then IsDone(me)=False.
+  //! The conditions on the Uinf and Usup are:
+  //! 0. <= Uinf <= 2.*PI and Usup > Uinf.
+  //! If Usup > Uinf + 2.*PI, then only the solutions in
+  //! the range [Uinf,Uinf+2.*PI[ are computed.
+  Standard_EXPORT Extrema_ExtPElC2d(const gp_Pnt2d& P, const gp_Elips2d& C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
+  
+  Standard_EXPORT   void Perform (const gp_Pnt2d& P, const gp_Elips2d& C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup) ;
+  
+  //! Calculates the extremum distances between the
+  //! point P and the segment [Uinf,Usup] of the hyperbola
+  //! C.
+  //! Tol is used to determine if two solutions u and v
+  //! are identical; the condition is:
+  //! dist(C(u),C(v)) < Tol.
+  Standard_EXPORT Extrema_ExtPElC2d(const gp_Pnt2d& P, const gp_Hypr2d& C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
+  
+  Standard_EXPORT   void Perform (const gp_Pnt2d& P, const gp_Hypr2d& C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup) ;
+  
+  //! Calculates the 4 extremum distances between the
+  //! point P and the segment [Uinf,Usup] of the parabola
+  //! C.
+  //! Tol is used to determine if two solutions u and v
+  //! are identical; the condition is:
+  //! dist(C(u),C(v)) < Tol.
+  Standard_EXPORT Extrema_ExtPElC2d(const gp_Pnt2d& P, const gp_Parab2d& C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
+  
+  Standard_EXPORT   void Perform (const gp_Pnt2d& P, const gp_Parab2d& C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup) ;
+  
+  //! True if the distances are found.
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
+  
+  //! Returns the number of extremum distances.
+  Standard_EXPORT   Standard_Integer NbExt()  const;
+  
+  //! Returns the value of the Nth extremum square distance.
+  Standard_EXPORT   Standard_Real SquareDistance (const Standard_Integer N)  const;
+  
+  //! Returns True if the Nth extremum distance is a
+  //! minimum.
+  Standard_EXPORT   Standard_Boolean IsMin (const Standard_Integer N)  const;
+  
+  //! Returns the point of the Nth extremum distance.
+  Standard_EXPORT  const  Extrema_POnCurv2d& Point (const Standard_Integer N)  const;
 
 
 
@@ -127,11 +123,11 @@ private:
 
 
 
-Standard_Boolean myDone;
-Standard_Integer myNbExt;
-Standard_Real mySqDist[4];
-Standard_Boolean myIsMin[4];
-Extrema_POnCurv2d myPoint[4];
+  Standard_Boolean myDone;
+  Standard_Integer myNbExt;
+  Standard_Real mySqDist[4];
+  Standard_Boolean myIsMin[4];
+  Extrema_POnCurv2d myPoint[4];
 
 
 };
@@ -140,7 +136,6 @@ Extrema_POnCurv2d myPoint[4];
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Extrema_ExtPElC2d_HeaderFile

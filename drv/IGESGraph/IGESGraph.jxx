@@ -1,6 +1,2 @@
-#ifndef _IGESGraph_Protocol_HeaderFile
 #include <IGESGraph_Protocol.hxx>
-#endif
-#ifndef _IGESGraph_HeaderFile
 #include <IGESGraph.hxx>
-#endif

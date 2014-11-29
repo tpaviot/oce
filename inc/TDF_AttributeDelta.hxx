@@ -6,61 +6,52 @@
 #ifndef _TDF_AttributeDelta_HeaderFile
 #define _TDF_AttributeDelta_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDF_AttributeDelta_HeaderFile
 #include <Handle_TDF_AttributeDelta.hxx>
-#endif
 
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class TDF_Attribute;
 class TDF_Label;
 class Standard_GUID;
 
 
-//! This class discribes the services we need to <br>
-//!           implement Delta and Undo/Redo services. <br>
-//! <br>
-//!          AttributeDeltas are applied in an unpredictable <br>
-//!          order. But by the redefinition of the method <br>
-//!          IsNowApplicable, a condition can be verified <br>
-//!          before application. If the AttributeDelta is not <br>
-//!          yet applicable, it is put at the end of the <br>
-//!          AttributeDelta list, to be treated later. If a <br>
-//!          dead lock if found on the list, the <br>
-//!          AttributeDeltas are forced to be applied in an <br>
-//!          unpredictable order. <br>
-class TDF_AttributeDelta : public MMgt_TShared {
+//! This class discribes the services we need to
+//! implement Delta and Undo/Redo services.
+//!
+//! AttributeDeltas are applied in an unpredictable
+//! order. But by the redefinition of the method
+//! IsNowApplicable, a condition can be verified
+//! before application. If the AttributeDelta is not
+//! yet applicable, it is put at the end of the
+//! AttributeDelta list, to be treated later. If a
+//! dead lock if found on the list, the
+//! AttributeDeltas are forced to be applied in an
+//! unpredictable order.
+class TDF_AttributeDelta : public MMgt_TShared
+{
 
 public:
 
-  //! Applies the delta to the attribute. <br>
-  Standard_EXPORT   virtual  void Apply()  = 0;
-  //! Returns the label concerned by <me>. <br>
-  Standard_EXPORT     TDF_Label Label() const;
-  //! Returns the reference attribute. <br>
-  Standard_EXPORT     Handle_TDF_Attribute Attribute() const;
-  //! Returns the ID of the attribute concerned by <me>. <br>
-  Standard_EXPORT     Standard_GUID ID() const;
-  //! Dumps the contents. <br>
-//! <br>
-  Standard_EXPORT   virtual  Standard_OStream& Dump(Standard_OStream& OS) const;
-    Standard_OStream& operator<<(Standard_OStream& OS) const
+  
+  //! Applies the delta to the attribute.
+  Standard_EXPORT virtual   void Apply()  = 0;
+  
+  //! Returns the label concerned by <me>.
+  Standard_EXPORT   TDF_Label Label()  const;
+  
+  //! Returns the reference attribute.
+  Standard_EXPORT   Handle(TDF_Attribute) Attribute()  const;
+  
+  //! Returns the ID of the attribute concerned by <me>.
+  Standard_EXPORT   Standard_GUID ID()  const;
+  
+  //! Dumps the contents.
+  Standard_EXPORT virtual   Standard_OStream& Dump (Standard_OStream& OS)  const;
+  Standard_OStream& operator<< (Standard_OStream& OS)  const
 {
   return Dump(OS);
 }
@@ -73,15 +64,15 @@ public:
 protected:
 
   
-  Standard_EXPORT   TDF_AttributeDelta(const Handle(TDF_Attribute)& anAttribute);
+  Standard_EXPORT TDF_AttributeDelta(const Handle(TDF_Attribute)& anAttribute);
 
 
 
 private: 
 
 
-Handle_TDF_Attribute myAttribute;
-TDF_Label myLabel;
+  Handle(TDF_Attribute) myAttribute;
+  TDF_Label myLabel;
 
 
 };
@@ -90,7 +81,6 @@ TDF_Label myLabel;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_AttributeDelta_HeaderFile

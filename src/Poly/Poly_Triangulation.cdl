@@ -40,6 +40,7 @@ class Triangulation from Poly inherits TShared from MMgt
         -- exact representation of a surface. A triangular
         -- representation induces simpler and more robust adjusting,
         -- faster performances, and the results are as good.
+        -- This is a Transient class.
 
 uses
    HArray1OfPnt2d    from TColgp,
@@ -56,7 +57,7 @@ raises
 is
 
     Create(nbNodes, nbTriangles: Integer; UVNodes: Boolean)
-    returns mutable Triangulation from Poly;
+    returns Triangulation from Poly;
         ---Purpose: Constructs a triangulation from a set of triangles. The
         -- triangulation is initialized without a triangle or a node, but capable of
         --   containing nbNodes nodes, and nbTriangles
@@ -66,7 +67,7 @@ is
 
     Create(Nodes:      Array1OfPnt      from TColgp;
            Triangles:  Array1OfTriangle from Poly)
-    returns mutable Triangulation from Poly;
+    returns Triangulation from Poly;
         ---Purpose: Constructs a triangulation from a set of triangles. The
         -- triangulation is initialized with 3D points from Nodes and triangles
         --  from Triangles.
@@ -74,7 +75,7 @@ is
     Create(Nodes:      Array1OfPnt      from TColgp;
            UVNodes:    Array1OfPnt2d    from TColgp;
            Triangles:  Array1OfTriangle from Poly)
-    returns mutable Triangulation from Poly;
+    returns Triangulation from Poly;
         ---Purpose:  Constructs a triangulation from a set of triangles. The
         -- triangulation is initialized with 3D points from Nodes, 2D points from
         --   UVNodes and triangles from Triangles, where

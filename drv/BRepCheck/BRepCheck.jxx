@@ -1,15 +1,5 @@
-#ifndef _BRepCheck_ListOfStatus_HeaderFile
 #include <BRepCheck_ListOfStatus.hxx>
-#endif
-#ifndef _TopoDS_Wire_HeaderFile
 #include <TopoDS_Wire.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _BRepCheck_HeaderFile
 #include <BRepCheck.hxx>
-#endif

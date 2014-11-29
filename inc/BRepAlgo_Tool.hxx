@@ -6,34 +6,29 @@
 #ifndef _BRepAlgo_Tool_HeaderFile
 #define _BRepAlgo_Tool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
 class TopoDS_Shape;
 class TopTools_MapOfShape;
 
 
 
-class BRepAlgo_Tool  {
+class BRepAlgo_Tool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Remove the non valid   part of an offsetshape <br>
-//!          1 - Remove all the free boundary  and the faces <br>
-//!          connex to such edges. <br>
-//!          2 - Remove all the shapes not  valid in the result <br>
-//!          (according to the side of offseting) <br>
-//!   in this verion only the first point is implemented. <br>
-  Standard_EXPORT   static  TopoDS_Shape Deboucle3D(const TopoDS_Shape& S,const TopTools_MapOfShape& Boundary) ;
-
+  
+  //! Remove the non valid   part of an offsetshape
+  //! 1 - Remove all the free boundary  and the faces
+  //! connex to such edges.
+  //! 2 - Remove all the shapes not  valid in the result
+  //! (according to the side of offseting)
+  //! in this verion only the first point is implemented.
+  Standard_EXPORT static   TopoDS_Shape Deboucle3D (const TopoDS_Shape& S, const TopTools_MapOfShape& Boundary) ;
 
 
 
@@ -56,7 +51,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepAlgo_Tool_HeaderFile

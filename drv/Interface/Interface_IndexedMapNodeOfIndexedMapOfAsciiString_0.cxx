@@ -5,19 +5,11 @@
 
 #include <Interface_IndexedMapNodeOfIndexedMapOfAsciiString.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Interface_MapAsciiStringHasher_HeaderFile
 #include <Interface_MapAsciiStringHasher.hxx>
-#endif
-#ifndef _Interface_IndexedMapOfAsciiString_HeaderFile
 #include <Interface_IndexedMapOfAsciiString.hxx>
-#endif
 
  
 

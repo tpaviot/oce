@@ -5,15 +5,9 @@
 
 #include <HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter.hxx>
 
-#ifndef _HLRBRep_CurveTool_HeaderFile
 #include <HLRBRep_CurveTool.hxx>
-#endif
-#ifndef _Extrema_POnCurv2d_HeaderFile
 #include <Extrema_POnCurv2d.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
  
 
 #define Curve1 Standard_Address

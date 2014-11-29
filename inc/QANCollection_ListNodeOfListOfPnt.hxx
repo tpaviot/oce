@@ -6,39 +6,28 @@
 #ifndef _QANCollection_ListNodeOfListOfPnt_HeaderFile
 #define _QANCollection_ListNodeOfListOfPnt_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_QANCollection_ListNodeOfListOfPnt_HeaderFile
 #include <Handle_QANCollection_ListNodeOfListOfPnt.hxx>
-#endif
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class gp_Pnt;
 class QANCollection_ListOfPnt;
 class QANCollection_ListIteratorOfListOfPnt;
 
 
 
-class QANCollection_ListNodeOfListOfPnt : public TCollection_MapNode {
+class QANCollection_ListNodeOfListOfPnt : public TCollection_MapNode
+{
 
 public:
 
   
-      QANCollection_ListNodeOfListOfPnt(const gp_Pnt& I,const TCollection_MapNodePtr& n);
+    QANCollection_ListNodeOfListOfPnt(const gp_Pnt& I, const TCollection_MapNodePtr& n);
   
-        gp_Pnt& Value() const;
+      gp_Pnt& Value()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-gp_Pnt myValue;
+  gp_Pnt myValue;
 
 
 };
@@ -83,7 +72,6 @@ gp_Pnt myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QANCollection_ListNodeOfListOfPnt_HeaderFile

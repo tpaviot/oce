@@ -6,13 +6,11 @@
 #ifndef _IFSelect_Profile_HeaderFile
 #define _IFSelect_Profile_HeaderFile
 
-#ifndef _MoniTool_Profile_HeaderFile
 #include <MoniTool_Profile.hxx>
-#endif
 
 typedef MoniTool_Profile IFSelect_Profile;
 typedef Handle_MoniTool_Profile Handle_IFSelect_Profile;
 
 #define IFSelect_Profile_Type_() MoniTool_Profile_Type_()
 
-#endif
+#endif // _IFSelect_Profile_HeaderFile

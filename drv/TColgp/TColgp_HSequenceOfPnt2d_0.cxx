@@ -5,22 +5,12 @@
 
 #include <TColgp_HSequenceOfPnt2d.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _TColgp_SequenceOfPnt2d_HeaderFile
 #include <TColgp_SequenceOfPnt2d.hxx>
-#endif
 
  
 

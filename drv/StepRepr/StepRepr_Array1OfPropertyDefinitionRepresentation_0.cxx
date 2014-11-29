@@ -5,24 +5,14 @@
 
 #include <StepRepr_Array1OfPropertyDefinitionRepresentation.hxx>
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _StepRepr_PropertyDefinitionRepresentation_HeaderFile
 #include <StepRepr_PropertyDefinitionRepresentation.hxx>
-#endif
  
 
-#define Array1Item Handle_StepRepr_PropertyDefinitionRepresentation
+#define Array1Item Handle(StepRepr_PropertyDefinitionRepresentation)
 #define Array1Item_hxx <StepRepr_PropertyDefinitionRepresentation.hxx>
 #define TCollection_Array1 StepRepr_Array1OfPropertyDefinitionRepresentation
 #define TCollection_Array1_hxx <StepRepr_Array1OfPropertyDefinitionRepresentation.hxx>

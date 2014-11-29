@@ -6,73 +6,69 @@
 #ifndef _TFunction_Driver_HeaderFile
 #define _TFunction_Driver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TFunction_Driver_HeaderFile
 #include <Handle_TFunction_Driver.hxx>
-#endif
 
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TDF_Label;
 class TFunction_Logbook;
 class TDF_LabelList;
 
 
-//! This  driver  class provide  services  around function <br>
-//!          execution.   One instance of  this class is  built for <br>
-//!          the whole  session.    The driver  is bound   to   the <br>
-//!          DriverGUID in the DriverTable class. <br>
-//!          It allows you to create classes which inherit from <br>
-//!          this abstract class. <br>
-//!          These subclasses identify the various algorithms <br>
-//!          which can be applied to the data contained in the <br>
-//!          attributes of sub-labels of a model. <br>
-//!          A single instance of this class and each of its <br>
-//!          subclasses is built for the whole session. <br>
-class TFunction_Driver : public MMgt_TShared {
+//! This  driver  class provide  services  around function
+//! execution.   One instance of  this class is  built for
+//! the whole  session.    The driver  is bound   to   the
+//! DriverGUID in the DriverTable class.
+//! It allows you to create classes which inherit from
+//! this abstract class.
+//! These subclasses identify the various algorithms
+//! which can be applied to the data contained in the
+//! attributes of sub-labels of a model.
+//! A single instance of this class and each of its
+//! subclasses is built for the whole session.
+class TFunction_Driver : public MMgt_TShared
+{
 
 public:
 
-  //! Initializes the label L for this function prior to its  execution. <br>
-  Standard_EXPORT     void Init(const TDF_Label& L) ;
-  //! Returns the label of the driver for this function. <br>
-        TDF_Label Label() const;
-  //! Validates labels of a function  in <log>. <br>
-//! This function is the one initialized in this function driver. <br>
-//! Warning <br>
-//! In regeneration mode, the solver must call this <br>
-//! method even if the function is not executed. <br>//! execution of function <br>
-//!          ===================== <br>
-  Standard_EXPORT   virtual  void Validate(TFunction_Logbook& log) const;
-  //! Analyzes the labels in the logbook log. <br>
-//! Returns true if attributes have been modified. <br>
-//! If the function label itself has been modified, the function must be executed. <br>
-  Standard_EXPORT   virtual  Standard_Boolean MustExecute(const TFunction_Logbook& log) const;
-  //! Executes the function in this function driver and <br>
-//! puts the impacted labels in the logbook log. <br>//! arguments & results of functions <br>
-//!          ================================ <br>
-  Standard_EXPORT   virtual  Standard_Integer Execute(TFunction_Logbook& log) const = 0;
-  //! The method fills-in the list by labels, <br>
-//!          where the arguments of the function are located. <br>
-  Standard_EXPORT   virtual  void Arguments(TDF_LabelList& args) const;
-  //! The method fills-in the list by labels, <br>
-//!          where the results of the function are located. <br>
-  Standard_EXPORT   virtual  void Results(TDF_LabelList& res) const;
+  
+  //! Initializes the label L for this function prior to its  execution.
+  Standard_EXPORT   void Init (const TDF_Label& L) ;
+  
+  //! Returns the label of the driver for this function.
+      TDF_Label Label()  const;
+  
+  //! Validates labels of a function  in <log>.
+  //! This function is the one initialized in this function driver.
+  //! Warning
+  //! In regeneration mode, the solver must call this
+  //! method even if the function is not executed.
+  //! execution of function
+  //! =====================
+  Standard_EXPORT virtual   void Validate (TFunction_Logbook& log)  const;
+  
+  //! Analyzes the labels in the logbook log.
+  //! Returns true if attributes have been modified.
+  //! If the function label itself has been modified, the function must be executed.
+  Standard_EXPORT virtual   Standard_Boolean MustExecute (const TFunction_Logbook& log)  const;
+  
+  //! Executes the function in this function driver and
+  //! puts the impacted labels in the logbook log.
+  //! arguments & results of functions
+  //! ================================
+  Standard_EXPORT virtual   Standard_Integer Execute (TFunction_Logbook& log)  const = 0;
+  
+  //! The method fills-in the list by labels,
+  //! where the arguments of the function are located.
+  Standard_EXPORT virtual   void Arguments (TDF_LabelList& args)  const;
+  
+  //! The method fills-in the list by labels,
+  //! where the results of the function are located.
+  Standard_EXPORT virtual   void Results (TDF_LabelList& res)  const;
 
 
 
@@ -81,16 +77,17 @@ public:
 
 protected:
 
-  //! initialisation of the driver <br>
-//!          ============================ <br>
-  Standard_EXPORT   TFunction_Driver();
+  
+  //! initialisation of the driver
+  //! ============================
+  Standard_EXPORT TFunction_Driver();
 
 
 
 private: 
 
 
-TDF_Label myLabel;
+  TDF_Label myLabel;
 
 
 };
@@ -100,7 +97,6 @@ TDF_Label myLabel;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TFunction_Driver_HeaderFile

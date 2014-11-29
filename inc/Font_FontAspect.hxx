@@ -6,8 +6,11 @@
 #ifndef _Font_FontAspect_HeaderFile
 #define _Font_FontAspect_HeaderFile
 
-//! Specifies aspect of system font. <br>
-enum Font_FontAspect {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Specifies aspect of system font.
+enum Font_FontAspect
+{
 Font_FA_Undefined,
 Font_FA_Regular,
 Font_FA_Bold,
@@ -15,8 +18,4 @@ Font_FA_Italic,
 Font_FA_BoldItalic
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Font_FontAspect_HeaderFile

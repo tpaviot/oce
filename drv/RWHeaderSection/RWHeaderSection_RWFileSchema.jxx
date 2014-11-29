@@ -1,15 +1,5 @@
-#ifndef _StepData_StepReaderData_HeaderFile
 #include <StepData_StepReaderData.hxx>
-#endif
-#ifndef _Interface_Check_HeaderFile
 #include <Interface_Check.hxx>
-#endif
-#ifndef _HeaderSection_FileSchema_HeaderFile
 #include <HeaderSection_FileSchema.hxx>
-#endif
-#ifndef _StepData_StepWriter_HeaderFile
 #include <StepData_StepWriter.hxx>
-#endif
-#ifndef _RWHeaderSection_RWFileSchema_HeaderFile
 #include <RWHeaderSection_RWFileSchema.hxx>
-#endif

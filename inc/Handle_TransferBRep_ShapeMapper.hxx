@@ -6,22 +6,15 @@
 #ifndef _Handle_TransferBRep_ShapeMapper_HeaderFile
 #define _Handle_TransferBRep_ShapeMapper_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Transfer_Finder_HeaderFile
 #include <Handle_Transfer_Finder.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Transfer_Finder);
 class TransferBRep_ShapeMapper;
 
-DEFINE_STANDARD_HANDLE(TransferBRep_ShapeMapper,Transfer_Finder)
+DEFINE_STANDARD_HANDLE(TransferBRep_ShapeMapper, Transfer_Finder)
 
-#endif
+#endif // _Handle_TransferBRep_ShapeMapper_HeaderFile

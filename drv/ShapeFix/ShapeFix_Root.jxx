@@ -1,15 +1,5 @@
-#ifndef _ShapeBuild_ReShape_HeaderFile
 #include <ShapeBuild_ReShape.hxx>
-#endif
-#ifndef _ShapeExtend_BasicMsgRegistrator_HeaderFile
 #include <ShapeExtend_BasicMsgRegistrator.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Message_Msg_HeaderFile
 #include <Message_Msg.hxx>
-#endif
-#ifndef _ShapeFix_Root_HeaderFile
 #include <ShapeFix_Root.hxx>
-#endif

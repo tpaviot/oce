@@ -6,25 +6,13 @@
 #ifndef _StepShape_Array1OfValueQualifier_HeaderFile
 #define _StepShape_Array1OfValueQualifier_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -33,52 +21,52 @@ class StepShape_ValueQualifier;
 
 
 
-class StepShape_Array1OfValueQualifier  {
+class StepShape_Array1OfValueQualifier 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      StepShape_Array1OfValueQualifier(const Standard_Integer Low,const Standard_Integer Up);
+    StepShape_Array1OfValueQualifier(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepShape_Array1OfValueQualifier(const StepShape_ValueQualifier& Item,const Standard_Integer Low,const Standard_Integer Up);
+    StepShape_Array1OfValueQualifier(const StepShape_ValueQualifier& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const StepShape_ValueQualifier& V) ;
+  Standard_EXPORT   void Init (const StepShape_ValueQualifier& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~StepShape_Array1OfValueQualifier()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const StepShape_Array1OfValueQualifier& Assign(const StepShape_Array1OfValueQualifier& Other) ;
-   const StepShape_Array1OfValueQualifier& operator =(const StepShape_Array1OfValueQualifier& Other) 
+  Standard_EXPORT  const  StepShape_Array1OfValueQualifier& Assign (const StepShape_Array1OfValueQualifier& Other) ;
+ const  StepShape_Array1OfValueQualifier& operator = (const StepShape_Array1OfValueQualifier& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const StepShape_ValueQualifier& Value) ;
+      void SetValue (const Standard_Integer Index, const StepShape_ValueQualifier& Value) ;
   
-       const StepShape_ValueQualifier& Value(const Standard_Integer Index) const;
-     const StepShape_ValueQualifier& operator ()(const Standard_Integer Index) const
+     const  StepShape_ValueQualifier& Value (const Standard_Integer Index)  const;
+   const  StepShape_ValueQualifier& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        StepShape_ValueQualifier& ChangeValue(const Standard_Integer Index) ;
-      StepShape_ValueQualifier& operator ()(const Standard_Integer Index) 
+      StepShape_ValueQualifier& ChangeValue (const Standard_Integer Index) ;
+    StepShape_ValueQualifier& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -92,13 +80,13 @@ protected:
 private:
 
   
-  Standard_EXPORT   StepShape_Array1OfValueQualifier(const StepShape_Array1OfValueQualifier& AnArray);
+  Standard_EXPORT StepShape_Array1OfValueQualifier(const StepShape_Array1OfValueQualifier& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
@@ -116,7 +104,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_Array1OfValueQualifier_HeaderFile

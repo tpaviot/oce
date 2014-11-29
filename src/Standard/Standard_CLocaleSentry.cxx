@@ -13,15 +13,13 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#ifdef HAVE_CONFIG_H
-  #include <oce-config.h>
-#endif
-
 #include <Standard_CLocaleSentry.hxx>
 
 #include <Standard_TypeDef.hxx>
 
 #include <cstring>
+
+#if !defined(__ANDROID__)
 
 #if defined(__BORLANDC__)
 #include <mem.h>
@@ -87,9 +85,10 @@ Standard_CLocaleSentry::Standard_CLocaleSentry()
 #endif
 #endif
 {
-#ifndef HAVE_XLOCALE_H
+#if !defined(HAVE_XLOCALE_H)
   const char* aPrevLocale = (const char* )myPrevLocale;
-  if (aPrevLocale[0] == 'C' && aPrevLocale[1] == '\0')
+  if (myPrevLocale == NULL
+   || (aPrevLocale[0] == 'C' && aPrevLocale[1] == '\0'))
   {
     myPrevLocale = NULL; // already C locale
     return;
@@ -109,7 +108,7 @@ Standard_CLocaleSentry::Standard_CLocaleSentry()
 // =======================================================================
 Standard_CLocaleSentry::~Standard_CLocaleSentry()
 {
-#ifdef HAVE_XLOCALE_H
+#if defined(HAVE_XLOCALE_H)
   uselocale ((locale_t )myPrevLocale);
 #else
   if (myPrevLocale != NULL)
@@ -126,3 +125,5 @@ Standard_CLocaleSentry::~Standard_CLocaleSentry()
 #endif
 #endif
 }
+
+#endif // __ANDROID__

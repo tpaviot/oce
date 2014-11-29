@@ -6,44 +6,31 @@
 #ifndef _MeshVS_DataMapNodeOfDataMapOfIntegerBoolean_HeaderFile
 #define _MeshVS_DataMapNodeOfDataMapOfIntegerBoolean_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MeshVS_DataMapNodeOfDataMapOfIntegerBoolean_HeaderFile
 #include <Handle_MeshVS_DataMapNodeOfDataMapOfIntegerBoolean.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TColStd_MapIntegerHasher;
 class MeshVS_DataMapOfIntegerBoolean;
 class MeshVS_DataMapIteratorOfDataMapOfIntegerBoolean;
 
 
 
-class MeshVS_DataMapNodeOfDataMapOfIntegerBoolean : public TCollection_MapNode {
+class MeshVS_DataMapNodeOfDataMapOfIntegerBoolean : public TCollection_MapNode
+{
 
 public:
 
   
-      MeshVS_DataMapNodeOfDataMapOfIntegerBoolean(const Standard_Integer& K,const Standard_Boolean& I,const TCollection_MapNodePtr& n);
+    MeshVS_DataMapNodeOfDataMapOfIntegerBoolean(const Standard_Integer& K, const Standard_Boolean& I, const TCollection_MapNodePtr& n);
   
-        Standard_Integer& Key() const;
+      Standard_Integer& Key()  const;
   
-        Standard_Boolean& Value() const;
+      Standard_Boolean& Value()  const;
 
 
 
@@ -58,8 +45,8 @@ protected:
 private: 
 
 
-Standard_Integer myKey;
-Standard_Boolean myValue;
+  Standard_Integer myKey;
+  Standard_Boolean myValue;
 
 
 };
@@ -97,7 +84,6 @@ Standard_Boolean myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MeshVS_DataMapNodeOfDataMapOfIntegerBoolean_HeaderFile

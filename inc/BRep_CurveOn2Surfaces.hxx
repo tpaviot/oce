@@ -6,37 +6,17 @@
 #ifndef _BRep_CurveOn2Surfaces_HeaderFile
 #define _BRep_CurveOn2Surfaces_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRep_CurveOn2Surfaces_HeaderFile
 #include <Handle_BRep_CurveOn2Surfaces.hxx>
-#endif
 
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _TopLoc_Location_HeaderFile
 #include <TopLoc_Location.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _BRep_CurveRepresentation_HeaderFile
 #include <BRep_CurveRepresentation.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_BRep_CurveRepresentation_HeaderFile
 #include <Handle_BRep_CurveRepresentation.hxx>
-#endif
 class Geom_Surface;
 class Standard_NullObject;
 class TopLoc_Location;
@@ -44,31 +24,36 @@ class gp_Pnt;
 class BRep_CurveRepresentation;
 
 
-//! Defines a continuity between two surfaces. <br>
-class BRep_CurveOn2Surfaces : public BRep_CurveRepresentation {
+//! Defines a continuity between two surfaces.
+class BRep_CurveOn2Surfaces : public BRep_CurveRepresentation
+{
 
 public:
 
   
-  Standard_EXPORT   BRep_CurveOn2Surfaces(const Handle(Geom_Surface)& S1,const Handle(Geom_Surface)& S2,const TopLoc_Location& L1,const TopLoc_Location& L2,const GeomAbs_Shape C);
-  //! Returns True. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsRegularity() const;
-  //! A curve on two surfaces (continuity). <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsRegularity(const Handle(Geom_Surface)& S1,const Handle(Geom_Surface)& S2,const TopLoc_Location& L1,const TopLoc_Location& L2) const;
-  //! Raises an error. <br>
-  Standard_EXPORT     void D0(const Standard_Real U,gp_Pnt& P) const;
+  Standard_EXPORT BRep_CurveOn2Surfaces(const Handle(Geom_Surface)& S1, const Handle(Geom_Surface)& S2, const TopLoc_Location& L1, const TopLoc_Location& L2, const GeomAbs_Shape C);
   
-  Standard_EXPORT   virtual const Handle_Geom_Surface& Surface() const;
+  //! Returns True.
+  Standard_EXPORT virtual   Standard_Boolean IsRegularity()  const;
   
-  Standard_EXPORT   virtual const Handle_Geom_Surface& Surface2() const;
+  //! A curve on two surfaces (continuity).
+  Standard_EXPORT virtual   Standard_Boolean IsRegularity (const Handle(Geom_Surface)& S1, const Handle(Geom_Surface)& S2, const TopLoc_Location& L1, const TopLoc_Location& L2)  const;
   
-  Standard_EXPORT   virtual const TopLoc_Location& Location2() const;
+  //! Raises an error.
+  Standard_EXPORT   void D0 (const Standard_Real U, gp_Pnt& P)  const;
   
-  Standard_EXPORT   virtual const GeomAbs_Shape& Continuity() const;
+  Standard_EXPORT virtual  const  Handle(Geom_Surface)& Surface()  const;
   
-  Standard_EXPORT   virtual  void Continuity(const GeomAbs_Shape C) ;
-  //! Return a copy of this representation. <br>
-  Standard_EXPORT     Handle_BRep_CurveRepresentation Copy() const;
+  Standard_EXPORT virtual  const  Handle(Geom_Surface)& Surface2()  const;
+  
+  Standard_EXPORT virtual  const  TopLoc_Location& Location2()  const;
+  
+  Standard_EXPORT virtual  const  GeomAbs_Shape& Continuity()  const;
+  
+  Standard_EXPORT virtual   void Continuity (const GeomAbs_Shape C) ;
+  
+  //! Return a copy of this representation.
+  Standard_EXPORT   Handle(BRep_CurveRepresentation) Copy()  const;
 
 
 
@@ -83,10 +68,10 @@ protected:
 private: 
 
 
-Handle_Geom_Surface mySurface;
-Handle_Geom_Surface mySurface2;
-TopLoc_Location myLocation2;
-GeomAbs_Shape myContinuity;
+  Handle(Geom_Surface) mySurface;
+  Handle(Geom_Surface) mySurface2;
+  TopLoc_Location myLocation2;
+  GeomAbs_Shape myContinuity;
 
 
 };
@@ -95,7 +80,6 @@ GeomAbs_Shape myContinuity;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRep_CurveOn2Surfaces_HeaderFile

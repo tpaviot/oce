@@ -6,70 +6,59 @@
 #ifndef _TDataStd_Integer_HeaderFile
 #define _TDataStd_Integer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDataStd_Integer_HeaderFile
 #include <Handle_TDataStd_Integer.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class Standard_GUID;
 class TDF_Label;
 class TDF_Attribute;
 class TDF_RelocationTable;
 
 
-//!  The basis to define an integer attribute. <br>
-class TDataStd_Integer : public TDF_Attribute {
+//! The basis to define an integer attribute.
+class TDataStd_Integer : public TDF_Attribute
+{
 
 public:
 
-  //! class methods <br>
-//!          ============= <br>//! Returns the GUID for integers. <br>
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
-  //! Finds, or creates, an Integer attribute and sets <value> <br>
-//!          the Integer  attribute is returned. <br>//! Integer methods <br>
-//!          =============== <br>
-  Standard_EXPORT   static  Handle_TDataStd_Integer Set(const TDF_Label& label,const Standard_Integer value) ;
   
-  Standard_EXPORT     void Set(const Standard_Integer V) ;
-  //! Returns the integer value contained in the attribute. <br>
-  Standard_EXPORT     Standard_Integer Get() const;
-  //! Returns True if there is a reference on the same label <br>
-  Standard_EXPORT     Standard_Boolean IsCaptured() const;
+  //! class methods
+  //! =============
+  //! Returns the GUID for integers.
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-  Standard_EXPORT    const Standard_GUID& ID() const;
+  //! Finds, or creates, an Integer attribute and sets <value>
+  //! the Integer  attribute is returned.
+  //! Integer methods
+  //! ===============
+  Standard_EXPORT static   Handle(TDataStd_Integer) Set (const TDF_Label& label, const Standard_Integer value) ;
   
-  Standard_EXPORT     void Restore(const Handle(TDF_Attribute)& With) ;
+  Standard_EXPORT   void Set (const Standard_Integer V) ;
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  //! Returns the integer value contained in the attribute.
+  Standard_EXPORT   Standard_Integer Get()  const;
   
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& Into,const Handle(TDF_RelocationTable)& RT) const;
+  //! Returns True if there is a reference on the same label
+  Standard_EXPORT   Standard_Boolean IsCaptured()  const;
   
-  Standard_EXPORT   virtual  Standard_OStream& Dump(Standard_OStream& anOS) const;
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
   
-  Standard_EXPORT   TDataStd_Integer();
+  Standard_EXPORT   void Restore (const Handle(TDF_Attribute)& With) ;
+  
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
+  
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& Into, const Handle(TDF_RelocationTable)& RT)  const;
+  
+  Standard_EXPORT virtual   Standard_OStream& Dump (Standard_OStream& anOS)  const;
+  
+  Standard_EXPORT TDataStd_Integer();
 
 
 
@@ -84,7 +73,7 @@ protected:
 private: 
 
 
-Standard_Integer myValue;
+  Standard_Integer myValue;
 
 
 };
@@ -93,7 +82,6 @@ Standard_Integer myValue;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_Integer_HeaderFile

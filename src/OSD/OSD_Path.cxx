@@ -12,18 +12,7 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#ifdef HAVE_CONFIG_H
-# include <oce-config.h>
-#endif
-
-#ifndef WNT
-
-#include <Standard_NumericError.hxx>
-#include <Standard_NullObject.hxx>
-#include <Standard_ProgramError.hxx>
-#include <Standard_ConstructionError.hxx>
 #include <OSD_Path.ixx>
-#include <OSD_WhoAmI.hxx>
 
 static OSD_SysType whereAmI(){
 #if defined(__digital__) || defined(__FreeBSD__) || defined(SUNOS) || defined(__APPLE__) || defined(__FreeBSD_kernel__)
@@ -38,7 +27,7 @@ static OSD_SysType whereAmI(){
 #elif defined(OS2)
   return OSD_WindowsNT;
 }
-#elif defined(WIN32)
+#elif defined(_WIN32) || defined(__WIN32__)
   return OSD_WindowsNT;
 }
 #elif defined(__CYGWIN32_) || defined(__MINGW32__)
@@ -58,10 +47,16 @@ static OSD_SysType whereAmI(){
 }
 #endif
 
+#if !(defined(_WIN32) || defined(__WIN32__))
 
+#include <Standard_NumericError.hxx>
+#include <Standard_NullObject.hxx>
+#include <Standard_ProgramError.hxx>
+#include <Standard_ConstructionError.hxx>
+#include <OSD_WhoAmI.hxx>
 
 OSD_Path::OSD_Path(){
- SysDep = whereAmI();
+ mySysDep = whereAmI();
 }
 
 static void VmsExtract(const TCollection_AsciiString& what,
@@ -328,16 +323,13 @@ static void MacExtract(const TCollection_AsciiString& what,
 OSD_Path::OSD_Path(const TCollection_AsciiString& aDependentName,
 		   const OSD_SysType aSysType){
 
- SysDep = whereAmI();
-
- if (!IsValid(aDependentName,aSysType))
-  Standard_ProgramError::Raise("OSD_Path::OSD_Path : Invalid dependent name");
+ mySysDep = whereAmI();
 
  OSD_SysType todo;
 //  Standard_Integer i,l;
 
   if (aSysType == OSD_Default) {
-    todo = SysDep;
+    todo = mySysDep;
   } else {
     todo = aSysType;
   }
@@ -361,7 +353,7 @@ OSD_Path::OSD_Path(const TCollection_AsciiString& aDependentName,
      MacExtract(aDependentName,myDisk,myTrek,myName,myExtension);
      break;
   default:
-#ifdef DEB
+#ifdef OCCT_DEBUG
        cout << " WARNING WARNING : OSD Path for an Unknown SYSTEM : " << (Standard_Integer)todo << endl;
 #endif 
      UnixExtract(aDependentName,myNode,myUserName,myPassword,myTrek,myName,myExtension);
@@ -379,7 +371,7 @@ OSD_Path::OSD_Path(const TCollection_AsciiString& Nod,
                    const TCollection_AsciiString& Nam,
 		   const TCollection_AsciiString& ext){
 
- SysDep = whereAmI();
+ mySysDep = whereAmI();
 
  SetValues ( Nod, UsrNm, Passwd, Dsk, Trk, Nam, ext);
 
@@ -421,93 +413,6 @@ void OSD_Path::SetValues(const TCollection_AsciiString& Nod,
  myName = Nam;
  myExtension = ext;
 }
-
-
-static Standard_Boolean Analyse_VMS(const TCollection_AsciiString& name){
- if (name.Search("/") != -1)
-  return(Standard_False);
- if (name.Search("@") != -1)
-  return(Standard_False);
- if (name.Search("\\") != -1)
-  return(Standard_False);
-
-
- return Standard_True;
-}
-
-static Standard_Boolean Analyse_DOS(const TCollection_AsciiString& name){
-
-// if (name.Search("$") != -1)
-//  return(Standard_False);
-// if (name.Search(" ") != -1)
-//  return(Standard_False);
-
- if (name.Search("/") != -1)
-  return(Standard_False);
- if (name.Search(":") != -1)
-  return(Standard_False);
-  if (name.Search("*") != -1)
-  return(Standard_False);
- if (name.Search("?") != -1)
-  return(Standard_False);
- if (name.Search(".") != name.SearchFromEnd("."))
-  return(Standard_False);
- if (name.Search("\"") != -1)
-  return(Standard_False);
- if (name.Search("<") != -1)
-  return(Standard_False);
- if (name.Search(">") != -1)
-  return(Standard_False);
- if (name.Search("|") != -1)
-  return(Standard_False);
-   
- return Standard_True;
- // Rajouter les tests sur les noms de 8 caracteres au maximum et
- // l'extension de 3 caracteres.
-}
-
-static Standard_Boolean Analyse_MACOS(const TCollection_AsciiString& name){
- Standard_Integer i = name.Search(":");
- Standard_Integer l = name.Length();
-
- if (i == -1)
-  if (l > 31)
-    return(Standard_False);
-  else 
-    return(Standard_True);
- else
-   return(Standard_True);
-}
-
-static Standard_Boolean Analyse_UNIX(const TCollection_AsciiString& /*name*/)
-{
-// if (name.Search("$") != -1)  Unix filename can have a "$" (LD)
-//  return(Standard_False);
-
-// all characters are allowed in UNIX file name, except null '\0' and slash '/'
-
-// if (name.Search("[") != -1)
-//  return(Standard_False);
-// if (name.Search("]") != -1)
-//  return(Standard_False);
-// if (name.Search("\\") != -1)
-//  return(Standard_False);
-// if (name.Search(" ") != -1) 
-//  return(Standard_False);
-
-  return(Standard_True);
-
-}
-
-
-
-
-
-Standard_Boolean OSD_Path::IsValid(const TCollection_AsciiString& aDependentName,
-                                   const OSD_SysType aSysType)const{
- return Standard_True;
-}
-
 
 void OSD_Path::UpTrek(){
  Standard_Integer length=TrekLength();
@@ -714,7 +619,7 @@ TCollection_AsciiString pDisk;
 OSD_SysType pType;
 
  if (aType == OSD_Default) {
-   pType = SysDep;
+   pType = mySysDep;
  } else {
    pType = aType;
  }
@@ -961,15 +866,13 @@ void OSD_Path::SetExtension(const TCollection_AsciiString& aName){
 #else
 
 //------------------------------------------------------------------------
-//-------------------  Windows NT sources for OSD_Path -------------------
+//-------------------  Windows sources for OSD_Path -------------------
 //------------------------------------------------------------------------
 
-#include <OSD_Path.hxx>
 #include <Standard_ProgramError.hxx>
 
 #include <windows.h>
 #include <stdlib.h>
-#include <tchar.h>
 
 #define TEST_RAISE( type, arg ) _test_raise (  ( type ), ( arg )  )
 
@@ -985,7 +888,7 @@ OSD_Path ::  OSD_Path (
               const OSD_SysType aSysType
 			  ) :
   myUNCFlag(Standard_False),
-  SysDep(OSD_WindowsNT)
+  mySysDep(OSD_WindowsNT)
 {
 
  Standard_Integer        i, j, len;
@@ -1002,7 +905,7 @@ OSD_Path ::  OSD_Path (
  memset(__ext, 0,_MAX_EXT);
  Standard_Character      chr;
 
- TEST_RAISE(  aSysType, TEXT( "OSD_Path" )  );
+ TEST_RAISE(  aSysType, "OSD_Path"  );
 
  _splitpath (  aDependentName.ToCString (), __drive, __dir, __fname, __ext );
  
@@ -1014,20 +917,20 @@ OSD_Path ::  OSD_Path (
 
  {
    TCollection_AsciiString dir   = __dir;
-   len = dir.UsefullLength ();
+   len = dir.Length ();
  }
 
  for ( i = j = 0; i < len; ++i, ++j ) {
 
   chr = __dir[i];
  
-  if (  chr == TEXT( '\\' ) || chr == TEXT( '/' )  )
+  if (  chr == '\\' || chr == '/'  )
 
-   __trek[j] = TEXT( '|' );
+   __trek[j] = '|';
 
-  else if (  chr == TEXT( '.' )&& (i+1) < len && __dir[i+1] == TEXT( '.' )  ) {
+  else if (  chr == '.'&& (i+1) < len && __dir[i+1] == '.'  ) {
   
-   __trek[j] = TEXT( '^' );
+   __trek[j] = '^';
    ++i;
   
   } else
@@ -1052,7 +955,7 @@ OSD_Path :: OSD_Path (
              const TCollection_AsciiString& anExtension
 			 ) :
   myUNCFlag(Standard_False),
-  SysDep(OSD_WindowsNT)
+  mySysDep(OSD_WindowsNT)
 {
 
  SetValues ( aNode, aUsername, aPassword, aDisk, aTrek, aName, anExtension );
@@ -1099,9 +1002,9 @@ void OSD_Path :: SetValues (
  myName      = aName;
  myExtension = anExtension;
 
- if (  myExtension.UsefullLength () && myExtension.Value ( 1 ) != TEXT( '.' )  )
+ if (  myExtension.Length () && myExtension.Value ( 1 ) != '.'  )
 
-  myExtension.Insert (  1, TEXT( '.' )  );
+  myExtension.Insert (  1, '.'  );
 
  _remove_dup ( myTrek );
 
@@ -1119,19 +1022,19 @@ void OSD_Path :: SystemName (
 
  memset(trek,0,_MAX_PATH);
 
- TEST_RAISE(  aType, TEXT( "SystemName" )  );
+ TEST_RAISE(  aType, "SystemName"  );
 
- for ( i = j = 1; i <= myTrek.UsefullLength () && j <= _MAX_PATH; ++i, ++j ) {
+ for ( i = j = 1; i <= myTrek.Length () && j <= _MAX_PATH; ++i, ++j ) {
 
   chr = myTrek.Value ( i );   
 
-  if (  chr == TEXT( '|' )  ) {
+  if (  chr == '|'  ) {
   
-   trek[j-1] = TEXT( '/' );
+   trek[j-1] = '/';
   
-  } else if (  chr == TEXT( '^' ) && j <= _MAX_PATH - 1  ) {
+  } else if (  chr == '^' && j <= _MAX_PATH - 1  ) {
    
-   strcpy(&(trek[(j++) - 1]),TEXT( ".." ));
+   strcpy(&(trek[(j++) - 1]),"..");
 
   } else
 
@@ -1141,11 +1044,11 @@ void OSD_Path :: SystemName (
 
  fullPath = myDisk + TCollection_AsciiString(trek);
  
- if ( trek[0] ) fullPath += TEXT( "/" );
+ if ( trek[0] ) fullPath += "/";
  
  fullPath += ( myName + myExtension );
 
- if (  fullPath.UsefullLength () > 0  )
+ if (  fullPath.Length () > 0  )
 
   FullName = fullPath;
 
@@ -1155,20 +1058,9 @@ void OSD_Path :: SystemName (
 
 }  // end OSD_Path :: SystemName
 
-Standard_Boolean OSD_Path :: IsValid (
-                              const TCollection_AsciiString& /*aDependentName*/,
-                              const OSD_SysType aSysType
-                             ) const {
-
- TEST_RAISE(  aSysType, TEXT( "IsValid" )  );
-
- return Standard_True;
-
-}  // end OSD_Path :: IsValid
-
 void OSD_Path :: UpTrek () {
 
- Standard_Integer pos = myTrek.SearchFromEnd (  TEXT( "|" )  );
+ Standard_Integer pos = myTrek.SearchFromEnd (  "|"  );
 
  if ( pos == -1 )
 
@@ -1176,7 +1068,7 @@ void OSD_Path :: UpTrek () {
 
  else if ( pos > 1 ) {
 
-  while (  myTrek.Value ( pos ) == TEXT( '|' ) && pos != 1  ) --pos;
+  while (  myTrek.Value ( pos ) == '|' && pos != 1  ) --pos;
 
  }  // end if
 
@@ -1186,14 +1078,14 @@ void OSD_Path :: UpTrek () {
 
 void OSD_Path :: DownTrek ( const TCollection_AsciiString& aName ) {
 
- Standard_Integer pos = myTrek.UsefullLength ();
+ Standard_Integer pos = myTrek.Length ();
 
- if (  aName.Value ( 1 ) != TEXT( '|' )    &&
+ if (  aName.Value ( 1 ) != '|'    &&
        pos                                 &&
-       myTrek.Value ( pos ) != TEXT( '|' )
+       myTrek.Value ( pos ) != '|'
  )
 
-  myTrek += TEXT( "|" );
+  myTrek += "|";
 
  myTrek += aName;
 
@@ -1206,13 +1098,13 @@ Standard_Integer OSD_Path :: TrekLength () const {
  Standard_Integer i      = 1;
  Standard_Integer retVal = 0;
 
- if (  myTrek.IsEmpty () || myTrek.UsefullLength () == 1 && myTrek.Value ( 1 ) == TEXT( '|' )  )
+ if (  myTrek.IsEmpty () || myTrek.Length () == 1 && myTrek.Value ( 1 ) == '|'  )
 
   return retVal;
 
  for (;;) {
  
-  if (  myTrek.Token (  TEXT( "|" ), i++  ).IsEmpty ()  )
+  if (  myTrek.Token (  "|", i++  ).IsEmpty ()  )
 
    break;
 
@@ -1233,28 +1125,28 @@ void OSD_Path :: RemoveATrek ( const Standard_Integer thewhere ) {
 
   return;
 
- if (  myTrek.Value ( 1 ) != TEXT( '|' )  ) {
+ if (  myTrek.Value ( 1 ) != '|'  ) {
  
   flag = Standard_True;
-  myTrek.Insert (  1, TEXT( '|' )  );
+  myTrek.Insert (  1, '|'  );
  
  }  // end if
 
  i = myTrek.Location (
-             thewhere, TEXT( '|' ),
-             1, myTrek.UsefullLength ()
+             thewhere, '|',
+             1, myTrek.Length ()
             );
 
  if ( i ) {
 
   j = myTrek.Location (
-              thewhere + 1, TEXT( '|' ),
-              1, myTrek.UsefullLength ()
+              thewhere + 1, '|',
+              1, myTrek.Length ()
              );
 
   if ( j == 0 )
 
-   j = myTrek.UsefullLength () + 1;
+   j = myTrek.Length () + 1;
 
   myTrek.Remove ( i, j - i );
 
@@ -1272,38 +1164,38 @@ void OSD_Path :: RemoveATrek ( const TCollection_AsciiString& aName ) {
  Standard_Boolean        flag = Standard_False;
  TCollection_AsciiString tmp;
 
- if (  myTrek.Value ( 1 ) != TEXT( '|' )  ) {
+ if (  myTrek.Value ( 1 ) != '|'  ) {
  
   flag = Standard_True;
-  myTrek.Insert (  1, TEXT( '|' )  );
+  myTrek.Insert (  1, '|'  );
  
  }  // end if
 
- myTrek += TEXT( '|' );
+ myTrek += '|';
 
  tmp = aName;
 
- if (  tmp.Value ( 1 ) != TEXT( '|' )  )
+ if (  tmp.Value ( 1 ) != '|'  )
 
-  tmp.Insert (  1, TEXT( '|' )  );
+  tmp.Insert (  1, '|'  );
 
- if (   tmp.Value (  tmp.UsefullLength ()  ) != TEXT( '|' )   )
+ if (   tmp.Value (  tmp.Length ()  ) != '|'   )
 
-  tmp += TEXT( '|' );
+  tmp += '|';
 
  i = myTrek.Search ( tmp );
 
  if ( i != -1 )
  
-  myTrek.Remove (  i + 1, tmp.UsefullLength () - 1  );
+  myTrek.Remove (  i + 1, tmp.Length () - 1  );
 
  if ( flag )
 
   myTrek.Remove ( 1 );
  
- if (   myTrek.Value (  myTrek.UsefullLength ()  ) == TEXT( '|' )  )
+ if (   myTrek.Value (  myTrek.Length ()  ) == '|'  )
 
-  myTrek.Trunc (  myTrek.UsefullLength () - 1  );
+  myTrek.Trunc (  myTrek.Length () - 1  );
 
 }  // end OSD_Path :: RemoveATrek ( 2 )
 
@@ -1314,11 +1206,11 @@ TCollection_AsciiString OSD_Path :: TrekValue (
  TCollection_AsciiString retVal;
  TCollection_AsciiString trek = myTrek;
 
- if (  trek.Value ( 1 ) != TEXT( '|' )  )
+ if (  trek.Value ( 1 ) != '|'  )
  
-  trek.Insert (  1, TEXT( '|' )  );
+  trek.Insert (  1, '|'  );
  
- retVal = trek.Token (  TEXT( "|" ), thewhere  );
+ retVal = trek.Token (  "|", thewhere  );
 
  return retVal;
 
@@ -1333,25 +1225,25 @@ void OSD_Path :: InsertATrek (
  TCollection_AsciiString tmp = aName;
  Standard_Boolean        flag = Standard_False;
 
- if (  myTrek.Value ( 1 ) != TEXT( '|' )  ) {
+ if (  myTrek.Value ( 1 ) != '|'  ) {
  
   flag = Standard_True;
-  myTrek.Insert (  1, TEXT( '|' )  );
+  myTrek.Insert (  1, '|'  );
  
  }  // end if
 
- myTrek += TEXT( '|' );
+ myTrek += '|';
 
  pos = myTrek.Location (
-               thewhere, TEXT( '|' ),
-               1, myTrek.UsefullLength ()
+               thewhere, '|',
+               1, myTrek.Length ()
               );
 
  if ( pos ) {
 
-  if (   tmp.Value (  tmp.UsefullLength ()  ) != TEXT( '|' )   )
+  if (   tmp.Value (  tmp.Length ()  ) != '|'   )
 
-   tmp += TEXT( '|' );
+   tmp += '|';
 
   myTrek.Insert ( pos + 1, tmp );
 
@@ -1361,9 +1253,9 @@ void OSD_Path :: InsertATrek (
 
   myTrek.Remove ( 1 );
 
- if (   myTrek.Value (  myTrek.UsefullLength ()  ) == TEXT( '|' )  )
+ if (   myTrek.Value (  myTrek.Length ()  ) == '|'  )
 
-  myTrek.Trunc (  myTrek.UsefullLength () - 1  );
+  myTrek.Trunc (  myTrek.Length () - 1  );
 
  _remove_dup ( myTrek );
 
@@ -1465,9 +1357,9 @@ static void __fastcall _test_raise ( OSD_SysType type, Standard_CString str ) {
 
  if ( type != OSD_Default && type != OSD_WindowsNT ) {
  
-  _tcscpy (  buff, TEXT( "OSD_Path :: " )  );
-  _tcscat (  buff, str );
-  _tcscat (  buff, TEXT( " (): unknown system type" )  );
+  strcpy (  buff, "OSD_Path :: "  );
+  strcat (  buff, str );
+  strcat (  buff, " (): unknown system type"  );
 
   Standard_ProgramError :: Raise ( buff );
  
@@ -1477,19 +1369,19 @@ static void __fastcall _test_raise ( OSD_SysType type, Standard_CString str ) {
 
 static void __fastcall _remove_dup ( TCollection_AsciiString& str ) {
 
- Standard_Integer pos = 1, orgLen, len = str.UsefullLength ();
+ Standard_Integer pos = 1, orgLen, len = str.Length ();
 
  orgLen = len;
 
  while ( pos <= len ) {
  
-  if (  str.Value ( pos     ) == TEXT( '|' ) && pos != len &&
-        str.Value ( pos + 1 ) == TEXT( '|' ) && pos != 1
+  if (  str.Value ( pos     ) == '|' && pos != len &&
+        str.Value ( pos + 1 ) == '|' && pos != 1
   ) {
   
    ++pos;
 
-   while (  pos <= len && str.Value ( pos ) == TEXT( '|' )  ) str.Remove ( pos ), --len;
+   while (  pos <= len && str.Value ( pos ) == '|'  ) str.Remove ( pos ), --len;
   
   } else
 
@@ -1497,18 +1389,18 @@ static void __fastcall _remove_dup ( TCollection_AsciiString& str ) {
  
  }  // end while
 
- if (  orgLen > 1 && len > 0 && str.Value ( len ) == TEXT( '|' )  ) str.Remove ( len );
+ if (  orgLen > 1 && len > 0 && str.Value ( len ) == '|'  ) str.Remove ( len );
 
  pos = 1;
- orgLen = len = str.UsefullLength ();
+ orgLen = len = str.Length ();
 
  while ( pos <= len ) {
  
-  if (  str.Value ( pos ) == TEXT( '^' ) && pos != len && str.Value ( pos + 1 ) == TEXT( '^' )  ) {
+  if (  str.Value ( pos ) == '^' && pos != len && str.Value ( pos + 1 ) == '^'  ) {
   
    ++pos;
 
-   while (  pos <= len && str.Value ( pos ) == TEXT( '^' )  ) str.Remove ( pos ), --len;
+   while (  pos <= len && str.Value ( pos ) == '^'  ) str.Remove ( pos ), --len;
   
   } else
 
@@ -1516,11 +1408,67 @@ static void __fastcall _remove_dup ( TCollection_AsciiString& str ) {
  
  }  // end while
 
-// if (  orgLen > 1 && len > 0 && str.Value ( len ) == TEXT( '^' )  ) str.Remove ( len );
+// if (  orgLen > 1 && len > 0 && str.Value ( len ) == '^'  ) str.Remove ( len );
 
 }  // end _remove_dup
 
-#endif
+#endif // Windows sources for OSD_Path
+
+// =======================================================================
+// function : Analyse_VMS
+// purpose  :
+// =======================================================================
+static Standard_Boolean Analyse_VMS (const TCollection_AsciiString& theName)
+{
+  if (theName.Search ("/")  != -1
+   || theName.Search ("@")  != -1
+   || theName.Search ("\\") != -1)
+  {
+    return Standard_False;
+  }
+
+  return Standard_True;
+}
+
+// =======================================================================
+// function : Analyse_DOS
+// purpose  :
+// =======================================================================
+static Standard_Boolean Analyse_DOS(const TCollection_AsciiString& theName)
+{
+  if (theName.Search ("/")  != -1
+   || theName.Search (":")  != -1
+   || theName.Search ("*")  != -1
+   || theName.Search ("?")  != -1
+   || theName.Search ("\"") != -1
+   || theName.Search ("<")  != -1
+   || theName.Search (">")  != -1
+   || theName.Search ("|")  != -1)
+  {
+    return Standard_False;
+  }
+
+ return Standard_True;
+}
+
+// =======================================================================
+// function : Analyse_MACOS
+// purpose  :
+// =======================================================================
+static Standard_Boolean Analyse_MACOS (const TCollection_AsciiString& theName)
+{
+  return theName.Search(":") == -1 ? theName.Length() <= 31 : Standard_True;
+}
+
+// =======================================================================
+// function : IsValid
+// purpose  :
+// =======================================================================
+Standard_Boolean OSD_Path::IsValid (const TCollection_AsciiString& theDependentName,
+                                    const OSD_SysType theSysType)
+{
+  return true;
+}
 
 // ---------------------------------------------------------------------------
 

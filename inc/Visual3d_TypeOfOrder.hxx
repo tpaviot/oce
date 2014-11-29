@@ -6,17 +6,15 @@
 #ifndef _Visual3d_TypeOfOrder_HeaderFile
 #define _Visual3d_TypeOfOrder_HeaderFile
 
-//! Definition of the order of selection <br>
-//!      TOO_TOPFIRST    the root structure first <br>
-//!      TOO_BOTTOMFIRST the leaf structure first <br>
-//!      Allows exploration of a PickPath in a PickDescriptor. <br>
-enum Visual3d_TypeOfOrder {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Definition of the order of selection
+//! TOO_TOPFIRST    the root structure first
+//! TOO_BOTTOMFIRST the leaf structure first
+enum Visual3d_TypeOfOrder
+{
 Visual3d_TOO_TOPFIRST,
 Visual3d_TOO_BOTTOMFIRST
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Visual3d_TypeOfOrder_HeaderFile

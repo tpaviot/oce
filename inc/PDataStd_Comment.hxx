@@ -6,40 +6,29 @@
 #ifndef _PDataStd_Comment_HeaderFile
 #define _PDataStd_Comment_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PDataStd_Comment_HeaderFile
 #include <Handle_PDataStd_Comment.hxx>
-#endif
 
-#ifndef _Handle_PCollection_HExtendedString_HeaderFile
 #include <Handle_PCollection_HExtendedString.hxx>
-#endif
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
 class PCollection_HExtendedString;
 
 
-class PDataStd_Comment : public PDF_Attribute {
+class PDataStd_Comment : public PDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   PDataStd_Comment();
+  Standard_EXPORT PDataStd_Comment();
   
-  Standard_EXPORT   PDataStd_Comment(const Handle(PCollection_HExtendedString)& V);
+  Standard_EXPORT PDataStd_Comment(const Handle(PCollection_HExtendedString)& V);
   
-  Standard_EXPORT     Handle_PCollection_HExtendedString Get() const;
+  Standard_EXPORT   Handle(PCollection_HExtendedString) Get()  const;
   
-  Standard_EXPORT     void Set(const Handle(PCollection_HExtendedString)& V) ;
+  Standard_EXPORT   void Set (const Handle(PCollection_HExtendedString)& V) ;
 
 PDataStd_Comment(const Storage_stCONSTclCOM& a) : PDF_Attribute(a)
 {
@@ -60,7 +49,7 @@ protected:
 private: 
 
 
-Handle_PCollection_HExtendedString myValue;
+  Handle(PCollection_HExtendedString) myValue;
 
 
 };
@@ -69,7 +58,6 @@ Handle_PCollection_HExtendedString myValue;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDataStd_Comment_HeaderFile

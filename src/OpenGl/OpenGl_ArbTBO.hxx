@@ -16,14 +16,14 @@
 #ifndef _OpenGl_ArbTBO_H__
 #define _OpenGl_ArbTBO_H__
 
-#include <OpenGl_GlCore12.hxx>
+#include <OpenGl_GlFunctions.hxx>
 
 //! TBO is available on OpenGL 3.0+ hardware
-struct OpenGl_ArbTBO
+struct OpenGl_ArbTBO : protected OpenGl_GlFunctions
 {
-
-  PFNGLTEXBUFFERARBPROC glTexBufferARB;
-
+#if !defined(GL_ES_VERSION_2_0)
+  using OpenGl_GlFunctions::glTexBuffer;
+#endif
 };
 
 #endif // _OpenGl_ArbTBO_H__

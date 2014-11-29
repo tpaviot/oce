@@ -6,38 +6,27 @@
 #ifndef _TColStd_SequenceNodeOfSequenceOfTransient_HeaderFile
 #define _TColStd_SequenceNodeOfSequenceOfTransient_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColStd_SequenceNodeOfSequenceOfTransient_HeaderFile
 #include <Handle_TColStd_SequenceNodeOfSequenceOfTransient.hxx>
-#endif
 
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Standard_Transient;
 class TColStd_SequenceOfTransient;
 
 
 
-class TColStd_SequenceNodeOfSequenceOfTransient : public TCollection_SeqNode {
+class TColStd_SequenceNodeOfSequenceOfTransient : public TCollection_SeqNode
+{
 
 public:
 
   
-      TColStd_SequenceNodeOfSequenceOfTransient(const Handle(Standard_Transient)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    TColStd_SequenceNodeOfSequenceOfTransient(const Handle(Standard_Transient)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_Standard_Transient& Value() const;
+      Handle(Standard_Transient)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_Standard_Transient myValue;
+  Handle(Standard_Transient) myValue;
 
 
 };
 
-#define SeqItem Handle_Standard_Transient
+#define SeqItem Handle(Standard_Transient)
 #define SeqItem_hxx <Standard_Transient.hxx>
 #define TCollection_SequenceNode TColStd_SequenceNodeOfSequenceOfTransient
 #define TCollection_SequenceNode_hxx <TColStd_SequenceNodeOfSequenceOfTransient.hxx>
@@ -78,7 +67,6 @@ Handle_Standard_Transient myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_SequenceNodeOfSequenceOfTransient_HeaderFile

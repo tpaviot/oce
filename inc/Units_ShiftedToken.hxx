@@ -6,83 +6,72 @@
 #ifndef _Units_ShiftedToken_HeaderFile
 #define _Units_ShiftedToken_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Units_ShiftedToken_HeaderFile
 #include <Handle_Units_ShiftedToken.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Units_Token_HeaderFile
 #include <Units_Token.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_Units_Dimensions_HeaderFile
 #include <Handle_Units_Dimensions.hxx>
-#endif
-#ifndef _Handle_Units_Token_HeaderFile
 #include <Handle_Units_Token.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Units_Dimensions;
 class Units_Token;
 
 
-//! The  ShiftedToken class  inherits   from Token and <br>
-//!          describes tokens which have  a gap in  addition of <br>
-//!          the  multiplicative factor.   This kind  of  token <br>
-//!          allows  the  description of linear functions which <br>
-//!          do not pass through the origin, of the form : <br>
-//! <br>
-//!           y = ax  +b <br>
-//! <br>
-//!          where <x> and  <y>  are the unknown variables, <a> <br>
-//!          the mutiplicative factor, and <b> the gap relative <br>
-//!          to the ordinate axis. <br>
-//! <br>
-//!          An example is the  tranlation between the  Celsius <br>
-//!          and Fahrenheit degree of temperature. <br>
-class Units_ShiftedToken : public Units_Token {
+//! The  ShiftedToken class  inherits   from Token and
+//! describes tokens which have  a gap in  addition of
+//! the  multiplicative factor.   This kind  of  token
+//! allows  the  description of linear functions which
+//! do not pass through the origin, of the form :
+//!
+//! y = ax  +b
+//!
+//! where <x> and  <y>  are the unknown variables, <a>
+//! the mutiplicative factor, and <b> the gap relative
+//! to the ordinate axis.
+//!
+//! An example is the  tranlation between the  Celsius
+//! and Fahrenheit degree of temperature.
+class Units_ShiftedToken : public Units_Token
+{
 
 public:
 
-  //! Creates and returns a  shifted   token.  <aword> is  a <br>
-//!          string containing the   available word, <amean>  gives <br>
-//!          the signification   of the   token,  <avalue> is   the <br>
-//!          numeric value  of the  dimension, <amove> is  the gap, <br>
-//!          and <adimensions> is  the dimension of the given  word <br>
-//!          <aword>. <br>
-  Standard_EXPORT   Units_ShiftedToken(const Standard_CString aword,const Standard_CString amean,const Standard_Real avalue,const Standard_Real amove,const Handle(Units_Dimensions)& adimensions);
-  //! Creates and returns a  token, which is a ShiftedToken. <br>
-  Standard_EXPORT   virtual  Handle_Units_Token Creates() const;
-  //! Returns the gap <themove> <br>
-  Standard_EXPORT     Standard_Real Move() const;
-  //! This  virtual   method  is  called  by the Measurement <br>
-//!          methods,  to   compute  the   measurement    during  a <br>
-//!          conversion. <br>
-  Standard_EXPORT   virtual  Standard_Real Multiplied(const Standard_Real avalue) const;
-  //! This   virtual  method is  called  by  the Measurement <br>
-//!          methods,   to   compute   the   measurement   during a <br>
-//!          conversion. <br>
-  Standard_EXPORT   virtual  Standard_Real Divided(const Standard_Real avalue) const;
-  //! Destroies the Token <br>
-  Standard_EXPORT   virtual  void Destroy() ;
+  
+  //! Creates and returns a  shifted   token.  <aword> is  a
+  //! string containing the   available word, <amean>  gives
+  //! the signification   of the   token,  <avalue> is   the
+  //! numeric value  of the  dimension, <amove> is  the gap,
+  //! and <adimensions> is  the dimension of the given  word
+  //! <aword>.
+  Standard_EXPORT Units_ShiftedToken(const Standard_CString aword, const Standard_CString amean, const Standard_Real avalue, const Standard_Real amove, const Handle(Units_Dimensions)& adimensions);
+  
+  //! Creates and returns a  token, which is a ShiftedToken.
+  Standard_EXPORT virtual   Handle(Units_Token) Creates()  const;
+  
+  //! Returns the gap <themove>
+  Standard_EXPORT   Standard_Real Move()  const;
+  
+  //! This  virtual   method  is  called  by the Measurement
+  //! methods,  to   compute  the   measurement    during  a
+  //! conversion.
+  Standard_EXPORT virtual   Standard_Real Multiplied (const Standard_Real avalue)  const;
+  
+  //! This   virtual  method is  called  by  the Measurement
+  //! methods,   to   compute   the   measurement   during a
+  //! conversion.
+  Standard_EXPORT virtual   Standard_Real Divided (const Standard_Real avalue)  const;
+  
+  //! Destroies the Token
+  Standard_EXPORT virtual   void Destroy() ;
 ~Units_ShiftedToken()
 {
   Destroy();
 }
   
-  Standard_EXPORT   virtual  void Dump(const Standard_Integer ashift,const Standard_Integer alevel) const;
+  Standard_EXPORT virtual   void Dump (const Standard_Integer ashift, const Standard_Integer alevel)  const;
 
 
 
@@ -96,7 +85,7 @@ protected:
 private: 
 
 
-Standard_Real themove;
+  Standard_Real themove;
 
 
 };
@@ -105,7 +94,6 @@ Standard_Real themove;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Units_ShiftedToken_HeaderFile

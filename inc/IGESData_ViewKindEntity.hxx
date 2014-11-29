@@ -6,45 +6,37 @@
 #ifndef _IGESData_ViewKindEntity_HeaderFile
 #define _IGESData_ViewKindEntity_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESData_ViewKindEntity_HeaderFile
 #include <Handle_IGESData_ViewKindEntity.hxx>
-#endif
 
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_OutOfRange;
 
 
-//! defines required type for ViewKind in directory part <br>
-//!           that is, Single view or Multiple view <br>
-//!           An effective ViewKind entity must inherit it and define <br>
-//!           IsSingle (True for Single, False for List of Views), <br>
-//!           NbViews and ViewItem (especially for a List) <br>
-class IGESData_ViewKindEntity : public IGESData_IGESEntity {
+//! defines required type for ViewKind in directory part
+//! that is, Single view or Multiple view
+//! An effective ViewKind entity must inherit it and define
+//! IsSingle (True for Single, False for List of Views),
+//! NbViews and ViewItem (especially for a List)
+class IGESData_ViewKindEntity : public IGESData_IGESEntity
+{
 
 public:
 
-  //! says if "me" is a Single View (True) or a List of Views (False) <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsSingle() const = 0;
-  //! Returns the count of Views for a List of Views. For a Single <br>
-//!           View, may return simply 1 <br>
-  Standard_EXPORT   virtual  Standard_Integer NbViews() const = 0;
-  //! Returns the View n0. <num> for a List of Views. For a Single <br>
-//!           Views, may return <me> itself <br>
-  Standard_EXPORT   virtual  Handle_IGESData_ViewKindEntity ViewItem(const Standard_Integer num) const = 0;
+  
+  //! says if "me" is a Single View (True) or a List of Views (False)
+  Standard_EXPORT virtual   Standard_Boolean IsSingle()  const = 0;
+  
+  //! Returns the count of Views for a List of Views. For a Single
+  //! View, may return simply 1
+  Standard_EXPORT virtual   Standard_Integer NbViews()  const = 0;
+  
+  //! Returns the View n0. <num> for a List of Views. For a Single
+  //! Views, may return <me> itself
+  Standard_EXPORT virtual   Handle(IGESData_ViewKindEntity) ViewItem (const Standard_Integer num)  const = 0;
 
 
 
@@ -67,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESData_ViewKindEntity_HeaderFile

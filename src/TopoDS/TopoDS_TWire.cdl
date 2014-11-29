@@ -15,19 +15,20 @@
 -- commercial license or contractual agreement.
 
 class TWire from TopoDS  inherits TShape from TopoDS
+	---Purpose: A set of edges connected by their vertices.
 
 uses
     ShapeEnum from TopAbs
 
 is
-    Create returns mutable TWire;
+    Create returns TWire;
     ---C++: inline
     ---Purpose: Creates an empty TWire.
 
     ShapeType(me) returns ShapeEnum from TopAbs;
     ---Purpose: Returns WIRE.
 
-    EmptyCopy(me) returns mutable TShape from TopoDS;
+    EmptyCopy(me) returns TShape from TopoDS;
     ---Purpose: Returns an empty TWire.
 
 end TWire;

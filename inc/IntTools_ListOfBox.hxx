@@ -6,28 +6,14 @@
 #ifndef _IntTools_ListOfBox_HeaderFile
 #define _IntTools_ListOfBox_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_IntTools_ListNodeOfListOfBox_HeaderFile
 #include <Handle_IntTools_ListNodeOfListOfBox.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class IntTools_ListIteratorOfListOfBox;
 class Bnd_Box;
@@ -35,61 +21,63 @@ class IntTools_ListNodeOfListOfBox;
 
 
 
-class IntTools_ListOfBox  {
+class IntTools_ListOfBox 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntTools_ListOfBox();
+  Standard_EXPORT IntTools_ListOfBox();
   
-  Standard_EXPORT     void Assign(const IntTools_ListOfBox& Other) ;
-    void operator=(const IntTools_ListOfBox& Other) 
+  Standard_EXPORT IntTools_ListOfBox(const IntTools_ListOfBox& Other);
+  
+  Standard_EXPORT   void Assign (const IntTools_ListOfBox& Other) ;
+  void operator= (const IntTools_ListOfBox& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~IntTools_ListOfBox()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const Bnd_Box& I) ;
+  Standard_EXPORT   void Prepend (const Bnd_Box& I) ;
   
-  Standard_EXPORT     void Prepend(const Bnd_Box& I,IntTools_ListIteratorOfListOfBox& theIt) ;
+  Standard_EXPORT   void Prepend (const Bnd_Box& I, IntTools_ListIteratorOfListOfBox& theIt) ;
   
-  Standard_EXPORT     void Prepend(IntTools_ListOfBox& Other) ;
+  Standard_EXPORT   void Prepend (IntTools_ListOfBox& Other) ;
   
-  Standard_EXPORT     void Append(const Bnd_Box& I) ;
+  Standard_EXPORT   void Append (const Bnd_Box& I) ;
   
-  Standard_EXPORT     void Append(const Bnd_Box& I,IntTools_ListIteratorOfListOfBox& theIt) ;
+  Standard_EXPORT   void Append (const Bnd_Box& I, IntTools_ListIteratorOfListOfBox& theIt) ;
   
-  Standard_EXPORT     void Append(IntTools_ListOfBox& Other) ;
+  Standard_EXPORT   void Append (IntTools_ListOfBox& Other) ;
   
-  Standard_EXPORT     Bnd_Box& First() const;
+  Standard_EXPORT   Bnd_Box& First()  const;
   
-  Standard_EXPORT     Bnd_Box& Last() const;
+  Standard_EXPORT   Bnd_Box& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(IntTools_ListIteratorOfListOfBox& It) ;
+  Standard_EXPORT   void Remove (IntTools_ListIteratorOfListOfBox& It) ;
   
-  Standard_EXPORT     void InsertBefore(const Bnd_Box& I,IntTools_ListIteratorOfListOfBox& It) ;
+  Standard_EXPORT   void InsertBefore (const Bnd_Box& I, IntTools_ListIteratorOfListOfBox& It) ;
   
-  Standard_EXPORT     void InsertBefore(IntTools_ListOfBox& Other,IntTools_ListIteratorOfListOfBox& It) ;
+  Standard_EXPORT   void InsertBefore (IntTools_ListOfBox& Other, IntTools_ListIteratorOfListOfBox& It) ;
   
-  Standard_EXPORT     void InsertAfter(const Bnd_Box& I,IntTools_ListIteratorOfListOfBox& It) ;
+  Standard_EXPORT   void InsertAfter (const Bnd_Box& I, IntTools_ListIteratorOfListOfBox& It) ;
   
-  Standard_EXPORT     void InsertAfter(IntTools_ListOfBox& Other,IntTools_ListIteratorOfListOfBox& It) ;
+  Standard_EXPORT   void InsertAfter (IntTools_ListOfBox& Other, IntTools_ListIteratorOfListOfBox& It) ;
 
 
 friend class IntTools_ListIteratorOfListOfBox;
-
 
 
 protected:
@@ -100,12 +88,10 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntTools_ListOfBox(const IntTools_ListOfBox& Other);
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
@@ -135,7 +121,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_ListOfBox_HeaderFile

@@ -14,9 +14,6 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#ifdef HAVE_CONFIG_H
-# include <oce-config.h>
-#endif
 #include <TestTopOpe.ixx>
 
 #include <TestTopOpe_BOOP.hxx>
@@ -26,12 +23,9 @@
 #include <TColStd_HArray1OfBoolean.hxx>
 #include <Draw.hxx>
 #include <DBRep.hxx>
-#ifdef HAVE_STRINGS_H
-# include <strings.h>
-#endif
 
 extern void suppressarg(Standard_Integer& na,const char** a,const Standard_Integer d);
-#ifdef DEB
+#ifdef OCCT_DEBUG
 extern void TopOpeBRepTool_SettraceEND(const Standard_Boolean);
 extern Standard_Boolean TopOpeBRepTool_GettraceEND();
 #endif
@@ -170,8 +164,8 @@ Standard_Integer TOPOC(Draw_Interpretor& interpretor,Standard_Integer na,const c
       else if (!strcmp(a[ia],"-AB")) outAB = Standard_True;
     }
     
-    Handle_TopOpeBRepBuild_HBuilder HB = PBOOP->HBuilder();
-    Handle_TopOpeBRepDS_HDataStructure HDS = HB->DataStructure();
+    Handle(TopOpeBRepBuild_HBuilder) HB = PBOOP->HBuilder();
+    Handle(TopOpeBRepDS_HDataStructure) HDS = HB->DataStructure();
     const TopOpeBRepDS_DataStructure& BDS = HDS->DS();
     const TopTools_ListOfShape& loe = HB->Section();
 
@@ -226,7 +220,7 @@ Standard_Integer TOPOC(Draw_Interpretor& interpretor,Standard_Integer na,const c
 
       if (esa) { 
 	TCollection_AsciiString s;
-#ifdef DEB
+#ifdef OCCT_DEBUG
 	TopTools_ListIteratorOfListOfShape ils;
 #endif
 	if (outdraw) { 
@@ -317,7 +311,7 @@ Standard_Integer TOPOC(Draw_Interpretor& interpretor,Standard_Integer na,const c
 } // TOPO
 
 // ----------------------------------------------------------------------
-#ifdef DEB
+#ifdef OCCT_DEBUG
 Standard_Integer BOOPCHK(Draw_Interpretor& ,Standard_Integer na,const char** a)
 {
   if (!strcmp(a[0],"tchk")) { 
@@ -568,7 +562,7 @@ Standard_Integer TOPOCOMMANDS(TestTopOpe_BOOP& PT,Standard_Integer na,const char
   if (na == 1) return 0; 
   err = SETTOPOPREP(PT,na,a); if (err) return err;
   
-#ifdef DEB
+#ifdef OCCT_DEBUG
   Standard_Boolean tend = TopOpeBRepTool_GettraceEND();
   TopOpeBRepTool_SettraceEND(PT.ChangeVarsTopo().GetVerbose());
 #endif
@@ -594,7 +588,7 @@ Standard_Integer TOPOCOMMANDS(TestTopOpe_BOOP& PT,Standard_Integer na,const char
     if (err) return err;
   }
 
-#ifdef DEB
+#ifdef OCCT_DEBUG
   TopOpeBRepTool_SettraceEND(tend);
 #endif
   return 0;

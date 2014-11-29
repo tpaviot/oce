@@ -5,24 +5,12 @@
 
 #include <TopOpeBRepDS_DoubleMapIteratorOfDoubleMapOfIntegerShape.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DoubleMapOfIntegerShape_HeaderFile
 #include <TopOpeBRepDS_DoubleMapOfIntegerShape.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape_HeaderFile
 #include <TopOpeBRepDS_DoubleMapNodeOfDoubleMapOfIntegerShape.hxx>
-#endif
  
 
 #define TheKey1 Standard_Integer

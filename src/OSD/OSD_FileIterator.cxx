@@ -12,10 +12,6 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#ifdef HAVE_CONFIG_H
-# include <oce-config.h>
-#endif
-
 #ifndef WNT
 
 #include <OSD_FileIterator.ixx>
@@ -25,28 +21,11 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
-#ifdef	HAVE_DIRENT_H
 # include <dirent.h>
 # define NAMLEN(dirent) strlen((dirent)->d_name)
 # ifdef VMS
 extern char *vmsify PARAMS ((char *name, int type));
 # endif
-#else
-# define dirent direct
-# define NAMLEN(dirent) (dirent)->d_namlen
-# ifdef HAVE_SYS_NDIR_H
-#  include <sys/ndir.h>
-# endif
-# ifdef HAVE_SYS_DIR_H
-#  include <sys/dir.h>
-# endif
-# ifdef HAVE_NDIR_H
-#  include <ndir.h>
-# endif
-# ifdef HAVE_VMSDIR_H
-#  include "vmsdir.h"
-# endif /* HAVE_VMSDIR_H */
-#endif
 
 /* In GNU systems, <dirent.h> defines this macro for us.  */
 #ifdef _D_NAMLEN
@@ -207,7 +186,7 @@ char full_name[255];
 
      sprintf(full_name,"%s/%s",myPlace.ToCString(),
 	     ((struct dirent *)myEntry)->d_name);		 // LD debug
-#ifdef DEBUG
+#ifdef OCCT_DEBUG
      cout << "Place : " << myPlace << endl;
      cout << "FName : " << full_name << endl;
 #endif
@@ -276,8 +255,9 @@ Standard_Integer OSD_FileIterator::Error()const{
 #include <windows.h>
 
 #include <OSD_FileIterator.ixx>
+#include <TCollection_ExtendedString.hxx>
 
-#define _FD (  ( PWIN32_FIND_DATA )myData  )
+#define _FD (  ( PWIN32_FIND_DATAW )myData  )
 
 void _osd_wnt_set_error ( OSD_Error&, OSD_WhoAmI, ... );
 
@@ -291,7 +271,7 @@ OSD_FileIterator :: OSD_FileIterator (
 
  where.SystemName ( myPlace );
 
- if (  myPlace.Length () == 0  ) myPlace = TEXT( "." );
+ if (  myPlace.Length () == 0  ) myPlace = ".";
 
  myMask = Mask;
  myData = NULL;
@@ -312,13 +292,15 @@ Standard_Boolean OSD_FileIterator :: More () {
 
  if (  myHandle == INVALID_HANDLE_VALUE  ) {
  
-  TCollection_AsciiString wc = myPlace + TEXT( "/" ) + myMask;
+  TCollection_AsciiString wc = myPlace + "/" + myMask;
 
   myData = HeapAlloc (
-            GetProcessHeap (), HEAP_GENERATE_EXCEPTIONS, sizeof ( WIN32_FIND_DATA )
+            GetProcessHeap (), HEAP_GENERATE_EXCEPTIONS, sizeof ( WIN32_FIND_DATAW )
            );
 
-  myHandle = FindFirstFile (wc.ToCString (), (PWIN32_FIND_DATA)myData);
+  // make wchar_t string from UTF-8
+  TCollection_ExtendedString wcW(wc);
+  myHandle = FindFirstFileW ((const wchar_t*)wcW.ToExtString(), (PWIN32_FIND_DATAW)myData);
 
   if (  myHandle == INVALID_HANDLE_VALUE  )
   
@@ -352,7 +334,7 @@ void OSD_FileIterator :: Next () {
  
   do {
   
-   if (   !FindNextFile (  ( HANDLE )myHandle, _FD  )   ) {
+   if (   !FindNextFileW (  ( HANDLE )myHandle, _FD  )   ) {
    
     myFlag = Standard_False;
 
@@ -370,7 +352,10 @@ void OSD_FileIterator :: Next () {
 
 OSD_File OSD_FileIterator :: Values () {
 
- TheIterator.SetPath (   OSD_Path ( _FD -> cFileName  )   );
+ // make UTF-8 string
+ TCollection_AsciiString aFileName
+   (TCollection_ExtendedString( (Standard_ExtString) _FD -> cFileName) );
+ TheIterator.SetPath (   OSD_Path ( aFileName  )   );
 
  return TheIterator;
 

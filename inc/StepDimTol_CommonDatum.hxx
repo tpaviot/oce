@@ -6,49 +6,38 @@
 #ifndef _StepDimTol_CommonDatum_HeaderFile
 #define _StepDimTol_CommonDatum_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepDimTol_CommonDatum_HeaderFile
 #include <Handle_StepDimTol_CommonDatum.hxx>
-#endif
 
-#ifndef _Handle_StepDimTol_Datum_HeaderFile
 #include <Handle_StepDimTol_Datum.hxx>
-#endif
-#ifndef _StepRepr_CompositeShapeAspect_HeaderFile
 #include <StepRepr_CompositeShapeAspect.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepRepr_ProductDefinitionShape_HeaderFile
 #include <Handle_StepRepr_ProductDefinitionShape.hxx>
-#endif
-#ifndef _StepData_Logical_HeaderFile
 #include <StepData_Logical.hxx>
-#endif
 class StepDimTol_Datum;
 class TCollection_HAsciiString;
 class StepRepr_ProductDefinitionShape;
 
 
-//! Representation of STEP entity CommonDatum <br>
-class StepDimTol_CommonDatum : public StepRepr_CompositeShapeAspect {
+//! Representation of STEP entity CommonDatum
+class StepDimTol_CommonDatum : public StepRepr_CompositeShapeAspect
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepDimTol_CommonDatum();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aShapeAspect_Name,const Handle(TCollection_HAsciiString)& aShapeAspect_Description,const Handle(StepRepr_ProductDefinitionShape)& aShapeAspect_OfShape,const StepData_Logical aShapeAspect_ProductDefinitional,const Handle(TCollection_HAsciiString)& aDatum_Name,const Handle(TCollection_HAsciiString)& aDatum_Description,const Handle(StepRepr_ProductDefinitionShape)& aDatum_OfShape,const StepData_Logical aDatum_ProductDefinitional,const Handle(TCollection_HAsciiString)& aDatum_Identification) ;
-  //! Returns data for supertype Datum <br>
-  Standard_EXPORT     Handle_StepDimTol_Datum Datum() const;
-  //! Set data for supertype Datum <br>
-  Standard_EXPORT     void SetDatum(const Handle(StepDimTol_Datum)& Datum) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepDimTol_CommonDatum();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aShapeAspect_Name, const Handle(TCollection_HAsciiString)& aShapeAspect_Description, const Handle(StepRepr_ProductDefinitionShape)& aShapeAspect_OfShape, const StepData_Logical aShapeAspect_ProductDefinitional, const Handle(TCollection_HAsciiString)& aDatum_Name, const Handle(TCollection_HAsciiString)& aDatum_Description, const Handle(StepRepr_ProductDefinitionShape)& aDatum_OfShape, const StepData_Logical aDatum_ProductDefinitional, const Handle(TCollection_HAsciiString)& aDatum_Identification) ;
+  
+  //! Returns data for supertype Datum
+  Standard_EXPORT   Handle(StepDimTol_Datum) Datum()  const;
+  
+  //! Set data for supertype Datum
+  Standard_EXPORT   void SetDatum (const Handle(StepDimTol_Datum)& Datum) ;
 
 
 
@@ -63,7 +52,7 @@ protected:
 private: 
 
 
-Handle_StepDimTol_Datum theDatum;
+  Handle(StepDimTol_Datum) theDatum;
 
 
 };
@@ -72,7 +61,6 @@ Handle_StepDimTol_Datum theDatum;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepDimTol_CommonDatum_HeaderFile

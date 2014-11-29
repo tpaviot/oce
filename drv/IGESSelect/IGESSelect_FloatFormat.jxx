@@ -1,12 +1,4 @@
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _IFSelect_ContextWrite_HeaderFile
 #include <IFSelect_ContextWrite.hxx>
-#endif
-#ifndef _IGESData_IGESWriter_HeaderFile
 #include <IGESData_IGESWriter.hxx>
-#endif
-#ifndef _IGESSelect_FloatFormat_HeaderFile
 #include <IGESSelect_FloatFormat.hxx>
-#endif

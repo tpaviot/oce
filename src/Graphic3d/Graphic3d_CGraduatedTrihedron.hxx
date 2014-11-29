@@ -18,7 +18,6 @@
 
 #include <Standard_Boolean.hxx>
 #include <Standard_Integer.hxx>
-#include <Standard_Type.hxx>
 #include <Quantity_Color.hxx>
 #include <TCollection_AsciiString.hxx>
 #include <TCollection_ExtendedString.hxx>
@@ -26,6 +25,7 @@
 
 class Visual3d_View;
 
+//! Defines the C structure of a graduated trihedron.
 class Graphic3d_CGraduatedTrihedron
 {
 public:
@@ -100,7 +100,5 @@ public:
     minMaxValuesCallback cbCubicAxes;
     Visual3d_View* ptrVisual3dView;
 };
-
-const Handle(Standard_Type)& TYPE(Graphic3d_CGraduatedTrihedron);
 
 #endif /*Graphic3d_CGraduatedTrihedron_HeaderFile*/

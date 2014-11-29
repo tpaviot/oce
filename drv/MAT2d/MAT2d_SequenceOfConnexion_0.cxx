@@ -5,21 +5,13 @@
 
 #include <MAT2d_SequenceOfConnexion.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _MAT2d_Connexion_HeaderFile
 #include <MAT2d_Connexion.hxx>
-#endif
-#ifndef _MAT2d_SequenceNodeOfSequenceOfConnexion_HeaderFile
 #include <MAT2d_SequenceNodeOfSequenceOfConnexion.hxx>
-#endif
  
 
-#define SeqItem Handle_MAT2d_Connexion
+#define SeqItem Handle(MAT2d_Connexion)
 #define SeqItem_hxx <MAT2d_Connexion.hxx>
 #define TCollection_SequenceNode MAT2d_SequenceNodeOfSequenceOfConnexion
 #define TCollection_SequenceNode_hxx <MAT2d_SequenceNodeOfSequenceOfConnexion.hxx>

@@ -25,13 +25,14 @@ static Standard_CString allocate_message(const Standard_CString AString)
   Standard_CString aStr = 0;
   if(AString) {
     const Standard_Size aLen = strlen(AString);
-    aStr = new Standard_Character[aLen+sizeof(Standard_Integer)+1];
-    Standard_PCharacter pStr=(Standard_PCharacter)aStr;
-    strcpy(pStr+sizeof(Standard_Integer),AString);
-    *((Standard_Integer*)aStr) = 1;
+    aStr = (Standard_CString) malloc(aLen+sizeof(Standard_Integer)+1);
+    if (aStr) {
+      Standard_PCharacter pStr=(Standard_PCharacter)aStr;
+      strcpy(pStr+sizeof(Standard_Integer),AString);
+      *((Standard_Integer*)aStr) = 1;
+    }
   }
   return aStr;
-
 }
 
 static Standard_CString copy_message(Standard_CString aMessage)
@@ -49,7 +50,7 @@ static void deallocate_message(Standard_CString aMessage)
   if(aMessage) {
     (*((Standard_Integer*)aMessage))--;
     if(*((Standard_Integer*)aMessage)==0)
-      delete [](Standard_PCharacter)aMessage;
+      free((void*)aMessage);
   }
 }
 
@@ -77,9 +78,10 @@ Standard_Failure::Standard_Failure (const Standard_CString AString)
   myMessage = allocate_message(AString);
 }
 
-Standard_Failure::Standard_Failure (const Standard_Failure& aFailure) 
+Standard_Failure::Standard_Failure (const Standard_Failure& theFailure) 
+: Standard_Transient(theFailure)
 {
-  myMessage = copy_message(aFailure.myMessage);
+  myMessage = copy_message(theFailure.myMessage);
 }
 
 void Standard_Failure::Destroy()
@@ -135,14 +137,7 @@ void Standard_Failure::Reraise (const Standard_CString AString)
 
 void Standard_Failure::Reraise (const Standard_SStream& AReason) 
 {
-#ifdef USE_STL_STREAM
   SetMessageString(AReason.str().c_str());
-#else
-  // Note: use dirty tricks -- unavoidable with old streams 
-  ((Standard_SStream&)AReason) << ends;
-  SetMessageString(((Standard_SStream&)AReason).str());
-  ((Standard_SStream&)AReason).freeze (false);
-#endif
   Reraise();
 }
 

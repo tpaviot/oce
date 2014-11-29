@@ -6,77 +6,62 @@
 #ifndef _HLRBRep_FaceIterator_HeaderFile
 #define _HLRBRep_FaceIterator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_HLRAlgo_WiresBlock_HeaderFile
 #include <Handle_HLRAlgo_WiresBlock.hxx>
-#endif
-#ifndef _Handle_HLRAlgo_EdgesBlock_HeaderFile
 #include <Handle_HLRAlgo_EdgesBlock.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
 class HLRAlgo_WiresBlock;
 class HLRAlgo_EdgesBlock;
 class HLRBRep_FaceData;
 
 
 
-class HLRBRep_FaceIterator  {
+class HLRBRep_FaceIterator 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   HLRBRep_FaceIterator();
-  //! Begin an exploration of the edges of the face <fd> <br>
-  Standard_EXPORT     void InitEdge(HLRBRep_FaceData& fd) ;
+  Standard_EXPORT HLRBRep_FaceIterator();
   
-        Standard_Boolean MoreEdge() const;
+  //! Begin an exploration of the edges of the face <fd>
+  Standard_EXPORT   void InitEdge (HLRBRep_FaceData& fd) ;
   
-  Standard_EXPORT     void NextEdge() ;
-  //! Returns True if the current edge is the first of a <br>
-//!          wire. <br>
-//! <br>
-        Standard_Boolean BeginningOfWire() const;
-  //! Returns True if the current edge is the  last of a <br>
-//!          wire. <br>
-//! <br>
-        Standard_Boolean EndOfWire() const;
-  //! Skip the current wire in the exploration. <br>
-//! <br>
-        void SkipWire() ;
-  //! Returns the edges of the current wire. <br>
-//! <br>
-        Handle_HLRAlgo_EdgesBlock Wire() const;
+      Standard_Boolean MoreEdge()  const;
   
-        Standard_Integer Edge() const;
+  Standard_EXPORT   void NextEdge() ;
   
-        TopAbs_Orientation Orientation() const;
+  //! Returns True if the current edge is the first of a
+  //! wire.
+      Standard_Boolean BeginningOfWire()  const;
   
-        Standard_Boolean OutLine() const;
+  //! Returns True if the current edge is the  last of a
+  //! wire.
+      Standard_Boolean EndOfWire()  const;
   
-        Standard_Boolean Internal() const;
+  //! Skip the current wire in the exploration.
+      void SkipWire() ;
   
-        Standard_Boolean Double() const;
+  //! Returns the edges of the current wire.
+      Handle(HLRAlgo_EdgesBlock) Wire()  const;
   
-        Standard_Boolean IsoLine() const;
-
+      Standard_Integer Edge()  const;
+  
+      TopAbs_Orientation Orientation()  const;
+  
+      Standard_Boolean OutLine()  const;
+  
+      Standard_Boolean Internal()  const;
+  
+      Standard_Boolean Double()  const;
+  
+      Standard_Boolean IsoLine()  const;
 
 
 
@@ -91,12 +76,12 @@ private:
 
 
 
-Standard_Integer iWire;
-Standard_Integer nbWires;
-Standard_Integer iEdge;
-Standard_Integer nbEdges;
-Handle_HLRAlgo_WiresBlock myWires;
-Handle_HLRAlgo_EdgesBlock myEdges;
+  Standard_Integer iWire;
+  Standard_Integer nbWires;
+  Standard_Integer iEdge;
+  Standard_Integer nbEdges;
+  Handle(HLRAlgo_WiresBlock) myWires;
+  Handle(HLRAlgo_EdgesBlock) myEdges;
 
 
 };
@@ -106,7 +91,6 @@ Handle_HLRAlgo_EdgesBlock myEdges;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_FaceIterator_HeaderFile

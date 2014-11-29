@@ -6,41 +6,33 @@
 #ifndef _Graphic3d_Texture2Dmanual_HeaderFile
 #define _Graphic3d_Texture2Dmanual_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Graphic3d_Texture2Dmanual_HeaderFile
 #include <Handle_Graphic3d_Texture2Dmanual.hxx>
-#endif
 
-#ifndef _Graphic3d_Texture2D_HeaderFile
 #include <Graphic3d_Texture2D.hxx>
-#endif
-#ifndef _Graphic3d_NameOfTexture2D_HeaderFile
 #include <Graphic3d_NameOfTexture2D.hxx>
-#endif
-#ifndef _Image_PixMap_Handle_HeaderFile
 #include <Image_PixMap_Handle.hxx>
-#endif
 class TCollection_AsciiString;
 
 
-//! This class defined a manual texture 2D <br>
-//! facets MUST define texture coordinate <br>
-//! if you want to see somethings on. <br>
-class Graphic3d_Texture2Dmanual : public Graphic3d_Texture2D {
+//! This class defined a manual texture 2D
+//! facets MUST define texture coordinate
+//! if you want to see somethings on.
+class Graphic3d_Texture2Dmanual : public Graphic3d_Texture2D
+{
 
 public:
 
-  //! Creates a texture from a file <br>
-  Standard_EXPORT   Graphic3d_Texture2Dmanual(const TCollection_AsciiString& theFileName);
-  //! Creates a texture from a predefined texture name set. <br>
-  Standard_EXPORT   Graphic3d_Texture2Dmanual(const Graphic3d_NameOfTexture2D theNOT);
-  //! Creates a texture from the pixmap. <br>
-  Standard_EXPORT   Graphic3d_Texture2Dmanual(const Image_PixMap_Handle& thePixMap);
+  
+  //! Creates a texture from a file
+  Standard_EXPORT Graphic3d_Texture2Dmanual(const TCollection_AsciiString& theFileName);
+  
+  //! Creates a texture from a predefined texture name set.
+  Standard_EXPORT Graphic3d_Texture2Dmanual(const Graphic3d_NameOfTexture2D theNOT);
+  
+  //! Creates a texture from the pixmap.
+  Standard_EXPORT Graphic3d_Texture2Dmanual(const Image_PixMap_Handle& thePixMap);
 
 
 
@@ -63,7 +55,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Graphic3d_Texture2Dmanual_HeaderFile

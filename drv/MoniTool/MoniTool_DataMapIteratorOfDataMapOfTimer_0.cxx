@@ -5,26 +5,16 @@
 
 #include <MoniTool_DataMapIteratorOfDataMapOfTimer.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _MoniTool_Timer_HeaderFile
 #include <MoniTool_Timer.hxx>
-#endif
-#ifndef _MoniTool_MTHasher_HeaderFile
 #include <MoniTool_MTHasher.hxx>
-#endif
-#ifndef _MoniTool_DataMapOfTimer_HeaderFile
 #include <MoniTool_DataMapOfTimer.hxx>
-#endif
-#ifndef _MoniTool_DataMapNodeOfDataMapOfTimer_HeaderFile
 #include <MoniTool_DataMapNodeOfDataMapOfTimer.hxx>
-#endif
  
 
 #define TheKey Standard_CString
 #define TheKey_hxx <Standard_CString.hxx>
-#define TheItem Handle_MoniTool_Timer
+#define TheItem Handle(MoniTool_Timer)
 #define TheItem_hxx <MoniTool_Timer.hxx>
 #define Hasher MoniTool_MTHasher
 #define Hasher_hxx <MoniTool_MTHasher.hxx>

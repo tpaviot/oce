@@ -6,28 +6,14 @@
 #ifndef _SelectMgr_DataMapIteratorOfDataMapOfIntegerSensitive_HeaderFile
 #define _SelectMgr_DataMapIteratorOfDataMapOfIntegerSensitive_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_SelectBasics_SensitiveEntity_HeaderFile
 #include <Handle_SelectBasics_SensitiveEntity.hxx>
-#endif
-#ifndef _Handle_SelectMgr_DataMapNodeOfDataMapOfIntegerSensitive_HeaderFile
 #include <Handle_SelectMgr_DataMapNodeOfDataMapOfIntegerSensitive.hxx>
-#endif
 class Standard_NoSuchObject;
 class SelectBasics_SensitiveEntity;
 class TColStd_MapIntegerHasher;
@@ -36,22 +22,22 @@ class SelectMgr_DataMapNodeOfDataMapOfIntegerSensitive;
 
 
 
-class SelectMgr_DataMapIteratorOfDataMapOfIntegerSensitive  : public TCollection_BasicMapIterator {
+class SelectMgr_DataMapIteratorOfDataMapOfIntegerSensitive  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   SelectMgr_DataMapIteratorOfDataMapOfIntegerSensitive();
+  Standard_EXPORT SelectMgr_DataMapIteratorOfDataMapOfIntegerSensitive();
   
-  Standard_EXPORT   SelectMgr_DataMapIteratorOfDataMapOfIntegerSensitive(const SelectMgr_DataMapOfIntegerSensitive& aMap);
+  Standard_EXPORT SelectMgr_DataMapIteratorOfDataMapOfIntegerSensitive(const SelectMgr_DataMapOfIntegerSensitive& aMap);
   
-  Standard_EXPORT     void Initialize(const SelectMgr_DataMapOfIntegerSensitive& aMap) ;
+  Standard_EXPORT   void Initialize (const SelectMgr_DataMapOfIntegerSensitive& aMap) ;
   
-  Standard_EXPORT    const Standard_Integer& Key() const;
+  Standard_EXPORT  const  Standard_Integer& Key()  const;
   
-  Standard_EXPORT    const Handle_SelectBasics_SensitiveEntity& Value() const;
-
+  Standard_EXPORT  const  Handle(SelectBasics_SensitiveEntity)& Value()  const;
 
 
 
@@ -74,7 +60,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SelectMgr_DataMapIteratorOfDataMapOfIntegerSensitive_HeaderFile

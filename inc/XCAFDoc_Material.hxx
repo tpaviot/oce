@@ -6,31 +6,15 @@
 #ifndef _XCAFDoc_Material_HeaderFile
 #define _XCAFDoc_Material_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_XCAFDoc_Material_HeaderFile
 #include <Handle_XCAFDoc_Material.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
 class TCollection_HAsciiString;
 class Standard_GUID;
 class TDF_Label;
@@ -38,37 +22,38 @@ class TDF_Attribute;
 class TDF_RelocationTable;
 
 
-
-class XCAFDoc_Material : public TDF_Attribute {
+//! attribute to store material
+class XCAFDoc_Material : public TDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   XCAFDoc_Material();
+  Standard_EXPORT XCAFDoc_Material();
   
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-  Standard_EXPORT   static  Handle_XCAFDoc_Material Set(const TDF_Label& label,const Handle(TCollection_HAsciiString)& aName,const Handle(TCollection_HAsciiString)& aDescription,const Standard_Real aDensity,const Handle(TCollection_HAsciiString)& aDensName,const Handle(TCollection_HAsciiString)& aDensValType) ;
+  Standard_EXPORT static   Handle(XCAFDoc_Material) Set (const TDF_Label& label, const Handle(TCollection_HAsciiString)& aName, const Handle(TCollection_HAsciiString)& aDescription, const Standard_Real aDensity, const Handle(TCollection_HAsciiString)& aDensName, const Handle(TCollection_HAsciiString)& aDensValType) ;
   
-  Standard_EXPORT     void Set(const Handle(TCollection_HAsciiString)& aName,const Handle(TCollection_HAsciiString)& aDescription,const Standard_Real aDensity,const Handle(TCollection_HAsciiString)& aDensName,const Handle(TCollection_HAsciiString)& aDensValType) ;
+  Standard_EXPORT   void Set (const Handle(TCollection_HAsciiString)& aName, const Handle(TCollection_HAsciiString)& aDescription, const Standard_Real aDensity, const Handle(TCollection_HAsciiString)& aDensName, const Handle(TCollection_HAsciiString)& aDensValType) ;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString GetName() const;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) GetName()  const;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString GetDescription() const;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) GetDescription()  const;
   
-  Standard_EXPORT     Standard_Real GetDensity() const;
+  Standard_EXPORT   Standard_Real GetDensity()  const;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString GetDensName() const;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) GetDensName()  const;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString GetDensValType() const;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) GetDensValType()  const;
   
-  Standard_EXPORT    const Standard_GUID& ID() const;
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
   
-  Standard_EXPORT     void Restore(const Handle(TDF_Attribute)& With) ;
+  Standard_EXPORT   void Restore (const Handle(TDF_Attribute)& With) ;
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
   
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& Into,const Handle(TDF_RelocationTable)& RT) const;
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& Into, const Handle(TDF_RelocationTable)& RT)  const;
 
 
 
@@ -83,11 +68,11 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString myName;
-Handle_TCollection_HAsciiString myDescription;
-Standard_Real myDensity;
-Handle_TCollection_HAsciiString myDensName;
-Handle_TCollection_HAsciiString myDensValType;
+  Handle(TCollection_HAsciiString) myName;
+  Handle(TCollection_HAsciiString) myDescription;
+  Standard_Real myDensity;
+  Handle(TCollection_HAsciiString) myDensName;
+  Handle(TCollection_HAsciiString) myDensValType;
 
 
 };
@@ -96,7 +81,6 @@ Handle_TCollection_HAsciiString myDensValType;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XCAFDoc_Material_HeaderFile

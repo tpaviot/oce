@@ -68,11 +68,7 @@ LDOM_XmlReader::LDOM_XmlReader (const int                       aFileDes,
                                 TCollection_AsciiString&        anErrorString)
      : myEOF            (Standard_False),
        myFileDes        (aFileDes),
-#ifdef WNT
-       myIStream        (cin),  // one quirk of MSVC6.0: can't initialise by 0
-#else
-       myIStream        (* (istream *) UndefinedHandleAddress),
-#endif
+       myIStream        (cin),  // just a placeholder, myIStream will never be used anyway
        myError          (anErrorString),
        myDocument       (aDocument),
 	   myElement        (NULL),
@@ -377,7 +373,7 @@ LDOM_XmlReader::RecordType LDOM_XmlReader::ReadRecord
           myError = "Improper element tag termination";
         else {
           myPtr += 2;
-#ifdef DEB
+#ifdef OCCT_DEBUG
           theData.Clear();
           theData << myElement->GetTagName();
 #endif
@@ -390,7 +386,7 @@ LDOM_XmlReader::RecordType LDOM_XmlReader::ReadRecord
           return XML_UNKNOWN;
         }
         ++ myPtr;
-#ifdef DEB
+#ifdef OCCT_DEBUG
         theData.Clear();
         theData << myElement->GetTagName();
 #endif

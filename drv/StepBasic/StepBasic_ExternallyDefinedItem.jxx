@@ -1,9 +1,3 @@
-#ifndef _StepBasic_ExternalSource_HeaderFile
 #include <StepBasic_ExternalSource.hxx>
-#endif
-#ifndef _StepBasic_SourceItem_HeaderFile
 #include <StepBasic_SourceItem.hxx>
-#endif
-#ifndef _StepBasic_ExternallyDefinedItem_HeaderFile
 #include <StepBasic_ExternallyDefinedItem.hxx>
-#endif

@@ -6,38 +6,27 @@
 #ifndef _BRepCheck_ListNodeOfListOfStatus_HeaderFile
 #define _BRepCheck_ListNodeOfListOfStatus_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepCheck_ListNodeOfListOfStatus_HeaderFile
 #include <Handle_BRepCheck_ListNodeOfListOfStatus.hxx>
-#endif
 
-#ifndef _BRepCheck_Status_HeaderFile
 #include <BRepCheck_Status.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class BRepCheck_ListOfStatus;
 class BRepCheck_ListIteratorOfListOfStatus;
 
 
 
-class BRepCheck_ListNodeOfListOfStatus : public TCollection_MapNode {
+class BRepCheck_ListNodeOfListOfStatus : public TCollection_MapNode
+{
 
 public:
 
   
-      BRepCheck_ListNodeOfListOfStatus(const BRepCheck_Status& I,const TCollection_MapNodePtr& n);
+    BRepCheck_ListNodeOfListOfStatus(const BRepCheck_Status& I, const TCollection_MapNodePtr& n);
   
-        BRepCheck_Status& Value() const;
+      BRepCheck_Status& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-BRepCheck_Status myValue;
+  BRepCheck_Status myValue;
 
 
 };
@@ -82,7 +71,6 @@ BRepCheck_Status myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepCheck_ListNodeOfListOfStatus_HeaderFile

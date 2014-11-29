@@ -6,25 +6,13 @@
 #ifndef _TDataStd_LabelArray1_HeaderFile
 #define _TDataStd_LabelArray1_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -33,52 +21,52 @@ class TDF_Label;
 
 
 
-class TDataStd_LabelArray1  {
+class TDataStd_LabelArray1 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      TDataStd_LabelArray1(const Standard_Integer Low,const Standard_Integer Up);
+    TDataStd_LabelArray1(const Standard_Integer Low, const Standard_Integer Up);
   
-      TDataStd_LabelArray1(const TDF_Label& Item,const Standard_Integer Low,const Standard_Integer Up);
+    TDataStd_LabelArray1(const TDF_Label& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const TDF_Label& V) ;
+  Standard_EXPORT   void Init (const TDF_Label& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~TDataStd_LabelArray1()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const TDataStd_LabelArray1& Assign(const TDataStd_LabelArray1& Other) ;
-   const TDataStd_LabelArray1& operator =(const TDataStd_LabelArray1& Other) 
+  Standard_EXPORT  const  TDataStd_LabelArray1& Assign (const TDataStd_LabelArray1& Other) ;
+ const  TDataStd_LabelArray1& operator = (const TDataStd_LabelArray1& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const TDF_Label& Value) ;
+      void SetValue (const Standard_Integer Index, const TDF_Label& Value) ;
   
-       const TDF_Label& Value(const Standard_Integer Index) const;
-     const TDF_Label& operator ()(const Standard_Integer Index) const
+     const  TDF_Label& Value (const Standard_Integer Index)  const;
+   const  TDF_Label& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        TDF_Label& ChangeValue(const Standard_Integer Index) ;
-      TDF_Label& operator ()(const Standard_Integer Index) 
+      TDF_Label& ChangeValue (const Standard_Integer Index) ;
+    TDF_Label& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -92,13 +80,13 @@ protected:
 private:
 
   
-  Standard_EXPORT   TDataStd_LabelArray1(const TDataStd_LabelArray1& AnArray);
+  Standard_EXPORT TDataStd_LabelArray1(const TDataStd_LabelArray1& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
@@ -116,7 +104,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_LabelArray1_HeaderFile

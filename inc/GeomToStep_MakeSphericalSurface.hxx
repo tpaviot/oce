@@ -6,44 +6,32 @@
 #ifndef _GeomToStep_MakeSphericalSurface_HeaderFile
 #define _GeomToStep_MakeSphericalSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_SphericalSurface_HeaderFile
 #include <Handle_StepGeom_SphericalSurface.hxx>
-#endif
-#ifndef _GeomToStep_Root_HeaderFile
 #include <GeomToStep_Root.hxx>
-#endif
-#ifndef _Handle_Geom_SphericalSurface_HeaderFile
 #include <Handle_Geom_SphericalSurface.hxx>
-#endif
 class StepGeom_SphericalSurface;
 class StdFail_NotDone;
 class Geom_SphericalSurface;
 
 
-//! This class implements the mapping between class <br>
-//!          SphericalSurface from Geom and the class <br>
-//!          SphericalSurface from StepGeom which describes a <br>
-//!          spherical_surface from Prostep <br>
-class GeomToStep_MakeSphericalSurface  : public GeomToStep_Root {
+//! This class implements the mapping between class
+//! SphericalSurface from Geom and the class
+//! SphericalSurface from StepGeom which describes a
+//! spherical_surface from Prostep
+class GeomToStep_MakeSphericalSurface  : public GeomToStep_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomToStep_MakeSphericalSurface(const Handle(Geom_SphericalSurface)& CSurf);
+  Standard_EXPORT GeomToStep_MakeSphericalSurface(const Handle(Geom_SphericalSurface)& CSurf);
   
-  Standard_EXPORT    const Handle_StepGeom_SphericalSurface& Value() const;
-
+  Standard_EXPORT  const  Handle(StepGeom_SphericalSurface)& Value()  const;
 
 
 
@@ -58,7 +46,7 @@ private:
 
 
 
-Handle_StepGeom_SphericalSurface theSphericalSurface;
+  Handle(StepGeom_SphericalSurface) theSphericalSurface;
 
 
 };
@@ -67,7 +55,6 @@ Handle_StepGeom_SphericalSurface theSphericalSurface;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomToStep_MakeSphericalSurface_HeaderFile

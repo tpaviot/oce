@@ -1,12 +1,4 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepShape_OpenShell_HeaderFile
 #include <StepShape_OpenShell.hxx>
-#endif
-#ifndef _StepShape_ClosedShell_HeaderFile
 #include <StepShape_ClosedShell.hxx>
-#endif
-#ifndef _StepShape_Shell_HeaderFile
 #include <StepShape_Shell.hxx>
-#endif

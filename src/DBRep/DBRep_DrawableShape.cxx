@@ -428,7 +428,7 @@ void  DBRep_DrawableShape::DrawOn(Draw_Display& dis) const
       GeomAbs_SurfaceType SurfType = S.GetType();
 
 // If the type of the surface is GeomAbs_SurfaceOfExtrusion or GeomAbs_SurfaceOfRevolution
-#ifdef DEB
+#ifdef OCCT_DEBUG
       GeomAbs_CurveType CurvType;
 #else
       GeomAbs_CurveType CurvType = GeomAbs_OtherCurve;
@@ -842,7 +842,7 @@ void DBRep_DrawableShape::DisplayHiddenLines(Draw_Display& dis)
   if (!strcmp(dout.GetType(id),"PERS")) focal = dout.Focal(id);
   Standard_Real Ang,Def;
   HLRBRep::PolyHLRAngleAndDeflection(myAng,Ang,Def);
-  BRepMesh_IncrementalMesh MESH(myShape,Def,Standard_True,Ang);
+  BRepMesh_IncrementalMesh MESH(myShape, Def, Standard_True, Ang);
   Standard_Boolean recompute = Standard_True;
   // find if the view must be recomputed
   DBRep_ListIteratorOfListOfHideData it(myHidData);

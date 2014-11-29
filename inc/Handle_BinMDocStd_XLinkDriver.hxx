@@ -6,22 +6,15 @@
 #ifndef _Handle_BinMDocStd_XLinkDriver_HeaderFile
 #define _Handle_BinMDocStd_XLinkDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_BinMDF_ADriver_HeaderFile
 #include <Handle_BinMDF_ADriver.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(BinMDF_ADriver);
 class BinMDocStd_XLinkDriver;
 
-DEFINE_STANDARD_HANDLE(BinMDocStd_XLinkDriver,BinMDF_ADriver)
+DEFINE_STANDARD_HANDLE(BinMDocStd_XLinkDriver, BinMDF_ADriver)
 
-#endif
+#endif // _Handle_BinMDocStd_XLinkDriver_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_TShort_HSequenceOfShortReal_HeaderFile
 #define _Handle_TShort_HSequenceOfShortReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_MMgt_TShared_HeaderFile
 #include <Handle_MMgt_TShared.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(MMgt_TShared);
 class TShort_HSequenceOfShortReal;
 
-DEFINE_STANDARD_HANDLE(TShort_HSequenceOfShortReal,MMgt_TShared)
+DEFINE_STANDARD_HANDLE(TShort_HSequenceOfShortReal, MMgt_TShared)
 
-#endif
+#endif // _Handle_TShort_HSequenceOfShortReal_HeaderFile

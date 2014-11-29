@@ -6,37 +6,17 @@
 #ifndef _PTopoDS_TShape_HeaderFile
 #define _PTopoDS_TShape_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PTopoDS_TShape_HeaderFile
 #include <Handle_PTopoDS_TShape.hxx>
-#endif
 
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_PTopoDS_HArray1OfHShape_HeaderFile
 #include <Handle_PTopoDS_HArray1OfHShape.hxx>
-#endif
-#ifndef _Handle_PTopoDS_HShape_HeaderFile
 #include <Handle_PTopoDS_HShape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
 
 // The Convex method can conflict with Convex defined as an integer
 // in X.h
@@ -48,45 +28,63 @@ class PTopoDS_HArray1OfHShape;
 class PTopoDS_HShape;
 
 
-class PTopoDS_TShape : public Standard_Persistent {
+class PTopoDS_TShape : public Standard_Persistent
+{
 
 public:
 
-  //! Returns the type as a term of the ShapeEnum enum : <br>
-//!          VERTEX, EDGE, WIRE, FACE, .... <br>
-  Standard_EXPORT   virtual  TopAbs_ShapeEnum ShapeType() const = 0;
-  //! Returns the modification flag. <br>
-  Standard_EXPORT     Standard_Boolean Modified() const;
-  //! Sets the modification flag. <br>
-  Standard_EXPORT     void Modified(const Standard_Boolean M) ;
-  //! Returns the checked flag. <br>
-  Standard_EXPORT     Standard_Boolean Checked() const;
-  //! Sets the checked flag. <br>
-  Standard_EXPORT     void Checked(const Standard_Boolean C) ;
-  //! Returns the orientability flag. <br>
-  Standard_EXPORT     Standard_Boolean Orientable() const;
-  //! Sets the orientability flag. <br>
-  Standard_EXPORT     void Orientable(const Standard_Boolean C) ;
-  //! Returns the closedness flag. <br>
-  Standard_EXPORT     Standard_Boolean Closed() const;
-  //! Sets the closedness flag. <br>
-  Standard_EXPORT     void Closed(const Standard_Boolean C) ;
-  //! Returns the infinity flag. <br>
-  Standard_EXPORT     Standard_Boolean Infinite() const;
-  //! Sets the infinity flag. <br>
-  Standard_EXPORT     void Infinite(const Standard_Boolean C) ;
-  //! Returns the convexness flag. <br>
-  Standard_EXPORT     Standard_Boolean Convex() const;
-  //! Sets the convexness flag. <br>
-  Standard_EXPORT     void Convex(const Standard_Boolean C) ;
-  //! Sets the hshape list <br>
-  Standard_EXPORT     Handle_PTopoDS_HArray1OfHShape Shapes() const;
-  //! Sets the i th element of the HShape list <br>
-  Standard_EXPORT     Handle_PTopoDS_HShape Shapes(const Standard_Integer I) const;
-  //! Returns the HShape list <br>
-  Standard_EXPORT     void Shapes(const Handle(PTopoDS_HArray1OfHShape)& S) ;
-  //! Returns the i th element of the hshape list <br>
-  Standard_EXPORT     void Shapes(const Standard_Integer I,const Handle(PTopoDS_HShape)& S) ;
+  
+  //! Returns the type as a term of the ShapeEnum enum :
+  //! VERTEX, EDGE, WIRE, FACE, ....
+  Standard_EXPORT virtual   TopAbs_ShapeEnum ShapeType()  const = 0;
+  
+  //! Returns the modification flag.
+  Standard_EXPORT   Standard_Boolean Modified()  const;
+  
+  //! Sets the modification flag.
+  Standard_EXPORT   void Modified (const Standard_Boolean M) ;
+  
+  //! Returns the checked flag.
+  Standard_EXPORT   Standard_Boolean Checked()  const;
+  
+  //! Sets the checked flag.
+  Standard_EXPORT   void Checked (const Standard_Boolean C) ;
+  
+  //! Returns the orientability flag.
+  Standard_EXPORT   Standard_Boolean Orientable()  const;
+  
+  //! Sets the orientability flag.
+  Standard_EXPORT   void Orientable (const Standard_Boolean C) ;
+  
+  //! Returns the closedness flag.
+  Standard_EXPORT   Standard_Boolean Closed()  const;
+  
+  //! Sets the closedness flag.
+  Standard_EXPORT   void Closed (const Standard_Boolean C) ;
+  
+  //! Returns the infinity flag.
+  Standard_EXPORT   Standard_Boolean Infinite()  const;
+  
+  //! Sets the infinity flag.
+  Standard_EXPORT   void Infinite (const Standard_Boolean C) ;
+  
+  //! Returns the convexness flag.
+  Standard_EXPORT   Standard_Boolean Convex()  const;
+  
+  //! Sets the convexness flag.
+  Standard_EXPORT   void Convex (const Standard_Boolean C) ;
+  
+  //! Sets the hshape list
+  Standard_EXPORT   Handle(PTopoDS_HArray1OfHShape) Shapes()  const;
+  
+  //! Sets the i th element of the HShape list
+  Standard_EXPORT   Handle(PTopoDS_HShape) Shapes (const Standard_Integer I)  const;
+  
+  //! Returns the HShape list
+  Standard_EXPORT   void Shapes (const Handle(PTopoDS_HArray1OfHShape)& S) ;
+  
+  //! Returns the i th element of the hshape list
+  Standard_EXPORT   void Shapes (const Standard_Integer I, const Handle(PTopoDS_HShape)& S) ;
 
 PTopoDS_TShape(const Storage_stCONSTclCOM& a) : Standard_Persistent(a)
 {
@@ -104,15 +102,15 @@ PTopoDS_TShape(const Storage_stCONSTclCOM& a) : Standard_Persistent(a)
 protected:
 
   
-  Standard_EXPORT   PTopoDS_TShape();
+  Standard_EXPORT PTopoDS_TShape();
 
 
 
 private: 
 
 
-Handle_PTopoDS_HArray1OfHShape myShapes;
-Standard_Integer myFlags;
+  Handle(PTopoDS_HArray1OfHShape) myShapes;
+  Standard_Integer myFlags;
 
 
 };
@@ -121,7 +119,6 @@ Standard_Integer myFlags;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PTopoDS_TShape_HeaderFile

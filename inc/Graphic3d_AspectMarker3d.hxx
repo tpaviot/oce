@@ -6,78 +6,66 @@
 #ifndef _Graphic3d_AspectMarker3d_HeaderFile
 #define _Graphic3d_AspectMarker3d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Graphic3d_AspectMarker3d_HeaderFile
 #include <Handle_Graphic3d_AspectMarker3d.hxx>
-#endif
 
-#ifndef _Graphic3d_MarkerImage_Handle_HeaderFile
 #include <Graphic3d_MarkerImage_Handle.hxx>
-#endif
-#ifndef _Graphic3d_ShaderProgram_Handle_HeaderFile
 #include <Graphic3d_ShaderProgram_Handle.hxx>
-#endif
-#ifndef _Aspect_AspectMarker_HeaderFile
 #include <Aspect_AspectMarker.hxx>
-#endif
-#ifndef _Aspect_TypeOfMarker_HeaderFile
 #include <Aspect_TypeOfMarker.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfByte_HeaderFile
 #include <Handle_TColStd_HArray1OfByte.hxx>
-#endif
-#ifndef _Image_PixMap_Handle_HeaderFile
 #include <Image_PixMap_Handle.hxx>
-#endif
 class Quantity_Color;
 class TColStd_HArray1OfByte;
 
 
-//! Creates and updates an attribute group for <br>
-//!          marker type primitives. This group contains the type <br>
-//!          of marker, its colour, and its scale factor. <br>
-class Graphic3d_AspectMarker3d : public Aspect_AspectMarker {
+//! Creates and updates an attribute group for
+//! marker type primitives. This group contains the type
+//! of marker, its colour, and its scale factor.
+class Graphic3d_AspectMarker3d : public Aspect_AspectMarker
+{
 
 public:
 
-  //! Creates a context table for marker primitives <br>
-//!          defined with the following default values: <br>
-//! <br>
-//!          Marker type : TOM_X <br>
-//!          Colour      : YELLOW <br>
-//!          Scale factor: 1.0 <br>
-  Standard_EXPORT   Graphic3d_AspectMarker3d();
   
-  Standard_EXPORT   Graphic3d_AspectMarker3d(const Aspect_TypeOfMarker theType,const Quantity_Color& theColor,const Standard_Real theScale);
-  //! Creates a context table for marker primitives <br>
-//!          defined with the specified values. <br>
-  Standard_EXPORT   Graphic3d_AspectMarker3d(const Quantity_Color& theColor,const Standard_Integer theWidth,const Standard_Integer theHeight,const Handle(TColStd_HArray1OfByte)& theTextureBitmap);
-  //! Creates a context table for marker primitives <br>
-//!          defined with the specified values. <br>
-  Standard_EXPORT   Graphic3d_AspectMarker3d(const Image_PixMap_Handle& theTextureImage);
-  //! Returns marker's texture size. <br>
-  Standard_EXPORT     void GetTextureSize(Standard_Integer& theWidth,Standard_Integer& theHeight) const;
-  //! Returns marker's image texture. <br>
-//! Could be null handle if marker aspect has been initialized as <br>
-//! default type of marker. <br>
-  Standard_EXPORT    const Graphic3d_MarkerImage_Handle& GetMarkerImage() const;
+  //! Creates a context table for marker primitives
+  //! defined with the following default values:
+  //!
+  //! Marker type : TOM_X
+  //! Colour      : YELLOW
+  //! Scale factor: 1.0
+  Standard_EXPORT Graphic3d_AspectMarker3d();
   
-  Standard_EXPORT     void SetBitMap(const Standard_Integer theWidth,const Standard_Integer theHeight,const Handle(TColStd_HArray1OfByte)& theTexture) ;
-  //! Sets up OpenGL/GLSL shader program. <br>
-  Standard_EXPORT     void SetShaderProgram(const Graphic3d_ShaderProgram_Handle& theProgram) ;
+  Standard_EXPORT Graphic3d_AspectMarker3d(const Aspect_TypeOfMarker theType, const Quantity_Color& theColor, const Standard_Real theScale);
   
-  Standard_EXPORT    const Graphic3d_ShaderProgram_Handle& ShaderProgram() const;
+  //! Creates a context table for marker primitives
+  //! defined with the specified values.
+  Standard_EXPORT Graphic3d_AspectMarker3d(const Quantity_Color& theColor, const Standard_Integer theWidth, const Standard_Integer theHeight, const Handle(TColStd_HArray1OfByte)& theTextureBitmap);
+  
+  //! Creates a context table for marker primitives
+  //! defined with the specified values.
+  Standard_EXPORT Graphic3d_AspectMarker3d(const Image_PixMap_Handle& theTextureImage);
+  
+  //! Returns marker's texture size.
+  Standard_EXPORT   void GetTextureSize (Standard_Integer& theWidth, Standard_Integer& theHeight)  const;
+  
+  //! Returns marker's image texture.
+  //! Could be null handle if marker aspect has been initialized as
+  //! default type of marker.
+  Standard_EXPORT  const  Graphic3d_MarkerImage_Handle& GetMarkerImage()  const;
+  
+  //! Set marker's image texture.
+  Standard_EXPORT   void SetMarkerImage (const Graphic3d_MarkerImage_Handle& theImage) ;
+  
+  Standard_EXPORT   void SetBitMap (const Standard_Integer theWidth, const Standard_Integer theHeight, const Handle(TColStd_HArray1OfByte)& theTexture) ;
+  
+  //! Sets up OpenGL/GLSL shader program.
+  Standard_EXPORT   void SetShaderProgram (const Graphic3d_ShaderProgram_Handle& theProgram) ;
+  
+  Standard_EXPORT  const  Graphic3d_ShaderProgram_Handle& ShaderProgram()  const;
 
 
 
@@ -87,13 +75,13 @@ public:
 protected:
 
 
-Graphic3d_MarkerImage_Handle myMarkerImage;
+  Graphic3d_MarkerImage_Handle myMarkerImage;
 
 
 private: 
 
 
-Graphic3d_ShaderProgram_Handle MyShaderProgram;
+  Graphic3d_ShaderProgram_Handle MyShaderProgram;
 
 
 };
@@ -102,7 +90,6 @@ Graphic3d_ShaderProgram_Handle MyShaderProgram;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Graphic3d_AspectMarker3d_HeaderFile

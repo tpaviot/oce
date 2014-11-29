@@ -5,16 +5,10 @@
 
 #include <Extrema_SequenceNodeOfSeqPCOfPCLocFOfLocEPCOfLocateExtPC.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Extrema_POnCurv_HeaderFile
 #include <Extrema_POnCurv.hxx>
-#endif
-#ifndef _Extrema_SeqPCOfPCLocFOfLocEPCOfLocateExtPC_HeaderFile
 #include <Extrema_SeqPCOfPCLocFOfLocEPCOfLocateExtPC.hxx>
-#endif
 
  
 

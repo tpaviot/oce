@@ -6,13 +6,12 @@
 #ifndef _StepElement_EnumeratedVolumeElementPurpose_HeaderFile
 #define _StepElement_EnumeratedVolumeElementPurpose_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepElement_EnumeratedVolumeElementPurpose {
+
+enum StepElement_EnumeratedVolumeElementPurpose
+{
 StepElement_StressDisplacement
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepElement_EnumeratedVolumeElementPurpose_HeaderFile

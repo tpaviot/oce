@@ -5,16 +5,10 @@
 
 #include <StepSelect_FileModifier.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _StepData_StepWriter_HeaderFile
 #include <StepData_StepWriter.hxx>
-#endif
-#ifndef _IFSelect_ContextWrite_HeaderFile
 #include <IFSelect_ContextWrite.hxx>
-#endif
 
  
 

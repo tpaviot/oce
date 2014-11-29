@@ -6,22 +6,15 @@
 #ifndef _Handle_StepFEA_Surface3dElementRepresentation_HeaderFile
 #define _Handle_StepFEA_Surface3dElementRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepFEA_ElementRepresentation_HeaderFile
 #include <Handle_StepFEA_ElementRepresentation.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepFEA_ElementRepresentation);
 class StepFEA_Surface3dElementRepresentation;
 
-DEFINE_STANDARD_HANDLE(StepFEA_Surface3dElementRepresentation,StepFEA_ElementRepresentation)
+DEFINE_STANDARD_HANDLE(StepFEA_Surface3dElementRepresentation, StepFEA_ElementRepresentation)
 
-#endif
+#endif // _Handle_StepFEA_Surface3dElementRepresentation_HeaderFile

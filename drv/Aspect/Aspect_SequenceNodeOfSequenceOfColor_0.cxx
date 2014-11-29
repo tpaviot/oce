@@ -5,16 +5,10 @@
 
 #include <Aspect_SequenceNodeOfSequenceOfColor.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Quantity_Color_HeaderFile
 #include <Quantity_Color.hxx>
-#endif
-#ifndef _Aspect_SequenceOfColor_HeaderFile
 #include <Aspect_SequenceOfColor.hxx>
-#endif
 
  
 

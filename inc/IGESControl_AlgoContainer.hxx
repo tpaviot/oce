@@ -6,28 +6,22 @@
 #ifndef _IGESControl_AlgoContainer_HeaderFile
 #define _IGESControl_AlgoContainer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESControl_AlgoContainer_HeaderFile
 #include <Handle_IGESControl_AlgoContainer.hxx>
-#endif
 
-#ifndef _IGESToBRep_AlgoContainer_HeaderFile
 #include <IGESToBRep_AlgoContainer.hxx>
-#endif
 
 
 
-class IGESControl_AlgoContainer : public IGESToBRep_AlgoContainer {
+class IGESControl_AlgoContainer : public IGESToBRep_AlgoContainer
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   IGESControl_AlgoContainer();
+  
+  //! Empty constructor
+  Standard_EXPORT IGESControl_AlgoContainer();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESControl_AlgoContainer_HeaderFile

@@ -6,66 +6,49 @@
 #ifndef _PBRep_CurveOnSurface_HeaderFile
 #define _PBRep_CurveOnSurface_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PBRep_CurveOnSurface_HeaderFile
 #include <Handle_PBRep_CurveOnSurface.hxx>
-#endif
 
-#ifndef _Handle_PGeom_Surface_HeaderFile
 #include <Handle_PGeom_Surface.hxx>
-#endif
-#ifndef _Handle_PGeom2d_Curve_HeaderFile
 #include <Handle_PGeom2d_Curve.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _PBRep_GCurve_HeaderFile
 #include <PBRep_GCurve.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class PGeom_Surface;
 class PGeom2d_Curve;
 class PTopLoc_Location;
 class gp_Pnt2d;
 
 
-class PBRep_CurveOnSurface : public PBRep_GCurve {
+class PBRep_CurveOnSurface : public PBRep_GCurve
+{
 
 public:
 
-  //! CF is curve first parameter <br>
-//!          CL is curve last parameter <br>
-//!          As far as they can't be computed from a Persistent Curve <br>
-//!          they are given in the CurveOnSurface constructor <br>
-  Standard_EXPORT   PBRep_CurveOnSurface(const Handle(PGeom2d_Curve)& PC,const Standard_Real CF,const Standard_Real CL,const Handle(PGeom_Surface)& S,const PTopLoc_Location& L);
   
-  Standard_EXPORT     Handle_PGeom_Surface Surface() const;
+  //! CF is curve first parameter
+  //! CL is curve last parameter
+  //! As far as they can't be computed from a Persistent Curve
+  //! they are given in the CurveOnSurface constructor
+  Standard_EXPORT PBRep_CurveOnSurface(const Handle(PGeom2d_Curve)& PC, const Standard_Real CF, const Standard_Real CL, const Handle(PGeom_Surface)& S, const PTopLoc_Location& L);
   
-  Standard_EXPORT     Handle_PGeom2d_Curve PCurve() const;
-  //! Returns True. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsCurveOnSurface() const;
+  Standard_EXPORT   Handle(PGeom_Surface) Surface()  const;
   
-  Standard_EXPORT     void SetUVPoints(const gp_Pnt2d& Pnt1,const gp_Pnt2d& Pnt2) ;
+  Standard_EXPORT   Handle(PGeom2d_Curve) PCurve()  const;
   
-  Standard_EXPORT     gp_Pnt2d FirstUV() const;
+  //! Returns True.
+  Standard_EXPORT virtual   Standard_Boolean IsCurveOnSurface()  const;
   
-  Standard_EXPORT     gp_Pnt2d LastUV() const;
+  Standard_EXPORT   void SetUVPoints (const gp_Pnt2d& Pnt1, const gp_Pnt2d& Pnt2) ;
+  
+  Standard_EXPORT   gp_Pnt2d FirstUV()  const;
+  
+  Standard_EXPORT   gp_Pnt2d LastUV()  const;
 
-  PBRep_CurveOnSurface( )
+PBRep_CurveOnSurface( )
 {
   
 }
@@ -92,10 +75,10 @@ protected:
 private: 
 
 
-Handle_PGeom2d_Curve myPCurve;
-Handle_PGeom_Surface mySurface;
-gp_Pnt2d myUV1;
-gp_Pnt2d myUV2;
+  Handle(PGeom2d_Curve) myPCurve;
+  Handle(PGeom_Surface) mySurface;
+  gp_Pnt2d myUV1;
+  gp_Pnt2d myUV2;
 
 
 };
@@ -104,7 +87,6 @@ gp_Pnt2d myUV2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PBRep_CurveOnSurface_HeaderFile

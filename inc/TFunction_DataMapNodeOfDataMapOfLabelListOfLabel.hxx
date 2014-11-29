@@ -6,28 +6,14 @@
 #ifndef _TFunction_DataMapNodeOfDataMapOfLabelListOfLabel_HeaderFile
 #define _TFunction_DataMapNodeOfDataMapOfLabelListOfLabel_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TFunction_DataMapNodeOfDataMapOfLabelListOfLabel_HeaderFile
 #include <Handle_TFunction_DataMapNodeOfDataMapOfLabelListOfLabel.hxx>
-#endif
 
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TDF_LabelList_HeaderFile
 #include <TDF_LabelList.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TDF_Label;
 class TDF_LabelList;
 class TDF_LabelMapHasher;
@@ -36,16 +22,17 @@ class TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel;
 
 
 
-class TFunction_DataMapNodeOfDataMapOfLabelListOfLabel : public TCollection_MapNode {
+class TFunction_DataMapNodeOfDataMapOfLabelListOfLabel : public TCollection_MapNode
+{
 
 public:
 
   
-      TFunction_DataMapNodeOfDataMapOfLabelListOfLabel(const TDF_Label& K,const TDF_LabelList& I,const TCollection_MapNodePtr& n);
+    TFunction_DataMapNodeOfDataMapOfLabelListOfLabel(const TDF_Label& K, const TDF_LabelList& I, const TCollection_MapNodePtr& n);
   
-        TDF_Label& Key() const;
+      TDF_Label& Key()  const;
   
-        TDF_LabelList& Value() const;
+      TDF_LabelList& Value()  const;
 
 
 
@@ -60,8 +47,8 @@ protected:
 private: 
 
 
-TDF_Label myKey;
-TDF_LabelList myValue;
+  TDF_Label myKey;
+  TDF_LabelList myValue;
 
 
 };
@@ -99,7 +86,6 @@ TDF_LabelList myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TFunction_DataMapNodeOfDataMapOfLabelListOfLabel_HeaderFile

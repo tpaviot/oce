@@ -6,25 +6,13 @@
 #ifndef _math_HeaderFile
 #define _math_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
+#include <math_Vector.hxx>
 #include <Standard_Boolean.hxx>
-#endif
-class math_Vector;
-class math_Vector;
-class math_IntegerVector;
 class math_Matrix;
 class math_Function;
 class math_FunctionWithDerivative;
@@ -70,53 +58,52 @@ class math_ValueAndWeight;
 class math_Array1OfValueAndWeight;
 class math_CompareOfValueAndWeight;
 class math_QuickSortOfValueAndWeight;
-class math_SingleTab;
 class math_DoubleTab;
-class math_SingleTabOfReal;
-class math_SingleTabOfInteger;
-class math_DoubleTabOfReal;
 
 
 
-class math  {
+class math 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Standard_Integer GaussPointsMax() ;
+  Standard_EXPORT static   Standard_Integer GaussPointsMax() ;
   
-  Standard_EXPORT   static  void GaussPoints(const Standard_Integer Index,math_Vector& Points) ;
+  Standard_EXPORT static   void GaussPoints (const Standard_Integer Index, math_Vector& Points) ;
   
-  Standard_EXPORT   static  void GaussWeights(const Standard_Integer Index,math_Vector& Weights) ;
-  //! Returns the maximal number of points for that the values <br>
-//!          are stored in the table. If the number is greater then <br>
-//!          KronrodPointsMax, the points will be computed. <br>
-  Standard_EXPORT   static  Standard_Integer KronrodPointsMax() ;
-  //! Returns a vector of Gauss points and a vector of their weights. <br>
-//!          The difference with the <br>
-//!          method GaussPoints is the following: <br>
-//!            - the points are returned in increasing order. <br>
-//!            - if Index is greater then GaussPointsMax, the points are <br>
-//!              computed. <br>
-//!          Returns Standard_True if Index is positive, Points' and Weights' <br>
-//!          length is equal to Index, Points and Weights are successfully computed. <br>
-  Standard_EXPORT   static  Standard_Boolean OrderedGaussPointsAndWeights(const Standard_Integer Index,math_Vector& Points,math_Vector& Weights) ;
-  //! Returns a vector of Kronrod points and a vector of their <br>
-//!          weights for Gauss-Kronrod computation method. <br>
-//!          Index should be odd and greater then or equal to 3, <br>
-//!          as the number of Kronrod points is equal to 2*N + 1, <br>
-//!          where N is a number of Gauss points. Points and Weights should <br>
-//!          have the size equal to Index. Each even element of Points <br>
-//!          represents a Gauss point value of N-th Gauss quadrature. <br>
-//!          The values from Index equal to 3 to 123 are stored in a <br>
-//!          table (see the file math_Kronrod.cxx). If Index is greater, <br>
-//!          then points and weights will be computed. Returns Standard_True <br>
-//!          if Index is odd, it is equal to the size of Points and Weights <br>
-//!          and the computation of Points and Weights is performed successfully. <br>
-//!          Otherwise this method returns Standard_False. <br>
-  Standard_EXPORT   static  Standard_Boolean KronrodPointsAndWeights(const Standard_Integer Index,math_Vector& Points,math_Vector& Weights) ;
-
+  Standard_EXPORT static   void GaussWeights (const Standard_Integer Index, math_Vector& Weights) ;
+  
+  //! Returns the maximal number of points for that the values
+  //! are stored in the table. If the number is greater then
+  //! KronrodPointsMax, the points will be computed.
+  Standard_EXPORT static   Standard_Integer KronrodPointsMax() ;
+  
+  //! Returns a vector of Gauss points and a vector of their weights.
+  //! The difference with the
+  //! method GaussPoints is the following:
+  //! - the points are returned in increasing order.
+  //! - if Index is greater then GaussPointsMax, the points are
+  //! computed.
+  //! Returns Standard_True if Index is positive, Points' and Weights'
+  //! length is equal to Index, Points and Weights are successfully computed.
+  Standard_EXPORT static   Standard_Boolean OrderedGaussPointsAndWeights (const Standard_Integer Index, math_Vector& Points, math_Vector& Weights) ;
+  
+  //! Returns a vector of Kronrod points and a vector of their
+  //! weights for Gauss-Kronrod computation method.
+  //! Index should be odd and greater then or equal to 3,
+  //! as the number of Kronrod points is equal to 2*N + 1,
+  //! where N is a number of Gauss points. Points and Weights should
+  //! have the size equal to Index. Each even element of Points
+  //! represents a Gauss point value of N-th Gauss quadrature.
+  //! The values from Index equal to 3 to 123 are stored in a
+  //! table (see the file math_Kronrod.cxx). If Index is greater,
+  //! then points and weights will be computed. Returns Standard_True
+  //! if Index is odd, it is equal to the size of Points and Weights
+  //! and the computation of Points and Weights is performed successfully.
+  //! Otherwise this method returns Standard_False.
+  Standard_EXPORT static   Standard_Boolean KronrodPointsAndWeights (const Standard_Integer Index, math_Vector& Points, math_Vector& Weights) ;
 
 
 
@@ -132,8 +119,6 @@ private:
 
 
 
-friend class math_Vector;
-friend class math_IntegerVector;
 friend class math_Matrix;
 friend class math_Function;
 friend class math_FunctionWithDerivative;
@@ -179,11 +164,7 @@ friend class math_ValueAndWeight;
 friend class math_Array1OfValueAndWeight;
 friend class math_CompareOfValueAndWeight;
 friend class math_QuickSortOfValueAndWeight;
-friend class math_SingleTab;
 friend class math_DoubleTab;
-friend class math_SingleTabOfReal;
-friend class math_SingleTabOfInteger;
-friend class math_DoubleTabOfReal;
 
 };
 
@@ -191,7 +172,6 @@ friend class math_DoubleTabOfReal;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _math_HeaderFile

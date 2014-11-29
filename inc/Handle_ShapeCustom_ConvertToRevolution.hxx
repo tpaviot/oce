@@ -6,22 +6,15 @@
 #ifndef _Handle_ShapeCustom_ConvertToRevolution_HeaderFile
 #define _Handle_ShapeCustom_ConvertToRevolution_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_BRepTools_Modification_HeaderFile
 #include <Handle_BRepTools_Modification.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(BRepTools_Modification);
 class ShapeCustom_ConvertToRevolution;
 
-DEFINE_STANDARD_HANDLE(ShapeCustom_ConvertToRevolution,BRepTools_Modification)
+DEFINE_STANDARD_HANDLE(ShapeCustom_ConvertToRevolution, BRepTools_Modification)
 
-#endif
+#endif // _Handle_ShapeCustom_ConvertToRevolution_HeaderFile

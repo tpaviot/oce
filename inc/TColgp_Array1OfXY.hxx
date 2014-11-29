@@ -6,25 +6,13 @@
 #ifndef _TColgp_Array1OfXY_HeaderFile
 #define _TColgp_Array1OfXY_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -33,52 +21,52 @@ class gp_XY;
 
 
 
-class TColgp_Array1OfXY  {
+class TColgp_Array1OfXY 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      TColgp_Array1OfXY(const Standard_Integer Low,const Standard_Integer Up);
+    TColgp_Array1OfXY(const Standard_Integer Low, const Standard_Integer Up);
   
-      TColgp_Array1OfXY(const gp_XY& Item,const Standard_Integer Low,const Standard_Integer Up);
+    TColgp_Array1OfXY(const gp_XY& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const gp_XY& V) ;
+  Standard_EXPORT   void Init (const gp_XY& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~TColgp_Array1OfXY()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const TColgp_Array1OfXY& Assign(const TColgp_Array1OfXY& Other) ;
-   const TColgp_Array1OfXY& operator =(const TColgp_Array1OfXY& Other) 
+  Standard_EXPORT  const  TColgp_Array1OfXY& Assign (const TColgp_Array1OfXY& Other) ;
+ const  TColgp_Array1OfXY& operator = (const TColgp_Array1OfXY& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const gp_XY& Value) ;
+      void SetValue (const Standard_Integer Index, const gp_XY& Value) ;
   
-       const gp_XY& Value(const Standard_Integer Index) const;
-     const gp_XY& operator ()(const Standard_Integer Index) const
+     const  gp_XY& Value (const Standard_Integer Index)  const;
+   const  gp_XY& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        gp_XY& ChangeValue(const Standard_Integer Index) ;
-      gp_XY& operator ()(const Standard_Integer Index) 
+      gp_XY& ChangeValue (const Standard_Integer Index) ;
+    gp_XY& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -92,13 +80,13 @@ protected:
 private:
 
   
-  Standard_EXPORT   TColgp_Array1OfXY(const TColgp_Array1OfXY& AnArray);
+  Standard_EXPORT TColgp_Array1OfXY(const TColgp_Array1OfXY& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
@@ -116,7 +104,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColgp_Array1OfXY_HeaderFile

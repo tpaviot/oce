@@ -7,7 +7,6 @@
 #define _CDM_DocumentPointer_HeaderFile
 
 class CDM_Document;
-
 typedef CDM_Document* CDM_DocumentPointer;
 
-#endif
+#endif // _CDM_DocumentPointer_HeaderFile

@@ -5,18 +5,10 @@
 
 #include <GeomInt_SequenceOfParameterAndOrientation.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _GeomInt_ParameterAndOrientation_HeaderFile
 #include <GeomInt_ParameterAndOrientation.hxx>
-#endif
-#ifndef _GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation_HeaderFile
 #include <GeomInt_SequenceNodeOfSequenceOfParameterAndOrientation.hxx>
-#endif
  
 
 #define SeqItem GeomInt_ParameterAndOrientation

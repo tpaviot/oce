@@ -6,104 +6,94 @@
 #ifndef _BRepPrimAPI_MakeRevol_HeaderFile
 #define _BRepPrimAPI_MakeRevol_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepSweep_Revol_HeaderFile
 #include <BRepSweep_Revol.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _BRepPrimAPI_MakeSweep_HeaderFile
 #include <BRepPrimAPI_MakeSweep.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopoDS_Shape;
 class gp_Ax1;
 class BRepSweep_Revol;
 class TopTools_ListOfShape;
 
 
-//! Class to make revolved sweep topologies. <br>
-//! <br>
-//!          a revolved sweep is defined by : <br>
-//! <br>
-//!          * A basis topology which is swept. <br>
-//! <br>
-//!            The   basis topology  must   not  contain solids <br>
-//!            (neither composite solids.). <br>
-//! <br>
-//!            The basis topology  may be copied  or  shared in <br>
-//!            the result. <br>
-//! <br>
-//!          * A rotation axis and angle : <br>
-//! <br>
-//!            - The axis is an Ax1 from gp. <br>
-//! <br>
-//!            - The angle is in [0, 2*Pi]. <br>
-//! <br>
-//!            - The angle default value is 2*Pi. <br>
-//! <br>
-//! <br>
-//!          The result is a topology with a higher dimension : <br>
-//! <br>
-//!            - Vertex -> Edge. <br>
-//!            - Edge   -> Face. <br>
-//!            - Wire   -> Shell. <br>
-//!            - Face   -> Solid. <br>
-//!            - Shell  -> CompSolid. <br>
-//! <br>
-//!            Sweeping a Compound sweeps  the elements  of the <br>
-//!            compound  and creates    a  compound with    the <br>
-//!            results. <br>
-//! <br>
-class BRepPrimAPI_MakeRevol  : public BRepPrimAPI_MakeSweep {
+//! Class to make revolved sweep topologies.
+//!
+//! a revolved sweep is defined by :
+//!
+//! * A basis topology which is swept.
+//!
+//! The   basis topology  must   not  contain solids
+//! (neither composite solids.).
+//!
+//! The basis topology  may be copied  or  shared in
+//! the result.
+//!
+//! * A rotation axis and angle :
+//!
+//! - The axis is an Ax1 from gp.
+//!
+//! - The angle is in [0, 2*Pi].
+//!
+//! - The angle default value is 2*Pi.
+//!
+//! The result is a topology with a higher dimension :
+//!
+//! - Vertex -> Edge.
+//! - Edge   -> Face.
+//! - Wire   -> Shell.
+//! - Face   -> Solid.
+//! - Shell  -> CompSolid.
+//!
+//! Sweeping a Compound sweeps  the elements  of the
+//! compound  and creates    a  compound with    the
+//! results.
+class BRepPrimAPI_MakeRevol  : public BRepPrimAPI_MakeSweep
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Builds the Revol of base S, axis  A and angle  D. If C <br>
-//!          is true, S is copied. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeRevol(const TopoDS_Shape& S,const gp_Ax1& A,const Standard_Real D,const Standard_Boolean Copy = Standard_False);
-  //! Builds the Revol of base S, axis  A and angle 2*Pi. If <br>
-//!          C is true, S is copied. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeRevol(const TopoDS_Shape& S,const gp_Ax1& A,const Standard_Boolean Copy = Standard_False);
-  //! Returns the internal sweeping algorithm. <br>
-//! <br>
-  Standard_EXPORT    const BRepSweep_Revol& Revol() const;
-  //! Builds the resulting shape (redefined from MakeShape). <br>
-  Standard_EXPORT   virtual  void Build() ;
-  //! Returns the first shape of the revol  (coinciding with <br>
-//!          the generating shape). <br>
-  Standard_EXPORT     TopoDS_Shape FirstShape() ;
-  //! Returns the TopoDS Shape of the end of the revol. <br>
-  Standard_EXPORT     TopoDS_Shape LastShape() ;
   
-  Standard_EXPORT   virtual const TopTools_ListOfShape& Generated(const TopoDS_Shape& S) ;
-  //! Returns the TopoDS Shape of the beginning of the revolution, <br>
-//!          generated with theShape  (subShape of the generating shape). <br>
-  Standard_EXPORT     TopoDS_Shape FirstShape(const TopoDS_Shape& theShape) ;
-  //! Returns the TopoDS Shape of the end of the revolution, <br>
-//!          generated with  theShape (subShape of the  generating shape). <br>
-  Standard_EXPORT     TopoDS_Shape LastShape(const TopoDS_Shape& theShape) ;
-  //! Check if there are degenerated edges in the result. <br>
-  Standard_EXPORT     Standard_Boolean HasDegenerated() const;
+  //! Builds the Revol of base S, axis  A and angle  D. If C
+  //! is true, S is copied.
+  Standard_EXPORT BRepPrimAPI_MakeRevol(const TopoDS_Shape& S, const gp_Ax1& A, const Standard_Real D, const Standard_Boolean Copy = Standard_False);
   
-  Standard_EXPORT    const TopTools_ListOfShape& Degenerated() const;
-
+  //! Builds the Revol of base S, axis  A and angle 2*Pi. If
+  //! C is true, S is copied.
+  Standard_EXPORT BRepPrimAPI_MakeRevol(const TopoDS_Shape& S, const gp_Ax1& A, const Standard_Boolean Copy = Standard_False);
+  
+  //! Returns the internal sweeping algorithm.
+  Standard_EXPORT  const  BRepSweep_Revol& Revol()  const;
+  
+  //! Builds the resulting shape (redefined from MakeShape).
+  Standard_EXPORT virtual   void Build() ;
+  
+  //! Returns the first shape of the revol  (coinciding with
+  //! the generating shape).
+  Standard_EXPORT   TopoDS_Shape FirstShape() ;
+  
+  //! Returns the TopoDS Shape of the end of the revol.
+  Standard_EXPORT   TopoDS_Shape LastShape() ;
+  
+  Standard_EXPORT virtual  const  TopTools_ListOfShape& Generated (const TopoDS_Shape& S) ;
+  
+  //! Returns the TopoDS Shape of the beginning of the revolution,
+  //! generated with theShape  (subShape of the generating shape).
+  Standard_EXPORT   TopoDS_Shape FirstShape (const TopoDS_Shape& theShape) ;
+  
+  //! Returns the TopoDS Shape of the end of the revolution,
+  //! generated with  theShape (subShape of the  generating shape).
+  Standard_EXPORT   TopoDS_Shape LastShape (const TopoDS_Shape& theShape) ;
+  
+  //! Check if there are degenerated edges in the result.
+  Standard_EXPORT   Standard_Boolean HasDegenerated()  const;
+  
+  Standard_EXPORT  const  TopTools_ListOfShape& Degenerated()  const;
 
 
 
@@ -118,8 +108,8 @@ private:
 
 
 
-BRepSweep_Revol myRevol;
-TopTools_ListOfShape myDegenerated;
+  BRepSweep_Revol myRevol;
+  TopTools_ListOfShape myDegenerated;
 
 
 };
@@ -128,7 +118,6 @@ TopTools_ListOfShape myDegenerated;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepPrimAPI_MakeRevol_HeaderFile

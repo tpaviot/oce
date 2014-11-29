@@ -5,28 +5,14 @@
 
 #include <IGESDimen_HArray1OfGeneralNote.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _IGESDimen_GeneralNote_HeaderFile
 #include <IGESDimen_GeneralNote.hxx>
-#endif
-#ifndef _IGESDimen_Array1OfGeneralNote_HeaderFile
 #include <IGESDimen_Array1OfGeneralNote.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(IGESDimen_HArray1OfGeneralNote,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(IGESDimen_HArray1OfGeneralNote)
 
 
-#define ItemHArray1 Handle_IGESDimen_GeneralNote
+#define ItemHArray1 Handle(IGESDimen_GeneralNote)
 #define ItemHArray1_hxx <IGESDimen_GeneralNote.hxx>
 #define TheArray1 IGESDimen_Array1OfGeneralNote
 #define TheArray1_hxx <IGESDimen_Array1OfGeneralNote.hxx>

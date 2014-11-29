@@ -6,25 +6,13 @@
 #ifndef _TopOpeBRep_HArray1OfLineInter_HeaderFile
 #define _TopOpeBRep_HArray1OfLineInter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRep_HArray1OfLineInter_HeaderFile
 #include <Handle_TopOpeBRep_HArray1OfLineInter.hxx>
-#endif
 
-#ifndef _TopOpeBRep_Array1OfLineInter_HeaderFile
 #include <TopOpeBRep_Array1OfLineInter.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class TopOpeBRep_Array1OfLineInter;
 
 
 
-class TopOpeBRep_HArray1OfLineInter : public MMgt_TShared {
+class TopOpeBRep_HArray1OfLineInter : public MMgt_TShared
+{
 
 public:
 
   
-      TopOpeBRep_HArray1OfLineInter(const Standard_Integer Low,const Standard_Integer Up);
+    TopOpeBRep_HArray1OfLineInter(const Standard_Integer Low, const Standard_Integer Up);
   
-      TopOpeBRep_HArray1OfLineInter(const Standard_Integer Low,const Standard_Integer Up,const TopOpeBRep_LineInter& V);
+    TopOpeBRep_HArray1OfLineInter(const Standard_Integer Low, const Standard_Integer Up, const TopOpeBRep_LineInter& V);
   
-        void Init(const TopOpeBRep_LineInter& V) ;
+      void Init (const TopOpeBRep_LineInter& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const TopOpeBRep_LineInter& Value) ;
+      void SetValue (const Standard_Integer Index, const TopOpeBRep_LineInter& Value) ;
   
-       const TopOpeBRep_LineInter& Value(const Standard_Integer Index) const;
+     const  TopOpeBRep_LineInter& Value (const Standard_Integer Index)  const;
   
-        TopOpeBRep_LineInter& ChangeValue(const Standard_Integer Index) ;
+      TopOpeBRep_LineInter& ChangeValue (const Standard_Integer Index) ;
   
-       const TopOpeBRep_Array1OfLineInter& Array1() const;
+     const  TopOpeBRep_Array1OfLineInter& Array1()  const;
   
-        TopOpeBRep_Array1OfLineInter& ChangeArray1() ;
+      TopOpeBRep_Array1OfLineInter& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-TopOpeBRep_Array1OfLineInter myArray;
+  TopOpeBRep_Array1OfLineInter myArray;
 
 
 };
@@ -100,7 +89,6 @@ TopOpeBRep_Array1OfLineInter myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRep_HArray1OfLineInter_HeaderFile

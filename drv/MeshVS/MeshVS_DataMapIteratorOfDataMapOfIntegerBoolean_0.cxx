@@ -5,18 +5,10 @@
 
 #include <MeshVS_DataMapIteratorOfDataMapOfIntegerBoolean.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _MeshVS_DataMapOfIntegerBoolean_HeaderFile
 #include <MeshVS_DataMapOfIntegerBoolean.hxx>
-#endif
-#ifndef _MeshVS_DataMapNodeOfDataMapOfIntegerBoolean_HeaderFile
 #include <MeshVS_DataMapNodeOfDataMapOfIntegerBoolean.hxx>
-#endif
  
 
 #define TheKey Standard_Integer

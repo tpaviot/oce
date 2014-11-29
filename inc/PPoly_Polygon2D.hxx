@@ -6,52 +6,38 @@
 #ifndef _PPoly_Polygon2D_HeaderFile
 #define _PPoly_Polygon2D_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PPoly_Polygon2D_HeaderFile
 #include <Handle_PPoly_Polygon2D.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_PColgp_HArray1OfPnt2d_HeaderFile
 #include <Handle_PColgp_HArray1OfPnt2d.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
 class PColgp_HArray1OfPnt2d;
 
 
-class PPoly_Polygon2D : public Standard_Persistent {
+class PPoly_Polygon2D : public Standard_Persistent
+{
 
 public:
 
-  //! Defaults with allocation of nodes. <br>
-  Standard_EXPORT   PPoly_Polygon2D(const Handle(PColgp_HArray1OfPnt2d)& Nodes,const Standard_Real Defl);
   
-  Standard_EXPORT     Standard_Real Deflection() const;
+  //! Defaults with allocation of nodes.
+  Standard_EXPORT PPoly_Polygon2D(const Handle(PColgp_HArray1OfPnt2d)& Nodes, const Standard_Real Defl);
   
-  Standard_EXPORT     void Deflection(const Standard_Real Defl) ;
+  Standard_EXPORT   Standard_Real Deflection()  const;
   
-  Standard_EXPORT     Standard_Integer NbNodes() const;
+  Standard_EXPORT   void Deflection (const Standard_Real Defl) ;
   
-  Standard_EXPORT     Handle_PColgp_HArray1OfPnt2d Nodes() const;
+  Standard_EXPORT   Standard_Integer NbNodes()  const;
   
-  Standard_EXPORT     void Nodes(const Handle(PColgp_HArray1OfPnt2d)& Nodes) ;
+  Standard_EXPORT   Handle(PColgp_HArray1OfPnt2d) Nodes()  const;
+  
+  Standard_EXPORT   void Nodes (const Handle(PColgp_HArray1OfPnt2d)& Nodes) ;
 
-  PPoly_Polygon2D( )
+PPoly_Polygon2D( )
 {
   
 }
@@ -76,8 +62,8 @@ protected:
 private: 
 
 
-Standard_Real myDeflection;
-Handle_PColgp_HArray1OfPnt2d myNodes;
+  Standard_Real myDeflection;
+  Handle(PColgp_HArray1OfPnt2d) myNodes;
 
 
 };
@@ -86,7 +72,6 @@ Handle_PColgp_HArray1OfPnt2d myNodes;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PPoly_Polygon2D_HeaderFile

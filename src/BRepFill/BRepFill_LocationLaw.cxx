@@ -178,7 +178,7 @@ void BRepFill_LocationLaw::BiNormalIsMain()
       gp_Ax1 axe(gp::Origin(), cross.XYZ());
       N2.Rotate(axe, alpha); 
 
-#if DEB
+#ifdef OCCT_DEBUG
       if (N2.Dot(T1) > 1.e-9) {
 	cout << "Inprecision in TransformInCompatibleLaw" << endl;
         cout << "--- T1.R(N2) = " << N2.Dot(T1) << endl;
@@ -608,8 +608,7 @@ void BRepFill_LocationLaw::CurvilinearBounds(const Standard_Integer Index,
     gp_Trsf fila;
     fila.SetValues(M(1,1), M(1,2), M(1,3), V.X(),
 		   M(2,1), M(2,2), M(2,3), V.Y(),
-		   M(3,1), M(3,2), M(3,3), V.Z(),
-		   1.e-12, 1.e-14);
+		   M(3,1), M(3,2), M(3,3), V.Z());
     //TopLoc_Location Loc(fila);
     //W.Location(Loc.Multiplied(W.Location()));
     W = BRepBuilderAPI_Transform(W, fila, Standard_True); //copy
@@ -617,7 +616,7 @@ void BRepFill_LocationLaw::CurvilinearBounds(const Standard_Integer Index,
   }
   else {
     W.Nullify();
-#if DEB    
+#ifdef OCCT_DEBUG
     cout << "BRepFill_LocationLaw::D0 : Attention position out of limits" 
          << endl;
 #endif

@@ -5,19 +5,11 @@
 
 #include <TNaming_ListNodeOfListOfMapOfShape.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopTools_MapOfShape_HeaderFile
 #include <TopTools_MapOfShape.hxx>
-#endif
-#ifndef _TNaming_ListOfMapOfShape_HeaderFile
 #include <TNaming_ListOfMapOfShape.hxx>
-#endif
-#ifndef _TNaming_ListIteratorOfListOfMapOfShape_HeaderFile
 #include <TNaming_ListIteratorOfListOfMapOfShape.hxx>
-#endif
 
  
 

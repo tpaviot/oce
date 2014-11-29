@@ -6,18 +6,17 @@
 #ifndef _SelectMgr_TypeOfUpdate_HeaderFile
 #define _SelectMgr_TypeOfUpdate_HeaderFile
 
-//! Provides values for types of update, including <br>
-//! -   full <br>
-//! -   partial <br>
-//! -   none. <br>
-enum SelectMgr_TypeOfUpdate {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Provides values for types of update, including
+//! -   full
+//! -   partial
+//! -   none.
+enum SelectMgr_TypeOfUpdate
+{
 SelectMgr_TOU_Full,
 SelectMgr_TOU_Partial,
 SelectMgr_TOU_None
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _SelectMgr_TypeOfUpdate_HeaderFile

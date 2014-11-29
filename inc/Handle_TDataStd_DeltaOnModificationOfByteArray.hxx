@@ -6,22 +6,15 @@
 #ifndef _Handle_TDataStd_DeltaOnModificationOfByteArray_HeaderFile
 #define _Handle_TDataStd_DeltaOnModificationOfByteArray_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TDF_DeltaOnModification_HeaderFile
 #include <Handle_TDF_DeltaOnModification.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TDF_DeltaOnModification);
 class TDataStd_DeltaOnModificationOfByteArray;
 
-DEFINE_STANDARD_HANDLE(TDataStd_DeltaOnModificationOfByteArray,TDF_DeltaOnModification)
+DEFINE_STANDARD_HANDLE(TDataStd_DeltaOnModificationOfByteArray, TDF_DeltaOnModification)
 
-#endif
+#endif // _Handle_TDataStd_DeltaOnModificationOfByteArray_HeaderFile

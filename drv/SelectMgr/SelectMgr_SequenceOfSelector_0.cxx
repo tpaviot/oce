@@ -5,21 +5,13 @@
 
 #include <SelectMgr_SequenceOfSelector.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _SelectMgr_ViewerSelector_HeaderFile
 #include <SelectMgr_ViewerSelector.hxx>
-#endif
-#ifndef _SelectMgr_SequenceNodeOfSequenceOfSelector_HeaderFile
 #include <SelectMgr_SequenceNodeOfSequenceOfSelector.hxx>
-#endif
  
 
-#define SeqItem Handle_SelectMgr_ViewerSelector
+#define SeqItem Handle(SelectMgr_ViewerSelector)
 #define SeqItem_hxx <SelectMgr_ViewerSelector.hxx>
 #define TCollection_SequenceNode SelectMgr_SequenceNodeOfSequenceOfSelector
 #define TCollection_SequenceNode_hxx <SelectMgr_SequenceNodeOfSequenceOfSelector.hxx>

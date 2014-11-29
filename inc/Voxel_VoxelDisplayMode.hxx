@@ -6,16 +6,15 @@
 #ifndef _Voxel_VoxelDisplayMode_HeaderFile
 #define _Voxel_VoxelDisplayMode_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Voxel_VoxelDisplayMode {
+
+enum Voxel_VoxelDisplayMode
+{
 Voxel_VDM_POINTS,
 Voxel_VDM_NEARESTPOINTS,
 Voxel_VDM_BOXES,
 Voxel_VDM_NEARESTBOXES
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Voxel_VoxelDisplayMode_HeaderFile

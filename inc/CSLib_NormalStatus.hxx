@@ -6,24 +6,26 @@
 #ifndef _CSLib_NormalStatus_HeaderFile
 #define _CSLib_NormalStatus_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-//! <br>
-//!  if N is the normal <br>
-//! <br>
-//!  InfinityOfSolutions : ||DN/du||>Resolution, ||DN/dv||>Resolution <br>
-//! <br>
-//!  D1NuIsNull          : ||DN/du|| <= Resolution <br>
-//! <br>
-//!  D1NvIsNull          : ||DN/dv|| <= Resolution <br>
-//! <br>
-//!  D1NIsNull           : ||DN/du||<=Resolution, ||DN/dv||<=Resolution <br>
-//! <br>
-//!  D1NuNvRatioIsNull   : ||D1Nu|| / ||D1Nv|| <= RealEpsilon <br>
-//! <br>
-//!  D1NvNuRatioIsNull   : ||D1Nu|| / ||D1Nv|| <= RealEpsilon <br>
-//! <br>
-//!  D1NuIsParallelD1Nv  : The angle between D1Nu and D1Nv is Null. <br>
-enum CSLib_NormalStatus {
+
+//! if N is the normal
+//!
+//! InfinityOfSolutions : ||DN/du||>Resolution, ||DN/dv||>Resolution
+//!
+//! D1NuIsNull          : ||DN/du|| <= Resolution
+//!
+//! D1NvIsNull          : ||DN/dv|| <= Resolution
+//!
+//! D1NIsNull           : ||DN/du||<=Resolution, ||DN/dv||<=Resolution
+//!
+//! D1NuNvRatioIsNull   : ||D1Nu|| / ||D1Nv|| <= RealEpsilon
+//!
+//! D1NvNuRatioIsNull   : ||D1Nu|| / ||D1Nv|| <= RealEpsilon
+//!
+//! D1NuIsParallelD1Nv  : The angle between D1Nu and D1Nv is Null.
+enum CSLib_NormalStatus
+{
 CSLib_Singular,
 CSLib_Defined,
 CSLib_InfinityOfSolutions,
@@ -35,8 +37,4 @@ CSLib_D1NvNuRatioIsNull,
 CSLib_D1NuIsParallelD1Nv
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _CSLib_NormalStatus_HeaderFile

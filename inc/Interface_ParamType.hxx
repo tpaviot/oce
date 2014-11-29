@@ -6,8 +6,11 @@
 #ifndef _Interface_ParamType_HeaderFile
 #define _Interface_ParamType_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Interface_ParamType {
+
+enum Interface_ParamType
+{
 Interface_ParamMisc,
 Interface_ParamInteger,
 Interface_ParamReal,
@@ -21,8 +24,4 @@ Interface_ParamHexa,
 Interface_ParamBinary
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Interface_ParamType_HeaderFile

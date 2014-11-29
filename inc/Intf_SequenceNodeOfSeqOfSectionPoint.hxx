@@ -6,38 +6,27 @@
 #ifndef _Intf_SequenceNodeOfSeqOfSectionPoint_HeaderFile
 #define _Intf_SequenceNodeOfSeqOfSectionPoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Intf_SequenceNodeOfSeqOfSectionPoint_HeaderFile
 #include <Handle_Intf_SequenceNodeOfSeqOfSectionPoint.hxx>
-#endif
 
-#ifndef _Intf_SectionPoint_HeaderFile
 #include <Intf_SectionPoint.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Intf_SectionPoint;
 class Intf_SeqOfSectionPoint;
 
 
 
-class Intf_SequenceNodeOfSeqOfSectionPoint : public TCollection_SeqNode {
+class Intf_SequenceNodeOfSeqOfSectionPoint : public TCollection_SeqNode
+{
 
 public:
 
   
-      Intf_SequenceNodeOfSeqOfSectionPoint(const Intf_SectionPoint& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    Intf_SequenceNodeOfSeqOfSectionPoint(const Intf_SectionPoint& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Intf_SectionPoint& Value() const;
+      Intf_SectionPoint& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-Intf_SectionPoint myValue;
+  Intf_SectionPoint myValue;
 
 
 };
@@ -78,7 +67,6 @@ Intf_SectionPoint myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Intf_SequenceNodeOfSeqOfSectionPoint_HeaderFile

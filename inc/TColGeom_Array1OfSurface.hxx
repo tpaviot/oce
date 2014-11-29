@@ -6,28 +6,14 @@
 #ifndef _TColGeom_Array1OfSurface_HeaderFile
 #define _TColGeom_Array1OfSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -36,52 +22,52 @@ class Geom_Surface;
 
 
 
-class TColGeom_Array1OfSurface  {
+class TColGeom_Array1OfSurface 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      TColGeom_Array1OfSurface(const Standard_Integer Low,const Standard_Integer Up);
+    TColGeom_Array1OfSurface(const Standard_Integer Low, const Standard_Integer Up);
   
-      TColGeom_Array1OfSurface(const Handle(Geom_Surface)& Item,const Standard_Integer Low,const Standard_Integer Up);
+    TColGeom_Array1OfSurface(const Handle(Geom_Surface)& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const Handle(Geom_Surface)& V) ;
+  Standard_EXPORT   void Init (const Handle(Geom_Surface)& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~TColGeom_Array1OfSurface()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const TColGeom_Array1OfSurface& Assign(const TColGeom_Array1OfSurface& Other) ;
-   const TColGeom_Array1OfSurface& operator =(const TColGeom_Array1OfSurface& Other) 
+  Standard_EXPORT  const  TColGeom_Array1OfSurface& Assign (const TColGeom_Array1OfSurface& Other) ;
+ const  TColGeom_Array1OfSurface& operator = (const TColGeom_Array1OfSurface& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(Geom_Surface)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(Geom_Surface)& Value) ;
   
-       const Handle_Geom_Surface& Value(const Standard_Integer Index) const;
-     const Handle_Geom_Surface& operator ()(const Standard_Integer Index) const
+     const  Handle(Geom_Surface)& Value (const Standard_Integer Index)  const;
+   const  Handle(Geom_Surface)& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        Handle_Geom_Surface& ChangeValue(const Standard_Integer Index) ;
-      Handle_Geom_Surface& operator ()(const Standard_Integer Index) 
+      Handle(Geom_Surface)& ChangeValue (const Standard_Integer Index) ;
+    Handle(Geom_Surface)& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -95,18 +81,18 @@ protected:
 private:
 
   
-  Standard_EXPORT   TColGeom_Array1OfSurface(const TColGeom_Array1OfSurface& AnArray);
+  Standard_EXPORT TColGeom_Array1OfSurface(const TColGeom_Array1OfSurface& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
 
-#define Array1Item Handle_Geom_Surface
+#define Array1Item Handle(Geom_Surface)
 #define Array1Item_hxx <Geom_Surface.hxx>
 #define TCollection_Array1 TColGeom_Array1OfSurface
 #define TCollection_Array1_hxx <TColGeom_Array1OfSurface.hxx>
@@ -119,7 +105,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColGeom_Array1OfSurface_HeaderFile

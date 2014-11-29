@@ -1,6 +1,2 @@
-#ifndef _Adaptor3d_HSurface_HeaderFile
 #include <Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _IntPolyh_Point_HeaderFile
 #include <IntPolyh_Point.hxx>
-#endif

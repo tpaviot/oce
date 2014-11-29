@@ -6,25 +6,13 @@
 #ifndef _TNaming_Selector_HeaderFile
 #define _TNaming_Selector_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TNaming_NamedShape_HeaderFile
 #include <Handle_TNaming_NamedShape.hxx>
-#endif
 class TDF_Label;
 class TopoDS_Shape;
 class TNaming_NamedShape;
@@ -32,91 +20,100 @@ class TDF_LabelMap;
 class TDF_AttributeMap;
 
 
-//! This class provides a single API for selection of shapes. <br>
-//!          This involves both identification and selection of <br>
-//!          shapes in the data framework. <br>
-//!          If the selected shape is modified, this selector will <br>
-//!          solve its identifications. <br>
-//!          This class is the user interface for topological <br>
-//!          naming resources. <br>
-//!          * The   <IsIdentified> method returns  (if exists) <br>
-//!          the NamedShape which  contains a given shape. The <br>
-//!          definition of  an  identified shape is :   a Shape <br>
-//!           handled by a NamedShape  (this shape  is the only <br>
-//!          one stored) , which  has the TNaming_PRImITIVE evolution <br>
-//! <br>
-//!           *  The   <Select> method  returns   ALWAYS a  new <br>
-//!          NamedShape at the given  label, which contains the <br>
-//!           argument  selected  shape.    When  calling  this <br>
-//!          method, the sub-hierarchy of <label> is first cleared, <br>
-//!           then a TNaming_NamedShape   is ALWAYS created  at <br>
-//!          this <label>, with the TNaming_SELECTED evolution. <br>
-//!          The <Naming attribute> is associated to the selected <br>
-//!          shape which store the arguments of the selection . <br>
-//!          If the given selected shape was already identified <br>
-//!           (method IsIdentified)   , this   Naming attribute <br>
-//!            contains  the reference (Identity  code)  to the <br>
-//!          argument shape. <br>
-//! <br>
-//!           * The <Solve> method  update the current value of <br>
-//!          the NamedShape, according to the <Naming> attribute. <br>
-//!            A boolean status  is    returned to say  if  the <br>
-//!          algorithm succeed   or not.  To read   the current <br>
-//!           value    of the selected    Named  Shape  use the <br>
-//!           TNaming_Tool::GetShape    method,    as  for  any <br>
-//!          NamedShape attribute. <br>
-class TNaming_Selector  {
+//! This class provides a single API for selection of shapes.
+//! This involves both identification and selection of
+//! shapes in the data framework.
+//! If the selected shape is modified, this selector will
+//! solve its identifications.
+//! This class is the user interface for topological
+//! naming resources.
+//! * The   <IsIdentified> method returns  (if exists)
+//! the NamedShape which  contains a given shape. The
+//! definition of  an  identified shape is :   a Shape
+//! handled by a NamedShape  (this shape  is the only
+//! one stored) , which  has the TNaming_PRImITIVE evolution
+//!
+//! *  The   <Select> method  returns   ALWAYS a  new
+//! NamedShape at the given  label, which contains the
+//! argument  selected  shape.    When  calling  this
+//! method, the sub-hierarchy of <label> is first cleared,
+//! then a TNaming_NamedShape   is ALWAYS created  at
+//! this <label>, with the TNaming_SELECTED evolution.
+//! The <Naming attribute> is associated to the selected
+//! shape which store the arguments of the selection .
+//! If the given selected shape was already identified
+//! (method IsIdentified)   , this   Naming attribute
+//! contains  the reference (Identity  code)  to the
+//! argument shape.
+//!
+//! * The <Solve> method  update the current value of
+//! the NamedShape, according to the <Naming> attribute.
+//! A boolean status  is    returned to say  if  the
+//! algorithm succeed   or not.  To read   the current
+//! value    of the selected    Named  Shape  use the
+//! TNaming_Tool::GetShape    method,    as  for  any
+//! NamedShape attribute.
+class TNaming_Selector 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! To know if a shape is already identified (not selected) <br>
-//!          ======================================================= <br>
-//! The label access defines the point of access to the data framework. <br>
-//! selection is the shape for which we want to know <br>
-//! whether it is identified or not. <br>
-//! If true, NS is returned as the identity of selection. <br>
-//! If Geometry is true, NS will be the named shape <br>
-//! containing the first appearance of selection and <br>
-//! not any other shape. In other words, selection <br>
-//! must be the only shape stored in NS. <br>
-  Standard_EXPORT   static  Standard_Boolean IsIdentified(const TDF_Label& access,const TopoDS_Shape& selection,Handle(TNaming_NamedShape)& NS,const Standard_Boolean Geometry = Standard_False) ;
-  //!  Create a selector on this label <br>//!  to select a shape. <br>
-//!           ================== <br>
-  Standard_EXPORT   TNaming_Selector(const TDF_Label& aLabel);
   
-//! Creates a topological naming on the label <br>
-//! aLabel given as an argument at construction time. <br>
-//! If successful, the shape Selection - found in the <br>
-//! shape Context - is now identified in the named <br>
-//! shape returned in NamedShape. <br>
-//! If Geometry is true, NamedShape contains the <br>
-//! first appearance of Selection. <br>
-//! This syntax is more robust than the previous <br>
-//! syntax for this method. <br>
-  Standard_EXPORT     Standard_Boolean Select(const TopoDS_Shape& Selection,const TopoDS_Shape& Context,const Standard_Boolean Geometry = Standard_False,const Standard_Boolean KeepOrientatation = Standard_False) const;
+  //! To know if a shape is already identified (not selected)
+  //! =======================================================
+  //!
+  //! The label access defines the point of access to the data framework.
+  //! selection is the shape for which we want to know
+  //! whether it is identified or not.
+  //! If true, NS is returned as the identity of selection.
+  //! If Geometry is true, NS will be the named shape
+  //! containing the first appearance of selection and
+  //! not any other shape. In other words, selection
+  //! must be the only shape stored in NS.
+  Standard_EXPORT static   Standard_Boolean IsIdentified (const TDF_Label& access, const TopoDS_Shape& selection, Handle(TNaming_NamedShape)& NS, const Standard_Boolean Geometry = Standard_False) ;
   
-//! Creates a topological naming on the label <br>
-//! aLabel given as an argument at construction time. <br>
-//! If successful, the shape Selection is now <br>
-//! identified in the named shape returned in NamedShape. <br>
-//! If Geometry is true, NamedShape contains the <br>
-//! first appearance of Selection. <br>
-  Standard_EXPORT     Standard_Boolean Select(const TopoDS_Shape& Selection,const Standard_Boolean Geometry = Standard_False,const Standard_Boolean KeepOrientatation = Standard_False) const;
+  //! Create a selector on this label
+  //! to select a shape.
+  //! ==================
+  Standard_EXPORT TNaming_Selector(const TDF_Label& aLabel);
   
-//! Updates the topological naming on the label <br>
-//! aLabel given as an argument at construction time. <br>
-//! The underlying shape returned in the method <br>
-//! NamedShape is updated. <br>
-//! To read this shape, use the method TNaming_Tool::GetShape <br>
-  Standard_EXPORT     Standard_Boolean Solve(TDF_LabelMap& Valid) const;
-  //! Returns the attribute list args. <br>
-//! This list contains the named shape on which the topological naming was built. <br>
-  Standard_EXPORT     void Arguments(TDF_AttributeMap& args) const;
-  //! Returns the NamedShape build or under construction, <br>
-//! which contains the topological naming.. <br>
-  Standard_EXPORT     Handle_TNaming_NamedShape NamedShape() const;
 
+  //! Creates a topological naming on the label
+  //! aLabel given as an argument at construction time.
+  //! If successful, the shape Selection - found in the
+  //! shape Context - is now identified in the named
+  //! shape returned in NamedShape.
+  //! If Geometry is true, NamedShape contains the
+  //! first appearance of Selection.
+  //! This syntax is more robust than the previous
+  //! syntax for this method.
+  Standard_EXPORT   Standard_Boolean Select (const TopoDS_Shape& Selection, const TopoDS_Shape& Context, const Standard_Boolean Geometry = Standard_False, const Standard_Boolean KeepOrientatation = Standard_False)  const;
+  
+
+  //! Creates a topological naming on the label
+  //! aLabel given as an argument at construction time.
+  //! If successful, the shape Selection is now
+  //! identified in the named shape returned in NamedShape.
+  //! If Geometry is true, NamedShape contains the
+  //! first appearance of Selection.
+  Standard_EXPORT   Standard_Boolean Select (const TopoDS_Shape& Selection, const Standard_Boolean Geometry = Standard_False, const Standard_Boolean KeepOrientatation = Standard_False)  const;
+  
+
+  //! Updates the topological naming on the label
+  //! aLabel given as an argument at construction time.
+  //! The underlying shape returned in the method
+  //! NamedShape is updated.
+  //! To read this shape, use the method TNaming_Tool::GetShape
+  Standard_EXPORT   Standard_Boolean Solve (TDF_LabelMap& Valid)  const;
+  
+  //! Returns the attribute list args.
+  //! This list contains the named shape on which the topological naming was built.
+  Standard_EXPORT   void Arguments (TDF_AttributeMap& args)  const;
+  
+  //! Returns the NamedShape build or under construction,
+  //! which contains the topological naming..
+  Standard_EXPORT   Handle(TNaming_NamedShape) NamedShape()  const;
 
 
 
@@ -131,7 +128,7 @@ private:
 
 
 
-TDF_Label myLabel;
+  TDF_Label myLabel;
 
 
 };
@@ -140,7 +137,6 @@ TDF_Label myLabel;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TNaming_Selector_HeaderFile

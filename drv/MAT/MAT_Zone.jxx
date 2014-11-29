@@ -1,12 +1,4 @@
-#ifndef _MAT_BasicElt_HeaderFile
 #include <MAT_BasicElt.hxx>
-#endif
-#ifndef _MAT_Arc_HeaderFile
 #include <MAT_Arc.hxx>
-#endif
-#ifndef _MAT_Node_HeaderFile
 #include <MAT_Node.hxx>
-#endif
-#ifndef _MAT_Zone_HeaderFile
 #include <MAT_Zone.hxx>
-#endif

@@ -6,36 +6,26 @@
 #ifndef _TopLoc_MapLocationHasher_HeaderFile
 #define _TopLoc_MapLocationHasher_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopLoc_Location;
 
 
 
-class TopLoc_MapLocationHasher  {
+class TopLoc_MapLocationHasher 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Standard_Integer HashCode(const TopLoc_Location& K,const Standard_Integer Upper) ;
+  Standard_EXPORT static   Standard_Integer HashCode (const TopLoc_Location& K, const Standard_Integer Upper) ;
   
-  Standard_EXPORT   static  Standard_Boolean IsEqual(const TopLoc_Location& K1,const TopLoc_Location& K2) ;
-
+  Standard_EXPORT static   Standard_Boolean IsEqual (const TopLoc_Location& K1, const TopLoc_Location& K2) ;
 
 
 
@@ -58,7 +48,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopLoc_MapLocationHasher_HeaderFile

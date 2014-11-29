@@ -1,12 +1,4 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TNaming_Builder_HeaderFile
 #include <TNaming_Builder.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeShape_HeaderFile
 #include <TopTools_DataMapOfShapeShape.hxx>
-#endif
-#ifndef _QANewBRepNaming_LoaderParent_HeaderFile
 #include <QANewBRepNaming_LoaderParent.hxx>
-#endif

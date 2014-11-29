@@ -6,13 +6,11 @@
 #ifndef _Quantity_MomentOfAForce_HeaderFile
 #define _Quantity_MomentOfAForce_HeaderFile
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 
 typedef Standard_Real Quantity_MomentOfAForce;
 
 
 #define Quantity_MomentOfAForce_Type_() Standard_Real_Type_()
 
-#endif
+#endif // _Quantity_MomentOfAForce_HeaderFile

@@ -6,26 +6,15 @@
 #ifndef _AppParCurves_HeaderFile
 #define _AppParCurves_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
+#include <math_Vector.hxx>
 #include <Standard_Real.hxx>
-#endif
-class math_Vector;
+#include <math_IntegerVector.hxx>
 class math_Matrix;
-class math_IntegerVector;
-class AppParCurves_MLineTool;
 class AppParCurves_MultiPoint;
 class AppParCurves_MultiCurve;
 class AppParCurves_MultiBSpCurve;
@@ -43,14 +32,6 @@ class AppParCurves_BSpGradient;
 class AppParCurves_BSpGradient_BFGS;
 class AppParCurves_BSpParLeastSquare;
 class AppParCurves_BSpParFunction;
-class AppParCurves_Projection;
-class AppParCurves_ProLeastSquare;
-class AppParCurves_ProConstraint;
-class AppParCurves_ProFunction;
-class AppParCurves_SmoothCriterion;
-class AppParCurves_LinearCriteria;
-class AppParCurves_MyCriterion;
-class AppParCurves_Variational;
 class AppParCurves_Array1OfConstraintCouple;
 class AppParCurves_HArray1OfConstraintCouple;
 class AppParCurves_Array1OfMultiPoint;
@@ -65,24 +46,24 @@ class AppParCurves_SequenceNodeOfSequenceOfMultiCurve;
 class AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve;
 
 
-//! Parallel Approximation in n curves. <br>
-//! This package gives all the algorithms used to approximate a MultiLine <br>
-//! described by the tool MLineTool. <br>
-//! The result of the approximation will be a MultiCurve. <br>
-class AppParCurves  {
+//! Parallel Approximation in n curves.
+//! This package gives all the algorithms used to approximate a MultiLine
+//! described by the tool MLineTool.
+//! The result of the approximation will be a MultiCurve.
+class AppParCurves 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  void BernsteinMatrix(const Standard_Integer NbPoles,const math_Vector& U,math_Matrix& A) ;
+  Standard_EXPORT static   void BernsteinMatrix (const Standard_Integer NbPoles, const math_Vector& U, math_Matrix& A) ;
   
-  Standard_EXPORT   static  void Bernstein(const Standard_Integer NbPoles,const math_Vector& U,math_Matrix& A,math_Matrix& DA) ;
+  Standard_EXPORT static   void Bernstein (const Standard_Integer NbPoles, const math_Vector& U, math_Matrix& A, math_Matrix& DA) ;
   
-  Standard_EXPORT   static  void SecondDerivativeBernstein(const Standard_Real U,math_Vector& DDA) ;
+  Standard_EXPORT static   void SecondDerivativeBernstein (const Standard_Real U, math_Vector& DDA) ;
   
-  Standard_EXPORT   static  void SplineFunction(const Standard_Integer NbPoles,const Standard_Integer Degree,const math_Vector& Parameters,const math_Vector& FlatKnots,math_Matrix& A,math_Matrix& DA,math_IntegerVector& Index) ;
-
+  Standard_EXPORT static   void SplineFunction (const Standard_Integer NbPoles, const Standard_Integer Degree, const math_Vector& Parameters, const math_Vector& FlatKnots, math_Matrix& A, math_Matrix& DA, math_IntegerVector& Index) ;
 
 
 
@@ -98,7 +79,6 @@ private:
 
 
 
-friend class AppParCurves_MLineTool;
 friend class AppParCurves_MultiPoint;
 friend class AppParCurves_MultiCurve;
 friend class AppParCurves_MultiBSpCurve;
@@ -116,14 +96,6 @@ friend class AppParCurves_BSpGradient;
 friend class AppParCurves_BSpGradient_BFGS;
 friend class AppParCurves_BSpParLeastSquare;
 friend class AppParCurves_BSpParFunction;
-friend class AppParCurves_Projection;
-friend class AppParCurves_ProLeastSquare;
-friend class AppParCurves_ProConstraint;
-friend class AppParCurves_ProFunction;
-friend class AppParCurves_SmoothCriterion;
-friend class AppParCurves_LinearCriteria;
-friend class AppParCurves_MyCriterion;
-friend class AppParCurves_Variational;
 friend class AppParCurves_Array1OfConstraintCouple;
 friend class AppParCurves_HArray1OfConstraintCouple;
 friend class AppParCurves_Array1OfMultiPoint;
@@ -143,7 +115,6 @@ friend class AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AppParCurves_HeaderFile

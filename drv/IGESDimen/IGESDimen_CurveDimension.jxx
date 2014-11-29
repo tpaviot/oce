@@ -1,15 +1,5 @@
-#ifndef _IGESDimen_GeneralNote_HeaderFile
 #include <IGESDimen_GeneralNote.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _IGESDimen_LeaderArrow_HeaderFile
 #include <IGESDimen_LeaderArrow.hxx>
-#endif
-#ifndef _IGESDimen_WitnessLine_HeaderFile
 #include <IGESDimen_WitnessLine.hxx>
-#endif
-#ifndef _IGESDimen_CurveDimension_HeaderFile
 #include <IGESDimen_CurveDimension.hxx>
-#endif

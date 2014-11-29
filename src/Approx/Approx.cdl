@@ -52,13 +52,7 @@ enumeration Status is
     PointsAdded,
     NoPointsAdded,
     NoApproximation
-end;    
-
-    deferred generic class TheLineTool;    ---Template
-	---Purpose: This template is different from the one of AppParCurves.
-	--          In this case, it is possible to insert new points 
-	--          during the approximation with ComputeLine.
-    
+end;
     
     
 ---------------------------------------------
@@ -67,19 +61,8 @@ end;
 
 
    generic class ComputeLine, MyGradient;
-    ---Purpose: Approximate a MultiLine with a cutting.
 
    generic class ComputeCLine, MyLeastSquare;
-    ---Purpose: Approximate a continous MultiLine with a cutting.
-    --          The Tool of the line is the tool from AppCont.
-
-
-   generic class ComputeCSurface, MySLeastSquare;
-    ---Purpose: Approximate a continous Surface with or without cutting.
-    --          The tool is the tool of AppCont.   
-
-
-
 
 ----------------------------------------------
 ---Algorithms for BSpline curves construction:
@@ -131,10 +114,7 @@ end;
     	(Function2d from AppCont, FunctionTool2d from AppCont);
 
     class SameParameter from Approx ;
-    ---Purpose: this makes a 3D curve from Adaptor3d and
-    --          a curve on surface to check and build a 2D 
-    --          BSpline curve that has the same parameterisation
-    --          as the 3D curve.
+
     class Array1OfAdHSurface    instantiates Array1 from TCollection 
     	    	    	    (HSurface  from  Adaptor3d)                      ;
     class HArray1OfAdHSurface  instantiates HArray1 from TCollection
@@ -147,7 +127,6 @@ end;
 			    
     --    class ApproxPoints from Approx ;
     --    class ApproxPoints  from Approx ;
-    ---Purpose:  
     --      this approximates a series of points
     --   Boundary conditions can be given as well
     --   a given parameterisation

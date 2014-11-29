@@ -1,15 +1,5 @@
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IntRes2d_IntersectionPoint_HeaderFile
 #include <IntRes2d_IntersectionPoint.hxx>
-#endif
-#ifndef _IntRes2d_IntersectionSegment_HeaderFile
 #include <IntRes2d_IntersectionSegment.hxx>
-#endif
-#ifndef _IntRes2d_Intersection_HeaderFile
 #include <IntRes2d_Intersection.hxx>
-#endif

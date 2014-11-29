@@ -6,28 +6,14 @@
 #ifndef _TColStd_Array2OfTransient_HeaderFile
 #define _TColStd_Array2OfTransient_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
 class Standard_RangeError;
 class Standard_OutOfRange;
 class Standard_OutOfMemory;
@@ -36,56 +22,56 @@ class Standard_Transient;
 
 
 
-class TColStd_Array2OfTransient  {
+class TColStd_Array2OfTransient 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TColStd_Array2OfTransient(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+  Standard_EXPORT TColStd_Array2OfTransient(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2);
   
-  Standard_EXPORT   TColStd_Array2OfTransient(const Handle(Standard_Transient)& Item,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+  Standard_EXPORT TColStd_Array2OfTransient(const Handle(Standard_Transient)& Item, const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2);
   
-  Standard_EXPORT     void Init(const Handle(Standard_Transient)& V) ;
+  Standard_EXPORT   void Init (const Handle(Standard_Transient)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+  Standard_EXPORT   void Destroy() ;
 ~TColStd_Array2OfTransient()
 {
   Destroy();
 }
   
-  Standard_EXPORT    const TColStd_Array2OfTransient& Assign(const TColStd_Array2OfTransient& Other) ;
-   const TColStd_Array2OfTransient& operator =(const TColStd_Array2OfTransient& Other) 
+  Standard_EXPORT  const  TColStd_Array2OfTransient& Assign (const TColStd_Array2OfTransient& Other) ;
+ const  TColStd_Array2OfTransient& operator = (const TColStd_Array2OfTransient& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer ColLength() const;
+      Standard_Integer ColLength()  const;
   
-        Standard_Integer RowLength() const;
+      Standard_Integer RowLength()  const;
   
-        Standard_Integer LowerCol() const;
+      Standard_Integer LowerCol()  const;
   
-        Standard_Integer LowerRow() const;
+      Standard_Integer LowerRow()  const;
   
-        Standard_Integer UpperCol() const;
+      Standard_Integer UpperCol()  const;
   
-        Standard_Integer UpperRow() const;
+      Standard_Integer UpperRow()  const;
   
-        void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Handle(Standard_Transient)& Value) ;
+      void SetValue (const Standard_Integer Row, const Standard_Integer Col, const Handle(Standard_Transient)& Value) ;
   
-       const Handle_Standard_Transient& Value(const Standard_Integer Row,const Standard_Integer Col) const;
-     const Handle_Standard_Transient& operator()(const Standard_Integer Row,const Standard_Integer Col) const
+     const  Handle(Standard_Transient)& Value (const Standard_Integer Row, const Standard_Integer Col)  const;
+   const  Handle(Standard_Transient)& operator() (const Standard_Integer Row, const Standard_Integer Col)  const
 {
   return Value(Row,Col);
 }
   
-        Handle_Standard_Transient& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
-      Handle_Standard_Transient& operator()(const Standard_Integer Row,const Standard_Integer Col) 
+      Handle(Standard_Transient)& ChangeValue (const Standard_Integer Row, const Standard_Integer Col) ;
+    Handle(Standard_Transient)& operator() (const Standard_Integer Row, const Standard_Integer Col) 
 {
   return ChangeValue(Row,Col);
 }
-
 
 
 
@@ -99,22 +85,22 @@ protected:
 private:
 
   
-  Standard_EXPORT   TColStd_Array2OfTransient(const TColStd_Array2OfTransient& AnArray);
+  Standard_EXPORT TColStd_Array2OfTransient(const TColStd_Array2OfTransient& AnArray);
   
-  Standard_EXPORT     void Allocate() ;
+  Standard_EXPORT   void Allocate() ;
 
 
-Standard_Integer myLowerRow;
-Standard_Integer myLowerColumn;
-Standard_Integer myUpperRow;
-Standard_Integer myUpperColumn;
-Standard_Boolean myDeletable;
-Standard_Address myData;
+  Standard_Integer myLowerRow;
+  Standard_Integer myLowerColumn;
+  Standard_Integer myUpperRow;
+  Standard_Integer myUpperColumn;
+  Standard_Boolean myDeletable;
+  Standard_Address myData;
 
 
 };
 
-#define Array2Item Handle_Standard_Transient
+#define Array2Item Handle(Standard_Transient)
 #define Array2Item_hxx <Standard_Transient.hxx>
 #define TCollection_Array2 TColStd_Array2OfTransient
 #define TCollection_Array2_hxx <TColStd_Array2OfTransient.hxx>
@@ -127,7 +113,6 @@ Standard_Address myData;
 #undef TCollection_Array2_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_Array2OfTransient_HeaderFile

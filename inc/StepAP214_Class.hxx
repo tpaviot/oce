@@ -6,28 +6,22 @@
 #ifndef _StepAP214_Class_HeaderFile
 #define _StepAP214_Class_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepAP214_Class_HeaderFile
 #include <Handle_StepAP214_Class.hxx>
-#endif
 
-#ifndef _StepBasic_Group_HeaderFile
 #include <StepBasic_Group.hxx>
-#endif
 
 
-//! Representation of STEP entity Class <br>
-class StepAP214_Class : public StepBasic_Group {
+//! Representation of STEP entity Class
+class StepAP214_Class : public StepBasic_Group
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepAP214_Class();
+  
+  //! Empty constructor
+  Standard_EXPORT StepAP214_Class();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP214_Class_HeaderFile

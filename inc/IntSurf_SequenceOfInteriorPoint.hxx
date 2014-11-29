@@ -6,25 +6,13 @@
 #ifndef _IntSurf_SequenceOfInteriorPoint_HeaderFile
 #define _IntSurf_SequenceOfInteriorPoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_IntSurf_SequenceNodeOfSequenceOfInteriorPoint_HeaderFile
 #include <Handle_IntSurf_SequenceNodeOfSequenceOfInteriorPoint.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class IntSurf_InteriorPoint;
@@ -32,66 +20,68 @@ class IntSurf_SequenceNodeOfSequenceOfInteriorPoint;
 
 
 
-class IntSurf_SequenceOfInteriorPoint  : public TCollection_BaseSequence {
+class IntSurf_SequenceOfInteriorPoint  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      IntSurf_SequenceOfInteriorPoint();
+    IntSurf_SequenceOfInteriorPoint();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT IntSurf_SequenceOfInteriorPoint(const IntSurf_SequenceOfInteriorPoint& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~IntSurf_SequenceOfInteriorPoint()
 {
   Clear();
 }
   
-  Standard_EXPORT    const IntSurf_SequenceOfInteriorPoint& Assign(const IntSurf_SequenceOfInteriorPoint& Other) ;
-   const IntSurf_SequenceOfInteriorPoint& operator =(const IntSurf_SequenceOfInteriorPoint& Other) 
+  Standard_EXPORT  const  IntSurf_SequenceOfInteriorPoint& Assign (const IntSurf_SequenceOfInteriorPoint& Other) ;
+ const  IntSurf_SequenceOfInteriorPoint& operator = (const IntSurf_SequenceOfInteriorPoint& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const IntSurf_InteriorPoint& T) ;
+  Standard_EXPORT   void Append (const IntSurf_InteriorPoint& T) ;
   
-        void Append(IntSurf_SequenceOfInteriorPoint& S) ;
+      void Append (IntSurf_SequenceOfInteriorPoint& S) ;
   
-  Standard_EXPORT     void Prepend(const IntSurf_InteriorPoint& T) ;
+  Standard_EXPORT   void Prepend (const IntSurf_InteriorPoint& T) ;
   
-        void Prepend(IntSurf_SequenceOfInteriorPoint& S) ;
+      void Prepend (IntSurf_SequenceOfInteriorPoint& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const IntSurf_InteriorPoint& T) ;
+      void InsertBefore (const Standard_Integer Index, const IntSurf_InteriorPoint& T) ;
   
-        void InsertBefore(const Standard_Integer Index,IntSurf_SequenceOfInteriorPoint& S) ;
+      void InsertBefore (const Standard_Integer Index, IntSurf_SequenceOfInteriorPoint& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const IntSurf_InteriorPoint& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const IntSurf_InteriorPoint& T) ;
   
-        void InsertAfter(const Standard_Integer Index,IntSurf_SequenceOfInteriorPoint& S) ;
+      void InsertAfter (const Standard_Integer Index, IntSurf_SequenceOfInteriorPoint& S) ;
   
-  Standard_EXPORT    const IntSurf_InteriorPoint& First() const;
+  Standard_EXPORT  const  IntSurf_InteriorPoint& First()  const;
   
-  Standard_EXPORT    const IntSurf_InteriorPoint& Last() const;
+  Standard_EXPORT  const  IntSurf_InteriorPoint& Last()  const;
   
-        void Split(const Standard_Integer Index,IntSurf_SequenceOfInteriorPoint& Sub) ;
+      void Split (const Standard_Integer Index, IntSurf_SequenceOfInteriorPoint& Sub) ;
   
-  Standard_EXPORT    const IntSurf_InteriorPoint& Value(const Standard_Integer Index) const;
-   const IntSurf_InteriorPoint& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  IntSurf_InteriorPoint& Value (const Standard_Integer Index)  const;
+ const  IntSurf_InteriorPoint& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const IntSurf_InteriorPoint& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const IntSurf_InteriorPoint& I) ;
   
-  Standard_EXPORT     IntSurf_InteriorPoint& ChangeValue(const Standard_Integer Index) ;
-    IntSurf_InteriorPoint& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   IntSurf_InteriorPoint& ChangeValue (const Standard_Integer Index) ;
+  IntSurf_InteriorPoint& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -104,8 +94,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntSurf_SequenceOfInteriorPoint(const IntSurf_SequenceOfInteriorPoint& Other);
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntSurf_SequenceOfInteriorPoint_HeaderFile

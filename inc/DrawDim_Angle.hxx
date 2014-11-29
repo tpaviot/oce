@@ -6,43 +6,34 @@
 #ifndef _DrawDim_Angle_HeaderFile
 #define _DrawDim_Angle_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_DrawDim_Angle_HeaderFile
 #include <Handle_DrawDim_Angle.hxx>
-#endif
 
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _DrawDim_Dimension_HeaderFile
 #include <DrawDim_Dimension.hxx>
-#endif
 class TopoDS_Face;
 class Draw_Display;
 
 
 
-class DrawDim_Angle : public DrawDim_Dimension {
+class DrawDim_Angle : public DrawDim_Dimension
+{
 
 public:
 
   
-  Standard_EXPORT   DrawDim_Angle(const TopoDS_Face& plane1,const TopoDS_Face& plane2);
+  Standard_EXPORT DrawDim_Angle(const TopoDS_Face& plane1, const TopoDS_Face& plane2);
   
-  Standard_EXPORT    const TopoDS_Face& Plane1() const;
+  Standard_EXPORT  const  TopoDS_Face& Plane1()  const;
   
-  Standard_EXPORT     void Plane1(const TopoDS_Face& plane) ;
+  Standard_EXPORT   void Plane1 (const TopoDS_Face& plane) ;
   
-  Standard_EXPORT    const TopoDS_Face& Plane2() const;
+  Standard_EXPORT  const  TopoDS_Face& Plane2()  const;
   
-  Standard_EXPORT     void Plane2(const TopoDS_Face& plane) ;
+  Standard_EXPORT   void Plane2 (const TopoDS_Face& plane) ;
   
-  Standard_EXPORT     void DrawOn(Draw_Display& dis) const;
+  Standard_EXPORT   void DrawOn (Draw_Display& dis)  const;
 
 
 
@@ -57,8 +48,8 @@ protected:
 private: 
 
 
-TopoDS_Face myPlane1;
-TopoDS_Face myPlane2;
+  TopoDS_Face myPlane1;
+  TopoDS_Face myPlane2;
 
 
 };
@@ -67,7 +58,6 @@ TopoDS_Face myPlane2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DrawDim_Angle_HeaderFile

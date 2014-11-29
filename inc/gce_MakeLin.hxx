@@ -6,22 +6,12 @@
 #ifndef _gce_MakeLin_HeaderFile
 #define _gce_MakeLin_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
-#endif
-#ifndef _gce_Root_HeaderFile
 #include <gce_Root.hxx>
-#endif
 class StdFail_NotDone;
 class gp_Ax1;
 class gp_Pnt;
@@ -29,38 +19,43 @@ class gp_Dir;
 class gp_Lin;
 
 
-//! This class implements the following algorithms used <br>
-//!           to create a Lin from gp. <br>
-//!           * Create a Lin parallel to another and passing <br>
-//!             through a point. <br>
-//!           * Create a Lin passing through 2 points. <br>
-//!           * Create a lin from its axis (Ax1 from gp). <br>
-//!           * Create a lin from a point and a direction. <br>
-class gce_MakeLin  : public gce_Root {
+//! This class implements the following algorithms used
+//! to create a Lin from gp.
+//! * Create a Lin parallel to another and passing
+//! through a point.
+//! * Create a Lin passing through 2 points.
+//! * Create a lin from its axis (Ax1 from gp).
+//! * Create a lin from a point and a direction.
+class gce_MakeLin  : public gce_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates a line located along the axis A1. <br>
-  Standard_EXPORT   gce_MakeLin(const gp_Ax1& A1);
   
-//!  <P> is the location point (origin) of the line and <br>
-//!  <V> is the direction of the line. <br>
-  Standard_EXPORT   gce_MakeLin(const gp_Pnt& P,const gp_Dir& V);
-  //! Make a Lin from gp <TheLin> parallel to another <br>
-//!           Lin <Lin> and passing through a Pnt <Point>. <br>
-  Standard_EXPORT   gce_MakeLin(const gp_Lin& Lin,const gp_Pnt& Point);
-  //! Make a Lin from gp <TheLin> passing through 2 <br>
-//!           Pnt <P1>,<P2>. <br>
-//!           It returns false if <p1> and <P2> are confused. <br>
-  Standard_EXPORT   gce_MakeLin(const gp_Pnt& P1,const gp_Pnt& P2);
-  //! Returns the constructed line. <br>
-//! Exceptions StdFail_NotDone is raised if no line is constructed. <br>
-  Standard_EXPORT    const gp_Lin& Value() const;
+  //! Creates a line located along the axis A1.
+  Standard_EXPORT gce_MakeLin(const gp_Ax1& A1);
   
-  Standard_EXPORT    const gp_Lin& Operator() const;
-Standard_EXPORT operator gp_Lin() const;
 
+  //! <P> is the location point (origin) of the line and
+  //! <V> is the direction of the line.
+  Standard_EXPORT gce_MakeLin(const gp_Pnt& P, const gp_Dir& V);
+  
+  //! Make a Lin from gp <TheLin> parallel to another
+  //! Lin <Lin> and passing through a Pnt <Point>.
+  Standard_EXPORT gce_MakeLin(const gp_Lin& Lin, const gp_Pnt& Point);
+  
+  //! Make a Lin from gp <TheLin> passing through 2
+  //! Pnt <P1>,<P2>.
+  //! It returns false if <p1> and <P2> are confused.
+  Standard_EXPORT gce_MakeLin(const gp_Pnt& P1, const gp_Pnt& P2);
+  
+  //! Returns the constructed line.
+  //! Exceptions StdFail_NotDone is raised if no line is constructed.
+  Standard_EXPORT  const  gp_Lin& Value()  const;
+  
+  Standard_EXPORT  const  gp_Lin& Operator()  const;
+Standard_EXPORT operator gp_Lin() const;
 
 
 
@@ -75,7 +70,7 @@ private:
 
 
 
-gp_Lin TheLin;
+  gp_Lin TheLin;
 
 
 };
@@ -84,7 +79,6 @@ gp_Lin TheLin;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _gce_MakeLin_HeaderFile

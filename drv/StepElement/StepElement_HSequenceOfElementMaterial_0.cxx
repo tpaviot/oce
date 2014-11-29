@@ -5,22 +5,12 @@
 
 #include <StepElement_HSequenceOfElementMaterial.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StepElement_ElementMaterial_HeaderFile
 #include <StepElement_ElementMaterial.hxx>
-#endif
-#ifndef _StepElement_SequenceOfElementMaterial_HeaderFile
 #include <StepElement_SequenceOfElementMaterial.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(StepElement_HSequenceOfElementMaterial,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(StepElement_HSequenceOfElementMaterial)
 
 
-#define Item Handle_StepElement_ElementMaterial
+#define Item Handle(StepElement_ElementMaterial)
 #define Item_hxx <StepElement_ElementMaterial.hxx>
 #define TheSequence StepElement_SequenceOfElementMaterial
 #define TheSequence_hxx <StepElement_SequenceOfElementMaterial.hxx>

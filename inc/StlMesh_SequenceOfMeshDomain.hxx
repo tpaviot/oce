@@ -6,28 +6,14 @@
 #ifndef _StlMesh_SequenceOfMeshDomain_HeaderFile
 #define _StlMesh_SequenceOfMeshDomain_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_StlMesh_MeshDomain_HeaderFile
 #include <Handle_StlMesh_MeshDomain.hxx>
-#endif
-#ifndef _Handle_StlMesh_SequenceNodeOfSequenceOfMeshDomain_HeaderFile
 #include <Handle_StlMesh_SequenceNodeOfSequenceOfMeshDomain.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class StlMesh_MeshDomain;
@@ -35,66 +21,68 @@ class StlMesh_SequenceNodeOfSequenceOfMeshDomain;
 
 
 
-class StlMesh_SequenceOfMeshDomain  : public TCollection_BaseSequence {
+class StlMesh_SequenceOfMeshDomain  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      StlMesh_SequenceOfMeshDomain();
+    StlMesh_SequenceOfMeshDomain();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT StlMesh_SequenceOfMeshDomain(const StlMesh_SequenceOfMeshDomain& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~StlMesh_SequenceOfMeshDomain()
 {
   Clear();
 }
   
-  Standard_EXPORT    const StlMesh_SequenceOfMeshDomain& Assign(const StlMesh_SequenceOfMeshDomain& Other) ;
-   const StlMesh_SequenceOfMeshDomain& operator =(const StlMesh_SequenceOfMeshDomain& Other) 
+  Standard_EXPORT  const  StlMesh_SequenceOfMeshDomain& Assign (const StlMesh_SequenceOfMeshDomain& Other) ;
+ const  StlMesh_SequenceOfMeshDomain& operator = (const StlMesh_SequenceOfMeshDomain& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(StlMesh_MeshDomain)& T) ;
+  Standard_EXPORT   void Append (const Handle(StlMesh_MeshDomain)& T) ;
   
-        void Append(StlMesh_SequenceOfMeshDomain& S) ;
+      void Append (StlMesh_SequenceOfMeshDomain& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(StlMesh_MeshDomain)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(StlMesh_MeshDomain)& T) ;
   
-        void Prepend(StlMesh_SequenceOfMeshDomain& S) ;
+      void Prepend (StlMesh_SequenceOfMeshDomain& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(StlMesh_MeshDomain)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(StlMesh_MeshDomain)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,StlMesh_SequenceOfMeshDomain& S) ;
+      void InsertBefore (const Standard_Integer Index, StlMesh_SequenceOfMeshDomain& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(StlMesh_MeshDomain)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(StlMesh_MeshDomain)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,StlMesh_SequenceOfMeshDomain& S) ;
+      void InsertAfter (const Standard_Integer Index, StlMesh_SequenceOfMeshDomain& S) ;
   
-  Standard_EXPORT    const Handle_StlMesh_MeshDomain& First() const;
+  Standard_EXPORT  const  Handle(StlMesh_MeshDomain)& First()  const;
   
-  Standard_EXPORT    const Handle_StlMesh_MeshDomain& Last() const;
+  Standard_EXPORT  const  Handle(StlMesh_MeshDomain)& Last()  const;
   
-        void Split(const Standard_Integer Index,StlMesh_SequenceOfMeshDomain& Sub) ;
+      void Split (const Standard_Integer Index, StlMesh_SequenceOfMeshDomain& Sub) ;
   
-  Standard_EXPORT    const Handle_StlMesh_MeshDomain& Value(const Standard_Integer Index) const;
-   const Handle_StlMesh_MeshDomain& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(StlMesh_MeshDomain)& Value (const Standard_Integer Index)  const;
+ const  Handle(StlMesh_MeshDomain)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(StlMesh_MeshDomain)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(StlMesh_MeshDomain)& I) ;
   
-  Standard_EXPORT     Handle_StlMesh_MeshDomain& ChangeValue(const Standard_Integer Index) ;
-    Handle_StlMesh_MeshDomain& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(StlMesh_MeshDomain)& ChangeValue (const Standard_Integer Index) ;
+  Handle(StlMesh_MeshDomain)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -107,15 +95,13 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   StlMesh_SequenceOfMeshDomain(const StlMesh_SequenceOfMeshDomain& Other);
 
 
 
 
 };
 
-#define SeqItem Handle_StlMesh_MeshDomain
+#define SeqItem Handle(StlMesh_MeshDomain)
 #define SeqItem_hxx <StlMesh_MeshDomain.hxx>
 #define TCollection_SequenceNode StlMesh_SequenceNodeOfSequenceOfMeshDomain
 #define TCollection_SequenceNode_hxx <StlMesh_SequenceNodeOfSequenceOfMeshDomain.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StlMesh_SequenceOfMeshDomain_HeaderFile

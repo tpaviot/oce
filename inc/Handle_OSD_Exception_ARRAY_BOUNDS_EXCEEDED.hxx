@@ -6,22 +6,15 @@
 #ifndef _Handle_OSD_Exception_ARRAY_BOUNDS_EXCEEDED_HeaderFile
 #define _Handle_OSD_Exception_ARRAY_BOUNDS_EXCEEDED_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_OSD_Exception_HeaderFile
 #include <Handle_OSD_Exception.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(OSD_Exception);
 class OSD_Exception_ARRAY_BOUNDS_EXCEEDED;
 
-DEFINE_STANDARD_HANDLE(OSD_Exception_ARRAY_BOUNDS_EXCEEDED,OSD_Exception)
+DEFINE_STANDARD_HANDLE(OSD_Exception_ARRAY_BOUNDS_EXCEEDED, OSD_Exception)
 
-#endif
+#endif // _Handle_OSD_Exception_ARRAY_BOUNDS_EXCEEDED_HeaderFile

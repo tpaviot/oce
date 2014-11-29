@@ -6,18 +6,10 @@
 #ifndef _Handle_PColgp_HArray2OfVec2d_HeaderFile
 #define _Handle_PColgp_HArray2OfVec2d_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
 #include <Handle_Standard_Persistent.hxx>
-#endif
 
 class Standard_Persistent;
 class Handle(Standard_Type);

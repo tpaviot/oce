@@ -1,3 +1,1 @@
-#ifndef _StepElement_VolumeElementPurposeMember_HeaderFile
 #include <StepElement_VolumeElementPurposeMember.hxx>
-#endif

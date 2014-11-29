@@ -6,44 +6,32 @@
 #ifndef _DBC_VArrayTNodeOfVArrayOfReal_HeaderFile
 #define _DBC_VArrayTNodeOfVArrayOfReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_DBC_VArrayNodeOfVArrayOfReal_HeaderFile
 #include <Handle_DBC_VArrayNodeOfVArrayOfReal.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class DBC_VArrayOfReal;
 class DBC_VArrayNodeOfVArrayOfReal;
 
 
 
-class DBC_VArrayTNodeOfVArrayOfReal  {
+class DBC_VArrayTNodeOfVArrayOfReal 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      DBC_VArrayTNodeOfVArrayOfReal();
+    DBC_VArrayTNodeOfVArrayOfReal();
   
-      DBC_VArrayTNodeOfVArrayOfReal(const Standard_Real& aValue);
+    DBC_VArrayTNodeOfVArrayOfReal(const Standard_Real& aValue);
   
-        void SetValue(const Standard_Real& aValue) ;
+      void SetValue (const Standard_Real& aValue) ;
   
-        Standard_Address Value() const;
-
+      Standard_Address Value()  const;
 
 
 
@@ -58,7 +46,7 @@ private:
 
 
 
-Standard_Real myValue;
+  Standard_Real myValue;
 
 
 };
@@ -88,7 +76,6 @@ Standard_Real myValue;
 #undef DBC_VArray_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DBC_VArrayTNodeOfVArrayOfReal_HeaderFile

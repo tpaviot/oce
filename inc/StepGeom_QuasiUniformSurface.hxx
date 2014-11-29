@@ -6,28 +6,22 @@
 #ifndef _StepGeom_QuasiUniformSurface_HeaderFile
 #define _StepGeom_QuasiUniformSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_QuasiUniformSurface_HeaderFile
 #include <Handle_StepGeom_QuasiUniformSurface.hxx>
-#endif
 
-#ifndef _StepGeom_BSplineSurface_HeaderFile
 #include <StepGeom_BSplineSurface.hxx>
-#endif
 
 
 
-class StepGeom_QuasiUniformSurface : public StepGeom_BSplineSurface {
+class StepGeom_QuasiUniformSurface : public StepGeom_BSplineSurface
+{
 
 public:
 
-  //! Returns a QuasiUniformSurface <br>
-  Standard_EXPORT   StepGeom_QuasiUniformSurface();
+  
+  //! Returns a QuasiUniformSurface
+  Standard_EXPORT StepGeom_QuasiUniformSurface();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_QuasiUniformSurface_HeaderFile

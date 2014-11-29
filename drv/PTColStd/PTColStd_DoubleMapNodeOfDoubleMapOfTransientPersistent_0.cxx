@@ -5,28 +5,14 @@
 
 #include <PTColStd_DoubleMapNodeOfDoubleMapOfTransientPersistent.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _PTColStd_MapPersistentHasher_HeaderFile
 #include <PTColStd_MapPersistentHasher.hxx>
-#endif
-#ifndef _PTColStd_DoubleMapOfTransientPersistent_HeaderFile
 #include <PTColStd_DoubleMapOfTransientPersistent.hxx>
-#endif
-#ifndef _PTColStd_DoubleMapIteratorOfDoubleMapOfTransientPersistent_HeaderFile
 #include <PTColStd_DoubleMapIteratorOfDoubleMapOfTransientPersistent.hxx>
-#endif
 
  
 
@@ -45,9 +31,9 @@ IMPLEMENT_DOWNCAST(PTColStd_DoubleMapNodeOfDoubleMapOfTransientPersistent,Standa
 IMPLEMENT_STANDARD_RTTI(PTColStd_DoubleMapNodeOfDoubleMapOfTransientPersistent)
 
 
-#define TheKey1 Handle_Standard_Transient
+#define TheKey1 Handle(Standard_Transient)
 #define TheKey1_hxx <Standard_Transient.hxx>
-#define TheKey2 Handle_Standard_Persistent
+#define TheKey2 Handle(Standard_Persistent)
 #define TheKey2_hxx <Standard_Persistent.hxx>
 #define Hasher1 TColStd_MapTransientHasher
 #define Hasher1_hxx <TColStd_MapTransientHasher.hxx>

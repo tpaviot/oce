@@ -6,28 +6,14 @@
 #ifndef _AIS_DataMapIteratorOfDataMapOfIOStatus_HeaderFile
 #define _AIS_DataMapIteratorOfDataMapOfIOStatus_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_AIS_InteractiveObject_HeaderFile
 #include <Handle_AIS_InteractiveObject.hxx>
-#endif
-#ifndef _Handle_AIS_GlobalStatus_HeaderFile
 #include <Handle_AIS_GlobalStatus.hxx>
-#endif
-#ifndef _Handle_AIS_DataMapNodeOfDataMapOfIOStatus_HeaderFile
 #include <Handle_AIS_DataMapNodeOfDataMapOfIOStatus.hxx>
-#endif
 class Standard_NoSuchObject;
 class AIS_InteractiveObject;
 class AIS_GlobalStatus;
@@ -37,22 +23,22 @@ class AIS_DataMapNodeOfDataMapOfIOStatus;
 
 
 
-class AIS_DataMapIteratorOfDataMapOfIOStatus  : public TCollection_BasicMapIterator {
+class AIS_DataMapIteratorOfDataMapOfIOStatus  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   AIS_DataMapIteratorOfDataMapOfIOStatus();
+  Standard_EXPORT AIS_DataMapIteratorOfDataMapOfIOStatus();
   
-  Standard_EXPORT   AIS_DataMapIteratorOfDataMapOfIOStatus(const AIS_DataMapOfIOStatus& aMap);
+  Standard_EXPORT AIS_DataMapIteratorOfDataMapOfIOStatus(const AIS_DataMapOfIOStatus& aMap);
   
-  Standard_EXPORT     void Initialize(const AIS_DataMapOfIOStatus& aMap) ;
+  Standard_EXPORT   void Initialize (const AIS_DataMapOfIOStatus& aMap) ;
   
-  Standard_EXPORT    const Handle_AIS_InteractiveObject& Key() const;
+  Standard_EXPORT  const  Handle(AIS_InteractiveObject)& Key()  const;
   
-  Standard_EXPORT    const Handle_AIS_GlobalStatus& Value() const;
-
+  Standard_EXPORT  const  Handle(AIS_GlobalStatus)& Value()  const;
 
 
 
@@ -75,7 +61,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_DataMapIteratorOfDataMapOfIOStatus_HeaderFile

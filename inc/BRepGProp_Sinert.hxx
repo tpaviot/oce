@@ -6,57 +6,57 @@
 #ifndef _BRepGProp_Sinert_HeaderFile
 #define _BRepGProp_Sinert_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _GProp_GProps_HeaderFile
 #include <GProp_GProps.hxx>
-#endif
-class TopoDS_Edge;
 class BRepGProp_Face;
-class BRepGProp_Domain;
 class gp_Pnt;
+class BRepGProp_Domain;
 
 
 
-class BRepGProp_Sinert  : public GProp_GProps {
+//! Computes the global properties of a face in 3D space.
+//! The face 's requirements to evaluate the global properties
+//! are defined in the template FaceTool from package GProp.
+class BRepGProp_Sinert  : public GProp_GProps
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepGProp_Sinert();
+  Standard_EXPORT BRepGProp_Sinert();
   
-  Standard_EXPORT   BRepGProp_Sinert(const BRepGProp_Face& S,const gp_Pnt& SLocation);
+  Standard_EXPORT BRepGProp_Sinert(const BRepGProp_Face& S, const gp_Pnt& SLocation);
   
-  Standard_EXPORT   BRepGProp_Sinert(BRepGProp_Face& S,BRepGProp_Domain& D,const gp_Pnt& SLocation);
-  
-  Standard_EXPORT   BRepGProp_Sinert(BRepGProp_Face& S,const gp_Pnt& SLocation,const Standard_Real Eps);
-  
-  Standard_EXPORT   BRepGProp_Sinert(BRepGProp_Face& S,BRepGProp_Domain& D,const gp_Pnt& SLocation,const Standard_Real Eps);
-  
-  Standard_EXPORT     void SetLocation(const gp_Pnt& SLocation) ;
-  
-  Standard_EXPORT     void Perform(const BRepGProp_Face& S) ;
-  
-  Standard_EXPORT     void Perform(BRepGProp_Face& S,BRepGProp_Domain& D) ;
-  
-  Standard_EXPORT     Standard_Real Perform(BRepGProp_Face& S,const Standard_Real Eps) ;
-  
-  Standard_EXPORT     Standard_Real Perform(BRepGProp_Face& S,BRepGProp_Domain& D,const Standard_Real Eps) ;
-  
-  Standard_EXPORT     Standard_Real GetEpsilon() ;
 
+  //! Builds a Sinert to evaluate the global properties of
+  //! the face <S>. If isNaturalRestriction is true the domain of S is defined
+  //! with the natural bounds, else it defined with an iterator
+  //! of Edge from TopoDS (see DomainTool from GProp)
+  Standard_EXPORT BRepGProp_Sinert(BRepGProp_Face& S, BRepGProp_Domain& D, const gp_Pnt& SLocation);
+  
+  Standard_EXPORT BRepGProp_Sinert(BRepGProp_Face& S, const gp_Pnt& SLocation, const Standard_Real Eps);
+  
+  Standard_EXPORT BRepGProp_Sinert(BRepGProp_Face& S, BRepGProp_Domain& D, const gp_Pnt& SLocation, const Standard_Real Eps);
+  
+  Standard_EXPORT   void SetLocation (const gp_Pnt& SLocation) ;
+  
+  Standard_EXPORT   void Perform (const BRepGProp_Face& S) ;
+  
+  Standard_EXPORT   void Perform (BRepGProp_Face& S, BRepGProp_Domain& D) ;
+  
+  Standard_EXPORT   Standard_Real Perform (BRepGProp_Face& S, const Standard_Real Eps) ;
+  
+  Standard_EXPORT   Standard_Real Perform (BRepGProp_Face& S, BRepGProp_Domain& D, const Standard_Real Eps) ;
+  
+
+  //! If previously used method contained Eps parameter
+  //! get actual relative error of the computation, else return  1.0.
+  Standard_EXPORT   Standard_Real GetEpsilon() ;
 
 
 
@@ -71,7 +71,7 @@ private:
 
 
 
-Standard_Real myEpsilon;
+  Standard_Real myEpsilon;
 
 
 };
@@ -80,7 +80,6 @@ Standard_Real myEpsilon;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepGProp_Sinert_HeaderFile

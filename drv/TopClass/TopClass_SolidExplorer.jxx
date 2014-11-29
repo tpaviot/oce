@@ -1,12 +1,4 @@
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _TopClass_SolidExplorer_HeaderFile
 #include <TopClass_SolidExplorer.hxx>
-#endif

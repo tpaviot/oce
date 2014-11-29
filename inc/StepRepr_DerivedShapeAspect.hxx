@@ -6,28 +6,21 @@
 #ifndef _StepRepr_DerivedShapeAspect_HeaderFile
 #define _StepRepr_DerivedShapeAspect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepRepr_DerivedShapeAspect_HeaderFile
 #include <Handle_StepRepr_DerivedShapeAspect.hxx>
-#endif
 
-#ifndef _StepRepr_ShapeAspect_HeaderFile
 #include <StepRepr_ShapeAspect.hxx>
-#endif
 
 
-//! Added for Dimensional Tolerances <br>
-class StepRepr_DerivedShapeAspect : public StepRepr_ShapeAspect {
+//! Added for Dimensional Tolerances
+class StepRepr_DerivedShapeAspect : public StepRepr_ShapeAspect
+{
 
 public:
 
   
-  Standard_EXPORT   StepRepr_DerivedShapeAspect();
+  Standard_EXPORT StepRepr_DerivedShapeAspect();
 
 
 
@@ -50,7 +43,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_DerivedShapeAspect_HeaderFile

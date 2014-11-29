@@ -6,34 +6,16 @@
 #ifndef _IGESBasic_SubfigureDef_HeaderFile
 #define _IGESBasic_SubfigureDef_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESBasic_SubfigureDef_HeaderFile
 #include <Handle_IGESBasic_SubfigureDef.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_IGESData_HArray1OfIGESEntity_HeaderFile
 #include <Handle_IGESData_HArray1OfIGESEntity.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
 class TCollection_HAsciiString;
 class IGESData_HArray1OfIGESEntity;
 class Standard_OutOfRange;
@@ -41,36 +23,43 @@ class IGESData_IGESEntity;
 class Standard_Transient;
 
 
-//! defines SubfigureDef, Type <308> Form <0> <br>
-//!          in package IGESBasic <br>
-//!          This Entity permits a single definition of a detail to <br>
-//!          be utilized in multiple instances in the creation of <br>
-//!          the whole picture <br>
-class IGESBasic_SubfigureDef : public IGESData_IGESEntity {
+//! defines SubfigureDef, Type <308> Form <0>
+//! in package IGESBasic
+//! This Entity permits a single definition of a detail to
+//! be utilized in multiple instances in the creation of
+//! the whole picture
+class IGESBasic_SubfigureDef : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESBasic_SubfigureDef();
-  //! This method is used to set the fields of the class <br>
-//!          SubfigureDef <br>
-//!       - aDepth           : It indicates the amount of nesting <br>
-//!       - aName            : the subfigure name <br>
-//!       - allAssocEntities : the associated entities <br>
-  Standard_EXPORT     void Init(const Standard_Integer aDepth,const Handle(TCollection_HAsciiString)& aName,const Handle(IGESData_HArray1OfIGESEntity)& allAssocEntities) ;
-  //! returns depth of the Subfigure <br>
-//! if theDepth = 0 - No reference to any subfigure instance. <br>
-  Standard_EXPORT     Standard_Integer Depth() const;
-  //! returns the name of Subfigure <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Name() const;
-  //! returns number of entities. Is greater than or equal to zero. <br>
-  Standard_EXPORT     Standard_Integer NbEntities() const;
-  //! returns the specific entity as indicated by Index <br>
-//! raises exception if Index <= 0 or Index > NbEntities() <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity AssociatedEntity(const Standard_Integer Index) const;
-  //! returns the specific entity as indicated by Index <br>
-//! raises exception if Index <= 0 or Index > NbEntities() <br>
-  Standard_EXPORT     Handle_Standard_Transient Value(const Standard_Integer Index) const;
+  Standard_EXPORT IGESBasic_SubfigureDef();
+  
+  //! This method is used to set the fields of the class
+  //! SubfigureDef
+  //! - aDepth           : It indicates the amount of nesting
+  //! - aName            : the subfigure name
+  //! - allAssocEntities : the associated entities
+  Standard_EXPORT   void Init (const Standard_Integer aDepth, const Handle(TCollection_HAsciiString)& aName, const Handle(IGESData_HArray1OfIGESEntity)& allAssocEntities) ;
+  
+  //! returns depth of the Subfigure
+  //! if theDepth = 0 - No reference to any subfigure instance.
+  Standard_EXPORT   Standard_Integer Depth()  const;
+  
+  //! returns the name of Subfigure
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Name()  const;
+  
+  //! returns number of entities. Is greater than or equal to zero.
+  Standard_EXPORT   Standard_Integer NbEntities()  const;
+  
+  //! returns the specific entity as indicated by Index
+  //! raises exception if Index <= 0 or Index > NbEntities()
+  Standard_EXPORT   Handle(IGESData_IGESEntity) AssociatedEntity (const Standard_Integer Index)  const;
+  
+  //! returns the specific entity as indicated by Index
+  //! raises exception if Index <= 0 or Index > NbEntities()
+  Standard_EXPORT   Handle(Standard_Transient) Value (const Standard_Integer Index)  const;
 
 
 
@@ -85,9 +74,9 @@ protected:
 private: 
 
 
-Standard_Integer theDepth;
-Handle_TCollection_HAsciiString theName;
-Handle_IGESData_HArray1OfIGESEntity theAssocEntities;
+  Standard_Integer theDepth;
+  Handle(TCollection_HAsciiString) theName;
+  Handle(IGESData_HArray1OfIGESEntity) theAssocEntities;
 
 
 };
@@ -96,7 +85,6 @@ Handle_IGESData_HArray1OfIGESEntity theAssocEntities;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESBasic_SubfigureDef_HeaderFile

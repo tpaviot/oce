@@ -5,18 +5,10 @@
 
 #include <TDF_LabelSequence.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TDF_SequenceNodeOfLabelSequence_HeaderFile
 #include <TDF_SequenceNodeOfLabelSequence.hxx>
-#endif
  
 
 #define SeqItem TDF_Label

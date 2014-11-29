@@ -6,58 +6,47 @@
 #ifndef _BRep_PolygonOnTriangulation_HeaderFile
 #define _BRep_PolygonOnTriangulation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRep_PolygonOnTriangulation_HeaderFile
 #include <Handle_BRep_PolygonOnTriangulation.hxx>
-#endif
 
-#ifndef _Handle_Poly_PolygonOnTriangulation_HeaderFile
 #include <Handle_Poly_PolygonOnTriangulation.hxx>
-#endif
-#ifndef _Handle_Poly_Triangulation_HeaderFile
 #include <Handle_Poly_Triangulation.hxx>
-#endif
-#ifndef _BRep_CurveRepresentation_HeaderFile
 #include <BRep_CurveRepresentation.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_BRep_CurveRepresentation_HeaderFile
 #include <Handle_BRep_CurveRepresentation.hxx>
-#endif
 class Poly_PolygonOnTriangulation;
 class Poly_Triangulation;
 class TopLoc_Location;
 class BRep_CurveRepresentation;
 
 
-//! A representation by an array of nodes on a <br>
-//!          triangulation. <br>
-class BRep_PolygonOnTriangulation : public BRep_CurveRepresentation {
+//! A representation by an array of nodes on a
+//! triangulation.
+class BRep_PolygonOnTriangulation : public BRep_CurveRepresentation
+{
 
 public:
 
   
-  Standard_EXPORT   BRep_PolygonOnTriangulation(const Handle(Poly_PolygonOnTriangulation)& P,const Handle(Poly_Triangulation)& T,const TopLoc_Location& L);
-  //! returns True. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsPolygonOnTriangulation() const;
-  //! Is it a polygon in the definition of <T> with <br>
-//!          location <L>. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsPolygonOnTriangulation(const Handle(Poly_Triangulation)& T,const TopLoc_Location& L) const;
-  //! returns True. <br>
-  Standard_EXPORT   virtual  void PolygonOnTriangulation(const Handle(Poly_PolygonOnTriangulation)& P) ;
+  Standard_EXPORT BRep_PolygonOnTriangulation(const Handle(Poly_PolygonOnTriangulation)& P, const Handle(Poly_Triangulation)& T, const TopLoc_Location& L);
   
-  Standard_EXPORT   virtual const Handle_Poly_Triangulation& Triangulation() const;
+  //! returns True.
+  Standard_EXPORT virtual   Standard_Boolean IsPolygonOnTriangulation()  const;
   
-  Standard_EXPORT   virtual const Handle_Poly_PolygonOnTriangulation& PolygonOnTriangulation() const;
-  //! Return a copy of this representation. <br>
-  Standard_EXPORT   virtual  Handle_BRep_CurveRepresentation Copy() const;
+  //! Is it a polygon in the definition of <T> with
+  //! location <L>.
+  Standard_EXPORT virtual   Standard_Boolean IsPolygonOnTriangulation (const Handle(Poly_Triangulation)& T, const TopLoc_Location& L)  const;
+  
+  //! returns True.
+  Standard_EXPORT virtual   void PolygonOnTriangulation (const Handle(Poly_PolygonOnTriangulation)& P) ;
+  
+  Standard_EXPORT virtual  const  Handle(Poly_Triangulation)& Triangulation()  const;
+  
+  Standard_EXPORT virtual  const  Handle(Poly_PolygonOnTriangulation)& PolygonOnTriangulation()  const;
+  
+  //! Return a copy of this representation.
+  Standard_EXPORT virtual   Handle(BRep_CurveRepresentation) Copy()  const;
 
 
 
@@ -72,8 +61,8 @@ protected:
 private: 
 
 
-Handle_Poly_PolygonOnTriangulation myPolygon;
-Handle_Poly_Triangulation myTriangulation;
+  Handle(Poly_PolygonOnTriangulation) myPolygon;
+  Handle(Poly_Triangulation) myTriangulation;
 
 
 };
@@ -82,7 +71,6 @@ Handle_Poly_Triangulation myTriangulation;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRep_PolygonOnTriangulation_HeaderFile

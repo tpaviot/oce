@@ -6,50 +6,43 @@
 #ifndef _IGESGraph_Pick_HeaderFile
 #define _IGESGraph_Pick_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESGraph_Pick_HeaderFile
 #include <Handle_IGESGraph_Pick.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 
 
-//! defines IGESPick, Type <406> Form <21> <br>
-//!          in package IGESGraph <br>
-//! <br>
-//!          Attaches information that an entity may be picked <br>
-//!          by whatever pick device is used in the receiving <br>
-//!          system <br>
-class IGESGraph_Pick : public IGESData_IGESEntity {
+//! defines IGESPick, Type <406> Form <21>
+//! in package IGESGraph
+//!
+//! Attaches information that an entity may be picked
+//! by whatever pick device is used in the receiving
+//! system
+class IGESGraph_Pick : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESGraph_Pick();
-  //! This method is used to set the fields of the class Pick <br>
-//!      - nbProps     : Number of property values (NP = 1) <br>
-//!      - aPickStatus : Pick Flag <br>
-  Standard_EXPORT     void Init(const Standard_Integer nbProps,const Standard_Integer aPickStatus) ;
-  //! returns the number of property values in <me>. <br>
-  Standard_EXPORT     Standard_Integer NbPropertyValues() const;
-  //! returns 0 if <me> is pickable(default), <br>
-//!         1 if <me> is not pickable. <br>
-  Standard_EXPORT     Standard_Integer PickFlag() const;
-  //! returns True if thePick is 0. <br>
-  Standard_EXPORT     Standard_Boolean IsPickable() const;
+  Standard_EXPORT IGESGraph_Pick();
+  
+  //! This method is used to set the fields of the class Pick
+  //! - nbProps     : Number of property values (NP = 1)
+  //! - aPickStatus : Pick Flag
+  Standard_EXPORT   void Init (const Standard_Integer nbProps, const Standard_Integer aPickStatus) ;
+  
+  //! returns the number of property values in <me>.
+  Standard_EXPORT   Standard_Integer NbPropertyValues()  const;
+  
+  //! returns 0 if <me> is pickable(default),
+  //! 1 if <me> is not pickable.
+  Standard_EXPORT   Standard_Integer PickFlag()  const;
+  
+  //! returns True if thePick is 0.
+  Standard_EXPORT   Standard_Boolean IsPickable()  const;
 
 
 
@@ -64,8 +57,8 @@ protected:
 private: 
 
 
-Standard_Integer theNbPropertyValues;
-Standard_Integer thePick;
+  Standard_Integer theNbPropertyValues;
+  Standard_Integer thePick;
 
 
 };
@@ -74,7 +67,6 @@ Standard_Integer thePick;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGraph_Pick_HeaderFile

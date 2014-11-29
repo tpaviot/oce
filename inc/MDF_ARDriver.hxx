@@ -6,37 +6,17 @@
 #ifndef _MDF_ARDriver_HeaderFile
 #define _MDF_ARDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MDF_ARDriver_HeaderFile
 #include <Handle_MDF_ARDriver.hxx>
-#endif
 
-#ifndef _Handle_CDM_MessageDriver_HeaderFile
 #include <Handle_CDM_MessageDriver.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_PDF_Attribute_HeaderFile
 #include <Handle_PDF_Attribute.hxx>
-#endif
-#ifndef _Handle_MDF_RRelocationTable_HeaderFile
 #include <Handle_MDF_RRelocationTable.hxx>
-#endif
 class CDM_MessageDriver;
 class Standard_Type;
 class TDF_Attribute;
@@ -45,25 +25,31 @@ class MDF_RRelocationTable;
 class TCollection_ExtendedString;
 
 
-//! Attribute Retrieval Driver. <br>
-class MDF_ARDriver : public MMgt_TShared {
+//! Attribute Retrieval Driver.
+class MDF_ARDriver : public MMgt_TShared
+{
 
 public:
 
-  //! Returns the version number from which the driver <br>
-//!          is available. <br>
-  Standard_EXPORT   virtual  Standard_Integer VersionNumber() const = 0;
-  //! Returns the type of source object, inheriting from <br>
-//!          Attribute from PDF. <br>
-  Standard_EXPORT   virtual  Handle_Standard_Type SourceType() const = 0;
-  //! Creates a new attribute from PDF. <br>
-  Standard_EXPORT   virtual  Handle_TDF_Attribute NewEmpty() const = 0;
-  //! Translate the contents of <aSource> and put it <br>
-//!          into <aTarget>, using the relocation table <br>
-//!          <aRelocTable> to keep the sharings. <br>
-  Standard_EXPORT   virtual  void Paste(const Handle(PDF_Attribute)& aSource,const Handle(TDF_Attribute)& aTarget,const Handle(MDF_RRelocationTable)& aRelocTable) const = 0;
-  //! To send message to Application (if MessageDriver defined) <br>
-  Standard_EXPORT     void WriteMessage(const TCollection_ExtendedString& theMessage) const;
+  
+  //! Returns the version number from which the driver
+  //! is available.
+  Standard_EXPORT virtual   Standard_Integer VersionNumber()  const = 0;
+  
+  //! Returns the type of source object, inheriting from
+  //! Attribute from PDF.
+  Standard_EXPORT virtual   Handle(Standard_Type) SourceType()  const = 0;
+  
+  //! Creates a new attribute from PDF.
+  Standard_EXPORT virtual   Handle(TDF_Attribute) NewEmpty()  const = 0;
+  
+  //! Translate the contents of <aSource> and put it
+  //! into <aTarget>, using the relocation table
+  //! <aRelocTable> to keep the sharings.
+  Standard_EXPORT virtual   void Paste (const Handle(PDF_Attribute)& aSource, const Handle(TDF_Attribute)& aTarget, const Handle(MDF_RRelocationTable)& aRelocTable)  const = 0;
+  
+  //! To send message to Application (if MessageDriver defined)
+  Standard_EXPORT   void WriteMessage (const TCollection_ExtendedString& theMessage)  const;
 
 
 
@@ -73,14 +59,14 @@ public:
 protected:
 
   
-  Standard_EXPORT   MDF_ARDriver(const Handle(CDM_MessageDriver)& theMessageDriver);
+  Standard_EXPORT MDF_ARDriver(const Handle(CDM_MessageDriver)& theMessageDriver);
 
 
 
 private: 
 
 
-Handle_CDM_MessageDriver myMessageDriver;
+  Handle(CDM_MessageDriver) myMessageDriver;
 
 
 };
@@ -89,7 +75,6 @@ Handle_CDM_MessageDriver myMessageDriver;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MDF_ARDriver_HeaderFile

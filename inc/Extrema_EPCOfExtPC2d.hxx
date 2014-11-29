@@ -6,28 +6,14 @@
 #ifndef _Extrema_EPCOfExtPC2d_HeaderFile
 #define _Extrema_EPCOfExtPC2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Extrema_PCFOfEPCOfExtPC2d_HeaderFile
 #include <Extrema_PCFOfEPCOfExtPC2d.hxx>
-#endif
 class StdFail_NotDone;
 class Standard_OutOfRange;
 class Standard_TypeMismatch;
@@ -41,38 +27,38 @@ class Extrema_SeqPCOfPCFOfEPCOfExtPC2d;
 
 
 
-class Extrema_EPCOfExtPC2d  {
+class Extrema_EPCOfExtPC2d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Extrema_EPCOfExtPC2d();
+  Standard_EXPORT Extrema_EPCOfExtPC2d();
   
-  Standard_EXPORT   Extrema_EPCOfExtPC2d(const gp_Pnt2d& P,const Adaptor2d_Curve2d& C,const Standard_Integer NbU,const Standard_Real TolU,const Standard_Real TolF);
+  Standard_EXPORT Extrema_EPCOfExtPC2d(const gp_Pnt2d& P, const Adaptor2d_Curve2d& C, const Standard_Integer NbU, const Standard_Real TolU, const Standard_Real TolF);
   
-  Standard_EXPORT   Extrema_EPCOfExtPC2d(const gp_Pnt2d& P,const Adaptor2d_Curve2d& C,const Standard_Integer NbU,const Standard_Real Umin,const Standard_Real Usup,const Standard_Real TolU,const Standard_Real TolF);
+  Standard_EXPORT Extrema_EPCOfExtPC2d(const gp_Pnt2d& P, const Adaptor2d_Curve2d& C, const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF);
   
-  Standard_EXPORT     void Initialize(const Adaptor2d_Curve2d& C,const Standard_Integer NbU,const Standard_Real TolU,const Standard_Real TolF) ;
+  Standard_EXPORT   void Initialize (const Adaptor2d_Curve2d& C, const Standard_Integer NbU, const Standard_Real TolU, const Standard_Real TolF) ;
   
-  Standard_EXPORT     void Initialize(const Adaptor2d_Curve2d& C,const Standard_Integer NbU,const Standard_Real Umin,const Standard_Real Usup,const Standard_Real TolU,const Standard_Real TolF) ;
+  Standard_EXPORT   void Initialize (const Adaptor2d_Curve2d& C, const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF) ;
   
-  Standard_EXPORT     void Initialize(const Adaptor2d_Curve2d& C) ;
+  Standard_EXPORT   void Initialize (const Adaptor2d_Curve2d& C) ;
   
-  Standard_EXPORT     void Initialize(const Standard_Integer NbU,const Standard_Real Umin,const Standard_Real Usup,const Standard_Real TolU,const Standard_Real TolF) ;
+  Standard_EXPORT   void Initialize (const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF) ;
   
-  Standard_EXPORT     void Perform(const gp_Pnt2d& P) ;
+  Standard_EXPORT   void Perform (const gp_Pnt2d& P) ;
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
   
-  Standard_EXPORT     Standard_Integer NbExt() const;
+  Standard_EXPORT   Standard_Integer NbExt()  const;
   
-  Standard_EXPORT     Standard_Real SquareDistance(const Standard_Integer N) const;
+  Standard_EXPORT   Standard_Real SquareDistance (const Standard_Integer N)  const;
   
-  Standard_EXPORT     Standard_Boolean IsMin(const Standard_Integer N) const;
+  Standard_EXPORT   Standard_Boolean IsMin (const Standard_Integer N)  const;
   
-  Standard_EXPORT    const Extrema_POnCurv2d& Point(const Standard_Integer N) const;
-
+  Standard_EXPORT  const  Extrema_POnCurv2d& Point (const Standard_Integer N)  const;
 
 
 
@@ -87,14 +73,14 @@ private:
 
 
 
-Standard_Boolean myDone;
-Standard_Boolean myInit;
-Standard_Integer mynbsample;
-Standard_Real myumin;
-Standard_Real myusup;
-Standard_Real mytolu;
-Standard_Real mytolF;
-Extrema_PCFOfEPCOfExtPC2d myF;
+  Standard_Boolean myDone;
+  Standard_Boolean myInit;
+  Standard_Integer mynbsample;
+  Standard_Real myumin;
+  Standard_Real myusup;
+  Standard_Real mytolu;
+  Standard_Real mytolF;
+  Extrema_PCFOfEPCOfExtPC2d myF;
 
 
 };
@@ -103,7 +89,6 @@ Extrema_PCFOfEPCOfExtPC2d myF;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Extrema_EPCOfExtPC2d_HeaderFile

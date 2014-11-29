@@ -38,8 +38,12 @@ if { [regexp {Debug mode} [dversion]] } {
   if { [regexp {Windows} [dversion]] } {
     set max_time 20.0
   } else {
-    set max_time 60.0
+    set max_time 40.0
   }
+}
+
+if { [regexp {Mac OS X} [dversion]] } {
+  set max_time 100.0
 }
 
 if { $z > ${max_time} } {                                         

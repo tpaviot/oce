@@ -5,27 +5,15 @@
 
 #include <BRepFill_DataMapIteratorOfDataMapOfNodeShape.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _MAT_Node_HeaderFile
 #include <MAT_Node.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _BRepFill_DataMapOfNodeShape_HeaderFile
 #include <BRepFill_DataMapOfNodeShape.hxx>
-#endif
-#ifndef _BRepFill_DataMapNodeOfDataMapOfNodeShape_HeaderFile
 #include <BRepFill_DataMapNodeOfDataMapOfNodeShape.hxx>
-#endif
  
 
-#define TheKey Handle_MAT_Node
+#define TheKey Handle(MAT_Node)
 #define TheKey_hxx <MAT_Node.hxx>
 #define TheItem TopoDS_Shape
 #define TheItem_hxx <TopoDS_Shape.hxx>

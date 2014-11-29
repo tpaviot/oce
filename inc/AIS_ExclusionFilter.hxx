@@ -6,90 +6,77 @@
 #ifndef _AIS_ExclusionFilter_HeaderFile
 #define _AIS_ExclusionFilter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_AIS_ExclusionFilter_HeaderFile
 #include <Handle_AIS_ExclusionFilter.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TColStd_DataMapOfIntegerListOfInteger_HeaderFile
 #include <TColStd_DataMapOfIntegerListOfInteger.hxx>
-#endif
-#ifndef _SelectMgr_Filter_HeaderFile
 #include <SelectMgr_Filter.hxx>
-#endif
-#ifndef _AIS_KindOfInteractive_HeaderFile
 #include <AIS_KindOfInteractive.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_SelectMgr_EntityOwner_HeaderFile
 #include <Handle_SelectMgr_EntityOwner.hxx>
-#endif
 class SelectMgr_EntityOwner;
 class TColStd_ListOfInteger;
 
 
-//!  A framework to reject or to accept only objects of <br>
-//! given types and/or signatures. <br>
-//! Objects are stored, and the stored objects - along <br>
-//! with the flag settings - are used to define the filter. <br>
-//! Objects to be filtered are compared with the stored <br>
-//! objects added to the filter, and are accepted or <br>
-//! rejected according to the exclusion flag setting. <br>
-//! -   Exclusion flag on <br>
-//!   -   the function IsOk answers true for all objects, <br>
-//!    except those of the types and signatures stored <br>
-//!    in the filter framework <br>
-//! -   Exclusion flag off <br>
-//!   -   the funciton IsOk answers true for all objects <br>
-//!    which have the same type and signature as the stored ones. <br>
-class AIS_ExclusionFilter : public SelectMgr_Filter {
+//! A framework to reject or to accept only objects of
+//! given types and/or signatures.
+//! Objects are stored, and the stored objects - along
+//! with the flag settings - are used to define the filter.
+//! Objects to be filtered are compared with the stored
+//! objects added to the filter, and are accepted or
+//! rejected according to the exclusion flag setting.
+//! -   Exclusion flag on
+//! -   the function IsOk answers true for all objects,
+//! except those of the types and signatures stored
+//! in the filter framework
+//! -   Exclusion flag off
+//! -   the funciton IsOk answers true for all objects
+//! which have the same type and signature as the stored ones.
+class AIS_ExclusionFilter : public SelectMgr_Filter
+{
 
 public:
 
-  //! Constructs an empty exclusion filter object defined by <br>
-//! the flag setting ExclusionFlagOn. <br>
-//! By default, the flag is set to true. <br>
-  Standard_EXPORT   AIS_ExclusionFilter(const Standard_Boolean ExclusionFlagOn = Standard_True);
-  //! All the AIS objects of <TypeToExclude> <br>
-//!          Will be rejected by the IsOk Method. <br>
-  Standard_EXPORT   AIS_ExclusionFilter(const AIS_KindOfInteractive TypeToExclude,const Standard_Boolean ExclusionFlagOn = Standard_True);
-  //! Constructs an exclusion filter object defined by the <br>
-//! enumeration value TypeToExclude, the signature <br>
-//! SignatureInType, and the flag setting ExclusionFlagOn. <br>
-//! By default, the flag is set to true. <br>
-  Standard_EXPORT   AIS_ExclusionFilter(const AIS_KindOfInteractive TypeToExclude,const Standard_Integer SignatureInType,const Standard_Boolean ExclusionFlagOn = Standard_True);
   
-  Standard_EXPORT   virtual  Standard_Boolean IsOk(const Handle(SelectMgr_EntityOwner)& anObj) const;
-  //! Adds the type TypeToExclude to the list of types. <br>
-  Standard_EXPORT     Standard_Boolean Add(const AIS_KindOfInteractive TypeToExclude) ;
+  //! Constructs an empty exclusion filter object defined by
+  //! the flag setting ExclusionFlagOn.
+  //! By default, the flag is set to true.
+  Standard_EXPORT AIS_ExclusionFilter(const Standard_Boolean ExclusionFlagOn = Standard_True);
   
-  Standard_EXPORT     Standard_Boolean Add(const AIS_KindOfInteractive TypeToExclude,const Standard_Integer SignatureInType) ;
+  //! All the AIS objects of <TypeToExclude>
+  //! Will be rejected by the IsOk Method.
+  Standard_EXPORT AIS_ExclusionFilter(const AIS_KindOfInteractive TypeToExclude, const Standard_Boolean ExclusionFlagOn = Standard_True);
   
-  Standard_EXPORT     Standard_Boolean Remove(const AIS_KindOfInteractive TypeToExclude) ;
+  //! Constructs an exclusion filter object defined by the
+  //! enumeration value TypeToExclude, the signature
+  //! SignatureInType, and the flag setting ExclusionFlagOn.
+  //! By default, the flag is set to true.
+  Standard_EXPORT AIS_ExclusionFilter(const AIS_KindOfInteractive TypeToExclude, const Standard_Integer SignatureInType, const Standard_Boolean ExclusionFlagOn = Standard_True);
   
-  Standard_EXPORT     Standard_Boolean Remove(const AIS_KindOfInteractive TypeToExclude,const Standard_Integer SignatureInType) ;
+  Standard_EXPORT virtual   Standard_Boolean IsOk (const Handle(SelectMgr_EntityOwner)& anObj)  const;
   
-  Standard_EXPORT     void Clear() ;
+  //! Adds the type TypeToExclude to the list of types.
+  Standard_EXPORT   Standard_Boolean Add (const AIS_KindOfInteractive TypeToExclude) ;
   
-        Standard_Boolean IsExclusionFlagOn() const;
+  Standard_EXPORT   Standard_Boolean Add (const AIS_KindOfInteractive TypeToExclude, const Standard_Integer SignatureInType) ;
   
-        void SetExclusionFlag(const Standard_Boolean Status) ;
+  Standard_EXPORT   Standard_Boolean Remove (const AIS_KindOfInteractive TypeToExclude) ;
   
-  Standard_EXPORT     Standard_Boolean IsStored(const AIS_KindOfInteractive aType) const;
+  Standard_EXPORT   Standard_Boolean Remove (const AIS_KindOfInteractive TypeToExclude, const Standard_Integer SignatureInType) ;
   
-  Standard_EXPORT     void ListOfStoredTypes(TColStd_ListOfInteger& TheList) const;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void ListOfSignature(const AIS_KindOfInteractive aType,TColStd_ListOfInteger& TheStoredList) const;
+      Standard_Boolean IsExclusionFlagOn()  const;
+  
+      void SetExclusionFlag (const Standard_Boolean Status) ;
+  
+  Standard_EXPORT   Standard_Boolean IsStored (const AIS_KindOfInteractive aType)  const;
+  
+  Standard_EXPORT   void ListOfStoredTypes (TColStd_ListOfInteger& TheList)  const;
+  
+  Standard_EXPORT   void ListOfSignature (const AIS_KindOfInteractive aType, TColStd_ListOfInteger& TheStoredList)  const;
 
 
 
@@ -104,10 +91,10 @@ protected:
 private: 
 
   
-  Standard_EXPORT     Standard_Boolean IsSignatureIn(const AIS_KindOfInteractive aType,const Standard_Integer aSignature) const;
+  Standard_EXPORT   Standard_Boolean IsSignatureIn (const AIS_KindOfInteractive aType, const Standard_Integer aSignature)  const;
 
-Standard_Boolean myIsExclusionFlagOn;
-TColStd_DataMapOfIntegerListOfInteger myStoredTypes;
+  Standard_Boolean myIsExclusionFlagOn;
+  TColStd_DataMapOfIntegerListOfInteger myStoredTypes;
 
 
 };
@@ -117,7 +104,6 @@ TColStd_DataMapOfIntegerListOfInteger myStoredTypes;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_ExclusionFilter_HeaderFile

@@ -5,29 +5,17 @@
 
 #include <BRepFill_DataMapIteratorOfDataMapOfShapeHArray2OfShape.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_HArray2OfShape_HeaderFile
 #include <TopTools_HArray2OfShape.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _BRepFill_DataMapOfShapeHArray2OfShape_HeaderFile
 #include <BRepFill_DataMapOfShapeHArray2OfShape.hxx>
-#endif
-#ifndef _BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape_HeaderFile
 #include <BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape
 #define TheKey_hxx <TopoDS_Shape.hxx>
-#define TheItem Handle_TopTools_HArray2OfShape
+#define TheItem Handle(TopTools_HArray2OfShape)
 #define TheItem_hxx <TopTools_HArray2OfShape.hxx>
 #define Hasher TopTools_ShapeMapHasher
 #define Hasher_hxx <TopTools_ShapeMapHasher.hxx>

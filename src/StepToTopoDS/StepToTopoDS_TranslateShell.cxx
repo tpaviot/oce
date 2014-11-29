@@ -82,7 +82,7 @@ void StepToTopoDS_TranslateShell::Init
 
     Message_ProgressSentry PS ( TP->GetProgress(), "Face", 0, NbFc, 1 );
     for (Standard_Integer i=1; i<=NbFc && PS.More(); i++, PS.Next()) {
-#ifdef DEBUG
+#ifdef OCCT_DEBUG
       cout << "Processing Face : " << i << endl;
 #endif
       StepFace = CFS->CfsFacesValue(i);
@@ -103,6 +103,7 @@ void StepToTopoDS_TranslateShell::Init
 	TP->AddWarning(StepFace," Face is not of FaceSurface Type; not mapped to TopoDS");
       }
     }
+    Sh.Closed (BRep_Tool::IsClosed (Sh));
     myResult = Sh;
     aTool.Bind(CFS, myResult);
     myError  = StepToTopoDS_TranslateShellDone;

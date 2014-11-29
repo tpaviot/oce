@@ -7,7 +7,6 @@
 #define _AIS_PToContext_HeaderFile
 
 class AIS_InteractiveContext;
-
 typedef AIS_InteractiveContext* AIS_PToContext;
 
-#endif
+#endif // _AIS_PToContext_HeaderFile

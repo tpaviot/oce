@@ -1,30 +1,10 @@
-#ifndef _TDF_Data_HeaderFile
 #include <TDF_Data.hxx>
-#endif
-#ifndef _TDF_Delta_HeaderFile
 #include <TDF_Delta.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _TDF_LabelMap_HeaderFile
 #include <TDF_LabelMap.hxx>
-#endif
-#ifndef _TDF_DeltaList_HeaderFile
 #include <TDF_DeltaList.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _CDM_Document_HeaderFile
 #include <CDM_Document.hxx>
-#endif
-#ifndef _TDocStd_CompoundDelta_HeaderFile
 #include <TDocStd_CompoundDelta.hxx>
-#endif
-#ifndef _TDocStd_Document_HeaderFile
 #include <TDocStd_Document.hxx>
-#endif

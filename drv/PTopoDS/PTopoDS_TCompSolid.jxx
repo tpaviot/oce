@@ -1,3 +1,1 @@
-#ifndef _PTopoDS_TCompSolid_HeaderFile
 #include <PTopoDS_TCompSolid.hxx>
-#endif

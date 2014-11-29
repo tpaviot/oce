@@ -6,15 +6,14 @@
 #ifndef _StepBasic_AheadOrBehind_HeaderFile
 #define _StepBasic_AheadOrBehind_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepBasic_AheadOrBehind {
+
+enum StepBasic_AheadOrBehind
+{
 StepBasic_aobAhead,
 StepBasic_aobExact,
 StepBasic_aobBehind
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepBasic_AheadOrBehind_HeaderFile

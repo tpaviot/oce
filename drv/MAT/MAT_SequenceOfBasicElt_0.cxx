@@ -5,21 +5,13 @@
 
 #include <MAT_SequenceOfBasicElt.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _MAT_BasicElt_HeaderFile
 #include <MAT_BasicElt.hxx>
-#endif
-#ifndef _MAT_SequenceNodeOfSequenceOfBasicElt_HeaderFile
 #include <MAT_SequenceNodeOfSequenceOfBasicElt.hxx>
-#endif
  
 
-#define SeqItem Handle_MAT_BasicElt
+#define SeqItem Handle(MAT_BasicElt)
 #define SeqItem_hxx <MAT_BasicElt.hxx>
 #define TCollection_SequenceNode MAT_SequenceNodeOfSequenceOfBasicElt
 #define TCollection_SequenceNode_hxx <MAT_SequenceNodeOfSequenceOfBasicElt.hxx>

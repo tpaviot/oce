@@ -6,37 +6,17 @@
 #ifndef _StepBasic_ProductDefinitionWithAssociatedDocuments_HeaderFile
 #define _StepBasic_ProductDefinitionWithAssociatedDocuments_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinitionWithAssociatedDocuments_HeaderFile
 #include <Handle_StepBasic_ProductDefinitionWithAssociatedDocuments.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_HArray1OfDocument_HeaderFile
 #include <Handle_StepBasic_HArray1OfDocument.hxx>
-#endif
-#ifndef _StepBasic_ProductDefinition_HeaderFile
 #include <StepBasic_ProductDefinition.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinitionFormation_HeaderFile
 #include <Handle_StepBasic_ProductDefinitionFormation.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinitionContext_HeaderFile
 #include <Handle_StepBasic_ProductDefinitionContext.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_StepBasic_Document_HeaderFile
 #include <Handle_StepBasic_Document.hxx>
-#endif
 class StepBasic_HArray1OfDocument;
 class TCollection_HAsciiString;
 class StepBasic_ProductDefinitionFormation;
@@ -45,24 +25,25 @@ class StepBasic_Document;
 
 
 
-class StepBasic_ProductDefinitionWithAssociatedDocuments : public StepBasic_ProductDefinition {
+class StepBasic_ProductDefinitionWithAssociatedDocuments : public StepBasic_ProductDefinition
+{
 
 public:
 
   
-  Standard_EXPORT   StepBasic_ProductDefinitionWithAssociatedDocuments();
+  Standard_EXPORT StepBasic_ProductDefinitionWithAssociatedDocuments();
   
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aId,const Handle(TCollection_HAsciiString)& aDescription,const Handle(StepBasic_ProductDefinitionFormation)& aFormation,const Handle(StepBasic_ProductDefinitionContext)& aFrame,const Handle(StepBasic_HArray1OfDocument)& aDocIds) ;
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aId, const Handle(TCollection_HAsciiString)& aDescription, const Handle(StepBasic_ProductDefinitionFormation)& aFormation, const Handle(StepBasic_ProductDefinitionContext)& aFrame, const Handle(StepBasic_HArray1OfDocument)& aDocIds) ;
   
-  Standard_EXPORT     Handle_StepBasic_HArray1OfDocument DocIds() const;
+  Standard_EXPORT   Handle(StepBasic_HArray1OfDocument) DocIds()  const;
   
-  Standard_EXPORT     void SetDocIds(const Handle(StepBasic_HArray1OfDocument)& DocIds) ;
+  Standard_EXPORT   void SetDocIds (const Handle(StepBasic_HArray1OfDocument)& DocIds) ;
   
-  Standard_EXPORT     Standard_Integer NbDocIds() const;
+  Standard_EXPORT   Standard_Integer NbDocIds()  const;
   
-  Standard_EXPORT     Handle_StepBasic_Document DocIdsValue(const Standard_Integer num) const;
+  Standard_EXPORT   Handle(StepBasic_Document) DocIdsValue (const Standard_Integer num)  const;
   
-  Standard_EXPORT     void SetDocIdsValue(const Standard_Integer num,const Handle(StepBasic_Document)& adoc) ;
+  Standard_EXPORT   void SetDocIdsValue (const Standard_Integer num, const Handle(StepBasic_Document)& adoc) ;
 
 
 
@@ -77,7 +58,7 @@ protected:
 private: 
 
 
-Handle_StepBasic_HArray1OfDocument theDocIds;
+  Handle(StepBasic_HArray1OfDocument) theDocIds;
 
 
 };
@@ -86,7 +67,6 @@ Handle_StepBasic_HArray1OfDocument theDocIds;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_ProductDefinitionWithAssociatedDocuments_HeaderFile

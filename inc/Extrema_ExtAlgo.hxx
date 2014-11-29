@@ -6,14 +6,13 @@
 #ifndef _Extrema_ExtAlgo_HeaderFile
 #define _Extrema_ExtAlgo_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Extrema_ExtAlgo {
+
+enum Extrema_ExtAlgo
+{
 Extrema_ExtAlgo_Grad,
 Extrema_ExtAlgo_Tree
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Extrema_ExtAlgo_HeaderFile

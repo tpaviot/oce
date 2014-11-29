@@ -6,39 +6,28 @@
 #ifndef _TColStd_StdMapNodeOfMapOfReal_HeaderFile
 #define _TColStd_StdMapNodeOfMapOfReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColStd_StdMapNodeOfMapOfReal_HeaderFile
 #include <Handle_TColStd_StdMapNodeOfMapOfReal.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TColStd_MapRealHasher;
 class TColStd_MapOfReal;
 class TColStd_MapIteratorOfMapOfReal;
 
 
 
-class TColStd_StdMapNodeOfMapOfReal : public TCollection_MapNode {
+class TColStd_StdMapNodeOfMapOfReal : public TCollection_MapNode
+{
 
 public:
 
   
-      TColStd_StdMapNodeOfMapOfReal(const Standard_Real& K,const TCollection_MapNodePtr& n);
+    TColStd_StdMapNodeOfMapOfReal(const Standard_Real& K, const TCollection_MapNodePtr& n);
   
-        Standard_Real& Key() const;
+      Standard_Real& Key()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-Standard_Real myKey;
+  Standard_Real myKey;
 
 
 };
@@ -87,7 +76,6 @@ Standard_Real myKey;
 #undef TCollection_Map_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_StdMapNodeOfMapOfReal_HeaderFile

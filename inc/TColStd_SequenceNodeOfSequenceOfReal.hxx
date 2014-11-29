@@ -6,37 +6,26 @@
 #ifndef _TColStd_SequenceNodeOfSequenceOfReal_HeaderFile
 #define _TColStd_SequenceNodeOfSequenceOfReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColStd_SequenceNodeOfSequenceOfReal_HeaderFile
 #include <Handle_TColStd_SequenceNodeOfSequenceOfReal.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class TColStd_SequenceOfReal;
 
 
 
-class TColStd_SequenceNodeOfSequenceOfReal : public TCollection_SeqNode {
+class TColStd_SequenceNodeOfSequenceOfReal : public TCollection_SeqNode
+{
 
 public:
 
   
-      TColStd_SequenceNodeOfSequenceOfReal(const Standard_Real& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    TColStd_SequenceNodeOfSequenceOfReal(const Standard_Real& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Standard_Real& Value() const;
+      Standard_Real& Value()  const;
 
 
 
@@ -51,7 +40,7 @@ protected:
 private: 
 
 
-Standard_Real myValue;
+  Standard_Real myValue;
 
 
 };
@@ -77,7 +66,6 @@ Standard_Real myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_SequenceNodeOfSequenceOfReal_HeaderFile

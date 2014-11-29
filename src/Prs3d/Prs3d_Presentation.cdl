@@ -27,6 +27,7 @@ class Presentation from Prs3d inherits Structure from Graphic3d
     	-- This presentation object is used to give display
     	-- attributes defined at this level to
     	-- ApplicationInteractiveServices classes at the level above.
+      -- A presentation object is attached to a given Viewer.
         
 uses
 	Array2OfReal		from TColStd,
@@ -40,12 +41,17 @@ uses
     ShadingAspect        from Prs3d
     
 is
-    Create (aStructureManager: StructureManager from Graphic3d;
-    	    Init:              Boolean          from Standard = Standard_True) 
-    	---Purpose: Constructs a presentation object
-    	-- if <Init> is false, no color initialization is done.
-    returns mutable Presentation from Prs3d;
 
+  Create (theStructManager : StructureManager from Graphic3d;
+          theToInit        : Boolean          from Standard = Standard_True)
+  ---Purpose: Constructs a presentation object
+  -- if <Init> is false, no color initialization is done.
+  returns Presentation from Prs3d;
+
+  Create (theStructManager : StructureManager from Graphic3d;
+          thePrs           : Presentation     from Prs3d)
+  ---Purpose: Constructs a presentation object.
+  returns Presentation from Prs3d;
 
     Compute(me : mutable; aProjector: DataStructureManager from Graphic3d)
     returns Structure from Graphic3d
@@ -85,8 +91,12 @@ is
     	---Purpose: displays the whole content of the presentation in the specified color.
     BoundBox(me: mutable) is static;
 
-    Display ( me : mutable ) is redefined static;
-    
+    SetIsForHighlight (me             : mutable;
+                       isForHighlight : Boolean from Standard)
+        is virtual;
+    ---Purpose: marks the structure <me> representing wired structure needed for
+    --          highlight only so it won't be added to BVH tree.
+
 ---Category: Global modification methods.
     SetShadingAspect(me: mutable; aShadingAspect: ShadingAspect from Prs3d);
     
@@ -100,13 +110,6 @@ is
     Multiply    (me: mutable; aTransformation: Transformation from Geom); 
     Move        (me: mutable; X,Y,Z: Length from Quantity);
     Transformation   (me) returns Transformation from Geom;
-	
-    Clear(me:mutable; WithDestruction: Boolean from Standard = Standard_True) 
-    is redefined;
-    	---Purpose: removes the whole content of the presentation.
-    	--          Does not remove the other connected presentations.
-    	--	        if WithDestruction == Standard_False then
-    	--		clears all the groups of primitives in the structure.
 
     Connect(me: mutable; aPresentation: Presentation from Prs3d);
     
@@ -115,23 +118,11 @@ is
 
     SetPickable(me: mutable) is static;
     SetUnPickable(me: mutable) is static;
-    
-    CurrentGroup(me) returns mutable Group from Graphic3d is static private;
-    NewGroup(me:mutable) returns mutable Group from Graphic3d is static private;
 
-fields
-    myStruct      : Structure from Graphic3d;
-    myCurrentGroup: Group     from Graphic3d;
---
-friends 
-    	class Root from Prs3d
+    CurrentGroup(me) returns Group from Graphic3d is static private;
+
+friends
+
+  class Root from Prs3d
 
 end Presentation;
-
-
-
-
-
-
-
-

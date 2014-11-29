@@ -6,53 +6,43 @@
 #ifndef _StepBasic_Organization_HeaderFile
 #define _StepBasic_Organization_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_Organization_HeaderFile
 #include <Handle_StepBasic_Organization.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class TCollection_HAsciiString;
 
 
 
-class StepBasic_Organization : public MMgt_TShared {
+class StepBasic_Organization : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a Organization <br>
-  Standard_EXPORT   StepBasic_Organization();
   
-  Standard_EXPORT   virtual  void Init(const Standard_Boolean hasAid,const Handle(TCollection_HAsciiString)& aId,const Handle(TCollection_HAsciiString)& aName,const Handle(TCollection_HAsciiString)& aDescription) ;
+  //! Returns a Organization
+  Standard_EXPORT StepBasic_Organization();
   
-  Standard_EXPORT     void SetId(const Handle(TCollection_HAsciiString)& aId) ;
+  Standard_EXPORT virtual   void Init (const Standard_Boolean hasAid, const Handle(TCollection_HAsciiString)& aId, const Handle(TCollection_HAsciiString)& aName, const Handle(TCollection_HAsciiString)& aDescription) ;
   
-  Standard_EXPORT     void UnSetId() ;
+  Standard_EXPORT   void SetId (const Handle(TCollection_HAsciiString)& aId) ;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString Id() const;
+  Standard_EXPORT   void UnSetId() ;
   
-  Standard_EXPORT     Standard_Boolean HasId() const;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Id()  const;
   
-  Standard_EXPORT     void SetName(const Handle(TCollection_HAsciiString)& aName) ;
+  Standard_EXPORT   Standard_Boolean HasId()  const;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString Name() const;
+  Standard_EXPORT   void SetName (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetDescription(const Handle(TCollection_HAsciiString)& aDescription) ;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Name()  const;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString Description() const;
+  Standard_EXPORT   void SetDescription (const Handle(TCollection_HAsciiString)& aDescription) ;
+  
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Description()  const;
 
 
 
@@ -67,10 +57,10 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString id;
-Handle_TCollection_HAsciiString name;
-Handle_TCollection_HAsciiString description;
-Standard_Boolean hasId;
+  Handle(TCollection_HAsciiString) id;
+  Handle(TCollection_HAsciiString) name;
+  Handle(TCollection_HAsciiString) description;
+  Standard_Boolean hasId;
 
 
 };
@@ -79,7 +69,6 @@ Standard_Boolean hasId;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_Organization_HeaderFile

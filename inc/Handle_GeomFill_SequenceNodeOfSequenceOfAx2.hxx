@@ -6,22 +6,15 @@
 #ifndef _Handle_GeomFill_SequenceNodeOfSequenceOfAx2_HeaderFile
 #define _Handle_GeomFill_SequenceNodeOfSequenceOfAx2_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TCollection_SeqNode_HeaderFile
 #include <Handle_TCollection_SeqNode.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TCollection_SeqNode);
 class GeomFill_SequenceNodeOfSequenceOfAx2;
 
-DEFINE_STANDARD_HANDLE(GeomFill_SequenceNodeOfSequenceOfAx2,TCollection_SeqNode)
+DEFINE_STANDARD_HANDLE(GeomFill_SequenceNodeOfSequenceOfAx2, TCollection_SeqNode)
 
-#endif
+#endif // _Handle_GeomFill_SequenceNodeOfSequenceOfAx2_HeaderFile

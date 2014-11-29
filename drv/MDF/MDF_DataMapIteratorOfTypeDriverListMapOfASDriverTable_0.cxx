@@ -5,27 +5,15 @@
 
 #include <MDF_DataMapIteratorOfTypeDriverListMapOfASDriverTable.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
-#ifndef _MDF_DriverListOfASDriverTable_HeaderFile
 #include <MDF_DriverListOfASDriverTable.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _MDF_TypeDriverListMapOfASDriverTable_HeaderFile
 #include <MDF_TypeDriverListMapOfASDriverTable.hxx>
-#endif
-#ifndef _MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable_HeaderFile
 #include <MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable.hxx>
-#endif
  
 
-#define TheKey Handle_Standard_Type
+#define TheKey Handle(Standard_Type)
 #define TheKey_hxx <Standard_Type.hxx>
 #define TheItem MDF_DriverListOfASDriverTable
 #define TheItem_hxx <MDF_DriverListOfASDriverTable.hxx>

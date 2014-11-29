@@ -6,28 +6,14 @@
 #ifndef _ShapeFix_HeaderFile
 #define _ShapeFix_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Message_ProgressIndicator_HeaderFile
 #include <Handle_Message_ProgressIndicator.hxx>
-#endif
-#ifndef _Handle_ShapeBuild_ReShape_HeaderFile
 #include <Handle_ShapeBuild_ReShape.hxx>
-#endif
 class TopoDS_Shape;
 class Message_ProgressIndicator;
 class ShapeBuild_ReShape;
@@ -58,41 +44,46 @@ class ShapeFix_DataMapNodeOfDataMapOfShapeBox2d;
 class ShapeFix_DataMapIteratorOfDataMapOfShapeBox2d;
 
 
-//!  This package provides algorithms for fixing <br>
-//! problematic (violating Open CASCADE requirements) shapes. <br>
-//! Tools from package ShapeAnalysis are used for detecting the problems. The <br>
-//! detecting and fixing is done taking in account various <br>
-//! criteria implemented in BRepCheck package. <br>
-//! Each class of package ShapeFix deals with one <br>
-//! certain type of shapes or with some family of problems. <br>
-class ShapeFix  {
+//! This package provides algorithms for fixing
+//! problematic (violating Open CASCADE requirements) shapes.
+//! Tools from package ShapeAnalysis are used for detecting the problems. The
+//! detecting and fixing is done taking in account various
+//! criteria implemented in BRepCheck package.
+//! Each class of package ShapeFix deals with one
+//! certain type of shapes or with some family of problems.
+class ShapeFix 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Runs SameParameter from BRepLib with these adaptations : <br>
-//!           <enforce> forces computations, else they are made only on <br>
-//!             Edges with flag SameParameter false <br>
-//!           <preci>, if not precised, is taken for each EDge as its own <br>
-//!           Tolerance <br>
-//!           Returns True when done, False if an exception has been raised <br>
-//!           In case of exception anyway, as many edges as possible have <br>
-//!           been processed. The passed progress indicator allows user <br>
-//!           to consult the current progress stage and abort algorithm <br>
-//!           if needed. <br>
-  Standard_EXPORT   static  Standard_Boolean SameParameter(const TopoDS_Shape& shape,const Standard_Boolean enforce,const Standard_Real preci = 0.0,const Handle(Message_ProgressIndicator)& theProgress = 0) ;
-  //! Runs EncodeRegularity from BRepLib taking into account <br>
-//!           shared components of assemblies, so that each component <br>
-//!           is processed only once <br>
-  Standard_EXPORT   static  void EncodeRegularity(const TopoDS_Shape& shape,const Standard_Real tolang = 1.0e-10) ;
-  //! Removes edges which are less than given tolerance from shape <br>
-//!          with help of ShapeFix_Wire::FixSmall() <br>
-  Standard_EXPORT   static  TopoDS_Shape RemoveSmallEdges(TopoDS_Shape& shape,const Standard_Real Tolerance,Handle(ShapeBuild_ReShape)& context) ;
-  //! Fix position of the vertices having tolerance more tnan specified one.; <br>
-  Standard_EXPORT   static  Standard_Boolean FixVertexPosition(TopoDS_Shape& theshape,const Standard_Real theTolerance,const Handle(ShapeBuild_ReShape)& thecontext) ;
-  //! Calculate size of least edge; <br>
-  Standard_EXPORT   static  Standard_Real LeastEdgeSize(TopoDS_Shape& theshape) ;
-
+  
+  //! Runs SameParameter from BRepLib with these adaptations :
+  //! <enforce> forces computations, else they are made only on
+  //! Edges with flag SameParameter false
+  //! <preci>, if not precised, is taken for each EDge as its own
+  //! Tolerance
+  //! Returns True when done, False if an exception has been raised
+  //! In case of exception anyway, as many edges as possible have
+  //! been processed. The passed progress indicator allows user
+  //! to consult the current progress stage and abort algorithm
+  //! if needed.
+  Standard_EXPORT static   Standard_Boolean SameParameter (const TopoDS_Shape& shape, const Standard_Boolean enforce, const Standard_Real preci = 0.0, const Handle(Message_ProgressIndicator)& theProgress = 0) ;
+  
+  //! Runs EncodeRegularity from BRepLib taking into account
+  //! shared components of assemblies, so that each component
+  //! is processed only once
+  Standard_EXPORT static   void EncodeRegularity (const TopoDS_Shape& shape, const Standard_Real tolang = 1.0e-10) ;
+  
+  //! Removes edges which are less than given tolerance from shape
+  //! with help of ShapeFix_Wire::FixSmall()
+  Standard_EXPORT static   TopoDS_Shape RemoveSmallEdges (TopoDS_Shape& shape, const Standard_Real Tolerance, Handle(ShapeBuild_ReShape)& context) ;
+  
+  //! Fix position of the vertices having tolerance more tnan specified one.;
+  Standard_EXPORT static   Standard_Boolean FixVertexPosition (TopoDS_Shape& theshape, const Standard_Real theTolerance, const Handle(ShapeBuild_ReShape)& thecontext) ;
+  
+  //! Calculate size of least edge;
+  Standard_EXPORT static   Standard_Real LeastEdgeSize (TopoDS_Shape& theshape) ;
 
 
 
@@ -140,7 +131,6 @@ friend class ShapeFix_DataMapIteratorOfDataMapOfShapeBox2d;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeFix_HeaderFile

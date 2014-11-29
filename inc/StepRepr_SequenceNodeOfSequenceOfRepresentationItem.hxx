@@ -6,38 +6,27 @@
 #ifndef _StepRepr_SequenceNodeOfSequenceOfRepresentationItem_HeaderFile
 #define _StepRepr_SequenceNodeOfSequenceOfRepresentationItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepRepr_SequenceNodeOfSequenceOfRepresentationItem_HeaderFile
 #include <Handle_StepRepr_SequenceNodeOfSequenceOfRepresentationItem.hxx>
-#endif
 
-#ifndef _Handle_StepRepr_RepresentationItem_HeaderFile
 #include <Handle_StepRepr_RepresentationItem.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class StepRepr_RepresentationItem;
 class StepRepr_SequenceOfRepresentationItem;
 
 
 
-class StepRepr_SequenceNodeOfSequenceOfRepresentationItem : public TCollection_SeqNode {
+class StepRepr_SequenceNodeOfSequenceOfRepresentationItem : public TCollection_SeqNode
+{
 
 public:
 
   
-      StepRepr_SequenceNodeOfSequenceOfRepresentationItem(const Handle(StepRepr_RepresentationItem)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    StepRepr_SequenceNodeOfSequenceOfRepresentationItem(const Handle(StepRepr_RepresentationItem)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_StepRepr_RepresentationItem& Value() const;
+      Handle(StepRepr_RepresentationItem)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_StepRepr_RepresentationItem myValue;
+  Handle(StepRepr_RepresentationItem) myValue;
 
 
 };
 
-#define SeqItem Handle_StepRepr_RepresentationItem
+#define SeqItem Handle(StepRepr_RepresentationItem)
 #define SeqItem_hxx <StepRepr_RepresentationItem.hxx>
 #define TCollection_SequenceNode StepRepr_SequenceNodeOfSequenceOfRepresentationItem
 #define TCollection_SequenceNode_hxx <StepRepr_SequenceNodeOfSequenceOfRepresentationItem.hxx>
@@ -78,7 +67,6 @@ Handle_StepRepr_RepresentationItem myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_SequenceNodeOfSequenceOfRepresentationItem_HeaderFile

@@ -6,14 +6,17 @@
 #ifndef _Aspect_WidthOfLine_HeaderFile
 #define _Aspect_WidthOfLine_HeaderFile
 
-//! Definition of line types <br>
-//! <br>
-//!          WOL_THIN            thin line (1 pixel width) <br>
-//!          WOL_MEDIUM          medium width of 0.5 MM <br>
-//!          WOL_THICK           thick width of 0.7 MM <br>
-//!          WOL_VERYTHICK       very thick width of 1.5 MM <br>
-//!          WOL_USERDEFINED     defined by Users <br>
-enum Aspect_WidthOfLine {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Definition of line types
+//!
+//! WOL_THIN            thin line (1 pixel width)
+//! WOL_MEDIUM          medium width of 0.5 MM
+//! WOL_THICK           thick width of 0.7 MM
+//! WOL_VERYTHICK       very thick width of 1.5 MM
+//! WOL_USERDEFINED     defined by Users
+enum Aspect_WidthOfLine
+{
 Aspect_WOL_THIN,
 Aspect_WOL_MEDIUM,
 Aspect_WOL_THICK,
@@ -21,8 +24,4 @@ Aspect_WOL_VERYTHICK,
 Aspect_WOL_USERDEFINED
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_WidthOfLine_HeaderFile

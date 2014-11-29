@@ -6,80 +6,70 @@
 #ifndef _IntSurf_PathPointTool_HeaderFile
 #define _IntSurf_PathPointTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _gp_Dir2d_HeaderFile
 #include <gp_Dir2d.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_OutOfRange;
 class StdFail_UndefinedDerivative;
 class IntSurf_PathPoint;
 
 
 
-class IntSurf_PathPointTool  {
+class IntSurf_PathPointTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns the 3d coordinates of the starting point. <br>
-      static  gp_Pnt Value3d(const IntSurf_PathPoint& PStart) ;
-  //! Returns the <U, V> parameters which are associated <br>
-//!          with <P> <br>
-//!          it's the parameters which start the marching algorithm <br>
-      static  void Value2d(const IntSurf_PathPoint& PStart,Standard_Real& U,Standard_Real& V) ;
-  //! Returns True if the point is a point on a non-oriented <br>
-//!          arc, which means that the intersection line does not <br>
-//!          stop at such a point but just go through such a point. <br>
-//!          IsPassingPnt is True when IsOnArc is True <br>
-      static  Standard_Boolean IsPassingPnt(const IntSurf_PathPoint& PStart) ;
-  //! Returns True if the surfaces are tangent at this point. <br>
-//!          IsTangent can be True when IsOnArc is True <br>
-//!          if IsPassingPnt is True and IsTangent is True,this point <br>
-//!          is a stopped point. <br>
-      static  Standard_Boolean IsTangent(const IntSurf_PathPoint& PStart) ;
-  //! returns the tangent at the intersection in 3d space <br>
-//!          associated to <P> <br>
-//!         an exception is raised if IsTangent is true. <br>
-      static  gp_Vec Direction3d(const IntSurf_PathPoint& PStart) ;
-  //! returns the tangent at the intersection in the <br>
-//!          parametric space of the parametrized surface.This tangent <br>
-//!          is associated to the value2d <br>
-//!          la tangente a un sens signifiant (indique le sens de chemin <br>
-//!          ement) <br>
-//!          an exception is raised if IsTangent is true. <br>
-      static  gp_Dir2d Direction2d(const IntSurf_PathPoint& PStart) ;
-  //! Returns the multiplicity of the point i-e <br>
-//!          the number of auxillar parameters associated to the <br>
-//!          point which the principal parameters are given by Value2d <br>
-      static  Standard_Integer Multiplicity(const IntSurf_PathPoint& PStart) ;
-  //! Parametric coordinates associated to the multiplicity. <br>
-//!          An exception is raised if Mult<=0 or Mult>multiplicity. <br>
-      static  void Parameters(const IntSurf_PathPoint& PStart,const Standard_Integer Mult,Standard_Real& U,Standard_Real& V) ;
-
+  
+  //! Returns the 3d coordinates of the starting point.
+    static   gp_Pnt Value3d (const IntSurf_PathPoint& PStart) ;
+  
+  //! Returns the <U, V> parameters which are associated
+  //! with <P>
+  //! it's the parameters which start the marching algorithm
+    static   void Value2d (const IntSurf_PathPoint& PStart, Standard_Real& U, Standard_Real& V) ;
+  
+  //! Returns True if the point is a point on a non-oriented
+  //! arc, which means that the intersection line does not
+  //! stop at such a point but just go through such a point.
+  //! IsPassingPnt is True when IsOnArc is True
+    static   Standard_Boolean IsPassingPnt (const IntSurf_PathPoint& PStart) ;
+  
+  //! Returns True if the surfaces are tangent at this point.
+  //! IsTangent can be True when IsOnArc is True
+  //! if IsPassingPnt is True and IsTangent is True,this point
+  //! is a stopped point.
+    static   Standard_Boolean IsTangent (const IntSurf_PathPoint& PStart) ;
+  
+  //! returns the tangent at the intersection in 3d space
+  //! associated to <P>
+  //! an exception is raised if IsTangent is true.
+    static   gp_Vec Direction3d (const IntSurf_PathPoint& PStart) ;
+  
+  //! returns the tangent at the intersection in the
+  //! parametric space of the parametrized surface.This tangent
+  //! is associated to the value2d
+  //! la tangente a un sens signifiant (indique le sens de chemin
+  //! ement)
+  //! an exception is raised if IsTangent is true.
+    static   gp_Dir2d Direction2d (const IntSurf_PathPoint& PStart) ;
+  
+  //! Returns the multiplicity of the point i-e
+  //! the number of auxillar parameters associated to the
+  //! point which the principal parameters are given by Value2d
+    static   Standard_Integer Multiplicity (const IntSurf_PathPoint& PStart) ;
+  
+  //! Parametric coordinates associated to the multiplicity.
+  //! An exception is raised if Mult<=0 or Mult>multiplicity.
+    static   void Parameters (const IntSurf_PathPoint& PStart, const Standard_Integer Mult, Standard_Real& U, Standard_Real& V) ;
 
 
 
@@ -103,7 +93,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntSurf_PathPointTool_HeaderFile

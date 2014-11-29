@@ -6,31 +6,15 @@
 #ifndef _IFSelect_Transformer_HeaderFile
 #define _IFSelect_Transformer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_Transformer_HeaderFile
 #include <Handle_IFSelect_Transformer.hxx>
-#endif
 
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Interface_Protocol_HeaderFile
 #include <Handle_Interface_Protocol.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
 class Interface_Graph;
 class Interface_Protocol;
 class Interface_CheckIterator;
@@ -39,64 +23,69 @@ class Standard_Transient;
 class TCollection_AsciiString;
 
 
-//! A Transformer defines the way an InterfaceModel is transformed <br>
-//!           (without sending it to a file). <br>
-//!           In order to work, each type of Transformer defines it method <br>
-//!           Perform, it can be parametred as needed. <br>
-//! <br>
-//!           It receives a Model (the data set) as input. It then can : <br>
-//!           - edit this Model on the spot (i.e. alter its content : by <br>
-//!             editing entities, or adding/replacing some ...) <br>
-//!           - produce a copied Model, which detains the needed changes <br>
-//!             (typically on the same type, but some or all entities beeing <br>
-//!              rebuilt or converted; or converted from a protocol to <br>
-//!              another one) <br>
-class IFSelect_Transformer : public MMgt_TShared {
+//! A Transformer defines the way an InterfaceModel is transformed
+//! (without sending it to a file).
+//! In order to work, each type of Transformer defines it method
+//! Perform, it can be parametred as needed.
+//!
+//! It receives a Model (the data set) as input. It then can :
+//! - edit this Model on the spot (i.e. alter its content : by
+//! editing entities, or adding/replacing some ...)
+//! - produce a copied Model, which detains the needed changes
+//! (typically on the same type, but some or all entities beeing
+//! rebuilt or converted; or converted from a protocol to
+//! another one)
+class IFSelect_Transformer : public MMgt_TShared
+{
 
 public:
 
-  //! Performs a Transformation (defined by each sub-class) : <br>
-//!         <G> gives the input data (especially the starting model) and <br>
-//!           can be used for queries (by Selections, etc...) <br>
-//!         <protocol> allows to work with General Services as necessary <br>
-//!           (it applies to input data) <br>
-//!           If the change corresponds to a conversion to a new protocol, <br>
-//!           see also the method ChangeProtocol <br>
-//!         <checks> stores produced checks messages if any <br>
-//!         <newmod> gives the result of the transformation : <br>
-//!         - if it is Null (i.e. has not been affected), the transformation <br>
-//!           has been made on the spot, it is assumed to cause no change <br>
-//!           to the graph of dependances <br>
-//!         - if it equates the starting Model, it has been transformed on <br>
-//!           the spot (possibiliy some entities were replaced inside it) <br>
-//!         - if it is new, it corresponds to a new data set which replaces <br>
-//!           the starting one <br>
-//! <br>
-//!         <me> is mutable to allow results for ChangeProtocol to be <br>
-//!           memorized if needed, and to store informations useful for <br>
-//!           the method Updated <br>
-//! <br>
-//!         Returns True if Done, False if an Error occured : in this case, <br>
-//!           if a new data set has been produced, the transformation <br>
-//!           is ignored, else data may be corrupted. <br>
-  Standard_EXPORT   virtual  Standard_Boolean Perform(const Interface_Graph& G,const Handle(Interface_Protocol)& protocol,Interface_CheckIterator& checks,Handle(Interface_InterfaceModel)& newmod)  = 0;
-  //! This methods allows to declare that the Protocol applied to <br>
-//!           the new Model has changed. It applies to the last call to <br>
-//!           Perform. <br>
-//! <br>
-//!           Returns True if the Protocol has changed, False else. <br>
-//!           The provided default keeps the starting Protocol. This method <br>
-//!           should be redefined as required by the effect of Perform. <br>
-  Standard_EXPORT   virtual  Standard_Boolean ChangeProtocol(Handle(Interface_Protocol)& newproto) const;
-  //! This method allows to know what happened to a starting <br>
-//!           entity after the last Perform. If <entfrom> (from starting <br>
-//!           model) has one and only one known item which corresponds in <br>
-//!           the new produced model, this method must return True and <br>
-//!           fill the argument <entto>. Else, it returns False. <br>
-  Standard_EXPORT   virtual  Standard_Boolean Updated(const Handle(Standard_Transient)& entfrom,Handle(Standard_Transient)& entto) const = 0;
-  //! Returns a text which defines the way a Transformer works <br>
-//!           (to identify the transformation it performs) <br>
-  Standard_EXPORT   virtual  TCollection_AsciiString Label() const = 0;
+  
+  //! Performs a Transformation (defined by each sub-class) :
+  //! <G> gives the input data (especially the starting model) and
+  //! can be used for queries (by Selections, etc...)
+  //! <protocol> allows to work with General Services as necessary
+  //! (it applies to input data)
+  //! If the change corresponds to a conversion to a new protocol,
+  //! see also the method ChangeProtocol
+  //! <checks> stores produced checks messages if any
+  //! <newmod> gives the result of the transformation :
+  //! - if it is Null (i.e. has not been affected), the transformation
+  //! has been made on the spot, it is assumed to cause no change
+  //! to the graph of dependances
+  //! - if it equates the starting Model, it has been transformed on
+  //! the spot (possibiliy some entities were replaced inside it)
+  //! - if it is new, it corresponds to a new data set which replaces
+  //! the starting one
+  //!
+  //! <me> is mutable to allow results for ChangeProtocol to be
+  //! memorized if needed, and to store informations useful for
+  //! the method Updated
+  //!
+  //! Returns True if Done, False if an Error occured : in this case,
+  //! if a new data set has been produced, the transformation
+  //! is ignored, else data may be corrupted.
+  Standard_EXPORT virtual   Standard_Boolean Perform (const Interface_Graph& G, const Handle(Interface_Protocol)& protocol, Interface_CheckIterator& checks, Handle(Interface_InterfaceModel)& newmod)  = 0;
+  
+  //! This methods allows to declare that the Protocol applied to
+  //! the new Model has changed. It applies to the last call to
+  //! Perform.
+  //!
+  //! Returns True if the Protocol has changed, False else.
+  //! The provided default keeps the starting Protocol. This method
+  //! should be redefined as required by the effect of Perform.
+  Standard_EXPORT virtual   Standard_Boolean ChangeProtocol (Handle(Interface_Protocol)& newproto)  const;
+  
+  //! This method allows to know what happened to a starting
+  //! entity after the last Perform. If <entfrom> (from starting
+  //! model) has one and only one known item which corresponds in
+  //! the new produced model, this method must return True and
+  //! fill the argument <entto>. Else, it returns False.
+  Standard_EXPORT virtual   Standard_Boolean Updated (const Handle(Standard_Transient)& entfrom, Handle(Standard_Transient)& entto)  const = 0;
+  
+  //! Returns a text which defines the way a Transformer works
+  //! (to identify the transformation it performs)
+  Standard_EXPORT virtual   TCollection_AsciiString Label()  const = 0;
 
 
 
@@ -119,7 +108,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_Transformer_HeaderFile

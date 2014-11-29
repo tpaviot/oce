@@ -6,22 +6,15 @@
 #ifndef _Handle_StepElement_MeasureOrUnspecifiedValueMember_HeaderFile
 #define _Handle_StepElement_MeasureOrUnspecifiedValueMember_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepData_SelectNamed_HeaderFile
 #include <Handle_StepData_SelectNamed.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepData_SelectNamed);
 class StepElement_MeasureOrUnspecifiedValueMember;
 
-DEFINE_STANDARD_HANDLE(StepElement_MeasureOrUnspecifiedValueMember,StepData_SelectNamed)
+DEFINE_STANDARD_HANDLE(StepElement_MeasureOrUnspecifiedValueMember, StepData_SelectNamed)
 
-#endif
+#endif // _Handle_StepElement_MeasureOrUnspecifiedValueMember_HeaderFile

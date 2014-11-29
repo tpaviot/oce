@@ -6,43 +6,19 @@
 #ifndef _Extrema_ExtCS_HeaderFile
 #define _Extrema_ExtCS_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Adaptor3d_SurfacePtr_HeaderFile
 #include <Adaptor3d_SurfacePtr.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Extrema_ExtElCS_HeaderFile
 #include <Extrema_ExtElCS.hxx>
-#endif
-#ifndef _Extrema_SequenceOfPOnSurf_HeaderFile
 #include <Extrema_SequenceOfPOnSurf.hxx>
-#endif
-#ifndef _Extrema_SequenceOfPOnCurv_HeaderFile
 #include <Extrema_SequenceOfPOnCurv.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TColStd_SequenceOfReal_HeaderFile
 #include <TColStd_SequenceOfReal.hxx>
-#endif
-#ifndef _GeomAbs_SurfaceType_HeaderFile
 #include <GeomAbs_SurfaceType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StdFail_NotDone;
 class Standard_OutOfRange;
 class Standard_TypeMismatch;
@@ -53,39 +29,48 @@ class Extrema_POnSurf;
 class gp_Pnt;
 
 
-//! It calculates all the extremum distances <br>
-//!          between a curve and a surface. <br>
-//!          These distances can be minimum or maximum. <br>
-class Extrema_ExtCS  {
+//! It calculates all the extremum distances
+//! between a curve and a surface.
+//! These distances can be minimum or maximum.
+class Extrema_ExtCS 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Extrema_ExtCS();
-  //! It calculates all the distances between C and S. <br>
-  Standard_EXPORT   Extrema_ExtCS(const Adaptor3d_Curve& C,const Adaptor3d_Surface& S,const Standard_Real TolC,const Standard_Real TolS);
-  //! It calculates all the distances between C and S. <br>
-//!          UCinf and UCmax are the start and end parameters <br>
-//!          of the curve. <br>
-  Standard_EXPORT   Extrema_ExtCS(const Adaptor3d_Curve& C,const Adaptor3d_Surface& S,const Standard_Real UCinf,const Standard_Real UCsup,const Standard_Real Uinf,const Standard_Real Usup,const Standard_Real Vinf,const Standard_Real Vsup,const Standard_Real TolC,const Standard_Real TolS);
-  //! Initializes the fields of the algorithm. <br>
-  Standard_EXPORT     void Initialize(const Adaptor3d_Surface& S,const Standard_Real Uinf,const Standard_Real Usup,const Standard_Real Vinf,const Standard_Real Vsup,const Standard_Real TolC,const Standard_Real TolS) ;
-  //! Computes the distances. <br>
-//!          An exception is raised if the fieds have not been <br>
-//!          initialized. <br>
-  Standard_EXPORT     void Perform(const Adaptor3d_Curve& C,const Standard_Real Uinf,const Standard_Real Usup) ;
-  //! Returns True if the distances are found. <br>
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-  //! Returns True if the curve is on a parallel surface. <br>
-  Standard_EXPORT     Standard_Boolean IsParallel() const;
-  //! Returns the number of extremum distances. <br>
-  Standard_EXPORT     Standard_Integer NbExt() const;
-  //! Returns the value of the Nth resulting square distance. <br>
-  Standard_EXPORT     Standard_Real SquareDistance(const Standard_Integer N) const;
-  //! Returns the point of the Nth resulting distance. <br>
-  Standard_EXPORT     void Points(const Standard_Integer N,Extrema_POnCurv& P1,Extrema_POnSurf& P2) const;
-
+  Standard_EXPORT Extrema_ExtCS();
+  
+  //! It calculates all the distances between C and S.
+  Standard_EXPORT Extrema_ExtCS(const Adaptor3d_Curve& C, const Adaptor3d_Surface& S, const Standard_Real TolC, const Standard_Real TolS);
+  
+  //! It calculates all the distances between C and S.
+  //! UCinf and UCmax are the start and end parameters
+  //! of the curve.
+  Standard_EXPORT Extrema_ExtCS(const Adaptor3d_Curve& C, const Adaptor3d_Surface& S, const Standard_Real UCinf, const Standard_Real UCsup, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real Vinf, const Standard_Real Vsup, const Standard_Real TolC, const Standard_Real TolS);
+  
+  //! Initializes the fields of the algorithm.
+  Standard_EXPORT   void Initialize (const Adaptor3d_Surface& S, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real Vinf, const Standard_Real Vsup, const Standard_Real TolC, const Standard_Real TolS) ;
+  
+  //! Computes the distances.
+  //! An exception is raised if the fieds have not been
+  //! initialized.
+  Standard_EXPORT   void Perform (const Adaptor3d_Curve& C, const Standard_Real Uinf, const Standard_Real Usup) ;
+  
+  //! Returns True if the distances are found.
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
+  
+  //! Returns True if the curve is on a parallel surface.
+  Standard_EXPORT   Standard_Boolean IsParallel()  const;
+  
+  //! Returns the number of extremum distances.
+  Standard_EXPORT   Standard_Integer NbExt()  const;
+  
+  //! Returns the value of the Nth resulting square distance.
+  Standard_EXPORT   Standard_Real SquareDistance (const Standard_Integer N)  const;
+  
+  //! Returns the point of the Nth resulting distance.
+  Standard_EXPORT   void Points (const Standard_Integer N, Extrema_POnCurv& P1, Extrema_POnSurf& P2)  const;
 
 
 
@@ -99,27 +84,27 @@ protected:
 private:
 
   
-  Standard_EXPORT     Standard_Boolean AddSolution(const Adaptor3d_Curve& Curve,const Standard_Real T,const Standard_Real U,const Standard_Real V,const gp_Pnt& PointOnCurve,const gp_Pnt& PointOnSurf,const Standard_Real SquareDist) ;
+  Standard_EXPORT   Standard_Boolean AddSolution (const Adaptor3d_Curve& Curve, const Standard_Real T, const Standard_Real U, const Standard_Real V, const gp_Pnt& PointOnCurve, const gp_Pnt& PointOnSurf, const Standard_Real SquareDist) ;
   
-  Standard_EXPORT     Adaptor3d_SurfacePtr Bidon() const;
+  Standard_EXPORT   Adaptor3d_SurfacePtr Bidon()  const;
 
 
-Adaptor3d_SurfacePtr myS;
-Standard_Boolean myDone;
-Standard_Boolean myIsPar;
-Extrema_ExtElCS myExtElCS;
-Extrema_SequenceOfPOnSurf myPOnS;
-Extrema_SequenceOfPOnCurv myPOnC;
-Standard_Real myuinf;
-Standard_Real myusup;
-Standard_Real myvinf;
-Standard_Real myvsup;
-Standard_Real mytolC;
-Standard_Real mytolS;
-Standard_Real myucinf;
-Standard_Real myucsup;
-TColStd_SequenceOfReal mySqDist;
-GeomAbs_SurfaceType myStype;
+  Adaptor3d_SurfacePtr myS;
+  Standard_Boolean myDone;
+  Standard_Boolean myIsPar;
+  Extrema_ExtElCS myExtElCS;
+  Extrema_SequenceOfPOnSurf myPOnS;
+  Extrema_SequenceOfPOnCurv myPOnC;
+  Standard_Real myuinf;
+  Standard_Real myusup;
+  Standard_Real myvinf;
+  Standard_Real myvsup;
+  Standard_Real mytolC;
+  Standard_Real mytolS;
+  Standard_Real myucinf;
+  Standard_Real myucsup;
+  TColStd_SequenceOfReal mySqDist;
+  GeomAbs_SurfaceType myStype;
 
 
 };
@@ -128,7 +113,6 @@ GeomAbs_SurfaceType myStype;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Extrema_ExtCS_HeaderFile

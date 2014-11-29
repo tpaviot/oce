@@ -6,44 +6,29 @@
 #ifndef _Storage_InternalData_HeaderFile
 #define _Storage_InternalData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Storage_InternalData_HeaderFile
 #include <Handle_Storage_InternalData.hxx>
-#endif
 
-#ifndef _Storage_BucketOfPersistent_HeaderFile
 #include <Storage_BucketOfPersistent.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Storage_HPArray_HeaderFile
 #include <Handle_Storage_HPArray.hxx>
-#endif
-#ifndef _Storage_MapOfCallBack_HeaderFile
 #include <Storage_MapOfCallBack.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class Storage_HPArray;
 class Storage_Schema;
 
 
 
-class Storage_InternalData : public MMgt_TShared {
+class Storage_InternalData : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   Storage_InternalData();
+  Standard_EXPORT Storage_InternalData();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 
 
 friend class Storage_Schema;
@@ -59,11 +44,11 @@ protected:
 private: 
 
 
-Storage_BucketOfPersistent myPtoA;
-Standard_Integer myObjId;
-Standard_Integer myTypeId;
-Handle_Storage_HPArray myReadArray;
-Storage_MapOfCallBack myTypeBinding;
+  Storage_BucketOfPersistent myPtoA;
+  Standard_Integer myObjId;
+  Standard_Integer myTypeId;
+  Handle(Storage_HPArray) myReadArray;
+  Storage_MapOfCallBack myTypeBinding;
 
 
 };
@@ -72,7 +57,6 @@ Storage_MapOfCallBack myTypeBinding;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Storage_InternalData_HeaderFile

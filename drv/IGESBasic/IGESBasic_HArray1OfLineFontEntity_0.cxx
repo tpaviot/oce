@@ -5,28 +5,14 @@
 
 #include <IGESBasic_HArray1OfLineFontEntity.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _IGESData_LineFontEntity_HeaderFile
 #include <IGESData_LineFontEntity.hxx>
-#endif
-#ifndef _IGESBasic_Array1OfLineFontEntity_HeaderFile
 #include <IGESBasic_Array1OfLineFontEntity.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(IGESBasic_HArray1OfLineFontEntity,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(IGESBasic_HArray1OfLineFontEntity)
 
 
-#define ItemHArray1 Handle_IGESData_LineFontEntity
+#define ItemHArray1 Handle(IGESData_LineFontEntity)
 #define ItemHArray1_hxx <IGESData_LineFontEntity.hxx>
 #define TheArray1 IGESBasic_Array1OfLineFontEntity
 #define TheArray1_hxx <IGESBasic_Array1OfLineFontEntity.hxx>

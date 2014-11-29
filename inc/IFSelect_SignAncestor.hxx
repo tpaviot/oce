@@ -6,42 +6,29 @@
 #ifndef _IFSelect_SignAncestor_HeaderFile
 #define _IFSelect_SignAncestor_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_SignAncestor_HeaderFile
 #include <Handle_IFSelect_SignAncestor.hxx>
-#endif
 
-#ifndef _IFSelect_SignType_HeaderFile
 #include <IFSelect_SignType.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
 class Standard_Transient;
 class Interface_InterfaceModel;
 class TCollection_AsciiString;
 
 
 
-class IFSelect_SignAncestor : public IFSelect_SignType {
+class IFSelect_SignAncestor : public IFSelect_SignType
+{
 
 public:
 
   
-  Standard_EXPORT   IFSelect_SignAncestor(const Standard_Boolean nopk = Standard_False);
+  Standard_EXPORT IFSelect_SignAncestor(const Standard_Boolean nopk = Standard_False);
   
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const Handle(Standard_Transient)& ent,const Handle(Interface_InterfaceModel)& model,const TCollection_AsciiString& text,const Standard_Boolean exact) const;
+  Standard_EXPORT virtual   Standard_Boolean Matches (const Handle(Standard_Transient)& ent, const Handle(Interface_InterfaceModel)& model, const TCollection_AsciiString& text, const Standard_Boolean exact)  const;
 
 
 
@@ -64,7 +51,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_SignAncestor_HeaderFile

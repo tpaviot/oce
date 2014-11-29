@@ -5,45 +5,19 @@
 
 #include <Extrema_LocateExtPC2d.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Adaptor2d_Curve2d_HeaderFile
 #include <Adaptor2d_Curve2d.hxx>
-#endif
-#ifndef _Extrema_Curve2dTool_HeaderFile
 #include <Extrema_Curve2dTool.hxx>
-#endif
-#ifndef _Extrema_ExtPElC2d_HeaderFile
 #include <Extrema_ExtPElC2d.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _gp_Vec2d_HeaderFile
 #include <gp_Vec2d.hxx>
-#endif
-#ifndef _Extrema_POnCurv2d_HeaderFile
 #include <Extrema_POnCurv2d.hxx>
-#endif
-#ifndef _Extrema_SequenceOfPOnCurv2d_HeaderFile
 #include <Extrema_SequenceOfPOnCurv2d.hxx>
-#endif
-#ifndef _Extrema_ELPCOfLocateExtPC2d_HeaderFile
 #include <Extrema_ELPCOfLocateExtPC2d.hxx>
-#endif
-#ifndef _Extrema_EPCOfELPCOfLocateExtPC2d_HeaderFile
 #include <Extrema_EPCOfELPCOfLocateExtPC2d.hxx>
-#endif
-#ifndef _Extrema_LocEPCOfLocateExtPC2d_HeaderFile
 #include <Extrema_LocEPCOfLocateExtPC2d.hxx>
-#endif
-#ifndef _Extrema_PCLocFOfLocEPCOfLocateExtPC2d_HeaderFile
 #include <Extrema_PCLocFOfLocEPCOfLocateExtPC2d.hxx>
-#endif
  
 
 #define TheCurve Adaptor2d_Curve2d

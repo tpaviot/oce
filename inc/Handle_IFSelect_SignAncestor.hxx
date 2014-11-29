@@ -6,22 +6,15 @@
 #ifndef _Handle_IFSelect_SignAncestor_HeaderFile
 #define _Handle_IFSelect_SignAncestor_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IFSelect_SignType_HeaderFile
 #include <Handle_IFSelect_SignType.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IFSelect_SignType);
 class IFSelect_SignAncestor;
 
-DEFINE_STANDARD_HANDLE(IFSelect_SignAncestor,IFSelect_SignType)
+DEFINE_STANDARD_HANDLE(IFSelect_SignAncestor, IFSelect_SignType)
 
-#endif
+#endif // _Handle_IFSelect_SignAncestor_HeaderFile

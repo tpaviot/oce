@@ -1,18 +1,6 @@
-#ifndef _Interface_InterfaceModel_HeaderFile
 #include <Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Transfer_ActorOfTransientProcess_HeaderFile
 #include <Transfer_ActorOfTransientProcess.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Transfer_FinderProcess_HeaderFile
 #include <Transfer_FinderProcess.hxx>
-#endif
-#ifndef _XSControl_WorkSession_HeaderFile
 #include <XSControl_WorkSession.hxx>
-#endif
-#ifndef _IGESControl_Controller_HeaderFile
 #include <IGESControl_Controller.hxx>
-#endif

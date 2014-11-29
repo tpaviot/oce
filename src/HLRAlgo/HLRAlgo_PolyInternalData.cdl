@@ -15,6 +15,7 @@
 -- commercial license or contractual agreement.
 
 class PolyInternalData from HLRAlgo inherits TShared from MMgt
+	---Purpose: to Update OutLines.
 
 uses
     Address          from Standard,
@@ -30,7 +31,7 @@ uses
 
 is
     Create(nbNod, nbTri : Integer from Standard)
-    returns mutable PolyInternalData from HLRAlgo;
+    returns PolyInternalData from HLRAlgo;
     
     UpdateLinks(me    : mutable;
                 TData : out Address from Standard;

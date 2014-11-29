@@ -6,31 +6,15 @@
 #ifndef _TColGeom_HSequenceOfCurve_HeaderFile
 #define _TColGeom_HSequenceOfCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColGeom_HSequenceOfCurve_HeaderFile
 #include <Handle_TColGeom_HSequenceOfCurve.hxx>
-#endif
 
-#ifndef _TColGeom_SequenceOfCurve_HeaderFile
 #include <TColGeom_SequenceOfCurve.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Geom_Curve;
@@ -38,56 +22,57 @@ class TColGeom_SequenceOfCurve;
 
 
 
-class TColGeom_HSequenceOfCurve : public MMgt_TShared {
+class TColGeom_HSequenceOfCurve : public MMgt_TShared
+{
 
 public:
 
   
-      TColGeom_HSequenceOfCurve();
+    TColGeom_HSequenceOfCurve();
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void Append(const Handle(Geom_Curve)& anItem) ;
+  Standard_EXPORT   void Append (const Handle(Geom_Curve)& anItem) ;
   
-  Standard_EXPORT     void Append(const Handle(TColGeom_HSequenceOfCurve)& aSequence) ;
+  Standard_EXPORT   void Append (const Handle(TColGeom_HSequenceOfCurve)& aSequence) ;
   
-  Standard_EXPORT     void Prepend(const Handle(Geom_Curve)& anItem) ;
+  Standard_EXPORT   void Prepend (const Handle(Geom_Curve)& anItem) ;
   
-  Standard_EXPORT     void Prepend(const Handle(TColGeom_HSequenceOfCurve)& aSequence) ;
+  Standard_EXPORT   void Prepend (const Handle(TColGeom_HSequenceOfCurve)& aSequence) ;
   
-  Standard_EXPORT     void Reverse() ;
+  Standard_EXPORT   void Reverse() ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(Geom_Curve)& anItem) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(Geom_Curve)& anItem) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(TColGeom_HSequenceOfCurve)& aSequence) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(TColGeom_HSequenceOfCurve)& aSequence) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(Geom_Curve)& anItem) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(Geom_Curve)& anItem) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(TColGeom_HSequenceOfCurve)& aSequence) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(TColGeom_HSequenceOfCurve)& aSequence) ;
   
-  Standard_EXPORT     void Exchange(const Standard_Integer anIndex,const Standard_Integer anOtherIndex) ;
+  Standard_EXPORT   void Exchange (const Standard_Integer anIndex, const Standard_Integer anOtherIndex) ;
   
-  Standard_EXPORT     Handle_TColGeom_HSequenceOfCurve Split(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(TColGeom_HSequenceOfCurve) Split (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer anIndex,const Handle(Geom_Curve)& anItem) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer anIndex, const Handle(Geom_Curve)& anItem) ;
   
-  Standard_EXPORT    const Handle_Geom_Curve& Value(const Standard_Integer anIndex) const;
+  Standard_EXPORT  const  Handle(Geom_Curve)& Value (const Standard_Integer anIndex)  const;
   
-  Standard_EXPORT     Handle_Geom_Curve& ChangeValue(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(Geom_Curve)& ChangeValue (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer anIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer fromIndex,const Standard_Integer toIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer fromIndex, const Standard_Integer toIndex) ;
   
-       const TColGeom_SequenceOfCurve& Sequence() const;
+     const  TColGeom_SequenceOfCurve& Sequence()  const;
   
-        TColGeom_SequenceOfCurve& ChangeSequence() ;
+      TColGeom_SequenceOfCurve& ChangeSequence() ;
   
-  Standard_EXPORT     Handle_TColGeom_HSequenceOfCurve ShallowCopy() const;
+  Standard_EXPORT   Handle(TColGeom_HSequenceOfCurve) ShallowCopy()  const;
 
 
 
@@ -102,12 +87,12 @@ protected:
 private: 
 
 
-TColGeom_SequenceOfCurve mySequence;
+  TColGeom_SequenceOfCurve mySequence;
 
 
 };
 
-#define Item Handle_Geom_Curve
+#define Item Handle(Geom_Curve)
 #define Item_hxx <Geom_Curve.hxx>
 #define TheSequence TColGeom_SequenceOfCurve
 #define TheSequence_hxx <TColGeom_SequenceOfCurve.hxx>
@@ -128,11 +113,10 @@ TColGeom_SequenceOfCurve mySequence;
 #undef TCollection_HSequence_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline Handle_TColGeom_HSequenceOfCurve ShallowCopy(const Handle_TColGeom_HSequenceOfCurve& me) {
+inline Handle(TColGeom_HSequenceOfCurve) ShallowCopy(const Handle(TColGeom_HSequenceOfCurve)& me) {
  return me->ShallowCopy();
 }
 
 
 
-#endif
+#endif // _TColGeom_HSequenceOfCurve_HeaderFile

@@ -1,48 +1,16 @@
-#ifndef _IGESToBRep_CurveAndSurface_HeaderFile
 #include <IGESToBRep_CurveAndSurface.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _IGESGeom_RuledSurface_HeaderFile
 #include <IGESGeom_RuledSurface.hxx>
-#endif
-#ifndef _IGESGeom_SurfaceOfRevolution_HeaderFile
 #include <IGESGeom_SurfaceOfRevolution.hxx>
-#endif
-#ifndef _IGESGeom_TabulatedCylinder_HeaderFile
 #include <IGESGeom_TabulatedCylinder.hxx>
-#endif
-#ifndef _IGESGeom_OffsetSurface_HeaderFile
 #include <IGESGeom_OffsetSurface.hxx>
-#endif
-#ifndef _IGESGeom_TrimmedSurface_HeaderFile
 #include <IGESGeom_TrimmedSurface.hxx>
-#endif
-#ifndef _IGESGeom_BoundedSurface_HeaderFile
 #include <IGESGeom_BoundedSurface.hxx>
-#endif
-#ifndef _IGESGeom_Plane_HeaderFile
 #include <IGESGeom_Plane.hxx>
-#endif
-#ifndef _IGESSolid_PlaneSurface_HeaderFile
 #include <IGESSolid_PlaneSurface.hxx>
-#endif
-#ifndef _IGESBasic_SingleParent_HeaderFile
 #include <IGESBasic_SingleParent.hxx>
-#endif
-#ifndef _gp_Pln_HeaderFile
 #include <gp_Pln.hxx>
-#endif
-#ifndef _gp_Trsf_HeaderFile
 #include <gp_Trsf.hxx>
-#endif
-#ifndef _gp_Trsf2d_HeaderFile
 #include <gp_Trsf2d.hxx>
-#endif
-#ifndef _IGESToBRep_TopoSurface_HeaderFile
 #include <IGESToBRep_TopoSurface.hxx>
-#endif

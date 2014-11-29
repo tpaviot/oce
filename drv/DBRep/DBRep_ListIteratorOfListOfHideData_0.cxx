@@ -5,21 +5,11 @@
 
 #include <DBRep_ListIteratorOfListOfHideData.hxx>
 
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _DBRep_ListOfHideData_HeaderFile
 #include <DBRep_ListOfHideData.hxx>
-#endif
-#ifndef _DBRep_HideData_HeaderFile
 #include <DBRep_HideData.hxx>
-#endif
-#ifndef _DBRep_ListNodeOfListOfHideData_HeaderFile
 #include <DBRep_ListNodeOfListOfHideData.hxx>
-#endif
  
 
 #define Item DBRep_HideData

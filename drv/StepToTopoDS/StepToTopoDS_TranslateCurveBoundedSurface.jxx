@@ -1,12 +1,4 @@
-#ifndef _StepGeom_CurveBoundedSurface_HeaderFile
 #include <StepGeom_CurveBoundedSurface.hxx>
-#endif
-#ifndef _Transfer_TransientProcess_HeaderFile
 #include <Transfer_TransientProcess.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _StepToTopoDS_TranslateCurveBoundedSurface_HeaderFile
 #include <StepToTopoDS_TranslateCurveBoundedSurface.hxx>
-#endif

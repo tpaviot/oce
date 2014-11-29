@@ -5,29 +5,17 @@
 
 #include <MeshVS_DataMapOfIntegerMeshEntityOwner.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _MeshVS_MeshEntityOwner_HeaderFile
 #include <MeshVS_MeshEntityOwner.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner_HeaderFile
 #include <MeshVS_DataMapNodeOfDataMapOfIntegerMeshEntityOwner.hxx>
-#endif
-#ifndef _MeshVS_DataMapIteratorOfDataMapOfIntegerMeshEntityOwner_HeaderFile
 #include <MeshVS_DataMapIteratorOfDataMapOfIntegerMeshEntityOwner.hxx>
-#endif
  
 
 #define TheKey Standard_Integer
 #define TheKey_hxx <Standard_Integer.hxx>
-#define TheItem Handle_MeshVS_MeshEntityOwner
+#define TheItem Handle(MeshVS_MeshEntityOwner)
 #define TheItem_hxx <MeshVS_MeshEntityOwner.hxx>
 #define Hasher TColStd_MapIntegerHasher
 #define Hasher_hxx <TColStd_MapIntegerHasher.hxx>

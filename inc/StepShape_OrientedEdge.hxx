@@ -6,61 +6,47 @@
 #ifndef _StepShape_OrientedEdge_HeaderFile
 #define _StepShape_OrientedEdge_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_OrientedEdge_HeaderFile
 #include <Handle_StepShape_OrientedEdge.hxx>
-#endif
 
-#ifndef _Handle_StepShape_Edge_HeaderFile
 #include <Handle_StepShape_Edge.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _StepShape_Edge_HeaderFile
 #include <StepShape_Edge.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepShape_Vertex_HeaderFile
 #include <Handle_StepShape_Vertex.hxx>
-#endif
 class StepShape_Edge;
 class TCollection_HAsciiString;
 class StepShape_Vertex;
 
 
 
-class StepShape_OrientedEdge : public StepShape_Edge {
+class StepShape_OrientedEdge : public StepShape_Edge
+{
 
 public:
 
-  //! Returns a OrientedEdge <br>
-  Standard_EXPORT   StepShape_OrientedEdge();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepShape_Edge)& aEdgeElement,const Standard_Boolean aOrientation) ;
+  //! Returns a OrientedEdge
+  Standard_EXPORT StepShape_OrientedEdge();
   
-  Standard_EXPORT     void SetEdgeElement(const Handle(StepShape_Edge)& aEdgeElement) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepShape_Edge)& aEdgeElement, const Standard_Boolean aOrientation) ;
   
-  Standard_EXPORT     Handle_StepShape_Edge EdgeElement() const;
+  Standard_EXPORT   void SetEdgeElement (const Handle(StepShape_Edge)& aEdgeElement) ;
   
-  Standard_EXPORT     void SetOrientation(const Standard_Boolean aOrientation) ;
+  Standard_EXPORT   Handle(StepShape_Edge) EdgeElement()  const;
   
-  Standard_EXPORT     Standard_Boolean Orientation() const;
+  Standard_EXPORT   void SetOrientation (const Standard_Boolean aOrientation) ;
   
-  Standard_EXPORT   virtual  void SetEdgeStart(const Handle(StepShape_Vertex)& aEdgeStart) ;
+  Standard_EXPORT   Standard_Boolean Orientation()  const;
   
-  Standard_EXPORT   virtual  Handle_StepShape_Vertex EdgeStart() const;
+  Standard_EXPORT virtual   void SetEdgeStart (const Handle(StepShape_Vertex)& aEdgeStart) ;
   
-  Standard_EXPORT   virtual  void SetEdgeEnd(const Handle(StepShape_Vertex)& aEdgeEnd) ;
+  Standard_EXPORT virtual   Handle(StepShape_Vertex) EdgeStart()  const;
   
-  Standard_EXPORT   virtual  Handle_StepShape_Vertex EdgeEnd() const;
+  Standard_EXPORT virtual   void SetEdgeEnd (const Handle(StepShape_Vertex)& aEdgeEnd) ;
+  
+  Standard_EXPORT virtual   Handle(StepShape_Vertex) EdgeEnd()  const;
 
 
 
@@ -75,8 +61,8 @@ protected:
 private: 
 
 
-Handle_StepShape_Edge edgeElement;
-Standard_Boolean orientation;
+  Handle(StepShape_Edge) edgeElement;
+  Standard_Boolean orientation;
 
 
 };
@@ -85,7 +71,6 @@ Standard_Boolean orientation;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_OrientedEdge_HeaderFile

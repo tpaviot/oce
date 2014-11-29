@@ -6,65 +6,53 @@
 #ifndef _Bisector_PointOnBis_HeaderFile
 #define _Bisector_PointOnBis_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
 class gp_Pnt2d;
 
 
 
-class Bisector_PointOnBis  {
+class Bisector_PointOnBis 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Bisector_PointOnBis();
+  Standard_EXPORT Bisector_PointOnBis();
   
-  Standard_EXPORT   Bisector_PointOnBis(const Standard_Real Param1,const Standard_Real Param2,const Standard_Real ParamBis,const Standard_Real Distance,const gp_Pnt2d& Point);
+  Standard_EXPORT Bisector_PointOnBis(const Standard_Real Param1, const Standard_Real Param2, const Standard_Real ParamBis, const Standard_Real Distance, const gp_Pnt2d& Point);
   
-  Standard_EXPORT     void ParamOnC1(const Standard_Real Param) ;
+  Standard_EXPORT   void ParamOnC1 (const Standard_Real Param) ;
   
-  Standard_EXPORT     void ParamOnC2(const Standard_Real Param) ;
+  Standard_EXPORT   void ParamOnC2 (const Standard_Real Param) ;
   
-  Standard_EXPORT     void ParamOnBis(const Standard_Real Param) ;
+  Standard_EXPORT   void ParamOnBis (const Standard_Real Param) ;
   
-  Standard_EXPORT     void Distance(const Standard_Real Distance) ;
+  Standard_EXPORT   void Distance (const Standard_Real Distance) ;
   
-  Standard_EXPORT     void IsInfinite(const Standard_Boolean Infinite) ;
+  Standard_EXPORT   void IsInfinite (const Standard_Boolean Infinite) ;
   
-  Standard_EXPORT     void Point(const gp_Pnt2d& P) ;
+  Standard_EXPORT   void Point (const gp_Pnt2d& P) ;
   
-  Standard_EXPORT     Standard_Real ParamOnC1() const;
+  Standard_EXPORT   Standard_Real ParamOnC1()  const;
   
-  Standard_EXPORT     Standard_Real ParamOnC2() const;
+  Standard_EXPORT   Standard_Real ParamOnC2()  const;
   
-  Standard_EXPORT     Standard_Real ParamOnBis() const;
+  Standard_EXPORT   Standard_Real ParamOnBis()  const;
   
-  Standard_EXPORT     Standard_Real Distance() const;
+  Standard_EXPORT   Standard_Real Distance()  const;
   
-  Standard_EXPORT     gp_Pnt2d Point() const;
+  Standard_EXPORT   gp_Pnt2d Point()  const;
   
-  Standard_EXPORT     Standard_Boolean IsInfinite() const;
+  Standard_EXPORT   Standard_Boolean IsInfinite()  const;
   
-  Standard_EXPORT     void Dump() const;
-
+  Standard_EXPORT   void Dump()  const;
 
 
 
@@ -79,12 +67,12 @@ private:
 
 
 
-Standard_Real param1;
-Standard_Real param2;
-Standard_Real paramBis;
-Standard_Real distance;
-Standard_Boolean infinite;
-gp_Pnt2d point;
+  Standard_Real param1;
+  Standard_Real param2;
+  Standard_Real paramBis;
+  Standard_Real distance;
+  Standard_Boolean infinite;
+  gp_Pnt2d point;
 
 
 };
@@ -93,7 +81,6 @@ gp_Pnt2d point;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Bisector_PointOnBis_HeaderFile

@@ -6,22 +6,12 @@
 #ifndef _BRepBuilderAPI_HeaderFile
 #define _BRepBuilderAPI_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom_Plane_HeaderFile
 #include <Handle_Geom_Plane.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Geom_Plane;
 class BRepBuilderAPI_Command;
 class BRepBuilderAPI_MakeShape;
@@ -43,82 +33,83 @@ class BRepBuilderAPI_Copy;
 class BRepBuilderAPI_Collect;
 
 
-//! The  BRepBuilderAPI  package   provides  an   Application <br>
-//!          Programming Interface  for the BRep  topology data <br>
-//!          structure. <br>
-//! <br>
-//!          The API is a set of classes aiming to provide : <br>
-//! <br>
-//!          * High level and simple calls  for the most common <br>
-//!          operations. <br>
-//! <br>
-//!          *    Keeping   an   access  on    the    low-level <br>
-//!          implementation of high-level calls. <br>
-//! <br>
-//!          * Examples  of programming of high-level operations <br>
-//!          from low-level operations. <br>
-//! <br>
-//!          * A complete coverage of modelling : <br>
-//! <br>
-//!             - Creating vertices ,edges, faces, solids. <br>
-//! <br>
-//!             - Sweeping operations. <br>
-//! <br>
-//!             - Boolean operations. <br>
-//! <br>
-//!             - Global properties computation. <br>
-//! <br>
-//! <br>
-//! 	    The API provides  classes to  build  objects: <br>
-//! <br>
-//! 	    * The  constructors  of the classes  provides  the <br>
-//! 	    different constructions methods. <br>
-//! <br>
-//! 	    * The  class keeps as fields the   different tools <br>
-//! 	    used to build the object. <br>
-//! <br>
-//! 	    *   The class  provides  a  casting  method to get <br>
-//! 	    automatically the  result  with  a   function-like <br>
-//! 	    call. <br>
-//! <br>
-//! 	    For example to make a  vertex <V> from a point <P> <br>
-//! 	    one can writes : <br>
-//! <br>
-//! 	    V = BRepBuilderAPI_MakeVertex(P); <br>
-//! <br>
-//! 	    or <br>
-//! <br>
-//! 	    BRepBuilderAPI_MakeVertex MV(P); <br>
-//! 	    V = MV.Vertex(); <br>
-//! <br>
-//! <br>
-//! 	    For tolerances  a default precision is  used which <br>
-//! 	    can    be   changed    by    the   packahe  method <br>
-//! 	    BRepBuilderAPI::Precision. <br>
-//! <br>
-//! 	    For error handling the BRepBuilderAPI commands raise only <br>
-//! 	    the NotDone error. When Done is false on a command <br>
-//! 	    the error description can be asked to the command. <br>
-//! <br>
-//! 	    In  theory  the  comands can be    called with any <br>
-//! 	    arguments, argument  checking  is performed by the <br>
-//! 	    command. <br>
-class BRepBuilderAPI  {
+//! The  BRepBuilderAPI  package   provides  an   Application
+//! Programming Interface  for the BRep  topology data
+//! structure.
+//!
+//! The API is a set of classes aiming to provide :
+//!
+//! * High level and simple calls  for the most common
+//! operations.
+//!
+//! *    Keeping   an   access  on    the    low-level
+//! implementation of high-level calls.
+//!
+//! * Examples  of programming of high-level operations
+//! from low-level operations.
+//!
+//! * A complete coverage of modelling :
+//!
+//! - Creating vertices ,edges, faces, solids.
+//!
+//! - Sweeping operations.
+//!
+//! - Boolean operations.
+//!
+//! - Global properties computation.
+//!
+//! The API provides  classes to  build  objects:
+//!
+//! * The  constructors  of the classes  provides  the
+//! different constructions methods.
+//!
+//! * The  class keeps as fields the   different tools
+//! used to build the object.
+//!
+//! *   The class  provides  a  casting  method to get
+//! automatically the  result  with  a   function-like
+//! call.
+//!
+//! For example to make a  vertex <V> from a point <P>
+//! one can writes :
+//!
+//! V = BRepBuilderAPI_MakeVertex(P);
+//!
+//! or
+//!
+//! BRepBuilderAPI_MakeVertex MV(P);
+//! V = MV.Vertex();
+//!
+//! For tolerances  a default precision is  used which
+//! can    be   changed    by    the   packahe  method
+//! BRepBuilderAPI::Precision.
+//!
+//! For error handling the BRepBuilderAPI commands raise only
+//! the NotDone error. When Done is false on a command
+//! the error description can be asked to the command.
+//!
+//! In  theory  the  comands can be    called with any
+//! arguments, argument  checking  is performed by the
+//! command.
+class BRepBuilderAPI 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Sets    the current plane. <br>
-  Standard_EXPORT   static  void Plane(const Handle(Geom_Plane)& P) ;
-  //! Returns the current plane. <br>
-//! <br>
-  Standard_EXPORT   static const Handle_Geom_Plane& Plane() ;
-  //! Sets the default precision.  The current Precision <br>
-//!          is returned. <br>
-  Standard_EXPORT   static  void Precision(const Standard_Real P) ;
-  //! Returns the default precision. <br>
-  Standard_EXPORT   static  Standard_Real Precision() ;
-
+  
+  //! Sets    the current plane.
+  Standard_EXPORT static   void Plane (const Handle(Geom_Plane)& P) ;
+  
+  //! Returns the current plane.
+  Standard_EXPORT static  const  Handle(Geom_Plane)& Plane() ;
+  
+  //! Sets the default precision.  The current Precision
+  //! is returned.
+  Standard_EXPORT static   void Precision (const Standard_Real P) ;
+  
+  //! Returns the default precision.
+  Standard_EXPORT static   Standard_Real Precision() ;
 
 
 
@@ -159,7 +150,6 @@ friend class BRepBuilderAPI_Collect;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepBuilderAPI_HeaderFile

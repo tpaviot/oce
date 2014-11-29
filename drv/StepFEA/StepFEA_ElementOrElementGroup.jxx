@@ -1,12 +1,4 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepFEA_ElementRepresentation_HeaderFile
 #include <StepFEA_ElementRepresentation.hxx>
-#endif
-#ifndef _StepFEA_ElementGroup_HeaderFile
 #include <StepFEA_ElementGroup.hxx>
-#endif
-#ifndef _StepFEA_ElementOrElementGroup_HeaderFile
 #include <StepFEA_ElementOrElementGroup.hxx>
-#endif

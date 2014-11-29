@@ -5,22 +5,12 @@
 
 #include <MAT_DataMapNodeOfDataMapOfIntegerBasicElt.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _MAT_BasicElt_HeaderFile
 #include <MAT_BasicElt.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _MAT_DataMapOfIntegerBasicElt_HeaderFile
 #include <MAT_DataMapOfIntegerBasicElt.hxx>
-#endif
-#ifndef _MAT_DataMapIteratorOfDataMapOfIntegerBasicElt_HeaderFile
 #include <MAT_DataMapIteratorOfDataMapOfIntegerBasicElt.hxx>
-#endif
 
  
 
@@ -41,7 +31,7 @@ IMPLEMENT_STANDARD_RTTI(MAT_DataMapNodeOfDataMapOfIntegerBasicElt)
 
 #define TheKey Standard_Integer
 #define TheKey_hxx <Standard_Integer.hxx>
-#define TheItem Handle_MAT_BasicElt
+#define TheItem Handle(MAT_BasicElt)
 #define TheItem_hxx <MAT_BasicElt.hxx>
 #define Hasher TColStd_MapIntegerHasher
 #define Hasher_hxx <TColStd_MapIntegerHasher.hxx>

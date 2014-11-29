@@ -5,16 +5,10 @@
 
 #include <IntSurf_SequenceNodeOfSequenceOfInteriorPoint.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IntSurf_InteriorPoint_HeaderFile
 #include <IntSurf_InteriorPoint.hxx>
-#endif
-#ifndef _IntSurf_SequenceOfInteriorPoint_HeaderFile
 #include <IntSurf_SequenceOfInteriorPoint.hxx>
-#endif
 
  
 

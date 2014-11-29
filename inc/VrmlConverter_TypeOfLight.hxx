@@ -6,16 +6,15 @@
 #ifndef _VrmlConverter_TypeOfLight_HeaderFile
 #define _VrmlConverter_TypeOfLight_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum VrmlConverter_TypeOfLight {
+
+enum VrmlConverter_TypeOfLight
+{
 VrmlConverter_NoLight,
 VrmlConverter_DirectionLight,
 VrmlConverter_PointLight,
 VrmlConverter_SpotLight
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _VrmlConverter_TypeOfLight_HeaderFile

@@ -6,55 +6,42 @@
 #ifndef _MAT_TListNodeOfListOfEdge_HeaderFile
 #define _MAT_TListNodeOfListOfEdge_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MAT_TListNodeOfListOfEdge_HeaderFile
 #include <Handle_MAT_TListNodeOfListOfEdge.hxx>
-#endif
 
-#ifndef _Handle_MAT_TListNodeOfListOfEdge_HeaderFile
 #include <Handle_MAT_TListNodeOfListOfEdge.hxx>
-#endif
-#ifndef _Handle_MAT_Edge_HeaderFile
 #include <Handle_MAT_Edge.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_MAT_ListOfEdge_HeaderFile
 #include <Handle_MAT_ListOfEdge.hxx>
-#endif
 class MAT_Edge;
 class MAT_ListOfEdge;
 
 
 
-class MAT_TListNodeOfListOfEdge : public MMgt_TShared {
+class MAT_TListNodeOfListOfEdge : public MMgt_TShared
+{
 
 public:
 
   
-      MAT_TListNodeOfListOfEdge();
+    MAT_TListNodeOfListOfEdge();
   
-      MAT_TListNodeOfListOfEdge(const Handle(MAT_Edge)& anitem);
+    MAT_TListNodeOfListOfEdge(const Handle(MAT_Edge)& anitem);
   
-        Handle_MAT_Edge GetItem() const;
+      Handle(MAT_Edge) GetItem()  const;
   
-        Handle_MAT_TListNodeOfListOfEdge Next() const;
+      Handle(MAT_TListNodeOfListOfEdge) Next()  const;
   
-        Handle_MAT_TListNodeOfListOfEdge Previous() const;
+      Handle(MAT_TListNodeOfListOfEdge) Previous()  const;
   
-        void SetItem(const Handle(MAT_Edge)& anitem) ;
+      void SetItem (const Handle(MAT_Edge)& anitem) ;
   
-        void Next(const Handle(MAT_TListNodeOfListOfEdge)& atlistnode) ;
+      void Next (const Handle(MAT_TListNodeOfListOfEdge)& atlistnode) ;
   
-        void Previous(const Handle(MAT_TListNodeOfListOfEdge)& atlistnode) ;
+      void Previous (const Handle(MAT_TListNodeOfListOfEdge)& atlistnode) ;
   
-  Standard_EXPORT     void Dummy() const;
+  Standard_EXPORT   void Dummy()  const;
 
 
 
@@ -69,14 +56,14 @@ protected:
 private: 
 
 
-Handle_MAT_TListNodeOfListOfEdge thenext;
-Handle_MAT_TListNodeOfListOfEdge theprevious;
-Handle_MAT_Edge theitem;
+  Handle(MAT_TListNodeOfListOfEdge) thenext;
+  Handle(MAT_TListNodeOfListOfEdge) theprevious;
+  Handle(MAT_Edge) theitem;
 
 
 };
 
-#define Item Handle_MAT_Edge
+#define Item Handle(MAT_Edge)
 #define Item_hxx <MAT_Edge.hxx>
 #define MAT_TListNode MAT_TListNodeOfListOfEdge
 #define MAT_TListNode_hxx <MAT_TListNodeOfListOfEdge.hxx>
@@ -101,7 +88,6 @@ Handle_MAT_Edge theitem;
 #undef MAT_TList_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MAT_TListNodeOfListOfEdge_HeaderFile

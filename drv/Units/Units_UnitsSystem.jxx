@@ -1,18 +1,6 @@
-#ifndef _Units_QuantitiesSequence_HeaderFile
 #include <Units_QuantitiesSequence.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfInteger_HeaderFile
 #include <TColStd_HSequenceOfInteger.hxx>
-#endif
-#ifndef _Units_NoSuchUnit_HeaderFile
 #include <Units_NoSuchUnit.hxx>
-#endif
-#ifndef _Units_NoSuchType_HeaderFile
 #include <Units_NoSuchType.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Units_UnitsSystem_HeaderFile
 #include <Units_UnitsSystem.hxx>
-#endif

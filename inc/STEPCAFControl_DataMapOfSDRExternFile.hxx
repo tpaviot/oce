@@ -6,37 +6,17 @@
 #ifndef _STEPCAFControl_DataMapOfSDRExternFile_HeaderFile
 #define _STEPCAFControl_DataMapOfSDRExternFile_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_StepShape_ShapeDefinitionRepresentation_HeaderFile
 #include <Handle_StepShape_ShapeDefinitionRepresentation.hxx>
-#endif
-#ifndef _Handle_STEPCAFControl_ExternFile_HeaderFile
 #include <Handle_STEPCAFControl_ExternFile.hxx>
-#endif
-#ifndef _Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile_HeaderFile
 #include <Handle_STEPCAFControl_DataMapNodeOfDataMapOfSDRExternFile.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class StepShape_ShapeDefinitionRepresentation;
@@ -47,50 +27,50 @@ class STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile;
 
 
 
-class STEPCAFControl_DataMapOfSDRExternFile  : public TCollection_BasicMap {
+class STEPCAFControl_DataMapOfSDRExternFile  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   STEPCAFControl_DataMapOfSDRExternFile(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT STEPCAFControl_DataMapOfSDRExternFile(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     STEPCAFControl_DataMapOfSDRExternFile& Assign(const STEPCAFControl_DataMapOfSDRExternFile& Other) ;
-    STEPCAFControl_DataMapOfSDRExternFile& operator =(const STEPCAFControl_DataMapOfSDRExternFile& Other) 
+  Standard_EXPORT   STEPCAFControl_DataMapOfSDRExternFile& Assign (const STEPCAFControl_DataMapOfSDRExternFile& Other) ;
+  STEPCAFControl_DataMapOfSDRExternFile& operator = (const STEPCAFControl_DataMapOfSDRExternFile& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~STEPCAFControl_DataMapOfSDRExternFile()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Bind(const Handle(StepShape_ShapeDefinitionRepresentation)& K,const Handle(STEPCAFControl_ExternFile)& I) ;
+  Standard_EXPORT   Standard_Boolean Bind (const Handle(StepShape_ShapeDefinitionRepresentation)& K, const Handle(STEPCAFControl_ExternFile)& I) ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const Handle(StepShape_ShapeDefinitionRepresentation)& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound (const Handle(StepShape_ShapeDefinitionRepresentation)& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind(const Handle(StepShape_ShapeDefinitionRepresentation)& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind (const Handle(StepShape_ShapeDefinitionRepresentation)& K) ;
   
-  Standard_EXPORT    const Handle_STEPCAFControl_ExternFile& Find(const Handle(StepShape_ShapeDefinitionRepresentation)& K) const;
-   const Handle_STEPCAFControl_ExternFile& operator()(const Handle(StepShape_ShapeDefinitionRepresentation)& K) const
+  Standard_EXPORT  const  Handle(STEPCAFControl_ExternFile)& Find (const Handle(StepShape_ShapeDefinitionRepresentation)& K)  const;
+ const  Handle(STEPCAFControl_ExternFile)& operator() (const Handle(StepShape_ShapeDefinitionRepresentation)& K)  const
 {
   return Find(K);
 }
   
-  Standard_EXPORT     Handle_STEPCAFControl_ExternFile& ChangeFind(const Handle(StepShape_ShapeDefinitionRepresentation)& K) ;
-    Handle_STEPCAFControl_ExternFile& operator()(const Handle(StepShape_ShapeDefinitionRepresentation)& K) 
+  Standard_EXPORT   Handle(STEPCAFControl_ExternFile)& ChangeFind (const Handle(StepShape_ShapeDefinitionRepresentation)& K) ;
+  Handle(STEPCAFControl_ExternFile)& operator() (const Handle(StepShape_ShapeDefinitionRepresentation)& K) 
 {
   return ChangeFind(K);
 }
   
-  Standard_EXPORT     Standard_Address Find1(const Handle(StepShape_ShapeDefinitionRepresentation)& K) const;
+  Standard_EXPORT   Standard_Address Find1 (const Handle(StepShape_ShapeDefinitionRepresentation)& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFind1(const Handle(StepShape_ShapeDefinitionRepresentation)& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFind1 (const Handle(StepShape_ShapeDefinitionRepresentation)& K) ;
 
 
 
@@ -104,7 +84,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   STEPCAFControl_DataMapOfSDRExternFile(const STEPCAFControl_DataMapOfSDRExternFile& Other);
+  Standard_EXPORT STEPCAFControl_DataMapOfSDRExternFile(const STEPCAFControl_DataMapOfSDRExternFile& Other);
 
 
 
@@ -115,7 +95,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPCAFControl_DataMapOfSDRExternFile_HeaderFile

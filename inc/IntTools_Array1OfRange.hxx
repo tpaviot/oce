@@ -6,25 +6,13 @@
 #ifndef _IntTools_Array1OfRange_HeaderFile
 #define _IntTools_Array1OfRange_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -33,52 +21,52 @@ class IntTools_Range;
 
 
 
-class IntTools_Array1OfRange  {
+class IntTools_Array1OfRange 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      IntTools_Array1OfRange(const Standard_Integer Low,const Standard_Integer Up);
+    IntTools_Array1OfRange(const Standard_Integer Low, const Standard_Integer Up);
   
-      IntTools_Array1OfRange(const IntTools_Range& Item,const Standard_Integer Low,const Standard_Integer Up);
+    IntTools_Array1OfRange(const IntTools_Range& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const IntTools_Range& V) ;
+  Standard_EXPORT   void Init (const IntTools_Range& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~IntTools_Array1OfRange()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const IntTools_Array1OfRange& Assign(const IntTools_Array1OfRange& Other) ;
-   const IntTools_Array1OfRange& operator =(const IntTools_Array1OfRange& Other) 
+  Standard_EXPORT  const  IntTools_Array1OfRange& Assign (const IntTools_Array1OfRange& Other) ;
+ const  IntTools_Array1OfRange& operator = (const IntTools_Array1OfRange& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const IntTools_Range& Value) ;
+      void SetValue (const Standard_Integer Index, const IntTools_Range& Value) ;
   
-       const IntTools_Range& Value(const Standard_Integer Index) const;
-     const IntTools_Range& operator ()(const Standard_Integer Index) const
+     const  IntTools_Range& Value (const Standard_Integer Index)  const;
+   const  IntTools_Range& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        IntTools_Range& ChangeValue(const Standard_Integer Index) ;
-      IntTools_Range& operator ()(const Standard_Integer Index) 
+      IntTools_Range& ChangeValue (const Standard_Integer Index) ;
+    IntTools_Range& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -92,13 +80,13 @@ protected:
 private:
 
   
-  Standard_EXPORT   IntTools_Array1OfRange(const IntTools_Array1OfRange& AnArray);
+  Standard_EXPORT IntTools_Array1OfRange(const IntTools_Array1OfRange& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
@@ -116,7 +104,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_Array1OfRange_HeaderFile

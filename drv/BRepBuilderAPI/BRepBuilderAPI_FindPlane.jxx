@@ -1,12 +1,4 @@
-#ifndef _Geom_Plane_HeaderFile
 #include <Geom_Plane.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _BRepBuilderAPI_FindPlane_HeaderFile
 #include <BRepBuilderAPI_FindPlane.hxx>
-#endif

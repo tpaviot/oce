@@ -6,13 +6,11 @@
 #ifndef _Quantity_MagneticFlux_HeaderFile
 #define _Quantity_MagneticFlux_HeaderFile
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 
 typedef Standard_Real Quantity_MagneticFlux;
 
 
 #define Quantity_MagneticFlux_Type_() Standard_Real_Type_()
 
-#endif
+#endif // _Quantity_MagneticFlux_HeaderFile

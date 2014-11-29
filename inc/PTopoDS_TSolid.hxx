@@ -6,36 +6,26 @@
 #ifndef _PTopoDS_TSolid_HeaderFile
 #define _PTopoDS_TSolid_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PTopoDS_TSolid_HeaderFile
 #include <Handle_PTopoDS_TSolid.hxx>
-#endif
 
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _PTopoDS_TShape_HeaderFile
 #include <PTopoDS_TShape.hxx>
-#endif
 
 
-class PTopoDS_TSolid : public PTopoDS_TShape {
+class PTopoDS_TSolid : public PTopoDS_TShape
+{
 
 public:
 
-  //! The new  TSolid  has no  boundary  and covers  the <br>
-//!          whole 3D space. <br>
-  Standard_EXPORT   PTopoDS_TSolid();
   
-  Standard_EXPORT     TopAbs_ShapeEnum ShapeType() const;
+  //! The new  TSolid  has no  boundary  and covers  the
+  //! whole 3D space.
+  Standard_EXPORT PTopoDS_TSolid();
+  
+  Standard_EXPORT   TopAbs_ShapeEnum ShapeType()  const;
 
 PTopoDS_TSolid(const Storage_stCONSTclCOM& a) : PTopoDS_TShape(a)
 {
@@ -62,7 +52,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PTopoDS_TSolid_HeaderFile

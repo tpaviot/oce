@@ -6,28 +6,22 @@
 #ifndef _StepBasic_MassUnit_HeaderFile
 #define _StepBasic_MassUnit_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_MassUnit_HeaderFile
 #include <Handle_StepBasic_MassUnit.hxx>
-#endif
 
-#ifndef _StepBasic_NamedUnit_HeaderFile
 #include <StepBasic_NamedUnit.hxx>
-#endif
 
 
-//! Representation of STEP entity MassUnit <br>
-class StepBasic_MassUnit : public StepBasic_NamedUnit {
+//! Representation of STEP entity MassUnit
+class StepBasic_MassUnit : public StepBasic_NamedUnit
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepBasic_MassUnit();
+  
+  //! Empty constructor
+  Standard_EXPORT StepBasic_MassUnit();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_MassUnit_HeaderFile

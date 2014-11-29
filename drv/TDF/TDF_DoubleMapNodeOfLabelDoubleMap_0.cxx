@@ -5,22 +5,12 @@
 
 #include <TDF_DoubleMapNodeOfLabelDoubleMap.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TDF_LabelMapHasher_HeaderFile
 #include <TDF_LabelMapHasher.hxx>
-#endif
-#ifndef _TDF_LabelDoubleMap_HeaderFile
 #include <TDF_LabelDoubleMap.hxx>
-#endif
-#ifndef _TDF_DoubleMapIteratorOfLabelDoubleMap_HeaderFile
 #include <TDF_DoubleMapIteratorOfLabelDoubleMap.hxx>
-#endif
 
  
 

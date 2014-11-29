@@ -6,13 +6,12 @@
 #ifndef _StepElement_CurveEdge_HeaderFile
 #define _StepElement_CurveEdge_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepElement_CurveEdge {
+
+enum StepElement_CurveEdge
+{
 StepElement_ElementEdge
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepElement_CurveEdge_HeaderFile

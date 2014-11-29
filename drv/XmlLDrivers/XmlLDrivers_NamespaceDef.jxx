@@ -1,6 +1,2 @@
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _XmlLDrivers_NamespaceDef_HeaderFile
 #include <XmlLDrivers_NamespaceDef.hxx>
-#endif

@@ -6,28 +6,14 @@
 #ifndef _GeomToStep_MakeAxis1Placement_HeaderFile
 #define _GeomToStep_MakeAxis1Placement_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Axis1Placement_HeaderFile
 #include <Handle_StepGeom_Axis1Placement.hxx>
-#endif
-#ifndef _GeomToStep_Root_HeaderFile
 #include <GeomToStep_Root.hxx>
-#endif
-#ifndef _Handle_Geom_Axis1Placement_HeaderFile
 #include <Handle_Geom_Axis1Placement.hxx>
-#endif
-#ifndef _Handle_Geom2d_AxisPlacement_HeaderFile
 #include <Handle_Geom2d_AxisPlacement.hxx>
-#endif
 class StepGeom_Axis1Placement;
 class StdFail_NotDone;
 class gp_Ax1;
@@ -36,27 +22,26 @@ class Geom_Axis1Placement;
 class Geom2d_AxisPlacement;
 
 
-//! This class implements the mapping between classes <br>
-//!          Axis1Placement from Geom and Ax1 from gp, and the class <br>
-//!          Axis1Placement from StepGeom which describes an <br>
-//!          Axis1Placement from Prostep. <br>
-//! <br>
-class GeomToStep_MakeAxis1Placement  : public GeomToStep_Root {
+//! This class implements the mapping between classes
+//! Axis1Placement from Geom and Ax1 from gp, and the class
+//! Axis1Placement from StepGeom which describes an
+//! Axis1Placement from Prostep.
+class GeomToStep_MakeAxis1Placement  : public GeomToStep_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomToStep_MakeAxis1Placement(const gp_Ax1& A);
+  Standard_EXPORT GeomToStep_MakeAxis1Placement(const gp_Ax1& A);
   
-  Standard_EXPORT   GeomToStep_MakeAxis1Placement(const gp_Ax2d& A);
+  Standard_EXPORT GeomToStep_MakeAxis1Placement(const gp_Ax2d& A);
   
-  Standard_EXPORT   GeomToStep_MakeAxis1Placement(const Handle(Geom_Axis1Placement)& A);
+  Standard_EXPORT GeomToStep_MakeAxis1Placement(const Handle(Geom_Axis1Placement)& A);
   
-  Standard_EXPORT   GeomToStep_MakeAxis1Placement(const Handle(Geom2d_AxisPlacement)& A);
+  Standard_EXPORT GeomToStep_MakeAxis1Placement(const Handle(Geom2d_AxisPlacement)& A);
   
-  Standard_EXPORT    const Handle_StepGeom_Axis1Placement& Value() const;
-
+  Standard_EXPORT  const  Handle(StepGeom_Axis1Placement)& Value()  const;
 
 
 
@@ -71,7 +56,7 @@ private:
 
 
 
-Handle_StepGeom_Axis1Placement theAxis1Placement;
+  Handle(StepGeom_Axis1Placement) theAxis1Placement;
 
 
 };
@@ -80,7 +65,6 @@ Handle_StepGeom_Axis1Placement theAxis1Placement;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomToStep_MakeAxis1Placement_HeaderFile

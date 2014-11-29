@@ -6,22 +6,15 @@
 #ifndef _Handle_StepAP203_CcDesignApproval_HeaderFile
 #define _Handle_StepAP203_CcDesignApproval_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepBasic_ApprovalAssignment_HeaderFile
 #include <Handle_StepBasic_ApprovalAssignment.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepBasic_ApprovalAssignment);
 class StepAP203_CcDesignApproval;
 
-DEFINE_STANDARD_HANDLE(StepAP203_CcDesignApproval,StepBasic_ApprovalAssignment)
+DEFINE_STANDARD_HANDLE(StepAP203_CcDesignApproval, StepBasic_ApprovalAssignment)
 
-#endif
+#endif // _Handle_StepAP203_CcDesignApproval_HeaderFile

@@ -5,21 +5,11 @@
 
 #include <HLRBRep_ThePolyhedronToolOfInterCSurf.hxx>
 
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _HLRBRep_ThePolyhedronOfInterCSurf_HeaderFile
 #include <HLRBRep_ThePolyhedronOfInterCSurf.hxx>
-#endif
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
-#ifndef _Bnd_HArray1OfBox_HeaderFile
 #include <Bnd_HArray1OfBox.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
  
 
 #define ThePolyhedron HLRBRep_ThePolyhedronOfInterCSurf

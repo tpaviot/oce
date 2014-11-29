@@ -1,3 +1,1 @@
-#ifndef _ShapeUpgrade_SplitCurve2dContinuity_HeaderFile
 #include <ShapeUpgrade_SplitCurve2dContinuity.hxx>
-#endif

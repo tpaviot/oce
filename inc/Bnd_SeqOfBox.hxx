@@ -6,25 +6,13 @@
 #ifndef _Bnd_SeqOfBox_HeaderFile
 #define _Bnd_SeqOfBox_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_Bnd_SequenceNodeOfSeqOfBox_HeaderFile
 #include <Handle_Bnd_SequenceNodeOfSeqOfBox.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Bnd_Box;
@@ -32,66 +20,68 @@ class Bnd_SequenceNodeOfSeqOfBox;
 
 
 
-class Bnd_SeqOfBox  : public TCollection_BaseSequence {
+class Bnd_SeqOfBox  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Bnd_SeqOfBox();
+    Bnd_SeqOfBox();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT Bnd_SeqOfBox(const Bnd_SeqOfBox& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~Bnd_SeqOfBox()
 {
   Clear();
 }
   
-  Standard_EXPORT    const Bnd_SeqOfBox& Assign(const Bnd_SeqOfBox& Other) ;
-   const Bnd_SeqOfBox& operator =(const Bnd_SeqOfBox& Other) 
+  Standard_EXPORT  const  Bnd_SeqOfBox& Assign (const Bnd_SeqOfBox& Other) ;
+ const  Bnd_SeqOfBox& operator = (const Bnd_SeqOfBox& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Bnd_Box& T) ;
+  Standard_EXPORT   void Append (const Bnd_Box& T) ;
   
-        void Append(Bnd_SeqOfBox& S) ;
+      void Append (Bnd_SeqOfBox& S) ;
   
-  Standard_EXPORT     void Prepend(const Bnd_Box& T) ;
+  Standard_EXPORT   void Prepend (const Bnd_Box& T) ;
   
-        void Prepend(Bnd_SeqOfBox& S) ;
+      void Prepend (Bnd_SeqOfBox& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Bnd_Box& T) ;
+      void InsertBefore (const Standard_Integer Index, const Bnd_Box& T) ;
   
-        void InsertBefore(const Standard_Integer Index,Bnd_SeqOfBox& S) ;
+      void InsertBefore (const Standard_Integer Index, Bnd_SeqOfBox& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Bnd_Box& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Bnd_Box& T) ;
   
-        void InsertAfter(const Standard_Integer Index,Bnd_SeqOfBox& S) ;
+      void InsertAfter (const Standard_Integer Index, Bnd_SeqOfBox& S) ;
   
-  Standard_EXPORT    const Bnd_Box& First() const;
+  Standard_EXPORT  const  Bnd_Box& First()  const;
   
-  Standard_EXPORT    const Bnd_Box& Last() const;
+  Standard_EXPORT  const  Bnd_Box& Last()  const;
   
-        void Split(const Standard_Integer Index,Bnd_SeqOfBox& Sub) ;
+      void Split (const Standard_Integer Index, Bnd_SeqOfBox& Sub) ;
   
-  Standard_EXPORT    const Bnd_Box& Value(const Standard_Integer Index) const;
-   const Bnd_Box& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Bnd_Box& Value (const Standard_Integer Index)  const;
+ const  Bnd_Box& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Bnd_Box& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Bnd_Box& I) ;
   
-  Standard_EXPORT     Bnd_Box& ChangeValue(const Standard_Integer Index) ;
-    Bnd_Box& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Bnd_Box& ChangeValue (const Standard_Integer Index) ;
+  Bnd_Box& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -104,8 +94,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Bnd_SeqOfBox(const Bnd_SeqOfBox& Other);
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Bnd_SeqOfBox_HeaderFile

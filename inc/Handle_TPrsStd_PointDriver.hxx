@@ -6,22 +6,15 @@
 #ifndef _Handle_TPrsStd_PointDriver_HeaderFile
 #define _Handle_TPrsStd_PointDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TPrsStd_Driver_HeaderFile
 #include <Handle_TPrsStd_Driver.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TPrsStd_Driver);
 class TPrsStd_PointDriver;
 
-DEFINE_STANDARD_HANDLE(TPrsStd_PointDriver,TPrsStd_Driver)
+DEFINE_STANDARD_HANDLE(TPrsStd_PointDriver, TPrsStd_Driver)
 
-#endif
+#endif // _Handle_TPrsStd_PointDriver_HeaderFile

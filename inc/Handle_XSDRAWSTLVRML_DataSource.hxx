@@ -6,22 +6,15 @@
 #ifndef _Handle_XSDRAWSTLVRML_DataSource_HeaderFile
 #define _Handle_XSDRAWSTLVRML_DataSource_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_MeshVS_DataSource_HeaderFile
 #include <Handle_MeshVS_DataSource.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(MeshVS_DataSource);
 class XSDRAWSTLVRML_DataSource;
 
-DEFINE_STANDARD_HANDLE(XSDRAWSTLVRML_DataSource,MeshVS_DataSource)
+DEFINE_STANDARD_HANDLE(XSDRAWSTLVRML_DataSource, MeshVS_DataSource)
 
-#endif
+#endif // _Handle_XSDRAWSTLVRML_DataSource_HeaderFile

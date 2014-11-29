@@ -7,7 +7,6 @@
 #define _BOPAlgo_PPaveFiller_HeaderFile
 
 class BOPAlgo_PaveFiller;
-
 typedef BOPAlgo_PaveFiller* BOPAlgo_PPaveFiller;
 
-#endif
+#endif // _BOPAlgo_PPaveFiller_HeaderFile

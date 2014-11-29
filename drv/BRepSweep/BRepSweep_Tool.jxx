@@ -1,9 +1,3 @@
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _BRepSweep_Tool_HeaderFile
 #include <BRepSweep_Tool.hxx>
-#endif

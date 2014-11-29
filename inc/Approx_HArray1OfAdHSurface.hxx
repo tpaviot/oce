@@ -6,28 +6,14 @@
 #ifndef _Approx_HArray1OfAdHSurface_HeaderFile
 #define _Approx_HArray1OfAdHSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Approx_HArray1OfAdHSurface_HeaderFile
 #include <Handle_Approx_HArray1OfAdHSurface.hxx>
-#endif
 
-#ifndef _Approx_Array1OfAdHSurface_HeaderFile
 #include <Approx_Array1OfAdHSurface.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class Approx_Array1OfAdHSurface;
 
 
 
-class Approx_HArray1OfAdHSurface : public MMgt_TShared {
+class Approx_HArray1OfAdHSurface : public MMgt_TShared
+{
 
 public:
 
   
-      Approx_HArray1OfAdHSurface(const Standard_Integer Low,const Standard_Integer Up);
+    Approx_HArray1OfAdHSurface(const Standard_Integer Low, const Standard_Integer Up);
   
-      Approx_HArray1OfAdHSurface(const Standard_Integer Low,const Standard_Integer Up,const Handle(Adaptor3d_HSurface)& V);
+    Approx_HArray1OfAdHSurface(const Standard_Integer Low, const Standard_Integer Up, const Handle(Adaptor3d_HSurface)& V);
   
-        void Init(const Handle(Adaptor3d_HSurface)& V) ;
+      void Init (const Handle(Adaptor3d_HSurface)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(Adaptor3d_HSurface)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(Adaptor3d_HSurface)& Value) ;
   
-       const Handle_Adaptor3d_HSurface& Value(const Standard_Integer Index) const;
+     const  Handle(Adaptor3d_HSurface)& Value (const Standard_Integer Index)  const;
   
-        Handle_Adaptor3d_HSurface& ChangeValue(const Standard_Integer Index) ;
+      Handle(Adaptor3d_HSurface)& ChangeValue (const Standard_Integer Index) ;
   
-       const Approx_Array1OfAdHSurface& Array1() const;
+     const  Approx_Array1OfAdHSurface& Array1()  const;
   
-        Approx_Array1OfAdHSurface& ChangeArray1() ;
+      Approx_Array1OfAdHSurface& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-Approx_Array1OfAdHSurface myArray;
+  Approx_Array1OfAdHSurface myArray;
 
 
 };
 
-#define ItemHArray1 Handle_Adaptor3d_HSurface
+#define ItemHArray1 Handle(Adaptor3d_HSurface)
 #define ItemHArray1_hxx <Adaptor3d_HSurface.hxx>
 #define TheArray1 Approx_Array1OfAdHSurface
 #define TheArray1_hxx <Approx_Array1OfAdHSurface.hxx>
@@ -103,7 +90,6 @@ Approx_Array1OfAdHSurface myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Approx_HArray1OfAdHSurface_HeaderFile

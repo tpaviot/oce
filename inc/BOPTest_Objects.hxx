@@ -6,57 +6,48 @@
 #ifndef _BOPTest_Objects_HeaderFile
 #define _BOPTest_Objects_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BOPDS_PDS_HeaderFile
 #include <BOPDS_PDS.hxx>
-#endif
-#ifndef _BOPCol_ListOfShape_HeaderFile
 #include <BOPCol_ListOfShape.hxx>
-#endif
-#ifndef _BOPAlgo_PBuilder_HeaderFile
 #include <BOPAlgo_PBuilder.hxx>
-#endif
 class BOPAlgo_PaveFiller;
 class BOPAlgo_Builder;
 class BOPAlgo_BOP;
+class BOPAlgo_Section;
 
 
 
-class BOPTest_Objects  {
+class BOPTest_Objects 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  BOPAlgo_PaveFiller& PaveFiller() ;
+  Standard_EXPORT static   BOPAlgo_PaveFiller& PaveFiller() ;
   
-  Standard_EXPORT   static  void Init() ;
+  Standard_EXPORT static   void Init() ;
   
-  Standard_EXPORT   static  void Clear() ;
+  Standard_EXPORT static   void Clear() ;
   
-  Standard_EXPORT   static  BOPDS_PDS PDS() ;
+  Standard_EXPORT static   BOPDS_PDS PDS() ;
   
-  Standard_EXPORT   static  BOPAlgo_Builder& Builder() ;
+  Standard_EXPORT static   BOPAlgo_Builder& Builder() ;
   
-  Standard_EXPORT   static  BOPAlgo_BOP& BOP() ;
+  Standard_EXPORT static   BOPAlgo_BOP& BOP() ;
   
-  Standard_EXPORT   static  BOPCol_ListOfShape& Shapes() ;
+  Standard_EXPORT static   BOPAlgo_Section& Section() ;
   
-  Standard_EXPORT   static  BOPCol_ListOfShape& Tools() ;
+  Standard_EXPORT static   BOPCol_ListOfShape& Shapes() ;
   
-  Standard_EXPORT   static  void SetBuilder(const BOPAlgo_PBuilder& theBuilder) ;
+  Standard_EXPORT static   BOPCol_ListOfShape& Tools() ;
   
-  Standard_EXPORT   static  void SetBuilderDefault() ;
-
+  Standard_EXPORT static   void SetBuilder (const BOPAlgo_PBuilder& theBuilder) ;
+  
+  Standard_EXPORT static   void SetBuilderDefault() ;
 
 
 
@@ -79,7 +70,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BOPTest_Objects_HeaderFile

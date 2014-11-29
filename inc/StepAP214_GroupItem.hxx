@@ -6,47 +6,36 @@
 #ifndef _StepAP214_GroupItem_HeaderFile
 #define _StepAP214_GroupItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepGeom_GeometricRepresentationItem_HeaderFile
 #include <Handle_StepGeom_GeometricRepresentationItem.hxx>
-#endif
 class Standard_Transient;
 class StepGeom_GeometricRepresentationItem;
 
 
 
-class StepAP214_GroupItem  : public StepData_SelectType {
+class StepAP214_GroupItem  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a GroupItem SelectType <br>
-  Standard_EXPORT   StepAP214_GroupItem();
-  //! Recognizes a GroupItem Kind Entity that is : <br>
-//!        1 ->  GeometricRepresentationItem <br>
-//!        0 else <br>
-  Standard_EXPORT   virtual  Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! returns Value as a  GeometricRepresentationItem (Null if another type) <br>
-  Standard_EXPORT   virtual  Handle_StepGeom_GeometricRepresentationItem GeometricRepresentationItem() const;
-
+  
+  //! Returns a GroupItem SelectType
+  Standard_EXPORT StepAP214_GroupItem();
+  
+  //! Recognizes a GroupItem Kind Entity that is :
+  //! 1 ->  GeometricRepresentationItem
+  //! 0 else
+  Standard_EXPORT virtual   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! returns Value as a  GeometricRepresentationItem (Null if another type)
+  Standard_EXPORT virtual   Handle(StepGeom_GeometricRepresentationItem) GeometricRepresentationItem()  const;
 
 
 
@@ -69,7 +58,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP214_GroupItem_HeaderFile

@@ -1,21 +1,7 @@
-#ifndef _IFSelect_Selection_HeaderFile
 #include <IFSelect_Selection.hxx>
-#endif
-#ifndef _IFSelect_SelectPointed_HeaderFile
 #include <IFSelect_SelectPointed.hxx>
-#endif
-#ifndef _Interface_InterfaceError_HeaderFile
 #include <Interface_InterfaceError.hxx>
-#endif
-#ifndef _Interface_EntityIterator_HeaderFile
 #include <Interface_EntityIterator.hxx>
-#endif
-#ifndef _Interface_Graph_HeaderFile
 #include <Interface_Graph.hxx>
-#endif
-#ifndef _IFSelect_SelectionIterator_HeaderFile
 #include <IFSelect_SelectionIterator.hxx>
-#endif
-#ifndef _IFSelect_SelectDeduct_HeaderFile
 #include <IFSelect_SelectDeduct.hxx>
-#endif

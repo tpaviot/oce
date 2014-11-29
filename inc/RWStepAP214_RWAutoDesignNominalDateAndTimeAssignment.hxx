@@ -6,28 +6,14 @@
 #ifndef _RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment_HeaderFile
 #define _RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepData_StepReaderData_HeaderFile
 #include <Handle_StepData_StepReaderData.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
-#ifndef _Handle_StepAP214_AutoDesignNominalDateAndTimeAssignment_HeaderFile
 #include <Handle_StepAP214_AutoDesignNominalDateAndTimeAssignment.hxx>
-#endif
 class StepData_StepReaderData;
 class Interface_Check;
 class StepAP214_AutoDesignNominalDateAndTimeAssignment;
@@ -35,21 +21,21 @@ class StepData_StepWriter;
 class Interface_EntityIterator;
 
 
-//! Read & Write Module for AutoDesignNominalDateAndTimeAssignment <br>
-class RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment  {
+//! Read & Write Module for AutoDesignNominalDateAndTimeAssignment
+class RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment();
+  Standard_EXPORT RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment();
   
-  Standard_EXPORT     void ReadStep(const Handle(StepData_StepReaderData)& data,const Standard_Integer num,Handle(Interface_Check)& ach,const Handle(StepAP214_AutoDesignNominalDateAndTimeAssignment)& ent) const;
+  Standard_EXPORT   void ReadStep (const Handle(StepData_StepReaderData)& data, const Standard_Integer num, Handle(Interface_Check)& ach, const Handle(StepAP214_AutoDesignNominalDateAndTimeAssignment)& ent)  const;
   
-  Standard_EXPORT     void WriteStep(StepData_StepWriter& SW,const Handle(StepAP214_AutoDesignNominalDateAndTimeAssignment)& ent) const;
+  Standard_EXPORT   void WriteStep (StepData_StepWriter& SW, const Handle(StepAP214_AutoDesignNominalDateAndTimeAssignment)& ent)  const;
   
-  Standard_EXPORT     void Share(const Handle(StepAP214_AutoDesignNominalDateAndTimeAssignment)& ent,Interface_EntityIterator& iter) const;
-
+  Standard_EXPORT   void Share (const Handle(StepAP214_AutoDesignNominalDateAndTimeAssignment)& ent, Interface_EntityIterator& iter)  const;
 
 
 
@@ -72,7 +58,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment_HeaderFile

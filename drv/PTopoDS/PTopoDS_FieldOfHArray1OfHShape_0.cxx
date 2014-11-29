@@ -5,31 +5,15 @@
 
 #include <PTopoDS_FieldOfHArray1OfHShape.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NegativeValue_HeaderFile
 #include <Standard_NegativeValue.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_NullObject_HeaderFile
 #include <Standard_NullObject.hxx>
-#endif
-#ifndef _PTopoDS_HShape_HeaderFile
 #include <PTopoDS_HShape.hxx>
-#endif
-#ifndef _PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape_HeaderFile
 #include <PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape.hxx>
-#endif
-#ifndef _PTopoDS_VArrayTNodeOfFieldOfHArray1OfHShape_HeaderFile
 #include <PTopoDS_VArrayTNodeOfFieldOfHArray1OfHShape.hxx>
-#endif
 
 IMPLEMENT_STANDARD_TYPE(PTopoDS_FieldOfHArray1OfHShape)
 IMPLEMENT_STANDARD_SUPERTYPE_ARRAY()
@@ -40,7 +24,7 @@ IMPLEMENT_STANDARD_SUPERTYPE_ARRAY_END()
 IMPLEMENT_STANDARD_TYPE_END(PTopoDS_FieldOfHArray1OfHShape)
  
 
-#define Item Handle_PTopoDS_HShape
+#define Item Handle(PTopoDS_HShape)
 #define Item_hxx <PTopoDS_HShape.hxx>
 #define DBC_VArrayNode PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape
 #define DBC_VArrayNode_hxx <PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape.hxx>

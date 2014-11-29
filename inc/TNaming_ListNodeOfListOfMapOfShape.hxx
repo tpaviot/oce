@@ -6,39 +6,28 @@
 #ifndef _TNaming_ListNodeOfListOfMapOfShape_HeaderFile
 #define _TNaming_ListNodeOfListOfMapOfShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TNaming_ListNodeOfListOfMapOfShape_HeaderFile
 #include <Handle_TNaming_ListNodeOfListOfMapOfShape.hxx>
-#endif
 
-#ifndef _TopTools_MapOfShape_HeaderFile
 #include <TopTools_MapOfShape.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopTools_MapOfShape;
 class TNaming_ListOfMapOfShape;
 class TNaming_ListIteratorOfListOfMapOfShape;
 
 
 
-class TNaming_ListNodeOfListOfMapOfShape : public TCollection_MapNode {
+class TNaming_ListNodeOfListOfMapOfShape : public TCollection_MapNode
+{
 
 public:
 
   
-      TNaming_ListNodeOfListOfMapOfShape(const TopTools_MapOfShape& I,const TCollection_MapNodePtr& n);
+    TNaming_ListNodeOfListOfMapOfShape(const TopTools_MapOfShape& I, const TCollection_MapNodePtr& n);
   
-        TopTools_MapOfShape& Value() const;
+      TopTools_MapOfShape& Value()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-TopTools_MapOfShape myValue;
+  TopTools_MapOfShape myValue;
 
 
 };
@@ -83,7 +72,6 @@ TopTools_MapOfShape myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TNaming_ListNodeOfListOfMapOfShape_HeaderFile

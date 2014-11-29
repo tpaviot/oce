@@ -6,22 +6,15 @@
 #ifndef _Handle_StepFEA_ParametricCurve3dElementCoordinateSystem_HeaderFile
 #define _Handle_StepFEA_ParametricCurve3dElementCoordinateSystem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepFEA_FeaRepresentationItem_HeaderFile
 #include <Handle_StepFEA_FeaRepresentationItem.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepFEA_FeaRepresentationItem);
 class StepFEA_ParametricCurve3dElementCoordinateSystem;
 
-DEFINE_STANDARD_HANDLE(StepFEA_ParametricCurve3dElementCoordinateSystem,StepFEA_FeaRepresentationItem)
+DEFINE_STANDARD_HANDLE(StepFEA_ParametricCurve3dElementCoordinateSystem, StepFEA_FeaRepresentationItem)
 
-#endif
+#endif // _Handle_StepFEA_ParametricCurve3dElementCoordinateSystem_HeaderFile

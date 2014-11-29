@@ -1,18 +1,6 @@
-#ifndef _BRepAdaptor_HCurve2d_HeaderFile
 #include <BRepAdaptor_HCurve2d.hxx>
-#endif
-#ifndef _TopoDS_Vertex_HeaderFile
 #include <TopoDS_Vertex.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _Adaptor2d_HCurve2d_HeaderFile
 #include <Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _Adaptor3d_HVertex_HeaderFile
 #include <Adaptor3d_HVertex.hxx>
-#endif
-#ifndef _BRepTopAdaptor_HVertex_HeaderFile
 #include <BRepTopAdaptor_HVertex.hxx>
-#endif

@@ -6,31 +6,15 @@
 #ifndef _QANCollection_DoubleMapOfRealInteger_HeaderFile
 #define _QANCollection_DoubleMapOfRealInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_QANCollection_DoubleMapNodeOfDoubleMapOfRealInteger_HeaderFile
 #include <Handle_QANCollection_DoubleMapNodeOfDoubleMapOfRealInteger.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_DomainError;
 class Standard_MultiplyDefined;
 class Standard_NoSuchObject;
@@ -41,44 +25,44 @@ class QANCollection_DoubleMapIteratorOfDoubleMapOfRealInteger;
 
 
 
-class QANCollection_DoubleMapOfRealInteger  : public TCollection_BasicMap {
+class QANCollection_DoubleMapOfRealInteger  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   QANCollection_DoubleMapOfRealInteger(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT QANCollection_DoubleMapOfRealInteger(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     QANCollection_DoubleMapOfRealInteger& Assign(const QANCollection_DoubleMapOfRealInteger& Other) ;
-    QANCollection_DoubleMapOfRealInteger& operator =(const QANCollection_DoubleMapOfRealInteger& Other) 
+  Standard_EXPORT   QANCollection_DoubleMapOfRealInteger& Assign (const QANCollection_DoubleMapOfRealInteger& Other) ;
+  QANCollection_DoubleMapOfRealInteger& operator = (const QANCollection_DoubleMapOfRealInteger& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~QANCollection_DoubleMapOfRealInteger()
 {
   Clear();
 }
   
-  Standard_EXPORT     void Bind(const Standard_Real& K1,const Standard_Integer& K2) ;
+  Standard_EXPORT   void Bind (const Standard_Real& K1, const Standard_Integer& K2) ;
   
-  Standard_EXPORT     Standard_Boolean AreBound(const Standard_Real& K1,const Standard_Integer& K2) const;
+  Standard_EXPORT   Standard_Boolean AreBound (const Standard_Real& K1, const Standard_Integer& K2)  const;
   
-  Standard_EXPORT     Standard_Boolean IsBound1(const Standard_Real& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound1 (const Standard_Real& K)  const;
   
-  Standard_EXPORT     Standard_Boolean IsBound2(const Standard_Integer& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound2 (const Standard_Integer& K)  const;
   
-  Standard_EXPORT    const Standard_Integer& Find1(const Standard_Real& K) const;
+  Standard_EXPORT  const  Standard_Integer& Find1 (const Standard_Real& K)  const;
   
-  Standard_EXPORT    const Standard_Real& Find2(const Standard_Integer& K) const;
+  Standard_EXPORT  const  Standard_Real& Find2 (const Standard_Integer& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind1(const Standard_Real& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind1 (const Standard_Real& K) ;
   
-  Standard_EXPORT     Standard_Boolean UnBind2(const Standard_Integer& K) ;
-
+  Standard_EXPORT   Standard_Boolean UnBind2 (const Standard_Integer& K) ;
 
 
 
@@ -92,7 +76,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   QANCollection_DoubleMapOfRealInteger(const QANCollection_DoubleMapOfRealInteger& Other);
+  Standard_EXPORT QANCollection_DoubleMapOfRealInteger(const QANCollection_DoubleMapOfRealInteger& Other);
 
 
 
@@ -103,7 +87,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _QANCollection_DoubleMapOfRealInteger_HeaderFile

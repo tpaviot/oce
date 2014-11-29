@@ -1,36 +1,12 @@
-#ifndef _StepShape_ShapeDefinitionRepresentation_HeaderFile
 #include <StepShape_ShapeDefinitionRepresentation.hxx>
-#endif
-#ifndef _StepBasic_ProductRelatedProductCategory_HeaderFile
 #include <StepBasic_ProductRelatedProductCategory.hxx>
-#endif
-#ifndef _StepShape_ShapeRepresentation_HeaderFile
 #include <StepShape_ShapeRepresentation.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepBasic_ApplicationContext_HeaderFile
 #include <StepBasic_ApplicationContext.hxx>
-#endif
-#ifndef _StepBasic_ProductContext_HeaderFile
 #include <StepBasic_ProductContext.hxx>
-#endif
-#ifndef _StepBasic_ProductDefinitionContext_HeaderFile
 #include <StepBasic_ProductDefinitionContext.hxx>
-#endif
-#ifndef _StepBasic_Product_HeaderFile
 #include <StepBasic_Product.hxx>
-#endif
-#ifndef _StepBasic_ProductDefinitionFormation_HeaderFile
 #include <StepBasic_ProductDefinitionFormation.hxx>
-#endif
-#ifndef _StepBasic_ProductDefinition_HeaderFile
 #include <StepBasic_ProductDefinition.hxx>
-#endif
-#ifndef _StepRepr_ProductDefinitionShape_HeaderFile
 #include <StepRepr_ProductDefinitionShape.hxx>
-#endif
-#ifndef _STEPConstruct_Part_HeaderFile
 #include <STEPConstruct_Part.hxx>
-#endif

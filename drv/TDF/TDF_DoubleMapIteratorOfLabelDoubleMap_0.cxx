@@ -5,21 +5,11 @@
 
 #include <TDF_DoubleMapIteratorOfLabelDoubleMap.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TDF_LabelMapHasher_HeaderFile
 #include <TDF_LabelMapHasher.hxx>
-#endif
-#ifndef _TDF_LabelDoubleMap_HeaderFile
 #include <TDF_LabelDoubleMap.hxx>
-#endif
-#ifndef _TDF_DoubleMapNodeOfLabelDoubleMap_HeaderFile
 #include <TDF_DoubleMapNodeOfLabelDoubleMap.hxx>
-#endif
  
 
 #define TheKey1 TDF_Label

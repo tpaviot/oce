@@ -6,53 +6,41 @@
 #ifndef _TNaming_RefShape_HeaderFile
 #define _TNaming_RefShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TNaming_PtrNode_HeaderFile
 #include <TNaming_PtrNode.hxx>
-#endif
-#ifndef _Handle_TNaming_NamedShape_HeaderFile
 #include <Handle_TNaming_NamedShape.hxx>
-#endif
 class TopoDS_Shape;
 class TDF_Label;
 class TNaming_NamedShape;
 
 
 
-class TNaming_RefShape  {
+class TNaming_RefShape 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      TNaming_RefShape();
+    TNaming_RefShape();
   
-      TNaming_RefShape(const TopoDS_Shape& S);
+    TNaming_RefShape(const TopoDS_Shape& S);
   
-        void Shape(const TopoDS_Shape& S) ;
+      void Shape (const TopoDS_Shape& S) ;
   
-        void FirstUse(const TNaming_PtrNode& aPtr) ;
+      void FirstUse (const TNaming_PtrNode& aPtr) ;
   
-        TNaming_PtrNode FirstUse() const;
+      TNaming_PtrNode FirstUse()  const;
   
-       const TopoDS_Shape& Shape() const;
+     const  TopoDS_Shape& Shape()  const;
   
-  Standard_EXPORT     TDF_Label Label() const;
+  Standard_EXPORT   TDF_Label Label()  const;
   
-  Standard_EXPORT     Handle_TNaming_NamedShape NamedShape() const;
-
+  Standard_EXPORT   Handle(TNaming_NamedShape) NamedShape()  const;
 
 
 
@@ -67,8 +55,8 @@ private:
 
 
 
-TopoDS_Shape myShape;
-TNaming_PtrNode myFirstUse;
+  TopoDS_Shape myShape;
+  TNaming_PtrNode myFirstUse;
 
 
 };
@@ -78,7 +66,6 @@ TNaming_PtrNode myFirstUse;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TNaming_RefShape_HeaderFile

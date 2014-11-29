@@ -6,38 +6,27 @@
 #ifndef _IFSelect_SequenceNodeOfSequenceOfInterfaceModel_HeaderFile
 #define _IFSelect_SequenceNodeOfSequenceOfInterfaceModel_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_SequenceNodeOfSequenceOfInterfaceModel_HeaderFile
 #include <Handle_IFSelect_SequenceNodeOfSequenceOfInterfaceModel.hxx>
-#endif
 
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Interface_InterfaceModel;
 class IFSelect_SequenceOfInterfaceModel;
 
 
 
-class IFSelect_SequenceNodeOfSequenceOfInterfaceModel : public TCollection_SeqNode {
+class IFSelect_SequenceNodeOfSequenceOfInterfaceModel : public TCollection_SeqNode
+{
 
 public:
 
   
-      IFSelect_SequenceNodeOfSequenceOfInterfaceModel(const Handle(Interface_InterfaceModel)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    IFSelect_SequenceNodeOfSequenceOfInterfaceModel(const Handle(Interface_InterfaceModel)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_Interface_InterfaceModel& Value() const;
+      Handle(Interface_InterfaceModel)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_Interface_InterfaceModel myValue;
+  Handle(Interface_InterfaceModel) myValue;
 
 
 };
 
-#define SeqItem Handle_Interface_InterfaceModel
+#define SeqItem Handle(Interface_InterfaceModel)
 #define SeqItem_hxx <Interface_InterfaceModel.hxx>
 #define TCollection_SequenceNode IFSelect_SequenceNodeOfSequenceOfInterfaceModel
 #define TCollection_SequenceNode_hxx <IFSelect_SequenceNodeOfSequenceOfInterfaceModel.hxx>
@@ -78,7 +67,6 @@ Handle_Interface_InterfaceModel myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_SequenceNodeOfSequenceOfInterfaceModel_HeaderFile

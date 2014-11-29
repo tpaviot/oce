@@ -6,49 +6,21 @@
 #ifndef _IGESSelect_ViewSorter_HeaderFile
 #define _IGESSelect_ViewSorter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSelect_ViewSorter_HeaderFile
 #include <Handle_IGESSelect_ViewSorter.hxx>
-#endif
 
-#ifndef _Handle_IGESData_IGESModel_HeaderFile
 #include <Handle_IGESData_IGESModel.hxx>
-#endif
-#ifndef _TColStd_IndexedMapOfTransient_HeaderFile
 #include <TColStd_IndexedMapOfTransient.hxx>
-#endif
-#ifndef _TColStd_SequenceOfInteger_HeaderFile
 #include <TColStd_SequenceOfInteger.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Handle_TColStd_HSequenceOfTransient_HeaderFile
 #include <Handle_TColStd_HSequenceOfTransient.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_IFSelect_PacketList_HeaderFile
 #include <Handle_IFSelect_PacketList.hxx>
-#endif
 class IGESData_IGESModel;
 class Standard_Transient;
 class IGESData_IGESEntity;
@@ -58,72 +30,86 @@ class Interface_Graph;
 class IFSelect_PacketList;
 
 
-//! Sorts IGES Entities on the views and drawings. <br>
-//!           In a first step, it splits a set of entities according the <br>
-//!           different views they are attached to. <br>
-//!           Then, packets according single views (+ drawing frames), or <br>
-//!           according drawings (which refer to the views) can be determined <br>
-//! <br>
-//!           It is a TShared, hence it can be a workomg field of a non- <br>
-//!           mutable object (a Dispatch for instance) <br>
-class IGESSelect_ViewSorter : public MMgt_TShared {
+//! Sorts IGES Entities on the views and drawings.
+//! In a first step, it splits a set of entities according the
+//! different views they are attached to.
+//! Then, packets according single views (+ drawing frames), or
+//! according drawings (which refer to the views) can be determined
+//!
+//! It is a TShared, hence it can be a workomg field of a non-
+//! mutable object (a Dispatch for instance)
+class IGESSelect_ViewSorter : public MMgt_TShared
+{
 
 public:
 
-  //! Creates a ViewSorter, empty. SetModel remains to be called <br>
-  Standard_EXPORT   IGESSelect_ViewSorter();
-  //! Sets the Model (for PacketList) <br>
-  Standard_EXPORT     void SetModel(const Handle(IGESData_IGESModel)& model) ;
-  //! Clears recorded data <br>
-  Standard_EXPORT     void Clear() ;
-  //! Adds an item according its type : AddEntity,AddList,AddModel <br>
-  Standard_EXPORT     Standard_Boolean Add(const Handle(Standard_Transient)& ent) ;
-  //! Adds an IGES entity. Records the view it is attached to. <br>
-//!           Records directly <ent> if it is a ViewKindEntity or a Drawing <br>
-//!           Returns True if added, False if already in the map <br>
-  Standard_EXPORT     Standard_Boolean AddEntity(const Handle(IGESData_IGESEntity)& igesent) ;
-  //! Adds a list of entities by adding each of the items <br>
-  Standard_EXPORT     void AddList(const Handle(TColStd_HSequenceOfTransient)& list) ;
-  //! Adds all the entities contained in a Model <br>
-  Standard_EXPORT     void AddModel(const Handle(Interface_InterfaceModel)& model) ;
-  //! Returns the count of already recorded <br>
-  Standard_EXPORT     Standard_Integer NbEntities() const;
-  //! Prepares the result to keep only sets attached to Single Views <br>
-//!           If <alsoframes> is given True, it keeps also the Drawings as <br>
-//!           specific sets, in order to get their frames. <br>
-//!           Entities attached to no single view are put in Remaining List. <br>
-//! <br>
-//!           Result can then be read by the methods NbSets,SetItem,SetList, <br>
-//!           RemainingList(final = True) <br>
-  Standard_EXPORT     void SortSingleViews(const Standard_Boolean alsoframes) ;
-  //! Prepares the result to the sets attached to Drawings : <br>
-//!           All the single views referenced by a Drawing become bound to <br>
-//!           the set for this Drawing <br>
-//! <br>
-//!           Entities or Views which correspond to no Drawing are put into <br>
-//!           the Remaining List. <br>
-//! <br>
-//!           Result can then be read by the methods NbSets,SetItem,SetList, <br>
-//!           RemainingList(final = True) <br>
-  Standard_EXPORT     void SortDrawings(const Interface_Graph& G) ;
-  //! Returns the count of sets recorded, one per distinct item. <br>
-//!           The Remaining List is not counted. <br>
-//!           If <final> is False, the sets are attached to distinct views <br>
-//!           determined by the method Add. <br>
-//!           If <final> is True, they are the sets determined by the last <br>
-//!           call to, either SortSingleViews, or SortDrawings. <br>
-//! <br>
-//!  Warning : Drawings directly recorded are also counted as sets, because <br>
-//!           of their Frame (which is made of Annotations) <br>
-  Standard_EXPORT     Standard_Integer NbSets(const Standard_Boolean final) const;
-  //! Returns the Item which is attached to a set of entities <br>
-//!           For <final> and definition of sets, see method NbSets. <br>
-//!           This item can be a kind of View or a Drawing <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity SetItem(const Standard_Integer num,const Standard_Boolean final) const;
-  //! Returns the complete content of the determined Sets, which <br>
-//!           include Duplicated and Remaining (duplication 0) lists <br>
-//!           For <final> and definition of sets, see method NbSets. <br>
-  Standard_EXPORT     Handle_IFSelect_PacketList Sets(const Standard_Boolean final) const;
+  
+  //! Creates a ViewSorter, empty. SetModel remains to be called
+  Standard_EXPORT IGESSelect_ViewSorter();
+  
+  //! Sets the Model (for PacketList)
+  Standard_EXPORT   void SetModel (const Handle(IGESData_IGESModel)& model) ;
+  
+  //! Clears recorded data
+  Standard_EXPORT   void Clear() ;
+  
+  //! Adds an item according its type : AddEntity,AddList,AddModel
+  Standard_EXPORT   Standard_Boolean Add (const Handle(Standard_Transient)& ent) ;
+  
+  //! Adds an IGES entity. Records the view it is attached to.
+  //! Records directly <ent> if it is a ViewKindEntity or a Drawing
+  //! Returns True if added, False if already in the map
+  Standard_EXPORT   Standard_Boolean AddEntity (const Handle(IGESData_IGESEntity)& igesent) ;
+  
+  //! Adds a list of entities by adding each of the items
+  Standard_EXPORT   void AddList (const Handle(TColStd_HSequenceOfTransient)& list) ;
+  
+  //! Adds all the entities contained in a Model
+  Standard_EXPORT   void AddModel (const Handle(Interface_InterfaceModel)& model) ;
+  
+  //! Returns the count of already recorded
+  Standard_EXPORT   Standard_Integer NbEntities()  const;
+  
+  //! Prepares the result to keep only sets attached to Single Views
+  //! If <alsoframes> is given True, it keeps also the Drawings as
+  //! specific sets, in order to get their frames.
+  //! Entities attached to no single view are put in Remaining List.
+  //!
+  //! Result can then be read by the methods NbSets,SetItem,SetList,
+  //! RemainingList(final = True)
+  Standard_EXPORT   void SortSingleViews (const Standard_Boolean alsoframes) ;
+  
+  //! Prepares the result to the sets attached to Drawings :
+  //! All the single views referenced by a Drawing become bound to
+  //! the set for this Drawing
+  //!
+  //! Entities or Views which correspond to no Drawing are put into
+  //! the Remaining List.
+  //!
+  //! Result can then be read by the methods NbSets,SetItem,SetList,
+  //! RemainingList(final = True)
+  Standard_EXPORT   void SortDrawings (const Interface_Graph& G) ;
+  
+  //! Returns the count of sets recorded, one per distinct item.
+  //! The Remaining List is not counted.
+  //! If <final> is False, the sets are attached to distinct views
+  //! determined by the method Add.
+  //! If <final> is True, they are the sets determined by the last
+  //! call to, either SortSingleViews, or SortDrawings.
+  //!
+  //! Warning : Drawings directly recorded are also counted as sets, because
+  //! of their Frame (which is made of Annotations)
+  Standard_EXPORT   Standard_Integer NbSets (const Standard_Boolean final)  const;
+  
+  //! Returns the Item which is attached to a set of entities
+  //! For <final> and definition of sets, see method NbSets.
+  //! This item can be a kind of View or a Drawing
+  Standard_EXPORT   Handle(IGESData_IGESEntity) SetItem (const Standard_Integer num, const Standard_Boolean final)  const;
+  
+  //! Returns the complete content of the determined Sets, which
+  //! include Duplicated and Remaining (duplication 0) lists
+  //! For <final> and definition of sets, see method NbSets.
+  Standard_EXPORT   Handle(IFSelect_PacketList) Sets (const Standard_Boolean final)  const;
 
 
 
@@ -138,12 +124,12 @@ protected:
 private: 
 
 
-Handle_IGESData_IGESModel themodel;
-TColStd_IndexedMapOfTransient themap;
-TColStd_IndexedMapOfTransient theitems;
-TColStd_IndexedMapOfTransient thefinals;
-TColStd_SequenceOfInteger theinditem;
-TColStd_SequenceOfInteger theindfin;
+  Handle(IGESData_IGESModel) themodel;
+  TColStd_IndexedMapOfTransient themap;
+  TColStd_IndexedMapOfTransient theitems;
+  TColStd_IndexedMapOfTransient thefinals;
+  TColStd_SequenceOfInteger theinditem;
+  TColStd_SequenceOfInteger theindfin;
 
 
 };
@@ -152,7 +138,6 @@ TColStd_SequenceOfInteger theindfin;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSelect_ViewSorter_HeaderFile

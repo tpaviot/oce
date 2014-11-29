@@ -6,15 +6,14 @@
 #ifndef _StepVisual_SurfaceSide_HeaderFile
 #define _StepVisual_SurfaceSide_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepVisual_SurfaceSide {
+
+enum StepVisual_SurfaceSide
+{
 StepVisual_ssNegative,
 StepVisual_ssPositive,
 StepVisual_ssBoth
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepVisual_SurfaceSide_HeaderFile

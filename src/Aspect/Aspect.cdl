@@ -20,28 +20,10 @@
 -- Reason :     Traitement des Markers (G400)
 -- Purpose:     Specifications definitives
 -- Modified:    15/01/98 ; FMN : Ajout Hidden Line
--- Modified:    07/07/98 ; DCB : Adding plotmode enum
--- Modified: 07-07-98 by DCB (S3602 study)
---    Adding plotmode enum
--- Modified: 20-07-98 by DCB (S3602 study)
---   Adding Plotter and PlotterConfigTool classes
---   to plotters (PLO)
--- Modified: 22-07-98 by DCB
---   Adding DriverPtr, PlotterDriverPtr, WindowDriverPtr
---   pointers.
 -- Modified: 24/08/98 ; CAL : S3892. Ajout grilles 3d.
 -- Modified: 16-09-98 by BGN (S3989) 
 ---   Adding TypeOfTriedronEcho, TypeOfTriedronPosition.
 -- Modified: 30-11-98 ; FMN : S4069. Textes always visible.
--- Modified: 30/10/98 : DCB : S4046
---   Adding class PlotterParameter and changing the Plotter's class
---   implementation according to new PLO specifications (S3604 ???)
---   Also new classes : (H)Array1OfPlotterParameter
---   New enumeration : TypeOfPlotterParameter.
---   New exception : PlotterParameterError.
--- Modified: 25-NOV-98 : DCB
---   Removing all plotters specific implementation from Aspect.
---   These classes and enums will now be located in PlotMgt.
 -- Modified: 17-NOV-99 : GG GER61351
 --   Add TypeOfFacingModel enum 
 -- Modified: 20-JAN-00 : GG 
@@ -93,42 +75,20 @@ is
         -- G002A study 
 
         imported CLayer2d;
-        ---Purpose: Defines the C structure <alayer>
-        ---Category: Imported types
 
-        imported RGBPixel;
-        ---Purpose:
+        ---Category: Imported types
 
         primitive Handle;
         primitive Drawable;
-        ---Purpose:
-        -- To manage Drawable
 
         primitive Display;
-        ---Purpose:
-        -- To manage Display 
 
         primitive RenderingContext;
-        ---Purpose:
-        -- To manage 2D or 3D graphic context
 
         imported GraphicCallbackProc;
-        ---Purpose:
-        -- To manage client post display 
 
         -- 22-03-04 OCC4895 SAN High-level interface for controlling polygon offsets
         imported PolygonOffsetMode;
-        ---Purpose: 
-        -- Enumeration for polygon offset modes
-
-        ---------------------
-        -- Category: Pointers
-        ---------------------
-
-        pointer DriverPtr to Driver from Aspect;
-        pointer WindowDriverPtr to WindowDriver from Aspect;
-     
-        ---Category: Pointers
 
         -----------------------
         -- Category: Exceptions
@@ -146,26 +106,11 @@ is
         exception BadAccess inherits DomainError;
         ---Category: Exceptions
 
-        exception ColorMapDefinitionError inherits OutOfRange;
-        ---Category: The exceptions
-
         exception EdgeDefinitionError inherits OutOfRange;
         ---Category: Exceptions
 
         exception IdentDefinitionError inherits OutOfRange;
         ---Category: Exceptions
-
-        exception TypeMapDefinitionError inherits OutOfRange;
-        ---Category: The exceptions
-
-        exception WidthMapDefinitionError inherits OutOfRange;
-        ---Category: The exceptions
-
-        exception FontMapDefinitionError inherits OutOfRange;
-        ---Category: The exceptions
-
-        exception MarkMapDefinitionError inherits OutOfRange;
-        ---Category: The exceptions
 
         exception WindowDefinitionError inherits OutOfRange;
         ---Category: The exceptions
@@ -173,16 +118,7 @@ is
         exception WindowError inherits OutOfRange;
         ---Category: The exceptions
 
-        exception PixmapDefinitionError inherits OutOfRange;
-        ---Category: The exceptions
-
-        exception PixmapError inherits OutOfRange;
-        ---Category: The exceptions
-
         exception DriverDefinitionError inherits OutOfRange;
-        ---Category: The exceptions
-
-        exception DriverError inherits OutOfRange;
         ---Category: The exceptions
 
         exception GraphicDeviceDefinitionError inherits OutOfRange;
@@ -191,83 +127,17 @@ is
         exception DisplayConnectionDefinitionError inherits OutOfRange;
         ---Category: The exceptions
 
-        exception LineStyleDefinitionError inherits OutOfRange;
-        ---Category: Exceptions
-
-        exception LineWidthDefinitionError inherits OutOfRange;
-        ---Category: Exceptions
-
-        exception PolyStyleDefinitionError inherits OutOfRange;
-        ---Category: Exceptions
-
-        exception FontStyleDefinitionError inherits OutOfRange;
-        ---Category: Exceptions
-
-        exception MarkerStyleDefinitionError inherits OutOfRange;
-        ---Category: Exceptions
-
-        exception UndefinedMap inherits OutOfRange;
-        ---Category: Exceptions
-        
-        ------------------------------
-        -- Category: Classes Color map
-        ------------------------------
-
-        deferred class ColorMap;
-        ---Purpose: Defines a color map.
-        ---Category: Classes Color map
-
-        class ColorCubeColorMap;
-        ---Purpose: Associates a index and a color in the "ColorCube" space.
-        ---Category: Classes Color map
-
-        class ColorRampColorMap;
-        ---Purpose: Associates a index and a color in the linear "ColorRamp"
-        --          space.
-        ---Category: Classes Color map
-
-        class GenericColorMap;
-        ---Purpose: Associates an index and a color.
-        ---Category: Classes Color map
-
-        class ColorMapEntry;
-        ---Purpose: Defines an entry in the color map :
-        --          an index and a color.
-        ---Category: Classes Color map
-
-        ------------------------------
-        -- Category: Classes Pixel
-        ------------------------------
-
-        deferred class Pixel;
-        ---Purpose: Defines a picture element.
-        ---Category: Classes Pixel
-
-        class IndexPixel;
-        ---Purpose: 
-        ---Category: Classes Pixel
-
-        class ColorPixel;
-        ---Purpose: 
-        ---Category: Classes Pixel
-
         ---------------------------
         -- Category: Classes Aspect
         ---------------------------
 
         deferred class AspectLine;
-        ---Purpose: Creates and updates a group of graphic attributes
-        --          for primitives 'Line'
         ---Category: Classes Aspect
 
         deferred class AspectMarker;
-        ---Purpose: Creates and updates a group of graphic attributes
-        --          for primitives 'Marker'.
         ---Category: Classes Aspect
 
         deferred class AspectFillArea;
-        ---Purpose: Creates and updates a group of graphic attributes
-        --          for primitives 'Face'.
         ---Category: Classes Aspect
 
         --------------------
@@ -275,79 +145,18 @@ is
         --------------------
 
         class Background;
-        ---Purpose: Defines a window background
         ---Category: Classes
 
         class GradientBackground;
-        ---Purpose: Defines a window gradient background
         ---Category: Classes
 
         class Edge;
-        ---Purpose: Defines an edge.
         ---Category: Classes
 
         class GenId;
-        ---Purpose: Creates and controles all identifiers.
         ---Category: Classes
-
-        class FontStyle;
-        ---Purpose: Defines a Font Style
-        ---Category: The classes
-
-        class FontMapEntry;
-        ---Purpose: Defines an entry in the Font map :
-        --          an index and a text Font.
-        ---Category: Classes Font map
-
-        class FontMap;
-        ---Purpose: Associates an index and a text Font entry.
-        ---Category: The classes
-
-        class WidthMapEntry;
-        ---Purpose: Defines an entry in the Width map :
-        --          an index and a line Width.
-        ---Category: Classes Width map
-
-        class WidthMap;
-        ---Purpose: Associates an index and a line width entry.
-        ---Category: The classes
-
-        class LineStyle;
-        ---Purpose: Defines a Line Style
-        ---Category: The classes
-
-        class TypeMap;
-        ---Purpose: Associates an index and a line type entry.
-        ---Category: The classes
-
-        class TypeMapEntry;
-        ---Purpose: Defines an entry in the Type map :
-        --          an index and a line style.
-        ---Category: Classes Type map
-
-        class MarkerStyle;
-        ---Purpose: Defines a Marker Style
-        ---Category: The classes
-
-        class MarkMap;
-        ---Purpose: Associates an index and a Marker entry.
-        ---Category: The classes
-
-        class MarkMapEntry;
-        ---Purpose: Defines an entry in the Marker map :
-        --          an index and a marker style.
-        ---Category: Classes Mark map
 
         deferred class Window;
-        ---Purpose: Defines a window.
-        ---Category: Classes
-
-        deferred class Driver;
-        ---Purpose: Defines a virtual driver.
-        ---Category: Classes
-
-        deferred class WindowDriver;
-        ---Purpose: Defines a virtual driver associated to a window.
         ---Category: Classes
 
         deferred class Grid;
@@ -355,13 +164,10 @@ is
         class CircularGrid;
 
         deferred class ColorScale;
-        ---Purpose: Defines a color scale for viewer.
 
         imported DisplayConnection;
-        ---Purpose: Creates and provides connection with X server.
 
         imported DisplayConnection_Handle;
-        ---Purpose: Handle for DisplayConnection;
 
         -------------------------
         -- Category: Enumerations
@@ -416,14 +222,6 @@ is
         --
         ---Category: Enumerations
 
-        enumeration TypeOfColorMap is   TOC_Generic,
-                                        TOC_ColorCube,
-                                        TOC_ColorRamp 
-        end TypeOfColorMap;
-        ---Purpose: Definition of the color map types
-        --
-        ---Category: Enumerations
-
         enumeration TypeOfConstraint is TOC_BOTTOM_LEFT,
                                         TOC_BOTTOM_RIGHT,
                                         TOC_TOP_LEFT, 
@@ -453,14 +251,12 @@ is
         ---Category: Enumerations
 
         enumeration TypeOfHighlightMethod is    TOHM_COLOR,
-                                                TOHM_BLINK,
                                                 TOHM_BOUNDBOX
         end TypeOfHighlightMethod;
         ---Purpose: Definition of a highlight method
         --
         --          TOHM_COLOR          drawn in the highlight color
         --                              (default white)
-        --          TOHM_BLINK          blinking
         --          TOHM_BOUNDBOX       enclosed by the boundary box
         --                              (default white)
         --
@@ -683,37 +479,6 @@ is
         end GridType;
         ---Purpose: Defines the grid type : Rectangular or Circular.
 
-        --------- Start DCB modification ----------------------------------------
-        enumeration PlotMode is
-                                        PM_DPLOTTER,
-                                        PM_FILEONLY,
-                                        PM_NPLOTTER
-        end PlotMode;
-        ---Purpose: Defines plot mode for plotter drivers derived from
-        --          Aspect_PlotterDriver:
-        --          1) PM_DPLOTTER - send file to plotter and delete file
-        --          2) PM_FILEONLY - do not send file to the plotter
-        --          3) PM_NPLOTTER - send file to the plotter but not delete a file
- 
-  
-        enumeration ListingType is
-                                        LPID_DIRPLOT,
-                                        LPID_DIRPARPLO,
-                                        LPID_ALLDIRS
-        end ListingType;
-        ---Purpose: Defines where to search plotter files (PLO)
-
-      enumeration PlotterOrigin is
-        PO_CENTER,
-        PO_BOTTOMLEFT,
-        PO_TOPLEFT,
-        PO_TOPRIGHT,
-        PO_BOTTOMRIGHT,
-        PO_UNKNOWN
-      end PlotterOrigin;
-        --------- Stop  DCB modification ----------------------------------------
-
-
         enumeration TypeOfTriedronEcho is       TOTE_NONE,
                                                 TOTE_ORIGIN,
                                                 TOTE_AXIS_X,
@@ -866,26 +631,6 @@ is
 
         class Array1OfEdge instantiates
                 Array1 from TCollection (Edge from Aspect);
-        ---Category: Instantiated classes
-
-        class SequenceOfColorMapEntry instantiates
-                Sequence from TCollection (ColorMapEntry from Aspect);
-        ---Category: Instantiated classes
-
-        class SequenceOfTypeMapEntry instantiates
-                Sequence from TCollection (TypeMapEntry from Aspect);
-        ---Category: Instantiated classes
-
-        class SequenceOfWidthMapEntry instantiates
-                Sequence from TCollection (WidthMapEntry from Aspect);
-        ---Category: Instantiated classes
-
-        class SequenceOfFontMapEntry instantiates
-                Sequence from TCollection (FontMapEntry from Aspect);
-        ---Category: Instantiated classes
-
-        class SequenceOfMarkMapEntry instantiates
-                Sequence from TCollection (MarkMapEntry from Aspect);
         ---Category: Instantiated classes
 
         class SequenceOfColor instantiates

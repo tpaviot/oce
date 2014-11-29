@@ -6,33 +6,27 @@
 #ifndef _VrmlAPI_HeaderFile
 #define _VrmlAPI_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
 class TopoDS_Shape;
 class VrmlAPI_Writer;
 
 
-//! API for writing to VRML 1.0 <br>
-class VrmlAPI  {
+//! API for writing to VRML 1.0
+class VrmlAPI 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! With help of this class user can change parameters of writing. <br>//! Converts the shape aShape to VRML format and writes it <br>
-//! to the file identified by aFileName using default parameters. <br>
-  Standard_EXPORT   static  void Write(const TopoDS_Shape& aShape,const Standard_CString aFileName) ;
-
+  
+  //! With help of this class user can change parameters of writing.
+  //! Converts the shape aShape to VRML format and writes it
+  //! to the file identified by aFileName using default parameters.
+  Standard_EXPORT static   void Write (const TopoDS_Shape& aShape, const Standard_CString aFileName) ;
 
 
 
@@ -56,7 +50,6 @@ friend class VrmlAPI_Writer;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _VrmlAPI_HeaderFile

@@ -6,28 +6,22 @@
 #ifndef _StepRepr_ParametricRepresentationContext_HeaderFile
 #define _StepRepr_ParametricRepresentationContext_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepRepr_ParametricRepresentationContext_HeaderFile
 #include <Handle_StepRepr_ParametricRepresentationContext.hxx>
-#endif
 
-#ifndef _StepRepr_RepresentationContext_HeaderFile
 #include <StepRepr_RepresentationContext.hxx>
-#endif
 
 
 
-class StepRepr_ParametricRepresentationContext : public StepRepr_RepresentationContext {
+class StepRepr_ParametricRepresentationContext : public StepRepr_RepresentationContext
+{
 
 public:
 
-  //! Returns a ParametricRepresentationContext <br>
-  Standard_EXPORT   StepRepr_ParametricRepresentationContext();
+  
+  //! Returns a ParametricRepresentationContext
+  Standard_EXPORT StepRepr_ParametricRepresentationContext();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_ParametricRepresentationContext_HeaderFile

@@ -1,18 +1,6 @@
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Mat_HeaderFile
 #include <gp_Mat.hxx>
-#endif
-#ifndef _gp_Ax1_HeaderFile
 #include <gp_Ax1.hxx>
-#endif
-#ifndef _GProp_PrincipalProps_HeaderFile
 #include <GProp_PrincipalProps.hxx>
-#endif
-#ifndef _GProp_GProps_HeaderFile
 #include <GProp_GProps.hxx>
-#endif

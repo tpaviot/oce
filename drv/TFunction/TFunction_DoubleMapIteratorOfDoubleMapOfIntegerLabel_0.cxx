@@ -5,24 +5,12 @@
 
 #include <TFunction_DoubleMapIteratorOfDoubleMapOfIntegerLabel.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _TDF_LabelMapHasher_HeaderFile
 #include <TDF_LabelMapHasher.hxx>
-#endif
-#ifndef _TFunction_DoubleMapOfIntegerLabel_HeaderFile
 #include <TFunction_DoubleMapOfIntegerLabel.hxx>
-#endif
-#ifndef _TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel_HeaderFile
 #include <TFunction_DoubleMapNodeOfDoubleMapOfIntegerLabel.hxx>
-#endif
  
 
 #define TheKey1 Standard_Integer

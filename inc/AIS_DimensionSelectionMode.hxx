@@ -6,15 +6,14 @@
 #ifndef _AIS_DimensionSelectionMode_HeaderFile
 #define _AIS_DimensionSelectionMode_HeaderFile
 
-//! Specifies dimension selection modes. <br>
-enum AIS_DimensionSelectionMode {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Specifies dimension selection modes.
+enum AIS_DimensionSelectionMode
+{
 AIS_DSM_All,
 AIS_DSM_Line,
 AIS_DSM_Text
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _AIS_DimensionSelectionMode_HeaderFile

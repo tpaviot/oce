@@ -6,13 +6,11 @@
 #ifndef _Quantity_SoundIntensity_HeaderFile
 #define _Quantity_SoundIntensity_HeaderFile
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 
 typedef Standard_Real Quantity_SoundIntensity;
 
 
 #define Quantity_SoundIntensity_Type_() Standard_Real_Type_()
 
-#endif
+#endif // _Quantity_SoundIntensity_HeaderFile

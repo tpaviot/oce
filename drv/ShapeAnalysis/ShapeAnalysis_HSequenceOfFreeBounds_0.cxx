@@ -5,22 +5,12 @@
 
 #include <ShapeAnalysis_HSequenceOfFreeBounds.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _ShapeAnalysis_FreeBoundData_HeaderFile
 #include <ShapeAnalysis_FreeBoundData.hxx>
-#endif
-#ifndef _ShapeAnalysis_SequenceOfFreeBounds_HeaderFile
 #include <ShapeAnalysis_SequenceOfFreeBounds.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(ShapeAnalysis_HSequenceOfFreeBounds,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(ShapeAnalysis_HSequenceOfFreeBounds)
 
 
-#define Item Handle_ShapeAnalysis_FreeBoundData
+#define Item Handle(ShapeAnalysis_FreeBoundData)
 #define Item_hxx <ShapeAnalysis_FreeBoundData.hxx>
 #define TheSequence ShapeAnalysis_SequenceOfFreeBounds
 #define TheSequence_hxx <ShapeAnalysis_SequenceOfFreeBounds.hxx>

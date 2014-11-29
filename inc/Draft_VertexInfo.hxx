@@ -6,34 +6,16 @@
 #ifndef _Draft_VertexInfo_HeaderFile
 #define _Draft_VertexInfo_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _TColStd_ListOfReal_HeaderFile
 #include <TColStd_ListOfReal.hxx>
-#endif
-#ifndef _TopTools_ListIteratorOfListOfShape_HeaderFile
 #include <TopTools_ListIteratorOfListOfShape.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NoMoreObject;
 class TopoDS_Edge;
@@ -41,32 +23,32 @@ class gp_Pnt;
 
 
 
-class Draft_VertexInfo  {
+class Draft_VertexInfo 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Draft_VertexInfo();
+  Standard_EXPORT Draft_VertexInfo();
   
-  Standard_EXPORT     void Add(const TopoDS_Edge& E) ;
+  Standard_EXPORT   void Add (const TopoDS_Edge& E) ;
   
-  Standard_EXPORT    const gp_Pnt& Geometry() const;
+  Standard_EXPORT  const  gp_Pnt& Geometry()  const;
   
-  Standard_EXPORT     Standard_Real Parameter(const TopoDS_Edge& E) ;
+  Standard_EXPORT   Standard_Real Parameter (const TopoDS_Edge& E) ;
   
-  Standard_EXPORT     void InitEdgeIterator() ;
+  Standard_EXPORT   void InitEdgeIterator() ;
   
-  Standard_EXPORT    const TopoDS_Edge& Edge() const;
+  Standard_EXPORT  const  TopoDS_Edge& Edge()  const;
   
-  Standard_EXPORT     void NextEdge() ;
+  Standard_EXPORT   void NextEdge() ;
   
-  Standard_EXPORT     Standard_Boolean MoreEdge() const;
+  Standard_EXPORT   Standard_Boolean MoreEdge()  const;
   
-  Standard_EXPORT     gp_Pnt& ChangeGeometry() ;
+  Standard_EXPORT   gp_Pnt& ChangeGeometry() ;
   
-  Standard_EXPORT     Standard_Real& ChangeParameter(const TopoDS_Edge& E) ;
-
+  Standard_EXPORT   Standard_Real& ChangeParameter (const TopoDS_Edge& E) ;
 
 
 
@@ -81,10 +63,10 @@ private:
 
 
 
-gp_Pnt myGeom;
-TopTools_ListOfShape myEdges;
-TColStd_ListOfReal myParams;
-TopTools_ListIteratorOfListOfShape myItEd;
+  gp_Pnt myGeom;
+  TopTools_ListOfShape myEdges;
+  TColStd_ListOfReal myParams;
+  TopTools_ListIteratorOfListOfShape myItEd;
 
 
 };
@@ -93,7 +75,6 @@ TopTools_ListIteratorOfListOfShape myItEd;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Draft_VertexInfo_HeaderFile

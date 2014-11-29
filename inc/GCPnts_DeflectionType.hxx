@@ -6,16 +6,15 @@
 #ifndef _GCPnts_DeflectionType_HeaderFile
 #define _GCPnts_DeflectionType_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum GCPnts_DeflectionType {
+
+enum GCPnts_DeflectionType
+{
 GCPnts_Linear,
 GCPnts_Circular,
 GCPnts_Curved,
 GCPnts_DefComposite
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _GCPnts_DeflectionType_HeaderFile

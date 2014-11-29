@@ -5,30 +5,13 @@
 
 #include <AppDef_Gradient_BFGSOfTheGradient.hxx>
 
-#ifndef _AppDef_MultiLine_HeaderFile
 #include <AppDef_MultiLine.hxx>
-#endif
-#ifndef _AppDef_MyLineTool_HeaderFile
 #include <AppDef_MyLineTool.hxx>
-#endif
-#ifndef _AppDef_TheGradient_HeaderFile
 #include <AppDef_TheGradient.hxx>
-#endif
-#ifndef _AppDef_ParLeastSquareOfTheGradient_HeaderFile
 #include <AppDef_ParLeastSquareOfTheGradient.hxx>
-#endif
-#ifndef _AppDef_ResConstraintOfTheGradient_HeaderFile
 #include <AppDef_ResConstraintOfTheGradient.hxx>
-#endif
-#ifndef _AppDef_ParFunctionOfTheGradient_HeaderFile
 #include <AppDef_ParFunctionOfTheGradient.hxx>
-#endif
-#ifndef _math_MultipleVarFunctionWithGradient_HeaderFile
 #include <math_MultipleVarFunctionWithGradient.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
  
 
 #define MultiLine AppDef_MultiLine

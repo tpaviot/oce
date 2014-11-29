@@ -529,7 +529,7 @@ void DsgPrs::ComputeFilletRadiusPresentation( const Standard_Real /*ArrowLength*
       FirstParCirc = ElCLib::Parameter( FilletCirc, FirstPoint );
       LastParCirc  = ElCLib::Parameter( FilletCirc, SecondPoint );
 
-#ifdef DEB
+#ifdef OCCT_DEBUG
 #endif
     }
   else //Angle equal 0 or PI or R = 0

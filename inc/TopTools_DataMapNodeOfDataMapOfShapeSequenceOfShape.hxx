@@ -6,28 +6,14 @@
 #ifndef _TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape_HeaderFile
 #define _TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape_HeaderFile
 #include <Handle_TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_SequenceOfShape_HeaderFile
 #include <TopTools_SequenceOfShape.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopoDS_Shape;
 class TopTools_SequenceOfShape;
 class TopTools_ShapeMapHasher;
@@ -36,16 +22,17 @@ class TopTools_DataMapIteratorOfDataMapOfShapeSequenceOfShape;
 
 
 
-class TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape : public TCollection_MapNode {
+class TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape : public TCollection_MapNode
+{
 
 public:
 
   
-      TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape(const TopoDS_Shape& K,const TopTools_SequenceOfShape& I,const TCollection_MapNodePtr& n);
+    TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape(const TopoDS_Shape& K, const TopTools_SequenceOfShape& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        TopTools_SequenceOfShape& Value() const;
+      TopTools_SequenceOfShape& Value()  const;
 
 
 
@@ -60,8 +47,8 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-TopTools_SequenceOfShape myValue;
+  TopoDS_Shape myKey;
+  TopTools_SequenceOfShape myValue;
 
 
 };
@@ -99,7 +86,6 @@ TopTools_SequenceOfShape myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopTools_DataMapNodeOfDataMapOfShapeSequenceOfShape_HeaderFile

@@ -6,66 +6,60 @@
 #ifndef _HLRBRep_VertexList_HeaderFile
 #define _HLRBRep_VertexList_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _HLRAlgo_ListIteratorOfInterferenceList_HeaderFile
 #include <HLRAlgo_ListIteratorOfInterferenceList.hxx>
-#endif
-#ifndef _HLRBRep_EdgeInterferenceTool_HeaderFile
 #include <HLRBRep_EdgeInterferenceTool.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
 class HLRBRep_EdgeInterferenceTool;
 class HLRAlgo_ListIteratorOfInterferenceList;
 class HLRAlgo_Intersection;
 
 
 
-class HLRBRep_VertexList  {
+class HLRBRep_VertexList 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   HLRBRep_VertexList(const HLRBRep_EdgeInterferenceTool& T,const HLRAlgo_ListIteratorOfInterferenceList& I);
-  //! Returns True when the curve is periodic. <br>
-  Standard_EXPORT     Standard_Boolean IsPeriodic() const;
-  //! Returns True when there are more vertices. <br>
-  Standard_EXPORT     Standard_Boolean More() const;
-  //! Proceeds to the next vertex. <br>
-  Standard_EXPORT     void Next() ;
-  //! Returns the current vertex <br>
-//! <br>
-  Standard_EXPORT    const HLRAlgo_Intersection& Current() const;
-  //! Returns True  if the current  vertex  is is on the <br>
-//!          boundary of the edge. <br>
-  Standard_EXPORT     Standard_Boolean IsBoundary() const;
-  //! Returns  True   if   the current    vertex  is  an <br>
-//!          interference. <br>
-  Standard_EXPORT     Standard_Boolean IsInterference() const;
-  //! Returns the  orientation of the  current vertex if <br>
-//!          it is on the boundary of the edge. <br>
-  Standard_EXPORT     TopAbs_Orientation Orientation() const;
-  //! Returns  the transition  of the  current vertex if <br>
-//!          it is an interference. <br>
-  Standard_EXPORT     TopAbs_Orientation Transition() const;
-  //! Returns  the  transition  of  the  current  vertex <br>
-//!          relative to the boundary if it is an interference. <br>
-  Standard_EXPORT     TopAbs_Orientation BoundaryTransition() const;
-
+  Standard_EXPORT HLRBRep_VertexList(const HLRBRep_EdgeInterferenceTool& T, const HLRAlgo_ListIteratorOfInterferenceList& I);
+  
+  //! Returns True when the curve is periodic.
+  Standard_EXPORT   Standard_Boolean IsPeriodic()  const;
+  
+  //! Returns True when there are more vertices.
+  Standard_EXPORT   Standard_Boolean More()  const;
+  
+  //! Proceeds to the next vertex.
+  Standard_EXPORT   void Next() ;
+  
+  //! Returns the current vertex
+  Standard_EXPORT  const  HLRAlgo_Intersection& Current()  const;
+  
+  //! Returns True  if the current  vertex  is is on the
+  //! boundary of the edge.
+  Standard_EXPORT   Standard_Boolean IsBoundary()  const;
+  
+  //! Returns  True   if   the current    vertex  is  an
+  //! interference.
+  Standard_EXPORT   Standard_Boolean IsInterference()  const;
+  
+  //! Returns the  orientation of the  current vertex if
+  //! it is on the boundary of the edge.
+  Standard_EXPORT   TopAbs_Orientation Orientation()  const;
+  
+  //! Returns  the transition  of the  current vertex if
+  //! it is an interference.
+  Standard_EXPORT   TopAbs_Orientation Transition()  const;
+  
+  //! Returns  the  transition  of  the  current  vertex
+  //! relative to the boundary if it is an interference.
+  Standard_EXPORT   TopAbs_Orientation BoundaryTransition()  const;
 
 
 
@@ -80,10 +74,10 @@ private:
 
 
 
-HLRAlgo_ListIteratorOfInterferenceList myIterator;
-HLRBRep_EdgeInterferenceTool myTool;
-Standard_Boolean fromEdge;
-Standard_Boolean fromInterf;
+  HLRAlgo_ListIteratorOfInterferenceList myIterator;
+  HLRBRep_EdgeInterferenceTool myTool;
+  Standard_Boolean fromEdge;
+  Standard_Boolean fromInterf;
 
 
 };
@@ -92,7 +86,6 @@ Standard_Boolean fromInterf;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_VertexList_HeaderFile

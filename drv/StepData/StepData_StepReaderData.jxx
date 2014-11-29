@@ -1,42 +1,14 @@
-#ifndef _Interface_Check_HeaderFile
 #include <Interface_Check.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TColStd_SequenceOfAsciiString_HeaderFile
 #include <TColStd_SequenceOfAsciiString.hxx>
-#endif
-#ifndef _StepData_PDescr_HeaderFile
 #include <StepData_PDescr.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepData_SelectMember_HeaderFile
 #include <StepData_SelectMember.hxx>
-#endif
-#ifndef _StepData_Field_HeaderFile
 #include <StepData_Field.hxx>
-#endif
-#ifndef _StepData_ESDescr_HeaderFile
 #include <StepData_ESDescr.hxx>
-#endif
-#ifndef _StepData_FieldList_HeaderFile
 #include <StepData_FieldList.hxx>
-#endif
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepData_EnumTool_HeaderFile
 #include <StepData_EnumTool.hxx>
-#endif
-#ifndef _StepData_StepReaderData_HeaderFile
 #include <StepData_StepReaderData.hxx>
-#endif

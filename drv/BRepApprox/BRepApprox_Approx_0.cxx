@@ -5,63 +5,25 @@
 
 #include <BRepApprox_Approx.hxx>
 
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _BRepAdaptor_Surface_HeaderFile
 #include <BRepAdaptor_Surface.hxx>
-#endif
-#ifndef _BRepApprox_SurfaceTool_HeaderFile
 #include <BRepApprox_SurfaceTool.hxx>
-#endif
-#ifndef _IntSurf_Quadric_HeaderFile
 #include <IntSurf_Quadric.hxx>
-#endif
-#ifndef _IntSurf_QuadricTool_HeaderFile
 #include <IntSurf_QuadricTool.hxx>
-#endif
-#ifndef _BRepApprox_ApproxLine_HeaderFile
 #include <BRepApprox_ApproxLine.hxx>
-#endif
-#ifndef _BRepApprox_ThePrmPrmSvSurfacesOfApprox_HeaderFile
 #include <BRepApprox_ThePrmPrmSvSurfacesOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_HeaderFile
 #include <BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_TheImpPrmSvSurfacesOfApprox_HeaderFile
 #include <BRepApprox_TheImpPrmSvSurfacesOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_HeaderFile
 #include <BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_TheMultiLineOfApprox_HeaderFile
 #include <BRepApprox_TheMultiLineOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_TheMultiLineToolOfApprox_HeaderFile
 #include <BRepApprox_TheMultiLineToolOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_TheComputeLineOfApprox_HeaderFile
 #include <BRepApprox_TheComputeLineOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_HeaderFile
 #include <BRepApprox_MyBSplGradientOfTheComputeLineOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_MyGradientbisOfTheComputeLineOfApprox_HeaderFile
 #include <BRepApprox_MyGradientbisOfTheComputeLineOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_TheComputeLineBezierOfApprox_HeaderFile
 #include <BRepApprox_TheComputeLineBezierOfApprox.hxx>
-#endif
-#ifndef _BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_HeaderFile
 #include <BRepApprox_MyGradientOfTheComputeLineBezierOfApprox.hxx>
-#endif
-#ifndef _AppParCurves_MultiBSpCurve_HeaderFile
 #include <AppParCurves_MultiBSpCurve.hxx>
-#endif
  
 
 #define ThePSurface BRepAdaptor_Surface

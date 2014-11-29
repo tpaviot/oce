@@ -1,6 +1,2 @@
-#ifndef _StepFEA_HArray1OfDegreeOfFreedom_HeaderFile
 #include <StepFEA_HArray1OfDegreeOfFreedom.hxx>
-#endif
-#ifndef _StepFEA_FreedomsList_HeaderFile
 #include <StepFEA_FreedomsList.hxx>
-#endif

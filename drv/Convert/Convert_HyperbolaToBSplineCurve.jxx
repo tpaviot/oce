@@ -1,6 +1,2 @@
-#ifndef _gp_Hypr2d_HeaderFile
 #include <gp_Hypr2d.hxx>
-#endif
-#ifndef _Convert_HyperbolaToBSplineCurve_HeaderFile
 #include <Convert_HyperbolaToBSplineCurve.hxx>
-#endif

@@ -6,49 +6,21 @@
 #ifndef _IGESAppli_Flow_HeaderFile
 #define _IGESAppli_Flow_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESAppli_Flow_HeaderFile
 #include <Handle_IGESAppli_Flow.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_IGESData_HArray1OfIGESEntity_HeaderFile
 #include <Handle_IGESData_HArray1OfIGESEntity.hxx>
-#endif
-#ifndef _Handle_IGESDraw_HArray1OfConnectPoint_HeaderFile
 #include <Handle_IGESDraw_HArray1OfConnectPoint.hxx>
-#endif
-#ifndef _Handle_Interface_HArray1OfHAsciiString_HeaderFile
 #include <Handle_Interface_HArray1OfHAsciiString.hxx>
-#endif
-#ifndef _Handle_IGESGraph_HArray1OfTextDisplayTemplate_HeaderFile
 #include <Handle_IGESGraph_HArray1OfTextDisplayTemplate.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Handle_IGESDraw_ConnectPoint_HeaderFile
 #include <Handle_IGESDraw_ConnectPoint.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_IGESGraph_TextDisplayTemplate_HeaderFile
 #include <Handle_IGESGraph_TextDisplayTemplate.hxx>
-#endif
 class IGESData_HArray1OfIGESEntity;
 class IGESDraw_HArray1OfConnectPoint;
 class Interface_HArray1OfHAsciiString;
@@ -60,70 +32,88 @@ class TCollection_HAsciiString;
 class IGESGraph_TextDisplayTemplate;
 
 
-//! defines Flow, Type <402> Form <18> <br>
-//!          in package IGESAppli <br>
-//!          Represents a single signal or a single fluid flow path <br>
-//!          starting from a starting Connect Point Entity and <br>
-//!          including additional intermediate connect points. <br>
-class IGESAppli_Flow : public IGESData_IGESEntity {
+//! defines Flow, Type <402> Form <18>
+//! in package IGESAppli
+//! Represents a single signal or a single fluid flow path
+//! starting from a starting Connect Point Entity and
+//! including additional intermediate connect points.
+class IGESAppli_Flow : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESAppli_Flow();
-  //! This method is used to set the fields of the class Flow <br>
-//!       - nbContextFlags    : Count of Context Flags, always = 2 <br>
-//!       - aFlowType         : Type of Flow, default = 0 <br>
-//!       - aFuncFlag         : Function Flag, default = 0 <br>
-//!       - allFlowAssocs     : Flow Associativity Entities <br>
-//!       - allConnectPoints  : Connect Point Entities <br>
-//!       - allJoins          : Join Entities <br>
-//!       - allFlowNames      : Flow Names <br>
-//!       - allTextDisps      : Text Display Template Entities <br>
-//!       - allContFlowAssocs : Continuation Flow Associativity Entities <br>
-  Standard_EXPORT     void Init(const Standard_Integer nbContextFlags,const Standard_Integer aFlowType,const Standard_Integer aFuncFlag,const Handle(IGESData_HArray1OfIGESEntity)& allFlowAssocs,const Handle(IGESDraw_HArray1OfConnectPoint)& allConnectPoints,const Handle(IGESData_HArray1OfIGESEntity)& allJoins,const Handle(Interface_HArray1OfHAsciiString)& allFlowNames,const Handle(IGESGraph_HArray1OfTextDisplayTemplate)& allTextDisps,const Handle(IGESData_HArray1OfIGESEntity)& allContFlowAssocs) ;
-  //! forces NbContextFalgs to 2, returns True if changed <br>
-  Standard_EXPORT     Standard_Boolean OwnCorrect() ;
-  //! returns number of Count of Context Flags, always = 2 <br>
-  Standard_EXPORT     Standard_Integer NbContextFlags() const;
-  //! returns number of Flow Associativity Entities <br>
-  Standard_EXPORT     Standard_Integer NbFlowAssociativities() const;
-  //! returns number of Connect Point Entities <br>
-  Standard_EXPORT     Standard_Integer NbConnectPoints() const;
-  //! returns number of Join Entities <br>
-  Standard_EXPORT     Standard_Integer NbJoins() const;
-  //! returns number of Flow Names <br>
-  Standard_EXPORT     Standard_Integer NbFlowNames() const;
-  //! returns number of Text Display Template Entities <br>
-  Standard_EXPORT     Standard_Integer NbTextDisplayTemplates() const;
-  //! returns number of Continuation Flow Associativity Entities <br>
-  Standard_EXPORT     Standard_Integer NbContFlowAssociativities() const;
-  //! returns Type of Flow = 0 : Not Specified (default) <br>
-//!                                  1 : Logical <br>
-//!                                  2 : Physical <br>
-  Standard_EXPORT     Standard_Integer TypeOfFlow() const;
-  //! returns Function Flag = 0 : Not Specified (default) <br>
-//!                                   1 : Electrical Signal <br>
-//!                                   2 : Fluid Flow Path <br>
-  Standard_EXPORT     Standard_Integer FunctionFlag() const;
-  //! returns Flow Associativity Entity <br>
-//! raises exception if Index <= 0 or Index > NbFlowAssociativities() <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity FlowAssociativity(const Standard_Integer Index) const;
-  //! returns Connect Point Entity <br>
-//! raises exception if Index <= 0 or Index > NbConnectPoints() <br>
-  Standard_EXPORT     Handle_IGESDraw_ConnectPoint ConnectPoint(const Standard_Integer Index) const;
-  //! returns Join Entity <br>
-//! raises exception if Index <= 0 or Index > NbJoins() <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity Join(const Standard_Integer Index) const;
-  //! returns Flow Name <br>
-//! raises exception if Index <= 0 or Index > NbFlowNames() <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString FlowName(const Standard_Integer Index) const;
-  //! returns Text Display Template Entity <br>
-//! raises exception if Index <= 0 or Index > NbTextDisplayTemplates() <br>
-  Standard_EXPORT     Handle_IGESGraph_TextDisplayTemplate TextDisplayTemplate(const Standard_Integer Index) const;
-  //! returns Continuation Flow Associativity Entity <br>
-//! raises exception if Index <= 0 or Index > NbContFlowAssociativities() <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity ContFlowAssociativity(const Standard_Integer Index) const;
+  Standard_EXPORT IGESAppli_Flow();
+  
+  //! This method is used to set the fields of the class Flow
+  //! - nbContextFlags    : Count of Context Flags, always = 2
+  //! - aFlowType         : Type of Flow, default = 0
+  //! - aFuncFlag         : Function Flag, default = 0
+  //! - allFlowAssocs     : Flow Associativity Entities
+  //! - allConnectPoints  : Connect Point Entities
+  //! - allJoins          : Join Entities
+  //! - allFlowNames      : Flow Names
+  //! - allTextDisps      : Text Display Template Entities
+  //! - allContFlowAssocs : Continuation Flow Associativity Entities
+  Standard_EXPORT   void Init (const Standard_Integer nbContextFlags, const Standard_Integer aFlowType, const Standard_Integer aFuncFlag, const Handle(IGESData_HArray1OfIGESEntity)& allFlowAssocs, const Handle(IGESDraw_HArray1OfConnectPoint)& allConnectPoints, const Handle(IGESData_HArray1OfIGESEntity)& allJoins, const Handle(Interface_HArray1OfHAsciiString)& allFlowNames, const Handle(IGESGraph_HArray1OfTextDisplayTemplate)& allTextDisps, const Handle(IGESData_HArray1OfIGESEntity)& allContFlowAssocs) ;
+  
+  //! forces NbContextFalgs to 2, returns True if changed
+  Standard_EXPORT   Standard_Boolean OwnCorrect() ;
+  
+  //! returns number of Count of Context Flags, always = 2
+  Standard_EXPORT   Standard_Integer NbContextFlags()  const;
+  
+  //! returns number of Flow Associativity Entities
+  Standard_EXPORT   Standard_Integer NbFlowAssociativities()  const;
+  
+  //! returns number of Connect Point Entities
+  Standard_EXPORT   Standard_Integer NbConnectPoints()  const;
+  
+  //! returns number of Join Entities
+  Standard_EXPORT   Standard_Integer NbJoins()  const;
+  
+  //! returns number of Flow Names
+  Standard_EXPORT   Standard_Integer NbFlowNames()  const;
+  
+  //! returns number of Text Display Template Entities
+  Standard_EXPORT   Standard_Integer NbTextDisplayTemplates()  const;
+  
+  //! returns number of Continuation Flow Associativity Entities
+  Standard_EXPORT   Standard_Integer NbContFlowAssociativities()  const;
+  
+  //! returns Type of Flow = 0 : Not Specified (default)
+  //! 1 : Logical
+  //! 2 : Physical
+  Standard_EXPORT   Standard_Integer TypeOfFlow()  const;
+  
+  //! returns Function Flag = 0 : Not Specified (default)
+  //! 1 : Electrical Signal
+  //! 2 : Fluid Flow Path
+  Standard_EXPORT   Standard_Integer FunctionFlag()  const;
+  
+  //! returns Flow Associativity Entity
+  //! raises exception if Index <= 0 or Index > NbFlowAssociativities()
+  Standard_EXPORT   Handle(IGESData_IGESEntity) FlowAssociativity (const Standard_Integer Index)  const;
+  
+  //! returns Connect Point Entity
+  //! raises exception if Index <= 0 or Index > NbConnectPoints()
+  Standard_EXPORT   Handle(IGESDraw_ConnectPoint) ConnectPoint (const Standard_Integer Index)  const;
+  
+  //! returns Join Entity
+  //! raises exception if Index <= 0 or Index > NbJoins()
+  Standard_EXPORT   Handle(IGESData_IGESEntity) Join (const Standard_Integer Index)  const;
+  
+  //! returns Flow Name
+  //! raises exception if Index <= 0 or Index > NbFlowNames()
+  Standard_EXPORT   Handle(TCollection_HAsciiString) FlowName (const Standard_Integer Index)  const;
+  
+  //! returns Text Display Template Entity
+  //! raises exception if Index <= 0 or Index > NbTextDisplayTemplates()
+  Standard_EXPORT   Handle(IGESGraph_TextDisplayTemplate) TextDisplayTemplate (const Standard_Integer Index)  const;
+  
+  //! returns Continuation Flow Associativity Entity
+  //! raises exception if Index <= 0 or Index > NbContFlowAssociativities()
+  Standard_EXPORT   Handle(IGESData_IGESEntity) ContFlowAssociativity (const Standard_Integer Index)  const;
 
 
 
@@ -138,15 +128,15 @@ protected:
 private: 
 
 
-Standard_Integer theNbContextFlags;
-Standard_Integer theTypeOfFlow;
-Standard_Integer theFunctionFlag;
-Handle_IGESData_HArray1OfIGESEntity theFlowAssociativities;
-Handle_IGESDraw_HArray1OfConnectPoint theConnectPoints;
-Handle_IGESData_HArray1OfIGESEntity theJoins;
-Handle_Interface_HArray1OfHAsciiString theFlowNames;
-Handle_IGESGraph_HArray1OfTextDisplayTemplate theTextDisplayTemplates;
-Handle_IGESData_HArray1OfIGESEntity theContFlowAssociativities;
+  Standard_Integer theNbContextFlags;
+  Standard_Integer theTypeOfFlow;
+  Standard_Integer theFunctionFlag;
+  Handle(IGESData_HArray1OfIGESEntity) theFlowAssociativities;
+  Handle(IGESDraw_HArray1OfConnectPoint) theConnectPoints;
+  Handle(IGESData_HArray1OfIGESEntity) theJoins;
+  Handle(Interface_HArray1OfHAsciiString) theFlowNames;
+  Handle(IGESGraph_HArray1OfTextDisplayTemplate) theTextDisplayTemplates;
+  Handle(IGESData_HArray1OfIGESEntity) theContFlowAssociativities;
 
 
 };
@@ -155,7 +145,6 @@ Handle_IGESData_HArray1OfIGESEntity theContFlowAssociativities;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESAppli_Flow_HeaderFile

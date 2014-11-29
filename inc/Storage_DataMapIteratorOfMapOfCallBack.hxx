@@ -6,25 +6,13 @@
 #ifndef _Storage_DataMapIteratorOfMapOfCallBack_HeaderFile
 #define _Storage_DataMapIteratorOfMapOfCallBack_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_Storage_TypedCallBack_HeaderFile
 #include <Handle_Storage_TypedCallBack.hxx>
-#endif
-#ifndef _Handle_Storage_DataMapNodeOfMapOfCallBack_HeaderFile
 #include <Handle_Storage_DataMapNodeOfMapOfCallBack.hxx>
-#endif
 class Standard_NoSuchObject;
 class TCollection_AsciiString;
 class Storage_TypedCallBack;
@@ -33,22 +21,22 @@ class Storage_DataMapNodeOfMapOfCallBack;
 
 
 
-class Storage_DataMapIteratorOfMapOfCallBack  : public TCollection_BasicMapIterator {
+class Storage_DataMapIteratorOfMapOfCallBack  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Storage_DataMapIteratorOfMapOfCallBack();
+  Standard_EXPORT Storage_DataMapIteratorOfMapOfCallBack();
   
-  Standard_EXPORT   Storage_DataMapIteratorOfMapOfCallBack(const Storage_MapOfCallBack& aMap);
+  Standard_EXPORT Storage_DataMapIteratorOfMapOfCallBack(const Storage_MapOfCallBack& aMap);
   
-  Standard_EXPORT     void Initialize(const Storage_MapOfCallBack& aMap) ;
+  Standard_EXPORT   void Initialize (const Storage_MapOfCallBack& aMap) ;
   
-  Standard_EXPORT    const TCollection_AsciiString& Key() const;
+  Standard_EXPORT  const  TCollection_AsciiString& Key()  const;
   
-  Standard_EXPORT    const Handle_Storage_TypedCallBack& Value() const;
-
+  Standard_EXPORT  const  Handle(Storage_TypedCallBack)& Value()  const;
 
 
 
@@ -71,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Storage_DataMapIteratorOfMapOfCallBack_HeaderFile

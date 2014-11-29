@@ -1,21 +1,7 @@
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _TColgp_HArray2OfPnt_HeaderFile
 #include <TColgp_HArray2OfPnt.hxx>
-#endif
-#ifndef _IntTools_SurfaceRangeSample_HeaderFile
 #include <IntTools_SurfaceRangeSample.hxx>
-#endif
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
-#ifndef _IntTools_ListOfSurfaceRangeSample_HeaderFile
 #include <IntTools_ListOfSurfaceRangeSample.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _IntTools_SurfaceRangeLocalizeData_HeaderFile
 #include <IntTools_SurfaceRangeLocalizeData.hxx>
-#endif

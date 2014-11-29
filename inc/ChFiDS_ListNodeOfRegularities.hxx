@@ -6,39 +6,28 @@
 #ifndef _ChFiDS_ListNodeOfRegularities_HeaderFile
 #define _ChFiDS_ListNodeOfRegularities_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ChFiDS_ListNodeOfRegularities_HeaderFile
 #include <Handle_ChFiDS_ListNodeOfRegularities.hxx>
-#endif
 
-#ifndef _ChFiDS_Regul_HeaderFile
 #include <ChFiDS_Regul.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class ChFiDS_Regul;
 class ChFiDS_Regularities;
 class ChFiDS_ListIteratorOfRegularities;
 
 
 
-class ChFiDS_ListNodeOfRegularities : public TCollection_MapNode {
+class ChFiDS_ListNodeOfRegularities : public TCollection_MapNode
+{
 
 public:
 
   
-      ChFiDS_ListNodeOfRegularities(const ChFiDS_Regul& I,const TCollection_MapNodePtr& n);
+    ChFiDS_ListNodeOfRegularities(const ChFiDS_Regul& I, const TCollection_MapNodePtr& n);
   
-        ChFiDS_Regul& Value() const;
+      ChFiDS_Regul& Value()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-ChFiDS_Regul myValue;
+  ChFiDS_Regul myValue;
 
 
 };
@@ -83,7 +72,6 @@ ChFiDS_Regul myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ChFiDS_ListNodeOfRegularities_HeaderFile

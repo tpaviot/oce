@@ -6,28 +6,14 @@
 #ifndef _IFSelect_SequenceOfGeneralModifier_HeaderFile
 #define _IFSelect_SequenceOfGeneralModifier_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_IFSelect_GeneralModifier_HeaderFile
 #include <Handle_IFSelect_GeneralModifier.hxx>
-#endif
-#ifndef _Handle_IFSelect_SequenceNodeOfSequenceOfGeneralModifier_HeaderFile
 #include <Handle_IFSelect_SequenceNodeOfSequenceOfGeneralModifier.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class IFSelect_GeneralModifier;
@@ -35,66 +21,68 @@ class IFSelect_SequenceNodeOfSequenceOfGeneralModifier;
 
 
 
-class IFSelect_SequenceOfGeneralModifier  : public TCollection_BaseSequence {
+class IFSelect_SequenceOfGeneralModifier  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      IFSelect_SequenceOfGeneralModifier();
+    IFSelect_SequenceOfGeneralModifier();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT IFSelect_SequenceOfGeneralModifier(const IFSelect_SequenceOfGeneralModifier& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~IFSelect_SequenceOfGeneralModifier()
 {
   Clear();
 }
   
-  Standard_EXPORT    const IFSelect_SequenceOfGeneralModifier& Assign(const IFSelect_SequenceOfGeneralModifier& Other) ;
-   const IFSelect_SequenceOfGeneralModifier& operator =(const IFSelect_SequenceOfGeneralModifier& Other) 
+  Standard_EXPORT  const  IFSelect_SequenceOfGeneralModifier& Assign (const IFSelect_SequenceOfGeneralModifier& Other) ;
+ const  IFSelect_SequenceOfGeneralModifier& operator = (const IFSelect_SequenceOfGeneralModifier& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(IFSelect_GeneralModifier)& T) ;
+  Standard_EXPORT   void Append (const Handle(IFSelect_GeneralModifier)& T) ;
   
-        void Append(IFSelect_SequenceOfGeneralModifier& S) ;
+      void Append (IFSelect_SequenceOfGeneralModifier& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(IFSelect_GeneralModifier)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(IFSelect_GeneralModifier)& T) ;
   
-        void Prepend(IFSelect_SequenceOfGeneralModifier& S) ;
+      void Prepend (IFSelect_SequenceOfGeneralModifier& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(IFSelect_GeneralModifier)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(IFSelect_GeneralModifier)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,IFSelect_SequenceOfGeneralModifier& S) ;
+      void InsertBefore (const Standard_Integer Index, IFSelect_SequenceOfGeneralModifier& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(IFSelect_GeneralModifier)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(IFSelect_GeneralModifier)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,IFSelect_SequenceOfGeneralModifier& S) ;
+      void InsertAfter (const Standard_Integer Index, IFSelect_SequenceOfGeneralModifier& S) ;
   
-  Standard_EXPORT    const Handle_IFSelect_GeneralModifier& First() const;
+  Standard_EXPORT  const  Handle(IFSelect_GeneralModifier)& First()  const;
   
-  Standard_EXPORT    const Handle_IFSelect_GeneralModifier& Last() const;
+  Standard_EXPORT  const  Handle(IFSelect_GeneralModifier)& Last()  const;
   
-        void Split(const Standard_Integer Index,IFSelect_SequenceOfGeneralModifier& Sub) ;
+      void Split (const Standard_Integer Index, IFSelect_SequenceOfGeneralModifier& Sub) ;
   
-  Standard_EXPORT    const Handle_IFSelect_GeneralModifier& Value(const Standard_Integer Index) const;
-   const Handle_IFSelect_GeneralModifier& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(IFSelect_GeneralModifier)& Value (const Standard_Integer Index)  const;
+ const  Handle(IFSelect_GeneralModifier)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(IFSelect_GeneralModifier)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(IFSelect_GeneralModifier)& I) ;
   
-  Standard_EXPORT     Handle_IFSelect_GeneralModifier& ChangeValue(const Standard_Integer Index) ;
-    Handle_IFSelect_GeneralModifier& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(IFSelect_GeneralModifier)& ChangeValue (const Standard_Integer Index) ;
+  Handle(IFSelect_GeneralModifier)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -107,15 +95,13 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IFSelect_SequenceOfGeneralModifier(const IFSelect_SequenceOfGeneralModifier& Other);
 
 
 
 
 };
 
-#define SeqItem Handle_IFSelect_GeneralModifier
+#define SeqItem Handle(IFSelect_GeneralModifier)
 #define SeqItem_hxx <IFSelect_GeneralModifier.hxx>
 #define TCollection_SequenceNode IFSelect_SequenceNodeOfSequenceOfGeneralModifier
 #define TCollection_SequenceNode_hxx <IFSelect_SequenceNodeOfSequenceOfGeneralModifier.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_SequenceOfGeneralModifier_HeaderFile

@@ -5,30 +5,14 @@
 
 #include <HLRBRep_TheExactInterCSurf.hxx>
 
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _HLRBRep_SurfaceTool_HeaderFile
 #include <HLRBRep_SurfaceTool.hxx>
-#endif
-#ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
-#endif
-#ifndef _HLRBRep_LineTool_HeaderFile
 #include <HLRBRep_LineTool.hxx>
-#endif
-#ifndef _HLRBRep_TheCSFunctionOfInterCSurf_HeaderFile
 #include <HLRBRep_TheCSFunctionOfInterCSurf.hxx>
-#endif
-#ifndef _math_FunctionSetRoot_HeaderFile
 #include <math_FunctionSetRoot.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
  
 
 #define ThePSurface Standard_Address

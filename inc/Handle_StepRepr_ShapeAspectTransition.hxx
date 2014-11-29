@@ -6,22 +6,15 @@
 #ifndef _Handle_StepRepr_ShapeAspectTransition_HeaderFile
 #define _Handle_StepRepr_ShapeAspectTransition_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepRepr_ShapeAspectRelationship_HeaderFile
 #include <Handle_StepRepr_ShapeAspectRelationship.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepRepr_ShapeAspectRelationship);
 class StepRepr_ShapeAspectTransition;
 
-DEFINE_STANDARD_HANDLE(StepRepr_ShapeAspectTransition,StepRepr_ShapeAspectRelationship)
+DEFINE_STANDARD_HANDLE(StepRepr_ShapeAspectTransition, StepRepr_ShapeAspectRelationship)
 
-#endif
+#endif // _Handle_StepRepr_ShapeAspectTransition_HeaderFile

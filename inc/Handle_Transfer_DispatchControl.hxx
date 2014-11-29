@@ -6,22 +6,15 @@
 #ifndef _Handle_Transfer_DispatchControl_HeaderFile
 #define _Handle_Transfer_DispatchControl_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Interface_CopyControl_HeaderFile
 #include <Handle_Interface_CopyControl.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Interface_CopyControl);
 class Transfer_DispatchControl;
 
-DEFINE_STANDARD_HANDLE(Transfer_DispatchControl,Interface_CopyControl)
+DEFINE_STANDARD_HANDLE(Transfer_DispatchControl, Interface_CopyControl)
 
-#endif
+#endif // _Handle_Transfer_DispatchControl_HeaderFile

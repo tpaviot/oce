@@ -6,25 +6,13 @@
 #ifndef _BRepPrimAPI_MakeBox_HeaderFile
 #define _BRepPrimAPI_MakeBox_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepPrim_Wedge_HeaderFile
 #include <BRepPrim_Wedge.hxx>
-#endif
-#ifndef _BRepBuilderAPI_MakeShape_HeaderFile
 #include <BRepBuilderAPI_MakeShape.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Standard_DomainError;
 class Standard_OutOfRange;
 class StdFail_NotDone;
@@ -36,60 +24,74 @@ class TopoDS_Solid;
 class TopoDS_Face;
 
 
-//! Describes functions to build parallelepiped boxes. <br>
-//! A MakeBox object provides a framework for: <br>
-//! -   defining the construction of a box, <br>
-//! -   implementing the construction algorithm, and <br>
-//! -   consulting the result. <br>
-class BRepPrimAPI_MakeBox  : public BRepBuilderAPI_MakeShape {
+//! Describes functions to build parallelepiped boxes.
+//! A MakeBox object provides a framework for:
+//! -   defining the construction of a box,
+//! -   implementing the construction algorithm, and
+//! -   consulting the result.
+class BRepPrimAPI_MakeBox  : public BRepBuilderAPI_MakeShape
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Make a box with a corner at 0,0,0 and the other dx,dy,dz <br>
-  Standard_EXPORT   BRepPrimAPI_MakeBox(const Standard_Real dx,const Standard_Real dy,const Standard_Real dz);
-  //! Make a box with a corner at P and size dx, dy, dz. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeBox(const gp_Pnt& P,const Standard_Real dx,const Standard_Real dy,const Standard_Real dz);
-  //! Make a box with corners P1,P2. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeBox(const gp_Pnt& P1,const gp_Pnt& P2);
-  //! Ax2 is the left corner and the axis. <br>//! Constructs a box such that its sides are parallel to the axes of <br>
-//! -   the global coordinate system, or <br>
-//! -   the local coordinate system Axis. and <br>
-//! -   with a corner at (0, 0, 0) and of size (dx, dy, dz), or <br>
-//! -   with a corner at point P and of size (dx, dy, dz), or <br>
-//! -   with corners at points P1 and P2. <br>
-//! Exceptions <br>
-//! Standard_DomainError if: dx, dy, dz are less than or equal to <br>
-//!   Precision::Confusion(), or <br>
-//! -   the vector joining the points P1 and P2 has a <br>
-//!   component projected onto the global coordinate <br>
-//!   system less than or equal to Precision::Confusion(). <br>
-//!   In these cases, the box would be flat. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeBox(const gp_Ax2& Axes,const Standard_Real dx,const Standard_Real dy,const Standard_Real dz);
-  //! Returns the internal algorithm. <br>
-//! <br>
-  Standard_EXPORT     BRepPrim_Wedge& Wedge() ;
-  //! Stores the solid in myShape. <br>
-  Standard_EXPORT   virtual  void Build() ;
-  //! Returns the constructed box as a shell. <br>
-  Standard_EXPORT    const TopoDS_Shell& Shell() ;
+  
+  //! Make a box with a corner at 0,0,0 and the other dx,dy,dz
+  Standard_EXPORT BRepPrimAPI_MakeBox(const Standard_Real dx, const Standard_Real dy, const Standard_Real dz);
+  
+  //! Make a box with a corner at P and size dx, dy, dz.
+  Standard_EXPORT BRepPrimAPI_MakeBox(const gp_Pnt& P, const Standard_Real dx, const Standard_Real dy, const Standard_Real dz);
+  
+  //! Make a box with corners P1,P2.
+  Standard_EXPORT BRepPrimAPI_MakeBox(const gp_Pnt& P1, const gp_Pnt& P2);
+  
+  //! Ax2 is the left corner and the axis.
+  //! Constructs a box such that its sides are parallel to the axes of
+  //! -   the global coordinate system, or
+  //! -   the local coordinate system Axis. and
+  //! -   with a corner at (0, 0, 0) and of size (dx, dy, dz), or
+  //! -   with a corner at point P and of size (dx, dy, dz), or
+  //! -   with corners at points P1 and P2.
+  //! Exceptions
+  //! Standard_DomainError if: dx, dy, dz are less than or equal to
+  //! Precision::Confusion(), or
+  //! -   the vector joining the points P1 and P2 has a
+  //! component projected onto the global coordinate
+  //! system less than or equal to Precision::Confusion().
+  //! In these cases, the box would be flat.
+  Standard_EXPORT BRepPrimAPI_MakeBox(const gp_Ax2& Axes, const Standard_Real dx, const Standard_Real dy, const Standard_Real dz);
+  
+  //! Returns the internal algorithm.
+  Standard_EXPORT   BRepPrim_Wedge& Wedge() ;
+  
+  //! Stores the solid in myShape.
+  Standard_EXPORT virtual   void Build() ;
+  
+  //! Returns the constructed box as a shell.
+  Standard_EXPORT  const  TopoDS_Shell& Shell() ;
 Standard_EXPORT operator TopoDS_Shell();
-  //! Returns the constructed box as a solid. <br>
-  Standard_EXPORT    const TopoDS_Solid& Solid() ;
+  
+  //! Returns the constructed box as a solid.
+  Standard_EXPORT  const  TopoDS_Solid& Solid() ;
 Standard_EXPORT operator TopoDS_Solid();
-  //! Returns ZMin face <br>
-  Standard_EXPORT    const TopoDS_Face& BottomFace() ;
-  //! Returns XMin face <br>
-  Standard_EXPORT    const TopoDS_Face& BackFace() ;
-  //! Returns XMax face <br>
-  Standard_EXPORT    const TopoDS_Face& FrontFace() ;
-  //! Returns YMin face <br>
-  Standard_EXPORT    const TopoDS_Face& LeftFace() ;
-  //! Returns YMax face <br>
-  Standard_EXPORT    const TopoDS_Face& RightFace() ;
-  //! Returns ZMax face <br>
-  Standard_EXPORT    const TopoDS_Face& TopFace() ;
-
+  
+  //! Returns ZMin face
+  Standard_EXPORT  const  TopoDS_Face& BottomFace() ;
+  
+  //! Returns XMin face
+  Standard_EXPORT  const  TopoDS_Face& BackFace() ;
+  
+  //! Returns XMax face
+  Standard_EXPORT  const  TopoDS_Face& FrontFace() ;
+  
+  //! Returns YMin face
+  Standard_EXPORT  const  TopoDS_Face& LeftFace() ;
+  
+  //! Returns YMax face
+  Standard_EXPORT  const  TopoDS_Face& RightFace() ;
+  
+  //! Returns ZMax face
+  Standard_EXPORT  const  TopoDS_Face& TopFace() ;
 
 
 
@@ -104,7 +106,7 @@ private:
 
 
 
-BRepPrim_Wedge myWedge;
+  BRepPrim_Wedge myWedge;
 
 
 };
@@ -113,7 +115,6 @@ BRepPrim_Wedge myWedge;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepPrimAPI_MakeBox_HeaderFile

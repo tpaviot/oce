@@ -1,12 +1,4 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepGeom_Axis2Placement2d_HeaderFile
 #include <StepGeom_Axis2Placement2d.hxx>
-#endif
-#ifndef _StepGeom_Axis2Placement3d_HeaderFile
 #include <StepGeom_Axis2Placement3d.hxx>
-#endif
-#ifndef _StepGeom_Axis2Placement_HeaderFile
 #include <StepGeom_Axis2Placement.hxx>
-#endif

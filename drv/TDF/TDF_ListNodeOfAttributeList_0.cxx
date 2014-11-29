@@ -5,19 +5,11 @@
 
 #include <TDF_ListNodeOfAttributeList.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _TDF_AttributeList_HeaderFile
 #include <TDF_AttributeList.hxx>
-#endif
-#ifndef _TDF_ListIteratorOfAttributeList_HeaderFile
 #include <TDF_ListIteratorOfAttributeList.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(TDF_ListNodeOfAttributeList,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(TDF_ListNodeOfAttributeList)
 
 
-#define Item Handle_TDF_Attribute
+#define Item Handle(TDF_Attribute)
 #define Item_hxx <TDF_Attribute.hxx>
 #define TCollection_ListNode TDF_ListNodeOfAttributeList
 #define TCollection_ListNode_hxx <TDF_ListNodeOfAttributeList.hxx>

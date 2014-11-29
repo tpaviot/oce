@@ -6,25 +6,13 @@
 #ifndef _TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_HeaderFile
 #define _TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_HeaderFile
 #include <Handle_TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference.hxx>
-#endif
 
-#ifndef _TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference_HeaderFile
 #include <TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference;
 
 
 
-class TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference : public MMgt_TShared {
+class TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference : public MMgt_TShared
+{
 
 public:
 
   
-      TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(const Standard_Integer Low,const Standard_Integer Up);
+    TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(const Standard_Integer Low, const Standard_Integer Up);
   
-      TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(const Standard_Integer Low,const Standard_Integer Up,const TopOpeBRepDS_DataMapOfIntegerListOfInterference& V);
+    TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(const Standard_Integer Low, const Standard_Integer Up, const TopOpeBRepDS_DataMapOfIntegerListOfInterference& V);
   
-        void Init(const TopOpeBRepDS_DataMapOfIntegerListOfInterference& V) ;
+      void Init (const TopOpeBRepDS_DataMapOfIntegerListOfInterference& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const TopOpeBRepDS_DataMapOfIntegerListOfInterference& Value) ;
+      void SetValue (const Standard_Integer Index, const TopOpeBRepDS_DataMapOfIntegerListOfInterference& Value) ;
   
-       const TopOpeBRepDS_DataMapOfIntegerListOfInterference& Value(const Standard_Integer Index) const;
+     const  TopOpeBRepDS_DataMapOfIntegerListOfInterference& Value (const Standard_Integer Index)  const;
   
-        TopOpeBRepDS_DataMapOfIntegerListOfInterference& ChangeValue(const Standard_Integer Index) ;
+      TopOpeBRepDS_DataMapOfIntegerListOfInterference& ChangeValue (const Standard_Integer Index) ;
   
-       const TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference& Array1() const;
+     const  TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference& Array1()  const;
   
-        TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference& ChangeArray1() ;
+      TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference myArray;
+  TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference myArray;
 
 
 };
@@ -100,7 +89,6 @@ TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_HeaderFile

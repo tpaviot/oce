@@ -1,15 +1,5 @@
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _TColStd_HArray2OfReal_HeaderFile
 #include <TColStd_HArray2OfReal.hxx>
-#endif
-#ifndef _AdvApp2Var_Context_HeaderFile
 #include <AdvApp2Var_Context.hxx>
-#endif
-#ifndef _AdvApp2Var_Node_HeaderFile
 #include <AdvApp2Var_Node.hxx>
-#endif
-#ifndef _AdvApp2Var_Iso_HeaderFile
 #include <AdvApp2Var_Iso.hxx>
-#endif

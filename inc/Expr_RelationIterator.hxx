@@ -6,54 +6,40 @@
 #ifndef _Expr_RelationIterator_HeaderFile
 #define _Expr_RelationIterator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Expr_Array1OfSingleRelation_HeaderFile
 #include <Expr_Array1OfSingleRelation.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Expr_GeneralRelation_HeaderFile
 #include <Handle_Expr_GeneralRelation.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Expr_SingleRelation_HeaderFile
 #include <Handle_Expr_SingleRelation.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class Expr_GeneralRelation;
 class Expr_SingleRelation;
 
 
-//! Iterates on every basic relation contained in <br>
-//!          a GeneralRelation. <br>
-class Expr_RelationIterator  {
+//! Iterates on every basic relation contained in
+//! a GeneralRelation.
+class Expr_RelationIterator 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Expr_RelationIterator(const Handle(Expr_GeneralRelation)& rel);
-  //! Returns False if no other relation remains. <br>
-  Standard_EXPORT     Standard_Boolean More() const;
+  Standard_EXPORT Expr_RelationIterator(const Handle(Expr_GeneralRelation)& rel);
   
-  Standard_EXPORT     void Next() ;
-  //! Returns current basic relation. <br>
-//!          Exception is raised if no more relation remains. <br>
-  Standard_EXPORT     Handle_Expr_SingleRelation Value() const;
-
+  //! Returns False if no other relation remains.
+  Standard_EXPORT   Standard_Boolean More()  const;
+  
+  Standard_EXPORT   void Next() ;
+  
+  //! Returns current basic relation.
+  //! Exception is raised if no more relation remains.
+  Standard_EXPORT   Handle(Expr_SingleRelation) Value()  const;
 
 
 
@@ -68,8 +54,8 @@ private:
 
 
 
-Expr_Array1OfSingleRelation myRelation;
-Standard_Integer current;
+  Expr_Array1OfSingleRelation myRelation;
+  Standard_Integer current;
 
 
 };
@@ -78,7 +64,6 @@ Standard_Integer current;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Expr_RelationIterator_HeaderFile

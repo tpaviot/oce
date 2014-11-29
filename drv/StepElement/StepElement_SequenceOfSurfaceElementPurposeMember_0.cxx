@@ -5,21 +5,13 @@
 
 #include <StepElement_SequenceOfSurfaceElementPurposeMember.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StepElement_SurfaceElementPurposeMember_HeaderFile
 #include <StepElement_SurfaceElementPurposeMember.hxx>
-#endif
-#ifndef _StepElement_SequenceNodeOfSequenceOfSurfaceElementPurposeMember_HeaderFile
 #include <StepElement_SequenceNodeOfSequenceOfSurfaceElementPurposeMember.hxx>
-#endif
  
 
-#define SeqItem Handle_StepElement_SurfaceElementPurposeMember
+#define SeqItem Handle(StepElement_SurfaceElementPurposeMember)
 #define SeqItem_hxx <StepElement_SurfaceElementPurposeMember.hxx>
 #define TCollection_SequenceNode StepElement_SequenceNodeOfSequenceOfSurfaceElementPurposeMember
 #define TCollection_SequenceNode_hxx <StepElement_SequenceNodeOfSequenceOfSurfaceElementPurposeMember.hxx>

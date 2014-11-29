@@ -6,20 +6,19 @@
 #ifndef _Visual3d_TypeOfAnswer_HeaderFile
 #define _Visual3d_TypeOfAnswer_HeaderFile
 
-//! The answer of the method AcceptDisplay <br>
-//!      AcceptDisplay  means is it possible to display the <br>
-//!             specified structure in the specified view ? <br>
-//!      TOA_YES yes <br>
-//!      TOA_NO  no <br>
-//!      TOA_COMPUTE yes but we have to compute the representation <br>
-enum Visual3d_TypeOfAnswer {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! The answer of the method AcceptDisplay
+//! AcceptDisplay  means is it possible to display the
+//! specified structure in the specified view ?
+//! TOA_YES yes
+//! TOA_NO  no
+//! TOA_COMPUTE yes but we have to compute the representation
+enum Visual3d_TypeOfAnswer
+{
 Visual3d_TOA_YES,
 Visual3d_TOA_NO,
 Visual3d_TOA_COMPUTE
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Visual3d_TypeOfAnswer_HeaderFile

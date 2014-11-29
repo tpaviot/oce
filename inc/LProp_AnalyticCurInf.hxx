@@ -6,37 +6,27 @@
 #ifndef _LProp_AnalyticCurInf_HeaderFile
 #define _LProp_AnalyticCurInf_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _GeomAbs_CurveType_HeaderFile
 #include <GeomAbs_CurveType.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class LProp_CurAndInf;
 
 
-//! Computes the locals extremas of curvature of a gp curve <br>
-//!          Remark : a gp curve has not inflection. <br>
-class LProp_AnalyticCurInf  {
+//! Computes the locals extremas of curvature of a gp curve
+//! Remark : a gp curve has not inflection.
+class LProp_AnalyticCurInf 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   LProp_AnalyticCurInf();
+  Standard_EXPORT LProp_AnalyticCurInf();
   
-  Standard_EXPORT     void Perform(const GeomAbs_CurveType T,const Standard_Real UFirst,const Standard_Real ULast,LProp_CurAndInf& Result) ;
-
+  Standard_EXPORT   void Perform (const GeomAbs_CurveType T, const Standard_Real UFirst, const Standard_Real ULast, LProp_CurAndInf& Result) ;
 
 
 
@@ -59,7 +49,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _LProp_AnalyticCurInf_HeaderFile

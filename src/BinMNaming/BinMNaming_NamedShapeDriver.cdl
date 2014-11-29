@@ -28,12 +28,12 @@ uses
 
 is
     Create (theMessageDriver:MessageDriver from CDM)
-        returns mutable NamedShapeDriver from BinMNaming;
+        returns NamedShapeDriver from BinMNaming;
 
-    NewEmpty (me)  returns mutable Attribute from TDF;
+    NewEmpty (me)  returns Attribute from TDF;
 
     Paste(me; Source     : Persistent from BinObjMgt;
-              Target     : mutable Attribute from TDF;
+              Target     : Attribute from TDF;
               RelocTable : out RRelocationTable from BinObjMgt)
         returns Boolean from Standard;
 
@@ -49,6 +49,10 @@ is
 
     Clear (me:mutable);
       ---Purpose: Clear myShapeSet 
+       
+    SetWithTriangles(me: mutable; isWithTriangles : Boolean from Standard);  
+    ---C++: inline 
+    ---Purpose: set whether to store triangulation  
        
     SetFormatNb(me: mutable; theFormat : Integer from Standard);  
     ---C++: inline 

@@ -6,25 +6,13 @@
 #ifndef _BRepOffset_MakeLoops_HeaderFile
 #define _BRepOffset_MakeLoops_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopTools_DataMapOfShapeShape_HeaderFile
 #include <TopTools_DataMapOfShapeShape.hxx>
-#endif
-#ifndef _Handle_BRepAlgo_AsDes_HeaderFile
 #include <Handle_BRepAlgo_AsDes.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopTools_ListOfShape;
 class BRepAlgo_AsDes;
 class BRepAlgo_Image;
@@ -32,20 +20,20 @@ class BRepOffset_Analyse;
 
 
 
-class BRepOffset_MakeLoops  {
+class BRepOffset_MakeLoops 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepOffset_MakeLoops();
+  Standard_EXPORT BRepOffset_MakeLoops();
   
-  Standard_EXPORT     void Build(const TopTools_ListOfShape& LF,const Handle(BRepAlgo_AsDes)& AsDes,BRepAlgo_Image& Image) ;
+  Standard_EXPORT   void Build (const TopTools_ListOfShape& LF, const Handle(BRepAlgo_AsDes)& AsDes, BRepAlgo_Image& Image) ;
   
-  Standard_EXPORT     void BuildOnContext(const TopTools_ListOfShape& LContext,const BRepOffset_Analyse& Analyse,const Handle(BRepAlgo_AsDes)& AsDes,BRepAlgo_Image& Image,const Standard_Boolean InSide) ;
+  Standard_EXPORT   void BuildOnContext (const TopTools_ListOfShape& LContext, const BRepOffset_Analyse& Analyse, const Handle(BRepAlgo_AsDes)& AsDes, BRepAlgo_Image& Image, const Standard_Boolean InSide) ;
   
-  Standard_EXPORT     void BuildFaces(const TopTools_ListOfShape& LF,const Handle(BRepAlgo_AsDes)& AsDes,BRepAlgo_Image& Image) ;
-
+  Standard_EXPORT   void BuildFaces (const TopTools_ListOfShape& LF, const Handle(BRepAlgo_AsDes)& AsDes, BRepAlgo_Image& Image) ;
 
 
 
@@ -60,7 +48,7 @@ private:
 
 
 
-TopTools_DataMapOfShapeShape myVerVerMap;
+  TopTools_DataMapOfShapeShape myVerVerMap;
 
 
 };
@@ -69,7 +57,6 @@ TopTools_DataMapOfShapeShape myVerVerMap;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepOffset_MakeLoops_HeaderFile

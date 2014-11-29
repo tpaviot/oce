@@ -6,67 +6,60 @@
 #ifndef _Sweep_NumShapeTool_HeaderFile
 #define _Sweep_NumShapeTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Sweep_NumShape_HeaderFile
 #include <Sweep_NumShape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_OutOfRange;
 class Sweep_NumShape;
 
 
-//! This class provides  the indexation and  type analysis <br>
-//!          services required by  the NumShape Directing Shapes of <br>
-//!          Swept Primitives. <br>
-//! <br>
-class Sweep_NumShapeTool  {
+//! This class provides  the indexation and  type analysis
+//! services required by  the NumShape Directing Shapes of
+//! Swept Primitives.
+class Sweep_NumShapeTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Create a new NumShapeTool with <aShape>.  The Tool <br>
-//!          must prepare an indexation  for  all the subshapes <br>
-//!          of this shape. <br>
-  Standard_EXPORT   Sweep_NumShapeTool(const Sweep_NumShape& aShape);
-  //! Returns the number of subshapes in the shape. <br>
-  Standard_EXPORT     Standard_Integer NbShapes() const;
-  //! Returns the index of <aShape>. <br>
-  Standard_EXPORT     Standard_Integer Index(const Sweep_NumShape& aShape) const;
-  //! Returns the Shape at index anIndex <br>
-  Standard_EXPORT     Sweep_NumShape Shape(const Standard_Integer anIndex) const;
-  //! Returns the type of <aShape>. <br>
-  Standard_EXPORT     TopAbs_ShapeEnum Type(const Sweep_NumShape& aShape) const;
-  //! Returns the orientation of <aShape>. <br>
-  Standard_EXPORT     TopAbs_Orientation Orientation(const Sweep_NumShape& aShape) const;
-  //! Returns true if there is a First Vertex in the Shape. <br>
-  Standard_EXPORT     Standard_Boolean HasFirstVertex() const;
-  //! Returns true if there is a Last Vertex in the Shape. <br>
-  Standard_EXPORT     Standard_Boolean HasLastVertex() const;
-  //! Returns the first vertex. <br>
-  Standard_EXPORT     Sweep_NumShape FirstVertex() const;
-  //! Returns the last vertex. <br>
-  Standard_EXPORT     Sweep_NumShape LastVertex() const;
-
+  
+  //! Create a new NumShapeTool with <aShape>.  The Tool
+  //! must prepare an indexation  for  all the subshapes
+  //! of this shape.
+  Standard_EXPORT Sweep_NumShapeTool(const Sweep_NumShape& aShape);
+  
+  //! Returns the number of subshapes in the shape.
+  Standard_EXPORT   Standard_Integer NbShapes()  const;
+  
+  //! Returns the index of <aShape>.
+  Standard_EXPORT   Standard_Integer Index (const Sweep_NumShape& aShape)  const;
+  
+  //! Returns the Shape at index anIndex
+  Standard_EXPORT   Sweep_NumShape Shape (const Standard_Integer anIndex)  const;
+  
+  //! Returns the type of <aShape>.
+  Standard_EXPORT   TopAbs_ShapeEnum Type (const Sweep_NumShape& aShape)  const;
+  
+  //! Returns the orientation of <aShape>.
+  Standard_EXPORT   TopAbs_Orientation Orientation (const Sweep_NumShape& aShape)  const;
+  
+  //! Returns true if there is a First Vertex in the Shape.
+  Standard_EXPORT   Standard_Boolean HasFirstVertex()  const;
+  
+  //! Returns true if there is a Last Vertex in the Shape.
+  Standard_EXPORT   Standard_Boolean HasLastVertex()  const;
+  
+  //! Returns the first vertex.
+  Standard_EXPORT   Sweep_NumShape FirstVertex()  const;
+  
+  //! Returns the last vertex.
+  Standard_EXPORT   Sweep_NumShape LastVertex()  const;
 
 
 
@@ -81,7 +74,7 @@ private:
 
 
 
-Sweep_NumShape myNumShape;
+  Sweep_NumShape myNumShape;
 
 
 };
@@ -90,7 +83,6 @@ Sweep_NumShape myNumShape;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Sweep_NumShapeTool_HeaderFile

@@ -6,45 +6,33 @@
 #ifndef _PColgp_VArrayTNodeOfFieldOfHArray2OfXY_HeaderFile
 #define _PColgp_VArrayTNodeOfFieldOfHArray2OfXY_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_XY_HeaderFile
 #include <gp_XY.hxx>
-#endif
-#ifndef _Handle_PColgp_VArrayNodeOfFieldOfHArray2OfXY_HeaderFile
 #include <Handle_PColgp_VArrayNodeOfFieldOfHArray2OfXY.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class gp_XY;
 class PColgp_FieldOfHArray2OfXY;
 class PColgp_VArrayNodeOfFieldOfHArray2OfXY;
 
 
 
-class PColgp_VArrayTNodeOfFieldOfHArray2OfXY  {
+class PColgp_VArrayTNodeOfFieldOfHArray2OfXY 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      PColgp_VArrayTNodeOfFieldOfHArray2OfXY();
+    PColgp_VArrayTNodeOfFieldOfHArray2OfXY();
   
-      PColgp_VArrayTNodeOfFieldOfHArray2OfXY(const gp_XY& aValue);
+    PColgp_VArrayTNodeOfFieldOfHArray2OfXY(const gp_XY& aValue);
   
-        void SetValue(const gp_XY& aValue) ;
+      void SetValue (const gp_XY& aValue) ;
   
-        Standard_Address Value() const;
-
+      Standard_Address Value()  const;
 
 
 
@@ -59,7 +47,7 @@ private:
 
 
 
-gp_XY myValue;
+  gp_XY myValue;
 
 
 };
@@ -89,7 +77,6 @@ gp_XY myValue;
 #undef DBC_VArray_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PColgp_VArrayTNodeOfFieldOfHArray2OfXY_HeaderFile

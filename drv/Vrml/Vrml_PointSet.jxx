@@ -1,3 +1,1 @@
-#ifndef _Vrml_PointSet_HeaderFile
 #include <Vrml_PointSet.hxx>
-#endif

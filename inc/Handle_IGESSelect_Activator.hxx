@@ -6,22 +6,15 @@
 #ifndef _Handle_IGESSelect_Activator_HeaderFile
 #define _Handle_IGESSelect_Activator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IFSelect_Activator_HeaderFile
 #include <Handle_IFSelect_Activator.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IFSelect_Activator);
 class IGESSelect_Activator;
 
-DEFINE_STANDARD_HANDLE(IGESSelect_Activator,IFSelect_Activator)
+DEFINE_STANDARD_HANDLE(IGESSelect_Activator, IFSelect_Activator)
 
-#endif
+#endif // _Handle_IGESSelect_Activator_HeaderFile

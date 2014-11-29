@@ -1,9 +1,3 @@
-#ifndef _StepBasic_VolumeUnit_HeaderFile
 #include <StepBasic_VolumeUnit.hxx>
-#endif
-#ifndef _StepBasic_DimensionalExponents_HeaderFile
 #include <StepBasic_DimensionalExponents.hxx>
-#endif
-#ifndef _StepBasic_SiUnitAndVolumeUnit_HeaderFile
 #include <StepBasic_SiUnitAndVolumeUnit.hxx>
-#endif

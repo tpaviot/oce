@@ -6,28 +6,14 @@
 #ifndef _MAT2d_Array2OfConnexion_HeaderFile
 #define _MAT2d_Array2OfConnexion_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_MAT2d_Connexion_HeaderFile
 #include <Handle_MAT2d_Connexion.hxx>
-#endif
 class Standard_RangeError;
 class Standard_OutOfRange;
 class Standard_OutOfMemory;
@@ -36,56 +22,56 @@ class MAT2d_Connexion;
 
 
 
-class MAT2d_Array2OfConnexion  {
+class MAT2d_Array2OfConnexion 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   MAT2d_Array2OfConnexion(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+  Standard_EXPORT MAT2d_Array2OfConnexion(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2);
   
-  Standard_EXPORT   MAT2d_Array2OfConnexion(const Handle(MAT2d_Connexion)& Item,const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+  Standard_EXPORT MAT2d_Array2OfConnexion(const Handle(MAT2d_Connexion)& Item, const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2);
   
-  Standard_EXPORT     void Init(const Handle(MAT2d_Connexion)& V) ;
+  Standard_EXPORT   void Init (const Handle(MAT2d_Connexion)& V) ;
   
-  Standard_EXPORT     void Destroy() ;
+  Standard_EXPORT   void Destroy() ;
 ~MAT2d_Array2OfConnexion()
 {
   Destroy();
 }
   
-  Standard_EXPORT    const MAT2d_Array2OfConnexion& Assign(const MAT2d_Array2OfConnexion& Other) ;
-   const MAT2d_Array2OfConnexion& operator =(const MAT2d_Array2OfConnexion& Other) 
+  Standard_EXPORT  const  MAT2d_Array2OfConnexion& Assign (const MAT2d_Array2OfConnexion& Other) ;
+ const  MAT2d_Array2OfConnexion& operator = (const MAT2d_Array2OfConnexion& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer ColLength() const;
+      Standard_Integer ColLength()  const;
   
-        Standard_Integer RowLength() const;
+      Standard_Integer RowLength()  const;
   
-        Standard_Integer LowerCol() const;
+      Standard_Integer LowerCol()  const;
   
-        Standard_Integer LowerRow() const;
+      Standard_Integer LowerRow()  const;
   
-        Standard_Integer UpperCol() const;
+      Standard_Integer UpperCol()  const;
   
-        Standard_Integer UpperRow() const;
+      Standard_Integer UpperRow()  const;
   
-        void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Handle(MAT2d_Connexion)& Value) ;
+      void SetValue (const Standard_Integer Row, const Standard_Integer Col, const Handle(MAT2d_Connexion)& Value) ;
   
-       const Handle_MAT2d_Connexion& Value(const Standard_Integer Row,const Standard_Integer Col) const;
-     const Handle_MAT2d_Connexion& operator()(const Standard_Integer Row,const Standard_Integer Col) const
+     const  Handle(MAT2d_Connexion)& Value (const Standard_Integer Row, const Standard_Integer Col)  const;
+   const  Handle(MAT2d_Connexion)& operator() (const Standard_Integer Row, const Standard_Integer Col)  const
 {
   return Value(Row,Col);
 }
   
-        Handle_MAT2d_Connexion& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
-      Handle_MAT2d_Connexion& operator()(const Standard_Integer Row,const Standard_Integer Col) 
+      Handle(MAT2d_Connexion)& ChangeValue (const Standard_Integer Row, const Standard_Integer Col) ;
+    Handle(MAT2d_Connexion)& operator() (const Standard_Integer Row, const Standard_Integer Col) 
 {
   return ChangeValue(Row,Col);
 }
-
 
 
 
@@ -99,22 +85,22 @@ protected:
 private:
 
   
-  Standard_EXPORT   MAT2d_Array2OfConnexion(const MAT2d_Array2OfConnexion& AnArray);
+  Standard_EXPORT MAT2d_Array2OfConnexion(const MAT2d_Array2OfConnexion& AnArray);
   
-  Standard_EXPORT     void Allocate() ;
+  Standard_EXPORT   void Allocate() ;
 
 
-Standard_Integer myLowerRow;
-Standard_Integer myLowerColumn;
-Standard_Integer myUpperRow;
-Standard_Integer myUpperColumn;
-Standard_Boolean myDeletable;
-Standard_Address myData;
+  Standard_Integer myLowerRow;
+  Standard_Integer myLowerColumn;
+  Standard_Integer myUpperRow;
+  Standard_Integer myUpperColumn;
+  Standard_Boolean myDeletable;
+  Standard_Address myData;
 
 
 };
 
-#define Array2Item Handle_MAT2d_Connexion
+#define Array2Item Handle(MAT2d_Connexion)
 #define Array2Item_hxx <MAT2d_Connexion.hxx>
 #define TCollection_Array2 MAT2d_Array2OfConnexion
 #define TCollection_Array2_hxx <MAT2d_Array2OfConnexion.hxx>
@@ -127,7 +113,6 @@ Standard_Address myData;
 #undef TCollection_Array2_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MAT2d_Array2OfConnexion_HeaderFile

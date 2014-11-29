@@ -6,22 +6,12 @@
 #ifndef _Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter_HeaderFile
 #define _Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Adaptor2d_Curve2d;
 class Geom2dInt_Geom2dCurveTool;
 class Extrema_POnCurv2d;
@@ -29,18 +19,18 @@ class gp_Pnt2d;
 
 
 
-class Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter  {
+class Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  void Locate(const gp_Pnt2d& P,const Adaptor2d_Curve2d& C,const Standard_Integer NbU,Extrema_POnCurv2d& Papp) ;
+  Standard_EXPORT static   void Locate (const gp_Pnt2d& P, const Adaptor2d_Curve2d& C, const Standard_Integer NbU, Extrema_POnCurv2d& Papp) ;
   
-  Standard_EXPORT   static  void Locate(const gp_Pnt2d& P,const Adaptor2d_Curve2d& C,const Standard_Integer NbU,const Standard_Real Umin,const Standard_Real Usup,Extrema_POnCurv2d& Papp) ;
+  Standard_EXPORT static   void Locate (const gp_Pnt2d& P, const Adaptor2d_Curve2d& C, const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, Extrema_POnCurv2d& Papp) ;
   
-  Standard_EXPORT   static  void Locate(const Adaptor2d_Curve2d& C1,const Adaptor2d_Curve2d& C2,const Standard_Integer NbU,const Standard_Integer NbV,Extrema_POnCurv2d& Papp1,Extrema_POnCurv2d& Papp2) ;
-
+  Standard_EXPORT static   void Locate (const Adaptor2d_Curve2d& C1, const Adaptor2d_Curve2d& C2, const Standard_Integer NbU, const Standard_Integer NbV, Extrema_POnCurv2d& Papp1, Extrema_POnCurv2d& Papp2) ;
 
 
 
@@ -63,7 +53,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter_HeaderFile

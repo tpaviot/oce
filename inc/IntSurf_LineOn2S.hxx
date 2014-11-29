@@ -6,67 +6,57 @@
 #ifndef _IntSurf_LineOn2S_HeaderFile
 #define _IntSurf_LineOn2S_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IntSurf_LineOn2S_HeaderFile
 #include <Handle_IntSurf_LineOn2S.hxx>
-#endif
 
-#ifndef _IntSurf_SequenceOfPntOn2S_HeaderFile
 #include <IntSurf_SequenceOfPntOn2S.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _IntSurf_Allocator_HeaderFile
 #include <IntSurf_Allocator.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Standard_OutOfRange;
 class IntSurf_PntOn2S;
 
 
 
-class IntSurf_LineOn2S : public MMgt_TShared {
+class IntSurf_LineOn2S : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   IntSurf_LineOn2S(const IntSurf_Allocator& theAllocator = 0);
-  //! Adds a point in the line. <br>
-        void Add(const IntSurf_PntOn2S& P) ;
-  //! Returns the number of points in the line. <br>
-        Standard_Integer NbPoints() const;
-  //! Returns the point of range Index in the line. <br>
-       const IntSurf_PntOn2S& Value(const Standard_Integer Index) const;
-  //! Reverses the order of points of the line. <br>
-        void Reverse() ;
-  //! Keeps in <me> the points 1 to Index-1, and returns <br>
-//!          the items Index to the end. <br>
-  Standard_EXPORT     Handle_IntSurf_LineOn2S Split(const Standard_Integer Index) ;
-  //! Replaces the point of range Index in the line. <br>
-        void Value(const Standard_Integer Index,const IntSurf_PntOn2S& P) ;
-  //! Sets the parametric coordinates on one of the surfaces <br>
-//!          of the point of range Index in the line. <br>
-        void SetUV(const Standard_Integer Index,const Standard_Boolean OnFirst,const Standard_Real U,const Standard_Real V) ;
+  Standard_EXPORT IntSurf_LineOn2S(const IntSurf_Allocator& theAllocator = 0);
   
-        void Clear() ;
+  //! Adds a point in the line.
+      void Add (const IntSurf_PntOn2S& P) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer I,const IntSurf_PntOn2S& P) ;
+  //! Returns the number of points in the line.
+      Standard_Integer NbPoints()  const;
   
-  Standard_EXPORT     void RemovePoint(const Standard_Integer I) ;
+  //! Returns the point of range Index in the line.
+     const  IntSurf_PntOn2S& Value (const Standard_Integer Index)  const;
+  
+  //! Reverses the order of points of the line.
+      void Reverse() ;
+  
+  //! Keeps in <me> the points 1 to Index-1, and returns
+  //! the items Index to the end.
+  Standard_EXPORT   Handle(IntSurf_LineOn2S) Split (const Standard_Integer Index) ;
+  
+  //! Replaces the point of range Index in the line.
+      void Value (const Standard_Integer Index, const IntSurf_PntOn2S& P) ;
+  
+  //! Sets the parametric coordinates on one of the surfaces
+  //! of the point of range Index in the line.
+      void SetUV (const Standard_Integer Index, const Standard_Boolean OnFirst, const Standard_Real U, const Standard_Real V) ;
+  
+      void Clear() ;
+  
+  Standard_EXPORT   void InsertBefore (const Standard_Integer I, const IntSurf_PntOn2S& P) ;
+  
+  Standard_EXPORT   void RemovePoint (const Standard_Integer I) ;
 
 
 
@@ -81,7 +71,7 @@ protected:
 private: 
 
 
-IntSurf_SequenceOfPntOn2S mySeq;
+  IntSurf_SequenceOfPntOn2S mySeq;
 
 
 };
@@ -91,7 +81,6 @@ IntSurf_SequenceOfPntOn2S mySeq;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntSurf_LineOn2S_HeaderFile

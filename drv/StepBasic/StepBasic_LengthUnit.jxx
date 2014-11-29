@@ -1,3 +1,1 @@
-#ifndef _StepBasic_LengthUnit_HeaderFile
 #include <StepBasic_LengthUnit.hxx>
-#endif

@@ -5,21 +5,13 @@
 
 #include <GeomPlate_SequenceOfPointConstraint.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _GeomPlate_PointConstraint_HeaderFile
 #include <GeomPlate_PointConstraint.hxx>
-#endif
-#ifndef _GeomPlate_SequenceNodeOfSequenceOfPointConstraint_HeaderFile
 #include <GeomPlate_SequenceNodeOfSequenceOfPointConstraint.hxx>
-#endif
  
 
-#define SeqItem Handle_GeomPlate_PointConstraint
+#define SeqItem Handle(GeomPlate_PointConstraint)
 #define SeqItem_hxx <GeomPlate_PointConstraint.hxx>
 #define TCollection_SequenceNode GeomPlate_SequenceNodeOfSequenceOfPointConstraint
 #define TCollection_SequenceNode_hxx <GeomPlate_SequenceNodeOfSequenceOfPointConstraint.hxx>

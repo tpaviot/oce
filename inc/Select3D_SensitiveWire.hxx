@@ -6,46 +6,20 @@
 #ifndef _Select3D_SensitiveWire_HeaderFile
 #define _Select3D_SensitiveWire_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Select3D_SensitiveWire_HeaderFile
 #include <Handle_Select3D_SensitiveWire.hxx>
-#endif
 
-#ifndef _Select3D_SensitiveEntitySequence_HeaderFile
 #include <Select3D_SensitiveEntitySequence.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Select3D_SensitiveEntity_HeaderFile
 #include <Select3D_SensitiveEntity.hxx>
-#endif
-#ifndef _Handle_SelectBasics_EntityOwner_HeaderFile
 #include <Handle_SelectBasics_EntityOwner.hxx>
-#endif
-#ifndef _Handle_Select3D_SensitiveEntity_HeaderFile
 #include <Handle_Select3D_SensitiveEntity.hxx>
-#endif
-#ifndef _Handle_Select3D_Projector_HeaderFile
 #include <Handle_Select3D_Projector.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _SelectBasics_PickArgs_HeaderFile
 #include <SelectBasics_PickArgs.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class SelectBasics_EntityOwner;
 class Select3D_SensitiveEntity;
 class Select3D_Projector;
@@ -56,48 +30,60 @@ class TColgp_Array1OfPnt2d;
 class Bnd_Box2d;
 
 
-//! A framework to define selection of a wire owner by an <br>
-//! elastic wire band. <br>
-class Select3D_SensitiveWire : public Select3D_SensitiveEntity {
+//! A framework to define selection of a wire owner by an
+//! elastic wire band.
+class Select3D_SensitiveWire : public Select3D_SensitiveEntity
+{
 
 public:
 
-  //! Constructs a sensitive wire object defined by the <br>
-//! owner OwnerId, and the maximum number of <br>
-//! sensitive rectangles MaxRect. <br>
-  Standard_EXPORT   Select3D_SensitiveWire(const Handle(SelectBasics_EntityOwner)& OwnerId,const Standard_Integer MaxRect = 1);
-  //! Adds the sensitive entity aSensitive to this framework. <br>
-  Standard_EXPORT     void Add(const Handle(Select3D_SensitiveEntity)& aSensitive) ;
-  //! projection of the sensitive primitive in order to <br>
-//!          get 2D boxes for the Sort Algorithm <br>
-  Standard_EXPORT     void Project(const Handle(Select3D_Projector)& aProjector) ;
-  //! gives the 2D boxes which represent the segment in the <br>
-//!          selection process... <br>
-  Standard_EXPORT     void Areas(SelectBasics_ListOfBox2d& boxes) ;
   
-  Standard_EXPORT     Handle_Select3D_SensitiveEntity GetConnected(const TopLoc_Location& aLocation) ;
-  //! returns the sensitive edges stored in this wire <br>
-  Standard_EXPORT     void GetEdges(Select3D_SensitiveEntitySequence& theEdges) ;
-  //!  propagation of location on all the sensitive inside... <br>
-  Standard_EXPORT     void SetLocation(const TopLoc_Location& aLoc) ;
-  //!  propagation of location on all the sensitive inside... <br>
-  Standard_EXPORT     void ResetLocation() ;
-  //! Checks whether the sensitive entity matches the picking <br>
-//! detection area (close to the picking line). <br>
-//! For details please refer to base class declaration. <br>
-  Standard_EXPORT     Standard_Boolean Matches(const SelectBasics_PickArgs& thePickArgs,Standard_Real& theMatchDMin,Standard_Real& theMatchDepth) ;
+  //! Constructs a sensitive wire object defined by the
+  //! owner OwnerId, and the maximum number of
+  //! sensitive rectangles MaxRect.
+  Standard_EXPORT Select3D_SensitiveWire(const Handle(SelectBasics_EntityOwner)& OwnerId, const Standard_Integer MaxRect = 1);
   
-  Standard_EXPORT     Standard_Boolean Matches(const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol) ;
+  //! Adds the sensitive entity aSensitive to this framework.
+  Standard_EXPORT   void Add (const Handle(Select3D_SensitiveEntity)& aSensitive) ;
   
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const TColgp_Array1OfPnt2d& Polyline,const Bnd_Box2d& aBox,const Standard_Real aTol) ;
-  //!returns <mymaxrect> <br>
-  Standard_EXPORT     Standard_Integer MaxBoxes() const;
+  //! projection of the sensitive primitive in order to
+  //! get 2D boxes for the Sort Algorithm
+  Standard_EXPORT   void Project (const Handle(Select3D_Projector)& aProjector) ;
   
-  Standard_EXPORT   virtual  void Dump(Standard_OStream& S,const Standard_Boolean FullDump = Standard_True) const;
-  //! Sets the owner for all entities in wire <br>
-  Standard_EXPORT     void Set(const Handle(SelectBasics_EntityOwner)& TheOwnerId) ;
-  //!returns <mymaxrect> <br>
-  Standard_EXPORT     Handle_Select3D_SensitiveEntity GetLastDetected() const;
+  //! gives the 2D boxes which represent the segment in the
+  //! selection process...
+  Standard_EXPORT   void Areas (SelectBasics_ListOfBox2d& boxes) ;
+  
+  Standard_EXPORT   Handle(Select3D_SensitiveEntity) GetConnected (const TopLoc_Location& aLocation) ;
+  
+  //! returns the sensitive edges stored in this wire
+  Standard_EXPORT   void GetEdges (Select3D_SensitiveEntitySequence& theEdges) ;
+  
+  //! propagation of location on all the sensitive inside...
+  Standard_EXPORT   void SetLocation (const TopLoc_Location& aLoc) ;
+  
+  //! propagation of location on all the sensitive inside...
+  Standard_EXPORT   void ResetLocation() ;
+  
+  //! Checks whether the sensitive entity matches the picking
+  //! detection area (close to the picking line).
+  //! For details please refer to base class declaration.
+  Standard_EXPORT   Standard_Boolean Matches (const SelectBasics_PickArgs& thePickArgs, Standard_Real& theMatchDMin, Standard_Real& theMatchDepth) ;
+  
+  Standard_EXPORT   Standard_Boolean Matches (const Standard_Real XMin, const Standard_Real YMin, const Standard_Real XMax, const Standard_Real YMax, const Standard_Real aTol) ;
+  
+  Standard_EXPORT virtual   Standard_Boolean Matches (const TColgp_Array1OfPnt2d& Polyline, const Bnd_Box2d& aBox, const Standard_Real aTol) ;
+  
+  //! returns <mymaxrect>
+  Standard_EXPORT   Standard_Integer MaxBoxes()  const;
+  
+  Standard_EXPORT virtual   void Dump (Standard_OStream& S, const Standard_Boolean FullDump = Standard_True)  const;
+  
+  //! Sets the owner for all entities in wire
+  Standard_EXPORT   void Set (const Handle(SelectBasics_EntityOwner)& TheOwnerId) ;
+  
+  //! returns <mymaxrect>
+  Standard_EXPORT   Handle(Select3D_SensitiveEntity) GetLastDetected()  const;
 
 
 
@@ -112,8 +98,8 @@ protected:
 private: 
 
 
-Select3D_SensitiveEntitySequence mysensitive;
-Standard_Integer myDetectedIndex;
+  Select3D_SensitiveEntitySequence mysensitive;
+  Standard_Integer myDetectedIndex;
 
 
 };
@@ -122,7 +108,6 @@ Standard_Integer myDetectedIndex;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Select3D_SensitiveWire_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_DNaming_CylinderDriver_HeaderFile
 #define _Handle_DNaming_CylinderDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TFunction_Driver_HeaderFile
 #include <Handle_TFunction_Driver.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TFunction_Driver);
 class DNaming_CylinderDriver;
 
-DEFINE_STANDARD_HANDLE(DNaming_CylinderDriver,TFunction_Driver)
+DEFINE_STANDARD_HANDLE(DNaming_CylinderDriver, TFunction_Driver)
 
-#endif
+#endif // _Handle_DNaming_CylinderDriver_HeaderFile

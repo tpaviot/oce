@@ -6,15 +6,14 @@
 #ifndef _TopoDSToStep_MakeWireError_HeaderFile
 #define _TopoDSToStep_MakeWireError_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum TopoDSToStep_MakeWireError {
+
+enum TopoDSToStep_MakeWireError
+{
 TopoDSToStep_WireDone,
 TopoDSToStep_NonManifoldWire,
 TopoDSToStep_WireOther
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _TopoDSToStep_MakeWireError_HeaderFile

@@ -6,49 +6,36 @@
 #ifndef _Hatch_Parameter_HeaderFile
 #define _Hatch_Parameter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Hatch_Line;
 class Hatch_Hatcher;
 
 
-//! Stores an intersection on a line represented by : <br>
-//! <br>
-//!          * A Real parameter. <br>
-//! <br>
-//!          * A flag True when the parameter starts an interval. <br>
-//! <br>
-class Hatch_Parameter  {
+//! Stores an intersection on a line represented by :
+//!
+//! * A Real parameter.
+//!
+//! * A flag True when the parameter starts an interval.
+class Hatch_Parameter 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Hatch_Parameter();
+  Standard_EXPORT Hatch_Parameter();
   
-  Standard_EXPORT   Hatch_Parameter(const Standard_Real Par1,const Standard_Boolean Start,const Standard_Integer Index = 0,const Standard_Real Par2 = 0);
+  Standard_EXPORT Hatch_Parameter(const Standard_Real Par1, const Standard_Boolean Start, const Standard_Integer Index = 0, const Standard_Real Par2 = 0);
 
 
 friend class Hatch_Line;
 friend class Hatch_Hatcher;
-
 
 
 protected:
@@ -61,10 +48,10 @@ private:
 
 
 
-Standard_Real myPar1;
-Standard_Boolean myStart;
-Standard_Integer myIndex;
-Standard_Real myPar2;
+  Standard_Real myPar1;
+  Standard_Boolean myStart;
+  Standard_Integer myIndex;
+  Standard_Real myPar2;
 
 
 };
@@ -73,7 +60,6 @@ Standard_Real myPar2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Hatch_Parameter_HeaderFile

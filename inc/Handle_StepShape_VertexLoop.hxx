@@ -6,22 +6,15 @@
 #ifndef _Handle_StepShape_VertexLoop_HeaderFile
 #define _Handle_StepShape_VertexLoop_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepShape_Loop_HeaderFile
 #include <Handle_StepShape_Loop.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepShape_Loop);
 class StepShape_VertexLoop;
 
-DEFINE_STANDARD_HANDLE(StepShape_VertexLoop,StepShape_Loop)
+DEFINE_STANDARD_HANDLE(StepShape_VertexLoop, StepShape_Loop)
 
-#endif
+#endif // _Handle_StepShape_VertexLoop_HeaderFile

@@ -6,70 +6,67 @@
 #ifndef _BOPDS_IndexRange_HeaderFile
 #define _BOPDS_IndexRange_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 
 
 
-//! The class BOPDS_IndexRange is to store <br>
-//! the information about range of two indices <br>
-class BOPDS_IndexRange  {
+//! The class BOPDS_IndexRange is to store
+//! the information about range of two indices
+class BOPDS_IndexRange 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//! Empty contructor <br>
-//! <br>
-      BOPDS_IndexRange();
+
+  //! Empty contructor
+    BOPDS_IndexRange();
 Standard_EXPORT virtual ~BOPDS_IndexRange();
   
-//! Modifier <br>
-//! Sets the first index <theI1>  of the range <br>
-        void SetFirst(const Standard_Integer theI1) ;
-  
-//! Modifier <br>
-//! Sets the second index <theI2>  of the range <br>
-        void SetLast(const Standard_Integer theI2) ;
-  
-//! Selector <br>
-//! Returns the first index of the range <br>
-        Standard_Integer First() const;
-  
-//! Selector <br>
-//! Returns the second index of the range <br>
-        Standard_Integer Last() const;
-  
-//! Modifier <br>
-//! Sets the first index of the range  <theI1> <br>
-//! Sets the second index of the range <theI2> <br>
-        void SetIndices(const Standard_Integer theI1,const Standard_Integer theI2) ;
-  
-//! Selector <br>
-//! Returns the first index of the range  <theI1> <br>
-//! Returns the second index of the range <theI2> <br>
-        void Indices(Standard_Integer& theI1,Standard_Integer& theI2) const;
-  
-//! Query <br>
-//! Returns true if the range contains <theIndex> <br>
-        Standard_Boolean Contains(const Standard_Integer theIndex) const;
-  
-  Standard_EXPORT     void Dump() const;
 
+  //! Modifier
+  //! Sets the first index <theI1>  of the range
+      void SetFirst (const Standard_Integer theI1) ;
+  
+
+  //! Modifier
+  //! Sets the second index <theI2>  of the range
+      void SetLast (const Standard_Integer theI2) ;
+  
+
+  //! Selector
+  //! Returns the first index of the range
+      Standard_Integer First()  const;
+  
+
+  //! Selector
+  //! Returns the second index of the range
+      Standard_Integer Last()  const;
+  
+
+  //! Modifier
+  //! Sets the first index of the range  <theI1>
+  //! Sets the second index of the range <theI2>
+      void SetIndices (const Standard_Integer theI1, const Standard_Integer theI2) ;
+  
+
+  //! Selector
+  //! Returns the first index of the range  <theI1>
+  //! Returns the second index of the range <theI2>
+      void Indices (Standard_Integer& theI1, Standard_Integer& theI2)  const;
+  
+
+  //! Query
+  //! Returns true if the range contains <theIndex>
+      Standard_Boolean Contains (const Standard_Integer theIndex)  const;
+  
+  Standard_EXPORT   void Dump()  const;
 
 
 
@@ -78,8 +75,8 @@ protected:
 
 
 
-Standard_Integer myFirst;
-Standard_Integer myLast;
+  Standard_Integer myFirst;
+  Standard_Integer myLast;
 
 
 private:
@@ -95,7 +92,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BOPDS_IndexRange_HeaderFile

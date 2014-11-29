@@ -1,3 +1,1 @@
-#ifndef _Graphic3d_ArrayOfTriangleStrips_HeaderFile
 #include <Graphic3d_ArrayOfTriangleStrips.hxx>
-#endif

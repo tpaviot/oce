@@ -6,9 +6,12 @@
 #ifndef _TDataXtd_GeometryEnum_HeaderFile
 #define _TDataXtd_GeometryEnum_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-//! The terms of this enumeration define the types of geometric shapes available. <br>
-enum TDataXtd_GeometryEnum {
+
+//! The terms of this enumeration define the types of geometric shapes available.
+enum TDataXtd_GeometryEnum
+{
 TDataXtd_ANY_GEOM,
 TDataXtd_POINT,
 TDataXtd_LINE,
@@ -19,8 +22,4 @@ TDataXtd_PLANE,
 TDataXtd_CYLINDER
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _TDataXtd_GeometryEnum_HeaderFile

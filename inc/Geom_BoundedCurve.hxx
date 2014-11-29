@@ -6,45 +6,40 @@
 #ifndef _Geom_BoundedCurve_HeaderFile
 #define _Geom_BoundedCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Geom_BoundedCurve_HeaderFile
 #include <Handle_Geom_BoundedCurve.hxx>
-#endif
 
-#ifndef _Geom_Curve_HeaderFile
 #include <Geom_Curve.hxx>
-#endif
 class gp_Pnt;
 
 
-//! The abstract class BoundedCurve describes the <br>
-//! common behavior of bounded curves in 3D space. A <br>
-//! bounded curve is limited by two finite values of the <br>
-//! parameter, termed respectively "first parameter" and <br>
-//! "last parameter". The "first parameter" gives the "start <br>
-//! point" of the bounded curve, and the "last parameter" <br>
-//! gives the "end point" of the bounded curve. <br>
-//! The length of a bounded curve is finite. <br>
-//! The Geom package provides three concrete classes of bounded curves: <br>
-//! - two frequently used mathematical formulations of complex curves: <br>
-//!   - Geom_BezierCurve, <br>
-//!   - Geom_BSplineCurve, and <br>
-//! - Geom_TrimmedCurve to trim a curve, i.e. to only <br>
-//!   take part of the curve limited by two values of the <br>
-//!   parameter of the basis curve. <br>
-class Geom_BoundedCurve : public Geom_Curve {
+//! The abstract class BoundedCurve describes the
+//! common behavior of bounded curves in 3D space. A
+//! bounded curve is limited by two finite values of the
+//! parameter, termed respectively "first parameter" and
+//! "last parameter". The "first parameter" gives the "start
+//! point" of the bounded curve, and the "last parameter"
+//! gives the "end point" of the bounded curve.
+//! The length of a bounded curve is finite.
+//! The Geom package provides three concrete classes of bounded curves:
+//! - two frequently used mathematical formulations of complex curves:
+//! - Geom_BezierCurve,
+//! - Geom_BSplineCurve, and
+//! - Geom_TrimmedCurve to trim a curve, i.e. to only
+//! take part of the curve limited by two values of the
+//! parameter of the basis curve.
+class Geom_BoundedCurve : public Geom_Curve
+{
 
 public:
 
-  //! Returns the end point of the curve. <br>
-  Standard_EXPORT   virtual  gp_Pnt EndPoint() const = 0;
-  //! Returns the start point of the curve. <br>
-  Standard_EXPORT   virtual  gp_Pnt StartPoint() const = 0;
+  
+  //! Returns the end point of the curve.
+  Standard_EXPORT virtual   gp_Pnt EndPoint()  const = 0;
+  
+  //! Returns the start point of the curve.
+  Standard_EXPORT virtual   gp_Pnt StartPoint()  const = 0;
 
 
 
@@ -67,7 +62,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom_BoundedCurve_HeaderFile

@@ -5,25 +5,13 @@
 
 #include <SelectMgr_DataMapNodeOfDataMapOfObjectSelectors.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _SelectMgr_SelectableObject_HeaderFile
 #include <SelectMgr_SelectableObject.hxx>
-#endif
-#ifndef _SelectMgr_SequenceOfSelector_HeaderFile
 #include <SelectMgr_SequenceOfSelector.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _SelectMgr_DataMapOfObjectSelectors_HeaderFile
 #include <SelectMgr_DataMapOfObjectSelectors.hxx>
-#endif
-#ifndef _SelectMgr_DataMapIteratorOfDataMapOfObjectSelectors_HeaderFile
 #include <SelectMgr_DataMapIteratorOfDataMapOfObjectSelectors.hxx>
-#endif
 
  
 
@@ -42,7 +30,7 @@ IMPLEMENT_DOWNCAST(SelectMgr_DataMapNodeOfDataMapOfObjectSelectors,Standard_Tran
 IMPLEMENT_STANDARD_RTTI(SelectMgr_DataMapNodeOfDataMapOfObjectSelectors)
 
 
-#define TheKey Handle_SelectMgr_SelectableObject
+#define TheKey Handle(SelectMgr_SelectableObject)
 #define TheKey_hxx <SelectMgr_SelectableObject.hxx>
 #define TheItem SelectMgr_SequenceOfSelector
 #define TheItem_hxx <SelectMgr_SequenceOfSelector.hxx>

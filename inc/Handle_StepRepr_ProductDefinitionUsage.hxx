@@ -6,22 +6,15 @@
 #ifndef _Handle_StepRepr_ProductDefinitionUsage_HeaderFile
 #define _Handle_StepRepr_ProductDefinitionUsage_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepBasic_ProductDefinitionRelationship_HeaderFile
 #include <Handle_StepBasic_ProductDefinitionRelationship.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepBasic_ProductDefinitionRelationship);
 class StepRepr_ProductDefinitionUsage;
 
-DEFINE_STANDARD_HANDLE(StepRepr_ProductDefinitionUsage,StepBasic_ProductDefinitionRelationship)
+DEFINE_STANDARD_HANDLE(StepRepr_ProductDefinitionUsage, StepBasic_ProductDefinitionRelationship)
 
-#endif
+#endif // _Handle_StepRepr_ProductDefinitionUsage_HeaderFile

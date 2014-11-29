@@ -1,3 +1,1 @@
-#ifndef _StepFEA_DummyNode_HeaderFile
 #include <StepFEA_DummyNode.hxx>
-#endif

@@ -5,27 +5,15 @@
 
 #include <TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceShape.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Interference_HeaderFile
 #include <TopOpeBRepDS_Interference.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapOfInterferenceShape_HeaderFile
 #include <TopOpeBRepDS_DataMapOfInterferenceShape.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape_HeaderFile
 #include <TopOpeBRepDS_DataMapNodeOfDataMapOfInterferenceShape.hxx>
-#endif
  
 
-#define TheKey Handle_TopOpeBRepDS_Interference
+#define TheKey Handle(TopOpeBRepDS_Interference)
 #define TheKey_hxx <TopOpeBRepDS_Interference.hxx>
 #define TheItem TopoDS_Shape
 #define TheItem_hxx <TopoDS_Shape.hxx>

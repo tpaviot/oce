@@ -6,19 +6,11 @@
 #ifndef _Geom2dInt_TheProjPCurOfGInter_HeaderFile
 #define _Geom2dInt_TheProjPCurOfGInter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Adaptor2d_Curve2d;
 class Geom2dInt_Geom2dCurveTool;
 class Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter;
@@ -28,16 +20,16 @@ class gp_Pnt2d;
 
 
 
-class Geom2dInt_TheProjPCurOfGInter  {
+class Geom2dInt_TheProjPCurOfGInter 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Standard_Real FindParameter(const Adaptor2d_Curve2d& C,const gp_Pnt2d& Pnt,const Standard_Real Tol) ;
+  Standard_EXPORT static   Standard_Real FindParameter (const Adaptor2d_Curve2d& C, const gp_Pnt2d& Pnt, const Standard_Real Tol) ;
   
-  Standard_EXPORT   static  Standard_Real FindParameter(const Adaptor2d_Curve2d& C,const gp_Pnt2d& Pnt,const Standard_Real LowParameter,const Standard_Real HighParameter,const Standard_Real Tol) ;
-
+  Standard_EXPORT static   Standard_Real FindParameter (const Adaptor2d_Curve2d& C, const gp_Pnt2d& Pnt, const Standard_Real LowParameter, const Standard_Real HighParameter, const Standard_Real Tol) ;
 
 
 
@@ -60,7 +52,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dInt_TheProjPCurOfGInter_HeaderFile

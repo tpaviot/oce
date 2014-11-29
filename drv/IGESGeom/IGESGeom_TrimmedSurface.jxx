@@ -1,15 +1,5 @@
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _IGESGeom_CurveOnSurface_HeaderFile
 #include <IGESGeom_CurveOnSurface.hxx>
-#endif
-#ifndef _IGESGeom_HArray1OfCurveOnSurface_HeaderFile
 #include <IGESGeom_HArray1OfCurveOnSurface.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IGESGeom_TrimmedSurface_HeaderFile
 #include <IGESGeom_TrimmedSurface.hxx>
-#endif

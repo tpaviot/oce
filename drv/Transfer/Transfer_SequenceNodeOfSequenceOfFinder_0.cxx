@@ -5,16 +5,10 @@
 
 #include <Transfer_SequenceNodeOfSequenceOfFinder.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Transfer_Finder_HeaderFile
 #include <Transfer_Finder.hxx>
-#endif
-#ifndef _Transfer_SequenceOfFinder_HeaderFile
 #include <Transfer_SequenceOfFinder.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(Transfer_SequenceNodeOfSequenceOfFinder,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Transfer_SequenceNodeOfSequenceOfFinder)
 
 
-#define SeqItem Handle_Transfer_Finder
+#define SeqItem Handle(Transfer_Finder)
 #define SeqItem_hxx <Transfer_Finder.hxx>
 #define TCollection_SequenceNode Transfer_SequenceNodeOfSequenceOfFinder
 #define TCollection_SequenceNode_hxx <Transfer_SequenceNodeOfSequenceOfFinder.hxx>

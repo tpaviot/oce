@@ -6,17 +6,16 @@
 #ifndef _GeomAbs_JoinType_HeaderFile
 #define _GeomAbs_JoinType_HeaderFile
 
-//! Characterizes the type of a join, built by an algorithm for <br>
-//! constructing parallel curves, between two consecutive <br>
-//! arcs of a contour parallel to a given contour. <br>
-enum GeomAbs_JoinType {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Characterizes the type of a join, built by an algorithm for
+//! constructing parallel curves, between two consecutive
+//! arcs of a contour parallel to a given contour.
+enum GeomAbs_JoinType
+{
 GeomAbs_Arc,
 GeomAbs_Tangent,
 GeomAbs_Intersection
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _GeomAbs_JoinType_HeaderFile

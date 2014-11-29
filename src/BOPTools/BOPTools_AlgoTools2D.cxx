@@ -29,11 +29,23 @@
 #include <Geom2d_Ellipse.hxx>
 #include <Geom2d_Parabola.hxx>
 #include <Geom2d_Hyperbola.hxx>
+#include <Geom2d_TrimmedCurve.hxx>
+
+#include <Geom2dAdaptor.hxx>
 
 #include <Geom_Curve.hxx>
-#include <GeomAdaptor_HCurve.hxx>
 #include <Geom_TrimmedCurve.hxx>
 #include <Geom_Surface.hxx>
+#include <Geom_Plane.hxx>
+
+#include <GeomAdaptor_Surface.hxx>
+#include <GeomAdaptor_Curve.hxx>
+#include <GeomAdaptor_HCurve.hxx>
+#include <GeomAdaptor_HSurface.hxx>
+#include <Geom_Plane.hxx>
+#include <Geom_RectangularTrimmedSurface.hxx>
+
+#include <GeomProjLib.hxx>
 
 #include <TopLoc_Location.hxx>
 #include <TopExp.hxx>
@@ -41,38 +53,62 @@
 #include <ProjLib_ProjectedCurve.hxx>
 
 #include <BRep_Tool.hxx>
-#include <BRepTools.hxx>
+#include <BRep_Builder.hxx>
+#include <BRep_ListIteratorOfListOfCurveRepresentation.hxx>
+#include <BRep_TEdge.hxx>
+#include <BRep_CurveRepresentation.hxx>
+#include <BRep_GCurve.hxx>
+
 #include <BRepAdaptor_HSurface.hxx>
+
 #include <BRepAdaptor_Curve.hxx>
-#include <BRep_Builder.hxx>
 #include <BRepAdaptor_Surface.hxx>
-#include <Geom2d_Curve.hxx>
-#include <Geom_Plane.hxx>
-#include <Geom_RectangularTrimmedSurface.hxx>
-#include <BRep_Builder.hxx>
-#include <Geom_Surface.hxx>
-#include <BOPCol_IndexedMapOfShape.hxx>
-#include <BOPTools.hxx>
 #include <BRepClass_FaceClassifier.hxx>
 
-#include <Standard_Real.hxx>
+#include <BRepTools.hxx>
+
+#include <BOPCol_IndexedMapOfShape.hxx>
+
+#include <BOPTools.hxx>
+#include <IntTools_Tools.hxx>
+#include <gp_Cylinder.hxx>
+#include <TopExp_Explorer.hxx>
+#include <GeomInt.hxx>
 
 static 
-  Standard_Boolean CheckEdgeLength (const TopoDS_Edge& E);
+  Standard_Boolean CheckEdgeLength (const TopoDS_Edge& );
+
+static
+  Handle(Geom2d_Curve) BRep_Tool_CurveOnSurface(const TopoDS_Edge& , 
+                                                const TopoDS_Face& ,
+                                                Standard_Real& ,
+                                                Standard_Real& ,
+                                                Standard_Boolean& );
+static
+  Handle(Geom2d_Curve) BRep_Tool_CurveOnSurface(const TopoDS_Edge& , 
+                                                const Handle(Geom_Surface)& ,
+                                                const TopLoc_Location& ,
+                                                Standard_Real& ,
+                                                Standard_Real& ,
+                                                Standard_Boolean& );
+static
+  Standard_Real MaxToleranceEdge (const TopoDS_Face& );
 
 //=======================================================================
 //function : BuildPCurveForEdgeOnFace
 //purpose  : 
 //=======================================================================
-  void BOPTools_AlgoTools2D::BuildPCurveForEdgeOnFace (const TopoDS_Edge& aE,
-                                                   const TopoDS_Face& aF)
+void BOPTools_AlgoTools2D::BuildPCurveForEdgeOnFace (const TopoDS_Edge& aE,
+                                                     const TopoDS_Face& aF)
 {
   BRep_Builder aBB;
   Handle(Geom2d_Curve) aC2D;
   Standard_Real  aTolPC, aTolFact, aTolEdge, aFirst, aLast;
   
   Standard_Boolean aHasOld;
-  aHasOld=BOPTools_AlgoTools2D::HasCurveOnSurface (aE, aF, aC2D, aFirst, aLast, aTolEdge);
+  aHasOld=BOPTools_AlgoTools2D::HasCurveOnSurface (aE, aF, aC2D, 
+                                                   aFirst, aLast, 
+                                                   aTolEdge);
   if (aHasOld) {
     return;
   }
@@ -92,9 +128,10 @@ static
 //function : EdgeTangent
 //purpose  : 
 //=======================================================================
-  Standard_Boolean BOPTools_AlgoTools2D::EdgeTangent(const TopoDS_Edge& anEdge, 
-                                                 const Standard_Real aT,
-                                                 gp_Vec& aTau)
+Standard_Boolean BOPTools_AlgoTools2D::EdgeTangent
+  (const TopoDS_Edge& anEdge, 
+   const Standard_Real aT,
+   gp_Vec& aTau)
 {
   Standard_Boolean isdgE;
   Standard_Real first, last;
@@ -128,17 +165,18 @@ static
 //function : PointOnOnSurface
 //purpose  : 
 //=======================================================================
-  void BOPTools_AlgoTools2D::PointOnSurface (const TopoDS_Edge& aE,
-                                         const TopoDS_Face& aF,
-                                         const Standard_Real aParameter,
-                                         Standard_Real& U,
-                                         Standard_Real& V)
+void BOPTools_AlgoTools2D::PointOnSurface (const TopoDS_Edge& aE,
+                                           const TopoDS_Face& aF,
+                                           const Standard_Real aParameter,
+                                           Standard_Real& U,
+                                           Standard_Real& V)
 {
   gp_Pnt2d aP2D;
   Handle(Geom2d_Curve) aC2D;
   Standard_Real aToler, aFirst, aLast;
 
-  BOPTools_AlgoTools2D::CurveOnSurface (aE, aF, aC2D, aFirst, aLast, aToler); 
+  BOPTools_AlgoTools2D::CurveOnSurface (aE, aF, aC2D, 
+                                        aFirst, aLast, aToler); 
   aC2D->D0(aParameter, aP2D);
   U=aP2D.X();
   V=aP2D.Y();
@@ -149,32 +187,35 @@ static
 //function : CurveOnSurface
 //purpose  : 
 //=======================================================================
-  void BOPTools_AlgoTools2D::CurveOnSurface (const TopoDS_Edge& aE,
-                                         const TopoDS_Face& aF,
-                                         Handle(Geom2d_Curve)& aC2D,
-                                         Standard_Real& aToler)
+void BOPTools_AlgoTools2D::CurveOnSurface (const TopoDS_Edge& aE,
+                                           const TopoDS_Face& aF,
+                                           Handle(Geom2d_Curve)& aC2D,
+                                           Standard_Real& aToler)
 {
   Standard_Real aFirst, aLast; 
-
-  BOPTools_AlgoTools2D::CurveOnSurface (aE, aF, aC2D, aFirst, aLast, aToler); 
-
+  //
+  BOPTools_AlgoTools2D::CurveOnSurface (aE, aF, aC2D, 
+                                        aFirst, aLast, aToler); 
+  //
   return;
 }
 //=======================================================================
 //function : CurveOnSurface
 //purpose  : 
 //=======================================================================
-  void BOPTools_AlgoTools2D::CurveOnSurface (const TopoDS_Edge& aE,
-                                         const TopoDS_Face& aF,
-                                         Handle(Geom2d_Curve)& aC2D,
-                                         Standard_Real& aFirst,
-                                         Standard_Real& aLast,
-                                         Standard_Real& aToler)
+void BOPTools_AlgoTools2D::CurveOnSurface (const TopoDS_Edge& aE,
+                                           const TopoDS_Face& aF,
+                                           Handle(Geom2d_Curve)& aC2D,
+                                           Standard_Real& aFirst,
+                                           Standard_Real& aLast,
+                                           Standard_Real& aToler)
 {
   Standard_Boolean aHasOld;
   Handle(Geom2d_Curve) C2D;
 
-  aHasOld=BOPTools_AlgoTools2D::HasCurveOnSurface (aE, aF, C2D, aFirst, aLast, aToler);
+  aHasOld=BOPTools_AlgoTools2D::HasCurveOnSurface (aE, aF, C2D, 
+                                                   aFirst, aLast, 
+                                                   aToler);
   if (aHasOld) {
     aC2D=C2D;
     return;
@@ -184,17 +225,17 @@ static
   aC2D=C2D;
   return;
 }
-
 //=======================================================================
 //function : HasCurveOnSurface
 //purpose  : 
 //=======================================================================
-  Standard_Boolean BOPTools_AlgoTools2D::HasCurveOnSurface (const TopoDS_Edge& aE,
-                                                        const TopoDS_Face& aF,
-                                                        Handle(Geom2d_Curve)& aC2D,
-                                                        Standard_Real& aFirst,
-                                                        Standard_Real& aLast,
-                                                        Standard_Real& aToler)
+Standard_Boolean BOPTools_AlgoTools2D::HasCurveOnSurface 
+  (const TopoDS_Edge& aE,
+   const TopoDS_Face& aF,
+   Handle(Geom2d_Curve)& aC2D,
+   Standard_Real& aFirst,
+   Standard_Real& aLast,
+   Standard_Real& aToler)
 {
   Standard_Boolean aHasOld;
   
@@ -205,7 +246,7 @@ static
     return Standard_False;
   }
 
-  aC2D  =BRep_Tool::CurveOnSurface(aE, aF, aFirst, aLast);
+  aC2D=BRep_Tool::CurveOnSurface(aE, aF, aFirst, aLast);
   aHasOld=!aC2D.IsNull();
   return aHasOld;
 }
@@ -213,32 +254,35 @@ static
 //function : HasCurveOnSurface
 //purpose  : 
 //=======================================================================
-  Standard_Boolean BOPTools_AlgoTools2D::HasCurveOnSurface (const TopoDS_Edge& aE,
-                                                        const TopoDS_Face& aF)
+Standard_Boolean BOPTools_AlgoTools2D::HasCurveOnSurface 
+  (const TopoDS_Edge& aE,
+   const TopoDS_Face& aF)
                                                    
 {
-  Standard_Boolean aHasOld;
+  Standard_Boolean bHasOld;
   Handle(Geom2d_Curve) aC2D;
   Standard_Real aFirst, aLast;
+  //
   BRep_Tool::Range(aE, aFirst, aLast);
-
+  //
   if((aLast - aFirst) < Precision::PConfusion()) {
     return Standard_False;
   }
-
-  aC2D  =BRep_Tool::CurveOnSurface(aE, aF, aFirst, aLast);
-  aHasOld=!aC2D.IsNull();
-  return aHasOld;
+  //
+  aC2D=BRep_Tool::CurveOnSurface(aE, aF, aFirst, aLast);
+  bHasOld=!aC2D.IsNull();
+  //
+  return bHasOld;
 }
-
 //=======================================================================
 //function : AdjustPCurveOnFace
 //purpose  : 
 //=======================================================================
-  void BOPTools_AlgoTools2D::AdjustPCurveOnFace (const TopoDS_Face& aF,
-                                             const Handle(Geom_Curve)&   aC3D,
-                                             const Handle(Geom2d_Curve)& aC2D, 
-                                             Handle(Geom2d_Curve)& aC2DA)
+void BOPTools_AlgoTools2D::AdjustPCurveOnFace 
+  (const TopoDS_Face& aF,
+   const Handle(Geom_Curve)&   aC3D,
+   const Handle(Geom2d_Curve)& aC2D, 
+   Handle(Geom2d_Curve)& aC2DA)
 {
   Standard_Real first, last;
 
@@ -251,16 +295,16 @@ static
 //function : AdjustPCurveOnFace
 //purpose  : 
 //=======================================================================
-  void BOPTools_AlgoTools2D::AdjustPCurveOnFace (const TopoDS_Face& aF,
-                                             const Standard_Real aFirst,
-                                             const Standard_Real aLast,
-                                             const Handle(Geom2d_Curve)& aC2D, 
-                                             Handle(Geom2d_Curve)& aC2DA)
+void BOPTools_AlgoTools2D::AdjustPCurveOnFace 
+  (const TopoDS_Face& aF,
+   const Standard_Real aFirst,
+   const Standard_Real aLast,
+   const Handle(Geom2d_Curve)& aC2D, 
+   Handle(Geom2d_Curve)& aC2DA)
 {
-  Standard_Boolean mincond, maxcond, decalu, decalv;
-  Standard_Integer k, iCnt;
+  Standard_Boolean mincond, maxcond;
   Standard_Real UMin, UMax, VMin, VMax, aT, u2, v2, du, dv, aDelta;
-  Standard_Real aUPeriod, aUP2, aUP1, aUNew, aDif, aUx;
+  Standard_Real aUPeriod;
   //
   aDelta=Precision::PConfusion();
   
@@ -275,68 +319,56 @@ static
 
   u2 = pC2D.X();
   v2 = pC2D.Y();
- 
+  //
+  // du
   du = 0.;
   if (aBAS.IsUPeriodic()) {
-    aUPeriod=aBAS.UPeriod(); 
-    mincond = (u2 < UMin-aDelta);
-    maxcond = (u2 > UMax+aDelta); 
-    
-    decalu = mincond || maxcond;
-    if (decalu) {
-      //du = ( mincond ) ? UPeriod : -UPeriod;
-      //
-      iCnt=1;
-      aUP2=aUPeriod+aUPeriod+aDelta;
-      aUP1=aUPeriod+aDelta;
-      //
-      if (u2 > aUP2) {
-        k = Ceiling((u2 - aUP1)/aUPeriod);
-        do {
-          aUx=u2-k*aUPeriod;
-          iCnt = k++;
-        } while (aUx >= aUP1);
-      }
-      else if (u2 < -aUP2) {
-        k = Ceiling((-aUP1 - u2)/aUPeriod);
-        do {
-          aUx=u2+k*aUPeriod;
-          iCnt = (k++) + 1;
-        } while (aUx <= -aUP1);
-      }
-      du = ( mincond ) ? aUPeriod : -aUPeriod;
-      du=iCnt*du;
-    }
+    aUPeriod = aBAS.UPeriod(); 
     //
-    aUNew=u2+du;
-    if (aUNew<(UMin-aDelta) || 
-        aUNew>(UMax+aDelta)) {
-      // So previous correction was wrong.
-      // Try to be closer to UMin or UMax.
-      du=0.;
-      if (u2>UMax){
-        aDif=u2-UMax;
-        if (aDif < 4.e-7) {
-          du=-aDif;
+    // a. try to clarify u2 using the precision (aDelta)
+    if (fabs(u2-UMin) < aDelta) {
+      u2=UMin;
+    }
+    else if (fabs(u2-UMin-aUPeriod) < aDelta) {
+      u2=UMin+aUPeriod;
+    }
+    // b. compute du again using clarified value of u2
+    GeomInt::AdjustPeriodic(u2, UMin, UMax, aUPeriod, u2, du, 0.);
+    //
+    if (du==0.) {
+      if (aBAS.GetType()==GeomAbs_Cylinder) {
+        Standard_Real aR, dFi, aTol;
+        //
+        gp_Cylinder aCylinder=aBAS.Cylinder();
+        aR=aCylinder.Radius();
+        aTol=MaxToleranceEdge(aF);
+        dFi=aTol/aR;
+        if (dFi<aDelta) {
+          dFi=aDelta;
+        }
+        //
+        mincond = (UMin - u2 > dFi);
+        maxcond = (u2 - UMax > dFi);
+        if (mincond || maxcond) {
+          du = ( mincond ) ? aUPeriod : -aUPeriod;
         }
       }
-    }
-  } // if (BAHS->IsUPeriodic())
-  //
+    } 
+  }
+  
   // dv
   dv = 0.;
   if (aBAS.IsVPeriodic()) {
     Standard_Real aVPeriod, aVm, aVr, aVmid, dVm, dVr;
     //
-    aVPeriod=aBAS.VPeriod();
+    aVPeriod = aBAS.VPeriod();
     mincond = (VMin - v2 > aDelta);
     maxcond = (v2 - VMax > aDelta);
-    decalv = mincond || maxcond;
-    if (decalv) {
+    //
+    if (mincond || maxcond) {
       dv = ( mincond ) ? aVPeriod : -aVPeriod;
     }
     //
-    //xf
     if ((VMax-VMin<aVPeriod) && dv) {
       aVm=v2;
       aVr=v2+dv;
@@ -347,7 +379,6 @@ static
         dv=0.;
       }
     }
-    //xt
   }
   //
   {
@@ -403,8 +434,9 @@ static
 //function : IntermediatePoint
 //purpose  : 
 //=======================================================================
-  Standard_Real BOPTools_AlgoTools2D::IntermediatePoint (const Standard_Real aFirst,
-                                                     const Standard_Real aLast)
+Standard_Real BOPTools_AlgoTools2D::IntermediatePoint 
+  (const Standard_Real aFirst,
+   const Standard_Real aLast)
 {
   //define parameter division number as 10*e^(-PI) = 0.43213918
   const Standard_Real PAR_T = 0.43213918;
@@ -416,7 +448,8 @@ static
 //function : IntermediatePoint
 //purpose  : 
 //=======================================================================
-  Standard_Real BOPTools_AlgoTools2D::IntermediatePoint (const TopoDS_Edge& aE)
+Standard_Real BOPTools_AlgoTools2D::IntermediatePoint 
+  (const TopoDS_Edge& aE)
                                                 
 {
   Standard_Real aT, aT1, aT2;
@@ -433,88 +466,47 @@ static
 //function : BuildPCurveForEdgeOnPlane
 //purpose  : 
 //=======================================================================
-void BOPTools_AlgoTools2D::BuildPCurveForEdgeOnPlane (const TopoDS_Edge& aE,
-						      const TopoDS_Face& aF)
-{ 
-  Standard_Real aTolE;
-  TopLoc_Location aLoc;
+void BOPTools_AlgoTools2D::BuildPCurveForEdgeOnPlane 
+  (const TopoDS_Edge& aE,
+   const TopoDS_Face& aF)
+{
+  Standard_Boolean bToUpdate;
+  Standard_Real aTolE, aT1, aT2;
   Handle(Geom2d_Curve) aC2D;
-  Handle(Geom_Plane) aGP;
-  Handle(Geom_RectangularTrimmedSurface) aGRTS;
   BRep_Builder aBB;
   //
-  const Handle(Geom_Surface)& aS = BRep_Tool::Surface(aF, aLoc);
-  aGRTS=Handle(Geom_RectangularTrimmedSurface)::DownCast(aS);
-  if(!aGRTS.IsNull()){
-    aGP=Handle(Geom_Plane)::DownCast(aGRTS->BasisSurface());
-    }    
-  else {
-    aGP=Handle(Geom_Plane)::DownCast(aS);
+  aC2D=BRep_Tool_CurveOnSurface(aE, aF, aT1, aT2, bToUpdate);
+  if (bToUpdate) {
+    aTolE=BRep_Tool::Tolerance(aE);
+    aBB.UpdateEdge(aE, aC2D, aF, aTolE);
   }
-  //
-  if (aGP.IsNull()) {
-    return;
-  }
-  //
-  BOPTools_AlgoTools2D::CurveOnSurface(aE, aF, aC2D, aTolE);
-  aBB.UpdateEdge(aE, aC2D, aF, aTolE);
-  //
-  return;
 }
 //=======================================================================
 // function: BuildPCurveForEdgesOnPlane
 // purpose: 
 //=======================================================================
 void BOPTools_AlgoTools2D::BuildPCurveForEdgesOnPlane 
-  (const BOPCol_ListOfShape& aEdges,
-   const TopoDS_Face& aFace)
+  (const BOPCol_ListOfShape& aLE,
+   const TopoDS_Face& aF)
 {
-  
-  TopLoc_Location aLoc;
-  Handle(Geom2d_Curve) aC2D;
-  Handle(Geom_Plane) aGP;
-  Handle(Geom_RectangularTrimmedSurface) aGRTS;
-  //
-  const Handle(Geom_Surface)& aS = BRep_Tool::Surface(aFace, aLoc);
-  aGRTS=Handle(Geom_RectangularTrimmedSurface)::DownCast(aS);
-  if(!aGRTS.IsNull()){
-    aGP=Handle(Geom_Plane)::DownCast(aGRTS->BasisSurface());
-    }    
-  else {
-    aGP=Handle(Geom_Plane)::DownCast(aS);
-  }
-  //
-  if (aGP.IsNull()) {
-    return;
-  }
-  //
-  Standard_Boolean bHasOld;
-  Standard_Real aTolE, aT1, aT2;
   BOPCol_ListIteratorOfListOfShape aIt;
-  BRep_Builder aBB;
   //
-  aIt.Initialize(aEdges);
+  aIt.Initialize(aLE);
   for(; aIt.More(); aIt.Next()) {
     const TopoDS_Edge& aE=(*(TopoDS_Edge *)&aIt.Value());
-    bHasOld=BOPTools_AlgoTools2D::HasCurveOnSurface
-      (aE, aFace, aC2D, aT1, aT2, aTolE);
-    if (!bHasOld) {
-      BOPTools_AlgoTools2D::CurveOnSurface(aE, aFace, aC2D, aTolE);
-      aBB.UpdateEdge(aE, aC2D, aFace, aTolE);
-    }
+    BOPTools_AlgoTools2D::BuildPCurveForEdgeOnPlane (aE, aF);
   }
 }
-
 //=======================================================================
 //function : Make2D
 //purpose  : 
 //=======================================================================
 void BOPTools_AlgoTools2D::Make2D (const TopoDS_Edge& aE,
-				   const TopoDS_Face& aF,
-				   Handle(Geom2d_Curve)& aC2D,
-                                 Standard_Real& aFirst,
-                                 Standard_Real& aLast,
-                                 Standard_Real& aToler)
+                                   const TopoDS_Face& aF,
+                                   Handle(Geom2d_Curve)& aC2D,
+                                   Standard_Real& aFirst,
+                                   Standard_Real& aLast,
+                                   Standard_Real& aToler)
 {
   Standard_Boolean aLocIdentity;
   Standard_Real f3d, l3d;
@@ -559,10 +551,10 @@ void BOPTools_AlgoTools2D::Make2D (const TopoDS_Edge& aE,
 //function : MakePCurveOnFace
 //purpose  : 
 //=======================================================================
-  void BOPTools_AlgoTools2D::MakePCurveOnFace (const TopoDS_Face& aF,
-                                           const Handle(Geom_Curve)& aC3D,
-                                           Handle(Geom2d_Curve)& aC2D, //->
-                                           Standard_Real& TolReached2d)
+void BOPTools_AlgoTools2D::MakePCurveOnFace (const TopoDS_Face& aF,
+                                             const Handle(Geom_Curve)& aC3D,
+                                             Handle(Geom2d_Curve)& aC2D, //->
+                                             Standard_Real& TolReached2d)
 {
   Standard_Real aFirst, aLast;
 
@@ -571,29 +563,34 @@ void BOPTools_AlgoTools2D::Make2D (const TopoDS_Edge& aE,
   //
   TolReached2d=0.;
   //
-  BOPTools_AlgoTools2D::MakePCurveOnFace (aF, aC3D, aFirst, aLast, aC2D, TolReached2d);
+  BOPTools_AlgoTools2D::MakePCurveOnFace (aF, aC3D, aFirst, 
+                                          aLast, aC2D, TolReached2d);
 }
 
 //=======================================================================
 //function : MakePCurveOnFace
 //purpose  : 
 //=======================================================================
-  void BOPTools_AlgoTools2D::MakePCurveOnFace (const TopoDS_Face& aF,
-                                           const Handle(Geom_Curve)& aC3D,
-                                           const Standard_Real aFirst,
-                                           const Standard_Real aLast,
-                                           Handle(Geom2d_Curve)& aC2D, 
-                                           Standard_Real& TolReached2d)
+void BOPTools_AlgoTools2D::MakePCurveOnFace 
+  (const TopoDS_Face& aF,
+   const Handle(Geom_Curve)& aC3D,
+   const Standard_Real aFirst,
+   const Standard_Real aLast,
+   Handle(Geom2d_Curve)& aC2D, 
+   Standard_Real& TolReached2d)
 {
   Standard_Real aTolR;
   Handle(Geom2d_Curve) aC2DA;
-
-  BRepAdaptor_Surface aBAS(aF, Standard_False);
-  Handle(BRepAdaptor_HSurface) aBAHS = new BRepAdaptor_HSurface(aBAS);
-  Handle(GeomAdaptor_HCurve)   aBAHC = new GeomAdaptor_HCurve(aC3D, aFirst, aLast);
+  //
+  Handle(Geom_Surface) aS=BRep_Tool::Surface(aF);
+  GeomAdaptor_Surface aGAS(aS);
+  Handle(GeomAdaptor_HSurface) aBAHS=
+    new GeomAdaptor_HSurface(aGAS);
+  Handle(GeomAdaptor_HCurve) aBAHC = 
+    new GeomAdaptor_HCurve(aC3D, aFirst, aLast);
   
   //when the type of surface is GeomAbs_SurfaceOfRevolution
-  if (aBAS.GetType() == GeomAbs_SurfaceOfRevolution) {
+  if (aGAS.GetType() == GeomAbs_SurfaceOfRevolution) {
     Standard_Real aTR = 1.e-7;
     ProjLib_ProjectedCurve aProj1(aBAHS, aBAHC, aTR);
     BOPTools_AlgoTools2D::MakePCurveOfType(aProj1, aC2D);
@@ -618,7 +615,8 @@ void BOPTools_AlgoTools2D::Make2D (const TopoDS_Edge& aE,
   }
   TolReached2d=aTolR;
   
-  BOPTools_AlgoTools2D::AdjustPCurveOnFace (aF, aFirst, aLast, aC2D, aC2DA);
+  BOPTools_AlgoTools2D::AdjustPCurveOnFace (aF, aFirst, aLast, 
+                                            aC2D, aC2DA);
   aC2D=aC2DA;
 }
 
@@ -626,8 +624,9 @@ void BOPTools_AlgoTools2D::Make2D (const TopoDS_Edge& aE,
 //function : MakePCurveOfType
 //purpose  : 
 //=======================================================================
-  void  BOPTools_AlgoTools2D::MakePCurveOfType(const ProjLib_ProjectedCurve& PC, 
-                                           Handle(Geom2d_Curve)& C2D)
+void  BOPTools_AlgoTools2D::MakePCurveOfType
+  (const ProjLib_ProjectedCurve& PC, 
+   Handle(Geom2d_Curve)& C2D)
 {
   
   switch (PC.GetType()) {
@@ -653,11 +652,11 @@ void BOPTools_AlgoTools2D::Make2D (const TopoDS_Edge& aE,
   case GeomAbs_BezierCurve : 
   case GeomAbs_OtherCurve : 
     default :
-    Standard_NotImplemented::Raise("BOPTools_AlgoTools2D::MakePCurveOfType");
+    Standard_NotImplemented::Raise
+      ("BOPTools_AlgoTools2D::MakePCurveOfType");
     break;
   }
 }
-
 //=======================================================================
 //function : CheckEdgeLength
 //purpose  : 
@@ -693,174 +692,144 @@ Standard_Boolean CheckEdgeLength (const TopoDS_Edge& E)
     ln+=d;
     p1=p2;
   }
-  
+  //
   return (ln > Precision::Confusion()); 
 }
-
-
-
-
-
-
-
-
-/*
 //=======================================================================
-//function : FaceNormal
+//function : BRep_Tool_CurveOnSurface
 //purpose  : 
 //=======================================================================
-  void BOPTools_AlgoTools2D::FaceNormal (const TopoDS_Face& aF,
-                                     const Standard_Real U,
-                                     const Standard_Real V,
-                                     gp_Vec& aN)
+Handle(Geom2d_Curve) BRep_Tool_CurveOnSurface(const TopoDS_Edge& E, 
+                                              const TopoDS_Face& F,
+                                              Standard_Real& First,
+                                              Standard_Real& Last,
+                                              Standard_Boolean& bToUpdate)
 {
-  gp_Pnt aPnt ;
-  gp_Vec aD1U, aD1V;
-  Handle(Geom_Surface) aSurface;
-
-  aSurface=BRep_Tool::Surface(aF);
-  aSurface->D1 (U, V, aPnt, aD1U, aD1V);
-  aN=aD1U.Crossed(aD1V);
-  aN.Normalize();  
-  if (aF.Orientation() == TopAbs_REVERSED){
-    aN.Reverse();
+  TopLoc_Location l;
+  const Handle(Geom_Surface)& S = BRep_Tool::Surface(F,l);
+  TopoDS_Edge aLocalEdge = E;
+  if (F.Orientation() == TopAbs_REVERSED) {
+    aLocalEdge.Reverse();
   }
-  return;
-}
-//=======================================================================
-//function : RemovePCurveForEdgeOnFace
-//purpose  : 
-//=======================================================================
-  void BOPTools_AlgoTools2D::RemovePCurveForEdgeOnFace (const TopoDS_Edge& aE,
-                                                    const TopoDS_Face& aF)
-{
-  BRep_Builder aBB;
-  Handle(Geom2d_Curve) aC2D;
-  Standard_Real  aTol;
-
-  aTol=BRep_Tool::Tolerance(aE);
-  aBB.UpdateEdge(aE, aC2D, aF, aTol);
-}
-//=======================================================================
-//function : MakeCurveOnSurface
-//purpose  : 
-//=======================================================================
-  void BOPTools_AlgoTools2D::MakeCurveOnSurface (const TopoDS_Edge& aE,
-                                             const TopoDS_Face& aF,
-                                             Handle(Geom2d_Curve)& aC2D,
-                                             Standard_Real& aFirst,
-                                             Standard_Real& aLast,
-                                             Standard_Real& aToler)
-{
-  BOPTools_AlgoTools2D::Make2D(aE, aF, aC2D, aFirst, aLast, aToler);
-}
-
-//=======================================================================
-//function : TangentOnEdge
-//purpose  : 
-//=======================================================================
-  Standard_Boolean BOPTools_AlgoTools2D::TangentOnEdge(const Standard_Real par, 
-                                                   const TopoDS_Edge& E, 
-                                                   gp_Vec& Tg)
-{
-  Standard_Boolean isdgE;
-  
-  isdgE = BRep_Tool::Degenerated(E); 
-  if (isdgE) {
-    return Standard_False;
-  }
-  if (!CheckEdgeLength(E)) {
-    return Standard_False;
-  }
-
-  BRepAdaptor_Curve BC(E);
   //
-  // Body 
-  Standard_Real f, l, tolE, tolp;
-  Standard_Boolean onf, onl, inbounds;
-
-  f = BC.FirstParameter();
-  l = BC.LastParameter();
-  tolE = BC.Tolerance(); 
-  tolp = BC.Resolution(tolE);
-  
-  onf = Abs(f-par)<tolp; 
-  onl = Abs(l-par)<tolp; 
-  inbounds = (f<par) && (par<l);
-
-  if ((!inbounds) && (!onf) && (!onl)) {
-    return Standard_False;
-  }
-  
-  
-  gp_Pnt aP;
-
-  BC.D1(par, aP, Tg);
-  Tg.Normalize(); 
-  
-  return Standard_True;
+  return BRep_Tool_CurveOnSurface(aLocalEdge,S,l,First,Last,bToUpdate);
 }
 //=======================================================================
-//function : TangentOnEdge
+//function : BRep_Tool_CurveOnSurface
 //purpose  : 
 //=======================================================================
-  Standard_Boolean BOPTools_AlgoTools2D::TangentOnEdge(const TopoDS_Edge& aE, 
-                                                   gp_Dir& DTg)
+Handle(Geom2d_Curve) BRep_Tool_CurveOnSurface
+       (const TopoDS_Edge& E, 
+        const Handle(Geom_Surface)& S,
+        const TopLoc_Location& L,
+        Standard_Real& First,
+        Standard_Real& Last,
+        Standard_Boolean& bToUpdate)
 {
-  Standard_Real aT;
-  gp_Vec aTg;
+  static const Handle(Geom2d_Curve) nullPCurve;
+  bToUpdate=Standard_False;
+  TopLoc_Location loc = L.Predivided(E.Location());
+  Standard_Boolean Eisreversed = (E.Orientation() == TopAbs_REVERSED);
 
-  DTg.SetCoord(1.,0.,0.);
+  // find the representation
+  BRep_ListIteratorOfListOfCurveRepresentation itcr
+    ((*((Handle(BRep_TEdge)*)&E.TShape()))->ChangeCurves());
 
-  aT= BOPTools_AlgoTools2D::IntermediatePoint (aE);
-  Standard_Boolean bIsFound=BOPTools_AlgoTools2D::TangentOnEdge(aT, aE, aTg);
-  if (bIsFound) {
-    gp_Dir aDTmp(aTg);
-    DTg=aDTmp;
+  while (itcr.More()) {
+    const Handle(BRep_CurveRepresentation)& cr = itcr.Value();
+    if (cr->IsCurveOnSurface(S,loc)) {
+      const Handle(BRep_GCurve)& GC = *((Handle(BRep_GCurve)*)&cr);
+      GC->Range(First,Last);
+      if (GC->IsCurveOnClosedSurface() && Eisreversed)
+        return GC->PCurve2();
+      else
+        return GC->PCurve();
+    }
+    itcr.Next();
   }
-  return bIsFound;
-}
+
+  // for planar surface and 3d curve try a projection
+  // modif 21-05-97 : for RectangularTrimmedSurface, try a projection
+  Handle(Geom_Plane) GP;
+  Handle(Geom_RectangularTrimmedSurface) GRTS;
+  GRTS = Handle(Geom_RectangularTrimmedSurface)::DownCast(S);
+  if(!GRTS.IsNull())
+    GP = Handle(Geom_Plane)::DownCast(GRTS->BasisSurface());
+  else
+    GP = Handle(Geom_Plane)::DownCast(S);
+  //fin modif du 21-05-97
+
+  if (!GP.IsNull()) {
+
+    Handle(GeomAdaptor_HCurve) HC;
+    Handle(GeomAdaptor_HSurface) HS;
+
+    HC = new GeomAdaptor_HCurve();
+    HS = new GeomAdaptor_HSurface();
+
+    TopLoc_Location LC;
+
+    Standard_Real f, l;// for those who call with (u,u).
+    Handle(Geom_Curve) C3d =
+      BRep_Tool::Curve(E,/*LC,*/f,l); // transforming plane instead of curve
+    // we can loose scale factor of Curve transformation (eap 13 May 2002)
+
+    LC = L/*.Predivided(LC)*/;
+
+    if (C3d.IsNull()) return nullPCurve;
+
+    Handle(Geom_Plane) Plane = GP;
+    if (!LC.IsIdentity()) {
+      const gp_Trsf& T = LC.Transformation();
+      Handle(Geom_Geometry) GPT = GP->Transformed(T);
+      Plane = *((Handle(Geom_Plane)*)&GPT);
+    }
+    GeomAdaptor_Surface& GAS = HS->ChangeSurface();
+    GAS.Load(Plane);
+    
+    Handle(Geom_Curve) ProjOnPlane = 
+      GeomProjLib::ProjectOnPlane(new Geom_TrimmedCurve(C3d,f,l),
+                                  Plane,
+                                  Plane->Position().Direction(),
+                                  Standard_True);
+    
+    GeomAdaptor_Curve& GAC = HC->ChangeCurve();
+    GAC.Load(ProjOnPlane);
+
+    ProjLib_ProjectedCurve Proj(HS,HC);
+    Handle(Geom2d_Curve) pc = Geom2dAdaptor::MakeCurve(Proj);
+
+    if (pc->DynamicType() == STANDARD_TYPE(Geom2d_TrimmedCurve)) {
+      Handle(Geom2d_TrimmedCurve) TC = 
+        (*((Handle(Geom2d_TrimmedCurve)*)&pc));
+      pc = TC->BasisCurve();
+    }
+    First = f; Last = l;
+    //
+    bToUpdate=Standard_True;
+    //
+    return pc;
+  }
   
+  return nullPCurve;
+}
 //=======================================================================
-//function : TangentOnVertex
+//function : MaxToleranceEdge
 //purpose  : 
 //=======================================================================
-  Standard_Boolean BOPTools_AlgoTools2D::TangentOnVertex (const TopoDS_Vertex& v, 
-                                                      const TopoDS_Vertex& vl, 
-                                                      const TopoDS_Edge& e,
-                                                      gp_Vec& aVec)
-// tg oriented INSIDE 1d(e)
-// vl : last vertex of e
+Standard_Real MaxToleranceEdge (const TopoDS_Face& aF) 
 {
-  Standard_Boolean ok;
-  Standard_Real par;
-  gp_Vec tg; 
-
-  par = BRep_Tool::Parameter(v, e);  
-  ok =BOPTools_AlgoTools2D::TangentOnEdge (par, e, tg);
-  if (!ok) {
-    return ok;
+  Standard_Real aTol, aTolMax;
+  TopExp_Explorer aExp;
+  //
+  aTolMax=0.;
+  aExp.Init(aF, TopAbs_EDGE);
+  for (; aExp.More(); aExp.Next()) {
+    const TopoDS_Edge& aE=*((TopoDS_Edge *)&aExp.Current());
+    aTol=BRep_Tool::Tolerance(aE);
+    if (aTol>aTolMax) {
+      aTolMax=aTol;
+    }
   }
-  if (v.IsSame(vl)) {
-    tg.Reverse();
-  }
-  aVec=tg;
-
-  return ok;
+  return aTolMax;
 }
-
-//=======================================================================
-//function : EdgeBounds
-//purpose  : 
-//=======================================================================
-  void BOPTools_AlgoTools2D::EdgeBounds (const TopoDS_Edge& aE,
-                                     Standard_Real& aFirst,
-                                     Standard_Real& aLast)
-{
-  BRepAdaptor_Curve aBC(aE);
-  aFirst= aBC.FirstParameter();
-  aLast = aBC.LastParameter();
-}
-
-
-*/

@@ -6,56 +6,46 @@
 #ifndef _GeomFill_CornerState_HeaderFile
 #define _GeomFill_CornerState_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 
 
-//! Class  (should    be  a  structure)   storing  the <br>
-//!          informations         about     continuity, normals <br>
-//!          parallelism,  coons conditions and bounds tangents <br>
-//!          angle on the corner of contour to be filled. <br>
-class GeomFill_CornerState  {
+//! Class  (should    be  a  structure)   storing  the
+//! informations         about     continuity, normals
+//! parallelism,  coons conditions and bounds tangents
+//! angle on the corner of contour to be filled.
+class GeomFill_CornerState 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomFill_CornerState();
+  Standard_EXPORT GeomFill_CornerState();
   
-  Standard_EXPORT     Standard_Real Gap() const;
+  Standard_EXPORT   Standard_Real Gap()  const;
   
-  Standard_EXPORT     void Gap(const Standard_Real G) ;
+  Standard_EXPORT   void Gap (const Standard_Real G) ;
   
-  Standard_EXPORT     Standard_Real TgtAng() const;
+  Standard_EXPORT   Standard_Real TgtAng()  const;
   
-  Standard_EXPORT     void TgtAng(const Standard_Real Ang) ;
+  Standard_EXPORT   void TgtAng (const Standard_Real Ang) ;
   
-  Standard_EXPORT     Standard_Boolean HasConstraint() const;
+  Standard_EXPORT   Standard_Boolean HasConstraint()  const;
   
-  Standard_EXPORT     void Constraint() ;
+  Standard_EXPORT   void Constraint() ;
   
-  Standard_EXPORT     Standard_Real NorAng() const;
+  Standard_EXPORT   Standard_Real NorAng()  const;
   
-  Standard_EXPORT     void NorAng(const Standard_Real Ang) ;
+  Standard_EXPORT   void NorAng (const Standard_Real Ang) ;
   
-  Standard_EXPORT     Standard_Boolean IsToKill(Standard_Real& Scal) const;
+  Standard_EXPORT   Standard_Boolean IsToKill (Standard_Real& Scal)  const;
   
-  Standard_EXPORT     void DoKill(const Standard_Real Scal) ;
-
+  Standard_EXPORT   void DoKill (const Standard_Real Scal) ;
 
 
 
@@ -70,12 +60,12 @@ private:
 
 
 
-Standard_Real gap;
-Standard_Real tgtang;
-Standard_Boolean isconstrained;
-Standard_Real norang;
-Standard_Real scal;
-Standard_Boolean coonscnd;
+  Standard_Real gap;
+  Standard_Real tgtang;
+  Standard_Boolean isconstrained;
+  Standard_Real norang;
+  Standard_Real scal;
+  Standard_Boolean coonscnd;
 
 
 };
@@ -84,7 +74,6 @@ Standard_Boolean coonscnd;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomFill_CornerState_HeaderFile

@@ -5,24 +5,14 @@
 
 #include <IGESBasic_Array2OfHArray1OfReal.hxx>
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
  
 
-#define Array2Item Handle_TColStd_HArray1OfReal
+#define Array2Item Handle(TColStd_HArray1OfReal)
 #define Array2Item_hxx <TColStd_HArray1OfReal.hxx>
 #define TCollection_Array2 IGESBasic_Array2OfHArray1OfReal
 #define TCollection_Array2_hxx <IGESBasic_Array2OfHArray1OfReal.hxx>

@@ -6,47 +6,32 @@
 #ifndef _TopOpeBRepDS_CurvePointInterference_HeaderFile
 #define _TopOpeBRepDS_CurvePointInterference_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_CurvePointInterference_HeaderFile
 #include <Handle_TopOpeBRepDS_CurvePointInterference.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Interference_HeaderFile
 #include <TopOpeBRepDS_Interference.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Kind_HeaderFile
 #include <TopOpeBRepDS_Kind.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class TopOpeBRepDS_Transition;
 
 
-//! An interference with a parameter. <br>
-class TopOpeBRepDS_CurvePointInterference : public TopOpeBRepDS_Interference {
+//! An interference with a parameter.
+class TopOpeBRepDS_CurvePointInterference : public TopOpeBRepDS_Interference
+{
 
 public:
 
   
-  Standard_EXPORT   TopOpeBRepDS_CurvePointInterference(const TopOpeBRepDS_Transition& T,const TopOpeBRepDS_Kind ST,const Standard_Integer S,const TopOpeBRepDS_Kind GT,const Standard_Integer G,const Standard_Real P);
+  Standard_EXPORT TopOpeBRepDS_CurvePointInterference(const TopOpeBRepDS_Transition& T, const TopOpeBRepDS_Kind ST, const Standard_Integer S, const TopOpeBRepDS_Kind GT, const Standard_Integer G, const Standard_Real P);
   
-  Standard_EXPORT     Standard_Real Parameter() const;
+  Standard_EXPORT   Standard_Real Parameter()  const;
   
-  Standard_EXPORT     void Parameter(const Standard_Real P) ;
+  Standard_EXPORT   void Parameter (const Standard_Real P) ;
   
-  Standard_EXPORT   virtual  Standard_OStream& Dump(Standard_OStream& OS) const;
+  Standard_EXPORT virtual   Standard_OStream& Dump (Standard_OStream& OS)  const;
 
 
 
@@ -61,7 +46,7 @@ protected:
 private: 
 
 
-Standard_Real myParam;
+  Standard_Real myParam;
 
 
 };
@@ -70,7 +55,6 @@ Standard_Real myParam;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_CurvePointInterference_HeaderFile

@@ -5,21 +5,13 @@
 
 #include <MoniTool_SequenceOfElement.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _MoniTool_Element_HeaderFile
 #include <MoniTool_Element.hxx>
-#endif
-#ifndef _MoniTool_SequenceNodeOfSequenceOfElement_HeaderFile
 #include <MoniTool_SequenceNodeOfSequenceOfElement.hxx>
-#endif
  
 
-#define SeqItem Handle_MoniTool_Element
+#define SeqItem Handle(MoniTool_Element)
 #define SeqItem_hxx <MoniTool_Element.hxx>
 #define TCollection_SequenceNode MoniTool_SequenceNodeOfSequenceOfElement
 #define TCollection_SequenceNode_hxx <MoniTool_SequenceNodeOfSequenceOfElement.hxx>

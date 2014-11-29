@@ -6,14 +6,17 @@
 #ifndef _Aspect_TypeOfLine_HeaderFile
 #define _Aspect_TypeOfLine_HeaderFile
 
-//! Definition of line types <br>
-//! <br>
-//!          TOL_SOLID           continuous <br>
-//!          TOL_DASH            dashed 2.0,1.0 (MM) <br>
-//!          TOL_DOT             dotted 0.2,0.5 (MM) <br>
-//!          TOL_DOTDASH         mixed  10.0,1.0,2.0,1.0 (MM) <br>
-//!          TOL_USERDEFINED     defined by Users <br>
-enum Aspect_TypeOfLine {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Definition of line types
+//!
+//! TOL_SOLID           continuous
+//! TOL_DASH            dashed 2.0,1.0 (MM)
+//! TOL_DOT             dotted 0.2,0.5 (MM)
+//! TOL_DOTDASH         mixed  10.0,1.0,2.0,1.0 (MM)
+//! TOL_USERDEFINED     defined by Users
+enum Aspect_TypeOfLine
+{
 Aspect_TOL_SOLID,
 Aspect_TOL_DASH,
 Aspect_TOL_DOT,
@@ -21,8 +24,4 @@ Aspect_TOL_DOTDASH,
 Aspect_TOL_USERDEFINED
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_TypeOfLine_HeaderFile

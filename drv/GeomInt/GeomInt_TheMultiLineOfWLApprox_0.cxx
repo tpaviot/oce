@@ -5,24 +5,12 @@
 
 #include <GeomInt_TheMultiLineOfWLApprox.hxx>
 
-#ifndef _IntPatch_WLine_HeaderFile
 #include <IntPatch_WLine.hxx>
-#endif
-#ifndef _ApproxInt_SvSurfaces_HeaderFile
 #include <ApproxInt_SvSurfaces.hxx>
-#endif
-#ifndef _TColgp_Array1OfPnt_HeaderFile
 #include <TColgp_Array1OfPnt.hxx>
-#endif
-#ifndef _TColgp_Array1OfPnt2d_HeaderFile
 #include <TColgp_Array1OfPnt2d.hxx>
-#endif
-#ifndef _TColgp_Array1OfVec_HeaderFile
 #include <TColgp_Array1OfVec.hxx>
-#endif
-#ifndef _TColgp_Array1OfVec2d_HeaderFile
 #include <TColgp_Array1OfVec2d.hxx>
-#endif
  
 
 #define Handle_TheLine Handle_IntPatch_WLine

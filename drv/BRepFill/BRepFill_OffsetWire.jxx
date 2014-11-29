@@ -1,27 +1,14 @@
-#ifndef _Standard_ConstructionError_HeaderFile
 #include <Standard_ConstructionError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _BRepMAT2d_BisectingLocus_HeaderFile
 #include <BRepMAT2d_BisectingLocus.hxx>
-#endif
-#ifndef _BRepMAT2d_LinkTopoBilo_HeaderFile
 #include <BRepMAT2d_LinkTopoBilo.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _BRepFill_IndexedDataMapOfOrientedShapeListOfShape_HeaderFile
 #include <BRepFill_IndexedDataMapOfOrientedShapeListOfShape.hxx>
-#endif
-#ifndef _BRepFill_OffsetWire_HeaderFile
+#include <BRepFill_DataMapOfOrientedShapeListOfShape.hxx>
+#include <TopTools_SequenceOfShape.hxx>
+#include <TColgp_SequenceOfPnt.hxx>
+#include <Bisector_Bisec.hxx>
+#include <BRepFill_TrimEdgeTool.hxx>
 #include <BRepFill_OffsetWire.hxx>
-#endif

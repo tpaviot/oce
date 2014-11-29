@@ -12,31 +12,9 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#ifdef HAVE_CONFIG_H
-# include <oce-config.h>
-#endif
-
 #include <Standard_ExtString.hxx>
 #include <Standard_Type.hxx> 
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
-
-//============================================================================
-//==== ShallowDump : Writes a ExtString value.
-//============================================================================
-Standard_EXPORT void ShallowDump (const Standard_ExtString Value, Standard_OStream& s)
-{  
-   s << hex << Value << " Standard_ExtString " << endl; 
-}
-
-const Handle_Standard_Type& Standard_ExtString_Type_() 
-{
-  static Handle_Standard_Type _aType = 
-    new Standard_Type("Standard_ExtString",sizeof(Standard_ExtString),0,NULL);
-  
-  return _aType;
-}
 
 Standard_Integer HashCode (const Standard_ExtString Value, 
 			   const Standard_Integer Upper)

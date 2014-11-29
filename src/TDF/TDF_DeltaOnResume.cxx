@@ -45,7 +45,7 @@ void TDF_DeltaOnResume::Apply()
 {
   // Undo = Forget.
   Label().ForgetAttribute (Attribute());
-#ifdef DEB
+#ifdef OCCT_DEBUG
   cout<<"Forget attribute"<<endl;
 #endif
 }

@@ -16,13 +16,14 @@
 
 class TSolid from PTopoDS inherits TShape from PTopoDS
 
-	---Purpose: A topological  Solid shape.   
-
+  ---Purpose: A topological  Solid shape.
+  --          A Topological part of 3D  space, bounded by Shells
+  --          and Faces.
 uses
     ShapeEnum from TopAbs
 
 is
-    Create returns mutable TSolid from PTopoDS;
+    Create returns TSolid from PTopoDS;
 	---Purpose: The new  TSolid  has no  boundary  and covers  the
 	--          whole 3D space.
     	---Level: Internal 

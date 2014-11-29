@@ -6,39 +6,28 @@
 #ifndef _PXCAFDoc_Volume_HeaderFile
 #define _PXCAFDoc_Volume_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PXCAFDoc_Volume_HeaderFile
 #include <Handle_PXCAFDoc_Volume.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
 
 
-class PXCAFDoc_Volume : public PDF_Attribute {
+class PXCAFDoc_Volume : public PDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   PXCAFDoc_Volume();
+  Standard_EXPORT PXCAFDoc_Volume();
   
-  Standard_EXPORT   PXCAFDoc_Volume(const Standard_Real Value);
+  Standard_EXPORT PXCAFDoc_Volume(const Standard_Real Value);
   
-  Standard_EXPORT     Standard_Real Get() const;
+  Standard_EXPORT   Standard_Real Get()  const;
   
-  Standard_EXPORT     void Set(const Standard_Real V) ;
+  Standard_EXPORT   void Set (const Standard_Real V) ;
 
 PXCAFDoc_Volume(const Storage_stCONSTclCOM& a) : PDF_Attribute(a)
 {
@@ -59,7 +48,7 @@ protected:
 private: 
 
 
-Standard_Real myValue;
+  Standard_Real myValue;
 
 
 };
@@ -68,7 +57,6 @@ Standard_Real myValue;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PXCAFDoc_Volume_HeaderFile

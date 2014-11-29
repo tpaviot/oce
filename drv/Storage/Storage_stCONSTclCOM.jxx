@@ -1,3 +1,1 @@
-#ifndef _Storage_stCONSTclCOM_HeaderFile
 #include <Storage_stCONSTclCOM.hxx>
-#endif

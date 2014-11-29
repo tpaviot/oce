@@ -6,52 +6,43 @@
 #ifndef _StepElement_Surface3dElementDescriptor_HeaderFile
 #define _StepElement_Surface3dElementDescriptor_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepElement_Surface3dElementDescriptor_HeaderFile
 #include <Handle_StepElement_Surface3dElementDescriptor.hxx>
-#endif
 
-#ifndef _Handle_StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_HeaderFile
 #include <Handle_StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember.hxx>
-#endif
-#ifndef _StepElement_Element2dShape_HeaderFile
 #include <StepElement_Element2dShape.hxx>
-#endif
-#ifndef _StepElement_ElementDescriptor_HeaderFile
 #include <StepElement_ElementDescriptor.hxx>
-#endif
-#ifndef _StepElement_ElementOrder_HeaderFile
 #include <StepElement_ElementOrder.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember;
 class TCollection_HAsciiString;
 
 
-//! Representation of STEP entity Surface3dElementDescriptor <br>
-class StepElement_Surface3dElementDescriptor : public StepElement_ElementDescriptor {
+//! Representation of STEP entity Surface3dElementDescriptor
+class StepElement_Surface3dElementDescriptor : public StepElement_ElementDescriptor
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepElement_Surface3dElementDescriptor();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const StepElement_ElementOrder aElementDescriptor_TopologyOrder,const Handle(TCollection_HAsciiString)& aElementDescriptor_Description,const Handle(StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember)& aPurpose,const StepElement_Element2dShape aShape) ;
-  //! Returns field Purpose <br>
-  Standard_EXPORT     Handle_StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember Purpose() const;
-  //! Set field Purpose <br>
-  Standard_EXPORT     void SetPurpose(const Handle(StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember)& Purpose) ;
-  //! Returns field Shape <br>
-  Standard_EXPORT     StepElement_Element2dShape Shape() const;
-  //! Set field Shape <br>
-  Standard_EXPORT     void SetShape(const StepElement_Element2dShape Shape) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepElement_Surface3dElementDescriptor();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const StepElement_ElementOrder aElementDescriptor_TopologyOrder, const Handle(TCollection_HAsciiString)& aElementDescriptor_Description, const Handle(StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember)& aPurpose, const StepElement_Element2dShape aShape) ;
+  
+  //! Returns field Purpose
+  Standard_EXPORT   Handle(StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember) Purpose()  const;
+  
+  //! Set field Purpose
+  Standard_EXPORT   void SetPurpose (const Handle(StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember)& Purpose) ;
+  
+  //! Returns field Shape
+  Standard_EXPORT   StepElement_Element2dShape Shape()  const;
+  
+  //! Set field Shape
+  Standard_EXPORT   void SetShape (const StepElement_Element2dShape Shape) ;
 
 
 
@@ -66,8 +57,8 @@ protected:
 private: 
 
 
-Handle_StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember thePurpose;
-StepElement_Element2dShape theShape;
+  Handle(StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember) thePurpose;
+  StepElement_Element2dShape theShape;
 
 
 };
@@ -76,7 +67,6 @@ StepElement_Element2dShape theShape;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_Surface3dElementDescriptor_HeaderFile

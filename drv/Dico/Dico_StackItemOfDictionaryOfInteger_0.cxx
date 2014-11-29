@@ -5,19 +5,11 @@
 
 #include <Dico_StackItemOfDictionaryOfInteger.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Dico_DictionaryOfInteger_HeaderFile
 #include <Dico_DictionaryOfInteger.hxx>
-#endif
-#ifndef _Dico_StackItemOfDictionaryOfInteger_HeaderFile
 #include <Dico_StackItemOfDictionaryOfInteger.hxx>
-#endif
-#ifndef _Dico_IteratorOfDictionaryOfInteger_HeaderFile
 #include <Dico_IteratorOfDictionaryOfInteger.hxx>
-#endif
 
  
 

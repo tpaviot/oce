@@ -5,18 +5,10 @@
 
 #include <IntTools_SequenceOfCurves.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IntTools_Curve_HeaderFile
 #include <IntTools_Curve.hxx>
-#endif
-#ifndef _IntTools_SequenceNodeOfSequenceOfCurves_HeaderFile
 #include <IntTools_SequenceNodeOfSequenceOfCurves.hxx>
-#endif
  
 
 #define SeqItem IntTools_Curve

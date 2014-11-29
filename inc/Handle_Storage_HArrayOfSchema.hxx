@@ -6,22 +6,15 @@
 #ifndef _Handle_Storage_HArrayOfSchema_HeaderFile
 #define _Handle_Storage_HArrayOfSchema_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_MMgt_TShared_HeaderFile
 #include <Handle_MMgt_TShared.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(MMgt_TShared);
 class Storage_HArrayOfSchema;
 
-DEFINE_STANDARD_HANDLE(Storage_HArrayOfSchema,MMgt_TShared)
+DEFINE_STANDARD_HANDLE(Storage_HArrayOfSchema, MMgt_TShared)
 
-#endif
+#endif // _Handle_Storage_HArrayOfSchema_HeaderFile

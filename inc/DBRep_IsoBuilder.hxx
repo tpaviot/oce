@@ -6,52 +6,37 @@
 #ifndef _DBRep_IsoBuilder_HeaderFile
 #define _DBRep_IsoBuilder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _TColStd_Array1OfInteger_HeaderFile
 #include <TColStd_Array1OfInteger.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Geom2dHatch_Hatcher_HeaderFile
 #include <Geom2dHatch_Hatcher.hxx>
-#endif
-#ifndef _Handle_DBRep_Face_HeaderFile
 #include <Handle_DBRep_Face.hxx>
-#endif
 class TopoDS_Face;
 class DBRep_Face;
 
 
-//! Creation of isoparametric curves. <br>
-class DBRep_IsoBuilder  : public Geom2dHatch_Hatcher {
+//! Creation of isoparametric curves.
+class DBRep_IsoBuilder  : public Geom2dHatch_Hatcher
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates the builder. <br>
-  Standard_EXPORT   DBRep_IsoBuilder(const TopoDS_Face& TopologicalFace,const Standard_Real Infinite,const Standard_Integer NbIsos);
-  //! Returns the total number of domains. <br>
-        Standard_Integer NbDomains() const;
-  //! Loading of the isoparametric curves in the <br>
-//!          Data Structure of a drawable face. <br>
-  Standard_EXPORT     void LoadIsos(const Handle(DBRep_Face)& Face) const;
-
+  
+  //! Creates the builder.
+  Standard_EXPORT DBRep_IsoBuilder(const TopoDS_Face& TopologicalFace, const Standard_Real Infinite, const Standard_Integer NbIsos);
+  
+  //! Returns the total number of domains.
+      Standard_Integer NbDomains()  const;
+  
+  //! Loading of the isoparametric curves in the
+  //! Data Structure of a drawable face.
+  Standard_EXPORT   void LoadIsos (const Handle(DBRep_Face)& Face)  const;
 
 
 
@@ -66,16 +51,16 @@ private:
 
 
 
-Standard_Real myInfinite;
-Standard_Real myUMin;
-Standard_Real myUMax;
-Standard_Real myVMin;
-Standard_Real myVMax;
-TColStd_Array1OfReal myUPrm;
-TColStd_Array1OfInteger myUInd;
-TColStd_Array1OfReal myVPrm;
-TColStd_Array1OfInteger myVInd;
-Standard_Integer myNbDom;
+  Standard_Real myInfinite;
+  Standard_Real myUMin;
+  Standard_Real myUMax;
+  Standard_Real myVMin;
+  Standard_Real myVMax;
+  TColStd_Array1OfReal myUPrm;
+  TColStd_Array1OfInteger myUInd;
+  TColStd_Array1OfReal myVPrm;
+  TColStd_Array1OfInteger myVInd;
+  Standard_Integer myNbDom;
 
 
 };
@@ -85,7 +70,6 @@ Standard_Integer myNbDom;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DBRep_IsoBuilder_HeaderFile

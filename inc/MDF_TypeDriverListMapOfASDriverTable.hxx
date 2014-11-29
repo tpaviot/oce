@@ -6,34 +6,16 @@
 #ifndef _MDF_TypeDriverListMapOfASDriverTable_HeaderFile
 #define _MDF_TypeDriverListMapOfASDriverTable_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
-#ifndef _Handle_MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable_HeaderFile
 #include <Handle_MDF_DataMapNodeOfTypeDriverListMapOfASDriverTable.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class Standard_Type;
@@ -44,50 +26,50 @@ class MDF_DataMapIteratorOfTypeDriverListMapOfASDriverTable;
 
 
 
-class MDF_TypeDriverListMapOfASDriverTable  : public TCollection_BasicMap {
+class MDF_TypeDriverListMapOfASDriverTable  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   MDF_TypeDriverListMapOfASDriverTable(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT MDF_TypeDriverListMapOfASDriverTable(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     MDF_TypeDriverListMapOfASDriverTable& Assign(const MDF_TypeDriverListMapOfASDriverTable& Other) ;
-    MDF_TypeDriverListMapOfASDriverTable& operator =(const MDF_TypeDriverListMapOfASDriverTable& Other) 
+  Standard_EXPORT   MDF_TypeDriverListMapOfASDriverTable& Assign (const MDF_TypeDriverListMapOfASDriverTable& Other) ;
+  MDF_TypeDriverListMapOfASDriverTable& operator = (const MDF_TypeDriverListMapOfASDriverTable& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~MDF_TypeDriverListMapOfASDriverTable()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Bind(const Handle(Standard_Type)& K,const MDF_DriverListOfASDriverTable& I) ;
+  Standard_EXPORT   Standard_Boolean Bind (const Handle(Standard_Type)& K, const MDF_DriverListOfASDriverTable& I) ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const Handle(Standard_Type)& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound (const Handle(Standard_Type)& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind(const Handle(Standard_Type)& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind (const Handle(Standard_Type)& K) ;
   
-  Standard_EXPORT    const MDF_DriverListOfASDriverTable& Find(const Handle(Standard_Type)& K) const;
-   const MDF_DriverListOfASDriverTable& operator()(const Handle(Standard_Type)& K) const
+  Standard_EXPORT  const  MDF_DriverListOfASDriverTable& Find (const Handle(Standard_Type)& K)  const;
+ const  MDF_DriverListOfASDriverTable& operator() (const Handle(Standard_Type)& K)  const
 {
   return Find(K);
 }
   
-  Standard_EXPORT     MDF_DriverListOfASDriverTable& ChangeFind(const Handle(Standard_Type)& K) ;
-    MDF_DriverListOfASDriverTable& operator()(const Handle(Standard_Type)& K) 
+  Standard_EXPORT   MDF_DriverListOfASDriverTable& ChangeFind (const Handle(Standard_Type)& K) ;
+  MDF_DriverListOfASDriverTable& operator() (const Handle(Standard_Type)& K) 
 {
   return ChangeFind(K);
 }
   
-  Standard_EXPORT     Standard_Address Find1(const Handle(Standard_Type)& K) const;
+  Standard_EXPORT   Standard_Address Find1 (const Handle(Standard_Type)& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFind1(const Handle(Standard_Type)& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFind1 (const Handle(Standard_Type)& K) ;
 
 
 
@@ -101,7 +83,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   MDF_TypeDriverListMapOfASDriverTable(const MDF_TypeDriverListMapOfASDriverTable& Other);
+  Standard_EXPORT MDF_TypeDriverListMapOfASDriverTable(const MDF_TypeDriverListMapOfASDriverTable& Other);
 
 
 
@@ -112,7 +94,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MDF_TypeDriverListMapOfASDriverTable_HeaderFile

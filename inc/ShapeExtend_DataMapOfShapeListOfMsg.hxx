@@ -6,31 +6,15 @@
 #ifndef _ShapeExtend_DataMapOfShapeListOfMsg_HeaderFile
 #define _ShapeExtend_DataMapOfShapeListOfMsg_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg_HeaderFile
 #include <Handle_ShapeExtend_DataMapNodeOfDataMapOfShapeListOfMsg.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class TopoDS_Shape;
@@ -41,50 +25,50 @@ class ShapeExtend_DataMapIteratorOfDataMapOfShapeListOfMsg;
 
 
 
-class ShapeExtend_DataMapOfShapeListOfMsg  : public TCollection_BasicMap {
+class ShapeExtend_DataMapOfShapeListOfMsg  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   ShapeExtend_DataMapOfShapeListOfMsg(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT ShapeExtend_DataMapOfShapeListOfMsg(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     ShapeExtend_DataMapOfShapeListOfMsg& Assign(const ShapeExtend_DataMapOfShapeListOfMsg& Other) ;
-    ShapeExtend_DataMapOfShapeListOfMsg& operator =(const ShapeExtend_DataMapOfShapeListOfMsg& Other) 
+  Standard_EXPORT   ShapeExtend_DataMapOfShapeListOfMsg& Assign (const ShapeExtend_DataMapOfShapeListOfMsg& Other) ;
+  ShapeExtend_DataMapOfShapeListOfMsg& operator = (const ShapeExtend_DataMapOfShapeListOfMsg& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~ShapeExtend_DataMapOfShapeListOfMsg()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Bind(const TopoDS_Shape& K,const Message_ListOfMsg& I) ;
+  Standard_EXPORT   Standard_Boolean Bind (const TopoDS_Shape& K, const Message_ListOfMsg& I) ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const TopoDS_Shape& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound (const TopoDS_Shape& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind(const TopoDS_Shape& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind (const TopoDS_Shape& K) ;
   
-  Standard_EXPORT    const Message_ListOfMsg& Find(const TopoDS_Shape& K) const;
-   const Message_ListOfMsg& operator()(const TopoDS_Shape& K) const
+  Standard_EXPORT  const  Message_ListOfMsg& Find (const TopoDS_Shape& K)  const;
+ const  Message_ListOfMsg& operator() (const TopoDS_Shape& K)  const
 {
   return Find(K);
 }
   
-  Standard_EXPORT     Message_ListOfMsg& ChangeFind(const TopoDS_Shape& K) ;
-    Message_ListOfMsg& operator()(const TopoDS_Shape& K) 
+  Standard_EXPORT   Message_ListOfMsg& ChangeFind (const TopoDS_Shape& K) ;
+  Message_ListOfMsg& operator() (const TopoDS_Shape& K) 
 {
   return ChangeFind(K);
 }
   
-  Standard_EXPORT     Standard_Address Find1(const TopoDS_Shape& K) const;
+  Standard_EXPORT   Standard_Address Find1 (const TopoDS_Shape& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFind1(const TopoDS_Shape& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFind1 (const TopoDS_Shape& K) ;
 
 
 
@@ -98,7 +82,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   ShapeExtend_DataMapOfShapeListOfMsg(const ShapeExtend_DataMapOfShapeListOfMsg& Other);
+  Standard_EXPORT ShapeExtend_DataMapOfShapeListOfMsg(const ShapeExtend_DataMapOfShapeListOfMsg& Other);
 
 
 
@@ -109,7 +93,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeExtend_DataMapOfShapeListOfMsg_HeaderFile

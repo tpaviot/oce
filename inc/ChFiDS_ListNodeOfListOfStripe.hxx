@@ -6,39 +6,28 @@
 #ifndef _ChFiDS_ListNodeOfListOfStripe_HeaderFile
 #define _ChFiDS_ListNodeOfListOfStripe_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ChFiDS_ListNodeOfListOfStripe_HeaderFile
 #include <Handle_ChFiDS_ListNodeOfListOfStripe.hxx>
-#endif
 
-#ifndef _Handle_ChFiDS_Stripe_HeaderFile
 #include <Handle_ChFiDS_Stripe.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class ChFiDS_Stripe;
 class ChFiDS_ListOfStripe;
 class ChFiDS_ListIteratorOfListOfStripe;
 
 
 
-class ChFiDS_ListNodeOfListOfStripe : public TCollection_MapNode {
+class ChFiDS_ListNodeOfListOfStripe : public TCollection_MapNode
+{
 
 public:
 
   
-      ChFiDS_ListNodeOfListOfStripe(const Handle(ChFiDS_Stripe)& I,const TCollection_MapNodePtr& n);
+    ChFiDS_ListNodeOfListOfStripe(const Handle(ChFiDS_Stripe)& I, const TCollection_MapNodePtr& n);
   
-        Handle_ChFiDS_Stripe& Value() const;
+      Handle(ChFiDS_Stripe)& Value()  const;
 
 
 
@@ -53,12 +42,12 @@ protected:
 private: 
 
 
-Handle_ChFiDS_Stripe myValue;
+  Handle(ChFiDS_Stripe) myValue;
 
 
 };
 
-#define Item Handle_ChFiDS_Stripe
+#define Item Handle(ChFiDS_Stripe)
 #define Item_hxx <ChFiDS_Stripe.hxx>
 #define TCollection_ListNode ChFiDS_ListNodeOfListOfStripe
 #define TCollection_ListNode_hxx <ChFiDS_ListNodeOfListOfStripe.hxx>
@@ -83,7 +72,6 @@ Handle_ChFiDS_Stripe myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ChFiDS_ListNodeOfListOfStripe_HeaderFile

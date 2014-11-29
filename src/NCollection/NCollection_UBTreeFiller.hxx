@@ -70,7 +70,7 @@ template <class TheObjType, class TheBndType> class NCollection_UBTreeFiller
    *   the tree filling is faster due to better utilisation of CPU L1/L2 cache.
    */ 
   NCollection_UBTreeFiller (UBTree& theTree,
-                            const Handle_NCollection_BaseAllocator& theAlloc=0L,
+                            const Handle(NCollection_BaseAllocator)& theAlloc=0L,
                             const Standard_Boolean isFullRandom = Standard_True)
     : myTree(theTree), mySeqPtr(1000, theAlloc),
       mySeed(1), myIsFullRandom (isFullRandom)
@@ -117,7 +117,7 @@ template <class TheObjType, class TheBndType> class NCollection_UBTreeFiller
   ~NCollection_UBTreeFiller ()
   {
     if (mySeqPtr.Length() > 0)
-#ifdef DEB_UBTREE
+#ifdef OCCT_DEBUG_UBTREE
       cout << "~NCollection_UBTreeFiller: " << Fill()
            << " objects added to the tree" << endl;
 #else

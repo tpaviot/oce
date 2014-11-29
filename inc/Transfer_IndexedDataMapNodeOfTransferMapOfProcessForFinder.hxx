@@ -6,31 +6,15 @@
 #ifndef _Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder_HeaderFile
 #define _Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder_HeaderFile
 #include <Handle_Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder.hxx>
-#endif
 
-#ifndef _Handle_Transfer_Finder_HeaderFile
 #include <Handle_Transfer_Finder.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Transfer_Binder_HeaderFile
 #include <Handle_Transfer_Binder.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
 class Transfer_Finder;
 class Transfer_Binder;
 class Transfer_FindHasher;
@@ -38,20 +22,21 @@ class Transfer_TransferMapOfProcessForFinder;
 
 
 
-class Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder : public TCollection_MapNode {
+class Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder : public TCollection_MapNode
+{
 
 public:
 
   
-      Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder(const Handle(Transfer_Finder)& K1,const Standard_Integer K2,const Handle(Transfer_Binder)& I,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+    Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder(const Handle(Transfer_Finder)& K1, const Standard_Integer K2, const Handle(Transfer_Binder)& I, const TCollection_MapNodePtr& n1, const TCollection_MapNodePtr& n2);
   
-        Handle_Transfer_Finder& Key1() const;
+      Handle(Transfer_Finder)& Key1()  const;
   
-        Standard_Integer& Key2() const;
+      Standard_Integer& Key2()  const;
   
-        TCollection_MapNodePtr& Next2() const;
+      TCollection_MapNodePtr& Next2()  const;
   
-        Handle_Transfer_Binder& Value() const;
+      Handle(Transfer_Binder)& Value()  const;
 
 
 
@@ -66,17 +51,17 @@ protected:
 private: 
 
 
-Handle_Transfer_Finder myKey1;
-Standard_Integer myKey2;
-Handle_Transfer_Binder myValue;
-TCollection_MapNodePtr myNext2;
+  Handle(Transfer_Finder) myKey1;
+  Standard_Integer myKey2;
+  Handle(Transfer_Binder) myValue;
+  TCollection_MapNodePtr myNext2;
 
 
 };
 
-#define TheKey Handle_Transfer_Finder
+#define TheKey Handle(Transfer_Finder)
 #define TheKey_hxx <Transfer_Finder.hxx>
-#define TheItem Handle_Transfer_Binder
+#define TheItem Handle(Transfer_Binder)
 #define TheItem_hxx <Transfer_Binder.hxx>
 #define Hasher Transfer_FindHasher
 #define Hasher_hxx <Transfer_FindHasher.hxx>
@@ -103,7 +88,6 @@ TCollection_MapNodePtr myNext2;
 #undef TCollection_IndexedDataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder_HeaderFile

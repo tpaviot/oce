@@ -5,18 +5,10 @@
 
 #include <Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter.hxx>
 
-#ifndef _Adaptor2d_Curve2d_HeaderFile
 #include <Adaptor2d_Curve2d.hxx>
-#endif
-#ifndef _Geom2dInt_Geom2dCurveTool_HeaderFile
 #include <Geom2dInt_Geom2dCurveTool.hxx>
-#endif
-#ifndef _Extrema_POnCurv2d_HeaderFile
 #include <Extrema_POnCurv2d.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
  
 
 #define Curve1 Adaptor2d_Curve2d

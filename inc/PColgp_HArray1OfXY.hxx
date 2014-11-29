@@ -6,44 +6,17 @@
 #ifndef _PColgp_HArray1OfXY_HeaderFile
 #define _PColgp_HArray1OfXY_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PColgp_HArray1OfXY_HeaderFile
 #include <Handle_PColgp_HArray1OfXY.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _gp_XY_HeaderFile
 #include <gp_XY.hxx>
-#endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
-#ifndef _PColgp_FieldOfHArray1OfXY_HeaderFile
 #include <PColgp_FieldOfHArray1OfXY.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _Handle_PColgp_VArrayNodeOfFieldOfHArray1OfXY_HeaderFile
 #include <Handle_PColgp_VArrayNodeOfFieldOfHArray1OfXY.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
-class Standard_Persistent;
 class Standard_OutOfRange;
 class Standard_RangeError;
 class gp_XY;
@@ -52,30 +25,27 @@ class PColgp_VArrayNodeOfFieldOfHArray1OfXY;
 class PColgp_VArrayTNodeOfFieldOfHArray1OfXY;
 
 
-class PColgp_HArray1OfXY : public Standard_Persistent {
+class PColgp_HArray1OfXY : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PColgp_HArray1OfXY(const Standard_Integer Low,const Standard_Integer Up);
+  Standard_EXPORT PColgp_HArray1OfXY(const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT   PColgp_HArray1OfXY(const Standard_Integer Low,const Standard_Integer Up,const gp_XY& V);
+  Standard_EXPORT PColgp_HArray1OfXY(const Standard_Integer Low, const Standard_Integer Up, const gp_XY& V);
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const gp_XY& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const gp_XY& Value) ;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-  Standard_EXPORT     gp_XY Value(const Standard_Integer Index) const;
-  
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
+  Standard_EXPORT   gp_XY Value (const Standard_Integer Index)  const;
 
-  PColgp_HArray1OfXY( )
+PColgp_HArray1OfXY( )
 {
   
 }
@@ -101,13 +71,13 @@ protected:
 private: 
 
   
-  Standard_EXPORT     PColgp_FieldOfHArray1OfXY Field() const;
+  Standard_EXPORT   PColgp_FieldOfHArray1OfXY Field()  const;
   
-  Standard_EXPORT     Standard_Address Datas() const;
+  Standard_EXPORT   Standard_Address Datas()  const;
 
-Standard_Integer LowerBound;
-Standard_Integer UpperBound;
-PColgp_FieldOfHArray1OfXY Data;
+  Standard_Integer LowerBound;
+  Standard_Integer UpperBound;
+  PColgp_FieldOfHArray1OfXY Data;
 
 
 };
@@ -157,11 +127,6 @@ PColgp_FieldOfHArray1OfXY Data;
 #undef PCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline void ShallowDump(const Handle_PColgp_HArray1OfXY& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
 
 
-
-#endif
+#endif // _PColgp_HArray1OfXY_HeaderFile

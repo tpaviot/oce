@@ -5,29 +5,21 @@
 
 #include <DDF_TransactionStack.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _DDF_StackIteratorOfTransactionStack_HeaderFile
-#include <DDF_StackIteratorOfTransactionStack.hxx>
-#endif
-#ifndef _DDF_Transaction_HeaderFile
+#include <DDF_ListIteratorOfTransactionStack.hxx>
 #include <DDF_Transaction.hxx>
-#endif
-#ifndef _DDF_StackNodeOfTransactionStack_HeaderFile
-#include <DDF_StackNodeOfTransactionStack.hxx>
-#endif
+#include <DDF_ListNodeOfTransactionStack.hxx>
  
 
-#define Item Handle_DDF_Transaction
+#define Item Handle(DDF_Transaction)
 #define Item_hxx <DDF_Transaction.hxx>
-#define TCollection_StackNode DDF_StackNodeOfTransactionStack
-#define TCollection_StackNode_hxx <DDF_StackNodeOfTransactionStack.hxx>
-#define TCollection_StackIterator DDF_StackIteratorOfTransactionStack
-#define TCollection_StackIterator_hxx <DDF_StackIteratorOfTransactionStack.hxx>
-#define Handle_TCollection_StackNode Handle_DDF_StackNodeOfTransactionStack
-#define TCollection_StackNode_Type_() DDF_StackNodeOfTransactionStack_Type_()
-#define TCollection_Stack DDF_TransactionStack
-#define TCollection_Stack_hxx <DDF_TransactionStack.hxx>
-#include <TCollection_Stack.gxx>
+#define TCollection_ListNode DDF_ListNodeOfTransactionStack
+#define TCollection_ListNode_hxx <DDF_ListNodeOfTransactionStack.hxx>
+#define TCollection_ListIterator DDF_ListIteratorOfTransactionStack
+#define TCollection_ListIterator_hxx <DDF_ListIteratorOfTransactionStack.hxx>
+#define Handle_TCollection_ListNode Handle_DDF_ListNodeOfTransactionStack
+#define TCollection_ListNode_Type_() DDF_ListNodeOfTransactionStack_Type_()
+#define TCollection_List DDF_TransactionStack
+#define TCollection_List_hxx <DDF_TransactionStack.hxx>
+#include <TCollection_List.gxx>
 

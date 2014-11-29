@@ -1,3 +1,1 @@
-#ifndef _StepBasic_WeekOfYearAndDayDate_HeaderFile
 #include <StepBasic_WeekOfYearAndDayDate.hxx>
-#endif

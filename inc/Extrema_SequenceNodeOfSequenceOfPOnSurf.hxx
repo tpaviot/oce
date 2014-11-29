@@ -6,38 +6,27 @@
 #ifndef _Extrema_SequenceNodeOfSequenceOfPOnSurf_HeaderFile
 #define _Extrema_SequenceNodeOfSequenceOfPOnSurf_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Extrema_SequenceNodeOfSequenceOfPOnSurf_HeaderFile
 #include <Handle_Extrema_SequenceNodeOfSequenceOfPOnSurf.hxx>
-#endif
 
-#ifndef _Extrema_POnSurf_HeaderFile
 #include <Extrema_POnSurf.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Extrema_POnSurf;
 class Extrema_SequenceOfPOnSurf;
 
 
 
-class Extrema_SequenceNodeOfSequenceOfPOnSurf : public TCollection_SeqNode {
+class Extrema_SequenceNodeOfSequenceOfPOnSurf : public TCollection_SeqNode
+{
 
 public:
 
   
-      Extrema_SequenceNodeOfSequenceOfPOnSurf(const Extrema_POnSurf& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    Extrema_SequenceNodeOfSequenceOfPOnSurf(const Extrema_POnSurf& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Extrema_POnSurf& Value() const;
+      Extrema_POnSurf& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-Extrema_POnSurf myValue;
+  Extrema_POnSurf myValue;
 
 
 };
@@ -78,7 +67,6 @@ Extrema_POnSurf myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Extrema_SequenceNodeOfSequenceOfPOnSurf_HeaderFile

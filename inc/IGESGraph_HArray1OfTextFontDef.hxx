@@ -6,28 +6,14 @@
 #ifndef _IGESGraph_HArray1OfTextFontDef_HeaderFile
 #define _IGESGraph_HArray1OfTextFontDef_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESGraph_HArray1OfTextFontDef_HeaderFile
 #include <Handle_IGESGraph_HArray1OfTextFontDef.hxx>
-#endif
 
-#ifndef _IGESGraph_Array1OfTextFontDef_HeaderFile
 #include <IGESGraph_Array1OfTextFontDef.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_IGESGraph_TextFontDef_HeaderFile
 #include <Handle_IGESGraph_TextFontDef.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class IGESGraph_Array1OfTextFontDef;
 
 
 
-class IGESGraph_HArray1OfTextFontDef : public MMgt_TShared {
+class IGESGraph_HArray1OfTextFontDef : public MMgt_TShared
+{
 
 public:
 
   
-      IGESGraph_HArray1OfTextFontDef(const Standard_Integer Low,const Standard_Integer Up);
+    IGESGraph_HArray1OfTextFontDef(const Standard_Integer Low, const Standard_Integer Up);
   
-      IGESGraph_HArray1OfTextFontDef(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESGraph_TextFontDef)& V);
+    IGESGraph_HArray1OfTextFontDef(const Standard_Integer Low, const Standard_Integer Up, const Handle(IGESGraph_TextFontDef)& V);
   
-        void Init(const Handle(IGESGraph_TextFontDef)& V) ;
+      void Init (const Handle(IGESGraph_TextFontDef)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(IGESGraph_TextFontDef)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(IGESGraph_TextFontDef)& Value) ;
   
-       const Handle_IGESGraph_TextFontDef& Value(const Standard_Integer Index) const;
+     const  Handle(IGESGraph_TextFontDef)& Value (const Standard_Integer Index)  const;
   
-        Handle_IGESGraph_TextFontDef& ChangeValue(const Standard_Integer Index) ;
+      Handle(IGESGraph_TextFontDef)& ChangeValue (const Standard_Integer Index) ;
   
-       const IGESGraph_Array1OfTextFontDef& Array1() const;
+     const  IGESGraph_Array1OfTextFontDef& Array1()  const;
   
-        IGESGraph_Array1OfTextFontDef& ChangeArray1() ;
+      IGESGraph_Array1OfTextFontDef& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-IGESGraph_Array1OfTextFontDef myArray;
+  IGESGraph_Array1OfTextFontDef myArray;
 
 
 };
 
-#define ItemHArray1 Handle_IGESGraph_TextFontDef
+#define ItemHArray1 Handle(IGESGraph_TextFontDef)
 #define ItemHArray1_hxx <IGESGraph_TextFontDef.hxx>
 #define TheArray1 IGESGraph_Array1OfTextFontDef
 #define TheArray1_hxx <IGESGraph_Array1OfTextFontDef.hxx>
@@ -103,7 +90,6 @@ IGESGraph_Array1OfTextFontDef myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGraph_HArray1OfTextFontDef_HeaderFile

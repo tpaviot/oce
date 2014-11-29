@@ -1,3 +1,1 @@
-#ifndef _StepDimTol_CircularRunoutTolerance_HeaderFile
 #include <StepDimTol_CircularRunoutTolerance.hxx>
-#endif

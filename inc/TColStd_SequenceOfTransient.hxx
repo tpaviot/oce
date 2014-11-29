@@ -6,28 +6,14 @@
 #ifndef _TColStd_SequenceOfTransient_HeaderFile
 #define _TColStd_SequenceOfTransient_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_TColStd_SequenceNodeOfSequenceOfTransient_HeaderFile
 #include <Handle_TColStd_SequenceNodeOfSequenceOfTransient.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Standard_Transient;
@@ -35,66 +21,68 @@ class TColStd_SequenceNodeOfSequenceOfTransient;
 
 
 
-class TColStd_SequenceOfTransient  : public TCollection_BaseSequence {
+class TColStd_SequenceOfTransient  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      TColStd_SequenceOfTransient();
+    TColStd_SequenceOfTransient();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT TColStd_SequenceOfTransient(const TColStd_SequenceOfTransient& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~TColStd_SequenceOfTransient()
 {
   Clear();
 }
   
-  Standard_EXPORT    const TColStd_SequenceOfTransient& Assign(const TColStd_SequenceOfTransient& Other) ;
-   const TColStd_SequenceOfTransient& operator =(const TColStd_SequenceOfTransient& Other) 
+  Standard_EXPORT  const  TColStd_SequenceOfTransient& Assign (const TColStd_SequenceOfTransient& Other) ;
+ const  TColStd_SequenceOfTransient& operator = (const TColStd_SequenceOfTransient& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(Standard_Transient)& T) ;
+  Standard_EXPORT   void Append (const Handle(Standard_Transient)& T) ;
   
-        void Append(TColStd_SequenceOfTransient& S) ;
+      void Append (TColStd_SequenceOfTransient& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(Standard_Transient)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(Standard_Transient)& T) ;
   
-        void Prepend(TColStd_SequenceOfTransient& S) ;
+      void Prepend (TColStd_SequenceOfTransient& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(Standard_Transient)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(Standard_Transient)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,TColStd_SequenceOfTransient& S) ;
+      void InsertBefore (const Standard_Integer Index, TColStd_SequenceOfTransient& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(Standard_Transient)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(Standard_Transient)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,TColStd_SequenceOfTransient& S) ;
+      void InsertAfter (const Standard_Integer Index, TColStd_SequenceOfTransient& S) ;
   
-  Standard_EXPORT    const Handle_Standard_Transient& First() const;
+  Standard_EXPORT  const  Handle(Standard_Transient)& First()  const;
   
-  Standard_EXPORT    const Handle_Standard_Transient& Last() const;
+  Standard_EXPORT  const  Handle(Standard_Transient)& Last()  const;
   
-        void Split(const Standard_Integer Index,TColStd_SequenceOfTransient& Sub) ;
+      void Split (const Standard_Integer Index, TColStd_SequenceOfTransient& Sub) ;
   
-  Standard_EXPORT    const Handle_Standard_Transient& Value(const Standard_Integer Index) const;
-   const Handle_Standard_Transient& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(Standard_Transient)& Value (const Standard_Integer Index)  const;
+ const  Handle(Standard_Transient)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(Standard_Transient)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(Standard_Transient)& I) ;
   
-  Standard_EXPORT     Handle_Standard_Transient& ChangeValue(const Standard_Integer Index) ;
-    Handle_Standard_Transient& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(Standard_Transient)& ChangeValue (const Standard_Integer Index) ;
+  Handle(Standard_Transient)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -107,15 +95,13 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColStd_SequenceOfTransient(const TColStd_SequenceOfTransient& Other);
 
 
 
 
 };
 
-#define SeqItem Handle_Standard_Transient
+#define SeqItem Handle(Standard_Transient)
 #define SeqItem_hxx <Standard_Transient.hxx>
 #define TCollection_SequenceNode TColStd_SequenceNodeOfSequenceOfTransient
 #define TCollection_SequenceNode_hxx <TColStd_SequenceNodeOfSequenceOfTransient.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_SequenceOfTransient_HeaderFile

@@ -1,24 +1,8 @@
-#ifndef _StepData_Protocol_HeaderFile
 #include <StepData_Protocol.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TColStd_SequenceOfAsciiString_HeaderFile
 #include <TColStd_SequenceOfAsciiString.hxx>
-#endif
-#ifndef _StepData_StepReaderData_HeaderFile
 #include <StepData_StepReaderData.hxx>
-#endif
-#ifndef _Interface_Check_HeaderFile
 #include <Interface_Check.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepData_StepWriter_HeaderFile
 #include <StepData_StepWriter.hxx>
-#endif
-#ifndef _StepData_DescrReadWrite_HeaderFile
 #include <StepData_DescrReadWrite.hxx>
-#endif

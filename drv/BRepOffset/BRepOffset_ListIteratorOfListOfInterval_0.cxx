@@ -5,21 +5,11 @@
 
 #include <BRepOffset_ListIteratorOfListOfInterval.hxx>
 
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _BRepOffset_ListOfInterval_HeaderFile
 #include <BRepOffset_ListOfInterval.hxx>
-#endif
-#ifndef _BRepOffset_Interval_HeaderFile
 #include <BRepOffset_Interval.hxx>
-#endif
-#ifndef _BRepOffset_ListNodeOfListOfInterval_HeaderFile
 #include <BRepOffset_ListNodeOfListOfInterval.hxx>
-#endif
  
 
 #define Item BRepOffset_Interval

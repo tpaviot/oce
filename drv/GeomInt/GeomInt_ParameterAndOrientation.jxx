@@ -1,3 +1,1 @@
-#ifndef _GeomInt_ParameterAndOrientation_HeaderFile
 #include <GeomInt_ParameterAndOrientation.hxx>
-#endif

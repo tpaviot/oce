@@ -6,45 +6,34 @@
 #ifndef _StepBasic_DerivedUnitElement_HeaderFile
 #define _StepBasic_DerivedUnitElement_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_DerivedUnitElement_HeaderFile
 #include <Handle_StepBasic_DerivedUnitElement.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_NamedUnit_HeaderFile
 #include <Handle_StepBasic_NamedUnit.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepBasic_NamedUnit;
 
 
-//! Added from StepBasic Rev2 to Rev4 <br>
-class StepBasic_DerivedUnitElement : public MMgt_TShared {
+//! Added from StepBasic Rev2 to Rev4
+class StepBasic_DerivedUnitElement : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   StepBasic_DerivedUnitElement();
+  Standard_EXPORT StepBasic_DerivedUnitElement();
   
-  Standard_EXPORT     void Init(const Handle(StepBasic_NamedUnit)& aUnit,const Standard_Real aExponent) ;
+  Standard_EXPORT   void Init (const Handle(StepBasic_NamedUnit)& aUnit, const Standard_Real aExponent) ;
   
-  Standard_EXPORT     void SetUnit(const Handle(StepBasic_NamedUnit)& aUnit) ;
+  Standard_EXPORT   void SetUnit (const Handle(StepBasic_NamedUnit)& aUnit) ;
   
-  Standard_EXPORT     Handle_StepBasic_NamedUnit Unit() const;
+  Standard_EXPORT   Handle(StepBasic_NamedUnit) Unit()  const;
   
-  Standard_EXPORT     void SetExponent(const Standard_Real aExponent) ;
+  Standard_EXPORT   void SetExponent (const Standard_Real aExponent) ;
   
-  Standard_EXPORT     Standard_Real Exponent() const;
+  Standard_EXPORT   Standard_Real Exponent()  const;
 
 
 
@@ -59,8 +48,8 @@ protected:
 private: 
 
 
-Handle_StepBasic_NamedUnit theUnit;
-Standard_Real theExponent;
+  Handle(StepBasic_NamedUnit) theUnit;
+  Standard_Real theExponent;
 
 
 };
@@ -69,7 +58,6 @@ Standard_Real theExponent;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_DerivedUnitElement_HeaderFile

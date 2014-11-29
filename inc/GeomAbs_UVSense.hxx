@@ -6,21 +6,20 @@
 #ifndef _GeomAbs_UVSense_HeaderFile
 #define _GeomAbs_UVSense_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-//!  This enumeration is used in the class RectangularTrimmedSurface <br>
-//!  to compare the orientation of the basic surface and the orientation <br>
-//!  of the trimmed surface and in the class ElementarySurface to know <br>
-//!  the direction of parametrization by comparison with the default <br>
-//!  construction mode. <br>
-enum GeomAbs_UVSense {
+
+//! This enumeration is used in the class RectangularTrimmedSurface
+//! to compare the orientation of the basic surface and the orientation
+//! of the trimmed surface and in the class ElementarySurface to know
+//! the direction of parametrization by comparison with the default
+//! construction mode.
+enum GeomAbs_UVSense
+{
 GeomAbs_SameUV,
 GeomAbs_SameU,
 GeomAbs_SameV,
 GeomAbs_OppositeUV
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _GeomAbs_UVSense_HeaderFile

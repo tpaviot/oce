@@ -26,6 +26,7 @@ IMPLEMENT_STANDARD_RTTIEXT(OpenGl_VertexBuffer, OpenGl_Resource)
 // =======================================================================
 OpenGl_VertexBuffer::OpenGl_VertexBuffer()
 : OpenGl_Resource(),
+  myOffset (NULL),
   myBufferId (NO_BUFFER),
   myComponentsNb (4),
   myElemsNb (0),
@@ -69,7 +70,7 @@ bool OpenGl_VertexBuffer::Create (const Handle(OpenGl_Context)& theGlCtx)
 // function : Release
 // purpose  :
 // =======================================================================
-void OpenGl_VertexBuffer::Release (const OpenGl_Context* theGlCtx)
+void OpenGl_VertexBuffer::Release (OpenGl_Context* theGlCtx)
 {
   if (myBufferId == NO_BUFFER)
   {
@@ -84,6 +85,7 @@ void OpenGl_VertexBuffer::Release (const OpenGl_Context* theGlCtx)
   {
     theGlCtx->core15->glDeleteBuffers (1, &myBufferId);
   }
+  myOffset   = NULL;
   myBufferId = NO_BUFFER;
 }
 
@@ -106,13 +108,15 @@ void OpenGl_VertexBuffer::Unbind (const Handle(OpenGl_Context)& theGlCtx) const
 }
 
 // =======================================================================
-// function : Init
+// function : init
 // purpose  :
 // =======================================================================
-bool OpenGl_VertexBuffer::Init (const Handle(OpenGl_Context)& theGlCtx,
+bool OpenGl_VertexBuffer::init (const Handle(OpenGl_Context)& theGlCtx,
                                 const GLuint   theComponentsNb,
                                 const GLsizei  theElemsNb,
-                                const GLfloat* theData)
+                                const void*    theData,
+                                const GLenum   theDataType,
+                                const GLsizei  theStride)
 {
   if (!Create (theGlCtx))
   {
@@ -120,134 +124,38 @@ bool OpenGl_VertexBuffer::Init (const Handle(OpenGl_Context)& theGlCtx,
   }
 
   Bind (theGlCtx);
-  myDataType     = GL_FLOAT;
+  myDataType     = theDataType;
   myComponentsNb = theComponentsNb;
   myElemsNb      = theElemsNb;
-  theGlCtx->core15->glBufferData (GetTarget(), GLsizeiptr(myElemsNb) * GLsizeiptr(myComponentsNb) * sizeof(GLfloat), theData, GL_STATIC_DRAW);
+  theGlCtx->core15->glBufferData (GetTarget(), GLsizeiptr(myElemsNb) * theStride, theData, GL_STATIC_DRAW);
   bool isDone = (glGetError() == GL_NO_ERROR); // GL_OUT_OF_MEMORY
   Unbind (theGlCtx);
   return isDone;
 }
 
 // =======================================================================
-// function : SubData
+// function : subData
 // purpose  :
 // =======================================================================
-bool OpenGl_VertexBuffer::SubData (const Handle(OpenGl_Context)& theGlCtx,
+bool OpenGl_VertexBuffer::subData (const Handle(OpenGl_Context)& theGlCtx,
                                    const GLsizei  theElemFrom,
                                    const GLsizei  theElemsNb,
-                                   const GLfloat* theData)
+                                   const void*    theData,
+                                   const GLenum   theDataType)
 {
-  if (!IsValid() || myDataType != GL_FLOAT ||
+  if (!IsValid() || myDataType != theDataType ||
       theElemFrom < 0 || ((theElemFrom + theElemsNb) > myElemsNb))
   {
     return false;
   }
 
   Bind (theGlCtx);
+  const size_t aDataSize = sizeOfGlType (theDataType);
   theGlCtx->core15->glBufferSubData (GetTarget(),
-                                     GLintptr(theElemFrom)  * GLintptr(myComponentsNb)   * sizeof(GLfloat), // offset in bytes
-                                     GLsizeiptr(theElemsNb) * GLsizeiptr(myComponentsNb) * sizeof(GLfloat), // size   in bytes
+                                     GLintptr(theElemFrom)  * GLintptr  (myComponentsNb) * aDataSize, // offset in bytes
+                                     GLsizeiptr(theElemsNb) * GLsizeiptr(myComponentsNb) * aDataSize, // size   in bytes
                                      theData);
   bool isDone = (glGetError() == GL_NO_ERROR); // some dummy error
-  Unbind (theGlCtx);
-  return isDone;
-}
-
-// =======================================================================
-// function : Init
-// purpose  :
-// =======================================================================
-bool OpenGl_VertexBuffer::Init (const Handle(OpenGl_Context)& theGlCtx,
-                                const GLuint  theComponentsNb,
-                                const GLsizei theElemsNb,
-                                const GLuint* theData)
-{
-  if (!Create (theGlCtx))
-  {
-    return false;
-  }
-
-  Bind (theGlCtx);
-  myDataType     = GL_UNSIGNED_INT;  
-  myComponentsNb = theComponentsNb;
-  myElemsNb      = theElemsNb;
-  theGlCtx->core15->glBufferData (GetTarget(), GLsizeiptr(myElemsNb) * GLsizeiptr(myComponentsNb) * sizeof(GLuint), theData, GL_STATIC_DRAW);
-  bool isDone = (glGetError() == GL_NO_ERROR); // GL_OUT_OF_MEMORY
-  Unbind (theGlCtx);
-  return isDone;
-}
-
-// =======================================================================
-// function : SubData
-// purpose  :
-// =======================================================================
-bool OpenGl_VertexBuffer::SubData (const Handle(OpenGl_Context)& theGlCtx,
-                                   const GLsizei theElemFrom,
-                                   const GLsizei theElemsNb,
-                                   const GLuint* theData)
-{
-  if (!IsValid() || myDataType != GL_UNSIGNED_INT
-   || theElemFrom < 0 || ((theElemFrom + theElemsNb) > myElemsNb))
-  {
-    return false;
-  }
-
-  Bind (theGlCtx);
-  theGlCtx->core15->glBufferSubData (GetTarget(),
-                                     GLintptr(theElemFrom)  * GLintptr(myComponentsNb)   * sizeof(GLuint), // offset in bytes
-                                     GLsizeiptr(theElemsNb) * GLsizeiptr(myComponentsNb) * sizeof(GLuint), // size   in bytes
-                                     theData);
-  bool isDone = (glGetError() == GL_NO_ERROR); // GL_OUT_OF_MEMORY
-  Unbind (theGlCtx);
-  return isDone;
-}
-
-// =======================================================================
-// function : Init
-// purpose  :
-// =======================================================================
-bool OpenGl_VertexBuffer::Init (const Handle(OpenGl_Context)& theGlCtx,
-                                const GLuint   theComponentsNb,
-                                const GLsizei  theElemsNb,
-                                const GLubyte* theData)
-{
-  if (!Create (theGlCtx))
-  {
-    return false;
-  }
-
-  Bind (theGlCtx);
-  myDataType     = GL_UNSIGNED_BYTE;
-  myComponentsNb = theComponentsNb;
-  myElemsNb      = theElemsNb;
-  theGlCtx->core15->glBufferData (GetTarget(), GLsizeiptr(myElemsNb) * GLsizeiptr(myComponentsNb) * sizeof(GLubyte), theData, GL_STATIC_DRAW);
-  bool isDone = (glGetError() == GL_NO_ERROR); // GL_OUT_OF_MEMORY
-  Unbind (theGlCtx);
-  return isDone;
-}
-
-// =======================================================================
-// function : SubData
-// purpose  :
-// =======================================================================
-bool OpenGl_VertexBuffer::SubData (const Handle(OpenGl_Context)& theGlCtx,
-                                   const GLsizei  theElemFrom,
-                                   const GLsizei  theElemsNb,
-                                   const GLubyte* theData)
-{
-  if (!IsValid() || myDataType != GL_UNSIGNED_BYTE
-   || theElemFrom < 0 || ((theElemFrom + theElemsNb) > myElemsNb))
-  {
-    return false;
-  }
-
-  Bind (theGlCtx);
-  theGlCtx->core15->glBufferSubData (GetTarget(),
-                                     GLintptr(theElemFrom)  * GLintptr(myComponentsNb)   * sizeof(GLubyte), // offset in bytes
-                                     GLsizeiptr(theElemsNb) * GLsizeiptr(myComponentsNb) * sizeof(GLubyte), // size   in bytes
-                                     theData);
-  bool isDone = (glGetError() == GL_NO_ERROR); // GL_OUT_OF_MEMORY
   Unbind (theGlCtx);
   return isDone;
 }
@@ -265,7 +173,7 @@ void OpenGl_VertexBuffer::BindVertexAttrib (const Handle(OpenGl_Context)& theGlC
   }
   Bind (theGlCtx);
   theGlCtx->core20->glEnableVertexAttribArray (theAttribLoc);
-  theGlCtx->core20->glVertexAttribPointer (theAttribLoc, GLint (myComponentsNb), myDataType, GL_FALSE, 0, NULL);
+  theGlCtx->core20->glVertexAttribPointer (theAttribLoc, GLint (myComponentsNb), myDataType, GL_FALSE, 0, myOffset);
 }
 
 // =======================================================================
@@ -284,56 +192,46 @@ void OpenGl_VertexBuffer::UnbindVertexAttrib (const Handle(OpenGl_Context)& theG
 }
 
 // =======================================================================
-// function : BindFixed
+// function : BindAllAttributes
 // purpose  :
 // =======================================================================
-void OpenGl_VertexBuffer::BindFixed (const Handle(OpenGl_Context)& theGlCtx,
-                                     const GLenum                  theMode) const
+void OpenGl_VertexBuffer::BindAllAttributes (const Handle(OpenGl_Context)& ) const
 {
-  if (!IsValid())
-  {
-    return;
-  }
-
-  Bind (theGlCtx);
-  glEnableClientState (theMode);
-  switch (theMode)
-  {
-    case GL_VERTEX_ARRAY:
-    {
-      glVertexPointer (static_cast<GLint> (myComponentsNb), myDataType, 0, NULL);
-      break;
-    }
-    case GL_NORMAL_ARRAY:
-    {
-      glNormalPointer (myDataType, 0, NULL);
-      break;
-    }
-    case GL_TEXTURE_COORD_ARRAY:
-    {
-      glTexCoordPointer (static_cast<GLint> (myComponentsNb), myDataType, 0, NULL);
-      break;
-    }
-    case GL_COLOR_ARRAY:
-    {
-      glColorPointer (static_cast<GLint> (myComponentsNb), myDataType, 0, NULL);
-      break;
-    }
-    default: break;
-  }
+  //
 }
 
 // =======================================================================
-// function : UnbindFixed
+// function : BindPositionAttribute
 // purpose  :
 // =======================================================================
-void OpenGl_VertexBuffer::UnbindFixed (const Handle(OpenGl_Context)& theGlCtx,
-                                       const GLenum                  theMode) const
+void OpenGl_VertexBuffer::BindPositionAttribute (const Handle(OpenGl_Context)& ) const
 {
-  if (!IsValid())
-  {
-    return;
-  }
-  Unbind (theGlCtx);
-  glDisableClientState (theMode);
+  //
+}
+
+// =======================================================================
+// function : UnbindAllAttributes
+// purpose  :
+// =======================================================================
+void OpenGl_VertexBuffer::UnbindAllAttributes (const Handle(OpenGl_Context)& ) const
+{
+  //
+}
+
+// =======================================================================
+// function : HasColorAttribute
+// purpose  :
+// =======================================================================
+bool OpenGl_VertexBuffer::HasColorAttribute() const
+{
+  return false;
+}
+
+// =======================================================================
+// function : HasNormalAttribute
+// purpose  :
+// =======================================================================
+bool OpenGl_VertexBuffer::HasNormalAttribute() const
+{
+  return false;
 }

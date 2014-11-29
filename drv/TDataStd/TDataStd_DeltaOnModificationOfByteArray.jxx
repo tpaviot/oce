@@ -1,12 +1,4 @@
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _TColStd_HArray1OfByte_HeaderFile
 #include <TColStd_HArray1OfByte.hxx>
-#endif
-#ifndef _TDataStd_ByteArray_HeaderFile
 #include <TDataStd_ByteArray.hxx>
-#endif
-#ifndef _TDataStd_DeltaOnModificationOfByteArray_HeaderFile
 #include <TDataStd_DeltaOnModificationOfByteArray.hxx>
-#endif

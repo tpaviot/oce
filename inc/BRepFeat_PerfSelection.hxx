@@ -6,17 +6,20 @@
 #ifndef _BRepFeat_PerfSelection_HeaderFile
 #define _BRepFeat_PerfSelection_HeaderFile
 
-//! To declare the type of selection semantics for local operation Perform methods <br>
-//! -   NoSelection <br>
-//! -   SelectionFU - selection of a face up to which a <br>
-//!   local operation will be performed <br>
-//! -   SelectionU - selection of a point up to which a <br>
-//!   local operation will be performed <br>
-//! -   SelectionSh - selection of a shape on which a <br>
-//!   local operation will be performed <br>
-//! -   SelectionShU - selection of a shape up to which a <br>
-//!   local operation will be performed. <br>
-enum BRepFeat_PerfSelection {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! To declare the type of selection semantics for local operation Perform methods
+//! -   NoSelection
+//! -   SelectionFU - selection of a face up to which a
+//! local operation will be performed
+//! -   SelectionU - selection of a point up to which a
+//! local operation will be performed
+//! -   SelectionSh - selection of a shape on which a
+//! local operation will be performed
+//! -   SelectionShU - selection of a shape up to which a
+//! local operation will be performed.
+enum BRepFeat_PerfSelection
+{
 BRepFeat_NoSelection,
 BRepFeat_SelectionFU,
 BRepFeat_SelectionU,
@@ -24,8 +27,4 @@ BRepFeat_SelectionSh,
 BRepFeat_SelectionShU
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BRepFeat_PerfSelection_HeaderFile

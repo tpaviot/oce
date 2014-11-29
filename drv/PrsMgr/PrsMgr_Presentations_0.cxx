@@ -5,18 +5,10 @@
 
 #include <PrsMgr_Presentations.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _PrsMgr_ModedPresentation_HeaderFile
 #include <PrsMgr_ModedPresentation.hxx>
-#endif
-#ifndef _PrsMgr_SequenceNodeOfPresentations_HeaderFile
 #include <PrsMgr_SequenceNodeOfPresentations.hxx>
-#endif
  
 
 #define SeqItem PrsMgr_ModedPresentation

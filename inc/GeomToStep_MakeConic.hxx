@@ -6,50 +6,36 @@
 #ifndef _GeomToStep_MakeConic_HeaderFile
 #define _GeomToStep_MakeConic_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Conic_HeaderFile
 #include <Handle_StepGeom_Conic.hxx>
-#endif
-#ifndef _GeomToStep_Root_HeaderFile
 #include <GeomToStep_Root.hxx>
-#endif
-#ifndef _Handle_Geom_Conic_HeaderFile
 #include <Handle_Geom_Conic.hxx>
-#endif
-#ifndef _Handle_Geom2d_Conic_HeaderFile
 #include <Handle_Geom2d_Conic.hxx>
-#endif
 class StepGeom_Conic;
 class StdFail_NotDone;
 class Geom_Conic;
 class Geom2d_Conic;
 
 
-//! This class implements the mapping between classes <br>
-//!          Conic from Geom and the class Conic from StepGeom <br>
-//!          which describes a Conic from prostep. As Conic is an abstract <br>
-//!          Conic this class is an access to the sub-class required. <br>
-class GeomToStep_MakeConic  : public GeomToStep_Root {
+//! This class implements the mapping between classes
+//! Conic from Geom and the class Conic from StepGeom
+//! which describes a Conic from prostep. As Conic is an abstract
+//! Conic this class is an access to the sub-class required.
+class GeomToStep_MakeConic  : public GeomToStep_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomToStep_MakeConic(const Handle(Geom_Conic)& C);
+  Standard_EXPORT GeomToStep_MakeConic(const Handle(Geom_Conic)& C);
   
-  Standard_EXPORT   GeomToStep_MakeConic(const Handle(Geom2d_Conic)& C);
+  Standard_EXPORT GeomToStep_MakeConic(const Handle(Geom2d_Conic)& C);
   
-  Standard_EXPORT    const Handle_StepGeom_Conic& Value() const;
-
+  Standard_EXPORT  const  Handle(StepGeom_Conic)& Value()  const;
 
 
 
@@ -64,7 +50,7 @@ private:
 
 
 
-Handle_StepGeom_Conic theConic;
+  Handle(StepGeom_Conic) theConic;
 
 
 };
@@ -73,7 +59,6 @@ Handle_StepGeom_Conic theConic;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomToStep_MakeConic_HeaderFile

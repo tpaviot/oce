@@ -14,8 +14,7 @@
 #ifndef _Graphic3d_CTexture_HeaderFile
 #define _Graphic3d_CTexture_HeaderFile
 
-#include <Handle_Graphic3d_TextureMap.hxx>
-#include <Standard_Type.hxx>
+#include <Graphic3d_TextureMap.hxx>
 
 class Graphic3d_CTexture
 {
@@ -34,7 +33,5 @@ public:
   int                          doTextureMap; //!< flag indicates to use texture or not
 
 };
-
-const Handle(Standard_Type)& TYPE(Graphic3d_CTexture);
 
 #endif // Graphic3d_CTexture_HeaderFile

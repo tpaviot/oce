@@ -1,3 +1,1 @@
-#ifndef _StepShape_CompoundShapeRepresentation_HeaderFile
 #include <StepShape_CompoundShapeRepresentation.hxx>
-#endif

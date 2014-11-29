@@ -6,55 +6,48 @@
 #ifndef _IFGraph_AllConnected_HeaderFile
 #define _IFGraph_AllConnected_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Interface_Graph_HeaderFile
 #include <Interface_Graph.hxx>
-#endif
-#ifndef _Interface_GraphContent_HeaderFile
 #include <Interface_GraphContent.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
 class Interface_Graph;
 class Standard_Transient;
 
 
-//! this class gives content of the CONNECTED COMPONANT(S) <br>
-//!           which include specific Entity(ies) <br>
-class IFGraph_AllConnected  : public Interface_GraphContent {
+//! this class gives content of the CONNECTED COMPONANT(S)
+//! which include specific Entity(ies)
+class IFGraph_AllConnected  : public Interface_GraphContent
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! creates an AllConnected from a graph, empty ready to be filled <br>
-  Standard_EXPORT   IFGraph_AllConnected(const Interface_Graph& agraph);
-  //! creates an AllConnected which memorizes Entities Connected to <br>
-//!           a given one, at any level : that is, itself, all Entities <br>
-//!           Shared by it and Sharing it, and so on. <br>
-//!           In other terms, this is the content of the CONNECTED COMPONANT <br>
-//!           which include a specific Entity <br>
-  Standard_EXPORT   IFGraph_AllConnected(const Interface_Graph& agraph,const Handle(Standard_Transient)& ent);
-  //! adds an entity and its Connected ones to the list (allows to <br>
-//!           cumulate all Entities Connected by some ones) <br>
-//!           Note that if "ent" is in the already computed list,, no entity <br>
-//!           will be added, but if "ent" is not already in the list, a new <br>
-//!           Connected Componant will be cumulated <br>
-  Standard_EXPORT     void GetFromEntity(const Handle(Standard_Transient)& ent) ;
-  //! Allows to restart on a new data set <br>
-  Standard_EXPORT     void ResetData() ;
-  //! does the specific evaluation (Connected entities atall levels) <br>
-  Standard_EXPORT   virtual  void Evaluate() ;
-
+  
+  //! creates an AllConnected from a graph, empty ready to be filled
+  Standard_EXPORT IFGraph_AllConnected(const Interface_Graph& agraph);
+  
+  //! creates an AllConnected which memorizes Entities Connected to
+  //! a given one, at any level : that is, itself, all Entities
+  //! Shared by it and Sharing it, and so on.
+  //! In other terms, this is the content of the CONNECTED COMPONANT
+  //! which include a specific Entity
+  Standard_EXPORT IFGraph_AllConnected(const Interface_Graph& agraph, const Handle(Standard_Transient)& ent);
+  
+  //! adds an entity and its Connected ones to the list (allows to
+  //! cumulate all Entities Connected by some ones)
+  //! Note that if "ent" is in the already computed list,, no entity
+  //! will be added, but if "ent" is not already in the list, a new
+  //! Connected Componant will be cumulated
+  Standard_EXPORT   void GetFromEntity (const Handle(Standard_Transient)& ent) ;
+  
+  //! Allows to restart on a new data set
+  Standard_EXPORT   void ResetData() ;
+  
+  //! does the specific evaluation (Connected entities atall levels)
+  Standard_EXPORT virtual   void Evaluate() ;
 
 
 
@@ -69,7 +62,7 @@ private:
 
 
 
-Interface_Graph thegraph;
+  Interface_Graph thegraph;
 
 
 };
@@ -78,7 +71,6 @@ Interface_Graph thegraph;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFGraph_AllConnected_HeaderFile

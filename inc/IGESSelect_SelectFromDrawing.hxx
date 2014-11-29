@@ -6,40 +6,36 @@
 #ifndef _IGESSelect_SelectFromDrawing_HeaderFile
 #define _IGESSelect_SelectFromDrawing_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSelect_SelectFromDrawing_HeaderFile
 #include <Handle_IGESSelect_SelectFromDrawing.hxx>
-#endif
 
-#ifndef _IFSelect_SelectDeduct_HeaderFile
 #include <IFSelect_SelectDeduct.hxx>
-#endif
 class Interface_InterfaceError;
 class Interface_EntityIterator;
 class Interface_Graph;
 class TCollection_AsciiString;
 
 
-//! This selection gets in all the model, the entities which are <br>
-//!           attached to the drawing(s) given as input. This includes : <br>
-//!           - Drawing Frame (Annotations directky referenced by Drawings) <br>
-//!           - Entities attached to the single Views referenced by Drawings <br>
-class IGESSelect_SelectFromDrawing : public IFSelect_SelectDeduct {
+//! This selection gets in all the model, the entities which are
+//! attached to the drawing(s) given as input. This includes :
+//! - Drawing Frame (Annotations directky referenced by Drawings)
+//! - Entities attached to the single Views referenced by Drawings
+class IGESSelect_SelectFromDrawing : public IFSelect_SelectDeduct
+{
 
 public:
 
-  //! Creates a SelectFromDrawing <br>
-  Standard_EXPORT   IGESSelect_SelectFromDrawing();
-  //! Selects the Entities which are attached to the Drawing(s) <br>
-//!           present in the Input <br>
-  Standard_EXPORT     Interface_EntityIterator RootResult(const Interface_Graph& G) const;
-  //! Returns the label, with is "Entities attached to Drawing" <br>
-  Standard_EXPORT     TCollection_AsciiString Label() const;
+  
+  //! Creates a SelectFromDrawing
+  Standard_EXPORT IGESSelect_SelectFromDrawing();
+  
+  //! Selects the Entities which are attached to the Drawing(s)
+  //! present in the Input
+  Standard_EXPORT   Interface_EntityIterator RootResult (const Interface_Graph& G)  const;
+  
+  //! Returns the label, with is "Entities attached to Drawing"
+  Standard_EXPORT   TCollection_AsciiString Label()  const;
 
 
 
@@ -62,7 +58,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSelect_SelectFromDrawing_HeaderFile

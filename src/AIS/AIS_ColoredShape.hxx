@@ -30,12 +30,15 @@ class AIS_ColoredDrawer : public AIS_Drawer
 public:
 
   AIS_ColoredDrawer (const Handle(AIS_Drawer)& theLink)
-  : myHasOwnColor (Standard_False),
+  : myIsHidden    (Standard_False),
+    myHasOwnColor (Standard_False),
     myHasOwnWidth (Standard_False)
   {
     Link (theLink);
   }
 
+  Standard_Boolean IsHidden()    const                              { return myIsHidden; }
+  void             SetHidden (const Standard_Boolean theToHide)     { myIsHidden = theToHide;  }
   Standard_Boolean HasOwnColor() const                              { return myHasOwnColor; }
   void             UnsetOwnColor()                                  { myHasOwnColor = Standard_False; }
   void             SetOwnColor (const Quantity_Color& /*theColor*/) { myHasOwnColor = Standard_True;  }
@@ -45,6 +48,7 @@ public:
 
 public:  //! @name list of overridden properties
 
+  Standard_Boolean myIsHidden;
   Standard_Boolean myHasOwnColor;
   Standard_Boolean myHasOwnWidth;
 
@@ -92,19 +96,19 @@ public: //! @name sub-shape aspects
 public: //! @name global aspects
 
   //! Setup color of entire shape.
-  Standard_EXPORT virtual void SetColor (const Quantity_Color& theColor);
+  Standard_EXPORT virtual void SetColor (const Quantity_Color& theColor) Standard_OVERRIDE;
 
   //! Setup line width of entire shape.
-  Standard_EXPORT virtual void SetWidth (const Standard_Real theLineWidth);
+  Standard_EXPORT virtual void SetWidth (const Standard_Real theLineWidth) Standard_OVERRIDE;
 
   //! Sets transparency value.
-  Standard_EXPORT virtual void SetTransparency (const Standard_Real theValue);
+  Standard_EXPORT virtual void SetTransparency (const Standard_Real theValue) Standard_OVERRIDE;
 
 protected: //! @name override presentation computation
 
   Standard_EXPORT virtual void Compute (const Handle(PrsMgr_PresentationManager3d)& thePrsMgr,
                                         const Handle(Prs3d_Presentation)&           thePrs,
-                                        const Standard_Integer                      theMode);
+                                        const Standard_Integer                      theMode) Standard_OVERRIDE;
 
 protected:
 

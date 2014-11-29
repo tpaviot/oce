@@ -26,10 +26,3 @@
 #define OCE_LIBRARY_DEBUG_POSTFIX ""
 #endif
 
-/* Location where TKOpenGl shared library will be installed. */
-#ifdef _MSC_VER
-#define OCE_DEFAULT_CSF_GraphicShr "@OCE_DEFAULT_CSF_GraphicShr@" OCE_LIBRARY_DEBUG_POSTFIX OCE_LIBRARY_EXTENSION
-#else
-#cmakedefine OCE_DEFAULT_CSF_GraphicShr "@OCE_DEFAULT_CSF_GraphicShr@"
-#endif
-

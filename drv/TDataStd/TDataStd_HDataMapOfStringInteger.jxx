@@ -1,6 +1,2 @@
-#ifndef _TColStd_DataMapOfStringInteger_HeaderFile
 #include <TColStd_DataMapOfStringInteger.hxx>
-#endif
-#ifndef _TDataStd_HDataMapOfStringInteger_HeaderFile
 #include <TDataStd_HDataMapOfStringInteger.hxx>
-#endif

@@ -6,31 +6,15 @@
 #ifndef _PColStd_FieldOfHArray1OfReal_HeaderFile
 #define _PColStd_FieldOfHArray1OfReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _DBC_BaseArray_HeaderFile
 #include <DBC_BaseArray.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_PColStd_VArrayNodeOfFieldOfHArray1OfReal_HeaderFile
 #include <Handle_PColStd_VArrayNodeOfFieldOfHArray1OfReal.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
 #include <Standard_PrimitiveTypes.hxx>
-#endif
 class Standard_NegativeValue;
 class Standard_OutOfRange;
 class Standard_DimensionMismatch;
@@ -43,36 +27,37 @@ class PColStd_VArrayTNodeOfFieldOfHArray1OfReal;
 Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(PColStd_FieldOfHArray1OfReal);
 
 
-class PColStd_FieldOfHArray1OfReal  : public DBC_BaseArray {
+class PColStd_FieldOfHArray1OfReal  : public DBC_BaseArray
+{
 
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   PColStd_FieldOfHArray1OfReal();
+  Standard_EXPORT PColStd_FieldOfHArray1OfReal();
   
-  Standard_EXPORT   PColStd_FieldOfHArray1OfReal(const Standard_Integer Size);
+  Standard_EXPORT PColStd_FieldOfHArray1OfReal(const Standard_Integer Size);
   
-  Standard_EXPORT   PColStd_FieldOfHArray1OfReal(const PColStd_FieldOfHArray1OfReal& Varray);
+  Standard_EXPORT PColStd_FieldOfHArray1OfReal(const PColStd_FieldOfHArray1OfReal& Varray);
   
-  Standard_EXPORT     void Resize(const Standard_Integer Size) ;
+  Standard_EXPORT   void Resize (const Standard_Integer Size) ;
   
-  Standard_EXPORT     void Assign(const PColStd_FieldOfHArray1OfReal& Other) ;
-    void operator =(const PColStd_FieldOfHArray1OfReal& Other) 
+  Standard_EXPORT   void Assign (const PColStd_FieldOfHArray1OfReal& Other) ;
+  void operator = (const PColStd_FieldOfHArray1OfReal& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Standard_Real& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Standard_Real& Value) ;
   
-  Standard_EXPORT     Standard_Real& Value(const Standard_Integer Index) const;
-    Standard_Real& operator ()(const Standard_Integer Index) const
+  Standard_EXPORT   Standard_Real& Value (const Standard_Integer Index)  const;
+  Standard_Real& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void Destroy() ;
+  Standard_EXPORT   void Destroy() ;
 ~PColStd_FieldOfHArray1OfReal()
 {
   Destroy();
@@ -100,7 +85,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PColStd_FieldOfHArray1OfReal_HeaderFile

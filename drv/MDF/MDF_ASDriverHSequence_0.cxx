@@ -5,22 +5,12 @@
 
 #include <MDF_ASDriverHSequence.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _MDF_ASDriver_HeaderFile
 #include <MDF_ASDriver.hxx>
-#endif
-#ifndef _MDF_ASDriverSequence_HeaderFile
 #include <MDF_ASDriverSequence.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(MDF_ASDriverHSequence,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(MDF_ASDriverHSequence)
 
 
-#define Item Handle_MDF_ASDriver
+#define Item Handle(MDF_ASDriver)
 #define Item_hxx <MDF_ASDriver.hxx>
 #define TheSequence MDF_ASDriverSequence
 #define TheSequence_hxx <MDF_ASDriverSequence.hxx>

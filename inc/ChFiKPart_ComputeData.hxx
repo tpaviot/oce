@@ -6,37 +6,17 @@
 #ifndef _ChFiKPart_ComputeData_HeaderFile
 #define _ChFiKPart_ComputeData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_ChFiDS_SurfData_HeaderFile
 #include <Handle_ChFiDS_SurfData.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
-#ifndef _Handle_ChFiDS_Spine_HeaderFile
 #include <Handle_ChFiDS_Spine.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TopOpeBRepDS_DataStructure;
 class ChFiDS_SurfData;
 class Adaptor3d_HSurface;
@@ -44,29 +24,33 @@ class ChFiDS_Spine;
 class gp_Pnt2d;
 
 
-//! Methodes de classe   permettant de  remplir    une <br>
-//!          SurfData dans  les cas  particuliers  de  conges <br>
-//!          suivants: <br>
-//!          - cylindre entre 2 surfaces planes, <br>
-//!          - tore/sphere entre un plan et un cylindre othogonal, <br>
-//!          - tore/sphere entre un plan et un cone othogonal, <br>
-//! <br>
-//!          - tore entre un plan et une droite orthogonale (rotule). <br>
-class ChFiKPart_ComputeData  {
+//! Methodes de classe   permettant de  remplir    une
+//! SurfData dans  les cas  particuliers  de  conges
+//! suivants:
+//! - cylindre entre 2 surfaces planes,
+//! - tore/sphere entre un plan et un cylindre othogonal,
+//! - tore/sphere entre un plan et un cone othogonal,
+//!
+//! - tore entre un plan et une droite orthogonale (rotule).
+class ChFiKPart_ComputeData 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Computes a simple fillet in several particular <br>
-//!          cases. <br>
-  Standard_EXPORT   static  Standard_Boolean Compute(TopOpeBRepDS_DataStructure& DStr,Handle(ChFiDS_SurfData)& Data,const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_HSurface)& S2,const TopAbs_Orientation Or1,const TopAbs_Orientation Or2,const Handle(ChFiDS_Spine)& Sp,const Standard_Integer Iedge) ;
-  //! Computes a toric or spheric corner fillet. <br>
-  Standard_EXPORT   static  Standard_Boolean ComputeCorner(TopOpeBRepDS_DataStructure& DStr,const Handle(ChFiDS_SurfData)& Data,const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_HSurface)& S2,const TopAbs_Orientation OrFace1,const TopAbs_Orientation OrFace2,const TopAbs_Orientation Or1,const TopAbs_Orientation Or2,const Standard_Real minRad,const Standard_Real majRad,const gp_Pnt2d& P1S1,const gp_Pnt2d& P2S1,const gp_Pnt2d& P1S2,const gp_Pnt2d& P2S2) ;
-  //! Computes spheric corner fillet with non iso pcurve on S2. <br>
-  Standard_EXPORT   static  Standard_Boolean ComputeCorner(TopOpeBRepDS_DataStructure& DStr,const Handle(ChFiDS_SurfData)& Data,const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_HSurface)& S2,const TopAbs_Orientation OrFace1,const TopAbs_Orientation OrFace2,const TopAbs_Orientation Or1,const TopAbs_Orientation Or2,const Standard_Real Rad,const gp_Pnt2d& PS1,const gp_Pnt2d& P1S2,const gp_Pnt2d& P2S2) ;
-  //! Computes a toric corner rotule. <br>
-  Standard_EXPORT   static  Standard_Boolean ComputeCorner(TopOpeBRepDS_DataStructure& DStr,const Handle(ChFiDS_SurfData)& Data,const Handle(Adaptor3d_HSurface)& S,const Handle(Adaptor3d_HSurface)& S1,const Handle(Adaptor3d_HSurface)& S2,const TopAbs_Orientation OfS,const TopAbs_Orientation OS,const TopAbs_Orientation OS1,const TopAbs_Orientation OS2,const Standard_Real Radius) ;
-
+  
+  //! Computes a simple fillet in several particular
+  //! cases.
+  Standard_EXPORT static   Standard_Boolean Compute (TopOpeBRepDS_DataStructure& DStr, Handle(ChFiDS_SurfData)& Data, const Handle(Adaptor3d_HSurface)& S1, const Handle(Adaptor3d_HSurface)& S2, const TopAbs_Orientation Or1, const TopAbs_Orientation Or2, const Handle(ChFiDS_Spine)& Sp, const Standard_Integer Iedge) ;
+  
+  //! Computes a toric or spheric corner fillet.
+  Standard_EXPORT static   Standard_Boolean ComputeCorner (TopOpeBRepDS_DataStructure& DStr, const Handle(ChFiDS_SurfData)& Data, const Handle(Adaptor3d_HSurface)& S1, const Handle(Adaptor3d_HSurface)& S2, const TopAbs_Orientation OrFace1, const TopAbs_Orientation OrFace2, const TopAbs_Orientation Or1, const TopAbs_Orientation Or2, const Standard_Real minRad, const Standard_Real majRad, const gp_Pnt2d& P1S1, const gp_Pnt2d& P2S1, const gp_Pnt2d& P1S2, const gp_Pnt2d& P2S2) ;
+  
+  //! Computes spheric corner fillet with non iso pcurve on S2.
+  Standard_EXPORT static   Standard_Boolean ComputeCorner (TopOpeBRepDS_DataStructure& DStr, const Handle(ChFiDS_SurfData)& Data, const Handle(Adaptor3d_HSurface)& S1, const Handle(Adaptor3d_HSurface)& S2, const TopAbs_Orientation OrFace1, const TopAbs_Orientation OrFace2, const TopAbs_Orientation Or1, const TopAbs_Orientation Or2, const Standard_Real Rad, const gp_Pnt2d& PS1, const gp_Pnt2d& P1S2, const gp_Pnt2d& P2S2) ;
+  
+  //! Computes a toric corner rotule.
+  Standard_EXPORT static   Standard_Boolean ComputeCorner (TopOpeBRepDS_DataStructure& DStr, const Handle(ChFiDS_SurfData)& Data, const Handle(Adaptor3d_HSurface)& S, const Handle(Adaptor3d_HSurface)& S1, const Handle(Adaptor3d_HSurface)& S2, const TopAbs_Orientation OfS, const TopAbs_Orientation OS, const TopAbs_Orientation OS1, const TopAbs_Orientation OS2, const Standard_Real Radius) ;
 
 
 
@@ -89,7 +73,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ChFiKPart_ComputeData_HeaderFile

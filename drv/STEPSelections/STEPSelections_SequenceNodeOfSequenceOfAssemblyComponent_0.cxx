@@ -5,16 +5,10 @@
 
 #include <STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _STEPSelections_AssemblyComponent_HeaderFile
 #include <STEPSelections_AssemblyComponent.hxx>
-#endif
-#ifndef _STEPSelections_SequenceOfAssemblyComponent_HeaderFile
 #include <STEPSelections_SequenceOfAssemblyComponent.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent,Stan
 IMPLEMENT_STANDARD_RTTI(STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent)
 
 
-#define SeqItem Handle_STEPSelections_AssemblyComponent
+#define SeqItem Handle(STEPSelections_AssemblyComponent)
 #define SeqItem_hxx <STEPSelections_AssemblyComponent.hxx>
 #define TCollection_SequenceNode STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent
 #define TCollection_SequenceNode_hxx <STEPSelections_SequenceNodeOfSequenceOfAssemblyComponent.hxx>

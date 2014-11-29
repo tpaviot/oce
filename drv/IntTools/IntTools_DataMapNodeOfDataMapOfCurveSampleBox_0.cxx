@@ -5,25 +5,13 @@
 
 #include <IntTools_DataMapNodeOfDataMapOfCurveSampleBox.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IntTools_CurveRangeSample_HeaderFile
 #include <IntTools_CurveRangeSample.hxx>
-#endif
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
-#ifndef _IntTools_CurveRangeSampleMapHasher_HeaderFile
 #include <IntTools_CurveRangeSampleMapHasher.hxx>
-#endif
-#ifndef _IntTools_DataMapOfCurveSampleBox_HeaderFile
 #include <IntTools_DataMapOfCurveSampleBox.hxx>
-#endif
-#ifndef _IntTools_DataMapIteratorOfDataMapOfCurveSampleBox_HeaderFile
 #include <IntTools_DataMapIteratorOfDataMapOfCurveSampleBox.hxx>
-#endif
 
  
 

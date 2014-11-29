@@ -6,39 +6,32 @@
 #ifndef _TopoDS_TSolid_HeaderFile
 #define _TopoDS_TSolid_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopoDS_TSolid_HeaderFile
 #include <Handle_TopoDS_TSolid.hxx>
-#endif
 
-#ifndef _TopoDS_TShape_HeaderFile
 #include <TopoDS_TShape.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _Handle_TopoDS_TShape_HeaderFile
 #include <Handle_TopoDS_TShape.hxx>
-#endif
 class TopoDS_TShape;
 
 
-
-class TopoDS_TSolid : public TopoDS_TShape {
+//! A Topological part of 3D space, bounded by shells,
+//! edges and vertices.
+class TopoDS_TSolid : public TopoDS_TShape
+{
 
 public:
 
-  //! Creates an empty TSolid. <br>
-      TopoDS_TSolid();
-  //! returns SOLID. <br>
-  Standard_EXPORT     TopAbs_ShapeEnum ShapeType() const;
-  //! Returns an empty TSolid. <br>
-  Standard_EXPORT     Handle_TopoDS_TShape EmptyCopy() const;
+  
+  //! Creates an empty TSolid.
+    TopoDS_TSolid();
+  
+  //! returns SOLID.
+  Standard_EXPORT   TopAbs_ShapeEnum ShapeType()  const;
+  
+  //! Returns an empty TSolid.
+  Standard_EXPORT   Handle(TopoDS_TShape) EmptyCopy()  const;
 
 
 
@@ -62,7 +55,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopoDS_TSolid_HeaderFile

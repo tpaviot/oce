@@ -6,25 +6,13 @@
 #ifndef _Law_BSplineKnotSplitting_HeaderFile
 #define _Law_BSplineKnotSplitting_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_TColStd_HArray1OfInteger_HeaderFile
 #include <Handle_TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Handle_Law_BSpline_HeaderFile
 #include <Handle_Law_BSpline.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TColStd_HArray1OfInteger;
 class Standard_DimensionError;
 class Standard_RangeError;
@@ -33,49 +21,56 @@ class TColStd_Array1OfInteger;
 
 
 
-//!  For a B-spline curve the discontinuities are localised at the <br>
-//!  knot values and between two knots values the B-spline is <br>
-//!  infinitely continuously differentiable. <br>
-//!  At a knot of range index the continuity is equal to : <br>
-//!  Degree - Mult (Index)   where  Degree is the degree of the <br>
-//!  basis B-spline functions and Mult the multiplicity of the knot <br>
-//!  of range Index. <br>
-//!  If for your computation you need to have B-spline curves with a <br>
-//!  minima of continuity it can be interesting to know between which <br>
-//!  knot values, a B-spline curve arc, has a continuity of given order. <br>
-//!  This algorithm computes the indexes of the knots where you should <br>
-//!  split the curve, to obtain arcs with a constant continuity given <br>
-//!  at the construction time. The splitting values are in the range <br>
-//!  [FirstUKnotValue, LastUKnotValue] (See class B-spline curve from <br>
-//!  package Geom). <br>
-//!  If you just want to compute the local derivatives on the curve you <br>
-//!  don't need to create the B-spline curve arcs, you can use the <br>
-//!  functions LocalD1, LocalD2, LocalD3, LocalDN of the class <br>
-//!  BSplineCurve. <br>
-class Law_BSplineKnotSplitting  {
+//! For a B-spline curve the discontinuities are localised at the
+//! knot values and between two knots values the B-spline is
+//! infinitely continuously differentiable.
+//! At a knot of range index the continuity is equal to :
+//! Degree - Mult (Index)   where  Degree is the degree of the
+//! basis B-spline functions and Mult the multiplicity of the knot
+//! of range Index.
+//! If for your computation you need to have B-spline curves with a
+//! minima of continuity it can be interesting to know between which
+//! knot values, a B-spline curve arc, has a continuity of given order.
+//! This algorithm computes the indexes of the knots where you should
+//! split the curve, to obtain arcs with a constant continuity given
+//! at the construction time. The splitting values are in the range
+//! [FirstUKnotValue, LastUKnotValue] (See class B-spline curve from
+//! package Geom).
+//! If you just want to compute the local derivatives on the curve you
+//! don't need to create the B-spline curve arcs, you can use the
+//! functions LocalD1, LocalD2, LocalD3, LocalDN of the class
+//! BSplineCurve.
+class Law_BSplineKnotSplitting 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//!  Locates the knot values which correspond to the segmentation of <br>
-//!  the curve into arcs with a continuity equal to ContinuityRange. <br>
-//!  Raised if ContinuityRange is not greater or equal zero. <br>
-  Standard_EXPORT   Law_BSplineKnotSplitting(const Handle(Law_BSpline)& BasisLaw,const Standard_Integer ContinuityRange);
-  
-//!  Returns the number of knots corresponding to the splitting. <br>
-  Standard_EXPORT     Standard_Integer NbSplits() const;
-  
-//!  Returns the indexes of the BSpline curve knots corresponding to <br>
-//!  the splitting. <br>
-//!  Raised if the length of SplitValues is not equal to NbSPlit. <br>
-  Standard_EXPORT     void Splitting(TColStd_Array1OfInteger& SplitValues) const;
-  
-//!  Returns the index of the knot corresponding to the splitting <br>
-//!  of range Index. <br>
-//!  Raised if Index < 1 or Index > NbSplits <br>
-  Standard_EXPORT     Standard_Integer SplitValue(const Standard_Integer Index) const;
 
+  //! Locates the knot values which correspond to the segmentation of
+  //! the curve into arcs with a continuity equal to ContinuityRange.
+  //!
+  //! Raised if ContinuityRange is not greater or equal zero.
+  Standard_EXPORT Law_BSplineKnotSplitting(const Handle(Law_BSpline)& BasisLaw, const Standard_Integer ContinuityRange);
+  
+
+  //! Returns the number of knots corresponding to the splitting.
+  Standard_EXPORT   Standard_Integer NbSplits()  const;
+  
+
+  //! Returns the indexes of the BSpline curve knots corresponding to
+  //! the splitting.
+  //!
+  //! Raised if the length of SplitValues is not equal to NbSPlit.
+  Standard_EXPORT   void Splitting (TColStd_Array1OfInteger& SplitValues)  const;
+  
+
+  //! Returns the index of the knot corresponding to the splitting
+  //! of range Index.
+  //!
+  //! Raised if Index < 1 or Index > NbSplits
+  Standard_EXPORT   Standard_Integer SplitValue (const Standard_Integer Index)  const;
 
 
 
@@ -90,7 +85,7 @@ private:
 
 
 
-Handle_TColStd_HArray1OfInteger splitIndexes;
+  Handle(TColStd_HArray1OfInteger) splitIndexes;
 
 
 };
@@ -99,7 +94,6 @@ Handle_TColStd_HArray1OfInteger splitIndexes;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Law_BSplineKnotSplitting_HeaderFile

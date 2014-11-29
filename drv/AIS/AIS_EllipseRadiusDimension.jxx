@@ -1,15 +1,5 @@
-#ifndef _Geom_OffsetCurve_HeaderFile
 #include <Geom_OffsetCurve.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _Geom_Surface_HeaderFile
 #include <Geom_Surface.hxx>
-#endif
-#ifndef _AIS_EllipseRadiusDimension_HeaderFile
 #include <AIS_EllipseRadiusDimension.hxx>
-#endif

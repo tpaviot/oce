@@ -6,75 +6,71 @@
 #ifndef _Graphic3d_TextureMap_HeaderFile
 #define _Graphic3d_TextureMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Graphic3d_TextureMap_HeaderFile
 #include <Handle_Graphic3d_TextureMap.hxx>
-#endif
 
-#ifndef _Graphic3d_TextureRoot_HeaderFile
 #include <Graphic3d_TextureRoot.hxx>
-#endif
-#ifndef _Graphic3d_TypeOfTexture_HeaderFile
 #include <Graphic3d_TypeOfTexture.hxx>
-#endif
-#ifndef _Image_PixMap_Handle_HeaderFile
 #include <Image_PixMap_Handle.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Graphic3d_LevelOfTextureAnisotropy_HeaderFile
 #include <Graphic3d_LevelOfTextureAnisotropy.hxx>
-#endif
 class TCollection_AsciiString;
 
 
-//! This is an abstract class for managing texture applyable on polygons. <br>
-class Graphic3d_TextureMap : public Graphic3d_TextureRoot {
+//! This is an abstract class for managing texture applyable on polygons.
+class Graphic3d_TextureMap : public Graphic3d_TextureRoot
+{
 
 public:
 
   
-//! enable texture smoothing <br>
-  Standard_EXPORT     void EnableSmooth() ;
+
+  //! enable texture smoothing
+  Standard_EXPORT   void EnableSmooth() ;
   
-//! Returns TRUE if the texture is smoothed. <br>
-  Standard_EXPORT     Standard_Boolean IsSmoothed() const;
+
+  //! Returns TRUE if the texture is smoothed.
+  Standard_EXPORT   Standard_Boolean IsSmoothed()  const;
   
-//! disable texture smoothing <br>
-  Standard_EXPORT     void DisableSmooth() ;
+
+  //! disable texture smoothing
+  Standard_EXPORT   void DisableSmooth() ;
   
-//! enable texture modulate mode. <br>
-//! the image is modulate with the shading of the surface. <br>
-  Standard_EXPORT     void EnableModulate() ;
+
+  //! enable texture modulate mode.
+  //! the image is modulate with the shading of the surface.
+  Standard_EXPORT   void EnableModulate() ;
   
-//! disable texture modulate mode. <br>
-//! the image is directly decal on the surface. <br>
-  Standard_EXPORT     void DisableModulate() ;
+
+  //! disable texture modulate mode.
+  //! the image is directly decal on the surface.
+  Standard_EXPORT   void DisableModulate() ;
   
-//! Returns TRUE if the texture is modulate. <br>
-  Standard_EXPORT     Standard_Boolean IsModulate() const;
+
+  //! Returns TRUE if the texture is modulate.
+  Standard_EXPORT   Standard_Boolean IsModulate()  const;
   
-//! use this methods if you want to enable <br>
-//! texture repetition on your objects. <br>
-  Standard_EXPORT     void EnableRepeat() ;
+
+  //! use this methods if you want to enable
+  //! texture repetition on your objects.
+  Standard_EXPORT   void EnableRepeat() ;
   
-//! use this methods if you want to disable <br>
-//! texture repetition on your objects. <br>
-  Standard_EXPORT     void DisableRepeat() ;
+
+  //! use this methods if you want to disable
+  //! texture repetition on your objects.
+  Standard_EXPORT   void DisableRepeat() ;
   
-//! Returns TRUE if the texture repeat is enable. <br>
-  Standard_EXPORT     Standard_Boolean IsRepeat() const;
-  //! @return level of anisontropy texture filter. <br>
-//! Default value is Graphic3d_LOTA_OFF. <br>
-  Standard_EXPORT     Graphic3d_LevelOfTextureAnisotropy AnisoFilter() const;
-  //! @param theLevel level of anisontropy texture filter. <br>
-  Standard_EXPORT     void SetAnisoFilter(const Graphic3d_LevelOfTextureAnisotropy theLevel) ;
+
+  //! Returns TRUE if the texture repeat is enable.
+  Standard_EXPORT   Standard_Boolean IsRepeat()  const;
+  
+  //! @return level of anisontropy texture filter.
+  //! Default value is Graphic3d_LOTA_OFF.
+  Standard_EXPORT   Graphic3d_LevelOfTextureAnisotropy AnisoFilter()  const;
+  
+  //! @param theLevel level of anisontropy texture filter.
+  Standard_EXPORT   void SetAnisoFilter (const Graphic3d_LevelOfTextureAnisotropy theLevel) ;
 
 
 
@@ -84,9 +80,9 @@ public:
 protected:
 
   
-  Standard_EXPORT   Graphic3d_TextureMap(const TCollection_AsciiString& theFileName,const Graphic3d_TypeOfTexture theType);
+  Standard_EXPORT Graphic3d_TextureMap(const TCollection_AsciiString& theFileName, const Graphic3d_TypeOfTexture theType);
   
-  Standard_EXPORT   Graphic3d_TextureMap(const Image_PixMap_Handle& thePixMap,const Graphic3d_TypeOfTexture theType);
+  Standard_EXPORT Graphic3d_TextureMap(const Image_PixMap_Handle& thePixMap, const Graphic3d_TypeOfTexture theType);
 
 
 
@@ -101,7 +97,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Graphic3d_TextureMap_HeaderFile

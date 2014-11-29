@@ -6,64 +6,26 @@
 #ifndef _STEPConstruct_ExternRefs_HeaderFile
 #define _STEPConstruct_ExternRefs_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TColStd_SequenceOfTransient_HeaderFile
 #include <TColStd_SequenceOfTransient.hxx>
-#endif
-#ifndef _TColStd_SequenceOfInteger_HeaderFile
 #include <TColStd_SequenceOfInteger.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductRelatedProductCategory_HeaderFile
 #include <Handle_StepBasic_ProductRelatedProductCategory.hxx>
-#endif
-#ifndef _Handle_StepBasic_DocumentType_HeaderFile
 #include <Handle_StepBasic_DocumentType.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinitionContext_HeaderFile
 #include <Handle_StepBasic_ProductDefinitionContext.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductContext_HeaderFile
 #include <Handle_StepBasic_ProductContext.hxx>
-#endif
-#ifndef _Handle_StepBasic_ApplicationProtocolDefinition_HeaderFile
 #include <Handle_StepBasic_ApplicationProtocolDefinition.hxx>
-#endif
-#ifndef _STEPConstruct_Tool_HeaderFile
 #include <STEPConstruct_Tool.hxx>
-#endif
-#ifndef _Handle_XSControl_WorkSession_HeaderFile
 #include <Handle_XSControl_WorkSession.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinition_HeaderFile
 #include <Handle_StepBasic_ProductDefinition.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepAP214_AppliedDocumentReference_HeaderFile
 #include <Handle_StepAP214_AppliedDocumentReference.hxx>
-#endif
-#ifndef _Handle_StepBasic_DocumentFile_HeaderFile
 #include <Handle_StepBasic_DocumentFile.hxx>
-#endif
 class StepBasic_ProductRelatedProductCategory;
 class StepBasic_DocumentType;
 class StepBasic_ProductDefinitionContext;
@@ -76,69 +38,84 @@ class StepAP214_AppliedDocumentReference;
 class StepBasic_DocumentFile;
 
 
-//! Provides a tool for analyzing (reading) and creating (writing) <br>
-//!          references to external files in STEP <br>
-//! <br>
-//!          It maintains a data structure in the form of sequences <br>
-//!          of relevant STEP entities (roots), allowing either to create <br>
-//!          them by convenient API, or load from existing model and <br>
-//!          investigate <br>
-class STEPConstruct_ExternRefs  : public STEPConstruct_Tool {
+//! Provides a tool for analyzing (reading) and creating (writing)
+//! references to external files in STEP
+//!
+//! It maintains a data structure in the form of sequences
+//! of relevant STEP entities (roots), allowing either to create
+//! them by convenient API, or load from existing model and
+//! investigate
+class STEPConstruct_ExternRefs  : public STEPConstruct_Tool
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an empty tool <br>
-  Standard_EXPORT   STEPConstruct_ExternRefs();
-  //! Creates a tool and initializes it <br>
-  Standard_EXPORT   STEPConstruct_ExternRefs(const Handle(XSControl_WorkSession)& WS);
-  //! Initializes tool; returns True if succeeded <br>
-  Standard_EXPORT     Standard_Boolean Init(const Handle(XSControl_WorkSession)& WS) ;
-  //! Clears internal fields (list of defined extern refs) <br>
-  Standard_EXPORT     void Clear() ;
-  //! Searches current STEP model for external references <br>
-//!          and loads them to the internal data structures <br>
-//!          NOTE: does not clear data structures before loading <br>
-  Standard_EXPORT     Standard_Boolean LoadExternRefs() ;
-  //! Returns number of defined extern references <br>
-  Standard_EXPORT     Standard_Integer NbExternRefs() const;
-  //! Returns filename for numth extern reference <br>
-//!          Returns Null if FileName is not defined or bad <br>
-  Standard_EXPORT    Standard_CString FileName(const Standard_Integer num) const;
-  //! Returns ProductDefinition to which numth extern reference <br>
-//!          is associated. <br>
-//!          Returns Null if cannot be detected or if extern reference <br>
-//!          is not associated to SDR in a proper way. <br>
-  Standard_EXPORT     Handle_StepBasic_ProductDefinition ProdDef(const Standard_Integer num) const;
-  //! Returns format identification string for the extern document <br>
-//!          Returns Null handle if format is not defined <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Format(const Standard_Integer num) const;
-  //! Create a new external reference with specified attributes <br>
-//!          attached to a given SDR <br>
-//!          <format> can be Null string, in that case this information <br>
-//!          is not written. Else, it can be "STEP AP214" or "STEP AP203" <br>
-//!          Returns index of a new extern ref <br>
-  Standard_EXPORT     Standard_Integer AddExternRef(const Standard_CString filename,const Handle(StepBasic_ProductDefinition)& PD,const Standard_CString format) ;
-  //! Check (create if it is null) all shared entities for the model <br>
-  Standard_EXPORT     void checkAP214Shared() ;
-  //! Adds all the currently defined external refs to the model <br>
-//!          Returns number of written extern refs <br>
-  Standard_EXPORT     Standard_Integer WriteExternRefs(const Standard_Integer num) const;
-  //! Set the ApplicationProtocolDefinition of the PDM schema <br>
-  Standard_EXPORT     void SetAP214APD(const Handle(StepBasic_ApplicationProtocolDefinition)& APD) ;
-  //! Returns the ApplicationProtocolDefinition of the PDM schema <br>
-//!          NOTE: if not defined then create new APD with new Application Context <br>
-  Standard_EXPORT     Handle_StepBasic_ApplicationProtocolDefinition GetAP214APD() ;
-
+  
+  //! Creates an empty tool
+  Standard_EXPORT STEPConstruct_ExternRefs();
+  
+  //! Creates a tool and initializes it
+  Standard_EXPORT STEPConstruct_ExternRefs(const Handle(XSControl_WorkSession)& WS);
+  
+  //! Initializes tool; returns True if succeeded
+  Standard_EXPORT   Standard_Boolean Init (const Handle(XSControl_WorkSession)& WS) ;
+  
+  //! Clears internal fields (list of defined extern refs)
+  Standard_EXPORT   void Clear() ;
+  
+  //! Searches current STEP model for external references
+  //! and loads them to the internal data structures
+  //! NOTE: does not clear data structures before loading
+  Standard_EXPORT   Standard_Boolean LoadExternRefs() ;
+  
+  //! Returns number of defined extern references
+  Standard_EXPORT   Standard_Integer NbExternRefs()  const;
+  
+  //! Returns filename for numth extern reference
+  //! Returns Null if FileName is not defined or bad
+  Standard_EXPORT  Standard_CString FileName(const Standard_Integer num)  const;
+  
+  //! Returns ProductDefinition to which numth extern reference
+  //! is associated.
+  //! Returns Null if cannot be detected or if extern reference
+  //! is not associated to SDR in a proper way.
+  Standard_EXPORT   Handle(StepBasic_ProductDefinition) ProdDef (const Standard_Integer num)  const;
+  
+  //! Returns format identification string for the extern document
+  //! Returns Null handle if format is not defined
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Format (const Standard_Integer num)  const;
+  
+  //! Create a new external reference with specified attributes
+  //! attached to a given SDR
+  //! <format> can be Null string, in that case this information
+  //! is not written. Else, it can be "STEP AP214" or "STEP AP203"
+  //! Returns index of a new extern ref
+  Standard_EXPORT   Standard_Integer AddExternRef (const Standard_CString filename, const Handle(StepBasic_ProductDefinition)& PD, const Standard_CString format) ;
+  
+  //! Check (create if it is null) all shared entities for the model
+  Standard_EXPORT   void checkAP214Shared() ;
+  
+  //! Adds all the currently defined external refs to the model
+  //! Returns number of written extern refs
+  Standard_EXPORT   Standard_Integer WriteExternRefs (const Standard_Integer num)  const;
+  
+  //! Set the ApplicationProtocolDefinition of the PDM schema
+  Standard_EXPORT   void SetAP214APD (const Handle(StepBasic_ApplicationProtocolDefinition)& APD) ;
+  
+  //! Returns the ApplicationProtocolDefinition of the PDM schema
+  //! NOTE: if not defined then create new APD with new Application Context
+  Standard_EXPORT   Handle(StepBasic_ApplicationProtocolDefinition) GetAP214APD() ;
 
 
 
 
 protected:
 
-  //! Create a new additional structure entities and add ncessary references <br>
-//!          Note: do not refer from ADR to DF directly in AP214 (TRJ11). <br>
-  Standard_EXPORT     Standard_Boolean addAP214ExterRef(const Handle(StepAP214_AppliedDocumentReference)& ADR,const Handle(StepBasic_ProductDefinition)& PD,const Handle(StepBasic_DocumentFile)& DF,const Standard_CString filename) ;
+  
+  //! Create a new additional structure entities and add ncessary references
+  //! Note: do not refer from ADR to DF directly in AP214 (TRJ11).
+  Standard_EXPORT   Standard_Boolean addAP214ExterRef (const Handle(StepAP214_AppliedDocumentReference)& ADR, const Handle(StepBasic_ProductDefinition)& PD, const Handle(StepBasic_DocumentFile)& DF, const Standard_CString filename) ;
 
 
 
@@ -147,19 +124,19 @@ private:
 
 
 
-TColStd_SequenceOfTransient myAEIAs;
-TColStd_SequenceOfTransient myRoles;
-TColStd_SequenceOfTransient myFormats;
-TColStd_SequenceOfTransient myShapes;
-TColStd_SequenceOfTransient myTypes;
-TColStd_SequenceOfInteger myIsAP214;
-TColStd_SequenceOfInteger myReplaceNum;
-TColStd_SequenceOfTransient myDocFiles;
-Handle_StepBasic_ProductRelatedProductCategory mySharedPRPC;
-Handle_StepBasic_DocumentType mySharedDocType;
-Handle_StepBasic_ProductDefinitionContext mySharedPDC;
-Handle_StepBasic_ProductContext mySharedPC;
-Handle_StepBasic_ApplicationProtocolDefinition myAPD;
+  TColStd_SequenceOfTransient myAEIAs;
+  TColStd_SequenceOfTransient myRoles;
+  TColStd_SequenceOfTransient myFormats;
+  TColStd_SequenceOfTransient myShapes;
+  TColStd_SequenceOfTransient myTypes;
+  TColStd_SequenceOfInteger myIsAP214;
+  TColStd_SequenceOfInteger myReplaceNum;
+  TColStd_SequenceOfTransient myDocFiles;
+  Handle(StepBasic_ProductRelatedProductCategory) mySharedPRPC;
+  Handle(StepBasic_DocumentType) mySharedDocType;
+  Handle(StepBasic_ProductDefinitionContext) mySharedPDC;
+  Handle(StepBasic_ProductContext) mySharedPC;
+  Handle(StepBasic_ApplicationProtocolDefinition) myAPD;
 
 
 };
@@ -168,7 +145,6 @@ Handle_StepBasic_ApplicationProtocolDefinition myAPD;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPConstruct_ExternRefs_HeaderFile

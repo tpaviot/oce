@@ -6,22 +6,15 @@
 #ifndef _Handle_MeshVS_DummySensitiveEntity_HeaderFile
 #define _Handle_MeshVS_DummySensitiveEntity_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_SelectBasics_SensitiveEntity_HeaderFile
 #include <Handle_SelectBasics_SensitiveEntity.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(SelectBasics_SensitiveEntity);
 class MeshVS_DummySensitiveEntity;
 
-DEFINE_STANDARD_HANDLE(MeshVS_DummySensitiveEntity,SelectBasics_SensitiveEntity)
+DEFINE_STANDARD_HANDLE(MeshVS_DummySensitiveEntity, SelectBasics_SensitiveEntity)
 
-#endif
+#endif // _Handle_MeshVS_DummySensitiveEntity_HeaderFile

@@ -1,30 +1,10 @@
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Adaptor3d_HSurface_HeaderFile
 #include <Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _IntPatch_Polyhedron_HeaderFile
 #include <IntPatch_Polyhedron.hxx>
-#endif
-#ifndef _Adaptor3d_TopolTool_HeaderFile
 #include <Adaptor3d_TopolTool.hxx>
-#endif
-#ifndef _IntSurf_ListOfPntOn2S_HeaderFile
 #include <IntSurf_ListOfPntOn2S.hxx>
-#endif
-#ifndef _IntPatch_Line_HeaderFile
 #include <IntPatch_Line.hxx>
-#endif
-#ifndef _IntPatch_PrmPrmIntersection_T3Bits_HeaderFile
 #include <IntPatch_PrmPrmIntersection_T3Bits.hxx>
-#endif
-#ifndef _IntSurf_LineOn2S_HeaderFile
 #include <IntSurf_LineOn2S.hxx>
-#endif
-#ifndef _IntPatch_PrmPrmIntersection_HeaderFile
 #include <IntPatch_PrmPrmIntersection.hxx>
-#endif

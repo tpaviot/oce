@@ -6,22 +6,12 @@
 #ifndef _TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeListOfC2DF_HeaderFile
 #define _TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeListOfC2DF_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF_HeaderFile
 #include <Handle_TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF.hxx>
-#endif
 class Standard_NoSuchObject;
 class TopoDS_Shape;
 class TopOpeBRepTool_ListOfC2DF;
@@ -31,22 +21,22 @@ class TopOpeBRepTool_DataMapNodeOfDataMapOfShapeListOfC2DF;
 
 
 
-class TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeListOfC2DF  : public TCollection_BasicMapIterator {
+class TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeListOfC2DF  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeListOfC2DF();
+  Standard_EXPORT TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeListOfC2DF();
   
-  Standard_EXPORT   TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeListOfC2DF(const TopOpeBRepTool_DataMapOfShapeListOfC2DF& aMap);
+  Standard_EXPORT TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeListOfC2DF(const TopOpeBRepTool_DataMapOfShapeListOfC2DF& aMap);
   
-  Standard_EXPORT     void Initialize(const TopOpeBRepTool_DataMapOfShapeListOfC2DF& aMap) ;
+  Standard_EXPORT   void Initialize (const TopOpeBRepTool_DataMapOfShapeListOfC2DF& aMap) ;
   
-  Standard_EXPORT    const TopoDS_Shape& Key() const;
+  Standard_EXPORT  const  TopoDS_Shape& Key()  const;
   
-  Standard_EXPORT    const TopOpeBRepTool_ListOfC2DF& Value() const;
-
+  Standard_EXPORT  const  TopOpeBRepTool_ListOfC2DF& Value()  const;
 
 
 
@@ -69,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeListOfC2DF_HeaderFile

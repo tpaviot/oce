@@ -6,22 +6,15 @@
 #ifndef _Handle_StepShape_BooleanResult_HeaderFile
 #define _Handle_StepShape_BooleanResult_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepGeom_GeometricRepresentationItem_HeaderFile
 #include <Handle_StepGeom_GeometricRepresentationItem.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepGeom_GeometricRepresentationItem);
 class StepShape_BooleanResult;
 
-DEFINE_STANDARD_HANDLE(StepShape_BooleanResult,StepGeom_GeometricRepresentationItem)
+DEFINE_STANDARD_HANDLE(StepShape_BooleanResult, StepGeom_GeometricRepresentationItem)
 
-#endif
+#endif // _Handle_StepShape_BooleanResult_HeaderFile

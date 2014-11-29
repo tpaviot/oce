@@ -6,28 +6,22 @@
 #ifndef _StepShape_TopologicalRepresentationItem_HeaderFile
 #define _StepShape_TopologicalRepresentationItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_TopologicalRepresentationItem_HeaderFile
 #include <Handle_StepShape_TopologicalRepresentationItem.hxx>
-#endif
 
-#ifndef _StepRepr_RepresentationItem_HeaderFile
 #include <StepRepr_RepresentationItem.hxx>
-#endif
 
 
 
-class StepShape_TopologicalRepresentationItem : public StepRepr_RepresentationItem {
+class StepShape_TopologicalRepresentationItem : public StepRepr_RepresentationItem
+{
 
 public:
 
-  //! Returns a TopologicalRepresentationItem <br>
-  Standard_EXPORT   StepShape_TopologicalRepresentationItem();
+  
+  //! Returns a TopologicalRepresentationItem
+  Standard_EXPORT StepShape_TopologicalRepresentationItem();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_TopologicalRepresentationItem_HeaderFile

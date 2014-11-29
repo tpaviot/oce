@@ -6,40 +6,18 @@
 #ifndef _TNaming_Naming_HeaderFile
 #define _TNaming_Naming_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TNaming_Naming_HeaderFile
 #include <Handle_TNaming_Naming.hxx>
-#endif
 
-#ifndef _TNaming_Name_HeaderFile
 #include <TNaming_Name.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TNaming_NamedShape_HeaderFile
 #include <Handle_TNaming_NamedShape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
-#ifndef _Handle_TDF_DataSet_HeaderFile
 #include <Handle_TDF_DataSet.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class Standard_GUID;
 class TDF_Label;
 class TNaming_NamedShape;
@@ -53,60 +31,67 @@ class TDF_IDFilter;
 class TDF_AttributeIndexedMap;
 
 
-//!  This attribute  store the  topological  naming of any <br>
-//!           selected   shape,  when this  shape  is  not  already <br>
-//!           attached to a specific label. This class is also used <br>
-//!            to solve  it when  the argumentsof the  toipological <br>
-//!           naming are modified. <br>
-class TNaming_Naming : public TDF_Attribute {
+//! This attribute  store the  topological  naming of any
+//! selected   shape,  when this  shape  is  not  already
+//! attached to a specific label. This class is also used
+//! to solve  it when  the argumentsof the  toipological
+//! naming are modified.
+class TNaming_Naming : public TDF_Attribute
+{
 
 public:
 
-  //! following code from TDesignStd <br>
-//!          ============================== <br>
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
   
-  Standard_EXPORT   static  Handle_TNaming_Naming Insert(const TDF_Label& under) ;
-  //! Creates  a   Namimg  attribute  at  label <where>   to <br>
-//!             identify  the   shape   <Selection>.    Geometry is <br>
-//!          Standard_True  if   we  are  only  interested  by  the <br>
-//!                 underlying   geometry     (e.g.     setting   a <br>
-//!          constraint). <Context> is  used to find neighbours  of <br>
-//!          <S> when required by the naming. <br>
-//!          If KeepOrientation is True the Selection orientation is taken <br>
-//!          into  account. BNproblem == True points out that Context sub-shapes <br>
-//!          in  DF have orientation differences with Context shape itself. <br>//! instance method <br>
-//!          =============== <br>
-  Standard_EXPORT   static  Handle_TNaming_NamedShape Name(const TDF_Label& where,const TopoDS_Shape& Selection,const TopoDS_Shape& Context,const Standard_Boolean Geometry = Standard_False,const Standard_Boolean KeepOrientation = Standard_False,const Standard_Boolean BNproblem = Standard_False) ;
+  //! following code from TDesignStd
+  //! ==============================
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-  Standard_EXPORT   TNaming_Naming();
+  Standard_EXPORT static   Handle(TNaming_Naming) Insert (const TDF_Label& under) ;
   
-  Standard_EXPORT     Standard_Boolean IsDefined() const;
+  //! Creates  a   Namimg  attribute  at  label <where>   to
+  //! identify  the   shape   <Selection>.    Geometry is
+  //! Standard_True  if   we  are  only  interested  by  the
+  //! underlying   geometry     (e.g.     setting   a
+  //! constraint). <Context> is  used to find neighbours  of
+  //! <S> when required by the naming.
+  //! If KeepOrientation is True the Selection orientation is taken
+  //! into  account. BNproblem == True points out that Context sub-shapes
+  //! in  DF have orientation differences with Context shape itself.
+  //! instance method
+  //! ===============
+  Standard_EXPORT static   Handle(TNaming_NamedShape) Name (const TDF_Label& where, const TopoDS_Shape& Selection, const TopoDS_Shape& Context, const Standard_Boolean Geometry = Standard_False, const Standard_Boolean KeepOrientation = Standard_False, const Standard_Boolean BNproblem = Standard_False) ;
   
-  Standard_EXPORT    const TNaming_Name& GetName() const;
+  Standard_EXPORT TNaming_Naming();
   
-  Standard_EXPORT     TNaming_Name& ChangeName() ;
-  //!  regenerate only the Name associated to me <br>
-  Standard_EXPORT     Standard_Boolean Regenerate(TDF_LabelMap& scope) ;
-  //! Regenerate recursively the  whole name with scope.  If <br>
-//!          scope  is empty it  means that  all the labels  of the <br>
-//!          framework are valid. <br>
-  Standard_EXPORT     Standard_Boolean Solve(TDF_LabelMap& scope) ;
-  //! Deferred methods from TDF_Attribute <br>
-//!          =================================== <br>
-  Standard_EXPORT   virtual const Standard_GUID& ID() const;
+  Standard_EXPORT   Standard_Boolean IsDefined()  const;
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  Standard_EXPORT  const  TNaming_Name& GetName()  const;
   
-  Standard_EXPORT     void Restore(const Handle(TDF_Attribute)& With) ;
+  Standard_EXPORT   TNaming_Name& ChangeName() ;
   
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& Into,const Handle(TDF_RelocationTable)& RT) const;
+  //! regenerate only the Name associated to me
+  Standard_EXPORT   Standard_Boolean Regenerate (TDF_LabelMap& scope) ;
   
-  Standard_EXPORT   virtual  void References(const Handle(TDF_DataSet)& aDataSet) const;
+  //! Regenerate recursively the  whole name with scope.  If
+  //! scope  is empty it  means that  all the labels  of the
+  //! framework are valid.
+  Standard_EXPORT   Standard_Boolean Solve (TDF_LabelMap& scope) ;
   
-  Standard_EXPORT   virtual  Standard_OStream& Dump(Standard_OStream& anOS) const;
+  //! Deferred methods from TDF_Attribute
+  //! ===================================
+  Standard_EXPORT virtual  const  Standard_GUID& ID()  const;
   
-  Standard_EXPORT   virtual  void ExtendedDump(Standard_OStream& anOS,const TDF_IDFilter& aFilter,TDF_AttributeIndexedMap& aMap) const;
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
+  
+  Standard_EXPORT   void Restore (const Handle(TDF_Attribute)& With) ;
+  
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& Into, const Handle(TDF_RelocationTable)& RT)  const;
+  
+  Standard_EXPORT virtual   void References (const Handle(TDF_DataSet)& aDataSet)  const;
+  
+  Standard_EXPORT virtual   Standard_OStream& Dump (Standard_OStream& anOS)  const;
+  
+  Standard_EXPORT virtual   void ExtendedDump (Standard_OStream& anOS, const TDF_IDFilter& aFilter, TDF_AttributeIndexedMap& aMap)  const;
 
 
 
@@ -121,7 +106,7 @@ protected:
 private: 
 
 
-TNaming_Name myName;
+  TNaming_Name myName;
 
 
 };
@@ -130,7 +115,6 @@ TNaming_Name myName;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TNaming_Naming_HeaderFile

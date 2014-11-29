@@ -6,39 +6,20 @@
 #ifndef _Select3D_Projector_HeaderFile
 #define _Select3D_Projector_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Select3D_Projector_HeaderFile
 #include <Handle_Select3D_Projector.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _gp_Trsf_HeaderFile
-#include <gp_Trsf.hxx>
-#endif
-#ifndef _gp_GTrsf_HeaderFile
 #include <gp_GTrsf.hxx>
-#endif
-#ifndef _Handle_V3d_View_HeaderFile
-#include <Handle_V3d_View.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
+#include <gp_Trsf.hxx>
+#include <Graphic3d_Mat4d.hxx>
 #include <Standard_Transient.hxx>
-#endif
-class V3d_View;
+#include <Handle_V3d_View.hxx>
 class Standard_NoSuchObject;
+class V3d_View;
 class gp_Ax2;
 class gp_Trsf;
 class gp_GTrsf;
@@ -49,105 +30,158 @@ class gp_Vec2d;
 class gp_Lin;
 
 
-//! A framework to define 3D projectors. <br>
-//! Projector provides services for projecting points from <br>
-//! world-coordinates to a viewing plane. Projection could be defined by <br>
-//! corresponding transformation, or coordinate system. The transformation <br>
-//! could be constructed for a view with transposed view transformation <br>
-//! matrix ( that represents view-orientation ), including, for perspective <br>
-//! view, focal distance ( distance from an eye to the view plane ) and <br>
-//! translational part that represents translation of focal point in <br>
-//! view-coordinate space. The Select3D_Projector class recognizes the <br>
-//! predefined set of popular projections: axonometric, top view, front <br>
-//! view and uses more efficient algorithm for projection computations. <br>
-//! User-defined transformation could be also defined in constructor. <br>
-//! Perspective projection consists of two separate parts, that are <br>
-//! composed together during computation: transformation component and <br>
-//! focale distance. <br>
-class Select3D_Projector : public Standard_Transient {
+//! A framework to define 3D projectors.
+//! Projector provides services for projecting points from
+//! world-coordinates to a viewing plane. Projection could be defined by
+//! corresponding transformation, or coordinate system. The transformation
+//! could be constructed for a view with transposed view transformation
+//! matrix ( that represents view-orientation ), including, for perspective
+//! view, focal distance ( distance from an eye to the view plane ) and
+//! translational part that represents translation of focal point in
+//! view-coordinate space. The Select3D_Projector class recognizes the
+//! predefined set of popular projections: axonometric, top view, front
+//! view and uses more efficient algorithm for projection computations.
+//! User-defined transformation could be also defined in constructor.
+//! Perspective projection consists of two separate parts, that are
+//! composed together during computation: transformation component and
+//! focale distance.
+class Select3D_Projector : public Standard_Transient
+{
 
 public:
 
-  //! Constructs the 3D projector object defined by the 3D view aView. <br>
-  Standard_EXPORT   Select3D_Projector(const Handle(V3d_View)& aView);
   
-  Standard_EXPORT   Select3D_Projector();
-  //! Creates an axonometric projector. <CS> represents viewing coordinate <br>
-//! system and could be constructed from x direction, view plane normal direction, <br>
-//! and view point location in world-coordinate space. <br>
-  Standard_EXPORT   Select3D_Projector(const gp_Ax2& CS);
-  //! Creates  a  perspective  projector. <CS> represents viewing <br>
-//! coordinate system and could be constructed from x direction, <br>
-//! view plane normal direction, and focal point location in world-coordinate <br>
-//! space. <Focus> should represent distance of an eye from view plane <br>
-//! in world-coordinate space (focal distance). <br>
-  Standard_EXPORT   Select3D_Projector(const gp_Ax2& CS,const Standard_Real Focus);
-  //! build a Projector from the given transformation. <br>
-//! In case, when <T> transformation should represent custom view projection, <br>
-//! it could be constructed from two separate components: transposed view <br>
-//! orientation matrix and translation of focal point in view-coordiante <br>
-//! system. <T> could be built up from x direction, up direction, <br>
-//! view plane normal direction vectors and translation with SetValues(...) <br>
-//! method, where first row arguments (a11, a12, a13, a14)  are x, y, z <br>
-//! component of x direction vector, and x value of reversed translation <br>
-//! vector. Second row arguments, are x y z for up direction and y value of <br>
-//! reversed translation, and the third row defined in the same manner. <br>
-//! This also suits for simple perspective view, where <Focus> is the focale <br>
-//! distance of an eye from view plane in world-space coordiantes. <br>
-//! Note, that in that case amount of perspective distortion (perspective <br>
-//! angle) should be defined through focal distance. <br>
-  Standard_EXPORT   Select3D_Projector(const gp_Trsf& T,const Standard_Boolean Persp,const Standard_Real Focus);
-  //! build a Projector from the given transformation. <br>
-//! In case, when <GT> transformation should represent custom view <br>
-//! projection, it could be constructed from two separate components: <br>
-//! transposed view orientation matrix and translation of a focal point <br>
-//! in view-coordinate system. <br>
-//! This also suits for perspective view, with <Focus> that could be <br>
-//! equal to distance from an eye to a view plane in <br>
-//! world-coordinates (focal distance). <br>
-//! The 3x3 transformation matrix is built up from three vectors: <br>
-//! x direction, up direction and view plane normal vectors, where each <br>
-//! vector is a matrix row. Then <GT> is constructed from matrix and <br>
-//! reversed translation with methods SetTranslationPart(..) and <br>
-//! SetVectorialPart(..). <br>
-//! Note, that in that case amount of perspective distortion (perspective <br>
-//! angle) should be defined through focal distance. <br>
-  Standard_EXPORT   Select3D_Projector(const gp_GTrsf& GT,const Standard_Boolean Persp,const Standard_Real Focus);
+  //! Constructs the 3D projector object from the passed view.
+  //! The projector captures current model-view and projection transformation
+  //! of the passed view.
+  Standard_EXPORT Select3D_Projector(const Handle(V3d_View)& theView);
   
-  Standard_EXPORT     void Set(const gp_Trsf& T,const Standard_Boolean Persp,const Standard_Real Focus) ;
-  //! Sets the 3D view V used at the time of construction. <br>
-  Standard_EXPORT     void SetView(const Handle(V3d_View)& V) ;
-  //! Returns the 3D view used at the time of construction. <br>
-       const Handle_V3d_View& View() const;
-  //! to compute with the given scale and translation. <br>
-  Standard_EXPORT   virtual  void Scaled(const Standard_Boolean On = Standard_False) ;
-  //! Returns True if there is a perspective transformation. <br>
-      virtual  Standard_Boolean Perspective() const;
-  //! Returns the active transformation. <br>
-      virtual const gp_GTrsf& Transformation() const;
-  //! Returns the active inverted transformation. <br>
-      virtual const gp_GTrsf& InvertedTransformation() const;
-  //! Returns the original transformation. <br>
-      virtual const gp_Trsf& FullTransformation() const;
-  //! Returns the focal length. <br>
-      virtual  Standard_Real Focus() const;
+  //! Constructs identity projector.
+  Standard_EXPORT Select3D_Projector();
   
-      virtual  void Transform(gp_Vec& D) const;
+  //! Builds the Projector from the model-view transformation specified
+  //! by the passed viewing coordinate system <theCS>. The Projector has
+  //! identity projection transformation, is orthogonal.
+  //! The viewing coordinate system could be constructed from x direction,
+  //! view plane normal direction, and view point location in
+  //! world-coordinate space.
+  Standard_EXPORT Select3D_Projector(const gp_Ax2& theCS);
   
-      virtual  void Transform(gp_Pnt& Pnt) const;
-  //! Transform and apply perspective if needed. <br>
-  Standard_EXPORT   virtual  void Project(const gp_Pnt& P,gp_Pnt2d& Pout) const;
-  //! Transform and apply perspective if needed. <br>
-  Standard_EXPORT     void Project(const gp_Pnt& P,Standard_Real& X,Standard_Real& Y,Standard_Real& Z) const;
-  //! Transform and apply perspective if needed. <br>
-  Standard_EXPORT   virtual  void Project(const gp_Pnt& P,const gp_Vec& D1,gp_Pnt2d& Pout,gp_Vec2d& D1out) const;
-  //! return a line going through the eye towards the <br>
-//!          2d point <X,Y>. <br>
-  Standard_EXPORT   virtual  gp_Lin Shoot(const Standard_Real X,const Standard_Real Y) const;
+  //! Builds the Projector from the model-view transformation specified
+  //! by the passed view coordinate system <theCS> and simplified perspective
+  //! projection transformation defined by <theFocus> parameter.
+  //! The viewing coordinate system could be constructed from x direction,
+  //! view plane normal direction, and focal point location in world-coordinate
+  //! space. <theFocus> should represent distance of an eye from view plane
+  //! in world-coordinate space (focal distance).
+  Standard_EXPORT Select3D_Projector(const gp_Ax2& theCS, const Standard_Real theFocus);
   
-      virtual  void Transform(gp_Pnt& P,const gp_GTrsf& T) const;
+  //! Build the Projector from the model-view transformation passed
+  //! as <theViewTrsf> and simplified perspective projection transformation
+  //! parameters passed as <theIsPersp> and <theFocus>.
+  //! In case, when <theViewTrsf> transformation should represent custom view
+  //! projection, it could be constructed from two separate components:
+  //! transposed view orientation matrix and translation of focal point
+  //! in view-coordinate system.
+  //! <theViewTrsf> could be built up from x direction, up direction,
+  //! view plane normal direction vectors and translation with SetValues(...)
+  //! method, where first row arguments (a11, a12, a13, a14)  are x, y, z
+  //! component of x direction vector, and x value of reversed translation
+  //! vector. Second row arguments, are x y z for up direction and y value of
+  //! reversed translation, and the third row defined in the same manner.
+  //! This also suits for simple perspective view, where <theFocus> is the focale
+  //! distance of an eye from view plane in world-space coordinates.
+  //! Note, that in that case amount of perspective distortion (perspective
+  //! angle) should be defined through focal distance.
+  Standard_EXPORT Select3D_Projector(const gp_Trsf& theViewTrsf, const Standard_Boolean theIsPersp, const Standard_Real theFocus);
   
-      virtual  void Transform(gp_Lin& D,const gp_GTrsf& T) const;
+  //! Builds the Projector from the model-view transformation passed
+  //! as <theViewTrsf> and projection transformation for <theIsPersp> and
+  //! <theFocus> parameters.
+  //! In case, when <theViewTrsf> transformation should represent custom view
+  //! projection, it could be constructed from two separate components:
+  //! transposed view orientation matrix and translation of a focal point
+  //! in view-coordinate system.
+  //! This also suits for perspective view, with <theFocus> that could be
+  //! equal to distance from an eye to a view plane in
+  //! world-coordinates (focal distance).
+  //! The 3x3 transformation matrix is built up from three vectors:
+  //! x direction, up direction and view plane normal vectors, where each
+  //! vector is a matrix row. Then <theViewTrsf> is constructed from matrix and
+  //! reversed translation with methods SetTranslationPart(..) and
+  //! SetVectorialPart(..).
+  //! Note, that in that case amount of perspective distortion (perspective
+  //! angle) should be defined through focal distance.
+  Standard_EXPORT Select3D_Projector(const gp_GTrsf& theViewTrsf, const Standard_Boolean theIsPersp, const Standard_Real theFocus);
+  
+  //! Builds the Projector from the passed model-view <theViewTrsf>
+  //! and projection <theProjTrsf> transformation matrices.
+  Standard_EXPORT Select3D_Projector(const Graphic3d_Mat4d& theViewTrsf, const Graphic3d_Mat4d& theProjTrsf);
+  
+  //! Sets new parameters for the Projector.
+  Standard_EXPORT   void Set (const gp_Trsf& theViewTrsf, const Standard_Boolean theIsPersp, const Standard_Real theFocus) ;
+  
+  //! Sets new parameters for the Projector.
+  Standard_EXPORT   void Set (const Graphic3d_Mat4d& theViewTrsf, const Graphic3d_Mat4d& theProjTrsf) ;
+  
+  //! Sets new parameters for the Projector
+  //! captured from the passed view.
+  Standard_EXPORT   void SetView (const Handle(V3d_View)& theView) ;
+  
+  //! Pre-compute inverse transformation and ensure whether it is possible
+  //! to use optimized transformation for the common view-orientation type or not
+  //! if <theToCheckOptimized> is TRUE.
+  Standard_EXPORT virtual   void Scaled (const Standard_Boolean theToCheckOptimized = Standard_False) ;
+  
+  //! Returns True if there is simplified perspective
+  //! projection approach is used. Distortion defined by Focus.
+    virtual   Standard_Boolean Perspective()  const;
+  
+  //! Returns the focal length of simplified perspective
+  //! projection approach. Raises program error exception if the
+  //! the projection transformation is not specified as simplified
+  //! Perspective (for example, custom projection transformation is defined
+  //! or the orthogonal Projector is defined).
+    virtual   Standard_Real Focus()  const;
+  
+  //! Returns projection transformation. Please note that for
+  //! simplified perspective projection approach, defined by Focus, the
+  //! returned transformation is identity.
+     const  Graphic3d_Mat4d& Projection()  const;
+  
+  //! Returns the view transformation.
+    virtual  const  gp_GTrsf& Transformation()  const;
+  
+  //! Returns the inverted view transformation.
+    virtual  const  gp_GTrsf& InvertedTransformation()  const;
+  
+  //! Returns the uniform-scaled view transformation.
+    virtual  const  gp_Trsf& FullTransformation()  const;
+  
+  //! Transforms the vector into view-coordinate space.
+    virtual   void Transform (gp_Vec& theD)  const;
+  
+  //! Transforms the point into view-coordinate space.
+    virtual   void Transform (gp_Pnt& thePnt)  const;
+  
+  //! Transforms the point into view-coordinate space
+  //! and applies projection transformation.
+  Standard_EXPORT virtual   void Project (const gp_Pnt& theP, gp_Pnt2d& thePout)  const;
+  
+  //! Transforms the point into view-coordinate space
+  //! and applies projection transformation.
+  Standard_EXPORT   void Project (const gp_Pnt& theP, Standard_Real& theX, Standard_Real& theY, Standard_Real& theZ)  const;
+  
+  //! Transforms the point and vector passed from its location
+  //! into view-coordinate space and applies projection transformation.
+  Standard_EXPORT virtual   void Project (const gp_Pnt& theP, const gp_Vec& theD1, gp_Pnt2d& thePout, gp_Vec2d& theD1out)  const;
+  
+  //! Return projection line going through the 2d point <theX, theY>
+  Standard_EXPORT virtual   gp_Lin Shoot (const Standard_Real theX, const Standard_Real theY)  const;
+  
+    virtual   void Transform (gp_Pnt& thePnt, const gp_GTrsf& theTrsf)  const;
+  
+    virtual   void Transform (gp_Lin& theLin, const gp_GTrsf& theTrsf)  const;
 
 
 
@@ -157,18 +191,18 @@ public:
 protected:
 
 
-Standard_Boolean myPersp;
-Standard_Real myFocus;
-gp_Trsf myScaledTrsf;
-gp_GTrsf myGTrsf;
-gp_GTrsf myInvTrsf;
+  Standard_Boolean myPersp;
+  Standard_Real myFocus;
+  gp_GTrsf myGTrsf;
+  gp_GTrsf myInvTrsf;
+  gp_Trsf myScaledTrsf;
+  Graphic3d_Mat4d myProjTrsf;
 
 
 private: 
 
 
-Standard_Integer myType;
-Handle_V3d_View myView;
+  Standard_Integer myType;
 
 
 };
@@ -178,7 +212,6 @@ Handle_V3d_View myView;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Select3D_Projector_HeaderFile

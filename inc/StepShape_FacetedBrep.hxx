@@ -6,28 +6,22 @@
 #ifndef _StepShape_FacetedBrep_HeaderFile
 #define _StepShape_FacetedBrep_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_FacetedBrep_HeaderFile
 #include <Handle_StepShape_FacetedBrep.hxx>
-#endif
 
-#ifndef _StepShape_ManifoldSolidBrep_HeaderFile
 #include <StepShape_ManifoldSolidBrep.hxx>
-#endif
 
 
 
-class StepShape_FacetedBrep : public StepShape_ManifoldSolidBrep {
+class StepShape_FacetedBrep : public StepShape_ManifoldSolidBrep
+{
 
 public:
 
-  //! Returns a FacetedBrep <br>
-  Standard_EXPORT   StepShape_FacetedBrep();
+  
+  //! Returns a FacetedBrep
+  Standard_EXPORT StepShape_FacetedBrep();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_FacetedBrep_HeaderFile

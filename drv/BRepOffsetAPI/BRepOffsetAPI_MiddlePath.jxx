@@ -1,6 +1,2 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _BRepOffsetAPI_MiddlePath_HeaderFile
 #include <BRepOffsetAPI_MiddlePath.hxx>
-#endif

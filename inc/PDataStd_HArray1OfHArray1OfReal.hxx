@@ -6,45 +6,18 @@
 #ifndef _PDataStd_HArray1OfHArray1OfReal_HeaderFile
 #define _PDataStd_HArray1OfHArray1OfReal_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PDataStd_HArray1OfHArray1OfReal_HeaderFile
 #include <Handle_PDataStd_HArray1OfHArray1OfReal.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_PColStd_HArray1OfReal_HeaderFile
 #include <Handle_PColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
-#ifndef _PDataStd_FieldOfHArray1OfHArray1OfReal_HeaderFile
 #include <PDataStd_FieldOfHArray1OfHArray1OfReal.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal_HeaderFile
 #include <Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
 class PColStd_HArray1OfReal;
-class Standard_Persistent;
 class Standard_OutOfRange;
 class Standard_RangeError;
 class PDataStd_FieldOfHArray1OfHArray1OfReal;
@@ -52,30 +25,27 @@ class PDataStd_VArrayNodeOfFieldOfHArray1OfHArray1OfReal;
 class PDataStd_VArrayTNodeOfFieldOfHArray1OfHArray1OfReal;
 
 
-class PDataStd_HArray1OfHArray1OfReal : public Standard_Persistent {
+class PDataStd_HArray1OfHArray1OfReal : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PDataStd_HArray1OfHArray1OfReal(const Standard_Integer Low,const Standard_Integer Up);
+  Standard_EXPORT PDataStd_HArray1OfHArray1OfReal(const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT   PDataStd_HArray1OfHArray1OfReal(const Standard_Integer Low,const Standard_Integer Up,const Handle(PColStd_HArray1OfReal)& V);
+  Standard_EXPORT PDataStd_HArray1OfHArray1OfReal(const Standard_Integer Low, const Standard_Integer Up, const Handle(PColStd_HArray1OfReal)& V);
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(PColStd_HArray1OfReal)& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(PColStd_HArray1OfReal)& Value) ;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-  Standard_EXPORT     Handle_PColStd_HArray1OfReal Value(const Standard_Integer Index) const;
-  
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
+  Standard_EXPORT   Handle(PColStd_HArray1OfReal) Value (const Standard_Integer Index)  const;
 
-  PDataStd_HArray1OfHArray1OfReal( )
+PDataStd_HArray1OfHArray1OfReal( )
 {
   
 }
@@ -101,18 +71,18 @@ protected:
 private: 
 
   
-  Standard_EXPORT     PDataStd_FieldOfHArray1OfHArray1OfReal Field() const;
+  Standard_EXPORT   PDataStd_FieldOfHArray1OfHArray1OfReal Field()  const;
   
-  Standard_EXPORT     Standard_Address Datas() const;
+  Standard_EXPORT   Standard_Address Datas()  const;
 
-Standard_Integer LowerBound;
-Standard_Integer UpperBound;
-PDataStd_FieldOfHArray1OfHArray1OfReal Data;
+  Standard_Integer LowerBound;
+  Standard_Integer UpperBound;
+  PDataStd_FieldOfHArray1OfHArray1OfReal Data;
 
 
 };
 
-#define Item Handle_PColStd_HArray1OfReal
+#define Item Handle(PColStd_HArray1OfReal)
 #define Item_hxx <PColStd_HArray1OfReal.hxx>
 #define PCollection_FieldOfHArray1 PDataStd_FieldOfHArray1OfHArray1OfReal
 #define PCollection_FieldOfHArray1_hxx <PDataStd_FieldOfHArray1OfHArray1OfReal.hxx>
@@ -157,11 +127,6 @@ PDataStd_FieldOfHArray1OfHArray1OfReal Data;
 #undef PCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline void ShallowDump(const Handle_PDataStd_HArray1OfHArray1OfReal& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
 
 
-
-#endif
+#endif // _PDataStd_HArray1OfHArray1OfReal_HeaderFile

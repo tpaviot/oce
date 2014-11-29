@@ -11,6 +11,7 @@ set(TOOLKIT_MODULES
 	GeomliteTest
 	DrawFairCurve
 	BOPTest
+	SWDRAW
 )
 set(TOOLKIT_DEPENDS
 	TKBRep

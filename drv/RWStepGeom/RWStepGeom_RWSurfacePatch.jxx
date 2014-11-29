@@ -1,18 +1,6 @@
-#ifndef _StepData_StepReaderData_HeaderFile
 #include <StepData_StepReaderData.hxx>
-#endif
-#ifndef _Interface_Check_HeaderFile
 #include <Interface_Check.hxx>
-#endif
-#ifndef _StepGeom_SurfacePatch_HeaderFile
 #include <StepGeom_SurfacePatch.hxx>
-#endif
-#ifndef _StepData_StepWriter_HeaderFile
 #include <StepData_StepWriter.hxx>
-#endif
-#ifndef _Interface_EntityIterator_HeaderFile
 #include <Interface_EntityIterator.hxx>
-#endif
-#ifndef _RWStepGeom_RWSurfacePatch_HeaderFile
 #include <RWStepGeom_RWSurfacePatch.hxx>
-#endif

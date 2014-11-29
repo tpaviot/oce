@@ -6,61 +6,25 @@
 #ifndef _Adaptor2d_HCurve2d_HeaderFile
 #define _Adaptor2d_HCurve2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Adaptor2d_HCurve2d_HeaderFile
 #include <Handle_Adaptor2d_HCurve2d.hxx>
-#endif
 
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _gp_Vec2d_HeaderFile
 #include <gp_Vec2d.hxx>
-#endif
-#ifndef _GeomAbs_CurveType_HeaderFile
 #include <GeomAbs_CurveType.hxx>
-#endif
-#ifndef _gp_Lin2d_HeaderFile
 #include <gp_Lin2d.hxx>
-#endif
-#ifndef _gp_Circ2d_HeaderFile
 #include <gp_Circ2d.hxx>
-#endif
-#ifndef _gp_Elips2d_HeaderFile
 #include <gp_Elips2d.hxx>
-#endif
-#ifndef _gp_Hypr2d_HeaderFile
 #include <gp_Hypr2d.hxx>
-#endif
-#ifndef _gp_Parab2d_HeaderFile
 #include <gp_Parab2d.hxx>
-#endif
-#ifndef _Handle_Geom2d_BezierCurve_HeaderFile
 #include <Handle_Geom2d_BezierCurve.hxx>
-#endif
-#ifndef _Handle_Geom2d_BSplineCurve_HeaderFile
 #include <Handle_Geom2d_BSplineCurve.hxx>
-#endif
 class Standard_OutOfRange;
 class Standard_NoSuchObject;
 class Standard_DomainError;
@@ -73,76 +37,78 @@ class Geom2d_BezierCurve;
 class Geom2d_BSplineCurve;
 
 
-//! Root class for 2D curves manipulated by handles, on <br>
-//! which geometric algorithms work. <br>
-//! An adapted curve is an interface between the <br>
-//! services provided by a curve, and those required of <br>
-//! the curve by algorithms, which use it. <br>
-//! A derived specific class is provided: <br>
-//! Geom2dAdaptor_HCurve for a curve from the Geom2d package. <br>
-class Adaptor2d_HCurve2d : public MMgt_TShared {
+//! Root class for 2D curves manipulated by handles, on
+//! which geometric algorithms work.
+//! An adapted curve is an interface between the
+//! services provided by a curve, and those required of
+//! the curve by algorithms, which use it.
+//! A derived specific class is provided:
+//! Geom2dAdaptor_HCurve for a curve from the Geom2d package.
+class Adaptor2d_HCurve2d : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a reference to the Curve2d inside the HCurve2d. <br>
-//! <br>
-  Standard_EXPORT   virtual const Adaptor2d_Curve2d& Curve2d() const = 0;
   
-        Standard_Real FirstParameter() const;
+  //! Returns a reference to the Curve2d inside the HCurve2d.
+  Standard_EXPORT virtual  const  Adaptor2d_Curve2d& Curve2d()  const = 0;
   
-        Standard_Real LastParameter() const;
+      Standard_Real FirstParameter()  const;
   
-        GeomAbs_Shape Continuity() const;
+      Standard_Real LastParameter()  const;
   
-        Standard_Integer NbIntervals(const GeomAbs_Shape S) const;
+      GeomAbs_Shape Continuity()  const;
   
-        void Intervals(TColStd_Array1OfReal& T,const GeomAbs_Shape S) const;
-  //! If <First> >= <Last> <br>
-        Handle_Adaptor2d_HCurve2d Trim(const Standard_Real First,const Standard_Real Last,const Standard_Real Tol) const;
+      Standard_Integer NbIntervals (const GeomAbs_Shape S)  const;
   
-        Standard_Boolean IsClosed() const;
+      void Intervals (TColStd_Array1OfReal& T, const GeomAbs_Shape S)  const;
   
-        Standard_Boolean IsPeriodic() const;
+  //! If <First> >= <Last>
+      Handle(Adaptor2d_HCurve2d) Trim (const Standard_Real First, const Standard_Real Last, const Standard_Real Tol)  const;
   
-        Standard_Real Period() const;
+      Standard_Boolean IsClosed()  const;
   
-        gp_Pnt2d Value(const Standard_Real U) const;
+      Standard_Boolean IsPeriodic()  const;
   
-        void D0(const Standard_Real U,gp_Pnt2d& P) const;
+      Standard_Real Period()  const;
   
-        void D1(const Standard_Real U,gp_Pnt2d& P,gp_Vec2d& V) const;
+      gp_Pnt2d Value (const Standard_Real U)  const;
   
-        void D2(const Standard_Real U,gp_Pnt2d& P,gp_Vec2d& V1,gp_Vec2d& V2) const;
+      void D0 (const Standard_Real U, gp_Pnt2d& P)  const;
   
-        void D3(const Standard_Real U,gp_Pnt2d& P,gp_Vec2d& V1,gp_Vec2d& V2,gp_Vec2d& V3) const;
+      void D1 (const Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V)  const;
   
-        gp_Vec2d DN(const Standard_Real U,const Standard_Integer N) const;
+      void D2 (const Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2)  const;
   
-        Standard_Real Resolution(const Standard_Real R3d) const;
+      void D3 (const Standard_Real U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2, gp_Vec2d& V3)  const;
   
-        GeomAbs_CurveType GetType() const;
+      gp_Vec2d DN (const Standard_Real U, const Standard_Integer N)  const;
   
-        gp_Lin2d Line() const;
+      Standard_Real Resolution (const Standard_Real R3d)  const;
   
-        gp_Circ2d Circle() const;
+      GeomAbs_CurveType GetType()  const;
   
-        gp_Elips2d Ellipse() const;
+      gp_Lin2d Line()  const;
   
-        gp_Hypr2d Hyperbola() const;
+      gp_Circ2d Circle()  const;
   
-        gp_Parab2d Parabola() const;
+      gp_Elips2d Ellipse()  const;
   
-        Standard_Integer Degree() const;
+      gp_Hypr2d Hyperbola()  const;
   
-        Standard_Boolean IsRational() const;
+      gp_Parab2d Parabola()  const;
   
-        Standard_Integer NbPoles() const;
+      Standard_Integer Degree()  const;
   
-        Standard_Integer NbKnots() const;
+      Standard_Boolean IsRational()  const;
   
-        Handle_Geom2d_BezierCurve Bezier() const;
+      Standard_Integer NbPoles()  const;
   
-      virtual  Handle_Geom2d_BSplineCurve BSpline() const;
+      Standard_Integer NbKnots()  const;
+  
+      Handle(Geom2d_BezierCurve) Bezier()  const;
+  
+    virtual   Handle(Geom2d_BSplineCurve) BSpline()  const;
 
 
 
@@ -166,7 +132,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Adaptor2d_HCurve2d_HeaderFile

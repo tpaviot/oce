@@ -44,6 +44,7 @@
 #include <TopExp_Explorer.hxx>
 #include <Message_ProgressIndicator.hxx>
 #include <errno.h>
+#include <OSD_OpenFile.hxx>
 
 IGESControl_Writer::IGESControl_Writer ()
     :  theTP (new Transfer_FinderProcess(10000)) ,
@@ -245,7 +246,7 @@ Standard_Boolean IGESControl_Writer::Write
   if (!S) return Standard_False;
   ComputeModel();
   Standard_Integer nbEnt = themod->NbEntities();
-#ifdef DEBUG
+#ifdef OCCT_DEBUG
   cout<<" IGES Write : "<<nbEnt<<" ent.s"<< flush;
 #endif
   if(!nbEnt)
@@ -253,12 +254,12 @@ Standard_Boolean IGESControl_Writer::Write
   IGESData_IGESWriter IW (themod);
 //  ne pas oublier le mode fnes ... a transmettre a IW
   IW.SendModel (IGESSelect_WorkLibrary::DefineProtocol());
-#ifdef DEBUG
+#ifdef OCCT_DEBUG
   cout<<" ...  ecriture  ..."<<flush;
 #endif
   if (fnes) IW.WriteMode() = 10;
   Standard_Boolean status = IW.Print(S);
-#ifdef DEBUG
+#ifdef OCCT_DEBUG
   cout<<" ...  fichier ecrit  ..."<<endl;
 #endif
   return status;
@@ -267,9 +268,10 @@ Standard_Boolean IGESControl_Writer::Write
 Standard_Boolean IGESControl_Writer::Write
   (const Standard_CString file, const Standard_Boolean fnes)
 {
-  ofstream fout(file,ios::out);
+  ofstream fout;
+  OSD_OpenStream(fout,file,ios::out);
   if (!fout) return Standard_False;
-#ifdef DEBUG
+#ifdef OCCT_DEBUG
   cout<<" Ecriture fichier ("<< (fnes ? "fnes" : "IGES") <<"): "<<file<<endl;
 #endif
   Standard_Boolean res = Write (fout,fnes);

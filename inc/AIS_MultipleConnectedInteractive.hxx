@@ -6,101 +6,87 @@
 #ifndef _AIS_MultipleConnectedInteractive_HeaderFile
 #define _AIS_MultipleConnectedInteractive_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_AIS_MultipleConnectedInteractive_HeaderFile
 #include <Handle_AIS_MultipleConnectedInteractive.hxx>
-#endif
 
-#ifndef _AIS_SequenceOfInteractive_HeaderFile
-#include <AIS_SequenceOfInteractive.hxx>
-#endif
-#ifndef _AIS_InteractiveObject_HeaderFile
 #include <AIS_InteractiveObject.hxx>
-#endif
-#ifndef _PrsMgr_TypeOfPresentation3d_HeaderFile
-#include <PrsMgr_TypeOfPresentation3d.hxx>
-#endif
-#ifndef _Handle_AIS_InteractiveObject_HeaderFile
 #include <Handle_AIS_InteractiveObject.hxx>
-#endif
-#ifndef _AIS_KindOfInteractive_HeaderFile
+#include <Graphic3d_TransModeFlags.hxx>
 #include <AIS_KindOfInteractive.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager3d.hxx>
-#endif
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
+#include <PrsMgr_PresentationManager3d.hxx>
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Handle_Prs3d_Projector_HeaderFile
 #include <Handle_Prs3d_Projector.hxx>
-#endif
-#ifndef _Handle_Geom_Transformation_HeaderFile
 #include <Handle_Geom_Transformation.hxx>
-#endif
-#ifndef _Handle_SelectMgr_Selection_HeaderFile
 #include <Handle_SelectMgr_Selection.hxx>
-#endif
 class AIS_InteractiveObject;
-class AIS_SequenceOfInteractive;
-class PrsMgr_PresentationManager3d;
+class gp_Trsf;
+class gp_Pnt;
 class Prs3d_Presentation;
 class Prs3d_Projector;
 class Geom_Transformation;
 class SelectMgr_Selection;
 
 
-//! Defines an Interactive Object by gathering together <br>
-//! several object presentations. This is done through a <br>
-//! list of interactive objects. These can also be <br>
-//! Connected objects. That way memory-costly <br>
-//! calculations of presentation are avoided. <br>
-class AIS_MultipleConnectedInteractive : public AIS_InteractiveObject {
+//! Defines an Interactive Object by gathering together
+//! several object presentations. This is done through a
+//! list of interactive objects. These can also be
+//! Connected objects. That way memory-costly
+//! calculations of presentation are avoided.
+class AIS_MultipleConnectedInteractive : public AIS_InteractiveObject
+{
 
 public:
 
-  //! Initializes the Interactive Object with multiple <br>
-//! presentation connections. If aTypeOfPresentation3d <br>
-//! does not have the affectation PrsMgr_TOP_AllView, <br>
-//! it is projector dependent. <br>
-  Standard_EXPORT   AIS_MultipleConnectedInteractive(const PrsMgr_TypeOfPresentation3d aTypeOfPresentation3d = PrsMgr_TOP_AllView);
-  //! Add anotherIObj in the presentation of me <br>
-  Standard_EXPORT     void Connect(const Handle(AIS_InteractiveObject)& anotherIObj) ;
   
-  Standard_EXPORT   virtual  AIS_KindOfInteractive Type() const;
+  //! Initializes the Interactive Object with multiple
+  //! connections to AIS_Interactive objects.
+  Standard_EXPORT AIS_MultipleConnectedInteractive();
   
-  Standard_EXPORT   virtual  Standard_Integer Signature() const;
-  //! Returns true if the object is connected to others. <br>
-  Standard_EXPORT     Standard_Boolean HasConnection() const;
+  //! Establishes the connection between the Connected Interactive Object, theInteractive, and its reference.
+  //! Copies local transformation and transformation persistence mode from theInteractive.
+  //! @return created instance object (AIS_ConnectedInteractive or AIS_MultipleConnectedInteractive)
+  Standard_EXPORT   Handle(AIS_InteractiveObject) Connect (const Handle(AIS_InteractiveObject)& theInteractive) ;
   
-//! Returns the connection references of the previous <br>
-//! Interactive Objects in view. <br>
-       const AIS_SequenceOfInteractive& ConnectedTo() const;
-  //!  Removes the connection anotherIObj to an entity. <br>
-  Standard_EXPORT     void Disconnect(const Handle(AIS_InteractiveObject)& anotherIObj) ;
-  //! Clears all the connections to objects. <br>
-  Standard_EXPORT     void DisconnectAll() ;
-  //! computes the presentation according to a point of view <br>
-//!          given by <aProjector>. <br>
-//!          To be Used when the associated degenerated Presentations <br>
-//!          have been transformed by <aTrsf> which is not a Pure <br>
-//!          Translation. The HLR Prs can't be deducted automatically <br>
-//!          WARNING :<aTrsf> must be applied <br>
-//!           to the object to display before computation  !!! <br>
-  Standard_EXPORT   virtual  void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Geom_Transformation)& aTrsf,const Handle(Prs3d_Presentation)& aPresentation) ;
+  //! Establishes the connection between the Connected Interactive Object, theInteractive, and its reference.
+  //! Locates instance in theLocation and copies transformation persistence mode from theInteractive.
+  //! @return created instance object (AIS_ConnectedInteractive or AIS_MultipleConnectedInteractive)
+  Standard_EXPORT   Handle(AIS_InteractiveObject) Connect (const Handle(AIS_InteractiveObject)& theInteractive, const gp_Trsf& theLocation) ;
   
-  Standard_EXPORT   virtual  void Compute(const Handle(Prs3d_Projector)& aProjector,const Handle(Prs3d_Presentation)& aPresentation) ;
+  //! Establishes the connection between the Connected Interactive Object, theInteractive, and its reference.
+  //! Locates instance in theLocation and applies specified transformation persistence mode.
+  //! @return created instance object (AIS_ConnectedInteractive or AIS_MultipleConnectedInteractive)
+  Standard_EXPORT virtual   Handle(AIS_InteractiveObject) Connect (const Handle(AIS_InteractiveObject)& theInteractive, const gp_Trsf& theLocation, const Graphic3d_TransModeFlags& theTrsfPersFlag, const gp_Pnt& theTrsfPersPoint) ;
+  
+  Standard_EXPORT virtual   AIS_KindOfInteractive Type()  const;
+  
+  Standard_EXPORT virtual   Standard_Integer Signature()  const;
+  
+  //! Returns true if the object is connected to others.
+  Standard_EXPORT   Standard_Boolean HasConnection()  const;
+  
+  //! Removes the connection with theInteractive.
+  Standard_EXPORT   void Disconnect (const Handle(AIS_InteractiveObject)& theInteractive) ;
+  
+  //! Clears all the connections to objects.
+  Standard_EXPORT   void DisconnectAll() ;
+  
+  //! computes the presentation according to a point of view
+  //! given by <aProjector>.
+  //! To be Used when the associated degenerated Presentations
+  //! have been transformed by <aTrsf> which is not a Pure
+  //! Translation. The HLR Prs can't be deducted automatically
+  //! WARNING :<aTrsf> must be applied
+  //! to the object to display before computation  !!!
+  Standard_EXPORT virtual   void Compute (const Handle(Prs3d_Projector)& aProjector, const Handle(Geom_Transformation)& aTrsf, const Handle(Prs3d_Presentation)& aPresentation) ;
+  
+  Standard_EXPORT virtual   void Compute (const Handle(Prs3d_Projector)& aProjector, const Handle(Prs3d_Presentation)& aPresentation) ;
+  
+  //! Informs the graphic context that the interactive Object
+  //! may be decomposed into sub-shapes for dynamic selection.
+  Standard_EXPORT virtual   Standard_Boolean AcceptShapeDecomposition()  const;
 
 
 
@@ -109,33 +95,31 @@ public:
 
 protected:
 
-  //! this method is redefined virtual; <br>
-//!          when the instance is connected to another <br>
-//!          InteractiveObject,this method doesn't <br>
-//!          compute anything, but just uses the <br>
-//!          presentation of this last object, with <br>
-//!          a transformation if there's one stored. <br>
-  Standard_EXPORT   virtual  void Compute(const Handle(PrsMgr_PresentationManager3d)& aPresentationManager,const Handle(Prs3d_Presentation)& aPresentation,const Standard_Integer aMode = 0) ;
+  
+  //! this method is redefined virtual;
+  //! when the instance is connected to another
+  //! InteractiveObject,this method doesn't
+  //! compute anything, but just uses the
+  //! presentation of this last object, with
+  //! a transformation if there's one stored.
+  Standard_EXPORT virtual   void Compute (const Handle(PrsMgr_PresentationManager3d)& aPresentationManager, const Handle(Prs3d_Presentation)& aPresentation, const Standard_Integer aMode = 0) ;
 
 
 
 private: 
 
   
-  Standard_EXPORT   virtual  void ComputeSelection(const Handle(SelectMgr_Selection)& aSelection,const Standard_Integer aMode) ;
+  //! Computes the selection for whole subtree in scene hierarchy.
+  Standard_EXPORT virtual   void ComputeSelection (const Handle(SelectMgr_Selection)& aSelection, const Standard_Integer aMode) ;
 
-AIS_SequenceOfInteractive myReferences;
-AIS_SequenceOfInteractive myPreviousReferences;
 
 
 };
 
 
-#include <AIS_MultipleConnectedInteractive.lxx>
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_MultipleConnectedInteractive_HeaderFile

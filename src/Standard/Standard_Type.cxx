@@ -12,10 +12,6 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#ifdef HAVE_CONFIG_H
-# include <oce-config.h>
-#endif
-
 #include <Standard_Type.ixx>
 #include <Standard_Persistent.hxx>
 
@@ -167,7 +163,7 @@ Standard_Address  Standard_Type::Ancestors()const
 }
 
 //============================================================================
-Standard_Boolean  Standard_Type::SubType(const Handle_Standard_Type& anOther)const 
+Standard_Boolean  Standard_Type::SubType(const Handle(Standard_Type)& anOther)const 
 {
   // Among ancestors of the type of this, there is the type of anOther
   return anOther == this || 
@@ -186,73 +182,6 @@ Standard_Boolean  Standard_Type::SubType(const Standard_CString theName)const
   if (myNumberOfAncestor) 
     return (*(Handle(Standard_Type) *)myAncestors)->SubType(theName);
   return Standard_False;
-}
-
-//============================================================================
-void Standard_Type::ShallowDump() const
-{
-  ShallowDump(cout) ;
-}
-
-//============================================================================
-void Standard_Type::ShallowDump(Standard_OStream& AStream) const
-{
-  Standard_Integer i;
-  Handle(Standard_Type) aType;
-
-  Handle(Standard_Type) *allAncestors;
-
-//  AStream << "Standard_Type " << hex << (Standard_Address )this << dec << " " ;
-
-  allAncestors = (Handle(Standard_Type) *)myAncestors;
-
-  if(myKind == Standard_IsEnumeration) {
-    AStream << "enumeration " << myName << endl;
-  }
-
-  if(myKind == Standard_IsPrimitive) {
-    AStream << "primitive " << myName << endl;
-  }
-
-  if(myKind == Standard_IsImported) {
-    AStream << "imported " << myName << endl;
-  }
-
-  if(myKind == Standard_IsClass) {
-    AStream << "class " << myName << endl;
-    if(SubType(STANDARD_TYPE(Standard_Transient))) {
-      AStream << "      -- manipulated by 'Handle'" << endl;
-    }
-    else if(SubType(STANDARD_TYPE(Standard_Persistent))) {
-      AStream << "      -- manipulated by 'Handle' and is 'persistent'"<< endl;
-    }
-  }
-
-  if(myNumberOfParent > 0) {
-    AStream << "      inherits ";
-    for(i=0; i<myNumberOfParent; i++){
-      aType = allAncestors[i];
-      if (i>1) AStream <<", ";
-      if ( !aType.IsNull() )
-        AStream << aType->Name();
-      else
-        AStream << " ??? (TypeIsNull)" ;
-    }
-    AStream << endl;
-  }
- 
-  if(myNumberOfAncestor > myNumberOfParent) {
-    AStream << "      -- Ancestors: ";
-    for(i=myNumberOfParent; i<myNumberOfAncestor; i++){
-      aType = allAncestors[i];
-      if (i>1) AStream <<", ";
-      if ( !aType.IsNull() )
-        AStream << aType->Name();
-      else
-        AStream << " ??? (TypeIsNull)" ;
-    }
-    AStream << endl;
-  }
 }
 
 // ------------------------------------------------------------------

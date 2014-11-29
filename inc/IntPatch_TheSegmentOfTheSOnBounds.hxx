@@ -6,28 +6,14 @@
 #ifndef _IntPatch_TheSegmentOfTheSOnBounds_HeaderFile
 #define _IntPatch_TheSegmentOfTheSOnBounds_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Adaptor2d_HCurve2d_HeaderFile
 #include <Handle_Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _IntPatch_ThePathPointOfTheSOnBounds_HeaderFile
 #include <IntPatch_ThePathPointOfTheSOnBounds.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HVertex_HeaderFile
 #include <Handle_Adaptor3d_HVertex.hxx>
-#endif
 class Adaptor2d_HCurve2d;
 class Standard_DomainError;
 class Adaptor3d_HVertex;
@@ -35,28 +21,28 @@ class IntPatch_ThePathPointOfTheSOnBounds;
 
 
 
-class IntPatch_TheSegmentOfTheSOnBounds  {
+class IntPatch_TheSegmentOfTheSOnBounds 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntPatch_TheSegmentOfTheSOnBounds();
+  Standard_EXPORT IntPatch_TheSegmentOfTheSOnBounds();
   
-        void SetValue(const Handle(Adaptor2d_HCurve2d)& A) ;
+      void SetValue (const Handle(Adaptor2d_HCurve2d)& A) ;
   
-  Standard_EXPORT     void SetLimitPoint(const IntPatch_ThePathPointOfTheSOnBounds& V,const Standard_Boolean First) ;
+  Standard_EXPORT   void SetLimitPoint (const IntPatch_ThePathPointOfTheSOnBounds& V, const Standard_Boolean First) ;
   
-       const Handle_Adaptor2d_HCurve2d& Curve() const;
+     const  Handle(Adaptor2d_HCurve2d)& Curve()  const;
   
-        Standard_Boolean HasFirstPoint() const;
+      Standard_Boolean HasFirstPoint()  const;
   
-       const IntPatch_ThePathPointOfTheSOnBounds& FirstPoint() const;
+     const  IntPatch_ThePathPointOfTheSOnBounds& FirstPoint()  const;
   
-        Standard_Boolean HasLastPoint() const;
+      Standard_Boolean HasLastPoint()  const;
   
-       const IntPatch_ThePathPointOfTheSOnBounds& LastPoint() const;
-
+     const  IntPatch_ThePathPointOfTheSOnBounds& LastPoint()  const;
 
 
 
@@ -71,18 +57,18 @@ private:
 
 
 
-Handle_Adaptor2d_HCurve2d arc;
-Standard_Boolean hasfp;
-IntPatch_ThePathPointOfTheSOnBounds thefp;
-Standard_Boolean haslp;
-IntPatch_ThePathPointOfTheSOnBounds thelp;
+  Handle(Adaptor2d_HCurve2d) arc;
+  Standard_Boolean hasfp;
+  IntPatch_ThePathPointOfTheSOnBounds thefp;
+  Standard_Boolean haslp;
+  IntPatch_ThePathPointOfTheSOnBounds thelp;
 
 
 };
 
-#define TheVertex Handle_Adaptor3d_HVertex
+#define TheVertex Handle(Adaptor3d_HVertex)
 #define TheVertex_hxx <Adaptor3d_HVertex.hxx>
-#define TheArc Handle_Adaptor2d_HCurve2d
+#define TheArc Handle(Adaptor2d_HCurve2d)
 #define TheArc_hxx <Adaptor2d_HCurve2d.hxx>
 #define ThePathPoint IntPatch_ThePathPointOfTheSOnBounds
 #define ThePathPoint_hxx <IntPatch_ThePathPointOfTheSOnBounds.hxx>
@@ -101,7 +87,6 @@ IntPatch_ThePathPointOfTheSOnBounds thelp;
 #undef IntStart_Segment_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntPatch_TheSegmentOfTheSOnBounds_HeaderFile

@@ -6,38 +6,27 @@
 #ifndef _AdvApp2Var_SequenceNodeOfSequenceOfPatch_HeaderFile
 #define _AdvApp2Var_SequenceNodeOfSequenceOfPatch_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch_HeaderFile
 #include <Handle_AdvApp2Var_SequenceNodeOfSequenceOfPatch.hxx>
-#endif
 
-#ifndef _AdvApp2Var_Patch_HeaderFile
 #include <AdvApp2Var_Patch.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class AdvApp2Var_Patch;
 class AdvApp2Var_SequenceOfPatch;
 
 
 
-class AdvApp2Var_SequenceNodeOfSequenceOfPatch : public TCollection_SeqNode {
+class AdvApp2Var_SequenceNodeOfSequenceOfPatch : public TCollection_SeqNode
+{
 
 public:
 
   
-      AdvApp2Var_SequenceNodeOfSequenceOfPatch(const AdvApp2Var_Patch& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    AdvApp2Var_SequenceNodeOfSequenceOfPatch(const AdvApp2Var_Patch& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        AdvApp2Var_Patch& Value() const;
+      AdvApp2Var_Patch& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-AdvApp2Var_Patch myValue;
+  AdvApp2Var_Patch myValue;
 
 
 };
@@ -78,7 +67,6 @@ AdvApp2Var_Patch myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AdvApp2Var_SequenceNodeOfSequenceOfPatch_HeaderFile

@@ -1,18 +1,6 @@
-#ifndef _IFSelect_WorkSession_HeaderFile
 #include <IFSelect_WorkSession.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _IFSelect_WorkLibrary_HeaderFile
 #include <IFSelect_WorkLibrary.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _IFSelect_SignCounter_HeaderFile
 #include <IFSelect_SignCounter.hxx>
-#endif
-#ifndef _IFSelect_SessionPilot_HeaderFile
 #include <IFSelect_SessionPilot.hxx>
-#endif

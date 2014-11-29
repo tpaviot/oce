@@ -6,28 +6,14 @@
 #ifndef _TColgp_HSequenceOfXY_HeaderFile
 #define _TColgp_HSequenceOfXY_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColgp_HSequenceOfXY_HeaderFile
 #include <Handle_TColgp_HSequenceOfXY.hxx>
-#endif
 
-#ifndef _TColgp_SequenceOfXY_HeaderFile
 #include <TColgp_SequenceOfXY.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class gp_XY;
@@ -35,56 +21,57 @@ class TColgp_SequenceOfXY;
 
 
 
-class TColgp_HSequenceOfXY : public MMgt_TShared {
+class TColgp_HSequenceOfXY : public MMgt_TShared
+{
 
 public:
 
   
-      TColgp_HSequenceOfXY();
+    TColgp_HSequenceOfXY();
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void Append(const gp_XY& anItem) ;
+  Standard_EXPORT   void Append (const gp_XY& anItem) ;
   
-  Standard_EXPORT     void Append(const Handle(TColgp_HSequenceOfXY)& aSequence) ;
+  Standard_EXPORT   void Append (const Handle(TColgp_HSequenceOfXY)& aSequence) ;
   
-  Standard_EXPORT     void Prepend(const gp_XY& anItem) ;
+  Standard_EXPORT   void Prepend (const gp_XY& anItem) ;
   
-  Standard_EXPORT     void Prepend(const Handle(TColgp_HSequenceOfXY)& aSequence) ;
+  Standard_EXPORT   void Prepend (const Handle(TColgp_HSequenceOfXY)& aSequence) ;
   
-  Standard_EXPORT     void Reverse() ;
+  Standard_EXPORT   void Reverse() ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const gp_XY& anItem) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const gp_XY& anItem) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(TColgp_HSequenceOfXY)& aSequence) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(TColgp_HSequenceOfXY)& aSequence) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const gp_XY& anItem) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const gp_XY& anItem) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(TColgp_HSequenceOfXY)& aSequence) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(TColgp_HSequenceOfXY)& aSequence) ;
   
-  Standard_EXPORT     void Exchange(const Standard_Integer anIndex,const Standard_Integer anOtherIndex) ;
+  Standard_EXPORT   void Exchange (const Standard_Integer anIndex, const Standard_Integer anOtherIndex) ;
   
-  Standard_EXPORT     Handle_TColgp_HSequenceOfXY Split(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(TColgp_HSequenceOfXY) Split (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer anIndex,const gp_XY& anItem) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer anIndex, const gp_XY& anItem) ;
   
-  Standard_EXPORT    const gp_XY& Value(const Standard_Integer anIndex) const;
+  Standard_EXPORT  const  gp_XY& Value (const Standard_Integer anIndex)  const;
   
-  Standard_EXPORT     gp_XY& ChangeValue(const Standard_Integer anIndex) ;
+  Standard_EXPORT   gp_XY& ChangeValue (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer anIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer fromIndex,const Standard_Integer toIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer fromIndex, const Standard_Integer toIndex) ;
   
-       const TColgp_SequenceOfXY& Sequence() const;
+     const  TColgp_SequenceOfXY& Sequence()  const;
   
-        TColgp_SequenceOfXY& ChangeSequence() ;
+      TColgp_SequenceOfXY& ChangeSequence() ;
   
-  Standard_EXPORT     Handle_TColgp_HSequenceOfXY ShallowCopy() const;
+  Standard_EXPORT   Handle(TColgp_HSequenceOfXY) ShallowCopy()  const;
 
 
 
@@ -99,7 +86,7 @@ protected:
 private: 
 
 
-TColgp_SequenceOfXY mySequence;
+  TColgp_SequenceOfXY mySequence;
 
 
 };
@@ -125,11 +112,10 @@ TColgp_SequenceOfXY mySequence;
 #undef TCollection_HSequence_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline Handle_TColgp_HSequenceOfXY ShallowCopy(const Handle_TColgp_HSequenceOfXY& me) {
+inline Handle(TColgp_HSequenceOfXY) ShallowCopy(const Handle(TColgp_HSequenceOfXY)& me) {
  return me->ShallowCopy();
 }
 
 
 
-#endif
+#endif // _TColgp_HSequenceOfXY_HeaderFile

@@ -1,18 +1,6 @@
-#ifndef _XmlMDF_ADriverTable_HeaderFile
 #include <XmlMDF_ADriverTable.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _CDM_Document_HeaderFile
 #include <CDM_Document.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _CDM_MessageDriver_HeaderFile
 #include <CDM_MessageDriver.hxx>
-#endif
-#ifndef _XmlLDrivers_DocumentStorageDriver_HeaderFile
 #include <XmlLDrivers_DocumentStorageDriver.hxx>
-#endif

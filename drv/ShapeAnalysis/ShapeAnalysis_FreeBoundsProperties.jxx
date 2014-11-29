@@ -1,15 +1,5 @@
-#ifndef _ShapeAnalysis_HSequenceOfFreeBounds_HeaderFile
 #include <ShapeAnalysis_HSequenceOfFreeBounds.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _ShapeAnalysis_FreeBoundData_HeaderFile
 #include <ShapeAnalysis_FreeBoundData.hxx>
-#endif
-#ifndef _TopoDS_Wire_HeaderFile
 #include <TopoDS_Wire.hxx>
-#endif
-#ifndef _ShapeAnalysis_FreeBoundsProperties_HeaderFile
 #include <ShapeAnalysis_FreeBoundsProperties.hxx>
-#endif

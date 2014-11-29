@@ -6,45 +6,40 @@
 #ifndef _StepElement_ElementDescriptor_HeaderFile
 #define _StepElement_ElementDescriptor_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepElement_ElementDescriptor_HeaderFile
 #include <Handle_StepElement_ElementDescriptor.hxx>
-#endif
 
-#ifndef _StepElement_ElementOrder_HeaderFile
 #include <StepElement_ElementOrder.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class TCollection_HAsciiString;
 
 
-//! Representation of STEP entity ElementDescriptor <br>
-class StepElement_ElementDescriptor : public MMgt_TShared {
+//! Representation of STEP entity ElementDescriptor
+class StepElement_ElementDescriptor : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepElement_ElementDescriptor();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const StepElement_ElementOrder aTopologyOrder,const Handle(TCollection_HAsciiString)& aDescription) ;
-  //! Returns field TopologyOrder <br>
-  Standard_EXPORT     StepElement_ElementOrder TopologyOrder() const;
-  //! Set field TopologyOrder <br>
-  Standard_EXPORT     void SetTopologyOrder(const StepElement_ElementOrder TopologyOrder) ;
-  //! Returns field Description <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Description() const;
-  //! Set field Description <br>
-  Standard_EXPORT     void SetDescription(const Handle(TCollection_HAsciiString)& Description) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepElement_ElementDescriptor();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const StepElement_ElementOrder aTopologyOrder, const Handle(TCollection_HAsciiString)& aDescription) ;
+  
+  //! Returns field TopologyOrder
+  Standard_EXPORT   StepElement_ElementOrder TopologyOrder()  const;
+  
+  //! Set field TopologyOrder
+  Standard_EXPORT   void SetTopologyOrder (const StepElement_ElementOrder TopologyOrder) ;
+  
+  //! Returns field Description
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Description()  const;
+  
+  //! Set field Description
+  Standard_EXPORT   void SetDescription (const Handle(TCollection_HAsciiString)& Description) ;
 
 
 
@@ -59,8 +54,8 @@ protected:
 private: 
 
 
-StepElement_ElementOrder theTopologyOrder;
-Handle_TCollection_HAsciiString theDescription;
+  StepElement_ElementOrder theTopologyOrder;
+  Handle(TCollection_HAsciiString) theDescription;
 
 
 };
@@ -69,7 +64,6 @@ Handle_TCollection_HAsciiString theDescription;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_ElementDescriptor_HeaderFile

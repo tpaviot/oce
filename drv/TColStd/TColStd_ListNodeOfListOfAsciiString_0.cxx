@@ -5,19 +5,11 @@
 
 #include <TColStd_ListNodeOfListOfAsciiString.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TColStd_ListOfAsciiString_HeaderFile
 #include <TColStd_ListOfAsciiString.hxx>
-#endif
-#ifndef _TColStd_ListIteratorOfListOfAsciiString_HeaderFile
 #include <TColStd_ListIteratorOfListOfAsciiString.hxx>
-#endif
 
  
 

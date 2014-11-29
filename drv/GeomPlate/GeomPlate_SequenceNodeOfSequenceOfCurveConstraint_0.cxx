@@ -5,16 +5,10 @@
 
 #include <GeomPlate_SequenceNodeOfSequenceOfCurveConstraint.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _GeomPlate_CurveConstraint_HeaderFile
 #include <GeomPlate_CurveConstraint.hxx>
-#endif
-#ifndef _GeomPlate_SequenceOfCurveConstraint_HeaderFile
 #include <GeomPlate_SequenceOfCurveConstraint.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(GeomPlate_SequenceNodeOfSequenceOfCurveConstraint,Standard_Tr
 IMPLEMENT_STANDARD_RTTI(GeomPlate_SequenceNodeOfSequenceOfCurveConstraint)
 
 
-#define SeqItem Handle_GeomPlate_CurveConstraint
+#define SeqItem Handle(GeomPlate_CurveConstraint)
 #define SeqItem_hxx <GeomPlate_CurveConstraint.hxx>
 #define TCollection_SequenceNode GeomPlate_SequenceNodeOfSequenceOfCurveConstraint
 #define TCollection_SequenceNode_hxx <GeomPlate_SequenceNodeOfSequenceOfCurveConstraint.hxx>

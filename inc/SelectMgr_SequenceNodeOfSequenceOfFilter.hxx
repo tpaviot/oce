@@ -6,38 +6,27 @@
 #ifndef _SelectMgr_SequenceNodeOfSequenceOfFilter_HeaderFile
 #define _SelectMgr_SequenceNodeOfSequenceOfFilter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_SelectMgr_SequenceNodeOfSequenceOfFilter_HeaderFile
 #include <Handle_SelectMgr_SequenceNodeOfSequenceOfFilter.hxx>
-#endif
 
-#ifndef _Handle_SelectMgr_Filter_HeaderFile
 #include <Handle_SelectMgr_Filter.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class SelectMgr_Filter;
 class SelectMgr_SequenceOfFilter;
 
 
 
-class SelectMgr_SequenceNodeOfSequenceOfFilter : public TCollection_SeqNode {
+class SelectMgr_SequenceNodeOfSequenceOfFilter : public TCollection_SeqNode
+{
 
 public:
 
   
-      SelectMgr_SequenceNodeOfSequenceOfFilter(const Handle(SelectMgr_Filter)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    SelectMgr_SequenceNodeOfSequenceOfFilter(const Handle(SelectMgr_Filter)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_SelectMgr_Filter& Value() const;
+      Handle(SelectMgr_Filter)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_SelectMgr_Filter myValue;
+  Handle(SelectMgr_Filter) myValue;
 
 
 };
 
-#define SeqItem Handle_SelectMgr_Filter
+#define SeqItem Handle(SelectMgr_Filter)
 #define SeqItem_hxx <SelectMgr_Filter.hxx>
 #define TCollection_SequenceNode SelectMgr_SequenceNodeOfSequenceOfFilter
 #define TCollection_SequenceNode_hxx <SelectMgr_SequenceNodeOfSequenceOfFilter.hxx>
@@ -78,7 +67,6 @@ Handle_SelectMgr_Filter myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _SelectMgr_SequenceNodeOfSequenceOfFilter_HeaderFile

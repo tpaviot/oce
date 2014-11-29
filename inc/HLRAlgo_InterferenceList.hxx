@@ -6,28 +6,14 @@
 #ifndef _HLRAlgo_InterferenceList_HeaderFile
 #define _HLRAlgo_InterferenceList_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_HLRAlgo_ListNodeOfInterferenceList_HeaderFile
 #include <Handle_HLRAlgo_ListNodeOfInterferenceList.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class HLRAlgo_ListIteratorOfInterferenceList;
 class HLRAlgo_Interference;
@@ -35,61 +21,63 @@ class HLRAlgo_ListNodeOfInterferenceList;
 
 
 
-class HLRAlgo_InterferenceList  {
+class HLRAlgo_InterferenceList 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   HLRAlgo_InterferenceList();
+  Standard_EXPORT HLRAlgo_InterferenceList();
   
-  Standard_EXPORT     void Assign(const HLRAlgo_InterferenceList& Other) ;
-    void operator=(const HLRAlgo_InterferenceList& Other) 
+  Standard_EXPORT HLRAlgo_InterferenceList(const HLRAlgo_InterferenceList& Other);
+  
+  Standard_EXPORT   void Assign (const HLRAlgo_InterferenceList& Other) ;
+  void operator= (const HLRAlgo_InterferenceList& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~HLRAlgo_InterferenceList()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const HLRAlgo_Interference& I) ;
+  Standard_EXPORT   void Prepend (const HLRAlgo_Interference& I) ;
   
-  Standard_EXPORT     void Prepend(const HLRAlgo_Interference& I,HLRAlgo_ListIteratorOfInterferenceList& theIt) ;
+  Standard_EXPORT   void Prepend (const HLRAlgo_Interference& I, HLRAlgo_ListIteratorOfInterferenceList& theIt) ;
   
-  Standard_EXPORT     void Prepend(HLRAlgo_InterferenceList& Other) ;
+  Standard_EXPORT   void Prepend (HLRAlgo_InterferenceList& Other) ;
   
-  Standard_EXPORT     void Append(const HLRAlgo_Interference& I) ;
+  Standard_EXPORT   void Append (const HLRAlgo_Interference& I) ;
   
-  Standard_EXPORT     void Append(const HLRAlgo_Interference& I,HLRAlgo_ListIteratorOfInterferenceList& theIt) ;
+  Standard_EXPORT   void Append (const HLRAlgo_Interference& I, HLRAlgo_ListIteratorOfInterferenceList& theIt) ;
   
-  Standard_EXPORT     void Append(HLRAlgo_InterferenceList& Other) ;
+  Standard_EXPORT   void Append (HLRAlgo_InterferenceList& Other) ;
   
-  Standard_EXPORT     HLRAlgo_Interference& First() const;
+  Standard_EXPORT   HLRAlgo_Interference& First()  const;
   
-  Standard_EXPORT     HLRAlgo_Interference& Last() const;
+  Standard_EXPORT   HLRAlgo_Interference& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(HLRAlgo_ListIteratorOfInterferenceList& It) ;
+  Standard_EXPORT   void Remove (HLRAlgo_ListIteratorOfInterferenceList& It) ;
   
-  Standard_EXPORT     void InsertBefore(const HLRAlgo_Interference& I,HLRAlgo_ListIteratorOfInterferenceList& It) ;
+  Standard_EXPORT   void InsertBefore (const HLRAlgo_Interference& I, HLRAlgo_ListIteratorOfInterferenceList& It) ;
   
-  Standard_EXPORT     void InsertBefore(HLRAlgo_InterferenceList& Other,HLRAlgo_ListIteratorOfInterferenceList& It) ;
+  Standard_EXPORT   void InsertBefore (HLRAlgo_InterferenceList& Other, HLRAlgo_ListIteratorOfInterferenceList& It) ;
   
-  Standard_EXPORT     void InsertAfter(const HLRAlgo_Interference& I,HLRAlgo_ListIteratorOfInterferenceList& It) ;
+  Standard_EXPORT   void InsertAfter (const HLRAlgo_Interference& I, HLRAlgo_ListIteratorOfInterferenceList& It) ;
   
-  Standard_EXPORT     void InsertAfter(HLRAlgo_InterferenceList& Other,HLRAlgo_ListIteratorOfInterferenceList& It) ;
+  Standard_EXPORT   void InsertAfter (HLRAlgo_InterferenceList& Other, HLRAlgo_ListIteratorOfInterferenceList& It) ;
 
 
 friend class HLRAlgo_ListIteratorOfInterferenceList;
-
 
 
 protected:
@@ -100,12 +88,10 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   HLRAlgo_InterferenceList(const HLRAlgo_InterferenceList& Other);
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
@@ -135,7 +121,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRAlgo_InterferenceList_HeaderFile

@@ -6,57 +6,43 @@
 #ifndef _Vrml_FontStyle_HeaderFile
 #define _Vrml_FontStyle_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Vrml_FontStyleFamily_HeaderFile
 #include <Vrml_FontStyleFamily.hxx>
-#endif
-#ifndef _Vrml_FontStyleStyle_HeaderFile
 #include <Vrml_FontStyleStyle.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 
 
-//! defines a FontStyle node of VRML of properties of geometry <br>
-//!  and its appearance. <br>
-//!  The  size  field  specifies  the  height  (in  object  space  units) <br>
-//!  of  glyphs  rendered  and  determines  the  vertical  spacing  of <br>
-//!  adjacent  lines  of  text. <br>
-class Vrml_FontStyle  {
+//! defines a FontStyle node of VRML of properties of geometry
+//! and its appearance.
+//! The  size  field  specifies  the  height  (in  object  space  units)
+//! of  glyphs  rendered  and  determines  the  vertical  spacing  of
+//! adjacent  lines  of  text.
+class Vrml_FontStyle 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Vrml_FontStyle(const Standard_Real aSize = 10,const Vrml_FontStyleFamily aFamily = Vrml_SERIF,const Vrml_FontStyleStyle aStyle = Vrml_NONE);
+  Standard_EXPORT Vrml_FontStyle(const Standard_Real aSize = 10, const Vrml_FontStyleFamily aFamily = Vrml_SERIF, const Vrml_FontStyleStyle aStyle = Vrml_NONE);
   
-  Standard_EXPORT     void SetSize(const Standard_Real aSize) ;
+  Standard_EXPORT   void SetSize (const Standard_Real aSize) ;
   
-  Standard_EXPORT     Standard_Real Size() const;
+  Standard_EXPORT   Standard_Real Size()  const;
   
-  Standard_EXPORT     void SetFamily(const Vrml_FontStyleFamily aFamily) ;
+  Standard_EXPORT   void SetFamily (const Vrml_FontStyleFamily aFamily) ;
   
-  Standard_EXPORT     Vrml_FontStyleFamily Family() const;
+  Standard_EXPORT   Vrml_FontStyleFamily Family()  const;
   
-  Standard_EXPORT     void SetStyle(const Vrml_FontStyleStyle aStyle) ;
+  Standard_EXPORT   void SetStyle (const Vrml_FontStyleStyle aStyle) ;
   
-  Standard_EXPORT     Vrml_FontStyleStyle Style() const;
+  Standard_EXPORT   Vrml_FontStyleStyle Style()  const;
   
-  Standard_EXPORT     Standard_OStream& Print(Standard_OStream& anOStream) const;
-
+  Standard_EXPORT   Standard_OStream& Print (Standard_OStream& anOStream)  const;
 
 
 
@@ -71,9 +57,9 @@ private:
 
 
 
-Standard_Real mySize;
-Vrml_FontStyleFamily myFamily;
-Vrml_FontStyleStyle myStyle;
+  Standard_Real mySize;
+  Vrml_FontStyleFamily myFamily;
+  Vrml_FontStyleStyle myStyle;
 
 
 };
@@ -82,7 +68,6 @@ Vrml_FontStyleStyle myStyle;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Vrml_FontStyle_HeaderFile

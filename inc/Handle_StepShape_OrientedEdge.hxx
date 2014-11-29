@@ -6,22 +6,15 @@
 #ifndef _Handle_StepShape_OrientedEdge_HeaderFile
 #define _Handle_StepShape_OrientedEdge_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepShape_Edge_HeaderFile
 #include <Handle_StepShape_Edge.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepShape_Edge);
 class StepShape_OrientedEdge;
 
-DEFINE_STANDARD_HANDLE(StepShape_OrientedEdge,StepShape_Edge)
+DEFINE_STANDARD_HANDLE(StepShape_OrientedEdge, StepShape_Edge)
 
-#endif
+#endif // _Handle_StepShape_OrientedEdge_HeaderFile

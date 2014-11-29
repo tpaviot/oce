@@ -5,43 +5,19 @@
 
 #include <Transfer_ActorOfProcessForTransient.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Transfer_ActorOfProcessForTransient_HeaderFile
 #include <Transfer_ActorOfProcessForTransient.hxx>
-#endif
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfTransient_HeaderFile
 #include <TColStd_HSequenceOfTransient.hxx>
-#endif
-#ifndef _Transfer_ProcessForTransient_HeaderFile
 #include <Transfer_ProcessForTransient.hxx>
-#endif
-#ifndef _Transfer_TransferMapOfProcessForTransient_HeaderFile
 #include <Transfer_TransferMapOfProcessForTransient.hxx>
-#endif
-#ifndef _Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient_HeaderFile
 #include <Transfer_IndexedDataMapNodeOfTransferMapOfProcessForTransient.hxx>
-#endif
-#ifndef _Transfer_IteratorOfProcessForTransient_HeaderFile
 #include <Transfer_IteratorOfProcessForTransient.hxx>
-#endif
-#ifndef _Transfer_Binder_HeaderFile
 #include <Transfer_Binder.hxx>
-#endif
-#ifndef _Transfer_SimpleBinderOfTransient_HeaderFile
 #include <Transfer_SimpleBinderOfTransient.hxx>
-#endif
 
  
 
@@ -59,7 +35,7 @@ IMPLEMENT_DOWNCAST(Transfer_ActorOfProcessForTransient,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Transfer_ActorOfProcessForTransient)
 
 
-#define TheStart Handle_Standard_Transient
+#define TheStart Handle(Standard_Transient)
 #define TheStart_hxx <Standard_Transient.hxx>
 #define TheMapHasher TColStd_MapTransientHasher
 #define TheMapHasher_hxx <TColStd_MapTransientHasher.hxx>

@@ -1,6 +1,2 @@
-#ifndef _gp_Parab2d_HeaderFile
 #include <gp_Parab2d.hxx>
-#endif
-#ifndef _GccInt_BParab_HeaderFile
 #include <GccInt_BParab.hxx>
-#endif

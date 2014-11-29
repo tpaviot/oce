@@ -6,190 +6,68 @@
 #ifndef _MgtGeom_HeaderFile
 #define _MgtGeom_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom_Axis1Placement_HeaderFile
 #include <Handle_Geom_Axis1Placement.hxx>
-#endif
-#ifndef _Handle_PGeom_Axis1Placement_HeaderFile
 #include <Handle_PGeom_Axis1Placement.hxx>
-#endif
-#ifndef _Handle_Geom_Axis2Placement_HeaderFile
 #include <Handle_Geom_Axis2Placement.hxx>
-#endif
-#ifndef _Handle_PGeom_Axis2Placement_HeaderFile
 #include <Handle_PGeom_Axis2Placement.hxx>
-#endif
-#ifndef _Handle_Geom_BSplineCurve_HeaderFile
 #include <Handle_Geom_BSplineCurve.hxx>
-#endif
-#ifndef _Handle_PGeom_BSplineCurve_HeaderFile
 #include <Handle_PGeom_BSplineCurve.hxx>
-#endif
-#ifndef _Handle_Geom_BSplineSurface_HeaderFile
 #include <Handle_Geom_BSplineSurface.hxx>
-#endif
-#ifndef _Handle_PGeom_BSplineSurface_HeaderFile
 #include <Handle_PGeom_BSplineSurface.hxx>
-#endif
-#ifndef _Handle_Geom_BezierCurve_HeaderFile
 #include <Handle_Geom_BezierCurve.hxx>
-#endif
-#ifndef _Handle_PGeom_BezierCurve_HeaderFile
 #include <Handle_PGeom_BezierCurve.hxx>
-#endif
-#ifndef _Handle_Geom_BezierSurface_HeaderFile
 #include <Handle_Geom_BezierSurface.hxx>
-#endif
-#ifndef _Handle_PGeom_BezierSurface_HeaderFile
 #include <Handle_PGeom_BezierSurface.hxx>
-#endif
-#ifndef _Handle_Geom_CartesianPoint_HeaderFile
 #include <Handle_Geom_CartesianPoint.hxx>
-#endif
-#ifndef _Handle_PGeom_CartesianPoint_HeaderFile
 #include <Handle_PGeom_CartesianPoint.hxx>
-#endif
-#ifndef _Handle_Geom_Circle_HeaderFile
 #include <Handle_Geom_Circle.hxx>
-#endif
-#ifndef _Handle_PGeom_Circle_HeaderFile
 #include <Handle_PGeom_Circle.hxx>
-#endif
-#ifndef _Handle_Geom_ConicalSurface_HeaderFile
 #include <Handle_Geom_ConicalSurface.hxx>
-#endif
-#ifndef _Handle_PGeom_ConicalSurface_HeaderFile
 #include <Handle_PGeom_ConicalSurface.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _Handle_PGeom_Curve_HeaderFile
 #include <Handle_PGeom_Curve.hxx>
-#endif
-#ifndef _Handle_Geom_CylindricalSurface_HeaderFile
 #include <Handle_Geom_CylindricalSurface.hxx>
-#endif
-#ifndef _Handle_PGeom_CylindricalSurface_HeaderFile
 #include <Handle_PGeom_CylindricalSurface.hxx>
-#endif
-#ifndef _Handle_Geom_Direction_HeaderFile
 #include <Handle_Geom_Direction.hxx>
-#endif
-#ifndef _Handle_PGeom_Direction_HeaderFile
 #include <Handle_PGeom_Direction.hxx>
-#endif
-#ifndef _Handle_Geom_Ellipse_HeaderFile
 #include <Handle_Geom_Ellipse.hxx>
-#endif
-#ifndef _Handle_PGeom_Ellipse_HeaderFile
 #include <Handle_PGeom_Ellipse.hxx>
-#endif
-#ifndef _Handle_Geom_Hyperbola_HeaderFile
 #include <Handle_Geom_Hyperbola.hxx>
-#endif
-#ifndef _Handle_PGeom_Hyperbola_HeaderFile
 #include <Handle_PGeom_Hyperbola.hxx>
-#endif
-#ifndef _Handle_Geom_Line_HeaderFile
 #include <Handle_Geom_Line.hxx>
-#endif
-#ifndef _Handle_PGeom_Line_HeaderFile
 #include <Handle_PGeom_Line.hxx>
-#endif
-#ifndef _Handle_Geom_OffsetCurve_HeaderFile
 #include <Handle_Geom_OffsetCurve.hxx>
-#endif
-#ifndef _Handle_PGeom_OffsetCurve_HeaderFile
 #include <Handle_PGeom_OffsetCurve.hxx>
-#endif
-#ifndef _Handle_Geom_OffsetSurface_HeaderFile
 #include <Handle_Geom_OffsetSurface.hxx>
-#endif
-#ifndef _Handle_PGeom_OffsetSurface_HeaderFile
 #include <Handle_PGeom_OffsetSurface.hxx>
-#endif
-#ifndef _Handle_Geom_Parabola_HeaderFile
 #include <Handle_Geom_Parabola.hxx>
-#endif
-#ifndef _Handle_PGeom_Parabola_HeaderFile
 #include <Handle_PGeom_Parabola.hxx>
-#endif
-#ifndef _Handle_Geom_Plane_HeaderFile
 #include <Handle_Geom_Plane.hxx>
-#endif
-#ifndef _Handle_PGeom_Plane_HeaderFile
 #include <Handle_PGeom_Plane.hxx>
-#endif
-#ifndef _Handle_Geom_Point_HeaderFile
 #include <Handle_Geom_Point.hxx>
-#endif
-#ifndef _Handle_PGeom_Point_HeaderFile
 #include <Handle_PGeom_Point.hxx>
-#endif
-#ifndef _Handle_Geom_RectangularTrimmedSurface_HeaderFile
 #include <Handle_Geom_RectangularTrimmedSurface.hxx>
-#endif
-#ifndef _Handle_PGeom_RectangularTrimmedSurface_HeaderFile
 #include <Handle_PGeom_RectangularTrimmedSurface.hxx>
-#endif
-#ifndef _Handle_Geom_SphericalSurface_HeaderFile
 #include <Handle_Geom_SphericalSurface.hxx>
-#endif
-#ifndef _Handle_PGeom_SphericalSurface_HeaderFile
 #include <Handle_PGeom_SphericalSurface.hxx>
-#endif
-#ifndef _Handle_Geom_Surface_HeaderFile
 #include <Handle_Geom_Surface.hxx>
-#endif
-#ifndef _Handle_PGeom_Surface_HeaderFile
 #include <Handle_PGeom_Surface.hxx>
-#endif
-#ifndef _Handle_Geom_SurfaceOfLinearExtrusion_HeaderFile
 #include <Handle_Geom_SurfaceOfLinearExtrusion.hxx>
-#endif
-#ifndef _Handle_PGeom_SurfaceOfLinearExtrusion_HeaderFile
 #include <Handle_PGeom_SurfaceOfLinearExtrusion.hxx>
-#endif
-#ifndef _Handle_Geom_SurfaceOfRevolution_HeaderFile
 #include <Handle_Geom_SurfaceOfRevolution.hxx>
-#endif
-#ifndef _Handle_PGeom_SurfaceOfRevolution_HeaderFile
 #include <Handle_PGeom_SurfaceOfRevolution.hxx>
-#endif
-#ifndef _Handle_Geom_ToroidalSurface_HeaderFile
 #include <Handle_Geom_ToroidalSurface.hxx>
-#endif
-#ifndef _Handle_PGeom_ToroidalSurface_HeaderFile
 #include <Handle_PGeom_ToroidalSurface.hxx>
-#endif
-#ifndef _Handle_Geom_Transformation_HeaderFile
 #include <Handle_Geom_Transformation.hxx>
-#endif
-#ifndef _Handle_PGeom_Transformation_HeaderFile
 #include <Handle_PGeom_Transformation.hxx>
-#endif
-#ifndef _Handle_Geom_TrimmedCurve_HeaderFile
 #include <Handle_Geom_TrimmedCurve.hxx>
-#endif
-#ifndef _Handle_PGeom_TrimmedCurve_HeaderFile
 #include <Handle_PGeom_TrimmedCurve.hxx>
-#endif
-#ifndef _Handle_Geom_VectorWithMagnitude_HeaderFile
 #include <Handle_Geom_VectorWithMagnitude.hxx>
-#endif
-#ifndef _Handle_PGeom_VectorWithMagnitude_HeaderFile
 #include <Handle_PGeom_VectorWithMagnitude.hxx>
-#endif
 class Geom_Axis1Placement;
 class PGeom_Axis1Placement;
 class Geom_Axis2Placement;
@@ -250,141 +128,199 @@ class Geom_VectorWithMagnitude;
 class PGeom_VectorWithMagnitude;
 
 
-//! This  package   provides   methods  to   translate <br>
-//!          transient objects from Geom to  persistent objects <br>
-//!          from PGeom and vice-versa. No  track from previous <br>
-//!          translation is kept. <br>
-//! <br>
-//!	Data is not shared: <br>
-//! -   between transient and persistent objects, or <br>
-//! -   between two successive translations of the <br>
-//!   same object. <br>
-class MgtGeom  {
+//! This  package   provides   methods  to   translate
+//! transient objects from Geom to  persistent objects
+//! from PGeom and vice-versa. No  track from previous
+//! translation is kept.
+//!
+//! Data is not shared:
+//! -   between transient and persistent objects, or
+//! -   between two successive translations of the
+//! same object.
+class MgtGeom 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_Axis1Placement Translate(const Handle(PGeom_Axis1Placement)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_Axis1Placement Translate(const Handle(Geom_Axis1Placement)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_Axis2Placement Translate(const Handle(PGeom_Axis2Placement)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_Axis2Placement Translate(const Handle(Geom_Axis2Placement)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_BSplineCurve Translate(const Handle(PGeom_BSplineCurve)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_BSplineCurve Translate(const Handle(Geom_BSplineCurve)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_BSplineSurface Translate(const Handle(PGeom_BSplineSurface)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_BSplineSurface Translate(const Handle(Geom_BSplineSurface)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_BezierCurve Translate(const Handle(PGeom_BezierCurve)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_BezierCurve Translate(const Handle(Geom_BezierCurve)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_BezierSurface Translate(const Handle(PGeom_BezierSurface)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_BezierSurface Translate(const Handle(Geom_BezierSurface)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_CartesianPoint Translate(const Handle(PGeom_CartesianPoint)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_CartesianPoint Translate(const Handle(Geom_CartesianPoint)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_Circle Translate(const Handle(PGeom_Circle)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_Circle Translate(const Handle(Geom_Circle)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_ConicalSurface Translate(const Handle(PGeom_ConicalSurface)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_ConicalSurface Translate(const Handle(Geom_ConicalSurface)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-//!          Raises NullObject if the PObj type has no mapping <br>
-  Standard_EXPORT   static  Handle_Geom_Curve Translate(const Handle(PGeom_Curve)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-//!          Raises NullObject if the TObj type has no mapping <br>
-  Standard_EXPORT   static  Handle_PGeom_Curve Translate(const Handle(Geom_Curve)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_CylindricalSurface Translate(const Handle(PGeom_CylindricalSurface)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_CylindricalSurface Translate(const Handle(Geom_CylindricalSurface)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_Direction Translate(const Handle(PGeom_Direction)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_Direction Translate(const Handle(Geom_Direction)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_Ellipse Translate(const Handle(PGeom_Ellipse)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_Ellipse Translate(const Handle(Geom_Ellipse)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_Hyperbola Translate(const Handle(PGeom_Hyperbola)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_Hyperbola Translate(const Handle(Geom_Hyperbola)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_Line Translate(const Handle(PGeom_Line)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_Line Translate(const Handle(Geom_Line)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_OffsetCurve Translate(const Handle(PGeom_OffsetCurve)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_OffsetCurve Translate(const Handle(Geom_OffsetCurve)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_OffsetSurface Translate(const Handle(PGeom_OffsetSurface)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_OffsetSurface Translate(const Handle(Geom_OffsetSurface)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_Parabola Translate(const Handle(PGeom_Parabola)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_Parabola Translate(const Handle(Geom_Parabola)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_Plane Translate(const Handle(PGeom_Plane)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_Plane Translate(const Handle(Geom_Plane)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_Point Translate(const Handle(PGeom_Point)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_Point Translate(const Handle(Geom_Point)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_RectangularTrimmedSurface Translate(const Handle(PGeom_RectangularTrimmedSurface)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_RectangularTrimmedSurface Translate(const Handle(Geom_RectangularTrimmedSurface)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_SphericalSurface Translate(const Handle(PGeom_SphericalSurface)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_SphericalSurface Translate(const Handle(Geom_SphericalSurface)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-//!          Raises NullObject if the PObj type has no mapping <br>
-  Standard_EXPORT   static  Handle_Geom_Surface Translate(const Handle(PGeom_Surface)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-//!          Raises NullObject if the TObj type has no mapping <br>
-  Standard_EXPORT   static  Handle_PGeom_Surface Translate(const Handle(Geom_Surface)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_SurfaceOfLinearExtrusion Translate(const Handle(PGeom_SurfaceOfLinearExtrusion)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_SurfaceOfLinearExtrusion Translate(const Handle(Geom_SurfaceOfLinearExtrusion)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_SurfaceOfRevolution Translate(const Handle(PGeom_SurfaceOfRevolution)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_SurfaceOfRevolution Translate(const Handle(Geom_SurfaceOfRevolution)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_ToroidalSurface Translate(const Handle(PGeom_ToroidalSurface)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_ToroidalSurface Translate(const Handle(Geom_ToroidalSurface)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_Transformation Translate(const Handle(PGeom_Transformation)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_Transformation Translate(const Handle(Geom_Transformation)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_TrimmedCurve Translate(const Handle(PGeom_TrimmedCurve)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_TrimmedCurve Translate(const Handle(Geom_TrimmedCurve)& TObj) ;
-  //! Translate <PObj> to its Transient equivalent from Geom. <br>
-  Standard_EXPORT   static  Handle_Geom_VectorWithMagnitude Translate(const Handle(PGeom_VectorWithMagnitude)& PObj) ;
-  //! Translate <TObj> to its Persistent equivalent from PGeom. <br>
-  Standard_EXPORT   static  Handle_PGeom_VectorWithMagnitude Translate(const Handle(Geom_VectorWithMagnitude)& TObj) ;
-
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_Axis1Placement) Translate (const Handle(PGeom_Axis1Placement)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_Axis1Placement) Translate (const Handle(Geom_Axis1Placement)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_Axis2Placement) Translate (const Handle(PGeom_Axis2Placement)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_Axis2Placement) Translate (const Handle(Geom_Axis2Placement)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_BSplineCurve) Translate (const Handle(PGeom_BSplineCurve)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_BSplineCurve) Translate (const Handle(Geom_BSplineCurve)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_BSplineSurface) Translate (const Handle(PGeom_BSplineSurface)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_BSplineSurface) Translate (const Handle(Geom_BSplineSurface)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_BezierCurve) Translate (const Handle(PGeom_BezierCurve)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_BezierCurve) Translate (const Handle(Geom_BezierCurve)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_BezierSurface) Translate (const Handle(PGeom_BezierSurface)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_BezierSurface) Translate (const Handle(Geom_BezierSurface)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_CartesianPoint) Translate (const Handle(PGeom_CartesianPoint)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_CartesianPoint) Translate (const Handle(Geom_CartesianPoint)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_Circle) Translate (const Handle(PGeom_Circle)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_Circle) Translate (const Handle(Geom_Circle)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_ConicalSurface) Translate (const Handle(PGeom_ConicalSurface)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_ConicalSurface) Translate (const Handle(Geom_ConicalSurface)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  //! Raises NullObject if the PObj type has no mapping
+  Standard_EXPORT static   Handle(Geom_Curve) Translate (const Handle(PGeom_Curve)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  //! Raises NullObject if the TObj type has no mapping
+  Standard_EXPORT static   Handle(PGeom_Curve) Translate (const Handle(Geom_Curve)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_CylindricalSurface) Translate (const Handle(PGeom_CylindricalSurface)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_CylindricalSurface) Translate (const Handle(Geom_CylindricalSurface)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_Direction) Translate (const Handle(PGeom_Direction)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_Direction) Translate (const Handle(Geom_Direction)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_Ellipse) Translate (const Handle(PGeom_Ellipse)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_Ellipse) Translate (const Handle(Geom_Ellipse)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_Hyperbola) Translate (const Handle(PGeom_Hyperbola)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_Hyperbola) Translate (const Handle(Geom_Hyperbola)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_Line) Translate (const Handle(PGeom_Line)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_Line) Translate (const Handle(Geom_Line)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_OffsetCurve) Translate (const Handle(PGeom_OffsetCurve)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_OffsetCurve) Translate (const Handle(Geom_OffsetCurve)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_OffsetSurface) Translate (const Handle(PGeom_OffsetSurface)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_OffsetSurface) Translate (const Handle(Geom_OffsetSurface)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_Parabola) Translate (const Handle(PGeom_Parabola)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_Parabola) Translate (const Handle(Geom_Parabola)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_Plane) Translate (const Handle(PGeom_Plane)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_Plane) Translate (const Handle(Geom_Plane)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_Point) Translate (const Handle(PGeom_Point)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_Point) Translate (const Handle(Geom_Point)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_RectangularTrimmedSurface) Translate (const Handle(PGeom_RectangularTrimmedSurface)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_RectangularTrimmedSurface) Translate (const Handle(Geom_RectangularTrimmedSurface)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_SphericalSurface) Translate (const Handle(PGeom_SphericalSurface)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_SphericalSurface) Translate (const Handle(Geom_SphericalSurface)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  //! Raises NullObject if the PObj type has no mapping
+  Standard_EXPORT static   Handle(Geom_Surface) Translate (const Handle(PGeom_Surface)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  //! Raises NullObject if the TObj type has no mapping
+  Standard_EXPORT static   Handle(PGeom_Surface) Translate (const Handle(Geom_Surface)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_SurfaceOfLinearExtrusion) Translate (const Handle(PGeom_SurfaceOfLinearExtrusion)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_SurfaceOfLinearExtrusion) Translate (const Handle(Geom_SurfaceOfLinearExtrusion)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_SurfaceOfRevolution) Translate (const Handle(PGeom_SurfaceOfRevolution)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_SurfaceOfRevolution) Translate (const Handle(Geom_SurfaceOfRevolution)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_ToroidalSurface) Translate (const Handle(PGeom_ToroidalSurface)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_ToroidalSurface) Translate (const Handle(Geom_ToroidalSurface)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_Transformation) Translate (const Handle(PGeom_Transformation)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_Transformation) Translate (const Handle(Geom_Transformation)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_TrimmedCurve) Translate (const Handle(PGeom_TrimmedCurve)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_TrimmedCurve) Translate (const Handle(Geom_TrimmedCurve)& TObj) ;
+  
+  //! Translate <PObj> to its Transient equivalent from Geom.
+  Standard_EXPORT static   Handle(Geom_VectorWithMagnitude) Translate (const Handle(PGeom_VectorWithMagnitude)& PObj) ;
+  
+  //! Translate <TObj> to its Persistent equivalent from PGeom.
+  Standard_EXPORT static   Handle(PGeom_VectorWithMagnitude) Translate (const Handle(Geom_VectorWithMagnitude)& TObj) ;
 
 
 
@@ -407,7 +343,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MgtGeom_HeaderFile

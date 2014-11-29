@@ -1,9 +1,3 @@
-#ifndef _StlMesh_Mesh_HeaderFile
 #include <StlMesh_Mesh.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _StlAPI_Writer_HeaderFile
 #include <StlAPI_Writer.hxx>
-#endif

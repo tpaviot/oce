@@ -6,28 +6,14 @@
 #ifndef _PTColStd_DoubleMapNodeOfDoubleMapOfTransientPersistent_HeaderFile
 #define _PTColStd_DoubleMapNodeOfDoubleMapOfTransientPersistent_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_PTColStd_DoubleMapNodeOfDoubleMapOfTransientPersistent_HeaderFile
 #include <Handle_PTColStd_DoubleMapNodeOfDoubleMapOfTransientPersistent.hxx>
-#endif
 
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
 #include <Handle_Standard_Persistent.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
 class Standard_Transient;
 class Standard_Persistent;
 class TColStd_MapTransientHasher;
@@ -37,18 +23,19 @@ class PTColStd_DoubleMapIteratorOfDoubleMapOfTransientPersistent;
 
 
 
-class PTColStd_DoubleMapNodeOfDoubleMapOfTransientPersistent : public TCollection_MapNode {
+class PTColStd_DoubleMapNodeOfDoubleMapOfTransientPersistent : public TCollection_MapNode
+{
 
 public:
 
   
-      PTColStd_DoubleMapNodeOfDoubleMapOfTransientPersistent(const Handle(Standard_Transient)& K1,const Handle(Standard_Persistent)& K2,const TCollection_MapNodePtr& n1,const TCollection_MapNodePtr& n2);
+    PTColStd_DoubleMapNodeOfDoubleMapOfTransientPersistent(const Handle(Standard_Transient)& K1, const Handle(Standard_Persistent)& K2, const TCollection_MapNodePtr& n1, const TCollection_MapNodePtr& n2);
   
-        Handle_Standard_Transient& Key1() const;
+      Handle(Standard_Transient)& Key1()  const;
   
-        Handle_Standard_Persistent& Key2() const;
+      Handle(Standard_Persistent)& Key2()  const;
   
-        TCollection_MapNodePtr& Next2() const;
+      TCollection_MapNodePtr& Next2()  const;
 
 
 
@@ -63,16 +50,16 @@ protected:
 private: 
 
 
-Handle_Standard_Transient myKey1;
-Handle_Standard_Persistent myKey2;
-TCollection_MapNodePtr myNext2;
+  Handle(Standard_Transient) myKey1;
+  Handle(Standard_Persistent) myKey2;
+  TCollection_MapNodePtr myNext2;
 
 
 };
 
-#define TheKey1 Handle_Standard_Transient
+#define TheKey1 Handle(Standard_Transient)
 #define TheKey1_hxx <Standard_Transient.hxx>
-#define TheKey2 Handle_Standard_Persistent
+#define TheKey2 Handle(Standard_Persistent)
 #define TheKey2_hxx <Standard_Persistent.hxx>
 #define Hasher1 TColStd_MapTransientHasher
 #define Hasher1_hxx <TColStd_MapTransientHasher.hxx>
@@ -107,7 +94,6 @@ TCollection_MapNodePtr myNext2;
 #undef TCollection_DoubleMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PTColStd_DoubleMapNodeOfDoubleMapOfTransientPersistent_HeaderFile

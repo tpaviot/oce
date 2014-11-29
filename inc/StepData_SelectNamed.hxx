@@ -6,77 +6,60 @@
 #ifndef _StepData_SelectNamed_HeaderFile
 #define _StepData_SelectNamed_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepData_SelectNamed_HeaderFile
 #include <Handle_StepData_SelectNamed.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _StepData_Field_HeaderFile
 #include <StepData_Field.hxx>
-#endif
-#ifndef _StepData_SelectMember_HeaderFile
 #include <StepData_SelectMember.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class StepData_Field;
 
 
-//! This select member can be of any kind, and be named <br>
-//!           But its takes more memory than some specialised ones <br>
-//!           This class allows one name for the instance <br>
-class StepData_SelectNamed : public StepData_SelectMember {
+//! This select member can be of any kind, and be named
+//! But its takes more memory than some specialised ones
+//! This class allows one name for the instance
+class StepData_SelectNamed : public StepData_SelectMember
+{
 
 public:
 
   
-  Standard_EXPORT   StepData_SelectNamed();
+  Standard_EXPORT StepData_SelectNamed();
   
-  Standard_EXPORT   virtual  Standard_Boolean HasName() const;
+  Standard_EXPORT virtual   Standard_Boolean HasName()  const;
   
-  Standard_EXPORT   virtual  Standard_CString Name() const;
+  Standard_EXPORT virtual   Standard_CString Name()  const;
   
-  Standard_EXPORT   virtual  Standard_Boolean SetName(const Standard_CString name) ;
+  Standard_EXPORT virtual   Standard_Boolean SetName (const Standard_CString name) ;
   
-  Standard_EXPORT    const StepData_Field& Field() const;
+  Standard_EXPORT  const  StepData_Field& Field()  const;
   
-  Standard_EXPORT     StepData_Field& CField() ;
+  Standard_EXPORT   StepData_Field& CField() ;
   
-  Standard_EXPORT   virtual  Standard_Integer Kind() const;
+  Standard_EXPORT virtual   Standard_Integer Kind()  const;
   
-  Standard_EXPORT   virtual  void SetKind(const Standard_Integer kind) ;
-  //! This internal method gives access to a value implemented by an <br>
-//!           Integer (to read it) <br>
-  Standard_EXPORT   virtual  Standard_Integer Int() const;
-  //! This internal method gives access to a value implemented by an <br>
-//!           Integer (to set it) <br>
-  Standard_EXPORT   virtual  void SetInt(const Standard_Integer val) ;
+  Standard_EXPORT virtual   void SetKind (const Standard_Integer kind) ;
   
-  Standard_EXPORT   virtual  Standard_Real Real() const;
+  //! This internal method gives access to a value implemented by an
+  //! Integer (to read it)
+  Standard_EXPORT virtual   Standard_Integer Int()  const;
   
-  Standard_EXPORT   virtual  void SetReal(const Standard_Real val) ;
+  //! This internal method gives access to a value implemented by an
+  //! Integer (to set it)
+  Standard_EXPORT virtual   void SetInt (const Standard_Integer val) ;
   
-  Standard_EXPORT   virtual  Standard_CString String() const;
+  Standard_EXPORT virtual   Standard_Real Real()  const;
   
-  Standard_EXPORT   virtual  void SetString(const Standard_CString val) ;
+  Standard_EXPORT virtual   void SetReal (const Standard_Real val) ;
+  
+  Standard_EXPORT virtual   Standard_CString String()  const;
+  
+  Standard_EXPORT virtual   void SetString (const Standard_CString val) ;
 
 
 
@@ -91,8 +74,8 @@ protected:
 private: 
 
 
-TCollection_AsciiString thename;
-StepData_Field theval;
+  TCollection_AsciiString thename;
+  StepData_Field theval;
 
 
 };
@@ -101,7 +84,6 @@ StepData_Field theval;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepData_SelectNamed_HeaderFile

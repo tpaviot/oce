@@ -5,9 +5,7 @@
 
 #include <TopOpeBRepDS_SolidSurfaceInterference.jxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
 
  

@@ -6,34 +6,16 @@
 #ifndef _BRepFill_DataMapOfShapeHArray2OfShape_HeaderFile
 #define _BRepFill_DataMapOfShapeHArray2OfShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_TopTools_HArray2OfShape_HeaderFile
 #include <Handle_TopTools_HArray2OfShape.hxx>
-#endif
-#ifndef _Handle_BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape_HeaderFile
 #include <Handle_BRepFill_DataMapNodeOfDataMapOfShapeHArray2OfShape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class TopoDS_Shape;
@@ -44,50 +26,50 @@ class BRepFill_DataMapIteratorOfDataMapOfShapeHArray2OfShape;
 
 
 
-class BRepFill_DataMapOfShapeHArray2OfShape  : public TCollection_BasicMap {
+class BRepFill_DataMapOfShapeHArray2OfShape  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepFill_DataMapOfShapeHArray2OfShape(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT BRepFill_DataMapOfShapeHArray2OfShape(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     BRepFill_DataMapOfShapeHArray2OfShape& Assign(const BRepFill_DataMapOfShapeHArray2OfShape& Other) ;
-    BRepFill_DataMapOfShapeHArray2OfShape& operator =(const BRepFill_DataMapOfShapeHArray2OfShape& Other) 
+  Standard_EXPORT   BRepFill_DataMapOfShapeHArray2OfShape& Assign (const BRepFill_DataMapOfShapeHArray2OfShape& Other) ;
+  BRepFill_DataMapOfShapeHArray2OfShape& operator = (const BRepFill_DataMapOfShapeHArray2OfShape& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~BRepFill_DataMapOfShapeHArray2OfShape()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Bind(const TopoDS_Shape& K,const Handle(TopTools_HArray2OfShape)& I) ;
+  Standard_EXPORT   Standard_Boolean Bind (const TopoDS_Shape& K, const Handle(TopTools_HArray2OfShape)& I) ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const TopoDS_Shape& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound (const TopoDS_Shape& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind(const TopoDS_Shape& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind (const TopoDS_Shape& K) ;
   
-  Standard_EXPORT    const Handle_TopTools_HArray2OfShape& Find(const TopoDS_Shape& K) const;
-   const Handle_TopTools_HArray2OfShape& operator()(const TopoDS_Shape& K) const
+  Standard_EXPORT  const  Handle(TopTools_HArray2OfShape)& Find (const TopoDS_Shape& K)  const;
+ const  Handle(TopTools_HArray2OfShape)& operator() (const TopoDS_Shape& K)  const
 {
   return Find(K);
 }
   
-  Standard_EXPORT     Handle_TopTools_HArray2OfShape& ChangeFind(const TopoDS_Shape& K) ;
-    Handle_TopTools_HArray2OfShape& operator()(const TopoDS_Shape& K) 
+  Standard_EXPORT   Handle(TopTools_HArray2OfShape)& ChangeFind (const TopoDS_Shape& K) ;
+  Handle(TopTools_HArray2OfShape)& operator() (const TopoDS_Shape& K) 
 {
   return ChangeFind(K);
 }
   
-  Standard_EXPORT     Standard_Address Find1(const TopoDS_Shape& K) const;
+  Standard_EXPORT   Standard_Address Find1 (const TopoDS_Shape& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFind1(const TopoDS_Shape& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFind1 (const TopoDS_Shape& K) ;
 
 
 
@@ -101,7 +83,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   BRepFill_DataMapOfShapeHArray2OfShape(const BRepFill_DataMapOfShapeHArray2OfShape& Other);
+  Standard_EXPORT BRepFill_DataMapOfShapeHArray2OfShape(const BRepFill_DataMapOfShapeHArray2OfShape& Other);
 
 
 
@@ -112,7 +94,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepFill_DataMapOfShapeHArray2OfShape_HeaderFile

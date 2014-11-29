@@ -5,22 +5,12 @@
 
 #include <Graphic3d_HSequenceOfStructure.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Graphic3d_Structure_HeaderFile
 #include <Graphic3d_Structure.hxx>
-#endif
-#ifndef _Graphic3d_SequenceOfStructure_HeaderFile
 #include <Graphic3d_SequenceOfStructure.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(Graphic3d_HSequenceOfStructure,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Graphic3d_HSequenceOfStructure)
 
 
-#define Item Handle_Graphic3d_Structure
+#define Item Handle(Graphic3d_Structure)
 #define Item_hxx <Graphic3d_Structure.hxx>
 #define TheSequence Graphic3d_SequenceOfStructure
 #define TheSequence_hxx <Graphic3d_SequenceOfStructure.hxx>

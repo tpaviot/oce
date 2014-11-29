@@ -5,18 +5,10 @@
 
 #include <BRepAlgo_SequenceOfSequenceOfInteger.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TColStd_SequenceOfInteger_HeaderFile
 #include <TColStd_SequenceOfInteger.hxx>
-#endif
-#ifndef _BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger_HeaderFile
 #include <BRepAlgo_SequenceNodeOfSequenceOfSequenceOfInteger.hxx>
-#endif
  
 
 #define SeqItem TColStd_SequenceOfInteger

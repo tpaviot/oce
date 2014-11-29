@@ -6,37 +6,17 @@
 #ifndef _PCDM_HeaderFile
 #define _PCDM_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_CDM_Document_HeaderFile
 #include <Handle_CDM_Document.hxx>
-#endif
-#ifndef _Handle_PCDM_StorageDriver_HeaderFile
 #include <Handle_PCDM_StorageDriver.hxx>
-#endif
-#ifndef _Handle_Storage_Schema_HeaderFile
 #include <Handle_Storage_Schema.hxx>
-#endif
-#ifndef _Handle_CDM_Application_HeaderFile
 #include <Handle_CDM_Application.hxx>
-#endif
-#ifndef _PCDM_TypeOfFileDriver_HeaderFile
 #include <PCDM_TypeOfFileDriver.hxx>
-#endif
-#ifndef _PCDM_BaseDriverPointer_HeaderFile
 #include <PCDM_BaseDriverPointer.hxx>
-#endif
 class CDM_Document;
 class PCDM_StorageDriver;
 class Storage_Schema;
@@ -59,23 +39,24 @@ class PCDM_SequenceNodeOfSequenceOfReference;
 
 
 
-class PCDM  {
+class PCDM 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Standard_Boolean FindStorageDriver(const Handle(CDM_Document)& aDocument) ;
-  //!   gets   in the  EuclidDesktop   resource  the plugin <br>
-//!          identifier of the driver plugs the driver. <br>
-//! <br>
-  Standard_EXPORT   static  Handle_PCDM_StorageDriver StorageDriver(const Handle(CDM_Document)& aDocument) ;
-  //! returns a schema to be used during a Store or Retrieve <br>
-//!          operation. <br>
-//!          Schema will plug the schema defined by <br>
-//!          the SchemaName method. <br>
-  Standard_EXPORT   static  Handle_Storage_Schema Schema(const TCollection_ExtendedString& aSchemaName,const Handle(CDM_Application)& anApplication) ;
-
+  Standard_EXPORT static   Standard_Boolean FindStorageDriver (const Handle(CDM_Document)& aDocument) ;
+  
+  //! gets   in the  EuclidDesktop   resource  the plugin
+  //! identifier of the driver plugs the driver.
+  Standard_EXPORT static   Handle(PCDM_StorageDriver) StorageDriver (const Handle(CDM_Document)& aDocument) ;
+  
+  //! returns a schema to be used during a Store or Retrieve
+  //! operation.
+  //! Schema will plug the schema defined by
+  //! the SchemaName method.
+  Standard_EXPORT static   Handle(Storage_Schema) Schema (const TCollection_ExtendedString& aSchemaName, const Handle(CDM_Application)& anApplication) ;
 
 
 
@@ -89,7 +70,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   static  PCDM_TypeOfFileDriver FileDriverType(const TCollection_AsciiString& aFileName,PCDM_BaseDriverPointer& aBaseDriver) ;
+  Standard_EXPORT static   PCDM_TypeOfFileDriver FileDriverType (const TCollection_AsciiString& aFileName, PCDM_BaseDriverPointer& aBaseDriver) ;
 
 
 
@@ -113,7 +94,6 @@ friend class PCDM_SequenceNodeOfSequenceOfReference;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PCDM_HeaderFile

@@ -26,6 +26,7 @@
 #define NCollection_BaseList_HeaderFile
 
 #include <Standard_NoSuchObject.hxx>
+#include <NCollection_DefineAlloc.hxx>
 #include <NCollection_ListNode.hxx>
 
 typedef void (* NCollection_DelListNode) 
@@ -34,7 +35,12 @@ typedef void (* NCollection_DelListNode)
 // ********************************************************** BaseList class
 class NCollection_BaseList
 {
- public:
+public:
+  //! Memory allocation
+  DEFINE_STANDARD_ALLOC
+  DEFINE_NCOLLECTION_ALLOC
+
+public:
   class Iterator
   {
   public:
@@ -72,11 +78,16 @@ class NCollection_BaseList
     }
 //skt----------------------------------------------------
     // ******** Comparison operator
-    Standard_Boolean operator== (const Iterator& theIt)
+    Standard_Boolean operator== (const Iterator& theIt) const
     {
       return myCurrent == theIt.myCurrent;
     }
 //-------------------------------------------------------
+    //! Performs comparison of two iterators
+    Standard_Boolean IsEqual (const Iterator& theOther) const
+    {
+      return *this == theOther;
+    }
   protected:
     void Init (const NCollection_BaseList& theList,
                NCollection_ListNode * const thePrev)
@@ -103,20 +114,27 @@ class NCollection_BaseList
   Standard_Boolean IsEmpty (void) const
   { return (myFirst == NULL); }
 
+  // ******** Allocator
+  //! Returns attached allocator
+  const Handle(NCollection_BaseAllocator)& Allocator() const 
+  { return myAllocator; }
+
  protected:
   // --------- PROTECTED METHODS ----------
 
   // ******** Constructor
   // Purpose: Initializes an empty list
-  NCollection_BaseList(void) :
+  NCollection_BaseList (const Handle(NCollection_BaseAllocator)& theAllocator=0L) :
     myFirst(NULL),
     myLast(NULL),
-    myLength(0) {}
+    myLength(0)
+  {
+    myAllocator = (theAllocator.IsNull() ? NCollection_BaseAllocator::CommonBaseAllocator() : theAllocator);
+  }
 
   // ******** PClear
   // Purpose: deletes all nodes
-  Standard_EXPORT void PClear (NCollection_DelListNode fDel,
-                               Handle(NCollection_BaseAllocator)& theAllocator);
+  Standard_EXPORT void PClear (NCollection_DelListNode fDel);
 
   // ******** PFirst
   // Purpose: Returns pointer to the first node
@@ -157,15 +175,13 @@ class NCollection_BaseList
   // ******** PRemoveFirst
   // Purpose: Removes first node
   Standard_EXPORT void PRemoveFirst 
-    (NCollection_DelListNode fDel,
-     Handle(NCollection_BaseAllocator)& theAllocator);
+    (NCollection_DelListNode fDel);
 
   // ******** PRemove
   // Purpose: Removes the node pointed by theIter[ator]
   Standard_EXPORT void PRemove 
     (Iterator& theIter,
-     NCollection_DelListNode fDel,
-     Handle(NCollection_BaseAllocator)& theAllocator);
+     NCollection_DelListNode fDel);
 
   // ******** PInsertBefore
   // Purpose: Inserts theNode before one pointed by theIter[ator]
@@ -192,7 +208,8 @@ class NCollection_BaseList
   Standard_EXPORT void PReverse     ();
 
  protected:
-  // ------------ PRIVATE FIELDS ------------
+  // ------------ PROTECTED FIELDS ------------
+  Handle(NCollection_BaseAllocator) myAllocator;
   NCollection_ListNode * myFirst;  // Pointer to the head
   NCollection_ListNode * myLast;   // Pointer to the tail
   Standard_Integer       myLength; // Actual length

@@ -5,16 +5,10 @@
 
 #include <Transfer_SequenceNodeOfSequenceOfBinder.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Transfer_Binder_HeaderFile
 #include <Transfer_Binder.hxx>
-#endif
-#ifndef _Transfer_SequenceOfBinder_HeaderFile
 #include <Transfer_SequenceOfBinder.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(Transfer_SequenceNodeOfSequenceOfBinder,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Transfer_SequenceNodeOfSequenceOfBinder)
 
 
-#define SeqItem Handle_Transfer_Binder
+#define SeqItem Handle(Transfer_Binder)
 #define SeqItem_hxx <Transfer_Binder.hxx>
 #define TCollection_SequenceNode Transfer_SequenceNodeOfSequenceOfBinder
 #define TCollection_SequenceNode_hxx <Transfer_SequenceNodeOfSequenceOfBinder.hxx>

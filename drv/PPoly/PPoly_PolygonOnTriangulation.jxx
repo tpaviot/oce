@@ -1,12 +1,4 @@
-#ifndef _PColStd_HArray1OfInteger_HeaderFile
 #include <PColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _PColStd_HArray1OfReal_HeaderFile
 #include <PColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Standard_NullObject_HeaderFile
 #include <Standard_NullObject.hxx>
-#endif
-#ifndef _PPoly_PolygonOnTriangulation_HeaderFile
 #include <PPoly_PolygonOnTriangulation.hxx>
-#endif

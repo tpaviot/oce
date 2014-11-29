@@ -6,28 +6,14 @@
 #ifndef _TColStd_ListOfAsciiString_HeaderFile
 #define _TColStd_ListOfAsciiString_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_TColStd_ListNodeOfListOfAsciiString_HeaderFile
 #include <Handle_TColStd_ListNodeOfListOfAsciiString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class TColStd_ListIteratorOfListOfAsciiString;
 class TCollection_AsciiString;
@@ -35,61 +21,63 @@ class TColStd_ListNodeOfListOfAsciiString;
 
 
 
-class TColStd_ListOfAsciiString  {
+class TColStd_ListOfAsciiString 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TColStd_ListOfAsciiString();
+  Standard_EXPORT TColStd_ListOfAsciiString();
   
-  Standard_EXPORT     void Assign(const TColStd_ListOfAsciiString& Other) ;
-    void operator=(const TColStd_ListOfAsciiString& Other) 
+  Standard_EXPORT TColStd_ListOfAsciiString(const TColStd_ListOfAsciiString& Other);
+  
+  Standard_EXPORT   void Assign (const TColStd_ListOfAsciiString& Other) ;
+  void operator= (const TColStd_ListOfAsciiString& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TColStd_ListOfAsciiString()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const TCollection_AsciiString& I) ;
+  Standard_EXPORT   void Prepend (const TCollection_AsciiString& I) ;
   
-  Standard_EXPORT     void Prepend(const TCollection_AsciiString& I,TColStd_ListIteratorOfListOfAsciiString& theIt) ;
+  Standard_EXPORT   void Prepend (const TCollection_AsciiString& I, TColStd_ListIteratorOfListOfAsciiString& theIt) ;
   
-  Standard_EXPORT     void Prepend(TColStd_ListOfAsciiString& Other) ;
+  Standard_EXPORT   void Prepend (TColStd_ListOfAsciiString& Other) ;
   
-  Standard_EXPORT     void Append(const TCollection_AsciiString& I) ;
+  Standard_EXPORT   void Append (const TCollection_AsciiString& I) ;
   
-  Standard_EXPORT     void Append(const TCollection_AsciiString& I,TColStd_ListIteratorOfListOfAsciiString& theIt) ;
+  Standard_EXPORT   void Append (const TCollection_AsciiString& I, TColStd_ListIteratorOfListOfAsciiString& theIt) ;
   
-  Standard_EXPORT     void Append(TColStd_ListOfAsciiString& Other) ;
+  Standard_EXPORT   void Append (TColStd_ListOfAsciiString& Other) ;
   
-  Standard_EXPORT     TCollection_AsciiString& First() const;
+  Standard_EXPORT   TCollection_AsciiString& First()  const;
   
-  Standard_EXPORT     TCollection_AsciiString& Last() const;
+  Standard_EXPORT   TCollection_AsciiString& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(TColStd_ListIteratorOfListOfAsciiString& It) ;
+  Standard_EXPORT   void Remove (TColStd_ListIteratorOfListOfAsciiString& It) ;
   
-  Standard_EXPORT     void InsertBefore(const TCollection_AsciiString& I,TColStd_ListIteratorOfListOfAsciiString& It) ;
+  Standard_EXPORT   void InsertBefore (const TCollection_AsciiString& I, TColStd_ListIteratorOfListOfAsciiString& It) ;
   
-  Standard_EXPORT     void InsertBefore(TColStd_ListOfAsciiString& Other,TColStd_ListIteratorOfListOfAsciiString& It) ;
+  Standard_EXPORT   void InsertBefore (TColStd_ListOfAsciiString& Other, TColStd_ListIteratorOfListOfAsciiString& It) ;
   
-  Standard_EXPORT     void InsertAfter(const TCollection_AsciiString& I,TColStd_ListIteratorOfListOfAsciiString& It) ;
+  Standard_EXPORT   void InsertAfter (const TCollection_AsciiString& I, TColStd_ListIteratorOfListOfAsciiString& It) ;
   
-  Standard_EXPORT     void InsertAfter(TColStd_ListOfAsciiString& Other,TColStd_ListIteratorOfListOfAsciiString& It) ;
+  Standard_EXPORT   void InsertAfter (TColStd_ListOfAsciiString& Other, TColStd_ListIteratorOfListOfAsciiString& It) ;
 
 
 friend class TColStd_ListIteratorOfListOfAsciiString;
-
 
 
 protected:
@@ -100,12 +88,10 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TColStd_ListOfAsciiString(const TColStd_ListOfAsciiString& Other);
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
@@ -135,7 +121,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_ListOfAsciiString_HeaderFile

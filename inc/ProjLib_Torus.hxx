@@ -6,22 +6,12 @@
 #ifndef _ProjLib_Torus_HeaderFile
 #define _ProjLib_Torus_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Torus_HeaderFile
 #include <gp_Torus.hxx>
-#endif
-#ifndef _ProjLib_Projector_HeaderFile
 #include <ProjLib_Projector.hxx>
-#endif
 class Standard_NoSuchObject;
 class gp_Torus;
 class gp_Circ;
@@ -31,31 +21,34 @@ class gp_Parab;
 class gp_Hypr;
 
 
-//! Projects elementary curves on a torus. <br>
-class ProjLib_Torus  : public ProjLib_Projector {
+//! Projects elementary curves on a torus.
+class ProjLib_Torus  : public ProjLib_Projector
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Undefined projection. <br>
-  Standard_EXPORT   ProjLib_Torus();
-  //! Projection on the torus <To>. <br>
-  Standard_EXPORT   ProjLib_Torus(const gp_Torus& To);
-  //! Projection of the circle <C> on the torus <To>. <br>
-  Standard_EXPORT   ProjLib_Torus(const gp_Torus& To,const gp_Circ& C);
   
-  Standard_EXPORT     void Init(const gp_Torus& To) ;
+  //! Undefined projection.
+  Standard_EXPORT ProjLib_Torus();
   
-  Standard_EXPORT   virtual  void Project(const gp_Lin& L) ;
+  //! Projection on the torus <To>.
+  Standard_EXPORT ProjLib_Torus(const gp_Torus& To);
   
-  Standard_EXPORT   virtual  void Project(const gp_Circ& C) ;
+  //! Projection of the circle <C> on the torus <To>.
+  Standard_EXPORT ProjLib_Torus(const gp_Torus& To, const gp_Circ& C);
   
-  Standard_EXPORT   virtual  void Project(const gp_Elips& E) ;
+  Standard_EXPORT   void Init (const gp_Torus& To) ;
   
-  Standard_EXPORT   virtual  void Project(const gp_Parab& P) ;
+  Standard_EXPORT virtual   void Project (const gp_Lin& L) ;
   
-  Standard_EXPORT   virtual  void Project(const gp_Hypr& H) ;
-
+  Standard_EXPORT virtual   void Project (const gp_Circ& C) ;
+  
+  Standard_EXPORT virtual   void Project (const gp_Elips& E) ;
+  
+  Standard_EXPORT virtual   void Project (const gp_Parab& P) ;
+  
+  Standard_EXPORT virtual   void Project (const gp_Hypr& H) ;
 
 
 
@@ -70,7 +63,7 @@ private:
 
 
 
-gp_Torus myTorus;
+  gp_Torus myTorus;
 
 
 };
@@ -79,7 +72,6 @@ gp_Torus myTorus;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ProjLib_Torus_HeaderFile

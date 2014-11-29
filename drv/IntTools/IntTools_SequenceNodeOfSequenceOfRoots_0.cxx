@@ -5,16 +5,10 @@
 
 #include <IntTools_SequenceNodeOfSequenceOfRoots.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IntTools_Root_HeaderFile
 #include <IntTools_Root.hxx>
-#endif
-#ifndef _IntTools_SequenceOfRoots_HeaderFile
 #include <IntTools_SequenceOfRoots.hxx>
-#endif
 
  
 

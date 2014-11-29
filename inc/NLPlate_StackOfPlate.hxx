@@ -6,70 +6,78 @@
 #ifndef _NLPlate_StackOfPlate_HeaderFile
 #define _NLPlate_StackOfPlate_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
+#include <Handle_NLPlate_ListNodeOfStackOfPlate.hxx>
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_NLPlate_StackNodeOfStackOfPlate_HeaderFile
-#include <Handle_NLPlate_StackNodeOfStackOfPlate.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
-class NLPlate_StackIteratorOfStackOfPlate;
+class NLPlate_ListIteratorOfStackOfPlate;
 class Plate_Plate;
-class NLPlate_StackNodeOfStackOfPlate;
+class NLPlate_ListNodeOfStackOfPlate;
 
 
 
-class NLPlate_StackOfPlate  {
+class NLPlate_StackOfPlate 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   NLPlate_StackOfPlate();
+  Standard_EXPORT NLPlate_StackOfPlate();
   
-  Standard_EXPORT    const NLPlate_StackOfPlate& Assign(const NLPlate_StackOfPlate& Other) ;
-   const NLPlate_StackOfPlate& operator =(const NLPlate_StackOfPlate& Other) 
+  Standard_EXPORT NLPlate_StackOfPlate(const NLPlate_StackOfPlate& Other);
+  
+  Standard_EXPORT   void Assign (const NLPlate_StackOfPlate& Other) ;
+  void operator= (const NLPlate_StackOfPlate& Other) 
 {
-  return Assign(Other);
+  Assign(Other);
 }
   
-        Standard_Boolean IsEmpty() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-        Standard_Integer Depth() const;
-  
-  Standard_EXPORT    const Plate_Plate& Top() const;
-  
-  Standard_EXPORT     void Push(const Plate_Plate& I) ;
-  
-  Standard_EXPORT     void Pop() ;
-  
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~NLPlate_StackOfPlate()
 {
   Clear();
 }
   
-  Standard_EXPORT     Plate_Plate& ChangeTop() ;
+      Standard_Boolean IsEmpty()  const;
+  
+  Standard_EXPORT   void Prepend (const Plate_Plate& I) ;
+  
+  Standard_EXPORT   void Prepend (const Plate_Plate& I, NLPlate_ListIteratorOfStackOfPlate& theIt) ;
+  
+  Standard_EXPORT   void Prepend (NLPlate_StackOfPlate& Other) ;
+  
+  Standard_EXPORT   void Append (const Plate_Plate& I) ;
+  
+  Standard_EXPORT   void Append (const Plate_Plate& I, NLPlate_ListIteratorOfStackOfPlate& theIt) ;
+  
+  Standard_EXPORT   void Append (NLPlate_StackOfPlate& Other) ;
+  
+  Standard_EXPORT   Plate_Plate& First()  const;
+  
+  Standard_EXPORT   Plate_Plate& Last()  const;
+  
+  Standard_EXPORT   void RemoveFirst() ;
+  
+  Standard_EXPORT   void Remove (NLPlate_ListIteratorOfStackOfPlate& It) ;
+  
+  Standard_EXPORT   void InsertBefore (const Plate_Plate& I, NLPlate_ListIteratorOfStackOfPlate& It) ;
+  
+  Standard_EXPORT   void InsertBefore (NLPlate_StackOfPlate& Other, NLPlate_ListIteratorOfStackOfPlate& It) ;
+  
+  Standard_EXPORT   void InsertAfter (const Plate_Plate& I, NLPlate_ListIteratorOfStackOfPlate& It) ;
+  
+  Standard_EXPORT   void InsertAfter (NLPlate_StackOfPlate& Other, NLPlate_ListIteratorOfStackOfPlate& It) ;
 
 
-friend class NLPlate_StackIteratorOfStackOfPlate;
-
+friend class NLPlate_ListIteratorOfStackOfPlate;
 
 
 protected:
@@ -80,42 +88,39 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   NLPlate_StackOfPlate(const NLPlate_StackOfPlate& Other);
 
 
-Standard_Address myTop;
-Standard_Integer myDepth;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
 
 #define Item Plate_Plate
 #define Item_hxx <Plate_Plate.hxx>
-#define TCollection_StackNode NLPlate_StackNodeOfStackOfPlate
-#define TCollection_StackNode_hxx <NLPlate_StackNodeOfStackOfPlate.hxx>
-#define TCollection_StackIterator NLPlate_StackIteratorOfStackOfPlate
-#define TCollection_StackIterator_hxx <NLPlate_StackIteratorOfStackOfPlate.hxx>
-#define Handle_TCollection_StackNode Handle_NLPlate_StackNodeOfStackOfPlate
-#define TCollection_StackNode_Type_() NLPlate_StackNodeOfStackOfPlate_Type_()
-#define TCollection_Stack NLPlate_StackOfPlate
-#define TCollection_Stack_hxx <NLPlate_StackOfPlate.hxx>
+#define TCollection_ListNode NLPlate_ListNodeOfStackOfPlate
+#define TCollection_ListNode_hxx <NLPlate_ListNodeOfStackOfPlate.hxx>
+#define TCollection_ListIterator NLPlate_ListIteratorOfStackOfPlate
+#define TCollection_ListIterator_hxx <NLPlate_ListIteratorOfStackOfPlate.hxx>
+#define Handle_TCollection_ListNode Handle_NLPlate_ListNodeOfStackOfPlate
+#define TCollection_ListNode_Type_() NLPlate_ListNodeOfStackOfPlate_Type_()
+#define TCollection_List NLPlate_StackOfPlate
+#define TCollection_List_hxx <NLPlate_StackOfPlate.hxx>
 
-#include <TCollection_Stack.lxx>
+#include <TCollection_List.lxx>
 
 #undef Item
 #undef Item_hxx
-#undef TCollection_StackNode
-#undef TCollection_StackNode_hxx
-#undef TCollection_StackIterator
-#undef TCollection_StackIterator_hxx
-#undef Handle_TCollection_StackNode
-#undef TCollection_StackNode_Type_
-#undef TCollection_Stack
-#undef TCollection_Stack_hxx
+#undef TCollection_ListNode
+#undef TCollection_ListNode_hxx
+#undef TCollection_ListIterator
+#undef TCollection_ListIterator_hxx
+#undef Handle_TCollection_ListNode
+#undef TCollection_ListNode_Type_
+#undef TCollection_List
+#undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _NLPlate_StackOfPlate_HeaderFile

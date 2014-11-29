@@ -1,12 +1,4 @@
-#ifndef _StepVisual_HArray1OfTextOrCharacter_HeaderFile
 #include <StepVisual_HArray1OfTextOrCharacter.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepVisual_TextOrCharacter_HeaderFile
 #include <StepVisual_TextOrCharacter.hxx>
-#endif
-#ifndef _StepVisual_CompositeText_HeaderFile
 #include <StepVisual_CompositeText.hxx>
-#endif

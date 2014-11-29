@@ -6,62 +6,57 @@
 #ifndef _TDataStd_ChildNodeIterator_HeaderFile
 #define _TDataStd_ChildNodeIterator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_TDataStd_TreeNode_HeaderFile
 #include <Handle_TDataStd_TreeNode.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TDataStd_TreeNode;
 
 
-//!  Iterates on the  ChildStepren step of  a step, at the <br>
-//!           first level  only.   It  is possible  to ask  the <br>
-//!          iterator to explore all the sub step levels of the <br>
-//!          given one, with the option "allLevels". <br>
-class TDataStd_ChildNodeIterator  {
+//! Iterates on the  ChildStepren step of  a step, at the
+//! first level  only.   It  is possible  to ask  the
+//! iterator to explore all the sub step levels of the
+//! given one, with the option "allLevels".
+class TDataStd_ChildNodeIterator 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an empty iterator. <br>
-  Standard_EXPORT   TDataStd_ChildNodeIterator();
-  //! Iterates on the ChildStepren of the given Step. If <br>
-//!          <allLevels> option is set to true, it explores not <br>
-//!          only the first, but all the sub Step levels. <br>
-  Standard_EXPORT   TDataStd_ChildNodeIterator(const Handle(TDataStd_TreeNode)& aTreeNode,const Standard_Boolean allLevels = Standard_False);
-  //! Initializes the iteration on  the Children Step of <br>
-//!          the  given Step. If <allLevels>  option is  set to <br>
-//!          true, it explores not  only the first, but all the <br>
-//!          sub Step levels. <br>
-  Standard_EXPORT     void Initialize(const Handle(TDataStd_TreeNode)& aTreeNode,const Standard_Boolean allLevels = Standard_False) ;
-  //! Returns True if there is a current Item in the <br>
-//!          iteration. <br>
-        Standard_Boolean More() const;
-  //! Move to the next Item <br>
-  Standard_EXPORT     void Next() ;
-  //! Move to the next Brother. If there is none, go up <br>
-//!          etc. This method is interesting only with <br>
-//!          "allLevels" behavior, because it avoids to explore <br>
-//!          the current Step ChildStepren. <br>
-  Standard_EXPORT     void NextBrother() ;
-  //! Returns the current item; a null Step if there is <br>
-//!          no one. <br>
-        Handle_TDataStd_TreeNode Value() const;
-
+  
+  //! Creates an empty iterator.
+  Standard_EXPORT TDataStd_ChildNodeIterator();
+  
+  //! Iterates on the ChildStepren of the given Step. If
+  //! <allLevels> option is set to true, it explores not
+  //! only the first, but all the sub Step levels.
+  Standard_EXPORT TDataStd_ChildNodeIterator(const Handle(TDataStd_TreeNode)& aTreeNode, const Standard_Boolean allLevels = Standard_False);
+  
+  //! Initializes the iteration on  the Children Step of
+  //! the  given Step. If <allLevels>  option is  set to
+  //! true, it explores not  only the first, but all the
+  //! sub Step levels.
+  Standard_EXPORT   void Initialize (const Handle(TDataStd_TreeNode)& aTreeNode, const Standard_Boolean allLevels = Standard_False) ;
+  
+  //! Returns True if there is a current Item in the
+  //! iteration.
+      Standard_Boolean More()  const;
+  
+  //! Move to the next Item
+  Standard_EXPORT   void Next() ;
+  
+  //! Move to the next Brother. If there is none, go up
+  //! etc. This method is interesting only with
+  //! "allLevels" behavior, because it avoids to explore
+  //! the current Step ChildStepren.
+  Standard_EXPORT   void NextBrother() ;
+  
+  //! Returns the current item; a null Step if there is
+  //! no one.
+     const  Handle(TDataStd_TreeNode)& Value()  const;
 
 
 
@@ -76,8 +71,8 @@ private:
 
 
 
-Handle_TDataStd_TreeNode myNode;
-Standard_Integer myFirstLevel;
+  Handle(TDataStd_TreeNode) myNode;
+  Standard_Integer myFirstLevel;
 
 
 };
@@ -87,7 +82,6 @@ Standard_Integer myFirstLevel;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_ChildNodeIterator_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_math_NotSquare_HeaderFile
 #define _Handle_math_NotSquare_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Standard_DimensionError_HeaderFile
 #include <Handle_Standard_DimensionError.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Standard_DimensionError);
 class math_NotSquare;
 
-DEFINE_STANDARD_HANDLE(math_NotSquare,Standard_DimensionError)
+DEFINE_STANDARD_HANDLE(math_NotSquare, Standard_DimensionError)
 
-#endif
+#endif // _Handle_math_NotSquare_HeaderFile

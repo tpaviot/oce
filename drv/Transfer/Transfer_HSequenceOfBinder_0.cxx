@@ -5,22 +5,12 @@
 
 #include <Transfer_HSequenceOfBinder.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Transfer_Binder_HeaderFile
 #include <Transfer_Binder.hxx>
-#endif
-#ifndef _Transfer_SequenceOfBinder_HeaderFile
 #include <Transfer_SequenceOfBinder.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(Transfer_HSequenceOfBinder,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Transfer_HSequenceOfBinder)
 
 
-#define Item Handle_Transfer_Binder
+#define Item Handle(Transfer_Binder)
 #define Item_hxx <Transfer_Binder.hxx>
 #define TheSequence Transfer_SequenceOfBinder
 #define TheSequence_hxx <Transfer_SequenceOfBinder.hxx>

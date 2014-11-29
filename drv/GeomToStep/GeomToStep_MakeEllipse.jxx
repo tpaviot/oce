@@ -1,18 +1,6 @@
-#ifndef _StepGeom_Ellipse_HeaderFile
 #include <StepGeom_Ellipse.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _gp_Elips_HeaderFile
 #include <gp_Elips.hxx>
-#endif
-#ifndef _Geom_Ellipse_HeaderFile
 #include <Geom_Ellipse.hxx>
-#endif
-#ifndef _Geom2d_Ellipse_HeaderFile
 #include <Geom2d_Ellipse.hxx>
-#endif
-#ifndef _GeomToStep_MakeEllipse_HeaderFile
 #include <GeomToStep_MakeEllipse.hxx>
-#endif

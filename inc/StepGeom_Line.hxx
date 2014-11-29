@@ -6,52 +6,40 @@
 #ifndef _StepGeom_Line_HeaderFile
 #define _StepGeom_Line_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_Line_HeaderFile
 #include <Handle_StepGeom_Line.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_CartesianPoint_HeaderFile
 #include <Handle_StepGeom_CartesianPoint.hxx>
-#endif
-#ifndef _Handle_StepGeom_Vector_HeaderFile
 #include <Handle_StepGeom_Vector.hxx>
-#endif
-#ifndef _StepGeom_Curve_HeaderFile
 #include <StepGeom_Curve.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepGeom_CartesianPoint;
 class StepGeom_Vector;
 class TCollection_HAsciiString;
 
 
 
-class StepGeom_Line : public StepGeom_Curve {
+class StepGeom_Line : public StepGeom_Curve
+{
 
 public:
 
-  //! Returns a Line <br>
-  Standard_EXPORT   StepGeom_Line();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a Line
+  Standard_EXPORT StepGeom_Line();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_CartesianPoint)& aPnt,const Handle(StepGeom_Vector)& aDir) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetPnt(const Handle(StepGeom_CartesianPoint)& aPnt) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_CartesianPoint)& aPnt, const Handle(StepGeom_Vector)& aDir) ;
   
-  Standard_EXPORT     Handle_StepGeom_CartesianPoint Pnt() const;
+  Standard_EXPORT   void SetPnt (const Handle(StepGeom_CartesianPoint)& aPnt) ;
   
-  Standard_EXPORT     void SetDir(const Handle(StepGeom_Vector)& aDir) ;
+  Standard_EXPORT   Handle(StepGeom_CartesianPoint) Pnt()  const;
   
-  Standard_EXPORT     Handle_StepGeom_Vector Dir() const;
+  Standard_EXPORT   void SetDir (const Handle(StepGeom_Vector)& aDir) ;
+  
+  Standard_EXPORT   Handle(StepGeom_Vector) Dir()  const;
 
 
 
@@ -66,8 +54,8 @@ protected:
 private: 
 
 
-Handle_StepGeom_CartesianPoint pnt;
-Handle_StepGeom_Vector dir;
+  Handle(StepGeom_CartesianPoint) pnt;
+  Handle(StepGeom_Vector) dir;
 
 
 };
@@ -76,7 +64,6 @@ Handle_StepGeom_Vector dir;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_Line_HeaderFile

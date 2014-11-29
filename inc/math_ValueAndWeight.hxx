@@ -6,36 +6,28 @@
 #ifndef _math_ValueAndWeight_HeaderFile
 #define _math_ValueAndWeight_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 
 
 
-class math_ValueAndWeight  {
+class math_ValueAndWeight 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   math_ValueAndWeight();
+  Standard_EXPORT math_ValueAndWeight();
   
-  Standard_EXPORT   math_ValueAndWeight(const Standard_Real Value,const Standard_Real Weight);
+  Standard_EXPORT math_ValueAndWeight(const Standard_Real Value, const Standard_Real Weight);
   
-  Standard_EXPORT     Standard_Real Value() const;
+  Standard_EXPORT   Standard_Real Value()  const;
   
-  Standard_EXPORT     Standard_Real Weight() const;
-
+  Standard_EXPORT   Standard_Real Weight()  const;
 
 
 
@@ -50,8 +42,8 @@ private:
 
 
 
-Standard_Real myValue;
-Standard_Real myWeight;
+  Standard_Real myValue;
+  Standard_Real myWeight;
 
 
 };
@@ -60,7 +52,6 @@ Standard_Real myWeight;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _math_ValueAndWeight_HeaderFile

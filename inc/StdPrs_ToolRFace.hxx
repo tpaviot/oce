@@ -6,63 +6,43 @@
 #ifndef _StdPrs_ToolRFace_HeaderFile
 #define _StdPrs_ToolRFace_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _TopExp_Explorer_HeaderFile
 #include <TopExp_Explorer.hxx>
-#endif
-#ifndef _Geom2dAdaptor_Curve_HeaderFile
 #include <Geom2dAdaptor_Curve.hxx>
-#endif
-#ifndef _Handle_BRepAdaptor_HSurface_HeaderFile
 #include <Handle_BRepAdaptor_HSurface.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Adaptor2d_Curve2dPtr_HeaderFile
 #include <Adaptor2d_Curve2dPtr.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
 class BRepAdaptor_HSurface;
 
 
 
-class StdPrs_ToolRFace  {
+class StdPrs_ToolRFace 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   StdPrs_ToolRFace();
+  Standard_EXPORT StdPrs_ToolRFace();
   
-  Standard_EXPORT   StdPrs_ToolRFace(const Handle(BRepAdaptor_HSurface)& aSurface);
+  Standard_EXPORT StdPrs_ToolRFace(const Handle(BRepAdaptor_HSurface)& aSurface);
   
-  Standard_EXPORT     Standard_Boolean IsOriented() const;
+  Standard_EXPORT   Standard_Boolean IsOriented()  const;
   
-  Standard_EXPORT     void Init() ;
+  Standard_EXPORT   void Init() ;
   
-  Standard_EXPORT     Standard_Boolean More() const;
+  Standard_EXPORT   Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     Adaptor2d_Curve2dPtr Value() const;
+  Standard_EXPORT   Adaptor2d_Curve2dPtr Value()  const;
   
-  Standard_EXPORT     TopAbs_Orientation Orientation() const;
-
+  Standard_EXPORT   TopAbs_Orientation Orientation()  const;
 
 
 
@@ -77,9 +57,9 @@ private:
 
 
 
-TopoDS_Face myFace;
-TopExp_Explorer myExplorer;
-Geom2dAdaptor_Curve DummyCurve;
+  TopoDS_Face myFace;
+  TopExp_Explorer myExplorer;
+  Geom2dAdaptor_Curve DummyCurve;
 
 
 };
@@ -88,7 +68,6 @@ Geom2dAdaptor_Curve DummyCurve;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StdPrs_ToolRFace_HeaderFile

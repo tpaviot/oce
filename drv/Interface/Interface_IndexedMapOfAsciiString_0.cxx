@@ -5,21 +5,11 @@
 
 #include <Interface_IndexedMapOfAsciiString.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Interface_MapAsciiStringHasher_HeaderFile
 #include <Interface_MapAsciiStringHasher.hxx>
-#endif
-#ifndef _Interface_IndexedMapNodeOfIndexedMapOfAsciiString_HeaderFile
 #include <Interface_IndexedMapNodeOfIndexedMapOfAsciiString.hxx>
-#endif
  
 
 #define TheKey TCollection_AsciiString

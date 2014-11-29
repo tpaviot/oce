@@ -6,46 +6,38 @@
 #ifndef _ExprIntrp_GenRel_HeaderFile
 #define _ExprIntrp_GenRel_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ExprIntrp_GenRel_HeaderFile
 #include <Handle_ExprIntrp_GenRel.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Expr_GeneralRelation_HeaderFile
 #include <Handle_Expr_GeneralRelation.hxx>
-#endif
-#ifndef _ExprIntrp_Generator_HeaderFile
 #include <ExprIntrp_Generator.hxx>
-#endif
 class Expr_GeneralRelation;
 class Standard_NoSuchObject;
 class TCollection_AsciiString;
 
 
-//! Implements an interpreter for equations or system <br>
-//!          of equations made of expressions of package Expr. <br>
-class ExprIntrp_GenRel : public ExprIntrp_Generator {
+//! Implements an interpreter for equations or system
+//! of equations made of expressions of package Expr.
+class ExprIntrp_GenRel : public ExprIntrp_Generator
+{
 
 public:
 
   
-  Standard_EXPORT   static  Handle_ExprIntrp_GenRel Create() ;
-  //! Processes given string. <br>
-  Standard_EXPORT     void Process(const TCollection_AsciiString& str) ;
-  //! Returns false if any syntax error has occurred during <br>
-//!          process. <br>
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-  //! Returns relation generated. Raises an exception if <br>
-//!          IsDone answers false. <br>
-  Standard_EXPORT     Handle_Expr_GeneralRelation Relation() const;
+  Standard_EXPORT static   Handle(ExprIntrp_GenRel) Create() ;
+  
+  //! Processes given string.
+  Standard_EXPORT   void Process (const TCollection_AsciiString& str) ;
+  
+  //! Returns false if any syntax error has occurred during
+  //! process.
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
+  
+  //! Returns relation generated. Raises an exception if
+  //! IsDone answers false.
+  Standard_EXPORT   Handle(Expr_GeneralRelation) Relation()  const;
 
 
 
@@ -59,11 +51,12 @@ protected:
 
 private: 
 
-  //! Creates an empty generator <br>
-  Standard_EXPORT   ExprIntrp_GenRel();
+  
+  //! Creates an empty generator
+  Standard_EXPORT ExprIntrp_GenRel();
 
-Standard_Boolean done;
-Handle_Expr_GeneralRelation myRelation;
+  Standard_Boolean done;
+  Handle(Expr_GeneralRelation) myRelation;
 
 
 };
@@ -72,7 +65,6 @@ Handle_Expr_GeneralRelation myRelation;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ExprIntrp_GenRel_HeaderFile

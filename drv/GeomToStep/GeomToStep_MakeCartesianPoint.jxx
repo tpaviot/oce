@@ -1,21 +1,7 @@
-#ifndef _StepGeom_CartesianPoint_HeaderFile
 #include <StepGeom_CartesianPoint.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _Geom_CartesianPoint_HeaderFile
 #include <Geom_CartesianPoint.hxx>
-#endif
-#ifndef _Geom2d_CartesianPoint_HeaderFile
 #include <Geom2d_CartesianPoint.hxx>
-#endif
-#ifndef _GeomToStep_MakeCartesianPoint_HeaderFile
 #include <GeomToStep_MakeCartesianPoint.hxx>
-#endif

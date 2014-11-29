@@ -5,22 +5,12 @@
 
 #include <BRepClass3d_DataMapNodeOfMapOfInter.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _BRepClass3d_MapOfInter_HeaderFile
 #include <BRepClass3d_MapOfInter.hxx>
-#endif
-#ifndef _BRepClass3d_DataMapIteratorOfMapOfInter_HeaderFile
 #include <BRepClass3d_DataMapIteratorOfMapOfInter.hxx>
-#endif
 
  
 

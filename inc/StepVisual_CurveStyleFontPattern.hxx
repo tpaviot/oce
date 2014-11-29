@@ -6,41 +6,33 @@
 #ifndef _StepVisual_CurveStyleFontPattern_HeaderFile
 #define _StepVisual_CurveStyleFontPattern_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_CurveStyleFontPattern_HeaderFile
 #include <Handle_StepVisual_CurveStyleFontPattern.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 
 
 
-class StepVisual_CurveStyleFontPattern : public MMgt_TShared {
+class StepVisual_CurveStyleFontPattern : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a CurveStyleFontPattern <br>
-  Standard_EXPORT   StepVisual_CurveStyleFontPattern();
   
-  Standard_EXPORT   virtual  void Init(const Standard_Real aVisibleSegmentLength,const Standard_Real aInvisibleSegmentLength) ;
+  //! Returns a CurveStyleFontPattern
+  Standard_EXPORT StepVisual_CurveStyleFontPattern();
   
-  Standard_EXPORT     void SetVisibleSegmentLength(const Standard_Real aVisibleSegmentLength) ;
+  Standard_EXPORT virtual   void Init (const Standard_Real aVisibleSegmentLength, const Standard_Real aInvisibleSegmentLength) ;
   
-  Standard_EXPORT     Standard_Real VisibleSegmentLength() const;
+  Standard_EXPORT   void SetVisibleSegmentLength (const Standard_Real aVisibleSegmentLength) ;
   
-  Standard_EXPORT     void SetInvisibleSegmentLength(const Standard_Real aInvisibleSegmentLength) ;
+  Standard_EXPORT   Standard_Real VisibleSegmentLength()  const;
   
-  Standard_EXPORT     Standard_Real InvisibleSegmentLength() const;
+  Standard_EXPORT   void SetInvisibleSegmentLength (const Standard_Real aInvisibleSegmentLength) ;
+  
+  Standard_EXPORT   Standard_Real InvisibleSegmentLength()  const;
 
 
 
@@ -55,8 +47,8 @@ protected:
 private: 
 
 
-Standard_Real visibleSegmentLength;
-Standard_Real invisibleSegmentLength;
+  Standard_Real visibleSegmentLength;
+  Standard_Real invisibleSegmentLength;
 
 
 };
@@ -65,7 +57,6 @@ Standard_Real invisibleSegmentLength;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_CurveStyleFontPattern_HeaderFile

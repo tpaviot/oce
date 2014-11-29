@@ -5,21 +5,13 @@
 
 #include <TColGeom_SequenceOfBoundedCurve.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Geom_BoundedCurve_HeaderFile
 #include <Geom_BoundedCurve.hxx>
-#endif
-#ifndef _TColGeom_SequenceNodeOfSequenceOfBoundedCurve_HeaderFile
 #include <TColGeom_SequenceNodeOfSequenceOfBoundedCurve.hxx>
-#endif
  
 
-#define SeqItem Handle_Geom_BoundedCurve
+#define SeqItem Handle(Geom_BoundedCurve)
 #define SeqItem_hxx <Geom_BoundedCurve.hxx>
 #define TCollection_SequenceNode TColGeom_SequenceNodeOfSequenceOfBoundedCurve
 #define TCollection_SequenceNode_hxx <TColGeom_SequenceNodeOfSequenceOfBoundedCurve.hxx>

@@ -6,66 +6,56 @@
 #ifndef _IGESGeom_BoundedSurface_HeaderFile
 #define _IGESGeom_BoundedSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESGeom_BoundedSurface_HeaderFile
 #include <Handle_IGESGeom_BoundedSurface.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Handle_IGESGeom_HArray1OfBoundary_HeaderFile
 #include <Handle_IGESGeom_HArray1OfBoundary.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Handle_IGESGeom_Boundary_HeaderFile
 #include <Handle_IGESGeom_Boundary.hxx>
-#endif
 class IGESData_IGESEntity;
 class IGESGeom_HArray1OfBoundary;
 class Standard_OutOfRange;
 class IGESGeom_Boundary;
 
 
-//! defines BoundedSurface, Type <143> Form <0> <br>
-//!          in package IGESGeom <br>
-//!          A bounded surface is used to communicate trimmed <br>
-//!          surfaces. The surface and trimming curves are assumed <br>
-//!          to be represented parametrically. <br>
-class IGESGeom_BoundedSurface : public IGESData_IGESEntity {
+//! defines BoundedSurface, Type <143> Form <0>
+//! in package IGESGeom
+//! A bounded surface is used to communicate trimmed
+//! surfaces. The surface and trimming curves are assumed
+//! to be represented parametrically.
+class IGESGeom_BoundedSurface : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESGeom_BoundedSurface();
-  //! This method is used to set the fields of the class <br>
-//!           BoundedSurface <br>
-//!       - aType     : Type of bounded surface representation <br>
-//!       - aSurface  : Surface entity to be bounded <br>
-//!       - allBounds : Array of boundary entities <br>
-  Standard_EXPORT     void Init(const Standard_Integer aType,const Handle(IGESData_IGESEntity)& aSurface,const Handle(IGESGeom_HArray1OfBoundary)& allBounds) ;
-  //! returns the type of Bounded surface representation <br>
-//! 0 = The boundary entities may only reference model space curves <br>
-//! 1 = The boundary entities may reference both model space curves <br>
-//!     and associated parameter space curve representations <br>
-  Standard_EXPORT     Standard_Integer RepresentationType() const;
-  //! returns the bounded surface <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity Surface() const;
-  //! returns the number of boundaries <br>
-  Standard_EXPORT     Standard_Integer NbBoundaries() const;
-  //! returns boundary entity <br>
-//! raises exception if Index <= 0 or Index > NbBoundaries() <br>
-  Standard_EXPORT     Handle_IGESGeom_Boundary Boundary(const Standard_Integer Index) const;
+  Standard_EXPORT IGESGeom_BoundedSurface();
+  
+  //! This method is used to set the fields of the class
+  //! BoundedSurface
+  //! - aType     : Type of bounded surface representation
+  //! - aSurface  : Surface entity to be bounded
+  //! - allBounds : Array of boundary entities
+  Standard_EXPORT   void Init (const Standard_Integer aType, const Handle(IGESData_IGESEntity)& aSurface, const Handle(IGESGeom_HArray1OfBoundary)& allBounds) ;
+  
+  //! returns the type of Bounded surface representation
+  //! 0 = The boundary entities may only reference model space curves
+  //! 1 = The boundary entities may reference both model space curves
+  //! and associated parameter space curve representations
+  Standard_EXPORT   Standard_Integer RepresentationType()  const;
+  
+  //! returns the bounded surface
+  Standard_EXPORT   Handle(IGESData_IGESEntity) Surface()  const;
+  
+  //! returns the number of boundaries
+  Standard_EXPORT   Standard_Integer NbBoundaries()  const;
+  
+  //! returns boundary entity
+  //! raises exception if Index <= 0 or Index > NbBoundaries()
+  Standard_EXPORT   Handle(IGESGeom_Boundary) Boundary (const Standard_Integer Index)  const;
 
 
 
@@ -80,9 +70,9 @@ protected:
 private: 
 
 
-Standard_Integer theType;
-Handle_IGESData_IGESEntity theSurface;
-Handle_IGESGeom_HArray1OfBoundary theBoundaries;
+  Standard_Integer theType;
+  Handle(IGESData_IGESEntity) theSurface;
+  Handle(IGESGeom_HArray1OfBoundary) theBoundaries;
 
 
 };
@@ -91,7 +81,6 @@ Handle_IGESGeom_HArray1OfBoundary theBoundaries;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGeom_BoundedSurface_HeaderFile

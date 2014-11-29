@@ -5,18 +5,10 @@
 
 #include <PShort_SeqExplorerOfHSequenceOfShortReal.hxx>
 
-#ifndef _PShort_SeqNodeOfHSequenceOfShortReal_HeaderFile
 #include <PShort_SeqNodeOfHSequenceOfShortReal.hxx>
-#endif
-#ifndef _PShort_HSequenceOfShortReal_HeaderFile
 #include <PShort_HSequenceOfShortReal.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
  
 
 #define Item Standard_ShortReal

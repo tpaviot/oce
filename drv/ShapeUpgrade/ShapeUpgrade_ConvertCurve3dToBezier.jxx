@@ -1,9 +1,3 @@
-#ifndef _TColGeom_HSequenceOfCurve_HeaderFile
 #include <TColGeom_HSequenceOfCurve.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfReal_HeaderFile
 #include <TColStd_HSequenceOfReal.hxx>
-#endif
-#ifndef _ShapeUpgrade_ConvertCurve3dToBezier_HeaderFile
 #include <ShapeUpgrade_ConvertCurve3dToBezier.hxx>
-#endif

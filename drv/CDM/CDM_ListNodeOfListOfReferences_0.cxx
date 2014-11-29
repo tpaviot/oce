@@ -5,19 +5,11 @@
 
 #include <CDM_ListNodeOfListOfReferences.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _CDM_Reference_HeaderFile
 #include <CDM_Reference.hxx>
-#endif
-#ifndef _CDM_ListOfReferences_HeaderFile
 #include <CDM_ListOfReferences.hxx>
-#endif
-#ifndef _CDM_ListIteratorOfListOfReferences_HeaderFile
 #include <CDM_ListIteratorOfListOfReferences.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(CDM_ListNodeOfListOfReferences,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(CDM_ListNodeOfListOfReferences)
 
 
-#define Item Handle_CDM_Reference
+#define Item Handle(CDM_Reference)
 #define Item_hxx <CDM_Reference.hxx>
 #define TCollection_ListNode CDM_ListNodeOfListOfReferences
 #define TCollection_ListNode_hxx <CDM_ListNodeOfListOfReferences.hxx>

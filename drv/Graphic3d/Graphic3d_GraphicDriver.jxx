@@ -1,21 +1,6 @@
-#ifndef _Graphic3d_TransformError_HeaderFile
 #include <Graphic3d_TransformError.hxx>
-#endif
-#ifndef _TColStd_Array2OfReal_HeaderFile
-#include <TColStd_Array2OfReal.hxx>
-#endif
-#ifndef _Quantity_Color_HeaderFile
+#include <Graphic3d_StructureManager.hxx>
 #include <Quantity_Color.hxx>
-#endif
-#ifndef _gp_Ax2_HeaderFile
-#include <gp_Ax2.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
-#include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Graphic3d_GraphicDriver_HeaderFile
+#include <TColStd_Array2OfReal.hxx>
 #include <Graphic3d_GraphicDriver.hxx>
-#endif

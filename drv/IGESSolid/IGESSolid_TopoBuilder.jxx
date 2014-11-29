@@ -1,39 +1,13 @@
-#ifndef _IGESSolid_ManifoldSolid_HeaderFile
 #include <IGESSolid_ManifoldSolid.hxx>
-#endif
-#ifndef _IGESSolid_Shell_HeaderFile
 #include <IGESSolid_Shell.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfTransient_HeaderFile
 #include <TColStd_HSequenceOfTransient.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfInteger_HeaderFile
 #include <TColStd_HSequenceOfInteger.hxx>
-#endif
-#ifndef _IGESSolid_Face_HeaderFile
 #include <IGESSolid_Face.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _IGESSolid_Loop_HeaderFile
 #include <IGESSolid_Loop.hxx>
-#endif
-#ifndef _IGESSolid_EdgeList_HeaderFile
 #include <IGESSolid_EdgeList.hxx>
-#endif
-#ifndef _IGESSolid_VertexList_HeaderFile
 #include <IGESSolid_VertexList.hxx>
-#endif
-#ifndef _TColgp_HSequenceOfXYZ_HeaderFile
 #include <TColgp_HSequenceOfXYZ.hxx>
-#endif
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _IGESSolid_TopoBuilder_HeaderFile
 #include <IGESSolid_TopoBuilder.hxx>
-#endif

@@ -1,12 +1,4 @@
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Interface_InterfaceModel_HeaderFile
 #include <Interface_InterfaceModel.hxx>
-#endif
-#ifndef _IFSelect_SelectAnyType_HeaderFile
 #include <IFSelect_SelectAnyType.hxx>
-#endif

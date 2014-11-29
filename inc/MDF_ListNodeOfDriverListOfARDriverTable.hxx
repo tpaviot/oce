@@ -6,39 +6,28 @@
 #ifndef _MDF_ListNodeOfDriverListOfARDriverTable_HeaderFile
 #define _MDF_ListNodeOfDriverListOfARDriverTable_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MDF_ListNodeOfDriverListOfARDriverTable_HeaderFile
 #include <Handle_MDF_ListNodeOfDriverListOfARDriverTable.hxx>
-#endif
 
-#ifndef _Handle_MDF_ARDriver_HeaderFile
 #include <Handle_MDF_ARDriver.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class MDF_ARDriver;
 class MDF_DriverListOfARDriverTable;
 class MDF_ListIteratorOfDriverListOfARDriverTable;
 
 
 
-class MDF_ListNodeOfDriverListOfARDriverTable : public TCollection_MapNode {
+class MDF_ListNodeOfDriverListOfARDriverTable : public TCollection_MapNode
+{
 
 public:
 
   
-      MDF_ListNodeOfDriverListOfARDriverTable(const Handle(MDF_ARDriver)& I,const TCollection_MapNodePtr& n);
+    MDF_ListNodeOfDriverListOfARDriverTable(const Handle(MDF_ARDriver)& I, const TCollection_MapNodePtr& n);
   
-        Handle_MDF_ARDriver& Value() const;
+      Handle(MDF_ARDriver)& Value()  const;
 
 
 
@@ -53,12 +42,12 @@ protected:
 private: 
 
 
-Handle_MDF_ARDriver myValue;
+  Handle(MDF_ARDriver) myValue;
 
 
 };
 
-#define Item Handle_MDF_ARDriver
+#define Item Handle(MDF_ARDriver)
 #define Item_hxx <MDF_ARDriver.hxx>
 #define TCollection_ListNode MDF_ListNodeOfDriverListOfARDriverTable
 #define TCollection_ListNode_hxx <MDF_ListNodeOfDriverListOfARDriverTable.hxx>
@@ -83,7 +72,6 @@ Handle_MDF_ARDriver myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MDF_ListNodeOfDriverListOfARDriverTable_HeaderFile

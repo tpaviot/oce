@@ -6,47 +6,38 @@
 #ifndef _Convert_HyperbolaToBSplineCurve_HeaderFile
 #define _Convert_HyperbolaToBSplineCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Convert_ConicToBSplineCurve_HeaderFile
 #include <Convert_ConicToBSplineCurve.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class gp_Hypr2d;
 
 
 
-//!  This algorithm converts a hyperbola into a rational B-spline curve. <br>
-//!  The hyperbola is an Hypr2d from package gp with the <br>
-//!  parametrization : <br>
-//!  P (U) = <br>
-//!  Loc + (MajorRadius * Cosh(U) * Xdir + MinorRadius * Sinh(U) * Ydir) <br>
-//!  where Loc is the location point of the hyperbola, Xdir and Ydir are <br>
-//!  the normalized directions of the local cartesian coordinate system <br>
-//!  of the hyperbola. <br>
-//! KeyWords : <br>
-//!  Convert, Hyperbola, BSplineCurve, 2D . <br>
-class Convert_HyperbolaToBSplineCurve  : public Convert_ConicToBSplineCurve {
+//! This algorithm converts a hyperbola into a rational B-spline curve.
+//! The hyperbola is an Hypr2d from package gp with the
+//! parametrization :
+//! P (U) =
+//! Loc + (MajorRadius * Cosh(U) * Xdir + MinorRadius * Sinh(U) * Ydir)
+//! where Loc is the location point of the hyperbola, Xdir and Ydir are
+//! the normalized directions of the local cartesian coordinate system
+//! of the hyperbola.
+//! KeyWords :
+//! Convert, Hyperbola, BSplineCurve, 2D .
+class Convert_HyperbolaToBSplineCurve  : public Convert_ConicToBSplineCurve
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//!  The hyperbola H is limited between the parametric values U1, U2 <br>
-//!  and the equivalent B-spline curve has the same orientation as the <br>
-//!  hyperbola. <br>
-  Standard_EXPORT   Convert_HyperbolaToBSplineCurve(const gp_Hypr2d& H,const Standard_Real U1,const Standard_Real U2);
 
+  //! The hyperbola H is limited between the parametric values U1, U2
+  //! and the equivalent B-spline curve has the same orientation as the
+  //! hyperbola.
+  Standard_EXPORT Convert_HyperbolaToBSplineCurve(const gp_Hypr2d& H, const Standard_Real U1, const Standard_Real U2);
 
 
 
@@ -69,7 +60,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Convert_HyperbolaToBSplineCurve_HeaderFile

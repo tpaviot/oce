@@ -6,139 +6,123 @@
 #ifndef _IntTools_MarkedRangeSet_HeaderFile
 #define _IntTools_MarkedRangeSet_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TColStd_SequenceOfReal_HeaderFile
 #include <TColStd_SequenceOfReal.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TColStd_SequenceOfInteger_HeaderFile
 #include <TColStd_SequenceOfInteger.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class IntTools_CArray1OfReal;
 class IntTools_Range;
 class TColStd_SequenceOfInteger;
 
 
-//! class MarkedRangeSet provides continuous set of ranges marked with flags <br>
-class IntTools_MarkedRangeSet  {
+//! class MarkedRangeSet provides continuous set of ranges marked with flags
+class IntTools_MarkedRangeSet 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//! Empty constructor <br>
-//! <br>
-  Standard_EXPORT   IntTools_MarkedRangeSet();
-  
-//! build set of ranges which consists of one range with <br>
-//! boundary values theFirstBoundary and theLastBoundary <br>
-//! <br>
-  Standard_EXPORT   IntTools_MarkedRangeSet(const Standard_Real theFirstBoundary,const Standard_Real theLastBoundary,const Standard_Integer theInitFlag);
-  
-//! Build set of ranges based on the array of progressive sorted values <br>
-//! <br>
-//!  Warning: <br>
-//! The constructor do not check if the values of array are not sorted <br>
-//! It should be checked before function invocation <br>
-//! <br>
-  Standard_EXPORT   IntTools_MarkedRangeSet(const IntTools_CArray1OfReal& theSortedArray,const Standard_Integer theInitFlag);
-  
-//! build set of ranges which consists of one range with <br>
-//! boundary values theFirstBoundary and theLastBoundary <br>
-//! <br>
-  Standard_EXPORT     void SetBoundaries(const Standard_Real theFirstBoundary,const Standard_Real theLastBoundary,const Standard_Integer theInitFlag) ;
-  
-//! Build set of ranges based on the array of progressive sorted values <br>
-//! <br>
-//!  Warning: <br>
-//! The function do not check if the values of array are not sorted <br>
-//! It should be checked before function invocation <br>
-//! <br>
-  Standard_EXPORT     void SetRanges(const IntTools_CArray1OfReal& theSortedArray,const Standard_Integer theInitFlag) ;
-  
-//! Inserts a new range marked with flag theFlag <br>
-//! It replace the existing ranges or parts of ranges <br>
-//! and their flags. <br>
-//! Returns True if the range is inside the initial boundaries, <br>
-//! otherwise or in case of some error returns False <br>
-//! <br>
-  Standard_EXPORT     Standard_Boolean InsertRange(const Standard_Real theFirstBoundary,const Standard_Real theLastBoundary,const Standard_Integer theFlag) ;
-  
-//! Inserts a new range marked with flag theFlag <br>
-//! It replace the existing ranges or parts of ranges <br>
-//! and their flags. <br>
-//! Returns True if the range is inside the initial boundaries, <br>
-//! otherwise or in case of some error returns False <br>
-//! <br>
-  Standard_EXPORT     Standard_Boolean InsertRange(const IntTools_Range& theRange,const Standard_Integer theFlag) ;
-  
-//! Inserts a new range marked with flag theFlag <br>
-//! It replace the existing ranges or parts of ranges <br>
-//! and their flags. <br>
-//! The index theIndex is a position where the range will be inserted. <br>
-//! Returns True if the range is inside the initial boundaries, <br>
-//! otherwise or in case of some error returns False <br>
-//! <br>
-  Standard_EXPORT     Standard_Boolean InsertRange(const Standard_Real theFirstBoundary,const Standard_Real theLastBoundary,const Standard_Integer theFlag,const Standard_Integer theIndex) ;
-  
-//! Inserts a new range marked with flag theFlag <br>
-//! It replace the existing ranges or parts of ranges <br>
-//! and their flags. <br>
-//! The index theIndex is a position where the range will be inserted. <br>
-//! Returns True if the range is inside the initial boundaries, <br>
-//! otherwise or in case of some error returns False <br>
-//! <br>
-  Standard_EXPORT     Standard_Boolean InsertRange(const IntTools_Range& theRange,const Standard_Integer theFlag,const Standard_Integer theIndex) ;
-  
-//! Set flag theFlag for range with index theIndex <br>
-//! <br>
-  Standard_EXPORT     void SetFlag(const Standard_Integer theIndex,const Standard_Integer theFlag) ;
-  
-//! Returns flag of the range with index theIndex <br>
-//! <br>
-  Standard_EXPORT     Standard_Integer Flag(const Standard_Integer theIndex) const;
-  
-//! Returns index of range which contains theValue. <br>
-//! If theValue do not belong any range returns 0. <br>
-//! <br>
-  Standard_EXPORT     Standard_Integer GetIndex(const Standard_Real theValue) const;
-  
-  Standard_EXPORT    const TColStd_SequenceOfInteger& GetIndices(const Standard_Real theValue) ;
-  
-//! Returns index of range which contains theValue <br>
-//! If theValue do not belong any range returns 0. <br>
-//! If UseLower is Standard_True then lower boundary of the range <br>
-//! can be equal to theValue, otherwise upper boundary of the range <br>
-//! can be equal to theValue. <br>
-//! <br>
-  Standard_EXPORT     Standard_Integer GetIndex(const Standard_Real theValue,const Standard_Boolean UseLower) const;
-  
-//! Returns number of ranges <br>
-//! <br>
-        Standard_Integer Length() const;
-  
-//! Returns the range with index theIndex. <br>
-//! the Index can be from 1 to Length() <br>
-//! <br>
-  Standard_EXPORT     IntTools_Range Range(const Standard_Integer theIndex) const;
 
+  //! Empty constructor
+  Standard_EXPORT IntTools_MarkedRangeSet();
+  
+
+  //! build set of ranges which consists of one range with
+  //! boundary values theFirstBoundary and theLastBoundary
+  Standard_EXPORT IntTools_MarkedRangeSet(const Standard_Real theFirstBoundary, const Standard_Real theLastBoundary, const Standard_Integer theInitFlag);
+  
+
+  //! Build set of ranges based on the array of progressive sorted values
+  //!
+  //! Warning:
+  //! The constructor do not check if the values of array are not sorted
+  //! It should be checked before function invocation
+  Standard_EXPORT IntTools_MarkedRangeSet(const IntTools_CArray1OfReal& theSortedArray, const Standard_Integer theInitFlag);
+  
+
+  //! build set of ranges which consists of one range with
+  //! boundary values theFirstBoundary and theLastBoundary
+  Standard_EXPORT   void SetBoundaries (const Standard_Real theFirstBoundary, const Standard_Real theLastBoundary, const Standard_Integer theInitFlag) ;
+  
+
+  //! Build set of ranges based on the array of progressive sorted values
+  //!
+  //! Warning:
+  //! The function do not check if the values of array are not sorted
+  //! It should be checked before function invocation
+  Standard_EXPORT   void SetRanges (const IntTools_CArray1OfReal& theSortedArray, const Standard_Integer theInitFlag) ;
+  
+
+  //! Inserts a new range marked with flag theFlag
+  //! It replace the existing ranges or parts of ranges
+  //! and their flags.
+  //! Returns True if the range is inside the initial boundaries,
+  //! otherwise or in case of some error returns False
+  Standard_EXPORT   Standard_Boolean InsertRange (const Standard_Real theFirstBoundary, const Standard_Real theLastBoundary, const Standard_Integer theFlag) ;
+  
+
+  //! Inserts a new range marked with flag theFlag
+  //! It replace the existing ranges or parts of ranges
+  //! and their flags.
+  //! Returns True if the range is inside the initial boundaries,
+  //! otherwise or in case of some error returns False
+  Standard_EXPORT   Standard_Boolean InsertRange (const IntTools_Range& theRange, const Standard_Integer theFlag) ;
+  
+
+  //! Inserts a new range marked with flag theFlag
+  //! It replace the existing ranges or parts of ranges
+  //! and their flags.
+  //! The index theIndex is a position where the range will be inserted.
+  //! Returns True if the range is inside the initial boundaries,
+  //! otherwise or in case of some error returns False
+  Standard_EXPORT   Standard_Boolean InsertRange (const Standard_Real theFirstBoundary, const Standard_Real theLastBoundary, const Standard_Integer theFlag, const Standard_Integer theIndex) ;
+  
+
+  //! Inserts a new range marked with flag theFlag
+  //! It replace the existing ranges or parts of ranges
+  //! and their flags.
+  //! The index theIndex is a position where the range will be inserted.
+  //! Returns True if the range is inside the initial boundaries,
+  //! otherwise or in case of some error returns False
+  Standard_EXPORT   Standard_Boolean InsertRange (const IntTools_Range& theRange, const Standard_Integer theFlag, const Standard_Integer theIndex) ;
+  
+
+  //! Set flag theFlag for range with index theIndex
+  Standard_EXPORT   void SetFlag (const Standard_Integer theIndex, const Standard_Integer theFlag) ;
+  
+
+  //! Returns flag of the range with index theIndex
+  Standard_EXPORT   Standard_Integer Flag (const Standard_Integer theIndex)  const;
+  
+
+  //! Returns index of range which contains theValue.
+  //! If theValue do not belong any range returns 0.
+  Standard_EXPORT   Standard_Integer GetIndex (const Standard_Real theValue)  const;
+  
+  Standard_EXPORT  const  TColStd_SequenceOfInteger& GetIndices (const Standard_Real theValue) ;
+  
+
+  //! Returns index of range which contains theValue
+  //! If theValue do not belong any range returns 0.
+  //! If UseLower is Standard_True then lower boundary of the range
+  //! can be equal to theValue, otherwise upper boundary of the range
+  //! can be equal to theValue.
+  Standard_EXPORT   Standard_Integer GetIndex (const Standard_Real theValue, const Standard_Boolean UseLower)  const;
+  
+
+  //! Returns number of ranges
+      Standard_Integer Length()  const;
+  
+
+  //! Returns the range with index theIndex.
+  //! the Index can be from 1 to Length()
+  Standard_EXPORT   IntTools_Range Range (const Standard_Integer theIndex)  const;
 
 
 
@@ -153,10 +137,10 @@ private:
 
 
 
-TColStd_SequenceOfReal myRangeSetStorer;
-Standard_Integer myRangeNumber;
-TColStd_SequenceOfInteger myFlags;
-TColStd_SequenceOfInteger myFoundIndices;
+  TColStd_SequenceOfReal myRangeSetStorer;
+  Standard_Integer myRangeNumber;
+  TColStd_SequenceOfInteger myFlags;
+  TColStd_SequenceOfInteger myFoundIndices;
 
 
 };
@@ -166,7 +150,6 @@ TColStd_SequenceOfInteger myFoundIndices;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_MarkedRangeSet_HeaderFile

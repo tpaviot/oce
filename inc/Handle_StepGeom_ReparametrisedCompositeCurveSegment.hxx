@@ -6,22 +6,15 @@
 #ifndef _Handle_StepGeom_ReparametrisedCompositeCurveSegment_HeaderFile
 #define _Handle_StepGeom_ReparametrisedCompositeCurveSegment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepGeom_CompositeCurveSegment_HeaderFile
 #include <Handle_StepGeom_CompositeCurveSegment.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepGeom_CompositeCurveSegment);
 class StepGeom_ReparametrisedCompositeCurveSegment;
 
-DEFINE_STANDARD_HANDLE(StepGeom_ReparametrisedCompositeCurveSegment,StepGeom_CompositeCurveSegment)
+DEFINE_STANDARD_HANDLE(StepGeom_ReparametrisedCompositeCurveSegment, StepGeom_CompositeCurveSegment)
 
-#endif
+#endif // _Handle_StepGeom_ReparametrisedCompositeCurveSegment_HeaderFile

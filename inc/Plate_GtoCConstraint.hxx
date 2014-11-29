@@ -6,28 +6,14 @@
 #ifndef _Plate_GtoCConstraint_HeaderFile
 #define _Plate_GtoCConstraint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Plate_PinpointConstraint_HeaderFile
 #include <Plate_PinpointConstraint.hxx>
-#endif
-#ifndef _Plate_D1_HeaderFile
 #include <Plate_D1.hxx>
-#endif
-#ifndef _gp_XY_HeaderFile
 #include <gp_XY.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class gp_XY;
 class Plate_D1;
 class gp_XYZ;
@@ -36,34 +22,33 @@ class Plate_D3;
 class Plate_PinpointConstraint;
 
 
-//! define a G1, G2  or G3 constraint on the Plate <br>
-//! <br>
-class Plate_GtoCConstraint  {
+//! define a G1, G2  or G3 constraint on the Plate
+class Plate_GtoCConstraint 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Plate_GtoCConstraint(const Plate_GtoCConstraint& ref);
+  Standard_EXPORT Plate_GtoCConstraint(const Plate_GtoCConstraint& ref);
   
-  Standard_EXPORT   Plate_GtoCConstraint(const gp_XY& point2d,const Plate_D1& D1S,const Plate_D1& D1T);
+  Standard_EXPORT Plate_GtoCConstraint(const gp_XY& point2d, const Plate_D1& D1S, const Plate_D1& D1T);
   
-  Standard_EXPORT   Plate_GtoCConstraint(const gp_XY& point2d,const Plate_D1& D1S,const Plate_D1& D1T,const gp_XYZ& nP);
+  Standard_EXPORT Plate_GtoCConstraint(const gp_XY& point2d, const Plate_D1& D1S, const Plate_D1& D1T, const gp_XYZ& nP);
   
-  Standard_EXPORT   Plate_GtoCConstraint(const gp_XY& point2d,const Plate_D1& D1S,const Plate_D1& D1T,const Plate_D2& D2S,const Plate_D2& D2T);
+  Standard_EXPORT Plate_GtoCConstraint(const gp_XY& point2d, const Plate_D1& D1S, const Plate_D1& D1T, const Plate_D2& D2S, const Plate_D2& D2T);
   
-  Standard_EXPORT   Plate_GtoCConstraint(const gp_XY& point2d,const Plate_D1& D1S,const Plate_D1& D1T,const Plate_D2& D2S,const Plate_D2& D2T,const gp_XYZ& nP);
+  Standard_EXPORT Plate_GtoCConstraint(const gp_XY& point2d, const Plate_D1& D1S, const Plate_D1& D1T, const Plate_D2& D2S, const Plate_D2& D2T, const gp_XYZ& nP);
   
-  Standard_EXPORT   Plate_GtoCConstraint(const gp_XY& point2d,const Plate_D1& D1S,const Plate_D1& D1T,const Plate_D2& D2S,const Plate_D2& D2T,const Plate_D3& D3S,const Plate_D3& D3T);
+  Standard_EXPORT Plate_GtoCConstraint(const gp_XY& point2d, const Plate_D1& D1S, const Plate_D1& D1T, const Plate_D2& D2S, const Plate_D2& D2T, const Plate_D3& D3S, const Plate_D3& D3T);
   
-  Standard_EXPORT   Plate_GtoCConstraint(const gp_XY& point2d,const Plate_D1& D1S,const Plate_D1& D1T,const Plate_D2& D2S,const Plate_D2& D2T,const Plate_D3& D3S,const Plate_D3& D3T,const gp_XYZ& nP);
+  Standard_EXPORT Plate_GtoCConstraint(const gp_XY& point2d, const Plate_D1& D1S, const Plate_D1& D1T, const Plate_D2& D2S, const Plate_D2& D2T, const Plate_D3& D3S, const Plate_D3& D3T, const gp_XYZ& nP);
   
-       const Standard_Integer& nb_PPC() const;
+     const  Standard_Integer& nb_PPC()  const;
   
-       const Plate_PinpointConstraint& GetPPC(const Standard_Integer Index) const;
+     const  Plate_PinpointConstraint& GetPPC (const Standard_Integer Index)  const;
   
-       const Plate_D1& D1SurfInit() const;
-
+     const  Plate_D1& D1SurfInit()  const;
 
 
 
@@ -78,10 +63,10 @@ private:
 
 
 
-Plate_PinpointConstraint myPPC[9];
-Plate_D1 myD1SurfInit;
-gp_XY pnt2d;
-Standard_Integer nb_PPConstraints;
+  Plate_PinpointConstraint myPPC[9];
+  Plate_D1 myD1SurfInit;
+  gp_XY pnt2d;
+  Standard_Integer nb_PPConstraints;
 
 
 };
@@ -91,7 +76,6 @@ Standard_Integer nb_PPConstraints;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Plate_GtoCConstraint_HeaderFile

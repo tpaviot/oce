@@ -6,25 +6,13 @@
 #ifndef _MPrsStd_HeaderFile
 #define _MPrsStd_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_MDF_ASDriverHSequence_HeaderFile
 #include <Handle_MDF_ASDriverHSequence.hxx>
-#endif
-#ifndef _Handle_CDM_MessageDriver_HeaderFile
 #include <Handle_CDM_MessageDriver.hxx>
-#endif
-#ifndef _Handle_MDF_ARDriverHSequence_HeaderFile
 #include <Handle_MDF_ARDriverHSequence.hxx>
-#endif
 class MDF_ASDriverHSequence;
 class CDM_MessageDriver;
 class MDF_ARDriverHSequence;
@@ -35,20 +23,22 @@ class MPrsStd_AISPresentationRetrievalDriver_1;
 class MPrsStd_PositionRetrievalDriver;
 
 
-//! Storage    and  Retrieval  drivers   for graphic <br>
-//!          attributes.   Transient  attributes are defined in <br>
-//!          package TPrsStd and persistent one are defined in <br>
-//!          package PPrsStd <br>
-class MPrsStd  {
+//! Storage    and  Retrieval  drivers   for graphic
+//! attributes.   Transient  attributes are defined in
+//! package TPrsStd and persistent one are defined in
+//! package PPrsStd
+class MPrsStd 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Adds the attribute storage drivers to <aDriverTable>. <br>
-  Standard_EXPORT   static  void AddStorageDrivers(const Handle(MDF_ASDriverHSequence)& aDriverTable,const Handle(CDM_MessageDriver)& theMessageDriver) ;
-  //! Adds the attribute retrieval drivers to <aDriverTable>. <br>
-  Standard_EXPORT   static  void AddRetrievalDrivers(const Handle(MDF_ARDriverHSequence)& aDriverTable,const Handle(CDM_MessageDriver)& theMessageDriver) ;
-
+  
+  //! Adds the attribute storage drivers to <aDriverTable>.
+  Standard_EXPORT static   void AddStorageDrivers (const Handle(MDF_ASDriverHSequence)& aDriverTable, const Handle(CDM_MessageDriver)& theMessageDriver) ;
+  
+  //! Adds the attribute retrieval drivers to <aDriverTable>.
+  Standard_EXPORT static   void AddRetrievalDrivers (const Handle(MDF_ARDriverHSequence)& aDriverTable, const Handle(CDM_MessageDriver)& theMessageDriver) ;
 
 
 
@@ -76,7 +66,6 @@ friend class MPrsStd_PositionRetrievalDriver;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MPrsStd_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_ShapeBuild_ReShape_HeaderFile
 #define _Handle_ShapeBuild_ReShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_BRepTools_ReShape_HeaderFile
 #include <Handle_BRepTools_ReShape.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(BRepTools_ReShape);
 class ShapeBuild_ReShape;
 
-DEFINE_STANDARD_HANDLE(ShapeBuild_ReShape,BRepTools_ReShape)
+DEFINE_STANDARD_HANDLE(ShapeBuild_ReShape, BRepTools_ReShape)
 
-#endif
+#endif // _Handle_ShapeBuild_ReShape_HeaderFile

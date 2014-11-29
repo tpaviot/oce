@@ -5,18 +5,10 @@
 
 #include <BRepClass3d_SolidPassiveClassifier.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _BRepClass3d_Intersector3d_HeaderFile
 #include <BRepClass3d_Intersector3d.hxx>
-#endif
-#ifndef _gp_Lin_HeaderFile
 #include <gp_Lin.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
  
 
 #define TheIntersector BRepClass3d_Intersector3d

@@ -6,22 +6,15 @@
 #ifndef _Handle_PCDM_ReadWriter_1_HeaderFile
 #define _Handle_PCDM_ReadWriter_1_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_PCDM_ReadWriter_HeaderFile
 #include <Handle_PCDM_ReadWriter.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(PCDM_ReadWriter);
 class PCDM_ReadWriter_1;
 
-DEFINE_STANDARD_HANDLE(PCDM_ReadWriter_1,PCDM_ReadWriter)
+DEFINE_STANDARD_HANDLE(PCDM_ReadWriter_1, PCDM_ReadWriter)
 
-#endif
+#endif // _Handle_PCDM_ReadWriter_1_HeaderFile

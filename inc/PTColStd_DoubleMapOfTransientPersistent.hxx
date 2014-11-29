@@ -6,34 +6,16 @@
 #ifndef _PTColStd_DoubleMapOfTransientPersistent_HeaderFile
 #define _PTColStd_DoubleMapOfTransientPersistent_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
 #include <Handle_Standard_Persistent.hxx>
-#endif
-#ifndef _Handle_PTColStd_DoubleMapNodeOfDoubleMapOfTransientPersistent_HeaderFile
 #include <Handle_PTColStd_DoubleMapNodeOfDoubleMapOfTransientPersistent.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_DomainError;
 class Standard_MultiplyDefined;
 class Standard_NoSuchObject;
@@ -46,44 +28,44 @@ class PTColStd_DoubleMapIteratorOfDoubleMapOfTransientPersistent;
 
 
 
-class PTColStd_DoubleMapOfTransientPersistent  : public TCollection_BasicMap {
+class PTColStd_DoubleMapOfTransientPersistent  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   PTColStd_DoubleMapOfTransientPersistent(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT PTColStd_DoubleMapOfTransientPersistent(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     PTColStd_DoubleMapOfTransientPersistent& Assign(const PTColStd_DoubleMapOfTransientPersistent& Other) ;
-    PTColStd_DoubleMapOfTransientPersistent& operator =(const PTColStd_DoubleMapOfTransientPersistent& Other) 
+  Standard_EXPORT   PTColStd_DoubleMapOfTransientPersistent& Assign (const PTColStd_DoubleMapOfTransientPersistent& Other) ;
+  PTColStd_DoubleMapOfTransientPersistent& operator = (const PTColStd_DoubleMapOfTransientPersistent& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~PTColStd_DoubleMapOfTransientPersistent()
 {
   Clear();
 }
   
-  Standard_EXPORT     void Bind(const Handle(Standard_Transient)& K1,const Handle(Standard_Persistent)& K2) ;
+  Standard_EXPORT   void Bind (const Handle(Standard_Transient)& K1, const Handle(Standard_Persistent)& K2) ;
   
-  Standard_EXPORT     Standard_Boolean AreBound(const Handle(Standard_Transient)& K1,const Handle(Standard_Persistent)& K2) const;
+  Standard_EXPORT   Standard_Boolean AreBound (const Handle(Standard_Transient)& K1, const Handle(Standard_Persistent)& K2)  const;
   
-  Standard_EXPORT     Standard_Boolean IsBound1(const Handle(Standard_Transient)& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound1 (const Handle(Standard_Transient)& K)  const;
   
-  Standard_EXPORT     Standard_Boolean IsBound2(const Handle(Standard_Persistent)& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound2 (const Handle(Standard_Persistent)& K)  const;
   
-  Standard_EXPORT    const Handle_Standard_Persistent& Find1(const Handle(Standard_Transient)& K) const;
+  Standard_EXPORT  const  Handle(Standard_Persistent)& Find1 (const Handle(Standard_Transient)& K)  const;
   
-  Standard_EXPORT    const Handle_Standard_Transient& Find2(const Handle(Standard_Persistent)& K) const;
+  Standard_EXPORT  const  Handle(Standard_Transient)& Find2 (const Handle(Standard_Persistent)& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind1(const Handle(Standard_Transient)& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind1 (const Handle(Standard_Transient)& K) ;
   
-  Standard_EXPORT     Standard_Boolean UnBind2(const Handle(Standard_Persistent)& K) ;
-
+  Standard_EXPORT   Standard_Boolean UnBind2 (const Handle(Standard_Persistent)& K) ;
 
 
 
@@ -97,7 +79,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   PTColStd_DoubleMapOfTransientPersistent(const PTColStd_DoubleMapOfTransientPersistent& Other);
+  Standard_EXPORT PTColStd_DoubleMapOfTransientPersistent(const PTColStd_DoubleMapOfTransientPersistent& Other);
 
 
 
@@ -108,7 +90,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PTColStd_DoubleMapOfTransientPersistent_HeaderFile

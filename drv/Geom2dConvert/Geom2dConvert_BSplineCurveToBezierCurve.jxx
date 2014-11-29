@@ -1,24 +1,8 @@
-#ifndef _Geom2d_BSplineCurve_HeaderFile
 #include <Geom2d_BSplineCurve.hxx>
-#endif
-#ifndef _Standard_DimensionError_HeaderFile
 #include <Standard_DimensionError.hxx>
-#endif
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Geom2d_BezierCurve_HeaderFile
 #include <Geom2d_BezierCurve.hxx>
-#endif
-#ifndef _TColGeom2d_Array1OfBezierCurve_HeaderFile
 #include <TColGeom2d_Array1OfBezierCurve.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _Geom2dConvert_BSplineCurveToBezierCurve_HeaderFile
 #include <Geom2dConvert_BSplineCurveToBezierCurve.hxx>
-#endif

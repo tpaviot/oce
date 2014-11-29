@@ -6,22 +6,12 @@
 #ifndef _TopOpeBRep_HeaderFile
 #define _TopOpeBRep_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
-#ifndef _TopOpeBRep_TypeLineCurve_HeaderFile
 #include <TopOpeBRep_TypeLineCurve.hxx>
-#endif
 class TopOpeBRep_VPointInter;
 class TopOpeBRep_Array1OfVPointInter;
 class TopOpeBRep_HArray1OfVPointInter;
@@ -61,17 +51,18 @@ class TopOpeBRep_ListNodeOfListOfBipoint;
 class TopOpeBRep_ListIteratorOfListOfBipoint;
 
 
-//! This package provides  the topological  operations <br>
-//!          on the BRep data structure. <br>
-class TopOpeBRep  {
+//! This package provides  the topological  operations
+//! on the BRep data structure.
+class TopOpeBRep 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Prints the name  of  <TLC>  as  a String  on the <br>
-//!          Stream <S> and returns <S>. <br>
-  Standard_EXPORT   static  Standard_OStream& Print(const TopOpeBRep_TypeLineCurve TLC,Standard_OStream& OS) ;
-
+  
+  //! Prints the name  of  <TLC>  as  a String  on the
+  //! Stream <S> and returns <S>.
+  Standard_EXPORT static   Standard_OStream& Print (const TopOpeBRep_TypeLineCurve TLC, Standard_OStream& OS) ;
 
 
 
@@ -131,7 +122,6 @@ friend class TopOpeBRep_ListIteratorOfListOfBipoint;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRep_HeaderFile

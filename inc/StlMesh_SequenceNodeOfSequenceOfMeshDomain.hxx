@@ -6,38 +6,27 @@
 #ifndef _StlMesh_SequenceNodeOfSequenceOfMeshDomain_HeaderFile
 #define _StlMesh_SequenceNodeOfSequenceOfMeshDomain_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StlMesh_SequenceNodeOfSequenceOfMeshDomain_HeaderFile
 #include <Handle_StlMesh_SequenceNodeOfSequenceOfMeshDomain.hxx>
-#endif
 
-#ifndef _Handle_StlMesh_MeshDomain_HeaderFile
 #include <Handle_StlMesh_MeshDomain.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class StlMesh_MeshDomain;
 class StlMesh_SequenceOfMeshDomain;
 
 
 
-class StlMesh_SequenceNodeOfSequenceOfMeshDomain : public TCollection_SeqNode {
+class StlMesh_SequenceNodeOfSequenceOfMeshDomain : public TCollection_SeqNode
+{
 
 public:
 
   
-      StlMesh_SequenceNodeOfSequenceOfMeshDomain(const Handle(StlMesh_MeshDomain)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    StlMesh_SequenceNodeOfSequenceOfMeshDomain(const Handle(StlMesh_MeshDomain)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_StlMesh_MeshDomain& Value() const;
+      Handle(StlMesh_MeshDomain)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_StlMesh_MeshDomain myValue;
+  Handle(StlMesh_MeshDomain) myValue;
 
 
 };
 
-#define SeqItem Handle_StlMesh_MeshDomain
+#define SeqItem Handle(StlMesh_MeshDomain)
 #define SeqItem_hxx <StlMesh_MeshDomain.hxx>
 #define TCollection_SequenceNode StlMesh_SequenceNodeOfSequenceOfMeshDomain
 #define TCollection_SequenceNode_hxx <StlMesh_SequenceNodeOfSequenceOfMeshDomain.hxx>
@@ -78,7 +67,6 @@ Handle_StlMesh_MeshDomain myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StlMesh_SequenceNodeOfSequenceOfMeshDomain_HeaderFile

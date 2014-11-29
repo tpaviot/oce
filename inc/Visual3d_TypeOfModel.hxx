@@ -6,26 +6,19 @@
 #ifndef _Visual3d_TypeOfModel_HeaderFile
 #define _Visual3d_TypeOfModel_HeaderFile
 
-//! Definition of the rendering (colour shading) model <br>
-//!  TOM_NONE        No interpolation, constant shading <br>
-//!              (FLAT Shading) <br>
-//!  TOM_INTERP_COLOR    Linear interpolation of color <br>
-//!              (Gouraud Shading) <br>
-//!  TOM_FACET       Interpolation of color based on <br>
-//!              dot products <br>
-//!              (Quick Phong Shading) <br>
-//!  TOM_VERTEX      Interpolation of color based on <br>
-//!              normals <br>
-//!              (Phong Shading) <br>
-enum Visual3d_TypeOfModel {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Definition of the rendering (colour shading) model
+//! Visual3d_TOM_NONE     No lighting, only white ambient light
+//! Visual3d_TOM_FACET    No interpolation, constant shading      (Flat    Shading)
+//! Visual3d_TOM_VERTEX   Interpolation of color based on normals (Gouraud Shading)
+//! Visual3d_TOM_FRAGMENT Interpolation of color based on normals (Phong   Shading)
+enum Visual3d_TypeOfModel
+{
 Visual3d_TOM_NONE,
-Visual3d_TOM_INTERP_COLOR,
 Visual3d_TOM_FACET,
-Visual3d_TOM_VERTEX
+Visual3d_TOM_VERTEX,
+Visual3d_TOM_FRAGMENT
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Visual3d_TypeOfModel_HeaderFile

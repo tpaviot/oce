@@ -1,6 +1,2 @@
-#ifndef _Standard_ErrorHandler_HeaderFile
 #include <Standard_ErrorHandler.hxx>
-#endif
-#ifndef _Standard_ErrorHandlerCallback_HeaderFile
 #include <Standard_ErrorHandlerCallback.hxx>
-#endif

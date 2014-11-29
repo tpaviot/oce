@@ -1,9 +1,3 @@
-#ifndef _LocalAnalysis_SurfaceContinuity_HeaderFile
 #include <LocalAnalysis_SurfaceContinuity.hxx>
-#endif
-#ifndef _LocalAnalysis_CurveContinuity_HeaderFile
 #include <LocalAnalysis_CurveContinuity.hxx>
-#endif
-#ifndef _LocalAnalysis_HeaderFile
 #include <LocalAnalysis.hxx>
-#endif

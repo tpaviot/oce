@@ -1,24 +1,8 @@
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Storage_Data_HeaderFile
 #include <Storage_Data.hxx>
-#endif
-#ifndef _CDM_Document_HeaderFile
 #include <CDM_Document.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _CDM_MessageDriver_HeaderFile
 #include <CDM_MessageDriver.hxx>
-#endif
-#ifndef _PCDM_SequenceOfReference_HeaderFile
 #include <PCDM_SequenceOfReference.hxx>
-#endif
-#ifndef _TColStd_SequenceOfExtendedString_HeaderFile
 #include <TColStd_SequenceOfExtendedString.hxx>
-#endif
-#ifndef _PCDM_ReadWriter_1_HeaderFile
 #include <PCDM_ReadWriter_1.hxx>
-#endif

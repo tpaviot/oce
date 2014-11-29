@@ -5,16 +5,10 @@
 
 #include <PColStd_VArrayNodeOfFieldOfHArray2OfReal.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _PColStd_FieldOfHArray2OfReal_HeaderFile
 #include <PColStd_FieldOfHArray2OfReal.hxx>
-#endif
-#ifndef _PColStd_VArrayTNodeOfFieldOfHArray2OfReal_HeaderFile
 #include <PColStd_VArrayTNodeOfFieldOfHArray2OfReal.hxx>
-#endif
 
  
 

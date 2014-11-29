@@ -1,3 +1,1 @@
-#ifndef _IGESAppli_DrilledHole_HeaderFile
 #include <IGESAppli_DrilledHole.hxx>
-#endif

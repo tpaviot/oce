@@ -16,10 +16,9 @@
 #ifndef NCollection_DataMap_HeaderFile
 #define NCollection_DataMap_HeaderFile
 
-#include <NCollection_BaseCollection.hxx>
 #include <NCollection_BaseMap.hxx>
 #include <NCollection_TListNode.hxx>
-
+#include <NCollection_StlIterator.hxx>
 #include <NCollection_DefaultHasher.hxx>
 
 #include <Standard_TypeMismatch.hxx>
@@ -45,10 +44,8 @@
 
 template < class TheKeyType, 
            class TheItemType, 
-           class Hasher = NCollection_DefaultHasher<TheKeyType> >  class NCollection_DataMap 
-  
-  : public NCollection_BaseCollection<TheItemType>,
-    public NCollection_BaseMap
+           class Hasher = NCollection_DefaultHasher<TheKeyType> >
+class NCollection_DataMap : public NCollection_BaseMap
 {
   // **************** Adaptation of the TListNode to the DATAmap
  public:
@@ -59,13 +56,15 @@ template < class TheKeyType,
     DataMapNode (const TheKeyType&     theKey, 
                  const TheItemType&    theItem, 
                  NCollection_ListNode* theNext) :
-                   NCollection_TListNode<TheItemType> (theItem, theNext) 
-    { myKey = theKey; }
+      NCollection_TListNode<TheItemType> (theItem, theNext),
+      myKey(theKey)
+    {}
+
     //! Key
     const TheKeyType& Key (void) const
     { return myKey; }
     
-    //! Static deleter to be passed to BaseList
+    //! Static deleter to be passed to BaseMap
     static void delNode (NCollection_ListNode * theNode, 
                          Handle(NCollection_BaseAllocator)& theAl)
     {
@@ -79,9 +78,7 @@ template < class TheKeyType,
 
  public:
   // **************** Implementation of the Iterator interface.
-  class Iterator 
-    : public NCollection_BaseCollection<TheItemType>::Iterator,
-      public NCollection_BaseMap::Iterator
+  class Iterator : public NCollection_BaseMap::Iterator
   {
   public:
     //! Empty constructor
@@ -91,39 +88,48 @@ template < class TheKeyType,
     Iterator (const NCollection_DataMap& theMap) :
       NCollection_BaseMap::Iterator(theMap) {}
     //! Query if the end of collection is reached by iterator
-    virtual Standard_Boolean More(void) const
+    Standard_Boolean More(void) const
     { return PMore(); }
     //! Make a step along the collection
-    virtual void Next(void)
+    void Next(void)
     { PNext(); }
     //! Value inquiry
-    virtual const TheItemType& Value(void) const
+    const TheItemType& Value(void) const
     {  
-#if !defined No_Exception && !defined No_Standard_NoSuchObject
-      if (!More())
-        Standard_NoSuchObject::Raise("NCollection_DataMap::Iterator::Value");  
-#endif
+      Standard_NoSuchObject_Raise_if(!More(), "NCollection_DataMap::Iterator::Value");  
       return ((DataMapNode *) myNode)->Value();
     }
     //! Value change access
-    virtual TheItemType& ChangeValue(void) const
+    TheItemType& ChangeValue(void) const
     {  
-#if !defined No_Exception && !defined No_Standard_NoSuchObject
-      if (!More())
-        Standard_NoSuchObject::Raise("NCollection_DataMap::Iterator::ChangeValue");  
-#endif
+      Standard_NoSuchObject_Raise_if(!More(), "NCollection_DataMap::Iterator::ChangeValue");  
       return ((DataMapNode *) myNode)->ChangeValue();
     }
     //! Key
     const TheKeyType& Key (void) const
     { 
-#if !defined No_Exception && !defined No_Standard_NoSuchObject
-      if (!More())
-        Standard_NoSuchObject::Raise("NCollection_DataMap::Iterator::Key");  
-#endif
+      Standard_NoSuchObject_Raise_if(!More(), "NCollection_DataMap::Iterator::Key");  
       return ((DataMapNode *) myNode)->Key();
     }
   };
+  
+  //! Shorthand for a regular iterator type.
+  typedef NCollection_StlIterator<std::forward_iterator_tag, Iterator, TheItemType, false> iterator;
+
+  //! Shorthand for a constant iterator type.
+  typedef NCollection_StlIterator<std::forward_iterator_tag, Iterator, TheItemType, true> const_iterator;
+
+  //! Returns an iterator pointing to the first element in the map.
+  iterator begin() const { return Iterator (*this); }
+
+  //! Returns an iterator referring to the past-the-end element in the map.
+  iterator end() const { return Iterator(); }
+
+  //! Returns a const iterator pointing to the first element in the map.
+  const_iterator cbegin() const { return Iterator (*this); }
+
+  //! Returns a const iterator referring to the past-the-end element in the map.
+  const_iterator cend() const { return Iterator(); }
 
  public:
   // ---------- PUBLIC METHODS ------------
@@ -131,43 +137,39 @@ template < class TheKeyType,
   //! Constructor
   NCollection_DataMap (const Standard_Integer NbBuckets=1,
                      const Handle(NCollection_BaseAllocator)& theAllocator = 0L)
-    : NCollection_BaseCollection<TheItemType>(theAllocator),
-      NCollection_BaseMap (NbBuckets, Standard_True) {}
+    : NCollection_BaseMap (NbBuckets, Standard_True, theAllocator) {}
 
   //! Copy constructor
   NCollection_DataMap (const NCollection_DataMap& theOther)
-    : NCollection_BaseCollection<TheItemType>(theOther.myAllocator),
-      NCollection_BaseMap (theOther.NbBuckets(), Standard_True) 
+    : NCollection_BaseMap (theOther.NbBuckets(), Standard_True, theOther.myAllocator) 
   { *this = theOther; }
-
-  //! Assign another collection
-  virtual void Assign(const NCollection_BaseCollection<TheItemType>& theOther)
-  { 
-    if (this == &theOther)
-      return;
-    Standard_TypeMismatch::Raise ("NCollection_DataMap::Assign impossible");
-  }
 
   //! Exchange the content of two maps without re-allocations.
   //! Notice that allocators will be swapped as well!
   void Exchange (NCollection_DataMap& theOther)
   {
-    this->exchangeAllocators (theOther);
-    this->exchangeMapsData   (theOther);
+    this->exchangeMapsData (theOther);
   }
 
-  //! = another map
-  NCollection_DataMap& operator= (const NCollection_DataMap& theOther)
+  //! Assignment.
+  //! This method does not change the internal allocator.
+  NCollection_DataMap& Assign (const NCollection_DataMap& theOther)
   { 
     if (this == &theOther)
       return *this;
 
-    Clear(theOther.myAllocator);
+    Clear();
     ReSize (theOther.Extent()-1);
     Iterator anIter(theOther);
     for (; anIter.More(); anIter.Next())
       Bind (anIter.Key(), anIter.Value());
     return *this;
+  }
+
+  //! Assignment operator
+  NCollection_DataMap& operator= (const NCollection_DataMap& theOther)
+  { 
+    return Assign (theOther);
   }
 
   //! ReSize
@@ -176,7 +178,7 @@ template < class TheKeyType,
     NCollection_ListNode** newdata = NULL;
     NCollection_ListNode** dummy   = NULL;
     Standard_Integer newBuck;
-    if (BeginResize (N, newBuck, newdata, dummy, this->myAllocator))
+    if (BeginResize (N, newBuck, newdata, dummy))
     {
       if (myData1) 
       {
@@ -199,11 +201,13 @@ template < class TheKeyType,
           }
         }
       }
-      EndResize (N, newBuck, newdata, dummy, this->myAllocator);
+      EndResize (N, newBuck, newdata, dummy);
     }
   }
 
-  //! Bind
+  //! Bind binds Item to Key in map. Returns Standard_True if Key was not
+  //! exist in the map. If the Key was already bound, the Item will be rebinded
+  //! and Standard_False will be returned.
   Standard_Boolean Bind (const TheKeyType& theKey, const TheItemType& theItem)
   {
     if (Resizable()) 
@@ -225,23 +229,36 @@ template < class TheKeyType,
     return Standard_True;
   }
 
+  //! Bound binds Item to Key in map. Returns modifiable Item 
+  TheItemType* Bound (const TheKeyType& theKey, const TheItemType& theItem)
+  {
+    if (Resizable()) 
+      ReSize(Extent());
+    DataMapNode** data = (DataMapNode**)myData1;
+    Standard_Integer k = Hasher::HashCode (theKey, NbBuckets());
+    DataMapNode* p = data[k];
+    while (p)
+    {
+      if (Hasher::IsEqual(p->Key(), theKey))
+      {
+        p->ChangeValue() = theItem;
+        return &p->ChangeValue();
+      }
+      p = (DataMapNode*)p->Next();
+    }
+    data[k] = new (this->myAllocator) DataMapNode (theKey, theItem, data[k]);
+    Increment();
+    return &data[k]->ChangeValue();
+  }
+
   //! IsBound
   Standard_Boolean IsBound(const TheKeyType& K) const
   {
-    if (IsEmpty()) 
-      return Standard_False;
-    DataMapNode** data = (DataMapNode**) myData1;
-    DataMapNode* p = data[Hasher::HashCode(K,NbBuckets())];
-    while (p) 
-    {
-      if (Hasher::IsEqual(p->Key(),K)) 
-        return Standard_True;
-      p = (DataMapNode *) p->Next();
-    }
-    return Standard_False;
+    DataMapNode* p;
+    return lookup(K, p);
   }
 
-  //! UnBind
+  //! UnBind removes Item Key pair from map
   Standard_Boolean UnBind(const TheKeyType& K)
   {
     if (IsEmpty()) 
@@ -269,67 +286,59 @@ template < class TheKeyType,
     return Standard_False;
   }
 
-  //! Find
-  const TheItemType& Find(const TheKeyType& theKey) const
+  //! Seek returns pointer to Item by Key. Returns
+  //! NULL is Key was not bound.
+  const TheItemType* Seek(const TheKeyType& theKey) const
   {
-#if !defined No_Exception && !defined No_Standard_NoSuchObject
-    if (IsEmpty())
-      Standard_NoSuchObject::Raise ("NCollection_DataMap::Find");
-#endif
-    DataMapNode* p = (DataMapNode*) myData1[Hasher::HashCode(theKey,NbBuckets())];
-    while (p) 
-    {
-      if (Hasher::IsEqual(p->Key(),theKey)) 
-        return p->Value();
-      p = (DataMapNode*) p->Next();
-    }
-    Standard_NoSuchObject::Raise("NCollection_DataMap::Find");
-    return p->Value(); // This for compiler
+    DataMapNode* p = 0;
+    if (!lookup(theKey, p))
+      return 0L;
+    return &p->Value();
   }
 
-  //! Find value for key with copying.
+  //! Find returns the Item for Key. Raises if Key was not bound
+  const TheItemType& Find(const TheKeyType& theKey) const
+  {
+    DataMapNode* p = 0;
+    if (!lookup(theKey, p))
+      Standard_NoSuchObject::Raise("NCollection_DataMap::Find");
+    return p->Value();
+  }
+
+  //! Find Item for key with copying.
   //! @return true if key was found
   Standard_Boolean Find (const TheKeyType& theKey,
                          TheItemType&      theValue) const
   {
-    if (IsEmpty())
-    {
+    DataMapNode* p = 0;
+    if (!lookup(theKey, p))
       return Standard_False;
-    }
 
-    for (DataMapNode* aNodeIter = (DataMapNode* )myData1[Hasher::HashCode (theKey, NbBuckets())];
-         aNodeIter != NULL;
-         aNodeIter = (DataMapNode* )aNodeIter->Next())
-    {
-      if (Hasher::IsEqual (aNodeIter->Key(), theKey))
-      {
-        theValue = aNodeIter->Value();
-        return Standard_True;
-      }
-    }
-    return Standard_False;
+    theValue = p->Value();
+    return Standard_True;
   }
 
   //! operator ()
   const TheItemType& operator() (const TheKeyType& theKey) const
   { return Find(theKey); }
 
-  //! ChangeFind
+  //! ChangeSeek returns modifiable pointer to Item by Key. Returns
+  //! NULL is Key was not bound.
+  TheItemType* ChangeSeek(const TheKeyType& theKey)
+  {
+    DataMapNode* p = 0;
+    if (!lookup(theKey, p))
+      return 0L;
+    return &p->ChangeValue();
+  }
+
+  //! ChangeFind returns mofifiable Item by Key. Raises if Key was not bound
   TheItemType& ChangeFind (const TheKeyType& theKey)
   {
-#if !defined No_Exception && !defined No_Standard_NoSuchObject
-    if (IsEmpty())
-      Standard_NoSuchObject::Raise ("NCollection_DataMap::Find");
-#endif
-    DataMapNode*  p = (DataMapNode*) myData1[Hasher::HashCode(theKey,NbBuckets())];
-    while (p) 
-    {
-      if (Hasher::IsEqual(p->Key(),theKey)) 
-        return p->ChangeValue();
-      p = (DataMapNode*) p->Next();
-    }
-    Standard_NoSuchObject::Raise("NCollection_DataMap::Find");
-    return p->ChangeValue(); // This for compiler
+    DataMapNode* p = 0;
+    if (!lookup(theKey, p))
+      Standard_NoSuchObject::Raise("NCollection_DataMap::Find");
+    return p->ChangeValue();
   }
 
   //! operator ()
@@ -339,7 +348,7 @@ template < class TheKeyType,
   //! Clear data. If doReleaseMemory is false then the table of
   //! buckets is not released and will be reused.
   void Clear(const Standard_Boolean doReleaseMemory = Standard_True)
-  { Destroy (DataMapNode::delNode, this->myAllocator, doReleaseMemory); }
+  { Destroy (DataMapNode::delNode, doReleaseMemory); }
 
   //! Clear data and reset allocator
   void Clear (const Handle(NCollection_BaseAllocator)& theAllocator)
@@ -354,16 +363,27 @@ template < class TheKeyType,
   { Clear(); }
 
   //! Size
-  virtual Standard_Integer Size(void) const
+  Standard_Integer Size(void) const
   { return Extent(); }
 
- private:
-  // ----------- PRIVATE METHODS -----------
-
-  //! Creates Iterator for use on BaseCollection
-  virtual TYPENAME NCollection_BaseCollection<TheItemType>::Iterator& 
-          CreateIterator(void) const
-  { return *(new (this->IterAllocator()) Iterator(*this)); }
+  
+ protected:
+  // ---------- PROTECTED METHODS ----------
+  //! Lookup for particular key in map. Returns true if key is found and
+  //! thepNode points to binded node. Returns false if key is not found,
+  //! thehNode value is this case is not usable.
+  Standard_Boolean lookup(const TheKeyType& theKey,DataMapNode*& thepNode) const
+  {
+    if (IsEmpty())
+      return Standard_False; // Not found
+    for (thepNode = (DataMapNode*)myData1[Hasher::HashCode(theKey, NbBuckets())];
+         thepNode; thepNode = (DataMapNode*)thepNode->Next())
+    {
+      if (Hasher::IsEqual(thepNode->Key(), theKey)) 
+        return Standard_True;
+    }
+    return Standard_False; // Not found
+  }
 
 };
 

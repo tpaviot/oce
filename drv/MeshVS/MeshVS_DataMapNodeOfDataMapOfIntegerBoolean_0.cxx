@@ -5,19 +5,11 @@
 
 #include <MeshVS_DataMapNodeOfDataMapOfIntegerBoolean.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _MeshVS_DataMapOfIntegerBoolean_HeaderFile
 #include <MeshVS_DataMapOfIntegerBoolean.hxx>
-#endif
-#ifndef _MeshVS_DataMapIteratorOfDataMapOfIntegerBoolean_HeaderFile
 #include <MeshVS_DataMapIteratorOfDataMapOfIntegerBoolean.hxx>
-#endif
 
  
 

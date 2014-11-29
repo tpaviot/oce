@@ -6,22 +6,15 @@
 #ifndef _Handle_BRepFill_DraftLaw_HeaderFile
 #define _Handle_BRepFill_DraftLaw_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_BRepFill_Edge3DLaw_HeaderFile
 #include <Handle_BRepFill_Edge3DLaw.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(BRepFill_Edge3DLaw);
 class BRepFill_DraftLaw;
 
-DEFINE_STANDARD_HANDLE(BRepFill_DraftLaw,BRepFill_Edge3DLaw)
+DEFINE_STANDARD_HANDLE(BRepFill_DraftLaw, BRepFill_Edge3DLaw)
 
-#endif
+#endif // _Handle_BRepFill_DraftLaw_HeaderFile

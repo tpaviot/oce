@@ -6,28 +6,22 @@
 #ifndef _StepGeom_BoundedSurface_HeaderFile
 #define _StepGeom_BoundedSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_BoundedSurface_HeaderFile
 #include <Handle_StepGeom_BoundedSurface.hxx>
-#endif
 
-#ifndef _StepGeom_Surface_HeaderFile
 #include <StepGeom_Surface.hxx>
-#endif
 
 
 
-class StepGeom_BoundedSurface : public StepGeom_Surface {
+class StepGeom_BoundedSurface : public StepGeom_Surface
+{
 
 public:
 
-  //! Returns a BoundedSurface <br>
-  Standard_EXPORT   StepGeom_BoundedSurface();
+  
+  //! Returns a BoundedSurface
+  Standard_EXPORT StepGeom_BoundedSurface();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_BoundedSurface_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_StepBasic_WeekOfYearAndDayDate_HeaderFile
 #define _Handle_StepBasic_WeekOfYearAndDayDate_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepBasic_Date_HeaderFile
 #include <Handle_StepBasic_Date.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepBasic_Date);
 class StepBasic_WeekOfYearAndDayDate;
 
-DEFINE_STANDARD_HANDLE(StepBasic_WeekOfYearAndDayDate,StepBasic_Date)
+DEFINE_STANDARD_HANDLE(StepBasic_WeekOfYearAndDayDate, StepBasic_Date)
 
-#endif
+#endif // _Handle_StepBasic_WeekOfYearAndDayDate_HeaderFile

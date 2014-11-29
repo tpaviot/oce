@@ -6,56 +6,47 @@
 #ifndef _HLRTest_ShapeData_HeaderFile
 #define _HLRTest_ShapeData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_HLRTest_ShapeData_HeaderFile
 #include <Handle_HLRTest_ShapeData.hxx>
-#endif
 
-#ifndef _Draw_Color_HeaderFile
 #include <Draw_Color.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class Draw_Color;
 
 
-//! Contains the colors of a shape. <br>
-class HLRTest_ShapeData : public MMgt_TShared {
+//! Contains the colors of a shape.
+class HLRTest_ShapeData : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   HLRTest_ShapeData(const Draw_Color& CVis,const Draw_Color& COVis,const Draw_Color& CIVis,const Draw_Color& CHid,const Draw_Color& COHid,const Draw_Color& CIHid);
+  Standard_EXPORT HLRTest_ShapeData(const Draw_Color& CVis, const Draw_Color& COVis, const Draw_Color& CIVis, const Draw_Color& CHid, const Draw_Color& COHid, const Draw_Color& CIHid);
   
-        void VisibleColor(const Draw_Color& CVis) ;
+      void VisibleColor (const Draw_Color& CVis) ;
   
-        void VisibleOutLineColor(const Draw_Color& COVis) ;
+      void VisibleOutLineColor (const Draw_Color& COVis) ;
   
-        void VisibleIsoColor(const Draw_Color& CIVis) ;
+      void VisibleIsoColor (const Draw_Color& CIVis) ;
   
-        void HiddenColor(const Draw_Color& CHid) ;
+      void HiddenColor (const Draw_Color& CHid) ;
   
-        void HiddenOutLineColor(const Draw_Color& COHid) ;
+      void HiddenOutLineColor (const Draw_Color& COHid) ;
   
-        void HiddenIsoColor(const Draw_Color& CIHid) ;
+      void HiddenIsoColor (const Draw_Color& CIHid) ;
   
-        Draw_Color VisibleColor() const;
+      Draw_Color VisibleColor()  const;
   
-        Draw_Color VisibleOutLineColor() const;
+      Draw_Color VisibleOutLineColor()  const;
   
-        Draw_Color VisibleIsoColor() const;
+      Draw_Color VisibleIsoColor()  const;
   
-        Draw_Color HiddenColor() const;
+      Draw_Color HiddenColor()  const;
   
-        Draw_Color HiddenOutLineColor() const;
+      Draw_Color HiddenOutLineColor()  const;
   
-        Draw_Color HiddenIsoColor() const;
+      Draw_Color HiddenIsoColor()  const;
 
 
 
@@ -70,12 +61,12 @@ protected:
 private: 
 
 
-Draw_Color myVColor;
-Draw_Color myVOColor;
-Draw_Color myVIColor;
-Draw_Color myHColor;
-Draw_Color myHOColor;
-Draw_Color myHIColor;
+  Draw_Color myVColor;
+  Draw_Color myVOColor;
+  Draw_Color myVIColor;
+  Draw_Color myHColor;
+  Draw_Color myHOColor;
+  Draw_Color myHIColor;
 
 
 };
@@ -85,7 +76,6 @@ Draw_Color myHIColor;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRTest_ShapeData_HeaderFile

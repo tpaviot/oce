@@ -1,18 +1,6 @@
-#ifndef _IGESSelect_ViewSorter_HeaderFile
 #include <IGESSelect_ViewSorter.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Interface_Graph_HeaderFile
 #include <Interface_Graph.hxx>
-#endif
-#ifndef _IFGraph_SubPartsIterator_HeaderFile
 #include <IFGraph_SubPartsIterator.hxx>
-#endif
-#ifndef _Interface_EntityIterator_HeaderFile
 #include <Interface_EntityIterator.hxx>
-#endif
-#ifndef _IGESSelect_DispPerSingleView_HeaderFile
 #include <IGESSelect_DispPerSingleView.hxx>
-#endif

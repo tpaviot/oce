@@ -1,30 +1,9 @@
-#ifndef _TColgp_HArray1OfPnt_HeaderFile
-#include <TColgp_HArray1OfPnt.hxx>
-#endif
-#ifndef _TColgp_HArray2OfPnt_HeaderFile
 #include <TColgp_HArray2OfPnt.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_TypeMismatch_HeaderFile
 #include <Standard_TypeMismatch.hxx>
-#endif
-#ifndef _Adaptor3d_Curve_HeaderFile
 #include <Adaptor3d_Curve.hxx>
-#endif
-#ifndef _Adaptor3d_Surface_HeaderFile
 #include <Adaptor3d_Surface.hxx>
-#endif
-#ifndef _Extrema_POnCurv_HeaderFile
 #include <Extrema_POnCurv.hxx>
-#endif
-#ifndef _Extrema_POnSurf_HeaderFile
 #include <Extrema_POnSurf.hxx>
-#endif
-#ifndef _Extrema_GenExtCS_HeaderFile
 #include <Extrema_GenExtCS.hxx>
-#endif

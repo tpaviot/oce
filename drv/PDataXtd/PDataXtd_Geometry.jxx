@@ -1,3 +1,1 @@
-#ifndef _PDataXtd_Geometry_HeaderFile
 #include <PDataXtd_Geometry.hxx>
-#endif

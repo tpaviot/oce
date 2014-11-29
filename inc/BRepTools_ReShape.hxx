@@ -6,113 +6,109 @@
 #ifndef _BRepTools_ReShape_HeaderFile
 #define _BRepTools_ReShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepTools_ReShape_HeaderFile
 #include <Handle_BRepTools_ReShape.hxx>
-#endif
 
-#ifndef _TopTools_DataMapOfShapeShape_HeaderFile
 #include <TopTools_DataMapOfShapeShape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
 class TopoDS_Shape;
 
 
-//! Rebuilds a Shape by making pre-defined substitutions on some <br>
-//!          of its components <br>
-//! <br>
-//!          In a first phase, it records requests to replace or remove <br>
-//!          some individual shapes <br>
-//!          For each shape, the last given request is recorded <br>
-//!          Requests may be applied "Oriented" (i.e. only to an item with <br>
-//!          the SAME orientation) or not (the orientation of replacing <br>
-//!          shape is respectful of that of the original one) <br>
-//! <br>
-//!          Then, these requests may be applied to any shape which may <br>
-//!          contain one or more of these individual shapes <br>
-class BRepTools_ReShape : public MMgt_TShared {
+//! Rebuilds a Shape by making pre-defined substitutions on some
+//! of its components
+//!
+//! In a first phase, it records requests to replace or remove
+//! some individual shapes
+//! For each shape, the last given request is recorded
+//! Requests may be applied "Oriented" (i.e. only to an item with
+//! the SAME orientation) or not (the orientation of replacing
+//! shape is respectful of that of the original one)
+//!
+//! Then, these requests may be applied to any shape which may
+//! contain one or more of these individual shapes
+class BRepTools_ReShape : public MMgt_TShared
+{
 
 public:
 
-  //! Returns an empty Reshape <br>
-  Standard_EXPORT   BRepTools_ReShape();
-  //! Clears all substitutions requests <br>
-  Standard_EXPORT     void Clear() ;
-  //! Sets a request to Remove a Shape <br>
-//!          If <oriented> is True, only for a shape with the SAME <br>
-//!          orientation. Else, whatever the orientation <br>
-  Standard_EXPORT     void Remove(const TopoDS_Shape& shape,const Standard_Boolean oriented = Standard_False) ;
-  //! Sets a request to Replace a Shape by a new one <br>
-//!          If <oriented> is True, only if the orientation is the same <br>
-//!          Else, whatever the orientation, and the new shape takes the <br>
-//!          same orientation as <newshape> if the replaced one has the <br>
-//!          same as <shape>, else it is reversed <br>
-  Standard_EXPORT     void Replace(const TopoDS_Shape& shape,const TopoDS_Shape& newshape,const Standard_Boolean oriented = Standard_False) ;
-  //! Tells if a shape is recorded for Replace/Remove <br>
-  Standard_EXPORT     Standard_Boolean IsRecorded(const TopoDS_Shape& shape) const;
-  //! Returns the new value for an individual shape <br>
-//!          If not recorded, returns the original shape itself <br>
-//!          If to be Removed, returns a Null Shape <br>
-//!          Else, returns the replacing item <br>
-  Standard_EXPORT     TopoDS_Shape Value(const TopoDS_Shape& shape) const;
-  //! Returns a complete substitution status for a shape <br>
-//!          0  : not recorded,   <newsh> = original <shape> <br>
-//!          < 0: to be removed,  <newsh> is NULL <br>
-//!          > 0: to be replaced, <newsh> is a new item <br>
-//!          If <last> is False, returns status and new shape recorded in <br>
-//!          the map directly for the shape, if True and status > 0 then <br>
-//!          recursively searches for the last status and new shape. <br>
-  Standard_EXPORT   virtual  Standard_Integer Status(const TopoDS_Shape& shape,TopoDS_Shape& newsh,const Standard_Boolean last = Standard_False) ;
-  //! Applies the substitutions requests to a shape <br>
-//! <br>
-//!          <until> gives the level of type until which requests are taken <br>
-//!          into account. For subshapes of the type <until> no rebuild <br>
-//!          and futher exploring are done. <br>
-//!          ACTUALLY, NOT IMPLEMENTED BELOW  TopAbs_FACE <br>
-//! <br>
-//!          <buildmode> says how to do on a SOLID,SHELL ... if one of its <br>
-//!          sub-shapes has been changed: <br>
-//!          0: at least one Replace or Remove -> COMPOUND, else as such <br>
-//!          1: at least one Remove (Replace are ignored) -> COMPOUND <br>
-//!          2: Replace and Remove are both ignored <br>
-//!          If Replace/Remove are ignored or absent, the result as same <br>
-//!          type as the starting shape <br>
-  Standard_EXPORT   virtual  TopoDS_Shape Apply(const TopoDS_Shape& shape,const TopAbs_ShapeEnum until,const Standard_Integer buildmode) ;
-  //! Applies the substitutions requests to a shape. <br>
-//! <br>
-//!          <until> gives the level of type until which requests are taken <br>
-//!          into account. For subshapes of the type <until> no rebuild <br>
-//!          and futher exploring are done. <br>
-//! <br>
-//!          NOTE: each subshape can be replaced by shape of the same type <br>
-//!          or by shape containing only shapes of that type (for <br>
-//!          example, TopoDS_Edge can be replaced by TopoDS_Edge, <br>
-//!          TopoDS_Wire or TopoDS_Compound containing TopoDS_Edges). <br>
-//!          If incompatible shape type is encountered, it is ignored <br>
-//!          and flag FAIL1 is set in Status. <br>
-  Standard_EXPORT   virtual  TopoDS_Shape Apply(const TopoDS_Shape& shape,const TopAbs_ShapeEnum until = TopAbs_SHAPE) ;
-  //!Returns (modifiable) the flag which defines whether Location of shape take into account <br>
-//!         during replacing shapes. <br>
-  Standard_EXPORT     Standard_Boolean& ModeConsiderLocation() ;
-  //!Returns (modifiable) the flag which defines whether Orientation of shape take into account <br>
-//!         during replacing shapes. <br>
-  Standard_EXPORT     Standard_Boolean& ModeConsiderOrientation() ;
+  
+  //! Returns an empty Reshape
+  Standard_EXPORT BRepTools_ReShape();
+  
+  //! Clears all substitutions requests
+  Standard_EXPORT   void Clear() ;
+  
+  //! Sets a request to Remove a Shape
+  //! If <oriented> is True, only for a shape with the SAME
+  //! orientation. Else, whatever the orientation
+  Standard_EXPORT   void Remove (const TopoDS_Shape& shape, const Standard_Boolean oriented = Standard_False) ;
+  
+  //! Sets a request to Replace a Shape by a new one
+  //! If <oriented> is True, only if the orientation is the same
+  //! Else, whatever the orientation, and the new shape takes the
+  //! same orientation as <newshape> if the replaced one has the
+  //! same as <shape>, else it is reversed
+  Standard_EXPORT   void Replace (const TopoDS_Shape& shape, const TopoDS_Shape& newshape, const Standard_Boolean oriented = Standard_False) ;
+  
+  //! Tells if a shape is recorded for Replace/Remove
+  Standard_EXPORT   Standard_Boolean IsRecorded (const TopoDS_Shape& shape)  const;
+  
+  //! Returns the new value for an individual shape
+  //! If not recorded, returns the original shape itself
+  //! If to be Removed, returns a Null Shape
+  //! Else, returns the replacing item
+  Standard_EXPORT   TopoDS_Shape Value (const TopoDS_Shape& shape)  const;
+  
+  //! Returns a complete substitution status for a shape
+  //! 0  : not recorded,   <newsh> = original <shape>
+  //! < 0: to be removed,  <newsh> is NULL
+  //! > 0: to be replaced, <newsh> is a new item
+  //! If <last> is False, returns status and new shape recorded in
+  //! the map directly for the shape, if True and status > 0 then
+  //! recursively searches for the last status and new shape.
+  Standard_EXPORT virtual   Standard_Integer Status (const TopoDS_Shape& shape, TopoDS_Shape& newsh, const Standard_Boolean last = Standard_False) ;
+  
+  //! Applies the substitutions requests to a shape
+  //!
+  //! <until> gives the level of type until which requests are taken
+  //! into account. For subshapes of the type <until> no rebuild
+  //! and futher exploring are done.
+  //! ACTUALLY, NOT IMPLEMENTED BELOW  TopAbs_FACE
+  //!
+  //! <buildmode> says how to do on a SOLID,SHELL ... if one of its
+  //! sub-shapes has been changed:
+  //! 0: at least one Replace or Remove -> COMPOUND, else as such
+  //! 1: at least one Remove (Replace are ignored) -> COMPOUND
+  //! 2: Replace and Remove are both ignored
+  //! If Replace/Remove are ignored or absent, the result as same
+  //! type as the starting shape
+  Standard_EXPORT virtual   TopoDS_Shape Apply (const TopoDS_Shape& shape, const TopAbs_ShapeEnum until, const Standard_Integer buildmode) ;
+  
+  //! Applies the substitutions requests to a shape.
+  //!
+  //! <until> gives the level of type until which requests are taken
+  //! into account. For subshapes of the type <until> no rebuild
+  //! and futher exploring are done.
+  //!
+  //! NOTE: each subshape can be replaced by shape of the same type
+  //! or by shape containing only shapes of that type (for
+  //! example, TopoDS_Edge can be replaced by TopoDS_Edge,
+  //! TopoDS_Wire or TopoDS_Compound containing TopoDS_Edges).
+  //! If incompatible shape type is encountered, it is ignored
+  //! and flag FAIL1 is set in Status.
+  Standard_EXPORT virtual   TopoDS_Shape Apply (const TopoDS_Shape& shape, const TopAbs_ShapeEnum until = TopAbs_SHAPE) ;
+  
+  //! Returns (modifiable) the flag which defines whether Location of shape take into account
+  //! during replacing shapes.
+  Standard_EXPORT   Standard_Boolean& ModeConsiderLocation() ;
+  
+  //! Returns (modifiable) the flag which defines whether Orientation of shape take into account
+  //! during replacing shapes.
+  Standard_EXPORT   Standard_Boolean& ModeConsiderOrientation() ;
 
 
 
@@ -122,16 +118,16 @@ public:
 protected:
 
 
-TopTools_DataMapOfShapeShape myNMap;
-TopTools_DataMapOfShapeShape myRMap;
-Standard_Integer myStatus;
+  TopTools_DataMapOfShapeShape myNMap;
+  TopTools_DataMapOfShapeShape myRMap;
+  Standard_Integer myStatus;
 
 
 private: 
 
 
-Standard_Boolean myConsiderLocation;
-Standard_Boolean myConsiderOrientation;
+  Standard_Boolean myConsiderLocation;
+  Standard_Boolean myConsiderOrientation;
 
 
 };
@@ -140,7 +136,6 @@ Standard_Boolean myConsiderOrientation;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepTools_ReShape_HeaderFile

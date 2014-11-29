@@ -5,16 +5,10 @@
 
 #include <IntTools_SequenceNodeOfSequenceOfPntOn2Faces.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IntTools_PntOn2Faces_HeaderFile
 #include <IntTools_PntOn2Faces.hxx>
-#endif
-#ifndef _IntTools_SequenceOfPntOn2Faces_HeaderFile
 #include <IntTools_SequenceOfPntOn2Faces.hxx>
-#endif
 
  
 

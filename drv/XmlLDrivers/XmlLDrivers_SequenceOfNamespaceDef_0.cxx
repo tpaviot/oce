@@ -5,18 +5,10 @@
 
 #include <XmlLDrivers_SequenceOfNamespaceDef.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _XmlLDrivers_NamespaceDef_HeaderFile
 #include <XmlLDrivers_NamespaceDef.hxx>
-#endif
-#ifndef _XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef_HeaderFile
 #include <XmlLDrivers_SequenceNodeOfSequenceOfNamespaceDef.hxx>
-#endif
  
 
 #define SeqItem XmlLDrivers_NamespaceDef

@@ -282,7 +282,9 @@ static Standard_Integer intersect(Draw_Interpretor& di, Standard_Integer n, cons
 {
   if( n < 2) 
   {
+#ifdef OCCT_DEBUG
     cout<< "2dintersect curve curve [Tol]"<<endl;
+#endif
     return 1;
   }
   Standard_Integer k = 1;

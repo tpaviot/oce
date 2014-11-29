@@ -1,3 +1,1 @@
-#ifndef _PGeom_Point_HeaderFile
 #include <PGeom_Point.hxx>
-#endif

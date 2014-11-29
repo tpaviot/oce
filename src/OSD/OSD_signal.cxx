@@ -13,13 +13,9 @@
 
 #include <OSD.ixx>
 
-#ifndef WNT
+#ifndef _WIN32
 
 //---------- All Systems except Windows NT : ----------------------------------
-
-#ifdef HAVE_CONFIG_H
-# include <oce-config.h>
-#endif
 
 # include <stdio.h>
 
@@ -34,27 +30,16 @@
 #include <OSD_SIGSYS.hxx>
 #include <OSD_Exception_CTRL_BREAK.hxx>
 #include <Standard_NumericError.hxx>
-#include <Standard_NullObject.hxx>
 #include <Standard_DivideByZero.hxx>
 #include <Standard_Overflow.hxx>
 
 #include <Standard_ErrorHandler.hxx>
 
 // POSIX threads
-#ifdef HAVE_PTHREAD_H
- #include <pthread.h>
-#endif
-
-#ifdef HAVE_PTHREAD_H
-static pthread_t getOCCThread () {
-  static pthread_t TheOCCThread = 0;
-  return TheOCCThread ;
-}
-#endif
+#include <pthread.h>
 
 #ifdef linux
 #include <fenv.h>
-#include <fpu_control.h>
 static Standard_Boolean fFltExceptions = Standard_False;
 #endif
 
@@ -66,37 +51,9 @@ static Standard_Boolean fCtrlBrk;
 typedef void (ACT_SIGIO_HANDLER)(void) ;
 ACT_SIGIO_HANDLER *ADR_ACT_SIGIO_HANDLER = NULL ;
 
-#if defined(HAVE_FLOATINGPOINT_H) && defined(HAVE_SYS_MACHSIG_H)
-# include <floatingpoint.h>
-# include <sys/machsig.h>
-// JPT : Difference between SUN/SUNOS and SUN/SOLARIS 
-# define FPE_FLTDIV_TRAP FPE_FLTDIV 
-# define FPE_INTDIV_TRAP FPE_INTDIV 
-# define FPE_FLTOVF_TRAP FPE_FLTOVF 
-# define FPE_INTOVF_TRAP FPE_INTOVF
-# define FPE_FLTUND_TRAP FPE_FLTUND 
-
-#define	FPE_FLTRES_TRAP FPE_FLTRES	/* floating point inexact result */
-#define	FPE_FLTINV_TRAP FPE_FLTINV	/* invalid floating point operation */
-#define	FPE_FLTSUB_TRAP FPE_FLTSUB	/* subscript out of range */
-
-extern "C" {int ieee_handler(char *,char *, sigfpe_handler_type&);}
-# include <stdlib.h>
-#endif
-
 #ifdef DECOSF1
 typedef void (* SIG_PFV) (int);
 #endif
-
-#if defined(HAVE_SIGFPE_H) && defined(HAVE_SYS_SIGINFO_H)
-# include <sigfpe.h>
-# include <sys/siginfo.h>
-# define FPE_FLTDIV_TRAP FPE_FLTDIV 
-# define FPE_INTDIV_TRAP FPE_INTDIV 
-# define FPE_FLTOVF_TRAP FPE_FLTOVF 
-# define FPE_INTOVF_TRAP FPE_INTOVF
-# define FPE_FLTUND_TRAP FPE_FLTUND 
-#endif 
 
 #ifdef __GNUC__
 # include <stdlib.h>
@@ -110,15 +67,13 @@ typedef void (* SIG_PFV) (int);
 #endif
 typedef void (* SIG_PFV) (int);
 
-#ifdef HAVE_SIGNAL_H
-# include <signal.h>
+#include <signal.h>
+
+#if !defined(__ANDROID__)
+  #include <sys/signal.h>
 #endif
 
-#ifdef HAVE_SYS_SIGNAL_H
-# include <sys/signal.h>
-#endif
-
-#if defined(HAVE_PTHREAD_H) && defined(NO_CXX_EXCEPTION) 
+#if defined(HAVE_PTHREAD_H) && defined(NO_CXX_EXCEPTION)
 //============================================================================
 //====  GetOldSigAction
 //====     get previous 
@@ -232,7 +187,9 @@ static void Handler (const int theSignal)
       if (aCurInfoHandle) {
         // cout << "OSD::Handler: calling previous signal handler with info " << aCurInfoHandle <<  endl ;
         (*aCurInfoHandle) (theSignal, aSigInfo, theContext);
+#ifdef OCCT_DEBUG
         cerr << " previous signal handler return" <<  endl ;
+#endif
         return;
       }
       else {
@@ -245,7 +202,9 @@ static void Handler (const int theSignal)
       if(aCurHandler) {
         // cout << "OSD::Handler: calling previous signal handler" <<  endl ;
         (*aCurHandler) (theSignal);
+#ifdef OCCT_DEBUG
         cerr << " previous signal handler return" <<  endl ;
+#endif
         return;
       }
     }
@@ -309,10 +268,7 @@ static void Handler (const int theSignal)
     sigprocmask(SIG_UNBLOCK, &set, NULL) ;
 #ifdef DECOSF1
     // Pour DEC/OSF1 SIGFPE = Division par zero.
-    // should be clarified why in debug mode only?
-#ifdef DEBUG
     Standard_DivideByZero::NewInstance('')->Jump;
-#endif
     break;
 #endif
 #if (!defined (__sun)) && (!defined(SOLARIS))
@@ -359,7 +315,9 @@ static void Handler (const int theSignal)
     Standard_DivideByZero::NewInstance("SIGTRAP IntegerDivideByZero")->Jump(); break;
 #endif
   default:
+#ifdef OCCT_DEBUG
     cout << "Unexpected signal " << theSignal << endl ;
+#endif
     break;
   }
 }
@@ -391,19 +349,18 @@ static void SegvHandler(const int theSignal,
      sigaddset(&set, SIGSEGV);
      sigprocmask (SIG_UNBLOCK, &set, NULL) ;
      void *address = ip->si_addr ;
-     if ( (((long) address )& ~0xffff) == (long) UndefinedHandleAddress ) {
-       Standard_NullObject::NewInstance("Attempt to access to null object")->Jump();
-     }
-     else {
+     {
        char Msg[100];
        sprintf(Msg,"SIGSEGV 'segmentation violation' detected. Address %lx",
          (long ) address ) ;
        OSD_SIGSEGV::NewInstance(Msg)->Jump();
      }
   }
+#ifdef OCCT_DEBUG
   else {
     cout << "Wrong undefined address." << endl ;
   }
+#endif
   exit(SIGSEGV);
 }
 
@@ -432,7 +389,9 @@ void OSD::SetSignal(const Standard_Boolean aFloatingSignal)
     //stat = ieee_handler("set", "inexact", PHandler) || stat;
 
     if (stat) {
+#ifdef OCCT_DEBUG
       cerr << "ieee_handler does not work !!! KO " << endl;
+#endif
     }
 #elif defined (linux)
     feenableexcept (FE_INVALID | FE_DIVBYZERO | FE_OVERFLOW);
@@ -449,9 +408,11 @@ void OSD::SetSignal(const Standard_Boolean aFloatingSignal)
  if ( first_time & 2 ) {
    char *TRAP_FPE = getenv("TRAP_FPE") ;
    if ( TRAP_FPE == NULL ) {
+#ifdef OCCT_DEBUG
      cout << "On SGI you must set TRAP_FPE environment variable : " << endl ;
      cout << "set env(TRAP_FPE) \"UNDERFL=FLUSH_ZERO;OVERFL=DEFAULT;DIVZERO=DEFAULT;INT_OVERFL=DEFAULT\" or" << endl ;
      cout << "setenv TRAP_FPE \"UNDERFL=FLUSH_ZERO;OVERFL=DEFAULT;DIVZERO=DEFAULT;INT_OVERFL=DEFAULT\"" << endl ;
+#endif
 //     exit(1) ;
      first_time = first_time & (~ 2) ;
    }
@@ -477,7 +438,9 @@ void OSD::SetSignal(const Standard_Boolean aFloatingSignal)
   //==== Always detected the signal "SIGFPE" =================================
   stat = sigaction(SIGFPE,&act,&oact);   // ...... floating point exception 
   if (stat) {
+#ifdef OCCT_DEBUG
      cerr << "sigaction does not work !!! KO " << endl;
+#endif
      perror("sigaction ");
   }
 

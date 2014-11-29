@@ -6,45 +6,33 @@
 #ifndef _PDataStd_VArrayTNodeOfFieldOfHArray1OfHAsciiString_HeaderFile
 #define _PDataStd_VArrayTNodeOfFieldOfHArray1OfHAsciiString_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_PCollection_HAsciiString_HeaderFile
 #include <Handle_PCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString_HeaderFile
 #include <Handle_PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class PCollection_HAsciiString;
 class PDataStd_FieldOfHArray1OfHAsciiString;
 class PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString;
 
 
 
-class PDataStd_VArrayTNodeOfFieldOfHArray1OfHAsciiString  {
+class PDataStd_VArrayTNodeOfFieldOfHArray1OfHAsciiString 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      PDataStd_VArrayTNodeOfFieldOfHArray1OfHAsciiString();
+    PDataStd_VArrayTNodeOfFieldOfHArray1OfHAsciiString();
   
-      PDataStd_VArrayTNodeOfFieldOfHArray1OfHAsciiString(const Handle(PCollection_HAsciiString)& aValue);
+    PDataStd_VArrayTNodeOfFieldOfHArray1OfHAsciiString(const Handle(PCollection_HAsciiString)& aValue);
   
-        void SetValue(const Handle(PCollection_HAsciiString)& aValue) ;
+      void SetValue (const Handle(PCollection_HAsciiString)& aValue) ;
   
-        Standard_Address Value() const;
-
+      Standard_Address Value()  const;
 
 
 
@@ -59,12 +47,12 @@ private:
 
 
 
-Handle_PCollection_HAsciiString myValue;
+  Handle(PCollection_HAsciiString) myValue;
 
 
 };
 
-#define Item Handle_PCollection_HAsciiString
+#define Item Handle(PCollection_HAsciiString)
 #define Item_hxx <PCollection_HAsciiString.hxx>
 #define DBC_VArrayNode PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString
 #define DBC_VArrayNode_hxx <PDataStd_VArrayNodeOfFieldOfHArray1OfHAsciiString.hxx>
@@ -89,7 +77,6 @@ Handle_PCollection_HAsciiString myValue;
 #undef DBC_VArray_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PDataStd_VArrayTNodeOfFieldOfHArray1OfHAsciiString_HeaderFile

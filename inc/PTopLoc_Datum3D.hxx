@@ -6,42 +6,33 @@
 #ifndef _PTopLoc_Datum3D_HeaderFile
 #define _PTopLoc_Datum3D_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PTopLoc_Datum3D_HeaderFile
 #include <Handle_PTopLoc_Datum3D.hxx>
-#endif
 
-#ifndef _gp_Trsf_HeaderFile
 #include <gp_Trsf.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
 class Standard_ConstructionError;
 class gp_Trsf;
 
 
-class PTopLoc_Datum3D : public Standard_Persistent {
+class PTopLoc_Datum3D : public Standard_Persistent
+{
 
 public:
 
-  //! Creates a   local coordinate  system    with   the <br>
-//!          transformation.  An   error   is raised  if    the <br>
-//!          transformation is not rigid. <br>
-  Standard_EXPORT   PTopLoc_Datum3D(const gp_Trsf& T);
-  //! Returns the transformation defining the coordinate <br>
-//!          system. <br>
-  Standard_EXPORT     gp_Trsf Transformation() const;
+  
+  //! Creates a   local coordinate  system    with   the
+  //! transformation.  An   error   is raised  if    the
+  //! transformation is not rigid.
+  Standard_EXPORT PTopLoc_Datum3D(const gp_Trsf& T);
+  
+  //! Returns the transformation defining the coordinate
+  //! system.
+  Standard_EXPORT   gp_Trsf Transformation()  const;
 
-  PTopLoc_Datum3D( )
+PTopLoc_Datum3D( )
 {
   
 }
@@ -63,7 +54,7 @@ protected:
 private: 
 
 
-gp_Trsf myTrsf;
+  gp_Trsf myTrsf;
 
 
 };
@@ -72,7 +63,6 @@ gp_Trsf myTrsf;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PTopLoc_Datum3D_HeaderFile

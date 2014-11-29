@@ -1,18 +1,6 @@
-#ifndef _TopOpeBRepDS_Point_HeaderFile
 #include <TopOpeBRepDS_Point.hxx>
-#endif
-#ifndef _TopOpeBRep_VPointInter_HeaderFile
 #include <TopOpeBRep_VPointInter.hxx>
-#endif
-#ifndef _TopOpeBRep_Point2d_HeaderFile
 #include <TopOpeBRep_Point2d.hxx>
-#endif
-#ifndef _TopOpeBRep_FaceEdgeIntersector_HeaderFile
 #include <TopOpeBRep_FaceEdgeIntersector.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopOpeBRep_PointGeomTool_HeaderFile
 #include <TopOpeBRep_PointGeomTool.hxx>
-#endif

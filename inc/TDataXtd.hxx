@@ -6,25 +6,13 @@
 #ifndef _TDataXtd_HeaderFile
 #define _TDataXtd_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
-#ifndef _TDataXtd_GeometryEnum_HeaderFile
 #include <TDataXtd_GeometryEnum.hxx>
-#endif
-#ifndef _TDataXtd_ConstraintEnum_HeaderFile
 #include <TDataXtd_ConstraintEnum.hxx>
-#endif
 class TDF_IDList;
 class TDataXtd_Position;
 class TDataXtd_Constraint;
@@ -40,25 +28,29 @@ class TDataXtd_Array1OfTrsf;
 class TDataXtd_HArray1OfTrsf;
 
 
-//! This  package  defines  extension of standard attributes for <br>
-//!          modelling  (mainly for work with geometry). <br>
-class TDataXtd  {
+//! This  package  defines  extension of standard attributes for
+//! modelling  (mainly for work with geometry).
+class TDataXtd 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Appends to <anIDList> the list of the attributes <br>
-//!          IDs of this package. CAUTION: <anIDList> is NOT <br>
-//!          cleared before use. <br>//! Print of TDataExt enumeration <br>
-//!          ============================= <br>
-  Standard_EXPORT   static  void IDList(TDF_IDList& anIDList) ;
-  //! Prints the name of the geometry dimension <GEO> as a String on <br>
-//!          the Stream <S> and returns <S>. <br>
-  Standard_EXPORT   static  Standard_OStream& Print(const TDataXtd_GeometryEnum GEO,Standard_OStream& S) ;
-  //! Prints the name of the constraint <CTR> as a String on <br>
-//!          the Stream <S> and returns <S>. <br>
-  Standard_EXPORT   static  Standard_OStream& Print(const TDataXtd_ConstraintEnum CTR,Standard_OStream& S) ;
-
+  
+  //! Appends to <anIDList> the list of the attributes
+  //! IDs of this package. CAUTION: <anIDList> is NOT
+  //! cleared before use.
+  //! Print of TDataExt enumeration
+  //! =============================
+  Standard_EXPORT static   void IDList (TDF_IDList& anIDList) ;
+  
+  //! Prints the name of the geometry dimension <GEO> as a String on
+  //! the Stream <S> and returns <S>.
+  Standard_EXPORT static   Standard_OStream& Print (const TDataXtd_GeometryEnum GEO, Standard_OStream& S) ;
+  
+  //! Prints the name of the constraint <CTR> as a String on
+  //! the Stream <S> and returns <S>.
+  Standard_EXPORT static   Standard_OStream& Print (const TDataXtd_ConstraintEnum CTR, Standard_OStream& S) ;
 
 
 
@@ -93,7 +85,6 @@ friend class TDataXtd_HArray1OfTrsf;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataXtd_HeaderFile

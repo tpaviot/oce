@@ -6,16 +6,15 @@
 #ifndef _IFSelect_RemainMode_HeaderFile
 #define _IFSelect_RemainMode_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum IFSelect_RemainMode {
+
+enum IFSelect_RemainMode
+{
 IFSelect_RemainForget,
 IFSelect_RemainCompute,
 IFSelect_RemainDisplay,
 IFSelect_RemainUndo
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _IFSelect_RemainMode_HeaderFile

@@ -1,6 +1,2 @@
-#ifndef _IntTools_CurveRangeSample_HeaderFile
 #include <IntTools_CurveRangeSample.hxx>
-#endif
-#ifndef _IntTools_CurveRangeSampleMapHasher_HeaderFile
 #include <IntTools_CurveRangeSampleMapHasher.hxx>
-#endif

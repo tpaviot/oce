@@ -6,28 +6,14 @@
 #ifndef _AIS_DataMapIteratorOfDataMapOfSelStat_HeaderFile
 #define _AIS_DataMapIteratorOfDataMapOfSelStat_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_SelectMgr_SelectableObject_HeaderFile
 #include <Handle_SelectMgr_SelectableObject.hxx>
-#endif
-#ifndef _Handle_AIS_LocalStatus_HeaderFile
 #include <Handle_AIS_LocalStatus.hxx>
-#endif
-#ifndef _Handle_AIS_DataMapNodeOfDataMapOfSelStat_HeaderFile
 #include <Handle_AIS_DataMapNodeOfDataMapOfSelStat.hxx>
-#endif
 class Standard_NoSuchObject;
 class SelectMgr_SelectableObject;
 class AIS_LocalStatus;
@@ -37,22 +23,22 @@ class AIS_DataMapNodeOfDataMapOfSelStat;
 
 
 
-class AIS_DataMapIteratorOfDataMapOfSelStat  : public TCollection_BasicMapIterator {
+class AIS_DataMapIteratorOfDataMapOfSelStat  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   AIS_DataMapIteratorOfDataMapOfSelStat();
+  Standard_EXPORT AIS_DataMapIteratorOfDataMapOfSelStat();
   
-  Standard_EXPORT   AIS_DataMapIteratorOfDataMapOfSelStat(const AIS_DataMapOfSelStat& aMap);
+  Standard_EXPORT AIS_DataMapIteratorOfDataMapOfSelStat(const AIS_DataMapOfSelStat& aMap);
   
-  Standard_EXPORT     void Initialize(const AIS_DataMapOfSelStat& aMap) ;
+  Standard_EXPORT   void Initialize (const AIS_DataMapOfSelStat& aMap) ;
   
-  Standard_EXPORT    const Handle_SelectMgr_SelectableObject& Key() const;
+  Standard_EXPORT  const  Handle(SelectMgr_SelectableObject)& Key()  const;
   
-  Standard_EXPORT    const Handle_AIS_LocalStatus& Value() const;
-
+  Standard_EXPORT  const  Handle(AIS_LocalStatus)& Value()  const;
 
 
 
@@ -75,7 +61,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_DataMapIteratorOfDataMapOfSelStat_HeaderFile

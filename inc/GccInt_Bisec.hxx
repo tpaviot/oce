@@ -6,22 +6,12 @@
 #ifndef _GccInt_Bisec_HeaderFile
 #define _GccInt_Bisec_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_GccInt_Bisec_HeaderFile
 #include <Handle_GccInt_Bisec.hxx>
-#endif
 
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _GccInt_IType_HeaderFile
 #include <GccInt_IType.hxx>
-#endif
 class Standard_DomainError;
 class gp_Pnt2d;
 class gp_Lin2d;
@@ -31,45 +21,58 @@ class gp_Parab2d;
 class gp_Elips2d;
 
 
-//! The deferred class GccInt_Bisec is the root class for <br>
-//! elementary bisecting loci between two simple geometric <br>
-//! objects (i.e. circles, lines or points). <br>
-//! Bisecting loci between two geometric objects are such <br>
-//! that each of their points is at the same distance from the <br>
-//! two geometric objects. It is typically a curve, such as a <br>
-//! line, circle or conic. <br>
-//! Generally there is more than one elementary object <br>
-//! which is the solution to a bisecting loci problem: each <br>
-//! solution is described with one elementary bisecting <br>
-//! locus. For example, the bisectors of two secant straight <br>
-//! lines are two perpendicular straight lines. <br>
-//! The GccInt package provides concrete implementations <br>
-//! of the following elementary derived bisecting loci: <br>
-//! -   lines, circles, ellipses, hyperbolas and parabolas, and <br>
-//! -   points (not used in this context). <br>
-//! The GccAna package provides numerous algorithms for <br>
-//! computing the bisecting loci between circles, lines or <br>
-//! points, whose solutions are these types of elementary bisecting locus. <br>
-class GccInt_Bisec : public MMgt_TShared {
+//! The deferred class GccInt_Bisec is the root class for
+//! elementary bisecting loci between two simple geometric
+//! objects (i.e. circles, lines or points).
+//! Bisecting loci between two geometric objects are such
+//! that each of their points is at the same distance from the
+//! two geometric objects. It is typically a curve, such as a
+//! line, circle or conic.
+//! Generally there is more than one elementary object
+//! which is the solution to a bisecting loci problem: each
+//! solution is described with one elementary bisecting
+//! locus. For example, the bisectors of two secant straight
+//! lines are two perpendicular straight lines.
+//! The GccInt package provides concrete implementations
+//! of the following elementary derived bisecting loci:
+//! -   lines, circles, ellipses, hyperbolas and parabolas, and
+//! -   points (not used in this context).
+//! The GccAna package provides numerous algorithms for
+//! computing the bisecting loci between circles, lines or
+//! points, whose solutions are these types of elementary bisecting locus.
+class GccInt_Bisec : public MMgt_TShared
+{
 
 public:
 
-  //! Returns the type of bisecting object (line, circle, <br>
-//! parabola, hyperbola, ellipse, point). <br>
-  Standard_EXPORT   virtual  GccInt_IType ArcType() const = 0;
-  //! Returns the bisecting line when ArcType returns Pnt. <br>
-//!          An exception DomainError is raised if ArcType is not a Pnt. <br>
-  Standard_EXPORT   virtual  gp_Pnt2d Point() const;
-  //! Returns the bisecting line when ArcType returns Lin. <br>//! An exception DomainError is raised if ArcType is not a Lin. <br>
-  Standard_EXPORT   virtual  gp_Lin2d Line() const;
-  //! Returns the bisecting line when ArcType returns Cir. <br>//! An exception DomainError is raised if ArcType is not a Cir. <br>
-  Standard_EXPORT   virtual  gp_Circ2d Circle() const;
-  //! Returns the bisecting line when ArcType returns Hpr. <br>//! An exception DomainError is raised if ArcType is not a Hpr. <br>
-  Standard_EXPORT   virtual  gp_Hypr2d Hyperbola() const;
-  //! Returns the bisecting line when ArcType returns Par. <br>//! An exception DomainError is raised if ArcType is not a Par. <br>
-  Standard_EXPORT   virtual  gp_Parab2d Parabola() const;
-  //! Returns the bisecting line when ArcType returns Ell. <br>//! An exception DomainError is raised if ArcType is not an Ell. <br>
-  Standard_EXPORT   virtual  gp_Elips2d Ellipse() const;
+  
+  //! Returns the type of bisecting object (line, circle,
+  //! parabola, hyperbola, ellipse, point).
+  Standard_EXPORT virtual   GccInt_IType ArcType()  const = 0;
+  
+  //! Returns the bisecting line when ArcType returns Pnt.
+  //! An exception DomainError is raised if ArcType is not a Pnt.
+  Standard_EXPORT virtual   gp_Pnt2d Point()  const;
+  
+  //! Returns the bisecting line when ArcType returns Lin.
+  //! An exception DomainError is raised if ArcType is not a Lin.
+  Standard_EXPORT virtual   gp_Lin2d Line()  const;
+  
+  //! Returns the bisecting line when ArcType returns Cir.
+  //! An exception DomainError is raised if ArcType is not a Cir.
+  Standard_EXPORT virtual   gp_Circ2d Circle()  const;
+  
+  //! Returns the bisecting line when ArcType returns Hpr.
+  //! An exception DomainError is raised if ArcType is not a Hpr.
+  Standard_EXPORT virtual   gp_Hypr2d Hyperbola()  const;
+  
+  //! Returns the bisecting line when ArcType returns Par.
+  //! An exception DomainError is raised if ArcType is not a Par.
+  Standard_EXPORT virtual   gp_Parab2d Parabola()  const;
+  
+  //! Returns the bisecting line when ArcType returns Ell.
+  //! An exception DomainError is raised if ArcType is not an Ell.
+  Standard_EXPORT virtual   gp_Elips2d Ellipse()  const;
 
 
 
@@ -92,7 +95,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GccInt_Bisec_HeaderFile

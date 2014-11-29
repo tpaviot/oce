@@ -6,60 +6,48 @@
 #ifndef _StepGeom_SurfacePatch_HeaderFile
 #define _StepGeom_SurfacePatch_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_SurfacePatch_HeaderFile
 #include <Handle_StepGeom_SurfacePatch.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_BoundedSurface_HeaderFile
 #include <Handle_StepGeom_BoundedSurface.hxx>
-#endif
-#ifndef _StepGeom_TransitionCode_HeaderFile
 #include <StepGeom_TransitionCode.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepGeom_BoundedSurface;
 
 
 
-class StepGeom_SurfacePatch : public MMgt_TShared {
+class StepGeom_SurfacePatch : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a SurfacePatch <br>
-  Standard_EXPORT   StepGeom_SurfacePatch();
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepGeom_BoundedSurface)& aParentSurface,const StepGeom_TransitionCode aUTransition,const StepGeom_TransitionCode aVTransition,const Standard_Boolean aUSense,const Standard_Boolean aVSense) ;
+  //! Returns a SurfacePatch
+  Standard_EXPORT StepGeom_SurfacePatch();
   
-  Standard_EXPORT     void SetParentSurface(const Handle(StepGeom_BoundedSurface)& aParentSurface) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepGeom_BoundedSurface)& aParentSurface, const StepGeom_TransitionCode aUTransition, const StepGeom_TransitionCode aVTransition, const Standard_Boolean aUSense, const Standard_Boolean aVSense) ;
   
-  Standard_EXPORT     Handle_StepGeom_BoundedSurface ParentSurface() const;
+  Standard_EXPORT   void SetParentSurface (const Handle(StepGeom_BoundedSurface)& aParentSurface) ;
   
-  Standard_EXPORT     void SetUTransition(const StepGeom_TransitionCode aUTransition) ;
+  Standard_EXPORT   Handle(StepGeom_BoundedSurface) ParentSurface()  const;
   
-  Standard_EXPORT     StepGeom_TransitionCode UTransition() const;
+  Standard_EXPORT   void SetUTransition (const StepGeom_TransitionCode aUTransition) ;
   
-  Standard_EXPORT     void SetVTransition(const StepGeom_TransitionCode aVTransition) ;
+  Standard_EXPORT   StepGeom_TransitionCode UTransition()  const;
   
-  Standard_EXPORT     StepGeom_TransitionCode VTransition() const;
+  Standard_EXPORT   void SetVTransition (const StepGeom_TransitionCode aVTransition) ;
   
-  Standard_EXPORT     void SetUSense(const Standard_Boolean aUSense) ;
+  Standard_EXPORT   StepGeom_TransitionCode VTransition()  const;
   
-  Standard_EXPORT     Standard_Boolean USense() const;
+  Standard_EXPORT   void SetUSense (const Standard_Boolean aUSense) ;
   
-  Standard_EXPORT     void SetVSense(const Standard_Boolean aVSense) ;
+  Standard_EXPORT   Standard_Boolean USense()  const;
   
-  Standard_EXPORT     Standard_Boolean VSense() const;
+  Standard_EXPORT   void SetVSense (const Standard_Boolean aVSense) ;
+  
+  Standard_EXPORT   Standard_Boolean VSense()  const;
 
 
 
@@ -74,11 +62,11 @@ protected:
 private: 
 
 
-Handle_StepGeom_BoundedSurface parentSurface;
-StepGeom_TransitionCode uTransition;
-StepGeom_TransitionCode vTransition;
-Standard_Boolean uSense;
-Standard_Boolean vSense;
+  Handle(StepGeom_BoundedSurface) parentSurface;
+  StepGeom_TransitionCode uTransition;
+  StepGeom_TransitionCode vTransition;
+  Standard_Boolean uSense;
+  Standard_Boolean vSense;
 
 
 };
@@ -87,7 +75,6 @@ Standard_Boolean vSense;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_SurfacePatch_HeaderFile

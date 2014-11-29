@@ -6,50 +6,42 @@
 #ifndef _StepData_FieldListN_HeaderFile
 #define _StepData_FieldListN_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_Array1OfField_HeaderFile
 #include <StepData_Array1OfField.hxx>
-#endif
-#ifndef _StepData_FieldList_HeaderFile
 #include <StepData_FieldList.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_OutOfRange;
 class StepData_Field;
 
 
-//! Describes a list of fields, in a general way <br>
-//!           This basic class is for a null size list <br>
-//!           Subclasses are for 1, N (fixed) or Dynamic sizes <br>
-class StepData_FieldListN  : public StepData_FieldList {
+//! Describes a list of fields, in a general way
+//! This basic class is for a null size list
+//! Subclasses are for 1, N (fixed) or Dynamic sizes
+class StepData_FieldListN  : public StepData_FieldList
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates a FieldListN of <nb> Fields <br>
-  Standard_EXPORT   StepData_FieldListN(const Standard_Integer nb);
-  //! Returns the count of fields. Here, returns starting <nb> <br>
-  Standard_EXPORT   virtual  Standard_Integer NbFields() const;
-  //! Returns the field n0 <num> between 1 and NbFields (read only) <br>
-  Standard_EXPORT   virtual const StepData_Field& Field(const Standard_Integer num) const;
-  //! Returns the field n0 <num> between 1 and NbFields, in order to <br>
-//!           modify its content <br>
-  Standard_EXPORT   virtual  StepData_Field& CField(const Standard_Integer num) ;
   
-  Standard_EXPORT   virtual  void Destroy() ;
+  //! Creates a FieldListN of <nb> Fields
+  Standard_EXPORT StepData_FieldListN(const Standard_Integer nb);
+  
+  //! Returns the count of fields. Here, returns starting <nb>
+  Standard_EXPORT virtual   Standard_Integer NbFields()  const;
+  
+  //! Returns the field n0 <num> between 1 and NbFields (read only)
+  Standard_EXPORT virtual  const  StepData_Field& Field (const Standard_Integer num)  const;
+  
+  //! Returns the field n0 <num> between 1 and NbFields, in order to
+  //! modify its content
+  Standard_EXPORT virtual   StepData_Field& CField (const Standard_Integer num) ;
+  
+  Standard_EXPORT virtual   void Destroy() ;
 Standard_EXPORT virtual ~StepData_FieldListN() { Destroy(); }
-
 
 
 
@@ -64,7 +56,7 @@ private:
 
 
 
-StepData_Array1OfField thefields;
+  StepData_Array1OfField thefields;
 
 
 };
@@ -73,7 +65,6 @@ StepData_Array1OfField thefields;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepData_FieldListN_HeaderFile

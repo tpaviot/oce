@@ -6,28 +6,21 @@
 #ifndef _StepBasic_DigitalDocument_HeaderFile
 #define _StepBasic_DigitalDocument_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_DigitalDocument_HeaderFile
 #include <Handle_StepBasic_DigitalDocument.hxx>
-#endif
 
-#ifndef _StepBasic_Document_HeaderFile
 #include <StepBasic_Document.hxx>
-#endif
 
 
 
-class StepBasic_DigitalDocument : public StepBasic_Document {
+class StepBasic_DigitalDocument : public StepBasic_Document
+{
 
 public:
 
   
-  Standard_EXPORT   StepBasic_DigitalDocument();
+  Standard_EXPORT StepBasic_DigitalDocument();
 
 
 
@@ -50,7 +43,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_DigitalDocument_HeaderFile

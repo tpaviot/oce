@@ -6,63 +6,47 @@
 #ifndef _PBRep_TEdge1_HeaderFile
 #define _PBRep_TEdge1_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PBRep_TEdge1_HeaderFile
 #include <Handle_PBRep_TEdge1.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_PBRep_CurveRepresentation_HeaderFile
 #include <Handle_PBRep_CurveRepresentation.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _PTopoDS_TEdge1_HeaderFile
 #include <PTopoDS_TEdge1.hxx>
-#endif
 class PBRep_CurveRepresentation;
 
 
-class PBRep_TEdge1 : public PTopoDS_TEdge1 {
+class PBRep_TEdge1 : public PTopoDS_TEdge1
+{
 
 public:
 
-  //! Creates an empty TEdge1. <br>
-  Standard_EXPORT   PBRep_TEdge1();
   
-  Standard_EXPORT     Standard_Real Tolerance() const;
+  //! Creates an empty TEdge1.
+  Standard_EXPORT PBRep_TEdge1();
   
-  Standard_EXPORT     void Tolerance(const Standard_Real T) ;
+  Standard_EXPORT   Standard_Real Tolerance()  const;
   
-  Standard_EXPORT     Standard_Boolean SameParameter() const;
+  Standard_EXPORT   void Tolerance (const Standard_Real T) ;
   
-  Standard_EXPORT     void SameParameter(const Standard_Boolean S) ;
+  Standard_EXPORT   Standard_Boolean SameParameter()  const;
   
-  Standard_EXPORT     Standard_Boolean SameRange() const;
+  Standard_EXPORT   void SameParameter (const Standard_Boolean S) ;
   
-  Standard_EXPORT     void SameRange(const Standard_Boolean S) ;
+  Standard_EXPORT   Standard_Boolean SameRange()  const;
   
-  Standard_EXPORT     Standard_Boolean Degenerated() const;
+  Standard_EXPORT   void SameRange (const Standard_Boolean S) ;
   
-  Standard_EXPORT     void Degenerated(const Standard_Boolean S) ;
+  Standard_EXPORT   Standard_Boolean Degenerated()  const;
   
-  Standard_EXPORT     Handle_PBRep_CurveRepresentation Curves() const;
+  Standard_EXPORT   void Degenerated (const Standard_Boolean S) ;
   
-  Standard_EXPORT     void Curves(const Handle(PBRep_CurveRepresentation)& C) ;
+  Standard_EXPORT   Handle(PBRep_CurveRepresentation) Curves()  const;
+  
+  Standard_EXPORT   void Curves (const Handle(PBRep_CurveRepresentation)& C) ;
 
 PBRep_TEdge1(const Storage_stCONSTclCOM& a) : PTopoDS_TEdge1(a)
 {
@@ -87,9 +71,9 @@ protected:
 private: 
 
 
-Standard_Real myTolerance;
-Standard_Integer myFlags;
-Handle_PBRep_CurveRepresentation myCurves;
+  Standard_Real myTolerance;
+  Standard_Integer myFlags;
+  Handle(PBRep_CurveRepresentation) myCurves;
 
 
 };
@@ -98,7 +82,6 @@ Handle_PBRep_CurveRepresentation myCurves;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PBRep_TEdge1_HeaderFile

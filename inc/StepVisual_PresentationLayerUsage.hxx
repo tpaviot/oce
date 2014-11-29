@@ -6,46 +6,35 @@
 #ifndef _StepVisual_PresentationLayerUsage_HeaderFile
 #define _StepVisual_PresentationLayerUsage_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_PresentationLayerUsage_HeaderFile
 #include <Handle_StepVisual_PresentationLayerUsage.hxx>
-#endif
 
-#ifndef _Handle_StepVisual_PresentationLayerAssignment_HeaderFile
 #include <Handle_StepVisual_PresentationLayerAssignment.hxx>
-#endif
-#ifndef _Handle_StepVisual_PresentationRepresentation_HeaderFile
 #include <Handle_StepVisual_PresentationRepresentation.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepVisual_PresentationLayerAssignment;
 class StepVisual_PresentationRepresentation;
 
 
-//! Added from StepVisual Rev2 to Rev4 <br>
-class StepVisual_PresentationLayerUsage : public MMgt_TShared {
+//! Added from StepVisual Rev2 to Rev4
+class StepVisual_PresentationLayerUsage : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   StepVisual_PresentationLayerUsage();
+  Standard_EXPORT StepVisual_PresentationLayerUsage();
   
-  Standard_EXPORT     void Init(const Handle(StepVisual_PresentationLayerAssignment)& aAssignment,const Handle(StepVisual_PresentationRepresentation)& aPresentation) ;
+  Standard_EXPORT   void Init (const Handle(StepVisual_PresentationLayerAssignment)& aAssignment, const Handle(StepVisual_PresentationRepresentation)& aPresentation) ;
   
-  Standard_EXPORT     void SetAssignment(const Handle(StepVisual_PresentationLayerAssignment)& aAssignment) ;
+  Standard_EXPORT   void SetAssignment (const Handle(StepVisual_PresentationLayerAssignment)& aAssignment) ;
   
-  Standard_EXPORT     Handle_StepVisual_PresentationLayerAssignment Assignment() const;
+  Standard_EXPORT   Handle(StepVisual_PresentationLayerAssignment) Assignment()  const;
   
-  Standard_EXPORT     void SetPresentation(const Handle(StepVisual_PresentationRepresentation)& aPresentation) ;
+  Standard_EXPORT   void SetPresentation (const Handle(StepVisual_PresentationRepresentation)& aPresentation) ;
   
-  Standard_EXPORT     Handle_StepVisual_PresentationRepresentation Presentation() const;
+  Standard_EXPORT   Handle(StepVisual_PresentationRepresentation) Presentation()  const;
 
 
 
@@ -60,8 +49,8 @@ protected:
 private: 
 
 
-Handle_StepVisual_PresentationLayerAssignment theAssignment;
-Handle_StepVisual_PresentationRepresentation thePresentation;
+  Handle(StepVisual_PresentationLayerAssignment) theAssignment;
+  Handle(StepVisual_PresentationRepresentation) thePresentation;
 
 
 };
@@ -70,7 +59,6 @@ Handle_StepVisual_PresentationRepresentation thePresentation;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_PresentationLayerUsage_HeaderFile

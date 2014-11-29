@@ -5,27 +5,13 @@
 
 #include <HLRTopoBRep_MapOfShapeListOfVData.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _HLRTopoBRep_ListOfVData_HeaderFile
 #include <HLRTopoBRep_ListOfVData.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData_HeaderFile
 #include <HLRTopoBRep_DataMapNodeOfMapOfShapeListOfVData.hxx>
-#endif
-#ifndef _HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData_HeaderFile
 #include <HLRTopoBRep_DataMapIteratorOfMapOfShapeListOfVData.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape

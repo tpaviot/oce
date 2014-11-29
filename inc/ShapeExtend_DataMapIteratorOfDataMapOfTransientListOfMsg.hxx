@@ -6,25 +6,13 @@
 #ifndef _ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg_HeaderFile
 #define _ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg_HeaderFile
 #include <Handle_ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_Transient;
 class Message_ListOfMsg;
@@ -34,22 +22,22 @@ class ShapeExtend_DataMapNodeOfDataMapOfTransientListOfMsg;
 
 
 
-class ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg  : public TCollection_BasicMapIterator {
+class ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg();
+  Standard_EXPORT ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg();
   
-  Standard_EXPORT   ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg(const ShapeExtend_DataMapOfTransientListOfMsg& aMap);
+  Standard_EXPORT ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg(const ShapeExtend_DataMapOfTransientListOfMsg& aMap);
   
-  Standard_EXPORT     void Initialize(const ShapeExtend_DataMapOfTransientListOfMsg& aMap) ;
+  Standard_EXPORT   void Initialize (const ShapeExtend_DataMapOfTransientListOfMsg& aMap) ;
   
-  Standard_EXPORT    const Handle_Standard_Transient& Key() const;
+  Standard_EXPORT  const  Handle(Standard_Transient)& Key()  const;
   
-  Standard_EXPORT    const Message_ListOfMsg& Value() const;
-
+  Standard_EXPORT  const  Message_ListOfMsg& Value()  const;
 
 
 
@@ -72,7 +60,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg_HeaderFile

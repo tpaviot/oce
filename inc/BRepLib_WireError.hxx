@@ -6,17 +6,16 @@
 #ifndef _BRepLib_WireError_HeaderFile
 #define _BRepLib_WireError_HeaderFile
 
-//! Errors that can occur at wire construction. <br>
-//! no error <br>
-enum BRepLib_WireError {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Errors that can occur at wire construction.
+//! no error
+enum BRepLib_WireError
+{
 BRepLib_WireDone,
 BRepLib_EmptyWire,
 BRepLib_DisconnectedWire,
 BRepLib_NonManifoldWire
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BRepLib_WireError_HeaderFile

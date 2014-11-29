@@ -5,28 +5,14 @@
 
 #include <HLRAlgo_HArray1OfPINod.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _HLRAlgo_PolyInternalNode_HeaderFile
 #include <HLRAlgo_PolyInternalNode.hxx>
-#endif
-#ifndef _HLRAlgo_Array1OfPINod_HeaderFile
 #include <HLRAlgo_Array1OfPINod.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(HLRAlgo_HArray1OfPINod,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(HLRAlgo_HArray1OfPINod)
 
 
-#define ItemHArray1 Handle_HLRAlgo_PolyInternalNode
+#define ItemHArray1 Handle(HLRAlgo_PolyInternalNode)
 #define ItemHArray1_hxx <HLRAlgo_PolyInternalNode.hxx>
 #define TheArray1 HLRAlgo_Array1OfPINod
 #define TheArray1_hxx <HLRAlgo_Array1OfPINod.hxx>

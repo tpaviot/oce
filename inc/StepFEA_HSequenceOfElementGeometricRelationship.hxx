@@ -6,31 +6,15 @@
 #ifndef _StepFEA_HSequenceOfElementGeometricRelationship_HeaderFile
 #define _StepFEA_HSequenceOfElementGeometricRelationship_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepFEA_HSequenceOfElementGeometricRelationship_HeaderFile
 #include <Handle_StepFEA_HSequenceOfElementGeometricRelationship.hxx>
-#endif
 
-#ifndef _StepFEA_SequenceOfElementGeometricRelationship_HeaderFile
 #include <StepFEA_SequenceOfElementGeometricRelationship.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_StepFEA_ElementGeometricRelationship_HeaderFile
 #include <Handle_StepFEA_ElementGeometricRelationship.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class StepFEA_ElementGeometricRelationship;
@@ -38,56 +22,57 @@ class StepFEA_SequenceOfElementGeometricRelationship;
 
 
 
-class StepFEA_HSequenceOfElementGeometricRelationship : public MMgt_TShared {
+class StepFEA_HSequenceOfElementGeometricRelationship : public MMgt_TShared
+{
 
 public:
 
   
-      StepFEA_HSequenceOfElementGeometricRelationship();
+    StepFEA_HSequenceOfElementGeometricRelationship();
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
   
-  Standard_EXPORT     void Append(const Handle(StepFEA_ElementGeometricRelationship)& anItem) ;
+  Standard_EXPORT   void Append (const Handle(StepFEA_ElementGeometricRelationship)& anItem) ;
   
-  Standard_EXPORT     void Append(const Handle(StepFEA_HSequenceOfElementGeometricRelationship)& aSequence) ;
+  Standard_EXPORT   void Append (const Handle(StepFEA_HSequenceOfElementGeometricRelationship)& aSequence) ;
   
-  Standard_EXPORT     void Prepend(const Handle(StepFEA_ElementGeometricRelationship)& anItem) ;
+  Standard_EXPORT   void Prepend (const Handle(StepFEA_ElementGeometricRelationship)& anItem) ;
   
-  Standard_EXPORT     void Prepend(const Handle(StepFEA_HSequenceOfElementGeometricRelationship)& aSequence) ;
+  Standard_EXPORT   void Prepend (const Handle(StepFEA_HSequenceOfElementGeometricRelationship)& aSequence) ;
   
-  Standard_EXPORT     void Reverse() ;
+  Standard_EXPORT   void Reverse() ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(StepFEA_ElementGeometricRelationship)& anItem) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(StepFEA_ElementGeometricRelationship)& anItem) ;
   
-  Standard_EXPORT     void InsertBefore(const Standard_Integer anIndex,const Handle(StepFEA_HSequenceOfElementGeometricRelationship)& aSequence) ;
+  Standard_EXPORT   void InsertBefore (const Standard_Integer anIndex, const Handle(StepFEA_HSequenceOfElementGeometricRelationship)& aSequence) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(StepFEA_ElementGeometricRelationship)& anItem) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(StepFEA_ElementGeometricRelationship)& anItem) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer anIndex,const Handle(StepFEA_HSequenceOfElementGeometricRelationship)& aSequence) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer anIndex, const Handle(StepFEA_HSequenceOfElementGeometricRelationship)& aSequence) ;
   
-  Standard_EXPORT     void Exchange(const Standard_Integer anIndex,const Standard_Integer anOtherIndex) ;
+  Standard_EXPORT   void Exchange (const Standard_Integer anIndex, const Standard_Integer anOtherIndex) ;
   
-  Standard_EXPORT     Handle_StepFEA_HSequenceOfElementGeometricRelationship Split(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(StepFEA_HSequenceOfElementGeometricRelationship) Split (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer anIndex,const Handle(StepFEA_ElementGeometricRelationship)& anItem) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer anIndex, const Handle(StepFEA_ElementGeometricRelationship)& anItem) ;
   
-  Standard_EXPORT    const Handle_StepFEA_ElementGeometricRelationship& Value(const Standard_Integer anIndex) const;
+  Standard_EXPORT  const  Handle(StepFEA_ElementGeometricRelationship)& Value (const Standard_Integer anIndex)  const;
   
-  Standard_EXPORT     Handle_StepFEA_ElementGeometricRelationship& ChangeValue(const Standard_Integer anIndex) ;
+  Standard_EXPORT   Handle(StepFEA_ElementGeometricRelationship)& ChangeValue (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer anIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer anIndex) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer fromIndex,const Standard_Integer toIndex) ;
+  Standard_EXPORT   void Remove (const Standard_Integer fromIndex, const Standard_Integer toIndex) ;
   
-       const StepFEA_SequenceOfElementGeometricRelationship& Sequence() const;
+     const  StepFEA_SequenceOfElementGeometricRelationship& Sequence()  const;
   
-        StepFEA_SequenceOfElementGeometricRelationship& ChangeSequence() ;
+      StepFEA_SequenceOfElementGeometricRelationship& ChangeSequence() ;
   
-  Standard_EXPORT     Handle_StepFEA_HSequenceOfElementGeometricRelationship ShallowCopy() const;
+  Standard_EXPORT   Handle(StepFEA_HSequenceOfElementGeometricRelationship) ShallowCopy()  const;
 
 
 
@@ -102,12 +87,12 @@ protected:
 private: 
 
 
-StepFEA_SequenceOfElementGeometricRelationship mySequence;
+  StepFEA_SequenceOfElementGeometricRelationship mySequence;
 
 
 };
 
-#define Item Handle_StepFEA_ElementGeometricRelationship
+#define Item Handle(StepFEA_ElementGeometricRelationship)
 #define Item_hxx <StepFEA_ElementGeometricRelationship.hxx>
 #define TheSequence StepFEA_SequenceOfElementGeometricRelationship
 #define TheSequence_hxx <StepFEA_SequenceOfElementGeometricRelationship.hxx>
@@ -128,11 +113,10 @@ StepFEA_SequenceOfElementGeometricRelationship mySequence;
 #undef TCollection_HSequence_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline Handle_StepFEA_HSequenceOfElementGeometricRelationship ShallowCopy(const Handle_StepFEA_HSequenceOfElementGeometricRelationship& me) {
+inline Handle(StepFEA_HSequenceOfElementGeometricRelationship) ShallowCopy(const Handle(StepFEA_HSequenceOfElementGeometricRelationship)& me) {
  return me->ShallowCopy();
 }
 
 
 
-#endif
+#endif // _StepFEA_HSequenceOfElementGeometricRelationship_HeaderFile

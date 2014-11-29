@@ -6,46 +6,20 @@
 #ifndef _APIHeaderSection_MakeHeader_HeaderFile
 #define _APIHeaderSection_MakeHeader_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_HeaderSection_FileName_HeaderFile
 #include <Handle_HeaderSection_FileName.hxx>
-#endif
-#ifndef _Handle_HeaderSection_FileSchema_HeaderFile
 #include <Handle_HeaderSection_FileSchema.hxx>
-#endif
-#ifndef _Handle_HeaderSection_FileDescription_HeaderFile
 #include <Handle_HeaderSection_FileDescription.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_StepData_StepModel_HeaderFile
 #include <Handle_StepData_StepModel.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_Interface_Protocol_HeaderFile
 #include <Handle_Interface_Protocol.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_Interface_HArray1OfHAsciiString_HeaderFile
 #include <Handle_Interface_HArray1OfHAsciiString.hxx>
-#endif
 class HeaderSection_FileName;
 class HeaderSection_FileSchema;
 class HeaderSection_FileDescription;
@@ -55,119 +29,145 @@ class TCollection_HAsciiString;
 class Interface_HArray1OfHAsciiString;
 
 
-//! This class allows to consult and prepare/edit  data stored in <br>
-//!           a Step Model  Header <br>
-class APIHeaderSection_MakeHeader  {
+//! This class allows to consult and prepare/edit  data stored in
+//! a Step Model  Header
+class APIHeaderSection_MakeHeader 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Prepares a new MakeHeader from scratch <br>
-  Standard_EXPORT   APIHeaderSection_MakeHeader(const Standard_Integer shapetype = 0);
-  //! Prepares a MakeHeader from the content of a StepModel <br>
-//!           See IsDone to know if the Header is well defined <br>
-  Standard_EXPORT   APIHeaderSection_MakeHeader(const Handle(StepData_StepModel)& model);
-  //! Cancels the former definition and gives a FileName <br>
-//!           To be used when a Model has no well defined Header <br>
-  Standard_EXPORT     void Init(const Standard_CString nameval) ;
-  //! Returns True if all data have been defined (see also <br>
-//!           HasFn, HasFs, HasFd) <br>
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-  //! Creates an empty header for a new <br>
-//!           STEP model and allows the header fields to be completed. <br>
-  Standard_EXPORT     void Apply(const Handle(StepData_StepModel)& model) const;
-  //! Builds a Header, creates a new StepModel, then applies the <br>
-//!           Header to the StepModel <br>
-//!           The Schema Name is taken from the Protocol (if it inherits <br>
-//!           from StepData, else it is left in blanks) <br>
-  Standard_EXPORT     Handle_StepData_StepModel NewModel(const Handle(Interface_Protocol)& protocol) const;
-  //! Checks whether there is a <br>
-//!          file_name entity. Returns True if there is one. <br>
-  Standard_EXPORT     Standard_Boolean HasFn() const;
-  //! Returns the file_name entity. <br>
-//!          Returns an empty entity if the file_name entity is not initialized. <br>
-  Standard_EXPORT     Handle_HeaderSection_FileName FnValue() const;
   
-  Standard_EXPORT     void SetName(const Handle(TCollection_HAsciiString)& aName) ;
-  //! Returns the name attribute for the file_name entity. <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Name() const;
+  //! Prepares a new MakeHeader from scratch
+  Standard_EXPORT APIHeaderSection_MakeHeader(const Standard_Integer shapetype = 0);
   
-  Standard_EXPORT     void SetTimeStamp(const Handle(TCollection_HAsciiString)& aTimeStamp) ;
-  //! Returns the value of the time_stamp attribute for the file_name entity. <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString TimeStamp() const;
+  //! Prepares a MakeHeader from the content of a StepModel
+  //! See IsDone to know if the Header is well defined
+  Standard_EXPORT APIHeaderSection_MakeHeader(const Handle(StepData_StepModel)& model);
   
-  Standard_EXPORT     void SetAuthor(const Handle(Interface_HArray1OfHAsciiString)& aAuthor) ;
+  //! Cancels the former definition and gives a FileName
+  //! To be used when a Model has no well defined Header
+  Standard_EXPORT   void Init (const Standard_CString nameval) ;
   
-  Standard_EXPORT     void SetAuthorValue(const Standard_Integer num,const Handle(TCollection_HAsciiString)& aAuthor) ;
+  //! Returns True if all data have been defined (see also
+  //! HasFn, HasFs, HasFd)
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
   
-  Standard_EXPORT     Handle_Interface_HArray1OfHAsciiString Author() const;
-  //! Returns the value of the name attribute for the file_name entity. <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString AuthorValue(const Standard_Integer num) const;
-  //! Returns the number of values for the author attribute in the file_name entity. <br>
-  Standard_EXPORT     Standard_Integer NbAuthor() const;
+  //! Creates an empty header for a new
+  //! STEP model and allows the header fields to be completed.
+  Standard_EXPORT   void Apply (const Handle(StepData_StepModel)& model)  const;
   
-  Standard_EXPORT     void SetOrganization(const Handle(Interface_HArray1OfHAsciiString)& aOrganization) ;
+  //! Builds a Header, creates a new StepModel, then applies the
+  //! Header to the StepModel
+  //! The Schema Name is taken from the Protocol (if it inherits
+  //! from StepData, else it is left in blanks)
+  Standard_EXPORT   Handle(StepData_StepModel) NewModel (const Handle(Interface_Protocol)& protocol)  const;
   
-  Standard_EXPORT     void SetOrganizationValue(const Standard_Integer num,const Handle(TCollection_HAsciiString)& aOrganization) ;
+  //! Checks whether there is a
+  //! file_name entity. Returns True if there is one.
+  Standard_EXPORT   Standard_Boolean HasFn()  const;
   
-  Standard_EXPORT     Handle_Interface_HArray1OfHAsciiString Organization() const;
-  //! Returns the value of attribute <br>
-//! organization for the file_name entity. <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString OrganizationValue(const Standard_Integer num) const;
-  //! Returns the number of values for <br>
-//! the organization attribute in the file_name entity. <br>
-  Standard_EXPORT     Standard_Integer NbOrganization() const;
+  //! Returns the file_name entity.
+  //! Returns an empty entity if the file_name entity is not initialized.
+  Standard_EXPORT   Handle(HeaderSection_FileName) FnValue()  const;
   
-  Standard_EXPORT     void SetPreprocessorVersion(const Handle(TCollection_HAsciiString)& aPreprocessorVersion) ;
-  //! Returns the name of the preprocessor_version for the file_name entity. <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString PreprocessorVersion() const;
+  Standard_EXPORT   void SetName (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetOriginatingSystem(const Handle(TCollection_HAsciiString)& aOriginatingSystem) ;
+  //! Returns the name attribute for the file_name entity.
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Name()  const;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString OriginatingSystem() const;
+  Standard_EXPORT   void SetTimeStamp (const Handle(TCollection_HAsciiString)& aTimeStamp) ;
   
-  Standard_EXPORT     void SetAuthorisation(const Handle(TCollection_HAsciiString)& aAuthorisation) ;
-  //! Returns the value of the authorization attribute for the file_name entity. <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Authorisation() const;
-  //! Checks whether there is a file_schema entity. Returns True if there is one. <br>
-  Standard_EXPORT     Standard_Boolean HasFs() const;
-  //! Returns the file_schema entity. Returns an empty entity if the file_schema entity is not initialized. <br>
-  Standard_EXPORT     Handle_HeaderSection_FileSchema FsValue() const;
+  //! Returns the value of the time_stamp attribute for the file_name entity.
+  Standard_EXPORT   Handle(TCollection_HAsciiString) TimeStamp()  const;
   
-  Standard_EXPORT     void SetSchemaIdentifiers(const Handle(Interface_HArray1OfHAsciiString)& aSchemaIdentifiers) ;
+  Standard_EXPORT   void SetAuthor (const Handle(Interface_HArray1OfHAsciiString)& aAuthor) ;
   
-  Standard_EXPORT     void SetSchemaIdentifiersValue(const Standard_Integer num,const Handle(TCollection_HAsciiString)& aSchemaIdentifier) ;
+  Standard_EXPORT   void SetAuthorValue (const Standard_Integer num, const Handle(TCollection_HAsciiString)& aAuthor) ;
   
-  Standard_EXPORT     Handle_Interface_HArray1OfHAsciiString SchemaIdentifiers() const;
-  //! Returns the value of the schema_identifier attribute for the file_schema entity. <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString SchemaIdentifiersValue(const Standard_Integer num) const;
-  //! Returns the number of values for the schema_identifier attribute in the file_schema entity. <br>
-  Standard_EXPORT     Standard_Integer NbSchemaIdentifiers() const;
-  //! Add a subname of schema (if not yet in the list) <br>
-  Standard_EXPORT     void AddSchemaIdentifier(const Handle(TCollection_HAsciiString)& aSchemaIdentifier) ;
-  //! Checks whether there is a file_description entity. Returns True if there is one. <br>
-  Standard_EXPORT     Standard_Boolean HasFd() const;
-  //! Returns the file_description <br>
-//! entity. Returns an empty entity if the file_description entity is not initialized. <br>
-  Standard_EXPORT     Handle_HeaderSection_FileDescription FdValue() const;
+  Standard_EXPORT   Handle(Interface_HArray1OfHAsciiString) Author()  const;
   
-  Standard_EXPORT     void SetDescription(const Handle(Interface_HArray1OfHAsciiString)& aDescription) ;
+  //! Returns the value of the name attribute for the file_name entity.
+  Standard_EXPORT   Handle(TCollection_HAsciiString) AuthorValue (const Standard_Integer num)  const;
   
-  Standard_EXPORT     void SetDescriptionValue(const Standard_Integer num,const Handle(TCollection_HAsciiString)& aDescription) ;
+  //! Returns the number of values for the author attribute in the file_name entity.
+  Standard_EXPORT   Standard_Integer NbAuthor()  const;
   
-  Standard_EXPORT     Handle_Interface_HArray1OfHAsciiString Description() const;
-  //! Returns the value of the <br>
-//! description attribute for the file_description entity. <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString DescriptionValue(const Standard_Integer num) const;
-  //! Returns the number of values for <br>
-//! the file_description entity in the STEP file header. <br>
-  Standard_EXPORT     Standard_Integer NbDescription() const;
+  Standard_EXPORT   void SetOrganization (const Handle(Interface_HArray1OfHAsciiString)& aOrganization) ;
   
-  Standard_EXPORT     void SetImplementationLevel(const Handle(TCollection_HAsciiString)& aImplementationLevel) ;
-  //! Returns the value of the <br>
-//! implementation_level attribute for the file_description entity. <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString ImplementationLevel() const;
-
+  Standard_EXPORT   void SetOrganizationValue (const Standard_Integer num, const Handle(TCollection_HAsciiString)& aOrganization) ;
+  
+  Standard_EXPORT   Handle(Interface_HArray1OfHAsciiString) Organization()  const;
+  
+  //! Returns the value of attribute
+  //! organization for the file_name entity.
+  Standard_EXPORT   Handle(TCollection_HAsciiString) OrganizationValue (const Standard_Integer num)  const;
+  
+  //! Returns the number of values for
+  //! the organization attribute in the file_name entity.
+  Standard_EXPORT   Standard_Integer NbOrganization()  const;
+  
+  Standard_EXPORT   void SetPreprocessorVersion (const Handle(TCollection_HAsciiString)& aPreprocessorVersion) ;
+  
+  //! Returns the name of the preprocessor_version for the file_name entity.
+  Standard_EXPORT   Handle(TCollection_HAsciiString) PreprocessorVersion()  const;
+  
+  Standard_EXPORT   void SetOriginatingSystem (const Handle(TCollection_HAsciiString)& aOriginatingSystem) ;
+  
+  Standard_EXPORT   Handle(TCollection_HAsciiString) OriginatingSystem()  const;
+  
+  Standard_EXPORT   void SetAuthorisation (const Handle(TCollection_HAsciiString)& aAuthorisation) ;
+  
+  //! Returns the value of the authorization attribute for the file_name entity.
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Authorisation()  const;
+  
+  //! Checks whether there is a file_schema entity. Returns True if there is one.
+  Standard_EXPORT   Standard_Boolean HasFs()  const;
+  
+  //! Returns the file_schema entity. Returns an empty entity if the file_schema entity is not initialized.
+  Standard_EXPORT   Handle(HeaderSection_FileSchema) FsValue()  const;
+  
+  Standard_EXPORT   void SetSchemaIdentifiers (const Handle(Interface_HArray1OfHAsciiString)& aSchemaIdentifiers) ;
+  
+  Standard_EXPORT   void SetSchemaIdentifiersValue (const Standard_Integer num, const Handle(TCollection_HAsciiString)& aSchemaIdentifier) ;
+  
+  Standard_EXPORT   Handle(Interface_HArray1OfHAsciiString) SchemaIdentifiers()  const;
+  
+  //! Returns the value of the schema_identifier attribute for the file_schema entity.
+  Standard_EXPORT   Handle(TCollection_HAsciiString) SchemaIdentifiersValue (const Standard_Integer num)  const;
+  
+  //! Returns the number of values for the schema_identifier attribute in the file_schema entity.
+  Standard_EXPORT   Standard_Integer NbSchemaIdentifiers()  const;
+  
+  //! Add a subname of schema (if not yet in the list)
+  Standard_EXPORT   void AddSchemaIdentifier (const Handle(TCollection_HAsciiString)& aSchemaIdentifier) ;
+  
+  //! Checks whether there is a file_description entity. Returns True if there is one.
+  Standard_EXPORT   Standard_Boolean HasFd()  const;
+  
+  //! Returns the file_description
+  //! entity. Returns an empty entity if the file_description entity is not initialized.
+  Standard_EXPORT   Handle(HeaderSection_FileDescription) FdValue()  const;
+  
+  Standard_EXPORT   void SetDescription (const Handle(Interface_HArray1OfHAsciiString)& aDescription) ;
+  
+  Standard_EXPORT   void SetDescriptionValue (const Standard_Integer num, const Handle(TCollection_HAsciiString)& aDescription) ;
+  
+  Standard_EXPORT   Handle(Interface_HArray1OfHAsciiString) Description()  const;
+  
+  //! Returns the value of the
+  //! description attribute for the file_description entity.
+  Standard_EXPORT   Handle(TCollection_HAsciiString) DescriptionValue (const Standard_Integer num)  const;
+  
+  //! Returns the number of values for
+  //! the file_description entity in the STEP file header.
+  Standard_EXPORT   Standard_Integer NbDescription()  const;
+  
+  Standard_EXPORT   void SetImplementationLevel (const Handle(TCollection_HAsciiString)& aImplementationLevel) ;
+  
+  //! Returns the value of the
+  //! implementation_level attribute for the file_description entity.
+  Standard_EXPORT   Handle(TCollection_HAsciiString) ImplementationLevel()  const;
 
 
 
@@ -182,10 +182,10 @@ private:
 
 
 
-Standard_Boolean done;
-Handle_HeaderSection_FileName fn;
-Handle_HeaderSection_FileSchema fs;
-Handle_HeaderSection_FileDescription fd;
+  Standard_Boolean done;
+  Handle(HeaderSection_FileName) fn;
+  Handle(HeaderSection_FileSchema) fs;
+  Handle(HeaderSection_FileDescription) fd;
 
 
 };
@@ -194,7 +194,6 @@ Handle_HeaderSection_FileDescription fd;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _APIHeaderSection_MakeHeader_HeaderFile

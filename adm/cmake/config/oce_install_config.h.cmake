@@ -10,21 +10,9 @@
 ****************************************************************/
 
 
-
-#cmakedefine OCE_HAVE_IOMANIP 1
-#cmakedefine OCE_HAVE_IOMANIP_H 1
-
-#cmakedefine OCE_HAVE_FSTREAM 1
-#cmakedefine OCE_HAVE_FSTREAM_H 1
-
-#cmakedefine OCE_HAVE_IOSTREAM 1
-#cmakedefine OCE_HAVE_IOSTREAM_H 1
-
-#cmakedefine OCE_HAVE_LIMITS 1
-#cmakedefine OCE_HAVE_CLIMITS 1
-#cmakedefine OCE_HAVE_LIMITS_H 1
-
 #cmakedefine MACOSX_USE_GLX
+
+#cmakedefine OCE_HAVE_ATOMIC_H
 
 #cmakedefine OCE_IS_DUPLICATE_UINT32_T
 

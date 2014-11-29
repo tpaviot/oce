@@ -1,27 +1,9 @@
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _Storage_BaseDriver_HeaderFile
 #include <Storage_BaseDriver.hxx>
-#endif
-#ifndef _Storage_Data_HeaderFile
 #include <Storage_Data.hxx>
-#endif
-#ifndef _OSD_Path_HeaderFile
 #include <OSD_Path.hxx>
-#endif
-#ifndef _OSD_FileIterator_HeaderFile
 #include <OSD_FileIterator.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _Resource_Manager_HeaderFile
 #include <Resource_Manager.hxx>
-#endif
-#ifndef _UTL_HeaderFile
 #include <UTL.hxx>
-#endif

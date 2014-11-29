@@ -5,21 +5,13 @@
 
 #include <StepRepr_SequenceOfRepresentationItem.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StepRepr_RepresentationItem_HeaderFile
 #include <StepRepr_RepresentationItem.hxx>
-#endif
-#ifndef _StepRepr_SequenceNodeOfSequenceOfRepresentationItem_HeaderFile
 #include <StepRepr_SequenceNodeOfSequenceOfRepresentationItem.hxx>
-#endif
  
 
-#define SeqItem Handle_StepRepr_RepresentationItem
+#define SeqItem Handle(StepRepr_RepresentationItem)
 #define SeqItem_hxx <StepRepr_RepresentationItem.hxx>
 #define TCollection_SequenceNode StepRepr_SequenceNodeOfSequenceOfRepresentationItem
 #define TCollection_SequenceNode_hxx <StepRepr_SequenceNodeOfSequenceOfRepresentationItem.hxx>

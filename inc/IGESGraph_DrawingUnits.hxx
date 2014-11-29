@@ -6,57 +6,49 @@
 #ifndef _IGESGraph_DrawingUnits_HeaderFile
 #define _IGESGraph_DrawingUnits_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESGraph_DrawingUnits_HeaderFile
 #include <Handle_IGESGraph_DrawingUnits.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TCollection_HAsciiString;
 
 
-//! defines IGESDrawingUnits, Type <406> Form <17> <br>
-//!          in package IGESGraph <br>
-//! <br>
-//!          Specifies the drawing space units as outlined <br>
-//!          in the Drawing entity <br>
-class IGESGraph_DrawingUnits : public IGESData_IGESEntity {
+//! defines IGESDrawingUnits, Type <406> Form <17>
+//! in package IGESGraph
+//!
+//! Specifies the drawing space units as outlined
+//! in the Drawing entity
+class IGESGraph_DrawingUnits : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESGraph_DrawingUnits();
-  //! This method is used to set the fields of the class <br>
-//!           DrawingUnits <br>
-//!      - nbProps : Number of property values (NP = 2) <br>
-//!      - aFlag   : DrawingUnits Flag <br>
-//!      - aUnit   : DrawingUnits Name <br>
-  Standard_EXPORT     void Init(const Standard_Integer nbProps,const Standard_Integer aFlag,const Handle(TCollection_HAsciiString)& aUnit) ;
-  //! returns the number of property values in <me> <br>
-  Standard_EXPORT     Standard_Integer NbPropertyValues() const;
-  //! returns the drawing space units of <me> <br>
-  Standard_EXPORT     Standard_Integer Flag() const;
-  //! returns the name of the drawing space units of <me> <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Unit() const;
-  //! Computes the value of the unit, in meters, according Flag <br>
-//!           (same values as for GlobalSection from IGESData) <br>
-  Standard_EXPORT     Standard_Real UnitValue() const;
+  Standard_EXPORT IGESGraph_DrawingUnits();
+  
+  //! This method is used to set the fields of the class
+  //! DrawingUnits
+  //! - nbProps : Number of property values (NP = 2)
+  //! - aFlag   : DrawingUnits Flag
+  //! - aUnit   : DrawingUnits Name
+  Standard_EXPORT   void Init (const Standard_Integer nbProps, const Standard_Integer aFlag, const Handle(TCollection_HAsciiString)& aUnit) ;
+  
+  //! returns the number of property values in <me>
+  Standard_EXPORT   Standard_Integer NbPropertyValues()  const;
+  
+  //! returns the drawing space units of <me>
+  Standard_EXPORT   Standard_Integer Flag()  const;
+  
+  //! returns the name of the drawing space units of <me>
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Unit()  const;
+  
+  //! Computes the value of the unit, in meters, according Flag
+  //! (same values as for GlobalSection from IGESData)
+  Standard_EXPORT   Standard_Real UnitValue()  const;
 
 
 
@@ -71,9 +63,9 @@ protected:
 private: 
 
 
-Standard_Integer theNbPropertyValues;
-Standard_Integer theFlag;
-Handle_TCollection_HAsciiString theUnit;
+  Standard_Integer theNbPropertyValues;
+  Standard_Integer theFlag;
+  Handle(TCollection_HAsciiString) theUnit;
 
 
 };
@@ -82,7 +74,6 @@ Handle_TCollection_HAsciiString theUnit;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGraph_DrawingUnits_HeaderFile

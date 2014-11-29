@@ -33,7 +33,7 @@ is
 
     Create(W: Wire from TopoDS)
 
-        returns mutable Wire from BRepCheck;
+        returns Wire from BRepCheck;
 
 
     InContext(me: mutable; ContextShape: Shape from TopoDS);
@@ -122,7 +122,11 @@ is
         ---Purpose: set SelfIntersect() to be checked
 	is static;
 
+    SetStatus(me: mutable;
+              theStatus:Status from BRepCheck)
 
+          --- Purpose: Sets status of Wire;
+	is static;
 
 fields
 

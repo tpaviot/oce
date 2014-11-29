@@ -6,28 +6,14 @@
 #ifndef _TShort_HArray1OfShortReal_HeaderFile
 #define _TShort_HArray1OfShortReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TShort_HArray1OfShortReal_HeaderFile
 #include <Handle_TShort_HArray1OfShortReal.hxx>
-#endif
 
-#ifndef _TShort_Array1OfShortReal_HeaderFile
 #include <TShort_Array1OfShortReal.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -36,32 +22,33 @@ class TShort_Array1OfShortReal;
 
 
 
-class TShort_HArray1OfShortReal : public MMgt_TShared {
+class TShort_HArray1OfShortReal : public MMgt_TShared
+{
 
 public:
 
   
-      TShort_HArray1OfShortReal(const Standard_Integer Low,const Standard_Integer Up);
+    TShort_HArray1OfShortReal(const Standard_Integer Low, const Standard_Integer Up);
   
-      TShort_HArray1OfShortReal(const Standard_Integer Low,const Standard_Integer Up,const Standard_ShortReal& V);
+    TShort_HArray1OfShortReal(const Standard_Integer Low, const Standard_Integer Up, const Standard_ShortReal& V);
   
-        void Init(const Standard_ShortReal& V) ;
+      void Init (const Standard_ShortReal& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Standard_ShortReal& Value) ;
+      void SetValue (const Standard_Integer Index, const Standard_ShortReal& Value) ;
   
-       const Standard_ShortReal& Value(const Standard_Integer Index) const;
+     const  Standard_ShortReal& Value (const Standard_Integer Index)  const;
   
-        Standard_ShortReal& ChangeValue(const Standard_Integer Index) ;
+      Standard_ShortReal& ChangeValue (const Standard_Integer Index) ;
   
-       const TShort_Array1OfShortReal& Array1() const;
+     const  TShort_Array1OfShortReal& Array1()  const;
   
-        TShort_Array1OfShortReal& ChangeArray1() ;
+      TShort_Array1OfShortReal& ChangeArray1() ;
 
 
 
@@ -76,7 +63,7 @@ protected:
 private: 
 
 
-TShort_Array1OfShortReal myArray;
+  TShort_Array1OfShortReal myArray;
 
 
 };
@@ -102,7 +89,6 @@ TShort_Array1OfShortReal myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TShort_HArray1OfShortReal_HeaderFile

@@ -6,8 +6,11 @@
 #ifndef _ChFiDS_ErrorStatus_HeaderFile
 #define _ChFiDS_ErrorStatus_HeaderFile
 
-//!--- Purpose statuts concernant la cause de l'erreur <br>
-enum ChFiDS_ErrorStatus {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! --- Purpose statuts concernant la cause de l'erreur
+enum ChFiDS_ErrorStatus
+{
 ChFiDS_Ok,
 ChFiDS_Error,
 ChFiDS_WalkingFailure,
@@ -15,8 +18,4 @@ ChFiDS_StartsolFailure,
 ChFiDS_TwistedSurface
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _ChFiDS_ErrorStatus_HeaderFile

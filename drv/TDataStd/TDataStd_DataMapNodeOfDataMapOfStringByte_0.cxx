@@ -5,19 +5,11 @@
 
 #include <TDataStd_DataMapNodeOfDataMapOfStringByte.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _TDataStd_DataMapOfStringByte_HeaderFile
 #include <TDataStd_DataMapOfStringByte.hxx>
-#endif
-#ifndef _TDataStd_DataMapIteratorOfDataMapOfStringByte_HeaderFile
 #include <TDataStd_DataMapIteratorOfDataMapOfStringByte.hxx>
-#endif
 
  
 

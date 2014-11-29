@@ -6,28 +6,14 @@
 #ifndef _TDataXtd_Placement_HeaderFile
 #define _TDataXtd_Placement_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDataXtd_Placement_HeaderFile
 #include <Handle_TDataXtd_Placement.hxx>
-#endif
 
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class Standard_GUID;
 class TDF_Label;
 class TDF_Attribute;
@@ -35,29 +21,33 @@ class TDF_RelocationTable;
 
 
 
-class TDataXtd_Placement : public TDF_Attribute {
+class TDataXtd_Placement : public TDF_Attribute
+{
 
 public:
 
-  //! class methods <br>
-//!          ============= <br>
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
-  //! Find, or    create,   an Placement  attribute.     the <br>
-//!          Placement attribute is returned. <br>//! Placement methods <br>
-//!          ================= <br>
-  Standard_EXPORT   static  Handle_TDataXtd_Placement Set(const TDF_Label& label) ;
   
-  Standard_EXPORT   TDataXtd_Placement();
+  //! class methods
+  //! =============
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
   
-  Standard_EXPORT    const Standard_GUID& ID() const;
+  //! Find, or    create,   an Placement  attribute.     the
+  //! Placement attribute is returned.
+  //! Placement methods
+  //! =================
+  Standard_EXPORT static   Handle(TDataXtd_Placement) Set (const TDF_Label& label) ;
   
-  Standard_EXPORT     void Restore(const Handle(TDF_Attribute)& With) ;
+  Standard_EXPORT TDataXtd_Placement();
   
-  Standard_EXPORT     Handle_TDF_Attribute NewEmpty() const;
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
   
-  Standard_EXPORT     void Paste(const Handle(TDF_Attribute)& Into,const Handle(TDF_RelocationTable)& RT) const;
+  Standard_EXPORT   void Restore (const Handle(TDF_Attribute)& With) ;
   
-  Standard_EXPORT   virtual  Standard_OStream& Dump(Standard_OStream& anOS) const;
+  Standard_EXPORT   Handle(TDF_Attribute) NewEmpty()  const;
+  
+  Standard_EXPORT   void Paste (const Handle(TDF_Attribute)& Into, const Handle(TDF_RelocationTable)& RT)  const;
+  
+  Standard_EXPORT virtual   Standard_OStream& Dump (Standard_OStream& anOS)  const;
 
 
 
@@ -80,7 +70,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataXtd_Placement_HeaderFile

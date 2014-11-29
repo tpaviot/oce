@@ -6,38 +6,27 @@
 #ifndef _HatchGen_SequenceNodeOfPointsOnHatching_HeaderFile
 #define _HatchGen_SequenceNodeOfPointsOnHatching_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_HatchGen_SequenceNodeOfPointsOnHatching_HeaderFile
 #include <Handle_HatchGen_SequenceNodeOfPointsOnHatching.hxx>
-#endif
 
-#ifndef _HatchGen_PointOnHatching_HeaderFile
 #include <HatchGen_PointOnHatching.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class HatchGen_PointOnHatching;
 class HatchGen_PointsOnHatching;
 
 
 
-class HatchGen_SequenceNodeOfPointsOnHatching : public TCollection_SeqNode {
+class HatchGen_SequenceNodeOfPointsOnHatching : public TCollection_SeqNode
+{
 
 public:
 
   
-      HatchGen_SequenceNodeOfPointsOnHatching(const HatchGen_PointOnHatching& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    HatchGen_SequenceNodeOfPointsOnHatching(const HatchGen_PointOnHatching& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        HatchGen_PointOnHatching& Value() const;
+      HatchGen_PointOnHatching& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-HatchGen_PointOnHatching myValue;
+  HatchGen_PointOnHatching myValue;
 
 
 };
@@ -78,7 +67,6 @@ HatchGen_PointOnHatching myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HatchGen_SequenceNodeOfPointsOnHatching_HeaderFile

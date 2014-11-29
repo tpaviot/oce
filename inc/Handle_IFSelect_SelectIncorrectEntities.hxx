@@ -6,22 +6,15 @@
 #ifndef _Handle_IFSelect_SelectIncorrectEntities_HeaderFile
 #define _Handle_IFSelect_SelectIncorrectEntities_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IFSelect_SelectFlag_HeaderFile
 #include <Handle_IFSelect_SelectFlag.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IFSelect_SelectFlag);
 class IFSelect_SelectIncorrectEntities;
 
-DEFINE_STANDARD_HANDLE(IFSelect_SelectIncorrectEntities,IFSelect_SelectFlag)
+DEFINE_STANDARD_HANDLE(IFSelect_SelectIncorrectEntities, IFSelect_SelectFlag)
 
-#endif
+#endif // _Handle_IFSelect_SelectIncorrectEntities_HeaderFile

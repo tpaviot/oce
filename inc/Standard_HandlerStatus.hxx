@@ -6,15 +6,14 @@
 #ifndef _Standard_HandlerStatus_HeaderFile
 #define _Standard_HandlerStatus_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Standard_HandlerStatus {
+
+enum Standard_HandlerStatus
+{
 Standard_HandlerVoid,
 Standard_HandlerJumped,
 Standard_HandlerProcessed
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Standard_HandlerStatus_HeaderFile

@@ -5,9 +5,7 @@
 
 #include <StepFEA_FeaAxis2Placement3d.jxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
 
  

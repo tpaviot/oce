@@ -6,40 +6,33 @@
 #ifndef _IGESBasic_ExternalRefFile_HeaderFile
 #define _IGESBasic_ExternalRefFile_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESBasic_ExternalRefFile_HeaderFile
 #include <Handle_IGESBasic_ExternalRefFile.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
 class TCollection_HAsciiString;
 
 
-//! defines ExternalRefFile, Type <416> Form <1> <br>
-//!          in package IGESBasic <br>
-//!          Used when entire reference file is to be instanced <br>
-class IGESBasic_ExternalRefFile : public IGESData_IGESEntity {
+//! defines ExternalRefFile, Type <416> Form <1>
+//! in package IGESBasic
+//! Used when entire reference file is to be instanced
+class IGESBasic_ExternalRefFile : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESBasic_ExternalRefFile();
-  //! This method is used to set the field of the class <br>
-//!           ExternalRefFile <br>
-//!       - aFileIdent : External Reference File Identifier <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aFileIdent) ;
-  //! returns External Reference File Identifier <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString FileId() const;
+  Standard_EXPORT IGESBasic_ExternalRefFile();
+  
+  //! This method is used to set the field of the class
+  //! ExternalRefFile
+  //! - aFileIdent : External Reference File Identifier
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aFileIdent) ;
+  
+  //! returns External Reference File Identifier
+  Standard_EXPORT   Handle(TCollection_HAsciiString) FileId()  const;
 
 
 
@@ -54,7 +47,7 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString theExtRefFileIdentifier;
+  Handle(TCollection_HAsciiString) theExtRefFileIdentifier;
 
 
 };
@@ -63,7 +56,6 @@ Handle_TCollection_HAsciiString theExtRefFileIdentifier;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESBasic_ExternalRefFile_HeaderFile

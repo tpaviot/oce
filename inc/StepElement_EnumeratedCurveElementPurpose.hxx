@@ -6,8 +6,11 @@
 #ifndef _StepElement_EnumeratedCurveElementPurpose_HeaderFile
 #define _StepElement_EnumeratedCurveElementPurpose_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepElement_EnumeratedCurveElementPurpose {
+
+enum StepElement_EnumeratedCurveElementPurpose
+{
 StepElement_Axial,
 StepElement_YYBending,
 StepElement_ZZBending,
@@ -17,8 +20,4 @@ StepElement_XZShear,
 StepElement_Warping
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepElement_EnumeratedCurveElementPurpose_HeaderFile

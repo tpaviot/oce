@@ -7,7 +7,6 @@
 #define _TDocStd_XLinkPtr_HeaderFile
 
 class TDocStd_XLink;
-
 typedef TDocStd_XLink* TDocStd_XLinkPtr;
 
-#endif
+#endif // _TDocStd_XLinkPtr_HeaderFile

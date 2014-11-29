@@ -6,74 +6,58 @@
 #ifndef _HLRAlgo_Intersection_HeaderFile
 #define _HLRAlgo_Intersection_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
-#endif
-#ifndef _TopAbs_State_HeaderFile
 #include <TopAbs_State.hxx>
-#endif
 
 
-//! Describes  an intersection  on   an edge to  hide. <br>
-//!          Contains a parameter and   a state (ON =   on  the <br>
-//!          face, OUT = above the face, IN = under the Face) <br>
-class HLRAlgo_Intersection  {
+//! Describes  an intersection  on   an edge to  hide.
+//! Contains a parameter and   a state (ON =   on  the
+//! face, OUT = above the face, IN = under the Face)
+class HLRAlgo_Intersection 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   HLRAlgo_Intersection();
+  Standard_EXPORT HLRAlgo_Intersection();
   
-  Standard_EXPORT   HLRAlgo_Intersection(const TopAbs_Orientation Ori,const Standard_Integer Lev,const Standard_Integer SegInd,const Standard_Integer Ind,const Standard_Real P,const Standard_ShortReal Tol,const TopAbs_State S);
+  Standard_EXPORT HLRAlgo_Intersection(const TopAbs_Orientation Ori, const Standard_Integer Lev, const Standard_Integer SegInd, const Standard_Integer Ind, const Standard_Real P, const Standard_ShortReal Tol, const TopAbs_State S);
   
-        void Orientation(const TopAbs_Orientation Ori) ;
+      void Orientation (const TopAbs_Orientation Ori) ;
   
-        TopAbs_Orientation Orientation() const;
+      TopAbs_Orientation Orientation()  const;
   
-        void Level(const Standard_Integer Lev) ;
+      void Level (const Standard_Integer Lev) ;
   
-        Standard_Integer Level() const;
+      Standard_Integer Level()  const;
   
-        void SegIndex(const Standard_Integer SegInd) ;
+      void SegIndex (const Standard_Integer SegInd) ;
   
-        Standard_Integer SegIndex() const;
+      Standard_Integer SegIndex()  const;
   
-        void Index(const Standard_Integer Ind) ;
+      void Index (const Standard_Integer Ind) ;
   
-        Standard_Integer Index() const;
+      Standard_Integer Index()  const;
   
-        void Parameter(const Standard_Real P) ;
+      void Parameter (const Standard_Real P) ;
   
-        Standard_Real Parameter() const;
+      Standard_Real Parameter()  const;
   
-        void Tolerance(const Standard_ShortReal T) ;
+      void Tolerance (const Standard_ShortReal T) ;
   
-        Standard_ShortReal Tolerance() const;
+      Standard_ShortReal Tolerance()  const;
   
-        void State(const TopAbs_State S) ;
+      void State (const TopAbs_State S) ;
   
-        TopAbs_State State() const;
-
+      TopAbs_State State()  const;
 
 
 
@@ -88,13 +72,13 @@ private:
 
 
 
-TopAbs_Orientation myOrien;
-Standard_Integer mySegIndex;
-Standard_Integer myIndex;
-Standard_Integer myLevel;
-Standard_Real myParam;
-Standard_ShortReal myToler;
-TopAbs_State myState;
+  TopAbs_Orientation myOrien;
+  Standard_Integer mySegIndex;
+  Standard_Integer myIndex;
+  Standard_Integer myLevel;
+  Standard_Real myParam;
+  Standard_ShortReal myToler;
+  TopAbs_State myState;
 
 
 };
@@ -104,7 +88,6 @@ TopAbs_State myState;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRAlgo_Intersection_HeaderFile

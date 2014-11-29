@@ -1,9 +1,3 @@
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepBasic_Group_HeaderFile
 #include <StepBasic_Group.hxx>
-#endif
-#ifndef _StepBasic_GroupRelationship_HeaderFile
 #include <StepBasic_GroupRelationship.hxx>
-#endif

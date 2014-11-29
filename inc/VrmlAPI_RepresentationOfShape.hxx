@@ -6,15 +6,22 @@
 #ifndef _VrmlAPI_RepresentationOfShape_HeaderFile
 #define _VrmlAPI_RepresentationOfShape_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum VrmlAPI_RepresentationOfShape {
+//! Identifies the representation of the shape written
+//! to a VRML file. The available options are :
+//! -      VrmlAPI_ShadedRepresentation :
+//! the shape is translated with a shaded representation.
+//! -      VrmlAPI_WireFrameRepresentation :
+//! the shape is translated with a wireframe representation.
+//! -      VrmlAPI_BothRepresentation : the shape is translated
+//! to VRML format with both representations : shaded and
+//! wireframe. This is the default option.
+enum VrmlAPI_RepresentationOfShape
+{
 VrmlAPI_ShadedRepresentation,
 VrmlAPI_WireFrameRepresentation,
 VrmlAPI_BothRepresentation
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _VrmlAPI_RepresentationOfShape_HeaderFile

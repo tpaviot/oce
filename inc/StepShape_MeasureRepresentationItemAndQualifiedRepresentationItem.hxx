@@ -6,34 +6,16 @@
 #ifndef _StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem_HeaderFile
 #define _StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem_HeaderFile
 #include <Handle_StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_MeasureWithUnit_HeaderFile
 #include <Handle_StepBasic_MeasureWithUnit.hxx>
-#endif
-#ifndef _Handle_StepShape_HArray1OfValueQualifier_HeaderFile
 #include <Handle_StepShape_HArray1OfValueQualifier.hxx>
-#endif
-#ifndef _StepRepr_RepresentationItem_HeaderFile
 #include <StepRepr_RepresentationItem.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepBasic_MeasureValueMember_HeaderFile
 #include <Handle_StepBasic_MeasureValueMember.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StepBasic_MeasureWithUnit;
 class StepShape_HArray1OfValueQualifier;
 class TCollection_HAsciiString;
@@ -42,31 +24,32 @@ class StepBasic_Unit;
 class StepShape_ValueQualifier;
 
 
-//! Added for Dimensional Tolerances <br>
-//!           Complex Type between MeasureRepresentationItem and <br>
-//!             QualifiedRepresentationItem <br>
-class StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem : public StepRepr_RepresentationItem {
+//! Added for Dimensional Tolerances
+//! Complex Type between MeasureRepresentationItem and
+//! QualifiedRepresentationItem
+class StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem : public StepRepr_RepresentationItem
+{
 
 public:
 
   
-  Standard_EXPORT   StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem();
+  Standard_EXPORT StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem();
   
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepBasic_MeasureValueMember)& aValueComponent,const StepBasic_Unit& aUnitComponent,const Handle(StepShape_HArray1OfValueQualifier)& qualifiers) ;
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepBasic_MeasureValueMember)& aValueComponent, const StepBasic_Unit& aUnitComponent, const Handle(StepShape_HArray1OfValueQualifier)& qualifiers) ;
   
-  Standard_EXPORT     void SetMeasure(const Handle(StepBasic_MeasureWithUnit)& Measure) ;
+  Standard_EXPORT   void SetMeasure (const Handle(StepBasic_MeasureWithUnit)& Measure) ;
   
-  Standard_EXPORT     Handle_StepBasic_MeasureWithUnit Measure() const;
+  Standard_EXPORT   Handle(StepBasic_MeasureWithUnit) Measure()  const;
   
-  Standard_EXPORT     Handle_StepShape_HArray1OfValueQualifier Qualifiers() const;
+  Standard_EXPORT   Handle(StepShape_HArray1OfValueQualifier) Qualifiers()  const;
   
-  Standard_EXPORT     Standard_Integer NbQualifiers() const;
+  Standard_EXPORT   Standard_Integer NbQualifiers()  const;
   
-  Standard_EXPORT     void SetQualifiers(const Handle(StepShape_HArray1OfValueQualifier)& qualifiers) ;
+  Standard_EXPORT   void SetQualifiers (const Handle(StepShape_HArray1OfValueQualifier)& qualifiers) ;
   
-  Standard_EXPORT     StepShape_ValueQualifier QualifiersValue(const Standard_Integer num) const;
+  Standard_EXPORT   StepShape_ValueQualifier QualifiersValue (const Standard_Integer num)  const;
   
-  Standard_EXPORT     void SetQualifiersValue(const Standard_Integer num,const StepShape_ValueQualifier& aqualifier) ;
+  Standard_EXPORT   void SetQualifiersValue (const Standard_Integer num, const StepShape_ValueQualifier& aqualifier) ;
 
 
 
@@ -81,8 +64,8 @@ protected:
 private: 
 
 
-Handle_StepBasic_MeasureWithUnit myMeasure;
-Handle_StepShape_HArray1OfValueQualifier theQualifiers;
+  Handle(StepBasic_MeasureWithUnit) myMeasure;
+  Handle(StepShape_HArray1OfValueQualifier) theQualifiers;
 
 
 };
@@ -91,7 +74,6 @@ Handle_StepShape_HArray1OfValueQualifier theQualifiers;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem_HeaderFile

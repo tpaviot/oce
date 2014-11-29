@@ -6,8 +6,11 @@
 #ifndef _TopOpeBRep_TypeLineCurve_HeaderFile
 #define _TopOpeBRep_TypeLineCurve_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum TopOpeBRep_TypeLineCurve {
+
+enum TopOpeBRep_TypeLineCurve
+{
 TopOpeBRep_ANALYTIC,
 TopOpeBRep_RESTRICTION,
 TopOpeBRep_WALKING,
@@ -19,8 +22,4 @@ TopOpeBRep_HYPERBOLA,
 TopOpeBRep_OTHERTYPE
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _TopOpeBRep_TypeLineCurve_HeaderFile

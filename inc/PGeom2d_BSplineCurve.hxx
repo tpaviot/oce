@@ -6,80 +6,77 @@
 #ifndef _PGeom2d_BSplineCurve_HeaderFile
 #define _PGeom2d_BSplineCurve_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom2d_BSplineCurve_HeaderFile
 #include <Handle_PGeom2d_BSplineCurve.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_PColgp_HArray1OfPnt2d_HeaderFile
 #include <Handle_PColgp_HArray1OfPnt2d.hxx>
-#endif
-#ifndef _Handle_PColStd_HArray1OfReal_HeaderFile
 #include <Handle_PColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Handle_PColStd_HArray1OfInteger_HeaderFile
 #include <Handle_PColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _PGeom2d_BoundedCurve_HeaderFile
 #include <PGeom2d_BoundedCurve.hxx>
-#endif
 class PColgp_HArray1OfPnt2d;
 class PColStd_HArray1OfReal;
 class PColStd_HArray1OfInteger;
 
 
-class PGeom2d_BSplineCurve : public PGeom2d_BoundedCurve {
+class PGeom2d_BSplineCurve : public PGeom2d_BoundedCurve
+{
 
 public:
 
-  //! Creates a BSplineCurve with default values. <br>
-  Standard_EXPORT   PGeom2d_BSplineCurve();
-  //! Creates a BSplineCurve with these field values. <br>
-  Standard_EXPORT   PGeom2d_BSplineCurve(const Standard_Boolean aRational,const Standard_Boolean aPeriodic,const Standard_Integer aSpineDegree,const Handle(PColgp_HArray1OfPnt2d)& aPoles,const Handle(PColStd_HArray1OfReal)& aWeights,const Handle(PColStd_HArray1OfReal)& aKnots,const Handle(PColStd_HArray1OfInteger)& aMultiplicities);
-  //!Set the field periodic with <aPeriodic>. <br>
-  Standard_EXPORT     void Periodic(const Standard_Boolean aPeriodic) ;
-  //!Returns the value of the field periodic. <br>
-  Standard_EXPORT     Standard_Boolean Periodic() const;
-  //!Set  the   value  of  the    field rational   with <br>
-//!         <aRational>. <br>
-  Standard_EXPORT     void Rational(const Standard_Boolean aRational) ;
-  //!Returns the value of the field rational. <br>
-  Standard_EXPORT     Standard_Boolean Rational() const;
-  //! Set the value of the field spineDegree with <aSpineDegree>. <br>
-  Standard_EXPORT     void SpineDegree(const Standard_Integer aSpineDegree) ;
-  //! Returns the value of the field spineDegree. <br>
-  Standard_EXPORT     Standard_Integer SpineDegree() const;
-  //! Set the value of the field poles with <aPoles>. <br>
-  Standard_EXPORT     void Poles(const Handle(PColgp_HArray1OfPnt2d)& aPoles) ;
-  //! Returns the value of the field poles. <br>
-  Standard_EXPORT     Handle_PColgp_HArray1OfPnt2d Poles() const;
-  //! Set the value of the field weights with <aWeights>. <br>
-  Standard_EXPORT     void Weights(const Handle(PColStd_HArray1OfReal)& aWeights) ;
-  //! Returns the the value of the field weights. <br>
-  Standard_EXPORT     Handle_PColStd_HArray1OfReal Weights() const;
-  //!  Set the field knots with <aKnots>. <br>
-//!  The multiplicity of the knots are not modified. <br>
-  Standard_EXPORT     void Knots(const Handle(PColStd_HArray1OfReal)& aKnots) ;
-  //! returns the value of the field knots. <br>
-  Standard_EXPORT     Handle_PColStd_HArray1OfReal Knots() const;
-  //!  Set the field multiplicities with <aMultiplicities>. <br>
-  Standard_EXPORT     void Multiplicities(const Handle(PColStd_HArray1OfInteger)& aMultiplicities) ;
-  //! returns the value of the field multiplicities. <br>
-  Standard_EXPORT     Handle_PColStd_HArray1OfInteger Multiplicities() const;
+  
+  //! Creates a BSplineCurve with default values.
+  Standard_EXPORT PGeom2d_BSplineCurve();
+  
+  //! Creates a BSplineCurve with these field values.
+  Standard_EXPORT PGeom2d_BSplineCurve(const Standard_Boolean aRational, const Standard_Boolean aPeriodic, const Standard_Integer aSpineDegree, const Handle(PColgp_HArray1OfPnt2d)& aPoles, const Handle(PColStd_HArray1OfReal)& aWeights, const Handle(PColStd_HArray1OfReal)& aKnots, const Handle(PColStd_HArray1OfInteger)& aMultiplicities);
+  
+  //! Set the field periodic with <aPeriodic>.
+  Standard_EXPORT   void Periodic (const Standard_Boolean aPeriodic) ;
+  
+  //! Returns the value of the field periodic.
+  Standard_EXPORT   Standard_Boolean Periodic()  const;
+  
+  //! Set  the   value  of  the    field rational   with
+  //! <aRational>.
+  Standard_EXPORT   void Rational (const Standard_Boolean aRational) ;
+  
+  //! Returns the value of the field rational.
+  Standard_EXPORT   Standard_Boolean Rational()  const;
+  
+  //! Set the value of the field spineDegree with <aSpineDegree>.
+  Standard_EXPORT   void SpineDegree (const Standard_Integer aSpineDegree) ;
+  
+  //! Returns the value of the field spineDegree.
+  Standard_EXPORT   Standard_Integer SpineDegree()  const;
+  
+  //! Set the value of the field poles with <aPoles>.
+  Standard_EXPORT   void Poles (const Handle(PColgp_HArray1OfPnt2d)& aPoles) ;
+  
+  //! Returns the value of the field poles.
+  Standard_EXPORT   Handle(PColgp_HArray1OfPnt2d) Poles()  const;
+  
+  //! Set the value of the field weights with <aWeights>.
+  Standard_EXPORT   void Weights (const Handle(PColStd_HArray1OfReal)& aWeights) ;
+  
+  //! Returns the the value of the field weights.
+  Standard_EXPORT   Handle(PColStd_HArray1OfReal) Weights()  const;
+  
+  //! Set the field knots with <aKnots>.
+  //! The multiplicity of the knots are not modified.
+  Standard_EXPORT   void Knots (const Handle(PColStd_HArray1OfReal)& aKnots) ;
+  
+  //! returns the value of the field knots.
+  Standard_EXPORT   Handle(PColStd_HArray1OfReal) Knots()  const;
+  
+  //! Set the field multiplicities with <aMultiplicities>.
+  Standard_EXPORT   void Multiplicities (const Handle(PColStd_HArray1OfInteger)& aMultiplicities) ;
+  
+  //! returns the value of the field multiplicities.
+  Standard_EXPORT   Handle(PColStd_HArray1OfInteger) Multiplicities()  const;
 
 PGeom2d_BSplineCurve(const Storage_stCONSTclCOM& a) : PGeom2d_BoundedCurve(a)
 {
@@ -112,13 +109,13 @@ protected:
 private: 
 
 
-Standard_Boolean rational;
-Standard_Boolean periodic;
-Standard_Integer spineDegree;
-Handle_PColgp_HArray1OfPnt2d poles;
-Handle_PColStd_HArray1OfReal weights;
-Handle_PColStd_HArray1OfReal knots;
-Handle_PColStd_HArray1OfInteger multiplicities;
+  Standard_Boolean rational;
+  Standard_Boolean periodic;
+  Standard_Integer spineDegree;
+  Handle(PColgp_HArray1OfPnt2d) poles;
+  Handle(PColStd_HArray1OfReal) weights;
+  Handle(PColStd_HArray1OfReal) knots;
+  Handle(PColStd_HArray1OfInteger) multiplicities;
 
 
 };
@@ -127,7 +124,6 @@ Handle_PColStd_HArray1OfInteger multiplicities;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom2d_BSplineCurve_HeaderFile

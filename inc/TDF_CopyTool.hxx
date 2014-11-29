@@ -6,25 +6,13 @@
 #ifndef _TDF_CopyTool_HeaderFile
 #define _TDF_CopyTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_TDF_DataSet_HeaderFile
 #include <Handle_TDF_DataSet.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TDF_DataSet;
 class TDF_RelocationTable;
 class TDF_IDFilter;
@@ -35,68 +23,71 @@ class TDF_LabelMap;
 class TDF_AttributeMap;
 
 
-//! This class provides services to build, copy or <br>
-//!          paste a set of information. <br>
-//! <br>
-//!          Copy methods: <br>
-//!          ------------- <br>
-//! <br>
-//!          * Copy(aSourceDataSet, aTargetLabel, <br>
-//!          aRelocationTable) copies a source DataSet under <br>
-//!          its target place (see below: IMPORTANT NOTICE 1). <br>
-//! <br>
-//!          * Copy(aSourceDataSet, anTargetLabel, <br>
-//!          aRelocationTable, aFilter) does the same job as <br>
-//!          the previous method. But <aFilter> gives a list of <br>
-//!          IDs for which a target attribute prevails over a <br>
-//!          source one. In this special case, the source <br>
-//!          attribute will be copied only if there will be no <br>
-//!          target attribute. <br>
-//! <br>
-//! <br>
-//!          IMPORTANT NOTICE : Label pre-binding <br>
-//!          ------------------ <br>
-//! <br>
-//!          For it is possible to copy root labels in another <br>
-//!          place in the same Data or in a different one with <br>
-//!          other tags, it is necessary to inform the Copy <br>
-//!          algorithm about the target place. To do so: <br>
-//! <br>
-//!          * first get or create new target root labels; <br>
-//! <br>
-//!          * then bind them with the source root labels using <br>
-//!          the relocation table method: <br>
-//!          SetRelocation(aSourceLabel, aTargetLabel); <br>
-//! <br>
-//!          * finally call Copy(...) with the relocation table <br>
-//!          previously set. In this way, this method will take <br>
-//!          these relocations in account. <br>
-class TDF_CopyTool  {
+//! This class provides services to build, copy or
+//! paste a set of information.
+//!
+//! Copy methods:
+//! -------------
+//!
+//! * Copy(aSourceDataSet, aTargetLabel,
+//! aRelocationTable) copies a source DataSet under
+//! its target place (see below: IMPORTANT NOTICE 1).
+//!
+//! * Copy(aSourceDataSet, anTargetLabel,
+//! aRelocationTable, aFilter) does the same job as
+//! the previous method. But <aFilter> gives a list of
+//! IDs for which a target attribute prevails over a
+//! source one. In this special case, the source
+//! attribute will be copied only if there will be no
+//! target attribute.
+//!
+//! IMPORTANT NOTICE : Label pre-binding
+//! ------------------
+//!
+//! For it is possible to copy root labels in another
+//! place in the same Data or in a different one with
+//! other tags, it is necessary to inform the Copy
+//! algorithm about the target place. To do so:
+//!
+//! * first get or create new target root labels;
+//!
+//! * then bind them with the source root labels using
+//! the relocation table method:
+//! SetRelocation(aSourceLabel, aTargetLabel);
+//!
+//! * finally call Copy(...) with the relocation table
+//! previously set. In this way, this method will take
+//! these relocations in account.
+class TDF_CopyTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //!  Copy   <aSourceDataSet> with using  and  updating <br>
-//!           <aRelocationTable>. This  method ignores   target <br>
-//!          attributes privilege over source ones. <br>
-  Standard_EXPORT   static  void Copy(const Handle(TDF_DataSet)& aSourceDataSet,const Handle(TDF_RelocationTable)& aRelocationTable) ;
-  //!    Copy  <aSourceDataSet>  using      and updating <br>
-//!          <aRelocationTable>. Use <aPrivilegeFilter> to give <br>
-//!           a list  of   IDs for which  the target  attribute <br>
-//!          prevails over the source one. <br>
-  Standard_EXPORT   static  void Copy(const Handle(TDF_DataSet)& aSourceDataSet,const Handle(TDF_RelocationTable)& aRelocationTable,const TDF_IDFilter& aPrivilegeFilter) ;
-  //!   Copy    <aSourceDataSet>   using and    updating <br>
-//!          <aRelocationTable>. Use <aPrivilegeFilter> to give <br>
-//!           a  list of IDs   for which  the target  attribute <br>
-//!             prevails    over    the    source     one.   If <br>
-//!            <setSelfContained>   is   set  to   true,  every <br>
-//!          TDF_Reference will  be replaced  by the referenced <br>
-//!          structure according to <aRefFilter>. <br>
-//! <br>
-//!          NB: <aRefFilter> is used only if <br>
-//!          <setSelfContained> is true. <br>//! Internal root label copy recursive method. <br>
-  Standard_EXPORT   static  void Copy(const Handle(TDF_DataSet)& aSourceDataSet,const Handle(TDF_RelocationTable)& aRelocationTable,const TDF_IDFilter& aPrivilegeFilter,const TDF_IDFilter& aRefFilter,const Standard_Boolean setSelfContained) ;
-
+  
+  //! Copy   <aSourceDataSet> with using  and  updating
+  //! <aRelocationTable>. This  method ignores   target
+  //! attributes privilege over source ones.
+  Standard_EXPORT static   void Copy (const Handle(TDF_DataSet)& aSourceDataSet, const Handle(TDF_RelocationTable)& aRelocationTable) ;
+  
+  //! Copy  <aSourceDataSet>  using      and updating
+  //! <aRelocationTable>. Use <aPrivilegeFilter> to give
+  //! a list  of   IDs for which  the target  attribute
+  //! prevails over the source one.
+  Standard_EXPORT static   void Copy (const Handle(TDF_DataSet)& aSourceDataSet, const Handle(TDF_RelocationTable)& aRelocationTable, const TDF_IDFilter& aPrivilegeFilter) ;
+  
+  //! Copy    <aSourceDataSet>   using and    updating
+  //! <aRelocationTable>. Use <aPrivilegeFilter> to give
+  //! a  list of IDs   for which  the target  attribute
+  //! prevails    over    the    source     one.   If
+  //! <setSelfContained>   is   set  to   true,  every
+  //! TDF_Reference will  be replaced  by the referenced
+  //! structure according to <aRefFilter>.
+  //!
+  //! NB: <aRefFilter> is used only if
+  //! <setSelfContained> is true.
+  //! Internal root label copy recursive method.
+  Standard_EXPORT static   void Copy (const Handle(TDF_DataSet)& aSourceDataSet, const Handle(TDF_RelocationTable)& aRelocationTable, const TDF_IDFilter& aPrivilegeFilter, const TDF_IDFilter& aRefFilter, const Standard_Boolean setSelfContained) ;
 
 
 
@@ -109,10 +100,12 @@ protected:
 
 private:
 
-  //! Internal root label copy recursive method. <br>
-  Standard_EXPORT   static  void CopyLabels(const TDF_Label& aSLabel,TDF_Label& aTargetLabel,TDF_LabelDataMap& aLabMap,TDF_AttributeDataMap& aAttMap,const TDF_LabelMap& aSrcLabelMap,const TDF_AttributeMap& aSrcAttributeMap) ;
-  //! Internal attribute copy method. <br>
-  Standard_EXPORT   static  void CopyAttributes(const TDF_Label& aSLabel,TDF_Label& aTargetLabel,TDF_AttributeDataMap& aAttMap,const TDF_AttributeMap& aSrcAttributeMap) ;
+  
+  //! Internal root label copy recursive method.
+  Standard_EXPORT static   void CopyLabels (const TDF_Label& aSLabel, TDF_Label& aTargetLabel, TDF_LabelDataMap& aLabMap, TDF_AttributeDataMap& aAttMap, const TDF_LabelMap& aSrcLabelMap, const TDF_AttributeMap& aSrcAttributeMap) ;
+  
+  //! Internal attribute copy method.
+  Standard_EXPORT static   void CopyAttributes (const TDF_Label& aSLabel, TDF_Label& aTargetLabel, TDF_AttributeDataMap& aAttMap, const TDF_AttributeMap& aSrcAttributeMap) ;
 
 
 
@@ -123,7 +116,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_CopyTool_HeaderFile

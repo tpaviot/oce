@@ -5,19 +5,11 @@
 
 #include <BRep_ListNodeOfListOfPointRepresentation.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _BRep_PointRepresentation_HeaderFile
 #include <BRep_PointRepresentation.hxx>
-#endif
-#ifndef _BRep_ListOfPointRepresentation_HeaderFile
 #include <BRep_ListOfPointRepresentation.hxx>
-#endif
-#ifndef _BRep_ListIteratorOfListOfPointRepresentation_HeaderFile
 #include <BRep_ListIteratorOfListOfPointRepresentation.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(BRep_ListNodeOfListOfPointRepresentation,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(BRep_ListNodeOfListOfPointRepresentation)
 
 
-#define Item Handle_BRep_PointRepresentation
+#define Item Handle(BRep_PointRepresentation)
 #define Item_hxx <BRep_PointRepresentation.hxx>
 #define TCollection_ListNode BRep_ListNodeOfListOfPointRepresentation
 #define TCollection_ListNode_hxx <BRep_ListNodeOfListOfPointRepresentation.hxx>

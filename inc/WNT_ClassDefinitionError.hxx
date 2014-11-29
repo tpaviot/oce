@@ -6,33 +6,20 @@
 #ifndef _WNT_ClassDefinitionError_HeaderFile
 #define _WNT_ClassDefinitionError_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_DefineException_HeaderFile
 #include <Standard_DefineException.hxx>
-#endif
-#ifndef _Standard_SStream_HeaderFile
 #include <Standard_SStream.hxx>
-#endif
-
-#ifndef _Standard_ConstructionError_HeaderFile
 #include <Standard_ConstructionError.hxx>
-#endif
-#ifndef _Handle_WNT_ClassDefinitionError_HeaderFile
 #include <Handle_WNT_ClassDefinitionError.hxx>
-#endif
 
 #if !defined No_Exception && !defined No_WNT_ClassDefinitionError
-#define WNT_ClassDefinitionError_Raise_if(CONDITION,MESSAGE) \
+  #define WNT_ClassDefinitionError_Raise_if(CONDITION, MESSAGE) \
   if (CONDITION) WNT_ClassDefinitionError::Raise(MESSAGE);
 #else
-#define WNT_ClassDefinitionError_Raise_if(CONDITION,MESSAGE)
+  #define WNT_ClassDefinitionError_Raise_if(CONDITION, MESSAGE)
 #endif
 
-DEFINE_STANDARD_EXCEPTION(WNT_ClassDefinitionError,Standard_ConstructionError)
+DEFINE_STANDARD_EXCEPTION(WNT_ClassDefinitionError, Standard_ConstructionError)
 
-#endif
+#endif // _WNT_ClassDefinitionError_HeaderFile

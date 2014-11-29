@@ -6,44 +6,32 @@
 #ifndef _math_ComputeKronrodPointsAndWeights_HeaderFile
 #define _math_ComputeKronrodPointsAndWeights_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
+#include <math_Vector.hxx>
 class TColStd_HArray1OfReal;
-class math_Vector;
 
 
 
-class math_ComputeKronrodPointsAndWeights  {
+class math_ComputeKronrodPointsAndWeights 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   math_ComputeKronrodPointsAndWeights(const Standard_Integer Number);
+  Standard_EXPORT math_ComputeKronrodPointsAndWeights(const Standard_Integer Number);
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
   
-  Standard_EXPORT     math_Vector Points() const;
+  Standard_EXPORT   math_Vector Points()  const;
   
-  Standard_EXPORT     math_Vector Weights() const;
-
+  Standard_EXPORT   math_Vector Weights()  const;
 
 
 
@@ -58,9 +46,9 @@ private:
 
 
 
-Handle_TColStd_HArray1OfReal myPoints;
-Handle_TColStd_HArray1OfReal myWeights;
-Standard_Boolean myIsDone;
+  Handle(TColStd_HArray1OfReal) myPoints;
+  Handle(TColStd_HArray1OfReal) myWeights;
+  Standard_Boolean myIsDone;
 
 
 };
@@ -69,7 +57,6 @@ Standard_Boolean myIsDone;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _math_ComputeKronrodPointsAndWeights_HeaderFile

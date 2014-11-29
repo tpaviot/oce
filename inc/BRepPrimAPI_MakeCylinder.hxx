@@ -6,82 +6,74 @@
 #ifndef _BRepPrimAPI_MakeCylinder_HeaderFile
 #define _BRepPrimAPI_MakeCylinder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepPrim_Cylinder_HeaderFile
 #include <BRepPrim_Cylinder.hxx>
-#endif
-#ifndef _BRepPrimAPI_MakeOneAxis_HeaderFile
 #include <BRepPrimAPI_MakeOneAxis.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class gp_Ax2;
 class BRepPrim_Cylinder;
 
 
-//! Describes functions to build cylinders or portions of  cylinders. <br>
-//! A MakeCylinder object provides a framework for: <br>
-//! -   defining the construction of a cylinder, <br>
-//! -   implementing the construction algorithm, and <br>
-//! -   consulting the result. <br>
-class BRepPrimAPI_MakeCylinder  : public BRepPrimAPI_MakeOneAxis {
+//! Describes functions to build cylinders or portions of  cylinders.
+//! A MakeCylinder object provides a framework for:
+//! -   defining the construction of a cylinder,
+//! -   implementing the construction algorithm, and
+//! -   consulting the result.
+class BRepPrimAPI_MakeCylinder  : public BRepPrimAPI_MakeOneAxis
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Make a cylinder of radius R and length H. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeCylinder(const Standard_Real R,const Standard_Real H);
-  //! Make a cylinder   of  radius R  and  length H with <br>
-//!          angle  H. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeCylinder(const Standard_Real R,const Standard_Real H,const Standard_Real Angle);
-  //! Make a cylinder of radius R and length H. <br>
-  Standard_EXPORT   BRepPrimAPI_MakeCylinder(const gp_Ax2& Axes,const Standard_Real R,const Standard_Real H);
-  //! Make a cylinder   of  radius R  and  length H with <br>
-//!          angle  H. <br>//! Constructs <br>
-//! -   a cylinder of radius R and height H, or <br>
-//! -   a portion of cylinder of radius R and height H, and of <br>
-//!   the angle Angle defining the missing portion of the cylinder. <br>
-//! The cylinder is constructed about the "Z Axis" of either: <br>
-//! -   the global coordinate system, or <br>
-//! -   the local coordinate system Axes. <br>
-//! It is limited in this coordinate system as follows: <br>
-//! -   in the v parametric direction (the Z axis), by the two <br>
-//!   parameter values 0 and H, <br>
-//! -   and in the u parametric direction (the rotation angle <br>
-//!   around the Z Axis), in the case of a portion of a <br>
-//!   cylinder, by the two parameter values 0 and Angle. <br>
-//!   Angle is given in radians. <br>
-//! The resulting shape is composed of: <br>
-//! -   a lateral cylindrical face, <br>
-//! -   two planar faces in the planes z = 0 and z = H <br>
-//!   (in the case of a complete cylinder, these faces are circles), and <br>
-//! -   in case of a portion of a cylinder, two additional <br>
-//!   planar faces to close the shape.(two rectangles in the <br>
-//!   planes u = 0 and u = Angle). <br>
-//! Exceptions Standard_DomainError if: <br>
-//! -   R is less than or equal to Precision::Confusion(), or <br>
-//! -   H is less than or equal to Precision::Confusion(). <br>
-  Standard_EXPORT   BRepPrimAPI_MakeCylinder(const gp_Ax2& Axes,const Standard_Real R,const Standard_Real H,const Standard_Real Angle);
-  //! Returns the algorithm. <br>
-  Standard_EXPORT     Standard_Address OneAxis() ;
-  //! Returns the algorithm. <br>
-//! <br>
-  Standard_EXPORT     BRepPrim_Cylinder& Cylinder() ;
-
+  
+  //! Make a cylinder of radius R and length H.
+  Standard_EXPORT BRepPrimAPI_MakeCylinder(const Standard_Real R, const Standard_Real H);
+  
+  //! Make a cylinder   of  radius R  and  length H with
+  //! angle  H.
+  Standard_EXPORT BRepPrimAPI_MakeCylinder(const Standard_Real R, const Standard_Real H, const Standard_Real Angle);
+  
+  //! Make a cylinder of radius R and length H.
+  Standard_EXPORT BRepPrimAPI_MakeCylinder(const gp_Ax2& Axes, const Standard_Real R, const Standard_Real H);
+  
+  //! Make a cylinder   of  radius R  and  length H with
+  //! angle  H.
+  //! Constructs
+  //! -   a cylinder of radius R and height H, or
+  //! -   a portion of cylinder of radius R and height H, and of
+  //! the angle Angle defining the missing portion of the cylinder.
+  //! The cylinder is constructed about the "Z Axis" of either:
+  //! -   the global coordinate system, or
+  //! -   the local coordinate system Axes.
+  //! It is limited in this coordinate system as follows:
+  //! -   in the v parametric direction (the Z axis), by the two
+  //! parameter values 0 and H,
+  //! -   and in the u parametric direction (the rotation angle
+  //! around the Z Axis), in the case of a portion of a
+  //! cylinder, by the two parameter values 0 and Angle.
+  //! Angle is given in radians.
+  //! The resulting shape is composed of:
+  //! -   a lateral cylindrical face,
+  //! -   two planar faces in the planes z = 0 and z = H
+  //! (in the case of a complete cylinder, these faces are circles), and
+  //! -   in case of a portion of a cylinder, two additional
+  //! planar faces to close the shape.(two rectangles in the
+  //! planes u = 0 and u = Angle).
+  //! Exceptions Standard_DomainError if:
+  //! -   R is less than or equal to Precision::Confusion(), or
+  //! -   H is less than or equal to Precision::Confusion().
+  Standard_EXPORT BRepPrimAPI_MakeCylinder(const gp_Ax2& Axes, const Standard_Real R, const Standard_Real H, const Standard_Real Angle);
+  
+  //! Returns the algorithm.
+  Standard_EXPORT   Standard_Address OneAxis() ;
+  
+  //! Returns the algorithm.
+  Standard_EXPORT   BRepPrim_Cylinder& Cylinder() ;
 
 
 
@@ -96,7 +88,7 @@ private:
 
 
 
-BRepPrim_Cylinder myCylinder;
+  BRepPrim_Cylinder myCylinder;
 
 
 };
@@ -105,7 +97,6 @@ BRepPrim_Cylinder myCylinder;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepPrimAPI_MakeCylinder_HeaderFile

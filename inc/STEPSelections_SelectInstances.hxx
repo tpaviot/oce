@@ -6,28 +6,14 @@
 #ifndef _STEPSelections_SelectInstances_HeaderFile
 #define _STEPSelections_SelectInstances_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_STEPSelections_SelectInstances_HeaderFile
 #include <Handle_STEPSelections_SelectInstances.hxx>
-#endif
 
-#ifndef _IFSelect_SelectExplore_HeaderFile
 #include <IFSelect_SelectExplore.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
 class Interface_EntityIterator;
 class Interface_Graph;
 class Standard_Transient;
@@ -35,18 +21,20 @@ class TCollection_AsciiString;
 
 
 
-class STEPSelections_SelectInstances : public IFSelect_SelectExplore {
+class STEPSelections_SelectInstances : public IFSelect_SelectExplore
+{
 
 public:
 
   
-  Standard_EXPORT   STEPSelections_SelectInstances();
+  Standard_EXPORT STEPSelections_SelectInstances();
   
-  Standard_EXPORT     Interface_EntityIterator RootResult(const Interface_Graph& G) const;
+  Standard_EXPORT   Interface_EntityIterator RootResult (const Interface_Graph& G)  const;
   
-  Standard_EXPORT     Standard_Boolean Explore(const Standard_Integer level,const Handle(Standard_Transient)& ent,const Interface_Graph& G,Interface_EntityIterator& explored) const;
-  //! Returns a text defining the criterium : "Instances" <br>
-  Standard_EXPORT     TCollection_AsciiString ExploreLabel() const;
+  Standard_EXPORT   Standard_Boolean Explore (const Standard_Integer level, const Handle(Standard_Transient)& ent, const Interface_Graph& G, Interface_EntityIterator& explored)  const;
+  
+  //! Returns a text defining the criterium : "Instances"
+  Standard_EXPORT   TCollection_AsciiString ExploreLabel()  const;
 
 
 
@@ -56,7 +44,7 @@ public:
 protected:
 
   
-  Standard_EXPORT   virtual  Standard_Boolean HasUniqueResult() const;
+  Standard_EXPORT virtual   Standard_Boolean HasUniqueResult()  const;
 
 
 
@@ -71,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPSelections_SelectInstances_HeaderFile

@@ -6,38 +6,27 @@
 #ifndef _ShapeFix_SequenceNodeOfSequenceOfWireSegment_HeaderFile
 #define _ShapeFix_SequenceNodeOfSequenceOfWireSegment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeFix_SequenceNodeOfSequenceOfWireSegment_HeaderFile
 #include <Handle_ShapeFix_SequenceNodeOfSequenceOfWireSegment.hxx>
-#endif
 
-#ifndef _ShapeFix_WireSegment_HeaderFile
 #include <ShapeFix_WireSegment.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class ShapeFix_WireSegment;
 class ShapeFix_SequenceOfWireSegment;
 
 
 
-class ShapeFix_SequenceNodeOfSequenceOfWireSegment : public TCollection_SeqNode {
+class ShapeFix_SequenceNodeOfSequenceOfWireSegment : public TCollection_SeqNode
+{
 
 public:
 
   
-      ShapeFix_SequenceNodeOfSequenceOfWireSegment(const ShapeFix_WireSegment& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    ShapeFix_SequenceNodeOfSequenceOfWireSegment(const ShapeFix_WireSegment& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        ShapeFix_WireSegment& Value() const;
+      ShapeFix_WireSegment& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-ShapeFix_WireSegment myValue;
+  ShapeFix_WireSegment myValue;
 
 
 };
@@ -78,7 +67,6 @@ ShapeFix_WireSegment myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeFix_SequenceNodeOfSequenceOfWireSegment_HeaderFile

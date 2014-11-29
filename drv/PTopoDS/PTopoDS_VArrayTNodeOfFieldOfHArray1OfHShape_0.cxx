@@ -5,18 +5,12 @@
 
 #include <PTopoDS_VArrayTNodeOfFieldOfHArray1OfHShape.hxx>
 
-#ifndef _PTopoDS_HShape_HeaderFile
 #include <PTopoDS_HShape.hxx>
-#endif
-#ifndef _PTopoDS_FieldOfHArray1OfHShape_HeaderFile
 #include <PTopoDS_FieldOfHArray1OfHShape.hxx>
-#endif
-#ifndef _PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape_HeaderFile
 #include <PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape.hxx>
-#endif
  
 
-#define Item Handle_PTopoDS_HShape
+#define Item Handle(PTopoDS_HShape)
 #define Item_hxx <PTopoDS_HShape.hxx>
 #define DBC_VArrayNode PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape
 #define DBC_VArrayNode_hxx <PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape.hxx>

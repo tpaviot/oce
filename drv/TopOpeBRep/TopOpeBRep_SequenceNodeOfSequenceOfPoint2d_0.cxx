@@ -5,16 +5,10 @@
 
 #include <TopOpeBRep_SequenceNodeOfSequenceOfPoint2d.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopOpeBRep_Point2d_HeaderFile
 #include <TopOpeBRep_Point2d.hxx>
-#endif
-#ifndef _TopOpeBRep_SequenceOfPoint2d_HeaderFile
 #include <TopOpeBRep_SequenceOfPoint2d.hxx>
-#endif
 
  
 

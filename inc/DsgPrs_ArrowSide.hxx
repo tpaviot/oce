@@ -6,9 +6,12 @@
 #ifndef _DsgPrs_ArrowSide_HeaderFile
 #define _DsgPrs_ArrowSide_HeaderFile
 
-//!  Designates how many arrows will be displayed and <br>
-//! where they will be displayed in presenting a length. <br>
-enum DsgPrs_ArrowSide {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Designates how many arrows will be displayed and
+//! where they will be displayed in presenting a length.
+enum DsgPrs_ArrowSide
+{
 DsgPrs_AS_NONE,
 DsgPrs_AS_FIRSTAR,
 DsgPrs_AS_LASTAR,
@@ -20,8 +23,4 @@ DsgPrs_AS_FIRSTAR_LASTPT,
 DsgPrs_AS_FIRSTPT_LASTAR
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _DsgPrs_ArrowSide_HeaderFile

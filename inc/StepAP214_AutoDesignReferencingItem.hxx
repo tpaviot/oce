@@ -6,67 +6,27 @@
 #ifndef _StepAP214_AutoDesignReferencingItem_HeaderFile
 #define _StepAP214_AutoDesignReferencingItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepBasic_Approval_HeaderFile
 #include <Handle_StepBasic_Approval.hxx>
-#endif
-#ifndef _Handle_StepBasic_DocumentRelationship_HeaderFile
 #include <Handle_StepBasic_DocumentRelationship.hxx>
-#endif
-#ifndef _Handle_StepRepr_ExternallyDefinedRepresentation_HeaderFile
 #include <Handle_StepRepr_ExternallyDefinedRepresentation.hxx>
-#endif
-#ifndef _Handle_StepRepr_MappedItem_HeaderFile
 #include <Handle_StepRepr_MappedItem.hxx>
-#endif
-#ifndef _Handle_StepRepr_MaterialDesignation_HeaderFile
 #include <Handle_StepRepr_MaterialDesignation.hxx>
-#endif
-#ifndef _Handle_StepVisual_PresentationArea_HeaderFile
 #include <Handle_StepVisual_PresentationArea.hxx>
-#endif
-#ifndef _Handle_StepVisual_PresentationView_HeaderFile
 #include <Handle_StepVisual_PresentationView.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductCategory_HeaderFile
 #include <Handle_StepBasic_ProductCategory.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinition_HeaderFile
 #include <Handle_StepBasic_ProductDefinition.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductDefinitionRelationship_HeaderFile
 #include <Handle_StepBasic_ProductDefinitionRelationship.hxx>
-#endif
-#ifndef _Handle_StepRepr_PropertyDefinition_HeaderFile
 #include <Handle_StepRepr_PropertyDefinition.hxx>
-#endif
-#ifndef _Handle_StepRepr_Representation_HeaderFile
 #include <Handle_StepRepr_Representation.hxx>
-#endif
-#ifndef _Handle_StepRepr_RepresentationRelationship_HeaderFile
 #include <Handle_StepRepr_RepresentationRelationship.hxx>
-#endif
-#ifndef _Handle_StepRepr_ShapeAspect_HeaderFile
 #include <Handle_StepRepr_ShapeAspect.hxx>
-#endif
 class Standard_Transient;
 class StepBasic_Approval;
 class StepBasic_DocumentRelationship;
@@ -85,59 +45,61 @@ class StepRepr_ShapeAspect;
 
 
 
-class StepAP214_AutoDesignReferencingItem  : public StepData_SelectType {
+class StepAP214_AutoDesignReferencingItem  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a AutoDesignReferencingItem SelectType <br>
-  Standard_EXPORT   StepAP214_AutoDesignReferencingItem();
-  //! Recognizes a AutoDesignReferencingItem Kind Entity that is : <br>
-//! 1     Approval from StepBasic, <br>
-//! 2     DocumentRelationship from StepBasic, <br>
-//! 3     ExternallyDefinedRepresentation from StepRepr, <br>
-//! 4     MappedItem from StepRepr, <br>
-//! 5     MaterialDesignation from StepRepr, <br>
-//! 6     PresentationArea from StepVisual, <br>
-//! 7     PresentationView from StepVisual, <br>
-//! 8     ProductCategory from StepBasic, <br>
-//! 9     ProductDefinition from StepBasic, <br>
-//! 10     ProductDefinitionRelationship from StepBasic, <br>
-//! 11     PropertyDefinition from StepBasic, <br>
-//! 12     Representation from StepRepr, <br>
-//! 13     RepresentationRelationship from StepRepr, <br>
-//! 14     ShapeAspect from StepRepr <br>
-//!        0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
   
-  Standard_EXPORT     Handle_StepBasic_Approval Approval() const;
+  //! Returns a AutoDesignReferencingItem SelectType
+  Standard_EXPORT StepAP214_AutoDesignReferencingItem();
   
-  Standard_EXPORT     Handle_StepBasic_DocumentRelationship DocumentRelationship() const;
+  //! Recognizes a AutoDesignReferencingItem Kind Entity that is :
+  //! 1     Approval from StepBasic,
+  //! 2     DocumentRelationship from StepBasic,
+  //! 3     ExternallyDefinedRepresentation from StepRepr,
+  //! 4     MappedItem from StepRepr,
+  //! 5     MaterialDesignation from StepRepr,
+  //! 6     PresentationArea from StepVisual,
+  //! 7     PresentationView from StepVisual,
+  //! 8     ProductCategory from StepBasic,
+  //! 9     ProductDefinition from StepBasic,
+  //! 10     ProductDefinitionRelationship from StepBasic,
+  //! 11     PropertyDefinition from StepBasic,
+  //! 12     Representation from StepRepr,
+  //! 13     RepresentationRelationship from StepRepr,
+  //! 14     ShapeAspect from StepRepr
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
   
-  Standard_EXPORT     Handle_StepRepr_ExternallyDefinedRepresentation ExternallyDefinedRepresentation() const;
+  Standard_EXPORT   Handle(StepBasic_Approval) Approval()  const;
   
-  Standard_EXPORT     Handle_StepRepr_MappedItem MappedItem() const;
+  Standard_EXPORT   Handle(StepBasic_DocumentRelationship) DocumentRelationship()  const;
   
-  Standard_EXPORT     Handle_StepRepr_MaterialDesignation MaterialDesignation() const;
+  Standard_EXPORT   Handle(StepRepr_ExternallyDefinedRepresentation) ExternallyDefinedRepresentation()  const;
   
-  Standard_EXPORT     Handle_StepVisual_PresentationArea PresentationArea() const;
+  Standard_EXPORT   Handle(StepRepr_MappedItem) MappedItem()  const;
   
-  Standard_EXPORT     Handle_StepVisual_PresentationView PresentationView() const;
+  Standard_EXPORT   Handle(StepRepr_MaterialDesignation) MaterialDesignation()  const;
   
-  Standard_EXPORT     Handle_StepBasic_ProductCategory ProductCategory() const;
+  Standard_EXPORT   Handle(StepVisual_PresentationArea) PresentationArea()  const;
   
-  Standard_EXPORT     Handle_StepBasic_ProductDefinition ProductDefinition() const;
+  Standard_EXPORT   Handle(StepVisual_PresentationView) PresentationView()  const;
   
-  Standard_EXPORT     Handle_StepBasic_ProductDefinitionRelationship ProductDefinitionRelationship() const;
+  Standard_EXPORT   Handle(StepBasic_ProductCategory) ProductCategory()  const;
   
-  Standard_EXPORT     Handle_StepRepr_PropertyDefinition PropertyDefinition() const;
+  Standard_EXPORT   Handle(StepBasic_ProductDefinition) ProductDefinition()  const;
   
-  Standard_EXPORT     Handle_StepRepr_Representation Representation() const;
+  Standard_EXPORT   Handle(StepBasic_ProductDefinitionRelationship) ProductDefinitionRelationship()  const;
   
-  Standard_EXPORT     Handle_StepRepr_RepresentationRelationship RepresentationRelationship() const;
+  Standard_EXPORT   Handle(StepRepr_PropertyDefinition) PropertyDefinition()  const;
   
-  Standard_EXPORT     Handle_StepRepr_ShapeAspect ShapeAspect() const;
-
+  Standard_EXPORT   Handle(StepRepr_Representation) Representation()  const;
+  
+  Standard_EXPORT   Handle(StepRepr_RepresentationRelationship) RepresentationRelationship()  const;
+  
+  Standard_EXPORT   Handle(StepRepr_ShapeAspect) ShapeAspect()  const;
 
 
 
@@ -160,7 +122,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP214_AutoDesignReferencingItem_HeaderFile

@@ -5,19 +5,11 @@
 
 #include <TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _TColStd_IndexedDataMapOfTransientTransient_HeaderFile
 #include <TColStd_IndexedDataMapOfTransientTransient.hxx>
-#endif
 
  
 
@@ -36,9 +28,9 @@ IMPLEMENT_DOWNCAST(TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransien
 IMPLEMENT_STANDARD_RTTI(TColStd_IndexedDataMapNodeOfIndexedDataMapOfTransientTransient)
 
 
-#define TheKey Handle_Standard_Transient
+#define TheKey Handle(Standard_Transient)
 #define TheKey_hxx <Standard_Transient.hxx>
-#define TheItem Handle_Standard_Transient
+#define TheItem Handle(Standard_Transient)
 #define TheItem_hxx <Standard_Transient.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>

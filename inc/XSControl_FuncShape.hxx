@@ -6,77 +6,64 @@
 #ifndef _XSControl_FuncShape_HeaderFile
 #define _XSControl_FuncShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_XSControl_WorkSession_HeaderFile
 #include <Handle_XSControl_WorkSession.hxx>
-#endif
-#ifndef _Handle_TopTools_HSequenceOfShape_HeaderFile
 #include <Handle_TopTools_HSequenceOfShape.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class XSControl_WorkSession;
 class TopTools_HSequenceOfShape;
 class TCollection_AsciiString;
 
 
-//! Defines additionnal commands for XSControl to : <br>
-//!           - control of initialisation (xinit, xnorm, newmodel) <br>
-//!           - analyse of the result of a transfer (recorded in a <br>
-//!             TransientProcess for Read, FinderProcess for Write) : <br>
-//!             statistics, various lists (roots,complete,abnormal), what <br>
-//!             about one specific entity, producing a model with the <br>
-//!             abnormal result <br>
-//! <br>
-//!           This appendix of XSControl is compiled separately to distinguish <br>
-//!           basic features from user callable forms <br>
-class XSControl_FuncShape  {
+//! Defines additionnal commands for XSControl to :
+//! - control of initialisation (xinit, xnorm, newmodel)
+//! - analyse of the result of a transfer (recorded in a
+//! TransientProcess for Read, FinderProcess for Write) :
+//! statistics, various lists (roots,complete,abnormal), what
+//! about one specific entity, producing a model with the
+//! abnormal result
+//!
+//! This appendix of XSControl is compiled separately to distinguish
+//! basic features from user callable forms
+class XSControl_FuncShape 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Defines and loads all functions which work on shapes for XSControl (as ActFunc) <br>
-  Standard_EXPORT   static  void Init() ;
-  //! Analyses a name as designating Shapes from a Vars or from <br>
-//!           XSTEP transfer (last Transfer on Reading). <name> can be : <br>
-//!           "*" : all the root shapes produced by last Transfer (Read) <br>
-//!                 i.e. considers roots of the TransientProcess <br>
-//!           a name : a name of a variable DRAW <br>
-//! <br>
-//!           Returns the count of designated Shapes. Their list is put in <br>
-//!           <list>. If <list> is null, it is firstly created. Then it is <br>
-//!           completed (Append without Clear) by the Shapes found <br>
-//!           Returns 0 if no Shape could be found <br>
-  Standard_EXPORT   static  Standard_Integer MoreShapes(const Handle(XSControl_WorkSession)& session,Handle(TopTools_HSequenceOfShape)& list,const Standard_CString name) ;
-  //! Analyses given file name and variable name, with a default <br>
-//!           name for variables. Returns resulting file name and variable <br>
-//!           name plus status "file to read"(True) or "already read"(False) <br>
-//!           In the latter case, empty resfile means no file available <br>
-//! <br>
-//!           If <file> is null or empty or equates ".", considers Session <br>
-//!             and returned status is False <br>
-//!           Else, returns resfile = file and status is True <br>
-//!           If <var> is neither null nor empty, resvar = var <br>
-//!           Else, the root part of <resfile> is considered, if defined <br>
-//!           Else, <def> is taken <br>
-  Standard_EXPORT   static  Standard_Boolean FileAndVar(const Handle(XSControl_WorkSession)& session,const Standard_CString file,const Standard_CString var,const Standard_CString def,TCollection_AsciiString& resfile,TCollection_AsciiString& resvar) ;
-
+  
+  //! Defines and loads all functions which work on shapes for XSControl (as ActFunc)
+  Standard_EXPORT static   void Init() ;
+  
+  //! Analyses a name as designating Shapes from a Vars or from
+  //! XSTEP transfer (last Transfer on Reading). <name> can be :
+  //! "*" : all the root shapes produced by last Transfer (Read)
+  //! i.e. considers roots of the TransientProcess
+  //! a name : a name of a variable DRAW
+  //!
+  //! Returns the count of designated Shapes. Their list is put in
+  //! <list>. If <list> is null, it is firstly created. Then it is
+  //! completed (Append without Clear) by the Shapes found
+  //! Returns 0 if no Shape could be found
+  Standard_EXPORT static   Standard_Integer MoreShapes (const Handle(XSControl_WorkSession)& session, Handle(TopTools_HSequenceOfShape)& list, const Standard_CString name) ;
+  
+  //! Analyses given file name and variable name, with a default
+  //! name for variables. Returns resulting file name and variable
+  //! name plus status "file to read"(True) or "already read"(False)
+  //! In the latter case, empty resfile means no file available
+  //!
+  //! If <file> is null or empty or equates ".", considers Session
+  //! and returned status is False
+  //! Else, returns resfile = file and status is True
+  //! If <var> is neither null nor empty, resvar = var
+  //! Else, the root part of <resfile> is considered, if defined
+  //! Else, <def> is taken
+  Standard_EXPORT static   Standard_Boolean FileAndVar (const Handle(XSControl_WorkSession)& session, const Standard_CString file, const Standard_CString var, const Standard_CString def, TCollection_AsciiString& resfile, TCollection_AsciiString& resvar) ;
 
 
 
@@ -99,7 +86,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XSControl_FuncShape_HeaderFile

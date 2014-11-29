@@ -11,18 +11,20 @@
 
 #include <Aspect_DisplayConnection.hxx>
 #include <AIS_InteractiveObject.hxx>
-#include <Graphic3d.hxx>
 #include <Graphic3d_NameOfMaterial.hxx>
 #include <OpenGl_GraphicDriver.hxx>
 #include <TCollection_AsciiString.hxx>
 
-Handle(V3d_Viewer) DocumentCommon::Viewer( const Standard_CString aDisplay,
-				                     const Standard_ExtString aName,
-				                     const Standard_CString aDomain,
-				                     const Standard_Real ViewSize,
-				                     const V3d_TypeOfOrientation ViewProj,
-				                     const Standard_Boolean ComputedMode,
-				                     const Standard_Boolean aDefaultComputedMode )
+// =======================================================================
+// function : Viewer
+// purpose  :
+// =======================================================================
+Handle(V3d_Viewer) DocumentCommon::Viewer (const Standard_ExtString theName,
+                                           const Standard_CString theDomain,
+                                           const Standard_Real theViewSize,
+                                           const V3d_TypeOfOrientation theViewProj,
+                                           const Standard_Boolean theComputedMode,
+                                           const Standard_Boolean theDefaultComputedMode )
 {
   static Handle(OpenGl_GraphicDriver) aGraphicDriver;
 
@@ -30,16 +32,23 @@ Handle(V3d_Viewer) DocumentCommon::Viewer( const Standard_CString aDisplay,
   {
     Handle(Aspect_DisplayConnection) aDisplayConnection;
 #if !defined(_WIN32) && !defined(__WIN32__) && (!defined(__APPLE__) || defined(MACOSX_USE_GLX))
-    aDisplayConnection = new Aspect_DisplayConnection (aDisplay);
-#else
-    (void)aDisplay; // avoid compiler warning on unused argument
+    aDisplayConnection = new Aspect_DisplayConnection (qgetenv ("DISPLAY").constData());
 #endif
     aGraphicDriver = new OpenGl_GraphicDriver (aDisplayConnection);
   }
 
-  return new V3d_Viewer(aGraphicDriver,aName,aDomain,ViewSize,ViewProj,
-           Quantity_NOC_GRAY30,V3d_ZBUFFER,V3d_GOURAUD,V3d_WAIT,
-           ComputedMode,aDefaultComputedMode,V3d_TEX_NONE);
+  return new V3d_Viewer (aGraphicDriver,
+                         theName,
+                         theDomain,
+                         theViewSize,
+                         theViewProj,
+                         Quantity_NOC_GRAY30,
+                         V3d_ZBUFFER,
+                         V3d_GOURAUD,
+                         V3d_WAIT,
+                         theComputedMode,
+                         theDefaultComputedMode,
+                         V3d_TEX_NONE);
 }
 
 DocumentCommon::DocumentCommon( const int theIndex, ApplicationCommonWindow* app )
@@ -49,13 +58,13 @@ myIndex( theIndex ),
 myNbViews( 0 )
 {
   TCollection_ExtendedString a3DName ("Visu3D");
-  myViewer = Viewer (qgetenv ("DISPLAY").constData(),
-    a3DName.ToExtString(), "", 1000.0, V3d_XposYnegZpos, Standard_True, Standard_True);
 
-	myViewer->SetDefaultLights();
-	myViewer->SetLightOn();
+  myViewer = Viewer (a3DName.ToExtString(), "", 1000.0, V3d_XposYnegZpos, Standard_True, Standard_True);
 
-	myContext = new AIS_InteractiveContext (myViewer);
+  myViewer->SetDefaultLights();
+  myViewer->SetLightOn();
+
+  myContext = new AIS_InteractiveContext (myViewer);
 }
 
 DocumentCommon::~DocumentCommon()
@@ -64,7 +73,7 @@ DocumentCommon::~DocumentCommon()
 
 ApplicationCommonWindow* DocumentCommon::getApplication()
 {
-	return myApp;
+  return myApp;
 }
 
 MDIWindow* DocumentCommon::createNewMDIWindow()
@@ -77,9 +86,9 @@ void DocumentCommon::onCreateNewView()
 {
   QMdiArea* ws = myApp->getWorkspace();
   MDIWindow* w = createNewMDIWindow();
-	
-	if (!w)
-	  return;
+  
+  if (!w)
+    return;
 
   ws->addSubWindow (w);
   myViews.append (w);
@@ -87,14 +96,14 @@ void DocumentCommon::onCreateNewView()
   connect( w,    SIGNAL( selectionChanged() ),
            this, SIGNAL( selectionChanged() ) );
   connect( w, SIGNAL( message( const QString&, int ) ),
-	         myApp->statusBar(), SLOT( showMessage( const QString&, int ) ) );
+           myApp->statusBar(), SLOT( showMessage( const QString&, int ) ) );
   connect( w, SIGNAL( sendCloseView( MDIWindow* ) ),
-	         this, SLOT( onCloseView( MDIWindow* ) ) );
+           this, SLOT( onCloseView( MDIWindow* ) ) );
 
-	QString aName;
-	w->setWindowTitle( aName.sprintf( "Document %d:%d", myIndex, ++myNbViews ) );
+  QString aName;
+  w->setWindowTitle( aName.sprintf( "Document %d:%d", myIndex, ++myNbViews ) );
   QString dir = ApplicationCommonWindow::getResourceDir() + QString( "/" );
-	
+  
   w->setWindowIcon( QPixmap( dir + QObject::tr("ICON_DOC") ) );
 
   if ( ws->subWindowList().isEmpty() )
@@ -103,10 +112,10 @@ void DocumentCommon::onCreateNewView()
     // in the main menu if showMaximized() is called for a non-visible child window
     // Therefore calling show() first...
     w->show();
-	  w->showMaximized();
+    w->showMaximized();
   }
   else
-	  w->show();
+    w->show();
 
   w->setFocus();
 
@@ -124,9 +133,9 @@ void DocumentCommon::removeView(MDIWindow* theView)
 {
     if ( myViews.count( theView ) )
     {
-		myViews.removeAll(theView);
-		delete theView;
-	}
+    myViews.removeAll(theView);
+    delete theView;
+  }
 }
 void DocumentCommon::removeViews()
 {
@@ -138,19 +147,19 @@ void DocumentCommon::removeViews()
 
 int DocumentCommon::countOfWindow()
 {
-	return myViews.count();
+  return myViews.count();
 }
 
 Handle(AIS_InteractiveContext) DocumentCommon::getContext()
 {
-	return myContext;
+  return myContext;
 }
 
 void DocumentCommon::fitAll()
 {
-	QList<MDIWindow*>::iterator i;
-	for ( i = myViews.begin(); i != myViews.end(); i++ )
-		(*i)->fitAll();
+  QList<MDIWindow*>::iterator i;
+  for ( i = myViews.begin(); i != myViews.end(); i++ )
+    (*i)->fitAll();
 }
 
 void DocumentCommon::onWireframe()
@@ -191,7 +200,7 @@ void DocumentCommon::onColor()
     if ( aRetColor.isValid() )
     {
         Quantity_Color color( aRetColor.red() / 255., aRetColor.green() / 255.,
-			                  aRetColor.blue() / 255., Quantity_TOC_RGB );
+                        aRetColor.blue() / 255., Quantity_TOC_RGB );
         for (; myContext->MoreCurrent(); myContext->NextCurrent() )
             myContext->SetColor( myContext->Current(), color.Name() );
     }

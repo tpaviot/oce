@@ -6,55 +6,49 @@
 #ifndef _IntCurve_ProjectOnPConicTool_HeaderFile
 #define _IntCurve_ProjectOnPConicTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class IntCurve_PConic;
 class gp_Pnt2d;
 
 
-//! This class provides a tool which computes the parameter <br>
-//!          of a point near a parametric conic. <br>
-class IntCurve_ProjectOnPConicTool  {
+//! This class provides a tool which computes the parameter
+//! of a point near a parametric conic.
+class IntCurve_ProjectOnPConicTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //!  Returns  the parameter V  of the  point   on the <br>
-//!  parametric  curve corresponding to  the  Point  Pnt.   The <br>
-//!  Correspondance between  Pnt  and the  point   P(V) on  the <br>
-//!  parametric    curve  must  be  coherent with    the way of <br>
-//!  determination  of the signed  distance between a point and <br>
-//!  the implicit curve.  Tol is the tolerance on  the distance <br>
-//!  between a point and the parametrised curve.  In that case, <br>
-//!  no bounds are given.  The research  of the rigth parameter <br>
-//!  has to  be  made  on the natural  parametric domain of the <br>
-//!  curve. <br>
-  Standard_EXPORT   static  Standard_Real FindParameter(const IntCurve_PConic& C,const gp_Pnt2d& Pnt,const Standard_Real Tol) ;
-  //!  Returns the  parameter  V of the   point  on the <br>
-//!  parametric  curve corresponding  to  the   Point Pnt.  The <br>
-//!  Correspondance  between Pnt and  the   point  P(V) on  the <br>
-//!  parametric  curve  must  be  coherent   with the  way   of <br>
-//!  determination of the  signed distance between  a point and <br>
-//!  the implicit curve.  Tol  is the tolerance on the distance <br>
-//!  between a point and the  parametrised curve.  LowParameter <br>
-//!  and HighParameter give the  boundaries of the interval  in <br>
-//!  wich the parameter  certainly  lies.  These parameters are <br>
-//!  given to implement a  more efficient  algoritm. So,  it is <br>
-//!  not necessary to check   that the returned value  verifies <br>
-//!  LowParameter <= Value <= HighParameter. <br>
-  Standard_EXPORT   static  Standard_Real FindParameter(const IntCurve_PConic& C,const gp_Pnt2d& Pnt,const Standard_Real LowParameter,const Standard_Real HighParameter,const Standard_Real Tol) ;
-
+  
+  //! Returns  the parameter V  of the  point   on the
+  //! parametric  curve corresponding to  the  Point  Pnt.   The
+  //! Correspondance between  Pnt  and the  point   P(V) on  the
+  //! parametric    curve  must  be  coherent with    the way of
+  //! determination  of the signed  distance between a point and
+  //! the implicit curve.  Tol is the tolerance on  the distance
+  //! between a point and the parametrised curve.  In that case,
+  //! no bounds are given.  The research  of the rigth parameter
+  //! has to  be  made  on the natural  parametric domain of the
+  //! curve.
+  Standard_EXPORT static   Standard_Real FindParameter (const IntCurve_PConic& C, const gp_Pnt2d& Pnt, const Standard_Real Tol) ;
+  
+  //! Returns the  parameter  V of the   point  on the
+  //! parametric  curve corresponding  to  the   Point Pnt.  The
+  //! Correspondance  between Pnt and  the   point  P(V) on  the
+  //! parametric  curve  must  be  coherent   with the  way   of
+  //! determination of the  signed distance between  a point and
+  //! the implicit curve.  Tol  is the tolerance on the distance
+  //! between a point and the  parametrised curve.  LowParameter
+  //! and HighParameter give the  boundaries of the interval  in
+  //! wich the parameter  certainly  lies.  These parameters are
+  //! given to implement a  more efficient  algoritm. So,  it is
+  //! not necessary to check   that the returned value  verifies
+  //! LowParameter <= Value <= HighParameter.
+  Standard_EXPORT static   Standard_Real FindParameter (const IntCurve_PConic& C, const gp_Pnt2d& Pnt, const Standard_Real LowParameter, const Standard_Real HighParameter, const Standard_Real Tol) ;
 
 
 
@@ -77,7 +71,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntCurve_ProjectOnPConicTool_HeaderFile

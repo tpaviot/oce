@@ -6,67 +6,27 @@
 #ifndef _Select3D_SensitiveTriangulation_HeaderFile
 #define _Select3D_SensitiveTriangulation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Select3D_SensitiveTriangulation_HeaderFile
 #include <Handle_Select3D_SensitiveTriangulation.hxx>
-#endif
 
-#ifndef _Handle_Poly_Triangulation_HeaderFile
 #include <Handle_Poly_Triangulation.hxx>
-#endif
-#ifndef _TopLoc_Location_HeaderFile
 #include <TopLoc_Location.hxx>
-#endif
-#ifndef _gp_Trsf_HeaderFile
 #include <gp_Trsf.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfInteger_HeaderFile
 #include <Handle_TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TColgp_Array1OfPnt2d_HeaderFile
 #include <TColgp_Array1OfPnt2d.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _Bnd_Box2d_HeaderFile
 #include <Bnd_Box2d.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Select3D_SensitiveEntity_HeaderFile
 #include <Select3D_SensitiveEntity.hxx>
-#endif
-#ifndef _Handle_SelectBasics_EntityOwner_HeaderFile
 #include <Handle_SelectBasics_EntityOwner.hxx>
-#endif
-#ifndef _Handle_Select3D_Projector_HeaderFile
 #include <Handle_Select3D_Projector.hxx>
-#endif
-#ifndef _Handle_Select3D_SensitiveEntity_HeaderFile
 #include <Handle_Select3D_SensitiveEntity.hxx>
-#endif
-#ifndef _SelectBasics_PickArgs_HeaderFile
 #include <SelectBasics_PickArgs.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class Poly_Triangulation;
 class TColStd_HArray1OfInteger;
 class SelectBasics_EntityOwner;
@@ -82,70 +42,84 @@ class gp_Pnt2d;
 class gp_XY;
 
 
-//! A framework to define selection of a sensitive entity made of a set of triangles. <br>
-class Select3D_SensitiveTriangulation : public Select3D_SensitiveEntity {
+//! A framework to define selection of a sensitive entity made of a set of triangles.
+class Select3D_SensitiveTriangulation : public Select3D_SensitiveEntity
+{
 
 public:
 
-  //! Constructs a sensitive triangulation object defined by <br>
-//! the owner OwnerId, the triangulation aTriangulation, <br>
-//! the location aLoc, and the flag InteriorFlag. <br>
-  Standard_EXPORT   Select3D_SensitiveTriangulation(const Handle(SelectBasics_EntityOwner)& OwnerId,const Handle(Poly_Triangulation)& aTriangulation,const TopLoc_Location& aLoc,const Standard_Boolean InteriorFlag = Standard_True);
-  //! Constructs a sensitive triangulation object defined by <br>
-//! the owner OwnerId, the triangulation aTriangulation, <br>
-//! the location aLoc, the array of free edges <br>
-//! thefreeedges, the center of gravity theCDG, and the flag InteriorFlag. <br>
-//! As free edges and the center of gravity do not have <br>
-//! to be computed later, this syntax reduces computation time. <br>
-  Standard_EXPORT   Select3D_SensitiveTriangulation(const Handle(SelectBasics_EntityOwner)& OwnerId,const Handle(Poly_Triangulation)& aTriangulation,const TopLoc_Location& aLoc,const Handle(TColStd_HArray1OfInteger)& thefreeedges,const gp_Pnt& theCDG,const Standard_Boolean InteriorFlag);
-  //! projection of the sensitive primitive in order to <br>
-//!          get 2D boxes for the Sort Algorithm <br>
-  Standard_EXPORT     void Project(const Handle(Select3D_Projector)& aProjector) ;
-  //! stores in <boxes> the 2D Boxes which represent the sensitive face <br>
-//!          in the selection algorithm. <br>
-  Standard_EXPORT     void Areas(SelectBasics_ListOfBox2d& boxes) ;
   
-  Standard_EXPORT     Handle_Select3D_SensitiveEntity GetConnected(const TopLoc_Location& aLocation) ;
-  //! Checks whether the sensitive entity matches the picking <br>
-//! detection area (close to the picking line). <br>
-//! For details please refer to base class declaration. <br>
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const SelectBasics_PickArgs& thePickArgs,Standard_Real& theMatchDMin,Standard_Real& theMatchDepth) ;
+  //! Constructs a sensitive triangulation object defined by
+  //! the owner OwnerId, the triangulation aTriangulation,
+  //! the location aLoc, and the flag InteriorFlag.
+  Standard_EXPORT Select3D_SensitiveTriangulation(const Handle(SelectBasics_EntityOwner)& OwnerId, const Handle(Poly_Triangulation)& aTriangulation, const TopLoc_Location& aLoc, const Standard_Boolean InteriorFlag = Standard_True);
   
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol) ;
+  //! Constructs a sensitive triangulation object defined by
+  //! the owner OwnerId, the triangulation aTriangulation,
+  //! the location aLoc, the array of free edges
+  //! thefreeedges, the center of gravity theCDG, and the flag InteriorFlag.
+  //! As free edges and the center of gravity do not have
+  //! to be computed later, this syntax reduces computation time.
+  Standard_EXPORT Select3D_SensitiveTriangulation(const Handle(SelectBasics_EntityOwner)& OwnerId, const Handle(Poly_Triangulation)& aTriangulation, const TopLoc_Location& aLoc, const Handle(TColStd_HArray1OfInteger)& thefreeedges, const gp_Pnt& theCDG, const Standard_Boolean InteriorFlag);
   
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const TColgp_Array1OfPnt2d& Polyline,const Bnd_Box2d& aBox,const Standard_Real aTol) ;
-  //! Compute precise depth of detected triangle. <br>
-//! @param thePickLine [in] the picking line. <br>
-//! @param theTriangle [in] the index of detected triangle. <br>
-//! @return depth on the picking line. <br>
-  Standard_EXPORT     Standard_Real ComputeDepth(const gp_Lin& thePickLine,const Standard_Integer theTriangle) const;
-  //! Returns the detected three nodes P1, P2, P3 constituting a triangle. <br>
-//! This triangle is a component of the overall sensitive <br>
-//! triangulation created at construction time. <br>
-        Standard_Integer DetectedTriangle() const;
-  //! Returns the triangulation used at the time of construction. <br>
-       const Handle_Poly_Triangulation& Triangulation() const;
-  //! Returns the 3D center of gravity used at the time of construction. <br>
-       const gp_Pnt& CDG3D() const;
-  //! Returns the 2D center of gravity used at the time of construction. <br>
-       const gp_Pnt2d& CDG2D() const;
-  //! Dmin gives the distance between the cdg and aPoint <br>
-  Standard_EXPORT     Standard_Integer Status(const gp_XY& p0,const gp_XY& p1,const gp_XY& p2,const gp_XY& aPoint,const Standard_Real aTol,Standard_Real& Dmin) const;
+  //! projection of the sensitive primitive in order to
+  //! get 2D boxes for the Sort Algorithm
+  Standard_EXPORT   void Project (const Handle(Select3D_Projector)& aProjector) ;
   
-        Standard_Boolean HasInitLocation() const;
+  //! stores in <boxes> the 2D Boxes which represent the sensitive face
+  //! in the selection algorithm.
+  Standard_EXPORT   void Areas (SelectBasics_ListOfBox2d& boxes) ;
   
-       const TopLoc_Location& GetInitLocation() const;
+  Standard_EXPORT   Handle(Select3D_SensitiveEntity) GetConnected (const TopLoc_Location& aLocation) ;
   
-  Standard_EXPORT   virtual  void ResetLocation() ;
+  //! Checks whether the sensitive entity matches the picking
+  //! detection area (close to the picking line).
+  //! For details please refer to base class declaration.
+  Standard_EXPORT virtual   Standard_Boolean Matches (const SelectBasics_PickArgs& thePickArgs, Standard_Real& theMatchDMin, Standard_Real& theMatchDepth) ;
   
-  Standard_EXPORT   virtual  void SetLocation(const TopLoc_Location& aLoc) ;
+  Standard_EXPORT virtual   Standard_Boolean Matches (const Standard_Real XMin, const Standard_Real YMin, const Standard_Real XMax, const Standard_Real YMax, const Standard_Real aTol) ;
   
-  Standard_EXPORT   virtual  void Dump(Standard_OStream& S,const Standard_Boolean FullDump = Standard_True) const;
-  //! gives the vertices of detected triangle... <br>
-  Standard_EXPORT     Standard_Boolean DetectedTriangle(gp_Pnt& P1,gp_Pnt& P2,gp_Pnt& P3) const;
-  //! Gets 2D nodes computed by entity using 3D nodes and viewer <br>
-//!          parameters (see Project() method) <br>
-  Standard_EXPORT     Standard_Boolean DetectedTriangle2d(gp_Pnt2d& P1,gp_Pnt2d& P2,gp_Pnt2d& P3) const;
+  Standard_EXPORT virtual   Standard_Boolean Matches (const TColgp_Array1OfPnt2d& Polyline, const Bnd_Box2d& aBox, const Standard_Real aTol) ;
+  
+  //! Compute precise depth of detected triangle.
+  //! @param thePickLine [in] the picking line.
+  //! @param theTriangle [in] the index of detected triangle.
+  //! @return depth on the picking line.
+  Standard_EXPORT   Standard_Real ComputeDepth (const gp_Lin& thePickLine, const Standard_Integer theTriangle)  const;
+  
+  //! Returns the detected three nodes P1, P2, P3 constituting a triangle.
+  //! This triangle is a component of the overall sensitive
+  //! triangulation created at construction time.
+      Standard_Integer DetectedTriangle()  const;
+  
+  //! Returns the triangulation used at the time of construction.
+     const  Handle(Poly_Triangulation)& Triangulation()  const;
+  
+  //! Returns the 3D center of gravity used at the time of construction.
+     const  gp_Pnt& CDG3D()  const;
+  
+  //! Returns the 2D center of gravity used at the time of construction.
+     const  gp_Pnt2d& CDG2D()  const;
+  
+  //! Dmin gives the distance between the cdg and aPoint
+  Standard_EXPORT   Standard_Integer Status (const gp_XY& p0, const gp_XY& p1, const gp_XY& p2, const gp_XY& aPoint, const Standard_Real aTol, Standard_Real& Dmin)  const;
+  
+      Standard_Boolean HasInitLocation()  const;
+  
+     const  TopLoc_Location& GetInitLocation()  const;
+  
+  Standard_EXPORT virtual   void ResetLocation() ;
+  
+  Standard_EXPORT virtual   void SetLocation (const TopLoc_Location& aLoc) ;
+  
+  Standard_EXPORT virtual   void Dump (Standard_OStream& S, const Standard_Boolean FullDump = Standard_True)  const;
+  
+  //! gives the vertices of detected triangle...
+  Standard_EXPORT   Standard_Boolean DetectedTriangle (gp_Pnt& P1, gp_Pnt& P2, gp_Pnt& P3)  const;
+  
+  //! Gets 2D nodes computed by entity using 3D nodes and viewer
+  //! parameters (see Project() method)
+  Standard_EXPORT   Standard_Boolean DetectedTriangle2d (gp_Pnt2d& P1, gp_Pnt2d& P2, gp_Pnt2d& P3)  const;
 
 
 
@@ -160,20 +134,20 @@ protected:
 private: 
 
   
-  Standard_EXPORT     Standard_Boolean IsFree(const Standard_Integer IndexOfTriangle,Standard_Integer& IndexinFree) const;
+  Standard_EXPORT   Standard_Boolean IsFree (const Standard_Integer IndexOfTriangle, Standard_Integer& IndexinFree)  const;
   
-  Standard_EXPORT     void ComputeTotalTrsf() ;
+  Standard_EXPORT   void ComputeTotalTrsf() ;
 
-Handle_Poly_Triangulation myTriangul;
-TopLoc_Location myiniloc;
-gp_Trsf myTrsf;
-gp_Pnt myCDG3D;
-Handle_TColStd_HArray1OfInteger myFreeEdges;
-Standard_Boolean myIntFlag;
-TColgp_Array1OfPnt2d myNodes2d;
-gp_Pnt2d myCDG2D;
-Bnd_Box2d mybox2d;
-Standard_Integer myDetectedTr;
+  Handle(Poly_Triangulation) myTriangul;
+  TopLoc_Location myiniloc;
+  gp_Trsf myTrsf;
+  gp_Pnt myCDG3D;
+  Handle(TColStd_HArray1OfInteger) myFreeEdges;
+  Standard_Boolean myIntFlag;
+  TColgp_Array1OfPnt2d myNodes2d;
+  gp_Pnt2d myCDG2D;
+  Bnd_Box2d mybox2d;
+  Standard_Integer myDetectedTr;
 
 
 };
@@ -183,7 +157,6 @@ Standard_Integer myDetectedTr;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Select3D_SensitiveTriangulation_HeaderFile

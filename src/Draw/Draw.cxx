@@ -14,38 +14,12 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#ifdef HAVE_CONFIG_H
-# include <oce-config.h>
-#endif
-
 #include <Draw.ixx>
-
-#if defined(HAVE_TIME_H) || defined(WNT)
-# include <time.h>
-#endif
 
 #include <Draw_Appli.hxx>
 #include <OSD.hxx>
 #include <OSD_Environment.hxx>
 #include <OSD_Timer.hxx>
-
-#ifdef HAVE_SYS_TIME_H
-# include <sys/time.h>
-#endif
-
-#ifdef HAVE_SYS_TYPES_H
-# include <sys/types.h>
-#endif
-
-#ifdef HAVE_UNISTD_H
-# include <unistd.h>
-#endif
-
-#ifdef HAVE_STRINGS_H
-# include <strings.h>
-#endif
-
-#include <stdio.h>
 
 #include <Draw_Window.hxx>
 #include <gp_Pnt2d.hxx>
@@ -57,7 +31,7 @@
 #include <Draw_Interpretor.hxx>
 #include <Draw_ProgressIndicator.hxx>
 
-#include <Draw_MapOfFunctions.hxx>
+#include <Plugin_MapOfFunctions.hxx>
 #include <OSD_SharedLibrary.hxx>
 #include <Resource_Manager.hxx>
 #include <Draw_Failure.hxx>
@@ -278,7 +252,7 @@ void Draw_Appli(Standard_Integer argc, char** argv,const FDraw_InitAppli Draw_In
   // *****************************************************************
   // set signals
   // *****************************************************************
-  OSD::SetSignal();
+  OSD::SetSignal(Standard_False);
 
 #ifdef _WIN32
   // in interactive mode, force Windows to report dll loading problems interactively
@@ -495,6 +469,7 @@ Standard_Integer Tcl_AppInit (Tcl_Interp *)
 // for debug call
 //
 
+#include <stdio.h>
 
 
 Standard_Integer  Draw_Call (char *c)
@@ -503,86 +478,6 @@ Standard_Integer  Draw_Call (char *c)
    cout << theCommands.Result() << endl;
    return r;
 }
-
-
-//=================================================================================
-//
-//=================================================================================
-void Draw::Load(Draw_Interpretor& theDI, const TCollection_AsciiString& theKey,
-		 const TCollection_AsciiString& theResourceFileName) {
-
-  static Draw_MapOfFunctions theMapOfFunctions;
-  OSD_Function f;
-
-  if(!theMapOfFunctions.IsBound(theKey)) {
-
-    Handle(Resource_Manager) aPluginResource = new Resource_Manager(theResourceFileName.ToCString());
-    if(!aPluginResource->Find(theKey.ToCString())) {
-      Standard_SStream aMsg; aMsg << "Could not find the resource:";
-      aMsg << theKey.ToCString()<< endl;
-      cout << "could not find the resource:"<<theKey.ToCString()<< endl;
-      Draw_Failure::Raise(aMsg);
-    }
-
-    TCollection_AsciiString aPluginLibrary("");
-    
-#ifdef OCE_LIBRARY_PREFIX
-    // Assemble library name according to the variables defined by CMAKE
-    aPluginLibrary += OCE_LIBRARY_PREFIX;
-    aPluginLibrary += aPluginResource->Value(theKey.ToCString());
-    aPluginLibrary += OCE_LIBRARY_DEBUG_POSTFIX;
-    aPluginLibrary += OCE_LIBRARY_EXTENSION;
-#else
-#ifndef WNT
-    aPluginLibrary += "lib";
-#endif
-    aPluginLibrary +=  aPluginResource->Value(theKey.ToCString());
-#ifdef WNT
-    aPluginLibrary += ".dll";
-#elif __APPLE__
-    aPluginLibrary += ".dylib";
-#elif defined (HPUX) || defined(__hpux)
-    aPluginLibrary += ".sl";
-#else
-    aPluginLibrary += ".so";
-#endif
-#endif
-
-    OSD_SharedLibrary aSharedLibrary(aPluginLibrary.ToCString());
-    if(!aSharedLibrary.DlOpen(OSD_RTLD_LAZY)) {
-      TCollection_AsciiString error(aSharedLibrary.DlError());
-      Standard_SStream aMsg; aMsg << "Could not open: ";
-      aMsg << aPluginResource->Value(theKey.ToCString());
-      aMsg << "; reason: ";
-      aMsg << error.ToCString();
-#ifdef DEB
-      cout << "could not open: "  << aPluginResource->Value(theKey.ToCString())<< " ; reason: "<< error.ToCString() << endl;
-#endif
-      Draw_Failure::Raise(aMsg);
-    }
-    f = aSharedLibrary.DlSymb("PLUGINFACTORY");
-    if( f == NULL ) {
-      TCollection_AsciiString error(aSharedLibrary.DlError());
-      Standard_SStream aMsg; aMsg << "Could not find the factory in: ";
-      aMsg << aPluginResource->Value(theKey.ToCString());
-      aMsg << error.ToCString();
-      Draw_Failure::Raise(aMsg);
-    }
-    theMapOfFunctions.Bind(theKey, f);
-  }
-  else
-    f = theMapOfFunctions(theKey);
-
-//   void (*fp) (Draw_Interpretor&, const TCollection_AsciiString&) = NULL;
-//   fp = (void (*)(Draw_Interpretor&, const TCollection_AsciiString&)) f;
-//   (*fp) (theDI, theKey);
-
-  void (*fp) (Draw_Interpretor&) = NULL;
-  fp = (void (*)(Draw_Interpretor&)) f;
-  (*fp) (theDI);
-
-}
-
 
 //=================================================================================
 //
@@ -593,7 +488,7 @@ void Draw::Load(Draw_Interpretor& theDI, const TCollection_AsciiString& theKey,
 		TCollection_AsciiString& theUserDefaultsDirectory,
 		const Standard_Boolean Verbose ) {
 
-  static Draw_MapOfFunctions theMapOfFunctions;
+  static Plugin_MapOfFunctions theMapOfFunctions;
   OSD_Function f;
 
   if(!theMapOfFunctions.IsBound(theKey)) {
@@ -607,9 +502,10 @@ void Draw::Load(Draw_Interpretor& theDI, const TCollection_AsciiString& theKey,
       Draw_Failure::Raise(aMsg);
     }
 
-    // Assemble library name according to the variables defined by CMAKE
     TCollection_AsciiString aPluginLibrary("");
+    
 #ifdef OCE_LIBRARY_PREFIX
+    // Assemble library name according to the variables defined by CMAKE
     aPluginLibrary += OCE_LIBRARY_PREFIX;
     aPluginLibrary += aPluginResource->Value(theKey.ToCString());
     aPluginLibrary += OCE_LIBRARY_DEBUG_POSTFIX;
@@ -641,7 +537,7 @@ void Draw::Load(Draw_Interpretor& theDI, const TCollection_AsciiString& theKey,
       aMsg << aPluginResource->Value(theKey.ToCString());
       aMsg << "; reason: ";
       aMsg << error.ToCString();
-#ifdef DEB
+#ifdef OCCT_DEBUG
       cout << "could not open: "  << aPluginResource->Value(theKey.ToCString())<< " ; reason: "<< error.ToCString() << endl;
 #endif
       Draw_Failure::Raise(aMsg);

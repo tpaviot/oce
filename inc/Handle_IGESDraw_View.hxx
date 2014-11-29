@@ -6,22 +6,15 @@
 #ifndef _Handle_IGESDraw_View_HeaderFile
 #define _Handle_IGESDraw_View_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IGESData_ViewKindEntity_HeaderFile
 #include <Handle_IGESData_ViewKindEntity.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IGESData_ViewKindEntity);
 class IGESDraw_View;
 
-DEFINE_STANDARD_HANDLE(IGESDraw_View,IGESData_ViewKindEntity)
+DEFINE_STANDARD_HANDLE(IGESDraw_View, IGESData_ViewKindEntity)
 
-#endif
+#endif // _Handle_IGESDraw_View_HeaderFile

@@ -5,21 +5,13 @@
 
 #include <Storage_SeqOfRoot.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Storage_Root_HeaderFile
 #include <Storage_Root.hxx>
-#endif
-#ifndef _Storage_SequenceNodeOfSeqOfRoot_HeaderFile
 #include <Storage_SequenceNodeOfSeqOfRoot.hxx>
-#endif
  
 
-#define SeqItem Handle_Storage_Root
+#define SeqItem Handle(Storage_Root)
 #define SeqItem_hxx <Storage_Root.hxx>
 #define TCollection_SequenceNode Storage_SequenceNodeOfSeqOfRoot
 #define TCollection_SequenceNode_hxx <Storage_SequenceNodeOfSeqOfRoot.hxx>

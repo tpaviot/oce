@@ -24,6 +24,7 @@
 #include <TopTools_ListOfShape.hxx>
 #include <TopTools_ListIteratorOfListOfShape.hxx>
 
+#include <Geom2dAPI_ProjectPointOnCurve.hxx>
 #include <GeomAPI_ProjectPointOnCurve.hxx>
 #include <GeomAdaptor_Surface.hxx>
 #include <Geom_Curve.hxx>
@@ -56,12 +57,18 @@
 
 
 static Standard_Boolean Project(const TopoDS_Vertex&,
+                                const gp_Pnt2d&,
 				const TopoDS_Face&,
 				TopoDS_Edge&,
 				Standard_Real&);
 
 static Standard_Real Project(const TopoDS_Vertex&,
 			     const TopoDS_Edge&);
+
+static Standard_Real Project(const TopoDS_Vertex&,
+                             const gp_Pnt2d&,
+			     const TopoDS_Edge&,
+                             const TopoDS_Face&);
 
 
 static void PutPCurve(const TopoDS_Edge&,
@@ -168,9 +175,6 @@ void LocOpe_WiresOnShape::Bind(const TopoDS_Edge& E,
 void LocOpe_WiresOnShape::Bind(const TopoDS_Edge& Ewir,
 			       const TopoDS_Edge& Efac)
 {
-  if (Ewir.IsSame(Efac)) {
-    return;
-  }
   myMap.Bind(Ewir,Efac);
 }
 
@@ -274,9 +278,14 @@ void LocOpe_WiresOnShape::BindAll()
       if (theMap.Contains(vtx)) {
 	continue;
       }
+      ////
+      Standard_Real vtx_param = BRep_Tool::Parameter(vtx, edg);
+      BRepAdaptor_Curve2d BAcurve2d(edg, fac);
+      gp_Pnt2d p2d = BAcurve2d.Value(vtx_param);
+      ////
       TopoDS_Edge Epro;
-      Standard_Real prm;
-      Standard_Boolean ok = Project(vtx,fac,Epro,prm);
+      Standard_Real prm = 0.;
+      Standard_Boolean ok = Project(vtx, p2d, fac, Epro, prm);
       if (ok) {
 	for (exp2.Init(Epro,TopAbs_VERTEX); exp2.More(); exp2.Next()) {
 	  const TopoDS_Vertex& vtx2 = TopoDS::Vertex(exp2.Current());
@@ -284,8 +293,13 @@ void LocOpe_WiresOnShape::BindAll()
 	    break;
 	  }
 	  else if (BRepTools::Compare(vtx,vtx2)) {
-	    myMap.Bind(vtx,vtx2);
-	    break;
+            if (!BRep_Tool::Degenerated(Epro) ||
+                Abs(prm-BAcurve2d.FirstParameter()) <= Precision::PConfusion() ||
+                Abs(prm-BAcurve2d.LastParameter())  <= Precision::PConfusion())
+            {
+              myMap.Bind(vtx,vtx2);
+              break;
+            }
 	  }
 	}
 	if (!exp2.More()) {
@@ -408,8 +422,6 @@ Standard_Boolean LocOpe_WiresOnShape::OnVertex(const TopoDS_Vertex& Vw,
 }
 
 
-
-
 //=======================================================================
 //function : OnEdge
 //purpose  : 
@@ -429,6 +441,32 @@ Standard_Boolean LocOpe_WiresOnShape::OnEdge(const TopoDS_Vertex& V,
   return Standard_True;
 }
 
+//=======================================================================
+//function : OnEdge
+//purpose  : 
+//=======================================================================
+
+Standard_Boolean LocOpe_WiresOnShape::OnEdge(const TopoDS_Vertex& V,
+                                             const TopoDS_Edge& EdgeFrom,
+                                             TopoDS_Edge& Ed,
+                                             Standard_Real& prm)
+{
+  if (!myMap.IsBound(V) ||
+      myMap(V).ShapeType() == TopAbs_VERTEX) {
+    return Standard_False;
+  }
+  
+  Ed = TopoDS::Edge(myMap(V));
+  TopoDS_Face theFace = TopoDS::Face(myMapEF.FindFromKey(EdgeFrom));
+  ////
+  Standard_Real vtx_param = BRep_Tool::Parameter(V, EdgeFrom);
+  BRepAdaptor_Curve2d BAcurve2d(EdgeFrom, theFace);
+  gp_Pnt2d p2d = BAcurve2d.Value(vtx_param);
+  ////
+  prm = Project(V, p2d, Ed, theFace);
+  return Standard_True;
+}
+
 
 //=======================================================================
 //function : Project
@@ -436,36 +474,32 @@ Standard_Boolean LocOpe_WiresOnShape::OnEdge(const TopoDS_Vertex& V,
 //=======================================================================
 
 Standard_Boolean Project(const TopoDS_Vertex& V,
+                         const gp_Pnt2d& p2d,
 			 const TopoDS_Face& F,
 			 TopoDS_Edge& theEdge,
 			 Standard_Real& param)
 {
-  Handle(Geom_Curve) C;
-  TopLoc_Location Loc;
+  Handle(Geom2d_Curve) PC;
+  //TopLoc_Location Loc;
   Standard_Real f,l;
 
   Standard_Real dmin = RealLast();
-  gp_Pnt toproj(BRep_Tool::Pnt(V));
+  //gp_Pnt toproj(BRep_Tool::Pnt(V));
   Standard_Boolean valret = Standard_False;
-  GeomAPI_ProjectPointOnCurve proj;
+  Geom2dAPI_ProjectPointOnCurve proj;
 
   for (TopExp_Explorer exp(F.Oriented(TopAbs_FORWARD),TopAbs_EDGE); 
        exp.More(); exp.Next()) {
     const TopoDS_Edge& edg = TopoDS::Edge(exp.Current());
-    if (!BRep_Tool::Degenerated(edg)) {
-      C = BRep_Tool::Curve(edg,Loc,f,l);
-      if (!Loc.IsIdentity()) {
-	Handle(Geom_Geometry) GG = C->Transformed(Loc.Transformation());
-	C = *((Handle(Geom_Curve)*)&GG);
-      }
-      proj.Init(toproj,C,f,l);
-      if (proj.NbPoints() > 0) {
-	if (proj.LowerDistance() < dmin) {
-	  theEdge = edg;
-	  theEdge.Orientation(edg.Orientation());
-	  dmin = proj.LowerDistance();
-	  param = proj.LowerDistanceParameter();
-	}
+    //C = BRep_Tool::Curve(edg,Loc,f,l);
+    PC = BRep_Tool::CurveOnSurface(edg, F, f, l);
+    proj.Init(p2d, PC, f, l);
+    if (proj.NbPoints() > 0) {
+      if (proj.LowerDistance() < dmin) {
+        theEdge = edg;
+        theEdge.Orientation(edg.Orientation());
+        dmin = proj.LowerDistance();
+        param = proj.LowerDistanceParameter();
       }
     }
   }
@@ -479,7 +513,7 @@ Standard_Boolean Project(const TopoDS_Vertex& V,
     BRep_Builder B;
     B.UpdateVertex(V, Max(dmin, BRep_Tool::Tolerance(V)));
   }
-#ifdef DEB_MESH
+#ifdef OCCT_DEBUG_MESH
   else {
     cout <<"LocOpe_WiresOnShape::Project --> le vertex projete est a une "; 
     cout <<"distance / la face = "<<dmin <<" superieure a la tolerance = "<<ttol<<endl;
@@ -510,6 +544,35 @@ Standard_Real Project(const TopoDS_Vertex& V,
   }
   proj.Init(toproj,C,f,l);
   
+
+  return proj.LowerDistanceParameter();
+}
+
+//=======================================================================
+//function : Project
+//purpose  : 
+//=======================================================================
+
+Standard_Real Project(const TopoDS_Vertex&,
+                      const gp_Pnt2d&      p2d,
+		      const TopoDS_Edge& theEdge,
+                      const TopoDS_Face& theFace)
+{
+  //Handle(Geom_Curve) C;
+  Handle(Geom2d_Curve) PC;
+  //TopLoc_Location Loc;
+  Standard_Real f,l;
+
+  Geom2dAPI_ProjectPointOnCurve proj;
+
+  PC = BRep_Tool::CurveOnSurface(theEdge, theFace, f, l);
+  /*
+  if (!Loc.IsIdentity()) {
+    Handle(Geom_Geometry) GG = C->Transformed(Loc.Transformation());
+    C = *((Handle(Geom_Curve)*)&GG);
+  }
+  */
+  proj.Init(p2d, PC, f, l);
 
   return proj.LowerDistanceParameter();
 }
@@ -944,7 +1007,13 @@ void PutPCurves(const TopoDS_Edge& Efrom,
 
     C->D1(f,pt,d1f);
 
-    Standard_Real prmproj = Project(TopExp::FirstVertex(Efrom),Eto);
+    ////
+    TopoDS_Vertex FirstVertex = TopExp::FirstVertex(Efrom);
+    Standard_Real vtx_param = BRep_Tool::Parameter(FirstVertex, Efrom);
+    BRepAdaptor_Curve2d BAcurve2d(Efrom, Fac);
+    gp_Pnt2d p2d = BAcurve2d.Value(vtx_param);
+    ////
+    Standard_Real prmproj = Project(TopExp::FirstVertex(Efrom),p2d,Eto,Fac);
     
     C = BRep_Tool::Curve(Eto,Loc,f,l);
     if (!Loc.IsIdentity()) {
@@ -1078,11 +1147,6 @@ void FindInternalIntersections(const TopoDS_Edge& theEdge,
   
   TopoDS_Vertex theVertices [2];
   TopExp::Vertices(theEdge, theVertices[0], theVertices[1]);
-  if (theEdge.Orientation() == TopAbs_REVERSED)
-  {
-    theVertices[0].Reverse();
-    theVertices[1].Reverse();
-  }
   gp_Pnt thePnt [2];
   thePnt[0] = BRep_Tool::Pnt(theVertices[0]);
   thePnt[1] = BRep_Tool::Pnt(theVertices[1]);
@@ -1158,7 +1222,7 @@ void FindInternalIntersections(const TopoDS_Edge& theEdge,
           }
         }
       }
-      if (!IntersFound) //intersection is inside "theEdge" => split
+      if (!IntersFound && aDist <= Precision::Confusion()) //intersection is inside "theEdge" => split
       {
         gp_Pnt aPoint = aCurve->Value(anIntPar);
         if (aPoint.Distance(thePnt[0]) > BRep_Tool::Tolerance(theVertices[0]) &&
@@ -1217,11 +1281,13 @@ void FindInternalIntersections(const TopoDS_Edge& theEdge,
     LastVertex.Orientation(TopAbs_REVERSED);
     
     TopoDS_Shape aLocalShape = theEdge.EmptyCopied();
+    TopAbs_Orientation anOrient = aLocalShape.Orientation();
+    aLocalShape.Orientation(TopAbs_FORWARD);
     TopoDS_Edge NewEdge = TopoDS::Edge(aLocalShape);
     BB.Range(NewEdge, FirstPar, LastPar);
     BB.Add(NewEdge, FirstVertex);
     BB.Add(NewEdge, LastVertex);
-
+    NewEdge.Orientation(anOrient);
     NewEdges.Append(NewEdge);
     FirstVertex = LastVertex;
     FirstPar = LastPar;

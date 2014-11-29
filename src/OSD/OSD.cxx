@@ -16,9 +16,6 @@
 #include <Standard_Stream.hxx>
 #include <stdio.h>
 #include <math.h>
-#if HAVE_IEEEFP_H
-# include <ieeefp.h>
-#endif
 #ifdef WNT
 # define finite _finite
 #elif defined(isfinite)
@@ -83,13 +80,8 @@ Standard_Boolean OSD::CStringToReal(const Standard_CString aString,
 #else
 # define SLEEP(NSEC)                 sleep(NSEC)
 #endif
-
-#ifdef HAVE_VALUES_H
-//# include <values.h>
-#endif
-
-#ifdef HAVE_UNISTD_H
-# include <unistd.h>
+#ifndef _WIN32
+#include <unistd.h>
 #endif
 
 void OSD::SecSleep(const Standard_Integer aDelay)
@@ -102,7 +94,7 @@ void OSD::SecSleep(const Standard_Integer aDelay)
 //purpose  : Cause the process to sleep during a amount of milliseconds  
 //=======================================================================
 
-#ifdef WNT
+#ifdef _WIN32
 
 void OSD::MilliSecSleep(const Standard_Integer aDelay)
 {
@@ -111,9 +103,7 @@ void OSD::MilliSecSleep(const Standard_Integer aDelay)
 
 #else
 
-#ifdef HAVE_SYS_TIME_H
-# include <sys/time.h>
-#endif
+#include <sys/time.h>
 
 void OSD::MilliSecSleep(const Standard_Integer aDelay)
 {
@@ -139,7 +129,7 @@ Standard_Boolean OSD::IsDivisible(const Standard_Real theDividend,const Standard
   // you may divide by infinity
   //
   if (! finite(theDivisor)) return Standard_True;
-#ifdef DEB
+#ifdef OCCT_DEBUG
 //   Standard_Integer aExp1,  aExp2;
 //   Standard_Real aMant1 = frexp(theDividend, &aExp1);
 //   Standard_Real aMant2 = frexp(theDivisor, &aExp2);

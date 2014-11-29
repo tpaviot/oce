@@ -28,23 +28,6 @@
 #include <stdarg.h>
 
 //============================================================================
-//====
-//============================================================================
-const Handle_Standard_Type& Standard_CString_Type_()
-{
-  static Handle_Standard_Type _aType =
-    new Standard_Type("Standard_CString",sizeof(Standard_CString),0,NULL);
-
-  return _aType;
-}
-
-//============================================================================
-//==== ShallowDump : Writes a CString value.
-//============================================================================
-Standard_EXPORT void ShallowDump (const Standard_CString Value, Standard_OStream& s)
-{ s << Value << " Standard_CString " << "\n"; }
-
-//============================================================================
 //==== HashCode of a CString
 //============================================================================
 Standard_Integer HashCode (const Standard_CString Value,
@@ -94,7 +77,12 @@ Standard_Integer HashCodes (const Standard_CString Value,
   // So we switch to C locale temporarily
   #define SAVE_TL() Standard_CLocaleSentry aLocaleSentry;
   #ifndef HAVE_XLOCALE_H
-    #warning System does not support xlocale. Import/export could be broken if C locale did not specified by application.
+    // glibc version for android platform use locale-independent implementation of
+    // strtod, strtol, strtoll functions. For other system with locale-depended
+    // implementations problems may appear if "C" locale is not set explicitly.
+    #ifndef __ANDROID__
+      #warning System does not support xlocale. Import/export could be broken if C locale did not specified by application.
+    #endif
     #define strtod_l(thePtr, theNextPtr, theLocale)              strtod(thePtr, theNextPtr)
   #endif
   #define vprintf_l(theLocale, theFormat, theArgPtr)             vprintf(theFormat, theArgPtr)

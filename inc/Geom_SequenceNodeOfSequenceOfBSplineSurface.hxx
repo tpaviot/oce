@@ -6,38 +6,27 @@
 #ifndef _Geom_SequenceNodeOfSequenceOfBSplineSurface_HeaderFile
 #define _Geom_SequenceNodeOfSequenceOfBSplineSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface_HeaderFile
 #include <Handle_Geom_SequenceNodeOfSequenceOfBSplineSurface.hxx>
-#endif
 
-#ifndef _Handle_Geom_BSplineSurface_HeaderFile
 #include <Handle_Geom_BSplineSurface.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Geom_BSplineSurface;
 class Geom_SequenceOfBSplineSurface;
 
 
 
-class Geom_SequenceNodeOfSequenceOfBSplineSurface : public TCollection_SeqNode {
+class Geom_SequenceNodeOfSequenceOfBSplineSurface : public TCollection_SeqNode
+{
 
 public:
 
   
-      Geom_SequenceNodeOfSequenceOfBSplineSurface(const Handle(Geom_BSplineSurface)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    Geom_SequenceNodeOfSequenceOfBSplineSurface(const Handle(Geom_BSplineSurface)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_Geom_BSplineSurface& Value() const;
+      Handle(Geom_BSplineSurface)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_Geom_BSplineSurface myValue;
+  Handle(Geom_BSplineSurface) myValue;
 
 
 };
 
-#define SeqItem Handle_Geom_BSplineSurface
+#define SeqItem Handle(Geom_BSplineSurface)
 #define SeqItem_hxx <Geom_BSplineSurface.hxx>
 #define TCollection_SequenceNode Geom_SequenceNodeOfSequenceOfBSplineSurface
 #define TCollection_SequenceNode_hxx <Geom_SequenceNodeOfSequenceOfBSplineSurface.hxx>
@@ -78,7 +67,6 @@ Handle_Geom_BSplineSurface myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom_SequenceNodeOfSequenceOfBSplineSurface_HeaderFile

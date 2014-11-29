@@ -6,25 +6,13 @@
 #ifndef _StepElement_HArray1OfMeasureOrUnspecifiedValue_HeaderFile
 #define _StepElement_HArray1OfMeasureOrUnspecifiedValue_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepElement_HArray1OfMeasureOrUnspecifiedValue_HeaderFile
 #include <Handle_StepElement_HArray1OfMeasureOrUnspecifiedValue.hxx>
-#endif
 
-#ifndef _StepElement_Array1OfMeasureOrUnspecifiedValue_HeaderFile
 #include <StepElement_Array1OfMeasureOrUnspecifiedValue.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class StepElement_Array1OfMeasureOrUnspecifiedValue;
 
 
 
-class StepElement_HArray1OfMeasureOrUnspecifiedValue : public MMgt_TShared {
+class StepElement_HArray1OfMeasureOrUnspecifiedValue : public MMgt_TShared
+{
 
 public:
 
   
-      StepElement_HArray1OfMeasureOrUnspecifiedValue(const Standard_Integer Low,const Standard_Integer Up);
+    StepElement_HArray1OfMeasureOrUnspecifiedValue(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepElement_HArray1OfMeasureOrUnspecifiedValue(const Standard_Integer Low,const Standard_Integer Up,const StepElement_MeasureOrUnspecifiedValue& V);
+    StepElement_HArray1OfMeasureOrUnspecifiedValue(const Standard_Integer Low, const Standard_Integer Up, const StepElement_MeasureOrUnspecifiedValue& V);
   
-        void Init(const StepElement_MeasureOrUnspecifiedValue& V) ;
+      void Init (const StepElement_MeasureOrUnspecifiedValue& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const StepElement_MeasureOrUnspecifiedValue& Value) ;
+      void SetValue (const Standard_Integer Index, const StepElement_MeasureOrUnspecifiedValue& Value) ;
   
-       const StepElement_MeasureOrUnspecifiedValue& Value(const Standard_Integer Index) const;
+     const  StepElement_MeasureOrUnspecifiedValue& Value (const Standard_Integer Index)  const;
   
-        StepElement_MeasureOrUnspecifiedValue& ChangeValue(const Standard_Integer Index) ;
+      StepElement_MeasureOrUnspecifiedValue& ChangeValue (const Standard_Integer Index) ;
   
-       const StepElement_Array1OfMeasureOrUnspecifiedValue& Array1() const;
+     const  StepElement_Array1OfMeasureOrUnspecifiedValue& Array1()  const;
   
-        StepElement_Array1OfMeasureOrUnspecifiedValue& ChangeArray1() ;
+      StepElement_Array1OfMeasureOrUnspecifiedValue& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-StepElement_Array1OfMeasureOrUnspecifiedValue myArray;
+  StepElement_Array1OfMeasureOrUnspecifiedValue myArray;
 
 
 };
@@ -100,7 +89,6 @@ StepElement_Array1OfMeasureOrUnspecifiedValue myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_HArray1OfMeasureOrUnspecifiedValue_HeaderFile

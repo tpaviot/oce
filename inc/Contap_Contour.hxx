@@ -6,142 +6,87 @@
 #ifndef _Contap_Contour_HeaderFile
 #define _Contap_Contour_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Contap_TheSequenceOfLineOfContour_HeaderFile
-#include <Contap_TheSequenceOfLineOfContour.hxx>
-#endif
-#ifndef _Contap_TheSearchOfContour_HeaderFile
-#include <Contap_TheSearchOfContour.hxx>
-#endif
-#ifndef _Contap_TheSearchInsideOfContour_HeaderFile
-#include <Contap_TheSearchInsideOfContour.hxx>
-#endif
-#ifndef _Contap_TheSurfFunctionOfContour_HeaderFile
-#include <Contap_TheSurfFunctionOfContour.hxx>
-#endif
-#ifndef _Contap_TheArcFunctionOfContour_HeaderFile
-#include <Contap_TheArcFunctionOfContour.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HVertex_HeaderFile
-#include <Handle_Adaptor3d_HVertex.hxx>
-#endif
-#ifndef _Handle_Adaptor2d_HCurve2d_HeaderFile
-#include <Handle_Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
-#include <Handle_Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_TopolTool_HeaderFile
-#include <Handle_Adaptor3d_TopolTool.hxx>
-#endif
-#ifndef _Handle_Contap_SequenceNodeOfTheSequenceOfPointOfContour_HeaderFile
-#include <Handle_Contap_SequenceNodeOfTheSequenceOfPointOfContour.hxx>
-#endif
-#ifndef _Handle_Contap_TheHSequenceOfPointOfContour_HeaderFile
-#include <Handle_Contap_TheHSequenceOfPointOfContour.hxx>
-#endif
-#ifndef _Handle_Contap_SequenceNodeOfTheSequenceOfLineOfContour_HeaderFile
-#include <Handle_Contap_SequenceNodeOfTheSequenceOfLineOfContour.hxx>
-#endif
-#ifndef _Handle_Contap_TheIWLineOfTheIWalkingOfContour_HeaderFile
-#include <Handle_Contap_TheIWLineOfTheIWalkingOfContour.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
+#include <Contap_TheSequenceOfLine.hxx>
+#include <Contap_TheSearch.hxx>
+#include <Contap_TheSearchInside.hxx>
+#include <Contap_SurfFunction.hxx>
+#include <Contap_ArcFunction.hxx>
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
+#include <Handle_Adaptor3d_HSurface.hxx>
+#include <Handle_Adaptor3d_TopolTool.hxx>
 #include <Standard_Integer.hxx>
-#endif
 class StdFail_NotDone;
 class Standard_OutOfRange;
 class Standard_ConstructionError;
-class Adaptor3d_HVertex;
-class Adaptor2d_HCurve2d;
-class Adaptor3d_HSurface;
-class Contap_HCurve2dTool;
-class Adaptor3d_HSurfaceTool;
-class Contap_HContTool;
-class Adaptor3d_TopolTool;
-class Contap_ThePointOfContour;
-class Contap_TheSequenceOfPointOfContour;
-class Contap_SequenceNodeOfTheSequenceOfPointOfContour;
-class Contap_TheHSequenceOfPointOfContour;
-class Contap_TheLineOfContour;
-class Contap_TheSequenceOfLineOfContour;
-class Contap_SequenceNodeOfTheSequenceOfLineOfContour;
-class Contap_TheSurfPropsOfContour;
-class Contap_TheSurfFunctionOfContour;
-class Contap_TheArcFunctionOfContour;
-class Contap_TheSearchOfContour;
-class Contap_ThePathPointOfTheSearchOfContour;
-class Contap_SequenceOfPathPointOfTheSearchOfContour;
-class Contap_TheSegmentOfTheSearchOfContour;
-class Contap_SequenceOfSegmentOfTheSearchOfContour;
-class Contap_TheIWalkingOfContour;
-class Contap_TheIWLineOfTheIWalkingOfContour;
-class Contap_SequenceOfIWLineOfTheIWalkingOfContour;
-class Contap_TheSearchInsideOfContour;
 class gp_Vec;
 class gp_Pnt;
+class Adaptor3d_HSurface;
+class Adaptor3d_TopolTool;
+class Contap_Line;
+class Contap_SurfFunction;
 
 
 
-class Contap_Contour  {
+class Contap_Contour 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Contap_Contour();
+  Standard_EXPORT Contap_Contour();
   
-  Standard_EXPORT   Contap_Contour(const gp_Vec& Direction);
+  Standard_EXPORT Contap_Contour(const gp_Vec& Direction);
   
-  Standard_EXPORT   Contap_Contour(const gp_Vec& Direction,const Standard_Real Angle);
+  Standard_EXPORT Contap_Contour(const gp_Vec& Direction, const Standard_Real Angle);
   
-  Standard_EXPORT   Contap_Contour(const gp_Pnt& Eye);
+  Standard_EXPORT Contap_Contour(const gp_Pnt& Eye);
   
-  Standard_EXPORT   Contap_Contour(const Handle(Adaptor3d_HSurface)& Surf,const Handle(Adaptor3d_TopolTool)& Domain,const gp_Vec& Direction);
+  //! Creates the contour in a given direction.
+  Standard_EXPORT Contap_Contour(const Handle(Adaptor3d_HSurface)& Surf, const Handle(Adaptor3d_TopolTool)& Domain, const gp_Vec& Direction);
   
-  Standard_EXPORT   Contap_Contour(const Handle(Adaptor3d_HSurface)& Surf,const Handle(Adaptor3d_TopolTool)& Domain,const gp_Vec& Direction,const Standard_Real Angle);
+  //! Creates the contour in a given direction.
+  Standard_EXPORT Contap_Contour(const Handle(Adaptor3d_HSurface)& Surf, const Handle(Adaptor3d_TopolTool)& Domain, const gp_Vec& Direction, const Standard_Real Angle);
   
-  Standard_EXPORT   Contap_Contour(const Handle(Adaptor3d_HSurface)& Surf,const Handle(Adaptor3d_TopolTool)& Domain,const gp_Pnt& Eye);
+  //! Creates the contour for a perspective view.
+  Standard_EXPORT Contap_Contour(const Handle(Adaptor3d_HSurface)& Surf, const Handle(Adaptor3d_TopolTool)& Domain, const gp_Pnt& Eye);
   
-  Standard_EXPORT     void Perform(const Handle(Adaptor3d_HSurface)& Surf,const Handle(Adaptor3d_TopolTool)& Domain) ;
+  //! Creates the contour in a given direction.
+  Standard_EXPORT   void Perform (const Handle(Adaptor3d_HSurface)& Surf, const Handle(Adaptor3d_TopolTool)& Domain) ;
   
-  Standard_EXPORT     void Perform(const Handle(Adaptor3d_HSurface)& Surf,const Handle(Adaptor3d_TopolTool)& Domain,const gp_Vec& Direction) ;
+  //! Creates the contour in a given direction.
+  Standard_EXPORT   void Perform (const Handle(Adaptor3d_HSurface)& Surf, const Handle(Adaptor3d_TopolTool)& Domain, const gp_Vec& Direction) ;
   
-  Standard_EXPORT     void Perform(const Handle(Adaptor3d_HSurface)& Surf,const Handle(Adaptor3d_TopolTool)& Domain,const gp_Vec& Direction,const Standard_Real Angle) ;
+  //! Creates the contour in a given direction.
+  Standard_EXPORT   void Perform (const Handle(Adaptor3d_HSurface)& Surf, const Handle(Adaptor3d_TopolTool)& Domain, const gp_Vec& Direction, const Standard_Real Angle) ;
   
-  Standard_EXPORT     void Perform(const Handle(Adaptor3d_HSurface)& Surf,const Handle(Adaptor3d_TopolTool)& Domain,const gp_Pnt& Eye) ;
+  //! Creates the contour for a perspective view.
+  Standard_EXPORT   void Perform (const Handle(Adaptor3d_HSurface)& Surf, const Handle(Adaptor3d_TopolTool)& Domain, const gp_Pnt& Eye) ;
   
-  Standard_EXPORT     void Init(const gp_Vec& Direction) ;
+  Standard_EXPORT   void Init (const gp_Vec& Direction) ;
   
-  Standard_EXPORT     void Init(const gp_Vec& Direction,const Standard_Real Angle) ;
+  Standard_EXPORT   void Init (const gp_Vec& Direction, const Standard_Real Angle) ;
   
-  Standard_EXPORT     void Init(const gp_Pnt& Eye) ;
+  Standard_EXPORT   void Init (const gp_Pnt& Eye) ;
   
-        Standard_Boolean IsDone() const;
+      Standard_Boolean IsDone()  const;
   
-        Standard_Boolean IsEmpty() const;
+  //! Returns true if the is no line.
+      Standard_Boolean IsEmpty()  const;
   
-        Standard_Integer NbLines() const;
+      Standard_Integer NbLines()  const;
   
-       const Contap_TheLineOfContour& Line(const Standard_Integer Index) const;
+     const  Contap_Line& Line (const Standard_Integer Index)  const;
   
-        Contap_TheSurfFunctionOfContour& SurfaceFunction() ;
-
+  //! Returns    a     reference   on     the   internal
+  //! SurfaceFunction.  This is used to compute tangents
+  //! on the lines.
+      Contap_SurfFunction& SurfaceFunction() ;
 
 
 
@@ -155,198 +100,27 @@ protected:
 private:
 
   
-  Standard_EXPORT     void Perform(const Handle(Adaptor3d_TopolTool)& Domain) ;
+  Standard_EXPORT   void Perform (const Handle(Adaptor3d_TopolTool)& Domain) ;
   
-  Standard_EXPORT     void PerformAna(const Handle(Adaptor3d_TopolTool)& Domain) ;
+  Standard_EXPORT   void PerformAna (const Handle(Adaptor3d_TopolTool)& Domain) ;
 
 
-Standard_Boolean done;
-Contap_TheSequenceOfLineOfContour slin;
-Contap_TheSearchOfContour solrst;
-Contap_TheSearchInsideOfContour solins;
-Contap_TheSurfFunctionOfContour mySFunc;
-Contap_TheArcFunctionOfContour myAFunc;
-Standard_Boolean modeset;
+  Standard_Boolean done;
+  Contap_TheSequenceOfLine slin;
+  Contap_TheSearch solrst;
+  Contap_TheSearchInside solins;
+  Contap_SurfFunction mySFunc;
+  Contap_ArcFunction myAFunc;
+  Standard_Boolean modeset;
 
 
 };
 
-#define TheVertex Handle_Adaptor3d_HVertex
-#define TheVertex_hxx <Adaptor3d_HVertex.hxx>
-#define TheArc Handle_Adaptor2d_HCurve2d
-#define TheArc_hxx <Adaptor2d_HCurve2d.hxx>
-#define TheSurface Handle_Adaptor3d_HSurface
-#define TheSurface_hxx <Adaptor3d_HSurface.hxx>
-#define TheArcTool Contap_HCurve2dTool
-#define TheArcTool_hxx <Contap_HCurve2dTool.hxx>
-#define TheSurfaceTool Adaptor3d_HSurfaceTool
-#define TheSurfaceTool_hxx <Adaptor3d_HSurfaceTool.hxx>
-#define TheContTool Contap_HContTool
-#define TheContTool_hxx <Contap_HContTool.hxx>
-#define Handle_TheTopolTool Handle_Adaptor3d_TopolTool
-#define TheTopolTool Adaptor3d_TopolTool
-#define TheTopolTool_hxx <Adaptor3d_TopolTool.hxx>
-#define Contap_ThePoint Contap_ThePointOfContour
-#define Contap_ThePoint_hxx <Contap_ThePointOfContour.hxx>
-#define Contap_TheSequenceOfPoint Contap_TheSequenceOfPointOfContour
-#define Contap_TheSequenceOfPoint_hxx <Contap_TheSequenceOfPointOfContour.hxx>
-#define Contap_SequenceNodeOfTheSequenceOfPoint Contap_SequenceNodeOfTheSequenceOfPointOfContour
-#define Contap_SequenceNodeOfTheSequenceOfPoint_hxx <Contap_SequenceNodeOfTheSequenceOfPointOfContour.hxx>
-#define Contap_SequenceNodeOfTheSequenceOfPoint Contap_SequenceNodeOfTheSequenceOfPointOfContour
-#define Contap_SequenceNodeOfTheSequenceOfPoint_hxx <Contap_SequenceNodeOfTheSequenceOfPointOfContour.hxx>
-#define Contap_TheHSequenceOfPoint Contap_TheHSequenceOfPointOfContour
-#define Contap_TheHSequenceOfPoint_hxx <Contap_TheHSequenceOfPointOfContour.hxx>
-#define Contap_TheLine Contap_TheLineOfContour
-#define Contap_TheLine_hxx <Contap_TheLineOfContour.hxx>
-#define Contap_TheSequenceOfLine Contap_TheSequenceOfLineOfContour
-#define Contap_TheSequenceOfLine_hxx <Contap_TheSequenceOfLineOfContour.hxx>
-#define Contap_SequenceNodeOfTheSequenceOfLine Contap_SequenceNodeOfTheSequenceOfLineOfContour
-#define Contap_SequenceNodeOfTheSequenceOfLine_hxx <Contap_SequenceNodeOfTheSequenceOfLineOfContour.hxx>
-#define Contap_SequenceNodeOfTheSequenceOfLine Contap_SequenceNodeOfTheSequenceOfLineOfContour
-#define Contap_SequenceNodeOfTheSequenceOfLine_hxx <Contap_SequenceNodeOfTheSequenceOfLineOfContour.hxx>
-#define Contap_TheSurfProps Contap_TheSurfPropsOfContour
-#define Contap_TheSurfProps_hxx <Contap_TheSurfPropsOfContour.hxx>
-#define Contap_TheSurfFunction Contap_TheSurfFunctionOfContour
-#define Contap_TheSurfFunction_hxx <Contap_TheSurfFunctionOfContour.hxx>
-#define Contap_TheArcFunction Contap_TheArcFunctionOfContour
-#define Contap_TheArcFunction_hxx <Contap_TheArcFunctionOfContour.hxx>
-#define Contap_TheSearch Contap_TheSearchOfContour
-#define Contap_TheSearch_hxx <Contap_TheSearchOfContour.hxx>
-#define Contap_ThePathPointOfTheSearch Contap_ThePathPointOfTheSearchOfContour
-#define Contap_ThePathPointOfTheSearch_hxx <Contap_ThePathPointOfTheSearchOfContour.hxx>
-#define Contap_SequenceOfPathPointOfTheSearch Contap_SequenceOfPathPointOfTheSearchOfContour
-#define Contap_SequenceOfPathPointOfTheSearch_hxx <Contap_SequenceOfPathPointOfTheSearchOfContour.hxx>
-#define Contap_TheSegmentOfTheSearch Contap_TheSegmentOfTheSearchOfContour
-#define Contap_TheSegmentOfTheSearch_hxx <Contap_TheSegmentOfTheSearchOfContour.hxx>
-#define Contap_SequenceOfSegmentOfTheSearch Contap_SequenceOfSegmentOfTheSearchOfContour
-#define Contap_SequenceOfSegmentOfTheSearch_hxx <Contap_SequenceOfSegmentOfTheSearchOfContour.hxx>
-#define Contap_ThePathPointOfTheSearch Contap_ThePathPointOfTheSearchOfContour
-#define Contap_ThePathPointOfTheSearch_hxx <Contap_ThePathPointOfTheSearchOfContour.hxx>
-#define Contap_SequenceOfPathPointOfTheSearch Contap_SequenceOfPathPointOfTheSearchOfContour
-#define Contap_SequenceOfPathPointOfTheSearch_hxx <Contap_SequenceOfPathPointOfTheSearchOfContour.hxx>
-#define Contap_TheSegmentOfTheSearch Contap_TheSegmentOfTheSearchOfContour
-#define Contap_TheSegmentOfTheSearch_hxx <Contap_TheSegmentOfTheSearchOfContour.hxx>
-#define Contap_SequenceOfSegmentOfTheSearch Contap_SequenceOfSegmentOfTheSearchOfContour
-#define Contap_SequenceOfSegmentOfTheSearch_hxx <Contap_SequenceOfSegmentOfTheSearchOfContour.hxx>
-#define Contap_TheIWalking Contap_TheIWalkingOfContour
-#define Contap_TheIWalking_hxx <Contap_TheIWalkingOfContour.hxx>
-#define Contap_TheIWLineOfTheIWalking Contap_TheIWLineOfTheIWalkingOfContour
-#define Contap_TheIWLineOfTheIWalking_hxx <Contap_TheIWLineOfTheIWalkingOfContour.hxx>
-#define Contap_SequenceOfIWLineOfTheIWalking Contap_SequenceOfIWLineOfTheIWalkingOfContour
-#define Contap_SequenceOfIWLineOfTheIWalking_hxx <Contap_SequenceOfIWLineOfTheIWalkingOfContour.hxx>
-#define Contap_TheIWLineOfTheIWalking Contap_TheIWLineOfTheIWalkingOfContour
-#define Contap_TheIWLineOfTheIWalking_hxx <Contap_TheIWLineOfTheIWalkingOfContour.hxx>
-#define Contap_SequenceOfIWLineOfTheIWalking Contap_SequenceOfIWLineOfTheIWalkingOfContour
-#define Contap_SequenceOfIWLineOfTheIWalking_hxx <Contap_SequenceOfIWLineOfTheIWalkingOfContour.hxx>
-#define Contap_TheSearchInside Contap_TheSearchInsideOfContour
-#define Contap_TheSearchInside_hxx <Contap_TheSearchInsideOfContour.hxx>
-#define Handle_Contap_SequenceNodeOfTheSequenceOfPoint Handle_Contap_SequenceNodeOfTheSequenceOfPointOfContour
-#define Contap_SequenceNodeOfTheSequenceOfPoint_Type_() Contap_SequenceNodeOfTheSequenceOfPointOfContour_Type_()
-#define Handle_Contap_SequenceNodeOfTheSequenceOfPoint Handle_Contap_SequenceNodeOfTheSequenceOfPointOfContour
-#define Contap_SequenceNodeOfTheSequenceOfPoint_Type_() Contap_SequenceNodeOfTheSequenceOfPointOfContour_Type_()
-#define Handle_Contap_TheHSequenceOfPoint Handle_Contap_TheHSequenceOfPointOfContour
-#define Contap_TheHSequenceOfPoint_Type_() Contap_TheHSequenceOfPointOfContour_Type_()
-#define Handle_Contap_SequenceNodeOfTheSequenceOfLine Handle_Contap_SequenceNodeOfTheSequenceOfLineOfContour
-#define Contap_SequenceNodeOfTheSequenceOfLine_Type_() Contap_SequenceNodeOfTheSequenceOfLineOfContour_Type_()
-#define Handle_Contap_SequenceNodeOfTheSequenceOfLine Handle_Contap_SequenceNodeOfTheSequenceOfLineOfContour
-#define Contap_SequenceNodeOfTheSequenceOfLine_Type_() Contap_SequenceNodeOfTheSequenceOfLineOfContour_Type_()
-#define Handle_Contap_TheIWLineOfTheIWalking Handle_Contap_TheIWLineOfTheIWalkingOfContour
-#define Contap_TheIWLineOfTheIWalking_Type_() Contap_TheIWLineOfTheIWalkingOfContour_Type_()
-#define Handle_Contap_TheIWLineOfTheIWalking Handle_Contap_TheIWLineOfTheIWalkingOfContour
-#define Contap_TheIWLineOfTheIWalking_Type_() Contap_TheIWLineOfTheIWalkingOfContour_Type_()
-#define Contap_ContourGen Contap_Contour
-#define Contap_ContourGen_hxx <Contap_Contour.hxx>
 
-#include <Contap_ContourGen.lxx>
-
-#undef TheVertex
-#undef TheVertex_hxx
-#undef TheArc
-#undef TheArc_hxx
-#undef TheSurface
-#undef TheSurface_hxx
-#undef TheArcTool
-#undef TheArcTool_hxx
-#undef TheSurfaceTool
-#undef TheSurfaceTool_hxx
-#undef TheContTool
-#undef TheContTool_hxx
-#undef Handle_TheTopolTool
-#undef TheTopolTool
-#undef TheTopolTool_hxx
-#undef Contap_ThePoint
-#undef Contap_ThePoint_hxx
-#undef Contap_TheSequenceOfPoint
-#undef Contap_TheSequenceOfPoint_hxx
-#undef Contap_SequenceNodeOfTheSequenceOfPoint
-#undef Contap_SequenceNodeOfTheSequenceOfPoint_hxx
-#undef Contap_SequenceNodeOfTheSequenceOfPoint
-#undef Contap_SequenceNodeOfTheSequenceOfPoint_hxx
-#undef Contap_TheHSequenceOfPoint
-#undef Contap_TheHSequenceOfPoint_hxx
-#undef Contap_TheLine
-#undef Contap_TheLine_hxx
-#undef Contap_TheSequenceOfLine
-#undef Contap_TheSequenceOfLine_hxx
-#undef Contap_SequenceNodeOfTheSequenceOfLine
-#undef Contap_SequenceNodeOfTheSequenceOfLine_hxx
-#undef Contap_SequenceNodeOfTheSequenceOfLine
-#undef Contap_SequenceNodeOfTheSequenceOfLine_hxx
-#undef Contap_TheSurfProps
-#undef Contap_TheSurfProps_hxx
-#undef Contap_TheSurfFunction
-#undef Contap_TheSurfFunction_hxx
-#undef Contap_TheArcFunction
-#undef Contap_TheArcFunction_hxx
-#undef Contap_TheSearch
-#undef Contap_TheSearch_hxx
-#undef Contap_ThePathPointOfTheSearch
-#undef Contap_ThePathPointOfTheSearch_hxx
-#undef Contap_SequenceOfPathPointOfTheSearch
-#undef Contap_SequenceOfPathPointOfTheSearch_hxx
-#undef Contap_TheSegmentOfTheSearch
-#undef Contap_TheSegmentOfTheSearch_hxx
-#undef Contap_SequenceOfSegmentOfTheSearch
-#undef Contap_SequenceOfSegmentOfTheSearch_hxx
-#undef Contap_ThePathPointOfTheSearch
-#undef Contap_ThePathPointOfTheSearch_hxx
-#undef Contap_SequenceOfPathPointOfTheSearch
-#undef Contap_SequenceOfPathPointOfTheSearch_hxx
-#undef Contap_TheSegmentOfTheSearch
-#undef Contap_TheSegmentOfTheSearch_hxx
-#undef Contap_SequenceOfSegmentOfTheSearch
-#undef Contap_SequenceOfSegmentOfTheSearch_hxx
-#undef Contap_TheIWalking
-#undef Contap_TheIWalking_hxx
-#undef Contap_TheIWLineOfTheIWalking
-#undef Contap_TheIWLineOfTheIWalking_hxx
-#undef Contap_SequenceOfIWLineOfTheIWalking
-#undef Contap_SequenceOfIWLineOfTheIWalking_hxx
-#undef Contap_TheIWLineOfTheIWalking
-#undef Contap_TheIWLineOfTheIWalking_hxx
-#undef Contap_SequenceOfIWLineOfTheIWalking
-#undef Contap_SequenceOfIWLineOfTheIWalking_hxx
-#undef Contap_TheSearchInside
-#undef Contap_TheSearchInside_hxx
-#undef Handle_Contap_SequenceNodeOfTheSequenceOfPoint
-#undef Contap_SequenceNodeOfTheSequenceOfPoint_Type_
-#undef Handle_Contap_SequenceNodeOfTheSequenceOfPoint
-#undef Contap_SequenceNodeOfTheSequenceOfPoint_Type_
-#undef Handle_Contap_TheHSequenceOfPoint
-#undef Contap_TheHSequenceOfPoint_Type_
-#undef Handle_Contap_SequenceNodeOfTheSequenceOfLine
-#undef Contap_SequenceNodeOfTheSequenceOfLine_Type_
-#undef Handle_Contap_SequenceNodeOfTheSequenceOfLine
-#undef Contap_SequenceNodeOfTheSequenceOfLine_Type_
-#undef Handle_Contap_TheIWLineOfTheIWalking
-#undef Contap_TheIWLineOfTheIWalking_Type_
-#undef Handle_Contap_TheIWLineOfTheIWalking
-#undef Contap_TheIWLineOfTheIWalking_Type_
-#undef Contap_ContourGen
-#undef Contap_ContourGen_hxx
+#include <Contap_Contour.lxx>
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+
+#endif // _Contap_Contour_HeaderFile

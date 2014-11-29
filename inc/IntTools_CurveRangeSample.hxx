@@ -6,52 +6,38 @@
 #ifndef _IntTools_CurveRangeSample_HeaderFile
 #define _IntTools_CurveRangeSample_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _IntTools_BaseRangeSample_HeaderFile
 #include <IntTools_BaseRangeSample.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class IntTools_Range;
 
 
-
-class IntTools_CurveRangeSample  : public IntTools_BaseRangeSample {
+//! class for range index management of curve
+class IntTools_CurveRangeSample  : public IntTools_BaseRangeSample
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntTools_CurveRangeSample();
+  Standard_EXPORT IntTools_CurveRangeSample();
   
-  Standard_EXPORT   IntTools_CurveRangeSample(const Standard_Integer theIndex);
+  Standard_EXPORT IntTools_CurveRangeSample(const Standard_Integer theIndex);
   
-        void SetRangeIndex(const Standard_Integer theIndex) ;
+      void SetRangeIndex (const Standard_Integer theIndex) ;
   
-        Standard_Integer GetRangeIndex() const;
+      Standard_Integer GetRangeIndex()  const;
   
-        Standard_Boolean IsEqual(const IntTools_CurveRangeSample& Other) const;
+      Standard_Boolean IsEqual (const IntTools_CurveRangeSample& Other)  const;
   
-  Standard_EXPORT     IntTools_Range GetRange(const Standard_Real theFirst,const Standard_Real theLast,const Standard_Integer theNbSample) const;
+  Standard_EXPORT   IntTools_Range GetRange (const Standard_Real theFirst, const Standard_Real theLast, const Standard_Integer theNbSample)  const;
   
-        Standard_Integer GetRangeIndexDeeper(const Standard_Integer theNbSample) const;
-
+      Standard_Integer GetRangeIndexDeeper (const Standard_Integer theNbSample)  const;
 
 
 
@@ -66,7 +52,7 @@ private:
 
 
 
-Standard_Integer myIndex;
+  Standard_Integer myIndex;
 
 
 };
@@ -76,7 +62,6 @@ Standard_Integer myIndex;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_CurveRangeSample_HeaderFile

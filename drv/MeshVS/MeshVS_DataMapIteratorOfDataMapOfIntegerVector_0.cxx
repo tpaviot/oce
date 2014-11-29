@@ -5,21 +5,11 @@
 
 #include <MeshVS_DataMapIteratorOfDataMapOfIntegerVector.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _MeshVS_DataMapOfIntegerVector_HeaderFile
 #include <MeshVS_DataMapOfIntegerVector.hxx>
-#endif
-#ifndef _MeshVS_DataMapNodeOfDataMapOfIntegerVector_HeaderFile
 #include <MeshVS_DataMapNodeOfDataMapOfIntegerVector.hxx>
-#endif
  
 
 #define TheKey Standard_Integer

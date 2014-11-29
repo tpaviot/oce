@@ -6,58 +6,48 @@
 #ifndef _Draw_Printer_HeaderFile
 #define _Draw_Printer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Draw_Printer_HeaderFile
 #include <Handle_Draw_Printer.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Message_Printer_HeaderFile
 #include <Message_Printer.hxx>
-#endif
-#ifndef _Message_Gravity_HeaderFile
+#include <Draw_Interpretor.hxx>
 #include <Message_Gravity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-class Draw_Interpretor;
 class TCollection_ExtendedString;
 class TCollection_AsciiString;
 
 
-//! Implementation of Printer class with output directed to Draw_Interpretor <br>
-class Draw_Printer : public Message_Printer {
+//! Implementation of Printer class with output
+//! (Message_Messenge) directed to Draw_Interpretor
+class Draw_Printer : public Message_Printer
+{
 
 public:
 
-  //! Creates a printer connected to the interpretor. <br>
-  Standard_EXPORT   Draw_Printer(const Draw_Interpretor& theTcl);
-  //! Send a string message with specified trace level. <br>
-//!          The parameter putEndl specified whether end-of-line <br>
-//!          should be added to the end of the message. <br>
-//!          This method must be redefined in descentant. <br>
-  Standard_EXPORT   virtual  void Send(const TCollection_ExtendedString& theString,const Message_Gravity theGravity,const Standard_Boolean putEndl) const;
-  //! Send a string message with specified trace level. <br>
-//!          The parameter putEndl specified whether end-of-line <br>
-//!          should be added to the end of the message. <br>
-//!          Default implementation calls first method Send(). <br>
-  Standard_EXPORT   virtual  void Send(const Standard_CString theString,const Message_Gravity theGravity,const Standard_Boolean putEndl) const;
-  //! Send a string message with specified trace level. <br>
-//!          The parameter putEndl specified whether end-of-line <br>
-//!          should be added to the end of the message. <br>
-//!          Default implementation calls first method Send(). <br>
-  Standard_EXPORT   virtual  void Send(const TCollection_AsciiString& theString,const Message_Gravity theGravity,const Standard_Boolean putEndl) const;
+  
+  //! Creates a printer connected to the interpretor.
+  Standard_EXPORT Draw_Printer(const Draw_Interpretor& theTcl);
+  
+  //! Send a string message with specified trace level.
+  //! The parameter putEndl specified whether end-of-line
+  //! should be added to the end of the message.
+  //! This method must be redefined in descentant.
+  Standard_EXPORT virtual   void Send (const TCollection_ExtendedString& theString, const Message_Gravity theGravity, const Standard_Boolean putEndl)  const;
+  
+  //! Send a string message with specified trace level.
+  //! The parameter putEndl specified whether end-of-line
+  //! should be added to the end of the message.
+  //! Default implementation calls first method Send().
+  Standard_EXPORT virtual   void Send (const Standard_CString theString, const Message_Gravity theGravity, const Standard_Boolean putEndl)  const;
+  
+  //! Send a string message with specified trace level.
+  //! The parameter putEndl specified whether end-of-line
+  //! should be added to the end of the message.
+  //! Default implementation calls first method Send().
+  Standard_EXPORT virtual   void Send (const TCollection_AsciiString& theString, const Message_Gravity theGravity, const Standard_Boolean putEndl)  const;
 
 
 
@@ -72,7 +62,7 @@ protected:
 private: 
 
 
-Standard_Address myTcl;
+  Standard_Address myTcl;
 
 
 };
@@ -81,7 +71,6 @@ Standard_Address myTcl;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Draw_Printer_HeaderFile

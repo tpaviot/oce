@@ -1,9 +1,3 @@
-#ifndef _TDocStd_SequenceOfDocument_HeaderFile
 #include <TDocStd_SequenceOfDocument.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _TDocStd_ApplicationDelta_HeaderFile
 #include <TDocStd_ApplicationDelta.hxx>
-#endif

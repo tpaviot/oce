@@ -6,14 +6,13 @@
 #ifndef _OSD_LoadMode_HeaderFile
 #define _OSD_LoadMode_HeaderFile
 
-//! This enumeration is used to load shareable libraries. <br>
-enum OSD_LoadMode {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! This enumeration is used to load shareable libraries.
+enum OSD_LoadMode
+{
 OSD_RTLD_LAZY,
 OSD_RTLD_NOW
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _OSD_LoadMode_HeaderFile

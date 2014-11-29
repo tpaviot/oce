@@ -6,36 +6,27 @@
 #ifndef _PGeom_ElementarySurface_HeaderFile
 #define _PGeom_ElementarySurface_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom_ElementarySurface_HeaderFile
 #include <Handle_PGeom_ElementarySurface.hxx>
-#endif
 
-#ifndef _gp_Ax3_HeaderFile
 #include <gp_Ax3.hxx>
-#endif
-#ifndef _PGeom_Surface_HeaderFile
 #include <PGeom_Surface.hxx>
-#endif
 class gp_Ax3;
 
 
-class PGeom_ElementarySurface : public PGeom_Surface {
+class PGeom_ElementarySurface : public PGeom_Surface
+{
 
 public:
 
-  //!  Set the field position with <aPosition>. <br>
-  Standard_EXPORT     void Position(const gp_Ax3& aPosition) ;
-  //! Returns the value of the field position. <br>
-  Standard_EXPORT     gp_Ax3 Position() const;
+  
+  //! Set the field position with <aPosition>.
+  Standard_EXPORT   void Position (const gp_Ax3& aPosition) ;
+  
+  //! Returns the value of the field position.
+  Standard_EXPORT   gp_Ax3 Position()  const;
 
 PGeom_ElementarySurface(const Storage_stCONSTclCOM& a) : PGeom_Surface(a)
 {
@@ -49,12 +40,14 @@ PGeom_ElementarySurface(const Storage_stCONSTclCOM& a) : PGeom_Surface(a)
 
 protected:
 
-  //! Initializes the field(s) with default value(s). <br>
-  Standard_EXPORT   PGeom_ElementarySurface();
-  //! Initializes the fields with these values. <br>
-  Standard_EXPORT   PGeom_ElementarySurface(const gp_Ax3& aPosition);
+  
+  //! Initializes the field(s) with default value(s).
+  Standard_EXPORT PGeom_ElementarySurface();
+  
+  //! Initializes the fields with these values.
+  Standard_EXPORT PGeom_ElementarySurface(const gp_Ax3& aPosition);
 
-gp_Ax3 position;
+  gp_Ax3 position;
 
 
 private: 
@@ -68,7 +61,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom_ElementarySurface_HeaderFile

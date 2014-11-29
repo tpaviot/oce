@@ -5,32 +5,18 @@
 
 #include <TopOpeBRepDS_ShapeSurface.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Geom_Surface_HeaderFile
 #include <Geom_Surface.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapNodeOfShapeSurface_HeaderFile
 #include <TopOpeBRepDS_DataMapNodeOfShapeSurface.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapIteratorOfShapeSurface_HeaderFile
 #include <TopOpeBRepDS_DataMapIteratorOfShapeSurface.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape
 #define TheKey_hxx <TopoDS_Shape.hxx>
-#define TheItem Handle_Geom_Surface
+#define TheItem Handle(Geom_Surface)
 #define TheItem_hxx <Geom_Surface.hxx>
 #define Hasher TopTools_ShapeMapHasher
 #define Hasher_hxx <TopTools_ShapeMapHasher.hxx>

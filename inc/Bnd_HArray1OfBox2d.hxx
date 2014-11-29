@@ -6,25 +6,13 @@
 #ifndef _Bnd_HArray1OfBox2d_HeaderFile
 #define _Bnd_HArray1OfBox2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Bnd_HArray1OfBox2d_HeaderFile
 #include <Handle_Bnd_HArray1OfBox2d.hxx>
-#endif
 
-#ifndef _Bnd_Array1OfBox2d_HeaderFile
 #include <Bnd_Array1OfBox2d.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class Bnd_Array1OfBox2d;
 
 
 
-class Bnd_HArray1OfBox2d : public MMgt_TShared {
+class Bnd_HArray1OfBox2d : public MMgt_TShared
+{
 
 public:
 
   
-      Bnd_HArray1OfBox2d(const Standard_Integer Low,const Standard_Integer Up);
+    Bnd_HArray1OfBox2d(const Standard_Integer Low, const Standard_Integer Up);
   
-      Bnd_HArray1OfBox2d(const Standard_Integer Low,const Standard_Integer Up,const Bnd_Box2d& V);
+    Bnd_HArray1OfBox2d(const Standard_Integer Low, const Standard_Integer Up, const Bnd_Box2d& V);
   
-        void Init(const Bnd_Box2d& V) ;
+      void Init (const Bnd_Box2d& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Bnd_Box2d& Value) ;
+      void SetValue (const Standard_Integer Index, const Bnd_Box2d& Value) ;
   
-       const Bnd_Box2d& Value(const Standard_Integer Index) const;
+     const  Bnd_Box2d& Value (const Standard_Integer Index)  const;
   
-        Bnd_Box2d& ChangeValue(const Standard_Integer Index) ;
+      Bnd_Box2d& ChangeValue (const Standard_Integer Index) ;
   
-       const Bnd_Array1OfBox2d& Array1() const;
+     const  Bnd_Array1OfBox2d& Array1()  const;
   
-        Bnd_Array1OfBox2d& ChangeArray1() ;
+      Bnd_Array1OfBox2d& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-Bnd_Array1OfBox2d myArray;
+  Bnd_Array1OfBox2d myArray;
 
 
 };
@@ -100,7 +89,6 @@ Bnd_Array1OfBox2d myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Bnd_HArray1OfBox2d_HeaderFile

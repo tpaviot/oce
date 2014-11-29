@@ -6,46 +6,34 @@
 #ifndef _XmlMNaming_HeaderFile
 #define _XmlMNaming_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_XmlMDF_ADriverTable_HeaderFile
 #include <Handle_XmlMDF_ADriverTable.hxx>
-#endif
-#ifndef _Handle_CDM_MessageDriver_HeaderFile
 #include <Handle_CDM_MessageDriver.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class XmlMDF_ADriverTable;
 class CDM_MessageDriver;
 class XmlMNaming_NamedShapeDriver;
 class XmlMNaming_NamingDriver;
 class XmlMNaming_Shape1;
-class XmlMNaming_Array1OfShape1;
 
 
 
-class XmlMNaming  {
+class XmlMNaming 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Adds the attribute drivers to <aDriverTable>. <br>
-  Standard_EXPORT   static  void AddDrivers(const Handle(XmlMDF_ADriverTable)& aDriverTable,const Handle(CDM_MessageDriver)& aMessageDriver) ;
   
-  Standard_EXPORT   static  void SetDocumentVersion(const Standard_Integer DocVersion) ;
+  //! Adds the attribute drivers to <aDriverTable>.
+  Standard_EXPORT static   void AddDrivers (const Handle(XmlMDF_ADriverTable)& aDriverTable, const Handle(CDM_MessageDriver)& aMessageDriver) ;
   
-  Standard_EXPORT   static  Standard_Integer DocumentVersion() ;
-
+  Standard_EXPORT static   void SetDocumentVersion (const Standard_Integer DocVersion) ;
+  
+  Standard_EXPORT static   Standard_Integer DocumentVersion() ;
 
 
 
@@ -64,7 +52,6 @@ private:
 friend class XmlMNaming_NamedShapeDriver;
 friend class XmlMNaming_NamingDriver;
 friend class XmlMNaming_Shape1;
-friend class XmlMNaming_Array1OfShape1;
 
 };
 
@@ -72,7 +59,6 @@ friend class XmlMNaming_Array1OfShape1;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XmlMNaming_HeaderFile

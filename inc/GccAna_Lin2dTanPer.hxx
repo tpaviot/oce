@@ -6,40 +6,18 @@
 #ifndef _GccAna_Lin2dTanPer_HeaderFile
 #define _GccAna_Lin2dTanPer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TColgp_Array1OfLin2d_HeaderFile
 #include <TColgp_Array1OfLin2d.hxx>
-#endif
-#ifndef _GccEnt_Array1OfPosition_HeaderFile
 #include <GccEnt_Array1OfPosition.hxx>
-#endif
-#ifndef _TColgp_Array1OfPnt2d_HeaderFile
 #include <TColgp_Array1OfPnt2d.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
-#ifndef _GccEnt_Position_HeaderFile
 #include <GccEnt_Position.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class GccEnt_BadQualifier;
 class Standard_OutOfRange;
 class Standard_ConstructionError;
@@ -50,92 +28,102 @@ class gp_Circ2d;
 class GccEnt_QualifiedCirc;
 
 
-//! This class implements the algorithms used to <br>
-//!          create 2d lines tangent to a circle or a point and <br>
-//!          perpendicular to a line or a circle. <br>
-//! Describes functions for building a 2D line perpendicular <br>
-//! to a line and: <br>
-//! -   tangential to a circle, or <br>
-//! -   passing through a point. <br>
-//! A Lin2dTanPer object provides a framework for: <br>
-//! -   defining the construction of 2D line(s), <br>
-//! -   implementing the construction algorithm, and <br>
-//! -   consulting the result(s). <br>
-class GccAna_Lin2dTanPer  {
+//! This class implements the algorithms used to
+//! create 2d lines tangent to a circle or a point and
+//! perpendicular to a line or a circle.
+//! Describes functions for building a 2D line perpendicular
+//! to a line and:
+//! -   tangential to a circle, or
+//! -   passing through a point.
+//! A Lin2dTanPer object provides a framework for:
+//! -   defining the construction of 2D line(s),
+//! -   implementing the construction algorithm, and
+//! -   consulting the result(s).
+class GccAna_Lin2dTanPer 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! This method implements the algorithms used to <br>
-//!          create 2d lines passing through a point and <br>
-//!          perpendicular to a line. <br>
-  Standard_EXPORT   GccAna_Lin2dTanPer(const gp_Pnt2d& ThePnt,const gp_Lin2d& TheLin);
-  //! This method implements the algorithms used to <br>
-//!          create 2d lines passing through a point and <br>
-//!          perpendicular to a circle. <br>
-  Standard_EXPORT   GccAna_Lin2dTanPer(const gp_Pnt2d& ThePnt,const gp_Circ2d& TheCircle);
-  //! This method implements the algorithms used to <br>
-//!          create 2d lines tangent to a circle and <br>
-//!          perpendicular to a line. <br>
-  Standard_EXPORT   GccAna_Lin2dTanPer(const GccEnt_QualifiedCirc& Qualified1,const gp_Lin2d& TheLin);
-  //! This method implements the algorithms used to <br>
-//!          create 2d lines tangent to a circle and <br>
-//!          perpendicular to a circle. <br>
-  Standard_EXPORT   GccAna_Lin2dTanPer(const GccEnt_QualifiedCirc& Qualified1,const gp_Circ2d& TheCircle);
-  //! Returns True if the algorithm succeeded. <br>
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-  //! Returns the number of solutions. <br>
-//! Raises NotDone if the construction algorithm didn't succeed. <br>
-  Standard_EXPORT     Standard_Integer NbSolutions() const;
-  //! Returns the qualifier Qualif1 of the tangency argument <br>
-//! for the solution of index Index computed by this algorithm. <br>
-//! The returned qualifier is: <br>
-//! -   that specified at the start of construction when the <br>
-//!   solutions are defined as enclosing or outside with <br>
-//!   respect to the argument, or <br>
-//! -   that computed during construction (i.e. enclosing or <br>
-//!   outside) when the solutions are defined as unqualified <br>
-//!   with respect to the argument, or <br>
-//! -   GccEnt_noqualifier if the tangency argument is a point. <br>
-//! Exceptions <br>
-//! Standard_OutOfRange if Index is less than zero or <br>
-//! greater than the number of solutions computed by this algorithm. <br>
-//! StdFail_NotDone if the construction fails. <br>
-  Standard_EXPORT     void WhichQualifier(const Standard_Integer Index,GccEnt_Position& Qualif1) const;
-  //! Returns the solution number Index and raises OutOfRange <br>
-//!           exception if Index is greater than the number of solutions. <br>
-//!           Be careful: the Index is only a way to get all the <br>
-//!           solutions, but is not associated to those outside the <br>
-//!           context of the algorithm-object. <br>
-//!    Raises NotDone if the construction algorithm <br>
-//!          didn't succeed. <br>
-//!          It raises OutOfRange if Index is greater than the <br>
-//!          number of solutions. <br>
-  Standard_EXPORT     gp_Lin2d ThisSolution(const Standard_Integer Index) const;
-  //! Returns informations about the tangency point between the <br>
-//!           result number Index and the first argument. <br>
-//!           ParSol is the intrinsic parameter of the point on the <br>
-//!           solution curv. <br>
-//!           ParArg is the intrinsic parameter of the point on the <br>
-//!           argument curv. <br>
-//!           If the first argument is a point ParArg is equal zero. <br>
-//!    raises NotDone if the construction algorithm didn't succeed. <br>
-//!          It raises OutOfRange if Index is greater than the <br>
-//!          number of solutions. <br>
-  Standard_EXPORT     void Tangency1(const Standard_Integer Index,Standard_Real& ParSol,Standard_Real& ParArg,gp_Pnt2d& Pnt) const;
-  //! Returns informations about the intersection between the <br>
-//!           solution number Index and the second argument. <br>
-//!           It returns the first intersection in a case of <br>
-//!           Lin2dTanPer which is perpendicular to a circle . <br>
-//!           ParSol is the intrinsic parameter of the point on the <br>
-//!           solution curv. <br>
-//!           ParArg is the intrinsic parameter of the point on the <br>
-//!           argument curv. Raises NotDone if the construction algorithm <br>
-//!          didn't succeed. <br>
-//!          It raises OutOfRange if Index is greater than the <br>
-//!          number of solutions. <br>
-  Standard_EXPORT     void Intersection2(const Standard_Integer Index,Standard_Real& ParSol,Standard_Real& ParArg,gp_Pnt2d& PntSol) const;
-
+  
+  //! This method implements the algorithms used to
+  //! create 2d lines passing through a point and
+  //! perpendicular to a line.
+  Standard_EXPORT GccAna_Lin2dTanPer(const gp_Pnt2d& ThePnt, const gp_Lin2d& TheLin);
+  
+  //! This method implements the algorithms used to
+  //! create 2d lines passing through a point and
+  //! perpendicular to a circle.
+  Standard_EXPORT GccAna_Lin2dTanPer(const gp_Pnt2d& ThePnt, const gp_Circ2d& TheCircle);
+  
+  //! This method implements the algorithms used to
+  //! create 2d lines tangent to a circle and
+  //! perpendicular to a line.
+  Standard_EXPORT GccAna_Lin2dTanPer(const GccEnt_QualifiedCirc& Qualified1, const gp_Lin2d& TheLin);
+  
+  //! This method implements the algorithms used to
+  //! create 2d lines tangent to a circle and
+  //! perpendicular to a circle.
+  Standard_EXPORT GccAna_Lin2dTanPer(const GccEnt_QualifiedCirc& Qualified1, const gp_Circ2d& TheCircle);
+  
+  //! Returns True if the algorithm succeeded.
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
+  
+  //! Returns the number of solutions.
+  //! Raises NotDone if the construction algorithm didn't succeed.
+  Standard_EXPORT   Standard_Integer NbSolutions()  const;
+  
+  //! Returns the qualifier Qualif1 of the tangency argument
+  //! for the solution of index Index computed by this algorithm.
+  //! The returned qualifier is:
+  //! -   that specified at the start of construction when the
+  //! solutions are defined as enclosing or outside with
+  //! respect to the argument, or
+  //! -   that computed during construction (i.e. enclosing or
+  //! outside) when the solutions are defined as unqualified
+  //! with respect to the argument, or
+  //! -   GccEnt_noqualifier if the tangency argument is a point.
+  //! Exceptions
+  //! Standard_OutOfRange if Index is less than zero or
+  //! greater than the number of solutions computed by this algorithm.
+  //! StdFail_NotDone if the construction fails.
+  Standard_EXPORT   void WhichQualifier (const Standard_Integer Index, GccEnt_Position& Qualif1)  const;
+  
+  //! Returns the solution number Index and raises OutOfRange
+  //! exception if Index is greater than the number of solutions.
+  //! Be careful: the Index is only a way to get all the
+  //! solutions, but is not associated to those outside the
+  //! context of the algorithm-object.
+  //! Raises NotDone if the construction algorithm
+  //! didn't succeed.
+  //! It raises OutOfRange if Index is greater than the
+  //! number of solutions.
+  Standard_EXPORT   gp_Lin2d ThisSolution (const Standard_Integer Index)  const;
+  
+  //! Returns informations about the tangency point between the
+  //! result number Index and the first argument.
+  //! ParSol is the intrinsic parameter of the point on the
+  //! solution curv.
+  //! ParArg is the intrinsic parameter of the point on the
+  //! argument curv.
+  //! If the first argument is a point ParArg is equal zero.
+  //! raises NotDone if the construction algorithm didn't succeed.
+  //! It raises OutOfRange if Index is greater than the
+  //! number of solutions.
+  Standard_EXPORT   void Tangency1 (const Standard_Integer Index, Standard_Real& ParSol, Standard_Real& ParArg, gp_Pnt2d& Pnt)  const;
+  
+  //! Returns informations about the intersection between the
+  //! solution number Index and the second argument.
+  //! It returns the first intersection in a case of
+  //! Lin2dTanPer which is perpendicular to a circle .
+  //! ParSol is the intrinsic parameter of the point on the
+  //! solution curv.
+  //! ParArg is the intrinsic parameter of the point on the
+  //! argument curv. Raises NotDone if the construction algorithm
+  //! didn't succeed.
+  //! It raises OutOfRange if Index is greater than the
+  //! number of solutions.
+  Standard_EXPORT   void Intersection2 (const Standard_Integer Index, Standard_Real& ParSol, Standard_Real& ParArg, gp_Pnt2d& PntSol)  const;
 
 
 
@@ -150,16 +138,16 @@ private:
 
 
 
-Standard_Boolean WellDone;
-Standard_Integer NbrSol;
-TColgp_Array1OfLin2d linsol;
-GccEnt_Array1OfPosition qualifier1;
-TColgp_Array1OfPnt2d pnttg1sol;
-TColgp_Array1OfPnt2d pntint2sol;
-TColStd_Array1OfReal par1sol;
-TColStd_Array1OfReal par2sol;
-TColStd_Array1OfReal pararg1;
-TColStd_Array1OfReal pararg2;
+  Standard_Boolean WellDone;
+  Standard_Integer NbrSol;
+  TColgp_Array1OfLin2d linsol;
+  GccEnt_Array1OfPosition qualifier1;
+  TColgp_Array1OfPnt2d pnttg1sol;
+  TColgp_Array1OfPnt2d pntint2sol;
+  TColStd_Array1OfReal par1sol;
+  TColStd_Array1OfReal par2sol;
+  TColStd_Array1OfReal pararg1;
+  TColStd_Array1OfReal pararg2;
 
 
 };
@@ -168,7 +156,6 @@ TColStd_Array1OfReal pararg2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GccAna_Lin2dTanPer_HeaderFile

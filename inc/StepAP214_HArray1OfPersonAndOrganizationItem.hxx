@@ -6,25 +6,13 @@
 #ifndef _StepAP214_HArray1OfPersonAndOrganizationItem_HeaderFile
 #define _StepAP214_HArray1OfPersonAndOrganizationItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepAP214_HArray1OfPersonAndOrganizationItem_HeaderFile
 #include <Handle_StepAP214_HArray1OfPersonAndOrganizationItem.hxx>
-#endif
 
-#ifndef _StepAP214_Array1OfPersonAndOrganizationItem_HeaderFile
 #include <StepAP214_Array1OfPersonAndOrganizationItem.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class StepAP214_Array1OfPersonAndOrganizationItem;
 
 
 
-class StepAP214_HArray1OfPersonAndOrganizationItem : public MMgt_TShared {
+class StepAP214_HArray1OfPersonAndOrganizationItem : public MMgt_TShared
+{
 
 public:
 
   
-      StepAP214_HArray1OfPersonAndOrganizationItem(const Standard_Integer Low,const Standard_Integer Up);
+    StepAP214_HArray1OfPersonAndOrganizationItem(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepAP214_HArray1OfPersonAndOrganizationItem(const Standard_Integer Low,const Standard_Integer Up,const StepAP214_PersonAndOrganizationItem& V);
+    StepAP214_HArray1OfPersonAndOrganizationItem(const Standard_Integer Low, const Standard_Integer Up, const StepAP214_PersonAndOrganizationItem& V);
   
-        void Init(const StepAP214_PersonAndOrganizationItem& V) ;
+      void Init (const StepAP214_PersonAndOrganizationItem& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const StepAP214_PersonAndOrganizationItem& Value) ;
+      void SetValue (const Standard_Integer Index, const StepAP214_PersonAndOrganizationItem& Value) ;
   
-       const StepAP214_PersonAndOrganizationItem& Value(const Standard_Integer Index) const;
+     const  StepAP214_PersonAndOrganizationItem& Value (const Standard_Integer Index)  const;
   
-        StepAP214_PersonAndOrganizationItem& ChangeValue(const Standard_Integer Index) ;
+      StepAP214_PersonAndOrganizationItem& ChangeValue (const Standard_Integer Index) ;
   
-       const StepAP214_Array1OfPersonAndOrganizationItem& Array1() const;
+     const  StepAP214_Array1OfPersonAndOrganizationItem& Array1()  const;
   
-        StepAP214_Array1OfPersonAndOrganizationItem& ChangeArray1() ;
+      StepAP214_Array1OfPersonAndOrganizationItem& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-StepAP214_Array1OfPersonAndOrganizationItem myArray;
+  StepAP214_Array1OfPersonAndOrganizationItem myArray;
 
 
 };
@@ -100,7 +89,6 @@ StepAP214_Array1OfPersonAndOrganizationItem myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP214_HArray1OfPersonAndOrganizationItem_HeaderFile

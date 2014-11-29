@@ -5,27 +5,13 @@
 
 #include <ShapeAnalysis_DataMapOfShapeListOfReal.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TColStd_ListOfReal_HeaderFile
 #include <TColStd_ListOfReal.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal_HeaderFile
 #include <ShapeAnalysis_DataMapNodeOfDataMapOfShapeListOfReal.hxx>
-#endif
-#ifndef _ShapeAnalysis_DataMapIteratorOfDataMapOfShapeListOfReal_HeaderFile
 #include <ShapeAnalysis_DataMapIteratorOfDataMapOfShapeListOfReal.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape

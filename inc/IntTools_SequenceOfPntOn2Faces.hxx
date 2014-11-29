@@ -6,25 +6,13 @@
 #ifndef _IntTools_SequenceOfPntOn2Faces_HeaderFile
 #define _IntTools_SequenceOfPntOn2Faces_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces_HeaderFile
 #include <Handle_IntTools_SequenceNodeOfSequenceOfPntOn2Faces.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class IntTools_PntOn2Faces;
@@ -32,66 +20,68 @@ class IntTools_SequenceNodeOfSequenceOfPntOn2Faces;
 
 
 
-class IntTools_SequenceOfPntOn2Faces  : public TCollection_BaseSequence {
+class IntTools_SequenceOfPntOn2Faces  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      IntTools_SequenceOfPntOn2Faces();
+    IntTools_SequenceOfPntOn2Faces();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT IntTools_SequenceOfPntOn2Faces(const IntTools_SequenceOfPntOn2Faces& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~IntTools_SequenceOfPntOn2Faces()
 {
   Clear();
 }
   
-  Standard_EXPORT    const IntTools_SequenceOfPntOn2Faces& Assign(const IntTools_SequenceOfPntOn2Faces& Other) ;
-   const IntTools_SequenceOfPntOn2Faces& operator =(const IntTools_SequenceOfPntOn2Faces& Other) 
+  Standard_EXPORT  const  IntTools_SequenceOfPntOn2Faces& Assign (const IntTools_SequenceOfPntOn2Faces& Other) ;
+ const  IntTools_SequenceOfPntOn2Faces& operator = (const IntTools_SequenceOfPntOn2Faces& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const IntTools_PntOn2Faces& T) ;
+  Standard_EXPORT   void Append (const IntTools_PntOn2Faces& T) ;
   
-        void Append(IntTools_SequenceOfPntOn2Faces& S) ;
+      void Append (IntTools_SequenceOfPntOn2Faces& S) ;
   
-  Standard_EXPORT     void Prepend(const IntTools_PntOn2Faces& T) ;
+  Standard_EXPORT   void Prepend (const IntTools_PntOn2Faces& T) ;
   
-        void Prepend(IntTools_SequenceOfPntOn2Faces& S) ;
+      void Prepend (IntTools_SequenceOfPntOn2Faces& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const IntTools_PntOn2Faces& T) ;
+      void InsertBefore (const Standard_Integer Index, const IntTools_PntOn2Faces& T) ;
   
-        void InsertBefore(const Standard_Integer Index,IntTools_SequenceOfPntOn2Faces& S) ;
+      void InsertBefore (const Standard_Integer Index, IntTools_SequenceOfPntOn2Faces& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const IntTools_PntOn2Faces& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const IntTools_PntOn2Faces& T) ;
   
-        void InsertAfter(const Standard_Integer Index,IntTools_SequenceOfPntOn2Faces& S) ;
+      void InsertAfter (const Standard_Integer Index, IntTools_SequenceOfPntOn2Faces& S) ;
   
-  Standard_EXPORT    const IntTools_PntOn2Faces& First() const;
+  Standard_EXPORT  const  IntTools_PntOn2Faces& First()  const;
   
-  Standard_EXPORT    const IntTools_PntOn2Faces& Last() const;
+  Standard_EXPORT  const  IntTools_PntOn2Faces& Last()  const;
   
-        void Split(const Standard_Integer Index,IntTools_SequenceOfPntOn2Faces& Sub) ;
+      void Split (const Standard_Integer Index, IntTools_SequenceOfPntOn2Faces& Sub) ;
   
-  Standard_EXPORT    const IntTools_PntOn2Faces& Value(const Standard_Integer Index) const;
-   const IntTools_PntOn2Faces& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  IntTools_PntOn2Faces& Value (const Standard_Integer Index)  const;
+ const  IntTools_PntOn2Faces& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const IntTools_PntOn2Faces& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const IntTools_PntOn2Faces& I) ;
   
-  Standard_EXPORT     IntTools_PntOn2Faces& ChangeValue(const Standard_Integer Index) ;
-    IntTools_PntOn2Faces& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   IntTools_PntOn2Faces& ChangeValue (const Standard_Integer Index) ;
+  IntTools_PntOn2Faces& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -104,8 +94,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   IntTools_SequenceOfPntOn2Faces(const IntTools_SequenceOfPntOn2Faces& Other);
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_SequenceOfPntOn2Faces_HeaderFile

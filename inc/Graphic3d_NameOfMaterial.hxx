@@ -6,8 +6,11 @@
 #ifndef _Graphic3d_NameOfMaterial_HeaderFile
 #define _Graphic3d_NameOfMaterial_HeaderFile
 
-//! Types of aspect materials. <br>
-enum Graphic3d_NameOfMaterial {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Types of aspect materials.
+enum Graphic3d_NameOfMaterial
+{
 Graphic3d_NOM_BRASS,
 Graphic3d_NOM_BRONZE,
 Graphic3d_NOM_COPPER,
@@ -27,12 +30,12 @@ Graphic3d_NOM_ALUMINIUM,
 Graphic3d_NOM_OBSIDIAN,
 Graphic3d_NOM_NEON_PHC,
 Graphic3d_NOM_JADE,
+Graphic3d_NOM_CHARCOAL,
+Graphic3d_NOM_WATER,
+Graphic3d_NOM_GLASS,
+Graphic3d_NOM_DIAMOND,
 Graphic3d_NOM_DEFAULT,
 Graphic3d_NOM_UserDefined
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Graphic3d_NameOfMaterial_HeaderFile

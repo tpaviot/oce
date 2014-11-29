@@ -5,22 +5,12 @@
 
 #include <TopTools_StdMapNodeOfMapOfShape.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _TopTools_MapOfShape_HeaderFile
 #include <TopTools_MapOfShape.hxx>
-#endif
-#ifndef _TopTools_MapIteratorOfMapOfShape_HeaderFile
 #include <TopTools_MapIteratorOfMapOfShape.hxx>
-#endif
 
  
 

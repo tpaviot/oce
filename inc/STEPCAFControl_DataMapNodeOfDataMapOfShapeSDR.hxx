@@ -6,28 +6,14 @@
 #ifndef _STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR_HeaderFile
 #define _STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR_HeaderFile
 #include <Handle_STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Handle_StepShape_ShapeDefinitionRepresentation_HeaderFile
 #include <Handle_StepShape_ShapeDefinitionRepresentation.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class StepShape_ShapeDefinitionRepresentation;
 class TopoDS_Shape;
 class TopTools_ShapeMapHasher;
@@ -36,16 +22,17 @@ class STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR;
 
 
 
-class STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR : public TCollection_MapNode {
+class STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR : public TCollection_MapNode
+{
 
 public:
 
   
-      STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR(const TopoDS_Shape& K,const Handle(StepShape_ShapeDefinitionRepresentation)& I,const TCollection_MapNodePtr& n);
+    STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR(const TopoDS_Shape& K, const Handle(StepShape_ShapeDefinitionRepresentation)& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        Handle_StepShape_ShapeDefinitionRepresentation& Value() const;
+      Handle(StepShape_ShapeDefinitionRepresentation)& Value()  const;
 
 
 
@@ -60,15 +47,15 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-Handle_StepShape_ShapeDefinitionRepresentation myValue;
+  TopoDS_Shape myKey;
+  Handle(StepShape_ShapeDefinitionRepresentation) myValue;
 
 
 };
 
 #define TheKey TopoDS_Shape
 #define TheKey_hxx <TopoDS_Shape.hxx>
-#define TheItem Handle_StepShape_ShapeDefinitionRepresentation
+#define TheItem Handle(StepShape_ShapeDefinitionRepresentation)
 #define TheItem_hxx <StepShape_ShapeDefinitionRepresentation.hxx>
 #define Hasher TopTools_ShapeMapHasher
 #define Hasher_hxx <TopTools_ShapeMapHasher.hxx>
@@ -99,7 +86,6 @@ Handle_StepShape_ShapeDefinitionRepresentation myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _STEPCAFControl_DataMapNodeOfDataMapOfShapeSDR_HeaderFile

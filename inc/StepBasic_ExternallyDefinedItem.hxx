@@ -6,46 +6,41 @@
 #ifndef _StepBasic_ExternallyDefinedItem_HeaderFile
 #define _StepBasic_ExternallyDefinedItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_ExternallyDefinedItem_HeaderFile
 #include <Handle_StepBasic_ExternallyDefinedItem.hxx>
-#endif
 
-#ifndef _StepBasic_SourceItem_HeaderFile
 #include <StepBasic_SourceItem.hxx>
-#endif
-#ifndef _Handle_StepBasic_ExternalSource_HeaderFile
 #include <Handle_StepBasic_ExternalSource.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepBasic_ExternalSource;
 class StepBasic_SourceItem;
 
 
-//! Representation of STEP entity ExternallyDefinedItem <br>
-class StepBasic_ExternallyDefinedItem : public MMgt_TShared {
+//! Representation of STEP entity ExternallyDefinedItem
+class StepBasic_ExternallyDefinedItem : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepBasic_ExternallyDefinedItem();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const StepBasic_SourceItem& aItemId,const Handle(StepBasic_ExternalSource)& aSource) ;
-  //! Returns field ItemId <br>
-  Standard_EXPORT     StepBasic_SourceItem ItemId() const;
-  //! Set field ItemId <br>
-  Standard_EXPORT     void SetItemId(const StepBasic_SourceItem& ItemId) ;
-  //! Returns field Source <br>
-  Standard_EXPORT     Handle_StepBasic_ExternalSource Source() const;
-  //! Set field Source <br>
-  Standard_EXPORT     void SetSource(const Handle(StepBasic_ExternalSource)& Source) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepBasic_ExternallyDefinedItem();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const StepBasic_SourceItem& aItemId, const Handle(StepBasic_ExternalSource)& aSource) ;
+  
+  //! Returns field ItemId
+  Standard_EXPORT   StepBasic_SourceItem ItemId()  const;
+  
+  //! Set field ItemId
+  Standard_EXPORT   void SetItemId (const StepBasic_SourceItem& ItemId) ;
+  
+  //! Returns field Source
+  Standard_EXPORT   Handle(StepBasic_ExternalSource) Source()  const;
+  
+  //! Set field Source
+  Standard_EXPORT   void SetSource (const Handle(StepBasic_ExternalSource)& Source) ;
 
 
 
@@ -60,8 +55,8 @@ protected:
 private: 
 
 
-StepBasic_SourceItem theItemId;
-Handle_StepBasic_ExternalSource theSource;
+  StepBasic_SourceItem theItemId;
+  Handle(StepBasic_ExternalSource) theSource;
 
 
 };
@@ -70,7 +65,6 @@ Handle_StepBasic_ExternalSource theSource;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_ExternallyDefinedItem_HeaderFile

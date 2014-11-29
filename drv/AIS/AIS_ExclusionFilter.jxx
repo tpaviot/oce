@@ -1,9 +1,3 @@
-#ifndef _SelectMgr_EntityOwner_HeaderFile
 #include <SelectMgr_EntityOwner.hxx>
-#endif
-#ifndef _TColStd_ListOfInteger_HeaderFile
 #include <TColStd_ListOfInteger.hxx>
-#endif
-#ifndef _AIS_ExclusionFilter_HeaderFile
 #include <AIS_ExclusionFilter.hxx>
-#endif

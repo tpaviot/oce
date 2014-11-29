@@ -6,56 +6,39 @@
 #ifndef _FEmTool_LinearJerk_HeaderFile
 #define _FEmTool_LinearJerk_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_FEmTool_LinearJerk_HeaderFile
 #include <Handle_FEmTool_LinearJerk.hxx>
-#endif
 
-#ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _FEmTool_ElementaryCriterion_HeaderFile
 #include <FEmTool_ElementaryCriterion.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray2OfInteger_HeaderFile
 #include <Handle_TColStd_HArray2OfInteger.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
+#include <math_Vector.hxx>
 class Standard_NotImplemented;
 class Standard_DomainError;
 class TColStd_HArray2OfInteger;
 class math_Matrix;
-class math_Vector;
 
 
-//! Criterion of LinearFlexion To Hermit-Jacobi  elements <br>
-class FEmTool_LinearJerk : public FEmTool_ElementaryCriterion {
+//! Criterion of LinearJerk To Hermit-Jacobi  elements
+class FEmTool_LinearJerk : public FEmTool_ElementaryCriterion
+{
 
 public:
 
   
-  Standard_EXPORT   FEmTool_LinearJerk(const Standard_Integer WorkDegree,const GeomAbs_Shape ConstraintOrder);
+  Standard_EXPORT FEmTool_LinearJerk(const Standard_Integer WorkDegree, const GeomAbs_Shape ConstraintOrder);
   
-  Standard_EXPORT   virtual  Handle_TColStd_HArray2OfInteger DependenceTable() const;
+  Standard_EXPORT virtual   Handle(TColStd_HArray2OfInteger) DependenceTable()  const;
   
-  Standard_EXPORT   virtual  Standard_Real Value() ;
+  Standard_EXPORT virtual   Standard_Real Value() ;
   
-  Standard_EXPORT   virtual  void Hessian(const Standard_Integer Dimension1,const Standard_Integer Dimension2,math_Matrix& H) ;
+  Standard_EXPORT virtual   void Hessian (const Standard_Integer Dimension1, const Standard_Integer Dimension2, math_Matrix& H) ;
   
-  Standard_EXPORT   virtual  void Gradient(const Standard_Integer Dimension,math_Vector& G) ;
+  Standard_EXPORT virtual   void Gradient (const Standard_Integer Dimension, math_Vector& G) ;
 
 
 
@@ -70,8 +53,8 @@ protected:
 private: 
 
 
-math_Matrix RefMatrix;
-Standard_Integer myOrder;
+  math_Matrix RefMatrix;
+  Standard_Integer myOrder;
 
 
 };
@@ -80,7 +63,6 @@ Standard_Integer myOrder;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _FEmTool_LinearJerk_HeaderFile

@@ -6,25 +6,13 @@
 #ifndef _Intrv_SequenceOfInterval_HeaderFile
 #define _Intrv_SequenceOfInterval_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_Intrv_SequenceNodeOfSequenceOfInterval_HeaderFile
 #include <Handle_Intrv_SequenceNodeOfSequenceOfInterval.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Intrv_Interval;
@@ -32,66 +20,68 @@ class Intrv_SequenceNodeOfSequenceOfInterval;
 
 
 
-class Intrv_SequenceOfInterval  : public TCollection_BaseSequence {
+class Intrv_SequenceOfInterval  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Intrv_SequenceOfInterval();
+    Intrv_SequenceOfInterval();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT Intrv_SequenceOfInterval(const Intrv_SequenceOfInterval& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~Intrv_SequenceOfInterval()
 {
   Clear();
 }
   
-  Standard_EXPORT    const Intrv_SequenceOfInterval& Assign(const Intrv_SequenceOfInterval& Other) ;
-   const Intrv_SequenceOfInterval& operator =(const Intrv_SequenceOfInterval& Other) 
+  Standard_EXPORT  const  Intrv_SequenceOfInterval& Assign (const Intrv_SequenceOfInterval& Other) ;
+ const  Intrv_SequenceOfInterval& operator = (const Intrv_SequenceOfInterval& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Intrv_Interval& T) ;
+  Standard_EXPORT   void Append (const Intrv_Interval& T) ;
   
-        void Append(Intrv_SequenceOfInterval& S) ;
+      void Append (Intrv_SequenceOfInterval& S) ;
   
-  Standard_EXPORT     void Prepend(const Intrv_Interval& T) ;
+  Standard_EXPORT   void Prepend (const Intrv_Interval& T) ;
   
-        void Prepend(Intrv_SequenceOfInterval& S) ;
+      void Prepend (Intrv_SequenceOfInterval& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Intrv_Interval& T) ;
+      void InsertBefore (const Standard_Integer Index, const Intrv_Interval& T) ;
   
-        void InsertBefore(const Standard_Integer Index,Intrv_SequenceOfInterval& S) ;
+      void InsertBefore (const Standard_Integer Index, Intrv_SequenceOfInterval& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Intrv_Interval& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Intrv_Interval& T) ;
   
-        void InsertAfter(const Standard_Integer Index,Intrv_SequenceOfInterval& S) ;
+      void InsertAfter (const Standard_Integer Index, Intrv_SequenceOfInterval& S) ;
   
-  Standard_EXPORT    const Intrv_Interval& First() const;
+  Standard_EXPORT  const  Intrv_Interval& First()  const;
   
-  Standard_EXPORT    const Intrv_Interval& Last() const;
+  Standard_EXPORT  const  Intrv_Interval& Last()  const;
   
-        void Split(const Standard_Integer Index,Intrv_SequenceOfInterval& Sub) ;
+      void Split (const Standard_Integer Index, Intrv_SequenceOfInterval& Sub) ;
   
-  Standard_EXPORT    const Intrv_Interval& Value(const Standard_Integer Index) const;
-   const Intrv_Interval& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Intrv_Interval& Value (const Standard_Integer Index)  const;
+ const  Intrv_Interval& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Intrv_Interval& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Intrv_Interval& I) ;
   
-  Standard_EXPORT     Intrv_Interval& ChangeValue(const Standard_Integer Index) ;
-    Intrv_Interval& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Intrv_Interval& ChangeValue (const Standard_Integer Index) ;
+  Intrv_Interval& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -104,8 +94,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Intrv_SequenceOfInterval(const Intrv_SequenceOfInterval& Other);
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Intrv_SequenceOfInterval_HeaderFile

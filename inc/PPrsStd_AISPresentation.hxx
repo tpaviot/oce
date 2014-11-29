@@ -6,67 +6,50 @@
 #ifndef _PPrsStd_AISPresentation_HeaderFile
 #define _PPrsStd_AISPresentation_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PPrsStd_AISPresentation_HeaderFile
 #include <Handle_PPrsStd_AISPresentation.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_PCollection_HExtendedString_HeaderFile
 #include <Handle_PCollection_HExtendedString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
 class PCollection_HExtendedString;
 
 
-class PPrsStd_AISPresentation : public PDF_Attribute {
+class PPrsStd_AISPresentation : public PDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   PPrsStd_AISPresentation();
+  Standard_EXPORT PPrsStd_AISPresentation();
   
-  Standard_EXPORT     Standard_Boolean IsDisplayed() const;
+  Standard_EXPORT   Standard_Boolean IsDisplayed()  const;
   
-  Standard_EXPORT     void SetDisplayed(const Standard_Boolean B) ;
+  Standard_EXPORT   void SetDisplayed (const Standard_Boolean B) ;
   
-  Standard_EXPORT     void SetDriverGUID(const Handle(PCollection_HExtendedString)& guid) ;
+  Standard_EXPORT   void SetDriverGUID (const Handle(PCollection_HExtendedString)& guid) ;
   
-  Standard_EXPORT     Handle_PCollection_HExtendedString GetDriverGUID() const;
+  Standard_EXPORT   Handle(PCollection_HExtendedString) GetDriverGUID()  const;
   
-  Standard_EXPORT     Standard_Integer Color() const;
+  Standard_EXPORT   Standard_Integer Color()  const;
   
-  Standard_EXPORT     void SetColor(const Standard_Integer C) ;
+  Standard_EXPORT   void SetColor (const Standard_Integer C) ;
   
-  Standard_EXPORT     Standard_Real Transparency() const;
+  Standard_EXPORT   Standard_Real Transparency()  const;
   
-  Standard_EXPORT     void SetTransparency(const Standard_Real T) ;
+  Standard_EXPORT   void SetTransparency (const Standard_Real T) ;
   
-  Standard_EXPORT     Standard_Integer Material() const;
+  Standard_EXPORT   Standard_Integer Material()  const;
   
-  Standard_EXPORT     void SetMaterial(const Standard_Integer M) ;
+  Standard_EXPORT   void SetMaterial (const Standard_Integer M) ;
   
-  Standard_EXPORT     Standard_Real Width() const;
+  Standard_EXPORT   Standard_Real Width()  const;
   
-  Standard_EXPORT     void SetWidth(const Standard_Real W) ;
+  Standard_EXPORT   void SetWidth (const Standard_Real W) ;
 
 PPrsStd_AISPresentation(const Storage_stCONSTclCOM& a) : PDF_Attribute(a)
 {
@@ -97,12 +80,12 @@ protected:
 private: 
 
 
-Standard_Boolean myIsDisplayed;
-Handle_PCollection_HExtendedString myDriverGUID;
-Standard_Real myTransparency;
-Standard_Integer myColor;
-Standard_Integer myMaterial;
-Standard_Real myWidth;
+  Standard_Boolean myIsDisplayed;
+  Handle(PCollection_HExtendedString) myDriverGUID;
+  Standard_Real myTransparency;
+  Standard_Integer myColor;
+  Standard_Integer myMaterial;
+  Standard_Real myWidth;
 
 
 };
@@ -111,7 +94,6 @@ Standard_Real myWidth;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PPrsStd_AISPresentation_HeaderFile

@@ -6,118 +6,102 @@
 #ifndef _TopOpeBRepDS_Transition_HeaderFile
 #define _TopOpeBRepDS_Transition_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopAbs_State_HeaderFile
 #include <TopAbs_State.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 
 
 
-class TopOpeBRepDS_Transition  {
+class TopOpeBRepDS_Transition 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepDS_Transition();
+  Standard_EXPORT TopOpeBRepDS_Transition();
   
-  Standard_EXPORT   TopOpeBRepDS_Transition(const TopAbs_State StateBefore,const TopAbs_State StateAfter,const TopAbs_ShapeEnum ShapeBefore = TopAbs_FACE,const TopAbs_ShapeEnum ShapeAfter = TopAbs_FACE);
+  Standard_EXPORT TopOpeBRepDS_Transition(const TopAbs_State StateBefore, const TopAbs_State StateAfter, const TopAbs_ShapeEnum ShapeBefore = TopAbs_FACE, const TopAbs_ShapeEnum ShapeAfter = TopAbs_FACE);
   
-  Standard_EXPORT   TopOpeBRepDS_Transition(const TopAbs_Orientation O);
+  Standard_EXPORT TopOpeBRepDS_Transition(const TopAbs_Orientation O);
   
-  Standard_EXPORT     void Set(const TopAbs_State StateBefore,const TopAbs_State StateAfter,const TopAbs_ShapeEnum ShapeBefore = TopAbs_FACE,const TopAbs_ShapeEnum ShapeAfter = TopAbs_FACE) ;
+  Standard_EXPORT   void Set (const TopAbs_State StateBefore, const TopAbs_State StateAfter, const TopAbs_ShapeEnum ShapeBefore = TopAbs_FACE, const TopAbs_ShapeEnum ShapeAfter = TopAbs_FACE) ;
   
-  Standard_EXPORT     void StateBefore(const TopAbs_State S) ;
+  Standard_EXPORT   void StateBefore (const TopAbs_State S) ;
   
-  Standard_EXPORT     void StateAfter(const TopAbs_State S) ;
+  Standard_EXPORT   void StateAfter (const TopAbs_State S) ;
   
-  Standard_EXPORT     void ShapeBefore(const TopAbs_ShapeEnum SE) ;
+  Standard_EXPORT   void ShapeBefore (const TopAbs_ShapeEnum SE) ;
   
-  Standard_EXPORT     void ShapeAfter(const TopAbs_ShapeEnum SE) ;
+  Standard_EXPORT   void ShapeAfter (const TopAbs_ShapeEnum SE) ;
   
-  Standard_EXPORT     void Before(const TopAbs_State S,const TopAbs_ShapeEnum ShapeBefore = TopAbs_FACE) ;
+  Standard_EXPORT   void Before (const TopAbs_State S, const TopAbs_ShapeEnum ShapeBefore = TopAbs_FACE) ;
   
-  Standard_EXPORT     void After(const TopAbs_State S,const TopAbs_ShapeEnum ShapeAfter = TopAbs_FACE) ;
+  Standard_EXPORT   void After (const TopAbs_State S, const TopAbs_ShapeEnum ShapeAfter = TopAbs_FACE) ;
   
-  Standard_EXPORT     void Index(const Standard_Integer I) ;
+  Standard_EXPORT   void Index (const Standard_Integer I) ;
   
-  Standard_EXPORT     void IndexBefore(const Standard_Integer I) ;
+  Standard_EXPORT   void IndexBefore (const Standard_Integer I) ;
   
-  Standard_EXPORT     void IndexAfter(const Standard_Integer I) ;
+  Standard_EXPORT   void IndexAfter (const Standard_Integer I) ;
   
-  Standard_EXPORT     TopAbs_State Before() const;
+  Standard_EXPORT   TopAbs_State Before()  const;
   
-  Standard_EXPORT     TopAbs_ShapeEnum ONBefore() const;
+  Standard_EXPORT   TopAbs_ShapeEnum ONBefore()  const;
   
-  Standard_EXPORT     TopAbs_State After() const;
+  Standard_EXPORT   TopAbs_State After()  const;
   
-  Standard_EXPORT     TopAbs_ShapeEnum ONAfter() const;
+  Standard_EXPORT   TopAbs_ShapeEnum ONAfter()  const;
   
-  Standard_EXPORT     TopAbs_ShapeEnum ShapeBefore() const;
+  Standard_EXPORT   TopAbs_ShapeEnum ShapeBefore()  const;
   
-  Standard_EXPORT     TopAbs_ShapeEnum ShapeAfter() const;
+  Standard_EXPORT   TopAbs_ShapeEnum ShapeAfter()  const;
   
-  Standard_EXPORT     Standard_Integer Index() const;
+  Standard_EXPORT   Standard_Integer Index()  const;
   
-  Standard_EXPORT     Standard_Integer IndexBefore() const;
+  Standard_EXPORT   Standard_Integer IndexBefore()  const;
   
-  Standard_EXPORT     Standard_Integer IndexAfter() const;
-  //! set the transition corresponding to orientation <O> <br>
-//! <br>
-//!       O       Before  After <br>
-//! <br>
-//!   FORWARD       OUT    IN <br>
-//!   REVERSED      IN     OUT <br>
-//!   INTERNAL      IN     IN <br>
-//!   EXTERNAL      OUT    OUT <br>
-//! <br>
-  Standard_EXPORT     void Set(const TopAbs_Orientation O) ;
-  //! returns the orientation corresponding to state <S> <br>
-//! <br>
-//! Before and After not equal TopAbs_ON : <br>
-//! -------------------------------------- <br>
-//! Before  After   Computed orientation <br>
-//! <br>
-//!  S      not S   REVERSED (we leave state S) <br>
-//!  not S  S       FORWARD  (we enter state S) <br>
-//!  S      S       INTERNAL (we stay in state S) <br>
-//!  not S  not S   EXTERNAL (we stay outside state S) <br>
-  Standard_EXPORT     TopAbs_Orientation Orientation(const TopAbs_State S,const TopAbs_ShapeEnum T = TopAbs_FACE) const;
+  Standard_EXPORT   Standard_Integer IndexAfter()  const;
   
-  Standard_EXPORT     TopOpeBRepDS_Transition Complement() const;
-  //! returns True if both states are UNKNOWN <br>
-  Standard_EXPORT     Standard_Boolean IsUnknown() const;
+  //! set the transition corresponding to orientation <O>
+  //!
+  //! O       Before  After
+  //!
+  //! FORWARD       OUT    IN
+  //! REVERSED      IN     OUT
+  //! INTERNAL      IN     IN
+  //! EXTERNAL      OUT    OUT
+  Standard_EXPORT   void Set (const TopAbs_Orientation O) ;
   
-  Standard_EXPORT     Standard_OStream& DumpA(Standard_OStream& OS) const;
+  //! returns the orientation corresponding to state <S>
+  //!
+  //! Before and After not equal TopAbs_ON :
+  //! --------------------------------------
+  //! Before  After   Computed orientation
+  //!
+  //! S      not S   REVERSED (we leave state S)
+  //! not S  S       FORWARD  (we enter state S)
+  //! S      S       INTERNAL (we stay in state S)
+  //! not S  not S   EXTERNAL (we stay outside state S)
+  Standard_EXPORT   TopAbs_Orientation Orientation (const TopAbs_State S, const TopAbs_ShapeEnum T = TopAbs_FACE)  const;
   
-  Standard_EXPORT     Standard_OStream& DumpB(Standard_OStream& OS) const;
+  Standard_EXPORT   TopOpeBRepDS_Transition Complement()  const;
   
-  Standard_EXPORT     Standard_OStream& Dump(Standard_OStream& OS) const;
-
+  //! returns True if both states are UNKNOWN
+  Standard_EXPORT   Standard_Boolean IsUnknown()  const;
+  
+  Standard_EXPORT   Standard_OStream& DumpA (Standard_OStream& OS)  const;
+  
+  Standard_EXPORT   Standard_OStream& DumpB (Standard_OStream& OS)  const;
+  
+  Standard_EXPORT   Standard_OStream& Dump (Standard_OStream& OS)  const;
 
 
 
@@ -130,17 +114,18 @@ protected:
 
 private:
 
-  //! returns the orientation corresponding to state <S> <br>
-//!          (if one at least of the internal states is ON) <br>
-  Standard_EXPORT     TopAbs_Orientation OrientationON(const TopAbs_State S,const TopAbs_ShapeEnum T) const;
+  
+  //! returns the orientation corresponding to state <S>
+  //! (if one at least of the internal states is ON)
+  Standard_EXPORT   TopAbs_Orientation OrientationON (const TopAbs_State S, const TopAbs_ShapeEnum T)  const;
 
 
-TopAbs_State myStateBefore;
-TopAbs_State myStateAfter;
-TopAbs_ShapeEnum myShapeBefore;
-TopAbs_ShapeEnum myShapeAfter;
-Standard_Integer myIndexBefore;
-Standard_Integer myIndexAfter;
+  TopAbs_State myStateBefore;
+  TopAbs_State myStateAfter;
+  TopAbs_ShapeEnum myShapeBefore;
+  TopAbs_ShapeEnum myShapeAfter;
+  Standard_Integer myIndexBefore;
+  Standard_Integer myIndexAfter;
 
 
 };
@@ -149,7 +134,6 @@ Standard_Integer myIndexAfter;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_Transition_HeaderFile

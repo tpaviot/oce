@@ -6,25 +6,13 @@
 #ifndef _TDF_StdMapNodeOfAttributeMap_HeaderFile
 #define _TDF_StdMapNodeOfAttributeMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDF_StdMapNodeOfAttributeMap_HeaderFile
 #include <Handle_TDF_StdMapNodeOfAttributeMap.hxx>
-#endif
 
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TDF_Attribute;
 class TColStd_MapTransientHasher;
 class TDF_AttributeMap;
@@ -32,14 +20,15 @@ class TDF_MapIteratorOfAttributeMap;
 
 
 
-class TDF_StdMapNodeOfAttributeMap : public TCollection_MapNode {
+class TDF_StdMapNodeOfAttributeMap : public TCollection_MapNode
+{
 
 public:
 
   
-      TDF_StdMapNodeOfAttributeMap(const Handle(TDF_Attribute)& K,const TCollection_MapNodePtr& n);
+    TDF_StdMapNodeOfAttributeMap(const Handle(TDF_Attribute)& K, const TCollection_MapNodePtr& n);
   
-        Handle_TDF_Attribute& Key() const;
+      Handle(TDF_Attribute)& Key()  const;
 
 
 
@@ -54,12 +43,12 @@ protected:
 private: 
 
 
-Handle_TDF_Attribute myKey;
+  Handle(TDF_Attribute) myKey;
 
 
 };
 
-#define TheKey Handle_TDF_Attribute
+#define TheKey Handle(TDF_Attribute)
 #define TheKey_hxx <TDF_Attribute.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>
@@ -88,7 +77,6 @@ Handle_TDF_Attribute myKey;
 #undef TCollection_Map_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_StdMapNodeOfAttributeMap_HeaderFile

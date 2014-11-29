@@ -6,37 +6,17 @@
 #ifndef _IFSelect_SelectSignedSharing_HeaderFile
 #define _IFSelect_SelectSignedSharing_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_SelectSignedSharing_HeaderFile
 #include <Handle_IFSelect_SelectSignedSharing.hxx>
-#endif
 
-#ifndef _Handle_IFSelect_Signature_HeaderFile
 #include <Handle_IFSelect_Signature.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _IFSelect_SelectExplore_HeaderFile
 #include <IFSelect_SelectExplore.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
 class IFSelect_Signature;
 class TCollection_AsciiString;
 class Standard_Transient;
@@ -44,32 +24,39 @@ class Interface_Graph;
 class Interface_EntityIterator;
 
 
-//! In the graph, explore the sharings of the input entities, <br>
-//!           until it encounters some which match a given Signature <br>
-//!           (for a limited level, filters the returned list) <br>
-//!           By default, fitted for any level <br>
-class IFSelect_SelectSignedSharing : public IFSelect_SelectExplore {
+//! In the graph, explore the sharings of the input entities,
+//! until it encounters some which match a given Signature
+//! (for a limited level, filters the returned list)
+//! By default, fitted for any level
+class IFSelect_SelectSignedSharing : public IFSelect_SelectExplore
+{
 
 public:
 
-  //! Creates a SelectSignedSharing, defaulted for any level <br>
-//!           with a given Signature and text to match <br>
-  Standard_EXPORT   IFSelect_SelectSignedSharing(const Handle(IFSelect_Signature)& matcher,const Standard_CString signtext,const Standard_Boolean exact = Standard_True,const Standard_Integer level = 0);
-  //! Returns the used Signature, then it is possible to access it, <br>
-//!           modify it as required <br>
-  Standard_EXPORT     Handle_IFSelect_Signature Signature() const;
-  //! Returns Text used to Sort Entity on its Signature <br>
-  Standard_EXPORT    const TCollection_AsciiString& SignatureText() const;
-  //! Returns True if match must be exact <br>
-  Standard_EXPORT     Standard_Boolean IsExact() const;
-  //! Explores an entity : its sharing entities <br>
-//!           <ent> to take if it matches the Signature <br>
-//!           At level max, filters the result. Else gives all sharings <br>
-  Standard_EXPORT     Standard_Boolean Explore(const Standard_Integer level,const Handle(Standard_Transient)& ent,const Interface_Graph& G,Interface_EntityIterator& explored) const;
-  //! Returns a text defining the criterium. <br>
-//!           (it refers to the text and exact flag to be matched, and is <br>
-//!           qualified by the Name provided by the Signature) <br>
-  Standard_EXPORT     TCollection_AsciiString ExploreLabel() const;
+  
+  //! Creates a SelectSignedSharing, defaulted for any level
+  //! with a given Signature and text to match
+  Standard_EXPORT IFSelect_SelectSignedSharing(const Handle(IFSelect_Signature)& matcher, const Standard_CString signtext, const Standard_Boolean exact = Standard_True, const Standard_Integer level = 0);
+  
+  //! Returns the used Signature, then it is possible to access it,
+  //! modify it as required
+  Standard_EXPORT   Handle(IFSelect_Signature) Signature()  const;
+  
+  //! Returns Text used to Sort Entity on its Signature
+  Standard_EXPORT  const  TCollection_AsciiString& SignatureText()  const;
+  
+  //! Returns True if match must be exact
+  Standard_EXPORT   Standard_Boolean IsExact()  const;
+  
+  //! Explores an entity : its sharing entities
+  //! <ent> to take if it matches the Signature
+  //! At level max, filters the result. Else gives all sharings
+  Standard_EXPORT   Standard_Boolean Explore (const Standard_Integer level, const Handle(Standard_Transient)& ent, const Interface_Graph& G, Interface_EntityIterator& explored)  const;
+  
+  //! Returns a text defining the criterium.
+  //! (it refers to the text and exact flag to be matched, and is
+  //! qualified by the Name provided by the Signature)
+  Standard_EXPORT   TCollection_AsciiString ExploreLabel()  const;
 
 
 
@@ -84,9 +71,9 @@ protected:
 private: 
 
 
-Handle_IFSelect_Signature thematcher;
-TCollection_AsciiString thesigntext;
-Standard_Boolean theexact;
+  Handle(IFSelect_Signature) thematcher;
+  TCollection_AsciiString thesigntext;
+  Standard_Boolean theexact;
 
 
 };
@@ -95,7 +82,6 @@ Standard_Boolean theexact;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_SelectSignedSharing_HeaderFile

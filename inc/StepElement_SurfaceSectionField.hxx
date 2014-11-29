@@ -6,28 +6,22 @@
 #ifndef _StepElement_SurfaceSectionField_HeaderFile
 #define _StepElement_SurfaceSectionField_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepElement_SurfaceSectionField_HeaderFile
 #include <Handle_StepElement_SurfaceSectionField.hxx>
-#endif
 
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 
 
-//! Representation of STEP entity SurfaceSectionField <br>
-class StepElement_SurfaceSectionField : public MMgt_TShared {
+//! Representation of STEP entity SurfaceSectionField
+class StepElement_SurfaceSectionField : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepElement_SurfaceSectionField();
+  
+  //! Empty constructor
+  Standard_EXPORT StepElement_SurfaceSectionField();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_SurfaceSectionField_HeaderFile

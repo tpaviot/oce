@@ -6,28 +6,14 @@
 #ifndef _IGESGraph_HArray1OfColor_HeaderFile
 #define _IGESGraph_HArray1OfColor_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESGraph_HArray1OfColor_HeaderFile
 #include <Handle_IGESGraph_HArray1OfColor.hxx>
-#endif
 
-#ifndef _IGESGraph_Array1OfColor_HeaderFile
 #include <IGESGraph_Array1OfColor.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_IGESGraph_Color_HeaderFile
 #include <Handle_IGESGraph_Color.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class IGESGraph_Array1OfColor;
 
 
 
-class IGESGraph_HArray1OfColor : public MMgt_TShared {
+class IGESGraph_HArray1OfColor : public MMgt_TShared
+{
 
 public:
 
   
-      IGESGraph_HArray1OfColor(const Standard_Integer Low,const Standard_Integer Up);
+    IGESGraph_HArray1OfColor(const Standard_Integer Low, const Standard_Integer Up);
   
-      IGESGraph_HArray1OfColor(const Standard_Integer Low,const Standard_Integer Up,const Handle(IGESGraph_Color)& V);
+    IGESGraph_HArray1OfColor(const Standard_Integer Low, const Standard_Integer Up, const Handle(IGESGraph_Color)& V);
   
-        void Init(const Handle(IGESGraph_Color)& V) ;
+      void Init (const Handle(IGESGraph_Color)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(IGESGraph_Color)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(IGESGraph_Color)& Value) ;
   
-       const Handle_IGESGraph_Color& Value(const Standard_Integer Index) const;
+     const  Handle(IGESGraph_Color)& Value (const Standard_Integer Index)  const;
   
-        Handle_IGESGraph_Color& ChangeValue(const Standard_Integer Index) ;
+      Handle(IGESGraph_Color)& ChangeValue (const Standard_Integer Index) ;
   
-       const IGESGraph_Array1OfColor& Array1() const;
+     const  IGESGraph_Array1OfColor& Array1()  const;
   
-        IGESGraph_Array1OfColor& ChangeArray1() ;
+      IGESGraph_Array1OfColor& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-IGESGraph_Array1OfColor myArray;
+  IGESGraph_Array1OfColor myArray;
 
 
 };
 
-#define ItemHArray1 Handle_IGESGraph_Color
+#define ItemHArray1 Handle(IGESGraph_Color)
 #define ItemHArray1_hxx <IGESGraph_Color.hxx>
 #define TheArray1 IGESGraph_Array1OfColor
 #define TheArray1_hxx <IGESGraph_Array1OfColor.hxx>
@@ -103,7 +90,6 @@ IGESGraph_Array1OfColor myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGraph_HArray1OfColor_HeaderFile

@@ -6,39 +6,28 @@
 #ifndef _TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape_HeaderFile
 #define _TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape_HeaderFile
 #include <Handle_TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape.hxx>
-#endif
 
-#ifndef _TopTools_IndexedDataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopTools_IndexedDataMapOfShapeListOfShape;
 class TNaming_ListOfIndexedDataMapOfShapeListOfShape;
 class TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape;
 
 
 
-class TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape : public TCollection_MapNode {
+class TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape : public TCollection_MapNode
+{
 
 public:
 
   
-      TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape(const TopTools_IndexedDataMapOfShapeListOfShape& I,const TCollection_MapNodePtr& n);
+    TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape(const TopTools_IndexedDataMapOfShapeListOfShape& I, const TCollection_MapNodePtr& n);
   
-        TopTools_IndexedDataMapOfShapeListOfShape& Value() const;
+      TopTools_IndexedDataMapOfShapeListOfShape& Value()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-TopTools_IndexedDataMapOfShapeListOfShape myValue;
+  TopTools_IndexedDataMapOfShapeListOfShape myValue;
 
 
 };
@@ -83,7 +72,6 @@ TopTools_IndexedDataMapOfShapeListOfShape myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape_HeaderFile

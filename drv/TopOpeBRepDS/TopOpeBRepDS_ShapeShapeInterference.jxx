@@ -1,6 +1,2 @@
-#ifndef _TopOpeBRepDS_Transition_HeaderFile
 #include <TopOpeBRepDS_Transition.hxx>
-#endif
-#ifndef _TopOpeBRepDS_ShapeShapeInterference_HeaderFile
 #include <TopOpeBRepDS_ShapeShapeInterference.hxx>
-#endif

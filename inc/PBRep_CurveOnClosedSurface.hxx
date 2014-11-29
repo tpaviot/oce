@@ -6,72 +6,54 @@
 #ifndef _PBRep_CurveOnClosedSurface_HeaderFile
 #define _PBRep_CurveOnClosedSurface_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PBRep_CurveOnClosedSurface_HeaderFile
 #include <Handle_PBRep_CurveOnClosedSurface.hxx>
-#endif
 
-#ifndef _Handle_PGeom2d_Curve_HeaderFile
 #include <Handle_PGeom2d_Curve.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _PBRep_CurveOnSurface_HeaderFile
 #include <PBRep_CurveOnSurface.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_PGeom_Surface_HeaderFile
 #include <Handle_PGeom_Surface.hxx>
-#endif
 class PGeom2d_Curve;
 class PGeom_Surface;
 class PTopLoc_Location;
 class gp_Pnt2d;
 
 
-class PBRep_CurveOnClosedSurface : public PBRep_CurveOnSurface {
+class PBRep_CurveOnClosedSurface : public PBRep_CurveOnSurface
+{
 
 public:
 
-  //! CF is curve first parameter <br>
-//!          CL is curve last parameter <br>
-//!          The two curves are SameParameter. <br>
-//!          As far as they can't be computed from a Persistent Curve <br>
-//!          they are given in the CurveOnClosedSurface constructor <br>
-  Standard_EXPORT   PBRep_CurveOnClosedSurface(const Handle(PGeom2d_Curve)& PC1,const Handle(PGeom2d_Curve)& PC2,const Standard_Real CF,const Standard_Real CL,const Handle(PGeom_Surface)& S,const PTopLoc_Location& L,const GeomAbs_Shape C);
   
-  Standard_EXPORT     Handle_PGeom2d_Curve PCurve2() const;
+  //! CF is curve first parameter
+  //! CL is curve last parameter
+  //! The two curves are SameParameter.
+  //! As far as they can't be computed from a Persistent Curve
+  //! they are given in the CurveOnClosedSurface constructor
+  Standard_EXPORT PBRep_CurveOnClosedSurface(const Handle(PGeom2d_Curve)& PC1, const Handle(PGeom2d_Curve)& PC2, const Standard_Real CF, const Standard_Real CL, const Handle(PGeom_Surface)& S, const PTopLoc_Location& L, const GeomAbs_Shape C);
   
-  Standard_EXPORT     GeomAbs_Shape Continuity() const;
-  //! Returns True. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsCurveOnClosedSurface() const;
-  //! Returns True <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsRegularity() const;
+  Standard_EXPORT   Handle(PGeom2d_Curve) PCurve2()  const;
   
-  Standard_EXPORT     void SetUVPoints2(const gp_Pnt2d& Pnt1,const gp_Pnt2d& Pnt2) ;
+  Standard_EXPORT   GeomAbs_Shape Continuity()  const;
   
-  Standard_EXPORT     gp_Pnt2d FirstUV2() const;
+  //! Returns True.
+  Standard_EXPORT virtual   Standard_Boolean IsCurveOnClosedSurface()  const;
   
-  Standard_EXPORT     gp_Pnt2d LastUV2() const;
+  //! Returns True
+  Standard_EXPORT virtual   Standard_Boolean IsRegularity()  const;
+  
+  Standard_EXPORT   void SetUVPoints2 (const gp_Pnt2d& Pnt1, const gp_Pnt2d& Pnt2) ;
+  
+  Standard_EXPORT   gp_Pnt2d FirstUV2()  const;
+  
+  Standard_EXPORT   gp_Pnt2d LastUV2()  const;
 
-  PBRep_CurveOnClosedSurface( )
+PBRep_CurveOnClosedSurface( )
 {
   
 }
@@ -98,10 +80,10 @@ protected:
 private: 
 
 
-Handle_PGeom2d_Curve myPCurve2;
-GeomAbs_Shape myContinuity;
-gp_Pnt2d myUV21;
-gp_Pnt2d myUV22;
+  Handle(PGeom2d_Curve) myPCurve2;
+  GeomAbs_Shape myContinuity;
+  gp_Pnt2d myUV21;
+  gp_Pnt2d myUV22;
 
 
 };
@@ -110,7 +92,6 @@ gp_Pnt2d myUV22;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PBRep_CurveOnClosedSurface_HeaderFile

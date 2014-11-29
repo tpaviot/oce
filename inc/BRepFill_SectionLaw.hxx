@@ -6,40 +6,18 @@
 #ifndef _BRepFill_SectionLaw_HeaderFile
 #define _BRepFill_SectionLaw_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepFill_SectionLaw_HeaderFile
 #include <Handle_BRepFill_SectionLaw.hxx>
-#endif
 
-#ifndef _Handle_GeomFill_HArray1OfSectionLaw_HeaderFile
 #include <Handle_GeomFill_HArray1OfSectionLaw.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _BRepTools_WireExplorer_HeaderFile
 #include <BRepTools_WireExplorer.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_GeomFill_SectionLaw_HeaderFile
 #include <Handle_GeomFill_SectionLaw.hxx>
-#endif
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class GeomFill_HArray1OfSectionLaw;
 class GeomFill_SectionLaw;
 class TopoDS_Vertex;
@@ -48,37 +26,39 @@ class TopoDS_Wire;
 class TopoDS_Edge;
 
 
-//! Build Section Law, with an Vertex, or an Wire <br>
-class BRepFill_SectionLaw : public MMgt_TShared {
+//! Build Section Law, with an Vertex, or an Wire
+class BRepFill_SectionLaw : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT     Standard_Integer NbLaw() const;
+  Standard_EXPORT   Standard_Integer NbLaw()  const;
   
-  Standard_EXPORT    const Handle_GeomFill_SectionLaw& Law(const Standard_Integer Index) const;
+  Standard_EXPORT  const  Handle(GeomFill_SectionLaw)& Law (const Standard_Integer Index)  const;
   
-  Standard_EXPORT   virtual  Standard_Boolean IsConstant() const = 0;
+  Standard_EXPORT virtual   Standard_Boolean IsConstant()  const = 0;
   
-  Standard_EXPORT     Standard_Boolean IsUClosed() const;
+  Standard_EXPORT   Standard_Boolean IsUClosed()  const;
   
-  Standard_EXPORT     Standard_Boolean IsVClosed() const;
-  //! Say if the input sahpe is a  vertex. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsVertex() const = 0;
+  Standard_EXPORT   Standard_Boolean IsVClosed()  const;
   
-  Standard_EXPORT   virtual  Handle_GeomFill_SectionLaw ConcatenedLaw() const = 0;
+  //! Say if the input sahpe is a  vertex.
+  Standard_EXPORT virtual   Standard_Boolean IsVertex()  const = 0;
   
-  Standard_EXPORT   virtual  GeomAbs_Shape Continuity(const Standard_Integer Index,const Standard_Real TolAngular) const = 0;
+  Standard_EXPORT virtual   Handle(GeomFill_SectionLaw) ConcatenedLaw()  const = 0;
   
-  Standard_EXPORT   virtual  Standard_Real VertexTol(const Standard_Integer Index,const Standard_Real Param) const = 0;
+  Standard_EXPORT virtual   GeomAbs_Shape Continuity (const Standard_Integer Index, const Standard_Real TolAngular)  const = 0;
   
-  Standard_EXPORT   virtual  TopoDS_Vertex Vertex(const Standard_Integer Index,const Standard_Real Param) const = 0;
+  Standard_EXPORT virtual   Standard_Real VertexTol (const Standard_Integer Index, const Standard_Real Param)  const = 0;
   
-  Standard_EXPORT   virtual  void D0(const Standard_Real U,TopoDS_Shape& S)  = 0;
+  Standard_EXPORT virtual   TopoDS_Vertex Vertex (const Standard_Integer Index, const Standard_Real Param)  const = 0;
   
-  Standard_EXPORT     void Init(const TopoDS_Wire& W) ;
+  Standard_EXPORT virtual   void D0 (const Standard_Real U, TopoDS_Shape& S)  = 0;
   
-  Standard_EXPORT     TopoDS_Edge CurrentEdge() ;
+  Standard_EXPORT   void Init (const TopoDS_Wire& W) ;
+  
+  Standard_EXPORT   TopoDS_Edge CurrentEdge() ;
 
 
 
@@ -88,15 +68,15 @@ public:
 protected:
 
 
-Handle_GeomFill_HArray1OfSectionLaw myLaws;
-Standard_Boolean uclosed;
-Standard_Boolean vclosed;
+  Handle(GeomFill_HArray1OfSectionLaw) myLaws;
+  Standard_Boolean uclosed;
+  Standard_Boolean vclosed;
 
 
 private: 
 
 
-BRepTools_WireExplorer myIterator;
+  BRepTools_WireExplorer myIterator;
 
 
 };
@@ -105,7 +85,6 @@ BRepTools_WireExplorer myIterator;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepFill_SectionLaw_HeaderFile

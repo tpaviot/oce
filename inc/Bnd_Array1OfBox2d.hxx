@@ -6,25 +6,13 @@
 #ifndef _Bnd_Array1OfBox2d_HeaderFile
 #define _Bnd_Array1OfBox2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -33,52 +21,52 @@ class Bnd_Box2d;
 
 
 
-class Bnd_Array1OfBox2d  {
+class Bnd_Array1OfBox2d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Bnd_Array1OfBox2d(const Standard_Integer Low,const Standard_Integer Up);
+    Bnd_Array1OfBox2d(const Standard_Integer Low, const Standard_Integer Up);
   
-      Bnd_Array1OfBox2d(const Bnd_Box2d& Item,const Standard_Integer Low,const Standard_Integer Up);
+    Bnd_Array1OfBox2d(const Bnd_Box2d& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const Bnd_Box2d& V) ;
+  Standard_EXPORT   void Init (const Bnd_Box2d& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~Bnd_Array1OfBox2d()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const Bnd_Array1OfBox2d& Assign(const Bnd_Array1OfBox2d& Other) ;
-   const Bnd_Array1OfBox2d& operator =(const Bnd_Array1OfBox2d& Other) 
+  Standard_EXPORT  const  Bnd_Array1OfBox2d& Assign (const Bnd_Array1OfBox2d& Other) ;
+ const  Bnd_Array1OfBox2d& operator = (const Bnd_Array1OfBox2d& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Bnd_Box2d& Value) ;
+      void SetValue (const Standard_Integer Index, const Bnd_Box2d& Value) ;
   
-       const Bnd_Box2d& Value(const Standard_Integer Index) const;
-     const Bnd_Box2d& operator ()(const Standard_Integer Index) const
+     const  Bnd_Box2d& Value (const Standard_Integer Index)  const;
+   const  Bnd_Box2d& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        Bnd_Box2d& ChangeValue(const Standard_Integer Index) ;
-      Bnd_Box2d& operator ()(const Standard_Integer Index) 
+      Bnd_Box2d& ChangeValue (const Standard_Integer Index) ;
+    Bnd_Box2d& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -92,13 +80,13 @@ protected:
 private:
 
   
-  Standard_EXPORT   Bnd_Array1OfBox2d(const Bnd_Array1OfBox2d& AnArray);
+  Standard_EXPORT Bnd_Array1OfBox2d(const Bnd_Array1OfBox2d& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
@@ -116,7 +104,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Bnd_Array1OfBox2d_HeaderFile

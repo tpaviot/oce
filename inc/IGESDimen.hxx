@@ -6,19 +6,11 @@
 #ifndef _IGESDimen_HeaderFile
 #define _IGESDimen_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_IGESDimen_Protocol_HeaderFile
 #include <Handle_IGESDimen_Protocol.hxx>
-#endif
 class IGESDimen_Protocol;
 class IGESDimen_CenterLine;
 class IGESDimen_Section;
@@ -76,19 +68,21 @@ class IGESDimen_HArray1OfLeaderArrow;
 class IGESDimen_HArray1OfGeneralNote;
 
 
-//! This package represents Entities applied to Dimensions <br>
-//!           ie. Annotation Entities and attached Properties and <br>
-//!           Associativities. <br>
-class IGESDimen  {
+//! This package represents Entities applied to Dimensions
+//! ie. Annotation Entities and attached Properties and
+//! Associativities.
+class IGESDimen 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Prepares dynamic data (Protocol, Modules) for this package <br>
-  Standard_EXPORT   static  void Init() ;
-  //! Returns the Protocol for this Package <br>
-  Standard_EXPORT   static  Handle_IGESDimen_Protocol Protocol() ;
-
+  
+  //! Prepares dynamic data (Protocol, Modules) for this package
+  Standard_EXPORT static   void Init() ;
+  
+  //! Returns the Protocol for this Package
+  Standard_EXPORT static   Handle(IGESDimen_Protocol) Protocol() ;
 
 
 
@@ -165,7 +159,6 @@ friend class IGESDimen_HArray1OfGeneralNote;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESDimen_HeaderFile

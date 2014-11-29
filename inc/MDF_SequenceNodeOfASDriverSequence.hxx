@@ -6,38 +6,27 @@
 #ifndef _MDF_SequenceNodeOfASDriverSequence_HeaderFile
 #define _MDF_SequenceNodeOfASDriverSequence_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MDF_SequenceNodeOfASDriverSequence_HeaderFile
 #include <Handle_MDF_SequenceNodeOfASDriverSequence.hxx>
-#endif
 
-#ifndef _Handle_MDF_ASDriver_HeaderFile
 #include <Handle_MDF_ASDriver.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class MDF_ASDriver;
 class MDF_ASDriverSequence;
 
 
 
-class MDF_SequenceNodeOfASDriverSequence : public TCollection_SeqNode {
+class MDF_SequenceNodeOfASDriverSequence : public TCollection_SeqNode
+{
 
 public:
 
   
-      MDF_SequenceNodeOfASDriverSequence(const Handle(MDF_ASDriver)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    MDF_SequenceNodeOfASDriverSequence(const Handle(MDF_ASDriver)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_MDF_ASDriver& Value() const;
+      Handle(MDF_ASDriver)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_MDF_ASDriver myValue;
+  Handle(MDF_ASDriver) myValue;
 
 
 };
 
-#define SeqItem Handle_MDF_ASDriver
+#define SeqItem Handle(MDF_ASDriver)
 #define SeqItem_hxx <MDF_ASDriver.hxx>
 #define TCollection_SequenceNode MDF_SequenceNodeOfASDriverSequence
 #define TCollection_SequenceNode_hxx <MDF_SequenceNodeOfASDriverSequence.hxx>
@@ -78,7 +67,6 @@ Handle_MDF_ASDriver myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MDF_SequenceNodeOfASDriverSequence_HeaderFile

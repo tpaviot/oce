@@ -6,31 +6,15 @@
 #ifndef _TopOpeBRep_GeomTool_HeaderFile
 #define _TopOpeBRep_GeomTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TopOpeBRep_LineInter;
 class TopoDS_Shape;
 class TopOpeBRepDS_Curve;
@@ -38,24 +22,25 @@ class Geom2d_Curve;
 class Geom_Curve;
 
 
-//! Provide services needed by the DSFiller <br>
-class TopOpeBRep_GeomTool  {
+//! Provide services needed by the DSFiller
+class TopOpeBRep_GeomTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Make the  DS curve <C> and the pcurves <PC1,PC2> from <br>
-//! intersection line <L> lying on shapes <S1,S2>. <min,max> = <L> bounds <br>
-  Standard_EXPORT   static  void MakeCurves(const Standard_Real min,const Standard_Real max,const TopOpeBRep_LineInter& L,const TopoDS_Shape& S1,const TopoDS_Shape& S2,TopOpeBRepDS_Curve& C,Handle(Geom2d_Curve)& PC1,Handle(Geom2d_Curve)& PC2) ;
   
-  Standard_EXPORT   static  void MakeCurve(const Standard_Real min,const Standard_Real max,const TopOpeBRep_LineInter& L,Handle(Geom_Curve)& C) ;
+  //! Make the  DS curve <C> and the pcurves <PC1,PC2> from
+  //! intersection line <L> lying on shapes <S1,S2>. <min,max> = <L> bounds
+  Standard_EXPORT static   void MakeCurves (const Standard_Real min, const Standard_Real max, const TopOpeBRep_LineInter& L, const TopoDS_Shape& S1, const TopoDS_Shape& S2, TopOpeBRepDS_Curve& C, Handle(Geom2d_Curve)& PC1, Handle(Geom2d_Curve)& PC2) ;
   
-  Standard_EXPORT   static  void MakePrivateCurves(const Standard_Real min,const Standard_Real max,const TopOpeBRep_LineInter& L,const TopoDS_Shape& S1,const TopoDS_Shape& S2,Handle(Geom_Curve)& C,Handle(Geom2d_Curve)& PC1,Handle(Geom2d_Curve)& PC2,Standard_Boolean& New,Standard_Real& tolreached2d1,Standard_Real& tolreached2d2) ;
+  Standard_EXPORT static   void MakeCurve (const Standard_Real min, const Standard_Real max, const TopOpeBRep_LineInter& L, Handle(Geom_Curve)& C) ;
   
-  Standard_EXPORT   static  Handle_Geom_Curve MakeBSpline1fromWALKING3d(const TopOpeBRep_LineInter& L) ;
+  Standard_EXPORT static   void MakePrivateCurves (const Standard_Real min, const Standard_Real max, const TopOpeBRep_LineInter& L, const TopoDS_Shape& S1, const TopoDS_Shape& S2, Handle(Geom_Curve)& C, Handle(Geom2d_Curve)& PC1, Handle(Geom2d_Curve)& PC2, Standard_Boolean& New, Standard_Real& tolreached2d1, Standard_Real& tolreached2d2) ;
   
-  Standard_EXPORT   static  Handle_Geom2d_Curve MakeBSpline1fromWALKING2d(const TopOpeBRep_LineInter& L,const Standard_Integer SI) ;
-
+  Standard_EXPORT static   Handle(Geom_Curve) MakeBSpline1fromWALKING3d (const TopOpeBRep_LineInter& L) ;
+  
+  Standard_EXPORT static   Handle(Geom2d_Curve) MakeBSpline1fromWALKING2d (const TopOpeBRep_LineInter& L, const Standard_Integer SI) ;
 
 
 
@@ -78,7 +63,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRep_GeomTool_HeaderFile

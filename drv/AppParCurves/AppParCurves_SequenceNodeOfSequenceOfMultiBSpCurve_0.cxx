@@ -5,16 +5,10 @@
 
 #include <AppParCurves_SequenceNodeOfSequenceOfMultiBSpCurve.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _AppParCurves_MultiBSpCurve_HeaderFile
 #include <AppParCurves_MultiBSpCurve.hxx>
-#endif
-#ifndef _AppParCurves_SequenceOfMultiBSpCurve_HeaderFile
 #include <AppParCurves_SequenceOfMultiBSpCurve.hxx>
-#endif
 
  
 

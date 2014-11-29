@@ -1,3 +1,1 @@
-#ifndef _PTopoDS_TWire1_HeaderFile
 #include <PTopoDS_TWire1.hxx>
-#endif

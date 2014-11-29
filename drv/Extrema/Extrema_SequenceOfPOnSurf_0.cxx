@@ -5,18 +5,10 @@
 
 #include <Extrema_SequenceOfPOnSurf.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Extrema_POnSurf_HeaderFile
 #include <Extrema_POnSurf.hxx>
-#endif
-#ifndef _Extrema_SequenceNodeOfSequenceOfPOnSurf_HeaderFile
 #include <Extrema_SequenceNodeOfSequenceOfPOnSurf.hxx>
-#endif
  
 
 #define SeqItem Extrema_POnSurf

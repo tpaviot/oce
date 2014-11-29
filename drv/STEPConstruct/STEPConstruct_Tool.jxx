@@ -1,21 +1,7 @@
-#ifndef _XSControl_WorkSession_HeaderFile
 #include <XSControl_WorkSession.hxx>
-#endif
-#ifndef _Transfer_FinderProcess_HeaderFile
 #include <Transfer_FinderProcess.hxx>
-#endif
-#ifndef _Transfer_TransientProcess_HeaderFile
 #include <Transfer_TransientProcess.hxx>
-#endif
-#ifndef _Interface_HGraph_HeaderFile
 #include <Interface_HGraph.hxx>
-#endif
-#ifndef _Interface_InterfaceModel_HeaderFile
 #include <Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Interface_Graph_HeaderFile
 #include <Interface_Graph.hxx>
-#endif
-#ifndef _STEPConstruct_Tool_HeaderFile
 #include <STEPConstruct_Tool.hxx>
-#endif

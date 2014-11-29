@@ -23,21 +23,8 @@
 
 //---------- Systemes autres que WNT : ----------------------------------
 
-#ifdef HAVE_CONFIG_H
-# include <oce-config.h>
-#endif
-
-#ifdef HAVE_SYS_TYPES_H
-# include <sys/types.h>
-#endif
-
-#ifdef HAVE_UNISTD_H
-# include <unistd.h>
-#endif
-
-#ifdef HAVE_SYS_TIMES_H
-# include <sys/times.h>
-#endif
+#include <sys/times.h>
+#include <unistd.h>
 
 #ifdef SOLARIS
 # include <sys/resource.h>
@@ -51,19 +38,13 @@
 # define _sysconf sysconf
 #endif
 
-#if defined(HAVE_TIME_H) || defined(WNT) || defined(DECOSF1)
+#if defined(DECOSF1)
 # include <time.h>
 #endif
 
 #  ifndef CLK_TCK
 #   define CLK_TCK	CLOCKS_PER_SEC
 #  endif
-
-#ifdef OCE_HAVE_LIMITS
-# include <limits>
-#elif defined (OCE_HAVE_LIMITS_H)
-# include <limits.h>
-#endif
 
 #if (defined(__APPLE__))
   #include <mach/task.h>
@@ -80,7 +61,7 @@
 //=======================================================================
 void OSD_Chronometer::GetProcessCPU (Standard_Real& UserSeconds, Standard_Real& SystemSeconds)
 {
-#if defined(LIN) || defined(linux) || defined(__FreeBSD__)
+#if defined(LIN) || defined(linux) || defined(__FreeBSD__) || defined(__ANDROID__)
   static const long aCLK_TCK = sysconf(_SC_CLK_TCK);
 #else
   static const long aCLK_TCK = CLK_TCK;
@@ -110,7 +91,7 @@ void OSD_Chronometer::GetThreadCPU (Standard_Real& theUserSeconds,
     theUserSeconds   = Standard_Real(aTaskInfo.user_time.seconds)   + 0.000001 * aTaskInfo.user_time.microseconds;
     theSystemSeconds = Standard_Real(aTaskInfo.system_time.seconds) + 0.000001 * aTaskInfo.system_time.microseconds;
   }
-#elif defined(_POSIX_TIMERS) && defined(_POSIX_THREAD_CPUTIME)
+#elif (defined(_POSIX_TIMERS) && defined(_POSIX_THREAD_CPUTIME)) || defined(__ANDROID__)
   // on Linux, only user times are available for threads via clock_gettime()
   struct timespec t;
 #if defined(__hpux) && !defined(CLOCK_THREAD_CPUTIME_ID)

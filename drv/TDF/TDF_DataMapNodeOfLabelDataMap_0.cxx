@@ -5,22 +5,12 @@
 
 #include <TDF_DataMapNodeOfLabelDataMap.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TDF_LabelMapHasher_HeaderFile
 #include <TDF_LabelMapHasher.hxx>
-#endif
-#ifndef _TDF_LabelDataMap_HeaderFile
 #include <TDF_LabelDataMap.hxx>
-#endif
-#ifndef _TDF_DataMapIteratorOfLabelDataMap_HeaderFile
 #include <TDF_DataMapIteratorOfLabelDataMap.hxx>
-#endif
 
  
 

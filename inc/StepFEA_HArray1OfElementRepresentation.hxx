@@ -6,28 +6,14 @@
 #ifndef _StepFEA_HArray1OfElementRepresentation_HeaderFile
 #define _StepFEA_HArray1OfElementRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepFEA_HArray1OfElementRepresentation_HeaderFile
 #include <Handle_StepFEA_HArray1OfElementRepresentation.hxx>
-#endif
 
-#ifndef _StepFEA_Array1OfElementRepresentation_HeaderFile
 #include <StepFEA_Array1OfElementRepresentation.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_StepFEA_ElementRepresentation_HeaderFile
 #include <Handle_StepFEA_ElementRepresentation.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class StepFEA_Array1OfElementRepresentation;
 
 
 
-class StepFEA_HArray1OfElementRepresentation : public MMgt_TShared {
+class StepFEA_HArray1OfElementRepresentation : public MMgt_TShared
+{
 
 public:
 
   
-      StepFEA_HArray1OfElementRepresentation(const Standard_Integer Low,const Standard_Integer Up);
+    StepFEA_HArray1OfElementRepresentation(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepFEA_HArray1OfElementRepresentation(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepFEA_ElementRepresentation)& V);
+    StepFEA_HArray1OfElementRepresentation(const Standard_Integer Low, const Standard_Integer Up, const Handle(StepFEA_ElementRepresentation)& V);
   
-        void Init(const Handle(StepFEA_ElementRepresentation)& V) ;
+      void Init (const Handle(StepFEA_ElementRepresentation)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(StepFEA_ElementRepresentation)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(StepFEA_ElementRepresentation)& Value) ;
   
-       const Handle_StepFEA_ElementRepresentation& Value(const Standard_Integer Index) const;
+     const  Handle(StepFEA_ElementRepresentation)& Value (const Standard_Integer Index)  const;
   
-        Handle_StepFEA_ElementRepresentation& ChangeValue(const Standard_Integer Index) ;
+      Handle(StepFEA_ElementRepresentation)& ChangeValue (const Standard_Integer Index) ;
   
-       const StepFEA_Array1OfElementRepresentation& Array1() const;
+     const  StepFEA_Array1OfElementRepresentation& Array1()  const;
   
-        StepFEA_Array1OfElementRepresentation& ChangeArray1() ;
+      StepFEA_Array1OfElementRepresentation& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-StepFEA_Array1OfElementRepresentation myArray;
+  StepFEA_Array1OfElementRepresentation myArray;
 
 
 };
 
-#define ItemHArray1 Handle_StepFEA_ElementRepresentation
+#define ItemHArray1 Handle(StepFEA_ElementRepresentation)
 #define ItemHArray1_hxx <StepFEA_ElementRepresentation.hxx>
 #define TheArray1 StepFEA_Array1OfElementRepresentation
 #define TheArray1_hxx <StepFEA_Array1OfElementRepresentation.hxx>
@@ -103,7 +90,6 @@ StepFEA_Array1OfElementRepresentation myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_HArray1OfElementRepresentation_HeaderFile

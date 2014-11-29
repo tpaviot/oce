@@ -5,19 +5,11 @@
 
 #include <TDF_ListNodeOfLabelList.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TDF_LabelList_HeaderFile
 #include <TDF_LabelList.hxx>
-#endif
-#ifndef _TDF_ListIteratorOfLabelList_HeaderFile
 #include <TDF_ListIteratorOfLabelList.hxx>
-#endif
 
  
 

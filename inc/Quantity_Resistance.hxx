@@ -6,13 +6,11 @@
 #ifndef _Quantity_Resistance_HeaderFile
 #define _Quantity_Resistance_HeaderFile
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 
 typedef Standard_Real Quantity_Resistance;
 
 
 #define Quantity_Resistance_Type_() Standard_Real_Type_()
 
-#endif
+#endif // _Quantity_Resistance_HeaderFile

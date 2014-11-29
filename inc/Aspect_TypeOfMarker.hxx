@@ -6,24 +6,26 @@
 #ifndef _Aspect_TypeOfMarker_HeaderFile
 #define _Aspect_TypeOfMarker_HeaderFile
 
-//! Definition of types of markers <br>
-//! <br>
-//!          TOM_POINT   point   . <br>
-//!          TOM_PLUS    plus    + <br>
-//!          TOM_STAR    star    * <br>
-//!          TOM_X       cross   x <br>
-//!          TOM_O       circle  O <br>
-//!          TOM_O_POINT a point in a circle <br>
-//!          TOM_O_PLUS  a plus in a circle <br>
-//!          TOM_O_STAR  a star in a circle <br>
-//!          TOM_O_X     a cross in a circle <br>
-//!          TOM_RING1   a large ring <br>
-//!          TOM_RING2   a medium ring <br>
-//!          TOM_RING3   a small ring <br>
-//!          TOM_BALL    a ball with 1 color and different saturations <br>
-//!          TOM_USERDEFINED     defined by Users <br>
-//! <br>
-enum Aspect_TypeOfMarker {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Definition of types of markers
+//!
+//! TOM_POINT   point   .
+//! TOM_PLUS    plus    +
+//! TOM_STAR    star    *
+//! TOM_X       cross   x
+//! TOM_O       circle  O
+//! TOM_O_POINT a point in a circle
+//! TOM_O_PLUS  a plus in a circle
+//! TOM_O_STAR  a star in a circle
+//! TOM_O_X     a cross in a circle
+//! TOM_RING1   a large ring
+//! TOM_RING2   a medium ring
+//! TOM_RING3   a small ring
+//! TOM_BALL    a ball with 1 color and different saturations
+//! TOM_USERDEFINED     defined by Users
+enum Aspect_TypeOfMarker
+{
 Aspect_TOM_POINT,
 Aspect_TOM_PLUS,
 Aspect_TOM_STAR,
@@ -40,8 +42,4 @@ Aspect_TOM_BALL,
 Aspect_TOM_USERDEFINED
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_TypeOfMarker_HeaderFile

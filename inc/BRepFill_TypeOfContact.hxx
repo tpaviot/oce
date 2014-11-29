@@ -6,15 +6,14 @@
 #ifndef _BRepFill_TypeOfContact_HeaderFile
 #define _BRepFill_TypeOfContact_HeaderFile
 
-//! A pair of bound shapes with the result. <br>
-enum BRepFill_TypeOfContact {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! A pair of bound shapes with the result.
+enum BRepFill_TypeOfContact
+{
 BRepFill_NoContact,
 BRepFill_Contact,
 BRepFill_ContactOnBorder
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BRepFill_TypeOfContact_HeaderFile

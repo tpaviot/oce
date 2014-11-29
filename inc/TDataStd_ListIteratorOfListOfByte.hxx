@@ -6,28 +6,14 @@
 #ifndef _TDataStd_ListIteratorOfListOfByte_HeaderFile
 #define _TDataStd_ListIteratorOfListOfByte_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Byte_HeaderFile
 #include <Standard_Byte.hxx>
-#endif
-#ifndef _Handle_TDataStd_ListNodeOfListOfByte_HeaderFile
 #include <Handle_TDataStd_ListNodeOfListOfByte.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class TDataStd_ListOfByte;
@@ -35,27 +21,27 @@ class TDataStd_ListNodeOfListOfByte;
 
 
 
-class TDataStd_ListIteratorOfListOfByte  {
+class TDataStd_ListIteratorOfListOfByte 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TDataStd_ListIteratorOfListOfByte();
+  Standard_EXPORT TDataStd_ListIteratorOfListOfByte();
   
-  Standard_EXPORT   TDataStd_ListIteratorOfListOfByte(const TDataStd_ListOfByte& L);
+  Standard_EXPORT TDataStd_ListIteratorOfListOfByte(const TDataStd_ListOfByte& L);
   
-  Standard_EXPORT     void Initialize(const TDataStd_ListOfByte& L) ;
+  Standard_EXPORT   void Initialize (const TDataStd_ListOfByte& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     Standard_Byte& Value() const;
+  Standard_EXPORT   Standard_Byte& Value()  const;
 
 
 friend class TDataStd_ListOfByte;
-
 
 
 protected:
@@ -68,8 +54,8 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
@@ -99,7 +85,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_ListIteratorOfListOfByte_HeaderFile

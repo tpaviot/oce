@@ -5,21 +5,13 @@
 
 #include <GeomPlate_SequenceOfCurveConstraint.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _GeomPlate_CurveConstraint_HeaderFile
 #include <GeomPlate_CurveConstraint.hxx>
-#endif
-#ifndef _GeomPlate_SequenceNodeOfSequenceOfCurveConstraint_HeaderFile
 #include <GeomPlate_SequenceNodeOfSequenceOfCurveConstraint.hxx>
-#endif
  
 
-#define SeqItem Handle_GeomPlate_CurveConstraint
+#define SeqItem Handle(GeomPlate_CurveConstraint)
 #define SeqItem_hxx <GeomPlate_CurveConstraint.hxx>
 #define TCollection_SequenceNode GeomPlate_SequenceNodeOfSequenceOfCurveConstraint
 #define TCollection_SequenceNode_hxx <GeomPlate_SequenceNodeOfSequenceOfCurveConstraint.hxx>

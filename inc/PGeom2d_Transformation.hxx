@@ -6,40 +6,33 @@
 #ifndef _PGeom2d_Transformation_HeaderFile
 #define _PGeom2d_Transformation_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom2d_Transformation_HeaderFile
 #include <Handle_PGeom2d_Transformation.hxx>
-#endif
 
-#ifndef _gp_Trsf2d_HeaderFile
 #include <gp_Trsf2d.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
 class gp_Trsf2d;
 
 
-class PGeom2d_Transformation : public Standard_Persistent {
+class PGeom2d_Transformation : public Standard_Persistent
+{
 
 public:
 
-  //! Creates a transformation with default values. <br>
-  Standard_EXPORT   PGeom2d_Transformation();
-  //!  Creates a transformation with <aTrsf>. <br>
-  Standard_EXPORT   PGeom2d_Transformation(const gp_Trsf2d& aTrsf);
-  //! Creates a Transformation with <aTrsf>. <br>
-  Standard_EXPORT     void Trsf(const gp_Trsf2d& aTrsf) ;
-  //! Returns the value of the field trsf. <br>
-  Standard_EXPORT     gp_Trsf2d Trsf() const;
+  
+  //! Creates a transformation with default values.
+  Standard_EXPORT PGeom2d_Transformation();
+  
+  //! Creates a transformation with <aTrsf>.
+  Standard_EXPORT PGeom2d_Transformation(const gp_Trsf2d& aTrsf);
+  
+  //! Creates a Transformation with <aTrsf>.
+  Standard_EXPORT   void Trsf (const gp_Trsf2d& aTrsf) ;
+  
+  //! Returns the value of the field trsf.
+  Standard_EXPORT   gp_Trsf2d Trsf()  const;
 
 PGeom2d_Transformation(const Storage_stCONSTclCOM& a) : Standard_Persistent(a)
 {
@@ -59,7 +52,7 @@ protected:
 private: 
 
 
-gp_Trsf2d trsf;
+  gp_Trsf2d trsf;
 
 
 };
@@ -68,7 +61,6 @@ gp_Trsf2d trsf;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom2d_Transformation_HeaderFile

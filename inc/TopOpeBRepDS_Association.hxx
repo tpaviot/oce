@@ -6,49 +6,36 @@
 #ifndef _TopOpeBRepDS_Association_HeaderFile
 #define _TopOpeBRepDS_Association_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_Association_HeaderFile
 #include <Handle_TopOpeBRepDS_Association.hxx>
-#endif
 
-#ifndef _TopOpeBRepDS_DataMapOfInterferenceListOfInterference_HeaderFile
 #include <TopOpeBRepDS_DataMapOfInterferenceListOfInterference.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_Interference_HeaderFile
 #include <Handle_TopOpeBRepDS_Interference.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopOpeBRepDS_Interference;
 class TopOpeBRepDS_ListOfInterference;
 
 
 
-class TopOpeBRepDS_Association : public MMgt_TShared {
+class TopOpeBRepDS_Association : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   TopOpeBRepDS_Association();
+  Standard_EXPORT TopOpeBRepDS_Association();
   
-  Standard_EXPORT     void Associate(const Handle(TopOpeBRepDS_Interference)& I,const Handle(TopOpeBRepDS_Interference)& K) ;
+  Standard_EXPORT   void Associate (const Handle(TopOpeBRepDS_Interference)& I, const Handle(TopOpeBRepDS_Interference)& K) ;
   
-  Standard_EXPORT     void Associate(const Handle(TopOpeBRepDS_Interference)& I,const TopOpeBRepDS_ListOfInterference& LI) ;
+  Standard_EXPORT   void Associate (const Handle(TopOpeBRepDS_Interference)& I, const TopOpeBRepDS_ListOfInterference& LI) ;
   
-  Standard_EXPORT     Standard_Boolean HasAssociation(const Handle(TopOpeBRepDS_Interference)& I) const;
+  Standard_EXPORT   Standard_Boolean HasAssociation (const Handle(TopOpeBRepDS_Interference)& I)  const;
   
-  Standard_EXPORT     TopOpeBRepDS_ListOfInterference& Associated(const Handle(TopOpeBRepDS_Interference)& I) ;
+  Standard_EXPORT   TopOpeBRepDS_ListOfInterference& Associated (const Handle(TopOpeBRepDS_Interference)& I) ;
   
-  Standard_EXPORT     Standard_Boolean AreAssociated(const Handle(TopOpeBRepDS_Interference)& I,const Handle(TopOpeBRepDS_Interference)& K) const;
+  Standard_EXPORT   Standard_Boolean AreAssociated (const Handle(TopOpeBRepDS_Interference)& I, const Handle(TopOpeBRepDS_Interference)& K)  const;
 
 
 
@@ -63,7 +50,7 @@ protected:
 private: 
 
 
-TopOpeBRepDS_DataMapOfInterferenceListOfInterference myMap;
+  TopOpeBRepDS_DataMapOfInterferenceListOfInterference myMap;
 
 
 };
@@ -72,7 +59,6 @@ TopOpeBRepDS_DataMapOfInterferenceListOfInterference myMap;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_Association_HeaderFile

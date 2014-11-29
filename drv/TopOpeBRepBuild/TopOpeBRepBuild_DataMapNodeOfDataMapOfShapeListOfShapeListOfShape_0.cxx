@@ -5,25 +5,13 @@
 
 #include <TopOpeBRepBuild_DataMapNodeOfDataMapOfShapeListOfShapeListOfShape.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_ListOfShapeListOfShape_HeaderFile
 #include <TopOpeBRepBuild_ListOfShapeListOfShape.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_DataMapOfShapeListOfShapeListOfShape_HeaderFile
 #include <TopOpeBRepBuild_DataMapOfShapeListOfShapeListOfShape.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_DataMapIteratorOfDataMapOfShapeListOfShapeListOfShape_HeaderFile
 #include <TopOpeBRepBuild_DataMapIteratorOfDataMapOfShapeListOfShapeListOfShape.hxx>
-#endif
 
  
 

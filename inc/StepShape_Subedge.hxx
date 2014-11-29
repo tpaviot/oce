@@ -6,46 +6,37 @@
 #ifndef _StepShape_Subedge_HeaderFile
 #define _StepShape_Subedge_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_Subedge_HeaderFile
 #include <Handle_StepShape_Subedge.hxx>
-#endif
 
-#ifndef _Handle_StepShape_Edge_HeaderFile
 #include <Handle_StepShape_Edge.hxx>
-#endif
-#ifndef _StepShape_Edge_HeaderFile
 #include <StepShape_Edge.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepShape_Vertex_HeaderFile
 #include <Handle_StepShape_Vertex.hxx>
-#endif
 class StepShape_Edge;
 class TCollection_HAsciiString;
 class StepShape_Vertex;
 
 
-//! Representation of STEP entity Subedge <br>
-class StepShape_Subedge : public StepShape_Edge {
+//! Representation of STEP entity Subedge
+class StepShape_Subedge : public StepShape_Edge
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepShape_Subedge();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aRepresentationItem_Name,const Handle(StepShape_Vertex)& aEdge_EdgeStart,const Handle(StepShape_Vertex)& aEdge_EdgeEnd,const Handle(StepShape_Edge)& aParentEdge) ;
-  //! Returns field ParentEdge <br>
-  Standard_EXPORT     Handle_StepShape_Edge ParentEdge() const;
-  //! Set field ParentEdge <br>
-  Standard_EXPORT     void SetParentEdge(const Handle(StepShape_Edge)& ParentEdge) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepShape_Subedge();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aRepresentationItem_Name, const Handle(StepShape_Vertex)& aEdge_EdgeStart, const Handle(StepShape_Vertex)& aEdge_EdgeEnd, const Handle(StepShape_Edge)& aParentEdge) ;
+  
+  //! Returns field ParentEdge
+  Standard_EXPORT   Handle(StepShape_Edge) ParentEdge()  const;
+  
+  //! Set field ParentEdge
+  Standard_EXPORT   void SetParentEdge (const Handle(StepShape_Edge)& ParentEdge) ;
 
 
 
@@ -60,7 +51,7 @@ protected:
 private: 
 
 
-Handle_StepShape_Edge theParentEdge;
+  Handle(StepShape_Edge) theParentEdge;
 
 
 };
@@ -69,7 +60,6 @@ Handle_StepShape_Edge theParentEdge;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_Subedge_HeaderFile

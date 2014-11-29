@@ -5,21 +5,13 @@
 
 #include <MDF_ASDriverSequence.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _MDF_ASDriver_HeaderFile
 #include <MDF_ASDriver.hxx>
-#endif
-#ifndef _MDF_SequenceNodeOfASDriverSequence_HeaderFile
 #include <MDF_SequenceNodeOfASDriverSequence.hxx>
-#endif
  
 
-#define SeqItem Handle_MDF_ASDriver
+#define SeqItem Handle(MDF_ASDriver)
 #define SeqItem_hxx <MDF_ASDriver.hxx>
 #define TCollection_SequenceNode MDF_SequenceNodeOfASDriverSequence
 #define TCollection_SequenceNode_hxx <MDF_SequenceNodeOfASDriverSequence.hxx>

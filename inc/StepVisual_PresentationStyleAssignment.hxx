@@ -6,46 +6,36 @@
 #ifndef _StepVisual_PresentationStyleAssignment_HeaderFile
 #define _StepVisual_PresentationStyleAssignment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_PresentationStyleAssignment_HeaderFile
 #include <Handle_StepVisual_PresentationStyleAssignment.hxx>
-#endif
 
-#ifndef _Handle_StepVisual_HArray1OfPresentationStyleSelect_HeaderFile
 #include <Handle_StepVisual_HArray1OfPresentationStyleSelect.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StepVisual_HArray1OfPresentationStyleSelect;
 class StepVisual_PresentationStyleSelect;
 
 
 
-class StepVisual_PresentationStyleAssignment : public MMgt_TShared {
+class StepVisual_PresentationStyleAssignment : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a PresentationStyleAssignment <br>
-  Standard_EXPORT   StepVisual_PresentationStyleAssignment();
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepVisual_HArray1OfPresentationStyleSelect)& aStyles) ;
+  //! Returns a PresentationStyleAssignment
+  Standard_EXPORT StepVisual_PresentationStyleAssignment();
   
-  Standard_EXPORT     void SetStyles(const Handle(StepVisual_HArray1OfPresentationStyleSelect)& aStyles) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepVisual_HArray1OfPresentationStyleSelect)& aStyles) ;
   
-  Standard_EXPORT     Handle_StepVisual_HArray1OfPresentationStyleSelect Styles() const;
+  Standard_EXPORT   void SetStyles (const Handle(StepVisual_HArray1OfPresentationStyleSelect)& aStyles) ;
   
-  Standard_EXPORT     StepVisual_PresentationStyleSelect StylesValue(const Standard_Integer num) const;
+  Standard_EXPORT   Handle(StepVisual_HArray1OfPresentationStyleSelect) Styles()  const;
   
-  Standard_EXPORT     Standard_Integer NbStyles() const;
+  Standard_EXPORT   StepVisual_PresentationStyleSelect StylesValue (const Standard_Integer num)  const;
+  
+  Standard_EXPORT   Standard_Integer NbStyles()  const;
 
 
 
@@ -60,7 +50,7 @@ protected:
 private: 
 
 
-Handle_StepVisual_HArray1OfPresentationStyleSelect styles;
+  Handle(StepVisual_HArray1OfPresentationStyleSelect) styles;
 
 
 };
@@ -69,7 +59,6 @@ Handle_StepVisual_HArray1OfPresentationStyleSelect styles;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_PresentationStyleAssignment_HeaderFile

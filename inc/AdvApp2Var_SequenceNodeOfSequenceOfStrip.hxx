@@ -6,38 +6,27 @@
 #ifndef _AdvApp2Var_SequenceNodeOfSequenceOfStrip_HeaderFile
 #define _AdvApp2Var_SequenceNodeOfSequenceOfStrip_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip_HeaderFile
 #include <Handle_AdvApp2Var_SequenceNodeOfSequenceOfStrip.hxx>
-#endif
 
-#ifndef _AdvApp2Var_Strip_HeaderFile
 #include <AdvApp2Var_Strip.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class AdvApp2Var_Strip;
 class AdvApp2Var_SequenceOfStrip;
 
 
 
-class AdvApp2Var_SequenceNodeOfSequenceOfStrip : public TCollection_SeqNode {
+class AdvApp2Var_SequenceNodeOfSequenceOfStrip : public TCollection_SeqNode
+{
 
 public:
 
   
-      AdvApp2Var_SequenceNodeOfSequenceOfStrip(const AdvApp2Var_Strip& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    AdvApp2Var_SequenceNodeOfSequenceOfStrip(const AdvApp2Var_Strip& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        AdvApp2Var_Strip& Value() const;
+      AdvApp2Var_Strip& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-AdvApp2Var_Strip myValue;
+  AdvApp2Var_Strip myValue;
 
 
 };
@@ -78,7 +67,6 @@ AdvApp2Var_Strip myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AdvApp2Var_SequenceNodeOfSequenceOfStrip_HeaderFile

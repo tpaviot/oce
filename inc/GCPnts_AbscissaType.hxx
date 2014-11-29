@@ -6,15 +6,14 @@
 #ifndef _GCPnts_AbscissaType_HeaderFile
 #define _GCPnts_AbscissaType_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum GCPnts_AbscissaType {
+
+enum GCPnts_AbscissaType
+{
 GCPnts_LengthParametrized,
 GCPnts_Parametrized,
 GCPnts_AbsComposite
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _GCPnts_AbscissaType_HeaderFile

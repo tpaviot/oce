@@ -6,54 +6,42 @@
 #ifndef _StepVisual_FontSelect_HeaderFile
 #define _StepVisual_FontSelect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepVisual_PreDefinedTextFont_HeaderFile
 #include <Handle_StepVisual_PreDefinedTextFont.hxx>
-#endif
-#ifndef _Handle_StepVisual_ExternallyDefinedTextFont_HeaderFile
 #include <Handle_StepVisual_ExternallyDefinedTextFont.hxx>
-#endif
 class Standard_Transient;
 class StepVisual_PreDefinedTextFont;
 class StepVisual_ExternallyDefinedTextFont;
 
 
 
-class StepVisual_FontSelect  : public StepData_SelectType {
+class StepVisual_FontSelect  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a FontSelect SelectType <br>
-  Standard_EXPORT   StepVisual_FontSelect();
-  //! Recognizes a FontSelect Kind Entity that is : <br>
-//!        1 -> PreDefinedTextFont <br>
-//!        2 -> ExternallyDefinedTextFont <br>
-//!        0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! returns Value as a PreDefinedTextFont (Null if another type) <br>
-  Standard_EXPORT     Handle_StepVisual_PreDefinedTextFont PreDefinedTextFont() const;
-  //! returns Value as a ExternallyDefinedTextFont (Null if another type) <br>
-  Standard_EXPORT     Handle_StepVisual_ExternallyDefinedTextFont ExternallyDefinedTextFont() const;
-
+  
+  //! Returns a FontSelect SelectType
+  Standard_EXPORT StepVisual_FontSelect();
+  
+  //! Recognizes a FontSelect Kind Entity that is :
+  //! 1 -> PreDefinedTextFont
+  //! 2 -> ExternallyDefinedTextFont
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! returns Value as a PreDefinedTextFont (Null if another type)
+  Standard_EXPORT   Handle(StepVisual_PreDefinedTextFont) PreDefinedTextFont()  const;
+  
+  //! returns Value as a ExternallyDefinedTextFont (Null if another type)
+  Standard_EXPORT   Handle(StepVisual_ExternallyDefinedTextFont) ExternallyDefinedTextFont()  const;
 
 
 
@@ -76,7 +64,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_FontSelect_HeaderFile

@@ -1,6 +1,2 @@
-#ifndef _BRepAdaptor_Curve_HeaderFile
 #include <BRepAdaptor_Curve.hxx>
-#endif
-#ifndef _BRepLProp_HeaderFile
 #include <BRepLProp.hxx>
-#endif

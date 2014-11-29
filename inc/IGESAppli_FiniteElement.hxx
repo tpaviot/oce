@@ -6,62 +6,52 @@
 #ifndef _IGESAppli_FiniteElement_HeaderFile
 #define _IGESAppli_FiniteElement_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESAppli_FiniteElement_HeaderFile
 #include <Handle_IGESAppli_FiniteElement.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_IGESAppli_HArray1OfNode_HeaderFile
 #include <Handle_IGESAppli_HArray1OfNode.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Handle_IGESAppli_Node_HeaderFile
 #include <Handle_IGESAppli_Node.hxx>
-#endif
 class IGESAppli_HArray1OfNode;
 class TCollection_HAsciiString;
 class Standard_OutOfRange;
 class IGESAppli_Node;
 
 
-//! defines FiniteElement, Type <136> Form <0> <br>
-//!          in package IGESAppli <br>
-//!          Used to define a finite element with the help of an <br>
-//!          element topology. <br>
-class IGESAppli_FiniteElement : public IGESData_IGESEntity {
+//! defines FiniteElement, Type <136> Form <0>
+//! in package IGESAppli
+//! Used to define a finite element with the help of an
+//! element topology.
+class IGESAppli_FiniteElement : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESAppli_FiniteElement();
-  //! This method is used to set the fields of the class <br>
-//!           FiniteElement <br>
-//!       - aType    : Indicates the topology type <br>
-//!       - allNodes : List of Nodes defining the element <br>
-//!       - aName    : Element type name <br>
-  Standard_EXPORT     void Init(const Standard_Integer aType,const Handle(IGESAppli_HArray1OfNode)& allNodes,const Handle(TCollection_HAsciiString)& aName) ;
-  //! returns Topology type <br>
-  Standard_EXPORT     Standard_Integer Topology() const;
-  //! returns the number of nodes defining the element <br>
-  Standard_EXPORT     Standard_Integer NbNodes() const;
-  //! returns Node defining element entity <br>
-//! raises exception if Index <= 0 or Index > NbNodes() <br>
-  Standard_EXPORT     Handle_IGESAppli_Node Node(const Standard_Integer Index) const;
-  //! returns Element Type Name <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Name() const;
+  Standard_EXPORT IGESAppli_FiniteElement();
+  
+  //! This method is used to set the fields of the class
+  //! FiniteElement
+  //! - aType    : Indicates the topology type
+  //! - allNodes : List of Nodes defining the element
+  //! - aName    : Element type name
+  Standard_EXPORT   void Init (const Standard_Integer aType, const Handle(IGESAppli_HArray1OfNode)& allNodes, const Handle(TCollection_HAsciiString)& aName) ;
+  
+  //! returns Topology type
+  Standard_EXPORT   Standard_Integer Topology()  const;
+  
+  //! returns the number of nodes defining the element
+  Standard_EXPORT   Standard_Integer NbNodes()  const;
+  
+  //! returns Node defining element entity
+  //! raises exception if Index <= 0 or Index > NbNodes()
+  Standard_EXPORT   Handle(IGESAppli_Node) Node (const Standard_Integer Index)  const;
+  
+  //! returns Element Type Name
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Name()  const;
 
 
 
@@ -76,9 +66,9 @@ protected:
 private: 
 
 
-Standard_Integer theTopology;
-Handle_IGESAppli_HArray1OfNode theNodes;
-Handle_TCollection_HAsciiString theName;
+  Standard_Integer theTopology;
+  Handle(IGESAppli_HArray1OfNode) theNodes;
+  Handle(TCollection_HAsciiString) theName;
 
 
 };
@@ -87,7 +77,6 @@ Handle_TCollection_HAsciiString theName;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESAppli_FiniteElement_HeaderFile

@@ -1,9 +1,3 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _BinTools_LocationSet_HeaderFile
 #include <BinTools_LocationSet.hxx>
-#endif
-#ifndef _BinTools_ShapeSet_HeaderFile
 #include <BinTools_ShapeSet.hxx>
-#endif

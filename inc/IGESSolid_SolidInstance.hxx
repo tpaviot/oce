@@ -6,52 +6,45 @@
 #ifndef _IGESSolid_SolidInstance_HeaderFile
 #define _IGESSolid_SolidInstance_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSolid_SolidInstance_HeaderFile
 #include <Handle_IGESSolid_SolidInstance.hxx>
-#endif
 
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class IGESData_IGESEntity;
 
 
-//! defines SolidInstance, Type <430> Form Number <0> <br>
-//!          in package IGESSolid <br>
-//!          This provides a mechanism for replicating a solid <br>
-//!          representation. <br>
-//! <br>
-//!          From IGES-5.3, Form may be <1> for a BREP <br>
-//!          Else it is for a Boolean Tree, Primitive, other Solid Inst. <br>
-class IGESSolid_SolidInstance : public IGESData_IGESEntity {
+//! defines SolidInstance, Type <430> Form Number <0>
+//! in package IGESSolid
+//! This provides a mechanism for replicating a solid
+//! representation.
+//!
+//! From IGES-5.3, Form may be <1> for a BREP
+//! Else it is for a Boolean Tree, Primitive, other Solid Inst.
+class IGESSolid_SolidInstance : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESSolid_SolidInstance();
-  //! This method is used to set the fields of the class <br>
-//!           SolidInstance <br>
-//!       - anEntity : the entity corresponding to the solid <br>
-  Standard_EXPORT     void Init(const Handle(IGESData_IGESEntity)& anEntity) ;
-  //! Tells if a SolidInstance is for a BREP <br>
-//!           Default is False <br>
-  Standard_EXPORT     Standard_Boolean IsBrep() const;
-  //! Sets or unsets the Brep status (FormNumber = 1 else 0) <br>
-  Standard_EXPORT     void SetBrep(const Standard_Boolean brep) ;
-  //! returns the solid entity <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity Entity() const;
+  Standard_EXPORT IGESSolid_SolidInstance();
+  
+  //! This method is used to set the fields of the class
+  //! SolidInstance
+  //! - anEntity : the entity corresponding to the solid
+  Standard_EXPORT   void Init (const Handle(IGESData_IGESEntity)& anEntity) ;
+  
+  //! Tells if a SolidInstance is for a BREP
+  //! Default is False
+  Standard_EXPORT   Standard_Boolean IsBrep()  const;
+  
+  //! Sets or unsets the Brep status (FormNumber = 1 else 0)
+  Standard_EXPORT   void SetBrep (const Standard_Boolean brep) ;
+  
+  //! returns the solid entity
+  Standard_EXPORT   Handle(IGESData_IGESEntity) Entity()  const;
 
 
 
@@ -66,7 +59,7 @@ protected:
 private: 
 
 
-Handle_IGESData_IGESEntity theEntity;
+  Handle(IGESData_IGESEntity) theEntity;
 
 
 };
@@ -75,7 +68,6 @@ Handle_IGESData_IGESEntity theEntity;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSolid_SolidInstance_HeaderFile

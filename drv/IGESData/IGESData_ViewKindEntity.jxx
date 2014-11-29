@@ -1,6 +1,2 @@
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IGESData_ViewKindEntity_HeaderFile
 #include <IGESData_ViewKindEntity.hxx>
-#endif

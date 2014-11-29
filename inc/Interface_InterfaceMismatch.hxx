@@ -6,33 +6,20 @@
 #ifndef _Interface_InterfaceMismatch_HeaderFile
 #define _Interface_InterfaceMismatch_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_DefineException_HeaderFile
 #include <Standard_DefineException.hxx>
-#endif
-#ifndef _Standard_SStream_HeaderFile
 #include <Standard_SStream.hxx>
-#endif
-
-#ifndef _Interface_InterfaceError_HeaderFile
 #include <Interface_InterfaceError.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceMismatch_HeaderFile
 #include <Handle_Interface_InterfaceMismatch.hxx>
-#endif
 
 #if !defined No_Exception && !defined No_Interface_InterfaceMismatch
-#define Interface_InterfaceMismatch_Raise_if(CONDITION,MESSAGE) \
+  #define Interface_InterfaceMismatch_Raise_if(CONDITION, MESSAGE) \
   if (CONDITION) Interface_InterfaceMismatch::Raise(MESSAGE);
 #else
-#define Interface_InterfaceMismatch_Raise_if(CONDITION,MESSAGE)
+  #define Interface_InterfaceMismatch_Raise_if(CONDITION, MESSAGE)
 #endif
 
-DEFINE_STANDARD_EXCEPTION(Interface_InterfaceMismatch,Interface_InterfaceError)
+DEFINE_STANDARD_EXCEPTION(Interface_InterfaceMismatch, Interface_InterfaceError)
 
-#endif
+#endif // _Interface_InterfaceMismatch_HeaderFile

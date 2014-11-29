@@ -1,9 +1,3 @@
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopOpeBRepDS_Point_HeaderFile
 #include <TopOpeBRepDS_Point.hxx>
-#endif

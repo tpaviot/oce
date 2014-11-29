@@ -6,29 +6,14 @@
 #ifndef _TopLoc_MapOfLocation_HeaderFile
 #define _TopLoc_MapOfLocation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_TopLoc_StdMapNodeOfMapOfLocation_HeaderFile
 #include <Handle_TopLoc_StdMapNodeOfMapOfLocation.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-class Standard_DomainError;
 class TopLoc_Location;
 class TopLoc_MapLocationHasher;
 class TopLoc_StdMapNodeOfMapOfLocation;
@@ -36,34 +21,36 @@ class TopLoc_MapIteratorOfMapOfLocation;
 
 
 
-class TopLoc_MapOfLocation  : public TCollection_BasicMap {
+class TopLoc_MapOfLocation  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopLoc_MapOfLocation(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT TopLoc_MapOfLocation(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     TopLoc_MapOfLocation& Assign(const TopLoc_MapOfLocation& Other) ;
-    TopLoc_MapOfLocation& operator =(const TopLoc_MapOfLocation& Other) 
+  Standard_EXPORT TopLoc_MapOfLocation(const TopLoc_MapOfLocation& Other);
+  
+  Standard_EXPORT   TopLoc_MapOfLocation& Assign (const TopLoc_MapOfLocation& Other) ;
+  TopLoc_MapOfLocation& operator = (const TopLoc_MapOfLocation& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TopLoc_MapOfLocation()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Add(const TopLoc_Location& aKey) ;
+  Standard_EXPORT   Standard_Boolean Add (const TopLoc_Location& aKey) ;
   
-  Standard_EXPORT     Standard_Boolean Contains(const TopLoc_Location& aKey) const;
+  Standard_EXPORT   Standard_Boolean Contains (const TopLoc_Location& aKey)  const;
   
-  Standard_EXPORT     Standard_Boolean Remove(const TopLoc_Location& aKey) ;
-
+  Standard_EXPORT   Standard_Boolean Remove (const TopLoc_Location& aKey) ;
 
 
 
@@ -76,8 +63,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TopLoc_MapOfLocation(const TopLoc_MapOfLocation& Other);
 
 
 
@@ -88,7 +73,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopLoc_MapOfLocation_HeaderFile

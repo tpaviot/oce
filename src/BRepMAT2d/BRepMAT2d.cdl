@@ -19,6 +19,7 @@ package BRepMAT2d
 	---Purpose: 
 
 uses
+    GeomAbs,
     MAT2d,
     MAT,
     TCollection,
@@ -27,29 +28,20 @@ uses
     Geom2d,
     gp,	
     TopoDS,
-    TopTools
+    TopTools,
+	Bisector
     
 is
     class Explorer;
-    	---Purpose: Construct an  explorer for  the computation of the 
-    	--          bisecting locus  from a Wire, a  Face, or a set of 
-    	--          curves from Geom2d.
 
-    class BisectingLocus instantiates BisectingLocus from MAT2d 
-    	    	    	    	    	  (Explorer  from BRepMAT2d);
-	---Purpose: the map of bisecting locus.
-					  
+    class BisectingLocus;
+
     class LinkTopoBilo;
-    	---Purpose: Constucts links between the Wire or the Face and
-    	--          the BasicElts contained in the bisecting locus.
 
 
-    class SequenceOfBasicElt instantiates Sequence from TCollection
-                                                         (BasicElt from MAT); 
-							 
     class DataMapOfShapeSequenceOfBasicElt instantiates DataMap from TCollection 
     		    		    	      (Shape               from TopoDS, 
-					       SequenceOfBasicElt  from  BRepMAT2d, 
+					       SequenceOfBasicElt  from MAT, 
 					       ShapeMapHasher      from TopTools); 
     
     class DataMapOfBasicEltShape  instantiates

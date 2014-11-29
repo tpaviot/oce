@@ -1,9 +1,3 @@
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepBasic_ProductCategory_HeaderFile
 #include <StepBasic_ProductCategory.hxx>
-#endif
-#ifndef _StepBasic_ProductCategoryRelationship_HeaderFile
 #include <StepBasic_ProductCategoryRelationship.hxx>
-#endif

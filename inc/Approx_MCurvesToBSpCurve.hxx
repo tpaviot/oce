@@ -6,51 +6,41 @@
 #ifndef _Approx_MCurvesToBSpCurve_HeaderFile
 #define _Approx_MCurvesToBSpCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _AppParCurves_MultiBSpCurve_HeaderFile
 #include <AppParCurves_MultiBSpCurve.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _AppParCurves_SequenceOfMultiCurve_HeaderFile
 #include <AppParCurves_SequenceOfMultiCurve.hxx>
-#endif
 class AppParCurves_MultiCurve;
 class AppParCurves_SequenceOfMultiCurve;
 class AppParCurves_MultiBSpCurve;
 
 
 
-class Approx_MCurvesToBSpCurve  {
+class Approx_MCurvesToBSpCurve 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Approx_MCurvesToBSpCurve();
+  Standard_EXPORT Approx_MCurvesToBSpCurve();
   
-  Standard_EXPORT     void Reset() ;
+  Standard_EXPORT   void Reset() ;
   
-  Standard_EXPORT     void Append(const AppParCurves_MultiCurve& MC) ;
+  Standard_EXPORT   void Append (const AppParCurves_MultiCurve& MC) ;
   
-  Standard_EXPORT     void Perform() ;
+  Standard_EXPORT   void Perform() ;
   
-  Standard_EXPORT     void Perform(const AppParCurves_SequenceOfMultiCurve& TheSeq) ;
-  //! return the composite MultiCurves as a MultiBSpCurve. <br>
-  Standard_EXPORT    const AppParCurves_MultiBSpCurve& Value() const;
-  //! return the composite MultiCurves as a MultiBSpCurve. <br>
-  Standard_EXPORT    const AppParCurves_MultiBSpCurve& ChangeValue() ;
-
+  Standard_EXPORT   void Perform (const AppParCurves_SequenceOfMultiCurve& TheSeq) ;
+  
+  //! return the composite MultiCurves as a MultiBSpCurve.
+  Standard_EXPORT  const  AppParCurves_MultiBSpCurve& Value()  const;
+  
+  //! return the composite MultiCurves as a MultiBSpCurve.
+  Standard_EXPORT  const  AppParCurves_MultiBSpCurve& ChangeValue() ;
 
 
 
@@ -65,9 +55,9 @@ private:
 
 
 
-AppParCurves_MultiBSpCurve mySpline;
-Standard_Boolean myDone;
-AppParCurves_SequenceOfMultiCurve myCurves;
+  AppParCurves_MultiBSpCurve mySpline;
+  Standard_Boolean myDone;
+  AppParCurves_SequenceOfMultiCurve myCurves;
 
 
 };
@@ -76,7 +66,6 @@ AppParCurves_SequenceOfMultiCurve myCurves;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Approx_MCurvesToBSpCurve_HeaderFile

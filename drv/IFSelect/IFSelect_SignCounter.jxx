@@ -1,24 +1,8 @@
-#ifndef _IFSelect_Signature_HeaderFile
 #include <IFSelect_Signature.hxx>
-#endif
-#ifndef _IFSelect_Selection_HeaderFile
 #include <IFSelect_Selection.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Interface_InterfaceModel_HeaderFile
 #include <Interface_InterfaceModel.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfTransient_HeaderFile
 #include <TColStd_HSequenceOfTransient.hxx>
-#endif
-#ifndef _Interface_Graph_HeaderFile
 #include <Interface_Graph.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _IFSelect_SignCounter_HeaderFile
 #include <IFSelect_SignCounter.hxx>
-#endif

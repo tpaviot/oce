@@ -5,18 +5,10 @@
 
 #include <BRepClass_FacePassiveClassifier.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _BRepClass_Edge_HeaderFile
 #include <BRepClass_Edge.hxx>
-#endif
-#ifndef _BRepClass_Intersector_HeaderFile
 #include <BRepClass_Intersector.hxx>
-#endif
-#ifndef _gp_Lin2d_HeaderFile
 #include <gp_Lin2d.hxx>
-#endif
  
 
 #define TheEdge BRepClass_Edge

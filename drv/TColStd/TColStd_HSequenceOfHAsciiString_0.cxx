@@ -5,22 +5,12 @@
 
 #include <TColStd_HSequenceOfHAsciiString.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _TColStd_SequenceOfHAsciiString_HeaderFile
 #include <TColStd_SequenceOfHAsciiString.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(TColStd_HSequenceOfHAsciiString,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(TColStd_HSequenceOfHAsciiString)
 
 
-#define Item Handle_TCollection_HAsciiString
+#define Item Handle(TCollection_HAsciiString)
 #define Item_hxx <TCollection_HAsciiString.hxx>
 #define TheSequence TColStd_SequenceOfHAsciiString
 #define TheSequence_hxx <TColStd_SequenceOfHAsciiString.hxx>

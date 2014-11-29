@@ -6,22 +6,15 @@
 #ifndef _Handle_StepBasic_ThermodynamicTemperatureUnit_HeaderFile
 #define _Handle_StepBasic_ThermodynamicTemperatureUnit_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepBasic_NamedUnit_HeaderFile
 #include <Handle_StepBasic_NamedUnit.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepBasic_NamedUnit);
 class StepBasic_ThermodynamicTemperatureUnit;
 
-DEFINE_STANDARD_HANDLE(StepBasic_ThermodynamicTemperatureUnit,StepBasic_NamedUnit)
+DEFINE_STANDARD_HANDLE(StepBasic_ThermodynamicTemperatureUnit, StepBasic_NamedUnit)
 
-#endif
+#endif // _Handle_StepBasic_ThermodynamicTemperatureUnit_HeaderFile

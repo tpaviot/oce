@@ -37,14 +37,14 @@ raises
 is
 
 
-	Create (Low, Up: Integer from Standard) returns mutable HArray1
+	Create (Low, Up: Integer from Standard) returns HArray1
 		raises RangeError from Standard;
 		---Purpose: Creates an array of lower bound <Low> and 
                 -- upper bound <Up>. Range error is raised 
                 -- when <Up> is less than <Low>.
 
 	Create (Low, Up: Integer from Standard ; V : Item) 
-                returns mutable HArray1
+                returns HArray1
 		raises RangeError from Standard;
 		---Purpose: Creates an array of lower bound <Low> and 
                 -- upper bound <Up>. Range error is raised 
@@ -96,18 +96,6 @@ is
     	    	-- Exceptions
     	    	-- Standard_OutOfRange if Index is not within the bounds of this array. 
     
-    ShallowCopy(me) 
-                returns mutable like me 
-                is redefined;
-                ---Purpose: Returns a new array containing a copy
-   	    	-- of the values (of the elements) in this array.
-
-
-    	ShallowDump (me; s: in out OStream) 
-                is redefined;
-                ---Level: Advanced
-    	    	---C++: function call
-
     	Field (me)returns FieldOfHArray1 
                 ---Level: Internal
                 is private;

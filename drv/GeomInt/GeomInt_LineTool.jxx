@@ -1,9 +1,3 @@
-#ifndef _IntPatch_Line_HeaderFile
 #include <IntPatch_Line.hxx>
-#endif
-#ifndef _IntPatch_Point_HeaderFile
 #include <IntPatch_Point.hxx>
-#endif
-#ifndef _GeomInt_LineTool_HeaderFile
 #include <GeomInt_LineTool.hxx>
-#endif

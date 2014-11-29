@@ -6,35 +6,25 @@
 #ifndef _StepToGeom_MakeTransformation2d_HeaderFile
 #define _StepToGeom_MakeTransformation2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepGeom_CartesianTransformationOperator2d_HeaderFile
 #include <Handle_StepGeom_CartesianTransformationOperator2d.hxx>
-#endif
 class StepGeom_CartesianTransformationOperator2d;
 class gp_Trsf2d;
 
 
-//! Convert cartesian_transformation_operator_2d to gp_Trsf2d <br>
-class StepToGeom_MakeTransformation2d  {
+//! Convert cartesian_transformation_operator_2d to gp_Trsf2d
+class StepToGeom_MakeTransformation2d 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Standard_Boolean Convert(const Handle(StepGeom_CartesianTransformationOperator2d)& SCTO,gp_Trsf2d& CT) ;
-
+  Standard_EXPORT static   Standard_Boolean Convert (const Handle(StepGeom_CartesianTransformationOperator2d)& SCTO, gp_Trsf2d& CT) ;
 
 
 
@@ -57,7 +47,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToGeom_MakeTransformation2d_HeaderFile

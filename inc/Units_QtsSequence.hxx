@@ -6,28 +6,14 @@
 #ifndef _Units_QtsSequence_HeaderFile
 #define _Units_QtsSequence_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_Units_Quantity_HeaderFile
 #include <Handle_Units_Quantity.hxx>
-#endif
-#ifndef _Handle_Units_SequenceNodeOfQtsSequence_HeaderFile
 #include <Handle_Units_SequenceNodeOfQtsSequence.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class Units_Quantity;
@@ -35,66 +21,68 @@ class Units_SequenceNodeOfQtsSequence;
 
 
 
-class Units_QtsSequence  : public TCollection_BaseSequence {
+class Units_QtsSequence  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Units_QtsSequence();
+    Units_QtsSequence();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT Units_QtsSequence(const Units_QtsSequence& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~Units_QtsSequence()
 {
   Clear();
 }
   
-  Standard_EXPORT    const Units_QtsSequence& Assign(const Units_QtsSequence& Other) ;
-   const Units_QtsSequence& operator =(const Units_QtsSequence& Other) 
+  Standard_EXPORT  const  Units_QtsSequence& Assign (const Units_QtsSequence& Other) ;
+ const  Units_QtsSequence& operator = (const Units_QtsSequence& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(Units_Quantity)& T) ;
+  Standard_EXPORT   void Append (const Handle(Units_Quantity)& T) ;
   
-        void Append(Units_QtsSequence& S) ;
+      void Append (Units_QtsSequence& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(Units_Quantity)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(Units_Quantity)& T) ;
   
-        void Prepend(Units_QtsSequence& S) ;
+      void Prepend (Units_QtsSequence& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(Units_Quantity)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(Units_Quantity)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,Units_QtsSequence& S) ;
+      void InsertBefore (const Standard_Integer Index, Units_QtsSequence& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(Units_Quantity)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(Units_Quantity)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,Units_QtsSequence& S) ;
+      void InsertAfter (const Standard_Integer Index, Units_QtsSequence& S) ;
   
-  Standard_EXPORT    const Handle_Units_Quantity& First() const;
+  Standard_EXPORT  const  Handle(Units_Quantity)& First()  const;
   
-  Standard_EXPORT    const Handle_Units_Quantity& Last() const;
+  Standard_EXPORT  const  Handle(Units_Quantity)& Last()  const;
   
-        void Split(const Standard_Integer Index,Units_QtsSequence& Sub) ;
+      void Split (const Standard_Integer Index, Units_QtsSequence& Sub) ;
   
-  Standard_EXPORT    const Handle_Units_Quantity& Value(const Standard_Integer Index) const;
-   const Handle_Units_Quantity& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(Units_Quantity)& Value (const Standard_Integer Index)  const;
+ const  Handle(Units_Quantity)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(Units_Quantity)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(Units_Quantity)& I) ;
   
-  Standard_EXPORT     Handle_Units_Quantity& ChangeValue(const Standard_Integer Index) ;
-    Handle_Units_Quantity& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(Units_Quantity)& ChangeValue (const Standard_Integer Index) ;
+  Handle(Units_Quantity)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -107,15 +95,13 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Units_QtsSequence(const Units_QtsSequence& Other);
 
 
 
 
 };
 
-#define SeqItem Handle_Units_Quantity
+#define SeqItem Handle(Units_Quantity)
 #define SeqItem_hxx <Units_Quantity.hxx>
 #define TCollection_SequenceNode Units_SequenceNodeOfQtsSequence
 #define TCollection_SequenceNode_hxx <Units_SequenceNodeOfQtsSequence.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Units_QtsSequence_HeaderFile

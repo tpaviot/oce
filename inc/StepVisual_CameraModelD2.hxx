@@ -6,51 +6,39 @@
 #ifndef _StepVisual_CameraModelD2_HeaderFile
 #define _StepVisual_CameraModelD2_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_CameraModelD2_HeaderFile
 #include <Handle_StepVisual_CameraModelD2.hxx>
-#endif
 
-#ifndef _Handle_StepVisual_PlanarBox_HeaderFile
 #include <Handle_StepVisual_PlanarBox.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _StepVisual_CameraModel_HeaderFile
 #include <StepVisual_CameraModel.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepVisual_PlanarBox;
 class TCollection_HAsciiString;
 
 
 
-class StepVisual_CameraModelD2 : public StepVisual_CameraModel {
+class StepVisual_CameraModelD2 : public StepVisual_CameraModel
+{
 
 public:
 
-  //! Returns a CameraModelD2 <br>
-  Standard_EXPORT   StepVisual_CameraModelD2();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a CameraModelD2
+  Standard_EXPORT StepVisual_CameraModelD2();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepVisual_PlanarBox)& aViewWindow,const Standard_Boolean aViewWindowClipping) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetViewWindow(const Handle(StepVisual_PlanarBox)& aViewWindow) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepVisual_PlanarBox)& aViewWindow, const Standard_Boolean aViewWindowClipping) ;
   
-  Standard_EXPORT     Handle_StepVisual_PlanarBox ViewWindow() const;
+  Standard_EXPORT   void SetViewWindow (const Handle(StepVisual_PlanarBox)& aViewWindow) ;
   
-  Standard_EXPORT     void SetViewWindowClipping(const Standard_Boolean aViewWindowClipping) ;
+  Standard_EXPORT   Handle(StepVisual_PlanarBox) ViewWindow()  const;
   
-  Standard_EXPORT     Standard_Boolean ViewWindowClipping() const;
+  Standard_EXPORT   void SetViewWindowClipping (const Standard_Boolean aViewWindowClipping) ;
+  
+  Standard_EXPORT   Standard_Boolean ViewWindowClipping()  const;
 
 
 
@@ -65,8 +53,8 @@ protected:
 private: 
 
 
-Handle_StepVisual_PlanarBox viewWindow;
-Standard_Boolean viewWindowClipping;
+  Handle(StepVisual_PlanarBox) viewWindow;
+  Standard_Boolean viewWindowClipping;
 
 
 };
@@ -75,7 +63,6 @@ Standard_Boolean viewWindowClipping;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_CameraModelD2_HeaderFile

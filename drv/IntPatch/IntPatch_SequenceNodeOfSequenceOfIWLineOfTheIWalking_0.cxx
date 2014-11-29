@@ -5,16 +5,10 @@
 
 #include <IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IntPatch_TheIWLineOfTheIWalking_HeaderFile
 #include <IntPatch_TheIWLineOfTheIWalking.hxx>
-#endif
-#ifndef _IntPatch_SequenceOfIWLineOfTheIWalking_HeaderFile
 #include <IntPatch_SequenceOfIWLineOfTheIWalking.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking,Standard
 IMPLEMENT_STANDARD_RTTI(IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking)
 
 
-#define SeqItem Handle_IntPatch_TheIWLineOfTheIWalking
+#define SeqItem Handle(IntPatch_TheIWLineOfTheIWalking)
 #define SeqItem_hxx <IntPatch_TheIWLineOfTheIWalking.hxx>
 #define TCollection_SequenceNode IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking
 #define TCollection_SequenceNode_hxx <IntPatch_SequenceNodeOfSequenceOfIWLineOfTheIWalking.hxx>

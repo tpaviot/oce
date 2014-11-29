@@ -1,12 +1,4 @@
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Plate_SequenceOfPinpointConstraint_HeaderFile
 #include <Plate_SequenceOfPinpointConstraint.hxx>
-#endif
-#ifndef _Plate_LinearXYZConstraint_HeaderFile
 #include <Plate_LinearXYZConstraint.hxx>
-#endif
-#ifndef _Plate_SampledCurveConstraint_HeaderFile
 #include <Plate_SampledCurveConstraint.hxx>
-#endif

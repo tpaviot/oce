@@ -14,28 +14,41 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#include <MeshTest_DrawableMesh.ixx>
+#include <MeshTest_DrawableMesh.hxx>
 #include <TopoDS.hxx>
 #include <Draw.hxx>
 #include <Draw_ColorKind.hxx>
 #include <Draw_Color.hxx>
 #include <TColStd_ListIteratorOfListOfInteger.hxx>
+#include <TColStd_Array1OfInteger.hxx>
+#include <Poly_Triangulation.hxx>
 #include <Standard_RangeError.hxx>
 #include <BRepMesh_DegreeOfFreedom.hxx>
 #include <BRepMesh_Edge.hxx>
 #include <BRepMesh_Vertex.hxx>
 #include <BRepMesh_Triangle.hxx>
 #include <BRepMesh_DataStructureOfDelaun.hxx>
-#include <Bnd_Box.hxx>
-#include <BRepBndLib.hxx>
+#include <TopExp_Explorer.hxx>
+
+IMPLEMENT_STANDARD_HANDLE (MeshTest_DrawableMesh, Draw_Drawable3D)
+IMPLEMENT_STANDARD_RTTIEXT(MeshTest_DrawableMesh, Draw_Drawable3D)
+
+typedef NCollection_Map<BRepMesh_Edge> BRepMesh_MapOfLinks;
+
+static inline void addLink(const Standard_Integer theIndex1,
+                           const Standard_Integer theIndex2,
+                           BRepMesh_MapOfLinks&   theMap)
+{
+  BRepMesh_Edge anEdge(theIndex1, theIndex2, BRepMesh_Free);
+  theMap.Add(anEdge);
+}
 
 //=======================================================================
 //function : MeshTest_DrawableMesh
 //purpose  : 
 //=======================================================================
-
-MeshTest_DrawableMesh::MeshTest_DrawableMesh() :
-myDeflection(1.), myinshape(Standard_False)
+MeshTest_DrawableMesh::MeshTest_DrawableMesh()
+  : myDeflection(1.)
 {
 }
 
@@ -43,56 +56,41 @@ myDeflection(1.), myinshape(Standard_False)
 //function : MeshTest_DrawableMesh
 //purpose  : 
 //=======================================================================
-
-MeshTest_DrawableMesh::MeshTest_DrawableMesh(const TopoDS_Shape&    S,
-                                             const Standard_Real    Deflect,
-                                             const Standard_Boolean Partage,
-                                             const Standard_Boolean inshape) :
-myDeflection(Deflect), myinshape(inshape)
+MeshTest_DrawableMesh::MeshTest_DrawableMesh(const TopoDS_Shape& theShape,
+                                             const Standard_Real theDeflection)
+  : myDeflection(theDeflection)
 {
-  Bnd_Box B;
-  BRepBndLib::Add(S, B);
-
-  myMesh = new BRepMesh_FastDiscret(Deflect, S, B, 0.5, Partage, inshape);
+  Add(theShape);
 }
-
 
 //=======================================================================
 //function : MeshTest_DrawableMesh
 //purpose  : 
 //=======================================================================
-
-MeshTest_DrawableMesh::MeshTest_DrawableMesh(const Handle(BRepMesh_FastDiscret)& Tr):
-myDeflection(1.0)
+MeshTest_DrawableMesh::MeshTest_DrawableMesh(
+  const Handle(BRepMesh_IncrementalMesh)& theMesher)
+  : myDeflection(1.)
 {
-  myMesh = Tr;
+  myMesher = theMesher;
+  if (!myMesher.IsNull())
+    myDeflection = myMesher->Deflection();
 }
-
 
 //=======================================================================
 //function : MeshTest_DrawableMesh
 //purpose  : 
 //=======================================================================
-
-void MeshTest_DrawableMesh::Add(const TopoDS_Shape& S)
+void MeshTest_DrawableMesh::Add(const TopoDS_Shape& theShape)
 {
-  Bnd_Box B;
-  BRepBndLib::Add(S, B);
-
-  if (myMesh.IsNull())
-    myMesh=new BRepMesh_FastDiscret(myDeflection, S, B, 0.5, myinshape);
-  else
-    myMesh->Perform(S);
-}
-
-//=======================================================================
-//function : AddInShape
-//purpose  : 
-//=======================================================================
-
-void MeshTest_DrawableMesh::AddInShape(const Standard_Boolean inshape) 
-{
-  myinshape = inshape;
+  if (myMesher.IsNull())
+  {
+    myMesher = new BRepMesh_IncrementalMesh;
+    myMesher->SetDeflection(myDeflection);
+    myMesher->SetAngle(0.5);
+  }
+  
+  myMesher->SetShape(theShape);
+  myMesher->Perform();
 }
 
 //=======================================================================
@@ -169,18 +167,15 @@ void MeshTest_DrawableMesh::DrawOn(Draw_Display& /*D*/) const
 //function : Copy
 //purpose  : 
 //=======================================================================
-
 Handle(Draw_Drawable3D) MeshTest_DrawableMesh::Copy() const 
 {
-  Handle(MeshTest_DrawableMesh) D = new MeshTest_DrawableMesh();
-  return  D;
+  return new MeshTest_DrawableMesh(myMesher);
 }
 
 //=======================================================================
 //function : Dump
 //purpose  : 
 //=======================================================================
-
 void MeshTest_DrawableMesh::Dump(Standard_OStream&) const 
 {
   // Should be reimplemented
@@ -236,24 +231,56 @@ void MeshTest_DrawableMesh::Dump(Standard_OStream&) const
 //function : Whatis
 //purpose  : 
 //=======================================================================
-
-void MeshTest_DrawableMesh::Whatis(Draw_Interpretor& S) const 
+void MeshTest_DrawableMesh::Whatis(Draw_Interpretor& theStream) const 
 {
-  S << " 3d mesh\n";
-  S << "    - Triangles : " << myMesh->NbTriangles() << "\n";
-  S << "    - Edges     : " << myMesh->NbEdges()     << "\n";
-  S << "    - Vertices  : " << myMesh->NbVertices()  << "\n";
-  S << "    - Point3d   : " << myMesh->NbPoint3d()   << "\n";
+  const TopoDS_Shape& aShape = myMesher->Shape();
+
+  Standard_Integer aPointsNb    = 0;
+  Standard_Integer aTrianglesNb = 0;
+  Standard_Integer aEdgesNb     = 0;
+
+  TopLoc_Location aLocation;
+  Handle(Poly_Triangulation) aTriangulation;
+
+  TopExp_Explorer aFaceIt(aShape, TopAbs_FACE);
+  for (; aFaceIt.More(); aFaceIt.Next())
+  {
+    const TopoDS_Face& aFace = TopoDS::Face(aFaceIt.Current());
+
+    aTriangulation = BRep_Tool::Triangulation(aFace, aLocation);
+    if (aTriangulation.IsNull())
+      continue;
+
+    // Count number of links
+    BRepMesh_MapOfLinks aMap;
+    const Poly_Array1OfTriangle& aTriangles = aTriangulation->Triangles();
+    for (Standard_Integer i = 1, v[3]; i <= aTriangles.Length(); ++i)
+    {
+      aTriangles(i).Get(v[0], v[1], v[2]);
+
+      addLink(v[0], v[1], aMap);
+      addLink(v[1], v[2], aMap);
+      addLink(v[2], v[0], aMap);
+    }
+
+    aPointsNb    += aTriangulation->NbNodes();
+    aTrianglesNb += aTriangulation->NbTriangles();
+    aEdgesNb     += aMap.Extent();
+  }
+
+  theStream << " 3d mesh\n";
+  theStream << "    - Triangles : " << aTrianglesNb << "\n";
+  theStream << "    - Edges     : " << aEdgesNb     << "\n";
+  theStream << "    - Point3d   : " << aPointsNb    << "\n";
 }
 
 //=======================================================================
-//function : Mesh
+//function : Mesher
 //purpose  : 
 //=======================================================================
-
-Handle(BRepMesh_FastDiscret) MeshTest_DrawableMesh::Mesh() const 
+const Handle(BRepMesh_IncrementalMesh)& MeshTest_DrawableMesh::Mesher() const 
 {
-  return myMesh;
+  return myMesher;
 }
 
 
@@ -261,7 +288,6 @@ Handle(BRepMesh_FastDiscret) MeshTest_DrawableMesh::Mesh() const
 //function : Edges
 //purpose  : 
 //=======================================================================
-
 TColStd_SequenceOfInteger& MeshTest_DrawableMesh::Edges()
 {
   return myEdges;
@@ -272,7 +298,6 @@ TColStd_SequenceOfInteger& MeshTest_DrawableMesh::Edges()
 //function : Vertices
 //purpose  : 
 //=======================================================================
-
 TColStd_SequenceOfInteger& MeshTest_DrawableMesh::Vertices()
 {
   return myVertices;
@@ -282,7 +307,6 @@ TColStd_SequenceOfInteger& MeshTest_DrawableMesh::Vertices()
 //function : Triangles
 //purpose  : 
 //=======================================================================
-
 TColStd_SequenceOfInteger& MeshTest_DrawableMesh::Triangles()
 {
   return myTriangles;

@@ -6,55 +6,41 @@
 #ifndef _StepShape_RevolvedFaceSolid_HeaderFile
 #define _StepShape_RevolvedFaceSolid_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_RevolvedFaceSolid_HeaderFile
 #include <Handle_StepShape_RevolvedFaceSolid.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Axis1Placement_HeaderFile
 #include <Handle_StepGeom_Axis1Placement.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _StepShape_SweptFaceSolid_HeaderFile
 #include <StepShape_SweptFaceSolid.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepShape_FaceSurface_HeaderFile
 #include <Handle_StepShape_FaceSurface.hxx>
-#endif
 class StepGeom_Axis1Placement;
 class TCollection_HAsciiString;
 class StepShape_FaceSurface;
 
 
 
-class StepShape_RevolvedFaceSolid : public StepShape_SweptFaceSolid {
+class StepShape_RevolvedFaceSolid : public StepShape_SweptFaceSolid
+{
 
 public:
 
-  //! Returns a RevolvedFaceSolid <br>
-  Standard_EXPORT   StepShape_RevolvedFaceSolid();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepShape_FaceSurface)& aSweptArea) ;
+  //! Returns a RevolvedFaceSolid
+  Standard_EXPORT StepShape_RevolvedFaceSolid();
   
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepShape_FaceSurface)& aSweptArea,const Handle(StepGeom_Axis1Placement)& aAxis,const Standard_Real aAngle) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepShape_FaceSurface)& aSweptArea) ;
   
-  Standard_EXPORT     void SetAxis(const Handle(StepGeom_Axis1Placement)& aAxis) ;
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepShape_FaceSurface)& aSweptArea, const Handle(StepGeom_Axis1Placement)& aAxis, const Standard_Real aAngle) ;
   
-  Standard_EXPORT     Handle_StepGeom_Axis1Placement Axis() const;
+  Standard_EXPORT   void SetAxis (const Handle(StepGeom_Axis1Placement)& aAxis) ;
   
-  Standard_EXPORT     void SetAngle(const Standard_Real aAngle) ;
+  Standard_EXPORT   Handle(StepGeom_Axis1Placement) Axis()  const;
   
-  Standard_EXPORT     Standard_Real Angle() const;
+  Standard_EXPORT   void SetAngle (const Standard_Real aAngle) ;
+  
+  Standard_EXPORT   Standard_Real Angle()  const;
 
 
 
@@ -69,8 +55,8 @@ protected:
 private: 
 
 
-Handle_StepGeom_Axis1Placement axis;
-Standard_Real angle;
+  Handle(StepGeom_Axis1Placement) axis;
+  Standard_Real angle;
 
 
 };
@@ -79,7 +65,6 @@ Standard_Real angle;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_RevolvedFaceSolid_HeaderFile

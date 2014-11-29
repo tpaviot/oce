@@ -6,70 +6,58 @@
 #ifndef _IGESSolid_BooleanTree_HeaderFile
 #define _IGESSolid_BooleanTree_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSolid_BooleanTree_HeaderFile
 #include <Handle_IGESSolid_BooleanTree.hxx>
-#endif
 
-#ifndef _Handle_IGESData_HArray1OfIGESEntity_HeaderFile
 #include <Handle_IGESData_HArray1OfIGESEntity.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfInteger_HeaderFile
 #include <Handle_TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
 class IGESData_HArray1OfIGESEntity;
 class TColStd_HArray1OfInteger;
 class Standard_OutOfRange;
 class IGESData_IGESEntity;
 
 
-//! defines BooleanTree, Type <180> Form Number <0> <br>
-//!          in package IGESSolid <br>
-//!          The Boolean tree describes a binary tree structure <br>
-//!          composed of regularized Boolean operations and operands, <br>
-//!          in post-order notation. <br>
-class IGESSolid_BooleanTree : public IGESData_IGESEntity {
+//! defines BooleanTree, Type <180> Form Number <0>
+//! in package IGESSolid
+//! The Boolean tree describes a binary tree structure
+//! composed of regularized Boolean operations and operands,
+//! in post-order notation.
+class IGESSolid_BooleanTree : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESSolid_BooleanTree();
-  //! This method is used to set the fields of the class <br>
-//!           BooleanTree <br>
-//!       - operands   : Array containing pointer to DE of operands <br>
-//!       - operations : Array containing integer type for operations <br>
-  Standard_EXPORT     void Init(const Handle(IGESData_HArray1OfIGESEntity)& operands,const Handle(TColStd_HArray1OfInteger)& operations) ;
-  //! returns the length of the post-order list <br>
-  Standard_EXPORT     Standard_Integer Length() const;
-  //! returns True if Index'th value in the post-order list is an Operand; <br>
-//! else returns False if it is an Integer Operations <br>
-//! raises exception if Index < 1 or Index > Length() <br>
-  Standard_EXPORT     Standard_Boolean IsOperand(const Standard_Integer Index) const;
-  //! returns the Index'th value in the post-order list only if it is <br>
-//! an operand else returns NULL <br>
-//! raises exception if Index < 1 or Index > Length() <br>
-  Standard_EXPORT     Handle_IGESData_IGESEntity Operand(const Standard_Integer Index) const;
-  //! returns the Index'th value in the post-order list only if it is <br>
-//! an operation else returns 0 <br>
-//! raises exception if Index < 1 or Index > Length() <br>
-  Standard_EXPORT     Standard_Integer Operation(const Standard_Integer Index) const;
+  Standard_EXPORT IGESSolid_BooleanTree();
+  
+  //! This method is used to set the fields of the class
+  //! BooleanTree
+  //! - operands   : Array containing pointer to DE of operands
+  //! - operations : Array containing integer type for operations
+  Standard_EXPORT   void Init (const Handle(IGESData_HArray1OfIGESEntity)& operands, const Handle(TColStd_HArray1OfInteger)& operations) ;
+  
+  //! returns the length of the post-order list
+  Standard_EXPORT   Standard_Integer Length()  const;
+  
+  //! returns True if Index'th value in the post-order list is an Operand;
+  //! else returns False if it is an Integer Operations
+  //! raises exception if Index < 1 or Index > Length()
+  Standard_EXPORT   Standard_Boolean IsOperand (const Standard_Integer Index)  const;
+  
+  //! returns the Index'th value in the post-order list only if it is
+  //! an operand else returns NULL
+  //! raises exception if Index < 1 or Index > Length()
+  Standard_EXPORT   Handle(IGESData_IGESEntity) Operand (const Standard_Integer Index)  const;
+  
+  //! returns the Index'th value in the post-order list only if it is
+  //! an operation else returns 0
+  //! raises exception if Index < 1 or Index > Length()
+  Standard_EXPORT   Standard_Integer Operation (const Standard_Integer Index)  const;
 
 
 
@@ -84,8 +72,8 @@ protected:
 private: 
 
 
-Handle_IGESData_HArray1OfIGESEntity theOperands;
-Handle_TColStd_HArray1OfInteger theOperations;
+  Handle(IGESData_HArray1OfIGESEntity) theOperands;
+  Handle(TColStd_HArray1OfInteger) theOperations;
 
 
 };
@@ -94,7 +82,6 @@ Handle_TColStd_HArray1OfInteger theOperations;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSolid_BooleanTree_HeaderFile

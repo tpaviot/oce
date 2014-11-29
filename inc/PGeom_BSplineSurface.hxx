@@ -6,106 +6,111 @@
 #ifndef _PGeom_BSplineSurface_HeaderFile
 #define _PGeom_BSplineSurface_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PGeom_BSplineSurface_HeaderFile
 #include <Handle_PGeom_BSplineSurface.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_PColgp_HArray2OfPnt_HeaderFile
 #include <Handle_PColgp_HArray2OfPnt.hxx>
-#endif
-#ifndef _Handle_PColStd_HArray2OfReal_HeaderFile
 #include <Handle_PColStd_HArray2OfReal.hxx>
-#endif
-#ifndef _Handle_PColStd_HArray1OfReal_HeaderFile
 #include <Handle_PColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Handle_PColStd_HArray1OfInteger_HeaderFile
 #include <Handle_PColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _PGeom_BoundedSurface_HeaderFile
 #include <PGeom_BoundedSurface.hxx>
-#endif
 class PColgp_HArray2OfPnt;
 class PColStd_HArray2OfReal;
 class PColStd_HArray1OfReal;
 class PColStd_HArray1OfInteger;
 
 
-class PGeom_BSplineSurface : public PGeom_BoundedSurface {
+class PGeom_BSplineSurface : public PGeom_BoundedSurface
+{
 
 public:
 
-  //! Creates a BSplineSurface with default values. <br>
-  Standard_EXPORT   PGeom_BSplineSurface();
-  //! Creates a BSplineSurface with these values. <br>
-  Standard_EXPORT   PGeom_BSplineSurface(const Standard_Boolean aURational,const Standard_Boolean aVRational,const Standard_Boolean aUPeriodic,const Standard_Boolean aVPeriodic,const Standard_Integer aUSpineDegree,const Standard_Integer aVSpineDegree,const Handle(PColgp_HArray2OfPnt)& aPoles,const Handle(PColStd_HArray2OfReal)& aWeights,const Handle(PColStd_HArray1OfReal)& aUKnots,const Handle(PColStd_HArray1OfReal)& aVKnots,const Handle(PColStd_HArray1OfInteger)& aUMultiplicities,const Handle(PColStd_HArray1OfInteger)& aVMultiplicities);
-  //! Set the value of the field uRational with <aURational>. <br>
-  Standard_EXPORT     void URational(const Standard_Boolean aURational) ;
-  //! Returns the value of the field uRational. <br>
-  Standard_EXPORT     Standard_Boolean URational() const;
-  //! Set the value of the field vRational with <aVRational>. <br>
-  Standard_EXPORT     void VRational(const Standard_Boolean aVRational) ;
-  //! Returns the value of the field vRational. <br>
-  Standard_EXPORT     Standard_Boolean VRational() const;
-  //! Set the value of the field uPeriodic with <aUPeriodic>. <br>
-  Standard_EXPORT     void UPeriodic(const Standard_Boolean aUPeriodic) ;
-  //! Returns the value of the field uPeriodic. <br>
-  Standard_EXPORT     Standard_Boolean UPeriodic() const;
-  //! Set the value of the field vPeriodic with <aVPeriodic>. <br>
-  Standard_EXPORT     void VPeriodic(const Standard_Boolean aVPeriodic) ;
-  //! Returns the value of the field vPeriodic. <br>
-  Standard_EXPORT     Standard_Boolean VPeriodic() const;
-  //! Set  the value  of the  field  uSpineDegree  with <br>
-//!         <aUSpineDegree>. <br>
-  Standard_EXPORT     void USpineDegree(const Standard_Integer aUSpineDegree) ;
-  //! Returns the value of the field uSpineDegree. <br>
-  Standard_EXPORT     Standard_Integer USpineDegree() const;
-  //! Set  the value  of the  field  vSpineDegree  with <br>
-//!         <aVSpineDegree>. <br>
-  Standard_EXPORT     void VSpineDegree(const Standard_Integer aVSpineDegree) ;
-  //! Returns the value of the field vSpineDegree. <br>
-  Standard_EXPORT     Standard_Integer VSpineDegree() const;
-  //! Set the value of the field poles with <aPoles>. <br>
-  Standard_EXPORT     void Poles(const Handle(PColgp_HArray2OfPnt)& aPoles) ;
-  //! Returns the value of the field poles. <br>
-  Standard_EXPORT     Handle_PColgp_HArray2OfPnt Poles() const;
-  //! Set the value of the field weights with <aWeights>. <br>
-  Standard_EXPORT     void Weights(const Handle(PColStd_HArray2OfReal)& aWeights) ;
-  //! Returns the value of the field weights. <br>
-  Standard_EXPORT     Handle_PColStd_HArray2OfReal Weights() const;
-  //! Set the value of the field uKnots with <aUKnots>. <br>
-  Standard_EXPORT     void UKnots(const Handle(PColStd_HArray1OfReal)& aUKnots) ;
-  //! Returns the value of the field uKnots. <br>
-  Standard_EXPORT     Handle_PColStd_HArray1OfReal UKnots() const;
-  //! Set the value of the field vKnots with <aVKnots>. <br>
-  Standard_EXPORT     void VKnots(const Handle(PColStd_HArray1OfReal)& aVKnots) ;
-  //! Returns the value of the field vKnots. <br>
-  Standard_EXPORT     Handle_PColStd_HArray1OfReal VKnots() const;
-  //! Set the  value of the  field  uMultiplicities with <br>
-//!          <aUMultiplicities>. <br>
-  Standard_EXPORT     void UMultiplicities(const Handle(PColStd_HArray1OfInteger)& aUMultiplicities) ;
-  //! Returns the value of the field uMultiplicities. <br>
-  Standard_EXPORT     Handle_PColStd_HArray1OfInteger UMultiplicities() const;
-  //! Set the value  of  the field vMultiplicities  with <br>
-//!          <aVMultiplicities>. <br>
-  Standard_EXPORT     void VMultiplicities(const Handle(PColStd_HArray1OfInteger)& aVMultiplicities) ;
-  //! Returns the value of the field vMultiplicities. <br>
-  Standard_EXPORT     Handle_PColStd_HArray1OfInteger VMultiplicities() const;
+  
+  //! Creates a BSplineSurface with default values.
+  Standard_EXPORT PGeom_BSplineSurface();
+  
+  //! Creates a BSplineSurface with these values.
+  Standard_EXPORT PGeom_BSplineSurface(const Standard_Boolean aURational, const Standard_Boolean aVRational, const Standard_Boolean aUPeriodic, const Standard_Boolean aVPeriodic, const Standard_Integer aUSpineDegree, const Standard_Integer aVSpineDegree, const Handle(PColgp_HArray2OfPnt)& aPoles, const Handle(PColStd_HArray2OfReal)& aWeights, const Handle(PColStd_HArray1OfReal)& aUKnots, const Handle(PColStd_HArray1OfReal)& aVKnots, const Handle(PColStd_HArray1OfInteger)& aUMultiplicities, const Handle(PColStd_HArray1OfInteger)& aVMultiplicities);
+  
+  //! Set the value of the field uRational with <aURational>.
+  Standard_EXPORT   void URational (const Standard_Boolean aURational) ;
+  
+  //! Returns the value of the field uRational.
+  Standard_EXPORT   Standard_Boolean URational()  const;
+  
+  //! Set the value of the field vRational with <aVRational>.
+  Standard_EXPORT   void VRational (const Standard_Boolean aVRational) ;
+  
+  //! Returns the value of the field vRational.
+  Standard_EXPORT   Standard_Boolean VRational()  const;
+  
+  //! Set the value of the field uPeriodic with <aUPeriodic>.
+  Standard_EXPORT   void UPeriodic (const Standard_Boolean aUPeriodic) ;
+  
+  //! Returns the value of the field uPeriodic.
+  Standard_EXPORT   Standard_Boolean UPeriodic()  const;
+  
+  //! Set the value of the field vPeriodic with <aVPeriodic>.
+  Standard_EXPORT   void VPeriodic (const Standard_Boolean aVPeriodic) ;
+  
+  //! Returns the value of the field vPeriodic.
+  Standard_EXPORT   Standard_Boolean VPeriodic()  const;
+  
+  //! Set  the value  of the  field  uSpineDegree  with
+  //! <aUSpineDegree>.
+  Standard_EXPORT   void USpineDegree (const Standard_Integer aUSpineDegree) ;
+  
+  //! Returns the value of the field uSpineDegree.
+  Standard_EXPORT   Standard_Integer USpineDegree()  const;
+  
+  //! Set  the value  of the  field  vSpineDegree  with
+  //! <aVSpineDegree>.
+  Standard_EXPORT   void VSpineDegree (const Standard_Integer aVSpineDegree) ;
+  
+  //! Returns the value of the field vSpineDegree.
+  Standard_EXPORT   Standard_Integer VSpineDegree()  const;
+  
+  //! Set the value of the field poles with <aPoles>.
+  Standard_EXPORT   void Poles (const Handle(PColgp_HArray2OfPnt)& aPoles) ;
+  
+  //! Returns the value of the field poles.
+  Standard_EXPORT   Handle(PColgp_HArray2OfPnt) Poles()  const;
+  
+  //! Set the value of the field weights with <aWeights>.
+  Standard_EXPORT   void Weights (const Handle(PColStd_HArray2OfReal)& aWeights) ;
+  
+  //! Returns the value of the field weights.
+  Standard_EXPORT   Handle(PColStd_HArray2OfReal) Weights()  const;
+  
+  //! Set the value of the field uKnots with <aUKnots>.
+  Standard_EXPORT   void UKnots (const Handle(PColStd_HArray1OfReal)& aUKnots) ;
+  
+  //! Returns the value of the field uKnots.
+  Standard_EXPORT   Handle(PColStd_HArray1OfReal) UKnots()  const;
+  
+  //! Set the value of the field vKnots with <aVKnots>.
+  Standard_EXPORT   void VKnots (const Handle(PColStd_HArray1OfReal)& aVKnots) ;
+  
+  //! Returns the value of the field vKnots.
+  Standard_EXPORT   Handle(PColStd_HArray1OfReal) VKnots()  const;
+  
+  //! Set the  value of the  field  uMultiplicities with
+  //! <aUMultiplicities>.
+  Standard_EXPORT   void UMultiplicities (const Handle(PColStd_HArray1OfInteger)& aUMultiplicities) ;
+  
+  //! Returns the value of the field uMultiplicities.
+  Standard_EXPORT   Handle(PColStd_HArray1OfInteger) UMultiplicities()  const;
+  
+  //! Set the value  of  the field vMultiplicities  with
+  //! <aVMultiplicities>.
+  Standard_EXPORT   void VMultiplicities (const Handle(PColStd_HArray1OfInteger)& aVMultiplicities) ;
+  
+  //! Returns the value of the field vMultiplicities.
+  Standard_EXPORT   Handle(PColStd_HArray1OfInteger) VMultiplicities()  const;
 
 PGeom_BSplineSurface(const Storage_stCONSTclCOM& a) : PGeom_BoundedSurface(a)
 {
@@ -148,18 +153,18 @@ protected:
 private: 
 
 
-Standard_Boolean uRational;
-Standard_Boolean vRational;
-Standard_Boolean uPeriodic;
-Standard_Boolean vPeriodic;
-Standard_Integer uSpineDegree;
-Standard_Integer vSpineDegree;
-Handle_PColgp_HArray2OfPnt poles;
-Handle_PColStd_HArray2OfReal weights;
-Handle_PColStd_HArray1OfReal uKnots;
-Handle_PColStd_HArray1OfReal vKnots;
-Handle_PColStd_HArray1OfInteger uMultiplicities;
-Handle_PColStd_HArray1OfInteger vMultiplicities;
+  Standard_Boolean uRational;
+  Standard_Boolean vRational;
+  Standard_Boolean uPeriodic;
+  Standard_Boolean vPeriodic;
+  Standard_Integer uSpineDegree;
+  Standard_Integer vSpineDegree;
+  Handle(PColgp_HArray2OfPnt) poles;
+  Handle(PColStd_HArray2OfReal) weights;
+  Handle(PColStd_HArray1OfReal) uKnots;
+  Handle(PColStd_HArray1OfReal) vKnots;
+  Handle(PColStd_HArray1OfInteger) uMultiplicities;
+  Handle(PColStd_HArray1OfInteger) vMultiplicities;
 
 
 };
@@ -168,7 +173,6 @@ Handle_PColStd_HArray1OfInteger vMultiplicities;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PGeom_BSplineSurface_HeaderFile

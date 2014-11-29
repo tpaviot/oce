@@ -6,25 +6,13 @@
 #ifndef _XmlDrivers_HeaderFile
 #define _XmlDrivers_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_XmlMDF_ADriverTable_HeaderFile
 #include <Handle_XmlMDF_ADriverTable.hxx>
-#endif
-#ifndef _Handle_CDM_MessageDriver_HeaderFile
 #include <Handle_CDM_MessageDriver.hxx>
-#endif
 class Standard_Transient;
 class Standard_GUID;
 class XmlMDF_ADriverTable;
@@ -34,16 +22,16 @@ class XmlDrivers_DocumentRetrievalDriver;
 
 
 
-class XmlDrivers  {
+class XmlDrivers 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Handle_Standard_Transient Factory(const Standard_GUID& theGUID) ;
+  Standard_EXPORT static   Handle(Standard_Transient) Factory (const Standard_GUID& theGUID) ;
   
-  Standard_EXPORT   static  Handle_XmlMDF_ADriverTable AttributeDrivers(const Handle(CDM_MessageDriver)& theMsgDriver) ;
-
+  Standard_EXPORT static   Handle(XmlMDF_ADriverTable) AttributeDrivers (const Handle(CDM_MessageDriver)& theMsgDriver) ;
 
 
 
@@ -68,7 +56,6 @@ friend class XmlDrivers_DocumentRetrievalDriver;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XmlDrivers_HeaderFile

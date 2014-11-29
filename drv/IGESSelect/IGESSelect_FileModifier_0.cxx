@@ -5,16 +5,10 @@
 
 #include <IGESSelect_FileModifier.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _IGESData_IGESWriter_HeaderFile
 #include <IGESData_IGESWriter.hxx>
-#endif
-#ifndef _IFSelect_ContextWrite_HeaderFile
 #include <IFSelect_ContextWrite.hxx>
-#endif
 
  
 

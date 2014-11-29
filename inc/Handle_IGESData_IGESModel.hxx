@@ -6,22 +6,15 @@
 #ifndef _Handle_IGESData_IGESModel_HeaderFile
 #define _Handle_IGESData_IGESModel_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Interface_InterfaceModel);
 class IGESData_IGESModel;
 
-DEFINE_STANDARD_HANDLE(IGESData_IGESModel,Interface_InterfaceModel)
+DEFINE_STANDARD_HANDLE(IGESData_IGESModel, Interface_InterfaceModel)
 
-#endif
+#endif // _Handle_IGESData_IGESModel_HeaderFile

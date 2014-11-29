@@ -21,31 +21,91 @@
 #include <Aspect_Display.hxx>
 #include <Aspect_RenderingContext.hxx>
 #include <Handle_OpenGl_Context.hxx>
+#include <Handle_OpenGl_Sampler.hxx>
 #include <Handle_OpenGl_ShaderManager.hxx>
+#include <Handle_OpenGl_ShaderProgram.hxx>
 #include <NCollection_DataMap.hxx>
 #include <NCollection_Map.hxx>
 #include <NCollection_Handle.hxx>
-#include <NCollection_Queue.hxx>
+#include <NCollection_List.hxx>
 #include <Message.hxx>
 #include <OpenGl_Caps.hxx>
+#include <OpenGl_Vec.hxx>
 #include <OpenGl_Resource.hxx>
 #include <Standard_Transient.hxx>
 #include <TCollection_AsciiString.hxx>
 #include <Handle_OpenGl_Context.hxx>
 #include <OpenGl_Clipping.hxx>
+#include <OpenGl_GlCore11.hxx>
+#include <OpenGl_Utils.hxx>
 
 //! Forward declarations
-struct OpenGl_GlCore12;
-struct OpenGl_GlCore13;
-struct OpenGl_GlCore14;
-struct OpenGl_GlCore15;
-struct OpenGl_GlCore20;
-struct OpenGl_ArbVBO;
+struct OpenGl_GlFunctions;
 struct OpenGl_ArbTBO;
 struct OpenGl_ArbIns;
 struct OpenGl_ArbDbg;
-struct OpenGl_ExtFBO;
+struct OpenGl_ArbFBO;
 struct OpenGl_ExtGS;
+struct OpenGl_ArbTexBindless;
+
+template<typename theBaseClass_t> struct OpenGl_TmplCore12;
+typedef OpenGl_TmplCore12<OpenGl_GlCore11>     OpenGl_GlCore12;
+typedef OpenGl_TmplCore12<OpenGl_GlCore11Fwd>  OpenGl_GlCore12Fwd;
+
+struct OpenGl_GlCore13;
+struct OpenGl_GlCore13Fwd;
+
+template<typename theBaseClass_t> struct OpenGl_TmplCore14;
+typedef OpenGl_TmplCore14<OpenGl_GlCore13>     OpenGl_GlCore14;
+typedef OpenGl_TmplCore14<OpenGl_GlCore13Fwd>  OpenGl_GlCore14Fwd;
+
+template<typename theBaseClass_t> struct OpenGl_TmplCore15;
+typedef OpenGl_TmplCore15<OpenGl_GlCore14>     OpenGl_GlCore15;
+typedef OpenGl_TmplCore15<OpenGl_GlCore14Fwd>  OpenGl_GlCore15Fwd;
+
+template<typename theBaseClass_t> struct OpenGl_TmplCore20;
+typedef OpenGl_TmplCore20<OpenGl_GlCore15>     OpenGl_GlCore20;
+typedef OpenGl_TmplCore20<OpenGl_GlCore15Fwd>  OpenGl_GlCore20Fwd;
+
+template<typename theBaseClass_t> struct OpenGl_TmplCore21;
+typedef OpenGl_TmplCore21<OpenGl_GlCore20>     OpenGl_GlCore21;
+typedef OpenGl_TmplCore21<OpenGl_GlCore20Fwd>  OpenGl_GlCore21Fwd;
+
+template<typename theBaseClass_t> struct OpenGl_TmplCore30;
+typedef OpenGl_TmplCore30<OpenGl_GlCore21>     OpenGl_GlCore30;
+typedef OpenGl_TmplCore30<OpenGl_GlCore21Fwd>  OpenGl_GlCore30Fwd;
+
+template<typename theBaseClass_t> struct OpenGl_TmplCore31;
+typedef OpenGl_TmplCore31<OpenGl_GlCore30>     OpenGl_GlCore31Back;
+typedef OpenGl_TmplCore31<OpenGl_GlCore30Fwd>  OpenGl_GlCore31;
+
+template<typename theBaseClass_t> struct OpenGl_TmplCore32;
+typedef OpenGl_TmplCore32<OpenGl_GlCore31Back> OpenGl_GlCore32Back;
+typedef OpenGl_TmplCore32<OpenGl_GlCore31>     OpenGl_GlCore32;
+
+template<typename theBaseClass_t> struct OpenGl_TmplCore33;
+typedef OpenGl_TmplCore33<OpenGl_GlCore32Back> OpenGl_GlCore33Back;
+typedef OpenGl_TmplCore33<OpenGl_GlCore32>     OpenGl_GlCore33;
+
+template<typename theBaseClass_t> struct OpenGl_TmplCore40;
+typedef OpenGl_TmplCore40<OpenGl_GlCore33Back> OpenGl_GlCore40Back;
+typedef OpenGl_TmplCore40<OpenGl_GlCore33>     OpenGl_GlCore40;
+
+template<typename theBaseClass_t> struct OpenGl_TmplCore41;
+typedef OpenGl_TmplCore41<OpenGl_GlCore40Back> OpenGl_GlCore41Back;
+typedef OpenGl_TmplCore41<OpenGl_GlCore40>     OpenGl_GlCore41;
+
+template<typename theBaseClass_t> struct OpenGl_TmplCore42;
+typedef OpenGl_TmplCore42<OpenGl_GlCore41Back> OpenGl_GlCore42Back;
+typedef OpenGl_TmplCore42<OpenGl_GlCore41>     OpenGl_GlCore42;
+
+template<typename theBaseClass_t> struct OpenGl_TmplCore43;
+typedef OpenGl_TmplCore43<OpenGl_GlCore42Back> OpenGl_GlCore43Back;
+typedef OpenGl_TmplCore43<OpenGl_GlCore42>     OpenGl_GlCore43;
+
+template<typename theBaseClass_t> struct OpenGl_TmplCore44;
+typedef OpenGl_TmplCore44<OpenGl_GlCore43Back> OpenGl_GlCore44Back;
+typedef OpenGl_TmplCore44<OpenGl_GlCore43>     OpenGl_GlCore44;
 
 //! This class generalize access to the GL context and available extensions.
 //!
@@ -66,7 +126,7 @@ struct OpenGl_ExtGS;
 //!
 //! Current implementation provide access to OpenGL core functionality up to 2.0 version
 //! (core12, core13, core14, core15, fields core20).
-//! within several extensions (arbVBO, extFBO, etc.).
+//! within several extensions (arbTBO, arbFBO, etc.).
 //!
 //! Simplified extensions classification:
 //!  - prefixed with NV, AMD, ATI are vendor-specific (however may be provided by other vendors in some cases);
@@ -109,6 +169,9 @@ public:
   //! Destructor.
   Standard_EXPORT virtual ~OpenGl_Context();
 
+  //! Release all resources, including shared ones
+  Standard_EXPORT void forcedRelease();
+
   //! Share GL context resources.
   //! theShareCtx - handle to context to retrieve handles to shared resources.
   Standard_EXPORT void Share (const Handle(OpenGl_Context)& theShareCtx);
@@ -123,7 +186,13 @@ public:
     return myIsInitialized;
   }
 
-#if defined(_WIN32)
+#if defined(HAVE_EGL)
+  //! Initialize class from specified surface and rendering context. Method should be called only once.
+  //! @return false if OpenGL context can not be bound to specified surface
+  Standard_EXPORT Standard_Boolean Init (const Aspect_Drawable         theEglSurface,
+                                         const Aspect_Display          theEglDisplay,
+                                         const Aspect_RenderingContext theEglContext);
+#elif defined(_WIN32)
   //! Initialize class from specified window and rendering context. Method should be called only once.
   //! @return false if OpenGL context can not be bound to specified window
   Standard_EXPORT Standard_Boolean Init (const Aspect_Handle           theWindow,
@@ -195,11 +264,25 @@ public:
   //! Swap front/back buffers for this GL context (should be activated before!).
   Standard_EXPORT void SwapBuffers();
 
-  //! Return true if active mode is GL_FEEDBACK (cached state)
-  Standard_EXPORT Standard_Boolean IsFeedback() const;
+  //! Return true if active mode is GL_RENDER (cached state)
+  Standard_Boolean IsRender() const
+  {
+  #if !defined(GL_ES_VERSION_2_0)
+    return myRenderMode == GL_RENDER;
+  #else
+    return Standard_True;
+  #endif
+  }
 
-  //! Setup feedback mode cached state
-  Standard_EXPORT void SetFeedback (const Standard_Boolean theFeedbackOn);
+  //! Return true if active mode is GL_FEEDBACK (cached state)
+  Standard_Boolean IsFeedback() const
+  {
+  #if !defined(GL_ES_VERSION_2_0)
+    return myRenderMode == GL_FEEDBACK;
+  #else
+    return Standard_False;
+  #endif
+  }
 
   //! This function retrieves information from GL about free GPU memory that is:
   //!  - OS-dependent. On some OS it is per-process and on others - for entire system.
@@ -273,6 +356,9 @@ public:
 
 public:
 
+  //! Either GL_CLAMP_TO_EDGE (1.2+) or GL_CLAMP (1.1).
+  Standard_Integer TextureWrapClamp() const { return myTexClamp; }
+
   //! @return maximum degree of anisotropy texture filter
   Standard_EXPORT Standard_Integer MaxDegreeOfAnisotropy() const;
 
@@ -285,10 +371,36 @@ public:
   //! @return value for GL_MAX_CLIP_PLANES
   Standard_EXPORT Standard_Integer MaxClipPlanes() const;
 
+  //! Returns true if VBO is supported and permitted.
+  inline bool ToUseVbo() const
+  {
+    return core15fwd != NULL
+       && !caps->vboDisable;
+  }
+
+  //! @return cached state of GL_NORMALIZE.
+  Standard_Boolean IsGlNormalizeEnabled() const { return myIsGlNormalizeEnabled; }
+
+  //! Sets GL_NORMALIZE enabled or disabled.
+  //! @return old value of the flag
+  Standard_EXPORT Standard_Boolean SetGlNormalizeEnabled (Standard_Boolean isEnabled);
+
+  //! Applies matrix stored in ModelWorldState to OpenGl.
+  void ApplyModelWorldMatrix();
+
+  //! Applies matrix stored in WorldViewState to OpenGl.
+  void ApplyWorldViewMatrix();
+
+  //! Applies combination of matrices stored in ModelWorldState and WorldViewState to OpenGl.
+  void ApplyModelViewMatrix();
+
+  //! Applies matrix stored in ProjectionState to OpenGl.
+  void ApplyProjectionMatrix();
+
 public:
 
   //! @return messenger instance
-  inline const Handle_Message_Messenger& Messenger() const
+  inline const Handle(Message_Messenger)& Messenger() const
   {
     return ::Message::DefaultMessenger();
   }
@@ -305,6 +417,65 @@ public:
                                     const unsigned int theSeverity,
                                     const TCollection_ExtendedString& theMessage);
 
+
+
+  //! @return true if OpenGl context supports left and
+  //! right rendering buffers.
+  Standard_Boolean HasStereoBuffers() const
+  {
+  #if !defined(GL_ES_VERSION_2_0)
+    return myIsStereoBuffers;
+  #else
+    return Standard_False;
+  #endif
+  }
+
+public: //! @name methods to alter or retrieve current state
+
+  //! Switch to left stereographic rendering buffer.
+  //! This method can be used to keep unchanged choise
+  //! of front/back/both buffer rendering.
+  Standard_EXPORT void SetDrawBufferLeft();
+
+  //! Switch to right stereographic rendering buffer.
+  //! This method can be used to keep unchanged choise
+  //! of front/back/both buffer rendering.
+  Standard_EXPORT void SetDrawBufferRight();
+
+  //! Switch to non-stereographic rendering buffer.
+  //! This method can be used to keep unchanged choise
+  //! of front/back/both buffer rendering.
+  Standard_EXPORT void SetDrawBufferMono();
+
+  //! Fetch OpenGl context state. This class tracks value of several OpenGl
+  //! state variables. Consulting the cached values is quicker than
+  //! doing the same via OpenGl API. Call this method if any of the controlled
+  //! OpenGl state variables has a possibility of being out-of-date.
+  Standard_EXPORT void FetchState();
+
+  //! @return active GLSL program
+  const Handle(OpenGl_ShaderProgram)& ActiveProgram() const
+  {
+    return myActiveProgram;
+  }
+
+  //! @return OpenGL sampler object used to override default texture parameters
+  const Handle(OpenGl_Sampler)& TextureSampler()
+  {
+    return myTexSampler;
+  }
+
+  //! Bind specified program to current context,
+  //! or unbind previous one when NULL specified.
+  //! @return true if some program is bound to context
+  Standard_EXPORT Standard_Boolean BindProgram (const Handle(OpenGl_ShaderProgram)& theProgram);
+
+  //! Setup current color.
+  Standard_EXPORT void SetColor4fv (const OpenGl_Vec4& theColor);
+
+  //! Setup point size.
+  Standard_EXPORT void SetPointSize (const Standard_ShortReal theSize);
+
 private:
 
   //! Wrapper to system function to retrieve GL function pointer by name.
@@ -316,34 +487,55 @@ private:
   //! Private initialization function that should be called only once.
   Standard_EXPORT void init();
 
-public: // core profiles
+public: //! @name core profiles
 
-  OpenGl_GlCore12* core12;
-  OpenGl_GlCore13* core13;
-  OpenGl_GlCore14* core14;
-  OpenGl_GlCore15* core15;
-  OpenGl_GlCore20* core20;
+  OpenGl_GlCore11*     core11;     //!< OpenGL 1.1 core functionality
+  OpenGl_GlCore11Fwd*  core11fwd;  //!< OpenGL 1.1 without deprecated entry points
+  OpenGl_GlCore15*     core15;     //!< OpenGL 1.5 core functionality
+  OpenGl_GlCore15Fwd*  core15fwd;  //!< OpenGL 1.5 without deprecated entry points
+  OpenGl_GlCore20*     core20;     //!< OpenGL 2.0 core functionality (includes 1.5)
+  OpenGl_GlCore20Fwd*  core20fwd;  //!< OpenGL 2.0 without deprecated entry points
+  OpenGl_GlCore32*     core32;     //!< OpenGL 3.2 core profile
+  OpenGl_GlCore32Back* core32back; //!< OpenGL 3.2 backward compatibility profile
+  OpenGl_GlCore33*     core33;     //!< OpenGL 3.3 core profile
+  OpenGl_GlCore33Back* core33back; //!< OpenGL 3.3 backward compatibility profile
+  OpenGl_GlCore41*     core41;     //!< OpenGL 4.1 core profile
+  OpenGl_GlCore41Back* core41back; //!< OpenGL 4.1 backward compatibility profile
+  OpenGl_GlCore42*     core42;     //!< OpenGL 4.2 core profile
+  OpenGl_GlCore42Back* core42back; //!< OpenGL 4.2 backward compatibility profile
+  OpenGl_GlCore43*     core43;     //!< OpenGL 4.3 core profile
+  OpenGl_GlCore43Back* core43back; //!< OpenGL 4.3 backward compatibility profile
+  OpenGl_GlCore44*     core44;     //!< OpenGL 4.4 core profile
+  OpenGl_GlCore44Back* core44back; //!< OpenGL 4.4 backward compatibility profile
 
   Handle(OpenGl_Caps) caps; //!< context options
 
-public: // extensions
+public: //! @name extensions
 
-  Standard_Boolean arbNPTW; //!< GL_ARB_texture_non_power_of_two
-  OpenGl_ArbVBO*   arbVBO;  //!< GL_ARB_vertex_buffer_object
-  OpenGl_ArbTBO*   arbTBO;  //!< GL_ARB_texture_buffer_object
-  OpenGl_ArbIns*   arbIns;  //!< GL_ARB_draw_instanced
-  OpenGl_ArbDbg*   arbDbg;  //!< GL_ARB_debug_output
-  OpenGl_ExtFBO*   extFBO;  //!< GL_EXT_framebuffer_object
-  OpenGl_ExtGS*    extGS;   //!< GL_EXT_geometry_shader4
-  Standard_Boolean extBgra; //!< GL_EXT_bgra
-  Standard_Boolean extAnis; //!< GL_EXT_texture_filter_anisotropic
-  Standard_Boolean extPDS;  //!< GL_EXT_packed_depth_stencil
-  Standard_Boolean atiMem;  //!< GL_ATI_meminfo
-  Standard_Boolean nvxMem;  //!< GL_NVX_gpu_memory_info
+  Standard_Boolean       hasHighp;       //!< highp in GLSL ES fragment shader is supported
+  Standard_Boolean       hasTexRGBA8;    //!< always available on desktop; on OpenGL ES - since 3.0 or as extension GL_OES_rgb8_rgba8
+  Standard_Boolean       arbNPTW;        //!< GL_ARB_texture_non_power_of_two
+  Standard_Boolean       arbTexRG;       //!< GL_ARB_texture_rg
+  OpenGl_ArbTexBindless* arbTexBindless; //!< GL_ARB_bindless_texture
+  OpenGl_ArbTBO*         arbTBO;         //!< GL_ARB_texture_buffer_object
+  Standard_Boolean       arbTboRGB32;    //!< GL_ARB_texture_buffer_object_rgb32 (3-component TBO), in core since 4.0
+  OpenGl_ArbIns*         arbIns;         //!< GL_ARB_draw_instanced
+  OpenGl_ArbDbg*         arbDbg;         //!< GL_ARB_debug_output
+  OpenGl_ArbFBO*         arbFBO;         //!< GL_ARB_framebuffer_object
+  OpenGl_ExtGS*          extGS;          //!< GL_EXT_geometry_shader4
+  Standard_Boolean       extBgra;        //!< GL_EXT_bgra or GL_EXT_texture_format_BGRA8888 on OpenGL ES
+  Standard_Boolean       extAnis;        //!< GL_EXT_texture_filter_anisotropic
+  Standard_Boolean       extPDS;         //!< GL_EXT_packed_depth_stencil
+  Standard_Boolean       atiMem;         //!< GL_ATI_meminfo
+  Standard_Boolean       nvxMem;         //!< GL_NVX_gpu_memory_info
 
 private: // system-dependent fields
 
-#if defined(_WIN32)
+#if defined(HAVE_EGL)
+  Aspect_Drawable         myWindow;   //!< EGL surface                   : EGLSurface
+  Aspect_Display          myDisplay;  //!< EGL connection to the Display : EGLDisplay
+  Aspect_RenderingContext myGContext; //!< EGL rendering context         : EGLContext
+#elif defined(_WIN32)
   Aspect_Handle           myWindow;   //!< window handle (owner of GL context) : HWND
   Aspect_Handle           myWindowDC; //!< Device Descriptor handle : HDC
   Aspect_RenderingContext myGContext; //!< Rendering Context handle : HGLRC
@@ -361,26 +553,43 @@ private: // context info
   typedef NCollection_Handle<OpenGl_DelayReleaseMap> Handle(OpenGl_DelayReleaseMap);
   typedef NCollection_DataMap<TCollection_AsciiString, Handle(OpenGl_Resource)> OpenGl_ResourcesMap;
   typedef NCollection_Handle<OpenGl_ResourcesMap> Handle(OpenGl_ResourcesMap);
-  typedef NCollection_Queue<Handle(OpenGl_Resource)> OpenGl_ResourcesQueue;
-  typedef NCollection_Handle<OpenGl_ResourcesQueue> Handle(OpenGl_ResourcesQueue);
+  typedef NCollection_List<Handle(OpenGl_Resource)> OpenGl_ResourcesStack;
+  typedef NCollection_Handle<OpenGl_ResourcesStack> Handle(OpenGl_ResourcesStack);
 
   Handle(OpenGl_ResourcesMap)    mySharedResources; //!< shared resources with unique identification key
   Handle(OpenGl_DelayReleaseMap) myDelayed;         //!< shared resources for delayed release
-  Handle(OpenGl_ResourcesQueue)  myReleaseQueue;    //!< queue of resources for delayed clean up
+  Handle(OpenGl_ResourcesStack)  myUnusedResources; //!< stack of resources for delayed clean up
 
   OpenGl_Clipping myClippingState; //!< state of clip planes
 
-  void*            myGlLibHandle;   //!< optional handle to GL library
-  OpenGl_GlCore20* myGlCore20;      //!< common structure for GL core functions upto 2.0
-  Standard_Integer myAnisoMax;      //!< maximum level of anisotropy texture filter
-  Standard_Integer myMaxTexDim;     //!< value for GL_MAX_TEXTURE_SIZE
-  Standard_Integer myMaxClipPlanes; //!< value for GL_MAX_CLIP_PLANES
-  Standard_Integer myGlVerMajor;    //!< cached GL version major number
-  Standard_Integer myGlVerMinor;    //!< cached GL version minor number
-  Standard_Boolean myIsFeedback;    //!< flag indicates GL_FEEDBACK mode
-  Standard_Boolean myIsInitialized; //!< flag indicates initialization state
+  void*            myGlLibHandle;          //!< optional handle to GL library
+  NCollection_Handle<OpenGl_GlFunctions>
+                   myFuncs;                //!< mega structure for all GL functions
+  Standard_Integer myAnisoMax;             //!< maximum level of anisotropy texture filter
+  Standard_Integer myTexClamp;             //!< either GL_CLAMP_TO_EDGE (1.2+) or GL_CLAMP (1.1)
+  Standard_Integer myMaxTexDim;            //!< value for GL_MAX_TEXTURE_SIZE
+  Standard_Integer myMaxClipPlanes;        //!< value for GL_MAX_CLIP_PLANES
+  Standard_Integer myGlVerMajor;           //!< cached GL version major number
+  Standard_Integer myGlVerMinor;           //!< cached GL version minor number
+  Standard_Boolean myIsInitialized;        //!< flag indicates initialization state
+  Standard_Boolean myIsStereoBuffers;      //!< context supports stereo buffering
+  Standard_Boolean myIsGlNormalizeEnabled; //!< GL_NORMALIZE flag
+                                           //!< Used to tell OpenGl that normals should be normalized
 
   Handle(OpenGl_ShaderManager) myShaderManager; //! support object for managing shader programs
+
+private: //! @name fields tracking current state
+
+  Handle(OpenGl_ShaderProgram) myActiveProgram; //!< currently active GLSL program
+  Handle(OpenGl_Sampler)       myTexSampler;    //!< currently active sampler object
+  Standard_Integer             myRenderMode;    //!< value for active rendering mode
+  Standard_Integer             myDrawBuffer;    //!< current draw buffer
+
+public:
+
+  OpenGl_Utils::MatrixState<Standard_ShortReal> ModelWorldState; //!< state of orientation matrix
+  OpenGl_Utils::MatrixState<Standard_ShortReal> WorldViewState;  //!< state of orientation matrix
+  OpenGl_Utils::MatrixState<Standard_ShortReal> ProjectionState; //!< state of projection  matrix
 
 private:
 

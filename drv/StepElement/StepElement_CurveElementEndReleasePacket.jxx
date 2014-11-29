@@ -1,6 +1,2 @@
-#ifndef _StepElement_CurveElementFreedom_HeaderFile
 #include <StepElement_CurveElementFreedom.hxx>
-#endif
-#ifndef _StepElement_CurveElementEndReleasePacket_HeaderFile
 #include <StepElement_CurveElementEndReleasePacket.hxx>
-#endif

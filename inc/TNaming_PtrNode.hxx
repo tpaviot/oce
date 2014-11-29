@@ -7,7 +7,6 @@
 #define _TNaming_PtrNode_HeaderFile
 
 class TNaming_Node;
-
 typedef TNaming_Node* TNaming_PtrNode;
 
-#endif
+#endif // _TNaming_PtrNode_HeaderFile

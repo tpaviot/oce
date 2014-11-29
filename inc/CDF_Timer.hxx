@@ -6,42 +6,30 @@
 #ifndef _CDF_Timer_HeaderFile
 #define _CDF_Timer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _OSD_Timer_HeaderFile
 #include <OSD_Timer.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 
 
 
-class CDF_Timer  {
+class CDF_Timer 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   CDF_Timer();
+  Standard_EXPORT CDF_Timer();
   
-  Standard_EXPORT     void ShowAndRestart(const Standard_CString aMessage) ;
+  Standard_EXPORT   void ShowAndRestart (const Standard_CString aMessage) ;
   
-  Standard_EXPORT     void ShowAndStop(const Standard_CString aMessage) ;
+  Standard_EXPORT   void ShowAndStop (const Standard_CString aMessage) ;
   
-  Standard_EXPORT     Standard_Boolean MustShow() ;
-
+  Standard_EXPORT   Standard_Boolean MustShow() ;
 
 
 
@@ -55,10 +43,10 @@ protected:
 private:
 
   
-  Standard_EXPORT     void Show(const Standard_CString aMessage) ;
+  Standard_EXPORT   void Show (const Standard_CString aMessage) ;
 
 
-OSD_Timer myTimer;
+  OSD_Timer myTimer;
 
 
 };
@@ -67,7 +55,6 @@ OSD_Timer myTimer;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _CDF_Timer_HeaderFile

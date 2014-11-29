@@ -6,22 +6,15 @@
 #ifndef _Handle_StepGeom_Parabola_HeaderFile
 #define _Handle_StepGeom_Parabola_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepGeom_Conic_HeaderFile
 #include <Handle_StepGeom_Conic.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepGeom_Conic);
 class StepGeom_Parabola;
 
-DEFINE_STANDARD_HANDLE(StepGeom_Parabola,StepGeom_Conic)
+DEFINE_STANDARD_HANDLE(StepGeom_Parabola, StepGeom_Conic)
 
-#endif
+#endif // _Handle_StepGeom_Parabola_HeaderFile

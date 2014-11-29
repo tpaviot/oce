@@ -6,38 +6,27 @@
 #ifndef _TColgp_SequenceNodeOfSequenceOfXY_HeaderFile
 #define _TColgp_SequenceNodeOfSequenceOfXY_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColgp_SequenceNodeOfSequenceOfXY_HeaderFile
 #include <Handle_TColgp_SequenceNodeOfSequenceOfXY.hxx>
-#endif
 
-#ifndef _gp_XY_HeaderFile
 #include <gp_XY.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class gp_XY;
 class TColgp_SequenceOfXY;
 
 
 
-class TColgp_SequenceNodeOfSequenceOfXY : public TCollection_SeqNode {
+class TColgp_SequenceNodeOfSequenceOfXY : public TCollection_SeqNode
+{
 
 public:
 
   
-      TColgp_SequenceNodeOfSequenceOfXY(const gp_XY& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    TColgp_SequenceNodeOfSequenceOfXY(const gp_XY& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        gp_XY& Value() const;
+      gp_XY& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-gp_XY myValue;
+  gp_XY myValue;
 
 
 };
@@ -78,7 +67,6 @@ gp_XY myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColgp_SequenceNodeOfSequenceOfXY_HeaderFile

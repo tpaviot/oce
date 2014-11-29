@@ -6,34 +6,16 @@
 #ifndef _BRepLib_MakeShape_HeaderFile
 #define _BRepLib_MakeShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _BRepLib_Command_HeaderFile
 #include <BRepLib_Command.hxx>
-#endif
-#ifndef _BRepLib_ShapeModification_HeaderFile
 #include <BRepLib_ShapeModification.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StdFail_NotDone;
 class TopoDS_Shape;
 class TopoDS_Face;
@@ -41,38 +23,45 @@ class TopTools_ListOfShape;
 class TopoDS_Edge;
 
 
-//! This    is  the  root     class for     all  shape <br>
-//!          constructions.  It stores the result. <br>
-//! <br>
-//!          It  provides deferred methods to trace the history <br>
-//!          of sub-shapes. <br>
-class BRepLib_MakeShape  : public BRepLib_Command {
+//! This    is  the  root     class for     all  shape
+//! constructions.  It stores the result.
+//!
+//! It  provides deferred methods to trace the history
+//! of sub-shapes.
+class BRepLib_MakeShape  : public BRepLib_Command
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! This is  called by  Shape().  It does  nothing but <br>
-//!          may be redefined. <br>
-  Standard_EXPORT     void Build() ;
   
-  Standard_EXPORT    const TopoDS_Shape& Shape() const;
+  //! This is  called by  Shape().  It does  nothing but
+  //! may be redefined.
+  Standard_EXPORT   void Build() ;
+  
+  Standard_EXPORT  const  TopoDS_Shape& Shape()  const;
 Standard_EXPORT operator TopoDS_Shape() const;
-  //! returns the status of the Face after <br>
-//!          the shape creation. <br>
-  Standard_EXPORT   virtual  BRepLib_ShapeModification FaceStatus(const TopoDS_Face& F) const;
-  //! Returns True if the Face generates new topology. <br>
-  Standard_EXPORT   virtual  Standard_Boolean HasDescendants(const TopoDS_Face& F) const;
-  //! returns the list of generated Faces. <br>
-  Standard_EXPORT   virtual const TopTools_ListOfShape& DescendantFaces(const TopoDS_Face& F) ;
-  //! returns the number of surfaces <br>
-//!          after the shape creation. <br>
-  Standard_EXPORT   virtual  Standard_Integer NbSurfaces() const;
-  //! Return the faces created for surface I. <br>
-  Standard_EXPORT   virtual const TopTools_ListOfShape& NewFaces(const Standard_Integer I) ;
-  //! returns a list of the created faces <br>
-//!          from the edge <E>. <br>
-  Standard_EXPORT   virtual const TopTools_ListOfShape& FacesFromEdges(const TopoDS_Edge& E) ;
-
+  
+  //! returns the status of the Face after
+  //! the shape creation.
+  Standard_EXPORT virtual   BRepLib_ShapeModification FaceStatus (const TopoDS_Face& F)  const;
+  
+  //! Returns True if the Face generates new topology.
+  Standard_EXPORT virtual   Standard_Boolean HasDescendants (const TopoDS_Face& F)  const;
+  
+  //! returns the list of generated Faces.
+  Standard_EXPORT virtual  const  TopTools_ListOfShape& DescendantFaces (const TopoDS_Face& F) ;
+  
+  //! returns the number of surfaces
+  //! after the shape creation.
+  Standard_EXPORT virtual   Standard_Integer NbSurfaces()  const;
+  
+  //! Return the faces created for surface I.
+  Standard_EXPORT virtual  const  TopTools_ListOfShape& NewFaces (const Standard_Integer I) ;
+  
+  //! returns a list of the created faces
+  //! from the edge <E>.
+  Standard_EXPORT virtual  const  TopTools_ListOfShape& FacesFromEdges (const TopoDS_Edge& E) ;
 
 
 
@@ -80,13 +69,13 @@ Standard_EXPORT operator TopoDS_Shape() const;
 protected:
 
   
-  Standard_EXPORT   BRepLib_MakeShape();
+  Standard_EXPORT BRepLib_MakeShape();
 
 
-TopoDS_Shape myShape;
-TopTools_ListOfShape myGenFaces;
-TopTools_ListOfShape myNewFaces;
-TopTools_ListOfShape myEdgFaces;
+  TopoDS_Shape myShape;
+  TopTools_ListOfShape myGenFaces;
+  TopTools_ListOfShape myNewFaces;
+  TopTools_ListOfShape myEdgFaces;
 
 
 private:
@@ -101,7 +90,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepLib_MakeShape_HeaderFile

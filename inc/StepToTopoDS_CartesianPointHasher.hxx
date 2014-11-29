@@ -6,39 +6,29 @@
 #ifndef _StepToTopoDS_CartesianPointHasher_HeaderFile
 #define _StepToTopoDS_CartesianPointHasher_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_StepGeom_CartesianPoint_HeaderFile
 #include <Handle_StepGeom_CartesianPoint.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class StepGeom_CartesianPoint;
 
 
 
-class StepToTopoDS_CartesianPointHasher  {
+class StepToTopoDS_CartesianPointHasher 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a HasCode value  for  the  CartesianPoint <br>
-  Standard_EXPORT   static  Standard_Integer HashCode(const Handle(StepGeom_CartesianPoint)& K,const Standard_Integer Upper) ;
-  //! Returns True  when the two  CartesianPoint are the same <br>
-  Standard_EXPORT   static  Standard_Boolean IsEqual(const Handle(StepGeom_CartesianPoint)& K1,const Handle(StepGeom_CartesianPoint)& K2) ;
-
+  
+  //! Returns a HasCode value  for  the  CartesianPoint
+  Standard_EXPORT static   Standard_Integer HashCode (const Handle(StepGeom_CartesianPoint)& K, const Standard_Integer Upper) ;
+  
+  //! Returns True  when the two  CartesianPoint are the same
+  Standard_EXPORT static   Standard_Boolean IsEqual (const Handle(StepGeom_CartesianPoint)& K1, const Handle(StepGeom_CartesianPoint)& K2) ;
 
 
 
@@ -61,7 +51,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToTopoDS_CartesianPointHasher_HeaderFile

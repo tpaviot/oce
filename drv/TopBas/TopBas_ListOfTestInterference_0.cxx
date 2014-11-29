@@ -5,18 +5,10 @@
 
 #include <TopBas_ListOfTestInterference.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopBas_ListIteratorOfListOfTestInterference_HeaderFile
 #include <TopBas_ListIteratorOfListOfTestInterference.hxx>
-#endif
-#ifndef _TopBas_TestInterference_HeaderFile
 #include <TopBas_TestInterference.hxx>
-#endif
-#ifndef _TopBas_ListNodeOfListOfTestInterference_HeaderFile
 #include <TopBas_ListNodeOfListOfTestInterference.hxx>
-#endif
  
 
 #define Item TopBas_TestInterference

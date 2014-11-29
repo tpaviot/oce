@@ -6,38 +6,27 @@
 #ifndef _StepElement_SequenceNodeOfSequenceOfElementMaterial_HeaderFile
 #define _StepElement_SequenceNodeOfSequenceOfElementMaterial_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepElement_SequenceNodeOfSequenceOfElementMaterial_HeaderFile
 #include <Handle_StepElement_SequenceNodeOfSequenceOfElementMaterial.hxx>
-#endif
 
-#ifndef _Handle_StepElement_ElementMaterial_HeaderFile
 #include <Handle_StepElement_ElementMaterial.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class StepElement_ElementMaterial;
 class StepElement_SequenceOfElementMaterial;
 
 
 
-class StepElement_SequenceNodeOfSequenceOfElementMaterial : public TCollection_SeqNode {
+class StepElement_SequenceNodeOfSequenceOfElementMaterial : public TCollection_SeqNode
+{
 
 public:
 
   
-      StepElement_SequenceNodeOfSequenceOfElementMaterial(const Handle(StepElement_ElementMaterial)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    StepElement_SequenceNodeOfSequenceOfElementMaterial(const Handle(StepElement_ElementMaterial)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_StepElement_ElementMaterial& Value() const;
+      Handle(StepElement_ElementMaterial)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_StepElement_ElementMaterial myValue;
+  Handle(StepElement_ElementMaterial) myValue;
 
 
 };
 
-#define SeqItem Handle_StepElement_ElementMaterial
+#define SeqItem Handle(StepElement_ElementMaterial)
 #define SeqItem_hxx <StepElement_ElementMaterial.hxx>
 #define TCollection_SequenceNode StepElement_SequenceNodeOfSequenceOfElementMaterial
 #define TCollection_SequenceNode_hxx <StepElement_SequenceNodeOfSequenceOfElementMaterial.hxx>
@@ -78,7 +67,6 @@ Handle_StepElement_ElementMaterial myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_SequenceNodeOfSequenceOfElementMaterial_HeaderFile

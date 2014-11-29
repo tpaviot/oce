@@ -5,16 +5,10 @@
 
 #include <BRepOffsetAPI_SequenceNodeOfSequenceOfSequenceOfReal.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColStd_SequenceOfReal_HeaderFile
 #include <TColStd_SequenceOfReal.hxx>
-#endif
-#ifndef _BRepOffsetAPI_SequenceOfSequenceOfReal_HeaderFile
 #include <BRepOffsetAPI_SequenceOfSequenceOfReal.hxx>
-#endif
 
  
 

@@ -6,9 +6,12 @@
 #ifndef _OSD_WhoAmI_HeaderFile
 #define _OSD_WhoAmI_HeaderFile
 
-//! Allows great accuracy for error management. <br>
-//!          This is private. <br>
-enum OSD_WhoAmI {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Allows great accuracy for error management.
+//! This is private.
+enum OSD_WhoAmI
+{
 OSD_WDirectory,
 OSD_WDirectoryIterator,
 OSD_WEnvironment,
@@ -27,8 +30,4 @@ OSD_WPrinter,
 OSD_WEnvironmentIterator
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _OSD_WhoAmI_HeaderFile

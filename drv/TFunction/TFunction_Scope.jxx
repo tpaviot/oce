@@ -1,21 +1,7 @@
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _TFunction_Logbook_HeaderFile
 #include <TFunction_Logbook.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _TDF_RelocationTable_HeaderFile
 #include <TDF_RelocationTable.hxx>
-#endif
-#ifndef _TFunction_DoubleMapOfIntegerLabel_HeaderFile
 #include <TFunction_DoubleMapOfIntegerLabel.hxx>
-#endif
-#ifndef _TFunction_Scope_HeaderFile
 #include <TFunction_Scope.hxx>
-#endif

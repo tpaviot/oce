@@ -6,52 +6,41 @@
 #ifndef _IGESData_FileProtocol_HeaderFile
 #define _IGESData_FileProtocol_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESData_FileProtocol_HeaderFile
 #include <Handle_IGESData_FileProtocol.hxx>
-#endif
 
-#ifndef _Handle_IGESData_Protocol_HeaderFile
 #include <Handle_IGESData_Protocol.hxx>
-#endif
-#ifndef _Handle_IGESData_FileProtocol_HeaderFile
 #include <Handle_IGESData_FileProtocol.hxx>
-#endif
-#ifndef _IGESData_Protocol_HeaderFile
 #include <IGESData_Protocol.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Interface_Protocol_HeaderFile
 #include <Handle_Interface_Protocol.hxx>
-#endif
 class IGESData_Protocol;
 class Interface_Protocol;
 
 
-//! This class allows to define complex protocols, in order to <br>
-//!           treat various sub-sets (or the complete set) of the IGES Norm, <br>
-//!           such as Solid + Draw (which are normally independant), etc... <br>
-//!           While it inherits Protocol from IGESData, it admits <br>
-//!           UndefinedEntity too <br>
-class IGESData_FileProtocol : public IGESData_Protocol {
+//! This class allows to define complex protocols, in order to
+//! treat various sub-sets (or the complete set) of the IGES Norm,
+//! such as Solid + Draw (which are normally independant), etc...
+//! While it inherits Protocol from IGESData, it admits
+//! UndefinedEntity too
+class IGESData_FileProtocol : public IGESData_Protocol
+{
 
 public:
 
-  //! Returns an empty FileProtocol <br>
-  Standard_EXPORT   IGESData_FileProtocol();
-  //! Adds a resource <br>
-  Standard_EXPORT     void Add(const Handle(IGESData_Protocol)& protocol) ;
-  //! Gives the count of Resources : the count of Added Protocols <br>
-  Standard_EXPORT   virtual  Standard_Integer NbResources() const;
-  //! Returns a Resource, given a rank (rank of call to Add) <br>
-  Standard_EXPORT   virtual  Handle_Interface_Protocol Resource(const Standard_Integer num) const;
+  
+  //! Returns an empty FileProtocol
+  Standard_EXPORT IGESData_FileProtocol();
+  
+  //! Adds a resource
+  Standard_EXPORT   void Add (const Handle(IGESData_Protocol)& protocol) ;
+  
+  //! Gives the count of Resources : the count of Added Protocols
+  Standard_EXPORT virtual   Standard_Integer NbResources()  const;
+  
+  //! Returns a Resource, given a rank (rank of call to Add)
+  Standard_EXPORT virtual   Handle(Interface_Protocol) Resource (const Standard_Integer num)  const;
 
 
 
@@ -66,8 +55,8 @@ protected:
 private: 
 
 
-Handle_IGESData_Protocol theresource;
-Handle_IGESData_FileProtocol thenext;
+  Handle(IGESData_Protocol) theresource;
+  Handle(IGESData_FileProtocol) thenext;
 
 
 };
@@ -76,7 +65,6 @@ Handle_IGESData_FileProtocol thenext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESData_FileProtocol_HeaderFile

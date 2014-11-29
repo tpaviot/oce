@@ -6,49 +6,41 @@
 #ifndef _Interface_CopyControl_HeaderFile
 #define _Interface_CopyControl_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Interface_CopyControl_HeaderFile
 #include <Handle_Interface_CopyControl.hxx>
-#endif
 
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Interface_InterfaceError;
 class Standard_Transient;
 
 
-//! This deferred class describes the services required by <br>
-//!           CopyTool to work. They are very simple and correspond <br>
-//!           basically to the management of an indexed map. <br>
-//!           But they can be provided by various classes which can <br>
-//!           control a Transfer. Each Starting Entity have at most <br>
-//!           one Result (Mapping one-one) <br>
-class Interface_CopyControl : public MMgt_TShared {
+//! This deferred class describes the services required by
+//! CopyTool to work. They are very simple and correspond
+//! basically to the management of an indexed map.
+//! But they can be provided by various classes which can
+//! control a Transfer. Each Starting Entity have at most
+//! one Result (Mapping one-one)
+class Interface_CopyControl : public MMgt_TShared
+{
 
 public:
 
-  //! Clears List of Copy Results. Gets Ready to begin another Copy <br>
-//!           Process. <br>
-  Standard_EXPORT   virtual  void Clear()  = 0;
-  //! Bind a Result to a Starting Entity identified by its Number <br>
-  Standard_EXPORT   virtual  void Bind(const Handle(Standard_Transient)& ent,const Handle(Standard_Transient)& res)  = 0;
-  //! Searches for the Result bound to a Startingf Entity identified <br>
-//!           by its Number. <br>
-//!           If Found, returns True and fills <res> <br>
-//!           Else, returns False and nullifies <res> <br>
-  Standard_EXPORT   virtual  Standard_Boolean Search(const Handle(Standard_Transient)& ent,Handle(Standard_Transient)& res) const = 0;
+  
+  //! Clears List of Copy Results. Gets Ready to begin another Copy
+  //! Process.
+  Standard_EXPORT virtual   void Clear()  = 0;
+  
+  //! Bind a Result to a Starting Entity identified by its Number
+  Standard_EXPORT virtual   void Bind (const Handle(Standard_Transient)& ent, const Handle(Standard_Transient)& res)  = 0;
+  
+  //! Searches for the Result bound to a Startingf Entity identified
+  //! by its Number.
+  //! If Found, returns True and fills <res>
+  //! Else, returns False and nullifies <res>
+  Standard_EXPORT virtual   Standard_Boolean Search (const Handle(Standard_Transient)& ent, Handle(Standard_Transient)& res)  const = 0;
 
 
 
@@ -71,7 +63,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Interface_CopyControl_HeaderFile

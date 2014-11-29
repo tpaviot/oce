@@ -35,6 +35,7 @@
 #include <BRepAlgoAPI_Fuse.hxx>
 #include <BRepAlgoAPI_Cut.hxx>
 #include <BRepAlgoAPI_Common.hxx>
+#include <BRepAlgoAPI_Section.hxx>
 #include <TopoDS_Iterator.hxx>
 #include <TopTools_MapOfShape.hxx>
 #include <TopExp_Explorer.hxx>
@@ -103,7 +104,7 @@ Standard_Integer DNaming_BooleanOperationDriver::Execute(TFunction_Logbook& theL
   Handle(TNaming_NamedShape) anObjectNS;
   aLab.FindAttribute(TNaming_NamedShape::GetID(), anObjectNS);
   if (anObjectNS.IsNull() || anObjectNS->IsEmpty()) {
-#ifdef DEB
+#ifdef OCCT_DEBUG
     cout<<"BooleanOperationDriver:: Object is empty"<<endl;
 #endif
     aFunction->SetFailure(WRONG_ARGUMENT);
@@ -114,7 +115,7 @@ Standard_Integer DNaming_BooleanOperationDriver::Execute(TFunction_Logbook& theL
   Handle(TNaming_NamedShape) aToolNS = DNaming::GetObjectValue(aToolObj);
 
   if (aToolNS.IsNull() || aToolNS->IsEmpty()) {
-#ifdef DEB
+#ifdef OCCT_DEBUG
     cout<<"BooleanOperationDriver:: Tool is empty"<<endl;
 #endif
     aFunction->SetFailure(WRONG_ARGUMENT);
@@ -124,7 +125,7 @@ Standard_Integer DNaming_BooleanOperationDriver::Execute(TFunction_Logbook& theL
   TopoDS_Shape aTOOL = aToolNS->Get();
   TopoDS_Shape anOBJECT = anObjectNS->Get();
   if (aTOOL.IsNull() || anOBJECT.IsNull()) {
-#ifdef DEB
+#ifdef OCCT_DEBUG
     cout<<"BooleanOperationDriver:: Tool is null"<<endl;
 #endif
     aFunction->SetFailure(WRONG_ARGUMENT);
@@ -147,6 +148,11 @@ Standard_Integer DNaming_BooleanOperationDriver::Execute(TFunction_Logbook& theL
   else if(aFunction->GetDriverGUID() == COMMON_GUID){
     BRepAlgoAPI_Common aMkCom (anOBJECT, aTOOL);    
     anIsDone = CheckAndLoad(aMkCom, aFunction);
+  }
+    // case SECTION
+  else if(aFunction->GetDriverGUID() == SECTION_GUID){
+    BRepAlgoAPI_Section aMkSect (anOBJECT, aTOOL);    
+    anIsDone = CheckAndLoad(aMkSect, aFunction);
   }
   else {
     aFunction->SetFailure(UNSUPPORTED_FUNCTION);
@@ -199,7 +205,7 @@ static Standard_Boolean IsValidSurfType(const TopoDS_Face& theFace) {
       return Standard_True;
   }
 */
-#ifdef DEB
+#ifdef OCCT_DEBUG
   //ModDbgTools_Write(theFace, "Surf");
 #endif
   return Standard_False;
@@ -256,7 +262,7 @@ void DNaming_BooleanOperationDriver::LoadNamingDS (const TDF_Label& theResultLab
   const TopoDS_Shape& ObjSh = MS.Shape1();
   const TopoDS_Shape& ToolSh = MS.Shape2();
  if (ResSh.IsNull()) {
-#ifdef DEB
+#ifdef OCCT_DEBUG
    cout<<"LoadFuseNamingDS: The result of the boolean operation is null"<<endl;
 #endif
     return;
@@ -320,6 +326,39 @@ void DNaming_BooleanOperationDriver::LoadNamingDS (const TDF_Label& theResultLab
 }
 
 //=======================================================================
+//function : LoadNamingDS
+//purpose  : 
+//=======================================================================
+void DNaming_BooleanOperationDriver::LoadSectionNDS (const TDF_Label& theResultLabel, 
+					   BRepAlgoAPI_BooleanOperation& MS) const
+{
+
+  const TopoDS_Shape& ResSh = MS.Shape();
+  const TopoDS_Shape& ObjSh = MS.Shape1();
+  const TopoDS_Shape& ToolSh = MS.Shape2();
+ if (ResSh.IsNull()) {
+#ifdef OCCT_DEBUG
+   cout<<"LoadSectionNamingDS: The result of the boolean operation is null"<<endl;
+#endif
+    return;
+  }
+
+  // LoadResult
+  DNaming::LoadResult(theResultLabel, MS);
+
+  TopTools_DataMapOfShapeShape SubShapes;
+  TopExp_Explorer Exp(ResSh, TopAbs_EDGE);
+  for (; Exp.More(); Exp.Next()) {
+    SubShapes.Bind(Exp.Current(),Exp.Current());
+  }
+
+ // Naming of modified faces: 
+  TNaming_Builder genEdB (theResultLabel.NewChild()); //FindChild(1,Standard_True)); 
+  DNaming::LoadAndOrientGeneratedShapes (MS, ObjSh,  TopAbs_FACE, genEdB,SubShapes);  
+  DNaming::LoadAndOrientGeneratedShapes (MS, ToolSh, TopAbs_FACE, genEdB, SubShapes);
+
+}
+//=======================================================================
 //function : CheckAndLoad
 //purpose  : checks result of operation and performs Topological Naming
 //=======================================================================
@@ -329,10 +368,6 @@ Standard_Boolean DNaming_BooleanOperationDriver::CheckAndLoad
 {
 
   if (theMkOpe.IsDone() && !theMkOpe.Shape().IsNull()) {
-#ifdef MDTV_DEB   
-    Standard_CString aFileName = "BoolOp.brep";
-    Write(theMkOpe.Shape(), aFileName);
-#endif
     if (theMkOpe.Shape().ShapeType() == TopAbs_COMPOUND) {
       TopoDS_Iterator anItr(theMkOpe.Shape());
       if(!anItr.More()) {
@@ -351,8 +386,10 @@ Standard_Boolean DNaming_BooleanOperationDriver::CheckAndLoad
       else if(theFunction->GetDriverGUID() == CUT_GUID) {
 	LoadNamingDS(RESPOSITION(theFunction), theMkOpe); // the same naming only for case of solids
       } else if(theFunction->GetDriverGUID() == COMMON_GUID) {
-	LoadNamingDS(RESPOSITION(theFunction), theMkOpe); 
-      }
+	    LoadNamingDS(RESPOSITION(theFunction), theMkOpe); 
+      } else if(theFunction->GetDriverGUID() == SECTION_GUID) {
+	    LoadSectionNDS(RESPOSITION(theFunction), theMkOpe); 
+	  }
       
       theFunction->SetFailure(DONE);
       return Standard_True;

@@ -6,40 +6,18 @@
 #ifndef _TopOpeBRep_DSFiller_HeaderFile
 #define _TopOpeBRep_DSFiller_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopOpeBRep_ShapeIntersector_HeaderFile
 #include <TopOpeBRep_ShapeIntersector.hxx>
-#endif
-#ifndef _TopOpeBRep_ShapeIntersector2d_HeaderFile
 #include <TopOpeBRep_ShapeIntersector2d.hxx>
-#endif
-#ifndef _TopOpeBRep_FacesFiller_HeaderFile
 #include <TopOpeBRep_FacesFiller.hxx>
-#endif
-#ifndef _TopOpeBRep_EdgesFiller_HeaderFile
 #include <TopOpeBRep_EdgesFiller.hxx>
-#endif
-#ifndef _TopOpeBRep_FaceEdgeFiller_HeaderFile
 #include <TopOpeBRep_FaceEdgeFiller.hxx>
-#endif
-#ifndef _TopOpeBRepTool_PShapeClassifier_HeaderFile
 #include <TopOpeBRepTool_PShapeClassifier.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_HDataStructure_HeaderFile
 #include <Handle_TopOpeBRepDS_HDataStructure.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopoDS_Shape;
 class TopOpeBRepDS_HDataStructure;
 class TopoDS_Face;
@@ -50,97 +28,106 @@ class TopOpeBRep_EdgesFiller;
 class TopOpeBRep_FaceEdgeFiller;
 
 
-//! Provides class  methods  to  fill  a datastructure <br>
-//!          with  results  of intersections. <br>
-//! <br>
-//!          1.  Use  an    Intersector  to   find    pairs  of <br>
-//!          intersecting GeomShapes <br>
-//! <br>
-//!          2. For each  pair fill the DataStructure using the <br>
-//!          appropriate Filler. <br>
-//! <br>
-//!          3. Complete the  DataStructure to record shapes to <br>
-//!          rebuild (shells, wires ) <br>
-class TopOpeBRep_DSFiller  {
+//! Provides class  methods  to  fill  a datastructure
+//! with  results  of intersections.
+//!
+//! 1.  Use  an    Intersector  to   find    pairs  of
+//! intersecting GeomShapes
+//!
+//! 2. For each  pair fill the DataStructure using the
+//! appropriate Filler.
+//!
+//! 3. Complete the  DataStructure to record shapes to
+//! rebuild (shells, wires )
+class TopOpeBRep_DSFiller 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRep_DSFiller();
+  Standard_EXPORT TopOpeBRep_DSFiller();
   
-  Standard_EXPORT     void Destroy() ;
+  Standard_EXPORT   void Destroy() ;
 Standard_EXPORT ~TopOpeBRep_DSFiller() {Destroy();}
-  //! return field myPShapeClassifier. <br>//! set field myPShapeClassifier. <br>
-  Standard_EXPORT     TopOpeBRepTool_PShapeClassifier PShapeClassifier() const;
-  //! Stores in <DS> the intersections of <S1> and <S2>. <br>
-//!          if orientFORWARD = True <br>
-//!               S FORWARD,REVERSED   --> FORWARD <br>
-//!               S EXTERNAL,INTERNAL --> EXTERNAL,INTERNAL <br>
-  Standard_EXPORT     void Insert(const TopoDS_Shape& S1,const TopoDS_Shape& S2,const Handle(TopOpeBRepDS_HDataStructure)& HDS,const Standard_Boolean orientFORWARD = Standard_True) ;
-  //! Stores in <DS> the intersections of <S1> and <S2>. <br>
-//!          if orientFORWARD = True <br>
-//!               S FORWAR,REVERSED   --> FORWARD <br>
-//!               S EXTERNAL,INTERNAL --> EXTERNAL,INTERNAL <br>
-  Standard_EXPORT     void InsertIntersection(const TopoDS_Shape& S1,const TopoDS_Shape& S2,const Handle(TopOpeBRepDS_HDataStructure)& HDS,const Standard_Boolean orientFORWARD = Standard_True) ;
   
-  Standard_EXPORT     void Complete(const Handle(TopOpeBRepDS_HDataStructure)& HDS) ;
-  //! Stores in <DS> the intersections of <S1> and <S2>. <br>
-//!          S1 et S2 contain only SameDomain Face <br>
-  Standard_EXPORT     void Insert2d(const TopoDS_Shape& S1,const TopoDS_Shape& S2,const Handle(TopOpeBRepDS_HDataStructure)& HDS) ;
-  //! S1, S2 set of tangent face <br>
-//!          lance les intersections 2d pour coder correctement <br>
-//!          les faces SameDomain. <br>
-  Standard_EXPORT     void InsertIntersection2d(const TopoDS_Shape& S1,const TopoDS_Shape& S2,const Handle(TopOpeBRepDS_HDataStructure)& HDS) ;
+  //! return field myPShapeClassifier.
+  //! set field myPShapeClassifier.
+  Standard_EXPORT   TopOpeBRepTool_PShapeClassifier PShapeClassifier()  const;
   
-  Standard_EXPORT     Standard_Boolean IsMadeOf1d(const TopoDS_Shape& S) const;
+  //! Stores in <DS> the intersections of <S1> and <S2>.
+  //! if orientFORWARD = True
+  //! S FORWARD,REVERSED   --> FORWARD
+  //! S EXTERNAL,INTERNAL --> EXTERNAL,INTERNAL
+  Standard_EXPORT   void Insert (const TopoDS_Shape& S1, const TopoDS_Shape& S2, const Handle(TopOpeBRepDS_HDataStructure)& HDS, const Standard_Boolean orientFORWARD = Standard_True) ;
   
-  Standard_EXPORT     Standard_Boolean IsContext1d(const TopoDS_Shape& S) const;
-  //! Stores in <DS> the intersections of <S1> and <S2>. <br>
-//!          S1 and S2 are edges or wires. <br>
-//!          S1 edges have a 2d representation in face F1 <br>
-//!          S2 edges have a 2d representation in face F2 <br>
-//!          F1 is the face which surface is taken as reference <br>
-//!          for 2d description of S1 and S2 edges. <br>
-//!          if orientFORWARD = True <br>
-//!               S FORWARD,REVERSED  --> FORWARD <br>
-//!               S EXTERNAL,INTERNAL --> EXTERNAL,INTERNAL <br>
-  Standard_EXPORT     void Insert1d(const TopoDS_Shape& S1,const TopoDS_Shape& S2,const TopoDS_Face& F1,const TopoDS_Face& F2,const Handle(TopOpeBRepDS_HDataStructure)& HDS,const Standard_Boolean orientFORWARD = Standard_False) ;
+  //! Stores in <DS> the intersections of <S1> and <S2>.
+  //! if orientFORWARD = True
+  //! S FORWAR,REVERSED   --> FORWARD
+  //! S EXTERNAL,INTERNAL --> EXTERNAL,INTERNAL
+  Standard_EXPORT   void InsertIntersection (const TopoDS_Shape& S1, const TopoDS_Shape& S2, const Handle(TopOpeBRepDS_HDataStructure)& HDS, const Standard_Boolean orientFORWARD = Standard_True) ;
   
-  Standard_EXPORT     TopOpeBRep_ShapeIntersector& ChangeShapeIntersector() ;
+  Standard_EXPORT   void Complete (const Handle(TopOpeBRepDS_HDataStructure)& HDS) ;
   
-  Standard_EXPORT     TopOpeBRep_ShapeIntersector2d& ChangeShapeIntersector2d() ;
+  //! Stores in <DS> the intersections of <S1> and <S2>.
+  //! S1 et S2 contain only SameDomain Face
+  Standard_EXPORT   void Insert2d (const TopoDS_Shape& S1, const TopoDS_Shape& S2, const Handle(TopOpeBRepDS_HDataStructure)& HDS) ;
   
-  Standard_EXPORT     TopOpeBRep_FacesFiller& ChangeFacesFiller() ;
+  //! S1, S2 set of tangent face
+  //! lance les intersections 2d pour coder correctement
+  //! les faces SameDomain.
+  Standard_EXPORT   void InsertIntersection2d (const TopoDS_Shape& S1, const TopoDS_Shape& S2, const Handle(TopOpeBRepDS_HDataStructure)& HDS) ;
   
-  Standard_EXPORT     TopOpeBRep_EdgesFiller& ChangeEdgesFiller() ;
+  Standard_EXPORT   Standard_Boolean IsMadeOf1d (const TopoDS_Shape& S)  const;
   
-  Standard_EXPORT     TopOpeBRep_FaceEdgeFiller& ChangeFaceEdgeFiller() ;
+  Standard_EXPORT   Standard_Boolean IsContext1d (const TopoDS_Shape& S)  const;
   
-  Standard_EXPORT     void GapFiller(const Handle(TopOpeBRepDS_HDataStructure)& HDS) const;
-  //! Update   the  data      structure  with   relevant <br>
-//!          informations deduced from the intersections. <br>
-//! <br>
-//!          Shells containing an intersected face. <br>
-//!          Wires  containing an intersected edge. <br>
-//! <br>
-  Standard_EXPORT     void CompleteDS(const Handle(TopOpeBRepDS_HDataStructure)& HDS) const;
+  //! Stores in <DS> the intersections of <S1> and <S2>.
+  //! S1 and S2 are edges or wires.
+  //! S1 edges have a 2d representation in face F1
+  //! S2 edges have a 2d representation in face F2
+  //! F1 is the face which surface is taken as reference
+  //! for 2d description of S1 and S2 edges.
+  //! if orientFORWARD = True
+  //! S FORWARD,REVERSED  --> FORWARD
+  //! S EXTERNAL,INTERNAL --> EXTERNAL,INTERNAL
+  Standard_EXPORT   void Insert1d (const TopoDS_Shape& S1, const TopoDS_Shape& S2, const TopoDS_Face& F1, const TopoDS_Face& F2, const Handle(TopOpeBRepDS_HDataStructure)& HDS, const Standard_Boolean orientFORWARD = Standard_False) ;
   
-  Standard_EXPORT     void Filter(const Handle(TopOpeBRepDS_HDataStructure)& HDS) const;
+  Standard_EXPORT   TopOpeBRep_ShapeIntersector& ChangeShapeIntersector() ;
   
-  Standard_EXPORT     void Reducer(const Handle(TopOpeBRepDS_HDataStructure)& HDS) const;
+  Standard_EXPORT   TopOpeBRep_ShapeIntersector2d& ChangeShapeIntersector2d() ;
   
-  Standard_EXPORT     void RemoveUnsharedGeometry(const Handle(TopOpeBRepDS_HDataStructure)& HDS) ;
+  Standard_EXPORT   TopOpeBRep_FacesFiller& ChangeFacesFiller() ;
   
-  Standard_EXPORT     void Checker(const Handle(TopOpeBRepDS_HDataStructure)& HDS) const;
-  //! Update   the  data      structure  with   relevant <br>
-//!          informations deduced from the intersections 2d. <br>
-//! <br>
-//!          Shells containing an intersected face. <br>
-//!          Wires  containing an intersected edge. <br>
-//! <br>//! search for interference identity using edge connexity //NYI <br>
-  Standard_EXPORT     void CompleteDS2d(const Handle(TopOpeBRepDS_HDataStructure)& HDS) const;
-
+  Standard_EXPORT   TopOpeBRep_EdgesFiller& ChangeEdgesFiller() ;
+  
+  Standard_EXPORT   TopOpeBRep_FaceEdgeFiller& ChangeFaceEdgeFiller() ;
+  
+  Standard_EXPORT   void GapFiller (const Handle(TopOpeBRepDS_HDataStructure)& HDS)  const;
+  
+  //! Update   the  data      structure  with   relevant
+  //! informations deduced from the intersections.
+  //!
+  //! Shells containing an intersected face.
+  //! Wires  containing an intersected edge.
+  Standard_EXPORT   void CompleteDS (const Handle(TopOpeBRepDS_HDataStructure)& HDS)  const;
+  
+  Standard_EXPORT   void Filter (const Handle(TopOpeBRepDS_HDataStructure)& HDS)  const;
+  
+  Standard_EXPORT   void Reducer (const Handle(TopOpeBRepDS_HDataStructure)& HDS)  const;
+  
+  Standard_EXPORT   void RemoveUnsharedGeometry (const Handle(TopOpeBRepDS_HDataStructure)& HDS) ;
+  
+  Standard_EXPORT   void Checker (const Handle(TopOpeBRepDS_HDataStructure)& HDS)  const;
+  
+  //! Update   the  data      structure  with   relevant
+  //! informations deduced from the intersections 2d.
+  //!
+  //! Shells containing an intersected face.
+  //! Wires  containing an intersected edge.
+  //!
+  //! search for interference identity using edge connexity //NYI
+  Standard_EXPORT   void CompleteDS2d (const Handle(TopOpeBRepDS_HDataStructure)& HDS)  const;
 
 
 
@@ -154,17 +141,17 @@ protected:
 private:
 
   
-  Standard_EXPORT     Standard_Boolean CheckInsert(const TopoDS_Shape& S1,const TopoDS_Shape& S2) const;
+  Standard_EXPORT   Standard_Boolean CheckInsert (const TopoDS_Shape& S1, const TopoDS_Shape& S2)  const;
   
-  Standard_EXPORT     Standard_Boolean ClearShapeSameDomain(const TopoDS_Shape& S1,const TopoDS_Shape& S2,const Handle(TopOpeBRepDS_HDataStructure)& HDS) ;
+  Standard_EXPORT   Standard_Boolean ClearShapeSameDomain (const TopoDS_Shape& S1, const TopoDS_Shape& S2, const Handle(TopOpeBRepDS_HDataStructure)& HDS) ;
 
 
-TopOpeBRep_ShapeIntersector myShapeIntersector;
-TopOpeBRep_ShapeIntersector2d myShapeIntersector2d;
-TopOpeBRep_FacesFiller myFacesFiller;
-TopOpeBRep_EdgesFiller myEdgesFiller;
-TopOpeBRep_FaceEdgeFiller myFaceEdgeFiller;
-TopOpeBRepTool_PShapeClassifier myPShapeClassifier;
+  TopOpeBRep_ShapeIntersector myShapeIntersector;
+  TopOpeBRep_ShapeIntersector2d myShapeIntersector2d;
+  TopOpeBRep_FacesFiller myFacesFiller;
+  TopOpeBRep_EdgesFiller myEdgesFiller;
+  TopOpeBRep_FaceEdgeFiller myFaceEdgeFiller;
+  TopOpeBRepTool_PShapeClassifier myPShapeClassifier;
 
 
 };
@@ -173,7 +160,6 @@ TopOpeBRepTool_PShapeClassifier myPShapeClassifier;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRep_DSFiller_HeaderFile

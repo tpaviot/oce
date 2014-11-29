@@ -6,25 +6,13 @@
 #ifndef _IntAna_ListIteratorOfListOfCurve_HeaderFile
 #define _IntAna_ListIteratorOfListOfCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_IntAna_ListNodeOfListOfCurve_HeaderFile
 #include <Handle_IntAna_ListNodeOfListOfCurve.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class IntAna_ListOfCurve;
@@ -33,27 +21,27 @@ class IntAna_ListNodeOfListOfCurve;
 
 
 
-class IntAna_ListIteratorOfListOfCurve  {
+class IntAna_ListIteratorOfListOfCurve 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntAna_ListIteratorOfListOfCurve();
+  Standard_EXPORT IntAna_ListIteratorOfListOfCurve();
   
-  Standard_EXPORT   IntAna_ListIteratorOfListOfCurve(const IntAna_ListOfCurve& L);
+  Standard_EXPORT IntAna_ListIteratorOfListOfCurve(const IntAna_ListOfCurve& L);
   
-  Standard_EXPORT     void Initialize(const IntAna_ListOfCurve& L) ;
+  Standard_EXPORT   void Initialize (const IntAna_ListOfCurve& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     IntAna_Curve& Value() const;
+  Standard_EXPORT   IntAna_Curve& Value()  const;
 
 
 friend class IntAna_ListOfCurve;
-
 
 
 protected:
@@ -66,8 +54,8 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
@@ -97,7 +85,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntAna_ListIteratorOfListOfCurve_HeaderFile

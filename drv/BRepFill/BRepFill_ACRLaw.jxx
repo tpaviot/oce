@@ -1,12 +1,4 @@
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _TopoDS_Wire_HeaderFile
 #include <TopoDS_Wire.hxx>
-#endif
-#ifndef _GeomFill_LocationGuide_HeaderFile
 #include <GeomFill_LocationGuide.hxx>
-#endif
-#ifndef _BRepFill_ACRLaw_HeaderFile
 #include <BRepFill_ACRLaw.hxx>
-#endif

@@ -6,15 +6,14 @@
 #ifndef _Vrml_FontStyleFamily_HeaderFile
 #define _Vrml_FontStyleFamily_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Vrml_FontStyleFamily {
+
+enum Vrml_FontStyleFamily
+{
 Vrml_SERIF,
 Vrml_SANS,
 Vrml_TYPEWRITER
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Vrml_FontStyleFamily_HeaderFile

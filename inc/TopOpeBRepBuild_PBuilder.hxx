@@ -7,7 +7,6 @@
 #define _TopOpeBRepBuild_PBuilder_HeaderFile
 
 class TopOpeBRepBuild_Builder;
-
 typedef TopOpeBRepBuild_Builder* TopOpeBRepBuild_PBuilder;
 
-#endif
+#endif // _TopOpeBRepBuild_PBuilder_HeaderFile

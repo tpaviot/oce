@@ -6,18 +6,17 @@
 #ifndef _AIS_DisplayMode_HeaderFile
 #define _AIS_DisplayMode_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-//! Sets display modes other than neutral point ones, <br>
-//! for interactive objects. The possibilities include: <br>
-//! -   wireframe, <br>
-//! -   shaded, <br>
-enum AIS_DisplayMode {
+
+//! Sets display modes other than neutral point ones,
+//! for interactive objects. The possibilities include:
+//! -   wireframe,
+//! -   shaded,
+enum AIS_DisplayMode
+{
 AIS_WireFrame,
 AIS_Shaded
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _AIS_DisplayMode_HeaderFile

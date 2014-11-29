@@ -6,28 +6,14 @@
 #ifndef _StepFEA_Array1OfCurveElementEndOffset_HeaderFile
 #define _StepFEA_Array1OfCurveElementEndOffset_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepFEA_CurveElementEndOffset_HeaderFile
 #include <Handle_StepFEA_CurveElementEndOffset.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -36,52 +22,52 @@ class StepFEA_CurveElementEndOffset;
 
 
 
-class StepFEA_Array1OfCurveElementEndOffset  {
+class StepFEA_Array1OfCurveElementEndOffset 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      StepFEA_Array1OfCurveElementEndOffset(const Standard_Integer Low,const Standard_Integer Up);
+    StepFEA_Array1OfCurveElementEndOffset(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepFEA_Array1OfCurveElementEndOffset(const Handle(StepFEA_CurveElementEndOffset)& Item,const Standard_Integer Low,const Standard_Integer Up);
+    StepFEA_Array1OfCurveElementEndOffset(const Handle(StepFEA_CurveElementEndOffset)& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const Handle(StepFEA_CurveElementEndOffset)& V) ;
+  Standard_EXPORT   void Init (const Handle(StepFEA_CurveElementEndOffset)& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~StepFEA_Array1OfCurveElementEndOffset()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const StepFEA_Array1OfCurveElementEndOffset& Assign(const StepFEA_Array1OfCurveElementEndOffset& Other) ;
-   const StepFEA_Array1OfCurveElementEndOffset& operator =(const StepFEA_Array1OfCurveElementEndOffset& Other) 
+  Standard_EXPORT  const  StepFEA_Array1OfCurveElementEndOffset& Assign (const StepFEA_Array1OfCurveElementEndOffset& Other) ;
+ const  StepFEA_Array1OfCurveElementEndOffset& operator = (const StepFEA_Array1OfCurveElementEndOffset& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(StepFEA_CurveElementEndOffset)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(StepFEA_CurveElementEndOffset)& Value) ;
   
-       const Handle_StepFEA_CurveElementEndOffset& Value(const Standard_Integer Index) const;
-     const Handle_StepFEA_CurveElementEndOffset& operator ()(const Standard_Integer Index) const
+     const  Handle(StepFEA_CurveElementEndOffset)& Value (const Standard_Integer Index)  const;
+   const  Handle(StepFEA_CurveElementEndOffset)& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        Handle_StepFEA_CurveElementEndOffset& ChangeValue(const Standard_Integer Index) ;
-      Handle_StepFEA_CurveElementEndOffset& operator ()(const Standard_Integer Index) 
+      Handle(StepFEA_CurveElementEndOffset)& ChangeValue (const Standard_Integer Index) ;
+    Handle(StepFEA_CurveElementEndOffset)& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -95,18 +81,18 @@ protected:
 private:
 
   
-  Standard_EXPORT   StepFEA_Array1OfCurveElementEndOffset(const StepFEA_Array1OfCurveElementEndOffset& AnArray);
+  Standard_EXPORT StepFEA_Array1OfCurveElementEndOffset(const StepFEA_Array1OfCurveElementEndOffset& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
 
-#define Array1Item Handle_StepFEA_CurveElementEndOffset
+#define Array1Item Handle(StepFEA_CurveElementEndOffset)
 #define Array1Item_hxx <StepFEA_CurveElementEndOffset.hxx>
 #define TCollection_Array1 StepFEA_Array1OfCurveElementEndOffset
 #define TCollection_Array1_hxx <StepFEA_Array1OfCurveElementEndOffset.hxx>
@@ -119,7 +105,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_Array1OfCurveElementEndOffset_HeaderFile

@@ -14,34 +14,16 @@
 
 #ifndef _Handle_Standard_Transient_HeaderFile
 #define _Handle_Standard_Transient_HeaderFile
-#ifndef _Standard_HeaderFile
+
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
-#include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
 #include <Standard_PrimitiveTypes.hxx>
-#endif
-#ifndef _Standard_Transient_proto_HeaderFile
 #include <Standard_Transient_proto.hxx>
-#endif
 
 #ifdef _MSC_VER
 // Disable the warning "conversion from 'unsigned int' to Standard_Transient *"
 #pragma warning (push)
 #pragma warning (disable:4312)
-#endif
-
-#ifndef UndefinedHandleAddress 
-#ifdef _OCC64
-#define UndefinedHandleAddress ((Standard_Transient *)0xfefdfefdfefd0000ull)
-#else
-#define UndefinedHandleAddress ((Standard_Transient *)0xfefd0000)
-#endif
 #endif
 
 class Handle_Standard_Transient;
@@ -60,17 +42,18 @@ Standard_EXPORT Standard_Integer HashCode(const Handle(Standard_Transient)& ,con
 class Handle(Standard_Transient)
 {
 public:
+  
   // Public methods
   
   //! Empty constructor
   Handle(Standard_Transient) () 
-    : entity(UndefinedHandleAddress) 
+    : entity(0) 
   {
   }
 
   //! Constructor from pointer to new object
   Handle(Standard_Transient) (const Standard_Transient *anItem)
-    : entity ( anItem ? (Standard_Transient*)anItem : UndefinedHandleAddress )
+    : entity ( (Standard_Transient*)anItem )
   {
     BeginScope();
   }
@@ -83,7 +66,7 @@ public:
   } 
 
   //! Destructor
-  Standard_EXPORT ~Handle(Standard_Transient)()
+  ~Handle(Standard_Transient)()
   {
     EndScope();
   }
@@ -111,7 +94,7 @@ public:
   //! Check for being null
   Standard_Boolean IsNull() const
   {
-    return entity == UndefinedHandleAddress;
+    return entity == 0;
   } 
 
   //! Returns pointer to referred object
@@ -169,25 +152,25 @@ public:
   }
 
   //! Check for equality
-  friend Standard_Boolean operator==(const Standard_Transient *left, const Handle(Standard_Transient)& right)
+  friend bool operator==(const Standard_Transient *left, const Handle(Standard_Transient)& right)
   {
     return left == right.entity;
   }
 
   //! Check for inequality
-  Standard_Boolean operator!=(const Handle(Standard_Transient)& right) const
+  bool operator!=(const Handle(Standard_Transient)& right) const
   {
     return entity != right.entity;
   }
 
   //! Check for inequality
-  Standard_Boolean operator!=(const Standard_Transient *right) const
+  bool operator!=(const Standard_Transient *right) const
   {
     return entity != right;
   }
 
   //! Check for inequality
-  friend Standard_Boolean operator!=(const Standard_Transient *left, const Handle(Standard_Transient)& right)
+  friend bool operator!=(const Standard_Transient *left, const Handle(Standard_Transient)& right)
   {
     return left != right.entity;
   }

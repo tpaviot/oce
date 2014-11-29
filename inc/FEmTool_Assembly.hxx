@@ -6,43 +6,19 @@
 #ifndef _FEmTool_Assembly_HeaderFile
 #define _FEmTool_Assembly_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TColStd_Array2OfInteger_HeaderFile
 #include <TColStd_Array2OfInteger.hxx>
-#endif
-#ifndef _Handle_FEmTool_HAssemblyTable_HeaderFile
 #include <Handle_FEmTool_HAssemblyTable.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_FEmTool_ProfileMatrix_HeaderFile
 #include <Handle_FEmTool_ProfileMatrix.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
 #include <math_Vector.hxx>
-#endif
-#ifndef _FEmTool_SeqOfLinConstr_HeaderFile
 #include <FEmTool_SeqOfLinConstr.hxx>
-#endif
-#ifndef _TColStd_SequenceOfReal_HeaderFile
 #include <TColStd_SequenceOfReal.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class FEmTool_HAssemblyTable;
 class FEmTool_ProfileMatrix;
 class StdFail_NotDone;
@@ -50,42 +26,48 @@ class Standard_DimensionError;
 class Standard_DomainError;
 class TColStd_Array2OfInteger;
 class math_Matrix;
-class math_Vector;
 
 
-//! Assemble and solve system from (one dimensional) Finite Elements <br>
-class FEmTool_Assembly  {
+//! Assemble and solve system from (one dimensional) Finite Elements
+class FEmTool_Assembly 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   FEmTool_Assembly(const TColStd_Array2OfInteger& Dependence,const Handle(FEmTool_HAssemblyTable)& Table);
-  //! Nullify all Matrix 's Coefficient <br>
-  Standard_EXPORT     void NullifyMatrix() ;
-  //! Add an elementary Matrix in the assembly Matrix <br>
-//!  if  Dependence(Dimension1,Dimension2)  is  False <br>
-  Standard_EXPORT     void AddMatrix(const Standard_Integer Element,const Standard_Integer Dimension1,const Standard_Integer Dimension2,const math_Matrix& Mat) ;
-  //!  Nullify  all  Coordinate of  assembly  Vector (second member) <br>
-  Standard_EXPORT     void NullifyVector() ;
-  //! Add an elementary Vector in the assembly Vector (second member) <br>
-  Standard_EXPORT     void AddVector(const Standard_Integer Element,const Standard_Integer Dimension,const math_Vector& Vec) ;
-  //! Delete all Constraints. <br>
-  Standard_EXPORT     void ResetConstraint() ;
-  //! Nullify all Constraints. <br>
-  Standard_EXPORT     void NullifyConstraint() ;
+  Standard_EXPORT FEmTool_Assembly(const TColStd_Array2OfInteger& Dependence, const Handle(FEmTool_HAssemblyTable)& Table);
   
-  Standard_EXPORT     void AddConstraint(const Standard_Integer IndexofConstraint,const Standard_Integer Element,const Standard_Integer Dimension,const math_Vector& LinearForm,const Standard_Real Value) ;
-  //! Solve the assembly system <br>
-//!          Returns Standard_False if the computation failed. <br>
-  Standard_EXPORT     Standard_Boolean Solve() ;
+  //! Nullify all Matrix 's Coefficient
+  Standard_EXPORT   void NullifyMatrix() ;
   
-  Standard_EXPORT     void Solution(math_Vector& Solution) const;
+  //! Add an elementary Matrix in the assembly Matrix
+  //! if  Dependence(Dimension1,Dimension2)  is  False
+  Standard_EXPORT   void AddMatrix (const Standard_Integer Element, const Standard_Integer Dimension1, const Standard_Integer Dimension2, const math_Matrix& Mat) ;
   
-  Standard_EXPORT     Standard_Integer NbGlobVar() const;
+  //! Nullify  all  Coordinate of  assembly  Vector (second member)
+  Standard_EXPORT   void NullifyVector() ;
   
-  Standard_EXPORT     void GetAssemblyTable(Handle(FEmTool_HAssemblyTable)& AssTable) const;
-
+  //! Add an elementary Vector in the assembly Vector (second member)
+  Standard_EXPORT   void AddVector (const Standard_Integer Element, const Standard_Integer Dimension, const math_Vector& Vec) ;
+  
+  //! Delete all Constraints.
+  Standard_EXPORT   void ResetConstraint() ;
+  
+  //! Nullify all Constraints.
+  Standard_EXPORT   void NullifyConstraint() ;
+  
+  Standard_EXPORT   void AddConstraint (const Standard_Integer IndexofConstraint, const Standard_Integer Element, const Standard_Integer Dimension, const math_Vector& LinearForm, const Standard_Real Value) ;
+  
+  //! Solve the assembly system
+  //! Returns Standard_False if the computation failed.
+  Standard_EXPORT   Standard_Boolean Solve() ;
+  
+  Standard_EXPORT   void Solution (math_Vector& Solution)  const;
+  
+  Standard_EXPORT   Standard_Integer NbGlobVar()  const;
+  
+  Standard_EXPORT   void GetAssemblyTable (Handle(FEmTool_HAssemblyTable)& AssTable)  const;
 
 
 
@@ -100,14 +82,14 @@ private:
 
 
 
-TColStd_Array2OfInteger myDepTable;
-Handle_FEmTool_HAssemblyTable myRefTable;
-Standard_Boolean IsSolved;
-Handle_FEmTool_ProfileMatrix H;
-math_Vector B;
-Handle_FEmTool_ProfileMatrix GHGt;
-FEmTool_SeqOfLinConstr G;
-TColStd_SequenceOfReal C;
+  TColStd_Array2OfInteger myDepTable;
+  Handle(FEmTool_HAssemblyTable) myRefTable;
+  Standard_Boolean IsSolved;
+  Handle(FEmTool_ProfileMatrix) H;
+  math_Vector B;
+  Handle(FEmTool_ProfileMatrix) GHGt;
+  FEmTool_SeqOfLinConstr G;
+  TColStd_SequenceOfReal C;
 
 
 };
@@ -116,7 +98,6 @@ TColStd_SequenceOfReal C;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _FEmTool_Assembly_HeaderFile

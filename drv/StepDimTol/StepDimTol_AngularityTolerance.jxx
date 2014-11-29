@@ -1,3 +1,1 @@
-#ifndef _StepDimTol_AngularityTolerance_HeaderFile
 #include <StepDimTol_AngularityTolerance.hxx>
-#endif

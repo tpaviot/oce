@@ -6,31 +6,15 @@
 #ifndef _TDataXtd_Position_HeaderFile
 #define _TDataXtd_Position_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDataXtd_Position_HeaderFile
 #include <Handle_TDataXtd_Position.hxx>
-#endif
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
-#ifndef _Handle_TDF_RelocationTable_HeaderFile
 #include <Handle_TDF_RelocationTable.hxx>
-#endif
 class TDF_Label;
 class gp_Pnt;
 class Standard_GUID;
@@ -38,44 +22,52 @@ class TDF_Attribute;
 class TDF_RelocationTable;
 
 
-//! Position of a Label <br>
-class TDataXtd_Position : public TDF_Attribute {
+//! Position of a Label
+class TDataXtd_Position : public TDF_Attribute
+{
 
 public:
 
-  //! Create if not found the TDataXtd_Position attribute set its position to <aPos> <br>
-  Standard_EXPORT   static  void Set(const TDF_Label& aLabel,const gp_Pnt& aPos) ;
-  //! Find an existing, or create an empty, Position. <br>
-//!            the Position attribute is returned. <br>
-  Standard_EXPORT   static  Handle_TDataXtd_Position Set(const TDF_Label& aLabel) ;
-  //! Search label <aLabel) for the TDataXtd_Position attribute and get its position <br>
-//!          if found returns True <br>
-  Standard_EXPORT   static  Standard_Boolean Get(const TDF_Label& aLabel,gp_Pnt& aPos) ;
   
-  Standard_EXPORT   TDataXtd_Position();
-  //! Returns the ID of the attribute. <br>
-  Standard_EXPORT    const Standard_GUID& ID() const;
-  //! Returns the ID of the attribute. <br>
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
-  //! Restores the contents from <anAttribute> into this <br>
-//!          one. It is used when aborting a transaction. <br>
-//! <br>
-  Standard_EXPORT   virtual  void Restore(const Handle(TDF_Attribute)& anAttribute) ;
-  //! Returns an new empty attribute from the good end <br>
-//!          type. It is used by the copy algorithm. <br>
-  Standard_EXPORT   virtual  Handle_TDF_Attribute NewEmpty() const;
-  //! This method is different from the "Copy" one, <br>
-//!          because it is used when copying an attribute from <br>
-//!          a source structure into a target structure. This <br>
-//!          method pastes the current attribute to the label <br>
-//!          corresponding to the insertor. The pasted <br>
-//!          attribute may be a brand new one or a new version <br>
-//!          of the previous one. <br>
-  Standard_EXPORT   virtual  void Paste(const Handle(TDF_Attribute)& intoAttribute,const Handle(TDF_RelocationTable)& aRelocTationable) const;
+  //! Create if not found the TDataXtd_Position attribute set its position to <aPos>
+  Standard_EXPORT static   void Set (const TDF_Label& aLabel, const gp_Pnt& aPos) ;
   
-  Standard_EXPORT    const gp_Pnt& GetPosition() const;
+  //! Find an existing, or create an empty, Position.
+  //! the Position attribute is returned.
+  Standard_EXPORT static   Handle(TDataXtd_Position) Set (const TDF_Label& aLabel) ;
   
-  Standard_EXPORT     void SetPosition(const gp_Pnt& aPos) ;
+  //! Search label <aLabel) for the TDataXtd_Position attribute and get its position
+  //! if found returns True
+  Standard_EXPORT static   Standard_Boolean Get (const TDF_Label& aLabel, gp_Pnt& aPos) ;
+  
+  Standard_EXPORT TDataXtd_Position();
+  
+  //! Returns the ID of the attribute.
+  Standard_EXPORT  const  Standard_GUID& ID()  const;
+  
+  //! Returns the ID of the attribute.
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
+  
+  //! Restores the contents from <anAttribute> into this
+  //! one. It is used when aborting a transaction.
+  Standard_EXPORT virtual   void Restore (const Handle(TDF_Attribute)& anAttribute) ;
+  
+  //! Returns an new empty attribute from the good end
+  //! type. It is used by the copy algorithm.
+  Standard_EXPORT virtual   Handle(TDF_Attribute) NewEmpty()  const;
+  
+  //! This method is different from the "Copy" one,
+  //! because it is used when copying an attribute from
+  //! a source structure into a target structure. This
+  //! method pastes the current attribute to the label
+  //! corresponding to the insertor. The pasted
+  //! attribute may be a brand new one or a new version
+  //! of the previous one.
+  Standard_EXPORT virtual   void Paste (const Handle(TDF_Attribute)& intoAttribute, const Handle(TDF_RelocationTable)& aRelocTationable)  const;
+  
+  Standard_EXPORT  const  gp_Pnt& GetPosition()  const;
+  
+  Standard_EXPORT   void SetPosition (const gp_Pnt& aPos) ;
 
 
 
@@ -90,7 +82,7 @@ protected:
 private: 
 
 
-gp_Pnt myPosition;
+  gp_Pnt myPosition;
 
 
 };
@@ -99,7 +91,6 @@ gp_Pnt myPosition;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataXtd_Position_HeaderFile

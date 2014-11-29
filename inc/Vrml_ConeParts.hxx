@@ -6,15 +6,14 @@
 #ifndef _Vrml_ConeParts_HeaderFile
 #define _Vrml_ConeParts_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Vrml_ConeParts {
+
+enum Vrml_ConeParts
+{
 Vrml_ConeSIDES,
 Vrml_ConeBOTTOM,
 Vrml_ConeALL
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Vrml_ConeParts_HeaderFile

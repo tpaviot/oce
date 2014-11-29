@@ -1,15 +1,5 @@
-#ifndef _StepShape_OpenShell_HeaderFile
 #include <StepShape_OpenShell.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepShape_HArray1OfFace_HeaderFile
 #include <StepShape_HArray1OfFace.hxx>
-#endif
-#ifndef _StepShape_Face_HeaderFile
 #include <StepShape_Face.hxx>
-#endif
-#ifndef _StepShape_OrientedOpenShell_HeaderFile
 #include <StepShape_OrientedOpenShell.hxx>
-#endif

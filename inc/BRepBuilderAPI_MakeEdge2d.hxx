@@ -6,34 +6,16 @@
 #ifndef _BRepBuilderAPI_MakeEdge2d_HeaderFile
 #define _BRepBuilderAPI_MakeEdge2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepLib_MakeEdge2d_HeaderFile
 #include <BRepLib_MakeEdge2d.hxx>
-#endif
-#ifndef _BRepBuilderAPI_MakeShape_HeaderFile
 #include <BRepBuilderAPI_MakeShape.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _BRepBuilderAPI_EdgeError_HeaderFile
 #include <BRepBuilderAPI_EdgeError.hxx>
-#endif
 class StdFail_NotDone;
 class TopoDS_Vertex;
 class gp_Pnt2d;
@@ -46,124 +28,125 @@ class Geom2d_Curve;
 class TopoDS_Edge;
 
 
-//! Provides methods to build edges. <br>
-//! <br>
-//!          The   methods have  the  following   syntax, where <br>
-//!          TheCurve is one of Lin2d, Circ2d, ... <br>
-//! <br>
-//!          Create(C : TheCurve) <br>
-//! <br>
-//!            Makes an edge on  the whole curve.  Add vertices <br>
-//!            on finite curves. <br>
-//! <br>
-//!          Create(C : TheCurve; p1,p2 : Real) <br>
-//! <br>
-//!            Make an edge  on the curve between parameters p1 <br>
-//!            and p2. if p2 < p1 the edge will be REVERSED. If <br>
-//!            p1  or p2 is infinite the  curve will be open in <br>
-//!            that  direction. Vertices are created for finite <br>
-//!            values of p1 and p2. <br>
-//! <br>
-//!          Create(C : TheCurve; P1, P2 : Pnt2d from gp) <br>
-//! <br>
-//!            Make an edge on the curve  between the points P1 <br>
-//!            and P2. The  points are projected on   the curve <br>
-//!            and the   previous method is  used. An  error is <br>
-//!            raised if the points are not on the curve. <br>
-//! <br>
-//!          Create(C : TheCurve; V1, V2 : Vertex from TopoDS) <br>
-//! <br>
-//!            Make an edge  on the curve  between the vertices <br>
-//!            V1 and V2. Same as the  previous but no vertices <br>
-//!            are created. If a vertex is  Null the curve will <br>
-//!            be open in this direction. <br>
-class BRepBuilderAPI_MakeEdge2d  : public BRepBuilderAPI_MakeShape {
+//! Provides methods to build edges.
+//!
+//! The   methods have  the  following   syntax, where
+//! TheCurve is one of Lin2d, Circ2d, ...
+//!
+//! Create(C : TheCurve)
+//!
+//! Makes an edge on  the whole curve.  Add vertices
+//! on finite curves.
+//!
+//! Create(C : TheCurve; p1,p2 : Real)
+//!
+//! Make an edge  on the curve between parameters p1
+//! and p2. if p2 < p1 the edge will be REVERSED. If
+//! p1  or p2 is infinite the  curve will be open in
+//! that  direction. Vertices are created for finite
+//! values of p1 and p2.
+//!
+//! Create(C : TheCurve; P1, P2 : Pnt2d from gp)
+//!
+//! Make an edge on the curve  between the points P1
+//! and P2. The  points are projected on   the curve
+//! and the   previous method is  used. An  error is
+//! raised if the points are not on the curve.
+//!
+//! Create(C : TheCurve; V1, V2 : Vertex from TopoDS)
+//!
+//! Make an edge  on the curve  between the vertices
+//! V1 and V2. Same as the  previous but no vertices
+//! are created. If a vertex is  Null the curve will
+//! be open in this direction.
+class BRepBuilderAPI_MakeEdge2d  : public BRepBuilderAPI_MakeShape
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const TopoDS_Vertex& V1,const TopoDS_Vertex& V2);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const TopoDS_Vertex& V1, const TopoDS_Vertex& V2);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const gp_Pnt2d& P1,const gp_Pnt2d& P2);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const gp_Pnt2d& P1, const gp_Pnt2d& P2);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const gp_Lin2d& L);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const gp_Lin2d& L);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const gp_Lin2d& L,const Standard_Real p1,const Standard_Real p2);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const gp_Lin2d& L, const Standard_Real p1, const Standard_Real p2);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const gp_Lin2d& L,const gp_Pnt2d& P1,const gp_Pnt2d& P2);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const gp_Lin2d& L, const gp_Pnt2d& P1, const gp_Pnt2d& P2);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const gp_Lin2d& L,const TopoDS_Vertex& V1,const TopoDS_Vertex& V2);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const gp_Lin2d& L, const TopoDS_Vertex& V1, const TopoDS_Vertex& V2);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const gp_Circ2d& L);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const gp_Circ2d& L);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const gp_Circ2d& L,const Standard_Real p1,const Standard_Real p2);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const gp_Circ2d& L, const Standard_Real p1, const Standard_Real p2);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const gp_Circ2d& L,const gp_Pnt2d& P1,const gp_Pnt2d& P2);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const gp_Circ2d& L, const gp_Pnt2d& P1, const gp_Pnt2d& P2);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const gp_Circ2d& L,const TopoDS_Vertex& V1,const TopoDS_Vertex& V2);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const gp_Circ2d& L, const TopoDS_Vertex& V1, const TopoDS_Vertex& V2);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const gp_Elips2d& L);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const gp_Elips2d& L);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const gp_Elips2d& L,const Standard_Real p1,const Standard_Real p2);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const gp_Elips2d& L, const Standard_Real p1, const Standard_Real p2);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const gp_Elips2d& L,const gp_Pnt2d& P1,const gp_Pnt2d& P2);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const gp_Elips2d& L, const gp_Pnt2d& P1, const gp_Pnt2d& P2);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const gp_Elips2d& L,const TopoDS_Vertex& V1,const TopoDS_Vertex& V2);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const gp_Elips2d& L, const TopoDS_Vertex& V1, const TopoDS_Vertex& V2);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const gp_Hypr2d& L);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const gp_Hypr2d& L);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const gp_Hypr2d& L,const Standard_Real p1,const Standard_Real p2);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const gp_Hypr2d& L, const Standard_Real p1, const Standard_Real p2);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const gp_Hypr2d& L,const gp_Pnt2d& P1,const gp_Pnt2d& P2);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const gp_Hypr2d& L, const gp_Pnt2d& P1, const gp_Pnt2d& P2);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const gp_Hypr2d& L,const TopoDS_Vertex& V1,const TopoDS_Vertex& V2);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const gp_Hypr2d& L, const TopoDS_Vertex& V1, const TopoDS_Vertex& V2);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const gp_Parab2d& L);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const gp_Parab2d& L);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const gp_Parab2d& L,const Standard_Real p1,const Standard_Real p2);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const gp_Parab2d& L, const Standard_Real p1, const Standard_Real p2);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const gp_Parab2d& L,const gp_Pnt2d& P1,const gp_Pnt2d& P2);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const gp_Parab2d& L, const gp_Pnt2d& P1, const gp_Pnt2d& P2);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const gp_Parab2d& L,const TopoDS_Vertex& V1,const TopoDS_Vertex& V2);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const gp_Parab2d& L, const TopoDS_Vertex& V1, const TopoDS_Vertex& V2);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const Handle(Geom2d_Curve)& L);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const Handle(Geom2d_Curve)& L);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const Handle(Geom2d_Curve)& L,const Standard_Real p1,const Standard_Real p2);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const Handle(Geom2d_Curve)& L, const Standard_Real p1, const Standard_Real p2);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const Handle(Geom2d_Curve)& L,const gp_Pnt2d& P1,const gp_Pnt2d& P2);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const Handle(Geom2d_Curve)& L, const gp_Pnt2d& P1, const gp_Pnt2d& P2);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const Handle(Geom2d_Curve)& L,const TopoDS_Vertex& V1,const TopoDS_Vertex& V2);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const Handle(Geom2d_Curve)& L, const TopoDS_Vertex& V1, const TopoDS_Vertex& V2);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const Handle(Geom2d_Curve)& L,const gp_Pnt2d& P1,const gp_Pnt2d& P2,const Standard_Real p1,const Standard_Real p2);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const Handle(Geom2d_Curve)& L, const gp_Pnt2d& P1, const gp_Pnt2d& P2, const Standard_Real p1, const Standard_Real p2);
   
-  Standard_EXPORT   BRepBuilderAPI_MakeEdge2d(const Handle(Geom2d_Curve)& L,const TopoDS_Vertex& V1,const TopoDS_Vertex& V2,const Standard_Real p1,const Standard_Real p2);
+  Standard_EXPORT BRepBuilderAPI_MakeEdge2d(const Handle(Geom2d_Curve)& L, const TopoDS_Vertex& V1, const TopoDS_Vertex& V2, const Standard_Real p1, const Standard_Real p2);
   
-  Standard_EXPORT     void Init(const Handle(Geom2d_Curve)& C) ;
+  Standard_EXPORT   void Init (const Handle(Geom2d_Curve)& C) ;
   
-  Standard_EXPORT     void Init(const Handle(Geom2d_Curve)& C,const Standard_Real p1,const Standard_Real p2) ;
+  Standard_EXPORT   void Init (const Handle(Geom2d_Curve)& C, const Standard_Real p1, const Standard_Real p2) ;
   
-  Standard_EXPORT     void Init(const Handle(Geom2d_Curve)& C,const gp_Pnt2d& P1,const gp_Pnt2d& P2) ;
+  Standard_EXPORT   void Init (const Handle(Geom2d_Curve)& C, const gp_Pnt2d& P1, const gp_Pnt2d& P2) ;
   
-  Standard_EXPORT     void Init(const Handle(Geom2d_Curve)& C,const TopoDS_Vertex& V1,const TopoDS_Vertex& V2) ;
+  Standard_EXPORT   void Init (const Handle(Geom2d_Curve)& C, const TopoDS_Vertex& V1, const TopoDS_Vertex& V2) ;
   
-  Standard_EXPORT     void Init(const Handle(Geom2d_Curve)& C,const gp_Pnt2d& P1,const gp_Pnt2d& P2,const Standard_Real p1,const Standard_Real p2) ;
+  Standard_EXPORT   void Init (const Handle(Geom2d_Curve)& C, const gp_Pnt2d& P1, const gp_Pnt2d& P2, const Standard_Real p1, const Standard_Real p2) ;
   
-  Standard_EXPORT     void Init(const Handle(Geom2d_Curve)& C,const TopoDS_Vertex& V1,const TopoDS_Vertex& V2,const Standard_Real p1,const Standard_Real p2) ;
+  Standard_EXPORT   void Init (const Handle(Geom2d_Curve)& C, const TopoDS_Vertex& V1, const TopoDS_Vertex& V2, const Standard_Real p1, const Standard_Real p2) ;
   
-  Standard_EXPORT   virtual  Standard_Boolean IsDone() const;
-  //! Returns the error description when NotDone. <br>
-  Standard_EXPORT     BRepBuilderAPI_EdgeError Error() const;
+  Standard_EXPORT virtual   Standard_Boolean IsDone()  const;
   
-  Standard_EXPORT    const TopoDS_Edge& Edge() const;
+  //! Returns the error description when NotDone.
+  Standard_EXPORT   BRepBuilderAPI_EdgeError Error()  const;
+  
+  Standard_EXPORT  const  TopoDS_Edge& Edge()  const;
 Standard_EXPORT operator TopoDS_Edge() const;
-  //! Returns the first vertex of the edge. May be Null. <br>
-//! <br>
-  Standard_EXPORT    const TopoDS_Vertex& Vertex1() const;
-  //! Returns the second vertex of the edge. May be Null. <br>
-//! <br>
-  Standard_EXPORT    const TopoDS_Vertex& Vertex2() const;
-
+  
+  //! Returns the first vertex of the edge. May be Null.
+  Standard_EXPORT  const  TopoDS_Vertex& Vertex1()  const;
+  
+  //! Returns the second vertex of the edge. May be Null.
+  Standard_EXPORT  const  TopoDS_Vertex& Vertex2()  const;
 
 
 
@@ -178,7 +161,7 @@ private:
 
 
 
-BRepLib_MakeEdge2d myMakeEdge2d;
+  BRepLib_MakeEdge2d myMakeEdge2d;
 
 
 };
@@ -187,7 +170,6 @@ BRepLib_MakeEdge2d myMakeEdge2d;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepBuilderAPI_MakeEdge2d_HeaderFile

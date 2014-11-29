@@ -6,15 +6,9 @@
 #ifndef _ProjLib_HeaderFile
 #define _ProjLib_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
 class gp_Pnt2d;
 class gp_Pln;
@@ -54,78 +48,77 @@ class ProjLib_Torus;
 class ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt;
 
 
-//! The  projLib package  first provides projection of <br>
-//!          curves on a   plane along a  given Direction.  The <br>
-//!          result will be a 3D curve. <br>//! The ProjLib package  provides projection of curves <br>
-//!          on surfaces to compute the curve in the parametric <br>
-//!          space. <br>
-//! <br>
-//!          It is assumed that the curve is on the surface. <br>
-//! <br>
-//!          It provides : <br>
-//! <br>
-//!          * Package methods to handle the easiest cases : <br>
-//! <br>
-//!            - Line, Circle, Ellipse, Parabola, Hyperbola on plane. <br>
-//! <br>
-//!            - Line, Circle on cylinder. <br>
-//! <br>
-//!            - Line, Circle on cone. <br>
-//! <br>
-//!          * Classes to handle the general cases : <br>
-//! <br>
-//!            - Plane. <br>
-//! <br>
-//!            - Cylinder. <br>
-//! <br>
-//!            - Cone. <br>
-//! <br>
-//!            - Sphere. <br>
-//! <br>
-//!            - Torus. <br>
-//! <br>
-//! <br>
-//!          * A generic  class to handle  a Curve from Adaptor3d <br>
-//!          on a Surface from Adaptor3d. <br>
-//! <br>
-class ProjLib  {
+//! The  projLib package  first provides projection of
+//! curves on a   plane along a  given Direction.  The
+//! result will be a 3D curve.
+//! The ProjLib package  provides projection of curves
+//! on surfaces to compute the curve in the parametric
+//! space.
+//!
+//! It is assumed that the curve is on the surface.
+//!
+//! It provides :
+//!
+//! * Package methods to handle the easiest cases :
+//!
+//! - Line, Circle, Ellipse, Parabola, Hyperbola on plane.
+//!
+//! - Line, Circle on cylinder.
+//!
+//! - Line, Circle on cone.
+//!
+//! * Classes to handle the general cases :
+//!
+//! - Plane.
+//!
+//! - Cylinder.
+//!
+//! - Cone.
+//!
+//! - Sphere.
+//!
+//! - Torus.
+//!
+//! * A generic  class to handle  a Curve from Adaptor3d
+//! on a Surface from Adaptor3d.
+class ProjLib 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Projection on a torus. <br>
-  Standard_EXPORT   static  gp_Pnt2d Project(const gp_Pln& Pl,const gp_Pnt& P) ;
   
-  Standard_EXPORT   static  gp_Lin2d Project(const gp_Pln& Pl,const gp_Lin& L) ;
+  Standard_EXPORT static   gp_Pnt2d Project (const gp_Pln& Pl, const gp_Pnt& P) ;
   
-  Standard_EXPORT   static  gp_Circ2d Project(const gp_Pln& Pl,const gp_Circ& C) ;
+  Standard_EXPORT static   gp_Lin2d Project (const gp_Pln& Pl, const gp_Lin& L) ;
   
-  Standard_EXPORT   static  gp_Elips2d Project(const gp_Pln& Pl,const gp_Elips& E) ;
+  Standard_EXPORT static   gp_Circ2d Project (const gp_Pln& Pl, const gp_Circ& C) ;
   
-  Standard_EXPORT   static  gp_Parab2d Project(const gp_Pln& Pl,const gp_Parab& P) ;
+  Standard_EXPORT static   gp_Elips2d Project (const gp_Pln& Pl, const gp_Elips& E) ;
   
-  Standard_EXPORT   static  gp_Hypr2d Project(const gp_Pln& Pl,const gp_Hypr& H) ;
+  Standard_EXPORT static   gp_Parab2d Project (const gp_Pln& Pl, const gp_Parab& P) ;
   
-  Standard_EXPORT   static  gp_Pnt2d Project(const gp_Cylinder& Cy,const gp_Pnt& P) ;
+  Standard_EXPORT static   gp_Hypr2d Project (const gp_Pln& Pl, const gp_Hypr& H) ;
   
-  Standard_EXPORT   static  gp_Lin2d Project(const gp_Cylinder& Cy,const gp_Lin& L) ;
+  Standard_EXPORT static   gp_Pnt2d Project (const gp_Cylinder& Cy, const gp_Pnt& P) ;
   
-  Standard_EXPORT   static  gp_Lin2d Project(const gp_Cylinder& Cy,const gp_Circ& Ci) ;
+  Standard_EXPORT static   gp_Lin2d Project (const gp_Cylinder& Cy, const gp_Lin& L) ;
   
-  Standard_EXPORT   static  gp_Pnt2d Project(const gp_Cone& Co,const gp_Pnt& P) ;
+  Standard_EXPORT static   gp_Lin2d Project (const gp_Cylinder& Cy, const gp_Circ& Ci) ;
   
-  Standard_EXPORT   static  gp_Lin2d Project(const gp_Cone& Co,const gp_Lin& L) ;
+  Standard_EXPORT static   gp_Pnt2d Project (const gp_Cone& Co, const gp_Pnt& P) ;
   
-  Standard_EXPORT   static  gp_Lin2d Project(const gp_Cone& Co,const gp_Circ& Ci) ;
+  Standard_EXPORT static   gp_Lin2d Project (const gp_Cone& Co, const gp_Lin& L) ;
   
-  Standard_EXPORT   static  gp_Pnt2d Project(const gp_Sphere& Sp,const gp_Pnt& P) ;
+  Standard_EXPORT static   gp_Lin2d Project (const gp_Cone& Co, const gp_Circ& Ci) ;
   
-  Standard_EXPORT   static  gp_Lin2d Project(const gp_Sphere& Sp,const gp_Circ& Ci) ;
+  Standard_EXPORT static   gp_Pnt2d Project (const gp_Sphere& Sp, const gp_Pnt& P) ;
   
-  Standard_EXPORT   static  gp_Pnt2d Project(const gp_Torus& To,const gp_Pnt& P) ;
+  Standard_EXPORT static   gp_Lin2d Project (const gp_Sphere& Sp, const gp_Circ& Ci) ;
   
-  Standard_EXPORT   static  gp_Lin2d Project(const gp_Torus& To,const gp_Circ& Ci) ;
-
+  Standard_EXPORT static   gp_Pnt2d Project (const gp_Torus& To, const gp_Pnt& P) ;
+  
+  Standard_EXPORT static   gp_Lin2d Project (const gp_Torus& To, const gp_Circ& Ci) ;
 
 
 
@@ -167,7 +160,6 @@ friend class ProjLib_SequenceNodeOfSequenceOfHSequenceOfPnt;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ProjLib_HeaderFile

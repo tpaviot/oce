@@ -5,22 +5,12 @@
 
 #include <TopOpeBRepTool_IndexedDataMapNodeOfIndexedDataMapOfSolidClassifier.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _BRepClass3d_SolidClassifier_HeaderFile
 #include <BRepClass3d_SolidClassifier.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _TopOpeBRepTool_IndexedDataMapOfSolidClassifier_HeaderFile
 #include <TopOpeBRepTool_IndexedDataMapOfSolidClassifier.hxx>
-#endif
 
  
 

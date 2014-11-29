@@ -6,25 +6,13 @@
 #ifndef _BRepCheck_DataMapIteratorOfDataMapOfShapeResult_HeaderFile
 #define _BRepCheck_DataMapIteratorOfDataMapOfShapeResult_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_BRepCheck_Result_HeaderFile
 #include <Handle_BRepCheck_Result.hxx>
-#endif
-#ifndef _Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult_HeaderFile
 #include <Handle_BRepCheck_DataMapNodeOfDataMapOfShapeResult.hxx>
-#endif
 class Standard_NoSuchObject;
 class TopoDS_Shape;
 class BRepCheck_Result;
@@ -34,22 +22,22 @@ class BRepCheck_DataMapNodeOfDataMapOfShapeResult;
 
 
 
-class BRepCheck_DataMapIteratorOfDataMapOfShapeResult  : public TCollection_BasicMapIterator {
+class BRepCheck_DataMapIteratorOfDataMapOfShapeResult  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepCheck_DataMapIteratorOfDataMapOfShapeResult();
+  Standard_EXPORT BRepCheck_DataMapIteratorOfDataMapOfShapeResult();
   
-  Standard_EXPORT   BRepCheck_DataMapIteratorOfDataMapOfShapeResult(const BRepCheck_DataMapOfShapeResult& aMap);
+  Standard_EXPORT BRepCheck_DataMapIteratorOfDataMapOfShapeResult(const BRepCheck_DataMapOfShapeResult& aMap);
   
-  Standard_EXPORT     void Initialize(const BRepCheck_DataMapOfShapeResult& aMap) ;
+  Standard_EXPORT   void Initialize (const BRepCheck_DataMapOfShapeResult& aMap) ;
   
-  Standard_EXPORT    const TopoDS_Shape& Key() const;
+  Standard_EXPORT  const  TopoDS_Shape& Key()  const;
   
-  Standard_EXPORT    const Handle_BRepCheck_Result& Value() const;
-
+  Standard_EXPORT  const  Handle(BRepCheck_Result)& Value()  const;
 
 
 
@@ -72,7 +60,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepCheck_DataMapIteratorOfDataMapOfShapeResult_HeaderFile

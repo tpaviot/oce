@@ -6,38 +6,27 @@
 #ifndef _StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation_HeaderFile
 #define _StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation_HeaderFile
 #include <Handle_StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation.hxx>
-#endif
 
-#ifndef _Handle_StepRepr_MaterialPropertyRepresentation_HeaderFile
 #include <Handle_StepRepr_MaterialPropertyRepresentation.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class StepRepr_MaterialPropertyRepresentation;
 class StepRepr_SequenceOfMaterialPropertyRepresentation;
 
 
 
-class StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation : public TCollection_SeqNode {
+class StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation : public TCollection_SeqNode
+{
 
 public:
 
   
-      StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation(const Handle(StepRepr_MaterialPropertyRepresentation)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation(const Handle(StepRepr_MaterialPropertyRepresentation)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_StepRepr_MaterialPropertyRepresentation& Value() const;
+      Handle(StepRepr_MaterialPropertyRepresentation)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_StepRepr_MaterialPropertyRepresentation myValue;
+  Handle(StepRepr_MaterialPropertyRepresentation) myValue;
 
 
 };
 
-#define SeqItem Handle_StepRepr_MaterialPropertyRepresentation
+#define SeqItem Handle(StepRepr_MaterialPropertyRepresentation)
 #define SeqItem_hxx <StepRepr_MaterialPropertyRepresentation.hxx>
 #define TCollection_SequenceNode StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation
 #define TCollection_SequenceNode_hxx <StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation.hxx>
@@ -78,7 +67,6 @@ Handle_StepRepr_MaterialPropertyRepresentation myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation_HeaderFile

@@ -5,18 +5,10 @@
 
 #include <BRepFill_SequenceOfSection.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _BRepFill_Section_HeaderFile
 #include <BRepFill_Section.hxx>
-#endif
-#ifndef _BRepFill_SequenceNodeOfSequenceOfSection_HeaderFile
 #include <BRepFill_SequenceNodeOfSequenceOfSection.hxx>
-#endif
  
 
 #define SeqItem BRepFill_Section

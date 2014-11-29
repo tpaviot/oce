@@ -1,18 +1,6 @@
-#ifndef _StepGeom_GeometricRepresentationContext_HeaderFile
 #include <StepGeom_GeometricRepresentationContext.hxx>
-#endif
-#ifndef _StepRepr_GlobalUnitAssignedContext_HeaderFile
 #include <StepRepr_GlobalUnitAssignedContext.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepBasic_HArray1OfNamedUnit_HeaderFile
 #include <StepBasic_HArray1OfNamedUnit.hxx>
-#endif
-#ifndef _StepBasic_NamedUnit_HeaderFile
 #include <StepBasic_NamedUnit.hxx>
-#endif
-#ifndef _StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext_HeaderFile
 #include <StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext.hxx>
-#endif

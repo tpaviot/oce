@@ -16,8 +16,6 @@ ApproxInt
 GccAna
 GccEnt
 GccInt
-GccIter
-GccGeo
 HatchGen
 Geom2dHatch
 Law

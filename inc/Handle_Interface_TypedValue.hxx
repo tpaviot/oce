@@ -6,22 +6,15 @@
 #ifndef _Handle_Interface_TypedValue_HeaderFile
 #define _Handle_Interface_TypedValue_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_MoniTool_TypedValue_HeaderFile
 #include <Handle_MoniTool_TypedValue.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(MoniTool_TypedValue);
 class Interface_TypedValue;
 
-DEFINE_STANDARD_HANDLE(Interface_TypedValue,MoniTool_TypedValue)
+DEFINE_STANDARD_HANDLE(Interface_TypedValue, MoniTool_TypedValue)
 
-#endif
+#endif // _Handle_Interface_TypedValue_HeaderFile

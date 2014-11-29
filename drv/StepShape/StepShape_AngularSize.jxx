@@ -1,9 +1,3 @@
-#ifndef _StepRepr_ShapeAspect_HeaderFile
 #include <StepRepr_ShapeAspect.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepShape_AngularSize_HeaderFile
 #include <StepShape_AngularSize.hxx>
-#endif

@@ -6,38 +6,27 @@
 #ifndef _MeshVS_SequenceNodeOfSequenceOfPrsBuilder_HeaderFile
 #define _MeshVS_SequenceNodeOfSequenceOfPrsBuilder_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MeshVS_SequenceNodeOfSequenceOfPrsBuilder_HeaderFile
 #include <Handle_MeshVS_SequenceNodeOfSequenceOfPrsBuilder.hxx>
-#endif
 
-#ifndef _Handle_MeshVS_PrsBuilder_HeaderFile
 #include <Handle_MeshVS_PrsBuilder.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class MeshVS_PrsBuilder;
 class MeshVS_SequenceOfPrsBuilder;
 
 
 
-class MeshVS_SequenceNodeOfSequenceOfPrsBuilder : public TCollection_SeqNode {
+class MeshVS_SequenceNodeOfSequenceOfPrsBuilder : public TCollection_SeqNode
+{
 
 public:
 
   
-      MeshVS_SequenceNodeOfSequenceOfPrsBuilder(const Handle(MeshVS_PrsBuilder)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    MeshVS_SequenceNodeOfSequenceOfPrsBuilder(const Handle(MeshVS_PrsBuilder)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_MeshVS_PrsBuilder& Value() const;
+      Handle(MeshVS_PrsBuilder)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_MeshVS_PrsBuilder myValue;
+  Handle(MeshVS_PrsBuilder) myValue;
 
 
 };
 
-#define SeqItem Handle_MeshVS_PrsBuilder
+#define SeqItem Handle(MeshVS_PrsBuilder)
 #define SeqItem_hxx <MeshVS_PrsBuilder.hxx>
 #define TCollection_SequenceNode MeshVS_SequenceNodeOfSequenceOfPrsBuilder
 #define TCollection_SequenceNode_hxx <MeshVS_SequenceNodeOfSequenceOfPrsBuilder.hxx>
@@ -78,7 +67,6 @@ Handle_MeshVS_PrsBuilder myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MeshVS_SequenceNodeOfSequenceOfPrsBuilder_HeaderFile

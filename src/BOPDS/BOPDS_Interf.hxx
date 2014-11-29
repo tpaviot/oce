@@ -15,24 +15,11 @@
 #ifndef BOPDS_Interf_HeaderFile
 #define BOPDS_Interf_HeaderFile
 
-#ifndef _Standard_HeaderFile
-#include <Standard.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
-#include <Standard_Macro.hxx>
-#endif
-
-#ifndef _Standard_Integer_HeaderFile
-#include <Standard_Integer.hxx>
-#endif
-
-#ifndef _IntTools_CommonPrt_HeaderFile
 #include <IntTools_CommonPrt.hxx>
-#endif
-
 #include <NCollection_BaseAllocator.hxx>
 #include <BOPDS_VectorOfCurve.hxx>
 #include <BOPDS_VectorOfPoint.hxx>
+
 /**
  * The class BOPDS_Interf is is to store the information about
  * the interference between two shapes. 
@@ -54,7 +41,7 @@ class BOPDS_Interf  {
    *   index of the second shape
    */
   void SetIndices(const Standard_Integer theIndex1,
-		  const Standard_Integer theIndex2) {
+    const Standard_Integer theIndex2) {
     myIndex1=theIndex1; 
     myIndex2=theIndex2; 
   }
@@ -67,10 +54,10 @@ class BOPDS_Interf  {
    *   index of the second shape
    */
   void Indices(Standard_Integer& theIndex1,
-	       Standard_Integer& theIndex2) const {
-		 theIndex1=myIndex1; 
-		 theIndex2=myIndex2; 
-	       }
+        Standard_Integer& theIndex2) const {
+   theIndex1=myIndex1; 
+   theIndex2=myIndex2; 
+        }
   //
   /**
    * Sets the index of the first interferred shape
@@ -176,7 +163,7 @@ class BOPDS_Interf  {
    * @return true if the interference has index of new shape
    */
   Standard_Boolean HasIndexNew() const {
-    return (myIndexNew>=0);
+    return (myIndexNew+1);
   }
   //
  protected:     
@@ -197,7 +184,7 @@ class BOPDS_Interf  {
   virtual ~BOPDS_Interf() {
   }
   
- protected:  	
+ protected:   
   Standard_Integer myIndex1;
   Standard_Integer myIndex2;
   Standard_Integer myIndexNew;
@@ -349,7 +336,7 @@ class BOPDS_InterfVF  : public BOPDS_Interf {
    *   value of U parameter 
    */
   void SetUV(const Standard_Real theU,
-	     const Standard_Real theV) {
+      const Standard_Real theV) {
     myU=theU;
     myV=theV;
   }

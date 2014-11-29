@@ -6,63 +6,53 @@
 #ifndef _TopOpeBRepBuild_CompositeClassifier_HeaderFile
 #define _TopOpeBRepBuild_CompositeClassifier_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_LoopClassifier_HeaderFile
 #include <TopOpeBRepBuild_LoopClassifier.hxx>
-#endif
-#ifndef _TopAbs_State_HeaderFile
 #include <TopAbs_State.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepBuild_Loop_HeaderFile
 #include <Handle_TopOpeBRepBuild_Loop.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopOpeBRepBuild_BlockBuilder;
 class TopOpeBRepBuild_Loop;
 class TopoDS_Shape;
 
 
 
-//! classify composite Loops, i.e, loops that can be either a Shape, or <br>
-//! a block of Elements. <br>
-class TopOpeBRepBuild_CompositeClassifier  : public TopOpeBRepBuild_LoopClassifier {
+//! classify composite Loops, i.e, loops that can be either a Shape, or
+//! a block of Elements.
+class TopOpeBRepBuild_CompositeClassifier  : public TopOpeBRepBuild_LoopClassifier
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   virtual  TopAbs_State Compare(const Handle(TopOpeBRepBuild_Loop)& L1,const Handle(TopOpeBRepBuild_Loop)& L2) ;
-  //! classify shape <B1> with shape <B2> <br>
-  Standard_EXPORT   virtual  TopAbs_State CompareShapes(const TopoDS_Shape& B1,const TopoDS_Shape& B2)  = 0;
-  //! classify element <E> with shape <B> <br>
-  Standard_EXPORT   virtual  TopAbs_State CompareElementToShape(const TopoDS_Shape& E,const TopoDS_Shape& B)  = 0;
-  //! prepare classification involving shape <B> <br>
-//! calls ResetElement on first element of <B> <br>
-  Standard_EXPORT   virtual  void ResetShape(const TopoDS_Shape& B)  = 0;
-  //! prepare classification involving element <E>. <br>
-  Standard_EXPORT   virtual  void ResetElement(const TopoDS_Shape& E)  = 0;
-  //! Add element <E> in the set of elements used in classification. <br>
-//!  Returns FALSE if the element <E> has been already added to the set of elements, <br>
-//!  otherwise returns TRUE. <br>
-  Standard_EXPORT   virtual  Standard_Boolean CompareElement(const TopoDS_Shape& E)  = 0;
-  //! Returns state of classification of 2D point, defined by <br>
-//! ResetElement, with the current set of elements, defined by Compare. <br>
-  Standard_EXPORT   virtual  TopAbs_State State()  = 0;
-
+  Standard_EXPORT virtual   TopAbs_State Compare (const Handle(TopOpeBRepBuild_Loop)& L1, const Handle(TopOpeBRepBuild_Loop)& L2) ;
+  
+  //! classify shape <B1> with shape <B2>
+  Standard_EXPORT virtual   TopAbs_State CompareShapes (const TopoDS_Shape& B1, const TopoDS_Shape& B2)  = 0;
+  
+  //! classify element <E> with shape <B>
+  Standard_EXPORT virtual   TopAbs_State CompareElementToShape (const TopoDS_Shape& E, const TopoDS_Shape& B)  = 0;
+  
+  //! prepare classification involving shape <B>
+  //! calls ResetElement on first element of <B>
+  Standard_EXPORT virtual   void ResetShape (const TopoDS_Shape& B)  = 0;
+  
+  //! prepare classification involving element <E>.
+  Standard_EXPORT virtual   void ResetElement (const TopoDS_Shape& E)  = 0;
+  
+  //! Add element <E> in the set of elements used in classification.
+  //! Returns FALSE if the element <E> has been already added to the set of elements,
+  //! otherwise returns TRUE.
+  Standard_EXPORT virtual   Standard_Boolean CompareElement (const TopoDS_Shape& E)  = 0;
+  
+  //! Returns state of classification of 2D point, defined by
+  //! ResetElement, with the current set of elements, defined by Compare.
+  Standard_EXPORT virtual   TopAbs_State State()  = 0;
 
 
 
@@ -70,10 +60,10 @@ public:
 protected:
 
   
-  Standard_EXPORT   TopOpeBRepBuild_CompositeClassifier(const TopOpeBRepBuild_BlockBuilder& BB);
+  Standard_EXPORT TopOpeBRepBuild_CompositeClassifier(const TopOpeBRepBuild_BlockBuilder& BB);
 
 
-Standard_Address myBlockBuilder;
+  Standard_Address myBlockBuilder;
 
 
 private:
@@ -88,7 +78,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepBuild_CompositeClassifier_HeaderFile

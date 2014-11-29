@@ -6,70 +6,56 @@
 #ifndef _BRepCheck_Result_HeaderFile
 #define _BRepCheck_Result_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepCheck_Result_HeaderFile
 #include <Handle_BRepCheck_Result.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _BRepCheck_DataMapOfShapeListOfStatus_HeaderFile
 #include <BRepCheck_DataMapOfShapeListOfStatus.hxx>
-#endif
-#ifndef _BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus_HeaderFile
 #include <BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class Standard_NoSuchObject;
 class TopoDS_Shape;
 class BRepCheck_ListOfStatus;
 
 
 
-class BRepCheck_Result : public MMgt_TShared {
+class BRepCheck_Result : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT     void Init(const TopoDS_Shape& S) ;
+  Standard_EXPORT   void Init (const TopoDS_Shape& S) ;
   
-  Standard_EXPORT   virtual  void InContext(const TopoDS_Shape& ContextShape)  = 0;
+  Standard_EXPORT virtual   void InContext (const TopoDS_Shape& ContextShape)  = 0;
   
-  Standard_EXPORT   virtual  void Minimum()  = 0;
+  Standard_EXPORT virtual   void Minimum()  = 0;
   
-  Standard_EXPORT   virtual  void Blind()  = 0;
+  Standard_EXPORT virtual   void Blind()  = 0;
   
-  Standard_EXPORT     void SetFailStatus(const TopoDS_Shape& S) ;
+  Standard_EXPORT   void SetFailStatus (const TopoDS_Shape& S) ;
   
-       const BRepCheck_ListOfStatus& Status() const;
+     const  BRepCheck_ListOfStatus& Status()  const;
   
-        Standard_Boolean IsMinimum() const;
+      Standard_Boolean IsMinimum()  const;
   
-        Standard_Boolean IsBlind() const;
-  //! If  not  already   done,  performs the   InContext <br>
-//!          control and returns the list of status. <br>
-  Standard_EXPORT    const BRepCheck_ListOfStatus& StatusOnShape(const TopoDS_Shape& S) ;
+      Standard_Boolean IsBlind()  const;
   
-  Standard_EXPORT     void InitContextIterator() ;
+  //! If  not  already   done,  performs the   InContext
+  //! control and returns the list of status.
+  Standard_EXPORT  const  BRepCheck_ListOfStatus& StatusOnShape (const TopoDS_Shape& S) ;
   
-        Standard_Boolean MoreShapeInContext() const;
+  Standard_EXPORT   void InitContextIterator() ;
   
-       const TopoDS_Shape& ContextualShape() const;
+      Standard_Boolean MoreShapeInContext()  const;
   
-       const BRepCheck_ListOfStatus& StatusOnShape() const;
+     const  TopoDS_Shape& ContextualShape()  const;
   
-  Standard_EXPORT     void NextShapeInContext() ;
+     const  BRepCheck_ListOfStatus& StatusOnShape()  const;
+  
+  Standard_EXPORT   void NextShapeInContext() ;
 
 
 
@@ -79,18 +65,18 @@ public:
 protected:
 
   
-  Standard_EXPORT   BRepCheck_Result();
+  Standard_EXPORT BRepCheck_Result();
 
-TopoDS_Shape myShape;
-Standard_Boolean myMin;
-Standard_Boolean myBlind;
-BRepCheck_DataMapOfShapeListOfStatus myMap;
+  TopoDS_Shape myShape;
+  Standard_Boolean myMin;
+  Standard_Boolean myBlind;
+  BRepCheck_DataMapOfShapeListOfStatus myMap;
 
 
 private: 
 
 
-BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus myIter;
+  BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus myIter;
 
 
 };
@@ -100,7 +86,6 @@ BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus myIter;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepCheck_Result_HeaderFile

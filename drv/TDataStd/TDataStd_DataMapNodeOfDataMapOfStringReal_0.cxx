@@ -5,19 +5,11 @@
 
 #include <TDataStd_DataMapNodeOfDataMapOfStringReal.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _TDataStd_DataMapOfStringReal_HeaderFile
 #include <TDataStd_DataMapOfStringReal.hxx>
-#endif
-#ifndef _TDataStd_DataMapIteratorOfDataMapOfStringReal_HeaderFile
 #include <TDataStd_DataMapIteratorOfDataMapOfStringReal.hxx>
-#endif
 
  
 

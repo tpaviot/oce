@@ -5,36 +5,18 @@
 
 #include <Transfer_IteratorOfProcessForFinder.hxx>
 
-#ifndef _Transfer_HSequenceOfFinder_HeaderFile
 #include <Transfer_HSequenceOfFinder.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Transfer_Finder_HeaderFile
 #include <Transfer_Finder.hxx>
-#endif
-#ifndef _Transfer_FindHasher_HeaderFile
 #include <Transfer_FindHasher.hxx>
-#endif
-#ifndef _Transfer_ProcessForFinder_HeaderFile
 #include <Transfer_ProcessForFinder.hxx>
-#endif
-#ifndef _Transfer_TransferMapOfProcessForFinder_HeaderFile
 #include <Transfer_TransferMapOfProcessForFinder.hxx>
-#endif
-#ifndef _Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder_HeaderFile
 #include <Transfer_IndexedDataMapNodeOfTransferMapOfProcessForFinder.hxx>
-#endif
-#ifndef _Transfer_ActorOfProcessForFinder_HeaderFile
 #include <Transfer_ActorOfProcessForFinder.hxx>
-#endif
-#ifndef _Transfer_Binder_HeaderFile
 #include <Transfer_Binder.hxx>
-#endif
  
 
-#define TheStart Handle_Transfer_Finder
+#define TheStart Handle(Transfer_Finder)
 #define TheStart_hxx <Transfer_Finder.hxx>
 #define TheMapHasher Transfer_FindHasher
 #define TheMapHasher_hxx <Transfer_FindHasher.hxx>

@@ -23,8 +23,8 @@
 #include <gp_Elips2d.hxx>
 #include <gp_Parab2d.hxx>
 #include <gp_Hypr2d.hxx>
-#include <Handle_Geom2d_BezierCurve.hxx>
-#include <Handle_Geom2d_BSplineCurve.hxx>
+#include <Geom2d_BezierCurve.hxx>
+#include <Geom2d_BSplineCurve.hxx>
 #include <TColStd_Array1OfReal.hxx>
 
 #define   IS_C2_COMPOSITE 0
@@ -282,7 +282,9 @@ HLRBRep_CurveTool::Hyperbola (const Standard_Address C)
 inline Handle(Geom2d_BezierCurve)
      HLRBRep_CurveTool::Bezier (const Standard_Address /*C*/)
 {
+#ifdef OCCT_DEBUG
   cout<<"  HLRBRep_CurveTool::Bezier : Not Implemented "<<endl;
+#endif
   //-- return(((HLRBRep_Curve *)C)->Bezier());
   return(0);
 }
@@ -295,7 +297,9 @@ inline Handle(Geom2d_BezierCurve)
 inline Handle(Geom2d_BSplineCurve)
      HLRBRep_CurveTool::BSpline (const Standard_Address /*C*/)
 {
+#ifdef OCCT_DEBUG
   cout<<"  HLRBRep_CurveTool::BSpline : Not Implemented "<<endl;
+#endif
   //-- return(((HLRBRep_Curve *)C)->BSpline());
   return(0);
 }

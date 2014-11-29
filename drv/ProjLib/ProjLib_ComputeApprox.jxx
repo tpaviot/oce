@@ -1,15 +1,5 @@
-#ifndef _Geom2d_BSplineCurve_HeaderFile
 #include <Geom2d_BSplineCurve.hxx>
-#endif
-#ifndef _Geom2d_BezierCurve_HeaderFile
 #include <Geom2d_BezierCurve.hxx>
-#endif
-#ifndef _Adaptor3d_HCurve_HeaderFile
 #include <Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _Adaptor3d_HSurface_HeaderFile
 #include <Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _ProjLib_ComputeApprox_HeaderFile
 #include <ProjLib_ComputeApprox.hxx>
-#endif

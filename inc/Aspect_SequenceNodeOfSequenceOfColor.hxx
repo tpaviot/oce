@@ -6,38 +6,27 @@
 #ifndef _Aspect_SequenceNodeOfSequenceOfColor_HeaderFile
 #define _Aspect_SequenceNodeOfSequenceOfColor_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Aspect_SequenceNodeOfSequenceOfColor_HeaderFile
 #include <Handle_Aspect_SequenceNodeOfSequenceOfColor.hxx>
-#endif
 
-#ifndef _Quantity_Color_HeaderFile
 #include <Quantity_Color.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Quantity_Color;
 class Aspect_SequenceOfColor;
 
 
 
-class Aspect_SequenceNodeOfSequenceOfColor : public TCollection_SeqNode {
+class Aspect_SequenceNodeOfSequenceOfColor : public TCollection_SeqNode
+{
 
 public:
 
   
-      Aspect_SequenceNodeOfSequenceOfColor(const Quantity_Color& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    Aspect_SequenceNodeOfSequenceOfColor(const Quantity_Color& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Quantity_Color& Value() const;
+      Quantity_Color& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-Quantity_Color myValue;
+  Quantity_Color myValue;
 
 
 };
@@ -78,7 +67,6 @@ Quantity_Color myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Aspect_SequenceNodeOfSequenceOfColor_HeaderFile

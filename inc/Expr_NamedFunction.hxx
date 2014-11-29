@@ -6,43 +6,19 @@
 #ifndef _Expr_NamedFunction_HeaderFile
 #define _Expr_NamedFunction_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Expr_NamedFunction_HeaderFile
 #include <Handle_Expr_NamedFunction.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Handle_Expr_GeneralExpression_HeaderFile
 #include <Handle_Expr_GeneralExpression.hxx>
-#endif
-#ifndef _Expr_Array1OfNamedUnknown_HeaderFile
 #include <Expr_Array1OfNamedUnknown.hxx>
-#endif
-#ifndef _Expr_GeneralFunction_HeaderFile
 #include <Expr_GeneralFunction.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Expr_NamedUnknown_HeaderFile
 #include <Handle_Expr_NamedUnknown.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Expr_GeneralFunction_HeaderFile
 #include <Handle_Expr_GeneralFunction.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Expr_GeneralExpression;
 class Standard_OutOfRange;
 class Standard_DimensionMismatch;
@@ -56,46 +32,60 @@ class Expr_GeneralFunction;
 
 
 
-class Expr_NamedFunction : public Expr_GeneralFunction {
+class Expr_NamedFunction : public Expr_GeneralFunction
+{
 
 public:
 
-  //! Creates a function of given variables <vars> with name <br>
-//!          <name> defined by the expression <exp>. <br>
-  Standard_EXPORT   Expr_NamedFunction(const TCollection_AsciiString& name,const Handle(Expr_GeneralExpression)& exp,const Expr_Array1OfNamedUnknown& vars);
-  //! Sets the name <newname> to <me>. <br>
-  Standard_EXPORT     void SetName(const TCollection_AsciiString& newname) ;
-  //! Returns the name assigned to <me> <br>
-  Standard_EXPORT     TCollection_AsciiString GetName() const;
-  //! Returns the number of variables of <me>. <br>
-  Standard_EXPORT     Standard_Integer NbOfVariables() const;
-  //! Returns the variable denoted by <index> in <me>. <br>
-//!          Raises OutOfRange if <index> is greater than <br>
-//!          NbOfVariables of <me>, or less than or equal to zero. <br>
-  Standard_EXPORT     Handle_Expr_NamedUnknown Variable(const Standard_Integer index) const;
-  //! Computes the value of <me> with the given variables. <br>
-//!          Raises DimensionMismatch if Length(vars) is different from <br>
-//!          Length(values). <br>
-  Standard_EXPORT     Standard_Real Evaluate(const Expr_Array1OfNamedUnknown& vars,const TColStd_Array1OfReal& values) const;
-  //! Returns a copy of <me> with the same form. <br>
-  Standard_EXPORT     Handle_Expr_GeneralFunction Copy() const;
-  //! Returns Derivative of <me> for variable <var>. <br>
-  Standard_EXPORT     Handle_Expr_GeneralFunction Derivative(const Handle(Expr_NamedUnknown)& var) const;
-  //! Returns Derivative of <me> for variable <var> with <br>
-//!          degree <deg>. <br>
-  Standard_EXPORT     Handle_Expr_GeneralFunction Derivative(const Handle(Expr_NamedUnknown)& var,const Standard_Integer deg) const;
-  //! Tests if <me> and <func> are similar functions (same <br>
-//!          name and same used expression). <br>
-  Standard_EXPORT     Standard_Boolean IsIdentical(const Handle(Expr_GeneralFunction)& func) const;
-  //! Tests if <me> is linear on variable on range <index> <br>
-  Standard_EXPORT     Standard_Boolean IsLinearOnVariable(const Standard_Integer index) const;
   
-  Standard_EXPORT     TCollection_AsciiString GetStringName() const;
-  //! Returns equivalent expression of <me>. <br>
-  Standard_EXPORT     Handle_Expr_GeneralExpression Expression() const;
-  //! Modifies expression of <me>. <br>
-//!  Warning: Beware of derivatives. See FunctionDerivative <br>
-  Standard_EXPORT     void SetExpression(const Handle(Expr_GeneralExpression)& exp) ;
+  //! Creates a function of given variables <vars> with name
+  //! <name> defined by the expression <exp>.
+  Standard_EXPORT Expr_NamedFunction(const TCollection_AsciiString& name, const Handle(Expr_GeneralExpression)& exp, const Expr_Array1OfNamedUnknown& vars);
+  
+  //! Sets the name <newname> to <me>.
+  Standard_EXPORT   void SetName (const TCollection_AsciiString& newname) ;
+  
+  //! Returns the name assigned to <me>
+  Standard_EXPORT   TCollection_AsciiString GetName()  const;
+  
+  //! Returns the number of variables of <me>.
+  Standard_EXPORT   Standard_Integer NbOfVariables()  const;
+  
+  //! Returns the variable denoted by <index> in <me>.
+  //! Raises OutOfRange if <index> is greater than
+  //! NbOfVariables of <me>, or less than or equal to zero.
+  Standard_EXPORT   Handle(Expr_NamedUnknown) Variable (const Standard_Integer index)  const;
+  
+  //! Computes the value of <me> with the given variables.
+  //! Raises DimensionMismatch if Length(vars) is different from
+  //! Length(values).
+  Standard_EXPORT   Standard_Real Evaluate (const Expr_Array1OfNamedUnknown& vars, const TColStd_Array1OfReal& values)  const;
+  
+  //! Returns a copy of <me> with the same form.
+  Standard_EXPORT   Handle(Expr_GeneralFunction) Copy()  const;
+  
+  //! Returns Derivative of <me> for variable <var>.
+  Standard_EXPORT   Handle(Expr_GeneralFunction) Derivative (const Handle(Expr_NamedUnknown)& var)  const;
+  
+  //! Returns Derivative of <me> for variable <var> with
+  //! degree <deg>.
+  Standard_EXPORT   Handle(Expr_GeneralFunction) Derivative (const Handle(Expr_NamedUnknown)& var, const Standard_Integer deg)  const;
+  
+  //! Tests if <me> and <func> are similar functions (same
+  //! name and same used expression).
+  Standard_EXPORT   Standard_Boolean IsIdentical (const Handle(Expr_GeneralFunction)& func)  const;
+  
+  //! Tests if <me> is linear on variable on range <index>
+  Standard_EXPORT   Standard_Boolean IsLinearOnVariable (const Standard_Integer index)  const;
+  
+  Standard_EXPORT   TCollection_AsciiString GetStringName()  const;
+  
+  //! Returns equivalent expression of <me>.
+  Standard_EXPORT   Handle(Expr_GeneralExpression) Expression()  const;
+  
+  //! Modifies expression of <me>.
+  //! Warning: Beware of derivatives. See FunctionDerivative
+  Standard_EXPORT   void SetExpression (const Handle(Expr_GeneralExpression)& exp) ;
 
 
 
@@ -110,9 +100,9 @@ protected:
 private: 
 
 
-TCollection_AsciiString myName;
-Handle_Expr_GeneralExpression myExp;
-Expr_Array1OfNamedUnknown myVariables;
+  TCollection_AsciiString myName;
+  Handle(Expr_GeneralExpression) myExp;
+  Expr_Array1OfNamedUnknown myVariables;
 
 
 };
@@ -121,7 +111,6 @@ Expr_Array1OfNamedUnknown myVariables;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Expr_NamedFunction_HeaderFile

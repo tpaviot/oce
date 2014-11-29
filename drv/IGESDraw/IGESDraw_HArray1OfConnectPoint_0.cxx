@@ -5,28 +5,14 @@
 
 #include <IGESDraw_HArray1OfConnectPoint.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _IGESDraw_ConnectPoint_HeaderFile
 #include <IGESDraw_ConnectPoint.hxx>
-#endif
-#ifndef _IGESDraw_Array1OfConnectPoint_HeaderFile
 #include <IGESDraw_Array1OfConnectPoint.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(IGESDraw_HArray1OfConnectPoint,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(IGESDraw_HArray1OfConnectPoint)
 
 
-#define ItemHArray1 Handle_IGESDraw_ConnectPoint
+#define ItemHArray1 Handle(IGESDraw_ConnectPoint)
 #define ItemHArray1_hxx <IGESDraw_ConnectPoint.hxx>
 #define TheArray1 IGESDraw_Array1OfConnectPoint
 #define TheArray1_hxx <IGESDraw_Array1OfConnectPoint.hxx>

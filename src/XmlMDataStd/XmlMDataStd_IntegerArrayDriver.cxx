@@ -112,9 +112,6 @@ Standard_Boolean XmlMDataStd_IntegerArrayDriver::Paste
       anIntArray->SetValue(ind, aValue);
     }
   }
-#ifdef DEB
-  //cout << "CurDocVersion = " << XmlMDataStd::DocumentVersion() <<endl;
-#endif
   Standard_Boolean aDelta(Standard_False);
   
   if(XmlMDataStd::DocumentVersion() > 2) {
@@ -131,7 +128,7 @@ Standard_Boolean XmlMDataStd_IntegerArrayDriver::Paste
     else
       aDelta = (0 != aDeltaValue);
   }
-#ifdef DEB
+#ifdef OCCT_DEBUG
   else if(XmlMDataStd::DocumentVersion() == -1)
     cout << "Current DocVersion field is not initialized. "  <<endl;
 #endif

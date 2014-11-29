@@ -6,55 +6,23 @@
 #ifndef _Select3D_SensitiveCircle_HeaderFile
 #define _Select3D_SensitiveCircle_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Select3D_SensitiveCircle_HeaderFile
 #include <Handle_Select3D_SensitiveCircle.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Select3D_Pnt2d_HeaderFile
 #include <Select3D_Pnt2d.hxx>
-#endif
-#ifndef _Select3D_Pnt_HeaderFile
 #include <Select3D_Pnt.hxx>
-#endif
-#ifndef _Handle_Geom_Circle_HeaderFile
 #include <Handle_Geom_Circle.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Select3D_SensitivePoly_HeaderFile
 #include <Select3D_SensitivePoly.hxx>
-#endif
-#ifndef _Handle_SelectBasics_EntityOwner_HeaderFile
 #include <Handle_SelectBasics_EntityOwner.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TColgp_HArray1OfPnt_HeaderFile
 #include <Handle_TColgp_HArray1OfPnt.hxx>
-#endif
-#ifndef _SelectBasics_PickArgs_HeaderFile
 #include <SelectBasics_PickArgs.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
-#ifndef _Handle_Select3D_SensitiveEntity_HeaderFile
 #include <Handle_Select3D_SensitiveEntity.hxx>
-#endif
-#ifndef _Handle_Select3D_Projector_HeaderFile
 #include <Handle_Select3D_Projector.hxx>
-#endif
 class Geom_Circle;
 class Standard_ConstructionError;
 class Standard_OutOfRange;
@@ -70,57 +38,65 @@ class TopLoc_Location;
 class Select3D_Projector;
 
 
-//! A framework to define sensitive 3D arcs and circles. <br>
-//! In some cases this class can raise Standard_ConstructionError and <br>
-//! Standard_OutOfRange exceptions. For more details see Select3D_SensitivePoly. <br>
-class Select3D_SensitiveCircle : public Select3D_SensitivePoly {
+//! A framework to define sensitive 3D arcs and circles.
+//! In some cases this class can raise Standard_ConstructionError and
+//! Standard_OutOfRange exceptions. For more details see Select3D_SensitivePoly.
+class Select3D_SensitiveCircle : public Select3D_SensitivePoly
+{
 
 public:
 
-  //! Constructs the sensitive circle object defined by the <br>
-//! owner OwnerId, the circle Circle, the Boolean <br>
-//! FilledCircle and the number of points NbOfPoints. <br>
-  Standard_EXPORT   Select3D_SensitiveCircle(const Handle(SelectBasics_EntityOwner)& OwnerId,const Handle(Geom_Circle)& TheCircle,const Standard_Boolean FilledCircle = Standard_False,const Standard_Integer NbOfPoints = 6);
-  //! Constructs the sensitive arc object defined by the <br>
-//! owner OwnerId, the circle Circle, the parameters u1 <br>
-//! and u2, the Boolean FilledCircle and the number of points NbOfPoints. <br>
-//! u1 and u2 define the first and last points of the arc on Circle. <br>
-  Standard_EXPORT   Select3D_SensitiveCircle(const Handle(SelectBasics_EntityOwner)& OwnerId,const Handle(Geom_Circle)& TheCircle,const Standard_Real u1,const Standard_Real u2,const Standard_Boolean FilledCircle = Standard_False,const Standard_Integer NbOfPoints = 6);
-  //! Constructs the sensitive circle object defined by the <br>
-//! owner OwnerId, the array of triangles apolyg3d, and the Boolean FilledCircle. <br>
-//! apolyg3d is an array of consecutive triangles on the <br>
-//! circle. The triangle i+1 lies on the intersection of the <br>
-//! tangents to the circle of i and i+2. Note, that the first point of apolyg3d <br>
-//! must be equal to the last point of apolyg3d. <br>
-  Standard_EXPORT   Select3D_SensitiveCircle(const Handle(SelectBasics_EntityOwner)& OwnerId,const Handle(TColgp_HArray1OfPnt)& apolyg3d,const Standard_Boolean FilledCircle = Standard_False);
-  //! Constructs the sensitive circle object defined by the <br>
-//! owner OwnerId, the array of points apolyg3d, and the Boolean FilledCircle. <br>
-//! If the length of apolyg3d is more then 1, the first point of apolyg3d <br>
-//! must be equal to the last point of apolyg3d. <br>
-  Standard_EXPORT   Select3D_SensitiveCircle(const Handle(SelectBasics_EntityOwner)& OwnerId,const TColgp_Array1OfPnt& apolyg3d,const Standard_Boolean FilledCircle = Standard_False);
-  //! Checks whether the sensitive entity matches the picking <br>
-//! detection area (close to the picking line). <br>
-//! For details please refer to base class declaration. <br>
-  Standard_EXPORT     Standard_Boolean Matches(const SelectBasics_PickArgs& thePickArgs,Standard_Real& theMatchDMin,Standard_Real& theMatchDepth) ;
   
-  Standard_EXPORT     Standard_Boolean Matches(const Standard_Real XMin,const Standard_Real YMin,const Standard_Real XMax,const Standard_Real YMax,const Standard_Real aTol) ;
+  //! Constructs the sensitive circle object defined by the
+  //! owner OwnerId, the circle Circle, the Boolean
+  //! FilledCircle and the number of points NbOfPoints.
+  Standard_EXPORT Select3D_SensitiveCircle(const Handle(SelectBasics_EntityOwner)& OwnerId, const Handle(Geom_Circle)& TheCircle, const Standard_Boolean FilledCircle = Standard_False, const Standard_Integer NbOfPoints = 6);
   
-  Standard_EXPORT   virtual  Standard_Boolean Matches(const TColgp_Array1OfPnt2d& Polyline,const Bnd_Box2d& aBox,const Standard_Real aTol) ;
-  //! Compute depth of sensitive circle for the detected sub-part. <br>
-//! @param thePickLine [in] the picking line. <br>
-//! @param theDetectedIndex [in] index of the detected sub-part. <br>
-//! @return depth on the picking line. <br>
-  Standard_EXPORT     Standard_Real ComputeDepth(const gp_Lin& thePickLine,const Standard_Integer theDetectedIndex) const;
+  //! Constructs the sensitive arc object defined by the
+  //! owner OwnerId, the circle Circle, the parameters u1
+  //! and u2, the Boolean FilledCircle and the number of points NbOfPoints.
+  //! u1 and u2 define the first and last points of the arc on Circle.
+  Standard_EXPORT Select3D_SensitiveCircle(const Handle(SelectBasics_EntityOwner)& OwnerId, const Handle(Geom_Circle)& TheCircle, const Standard_Real u1, const Standard_Real u2, const Standard_Boolean FilledCircle = Standard_False, const Standard_Integer NbOfPoints = 6);
   
-  Standard_EXPORT     void ArrayBounds(Standard_Integer& Low,Standard_Integer& Up) const;
+  //! Constructs the sensitive circle object defined by the
+  //! owner OwnerId, the array of triangles apolyg3d, and the Boolean FilledCircle.
+  //! apolyg3d is an array of consecutive triangles on the
+  //! circle. The triangle i+1 lies on the intersection of the
+  //! tangents to the circle of i and i+2. Note, that the first point of apolyg3d
+  //! must be equal to the last point of apolyg3d.
+  Standard_EXPORT Select3D_SensitiveCircle(const Handle(SelectBasics_EntityOwner)& OwnerId, const Handle(TColgp_HArray1OfPnt)& apolyg3d, const Standard_Boolean FilledCircle = Standard_False);
   
-  Standard_EXPORT     gp_Pnt GetPoint3d(const Standard_Integer rank) const;
+  //! Constructs the sensitive circle object defined by the
+  //! owner OwnerId, the array of points apolyg3d, and the Boolean FilledCircle.
+  //! If the length of apolyg3d is more then 1, the first point of apolyg3d
+  //! must be equal to the last point of apolyg3d.
+  Standard_EXPORT Select3D_SensitiveCircle(const Handle(SelectBasics_EntityOwner)& OwnerId, const TColgp_Array1OfPnt& apolyg3d, const Standard_Boolean FilledCircle = Standard_False);
   
-  Standard_EXPORT   virtual  void Dump(Standard_OStream& S,const Standard_Boolean FullDump = Standard_True) const;
-  //! Returns the copy of this. <br>
-  Standard_EXPORT   virtual  Handle_Select3D_SensitiveEntity GetConnected(const TopLoc_Location& theLocation) ;
+  //! Checks whether the sensitive entity matches the picking
+  //! detection area (close to the picking line).
+  //! For details please refer to base class declaration.
+  Standard_EXPORT   Standard_Boolean Matches (const SelectBasics_PickArgs& thePickArgs, Standard_Real& theMatchDMin, Standard_Real& theMatchDepth) ;
   
-  Standard_EXPORT   virtual  void Project(const Handle(Select3D_Projector)& aProjector) ;
+  Standard_EXPORT   Standard_Boolean Matches (const Standard_Real XMin, const Standard_Real YMin, const Standard_Real XMax, const Standard_Real YMax, const Standard_Real aTol) ;
+  
+  Standard_EXPORT virtual   Standard_Boolean Matches (const TColgp_Array1OfPnt2d& Polyline, const Bnd_Box2d& aBox, const Standard_Real aTol) ;
+  
+  //! Compute depth of sensitive circle for the detected sub-part.
+  //! @param thePickLine [in] the picking line.
+  //! @param theDetectedIndex [in] index of the detected sub-part.
+  //! @return depth on the picking line.
+  Standard_EXPORT   Standard_Real ComputeDepth (const gp_Lin& thePickLine, const Standard_Integer theDetectedIndex)  const;
+  
+  Standard_EXPORT   void ArrayBounds (Standard_Integer& Low, Standard_Integer& Up)  const;
+  
+  Standard_EXPORT   gp_Pnt GetPoint3d (const Standard_Integer rank)  const;
+  
+  Standard_EXPORT virtual   void Dump (Standard_OStream& S, const Standard_Boolean FullDump = Standard_True)  const;
+  
+  //! Returns the copy of this.
+  Standard_EXPORT virtual   Handle(Select3D_SensitiveEntity) GetConnected (const TopLoc_Location& theLocation) ;
+  
+  Standard_EXPORT virtual   void Project (const Handle(Select3D_Projector)& aProjector) ;
 
 
 
@@ -134,15 +110,16 @@ protected:
 
 private: 
 
-  //! Computes myCenter3D as the barycenter of points from mypolyg3d <br>
-  Standard_EXPORT     void ComputeCenter3D() ;
+  
+  //! Computes myCenter3D as the barycenter of points from mypolyg3d
+  Standard_EXPORT   void ComputeCenter3D() ;
 
-Standard_Boolean myFillStatus;
-Select3D_Pnt2d myCenter2D;
-Select3D_Pnt myCenter3D;
-Handle_Geom_Circle myCircle;
-Standard_Real mystart;
-Standard_Real myend;
+  Standard_Boolean myFillStatus;
+  Select3D_Pnt2d myCenter2D;
+  Select3D_Pnt myCenter3D;
+  Handle(Geom_Circle) myCircle;
+  Standard_Real mystart;
+  Standard_Real myend;
 
 
 };
@@ -151,7 +128,6 @@ Standard_Real myend;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Select3D_SensitiveCircle_HeaderFile

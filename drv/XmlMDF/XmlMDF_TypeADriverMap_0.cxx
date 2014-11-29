@@ -5,32 +5,18 @@
 
 #include <XmlMDF_TypeADriverMap.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
-#ifndef _XmlMDF_ADriver_HeaderFile
 #include <XmlMDF_ADriver.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _XmlMDF_DataMapNodeOfTypeADriverMap_HeaderFile
 #include <XmlMDF_DataMapNodeOfTypeADriverMap.hxx>
-#endif
-#ifndef _XmlMDF_DataMapIteratorOfTypeADriverMap_HeaderFile
 #include <XmlMDF_DataMapIteratorOfTypeADriverMap.hxx>
-#endif
  
 
-#define TheKey Handle_Standard_Type
+#define TheKey Handle(Standard_Type)
 #define TheKey_hxx <Standard_Type.hxx>
-#define TheItem Handle_XmlMDF_ADriver
+#define TheItem Handle(XmlMDF_ADriver)
 #define TheItem_hxx <XmlMDF_ADriver.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>

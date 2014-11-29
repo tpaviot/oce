@@ -6,14 +6,13 @@
 #ifndef _StepToTopoDS_TranslateShellError_HeaderFile
 #define _StepToTopoDS_TranslateShellError_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepToTopoDS_TranslateShellError {
+
+enum StepToTopoDS_TranslateShellError
+{
 StepToTopoDS_TranslateShellDone,
 StepToTopoDS_TranslateShellOther
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepToTopoDS_TranslateShellError_HeaderFile

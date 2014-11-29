@@ -6,92 +6,87 @@
 #ifndef _Geom2dGcc_QualifiedCurve_HeaderFile
 #define _Geom2dGcc_QualifiedCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _GccEnt_Position_HeaderFile
 #include <GccEnt_Position.hxx>
-#endif
-#ifndef _Geom2dAdaptor_Curve_HeaderFile
 #include <Geom2dAdaptor_Curve.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Geom2dAdaptor_Curve;
 
 
-//! Describes functions for building a qualified 2D curve. <br>
-//! A qualified 2D curve is a curve with a qualifier which <br>
-//! specifies whether the solution of a construction <br>
-//! algorithm using the qualified curve (as an argument): <br>
-//! -   encloses the curve, or <br>
-//! -   is enclosed by the curve, or <br>
-//! -   is built so that both the curve and it are external to one another, or <br>
-//! -   is undefined (all solutions apply). <br>
-class Geom2dGcc_QualifiedCurve  {
+//! Describes functions for building a qualified 2D curve.
+//! A qualified 2D curve is a curve with a qualifier which
+//! specifies whether the solution of a construction
+//! algorithm using the qualified curve (as an argument):
+//! -   encloses the curve, or
+//! -   is enclosed by the curve, or
+//! -   is built so that both the curve and it are external to one another, or
+//! -   is undefined (all solutions apply).
+class Geom2dGcc_QualifiedCurve 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Constructs a qualified curve by assigning the qualifier <br>
-//! Qualifier to the curve Curve. Qualifier may be: <br>
-//! -   GccEnt_enclosing if the solution of a construction <br>
-//!   algorithm using the qualified curve encloses the curve, or <br>
-//! -   GccEnt_enclosed if the solution is enclosed by the curve, or <br>
-//! -   GccEnt_outside if both the solution and the curve <br>
-//!   are external to one another, or <br>
-//! -   GccEnt_unqualified if all solutions apply. <br>
-//! Note: The interior of a curve is defined as the left-hand <br>
-//! side of the curve in relation to its orientation. <br>
-//! Warning <br>
-//! Curve is an adapted curve, i.e. an object which is an interface between: <br>
-//! -   the services provided by a 2D curve from the package Geom2d, <br>
-//! -   and those required on the curve by a computation algorithm. <br>
-//! The adapted curve is created in the following way: <br>
-//! Handle(Geom2d_Curve) mycurve = ... ; <br>
-//! Geom2dAdaptor_Curve Curve ( mycurve ) ; <br>
-//! The qualified curve is then constructed with this object: <br>
-//! GccEnt_Position myQualif = GccEnt_outside ; <br>
-//! Geom2dGcc_QualifiedCurve myQCurve ( Curve, myQualif ); <br>
-//! is private; <br>
-  Standard_EXPORT   Geom2dGcc_QualifiedCurve(const Geom2dAdaptor_Curve& Curve,const GccEnt_Position Qualifier);
-  //! Returns a 2D curve to which the qualifier is assigned. <br>
-//! Warning <br>
-//! The returned curve is an adapted curve, i.e. an object <br>
-//! which is an interface between: <br>
-//! -   the services provided by a 2D curve from the package Geom2d, <br>
-//! -   and those required on the curve by a computation algorithm. <br>
-//! The Geom2d curve on which the adapted curve is <br>
-//! based can be obtained in the following way: <br>
-//! myQualifiedCurve = ... ; <br>
-//! Geom2dAdaptor_Curve myAdaptedCurve = myQualifiedCurve.Qualified(); <br>
-//! Handle(Geom2d_Curve) = myAdaptedCurve.Curve(); <br>
-  Standard_EXPORT     Geom2dAdaptor_Curve Qualified() const;
-  //! Returns <br>
-//! - the qualifier of this qualified curve if it is enclosing, <br>
-//!   enclosed or outside, or <br>
-//! -   GccEnt_noqualifier if it is unqualified. <br>
-  Standard_EXPORT     GccEnt_Position Qualifier() const;
-  //! Returns true if the solution is unqualified and false in the other cases. <br>
-  Standard_EXPORT     Standard_Boolean IsUnqualified() const;
-  //! It returns true if the solution is Enclosing the Curv and false in <br>
-//! the other cases. <br>
-  Standard_EXPORT     Standard_Boolean IsEnclosing() const;
-  //! It returns true if the solution is Enclosed in the Curv and false in <br>
-//! the other cases. <br>
-  Standard_EXPORT     Standard_Boolean IsEnclosed() const;
-  //! It returns true if the solution is Outside the Curv and false in <br>
-//! the other cases. <br>
-  Standard_EXPORT     Standard_Boolean IsOutside() const;
-
+  
+  //! Constructs a qualified curve by assigning the qualifier
+  //! Qualifier to the curve Curve. Qualifier may be:
+  //! -   GccEnt_enclosing if the solution of a construction
+  //! algorithm using the qualified curve encloses the curve, or
+  //! -   GccEnt_enclosed if the solution is enclosed by the curve, or
+  //! -   GccEnt_outside if both the solution and the curve
+  //! are external to one another, or
+  //! -   GccEnt_unqualified if all solutions apply.
+  //! Note: The interior of a curve is defined as the left-hand
+  //! side of the curve in relation to its orientation.
+  //! Warning
+  //! Curve is an adapted curve, i.e. an object which is an interface between:
+  //! -   the services provided by a 2D curve from the package Geom2d,
+  //! -   and those required on the curve by a computation algorithm.
+  //! The adapted curve is created in the following way:
+  //! Handle(Geom2d_Curve) mycurve = ... ;
+  //! Geom2dAdaptor_Curve Curve ( mycurve ) ;
+  //! The qualified curve is then constructed with this object:
+  //! GccEnt_Position myQualif = GccEnt_outside ;
+  //! Geom2dGcc_QualifiedCurve myQCurve ( Curve, myQualif );
+  //! is private;
+  Standard_EXPORT Geom2dGcc_QualifiedCurve(const Geom2dAdaptor_Curve& Curve, const GccEnt_Position Qualifier);
+  
+  //! Returns a 2D curve to which the qualifier is assigned.
+  //! Warning
+  //! The returned curve is an adapted curve, i.e. an object
+  //! which is an interface between:
+  //! -   the services provided by a 2D curve from the package Geom2d,
+  //! -   and those required on the curve by a computation algorithm.
+  //! The Geom2d curve on which the adapted curve is
+  //! based can be obtained in the following way:
+  //! myQualifiedCurve = ... ;
+  //! Geom2dAdaptor_Curve myAdaptedCurve = myQualifiedCurve.Qualified();
+  //! Handle(Geom2d_Curve) = myAdaptedCurve.Curve();
+  Standard_EXPORT   Geom2dAdaptor_Curve Qualified()  const;
+  
+  //! Returns
+  //! - the qualifier of this qualified curve if it is enclosing,
+  //! enclosed or outside, or
+  //! -   GccEnt_noqualifier if it is unqualified.
+  Standard_EXPORT   GccEnt_Position Qualifier()  const;
+  
+  //! Returns true if the solution is unqualified and false in the other cases.
+  Standard_EXPORT   Standard_Boolean IsUnqualified()  const;
+  
+  //! It returns true if the solution is Enclosing the Curv and false in
+  //! the other cases.
+  Standard_EXPORT   Standard_Boolean IsEnclosing()  const;
+  
+  //! It returns true if the solution is Enclosed in the Curv and false in
+  //! the other cases.
+  Standard_EXPORT   Standard_Boolean IsEnclosed()  const;
+  
+  //! It returns true if the solution is Outside the Curv and false in
+  //! the other cases.
+  Standard_EXPORT   Standard_Boolean IsOutside()  const;
 
 
 
@@ -106,8 +101,8 @@ private:
 
 
 
-GccEnt_Position TheQualifier;
-Geom2dAdaptor_Curve TheQualified;
+  GccEnt_Position TheQualifier;
+  Geom2dAdaptor_Curve TheQualified;
 
 
 };
@@ -116,7 +111,6 @@ Geom2dAdaptor_Curve TheQualified;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom2dGcc_QualifiedCurve_HeaderFile

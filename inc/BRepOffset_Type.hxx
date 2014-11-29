@@ -6,8 +6,11 @@
 #ifndef _BRepOffset_Type_HeaderFile
 #define _BRepOffset_Type_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum BRepOffset_Type {
+
+enum BRepOffset_Type
+{
 BRepOffset_Concave,
 BRepOffset_Convex,
 BRepOffset_Tangent,
@@ -15,8 +18,4 @@ BRepOffset_FreeBoundary,
 BRepOffset_Other
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BRepOffset_Type_HeaderFile

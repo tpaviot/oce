@@ -1,18 +1,6 @@
-#ifndef _Standard_ConstructionError_HeaderFile
 #include <Standard_ConstructionError.hxx>
-#endif
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _gp_Ax22d_HeaderFile
 #include <gp_Ax22d.hxx>
-#endif
-#ifndef _gp_Ax2d_HeaderFile
 #include <gp_Ax2d.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _Geom2d_Conic_HeaderFile
 #include <Geom2d_Conic.hxx>
-#endif

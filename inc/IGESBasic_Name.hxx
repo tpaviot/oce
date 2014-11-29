@@ -6,45 +6,37 @@
 #ifndef _IGESBasic_Name_HeaderFile
 #define _IGESBasic_Name_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESBasic_Name_HeaderFile
 #include <Handle_IGESBasic_Name.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _IGESData_NameEntity_HeaderFile
 #include <IGESData_NameEntity.hxx>
-#endif
 class TCollection_HAsciiString;
 
 
-//! defines Name, Type <406> Form <15> <br>
-//!          in package IGESBasic <br>
-//!          Used to specify a user defined name <br>
-class IGESBasic_Name : public IGESData_NameEntity {
+//! defines Name, Type <406> Form <15>
+//! in package IGESBasic
+//! Used to specify a user defined name
+class IGESBasic_Name : public IGESData_NameEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESBasic_Name();
-  //! This method is used to set the fields of the class Name <br>
-//!       - nbPropVal  : Number of property values, always = 1 <br>
-//!       - aName      : Stores the Name <br>
-  Standard_EXPORT     void Init(const Standard_Integer nbPropVal,const Handle(TCollection_HAsciiString)& aName) ;
-  //! returns the number of property values, which should be 1 <br>
-  Standard_EXPORT     Standard_Integer NbPropertyValues() const;
-  //! returns the user defined Name <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Value() const;
+  Standard_EXPORT IGESBasic_Name();
+  
+  //! This method is used to set the fields of the class Name
+  //! - nbPropVal  : Number of property values, always = 1
+  //! - aName      : Stores the Name
+  Standard_EXPORT   void Init (const Standard_Integer nbPropVal, const Handle(TCollection_HAsciiString)& aName) ;
+  
+  //! returns the number of property values, which should be 1
+  Standard_EXPORT   Standard_Integer NbPropertyValues()  const;
+  
+  //! returns the user defined Name
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Value()  const;
 
 
 
@@ -59,8 +51,8 @@ protected:
 private: 
 
 
-Standard_Integer theNbPropertyValues;
-Handle_TCollection_HAsciiString theName;
+  Standard_Integer theNbPropertyValues;
+  Handle(TCollection_HAsciiString) theName;
 
 
 };
@@ -69,7 +61,6 @@ Handle_TCollection_HAsciiString theName;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESBasic_Name_HeaderFile

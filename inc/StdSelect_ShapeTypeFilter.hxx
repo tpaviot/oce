@@ -6,53 +6,42 @@
 #ifndef _StdSelect_ShapeTypeFilter_HeaderFile
 #define _StdSelect_ShapeTypeFilter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StdSelect_ShapeTypeFilter_HeaderFile
 #include <Handle_StdSelect_ShapeTypeFilter.hxx>
-#endif
 
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
-#ifndef _SelectMgr_Filter_HeaderFile
 #include <SelectMgr_Filter.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_SelectMgr_EntityOwner_HeaderFile
 #include <Handle_SelectMgr_EntityOwner.hxx>
-#endif
 class SelectMgr_EntityOwner;
 
 
-//! A filter framework which allows you to define a filter <br>
-//! for a specific shape type. The types available include: <br>
-//! -   compound <br>
-//! -   compsolid <br>
-//! -   solid <br>
-//! -   shell <br>
-//! -   face <br>
-//! -   wire <br>
-//! -   edge <br>
-//! -   vertex. <br>
-class StdSelect_ShapeTypeFilter : public SelectMgr_Filter {
+//! A filter framework which allows you to define a filter
+//! for a specific shape type. The types available include:
+//! -   compound
+//! -   compsolid
+//! -   solid
+//! -   shell
+//! -   face
+//! -   wire
+//! -   edge
+//! -   vertex.
+class StdSelect_ShapeTypeFilter : public SelectMgr_Filter
+{
 
 public:
 
-  //! Constructs a filter object defined by the shape type aType. <br>
-  Standard_EXPORT   StdSelect_ShapeTypeFilter(const TopAbs_ShapeEnum aType);
   
-  Standard_EXPORT   virtual  Standard_Boolean IsOk(const Handle(SelectMgr_EntityOwner)& anobj) const;
-  //! Returns the type of shape selected by the filter. <br>
-        TopAbs_ShapeEnum Type() const;
+  //! Constructs a filter object defined by the shape type aType.
+  Standard_EXPORT StdSelect_ShapeTypeFilter(const TopAbs_ShapeEnum aType);
   
-  Standard_EXPORT   virtual  Standard_Boolean ActsOn(const TopAbs_ShapeEnum aStandardMode) const;
+  Standard_EXPORT virtual   Standard_Boolean IsOk (const Handle(SelectMgr_EntityOwner)& anobj)  const;
+  
+  //! Returns the type of shape selected by the filter.
+      TopAbs_ShapeEnum Type()  const;
+  
+  Standard_EXPORT virtual   Standard_Boolean ActsOn (const TopAbs_ShapeEnum aStandardMode)  const;
 
 
 
@@ -67,7 +56,7 @@ protected:
 private: 
 
 
-TopAbs_ShapeEnum myType;
+  TopAbs_ShapeEnum myType;
 
 
 };
@@ -77,7 +66,6 @@ TopAbs_ShapeEnum myType;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StdSelect_ShapeTypeFilter_HeaderFile

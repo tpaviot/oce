@@ -6,51 +6,37 @@
 #ifndef _GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve_HeaderFile
 #define _GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve_HeaderFile
 #include <Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve.hxx>
-#endif
-#ifndef _GeomToStep_Root_HeaderFile
 #include <GeomToStep_Root.hxx>
-#endif
-#ifndef _Handle_Geom_BSplineCurve_HeaderFile
 #include <Handle_Geom_BSplineCurve.hxx>
-#endif
-#ifndef _Handle_Geom2d_BSplineCurve_HeaderFile
 #include <Handle_Geom2d_BSplineCurve.hxx>
-#endif
 class StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve;
 class StdFail_NotDone;
 class Geom_BSplineCurve;
 class Geom2d_BSplineCurve;
 
 
-//! This class implements the mapping between classes <br>
-//!          BSplineCurve from Geom, Geom2d and the class <br>
-//!          BSplineCurveWithKnotsAndRationalBSplineCurve from StepGeom <br>
-//!          which describes a rational_bspline_curve_with_knots from <br>
-//!          Prostep <br>
-class GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve  : public GeomToStep_Root {
+//! This class implements the mapping between classes
+//! BSplineCurve from Geom, Geom2d and the class
+//! BSplineCurveWithKnotsAndRationalBSplineCurve from StepGeom
+//! which describes a rational_bspline_curve_with_knots from
+//! Prostep
+class GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve  : public GeomToStep_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve(const Handle(Geom_BSplineCurve)& Bsplin);
+  Standard_EXPORT GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve(const Handle(Geom_BSplineCurve)& Bsplin);
   
-  Standard_EXPORT   GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve(const Handle(Geom2d_BSplineCurve)& Bsplin);
+  Standard_EXPORT GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve(const Handle(Geom2d_BSplineCurve)& Bsplin);
   
-  Standard_EXPORT    const Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve& Value() const;
-
+  Standard_EXPORT  const  Handle(StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve)& Value()  const;
 
 
 
@@ -65,7 +51,7 @@ private:
 
 
 
-Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve theBSplineCurveWithKnotsAndRationalBSplineCurve;
+  Handle(StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve) theBSplineCurveWithKnotsAndRationalBSplineCurve;
 
 
 };
@@ -74,7 +60,6 @@ Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve theBSplineCurveWith
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve_HeaderFile

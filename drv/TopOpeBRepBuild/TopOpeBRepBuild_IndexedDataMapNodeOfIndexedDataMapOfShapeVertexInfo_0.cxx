@@ -5,22 +5,12 @@
 
 #include <TopOpeBRepBuild_IndexedDataMapNodeOfIndexedDataMapOfShapeVertexInfo.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_VertexInfo_HeaderFile
 #include <TopOpeBRepBuild_VertexInfo.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo_HeaderFile
 #include <TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo.hxx>
-#endif
 
  
 

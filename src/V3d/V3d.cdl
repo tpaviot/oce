@@ -30,17 +30,6 @@ package V3d
         --          of the 3D Viewer. It provides a set of high level commands
         --          to control the views and viewing modes. This package is
         --          complementary to the Visual3D graphic package.
-        --    Warning
-        -- The CSF_WALKTHROUGH variable enables you to
-        -- manage the perspective of the view in the viewer by
-        -- defining setenv CSF_WALKTHROUGH "Yes".
-        -- If you use the syntax unsetenv
-        -- CSF_WALKTHROUGH, you undefine the variable
-        -- (you make sure that the variable is deactivated). In
-        -- this case, the eye is located outside the 3D bounding
-        -- box of the view. This is the default behavior for
-        -- managing the view perspective.
-
 
 uses
         TColStd,
@@ -53,7 +42,8 @@ uses
         Image,
         gp,
         OSD,
-        Font
+        Font,
+        Bnd
 
 is
 
@@ -83,15 +73,14 @@ is
         end TypeOfView ;
         ---Purpose: Defines the type of projection of the view.
 
-        enumeration TypeOfShadingModel is COLOR,MULTICOLOR,FLAT,GOURAUD,HIDDEN
+        enumeration TypeOfShadingModel is COLOR,FLAT,GOURAUD,PHONG
               end TypeOfShadingModel ;
         ---Purpose:
         -- Defines the type of shading for the graphic object:
-        -- -   V3d_COLOR: simple surface color,
-        -- -   V3d_MULTICOLOR: interpolated colors,
-        -- -   V3d_FLAT: flat shading,
-        -- -   V3d_GOURAUD: Gouraud shading,
-        -- -   V3d_HIDDEN: hidden line removal.
+        -- -   V3d_COLOR: simple surface color (Visual3d_TOM_NONE),
+        -- -   V3d_FLAT: flat shading (Visual3d_TOM_FACET),
+        -- -   V3d_GOURAUD: Gouraud shading (Visual3d_TOM_VERTEX),
+        -- -   V3d_PHONG: Phong shading (Visual3d_TOM_FRAGMENT).
 
         enumeration  TypeOfSurfaceDetail  is  TEX_NONE, TEX_ENVIRONMENT, TEX_ALL
                end TypeOfSurfaceDetail;
@@ -157,10 +146,6 @@ is
             NOTHINGCAMERA
         end TypeOfPickCamera;
 
-    enumeration TypeOfProjectionModel is
-        TPM_SCREEN,TPM_WALKTHROUGH
-    end TypeOfProjectionModel;
-
         enumeration TypeOfBackfacingModel is
             TOBM_AUTOMATIC, TOBM_ALWAYS_DISPLAYED, TOBM_NEVER_DISPLAYED
         end TypeOfBackfacingModel;
@@ -170,50 +155,44 @@ is
         --            TOBM_ALWAYS_DISPLAYED     force display of back faces
         --            TOBM_NEVER_DISPLAYED      disable display of back faces
 
+        enumeration StereoDumpOptions is
+            SDO_MONO,
+            SDO_LEFT_EYE,
+            SDO_RIGHT_EYE
+        end StereoDumpOptions;
+        ---Purpose : Options to be used with image dumping.
+        --
+        --            SDO_MONO dump monographic projection for stereo camera
+        --            SDO_LEFT_EYE dump left eye projection for stereo camera
+        --            SDO_RIGHT_EYE dump right eye projection for stereo camera
+
         ------------------------
         ---Category: The classes
         ------------------------
 
         class Viewer;
-        ---Purpose: Provides the services of a 3D viewer.
 
         class View;
-        ---Purpose: Provides a set of services common to all types of view.
-
-        class OrthographicView;
-        ---Purpose: Services of an orthogonal view.
-
-        class PerspectiveView;
-        ---Purpose: Services of a perspective view.
 
         class LayerMgr;
-        ---Purpose: Services of layer management.
 
         deferred class Light;
-        ---Purpose: Provides services common to all types of luminous source.
-        --          (base class for AmbientLight and PositionLight)
-
 
         class AmbientLight;
-        ---Purpose: Services of ambient light sources.
 
         deferred class PositionLight;
-        ---Purpose: Provides services common to Positional,Directional,Spot Lights.
 
         class PositionalLight;
-        ---Purpose: Services of positional light sources.
 
         class DirectionalLight;
-        ---Purpose: Services of directional light sources.
 
         class SpotLight;
-        ---Purpose: Services of spot light sources.
 
         ---------------------------------
         ---Category: Instantiated classes
         ---------------------------------
 
-        private class ListOfTransient;
+        imported ListOfTransient;
 
         pointer ViewerPointer to Viewer from V3d;
         pointer ViewPointer to View from V3d;
@@ -234,7 +213,7 @@ is
         ---Purpose: Determines the orientation vector corresponding
         --          to the predefined orientation type.
 
-        ArrowOfRadius ( garrow   : mutable Group from Graphic3d;
+        ArrowOfRadius ( garrow   : Group from Graphic3d;
                         X0,Y0,Z0 : Coordinate;
                         DX,DY,DZ : Parameter;
                         Alpha    : PlaneAngle from Quantity;
@@ -246,7 +225,7 @@ is
         --          Alpha    : Angle of arrow.
         --          Lng      : Length of arrow.
 
-        CircleInPlane ( gcircle  : mutable Group from Graphic3d;
+        CircleInPlane ( gcircle  : Group from Graphic3d;
                         X0,Y0,Z0 : Coordinate;
                         VX,VY,VZ : Parameter;
                         Radius   : Parameter ) is protected;

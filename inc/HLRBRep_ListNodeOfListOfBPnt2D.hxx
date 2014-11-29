@@ -6,39 +6,28 @@
 #ifndef _HLRBRep_ListNodeOfListOfBPnt2D_HeaderFile
 #define _HLRBRep_ListNodeOfListOfBPnt2D_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_HLRBRep_ListNodeOfListOfBPnt2D_HeaderFile
 #include <Handle_HLRBRep_ListNodeOfListOfBPnt2D.hxx>
-#endif
 
-#ifndef _HLRBRep_BiPnt2D_HeaderFile
 #include <HLRBRep_BiPnt2D.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class HLRBRep_BiPnt2D;
 class HLRBRep_ListOfBPnt2D;
 class HLRBRep_ListIteratorOfListOfBPnt2D;
 
 
 
-class HLRBRep_ListNodeOfListOfBPnt2D : public TCollection_MapNode {
+class HLRBRep_ListNodeOfListOfBPnt2D : public TCollection_MapNode
+{
 
 public:
 
   
-      HLRBRep_ListNodeOfListOfBPnt2D(const HLRBRep_BiPnt2D& I,const TCollection_MapNodePtr& n);
+    HLRBRep_ListNodeOfListOfBPnt2D(const HLRBRep_BiPnt2D& I, const TCollection_MapNodePtr& n);
   
-        HLRBRep_BiPnt2D& Value() const;
+      HLRBRep_BiPnt2D& Value()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-HLRBRep_BiPnt2D myValue;
+  HLRBRep_BiPnt2D myValue;
 
 
 };
@@ -83,7 +72,6 @@ HLRBRep_BiPnt2D myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_ListNodeOfListOfBPnt2D_HeaderFile

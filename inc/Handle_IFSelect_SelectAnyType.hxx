@@ -6,22 +6,15 @@
 #ifndef _Handle_IFSelect_SelectAnyType_HeaderFile
 #define _Handle_IFSelect_SelectAnyType_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IFSelect_SelectExtract_HeaderFile
 #include <Handle_IFSelect_SelectExtract.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IFSelect_SelectExtract);
 class IFSelect_SelectAnyType;
 
-DEFINE_STANDARD_HANDLE(IFSelect_SelectAnyType,IFSelect_SelectExtract)
+DEFINE_STANDARD_HANDLE(IFSelect_SelectAnyType, IFSelect_SelectExtract)
 
-#endif
+#endif // _Handle_IFSelect_SelectAnyType_HeaderFile

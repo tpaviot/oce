@@ -6,13 +6,11 @@
 #ifndef _Quantity_Mass_HeaderFile
 #define _Quantity_Mass_HeaderFile
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 
 typedef Standard_Real Quantity_Mass;
 
 
 #define Quantity_Mass_Type_() Standard_Real_Type_()
 
-#endif
+#endif // _Quantity_Mass_HeaderFile

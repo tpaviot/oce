@@ -5,19 +5,11 @@
 
 #include <TopOpeBRepBuild_ListNodeOfListOfShapeListOfShape.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopOpeBRepBuild_ShapeListOfShape_HeaderFile
 #include <TopOpeBRepBuild_ShapeListOfShape.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_ListOfShapeListOfShape_HeaderFile
 #include <TopOpeBRepBuild_ListOfShapeListOfShape.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_ListIteratorOfListOfShapeListOfShape_HeaderFile
 #include <TopOpeBRepBuild_ListIteratorOfListOfShapeListOfShape.hxx>
-#endif
 
  
 

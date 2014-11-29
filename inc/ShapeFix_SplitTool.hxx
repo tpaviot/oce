@@ -6,28 +6,14 @@
 #ifndef _ShapeFix_SplitTool_HeaderFile
 #define _ShapeFix_SplitTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_ShapeBuild_ReShape_HeaderFile
 #include <Handle_ShapeBuild_ReShape.hxx>
-#endif
 class TopoDS_Edge;
 class TopoDS_Vertex;
 class TopoDS_Face;
@@ -35,31 +21,36 @@ class TopTools_SequenceOfShape;
 class ShapeBuild_ReShape;
 
 
-//! Tool for splitting and cutting edges; includes methods <br>
-//!          used in OverlappingTool and IntersectionTool <br>
-class ShapeFix_SplitTool  {
+//! Tool for splitting and cutting edges; includes methods
+//! used in OverlappingTool and IntersectionTool
+class ShapeFix_SplitTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor <br>
-  Standard_EXPORT   ShapeFix_SplitTool();
-  //! Split edge on two new edges using new vertex "vert" <br>
-//!          and "param" - parameter for splitting <br>
-//!          The "face" is necessary for pcurves and using TransferParameterProj <br>
-  Standard_EXPORT     Standard_Boolean SplitEdge(const TopoDS_Edge& edge,const Standard_Real param,const TopoDS_Vertex& vert,const TopoDS_Face& face,TopoDS_Edge& newE1,TopoDS_Edge& newE2,const Standard_Real tol3d,const Standard_Real tol2d) const;
-  //! Split edge on two new edges using new vertex "vert" <br>
-//!          and "param1" and "param2" - parameter for splitting and cutting <br>
-//!          The "face" is necessary for pcurves and using TransferParameterProj <br>
-  Standard_EXPORT     Standard_Boolean SplitEdge(const TopoDS_Edge& edge,const Standard_Real param1,const Standard_Real param2,const TopoDS_Vertex& vert,const TopoDS_Face& face,TopoDS_Edge& newE1,TopoDS_Edge& newE2,const Standard_Real tol3d,const Standard_Real tol2d) const;
-  //! Cut edge by parameters pend and cut <br>
-  Standard_EXPORT     Standard_Boolean CutEdge(const TopoDS_Edge& edge,const Standard_Real pend,const Standard_Real cut,const TopoDS_Face& face,Standard_Boolean& iscutline) const;
-  //! Split edge on two new edges using two new vertex V1 and V2 <br>
-//!          and two parameters for splitting - fp and lp correspondingly <br>
-//!          The "face" is necessary for pcurves and using TransferParameterProj <br>
-//!          aNum - number of edge in SeqE which corresponding to [fp,lp] <br>
-  Standard_EXPORT     Standard_Boolean SplitEdge(const TopoDS_Edge& edge,const Standard_Real fp,const TopoDS_Vertex& V1,const Standard_Real lp,const TopoDS_Vertex& V2,const TopoDS_Face& face,TopTools_SequenceOfShape& SeqE,Standard_Integer& aNum,const Handle(ShapeBuild_ReShape)& context,const Standard_Real tol3d,const Standard_Real tol2d) const;
-
+  
+  //! Empty constructor
+  Standard_EXPORT ShapeFix_SplitTool();
+  
+  //! Split edge on two new edges using new vertex "vert"
+  //! and "param" - parameter for splitting
+  //! The "face" is necessary for pcurves and using TransferParameterProj
+  Standard_EXPORT   Standard_Boolean SplitEdge (const TopoDS_Edge& edge, const Standard_Real param, const TopoDS_Vertex& vert, const TopoDS_Face& face, TopoDS_Edge& newE1, TopoDS_Edge& newE2, const Standard_Real tol3d, const Standard_Real tol2d)  const;
+  
+  //! Split edge on two new edges using new vertex "vert"
+  //! and "param1" and "param2" - parameter for splitting and cutting
+  //! The "face" is necessary for pcurves and using TransferParameterProj
+  Standard_EXPORT   Standard_Boolean SplitEdge (const TopoDS_Edge& edge, const Standard_Real param1, const Standard_Real param2, const TopoDS_Vertex& vert, const TopoDS_Face& face, TopoDS_Edge& newE1, TopoDS_Edge& newE2, const Standard_Real tol3d, const Standard_Real tol2d)  const;
+  
+  //! Cut edge by parameters pend and cut
+  Standard_EXPORT   Standard_Boolean CutEdge (const TopoDS_Edge& edge, const Standard_Real pend, const Standard_Real cut, const TopoDS_Face& face, Standard_Boolean& iscutline)  const;
+  
+  //! Split edge on two new edges using two new vertex V1 and V2
+  //! and two parameters for splitting - fp and lp correspondingly
+  //! The "face" is necessary for pcurves and using TransferParameterProj
+  //! aNum - number of edge in SeqE which corresponding to [fp,lp]
+  Standard_EXPORT   Standard_Boolean SplitEdge (const TopoDS_Edge& edge, const Standard_Real fp, const TopoDS_Vertex& V1, const Standard_Real lp, const TopoDS_Vertex& V2, const TopoDS_Face& face, TopTools_SequenceOfShape& SeqE, Standard_Integer& aNum, const Handle(ShapeBuild_ReShape)& context, const Standard_Real tol3d, const Standard_Real tol2d)  const;
 
 
 
@@ -82,7 +73,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeFix_SplitTool_HeaderFile

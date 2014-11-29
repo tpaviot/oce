@@ -6,22 +6,15 @@
 #ifndef _Handle_GccInt_BPoint_HeaderFile
 #define _Handle_GccInt_BPoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_GccInt_Bisec_HeaderFile
 #include <Handle_GccInt_Bisec.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(GccInt_Bisec);
 class GccInt_BPoint;
 
-DEFINE_STANDARD_HANDLE(GccInt_BPoint,GccInt_Bisec)
+DEFINE_STANDARD_HANDLE(GccInt_BPoint, GccInt_Bisec)
 
-#endif
+#endif // _Handle_GccInt_BPoint_HeaderFile

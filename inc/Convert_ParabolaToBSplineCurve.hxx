@@ -6,46 +6,37 @@
 #ifndef _Convert_ParabolaToBSplineCurve_HeaderFile
 #define _Convert_ParabolaToBSplineCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Convert_ConicToBSplineCurve_HeaderFile
 #include <Convert_ConicToBSplineCurve.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class gp_Parab2d;
 
 
 
-//!  This algorithm converts a parabola into a non rational B-spline <br>
-//!  curve. <br>
-//!  The parabola is a Parab2d from package gp with the parametrization <br>
-//!  P (U) = Loc + F * (U*U * Xdir + 2 * U * Ydir) where Loc is the <br>
-//!  apex of the parabola, Xdir is the normalized direction of the <br>
-//!  symmetry axis of the parabola, Ydir is the normalized direction of <br>
-//!  the directrix and F is the focal length. <br>
-//! KeyWords : <br>
-//!  Convert, Parabola, BSplineCurve, 2D . <br>
-class Convert_ParabolaToBSplineCurve  : public Convert_ConicToBSplineCurve {
+//! This algorithm converts a parabola into a non rational B-spline
+//! curve.
+//! The parabola is a Parab2d from package gp with the parametrization
+//! P (U) = Loc + F * (U*U * Xdir + 2 * U * Ydir) where Loc is the
+//! apex of the parabola, Xdir is the normalized direction of the
+//! symmetry axis of the parabola, Ydir is the normalized direction of
+//! the directrix and F is the focal length.
+//! KeyWords :
+//! Convert, Parabola, BSplineCurve, 2D .
+class Convert_ParabolaToBSplineCurve  : public Convert_ConicToBSplineCurve
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//!  The parabola Prb is limited between the parametric values U1, U2 <br>
-//!  and the equivalent B-spline curve as the same orientation as the <br>
-//!  parabola Prb. <br>
-  Standard_EXPORT   Convert_ParabolaToBSplineCurve(const gp_Parab2d& Prb,const Standard_Real U1,const Standard_Real U2);
 
+  //! The parabola Prb is limited between the parametric values U1, U2
+  //! and the equivalent B-spline curve as the same orientation as the
+  //! parabola Prb.
+  Standard_EXPORT Convert_ParabolaToBSplineCurve(const gp_Parab2d& Prb, const Standard_Real U1, const Standard_Real U2);
 
 
 
@@ -68,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Convert_ParabolaToBSplineCurve_HeaderFile

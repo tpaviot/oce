@@ -6,49 +6,42 @@
 #ifndef _IGESSolid_VertexList_HeaderFile
 #define _IGESSolid_VertexList_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSolid_VertexList_HeaderFile
 #include <Handle_IGESSolid_VertexList.hxx>
-#endif
 
-#ifndef _Handle_TColgp_HArray1OfXYZ_HeaderFile
 #include <Handle_TColgp_HArray1OfXYZ.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TColgp_HArray1OfXYZ;
 class Standard_OutOfRange;
 class gp_Pnt;
 
 
-//! defines VertexList, Type <502> Form Number <1> <br>
-//!          in package IGESSolid <br>
-//!          A vertex is a point in R3. A vertex is the bound of an <br>
-//!          edge and can participate in the bounds of a face. <br>
-class IGESSolid_VertexList : public IGESData_IGESEntity {
+//! defines VertexList, Type <502> Form Number <1>
+//! in package IGESSolid
+//! A vertex is a point in R3. A vertex is the bound of an
+//! edge and can participate in the bounds of a face.
+//! It contains one or more vertices.
+class IGESSolid_VertexList : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESSolid_VertexList();
-  //! This method is used to set the fields of the class <br>
-//!           VertexList <br>
-//!       - vertices : the vertices in the list <br>
-  Standard_EXPORT     void Init(const Handle(TColgp_HArray1OfXYZ)& vertices) ;
-  //! return the number of vertices in the list <br>
-  Standard_EXPORT     Standard_Integer NbVertices() const;
-  //! returns the num'th vertex in the list <br>
-//! raises exception if num  <= 0 or num > NbVertices() <br>
-  Standard_EXPORT     gp_Pnt Vertex(const Standard_Integer num) const;
+  Standard_EXPORT IGESSolid_VertexList();
+  
+  //! This method is used to set the fields of the class
+  //! VertexList
+  //! - vertices : the vertices in the list
+  Standard_EXPORT   void Init (const Handle(TColgp_HArray1OfXYZ)& vertices) ;
+  
+  //! return the number of vertices in the list
+  Standard_EXPORT   Standard_Integer NbVertices()  const;
+  
+  //! returns the num'th vertex in the list
+  //! raises exception if num  <= 0 or num > NbVertices()
+  Standard_EXPORT   gp_Pnt Vertex (const Standard_Integer num)  const;
 
 
 
@@ -63,7 +56,7 @@ protected:
 private: 
 
 
-Handle_TColgp_HArray1OfXYZ theVertices;
+  Handle(TColgp_HArray1OfXYZ) theVertices;
 
 
 };
@@ -72,7 +65,6 @@ Handle_TColgp_HArray1OfXYZ theVertices;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSolid_VertexList_HeaderFile

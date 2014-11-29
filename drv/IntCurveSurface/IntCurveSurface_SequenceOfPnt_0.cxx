@@ -5,18 +5,10 @@
 
 #include <IntCurveSurface_SequenceOfPnt.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IntCurveSurface_IntersectionPoint_HeaderFile
 #include <IntCurveSurface_IntersectionPoint.hxx>
-#endif
-#ifndef _IntCurveSurface_SequenceNodeOfSequenceOfPnt_HeaderFile
 #include <IntCurveSurface_SequenceNodeOfSequenceOfPnt.hxx>
-#endif
  
 
 #define SeqItem IntCurveSurface_IntersectionPoint

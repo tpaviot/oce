@@ -5,24 +5,14 @@
 
 #include <IGESBasic_Array1OfLineFontEntity.hxx>
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _IGESData_LineFontEntity_HeaderFile
 #include <IGESData_LineFontEntity.hxx>
-#endif
  
 
-#define Array1Item Handle_IGESData_LineFontEntity
+#define Array1Item Handle(IGESData_LineFontEntity)
 #define Array1Item_hxx <IGESData_LineFontEntity.hxx>
 #define TCollection_Array1 IGESBasic_Array1OfLineFontEntity
 #define TCollection_Array1_hxx <IGESBasic_Array1OfLineFontEntity.hxx>

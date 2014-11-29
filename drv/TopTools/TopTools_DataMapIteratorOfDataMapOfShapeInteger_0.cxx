@@ -5,21 +5,11 @@
 
 #include <TopTools_DataMapIteratorOfDataMapOfShapeInteger.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeInteger_HeaderFile
 #include <TopTools_DataMapOfShapeInteger.hxx>
-#endif
-#ifndef _TopTools_DataMapNodeOfDataMapOfShapeInteger_HeaderFile
 #include <TopTools_DataMapNodeOfDataMapOfShapeInteger.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape

@@ -6,22 +6,12 @@
 #ifndef _XCAFPrs_DataMapIteratorOfDataMapOfStyleShape_HeaderFile
 #define _XCAFPrs_DataMapIteratorOfDataMapOfStyleShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape_HeaderFile
 #include <Handle_XCAFPrs_DataMapNodeOfDataMapOfStyleShape.hxx>
-#endif
 class Standard_NoSuchObject;
 class XCAFPrs_Style;
 class TopoDS_Shape;
@@ -30,22 +20,22 @@ class XCAFPrs_DataMapNodeOfDataMapOfStyleShape;
 
 
 
-class XCAFPrs_DataMapIteratorOfDataMapOfStyleShape  : public TCollection_BasicMapIterator {
+class XCAFPrs_DataMapIteratorOfDataMapOfStyleShape  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   XCAFPrs_DataMapIteratorOfDataMapOfStyleShape();
+  Standard_EXPORT XCAFPrs_DataMapIteratorOfDataMapOfStyleShape();
   
-  Standard_EXPORT   XCAFPrs_DataMapIteratorOfDataMapOfStyleShape(const XCAFPrs_DataMapOfStyleShape& aMap);
+  Standard_EXPORT XCAFPrs_DataMapIteratorOfDataMapOfStyleShape(const XCAFPrs_DataMapOfStyleShape& aMap);
   
-  Standard_EXPORT     void Initialize(const XCAFPrs_DataMapOfStyleShape& aMap) ;
+  Standard_EXPORT   void Initialize (const XCAFPrs_DataMapOfStyleShape& aMap) ;
   
-  Standard_EXPORT    const XCAFPrs_Style& Key() const;
+  Standard_EXPORT  const  XCAFPrs_Style& Key()  const;
   
-  Standard_EXPORT    const TopoDS_Shape& Value() const;
-
+  Standard_EXPORT  const  TopoDS_Shape& Value()  const;
 
 
 
@@ -68,7 +58,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XCAFPrs_DataMapIteratorOfDataMapOfStyleShape_HeaderFile

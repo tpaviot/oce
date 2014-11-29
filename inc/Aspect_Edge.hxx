@@ -6,51 +6,48 @@
 #ifndef _Aspect_Edge_HeaderFile
 #define _Aspect_Edge_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Aspect_TypeOfEdge_HeaderFile
 #include <Aspect_TypeOfEdge.hxx>
-#endif
 class Aspect_EdgeDefinitionError;
 
 
-//! This class allows the definition of an edge. <br>
-class Aspect_Edge  {
+//! This class allows the definition of an edge.
+class Aspect_Edge 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an edge. <br>
-  Standard_EXPORT   Aspect_Edge();
-  //! Creates an edge from an index of vertices <br>
-//!	    in a table of vertices. <br>
-//!	    <AType> indicates if this edge is seen or not. <br>
-//!  Warning: Raises EdgeDefinitionError if AIndex1 == AIndex2. <br>
-  Standard_EXPORT   Aspect_Edge(const Standard_Integer AIndex1,const Standard_Integer AIndex2,const Aspect_TypeOfEdge AType);
-  //! Updates the values of an edge <me>. <br>
-//!  Warning: Raises EdgeDefinitionError if AIndex1 == AIndex2. <br>
-  Standard_EXPORT     void SetValues(const Standard_Integer AIndex1,const Standard_Integer AIndex2,const Aspect_TypeOfEdge AType) ;
-  //! Returns the index of the vertices and the <br>
-//!	    type of edge <me>. <br>
-  Standard_EXPORT     void Values(Standard_Integer& AIndex1,Standard_Integer& AIndex2,Aspect_TypeOfEdge& AType) const;
-  //! Returns the index of the begin of the edge <me>. <br>
-  Standard_EXPORT     Standard_Integer FirstIndex() const;
-  //! Returns the index of the end of the edge <me>. <br>
-  Standard_EXPORT     Standard_Integer LastIndex() const;
-  //! Returns the type of the edge <me>. <br>
-  Standard_EXPORT     Aspect_TypeOfEdge Type() const;
-
+  
+  //! Creates an edge.
+  Standard_EXPORT Aspect_Edge();
+  
+  //! Creates an edge from an index of vertices
+  //! in a table of vertices.
+  //! <AType> indicates if this edge is seen or not.
+  //! Warning: Raises EdgeDefinitionError if AIndex1 == AIndex2.
+  Standard_EXPORT Aspect_Edge(const Standard_Integer AIndex1, const Standard_Integer AIndex2, const Aspect_TypeOfEdge AType);
+  
+  //! Updates the values of an edge <me>.
+  //! Warning: Raises EdgeDefinitionError if AIndex1 == AIndex2.
+  Standard_EXPORT   void SetValues (const Standard_Integer AIndex1, const Standard_Integer AIndex2, const Aspect_TypeOfEdge AType) ;
+  
+  //! Returns the index of the vertices and the
+  //! type of edge <me>.
+  Standard_EXPORT   void Values (Standard_Integer& AIndex1, Standard_Integer& AIndex2, Aspect_TypeOfEdge& AType)  const;
+  
+  //! Returns the index of the begin of the edge <me>.
+  Standard_EXPORT   Standard_Integer FirstIndex()  const;
+  
+  //! Returns the index of the end of the edge <me>.
+  Standard_EXPORT   Standard_Integer LastIndex()  const;
+  
+  //! Returns the type of the edge <me>.
+  Standard_EXPORT   Aspect_TypeOfEdge Type()  const;
 
 
 
@@ -65,9 +62,9 @@ private:
 
 
 
-Standard_Integer MyBegin;
-Standard_Integer MyEnd;
-Aspect_TypeOfEdge MyVisibility;
+  Standard_Integer MyBegin;
+  Standard_Integer MyEnd;
+  Aspect_TypeOfEdge MyVisibility;
 
 
 };
@@ -76,7 +73,6 @@ Aspect_TypeOfEdge MyVisibility;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Aspect_Edge_HeaderFile

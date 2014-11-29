@@ -76,7 +76,7 @@
 #include <GeomAdaptor_Curve.hxx>
 #include <GeomConvert.hxx>
 
-//#ifdef DEB
+//#ifdef OCCT_DEBUG
 //Standard_IMPORT Standard_Boolean TopOpeBRepBuild_GettraceFE();
 //#endif
 
@@ -373,12 +373,8 @@ TopoDS_Shape& BRepLib_FuseEdges::Shape()
 void BRepLib_FuseEdges::BuildListEdges()
 {
 
-//#ifdef DEB
+//#ifdef OCCT_DEBUG
   //Standard_Boolean tFE = TopOpeBRepBuild_GettraceFE();
-//#endif
-
-//#ifdef DEB
-    //if (tFE) cout<<endl<<"FuseEdges : BuildListEdges  "<<endl;
 //#endif
 
   //--------------------------------------------------------
@@ -427,12 +423,8 @@ void BRepLib_FuseEdges::BuildListEdges()
 void BRepLib_FuseEdges::BuildListResultEdges()
 {
 
-//#ifdef DEB
+//#ifdef OCCT_DEBUG
   //Standard_Boolean tFE = TopOpeBRepBuild_GettraceFE();
-//#endif
-
-//#ifdef DEB
-    //if (tFE) cout<<endl<<"FuseEdges : BuildListResultEdges  "<<endl;
 //#endif
 
   // if we have edges to fuse
@@ -493,10 +485,6 @@ void BRepLib_FuseEdges::BuildListResultEdges()
       }
 
   
-//#ifdef DEB
-    //if (tFE) cout<<endl<<"FuseEdges : Creating New Edge "<<endl;
-//#endif
-
       BRepLib_MakeEdge ME;
       
       Standard_Boolean isBSpline = C->DynamicType() == STANDARD_TYPE(Geom_BSplineCurve); 
@@ -530,9 +518,6 @@ void BRepLib_FuseEdges::BuildListResultEdges()
 	// the curve which is not infinite and limited to old vertices
 	// we try to use ExtendCurveToPoint, then rebuild the NewEdge
 
-//#ifdef DEB
-	//if (tFE) cout<<endl<<"FuseEdges : MakeEdge failed. Trying to Extend Curve "<<endl;
-//#endif
 	Handle(Geom_BoundedCurve) ExtC = Handle(Geom_BoundedCurve)::DownCast(C->Copy());
 	if (!ExtC.IsNull()) {
 	  gp_Pnt PF = BRep_Tool::Pnt(VF);
@@ -550,9 +535,6 @@ void BRepLib_FuseEdges::BuildListResultEdges()
 
       NewEdge = ME.Edge();
 
-//#ifdef DEB
-      //if (tFE) cout<<endl<<"FuseEdges : Updating pcurve "<<endl;
-//#endif
       if (UpdatePCurve(OldEdge,NewEdge,LmapEdg))
         myMapEdg.Bind(iLst,NewEdge);
     }
@@ -570,17 +552,13 @@ void BRepLib_FuseEdges::BuildListResultEdges()
 void BRepLib_FuseEdges::Perform()
 {
 
-//#ifdef DEB
+//#ifdef OCCT_DEBUG
   //Standard_Boolean tFE = TopOpeBRepBuild_GettraceFE();
 //#endif
 
   if (!myResultEdgesDone) {
     BuildListResultEdges();
   }
-
-//#ifdef DEB
-    //if (tFE) cout<<endl<<"FuseEdges : Perform  "<<endl;
-//#endif
 
   // if we have fused edges
   if (myMapEdg.Extent() > 0) {
@@ -613,10 +591,6 @@ void BRepLib_FuseEdges::Perform()
       }      
     }
 
-//#ifdef DEB
-    //if (tFE) cout<<endl<<"FuseEdges : Building New Shape  "<<endl;
-//#endif
-
     // perform the effective substitution
     Bsub.Build(myShape);
 
@@ -633,11 +607,6 @@ void BRepLib_FuseEdges::Perform()
     if (Bsub.IsCopied(myShape)) {
       myShape=(Bsub.Copy(myShape)).First();
     }
-
-//#ifdef DEB
-    //if (tFE) cout<<endl<<"FuseEdges : "<< NbVertices() <<" vertices removed"<<endl;
-//#endif
-
 
   }
 
@@ -841,7 +810,7 @@ Standard_Boolean BRepLib_FuseEdges::SameSupport(const TopoDS_Edge& E1,
       typC1 != STANDARD_TYPE(Geom_Ellipse) &&
       typC1 != STANDARD_TYPE(Geom_BSplineCurve) && 
       typC1 != STANDARD_TYPE(Geom_BezierCurve)) {
-#ifdef DEB
+#ifdef OCCT_DEBUG
     cout << " TopOpeBRepTool_FuseEdge : Type de Support non traite" << endl;
 #endif
     return Standard_False;

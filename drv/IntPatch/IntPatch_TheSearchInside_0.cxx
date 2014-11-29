@@ -5,33 +5,17 @@
 
 #include <IntPatch_TheSearchInside.hxx>
 
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Adaptor3d_HSurface_HeaderFile
 #include <Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Adaptor3d_HSurfaceTool_HeaderFile
 #include <Adaptor3d_HSurfaceTool.hxx>
-#endif
-#ifndef _Adaptor3d_TopolTool_HeaderFile
 #include <Adaptor3d_TopolTool.hxx>
-#endif
-#ifndef _IntPatch_HInterTool_HeaderFile
 #include <IntPatch_HInterTool.hxx>
-#endif
-#ifndef _IntPatch_TheSurfFunction_HeaderFile
 #include <IntPatch_TheSurfFunction.hxx>
-#endif
-#ifndef _IntSurf_InteriorPoint_HeaderFile
 #include <IntSurf_InteriorPoint.hxx>
-#endif
  
 
-#define ThePSurface Handle_Adaptor3d_HSurface
+#define ThePSurface Handle(Adaptor3d_HSurface)
 #define ThePSurface_hxx <Adaptor3d_HSurface.hxx>
 #define ThePSurfaceTool Adaptor3d_HSurfaceTool
 #define ThePSurfaceTool_hxx <Adaptor3d_HSurfaceTool.hxx>

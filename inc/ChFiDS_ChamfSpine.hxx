@@ -6,54 +6,42 @@
 #ifndef _ChFiDS_ChamfSpine_HeaderFile
 #define _ChFiDS_ChamfSpine_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ChFiDS_ChamfSpine_HeaderFile
 #include <Handle_ChFiDS_ChamfSpine.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _ChFiDS_ChamfMethod_HeaderFile
 #include <ChFiDS_ChamfMethod.hxx>
-#endif
-#ifndef _ChFiDS_Spine_HeaderFile
 #include <ChFiDS_Spine.hxx>
-#endif
 
 
-//!  Provides  data specific to chamfers <br>
-//!         distances on  each  of faces. <br>
-class ChFiDS_ChamfSpine : public ChFiDS_Spine {
+//! Provides  data specific to chamfers
+//! distances on  each  of faces.
+class ChFiDS_ChamfSpine : public ChFiDS_Spine
+{
 
 public:
 
   
-  Standard_EXPORT   ChFiDS_ChamfSpine();
+  Standard_EXPORT ChFiDS_ChamfSpine();
   
-  Standard_EXPORT   ChFiDS_ChamfSpine(const Standard_Real Tol);
+  Standard_EXPORT ChFiDS_ChamfSpine(const Standard_Real Tol);
   
-  Standard_EXPORT     void SetDist(const Standard_Real Dis) ;
+  Standard_EXPORT   void SetDist (const Standard_Real Dis) ;
   
-  Standard_EXPORT     void GetDist(Standard_Real& Dis) const;
+  Standard_EXPORT   void GetDist (Standard_Real& Dis)  const;
   
-  Standard_EXPORT     void SetDists(const Standard_Real Dis1,const Standard_Real Dis2) ;
+  Standard_EXPORT   void SetDists (const Standard_Real Dis1, const Standard_Real Dis2) ;
   
-  Standard_EXPORT     void Dists(Standard_Real& Dis1,Standard_Real& Dis2) const;
+  Standard_EXPORT   void Dists (Standard_Real& Dis1, Standard_Real& Dis2)  const;
   
-  Standard_EXPORT     void GetDistAngle(Standard_Real& Dis,Standard_Real& Angle,Standard_Boolean& DisOnF1) const;
+  Standard_EXPORT   void GetDistAngle (Standard_Real& Dis, Standard_Real& Angle, Standard_Boolean& DisOnF1)  const;
   
-  Standard_EXPORT     void SetDistAngle(const Standard_Real Dis,const Standard_Real Angle,const Standard_Boolean DisOnF1) ;
-  //! Return the method of chamfers used <br>
-  Standard_EXPORT     ChFiDS_ChamfMethod IsChamfer() const;
+  Standard_EXPORT   void SetDistAngle (const Standard_Real Dis, const Standard_Real Angle, const Standard_Boolean DisOnF1) ;
+  
+  //! Return the method of chamfers used
+  Standard_EXPORT   ChFiDS_ChamfMethod IsChamfer()  const;
 
 
 
@@ -68,11 +56,11 @@ protected:
 private: 
 
 
-Standard_Real d1;
-Standard_Real d2;
-Standard_Boolean dison1;
-Standard_Real angle;
-ChFiDS_ChamfMethod mChamf;
+  Standard_Real d1;
+  Standard_Real d2;
+  Standard_Boolean dison1;
+  Standard_Real angle;
+  ChFiDS_ChamfMethod mChamf;
 
 
 };
@@ -81,7 +69,6 @@ ChFiDS_ChamfMethod mChamf;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ChFiDS_ChamfSpine_HeaderFile

@@ -18,7 +18,7 @@
 #include <XmlMNaming_NamedShapeDriver.ixx>
 
 #include <XmlObjMgt.hxx>
-#include <XmlMNaming_Array1OfShape1.hxx>
+#include <XmlObjMgt_Array1.hxx>
 #include <XmlMNaming_Shape1.hxx>
 
 #include <TDF_Label.hxx>
@@ -103,8 +103,8 @@ Standard_Boolean XmlMNaming_NamedShapeDriver::Paste
   // apres creation Builder qui a mis la version a 1 :
   aTarget -> SetVersion (aVersion);
 
-  const XmlMNaming_Array1OfShape1 OldPShapes (anElement, ::OldsString());
-  const XmlMNaming_Array1OfShape1 NewPShapes (anElement, ::NewsString());
+  const XmlObjMgt_Array1 OldPShapes (anElement, ::OldsString());
+  const XmlObjMgt_Array1 NewPShapes (anElement, ::NewsString());
   if (NewPShapes.Length() == 0 && OldPShapes.Length() == 0)
     return Standard_True;
 
@@ -198,7 +198,7 @@ void XmlMNaming_NamedShapeDriver::Paste (const Handle(TDF_Attribute)& theSource,
   }
 
   BRepTools_ShapeSet& aShapeSet = (BRepTools_ShapeSet&) myShapeSet;
-  XmlMNaming_Array1OfShape1 OldPShapes (1,NbShapes), NewPShapes (1,NbShapes);
+  XmlObjMgt_Array1 OldPShapes (1,NbShapes), NewPShapes (1,NbShapes);
 
   OldPShapes.CreateArrayElement (theTarget, ::OldsString());
   NewPShapes.CreateArrayElement (theTarget, ::NewsString());
@@ -345,11 +345,7 @@ void XmlMNaming_NamedShapeDriver::ReadShapeSection
     {
       if (aNode.getNodeType() == LDOM_Node::TEXT_NODE) {
         LDOMString aData = aNode.getNodeValue();
-	#ifdef USE_STL_STREAM
         std::stringstream aStream (std::string(aData.GetString()));
-	#else
-        istrstream aStream (Standard_CString(aData.GetString()));
-	#endif
         myShapeSet.Clear();
         myShapeSet.Read (aStream);
         break;
@@ -374,7 +370,7 @@ void XmlMNaming_NamedShapeDriver::WriteShapeSection
   //  Add text to the "shapes" element
   if (myShapeSet.NbShapes() > 0) {
     myShapeSet.SetFormatNb(2);
-    LDOM_OSStream aStream (1024);
+    LDOM_OSStream aStream (16 * 1024);
 //    ostrstream aStream;
 //    aStream.rdbuf() -> setbuf (0, 16380);
     myShapeSet.Write (aStream);

@@ -6,75 +6,56 @@
 #ifndef _AIS_DimensionOwner_HeaderFile
 #define _AIS_DimensionOwner_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_AIS_DimensionOwner_HeaderFile
 #include <Handle_AIS_DimensionOwner.hxx>
-#endif
 
-#ifndef _AIS_DimensionSelectionMode_HeaderFile
 #include <AIS_DimensionSelectionMode.hxx>
-#endif
-#ifndef _SelectMgr_EntityOwner_HeaderFile
 #include <SelectMgr_EntityOwner.hxx>
-#endif
-#ifndef _Handle_SelectMgr_SelectableObject_HeaderFile
 #include <Handle_SelectMgr_SelectableObject.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_PrsMgr_PresentationManager3d_HeaderFile
-#include <Handle_PrsMgr_PresentationManager3d.hxx>
-#endif
-#ifndef _Quantity_NameOfColor_HeaderFile
+#include <PrsMgr_PresentationManager3d.hxx>
 #include <Quantity_NameOfColor.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_PrsMgr_PresentationManager_HeaderFile
 #include <Handle_PrsMgr_PresentationManager.hxx>
-#endif
 class SelectMgr_SelectableObject;
-class PrsMgr_PresentationManager3d;
 class PrsMgr_PresentationManager;
 
 
-//! The owner is the entity which makes it possible to link <br>
-//! the sensitive primitives and the reference shapes that <br>
-//! you want to detect. It stocks the various pieces of <br>
-//! information which make it possible to find objects. An <br>
-//! owner has a priority which you can modulate, so as to <br>
-//! make one entity more selectable than another. You <br>
-//! might want to make edges more selectable than <br>
-//! faces, for example. In that case, you could attribute sa <br>
-//! higher priority to the one compared to the other. An <br>
-//! edge, could have priority 5, for example, and a face, <br>
-//! priority 4. The default priority is 5. <br>
-class AIS_DimensionOwner : public SelectMgr_EntityOwner {
+//! The owner is the entity which makes it possible to link
+//! the sensitive primitives and the reference shapes that
+//! you want to detect. It stocks the various pieces of
+//! information which make it possible to find objects. An
+//! owner has a priority which you can modulate, so as to
+//! make one entity more selectable than another. You
+//! might want to make edges more selectable than
+//! faces, for example. In that case, you could attribute sa
+//! higher priority to the one compared to the other. An
+//! edge, could have priority 5, for example, and a face,
+//! priority 4. The default priority is 5.
+class AIS_DimensionOwner : public SelectMgr_EntityOwner
+{
 
 public:
 
   
-//! Initializes the dimension owner, theSO, and attributes it <br>
-//! the priority, thePriority. <br>
-  Standard_EXPORT   AIS_DimensionOwner(const Handle(SelectMgr_SelectableObject)& theSelObject,const AIS_DimensionSelectionMode theSelMode,const Standard_Integer thePriority = 0);
+
+  //! Initializes the dimension owner, theSO, and attributes it
+  //! the priority, thePriority.
+  Standard_EXPORT AIS_DimensionOwner(const Handle(SelectMgr_SelectableObject)& theSelObject, const AIS_DimensionSelectionMode theSelMode, const Standard_Integer thePriority = 0);
   
-  Standard_EXPORT     AIS_DimensionSelectionMode SelectionMode() const;
+  Standard_EXPORT   AIS_DimensionSelectionMode SelectionMode()  const;
   
-  Standard_EXPORT   virtual  void HilightWithColor(const Handle(PrsMgr_PresentationManager3d)& thePM,const Quantity_NameOfColor theColor,const Standard_Integer theMode = 0) ;
-  //! Returns true if an object with the selection mode <br>
-//! aMode is highlighted in the presentation manager aPM. <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsHilighted(const Handle(PrsMgr_PresentationManager)& thePM,const Standard_Integer theMode = 0) const;
+  Standard_EXPORT virtual   void HilightWithColor (const Handle(PrsMgr_PresentationManager3d)& thePM, const Quantity_NameOfColor theColor, const Standard_Integer theMode = 0) ;
   
-  Standard_EXPORT   virtual  void Hilight(const Handle(PrsMgr_PresentationManager)& thePM,const Standard_Integer theMode = 0) ;
-  //! Removes highlighting from the selected part of dimension. <br>
-  Standard_EXPORT   virtual  void Unhilight(const Handle(PrsMgr_PresentationManager)& thePM,const Standard_Integer theMode = 0) ;
+  //! Returns true if an object with the selection mode
+  //! aMode is highlighted in the presentation manager aPM.
+  Standard_EXPORT virtual   Standard_Boolean IsHilighted (const Handle(PrsMgr_PresentationManager)& thePM, const Standard_Integer theMode = 0)  const;
+  
+  Standard_EXPORT virtual   void Hilight (const Handle(PrsMgr_PresentationManager)& thePM, const Standard_Integer theMode = 0) ;
+  
+  //! Removes highlighting from the selected part of dimension.
+  Standard_EXPORT virtual   void Unhilight (const Handle(PrsMgr_PresentationManager)& thePM, const Standard_Integer theMode = 0) ;
 
 
 
@@ -89,7 +70,7 @@ protected:
 private: 
 
 
-AIS_DimensionSelectionMode mySelectionMode;
+  AIS_DimensionSelectionMode mySelectionMode;
 
 
 };
@@ -98,7 +79,6 @@ AIS_DimensionSelectionMode mySelectionMode;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_DimensionOwner_HeaderFile

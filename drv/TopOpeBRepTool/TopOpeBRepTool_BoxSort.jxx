@@ -1,21 +1,7 @@
-#ifndef _TopOpeBRepTool_HBoxTool_HeaderFile
 #include <TopOpeBRepTool_HBoxTool.hxx>
-#endif
-#ifndef _Bnd_HArray1OfBox_HeaderFile
 #include <Bnd_HArray1OfBox.hxx>
-#endif
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
-#ifndef _TColStd_ListIteratorOfListOfInteger_HeaderFile
 #include <TColStd_ListIteratorOfListOfInteger.hxx>
-#endif
-#ifndef _TopOpeBRepTool_BoxSort_HeaderFile
 #include <TopOpeBRepTool_BoxSort.hxx>
-#endif

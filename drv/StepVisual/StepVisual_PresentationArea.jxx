@@ -1,3 +1,1 @@
-#ifndef _StepVisual_PresentationArea_HeaderFile
 #include <StepVisual_PresentationArea.hxx>
-#endif

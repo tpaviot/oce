@@ -5,28 +5,14 @@
 
 #include <StepFEA_HArray1OfCurveElementInterval.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _StepFEA_CurveElementInterval_HeaderFile
 #include <StepFEA_CurveElementInterval.hxx>
-#endif
-#ifndef _StepFEA_Array1OfCurveElementInterval_HeaderFile
 #include <StepFEA_Array1OfCurveElementInterval.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(StepFEA_HArray1OfCurveElementInterval,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(StepFEA_HArray1OfCurveElementInterval)
 
 
-#define ItemHArray1 Handle_StepFEA_CurveElementInterval
+#define ItemHArray1 Handle(StepFEA_CurveElementInterval)
 #define ItemHArray1_hxx <StepFEA_CurveElementInterval.hxx>
 #define TheArray1 StepFEA_Array1OfCurveElementInterval
 #define TheArray1_hxx <StepFEA_Array1OfCurveElementInterval.hxx>

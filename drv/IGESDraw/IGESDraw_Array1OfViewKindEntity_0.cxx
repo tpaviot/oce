@@ -5,24 +5,14 @@
 
 #include <IGESDraw_Array1OfViewKindEntity.hxx>
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _IGESData_ViewKindEntity_HeaderFile
 #include <IGESData_ViewKindEntity.hxx>
-#endif
  
 
-#define Array1Item Handle_IGESData_ViewKindEntity
+#define Array1Item Handle(IGESData_ViewKindEntity)
 #define Array1Item_hxx <IGESData_ViewKindEntity.hxx>
 #define TCollection_Array1 IGESDraw_Array1OfViewKindEntity
 #define TCollection_Array1_hxx <IGESDraw_Array1OfViewKindEntity.hxx>

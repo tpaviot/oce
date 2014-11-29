@@ -6,33 +6,20 @@
 #ifndef _OSD_SIGHUP_HeaderFile
 #define _OSD_SIGHUP_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_DefineException_HeaderFile
 #include <Standard_DefineException.hxx>
-#endif
-#ifndef _Standard_SStream_HeaderFile
 #include <Standard_SStream.hxx>
-#endif
-
-#ifndef _OSD_Signal_HeaderFile
 #include <OSD_Signal.hxx>
-#endif
-#ifndef _Handle_OSD_SIGHUP_HeaderFile
 #include <Handle_OSD_SIGHUP.hxx>
-#endif
 
 #if !defined No_Exception && !defined No_OSD_SIGHUP
-#define OSD_SIGHUP_Raise_if(CONDITION,MESSAGE) \
+  #define OSD_SIGHUP_Raise_if(CONDITION, MESSAGE) \
   if (CONDITION) OSD_SIGHUP::Raise(MESSAGE);
 #else
-#define OSD_SIGHUP_Raise_if(CONDITION,MESSAGE)
+  #define OSD_SIGHUP_Raise_if(CONDITION, MESSAGE)
 #endif
 
-DEFINE_STANDARD_EXCEPTION(OSD_SIGHUP,OSD_Signal)
+DEFINE_STANDARD_EXCEPTION(OSD_SIGHUP, OSD_Signal)
 
-#endif
+#endif // _OSD_SIGHUP_HeaderFile

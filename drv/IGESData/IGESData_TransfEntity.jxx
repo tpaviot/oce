@@ -1,6 +1,2 @@
-#ifndef _gp_GTrsf_HeaderFile
 #include <gp_GTrsf.hxx>
-#endif
-#ifndef _IGESData_TransfEntity_HeaderFile
 #include <IGESData_TransfEntity.hxx>
-#endif

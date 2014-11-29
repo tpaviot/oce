@@ -6,22 +6,15 @@
 #ifndef _Handle_Units_UnitsLexicon_HeaderFile
 #define _Handle_Units_UnitsLexicon_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Units_Lexicon_HeaderFile
 #include <Handle_Units_Lexicon.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Units_Lexicon);
 class Units_UnitsLexicon;
 
-DEFINE_STANDARD_HANDLE(Units_UnitsLexicon,Units_Lexicon)
+DEFINE_STANDARD_HANDLE(Units_UnitsLexicon, Units_Lexicon)
 
-#endif
+#endif // _Handle_Units_UnitsLexicon_HeaderFile

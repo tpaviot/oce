@@ -6,15 +6,14 @@
 #ifndef _Aspect_TypeOfRenderingMode_HeaderFile
 #define _Aspect_TypeOfRenderingMode_HeaderFile
 
-//! Definition of the rendering modes <br>
-enum Aspect_TypeOfRenderingMode {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Definition of the rendering modes
+enum Aspect_TypeOfRenderingMode
+{
 Aspect_TORM_IMMEDIAT,
 Aspect_TORM_RETAIN,
 Aspect_TORM_CLEAR_AND_RETAIN
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Aspect_TypeOfRenderingMode_HeaderFile

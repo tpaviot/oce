@@ -5,19 +5,11 @@
 
 #include <TNaming_ListNodeOfListOfIndexedDataMapOfShapeListOfShape.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopTools_IndexedDataMapOfShapeListOfShape_HeaderFile
 #include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _TNaming_ListOfIndexedDataMapOfShapeListOfShape_HeaderFile
 #include <TNaming_ListOfIndexedDataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape_HeaderFile
 #include <TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape.hxx>
-#endif
 
  
 

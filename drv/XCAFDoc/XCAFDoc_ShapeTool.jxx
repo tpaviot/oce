@@ -1,36 +1,12 @@
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TDF_LabelSequence_HeaderFile
 #include <TDF_LabelSequence.hxx>
-#endif
-#ifndef _TopLoc_Location_HeaderFile
 #include <TopLoc_Location.hxx>
-#endif
-#ifndef _TDF_Attribute_HeaderFile
 #include <TDF_Attribute.hxx>
-#endif
-#ifndef _TDF_RelocationTable_HeaderFile
 #include <TDF_RelocationTable.hxx>
-#endif
-#ifndef _TColStd_SequenceOfHAsciiString_HeaderFile
 #include <TColStd_SequenceOfHAsciiString.hxx>
-#endif
-#ifndef _XCAFDoc_GraphNode_HeaderFile
 #include <XCAFDoc_GraphNode.hxx>
-#endif
-#ifndef _TDF_AttributeSequence_HeaderFile
 #include <TDF_AttributeSequence.hxx>
-#endif
-#ifndef _TopTools_SequenceOfShape_HeaderFile
 #include <TopTools_SequenceOfShape.hxx>
-#endif
-#ifndef _XCAFDoc_ShapeTool_HeaderFile
 #include <XCAFDoc_ShapeTool.hxx>
-#endif

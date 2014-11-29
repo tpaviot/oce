@@ -6,28 +6,14 @@
 #ifndef _CDM_ListIteratorOfListOfDocument_HeaderFile
 #define _CDM_ListIteratorOfListOfDocument_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_CDM_Document_HeaderFile
 #include <Handle_CDM_Document.hxx>
-#endif
-#ifndef _Handle_CDM_ListNodeOfListOfDocument_HeaderFile
 #include <Handle_CDM_ListNodeOfListOfDocument.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class CDM_ListOfDocument;
@@ -36,27 +22,27 @@ class CDM_ListNodeOfListOfDocument;
 
 
 
-class CDM_ListIteratorOfListOfDocument  {
+class CDM_ListIteratorOfListOfDocument 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   CDM_ListIteratorOfListOfDocument();
+  Standard_EXPORT CDM_ListIteratorOfListOfDocument();
   
-  Standard_EXPORT   CDM_ListIteratorOfListOfDocument(const CDM_ListOfDocument& L);
+  Standard_EXPORT CDM_ListIteratorOfListOfDocument(const CDM_ListOfDocument& L);
   
-  Standard_EXPORT     void Initialize(const CDM_ListOfDocument& L) ;
+  Standard_EXPORT   void Initialize (const CDM_ListOfDocument& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     Handle_CDM_Document& Value() const;
+  Standard_EXPORT   Handle(CDM_Document)& Value()  const;
 
 
 friend class CDM_ListOfDocument;
-
 
 
 protected:
@@ -69,13 +55,13 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
 
-#define Item Handle_CDM_Document
+#define Item Handle(CDM_Document)
 #define Item_hxx <CDM_Document.hxx>
 #define TCollection_ListNode CDM_ListNodeOfListOfDocument
 #define TCollection_ListNode_hxx <CDM_ListNodeOfListOfDocument.hxx>
@@ -100,7 +86,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _CDM_ListIteratorOfListOfDocument_HeaderFile

@@ -1,15 +1,5 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepVisual_AnnotationText_HeaderFile
 #include <StepVisual_AnnotationText.hxx>
-#endif
-#ifndef _StepVisual_CompositeText_HeaderFile
 #include <StepVisual_CompositeText.hxx>
-#endif
-#ifndef _StepVisual_TextLiteral_HeaderFile
 #include <StepVisual_TextLiteral.hxx>
-#endif
-#ifndef _StepVisual_TextOrCharacter_HeaderFile
 #include <StepVisual_TextOrCharacter.hxx>
-#endif

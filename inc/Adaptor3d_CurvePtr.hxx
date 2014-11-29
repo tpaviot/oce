@@ -7,7 +7,6 @@
 #define _Adaptor3d_CurvePtr_HeaderFile
 
 class Adaptor3d_Curve;
-
 typedef Adaptor3d_Curve* Adaptor3d_CurvePtr;
 
-#endif
+#endif // _Adaptor3d_CurvePtr_HeaderFile

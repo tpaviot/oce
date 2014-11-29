@@ -6,22 +6,15 @@
 #ifndef _Handle_DDocStd_DrawDocument_HeaderFile
 #define _Handle_DDocStd_DrawDocument_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_DDF_Data_HeaderFile
 #include <Handle_DDF_Data.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(DDF_Data);
 class DDocStd_DrawDocument;
 
-DEFINE_STANDARD_HANDLE(DDocStd_DrawDocument,DDF_Data)
+DEFINE_STANDARD_HANDLE(DDocStd_DrawDocument, DDF_Data)
 
-#endif
+#endif // _Handle_DDocStd_DrawDocument_HeaderFile

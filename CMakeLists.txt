@@ -30,7 +30,7 @@ set(OCE_VERSION_DEVEL -dev)
 # bugfix release: add ${OCE_VERSION_PATCH} to OCE_VERSION
 set(OCE_VERSION ${OCE_VERSION_MAJOR}.${OCE_VERSION_MINOR}${OCE_VERSION_DEVEL})
 
-set(OCE_ABI_SOVERSION 9)
+set(OCE_ABI_SOVERSION 10)
 set(OCE_ABI_VERSION ${OCE_ABI_SOVERSION}.0.0)
 
 # Set the minimum version of cmake required to 2.6
@@ -153,6 +153,7 @@ option_with_default( OCE_VISUALISATION "Build visualisation component" ON )
 option_with_default( OCE_WITH_OPENCL "OpenCL support for shaders and raytracing" OFF )
 option_with_default( OCE_WITH_GL2PS "Build with GL2PS" OFF )
 option_with_default( OCE_WITH_FREEIMAGE "Build with FreeImage" OFF )
+option_with_default( OCE_WITH_VTK "Build with VTK" OFF )
 option_with_default( OCE_DISABLE_TKSERVICE_FONT "Disable TKService Font (only without Visualization)" OFF )
 mark_as_advanced(OCE_DISABLE_TKSERVICE_FONT)
 option_with_default( OCE_BUILD_TKERNEL_WITH_INSTALL_RPATH "Build TKernel with install RPATH" ON )
@@ -164,8 +165,6 @@ if( NOT "${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" LESS 2.8 )
 endif( NOT "${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" LESS 2.8 )
 option_with_default( OCE_ADD_HEADERS "Add headers to project files" OFF )
 mark_as_advanced(OCE_ADD_HEADERS)
-option_with_default( OCE_DISABLE_BSPLINE_MESHER "Disable BSpline Mesher" OFF )
-mark_as_advanced(OCE_DISABLE_BSPLINE_MESHER)
 if (NOT WIN32)
 	option_with_default( OCE_RPATH_FILTER_SYSTEM_PATHS "Filter out system paths from RPATH" ON )
 	mark_as_advanced(OCE_RPATH_FILTER_SYSTEM_PATHS)
@@ -324,6 +323,10 @@ endif(OCE_VISUALISATION AND NOT OCE_MODEL)
 if(OCE_DRAW AND NOT OCE_VISUALISATION)
 	set(OCE_VISUALISATION ON CACHE BOOL "Build visualisation component" FORCE)
 endif(OCE_DRAW AND NOT OCE_VISUALISATION)
+
+if(OCE_VISUALISATION AND OCE_WITH_VTK)
+	find_package(VTK REQUIRED)
+endif()
 
 set(INSTALL_STDRESOURCE_FILES)
 set(INSTALL_RESOURCE_FILES)
@@ -592,141 +595,21 @@ endif(WIN32)
 ###################################################
 # Check required headers, functions and libraries #
 ###################################################
-include(CheckFunctionExists)
-check_function_exists(finite HAVE_FINITE)
 if (NOT WIN32)
 	# Check headers
 	# I think these should all be check cxx headers, as I think there is no c
 	# compilation anywhere in OCE
 	include(CheckIncludeFile)
-	#include(CheckIncludeFiles)
-	check_include_file(string.h HAVE_STRING_H)
-	check_include_file(dlfcn.h HAVE_DLFCN_H)
-	check_include_file(dl.h HAVE_DL_H)
-	check_include_file(ieeefp.h HAVE_IEEEFP_H)
-	check_include_file(time.h HAVE_TIME_H)
-	check_include_file(sys/time.h HAVE_SYS_TIME_H)
-	check_include_file(pwd.h HAVE_PWD_H)
-	check_include_file(sys/statvfs.h HAVE_SYS_STATVFS_H)
-	check_include_file(sys/vfs.h HAVE_SYS_VFS_H)
-	check_include_file(sys/param.h HAVE_SYS_PARAM_H)
-	check_include_file(osfcn.h HAVE_OSFCN_H)
-	check_include_file(netdb.h HAVE_NETDB_H)
-	check_include_file(sys/ioctl.h HAVE_SYS_IOCTL_H)
-	check_include_file(net/if.h HAVE_NET_IF_H)
-	check_include_file(sys/systeminfo.h HAVE_SYS_SYSTEMINFO_H)
-	check_include_file(sys/utsname.h HAVE_SYS_UTSNAME_H)
-	check_include_file(sysent.h HAVE_SYSENT_H)
-	check_include_file(unistd.h HAVE_UNISTD_H)
-	check_include_file(sys/unistd.h HAVE_SYS_UNISTD_H)
-	check_include_file(sys/socket.h HAVE_SYS_SOCKET_H)
-	check_include_file(ndir.h HAVE_NDIR_H)
-	check_include_file(sys/ndir.h HAVE_SYS_NDIR_H)
-	check_include_file(sys/dir.h HAVE_SYS_DIR_H)
-	check_include_file(signal.h HAVE_SIGNAL_H)
-	check_include_file(sys/signal.h HAVE_SYS_SIGNAL_H)
-	check_include_file(sigfpe.h HAVE_SIGFPE_H)
-	check_include_file(floatingpoint.h HAVE_FLOATINGPOINT_H)
-	check_include_file(sys/machsig.h HAVE_SYS_MACHSIG_H)
-	check_include_file(sys/siginfo.h HAVE_SYS_SIGINFO_H)
-	check_include_file(malloc.h HAVE_MALLOC_H)
 	check_include_file(strings.h HAVE_STRINGS_H)
-	check_include_file(sys/stat.h HAVE_SYS_STAT_H)
-	check_include_file(sys/sem.h HAVE_SYS_SEM_H)
-	check_include_file(sys/ipc.h HAVE_SYS_IPC_H)
-	check_include_file(sys/times.h HAVE_SYS_TIMES_H)
-	check_include_file(dirent.h HAVE_DIRENT_H)
 	include(CheckIncludeFileCXX)
-	check_include_file_cxx(iomanip.h OCE_HAVE_IOMANIP_H)
-	check_include_file_cxx(limits OCE_HAVE_LIMITS)
-	check_include_file_cxx(climits OCE_HAVE_CLIMITS)
-	check_include_file_cxx(limits.h OCE_HAVE_LIMITS_H)
-	check_include_file_cxx(values.h HAVE_VALUES_H)
-	check_include_file_cxx(fstream OCE_HAVE_FSTREAM)
-	check_include_file_cxx(ios HAVE_IOS)
-	check_include_file_cxx(iomanip OCE_HAVE_IOMANIP)
-	check_include_file_cxx(iostream OCE_HAVE_IOSTREAM)
-	check_include_file_cxx(fstream.h OCE_HAVE_FSTREAM_H)
-	check_include_file_cxx(ios.h HAVE_IOS_H)
-	check_include_file_cxx(iostream.h OCE_HAVE_IOSTREAM_H)
-	check_include_file_cxx(stdlib.h HAVE_STDLIB_H)
-	check_include_file_cxx(sys/types.h HAVE_SYS_TYPES_H)
-	check_include_file_cxx(sys/select.h HAVE_SYS_SELECT_H)
-	check_include_file_cxx(X11/extensions/readdisplay.h HAVE_X11_EXTENSIONS_READDISPLAY_H)
-	check_include_file_cxx(X11/extensions/multibuf.h HAVE_X11_EXTENSIONS_MULTIBUF_H)
-	check_include_file_cxx(sys/filio.h HAVE_SYS_FILIO_H)
-	check_include_file_cxx(sys/mman.h HAVE_SYS_MMAN_H)
-	check_include_file_cxx(libc.h HAVE_LIBC_H)
 	check_include_file_cxx(mm_malloc.h HAVE_MM_MALLOC_H)
-	check_include_file_cxx(atomic.h HAVE_ATOMIC_H)
+	check_include_file_cxx(atomic.h OCE_HAVE_ATOMIC_H)
 	# Check library functions
-	check_function_exists(alloca HAVE_ALLOCA)
-	check_function_exists(memcmp HAVE_MEMCMP)
-	check_function_exists(signal HAVE_SIGNAL)
-	check_function_exists(statfs HAVE_STATFS)
-	check_function_exists(statvfs HAVE_STATVFS)
+	include(CheckFunctionExists)
 	check_function_exists(localtime_r HAVE_LOCALTIME_R)
 	check_function_exists(posix_memalign HAVE_POSIX_MEMALIGN)
-	set(CMAKE_REQUIRED_LIBRARIES sunmath)
-	check_function_exists(ieee_handler HAVE_SUNMATH)
-	set(CMAKE_REQUIRED_LIBRARIES)
-	include(CheckTypeSize)
-	set(CMAKE_EXTRA_INCLUDE_FILES sys/time.h)
-	check_type_size(tm TM_IN_SYS_TIME)
-	set(CMAKE_EXTRA_INCLUDE_FILES)
-	include (CheckCSourceCompiles)
-	check_c_source_compiles("
-		#include <sys/time.h>
-		#include <sys/sem.h>
-		int main(){union semun c;return 0;}
-		"
-		SEMUN_DEFINED)
-	if (SEMUN_DEFINED)
-		check_c_source_compiles("
-			#include <sys/time.h>
-			#include <sys/sem.h>
-			int main(){union semun c;c.__buf = 0;return 0;}
-			"
-			SEMUN_BUF_DEFINED)
-	endif (SEMUN_DEFINED)
-	check_c_source_compiles("
-		#include <sys/sem.h>
-		static struct sembuf event_flag;
-		int main(){int status; int *semid;status = semop(*semid,event_flag,1);return 0;}
-		"
-		SEMOP_NO_REFERENCE)
-
-	check_c_source_compiles("
-		#include <sys/sem.h>
-		int get_semaphore(int *semid,int *event,int *value)
-		{
-			int status;
-			status = semctl((*semid),*event,GETVAL,value);
-			return 0;
-		}
-		int main(){ int *a,*b,*c;
-		if(get_semaphore(a,b,c))
-			return 0;
-		return 0;}
-		"
-		SEMCTL_NO_REFERENCE)
-
-	include (CheckCXXSourceCompiles)
-	check_cxx_source_compiles("
-		#include <ios>
-		int main(){static const int input = (std::ios::in)|(std::ios::nocreate);
-		static const int output = (std::ios::out);return 0;}
-		"
-		DEF_IOS_OK)
-	check_cxx_source_compiles("
-		#include <iostream>
-		int main(){std::cout << std::cout.form(\"%9.3e\", 3.14159627e-4) << std::endl;return 0;}
-		"
-		OSTREAM_FORM_OK)
 	include(TestBigEndian)
 	test_big_endian(WORDS_BIGENDIAN)
-	set(STDC_HEADERS TRUE) # Only for really old systems, being lazy
-	set(STACK_DIRECTION 0) # Don't have a test for this, TODO?
 
 # TODO: check all headers/functions/libraries that are checked in configure.ac original OCC script
 endif(NOT WIN32)
@@ -826,7 +709,6 @@ else(UNIX)
 		######### Borland ###########
 		if(BORLAND)
 			message(STATUS "Borland compiler detected: ${BORLAND_VERSION}")
-			add_definitions(-DHAVE_IOS )
 		endif(BORLAND)
 		set(PLATFORM win)
 	else(WIN32)
@@ -1151,14 +1033,6 @@ foreach(header ${header_files})
 endforeach()
 
 set(OCE_INSTALL_DATA_DIR ${OCE_INSTALL_DATA_DIR})
-if(CMAKE_CONFIGURATION_TYPES OR NMAKE)
-	# With Visual generator, CMake generates projects which can be built both in Debug and Release mode.
-	# Therefore the MSVC library name has to be assembled in oce_build_paths.h.cmake.
-	set(OCE_DEFAULT_CSF_GraphicShr ${CMAKE_SHARED_LIBRARY_PREFIX}TKOpenGl)
-else()
-	# Fully assemble the library name for the other compilers (but omit the library path).
-	set(OCE_DEFAULT_CSF_GraphicShr ${CMAKE_SHARED_LIBRARY_PREFIX}TKOpenGl${CMAKE_DEBUG_POSTFIX}${OCE_LIBRARY_EXTENSION})
-endif()
 
 #this is the header used to build OCE
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/adm/cmake/config/oce_build_config.h.cmake
@@ -1209,7 +1083,7 @@ endmacro(process_module modulename modules_std)
 # Process modules of each ToolKit                                                  #
 ####################################################################################
 # Foundation
-process_module( "Kernel" "TKernel;TKMath;TKAdvTools" )
+process_module( "Kernel" "TKernel;TKMath" )
 
 # Modeling Data
 if (OCE_MODEL)
@@ -1226,7 +1100,10 @@ if(OCE_VISU_DEP)
 	process_module( "Visualization" "" "TKService;TKV3d" )
 endif(OCE_VISU_DEP)
 if(OCE_VISUALISATION)
-	process_module( "Visualization" "" "TKOpenGl;TKMeshVS;TKNIS;TKVoxel" )
+	if(OCE_WITH_VTK)
+		set(oce_vtk_component TKIVtk)
+	endif()
+	process_module( "Visualization" "" "TKOpenGl;TKMeshVS;TKNIS;TKVoxel;${oce_vtk_component}" )
 endif(OCE_VISUALISATION)
 
 # Application framework
@@ -1242,10 +1119,12 @@ endif(OCE_DATAEXCHANGE)
 # DRAWEXE application
 if(OCE_DRAW)
 	if(OCE_USE_TCL_TEST_FRAMEWORK)
-		process_module( "Draw" "" "TKDraw;TKTopTest;TKViewerTest;TKXSDRAW;TKDCAF;TKXDEDRAW;TKTObjDRAW;TKQADraw;DRAWEXE" )
-	else()
-		process_module( "Draw" "" "TKDraw;TKTopTest;TKViewerTest;TKXSDRAW;TKDCAF;TKXDEDRAW;TKTObjDRAW;DRAWEXE" )
+		set(oce_tcl_component TKQADraw)
 	endif()
+	if(OCE_WITH_VTK)
+		set(oce_vtk_component TKIVtkDraw)
+	endif()
+	process_module( "Draw" "" "TKDraw;TKTopTest;${oce_vtk_component};TKViewerTest;TKXSDRAW;TKDCAF;TKXDEDRAW;TKTObjDRAW;${oce_tcl_component};DRAWEXE" )
 endif(OCE_DRAW)
 
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/adm/cmake/config/ProjectConfig.cmake.in
@@ -1455,7 +1334,6 @@ if(OCE_COVERAGE)
 endif(OCE_COVERAGE)
 
 if(OCE_USE_TCL_TEST_FRAMEWORK)
-	get_target_property(OCE_CSF_GraphicShr TKOpenGl LOCATION)
 	if(WIN32)
 		set(OCE_TEST_PATH_VAR_NAME "PATH")
 		set(OCE_TEST_PATH_VAR_SEPARATOR ";")
@@ -1482,8 +1360,11 @@ if(OCE_USE_TCL_TEST_FRAMEWORK)
 		file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/DrawLaunchTests.draw "testgrid ${OCE_TCL_TEST_GROUP}\n")
 	endif()
 	file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/DrawLaunchTests.draw "return")
+	if(OCE_WITH_VTK)
+		set(oce_vtk_components TKIVtk TKIVtkDraw)
+	endif()
 	add_custom_command(OUTPUT OcctTests COMMAND "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/DrawLaunchTests.cmake"
-		DEPENDS TKernel TKMath TKAdvTools TKG2d TKG3d TKGeomBase TKBRep TKGeomAlgo TKTopAlgo TKPrim TKBO TKHLR TKMesh TKShHealing TKXMesh TKBool TKFillet TKFeat TKOffset TKService TKV3d TKOpenGl TKMeshVS TKNIS TKVoxel TKCDF PTKernel TKLCAF FWOSPlugin TKPShape TKBinL TKXmlL TKPLCAF TKTObj TKShapeSchema TKStdLSchema TKCAF TKBin TKXml TKPCAF TKBinTObj TKXmlTObj TKStdSchema TKSTL TKXSBase TKSTEPBase TKIGES TKSTEPAttr TKSTEP209 TKSTEP TKVRML TKXCAF TKXCAFSchema TKXmlXCAF TKBinXCAF TKXDEIGES TKXDESTEP TKDraw TKTopTest TKViewerTest TKXSDRAW TKDCAF TKXDEDRAW TKTObjDRAW TKQADraw DRAWEXE
+		DEPENDS TKernel TKMath TKG2d TKG3d TKGeomBase TKBRep TKGeomAlgo TKTopAlgo TKPrim TKBO TKHLR TKMesh TKShHealing TKXMesh TKBool TKFillet TKFeat TKOffset TKService TKV3d TKOpenGl TKMeshVS TKNIS TKVoxel TKCDF PTKernel TKLCAF FWOSPlugin TKPShape TKBinL TKXmlL TKPLCAF TKTObj TKShapeSchema TKStdLSchema TKCAF TKBin TKXml TKPCAF TKBinTObj TKXmlTObj TKStdSchema TKSTL TKXSBase TKSTEPBase TKIGES TKSTEPAttr TKSTEP209 TKSTEP TKVRML TKXCAF TKXCAFSchema TKXmlXCAF TKBinXCAF TKXDEIGES TKXDESTEP TKDraw TKTopTest ${oce_vtk_components} TKViewerTest TKXSDRAW TKDCAF TKXDEDRAW TKTObjDRAW TKQADraw DRAWEXE
 		COMMENT "Running OCCT test suite...")
 	add_custom_target(occt-tests DEPENDS OcctTests)
 endif(OCE_USE_TCL_TEST_FRAMEWORK)

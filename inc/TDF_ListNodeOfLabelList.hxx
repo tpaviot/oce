@@ -6,39 +6,28 @@
 #ifndef _TDF_ListNodeOfLabelList_HeaderFile
 #define _TDF_ListNodeOfLabelList_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDF_ListNodeOfLabelList_HeaderFile
 #include <Handle_TDF_ListNodeOfLabelList.hxx>
-#endif
 
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TDF_Label;
 class TDF_LabelList;
 class TDF_ListIteratorOfLabelList;
 
 
 
-class TDF_ListNodeOfLabelList : public TCollection_MapNode {
+class TDF_ListNodeOfLabelList : public TCollection_MapNode
+{
 
 public:
 
   
-      TDF_ListNodeOfLabelList(const TDF_Label& I,const TCollection_MapNodePtr& n);
+    TDF_ListNodeOfLabelList(const TDF_Label& I, const TCollection_MapNodePtr& n);
   
-        TDF_Label& Value() const;
+      TDF_Label& Value()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-TDF_Label myValue;
+  TDF_Label myValue;
 
 
 };
@@ -83,7 +72,6 @@ TDF_Label myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_ListNodeOfLabelList_HeaderFile

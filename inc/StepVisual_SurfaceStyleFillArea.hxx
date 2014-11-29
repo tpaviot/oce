@@ -6,38 +6,30 @@
 #ifndef _StepVisual_SurfaceStyleFillArea_HeaderFile
 #define _StepVisual_SurfaceStyleFillArea_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_SurfaceStyleFillArea_HeaderFile
 #include <Handle_StepVisual_SurfaceStyleFillArea.hxx>
-#endif
 
-#ifndef _Handle_StepVisual_FillAreaStyle_HeaderFile
 #include <Handle_StepVisual_FillAreaStyle.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepVisual_FillAreaStyle;
 
 
 
-class StepVisual_SurfaceStyleFillArea : public MMgt_TShared {
+class StepVisual_SurfaceStyleFillArea : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a SurfaceStyleFillArea <br>
-  Standard_EXPORT   StepVisual_SurfaceStyleFillArea();
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepVisual_FillAreaStyle)& aFillArea) ;
+  //! Returns a SurfaceStyleFillArea
+  Standard_EXPORT StepVisual_SurfaceStyleFillArea();
   
-  Standard_EXPORT     void SetFillArea(const Handle(StepVisual_FillAreaStyle)& aFillArea) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepVisual_FillAreaStyle)& aFillArea) ;
   
-  Standard_EXPORT     Handle_StepVisual_FillAreaStyle FillArea() const;
+  Standard_EXPORT   void SetFillArea (const Handle(StepVisual_FillAreaStyle)& aFillArea) ;
+  
+  Standard_EXPORT   Handle(StepVisual_FillAreaStyle) FillArea()  const;
 
 
 
@@ -52,7 +44,7 @@ protected:
 private: 
 
 
-Handle_StepVisual_FillAreaStyle fillArea;
+  Handle(StepVisual_FillAreaStyle) fillArea;
 
 
 };
@@ -61,7 +53,6 @@ Handle_StepVisual_FillAreaStyle fillArea;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_SurfaceStyleFillArea_HeaderFile

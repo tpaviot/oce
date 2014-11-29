@@ -6,20 +6,19 @@
 #ifndef _Graphic3d_GroupAspect_HeaderFile
 #define _Graphic3d_GroupAspect_HeaderFile
 
-//! Identifies primitives aspects defined per group. <br>
-//! - ASPECT_LINE: aspect for line primitives; <br>
-//! - ASPECT_TEXT: aspect for text primitives; <br>
-//! - ASPECT_MARKER: aspect for marker primitives; <br>
-//! - ASPECT_FILL_AREA: aspect for face primitives. <br>
-enum Graphic3d_GroupAspect {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Identifies primitives aspects defined per group.
+//! - ASPECT_LINE: aspect for line primitives;
+//! - ASPECT_TEXT: aspect for text primitives;
+//! - ASPECT_MARKER: aspect for marker primitives;
+//! - ASPECT_FILL_AREA: aspect for face primitives.
+enum Graphic3d_GroupAspect
+{
 Graphic3d_ASPECT_LINE,
 Graphic3d_ASPECT_TEXT,
 Graphic3d_ASPECT_MARKER,
 Graphic3d_ASPECT_FILL_AREA
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Graphic3d_GroupAspect_HeaderFile

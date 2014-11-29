@@ -1,9 +1,3 @@
-#ifndef _IGESGeom_Point_HeaderFile
 #include <IGESGeom_Point.hxx>
-#endif
-#ifndef _IGESGeom_Direction_HeaderFile
 #include <IGESGeom_Direction.hxx>
-#endif
-#ifndef _IGESSolid_ConicalSurface_HeaderFile
 #include <IGESSolid_ConicalSurface.hxx>
-#endif

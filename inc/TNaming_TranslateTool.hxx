@@ -6,57 +6,51 @@
 #ifndef _TNaming_TranslateTool_HeaderFile
 #define _TNaming_TranslateTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TNaming_TranslateTool_HeaderFile
 #include <Handle_TNaming_TranslateTool.hxx>
-#endif
 
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class Standard_TypeMismatch;
 class TopoDS_Shape;
 class TColStd_IndexedDataMapOfTransientTransient;
 
 
-//! The TranslateTool class is provided to support the <br>
-//!          translation of topological data structures  Transient <br>
-//!  .       to  Transient. <br>
-class TNaming_TranslateTool : public MMgt_TShared {
+//! tool to copy underlying TShape of a Shape.
+//! The TranslateTool class is provided to support the
+//! translation of topological data structures  Transient
+//! to  Transient.
+class TNaming_TranslateTool : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT     void Add(TopoDS_Shape& S1,const TopoDS_Shape& S2) const;
+  Standard_EXPORT   void Add (TopoDS_Shape& S1, const TopoDS_Shape& S2)  const;
   
-  Standard_EXPORT     void MakeVertex(TopoDS_Shape& S) const;
+  Standard_EXPORT   void MakeVertex (TopoDS_Shape& S)  const;
   
-  Standard_EXPORT     void MakeEdge(TopoDS_Shape& S) const;
+  Standard_EXPORT   void MakeEdge (TopoDS_Shape& S)  const;
   
-  Standard_EXPORT     void MakeWire(TopoDS_Shape& S) const;
+  Standard_EXPORT   void MakeWire (TopoDS_Shape& S)  const;
   
-  Standard_EXPORT     void MakeFace(TopoDS_Shape& S) const;
+  Standard_EXPORT   void MakeFace (TopoDS_Shape& S)  const;
   
-  Standard_EXPORT     void MakeShell(TopoDS_Shape& S) const;
+  Standard_EXPORT   void MakeShell (TopoDS_Shape& S)  const;
   
-  Standard_EXPORT     void MakeSolid(TopoDS_Shape& S) const;
+  Standard_EXPORT   void MakeSolid (TopoDS_Shape& S)  const;
   
-  Standard_EXPORT     void MakeCompSolid(TopoDS_Shape& S) const;
+  Standard_EXPORT   void MakeCompSolid (TopoDS_Shape& S)  const;
   
-  Standard_EXPORT     void MakeCompound(TopoDS_Shape& S) const;
+  Standard_EXPORT   void MakeCompound (TopoDS_Shape& S)  const;
   
-  Standard_EXPORT     void UpdateVertex(const TopoDS_Shape& S1,TopoDS_Shape& S2,TColStd_IndexedDataMapOfTransientTransient& M) const;
+  Standard_EXPORT   void UpdateVertex (const TopoDS_Shape& S1, TopoDS_Shape& S2, TColStd_IndexedDataMapOfTransientTransient& M)  const;
   
-  Standard_EXPORT     void UpdateEdge(const TopoDS_Shape& S1,TopoDS_Shape& S2,TColStd_IndexedDataMapOfTransientTransient& M) const;
+  Standard_EXPORT   void UpdateEdge (const TopoDS_Shape& S1, TopoDS_Shape& S2, TColStd_IndexedDataMapOfTransientTransient& M)  const;
   
-  Standard_EXPORT     void UpdateFace(const TopoDS_Shape& S1,TopoDS_Shape& S2,TColStd_IndexedDataMapOfTransientTransient& M) const;
+  Standard_EXPORT   void UpdateFace (const TopoDS_Shape& S1, TopoDS_Shape& S2, TColStd_IndexedDataMapOfTransientTransient& M)  const;
   
-  Standard_EXPORT     void UpdateShape(const TopoDS_Shape& S1,TopoDS_Shape& S2) const;
+  Standard_EXPORT   void UpdateShape (const TopoDS_Shape& S1, TopoDS_Shape& S2)  const;
 
 
 
@@ -79,7 +73,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TNaming_TranslateTool_HeaderFile

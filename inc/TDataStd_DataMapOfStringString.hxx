@@ -6,31 +6,15 @@
 #ifndef _TDataStd_DataMapOfStringString_HeaderFile
 #define _TDataStd_DataMapOfStringString_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_TDataStd_DataMapNodeOfDataMapOfStringString_HeaderFile
 #include <Handle_TDataStd_DataMapNodeOfDataMapOfStringString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class TCollection_ExtendedString;
@@ -39,50 +23,50 @@ class TDataStd_DataMapIteratorOfDataMapOfStringString;
 
 
 
-class TDataStd_DataMapOfStringString  : public TCollection_BasicMap {
+class TDataStd_DataMapOfStringString  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TDataStd_DataMapOfStringString(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT TDataStd_DataMapOfStringString(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     TDataStd_DataMapOfStringString& Assign(const TDataStd_DataMapOfStringString& Other) ;
-    TDataStd_DataMapOfStringString& operator =(const TDataStd_DataMapOfStringString& Other) 
+  Standard_EXPORT   TDataStd_DataMapOfStringString& Assign (const TDataStd_DataMapOfStringString& Other) ;
+  TDataStd_DataMapOfStringString& operator = (const TDataStd_DataMapOfStringString& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TDataStd_DataMapOfStringString()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Bind(const TCollection_ExtendedString& K,const TCollection_ExtendedString& I) ;
+  Standard_EXPORT   Standard_Boolean Bind (const TCollection_ExtendedString& K, const TCollection_ExtendedString& I) ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const TCollection_ExtendedString& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound (const TCollection_ExtendedString& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind(const TCollection_ExtendedString& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind (const TCollection_ExtendedString& K) ;
   
-  Standard_EXPORT    const TCollection_ExtendedString& Find(const TCollection_ExtendedString& K) const;
-   const TCollection_ExtendedString& operator()(const TCollection_ExtendedString& K) const
+  Standard_EXPORT  const  TCollection_ExtendedString& Find (const TCollection_ExtendedString& K)  const;
+ const  TCollection_ExtendedString& operator() (const TCollection_ExtendedString& K)  const
 {
   return Find(K);
 }
   
-  Standard_EXPORT     TCollection_ExtendedString& ChangeFind(const TCollection_ExtendedString& K) ;
-    TCollection_ExtendedString& operator()(const TCollection_ExtendedString& K) 
+  Standard_EXPORT   TCollection_ExtendedString& ChangeFind (const TCollection_ExtendedString& K) ;
+  TCollection_ExtendedString& operator() (const TCollection_ExtendedString& K) 
 {
   return ChangeFind(K);
 }
   
-  Standard_EXPORT     Standard_Address Find1(const TCollection_ExtendedString& K) const;
+  Standard_EXPORT   Standard_Address Find1 (const TCollection_ExtendedString& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFind1(const TCollection_ExtendedString& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFind1 (const TCollection_ExtendedString& K) ;
 
 
 
@@ -96,7 +80,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   TDataStd_DataMapOfStringString(const TDataStd_DataMapOfStringString& Other);
+  Standard_EXPORT TDataStd_DataMapOfStringString(const TDataStd_DataMapOfStringString& Other);
 
 
 
@@ -107,7 +91,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_DataMapOfStringString_HeaderFile

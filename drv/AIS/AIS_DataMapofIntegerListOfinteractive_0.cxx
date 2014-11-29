@@ -5,24 +5,12 @@
 
 #include <AIS_DataMapofIntegerListOfinteractive.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _AIS_ListOfInteractive_HeaderFile
 #include <AIS_ListOfInteractive.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _AIS_DataMapNodeOfDataMapofIntegerListOfinteractive_HeaderFile
 #include <AIS_DataMapNodeOfDataMapofIntegerListOfinteractive.hxx>
-#endif
-#ifndef _AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive_HeaderFile
 #include <AIS_DataMapIteratorOfDataMapofIntegerListOfinteractive.hxx>
-#endif
  
 
 #define TheKey Standard_Integer

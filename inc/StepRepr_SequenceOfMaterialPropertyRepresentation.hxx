@@ -6,28 +6,14 @@
 #ifndef _StepRepr_SequenceOfMaterialPropertyRepresentation_HeaderFile
 #define _StepRepr_SequenceOfMaterialPropertyRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_StepRepr_MaterialPropertyRepresentation_HeaderFile
 #include <Handle_StepRepr_MaterialPropertyRepresentation.hxx>
-#endif
-#ifndef _Handle_StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation_HeaderFile
 #include <Handle_StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class StepRepr_MaterialPropertyRepresentation;
@@ -35,66 +21,68 @@ class StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation;
 
 
 
-class StepRepr_SequenceOfMaterialPropertyRepresentation  : public TCollection_BaseSequence {
+class StepRepr_SequenceOfMaterialPropertyRepresentation  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      StepRepr_SequenceOfMaterialPropertyRepresentation();
+    StepRepr_SequenceOfMaterialPropertyRepresentation();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT StepRepr_SequenceOfMaterialPropertyRepresentation(const StepRepr_SequenceOfMaterialPropertyRepresentation& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~StepRepr_SequenceOfMaterialPropertyRepresentation()
 {
   Clear();
 }
   
-  Standard_EXPORT    const StepRepr_SequenceOfMaterialPropertyRepresentation& Assign(const StepRepr_SequenceOfMaterialPropertyRepresentation& Other) ;
-   const StepRepr_SequenceOfMaterialPropertyRepresentation& operator =(const StepRepr_SequenceOfMaterialPropertyRepresentation& Other) 
+  Standard_EXPORT  const  StepRepr_SequenceOfMaterialPropertyRepresentation& Assign (const StepRepr_SequenceOfMaterialPropertyRepresentation& Other) ;
+ const  StepRepr_SequenceOfMaterialPropertyRepresentation& operator = (const StepRepr_SequenceOfMaterialPropertyRepresentation& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(StepRepr_MaterialPropertyRepresentation)& T) ;
+  Standard_EXPORT   void Append (const Handle(StepRepr_MaterialPropertyRepresentation)& T) ;
   
-        void Append(StepRepr_SequenceOfMaterialPropertyRepresentation& S) ;
+      void Append (StepRepr_SequenceOfMaterialPropertyRepresentation& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(StepRepr_MaterialPropertyRepresentation)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(StepRepr_MaterialPropertyRepresentation)& T) ;
   
-        void Prepend(StepRepr_SequenceOfMaterialPropertyRepresentation& S) ;
+      void Prepend (StepRepr_SequenceOfMaterialPropertyRepresentation& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(StepRepr_MaterialPropertyRepresentation)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(StepRepr_MaterialPropertyRepresentation)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,StepRepr_SequenceOfMaterialPropertyRepresentation& S) ;
+      void InsertBefore (const Standard_Integer Index, StepRepr_SequenceOfMaterialPropertyRepresentation& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(StepRepr_MaterialPropertyRepresentation)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(StepRepr_MaterialPropertyRepresentation)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,StepRepr_SequenceOfMaterialPropertyRepresentation& S) ;
+      void InsertAfter (const Standard_Integer Index, StepRepr_SequenceOfMaterialPropertyRepresentation& S) ;
   
-  Standard_EXPORT    const Handle_StepRepr_MaterialPropertyRepresentation& First() const;
+  Standard_EXPORT  const  Handle(StepRepr_MaterialPropertyRepresentation)& First()  const;
   
-  Standard_EXPORT    const Handle_StepRepr_MaterialPropertyRepresentation& Last() const;
+  Standard_EXPORT  const  Handle(StepRepr_MaterialPropertyRepresentation)& Last()  const;
   
-        void Split(const Standard_Integer Index,StepRepr_SequenceOfMaterialPropertyRepresentation& Sub) ;
+      void Split (const Standard_Integer Index, StepRepr_SequenceOfMaterialPropertyRepresentation& Sub) ;
   
-  Standard_EXPORT    const Handle_StepRepr_MaterialPropertyRepresentation& Value(const Standard_Integer Index) const;
-   const Handle_StepRepr_MaterialPropertyRepresentation& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(StepRepr_MaterialPropertyRepresentation)& Value (const Standard_Integer Index)  const;
+ const  Handle(StepRepr_MaterialPropertyRepresentation)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(StepRepr_MaterialPropertyRepresentation)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(StepRepr_MaterialPropertyRepresentation)& I) ;
   
-  Standard_EXPORT     Handle_StepRepr_MaterialPropertyRepresentation& ChangeValue(const Standard_Integer Index) ;
-    Handle_StepRepr_MaterialPropertyRepresentation& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(StepRepr_MaterialPropertyRepresentation)& ChangeValue (const Standard_Integer Index) ;
+  Handle(StepRepr_MaterialPropertyRepresentation)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -107,15 +95,13 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   StepRepr_SequenceOfMaterialPropertyRepresentation(const StepRepr_SequenceOfMaterialPropertyRepresentation& Other);
 
 
 
 
 };
 
-#define SeqItem Handle_StepRepr_MaterialPropertyRepresentation
+#define SeqItem Handle(StepRepr_MaterialPropertyRepresentation)
 #define SeqItem_hxx <StepRepr_MaterialPropertyRepresentation.hxx>
 #define TCollection_SequenceNode StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation
 #define TCollection_SequenceNode_hxx <StepRepr_SequenceNodeOfSequenceOfMaterialPropertyRepresentation.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_SequenceOfMaterialPropertyRepresentation_HeaderFile

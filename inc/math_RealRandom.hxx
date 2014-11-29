@@ -6,39 +6,32 @@
 #ifndef _math_RealRandom_HeaderFile
 #define _math_RealRandom_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 
 
 
-//! This class implements a real random generator. <br>
-class math_RealRandom  {
+//! This class implements a real random generator.
+class math_RealRandom 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//! creates a real random generator between the values Lower and Upper. <br>
-  Standard_EXPORT   math_RealRandom(const Standard_Real Lower,const Standard_Real Upper);
-  //! reinitializes the random generator <br>
-  Standard_EXPORT     void Reset() ;
-  //! returns the next random number. <br>
-  Standard_EXPORT     Standard_Real Next() ;
 
+  //! creates a real random generator between the values Lower and Upper.
+  Standard_EXPORT math_RealRandom(const Standard_Real Lower, const Standard_Real Upper);
+  
+  //! reinitializes the random generator
+  Standard_EXPORT   void Reset() ;
+  
+  //! returns the next random number.
+  Standard_EXPORT   Standard_Real Next() ;
 
 
 
@@ -53,9 +46,9 @@ private:
 
 
 
-Standard_Integer Dummy;
-Standard_Real Low;
-Standard_Real Up;
+  Standard_Integer Dummy;
+  Standard_Real Low;
+  Standard_Real Up;
 
 
 };
@@ -64,7 +57,6 @@ Standard_Real Up;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _math_RealRandom_HeaderFile

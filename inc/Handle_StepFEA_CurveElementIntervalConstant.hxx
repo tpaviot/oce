@@ -6,22 +6,15 @@
 #ifndef _Handle_StepFEA_CurveElementIntervalConstant_HeaderFile
 #define _Handle_StepFEA_CurveElementIntervalConstant_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepFEA_CurveElementInterval_HeaderFile
 #include <Handle_StepFEA_CurveElementInterval.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepFEA_CurveElementInterval);
 class StepFEA_CurveElementIntervalConstant;
 
-DEFINE_STANDARD_HANDLE(StepFEA_CurveElementIntervalConstant,StepFEA_CurveElementInterval)
+DEFINE_STANDARD_HANDLE(StepFEA_CurveElementIntervalConstant, StepFEA_CurveElementInterval)
 
-#endif
+#endif // _Handle_StepFEA_CurveElementIntervalConstant_HeaderFile

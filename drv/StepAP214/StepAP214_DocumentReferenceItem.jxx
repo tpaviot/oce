@@ -1,33 +1,11 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepBasic_Approval_HeaderFile
 #include <StepBasic_Approval.hxx>
-#endif
-#ifndef _StepRepr_DescriptiveRepresentationItem_HeaderFile
 #include <StepRepr_DescriptiveRepresentationItem.hxx>
-#endif
-#ifndef _StepRepr_MaterialDesignation_HeaderFile
 #include <StepRepr_MaterialDesignation.hxx>
-#endif
-#ifndef _StepBasic_ProductDefinition_HeaderFile
 #include <StepBasic_ProductDefinition.hxx>
-#endif
-#ifndef _StepBasic_ProductDefinitionRelationship_HeaderFile
 #include <StepBasic_ProductDefinitionRelationship.hxx>
-#endif
-#ifndef _StepRepr_PropertyDefinition_HeaderFile
 #include <StepRepr_PropertyDefinition.hxx>
-#endif
-#ifndef _StepRepr_Representation_HeaderFile
 #include <StepRepr_Representation.hxx>
-#endif
-#ifndef _StepRepr_ShapeAspect_HeaderFile
 #include <StepRepr_ShapeAspect.hxx>
-#endif
-#ifndef _StepRepr_ShapeAspectRelationship_HeaderFile
 #include <StepRepr_ShapeAspectRelationship.hxx>
-#endif
-#ifndef _StepAP214_DocumentReferenceItem_HeaderFile
 #include <StepAP214_DocumentReferenceItem.hxx>
-#endif

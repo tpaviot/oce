@@ -6,39 +6,28 @@
 #ifndef _TopOpeBRepTool_ListNodeOfListOfC2DF_HeaderFile
 #define _TopOpeBRepTool_ListNodeOfListOfC2DF_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepTool_ListNodeOfListOfC2DF_HeaderFile
 #include <Handle_TopOpeBRepTool_ListNodeOfListOfC2DF.hxx>
-#endif
 
-#ifndef _TopOpeBRepTool_C2DF_HeaderFile
 #include <TopOpeBRepTool_C2DF.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopOpeBRepTool_C2DF;
 class TopOpeBRepTool_ListOfC2DF;
 class TopOpeBRepTool_ListIteratorOfListOfC2DF;
 
 
 
-class TopOpeBRepTool_ListNodeOfListOfC2DF : public TCollection_MapNode {
+class TopOpeBRepTool_ListNodeOfListOfC2DF : public TCollection_MapNode
+{
 
 public:
 
   
-      TopOpeBRepTool_ListNodeOfListOfC2DF(const TopOpeBRepTool_C2DF& I,const TCollection_MapNodePtr& n);
+    TopOpeBRepTool_ListNodeOfListOfC2DF(const TopOpeBRepTool_C2DF& I, const TCollection_MapNodePtr& n);
   
-        TopOpeBRepTool_C2DF& Value() const;
+      TopOpeBRepTool_C2DF& Value()  const;
 
 
 
@@ -53,7 +42,7 @@ protected:
 private: 
 
 
-TopOpeBRepTool_C2DF myValue;
+  TopOpeBRepTool_C2DF myValue;
 
 
 };
@@ -83,7 +72,6 @@ TopOpeBRepTool_C2DF myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepTool_ListNodeOfListOfC2DF_HeaderFile

@@ -19,6 +19,7 @@ class MaterialTool from XCAFDoc inherits Attribute from TDF
 	--          of TopoDS_Shape in and from TDocStd_Document
 	--          A Document is intended to hold different 
 	--          attributes of ONE shape and it's sub-shapes
+	--          Provide tools for management of Materialss section of document.
 
 uses
     Shape from TopoDS,
@@ -100,10 +101,10 @@ is
     Restore (me: mutable; with : Attribute from TDF);
 
     NewEmpty (me)
-    returns mutable Attribute from TDF;
+    returns Attribute from TDF;
 
-    Paste (me; into : mutable Attribute from TDF;
-	       RT   : mutable RelocationTable from TDF);    
+    Paste (me; into : Attribute from TDF;
+	       RT   : RelocationTable from TDF);    
 
 fields
 

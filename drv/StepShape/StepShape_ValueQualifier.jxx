@@ -1,12 +1,4 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepShape_PrecisionQualifier_HeaderFile
 #include <StepShape_PrecisionQualifier.hxx>
-#endif
-#ifndef _StepShape_TypeQualifier_HeaderFile
 #include <StepShape_TypeQualifier.hxx>
-#endif
-#ifndef _StepShape_ValueQualifier_HeaderFile
 #include <StepShape_ValueQualifier.hxx>
-#endif

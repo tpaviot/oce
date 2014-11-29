@@ -6,28 +6,14 @@
 #ifndef _BRepClass3d_DataMapNodeOfMapOfInter_HeaderFile
 #define _BRepClass3d_DataMapNodeOfMapOfInter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_BRepClass3d_DataMapNodeOfMapOfInter_HeaderFile
 #include <Handle_BRepClass3d_DataMapNodeOfMapOfInter.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopoDS_Shape;
 class TopTools_ShapeMapHasher;
 class BRepClass3d_MapOfInter;
@@ -35,16 +21,17 @@ class BRepClass3d_DataMapIteratorOfMapOfInter;
 
 
 
-class BRepClass3d_DataMapNodeOfMapOfInter : public TCollection_MapNode {
+class BRepClass3d_DataMapNodeOfMapOfInter : public TCollection_MapNode
+{
 
 public:
 
   
-      BRepClass3d_DataMapNodeOfMapOfInter(const TopoDS_Shape& K,const Standard_Address& I,const TCollection_MapNodePtr& n);
+    BRepClass3d_DataMapNodeOfMapOfInter(const TopoDS_Shape& K, const Standard_Address& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        Standard_Address& Value() const;
+      Standard_Address& Value()  const;
 
 
 
@@ -59,8 +46,8 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-Standard_Address myValue;
+  TopoDS_Shape myKey;
+  Standard_Address myValue;
 
 
 };
@@ -98,7 +85,6 @@ Standard_Address myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepClass3d_DataMapNodeOfMapOfInter_HeaderFile

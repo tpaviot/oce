@@ -1,18 +1,6 @@
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _gp_Circ2d_HeaderFile
 #include <gp_Circ2d.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _GccInt_Bisec_HeaderFile
 #include <GccInt_Bisec.hxx>
-#endif
-#ifndef _GccAna_CircPnt2dBisec_HeaderFile
 #include <GccAna_CircPnt2dBisec.hxx>
-#endif

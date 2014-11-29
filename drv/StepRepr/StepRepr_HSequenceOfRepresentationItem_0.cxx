@@ -5,22 +5,12 @@
 
 #include <StepRepr_HSequenceOfRepresentationItem.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StepRepr_RepresentationItem_HeaderFile
 #include <StepRepr_RepresentationItem.hxx>
-#endif
-#ifndef _StepRepr_SequenceOfRepresentationItem_HeaderFile
 #include <StepRepr_SequenceOfRepresentationItem.hxx>
-#endif
 
  
 
@@ -38,7 +28,7 @@ IMPLEMENT_DOWNCAST(StepRepr_HSequenceOfRepresentationItem,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(StepRepr_HSequenceOfRepresentationItem)
 
 
-#define Item Handle_StepRepr_RepresentationItem
+#define Item Handle(StepRepr_RepresentationItem)
 #define Item_hxx <StepRepr_RepresentationItem.hxx>
 #define TheSequence StepRepr_SequenceOfRepresentationItem
 #define TheSequence_hxx <StepRepr_SequenceOfRepresentationItem.hxx>

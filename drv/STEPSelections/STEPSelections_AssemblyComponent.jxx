@@ -1,9 +1,3 @@
-#ifndef _StepShape_ShapeDefinitionRepresentation_HeaderFile
 #include <StepShape_ShapeDefinitionRepresentation.hxx>
-#endif
-#ifndef _STEPSelections_HSequenceOfAssemblyLink_HeaderFile
 #include <STEPSelections_HSequenceOfAssemblyLink.hxx>
-#endif
-#ifndef _STEPSelections_AssemblyComponent_HeaderFile
 #include <STEPSelections_AssemblyComponent.hxx>
-#endif

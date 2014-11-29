@@ -42,7 +42,6 @@
 #include <BRepMesh_DataStructureOfDelaun.hxx>
 #include <BRepMesh_Delaun.hxx>
 #include <BRepMesh_FastDiscret.hxx>
-#include <BRepMesh_Array1OfVertexOfDelaun.hxx>
 #include <BRepMesh_Vertex.hxx>
 #include <BRepMesh_Edge.hxx>
 #include <BRepMesh_IncrementalMesh.hxx>
@@ -55,6 +54,7 @@
 #include <Geom_Surface.hxx>
 #include <Draw_Marker3D.hxx>
 #include <Draw_Segment2D.hxx>
+#include <TCollection_AsciiString.hxx>
 
 #include <GCPnts_UniformAbscissa.hxx>
 #include <GeomAdaptor_Curve.hxx>
@@ -106,7 +106,7 @@ Standard_IMPORT Draw_Viewer dout;
 #define ONETHIRD 0.333333333333333333333333333333333333333333333333333333333333
 #define TWOTHIRD 0.666666666666666666666666666666666666666666666666666666666666
 
-#ifdef DEB_MESH_CHRONO
+#ifdef OCCT_DEBUG_MESH_CHRONO
 #include <OSD_Chronometer.hxx>
 Standard_Integer D0Control, D0Internal, D0Unif, D0Edges, NbControls;
 OSD_Chronometer chTotal, chInternal, chControl, chUnif, chAddPoint;
@@ -119,33 +119,66 @@ OSD_Chronometer chIsos, chPointsOnIsos;
 //function : incrementalmesh
 //purpose  : 
 //=======================================================================
-
 static Standard_Integer incrementalmesh(Draw_Interpretor& di, Standard_Integer nbarg, const char** argv)
 {
-  if (nbarg < 3) {
-    di << " use incmesh shape deflection [inParallel (0/1) : 0 by default]\n";
+  if (nbarg < 3)
+  {
+    di << "\
+Builds triangular mesh for the shape\n\
+usage: incmesh Shape LinearDeflection [options]\n\
+options:\n\
+        -a val          angular deflection in deg (default ~28.64 deg = 0.5 rad)\n\
+        -relative       notifies that relative deflection is used\n\
+                        (switched off by default)\n\
+        -parallel       enables parallel execution (switched off by default)\n";
     return 0;
   }
 
   TopoDS_Shape aShape = DBRep::Get(argv[1]);
-  if (aShape.IsNull()) {
-    di << " null shapes is not allowed here\n";
+  if (aShape.IsNull())
+  {
+    di << " Null shapes are not allowed here\n";
     return 0;
   }
-  Standard_Real aDeflection = Draw::Atof(argv[2]);
 
+  Standard_Real aLinDeflection  = Max(Draw::Atof(argv[2]), Precision::Confusion());
+  Standard_Real aAngDeflection  = 0.5;
+  Standard_Boolean isRelative   = Standard_False;
   Standard_Boolean isInParallel = Standard_False;
-  if (nbarg == 4) {
-	isInParallel = Draw::Atoi(argv[3]) == 1;
+
+  if (nbarg > 3)
+  {
+    Standard_Integer i = 3;
+    while (i < nbarg)
+    {
+      TCollection_AsciiString aOpt(argv[i++]);
+      aOpt.LowerCase();
+
+      if (aOpt == "")
+        continue;
+      else if (aOpt == "-relative")
+        isRelative = Standard_True;
+      else if (aOpt == "-parallel")
+        isInParallel = Standard_True;
+      else if (i < nbarg)
+      {
+        Standard_Real aVal = Draw::Atof(argv[i++]);
+        if (aOpt == "-a")
+          aAngDeflection = aVal * M_PI / 180.;
+        else
+          --i;
+      }
+    }
   }
+
   di << "Incremental Mesh, multi-threading "
-    << (isInParallel ? "ON\n" : "OFF\n");
-  
-  BRepMesh_IncrementalMesh MESH(aShape, aDeflection, Standard_False, 0.5, isInParallel);
-  Standard_Integer statusFlags = MESH.GetStatusFlags();  
+     << (isInParallel ? "ON" : "OFF") << "\n";
+
+  BRepMesh_IncrementalMesh aMesher(aShape, aLinDeflection, isRelative, 
+    aAngDeflection, isInParallel);
 
   di << "Meshing statuses: ";
-
+  Standard_Integer statusFlags = aMesher.GetStatusFlags();
   if( !statusFlags )
   {
     di << "NoError";
@@ -395,36 +428,30 @@ static void MeshStats(const TopoDS_Shape& theSape,
 
 static Standard_Integer triangule(Draw_Interpretor& di, Standard_Integer nbarg, const char** argv)
 {
-  if (nbarg < 4) return 1;
-
-  Standard_Boolean save = Standard_False;
+  if (nbarg < 4)
+    return 1;
 
   const char *id1 = argv[2];
-  TopoDS_Shape S = DBRep::Get(id1);
-  if (S.IsNull()) return 1;
+  TopoDS_Shape aShape = DBRep::Get(id1);
+  if (aShape.IsNull())
+    return 1;
+
   di << argv[1] << " ";
-  Standard_Real Deflect=Draw::Atof(argv[3]);
-  if (Deflect<=0.) {
-    di << " Donner la fleche !" << "\n";
+
+  Standard_Real aDeflection = Draw::Atof(argv[3]);
+  if (aDeflection <= 0.)
+  {
+    di << " Incorrect value of deflection!" << "\n";
     return 1;
   }
 
-  if (nbarg >4) {
-    save = (Draw::Atoi(argv[4])==1);
-  }
+  Handle(MeshTest_DrawableMesh) aDMesh = 
+    new MeshTest_DrawableMesh(aShape, aDeflection);
 
-  Standard_Boolean partage=Standard_True;
-  if (nbarg>5) {
-    partage=Draw::Atoi(argv[5])==1;
-  }
-
-  Handle(MeshTest_DrawableMesh) DM =
-    new MeshTest_DrawableMesh(S,Deflect,partage, save);
-
-  Draw::Set(argv[1],DM);
+  Draw::Set(argv[1], aDMesh);
 
   Standard_Integer nbn, nbl, nbe;
-  MeshStats(S, nbe, nbl, nbn);
+  MeshStats(aShape, nbe, nbl, nbn);
 
   di<<"(Resultat ("<<nbe<<" mailles) ("<<nbl<<" aretes) ("<<nbn<<" sommets))"<<"\n";
 
@@ -438,16 +465,39 @@ static Standard_Integer triangule(Draw_Interpretor& di, Standard_Integer nbarg, 
   }
   }*/
 
-  Bnd_Box bobo;
 
-  for (Standard_Integer lepnt=1; lepnt<DM->Mesh()->NbPoint3d(); lepnt++) {
-    bobo.Add(DM->Mesh()->Point3d(lepnt));
+  Bnd_Box aBox;
+
+  TopExp_Explorer aFaceIt(aShape, TopAbs_FACE);
+  for (; aFaceIt.More(); aFaceIt.Next())
+  {
+    const TopoDS_Face& aFace = TopoDS::Face(aFaceIt.Current());
+
+    TopLoc_Location aLoc = aFace.Location();
+    Handle(Poly_Triangulation) aTriangulation =
+      BRep_Tool::Triangulation(aFace, aLoc);
+
+    if (!aTriangulation.IsNull())
+    {
+      const Standard_Integer    aLength = aTriangulation->NbNodes();
+      const TColgp_Array1OfPnt& aNodes  = aTriangulation->Nodes();
+      for (Standard_Integer i = 1; i <= aLength; ++i)
+        aBox.Add(aNodes(i));
+    }
   }
-  Standard_Real x,y,z,X,Y,Z;
-  bobo.Get(x,y,z,X,Y,Z);
-  Standard_Real delta=Max(X-x,Max(Y-y,Z-z));
-  if (delta>0) delta=Deflect/delta;
-  di << " Fleche de " << delta << " fois la taille de l''objet." << "\n";
+
+  Standard_Real aDelta = 0.;
+  if (!aBox.IsVoid())
+  {
+    Standard_Real x, y, z, X, Y, Z;
+    aBox.Get(x, y, z, X, Y, Z);
+
+    aDelta = Max(X - x, Max(Y - y, Z - z));
+    if (aDelta > 0.0)
+      aDelta = aDeflection / aDelta;
+  }
+
+  di << " Ratio between deflection and total shape size is " << aDelta << "\n";
 
   return 0;
 }
@@ -547,36 +597,60 @@ return 0;
 //function : vertices
 //purpose  : 
 //=======================================================================
-
-static Standard_Integer vertices (Draw_Interpretor&, Standard_Integer n, const char** a)
+static Standard_Integer vertices(
+  Draw_Interpretor& /*di*/, 
+  Standard_Integer  /*argc*/, 
+  const char**      /*argv*/)
 {
-  if (n < 3) return 1;
+  return 0;
 
-  Handle(MeshTest_DrawableMesh) D =
-    Handle(MeshTest_DrawableMesh)::DownCast(Draw::Get(a[1]));
-  if (D.IsNull()) return 1;
-  TopoDS_Shape S = DBRep::Get(a[2]);
-  if (S.IsNull()) return 1;
+  // TODO: OAN re-implement this command according changes in BRepMesh
+  //if (argc < 3)
+  //  return 1;
 
-  TopExp_Explorer ex;
-  TColStd_SequenceOfInteger& vseq = D->Vertices();
-  Handle(BRepMesh_FastDiscret) M = D->Mesh();
+  //Handle(MeshTest_DrawableMesh) aDrawableMesh =
+  //  Handle(MeshTest_DrawableMesh)::DownCast(Draw::Get(argv[1]));
+  //if (aDrawableMesh.IsNull())
+  //  return 1;
 
-  // the faces
-  for (ex.Init(S,TopAbs_FACE);ex.More();ex.Next()) {
-    BRepMesh_MapOfInteger vtx;
-    M->VerticesOfDomain(vtx);
-    for (BRepMesh_MapOfInteger::Iterator it(vtx); it.More(); it.Next())
-      vseq.Append(it.Key());
-  }
+  //TopoDS_Shape aShape = DBRep::Get(argv[2]);
+  //if (aShape.IsNull())
+  //  return 1;
 
+  //TColStd_SequenceOfInteger&   aVertexSeq = aDrawableMesh->Vertices();
+  //Handle(BRepMesh_FastDiscret) aMesh      = aDrawableMesh->Mesh();
 
-  // the edges
-  //for (ex.Init(S,TopAbs_EDGE,TopAbs_FACE);ex.More();ex.Next()) {
+  //TopExp_Explorer aFaceIt(aShape, TopAbs_FACE);
+  //for (; aFaceIt.More(); aFaceIt.Next())
+  //{
+  //  const TopoDS_Face& aFace = TopoDS::Face(aFaceIt.Current());
+
+  //  Handle(BRepMesh_FaceAttribute) aAttribute;
+  //  if (aMesh->GetFaceAttribute(aFace, aAttribute))
+  //  {
+  //    Handle(BRepMesh_DataStructureOfDelaun) aStructure = aAttribute->EditStructure();
+
+  //    // Recuperate from the map of edges.
+  //    const BRepMeshCol::MapOfInteger& aEdgeMap = aStructure->LinksOfDomain();
+
+  //    // Iterator on edges.
+  //    BRepMeshCol::MapOfInteger aVertices;
+  //    BRepMeshCol::MapOfInteger::Iterator aEdgeIt(aEdgeMap);
+  //    for (; aEdgeIt.More(); aEdgeIt.Next())
+  //    {
+  //      const BRepMesh_Edge& aEdge = aStructure->GetLink(aEdgeIt.Key());
+  //      aVertices.Add(aEdge.FirstNode());
+  //      aVertices.Add(aEdge.LastNode());
+  //    }
+
+  //    BRepMeshCol::MapOfInteger::Iterator anIt(vtx);
+  //    for ( ; anIt.More(); anIt.Next() )
+  //      aVertexSeq.Append(anIt.Key());
+  //  }
   //}
 
-  Draw::Repaint();
-  return 0;
+  //Draw::Repaint();
+  //return 0;
 }
 
 //=======================================================================
@@ -847,7 +921,7 @@ static Standard_Integer trianglesinfo(Draw_Interpretor& di, Standard_Integer n, 
   di<<"                    " <<nbnodes    <<" nodes."<<"\n";
   di<<"Maximal deflection " <<MaxDeflection<<"\n";
   di<<"\n";
-#ifdef DEB_MESH_CHRONO
+#ifdef OCCT_DEBUG_MESH_CHRONO
   Standard_Real tot, addp, unif, contr, inter;
   Standard_Real edges, mailledges, etuinter, lastcontrol, stock;
   Standard_Real add11, add12, add2, upda, pointvalid;
@@ -1502,10 +1576,10 @@ void  MeshTest::Commands(Draw_Interpretor& theCommands)
 
   g = "Mesh Commands";
 
-  theCommands.Add("incmesh","incmesh shape deflection [inParallel (0/1) : 0 by default]",__FILE__, incrementalmesh, g);
+  theCommands.Add("incmesh","Builds triangular mesh for the shape, run w/o args for help",__FILE__, incrementalmesh, g);
   theCommands.Add("MemLeakTest","MemLeakTest",__FILE__, MemLeakTest, g);
   theCommands.Add("fastdiscret","fastdiscret shape deflection [shared [nbiter]]",__FILE__, fastdiscret, g);
-  theCommands.Add("mesh","mesh result Shape deflection [save partage]",__FILE__, triangule, g);
+  theCommands.Add("mesh","mesh result Shape deflection",__FILE__, triangule, g);
   theCommands.Add("addshape","addshape meshname Shape [deflection]",__FILE__, addshape, g);
   //theCommands.Add("smooth","smooth meshname",__FILE__, smooth, g);
   //theCommands.Add("edges","edges mesh shape, highlight the edges",__FILE__,edges, g);

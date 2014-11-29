@@ -1,6 +1,2 @@
-#ifndef _PrsMgr_Presentation_HeaderFile
 #include <PrsMgr_Presentation.hxx>
-#endif
-#ifndef _PrsMgr_ModedPresentation_HeaderFile
 #include <PrsMgr_ModedPresentation.hxx>
-#endif

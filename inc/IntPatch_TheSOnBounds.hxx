@@ -6,46 +6,20 @@
 #ifndef _IntPatch_TheSOnBounds_HeaderFile
 #define _IntPatch_TheSOnBounds_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _IntPatch_SequenceOfSegmentOfTheSOnBounds_HeaderFile
 #include <IntPatch_SequenceOfSegmentOfTheSOnBounds.hxx>
-#endif
-#ifndef _IntPatch_SequenceOfPathPointOfTheSOnBounds_HeaderFile
 #include <IntPatch_SequenceOfPathPointOfTheSOnBounds.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HVertex_HeaderFile
 #include <Handle_Adaptor3d_HVertex.hxx>
-#endif
-#ifndef _Handle_Adaptor2d_HCurve2d_HeaderFile
 #include <Handle_Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_TopolTool_HeaderFile
 #include <Handle_Adaptor3d_TopolTool.hxx>
-#endif
-#ifndef _Handle_IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds_HeaderFile
 #include <Handle_IntPatch_SequenceNodeOfSequenceOfPathPointOfTheSOnBounds.hxx>
-#endif
-#ifndef _Handle_IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds_HeaderFile
 #include <Handle_IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class StdFail_NotDone;
 class Standard_OutOfRange;
 class Standard_ConstructionError;
@@ -64,28 +38,28 @@ class IntPatch_SequenceNodeOfSequenceOfSegmentOfTheSOnBounds;
 
 
 
-class IntPatch_TheSOnBounds  {
+class IntPatch_TheSOnBounds 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   IntPatch_TheSOnBounds();
+  Standard_EXPORT IntPatch_TheSOnBounds();
   
-  Standard_EXPORT     void Perform(IntPatch_ArcFunction& F,const Handle(Adaptor3d_TopolTool)& Domain,const Standard_Real TolBoundary,const Standard_Real TolTangency,const Standard_Boolean RecheckOnRegularity = Standard_False) ;
+  Standard_EXPORT   void Perform (IntPatch_ArcFunction& F, const Handle(Adaptor3d_TopolTool)& Domain, const Standard_Real TolBoundary, const Standard_Real TolTangency, const Standard_Boolean RecheckOnRegularity = Standard_False) ;
   
-        Standard_Boolean IsDone() const;
+      Standard_Boolean IsDone()  const;
   
-        Standard_Boolean AllArcSolution() const;
+      Standard_Boolean AllArcSolution()  const;
   
-        Standard_Integer NbPoints() const;
+      Standard_Integer NbPoints()  const;
   
-       const IntPatch_ThePathPointOfTheSOnBounds& Point(const Standard_Integer Index) const;
+     const  IntPatch_ThePathPointOfTheSOnBounds& Point (const Standard_Integer Index)  const;
   
-        Standard_Integer NbSegments() const;
+      Standard_Integer NbSegments()  const;
   
-       const IntPatch_TheSegmentOfTheSOnBounds& Segment(const Standard_Integer Index) const;
-
+     const  IntPatch_TheSegmentOfTheSOnBounds& Segment (const Standard_Integer Index)  const;
 
 
 
@@ -100,17 +74,17 @@ private:
 
 
 
-Standard_Boolean done;
-Standard_Boolean all;
-IntPatch_SequenceOfSegmentOfTheSOnBounds sseg;
-IntPatch_SequenceOfPathPointOfTheSOnBounds spnt;
+  Standard_Boolean done;
+  Standard_Boolean all;
+  IntPatch_SequenceOfSegmentOfTheSOnBounds sseg;
+  IntPatch_SequenceOfPathPointOfTheSOnBounds spnt;
 
 
 };
 
-#define TheVertex Handle_Adaptor3d_HVertex
+#define TheVertex Handle(Adaptor3d_HVertex)
 #define TheVertex_hxx <Adaptor3d_HVertex.hxx>
-#define TheArc Handle_Adaptor2d_HCurve2d
+#define TheArc Handle(Adaptor2d_HCurve2d)
 #define TheArc_hxx <Adaptor2d_HCurve2d.hxx>
 #define TheArcTool IntPatch_HCurve2dTool
 #define TheArcTool_hxx <IntPatch_HCurve2dTool.hxx>
@@ -191,7 +165,6 @@ IntPatch_SequenceOfPathPointOfTheSOnBounds spnt;
 #undef IntStart_SearchOnBoundaries_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntPatch_TheSOnBounds_HeaderFile

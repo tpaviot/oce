@@ -5,22 +5,12 @@
 
 #include <TNaming_StdMapNodeOfMapOfNamedShape.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TNaming_NamedShape_HeaderFile
 #include <TNaming_NamedShape.hxx>
-#endif
-#ifndef _TNaming_NamedShapeHasher_HeaderFile
 #include <TNaming_NamedShapeHasher.hxx>
-#endif
-#ifndef _TNaming_MapOfNamedShape_HeaderFile
 #include <TNaming_MapOfNamedShape.hxx>
-#endif
-#ifndef _TNaming_MapIteratorOfMapOfNamedShape_HeaderFile
 #include <TNaming_MapIteratorOfMapOfNamedShape.hxx>
-#endif
 
  
 
@@ -39,7 +29,7 @@ IMPLEMENT_DOWNCAST(TNaming_StdMapNodeOfMapOfNamedShape,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(TNaming_StdMapNodeOfMapOfNamedShape)
 
 
-#define TheKey Handle_TNaming_NamedShape
+#define TheKey Handle(TNaming_NamedShape)
 #define TheKey_hxx <TNaming_NamedShape.hxx>
 #define Hasher TNaming_NamedShapeHasher
 #define Hasher_hxx <TNaming_NamedShapeHasher.hxx>

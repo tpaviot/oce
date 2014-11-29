@@ -6,44 +6,31 @@
 #ifndef _MeshVS_DataSource3D_HeaderFile
 #define _MeshVS_DataSource3D_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MeshVS_DataSource3D_HeaderFile
 #include <Handle_MeshVS_DataSource3D.hxx>
-#endif
 
-#ifndef _MeshVS_DataMapOfHArray1OfSequenceOfInteger_HeaderFile
 #include <MeshVS_DataMapOfHArray1OfSequenceOfInteger.hxx>
-#endif
-#ifndef _MeshVS_DataSource_HeaderFile
 #include <MeshVS_DataSource.hxx>
-#endif
-#ifndef _Handle_MeshVS_HArray1OfSequenceOfInteger_HeaderFile
 #include <Handle_MeshVS_HArray1OfSequenceOfInteger.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class MeshVS_HArray1OfSequenceOfInteger;
 
 
 
-class MeshVS_DataSource3D : public MeshVS_DataSource {
+class MeshVS_DataSource3D : public MeshVS_DataSource
+{
 
 public:
 
   
-  Standard_EXPORT     Handle_MeshVS_HArray1OfSequenceOfInteger GetPrismTopology(const Standard_Integer BasePoints) const;
+  Standard_EXPORT   Handle(MeshVS_HArray1OfSequenceOfInteger) GetPrismTopology (const Standard_Integer BasePoints)  const;
   
-  Standard_EXPORT     Handle_MeshVS_HArray1OfSequenceOfInteger GetPyramidTopology(const Standard_Integer BasePoints) const;
+  Standard_EXPORT   Handle(MeshVS_HArray1OfSequenceOfInteger) GetPyramidTopology (const Standard_Integer BasePoints)  const;
   
-  Standard_EXPORT   static  Handle_MeshVS_HArray1OfSequenceOfInteger CreatePrismTopology(const Standard_Integer BasePoints) ;
+  Standard_EXPORT static   Handle(MeshVS_HArray1OfSequenceOfInteger) CreatePrismTopology (const Standard_Integer BasePoints) ;
   
-  Standard_EXPORT   static  Handle_MeshVS_HArray1OfSequenceOfInteger CreatePyramidTopology(const Standard_Integer BasePoints) ;
+  Standard_EXPORT static   Handle(MeshVS_HArray1OfSequenceOfInteger) CreatePyramidTopology (const Standard_Integer BasePoints) ;
 
 
 
@@ -58,8 +45,8 @@ protected:
 private: 
 
 
-MeshVS_DataMapOfHArray1OfSequenceOfInteger myPrismTopos;
-MeshVS_DataMapOfHArray1OfSequenceOfInteger myPyramidTopos;
+  MeshVS_DataMapOfHArray1OfSequenceOfInteger myPrismTopos;
+  MeshVS_DataMapOfHArray1OfSequenceOfInteger myPyramidTopos;
 
 
 };
@@ -68,7 +55,6 @@ MeshVS_DataMapOfHArray1OfSequenceOfInteger myPyramidTopos;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MeshVS_DataSource3D_HeaderFile

@@ -6,22 +6,15 @@
 #ifndef _Handle_BRepFill_CurveConstraint_HeaderFile
 #define _Handle_BRepFill_CurveConstraint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_GeomPlate_CurveConstraint_HeaderFile
 #include <Handle_GeomPlate_CurveConstraint.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(GeomPlate_CurveConstraint);
 class BRepFill_CurveConstraint;
 
-DEFINE_STANDARD_HANDLE(BRepFill_CurveConstraint,GeomPlate_CurveConstraint)
+DEFINE_STANDARD_HANDLE(BRepFill_CurveConstraint, GeomPlate_CurveConstraint)
 
-#endif
+#endif // _Handle_BRepFill_CurveConstraint_HeaderFile

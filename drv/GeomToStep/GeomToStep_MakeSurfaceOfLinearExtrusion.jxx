@@ -1,12 +1,4 @@
-#ifndef _StepGeom_SurfaceOfLinearExtrusion_HeaderFile
 #include <StepGeom_SurfaceOfLinearExtrusion.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Geom_SurfaceOfLinearExtrusion_HeaderFile
 #include <Geom_SurfaceOfLinearExtrusion.hxx>
-#endif
-#ifndef _GeomToStep_MakeSurfaceOfLinearExtrusion_HeaderFile
 #include <GeomToStep_MakeSurfaceOfLinearExtrusion.hxx>
-#endif

@@ -6,50 +6,39 @@
 #ifndef _StepDimTol_GeometricToleranceWithDatumReference_HeaderFile
 #define _StepDimTol_GeometricToleranceWithDatumReference_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepDimTol_GeometricToleranceWithDatumReference_HeaderFile
 #include <Handle_StepDimTol_GeometricToleranceWithDatumReference.hxx>
-#endif
 
-#ifndef _Handle_StepDimTol_HArray1OfDatumReference_HeaderFile
 #include <Handle_StepDimTol_HArray1OfDatumReference.hxx>
-#endif
-#ifndef _StepDimTol_GeometricTolerance_HeaderFile
 #include <StepDimTol_GeometricTolerance.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepBasic_MeasureWithUnit_HeaderFile
 #include <Handle_StepBasic_MeasureWithUnit.hxx>
-#endif
-#ifndef _Handle_StepRepr_ShapeAspect_HeaderFile
 #include <Handle_StepRepr_ShapeAspect.hxx>
-#endif
 class StepDimTol_HArray1OfDatumReference;
 class TCollection_HAsciiString;
 class StepBasic_MeasureWithUnit;
 class StepRepr_ShapeAspect;
 
 
-//! Representation of STEP entity GeometricToleranceWithDatumReference <br>
-class StepDimTol_GeometricToleranceWithDatumReference : public StepDimTol_GeometricTolerance {
+//! Representation of STEP entity GeometricToleranceWithDatumReference
+class StepDimTol_GeometricToleranceWithDatumReference : public StepDimTol_GeometricTolerance
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepDimTol_GeometricToleranceWithDatumReference();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aGeometricTolerance_Name,const Handle(TCollection_HAsciiString)& aGeometricTolerance_Description,const Handle(StepBasic_MeasureWithUnit)& aGeometricTolerance_Magnitude,const Handle(StepRepr_ShapeAspect)& aGeometricTolerance_TolerancedShapeAspect,const Handle(StepDimTol_HArray1OfDatumReference)& aDatumSystem) ;
-  //! Returns field DatumSystem <br>
-  Standard_EXPORT     Handle_StepDimTol_HArray1OfDatumReference DatumSystem() const;
-  //! Set field DatumSystem <br>
-  Standard_EXPORT     void SetDatumSystem(const Handle(StepDimTol_HArray1OfDatumReference)& DatumSystem) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepDimTol_GeometricToleranceWithDatumReference();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aGeometricTolerance_Name, const Handle(TCollection_HAsciiString)& aGeometricTolerance_Description, const Handle(StepBasic_MeasureWithUnit)& aGeometricTolerance_Magnitude, const Handle(StepRepr_ShapeAspect)& aGeometricTolerance_TolerancedShapeAspect, const Handle(StepDimTol_HArray1OfDatumReference)& aDatumSystem) ;
+  
+  //! Returns field DatumSystem
+  Standard_EXPORT   Handle(StepDimTol_HArray1OfDatumReference) DatumSystem()  const;
+  
+  //! Set field DatumSystem
+  Standard_EXPORT   void SetDatumSystem (const Handle(StepDimTol_HArray1OfDatumReference)& DatumSystem) ;
 
 
 
@@ -64,7 +53,7 @@ protected:
 private: 
 
 
-Handle_StepDimTol_HArray1OfDatumReference theDatumSystem;
+  Handle(StepDimTol_HArray1OfDatumReference) theDatumSystem;
 
 
 };
@@ -73,7 +62,6 @@ Handle_StepDimTol_HArray1OfDatumReference theDatumSystem;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepDimTol_GeometricToleranceWithDatumReference_HeaderFile

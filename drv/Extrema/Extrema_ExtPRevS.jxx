@@ -1,18 +1,6 @@
-#ifndef _StdFail_NotDone_HeaderFile
+#include <Adaptor3d_HSurfaceOfRevolution.hxx>
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Adaptor3d_SurfaceOfRevolution_HeaderFile
-#include <Adaptor3d_SurfaceOfRevolution.hxx>
-#endif
-#ifndef _Extrema_POnSurf_HeaderFile
 #include <Extrema_POnSurf.hxx>
-#endif
-#ifndef _Extrema_ExtPRevS_HeaderFile
 #include <Extrema_ExtPRevS.hxx>
-#endif

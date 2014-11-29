@@ -6,59 +6,50 @@
 #ifndef _math_GaussSingleIntegration_HeaderFile
 #define _math_GaussSingleIntegration_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class StdFail_NotDone;
 class math_Function;
 
 
 
-//! This class implements the integration of a function of a single variable <br>
-//! between the parameter bounds Lower and Upper. <br>
-//!  Warning: Order must be inferior or equal to 61. <br>
-class math_GaussSingleIntegration  {
+//! This class implements the integration of a function of a single variable
+//! between the parameter bounds Lower and Upper.
+//! Warning: Order must be inferior or equal to 61.
+class math_GaussSingleIntegration 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   math_GaussSingleIntegration();
+  Standard_EXPORT math_GaussSingleIntegration();
   
-//! The Gauss-Legendre integration with N = Order points of integration, <br>
-//! is done on the function F between the bounds Lower and Upper. <br>
-  Standard_EXPORT   math_GaussSingleIntegration(math_Function& F,const Standard_Real Lower,const Standard_Real Upper,const Standard_Integer Order);
-  
-//! The Gauss-Legendre integration with N = Order points of integration  and <br>
-//! given tolerance = Tol is done on the function F between the bounds <br>
-//! Lower and Upper. <br>
-  Standard_EXPORT   math_GaussSingleIntegration(math_Function& F,const Standard_Real Lower,const Standard_Real Upper,const Standard_Integer Order,const Standard_Real Tol);
-  //! returns True if all has been correctly done. <br>
-        Standard_Boolean IsDone() const;
-  //! returns the value of the integral. <br>
-        Standard_Real Value() const;
-  //! Prints information on the current state of the object. <br>
-  Standard_EXPORT     void Dump(Standard_OStream& o) const;
 
+  //! The Gauss-Legendre integration with N = Order points of integration,
+  //! is done on the function F between the bounds Lower and Upper.
+  Standard_EXPORT math_GaussSingleIntegration(math_Function& F, const Standard_Real Lower, const Standard_Real Upper, const Standard_Integer Order);
+  
+
+  //! The Gauss-Legendre integration with N = Order points of integration  and
+  //! given tolerance = Tol is done on the function F between the bounds
+  //! Lower and Upper.
+  Standard_EXPORT math_GaussSingleIntegration(math_Function& F, const Standard_Real Lower, const Standard_Real Upper, const Standard_Integer Order, const Standard_Real Tol);
+  
+  //! returns True if all has been correctly done.
+      Standard_Boolean IsDone()  const;
+  
+  //! returns the value of the integral.
+      Standard_Real Value()  const;
+  
+  //! Prints information on the current state of the object.
+  Standard_EXPORT   void Dump (Standard_OStream& o)  const;
 
 
 
@@ -71,12 +62,13 @@ protected:
 
 private:
 
-  //!  perfoms  actual  computation <br>
-  Standard_EXPORT     void Perform(math_Function& F,const Standard_Real Lower,const Standard_Real Upper,const Standard_Integer Order) ;
+  
+  //! perfoms  actual  computation
+  Standard_EXPORT   void Perform (math_Function& F, const Standard_Real Lower, const Standard_Real Upper, const Standard_Integer Order) ;
 
 
-Standard_Real Val;
-Standard_Boolean Done;
+  Standard_Real Val;
+  Standard_Boolean Done;
 
 
 };
@@ -86,7 +78,6 @@ Standard_Boolean Done;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _math_GaussSingleIntegration_HeaderFile

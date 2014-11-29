@@ -1,21 +1,7 @@
-#ifndef _StepGeom_Axis1Placement_HeaderFile
 #include <StepGeom_Axis1Placement.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _gp_Ax1_HeaderFile
 #include <gp_Ax1.hxx>
-#endif
-#ifndef _gp_Ax2d_HeaderFile
 #include <gp_Ax2d.hxx>
-#endif
-#ifndef _Geom_Axis1Placement_HeaderFile
 #include <Geom_Axis1Placement.hxx>
-#endif
-#ifndef _Geom2d_AxisPlacement_HeaderFile
 #include <Geom2d_AxisPlacement.hxx>
-#endif
-#ifndef _GeomToStep_MakeAxis1Placement_HeaderFile
 #include <GeomToStep_MakeAxis1Placement.hxx>
-#endif

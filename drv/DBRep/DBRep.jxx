@@ -1,9 +1,2 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Draw_Interpretor_HeaderFile
-#include <Draw_Interpretor.hxx>
-#endif
-#ifndef _DBRep_HeaderFile
 #include <DBRep.hxx>
-#endif

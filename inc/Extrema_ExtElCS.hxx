@@ -6,34 +6,16 @@
 #ifndef _Extrema_ExtElCS_HeaderFile
 #define _Extrema_ExtElCS_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Handle_Extrema_HArray1OfPOnCurv_HeaderFile
 #include <Handle_Extrema_HArray1OfPOnCurv.hxx>
-#endif
-#ifndef _Handle_Extrema_HArray1OfPOnSurf_HeaderFile
 #include <Handle_Extrema_HArray1OfPOnSurf.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TColStd_HArray1OfReal;
 class Extrema_HArray1OfPOnCurv;
 class Extrema_HArray1OfPOnSurf;
@@ -52,83 +34,99 @@ class Extrema_POnCurv;
 class Extrema_POnSurf;
 
 
-//! It calculates all the distances between a curve and <br>
-//!          a surface. <br>
-//!          These distances can be maximum or minimum. <br>
-class Extrema_ExtElCS  {
+//! It calculates all the distances between a curve and
+//! a surface.
+//! These distances can be maximum or minimum.
+class Extrema_ExtElCS 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Extrema_ExtElCS();
-  //! Calculates the distances between a line and a <br>
-//!          plane. The line can be on the plane or on a parallel <br>
-//!          plane. <br>
-  Standard_EXPORT   Extrema_ExtElCS(const gp_Lin& C,const gp_Pln& S);
+  Standard_EXPORT Extrema_ExtElCS();
   
-  Standard_EXPORT     void Perform(const gp_Lin& C,const gp_Pln& S) ;
-  //! Calculates the distances between a line and a <br>
-//!          cylinder. <br>
-  Standard_EXPORT   Extrema_ExtElCS(const gp_Lin& C,const gp_Cylinder& S);
+  //! Calculates the distances between a line and a
+  //! plane. The line can be on the plane or on a parallel
+  //! plane.
+  Standard_EXPORT Extrema_ExtElCS(const gp_Lin& C, const gp_Pln& S);
   
-  Standard_EXPORT     void Perform(const gp_Lin& C,const gp_Cylinder& S) ;
-  //! Calculates the distances between a line and a cone. <br>
-  Standard_EXPORT   Extrema_ExtElCS(const gp_Lin& C,const gp_Cone& S);
+  Standard_EXPORT   void Perform (const gp_Lin& C, const gp_Pln& S) ;
   
-  Standard_EXPORT     void Perform(const gp_Lin& C,const gp_Cone& S) ;
-  //! Calculates the distances between a line and a <br>
-//!          sphere. <br>
-  Standard_EXPORT   Extrema_ExtElCS(const gp_Lin& C,const gp_Sphere& S);
+  //! Calculates the distances between a line and a
+  //! cylinder.
+  Standard_EXPORT Extrema_ExtElCS(const gp_Lin& C, const gp_Cylinder& S);
   
-  Standard_EXPORT     void Perform(const gp_Lin& C,const gp_Sphere& S) ;
-  //! Calculates the distances between a line and a <br>
-//!          torus. <br>
-  Standard_EXPORT   Extrema_ExtElCS(const gp_Lin& C,const gp_Torus& S);
+  Standard_EXPORT   void Perform (const gp_Lin& C, const gp_Cylinder& S) ;
   
-  Standard_EXPORT     void Perform(const gp_Lin& C,const gp_Torus& S) ;
-  //! Calculates the distances between a circle and a <br>
-//!          plane. <br>
-  Standard_EXPORT   Extrema_ExtElCS(const gp_Circ& C,const gp_Pln& S);
+  //! Calculates the distances between a line and a cone.
+  Standard_EXPORT Extrema_ExtElCS(const gp_Lin& C, const gp_Cone& S);
   
-  Standard_EXPORT     void Perform(const gp_Circ& C,const gp_Pln& S) ;
-  //! Calculates the distances between a circle and a <br>
-//!          cylinder. <br>
-  Standard_EXPORT   Extrema_ExtElCS(const gp_Circ& C,const gp_Cylinder& S);
+  Standard_EXPORT   void Perform (const gp_Lin& C, const gp_Cone& S) ;
   
-  Standard_EXPORT     void Perform(const gp_Circ& C,const gp_Cylinder& S) ;
-  //! Calculates the distances between a circle and a <br>
-//!          cone. <br>
-  Standard_EXPORT   Extrema_ExtElCS(const gp_Circ& C,const gp_Cone& S);
+  //! Calculates the distances between a line and a
+  //! sphere.
+  Standard_EXPORT Extrema_ExtElCS(const gp_Lin& C, const gp_Sphere& S);
   
-  Standard_EXPORT     void Perform(const gp_Circ& C,const gp_Cone& S) ;
-  //! Calculates the distances between a circle and a <br>
-//!          sphere. <br>
-  Standard_EXPORT   Extrema_ExtElCS(const gp_Circ& C,const gp_Sphere& S);
+  Standard_EXPORT   void Perform (const gp_Lin& C, const gp_Sphere& S) ;
   
-  Standard_EXPORT     void Perform(const gp_Circ& C,const gp_Sphere& S) ;
-  //! Calculates the distances between a circle and a <br>
-//!          torus. <br>
-  Standard_EXPORT   Extrema_ExtElCS(const gp_Circ& C,const gp_Torus& S);
+  //! Calculates the distances between a line and a
+  //! torus.
+  Standard_EXPORT Extrema_ExtElCS(const gp_Lin& C, const gp_Torus& S);
   
-  Standard_EXPORT     void Perform(const gp_Circ& C,const gp_Torus& S) ;
-  //! Calculates the distances between a hyperbola and a <br>
-//!          plane. <br>
-  Standard_EXPORT   Extrema_ExtElCS(const gp_Hypr& C,const gp_Pln& S);
+  Standard_EXPORT   void Perform (const gp_Lin& C, const gp_Torus& S) ;
   
-  Standard_EXPORT     void Perform(const gp_Hypr& C,const gp_Pln& S) ;
-  //! Returns True if the distances are found. <br>
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-  //! Returns True if the curve is on a parallel surface. <br>
-  Standard_EXPORT     Standard_Boolean IsParallel() const;
-  //! Returns the number of extremum distances. <br>
-  Standard_EXPORT     Standard_Integer NbExt() const;
-  //! Returns the value of the Nth extremum square distance. <br>
-  Standard_EXPORT     Standard_Real SquareDistance(const Standard_Integer N = 1) const;
-  //! Returns the points of the Nth extremum distance. <br>
-//!          P1 is on the curve, P2 on the surface. <br>
-  Standard_EXPORT     void Points(const Standard_Integer N,Extrema_POnCurv& P1,Extrema_POnSurf& P2) const;
-
+  //! Calculates the distances between a circle and a
+  //! plane.
+  Standard_EXPORT Extrema_ExtElCS(const gp_Circ& C, const gp_Pln& S);
+  
+  Standard_EXPORT   void Perform (const gp_Circ& C, const gp_Pln& S) ;
+  
+  //! Calculates the distances between a circle and a
+  //! cylinder.
+  Standard_EXPORT Extrema_ExtElCS(const gp_Circ& C, const gp_Cylinder& S);
+  
+  Standard_EXPORT   void Perform (const gp_Circ& C, const gp_Cylinder& S) ;
+  
+  //! Calculates the distances between a circle and a
+  //! cone.
+  Standard_EXPORT Extrema_ExtElCS(const gp_Circ& C, const gp_Cone& S);
+  
+  Standard_EXPORT   void Perform (const gp_Circ& C, const gp_Cone& S) ;
+  
+  //! Calculates the distances between a circle and a
+  //! sphere.
+  Standard_EXPORT Extrema_ExtElCS(const gp_Circ& C, const gp_Sphere& S);
+  
+  Standard_EXPORT   void Perform (const gp_Circ& C, const gp_Sphere& S) ;
+  
+  //! Calculates the distances between a circle and a
+  //! torus.
+  Standard_EXPORT Extrema_ExtElCS(const gp_Circ& C, const gp_Torus& S);
+  
+  Standard_EXPORT   void Perform (const gp_Circ& C, const gp_Torus& S) ;
+  
+  //! Calculates the distances between a hyperbola and a
+  //! plane.
+  Standard_EXPORT Extrema_ExtElCS(const gp_Hypr& C, const gp_Pln& S);
+  
+  Standard_EXPORT   void Perform (const gp_Hypr& C, const gp_Pln& S) ;
+  
+  //! Returns True if the distances are found.
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
+  
+  //! Returns True if the curve is on a parallel surface.
+  Standard_EXPORT   Standard_Boolean IsParallel()  const;
+  
+  //! Returns the number of extremum distances.
+  Standard_EXPORT   Standard_Integer NbExt()  const;
+  
+  //! Returns the value of the Nth extremum square distance.
+  Standard_EXPORT   Standard_Real SquareDistance (const Standard_Integer N = 1)  const;
+  
+  //! Returns the points of the Nth extremum distance.
+  //! P1 is on the curve, P2 on the surface.
+  Standard_EXPORT   void Points (const Standard_Integer N, Extrema_POnCurv& P1, Extrema_POnSurf& P2)  const;
 
 
 
@@ -143,12 +141,12 @@ private:
 
 
 
-Standard_Boolean myDone;
-Standard_Integer myNbExt;
-Standard_Boolean myIsPar;
-Handle_TColStd_HArray1OfReal mySqDist;
-Handle_Extrema_HArray1OfPOnCurv myPoint1;
-Handle_Extrema_HArray1OfPOnSurf myPoint2;
+  Standard_Boolean myDone;
+  Standard_Integer myNbExt;
+  Standard_Boolean myIsPar;
+  Handle(TColStd_HArray1OfReal) mySqDist;
+  Handle(Extrema_HArray1OfPOnCurv) myPoint1;
+  Handle(Extrema_HArray1OfPOnSurf) myPoint2;
 
 
 };
@@ -157,7 +155,6 @@ Handle_Extrema_HArray1OfPOnSurf myPoint2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Extrema_ExtElCS_HeaderFile

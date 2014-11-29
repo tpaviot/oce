@@ -6,28 +6,22 @@
 #ifndef _StepShape_GeometricCurveSet_HeaderFile
 #define _StepShape_GeometricCurveSet_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_GeometricCurveSet_HeaderFile
 #include <Handle_StepShape_GeometricCurveSet.hxx>
-#endif
 
-#ifndef _StepShape_GeometricSet_HeaderFile
 #include <StepShape_GeometricSet.hxx>
-#endif
 
 
 
-class StepShape_GeometricCurveSet : public StepShape_GeometricSet {
+class StepShape_GeometricCurveSet : public StepShape_GeometricSet
+{
 
 public:
 
-  //! Returns a GeometricCurveSet <br>
-  Standard_EXPORT   StepShape_GeometricCurveSet();
+  
+  //! Returns a GeometricCurveSet
+  Standard_EXPORT StepShape_GeometricCurveSet();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_GeometricCurveSet_HeaderFile

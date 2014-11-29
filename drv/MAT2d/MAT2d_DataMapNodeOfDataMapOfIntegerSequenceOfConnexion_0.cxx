@@ -5,22 +5,12 @@
 
 #include <MAT2d_DataMapNodeOfDataMapOfIntegerSequenceOfConnexion.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _MAT2d_SequenceOfConnexion_HeaderFile
 #include <MAT2d_SequenceOfConnexion.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _MAT2d_DataMapOfIntegerSequenceOfConnexion_HeaderFile
 #include <MAT2d_DataMapOfIntegerSequenceOfConnexion.hxx>
-#endif
-#ifndef _MAT2d_DataMapIteratorOfDataMapOfIntegerSequenceOfConnexion_HeaderFile
 #include <MAT2d_DataMapIteratorOfDataMapOfIntegerSequenceOfConnexion.hxx>
-#endif
 
  
 

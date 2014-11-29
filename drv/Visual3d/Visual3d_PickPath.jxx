@@ -1,9 +1,0 @@
-#ifndef _Graphic3d_Structure_HeaderFile
-#include <Graphic3d_Structure.hxx>
-#endif
-#ifndef _Visual3d_PickError_HeaderFile
-#include <Visual3d_PickError.hxx>
-#endif
-#ifndef _Visual3d_PickPath_HeaderFile
-#include <Visual3d_PickPath.hxx>
-#endif

@@ -6,8 +6,11 @@
 #ifndef _StepElement_EnumeratedCurveElementFreedom_HeaderFile
 #define _StepElement_EnumeratedCurveElementFreedom_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepElement_EnumeratedCurveElementFreedom {
+
+enum StepElement_EnumeratedCurveElementFreedom
+{
 StepElement_XTranslation,
 StepElement_YTranslation,
 StepElement_ZTranslation,
@@ -18,8 +21,4 @@ StepElement_Warp,
 StepElement_None
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepElement_EnumeratedCurveElementFreedom_HeaderFile

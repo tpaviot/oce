@@ -6,51 +6,37 @@
 #ifndef _StepShape_BoxedHalfSpace_HeaderFile
 #define _StepShape_BoxedHalfSpace_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_BoxedHalfSpace_HeaderFile
 #include <Handle_StepShape_BoxedHalfSpace.hxx>
-#endif
 
-#ifndef _Handle_StepShape_BoxDomain_HeaderFile
 #include <Handle_StepShape_BoxDomain.hxx>
-#endif
-#ifndef _StepShape_HalfSpaceSolid_HeaderFile
 #include <StepShape_HalfSpaceSolid.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepGeom_Surface_HeaderFile
 #include <Handle_StepGeom_Surface.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class StepShape_BoxDomain;
 class TCollection_HAsciiString;
 class StepGeom_Surface;
 
 
 
-class StepShape_BoxedHalfSpace : public StepShape_HalfSpaceSolid {
+class StepShape_BoxedHalfSpace : public StepShape_HalfSpaceSolid
+{
 
 public:
 
-  //! Returns a BoxedHalfSpace <br>
-  Standard_EXPORT   StepShape_BoxedHalfSpace();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_Surface)& aBaseSurface,const Standard_Boolean aAgreementFlag) ;
+  //! Returns a BoxedHalfSpace
+  Standard_EXPORT StepShape_BoxedHalfSpace();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_Surface)& aBaseSurface,const Standard_Boolean aAgreementFlag,const Handle(StepShape_BoxDomain)& aEnclosure) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_Surface)& aBaseSurface, const Standard_Boolean aAgreementFlag) ;
   
-  Standard_EXPORT     void SetEnclosure(const Handle(StepShape_BoxDomain)& aEnclosure) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_Surface)& aBaseSurface, const Standard_Boolean aAgreementFlag, const Handle(StepShape_BoxDomain)& aEnclosure) ;
   
-  Standard_EXPORT     Handle_StepShape_BoxDomain Enclosure() const;
+  Standard_EXPORT   void SetEnclosure (const Handle(StepShape_BoxDomain)& aEnclosure) ;
+  
+  Standard_EXPORT   Handle(StepShape_BoxDomain) Enclosure()  const;
 
 
 
@@ -65,7 +51,7 @@ protected:
 private: 
 
 
-Handle_StepShape_BoxDomain enclosure;
+  Handle(StepShape_BoxDomain) enclosure;
 
 
 };
@@ -74,7 +60,6 @@ Handle_StepShape_BoxDomain enclosure;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_BoxedHalfSpace_HeaderFile

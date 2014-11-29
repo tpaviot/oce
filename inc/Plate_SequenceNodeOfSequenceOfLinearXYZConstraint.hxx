@@ -6,38 +6,27 @@
 #ifndef _Plate_SequenceNodeOfSequenceOfLinearXYZConstraint_HeaderFile
 #define _Plate_SequenceNodeOfSequenceOfLinearXYZConstraint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint_HeaderFile
 #include <Handle_Plate_SequenceNodeOfSequenceOfLinearXYZConstraint.hxx>
-#endif
 
-#ifndef _Plate_LinearXYZConstraint_HeaderFile
 #include <Plate_LinearXYZConstraint.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Plate_LinearXYZConstraint;
 class Plate_SequenceOfLinearXYZConstraint;
 
 
 
-class Plate_SequenceNodeOfSequenceOfLinearXYZConstraint : public TCollection_SeqNode {
+class Plate_SequenceNodeOfSequenceOfLinearXYZConstraint : public TCollection_SeqNode
+{
 
 public:
 
   
-      Plate_SequenceNodeOfSequenceOfLinearXYZConstraint(const Plate_LinearXYZConstraint& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    Plate_SequenceNodeOfSequenceOfLinearXYZConstraint(const Plate_LinearXYZConstraint& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Plate_LinearXYZConstraint& Value() const;
+      Plate_LinearXYZConstraint& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-Plate_LinearXYZConstraint myValue;
+  Plate_LinearXYZConstraint myValue;
 
 
 };
@@ -78,7 +67,6 @@ Plate_LinearXYZConstraint myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Plate_SequenceNodeOfSequenceOfLinearXYZConstraint_HeaderFile

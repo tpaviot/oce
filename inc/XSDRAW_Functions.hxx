@@ -6,36 +6,31 @@
 #ifndef _XSDRAW_Functions_HeaderFile
 #define _XSDRAW_Functions_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
 
 
-//! Defines additionnal commands for XSDRAW to : <br>
-//!           - control of initialisation (xinit, xnorm, newmodel) <br>
-//!           - analyse of the result of a transfer (recorded in a <br>
-//!             TransientProcess for Read, FinderProcess for Write) : <br>
-//!             statistics, various lists (roots,complete,abnormal), what <br>
-//!             about one specific entity, producing a model with the <br>
-//!             abnormal result <br>
-//! <br>
-//!           This appendix of XSDRAW is compiled separately to distinguish <br>
-//!           basic features from user callable forms <br>
-class XSDRAW_Functions  {
+//! Defines additionnal commands for XSDRAW to :
+//! - control of initialisation (xinit, xnorm, newmodel)
+//! - analyse of the result of a transfer (recorded in a
+//! TransientProcess for Read, FinderProcess for Write) :
+//! statistics, various lists (roots,complete,abnormal), what
+//! about one specific entity, producing a model with the
+//! abnormal result
+//!
+//! This appendix of XSDRAW is compiled separately to distinguish
+//! basic features from user callable forms
+class XSDRAW_Functions 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Defines and loads all basic functions for XSDRAW (as ActFunc) <br>
-  Standard_EXPORT   static  void Init() ;
-
+  
+  //! Defines and loads all basic functions for XSDRAW (as ActFunc)
+  Standard_EXPORT static   void Init() ;
 
 
 
@@ -58,7 +53,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XSDRAW_Functions_HeaderFile

@@ -5,18 +5,10 @@
 
 #include <TColStd_DataMapIteratorOfDataMapOfIntegerReal.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _TColStd_DataMapOfIntegerReal_HeaderFile
 #include <TColStd_DataMapOfIntegerReal.hxx>
-#endif
-#ifndef _TColStd_DataMapNodeOfDataMapOfIntegerReal_HeaderFile
 #include <TColStd_DataMapNodeOfDataMapOfIntegerReal.hxx>
-#endif
  
 
 #define TheKey Standard_Integer

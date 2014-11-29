@@ -6,22 +6,15 @@
 #ifndef _Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt_HeaderFile
 #define _Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TCollection_MapNode_HeaderFile
 #include <Handle_TCollection_MapNode.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TCollection_MapNode);
 class BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt;
 
-DEFINE_STANDARD_HANDLE(BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt,TCollection_MapNode)
+DEFINE_STANDARD_HANDLE(BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt, TCollection_MapNode)
 
-#endif
+#endif // _Handle_BRepMAT2d_DataMapNodeOfDataMapOfShapeSequenceOfBasicElt_HeaderFile

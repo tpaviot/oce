@@ -6,47 +6,35 @@
 #ifndef _LocOpe_BuildWires_HeaderFile
 #define _LocOpe_BuildWires_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _Handle_LocOpe_ProjectedWires_HeaderFile
-#include <Handle_LocOpe_ProjectedWires.hxx>
-#endif
+#include <Handle_LocOpe_WiresOnShape.hxx>
 class StdFail_NotDone;
 class TopTools_ListOfShape;
-class LocOpe_ProjectedWires;
+class LocOpe_WiresOnShape;
 
 
 
-class LocOpe_BuildWires  {
+class LocOpe_BuildWires 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   LocOpe_BuildWires();
+  Standard_EXPORT LocOpe_BuildWires();
   
-  Standard_EXPORT   LocOpe_BuildWires(const TopTools_ListOfShape& Ledges,const Handle(LocOpe_ProjectedWires)& PW);
+  Standard_EXPORT LocOpe_BuildWires(const TopTools_ListOfShape& Ledges, const Handle(LocOpe_WiresOnShape)& PW);
   
-  Standard_EXPORT     void Perform(const TopTools_ListOfShape& Ledges,const Handle(LocOpe_ProjectedWires)& PW) ;
+  Standard_EXPORT   void Perform (const TopTools_ListOfShape& Ledges, const Handle(LocOpe_WiresOnShape)& PW) ;
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
   
-  Standard_EXPORT    const TopTools_ListOfShape& Result() const;
-
+  Standard_EXPORT  const  TopTools_ListOfShape& Result()  const;
 
 
 
@@ -61,8 +49,8 @@ private:
 
 
 
-Standard_Boolean myDone;
-TopTools_ListOfShape myRes;
+  Standard_Boolean myDone;
+  TopTools_ListOfShape myRes;
 
 
 };
@@ -71,7 +59,6 @@ TopTools_ListOfShape myRes;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _LocOpe_BuildWires_HeaderFile

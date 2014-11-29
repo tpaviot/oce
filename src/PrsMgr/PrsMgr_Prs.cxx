@@ -13,18 +13,18 @@
 // commercial license or contractual agreement.
 
 #include <PrsMgr_Prs.ixx>
-#include <PrsMgr_Presentation3d.hxx>
+#include <PrsMgr_Presentation.hxx>
 #include <Precision.hxx>
 #include <gp_Trsf.hxx>
 #include <Geom_Transformation.hxx>
 
-PrsMgr_Prs::PrsMgr_Prs (const Handle(Graphic3d_StructureManager)& aStructureManager,
-			const PrsMgr_Presentation3dPointer& aPresentation3d, 
-			const PrsMgr_TypeOfPresentation3d aTypeOfPresentation)
-:Prs3d_Presentation(aStructureManager),myPresentation3d(aPresentation3d) 
+PrsMgr_Prs::PrsMgr_Prs (const Handle(Graphic3d_StructureManager)& theStructManager,
+                        const PrsMgr_PresentationPointer&         thePrs,
+                        const PrsMgr_TypeOfPresentation3d         theTypeOfPresentation)
+: Prs3d_Presentation (theStructManager),
+  myPresentation3d   (thePrs)
 {
-  
-  if (aTypeOfPresentation == PrsMgr_TOP_ProjectorDependant)
+  if (theTypeOfPresentation == PrsMgr_TOP_ProjectorDependant)
     SetVisual(Graphic3d_TOS_COMPUTED);
 }
 
@@ -58,8 +58,7 @@ Handle(Graphic3d_Structure) PrsMgr_Prs::Compute(const Handle(Graphic3d_DataStruc
   Standard_Integer LC(AMatrix.LowerCol()),LR(AMatrix.LowerRow());
   TheTrsf.SetValues(AMatrix(LR,LC),AMatrix(LR,LC+1),AMatrix(LR,LC+2),AMatrix(LR,LC+3),
 		    AMatrix(LR+1,LC),AMatrix(LR+1,LC+1),AMatrix(LR+1,LC+2),AMatrix(LR+1,LC+3),
-		    AMatrix(LR+2,LC),AMatrix(LR+2,LC+1),AMatrix(LR+2,LC+2),AMatrix(LR+2,LC+3),
-		    Precision::Angular(),Precision::Confusion());
+		    AMatrix(LR+2,LC),AMatrix(LR+2,LC+1),AMatrix(LR+2,LC+2),AMatrix(LR+2,LC+3));
    Handle(Geom_Transformation) G = new Geom_Transformation(TheTrsf);
   
   return myPresentation3d->Compute(aProjector,G);
@@ -90,8 +89,7 @@ void PrsMgr_Prs::Compute(const Handle(Graphic3d_DataStructureManager)& aProjecto
   Standard_Integer LC(AMatrix.LowerCol()),LR(AMatrix.LowerRow());
   TheTrsf.SetValues(AMatrix(LR,LC),AMatrix(LR,LC+1),AMatrix(LR,LC+2),AMatrix(LR,LC+3),
 		    AMatrix(LR+1,LC),AMatrix(LR+1,LC+1),AMatrix(LR+1,LC+2),AMatrix(LR+1,LC+3),
-		    AMatrix(LR+2,LC),AMatrix(LR+2,LC+1),AMatrix(LR+2,LC+2),AMatrix(LR+2,LC+3),
-		    Precision::Angular(),Precision::Confusion());
+		    AMatrix(LR+2,LC),AMatrix(LR+2,LC+1),AMatrix(LR+2,LC+2),AMatrix(LR+2,LC+3));
   Handle(Geom_Transformation) G = new Geom_Transformation(TheTrsf);
 
 

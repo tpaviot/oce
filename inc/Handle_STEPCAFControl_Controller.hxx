@@ -6,22 +6,15 @@
 #ifndef _Handle_STEPCAFControl_Controller_HeaderFile
 #define _Handle_STEPCAFControl_Controller_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_STEPControl_Controller_HeaderFile
 #include <Handle_STEPControl_Controller.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(STEPControl_Controller);
 class STEPCAFControl_Controller;
 
-DEFINE_STANDARD_HANDLE(STEPCAFControl_Controller,STEPControl_Controller)
+DEFINE_STANDARD_HANDLE(STEPCAFControl_Controller, STEPControl_Controller)
 
-#endif
+#endif // _Handle_STEPCAFControl_Controller_HeaderFile

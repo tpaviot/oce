@@ -16,13 +16,12 @@
 #ifndef NCollection_Array1_HeaderFile
 #define NCollection_Array1_HeaderFile
 
-#ifndef No_Exception
 #include <Standard_DimensionMismatch.hxx>
 #include <Standard_OutOfMemory.hxx>
 #include <Standard_OutOfRange.hxx>
-#endif
 
-#include <NCollection_BaseCollection.hxx>
+#include <NCollection_DefineAlloc.hxx>
+#include <NCollection_StlIterator.hxx>
 
 // *********************************************** Template for Array1 class
 
@@ -54,49 +53,103 @@
 *              compatibility the method IsAllocated remained in class along
 *              with IsDeletable.
 */              
-template <class TheItemType> class NCollection_Array1
-  : public NCollection_BaseCollection<TheItemType>
+template <class TheItemType>
+class NCollection_Array1
 {
+public:
+  //! STL-compliant typedef for value type
+  typedef TheItemType value_type;
 
- public:
+public:
   //! Implementation of the Iterator interface.
-  class Iterator : public NCollection_BaseCollection<TheItemType>::Iterator
+  class Iterator
   {
   public:
+
     //! Empty constructor - for later Init
-    Iterator  (void) :
-      myCurrent (0),
-      myArray   (NULL) {}
-    //! Constructor with initialisation
-    Iterator  (const NCollection_Array1& theArray) :
-      myCurrent (theArray.Lower()),
-      myArray   ((NCollection_Array1<TheItemType> *) &theArray) {}
+    Iterator (void) :
+      myPtrCur (NULL),
+      myPtrEnd (NULL)
+    {
+      //
+    }
+
+    //! Constructor with initialization
+    Iterator (const NCollection_Array1& theArray, Standard_Boolean theToEnd = Standard_False) :
+      myPtrEnd (const_cast<TheItemType*> (&theArray.Last() + 1))
+    {
+      myPtrCur = theToEnd ? myPtrEnd : const_cast<TheItemType*> (&theArray.First());
+    }
+
     //! Initialisation
     void Init (const NCollection_Array1& theArray)
     { 
-      myCurrent = theArray.Lower();
-#ifdef __hpux
-      myArray   = (NCollection_Array1<TheItemType> *) &theArray;
-#else
-      myArray   = (NCollection_Array1 *) &theArray; 
-#endif
+      myPtrCur = const_cast<TheItemType*> (&theArray.First());
+      myPtrEnd = const_cast<TheItemType*> (&theArray.Last() + 1);
     }
+
+    //! Assignment
+    Iterator& operator= (const Iterator& theOther)
+    {
+      myPtrCur = theOther.myPtrCur;
+      myPtrEnd = theOther.myPtrEnd;
+      return *this;
+    }
+
     //! Check end
-    virtual Standard_Boolean More (void) const
-    { return (myCurrent<=myArray->Upper()); }
-    //! Make step
-    virtual void Next (void)         
-    { myCurrent++; }
+    Standard_Boolean More (void) const
+    { return myPtrCur < myPtrEnd; }
+    
+    //! Increment operator
+    void Next (void)
+    { ++myPtrCur; }
+
+    //! Decrement operator
+    void Previous()
+    { --myPtrCur; }
+
+    //! Offset operator.
+    void Offset (ptrdiff_t theOffset)
+    { myPtrCur += theOffset; }
+
+    //! Difference operator.
+    ptrdiff_t Differ (const Iterator& theOther) const
+    { return myPtrCur - theOther.myPtrCur; }
+
     //! Constant value access
-    virtual const TheItemType& Value (void) const
-    { return myArray->Value(myCurrent); }
+    const TheItemType& Value (void) const
+    { return *myPtrCur; }
+
     //! Variable value access
-    virtual TheItemType& ChangeValue (void) const 
-    { return myArray->ChangeValue(myCurrent); }
+    TheItemType& ChangeValue (void) const 
+    { return *myPtrCur; }
+
+    //! Performs comparison of two iterators
+    Standard_Boolean IsEqual (const Iterator& theOther) const
+    { return myPtrCur == theOther.myPtrCur; }
+
   private:
-    Standard_Integer    myCurrent; //!< Index of the current item
-    NCollection_Array1* myArray;   //!< Pointer to the array being iterated
+    TheItemType* myPtrCur; //!< Pointer to the current element in the array
+    TheItemType* myPtrEnd; //!< Pointer to the past-the-end element in the array
   }; // End of the nested class Iterator
+
+  //! Shorthand for a regular iterator type.
+  typedef NCollection_StlIterator<std::random_access_iterator_tag, Iterator, TheItemType, false> iterator;
+
+  //! Shorthand for a constant iterator type.
+  typedef NCollection_StlIterator<std::random_access_iterator_tag, Iterator, TheItemType, true> const_iterator;
+
+  //! Returns an iterator pointing to the first element in the array.
+  iterator begin() const { return Iterator (*this, false); }
+
+  //! Returns an iterator referring to the past-the-end element in the array.
+  iterator end() const { return Iterator (*this, true); }
+  
+  //! Returns a const iterator pointing to the first element in the array.
+  const_iterator cbegin() const { return Iterator (*this, false); }
+
+  //! Returns a const iterator referring to the past-the-end element in the array.
+  const_iterator cend() const { return Iterator (*this, true); }
 
  public:
   // ---------- PUBLIC METHODS ------------
@@ -104,36 +157,25 @@ template <class TheItemType> class NCollection_Array1
   //! Constructor
   NCollection_Array1(const Standard_Integer theLower,
                      const Standard_Integer theUpper) :
-                NCollection_BaseCollection<TheItemType>  (),
                 myLowerBound                             (theLower),
                 myUpperBound                             (theUpper),
                 myDeletable                              (Standard_True)
   {
-#if !defined No_Exception && !defined No_Standard_RangeError
-    if (theUpper < theLower)
-      Standard_RangeError::Raise ("NCollection_Array1::Create");
-#endif
+    Standard_RangeError_Raise_if (theUpper < theLower, "NCollection_Array1::Create");
     TheItemType* pBegin = new TheItemType[Length()];
-#if !defined No_Exception && !defined No_Standard_OutOfMemory
-    if (!pBegin)
-      Standard_OutOfMemory::Raise ("NCollection_Array1 : Allocation failed");
-#endif
+    Standard_OutOfMemory_Raise_if (!pBegin, "NCollection_Array1 : Allocation failed");
 
     myData = pBegin - theLower;
   }
 
   //! Copy constructor 
   NCollection_Array1 (const NCollection_Array1& theOther) :
-    NCollection_BaseCollection<TheItemType>     (),
     myLowerBound                                (theOther.Lower()),
     myUpperBound                                (theOther.Upper()),
     myDeletable                                 (Standard_True)
   {
     TheItemType* pBegin = new TheItemType[Length()];
-#if !defined No_Exception && !defined No_Standard_OutOfMemory
-    if (!pBegin)
-      Standard_OutOfMemory::Raise ("NCollection_Array1 : Allocation failed");
-#endif
+    Standard_OutOfMemory_Raise_if (!pBegin, "NCollection_Array1 : Allocation failed");
     myData = pBegin - myLowerBound;
 
     *this = theOther;
@@ -143,15 +185,11 @@ template <class TheItemType> class NCollection_Array1
   NCollection_Array1 (const TheItemType& theBegin,
                       const Standard_Integer theLower,
                       const Standard_Integer theUpper) :
-    NCollection_BaseCollection<TheItemType>     (),
     myLowerBound                                (theLower),
     myUpperBound                                (theUpper),
     myDeletable                                 (Standard_False)
   {
-#if !defined No_Exception && !defined No_Standard_RangeError
-    if (theUpper < theLower)
-      Standard_RangeError::Raise ("NCollection_Array1::Array1");
-#endif
+    Standard_RangeError_Raise_if (theUpper < theLower, "NCollection_Array1::Create");
     myData = (TheItemType *) &theBegin - theLower; 
   }
 
@@ -164,7 +202,7 @@ template <class TheItemType> class NCollection_Array1
   }
 
   //! Size query
-  virtual Standard_Integer Size (void) const
+  Standard_Integer Size (void) const
   { return Length(); }
   //! Length query (the same)
   Standard_Integer Length (void) const
@@ -185,39 +223,23 @@ template <class TheItemType> class NCollection_Array1
   Standard_Boolean IsAllocated (void) const
   { return myDeletable; }
 
-  //! Assign (any collection to this array)
-  // Copies items from the other collection into the allocated
-  // storage. Raises an exception when sizes differ.
-  virtual void Assign (const NCollection_BaseCollection<TheItemType>& theOther)
-  {
-    if (&theOther == this)
-      return;
-#if !defined No_Exception && !defined No_Standard_DimensionMismatch
-    if (Length() != theOther.Size())
-      Standard_DimensionMismatch::Raise ("NCollection_Array1::Assign");
-#endif
-    TYPENAME NCollection_BaseCollection<TheItemType>::Iterator& anIter2 = 
-      theOther.CreateIterator();
-    TheItemType * const pEndItem = &myData[myUpperBound];
-    for (TheItemType * pItem = &myData[myLowerBound];
-         pItem <= pEndItem;   anIter2.Next())
-      * pItem ++ = anIter2.Value();
-  }
-
-  //! operator= (array to array)
-  NCollection_Array1& operator= (const NCollection_Array1& theOther)
+  //! Assignment
+  NCollection_Array1& Assign (const NCollection_Array1& theOther)
   {
     if (&theOther == this)
       return *this;
-#if !defined No_Exception && !defined No_Standard_DimensionMismatch
-    if (Length() != theOther.Length())
-      Standard_DimensionMismatch::Raise ("NCollection_Array1::operator=");
-#endif
+    Standard_DimensionMismatch_Raise_if (Length() != theOther.Length(), "NCollection_Array1::operator=");
     TheItemType * pMyItem        = &myData[myLowerBound];
     TheItemType * const pEndItem = &(theOther.myData)[theOther.myUpperBound];
     TheItemType * pItem          = &(theOther.myData)[theOther.myLowerBound];
     while (pItem <= pEndItem) * pMyItem ++ = * pItem ++;
     return *this; 
+  }
+
+  //! Assignment operator
+  NCollection_Array1& operator= (const NCollection_Array1& theOther)
+  { 
+    return Assign (theOther);
   }
 
   //! @return first element
@@ -247,10 +269,7 @@ template <class TheItemType> class NCollection_Array1
   //! Constant value access
   const TheItemType& Value (const Standard_Integer theIndex) const
   {
-#if !defined No_Exception && !defined No_Standard_OutOfRange
-    if (theIndex < myLowerBound || theIndex > myUpperBound)
-      Standard_OutOfRange::Raise ("NCollection_Array1::Value");
-#endif
+    Standard_OutOfRange_Raise_if (theIndex < myLowerBound || theIndex > myUpperBound, "NCollection_Array1::Value");
     return myData[theIndex];
   }
 
@@ -261,10 +280,7 @@ template <class TheItemType> class NCollection_Array1
   //! Variable value access
   TheItemType& ChangeValue (const Standard_Integer theIndex)
   {
-#if !defined No_Exception && !defined No_Standard_OutOfRange
-    if (theIndex < myLowerBound || theIndex > myUpperBound)
-      Standard_OutOfRange::Raise ("NCollection_Array1::ChangeValue");
-#endif
+    Standard_OutOfRange_Raise_if (theIndex < myLowerBound || theIndex > myUpperBound, "NCollection_Array1::ChangeValue");
     return myData[theIndex];
   }
 
@@ -276,25 +292,13 @@ template <class TheItemType> class NCollection_Array1
   void SetValue (const Standard_Integer theIndex,
                  const TheItemType&     theItem)
   {
-#if !defined No_Exception && !defined No_Standard_OutOfRange
-    if (theIndex < myLowerBound || theIndex > myUpperBound)
-      Standard_OutOfRange::Raise ("NCollection_Array1::SetValue");
-#endif
+    Standard_OutOfRange_Raise_if (theIndex < myLowerBound || theIndex > myUpperBound, "NCollection_Array1::SetValue");
     myData[theIndex] = theItem;
   }
 
   //! Destructor - releases the memory
   ~NCollection_Array1 (void)
   { if (myDeletable) delete [] &(myData[myLowerBound]); }
-
- private:
-  // ----------- PRIVATE METHODS -----------
-
-  // ******** Creates Iterator for use on BaseCollection
-  virtual
-  TYPENAME NCollection_BaseCollection<TheItemType>::Iterator& 
-                        CreateIterator(void) const
-  { return *(new (this->IterAllocator()) Iterator(*this)); }
 
  protected:
   // ---------- PROTECTED FIELDS -----------

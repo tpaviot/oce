@@ -6,28 +6,14 @@
 #ifndef _IntTools_DataMapNodeOfDataMapOfCurveSampleBox_HeaderFile
 #define _IntTools_DataMapNodeOfDataMapOfCurveSampleBox_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox_HeaderFile
 #include <Handle_IntTools_DataMapNodeOfDataMapOfCurveSampleBox.hxx>
-#endif
 
-#ifndef _IntTools_CurveRangeSample_HeaderFile
 #include <IntTools_CurveRangeSample.hxx>
-#endif
-#ifndef _Bnd_Box_HeaderFile
 #include <Bnd_Box.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class IntTools_CurveRangeSample;
 class Bnd_Box;
 class IntTools_CurveRangeSampleMapHasher;
@@ -36,16 +22,17 @@ class IntTools_DataMapIteratorOfDataMapOfCurveSampleBox;
 
 
 
-class IntTools_DataMapNodeOfDataMapOfCurveSampleBox : public TCollection_MapNode {
+class IntTools_DataMapNodeOfDataMapOfCurveSampleBox : public TCollection_MapNode
+{
 
 public:
 
   
-      IntTools_DataMapNodeOfDataMapOfCurveSampleBox(const IntTools_CurveRangeSample& K,const Bnd_Box& I,const TCollection_MapNodePtr& n);
+    IntTools_DataMapNodeOfDataMapOfCurveSampleBox(const IntTools_CurveRangeSample& K, const Bnd_Box& I, const TCollection_MapNodePtr& n);
   
-        IntTools_CurveRangeSample& Key() const;
+      IntTools_CurveRangeSample& Key()  const;
   
-        Bnd_Box& Value() const;
+      Bnd_Box& Value()  const;
 
 
 
@@ -60,8 +47,8 @@ protected:
 private: 
 
 
-IntTools_CurveRangeSample myKey;
-Bnd_Box myValue;
+  IntTools_CurveRangeSample myKey;
+  Bnd_Box myValue;
 
 
 };
@@ -99,7 +86,6 @@ Bnd_Box myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntTools_DataMapNodeOfDataMapOfCurveSampleBox_HeaderFile

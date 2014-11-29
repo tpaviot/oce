@@ -1,15 +1,5 @@
-#ifndef _IGESAppli_Node_HeaderFile
 #include <IGESAppli_Node.hxx>
-#endif
-#ifndef _IGESDefs_HArray1OfTabularData_HeaderFile
 #include <IGESDefs_HArray1OfTabularData.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _IGESDefs_TabularData_HeaderFile
 #include <IGESDefs_TabularData.hxx>
-#endif
-#ifndef _IGESAppli_NodalConstraint_HeaderFile
 #include <IGESAppli_NodalConstraint.hxx>
-#endif

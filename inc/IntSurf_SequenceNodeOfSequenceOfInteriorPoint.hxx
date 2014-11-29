@@ -6,38 +6,27 @@
 #ifndef _IntSurf_SequenceNodeOfSequenceOfInteriorPoint_HeaderFile
 #define _IntSurf_SequenceNodeOfSequenceOfInteriorPoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IntSurf_SequenceNodeOfSequenceOfInteriorPoint_HeaderFile
 #include <Handle_IntSurf_SequenceNodeOfSequenceOfInteriorPoint.hxx>
-#endif
 
-#ifndef _IntSurf_InteriorPoint_HeaderFile
 #include <IntSurf_InteriorPoint.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class IntSurf_InteriorPoint;
 class IntSurf_SequenceOfInteriorPoint;
 
 
 
-class IntSurf_SequenceNodeOfSequenceOfInteriorPoint : public TCollection_SeqNode {
+class IntSurf_SequenceNodeOfSequenceOfInteriorPoint : public TCollection_SeqNode
+{
 
 public:
 
   
-      IntSurf_SequenceNodeOfSequenceOfInteriorPoint(const IntSurf_InteriorPoint& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    IntSurf_SequenceNodeOfSequenceOfInteriorPoint(const IntSurf_InteriorPoint& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        IntSurf_InteriorPoint& Value() const;
+      IntSurf_InteriorPoint& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-IntSurf_InteriorPoint myValue;
+  IntSurf_InteriorPoint myValue;
 
 
 };
@@ -78,7 +67,6 @@ IntSurf_InteriorPoint myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IntSurf_SequenceNodeOfSequenceOfInteriorPoint_HeaderFile

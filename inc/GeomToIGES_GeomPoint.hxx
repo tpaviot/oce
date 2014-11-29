@@ -6,55 +6,44 @@
 #ifndef _GeomToIGES_GeomPoint_HeaderFile
 #define _GeomToIGES_GeomPoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _GeomToIGES_GeomEntity_HeaderFile
 #include <GeomToIGES_GeomEntity.hxx>
-#endif
-#ifndef _Handle_IGESGeom_Point_HeaderFile
 #include <Handle_IGESGeom_Point.hxx>
-#endif
-#ifndef _Handle_Geom_Point_HeaderFile
 #include <Handle_Geom_Point.hxx>
-#endif
-#ifndef _Handle_Geom_CartesianPoint_HeaderFile
 #include <Handle_Geom_CartesianPoint.hxx>
-#endif
 class GeomToIGES_GeomEntity;
 class IGESGeom_Point;
 class Geom_Point;
 class Geom_CartesianPoint;
 
 
-//! This class implements the transfer of the Point Entity from Geom <br>
-//!          to IGES . These are : <br>
-//!          . Point <br>
-//!              * CartesianPoint <br>
-class GeomToIGES_GeomPoint  : public GeomToIGES_GeomEntity {
+//! This class implements the transfer of the Point Entity from Geom
+//! to IGES . These are :
+//! . Point
+//! * CartesianPoint
+class GeomToIGES_GeomPoint  : public GeomToIGES_GeomEntity
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomToIGES_GeomPoint();
-  //! Creates a tool GeomPoint ready to run and sets its <br>
-//!         fields as GE's. <br>
-  Standard_EXPORT   GeomToIGES_GeomPoint(const GeomToIGES_GeomEntity& GE);
-  //!  Transfert  a  Point from Geom to IGES. If this <br>
-//!            Entity could not be converted, this member returns a NullEntity. <br>
-  Standard_EXPORT     Handle_IGESGeom_Point TransferPoint(const Handle(Geom_Point)& start) ;
-  //!  Transfert  a  CartesianPoint from Geom to IGES. If this <br>
-//!            Entity could not be converted, this member returns a NullEntity. <br>
-  Standard_EXPORT     Handle_IGESGeom_Point TransferPoint(const Handle(Geom_CartesianPoint)& start) ;
-
+  Standard_EXPORT GeomToIGES_GeomPoint();
+  
+  //! Creates a tool GeomPoint ready to run and sets its
+  //! fields as GE's.
+  Standard_EXPORT GeomToIGES_GeomPoint(const GeomToIGES_GeomEntity& GE);
+  
+  //! Transfert  a  Point from Geom to IGES. If this
+  //! Entity could not be converted, this member returns a NullEntity.
+  Standard_EXPORT   Handle(IGESGeom_Point) TransferPoint (const Handle(Geom_Point)& start) ;
+  
+  //! Transfert  a  CartesianPoint from Geom to IGES. If this
+  //! Entity could not be converted, this member returns a NullEntity.
+  Standard_EXPORT   Handle(IGESGeom_Point) TransferPoint (const Handle(Geom_CartesianPoint)& start) ;
 
 
 
@@ -77,7 +66,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomToIGES_GeomPoint_HeaderFile

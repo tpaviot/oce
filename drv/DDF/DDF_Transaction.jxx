@@ -1,15 +1,5 @@
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NullObject_HeaderFile
 #include <Standard_NullObject.hxx>
-#endif
-#ifndef _TDF_Data_HeaderFile
 #include <TDF_Data.hxx>
-#endif
-#ifndef _TDF_Delta_HeaderFile
 #include <TDF_Delta.hxx>
-#endif
-#ifndef _DDF_Transaction_HeaderFile
 #include <DDF_Transaction.hxx>
-#endif

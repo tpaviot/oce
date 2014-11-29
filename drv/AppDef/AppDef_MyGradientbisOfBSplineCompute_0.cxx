@@ -5,39 +5,16 @@
 
 #include <AppDef_MyGradientbisOfBSplineCompute.hxx>
 
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _AppDef_MultiLine_HeaderFile
 #include <AppDef_MultiLine.hxx>
-#endif
-#ifndef _AppDef_MyLineTool_HeaderFile
 #include <AppDef_MyLineTool.hxx>
-#endif
-#ifndef _AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_HeaderFile
 #include <AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx>
-#endif
-#ifndef _AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_HeaderFile
 #include <AppDef_ResConstraintOfMyGradientbisOfBSplineCompute.hxx>
-#endif
-#ifndef _AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_HeaderFile
 #include <AppDef_ParFunctionOfMyGradientbisOfBSplineCompute.hxx>
-#endif
-#ifndef _AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_HeaderFile
 #include <AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute.hxx>
-#endif
-#ifndef _AppParCurves_HArray1OfConstraintCouple_HeaderFile
 #include <AppParCurves_HArray1OfConstraintCouple.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
-#ifndef _AppParCurves_MultiCurve_HeaderFile
 #include <AppParCurves_MultiCurve.hxx>
-#endif
  
 
 #define MultiLine AppDef_MultiLine

@@ -6,16 +6,15 @@
 #ifndef _BRepBuilderAPI_PipeError_HeaderFile
 #define _BRepBuilderAPI_PipeError_HeaderFile
 
-//! Errors that can occur at (shell)pipe construction. <br>
-enum BRepBuilderAPI_PipeError {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! Errors that can occur at (shell)pipe construction.
+enum BRepBuilderAPI_PipeError
+{
 BRepBuilderAPI_PipeDone,
 BRepBuilderAPI_PipeNotDone,
 BRepBuilderAPI_PlaneNotIntersectGuide,
 BRepBuilderAPI_ImpossibleContact
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BRepBuilderAPI_PipeError_HeaderFile

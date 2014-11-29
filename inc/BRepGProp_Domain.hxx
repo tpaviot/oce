@@ -6,51 +6,48 @@
 #ifndef _BRepGProp_Domain_HeaderFile
 #define _BRepGProp_Domain_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopExp_Explorer_HeaderFile
 #include <TopExp_Explorer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopoDS_Face;
 class TopoDS_Edge;
 
 
-//! Arc iterator. Returns only Forward and Reversed edges from <br>
-//!          the face in an undigested order. <br>
-class BRepGProp_Domain  {
+//! Arc iterator. Returns only Forward and Reversed edges from
+//! the face in an undigested order.
+class BRepGProp_Domain 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor. <br>
-      BRepGProp_Domain();
-  //! Constructor. Initializes the domain with the face. <br>
-      BRepGProp_Domain(const TopoDS_Face& F);
-  //! Initializes the domain with the face. <br>
-        void Init(const TopoDS_Face& F) ;
   
-//!  Returns True if there is another arc of curve in the list. <br>
-        Standard_Boolean More() ;
-  //! Initializes the exploration with the face already set. <br>
-        void Init() ;
-  //! Returns the current edge. <br>
-       const TopoDS_Edge& Value() ;
+  //! Empty constructor.
+    BRepGProp_Domain();
   
-//!  Sets the index of the arc iterator to the next arc of <br>
-//!  curve. <br>
-  Standard_EXPORT     void Next() ;
+  //! Constructor. Initializes the domain with the face.
+    BRepGProp_Domain(const TopoDS_Face& F);
+  
+  //! Initializes the domain with the face.
+      void Init (const TopoDS_Face& F) ;
+  
 
+  //! Returns True if there is another arc of curve in the list.
+      Standard_Boolean More() ;
+  
+  //! Initializes the exploration with the face already set.
+      void Init() ;
+  
+  //! Returns the current edge.
+     const  TopoDS_Edge& Value() ;
+  
+
+  //! Sets the index of the arc iterator to the next arc of
+  //! curve.
+  Standard_EXPORT   void Next() ;
 
 
 
@@ -65,7 +62,7 @@ private:
 
 
 
-TopExp_Explorer myExplorer;
+  TopExp_Explorer myExplorer;
 
 
 };
@@ -75,7 +72,6 @@ TopExp_Explorer myExplorer;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepGProp_Domain_HeaderFile

@@ -6,28 +6,22 @@
 #ifndef _StepDimTol_RoundnessTolerance_HeaderFile
 #define _StepDimTol_RoundnessTolerance_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepDimTol_RoundnessTolerance_HeaderFile
 #include <Handle_StepDimTol_RoundnessTolerance.hxx>
-#endif
 
-#ifndef _StepDimTol_GeometricTolerance_HeaderFile
 #include <StepDimTol_GeometricTolerance.hxx>
-#endif
 
 
-//! Representation of STEP entity RoundnessTolerance <br>
-class StepDimTol_RoundnessTolerance : public StepDimTol_GeometricTolerance {
+//! Representation of STEP entity RoundnessTolerance
+class StepDimTol_RoundnessTolerance : public StepDimTol_GeometricTolerance
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepDimTol_RoundnessTolerance();
+  
+  //! Empty constructor
+  Standard_EXPORT StepDimTol_RoundnessTolerance();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepDimTol_RoundnessTolerance_HeaderFile

@@ -15,11 +15,11 @@ if     ["%CASROOT%"] == [""] set "CASROOT=%SCRIPTROOT%"
 
 rem ----- Reset values to defaults -----
 set "CASDEB="
-set "VCVER=vc9"
+set "VCVER=vc10"
 set "ARCH=32"
 set "VCVARS="
 set "HAVE_TBB=false"
-set "HAVE_OPENCL=false"
+set "HAVE_VTK=false"
 set "HAVE_FREEIMAGE=false"
 set "HAVE_GL2PS=false"
 set "HAVE_OPENCL=false"
@@ -59,11 +59,12 @@ if ["%HAVE_TBB%"]       == ["true"] set "PRODUCTS_DEFINES=%PRODUCTS_DEFINES% -DH
 if ["%HAVE_OPENCL%"]    == ["true"] set "PRODUCTS_DEFINES=%PRODUCTS_DEFINES% -DHAVE_OPENCL"
 if ["%HAVE_GL2PS%"]     == ["true"] set "PRODUCTS_DEFINES=%PRODUCTS_DEFINES% -DHAVE_GL2PS"
 if ["%HAVE_FREEIMAGE%"] == ["true"] set "PRODUCTS_DEFINES=%PRODUCTS_DEFINES% -DHAVE_FREEIMAGE"
+if ["%HAVE_VTK%"]       == ["true"] set "PRODUCTS_DEFINES=%PRODUCTS_DEFINES% -DHAVE_VTK"
 if ["%HAVE_TBB%"]       == ["true"] set "CSF_DEFINES=HAVE_TBB;%CSF_DEFINES%"
 if ["%HAVE_OPENCL%"]    == ["true"] set "CSF_DEFINES=HAVE_OPENCL;%CSF_DEFINES%"
 if ["%HAVE_GL2PS%"]     == ["true"] set "CSF_DEFINES=HAVE_GL2PS;%CSF_DEFINES%"
 if ["%HAVE_FREEIMAGE%"] == ["true"] set "CSF_DEFINES=HAVE_FREEIMAGE;%CSF_DEFINES%"
-
+if ["%HAVE_VTK%"]       == ["true"] set "CSF_DEFINES=HAVE_VTK;%CSF_DEFINES%"
 rem Eliminate VS warning
 if ["%CSF_DEFINES%"]  == [""] set "CSF_DEFINES=;"
 
@@ -122,7 +123,7 @@ set "CSF_PluginDefaults=%CASROOT%\src\StdResource"
 set "CSF_XCAFDefaults=%CASROOT%\src\StdResource"
 set "CSF_TObjDefaults=%CASROOT%\src\StdResource"
 set "CSF_StandardLiteDefaults=%CASROOT%\src\StdResource"
-set "CSF_GraphicShr=TKOpenGl.dll"
+
 set "CSF_UnitsLexicon=%CASROOT%\src\UnitsAPI\Lexi_Expr.dat"
 set "CSF_UnitsDefinition=%CASROOT%\src\UnitsAPI\Units.dat"
 set "CSF_IGESDefaults=%CASROOT%\src\XSTEPResource"

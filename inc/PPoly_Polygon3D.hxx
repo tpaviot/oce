@@ -6,67 +6,52 @@
 #ifndef _PPoly_Polygon3D_HeaderFile
 #define _PPoly_Polygon3D_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PPoly_Polygon3D_HeaderFile
 #include <Handle_PPoly_Polygon3D.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_PColgp_HArray1OfPnt_HeaderFile
 #include <Handle_PColgp_HArray1OfPnt.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_PColStd_HArray1OfReal_HeaderFile
 #include <Handle_PColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
 class PColgp_HArray1OfPnt;
 class PColStd_HArray1OfReal;
 
 
-class PPoly_Polygon3D : public Standard_Persistent {
+class PPoly_Polygon3D : public Standard_Persistent
+{
 
 public:
 
-  //! Defaults with allocation of nodes. <br>
-  Standard_EXPORT   PPoly_Polygon3D(const Handle(PColgp_HArray1OfPnt)& Nodes,const Standard_Real Defl);
-  //! Defaults with allocation of nodes + Parameters <br>
-  Standard_EXPORT   PPoly_Polygon3D(const Handle(PColgp_HArray1OfPnt)& Nodes,const Handle(PColStd_HArray1OfReal)& Parameters,const Standard_Real Defl);
   
-  Standard_EXPORT     Standard_Real Deflection() const;
+  //! Defaults with allocation of nodes.
+  Standard_EXPORT PPoly_Polygon3D(const Handle(PColgp_HArray1OfPnt)& Nodes, const Standard_Real Defl);
   
-  Standard_EXPORT     void Deflection(const Standard_Real Defl) ;
+  //! Defaults with allocation of nodes + Parameters
+  Standard_EXPORT PPoly_Polygon3D(const Handle(PColgp_HArray1OfPnt)& Nodes, const Handle(PColStd_HArray1OfReal)& Parameters, const Standard_Real Defl);
   
-  Standard_EXPORT     Standard_Integer NbNodes() const;
+  Standard_EXPORT   Standard_Real Deflection()  const;
   
-  Standard_EXPORT     Handle_PColgp_HArray1OfPnt Nodes() const;
+  Standard_EXPORT   void Deflection (const Standard_Real Defl) ;
   
-  Standard_EXPORT     void Nodes(const Handle(PColgp_HArray1OfPnt)& Nodes) ;
+  Standard_EXPORT   Standard_Integer NbNodes()  const;
   
-  Standard_EXPORT     Standard_Boolean HasParameters() const;
-  //! Sets the value of myParameters <br>
-  Standard_EXPORT     void Parameters(const Handle(PColStd_HArray1OfReal)& Parameters) ;
-  //! Reference on the parameters values. <br>
-  Standard_EXPORT     Handle_PColStd_HArray1OfReal Parameters() const;
+  Standard_EXPORT   Handle(PColgp_HArray1OfPnt) Nodes()  const;
+  
+  Standard_EXPORT   void Nodes (const Handle(PColgp_HArray1OfPnt)& Nodes) ;
+  
+  Standard_EXPORT   Standard_Boolean HasParameters()  const;
+  
+  //! Sets the value of myParameters
+  Standard_EXPORT   void Parameters (const Handle(PColStd_HArray1OfReal)& Parameters) ;
+  
+  //! Reference on the parameters values.
+  Standard_EXPORT   Handle(PColStd_HArray1OfReal) Parameters()  const;
 
-  PPoly_Polygon3D( )
+PPoly_Polygon3D( )
 {
   
 }
@@ -93,9 +78,9 @@ protected:
 private: 
 
 
-Standard_Real myDeflection;
-Handle_PColgp_HArray1OfPnt myNodes;
-Handle_PColStd_HArray1OfReal myParameters;
+  Standard_Real myDeflection;
+  Handle(PColgp_HArray1OfPnt) myNodes;
+  Handle(PColStd_HArray1OfReal) myParameters;
 
 
 };
@@ -104,7 +89,6 @@ Handle_PColStd_HArray1OfReal myParameters;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PPoly_Polygon3D_HeaderFile

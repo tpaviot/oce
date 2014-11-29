@@ -5,27 +5,15 @@
 
 #include <SelectMgr_DataMapIteratorOfDataMapOfObjectSelectors.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _SelectMgr_SelectableObject_HeaderFile
 #include <SelectMgr_SelectableObject.hxx>
-#endif
-#ifndef _SelectMgr_SequenceOfSelector_HeaderFile
 #include <SelectMgr_SequenceOfSelector.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _SelectMgr_DataMapOfObjectSelectors_HeaderFile
 #include <SelectMgr_DataMapOfObjectSelectors.hxx>
-#endif
-#ifndef _SelectMgr_DataMapNodeOfDataMapOfObjectSelectors_HeaderFile
 #include <SelectMgr_DataMapNodeOfDataMapOfObjectSelectors.hxx>
-#endif
  
 
-#define TheKey Handle_SelectMgr_SelectableObject
+#define TheKey Handle(SelectMgr_SelectableObject)
 #define TheKey_hxx <SelectMgr_SelectableObject.hxx>
 #define TheItem SelectMgr_SequenceOfSelector
 #define TheItem_hxx <SelectMgr_SequenceOfSelector.hxx>

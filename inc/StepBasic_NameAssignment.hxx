@@ -6,38 +6,33 @@
 #ifndef _StepBasic_NameAssignment_HeaderFile
 #define _StepBasic_NameAssignment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_NameAssignment_HeaderFile
 #include <Handle_StepBasic_NameAssignment.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class TCollection_HAsciiString;
 
 
-//! Representation of STEP entity NameAssignment <br>
-class StepBasic_NameAssignment : public MMgt_TShared {
+//! Representation of STEP entity NameAssignment
+class StepBasic_NameAssignment : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepBasic_NameAssignment();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aAssignedName) ;
-  //! Returns field AssignedName <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString AssignedName() const;
-  //! Set field AssignedName <br>
-  Standard_EXPORT     void SetAssignedName(const Handle(TCollection_HAsciiString)& AssignedName) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepBasic_NameAssignment();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aAssignedName) ;
+  
+  //! Returns field AssignedName
+  Standard_EXPORT   Handle(TCollection_HAsciiString) AssignedName()  const;
+  
+  //! Set field AssignedName
+  Standard_EXPORT   void SetAssignedName (const Handle(TCollection_HAsciiString)& AssignedName) ;
 
 
 
@@ -52,7 +47,7 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString theAssignedName;
+  Handle(TCollection_HAsciiString) theAssignedName;
 
 
 };
@@ -61,7 +56,6 @@ Handle_TCollection_HAsciiString theAssignedName;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_NameAssignment_HeaderFile

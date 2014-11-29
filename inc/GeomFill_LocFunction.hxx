@@ -6,56 +6,41 @@
 #ifndef _GeomFill_LocFunction_HeaderFile
 #define _GeomFill_LocFunction_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_GeomFill_LocationLaw_HeaderFile
 #include <Handle_GeomFill_LocationLaw.hxx>
-#endif
-#ifndef _TColgp_Array1OfVec_HeaderFile
 #include <TColgp_Array1OfVec.hxx>
-#endif
-#ifndef _gp_Mat_HeaderFile
 #include <gp_Mat.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class GeomFill_LocationLaw;
 
 
 
-class GeomFill_LocFunction  {
+class GeomFill_LocFunction 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   GeomFill_LocFunction(const Handle(GeomFill_LocationLaw)& Law);
-  //! compute the section for v = param <br>
-  Standard_EXPORT     Standard_Boolean D0(const Standard_Real Param,const Standard_Real First,const Standard_Real Last) ;
-  //! compute the first  derivative in v direction  of the <br>
-//!           section for v =  param <br>
-  Standard_EXPORT     Standard_Boolean D1(const Standard_Real Param,const Standard_Real First,const Standard_Real Last) ;
-  //! compute the second derivative  in v direction of the <br>
-//!          section  for v = param <br>
-  Standard_EXPORT     Standard_Boolean D2(const Standard_Real Param,const Standard_Real First,const Standard_Real Last) ;
+  Standard_EXPORT GeomFill_LocFunction(const Handle(GeomFill_LocationLaw)& Law);
   
-  Standard_EXPORT     void DN(const Standard_Real Param,const Standard_Real First,const Standard_Real Last,const Standard_Integer Order,Standard_Real& Result,Standard_Integer& Ier) ;
-
+  //! compute the section for v = param
+  Standard_EXPORT   Standard_Boolean D0 (const Standard_Real Param, const Standard_Real First, const Standard_Real Last) ;
+  
+  //! compute the first  derivative in v direction  of the
+  //! section for v =  param
+  Standard_EXPORT   Standard_Boolean D1 (const Standard_Real Param, const Standard_Real First, const Standard_Real Last) ;
+  
+  //! compute the second derivative  in v direction of the
+  //! section  for v = param
+  Standard_EXPORT   Standard_Boolean D2 (const Standard_Real Param, const Standard_Real First, const Standard_Real Last) ;
+  
+  Standard_EXPORT   void DN (const Standard_Real Param, const Standard_Real First, const Standard_Real Last, const Standard_Integer Order, Standard_Real& Result, Standard_Integer& Ier) ;
 
 
 
@@ -70,13 +55,13 @@ private:
 
 
 
-Handle_GeomFill_LocationLaw myLaw;
-TColgp_Array1OfVec V;
-TColgp_Array1OfVec DV;
-TColgp_Array1OfVec D2V;
-gp_Mat M;
-gp_Mat DM;
-gp_Mat D2M;
+  Handle(GeomFill_LocationLaw) myLaw;
+  TColgp_Array1OfVec V;
+  TColgp_Array1OfVec DV;
+  TColgp_Array1OfVec D2V;
+  gp_Mat M;
+  gp_Mat DM;
+  gp_Mat D2M;
 
 
 };
@@ -85,7 +70,6 @@ gp_Mat D2M;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomFill_LocFunction_HeaderFile

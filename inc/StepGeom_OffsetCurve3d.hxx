@@ -6,66 +6,50 @@
 #ifndef _StepGeom_OffsetCurve3d_HeaderFile
 #define _StepGeom_OffsetCurve3d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_OffsetCurve3d_HeaderFile
 #include <Handle_StepGeom_OffsetCurve3d.hxx>
-#endif
 
-#ifndef _Handle_StepGeom_Curve_HeaderFile
 #include <Handle_StepGeom_Curve.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _StepData_Logical_HeaderFile
 #include <StepData_Logical.hxx>
-#endif
-#ifndef _Handle_StepGeom_Direction_HeaderFile
 #include <Handle_StepGeom_Direction.hxx>
-#endif
-#ifndef _StepGeom_Curve_HeaderFile
 #include <StepGeom_Curve.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepGeom_Curve;
 class StepGeom_Direction;
 class TCollection_HAsciiString;
 
 
 
-class StepGeom_OffsetCurve3d : public StepGeom_Curve {
+class StepGeom_OffsetCurve3d : public StepGeom_Curve
+{
 
 public:
 
-  //! Returns a OffsetCurve3d <br>
-  Standard_EXPORT   StepGeom_OffsetCurve3d();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName) ;
+  //! Returns a OffsetCurve3d
+  Standard_EXPORT StepGeom_OffsetCurve3d();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepGeom_Curve)& aBasisCurve,const Standard_Real aDistance,const StepData_Logical aSelfIntersect,const Handle(StepGeom_Direction)& aRefDirection) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetBasisCurve(const Handle(StepGeom_Curve)& aBasisCurve) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepGeom_Curve)& aBasisCurve, const Standard_Real aDistance, const StepData_Logical aSelfIntersect, const Handle(StepGeom_Direction)& aRefDirection) ;
   
-  Standard_EXPORT     Handle_StepGeom_Curve BasisCurve() const;
+  Standard_EXPORT   void SetBasisCurve (const Handle(StepGeom_Curve)& aBasisCurve) ;
   
-  Standard_EXPORT     void SetDistance(const Standard_Real aDistance) ;
+  Standard_EXPORT   Handle(StepGeom_Curve) BasisCurve()  const;
   
-  Standard_EXPORT     Standard_Real Distance() const;
+  Standard_EXPORT   void SetDistance (const Standard_Real aDistance) ;
   
-  Standard_EXPORT     void SetSelfIntersect(const StepData_Logical aSelfIntersect) ;
+  Standard_EXPORT   Standard_Real Distance()  const;
   
-  Standard_EXPORT     StepData_Logical SelfIntersect() const;
+  Standard_EXPORT   void SetSelfIntersect (const StepData_Logical aSelfIntersect) ;
   
-  Standard_EXPORT     void SetRefDirection(const Handle(StepGeom_Direction)& aRefDirection) ;
+  Standard_EXPORT   StepData_Logical SelfIntersect()  const;
   
-  Standard_EXPORT     Handle_StepGeom_Direction RefDirection() const;
+  Standard_EXPORT   void SetRefDirection (const Handle(StepGeom_Direction)& aRefDirection) ;
+  
+  Standard_EXPORT   Handle(StepGeom_Direction) RefDirection()  const;
 
 
 
@@ -80,10 +64,10 @@ protected:
 private: 
 
 
-Handle_StepGeom_Curve basisCurve;
-Standard_Real distance;
-StepData_Logical selfIntersect;
-Handle_StepGeom_Direction refDirection;
+  Handle(StepGeom_Curve) basisCurve;
+  Standard_Real distance;
+  StepData_Logical selfIntersect;
+  Handle(StepGeom_Direction) refDirection;
 
 
 };
@@ -92,7 +76,6 @@ Handle_StepGeom_Direction refDirection;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_OffsetCurve3d_HeaderFile

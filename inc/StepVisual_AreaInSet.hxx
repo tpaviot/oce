@@ -6,46 +6,36 @@
 #ifndef _StepVisual_AreaInSet_HeaderFile
 #define _StepVisual_AreaInSet_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_AreaInSet_HeaderFile
 #include <Handle_StepVisual_AreaInSet.hxx>
-#endif
 
-#ifndef _Handle_StepVisual_PresentationArea_HeaderFile
 #include <Handle_StepVisual_PresentationArea.hxx>
-#endif
-#ifndef _Handle_StepVisual_PresentationSet_HeaderFile
 #include <Handle_StepVisual_PresentationSet.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepVisual_PresentationArea;
 class StepVisual_PresentationSet;
 
 
 
-class StepVisual_AreaInSet : public MMgt_TShared {
+class StepVisual_AreaInSet : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a AreaInSet <br>
-  Standard_EXPORT   StepVisual_AreaInSet();
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepVisual_PresentationArea)& aArea,const Handle(StepVisual_PresentationSet)& aInSet) ;
+  //! Returns a AreaInSet
+  Standard_EXPORT StepVisual_AreaInSet();
   
-  Standard_EXPORT     void SetArea(const Handle(StepVisual_PresentationArea)& aArea) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepVisual_PresentationArea)& aArea, const Handle(StepVisual_PresentationSet)& aInSet) ;
   
-  Standard_EXPORT     Handle_StepVisual_PresentationArea Area() const;
+  Standard_EXPORT   void SetArea (const Handle(StepVisual_PresentationArea)& aArea) ;
   
-  Standard_EXPORT     void SetInSet(const Handle(StepVisual_PresentationSet)& aInSet) ;
+  Standard_EXPORT   Handle(StepVisual_PresentationArea) Area()  const;
   
-  Standard_EXPORT     Handle_StepVisual_PresentationSet InSet() const;
+  Standard_EXPORT   void SetInSet (const Handle(StepVisual_PresentationSet)& aInSet) ;
+  
+  Standard_EXPORT   Handle(StepVisual_PresentationSet) InSet()  const;
 
 
 
@@ -60,8 +50,8 @@ protected:
 private: 
 
 
-Handle_StepVisual_PresentationArea area;
-Handle_StepVisual_PresentationSet inSet;
+  Handle(StepVisual_PresentationArea) area;
+  Handle(StepVisual_PresentationSet) inSet;
 
 
 };
@@ -70,7 +60,6 @@ Handle_StepVisual_PresentationSet inSet;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_AreaInSet_HeaderFile

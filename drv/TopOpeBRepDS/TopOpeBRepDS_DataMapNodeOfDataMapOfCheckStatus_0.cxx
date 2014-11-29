@@ -5,19 +5,11 @@
 
 #include <TopOpeBRepDS_DataMapNodeOfDataMapOfCheckStatus.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapOfCheckStatus_HeaderFile
 #include <TopOpeBRepDS_DataMapOfCheckStatus.hxx>
-#endif
-#ifndef _TopOpeBRepDS_DataMapIteratorOfDataMapOfCheckStatus_HeaderFile
 #include <TopOpeBRepDS_DataMapIteratorOfDataMapOfCheckStatus.hxx>
-#endif
 
  
 

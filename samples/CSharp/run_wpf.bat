@@ -10,7 +10,7 @@ if "%1" == "-h" (
 
 call "%~dp0..\..\env.bat" %1 %2 %3
 
-set "EXEC=%~dp0\win%ARCH%\bin%CASDEB%\IE_WPF.exe"
+set "EXEC=%~dp0\win%ARCH%\bin%CASDEB%\IE_WPF_WinForms.exe"
 
 if not exist "%EXEC%" goto err_exe
 

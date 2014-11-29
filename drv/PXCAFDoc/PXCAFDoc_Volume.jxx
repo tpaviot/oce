@@ -1,3 +1,1 @@
-#ifndef _PXCAFDoc_Volume_HeaderFile
 #include <PXCAFDoc_Volume.hxx>
-#endif

@@ -1,18 +1,6 @@
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _TopoDS_Vertex_HeaderFile
 #include <TopoDS_Vertex.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _TopTools_SequenceOfShape_HeaderFile
 #include <TopTools_SequenceOfShape.hxx>
-#endif
-#ifndef _ShapeBuild_ReShape_HeaderFile
 #include <ShapeBuild_ReShape.hxx>
-#endif
-#ifndef _ShapeFix_SplitTool_HeaderFile
 #include <ShapeFix_SplitTool.hxx>
-#endif

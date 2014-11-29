@@ -5,24 +5,12 @@
 
 #include <TopTools_DataMapOfIntegerShape.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _TopTools_DataMapNodeOfDataMapOfIntegerShape_HeaderFile
 #include <TopTools_DataMapNodeOfDataMapOfIntegerShape.hxx>
-#endif
-#ifndef _TopTools_DataMapIteratorOfDataMapOfIntegerShape_HeaderFile
 #include <TopTools_DataMapIteratorOfDataMapOfIntegerShape.hxx>
-#endif
  
 
 #define TheKey Standard_Integer

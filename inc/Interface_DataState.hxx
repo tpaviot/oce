@@ -6,8 +6,11 @@
 #ifndef _Interface_DataState_HeaderFile
 #define _Interface_DataState_HeaderFile
 
-//! validity state of anentity's content (see InterfaceModel) <br>
-enum Interface_DataState {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! validity state of anentity's content (see InterfaceModel)
+enum Interface_DataState
+{
 Interface_StateOK,
 Interface_LoadWarning,
 Interface_LoadFail,
@@ -17,8 +20,4 @@ Interface_StateUnloaded,
 Interface_StateUnknown
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Interface_DataState_HeaderFile

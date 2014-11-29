@@ -1,21 +1,7 @@
-#ifndef _TColStd_HArray1OfTransient_HeaderFile
 #include <TColStd_HArray1OfTransient.hxx>
-#endif
-#ifndef _Dico_DictionaryOfInteger_HeaderFile
 #include <Dico_DictionaryOfInteger.hxx>
-#endif
-#ifndef _StepData_ESDescr_HeaderFile
 #include <StepData_ESDescr.hxx>
-#endif
-#ifndef _StepData_PDescr_HeaderFile
 #include <StepData_PDescr.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _StepData_Described_HeaderFile
 #include <StepData_Described.hxx>
-#endif
-#ifndef _StepData_ESDescr_HeaderFile
 #include <StepData_ESDescr.hxx>
-#endif

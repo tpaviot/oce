@@ -6,16 +6,15 @@
 #ifndef _V3d_TypeOfRepresentation_HeaderFile
 #define _V3d_TypeOfRepresentation_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum V3d_TypeOfRepresentation {
+
+enum V3d_TypeOfRepresentation
+{
 V3d_SIMPLE,
 V3d_COMPLETE,
 V3d_PARTIAL,
 V3d_SAMELAST
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _V3d_TypeOfRepresentation_HeaderFile

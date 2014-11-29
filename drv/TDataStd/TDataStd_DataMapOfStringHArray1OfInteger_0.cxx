@@ -5,29 +5,17 @@
 
 #include <TDataStd_DataMapOfStringHArray1OfInteger.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger_HeaderFile
 #include <TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger.hxx>
-#endif
-#ifndef _TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfInteger_HeaderFile
 #include <TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfInteger.hxx>
-#endif
  
 
 #define TheKey TCollection_ExtendedString
 #define TheKey_hxx <TCollection_ExtendedString.hxx>
-#define TheItem Handle_TColStd_HArray1OfInteger
+#define TheItem Handle(TColStd_HArray1OfInteger)
 #define TheItem_hxx <TColStd_HArray1OfInteger.hxx>
 #define Hasher TCollection_ExtendedString
 #define Hasher_hxx <TCollection_ExtendedString.hxx>

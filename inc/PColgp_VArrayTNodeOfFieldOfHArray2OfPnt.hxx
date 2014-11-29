@@ -6,45 +6,33 @@
 #ifndef _PColgp_VArrayTNodeOfFieldOfHArray2OfPnt_HeaderFile
 #define _PColgp_VArrayTNodeOfFieldOfHArray2OfPnt_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Handle_PColgp_VArrayNodeOfFieldOfHArray2OfPnt_HeaderFile
 #include <Handle_PColgp_VArrayNodeOfFieldOfHArray2OfPnt.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class gp_Pnt;
 class PColgp_FieldOfHArray2OfPnt;
 class PColgp_VArrayNodeOfFieldOfHArray2OfPnt;
 
 
 
-class PColgp_VArrayTNodeOfFieldOfHArray2OfPnt  {
+class PColgp_VArrayTNodeOfFieldOfHArray2OfPnt 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      PColgp_VArrayTNodeOfFieldOfHArray2OfPnt();
+    PColgp_VArrayTNodeOfFieldOfHArray2OfPnt();
   
-      PColgp_VArrayTNodeOfFieldOfHArray2OfPnt(const gp_Pnt& aValue);
+    PColgp_VArrayTNodeOfFieldOfHArray2OfPnt(const gp_Pnt& aValue);
   
-        void SetValue(const gp_Pnt& aValue) ;
+      void SetValue (const gp_Pnt& aValue) ;
   
-        Standard_Address Value() const;
-
+      Standard_Address Value()  const;
 
 
 
@@ -59,7 +47,7 @@ private:
 
 
 
-gp_Pnt myValue;
+  gp_Pnt myValue;
 
 
 };
@@ -89,7 +77,6 @@ gp_Pnt myValue;
 #undef DBC_VArray_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PColgp_VArrayTNodeOfFieldOfHArray2OfPnt_HeaderFile

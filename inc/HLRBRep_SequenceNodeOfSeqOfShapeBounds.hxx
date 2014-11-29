@@ -6,38 +6,27 @@
 #ifndef _HLRBRep_SequenceNodeOfSeqOfShapeBounds_HeaderFile
 #define _HLRBRep_SequenceNodeOfSeqOfShapeBounds_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds_HeaderFile
 #include <Handle_HLRBRep_SequenceNodeOfSeqOfShapeBounds.hxx>
-#endif
 
-#ifndef _HLRBRep_ShapeBounds_HeaderFile
 #include <HLRBRep_ShapeBounds.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class HLRBRep_ShapeBounds;
 class HLRBRep_SeqOfShapeBounds;
 
 
 
-class HLRBRep_SequenceNodeOfSeqOfShapeBounds : public TCollection_SeqNode {
+class HLRBRep_SequenceNodeOfSeqOfShapeBounds : public TCollection_SeqNode
+{
 
 public:
 
   
-      HLRBRep_SequenceNodeOfSeqOfShapeBounds(const HLRBRep_ShapeBounds& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    HLRBRep_SequenceNodeOfSeqOfShapeBounds(const HLRBRep_ShapeBounds& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        HLRBRep_ShapeBounds& Value() const;
+      HLRBRep_ShapeBounds& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-HLRBRep_ShapeBounds myValue;
+  HLRBRep_ShapeBounds myValue;
 
 
 };
@@ -78,7 +67,6 @@ HLRBRep_ShapeBounds myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_SequenceNodeOfSeqOfShapeBounds_HeaderFile

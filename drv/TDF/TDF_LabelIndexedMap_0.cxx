@@ -5,21 +5,11 @@
 
 #include <TDF_LabelIndexedMap.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TDF_Label_HeaderFile
 #include <TDF_Label.hxx>
-#endif
-#ifndef _TDF_LabelMapHasher_HeaderFile
 #include <TDF_LabelMapHasher.hxx>
-#endif
-#ifndef _TDF_IndexedMapNodeOfLabelIndexedMap_HeaderFile
 #include <TDF_IndexedMapNodeOfLabelIndexedMap.hxx>
-#endif
  
 
 #define TheKey TDF_Label

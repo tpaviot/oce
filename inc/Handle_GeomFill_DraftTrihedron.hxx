@@ -6,22 +6,15 @@
 #ifndef _Handle_GeomFill_DraftTrihedron_HeaderFile
 #define _Handle_GeomFill_DraftTrihedron_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_GeomFill_TrihedronLaw_HeaderFile
 #include <Handle_GeomFill_TrihedronLaw.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(GeomFill_TrihedronLaw);
 class GeomFill_DraftTrihedron;
 
-DEFINE_STANDARD_HANDLE(GeomFill_DraftTrihedron,GeomFill_TrihedronLaw)
+DEFINE_STANDARD_HANDLE(GeomFill_DraftTrihedron, GeomFill_TrihedronLaw)
 
-#endif
+#endif // _Handle_GeomFill_DraftTrihedron_HeaderFile

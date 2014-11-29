@@ -16,7 +16,7 @@
 #ifndef _Xw_Window_H__
 #define _Xw_Window_H__
 
-#if !defined(_WIN32) && (!defined(__APPLE__) || defined(MACOSX_USE_GLX))
+#if !defined(_WIN32) && (!defined(__APPLE__) || defined(MACOSX_USE_GLX)) && !defined(__ANDROID__)
 
 #include <Aspect_Window.hxx>
 
@@ -97,6 +97,18 @@ public:
 
   //! @return connection to X Display
   Standard_EXPORT const Handle(Aspect_DisplayConnection)& DisplayConnection() const;
+
+  //! @return native Window handle
+  virtual Aspect_Drawable NativeHandle() const
+  {
+    return (Aspect_Drawable )XWindow();
+  }
+
+  //! @return parent of native Window handle
+  virtual Aspect_Drawable NativeParentHandle() const
+  {
+    return 0;
+  }
 
 protected:
 

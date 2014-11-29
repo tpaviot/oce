@@ -1,45 +1,14 @@
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _ChFiDS_SequenceOfSurfData_HeaderFile
 #include <ChFiDS_SequenceOfSurfData.hxx>
-#endif
-#ifndef _ChFiDS_HElSpine_HeaderFile
 #include <ChFiDS_HElSpine.hxx>
-#endif
-#ifndef _ChFiDS_Spine_HeaderFile
 #include <ChFiDS_Spine.hxx>
-#endif
-#ifndef _BRepAdaptor_HSurface_HeaderFile
 #include <BRepAdaptor_HSurface.hxx>
-#endif
-#ifndef _Adaptor3d_TopolTool_HeaderFile
 #include <Adaptor3d_TopolTool.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
-#ifndef _BRepAdaptor_HCurve2d_HeaderFile
 #include <BRepAdaptor_HCurve2d.hxx>
-#endif
-#ifndef _Geom_Surface_HeaderFile
 #include <Geom_Surface.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _Geom_Curve_HeaderFile
 #include <Geom_Curve.hxx>
-#endif
-#ifndef _Geom2d_Curve_HeaderFile
 #include <Geom2d_Curve.hxx>
-#endif
-#ifndef _Geom_TrimmedCurve_HeaderFile
 #include <Geom_TrimmedCurve.hxx>
-#endif
-#ifndef _FilletSurf_InternalBuilder_HeaderFile
 #include <FilletSurf_InternalBuilder.hxx>
-#endif

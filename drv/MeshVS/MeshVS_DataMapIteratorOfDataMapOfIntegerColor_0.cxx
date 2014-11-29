@@ -5,21 +5,11 @@
 
 #include <MeshVS_DataMapIteratorOfDataMapOfIntegerColor.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Quantity_Color_HeaderFile
 #include <Quantity_Color.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _MeshVS_DataMapOfIntegerColor_HeaderFile
 #include <MeshVS_DataMapOfIntegerColor.hxx>
-#endif
-#ifndef _MeshVS_DataMapNodeOfDataMapOfIntegerColor_HeaderFile
 #include <MeshVS_DataMapNodeOfDataMapOfIntegerColor.hxx>
-#endif
  
 
 #define TheKey Standard_Integer

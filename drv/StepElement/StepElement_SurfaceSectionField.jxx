@@ -1,3 +1,1 @@
-#ifndef _StepElement_SurfaceSectionField_HeaderFile
 #include <StepElement_SurfaceSectionField.hxx>
-#endif

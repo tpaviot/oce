@@ -6,28 +6,14 @@
 #ifndef _TColGeom2d_Array1OfBezierCurve_HeaderFile
 #define _TColGeom2d_Array1OfBezierCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Geom2d_BezierCurve_HeaderFile
 #include <Handle_Geom2d_BezierCurve.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -36,52 +22,52 @@ class Geom2d_BezierCurve;
 
 
 
-class TColGeom2d_Array1OfBezierCurve  {
+class TColGeom2d_Array1OfBezierCurve 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      TColGeom2d_Array1OfBezierCurve(const Standard_Integer Low,const Standard_Integer Up);
+    TColGeom2d_Array1OfBezierCurve(const Standard_Integer Low, const Standard_Integer Up);
   
-      TColGeom2d_Array1OfBezierCurve(const Handle(Geom2d_BezierCurve)& Item,const Standard_Integer Low,const Standard_Integer Up);
+    TColGeom2d_Array1OfBezierCurve(const Handle(Geom2d_BezierCurve)& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const Handle(Geom2d_BezierCurve)& V) ;
+  Standard_EXPORT   void Init (const Handle(Geom2d_BezierCurve)& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~TColGeom2d_Array1OfBezierCurve()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const TColGeom2d_Array1OfBezierCurve& Assign(const TColGeom2d_Array1OfBezierCurve& Other) ;
-   const TColGeom2d_Array1OfBezierCurve& operator =(const TColGeom2d_Array1OfBezierCurve& Other) 
+  Standard_EXPORT  const  TColGeom2d_Array1OfBezierCurve& Assign (const TColGeom2d_Array1OfBezierCurve& Other) ;
+ const  TColGeom2d_Array1OfBezierCurve& operator = (const TColGeom2d_Array1OfBezierCurve& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(Geom2d_BezierCurve)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(Geom2d_BezierCurve)& Value) ;
   
-       const Handle_Geom2d_BezierCurve& Value(const Standard_Integer Index) const;
-     const Handle_Geom2d_BezierCurve& operator ()(const Standard_Integer Index) const
+     const  Handle(Geom2d_BezierCurve)& Value (const Standard_Integer Index)  const;
+   const  Handle(Geom2d_BezierCurve)& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        Handle_Geom2d_BezierCurve& ChangeValue(const Standard_Integer Index) ;
-      Handle_Geom2d_BezierCurve& operator ()(const Standard_Integer Index) 
+      Handle(Geom2d_BezierCurve)& ChangeValue (const Standard_Integer Index) ;
+    Handle(Geom2d_BezierCurve)& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -95,18 +81,18 @@ protected:
 private:
 
   
-  Standard_EXPORT   TColGeom2d_Array1OfBezierCurve(const TColGeom2d_Array1OfBezierCurve& AnArray);
+  Standard_EXPORT TColGeom2d_Array1OfBezierCurve(const TColGeom2d_Array1OfBezierCurve& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
 
-#define Array1Item Handle_Geom2d_BezierCurve
+#define Array1Item Handle(Geom2d_BezierCurve)
 #define Array1Item_hxx <Geom2d_BezierCurve.hxx>
 #define TCollection_Array1 TColGeom2d_Array1OfBezierCurve
 #define TCollection_Array1_hxx <TColGeom2d_Array1OfBezierCurve.hxx>
@@ -119,7 +105,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColGeom2d_Array1OfBezierCurve_HeaderFile

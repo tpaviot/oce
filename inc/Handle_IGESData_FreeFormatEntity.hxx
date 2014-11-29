@@ -6,22 +6,15 @@
 #ifndef _Handle_IGESData_FreeFormatEntity_HeaderFile
 #define _Handle_IGESData_FreeFormatEntity_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IGESData_UndefinedEntity_HeaderFile
 #include <Handle_IGESData_UndefinedEntity.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IGESData_UndefinedEntity);
 class IGESData_FreeFormatEntity;
 
-DEFINE_STANDARD_HANDLE(IGESData_FreeFormatEntity,IGESData_UndefinedEntity)
+DEFINE_STANDARD_HANDLE(IGESData_FreeFormatEntity, IGESData_UndefinedEntity)
 
-#endif
+#endif // _Handle_IGESData_FreeFormatEntity_HeaderFile

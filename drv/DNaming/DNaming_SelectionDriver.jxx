@@ -1,6 +1,2 @@
-#ifndef _TFunction_Logbook_HeaderFile
 #include <TFunction_Logbook.hxx>
-#endif
-#ifndef _DNaming_SelectionDriver_HeaderFile
 #include <DNaming_SelectionDriver.hxx>
-#endif

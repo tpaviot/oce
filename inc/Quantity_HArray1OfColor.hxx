@@ -6,25 +6,13 @@
 #ifndef _Quantity_HArray1OfColor_HeaderFile
 #define _Quantity_HArray1OfColor_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Quantity_HArray1OfColor_HeaderFile
 #include <Handle_Quantity_HArray1OfColor.hxx>
-#endif
 
-#ifndef _Quantity_Array1OfColor_HeaderFile
 #include <Quantity_Array1OfColor.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class Quantity_Array1OfColor;
 
 
 
-class Quantity_HArray1OfColor : public MMgt_TShared {
+class Quantity_HArray1OfColor : public MMgt_TShared
+{
 
 public:
 
   
-      Quantity_HArray1OfColor(const Standard_Integer Low,const Standard_Integer Up);
+    Quantity_HArray1OfColor(const Standard_Integer Low, const Standard_Integer Up);
   
-      Quantity_HArray1OfColor(const Standard_Integer Low,const Standard_Integer Up,const Quantity_Color& V);
+    Quantity_HArray1OfColor(const Standard_Integer Low, const Standard_Integer Up, const Quantity_Color& V);
   
-        void Init(const Quantity_Color& V) ;
+      void Init (const Quantity_Color& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Quantity_Color& Value) ;
+      void SetValue (const Standard_Integer Index, const Quantity_Color& Value) ;
   
-       const Quantity_Color& Value(const Standard_Integer Index) const;
+     const  Quantity_Color& Value (const Standard_Integer Index)  const;
   
-        Quantity_Color& ChangeValue(const Standard_Integer Index) ;
+      Quantity_Color& ChangeValue (const Standard_Integer Index) ;
   
-       const Quantity_Array1OfColor& Array1() const;
+     const  Quantity_Array1OfColor& Array1()  const;
   
-        Quantity_Array1OfColor& ChangeArray1() ;
+      Quantity_Array1OfColor& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-Quantity_Array1OfColor myArray;
+  Quantity_Array1OfColor myArray;
 
 
 };
@@ -100,7 +89,6 @@ Quantity_Array1OfColor myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Quantity_HArray1OfColor_HeaderFile

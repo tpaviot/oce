@@ -6,38 +6,33 @@
 #ifndef _StepFEA_FreedomsList_HeaderFile
 #define _StepFEA_FreedomsList_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepFEA_FreedomsList_HeaderFile
 #include <Handle_StepFEA_FreedomsList.hxx>
-#endif
 
-#ifndef _Handle_StepFEA_HArray1OfDegreeOfFreedom_HeaderFile
 #include <Handle_StepFEA_HArray1OfDegreeOfFreedom.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepFEA_HArray1OfDegreeOfFreedom;
 
 
-//! Representation of STEP entity FreedomsList <br>
-class StepFEA_FreedomsList : public MMgt_TShared {
+//! Representation of STEP entity FreedomsList
+class StepFEA_FreedomsList : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepFEA_FreedomsList();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(StepFEA_HArray1OfDegreeOfFreedom)& aFreedoms) ;
-  //! Returns field Freedoms <br>
-  Standard_EXPORT     Handle_StepFEA_HArray1OfDegreeOfFreedom Freedoms() const;
-  //! Set field Freedoms <br>
-  Standard_EXPORT     void SetFreedoms(const Handle(StepFEA_HArray1OfDegreeOfFreedom)& Freedoms) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepFEA_FreedomsList();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(StepFEA_HArray1OfDegreeOfFreedom)& aFreedoms) ;
+  
+  //! Returns field Freedoms
+  Standard_EXPORT   Handle(StepFEA_HArray1OfDegreeOfFreedom) Freedoms()  const;
+  
+  //! Set field Freedoms
+  Standard_EXPORT   void SetFreedoms (const Handle(StepFEA_HArray1OfDegreeOfFreedom)& Freedoms) ;
 
 
 
@@ -52,7 +47,7 @@ protected:
 private: 
 
 
-Handle_StepFEA_HArray1OfDegreeOfFreedom theFreedoms;
+  Handle(StepFEA_HArray1OfDegreeOfFreedom) theFreedoms;
 
 
 };
@@ -61,7 +56,6 @@ Handle_StepFEA_HArray1OfDegreeOfFreedom theFreedoms;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_FreedomsList_HeaderFile

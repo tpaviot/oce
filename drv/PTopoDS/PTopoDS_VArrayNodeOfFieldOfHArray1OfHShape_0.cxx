@@ -5,19 +5,11 @@
 
 #include <PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _PTopoDS_HShape_HeaderFile
 #include <PTopoDS_HShape.hxx>
-#endif
-#ifndef _PTopoDS_FieldOfHArray1OfHShape_HeaderFile
 #include <PTopoDS_FieldOfHArray1OfHShape.hxx>
-#endif
-#ifndef _PTopoDS_VArrayTNodeOfFieldOfHArray1OfHShape_HeaderFile
 #include <PTopoDS_VArrayTNodeOfFieldOfHArray1OfHShape.hxx>
-#endif
 
  
 
@@ -36,7 +28,7 @@ IMPLEMENT_DOWNCAST(PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape,Standard_Persisten
 IMPLEMENT_STANDARD_RTTI(PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape)
 
 
-#define Item Handle_PTopoDS_HShape
+#define Item Handle(PTopoDS_HShape)
 #define Item_hxx <PTopoDS_HShape.hxx>
 #define DBC_VArrayNode PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape
 #define DBC_VArrayNode_hxx <PTopoDS_VArrayNodeOfFieldOfHArray1OfHShape.hxx>

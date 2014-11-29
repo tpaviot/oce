@@ -5,29 +5,17 @@
 
 #include <XmlMDF_MapOfDriver.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _XmlMDF_ADriver_HeaderFile
 #include <XmlMDF_ADriver.hxx>
-#endif
-#ifndef _XmlMDF_DataMapNodeOfMapOfDriver_HeaderFile
 #include <XmlMDF_DataMapNodeOfMapOfDriver.hxx>
-#endif
-#ifndef _XmlMDF_DataMapIteratorOfMapOfDriver_HeaderFile
 #include <XmlMDF_DataMapIteratorOfMapOfDriver.hxx>
-#endif
  
 
 #define TheKey TCollection_AsciiString
 #define TheKey_hxx <TCollection_AsciiString.hxx>
-#define TheItem Handle_XmlMDF_ADriver
+#define TheItem Handle(XmlMDF_ADriver)
 #define TheItem_hxx <XmlMDF_ADriver.hxx>
 #define Hasher TCollection_AsciiString
 #define Hasher_hxx <TCollection_AsciiString.hxx>

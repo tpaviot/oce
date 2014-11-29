@@ -6,22 +6,15 @@
 #ifndef _Handle_ProjLib_HProjectedCurve_HeaderFile
 #define _Handle_ProjLib_HProjectedCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Adaptor2d_HCurve2d_HeaderFile
 #include <Handle_Adaptor2d_HCurve2d.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Adaptor2d_HCurve2d);
 class ProjLib_HProjectedCurve;
 
-DEFINE_STANDARD_HANDLE(ProjLib_HProjectedCurve,Adaptor2d_HCurve2d)
+DEFINE_STANDARD_HANDLE(ProjLib_HProjectedCurve, Adaptor2d_HCurve2d)
 
-#endif
+#endif // _Handle_ProjLib_HProjectedCurve_HeaderFile

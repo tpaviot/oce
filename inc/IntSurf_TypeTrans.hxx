@@ -6,16 +6,15 @@
 #ifndef _IntSurf_TypeTrans_HeaderFile
 #define _IntSurf_TypeTrans_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum IntSurf_TypeTrans {
+
+enum IntSurf_TypeTrans
+{
 IntSurf_In,
 IntSurf_Out,
 IntSurf_Touch,
 IntSurf_Undecided
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _IntSurf_TypeTrans_HeaderFile

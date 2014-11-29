@@ -6,45 +6,32 @@
 #ifndef _StlTransfer_HeaderFile
 #define _StlTransfer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StlMesh_Mesh_HeaderFile
 #include <Handle_StlMesh_Mesh.hxx>
-#endif
 class TopoDS_Shape;
 class StlMesh_Mesh;
 
 
-//! The  package   Algorithm  for Meshing   implements <br>
-//!          facilities to compute  the Mesh data-structure, as <br>
-//!          defined in package StlMesh, from a shape of package <br>
-//!          TopoDS.  The triangulation  is  computed  with the <br>
-//!          Delaunay      algorithm   implemented in   package <br>
-//!          BRepMesh.  The  result   is  stored  in  the  mesh <br>
-//!          data-structure Mesh from package StlMesh. <br>
-//! <br>
-class StlTransfer  {
+//! The  package   Algorithm  for Meshing   implements
+//! facilities to compute  the Mesh data-structure, as
+//! defined in package StlMesh, from a shape of package
+//! TopoDS.  The triangulation  is  computed  with the
+//! Delaunay      algorithm   implemented in   package
+//! BRepMesh.  The  result   is  stored  in  the  mesh
+//! data-structure Mesh from package StlMesh.
+class StlTransfer 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  void BuildIncrementalMesh(const TopoDS_Shape& Shape,const Standard_Real Deflection,const Standard_Boolean InParallel,const Handle(StlMesh_Mesh)& Mesh) ;
-
+  Standard_EXPORT static   void BuildIncrementalMesh (const TopoDS_Shape& Shape, const Standard_Real Deflection, const Standard_Boolean InParallel, const Handle(StlMesh_Mesh)& Mesh) ;
 
 
 
@@ -67,7 +54,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StlTransfer_HeaderFile

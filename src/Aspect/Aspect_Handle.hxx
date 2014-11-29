@@ -28,16 +28,6 @@
  typedef unsigned long Aspect_Handle;
 #endif /* WNT */
 
-#if defined(__cplusplus) || defined(c_plusplus)
-/*==== Definition de Type ====================================================*/
-
-#include <Standard_Macro.hxx>
-class Handle(Standard_Type);
-const Handle(Standard_Type)& STANDARD_TYPE(Aspect_Handle);
-
-/*============================================================================*/
-#endif
-
 #define OCE_NULL_Aspect_Handle ((Aspect_Handle)NULL)
 
 #endif /* _Aspect_Handle_HeaderFile */

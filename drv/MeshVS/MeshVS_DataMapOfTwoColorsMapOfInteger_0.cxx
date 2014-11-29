@@ -5,24 +5,12 @@
 
 #include <MeshVS_DataMapOfTwoColorsMapOfInteger.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TColStd_MapOfInteger_HeaderFile
 #include <TColStd_MapOfInteger.hxx>
-#endif
-#ifndef _MeshVS_TwoColorsHasher_HeaderFile
 #include <MeshVS_TwoColorsHasher.hxx>
-#endif
-#ifndef _MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger_HeaderFile
 #include <MeshVS_DataMapNodeOfDataMapOfTwoColorsMapOfInteger.hxx>
-#endif
-#ifndef _MeshVS_DataMapIteratorOfDataMapOfTwoColorsMapOfInteger_HeaderFile
 #include <MeshVS_DataMapIteratorOfDataMapOfTwoColorsMapOfInteger.hxx>
-#endif
  
 
 #define TheKey MeshVS_TwoColors

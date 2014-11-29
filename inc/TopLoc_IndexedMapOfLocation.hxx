@@ -6,28 +6,14 @@
 #ifndef _TopLoc_IndexedMapOfLocation_HeaderFile
 #define _TopLoc_IndexedMapOfLocation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation_HeaderFile
 #include <Handle_TopLoc_IndexedMapNodeOfIndexedMapOfLocation.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_DomainError;
 class Standard_OutOfRange;
 class TopLoc_Location;
@@ -36,44 +22,46 @@ class TopLoc_IndexedMapNodeOfIndexedMapOfLocation;
 
 
 
-class TopLoc_IndexedMapOfLocation  : public TCollection_BasicMap {
+class TopLoc_IndexedMapOfLocation  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopLoc_IndexedMapOfLocation(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT TopLoc_IndexedMapOfLocation(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     TopLoc_IndexedMapOfLocation& Assign(const TopLoc_IndexedMapOfLocation& Other) ;
-    TopLoc_IndexedMapOfLocation& operator =(const TopLoc_IndexedMapOfLocation& Other) 
+  Standard_EXPORT TopLoc_IndexedMapOfLocation(const TopLoc_IndexedMapOfLocation& Other);
+  
+  Standard_EXPORT   TopLoc_IndexedMapOfLocation& Assign (const TopLoc_IndexedMapOfLocation& Other) ;
+  TopLoc_IndexedMapOfLocation& operator = (const TopLoc_IndexedMapOfLocation& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TopLoc_IndexedMapOfLocation()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Integer Add(const TopLoc_Location& K) ;
+  Standard_EXPORT   Standard_Integer Add (const TopLoc_Location& K) ;
   
-  Standard_EXPORT     void Substitute(const Standard_Integer I,const TopLoc_Location& K) ;
+  Standard_EXPORT   void Substitute (const Standard_Integer I, const TopLoc_Location& K) ;
   
-  Standard_EXPORT     void RemoveLast() ;
+  Standard_EXPORT   void RemoveLast() ;
   
-  Standard_EXPORT     Standard_Boolean Contains(const TopLoc_Location& K) const;
+  Standard_EXPORT   Standard_Boolean Contains (const TopLoc_Location& K)  const;
   
-  Standard_EXPORT    const TopLoc_Location& FindKey(const Standard_Integer I) const;
-   const TopLoc_Location& operator ()(const Standard_Integer I) const
+  Standard_EXPORT  const  TopLoc_Location& FindKey (const Standard_Integer I)  const;
+ const  TopLoc_Location& operator () (const Standard_Integer I)  const
 {
   return FindKey(I);
 }
   
-  Standard_EXPORT     Standard_Integer FindIndex(const TopLoc_Location& K) const;
-
+  Standard_EXPORT   Standard_Integer FindIndex (const TopLoc_Location& K)  const;
 
 
 
@@ -86,8 +74,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TopLoc_IndexedMapOfLocation(const TopLoc_IndexedMapOfLocation& Other);
 
 
 
@@ -98,7 +84,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopLoc_IndexedMapOfLocation_HeaderFile

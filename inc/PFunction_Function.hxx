@@ -6,45 +6,32 @@
 #ifndef _PFunction_Function_HeaderFile
 #define _PFunction_Function_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PFunction_Function_HeaderFile
 #include <Handle_PFunction_Function.hxx>
-#endif
 
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _PDF_Attribute_HeaderFile
 #include <PDF_Attribute.hxx>
-#endif
 class Standard_GUID;
 
 
-class PFunction_Function : public PDF_Attribute {
+class PFunction_Function : public PDF_Attribute
+{
 
 public:
 
   
-  Standard_EXPORT   PFunction_Function();
+  Standard_EXPORT PFunction_Function();
   
-  Standard_EXPORT     void SetDriverGUID(const Standard_GUID& driverGUID) ;
+  Standard_EXPORT   void SetDriverGUID (const Standard_GUID& driverGUID) ;
   
-  Standard_EXPORT     Standard_GUID GetDriverGUID() const;
+  Standard_EXPORT   Standard_GUID GetDriverGUID()  const;
   
-  Standard_EXPORT     Standard_Integer GetFailure() const;
+  Standard_EXPORT   Standard_Integer GetFailure()  const;
   
-  Standard_EXPORT     void SetFailure(const Standard_Integer mode) ;
+  Standard_EXPORT   void SetFailure (const Standard_Integer mode) ;
 
 PFunction_Function(const Storage_stCONSTclCOM& a) : PDF_Attribute(a)
 {
@@ -66,8 +53,8 @@ protected:
 private: 
 
 
-Standard_GUID myDriverGUID;
-Standard_Integer myFailure;
+  Standard_GUID myDriverGUID;
+  Standard_Integer myFailure;
 
 
 };
@@ -76,7 +63,6 @@ Standard_Integer myFailure;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PFunction_Function_HeaderFile

@@ -6,28 +6,14 @@
 #ifndef _IGESGeom_ReadWriteModule_HeaderFile
 #define _IGESGeom_ReadWriteModule_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESGeom_ReadWriteModule_HeaderFile
 #include <Handle_IGESGeom_ReadWriteModule.hxx>
-#endif
 
-#ifndef _IGESData_ReadWriteModule_HeaderFile
 #include <IGESData_ReadWriteModule.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESEntity_HeaderFile
 #include <Handle_IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESReaderData_HeaderFile
 #include <Handle_IGESData_IGESReaderData.hxx>
-#endif
 class Standard_DomainError;
 class IGESData_IGESEntity;
 class IGESData_IGESReaderData;
@@ -35,21 +21,26 @@ class IGESData_ParamReader;
 class IGESData_IGESWriter;
 
 
-//! Defines Geom File Access Module for IGESGeom (specific parts) <br>
-//!           Specific actions concern : Read and Write Own Parameters of <br>
-//!           an IGESEntity. <br>
-class IGESGeom_ReadWriteModule : public IGESData_ReadWriteModule {
+//! Defines Geom File Access Module for IGESGeom (specific parts)
+//! Specific actions concern : Read and Write Own Parameters of
+//! an IGESEntity.
+class IGESGeom_ReadWriteModule : public IGESData_ReadWriteModule
+{
 
 public:
 
-  //! Creates a ReadWriteModule & puts it into ReaderLib & WriterLib <br>
-  Standard_EXPORT   IGESGeom_ReadWriteModule();
-  //! Defines Case Numbers for Entities of IGESGeom <br>
-  Standard_EXPORT     Standard_Integer CaseIGES(const Standard_Integer typenum,const Standard_Integer formnum) const;
-  //! Reads own parameters from file for an Entity of IGESGeom <br>
-  Standard_EXPORT     void ReadOwnParams(const Standard_Integer CN,const Handle(IGESData_IGESEntity)& ent,const Handle(IGESData_IGESReaderData)& IR,IGESData_ParamReader& PR) const;
-  //! Writes own parameters to IGESWriter <br>
-  Standard_EXPORT     void WriteOwnParams(const Standard_Integer CN,const Handle(IGESData_IGESEntity)& ent,IGESData_IGESWriter& IW) const;
+  
+  //! Creates a ReadWriteModule & puts it into ReaderLib & WriterLib
+  Standard_EXPORT IGESGeom_ReadWriteModule();
+  
+  //! Defines Case Numbers for Entities of IGESGeom
+  Standard_EXPORT   Standard_Integer CaseIGES (const Standard_Integer typenum, const Standard_Integer formnum)  const;
+  
+  //! Reads own parameters from file for an Entity of IGESGeom
+  Standard_EXPORT   void ReadOwnParams (const Standard_Integer CN, const Handle(IGESData_IGESEntity)& ent, const Handle(IGESData_IGESReaderData)& IR, IGESData_ParamReader& PR)  const;
+  
+  //! Writes own parameters to IGESWriter
+  Standard_EXPORT   void WriteOwnParams (const Standard_Integer CN, const Handle(IGESData_IGESEntity)& ent, IGESData_IGESWriter& IW)  const;
 
 
 
@@ -72,7 +63,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESGeom_ReadWriteModule_HeaderFile

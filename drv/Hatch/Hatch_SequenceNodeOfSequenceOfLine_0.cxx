@@ -5,16 +5,10 @@
 
 #include <Hatch_SequenceNodeOfSequenceOfLine.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Hatch_Line_HeaderFile
 #include <Hatch_Line.hxx>
-#endif
-#ifndef _Hatch_SequenceOfLine_HeaderFile
 #include <Hatch_SequenceOfLine.hxx>
-#endif
 
  
 

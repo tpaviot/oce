@@ -6,28 +6,14 @@
 #ifndef _StepGeom_HArray1OfCartesianPoint_HeaderFile
 #define _StepGeom_HArray1OfCartesianPoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_HArray1OfCartesianPoint_HeaderFile
 #include <Handle_StepGeom_HArray1OfCartesianPoint.hxx>
-#endif
 
-#ifndef _StepGeom_Array1OfCartesianPoint_HeaderFile
 #include <StepGeom_Array1OfCartesianPoint.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_StepGeom_CartesianPoint_HeaderFile
 #include <Handle_StepGeom_CartesianPoint.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class StepGeom_Array1OfCartesianPoint;
 
 
 
-class StepGeom_HArray1OfCartesianPoint : public MMgt_TShared {
+class StepGeom_HArray1OfCartesianPoint : public MMgt_TShared
+{
 
 public:
 
   
-      StepGeom_HArray1OfCartesianPoint(const Standard_Integer Low,const Standard_Integer Up);
+    StepGeom_HArray1OfCartesianPoint(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepGeom_HArray1OfCartesianPoint(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepGeom_CartesianPoint)& V);
+    StepGeom_HArray1OfCartesianPoint(const Standard_Integer Low, const Standard_Integer Up, const Handle(StepGeom_CartesianPoint)& V);
   
-        void Init(const Handle(StepGeom_CartesianPoint)& V) ;
+      void Init (const Handle(StepGeom_CartesianPoint)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(StepGeom_CartesianPoint)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(StepGeom_CartesianPoint)& Value) ;
   
-       const Handle_StepGeom_CartesianPoint& Value(const Standard_Integer Index) const;
+     const  Handle(StepGeom_CartesianPoint)& Value (const Standard_Integer Index)  const;
   
-        Handle_StepGeom_CartesianPoint& ChangeValue(const Standard_Integer Index) ;
+      Handle(StepGeom_CartesianPoint)& ChangeValue (const Standard_Integer Index) ;
   
-       const StepGeom_Array1OfCartesianPoint& Array1() const;
+     const  StepGeom_Array1OfCartesianPoint& Array1()  const;
   
-        StepGeom_Array1OfCartesianPoint& ChangeArray1() ;
+      StepGeom_Array1OfCartesianPoint& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-StepGeom_Array1OfCartesianPoint myArray;
+  StepGeom_Array1OfCartesianPoint myArray;
 
 
 };
 
-#define ItemHArray1 Handle_StepGeom_CartesianPoint
+#define ItemHArray1 Handle(StepGeom_CartesianPoint)
 #define ItemHArray1_hxx <StepGeom_CartesianPoint.hxx>
 #define TheArray1 StepGeom_Array1OfCartesianPoint
 #define TheArray1_hxx <StepGeom_Array1OfCartesianPoint.hxx>
@@ -103,7 +90,6 @@ StepGeom_Array1OfCartesianPoint myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_HArray1OfCartesianPoint_HeaderFile

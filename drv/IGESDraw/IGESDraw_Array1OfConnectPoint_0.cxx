@@ -5,24 +5,14 @@
 
 #include <IGESDraw_Array1OfConnectPoint.hxx>
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _IGESDraw_ConnectPoint_HeaderFile
 #include <IGESDraw_ConnectPoint.hxx>
-#endif
  
 
-#define Array1Item Handle_IGESDraw_ConnectPoint
+#define Array1Item Handle(IGESDraw_ConnectPoint)
 #define Array1Item_hxx <IGESDraw_ConnectPoint.hxx>
 #define TCollection_Array1 IGESDraw_Array1OfConnectPoint
 #define TCollection_Array1_hxx <IGESDraw_Array1OfConnectPoint.hxx>

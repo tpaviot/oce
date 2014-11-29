@@ -32,7 +32,7 @@ class Trsf   from gp   inherits Storable
         --    where {V1, V2, V3} defines the vectorial part of the
         --    transformation and T defines the translation part of the 
         --    transformation.
-
+        --  This transformation never change the nature of the objects.
  
 
 uses Ax1      from gp,
@@ -204,8 +204,7 @@ is
   SetValues(me : in out;
             a11, a12, a13, a14,
             a21, a22, a23, a24,
-            a31, a32, a33, a34 : Real;
-            Tolang, TolDist : Real)
+            a31, a32, a33, a34 : Real)
 
         ---Purpose: Sets the coefficients  of the transformation.  The
         --          transformation  of the  point  x,y,z is  the point
@@ -213,16 +212,11 @@ is
         --          
         --          x' = a11 x + a12 y + a13 z + a14
         --          y' = a21 x + a22 y + a23 z + a24
-        --          z' = a31 x + a32 y + a43 z + a34
-        --          
-        --          Tolang and  TolDist are  used  to  test  for  null
-        --          angles and null distances to determine the form of
-        --          the transformation (identity, translation, etc..).
+        --          z' = a31 x + a32 y + a33 z + a34
         --          
         --          The method Value(i,j) will return aij.
-        --          Raises ConstructionError if the determinant of  the aij is null. Or  if
-        --          the matrix as not a uniform scale.
-
+        --          Raises ConstructionError if the determinant of  the aij is null.
+        --          The matrix is orthogonalized before future using.
     raises
         ConstructionError from Standard
 
@@ -323,11 +317,7 @@ is
   Multiplied (me; T : Trsf)   returns Trsf  is static;
         ---C++: inline
         ---C++: alias operator *
-
-  Multiply (me : in out; T : Trsf)          is static;
-        ---C++: alias operator *=
-        --- Purpose :
-        --  Computes the transformation composed with T and  <me>.
+        --  Computes the transformation composed from T and <me>.
         --  In a C++ implementation you can also write Tcomposed = <me> * T.
         --  Example :
         --      Trsf T1, T2, Tcomp; ...............
@@ -338,8 +328,12 @@ is
         --        Pnt P2 = P1.Transformed(Tcomp);    //using Tcomp
         --        Pnt P3 = P1.Transformed(T1);       //using T1 then T2
         --        P3.Transform(T2);                  // P3 = P2 !!!
+
+  Multiply (me : in out; T : Trsf)          is static;
+        ---C++: alias operator *=
+        --- Purpose :
         --  Computes the transformation composed with <me> and T.
-        --  <me> = T * <me>
+        --  <me> = <me> * T
 
   PreMultiply (me : in out; T : Trsf)  is static;
         --- Purpose :
@@ -371,7 +365,9 @@ is
         ---C++: inline
         --- Purpose : Transformation of a triplet XYZ with a Trsf
 
-
+  Orthogonalize(me: in out)
+    is protected;
+        --- Purpose : Makes orthogonalization of "matrix"
 
 fields
 

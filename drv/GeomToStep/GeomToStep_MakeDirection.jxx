@@ -1,21 +1,7 @@
-#ifndef _StepGeom_Direction_HeaderFile
 #include <StepGeom_Direction.hxx>
-#endif
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _gp_Dir_HeaderFile
 #include <gp_Dir.hxx>
-#endif
-#ifndef _gp_Dir2d_HeaderFile
 #include <gp_Dir2d.hxx>
-#endif
-#ifndef _Geom_Direction_HeaderFile
 #include <Geom_Direction.hxx>
-#endif
-#ifndef _Geom2d_Direction_HeaderFile
 #include <Geom2d_Direction.hxx>
-#endif
-#ifndef _GeomToStep_MakeDirection_HeaderFile
 #include <GeomToStep_MakeDirection.hxx>
-#endif

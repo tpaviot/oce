@@ -1,33 +1,11 @@
-#ifndef _Standard_NullObject_HeaderFile
 #include <Standard_NullObject.hxx>
-#endif
-#ifndef _TopoDS_FrozenShape_HeaderFile
 #include <TopoDS_FrozenShape.hxx>
-#endif
-#ifndef _TopoDS_UnCompatibleShapes_HeaderFile
 #include <TopoDS_UnCompatibleShapes.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopoDS_TShape_HeaderFile
 #include <TopoDS_TShape.hxx>
-#endif
-#ifndef _TopoDS_Wire_HeaderFile
 #include <TopoDS_Wire.hxx>
-#endif
-#ifndef _TopoDS_Shell_HeaderFile
 #include <TopoDS_Shell.hxx>
-#endif
-#ifndef _TopoDS_Solid_HeaderFile
 #include <TopoDS_Solid.hxx>
-#endif
-#ifndef _TopoDS_CompSolid_HeaderFile
 #include <TopoDS_CompSolid.hxx>
-#endif
-#ifndef _TopoDS_Compound_HeaderFile
 #include <TopoDS_Compound.hxx>
-#endif
-#ifndef _TopoDS_Builder_HeaderFile
 #include <TopoDS_Builder.hxx>
-#endif

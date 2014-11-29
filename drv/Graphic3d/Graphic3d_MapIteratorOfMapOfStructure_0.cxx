@@ -5,24 +5,14 @@
 
 #include <Graphic3d_MapIteratorOfMapOfStructure.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Graphic3d_Structure_HeaderFile
 #include <Graphic3d_Structure.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _Graphic3d_MapOfStructure_HeaderFile
 #include <Graphic3d_MapOfStructure.hxx>
-#endif
-#ifndef _Graphic3d_StdMapNodeOfMapOfStructure_HeaderFile
 #include <Graphic3d_StdMapNodeOfMapOfStructure.hxx>
-#endif
  
 
-#define TheKey Handle_Graphic3d_Structure
+#define TheKey Handle(Graphic3d_Structure)
 #define TheKey_hxx <Graphic3d_Structure.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>

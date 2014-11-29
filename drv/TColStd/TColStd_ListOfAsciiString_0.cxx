@@ -5,18 +5,10 @@
 
 #include <TColStd_ListOfAsciiString.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TColStd_ListIteratorOfListOfAsciiString_HeaderFile
 #include <TColStd_ListIteratorOfListOfAsciiString.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TColStd_ListNodeOfListOfAsciiString_HeaderFile
 #include <TColStd_ListNodeOfListOfAsciiString.hxx>
-#endif
  
 
 #define Item TCollection_AsciiString

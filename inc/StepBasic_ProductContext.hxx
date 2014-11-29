@@ -6,44 +6,34 @@
 #ifndef _StepBasic_ProductContext_HeaderFile
 #define _StepBasic_ProductContext_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_ProductContext_HeaderFile
 #include <Handle_StepBasic_ProductContext.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepBasic_ApplicationContextElement_HeaderFile
 #include <StepBasic_ApplicationContextElement.hxx>
-#endif
-#ifndef _Handle_StepBasic_ApplicationContext_HeaderFile
 #include <Handle_StepBasic_ApplicationContext.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepBasic_ApplicationContext;
 
 
 
-class StepBasic_ProductContext : public StepBasic_ApplicationContextElement {
+class StepBasic_ProductContext : public StepBasic_ApplicationContextElement
+{
 
 public:
 
-  //! Returns a ProductContext <br>
-  Standard_EXPORT   StepBasic_ProductContext();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepBasic_ApplicationContext)& aFrameOfReference) ;
+  //! Returns a ProductContext
+  Standard_EXPORT StepBasic_ProductContext();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(StepBasic_ApplicationContext)& aFrameOfReference,const Handle(TCollection_HAsciiString)& aDisciplineType) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepBasic_ApplicationContext)& aFrameOfReference) ;
   
-  Standard_EXPORT     void SetDisciplineType(const Handle(TCollection_HAsciiString)& aDisciplineType) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(StepBasic_ApplicationContext)& aFrameOfReference, const Handle(TCollection_HAsciiString)& aDisciplineType) ;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString DisciplineType() const;
+  Standard_EXPORT   void SetDisciplineType (const Handle(TCollection_HAsciiString)& aDisciplineType) ;
+  
+  Standard_EXPORT   Handle(TCollection_HAsciiString) DisciplineType()  const;
 
 
 
@@ -58,7 +48,7 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString disciplineType;
+  Handle(TCollection_HAsciiString) disciplineType;
 
 
 };
@@ -67,7 +57,6 @@ Handle_TCollection_HAsciiString disciplineType;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_ProductContext_HeaderFile

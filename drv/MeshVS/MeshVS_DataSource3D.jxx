@@ -1,6 +1,2 @@
-#ifndef _MeshVS_HArray1OfSequenceOfInteger_HeaderFile
 #include <MeshVS_HArray1OfSequenceOfInteger.hxx>
-#endif
-#ifndef _MeshVS_DataSource3D_HeaderFile
 #include <MeshVS_DataSource3D.hxx>
-#endif

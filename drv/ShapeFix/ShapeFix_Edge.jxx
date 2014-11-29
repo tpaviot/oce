@@ -1,21 +1,7 @@
-#ifndef _ShapeConstruct_ProjectCurveOnSurface_HeaderFile
 #include <ShapeConstruct_ProjectCurveOnSurface.hxx>
-#endif
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _Geom_Surface_HeaderFile
 #include <Geom_Surface.hxx>
-#endif
-#ifndef _TopLoc_Location_HeaderFile
 #include <TopLoc_Location.hxx>
-#endif
-#ifndef _ShapeAnalysis_Surface_HeaderFile
 #include <ShapeAnalysis_Surface.hxx>
-#endif
-#ifndef _ShapeFix_Edge_HeaderFile
 #include <ShapeFix_Edge.hxx>
-#endif

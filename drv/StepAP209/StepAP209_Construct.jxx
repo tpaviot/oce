@@ -1,51 +1,17 @@
-#ifndef _XSControl_WorkSession_HeaderFile
 #include <XSControl_WorkSession.hxx>
-#endif
-#ifndef _StepBasic_ProductDefinitionFormation_HeaderFile
 #include <StepBasic_ProductDefinitionFormation.hxx>
-#endif
-#ifndef _StepFEA_FeaModel_HeaderFile
 #include <StepFEA_FeaModel.hxx>
-#endif
-#ifndef _StepBasic_Product_HeaderFile
 #include <StepBasic_Product.hxx>
-#endif
-#ifndef _StepFEA_FeaAxis2Placement3d_HeaderFile
 #include <StepFEA_FeaAxis2Placement3d.hxx>
-#endif
-#ifndef _StepShape_ShapeRepresentation_HeaderFile
 #include <StepShape_ShapeRepresentation.hxx>
-#endif
-#ifndef _StepElement_HSequenceOfElementMaterial_HeaderFile
 #include <StepElement_HSequenceOfElementMaterial.hxx>
-#endif
-#ifndef _StepFEA_HSequenceOfElementGeometricRelationship_HeaderFile
 #include <StepFEA_HSequenceOfElementGeometricRelationship.hxx>
-#endif
-#ifndef _StepFEA_HSequenceOfElementRepresentation_HeaderFile
 #include <StepFEA_HSequenceOfElementRepresentation.hxx>
-#endif
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
-#ifndef _StepElement_HSequenceOfCurveElementSectionDefinition_HeaderFile
 #include <StepElement_HSequenceOfCurveElementSectionDefinition.hxx>
-#endif
-#ifndef _StepFEA_Curve3dElementRepresentation_HeaderFile
 #include <StepFEA_Curve3dElementRepresentation.hxx>
-#endif
-#ifndef _StepFEA_ElementRepresentation_HeaderFile
 #include <StepFEA_ElementRepresentation.hxx>
-#endif
-#ifndef _StepBasic_ProductDefinition_HeaderFile
 #include <StepBasic_ProductDefinition.hxx>
-#endif
-#ifndef _StepData_StepModel_HeaderFile
 #include <StepData_StepModel.hxx>
-#endif
-#ifndef _StepRepr_ProductDefinitionShape_HeaderFile
 #include <StepRepr_ProductDefinitionShape.hxx>
-#endif
-#ifndef _StepAP209_Construct_HeaderFile
 #include <StepAP209_Construct.hxx>
-#endif

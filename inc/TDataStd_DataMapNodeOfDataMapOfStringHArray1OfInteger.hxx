@@ -6,28 +6,14 @@
 #ifndef _TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger_HeaderFile
 #define _TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger_HeaderFile
 #include <Handle_TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger.hxx>
-#endif
 
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfInteger_HeaderFile
 #include <Handle_TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TColStd_HArray1OfInteger;
 class TCollection_ExtendedString;
 class TDataStd_DataMapOfStringHArray1OfInteger;
@@ -35,16 +21,17 @@ class TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfInteger;
 
 
 
-class TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger : public TCollection_MapNode {
+class TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger : public TCollection_MapNode
+{
 
 public:
 
   
-      TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger(const TCollection_ExtendedString& K,const Handle(TColStd_HArray1OfInteger)& I,const TCollection_MapNodePtr& n);
+    TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger(const TCollection_ExtendedString& K, const Handle(TColStd_HArray1OfInteger)& I, const TCollection_MapNodePtr& n);
   
-        TCollection_ExtendedString& Key() const;
+      TCollection_ExtendedString& Key()  const;
   
-        Handle_TColStd_HArray1OfInteger& Value() const;
+      Handle(TColStd_HArray1OfInteger)& Value()  const;
 
 
 
@@ -59,15 +46,15 @@ protected:
 private: 
 
 
-TCollection_ExtendedString myKey;
-Handle_TColStd_HArray1OfInteger myValue;
+  TCollection_ExtendedString myKey;
+  Handle(TColStd_HArray1OfInteger) myValue;
 
 
 };
 
 #define TheKey TCollection_ExtendedString
 #define TheKey_hxx <TCollection_ExtendedString.hxx>
-#define TheItem Handle_TColStd_HArray1OfInteger
+#define TheItem Handle(TColStd_HArray1OfInteger)
 #define TheItem_hxx <TColStd_HArray1OfInteger.hxx>
 #define Hasher TCollection_ExtendedString
 #define Hasher_hxx <TCollection_ExtendedString.hxx>
@@ -98,7 +85,6 @@ Handle_TColStd_HArray1OfInteger myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDataStd_DataMapNodeOfDataMapOfStringHArray1OfInteger_HeaderFile

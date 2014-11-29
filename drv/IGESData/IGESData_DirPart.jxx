@@ -1,6 +1,2 @@
-#ifndef _IGESData_IGESType_HeaderFile
 #include <IGESData_IGESType.hxx>
-#endif
-#ifndef _IGESData_DirPart_HeaderFile
 #include <IGESData_DirPart.hxx>
-#endif

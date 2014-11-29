@@ -6,54 +6,42 @@
 #ifndef _StepGeom_Axis2Placement_HeaderFile
 #define _StepGeom_Axis2Placement_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _StepData_SelectType_HeaderFile
 #include <StepData_SelectType.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_StepGeom_Axis2Placement2d_HeaderFile
 #include <Handle_StepGeom_Axis2Placement2d.hxx>
-#endif
-#ifndef _Handle_StepGeom_Axis2Placement3d_HeaderFile
 #include <Handle_StepGeom_Axis2Placement3d.hxx>
-#endif
 class Standard_Transient;
 class StepGeom_Axis2Placement2d;
 class StepGeom_Axis2Placement3d;
 
 
 
-class StepGeom_Axis2Placement  : public StepData_SelectType {
+class StepGeom_Axis2Placement  : public StepData_SelectType
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a Axis2Placement SelectType <br>
-  Standard_EXPORT   StepGeom_Axis2Placement();
-  //! Recognizes a Axis2Placement Kind Entity that is : <br>
-//!        1 -> Axis2Placement2d <br>
-//!        2 -> Axis2Placement3d <br>
-//!        0 else <br>
-  Standard_EXPORT     Standard_Integer CaseNum(const Handle(Standard_Transient)& ent) const;
-  //! returns Value as a Axis2Placement2d (Null if another type) <br>
-  Standard_EXPORT     Handle_StepGeom_Axis2Placement2d Axis2Placement2d() const;
-  //! returns Value as a Axis2Placement3d (Null if another type) <br>
-  Standard_EXPORT     Handle_StepGeom_Axis2Placement3d Axis2Placement3d() const;
-
+  
+  //! Returns a Axis2Placement SelectType
+  Standard_EXPORT StepGeom_Axis2Placement();
+  
+  //! Recognizes a Axis2Placement Kind Entity that is :
+  //! 1 -> Axis2Placement2d
+  //! 2 -> Axis2Placement3d
+  //! 0 else
+  Standard_EXPORT   Standard_Integer CaseNum (const Handle(Standard_Transient)& ent)  const;
+  
+  //! returns Value as a Axis2Placement2d (Null if another type)
+  Standard_EXPORT   Handle(StepGeom_Axis2Placement2d) Axis2Placement2d()  const;
+  
+  //! returns Value as a Axis2Placement3d (Null if another type)
+  Standard_EXPORT   Handle(StepGeom_Axis2Placement3d) Axis2Placement3d()  const;
 
 
 
@@ -76,7 +64,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_Axis2Placement_HeaderFile

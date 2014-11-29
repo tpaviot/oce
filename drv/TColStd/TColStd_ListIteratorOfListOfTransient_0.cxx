@@ -5,24 +5,14 @@
 
 #include <TColStd_ListIteratorOfListOfTransient.hxx>
 
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TColStd_ListOfTransient_HeaderFile
 #include <TColStd_ListOfTransient.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _TColStd_ListNodeOfListOfTransient_HeaderFile
 #include <TColStd_ListNodeOfListOfTransient.hxx>
-#endif
  
 
-#define Item Handle_Standard_Transient
+#define Item Handle(Standard_Transient)
 #define Item_hxx <Standard_Transient.hxx>
 #define TCollection_ListNode TColStd_ListNodeOfListOfTransient
 #define TCollection_ListNode_hxx <TColStd_ListNodeOfListOfTransient.hxx>

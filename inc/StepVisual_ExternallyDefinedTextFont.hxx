@@ -6,28 +6,22 @@
 #ifndef _StepVisual_ExternallyDefinedTextFont_HeaderFile
 #define _StepVisual_ExternallyDefinedTextFont_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_ExternallyDefinedTextFont_HeaderFile
 #include <Handle_StepVisual_ExternallyDefinedTextFont.hxx>
-#endif
 
-#ifndef _StepBasic_ExternallyDefinedItem_HeaderFile
 #include <StepBasic_ExternallyDefinedItem.hxx>
-#endif
 
 
-//! Representation of STEP entity ExternallyDefinedTextFont <br>
-class StepVisual_ExternallyDefinedTextFont : public StepBasic_ExternallyDefinedItem {
+//! Representation of STEP entity ExternallyDefinedTextFont
+class StepVisual_ExternallyDefinedTextFont : public StepBasic_ExternallyDefinedItem
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepVisual_ExternallyDefinedTextFont();
+  
+  //! Empty constructor
+  Standard_EXPORT StepVisual_ExternallyDefinedTextFont();
 
 
 
@@ -50,7 +44,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_ExternallyDefinedTextFont_HeaderFile

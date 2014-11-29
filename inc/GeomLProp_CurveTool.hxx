@@ -6,60 +6,54 @@
 #ifndef _GeomLProp_CurveTool_HeaderFile
 #define _GeomLProp_CurveTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Geom_Curve;
 class gp_Pnt;
 class gp_Vec;
 
 
 
-class GeomLProp_CurveTool  {
+class GeomLProp_CurveTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Computes the point <P> of parameter <U> on the curve <C>. <br>
-  Standard_EXPORT   static  void Value(const Handle(Geom_Curve)& C,const Standard_Real U,gp_Pnt& P) ;
-  //! Computes the point <P> and first derivative <V1> of <br>
-//!          parameter <U> on the curve <C>. <br>
-  Standard_EXPORT   static  void D1(const Handle(Geom_Curve)& C,const Standard_Real U,gp_Pnt& P,gp_Vec& V1) ;
-  //! Computes the point <P>, the first derivative <V1> and second <br>
-//!          derivative <V2> of parameter <U> on the curve <C>. <br>
-  Standard_EXPORT   static  void D2(const Handle(Geom_Curve)& C,const Standard_Real U,gp_Pnt& P,gp_Vec& V1,gp_Vec& V2) ;
-  //! Computes the point <P>, the first derivative <V1>, the <br>
-//!          second derivative <V2> and third derivative <V3> of <br>
-//!          parameter <U> on the curve <C>. <br>
-  Standard_EXPORT   static  void D3(const Handle(Geom_Curve)& C,const Standard_Real U,gp_Pnt& P,gp_Vec& V1,gp_Vec& V2,gp_Vec& V3) ;
-  //! returns the order of continuity of the curve <C>. <br>
-//!          returns 1 : first derivative only is computable <br>
-//!          returns 2 : first and second derivative only are computable. <br>
-//!          returns 3 : first, second and third are computable. <br>
-  Standard_EXPORT   static  Standard_Integer Continuity(const Handle(Geom_Curve)& C) ;
-  //! returns the first parameter bound of the curve. <br>
-//! <br>
-  Standard_EXPORT   static  Standard_Real FirstParameter(const Handle(Geom_Curve)& C) ;
-  //! returns the last parameter bound of the curve. <br>
-//!          FirstParameter must be less than LastParamenter. <br>
-  Standard_EXPORT   static  Standard_Real LastParameter(const Handle(Geom_Curve)& C) ;
-
+  
+  //! Computes the point <P> of parameter <U> on the curve <C>.
+  Standard_EXPORT static   void Value (const Handle(Geom_Curve)& C, const Standard_Real U, gp_Pnt& P) ;
+  
+  //! Computes the point <P> and first derivative <V1> of
+  //! parameter <U> on the curve <C>.
+  Standard_EXPORT static   void D1 (const Handle(Geom_Curve)& C, const Standard_Real U, gp_Pnt& P, gp_Vec& V1) ;
+  
+  //! Computes the point <P>, the first derivative <V1> and second
+  //! derivative <V2> of parameter <U> on the curve <C>.
+  Standard_EXPORT static   void D2 (const Handle(Geom_Curve)& C, const Standard_Real U, gp_Pnt& P, gp_Vec& V1, gp_Vec& V2) ;
+  
+  //! Computes the point <P>, the first derivative <V1>, the
+  //! second derivative <V2> and third derivative <V3> of
+  //! parameter <U> on the curve <C>.
+  Standard_EXPORT static   void D3 (const Handle(Geom_Curve)& C, const Standard_Real U, gp_Pnt& P, gp_Vec& V1, gp_Vec& V2, gp_Vec& V3) ;
+  
+  //! returns the order of continuity of the curve <C>.
+  //! returns 1 : first derivative only is computable
+  //! returns 2 : first and second derivative only are computable.
+  //! returns 3 : first, second and third are computable.
+  Standard_EXPORT static   Standard_Integer Continuity (const Handle(Geom_Curve)& C) ;
+  
+  //! returns the first parameter bound of the curve.
+  Standard_EXPORT static   Standard_Real FirstParameter (const Handle(Geom_Curve)& C) ;
+  
+  //! returns the last parameter bound of the curve.
+  //! FirstParameter must be less than LastParamenter.
+  Standard_EXPORT static   Standard_Real LastParameter (const Handle(Geom_Curve)& C) ;
 
 
 
@@ -82,7 +76,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GeomLProp_CurveTool_HeaderFile

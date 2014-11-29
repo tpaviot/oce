@@ -6,46 +6,36 @@
 #ifndef _StepBasic_PersonAndOrganization_HeaderFile
 #define _StepBasic_PersonAndOrganization_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_PersonAndOrganization_HeaderFile
 #include <Handle_StepBasic_PersonAndOrganization.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_Person_HeaderFile
 #include <Handle_StepBasic_Person.hxx>
-#endif
-#ifndef _Handle_StepBasic_Organization_HeaderFile
 #include <Handle_StepBasic_Organization.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepBasic_Person;
 class StepBasic_Organization;
 
 
 
-class StepBasic_PersonAndOrganization : public MMgt_TShared {
+class StepBasic_PersonAndOrganization : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a PersonAndOrganization <br>
-  Standard_EXPORT   StepBasic_PersonAndOrganization();
   
-  Standard_EXPORT   virtual  void Init(const Handle(StepBasic_Person)& aThePerson,const Handle(StepBasic_Organization)& aTheOrganization) ;
+  //! Returns a PersonAndOrganization
+  Standard_EXPORT StepBasic_PersonAndOrganization();
   
-  Standard_EXPORT     void SetThePerson(const Handle(StepBasic_Person)& aThePerson) ;
+  Standard_EXPORT virtual   void Init (const Handle(StepBasic_Person)& aThePerson, const Handle(StepBasic_Organization)& aTheOrganization) ;
   
-  Standard_EXPORT     Handle_StepBasic_Person ThePerson() const;
+  Standard_EXPORT   void SetThePerson (const Handle(StepBasic_Person)& aThePerson) ;
   
-  Standard_EXPORT     void SetTheOrganization(const Handle(StepBasic_Organization)& aTheOrganization) ;
+  Standard_EXPORT   Handle(StepBasic_Person) ThePerson()  const;
   
-  Standard_EXPORT     Handle_StepBasic_Organization TheOrganization() const;
+  Standard_EXPORT   void SetTheOrganization (const Handle(StepBasic_Organization)& aTheOrganization) ;
+  
+  Standard_EXPORT   Handle(StepBasic_Organization) TheOrganization()  const;
 
 
 
@@ -60,8 +50,8 @@ protected:
 private: 
 
 
-Handle_StepBasic_Person thePerson;
-Handle_StepBasic_Organization theOrganization;
+  Handle(StepBasic_Person) thePerson;
+  Handle(StepBasic_Organization) theOrganization;
 
 
 };
@@ -70,7 +60,6 @@ Handle_StepBasic_Organization theOrganization;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_PersonAndOrganization_HeaderFile

@@ -6,28 +6,14 @@
 #ifndef _RWStepAP203_RWStartWork_HeaderFile
 #define _RWStepAP203_RWStartWork_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_StepData_StepReaderData_HeaderFile
 #include <Handle_StepData_StepReaderData.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
-#ifndef _Handle_StepAP203_StartWork_HeaderFile
 #include <Handle_StepAP203_StartWork.hxx>
-#endif
 class StepData_StepReaderData;
 class Interface_Check;
 class StepAP203_StartWork;
@@ -35,21 +21,25 @@ class StepData_StepWriter;
 class Interface_EntityIterator;
 
 
-//! Read & Write tool for StartWork <br>
-class RWStepAP203_RWStartWork  {
+//! Read & Write tool for StartWork
+class RWStepAP203_RWStartWork 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor <br>
-  Standard_EXPORT   RWStepAP203_RWStartWork();
-  //! Reads StartWork <br>
-  Standard_EXPORT     void ReadStep(const Handle(StepData_StepReaderData)& data,const Standard_Integer num,Handle(Interface_Check)& ach,const Handle(StepAP203_StartWork)& ent) const;
-  //! Writes StartWork <br>
-  Standard_EXPORT     void WriteStep(StepData_StepWriter& SW,const Handle(StepAP203_StartWork)& ent) const;
-  //! Fills data for graph (shared items) <br>
-  Standard_EXPORT     void Share(const Handle(StepAP203_StartWork)& ent,Interface_EntityIterator& iter) const;
-
+  
+  //! Empty constructor
+  Standard_EXPORT RWStepAP203_RWStartWork();
+  
+  //! Reads StartWork
+  Standard_EXPORT   void ReadStep (const Handle(StepData_StepReaderData)& data, const Standard_Integer num, Handle(Interface_Check)& ach, const Handle(StepAP203_StartWork)& ent)  const;
+  
+  //! Writes StartWork
+  Standard_EXPORT   void WriteStep (StepData_StepWriter& SW, const Handle(StepAP203_StartWork)& ent)  const;
+  
+  //! Fills data for graph (shared items)
+  Standard_EXPORT   void Share (const Handle(StepAP203_StartWork)& ent, Interface_EntityIterator& iter)  const;
 
 
 
@@ -72,7 +62,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _RWStepAP203_RWStartWork_HeaderFile

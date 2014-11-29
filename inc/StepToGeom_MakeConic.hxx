@@ -6,42 +6,30 @@
 #ifndef _StepToGeom_MakeConic_HeaderFile
 #define _StepToGeom_MakeConic_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepGeom_Conic_HeaderFile
 #include <Handle_StepGeom_Conic.hxx>
-#endif
-#ifndef _Handle_Geom_Conic_HeaderFile
 #include <Handle_Geom_Conic.hxx>
-#endif
 class StepGeom_Conic;
 class Geom_Conic;
 
 
-//! This class implements the mapping between classes <br>
-//!          Conic from StepGeom <br>
-//!          which describes a Conic from prostep and Conic from Geom . <br>
-//!          As Conic is an abstract class <br>
-//!          this class is an access to the sub-class required. <br>
-class StepToGeom_MakeConic  {
+//! This class implements the mapping between classes
+//! Conic from StepGeom
+//! which describes a Conic from prostep and Conic from Geom .
+//! As Conic is an abstract class
+//! this class is an access to the sub-class required.
+class StepToGeom_MakeConic 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Standard_Boolean Convert(const Handle(StepGeom_Conic)& SC,Handle(Geom_Conic)& CC) ;
-
+  Standard_EXPORT static   Standard_Boolean Convert (const Handle(StepGeom_Conic)& SC, Handle(Geom_Conic)& CC) ;
 
 
 
@@ -64,7 +52,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToGeom_MakeConic_HeaderFile

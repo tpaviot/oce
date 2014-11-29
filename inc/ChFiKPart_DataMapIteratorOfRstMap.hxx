@@ -6,28 +6,14 @@
 #ifndef _ChFiKPart_DataMapIteratorOfRstMap_HeaderFile
 #define _ChFiKPart_DataMapIteratorOfRstMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Adaptor2d_HCurve2d_HeaderFile
 #include <Handle_Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _Handle_ChFiKPart_DataMapNodeOfRstMap_HeaderFile
 #include <Handle_ChFiKPart_DataMapNodeOfRstMap.hxx>
-#endif
 class Standard_NoSuchObject;
 class Adaptor2d_HCurve2d;
 class TColStd_MapIntegerHasher;
@@ -36,22 +22,22 @@ class ChFiKPart_DataMapNodeOfRstMap;
 
 
 
-class ChFiKPart_DataMapIteratorOfRstMap  : public TCollection_BasicMapIterator {
+class ChFiKPart_DataMapIteratorOfRstMap  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   ChFiKPart_DataMapIteratorOfRstMap();
+  Standard_EXPORT ChFiKPart_DataMapIteratorOfRstMap();
   
-  Standard_EXPORT   ChFiKPart_DataMapIteratorOfRstMap(const ChFiKPart_RstMap& aMap);
+  Standard_EXPORT ChFiKPart_DataMapIteratorOfRstMap(const ChFiKPart_RstMap& aMap);
   
-  Standard_EXPORT     void Initialize(const ChFiKPart_RstMap& aMap) ;
+  Standard_EXPORT   void Initialize (const ChFiKPart_RstMap& aMap) ;
   
-  Standard_EXPORT    const Standard_Integer& Key() const;
+  Standard_EXPORT  const  Standard_Integer& Key()  const;
   
-  Standard_EXPORT    const Handle_Adaptor2d_HCurve2d& Value() const;
-
+  Standard_EXPORT  const  Handle(Adaptor2d_HCurve2d)& Value()  const;
 
 
 
@@ -74,7 +60,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ChFiKPart_DataMapIteratorOfRstMap_HeaderFile

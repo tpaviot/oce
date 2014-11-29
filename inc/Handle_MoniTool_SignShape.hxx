@@ -6,22 +6,15 @@
 #ifndef _Handle_MoniTool_SignShape_HeaderFile
 #define _Handle_MoniTool_SignShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_MoniTool_SignText_HeaderFile
 #include <Handle_MoniTool_SignText.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(MoniTool_SignText);
 class MoniTool_SignShape;
 
-DEFINE_STANDARD_HANDLE(MoniTool_SignShape,MoniTool_SignText)
+DEFINE_STANDARD_HANDLE(MoniTool_SignShape, MoniTool_SignText)
 
-#endif
+#endif // _Handle_MoniTool_SignShape_HeaderFile

@@ -6,28 +6,14 @@
 #ifndef _StepBasic_Array1OfDerivedUnitElement_HeaderFile
 #define _StepBasic_Array1OfDerivedUnitElement_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepBasic_DerivedUnitElement_HeaderFile
 #include <Handle_StepBasic_DerivedUnitElement.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -36,52 +22,52 @@ class StepBasic_DerivedUnitElement;
 
 
 
-class StepBasic_Array1OfDerivedUnitElement  {
+class StepBasic_Array1OfDerivedUnitElement 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      StepBasic_Array1OfDerivedUnitElement(const Standard_Integer Low,const Standard_Integer Up);
+    StepBasic_Array1OfDerivedUnitElement(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepBasic_Array1OfDerivedUnitElement(const Handle(StepBasic_DerivedUnitElement)& Item,const Standard_Integer Low,const Standard_Integer Up);
+    StepBasic_Array1OfDerivedUnitElement(const Handle(StepBasic_DerivedUnitElement)& Item, const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT     void Init(const Handle(StepBasic_DerivedUnitElement)& V) ;
+  Standard_EXPORT   void Init (const Handle(StepBasic_DerivedUnitElement)& V) ;
   
-        void Destroy() ;
+      void Destroy() ;
 ~StepBasic_Array1OfDerivedUnitElement()
 {
   Destroy();
 }
   
-        Standard_Boolean IsAllocated() const;
+      Standard_Boolean IsAllocated()  const;
   
-  Standard_EXPORT    const StepBasic_Array1OfDerivedUnitElement& Assign(const StepBasic_Array1OfDerivedUnitElement& Other) ;
-   const StepBasic_Array1OfDerivedUnitElement& operator =(const StepBasic_Array1OfDerivedUnitElement& Other) 
+  Standard_EXPORT  const  StepBasic_Array1OfDerivedUnitElement& Assign (const StepBasic_Array1OfDerivedUnitElement& Other) ;
+ const  StepBasic_Array1OfDerivedUnitElement& operator = (const StepBasic_Array1OfDerivedUnitElement& Other) 
 {
   return Assign(Other);
 }
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(StepBasic_DerivedUnitElement)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(StepBasic_DerivedUnitElement)& Value) ;
   
-       const Handle_StepBasic_DerivedUnitElement& Value(const Standard_Integer Index) const;
-     const Handle_StepBasic_DerivedUnitElement& operator ()(const Standard_Integer Index) const
+     const  Handle(StepBasic_DerivedUnitElement)& Value (const Standard_Integer Index)  const;
+   const  Handle(StepBasic_DerivedUnitElement)& operator () (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-        Handle_StepBasic_DerivedUnitElement& ChangeValue(const Standard_Integer Index) ;
-      Handle_StepBasic_DerivedUnitElement& operator ()(const Standard_Integer Index) 
+      Handle(StepBasic_DerivedUnitElement)& ChangeValue (const Standard_Integer Index) ;
+    Handle(StepBasic_DerivedUnitElement)& operator () (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
-
 
 
 
@@ -95,18 +81,18 @@ protected:
 private:
 
   
-  Standard_EXPORT   StepBasic_Array1OfDerivedUnitElement(const StepBasic_Array1OfDerivedUnitElement& AnArray);
+  Standard_EXPORT StepBasic_Array1OfDerivedUnitElement(const StepBasic_Array1OfDerivedUnitElement& AnArray);
 
 
-Standard_Integer myLowerBound;
-Standard_Integer myUpperBound;
-Standard_Address myStart;
-Standard_Boolean isAllocated;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  Standard_Address myStart;
+  Standard_Boolean isAllocated;
 
 
 };
 
-#define Array1Item Handle_StepBasic_DerivedUnitElement
+#define Array1Item Handle(StepBasic_DerivedUnitElement)
 #define Array1Item_hxx <StepBasic_DerivedUnitElement.hxx>
 #define TCollection_Array1 StepBasic_Array1OfDerivedUnitElement
 #define TCollection_Array1_hxx <StepBasic_Array1OfDerivedUnitElement.hxx>
@@ -119,7 +105,6 @@ Standard_Boolean isAllocated;
 #undef TCollection_Array1_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_Array1OfDerivedUnitElement_HeaderFile

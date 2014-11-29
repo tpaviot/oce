@@ -1,3 +1,14 @@
+Version 0.17 - ???
+
+This version is not binary compatible with OCE 0.16, OCE_ABI_SOVERSION
+was incremented.
+
+* Upgraded to OCCT 6.8.0
+
+* Build system changes
+  - Remove OCE_DISABLE_BSPLINE_MESHER option, OCCT improved meshing
+    in recent releases.
+
 Version 0.16.1 - November 2014
 
 This version is binary compatible with 0CE 0.16.

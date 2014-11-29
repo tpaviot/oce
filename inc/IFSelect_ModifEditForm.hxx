@@ -6,28 +6,14 @@
 #ifndef _IFSelect_ModifEditForm_HeaderFile
 #define _IFSelect_ModifEditForm_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IFSelect_ModifEditForm_HeaderFile
 #include <Handle_IFSelect_ModifEditForm.hxx>
-#endif
 
-#ifndef _Handle_IFSelect_EditForm_HeaderFile
 #include <Handle_IFSelect_EditForm.hxx>
-#endif
-#ifndef _IFSelect_Modifier_HeaderFile
 #include <IFSelect_Modifier.hxx>
-#endif
-#ifndef _Handle_Interface_InterfaceModel_HeaderFile
 #include <Handle_Interface_InterfaceModel.hxx>
-#endif
-#ifndef _Handle_Interface_Protocol_HeaderFile
 #include <Handle_Interface_Protocol.hxx>
-#endif
 class IFSelect_EditForm;
 class IFSelect_ContextModif;
 class Interface_InterfaceModel;
@@ -36,19 +22,24 @@ class Interface_CopyTool;
 class TCollection_AsciiString;
 
 
-//! This modifier applies an EditForm on the entities selected <br>
-class IFSelect_ModifEditForm : public IFSelect_Modifier {
+//! This modifier applies an EditForm on the entities selected
+class IFSelect_ModifEditForm : public IFSelect_Modifier
+{
 
 public:
 
-  //! Creates a ModifEditForm. It may not change the graph <br>
-  Standard_EXPORT   IFSelect_ModifEditForm(const Handle(IFSelect_EditForm)& editform);
-  //! Returns the EditForm <br>
-  Standard_EXPORT     Handle_IFSelect_EditForm EditForm() const;
-  //! Acts by applying an EditForm to entities, selected or all model <br>
-  Standard_EXPORT     void Perform(IFSelect_ContextModif& ctx,const Handle(Interface_InterfaceModel)& target,const Handle(Interface_Protocol)& protocol,Interface_CopyTool& TC) const;
-  //! Returns Label as "Apply EditForm <+ label of EditForm>" <br>
-  Standard_EXPORT     TCollection_AsciiString Label() const;
+  
+  //! Creates a ModifEditForm. It may not change the graph
+  Standard_EXPORT IFSelect_ModifEditForm(const Handle(IFSelect_EditForm)& editform);
+  
+  //! Returns the EditForm
+  Standard_EXPORT   Handle(IFSelect_EditForm) EditForm()  const;
+  
+  //! Acts by applying an EditForm to entities, selected or all model
+  Standard_EXPORT   void Perform (IFSelect_ContextModif& ctx, const Handle(Interface_InterfaceModel)& target, const Handle(Interface_Protocol)& protocol, Interface_CopyTool& TC)  const;
+  
+  //! Returns Label as "Apply EditForm <+ label of EditForm>"
+  Standard_EXPORT   TCollection_AsciiString Label()  const;
 
 
 
@@ -63,7 +54,7 @@ protected:
 private: 
 
 
-Handle_IFSelect_EditForm theedit;
+  Handle(IFSelect_EditForm) theedit;
 
 
 };
@@ -72,7 +63,6 @@ Handle_IFSelect_EditForm theedit;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IFSelect_ModifEditForm_HeaderFile

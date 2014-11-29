@@ -1,12 +1,4 @@
-#ifndef _CDF_StoreList_HeaderFile
 #include <CDF_StoreList.hxx>
-#endif
-#ifndef _CDM_Document_HeaderFile
 #include <CDM_Document.hxx>
-#endif
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _CDF_Store_HeaderFile
 #include <CDF_Store.hxx>
-#endif

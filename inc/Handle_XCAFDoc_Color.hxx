@@ -6,22 +6,15 @@
 #ifndef _Handle_XCAFDoc_Color_HeaderFile
 #define _Handle_XCAFDoc_Color_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_TDF_Attribute_HeaderFile
 #include <Handle_TDF_Attribute.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(TDF_Attribute);
 class XCAFDoc_Color;
 
-DEFINE_STANDARD_HANDLE(XCAFDoc_Color,TDF_Attribute)
+DEFINE_STANDARD_HANDLE(XCAFDoc_Color, TDF_Attribute)
 
-#endif
+#endif // _Handle_XCAFDoc_Color_HeaderFile

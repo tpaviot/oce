@@ -6,37 +6,17 @@
 #ifndef _ProjLib_ComputeApproxOnPolarSurface_HeaderFile
 #define _ProjLib_ComputeApproxOnPolarSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_Geom2d_BSplineCurve_HeaderFile
 #include <Handle_Geom2d_BSplineCurve.hxx>
-#endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HCurve_HeaderFile
 #include <Handle_Adaptor3d_HCurve.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
 #include <Handle_Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Handle_Adaptor2d_HCurve2d_HeaderFile
 #include <Handle_Adaptor2d_HCurve2d.hxx>
-#endif
 class Geom2d_BSplineCurve;
 class Geom2d_Curve;
 class Adaptor3d_HCurve;
@@ -44,33 +24,37 @@ class Adaptor3d_HSurface;
 class Adaptor2d_HCurve2d;
 
 
-
-class ProjLib_ComputeApproxOnPolarSurface  {
+//! Approximate the  projection  of a  3d curve  on an
+//! polar  surface  and  stores the result  in  Approx.
+//! The result is a  2d curve.  The evaluation of  the
+//! current  point of the  2d  curve is done with  the
+//! evaluation of the extrema  P3d - Surface.
+class ProjLib_ComputeApproxOnPolarSurface 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   ProjLib_ComputeApproxOnPolarSurface();
+  Standard_EXPORT ProjLib_ComputeApproxOnPolarSurface();
   
-  Standard_EXPORT   ProjLib_ComputeApproxOnPolarSurface(const Handle(Adaptor3d_HCurve)& C,const Handle(Adaptor3d_HSurface)& S,const Standard_Real Tol = 1.0e-4);
+  Standard_EXPORT ProjLib_ComputeApproxOnPolarSurface(const Handle(Adaptor3d_HCurve)& C, const Handle(Adaptor3d_HSurface)& S, const Standard_Real Tol = 1.0e-4);
   
-  Standard_EXPORT   ProjLib_ComputeApproxOnPolarSurface(const Handle(Adaptor2d_HCurve2d)& InitCurve2d,const Handle(Adaptor3d_HCurve)& C,const Handle(Adaptor3d_HSurface)& S,const Standard_Real Tol);
+  Standard_EXPORT ProjLib_ComputeApproxOnPolarSurface(const Handle(Adaptor2d_HCurve2d)& InitCurve2d, const Handle(Adaptor3d_HCurve)& C, const Handle(Adaptor3d_HSurface)& S, const Standard_Real Tol);
   
-  Standard_EXPORT   ProjLib_ComputeApproxOnPolarSurface(const Handle(Adaptor2d_HCurve2d)& InitCurve2d,const Handle(Adaptor2d_HCurve2d)& InitCurve2dBis,const Handle(Adaptor3d_HCurve)& C,const Handle(Adaptor3d_HSurface)& S,const Standard_Real Tol);
+  Standard_EXPORT ProjLib_ComputeApproxOnPolarSurface(const Handle(Adaptor2d_HCurve2d)& InitCurve2d, const Handle(Adaptor2d_HCurve2d)& InitCurve2dBis, const Handle(Adaptor3d_HCurve)& C, const Handle(Adaptor3d_HSurface)& S, const Standard_Real Tol);
   
-  Standard_EXPORT     Handle_Geom2d_BSplineCurve Perform(const Handle(Adaptor2d_HCurve2d)& InitCurve2d,const Handle(Adaptor3d_HCurve)& C,const Handle(Adaptor3d_HSurface)& S) ;
+  Standard_EXPORT   Handle(Geom2d_BSplineCurve) Perform (const Handle(Adaptor2d_HCurve2d)& InitCurve2d, const Handle(Adaptor3d_HCurve)& C, const Handle(Adaptor3d_HSurface)& S) ;
   
-  Standard_EXPORT     Handle_Adaptor2d_HCurve2d BuildInitialCurve2d(const Handle(Adaptor3d_HCurve)& Curve,const Handle(Adaptor3d_HSurface)& S) ;
+  Standard_EXPORT   Handle(Adaptor2d_HCurve2d) BuildInitialCurve2d (const Handle(Adaptor3d_HCurve)& Curve, const Handle(Adaptor3d_HSurface)& S) ;
   
-  Standard_EXPORT     Handle_Geom2d_BSplineCurve ProjectUsingInitialCurve2d(const Handle(Adaptor3d_HCurve)& Curve,const Handle(Adaptor3d_HSurface)& S,const Handle(Adaptor2d_HCurve2d)& InitCurve2d) ;
+  Standard_EXPORT   Handle(Geom2d_BSplineCurve) ProjectUsingInitialCurve2d (const Handle(Adaptor3d_HCurve)& Curve, const Handle(Adaptor3d_HSurface)& S, const Handle(Adaptor2d_HCurve2d)& InitCurve2d) ;
   
-  Standard_EXPORT     Handle_Geom2d_BSplineCurve BSpline() const;
+  Standard_EXPORT   Handle(Geom2d_BSplineCurve) BSpline()  const;
   
-  Standard_EXPORT     Handle_Geom2d_Curve Curve2d() const;
+  Standard_EXPORT   Handle(Geom2d_Curve) Curve2d()  const;
   
-  Standard_EXPORT     Standard_Boolean IsDone() const;
-
+  Standard_EXPORT   Standard_Boolean IsDone()  const;
 
 
 
@@ -85,10 +69,10 @@ private:
 
 
 
-Standard_Boolean myProjIsDone;
-Standard_Real myTolerance;
-Handle_Geom2d_BSplineCurve myBSpline;
-Handle_Geom2d_Curve my2ndCurve;
+  Standard_Boolean myProjIsDone;
+  Standard_Real myTolerance;
+  Handle(Geom2d_BSplineCurve) myBSpline;
+  Handle(Geom2d_Curve) my2ndCurve;
 
 
 };
@@ -97,7 +81,6 @@ Handle_Geom2d_Curve my2ndCurve;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ProjLib_ComputeApproxOnPolarSurface_HeaderFile

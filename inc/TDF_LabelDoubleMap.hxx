@@ -6,28 +6,14 @@
 #ifndef _TDF_LabelDoubleMap_HeaderFile
 #define _TDF_LabelDoubleMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _Handle_TDF_DoubleMapNodeOfLabelDoubleMap_HeaderFile
 #include <Handle_TDF_DoubleMapNodeOfLabelDoubleMap.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_DomainError;
 class Standard_MultiplyDefined;
 class Standard_NoSuchObject;
@@ -38,44 +24,44 @@ class TDF_DoubleMapIteratorOfLabelDoubleMap;
 
 
 
-class TDF_LabelDoubleMap  : public TCollection_BasicMap {
+class TDF_LabelDoubleMap  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TDF_LabelDoubleMap(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT TDF_LabelDoubleMap(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     TDF_LabelDoubleMap& Assign(const TDF_LabelDoubleMap& Other) ;
-    TDF_LabelDoubleMap& operator =(const TDF_LabelDoubleMap& Other) 
+  Standard_EXPORT   TDF_LabelDoubleMap& Assign (const TDF_LabelDoubleMap& Other) ;
+  TDF_LabelDoubleMap& operator = (const TDF_LabelDoubleMap& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TDF_LabelDoubleMap()
 {
   Clear();
 }
   
-  Standard_EXPORT     void Bind(const TDF_Label& K1,const TDF_Label& K2) ;
+  Standard_EXPORT   void Bind (const TDF_Label& K1, const TDF_Label& K2) ;
   
-  Standard_EXPORT     Standard_Boolean AreBound(const TDF_Label& K1,const TDF_Label& K2) const;
+  Standard_EXPORT   Standard_Boolean AreBound (const TDF_Label& K1, const TDF_Label& K2)  const;
   
-  Standard_EXPORT     Standard_Boolean IsBound1(const TDF_Label& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound1 (const TDF_Label& K)  const;
   
-  Standard_EXPORT     Standard_Boolean IsBound2(const TDF_Label& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound2 (const TDF_Label& K)  const;
   
-  Standard_EXPORT    const TDF_Label& Find1(const TDF_Label& K) const;
+  Standard_EXPORT  const  TDF_Label& Find1 (const TDF_Label& K)  const;
   
-  Standard_EXPORT    const TDF_Label& Find2(const TDF_Label& K) const;
+  Standard_EXPORT  const  TDF_Label& Find2 (const TDF_Label& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind1(const TDF_Label& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind1 (const TDF_Label& K) ;
   
-  Standard_EXPORT     Standard_Boolean UnBind2(const TDF_Label& K) ;
-
+  Standard_EXPORT   Standard_Boolean UnBind2 (const TDF_Label& K) ;
 
 
 
@@ -89,7 +75,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   TDF_LabelDoubleMap(const TDF_LabelDoubleMap& Other);
+  Standard_EXPORT TDF_LabelDoubleMap(const TDF_LabelDoubleMap& Other);
 
 
 
@@ -100,7 +86,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_LabelDoubleMap_HeaderFile

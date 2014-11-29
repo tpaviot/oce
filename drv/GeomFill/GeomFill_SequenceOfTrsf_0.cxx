@@ -5,18 +5,10 @@
 
 #include <GeomFill_SequenceOfTrsf.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _gp_Trsf_HeaderFile
 #include <gp_Trsf.hxx>
-#endif
-#ifndef _GeomFill_SequenceNodeOfSequenceOfTrsf_HeaderFile
 #include <GeomFill_SequenceNodeOfSequenceOfTrsf.hxx>
-#endif
  
 
 #define SeqItem gp_Trsf

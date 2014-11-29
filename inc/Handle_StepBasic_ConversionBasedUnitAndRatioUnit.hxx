@@ -6,22 +6,15 @@
 #ifndef _Handle_StepBasic_ConversionBasedUnitAndRatioUnit_HeaderFile
 #define _Handle_StepBasic_ConversionBasedUnitAndRatioUnit_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepBasic_ConversionBasedUnit_HeaderFile
 #include <Handle_StepBasic_ConversionBasedUnit.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepBasic_ConversionBasedUnit);
 class StepBasic_ConversionBasedUnitAndRatioUnit;
 
-DEFINE_STANDARD_HANDLE(StepBasic_ConversionBasedUnitAndRatioUnit,StepBasic_ConversionBasedUnit)
+DEFINE_STANDARD_HANDLE(StepBasic_ConversionBasedUnitAndRatioUnit, StepBasic_ConversionBasedUnit)
 
-#endif
+#endif // _Handle_StepBasic_ConversionBasedUnitAndRatioUnit_HeaderFile

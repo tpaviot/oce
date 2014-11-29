@@ -5,21 +5,13 @@
 
 #include <Transfer_SequenceOfBinder.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Transfer_Binder_HeaderFile
 #include <Transfer_Binder.hxx>
-#endif
-#ifndef _Transfer_SequenceNodeOfSequenceOfBinder_HeaderFile
 #include <Transfer_SequenceNodeOfSequenceOfBinder.hxx>
-#endif
  
 
-#define SeqItem Handle_Transfer_Binder
+#define SeqItem Handle(Transfer_Binder)
 #define SeqItem_hxx <Transfer_Binder.hxx>
 #define TCollection_SequenceNode Transfer_SequenceNodeOfSequenceOfBinder
 #define TCollection_SequenceNode_hxx <Transfer_SequenceNodeOfSequenceOfBinder.hxx>

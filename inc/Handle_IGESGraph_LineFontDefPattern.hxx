@@ -6,22 +6,15 @@
 #ifndef _Handle_IGESGraph_LineFontDefPattern_HeaderFile
 #define _Handle_IGESGraph_LineFontDefPattern_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_IGESData_LineFontEntity_HeaderFile
 #include <Handle_IGESData_LineFontEntity.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(IGESData_LineFontEntity);
 class IGESGraph_LineFontDefPattern;
 
-DEFINE_STANDARD_HANDLE(IGESGraph_LineFontDefPattern,IGESData_LineFontEntity)
+DEFINE_STANDARD_HANDLE(IGESGraph_LineFontDefPattern, IGESData_LineFontEntity)
 
-#endif
+#endif // _Handle_IGESGraph_LineFontDefPattern_HeaderFile

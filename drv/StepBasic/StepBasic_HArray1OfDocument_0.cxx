@@ -5,28 +5,14 @@
 
 #include <StepBasic_HArray1OfDocument.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _StepBasic_Document_HeaderFile
 #include <StepBasic_Document.hxx>
-#endif
-#ifndef _StepBasic_Array1OfDocument_HeaderFile
 #include <StepBasic_Array1OfDocument.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(StepBasic_HArray1OfDocument,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(StepBasic_HArray1OfDocument)
 
 
-#define ItemHArray1 Handle_StepBasic_Document
+#define ItemHArray1 Handle(StepBasic_Document)
 #define ItemHArray1_hxx <StepBasic_Document.hxx>
 #define TheArray1 StepBasic_Array1OfDocument
 #define TheArray1_hxx <StepBasic_Array1OfDocument.hxx>

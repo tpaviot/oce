@@ -6,15 +6,14 @@
 #ifndef _IntRes2d_Situation_HeaderFile
 #define _IntRes2d_Situation_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum IntRes2d_Situation {
+
+enum IntRes2d_Situation
+{
 IntRes2d_Inside,
 IntRes2d_Outside,
 IntRes2d_Unknown
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _IntRes2d_Situation_HeaderFile

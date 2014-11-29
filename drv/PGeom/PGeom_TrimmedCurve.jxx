@@ -1,6 +1,2 @@
-#ifndef _PGeom_Curve_HeaderFile
 #include <PGeom_Curve.hxx>
-#endif
-#ifndef _PGeom_TrimmedCurve_HeaderFile
 #include <PGeom_TrimmedCurve.hxx>
-#endif

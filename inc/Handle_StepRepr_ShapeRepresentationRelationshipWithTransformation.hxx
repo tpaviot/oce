@@ -6,22 +6,15 @@
 #ifndef _Handle_StepRepr_ShapeRepresentationRelationshipWithTransformation_HeaderFile
 #define _Handle_StepRepr_ShapeRepresentationRelationshipWithTransformation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepRepr_RepresentationRelationshipWithTransformation_HeaderFile
 #include <Handle_StepRepr_RepresentationRelationshipWithTransformation.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepRepr_RepresentationRelationshipWithTransformation);
 class StepRepr_ShapeRepresentationRelationshipWithTransformation;
 
-DEFINE_STANDARD_HANDLE(StepRepr_ShapeRepresentationRelationshipWithTransformation,StepRepr_RepresentationRelationshipWithTransformation)
+DEFINE_STANDARD_HANDLE(StepRepr_ShapeRepresentationRelationshipWithTransformation, StepRepr_RepresentationRelationshipWithTransformation)
 
-#endif
+#endif // _Handle_StepRepr_ShapeRepresentationRelationshipWithTransformation_HeaderFile

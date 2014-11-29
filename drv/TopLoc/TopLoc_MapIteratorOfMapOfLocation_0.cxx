@@ -5,21 +5,11 @@
 
 #include <TopLoc_MapIteratorOfMapOfLocation.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopLoc_Location_HeaderFile
 #include <TopLoc_Location.hxx>
-#endif
-#ifndef _TopLoc_MapLocationHasher_HeaderFile
 #include <TopLoc_MapLocationHasher.hxx>
-#endif
-#ifndef _TopLoc_MapOfLocation_HeaderFile
 #include <TopLoc_MapOfLocation.hxx>
-#endif
-#ifndef _TopLoc_StdMapNodeOfMapOfLocation_HeaderFile
 #include <TopLoc_StdMapNodeOfMapOfLocation.hxx>
-#endif
  
 
 #define TheKey TopLoc_Location

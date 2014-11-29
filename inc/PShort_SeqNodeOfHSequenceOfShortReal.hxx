@@ -6,59 +6,44 @@
 #ifndef _PShort_SeqNodeOfHSequenceOfShortReal_HeaderFile
 #define _PShort_SeqNodeOfHSequenceOfShortReal_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PShort_SeqNodeOfHSequenceOfShortReal_HeaderFile
 #include <Handle_PShort_SeqNodeOfHSequenceOfShortReal.hxx>
-#endif
 
-#ifndef _Standard_ShortReal_HeaderFile
 #include <Standard_ShortReal.hxx>
-#endif
-#ifndef _Handle_PShort_SeqNodeOfHSequenceOfShortReal_HeaderFile
 #include <Handle_PShort_SeqNodeOfHSequenceOfShortReal.hxx>
-#endif
-#ifndef _PMMgt_PManaged_HeaderFile
 #include <PMMgt_PManaged.hxx>
-#endif
-#ifndef _Handle_PShort_HSequenceOfShortReal_HeaderFile
 #include <Handle_PShort_HSequenceOfShortReal.hxx>
-#endif
 class PShort_HSequenceOfShortReal;
 class PShort_SeqExplorerOfHSequenceOfShortReal;
 
 
-class PShort_SeqNodeOfHSequenceOfShortReal : public PMMgt_PManaged {
+class PShort_SeqNodeOfHSequenceOfShortReal : public PMMgt_PManaged
+{
 
 public:
 
   
-  Standard_EXPORT   PShort_SeqNodeOfHSequenceOfShortReal(const Handle(PShort_SeqNodeOfHSequenceOfShortReal)& TheLast,const Standard_ShortReal& TheItem);
+  Standard_EXPORT PShort_SeqNodeOfHSequenceOfShortReal(const Handle(PShort_SeqNodeOfHSequenceOfShortReal)& TheLast, const Standard_ShortReal& TheItem);
   
-  Standard_EXPORT   PShort_SeqNodeOfHSequenceOfShortReal(const Standard_ShortReal& TheItem,const Handle(PShort_SeqNodeOfHSequenceOfShortReal)& TheFirst);
+  Standard_EXPORT PShort_SeqNodeOfHSequenceOfShortReal(const Standard_ShortReal& TheItem, const Handle(PShort_SeqNodeOfHSequenceOfShortReal)& TheFirst);
   
-  Standard_EXPORT   PShort_SeqNodeOfHSequenceOfShortReal(const Handle(PShort_SeqNodeOfHSequenceOfShortReal)& ThePrevious,const Handle(PShort_SeqNodeOfHSequenceOfShortReal)& TheNext,const Standard_ShortReal& TheItem);
+  Standard_EXPORT PShort_SeqNodeOfHSequenceOfShortReal(const Handle(PShort_SeqNodeOfHSequenceOfShortReal)& ThePrevious, const Handle(PShort_SeqNodeOfHSequenceOfShortReal)& TheNext, const Standard_ShortReal& TheItem);
   
-  Standard_EXPORT     Standard_ShortReal Value() const;
+  Standard_EXPORT   Standard_ShortReal Value()  const;
   
-  Standard_EXPORT     Handle_PShort_SeqNodeOfHSequenceOfShortReal Next() const;
+  Standard_EXPORT   Handle(PShort_SeqNodeOfHSequenceOfShortReal) Next()  const;
   
-  Standard_EXPORT     Handle_PShort_SeqNodeOfHSequenceOfShortReal Previous() const;
+  Standard_EXPORT   Handle(PShort_SeqNodeOfHSequenceOfShortReal) Previous()  const;
   
-  Standard_EXPORT     void SetValue(const Standard_ShortReal& AnItem) ;
+  Standard_EXPORT   void SetValue (const Standard_ShortReal& AnItem) ;
   
-  Standard_EXPORT     void SetNext(const Handle(PShort_SeqNodeOfHSequenceOfShortReal)& ANode) ;
+  Standard_EXPORT   void SetNext (const Handle(PShort_SeqNodeOfHSequenceOfShortReal)& ANode) ;
   
-  Standard_EXPORT     void SetPrevious(const Handle(PShort_SeqNodeOfHSequenceOfShortReal)& ANode) ;
+  Standard_EXPORT   void SetPrevious (const Handle(PShort_SeqNodeOfHSequenceOfShortReal)& ANode) ;
 
-  PShort_SeqNodeOfHSequenceOfShortReal( )
+PShort_SeqNodeOfHSequenceOfShortReal( )
 {
   
 }
@@ -87,9 +72,9 @@ protected:
 private: 
 
 
-Handle_PShort_SeqNodeOfHSequenceOfShortReal MyPrevious;
-Standard_ShortReal MyItem;
-Handle_PShort_SeqNodeOfHSequenceOfShortReal MyNext;
+  Handle(PShort_SeqNodeOfHSequenceOfShortReal) MyPrevious;
+  Standard_ShortReal MyItem;
+  Handle(PShort_SeqNodeOfHSequenceOfShortReal) MyNext;
 
 
 };
@@ -98,7 +83,6 @@ Handle_PShort_SeqNodeOfHSequenceOfShortReal MyNext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PShort_SeqNodeOfHSequenceOfShortReal_HeaderFile

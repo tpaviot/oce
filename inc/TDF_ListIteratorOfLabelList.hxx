@@ -6,25 +6,13 @@
 #ifndef _TDF_ListIteratorOfLabelList_HeaderFile
 #define _TDF_ListIteratorOfLabelList_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_TDF_ListNodeOfLabelList_HeaderFile
 #include <Handle_TDF_ListNodeOfLabelList.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoMoreObject;
 class Standard_NoSuchObject;
 class TDF_LabelList;
@@ -33,27 +21,27 @@ class TDF_ListNodeOfLabelList;
 
 
 
-class TDF_ListIteratorOfLabelList  {
+class TDF_ListIteratorOfLabelList 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TDF_ListIteratorOfLabelList();
+  Standard_EXPORT TDF_ListIteratorOfLabelList();
   
-  Standard_EXPORT   TDF_ListIteratorOfLabelList(const TDF_LabelList& L);
+  Standard_EXPORT TDF_ListIteratorOfLabelList(const TDF_LabelList& L);
   
-  Standard_EXPORT     void Initialize(const TDF_LabelList& L) ;
+  Standard_EXPORT   void Initialize (const TDF_LabelList& L) ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-  Standard_EXPORT     void Next() ;
+  Standard_EXPORT   void Next() ;
   
-  Standard_EXPORT     TDF_Label& Value() const;
+  Standard_EXPORT   TDF_Label& Value()  const;
 
 
 friend class TDF_LabelList;
-
 
 
 protected:
@@ -66,8 +54,8 @@ private:
 
 
 
-Standard_Address current;
-Standard_Address previous;
+  Standard_Address current;
+  Standard_Address previous;
 
 
 };
@@ -97,7 +85,6 @@ Standard_Address previous;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TDF_ListIteratorOfLabelList_HeaderFile

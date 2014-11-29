@@ -6,60 +6,52 @@
 #ifndef _BRepAlgoAPI_Cut_HeaderFile
 #define _BRepAlgoAPI_Cut_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepAlgoAPI_BooleanOperation_HeaderFile
 #include <BRepAlgoAPI_BooleanOperation.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopoDS_Shape;
 class BOPAlgo_PaveFiller;
 
 
 
-//! Created on: 1993-10-14 <br>
-//! Created by: Remi LEQUETTE <br>
-//! Copyright (c) 1993-1999 Matra Datavision <br>
-//! Copyright (c) 1999-2014 OPEN CASCADE SAS <br>
-//! <br>
-//! This file is part of Open CASCADE Technology software library. <br>
-//! <br>
-//! This library is free software; you can redistribute it and/or modify it under <br>
-//! the terms of the GNU Lesser General Public License version 2.1 as published <br>
-//! by the Free Software Foundation, with special exception defined in the file <br>
-//! OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT <br>
-//! distribution for complete text of the license and disclaimer of any warranty. <br>
-//! <br>
-//! Alternatively, this file may be used under the terms of Open CASCADE <br>
-//! commercial license or contractual agreement. <br>//!  The class Cut provides a Boolean <br>
-//! cut operation on a pair of arguments (Boolean Subtraction). <br>
-//! The class Cut provides a framework for: <br>
-//!   -      Defining the construction of a cut shape <br>
-//!   -      Implementing the building algorithm <br>
-//!   -      Consulting the result <br>
-class BRepAlgoAPI_Cut  : public BRepAlgoAPI_BooleanOperation {
+//! Created on: 1993-10-14
+//! Created by: Remi LEQUETTE
+//! Copyright (c) 1993-1999 Matra Datavision
+//! Copyright (c) 1999-2014 OPEN CASCADE SAS
+//!
+//! This file is part of Open CASCADE Technology software library.
+//!
+//! This library is free software; you can redistribute it and/or modify it under
+//! the terms of the GNU Lesser General Public License version 2.1 as published
+//! by the Free Software Foundation, with special exception defined in the file
+//! OCCT_LGPL_EXCEPTION.txt. Consult the file LICENSE_LGPL_21.txt included in OCCT
+//! distribution for complete text of the license and disclaimer of any warranty.
+//!
+//! Alternatively, this file may be used under the terms of Open CASCADE
+//! commercial license or contractual agreement.//! The class Cut provides a Boolean
+//! cut operation on a pair of arguments (Boolean Subtraction).
+//! The class Cut provides a framework for:
+//! -      Defining the construction of a cut shape
+//! -      Implementing the building algorithm
+//! -      Consulting the result
+class BRepAlgoAPI_Cut  : public BRepAlgoAPI_BooleanOperation
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Shape aS2 cuts shape aS1. The <br>
-//! resulting shape is a new shape produced by the cut operation. <br>
-  Standard_EXPORT   BRepAlgoAPI_Cut(const TopoDS_Shape& S1,const TopoDS_Shape& S2);
-  //! Constructs a new shape cut from <br>
-//! shape aS1 by shape aS2 using aDSFiller (see <br>
-//! BRepAlgoAPI_BooleanOperation Constructor). <br>
-  Standard_EXPORT   BRepAlgoAPI_Cut(const TopoDS_Shape& S1,const TopoDS_Shape& S2,const BOPAlgo_PaveFiller& aDSF,const Standard_Boolean bFWD = Standard_True);
-
+  
+  //! Shape aS2 cuts shape aS1. The
+  //! resulting shape is a new shape produced by the cut operation.
+  Standard_EXPORT BRepAlgoAPI_Cut(const TopoDS_Shape& S1, const TopoDS_Shape& S2);
+  
+  //! Constructs a new shape cut from
+  //! shape aS1 by shape aS2 using aDSFiller (see
+  //! BRepAlgoAPI_BooleanOperation Constructor).
+  Standard_EXPORT BRepAlgoAPI_Cut(const TopoDS_Shape& S1, const TopoDS_Shape& S2, const BOPAlgo_PaveFiller& aDSF, const Standard_Boolean bFWD = Standard_True);
 
 
 
@@ -82,7 +74,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepAlgoAPI_Cut_HeaderFile

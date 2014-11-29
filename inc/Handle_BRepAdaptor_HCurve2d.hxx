@@ -6,22 +6,15 @@
 #ifndef _Handle_BRepAdaptor_HCurve2d_HeaderFile
 #define _Handle_BRepAdaptor_HCurve2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_Adaptor2d_HCurve2d_HeaderFile
 #include <Handle_Adaptor2d_HCurve2d.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(Adaptor2d_HCurve2d);
 class BRepAdaptor_HCurve2d;
 
-DEFINE_STANDARD_HANDLE(BRepAdaptor_HCurve2d,Adaptor2d_HCurve2d)
+DEFINE_STANDARD_HANDLE(BRepAdaptor_HCurve2d, Adaptor2d_HCurve2d)
 
-#endif
+#endif // _Handle_BRepAdaptor_HCurve2d_HeaderFile

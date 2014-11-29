@@ -5,25 +5,13 @@
 
 #include <BRepFill_DataMapNodeOfDataMapOfNodeShape.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _MAT_Node_HeaderFile
 #include <MAT_Node.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _BRepFill_DataMapOfNodeShape_HeaderFile
 #include <BRepFill_DataMapOfNodeShape.hxx>
-#endif
-#ifndef _BRepFill_DataMapIteratorOfDataMapOfNodeShape_HeaderFile
 #include <BRepFill_DataMapIteratorOfDataMapOfNodeShape.hxx>
-#endif
 
  
 
@@ -42,7 +30,7 @@ IMPLEMENT_DOWNCAST(BRepFill_DataMapNodeOfDataMapOfNodeShape,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(BRepFill_DataMapNodeOfDataMapOfNodeShape)
 
 
-#define TheKey Handle_MAT_Node
+#define TheKey Handle(MAT_Node)
 #define TheKey_hxx <MAT_Node.hxx>
 #define TheItem TopoDS_Shape
 #define TheItem_hxx <TopoDS_Shape.hxx>

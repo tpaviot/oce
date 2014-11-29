@@ -6,22 +6,15 @@
 #ifndef _Handle_BRep_PointOnCurve_HeaderFile
 #define _Handle_BRep_PointOnCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_BRep_PointRepresentation_HeaderFile
 #include <Handle_BRep_PointRepresentation.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(BRep_PointRepresentation);
 class BRep_PointOnCurve;
 
-DEFINE_STANDARD_HANDLE(BRep_PointOnCurve,BRep_PointRepresentation)
+DEFINE_STANDARD_HANDLE(BRep_PointOnCurve, BRep_PointRepresentation)
 
-#endif
+#endif // _Handle_BRep_PointOnCurve_HeaderFile

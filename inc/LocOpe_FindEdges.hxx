@@ -6,28 +6,14 @@
 #ifndef _LocOpe_FindEdges_HeaderFile
 #define _LocOpe_FindEdges_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_ListOfShape_HeaderFile
 #include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _TopTools_ListIteratorOfListOfShape_HeaderFile
 #include <TopTools_ListIteratorOfListOfShape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_ConstructionError;
 class Standard_NoSuchObject;
 class Standard_NoMoreObject;
@@ -36,28 +22,28 @@ class TopoDS_Edge;
 
 
 
-class LocOpe_FindEdges  {
+class LocOpe_FindEdges 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      LocOpe_FindEdges();
+    LocOpe_FindEdges();
   
-      LocOpe_FindEdges(const TopoDS_Shape& FFrom,const TopoDS_Shape& FTo);
+    LocOpe_FindEdges(const TopoDS_Shape& FFrom, const TopoDS_Shape& FTo);
   
-  Standard_EXPORT     void Set(const TopoDS_Shape& FFrom,const TopoDS_Shape& FTo) ;
+  Standard_EXPORT   void Set (const TopoDS_Shape& FFrom, const TopoDS_Shape& FTo) ;
   
-        void InitIterator() ;
+      void InitIterator() ;
   
-        Standard_Boolean More() const;
+      Standard_Boolean More()  const;
   
-       const TopoDS_Edge& EdgeFrom() const;
+     const  TopoDS_Edge& EdgeFrom()  const;
   
-       const TopoDS_Edge& EdgeTo() const;
+     const  TopoDS_Edge& EdgeTo()  const;
   
-        void Next() ;
-
+      void Next() ;
 
 
 
@@ -72,12 +58,12 @@ private:
 
 
 
-TopoDS_Shape myFFrom;
-TopoDS_Shape myFTo;
-TopTools_ListOfShape myLFrom;
-TopTools_ListOfShape myLTo;
-TopTools_ListIteratorOfListOfShape myItFrom;
-TopTools_ListIteratorOfListOfShape myItTo;
+  TopoDS_Shape myFFrom;
+  TopoDS_Shape myFTo;
+  TopTools_ListOfShape myLFrom;
+  TopTools_ListOfShape myLTo;
+  TopTools_ListIteratorOfListOfShape myItFrom;
+  TopTools_ListIteratorOfListOfShape myItTo;
 
 
 };
@@ -87,7 +73,6 @@ TopTools_ListIteratorOfListOfShape myItTo;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _LocOpe_FindEdges_HeaderFile

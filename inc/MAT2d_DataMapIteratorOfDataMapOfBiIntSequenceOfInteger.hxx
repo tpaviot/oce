@@ -6,22 +6,12 @@
 #ifndef _MAT2d_DataMapIteratorOfDataMapOfBiIntSequenceOfInteger_HeaderFile
 #define _MAT2d_DataMapIteratorOfDataMapOfBiIntSequenceOfInteger_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger_HeaderFile
 #include <Handle_MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger.hxx>
-#endif
 class Standard_NoSuchObject;
 class MAT2d_BiInt;
 class TColStd_SequenceOfInteger;
@@ -31,22 +21,22 @@ class MAT2d_DataMapNodeOfDataMapOfBiIntSequenceOfInteger;
 
 
 
-class MAT2d_DataMapIteratorOfDataMapOfBiIntSequenceOfInteger  : public TCollection_BasicMapIterator {
+class MAT2d_DataMapIteratorOfDataMapOfBiIntSequenceOfInteger  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   MAT2d_DataMapIteratorOfDataMapOfBiIntSequenceOfInteger();
+  Standard_EXPORT MAT2d_DataMapIteratorOfDataMapOfBiIntSequenceOfInteger();
   
-  Standard_EXPORT   MAT2d_DataMapIteratorOfDataMapOfBiIntSequenceOfInteger(const MAT2d_DataMapOfBiIntSequenceOfInteger& aMap);
+  Standard_EXPORT MAT2d_DataMapIteratorOfDataMapOfBiIntSequenceOfInteger(const MAT2d_DataMapOfBiIntSequenceOfInteger& aMap);
   
-  Standard_EXPORT     void Initialize(const MAT2d_DataMapOfBiIntSequenceOfInteger& aMap) ;
+  Standard_EXPORT   void Initialize (const MAT2d_DataMapOfBiIntSequenceOfInteger& aMap) ;
   
-  Standard_EXPORT    const MAT2d_BiInt& Key() const;
+  Standard_EXPORT  const  MAT2d_BiInt& Key()  const;
   
-  Standard_EXPORT    const TColStd_SequenceOfInteger& Value() const;
-
+  Standard_EXPORT  const  TColStd_SequenceOfInteger& Value()  const;
 
 
 
@@ -69,7 +59,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MAT2d_DataMapIteratorOfDataMapOfBiIntSequenceOfInteger_HeaderFile

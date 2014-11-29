@@ -6,62 +6,53 @@
 #ifndef _BRepClass3d_SolidClassifier_HeaderFile
 #define _BRepClass3d_SolidClassifier_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _BRepClass3d_SolidExplorer_HeaderFile
 #include <BRepClass3d_SolidExplorer.hxx>
-#endif
-#ifndef _BRepClass3d_SClassifier_HeaderFile
 #include <BRepClass3d_SClassifier.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Standard_DomainError;
 class TopoDS_Shape;
 class gp_Pnt;
 
 
-//! Provides an algorithm to classify a point in a solid. <br>
-class BRepClass3d_SolidClassifier  : public BRepClass3d_SClassifier {
+//! Provides an algorithm to classify a point in a solid.
+class BRepClass3d_SolidClassifier  : public BRepClass3d_SClassifier
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! empty constructor <br>
-  Standard_EXPORT   BRepClass3d_SolidClassifier();
   
-  Standard_EXPORT     void Load(const TopoDS_Shape& S) ;
-  //! Constructor from a Shape. <br>
-  Standard_EXPORT   BRepClass3d_SolidClassifier(const TopoDS_Shape& S);
-  //! Constructor to classify the point P with the <br>
-//!          tolerance Tol on the solid S. <br>
-  Standard_EXPORT   BRepClass3d_SolidClassifier(const TopoDS_Shape& S,const gp_Pnt& P,const Standard_Real Tol);
-  //! Classify the point P with the <br>
-//!          tolerance Tol on the solid S. <br>
-  Standard_EXPORT     void Perform(const gp_Pnt& P,const Standard_Real Tol) ;
-  //! Classify an infinite point with the <br>
-//!          tolerance Tol on the solid S. <br>
-//!          Useful for compute the orientation of a solid. <br>
-  Standard_EXPORT     void PerformInfinitePoint(const Standard_Real Tol) ;
+  //! empty constructor
+  Standard_EXPORT BRepClass3d_SolidClassifier();
   
-  Standard_EXPORT     void Destroy() ;
+  Standard_EXPORT   void Load (const TopoDS_Shape& S) ;
+  
+  //! Constructor from a Shape.
+  Standard_EXPORT BRepClass3d_SolidClassifier(const TopoDS_Shape& S);
+  
+  //! Constructor to classify the point P with the
+  //! tolerance Tol on the solid S.
+  Standard_EXPORT BRepClass3d_SolidClassifier(const TopoDS_Shape& S, const gp_Pnt& P, const Standard_Real Tol);
+  
+  //! Classify the point P with the
+  //! tolerance Tol on the solid S.
+  Standard_EXPORT   void Perform (const gp_Pnt& P, const Standard_Real Tol) ;
+  
+  //! Classify an infinite point with the
+  //! tolerance Tol on the solid S.
+  //! Useful for compute the orientation of a solid.
+  Standard_EXPORT   void PerformInfinitePoint (const Standard_Real Tol) ;
+  
+  Standard_EXPORT   void Destroy() ;
 ~BRepClass3d_SolidClassifier()
 {
   Destroy();
 }
-
 
 
 
@@ -76,9 +67,9 @@ private:
 
 
 
-Standard_Boolean aSolidLoaded;
-BRepClass3d_SolidExplorer explorer;
-Standard_Boolean isaholeinspace;
+  Standard_Boolean aSolidLoaded;
+  BRepClass3d_SolidExplorer explorer;
+  Standard_Boolean isaholeinspace;
 
 
 };
@@ -87,7 +78,6 @@ Standard_Boolean isaholeinspace;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepClass3d_SolidClassifier_HeaderFile

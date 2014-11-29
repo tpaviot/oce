@@ -6,42 +6,35 @@
 #ifndef _BRepClass_Intersector_HeaderFile
 #define _BRepClass_Intersector_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Geom2dInt_IntConicCurveOfGInter_HeaderFile
 #include <Geom2dInt_IntConicCurveOfGInter.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class gp_Lin2d;
 class BRepClass_Edge;
 class gp_Dir2d;
 
 
-//! Implement the Intersector2d required by the classifier. <br>
-class BRepClass_Intersector  : public Geom2dInt_IntConicCurveOfGInter {
+//! Intersect an Edge  with a segment.
+//! Implement the Intersector2d required by the classifier.
+class BRepClass_Intersector  : public Geom2dInt_IntConicCurveOfGInter
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepClass_Intersector();
-  //! Intersect the line segment and the edge. <br>
-  Standard_EXPORT     void Perform(const gp_Lin2d& L,const Standard_Real P,const Standard_Real Tol,const BRepClass_Edge& E) ;
-  //! Returns in <T>,  <N> and <C>  the tangent,  normal <br>
-//!          and  curvature of the edge  <E> at parameter value <br>
-//!          <U>. <br>
-  Standard_EXPORT     void LocalGeometry(const BRepClass_Edge& E,const Standard_Real U,gp_Dir2d& T,gp_Dir2d& N,Standard_Real& C) const;
-
+  Standard_EXPORT BRepClass_Intersector();
+  
+  //! Intersect the line segment and the edge.
+  Standard_EXPORT   void Perform (const gp_Lin2d& L, const Standard_Real P, const Standard_Real Tol, const BRepClass_Edge& E) ;
+  
+  //! Returns in <T>,  <N> and <C>  the tangent,  normal
+  //! and  curvature of the edge  <E> at parameter value
+  //! <U>.
+  Standard_EXPORT   void LocalGeometry (const BRepClass_Edge& E, const Standard_Real U, gp_Dir2d& T, gp_Dir2d& N, Standard_Real& C)  const;
 
 
 
@@ -64,7 +57,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepClass_Intersector_HeaderFile

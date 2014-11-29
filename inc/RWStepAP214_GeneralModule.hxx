@@ -6,34 +6,16 @@
 #ifndef _RWStepAP214_GeneralModule_HeaderFile
 #define _RWStepAP214_GeneralModule_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_RWStepAP214_GeneralModule_HeaderFile
 #include <Handle_RWStepAP214_GeneralModule.hxx>
-#endif
 
-#ifndef _StepData_GeneralModule_HeaderFile
 #include <StepData_GeneralModule.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class Standard_Transient;
 class Interface_EntityIterator;
 class Interface_ShareTool;
@@ -42,31 +24,37 @@ class Interface_CopyTool;
 class TCollection_HAsciiString;
 
 
-//! Defines General Services for StepAP214 Entities <br>
-//!           (Share,Check,Copy; Trace already inherited) <br>
-//!           Depends (for case numbers) of Protocol from StepAP214 <br>
-class RWStepAP214_GeneralModule : public StepData_GeneralModule {
+//! Defines General Services for StepAP214 Entities
+//! (Share,Check,Copy; Trace already inherited)
+//! Depends (for case numbers) of Protocol from StepAP214
+class RWStepAP214_GeneralModule : public StepData_GeneralModule
+{
 
 public:
 
-  //! Creates a GeneralModule <br>
-  Standard_EXPORT   RWStepAP214_GeneralModule();
-  //! Specific filling of the list of Entities shared by an Entity <br>
-//!           <ent>, according to a Case Number <CN> (provided by StepAP214 <br>
-//!           Protocol). <br>
-  Standard_EXPORT     void FillSharedCase(const Standard_Integer CN,const Handle(Standard_Transient)& ent,Interface_EntityIterator& iter) const;
-  //! Specific Checking of an Entity <ent> <br>
-  Standard_EXPORT     void CheckCase(const Standard_Integer CN,const Handle(Standard_Transient)& ent,const Interface_ShareTool& shares,Handle(Interface_Check)& ach) const;
-  //! Specific Copy ("Deep") from <entfrom> to <entto> (same type) <br>
-//!           by using a CopyTool which provides its working Map. <br>
-//!           Use method Transferred from CopyTool to work <br>
-  Standard_EXPORT     void CopyCase(const Standard_Integer CN,const Handle(Standard_Transient)& entfrom,const Handle(Standard_Transient)& entto,Interface_CopyTool& TC) const;
   
-  Standard_EXPORT     Standard_Boolean NewVoid(const Standard_Integer CN,Handle(Standard_Transient)& ent) const;
+  //! Creates a GeneralModule
+  Standard_EXPORT RWStepAP214_GeneralModule();
   
-  Standard_EXPORT   virtual  Standard_Integer CategoryNumber(const Standard_Integer CN,const Handle(Standard_Transient)& ent,const Interface_ShareTool& shares) const;
-  //! Returns the name of a STEP Entity according to its type <br>
-  Standard_EXPORT   virtual  Handle_TCollection_HAsciiString Name(const Standard_Integer CN,const Handle(Standard_Transient)& ent,const Interface_ShareTool& shares) const;
+  //! Specific filling of the list of Entities shared by an Entity
+  //! <ent>, according to a Case Number <CN> (provided by StepAP214
+  //! Protocol).
+  Standard_EXPORT   void FillSharedCase (const Standard_Integer CN, const Handle(Standard_Transient)& ent, Interface_EntityIterator& iter)  const;
+  
+  //! Specific Checking of an Entity <ent>
+  Standard_EXPORT   void CheckCase (const Standard_Integer CN, const Handle(Standard_Transient)& ent, const Interface_ShareTool& shares, Handle(Interface_Check)& ach)  const;
+  
+  //! Specific Copy ("Deep") from <entfrom> to <entto> (same type)
+  //! by using a CopyTool which provides its working Map.
+  //! Use method Transferred from CopyTool to work
+  Standard_EXPORT   void CopyCase (const Standard_Integer CN, const Handle(Standard_Transient)& entfrom, const Handle(Standard_Transient)& entto, Interface_CopyTool& TC)  const;
+  
+  Standard_EXPORT   Standard_Boolean NewVoid (const Standard_Integer CN, Handle(Standard_Transient)& ent)  const;
+  
+  Standard_EXPORT virtual   Standard_Integer CategoryNumber (const Standard_Integer CN, const Handle(Standard_Transient)& ent, const Interface_ShareTool& shares)  const;
+  
+  //! Returns the name of a STEP Entity according to its type
+  Standard_EXPORT virtual   Handle(TCollection_HAsciiString) Name (const Standard_Integer CN, const Handle(Standard_Transient)& ent, const Interface_ShareTool& shares)  const;
 
 
 
@@ -89,7 +77,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _RWStepAP214_GeneralModule_HeaderFile

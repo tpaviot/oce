@@ -6,28 +6,14 @@
 #ifndef _GCPnts_QuasiUniformAbscissa_HeaderFile
 #define _GCPnts_QuasiUniformAbscissa_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TColStd_HArray1OfReal;
 class Standard_DomainError;
 class Standard_ConstructionError;
@@ -37,102 +23,114 @@ class Adaptor3d_Curve;
 class Adaptor2d_Curve2d;
 
 
-//! This class provides an algorithm to compute a uniform abscissa <br>
-//! distribution of points on a curve, i.e. a sequence of <br>
-//! equidistant points. The distance between two <br>
-//! consecutive points is measured along the curve. <br>
-//! The distribution is defined: <br>
-//! -   either by the curvilinear distance between two consecutive points <br>
-//! -   or by a number of points. <br>
-class GCPnts_QuasiUniformAbscissa  {
+//! This class provides an algorithm to compute a uniform abscissa
+//! distribution of points on a curve, i.e. a sequence of
+//! equidistant points. The distance between two
+//! consecutive points is measured along the curve.
+//! The distribution is defined:
+//! -   either by the curvilinear distance between two consecutive points
+//! -   or by a number of points.
+class GCPnts_QuasiUniformAbscissa 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Constructs an empty algorithm. To define the problem <br>
-//! to be solved, use the function Initialize. <br>
-  Standard_EXPORT   GCPnts_QuasiUniformAbscissa();
-  //! Computes a uniform abscissa distribution of points <br>
-//! -   on the curve C where Abscissa is the curvilinear distance between <br>
-//! two consecutive points of the distribution. <br>
-  Standard_EXPORT   GCPnts_QuasiUniformAbscissa(Adaptor3d_Curve& C,const Standard_Integer NbPoints);
-  //! Computes a uniform abscissa distribution of points <br>
-//!   on the part of curve C limited by the two parameter values U1 and U2, <br>
-//!     where Abscissa is the curvilinear distance between <br>
-//! two consecutive points of the distribution. <br>
-//! The first point of the distribution is either the origin of <br>
-//! curve C or the point of parameter U1. The following <br>
-//! points are computed such that the curvilinear <br>
-//! distance between two consecutive points is equal to Abscissa. <br>
-//! The last point of the distribution is either the end <br>
-//! point of curve C or the point of parameter U2. <br>
-//! However the curvilinear distance between this last <br>
-//! point and the point just preceding it in the distribution <br>
-//! is, of course, generally not equal to Abscissa. <br>
-//! Use the function IsDone to verify that the <br>
-//! computation was successful, the function NbPoints <br>
-//! to obtain the number of points of the computed <br>
-//! distribution, and the function Parameter to read the <br>
-//! parameter of each point. <br>
-//! Warning <br>
-//! The roles of U1 and U2 are inverted if U1 > U2 . <br>
-//! Warning <br>
-//! C is an adapted curve, that is, an object which is an <br>
-//! interface between: <br>
-//! -   the services provided by either a 2D curve from <br>
-//!   the package Geom2d (in the case of an <br>
-//!   Adaptor2d_Curve2d curve) or a 3D curve from <br>
-//!   the package Geom (in the case of an Adaptor3d_Curve curve), <br>
-//! -   and those required on the curve by the computation algorithm. <br>
-  Standard_EXPORT   GCPnts_QuasiUniformAbscissa(Adaptor3d_Curve& C,const Standard_Integer NbPoints,const Standard_Real U1,const Standard_Real U2);
-  //! Initialize the algoritms with <C>, <NbPoints> and <br>
-  Standard_EXPORT     void Initialize(Adaptor3d_Curve& C,const Standard_Integer NbPoints) ;
-  //! Initialize the algoritms with <C>, <Abscissa>, <U1>, <br>
-//!          <U2>. <br>
-  Standard_EXPORT     void Initialize(Adaptor3d_Curve& C,const Standard_Integer NbPoints,const Standard_Real U1,const Standard_Real U2) ;
-  //! Computes a uniform abscissa distribution of points on <br>
-//!  the Curve2d <C>. <br>
-//!  <NbPoints> defines the nomber of desired points. <br>
-  Standard_EXPORT   GCPnts_QuasiUniformAbscissa(Adaptor2d_Curve2d& C,const Standard_Integer NbPoints);
-  //! Computes a Uniform abscissa distribution of points <br>
-//!  on a part of the Curve2d <C>. <br>
-  Standard_EXPORT   GCPnts_QuasiUniformAbscissa(Adaptor2d_Curve2d& C,const Standard_Integer NbPoints,const Standard_Real U1,const Standard_Real U2);
-  //! Initialize the algoritms with <C>, <NbPoints> and <br>
-  Standard_EXPORT     void Initialize(Adaptor2d_Curve2d& C,const Standard_Integer NbPoints) ;
-  //! Initialize the algoritms with <C>, <Abscissa>, <U1>, <br>
-//!          <U2>. <br>
-  Standard_EXPORT     void Initialize(Adaptor2d_Curve2d& C,const Standard_Integer NbPoints,const Standard_Real U1,const Standard_Real U2) ;
-  //! Returns true if the computation was successful. <br>
-//! IsDone is a protection against: <br>
-//! -   non-convergence of the algorithm <br>
-//! -   querying the results before computation. <br>
-        Standard_Boolean IsDone() const;
   
-//! Returns the number of points of the distribution <br>
-//! computed by this algorithm. <br>
-//! This value is either: <br>
-//! -   the one imposed on the algorithm at the time of <br>
-//!   construction (or initialization), or <br>
-//! -   the one computed by the algorithm when the <br>
-//!   curvilinear distance between two consecutive <br>
-//!   points of the distribution is imposed on the <br>
-//!   algorithm at the time of construction (or initialization). <br>
-//!   Exceptions <br>
-//! StdFail_NotDone if this algorithm has not been <br>
-//! initialized, or if the computation was not successful. <br>
-        Standard_Integer NbPoints() const;
-  //! Returns the parameter of the point of index Index in <br>
-//! the distribution computed by this algorithm. <br>
-//! Warning <br>
-//! Index must be greater than or equal to 1, and less <br>
-//! than or equal to the number of points of the <br>
-//! distribution. However, pay particular attention as this <br>
-//! condition is not checked by this function. <br>
-//! Exceptions <br>
-//! StdFail_NotDone if this algorithm has not been <br>
-//! initialized, or if the computation was not successful. <br>
-        Standard_Real Parameter(const Standard_Integer Index) const;
+  //! Constructs an empty algorithm. To define the problem
+  //! to be solved, use the function Initialize.
+  Standard_EXPORT GCPnts_QuasiUniformAbscissa();
+  
+  //! Computes a uniform abscissa distribution of points
+  //! -   on the curve C where Abscissa is the curvilinear distance between
+  //! two consecutive points of the distribution.
+  Standard_EXPORT GCPnts_QuasiUniformAbscissa(Adaptor3d_Curve& C, const Standard_Integer NbPoints);
+  
+  //! Computes a uniform abscissa distribution of points
+  //! on the part of curve C limited by the two parameter values U1 and U2,
+  //! where Abscissa is the curvilinear distance between
+  //! two consecutive points of the distribution.
+  //! The first point of the distribution is either the origin of
+  //! curve C or the point of parameter U1. The following
+  //! points are computed such that the curvilinear
+  //! distance between two consecutive points is equal to Abscissa.
+  //! The last point of the distribution is either the end
+  //! point of curve C or the point of parameter U2.
+  //! However the curvilinear distance between this last
+  //! point and the point just preceding it in the distribution
+  //! is, of course, generally not equal to Abscissa.
+  //! Use the function IsDone to verify that the
+  //! computation was successful, the function NbPoints
+  //! to obtain the number of points of the computed
+  //! distribution, and the function Parameter to read the
+  //! parameter of each point.
+  //! Warning
+  //! The roles of U1 and U2 are inverted if U1 > U2 .
+  //! Warning
+  //! C is an adapted curve, that is, an object which is an
+  //! interface between:
+  //! -   the services provided by either a 2D curve from
+  //! the package Geom2d (in the case of an
+  //! Adaptor2d_Curve2d curve) or a 3D curve from
+  //! the package Geom (in the case of an Adaptor3d_Curve curve),
+  //! -   and those required on the curve by the computation algorithm.
+  Standard_EXPORT GCPnts_QuasiUniformAbscissa(Adaptor3d_Curve& C, const Standard_Integer NbPoints, const Standard_Real U1, const Standard_Real U2);
+  
+  //! Initialize the algoritms with <C>, <NbPoints> and
+  Standard_EXPORT   void Initialize (Adaptor3d_Curve& C, const Standard_Integer NbPoints) ;
+  
+  //! Initialize the algoritms with <C>, <Abscissa>, <U1>,
+  //! <U2>.
+  Standard_EXPORT   void Initialize (Adaptor3d_Curve& C, const Standard_Integer NbPoints, const Standard_Real U1, const Standard_Real U2) ;
+  
+  //! Computes a uniform abscissa distribution of points on
+  //! the Curve2d <C>.
+  //! <NbPoints> defines the nomber of desired points.
+  Standard_EXPORT GCPnts_QuasiUniformAbscissa(Adaptor2d_Curve2d& C, const Standard_Integer NbPoints);
+  
+  //! Computes a Uniform abscissa distribution of points
+  //! on a part of the Curve2d <C>.
+  Standard_EXPORT GCPnts_QuasiUniformAbscissa(Adaptor2d_Curve2d& C, const Standard_Integer NbPoints, const Standard_Real U1, const Standard_Real U2);
+  
+  //! Initialize the algoritms with <C>, <NbPoints> and
+  Standard_EXPORT   void Initialize (Adaptor2d_Curve2d& C, const Standard_Integer NbPoints) ;
+  
+  //! Initialize the algoritms with <C>, <Abscissa>, <U1>,
+  //! <U2>.
+  Standard_EXPORT   void Initialize (Adaptor2d_Curve2d& C, const Standard_Integer NbPoints, const Standard_Real U1, const Standard_Real U2) ;
+  
+  //! Returns true if the computation was successful.
+  //! IsDone is a protection against:
+  //! -   non-convergence of the algorithm
+  //! -   querying the results before computation.
+      Standard_Boolean IsDone()  const;
+  
 
+  //! Returns the number of points of the distribution
+  //! computed by this algorithm.
+  //! This value is either:
+  //! -   the one imposed on the algorithm at the time of
+  //! construction (or initialization), or
+  //! -   the one computed by the algorithm when the
+  //! curvilinear distance between two consecutive
+  //! points of the distribution is imposed on the
+  //! algorithm at the time of construction (or initialization).
+  //! Exceptions
+  //! StdFail_NotDone if this algorithm has not been
+  //! initialized, or if the computation was not successful.
+      Standard_Integer NbPoints()  const;
+  
+  //! Returns the parameter of the point of index Index in
+  //! the distribution computed by this algorithm.
+  //! Warning
+  //! Index must be greater than or equal to 1, and less
+  //! than or equal to the number of points of the
+  //! distribution. However, pay particular attention as this
+  //! condition is not checked by this function.
+  //! Exceptions
+  //! StdFail_NotDone if this algorithm has not been
+  //! initialized, or if the computation was not successful.
+      Standard_Real Parameter (const Standard_Integer Index)  const;
 
 
 
@@ -147,9 +145,9 @@ private:
 
 
 
-Standard_Boolean myDone;
-Standard_Integer myNbPoints;
-Handle_TColStd_HArray1OfReal myParams;
+  Standard_Boolean myDone;
+  Standard_Integer myNbPoints;
+  Handle(TColStd_HArray1OfReal) myParams;
 
 
 };
@@ -159,7 +157,6 @@ Handle_TColStd_HArray1OfReal myParams;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _GCPnts_QuasiUniformAbscissa_HeaderFile

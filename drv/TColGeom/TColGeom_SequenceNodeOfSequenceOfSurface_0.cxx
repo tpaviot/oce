@@ -5,16 +5,10 @@
 
 #include <TColGeom_SequenceNodeOfSequenceOfSurface.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Geom_Surface_HeaderFile
 #include <Geom_Surface.hxx>
-#endif
-#ifndef _TColGeom_SequenceOfSurface_HeaderFile
 #include <TColGeom_SequenceOfSurface.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(TColGeom_SequenceNodeOfSequenceOfSurface,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(TColGeom_SequenceNodeOfSequenceOfSurface)
 
 
-#define SeqItem Handle_Geom_Surface
+#define SeqItem Handle(Geom_Surface)
 #define SeqItem_hxx <Geom_Surface.hxx>
 #define TCollection_SequenceNode TColGeom_SequenceNodeOfSequenceOfSurface
 #define TCollection_SequenceNode_hxx <TColGeom_SequenceNodeOfSequenceOfSurface.hxx>

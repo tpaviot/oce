@@ -6,69 +6,64 @@
 #ifndef _BOPAlgo_BuilderSolid_HeaderFile
 #define _BOPAlgo_BuilderSolid_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Solid_HeaderFile
 #include <TopoDS_Solid.hxx>
-#endif
-#ifndef _BOPAlgo_BuilderArea_HeaderFile
 #include <BOPAlgo_BuilderArea.hxx>
-#endif
-#ifndef _BOPCol_BaseAllocator_HeaderFile
 #include <BOPCol_BaseAllocator.hxx>
-#endif
 class TopoDS_Solid;
 
 
-//! The algorithm to build solids from set of faces <br>
-class BOPAlgo_BuilderSolid  : public BOPAlgo_BuilderArea {
+//! The algorithm to build solids from set of faces
+class BOPAlgo_BuilderSolid  : public BOPAlgo_BuilderArea
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BOPAlgo_BuilderSolid();
+  Standard_EXPORT BOPAlgo_BuilderSolid();
 Standard_EXPORT virtual ~BOPAlgo_BuilderSolid();
   
-  Standard_EXPORT   BOPAlgo_BuilderSolid(const BOPCol_BaseAllocator& theAllocator);
-  //! Sets the source solid <theSolid> <br>
-  Standard_EXPORT     void SetSolid(const TopoDS_Solid& theSolid) ;
-  //! Returns the source solid <br>
-  Standard_EXPORT    const TopoDS_Solid& Solid() const;
-  //!  Performs the algorithm <br>
-  Standard_EXPORT   virtual  void Perform() ;
-
+  Standard_EXPORT BOPAlgo_BuilderSolid(const BOPCol_BaseAllocator& theAllocator);
+  
+  //! Sets the source solid <theSolid>
+  Standard_EXPORT   void SetSolid (const TopoDS_Solid& theSolid) ;
+  
+  //! Returns the source solid
+  Standard_EXPORT  const  TopoDS_Solid& Solid()  const;
+  
+  //! Performs the algorithm
+  Standard_EXPORT virtual   void Perform() ;
 
 
 
 
 protected:
 
-  //!  Collect the faces that <br>
-//!           a) are internal <br>
-//!           b) are the same and have different orientation <br>
-  Standard_EXPORT   virtual  void PerformShapesToAvoid() ;
-  //! Build draft shells <br>
-//!          a)myLoops - draft shells that consist of <br>
-//!                       boundary faces <br>
-//!          b)myLoopsInternal - draft shells that contains <br>
-//!                               inner faces <br>
-  Standard_EXPORT   virtual  void PerformLoops() ;
-  //! Build draft solids that contains boundary faces <br>
-  Standard_EXPORT   virtual  void PerformAreas() ;
-  //! Build finalized solids with internal shells <br>
-  Standard_EXPORT   virtual  void PerformInternalShapes() ;
+  
+  //! Collect the faces that
+  //! a) are internal
+  //! b) are the same and have different orientation
+  Standard_EXPORT virtual   void PerformShapesToAvoid() ;
+  
+  //! Build draft shells
+  //! a)myLoops - draft shells that consist of
+  //! boundary faces
+  //! b)myLoopsInternal - draft shells that contains
+  //! inner faces
+  Standard_EXPORT virtual   void PerformLoops() ;
+  
+  //! Build draft solids that contains boundary faces
+  Standard_EXPORT virtual   void PerformAreas() ;
+  
+  //! Build finalized solids with internal shells
+  Standard_EXPORT virtual   void PerformInternalShapes() ;
 
 
-TopoDS_Solid mySolid;
+  TopoDS_Solid mySolid;
 
 
 private:
@@ -83,7 +78,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BOPAlgo_BuilderSolid_HeaderFile

@@ -1,18 +1,4 @@
-#ifndef _StdFail_NotDone_HeaderFile
 #include <StdFail_NotDone.hxx>
-#endif
-#ifndef _Standard_NotImplemented_HeaderFile
 #include <Standard_NotImplemented.hxx>
-#endif
-#ifndef _math_FunctionSet_HeaderFile
 #include <math_FunctionSet.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
-#ifndef _math_IntegerVector_HeaderFile
-#include <math_IntegerVector.hxx>
-#endif
-#ifndef _math_GaussSetIntegration_HeaderFile
 #include <math_GaussSetIntegration.hxx>
-#endif

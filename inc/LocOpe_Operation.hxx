@@ -6,15 +6,14 @@
 #ifndef _LocOpe_Operation_HeaderFile
 #define _LocOpe_Operation_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum LocOpe_Operation {
+
+enum LocOpe_Operation
+{
 LocOpe_FUSE,
 LocOpe_CUT,
 LocOpe_INVALID
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _LocOpe_Operation_HeaderFile

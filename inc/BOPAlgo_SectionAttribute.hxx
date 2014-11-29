@@ -6,57 +6,49 @@
 #ifndef _BOPAlgo_SectionAttribute_HeaderFile
 #define _BOPAlgo_SectionAttribute_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 
 
-//! Class is a container of three flags used <br>
-//!         by intersection algorithm <br>
-//! <br>
-class BOPAlgo_SectionAttribute  {
+//! Class is a container of three flags used
+//! by intersection algorithm
+class BOPAlgo_SectionAttribute 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//! Initializes me by flags <br>
-  Standard_EXPORT   BOPAlgo_SectionAttribute(const Standard_Boolean Aproximation = Standard_True,const Standard_Boolean PCurveOnS1 = Standard_True,const Standard_Boolean PCurveOnS2 = Standard_True);
-  
-//! Modifier <br>
-//! <br>
-  Standard_EXPORT     void Approximation(const Standard_Boolean theFlag) ;
-  
-//! Modifier <br>
-//! <br>
-  Standard_EXPORT     void PCurveOnS1(const Standard_Boolean theFlag) ;
-  
-//! Modifier <br>
-//! <br>
-  Standard_EXPORT     void PCurveOnS2(const Standard_Boolean theFlag) ;
-  
-//! Selector <br>
-//! <br>
-        Standard_Boolean Approximation() const;
-  
-//! Selector <br>
-//! <br>
-        Standard_Boolean PCurveOnS1() const;
-  
-//! Selector <br>
-//! <br>
-        Standard_Boolean PCurveOnS2() const;
 
+  //! Initializes me by flags
+  Standard_EXPORT BOPAlgo_SectionAttribute(const Standard_Boolean Aproximation = Standard_True, const Standard_Boolean PCurveOnS1 = Standard_True, const Standard_Boolean PCurveOnS2 = Standard_True);
+  
+
+  //! Modifier
+  Standard_EXPORT   void Approximation (const Standard_Boolean theFlag) ;
+  
+
+  //! Modifier
+  Standard_EXPORT   void PCurveOnS1 (const Standard_Boolean theFlag) ;
+  
+
+  //! Modifier
+  Standard_EXPORT   void PCurveOnS2 (const Standard_Boolean theFlag) ;
+  
+
+  //! Selector
+      Standard_Boolean Approximation()  const;
+  
+
+  //! Selector
+      Standard_Boolean PCurveOnS1()  const;
+  
+
+  //! Selector
+      Standard_Boolean PCurveOnS2()  const;
 
 
 
@@ -71,9 +63,9 @@ private:
 
 
 
-Standard_Boolean myApproximation;
-Standard_Boolean myPCurve1;
-Standard_Boolean myPCurve2;
+  Standard_Boolean myApproximation;
+  Standard_Boolean myPCurve1;
+  Standard_Boolean myPCurve2;
 
 
 };
@@ -83,7 +75,6 @@ Standard_Boolean myPCurve2;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BOPAlgo_SectionAttribute_HeaderFile

@@ -5,25 +5,13 @@
 
 #include <TopTools_DataMapNodeOfDataMapOfShapeListOfInteger.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TColStd_ListOfInteger_HeaderFile
 #include <TColStd_ListOfInteger.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeListOfInteger_HeaderFile
 #include <TopTools_DataMapOfShapeListOfInteger.hxx>
-#endif
-#ifndef _TopTools_DataMapIteratorOfDataMapOfShapeListOfInteger_HeaderFile
 #include <TopTools_DataMapIteratorOfDataMapOfShapeListOfInteger.hxx>
-#endif
 
  
 

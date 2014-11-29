@@ -6,34 +6,16 @@
 #ifndef _PCDM_ReadWriter_HeaderFile
 #define _PCDM_ReadWriter_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_PCDM_ReadWriter_HeaderFile
 #include <Handle_PCDM_ReadWriter.hxx>
-#endif
 
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Handle_Storage_Data_HeaderFile
 #include <Handle_Storage_Data.hxx>
-#endif
-#ifndef _Handle_CDM_Document_HeaderFile
 #include <Handle_CDM_Document.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_CDM_MessageDriver_HeaderFile
 #include <Handle_CDM_MessageDriver.hxx>
-#endif
-#ifndef _Storage_OpenMode_HeaderFile
 #include <Storage_OpenMode.hxx>
-#endif
 class TCollection_AsciiString;
 class Storage_Data;
 class CDM_Document;
@@ -45,41 +27,44 @@ class Storage_BaseDriver;
 
 
 
-class PCDM_ReadWriter : public Standard_Transient {
+class PCDM_ReadWriter : public Standard_Transient
+{
 
 public:
 
-  //! returns PCDM_ReadWriter_1. <br>
-  Standard_EXPORT   virtual  TCollection_AsciiString Version() const = 0;
   
-  Standard_EXPORT   virtual  void WriteReferenceCounter(const Handle(Storage_Data)& aData,const Handle(CDM_Document)& aDocument) const = 0;
+  //! returns PCDM_ReadWriter_1.
+  Standard_EXPORT virtual   TCollection_AsciiString Version()  const = 0;
   
-  Standard_EXPORT   virtual  void WriteReferences(const Handle(Storage_Data)& aData,const Handle(CDM_Document)& aDocument,const TCollection_ExtendedString& theReferencerFileName) const = 0;
+  Standard_EXPORT virtual   void WriteReferenceCounter (const Handle(Storage_Data)& aData, const Handle(CDM_Document)& aDocument)  const = 0;
   
-  Standard_EXPORT   virtual  void WriteExtensions(const Handle(Storage_Data)& aData,const Handle(CDM_Document)& aDocument) const = 0;
+  Standard_EXPORT virtual   void WriteReferences (const Handle(Storage_Data)& aData, const Handle(CDM_Document)& aDocument, const TCollection_ExtendedString& theReferencerFileName)  const = 0;
   
-  Standard_EXPORT   virtual  void WriteVersion(const Handle(Storage_Data)& aData,const Handle(CDM_Document)& aDocument) const = 0;
+  Standard_EXPORT virtual   void WriteExtensions (const Handle(Storage_Data)& aData, const Handle(CDM_Document)& aDocument)  const = 0;
   
-  Standard_EXPORT   virtual  Standard_Integer ReadReferenceCounter(const TCollection_ExtendedString& theFileName,const Handle(CDM_MessageDriver)& theMsgDriver) const = 0;
+  Standard_EXPORT virtual   void WriteVersion (const Handle(Storage_Data)& aData, const Handle(CDM_Document)& aDocument)  const = 0;
   
-  Standard_EXPORT   virtual  void ReadReferences(const TCollection_ExtendedString& aFileName,PCDM_SequenceOfReference& theReferences,const Handle(CDM_MessageDriver)& theMsgDriver) const = 0;
+  Standard_EXPORT virtual   Standard_Integer ReadReferenceCounter (const TCollection_ExtendedString& theFileName, const Handle(CDM_MessageDriver)& theMsgDriver)  const = 0;
   
-  Standard_EXPORT   virtual  void ReadExtensions(const TCollection_ExtendedString& aFileName,TColStd_SequenceOfExtendedString& theExtensions,const Handle(CDM_MessageDriver)& theMsgDriver) const = 0;
+  Standard_EXPORT virtual   void ReadReferences (const TCollection_ExtendedString& aFileName, PCDM_SequenceOfReference& theReferences, const Handle(CDM_MessageDriver)& theMsgDriver)  const = 0;
   
-  Standard_EXPORT   virtual  Standard_Integer ReadDocumentVersion(const TCollection_ExtendedString& aFileName,const Handle(CDM_MessageDriver)& theMsgDriver) const = 0;
+  Standard_EXPORT virtual   void ReadExtensions (const TCollection_ExtendedString& aFileName, TColStd_SequenceOfExtendedString& theExtensions, const Handle(CDM_MessageDriver)& theMsgDriver)  const = 0;
   
-  Standard_EXPORT   static  void Open(Storage_BaseDriver& aDriver,const TCollection_ExtendedString& aFileName,const Storage_OpenMode anOpenMode) ;
-  //! returns the convenient Reader for a File. <br>
-//! <br>
-  Standard_EXPORT   static  Handle_PCDM_ReadWriter Reader(const TCollection_ExtendedString& aFileName) ;
+  Standard_EXPORT virtual   Standard_Integer ReadDocumentVersion (const TCollection_ExtendedString& aFileName, const Handle(CDM_MessageDriver)& theMsgDriver)  const = 0;
   
-  Standard_EXPORT   static  Handle_PCDM_ReadWriter Writer() ;
+  Standard_EXPORT static   void Open (Storage_BaseDriver& aDriver, const TCollection_ExtendedString& aFileName, const Storage_OpenMode anOpenMode) ;
   
-  Standard_EXPORT   static  void WriteFileFormat(const Handle(Storage_Data)& aData,const Handle(CDM_Document)& aDocument) ;
-  //! tries  to get a format  in the  file.  returns an empty <br>
-//!          string if the file could not be read or does not have <br>
-//!          a FileFormat information. <br>
-  Standard_EXPORT   static  TCollection_ExtendedString FileFormat(const TCollection_ExtendedString& aFileName) ;
+  //! returns the convenient Reader for a File.
+  Standard_EXPORT static   Handle(PCDM_ReadWriter) Reader (const TCollection_ExtendedString& aFileName) ;
+  
+  Standard_EXPORT static   Handle(PCDM_ReadWriter) Writer() ;
+  
+  Standard_EXPORT static   void WriteFileFormat (const Handle(Storage_Data)& aData, const Handle(CDM_Document)& aDocument) ;
+  
+  //! tries  to get a format  in the  file.  returns an empty
+  //! string if the file could not be read or does not have
+  //! a FileFormat information.
+  Standard_EXPORT static   TCollection_ExtendedString FileFormat (const TCollection_ExtendedString& aFileName) ;
 
 
 
@@ -102,7 +87,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PCDM_ReadWriter_HeaderFile

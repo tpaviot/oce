@@ -1,18 +1,6 @@
-#ifndef _XSControl_TransferReader_HeaderFile
 #include <XSControl_TransferReader.hxx>
-#endif
-#ifndef _Transfer_ActorOfTransientProcess_HeaderFile
 #include <Transfer_ActorOfTransientProcess.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _Interface_InterfaceModel_HeaderFile
 #include <Interface_InterfaceModel.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _XSControl_SelectForTransfer_HeaderFile
 #include <XSControl_SelectForTransfer.hxx>
-#endif

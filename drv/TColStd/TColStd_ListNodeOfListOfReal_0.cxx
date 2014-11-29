@@ -5,16 +5,10 @@
 
 #include <TColStd_ListNodeOfListOfReal.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColStd_ListOfReal_HeaderFile
 #include <TColStd_ListOfReal.hxx>
-#endif
-#ifndef _TColStd_ListIteratorOfListOfReal_HeaderFile
 #include <TColStd_ListIteratorOfListOfReal.hxx>
-#endif
 
  
 

@@ -6,47 +6,33 @@
 #ifndef _PBRep_PointOnCurve_HeaderFile
 #define _PBRep_PointOnCurve_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PBRep_PointOnCurve_HeaderFile
 #include <Handle_PBRep_PointOnCurve.hxx>
-#endif
 
-#ifndef _Handle_PGeom_Curve_HeaderFile
 #include <Handle_PGeom_Curve.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _PBRep_PointRepresentation_HeaderFile
 #include <PBRep_PointRepresentation.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class PGeom_Curve;
 class PTopLoc_Location;
 
 
-class PBRep_PointOnCurve : public PBRep_PointRepresentation {
+class PBRep_PointOnCurve : public PBRep_PointRepresentation
+{
 
 public:
 
   
-  Standard_EXPORT   PBRep_PointOnCurve(const Standard_Real P,const Handle(PGeom_Curve)& C,const PTopLoc_Location& L);
+  Standard_EXPORT PBRep_PointOnCurve(const Standard_Real P, const Handle(PGeom_Curve)& C, const PTopLoc_Location& L);
   
-  Standard_EXPORT     Handle_PGeom_Curve Curve() const;
-  //! Returns True; <br>
-  Standard_EXPORT   virtual  Standard_Boolean IsPointOnCurve() const;
+  Standard_EXPORT   Handle(PGeom_Curve) Curve()  const;
+  
+  //! Returns True;
+  Standard_EXPORT virtual   Standard_Boolean IsPointOnCurve()  const;
 
-  PBRep_PointOnCurve( )
+PBRep_PointOnCurve( )
 {
   
 }
@@ -69,7 +55,7 @@ protected:
 private: 
 
 
-Handle_PGeom_Curve myCurve;
+  Handle(PGeom_Curve) myCurve;
 
 
 };
@@ -78,7 +64,6 @@ Handle_PGeom_Curve myCurve;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PBRep_PointOnCurve_HeaderFile

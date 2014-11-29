@@ -6,34 +6,16 @@
 #ifndef _Plugin_MapOfFunctions_HeaderFile
 #define _Plugin_MapOfFunctions_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMap_HeaderFile
 #include <TCollection_BasicMap.hxx>
-#endif
-#ifndef _OSD_Function_HeaderFile
 #include <OSD_Function.hxx>
-#endif
-#ifndef _Handle_Plugin_DataMapNodeOfMapOfFunctions_HeaderFile
 #include <Handle_Plugin_DataMapNodeOfMapOfFunctions.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
 class Standard_DomainError;
 class Standard_NoSuchObject;
 class TCollection_AsciiString;
@@ -42,50 +24,50 @@ class Plugin_DataMapIteratorOfMapOfFunctions;
 
 
 
-class Plugin_MapOfFunctions  : public TCollection_BasicMap {
+class Plugin_MapOfFunctions  : public TCollection_BasicMap
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Plugin_MapOfFunctions(const Standard_Integer NbBuckets = 1);
+  Standard_EXPORT Plugin_MapOfFunctions(const Standard_Integer NbBuckets = 1);
   
-  Standard_EXPORT     Plugin_MapOfFunctions& Assign(const Plugin_MapOfFunctions& Other) ;
-    Plugin_MapOfFunctions& operator =(const Plugin_MapOfFunctions& Other) 
+  Standard_EXPORT   Plugin_MapOfFunctions& Assign (const Plugin_MapOfFunctions& Other) ;
+  Plugin_MapOfFunctions& operator = (const Plugin_MapOfFunctions& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void ReSize(const Standard_Integer NbBuckets) ;
+  Standard_EXPORT   void ReSize (const Standard_Integer NbBuckets) ;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~Plugin_MapOfFunctions()
 {
   Clear();
 }
   
-  Standard_EXPORT     Standard_Boolean Bind(const TCollection_AsciiString& K,const OSD_Function& I) ;
+  Standard_EXPORT   Standard_Boolean Bind (const TCollection_AsciiString& K, const OSD_Function& I) ;
   
-  Standard_EXPORT     Standard_Boolean IsBound(const TCollection_AsciiString& K) const;
+  Standard_EXPORT   Standard_Boolean IsBound (const TCollection_AsciiString& K)  const;
   
-  Standard_EXPORT     Standard_Boolean UnBind(const TCollection_AsciiString& K) ;
+  Standard_EXPORT   Standard_Boolean UnBind (const TCollection_AsciiString& K) ;
   
-  Standard_EXPORT    const OSD_Function& Find(const TCollection_AsciiString& K) const;
-   const OSD_Function& operator()(const TCollection_AsciiString& K) const
+  Standard_EXPORT  const  OSD_Function& Find (const TCollection_AsciiString& K)  const;
+ const  OSD_Function& operator() (const TCollection_AsciiString& K)  const
 {
   return Find(K);
 }
   
-  Standard_EXPORT     OSD_Function& ChangeFind(const TCollection_AsciiString& K) ;
-    OSD_Function& operator()(const TCollection_AsciiString& K) 
+  Standard_EXPORT   OSD_Function& ChangeFind (const TCollection_AsciiString& K) ;
+  OSD_Function& operator() (const TCollection_AsciiString& K) 
 {
   return ChangeFind(K);
 }
   
-  Standard_EXPORT     Standard_Address Find1(const TCollection_AsciiString& K) const;
+  Standard_EXPORT   Standard_Address Find1 (const TCollection_AsciiString& K)  const;
   
-  Standard_EXPORT     Standard_Address ChangeFind1(const TCollection_AsciiString& K) ;
-
+  Standard_EXPORT   Standard_Address ChangeFind1 (const TCollection_AsciiString& K) ;
 
 
 
@@ -99,7 +81,7 @@ protected:
 private:
 
   
-  Standard_EXPORT   Plugin_MapOfFunctions(const Plugin_MapOfFunctions& Other);
+  Standard_EXPORT Plugin_MapOfFunctions(const Plugin_MapOfFunctions& Other);
 
 
 
@@ -110,7 +92,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Plugin_MapOfFunctions_HeaderFile

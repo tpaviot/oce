@@ -6,47 +6,42 @@
 #ifndef _MMgt_TShared_HeaderFile
 #define _MMgt_TShared_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MMgt_TShared_HeaderFile
 #include <Handle_MMgt_TShared.hxx>
-#endif
 
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
 class Standard_OutOfMemory;
 
 
 
-//! The abstract class TShared is the root class of <br>
-//! managed objects. TShared objects are managed <br>
-//! by a memory manager based on reference <br>
-//! counting. They have handle semantics. In other <br>
-//! words, the reference counter is transparently <br>
-//! incremented and decremented according to the <br>
-//! scope of handles. When all handles, which <br>
-//! reference a single object are out of scope, the <br>
-//! reference counter becomes null and the object is <br>
-//! automatically deleted. The deallocated memory is <br>
-//! not given back to the system though. It is <br>
-//! reclaimed for new objects of the same size. <br>
-//! Warning <br>
-//! This memory management scheme does not <br>
-//! work for cyclic data structures. In such cases <br>
-//! (with back pointers for example), you should <br>
-//! interrupt the cycle in a class by using a full C++ <br>
-//! pointer instead of a handle. <br>
-class MMgt_TShared : public Standard_Transient {
+//! Intermediate class between Standard_Transient
+//! and descendants.
+//! The abstract class TShared is the root class of
+//! managed objects. TShared objects are managed
+//! by a memory manager based on reference
+//! counting. They have handle semantics. In other
+//! words, the reference counter is transparently
+//! incremented and decremented according to the
+//! scope of handles. When all handles, which
+//! reference a single object are out of scope, the
+//! reference counter becomes null and the object is
+//! automatically deleted. The deallocated memory is
+//! not given back to the system though. It is
+//! reclaimed for new objects of the same size.
+//! Warning
+//! This memory management scheme does not
+//! work for cyclic data structures. In such cases
+//! (with back pointers for example), you should
+//! interrupt the cycle in a class by using a full C++
+//! pointer instead of a handle.
+class MMgt_TShared : public Standard_Transient
+{
 
 public:
 
   
-  Standard_EXPORT   virtual  void Delete() const;
+  Standard_EXPORT virtual   void Delete()  const;
 
 
 
@@ -69,7 +64,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MMgt_TShared_HeaderFile

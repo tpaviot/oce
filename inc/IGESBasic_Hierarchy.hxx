@@ -6,64 +6,63 @@
 #ifndef _IGESBasic_Hierarchy_HeaderFile
 #define _IGESBasic_Hierarchy_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESBasic_Hierarchy_HeaderFile
 #include <Handle_IGESBasic_Hierarchy.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
 
 
-//! defines Hierarchy, Type <406> Form <10> <br>
-//!          in package IGESBasic <br>
-//!          Provides ability to control the hierarchy of each <br>
-//!          directory entry attribute. <br>
-class IGESBasic_Hierarchy : public IGESData_IGESEntity {
+//! defines Hierarchy, Type <406> Form <10>
+//! in package IGESBasic
+//! Provides ability to control the hierarchy of each
+//! directory entry attribute.
+class IGESBasic_Hierarchy : public IGESData_IGESEntity
+{
 
 public:
 
   
-  Standard_EXPORT   IGESBasic_Hierarchy();
-  //! This method is used to set the fields of the class <br>
-//!           Hierarchy <br>
-//!       - nbPropVal     : Number of Property values = 6 <br>
-//!       - aLineFont     : indicates the line font <br>
-//!       - aView         : indicates the view <br>
-//!       - aEntityLevel  : indicates the entity level <br>
-//!       - aBlankStatus  : indicates the blank status <br>
-//!       - aLineWt       : indicates the line weight <br>
-//!       - aColorNum     : indicates the color num <br>
-//! aLineFont, aView, aEntityLevel, aBlankStatus, aLineWt and <br>
-//! aColorNum can take 0 or 1. <br>
-//! 0 : The directory entry attribute will apply to entities <br>
-//! physically subordinate to this entity. <br>
-//! 1 : The directory entry attribute of this entity will not <br>
-//! apply to physically subordinate entities. <br>
-  Standard_EXPORT     void Init(const Standard_Integer nbPropVal,const Standard_Integer aLineFont,const Standard_Integer aView,const Standard_Integer anEntityLevel,const Standard_Integer aBlankStatus,const Standard_Integer aLineWt,const Standard_Integer aColorNum) ;
-  //! returns the number of property values, which should be 6 <br>
-  Standard_EXPORT     Standard_Integer NbPropertyValues() const;
-  //! returns the line font <br>
-  Standard_EXPORT     Standard_Integer NewLineFont() const;
-  //! returns the view <br>
-  Standard_EXPORT     Standard_Integer NewView() const;
-  //! returns the entity level <br>
-  Standard_EXPORT     Standard_Integer NewEntityLevel() const;
-  //! returns the blank status <br>
-  Standard_EXPORT     Standard_Integer NewBlankStatus() const;
-  //! returns the line weight <br>
-  Standard_EXPORT     Standard_Integer NewLineWeight() const;
-  //! returns the color number <br>
-  Standard_EXPORT     Standard_Integer NewColorNum() const;
+  Standard_EXPORT IGESBasic_Hierarchy();
+  
+  //! This method is used to set the fields of the class
+  //! Hierarchy
+  //! - nbPropVal     : Number of Property values = 6
+  //! - aLineFont     : indicates the line font
+  //! - aView         : indicates the view
+  //! - aEntityLevel  : indicates the entity level
+  //! - aBlankStatus  : indicates the blank status
+  //! - aLineWt       : indicates the line weight
+  //! - aColorNum     : indicates the color num
+  //! aLineFont, aView, aEntityLevel, aBlankStatus, aLineWt and
+  //! aColorNum can take 0 or 1.
+  //! 0 : The directory entry attribute will apply to entities
+  //! physically subordinate to this entity.
+  //! 1 : The directory entry attribute of this entity will not
+  //! apply to physically subordinate entities.
+  Standard_EXPORT   void Init (const Standard_Integer nbPropVal, const Standard_Integer aLineFont, const Standard_Integer aView, const Standard_Integer anEntityLevel, const Standard_Integer aBlankStatus, const Standard_Integer aLineWt, const Standard_Integer aColorNum) ;
+  
+  //! returns the number of property values, which should be 6
+  Standard_EXPORT   Standard_Integer NbPropertyValues()  const;
+  
+  //! returns the line font
+  Standard_EXPORT   Standard_Integer NewLineFont()  const;
+  
+  //! returns the view
+  Standard_EXPORT   Standard_Integer NewView()  const;
+  
+  //! returns the entity level
+  Standard_EXPORT   Standard_Integer NewEntityLevel()  const;
+  
+  //! returns the blank status
+  Standard_EXPORT   Standard_Integer NewBlankStatus()  const;
+  
+  //! returns the line weight
+  Standard_EXPORT   Standard_Integer NewLineWeight()  const;
+  
+  //! returns the color number
+  Standard_EXPORT   Standard_Integer NewColorNum()  const;
 
 
 
@@ -78,13 +77,13 @@ protected:
 private: 
 
 
-Standard_Integer theNbPropertyValues;
-Standard_Integer theLineFont;
-Standard_Integer theView;
-Standard_Integer theEntityLevel;
-Standard_Integer theBlankStatus;
-Standard_Integer theLineWeight;
-Standard_Integer theColorNum;
+  Standard_Integer theNbPropertyValues;
+  Standard_Integer theLineFont;
+  Standard_Integer theView;
+  Standard_Integer theEntityLevel;
+  Standard_Integer theBlankStatus;
+  Standard_Integer theLineWeight;
+  Standard_Integer theColorNum;
 
 
 };
@@ -93,7 +92,6 @@ Standard_Integer theColorNum;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESBasic_Hierarchy_HeaderFile

@@ -6,50 +6,38 @@
 #ifndef _ShapeUpgrade_SplitSurfaceContinuity_HeaderFile
 #define _ShapeUpgrade_SplitSurfaceContinuity_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeUpgrade_SplitSurfaceContinuity_HeaderFile
 #include <Handle_ShapeUpgrade_SplitSurfaceContinuity.hxx>
-#endif
 
-#ifndef _GeomAbs_Shape_HeaderFile
 #include <GeomAbs_Shape.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _ShapeUpgrade_SplitSurface_HeaderFile
 #include <ShapeUpgrade_SplitSurface.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 
 
-//! Splits a Surface with a continuity criterion. <br>
-//!          At the present moment C1 criterion is used only. <br>
-//!          This tool works with tolerance. If C0 surface can be corrected <br>
-//!          at a knot with given tolerance then the surface is corrected, <br>
-//!          otherwise it is spltted at that knot. <br>
-class ShapeUpgrade_SplitSurfaceContinuity : public ShapeUpgrade_SplitSurface {
+//! Splits a Surface with a continuity criterion.
+//! At the present moment C1 criterion is used only.
+//! This tool works with tolerance. If C0 surface can be corrected
+//! at a knot with given tolerance then the surface is corrected,
+//! otherwise it is spltted at that knot.
+class ShapeUpgrade_SplitSurfaceContinuity : public ShapeUpgrade_SplitSurface
+{
 
 public:
 
-  //! Empty constructor. <br>
-  Standard_EXPORT   ShapeUpgrade_SplitSurfaceContinuity();
-  //! Sets criterion for splitting. <br>
-  Standard_EXPORT     void SetCriterion(const GeomAbs_Shape Criterion) ;
-  //! Sets tolerance. <br>
-  Standard_EXPORT     void SetTolerance(const Standard_Real Tol) ;
   
-  Standard_EXPORT   virtual  void Compute(const Standard_Boolean Segment) ;
+  //! Empty constructor.
+  Standard_EXPORT ShapeUpgrade_SplitSurfaceContinuity();
+  
+  //! Sets criterion for splitting.
+  Standard_EXPORT   void SetCriterion (const GeomAbs_Shape Criterion) ;
+  
+  //! Sets tolerance.
+  Standard_EXPORT   void SetTolerance (const Standard_Real Tol) ;
+  
+  Standard_EXPORT virtual   void Compute (const Standard_Boolean Segment) ;
 
 
 
@@ -64,9 +52,9 @@ protected:
 private: 
 
 
-GeomAbs_Shape myCriterion;
-Standard_Real myTolerance;
-Standard_Integer myCont;
+  GeomAbs_Shape myCriterion;
+  Standard_Real myTolerance;
+  Standard_Integer myCont;
 
 
 };
@@ -75,7 +63,6 @@ Standard_Integer myCont;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeUpgrade_SplitSurfaceContinuity_HeaderFile

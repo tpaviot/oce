@@ -1,15 +1,5 @@
-#ifndef _StepData_HArray1OfField_HeaderFile
 #include <StepData_HArray1OfField.hxx>
-#endif
-#ifndef _StepData_FreeFormEntity_HeaderFile
 #include <StepData_FreeFormEntity.hxx>
-#endif
-#ifndef _TColStd_HSequenceOfAsciiString_HeaderFile
 #include <TColStd_HSequenceOfAsciiString.hxx>
-#endif
-#ifndef _StepData_Field_HeaderFile
 #include <StepData_Field.hxx>
-#endif
-#ifndef _StepData_FreeFormEntity_HeaderFile
 #include <StepData_FreeFormEntity.hxx>
-#endif

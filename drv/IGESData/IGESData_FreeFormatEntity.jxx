@@ -1,24 +1,8 @@
-#ifndef _TColStd_HSequenceOfInteger_HeaderFile
 #include <TColStd_HSequenceOfInteger.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Interface_InterfaceError_HeaderFile
 #include <Interface_InterfaceError.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _IGESData_HArray1OfIGESEntity_HeaderFile
 #include <IGESData_HArray1OfIGESEntity.hxx>
-#endif
-#ifndef _IGESData_IGESWriter_HeaderFile
 #include <IGESData_IGESWriter.hxx>
-#endif
-#ifndef _IGESData_FreeFormatEntity_HeaderFile
 #include <IGESData_FreeFormatEntity.hxx>
-#endif

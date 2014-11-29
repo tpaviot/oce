@@ -6,28 +6,14 @@
 #ifndef _PTColStd_DataMapIteratorOfPersistentTransientMap_HeaderFile
 #define _PTColStd_DataMapIteratorOfPersistentTransientMap_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
 #include <Handle_Standard_Persistent.hxx>
-#endif
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _Handle_PTColStd_DataMapNodeOfPersistentTransientMap_HeaderFile
 #include <Handle_PTColStd_DataMapNodeOfPersistentTransientMap.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_Persistent;
 class Standard_Transient;
@@ -37,22 +23,22 @@ class PTColStd_DataMapNodeOfPersistentTransientMap;
 
 
 
-class PTColStd_DataMapIteratorOfPersistentTransientMap  : public TCollection_BasicMapIterator {
+class PTColStd_DataMapIteratorOfPersistentTransientMap  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   PTColStd_DataMapIteratorOfPersistentTransientMap();
+  Standard_EXPORT PTColStd_DataMapIteratorOfPersistentTransientMap();
   
-  Standard_EXPORT   PTColStd_DataMapIteratorOfPersistentTransientMap(const PTColStd_PersistentTransientMap& aMap);
+  Standard_EXPORT PTColStd_DataMapIteratorOfPersistentTransientMap(const PTColStd_PersistentTransientMap& aMap);
   
-  Standard_EXPORT     void Initialize(const PTColStd_PersistentTransientMap& aMap) ;
+  Standard_EXPORT   void Initialize (const PTColStd_PersistentTransientMap& aMap) ;
   
-  Standard_EXPORT    const Handle_Standard_Persistent& Key() const;
+  Standard_EXPORT  const  Handle(Standard_Persistent)& Key()  const;
   
-  Standard_EXPORT    const Handle_Standard_Transient& Value() const;
-
+  Standard_EXPORT  const  Handle(Standard_Transient)& Value()  const;
 
 
 
@@ -75,7 +61,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _PTColStd_DataMapIteratorOfPersistentTransientMap_HeaderFile

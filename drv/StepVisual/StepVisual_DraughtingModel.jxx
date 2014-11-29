@@ -1,3 +1,1 @@
-#ifndef _StepVisual_DraughtingModel_HeaderFile
 #include <StepVisual_DraughtingModel.hxx>
-#endif

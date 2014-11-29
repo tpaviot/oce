@@ -6,22 +6,15 @@
 #ifndef _Handle_STEPSelections_SelectForTransfer_HeaderFile
 #define _Handle_STEPSelections_SelectForTransfer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_XSControl_SelectForTransfer_HeaderFile
 #include <Handle_XSControl_SelectForTransfer.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(XSControl_SelectForTransfer);
 class STEPSelections_SelectForTransfer;
 
-DEFINE_STANDARD_HANDLE(STEPSelections_SelectForTransfer,XSControl_SelectForTransfer)
+DEFINE_STANDARD_HANDLE(STEPSelections_SelectForTransfer, XSControl_SelectForTransfer)
 
-#endif
+#endif // _Handle_STEPSelections_SelectForTransfer_HeaderFile

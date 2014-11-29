@@ -6,46 +6,24 @@
 #ifndef _BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_HeaderFile
 #define _BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _gp_Dir2d_HeaderFile
 #include <gp_Dir2d.hxx>
-#endif
-#ifndef _math_FunctionSetWithDerivatives_HeaderFile
 #include <math_FunctionSetWithDerivatives.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
+#include <math_Vector.hxx>
 class StdFail_UndefinedDerivative;
 class BRepAdaptor_Surface;
 class BRepApprox_SurfaceTool;
 class IntSurf_Quadric;
 class IntSurf_QuadricTool;
-class math_Vector;
 class math_Matrix;
 class gp_Pnt;
 class gp_Vec;
@@ -53,50 +31,50 @@ class gp_Dir2d;
 
 
 
-class BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox  : public math_FunctionSetWithDerivatives {
+class BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox  : public math_FunctionSetWithDerivatives
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox();
+  Standard_EXPORT BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox();
   
-  Standard_EXPORT   BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox(const BRepAdaptor_Surface& PS,const IntSurf_Quadric& IS);
+  Standard_EXPORT BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox(const BRepAdaptor_Surface& PS, const IntSurf_Quadric& IS);
   
-  Standard_EXPORT   BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox(const IntSurf_Quadric& IS);
+  Standard_EXPORT BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox(const IntSurf_Quadric& IS);
   
-        void Set(const BRepAdaptor_Surface& PS) ;
+      void Set (const BRepAdaptor_Surface& PS) ;
   
-        void SetImplicitSurface(const IntSurf_Quadric& IS) ;
+      void SetImplicitSurface (const IntSurf_Quadric& IS) ;
   
-        void Set(const Standard_Real Tolerance) ;
+      void Set (const Standard_Real Tolerance) ;
   
-  Standard_EXPORT     Standard_Integer NbVariables() const;
+  Standard_EXPORT   Standard_Integer NbVariables()  const;
   
-  Standard_EXPORT     Standard_Integer NbEquations() const;
+  Standard_EXPORT   Standard_Integer NbEquations()  const;
   
-  Standard_EXPORT     Standard_Boolean Value(const math_Vector& X,math_Vector& F) ;
+  Standard_EXPORT   Standard_Boolean Value (const math_Vector& X, math_Vector& F) ;
   
-  Standard_EXPORT     Standard_Boolean Derivatives(const math_Vector& X,math_Matrix& D) ;
+  Standard_EXPORT   Standard_Boolean Derivatives (const math_Vector& X, math_Matrix& D) ;
   
-  Standard_EXPORT     Standard_Boolean Values(const math_Vector& X,math_Vector& F,math_Matrix& D) ;
+  Standard_EXPORT   Standard_Boolean Values (const math_Vector& X, math_Vector& F, math_Matrix& D) ;
   
-        Standard_Real Root() const;
+      Standard_Real Root()  const;
   
-        Standard_Real Tolerance() const;
+      Standard_Real Tolerance()  const;
   
-       const gp_Pnt& Point() const;
+     const  gp_Pnt& Point()  const;
   
-  Standard_EXPORT     Standard_Boolean IsTangent() ;
+  Standard_EXPORT   Standard_Boolean IsTangent() ;
   
-       const gp_Vec& Direction3d() ;
+     const  gp_Vec& Direction3d() ;
   
-       const gp_Dir2d& Direction2d() ;
+     const  gp_Dir2d& Direction2d() ;
   
-       const BRepAdaptor_Surface& PSurface() const;
+     const  BRepAdaptor_Surface& PSurface()  const;
   
-       const IntSurf_Quadric& ISurface() const;
-
+     const  IntSurf_Quadric& ISurface()  const;
 
 
 
@@ -111,23 +89,23 @@ private:
 
 
 
-Standard_Address surf;
-Standard_Address func;
-Standard_Real u;
-Standard_Real v;
-Standard_Real tol;
-gp_Pnt pntsol;
-Standard_Real valf;
-Standard_Boolean computed;
-Standard_Boolean tangent;
-Standard_Real tgdu;
-Standard_Real tgdv;
-gp_Vec gradient;
-Standard_Boolean derived;
-gp_Vec d1u;
-gp_Vec d1v;
-gp_Vec d3d;
-gp_Dir2d d2d;
+  Standard_Address surf;
+  Standard_Address func;
+  Standard_Real u;
+  Standard_Real v;
+  Standard_Real tol;
+  gp_Pnt pntsol;
+  Standard_Real valf;
+  Standard_Boolean computed;
+  Standard_Boolean tangent;
+  Standard_Real tgdu;
+  Standard_Real tgdv;
+  gp_Vec gradient;
+  Standard_Boolean derived;
+  gp_Vec d1u;
+  gp_Vec d1v;
+  gp_Vec d3d;
+  gp_Dir2d d2d;
 
 
 };
@@ -157,7 +135,6 @@ gp_Dir2d d2d;
 #undef IntImp_ZerImpFunc_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_HeaderFile

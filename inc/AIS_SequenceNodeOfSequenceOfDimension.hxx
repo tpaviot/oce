@@ -6,38 +6,27 @@
 #ifndef _AIS_SequenceNodeOfSequenceOfDimension_HeaderFile
 #define _AIS_SequenceNodeOfSequenceOfDimension_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_AIS_SequenceNodeOfSequenceOfDimension_HeaderFile
 #include <Handle_AIS_SequenceNodeOfSequenceOfDimension.hxx>
-#endif
 
-#ifndef _Handle_AIS_Relation_HeaderFile
 #include <Handle_AIS_Relation.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class AIS_Relation;
 class AIS_SequenceOfDimension;
 
 
 
-class AIS_SequenceNodeOfSequenceOfDimension : public TCollection_SeqNode {
+class AIS_SequenceNodeOfSequenceOfDimension : public TCollection_SeqNode
+{
 
 public:
 
   
-      AIS_SequenceNodeOfSequenceOfDimension(const Handle(AIS_Relation)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    AIS_SequenceNodeOfSequenceOfDimension(const Handle(AIS_Relation)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_AIS_Relation& Value() const;
+      Handle(AIS_Relation)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_AIS_Relation myValue;
+  Handle(AIS_Relation) myValue;
 
 
 };
 
-#define SeqItem Handle_AIS_Relation
+#define SeqItem Handle(AIS_Relation)
 #define SeqItem_hxx <AIS_Relation.hxx>
 #define TCollection_SequenceNode AIS_SequenceNodeOfSequenceOfDimension
 #define TCollection_SequenceNode_hxx <AIS_SequenceNodeOfSequenceOfDimension.hxx>
@@ -78,7 +67,6 @@ Handle_AIS_Relation myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _AIS_SequenceNodeOfSequenceOfDimension_HeaderFile

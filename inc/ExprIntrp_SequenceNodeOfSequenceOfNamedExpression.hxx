@@ -6,38 +6,27 @@
 #ifndef _ExprIntrp_SequenceNodeOfSequenceOfNamedExpression_HeaderFile
 #define _ExprIntrp_SequenceNodeOfSequenceOfNamedExpression_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression_HeaderFile
 #include <Handle_ExprIntrp_SequenceNodeOfSequenceOfNamedExpression.hxx>
-#endif
 
-#ifndef _Handle_Expr_NamedExpression_HeaderFile
 #include <Handle_Expr_NamedExpression.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class Expr_NamedExpression;
 class ExprIntrp_SequenceOfNamedExpression;
 
 
 
-class ExprIntrp_SequenceNodeOfSequenceOfNamedExpression : public TCollection_SeqNode {
+class ExprIntrp_SequenceNodeOfSequenceOfNamedExpression : public TCollection_SeqNode
+{
 
 public:
 
   
-      ExprIntrp_SequenceNodeOfSequenceOfNamedExpression(const Handle(Expr_NamedExpression)& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    ExprIntrp_SequenceNodeOfSequenceOfNamedExpression(const Handle(Expr_NamedExpression)& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        Handle_Expr_NamedExpression& Value() const;
+      Handle(Expr_NamedExpression)& Value()  const;
 
 
 
@@ -52,12 +41,12 @@ protected:
 private: 
 
 
-Handle_Expr_NamedExpression myValue;
+  Handle(Expr_NamedExpression) myValue;
 
 
 };
 
-#define SeqItem Handle_Expr_NamedExpression
+#define SeqItem Handle(Expr_NamedExpression)
 #define SeqItem_hxx <Expr_NamedExpression.hxx>
 #define TCollection_SequenceNode ExprIntrp_SequenceNodeOfSequenceOfNamedExpression
 #define TCollection_SequenceNode_hxx <ExprIntrp_SequenceNodeOfSequenceOfNamedExpression.hxx>
@@ -78,7 +67,6 @@ Handle_Expr_NamedExpression myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ExprIntrp_SequenceNodeOfSequenceOfNamedExpression_HeaderFile

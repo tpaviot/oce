@@ -6,57 +6,45 @@
 #ifndef _StepRepr_ShapeAspect_HeaderFile
 #define _StepRepr_ShapeAspect_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepRepr_ShapeAspect_HeaderFile
 #include <Handle_StepRepr_ShapeAspect.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepRepr_ProductDefinitionShape_HeaderFile
 #include <Handle_StepRepr_ProductDefinitionShape.hxx>
-#endif
-#ifndef _StepData_Logical_HeaderFile
 #include <StepData_Logical.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepRepr_ProductDefinitionShape;
 
 
 
-class StepRepr_ShapeAspect : public MMgt_TShared {
+class StepRepr_ShapeAspect : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a ShapeAspect <br>
-  Standard_EXPORT   StepRepr_ShapeAspect();
   
-  Standard_EXPORT   virtual  void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(TCollection_HAsciiString)& aDescription,const Handle(StepRepr_ProductDefinitionShape)& aOfShape,const StepData_Logical aProductDefinitional) ;
+  //! Returns a ShapeAspect
+  Standard_EXPORT StepRepr_ShapeAspect();
   
-  Standard_EXPORT     void SetName(const Handle(TCollection_HAsciiString)& aName) ;
+  Standard_EXPORT virtual   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(TCollection_HAsciiString)& aDescription, const Handle(StepRepr_ProductDefinitionShape)& aOfShape, const StepData_Logical aProductDefinitional) ;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString Name() const;
+  Standard_EXPORT   void SetName (const Handle(TCollection_HAsciiString)& aName) ;
   
-  Standard_EXPORT     void SetDescription(const Handle(TCollection_HAsciiString)& aDescription) ;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Name()  const;
   
-  Standard_EXPORT     Handle_TCollection_HAsciiString Description() const;
+  Standard_EXPORT   void SetDescription (const Handle(TCollection_HAsciiString)& aDescription) ;
   
-  Standard_EXPORT     void SetOfShape(const Handle(StepRepr_ProductDefinitionShape)& aOfShape) ;
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Description()  const;
   
-  Standard_EXPORT     Handle_StepRepr_ProductDefinitionShape OfShape() const;
+  Standard_EXPORT   void SetOfShape (const Handle(StepRepr_ProductDefinitionShape)& aOfShape) ;
   
-  Standard_EXPORT     void SetProductDefinitional(const StepData_Logical aProductDefinitional) ;
+  Standard_EXPORT   Handle(StepRepr_ProductDefinitionShape) OfShape()  const;
   
-  Standard_EXPORT     StepData_Logical ProductDefinitional() const;
+  Standard_EXPORT   void SetProductDefinitional (const StepData_Logical aProductDefinitional) ;
+  
+  Standard_EXPORT   StepData_Logical ProductDefinitional()  const;
 
 
 
@@ -71,10 +59,10 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString name;
-Handle_TCollection_HAsciiString description;
-Handle_StepRepr_ProductDefinitionShape ofShape;
-StepData_Logical productDefinitional;
+  Handle(TCollection_HAsciiString) name;
+  Handle(TCollection_HAsciiString) description;
+  Handle(StepRepr_ProductDefinitionShape) ofShape;
+  StepData_Logical productDefinitional;
 
 
 };
@@ -83,7 +71,6 @@ StepData_Logical productDefinitional;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepRepr_ShapeAspect_HeaderFile

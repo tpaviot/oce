@@ -5,24 +5,14 @@
 
 #include <PXCAFDoc_SeqExplorerOfGraphNodeSequence.hxx>
 
-#ifndef _PXCAFDoc_SeqNodeOfGraphNodeSequence_HeaderFile
 #include <PXCAFDoc_SeqNodeOfGraphNodeSequence.hxx>
-#endif
-#ifndef _PXCAFDoc_GraphNodeSequence_HeaderFile
 #include <PXCAFDoc_GraphNodeSequence.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _PXCAFDoc_GraphNode_HeaderFile
 #include <PXCAFDoc_GraphNode.hxx>
-#endif
  
 
-#define Item Handle_PXCAFDoc_GraphNode
+#define Item Handle(PXCAFDoc_GraphNode)
 #define Item_hxx <PXCAFDoc_GraphNode.hxx>
 #define PCollection_SeqNode PXCAFDoc_SeqNodeOfGraphNodeSequence
 #define PCollection_SeqNode_hxx <PXCAFDoc_SeqNodeOfGraphNodeSequence.hxx>

@@ -6,22 +6,15 @@
 #ifndef _Handle_BinDrivers_DocumentRetrievalDriver_HeaderFile
 #define _Handle_BinDrivers_DocumentRetrievalDriver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_BinLDrivers_DocumentRetrievalDriver_HeaderFile
 #include <Handle_BinLDrivers_DocumentRetrievalDriver.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(BinLDrivers_DocumentRetrievalDriver);
 class BinDrivers_DocumentRetrievalDriver;
 
-DEFINE_STANDARD_HANDLE(BinDrivers_DocumentRetrievalDriver,BinLDrivers_DocumentRetrievalDriver)
+DEFINE_STANDARD_HANDLE(BinDrivers_DocumentRetrievalDriver, BinLDrivers_DocumentRetrievalDriver)
 
-#endif
+#endif // _Handle_BinDrivers_DocumentRetrievalDriver_HeaderFile

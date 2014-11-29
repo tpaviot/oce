@@ -6,8 +6,11 @@
 #ifndef _Graphic3d_ExportFormat_HeaderFile
 #define _Graphic3d_ExportFormat_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Graphic3d_ExportFormat {
+
+enum Graphic3d_ExportFormat
+{
 Graphic3d_EF_PostScript,
 Graphic3d_EF_EnhPostScript,
 Graphic3d_EF_TEX,
@@ -17,8 +20,4 @@ Graphic3d_EF_PGF,
 Graphic3d_EF_EMF
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Graphic3d_ExportFormat_HeaderFile

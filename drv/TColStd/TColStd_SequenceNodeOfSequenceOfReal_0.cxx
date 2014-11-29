@@ -5,13 +5,9 @@
 
 #include <TColStd_SequenceNodeOfSequenceOfReal.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColStd_SequenceOfReal_HeaderFile
 #include <TColStd_SequenceOfReal.hxx>
-#endif
 
  
 

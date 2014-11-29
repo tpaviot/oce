@@ -6,56 +6,55 @@
 #ifndef _MoniTool_TransientElem_HeaderFile
 #define _MoniTool_TransientElem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MoniTool_TransientElem_HeaderFile
 #include <Handle_MoniTool_TransientElem.hxx>
-#endif
 
-#ifndef _Handle_Standard_Transient_HeaderFile
 #include <Handle_Standard_Transient.hxx>
-#endif
-#ifndef _MoniTool_Element_HeaderFile
 #include <MoniTool_Element.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_MoniTool_Element_HeaderFile
 #include <Handle_MoniTool_Element.hxx>
-#endif
-#ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
 class Standard_Transient;
-class TColStd_MapTransientHasher;
-class MoniTool_DataInfo;
 class MoniTool_Element;
 class Standard_Type;
 
 
-
-class MoniTool_TransientElem : public MoniTool_Element {
+//! an TransientElem defines an Element for a specific input class
+//! its definition includes the value of the Key to be mapped,
+//! and the HashCoder associated to the class of the Key
+//!
+//! Transient from Standard defines the class to be keyed
+//! MapTransientHasher from TColStd is the associated Hasher
+//! DataInfo from MoniTool   is an additionnal class which helps to provide
+//! informations on the value (template : see DataInfo)
+class MoniTool_TransientElem : public MoniTool_Element
+{
 
 public:
 
   
-  Standard_EXPORT   MoniTool_TransientElem(const Handle(Standard_Transient)& akey);
+  //! Creates a TransientElem with a Value. This Value can then not be
+  //! changed. It is used by the Hasher to compute the HashCode,
+  //! which will then be stored for an immediate reading.
+  Standard_EXPORT MoniTool_TransientElem(const Handle(Standard_Transient)& akey);
   
-  Standard_EXPORT    const Handle_Standard_Transient& Value() const;
+  //! Returns the contained value
+  Standard_EXPORT  const  Handle(Standard_Transient)& Value()  const;
   
-  Standard_EXPORT     Standard_Boolean Equates(const Handle(MoniTool_Element)& other) const;
+  //! Specific testof equallity : defined as False if <other> has
+  //! not the same true Type, else contents are compared (by
+  //! C++ operator ==)
+  Standard_EXPORT   Standard_Boolean Equates (const Handle(MoniTool_Element)& other)  const;
   
-  Standard_EXPORT   virtual  Handle_Standard_Type ValueType() const;
+  //! Returns the Type of the Value. By default, returns the
+  //! DynamicType of <me>, but can be redefined
+  Standard_EXPORT virtual   Handle(Standard_Type) ValueType()  const;
   
-  Standard_EXPORT   virtual  Standard_CString ValueTypeName() const;
+  //! Returns the name of the Type of the Value. Default is name
+  //! of ValueType, unless it is for a non-handled object
+  Standard_EXPORT virtual   Standard_CString ValueTypeName()  const;
 
 
 
@@ -70,7 +69,7 @@ protected:
 private: 
 
 
-Handle_Standard_Transient theval;
+  Handle(Standard_Transient) theval;
 
 
 };
@@ -79,7 +78,6 @@ Handle_Standard_Transient theval;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MoniTool_TransientElem_HeaderFile

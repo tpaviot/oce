@@ -6,34 +6,16 @@
 #ifndef _Draft_EdgeInfo_HeaderFile
 #define _Draft_EdgeInfo_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Geom_Curve;
 class Geom2d_Curve;
 class Standard_DomainError;
@@ -42,50 +24,50 @@ class gp_Pnt;
 
 
 
-class Draft_EdgeInfo  {
+class Draft_EdgeInfo 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Draft_EdgeInfo();
+  Standard_EXPORT Draft_EdgeInfo();
   
-  Standard_EXPORT   Draft_EdgeInfo(const Standard_Boolean HasNewGeometry);
+  Standard_EXPORT Draft_EdgeInfo(const Standard_Boolean HasNewGeometry);
   
-  Standard_EXPORT     void Add(const TopoDS_Face& F) ;
+  Standard_EXPORT   void Add (const TopoDS_Face& F) ;
   
-  Standard_EXPORT     void RootFace(const TopoDS_Face& F) ;
+  Standard_EXPORT   void RootFace (const TopoDS_Face& F) ;
   
-  Standard_EXPORT     void Tangent(const gp_Pnt& P) ;
+  Standard_EXPORT   void Tangent (const gp_Pnt& P) ;
   
-  Standard_EXPORT     Standard_Boolean IsTangent(gp_Pnt& P) const;
+  Standard_EXPORT   Standard_Boolean IsTangent (gp_Pnt& P)  const;
   
-  Standard_EXPORT     Standard_Boolean NewGeometry() const;
+  Standard_EXPORT   Standard_Boolean NewGeometry()  const;
   
-  Standard_EXPORT     void SetNewGeometry(const Standard_Boolean NewGeom) ;
+  Standard_EXPORT   void SetNewGeometry (const Standard_Boolean NewGeom) ;
   
-  Standard_EXPORT    const Handle_Geom_Curve& Geometry() const;
+  Standard_EXPORT  const  Handle(Geom_Curve)& Geometry()  const;
   
-  Standard_EXPORT    const TopoDS_Face& FirstFace() const;
+  Standard_EXPORT  const  TopoDS_Face& FirstFace()  const;
   
-  Standard_EXPORT    const TopoDS_Face& SecondFace() const;
+  Standard_EXPORT  const  TopoDS_Face& SecondFace()  const;
   
-  Standard_EXPORT    const Handle_Geom2d_Curve& FirstPC() const;
+  Standard_EXPORT  const  Handle(Geom2d_Curve)& FirstPC()  const;
   
-  Standard_EXPORT    const Handle_Geom2d_Curve& SecondPC() const;
+  Standard_EXPORT  const  Handle(Geom2d_Curve)& SecondPC()  const;
   
-  Standard_EXPORT     Handle_Geom_Curve& ChangeGeometry() ;
+  Standard_EXPORT   Handle(Geom_Curve)& ChangeGeometry() ;
   
-  Standard_EXPORT     Handle_Geom2d_Curve& ChangeFirstPC() ;
+  Standard_EXPORT   Handle(Geom2d_Curve)& ChangeFirstPC() ;
   
-  Standard_EXPORT     Handle_Geom2d_Curve& ChangeSecondPC() ;
+  Standard_EXPORT   Handle(Geom2d_Curve)& ChangeSecondPC() ;
   
-  Standard_EXPORT    const TopoDS_Face& RootFace() const;
+  Standard_EXPORT  const  TopoDS_Face& RootFace()  const;
   
-  Standard_EXPORT     void Tolerance(const Standard_Real tol) ;
+  Standard_EXPORT   void Tolerance (const Standard_Real tol) ;
   
-  Standard_EXPORT     Standard_Real Tolerance() const;
-
+  Standard_EXPORT   Standard_Real Tolerance()  const;
 
 
 
@@ -100,16 +82,16 @@ private:
 
 
 
-Standard_Boolean myNewGeom;
-Handle_Geom_Curve myGeom;
-TopoDS_Face myFirstF;
-TopoDS_Face mySeconF;
-Handle_Geom2d_Curve myFirstPC;
-Handle_Geom2d_Curve mySeconPC;
-TopoDS_Face myRootFace;
-Standard_Boolean myTgt;
-gp_Pnt myPt;
-Standard_Real myTol;
+  Standard_Boolean myNewGeom;
+  Handle(Geom_Curve) myGeom;
+  TopoDS_Face myFirstF;
+  TopoDS_Face mySeconF;
+  Handle(Geom2d_Curve) myFirstPC;
+  Handle(Geom2d_Curve) mySeconPC;
+  TopoDS_Face myRootFace;
+  Standard_Boolean myTgt;
+  gp_Pnt myPt;
+  Standard_Real myTol;
 
 
 };
@@ -118,7 +100,6 @@ Standard_Real myTol;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Draft_EdgeInfo_HeaderFile

@@ -1,18 +1,6 @@
-#ifndef _StepData_StepReaderData_HeaderFile
 #include <StepData_StepReaderData.hxx>
-#endif
-#ifndef _Interface_Check_HeaderFile
 #include <Interface_Check.hxx>
-#endif
-#ifndef _StepVisual_CameraModelD2_HeaderFile
 #include <StepVisual_CameraModelD2.hxx>
-#endif
-#ifndef _StepData_StepWriter_HeaderFile
 #include <StepData_StepWriter.hxx>
-#endif
-#ifndef _Interface_EntityIterator_HeaderFile
 #include <Interface_EntityIterator.hxx>
-#endif
-#ifndef _RWStepVisual_RWCameraModelD2_HeaderFile
 #include <RWStepVisual_RWCameraModelD2.hxx>
-#endif

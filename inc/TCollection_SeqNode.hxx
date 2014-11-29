@@ -6,35 +6,26 @@
 #ifndef _TCollection_SeqNode_HeaderFile
 #define _TCollection_SeqNode_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TCollection_SeqNode_HeaderFile
 #include <Handle_TCollection_SeqNode.hxx>
-#endif
 
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 
 
 
-class TCollection_SeqNode : public MMgt_TShared {
+class TCollection_SeqNode : public MMgt_TShared
+{
 
 public:
 
   
-      TCollection_SeqNode(const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    TCollection_SeqNode(const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        TCollection_SeqNodePtr& Next() const;
+      TCollection_SeqNodePtr& Next()  const;
   
-        TCollection_SeqNodePtr& Previous() const;
+      TCollection_SeqNodePtr& Previous()  const;
 
 
 
@@ -49,8 +40,8 @@ protected:
 private: 
 
 
-TCollection_SeqNodePtr myNext;
-TCollection_SeqNodePtr myPrevious;
+  TCollection_SeqNodePtr myNext;
+  TCollection_SeqNodePtr myPrevious;
 
 
 };
@@ -60,7 +51,6 @@ TCollection_SeqNodePtr myPrevious;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TCollection_SeqNode_HeaderFile

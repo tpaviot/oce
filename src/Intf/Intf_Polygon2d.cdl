@@ -15,7 +15,8 @@
 
 deferred class Polygon2d from Intf
 
-	---Purpose: 
+	---Purpose: Describes the necessary polygon information to compute
+    --        the interferences.
 
 uses Pnt2d from gp,
      Box2d from Bnd
@@ -33,6 +34,7 @@ is
     Closed (me)
         returns Boolean from Standard is virtual;
     ---Purpose: Returns True if the polyline is closed.
+    ---C++: alias "  virtual ~Intf_Polygon2d() {}"
 
     DeflectionOverEstimation (me) returns Real from Standard is deferred;
     ---Purpose: Returns the tolerance of the polygon.

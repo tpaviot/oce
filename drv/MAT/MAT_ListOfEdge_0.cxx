@@ -5,16 +5,10 @@
 
 #include <MAT_ListOfEdge.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _MAT_TListNodeOfListOfEdge_HeaderFile
 #include <MAT_TListNodeOfListOfEdge.hxx>
-#endif
-#ifndef _MAT_Edge_HeaderFile
 #include <MAT_Edge.hxx>
-#endif
 
  
 
@@ -32,7 +26,7 @@ IMPLEMENT_DOWNCAST(MAT_ListOfEdge,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(MAT_ListOfEdge)
 
 
-#define Item Handle_MAT_Edge
+#define Item Handle(MAT_Edge)
 #define Item_hxx <MAT_Edge.hxx>
 #define MAT_TListNode MAT_TListNodeOfListOfEdge
 #define MAT_TListNode_hxx <MAT_TListNodeOfListOfEdge.hxx>

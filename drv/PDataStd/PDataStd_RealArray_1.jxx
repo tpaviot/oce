@@ -1,6 +1,2 @@
-#ifndef _PColStd_HArray1OfReal_HeaderFile
 #include <PColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _PDataStd_RealArray_1_HeaderFile
 #include <PDataStd_RealArray_1.hxx>
-#endif

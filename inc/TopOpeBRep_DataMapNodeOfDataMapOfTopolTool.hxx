@@ -6,28 +6,14 @@
 #ifndef _TopOpeBRep_DataMapNodeOfDataMapOfTopolTool_HeaderFile
 #define _TopOpeBRep_DataMapNodeOfDataMapOfTopolTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool_HeaderFile
 #include <Handle_TopOpeBRep_DataMapNodeOfDataMapOfTopolTool.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Handle_BRepTopAdaptor_TopolTool_HeaderFile
 #include <Handle_BRepTopAdaptor_TopolTool.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class BRepTopAdaptor_TopolTool;
 class TopoDS_Shape;
 class TopTools_ShapeMapHasher;
@@ -36,16 +22,17 @@ class TopOpeBRep_DataMapIteratorOfDataMapOfTopolTool;
 
 
 
-class TopOpeBRep_DataMapNodeOfDataMapOfTopolTool : public TCollection_MapNode {
+class TopOpeBRep_DataMapNodeOfDataMapOfTopolTool : public TCollection_MapNode
+{
 
 public:
 
   
-      TopOpeBRep_DataMapNodeOfDataMapOfTopolTool(const TopoDS_Shape& K,const Handle(BRepTopAdaptor_TopolTool)& I,const TCollection_MapNodePtr& n);
+    TopOpeBRep_DataMapNodeOfDataMapOfTopolTool(const TopoDS_Shape& K, const Handle(BRepTopAdaptor_TopolTool)& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        Handle_BRepTopAdaptor_TopolTool& Value() const;
+      Handle(BRepTopAdaptor_TopolTool)& Value()  const;
 
 
 
@@ -60,15 +47,15 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-Handle_BRepTopAdaptor_TopolTool myValue;
+  TopoDS_Shape myKey;
+  Handle(BRepTopAdaptor_TopolTool) myValue;
 
 
 };
 
 #define TheKey TopoDS_Shape
 #define TheKey_hxx <TopoDS_Shape.hxx>
-#define TheItem Handle_BRepTopAdaptor_TopolTool
+#define TheItem Handle(BRepTopAdaptor_TopolTool)
 #define TheItem_hxx <BRepTopAdaptor_TopolTool.hxx>
 #define Hasher TopTools_ShapeMapHasher
 #define Hasher_hxx <TopTools_ShapeMapHasher.hxx>
@@ -99,7 +86,6 @@ Handle_BRepTopAdaptor_TopolTool myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRep_DataMapNodeOfDataMapOfTopolTool_HeaderFile

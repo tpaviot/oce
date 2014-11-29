@@ -1,9 +1,3 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepVisual_FillAreaStyleColour_HeaderFile
 #include <StepVisual_FillAreaStyleColour.hxx>
-#endif
-#ifndef _StepVisual_FillStyleSelect_HeaderFile
 #include <StepVisual_FillStyleSelect.hxx>
-#endif

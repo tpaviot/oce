@@ -6,16 +6,15 @@
 #ifndef _IntImp_ConstIsoparametric_HeaderFile
 #define _IntImp_ConstIsoparametric_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum IntImp_ConstIsoparametric {
+
+enum IntImp_ConstIsoparametric
+{
 IntImp_UIsoparametricOnCaro1,
 IntImp_VIsoparametricOnCaro1,
 IntImp_UIsoparametricOnCaro2,
 IntImp_VIsoparametricOnCaro2
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _IntImp_ConstIsoparametric_HeaderFile

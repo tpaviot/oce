@@ -6,54 +6,52 @@
 #ifndef _Aspect_GenId_HeaderFile
 #define _Aspect_GenId_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TColStd_ListOfInteger_HeaderFile
 #include <TColStd_ListOfInteger.hxx>
-#endif
+#include <Standard_Boolean.hxx>
 class Aspect_IdentDefinitionError;
 
 
-//! This class permits the creation and control of all <br>
-//!	    identifiers. <br>
-//!  Warning: An identifier is an integer. <br>
-class Aspect_GenId  {
+//! This class permits the creation and control of integer identifiers.
+class Aspect_GenId 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an available set of identifiers with the lower <br>
-//!	    bound 0 and the upper bound INT_MAX/2. <br>
-  Standard_EXPORT   Aspect_GenId();
-  //! Creates an available set of identifiers with the lower <br>
-//!	    bound <Low> and the upper bound <Up>. <br>
-//!  Warning: Raises IdentDefinitionError if <Up> is less than <Low>. <br>//! Copies the content of <Other> into <me>. <br>
-  Standard_EXPORT   Aspect_GenId(const Standard_Integer Low,const Standard_Integer Up);
-  //! Frees all identifiers of <me>. <br>
-  Standard_EXPORT     void Free() ;
-  //! Frees the identifier <Id> of <me>. <br>
-  Standard_EXPORT     void Free(const Standard_Integer Id) ;
-  //! Returns the number of available identifiers of <me>. <br>
-  Standard_EXPORT     Standard_Integer Available() const;
-  //! Returns the lower bound of <me>. <br>
-  Standard_EXPORT     Standard_Integer Lower() const;
-  //! Returns an available identifier of <me>. <br>
-//!  Warning: Raises IdentDefinitionError if all identifiers are busy. <br>
-  Standard_EXPORT     Standard_Integer Next() ;
-  //! Returns the upper bound of <me>. <br>
-  Standard_EXPORT     Standard_Integer Upper() const;
-
+  
+  //! Creates an available set of identifiers with the lower bound 0 and the upper bound INT_MAX / 2.
+  Standard_EXPORT Aspect_GenId();
+  
+  //! Creates an available set of identifiers with specified range.
+  //! Raises IdentDefinitionError if theUpper is less than theLow.
+  Standard_EXPORT Aspect_GenId(const Standard_Integer theLow, const Standard_Integer theUpper);
+  
+  //! Free all identifiers - make the whole range available again.
+  Standard_EXPORT   void Free() ;
+  
+  //! Free specified identifier. Warning - method has no protection against double-freeing!
+  Standard_EXPORT   void Free (const Standard_Integer theId) ;
+  
+  //! Returns true if there are available identifiers in range.
+  Standard_EXPORT   Standard_Boolean HasFree()  const;
+  
+  //! Returns the number of available identifiers.
+  Standard_EXPORT   Standard_Integer Available()  const;
+  
+  //! Returns the lower identifier in range.
+  Standard_EXPORT   Standard_Integer Lower()  const;
+  
+  //! Returns the next available identifier.
+  //! Warning: Raises IdentDefinitionError if all identifiers are busy.
+  Standard_EXPORT   Standard_Integer Next() ;
+  
+  //! Returns the upper identifier in range.
+  Standard_EXPORT   Standard_Integer Upper()  const;
 
 
 
@@ -68,11 +66,11 @@ private:
 
 
 
-Standard_Integer MyCount;
-Standard_Integer MyLength;
-Standard_Integer MyLowerBound;
-Standard_Integer MyUpperBound;
-TColStd_ListOfInteger MyFreeIds;
+  Standard_Integer myFreeCount;
+  Standard_Integer myLength;
+  Standard_Integer myLowerBound;
+  Standard_Integer myUpperBound;
+  TColStd_ListOfInteger myFreeIds;
 
 
 };
@@ -81,7 +79,6 @@ TColStd_ListOfInteger MyFreeIds;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Aspect_GenId_HeaderFile

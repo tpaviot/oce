@@ -6,25 +6,13 @@
 #ifndef _gce_MakeParab_HeaderFile
 #define _gce_MakeParab_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Parab_HeaderFile
 #include <gp_Parab.hxx>
-#endif
-#ifndef _gce_Root_HeaderFile
 #include <gce_Root.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class StdFail_NotDone;
 class gp_Ax2;
 class gp_Ax1;
@@ -32,64 +20,67 @@ class gp_Pnt;
 class gp_Parab;
 
 
-//!This class implements the following algorithms used to <br>
-//!          create Parab from gp. <br>
-//!  Defines the parabola in the parameterization range  : <br>
-//!  ]-infinite, +infinite[ <br>
-//!  The vertex of the parabola is the "Location" point of the <br>
-//!  local coordinate system (axis placement) of the parabola. <br>
-//! <br>
-//!  The "XDirection" and the "YDirection" of this system define <br>
-//!  the plane of the parabola. <br>
-//! <br>
-//!  The "XAxis" of the parabola ("Location", "XDirection") is <br>
-//!  the axis of symmetry of the parabola. The Xaxis is oriented <br>
-//!  from the vertex of the parabola to the Focus of the parabola. <br>
-//! <br>
-//!  The "YAxis" of the parabola ("Location", "YDirection") is <br>
-//!  parallel to the directrix of the parabola. <br>
-//! <br>
-//!  The equation of the parabola in the local coordinates system is <br>
-//!  Y**2 = (2*P) * X <br>
-//!  P is the distance between the focus and the directrix of the <br>
-//!  parabola (called Parameter). <br>
-//!  The focal length F = P/2 is the distance between the vertex <br>
-//!  and the focus of the parabola. <br>
-//! <br>
-//!          * Creates a parabola with its local coordinate system "A2" <br>
-//!            and it's focal length "Focal". <br>
-//!          * Create a parabola with its directrix and its focus point. <br>
-class gce_MakeParab  : public gce_Root {
+//! This class implements the following algorithms used to
+//! create Parab from gp.
+//! Defines the parabola in the parameterization range  :
+//! ]-infinite, +infinite[
+//! The vertex of the parabola is the "Location" point of the
+//! local coordinate system (axis placement) of the parabola.
+//!
+//! The "XDirection" and the "YDirection" of this system define
+//! the plane of the parabola.
+//!
+//! The "XAxis" of the parabola ("Location", "XDirection") is
+//! the axis of symmetry of the parabola. The Xaxis is oriented
+//! from the vertex of the parabola to the Focus of the parabola.
+//!
+//! The "YAxis" of the parabola ("Location", "YDirection") is
+//! parallel to the directrix of the parabola.
+//!
+//! The equation of the parabola in the local coordinates system is
+//! Y**2 = (2*P) * X
+//! P is the distance between the focus and the directrix of the
+//! parabola (called Parameter).
+//! The focal length F = P/2 is the distance between the vertex
+//! and the focus of the parabola.
+//!
+//! * Creates a parabola with its local coordinate system "A2"
+//! and it's focal length "Focal".
+//! * Create a parabola with its directrix and its focus point.
+class gce_MakeParab  : public gce_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //!--- Purpose ; <br>
-//!  Creates a parabola with its local coordinate system "A2" <br>
-//!  and it's focal length "Focal". <br>
-//!  The XDirection of A2 defines the axis of symmetry of the <br>
-//!  parabola. The YDirection of A2 is parallel to the directrix <br>
-//!  of the parabola. The Location point of A2 is the vertex of <br>
-//!  the parabola <br>
-//!  The status is "NullFocusLength" if Focal < 0.0 <br>
-  Standard_EXPORT   gce_MakeParab(const gp_Ax2& A2,const Standard_Real Focal);
   
-//!  D is the directrix of the parabola and F the focus point. <br>
-//!  The symmetry axis (XAxis) of the parabola is normal to the <br>
-//!  directrix and pass through the focus point F, but its <br>
-//!  location point is the vertex of the parabola. <br>
-//!  The YAxis of the parabola is parallel to D and its location <br>
-//!  point is the vertex of the parabola. The normal to the plane <br>
-//!  of the parabola is the cross product between the XAxis and the <br>
-//!  YAxis. <br>
-  Standard_EXPORT   gce_MakeParab(const gp_Ax1& D,const gp_Pnt& F);
-  //! Returns the constructed parabola. <br>
-//! Exceptions StdFail_NotDone if no parabola is constructed. <br>
-  Standard_EXPORT    const gp_Parab& Value() const;
+  //! --- Purpose ;
+  //! Creates a parabola with its local coordinate system "A2"
+  //! and it's focal length "Focal".
+  //! The XDirection of A2 defines the axis of symmetry of the
+  //! parabola. The YDirection of A2 is parallel to the directrix
+  //! of the parabola. The Location point of A2 is the vertex of
+  //! the parabola
+  //! The status is "NullFocusLength" if Focal < 0.0
+  Standard_EXPORT gce_MakeParab(const gp_Ax2& A2, const Standard_Real Focal);
   
-  Standard_EXPORT    const gp_Parab& Operator() const;
-Standard_EXPORT operator gp_Parab() const;
 
+  //! D is the directrix of the parabola and F the focus point.
+  //! The symmetry axis (XAxis) of the parabola is normal to the
+  //! directrix and pass through the focus point F, but its
+  //! location point is the vertex of the parabola.
+  //! The YAxis of the parabola is parallel to D and its location
+  //! point is the vertex of the parabola. The normal to the plane
+  //! of the parabola is the cross product between the XAxis and the
+  //! YAxis.
+  Standard_EXPORT gce_MakeParab(const gp_Ax1& D, const gp_Pnt& F);
+  
+  //! Returns the constructed parabola.
+  //! Exceptions StdFail_NotDone if no parabola is constructed.
+  Standard_EXPORT  const  gp_Parab& Value()  const;
+  
+  Standard_EXPORT  const  gp_Parab& Operator()  const;
+Standard_EXPORT operator gp_Parab() const;
 
 
 
@@ -104,7 +95,7 @@ private:
 
 
 
-gp_Parab TheParab;
+  gp_Parab TheParab;
 
 
 };
@@ -113,7 +104,6 @@ gp_Parab TheParab;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _gce_MakeParab_HeaderFile

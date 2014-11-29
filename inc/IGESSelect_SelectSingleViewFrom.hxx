@@ -6,42 +6,36 @@
 #ifndef _IGESSelect_SelectSingleViewFrom_HeaderFile
 #define _IGESSelect_SelectSingleViewFrom_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESSelect_SelectSingleViewFrom_HeaderFile
 #include <Handle_IGESSelect_SelectSingleViewFrom.hxx>
-#endif
 
-#ifndef _IFSelect_SelectDeduct_HeaderFile
 #include <IFSelect_SelectDeduct.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Interface_InterfaceError;
 class Interface_EntityIterator;
 class Interface_Graph;
 class TCollection_AsciiString;
 
 
-//! This selection gets the Single Views attached to its input <br>
-//!           IGES entities. Single Views themselves or Drawings as passed <br>
-//!           as such (Drawings, for their Annotations) <br>
-class IGESSelect_SelectSingleViewFrom : public IFSelect_SelectDeduct {
+//! This selection gets the Single Views attached to its input
+//! IGES entities. Single Views themselves or Drawings as passed
+//! as such (Drawings, for their Annotations)
+class IGESSelect_SelectSingleViewFrom : public IFSelect_SelectDeduct
+{
 
 public:
 
-  //! Creates a SelectSingleViewFrom <br>
-  Standard_EXPORT   IGESSelect_SelectSingleViewFrom();
-  //! Selects the Single Views attached (in Directory Part) to <br>
-//!           input entities <br>
-  Standard_EXPORT     Interface_EntityIterator RootResult(const Interface_Graph& G) const;
-  //! Returns the label, with is "Single Views attached" <br>
-  Standard_EXPORT     TCollection_AsciiString Label() const;
+  
+  //! Creates a SelectSingleViewFrom
+  Standard_EXPORT IGESSelect_SelectSingleViewFrom();
+  
+  //! Selects the Single Views attached (in Directory Part) to
+  //! input entities
+  Standard_EXPORT   Interface_EntityIterator RootResult (const Interface_Graph& G)  const;
+  
+  //! Returns the label, with is "Single Views attached"
+  Standard_EXPORT   TCollection_AsciiString Label()  const;
 
 
 
@@ -50,9 +44,10 @@ public:
 
 protected:
 
-  //! Returns True, because selection works with a ViewSorter which <br>
-//!           gives a unique result <br>
-  Standard_EXPORT   virtual  Standard_Boolean HasUniqueResult() const;
+  
+  //! Returns True, because selection works with a ViewSorter which
+  //! gives a unique result
+  Standard_EXPORT virtual   Standard_Boolean HasUniqueResult()  const;
 
 
 
@@ -67,7 +62,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESSelect_SelectSingleViewFrom_HeaderFile

@@ -6,41 +6,34 @@
 #ifndef _StepGeom_OrientedSurface_HeaderFile
 #define _StepGeom_OrientedSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_OrientedSurface_HeaderFile
 #include <Handle_StepGeom_OrientedSurface.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _StepGeom_Surface_HeaderFile
 #include <StepGeom_Surface.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class TCollection_HAsciiString;
 
 
-//! Representation of STEP entity OrientedSurface <br>
-class StepGeom_OrientedSurface : public StepGeom_Surface {
+//! Representation of STEP entity OrientedSurface
+class StepGeom_OrientedSurface : public StepGeom_Surface
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepGeom_OrientedSurface();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aRepresentationItem_Name,const Standard_Boolean aOrientation) ;
-  //! Returns field Orientation <br>
-  Standard_EXPORT     Standard_Boolean Orientation() const;
-  //! Set field Orientation <br>
-  Standard_EXPORT     void SetOrientation(const Standard_Boolean Orientation) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepGeom_OrientedSurface();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aRepresentationItem_Name, const Standard_Boolean aOrientation) ;
+  
+  //! Returns field Orientation
+  Standard_EXPORT   Standard_Boolean Orientation()  const;
+  
+  //! Set field Orientation
+  Standard_EXPORT   void SetOrientation (const Standard_Boolean Orientation) ;
 
 
 
@@ -55,7 +48,7 @@ protected:
 private: 
 
 
-Standard_Boolean theOrientation;
+  Standard_Boolean theOrientation;
 
 
 };
@@ -64,7 +57,6 @@ Standard_Boolean theOrientation;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_OrientedSurface_HeaderFile

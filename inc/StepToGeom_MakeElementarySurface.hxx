@@ -6,42 +6,30 @@
 #ifndef _StepToGeom_MakeElementarySurface_HeaderFile
 #define _StepToGeom_MakeElementarySurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepGeom_ElementarySurface_HeaderFile
 #include <Handle_StepGeom_ElementarySurface.hxx>
-#endif
-#ifndef _Handle_Geom_ElementarySurface_HeaderFile
 #include <Handle_Geom_ElementarySurface.hxx>
-#endif
 class StepGeom_ElementarySurface;
 class Geom_ElementarySurface;
 
 
-//! This class implements the mapping between classes <br>
-//!          ElementarySurface from StepGeom which describes <br>
-//!          a ElementarySurface from Step and ElementarySurface from <br>
-//!          Geom. As ElementarySurface is an abstract Surface this <br>
-//!          class is an access to the sub-class required. <br>
-class StepToGeom_MakeElementarySurface  {
+//! This class implements the mapping between classes
+//! ElementarySurface from StepGeom which describes
+//! a ElementarySurface from Step and ElementarySurface from
+//! Geom. As ElementarySurface is an abstract Surface this
+//! class is an access to the sub-class required.
+class StepToGeom_MakeElementarySurface 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Standard_Boolean Convert(const Handle(StepGeom_ElementarySurface)& SS,Handle(Geom_ElementarySurface)& CS) ;
-
+  Standard_EXPORT static   Standard_Boolean Convert (const Handle(StepGeom_ElementarySurface)& SS, Handle(Geom_ElementarySurface)& CS) ;
 
 
 
@@ -64,7 +52,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToGeom_MakeElementarySurface_HeaderFile

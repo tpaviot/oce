@@ -6,46 +6,37 @@
 #ifndef _StepAP203_CcDesignSpecificationReference_HeaderFile
 #define _StepAP203_CcDesignSpecificationReference_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepAP203_CcDesignSpecificationReference_HeaderFile
 #include <Handle_StepAP203_CcDesignSpecificationReference.hxx>
-#endif
 
-#ifndef _Handle_StepAP203_HArray1OfSpecifiedItem_HeaderFile
 #include <Handle_StepAP203_HArray1OfSpecifiedItem.hxx>
-#endif
-#ifndef _StepBasic_DocumentReference_HeaderFile
 #include <StepBasic_DocumentReference.hxx>
-#endif
-#ifndef _Handle_StepBasic_Document_HeaderFile
 #include <Handle_StepBasic_Document.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
 class StepAP203_HArray1OfSpecifiedItem;
 class StepBasic_Document;
 class TCollection_HAsciiString;
 
 
-//! Representation of STEP entity CcDesignSpecificationReference <br>
-class StepAP203_CcDesignSpecificationReference : public StepBasic_DocumentReference {
+//! Representation of STEP entity CcDesignSpecificationReference
+class StepAP203_CcDesignSpecificationReference : public StepBasic_DocumentReference
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepAP203_CcDesignSpecificationReference();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(StepBasic_Document)& aDocumentReference_AssignedDocument,const Handle(TCollection_HAsciiString)& aDocumentReference_Source,const Handle(StepAP203_HArray1OfSpecifiedItem)& aItems) ;
-  //! Returns field Items <br>
-  Standard_EXPORT     Handle_StepAP203_HArray1OfSpecifiedItem Items() const;
-  //! Set field Items <br>
-  Standard_EXPORT     void SetItems(const Handle(StepAP203_HArray1OfSpecifiedItem)& Items) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepAP203_CcDesignSpecificationReference();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(StepBasic_Document)& aDocumentReference_AssignedDocument, const Handle(TCollection_HAsciiString)& aDocumentReference_Source, const Handle(StepAP203_HArray1OfSpecifiedItem)& aItems) ;
+  
+  //! Returns field Items
+  Standard_EXPORT   Handle(StepAP203_HArray1OfSpecifiedItem) Items()  const;
+  
+  //! Set field Items
+  Standard_EXPORT   void SetItems (const Handle(StepAP203_HArray1OfSpecifiedItem)& Items) ;
 
 
 
@@ -60,7 +51,7 @@ protected:
 private: 
 
 
-Handle_StepAP203_HArray1OfSpecifiedItem theItems;
+  Handle(StepAP203_HArray1OfSpecifiedItem) theItems;
 
 
 };
@@ -69,7 +60,6 @@ Handle_StepAP203_HArray1OfSpecifiedItem theItems;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP203_CcDesignSpecificationReference_HeaderFile

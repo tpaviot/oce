@@ -5,19 +5,11 @@
 
 #include <QANCollection_IndexedDataMapNodeOfIndexedDataMapOfRealPnt.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _TColStd_MapRealHasher_HeaderFile
 #include <TColStd_MapRealHasher.hxx>
-#endif
-#ifndef _QANCollection_IndexedDataMapOfRealPnt_HeaderFile
 #include <QANCollection_IndexedDataMapOfRealPnt.hxx>
-#endif
 
  
 

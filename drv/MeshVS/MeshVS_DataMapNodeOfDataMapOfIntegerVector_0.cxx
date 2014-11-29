@@ -5,22 +5,12 @@
 
 #include <MeshVS_DataMapNodeOfDataMapOfIntegerVector.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
-#ifndef _TColStd_MapIntegerHasher_HeaderFile
 #include <TColStd_MapIntegerHasher.hxx>
-#endif
-#ifndef _MeshVS_DataMapOfIntegerVector_HeaderFile
 #include <MeshVS_DataMapOfIntegerVector.hxx>
-#endif
-#ifndef _MeshVS_DataMapIteratorOfDataMapOfIntegerVector_HeaderFile
 #include <MeshVS_DataMapIteratorOfDataMapOfIntegerVector.hxx>
-#endif
 
  
 

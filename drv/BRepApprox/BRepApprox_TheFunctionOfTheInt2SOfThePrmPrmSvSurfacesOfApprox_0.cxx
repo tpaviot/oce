@@ -5,27 +5,12 @@
 
 #include <BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx>
 
-#ifndef _StdFail_UndefinedDerivative_HeaderFile
 #include <StdFail_UndefinedDerivative.hxx>
-#endif
-#ifndef _Standard_ConstructionError_HeaderFile
 #include <Standard_ConstructionError.hxx>
-#endif
-#ifndef _BRepAdaptor_Surface_HeaderFile
 #include <BRepAdaptor_Surface.hxx>
-#endif
-#ifndef _BRepApprox_SurfaceTool_HeaderFile
 #include <BRepApprox_SurfaceTool.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
-#ifndef _math_Matrix_HeaderFile
 #include <math_Matrix.hxx>
-#endif
-#ifndef _TColStd_Array1OfReal_HeaderFile
 #include <TColStd_Array1OfReal.hxx>
-#endif
  
 
 #define ThePSurface BRepAdaptor_Surface

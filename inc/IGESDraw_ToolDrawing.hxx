@@ -6,34 +6,16 @@
 #ifndef _IGESDraw_ToolDrawing_HeaderFile
 #define _IGESDraw_ToolDrawing_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_IGESDraw_Drawing_HeaderFile
 #include <Handle_IGESDraw_Drawing.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESReaderData_HeaderFile
 #include <Handle_IGESData_IGESReaderData.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
-#ifndef _Handle_Message_Messenger_HeaderFile
 #include <Handle_Message_Messenger.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_DomainError;
 class IGESDraw_Drawing;
 class IGESData_IGESReaderData;
@@ -48,35 +30,44 @@ class IGESData_IGESDumper;
 class Message_Messenger;
 
 
-//! Tool to work on a Drawing. Called by various Modules <br>
-//!           (ReadWriteModule, GeneralModule, SpecificModule) <br>
-class IGESDraw_ToolDrawing  {
+//! Tool to work on a Drawing. Called by various Modules
+//! (ReadWriteModule, GeneralModule, SpecificModule)
+class IGESDraw_ToolDrawing 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a ToolDrawing, ready to work <br>
-  Standard_EXPORT   IGESDraw_ToolDrawing();
-  //! Reads own parameters from file. <PR> gives access to them, <br>
-//!           <IR> detains parameter types and values <br>
-  Standard_EXPORT     void ReadOwnParams(const Handle(IGESDraw_Drawing)& ent,const Handle(IGESData_IGESReaderData)& IR,IGESData_ParamReader& PR) const;
-  //! Writes own parameters to IGESWriter <br>
-  Standard_EXPORT     void WriteOwnParams(const Handle(IGESDraw_Drawing)& ent,IGESData_IGESWriter& IW) const;
-  //! Lists the Entities shared by a Drawing <ent>, from <br>
-//!           its specific (own) parameters <br>
-  Standard_EXPORT     void OwnShared(const Handle(IGESDraw_Drawing)& ent,Interface_EntityIterator& iter) const;
-  //! Sets automatic unambiguous Correction on a Drawing <br>
-//!           (Null Views are removed from list) <br>
-  Standard_EXPORT     Standard_Boolean OwnCorrect(const Handle(IGESDraw_Drawing)& ent) const;
-  //! Returns specific DirChecker <br>
-  Standard_EXPORT     IGESData_DirChecker DirChecker(const Handle(IGESDraw_Drawing)& ent) const;
-  //! Performs Specific Semantic Check <br>
-  Standard_EXPORT     void OwnCheck(const Handle(IGESDraw_Drawing)& ent,const Interface_ShareTool& shares,Handle(Interface_Check)& ach) const;
-  //! Copies Specific Parameters <br>
-  Standard_EXPORT     void OwnCopy(const Handle(IGESDraw_Drawing)& entfrom,const Handle(IGESDraw_Drawing)& entto,Interface_CopyTool& TC) const;
-  //! Dump of Specific Parameters <br>
-  Standard_EXPORT     void OwnDump(const Handle(IGESDraw_Drawing)& ent,const IGESData_IGESDumper& dumper,const Handle(Message_Messenger)& S,const Standard_Integer own) const;
-
+  
+  //! Returns a ToolDrawing, ready to work
+  Standard_EXPORT IGESDraw_ToolDrawing();
+  
+  //! Reads own parameters from file. <PR> gives access to them,
+  //! <IR> detains parameter types and values
+  Standard_EXPORT   void ReadOwnParams (const Handle(IGESDraw_Drawing)& ent, const Handle(IGESData_IGESReaderData)& IR, IGESData_ParamReader& PR)  const;
+  
+  //! Writes own parameters to IGESWriter
+  Standard_EXPORT   void WriteOwnParams (const Handle(IGESDraw_Drawing)& ent, IGESData_IGESWriter& IW)  const;
+  
+  //! Lists the Entities shared by a Drawing <ent>, from
+  //! its specific (own) parameters
+  Standard_EXPORT   void OwnShared (const Handle(IGESDraw_Drawing)& ent, Interface_EntityIterator& iter)  const;
+  
+  //! Sets automatic unambiguous Correction on a Drawing
+  //! (Null Views are removed from list)
+  Standard_EXPORT   Standard_Boolean OwnCorrect (const Handle(IGESDraw_Drawing)& ent)  const;
+  
+  //! Returns specific DirChecker
+  Standard_EXPORT   IGESData_DirChecker DirChecker (const Handle(IGESDraw_Drawing)& ent)  const;
+  
+  //! Performs Specific Semantic Check
+  Standard_EXPORT   void OwnCheck (const Handle(IGESDraw_Drawing)& ent, const Interface_ShareTool& shares, Handle(Interface_Check)& ach)  const;
+  
+  //! Copies Specific Parameters
+  Standard_EXPORT   void OwnCopy (const Handle(IGESDraw_Drawing)& entfrom, const Handle(IGESDraw_Drawing)& entto, Interface_CopyTool& TC)  const;
+  
+  //! Dump of Specific Parameters
+  Standard_EXPORT   void OwnDump (const Handle(IGESDraw_Drawing)& ent, const IGESData_IGESDumper& dumper, const Handle(Message_Messenger)& S, const Standard_Integer own)  const;
 
 
 
@@ -99,7 +90,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESDraw_ToolDrawing_HeaderFile

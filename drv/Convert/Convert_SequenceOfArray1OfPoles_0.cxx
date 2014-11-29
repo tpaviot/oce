@@ -5,21 +5,13 @@
 
 #include <Convert_SequenceOfArray1OfPoles.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _TColgp_HArray1OfPnt_HeaderFile
 #include <TColgp_HArray1OfPnt.hxx>
-#endif
-#ifndef _Convert_SequenceNodeOfSequenceOfArray1OfPoles_HeaderFile
 #include <Convert_SequenceNodeOfSequenceOfArray1OfPoles.hxx>
-#endif
  
 
-#define SeqItem Handle_TColgp_HArray1OfPnt
+#define SeqItem Handle(TColgp_HArray1OfPnt)
 #define SeqItem_hxx <TColgp_HArray1OfPnt.hxx>
 #define TCollection_SequenceNode Convert_SequenceNodeOfSequenceOfArray1OfPoles
 #define TCollection_SequenceNode_hxx <Convert_SequenceNodeOfSequenceOfArray1OfPoles.hxx>

@@ -6,141 +6,136 @@
 #ifndef _Message_Msg_HeaderFile
 #define _Message_Msg_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_ExtendedString_HeaderFile
 #include <TCollection_ExtendedString.hxx>
-#endif
-#ifndef _TColStd_SequenceOfInteger_HeaderFile
 #include <TColStd_SequenceOfInteger.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_TCollection_HExtendedString_HeaderFile
 #include <Handle_TCollection_HExtendedString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TCollection_ExtendedString;
 class TCollection_AsciiString;
 class TCollection_HAsciiString;
 class TCollection_HExtendedString;
 
 
-//! This class provides a tool for constructing the parametrized message <br>
-//!          basing on resources loaded by Message_MsgFile tool. <br>
-//! <br>
-//!          A Message is created from a keyword: this keyword identifies the <br>
-//!          message in a message file that should be previously loaded by call <br>
-//!          to Message_MsgFile::LoadFile(). <br>
-//! <br>
-//!          The text of the message can contain placeholders for the parameters <br>
-//!          which are to be filled by the proper values when the message <br>
-//!          is prepared. Most of the format specifiers used in C can be used, <br>
-//!          for instance, %s for string, %d for integer etc. In addition, <br>
-//!          specifier %f is supported for double numbers (for compatibility <br>
-//!          with previous versions). <br>
-//! <br>
-//!          User fills the parameter fields in the text of the message by <br>
-//!          calling corresponding methods Arg() or operators "<<". <br>
-//! <br>
-//!          The resulting message, filled with all parameters, can be obtained <br>
-//!          by method Get(). If some parameters were not filled, the text <br>
-//!          UNKNOWN is placed instead. <br>
-class Message_Msg  {
+//! This class provides a tool for constructing the parametrized message
+//! basing on resources loaded by Message_MsgFile tool.
+//!
+//! A Message is created from a keyword: this keyword identifies the
+//! message in a message file that should be previously loaded by call
+//! to Message_MsgFile::LoadFile().
+//!
+//! The text of the message can contain placeholders for the parameters
+//! which are to be filled by the proper values when the message
+//! is prepared. Most of the format specifiers used in C can be used,
+//! for instance, %s for string, %d for integer etc. In addition,
+//! specifier %f is supported for double numbers (for compatibility
+//! with previous versions).
+//!
+//! User fills the parameter fields in the text of the message by
+//! calling corresponding methods Arg() or operators "<<".
+//!
+//! The resulting message, filled with all parameters, can be obtained
+//! by method Get(). If some parameters were not filled, the text
+//! UNKNOWN is placed instead.
+class Message_Msg 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Empty constructor <br>
-  Standard_EXPORT   Message_Msg();
-  //! Copy constructor <br>
-  Standard_EXPORT   Message_Msg(const Message_Msg& theMsg);
-  //! Create a message using a corresponding entry in Message_MsgFile <br>
-  Standard_EXPORT   Message_Msg(const Standard_CString theKey);
-  //! Create a message using a corresponding entry in Message_MsgFile <br>
-  Standard_EXPORT   Message_Msg(const TCollection_ExtendedString& theKey);
-  //! Set a message body text -- can be used as alternative to <br>
-//!           using messages from resource file <br>
-  Standard_EXPORT     void Set(const Standard_CString theMsg) ;
-  //! Set a message body text -- can be used as alternative to <br>
-//!           using messages from resource file <br>
-  Standard_EXPORT     void Set(const TCollection_ExtendedString& theMsg) ;
-  //! Set a value for %..s conversion <br>
-  Standard_EXPORT     Message_Msg& Arg(const Standard_CString theString) ;
-    Message_Msg& operator <<(const Standard_CString theString) 
+  
+  //! Empty constructor
+  Standard_EXPORT Message_Msg();
+  
+  //! Copy constructor
+  Standard_EXPORT Message_Msg(const Message_Msg& theMsg);
+  
+  //! Create a message using a corresponding entry in Message_MsgFile
+  Standard_EXPORT Message_Msg(const Standard_CString theKey);
+  
+  //! Create a message using a corresponding entry in Message_MsgFile
+  Standard_EXPORT Message_Msg(const TCollection_ExtendedString& theKey);
+  
+  //! Set a message body text -- can be used as alternative to
+  //! using messages from resource file
+  Standard_EXPORT   void Set (const Standard_CString theMsg) ;
+  
+  //! Set a message body text -- can be used as alternative to
+  //! using messages from resource file
+  Standard_EXPORT   void Set (const TCollection_ExtendedString& theMsg) ;
+  
+  //! Set a value for %..s conversion
+  Standard_EXPORT   Message_Msg& Arg (const Standard_CString theString) ;
+  Message_Msg& operator << (const Standard_CString theString) 
 {
   return Arg(theString);
 }
-  //! Set a value for %..s conversion <br>
-        Message_Msg& Arg(const TCollection_AsciiString& theString) ;
-      Message_Msg& operator <<(const TCollection_AsciiString& theString) 
+  
+  //! Set a value for %..s conversion
+      Message_Msg& Arg (const TCollection_AsciiString& theString) ;
+    Message_Msg& operator << (const TCollection_AsciiString& theString) 
 {
   return Arg(theString);
 }
-  //! Set a value for %..s conversion <br>
-        Message_Msg& Arg(const Handle(TCollection_HAsciiString)& theString) ;
-      Message_Msg& operator <<(const Handle(TCollection_HAsciiString)& theString) 
+  
+  //! Set a value for %..s conversion
+      Message_Msg& Arg (const Handle(TCollection_HAsciiString)& theString) ;
+    Message_Msg& operator << (const Handle(TCollection_HAsciiString)& theString) 
 {
   return Arg(theString);
 }
-  //! Set a value for %..s conversion <br>
-  Standard_EXPORT     Message_Msg& Arg(const TCollection_ExtendedString& theString) ;
-    Message_Msg& operator <<(const TCollection_ExtendedString& theString) 
+  
+  //! Set a value for %..s conversion
+  Standard_EXPORT   Message_Msg& Arg (const TCollection_ExtendedString& theString) ;
+  Message_Msg& operator << (const TCollection_ExtendedString& theString) 
 {
   return Arg(theString);
 }
-  //! Set a value for %..s conversion <br>
-        Message_Msg& Arg(const Handle(TCollection_HExtendedString)& theString) ;
-      Message_Msg& operator <<(const Handle(TCollection_HExtendedString)& theString) 
+  
+  //! Set a value for %..s conversion
+      Message_Msg& Arg (const Handle(TCollection_HExtendedString)& theString) ;
+    Message_Msg& operator << (const Handle(TCollection_HExtendedString)& theString) 
 {
   return Arg(theString);
 }
-  //! Set a value for %..d, %..i, %..o, %..u, %..x or %..X conversion <br>
-  Standard_EXPORT     Message_Msg& Arg(const Standard_Integer theInt) ;
-    Message_Msg& operator <<(const Standard_Integer theInt) 
+  
+  //! Set a value for %..d, %..i, %..o, %..u, %..x or %..X conversion
+  Standard_EXPORT   Message_Msg& Arg (const Standard_Integer theInt) ;
+  Message_Msg& operator << (const Standard_Integer theInt) 
 {
   return Arg(theInt);
 }
-  //! Set a value for %..f, %..e, %..E, %..g or %..G conversion <br>
-  Standard_EXPORT     Message_Msg& Arg(const Standard_Real theReal) ;
-    Message_Msg& operator <<(const Standard_Real theReal) 
+  
+  //! Set a value for %..f, %..e, %..E, %..g or %..G conversion
+  Standard_EXPORT   Message_Msg& Arg (const Standard_Real theReal) ;
+  Message_Msg& operator << (const Standard_Real theReal) 
 {
   return Arg(theReal);
 }
-  //! Returns the original message text <br>
-       const TCollection_ExtendedString& Original() const;
-  //! Returns current state of the message text with <br>
-//!           parameters to the moment <br>
-       const TCollection_ExtendedString& Value() const;
-  //! Tells if Value differs from Original <br>
-        Standard_Boolean IsEdited() const;
-  //! Return the resulting message string with all parameters <br>
-//!           filled. If some parameters were not yet filled by calls <br>
-//!           to methods Arg (or <<), these parameters are filled by <br>
-//!           the word UNKNOWN <br>
-  Standard_EXPORT    const TCollection_ExtendedString& Get() ;
+  
+  //! Returns the original message text
+     const  TCollection_ExtendedString& Original()  const;
+  
+  //! Returns current state of the message text with
+  //! parameters to the moment
+     const  TCollection_ExtendedString& Value()  const;
+  
+  //! Tells if Value differs from Original
+      Standard_Boolean IsEdited()  const;
+  
+  //! Return the resulting message string with all parameters
+  //! filled. If some parameters were not yet filled by calls
+  //! to methods Arg (or <<), these parameters are filled by
+  //! the word UNKNOWN
+  Standard_EXPORT  const  TCollection_ExtendedString& Get() ;
 operator const TCollection_ExtendedString& () { return Get(); }
-
 
 
 
@@ -154,14 +149,14 @@ protected:
 private:
 
   
-  Standard_EXPORT     Standard_Integer getFormat(const Standard_Integer theType,TCollection_AsciiString& theFormat) ;
+  Standard_EXPORT   Standard_Integer getFormat (const Standard_Integer theType, TCollection_AsciiString& theFormat) ;
   
-  Standard_EXPORT     void replaceText(const Standard_Integer theFirst,const Standard_Integer theNb,const TCollection_ExtendedString& theStr) ;
+  Standard_EXPORT   void replaceText (const Standard_Integer theFirst, const Standard_Integer theNb, const TCollection_ExtendedString& theStr) ;
 
 
-TCollection_ExtendedString myOriginal;
-TCollection_ExtendedString myMessageBody;
-TColStd_SequenceOfInteger mySeqOfFormats;
+  TCollection_ExtendedString myOriginal;
+  TCollection_ExtendedString myMessageBody;
+  TColStd_SequenceOfInteger mySeqOfFormats;
 
 
 };
@@ -171,7 +166,6 @@ TColStd_SequenceOfInteger mySeqOfFormats;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Message_Msg_HeaderFile

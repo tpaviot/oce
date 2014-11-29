@@ -17,7 +17,7 @@
 #ifndef _TopOpeBRepDS_traceDSX_HeaderFile
 #define _TopOpeBRepDS_traceDSX_HeaderFile
 
-#ifdef DEB
+#ifdef OCCT_DEBUG
 
 #include <TopOpeBRepDS_define.hxx>
 #include <TColStd_HArray1OfBoolean.hxx>
@@ -35,8 +35,8 @@ public:
   Standard_Boolean GetI(const Standard_Integer i) const;
   void Allocate();
 protected: 
-  Handle_TopOpeBRepDS_HDataStructure myHDS;
-  Standard_Integer myne; Handle_TColStd_HArray1OfBoolean myhe;
+  Handle(TopOpeBRepDS_HDataStructure) myHDS;
+  Standard_Integer myne; Handle(TColStd_HArray1OfBoolean) myhe;
 };
 
 class TopOpeBRepDS_traceCURVE : public TopOpeBRepDS_traceDS {  
@@ -57,7 +57,7 @@ private:
   Standard_Integer myns;
 };
 
-// #ifdef DEB
+// #ifdef OCCT_DEBUG
 #endif
 
 // #define _TopOpeBRepDS_traceDSX_HeaderFile

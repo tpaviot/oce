@@ -1,3 +1,1 @@
-#ifndef _Interface_IntVal_HeaderFile
 #include <Interface_IntVal.hxx>
-#endif

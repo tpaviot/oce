@@ -1,12 +1,4 @@
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _IGESData_IGESDumper_HeaderFile
 #include <IGESData_IGESDumper.hxx>
-#endif
-#ifndef _Message_Messenger_HeaderFile
 #include <Message_Messenger.hxx>
-#endif
-#ifndef _IGESDimen_SpecificModule_HeaderFile
 #include <IGESDimen_SpecificModule.hxx>
-#endif

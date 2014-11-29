@@ -7,7 +7,6 @@
 #define _TCollection_MapNodePtr_HeaderFile
 
 class TCollection_MapNode;
-
 typedef TCollection_MapNode* TCollection_MapNodePtr;
 
-#endif
+#endif // _TCollection_MapNodePtr_HeaderFile

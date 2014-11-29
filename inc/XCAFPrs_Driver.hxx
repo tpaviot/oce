@@ -6,41 +6,31 @@
 #ifndef _XCAFPrs_Driver_HeaderFile
 #define _XCAFPrs_Driver_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_XCAFPrs_Driver_HeaderFile
 #include <Handle_XCAFPrs_Driver.hxx>
-#endif
 
-#ifndef _TPrsStd_Driver_HeaderFile
 #include <TPrsStd_Driver.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_AIS_InteractiveObject_HeaderFile
 #include <Handle_AIS_InteractiveObject.hxx>
-#endif
 class TDF_Label;
 class AIS_InteractiveObject;
 class Standard_GUID;
 
 
-//! Implements a driver for presentation of shapes in DECAF <br>
-//!          document. Its the only purpose is to initialize and return <br>
-//!          XCAFPrs_AISObject object on request <br>
-class XCAFPrs_Driver : public TPrsStd_Driver {
+//! Implements a driver for presentation of shapes in DECAF
+//! document. Its the only purpose is to initialize and return
+//! XCAFPrs_AISObject object on request
+class XCAFPrs_Driver : public TPrsStd_Driver
+{
 
 public:
 
   
-  Standard_EXPORT   virtual  Standard_Boolean Update(const TDF_Label& L,Handle(AIS_InteractiveObject)& ais) ;
-  //! returns GUID of the driver <br>
-  Standard_EXPORT   static const Standard_GUID& GetID() ;
+  Standard_EXPORT virtual   Standard_Boolean Update (const TDF_Label& L, Handle(AIS_InteractiveObject)& ais) ;
+  
+  //! returns GUID of the driver
+  Standard_EXPORT static  const  Standard_GUID& GetID() ;
 
 
 
@@ -63,7 +53,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XCAFPrs_Driver_HeaderFile

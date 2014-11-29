@@ -6,38 +6,27 @@
 #ifndef _TColgp_SequenceNodeOfSequenceOfVec2d_HeaderFile
 #define _TColgp_SequenceNodeOfSequenceOfVec2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColgp_SequenceNodeOfSequenceOfVec2d_HeaderFile
 #include <Handle_TColgp_SequenceNodeOfSequenceOfVec2d.hxx>
-#endif
 
-#ifndef _gp_Vec2d_HeaderFile
 #include <gp_Vec2d.hxx>
-#endif
-#ifndef _TCollection_SeqNode_HeaderFile
 #include <TCollection_SeqNode.hxx>
-#endif
-#ifndef _TCollection_SeqNodePtr_HeaderFile
 #include <TCollection_SeqNodePtr.hxx>
-#endif
 class gp_Vec2d;
 class TColgp_SequenceOfVec2d;
 
 
 
-class TColgp_SequenceNodeOfSequenceOfVec2d : public TCollection_SeqNode {
+class TColgp_SequenceNodeOfSequenceOfVec2d : public TCollection_SeqNode
+{
 
 public:
 
   
-      TColgp_SequenceNodeOfSequenceOfVec2d(const gp_Vec2d& I,const TCollection_SeqNodePtr& n,const TCollection_SeqNodePtr& p);
+    TColgp_SequenceNodeOfSequenceOfVec2d(const gp_Vec2d& I, const TCollection_SeqNodePtr& n, const TCollection_SeqNodePtr& p);
   
-        gp_Vec2d& Value() const;
+      gp_Vec2d& Value()  const;
 
 
 
@@ -52,7 +41,7 @@ protected:
 private: 
 
 
-gp_Vec2d myValue;
+  gp_Vec2d myValue;
 
 
 };
@@ -78,7 +67,6 @@ gp_Vec2d myValue;
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColgp_SequenceNodeOfSequenceOfVec2d_HeaderFile

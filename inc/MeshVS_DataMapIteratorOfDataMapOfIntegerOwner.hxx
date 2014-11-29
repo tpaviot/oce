@@ -6,28 +6,14 @@
 #ifndef _MeshVS_DataMapIteratorOfDataMapOfIntegerOwner_HeaderFile
 #define _MeshVS_DataMapIteratorOfDataMapOfIntegerOwner_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BasicMapIterator_HeaderFile
 #include <TCollection_BasicMapIterator.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Handle_SelectMgr_EntityOwner_HeaderFile
 #include <Handle_SelectMgr_EntityOwner.hxx>
-#endif
-#ifndef _Handle_MeshVS_DataMapNodeOfDataMapOfIntegerOwner_HeaderFile
 #include <Handle_MeshVS_DataMapNodeOfDataMapOfIntegerOwner.hxx>
-#endif
 class Standard_NoSuchObject;
 class SelectMgr_EntityOwner;
 class TColStd_MapIntegerHasher;
@@ -36,22 +22,22 @@ class MeshVS_DataMapNodeOfDataMapOfIntegerOwner;
 
 
 
-class MeshVS_DataMapIteratorOfDataMapOfIntegerOwner  : public TCollection_BasicMapIterator {
+class MeshVS_DataMapIteratorOfDataMapOfIntegerOwner  : public TCollection_BasicMapIterator
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   MeshVS_DataMapIteratorOfDataMapOfIntegerOwner();
+  Standard_EXPORT MeshVS_DataMapIteratorOfDataMapOfIntegerOwner();
   
-  Standard_EXPORT   MeshVS_DataMapIteratorOfDataMapOfIntegerOwner(const MeshVS_DataMapOfIntegerOwner& aMap);
+  Standard_EXPORT MeshVS_DataMapIteratorOfDataMapOfIntegerOwner(const MeshVS_DataMapOfIntegerOwner& aMap);
   
-  Standard_EXPORT     void Initialize(const MeshVS_DataMapOfIntegerOwner& aMap) ;
+  Standard_EXPORT   void Initialize (const MeshVS_DataMapOfIntegerOwner& aMap) ;
   
-  Standard_EXPORT    const Standard_Integer& Key() const;
+  Standard_EXPORT  const  Standard_Integer& Key()  const;
   
-  Standard_EXPORT    const Handle_SelectMgr_EntityOwner& Value() const;
-
+  Standard_EXPORT  const  Handle(SelectMgr_EntityOwner)& Value()  const;
 
 
 
@@ -74,7 +60,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MeshVS_DataMapIteratorOfDataMapOfIntegerOwner_HeaderFile

@@ -6,44 +6,17 @@
 #ifndef _PTopoDS_HArray1OfShape1_HeaderFile
 #define _PTopoDS_HArray1OfShape1_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_PTopoDS_HArray1OfShape1_HeaderFile
 #include <Handle_PTopoDS_HArray1OfShape1.hxx>
-#endif
 
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _PTopoDS_Shape1_HeaderFile
 #include <PTopoDS_Shape1.hxx>
-#endif
-#ifndef _Handle_Standard_Persistent_HeaderFile
-#include <Handle_Standard_Persistent.hxx>
-#endif
-#ifndef _PTopoDS_FieldOfHArray1OfShape1_HeaderFile
 #include <PTopoDS_FieldOfHArray1OfShape1.hxx>
-#endif
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
-#ifndef _Handle_PTopoDS_VArrayNodeOfFieldOfHArray1OfShape1_HeaderFile
 #include <Handle_PTopoDS_VArrayNodeOfFieldOfHArray1OfShape1.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
-#include <Standard_OStream.hxx>
-#endif
-class Standard_Persistent;
 class Standard_OutOfRange;
 class Standard_RangeError;
 class PTopoDS_Shape1;
@@ -52,30 +25,27 @@ class PTopoDS_VArrayNodeOfFieldOfHArray1OfShape1;
 class PTopoDS_VArrayTNodeOfFieldOfHArray1OfShape1;
 
 
-class PTopoDS_HArray1OfShape1 : public Standard_Persistent {
+class PTopoDS_HArray1OfShape1 : public Standard_Persistent
+{
 
 public:
 
   
-  Standard_EXPORT   PTopoDS_HArray1OfShape1(const Standard_Integer Low,const Standard_Integer Up);
+  Standard_EXPORT PTopoDS_HArray1OfShape1(const Standard_Integer Low, const Standard_Integer Up);
   
-  Standard_EXPORT   PTopoDS_HArray1OfShape1(const Standard_Integer Low,const Standard_Integer Up,const PTopoDS_Shape1& V);
+  Standard_EXPORT PTopoDS_HArray1OfShape1(const Standard_Integer Low, const Standard_Integer Up, const PTopoDS_Shape1& V);
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const PTopoDS_Shape1& Value) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const PTopoDS_Shape1& Value) ;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-  Standard_EXPORT     PTopoDS_Shape1 Value(const Standard_Integer Index) const;
-  
-  Standard_EXPORT   virtual  Handle_Standard_Persistent ShallowCopy() const;
-  
-  Standard_EXPORT   virtual  void ShallowDump(Standard_OStream& s) const;
+  Standard_EXPORT   PTopoDS_Shape1 Value (const Standard_Integer Index)  const;
 
-  PTopoDS_HArray1OfShape1( )
+PTopoDS_HArray1OfShape1( )
 {
   
 }
@@ -101,13 +71,13 @@ protected:
 private: 
 
   
-  Standard_EXPORT     PTopoDS_FieldOfHArray1OfShape1 Field() const;
+  Standard_EXPORT   PTopoDS_FieldOfHArray1OfShape1 Field()  const;
   
-  Standard_EXPORT     Standard_Address Datas() const;
+  Standard_EXPORT   Standard_Address Datas()  const;
 
-Standard_Integer LowerBound;
-Standard_Integer UpperBound;
-PTopoDS_FieldOfHArray1OfShape1 Data;
+  Standard_Integer LowerBound;
+  Standard_Integer UpperBound;
+  PTopoDS_FieldOfHArray1OfShape1 Data;
 
 
 };
@@ -157,11 +127,6 @@ PTopoDS_FieldOfHArray1OfShape1 Data;
 #undef PCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
-inline void ShallowDump(const Handle_PTopoDS_HArray1OfShape1& me,Standard_OStream& s) {
- me->ShallowDump(s);
-}
 
 
-
-#endif
+#endif // _PTopoDS_HArray1OfShape1_HeaderFile

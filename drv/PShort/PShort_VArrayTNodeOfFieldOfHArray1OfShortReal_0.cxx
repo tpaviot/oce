@@ -5,12 +5,8 @@
 
 #include <PShort_VArrayTNodeOfFieldOfHArray1OfShortReal.hxx>
 
-#ifndef _PShort_FieldOfHArray1OfShortReal_HeaderFile
 #include <PShort_FieldOfHArray1OfShortReal.hxx>
-#endif
-#ifndef _PShort_VArrayNodeOfFieldOfHArray1OfShortReal_HeaderFile
 #include <PShort_VArrayNodeOfFieldOfHArray1OfShortReal.hxx>
-#endif
  
 
 #define Item Standard_ShortReal

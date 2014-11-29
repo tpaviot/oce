@@ -6,22 +6,15 @@
 #ifndef _Handle_StepShape_FaceSurface_HeaderFile
 #define _Handle_StepShape_FaceSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepShape_Face_HeaderFile
 #include <Handle_StepShape_Face.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepShape_Face);
 class StepShape_FaceSurface;
 
-DEFINE_STANDARD_HANDLE(StepShape_FaceSurface,StepShape_Face)
+DEFINE_STANDARD_HANDLE(StepShape_FaceSurface, StepShape_Face)
 
-#endif
+#endif // _Handle_StepShape_FaceSurface_HeaderFile

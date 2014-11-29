@@ -6,39 +6,28 @@
 #ifndef _TopOpeBRepDS_ListNodeOfListOfInterference_HeaderFile
 #define _TopOpeBRepDS_ListNodeOfListOfInterference_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopOpeBRepDS_ListNodeOfListOfInterference_HeaderFile
 #include <Handle_TopOpeBRepDS_ListNodeOfListOfInterference.hxx>
-#endif
 
-#ifndef _Handle_TopOpeBRepDS_Interference_HeaderFile
 #include <Handle_TopOpeBRepDS_Interference.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopOpeBRepDS_Interference;
 class TopOpeBRepDS_ListOfInterference;
 class TopOpeBRepDS_ListIteratorOfListOfInterference;
 
 
 
-class TopOpeBRepDS_ListNodeOfListOfInterference : public TCollection_MapNode {
+class TopOpeBRepDS_ListNodeOfListOfInterference : public TCollection_MapNode
+{
 
 public:
 
   
-      TopOpeBRepDS_ListNodeOfListOfInterference(const Handle(TopOpeBRepDS_Interference)& I,const TCollection_MapNodePtr& n);
+    TopOpeBRepDS_ListNodeOfListOfInterference(const Handle(TopOpeBRepDS_Interference)& I, const TCollection_MapNodePtr& n);
   
-        Handle_TopOpeBRepDS_Interference& Value() const;
+      Handle(TopOpeBRepDS_Interference)& Value()  const;
 
 
 
@@ -53,12 +42,12 @@ protected:
 private: 
 
 
-Handle_TopOpeBRepDS_Interference myValue;
+  Handle(TopOpeBRepDS_Interference) myValue;
 
 
 };
 
-#define Item Handle_TopOpeBRepDS_Interference
+#define Item Handle(TopOpeBRepDS_Interference)
 #define Item_hxx <TopOpeBRepDS_Interference.hxx>
 #define TCollection_ListNode TopOpeBRepDS_ListNodeOfListOfInterference
 #define TCollection_ListNode_hxx <TopOpeBRepDS_ListNodeOfListOfInterference.hxx>
@@ -83,7 +72,6 @@ Handle_TopOpeBRepDS_Interference myValue;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_ListNodeOfListOfInterference_HeaderFile

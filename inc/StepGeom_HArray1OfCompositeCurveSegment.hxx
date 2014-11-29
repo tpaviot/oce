@@ -6,28 +6,14 @@
 #ifndef _StepGeom_HArray1OfCompositeCurveSegment_HeaderFile
 #define _StepGeom_HArray1OfCompositeCurveSegment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepGeom_HArray1OfCompositeCurveSegment_HeaderFile
 #include <Handle_StepGeom_HArray1OfCompositeCurveSegment.hxx>
-#endif
 
-#ifndef _StepGeom_Array1OfCompositeCurveSegment_HeaderFile
 #include <StepGeom_Array1OfCompositeCurveSegment.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_StepGeom_CompositeCurveSegment_HeaderFile
 #include <Handle_StepGeom_CompositeCurveSegment.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class StepGeom_Array1OfCompositeCurveSegment;
 
 
 
-class StepGeom_HArray1OfCompositeCurveSegment : public MMgt_TShared {
+class StepGeom_HArray1OfCompositeCurveSegment : public MMgt_TShared
+{
 
 public:
 
   
-      StepGeom_HArray1OfCompositeCurveSegment(const Standard_Integer Low,const Standard_Integer Up);
+    StepGeom_HArray1OfCompositeCurveSegment(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepGeom_HArray1OfCompositeCurveSegment(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepGeom_CompositeCurveSegment)& V);
+    StepGeom_HArray1OfCompositeCurveSegment(const Standard_Integer Low, const Standard_Integer Up, const Handle(StepGeom_CompositeCurveSegment)& V);
   
-        void Init(const Handle(StepGeom_CompositeCurveSegment)& V) ;
+      void Init (const Handle(StepGeom_CompositeCurveSegment)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(StepGeom_CompositeCurveSegment)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(StepGeom_CompositeCurveSegment)& Value) ;
   
-       const Handle_StepGeom_CompositeCurveSegment& Value(const Standard_Integer Index) const;
+     const  Handle(StepGeom_CompositeCurveSegment)& Value (const Standard_Integer Index)  const;
   
-        Handle_StepGeom_CompositeCurveSegment& ChangeValue(const Standard_Integer Index) ;
+      Handle(StepGeom_CompositeCurveSegment)& ChangeValue (const Standard_Integer Index) ;
   
-       const StepGeom_Array1OfCompositeCurveSegment& Array1() const;
+     const  StepGeom_Array1OfCompositeCurveSegment& Array1()  const;
   
-        StepGeom_Array1OfCompositeCurveSegment& ChangeArray1() ;
+      StepGeom_Array1OfCompositeCurveSegment& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-StepGeom_Array1OfCompositeCurveSegment myArray;
+  StepGeom_Array1OfCompositeCurveSegment myArray;
 
 
 };
 
-#define ItemHArray1 Handle_StepGeom_CompositeCurveSegment
+#define ItemHArray1 Handle(StepGeom_CompositeCurveSegment)
 #define ItemHArray1_hxx <StepGeom_CompositeCurveSegment.hxx>
 #define TheArray1 StepGeom_Array1OfCompositeCurveSegment
 #define TheArray1_hxx <StepGeom_Array1OfCompositeCurveSegment.hxx>
@@ -103,7 +90,6 @@ StepGeom_Array1OfCompositeCurveSegment myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepGeom_HArray1OfCompositeCurveSegment_HeaderFile

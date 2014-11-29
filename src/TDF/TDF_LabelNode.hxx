@@ -26,7 +26,7 @@ class TDF_Attribute;
 class TDF_AttributeIterator;
 class TDF_ChildIterator;
 class TDF_Data;
-class Handle_TDF_Data;
+class Handle(TDF_Data);
 class TDF_Label;
 
 #define KEEP_LOCAL_ROOT
@@ -171,7 +171,7 @@ class TDF_LabelNode {
 #ifdef KEEP_LOCAL_ROOT
   TDF_Data *             myData;
 #endif
-#ifdef DEB
+#ifdef OCCT_DEBUG
   TCollection_AsciiString myDebugEntry;
 #endif
 };

@@ -6,73 +6,68 @@
 #ifndef _XCAFPrs_Style_HeaderFile
 #define _XCAFPrs_Style_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Quantity_Color_HeaderFile
 #include <Quantity_Color.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Quantity_Color;
 
 
-//! Represents a set of styling settings applicable to <br>
-//!          a (sub)shape <br>
-class XCAFPrs_Style  {
+//! Represents a set of styling settings applicable to
+//! a (sub)shape
+class XCAFPrs_Style 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   XCAFPrs_Style();
+  Standard_EXPORT XCAFPrs_Style();
   
-  Standard_EXPORT     Standard_Boolean IsSetColorSurf() const;
+  Standard_EXPORT   Standard_Boolean IsSetColorSurf()  const;
   
-  Standard_EXPORT     Quantity_Color GetColorSurf() const;
+  Standard_EXPORT   Quantity_Color GetColorSurf()  const;
   
-  Standard_EXPORT     void SetColorSurf(const Quantity_Color& col) ;
-  //! Manage surface color setting <br>
-  Standard_EXPORT     void UnSetColorSurf() ;
+  Standard_EXPORT   void SetColorSurf (const Quantity_Color& col) ;
   
-  Standard_EXPORT     Standard_Boolean IsSetColorCurv() const;
+  //! Manage surface color setting
+  Standard_EXPORT   void UnSetColorSurf() ;
   
-  Standard_EXPORT     Quantity_Color GetColorCurv() const;
+  Standard_EXPORT   Standard_Boolean IsSetColorCurv()  const;
   
-  Standard_EXPORT     void SetColorCurv(const Quantity_Color& col) ;
-  //! Manage curve color setting <br>
-  Standard_EXPORT     void UnSetColorCurv() ;
+  Standard_EXPORT   Quantity_Color GetColorCurv()  const;
   
-  Standard_EXPORT     void SetVisibility(const Standard_Boolean visibility) ;
-  //! Manage visibility <br>
-//!          Note: Setting visibility to False makes colors undefined <br>
-//!          This is necessary for HashCode <br>
-  Standard_EXPORT     Standard_Boolean IsVisible() const;
-  //! Returs True if styles are the same <br>//! Methods for using Style as key in maps <br>
-  Standard_EXPORT     Standard_Boolean IsEqual(const XCAFPrs_Style& other) const;
-    Standard_Boolean operator ==(const XCAFPrs_Style& other) const
+  Standard_EXPORT   void SetColorCurv (const Quantity_Color& col) ;
+  
+  //! Manage curve color setting
+  Standard_EXPORT   void UnSetColorCurv() ;
+  
+  Standard_EXPORT   void SetVisibility (const Standard_Boolean visibility) ;
+  
+  //! Manage visibility
+  //! Note: Setting visibility to False makes colors undefined
+  //! This is necessary for HashCode
+  Standard_EXPORT   Standard_Boolean IsVisible()  const;
+  
+  //! Returs True if styles are the same
+  //! Methods for using Style as key in maps
+  Standard_EXPORT   Standard_Boolean IsEqual (const XCAFPrs_Style& other)  const;
+  Standard_Boolean operator == (const XCAFPrs_Style& other)  const
 {
   return IsEqual(other);
 }
-  //! Returns a HasCode value  for  the  Key <K>  in the <br>
-//!          range 0..Upper. <br>
-  Standard_EXPORT   static  Standard_Integer HashCode(const XCAFPrs_Style& S,const Standard_Integer Upper) ;
-  //! Returns True  when the two  keys are the same. Two <br>
-//!          same  keys  must   have  the  same  hashcode,  the <br>
-//!          contrary is not necessary. <br>
-  Standard_EXPORT   static  Standard_Boolean IsEqual(const XCAFPrs_Style& S1,const XCAFPrs_Style& S2) ;
-
+  
+  //! Returns a HasCode value  for  the  Key <K>  in the
+  //! range 0..Upper.
+  Standard_EXPORT static   Standard_Integer HashCode (const XCAFPrs_Style& S, const Standard_Integer Upper) ;
+  
+  //! Returns True  when the two  keys are the same. Two
+  //! same  keys  must   have  the  same  hashcode,  the
+  //! contrary is not necessary.
+  Standard_EXPORT static   Standard_Boolean IsEqual (const XCAFPrs_Style& S1, const XCAFPrs_Style& S2) ;
 
 
 
@@ -87,11 +82,11 @@ private:
 
 
 
-Standard_Boolean defColorSurf;
-Standard_Boolean defColorCurv;
-Standard_Boolean myVisibility;
-Quantity_Color myColorSurf;
-Quantity_Color myColorCurv;
+  Standard_Boolean defColorSurf;
+  Standard_Boolean defColorCurv;
+  Standard_Boolean myVisibility;
+  Quantity_Color myColorSurf;
+  Quantity_Color myColorCurv;
 
 
 };
@@ -100,7 +95,6 @@ Quantity_Color myColorCurv;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _XCAFPrs_Style_HeaderFile

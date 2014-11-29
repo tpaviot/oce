@@ -6,28 +6,14 @@
 #ifndef _Approx_SequenceOfHArray1OfReal_HeaderFile
 #define _Approx_SequenceOfHArray1OfReal_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray1OfReal_HeaderFile
 #include <Handle_TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Handle_Approx_SequenceNodeOfSequenceOfHArray1OfReal_HeaderFile
 #include <Handle_Approx_SequenceNodeOfSequenceOfHArray1OfReal.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class TColStd_HArray1OfReal;
@@ -35,66 +21,68 @@ class Approx_SequenceNodeOfSequenceOfHArray1OfReal;
 
 
 
-class Approx_SequenceOfHArray1OfReal  : public TCollection_BaseSequence {
+class Approx_SequenceOfHArray1OfReal  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      Approx_SequenceOfHArray1OfReal();
+    Approx_SequenceOfHArray1OfReal();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT Approx_SequenceOfHArray1OfReal(const Approx_SequenceOfHArray1OfReal& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~Approx_SequenceOfHArray1OfReal()
 {
   Clear();
 }
   
-  Standard_EXPORT    const Approx_SequenceOfHArray1OfReal& Assign(const Approx_SequenceOfHArray1OfReal& Other) ;
-   const Approx_SequenceOfHArray1OfReal& operator =(const Approx_SequenceOfHArray1OfReal& Other) 
+  Standard_EXPORT  const  Approx_SequenceOfHArray1OfReal& Assign (const Approx_SequenceOfHArray1OfReal& Other) ;
+ const  Approx_SequenceOfHArray1OfReal& operator = (const Approx_SequenceOfHArray1OfReal& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const Handle(TColStd_HArray1OfReal)& T) ;
+  Standard_EXPORT   void Append (const Handle(TColStd_HArray1OfReal)& T) ;
   
-        void Append(Approx_SequenceOfHArray1OfReal& S) ;
+      void Append (Approx_SequenceOfHArray1OfReal& S) ;
   
-  Standard_EXPORT     void Prepend(const Handle(TColStd_HArray1OfReal)& T) ;
+  Standard_EXPORT   void Prepend (const Handle(TColStd_HArray1OfReal)& T) ;
   
-        void Prepend(Approx_SequenceOfHArray1OfReal& S) ;
+      void Prepend (Approx_SequenceOfHArray1OfReal& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const Handle(TColStd_HArray1OfReal)& T) ;
+      void InsertBefore (const Standard_Integer Index, const Handle(TColStd_HArray1OfReal)& T) ;
   
-        void InsertBefore(const Standard_Integer Index,Approx_SequenceOfHArray1OfReal& S) ;
+      void InsertBefore (const Standard_Integer Index, Approx_SequenceOfHArray1OfReal& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const Handle(TColStd_HArray1OfReal)& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const Handle(TColStd_HArray1OfReal)& T) ;
   
-        void InsertAfter(const Standard_Integer Index,Approx_SequenceOfHArray1OfReal& S) ;
+      void InsertAfter (const Standard_Integer Index, Approx_SequenceOfHArray1OfReal& S) ;
   
-  Standard_EXPORT    const Handle_TColStd_HArray1OfReal& First() const;
+  Standard_EXPORT  const  Handle(TColStd_HArray1OfReal)& First()  const;
   
-  Standard_EXPORT    const Handle_TColStd_HArray1OfReal& Last() const;
+  Standard_EXPORT  const  Handle(TColStd_HArray1OfReal)& Last()  const;
   
-        void Split(const Standard_Integer Index,Approx_SequenceOfHArray1OfReal& Sub) ;
+      void Split (const Standard_Integer Index, Approx_SequenceOfHArray1OfReal& Sub) ;
   
-  Standard_EXPORT    const Handle_TColStd_HArray1OfReal& Value(const Standard_Integer Index) const;
-   const Handle_TColStd_HArray1OfReal& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  Handle(TColStd_HArray1OfReal)& Value (const Standard_Integer Index)  const;
+ const  Handle(TColStd_HArray1OfReal)& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const Handle(TColStd_HArray1OfReal)& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const Handle(TColStd_HArray1OfReal)& I) ;
   
-  Standard_EXPORT     Handle_TColStd_HArray1OfReal& ChangeValue(const Standard_Integer Index) ;
-    Handle_TColStd_HArray1OfReal& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   Handle(TColStd_HArray1OfReal)& ChangeValue (const Standard_Integer Index) ;
+  Handle(TColStd_HArray1OfReal)& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -107,15 +95,13 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   Approx_SequenceOfHArray1OfReal(const Approx_SequenceOfHArray1OfReal& Other);
 
 
 
 
 };
 
-#define SeqItem Handle_TColStd_HArray1OfReal
+#define SeqItem Handle(TColStd_HArray1OfReal)
 #define SeqItem_hxx <TColStd_HArray1OfReal.hxx>
 #define TCollection_SequenceNode Approx_SequenceNodeOfSequenceOfHArray1OfReal
 #define TCollection_SequenceNode_hxx <Approx_SequenceNodeOfSequenceOfHArray1OfReal.hxx>
@@ -136,7 +122,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Approx_SequenceOfHArray1OfReal_HeaderFile

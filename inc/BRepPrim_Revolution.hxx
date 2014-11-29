@@ -6,28 +6,14 @@
 #ifndef _BRepPrim_Revolution_HeaderFile
 #define _BRepPrim_Revolution_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Geom_Curve_HeaderFile
 #include <Handle_Geom_Curve.hxx>
-#endif
-#ifndef _Handle_Geom2d_Curve_HeaderFile
 #include <Handle_Geom2d_Curve.hxx>
-#endif
-#ifndef _BRepPrim_OneAxis_HeaderFile
 #include <BRepPrim_OneAxis.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class Geom_Curve;
 class Geom2d_Curve;
 class gp_Ax2;
@@ -36,43 +22,49 @@ class TopoDS_Edge;
 class gp_Pnt2d;
 
 
-//! Implement  the OneAxis algoritm   for a revolution <br>
-//!          surface. <br>
-class BRepPrim_Revolution  : public BRepPrim_OneAxis {
+//! Implement  the OneAxis algoritm   for a revolution
+//! surface.
+class BRepPrim_Revolution  : public BRepPrim_OneAxis
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Create a  revolution body <M>  is the  meridian nd <br>
-//!          must   be in the XZ  plane   of <A>. <PM>  is  the <br>
-//!          meridian in the XZ plane. <br>
-  Standard_EXPORT   BRepPrim_Revolution(const gp_Ax2& A,const Standard_Real VMin,const Standard_Real VMax,const Handle(Geom_Curve)& M,const Handle(Geom2d_Curve)& PM);
-  //! The surface normal should be directed  towards the <br>
-//!          outside. <br>
-  Standard_EXPORT   virtual  TopoDS_Face MakeEmptyLateralFace() const;
-  //! Returns  an  edge with  a 3D curve   made from the <br>
-//!          meridian  in the XZ  plane rotated by <Ang> around <br>
-//!          the Z-axis. Ang may be 0 or myAngle. <br>
-  Standard_EXPORT   virtual  TopoDS_Edge MakeEmptyMeridianEdge(const Standard_Real Ang) const;
-  //! Returns the meridian point at parameter <V> in the <br>
-//!          plane XZ. <br>
-  Standard_EXPORT   virtual  gp_Pnt2d MeridianValue(const Standard_Real V) const;
-  //! Sets the  parametric urve of  the edge <E>  in the <br>
-//!          face <F>   to be  the  2d  representation  of  the <br>
-//!          meridian. <br>
-  Standard_EXPORT   virtual  void SetMeridianPCurve(TopoDS_Edge& E,const TopoDS_Face& F) const;
-
+  
+  //! Create a  revolution body <M>  is the  meridian nd
+  //! must   be in the XZ  plane   of <A>. <PM>  is  the
+  //! meridian in the XZ plane.
+  Standard_EXPORT BRepPrim_Revolution(const gp_Ax2& A, const Standard_Real VMin, const Standard_Real VMax, const Handle(Geom_Curve)& M, const Handle(Geom2d_Curve)& PM);
+  
+  //! The surface normal should be directed  towards the
+  //! outside.
+  Standard_EXPORT virtual   TopoDS_Face MakeEmptyLateralFace()  const;
+  
+  //! Returns  an  edge with  a 3D curve   made from the
+  //! meridian  in the XZ  plane rotated by <Ang> around
+  //! the Z-axis. Ang may be 0 or myAngle.
+  Standard_EXPORT virtual   TopoDS_Edge MakeEmptyMeridianEdge (const Standard_Real Ang)  const;
+  
+  //! Returns the meridian point at parameter <V> in the
+  //! plane XZ.
+  Standard_EXPORT virtual   gp_Pnt2d MeridianValue (const Standard_Real V)  const;
+  
+  //! Sets the  parametric urve of  the edge <E>  in the
+  //! face <F>   to be  the  2d  representation  of  the
+  //! meridian.
+  Standard_EXPORT virtual   void SetMeridianPCurve (TopoDS_Edge& E, const TopoDS_Face& F)  const;
 
 
 
 
 protected:
 
-  //! Create a  revolution   body.  The meridian  is set <br>
-//!          later. Reserved for derivated classes. <br>
-  Standard_EXPORT   BRepPrim_Revolution(const gp_Ax2& A,const Standard_Real VMin,const Standard_Real VMax);
   
-  Standard_EXPORT     void Meridian(const Handle(Geom_Curve)& M,const Handle(Geom2d_Curve)& PM) ;
+  //! Create a  revolution   body.  The meridian  is set
+  //! later. Reserved for derivated classes.
+  Standard_EXPORT BRepPrim_Revolution(const gp_Ax2& A, const Standard_Real VMin, const Standard_Real VMax);
+  
+  Standard_EXPORT   void Meridian (const Handle(Geom_Curve)& M, const Handle(Geom2d_Curve)& PM) ;
 
 
 
@@ -81,8 +73,8 @@ private:
 
 
 
-Handle_Geom_Curve myMeridian;
-Handle_Geom2d_Curve myPMeridian;
+  Handle(Geom_Curve) myMeridian;
+  Handle(Geom2d_Curve) myPMeridian;
 
 
 };
@@ -91,7 +83,6 @@ Handle_Geom2d_Curve myPMeridian;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepPrim_Revolution_HeaderFile

@@ -6,8 +6,11 @@
 #ifndef _Standard_InternalType_HeaderFile
 #define _Standard_InternalType_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Standard_InternalType {
+
+enum Standard_InternalType
+{
 Standard_Void,
 Standard_Char,
 Standard_ExtChar,
@@ -24,8 +27,4 @@ Standard_Long64,
 Standard_Array
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Standard_InternalType_HeaderFile

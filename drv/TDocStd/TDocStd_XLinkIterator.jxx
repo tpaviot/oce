@@ -1,9 +1,3 @@
-#ifndef _Standard_NoMoreObject_HeaderFile
 #include <Standard_NoMoreObject.hxx>
-#endif
-#ifndef _TDocStd_Document_HeaderFile
 #include <TDocStd_Document.hxx>
-#endif
-#ifndef _TDocStd_XLinkIterator_HeaderFile
 #include <TDocStd_XLinkIterator.hxx>
-#endif

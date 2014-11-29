@@ -6,86 +6,114 @@
 #ifndef _Contap_HContTool_HeaderFile
 #define _Contap_HContTool_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Adaptor3d_HVertex_HeaderFile
-#include <Handle_Adaptor3d_HVertex.hxx>
-#endif
-#ifndef _Handle_Adaptor2d_HCurve2d_HeaderFile
-#include <Handle_Adaptor2d_HCurve2d.hxx>
-#endif
-#ifndef _Handle_Adaptor3d_HSurface_HeaderFile
-#include <Handle_Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
+#include <Handle_Adaptor3d_HSurface.hxx>
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-class Adaptor3d_HVertex;
-class Adaptor2d_HCurve2d;
+#include <Handle_Adaptor2d_HCurve2d.hxx>
+#include <Handle_Adaptor3d_HVertex.hxx>
 class Adaptor3d_HSurface;
-class Contap_HCurve2dTool;
-class Adaptor3d_HSurfaceTool;
+class Adaptor2d_HCurve2d;
 class gp_Pnt2d;
+class Adaptor3d_HVertex;
 class gp_Pnt;
 
 
-
-class Contap_HContTool  {
+//! Tool for the intersection between 2 surfaces.
+//! Regroupe pour l instant les methodes hors Adaptor3d...
+class Contap_HContTool 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   static  Standard_Integer NbSamplesU(const Handle(Adaptor3d_HSurface)& S,const Standard_Real u1,const Standard_Real u2) ;
+  Standard_EXPORT static   Standard_Integer NbSamplesU (const Handle(Adaptor3d_HSurface)& S, const Standard_Real u1, const Standard_Real u2) ;
   
-  Standard_EXPORT   static  Standard_Integer NbSamplesV(const Handle(Adaptor3d_HSurface)& S,const Standard_Real v1,const Standard_Real v2) ;
+  Standard_EXPORT static   Standard_Integer NbSamplesV (const Handle(Adaptor3d_HSurface)& S, const Standard_Real v1, const Standard_Real v2) ;
   
-  Standard_EXPORT   static  Standard_Integer NbSamplePoints(const Handle(Adaptor3d_HSurface)& S) ;
+  Standard_EXPORT static   Standard_Integer NbSamplePoints (const Handle(Adaptor3d_HSurface)& S) ;
   
-  Standard_EXPORT   static  void SamplePoint(const Handle(Adaptor3d_HSurface)& S,const Standard_Integer Index,Standard_Real& U,Standard_Real& V) ;
+  Standard_EXPORT static   void SamplePoint (const Handle(Adaptor3d_HSurface)& S, const Standard_Integer Index, Standard_Real& U, Standard_Real& V) ;
   
-  Standard_EXPORT   static  Standard_Boolean HasBeenSeen(const Handle(Adaptor2d_HCurve2d)& C) ;
+  //! Returns True if all the intersection point and edges
+  //! are known on the Arc.
+  //! The intersection point are given as vertices.
+  //! The intersection edges are given as intervals between
+  //! two vertices.
+  Standard_EXPORT static   Standard_Boolean HasBeenSeen (const Handle(Adaptor2d_HCurve2d)& C) ;
   
-  Standard_EXPORT   static  Standard_Integer NbSamplesOnArc(const Handle(Adaptor2d_HCurve2d)& A) ;
+  //! returns the number of points which is used to make
+  //! a sample on the arc. this number is a function of
+  //! the Surface and the CurveOnSurface complexity.
+  Standard_EXPORT static   Standard_Integer NbSamplesOnArc (const Handle(Adaptor2d_HCurve2d)& A) ;
   
-  Standard_EXPORT   static  void Bounds(const Handle(Adaptor2d_HCurve2d)& C,Standard_Real& Ufirst,Standard_Real& Ulast) ;
+  //! Returns the parametric limits on the arc C.
+  //! These limits must be finite : they are either
+  //! the real limits of the arc, for a finite arc,
+  //! or a bounding box for an infinite arc.
+  Standard_EXPORT static   void Bounds (const Handle(Adaptor2d_HCurve2d)& C, Standard_Real& Ufirst, Standard_Real& Ulast) ;
   
-  Standard_EXPORT   static  Standard_Boolean Project(const Handle(Adaptor2d_HCurve2d)& C,const gp_Pnt2d& P,Standard_Real& Paramproj,gp_Pnt2d& Ptproj) ;
+  //! Projects the point P on the arc C.
+  //! If the methods returns Standard_True, the projection is
+  //! successful, and Paramproj is the parameter on the arc
+  //! of the projected point, Ptproj is the projected Point.
+  //! If the method returns Standard_False, Param proj and Ptproj
+  //! are not significant.
+  Standard_EXPORT static   Standard_Boolean Project (const Handle(Adaptor2d_HCurve2d)& C, const gp_Pnt2d& P, Standard_Real& Paramproj, gp_Pnt2d& Ptproj) ;
   
-  Standard_EXPORT   static  Standard_Real Tolerance(const Handle(Adaptor3d_HVertex)& V,const Handle(Adaptor2d_HCurve2d)& C) ;
+  //! Returns the parametric tolerance used to consider
+  //! that the vertex and another point meet, i-e
+  //! if Abs(parameter(Vertex) - parameter(OtherPnt))<=
+  //! Tolerance, the points are "merged".
+  Standard_EXPORT static   Standard_Real Tolerance (const Handle(Adaptor3d_HVertex)& V, const Handle(Adaptor2d_HCurve2d)& C) ;
   
-  Standard_EXPORT   static  Standard_Real Parameter(const Handle(Adaptor3d_HVertex)& V,const Handle(Adaptor2d_HCurve2d)& C) ;
+  //! Returns the parameter of the vertex V on the arc A.
+  Standard_EXPORT static   Standard_Real Parameter (const Handle(Adaptor3d_HVertex)& V, const Handle(Adaptor2d_HCurve2d)& C) ;
   
-  Standard_EXPORT   static  Standard_Integer NbPoints(const Handle(Adaptor2d_HCurve2d)& C) ;
+  //! Returns the number of intersection points on the arc A.
+  Standard_EXPORT static   Standard_Integer NbPoints (const Handle(Adaptor2d_HCurve2d)& C) ;
   
-  Standard_EXPORT   static  void Value(const Handle(Adaptor2d_HCurve2d)& C,const Standard_Integer Index,gp_Pnt& Pt,Standard_Real& Tol,Standard_Real& U) ;
+  //! Returns the value (Pt), the tolerance (Tol), and
+  //! the parameter (U) on the arc A , of the intersection
+  //! point of range Index.
+  Standard_EXPORT static   void Value (const Handle(Adaptor2d_HCurve2d)& C, const Standard_Integer Index, gp_Pnt& Pt, Standard_Real& Tol, Standard_Real& U) ;
   
-  Standard_EXPORT   static  Standard_Boolean IsVertex(const Handle(Adaptor2d_HCurve2d)& C,const Standard_Integer Index) ;
+  //! Returns True if the intersection point of range Index
+  //! corresponds with a vertex on the arc A.
+  Standard_EXPORT static   Standard_Boolean IsVertex (const Handle(Adaptor2d_HCurve2d)& C, const Standard_Integer Index) ;
   
-  Standard_EXPORT   static  void Vertex(const Handle(Adaptor2d_HCurve2d)& C,const Standard_Integer Index,Handle(Adaptor3d_HVertex)& V) ;
+  //! When IsVertex returns True, this method returns the
+  //! vertex on the arc A.
+  Standard_EXPORT static   void Vertex (const Handle(Adaptor2d_HCurve2d)& C, const Standard_Integer Index, Handle(Adaptor3d_HVertex)& V) ;
   
-  Standard_EXPORT   static  Standard_Integer NbSegments(const Handle(Adaptor2d_HCurve2d)& C) ;
+  //! returns the number of part of A solution of the
+  //! of intersection problem.
+  Standard_EXPORT static   Standard_Integer NbSegments (const Handle(Adaptor2d_HCurve2d)& C) ;
   
-  Standard_EXPORT   static  Standard_Boolean HasFirstPoint(const Handle(Adaptor2d_HCurve2d)& C,const Standard_Integer Index,Standard_Integer& IndFirst) ;
+  //! Returns True when the segment of range Index is not
+  //! open at the left side. In that case, IndFirst is the
+  //! range in the list intersection points (see NbPoints)
+  //! of the one which defines the left bound of the segment.
+  //! Otherwise, the method has to return False, and IndFirst
+  //! has no meaning.
+  Standard_EXPORT static   Standard_Boolean HasFirstPoint (const Handle(Adaptor2d_HCurve2d)& C, const Standard_Integer Index, Standard_Integer& IndFirst) ;
   
-  Standard_EXPORT   static  Standard_Boolean HasLastPoint(const Handle(Adaptor2d_HCurve2d)& C,const Standard_Integer Index,Standard_Integer& IndLast) ;
+  //! Returns True when the segment of range Index is not
+  //! open at the right side. In that case, IndLast is the
+  //! range in the list intersection points (see NbPoints)
+  //! of the one which defines the right bound of the segment.
+  //! Otherwise, the method has to return False, and IndLast
+  //! has no meaning.
+  Standard_EXPORT static   Standard_Boolean HasLastPoint (const Handle(Adaptor2d_HCurve2d)& C, const Standard_Integer Index, Standard_Integer& IndLast) ;
   
-  Standard_EXPORT   static  Standard_Boolean IsAllSolution(const Handle(Adaptor2d_HCurve2d)& C) ;
-
+  //! Returns True when the whole restriction is solution
+  //! of the intersection problem.
+  Standard_EXPORT static   Standard_Boolean IsAllSolution (const Handle(Adaptor2d_HCurve2d)& C) ;
 
 
 
@@ -108,7 +136,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Contap_HContTool_HeaderFile

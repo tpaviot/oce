@@ -6,67 +6,53 @@
 #ifndef _HLRBRep_BiPoint_HeaderFile
 #define _HLRBRep_BiPoint_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class TopoDS_Shape;
 class gp_Pnt;
 
 
-//! Contains the colors of a shape. <br>
-class HLRBRep_BiPoint  {
+//! Contains the colors of a shape.
+class HLRBRep_BiPoint 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   HLRBRep_BiPoint();
+  Standard_EXPORT HLRBRep_BiPoint();
   
-  Standard_EXPORT   HLRBRep_BiPoint(const Standard_Real x1,const Standard_Real y1,const Standard_Real z1,const Standard_Real x2,const Standard_Real y2,const Standard_Real z2,const TopoDS_Shape& S,const Standard_Boolean reg1,const Standard_Boolean regn,const Standard_Boolean outl,const Standard_Boolean intl);
+  Standard_EXPORT HLRBRep_BiPoint(const Standard_Real x1, const Standard_Real y1, const Standard_Real z1, const Standard_Real x2, const Standard_Real y2, const Standard_Real z2, const TopoDS_Shape& S, const Standard_Boolean reg1, const Standard_Boolean regn, const Standard_Boolean outl, const Standard_Boolean intl);
   
-       const gp_Pnt& P1() const;
+     const  gp_Pnt& P1()  const;
   
-       const gp_Pnt& P2() const;
+     const  gp_Pnt& P2()  const;
   
-       const TopoDS_Shape& Shape() const;
+     const  TopoDS_Shape& Shape()  const;
   
-        void Shape(const TopoDS_Shape& S) ;
+      void Shape (const TopoDS_Shape& S) ;
   
-        Standard_Boolean Rg1Line() const;
+      Standard_Boolean Rg1Line()  const;
   
-        void Rg1Line(const Standard_Boolean B) ;
+      void Rg1Line (const Standard_Boolean B) ;
   
-        Standard_Boolean RgNLine() const;
+      Standard_Boolean RgNLine()  const;
   
-        void RgNLine(const Standard_Boolean B) ;
+      void RgNLine (const Standard_Boolean B) ;
   
-        Standard_Boolean OutLine() const;
+      Standard_Boolean OutLine()  const;
   
-        void OutLine(const Standard_Boolean B) ;
+      void OutLine (const Standard_Boolean B) ;
   
-        Standard_Boolean IntLine() const;
+      Standard_Boolean IntLine()  const;
   
-        void IntLine(const Standard_Boolean B) ;
-
+      void IntLine (const Standard_Boolean B) ;
 
 
 
@@ -81,10 +67,10 @@ private:
 
 
 
-gp_Pnt myP1;
-gp_Pnt myP2;
-TopoDS_Shape myShape;
-Standard_Integer myFlags;
+  gp_Pnt myP1;
+  gp_Pnt myP2;
+  TopoDS_Shape myShape;
+  Standard_Integer myFlags;
 
 
 };
@@ -94,7 +80,6 @@ Standard_Integer myFlags;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _HLRBRep_BiPoint_HeaderFile

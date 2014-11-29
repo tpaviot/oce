@@ -5,21 +5,11 @@
 
 #include <PColgp_SeqExplorerOfHSequenceOfVec.hxx>
 
-#ifndef _PColgp_SeqNodeOfHSequenceOfVec_HeaderFile
 #include <PColgp_SeqNodeOfHSequenceOfVec.hxx>
-#endif
-#ifndef _PColgp_HSequenceOfVec_HeaderFile
 #include <PColgp_HSequenceOfVec.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _gp_Vec_HeaderFile
 #include <gp_Vec.hxx>
-#endif
  
 
 #define Item gp_Vec

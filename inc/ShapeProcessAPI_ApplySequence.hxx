@@ -6,65 +6,53 @@
 #ifndef _ShapeProcessAPI_ApplySequence_HeaderFile
 #define _ShapeProcessAPI_ApplySequence_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_ShapeProcess_ShapeContext_HeaderFile
 #include <Handle_ShapeProcess_ShapeContext.hxx>
-#endif
-#ifndef _TopTools_DataMapOfShapeShape_HeaderFile
 #include <TopTools_DataMapOfShapeShape.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopAbs_ShapeEnum_HeaderFile
 #include <TopAbs_ShapeEnum.hxx>
-#endif
 class ShapeProcess_ShapeContext;
 class TopoDS_Shape;
 class TopTools_DataMapOfShapeShape;
 
 
-//! Applies one of the sequence read from resource file. <br>
-class ShapeProcessAPI_ApplySequence  {
+//! Applies one of the sequence read from resource file.
+class ShapeProcessAPI_ApplySequence 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an object and loads resource file and sequence of <br>
-//!          operators given by their names. <br>
-  Standard_EXPORT   ShapeProcessAPI_ApplySequence(const Standard_CString rscName,const Standard_CString seqName = "");
-  //! Returns object for managing resource file and sequence of <br>
-//!          operators. <br>
-  Standard_EXPORT     Handle_ShapeProcess_ShapeContext& Context() ;
-  //! Performs sequence of operators stored in myRsc. <br>
-//!          If <fillmap> is True adds history "shape-shape" into myMap <br>
-//!          for shape and its subshapes until level <until> (included). <br>
-//!          If <until> is TopAbs_SHAPE,  all the subshapes are considered. <br>
-  Standard_EXPORT     TopoDS_Shape PrepareShape(const TopoDS_Shape& shape,const Standard_Boolean fillmap = Standard_False,const TopAbs_ShapeEnum until = TopAbs_SHAPE) ;
-  //! Clears myMap with accumulated history. <br>
-  Standard_EXPORT     void ClearMap() ;
-  //! Returns myMap with accumulated history. <br>
-  Standard_EXPORT    const TopTools_DataMapOfShapeShape& Map() const;
-  //! Prints result of preparation onto the messenger of the context. <br>
-//!          Note that results can be accumulated from previous preparations <br>
-//!          it method ClearMap was not called before PrepareShape. <br>
-  Standard_EXPORT     void PrintPreparationResult() const;
-
+  
+  //! Creates an object and loads resource file and sequence of
+  //! operators given by their names.
+  Standard_EXPORT ShapeProcessAPI_ApplySequence(const Standard_CString rscName, const Standard_CString seqName = "");
+  
+  //! Returns object for managing resource file and sequence of
+  //! operators.
+  Standard_EXPORT   Handle(ShapeProcess_ShapeContext)& Context() ;
+  
+  //! Performs sequence of operators stored in myRsc.
+  //! If <fillmap> is True adds history "shape-shape" into myMap
+  //! for shape and its subshapes until level <until> (included).
+  //! If <until> is TopAbs_SHAPE,  all the subshapes are considered.
+  Standard_EXPORT   TopoDS_Shape PrepareShape (const TopoDS_Shape& shape, const Standard_Boolean fillmap = Standard_False, const TopAbs_ShapeEnum until = TopAbs_SHAPE) ;
+  
+  //! Clears myMap with accumulated history.
+  Standard_EXPORT   void ClearMap() ;
+  
+  //! Returns myMap with accumulated history.
+  Standard_EXPORT  const  TopTools_DataMapOfShapeShape& Map()  const;
+  
+  //! Prints result of preparation onto the messenger of the context.
+  //! Note that results can be accumulated from previous preparations
+  //! it method ClearMap was not called before PrepareShape.
+  Standard_EXPORT   void PrintPreparationResult()  const;
 
 
 
@@ -79,9 +67,9 @@ private:
 
 
 
-Handle_ShapeProcess_ShapeContext myContext;
-TopTools_DataMapOfShapeShape myMap;
-TCollection_AsciiString mySeq;
+  Handle(ShapeProcess_ShapeContext) myContext;
+  TopTools_DataMapOfShapeShape myMap;
+  TCollection_AsciiString mySeq;
 
 
 };
@@ -90,7 +78,6 @@ TCollection_AsciiString mySeq;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeProcessAPI_ApplySequence_HeaderFile

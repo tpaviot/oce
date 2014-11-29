@@ -5,15 +5,9 @@
 
 #include <TColStd_ListOfInteger.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TColStd_ListIteratorOfListOfInteger_HeaderFile
 #include <TColStd_ListIteratorOfListOfInteger.hxx>
-#endif
-#ifndef _TColStd_ListNodeOfListOfInteger_HeaderFile
 #include <TColStd_ListNodeOfListOfInteger.hxx>
-#endif
  
 
 #define Item Standard_Integer

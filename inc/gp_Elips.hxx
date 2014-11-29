@@ -6,34 +6,16 @@
 #ifndef _gp_Elips_HeaderFile
 #define _gp_Elips_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_Ax2_HeaderFile
 #include <gp_Ax2.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Storable_HeaderFile
 #include <Standard_Storable.hxx>
-#endif
-#ifndef _gp_Ax1_HeaderFile
 #include <gp_Ax1.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
 #include <Standard_PrimitiveTypes.hxx>
-#endif
 class Standard_ConstructionError;
 class gp_Ax2;
 class gp_Ax1;
@@ -45,190 +27,221 @@ class gp_Vec;
 Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(gp_Elips);
 
 
-//!      Describes an ellipse in 3D space. <br>
-//! An ellipse is defined by its major and minor radii and <br>
-//! positioned in space with a coordinate system (a gp_Ax2 object) as follows: <br>
-//! -   the origin of the coordinate system is the center of the ellipse, <br>
-//! -   its "X Direction" defines the major axis of the ellipse, and <br>
-//! - its "Y Direction" defines the minor axis of the ellipse. <br>
-//! Together, the origin, "X Direction" and "Y Direction" of <br>
-//! this coordinate system define the plane of the ellipse. <br>
-//! This coordinate system is the "local coordinate system" <br>
-//! of the ellipse. In this coordinate system, the equation of <br>
-//! the ellipse is: <br>
-//! X*X / (MajorRadius**2) + Y*Y / (MinorRadius**2) = 1.0 <br>
-//! The "main Direction" of the local coordinate system gives <br>
-//! the normal vector to the plane of the ellipse. This vector <br>
-//! gives an implicit orientation to the ellipse (definition of the <br>
-//! trigonometric sense). We refer to the "main Axis" of the <br>
-//! local coordinate system as the "Axis" of the ellipse. <br>
-//! See Also <br>
-//! gce_MakeElips which provides functions for more <br>
-//! complex ellipse constructions <br>
-//! Geom_Ellipse which provides additional functions for <br>
-//! constructing ellipses and works, in particular, with the <br>
-//! parametric equations of ellipses <br>
-class gp_Elips  {
+//! Describes an ellipse in 3D space.
+//! An ellipse is defined by its major and minor radii and
+//! positioned in space with a coordinate system (a gp_Ax2 object) as follows:
+//! -   the origin of the coordinate system is the center of the ellipse,
+//! -   its "X Direction" defines the major axis of the ellipse, and
+//! - its "Y Direction" defines the minor axis of the ellipse.
+//! Together, the origin, "X Direction" and "Y Direction" of
+//! this coordinate system define the plane of the ellipse.
+//! This coordinate system is the "local coordinate system"
+//! of the ellipse. In this coordinate system, the equation of
+//! the ellipse is:
+//! X*X / (MajorRadius**2) + Y*Y / (MinorRadius**2) = 1.0
+//! The "main Direction" of the local coordinate system gives
+//! the normal vector to the plane of the ellipse. This vector
+//! gives an implicit orientation to the ellipse (definition of the
+//! trigonometric sense). We refer to the "main Axis" of the
+//! local coordinate system as the "Axis" of the ellipse.
+//! See Also
+//! gce_MakeElips which provides functions for more
+//! complex ellipse constructions
+//! Geom_Ellipse which provides additional functions for
+//! constructing ellipses and works, in particular, with the
+//! parametric equations of ellipses
+class gp_Elips 
+{
 
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates an indefinite ellipse. <br>
-      gp_Elips();
   
-//!  The major radius of the ellipse is on the "XAxis" and the <br>
-//!  minor radius is on the "YAxis" of the ellipse. The "XAxis" <br>
-//!  is defined with the "XDirection" of A2 and the "YAxis" is <br>
-//!  defined with the "YDirection" of A2. <br>
-//! Warnings : <br>
-//!  It is not forbidden to create an ellipse with MajorRadius = <br>
-//!  MinorRadius. <br>
-//!  Raises ConstructionError if MajorRadius < MinorRadius or MinorRadius < 0. <br>
-      gp_Elips(const gp_Ax2& A2,const Standard_Real MajorRadius,const Standard_Real MinorRadius);
+  //! Creates an indefinite ellipse.
+    gp_Elips();
   
-//!  Changes the axis normal to the plane of the ellipse. <br>
-//!  It modifies the definition of this plane. <br>
-//!  The "XAxis" and the "YAxis" are recomputed. <br>
-//! The local coordinate system is redefined so that: <br>
-//! -   its origin and "main Direction" become those of the <br>
-//!   axis A1 (the "X Direction" and "Y Direction" are then <br>
-//!   recomputed in the same way as for any gp_Ax2), or <br>
-//!  Raises ConstructionError if the direction of A1 <br>
-//! is parallel to the direction of the "XAxis" of the ellipse. <br>
-        void SetAxis(const gp_Ax1& A1) ;
-  //!Modifies this ellipse, by redefining its local coordinate <br>
-//! so that its origin becomes P. <br>
-        void SetLocation(const gp_Pnt& P) ;
+
+  //! The major radius of the ellipse is on the "XAxis" and the
+  //! minor radius is on the "YAxis" of the ellipse. The "XAxis"
+  //! is defined with the "XDirection" of A2 and the "YAxis" is
+  //! defined with the "YDirection" of A2.
+  //! Warnings :
+  //! It is not forbidden to create an ellipse with MajorRadius =
+  //! MinorRadius.
+  //! Raises ConstructionError if MajorRadius < MinorRadius or MinorRadius < 0.
+    gp_Elips(const gp_Ax2& A2, const Standard_Real MajorRadius, const Standard_Real MinorRadius);
   
-//!  The major radius of the ellipse is on the "XAxis" (major axis) <br>
-//!  of the ellipse. <br>
-//!  Raises ConstructionError if MajorRadius < MinorRadius. <br>
-        void SetMajorRadius(const Standard_Real MajorRadius) ;
+
+  //! Changes the axis normal to the plane of the ellipse.
+  //! It modifies the definition of this plane.
+  //! The "XAxis" and the "YAxis" are recomputed.
+  //! The local coordinate system is redefined so that:
+  //! -   its origin and "main Direction" become those of the
+  //! axis A1 (the "X Direction" and "Y Direction" are then
+  //! recomputed in the same way as for any gp_Ax2), or
+  //! Raises ConstructionError if the direction of A1
+  //! is parallel to the direction of the "XAxis" of the ellipse.
+      void SetAxis (const gp_Ax1& A1) ;
   
-//!  The minor radius of the ellipse is on the "YAxis" (minor axis) <br>
-//!  of the ellipse. <br>
-//!  Raises ConstructionError if MinorRadius > MajorRadius or MinorRadius < 0. <br>
-        void SetMinorRadius(const Standard_Real MinorRadius) ;
-  //! Modifies this ellipse, by redefining its local coordinate <br>
-//! so that it becomes A2e. <br>
-        void SetPosition(const gp_Ax2& A2) ;
-  //! Computes the area of the Ellipse. <br>
-        Standard_Real Area() const;
+  //! Modifies this ellipse, by redefining its local coordinate
+  //! so that its origin becomes P.
+      void SetLocation (const gp_Pnt& P) ;
   
-//!  Computes the axis normal to the plane of the ellipse. <br>
-       const gp_Ax1& Axis() const;
-  //! Computes the first or second directrix of this ellipse. <br>
-//! These are the lines, in the plane of the ellipse, normal to <br>
-//! the major axis, at a distance equal to <br>
-//! MajorRadius/e from the center of the ellipse, where <br>
-//! e is the eccentricity of the ellipse. <br>
-//! The first directrix (Directrix1) is on the positive side of <br>
-//! the major axis. The second directrix (Directrix2) is on <br>
-//! the negative side. <br>
-//! The directrix is returned as an axis (gp_Ax1 object), the <br>
-//! origin of which is situated on the "X Axis" of the local <br>
-//! coordinate system of this ellipse. <br>
-//! Exceptions <br>
-//! Standard_ConstructionError if the eccentricity is null <br>
-//! (the ellipse has degenerated into a circle). <br>
-        gp_Ax1 Directrix1() const;
+
+  //! The major radius of the ellipse is on the "XAxis" (major axis)
+  //! of the ellipse.
+  //! Raises ConstructionError if MajorRadius < MinorRadius.
+      void SetMajorRadius (const Standard_Real MajorRadius) ;
   
-//!  This line is obtained by the symmetrical transformation <br>
-//!  of "Directrix1" with respect to the "YAxis" of the ellipse. <br>
-//! Exceptions <br>
-//! Standard_ConstructionError if the eccentricity is null <br>
-//! (the ellipse has degenerated into a circle). <br>
-        gp_Ax1 Directrix2() const;
+
+  //! The minor radius of the ellipse is on the "YAxis" (minor axis)
+  //! of the ellipse.
+  //! Raises ConstructionError if MinorRadius > MajorRadius or MinorRadius < 0.
+      void SetMinorRadius (const Standard_Real MinorRadius) ;
   
-//!  Returns the eccentricity of the ellipse  between 0.0 and 1.0 <br>
-//!  If f is the distance between the center of the ellipse and <br>
-//!  the Focus1 then the eccentricity e = f / MajorRadius. <br>
-//!   Raises ConstructionError if MajorRadius = 0.0 <br>
-        Standard_Real Eccentricity() const;
+  //! Modifies this ellipse, by redefining its local coordinate
+  //! so that it becomes A2e.
+      void SetPosition (const gp_Ax2& A2) ;
   
-//!  Computes the focal distance. It is the distance between the <br>
-//!  two focus focus1 and focus2 of the ellipse. <br>
-        Standard_Real Focal() const;
+  //! Computes the area of the Ellipse.
+      Standard_Real Area()  const;
   
-//!  Returns the first focus of the ellipse. This focus is on the <br>
-//!  positive side of the "XAxis" of the ellipse. <br>
-        gp_Pnt Focus1() const;
+
+  //! Computes the axis normal to the plane of the ellipse.
+     const  gp_Ax1& Axis()  const;
   
-//!  Returns the second focus of the ellipse. This focus is on the <br>
-//!  negative side of the "XAxis" of the ellipse. <br>
-        gp_Pnt Focus2() const;
+  //! Computes the first or second directrix of this ellipse.
+  //! These are the lines, in the plane of the ellipse, normal to
+  //! the major axis, at a distance equal to
+  //! MajorRadius/e from the center of the ellipse, where
+  //! e is the eccentricity of the ellipse.
+  //! The first directrix (Directrix1) is on the positive side of
+  //! the major axis. The second directrix (Directrix2) is on
+  //! the negative side.
+  //! The directrix is returned as an axis (gp_Ax1 object), the
+  //! origin of which is situated on the "X Axis" of the local
+  //! coordinate system of this ellipse.
+  //! Exceptions
+  //! Standard_ConstructionError if the eccentricity is null
+  //! (the ellipse has degenerated into a circle).
+      gp_Ax1 Directrix1()  const;
   
-//!  Returns the center of the ellipse. It is the "Location" <br>
-//!  point of the coordinate system of the ellipse. <br>
-       const gp_Pnt& Location() const;
-  //! Returns the major radius of the ellipse. <br>
-        Standard_Real MajorRadius() const;
-  //! Returns the minor radius of the ellipse. <br>
-        Standard_Real MinorRadius() const;
+
+  //! This line is obtained by the symmetrical transformation
+  //! of "Directrix1" with respect to the "YAxis" of the ellipse.
+  //! Exceptions
+  //! Standard_ConstructionError if the eccentricity is null
+  //! (the ellipse has degenerated into a circle).
+      gp_Ax1 Directrix2()  const;
   
-//!  Returns p = (1 - e * e) * MajorRadius where e is the eccentricity <br>
-//!  of the ellipse. <br>
-//!  Returns 0 if MajorRadius = 0 <br>
-        Standard_Real Parameter() const;
-  //! Returns the coordinate system of the ellipse. <br>
-       const gp_Ax2& Position() const;
+
+  //! Returns the eccentricity of the ellipse  between 0.0 and 1.0
+  //! If f is the distance between the center of the ellipse and
+  //! the Focus1 then the eccentricity e = f / MajorRadius.
+  //! Raises ConstructionError if MajorRadius = 0.0
+      Standard_Real Eccentricity()  const;
   
-//!  Returns the "XAxis" of the ellipse whose origin <br>
-//! is the center of this ellipse. It is the major axis of the <br>
-//!  ellipse. <br>
-        gp_Ax1 XAxis() const;
+
+  //! Computes the focal distance. It is the distance between the
+  //! two focus focus1 and focus2 of the ellipse.
+      Standard_Real Focal()  const;
   
-//!  Returns the "YAxis" of the ellipse whose unit vector is the "X Direction" or the "Y Direction" <br>
-//!  of the local coordinate system of this ellipse. <br>
-//! This is the minor axis of the ellipse. <br>
-        gp_Ax1 YAxis() const;
+
+  //! Returns the first focus of the ellipse. This focus is on the
+  //! positive side of the "XAxis" of the ellipse.
+      gp_Pnt Focus1()  const;
   
-  Standard_EXPORT     void Mirror(const gp_Pnt& P) ;
+
+  //! Returns the second focus of the ellipse. This focus is on the
+  //! negative side of the "XAxis" of the ellipse.
+      gp_Pnt Focus2()  const;
   
-//!  Performs the symmetrical transformation of an ellipse with <br>
-//!  respect to the point P which is the center of the symmetry. <br>
-  Standard_EXPORT     gp_Elips Mirrored(const gp_Pnt& P) const;
+
+  //! Returns the center of the ellipse. It is the "Location"
+  //! point of the coordinate system of the ellipse.
+     const  gp_Pnt& Location()  const;
   
-  Standard_EXPORT     void Mirror(const gp_Ax1& A1) ;
+  //! Returns the major radius of the ellipse.
+      Standard_Real MajorRadius()  const;
   
-//!  Performs the symmetrical transformation of an ellipse with <br>
-//!  respect to an axis placement which is the axis of the symmetry. <br>
-  Standard_EXPORT     gp_Elips Mirrored(const gp_Ax1& A1) const;
+  //! Returns the minor radius of the ellipse.
+      Standard_Real MinorRadius()  const;
   
-  Standard_EXPORT     void Mirror(const gp_Ax2& A2) ;
+
+  //! Returns p = (1 - e * e) * MajorRadius where e is the eccentricity
+  //! of the ellipse.
+  //! Returns 0 if MajorRadius = 0
+      Standard_Real Parameter()  const;
   
-//!  Performs the symmetrical transformation of an ellipse with <br>
-//!  respect to a plane. The axis placement A2 locates the plane <br>
-//!  of the symmetry (Location, XDirection, YDirection). <br>
-  Standard_EXPORT     gp_Elips Mirrored(const gp_Ax2& A2) const;
+  //! Returns the coordinate system of the ellipse.
+     const  gp_Ax2& Position()  const;
   
-        void Rotate(const gp_Ax1& A1,const Standard_Real Ang) ;
+
+  //! Returns the "XAxis" of the ellipse whose origin
+  //! is the center of this ellipse. It is the major axis of the
+  //! ellipse.
+      gp_Ax1 XAxis()  const;
   
-//!  Rotates an ellipse. A1 is the axis of the rotation. <br>
-//!  Ang is the angular value of the rotation in radians. <br>
-        gp_Elips Rotated(const gp_Ax1& A1,const Standard_Real Ang) const;
+
+  //! Returns the "YAxis" of the ellipse whose unit vector is the "X Direction" or the "Y Direction"
+  //! of the local coordinate system of this ellipse.
+  //! This is the minor axis of the ellipse.
+      gp_Ax1 YAxis()  const;
   
-        void Scale(const gp_Pnt& P,const Standard_Real S) ;
+  Standard_EXPORT   void Mirror (const gp_Pnt& P) ;
   
-//!  Scales an ellipse. S is the scaling value. <br>
-        gp_Elips Scaled(const gp_Pnt& P,const Standard_Real S) const;
+
+  //! Performs the symmetrical transformation of an ellipse with
+  //! respect to the point P which is the center of the symmetry.
+  Standard_EXPORT   gp_Elips Mirrored (const gp_Pnt& P)  const;
   
-        void Transform(const gp_Trsf& T) ;
+  Standard_EXPORT   void Mirror (const gp_Ax1& A1) ;
   
-//!  Transforms an ellipse with the transformation T from class Trsf. <br>
-        gp_Elips Transformed(const gp_Trsf& T) const;
+
+  //! Performs the symmetrical transformation of an ellipse with
+  //! respect to an axis placement which is the axis of the symmetry.
+  Standard_EXPORT   gp_Elips Mirrored (const gp_Ax1& A1)  const;
   
-        void Translate(const gp_Vec& V) ;
+  Standard_EXPORT   void Mirror (const gp_Ax2& A2) ;
   
-//!  Translates an ellipse in the direction of the vector V. <br>
-//!  The magnitude of the translation is the vector's magnitude. <br>
-        gp_Elips Translated(const gp_Vec& V) const;
+
+  //! Performs the symmetrical transformation of an ellipse with
+  //! respect to a plane. The axis placement A2 locates the plane
+  //! of the symmetry (Location, XDirection, YDirection).
+  Standard_EXPORT   gp_Elips Mirrored (const gp_Ax2& A2)  const;
   
-        void Translate(const gp_Pnt& P1,const gp_Pnt& P2) ;
+      void Rotate (const gp_Ax1& A1, const Standard_Real Ang) ;
   
-//!  Translates an ellipse from the point P1 to the point P2. <br>
-        gp_Elips Translated(const gp_Pnt& P1,const gp_Pnt& P2) const;
+
+  //! Rotates an ellipse. A1 is the axis of the rotation.
+  //! Ang is the angular value of the rotation in radians.
+      gp_Elips Rotated (const gp_Ax1& A1, const Standard_Real Ang)  const;
+  
+      void Scale (const gp_Pnt& P, const Standard_Real S) ;
+  
+
+  //! Scales an ellipse. S is the scaling value.
+      gp_Elips Scaled (const gp_Pnt& P, const Standard_Real S)  const;
+  
+      void Transform (const gp_Trsf& T) ;
+  
+
+  //! Transforms an ellipse with the transformation T from class Trsf.
+      gp_Elips Transformed (const gp_Trsf& T)  const;
+  
+      void Translate (const gp_Vec& V) ;
+  
+
+  //! Translates an ellipse in the direction of the vector V.
+  //! The magnitude of the translation is the vector's magnitude.
+      gp_Elips Translated (const gp_Vec& V)  const;
+  
+      void Translate (const gp_Pnt& P1, const gp_Pnt& P2) ;
+  
+
+  //! Translates an ellipse from the point P1 to the point P2.
+      gp_Elips Translated (const gp_Pnt& P1, const gp_Pnt& P2)  const;
     const gp_Ax2& _CSFDB_Getgp_Elipspos() const { return pos; }
     Standard_Real _CSFDB_Getgp_ElipsmajorRadius() const { return majorRadius; }
     void _CSFDB_Setgp_ElipsmajorRadius(const Standard_Real p) { majorRadius = p; }
@@ -245,9 +258,9 @@ protected:
 private: 
 
 
-gp_Ax2 pos;
-Standard_Real majorRadius;
-Standard_Real minorRadius;
+  gp_Ax2 pos;
+  Standard_Real majorRadius;
+  Standard_Real minorRadius;
 
 
 };
@@ -257,7 +270,6 @@ Standard_Real minorRadius;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _gp_Elips_HeaderFile

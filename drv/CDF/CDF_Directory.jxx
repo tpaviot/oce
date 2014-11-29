@@ -1,15 +1,5 @@
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _CDF_DirectoryIterator_HeaderFile
 #include <CDF_DirectoryIterator.hxx>
-#endif
-#ifndef _CDM_Document_HeaderFile
 #include <CDM_Document.hxx>
-#endif
-#ifndef _CDM_ListOfDocument_HeaderFile
 #include <CDM_ListOfDocument.hxx>
-#endif
-#ifndef _CDF_Directory_HeaderFile
 #include <CDF_Directory.hxx>
-#endif

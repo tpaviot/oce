@@ -6,10 +6,13 @@
 #ifndef _TDataXtd_ConstraintEnum_HeaderFile
 #define _TDataXtd_ConstraintEnum_HeaderFile
 
-//!  The terms of this enumeration define the types <br>
-//! of  available constraint. <br>
-//! ================== <br>
-enum TDataXtd_ConstraintEnum {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! The terms of this enumeration define the types
+//! of  available constraint.
+//! ==================
+enum TDataXtd_ConstraintEnum
+{
 TDataXtd_RADIUS,
 TDataXtd_DIAMETER,
 TDataXtd_MINOR_RADIUS,
@@ -38,8 +41,4 @@ TDataXtd_ROUND,
 TDataXtd_OFFSET
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _TDataXtd_ConstraintEnum_HeaderFile

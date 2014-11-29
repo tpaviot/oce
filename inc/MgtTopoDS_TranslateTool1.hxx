@@ -6,19 +6,11 @@
 #ifndef _MgtTopoDS_TranslateTool1_HeaderFile
 #define _MgtTopoDS_TranslateTool1_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MgtTopoDS_TranslateTool1_HeaderFile
 #include <Handle_MgtTopoDS_TranslateTool1.hxx>
-#endif
 
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class Standard_TypeMismatch;
 class TopoDS_Shape;
 class PTopoDS_Shape1;
@@ -26,83 +18,87 @@ class PTColStd_TransientPersistentMap;
 class PTColStd_PersistentTransientMap;
 
 
-//! The TranslateTool1 class is provided to support the <br>
-//!          translation of inherited parts of topological data <br>
-//!          structures. <br>
-class MgtTopoDS_TranslateTool1 : public MMgt_TShared {
+//! The TranslateTool1 class is provided to support the
+//! translation of inherited parts of topological data
+//! structures.
+//! Root of all translation tools.
+class MgtTopoDS_TranslateTool1 : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   virtual  void Add(TopoDS_Shape& S1,const TopoDS_Shape& S2) const = 0;
+  Standard_EXPORT virtual   void Add (TopoDS_Shape& S1, const TopoDS_Shape& S2)  const = 0;
   
-  Standard_EXPORT   virtual  void MakeVertex(TopoDS_Shape& S) const = 0;
+  Standard_EXPORT virtual   void MakeVertex (TopoDS_Shape& S)  const = 0;
   
-  Standard_EXPORT   virtual  void MakeVertex(PTopoDS_Shape1& S) const = 0;
+  Standard_EXPORT virtual   void MakeVertex (PTopoDS_Shape1& S)  const = 0;
   
-  Standard_EXPORT   virtual  void MakeEdge(TopoDS_Shape& S) const = 0;
+  Standard_EXPORT virtual   void MakeEdge (TopoDS_Shape& S)  const = 0;
   
-  Standard_EXPORT   virtual  void MakeEdge(PTopoDS_Shape1& S) const = 0;
+  Standard_EXPORT virtual   void MakeEdge (PTopoDS_Shape1& S)  const = 0;
   
-  Standard_EXPORT   virtual  void MakeWire(TopoDS_Shape& S) const = 0;
+  Standard_EXPORT virtual   void MakeWire (TopoDS_Shape& S)  const = 0;
   
-  Standard_EXPORT   virtual  void MakeWire(PTopoDS_Shape1& S) const = 0;
+  Standard_EXPORT virtual   void MakeWire (PTopoDS_Shape1& S)  const = 0;
   
-  Standard_EXPORT   virtual  void MakeFace(TopoDS_Shape& S) const = 0;
+  Standard_EXPORT virtual   void MakeFace (TopoDS_Shape& S)  const = 0;
   
-  Standard_EXPORT   virtual  void MakeFace(PTopoDS_Shape1& S) const = 0;
+  Standard_EXPORT virtual   void MakeFace (PTopoDS_Shape1& S)  const = 0;
   
-  Standard_EXPORT   virtual  void MakeShell(TopoDS_Shape& S) const = 0;
+  Standard_EXPORT virtual   void MakeShell (TopoDS_Shape& S)  const = 0;
   
-  Standard_EXPORT   virtual  void MakeShell(PTopoDS_Shape1& S) const = 0;
+  Standard_EXPORT virtual   void MakeShell (PTopoDS_Shape1& S)  const = 0;
   
-  Standard_EXPORT   virtual  void MakeSolid(TopoDS_Shape& S) const = 0;
+  Standard_EXPORT virtual   void MakeSolid (TopoDS_Shape& S)  const = 0;
   
-  Standard_EXPORT   virtual  void MakeSolid(PTopoDS_Shape1& S) const = 0;
+  Standard_EXPORT virtual   void MakeSolid (PTopoDS_Shape1& S)  const = 0;
   
-  Standard_EXPORT   virtual  void MakeCompSolid(TopoDS_Shape& S) const = 0;
+  Standard_EXPORT virtual   void MakeCompSolid (TopoDS_Shape& S)  const = 0;
   
-  Standard_EXPORT   virtual  void MakeCompSolid(PTopoDS_Shape1& S) const = 0;
+  Standard_EXPORT virtual   void MakeCompSolid (PTopoDS_Shape1& S)  const = 0;
   
-  Standard_EXPORT   virtual  void MakeCompound(TopoDS_Shape& S) const = 0;
+  Standard_EXPORT virtual   void MakeCompound (TopoDS_Shape& S)  const = 0;
   
-  Standard_EXPORT   virtual  void MakeCompound(PTopoDS_Shape1& S) const = 0;
-  //! Basic update method <br>
-  Standard_EXPORT     void UpdateShape(const TopoDS_Shape& S1,PTopoDS_Shape1& S2) const;
-  //! Basic update method <br>
-  Standard_EXPORT     void UpdateShape(const PTopoDS_Shape1& S1,TopoDS_Shape& S2) const;
+  Standard_EXPORT virtual   void MakeCompound (PTopoDS_Shape1& S)  const = 0;
   
-  Standard_EXPORT   virtual  void UpdateVertex(const TopoDS_Shape& S1,PTopoDS_Shape1& S2,PTColStd_TransientPersistentMap& M) const;
+  //! Basic update method
+  Standard_EXPORT   void UpdateShape (const TopoDS_Shape& S1, PTopoDS_Shape1& S2)  const;
   
-  Standard_EXPORT   virtual  void UpdateVertex(const PTopoDS_Shape1& S1,TopoDS_Shape& S2,PTColStd_PersistentTransientMap& M) const;
+  //! Basic update method
+  Standard_EXPORT   void UpdateShape (const PTopoDS_Shape1& S1, TopoDS_Shape& S2)  const;
   
-  Standard_EXPORT   virtual  void UpdateEdge(const TopoDS_Shape& S1,PTopoDS_Shape1& S2,PTColStd_TransientPersistentMap& M) const;
+  Standard_EXPORT virtual   void UpdateVertex (const TopoDS_Shape& S1, PTopoDS_Shape1& S2, PTColStd_TransientPersistentMap& M)  const;
   
-  Standard_EXPORT   virtual  void UpdateEdge(const PTopoDS_Shape1& S1,TopoDS_Shape& S2,PTColStd_PersistentTransientMap& M) const;
+  Standard_EXPORT virtual   void UpdateVertex (const PTopoDS_Shape1& S1, TopoDS_Shape& S2, PTColStd_PersistentTransientMap& M)  const;
   
-  Standard_EXPORT   virtual  void UpdateWire(const TopoDS_Shape& S1,PTopoDS_Shape1& S2) const;
+  Standard_EXPORT virtual   void UpdateEdge (const TopoDS_Shape& S1, PTopoDS_Shape1& S2, PTColStd_TransientPersistentMap& M)  const;
   
-  Standard_EXPORT   virtual  void UpdateWire(const PTopoDS_Shape1& S1,TopoDS_Shape& S2) const;
+  Standard_EXPORT virtual   void UpdateEdge (const PTopoDS_Shape1& S1, TopoDS_Shape& S2, PTColStd_PersistentTransientMap& M)  const;
   
-  Standard_EXPORT   virtual  void UpdateFace(const TopoDS_Shape& S1,PTopoDS_Shape1& S2,PTColStd_TransientPersistentMap& M) const;
+  Standard_EXPORT virtual   void UpdateWire (const TopoDS_Shape& S1, PTopoDS_Shape1& S2)  const;
   
-  Standard_EXPORT   virtual  void UpdateFace(const PTopoDS_Shape1& S1,TopoDS_Shape& S2,PTColStd_PersistentTransientMap& M) const;
+  Standard_EXPORT virtual   void UpdateWire (const PTopoDS_Shape1& S1, TopoDS_Shape& S2)  const;
   
-  Standard_EXPORT   virtual  void UpdateShell(const TopoDS_Shape& S1,PTopoDS_Shape1& S2) const;
+  Standard_EXPORT virtual   void UpdateFace (const TopoDS_Shape& S1, PTopoDS_Shape1& S2, PTColStd_TransientPersistentMap& M)  const;
   
-  Standard_EXPORT   virtual  void UpdateShell(const PTopoDS_Shape1& S1,TopoDS_Shape& S2) const;
+  Standard_EXPORT virtual   void UpdateFace (const PTopoDS_Shape1& S1, TopoDS_Shape& S2, PTColStd_PersistentTransientMap& M)  const;
   
-  Standard_EXPORT   virtual  void UpdateSolid(const TopoDS_Shape& S1,PTopoDS_Shape1& S2) const;
+  Standard_EXPORT virtual   void UpdateShell (const TopoDS_Shape& S1, PTopoDS_Shape1& S2)  const;
   
-  Standard_EXPORT   virtual  void UpdateSolid(const PTopoDS_Shape1& S1,TopoDS_Shape& S2) const;
+  Standard_EXPORT virtual   void UpdateShell (const PTopoDS_Shape1& S1, TopoDS_Shape& S2)  const;
   
-  Standard_EXPORT   virtual  void UpdateCompSolid(const TopoDS_Shape& S1,PTopoDS_Shape1& S2) const;
+  Standard_EXPORT virtual   void UpdateSolid (const TopoDS_Shape& S1, PTopoDS_Shape1& S2)  const;
   
-  Standard_EXPORT   virtual  void UpdateCompSolid(const PTopoDS_Shape1& S1,TopoDS_Shape& S2) const;
+  Standard_EXPORT virtual   void UpdateSolid (const PTopoDS_Shape1& S1, TopoDS_Shape& S2)  const;
   
-  Standard_EXPORT   virtual  void UpdateCompound(const TopoDS_Shape& S1,PTopoDS_Shape1& S2) const;
+  Standard_EXPORT virtual   void UpdateCompSolid (const TopoDS_Shape& S1, PTopoDS_Shape1& S2)  const;
   
-  Standard_EXPORT   virtual  void UpdateCompound(const PTopoDS_Shape1& S1,TopoDS_Shape& S2) const;
+  Standard_EXPORT virtual   void UpdateCompSolid (const PTopoDS_Shape1& S1, TopoDS_Shape& S2)  const;
+  
+  Standard_EXPORT virtual   void UpdateCompound (const TopoDS_Shape& S1, PTopoDS_Shape1& S2)  const;
+  
+  Standard_EXPORT virtual   void UpdateCompound (const PTopoDS_Shape1& S1, TopoDS_Shape& S2)  const;
 
 
 
@@ -125,7 +121,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MgtTopoDS_TranslateTool1_HeaderFile

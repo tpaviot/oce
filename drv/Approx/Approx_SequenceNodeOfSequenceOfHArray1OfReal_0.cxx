@@ -5,16 +5,10 @@
 
 #include <Approx_SequenceNodeOfSequenceOfHArray1OfReal.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TColStd_HArray1OfReal_HeaderFile
 #include <TColStd_HArray1OfReal.hxx>
-#endif
-#ifndef _Approx_SequenceOfHArray1OfReal_HeaderFile
 #include <Approx_SequenceOfHArray1OfReal.hxx>
-#endif
 
  
 
@@ -33,7 +27,7 @@ IMPLEMENT_DOWNCAST(Approx_SequenceNodeOfSequenceOfHArray1OfReal,Standard_Transie
 IMPLEMENT_STANDARD_RTTI(Approx_SequenceNodeOfSequenceOfHArray1OfReal)
 
 
-#define SeqItem Handle_TColStd_HArray1OfReal
+#define SeqItem Handle(TColStd_HArray1OfReal)
 #define SeqItem_hxx <TColStd_HArray1OfReal.hxx>
 #define TCollection_SequenceNode Approx_SequenceNodeOfSequenceOfHArray1OfReal
 #define TCollection_SequenceNode_hxx <Approx_SequenceNodeOfSequenceOfHArray1OfReal.hxx>

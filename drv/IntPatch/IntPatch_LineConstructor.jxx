@@ -1,15 +1,5 @@
-#ifndef _IntPatch_SequenceOfLine_HeaderFile
 #include <IntPatch_SequenceOfLine.hxx>
-#endif
-#ifndef _IntPatch_Line_HeaderFile
 #include <IntPatch_Line.hxx>
-#endif
-#ifndef _Adaptor3d_HSurface_HeaderFile
 #include <Adaptor3d_HSurface.hxx>
-#endif
-#ifndef _Adaptor3d_TopolTool_HeaderFile
 #include <Adaptor3d_TopolTool.hxx>
-#endif
-#ifndef _IntPatch_LineConstructor_HeaderFile
 #include <IntPatch_LineConstructor.hxx>
-#endif

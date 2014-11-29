@@ -6,25 +6,13 @@
 #ifndef _CDM_StdMapNodeOfMapOfDocument_HeaderFile
 #define _CDM_StdMapNodeOfMapOfDocument_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_CDM_StdMapNodeOfMapOfDocument_HeaderFile
 #include <Handle_CDM_StdMapNodeOfMapOfDocument.hxx>
-#endif
 
-#ifndef _Handle_CDM_Document_HeaderFile
 #include <Handle_CDM_Document.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class CDM_Document;
 class CDM_DocumentHasher;
 class CDM_MapOfDocument;
@@ -32,14 +20,15 @@ class CDM_MapIteratorOfMapOfDocument;
 
 
 
-class CDM_StdMapNodeOfMapOfDocument : public TCollection_MapNode {
+class CDM_StdMapNodeOfMapOfDocument : public TCollection_MapNode
+{
 
 public:
 
   
-      CDM_StdMapNodeOfMapOfDocument(const Handle(CDM_Document)& K,const TCollection_MapNodePtr& n);
+    CDM_StdMapNodeOfMapOfDocument(const Handle(CDM_Document)& K, const TCollection_MapNodePtr& n);
   
-        Handle_CDM_Document& Key() const;
+      Handle(CDM_Document)& Key()  const;
 
 
 
@@ -54,12 +43,12 @@ protected:
 private: 
 
 
-Handle_CDM_Document myKey;
+  Handle(CDM_Document) myKey;
 
 
 };
 
-#define TheKey Handle_CDM_Document
+#define TheKey Handle(CDM_Document)
 #define TheKey_hxx <CDM_Document.hxx>
 #define Hasher CDM_DocumentHasher
 #define Hasher_hxx <CDM_DocumentHasher.hxx>
@@ -88,7 +77,6 @@ Handle_CDM_Document myKey;
 #undef TCollection_Map_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _CDM_StdMapNodeOfMapOfDocument_HeaderFile

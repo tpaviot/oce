@@ -5,30 +5,16 @@
 
 #include <IGESData_WriterLib.hxx>
 
-#ifndef _IGESData_NodeOfWriterLib_HeaderFile
 #include <IGESData_NodeOfWriterLib.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _IGESData_ReadWriteModule_HeaderFile
 #include <IGESData_ReadWriteModule.hxx>
-#endif
-#ifndef _IGESData_Protocol_HeaderFile
 #include <IGESData_Protocol.hxx>
-#endif
-#ifndef _IGESData_GlobalNodeOfWriterLib_HeaderFile
 #include <IGESData_GlobalNodeOfWriterLib.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
  
 
-#define TheObject Handle_IGESData_IGESEntity
+#define TheObject Handle(IGESData_IGESEntity)
 #define TheObject_hxx <IGESData_IGESEntity.hxx>
 #define Handle_TheModule Handle_IGESData_ReadWriteModule
 #define TheModule IGESData_ReadWriteModule

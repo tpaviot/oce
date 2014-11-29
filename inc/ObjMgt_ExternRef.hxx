@@ -6,37 +6,24 @@
 #ifndef _ObjMgt_ExternRef_HeaderFile
 #define _ObjMgt_ExternRef_HeaderFile
 
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Handle_ObjMgt_ExternRef_HeaderFile
 #include <Handle_ObjMgt_ExternRef.hxx>
-#endif
 
-#ifndef _Handle_PCollection_HAsciiString_HeaderFile
 #include <Handle_PCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Persistent_HeaderFile
 #include <Standard_Persistent.hxx>
-#endif
 class PCollection_HAsciiString;
 
 
-class ObjMgt_ExternRef : public Standard_Persistent {
+class ObjMgt_ExternRef : public Standard_Persistent
+{
 
 public:
 
 
-  ObjMgt_ExternRef( )
+ObjMgt_ExternRef( )
 {
   
 }
@@ -61,8 +48,8 @@ protected:
 private: 
 
 
-Handle_PCollection_HAsciiString myEntryId;
-Standard_Integer myBindingIndex;
+  Handle(PCollection_HAsciiString) myEntryId;
+  Standard_Integer myBindingIndex;
 
 
 };
@@ -71,7 +58,6 @@ Standard_Integer myBindingIndex;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ObjMgt_ExternRef_HeaderFile

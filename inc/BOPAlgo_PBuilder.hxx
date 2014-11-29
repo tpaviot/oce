@@ -7,7 +7,6 @@
 #define _BOPAlgo_PBuilder_HeaderFile
 
 class BOPAlgo_Builder;
-
 typedef BOPAlgo_Builder* BOPAlgo_PBuilder;
 
-#endif
+#endif // _BOPAlgo_PBuilder_HeaderFile

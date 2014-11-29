@@ -1,9 +1,0 @@
-#ifndef _Dynamic_SequenceOfMethods_HeaderFile
-#include <Dynamic_SequenceOfMethods.hxx>
-#endif
-#ifndef _Dynamic_Method_HeaderFile
-#include <Dynamic_Method.hxx>
-#endif
-#ifndef _Dynamic_CompositMethod_HeaderFile
-#include <Dynamic_CompositMethod.hxx>
-#endif

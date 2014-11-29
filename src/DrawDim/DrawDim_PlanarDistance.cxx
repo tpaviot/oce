@@ -112,5 +112,7 @@ void DrawDim_PlanarDistance::DrawOn(Draw_Display& dis) const
       }
     }
   } 
+#ifdef OCCT_DEBUG
   cout << " DrawDim_PlanarDistance::DrawOn : dimension error" << endl;
+#endif
 }

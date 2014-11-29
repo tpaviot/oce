@@ -5,27 +5,13 @@
 
 #include <LocOpe_DataMapOfShapePnt.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _LocOpe_DataMapNodeOfDataMapOfShapePnt_HeaderFile
 #include <LocOpe_DataMapNodeOfDataMapOfShapePnt.hxx>
-#endif
-#ifndef _LocOpe_DataMapIteratorOfDataMapOfShapePnt_HeaderFile
 #include <LocOpe_DataMapIteratorOfDataMapOfShapePnt.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape

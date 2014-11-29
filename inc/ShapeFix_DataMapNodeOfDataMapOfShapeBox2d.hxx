@@ -6,28 +6,14 @@
 #ifndef _ShapeFix_DataMapNodeOfDataMapOfShapeBox2d_HeaderFile
 #define _ShapeFix_DataMapNodeOfDataMapOfShapeBox2d_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ShapeFix_DataMapNodeOfDataMapOfShapeBox2d_HeaderFile
 #include <Handle_ShapeFix_DataMapNodeOfDataMapOfShapeBox2d.hxx>
-#endif
 
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Bnd_Box2d_HeaderFile
 #include <Bnd_Box2d.hxx>
-#endif
-#ifndef _TCollection_MapNode_HeaderFile
 #include <TCollection_MapNode.hxx>
-#endif
-#ifndef _TCollection_MapNodePtr_HeaderFile
 #include <TCollection_MapNodePtr.hxx>
-#endif
 class TopoDS_Shape;
 class Bnd_Box2d;
 class TopTools_ShapeMapHasher;
@@ -36,16 +22,17 @@ class ShapeFix_DataMapIteratorOfDataMapOfShapeBox2d;
 
 
 
-class ShapeFix_DataMapNodeOfDataMapOfShapeBox2d : public TCollection_MapNode {
+class ShapeFix_DataMapNodeOfDataMapOfShapeBox2d : public TCollection_MapNode
+{
 
 public:
 
   
-      ShapeFix_DataMapNodeOfDataMapOfShapeBox2d(const TopoDS_Shape& K,const Bnd_Box2d& I,const TCollection_MapNodePtr& n);
+    ShapeFix_DataMapNodeOfDataMapOfShapeBox2d(const TopoDS_Shape& K, const Bnd_Box2d& I, const TCollection_MapNodePtr& n);
   
-        TopoDS_Shape& Key() const;
+      TopoDS_Shape& Key()  const;
   
-        Bnd_Box2d& Value() const;
+      Bnd_Box2d& Value()  const;
 
 
 
@@ -60,8 +47,8 @@ protected:
 private: 
 
 
-TopoDS_Shape myKey;
-Bnd_Box2d myValue;
+  TopoDS_Shape myKey;
+  Bnd_Box2d myValue;
 
 
 };
@@ -99,7 +86,6 @@ Bnd_Box2d myValue;
 #undef TCollection_DataMap_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ShapeFix_DataMapNodeOfDataMapOfShapeBox2d_HeaderFile

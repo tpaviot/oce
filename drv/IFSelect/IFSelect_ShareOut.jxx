@@ -1,27 +1,9 @@
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Interface_InterfaceError_HeaderFile
 #include <Interface_InterfaceError.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _IFSelect_Dispatch_HeaderFile
 #include <IFSelect_Dispatch.hxx>
-#endif
-#ifndef _IFSelect_GeneralModifier_HeaderFile
 #include <IFSelect_GeneralModifier.hxx>
-#endif
-#ifndef _IFSelect_Modifier_HeaderFile
 #include <IFSelect_Modifier.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _IFSelect_ShareOut_HeaderFile
 #include <IFSelect_ShareOut.hxx>
-#endif

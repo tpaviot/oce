@@ -1,12 +1,4 @@
-#ifndef _StepGeom_Pcurve_HeaderFile
 #include <StepGeom_Pcurve.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _StepShape_Edge_HeaderFile
 #include <StepShape_Edge.hxx>
-#endif
-#ifndef _StepShape_SeamEdge_HeaderFile
 #include <StepShape_SeamEdge.hxx>
-#endif

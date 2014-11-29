@@ -6,28 +6,14 @@
 #ifndef _StepVisual_HArray1OfPresentationStyleAssignment_HeaderFile
 #define _StepVisual_HArray1OfPresentationStyleAssignment_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_HArray1OfPresentationStyleAssignment_HeaderFile
 #include <Handle_StepVisual_HArray1OfPresentationStyleAssignment.hxx>
-#endif
 
-#ifndef _StepVisual_Array1OfPresentationStyleAssignment_HeaderFile
 #include <StepVisual_Array1OfPresentationStyleAssignment.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Handle_StepVisual_PresentationStyleAssignment_HeaderFile
 #include <Handle_StepVisual_PresentationStyleAssignment.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -37,32 +23,33 @@ class StepVisual_Array1OfPresentationStyleAssignment;
 
 
 
-class StepVisual_HArray1OfPresentationStyleAssignment : public MMgt_TShared {
+class StepVisual_HArray1OfPresentationStyleAssignment : public MMgt_TShared
+{
 
 public:
 
   
-      StepVisual_HArray1OfPresentationStyleAssignment(const Standard_Integer Low,const Standard_Integer Up);
+    StepVisual_HArray1OfPresentationStyleAssignment(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepVisual_HArray1OfPresentationStyleAssignment(const Standard_Integer Low,const Standard_Integer Up,const Handle(StepVisual_PresentationStyleAssignment)& V);
+    StepVisual_HArray1OfPresentationStyleAssignment(const Standard_Integer Low, const Standard_Integer Up, const Handle(StepVisual_PresentationStyleAssignment)& V);
   
-        void Init(const Handle(StepVisual_PresentationStyleAssignment)& V) ;
+      void Init (const Handle(StepVisual_PresentationStyleAssignment)& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const Handle(StepVisual_PresentationStyleAssignment)& Value) ;
+      void SetValue (const Standard_Integer Index, const Handle(StepVisual_PresentationStyleAssignment)& Value) ;
   
-       const Handle_StepVisual_PresentationStyleAssignment& Value(const Standard_Integer Index) const;
+     const  Handle(StepVisual_PresentationStyleAssignment)& Value (const Standard_Integer Index)  const;
   
-        Handle_StepVisual_PresentationStyleAssignment& ChangeValue(const Standard_Integer Index) ;
+      Handle(StepVisual_PresentationStyleAssignment)& ChangeValue (const Standard_Integer Index) ;
   
-       const StepVisual_Array1OfPresentationStyleAssignment& Array1() const;
+     const  StepVisual_Array1OfPresentationStyleAssignment& Array1()  const;
   
-        StepVisual_Array1OfPresentationStyleAssignment& ChangeArray1() ;
+      StepVisual_Array1OfPresentationStyleAssignment& ChangeArray1() ;
 
 
 
@@ -77,12 +64,12 @@ protected:
 private: 
 
 
-StepVisual_Array1OfPresentationStyleAssignment myArray;
+  StepVisual_Array1OfPresentationStyleAssignment myArray;
 
 
 };
 
-#define ItemHArray1 Handle_StepVisual_PresentationStyleAssignment
+#define ItemHArray1 Handle(StepVisual_PresentationStyleAssignment)
 #define ItemHArray1_hxx <StepVisual_PresentationStyleAssignment.hxx>
 #define TheArray1 StepVisual_Array1OfPresentationStyleAssignment
 #define TheArray1_hxx <StepVisual_Array1OfPresentationStyleAssignment.hxx>
@@ -103,7 +90,6 @@ StepVisual_Array1OfPresentationStyleAssignment myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_HArray1OfPresentationStyleAssignment_HeaderFile

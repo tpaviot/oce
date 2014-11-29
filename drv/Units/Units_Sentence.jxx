@@ -1,12 +1,4 @@
-#ifndef _Units_TokensSequence_HeaderFile
 #include <Units_TokensSequence.hxx>
-#endif
-#ifndef _Units_Lexicon_HeaderFile
 #include <Units_Lexicon.hxx>
-#endif
-#ifndef _Units_Token_HeaderFile
 #include <Units_Token.hxx>
-#endif
-#ifndef _Units_Sentence_HeaderFile
 #include <Units_Sentence.hxx>
-#endif

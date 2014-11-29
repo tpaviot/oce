@@ -178,9 +178,9 @@ void AIS_Axis::Compute(const Handle(PrsMgr_PresentationManager3d)&,
 
 }
 
-void AIS_Axis::Compute(const Handle_Prs3d_Projector& aProjector, const Handle_Geom_Transformation& aTransformation, const Handle_Prs3d_Presentation& aPresentation)
+void AIS_Axis::Compute(const Handle(Prs3d_Projector)& aProjector, const Handle(Geom_Transformation)& aTransformation, const Handle(Prs3d_Presentation)& aPresentation)
 {
-// Standard_NotImplemented::Raise("AIS_Axis::Compute(const Handle_Prs3d_Projector&, const Handle_Geom_Transformation&, const Handle_Prs3d_Presentation&)");
+// Standard_NotImplemented::Raise("AIS_Axis::Compute(const Handle(Prs3d_Projector)&, const Handle(Geom_Transformation)&, const Handle(Prs3d_Presentation)&)");
   PrsMgr_PresentableObject::Compute( aProjector , aTransformation , aPresentation ) ;
 }
 
@@ -261,10 +261,11 @@ void AIS_Axis::ComputeFields()
   if (myIsXYZAxis){
     // calcul de myPFirst,myPlast
     Handle(Prs3d_DatumAspect) DA = myDrawer->DatumAspect();
-    gp_Pnt Orig = myAx2->Ax2().Location();
-    gp_Dir oX = myAx2->Ax2().XDirection();
-    gp_Dir oY = myAx2->Ax2().YDirection();
-    gp_Dir oZ = myAx2->Ax2().Direction();
+    gp_Ax2 anAxis = myAx2->Ax2();
+    const gp_Pnt& Orig = anAxis.Location();
+    const gp_Dir& oX   = anAxis.XDirection();
+    const gp_Dir& oY   = anAxis.YDirection();
+    const gp_Dir& oZ   = anAxis.Direction();
     Quantity_Length xo,yo,zo,x = 0.,y = 0.,z = 0.;
     Orig.Coord(xo,yo,zo);
     myPfirst.SetCoord(xo,yo,zo);

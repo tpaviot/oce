@@ -6,15 +6,14 @@
 #ifndef _Vrml_AsciiTextJustification_HeaderFile
 #define _Vrml_AsciiTextJustification_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum Vrml_AsciiTextJustification {
+
+enum Vrml_AsciiTextJustification
+{
 Vrml_LEFT,
 Vrml_CENTER,
 Vrml_RIGHT
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Vrml_AsciiTextJustification_HeaderFile

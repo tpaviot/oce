@@ -23,10 +23,6 @@
 #  include <windows.h>
 # endif  /* _INC_WINDOWS */
 
-# ifndef _INC_TCHAR
-#  include <tchar.h>
-# endif  /* _INC_TCHAR */
-
 # ifndef OSDAPI
 #  if !defined(HAVE_NO_DLL)
 #   ifdef __OSD_DLL
@@ -83,8 +79,8 @@ typedef struct _group_sid {
 typedef struct _MB_DESC {
 
                 MB_ITEMTYPE   itemType;
-                _TINT         itemId;
-                const _TCHAR* buttonLabel;
+                int           itemId;
+                const char*   buttonLabel;
 
                } MB_DESC, *LPMB_DESC;
 
@@ -97,11 +93,11 @@ typedef struct _file_ace {
 
                } FILE_ACE, *PFILE_ACE;
 
-typedef void ( *MOVE_DIR_PROC   ) ( LPCTSTR, LPCTSTR );
-typedef void ( *COPY_DIR_PROC   ) ( LPCTSTR, LPCTSTR );
-typedef void ( *DELETE_DIR_PROC ) ( LPCTSTR          );
+typedef void ( *MOVE_DIR_PROC   ) ( LPCWSTR, LPCWSTR );
+typedef void ( *COPY_DIR_PROC   ) ( LPCWSTR, LPCWSTR );
+typedef void ( *DELETE_DIR_PROC ) ( LPCWSTR          );
 
-typedef DIR_RESPONSE ( *RESPONSE_DIR_PROC ) ( LPCTSTR );
+typedef DIR_RESPONSE ( *RESPONSE_DIR_PROC ) ( LPCWSTR );
 
 #define GET_SID( pACE ) (  ( PSID )(   (  ( PBYTE )pACE    ) + \
                                        sizeof ( ACE_HEADER ) + \
@@ -120,11 +116,11 @@ void                 OSDAPI FreeSD  ( PSECURITY_DESCRIPTOR );
 LPVOID OSDAPI GetTokenInformationEx ( HANDLE, TOKEN_INFORMATION_CLASS );
 void   OSDAPI FreeTokenInformation  ( LPVOID                          );
 
-PSECURITY_DESCRIPTOR OSDAPI GetFileSecurityEx ( LPCTSTR, SECURITY_INFORMATION );
+PSECURITY_DESCRIPTOR OSDAPI GetFileSecurityEx ( LPCWSTR, SECURITY_INFORMATION );
 void                 OSDAPI FreeFileSecurity  ( PSECURITY_DESCRIPTOR          );
 
-BOOL OSDAPI LookupAccountSidEx ( PSID, LPTSTR*, LPTSTR* );
-void OSDAPI FreeAccountNames   ( LPTSTR, LPTSTR         );
+BOOL OSDAPI LookupAccountSidEx ( PSID, LPWSTR*, LPWSTR* );
+void OSDAPI FreeAccountNames   ( LPWSTR, LPWSTR         );
 
 PSID OSDAPI GetSecurityDescriptorOwnerEx ( PSECURITY_DESCRIPTOR );
 PSID OSDAPI GetSecurityDescriptorGroupEx ( PSECURITY_DESCRIPTOR );
@@ -155,8 +151,8 @@ void       OSDAPI FreeGroupSid  ( PGROUP_SID           );
 PVOID OSDAPI AllocAccessAllowedAce ( DWORD, BYTE, PSID );
 void  OSDAPI FreeAce ( PVOID );
 
-BOOL OSDAPI MoveDirectory   ( LPCTSTR, LPCTSTR );
-BOOL OSDAPI CopyDirectory   ( LPCTSTR, LPCTSTR );
+BOOL OSDAPI MoveDirectory   ( LPCWSTR, LPCWSTR );
+BOOL OSDAPI CopyDirectory   ( LPCWSTR, LPCWSTR );
 
 void OSDAPI SetMoveDirectoryProc     ( MOVE_DIR_PROC     );
 void OSDAPI SetCopyDirectoryProc     ( COPY_DIR_PROC     );

@@ -6,34 +6,16 @@
 #ifndef _Geom_Transformation_HeaderFile
 #define _Geom_Transformation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_Geom_Transformation_HeaderFile
 #include <Handle_Geom_Transformation.hxx>
-#endif
 
-#ifndef _gp_Trsf_HeaderFile
 #include <gp_Trsf.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _gp_TrsfForm_HeaderFile
 #include <gp_TrsfForm.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_ConstructionError;
 class Standard_OutOfRange;
 class gp_Trsf;
@@ -44,162 +26,192 @@ class gp_Ax3;
 class gp_Vec;
 
 
-//! Describes how to construct the following elementary transformations <br>
-//! - translations, <br>
-//! - rotations, <br>
-//! - symmetries, <br>
-//! - scales. <br>
-//!   The Transformation class can also be used to <br>
-//! construct complex transformations by combining these <br>
-//! elementary transformations. <br>
-//! However, these transformations can never change <br>
-//! the type of an object. For example, the projection <br>
-//! transformation can change a circle into an ellipse, and <br>
-//! therefore change the real type of the object. Such a <br>
-//! transformation is forbidden in this environment and <br>
-//! cannot be a Geom_Transformation. <br>
-//!  The transformation can be represented as follow : <br>
-//! <br>
-//!       V1   V2   V3    T <br>
-//!    | a11  a12  a13   a14 |   | x |      | x'| <br>
-//!    | a21  a22  a23   a24 |   | y |      | y'| <br>
-//!    | a31  a32  a33   a34 |   | z |   =  | z'| <br>
-//!    |  0    0    0     1  |   | 1 |      | 1 | <br>
-//! <br>
-//!  where {V1, V2, V3} defines the vectorial part of the <br>
-//!  transformation and T defines the translation part of <br>
-//!  the transformation. <br>
-//! Note: Geom_Transformation transformations <br>
-//! provide the same kind of "geometric" services as <br>
-//! gp_Trsf ones but have more complex data structures. <br>
-//! The geometric objects provided by the Geom <br>
-//! package use gp_Trsf transformations in the syntaxes <br>
-//! Transform and Transformed. <br>
-//! Geom_Transformation transformations are used in <br>
-//! a context where they can be shared by several <br>
-//! objects contained inside a common data structure. <br>
-class Geom_Transformation : public MMgt_TShared {
+//! Describes how to construct the following elementary transformations
+//! - translations,
+//! - rotations,
+//! - symmetries,
+//! - scales.
+//! The Transformation class can also be used to
+//! construct complex transformations by combining these
+//! elementary transformations.
+//! However, these transformations can never change
+//! the type of an object. For example, the projection
+//! transformation can change a circle into an ellipse, and
+//! therefore change the real type of the object. Such a
+//! transformation is forbidden in this environment and
+//! cannot be a Geom_Transformation.
+//! The transformation can be represented as follow :
+//!
+//! V1   V2   V3    T
+//! | a11  a12  a13   a14 |   | x |      | x'|
+//! | a21  a22  a23   a24 |   | y |      | y'|
+//! | a31  a32  a33   a34 |   | z |   =  | z'|
+//! |  0    0    0     1  |   | 1 |      | 1 |
+//!
+//! where {V1, V2, V3} defines the vectorial part of the
+//! transformation and T defines the translation part of
+//! the transformation.
+//! Note: Geom_Transformation transformations
+//! provide the same kind of "geometric" services as
+//! gp_Trsf ones but have more complex data structures.
+//! The geometric objects provided by the Geom
+//! package use gp_Trsf transformations in the syntaxes
+//! Transform and Transformed.
+//! Geom_Transformation transformations are used in
+//! a context where they can be shared by several
+//! objects contained inside a common data structure.
+class Geom_Transformation : public MMgt_TShared
+{
 
 public:
 
-  //! Creates an identity transformation. <br>
-  Standard_EXPORT   Geom_Transformation();
-  //!  Creates a transient copy of T. <br>
-  Standard_EXPORT   Geom_Transformation(const gp_Trsf& T);
   
-//!  Makes the transformation into a symmetrical transformation <br>
-//!  with respect to a point P. <br>
-//!  P is the center of the symmetry. <br>
-  Standard_EXPORT     void SetMirror(const gp_Pnt& P) ;
+  //! Creates an identity transformation.
+  Standard_EXPORT Geom_Transformation();
   
-//!  Makes the transformation into a symmetrical transformation <br>
-//!  with respect to an axis A1. <br>
-//!  A1 is the center of the axial symmetry. <br>
-  Standard_EXPORT     void SetMirror(const gp_Ax1& A1) ;
+  //! Creates a transient copy of T.
+  Standard_EXPORT Geom_Transformation(const gp_Trsf& T);
   
-//!  Makes the transformation into a symmetrical transformation <br>
-//!  with respect to a plane.  The plane of the symmetry is <br>
-//!  defined with the axis placement A2. It is the plane <br>
-//!  (Location, XDirection, YDirection). <br>
-  Standard_EXPORT     void SetMirror(const gp_Ax2& A2) ;
+
+  //! Makes the transformation into a symmetrical transformation
+  //! with respect to a point P.
+  //! P is the center of the symmetry.
+  Standard_EXPORT   void SetMirror (const gp_Pnt& P) ;
   
-//!  Makes the transformation into a rotation. <br>
-//!  A1 is the axis rotation and Ang is the angular value <br>
-//!  of the rotation in radians. <br>
-  Standard_EXPORT     void SetRotation(const gp_Ax1& A1,const Standard_Real Ang) ;
+
+  //! Makes the transformation into a symmetrical transformation
+  //! with respect to an axis A1.
+  //! A1 is the center of the axial symmetry.
+  Standard_EXPORT   void SetMirror (const gp_Ax1& A1) ;
   
-//!  Makes the transformation into a scale. P is the center of <br>
-//!  the scale and S is the scaling value. <br>
-  Standard_EXPORT     void SetScale(const gp_Pnt& P,const Standard_Real S) ;
+
+  //! Makes the transformation into a symmetrical transformation
+  //! with respect to a plane.  The plane of the symmetry is
+  //! defined with the axis placement A2. It is the plane
+  //! (Location, XDirection, YDirection).
+  Standard_EXPORT   void SetMirror (const gp_Ax2& A2) ;
   
-//!  Makes a transformation allowing passage from the coordinate <br>
-//!  system "FromSystem1" to the coordinate system "ToSystem2". <br>
-//! Example : <br>
-//!  In a C++ implementation : <br>
-//!  Real x1, y1, z1;  // are the coordinates of a point in the <br>
-//!                    // local system FromSystem1 <br>
-//!  Real x2, y2, z2;  // are the coordinates of a point in the <br>
-//!                    // local system ToSystem2 <br>
-//!  gp_Pnt P1 (x1, y1, z1) <br>
-//!  Geom_Transformation T; <br>
-//!  T.SetTransformation (FromSystem1, ToSystem2); <br>
-//!  gp_Pnt P2 = P1.Transformed (T); <br>
-//!  P2.Coord (x2, y2, z2); <br>
-  Standard_EXPORT     void SetTransformation(const gp_Ax3& FromSystem1,const gp_Ax3& ToSystem2) ;
+
+  //! Makes the transformation into a rotation.
+  //! A1 is the axis rotation and Ang is the angular value
+  //! of the rotation in radians.
+  Standard_EXPORT   void SetRotation (const gp_Ax1& A1, const Standard_Real Ang) ;
   
-//!  Makes the transformation allowing passage from the basic <br>
-//!  coordinate system <br>
-//!  {P(0.,0.,0.), VX (1.,0.,0.), VY (0.,1.,0.), VZ (0., 0. ,1.) } <br>
-//!  to the local coordinate system defined with the Ax2 ToSystem. <br>
-//!  Same utilisation as the previous method. FromSystem1 is <br>
-//!  defaulted to the absolute coordinate system. <br>
-  Standard_EXPORT     void SetTransformation(const gp_Ax3& ToSystem) ;
+
+  //! Makes the transformation into a scale. P is the center of
+  //! the scale and S is the scaling value.
+  Standard_EXPORT   void SetScale (const gp_Pnt& P, const Standard_Real S) ;
   
-//!  Makes the transformation into a translation. <br>
-//!  V is the vector of the translation. <br>
-  Standard_EXPORT     void SetTranslation(const gp_Vec& V) ;
+
+  //! Makes a transformation allowing passage from the coordinate
+  //! system "FromSystem1" to the coordinate system "ToSystem2".
+  //! Example :
+  //! In a C++ implementation :
+  //! Real x1, y1, z1;  // are the coordinates of a point in the
+  //! // local system FromSystem1
+  //! Real x2, y2, z2;  // are the coordinates of a point in the
+  //! // local system ToSystem2
+  //! gp_Pnt P1 (x1, y1, z1)
+  //! Geom_Transformation T;
+  //! T.SetTransformation (FromSystem1, ToSystem2);
+  //! gp_Pnt P2 = P1.Transformed (T);
+  //! P2.Coord (x2, y2, z2);
+  Standard_EXPORT   void SetTransformation (const gp_Ax3& FromSystem1, const gp_Ax3& ToSystem2) ;
   
-//!  Makes the transformation into a translation from the point <br>
-//!  P1 to the point P2. <br>
-  Standard_EXPORT     void SetTranslation(const gp_Pnt& P1,const gp_Pnt& P2) ;
-  //! Converts the gp_Trsf transformation T into this transformation. <br>
-  Standard_EXPORT     void SetTrsf(const gp_Trsf& T) ;
-  //! Checks whether this transformation is an indirect <br>
-//! transformation: returns true if the determinant of the <br>
-//! matrix of the vectorial part of the transformation is less than 0. <br>
-  Standard_EXPORT     Standard_Boolean IsNegative() const;
-  //! Returns the nature of this transformation as a value <br>
-//! of the gp_TrsfForm enumeration. <br>
-  Standard_EXPORT     gp_TrsfForm Form() const;
-  //!  Returns the scale value of the transformation. <br>
-  Standard_EXPORT     Standard_Real ScaleFactor() const;
+
+  //! Makes the transformation allowing passage from the basic
+  //! coordinate system
+  //! {P(0.,0.,0.), VX (1.,0.,0.), VY (0.,1.,0.), VZ (0., 0. ,1.) }
+  //! to the local coordinate system defined with the Ax2 ToSystem.
+  //! Same utilisation as the previous method. FromSystem1 is
+  //! defaulted to the absolute coordinate system.
+  Standard_EXPORT   void SetTransformation (const gp_Ax3& ToSystem) ;
   
-//!  Returns a non transient copy of <me>. <br>
-  Standard_EXPORT    const gp_Trsf& Trsf() const;
+
+  //! Makes the transformation into a translation.
+  //! V is the vector of the translation.
+  Standard_EXPORT   void SetTranslation (const gp_Vec& V) ;
   
-//!  Returns the coefficients of the global matrix of tranformation. <br>
-//!  It is a 3 rows X 4 columns matrix. <br>
-//!  Raised if  Row < 1 or Row > 3  or  Col < 1 or Col > 4 <br>
-//!  Computes the reverse transformation. <br>
-  Standard_EXPORT     Standard_Real Value(const Standard_Integer Row,const Standard_Integer Col) const;
+
+  //! Makes the transformation into a translation from the point
+  //! P1 to the point P2.
+  Standard_EXPORT   void SetTranslation (const gp_Pnt& P1, const gp_Pnt& P2) ;
   
-//!  Raised if the the transformation is singular. This means that <br>
-//!  the ScaleFactor is lower or equal to Resolution from <br>
-//!  package gp. <br>
-  Standard_EXPORT     void Invert() ;
+  //! Converts the gp_Trsf transformation T into this transformation.
+  Standard_EXPORT   void SetTrsf (const gp_Trsf& T) ;
   
-//!  Raised if the the transformation is singular. This means that <br>
-//!  the ScaleFactor is lower or equal to Resolution from <br>
-//!  package gp. <br>
-  Standard_EXPORT     Handle_Geom_Transformation Inverted() const;
+  //! Checks whether this transformation is an indirect
+  //! transformation: returns true if the determinant of the
+  //! matrix of the vectorial part of the transformation is less than 0.
+  Standard_EXPORT   Standard_Boolean IsNegative()  const;
   
-//!  Computes the transformation composed with Other and <me>. <br>
-//!  <me> * Other. <br>
-//!  Returns a new transformation <br>
-  Standard_EXPORT     Handle_Geom_Transformation Multiplied(const Handle(Geom_Transformation)& Other) const;
+  //! Returns the nature of this transformation as a value
+  //! of the gp_TrsfForm enumeration.
+  Standard_EXPORT   gp_TrsfForm Form()  const;
   
-//!  Computes the transformation composed with Other and <me> . <br>
-//!  <me> = <me> * Other. <br>
-  Standard_EXPORT     void Multiply(const Handle(Geom_Transformation)& Other) ;
+  //! Returns the scale value of the transformation.
+  Standard_EXPORT   Standard_Real ScaleFactor()  const;
   
-//!  Computes the following composition of transformations <br>
-//!  if N > 0  <me> * <me> * .......* <me>. <br>
-//!  if N = 0  Identity <br>
-//!  if N < 0  <me>.Invert() * .........* <me>.Invert() <br>
-//!  Raised if N < 0 and if the transformation is not inversible <br>
-  Standard_EXPORT     void Power(const Standard_Integer N) ;
+
+  //! Returns a non transient copy of <me>.
+  Standard_EXPORT  const  gp_Trsf& Trsf()  const;
   
-//!  Raised if N < 0 and if the transformation is not inversible <br>
-  Standard_EXPORT     Handle_Geom_Transformation Powered(const Standard_Integer N) const;
+
+  //! Returns the coefficients of the global matrix of tranformation.
+  //! It is a 3 rows X 4 columns matrix.
+  //!
+  //! Raised if  Row < 1 or Row > 3  or  Col < 1 or Col > 4
+  //!
+  //! Computes the reverse transformation.
+  Standard_EXPORT   Standard_Real Value (const Standard_Integer Row, const Standard_Integer Col)  const;
   
-//!  Computes the matrix of the transformation composed with <br>
-//!  <me> and Other.     <me> = Other * <me> <br>
-  Standard_EXPORT     void PreMultiply(const Handle(Geom_Transformation)& Other) ;
+
+  //! Raised if the the transformation is singular. This means that
+  //! the ScaleFactor is lower or equal to Resolution from
+  //! package gp.
+  Standard_EXPORT   void Invert() ;
   
-//!  Applies the transformation <me> to the triplet {X, Y, Z}. <br>
-  Standard_EXPORT     void Transforms(Standard_Real& X,Standard_Real& Y,Standard_Real& Z) const;
-  //! Creates a new object which is a copy of this transformation. <br>
-  Standard_EXPORT     Handle_Geom_Transformation Copy() const;
+
+  //! Raised if the the transformation is singular. This means that
+  //! the ScaleFactor is lower or equal to Resolution from
+  //! package gp.
+  Standard_EXPORT   Handle(Geom_Transformation) Inverted()  const;
+  
+
+  //! Computes the transformation composed with Other and <me>.
+  //! <me> * Other.
+  //! Returns a new transformation
+  Standard_EXPORT   Handle(Geom_Transformation) Multiplied (const Handle(Geom_Transformation)& Other)  const;
+  
+
+  //! Computes the transformation composed with Other and <me> .
+  //! <me> = <me> * Other.
+  Standard_EXPORT   void Multiply (const Handle(Geom_Transformation)& Other) ;
+  
+
+  //! Computes the following composition of transformations
+  //! if N > 0  <me> * <me> * .......* <me>.
+  //! if N = 0  Identity
+  //! if N < 0  <me>.Invert() * .........* <me>.Invert()
+  //!
+  //! Raised if N < 0 and if the transformation is not inversible
+  Standard_EXPORT   void Power (const Standard_Integer N) ;
+  
+
+  //! Raised if N < 0 and if the transformation is not inversible
+  Standard_EXPORT   Handle(Geom_Transformation) Powered (const Standard_Integer N)  const;
+  
+
+  //! Computes the matrix of the transformation composed with
+  //! <me> and Other.     <me> = Other * <me>
+  Standard_EXPORT   void PreMultiply (const Handle(Geom_Transformation)& Other) ;
+  
+
+  //! Applies the transformation <me> to the triplet {X, Y, Z}.
+  Standard_EXPORT   void Transforms (Standard_Real& X, Standard_Real& Y, Standard_Real& Z)  const;
+  
+  //! Creates a new object which is a copy of this transformation.
+  Standard_EXPORT   Handle(Geom_Transformation) Copy()  const;
 
 
 
@@ -214,7 +226,7 @@ protected:
 private: 
 
 
-gp_Trsf gpTrsf;
+  gp_Trsf gpTrsf;
 
 
 };
@@ -223,7 +235,6 @@ gp_Trsf gpTrsf;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Geom_Transformation_HeaderFile

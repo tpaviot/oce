@@ -6,45 +6,35 @@
 #ifndef _StepVisual_SurfaceStyleUsage_HeaderFile
 #define _StepVisual_SurfaceStyleUsage_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepVisual_SurfaceStyleUsage_HeaderFile
 #include <Handle_StepVisual_SurfaceStyleUsage.hxx>
-#endif
 
-#ifndef _StepVisual_SurfaceSide_HeaderFile
 #include <StepVisual_SurfaceSide.hxx>
-#endif
-#ifndef _Handle_StepVisual_SurfaceSideStyle_HeaderFile
 #include <Handle_StepVisual_SurfaceSideStyle.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepVisual_SurfaceSideStyle;
 
 
 
-class StepVisual_SurfaceStyleUsage : public MMgt_TShared {
+class StepVisual_SurfaceStyleUsage : public MMgt_TShared
+{
 
 public:
 
-  //! Returns a SurfaceStyleUsage <br>
-  Standard_EXPORT   StepVisual_SurfaceStyleUsage();
   
-  Standard_EXPORT   virtual  void Init(const StepVisual_SurfaceSide aSide,const Handle(StepVisual_SurfaceSideStyle)& aStyle) ;
+  //! Returns a SurfaceStyleUsage
+  Standard_EXPORT StepVisual_SurfaceStyleUsage();
   
-  Standard_EXPORT     void SetSide(const StepVisual_SurfaceSide aSide) ;
+  Standard_EXPORT virtual   void Init (const StepVisual_SurfaceSide aSide, const Handle(StepVisual_SurfaceSideStyle)& aStyle) ;
   
-  Standard_EXPORT     StepVisual_SurfaceSide Side() const;
+  Standard_EXPORT   void SetSide (const StepVisual_SurfaceSide aSide) ;
   
-  Standard_EXPORT     void SetStyle(const Handle(StepVisual_SurfaceSideStyle)& aStyle) ;
+  Standard_EXPORT   StepVisual_SurfaceSide Side()  const;
   
-  Standard_EXPORT     Handle_StepVisual_SurfaceSideStyle Style() const;
+  Standard_EXPORT   void SetStyle (const Handle(StepVisual_SurfaceSideStyle)& aStyle) ;
+  
+  Standard_EXPORT   Handle(StepVisual_SurfaceSideStyle) Style()  const;
 
 
 
@@ -59,8 +49,8 @@ protected:
 private: 
 
 
-StepVisual_SurfaceSide side;
-Handle_StepVisual_SurfaceSideStyle style;
+  StepVisual_SurfaceSide side;
+  Handle(StepVisual_SurfaceSideStyle) style;
 
 
 };
@@ -69,7 +59,6 @@ Handle_StepVisual_SurfaceSideStyle style;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepVisual_SurfaceStyleUsage_HeaderFile

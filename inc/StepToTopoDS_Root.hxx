@@ -6,43 +6,37 @@
 #ifndef _StepToTopoDS_Root_HeaderFile
 #define _StepToTopoDS_Root_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 
 
-//! This class implements the common services for <br>
-//!           all classes of StepToTopoDS which report error <br>
-//!	    	  and sets and returns precision. <br>
-class StepToTopoDS_Root  {
+//! This class implements the common services for
+//! all classes of StepToTopoDS which report error
+//! and sets and returns precision.
+class StepToTopoDS_Root 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-        Standard_Boolean IsDone() const;
-  //! Returns the value of "MyPrecision" <br>
-        Standard_Real Precision() const;
-  //! Sets the value of "MyPrecision" <br>
-        void SetPrecision(const Standard_Real preci) ;
-  //! Returns the value of "MaxTol" <br>
-        Standard_Real MaxTol() const;
-  //! Sets the value of MaxTol <br>
-        void SetMaxTol(const Standard_Real maxpreci) ;
-
+      Standard_Boolean IsDone()  const;
+  
+  //! Returns the value of "MyPrecision"
+      Standard_Real Precision()  const;
+  
+  //! Sets the value of "MyPrecision"
+      void SetPrecision (const Standard_Real preci) ;
+  
+  //! Returns the value of "MaxTol"
+      Standard_Real MaxTol()  const;
+  
+  //! Sets the value of MaxTol
+      void SetMaxTol (const Standard_Real maxpreci) ;
 
 
 
@@ -50,18 +44,18 @@ public:
 protected:
 
   
-  Standard_EXPORT   StepToTopoDS_Root();
+  Standard_EXPORT StepToTopoDS_Root();
 
 
-Standard_Boolean done;
+  Standard_Boolean done;
 
 
 private:
 
 
 
-Standard_Real myPrecision;
-Standard_Real myMaxTol;
+  Standard_Real myPrecision;
+  Standard_Real myMaxTol;
 
 
 };
@@ -71,7 +65,6 @@ Standard_Real myMaxTol;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepToTopoDS_Root_HeaderFile

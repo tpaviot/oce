@@ -5,28 +5,14 @@
 
 #include <Interface_HArray1OfHAsciiString.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_RangeError_HeaderFile
 #include <Standard_RangeError.hxx>
-#endif
-#ifndef _Standard_DimensionMismatch_HeaderFile
 #include <Standard_DimensionMismatch.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_OutOfMemory_HeaderFile
 #include <Standard_OutOfMemory.hxx>
-#endif
-#ifndef _TCollection_HAsciiString_HeaderFile
 #include <TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Interface_Array1OfHAsciiString_HeaderFile
 #include <Interface_Array1OfHAsciiString.hxx>
-#endif
 
  
 
@@ -44,7 +30,7 @@ IMPLEMENT_DOWNCAST(Interface_HArray1OfHAsciiString,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Interface_HArray1OfHAsciiString)
 
 
-#define ItemHArray1 Handle_TCollection_HAsciiString
+#define ItemHArray1 Handle(TCollection_HAsciiString)
 #define ItemHArray1_hxx <TCollection_HAsciiString.hxx>
 #define TheArray1 Interface_Array1OfHAsciiString
 #define TheArray1_hxx <Interface_Array1OfHAsciiString.hxx>

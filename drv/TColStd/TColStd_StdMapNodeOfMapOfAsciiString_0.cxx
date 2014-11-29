@@ -5,19 +5,11 @@
 
 #include <TColStd_StdMapNodeOfMapOfAsciiString.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _TColStd_MapOfAsciiString_HeaderFile
 #include <TColStd_MapOfAsciiString.hxx>
-#endif
-#ifndef _TColStd_MapIteratorOfMapOfAsciiString_HeaderFile
 #include <TColStd_MapIteratorOfMapOfAsciiString.hxx>
-#endif
 
  
 

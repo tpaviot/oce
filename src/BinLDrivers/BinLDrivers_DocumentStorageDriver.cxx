@@ -71,13 +71,6 @@ void BinLDrivers_DocumentStorageDriver::Write
   myMsgDriver = theDocument -> Application() -> MessageDriver();
   myMapUnsupported.Clear();
 
-#if defined(_DEBUG) || defined(DEB)
-  TCollection_ExtendedString aMethStr ("BinLDrivers_DocumentStorageDriver, ");
-#else
-  TCollection_ExtendedString aMethStr;
-#endif
-  TCollection_ExtendedString anErrorStr ("Error: ");
-
   Handle(TDocStd_Document) aDoc =
     Handle(TDocStd_Document)::DownCast(theDocument);
   if (aDoc.IsNull()) {
@@ -86,7 +79,7 @@ void BinLDrivers_DocumentStorageDriver::Write
   }
   else {
     // Open the file
-    TCollection_AsciiString aFileName (theFileName,'?');
+    TCollection_AsciiString aFileName (theFileName);
 
     // First pass: collect empty labels, assign IDs to the types
     if (myDrivers.IsNull())
@@ -103,13 +96,15 @@ void BinLDrivers_DocumentStorageDriver::Write
         return;
     }
 
-#if !defined(IRIX) // 10.10.2005
+#if defined(_MSC_VER)
+    ofstream anOS ((const wchar_t*) theFileName.ToExtString(), ios::in | ios::binary | ios::ate);
+#elif !defined(IRIX) // 10.10.2005
     ofstream anOS (aFileName.ToCString(), ios::in | ios::binary | ios::ate);
 #else
     ofstream anOS (aFileName.ToCString(), ios::ate);
     //ofstream anOS (aFileName.ToCString(), ios::out| ios::binary | ios::ate);
 #endif
-#ifdef DEB
+#ifdef OCCT_DEBUG
     const Standard_Integer aP = (Standard_Integer) anOS.tellp();
     cout << "POS = " << aP <<endl;
 #endif
@@ -153,26 +148,21 @@ void BinLDrivers_DocumentStorageDriver::Write
 
       if (!myRelocTable.Extent()) {
         // No objects written
-#ifdef DEB
-        WriteMessage (aMethStr + "no objects written");
+#ifdef OCCT_DEBUG
+        WriteMessage ("BinLDrivers_DocumentStorageDriver, no objects written");
 #endif
-       SetIsError(Standard_True);
-       SetStoreStatus(PCDM_SS_No_Obj);
-
+        SetIsError(Standard_True);
+        SetStoreStatus(PCDM_SS_No_Obj);
       }
       myRelocTable.Clear();
     }
 
     if (!anOS) {
       // A problem with the stream
-#if defined(_DEBUG) || defined(DEB)
-      WriteMessage (anErrorStr + aMethStr +
-                    "Problem with the file stream, rdstate="
+#ifdef OCCT_DEBUG
+      TCollection_ExtendedString anErrorStr ("Error: ");
+      WriteMessage (anErrorStr + "BinLDrivers_DocumentStorageDriver, Problem with the file stream, rdstate="
                     + (Standard_Integer )anOS.rdstate());
-#else
-      TCollection_ExtendedString aStr =
-        anErrorStr + aMethStr + "Problem writing the file ";
-      WriteMessage (aStr + theFileName);
 #endif
       SetIsError(Standard_True);
       SetStoreStatus(PCDM_SS_WriteFailure);
@@ -189,13 +179,13 @@ void BinLDrivers_DocumentStorageDriver::Write
 void BinLDrivers_DocumentStorageDriver::UnsupportedAttrMsg
                         (const Handle(Standard_Type)& theType)
 {
-#ifdef DEB
+#ifdef OCCT_DEBUG
   static TCollection_ExtendedString aMsg
     ("BinDrivers_DocumentStorageDriver: warning: attribute driver for type ");
 #endif
   if (!myMapUnsupported.Contains(theType)) {
     myMapUnsupported.Add(theType);
-#ifdef DEB
+#ifdef OCCT_DEBUG
     WriteMessage (aMsg + theType->Name() + " not found");
 #endif
   }
@@ -243,7 +233,7 @@ void BinLDrivers_DocumentStorageDriver::WriteSubTree
       // Write data to the stream -->!!!
       theOS << myPAtt;
     }
-#ifdef DEB
+#ifdef OCCT_DEBUG
     else
       UnsupportedAttrMsg (aType);
 #endif
@@ -310,7 +300,7 @@ Standard_Boolean BinLDrivers_DocumentStorageDriver::FirstPassSubTree
       hasAttr = Standard_True;
       myTypesMap.Add (aType);
     }
-#ifdef DEB
+#ifdef OCCT_DEBUG
     else
       UnsupportedAttrMsg (aType);
 #endif
@@ -367,12 +357,8 @@ void BinLDrivers_DocumentStorageDriver::WriteInfoSection
 {
   FSD_BinaryFile aFileDriver;
   if (aFileDriver.Open( theFileName, Storage_VSWrite ) != Storage_VSOk) {
-#if defined(DEB) || defined(_DEBUG)
-    WriteMessage ("BinDrivers_DocumentStorageDriver: error opening file");
-#else
     WriteMessage (TCollection_ExtendedString("Error: Cannot open file ") +
                   theFileName);
-#endif
     SetIsError(Standard_True);
     return;
   }
@@ -427,15 +413,11 @@ void BinLDrivers_DocumentStorageDriver::WriteInfoSection
     aFileDriver.EndWriteDataSection();
   }
   else {
-#if defined(DEB) || defined(_DEBUG)
-    WriteMessage("BinDrivers_DocumentStorageDriver: error writing header");
-#else
     WriteMessage(TCollection_ExtendedString("Error: Problem writing header "
                                             "into file ") + theFileName);
-#endif
     SetIsError(Standard_True);
   }
-#ifdef DEB
+#ifdef OCCT_DEBUG
     const Standard_Integer aP = (Standard_Integer) aFileDriver.Tell();
     cout << "POS = " << aP <<endl;
 #endif
@@ -474,7 +456,7 @@ void BinLDrivers_DocumentStorageDriver::AddSection
 
 void BinLDrivers_DocumentStorageDriver::WriteSection
                                 (const TCollection_AsciiString& /*theName*/,
-                                 const Handle_CDM_Document&     /*theDocument*/,
+                                 const Handle(CDM_Document)&     /*theDocument*/,
                                  Standard_OStream&              /*theOS*/)
 {
   // empty; should be redefined in subclasses

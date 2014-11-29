@@ -6,34 +6,16 @@
 #ifndef _gp_Pnt_HeaderFile
 #define _gp_Pnt_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _gp_XYZ_HeaderFile
 #include <gp_XYZ.hxx>
-#endif
-#ifndef _Standard_Storable_HeaderFile
 #include <Standard_Storable.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_PrimitiveTypes_HeaderFile
 #include <Standard_PrimitiveTypes.hxx>
-#endif
 class Standard_OutOfRange;
 class gp_XYZ;
 class gp_Ax1;
@@ -44,116 +26,148 @@ class gp_Vec;
 
 Standard_EXPORT const Handle(Standard_Type)& STANDARD_TYPE(gp_Pnt);
 
-//!  Defines a 3D cartesian point. <br>
-class gp_Pnt  {
+//! Defines a 3D cartesian point.
+class gp_Pnt 
+{
 
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Creates a point with zero coordinates. <br>
-      gp_Pnt();
-  //! Creates a point from a XYZ object. <br>
-      gp_Pnt(const gp_XYZ& Coord);
   
-//!  Creates a  point with its 3 cartesian's coordinates : Xp, Yp, Zp. <br>
-      gp_Pnt(const Standard_Real Xp,const Standard_Real Yp,const Standard_Real Zp);
+  //! Creates a point with zero coordinates.
+    gp_Pnt();
   
-//!  Changes the coordinate of range Index : <br>
-//!  Index = 1 => X is modified <br>
-//!  Index = 2 => Y is modified <br>
-//!  Index = 3 => Z is modified <br>//! Raised if Index != {1, 2, 3}. <br>
-        void SetCoord(const Standard_Integer Index,const Standard_Real Xi) ;
-  //! For this point, assigns  the values Xp, Yp and Zp to its three coordinates. <br>
-        void SetCoord(const Standard_Real Xp,const Standard_Real Yp,const Standard_Real Zp) ;
-  //! Assigns the given value to the X coordinate of this point. <br>
-        void SetX(const Standard_Real X) ;
-  //! Assigns the given value to the Y coordinate of this point. <br>
-        void SetY(const Standard_Real Y) ;
-  //! Assigns the given value to the Z coordinate of this point. <br>
-        void SetZ(const Standard_Real Z) ;
-  //! Assigns the three coordinates of Coord to this point. <br>
-        void SetXYZ(const gp_XYZ& Coord) ;
+  //! Creates a point from a XYZ object.
+    gp_Pnt(const gp_XYZ& Coord);
   
-//!  Returns the coordinate of corresponding to the value of  Index : <br>
-//!  Index = 1 => X is returned <br>
-//!  Index = 2 => Y is returned <br>
-//!  Index = 3 => Z is returned <br>
-//! Raises OutOfRange if Index != {1, 2, 3}. <br>//! Raised if Index != {1, 2, 3}. <br>
-        Standard_Real Coord(const Standard_Integer Index) const;
-  //! For this point gives its three coordinates Xp, Yp and Zp. <br>
-        void Coord(Standard_Real& Xp,Standard_Real& Yp,Standard_Real& Zp) const;
-  //! For this point, returns its X coordinate. <br>
-        Standard_Real X() const;
-  //! For this point, returns its Y coordinate. <br>
-        Standard_Real Y() const;
-  //! For this point, returns its Z coordinate. <br>
-        Standard_Real Z() const;
-  //! For this point, returns its three coordinates as a XYZ object. <br>
-       const gp_XYZ& XYZ() const;
-  //! For this point, returns its three coordinates as a XYZ object. <br>
-       const gp_XYZ& Coord() const;
+
+  //! Creates a  point with its 3 cartesian's coordinates : Xp, Yp, Zp.
+    gp_Pnt(const Standard_Real Xp, const Standard_Real Yp, const Standard_Real Zp);
   
-//! Returns the coordinates of this point. <br>
-//! Note: This syntax allows direct modification of the returned value. <br>
-        gp_XYZ& ChangeCoord() ;
-  //! Assigns the result of the following expression to this point <br>
-//! (Alpha*this + Beta*P) / (Alpha + Beta) <br>
-        void BaryCenter(const Standard_Real Alpha,const gp_Pnt& P,const Standard_Real Beta) ;
-  //! Comparison <br>
-//!  Returns True if the distance between the two points is <br>
-//!  lower or equal to LinearTolerance. <br>
-        Standard_Boolean IsEqual(const gp_Pnt& Other,const Standard_Real LinearTolerance) const;
-  //! Computes the distance between two points. <br>
-        Standard_Real Distance(const gp_Pnt& Other) const;
-  //! Computes the square distance between two points. <br>
-        Standard_Real SquareDistance(const gp_Pnt& Other) const;
+
+  //! Changes the coordinate of range Index :
+  //! Index = 1 => X is modified
+  //! Index = 2 => Y is modified
+  //! Index = 3 => Z is modified
+  //! Raised if Index != {1, 2, 3}.
+      void SetCoord (const Standard_Integer Index, const Standard_Real Xi) ;
   
-//!  Performs the symmetrical transformation of a point <br>
-//!  with respect to the point P which is the center of <br>
-//!  the  symmetry. <br>
-  Standard_EXPORT     void Mirror(const gp_Pnt& P) ;
+  //! For this point, assigns  the values Xp, Yp and Zp to its three coordinates.
+      void SetCoord (const Standard_Real Xp, const Standard_Real Yp, const Standard_Real Zp) ;
   
-//!  Performs the symmetrical transformation of a point <br>
-//!  with respect to an axis placement which is the axis <br>
-//!  of the symmetry. <br>
-  Standard_EXPORT     gp_Pnt Mirrored(const gp_Pnt& P) const;
+  //! Assigns the given value to the X coordinate of this point.
+      void SetX (const Standard_Real X) ;
   
-  Standard_EXPORT     void Mirror(const gp_Ax1& A1) ;
+  //! Assigns the given value to the Y coordinate of this point.
+      void SetY (const Standard_Real Y) ;
   
-//!  Performs the symmetrical transformation of a point <br>
-//!  with respect to a plane. The axis placement A2 locates <br>
-//!  the plane of the symmetry : (Location, XDirection, YDirection). <br>
-  Standard_EXPORT     gp_Pnt Mirrored(const gp_Ax1& A1) const;
+  //! Assigns the given value to the Z coordinate of this point.
+      void SetZ (const Standard_Real Z) ;
   
-  Standard_EXPORT     void Mirror(const gp_Ax2& A2) ;
+  //! Assigns the three coordinates of Coord to this point.
+      void SetXYZ (const gp_XYZ& Coord) ;
   
-//!  Rotates a point. A1 is the axis of the rotation. <br>
-//!  Ang is the angular value of the rotation in radians. <br>
-  Standard_EXPORT     gp_Pnt Mirrored(const gp_Ax2& A2) const;
+
+  //! Returns the coordinate of corresponding to the value of  Index :
+  //! Index = 1 => X is returned
+  //! Index = 2 => Y is returned
+  //! Index = 3 => Z is returned
+  //! Raises OutOfRange if Index != {1, 2, 3}.
+  //! Raised if Index != {1, 2, 3}.
+      Standard_Real Coord (const Standard_Integer Index)  const;
   
-        void Rotate(const gp_Ax1& A1,const Standard_Real Ang) ;
-  //! Scales a point. S is the scaling value. <br>
-        gp_Pnt Rotated(const gp_Ax1& A1,const Standard_Real Ang) const;
+  //! For this point gives its three coordinates Xp, Yp and Zp.
+      void Coord (Standard_Real& Xp, Standard_Real& Yp, Standard_Real& Zp)  const;
   
-        void Scale(const gp_Pnt& P,const Standard_Real S) ;
-  //! Transforms a point with the transformation T. <br>
-        gp_Pnt Scaled(const gp_Pnt& P,const Standard_Real S) const;
+  //! For this point, returns its X coordinate.
+      Standard_Real X()  const;
   
-  Standard_EXPORT     void Transform(const gp_Trsf& T) ;
+  //! For this point, returns its Y coordinate.
+      Standard_Real Y()  const;
   
-//!  Translates a point in the direction of the vector V. <br>
-//!  The magnitude of the translation is the vector's magnitude. <br>
-        gp_Pnt Transformed(const gp_Trsf& T) const;
+  //! For this point, returns its Z coordinate.
+      Standard_Real Z()  const;
   
-        void Translate(const gp_Vec& V) ;
+  //! For this point, returns its three coordinates as a XYZ object.
+     const  gp_XYZ& XYZ()  const;
   
-//!  Translates a point from the point P1 to the point P2. <br>
-        gp_Pnt Translated(const gp_Vec& V) const;
+  //! For this point, returns its three coordinates as a XYZ object.
+     const  gp_XYZ& Coord()  const;
   
-        void Translate(const gp_Pnt& P1,const gp_Pnt& P2) ;
+
+  //! Returns the coordinates of this point.
+  //! Note: This syntax allows direct modification of the returned value.
+      gp_XYZ& ChangeCoord() ;
   
-        gp_Pnt Translated(const gp_Pnt& P1,const gp_Pnt& P2) const;
+  //! Assigns the result of the following expression to this point
+  //! (Alpha*this + Beta*P) / (Alpha + Beta)
+      void BaryCenter (const Standard_Real Alpha, const gp_Pnt& P, const Standard_Real Beta) ;
+  
+  //! Comparison
+  //! Returns True if the distance between the two points is
+  //! lower or equal to LinearTolerance.
+      Standard_Boolean IsEqual (const gp_Pnt& Other, const Standard_Real LinearTolerance)  const;
+  
+  //! Computes the distance between two points.
+      Standard_Real Distance (const gp_Pnt& Other)  const;
+  
+  //! Computes the square distance between two points.
+      Standard_Real SquareDistance (const gp_Pnt& Other)  const;
+  
+
+  //! Performs the symmetrical transformation of a point
+  //! with respect to the point P which is the center of
+  //! the  symmetry.
+  Standard_EXPORT   void Mirror (const gp_Pnt& P) ;
+  
+
+  //! Performs the symmetrical transformation of a point
+  //! with respect to an axis placement which is the axis
+  //! of the symmetry.
+  Standard_EXPORT   gp_Pnt Mirrored (const gp_Pnt& P)  const;
+  
+  Standard_EXPORT   void Mirror (const gp_Ax1& A1) ;
+  
+
+  //! Performs the symmetrical transformation of a point
+  //! with respect to a plane. The axis placement A2 locates
+  //! the plane of the symmetry : (Location, XDirection, YDirection).
+  Standard_EXPORT   gp_Pnt Mirrored (const gp_Ax1& A1)  const;
+  
+  Standard_EXPORT   void Mirror (const gp_Ax2& A2) ;
+  
+
+  //! Rotates a point. A1 is the axis of the rotation.
+  //! Ang is the angular value of the rotation in radians.
+  Standard_EXPORT   gp_Pnt Mirrored (const gp_Ax2& A2)  const;
+  
+      void Rotate (const gp_Ax1& A1, const Standard_Real Ang) ;
+  
+  //! Scales a point. S is the scaling value.
+      gp_Pnt Rotated (const gp_Ax1& A1, const Standard_Real Ang)  const;
+  
+      void Scale (const gp_Pnt& P, const Standard_Real S) ;
+  
+  //! Transforms a point with the transformation T.
+      gp_Pnt Scaled (const gp_Pnt& P, const Standard_Real S)  const;
+  
+  Standard_EXPORT   void Transform (const gp_Trsf& T) ;
+  
+
+  //! Translates a point in the direction of the vector V.
+  //! The magnitude of the translation is the vector's magnitude.
+      gp_Pnt Transformed (const gp_Trsf& T)  const;
+  
+      void Translate (const gp_Vec& V) ;
+  
+
+  //! Translates a point from the point P1 to the point P2.
+      gp_Pnt Translated (const gp_Vec& V)  const;
+  
+      void Translate (const gp_Pnt& P1, const gp_Pnt& P2) ;
+  
+      gp_Pnt Translated (const gp_Pnt& P1, const gp_Pnt& P2)  const;
     const gp_XYZ& _CSFDB_Getgp_Pntcoord() const { return coord; }
 
 
@@ -166,7 +180,7 @@ protected:
 private: 
 
 
-gp_XYZ coord;
+  gp_XYZ coord;
 
 
 };
@@ -176,7 +190,6 @@ gp_XYZ coord;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _gp_Pnt_HeaderFile

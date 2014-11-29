@@ -1,15 +1,4 @@
-#ifndef _Draw_Interpretor_HeaderFile
-#include <Draw_Interpretor.hxx>
-#endif
-#ifndef _TCollection_AsciiString_HeaderFile
 #include <TCollection_AsciiString.hxx>
-#endif
-#ifndef _Draw_Drawable3D_HeaderFile
 #include <Draw_Drawable3D.hxx>
-#endif
-#ifndef _Draw_ProgressIndicator_HeaderFile
 #include <Draw_ProgressIndicator.hxx>
-#endif
-#ifndef _Draw_HeaderFile
 #include <Draw.hxx>
-#endif

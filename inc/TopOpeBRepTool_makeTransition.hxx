@@ -6,68 +6,50 @@
 #ifndef _TopOpeBRepTool_makeTransition_HeaderFile
 #define _TopOpeBRepTool_makeTransition_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopoDS_Edge_HeaderFile
 #include <TopoDS_Edge.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TopoDS_Face_HeaderFile
 #include <TopoDS_Face.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _TopAbs_State_HeaderFile
 #include <TopAbs_State.hxx>
-#endif
 class TopoDS_Edge;
 class TopoDS_Face;
 class gp_Pnt2d;
 
 
 
-class TopOpeBRepTool_makeTransition  {
+class TopOpeBRepTool_makeTransition 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepTool_makeTransition();
+  Standard_EXPORT TopOpeBRepTool_makeTransition();
   
-  Standard_EXPORT     Standard_Boolean Initialize(const TopoDS_Edge& E,const Standard_Real pbef,const Standard_Real paft,const Standard_Real parE,const TopoDS_Face& FS,const gp_Pnt2d& uv,const Standard_Real factor) ;
+  Standard_EXPORT   Standard_Boolean Initialize (const TopoDS_Edge& E, const Standard_Real pbef, const Standard_Real paft, const Standard_Real parE, const TopoDS_Face& FS, const gp_Pnt2d& uv, const Standard_Real factor) ;
   
-  Standard_EXPORT     void Setfactor(const Standard_Real factor) ;
+  Standard_EXPORT   void Setfactor (const Standard_Real factor) ;
   
-  Standard_EXPORT     Standard_Real Getfactor() const;
+  Standard_EXPORT   Standard_Real Getfactor()  const;
   
-  Standard_EXPORT     Standard_Boolean IsT2d() const;
+  Standard_EXPORT   Standard_Boolean IsT2d()  const;
   
-  Standard_EXPORT     Standard_Boolean SetRest(const TopoDS_Edge& ES,const Standard_Real parES) ;
+  Standard_EXPORT   Standard_Boolean SetRest (const TopoDS_Edge& ES, const Standard_Real parES) ;
   
-  Standard_EXPORT     Standard_Boolean HasRest() const;
+  Standard_EXPORT   Standard_Boolean HasRest()  const;
   
-  Standard_EXPORT     Standard_Boolean MkT2donE(TopAbs_State& stb,TopAbs_State& sta) const;
+  Standard_EXPORT   Standard_Boolean MkT2donE (TopAbs_State& stb, TopAbs_State& sta)  const;
   
-  Standard_EXPORT     Standard_Boolean MkT3onE(TopAbs_State& stb,TopAbs_State& sta) const;
+  Standard_EXPORT   Standard_Boolean MkT3onE (TopAbs_State& stb, TopAbs_State& sta)  const;
   
-  Standard_EXPORT     Standard_Boolean MkT3dproj(TopAbs_State& stb,TopAbs_State& sta) const;
+  Standard_EXPORT   Standard_Boolean MkT3dproj (TopAbs_State& stb, TopAbs_State& sta)  const;
   
-  Standard_EXPORT     Standard_Boolean MkTonE(TopAbs_State& stb,TopAbs_State& sta) ;
-
+  Standard_EXPORT   Standard_Boolean MkTonE (TopAbs_State& stb, TopAbs_State& sta) ;
 
 
 
@@ -82,17 +64,17 @@ private:
 
 
 
-TopoDS_Edge myE;
-Standard_Real mypb;
-Standard_Real mypa;
-Standard_Real mypE;
-TopoDS_Face myFS;
-gp_Pnt2d myuv;
-Standard_Boolean hasES;
-TopoDS_Edge myES;
-Standard_Real mypES;
-Standard_Boolean isT2d;
-Standard_Real myfactor;
+  TopoDS_Edge myE;
+  Standard_Real mypb;
+  Standard_Real mypa;
+  Standard_Real mypE;
+  TopoDS_Face myFS;
+  gp_Pnt2d myuv;
+  Standard_Boolean hasES;
+  TopoDS_Edge myES;
+  Standard_Real mypES;
+  Standard_Boolean isT2d;
+  Standard_Real myfactor;
 
 
 };
@@ -101,7 +83,6 @@ Standard_Real myfactor;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepTool_makeTransition_HeaderFile

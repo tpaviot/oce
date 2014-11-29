@@ -6,40 +6,30 @@
 #ifndef _TopOpeBRepDS_CurveData_HeaderFile
 #define _TopOpeBRepDS_CurveData_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TopOpeBRepDS_Curve_HeaderFile
 #include <TopOpeBRepDS_Curve.hxx>
-#endif
-#ifndef _TopOpeBRepDS_GeometryData_HeaderFile
 #include <TopOpeBRepDS_GeometryData.hxx>
-#endif
 class TopOpeBRepDS_DataStructure;
 class TopOpeBRepDS_Curve;
 
 
 
-class TopOpeBRepDS_CurveData  : public TopOpeBRepDS_GeometryData {
+class TopOpeBRepDS_CurveData  : public TopOpeBRepDS_GeometryData
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TopOpeBRepDS_CurveData();
+  Standard_EXPORT TopOpeBRepDS_CurveData();
   
-  Standard_EXPORT   TopOpeBRepDS_CurveData(const TopOpeBRepDS_Curve& C);
+  Standard_EXPORT TopOpeBRepDS_CurveData(const TopOpeBRepDS_Curve& C);
 
 
 friend class TopOpeBRepDS_DataStructure;
-
 
 
 protected:
@@ -52,7 +42,7 @@ private:
 
 
 
-TopOpeBRepDS_Curve myCurve;
+  TopOpeBRepDS_Curve myCurve;
 
 
 };
@@ -61,7 +51,6 @@ TopOpeBRepDS_Curve myCurve;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopOpeBRepDS_CurveData_HeaderFile

@@ -1,12 +1,4 @@
-#ifndef _Geom2d_Curve_HeaderFile
 #include <Geom2d_Curve.hxx>
-#endif
-#ifndef _gp_Pnt2d_HeaderFile
 #include <gp_Pnt2d.hxx>
-#endif
-#ifndef _gp_Vec2d_HeaderFile
 #include <gp_Vec2d.hxx>
-#endif
-#ifndef _Geom2dLProp_Curve2dTool_HeaderFile
 #include <Geom2dLProp_Curve2dTool.hxx>
-#endif

@@ -6,31 +6,15 @@
 #ifndef _MDF_DriverListOfASDriverTable_HeaderFile
 #define _MDF_DriverListOfASDriverTable_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_MDF_ASDriver_HeaderFile
 #include <Handle_MDF_ASDriver.hxx>
-#endif
-#ifndef _Handle_MDF_ListNodeOfDriverListOfASDriverTable_HeaderFile
 #include <Handle_MDF_ListNodeOfDriverListOfASDriverTable.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class MDF_ListIteratorOfDriverListOfASDriverTable;
 class MDF_ASDriver;
@@ -38,61 +22,63 @@ class MDF_ListNodeOfDriverListOfASDriverTable;
 
 
 
-class MDF_DriverListOfASDriverTable  {
+class MDF_DriverListOfASDriverTable 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   MDF_DriverListOfASDriverTable();
+  Standard_EXPORT MDF_DriverListOfASDriverTable();
   
-  Standard_EXPORT     void Assign(const MDF_DriverListOfASDriverTable& Other) ;
-    void operator=(const MDF_DriverListOfASDriverTable& Other) 
+  Standard_EXPORT MDF_DriverListOfASDriverTable(const MDF_DriverListOfASDriverTable& Other);
+  
+  Standard_EXPORT   void Assign (const MDF_DriverListOfASDriverTable& Other) ;
+  void operator= (const MDF_DriverListOfASDriverTable& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~MDF_DriverListOfASDriverTable()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const Handle(MDF_ASDriver)& I) ;
+  Standard_EXPORT   void Prepend (const Handle(MDF_ASDriver)& I) ;
   
-  Standard_EXPORT     void Prepend(const Handle(MDF_ASDriver)& I,MDF_ListIteratorOfDriverListOfASDriverTable& theIt) ;
+  Standard_EXPORT   void Prepend (const Handle(MDF_ASDriver)& I, MDF_ListIteratorOfDriverListOfASDriverTable& theIt) ;
   
-  Standard_EXPORT     void Prepend(MDF_DriverListOfASDriverTable& Other) ;
+  Standard_EXPORT   void Prepend (MDF_DriverListOfASDriverTable& Other) ;
   
-  Standard_EXPORT     void Append(const Handle(MDF_ASDriver)& I) ;
+  Standard_EXPORT   void Append (const Handle(MDF_ASDriver)& I) ;
   
-  Standard_EXPORT     void Append(const Handle(MDF_ASDriver)& I,MDF_ListIteratorOfDriverListOfASDriverTable& theIt) ;
+  Standard_EXPORT   void Append (const Handle(MDF_ASDriver)& I, MDF_ListIteratorOfDriverListOfASDriverTable& theIt) ;
   
-  Standard_EXPORT     void Append(MDF_DriverListOfASDriverTable& Other) ;
+  Standard_EXPORT   void Append (MDF_DriverListOfASDriverTable& Other) ;
   
-  Standard_EXPORT     Handle_MDF_ASDriver& First() const;
+  Standard_EXPORT   Handle(MDF_ASDriver)& First()  const;
   
-  Standard_EXPORT     Handle_MDF_ASDriver& Last() const;
+  Standard_EXPORT   Handle(MDF_ASDriver)& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(MDF_ListIteratorOfDriverListOfASDriverTable& It) ;
+  Standard_EXPORT   void Remove (MDF_ListIteratorOfDriverListOfASDriverTable& It) ;
   
-  Standard_EXPORT     void InsertBefore(const Handle(MDF_ASDriver)& I,MDF_ListIteratorOfDriverListOfASDriverTable& It) ;
+  Standard_EXPORT   void InsertBefore (const Handle(MDF_ASDriver)& I, MDF_ListIteratorOfDriverListOfASDriverTable& It) ;
   
-  Standard_EXPORT     void InsertBefore(MDF_DriverListOfASDriverTable& Other,MDF_ListIteratorOfDriverListOfASDriverTable& It) ;
+  Standard_EXPORT   void InsertBefore (MDF_DriverListOfASDriverTable& Other, MDF_ListIteratorOfDriverListOfASDriverTable& It) ;
   
-  Standard_EXPORT     void InsertAfter(const Handle(MDF_ASDriver)& I,MDF_ListIteratorOfDriverListOfASDriverTable& It) ;
+  Standard_EXPORT   void InsertAfter (const Handle(MDF_ASDriver)& I, MDF_ListIteratorOfDriverListOfASDriverTable& It) ;
   
-  Standard_EXPORT     void InsertAfter(MDF_DriverListOfASDriverTable& Other,MDF_ListIteratorOfDriverListOfASDriverTable& It) ;
+  Standard_EXPORT   void InsertAfter (MDF_DriverListOfASDriverTable& Other, MDF_ListIteratorOfDriverListOfASDriverTable& It) ;
 
 
 friend class MDF_ListIteratorOfDriverListOfASDriverTable;
-
 
 
 protected:
@@ -103,17 +89,15 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   MDF_DriverListOfASDriverTable(const MDF_DriverListOfASDriverTable& Other);
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
 
-#define Item Handle_MDF_ASDriver
+#define Item Handle(MDF_ASDriver)
 #define Item_hxx <MDF_ASDriver.hxx>
 #define TCollection_ListNode MDF_ListNodeOfDriverListOfASDriverTable
 #define TCollection_ListNode_hxx <MDF_ListNodeOfDriverListOfASDriverTable.hxx>
@@ -138,7 +122,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MDF_DriverListOfASDriverTable_HeaderFile

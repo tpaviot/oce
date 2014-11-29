@@ -7,7 +7,6 @@
 #define _TNaming_PtrRefShape_HeaderFile
 
 class TNaming_RefShape;
-
 typedef TNaming_RefShape* TNaming_PtrRefShape;
 
-#endif
+#endif // _TNaming_PtrRefShape_HeaderFile

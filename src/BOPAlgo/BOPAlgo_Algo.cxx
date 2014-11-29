@@ -19,6 +19,33 @@
 
 #include <NCollection_BaseAllocator.hxx>
 
+#include <Standard_ProgramError.hxx>
+#include <Standard_NotImplemented.hxx>
+
+namespace
+{
+  Standard_Boolean myGlobalRunParallel = Standard_False;
+}
+
+//=======================================================================
+// function: 
+// purpose: 
+//=======================================================================
+void BOPAlgo_Algo::SetParallelMode(Standard_Boolean theNewMode)
+{
+  myGlobalRunParallel = theNewMode;
+}
+
+//=======================================================================
+// function: 
+// purpose: 
+//=======================================================================
+Standard_Boolean BOPAlgo_Algo::GetParallelMode()
+{
+  return myGlobalRunParallel;
+}
+
+
 //=======================================================================
 // function: 
 // purpose: 
@@ -28,7 +55,7 @@ BOPAlgo_Algo::BOPAlgo_Algo()
   myAllocator(NCollection_BaseAllocator::CommonBaseAllocator()),
   myErrorStatus(1),
   myWarningStatus(0),
-  myRunParallel(Standard_False)
+  myRunParallel(myGlobalRunParallel)
 {}
 //=======================================================================
 // function: 
@@ -40,7 +67,7 @@ BOPAlgo_Algo::BOPAlgo_Algo
   myAllocator(theAllocator),
   myErrorStatus(1),
   myWarningStatus(0),
-  myRunParallel(Standard_False)
+  myRunParallel(myGlobalRunParallel)
 {}
 
 //=======================================================================
@@ -106,6 +133,30 @@ Standard_Boolean BOPAlgo_Algo::RunParallel()const
 {
   return myRunParallel;
 }
+//=======================================================================
+//function : SetProgressIndicator
+//purpose  : 
+//=======================================================================
+void BOPAlgo_Algo::SetProgressIndicator
+  (const Handle(Message_ProgressIndicator)& theObj)
+{
+  if (!theObj.IsNull()) {
+    myProgressIndicator=theObj;
+  }
+}
+//=======================================================================
+//function : UserBreak
+//purpose  : 
+//=======================================================================
+void BOPAlgo_Algo::UserBreak() const
+{
+  if (myProgressIndicator.IsNull()) {
+    return;
+  }
+  if (myProgressIndicator->UserBreak()) {
+    Standard_NotImplemented::Raise("");
+  }
+} 
 //  myErrorStatus
 //
 // 1 - object is just initialized

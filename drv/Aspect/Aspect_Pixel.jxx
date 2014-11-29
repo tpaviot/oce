@@ -1,3 +1,0 @@
-#ifndef _Aspect_Pixel_HeaderFile
-#include <Aspect_Pixel.hxx>
-#endif

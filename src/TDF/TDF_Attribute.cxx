@@ -292,7 +292,7 @@ Handle(TDF_Attribute) TDF_Attribute::BackupCopy() const
 
 void TDF_Attribute::RemoveBackup()
 {
-#ifdef DEB
+#ifdef OCCT_DEBUG
   if (myBackup.IsNull())
     Standard_DomainError::Raise("Impossible to remove a nonexistent backup.");
 #endif
@@ -386,8 +386,8 @@ Standard_OStream& TDF_Attribute::Dump(Standard_OStream& anOS) const
   Standard_PCharacter pStr;
   //
   pStr=toto;
-  ID().ToCString(pStr); anOS<<";\tID = "<<toto<<endl;
-  //ID().ShallowDump(anOS);anOS<<endl;
+  ID().ToCString(pStr);
+  anOS<<";\tID = "<<toto<<endl;
   return anOS;
 }
 

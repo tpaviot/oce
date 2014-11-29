@@ -5,18 +5,10 @@
 
 #include <TColgp_SequenceOfVec2d.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _gp_Vec2d_HeaderFile
 #include <gp_Vec2d.hxx>
-#endif
-#ifndef _TColgp_SequenceNodeOfSequenceOfVec2d_HeaderFile
 #include <TColgp_SequenceNodeOfSequenceOfVec2d.hxx>
-#endif
  
 
 #define SeqItem gp_Vec2d

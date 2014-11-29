@@ -6,39 +6,29 @@
 #ifndef _Vrml_TransformSeparator_HeaderFile
 #define _Vrml_TransformSeparator_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 
 
-//!  defines a TransformSeparator node of VRML specifying group properties. <br>
-//!  This  group  node  is  similar  to  separator  node  in  that it  saves state <br>
-//!  before  traversing  its  children  and  restores  it  afterwards. <br>
-//!  This  node  can  be  used  to  isolate  transformations  to  light  sources <br>
-//!  or  objects. <br>
-class Vrml_TransformSeparator  {
+//! defines a TransformSeparator node of VRML specifying group properties.
+//! This  group  node  is  similar  to  separator  node  in  that it  saves state
+//! before  traversing  its  children  and  restores  it  afterwards.
+//! This  node  can  be  used  to  isolate  transformations  to  light  sources
+//! or  objects.
+class Vrml_TransformSeparator 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   Vrml_TransformSeparator();
+  Standard_EXPORT Vrml_TransformSeparator();
   
-  Standard_EXPORT     Standard_OStream& Print(Standard_OStream& anOStream) ;
-
+  Standard_EXPORT   Standard_OStream& Print (Standard_OStream& anOStream) ;
 
 
 
@@ -53,7 +43,7 @@ private:
 
 
 
-Standard_Boolean myFlagPrint;
+  Standard_Boolean myFlagPrint;
 
 
 };
@@ -62,7 +52,6 @@ Standard_Boolean myFlagPrint;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Vrml_TransformSeparator_HeaderFile

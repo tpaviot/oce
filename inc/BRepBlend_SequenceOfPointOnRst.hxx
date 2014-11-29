@@ -6,25 +6,13 @@
 #ifndef _BRepBlend_SequenceOfPointOnRst_HeaderFile
 #define _BRepBlend_SequenceOfPointOnRst_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _TCollection_BaseSequence_HeaderFile
 #include <TCollection_BaseSequence.hxx>
-#endif
-#ifndef _Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst_HeaderFile
 #include <Handle_BRepBlend_SequenceNodeOfSequenceOfPointOnRst.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_NoSuchObject;
 class Standard_OutOfRange;
 class BRepBlend_PointOnRst;
@@ -32,66 +20,68 @@ class BRepBlend_SequenceNodeOfSequenceOfPointOnRst;
 
 
 
-class BRepBlend_SequenceOfPointOnRst  : public TCollection_BaseSequence {
+class BRepBlend_SequenceOfPointOnRst  : public TCollection_BaseSequence
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-      BRepBlend_SequenceOfPointOnRst();
+    BRepBlend_SequenceOfPointOnRst();
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT BRepBlend_SequenceOfPointOnRst(const BRepBlend_SequenceOfPointOnRst& Other);
+  
+  Standard_EXPORT   void Clear() ;
 ~BRepBlend_SequenceOfPointOnRst()
 {
   Clear();
 }
   
-  Standard_EXPORT    const BRepBlend_SequenceOfPointOnRst& Assign(const BRepBlend_SequenceOfPointOnRst& Other) ;
-   const BRepBlend_SequenceOfPointOnRst& operator =(const BRepBlend_SequenceOfPointOnRst& Other) 
+  Standard_EXPORT  const  BRepBlend_SequenceOfPointOnRst& Assign (const BRepBlend_SequenceOfPointOnRst& Other) ;
+ const  BRepBlend_SequenceOfPointOnRst& operator = (const BRepBlend_SequenceOfPointOnRst& Other) 
 {
   return Assign(Other);
 }
   
-  Standard_EXPORT     void Append(const BRepBlend_PointOnRst& T) ;
+  Standard_EXPORT   void Append (const BRepBlend_PointOnRst& T) ;
   
-        void Append(BRepBlend_SequenceOfPointOnRst& S) ;
+      void Append (BRepBlend_SequenceOfPointOnRst& S) ;
   
-  Standard_EXPORT     void Prepend(const BRepBlend_PointOnRst& T) ;
+  Standard_EXPORT   void Prepend (const BRepBlend_PointOnRst& T) ;
   
-        void Prepend(BRepBlend_SequenceOfPointOnRst& S) ;
+      void Prepend (BRepBlend_SequenceOfPointOnRst& S) ;
   
-        void InsertBefore(const Standard_Integer Index,const BRepBlend_PointOnRst& T) ;
+      void InsertBefore (const Standard_Integer Index, const BRepBlend_PointOnRst& T) ;
   
-        void InsertBefore(const Standard_Integer Index,BRepBlend_SequenceOfPointOnRst& S) ;
+      void InsertBefore (const Standard_Integer Index, BRepBlend_SequenceOfPointOnRst& S) ;
   
-  Standard_EXPORT     void InsertAfter(const Standard_Integer Index,const BRepBlend_PointOnRst& T) ;
+  Standard_EXPORT   void InsertAfter (const Standard_Integer Index, const BRepBlend_PointOnRst& T) ;
   
-        void InsertAfter(const Standard_Integer Index,BRepBlend_SequenceOfPointOnRst& S) ;
+      void InsertAfter (const Standard_Integer Index, BRepBlend_SequenceOfPointOnRst& S) ;
   
-  Standard_EXPORT    const BRepBlend_PointOnRst& First() const;
+  Standard_EXPORT  const  BRepBlend_PointOnRst& First()  const;
   
-  Standard_EXPORT    const BRepBlend_PointOnRst& Last() const;
+  Standard_EXPORT  const  BRepBlend_PointOnRst& Last()  const;
   
-        void Split(const Standard_Integer Index,BRepBlend_SequenceOfPointOnRst& Sub) ;
+      void Split (const Standard_Integer Index, BRepBlend_SequenceOfPointOnRst& Sub) ;
   
-  Standard_EXPORT    const BRepBlend_PointOnRst& Value(const Standard_Integer Index) const;
-   const BRepBlend_PointOnRst& operator()(const Standard_Integer Index) const
+  Standard_EXPORT  const  BRepBlend_PointOnRst& Value (const Standard_Integer Index)  const;
+ const  BRepBlend_PointOnRst& operator() (const Standard_Integer Index)  const
 {
   return Value(Index);
 }
   
-  Standard_EXPORT     void SetValue(const Standard_Integer Index,const BRepBlend_PointOnRst& I) ;
+  Standard_EXPORT   void SetValue (const Standard_Integer Index, const BRepBlend_PointOnRst& I) ;
   
-  Standard_EXPORT     BRepBlend_PointOnRst& ChangeValue(const Standard_Integer Index) ;
-    BRepBlend_PointOnRst& operator()(const Standard_Integer Index) 
+  Standard_EXPORT   BRepBlend_PointOnRst& ChangeValue (const Standard_Integer Index) ;
+  BRepBlend_PointOnRst& operator() (const Standard_Integer Index) 
 {
   return ChangeValue(Index);
 }
   
-  Standard_EXPORT     void Remove(const Standard_Integer Index) ;
+  Standard_EXPORT   void Remove (const Standard_Integer Index) ;
   
-  Standard_EXPORT     void Remove(const Standard_Integer FromIndex,const Standard_Integer ToIndex) ;
-
+  Standard_EXPORT   void Remove (const Standard_Integer FromIndex, const Standard_Integer ToIndex) ;
 
 
 
@@ -104,8 +94,6 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   BRepBlend_SequenceOfPointOnRst(const BRepBlend_SequenceOfPointOnRst& Other);
 
 
 
@@ -133,7 +121,6 @@ private:
 #undef TCollection_Sequence_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepBlend_SequenceOfPointOnRst_HeaderFile

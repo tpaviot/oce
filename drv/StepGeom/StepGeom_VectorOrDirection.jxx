@@ -1,12 +1,4 @@
-#ifndef _Standard_Transient_HeaderFile
 #include <Standard_Transient.hxx>
-#endif
-#ifndef _StepGeom_Vector_HeaderFile
 #include <StepGeom_Vector.hxx>
-#endif
-#ifndef _StepGeom_Direction_HeaderFile
 #include <StepGeom_Direction.hxx>
-#endif
-#ifndef _StepGeom_VectorOrDirection_HeaderFile
 #include <StepGeom_VectorOrDirection.hxx>
-#endif

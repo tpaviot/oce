@@ -6,22 +6,15 @@
 #ifndef _Handle_StepGeom_OuterBoundaryCurve_HeaderFile
 #define _Handle_StepGeom_OuterBoundaryCurve_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-
-#ifndef _Handle_StepGeom_BoundaryCurve_HeaderFile
 #include <Handle_StepGeom_BoundaryCurve.hxx>
-#endif
 
 class Standard_Transient;
 class Handle(Standard_Type);
 class Handle(StepGeom_BoundaryCurve);
 class StepGeom_OuterBoundaryCurve;
 
-DEFINE_STANDARD_HANDLE(StepGeom_OuterBoundaryCurve,StepGeom_BoundaryCurve)
+DEFINE_STANDARD_HANDLE(StepGeom_OuterBoundaryCurve, StepGeom_BoundaryCurve)
 
-#endif
+#endif // _Handle_StepGeom_OuterBoundaryCurve_HeaderFile

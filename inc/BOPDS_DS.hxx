@@ -6,106 +6,40 @@
 #ifndef _BOPDS_DS_HeaderFile
 #define _BOPDS_DS_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BOPCol_BaseAllocator_HeaderFile
 #include <BOPCol_BaseAllocator.hxx>
-#endif
-#ifndef _BOPCol_ListOfShape_HeaderFile
 #include <BOPCol_ListOfShape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _BOPDS_VectorOfIndexRange_HeaderFile
 #include <BOPDS_VectorOfIndexRange.hxx>
-#endif
-#ifndef _BOPDS_VectorOfShapeInfo_HeaderFile
 #include <BOPDS_VectorOfShapeInfo.hxx>
-#endif
-#ifndef _BOPCol_DataMapOfShapeInteger_HeaderFile
 #include <BOPCol_DataMapOfShapeInteger.hxx>
-#endif
-#ifndef _BOPDS_VectorOfListOfPaveBlock_HeaderFile
 #include <BOPDS_VectorOfListOfPaveBlock.hxx>
-#endif
-#ifndef _BOPDS_DataMapOfPaveBlockCommonBlock_HeaderFile
 #include <BOPDS_DataMapOfPaveBlockCommonBlock.hxx>
-#endif
-#ifndef _BOPDS_VectorOfFaceInfo_HeaderFile
 #include <BOPDS_VectorOfFaceInfo.hxx>
-#endif
-#ifndef _BOPCol_DataMapOfIntegerInteger_HeaderFile
 #include <BOPCol_DataMapOfIntegerInteger.hxx>
-#endif
-#ifndef _BOPDS_MapOfPassKey_HeaderFile
 #include <BOPDS_MapOfPassKey.hxx>
-#endif
-#ifndef _BOPDS_VectorOfInterfVV_HeaderFile
 #include <BOPDS_VectorOfInterfVV.hxx>
-#endif
-#ifndef _BOPDS_VectorOfInterfVE_HeaderFile
 #include <BOPDS_VectorOfInterfVE.hxx>
-#endif
-#ifndef _BOPDS_VectorOfInterfVF_HeaderFile
 #include <BOPDS_VectorOfInterfVF.hxx>
-#endif
-#ifndef _BOPDS_VectorOfInterfEE_HeaderFile
 #include <BOPDS_VectorOfInterfEE.hxx>
-#endif
-#ifndef _BOPDS_VectorOfInterfEF_HeaderFile
 #include <BOPDS_VectorOfInterfEF.hxx>
-#endif
-#ifndef _BOPDS_VectorOfInterfFF_HeaderFile
 #include <BOPDS_VectorOfInterfFF.hxx>
-#endif
-#ifndef _BOPDS_VectorOfInterfVZ_HeaderFile
 #include <BOPDS_VectorOfInterfVZ.hxx>
-#endif
-#ifndef _BOPDS_VectorOfInterfEZ_HeaderFile
 #include <BOPDS_VectorOfInterfEZ.hxx>
-#endif
-#ifndef _BOPDS_VectorOfInterfFZ_HeaderFile
 #include <BOPDS_VectorOfInterfFZ.hxx>
-#endif
-#ifndef _BOPDS_VectorOfInterfZZ_HeaderFile
 #include <BOPDS_VectorOfInterfZZ.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _BOPDS_ListOfPaveBlock_HeaderFile
 #include <BOPDS_ListOfPaveBlock.hxx>
-#endif
-#ifndef _Handle_BOPDS_PaveBlock_HeaderFile
 #include <Handle_BOPDS_PaveBlock.hxx>
-#endif
-#ifndef _Handle_BOPDS_CommonBlock_HeaderFile
 #include <Handle_BOPDS_CommonBlock.hxx>
-#endif
-#ifndef _BOPDS_IndexedMapOfPaveBlock_HeaderFile
 #include <BOPDS_IndexedMapOfPaveBlock.hxx>
-#endif
-#ifndef _BOPCol_MapOfInteger_HeaderFile
 #include <BOPCol_MapOfInteger.hxx>
-#endif
-#ifndef _BOPCol_ListOfInteger_HeaderFile
 #include <BOPCol_ListOfInteger.hxx>
-#endif
-#ifndef _BOPDS_ListOfPave_HeaderFile
 #include <BOPDS_ListOfPave.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 class BOPDS_IndexRange;
 class BOPDS_ShapeInfo;
 class TopoDS_Shape;
@@ -116,330 +50,387 @@ class Bnd_Box;
 
 
 
-//! The class BOPDS_DS provides the control <br>
-//! the data structure for <br>
-//! partition and  boolean operation algorithms <br>
-//! <br>
-//! The data structure has the  following contents: <br>
-//!  1. the arguments of an operation [myArguments]; <br>
-//!  2  the information about arguments/new shapes <br>
-//!     and their sub-shapes (type of the shape, <br>
-//!     bounding box, etc) [myLines]; <br>
-//!  3. each argument shape(and its subshapes) <br>
-//!     has/have own range of indices (rank) <br>
-//!  4. pave blocks on source edges [myPaveBlocksPool]; <br>
-//!  5. the state of source faces  [myFaceInfoPool] <br>
-//!  6  the collection of same domain shapes [myShapesSD] <br>
-//!  7  the collection of interferences  [myInterfTB, <br>
-//!     myInterfVV,..myInterfFF] <br>
-class BOPDS_DS  {
+//! The class BOPDS_DS provides the control
+//! the data structure for
+//! partition and  boolean operation algorithms
+//!
+//! The data structure has the  following contents:
+//! 1. the arguments of an operation [myArguments];
+//! 2  the information about arguments/new shapes
+//! and their sub-shapes (type of the shape,
+//! bounding box, etc) [myLines];
+//! 3. each argument shape(and its subshapes)
+//! has/have own range of indices (rank)
+//! 4. pave blocks on source edges [myPaveBlocksPool];
+//! 5. the state of source faces  [myFaceInfoPool]
+//! 6  the collection of same domain shapes [myShapesSD]
+//! 7  the collection of interferences  [myInterfTB,
+//! myInterfVV,..myInterfFF]
+class BOPDS_DS 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//! Empty contructor <br>
-//! <br>
-  Standard_EXPORT   BOPDS_DS();
+
+  //! Empty contructor
+  Standard_EXPORT BOPDS_DS();
 Standard_EXPORT virtual ~BOPDS_DS();
   
-//!  Contructor <br>
-//!  theAllocator - the allocator to manage the memory <br>
-//! <br>
-  Standard_EXPORT   BOPDS_DS(const BOPCol_BaseAllocator& theAllocator);
-  
-//!  Clears the contents <br>
-  Standard_EXPORT     void Clear() ;
-  
-//! Selector <br>
-//! <br>
-  Standard_EXPORT    const BOPCol_BaseAllocator& Allocator() const;
-  
-//! Modifier <br>
-//! Sets the arguments [theLS] of an operation <br>
-  Standard_EXPORT     void SetArguments(const BOPCol_ListOfShape& theLS) ;
-  
-//! Selector <br>
-//! Returns the arguments of an operation <br>
-  Standard_EXPORT    const BOPCol_ListOfShape& Arguments() const;
-  
-//! Initializes the data structure for <br>
-//!  the arguments <br>
-  Standard_EXPORT     void Init() ;
-  
-//! Selector <br>
-//! Returns the total number of shapes stored <br>
-  Standard_EXPORT     Standard_Integer NbShapes() const;
-  
-//! Selector <br>
-//! Returns the total number of source shapes stored <br>
-  Standard_EXPORT     Standard_Integer NbSourceShapes() const;
-  
-//! Selector <br>
-//! Returns the number of index ranges <br>
-  Standard_EXPORT     Standard_Integer NbRanges() const;
-  
-//! Selector <br>
-//! Returns the index range "i" <br>
-  Standard_EXPORT    const BOPDS_IndexRange& Range(const Standard_Integer theIndex) const;
-  
-//! Selector <br>
-//! Returns the rank of the shape of index "i" <br>
-  Standard_EXPORT     Standard_Integer Rank(const Standard_Integer theIndex) const;
-  
-//! Returns true if the shape of index "i" is not <br>
-//! the source shape/sub-shape <br>
-  Standard_EXPORT     Standard_Boolean IsNewShape(const Standard_Integer theIndex) const;
-  
-//! Modifier <br>
-//! Appends the information about the shape [theSI] <br>
-//! to the data structure <br>
-//! Returns the index of theSI in the data structure <br>
-  Standard_EXPORT     Standard_Integer Append(const BOPDS_ShapeInfo& theSI) ;
-  
-//! Modifier <br>
-//! Appends the default information about the shape [theS] <br>
-//! to the data structure <br>
-//! Returns the index of theS in the data structure <br>
-  Standard_EXPORT     Standard_Integer Append(const TopoDS_Shape& theS) ;
-  
-//! Selector <br>
-//! Returns the information about the shape <br>
-//! with index theIndex <br>
-  Standard_EXPORT    const BOPDS_ShapeInfo& ShapeInfo(const Standard_Integer theIndex) const;
-  
-//! Selector/Modifier <br>
-//! Returns the information about the shape <br>
-//! with index theIndex <br>
-  Standard_EXPORT     BOPDS_ShapeInfo& ChangeShapeInfo(const Standard_Integer theIndex) ;
-  
-//! Selector <br>
-//! Returns the shape <br>
-//!  with index theIndex <br>
-  Standard_EXPORT    const TopoDS_Shape& Shape(const Standard_Integer theIndex) const;
-  
-//! Selector <br>
-//! Returns the index  of the shape theS <br>
-  Standard_EXPORT     Standard_Integer Index(const TopoDS_Shape& theS) const;
-  
-//! Selector <br>
-//! Returns the information about pave blocks on source edges <br>
-  Standard_EXPORT    const BOPDS_VectorOfListOfPaveBlock& PaveBlocksPool() const;
-  
-//! Selector/Modifier <br>
-//! Returns the information about pave blocks on source edges <br>
-  Standard_EXPORT     BOPDS_VectorOfListOfPaveBlock& ChangePaveBlocksPool() ;
-  
-//! Query <br>
-//! Returns true if the shape with index theIndex has the <br>
-//! information about pave blocks <br>
-  Standard_EXPORT     Standard_Boolean HasPaveBlocks(const Standard_Integer theIndex) const;
-  
-//! Selector <br>
-//! Returns the pave blocks for the shape with index theIndex <br>
-  Standard_EXPORT    const BOPDS_ListOfPaveBlock& PaveBlocks(const Standard_Integer theIndex) const;
-  
-//! Selector/Modifier <br>
-//! Returns the pave blocks for the shape with index theIndex <br>
-  Standard_EXPORT     BOPDS_ListOfPaveBlock& ChangePaveBlocks(const Standard_Integer theIndex) ;
-  
-//! Update the pave blocks for the all shapes in data structure <br>
-  Standard_EXPORT     void UpdatePaveBlocks() ;
-  
-//! Update the pave block thePB <br>
-  Standard_EXPORT     void UpdatePaveBlock(const Handle(BOPDS_PaveBlock)& thePB) ;
-  
-//! Update the common block theCB <br>
-  Standard_EXPORT     void UpdateCommonBlock(const Handle(BOPDS_CommonBlock)& theCB) ;
-  
-//! Query <br>
-//! Returns true if the pave block is common block <br>
-  Standard_EXPORT     Standard_Boolean IsCommonBlock(const Handle(BOPDS_PaveBlock)& thePB) const;
-  
-//! Selector <br>
-//! Returns the common block <br>
-  Standard_EXPORT     Handle_BOPDS_CommonBlock CommonBlock(const Handle(BOPDS_PaveBlock)& thePB) const;
-  
-//! Modifier <br>
-//! Sets the common block <theCB> <br>
-  Standard_EXPORT     void SetCommonBlock(const Handle(BOPDS_PaveBlock)& thePB,const Handle(BOPDS_CommonBlock)& theCB) ;
-  
-//! Selector <br>
-//! Returns the real first pave block <br>
-  Standard_EXPORT     Handle_BOPDS_PaveBlock RealPaveBlock(const Handle(BOPDS_PaveBlock)& thePB) const;
-  
-//! Query <br>
-//! Returns true if common block contains more then one pave block <br>
-  Standard_EXPORT     Standard_Boolean IsCommonBlockOnEdge(const Handle(BOPDS_PaveBlock)& thePB) const;
-  
-//! Selector <br>
-//! Returns the information about state of faces <br>
-  Standard_EXPORT    const BOPDS_VectorOfFaceInfo& FaceInfoPool() const;
-  
-//! Query <br>
-//! Returns true if the shape with index theIndex has the <br>
-//! information about state of face <br>
-  Standard_EXPORT     Standard_Boolean HasFaceInfo(const Standard_Integer theIndex) const;
-  
-//! Selector <br>
-//! Returns the state of face with index theIndex <br>
-  Standard_EXPORT    const BOPDS_FaceInfo& FaceInfo(const Standard_Integer theIndex) const;
-  
-//! Selector/Modifier <br>
-//! Returns the state of face with index theIndex <br>
-  Standard_EXPORT     BOPDS_FaceInfo& ChangeFaceInfo(const Standard_Integer theIndex) ;
-  
-//! Update the state In of face with index theIndex <br>
-  Standard_EXPORT     void UpdateFaceInfoIn(const Standard_Integer theIndex) ;
-  
-//! Update the state On of face with index theIndex <br>
-  Standard_EXPORT     void UpdateFaceInfoOn(const Standard_Integer theIndex) ;
-  
-//! Selector <br>
-//! Returns the state On <br>
-//! [theMPB,theMVP] of face with index theIndex <br>
-  Standard_EXPORT     void FaceInfoOn(const Standard_Integer theIndex,BOPDS_IndexedMapOfPaveBlock& theMPB,BOPCol_MapOfInteger& theMVP) ;
-  
-//! Selector <br>
-//! Returns the state In <br>
-//! [theMPB,theMVP] of face with index theIndex <br>
-  Standard_EXPORT     void FaceInfoIn(const Standard_Integer theIndex,BOPDS_IndexedMapOfPaveBlock& theMPB,BOPCol_MapOfInteger& theMVP) ;
-  
-//! Selector <br>
-//! Returns the indices of alone vertices <br>
-//! for the face with index theIndex <br>
-  Standard_EXPORT     void AloneVertices(const Standard_Integer theF,BOPCol_ListOfInteger& theLI) const;
-  
-//! Refine the state On for the all faces having <br>
-//! state information <br>
-//! <br>
-//!  ++ <br>
-//! <br>
-  Standard_EXPORT     void RefineFaceInfoOn() ;
-  
-//! Returns the indices of vertices and pave blocks <br>
-//! that  are On/In for the faces with indices theF1, theF2 <br>
-  Standard_EXPORT     void VerticesOnIn(const Standard_Integer theF1,const Standard_Integer theF2,BOPCol_MapOfInteger& theMI,BOPDS_IndexedMapOfPaveBlock& aMPB) const;
-  
-//! Returns the indices of edges that are  shared <br>
-//! for the faces with indices theF1, theF2 <br>
-//! <br>
-//! same domain shapes <br>
-//! <br>
-  Standard_EXPORT     void SharedEdges(const Standard_Integer theF1,const Standard_Integer theF2,BOPCol_ListOfInteger& theLI,const BOPCol_BaseAllocator& theAllocator) ;
-  
-//! Selector <br>
-//! Returns the collection same domain shapes <br>
-  Standard_EXPORT     BOPCol_DataMapOfIntegerInteger& ShapesSD() ;
-  
-//! Modifier <br>
-//! Adds the information about same domain shapes <br>
-//! with indices theIndex, theIndexSD <br>
-  Standard_EXPORT     void AddShapeSD(const Standard_Integer theIndex,const Standard_Integer theIndexSD) ;
-  
-//! Query <br>
-//! Returns true if the shape with index theIndex has the <br>
-//! same domain shape. In this case theIndexSD will contain <br>
-//!  the index of same domain shape found <br>
-//! <br>
-//! interferences <br>
-//! <br>
-  Standard_EXPORT     Standard_Boolean HasShapeSD(const Standard_Integer theIndex,Standard_Integer& theIndexSD) const;
-  
-//! Selector/Modifier <br>
-//! Returns the collection of interferences Vertex/Vertex <br>
-        BOPDS_VectorOfInterfVV& InterfVV() ;
-  
-//! Selector/Modifier <br>
-//! Returns the collection of interferences Vertex/Edge <br>
-        BOPDS_VectorOfInterfVE& InterfVE() ;
-  
-//! Selector/Modifier <br>
-//! Returns the collection of interferences Vertex/Face <br>
-        BOPDS_VectorOfInterfVF& InterfVF() ;
-  
-//! Selector/Modifier <br>
-//! Returns the collection of interferences Edge/Edge <br>
-        BOPDS_VectorOfInterfEE& InterfEE() ;
-  
-//! Selector/Modifier <br>
-//! Returns the collection of interferences Edge/Face <br>
-        BOPDS_VectorOfInterfEF& InterfEF() ;
-  
-//! Selector/Modifier <br>
-//! Returns the collection of interferences Face/Face <br>
-        BOPDS_VectorOfInterfFF& InterfFF() ;
-  
-//! Selector/Modifier <br>
-//! Returns the collection of interferences Vertex/Solid <br>
-        BOPDS_VectorOfInterfVZ& InterfVZ() ;
-  
-//! Selector/Modifier <br>
-//! Returns the collection of interferences Edge/Solid <br>
-        BOPDS_VectorOfInterfEZ& InterfEZ() ;
-  
-//! Selector/Modifier <br>
-//! Returns the collection of interferences Face/Solid <br>
-        BOPDS_VectorOfInterfFZ& InterfFZ() ;
-  
-//! Selector/Modifier <br>
-//! Returns the collection of interferences Solid/Solid <br>
-        BOPDS_VectorOfInterfZZ& InterfZZ() ;
-  
-//! Returns the number of types of the interferences <br>
-//! <br>
-      static  Standard_Integer NbInterfTypes() ;
-  
-//! Modifier <br>
-//! Adds the information about an interference between <br>
-//! shapes with indices theI1, theI2 to the summary <br>
-//! table of interferences <br>
-        void AddInterf(const Standard_Integer theI1,const Standard_Integer theI2) ;
-  
-//! Query <br>
-//! Returns true if the shape with index theI <br>
-//! is interferred <br>
-  Standard_EXPORT     Standard_Boolean HasInterf(const Standard_Integer theI) const;
-  
-//! Query <br>
-//! Returns true if the shapes with indices theI1, theI2 <br>
-//! are interferred <br>
-        Standard_Boolean HasInterf(const Standard_Integer theI1,const Standard_Integer theI2) const;
-  
-//! Query <br>
-//! Returns true if the shape with index theI1 is interfered <br>
-//! with <br>
-//!    any sub-shape of the shape with index theI2  (theFlag=true) <br>
-//!    all sub-shapes of the shape with index theI2 (theFlag=false) <br>
-  Standard_EXPORT     Standard_Boolean HasInterfShapeSubShapes(const Standard_Integer theI1,const Standard_Integer theI2,const Standard_Boolean theFlag = Standard_True) const;
-  
-//! Query <br>
-//! Returns true if the shapes with indices theI1, theI2 <br>
-//! have interferred sub-shapes <br>
-  Standard_EXPORT     Standard_Boolean HasInterfSubShapes(const Standard_Integer theI1,const Standard_Integer theI2) const;
-  
-//! Selector <br>
-//! Returns the table of interferences <br>
-//! <br>
-//! debug <br>
-//! <br>
-       const BOPDS_MapOfPassKey& Interferences() const;
-  
-  Standard_EXPORT     void Dump() const;
-  
-  Standard_EXPORT     void SortPaveBlocks(const Handle(BOPDS_CommonBlock)& theCB) ;
-  
-  Standard_EXPORT     Standard_Boolean IsToSort(const Handle(BOPDS_CommonBlock)& theCB,Standard_Integer& theI) ;
-  
-  Standard_EXPORT     Standard_Boolean IsSubShape(const Standard_Integer theI1,const Standard_Integer theI2) ;
-  //! Fills theLP with sorted paves <br>
-//! of the shape with index theIndex <br>
-  Standard_EXPORT     void Paves(const Standard_Integer theIndex,BOPDS_ListOfPave& theLP) ;
-  
-//! Updates tolerance of the sub-shapes of the shape with index <theIndex>. <br>
-//! <br>
-  Standard_EXPORT     void UpdateEdgeTolerance(const Standard_Integer theIndex,const Standard_Real theTolerance) ;
 
+  //! Contructor
+  //! theAllocator - the allocator to manage the memory
+  Standard_EXPORT BOPDS_DS(const BOPCol_BaseAllocator& theAllocator);
+  
+
+  //! Clears the contents
+  Standard_EXPORT   void Clear() ;
+  
+
+  //! Selector
+  Standard_EXPORT  const  BOPCol_BaseAllocator& Allocator()  const;
+  
+
+  //! Modifier
+  //! Sets the arguments [theLS] of an operation
+  Standard_EXPORT   void SetArguments (const BOPCol_ListOfShape& theLS) ;
+  
+
+  //! Selector
+  //! Returns the arguments of an operation
+  Standard_EXPORT  const  BOPCol_ListOfShape& Arguments()  const;
+  
+
+  //! Initializes the data structure for
+  //! the arguments
+  Standard_EXPORT   void Init() ;
+  
+
+  //! Selector
+  //! Returns the total number of shapes stored
+  Standard_EXPORT   Standard_Integer NbShapes()  const;
+  
+
+  //! Selector
+  //! Returns the total number of source shapes stored
+  Standard_EXPORT   Standard_Integer NbSourceShapes()  const;
+  
+
+  //! Selector
+  //! Returns the number of index ranges
+  Standard_EXPORT   Standard_Integer NbRanges()  const;
+  
+
+  //! Selector
+  //! Returns the index range "i"
+  Standard_EXPORT  const  BOPDS_IndexRange& Range (const Standard_Integer theIndex)  const;
+  
+
+  //! Selector
+  //! Returns the rank of the shape of index "i"
+  Standard_EXPORT   Standard_Integer Rank (const Standard_Integer theIndex)  const;
+  
+
+  //! Returns true if the shape of index "i" is not
+  //! the source shape/sub-shape
+  Standard_EXPORT   Standard_Boolean IsNewShape (const Standard_Integer theIndex)  const;
+  
+
+  //! Modifier
+  //! Appends the information about the shape [theSI]
+  //! to the data structure
+  //! Returns the index of theSI in the data structure
+  Standard_EXPORT   Standard_Integer Append (const BOPDS_ShapeInfo& theSI) ;
+  
+
+  //! Modifier
+  //! Appends the default information about the shape [theS]
+  //! to the data structure
+  //! Returns the index of theS in the data structure
+  Standard_EXPORT   Standard_Integer Append (const TopoDS_Shape& theS) ;
+  
+
+  //! Selector
+  //! Returns the information about the shape
+  //! with index theIndex
+  Standard_EXPORT  const  BOPDS_ShapeInfo& ShapeInfo (const Standard_Integer theIndex)  const;
+  
+
+  //! Selector/Modifier
+  //! Returns the information about the shape
+  //! with index theIndex
+  Standard_EXPORT   BOPDS_ShapeInfo& ChangeShapeInfo (const Standard_Integer theIndex) ;
+  
+
+  //! Selector
+  //! Returns the shape
+  //! with index theIndex
+  Standard_EXPORT  const  TopoDS_Shape& Shape (const Standard_Integer theIndex)  const;
+  
+
+  //! Selector
+  //! Returns the index  of the shape theS
+  Standard_EXPORT   Standard_Integer Index (const TopoDS_Shape& theS)  const;
+  
+
+  //! Selector
+  //! Returns the information about pave blocks on source edges
+  Standard_EXPORT  const  BOPDS_VectorOfListOfPaveBlock& PaveBlocksPool()  const;
+  
+
+  //! Selector/Modifier
+  //! Returns the information about pave blocks on source edges
+  Standard_EXPORT   BOPDS_VectorOfListOfPaveBlock& ChangePaveBlocksPool() ;
+  
+
+  //! Query
+  //! Returns true if the shape with index theIndex has the
+  //! information about pave blocks
+  Standard_EXPORT   Standard_Boolean HasPaveBlocks (const Standard_Integer theIndex)  const;
+  
+
+  //! Selector
+  //! Returns the pave blocks for the shape with index theIndex
+  Standard_EXPORT  const  BOPDS_ListOfPaveBlock& PaveBlocks (const Standard_Integer theIndex)  const;
+  
+
+  //! Selector/Modifier
+  //! Returns the pave blocks for the shape with index theIndex
+  Standard_EXPORT   BOPDS_ListOfPaveBlock& ChangePaveBlocks (const Standard_Integer theIndex) ;
+  
+
+  //! Update the pave blocks for the all shapes in data structure
+  Standard_EXPORT   void UpdatePaveBlocks() ;
+  
+
+  //! Update the pave block thePB
+  Standard_EXPORT   void UpdatePaveBlock (const Handle(BOPDS_PaveBlock)& thePB) ;
+  
+
+  //! Update the common block theCB
+  Standard_EXPORT   void UpdateCommonBlock (const Handle(BOPDS_CommonBlock)& theCB) ;
+  
+
+  //! Query
+  //! Returns true if the pave block is common block
+  Standard_EXPORT   Standard_Boolean IsCommonBlock (const Handle(BOPDS_PaveBlock)& thePB)  const;
+  
+
+  //! Selector
+  //! Returns the common block
+  Standard_EXPORT   Handle(BOPDS_CommonBlock) CommonBlock (const Handle(BOPDS_PaveBlock)& thePB)  const;
+  
+
+  //! Modifier
+  //! Sets the common block <theCB>
+  Standard_EXPORT   void SetCommonBlock (const Handle(BOPDS_PaveBlock)& thePB, const Handle(BOPDS_CommonBlock)& theCB) ;
+  
+
+  //! Selector
+  //! Returns the real first pave block
+  Standard_EXPORT   Handle(BOPDS_PaveBlock) RealPaveBlock (const Handle(BOPDS_PaveBlock)& thePB)  const;
+  
+
+  //! Query
+  //! Returns true if common block contains more then one pave block
+  Standard_EXPORT   Standard_Boolean IsCommonBlockOnEdge (const Handle(BOPDS_PaveBlock)& thePB)  const;
+  
+
+  //! Selector
+  //! Returns the information about state of faces
+  Standard_EXPORT  const  BOPDS_VectorOfFaceInfo& FaceInfoPool()  const;
+  
+
+  //! Query
+  //! Returns true if the shape with index theIndex has the
+  //! information about state of face
+  Standard_EXPORT   Standard_Boolean HasFaceInfo (const Standard_Integer theIndex)  const;
+  
+
+  //! Selector
+  //! Returns the state of face with index theIndex
+  Standard_EXPORT  const  BOPDS_FaceInfo& FaceInfo (const Standard_Integer theIndex)  const;
+  
+
+  //! Selector/Modifier
+  //! Returns the state of face with index theIndex
+  Standard_EXPORT   BOPDS_FaceInfo& ChangeFaceInfo (const Standard_Integer theIndex) ;
+  
+
+  //! Update the state In of face with index theIndex
+  Standard_EXPORT   void UpdateFaceInfoIn (const Standard_Integer theIndex) ;
+  
+
+  //! Update the state On of face with index theIndex
+  Standard_EXPORT   void UpdateFaceInfoOn (const Standard_Integer theIndex) ;
+  
+
+  //! Selector
+  //! Returns the state On
+  //! [theMPB,theMVP] of face with index theIndex
+  Standard_EXPORT   void FaceInfoOn (const Standard_Integer theIndex, BOPDS_IndexedMapOfPaveBlock& theMPB, BOPCol_MapOfInteger& theMVP) ;
+  
+
+  //! Selector
+  //! Returns the state In
+  //! [theMPB,theMVP] of face with index theIndex
+  Standard_EXPORT   void FaceInfoIn (const Standard_Integer theIndex, BOPDS_IndexedMapOfPaveBlock& theMPB, BOPCol_MapOfInteger& theMVP) ;
+  
+
+  //! Selector
+  //! Returns the indices of alone vertices
+  //! for the face with index theIndex
+  Standard_EXPORT   void AloneVertices (const Standard_Integer theF, BOPCol_ListOfInteger& theLI)  const;
+  
+
+  //! Refine the state On for the all faces having
+  //! state information
+  //!
+  //! ++
+  Standard_EXPORT   void RefineFaceInfoOn() ;
+  
+
+  //! Returns the indices of vertices and pave blocks
+  //! that  are On/In for the faces with indices theF1, theF2
+  Standard_EXPORT   void VerticesOnIn (const Standard_Integer theF1, const Standard_Integer theF2, BOPCol_MapOfInteger& theMI, BOPDS_IndexedMapOfPaveBlock& aMPB)  const;
+  
+
+  //! Returns the indices of edges that are  shared
+  //! for the faces with indices theF1, theF2
+  //!
+  //! same domain shapes
+  Standard_EXPORT   void SharedEdges (const Standard_Integer theF1, const Standard_Integer theF2, BOPCol_ListOfInteger& theLI, const BOPCol_BaseAllocator& theAllocator) ;
+  
+
+  //! Selector
+  //! Returns the collection same domain shapes
+  Standard_EXPORT   BOPCol_DataMapOfIntegerInteger& ShapesSD() ;
+  
+
+  //! Modifier
+  //! Adds the information about same domain shapes
+  //! with indices theIndex, theIndexSD
+  Standard_EXPORT   void AddShapeSD (const Standard_Integer theIndex, const Standard_Integer theIndexSD) ;
+  
+
+  //! Query
+  //! Returns true if the shape with index theIndex has the
+  //! same domain shape. In this case theIndexSD will contain
+  //! the index of same domain shape found
+  //!
+  //! interferences
+  Standard_EXPORT   Standard_Boolean HasShapeSD (const Standard_Integer theIndex, Standard_Integer& theIndexSD)  const;
+  
+
+  //! Selector/Modifier
+  //! Returns the collection of interferences Vertex/Vertex
+      BOPDS_VectorOfInterfVV& InterfVV() ;
+  
+
+  //! Selector/Modifier
+  //! Returns the collection of interferences Vertex/Edge
+      BOPDS_VectorOfInterfVE& InterfVE() ;
+  
+
+  //! Selector/Modifier
+  //! Returns the collection of interferences Vertex/Face
+      BOPDS_VectorOfInterfVF& InterfVF() ;
+  
+
+  //! Selector/Modifier
+  //! Returns the collection of interferences Edge/Edge
+      BOPDS_VectorOfInterfEE& InterfEE() ;
+  
+
+  //! Selector/Modifier
+  //! Returns the collection of interferences Edge/Face
+      BOPDS_VectorOfInterfEF& InterfEF() ;
+  
+
+  //! Selector/Modifier
+  //! Returns the collection of interferences Face/Face
+      BOPDS_VectorOfInterfFF& InterfFF() ;
+  
+
+  //! Selector/Modifier
+  //! Returns the collection of interferences Vertex/Solid
+      BOPDS_VectorOfInterfVZ& InterfVZ() ;
+  
+
+  //! Selector/Modifier
+  //! Returns the collection of interferences Edge/Solid
+      BOPDS_VectorOfInterfEZ& InterfEZ() ;
+  
+
+  //! Selector/Modifier
+  //! Returns the collection of interferences Face/Solid
+      BOPDS_VectorOfInterfFZ& InterfFZ() ;
+  
+
+  //! Selector/Modifier
+  //! Returns the collection of interferences Solid/Solid
+      BOPDS_VectorOfInterfZZ& InterfZZ() ;
+  
+
+  //! Returns the number of types of the interferences
+    static   Standard_Integer NbInterfTypes() ;
+  
+
+  //! Modifier
+  //! Adds the information about an interference between
+  //! shapes with indices theI1, theI2 to the summary
+  //! table of interferences
+      void AddInterf (const Standard_Integer theI1, const Standard_Integer theI2) ;
+  
+
+  //! Query
+  //! Returns true if the shape with index theI
+  //! is interferred
+  Standard_EXPORT   Standard_Boolean HasInterf (const Standard_Integer theI)  const;
+  
+
+  //! Query
+  //! Returns true if the shapes with indices theI1, theI2
+  //! are interferred
+      Standard_Boolean HasInterf (const Standard_Integer theI1, const Standard_Integer theI2)  const;
+  
+
+  //! Query
+  //! Returns true if the shape with index theI1 is interfered
+  //! with
+  //! any sub-shape of the shape with index theI2  (theFlag=true)
+  //! all sub-shapes of the shape with index theI2 (theFlag=false)
+  Standard_EXPORT   Standard_Boolean HasInterfShapeSubShapes (const Standard_Integer theI1, const Standard_Integer theI2, const Standard_Boolean theFlag = Standard_True)  const;
+  
+
+  //! Query
+  //! Returns true if the shapes with indices theI1, theI2
+  //! have interferred sub-shapes
+  Standard_EXPORT   Standard_Boolean HasInterfSubShapes (const Standard_Integer theI1, const Standard_Integer theI2)  const;
+  
+
+  //! Selector
+  //! Returns the table of interferences
+  //!
+  //! debug
+     const  BOPDS_MapOfPassKey& Interferences()  const;
+  
+  Standard_EXPORT   void Dump()  const;
+  
+  Standard_EXPORT   void SortPaveBlocks (const Handle(BOPDS_CommonBlock)& theCB) ;
+  
+  Standard_EXPORT   Standard_Boolean IsToSort (const Handle(BOPDS_CommonBlock)& theCB, Standard_Integer& theI) ;
+  
+  Standard_EXPORT   Standard_Boolean IsSubShape (const Standard_Integer theI1, const Standard_Integer theI2) ;
+  
+  //! Fills theLP with sorted paves
+  //! of the shape with index theIndex
+  Standard_EXPORT   void Paves (const Standard_Integer theIndex, BOPDS_ListOfPave& theLP) ;
+  
+
+  //! Updates tolerance of the sub-shapes of the shape with index <theIndex>.
+  Standard_EXPORT   void UpdateEdgeTolerance (const Standard_Integer theIndex, const Standard_Real theTolerance) ;
 
 
 
@@ -447,43 +438,45 @@ Standard_EXPORT virtual ~BOPDS_DS();
 protected:
 
   
-//! Initializes the pave blocks for the shape with index theIndex <br>
-  Standard_EXPORT     void InitPaveBlocks(const Standard_Integer theIndex) ;
+
+  //! Initializes the pave blocks for the shape with index theIndex
+  Standard_EXPORT   void InitPaveBlocks (const Standard_Integer theIndex) ;
   
-//! Initializes the state of face with index theIndex <br>
-  Standard_EXPORT     void InitFaceInfo(const Standard_Integer theIndex) ;
+
+  //! Initializes the state of face with index theIndex
+  Standard_EXPORT   void InitFaceInfo (const Standard_Integer theIndex) ;
   
-  Standard_EXPORT     void InitShape(const Standard_Integer theIndex,const TopoDS_Shape& theS,BOPCol_BaseAllocator& theAllocator,BOPCol_DataMapOfShapeInteger& theMSI) ;
+  Standard_EXPORT   void InitShape (const Standard_Integer theIndex, const TopoDS_Shape& theS, BOPCol_BaseAllocator& theAllocator, BOPCol_DataMapOfShapeInteger& theMSI) ;
   
-  Standard_EXPORT     Standard_Boolean CheckCoincidence(const Handle(BOPDS_PaveBlock)& thePB1,const Handle(BOPDS_PaveBlock)& thePB2) ;
+  Standard_EXPORT   Standard_Boolean CheckCoincidence (const Handle(BOPDS_PaveBlock)& thePB1, const Handle(BOPDS_PaveBlock)& thePB2) ;
   
-//! Computes bouding box <theBox> for the solid with DS-index <theIndex> <br>
-//! <br>
-  Standard_EXPORT     void BuildBndBoxSolid(const Standard_Integer theIndex,Bnd_Box& theBox) ;
+
+  //! Computes bouding box <theBox> for the solid with DS-index <theIndex>
+  Standard_EXPORT   void BuildBndBoxSolid (const Standard_Integer theIndex, Bnd_Box& theBox) ;
 
 
-BOPCol_BaseAllocator myAllocator;
-BOPCol_ListOfShape myArguments;
-Standard_Integer myNbShapes;
-Standard_Integer myNbSourceShapes;
-BOPDS_VectorOfIndexRange myRanges;
-BOPDS_VectorOfShapeInfo myLines;
-BOPCol_DataMapOfShapeInteger myMapShapeIndex;
-BOPDS_VectorOfListOfPaveBlock myPaveBlocksPool;
-BOPDS_DataMapOfPaveBlockCommonBlock myMapPBCB;
-BOPDS_VectorOfFaceInfo myFaceInfoPool;
-BOPCol_DataMapOfIntegerInteger myShapesSD;
-BOPDS_MapOfPassKey myInterfTB;
-BOPDS_VectorOfInterfVV myInterfVV;
-BOPDS_VectorOfInterfVE myInterfVE;
-BOPDS_VectorOfInterfVF myInterfVF;
-BOPDS_VectorOfInterfEE myInterfEE;
-BOPDS_VectorOfInterfEF myInterfEF;
-BOPDS_VectorOfInterfFF myInterfFF;
-BOPDS_VectorOfInterfVZ myInterfVZ;
-BOPDS_VectorOfInterfEZ myInterfEZ;
-BOPDS_VectorOfInterfFZ myInterfFZ;
-BOPDS_VectorOfInterfZZ myInterfZZ;
+  BOPCol_BaseAllocator myAllocator;
+  BOPCol_ListOfShape myArguments;
+  Standard_Integer myNbShapes;
+  Standard_Integer myNbSourceShapes;
+  BOPDS_VectorOfIndexRange myRanges;
+  BOPDS_VectorOfShapeInfo myLines;
+  BOPCol_DataMapOfShapeInteger myMapShapeIndex;
+  BOPDS_VectorOfListOfPaveBlock myPaveBlocksPool;
+  BOPDS_DataMapOfPaveBlockCommonBlock myMapPBCB;
+  BOPDS_VectorOfFaceInfo myFaceInfoPool;
+  BOPCol_DataMapOfIntegerInteger myShapesSD;
+  BOPDS_MapOfPassKey myInterfTB;
+  BOPDS_VectorOfInterfVV myInterfVV;
+  BOPDS_VectorOfInterfVE myInterfVE;
+  BOPDS_VectorOfInterfVF myInterfVF;
+  BOPDS_VectorOfInterfEE myInterfEE;
+  BOPDS_VectorOfInterfEF myInterfEF;
+  BOPDS_VectorOfInterfFF myInterfFF;
+  BOPDS_VectorOfInterfVZ myInterfVZ;
+  BOPDS_VectorOfInterfEZ myInterfEZ;
+  BOPDS_VectorOfInterfFZ myInterfFZ;
+  BOPDS_VectorOfInterfZZ myInterfZZ;
 
 
 private:
@@ -499,7 +492,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BOPDS_DS_HeaderFile

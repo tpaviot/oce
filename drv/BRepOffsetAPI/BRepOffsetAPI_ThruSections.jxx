@@ -1,21 +1,7 @@
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _TopoDS_Wire_HeaderFile
 #include <TopoDS_Wire.hxx>
-#endif
-#ifndef _TopoDS_Vertex_HeaderFile
 #include <TopoDS_Vertex.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _Geom_BSplineSurface_HeaderFile
 #include <Geom_BSplineSurface.hxx>
-#endif
-#ifndef _TopTools_Array1OfShape_HeaderFile
 #include <TopTools_Array1OfShape.hxx>
-#endif
-#ifndef _BRepOffsetAPI_ThruSections_HeaderFile
 #include <BRepOffsetAPI_ThruSections.hxx>
-#endif

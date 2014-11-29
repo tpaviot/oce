@@ -5,18 +5,10 @@
 
 #include <AdvApp2Var_SequenceOfNode.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _AdvApp2Var_Node_HeaderFile
 #include <AdvApp2Var_Node.hxx>
-#endif
-#ifndef _AdvApp2Var_SequenceNodeOfSequenceOfNode_HeaderFile
 #include <AdvApp2Var_SequenceNodeOfSequenceOfNode.hxx>
-#endif
  
 
 #define SeqItem AdvApp2Var_Node

@@ -6,58 +6,55 @@
 #ifndef _StepElement_AnalysisItemWithinRepresentation_HeaderFile
 #define _StepElement_AnalysisItemWithinRepresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepElement_AnalysisItemWithinRepresentation_HeaderFile
 #include <Handle_StepElement_AnalysisItemWithinRepresentation.hxx>
-#endif
 
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Handle_StepRepr_RepresentationItem_HeaderFile
 #include <Handle_StepRepr_RepresentationItem.hxx>
-#endif
-#ifndef _Handle_StepRepr_Representation_HeaderFile
 #include <Handle_StepRepr_Representation.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class TCollection_HAsciiString;
 class StepRepr_RepresentationItem;
 class StepRepr_Representation;
 
 
-//! Representation of STEP entity AnalysisItemWithinRepresentation <br>
-class StepElement_AnalysisItemWithinRepresentation : public MMgt_TShared {
+//! Representation of STEP entity AnalysisItemWithinRepresentation
+class StepElement_AnalysisItemWithinRepresentation : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepElement_AnalysisItemWithinRepresentation();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aName,const Handle(TCollection_HAsciiString)& aDescription,const Handle(StepRepr_RepresentationItem)& aItem,const Handle(StepRepr_Representation)& aRep) ;
-  //! Returns field Name <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Name() const;
-  //! Set field Name <br>
-  Standard_EXPORT     void SetName(const Handle(TCollection_HAsciiString)& Name) ;
-  //! Returns field Description <br>
-  Standard_EXPORT     Handle_TCollection_HAsciiString Description() const;
-  //! Set field Description <br>
-  Standard_EXPORT     void SetDescription(const Handle(TCollection_HAsciiString)& Description) ;
-  //! Returns field Item <br>
-  Standard_EXPORT     Handle_StepRepr_RepresentationItem Item() const;
-  //! Set field Item <br>
-  Standard_EXPORT     void SetItem(const Handle(StepRepr_RepresentationItem)& Item) ;
-  //! Returns field Rep <br>
-  Standard_EXPORT     Handle_StepRepr_Representation Rep() const;
-  //! Set field Rep <br>
-  Standard_EXPORT     void SetRep(const Handle(StepRepr_Representation)& Rep) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepElement_AnalysisItemWithinRepresentation();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aName, const Handle(TCollection_HAsciiString)& aDescription, const Handle(StepRepr_RepresentationItem)& aItem, const Handle(StepRepr_Representation)& aRep) ;
+  
+  //! Returns field Name
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Name()  const;
+  
+  //! Set field Name
+  Standard_EXPORT   void SetName (const Handle(TCollection_HAsciiString)& Name) ;
+  
+  //! Returns field Description
+  Standard_EXPORT   Handle(TCollection_HAsciiString) Description()  const;
+  
+  //! Set field Description
+  Standard_EXPORT   void SetDescription (const Handle(TCollection_HAsciiString)& Description) ;
+  
+  //! Returns field Item
+  Standard_EXPORT   Handle(StepRepr_RepresentationItem) Item()  const;
+  
+  //! Set field Item
+  Standard_EXPORT   void SetItem (const Handle(StepRepr_RepresentationItem)& Item) ;
+  
+  //! Returns field Rep
+  Standard_EXPORT   Handle(StepRepr_Representation) Rep()  const;
+  
+  //! Set field Rep
+  Standard_EXPORT   void SetRep (const Handle(StepRepr_Representation)& Rep) ;
 
 
 
@@ -72,10 +69,10 @@ protected:
 private: 
 
 
-Handle_TCollection_HAsciiString theName;
-Handle_TCollection_HAsciiString theDescription;
-Handle_StepRepr_RepresentationItem theItem;
-Handle_StepRepr_Representation theRep;
+  Handle(TCollection_HAsciiString) theName;
+  Handle(TCollection_HAsciiString) theDescription;
+  Handle(StepRepr_RepresentationItem) theItem;
+  Handle(StepRepr_Representation) theRep;
 
 
 };
@@ -84,7 +81,6 @@ Handle_StepRepr_Representation theRep;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepElement_AnalysisItemWithinRepresentation_HeaderFile

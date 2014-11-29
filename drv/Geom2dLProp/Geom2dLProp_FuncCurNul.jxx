@@ -1,0 +1,2 @@
+#include <Geom2d_Curve.hxx>
+#include <Geom2dLProp_FuncCurNul.hxx>

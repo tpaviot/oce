@@ -6,13 +6,11 @@
 #ifndef _Quantity_Weight_HeaderFile
 #define _Quantity_Weight_HeaderFile
 
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
 
 typedef Standard_Real Quantity_Weight;
 
 
 #define Quantity_Weight_Type_() Standard_Real_Type_()
 
-#endif
+#endif // _Quantity_Weight_HeaderFile

@@ -5,18 +5,10 @@
 
 #include <TopOpeBRepBuild_ListOfListOfLoop.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_ListIteratorOfListOfListOfLoop_HeaderFile
 #include <TopOpeBRepBuild_ListIteratorOfListOfListOfLoop.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_ListOfLoop_HeaderFile
 #include <TopOpeBRepBuild_ListOfLoop.hxx>
-#endif
-#ifndef _TopOpeBRepBuild_ListNodeOfListOfListOfLoop_HeaderFile
 #include <TopOpeBRepBuild_ListNodeOfListOfListOfLoop.hxx>
-#endif
  
 
 #define Item TopOpeBRepBuild_ListOfLoop

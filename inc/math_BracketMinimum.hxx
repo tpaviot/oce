@@ -6,84 +6,80 @@
 #ifndef _math_BracketMinimum_HeaderFile
 #define _math_BracketMinimum_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
 class StdFail_NotDone;
 class math_Function;
 
 
-//!Given two distinct initial points, BracketMinimum <br>
-//! implements the computation of three points (a, b, c) which <br>
-//! bracket the minimum of the function and verify A less than <br>
-//! B, B less than C and F(A) less than F(B), F(B) less than (C). <br>
-class math_BracketMinimum  {
+//! Given two distinct initial points, BracketMinimum
+//! implements the computation of three points (a, b, c) which
+//! bracket the minimum of the function and verify A less than
+//! B, B less than C and F(A) less than F(B), F(B) less than (C).
+class math_BracketMinimum 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//! Given two initial values this class computes a <br>
-//! bracketing triplet of abscissae Ax, Bx, Cx <br>
-//! (such that Bx is between Ax and Cx, F(Bx) is <br>
-//! less than both F(Bx) and F(Cx)) the Brent minimization is done <br>
-//! on the function F. <br>
-  Standard_EXPORT   math_BracketMinimum(math_Function& F,const Standard_Real A,const Standard_Real B);
-  
-//! Given two initial values this class computes a <br>
-//! bracketing triplet of abscissae Ax, Bx, Cx <br>
-//! (such that Bx is between Ax and Cx, F(Bx) is <br>
-//! less than both F(Bx) and F(Cx)) the Brent minimization is done <br>
-//! on the function F. <br>
-//! This constructor has to be used if F(A) is known. <br>
-  Standard_EXPORT   math_BracketMinimum(math_Function& F,const Standard_Real A,const Standard_Real B,const Standard_Real FA);
-  
-//! Given two initial values this class computes a <br>
-//! bracketing triplet of abscissae Ax, Bx, Cx <br>
-//! (such that Bx is between Ax and Cx, F(Bx) is <br>
-//! less than both F(Bx) and F(Cx)) the Brent minimization is done <br>
-//! on the function F. <br>
-//! This constructor has to be used if F(A) and F(B) are known. <br>
-  Standard_EXPORT   math_BracketMinimum(math_Function& F,const Standard_Real A,const Standard_Real B,const Standard_Real FA,const Standard_Real FB);
-  //! Returns true if the computations are successful, otherwise returns false. <br>
-        Standard_Boolean IsDone() const;
-  //! Returns the bracketed triplet of abscissae. <br>
-//! Exceptions <br>
-//! StdFail_NotDone if the algorithm fails (and IsDone returns false). <br>
-  Standard_EXPORT     void Values(Standard_Real& A,Standard_Real& B,Standard_Real& C) const;
-  //! returns the bracketed triplet function values. <br>
-//! Exceptions <br>
-//! StdFail_NotDone if the algorithm fails (and IsDone returns false). <br>
-  Standard_EXPORT     void FunctionValues(Standard_Real& FA,Standard_Real& FB,Standard_Real& FC) const;
-  //! Prints on the stream o information on the current state <br>
-//!          of the object. <br>
-//!          Is used to redefine the operator <<. <br>
-  Standard_EXPORT     void Dump(Standard_OStream& o) const;
 
+  //! Given two initial values this class computes a
+  //! bracketing triplet of abscissae Ax, Bx, Cx
+  //! (such that Bx is between Ax and Cx, F(Bx) is
+  //! less than both F(Bx) and F(Cx)) the Brent minimization is done
+  //! on the function F.
+  Standard_EXPORT math_BracketMinimum(math_Function& F, const Standard_Real A, const Standard_Real B);
+  
+
+  //! Given two initial values this class computes a
+  //! bracketing triplet of abscissae Ax, Bx, Cx
+  //! (such that Bx is between Ax and Cx, F(Bx) is
+  //! less than both F(Bx) and F(Cx)) the Brent minimization is done
+  //! on the function F.
+  //! This constructor has to be used if F(A) is known.
+  Standard_EXPORT math_BracketMinimum(math_Function& F, const Standard_Real A, const Standard_Real B, const Standard_Real FA);
+  
+
+  //! Given two initial values this class computes a
+  //! bracketing triplet of abscissae Ax, Bx, Cx
+  //! (such that Bx is between Ax and Cx, F(Bx) is
+  //! less than both F(Bx) and F(Cx)) the Brent minimization is done
+  //! on the function F.
+  //! This constructor has to be used if F(A) and F(B) are known.
+  Standard_EXPORT math_BracketMinimum(math_Function& F, const Standard_Real A, const Standard_Real B, const Standard_Real FA, const Standard_Real FB);
+  
+  //! Returns true if the computations are successful, otherwise returns false.
+      Standard_Boolean IsDone()  const;
+  
+  //! Returns the bracketed triplet of abscissae.
+  //! Exceptions
+  //! StdFail_NotDone if the algorithm fails (and IsDone returns false).
+  Standard_EXPORT   void Values (Standard_Real& A, Standard_Real& B, Standard_Real& C)  const;
+  
+  //! returns the bracketed triplet function values.
+  //! Exceptions
+  //! StdFail_NotDone if the algorithm fails (and IsDone returns false).
+  Standard_EXPORT   void FunctionValues (Standard_Real& FA, Standard_Real& FB, Standard_Real& FC)  const;
+  
+  //! Prints on the stream o information on the current state
+  //! of the object.
+  //! Is used to redefine the operator <<.
+  Standard_EXPORT   void Dump (Standard_OStream& o)  const;
 
 
 
 
 protected:
 
-  //! Is used internally by the constructors. <br>
-  Standard_EXPORT     void Perform(math_Function& F,const Standard_Real A,const Standard_Real B) ;
+  
+  //! Is used internally by the constructors.
+  Standard_EXPORT   void Perform (math_Function& F, const Standard_Real A, const Standard_Real B) ;
 
 
 
@@ -92,15 +88,15 @@ private:
 
 
 
-Standard_Boolean Done;
-Standard_Real Ax;
-Standard_Real Bx;
-Standard_Real Cx;
-Standard_Real FAx;
-Standard_Real FBx;
-Standard_Real FCx;
-Standard_Boolean myFA;
-Standard_Boolean myFB;
+  Standard_Boolean Done;
+  Standard_Real Ax;
+  Standard_Real Bx;
+  Standard_Real Cx;
+  Standard_Real FAx;
+  Standard_Real FBx;
+  Standard_Real FCx;
+  Standard_Boolean myFA;
+  Standard_Boolean myFB;
 
 
 };
@@ -110,7 +106,6 @@ Standard_Boolean myFB;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _math_BracketMinimum_HeaderFile

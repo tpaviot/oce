@@ -5,21 +5,10 @@
 
 #include <TopTools_MapOfShape.hxx>
 
-#ifndef _Standard_DomainError_HeaderFile
-#include <Standard_DomainError.hxx>
-#endif
-#ifndef _TopoDS_Shape_HeaderFile
 #include <TopoDS_Shape.hxx>
-#endif
-#ifndef _TopTools_ShapeMapHasher_HeaderFile
 #include <TopTools_ShapeMapHasher.hxx>
-#endif
-#ifndef _TopTools_StdMapNodeOfMapOfShape_HeaderFile
 #include <TopTools_StdMapNodeOfMapOfShape.hxx>
-#endif
-#ifndef _TopTools_MapIteratorOfMapOfShape_HeaderFile
 #include <TopTools_MapIteratorOfMapOfShape.hxx>
-#endif
  
 
 #define TheKey TopoDS_Shape

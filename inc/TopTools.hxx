@@ -6,22 +6,12 @@
 #ifndef _TopTools_HeaderFile
 #define _TopTools_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class TopoDS_Shape;
 class TopTools_ShapeMapHasher;
 class TopTools_OrientedShapeMapHasher;
@@ -87,61 +77,63 @@ class TopTools_DataMapNodeOfDataMapOfOrientedShapeShape;
 class TopTools_DataMapIteratorOfDataMapOfOrientedShapeShape;
 
 
-//! The  TopTools package provides   utilities for the <br>
-//!          topological data structure. <br>
-//! <br>
-//!          * ShapeMapHasher. Hash a  Shape base on the TShape <br>
-//!          and the Location. The Orientation is not used. <br>
-//! <br>
-//!          * OrientedShapeMapHasher. Hash a Shape base on the <br>
-//!          TShape ,the Location and the Orientation. <br>
-//! <br>
-//!          * Instantiations of TCollection for Shapes : <br>
-//!             MapOfShape <br>
-//!             IndexedMapOfShape <br>
-//!             DataMapOfIntegerShape <br>
-//!             DataMapOfShapeInteger <br>
-//!             DataMapOfShapeReal <br>
-//!             Array1OfShape <br>
-//!             HArray1OfShape <br>
-//!             SequenceOfShape <br>
-//!             HSequenceOfShape <br>
-//!             ListOfShape <br>
-//!             Array1OfListShape <br>
-//!             HArray1OfListShape <br>
-//!             DataMapOfIntegerListOfShape <br>
-//!             DataMapOfShapeListOfShape <br>
-//!             DataMapOfShapeListOfInteger <br>
-//!             IndexedDataMapOfShapeShape <br>
-//!             IndexedDataMapOfShapeListOfShape <br>
-//!             DataMapOfShapeShape <br>
-//!             IndexedMapOfOrientedShape <br>
-//!             DataMapOfShapeSequenceOfShape <br>
-//!             IndexedDataMapOfShapeAddress <br>
-//!             DataMapOfOrientedShapeShape <br>
-//! <br>
-//!          * LocationSet : to write sets of locations. <br>
-//! <br>
-//!          * ShapeSet : to writes sets of TShapes. <br>
-//! <br>
-//!          Package Methods : <br>
-//! <br>
-//!            Dump : To dump the topology of a Shape. <br>
-//! <br>
-class TopTools  {
+//! The  TopTools package provides   utilities for the
+//! topological data structure.
+//!
+//! * ShapeMapHasher. Hash a  Shape base on the TShape
+//! and the Location. The Orientation is not used.
+//!
+//! * OrientedShapeMapHasher. Hash a Shape base on the
+//! TShape ,the Location and the Orientation.
+//!
+//! * Instantiations of TCollection for Shapes :
+//! MapOfShape
+//! IndexedMapOfShape
+//! DataMapOfIntegerShape
+//! DataMapOfShapeInteger
+//! DataMapOfShapeReal
+//! Array1OfShape
+//! HArray1OfShape
+//! SequenceOfShape
+//! HSequenceOfShape
+//! ListOfShape
+//! Array1OfListShape
+//! HArray1OfListShape
+//! DataMapOfIntegerListOfShape
+//! DataMapOfShapeListOfShape
+//! DataMapOfShapeListOfInteger
+//! IndexedDataMapOfShapeShape
+//! IndexedDataMapOfShapeListOfShape
+//! DataMapOfShapeShape
+//! IndexedMapOfOrientedShape
+//! DataMapOfShapeSequenceOfShape
+//! IndexedDataMapOfShapeAddress
+//! DataMapOfOrientedShapeShape
+//!
+//! * LocationSet : to write sets of locations.
+//!
+//! * ShapeSet : to writes sets of TShapes.
+//!
+//! Package Methods :
+//!
+//! Dump : To dump the topology of a Shape.
+class TopTools 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! A set of Shapes. Can be dump, wrote or read. <br>//! Dumps the topological structure  of <Sh>  on the <br>
-//!          stream <S>. <br>
-  Standard_EXPORT   static  void Dump(const TopoDS_Shape& Sh,Standard_OStream& S) ;
-  //! This is to bypass an extraction bug. It will force <br>
-//!          the  inclusion    of  Standard_Integer.hxx  itself <br>
-//!          including Standard_OStream.hxx  at   the   correct <br>
-//!          position. <br>
-  Standard_EXPORT   static  void Dummy(const Standard_Integer I) ;
-
+  
+  //! A set of Shapes. Can be dump, wrote or read.
+  //! Dumps the topological structure  of <Sh>  on the
+  //! stream <S>.
+  Standard_EXPORT static   void Dump (const TopoDS_Shape& Sh, Standard_OStream& S) ;
+  
+  //! This is to bypass an extraction bug. It will force
+  //! the  inclusion    of  Standard_Integer.hxx  itself
+  //! including Standard_OStream.hxx  at   the   correct
+  //! position.
+  Standard_EXPORT static   void Dummy (const Standard_Integer I) ;
 
 
 
@@ -226,7 +218,6 @@ friend class TopTools_DataMapIteratorOfDataMapOfOrientedShapeShape;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopTools_HeaderFile

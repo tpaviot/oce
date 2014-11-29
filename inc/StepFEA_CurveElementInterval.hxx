@@ -6,46 +6,41 @@
 #ifndef _StepFEA_CurveElementInterval_HeaderFile
 #define _StepFEA_CurveElementInterval_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepFEA_CurveElementInterval_HeaderFile
 #include <Handle_StepFEA_CurveElementInterval.hxx>
-#endif
 
-#ifndef _Handle_StepFEA_CurveElementLocation_HeaderFile
 #include <Handle_StepFEA_CurveElementLocation.hxx>
-#endif
-#ifndef _Handle_StepBasic_EulerAngles_HeaderFile
 #include <Handle_StepBasic_EulerAngles.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepFEA_CurveElementLocation;
 class StepBasic_EulerAngles;
 
 
-//! Representation of STEP entity CurveElementInterval <br>
-class StepFEA_CurveElementInterval : public MMgt_TShared {
+//! Representation of STEP entity CurveElementInterval
+class StepFEA_CurveElementInterval : public MMgt_TShared
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepFEA_CurveElementInterval();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(StepFEA_CurveElementLocation)& aFinishPosition,const Handle(StepBasic_EulerAngles)& aEuAngles) ;
-  //! Returns field FinishPosition <br>
-  Standard_EXPORT     Handle_StepFEA_CurveElementLocation FinishPosition() const;
-  //! Set field FinishPosition <br>
-  Standard_EXPORT     void SetFinishPosition(const Handle(StepFEA_CurveElementLocation)& FinishPosition) ;
-  //! Returns field EuAngles <br>
-  Standard_EXPORT     Handle_StepBasic_EulerAngles EuAngles() const;
-  //! Set field EuAngles <br>
-  Standard_EXPORT     void SetEuAngles(const Handle(StepBasic_EulerAngles)& EuAngles) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepFEA_CurveElementInterval();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(StepFEA_CurveElementLocation)& aFinishPosition, const Handle(StepBasic_EulerAngles)& aEuAngles) ;
+  
+  //! Returns field FinishPosition
+  Standard_EXPORT   Handle(StepFEA_CurveElementLocation) FinishPosition()  const;
+  
+  //! Set field FinishPosition
+  Standard_EXPORT   void SetFinishPosition (const Handle(StepFEA_CurveElementLocation)& FinishPosition) ;
+  
+  //! Returns field EuAngles
+  Standard_EXPORT   Handle(StepBasic_EulerAngles) EuAngles()  const;
+  
+  //! Set field EuAngles
+  Standard_EXPORT   void SetEuAngles (const Handle(StepBasic_EulerAngles)& EuAngles) ;
 
 
 
@@ -60,8 +55,8 @@ protected:
 private: 
 
 
-Handle_StepFEA_CurveElementLocation theFinishPosition;
-Handle_StepBasic_EulerAngles theEuAngles;
+  Handle(StepFEA_CurveElementLocation) theFinishPosition;
+  Handle(StepBasic_EulerAngles) theEuAngles;
 
 
 };
@@ -70,7 +65,6 @@ Handle_StepBasic_EulerAngles theEuAngles;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepFEA_CurveElementInterval_HeaderFile

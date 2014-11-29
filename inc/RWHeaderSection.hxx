@@ -6,15 +6,9 @@
 #ifndef _RWHeaderSection_HeaderFile
 #define _RWHeaderSection_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
 class RWHeaderSection_ReadWriteModule;
 class RWHeaderSection_GeneralModule;
@@ -24,14 +18,15 @@ class RWHeaderSection_RWFileSchema;
 
 
 
-class RWHeaderSection  {
+class RWHeaderSection 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! enforced the initialisation of the  libraries <br>
-  Standard_EXPORT   static  void Init() ;
-
+  
+  //! enforced the initialisation of the  libraries
+  Standard_EXPORT static   void Init() ;
 
 
 
@@ -59,7 +54,6 @@ friend class RWHeaderSection_RWFileSchema;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _RWHeaderSection_HeaderFile

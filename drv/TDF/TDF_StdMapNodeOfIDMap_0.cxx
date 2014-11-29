@@ -5,19 +5,11 @@
 
 #include <TDF_StdMapNodeOfIDMap.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_GUID_HeaderFile
 #include <Standard_GUID.hxx>
-#endif
-#ifndef _TDF_IDMap_HeaderFile
 #include <TDF_IDMap.hxx>
-#endif
-#ifndef _TDF_MapIteratorOfIDMap_HeaderFile
 #include <TDF_MapIteratorOfIDMap.hxx>
-#endif
 
  
 

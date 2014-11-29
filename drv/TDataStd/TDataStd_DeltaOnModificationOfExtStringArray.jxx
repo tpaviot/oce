@@ -1,12 +1,4 @@
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _TColStd_HArray1OfExtendedString_HeaderFile
 #include <TColStd_HArray1OfExtendedString.hxx>
-#endif
-#ifndef _TDataStd_ExtStringArray_HeaderFile
 #include <TDataStd_ExtStringArray.hxx>
-#endif
-#ifndef _TDataStd_DeltaOnModificationOfExtStringArray_HeaderFile
 #include <TDataStd_DeltaOnModificationOfExtStringArray.hxx>
-#endif

@@ -5,25 +5,13 @@
 
 #include <GeomAdaptor_GHSurface.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_DomainError_HeaderFile
 #include <Standard_DomainError.hxx>
-#endif
-#ifndef _GeomAdaptor_Surface_HeaderFile
 #include <GeomAdaptor_Surface.hxx>
-#endif
-#ifndef _Adaptor3d_Surface_HeaderFile
 #include <Adaptor3d_Surface.hxx>
-#endif
 
  
 

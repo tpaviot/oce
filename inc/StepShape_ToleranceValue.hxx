@@ -6,42 +6,33 @@
 #ifndef _StepShape_ToleranceValue_HeaderFile
 #define _StepShape_ToleranceValue_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepShape_ToleranceValue_HeaderFile
 #include <Handle_StepShape_ToleranceValue.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_MeasureWithUnit_HeaderFile
 #include <Handle_StepBasic_MeasureWithUnit.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class StepBasic_MeasureWithUnit;
 
 
-//! Added for Dimensional Tolerances <br>
-class StepShape_ToleranceValue : public MMgt_TShared {
+//! Added for Dimensional Tolerances
+class StepShape_ToleranceValue : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   StepShape_ToleranceValue();
+  Standard_EXPORT StepShape_ToleranceValue();
   
-  Standard_EXPORT     void Init(const Handle(StepBasic_MeasureWithUnit)& lower_bound,const Handle(StepBasic_MeasureWithUnit)& upper_bound) ;
+  Standard_EXPORT   void Init (const Handle(StepBasic_MeasureWithUnit)& lower_bound, const Handle(StepBasic_MeasureWithUnit)& upper_bound) ;
   
-  Standard_EXPORT     Handle_StepBasic_MeasureWithUnit LowerBound() const;
+  Standard_EXPORT   Handle(StepBasic_MeasureWithUnit) LowerBound()  const;
   
-  Standard_EXPORT     void SetLowerBound(const Handle(StepBasic_MeasureWithUnit)& lower_bound) ;
+  Standard_EXPORT   void SetLowerBound (const Handle(StepBasic_MeasureWithUnit)& lower_bound) ;
   
-  Standard_EXPORT     Handle_StepBasic_MeasureWithUnit UpperBound() const;
+  Standard_EXPORT   Handle(StepBasic_MeasureWithUnit) UpperBound()  const;
   
-  Standard_EXPORT     void SetUpperBound(const Handle(StepBasic_MeasureWithUnit)& upper_bound) ;
+  Standard_EXPORT   void SetUpperBound (const Handle(StepBasic_MeasureWithUnit)& upper_bound) ;
 
 
 
@@ -56,8 +47,8 @@ protected:
 private: 
 
 
-Handle_StepBasic_MeasureWithUnit theLowerBound;
-Handle_StepBasic_MeasureWithUnit theUpperBound;
+  Handle(StepBasic_MeasureWithUnit) theLowerBound;
+  Handle(StepBasic_MeasureWithUnit) theUpperBound;
 
 
 };
@@ -66,7 +57,6 @@ Handle_StepBasic_MeasureWithUnit theUpperBound;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepShape_ToleranceValue_HeaderFile

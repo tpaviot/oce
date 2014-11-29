@@ -6,41 +6,33 @@
 #ifndef _IGESData_LevelListEntity_HeaderFile
 #define _IGESData_LevelListEntity_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_IGESData_LevelListEntity_HeaderFile
 #include <Handle_IGESData_LevelListEntity.hxx>
-#endif
 
-#ifndef _IGESData_IGESEntity_HeaderFile
 #include <IGESData_IGESEntity.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_OutOfRange;
 
 
-//! defines required type for LevelList in directory part <br>
-//!           an effective LevelList entity must inherits it <br>
-class IGESData_LevelListEntity : public IGESData_IGESEntity {
+//! defines required type for LevelList in directory part
+//! an effective LevelList entity must inherits it
+class IGESData_LevelListEntity : public IGESData_IGESEntity
+{
 
 public:
 
-  //! Must return the count of levels <br>
-  Standard_EXPORT   virtual  Standard_Integer NbLevelNumbers() const = 0;
-  //! returns the Level Number of <me>, indicated by <num> <br>
-//! raises an exception if num is out of range <br>
-  Standard_EXPORT   virtual  Standard_Integer LevelNumber(const Standard_Integer num) const = 0;
-  //! returns True if <level> is in the list <br>
-  Standard_EXPORT     Standard_Boolean HasLevelNumber(const Standard_Integer level) const;
+  
+  //! Must return the count of levels
+  Standard_EXPORT virtual   Standard_Integer NbLevelNumbers()  const = 0;
+  
+  //! returns the Level Number of <me>, indicated by <num>
+  //! raises an exception if num is out of range
+  Standard_EXPORT virtual   Standard_Integer LevelNumber (const Standard_Integer num)  const = 0;
+  
+  //! returns True if <level> is in the list
+  Standard_EXPORT   Standard_Boolean HasLevelNumber (const Standard_Integer level)  const;
 
 
 
@@ -63,7 +55,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESData_LevelListEntity_HeaderFile

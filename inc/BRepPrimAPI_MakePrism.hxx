@@ -6,25 +6,13 @@
 #ifndef _BRepPrimAPI_MakePrism_HeaderFile
 #define _BRepPrimAPI_MakePrism_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _BRepSweep_Prism_HeaderFile
 #include <BRepSweep_Prism.hxx>
-#endif
-#ifndef _BRepPrimAPI_MakeSweep_HeaderFile
 #include <BRepPrimAPI_MakeSweep.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class TopoDS_Shape;
 class gp_Vec;
 class gp_Dir;
@@ -32,62 +20,70 @@ class BRepSweep_Prism;
 class TopTools_ListOfShape;
 
 
-//! Describes functions to build linear swept topologies, called prisms. <br>
-//! A prism is defined by: <br>
-//! -   a basis shape, which is swept, and <br>
-//! -   a sweeping direction, which is: <br>
-//!   -   a vector for finite prisms, or <br>
-//!   -   a direction for infinite or semi-infinite prisms. <br>
-//! The basis shape must not contain any solids. <br>
-//! The profile generates objects according to the following rules: <br>
-//! -   Vertices generate Edges <br>
-//! -   Edges generate Faces. <br>
-//! -   Wires generate Shells. <br>
-//! -   Faces generate Solids. <br>
-//! -   Shells generate Composite Solids <br>
-//! A MakePrism object provides a framework for: <br>
-//! -   defining the construction of a prism, <br>
-//! -   implementing the construction algorithm, and <br>
-//! -   consulting the result. <br>
-class BRepPrimAPI_MakePrism  : public BRepPrimAPI_MakeSweep {
+//! Describes functions to build linear swept topologies, called prisms.
+//! A prism is defined by:
+//! -   a basis shape, which is swept, and
+//! -   a sweeping direction, which is:
+//! -   a vector for finite prisms, or
+//! -   a direction for infinite or semi-infinite prisms.
+//! The basis shape must not contain any solids.
+//! The profile generates objects according to the following rules:
+//! -   Vertices generate Edges
+//! -   Edges generate Faces.
+//! -   Wires generate Shells.
+//! -   Faces generate Solids.
+//! -   Shells generate Composite Solids
+//! A MakePrism object provides a framework for:
+//! -   defining the construction of a prism,
+//! -   implementing the construction algorithm, and
+//! -   consulting the result.
+class BRepPrimAPI_MakePrism  : public BRepPrimAPI_MakeSweep
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Builds the prism of base S and vector V. If C is true, <br>
-//!          S is copied. If Canonize is true then generated surfaces <br>
-//!          are attempted to be canonized in simple types <br>
-  Standard_EXPORT   BRepPrimAPI_MakePrism(const TopoDS_Shape& S,const gp_Vec& V,const Standard_Boolean Copy = Standard_False,const Standard_Boolean Canonize = Standard_True);
-  //! Builds a semi-infinite or an infinite prism of base S. <br>
-//!          If Inf is true the prism  is infinite, if Inf is false <br>
-//!          the prism is semi-infinite (in the direction D).  If C <br>
-//!          is true S is copied (for semi-infinite prisms). <br>
-//!          If Canonize is true then generated surfaces <br>
-//!          are attempted to be canonized in simple types <br>
-  Standard_EXPORT   BRepPrimAPI_MakePrism(const TopoDS_Shape& S,const gp_Dir& D,const Standard_Boolean Inf = Standard_True,const Standard_Boolean Copy = Standard_False,const Standard_Boolean Canonize = Standard_True);
-  //! Returns the internal sweeping algorithm. <br>
-//! <br>
-  Standard_EXPORT    const BRepSweep_Prism& Prism() const;
-  //! Builds the resulting shape (redefined from MakeShape). <br>
-  Standard_EXPORT   virtual  void Build() ;
-  //! Returns the  TopoDS  Shape of the bottom of the prism. <br>
-  Standard_EXPORT     TopoDS_Shape FirstShape() ;
-  //! Returns the TopoDS Shape of the top of the prism. <br>
-//! In the case of a finite prism, FirstShape returns the <br>
-//! basis of the prism, in other words, S if Copy is false; <br>
-//! otherwise, the copy of S belonging to the prism. <br>
-//! LastShape returns the copy of S translated by V at the <br>
-//! time of construction. <br>
-  Standard_EXPORT     TopoDS_Shape LastShape() ;
-  //! Returns ListOfShape from TopTools. <br>
-  Standard_EXPORT   virtual const TopTools_ListOfShape& Generated(const TopoDS_Shape& S) ;
-  //! Returns the TopoDS Shape of the bottom  of the  prism. <br>
-//!          generated  with  theShape (subShape of the  generating shape). <br>
-  Standard_EXPORT     TopoDS_Shape FirstShape(const TopoDS_Shape& theShape) ;
-  //! Returns the  TopoDS  Shape of the top  of  the  prism. <br>
-//!          generated  with  theShape (subShape of the  generating shape). <br>
-  Standard_EXPORT     TopoDS_Shape LastShape(const TopoDS_Shape& theShape) ;
-
+  
+  //! Builds the prism of base S and vector V. If C is true,
+  //! S is copied. If Canonize is true then generated surfaces
+  //! are attempted to be canonized in simple types
+  Standard_EXPORT BRepPrimAPI_MakePrism(const TopoDS_Shape& S, const gp_Vec& V, const Standard_Boolean Copy = Standard_False, const Standard_Boolean Canonize = Standard_True);
+  
+  //! Builds a semi-infinite or an infinite prism of base S.
+  //! If Inf is true the prism  is infinite, if Inf is false
+  //! the prism is semi-infinite (in the direction D).  If C
+  //! is true S is copied (for semi-infinite prisms).
+  //! If Canonize is true then generated surfaces
+  //! are attempted to be canonized in simple types
+  Standard_EXPORT BRepPrimAPI_MakePrism(const TopoDS_Shape& S, const gp_Dir& D, const Standard_Boolean Inf = Standard_True, const Standard_Boolean Copy = Standard_False, const Standard_Boolean Canonize = Standard_True);
+  
+  //! Returns the internal sweeping algorithm.
+  Standard_EXPORT  const  BRepSweep_Prism& Prism()  const;
+  
+  //! Builds the resulting shape (redefined from MakeShape).
+  Standard_EXPORT virtual   void Build() ;
+  
+  //! Returns the  TopoDS  Shape of the bottom of the prism.
+  Standard_EXPORT   TopoDS_Shape FirstShape() ;
+  
+  //! Returns the TopoDS Shape of the top of the prism.
+  //! In the case of a finite prism, FirstShape returns the
+  //! basis of the prism, in other words, S if Copy is false;
+  //! otherwise, the copy of S belonging to the prism.
+  //! LastShape returns the copy of S translated by V at the
+  //! time of construction.
+  Standard_EXPORT   TopoDS_Shape LastShape() ;
+  
+  //! Returns ListOfShape from TopTools.
+  Standard_EXPORT virtual  const  TopTools_ListOfShape& Generated (const TopoDS_Shape& S) ;
+  
+  //! Returns the TopoDS Shape of the bottom  of the  prism.
+  //! generated  with  theShape (subShape of the  generating shape).
+  Standard_EXPORT   TopoDS_Shape FirstShape (const TopoDS_Shape& theShape) ;
+  
+  //! Returns the  TopoDS  Shape of the top  of  the  prism.
+  //! generated  with  theShape (subShape of the  generating shape).
+  Standard_EXPORT   TopoDS_Shape LastShape (const TopoDS_Shape& theShape) ;
 
 
 
@@ -102,7 +98,7 @@ private:
 
 
 
-BRepSweep_Prism myPrism;
+  BRepSweep_Prism myPrism;
 
 
 };
@@ -111,7 +107,6 @@ BRepSweep_Prism myPrism;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepPrimAPI_MakePrism_HeaderFile

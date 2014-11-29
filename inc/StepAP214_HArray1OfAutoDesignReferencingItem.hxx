@@ -6,25 +6,13 @@
 #ifndef _StepAP214_HArray1OfAutoDesignReferencingItem_HeaderFile
 #define _StepAP214_HArray1OfAutoDesignReferencingItem_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepAP214_HArray1OfAutoDesignReferencingItem_HeaderFile
 #include <Handle_StepAP214_HArray1OfAutoDesignReferencingItem.hxx>
-#endif
 
-#ifndef _StepAP214_Array1OfAutoDesignReferencingItem_HeaderFile
 #include <StepAP214_Array1OfAutoDesignReferencingItem.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class StepAP214_Array1OfAutoDesignReferencingItem;
 
 
 
-class StepAP214_HArray1OfAutoDesignReferencingItem : public MMgt_TShared {
+class StepAP214_HArray1OfAutoDesignReferencingItem : public MMgt_TShared
+{
 
 public:
 
   
-      StepAP214_HArray1OfAutoDesignReferencingItem(const Standard_Integer Low,const Standard_Integer Up);
+    StepAP214_HArray1OfAutoDesignReferencingItem(const Standard_Integer Low, const Standard_Integer Up);
   
-      StepAP214_HArray1OfAutoDesignReferencingItem(const Standard_Integer Low,const Standard_Integer Up,const StepAP214_AutoDesignReferencingItem& V);
+    StepAP214_HArray1OfAutoDesignReferencingItem(const Standard_Integer Low, const Standard_Integer Up, const StepAP214_AutoDesignReferencingItem& V);
   
-        void Init(const StepAP214_AutoDesignReferencingItem& V) ;
+      void Init (const StepAP214_AutoDesignReferencingItem& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const StepAP214_AutoDesignReferencingItem& Value) ;
+      void SetValue (const Standard_Integer Index, const StepAP214_AutoDesignReferencingItem& Value) ;
   
-       const StepAP214_AutoDesignReferencingItem& Value(const Standard_Integer Index) const;
+     const  StepAP214_AutoDesignReferencingItem& Value (const Standard_Integer Index)  const;
   
-        StepAP214_AutoDesignReferencingItem& ChangeValue(const Standard_Integer Index) ;
+      StepAP214_AutoDesignReferencingItem& ChangeValue (const Standard_Integer Index) ;
   
-       const StepAP214_Array1OfAutoDesignReferencingItem& Array1() const;
+     const  StepAP214_Array1OfAutoDesignReferencingItem& Array1()  const;
   
-        StepAP214_Array1OfAutoDesignReferencingItem& ChangeArray1() ;
+      StepAP214_Array1OfAutoDesignReferencingItem& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-StepAP214_Array1OfAutoDesignReferencingItem myArray;
+  StepAP214_Array1OfAutoDesignReferencingItem myArray;
 
 
 };
@@ -100,7 +89,6 @@ StepAP214_Array1OfAutoDesignReferencingItem myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepAP214_HArray1OfAutoDesignReferencingItem_HeaderFile

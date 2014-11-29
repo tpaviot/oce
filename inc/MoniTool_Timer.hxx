@@ -6,96 +6,92 @@
 #ifndef _MoniTool_Timer_HeaderFile
 #define _MoniTool_Timer_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_MoniTool_Timer_HeaderFile
 #include <Handle_MoniTool_Timer.hxx>
-#endif
 
-#ifndef _OSD_Timer_HeaderFile
 #include <OSD_Timer.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Handle_MoniTool_Timer_HeaderFile
 #include <Handle_MoniTool_Timer.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_OStream_HeaderFile
 #include <Standard_OStream.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
 class OSD_Timer;
 class MoniTool_DataMapOfTimer;
 
 
-//! Provides convenient service on global timers <br>
-//!          accessed by string name, mostly aimed for debugging purposes <br>
-//! <br>
-//!          As an instance, envelopes the OSD_Timer to have it as Handle <br>
-//! <br>
-//!          As a tool, supports static dictionary of timers <br>
-//!          and provides static methods to easily access them <br>
-class MoniTool_Timer : public MMgt_TShared {
+//! Provides convenient service on global timers
+//! accessed by string name, mostly aimed for debugging purposes
+//!
+//! As an instance, envelopes the OSD_Timer to have it as Handle
+//!
+//! As a tool, supports static dictionary of timers
+//! and provides static methods to easily access them
+class MoniTool_Timer : public MMgt_TShared
+{
 
 public:
 
-  //! Create timer in empty state <br>
-      MoniTool_Timer();
   
-       const OSD_Timer& Timer() const;
-  //! Return reference to embedded OSD_Timer <br>
-        OSD_Timer& Timer() ;
+  //! Create timer in empty state
+    MoniTool_Timer();
   
-        void Start() ;
+     const  OSD_Timer& Timer()  const;
   
-        void Stop() ;
-  //! Start, Stop and reset the timer <br>
-//!          In addition to doing that to embedded OSD_Timer, <br>
-//!          manage also counter of hits <br>
-        void Reset() ;
-  //! Return value of hits counter (count of Start/Stop pairs) <br>
-        Standard_Integer Count() const;
-  //! Returns value of nesting counter <br>
-        Standard_Integer IsRunning() const;
-  //! Return value of CPU time minus accumulated amendment <br>
-        Standard_Real CPU() ;
-  //! Return value of accumulated amendment on CPU time <br>
-        Standard_Real Amend() const;
-  //! Dumps current state of a timer shortly (one-line output) <br>
-  Standard_EXPORT     void Dump(Standard_OStream& ostr) ;
-  //! Returns a timer from a dictionary by its name <br>
-//!          If timer not existed, creates a new one <br>
-  Standard_EXPORT   static  Handle_MoniTool_Timer Timer(const Standard_CString name) ;
+  //! Return reference to embedded OSD_Timer
+      OSD_Timer& Timer() ;
   
-      static  void Start(const Standard_CString name) ;
-  //! Inline methods to conveniently start/stop timer by name <br>
-//!          Shortcut to Timer(name)->Start/Stop() <br>
-      static  void Stop(const Standard_CString name) ;
-  //! Returns map of timers <br>
-  Standard_EXPORT   static  MoniTool_DataMapOfTimer& Dictionary() ;
-  //! Clears map of timers <br>
-  Standard_EXPORT   static  void ClearTimers() ;
-  //! Dumps contents of the whole dictionary <br>
-  Standard_EXPORT   static  void DumpTimers(Standard_OStream& ostr) ;
-  //! Computes and remembers amendments for times to <br>
-//!          access, start, and stop of timer, and estimates <br>
-//!          second-order error measured by 10 nested timers <br>
-  Standard_EXPORT   static  void ComputeAmendments() ;
-  //! The computed amendmens are returned (for information only) <br>
-  Standard_EXPORT   static  void GetAmendments(Standard_Real& Access,Standard_Real& Internal,Standard_Real& External,Standard_Real& Error10) ;
+      void Start() ;
+  
+      void Stop() ;
+  
+  //! Start, Stop and reset the timer
+  //! In addition to doing that to embedded OSD_Timer,
+  //! manage also counter of hits
+      void Reset() ;
+  
+  //! Return value of hits counter (count of Start/Stop pairs)
+      Standard_Integer Count()  const;
+  
+  //! Returns value of nesting counter
+      Standard_Integer IsRunning()  const;
+  
+  //! Return value of CPU time minus accumulated amendment
+      Standard_Real CPU() ;
+  
+  //! Return value of accumulated amendment on CPU time
+      Standard_Real Amend()  const;
+  
+  //! Dumps current state of a timer shortly (one-line output)
+  Standard_EXPORT   void Dump (Standard_OStream& ostr) ;
+  
+  //! Returns a timer from a dictionary by its name
+  //! If timer not existed, creates a new one
+  Standard_EXPORT static   Handle(MoniTool_Timer) Timer (const Standard_CString name) ;
+  
+    static   void Start (const Standard_CString name) ;
+  
+  //! Inline methods to conveniently start/stop timer by name
+  //! Shortcut to Timer(name)->Start/Stop()
+    static   void Stop (const Standard_CString name) ;
+  
+  //! Returns map of timers
+  Standard_EXPORT static   MoniTool_DataMapOfTimer& Dictionary() ;
+  
+  //! Clears map of timers
+  Standard_EXPORT static   void ClearTimers() ;
+  
+  //! Dumps contents of the whole dictionary
+  Standard_EXPORT static   void DumpTimers (Standard_OStream& ostr) ;
+  
+  //! Computes and remembers amendments for times to
+  //! access, start, and stop of timer, and estimates
+  //! second-order error measured by 10 nested timers
+  Standard_EXPORT static   void ComputeAmendments() ;
+  
+  //! The computed amendmens are returned (for information only)
+  Standard_EXPORT static   void GetAmendments (Standard_Real& Access, Standard_Real& Internal, Standard_Real& External, Standard_Real& Error10) ;
 
 
 
@@ -110,19 +106,20 @@ protected:
 private: 
 
   
-  Standard_EXPORT   static  void AmendAccess() ;
+  Standard_EXPORT static   void AmendAccess() ;
   
-  Standard_EXPORT     void AmendStart() ;
-  //! Internal functions to amend other timers to avoid <br>
-//!          side effects of operations with current one <br>
-  Standard_EXPORT     void AmendStop() ;
+  Standard_EXPORT   void AmendStart() ;
+  
+  //! Internal functions to amend other timers to avoid
+  //! side effects of operations with current one
+  Standard_EXPORT   void AmendStop() ;
 
-OSD_Timer myTimer;
-Standard_Integer myCount;
-Standard_Integer myNesting;
-Standard_Real myAmend;
-Handle_MoniTool_Timer myPrev;
-Handle_MoniTool_Timer myNext;
+  OSD_Timer myTimer;
+  Standard_Integer myCount;
+  Standard_Integer myNesting;
+  Standard_Real myAmend;
+  Handle(MoniTool_Timer) myPrev;
+  Handle(MoniTool_Timer) myNext;
 
 
 };
@@ -132,7 +129,6 @@ Handle_MoniTool_Timer myNext;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _MoniTool_Timer_HeaderFile

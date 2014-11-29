@@ -6,25 +6,13 @@
 #ifndef _TopTools_HArray1OfListOfShape_HeaderFile
 #define _TopTools_HArray1OfListOfShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TopTools_HArray1OfListOfShape_HeaderFile
 #include <Handle_TopTools_HArray1OfListOfShape.hxx>
-#endif
 
-#ifndef _TopTools_Array1OfListOfShape_HeaderFile
 #include <TopTools_Array1OfListOfShape.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_DimensionMismatch;
 class Standard_OutOfRange;
@@ -34,32 +22,33 @@ class TopTools_Array1OfListOfShape;
 
 
 
-class TopTools_HArray1OfListOfShape : public MMgt_TShared {
+class TopTools_HArray1OfListOfShape : public MMgt_TShared
+{
 
 public:
 
   
-      TopTools_HArray1OfListOfShape(const Standard_Integer Low,const Standard_Integer Up);
+    TopTools_HArray1OfListOfShape(const Standard_Integer Low, const Standard_Integer Up);
   
-      TopTools_HArray1OfListOfShape(const Standard_Integer Low,const Standard_Integer Up,const TopTools_ListOfShape& V);
+    TopTools_HArray1OfListOfShape(const Standard_Integer Low, const Standard_Integer Up, const TopTools_ListOfShape& V);
   
-        void Init(const TopTools_ListOfShape& V) ;
+      void Init (const TopTools_ListOfShape& V) ;
   
-        Standard_Integer Length() const;
+      Standard_Integer Length()  const;
   
-        Standard_Integer Lower() const;
+      Standard_Integer Lower()  const;
   
-        Standard_Integer Upper() const;
+      Standard_Integer Upper()  const;
   
-        void SetValue(const Standard_Integer Index,const TopTools_ListOfShape& Value) ;
+      void SetValue (const Standard_Integer Index, const TopTools_ListOfShape& Value) ;
   
-       const TopTools_ListOfShape& Value(const Standard_Integer Index) const;
+     const  TopTools_ListOfShape& Value (const Standard_Integer Index)  const;
   
-        TopTools_ListOfShape& ChangeValue(const Standard_Integer Index) ;
+      TopTools_ListOfShape& ChangeValue (const Standard_Integer Index) ;
   
-       const TopTools_Array1OfListOfShape& Array1() const;
+     const  TopTools_Array1OfListOfShape& Array1()  const;
   
-        TopTools_Array1OfListOfShape& ChangeArray1() ;
+      TopTools_Array1OfListOfShape& ChangeArray1() ;
 
 
 
@@ -74,7 +63,7 @@ protected:
 private: 
 
 
-TopTools_Array1OfListOfShape myArray;
+  TopTools_Array1OfListOfShape myArray;
 
 
 };
@@ -100,7 +89,6 @@ TopTools_Array1OfListOfShape myArray;
 #undef TCollection_HArray1_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TopTools_HArray1OfListOfShape_HeaderFile

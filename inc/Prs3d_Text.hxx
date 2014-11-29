@@ -6,28 +6,14 @@
 #ifndef _Prs3d_Text_HeaderFile
 #define _Prs3d_Text_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Prs3d_Root_HeaderFile
 #include <Prs3d_Root.hxx>
-#endif
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Handle_Prs3d_Drawer_HeaderFile
 #include <Handle_Prs3d_Drawer.hxx>
-#endif
-#ifndef _Handle_Prs3d_TextAspect_HeaderFile
 #include <Handle_Prs3d_TextAspect.hxx>
-#endif
 class Prs3d_Presentation;
 class Prs3d_Drawer;
 class TCollection_ExtendedString;
@@ -35,33 +21,35 @@ class gp_Pnt;
 class Prs3d_TextAspect;
 
 
-//! A framework to define the display of texts. <br>
-class Prs3d_Text  : public Prs3d_Root {
+//! A framework to define the display of texts.
+class Prs3d_Text  : public Prs3d_Root
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Defines the display of the text aText at the point AttachmentPoint. <br>
-//! The drawer aDrawer specifies the display attributes which texts will have. <br>
-//! The presentation object aPresentation stores the <br>
-//! information defined in this framework. <br>
-//! static void Draw (const Handle(Prs3d_Presentation)& <br>
-//! aPresentation, const Handle(Prs3d_TextAspect)& <br>
-//! anAspect, const TCollection_ExtendedString& aText, <br>
-//! const gp_Pnt& AttachmentPoint); <br>
-  Standard_EXPORT   static  void Draw(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Prs3d_Drawer)& aDrawer,const TCollection_ExtendedString& aText,const gp_Pnt& AttachmentPoint) ;
-  //! Defines the display of the text aText at the point <br>
-//! AttachmentPoint. <br>
-//! The text aspect object anAspect specifies the display <br>
-//! attributes which texts will have. <br>
-//! The presentation object aPresentation stores the <br>
-//! information defined in this framework. <br>
-//! This syntax could be used if you had not already <br>
-//! defined text display attributes in a drawer or if you <br>
-//! wanted to exceptionally overide the definition <br>
-//! provided in your drawer. <br>
-  Standard_EXPORT   static  void Draw(const Handle(Prs3d_Presentation)& aPresentation,const Handle(Prs3d_TextAspect)& anAspect,const TCollection_ExtendedString& aText,const gp_Pnt& AttachmentPoint) ;
-
+  
+  //! Defines the display of the text aText at the point AttachmentPoint.
+  //! The drawer aDrawer specifies the display attributes which texts will have.
+  //! The presentation object aPresentation stores the
+  //! information defined in this framework.
+  //! static void Draw (const Handle(Prs3d_Presentation)&
+  //! aPresentation, const Handle(Prs3d_TextAspect)&
+  //! anAspect, const TCollection_ExtendedString& aText,
+  //! const gp_Pnt& AttachmentPoint);
+  Standard_EXPORT static   void Draw (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Prs3d_Drawer)& aDrawer, const TCollection_ExtendedString& aText, const gp_Pnt& AttachmentPoint) ;
+  
+  //! Defines the display of the text aText at the point
+  //! AttachmentPoint.
+  //! The text aspect object anAspect specifies the display
+  //! attributes which texts will have.
+  //! The presentation object aPresentation stores the
+  //! information defined in this framework.
+  //! This syntax could be used if you had not already
+  //! defined text display attributes in a drawer or if you
+  //! wanted to exceptionally overide the definition
+  //! provided in your drawer.
+  Standard_EXPORT static   void Draw (const Handle(Prs3d_Presentation)& aPresentation, const Handle(Prs3d_TextAspect)& anAspect, const TCollection_ExtendedString& aText, const gp_Pnt& AttachmentPoint) ;
 
 
 
@@ -84,7 +72,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Prs3d_Text_HeaderFile

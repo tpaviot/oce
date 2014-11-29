@@ -6,40 +6,32 @@
 #ifndef _TransferBRep_ShapeInfo_HeaderFile
 #define _TransferBRep_ShapeInfo_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Standard_Type_HeaderFile
 #include <Handle_Standard_Type.hxx>
-#endif
-#ifndef _Standard_CString_HeaderFile
 #include <Standard_CString.hxx>
-#endif
 class Standard_Type;
 class TopoDS_Shape;
 
 
-//! Gives informations on an object, see template DataInfo <br>
-//!           This class is for Shape <br>
-class TransferBRep_ShapeInfo  {
+//! Gives informations on an object, see template DataInfo
+//! This class is for Shape
+class TransferBRep_ShapeInfo 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns the Type attached to an object <br>
-//!           Here, TShape (Shape has no Dynamic Type) <br>
-  Standard_EXPORT   static  Handle_Standard_Type Type(const TopoDS_Shape& ent) ;
-  //! Returns Type Name (string) <br>
-//!           Here, the true name of the Type of a Shape <br>
-  Standard_EXPORT   static  Standard_CString TypeName(const TopoDS_Shape& ent) ;
-
+  
+  //! Returns the Type attached to an object
+  //! Here, TShape (Shape has no Dynamic Type)
+  Standard_EXPORT static   Handle(Standard_Type) Type (const TopoDS_Shape& ent) ;
+  
+  //! Returns Type Name (string)
+  //! Here, the true name of the Type of a Shape
+  Standard_EXPORT static   Standard_CString TypeName (const TopoDS_Shape& ent) ;
 
 
 
@@ -62,7 +54,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TransferBRep_ShapeInfo_HeaderFile

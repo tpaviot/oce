@@ -21,23 +21,10 @@
 #error "Wrong compiler options has been detected. Add /DWNT option for proper compilation!!!!!"
 #endif
 
-#include <oce-config.h>
-
-#ifndef WNT
-# ifdef OCE_HAVE_CLIMITS
-#  include <climits>
-# elif defined (OCE_HAVE_LIMITS)
-#  include <limits>
-# elif defined (OCE_HAVE_LIMITS_H)
-#  include <limits.h>
-# else
-#  error "check oce-config.h file or compilation options: OCE_HAVE_CLIMITS, OCE_HAVE_LIMITS, or OCE_HAVE_LIMITS_H should be defined"
-# endif
-#endif
-
-
-#ifdef WNT
+#ifdef _WIN32
 # include <limits>
+#else
+# include <limits.h>
 #endif
 
 #ifdef __MINGW32__

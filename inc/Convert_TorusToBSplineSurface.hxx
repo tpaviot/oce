@@ -6,62 +6,55 @@
 #ifndef _Convert_TorusToBSplineSurface_HeaderFile
 #define _Convert_TorusToBSplineSurface_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Convert_ElementarySurfaceToBSplineSurface_HeaderFile
 #include <Convert_ElementarySurfaceToBSplineSurface.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_DomainError;
 class gp_Torus;
 
 
 
-//!  This algorithm converts a bounded Torus into a rational <br>
-//!  B-spline surface. The torus is a Torus from package gp. <br>
-//!  The parametrization of the torus is : <br>
-//!  P (U, V) = <br>
-//!     Loc  +  MinorRadius * Sin(V) * Zdir + <br>
-//!     (MajorRadius+MinorRadius*Cos(V)) *  (Cos(U)*Xdir + Sin(U)*Ydir) <br>
-//!  where Loc is the center of the torus, Xdir, Ydir and Zdir are the <br>
-//!  normalized directions of the local cartesian coordinate system of <br>
-//!  the Torus. The parametrization range is U [0, 2PI], V [0, 2PI]. <br>
-//! KeyWords : <br>
-//!  Convert, Torus, BSplineSurface. <br>
-class Convert_TorusToBSplineSurface  : public Convert_ElementarySurfaceToBSplineSurface {
+//! This algorithm converts a bounded Torus into a rational
+//! B-spline surface. The torus is a Torus from package gp.
+//! The parametrization of the torus is :
+//! P (U, V) =
+//! Loc  +  MinorRadius * Sin(V) * Zdir +
+//! (MajorRadius+MinorRadius*Cos(V)) *  (Cos(U)*Xdir + Sin(U)*Ydir)
+//! where Loc is the center of the torus, Xdir, Ydir and Zdir are the
+//! normalized directions of the local cartesian coordinate system of
+//! the Torus. The parametrization range is U [0, 2PI], V [0, 2PI].
+//! KeyWords :
+//! Convert, Torus, BSplineSurface.
+class Convert_TorusToBSplineSurface  : public Convert_ElementarySurfaceToBSplineSurface
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-//!  The equivalent B-spline surface as the same orientation as the <br>
-//!  torus in the U and V parametric directions. <br>
-//!  Raised if U1 = U2 or U1 = U2 + 2.0 * Pi <br>
-//!  Raised if V1 = V2 or V1 = V2 + 2.0 * Pi <br>
-  Standard_EXPORT   Convert_TorusToBSplineSurface(const gp_Torus& T,const Standard_Real U1,const Standard_Real U2,const Standard_Real V1,const Standard_Real V2);
-  
-//!  The equivalent B-spline surface as the same orientation as the <br>
-//!  torus in the U and V parametric directions. <br>
-//!  Raised if Param1 = Param2 or Param1 = Param2 + 2.0 * Pi <br>
-  Standard_EXPORT   Convert_TorusToBSplineSurface(const gp_Torus& T,const Standard_Real Param1,const Standard_Real Param2,const Standard_Boolean UTrim = Standard_True);
-  
-//!  The equivalent B-spline surface as the same orientation as the <br>
-//!  torus in the U and V parametric directions. <br>
-  Standard_EXPORT   Convert_TorusToBSplineSurface(const gp_Torus& T);
 
+  //! The equivalent B-spline surface as the same orientation as the
+  //! torus in the U and V parametric directions.
+  //!
+  //! Raised if U1 = U2 or U1 = U2 + 2.0 * Pi
+  //! Raised if V1 = V2 or V1 = V2 + 2.0 * Pi
+  Standard_EXPORT Convert_TorusToBSplineSurface(const gp_Torus& T, const Standard_Real U1, const Standard_Real U2, const Standard_Real V1, const Standard_Real V2);
+  
+
+  //! The equivalent B-spline surface as the same orientation as the
+  //! torus in the U and V parametric directions.
+  //!
+  //! Raised if Param1 = Param2 or Param1 = Param2 + 2.0 * Pi
+  Standard_EXPORT Convert_TorusToBSplineSurface(const gp_Torus& T, const Standard_Real Param1, const Standard_Real Param2, const Standard_Boolean UTrim = Standard_True);
+  
+
+  //! The equivalent B-spline surface as the same orientation as the
+  //! torus in the U and V parametric directions.
+  Standard_EXPORT Convert_TorusToBSplineSurface(const gp_Torus& T);
 
 
 
@@ -84,7 +77,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _Convert_TorusToBSplineSurface_HeaderFile

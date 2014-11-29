@@ -7,7 +7,6 @@
 #define _BOPAlgo_PArgumentAnalyzer_HeaderFile
 
 class BOPAlgo_ArgumentAnalyzer;
-
 typedef BOPAlgo_ArgumentAnalyzer* BOPAlgo_PArgumentAnalyzer;
 
-#endif
+#endif // _BOPAlgo_PArgumentAnalyzer_HeaderFile

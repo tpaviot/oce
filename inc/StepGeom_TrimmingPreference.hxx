@@ -6,15 +6,14 @@
 #ifndef _StepGeom_TrimmingPreference_HeaderFile
 #define _StepGeom_TrimmingPreference_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-enum StepGeom_TrimmingPreference {
+
+enum StepGeom_TrimmingPreference
+{
 StepGeom_tpCartesian,
 StepGeom_tpParameter,
 StepGeom_tpUnspecified
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _StepGeom_TrimmingPreference_HeaderFile

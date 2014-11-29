@@ -5,21 +5,11 @@
 
 #include <PColgp_SeqExplorerOfHSequenceOfPnt.hxx>
 
-#ifndef _PColgp_SeqNodeOfHSequenceOfPnt_HeaderFile
 #include <PColgp_SeqNodeOfHSequenceOfPnt.hxx>
-#endif
-#ifndef _PColgp_HSequenceOfPnt_HeaderFile
 #include <PColgp_HSequenceOfPnt.hxx>
-#endif
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _Standard_OutOfRange_HeaderFile
 #include <Standard_OutOfRange.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
  
 
 #define Item gp_Pnt

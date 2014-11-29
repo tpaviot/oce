@@ -6,56 +6,48 @@
 #ifndef _ViewerTest_EventManager_HeaderFile
 #define _ViewerTest_EventManager_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_ViewerTest_EventManager_HeaderFile
 #include <Handle_ViewerTest_EventManager.hxx>
-#endif
 
-#ifndef _Handle_AIS_InteractiveContext_HeaderFile
 #include <Handle_AIS_InteractiveContext.hxx>
-#endif
-#ifndef _Handle_V3d_View_HeaderFile
 #include <Handle_V3d_View.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
 class AIS_InteractiveContext;
 class V3d_View;
 class TColgp_Array1OfPnt2d;
 
 
-
-class ViewerTest_EventManager : public MMgt_TShared {
+//! used to manage mouse event (move,select,shiftselect)
+//! By default the events are transmitted to interactive context.
+class ViewerTest_EventManager : public MMgt_TShared
+{
 
 public:
 
   
-  Standard_EXPORT   ViewerTest_EventManager(const Handle(V3d_View)& aView,const Handle(AIS_InteractiveContext)& aCtx);
+  Standard_EXPORT ViewerTest_EventManager(const Handle(V3d_View)& aView, const Handle(AIS_InteractiveContext)& aCtx);
   
-  Standard_EXPORT   virtual  void MoveTo(const Standard_Integer xpix,const Standard_Integer ypix) ;
+  Standard_EXPORT virtual   void MoveTo (const Standard_Integer xpix, const Standard_Integer ypix) ;
   
-  Standard_EXPORT   virtual  void Select() ;
+  Standard_EXPORT virtual   void Select() ;
   
-  Standard_EXPORT   virtual  void ShiftSelect() ;
+  Standard_EXPORT virtual   void ShiftSelect() ;
   
-  Standard_EXPORT   virtual  void Select(const Standard_Integer xmin,const Standard_Integer ymin,const Standard_Integer xmax,const Standard_Integer ymax) ;
+  Standard_EXPORT virtual   void Select (const Standard_Integer xmin, const Standard_Integer ymin, const Standard_Integer xmax, const Standard_Integer ymax) ;
   
-  Standard_EXPORT   virtual  void ShiftSelect(const Standard_Integer xmin,const Standard_Integer ymin,const Standard_Integer xmax,const Standard_Integer ymax) ;
+  Standard_EXPORT virtual   void ShiftSelect (const Standard_Integer xmin, const Standard_Integer ymin, const Standard_Integer xmax, const Standard_Integer ymax) ;
   
-  Standard_EXPORT   virtual  void Select(const TColgp_Array1OfPnt2d& thePolyline) ;
+  Standard_EXPORT virtual   void Select (const TColgp_Array1OfPnt2d& thePolyline) ;
   
-  Standard_EXPORT   virtual  void ShiftSelect(const TColgp_Array1OfPnt2d& thePolyline) ;
+  Standard_EXPORT virtual   void ShiftSelect (const TColgp_Array1OfPnt2d& thePolyline) ;
   
-       const Handle_AIS_InteractiveContext& Context() const;
+     const  Handle(AIS_InteractiveContext)& Context()  const;
+  
+  //! Gets current mouse position. It tracks change of mouse position
+  //! with mouse drugging or with DRAW command call (vmoveto).
+  Standard_EXPORT   void GetCurrentPosition (Standard_Integer& theXPix, Standard_Integer& theYPix)  const;
 
 
 
@@ -70,10 +62,10 @@ protected:
 private: 
 
 
-Handle_AIS_InteractiveContext myCtx;
-Handle_V3d_View myView;
-Standard_Integer myX;
-Standard_Integer myY;
+  Handle(AIS_InteractiveContext) myCtx;
+  Handle(V3d_View) myView;
+  Standard_Integer myX;
+  Standard_Integer myY;
 
 
 };
@@ -83,7 +75,6 @@ Standard_Integer myY;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _ViewerTest_EventManager_HeaderFile

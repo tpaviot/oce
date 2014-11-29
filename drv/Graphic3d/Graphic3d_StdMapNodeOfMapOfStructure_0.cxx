@@ -5,22 +5,12 @@
 
 #include <Graphic3d_StdMapNodeOfMapOfStructure.hxx>
 
-#ifndef _Standard_Type_HeaderFile
 #include <Standard_Type.hxx>
-#endif
 
-#ifndef _Graphic3d_Structure_HeaderFile
 #include <Graphic3d_Structure.hxx>
-#endif
-#ifndef _TColStd_MapTransientHasher_HeaderFile
 #include <TColStd_MapTransientHasher.hxx>
-#endif
-#ifndef _Graphic3d_MapOfStructure_HeaderFile
 #include <Graphic3d_MapOfStructure.hxx>
-#endif
-#ifndef _Graphic3d_MapIteratorOfMapOfStructure_HeaderFile
 #include <Graphic3d_MapIteratorOfMapOfStructure.hxx>
-#endif
 
  
 
@@ -39,7 +29,7 @@ IMPLEMENT_DOWNCAST(Graphic3d_StdMapNodeOfMapOfStructure,Standard_Transient)
 IMPLEMENT_STANDARD_RTTI(Graphic3d_StdMapNodeOfMapOfStructure)
 
 
-#define TheKey Handle_Graphic3d_Structure
+#define TheKey Handle(Graphic3d_Structure)
 #define TheKey_hxx <Graphic3d_Structure.hxx>
 #define Hasher TColStd_MapTransientHasher
 #define Hasher_hxx <TColStd_MapTransientHasher.hxx>

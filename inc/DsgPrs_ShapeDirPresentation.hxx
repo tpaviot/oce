@@ -6,46 +6,35 @@
 #ifndef _DsgPrs_ShapeDirPresentation_HeaderFile
 #define _DsgPrs_ShapeDirPresentation_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_Prs3d_Presentation_HeaderFile
 #include <Handle_Prs3d_Presentation.hxx>
-#endif
-#ifndef _Handle_Prs3d_Drawer_HeaderFile
 #include <Handle_Prs3d_Drawer.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Prs3d_Presentation;
 class Prs3d_Drawer;
 class TopoDS_Shape;
 
 
-//! A framework to define display of the normal to the <br>
-//! surface of a shape. <br>
-class DsgPrs_ShapeDirPresentation  {
+//! A framework to define display of the normal to the
+//! surface of a shape.
+class DsgPrs_ShapeDirPresentation 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Adds the shape shape and the mode mode to the <br>
-//! presentation object prs. <br>
-//! The display attributes of the normal are defined by the <br>
-//! attribute manager aDrawer. <br>
-//! mode determines whether the first or the last point of <br>
-//! the normal is given to the presentation object. If the <br>
-//! first point: 0; if the last point, 1. <br>
-  Standard_EXPORT   static  void Add(const Handle(Prs3d_Presentation)& prs,const Handle(Prs3d_Drawer)& aDrawer,const TopoDS_Shape& shape,const Standard_Integer mode) ;
-
+  
+  //! Adds the shape shape and the mode mode to the
+  //! presentation object prs.
+  //! The display attributes of the normal are defined by the
+  //! attribute manager aDrawer.
+  //! mode determines whether the first or the last point of
+  //! the normal is given to the presentation object. If the
+  //! first point: 0; if the last point, 1.
+  Standard_EXPORT static   void Add (const Handle(Prs3d_Presentation)& prs, const Handle(Prs3d_Drawer)& aDrawer, const TopoDS_Shape& shape, const Standard_Integer mode) ;
 
 
 
@@ -68,7 +57,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _DsgPrs_ShapeDirPresentation_HeaderFile

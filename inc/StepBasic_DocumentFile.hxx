@@ -6,49 +6,38 @@
 #ifndef _StepBasic_DocumentFile_HeaderFile
 #define _StepBasic_DocumentFile_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_StepBasic_DocumentFile_HeaderFile
 #include <Handle_StepBasic_DocumentFile.hxx>
-#endif
 
-#ifndef _Handle_StepBasic_CharacterizedObject_HeaderFile
 #include <Handle_StepBasic_CharacterizedObject.hxx>
-#endif
-#ifndef _StepBasic_Document_HeaderFile
 #include <StepBasic_Document.hxx>
-#endif
-#ifndef _Handle_TCollection_HAsciiString_HeaderFile
 #include <Handle_TCollection_HAsciiString.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_StepBasic_DocumentType_HeaderFile
 #include <Handle_StepBasic_DocumentType.hxx>
-#endif
 class StepBasic_CharacterizedObject;
 class TCollection_HAsciiString;
 class StepBasic_DocumentType;
 
 
-//! Representation of STEP entity DocumentFile <br>
-class StepBasic_DocumentFile : public StepBasic_Document {
+//! Representation of STEP entity DocumentFile
+class StepBasic_DocumentFile : public StepBasic_Document
+{
 
 public:
 
-  //! Empty constructor <br>
-  Standard_EXPORT   StepBasic_DocumentFile();
-  //! Initialize all fields (own and inherited) <br>
-  Standard_EXPORT     void Init(const Handle(TCollection_HAsciiString)& aDocument_Id,const Handle(TCollection_HAsciiString)& aDocument_Name,const Standard_Boolean hasDocument_Description,const Handle(TCollection_HAsciiString)& aDocument_Description,const Handle(StepBasic_DocumentType)& aDocument_Kind,const Handle(TCollection_HAsciiString)& aCharacterizedObject_Name,const Standard_Boolean hasCharacterizedObject_Description,const Handle(TCollection_HAsciiString)& aCharacterizedObject_Description) ;
-  //! Returns data for supertype CharacterizedObject <br>
-  Standard_EXPORT     Handle_StepBasic_CharacterizedObject CharacterizedObject() const;
-  //! Set data for supertype CharacterizedObject <br>
-  Standard_EXPORT     void SetCharacterizedObject(const Handle(StepBasic_CharacterizedObject)& CharacterizedObject) ;
+  
+  //! Empty constructor
+  Standard_EXPORT StepBasic_DocumentFile();
+  
+  //! Initialize all fields (own and inherited)
+  Standard_EXPORT   void Init (const Handle(TCollection_HAsciiString)& aDocument_Id, const Handle(TCollection_HAsciiString)& aDocument_Name, const Standard_Boolean hasDocument_Description, const Handle(TCollection_HAsciiString)& aDocument_Description, const Handle(StepBasic_DocumentType)& aDocument_Kind, const Handle(TCollection_HAsciiString)& aCharacterizedObject_Name, const Standard_Boolean hasCharacterizedObject_Description, const Handle(TCollection_HAsciiString)& aCharacterizedObject_Description) ;
+  
+  //! Returns data for supertype CharacterizedObject
+  Standard_EXPORT   Handle(StepBasic_CharacterizedObject) CharacterizedObject()  const;
+  
+  //! Set data for supertype CharacterizedObject
+  Standard_EXPORT   void SetCharacterizedObject (const Handle(StepBasic_CharacterizedObject)& CharacterizedObject) ;
 
 
 
@@ -63,7 +52,7 @@ protected:
 private: 
 
 
-Handle_StepBasic_CharacterizedObject theCharacterizedObject;
+  Handle(StepBasic_CharacterizedObject) theCharacterizedObject;
 
 
 };
@@ -72,7 +61,6 @@ Handle_StepBasic_CharacterizedObject theCharacterizedObject;
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _StepBasic_DocumentFile_HeaderFile

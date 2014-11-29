@@ -6,34 +6,16 @@
 #ifndef _IGESBasic_ToolName_HeaderFile
 #define _IGESBasic_ToolName_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Handle_IGESBasic_Name_HeaderFile
 #include <Handle_IGESBasic_Name.hxx>
-#endif
-#ifndef _Handle_IGESData_IGESReaderData_HeaderFile
 #include <Handle_IGESData_IGESReaderData.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Handle_Interface_Check_HeaderFile
 #include <Handle_Interface_Check.hxx>
-#endif
-#ifndef _Handle_Message_Messenger_HeaderFile
 #include <Handle_Message_Messenger.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_DomainError;
 class IGESBasic_Name;
 class IGESData_IGESReaderData;
@@ -48,35 +30,44 @@ class IGESData_IGESDumper;
 class Message_Messenger;
 
 
-//! Tool to work on a Name. Called by various Modules <br>
-//!           (ReadWriteModule, GeneralModule, SpecificModule) <br>
-class IGESBasic_ToolName  {
+//! Tool to work on a Name. Called by various Modules
+//! (ReadWriteModule, GeneralModule, SpecificModule)
+class IGESBasic_ToolName 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
-  //! Returns a ToolName, ready to work <br>
-  Standard_EXPORT   IGESBasic_ToolName();
-  //! Reads own parameters from file. <PR> gives access to them, <br>
-//!           <IR> detains parameter types and values <br>
-  Standard_EXPORT     void ReadOwnParams(const Handle(IGESBasic_Name)& ent,const Handle(IGESData_IGESReaderData)& IR,IGESData_ParamReader& PR) const;
-  //! Writes own parameters to IGESWriter <br>
-  Standard_EXPORT     void WriteOwnParams(const Handle(IGESBasic_Name)& ent,IGESData_IGESWriter& IW) const;
-  //! Lists the Entities shared by a Name <ent>, from <br>
-//!           its specific (own) parameters <br>
-  Standard_EXPORT     void OwnShared(const Handle(IGESBasic_Name)& ent,Interface_EntityIterator& iter) const;
-  //! Sets automatic unambiguous Correction on a Name <br>
-//!           (NbPropertyValues forced to 1) <br>
-  Standard_EXPORT     Standard_Boolean OwnCorrect(const Handle(IGESBasic_Name)& ent) const;
-  //! Returns specific DirChecker <br>
-  Standard_EXPORT     IGESData_DirChecker DirChecker(const Handle(IGESBasic_Name)& ent) const;
-  //! Performs Specific Semantic Check <br>
-  Standard_EXPORT     void OwnCheck(const Handle(IGESBasic_Name)& ent,const Interface_ShareTool& shares,Handle(Interface_Check)& ach) const;
-  //! Copies Specific Parameters <br>
-  Standard_EXPORT     void OwnCopy(const Handle(IGESBasic_Name)& entfrom,const Handle(IGESBasic_Name)& entto,Interface_CopyTool& TC) const;
-  //! Dump of Specific Parameters <br>
-  Standard_EXPORT     void OwnDump(const Handle(IGESBasic_Name)& ent,const IGESData_IGESDumper& dumper,const Handle(Message_Messenger)& S,const Standard_Integer own) const;
-
+  
+  //! Returns a ToolName, ready to work
+  Standard_EXPORT IGESBasic_ToolName();
+  
+  //! Reads own parameters from file. <PR> gives access to them,
+  //! <IR> detains parameter types and values
+  Standard_EXPORT   void ReadOwnParams (const Handle(IGESBasic_Name)& ent, const Handle(IGESData_IGESReaderData)& IR, IGESData_ParamReader& PR)  const;
+  
+  //! Writes own parameters to IGESWriter
+  Standard_EXPORT   void WriteOwnParams (const Handle(IGESBasic_Name)& ent, IGESData_IGESWriter& IW)  const;
+  
+  //! Lists the Entities shared by a Name <ent>, from
+  //! its specific (own) parameters
+  Standard_EXPORT   void OwnShared (const Handle(IGESBasic_Name)& ent, Interface_EntityIterator& iter)  const;
+  
+  //! Sets automatic unambiguous Correction on a Name
+  //! (NbPropertyValues forced to 1)
+  Standard_EXPORT   Standard_Boolean OwnCorrect (const Handle(IGESBasic_Name)& ent)  const;
+  
+  //! Returns specific DirChecker
+  Standard_EXPORT   IGESData_DirChecker DirChecker (const Handle(IGESBasic_Name)& ent)  const;
+  
+  //! Performs Specific Semantic Check
+  Standard_EXPORT   void OwnCheck (const Handle(IGESBasic_Name)& ent, const Interface_ShareTool& shares, Handle(Interface_Check)& ach)  const;
+  
+  //! Copies Specific Parameters
+  Standard_EXPORT   void OwnCopy (const Handle(IGESBasic_Name)& entfrom, const Handle(IGESBasic_Name)& entto, Interface_CopyTool& TC)  const;
+  
+  //! Dump of Specific Parameters
+  Standard_EXPORT   void OwnDump (const Handle(IGESBasic_Name)& ent, const IGESData_IGESDumper& dumper, const Handle(Message_Messenger)& S, const Standard_Integer own)  const;
 
 
 
@@ -99,7 +90,6 @@ private:
 
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _IGESBasic_ToolName_HeaderFile

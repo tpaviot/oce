@@ -6,31 +6,15 @@
 #ifndef _TNaming_ListOfNamedShape_HeaderFile
 #define _TNaming_ListOfNamedShape_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Address_HeaderFile
 #include <Standard_Address.hxx>
-#endif
-#ifndef _Handle_TNaming_NamedShape_HeaderFile
 #include <Handle_TNaming_NamedShape.hxx>
-#endif
-#ifndef _Handle_TNaming_ListNodeOfListOfNamedShape_HeaderFile
 #include <Handle_TNaming_ListNodeOfListOfNamedShape.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
 class Standard_NoSuchObject;
 class TNaming_ListIteratorOfListOfNamedShape;
 class TNaming_NamedShape;
@@ -38,61 +22,63 @@ class TNaming_ListNodeOfListOfNamedShape;
 
 
 
-class TNaming_ListOfNamedShape  {
+class TNaming_ListOfNamedShape 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   TNaming_ListOfNamedShape();
+  Standard_EXPORT TNaming_ListOfNamedShape();
   
-  Standard_EXPORT     void Assign(const TNaming_ListOfNamedShape& Other) ;
-    void operator=(const TNaming_ListOfNamedShape& Other) 
+  Standard_EXPORT TNaming_ListOfNamedShape(const TNaming_ListOfNamedShape& Other);
+  
+  Standard_EXPORT   void Assign (const TNaming_ListOfNamedShape& Other) ;
+  void operator= (const TNaming_ListOfNamedShape& Other) 
 {
   Assign(Other);
 }
   
-  Standard_EXPORT     Standard_Integer Extent() const;
+  Standard_EXPORT   Standard_Integer Extent()  const;
   
-  Standard_EXPORT     void Clear() ;
+  Standard_EXPORT   void Clear() ;
 ~TNaming_ListOfNamedShape()
 {
   Clear();
 }
   
-        Standard_Boolean IsEmpty() const;
+      Standard_Boolean IsEmpty()  const;
   
-  Standard_EXPORT     void Prepend(const Handle(TNaming_NamedShape)& I) ;
+  Standard_EXPORT   void Prepend (const Handle(TNaming_NamedShape)& I) ;
   
-  Standard_EXPORT     void Prepend(const Handle(TNaming_NamedShape)& I,TNaming_ListIteratorOfListOfNamedShape& theIt) ;
+  Standard_EXPORT   void Prepend (const Handle(TNaming_NamedShape)& I, TNaming_ListIteratorOfListOfNamedShape& theIt) ;
   
-  Standard_EXPORT     void Prepend(TNaming_ListOfNamedShape& Other) ;
+  Standard_EXPORT   void Prepend (TNaming_ListOfNamedShape& Other) ;
   
-  Standard_EXPORT     void Append(const Handle(TNaming_NamedShape)& I) ;
+  Standard_EXPORT   void Append (const Handle(TNaming_NamedShape)& I) ;
   
-  Standard_EXPORT     void Append(const Handle(TNaming_NamedShape)& I,TNaming_ListIteratorOfListOfNamedShape& theIt) ;
+  Standard_EXPORT   void Append (const Handle(TNaming_NamedShape)& I, TNaming_ListIteratorOfListOfNamedShape& theIt) ;
   
-  Standard_EXPORT     void Append(TNaming_ListOfNamedShape& Other) ;
+  Standard_EXPORT   void Append (TNaming_ListOfNamedShape& Other) ;
   
-  Standard_EXPORT     Handle_TNaming_NamedShape& First() const;
+  Standard_EXPORT   Handle(TNaming_NamedShape)& First()  const;
   
-  Standard_EXPORT     Handle_TNaming_NamedShape& Last() const;
+  Standard_EXPORT   Handle(TNaming_NamedShape)& Last()  const;
   
-  Standard_EXPORT     void RemoveFirst() ;
+  Standard_EXPORT   void RemoveFirst() ;
   
-  Standard_EXPORT     void Remove(TNaming_ListIteratorOfListOfNamedShape& It) ;
+  Standard_EXPORT   void Remove (TNaming_ListIteratorOfListOfNamedShape& It) ;
   
-  Standard_EXPORT     void InsertBefore(const Handle(TNaming_NamedShape)& I,TNaming_ListIteratorOfListOfNamedShape& It) ;
+  Standard_EXPORT   void InsertBefore (const Handle(TNaming_NamedShape)& I, TNaming_ListIteratorOfListOfNamedShape& It) ;
   
-  Standard_EXPORT     void InsertBefore(TNaming_ListOfNamedShape& Other,TNaming_ListIteratorOfListOfNamedShape& It) ;
+  Standard_EXPORT   void InsertBefore (TNaming_ListOfNamedShape& Other, TNaming_ListIteratorOfListOfNamedShape& It) ;
   
-  Standard_EXPORT     void InsertAfter(const Handle(TNaming_NamedShape)& I,TNaming_ListIteratorOfListOfNamedShape& It) ;
+  Standard_EXPORT   void InsertAfter (const Handle(TNaming_NamedShape)& I, TNaming_ListIteratorOfListOfNamedShape& It) ;
   
-  Standard_EXPORT     void InsertAfter(TNaming_ListOfNamedShape& Other,TNaming_ListIteratorOfListOfNamedShape& It) ;
+  Standard_EXPORT   void InsertAfter (TNaming_ListOfNamedShape& Other, TNaming_ListIteratorOfListOfNamedShape& It) ;
 
 
 friend class TNaming_ListIteratorOfListOfNamedShape;
-
 
 
 protected:
@@ -103,17 +89,15 @@ protected:
 
 private:
 
-  
-  Standard_EXPORT   TNaming_ListOfNamedShape(const TNaming_ListOfNamedShape& Other);
 
 
-Standard_Address myFirst;
-Standard_Address myLast;
+  Standard_Address myFirst;
+  Standard_Address myLast;
 
 
 };
 
-#define Item Handle_TNaming_NamedShape
+#define Item Handle(TNaming_NamedShape)
 #define Item_hxx <TNaming_NamedShape.hxx>
 #define TCollection_ListNode TNaming_ListNodeOfListOfNamedShape
 #define TCollection_ListNode_hxx <TNaming_ListNodeOfListOfNamedShape.hxx>
@@ -138,7 +122,6 @@ Standard_Address myLast;
 #undef TCollection_List_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TNaming_ListOfNamedShape_HeaderFile

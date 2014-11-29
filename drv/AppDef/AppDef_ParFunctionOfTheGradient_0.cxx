@@ -5,30 +5,13 @@
 
 #include <AppDef_ParFunctionOfTheGradient.hxx>
 
-#ifndef _TColStd_HArray1OfInteger_HeaderFile
 #include <TColStd_HArray1OfInteger.hxx>
-#endif
-#ifndef _AppParCurves_HArray1OfConstraintCouple_HeaderFile
 #include <AppParCurves_HArray1OfConstraintCouple.hxx>
-#endif
-#ifndef _AppDef_MultiLine_HeaderFile
 #include <AppDef_MultiLine.hxx>
-#endif
-#ifndef _AppDef_MyLineTool_HeaderFile
 #include <AppDef_MyLineTool.hxx>
-#endif
-#ifndef _AppDef_ParLeastSquareOfTheGradient_HeaderFile
 #include <AppDef_ParLeastSquareOfTheGradient.hxx>
-#endif
-#ifndef _AppDef_ResConstraintOfTheGradient_HeaderFile
 #include <AppDef_ResConstraintOfTheGradient.hxx>
-#endif
-#ifndef _math_Vector_HeaderFile
-#include <math_Vector.hxx>
-#endif
-#ifndef _AppParCurves_MultiCurve_HeaderFile
 #include <AppParCurves_MultiCurve.hxx>
-#endif
  
 
 #define MultiLine AppDef_MultiLine

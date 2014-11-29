@@ -6,40 +6,18 @@
 #ifndef _BRepClass_FClass2dOfFClassifier_HeaderFile
 #define _BRepClass_FClass2dOfFClassifier_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineAlloc_HeaderFile
 #include <Standard_DefineAlloc.hxx>
-#endif
-#ifndef _Standard_Macro_HeaderFile
 #include <Standard_Macro.hxx>
-#endif
 
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _gp_Lin2d_HeaderFile
 #include <gp_Lin2d.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
 #include <Standard_Real.hxx>
-#endif
-#ifndef _TopTrans_CurveTransition_HeaderFile
 #include <TopTrans_CurveTransition.hxx>
-#endif
-#ifndef _BRepClass_Intersector_HeaderFile
 #include <BRepClass_Intersector.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
-#ifndef _TopAbs_State_HeaderFile
 #include <TopAbs_State.hxx>
-#endif
-#ifndef _TopAbs_Orientation_HeaderFile
 #include <TopAbs_Orientation.hxx>
-#endif
 class Standard_DomainError;
 class BRepClass_Edge;
 class BRepClass_Intersector;
@@ -47,28 +25,28 @@ class gp_Lin2d;
 
 
 
-class BRepClass_FClass2dOfFClassifier  {
+class BRepClass_FClass2dOfFClassifier 
+{
 public:
 
   DEFINE_STANDARD_ALLOC
 
   
-  Standard_EXPORT   BRepClass_FClass2dOfFClassifier();
+  Standard_EXPORT BRepClass_FClass2dOfFClassifier();
   
-  Standard_EXPORT     void Reset(const gp_Lin2d& L,const Standard_Real P,const Standard_Real Tol) ;
+  Standard_EXPORT   void Reset (const gp_Lin2d& L, const Standard_Real P, const Standard_Real Tol) ;
   
-  Standard_EXPORT     void Compare(const BRepClass_Edge& E,const TopAbs_Orientation Or) ;
+  Standard_EXPORT   void Compare (const BRepClass_Edge& E, const TopAbs_Orientation Or) ;
   
-        Standard_Real Parameter() const;
+      Standard_Real Parameter()  const;
   
-        BRepClass_Intersector& Intersector() ;
+      BRepClass_Intersector& Intersector() ;
   
-        Standard_Integer ClosestIntersection() const;
+      Standard_Integer ClosestIntersection()  const;
   
-        TopAbs_State State() const;
+      TopAbs_State State()  const;
   
-        Standard_Boolean IsHeadOrEnd() const;
-
+      Standard_Boolean IsHeadOrEnd()  const;
 
 
 
@@ -83,17 +61,17 @@ private:
 
 
 
-Standard_Boolean myIsSet;
-Standard_Boolean myFirstCompare;
-Standard_Boolean myFirstTrans;
-gp_Lin2d myLin;
-Standard_Real myParam;
-Standard_Real myTolerance;
-TopTrans_CurveTransition myTrans;
-BRepClass_Intersector myIntersector;
-Standard_Integer myClosest;
-TopAbs_State myState;
-Standard_Boolean myIsHeadOrEnd;
+  Standard_Boolean myIsSet;
+  Standard_Boolean myFirstCompare;
+  Standard_Boolean myFirstTrans;
+  gp_Lin2d myLin;
+  Standard_Real myParam;
+  Standard_Real myTolerance;
+  TopTrans_CurveTransition myTrans;
+  BRepClass_Intersector myIntersector;
+  Standard_Integer myClosest;
+  TopAbs_State myState;
+  Standard_Boolean myIsHeadOrEnd;
 
 
 };
@@ -115,7 +93,6 @@ Standard_Boolean myIsHeadOrEnd;
 #undef TopClass_Classifier2d_hxx
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _BRepClass_FClass2dOfFClassifier_HeaderFile

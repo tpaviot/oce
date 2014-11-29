@@ -6,21 +6,20 @@
 #ifndef _Resource_FormatType_HeaderFile
 #define _Resource_FormatType_HeaderFile
 
+#include <Standard_PrimitiveTypes.hxx>
 
-//! List of non ASCII format types which may be <br>
-//! converted into the Unicode 16 bits format type. <br>
-//! Use the functions provided by the <br>
-//! Resource_Unicode class to convert a string <br>
-//! from one of these non ASCII format to Unicode, and vice versa. <br>
-enum Resource_FormatType {
+
+//! List of non ASCII format types which may be
+//! converted into the Unicode 16 bits format type.
+//! Use the functions provided by the
+//! Resource_Unicode class to convert a string
+//! from one of these non ASCII format to Unicode, and vice versa.
+enum Resource_FormatType
+{
 Resource_SJIS,
 Resource_EUC,
 Resource_ANSI,
 Resource_GB
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _Resource_FormatType_HeaderFile

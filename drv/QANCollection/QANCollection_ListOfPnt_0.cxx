@@ -5,18 +5,10 @@
 
 #include <QANCollection_ListOfPnt.hxx>
 
-#ifndef _Standard_NoSuchObject_HeaderFile
 #include <Standard_NoSuchObject.hxx>
-#endif
-#ifndef _QANCollection_ListIteratorOfListOfPnt_HeaderFile
 #include <QANCollection_ListIteratorOfListOfPnt.hxx>
-#endif
-#ifndef _gp_Pnt_HeaderFile
 #include <gp_Pnt.hxx>
-#endif
-#ifndef _QANCollection_ListNodeOfListOfPnt_HeaderFile
 #include <QANCollection_ListNodeOfListOfPnt.hxx>
-#endif
  
 
 #define Item gp_Pnt

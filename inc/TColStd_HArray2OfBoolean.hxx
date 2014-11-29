@@ -6,28 +6,14 @@
 #ifndef _TColStd_HArray2OfBoolean_HeaderFile
 #define _TColStd_HArray2OfBoolean_HeaderFile
 
-#ifndef _Standard_HeaderFile
 #include <Standard.hxx>
-#endif
-#ifndef _Standard_DefineHandle_HeaderFile
 #include <Standard_DefineHandle.hxx>
-#endif
-#ifndef _Handle_TColStd_HArray2OfBoolean_HeaderFile
 #include <Handle_TColStd_HArray2OfBoolean.hxx>
-#endif
 
-#ifndef _TColStd_Array2OfBoolean_HeaderFile
 #include <TColStd_Array2OfBoolean.hxx>
-#endif
-#ifndef _MMgt_TShared_HeaderFile
 #include <MMgt_TShared.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
 #include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Integer_HeaderFile
 #include <Standard_Integer.hxx>
-#endif
 class Standard_RangeError;
 class Standard_OutOfRange;
 class Standard_OutOfMemory;
@@ -36,38 +22,39 @@ class TColStd_Array2OfBoolean;
 
 
 
-class TColStd_HArray2OfBoolean : public MMgt_TShared {
+class TColStd_HArray2OfBoolean : public MMgt_TShared
+{
 
 public:
 
   
-      TColStd_HArray2OfBoolean(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2);
+    TColStd_HArray2OfBoolean(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2);
   
-      TColStd_HArray2OfBoolean(const Standard_Integer R1,const Standard_Integer R2,const Standard_Integer C1,const Standard_Integer C2,const Standard_Boolean& V);
+    TColStd_HArray2OfBoolean(const Standard_Integer R1, const Standard_Integer R2, const Standard_Integer C1, const Standard_Integer C2, const Standard_Boolean& V);
   
-        void Init(const Standard_Boolean& V) ;
+      void Init (const Standard_Boolean& V) ;
   
-        Standard_Integer ColLength() const;
+      Standard_Integer ColLength()  const;
   
-        Standard_Integer RowLength() const;
+      Standard_Integer RowLength()  const;
   
-        Standard_Integer LowerCol() const;
+      Standard_Integer LowerCol()  const;
   
-        Standard_Integer LowerRow() const;
+      Standard_Integer LowerRow()  const;
   
-        Standard_Integer UpperCol() const;
+      Standard_Integer UpperCol()  const;
   
-        Standard_Integer UpperRow() const;
+      Standard_Integer UpperRow()  const;
   
-        void SetValue(const Standard_Integer Row,const Standard_Integer Col,const Standard_Boolean& Value) ;
+      void SetValue (const Standard_Integer Row, const Standard_Integer Col, const Standard_Boolean& Value) ;
   
-       const Standard_Boolean& Value(const Standard_Integer Row,const Standard_Integer Col) const;
+     const  Standard_Boolean& Value (const Standard_Integer Row, const Standard_Integer Col)  const;
   
-        Standard_Boolean& ChangeValue(const Standard_Integer Row,const Standard_Integer Col) ;
+      Standard_Boolean& ChangeValue (const Standard_Integer Row, const Standard_Integer Col) ;
   
-       const TColStd_Array2OfBoolean& Array2() const;
+     const  TColStd_Array2OfBoolean& Array2()  const;
   
-        TColStd_Array2OfBoolean& ChangeArray2() ;
+      TColStd_Array2OfBoolean& ChangeArray2() ;
 
 
 
@@ -82,7 +69,7 @@ protected:
 private: 
 
 
-TColStd_Array2OfBoolean myArray;
+  TColStd_Array2OfBoolean myArray;
 
 
 };
@@ -108,7 +95,6 @@ TColStd_Array2OfBoolean myArray;
 #undef TCollection_HArray2_Type_
 
 
-// other Inline functions and methods (like "C++: function call" methods)
 
 
-#endif
+#endif // _TColStd_HArray2OfBoolean_HeaderFile

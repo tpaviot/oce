@@ -17,29 +17,15 @@
 
 #include <float.h>
 #include <math.h>
-#ifndef _Standard_values_HeaderFile
-# include <Standard_values.h>
-#endif
-
-#ifdef WNT
-# include <Standard_math.hxx>
-#endif
-
-#ifndef _Standard_TypeDef_HeaderFile
+#include <Standard_values.h>
+#include <Standard_math.hxx>
 #include <Standard_TypeDef.hxx>
-#endif
-
-class Handle_Standard_Type;
-
-__Standard_API const Handle_Standard_Type& Standard_Real_Type_();
 
 // ===============================================
 // Methods from Standard_Entity class which are redefined:  
 //    - Hascode
 //    - IsEqual
 //    - IsSimilar
-//    - Shallowcopy
-//    - ShallowDump
 // ===============================================
 
 // ==================================
@@ -47,7 +33,6 @@ __Standard_API const Handle_Standard_Type& Standard_Real_Type_();
 // ==================================
 //....             Herited from Standard_Storable
 __Standard_API Standard_Integer HashCode    (const Standard_Real, const Standard_Integer);  
-__Standard_API Standard_Real    ShallowCopy (const Standard_Real );  
 
 __Standard_API Standard_Real    ACos        (const Standard_Real );
 __Standard_API Standard_Real    ACosApprox  (const Standard_Real );
@@ -59,9 +44,6 @@ __Standard_API Standard_Real    ATanh       (const Standard_Real );
 __Standard_API Standard_Real    ACosh       (const Standard_Real );
 __Standard_API Standard_Real    Log         (const Standard_Real );
 __Standard_API Standard_Real    Sqrt        (const Standard_Real );
-
-//class  Standard_OStream;
-//void             ShallowDump(const Standard_Real, Standard_OStream& );
 
 //-------------------------------------------------------------------
 // RealSmall : Returns the smallest positive real
@@ -286,6 +268,20 @@ inline  Standard_Integer RealToInt (const Standard_Real Value)
   return Value < INT_MIN ? INT_MIN
     : Value > INT_MAX ? INT_MAX
     : (Standard_Integer)Value;
+}
+
+// =======================================================================
+// function : RealToShortReal
+// purpose  : Converts Standard_Real value to the nearest valid
+//            Standard_ShortReal. If input value is out of valid range
+//            for Standard_ShortReal, minimal or maximal
+//            Standard_ShortReal is returned.
+// =======================================================================
+inline Standard_ShortReal RealToShortReal (const Standard_Real theVal)
+{
+  return theVal < -FLT_MAX ? -FLT_MAX
+    : theVal > FLT_MAX ? FLT_MAX
+    : (Standard_ShortReal)theVal;
 }
 
 //-------------------------------------------------------------------

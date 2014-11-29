@@ -6,20 +6,19 @@
 #ifndef _BRepOffset_Status_HeaderFile
 #define _BRepOffset_Status_HeaderFile
 
-//! status of an offset face <br>
-//!          Good : <br>
-//!          Reversed : e.g. Offset > Radius of a cylinder <br>
-//!          Degenerated : e.g. Offset = Radius of a cylinder <br>
-//!          Unknown : e.g. for a Beziersurf <br>
-enum BRepOffset_Status {
+#include <Standard_PrimitiveTypes.hxx>
+
+//! status of an offset face
+//! Good :
+//! Reversed : e.g. Offset > Radius of a cylinder
+//! Degenerated : e.g. Offset = Radius of a cylinder
+//! Unknown : e.g. for a Beziersurf
+enum BRepOffset_Status
+{
 BRepOffset_Good,
 BRepOffset_Reversed,
 BRepOffset_Degenerated,
 BRepOffset_Unknown
 };
 
-#ifndef _Standard_PrimitiveTypes_HeaderFile
-#include <Standard_PrimitiveTypes.hxx>
-#endif
-
-#endif
+#endif // _BRepOffset_Status_HeaderFile
