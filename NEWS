@@ -1,3 +1,18 @@
+Version 0.16.1 - November 2014
+
+This version is binary compatible with 0CE 0.16.
+
+* cppcheck fixes (memory leaks and parse errors)
+
+* Fix LDOMBasicString assignment operator
+
+* Mingw fixes (OpenGl compilation)
+
+* Fix build failures with Mesa 10.3.1
+
+Users who contributed to this release:
+  Denis Barbier, Jacob Abel, Benjamin Bihler
+
 Version 0.16 - July 2014
 
 This version is not binary compatible with OCE 0.15, OCE_ABI_SOVERSION
