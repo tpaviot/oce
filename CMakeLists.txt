@@ -183,17 +183,17 @@ if (APPLE)
 		set(MACOSX_USE_GLX TRUE)
 	endif(NOT OCE_OSX_USE_COCOA)
 endif(APPLE)
-# The default for the DEB define is ON for all the platforms , in debug mode.
+# The default for the OCCT_DEBUG define is ON for all the platforms , in debug mode.
 # In MSVC it is not desirable to have it ON by default, since users must
 # compile/use the OCE debug libraries to build it's own programs in DEBUG mode.
-# DEB should be enabled by developers only, in this case
+# OCCT_DEBUG should be enabled by developers only, in this case
 if ((MSVC OR BORLAND) AND CMAKE_CONFIGURATION_TYPES)
 	set (DEB_DEFAULT "OFF")
 else ()
 	set (DEB_DEFAULT "ON")
 endif ((MSVC OR BORLAND) AND CMAKE_CONFIGURATION_TYPES)
 
-option_with_default( OCE_ENABLE_DEB_FLAG "Enables DEB define in debug configuration" ${DEB_DEFAULT} )
+option_with_default( OCE_ENABLE_DEB_FLAG "Enables OCCT_DEBUG define in debug configuration" ${DEB_DEFAULT} )
 mark_as_advanced(OCE_ENABLE_DEB_FLAG)
 
 if(NOT MSVC)
@@ -270,7 +270,7 @@ set_directory_properties(PROPERTIES COMPILE_DEFINITIONS_MINSIZEREL NDEBUG)
 set_directory_properties(PROPERTIES COMPILE_DEFINITIONS_RELWITHDEBINFO  NDEBUG)
 
 if(OCE_ENABLE_DEB_FLAG)
-	set_directory_properties(PROPERTIES COMPILE_DEFINITIONS_DEBUG "DEB=1;_DEBUG")
+	set_directory_properties(PROPERTIES COMPILE_DEFINITIONS_DEBUG "OCCT_DEBUG=1;_DEBUG")
 else ()
 	set_directory_properties(PROPERTIES COMPILE_DEFINITIONS_DEBUG "_DEBUG")
 endif (OCE_ENABLE_DEB_FLAG)

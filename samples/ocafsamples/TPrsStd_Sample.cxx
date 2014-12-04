@@ -32,7 +32,7 @@
 // This sample contains template for typical actions with OCAF visualization attributes
 // ====================================================================================
 
-#ifdef DEB
+#ifdef OCCT_DEBUG
 static void Sample()
 {
   // Starting with data framework 
