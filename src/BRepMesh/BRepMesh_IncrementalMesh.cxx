@@ -167,10 +167,10 @@ Standard_Boolean BRepMesh_IncrementalMesh::isCorrectPolyData()
 #ifdef HAVE_TBB
     tbb::parallel_for_each(myFaces.begin(), myFaces.end(), aFaceChecker);
 #else
-    int i, n = myFaces.size();
+    int i, n = myFaces.Size();
 #pragma omp parallel for private(i)
     for (i = 0; i < n; ++i)
-      aFaceChecker(myFaces[i]);
+      aFaceChecker(myFaces(i));
 #endif
   }
   else
@@ -257,10 +257,10 @@ void BRepMesh_IncrementalMesh::update()
 #ifdef HAVE_TBB
     tbb::parallel_for_each(myFaces.begin(), myFaces.end(), *myMesh);
 #else
-    int i, n = myFaces.size();
+    int i, n = myFaces.Size();
 #pragma omp parallel for private(i)
     for (i = 0; i < n; ++i)
-      myMesh->Process(myFaces[i]);
+      myMesh->Process(myFaces(i));
 #endif
   }
   else
